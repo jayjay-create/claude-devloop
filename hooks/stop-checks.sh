@@ -12,17 +12,17 @@ RUNNER=$(grep -m1 '^runner:' "$CHECKS" | sed 's/^runner:[[:space:]]*//')
 [ -n "$RUNNER" ] || exit 0
 
 FAILED=""
-while IFS='|' read -r _ klasse _ ziel _ _ blockierend stand _; do
-  klasse=$(echo "$klasse" | xargs)
-  ziel=$(echo "$ziel" | xargs)
-  blockierend=$(echo "$blockierend" | xargs)
-  stand=$(echo "$stand" | xargs)
-  [ "$blockierend" = "ja" ] || continue
-  [ "$stand" = "gefuellt" ] || continue
-  [ -n "$ziel" ] && [ "$ziel" != "-" ] || continue
-  if ! OUT=$(cd "$PROJECT_DIR" && $RUNNER "$ziel" 2>&1); then
+while IFS='|' read -r _ class _ target _ _ blocking status _; do
+  class=$(echo "$class" | xargs)
+  target=$(echo "$target" | xargs)
+  blocking=$(echo "$blocking" | xargs)
+  status=$(echo "$status" | xargs)
+  [ "$blocking" = "yes" ] || continue
+  [ "$status" = "filled" ] || continue
+  [ -n "$target" ] && [ "$target" != "-" ] || continue
+  if ! OUT=$(cd "$PROJECT_DIR" && $RUNNER "$target" 2>&1); then
     FAILED="$FAILED
---- $klasse ($RUNNER $ziel) ---
+--- $class ($RUNNER $target) ---
 $OUT"
   fi
 done < <(grep '^|' "$CHECKS" | grep -v '^|[[:space:]]*-' | tail -n +2)
@@ -41,9 +41,9 @@ echo "$SIG $COUNT" > "$STATE"
 
 if [ "$COUNT" -ge "$MAX" ]; then
   rm -f "$STATE"
-  echo "Nach $MAX Versuchen weiterhin rot. Melde dem Menschen, was offen bleibt:$FAILED" >&2
+  echo "Still failing after $MAX attempts. Report to the human what remains broken:$FAILED" >&2
   exit 0
 fi
 
-echo "Pruefungen rot (Versuch $COUNT von $MAX). Behebe das, bevor du fertig meldest:$FAILED" >&2
+echo "Checks are failing (attempt $COUNT of $MAX). Fix this before reporting done:$FAILED" >&2
 exit 2

@@ -15,25 +15,25 @@ RUNNER=$(grep -m1 '^runner:' "$CHECKS" | sed 's/^runner:[[:space:]]*//')
 [ -n "$RUNNER" ] || exit 0
 
 FAILED=""
-while IFS='|' read -r _ klasse ziel _ muster _ _ stand _; do
-  klasse=$(echo "$klasse" | xargs); ziel=$(echo "$ziel" | xargs)
-  muster=$(echo "$muster" | xargs); stand=$(echo "$stand" | xargs)
-  [ "$stand" = "gefuellt" ] || continue
-  [ -n "$ziel" ] && [ "$ziel" != "-" ] || continue
-  PASST=0
-  IFS=',' read -ra PATS <<< "$muster"
+while IFS='|' read -r _ class target _ globs _ _ status _; do
+  class=$(echo "$class" | xargs); target=$(echo "$target" | xargs)
+  globs=$(echo "$globs" | tr -d '`' | xargs); status=$(echo "$status" | xargs)
+  [ "$status" = "filled" ] || continue
+  [ -n "$target" ] && [ "$target" != "-" ] || continue
+  MATCH=0
+  IFS=',' read -ra PATS <<< "$globs"
   for p in "${PATS[@]}"; do
     p=$(echo "$p" | xargs); [ -n "$p" ] || continue
-    case "$REL" in ${p##\*\*/}) PASST=1;; $p) PASST=1;; esac
+    case "$REL" in ${p##\*\*/}) MATCH=1;; $p) MATCH=1;; esac
   done
-  [ "$PASST" = "1" ] || continue
-  if ! OUT=$(cd "$PROJECT_DIR" && $RUNNER "$ziel" FILE="$REL" 2>&1); then
+  [ "$MATCH" = "1" ] || continue
+  if ! OUT=$(cd "$PROJECT_DIR" && $RUNNER "$target" FILE="$REL" 2>&1); then
     FAILED="$FAILED
---- $klasse ($RUNNER $ziel FILE=$REL) ---
+--- $class ($RUNNER $target FILE=$REL) ---
 $OUT"
   fi
 done < <(grep '^|' "$CHECKS" | grep -v '^|[[:space:]]*-' | tail -n +2)
 
 [ -z "$FAILED" ] && exit 0
-echo "Pruefung der gerade geaenderten Datei rot. Behebe das jetzt:$FAILED" >&2
+echo "The file you just changed fails its checks. Fix this now:$FAILED" >&2
 exit 2
