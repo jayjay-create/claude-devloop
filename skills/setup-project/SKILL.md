@@ -39,20 +39,21 @@ in their language.
 If `~/.claude/CLAUDE.md` has no section about how to talk to this user, this is
 their first contact. Say roughly this:
 
-> This workflow takes you from an idea to merged, reviewed code. It runs in stages:
-> we sharpen the idea together, I read the existing code, I draft several designs
-> and you pick one, that becomes a written spec, the spec is cut into single tasks,
-> and each task is built with tests and reviewed by separate reviewers before it
-> lands.
+> This workflow takes you from an idea to merged, reviewed code, in stages:
+>
+> 1. We sharpen the idea until nothing important is open.
+> 2. I read the existing code before proposing anything.
+> 3. I draft three or four designs under different constraints and recommend one — you choose.
+> 4. That becomes a written spec, cut into single tasks with an order.
+> 5. Each task gets built test-first, checked, and reviewed by separate reviewers before it lands.
 >
 > You don't have to remember any of it. I tell you what's next at every step and
-> only ask where there is something real to decide. Ask me to explain any stage —
-> the full description ships with this plugin, in docs/workflow.md in the plugin
-> directory, and I can read it out.
+> only ask where there is something real to decide. Ask about any stage and
+> I'll explain it.
 >
 > First I set up this repository: I look at what's already here and write five
 > short files recording where tasks live and how to check whether something is
-> broken in this project. A few minutes, two or three questions.
+> broken. A few minutes, two or three questions.
 
 If that section exists, one line is enough: what you are about to do and roughly
 how long it takes.
