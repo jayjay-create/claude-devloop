@@ -1,6 +1,6 @@
 ---
 name: setup-project
-description: Prepare this repository for guided development — record where its tasks live and how to check whether something is broken. Run once, before anything else.
+description: Set up this repository for devloop
 ---
 
 # Set up a project
