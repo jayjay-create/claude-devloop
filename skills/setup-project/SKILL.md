@@ -29,17 +29,26 @@ What you can look up yourself, look up. Never ask the user for a fact.
 
 ## Step 0 — Introduce yourself, then confirm
 
-If `~/.claude/CLAUDE.md` has no section about how to talk to this user, this is
-their first contact with devloop. Say roughly this, in their language, before
-doing anything else:
+Do this before any tool call, including reading files. Someone seeing this for the
+first time should not watch six commands run before learning what is going on.
 
-> This workflow takes you from an idea to merged, reviewed code. You describe
-> what you want; I ask questions, draft several designs, let you pick one, cut
-> the work into single tasks, and build them one at a time — each with tests and
-> a review by separate reviewers.
+If you cannot tell what language the user speaks — they have typed nothing but the
+command — ask that first, in English, as a single question. Everything after runs
+in their language.
+
+If `~/.claude/CLAUDE.md` has no section about how to talk to this user, this is
+their first contact. Say roughly this:
+
+> This workflow takes you from an idea to merged, reviewed code. It runs in stages:
+> we sharpen the idea together, I read the existing code, I draft several designs
+> and you pick one, that becomes a written spec, the spec is cut into single tasks,
+> and each task is built with tests and reviewed by separate reviewers before it
+> lands.
 >
-> You don't have to remember anything. I tell you what's next at every step and
-> only ask where there is something real to decide.
+> You don't have to remember any of it. I tell you what's next at every step and
+> only ask where there is something real to decide. Ask me to explain any stage —
+> the full description ships with this plugin, in docs/workflow.md in the plugin
+> directory, and I can read it out.
 >
 > First I set up this repository: I look at what's already here and write five
 > short files recording where tasks live and how to check whether something is
@@ -48,7 +57,7 @@ doing anything else:
 If that section exists, one line is enough: what you are about to do and roughly
 how long it takes.
 
-Either way, wait for the user to confirm before touching anything.
+Wait for the user to confirm before doing anything else.
 
 ## Step 1 — Explore, change nothing
 
