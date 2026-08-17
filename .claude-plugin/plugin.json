@@ -1,0 +1,7 @@
+{
+  "name": "dev",
+  "version": "0.0.1",
+  "description": "Skills fuer den App-Bau-Workflow",
+  "license": "MIT",
+  "skills": ["./skills/ping"]
+}

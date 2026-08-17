@@ -1,0 +1,13 @@
+{
+  "name": "jay-dev",
+  "owner": { "name": "Jay" },
+  "description": "Eigener App-Bau-Workflow",
+  "plugins": [
+    {
+      "name": "dev",
+      "source": "./",
+      "description": "Skills fuer den App-Bau-Workflow",
+      "category": "engineering"
+    }
+  ]
+}
