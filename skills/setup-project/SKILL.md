@@ -1,9 +1,13 @@
 ---
 name: setup-project
-description: Set up a repository for the devloop workflow by writing docs/agents/. Use when the user asks to set up this project, when docs/agents/ is missing and the user wants to work with devloop, or when another devloop skill reports the project is not set up.
+description: Prepare this repository for guided development — record where its tasks live and how to check whether something is broken. Run once, before anything else.
 ---
 
 # Set up a project
+
+Run this once per repository, before any other devloop skill. Other devloop
+skills depend on the files it writes and will report the project as not set up
+until it has run.
 
 Runs once per repository. Produces five short files under `docs/agents/`,
 canonical targets in the project's task runner, and a pointer block in `CLAUDE.md`.
