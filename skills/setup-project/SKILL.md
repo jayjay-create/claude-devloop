@@ -1,220 +1,225 @@
 ---
 name: setup-project
-description: Richtet ein Projekt fuer den Bau-Workflow ein und schreibt docs/agents/. Nutze das, wenn der Projektstatus "Einrichtung: nicht eingerichtet" meldet, wenn docs/agents/ fehlt, oder wenn der Nutzer nach der Einrichtung fragt.
+description: Set up a repository for the devloop workflow by writing docs/agents/. Use when the user asks to set up this project, when docs/agents/ is missing and the user wants to work with devloop, or when another devloop skill reports the project is not set up.
 ---
 
-# Projekt einrichten
+# Set up a project
 
-Laeuft einmal pro Projekt. Ergebnis sind fuenf Dateien unter `docs/agents/`,
-kanonische Ziele im Task-Runner und ein Verweis-Block in `CLAUDE.md`.
+Runs once per repository. Produces five short files under `docs/agents/`,
+canonical targets in the project's task runner, and a pointer block in `CLAUDE.md`.
 
-**Frage nur, wo das Projekt oder der Mensch wirklich etwas zu entscheiden hat.**
-Was Konvention dieses Sets ist, wird angelegt und gemeldet, nicht gefragt.
-Was du selbst nachsehen kannst, wird nachgesehen, nicht gefragt.
+## Language
 
-## Schritt 1 — Erkunden, ohne etwas zu aendern
+Write every file you create in English — these files are part of the repository
+and may be read by anyone. Speak to the user in the language they use.
 
-- Git: Remote-Adresse, Branch, gibt es ueberhaupt einen Commit
-- Gibt es Code? Zaehle Quelldateien ausserhalb von Konfiguration und Doku
-- Steuerdokumente: `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, `docs/adr/`, `README.md`
-- Task-Runner: `Makefile`, `justfile`, `Taskfile.yml`, `scripts` in `package.json`
-- Sprachen und Manifeste: `pyproject.toml`, `package.json`, `go.mod`, `Cargo.toml`, `pom.xml`
-- Vorhandene Pruefungen: Konfiguration fuer Formatierung, Lint, Typen; Testverzeichnisse;
-  `.github/workflows/`
-- Vorhandene Labels im Tracker, falls einer erreichbar ist
-- Wie das Projekt lokal startet: `docker-compose.yml`, `.env.example`, README
-- Globale Datei `~/.claude/CLAUDE.md`: steht dort schon ein Abschnitt "Ansprache"?
+## How to ask
 
-## Schritt 2 — Das Gefundene vorlegen
+Every question states what is being decided, what each answer means in practice,
+what it costs, and why it comes up now. Never name a bare term the user may not
+know. Someone who has never heard of this workflow must be able to answer.
 
-Hoechstens zehn Zeilen. Sag dabei ausdruecklich, was du **nicht** gefunden hast.
+**Only ask where the project or the human genuinely has something to decide.**
+What is a convention of this workflow gets created and reported, not asked.
+What you can look up yourself, look up. Never ask the user for a fact.
 
-## Schritt 3 — Der leere Fall
+## Step 0 — Introduce yourself, then confirm
 
-Findest du keinen Code, ist das kein Hindernis. Schreibe `checks.md` mit allen
-neun Klassen auf `leer`, ueberspringe Schritt 4, und sag es beim Abschluss:
-das Pruefnetz wird gefuellt, sobald es etwas zu pruefen gibt.
+If `~/.claude/CLAUDE.md` has no section about how to talk to this user, this is
+their first contact with devloop. Say roughly this, in their language, before
+doing anything else:
 
-## Schritt 4 — Fragen
+> This workflow takes you from an idea to merged, reviewed code. You describe
+> what you want; I ask questions, draft several designs, let you pick one, cut
+> the work into single tasks, and build them one at a time — each with tests and
+> a review by separate reviewers.
+>
+> You don't have to remember anything. I tell you what's next at every step and
+> only ask where there is something real to decide.
+>
+> First I set up this repository: I look at what's already here and write five
+> short files recording where tasks live and how to check whether something is
+> broken in this project. A few minutes, two or three questions.
 
-Nur diese, und jede nur unter ihrer Bedingung. Empfehlung voran, sodass ein
-Wort als Antwort reicht.
+If that section exists, one line is enough: what you are about to do and roughly
+how long it takes.
 
-1. **Issue-Tracker** — nur wenn kein Remote da ist oder mehrere in Frage kommen.
-   Bei genau einem Remote: feststellen und melden, nicht fragen.
-   Ein Tracker ohne Blockier-Beziehungen zwischen Issues reicht nicht. Eine
-   Textdatei ist kein Ersatz: `build-work` waehlt das naechste Ticket danach aus,
-   welche Blocker geschlossen sind. Gibt es keinen geeigneten Tracker, brich die
-   Einrichtung ab und sag genau das.
-2. **Pruefungen** — immer. Lege deine Zuordnung vor: welches gefundene Werkzeug
-   fuellt welche Klasse, und welche Klassen bleiben leer. Frage getrennt, ob
-   fehlende Werkzeuge installiert werden sollen — das veraendert das Projekt.
-3. **Lokale Umgebung** — immer, ausser du hast alles aus `docker-compose.yml`
-   oder README ablesen koennen. Welche Prozesse, welche Reihenfolge, welche Ports.
-4. **Labels** — nur wenn im Tracker bereits Labels mit ueberlappender Bedeutung
-   existieren. Dann fragen: auf die vorhandenen abbilden oder eigene daneben.
-   Sonst die fuenf Standard-Labels anlegen und melden, nicht fragen.
-5. **Ort von Glossar und ADRs** — nur wenn schon etwas an anderer Stelle liegt.
-   Sonst `CONTEXT.md` in der Wurzel und `docs/adr/`, angelegt und gemeldet.
-6. **Ansprache** — nur wenn `~/.claude/CLAUDE.md` keinen Abschnitt "Ansprache" hat.
-   Sprache, Antwortlaenge, Foermlichkeit. Das ist eine Eigenschaft des Menschen,
-   nicht des Projekts, und wird global abgelegt (Schritt 7).
+Either way, wait for the user to confirm before touching anything.
 
-## Schritt 5 — Kanonische Ziele im Task-Runner
+## Step 1 — Explore, change nothing
 
-Diese Namen gelten in jedem Projekt gleich. Existiert kein Task-Runner, lege ein
-`Makefile` an. Existiert einer mit anderen Namen, lege duenne Ziele an, die auf
-die vorhandenen Befehle zeigen; die vorhandenen bleiben unberuehrt.
+- Git: remote, branch, whether there is any commit at all
+- Is there code? Count source files outside config and docs
+- Existing control documents: `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, `docs/adr/`, `README.md`
+- Task runner: `Makefile`, `justfile`, `Taskfile.yml`, `scripts` in `package.json`
+- Languages and manifests: `pyproject.toml`, `package.json`, `go.mod`, `Cargo.toml`, `pom.xml`
+- Existing checks: config for formatting, linting, types; test directories; `.github/workflows/`
+- Existing labels in the tracker, if one is reachable
+- How the project runs locally: `docker-compose.yml`, `.env.example`, README
+- `~/.claude/CLAUDE.md`: is there already a section about how to talk to this user?
 
-**Ein Ziel in `checks.md` faellt ein Urteil und aendert nichts.** Ein Werkzeug,
-das umschreibt, wird mit seiner pruefenden Option aufgerufen — Formatierung also
-als `--check` oder gleichwertig. Das Umschreiben bekommt ein eigenes Ziel
-(`fmt-write`), das in keiner Tabellenzeile steht und von keinem Hook gerufen wird.
-Ein Ziel, das immer besteht, ist schlimmer als gar keines.
+## Step 2 — Report what you found
 
-| Klasse | Ziel je Datei | Ziel gesamt |
+Ten lines at most. Say explicitly what you did **not** find.
+
+## Step 3 — The empty case
+
+Finding no code is not an obstacle. Write `checks.md` with all nine classes set
+to `empty`, skip Step 4, and say so at the end: the check suite gets filled once
+there is something to check.
+
+## Step 4 — Questions
+
+Only these, each only under its condition. Lead with your recommendation so a
+single word can answer.
+
+1. **Issue tracker** — only if there is no remote, or several candidates.
+   With exactly one remote: state it and move on.
+   The tracker must *support* blocking relationships between issues; GitHub
+   Issues and comparable trackers do, whether or not any exist yet. A text file
+   never does — `build-work` picks the next task by which blockers are closed.
+   If no suitable tracker is available, stop the setup and say exactly that.
+2. **Checks** — always. Present your mapping: which tool found fills which class,
+   and which classes stay empty. Ask separately whether missing tools should be
+   installed — that changes the project. Never install anything system-wide
+   without asking; prefer tools that live inside the project.
+3. **Local environment** — always, unless you could read it all from
+   `docker-compose.yml` or the README. Which processes, in what order, on what ports.
+4. **Labels** — only if the tracker already has labels with overlapping meaning.
+   Then ask: map onto the existing ones, or add ours alongside. Otherwise create
+   the five standard labels and report it.
+5. **Where glossary and decision records live** — only if something already lives
+   elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`, created and reported.
+
+Never ask about the user's preferred language or tone here — that belongs to the
+plugin's one-time setup, not to a per-project run.
+
+## Step 5 — Canonical targets in the task runner
+
+These names mean the same in every project, so a skill can say `make lint` and be
+right everywhere. If there is no task runner, create a `Makefile`. If there is one
+with different names, add thin targets that call the existing commands; leave the
+existing ones untouched.
+
+**A target listed in `checks.md` renders a verdict and changes nothing.** A tool
+that rewrites files is invoked with its checking option — formatting as `--check`
+or equivalent. The rewriting variant gets its own target (`fmt-write`) that appears
+in no table row and is called by no hook. A target that always passes is worse
+than no target at all.
+
+| Class | Per-file target | Whole target |
 |---|---|---|
 | format | `fmt-file` | `fmt` |
 | lint | `lint-file` | `lint` |
-| typen | — | `types` |
+| types | — | `types` |
 | unit | `test-file` | `test-unit` |
 | integration | — | `test-integration` |
-| ende-zu-ende | — | `test-e2e` |
+| end-to-end | — | `test-e2e` |
 | secrets | — | `scan-secrets` |
-| abhaengigkeits-schwachstellen | — | `scan-deps` |
-| statische-sicherheitsanalyse | — | `scan-code` |
+| dependencies | — | `scan-deps` |
+| code-security | — | `scan-code` |
 
-Dazu: `check` (alle blockierenden Klassen), `test-one NAME=<Name>`,
+Plus: `check` (every blocking class in sequence), `test-one NAME=<name>`,
 `services-up`, `fmt-write`.
 
-Ziele je Datei nehmen den Pfad als `FILE=<Pfad>`.
+Per-file targets take the path as `FILE=<path>`.
 
-Lege nur Ziele an, deren Befehl du kennst. Fuer eine Klasse ohne Werkzeug wird
-**kein** Ziel angelegt.
+Only create targets whose command you actually know. A class with no tool gets
+**no** target.
 
-## Schritt 6 — Die fuenf Dateien unter `docs/agents/`
+## Step 6 — The five files under `docs/agents/`
 
 ### `checks.md`
 
-Wird von Shell-Skripten gelesen. Spaltenanzahl und -reihenfolge exakt einhalten,
-Spalte `Stand` ohne Umlaute.
+Read by shell scripts. Keep the column count and order exactly. The `Status`
+column takes only `filled`, `empty`, or `skipped: <reason>`. `Blocking` takes
+only `yes` or `no`.
 
     ---
     runner: make
-    alles: check
+    all: check
     ---
 
-    # Pruefungen
+    # Checks
 
-    | Klasse | Ziel je Datei | Ziel gesamt | Dateien | Dauer | Blockierend | Stand |
+    | Class | Per-file | Whole | Files | Duration | Blocking | Status |
     |---|---|---|---|---|---|---|
-    | lint | lint-file | lint | **/*.py | <1s | ja | gefuellt |
-    | ende-zu-ende | - | - | - | - | nein | leer |
+    | lint | lint-file | lint | src/**/*.py | <1s | yes | filled |
+    | end-to-end | - | - | - | - | no | skipped: no interface to drive |
 
-    ## Einen einzelnen Test fahren
+    ## Running a single test
 
-    make test-one NAME=<Testname>
+    make test-one NAME=<test name>
 
-    ## Was die Pruefungen nicht abdecken
+    ## What these checks do not cover
 
-    - <je eine Zeile pro Luecke>
+    - <one line per gap>
 
-    ## Dienste, die laufen muessen
+    ## Services that must be running
 
     make services-up
 
-- `Dateien`: kommagetrennte Muster, `-` heisst: gilt fuer alles.
-- `Dauer`: grob, etwa `<1s`, `20s`, `4min`. Entscheidet, wo die Klasse laeuft.
-- `Blockierend`: `ja` oder `nein`.
-- `Stand`: `gefuellt` nur, wenn das Ziel existiert, ein echtes Pruefwerkzeug
-  aufruft und du es einmal ausgefuehrt hast. Sonst `leer` oder
-  `ausgelassen: <Grund>`. Rate nie.
-- Der Abschnitt "Was die Pruefungen nicht abdecken" ist Pflicht.
+- `Files`: comma-separated glob patterns; `-` means it applies to everything.
+- `Duration`: rough, like `<1s`, `20s`, `4min`. It decides where the class runs.
+- `Status` is `filled` only when the target exists, calls a real checking tool,
+  and you have run it once. Otherwise `empty` or `skipped: <reason>`. Never guess.
+- `skipped` means this class does not apply to this project, with the reason.
+  `empty` means undecided — a later step will resolve it.
+- The section "What these checks do not cover" is mandatory.
 
 ### `issue-tracker.md`
 
-Wo Issues liegen. Die genauen Befehle zum Anlegen, Verknuepfen, Blockieren und
-Setzen von Labels. Die fuenf Labels mit ihrer Bedeutung: `needs-triage` (neu),
-`needs-info` (wartet auf Antwort), `ready-for-agent` (baubar), `needs-human`
-(braucht eine menschliche Entscheidung), `wont-do` (abgelehnt, mit Begruendung).
+Where issues live. The exact commands to create, link, block and label them.
+The five labels and what they mean: `needs-triage` (new), `needs-info` (waiting
+on an answer), `ready-for-agent` (buildable as written), `needs-human` (needs a
+human decision), `wont-do` (declined, with a reason).
 
 ### `domain.md`
 
-Wo Glossar und ADRs liegen. Dass Begriffe sofort ins Glossar wandern, nicht
-gesammelt. Die drei Kriterien fuer ein ADR: schwer umkehrbar, ohne Erklaerung
-ueberraschend, Ergebnis eines echten Abwaegens. Das ADR-Format: Titel, Kontext,
-Entscheidung, bindende Folgen, Status nur fuer abgeloest oder ueberholt,
-verworfene Optionen nur wenn nicht offensichtlich, und die Zeile
-"Was diese Entscheidung ungueltig machen wuerde".
+Where the glossary and the decision records live. That terms go into the glossary
+the moment they come up, not collected later. The three tests for writing a
+decision record: hard to reverse, surprising without explanation, the result of a
+real trade-off. The format: title, context, decision, binding consequences, status
+only for superseded or deprecated, rejected options only when the rejection is not
+obvious, and one line — "What would make this decision invalid".
 
 ### `standards.md`
 
-Kodier-Regeln dieses Projekts, soweit sie nicht ohnehin ein Werkzeug erzwingt.
-Findest du keine, schreibe das hin — leer ist ehrlicher als erfunden.
+Coding rules of this project beyond what a tool already enforces. If you find
+none, write that down — empty is more honest than invented.
 
 ### `environment.md`
 
-Prozesse, Reihenfolge, Ports, welches Fenster dauerhaft belegt ist. Was nach
-welcher Art Aenderung nachzuziehen ist: neue Abhaengigkeit, Schema-Aenderung,
-neue Einstellung, Server-Code, nur Oberflaeche. Welche Laeufe Geld kosten und
-welcher Weg der kostenfreie ist.
+Processes, order, ports, which terminal window stays occupied. What to pull after
+which kind of change: new dependency, schema change, new setting, server code,
+frontend only. Which runs cost money and which path is free.
 
-## Schritt 7 — Globale Datei, einmal pro Rechner
+## Step 7 — Pointer block in CLAUDE.md
 
-Hat `~/.claude/CLAUDE.md` bereits einen Abschnitt "Wie mit mir geredet wird",
-ueberspringe diesen Schritt. Sonst haenge an (nichts loeschen):
+Append to an existing `CLAUDE.md`, delete nothing. Create it if absent.
 
-    ## Wie mit mir geredet wird
+    ## Session start
 
-    <Antwort aus Frage 6: Sprache, Laenge, Foermlichkeit>
+    At the start of every session, summarise the state reported under
+    [ProjectStatus] in your own words and propose exactly one next step.
+    Do not ask openly what to work on.
 
-    1. Fachbegriffe im Original, nicht uebersetzen. Keine selbst gebauten
-       Uebersetzungen, Metaphern, Merksaetze oder Kurznamen. Beim ersten
-       Auftreten erklaeren.
-    2. Nie einen Bezug als bekannt voraussetzen. Wird eine Datei genannt, steht
-       im selben Satz, was sie ist und wo sie liegt, mit vollem Pfad.
-    3. Fakten strikt von Vermutungen trennen. Nie behaupten, was nicht belegbar
-       ist. Fehlenden Zugriff offen benennen.
-    4. Eine Beobachtung ist nicht ihre Erklaerung: Beobachtung nennen, dann die
-       moeglichen Erklaerungen, dann was sie unterscheiden wuerde.
-    5. Keine erfundenen Kennungen, Feldnamen oder Beispiele aus der Fachdomaene.
-    6. Eine Vorsichts-Empfehlung ohne gemessenen Grund ist eine Vermutung —
-       sagen, wovor gewarnt wird.
-    7. Eigene Empfehlungen offen korrigieren, sobald Fakten dagegen sprechen.
-    8. Muss der Mensch etwas tun, was der Rechner nicht kann: genau ein Schritt,
-       ohne Alternative daneben, mit dem exakten Wortlaut.
-    9. Das Werkzeug nach seinem eigenen Zustand fragen, statt nach Textmustern
-       zu suchen.
-    10. Ein Arbeitsschritt endet mit einem Vorschlag fuer den naechsten und
-        fuehrt ihn auf ein Ja hin selbst aus. Ein Befehlsname wird nur genannt,
-        wenn der naechste Schritt sich nicht selbst starten laesst.
+    ## Control documents
 
-## Schritt 8 — Verweis-Block in CLAUDE.md
+    - docs/agents/checks.md — how to check this project
+    - docs/agents/issue-tracker.md — where issues live
+    - docs/agents/domain.md — glossary and decision records
+    - docs/agents/standards.md — coding rules
+    - docs/agents/environment.md — running it locally
 
-An eine bestehende `CLAUDE.md` anhaengen, nichts loeschen. Gibt es keine, anlegen.
+## Step 8 — Close
 
-    ## Sitzungsstart
+Five lines at most: which files you wrote, which targets you created, how many
+classes are `filled` and which are not.
 
-    Fasse zu Beginn jeder Sitzung den unter [Projektstatus] gemeldeten Stand in
-    eigenen Worten zusammen und schlage genau einen naechsten Schritt vor.
-    Frage nicht offen, woran gearbeitet werden soll.
+Then name **no command**. Propose the next step and carry it out on a yes.
+Explain in plain words what it buys, what it costs, and that it can wait:
 
-    ## Steuerdokumente
-
-    - docs/agents/checks.md — die Pruefungen dieses Projekts
-    - docs/agents/issue-tracker.md — wo Issues liegen
-    - docs/agents/domain.md — Glossar und ADRs
-    - docs/agents/standards.md — Kodier-Regeln
-    - docs/agents/environment.md — lokale Umgebung
-
-## Schritt 9 — Abschluss
-
-Hoechstens fuenf Zeilen: welche Dateien geschrieben wurden, welche Ziele angelegt,
-wie viele Klassen `gefuellt` sind und welche nicht.
-
-Nenne dann **keinen Befehl**, sondern schlage den naechsten Schritt vor und fuehre
-ihn auf ein Ja hin selbst aus:
-
-- Klassen mit `leer`: "Soll ich das Pruefnetz jetzt aufbauen?" — auf Ja den
-  Skill `setup-checks` aufrufen.
-- Sonst: "Soll ich mit der ersten Aufgabe anfangen?" — auf Ja `start-work`.
+- Classes still `empty`: offer to build out the check suite, naming each missing
+  class in plain words and what it would catch. Run `setup-checks` on a yes.
+- Otherwise: offer to start on the first piece of work. Run `start-work` on a yes.
