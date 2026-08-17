@@ -5,50 +5,72 @@ description: Richtet ein Projekt fuer den Bau-Workflow ein und schreibt docs/age
 
 # Projekt einrichten
 
-Laeuft einmal pro Projekt. Ergebnis sind sechs Dateien unter `docs/agents/`,
+Laeuft einmal pro Projekt. Ergebnis sind fuenf Dateien unter `docs/agents/`,
 kanonische Ziele im Task-Runner und ein Verweis-Block in `CLAUDE.md`.
 
-Frage nie nach etwas, das du selbst nachsehen kannst.
+**Frage nur, wo das Projekt oder der Mensch wirklich etwas zu entscheiden hat.**
+Was Konvention dieses Sets ist, wird angelegt und gemeldet, nicht gefragt.
+Was du selbst nachsehen kannst, wird nachgesehen, nicht gefragt.
 
 ## Schritt 1 — Erkunden, ohne etwas zu aendern
 
-Sieh selbst nach und notiere, was du findest:
-
-- Git: Remote-Adresse, aktueller Branch, gibt es ueberhaupt einen Commit
-- Vorhandene Steuerdokumente: `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, `docs/adr/`, `README.md`
+- Git: Remote-Adresse, Branch, gibt es ueberhaupt einen Commit
+- Gibt es Code? Zaehle Quelldateien ausserhalb von Konfiguration und Doku
+- Steuerdokumente: `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, `docs/adr/`, `README.md`
 - Task-Runner: `Makefile`, `justfile`, `Taskfile.yml`, `scripts` in `package.json`
 - Sprachen und Manifeste: `pyproject.toml`, `package.json`, `go.mod`, `Cargo.toml`, `pom.xml`
 - Vorhandene Pruefungen: Konfiguration fuer Formatierung, Lint, Typen; Testverzeichnisse;
-  Dateien fuer die kontinuierliche Integration unter `.github/workflows/`
-- Monorepo-Anzeichen: Arbeitsbereiche, mehrere Manifeste in Unterverzeichnissen
-- Wie das Projekt lokal startet: `docker-compose.yml`, `.env.example`, Startbefehle im README
+  `.github/workflows/`
+- Vorhandene Labels im Tracker, falls einer erreichbar ist
+- Wie das Projekt lokal startet: `docker-compose.yml`, `.env.example`, README
+- Globale Datei `~/.claude/CLAUDE.md`: steht dort schon ein Abschnitt "Ansprache"?
 
 ## Schritt 2 — Das Gefundene vorlegen
 
-Fasse in hoechstens zehn Zeilen zusammen, was du gefunden hast, und was daraus
-noch offen ist. Erst danach fragen.
+Hoechstens zehn Zeilen. Sag dabei ausdruecklich, was du **nicht** gefunden hast.
 
-## Schritt 3 — Fragen, Abschnitt fuer Abschnitt
+## Schritt 3 — Der leere Fall
 
-Eine Frage pro Runde, jede mit deiner Empfehlung voran, sodass ein Wort als
-Antwort reicht. Frage nur, was du nicht selbst herausfinden konntest.
+Findest du keinen Code, ist das kein Hindernis. Schreibe `checks.md` mit allen
+neun Klassen auf `leer`, ueberspringe Schritt 4, und sag es beim Abschluss:
+das Pruefnetz wird gefuellt, sobald es etwas zu pruefen gibt.
 
-1. **Issue-Tracker.** Wo liegen Issues? Empfehle das, was zur Remote-Adresse passt.
-   Gibt es keinen Remote: frage, ob einer angelegt werden soll.
-2. **Etiketten.** Empfehle: `needs-triage`, `needs-info`, `ready-for-agent`,
-   `needs-human`, `wont-do`.
-3. **Glossar und ADRs.** Empfehle `CONTEXT.md` in der Wurzel und `docs/adr/`.
-4. **Pruefungen.** Lege deine Zuordnung vor: welches gefundene Werkzeug fuellt
-   welche Klasse. Nenne ausdruecklich die Klassen, fuer die du nichts gefunden hast.
-5. **Lokale Umgebung.** Welche Prozesse muessen laufen, in welcher Reihenfolge,
-   auf welchen Ports. Was ist nach welcher Art Aenderung nachzuziehen.
-6. **Ansprache.** Sprache, Antwortlaenge, Foermlichkeit.
+## Schritt 4 — Fragen
 
-## Schritt 4 — Kanonische Ziele im Task-Runner anlegen
+Nur diese, und jede nur unter ihrer Bedingung. Empfehlung voran, sodass ein
+Wort als Antwort reicht.
 
-Diese Namen gelten in jedem Projekt gleich. Existiert kein Task-Runner, lege
-ein `Makefile` an. Existiert einer mit anderen Namen, lege duenne Ziele an,
-die auf die vorhandenen Befehle zeigen — die vorhandenen Ziele bleiben unberuehrt.
+1. **Issue-Tracker** — nur wenn kein Remote da ist oder mehrere in Frage kommen.
+   Bei genau einem Remote: feststellen und melden, nicht fragen.
+   Ein Tracker ohne Blockier-Beziehungen zwischen Issues reicht nicht. Eine
+   Textdatei ist kein Ersatz: `build-work` waehlt das naechste Ticket danach aus,
+   welche Blocker geschlossen sind. Gibt es keinen geeigneten Tracker, brich die
+   Einrichtung ab und sag genau das.
+2. **Pruefungen** — immer. Lege deine Zuordnung vor: welches gefundene Werkzeug
+   fuellt welche Klasse, und welche Klassen bleiben leer. Frage getrennt, ob
+   fehlende Werkzeuge installiert werden sollen — das veraendert das Projekt.
+3. **Lokale Umgebung** — immer, ausser du hast alles aus `docker-compose.yml`
+   oder README ablesen koennen. Welche Prozesse, welche Reihenfolge, welche Ports.
+4. **Labels** — nur wenn im Tracker bereits Labels mit ueberlappender Bedeutung
+   existieren. Dann fragen: auf die vorhandenen abbilden oder eigene daneben.
+   Sonst die fuenf Standard-Labels anlegen und melden, nicht fragen.
+5. **Ort von Glossar und ADRs** — nur wenn schon etwas an anderer Stelle liegt.
+   Sonst `CONTEXT.md` in der Wurzel und `docs/adr/`, angelegt und gemeldet.
+6. **Ansprache** — nur wenn `~/.claude/CLAUDE.md` keinen Abschnitt "Ansprache" hat.
+   Sprache, Antwortlaenge, Foermlichkeit. Das ist eine Eigenschaft des Menschen,
+   nicht des Projekts, und wird global abgelegt (Schritt 7).
+
+## Schritt 5 — Kanonische Ziele im Task-Runner
+
+Diese Namen gelten in jedem Projekt gleich. Existiert kein Task-Runner, lege ein
+`Makefile` an. Existiert einer mit anderen Namen, lege duenne Ziele an, die auf
+die vorhandenen Befehle zeigen; die vorhandenen bleiben unberuehrt.
+
+**Ein Ziel in `checks.md` faellt ein Urteil und aendert nichts.** Ein Werkzeug,
+das umschreibt, wird mit seiner pruefenden Option aufgerufen — Formatierung also
+als `--check` oder gleichwertig. Das Umschreiben bekommt ein eigenes Ziel
+(`fmt-write`), das in keiner Tabellenzeile steht und von keinem Hook gerufen wird.
+Ein Ziel, das immer besteht, ist schlimmer als gar keines.
 
 | Klasse | Ziel je Datei | Ziel gesamt |
 |---|---|---|
@@ -62,21 +84,20 @@ die auf die vorhandenen Befehle zeigen — die vorhandenen Ziele bleiben unberue
 | abhaengigkeits-schwachstellen | — | `scan-deps` |
 | statische-sicherheitsanalyse | — | `scan-code` |
 
-Dazu drei weitere: `check` (alle blockierenden Klassen nacheinander),
-`test-one NAME=<Name>` (ein einzelner Test) und `services-up` (Dienste starten).
+Dazu: `check` (alle blockierenden Klassen), `test-one NAME=<Name>`,
+`services-up`, `fmt-write`.
 
-Ziele je Datei nehmen den Pfad als `FILE=<Pfad>` entgegen.
+Ziele je Datei nehmen den Pfad als `FILE=<Pfad>`.
 
-Lege nur Ziele an, deren Befehl du wirklich kennst. Fuer eine Klasse ohne
-Werkzeug wird **kein** Ziel angelegt.
+Lege nur Ziele an, deren Befehl du kennst. Fuer eine Klasse ohne Werkzeug wird
+**kein** Ziel angelegt.
 
-## Schritt 5 — Die sechs Dateien schreiben
+## Schritt 6 — Die fuenf Dateien unter `docs/agents/`
 
-### `docs/agents/checks.md`
+### `checks.md`
 
-Diese Datei wird von Shell-Skripten gelesen. Halte Spaltenanzahl und
-Spaltenreihenfolge exakt ein und schreibe die Spalte `Stand` ohne Umlaute:
-`gefuellt`, `leer` oder `ausgelassen: <Grund>`.
+Wird von Shell-Skripten gelesen. Spaltenanzahl und -reihenfolge exakt einhalten,
+Spalte `Stand` ohne Umlaute.
 
     ---
     runner: make
@@ -88,7 +109,7 @@ Spaltenreihenfolge exakt ein und schreibe die Spalte `Stand` ohne Umlaute:
     | Klasse | Ziel je Datei | Ziel gesamt | Dateien | Dauer | Blockierend | Stand |
     |---|---|---|---|---|---|---|
     | lint | lint-file | lint | **/*.py | <1s | ja | gefuellt |
-    | ende-zu-ende | - | test-e2e | - | 8min | nein | leer |
+    | ende-zu-ende | - | - | - | - | nein | leer |
 
     ## Einen einzelnen Test fahren
 
@@ -102,24 +123,22 @@ Spaltenreihenfolge exakt ein und schreibe die Spalte `Stand` ohne Umlaute:
 
     make services-up
 
-Regeln fuer die Tabelle:
+- `Dateien`: kommagetrennte Muster, `-` heisst: gilt fuer alles.
+- `Dauer`: grob, etwa `<1s`, `20s`, `4min`. Entscheidet, wo die Klasse laeuft.
+- `Blockierend`: `ja` oder `nein`.
+- `Stand`: `gefuellt` nur, wenn das Ziel existiert, ein echtes Pruefwerkzeug
+  aufruft und du es einmal ausgefuehrt hast. Sonst `leer` oder
+  `ausgelassen: <Grund>`. Rate nie.
+- Der Abschnitt "Was die Pruefungen nicht abdecken" ist Pflicht.
 
-- `Dateien` ist eine kommagetrennte Liste von Mustern. Ein `-` heisst: gilt fuer alles.
-- `Dauer` grob: `<1s`, `20s`, `4min`. Sie entscheidet, wo eine Klasse laeuft.
-- `Blockierend` ist `ja` oder `nein`.
-- `Stand` ist `gefuellt` nur dann, wenn das Ziel im Task-Runner wirklich existiert
-  und du es einmal ausgefuehrt hast. Sonst `leer`. Rate nie.
-- Ein `-` in einer Ziel-Spalte heisst: diese Klasse kann so nicht arbeiten.
-
-Der Abschnitt "Was die Pruefungen nicht abdecken" ist Pflicht und darf nicht
-leer bleiben. Findest du keine Luecke, schreibe hin, dass du keine gefunden hast.
-
-### `docs/agents/issue-tracker.md`
+### `issue-tracker.md`
 
 Wo Issues liegen. Die genauen Befehle zum Anlegen, Verknuepfen, Blockieren und
-Etikettieren. Die fuenf Etiketten mit ihrer Bedeutung.
+Setzen von Labels. Die fuenf Labels mit ihrer Bedeutung: `needs-triage` (neu),
+`needs-info` (wartet auf Antwort), `ready-for-agent` (baubar), `needs-human`
+(braucht eine menschliche Entscheidung), `wont-do` (abgelehnt, mit Begruendung).
 
-### `docs/agents/domain.md`
+### `domain.md`
 
 Wo Glossar und ADRs liegen. Dass Begriffe sofort ins Glossar wandern, nicht
 gesammelt. Die drei Kriterien fuer ein ADR: schwer umkehrbar, ohne Erklaerung
@@ -128,44 +147,51 @@ Entscheidung, bindende Folgen, Status nur fuer abgeloest oder ueberholt,
 verworfene Optionen nur wenn nicht offensichtlich, und die Zeile
 "Was diese Entscheidung ungueltig machen wuerde".
 
-### `docs/agents/standards.md`
+### `standards.md`
 
-Die Kodier-Regeln dieses Projekts, soweit sie nicht ohnehin von einem Werkzeug
-erzwungen werden. Findest du keine, schreibe das hin — eine leere Datei ist
-ehrlicher als erfundene Regeln.
+Kodier-Regeln dieses Projekts, soweit sie nicht ohnehin ein Werkzeug erzwingt.
+Findest du keine, schreibe das hin — leer ist ehrlicher als erfunden.
 
-### `docs/agents/environment.md`
+### `environment.md`
 
-Wie das Projekt lokal startet: Prozesse, Reihenfolge, Ports, welches Fenster
-dauerhaft belegt ist. Was nach welcher Art Aenderung nachzuziehen ist
-(neue Abhaengigkeit, Schema-Aenderung, neue Einstellung, Server-Code, nur Oberflaeche).
-Welche Laeufe Geld kosten und welcher Weg der kostenfreie ist.
+Prozesse, Reihenfolge, Ports, welches Fenster dauerhaft belegt ist. Was nach
+welcher Art Aenderung nachzuziehen ist: neue Abhaengigkeit, Schema-Aenderung,
+neue Einstellung, Server-Code, nur Oberflaeche. Welche Laeufe Geld kosten und
+welcher Weg der kostenfreie ist.
 
-### `docs/agents/style.md`
+## Schritt 7 — Globale Datei, einmal pro Rechner
 
-Uebernimm diese neun Punkte woertlich, ergaenzt um die Antwort aus Frage 6:
+Hat `~/.claude/CLAUDE.md` bereits einen Abschnitt "Wie mit mir geredet wird",
+ueberspringe diesen Schritt. Sonst haenge an (nichts loeschen):
 
-1. Fachbegriffe im Original, nicht in die Projektsprache uebersetzen. Keine selbst
-   gebauten Uebersetzungen, Metaphern, Merksaetze oder Kurznamen. Beim ersten
-   Auftreten erklaeren.
-2. Nie einen Bezug als bekannt voraussetzen. Wird eine Datei genannt, steht im
-   selben Satz, was sie ist und wo sie liegt, mit vollem Pfad.
-3. Fakten strikt von Vermutungen trennen. Nie behaupten, was nicht belegbar ist.
-   Fehlenden Zugriff offen benennen.
-4. Eine Beobachtung ist nicht ihre Erklaerung: Beobachtung nennen, dann die
-   moeglichen Erklaerungen, dann was sie unterscheiden wuerde.
-5. Keine erfundenen Kennungen, Feldnamen oder Beispiele aus der Fachdomaene.
-6. Eine Vorsichts-Empfehlung ohne gemessenen Grund ist eine Vermutung — sagen,
-   wovor gewarnt wird.
-7. Eigene Empfehlungen offen korrigieren, sobald Fakten dagegen sprechen.
-8. Muss der Mensch etwas tun, was der Rechner nicht kann: genau ein Schritt,
-   ohne Alternative daneben, mit dem exakten Wortlaut.
-9. Das Werkzeug nach seinem eigenen Zustand fragen, statt nach Textmustern zu suchen.
+    ## Wie mit mir geredet wird
 
-## Schritt 6 — Verweis-Block in CLAUDE.md
+    <Antwort aus Frage 6: Sprache, Laenge, Foermlichkeit>
 
-Haenge an eine bestehende `CLAUDE.md` an, ohne etwas zu loeschen. Gibt es keine,
-lege sie an.
+    1. Fachbegriffe im Original, nicht uebersetzen. Keine selbst gebauten
+       Uebersetzungen, Metaphern, Merksaetze oder Kurznamen. Beim ersten
+       Auftreten erklaeren.
+    2. Nie einen Bezug als bekannt voraussetzen. Wird eine Datei genannt, steht
+       im selben Satz, was sie ist und wo sie liegt, mit vollem Pfad.
+    3. Fakten strikt von Vermutungen trennen. Nie behaupten, was nicht belegbar
+       ist. Fehlenden Zugriff offen benennen.
+    4. Eine Beobachtung ist nicht ihre Erklaerung: Beobachtung nennen, dann die
+       moeglichen Erklaerungen, dann was sie unterscheiden wuerde.
+    5. Keine erfundenen Kennungen, Feldnamen oder Beispiele aus der Fachdomaene.
+    6. Eine Vorsichts-Empfehlung ohne gemessenen Grund ist eine Vermutung —
+       sagen, wovor gewarnt wird.
+    7. Eigene Empfehlungen offen korrigieren, sobald Fakten dagegen sprechen.
+    8. Muss der Mensch etwas tun, was der Rechner nicht kann: genau ein Schritt,
+       ohne Alternative daneben, mit dem exakten Wortlaut.
+    9. Das Werkzeug nach seinem eigenen Zustand fragen, statt nach Textmustern
+       zu suchen.
+    10. Ein Arbeitsschritt endet mit einem Vorschlag fuer den naechsten und
+        fuehrt ihn auf ein Ja hin selbst aus. Ein Befehlsname wird nur genannt,
+        wenn der naechste Schritt sich nicht selbst starten laesst.
+
+## Schritt 8 — Verweis-Block in CLAUDE.md
+
+An eine bestehende `CLAUDE.md` anhaengen, nichts loeschen. Gibt es keine, anlegen.
 
     ## Sitzungsstart
 
@@ -180,14 +206,15 @@ lege sie an.
     - docs/agents/domain.md — Glossar und ADRs
     - docs/agents/standards.md — Kodier-Regeln
     - docs/agents/environment.md — lokale Umgebung
-    - docs/agents/style.md — wie mit dem Menschen geredet wird, gilt immer
 
-## Schritt 7 — Abschluss
+## Schritt 9 — Abschluss
 
-Melde in hoechstens fuenf Zeilen: welche Dateien geschrieben wurden, wie viele
-Klassen `gefuellt` sind und welche `leer`.
+Hoechstens fuenf Zeilen: welche Dateien geschrieben wurden, welche Ziele angelegt,
+wie viele Klassen `gefuellt` sind und welche nicht.
 
-Nenne dann genau einen naechsten Befehl:
+Nenne dann **keinen Befehl**, sondern schlage den naechsten Schritt vor und fuehre
+ihn auf ein Ja hin selbst aus:
 
-- Gibt es Klassen mit `leer`: `/dev:setup-checks`
-- Sonst: `/dev:start-work`
+- Klassen mit `leer`: "Soll ich das Pruefnetz jetzt aufbauen?" — auf Ja den
+  Skill `setup-checks` aufrufen.
+- Sonst: "Soll ich mit der ersten Aufgabe anfangen?" — auf Ja `start-work`.
