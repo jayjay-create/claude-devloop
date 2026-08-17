@@ -1,7 +1,9 @@
 {
-  "name": "dev",
-  "version": "0.0.1",
-  "description": "Skills fuer den App-Bau-Workflow",
+  "name": "devloop",
+  "version": "0.1.0",
+  "description": "From idea to merged, reviewed code — a guided development loop for Claude Code",
   "license": "MIT",
-  "skills": ["./skills/ping"]
+  "author": { "name": "Jakob Heumann", "url": "https://github.com/jayjay-create" },
+  "homepage": "https://github.com/jayjay-create/claude-devloop",
+  "skills": ["./skills/ping", "./skills/setup-project"]
 }

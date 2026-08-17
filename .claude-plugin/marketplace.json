@@ -1,12 +1,11 @@
 {
-  "name": "jay-dev",
-  "owner": { "name": "Jay" },
-  "description": "Eigener App-Bau-Workflow",
+  "name": "jayjay-create",
+  "owner": { "name": "Jakob Heumann", "url": "https://github.com/jayjay-create" },
   "plugins": [
     {
-      "name": "dev",
+      "name": "devloop",
       "source": "./",
-      "description": "Skills fuer den App-Bau-Workflow",
+      "description": "From idea to merged, reviewed code — a guided development loop for Claude Code",
       "category": "engineering"
     }
   ]
