@@ -136,6 +136,9 @@ than no target at all.
 Plus: `check` (every blocking class in sequence), `test-one NAME=<name>`,
 `services-up`, `fmt-write`.
 
+While no class is filled, `check` must fail rather than pass, and say that the
+check suite is not configured. A green `check` over nothing is a false all-clear.
+
 Per-file targets take the path as `FILE=<path>`.
 
 Only create targets whose command you actually know. A class with no tool gets
@@ -177,6 +180,8 @@ only `yes` or `no`.
 - `Duration`: rough, like `<1s`, `20s`, `4min`. It decides where the class runs.
 - `Status` is `filled` only when the target exists, calls a real checking tool,
   and you have run it once. Otherwise `empty` or `skipped: <reason>`. Never guess.
+- `Blocking` is `yes` only on rows whose `Status` is `filled`. A class with no
+  target cannot block anything; leave it `-` until it is filled.
 - `skipped` means this class does not apply to this project, with the reason.
   `empty` means undecided — a later step will resolve it.
 - The section "What these checks do not cover" is mandatory.
@@ -226,7 +231,17 @@ Append to an existing `CLAUDE.md`, delete nothing. Create it if absent.
     - docs/agents/standards.md — coding rules
     - docs/agents/environment.md — running it locally
 
-## Step 8 — Close
+## Step 8 — Land the setup on the main branch
+
+The setup must be on the main branch before any other work starts. A task branch
+cut afterwards would not carry `docs/agents/`, and every other skill would find
+nothing.
+
+Commit, open a pull request, merge it, and then verify against `git log` that it
+actually arrived — a report of success is not evidence. If a check gate blocks the
+merge, say so and stop here; do not offer the next step on top of unmerged setup.
+
+## Step 9 — Close
 
 Five lines at most: which files you wrote, which targets you created, how many
 classes are `filled` and which are not.
@@ -234,6 +249,9 @@ classes are `filled` and which are not.
 Then name **no command**. Propose the next step and carry it out on a yes.
 Explain in plain words what it buys, what it costs, and that it can wait:
 
-- Classes still `empty`: offer to build out the check suite, naming each missing
-  class in plain words and what it would catch. Run `setup-checks` on a yes.
+- Classes still `empty` and enough code to check: offer to build out the check
+  suite, naming each missing class in plain words and what it would catch. Run
+  `setup-checks` on a yes.
+- Barely any code yet: say the check suite is better built once there is
+  something to check, and offer to start on the first piece of work instead.
 - Otherwise: offer to start on the first piece of work. Run `start-work` on a yes.
