@@ -100,7 +100,11 @@ single word can answer.
    The tracker must *support* blocking relationships between issues; GitHub
    Issues and comparable trackers do, whether or not any exist yet. A text file
    never does — `build-work` picks the next task by which blockers are closed.
-   If no suitable tracker is available, stop the setup and say exactly that.
+   If no suitable tracker is available, stop the setup and say exactly that. Do
+   not carry on without one: every later step publishes specs and tasks there and
+   picks up work from there. A repository with no remote cannot run this workflow
+   yet — say so plainly and stop, rather than merging straight to the main branch
+   as a substitute.
 2. **Auto-merge** — only if the remote has it switched off
    (`gh api repos/OWNER/REPO -q .allow_auto_merge` returns false). Every later
    step opens pull requests and sets them to merge once the gates pass; direct

@@ -9,6 +9,11 @@ description: Take a piece of work from idea to merged
 document.** These instructions are in English because the repository is; that is
 not a signal about how to reply.
 
+**Never say a skill's name to the user.** Not "I'll run plan-work", not "setup
+first". The stages have names so that the skills can call each other; to the
+person you are talking to, they are just what happens next. Say what you are
+about to do, in ordinary words.
+
 This is the only command anyone needs to type. It runs the whole path: sharpen
 the idea, read the code, draft designs, write the spec, cut it into tasks, build
 them, review them, merge them.
@@ -18,10 +23,11 @@ questions about the work; you never have to know which stage comes next.
 
 ## Say what this is, if they have not seen it before
 
-Check whether this workflow has been used here: is there a spec in the tracker
-that it created? If there is, skip this and go straight to the question below.
+Check whether `docs/agents/` exists in this repository. If it does, this project
+has been through the workflow — skip this and go straight to the question below.
 
-If there is not, this is their first time. Say roughly this, in their language,
+If it does not, this is their first time. Say the following **before** running
+setup, before looking at anything else. Say roughly this, in their language,
 before asking anything:
 
 > I take a piece of work from an idea to merged, reviewed code. You tell me what
@@ -36,7 +42,7 @@ before asking anything:
 >
 > So: what would you like to build?
 
-Then wait. Do not run anything until they answer.
+Then wait. Do not run anything — not setup, not exploration — until they answer.
 
 ## First: ask what to build
 
