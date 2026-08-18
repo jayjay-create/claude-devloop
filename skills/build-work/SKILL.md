@@ -37,7 +37,9 @@ and zero open blockers.
 
 - **Exactly one ready** — build it.
 - **Several ready** — list them with what each unblocks, and ask which. Do not
-  choose for the user, and never start more than one.
+  choose for the user, and never start more than one. In unattended mode there is
+  nobody to ask: take the one that unblocks the most other tasks, and when that
+  ties, the lowest issue number. Say which you took and why.
 - **None ready** — say which task blocks which, and stop.
 
 ## Build it
