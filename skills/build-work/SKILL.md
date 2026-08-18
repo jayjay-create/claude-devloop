@@ -128,7 +128,9 @@ checks — only the gate differs.
    reason. `empty` means undecided, and an undecided check approves nothing.
 2. A failing gate genuinely blocks a merge on the remote — not the model's
    judgement that it looks fine.
-3. `--max-iterations` is set.
+3. `--max-iterations` is set. If the user did not give one, propose twice the
+   number of ready tasks plus two, and say that is a rip-cord for a run that gets
+   stuck, not a capacity estimate — one round per task is the normal case.
 4. No task in range is blocked by anything outside the range.
 5. The tool classes the run needs are already approved for this project. A run
    nobody is watching cannot answer a permission prompt.
@@ -146,6 +148,11 @@ remains in scope.
 
 Emit that phrase only when it is completely and unambiguously true — never to get
 out of the loop.
+
+When the run finishes, **delete the state file.** Do not write a status into it
+and leave it lying there: the hook checks whether the file exists, not what it
+says, so a leftover file drags the next ordinary turn back into the loop. Add its
+path to `.gitignore` — it is runtime state and does not belong in the repository.
 
 Tell the user how to read the diffs afterwards, from `started_from` to the
 current main branch, and how to stop the run.
