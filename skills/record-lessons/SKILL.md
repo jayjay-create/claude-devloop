@@ -1,6 +1,7 @@
 ---
 name: record-lessons
 description: Write down what went wrong so it does not repeat
+disable-model-invocation: true
 ---
 
 # Record what went wrong

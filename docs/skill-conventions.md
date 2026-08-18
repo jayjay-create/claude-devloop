@@ -131,3 +131,24 @@ is an `initialUserMessage` field for seeding a turn, and an open Anthropic bug
 (#16538) where `hookSpecificOutput.additionalContext` from a *plugin* hook does
 not reach Claude while the same hook in user settings does. Plain stdout works.
 
+
+## Who may invoke a skill
+
+Two states, no third.
+
+**Model-invocable** (no extra frontmatter): the description sits in context every
+session, the model may reach for it, and other skills can call it. That is the
+price and the point.
+
+**User-invoked** (`disable-model-invocation: true` under `description`): costs no
+context, but only a typed command starts it — no other skill can.
+
+In this set, four are user-invoked: `start-work`, `setup-project`,
+`setup-checks`, `record-lessons`. Nobody should trip into setting a project up
+or starting a run; those begin because a person decided to.
+
+The rest are model-invocable because `start-work` chains through them:
+`plan-work`, `cut-into-tasks`, `build-work`, `review-changes`. Note the
+consequence — the model can also reach for `build-work` on its own. If that ever
+proves to be a problem, the fix is not to lock it, which would break the chain,
+but to keep the human gate inside the skill where it already is.

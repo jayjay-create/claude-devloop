@@ -1,6 +1,7 @@
 ---
 name: start-work
 description: Take a piece of work from idea to merged
+disable-model-invocation: true
 ---
 
 # Start a piece of work

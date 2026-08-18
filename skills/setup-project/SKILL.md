@@ -1,6 +1,7 @@
 ---
 name: setup-project
 description: Set up this repository for devloop
+disable-model-invocation: true
 ---
 
 # Set up a project
