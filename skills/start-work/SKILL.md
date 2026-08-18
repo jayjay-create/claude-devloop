@@ -16,24 +16,13 @@ then go to step 2.
 
 ## Step 2 — Say what this is, if the directory was missing
 
-**If `docs/agents/` does not exist**, this person has not used this workflow in
-this repository. Your entire reply is the following, in their language, and
-nothing else — no status, no findings, no offer to set anything up:
+**If `docs/agents/` does not exist**, this person has not used this workflow here.
+Read the file named after `first-run text:` in the session-start status line and
+**print its contents verbatim**, translated into their language, and nothing
+else. Do not summarise it. Do not shorten it. Do not add a status line.
 
-> I take a piece of work from an idea to merged, reviewed code. You tell me what
-> you want; I ask until nothing important is open, read your existing code, draft
-> a few designs and let you pick one, write that up as a spec, cut it into pieces
-> small enough to check one at a time, and build them — each one test-first,
-> reviewed, and shown to you before it merges.
->
-> You don't need to know any of the steps or remember any commands. I'll tell you
-> what's next each time and only ask where there's something real to decide. Ask
-> about any step and I'll explain it.
->
-> So: what would you like to build?
-
-Then **stop and wait for their answer.** Setting the project up comes later, in
-step 4, after they have told you what they want.
+Then stop and wait. Setting the project up comes later, in step 4, after they
+have said what they want.
 
 **If `docs/agents/` exists**, ask one question and nothing else: what would they
 like to build? Report no state. Propose nothing. An open issue in the tracker is
