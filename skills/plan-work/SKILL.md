@@ -114,5 +114,6 @@ labelled `ready-for-agent`.
 
 Report the spec's issue number and one line on what it covers.
 
-Then offer to cut it into tasks and do that on a yes. Say what that means in
-plain words: single pieces of work, each one demonstrable on its own, in an order.
+Then offer to cut it into tasks and do that on a yes — run `split-into-tickets`.
+Say what that means in plain words: single pieces of work, each one demonstrable
+on its own, in an order.
