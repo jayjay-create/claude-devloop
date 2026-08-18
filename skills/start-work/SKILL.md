@@ -14,22 +14,27 @@ Run exactly one command and nothing else:
 Do not read files. Do not check git. Do not look at the tracker. One command,
 then go to step 2.
 
-## Step 2 — Say what this is, if the directory was missing
+## Step 2 — Orient them, if the status line says this project is not set up
 
-**If `docs/agents/` does not exist**, this person has not used this workflow here.
-Read the file named after `first-run text:` in the session-start status line and
-**print its contents verbatim**, translated into their language, and nothing
-else. Do not summarise it. Do not shorten it. Do not add a status line.
+Write a short introduction in your own words — four or five sentences, their
+language — covering all four of these:
 
-Then stop and wait. Setting the project up comes later, in step 4, after they
-have said what they want.
+- What this does: takes a piece of work from an idea to merged, reviewed code.
+- What you will do along the way: ask questions, read their code, draft a few
+  designs for them to pick from, write a spec, cut it into small pieces, build
+  each one test-first and reviewed.
+- That they need to remember nothing: no commands, no steps. You say what is
+  next; they only decide where there is something real to decide.
+- That they can ask about any step and you will explain it.
 
-**If `docs/agents/` exists**, ask one question and nothing else: what would they
-like to build? Report no state. Propose nothing. An open issue in the tracker is
-somebody's suggestion, not an instruction, and choosing what to work on is
-theirs.
+Then ask what they would like to build, and **stop.** Nothing else in this reply:
+no repository findings, no offer to set anything up.
 
-Either way: **stop here until they answer.**
+**If the status line says the project is set up**, skip the introduction. Ask one
+question and nothing else: what would they like to build? Report no state.
+Propose nothing. An open issue is somebody's suggestion, not an instruction.
+
+Either way: stop here until they answer.
 
 ## Step 3 — Judge what they asked for
 
