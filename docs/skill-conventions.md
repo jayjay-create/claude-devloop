@@ -152,3 +152,28 @@ The rest are model-invocable because `start-work` chains through them:
 consequence — the model can also reach for `build-work` on its own. If that ever
 proves to be a problem, the fix is not to lock it, which would break the chain,
 but to keep the human gate inside the skill where it already is.
+
+## Before a handover, run these
+
+Four checks that catch what a conversation loses. Each one has found a real gap.
+
+Every skill on disk is registered, and every registered skill exists:
+
+    python3 -c "
+    import json,pathlib
+    m=[p.split('/')[-1] for p in json.load(open('.claude-plugin/plugin.json'))['skills']]
+    d=sorted(p.name for p in pathlib.Path('skills').iterdir())
+    print('registered but missing:', sorted(set(m)-set(d)))
+    print('present but unregistered:', sorted(set(d)-set(m)))"
+
+Nothing in the roadmap is named that neither exists nor sits under "Not built":
+
+    comm -23 <(grep -o '`[a-z-]*`' docs/roadmap.md | tr -d '`' | sort -u) <(ls skills/ | sort)
+
+Invocability is set deliberately, not by omission:
+
+    grep -c 'disable-model-invocation' skills/*/SKILL.md
+
+The installed copy is the copy you changed:
+
+    diff ~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])")/skills/start-work/SKILL.md skills/start-work/SKILL.md
