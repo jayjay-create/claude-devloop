@@ -106,13 +106,11 @@ Both target columns hold bare target names — `lint`, not `make lint` and not
 means the class cannot work that way.
 
 - `Status` becomes `filled` only after you ran the target and saw it fail on
-  purpose. Otherwise `skipped: <reason>`. Never guess.
+  purpose. Otherwise `skipped: <reason>` when the class does not apply here, or
+  `empty` while it is still undecided. Never guess.
 - `Blocking` becomes `yes` only on rows that are `filled`. A class whose result
   depends on a service you do not control is never blocking — an outage elsewhere
   must not stop work here. Keep it out of `check` and give it its own target.
-- The two target columns hold **bare target names** — `lint`, not `make lint` and
-  not `` `lint` ``. A shell script reads this column and puts the runner in front
-  of it itself.
 - `Duration` from the run you just did, roughly.
 - Add every remaining gap to "What these checks do not cover" — what is not
   covered, in plain words, not the class label.
