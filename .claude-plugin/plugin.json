@@ -12,6 +12,7 @@
     "./skills/setup-project",
     "./skills/plan-work",
     "./skills/split-into-tickets",
-    "./skills/build-work"
+    "./skills/build-work",
+    "./skills/review-changes"
   ]
 }
