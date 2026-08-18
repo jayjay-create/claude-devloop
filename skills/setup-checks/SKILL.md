@@ -93,7 +93,17 @@ quietly doing something else.
 
 ## Step 6 — Record it
 
-Update `docs/agents/checks.md`:
+`docs/agents/checks.md` is read by shell scripts that split each row on `|` and
+go by position. Keep the column count and order exactly as they are — seven
+columns, this header, one row per class:
+
+    | Class | Per-file | Whole | Files | Duration | Blocking | Status |
+    |---|---|---|---|---|---|---|
+    | lint | lint-file | lint | src/**/*.py | <1s | yes | filled |
+
+Both target columns hold bare target names — `lint`, not `make lint` and not
+`` `lint` ``. The runner comes from the `runner:` line in the frontmatter. A `-`
+means the class cannot work that way.
 
 - `Status` becomes `filled` only after you ran the target and saw it fail on
   purpose. Otherwise `skipped: <reason>`. Never guess.
