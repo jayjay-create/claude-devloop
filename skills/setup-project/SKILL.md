@@ -12,8 +12,11 @@ Run this once per repository, before any other devloop skill. Other devloop
 skills depend on the files it writes and will report the project as not set up
 until it has run.
 
-Runs once per repository. Produces five short files under `docs/agents/`,
-canonical targets in the project's task runner, and a pointer block in `CLAUDE.md`.
+**Never say a skill's name to the user.** Say what you are about to do, in
+ordinary words.
+
+Produces five short files under `docs/agents/`, canonical targets in the
+project's task runner, and a pointer block in `CLAUDE.md`.
 
 ## Language
 
