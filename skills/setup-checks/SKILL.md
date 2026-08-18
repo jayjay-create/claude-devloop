@@ -5,6 +5,9 @@ description: Build out this project's check suite
 
 # Build out the check suite
 
+**Answer in the language the user writes in, not the language of this
+document.** These instructions are in English because the repository is; that is not a signal about how to reply.
+
 Turn every class in `docs/agents/checks.md` that still says `empty` into either
 `filled` or `skipped: <reason>`.
 

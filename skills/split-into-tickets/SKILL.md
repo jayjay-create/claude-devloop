@@ -5,6 +5,9 @@ description: Cut a spec into single tasks
 
 # Cut a spec into tasks
 
+**Answer in the language the user writes in, not the language of this
+document.** These instructions are in English because the repository is; that is not a signal about how to reply.
+
 Input is a published spec. Output is one issue per task, in an order that can be
 queried. No code is written here.
 

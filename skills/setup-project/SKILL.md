@@ -5,6 +5,9 @@ description: Set up this repository for devloop
 
 # Set up a project
 
+**Answer in the language the user writes in, not the language of this
+document.** These instructions are in English because the repository is; that is not a signal about how to reply.
+
 Run this once per repository, before any other devloop skill. Other devloop
 skills depend on the files it writes and will report the project as not set up
 until it has run.

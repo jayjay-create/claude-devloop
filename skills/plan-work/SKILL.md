@@ -5,6 +5,9 @@ description: Turn an idea into a specced piece of work
 
 # Plan a piece of work
 
+**Answer in the language the user writes in, not the language of this
+document.** These instructions are in English because the repository is; that is not a signal about how to reply.
+
 Four stages, one unbroken session. Do not compact or clear context between them —
 each stage builds on what the previous one established.
 

@@ -5,6 +5,9 @@ description: Review a change from several angles at once
 
 # Review a change
 
+**Answer in the language the user writes in, not the language of this
+document.** These instructions are in English because the repository is; that is not a signal about how to reply.
+
 Several reviewers run in parallel, each with exactly one lens. **Their findings
 are never merged, ranked against each other, or reduced to a single verdict.**
 That separation is the whole point: one lens looking for one kind of problem

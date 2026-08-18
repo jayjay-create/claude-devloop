@@ -5,6 +5,9 @@ description: Build the open tasks and merge them
 
 # Build the open tasks
 
+**Answer in the language the user writes in, not the language of this
+document.** These instructions are in English because the repository is; that is not a signal about how to reply.
+
 **One task at a time.** Never two. Two build agents share the same working
 directory and the same branch target — one will switch branches out from under
 the other mid-edit, and both will touch the same manifest. Parallel agents are
