@@ -232,16 +232,6 @@ frontend only. Which runs cost money and which path is free.
 
 Append to an existing `CLAUDE.md`, delete nothing. Create it if absent.
 
-    ## Session start
-
-    At the start of every session, summarise the state reported under
-    [ProjectStatus] in your own words and propose exactly one next step.
-    Do not ask openly what to work on.
-
-    This is about opening a session, not about choosing work. When the user
-    starts a new piece of work, what to build is theirs to say — report the
-    state, then ask.
-
     ## Control documents
 
     - docs/agents/checks.md — how to check this project
