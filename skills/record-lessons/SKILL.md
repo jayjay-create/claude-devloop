@@ -37,6 +37,11 @@ would have had to read to avoid this, and write it there:
 | Something unclear about running the project locally | `docs/agents/environment.md` |
 | A decision that keeps getting revisited | a decision record |
 
+Before recording anything about the workflow behaving oddly, check that the
+version you are testing is the version you changed. A conclusion drawn from a
+stale installed copy is not a lesson; it is noise, and filing it makes the next
+person chase the same ghost.
+
 If no file in this project would have prevented it, the workflow itself let it
 through. **File an issue against the workflow's own repository** — do not edit a
 skill mid-run. A skill that rewrites itself while working cannot be reviewed, and

@@ -126,6 +126,39 @@ to be spoken to.
 - Everything has been exercised on one small Python project with GitHub Issues.
   Other stacks and other trackers are untested.
 
+## Working on devloop itself
+
+An installed plugin runs from a copy under
+`~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`. Pushing to this
+repository does not touch that copy, and neither does `/plugin marketplace
+update` on its own — the cache is keyed by version, so an unchanged version
+number means nothing is fetched.
+
+To make a change take effect: raise `version` in `.claude-plugin/plugin.json`,
+push, then `/plugin uninstall`, `/plugin marketplace update`, `/plugin install`.
+
+Old versions stay in the cache alongside the new one. Before testing a change,
+confirm the installed copy actually carries it:
+
+    diff ~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/skills/<name>/SKILL.md \
+         skills/<name>/SKILL.md
+
+Skipping that check costs more than it saves. Every conclusion drawn from a run
+against a stale copy is worthless, and nothing about the run says it is stale.
+
+## What hooks can and cannot do
+
+Hooks are the only part of this that does not depend on a model deciding to
+comply — they run in the harness. But what they inject is still text.
+
+A hook can make something **happen**: report state, block a turn, feed a prompt
+back in. A hook cannot make something be **said** — plain stdout from
+`SessionStart` arrives as context, which shapes what the model does and does not
+get reproduced word for word.
+
+So: state and enforcement in hooks, wording nowhere. Where a particular thing has
+to be said, describe what it must cover and let the model write it.
+
 ## Credit
 
 The interview, spec, task-cutting, test-loop and review-axis skills are adapted
