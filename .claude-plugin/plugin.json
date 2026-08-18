@@ -1,9 +1,15 @@
 {
   "name": "devloop",
   "version": "0.1.0",
-  "description": "From idea to merged, reviewed code — a guided development loop for Claude Code",
+  "description": "From idea to merged, reviewed code \u2014 a guided development loop for Claude Code",
   "license": "MIT",
-  "author": { "name": "Jakob Heumann", "url": "https://github.com/jayjay-create" },
+  "author": {
+    "name": "Jakob Heumann",
+    "url": "https://github.com/jayjay-create"
+  },
   "homepage": "https://github.com/jayjay-create/claude-devloop",
-  "skills": ["./skills/ping", "./skills/setup-project"]
+  "skills": [
+    "./skills/setup-project",
+    "./skills/plan-work"
+  ]
 }
