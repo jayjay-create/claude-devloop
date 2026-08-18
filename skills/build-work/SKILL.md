@@ -5,109 +5,135 @@ description: Build the open tasks and merge them
 
 # Build the open tasks
 
-One task at a time, each in its own subagent with a fresh context, each checked
-and reviewed before it lands.
+**One task at a time.** Never two. Two build agents share the same working
+directory and the same branch target — one will switch branches out from under
+the other mid-edit, and both will touch the same manifest. Parallel agents are
+for drafting and reviewing, which write nothing. Not for tasks.
 
 Read `docs/agents/checks.md` and `docs/agents/issue-tracker.md` first.
 
 ## Never assert state — always query it
 
-Which task is next, which blockers are open, whether something merged: every one
-of these is a query, never a memory of what was said earlier in the session.
-Conversation goes stale; the tracker and the git log do not. Building a task whose
-blocker is still open wastes the work and can silently produce something wrong.
+Which task is next, which blockers are open, whether something merged: each is a
+query, never a memory of what was said earlier. Conversation goes stale; the
+tracker and the git log do not.
+
+If a skill you call does not exist, or a background agent fails, **say so**. Do
+not silently substitute something else and do not carry on as if the result were
+complete.
+
+## Before each task
+
+Fetch and compare the local main branch with the remote. If they have diverged,
+say so and stop — a task cut from a stale main lands on the wrong base.
 
 ## Pick the next task
 
-Run the readiness query from `docs/agents/issue-tracker.md`. The next task is the
-first open sub-issue with zero open blockers.
+Run the readiness query from `docs/agents/issue-tracker.md`. Ready means: open,
+and zero open blockers.
 
-If none is ready, say which task blocks which and stop. Do not pick a blocked task
-and do not invent an order.
+- **Exactly one ready** — build it.
+- **Several ready** — list them with what each unblocks, and ask which. Do not
+  choose for the user, and never start more than one.
+- **None ready** — say which task blocks which, and stop.
 
 ## Build it
 
-Hand the task to a subagent with a fresh context. Give it the task issue, the
-spec it belongs to, and the paths of the control documents — not this
-conversation. A fresh context is the point; do not summarise the session into it.
+Hand the task to a subagent with a fresh context: the task issue, the spec it
+belongs to, and the paths of the control documents — not this conversation.
 
 The subagent:
 
 1. Cuts a branch from the current main branch.
-2. Works test-first at the seams the spec confirmed, and at no others: the failing
-   test, then just enough code to pass it, one slice at a time. It does not write
-   every test up front — that tests imagined behaviour.
-3. Fixes causes, not symptoms. No workaround where the root is reachable. If a
-   second defect remains after the fix, that is its own defect with its own
-   effect, not a leftover of the first.
+2. Works test-first at the seams the spec confirmed, and at no others: the
+   failing test, then just enough code to pass it, one slice at a time. Not every
+   test up front — that tests imagined behaviour.
+3. Fixes causes, not symptoms. If a second defect remains after the fix, that is
+   its own defect with its own effect, not a leftover of the first.
 4. Commits behaviour changes separately from mechanical ones.
-5. Runs everything `checks.md` lists before reporting done. A report that a later
-   gate rejects is not a report.
+5. Runs everything `checks.md` lists before reporting done. A report a later gate
+   rejects is not a report.
 
 Refactoring is not part of this loop. It belongs to the review.
 
 ## Review it
 
-Run `review-changes` on the diff. Findings are either fixed now or filed as
-issues — never left in the conversation, where they evaporate.
+Run `review-changes` on the diff.
+
+Each finding goes one of two ways:
+
+- **Fix now** if the fix is obvious and touches nothing that was decided —
+  a missed error type, a wrong branch, a check that always passes.
+- **File as an issue** if fixing it would revisit a design decision, change the
+  interface, or exceed the task. Say which you filed and why.
+
+Never leave a finding in the conversation. Never explain a named defect away in
+the same breath as naming it: it stays open until fixed or explicitly deferred.
 
 ## Hand it to the user
 
-Show the diff and the review findings. Ask whether to merge or to revise, and say
-what each means.
+Show the diff and the findings — what was fixed, what was filed. Ask whether to
+merge or revise, and say what each means.
 
-In unattended mode this gate is the check suite instead — see below.
+In unattended mode the check suite is this gate instead.
 
 ## Merge it
 
-Open a pull request, wait for the gates, merge.
+**Never merge directly.** Open the pull request, then set it to merge
+automatically once the gates are green:
 
-Then **verify against `git log` that it actually arrived.** A successful report is
-not evidence; an auto-merge can sit blocked on a red gate or a conflict without
-anyone noticing.
+    gh pr merge --auto --squash --delete-branch
 
-Build the commit from `git status --short`, never from a list of paths someone
-reported — a guessed list drops new files silently. Add paths explicitly, never
-with `-A`.
+The platform merges, not the agent. Direct merges are refused as a shared-state
+action, and an unattended run cannot answer that prompt.
 
-Close the task issue. Check whether this work also closed anything else that was
-open, and say which — naming each one you checked, including the ones it did not
-close.
+Then check **once** whether it landed — do not poll in a loop. If it has not,
+say what it is still waiting on and offer the next step; do not block the session.
 
-Then say what the user has to pull locally: a new dependency means install, a
-schema change means migrate, a new setting means check the configuration, server
-code means restart, frontend only means a hard reload. Read `environment.md` for
-which of these apply here.
+Once it has landed:
+
+- Fetch and fast-forward the local main branch. If that fails, say so and stop.
+- Delete the merged branch locally and on the remote if it is still there;
+  `--delete-branch` does not always take effect on an auto-merge.
+- Confirm the task issue closed. Check whether this also closed anything else,
+  naming each one you checked, including the ones it did not close.
+- If every task under a spec is now closed, offer to close the spec.
+- Say what to pull locally: a new dependency means install, a schema change means
+  migrate, a new setting means check configuration, server code means restart,
+  frontend only means a hard reload. `environment.md` says which apply here.
+
+Build the commit from `git status --short`, never from a reported list of paths —
+a guessed list drops new files silently. Add paths explicitly, never with `-A`.
 
 ## Then the next task
 
-Query again. Repeat until no task is ready.
+Query again. One ready task: continue. Several: ask. None: stop.
 
 ## Unattended mode
 
 `--auto` replaces the user's approval with a green check suite. Same stages, same
 checks — only the gate differs.
 
-**Refuse to start** unless all five hold, and say which one failed:
+**Refuse to start** unless all five hold, and say which failed:
 
 1. No class in `checks.md` is `empty`. Every one is `filled` or `skipped` with a
-   reason. `empty` means undecided, and an undecided check cannot approve
-   anything.
-2. A failing gate genuinely blocks a merge on the remote — not just the model's
-   judgement of whether it looks fine.
+   reason. `empty` means undecided, and an undecided check approves nothing.
+2. A failing gate genuinely blocks a merge on the remote — not the model's
+   judgement that it looks fine.
 3. `--max-iterations` is set.
 4. No task in range is blocked by anything outside the range.
-5. The tools the run needs are pre-approved. A run nobody is watching cannot
-   answer a permission prompt.
+5. The tool classes the run needs are already approved for this project. A run
+   nobody is watching cannot answer a permission prompt.
 
 Then write `.claude/autorun.local.md` with `iteration`, `max_iterations`,
-`completion_promise`, `scope`, and `started_from` (the current main-branch commit),
-followed by the standing instruction: take the next ready task in scope, build it,
-run everything in `checks.md`, review, merge if green, and emit the completion
-phrase only when no ready task remains in scope.
+`completion_promise`, `scope`, and `started_from` (the current main-branch
+commit), followed by the standing instruction: take the next ready task in scope,
+build it, run everything in `checks.md`, review, set the pull request to
+auto-merge if green, and emit the completion phrase only when no ready task
+remains in scope.
 
 Emit that phrase only when it is completely and unambiguously true — never to get
 out of the loop.
 
-Tell the user how to read the diffs afterwards, from `started_from` to the current
-main branch, and how to stop the run.
+Tell the user how to read the diffs afterwards, from `started_from` to the
+current main branch, and how to stop the run.

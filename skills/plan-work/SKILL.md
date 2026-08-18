@@ -13,8 +13,6 @@ The output is a spec in the issue tracker. No code is written here.
 If `docs/agents/` is missing, this project is not set up. Say so and offer to run
 `setup-project` first; do not improvise around it.
 
-Speak to the user in their language. Write every file in English.
-
 ## How to ask
 
 Every question states what is being decided, what each answer means in practice,
@@ -25,7 +23,7 @@ user for a fact you could look up. Never ask which skill to use.
 
 Map the open decisions as a tree. Each round, ask every question that is
 answerable **now** — numbered, each with your recommended answer so a single word
-can settle it. Then wait. The answers open the next round. Done when nothing
+can settle it. Say roughly how many rounds you expect. Then wait. The answers open the next round. Done when nothing
 important is open.
 
 Two things are not the user's job:
@@ -93,6 +91,12 @@ Two things this stage also settles:
 
 **Do not start writing anything until the user has picked a design.**
 
+If a drafting agent fails, say so and either rerun it or state that the comparison
+is one design short. Never compare silently around a missing draft.
+
+Only after the design is picked, put the seams to the user as their own question —
+the seam follows from the design, so it cannot be settled before.
+
 ## Stage 4 — Write the spec
 
 No new questions. Write down what was decided, in these sections:
@@ -106,6 +110,8 @@ No new questions. Write down what was decided, in these sections:
   invented here.
 - **Test decisions** — the confirmed seams and what gets checked at each.
 - **Out of scope** — what someone might reasonably expect and will not get.
+- **Missing checks** — any class in `checks.md` this work would need and that is
+  not `filled`, and whether landing this work requires filling it first.
 
 Publish it to the issue tracker as described in `docs/agents/issue-tracker.md`,
 labelled `ready-for-agent`.

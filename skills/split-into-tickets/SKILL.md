@@ -55,6 +55,9 @@ queried, and the skill that picks up the next task queries.
 Set the `ready-for-agent` label **only on tasks with no open blockers**. A blocked
 task is not buildable as written. When its blocker closes, the label moves.
 
+The spec itself never carries a build label — nobody builds a spec. It is the
+parent, not a task.
+
 Do not invent dependencies. Two tasks that touch different files usually do not
 block each other, and false blockers serialise work that could run in parallel.
 
