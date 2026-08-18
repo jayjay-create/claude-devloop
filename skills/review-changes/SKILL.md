@@ -76,6 +76,12 @@ found nothing, say that lens found nothing — that is a result, not an absence.
 
 - **Fix it now** if the fix is obvious and revisits nothing that was decided: a
   missed error type, a wrong branch, a check that cannot fail.
+
+  Fixing means **removing or replacing** — never rewriting a line that carries
+  behaviour. Deleting a dead credential is a fix; tidying the URL next to it
+  while you are there is a change, and it belongs in a finding no matter how
+  small it looks. That exact slip happened here: removing a hardcoded key also
+  rewrote the query string beside it, and broke it.
 - **File it as an issue** if fixing it would revisit a design decision, change an
   interface, or exceed the task. Say what you filed and why.
 
