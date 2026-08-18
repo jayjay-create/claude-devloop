@@ -9,10 +9,11 @@
   },
   "homepage": "https://github.com/jayjay-create/claude-devloop",
   "skills": [
+    "./skills/start-work",
     "./skills/setup-project",
     "./skills/setup-checks",
     "./skills/plan-work",
-    "./skills/split-into-tickets",
+    "./skills/cut-into-tasks",
     "./skills/build-work",
     "./skills/review-changes",
     "./skills/record-lessons"

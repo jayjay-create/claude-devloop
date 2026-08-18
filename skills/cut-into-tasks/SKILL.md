@@ -1,5 +1,5 @@
 ---
-name: split-into-tickets
+name: cut-into-tasks
 description: Cut a spec into single tasks
 ---
 
