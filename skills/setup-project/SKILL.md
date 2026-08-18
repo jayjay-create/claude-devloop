@@ -60,6 +60,11 @@ how long it takes.
 
 Wait for the user to confirm before doing anything else.
 
+Work on a branch cut from the current main branch. Never commit to main directly.
+
+If a tool call fails, **say so**. Do not carry on as if it had returned, and do
+not substitute something else without naming what failed.
+
 ## Step 1 — Explore, change nothing
 
 - Git: remote, branch, whether there is any commit at all
@@ -176,6 +181,8 @@ only `yes` or `no`.
 
     make services-up
 
+- The two target columns hold **bare target names** — `lint`, not `make lint` and
+  not `` `lint` ``. A shell script reads this column and puts the runner in front.
 - `Files`: comma-separated glob patterns; `-` means it applies to everything.
 - `Duration`: rough, like `<1s`, `20s`, `4min`. It decides where the class runs.
 - `Status` is `filled` only when the target exists, calls a real checking tool,

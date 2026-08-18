@@ -15,6 +15,11 @@ costs runtime and finds nothing. `skipped` with a reason is a finished answer;
 This skill changes the project from the outside — it adds tools and configuration.
 Move carefully and ask before anything that reaches beyond the repository.
 
+Work on a branch cut from the current main branch. Never commit to main directly.
+
+If a tool call fails, **say so**. Do not carry on as if it had returned, and do
+not substitute something else without naming what failed.
+
 ## Step 1 — Read the current state
 
 Read `docs/agents/checks.md`. List which classes are `empty`. For each, judge from
@@ -88,7 +93,12 @@ Update `docs/agents/checks.md`:
 
 - `Status` becomes `filled` only after you ran the target and saw it fail on
   purpose. Otherwise `skipped: <reason>`. Never guess.
-- `Blocking` becomes `yes` only on rows that are `filled`.
+- `Blocking` becomes `yes` only on rows that are `filled`. A class whose result
+  depends on a service you do not control is never blocking — an outage elsewhere
+  must not stop work here. Keep it out of `check` and give it its own target.
+- The two target columns hold **bare target names** — `lint`, not `make lint` and
+  not `` `lint` ``. A shell script reads this column and puts the runner in front
+  of it itself.
 - `Duration` from the run you just did, roughly.
 - Add every remaining gap to "What these checks do not cover" — what is not
   covered, in plain words, not the class label.

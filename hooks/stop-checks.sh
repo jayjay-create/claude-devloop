@@ -13,10 +13,10 @@ RUNNER=$(grep -m1 '^runner:' "$CHECKS" | sed 's/^runner:[[:space:]]*//')
 
 FAILED=""
 while IFS='|' read -r _ class _ target _ _ blocking status _; do
-  class=$(echo "$class" | xargs)
-  target=$(echo "$target" | xargs)
-  blocking=$(echo "$blocking" | xargs)
-  status=$(echo "$status" | xargs)
+  class=$(echo "$class" | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g")
+  target=$(echo "$target" | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g")
+  blocking=$(echo "$blocking" | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g")
+  status=$(echo "$status" | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g")
   [ "$blocking" = "yes" ] || continue
   [ "$status" = "filled" ] || continue
   [ -n "$target" ] && [ "$target" != "-" ] || continue

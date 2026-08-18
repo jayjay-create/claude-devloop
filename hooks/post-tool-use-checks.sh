@@ -16,14 +16,14 @@ RUNNER=$(grep -m1 '^runner:' "$CHECKS" | sed 's/^runner:[[:space:]]*//')
 
 FAILED=""
 while IFS='|' read -r _ class target _ globs _ _ status _; do
-  class=$(echo "$class" | xargs); target=$(echo "$target" | xargs)
-  globs=$(echo "$globs" | tr -d '`' | xargs); status=$(echo "$status" | xargs)
+  class=$(echo "$class" | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g"); target=$(echo "$target" | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g")
+  globs=$(echo "$globs" | tr -d '`' | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g"); status=$(echo "$status" | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g")
   [ "$status" = "filled" ] || continue
   [ -n "$target" ] && [ "$target" != "-" ] || continue
   MATCH=0
   IFS=',' read -ra PATS <<< "$globs"
   for p in "${PATS[@]}"; do
-    p=$(echo "$p" | xargs); [ -n "$p" ] || continue
+    p=$(echo "$p" | sed -e "s/^[[:space:]]*//" -e "s/[[:space:]]*$//" -e "s/\`//g"); [ -n "$p" ] || continue
     case "$REL" in ${p##\*\*/}) MATCH=1;; $p) MATCH=1;; esac
   done
   [ "$MATCH" = "1" ] || continue
