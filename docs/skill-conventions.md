@@ -131,8 +131,3 @@ is an `initialUserMessage` field for seeding a turn, and an open Anthropic bug
 (#16538) where `hookSpecificOutput.additionalContext` from a *plugin* hook does
 not reach Claude while the same hook in user settings does. Plain stdout works.
 
-## If you work on more than one machine
-
-The plugin cache is per machine. Raising the version and reinstalling on one
-laptop does nothing on the other — it will keep running whatever it last
-installed, silently. Reinstall wherever you test.
