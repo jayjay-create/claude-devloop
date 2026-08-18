@@ -159,6 +159,21 @@ get reproduced word for word.
 So: state and enforcement in hooks, wording nowhere. Where a particular thing has
 to be said, describe what it must cover and let the model write it.
 
+## Rules learned from this workflow's own bugs
+
+Both already fixed in the skills, kept here so the same shape of bug does not
+come back in a different file.
+
+- A hook that gates on a state file's existence must have that file **deleted**
+  when the state it tracks ends — never overwritten with a "finished" status.
+  The hook checks presence, not content, so a status field left behind still
+  reads as "in progress" to the next ordinary turn.
+- A step that depends on a precondition (a remote, a permission, a tool) must
+  refuse and stop when that precondition is missing, not fall back to a
+  locally-equivalent action that quietly breaks one of the workflow's own rules
+  — such as merging straight to main because there is no remote to open a pull
+  request against.
+
 ## Credit
 
 The interview, spec, task-cutting, test-loop and review-axis skills are adapted
