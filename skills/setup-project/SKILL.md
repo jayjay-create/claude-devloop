@@ -98,16 +98,21 @@ single word can answer.
    Issues and comparable trackers do, whether or not any exist yet. A text file
    never does — `build-work` picks the next task by which blockers are closed.
    If no suitable tracker is available, stop the setup and say exactly that.
-2. **Checks** — always. Present your mapping: which tool found fills which class,
+2. **Auto-merge** — only if the remote has it switched off
+   (`gh api repos/OWNER/REPO -q .allow_auto_merge` returns false). Every later
+   step opens pull requests and sets them to merge once the gates pass; direct
+   merges are refused. Offer to switch it on:
+   `gh api -X PATCH repos/OWNER/REPO -f allow_auto_merge=true`.
+3. **Checks** — always. Present your mapping: which tool found fills which class,
    and which classes stay empty. Ask separately whether missing tools should be
    installed — that changes the project. Never install anything system-wide
    without asking; prefer tools that live inside the project.
-3. **Local environment** — always, unless you could read it all from
+4. **Local environment** — always, unless you could read it all from
    `docker-compose.yml` or the README. Which processes, in what order, on what ports.
-4. **Labels** — only if the tracker already has labels with overlapping meaning.
+5. **Labels** — only if the tracker already has labels with overlapping meaning.
    Then ask: map onto the existing ones, or add ours alongside. Otherwise create
    the five standard labels and report it.
-5. **Where glossary and decision records live** — only if something already lives
+6. **Where glossary and decision records live** — only if something already lives
    elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`, created and reported.
 
 Never ask about the user's preferred language or tone here — that belongs to the

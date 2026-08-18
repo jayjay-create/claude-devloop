@@ -87,6 +87,9 @@ automatically once the gates are green:
 The platform merges, not the agent. Direct merges are refused as a shared-state
 action, and an unattended run cannot answer that prompt.
 
+If auto-merge is not enabled on the repository, say so and stop: it is a
+repository setting, not something a build step changes. Ask the user to enable it.
+
 Then check **once** whether it landed — do not poll in a loop. If it has not,
 say what it is still waiting on and offer the next step; do not block the session.
 
@@ -124,6 +127,10 @@ checks — only the gate differs.
 4. No task in range is blocked by anything outside the range.
 5. The tool classes the run needs are already approved for this project. A run
    nobody is watching cannot answer a permission prompt.
+6. Auto-merge is enabled on the remote repository. Without it the run reaches the
+   pull request and stops there: merging directly is refused, and auto-merge is
+   rejected. Check with
+   `gh api repos/OWNER/REPO -q .allow_auto_merge` and refuse to start on false.
 
 Then write `.claude/autorun.local.md` with `iteration`, `max_iterations`,
 `completion_promise`, `scope`, and `started_from` (the current main-branch
