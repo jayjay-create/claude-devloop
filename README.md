@@ -35,8 +35,8 @@ Three properties hold everywhere:
 That is the only command you ever type.
 
 It sets the project up if that has not happened yet, asks what you want built,
-and works through the steps from there — designing, specifying, building,
-testing, reviewing — each one ending by offering the next.
+and takes it from there all the way to merged code, one step at a time — each
+one ending by offering the next.
 
 You answer questions about the work, and you see each piece before it merges.
 You never have to know which step comes next.
