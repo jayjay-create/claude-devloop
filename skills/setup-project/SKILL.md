@@ -210,10 +210,40 @@ only `yes` or `no`.
 
 ### `issue-tracker.md`
 
-Where issues live. The exact commands to create, link, block and label them.
-The five labels and what they mean: `needs-triage` (new), `needs-info` (waiting
-on an answer), `ready-for-agent` (buildable as written), `needs-human` (needs a
-human decision), `wont-do` (declined, with a reason).
+Where issues live, and the exact commands. The five labels and what they mean:
+`needs-triage` (new), `needs-info` (waiting on an answer), `ready-for-agent`
+(buildable as written), `needs-human` (needs a human decision), `wont-do`
+(declined, with a reason).
+
+For GitHub, write these in verbatim, with OWNER and REPO filled in. Later steps
+read them from here; do not leave the reader to guess the API.
+
+    ## Ordering work
+
+    Tasks are sub-issues of their spec. Dependencies are real, queryable
+    relationships — never prose in the body.
+
+    Get an issue's node ID:
+
+        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issue(number:N){id}}}' -q '.data.repository.issue.id'
+
+    Attach a task to its spec:
+
+        gh api graphql -f query='mutation{addSubIssue(input:{issueId:"PARENT_ID",subIssueId:"CHILD_ID"}){issue{number}}}'
+
+    Record that one task waits for another:
+
+        gh api graphql -f query='mutation{addBlockedBy(input:{issueId:"WAITING_ID",blockingIssueId:"MUST_FINISH_FIRST_ID"}){issue{number}}}'
+
+    Ask which task is ready — the first with zero open blockers:
+
+        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issue(number:SPEC){subIssues(first:20){nodes{number title state blockedBy(first:10){nodes{number state}}}}}}}' -q '.data.repository.issue.subIssues.nodes[] | select(.state=="OPEN") | "\(.number) \(.title) | open blockers: \([.blockedBy.nodes[] | select(.state=="OPEN")] | length)"'
+
+The mutation is `addBlockedBy` with the fields `issueId` and `blockingIssueId`.
+There is no `addIssueBlockedBy`; guessing that name fails.
+
+For any other tracker, work out the equivalent and write it down the same way.
+If it has no queryable blocking relationship, stop the setup — see above.
 
 ### `domain.md`
 

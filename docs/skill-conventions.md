@@ -97,3 +97,36 @@ Send a SKILL.md in two or three blocks rather than one. A single long heredoc
 gets truncated on paste, the file is left unterminated, and nothing reports an
 error — the skill simply does not exist. End each block with `wc -l` and an
 expected number.
+
+## Environment constraints, measured
+
+**Agent Teams must stay off.** With `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`,
+every named subagent starts as a teammate, and a teammate reports only that it
+finished — not what it found. `design-options` and `review-changes` both spawn
+parallel agents and wait for their results; both hang. Anthropic's own docs say
+so.
+
+**One build task at a time.** Two build agents share one working directory:
+measured, one switched branches out from under the other mid-edit, and both
+edited the same manifest. Parallelism needs separate worktrees and is not worth
+it while tasks merge to the same branch one after another.
+
+**Merging is refused; auto-merge is not.** `gh pr merge` is blocked by the
+permission classifier as a shared-state action — reproducibly, not once. `gh pr
+merge --auto --squash --delete-branch` goes through. The platform merges, not
+the agent. Auto-merge must be enabled on the repository first.
+
+**Tool classes can be pre-approved per project**, which is what makes an
+unattended run possible: read commands, the language runner, file edits, `git
+push`, `gh pr *`. They must be granted before the run — nobody is there to
+answer a prompt during it.
+
+**The `checks.md` parsers are shell scripts.** Backticks and apostrophes in a
+table cell used to break them; they are stripped now, but keep machine-read
+columns plain. The `Status` column takes only `filled`, `empty`,
+`skipped: <reason>` — spelled exactly, ASCII only.
+
+**A hook cannot force wording.** `SessionStart` stdout arrives as context. There
+is an `initialUserMessage` field for seeding a turn, and an open Anthropic bug
+(#16538) where `hookSpecificOutput.additionalContext` from a *plugin* hook does
+not reach Claude while the same hook in user settings does. Plain stdout works.
