@@ -13,6 +13,7 @@
     "./skills/plan-work",
     "./skills/split-into-tickets",
     "./skills/build-work",
-    "./skills/review-changes"
+    "./skills/review-changes",
+    "./skills/setup-checks"
   ]
 }
