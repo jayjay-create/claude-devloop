@@ -32,6 +32,8 @@ Three properties hold everywhere:
 
     /devloop:start-work
 
+That is the only command you ever type.
+
 It sets the project up if that has not happened yet, asks what you want built,
 and works through the steps from there — designing, specifying, building,
 testing, reviewing — each one ending by offering the next.
