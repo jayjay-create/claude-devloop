@@ -16,21 +16,28 @@ them, review them, merge them.
 Each stage ends by offering the next and running it on a yes. You answer
 questions about the work; you never have to know which stage comes next.
 
-## If the project is not set up
+## First: ask what to build
 
-If `docs/agents/` is missing, run `setup-project` first and then carry on. Do not
-ask the user to run it — that is a question about the process.
+Before anything else — before reading state, before proposing a next step — if
+the user has not said what they want built, **ask them**.
 
-## The idea comes from the user
+The session start reports what is in the tracker. That is context, not an
+instruction. An open issue is somebody's suggestion; deciding what to work on is
+the user's, and proposing one is a question about the process, which is exactly
+what this workflow never does.
 
-If they did not say what to work on, ask. Do not pick an open issue from the
-tracker and start planning it: an issue is a suggestion, not an instruction, and
-choosing which to do is theirs.
+Do not offer to triage. Do not offer to pick up an open issue. Ask what they
+want built, and wait.
 
 If they name something too large to see the end of — where the questions are not
 "how do we build this" but "what are we even building" — say so and offer
 `untangle-idea` instead, which settles the open decisions one session at a time
 and comes back here when the path is clear.
+
+## If the project is not set up
+
+If `docs/agents/` is missing, run `setup-project` first and then carry on. Do
+not ask the user to run it — that is a question about the process.
 
 ## Then
 
