@@ -39,10 +39,22 @@ if [ "$SIG" = "$PREV" ]; then COUNT=$((COUNT+1)); else COUNT=1; fi
 mkdir -p "$(dirname "$STATE")"
 echo "$SIG $COUNT" > "$STATE"
 
-if [ "$COUNT" -ge "$MAX" ]; then
-  rm -f "$STATE"
-  echo "Still failing after $MAX attempts. Report to the human what remains broken:$FAILED" >&2
+if [ "$COUNT" -gt "$MAX" ]; then
   exit 0
+fi
+
+if [ "$COUNT" -eq "$MAX" ]; then
+  echo "Still failing after $MAX attempts. Stop trying. Do not run another variation of what already failed.
+
+Hand this to the human in a form they can act on in one step. Pick whichever fits:
+  - a command they can paste into their own terminal, and what to look for in the output
+  - a small script that gathers the versions, paths and environment this needs, ready to run
+  - a smaller case that reproduces the failure away from the rest of the project
+  - a named question only they can answer, with what each answer would change
+
+Say what you were trying to do, what you tried, and what the failure actually
+says. Then wait for them. Failing checks:$FAILED" >&2
+  exit 2
 fi
 
 echo "Checks are failing (attempt $COUNT of $MAX). Fix this before reporting done:$FAILED" >&2
