@@ -78,10 +78,18 @@ user for a fact you could look up. Never ask which skill to use.
 
 ## Stage 1 — Sharpen the idea
 
-Map the open decisions as a tree. Each round, ask every question that is
-answerable **now** — numbered, each with your recommended answer so a single word
-can settle it. Say roughly how many rounds you expect. Then wait. The answers open the next round. Done when nothing
-important is open.
+Map the open decisions as a tree. Each round, ask what is answerable **now** —
+numbered, each with your recommended answer so a single word can settle it. Say
+roughly how many rounds you expect. Then wait. The answers open the next round.
+Done when nothing important is open.
+
+**At most three questions in a round, and something that needs weighing goes
+alone.** A question answerable in one word from your recommendation is a
+checklist item; several of those together cost the user nothing. A question they
+have to think about is not, and putting six of those in one block means they skim
+and take the recommendations — which gathers no decisions at all, only agreement
+with your own answers, and teaches them to wave through the one question that
+mattered. Three is a ceiling, not a target.
 
 Two things are not the user's job:
 

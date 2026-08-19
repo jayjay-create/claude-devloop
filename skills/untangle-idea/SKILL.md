@@ -143,6 +143,14 @@ guessing at answers you haven't heard yet. Ask the whole frontier in one round,
 then wait. A question whose answer depends on another question still open in this
 round belongs to a _later_ round, not this one.
 
+**At most three questions in a round, and something that needs weighing goes
+alone.** A question answerable in one word from your recommendation is a
+checklist item; several of those together cost the user nothing. A question they
+have to think about is not, and putting six of those in one block means they skim
+and take the recommendations — which gathers no decisions at all, only agreement
+with your own answers, and teaches them to wave through the one question that
+mattered. Three is a ceiling, not a target.
+
 Say roughly how many rounds you expect. Number each question and give your
 recommended answer, so a single word can settle it:
 
@@ -301,9 +309,15 @@ User invokes with a loose idea.
 1. **Name the destination.** Interview to pin down what this map is finding its
    way to — the spec, decision, or change. The destination fixes the scope, so
    it's settled first.
-2. **Map the frontier.** Interview again, **breadth-first** this time: fan out
-   across the whole space rather than deep on any one thread, surfacing the open
-   decisions and the first steps takeable now. **If this surfaces no fog** — the
+2. **Map the frontier.** Fan out across the whole space rather than deep on any
+   one thread, and **surface the open decisions without answering them** — they
+   become tickets, one per session, which is what the map is for. Resolving six
+   of them in a round would leave nothing to chart.
+
+   So this is not a round of questions. Put the list to the user and ask one
+   thing about it: is anything missing, is anything on it already settled, is
+   anything on it not really in scope. Their answer shapes the list; the
+   decisions themselves wait for their tickets. **If this surfaces no fog** — the
    way to the destination is already clear, the whole journey small enough for
    one session — you don't need a map. Say so and offer to plan and build it
    directly instead.
