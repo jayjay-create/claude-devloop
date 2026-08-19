@@ -20,6 +20,11 @@ Move carefully and ask before anything that reaches beyond the repository.
 
 Work on a branch cut from the current main branch. Never commit to main directly.
 
+**Called for a single class**, which is how a build step reaches this skill when
+the task it is building created the target: fill that one class, leave the others
+untouched, and stay on the branch you were called on rather than cutting a new
+one — the build owns that branch. Everything else below applies unchanged.
+
 If a tool call fails, **say so**. Do not carry on as if it had returned, and do
 not substitute something else without naming what failed.
 
