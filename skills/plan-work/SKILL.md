@@ -17,11 +17,22 @@ The output is a spec in the issue tracker. No code is written here.
 If `docs/agents/` is missing, this project is not set up. Say so and offer to run
 `setup-project` first; do not improvise around it.
 
+**Write into the issue tracker in English** — titles, bodies, comments. The
+tracker is part of the project and outlives this conversation. Speak to the user
+in their own language; that is a different thing.
+
 ## The planning issue
 
-**At the start**, before Stage 1, create the issue: the title is the work in the
-user's own words, the body is one line saying the spec is still being written,
-and the label is `being-planned`. Nothing acts on a `being-planned` issue —
+**At the start**, before Stage 1, there has to be a planning issue.
+
+If the work already has an issue — someone filed it, a review left it behind —
+use that one rather than creating a duplicate. Copy its current body into a
+comment first, so nothing anybody wrote disappears, then replace the body with
+the placeholder. Otherwise create a fresh issue, titled after the work in the
+user's own words.
+
+Either way the body is one line saying the spec is still being written, and the
+label is `being-planned`. Nothing acts on a `being-planned` issue —
 neither an agent nor a human — because it is not a suggestion and not an
 instruction, it is unfinished. If the tracker has no such label, create it and
 carry on.
