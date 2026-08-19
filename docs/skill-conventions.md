@@ -155,15 +155,22 @@ price and the point.
 **User-invoked** (`disable-model-invocation: true` under `description`): costs no
 context, but only a typed command starts it — no other skill can.
 
-In this set, four are user-invoked: `start-work`, `setup-project`,
-`setup-checks`, `record-lessons`. Nobody should trip into setting a project up
-or starting a run; those begin because a person decided to.
+In this set, two are user-invoked: `start-work`, the entry point, and
+`record-lessons`. No other skill runs either of them, so locking them costs
+nothing.
 
-The rest are model-invocable because `start-work` chains through them:
-`untangle-idea`, `plan-work`, `cut-into-tasks`, `build-work`, `review-changes`.
-Note the consequence — the model can also reach for `build-work` on its own. If
-that ever proves to be a problem, the fix is not to lock it, which would break
-the chain, but to keep the human gate inside the skill where it already is.
+Everything else is model-invocable, because `start-work` chains through them:
+`setup-project`, `setup-checks`, `untangle-idea`, `plan-work`, `cut-into-tasks`,
+`build-work`, `review-changes`. Note the consequence — the model can also reach
+for `build-work` or `setup-project` on its own. If that ever proves to be a
+problem, the fix is not to lock it, which would break the chain, but to keep the
+human gate inside the skill where it already is: `setup-project` introduces
+itself and waits for a yes before its first tool call.
+
+**A locked skill cannot be run by another skill.** The Skill tool refuses it and
+tells the model to ask the user to type the command — the one thing no skill in
+this set may do. So before locking a skill, check that no other skill is told to
+run it.
 
 ## Before a handover, run these
 
