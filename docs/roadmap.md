@@ -52,10 +52,9 @@ to call them on their own.
 
 ## Known gaps
 
-- **The branch guard is not shipped.** The workflow relies on writes to the main
-  branch being blocked, but that `PreToolUse` hook came from a different plugin
-  on the author's machine. devloop does not include one. Every project set up by
-  someone else is missing it.
+- **devloop's own repository is not set up with devloop.** There is no
+  `docs/agents/` here, so the hooks this plugin ships stay inert while you work
+  on the plugin itself — including the main-branch guard.
 - **`docs/workflow.md`** in this repository predates the README and may
   contradict it. Reconcile or delete.
 - **`record-lessons` has no answer for working inside this repository.** It says

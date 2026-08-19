@@ -131,6 +131,11 @@ is an `initialUserMessage` field for seeding a turn, and an open Anthropic bug
 (#16538) where `hookSpecificOutput.additionalContext` from a *plugin* hook does
 not reach Claude while the same hook in user settings does. Plain stdout works.
 
+**A blocking hook must exit 2.** On `PreToolUse` that blocks the tool call and
+feeds stderr to the model as the reason. Exit 1 does not block — the action runs
+and the failure is only logged. A hook that cannot start, wrong path or missing
+`chmod +x`, lands in that same non-blocking bucket, so the gate is silently off.
+
 
 ## Who may invoke a skill
 
