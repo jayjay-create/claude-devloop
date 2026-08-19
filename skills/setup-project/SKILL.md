@@ -211,10 +211,14 @@ only `yes` or `no`.
 
 ### `issue-tracker.md`
 
-Where issues live, and the exact commands. The five labels and what they mean:
-`needs-triage` (new), `needs-info` (waiting on an answer), `ready-for-agent`
-(buildable as written), `needs-human` (needs a human decision), `wont-do`
-(declined, with a reason).
+Where issues live, and the exact commands. The six labels and what they mean:
+`needs-triage` (new), `needs-info` (waiting on an answer), `being-planned` (a
+spec is being written into it right now — nobody acts on it, not an agent and
+not a human), `ready-for-agent` (buildable as written), `needs-human` (needs a
+human decision), `wont-do` (declined, with a reason).
+
+Create all six in the tracker as part of this step. A label that only exists in
+this document is not a label.
 
 For GitHub, write these in verbatim, with OWNER and REPO filled in. Later steps
 read them from here; do not leave the reader to guess the API.

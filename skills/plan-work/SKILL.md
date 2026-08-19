@@ -8,13 +8,44 @@ description: Turn an idea into a specced piece of work
 **Answer in the language the user writes in, not the language of this
 document.** These instructions are in English because the repository is; that is not a signal about how to reply.
 
-Four stages, one unbroken session. Do not compact or clear context between them —
-each stage builds on what the previous one established.
+Four stages, each building on what the previous one established. Run them in one
+session where you can. The issue tracker carries the state between them, so an
+interrupted session costs the stage you were in, not all four.
 
 The output is a spec in the issue tracker. No code is written here.
 
 If `docs/agents/` is missing, this project is not set up. Say so and offer to run
 `setup-project` first; do not improvise around it.
+
+## The planning issue
+
+**At the start**, before Stage 1, create the issue: the title is the work in the
+user's own words, the body is one line saying the spec is still being written,
+and the label is `being-planned`. Nothing acts on a `being-planned` issue —
+neither an agent nor a human — because it is not a suggestion and not an
+instruction, it is unfinished. If the tracker has no such label, create it and
+carry on.
+
+**After each stage**, post that stage's output as a comment on the issue.
+Comments, not the body: the body is where the finished spec goes, and someone
+reading the spec should not have to wade through how it was reached.
+
+**At the end**, Stage 4 writes the spec into the body and swaps the label. The
+stage comments stay — they are the record of how the spec was arrived at.
+
+### Picking up an interrupted plan
+
+Before Stage 1, ask the tracker for open issues labelled `being-planned`.
+
+- **None** — start fresh.
+- **Exactly one** — name its title and ask whether this is the same work or
+  something new. Do not decide that by matching words against the title.
+- **Several** — list their titles and ask which one, or whether this is new.
+
+If it is the same work, read the issue and its comments, say which stage was last
+finished, and continue at the next one. Do not repeat a finished stage. Stage 2's
+report is a summary, so re-read any code you need to act on rather than trusting
+the summary to be complete.
 
 ## How to ask
 
@@ -45,6 +76,8 @@ offer to build a throwaway prototype. Do not start one unasked; it costs real ti
 When a decision is hard to reverse, would surprise someone without the reasoning,
 and came out of a real trade-off, offer a decision record. Only then.
 
+Post the settled answers as a comment on the planning issue before moving on.
+
 ## Stage 2 — Read the code
 
 Read-only. Change nothing, commit nothing.
@@ -58,6 +91,8 @@ Skip this stage if there is no code yet, and say that you skipped it.
 
 Report what you found in at most fifteen lines. This is input to the next stage,
 not a deliverable.
+
+Post that report as a comment on the planning issue.
 
 ## Stage 3 — Draft designs
 
@@ -100,6 +135,9 @@ is one design short. Never compare silently around a missing draft.
 Only after the design is picked, put the seams to the user as their own question —
 the seam follows from the design, so it cannot be settled before.
 
+Post the chosen design, the reasoning for it, and the confirmed seams as a comment
+on the planning issue.
+
 ## Stage 4 — Write the spec
 
 No new questions. Write down what was decided, in these sections:
@@ -116,8 +154,9 @@ No new questions. Write down what was decided, in these sections:
 - **Missing checks** — any class in `checks.md` this work would need and that is
   not `filled`, and whether landing this work requires filling it first.
 
-Publish it to the issue tracker as described in `docs/agents/issue-tracker.md`,
-labelled `ready-for-agent`.
+Write it into the body of the planning issue, replacing the placeholder line, and
+swap the label from `being-planned` to `ready-for-agent`. The commands are in
+`docs/agents/issue-tracker.md`.
 
 ## Close
 
