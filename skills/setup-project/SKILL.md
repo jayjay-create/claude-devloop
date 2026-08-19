@@ -12,6 +12,10 @@ Run this once per repository, before any other devloop skill. Other devloop
 skills depend on the files it writes and will report the project as not set up
 until it has run.
 
+It also runs again, later, to bring those files forward when this workflow has
+moved on — see **Refreshing an existing setup** below. That path skips everything
+else here.
+
 **Never say a skill's name to the user.** Say what you are about to do, in
 ordinary words.
 
@@ -34,6 +38,34 @@ know. Someone who has never heard of this workflow must be able to answer.
 **Only ask where the project or the human genuinely has something to decide.**
 What is a convention of this workflow gets created and reported, not asked.
 What you can look up yourself, look up. Never ask the user for a fact.
+
+## Refreshing an existing setup
+
+If `docs/agents/` already exists, this is not a first setup. Do not run the steps
+below: they ask questions that were answered once already, and re-asking them is
+how a working project gets talked into changing its mind.
+
+The files hold two kinds of content, and only one of them is yours:
+
+- **This workflow's**: the tracker commands, the label vocabulary, the check
+  table's header and the rules for its columns, and the fixed section headings.
+  These come from the templates below and go stale when the workflow changes.
+- **The project's**: the rows of the check table with their real targets and
+  statuses, the glossary, the coding rules, the notes on running it locally.
+  These were decided here and are never overwritten.
+
+Rewrite the first kind from the current templates, leave the second untouched,
+and say in two or three lines what actually changed — named, not counted. If
+nothing changed, say that and stop. Then land it the way Step 8 describes.
+
+Each file records the plugin version it was last written from, on its own line
+directly under the top heading:
+
+    <!-- devloop: 0.0.0 -->
+
+Write the running version there, taken from `.claude-plugin/plugin.json`. Nothing
+reads it but this skill and the entry point, and it is what makes a stale file
+visible without diffing every line.
 
 ## Step 0 — Introduce yourself, then get on with it
 

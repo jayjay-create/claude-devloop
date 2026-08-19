@@ -15,6 +15,16 @@ Run exactly one command and nothing else:
 Do not read files. Do not check git. Do not look at the tracker. One command,
 then go to step 2.
 
+If it lists files, read the version marker at the top of one of them — the line
+`<!-- devloop: X.Y.Z -->` — and compare it with the running version. Older means
+these files were written from templates this workflow has since changed. Say that
+in one line, in ordinary words: the setup files here are from an older version of
+this workflow, and offer to bring them up to date, which takes a minute and
+touches nothing the project decided for itself. On a yes, run `setup-project` and
+carry on afterwards. On a no, carry on with what is there and do not raise it
+again this session. A file with no marker at all predates the marker; treat it as
+older.
+
 ## Step 2 — Orient them, if the status line says this project is not set up
 
 Write a short introduction in your own words — four or five sentences, their
