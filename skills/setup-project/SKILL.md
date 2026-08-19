@@ -291,6 +291,12 @@ Commit, open a pull request, merge it, and then verify against `git log` that it
 actually arrived — a report of success is not evidence. If a check gate blocks the
 merge, say so and stop here; do not offer the next step on top of unmerged setup.
 
+Merging can also be refused for reasons that are not a gate: auto-merge may be
+switched off on the repository, and a direct merge is a shared-state action that
+an agent may be refused. Both are repository or platform settings, not something
+this step changes. Say which one it was, hand the user the pull request, and stop
+— the same rule the build step follows.
+
 ## Step 9 — Close
 
 Five lines at most: which files you wrote, which targets you created, how many
@@ -304,4 +310,8 @@ Explain in plain words what it buys, what it costs, and that it can wait:
   `setup-checks` on a yes.
 - Barely any code yet: say the check suite is better built once there is
   something to check, and offer to start on the first piece of work instead.
-- Otherwise: offer to start on the first piece of work. Run `start-work` on a yes.
+- Otherwise: if they have already said what they want built, say the setup is
+  done and carry straight on into planning it. If they have not, offer to start
+  on the first piece of work and ask what that is. Either way the next stage is
+  `plan-work` — never send them back to the entry point they came from, which
+  would run this setup again.

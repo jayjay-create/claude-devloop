@@ -174,7 +174,7 @@ run it.
 
 ## Before a handover, run these
 
-Four checks that catch what a conversation loses. Each one has found a real gap.
+Five checks that catch what a conversation loses. Each one has found a real gap.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -192,6 +192,14 @@ Nothing in the roadmap is named that neither exists nor sits under "Not built":
 Invocability is set deliberately, not by omission:
 
     grep -c 'disable-model-invocation' skills/*/SKILL.md
+
+No skill is told to run a skill that is locked against being run. A locked skill
+refuses the call and tells the model to ask the user to type the command, which no
+skill here may do. Every line this prints needs an eye on it:
+
+    for s in $(grep -l 'disable-model-invocation' skills/*/SKILL.md | sed 's|skills/||;s|/SKILL.md||'); do
+      grep -l "\`$s\`" skills/*/SKILL.md | grep -v "skills/$s/SKILL.md" | sed "s|^|locked: $s referenced by |"
+    done
 
 The installed copy is the copy you changed:
 
