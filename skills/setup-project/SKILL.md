@@ -296,10 +296,10 @@ read them from here; do not leave the reader to guess the API.
 
         gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issue(number:SPEC){subIssues(first:20){nodes{number title state blockedBy(first:10){nodes{number state}}}}}}}' -q '.data.repository.issue.subIssues.nodes[] | select(.state=="OPEN") | "\(.number) \(.title) | open blockers: \([.blockedBy.nodes[] | select(.state=="OPEN")] | length)"'
 
-    Ask what is in flight — every open issue, with its parent, its child count
-    and its labels:
+    Ask what is in flight — every open issue, with its parent, how many of its
+    tasks are still open out of how many there are, and its labels:
 
-        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issues(states:OPEN,first:50){nodes{number title parent{number} subIssues(first:1){totalCount} labels(first:10){nodes{name}}}}}}' -q '.data.repository.issues.nodes[] | "\(.number) | parent: \(.parent.number // "-") | children: \(.subIssues.totalCount) | labels: \([.labels.nodes[].name] | join(",")) | \(.title)"'
+        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issues(states:OPEN,first:50){nodes{number title parent{number} subIssues(first:50){totalCount nodes{state}} labels(first:10){nodes{name}}}}}}' -q '.data.repository.issues.nodes[] | "\(.number) | parent: \(.parent.number // "-") | tasks open/total: \([.subIssues.nodes[] | select(.state=="OPEN")] | length)/\(.subIssues.totalCount) | labels: \([.labels.nodes[].name] | join(",")) | \(.title)"'
 
     A spec is an open issue with children. An unfinished planning carries
     `being-planned`. A loose issue has neither.

@@ -44,9 +44,17 @@ no repository findings, no offer to set anything up.
 
 **If the status line says the project is set up**, skip the introduction. Run the
 in-flight query from `docs/agents/issue-tracker.md` and say what it found, in at
-most four lines: which specs still have open tasks, which planning was started
-and left unfinished, how many loose issues are sitting there. Then ask the same
-open question: what would they like to build?
+most four lines. **Name the work; do not number it.** Someone back after a week
+remembers what they were building, not that it was issue nine.
+
+- A spec with open tasks: its title, and how far it got — two of five tasks
+  done reads as progress; "has open tasks" reads as a warning.
+- A planning left unfinished: its title, and which stage it last got through —
+  read its comments, one is posted per finished stage.
+- Loose issues nobody has picked up: their titles. Past three or four, name the
+  newest and say how many others there are.
+
+Then ask the same open question: what would they like to build?
 
 Reporting is not proposing. Say what is there and stop — do not rank it, do not
 recommend one, do not offer to pick it up. An open issue is somebody's
