@@ -45,6 +45,11 @@ If `docs/agents/` already exists, this is not a first setup. Do not run the step
 below: they ask questions that were answered once already, and re-asking them is
 how a working project gets talked into changing its mind.
 
+Work on a branch cut from the current main branch, and never commit to main
+directly — the same rule as a first setup. Skipping the steps below skips where
+that rule is written, which is how the first refresh ran straight into the
+main-branch guard.
+
 The files hold two kinds of content, and only one of them is yours:
 
 - **This workflow's**: the tracker commands, the label vocabulary, the check
@@ -58,8 +63,9 @@ Rewrite the first kind from the current templates, leave the second untouched,
 and say in two or three lines what actually changed — named, not counted. If
 nothing changed, say that and stop. Then land it the way Step 8 describes.
 
-Each file records the plugin version it was last written from, on its own line
-directly under the top heading:
+Each file records the plugin version it was last written from, on its own line.
+Put it directly above the top heading — below the frontmatter block where a file
+has one, since that block is read by scripts that split on `---`:
 
     <!-- devloop: 0.0.0 -->
 
