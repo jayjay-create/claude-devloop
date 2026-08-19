@@ -148,10 +148,10 @@ In this set, four are user-invoked: `start-work`, `setup-project`,
 or starting a run; those begin because a person decided to.
 
 The rest are model-invocable because `start-work` chains through them:
-`plan-work`, `cut-into-tasks`, `build-work`, `review-changes`. Note the
-consequence — the model can also reach for `build-work` on its own. If that ever
-proves to be a problem, the fix is not to lock it, which would break the chain,
-but to keep the human gate inside the skill where it already is.
+`untangle-idea`, `plan-work`, `cut-into-tasks`, `build-work`, `review-changes`.
+Note the consequence — the model can also reach for `build-work` on its own. If
+that ever proves to be a problem, the fix is not to lock it, which would break
+the chain, but to keep the human gate inside the skill where it already is.
 
 ## Before a handover, run these
 
