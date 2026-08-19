@@ -55,11 +55,18 @@ Where one task genuinely cannot start before another has landed, record that as 
 `docs/agents/issue-tracker.md`. Not a sentence in the body — a sentence cannot be
 queried, and the skill that picks up the next task queries.
 
-Set the `ready-for-agent` label **only on tasks with no open blockers**. A blocked
-task is not buildable as written. When its blocker closes, the label moves.
+**Do not put a build label on a task.** Readiness is the blocker query and
+nothing else: open, with zero open blockers. A label would be a second answer to
+a question the tracker already answers, and nothing here reads it — so it would
+sit going stale while the query stayed right. GitHub renders the blocking
+relationship in its own interface, so a human sees what is takeable without one.
 
-The spec itself never carries a build label — nobody builds a spec. It is the
-parent, not a task.
+`ready-for-agent` keeps its meaning outside a spec: a standalone issue a human
+has judged buildable as written. That is a decision, not something derivable, so
+there it earns a label.
+
+The spec itself never carries a build label either — nobody builds a spec. It is
+the parent, not a task.
 
 Do not invent dependencies. Two tasks that touch different files usually do not
 block each other, and false blockers serialise work that could run in parallel.

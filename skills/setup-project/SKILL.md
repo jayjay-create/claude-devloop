@@ -213,7 +213,9 @@ only `yes` or `no`.
 Where issues live, and the exact commands. The six labels and what they mean:
 `needs-triage` (new), `needs-info` (waiting on an answer), `being-planned` (a
 spec is being written into it right now — nobody acts on it, not an agent and
-not a human), `ready-for-agent` (buildable as written), `needs-human` (needs a
+not a human), `ready-for-agent` (a standalone issue a human has judged buildable
+as written — never on a task under a spec, where readiness is the blocker query
+instead), `needs-human` (needs a
 human decision), `wont-do` (declined, with a reason).
 
 Create all six in the tracker as part of this step. A label that only exists in

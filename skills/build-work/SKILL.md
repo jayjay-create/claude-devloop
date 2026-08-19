@@ -115,7 +115,9 @@ a guessed list drops new files silently. Add paths explicitly, never with `-A`.
 
 ## Then the next task
 
-Query again. One ready task: continue. Several: ask. None: stop.
+Query again **before you say anything about what is left**. One ready task:
+continue. Several: ask. None: stop. Whatever you knew before the merge is stale
+by definition — the merge is what changed it.
 
 ## Unattended mode
 

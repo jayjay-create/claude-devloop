@@ -155,8 +155,9 @@ No new questions. Write down what was decided, in these sections:
   not `filled`, and whether landing this work requires filling it first.
 
 Write it into the body of the planning issue, replacing the placeholder line, and
-swap the label from `being-planned` to `ready-for-agent`. The commands are in
-`docs/agents/issue-tracker.md`.
+remove the `being-planned` label. Put no build label in its place: nobody builds
+a spec, and readiness for the tasks under it is a blocker query. The commands are
+in `docs/agents/issue-tracker.md`.
 
 ## Close
 
