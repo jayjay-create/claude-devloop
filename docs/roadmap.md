@@ -52,6 +52,34 @@ to call them on their own.
 
 ## Known gaps
 
+- **The aim is idea to a running application; this gets to merged code.** Not a
+  bug in what exists — the stated aim was idea to merged, reviewed code, and that
+  works. It is the aim that has moved. Five things stand between the two, and
+  they are one chain, not a list: nothing runs, so there is nothing to look at,
+  nothing to drive an end-to-end check against, and no reason to write down how
+  to run it.
+  - **How the user sees it.** After every task they get a diff and review
+    findings, never the thing itself. Whether the work is going in the right
+    direction is not visible in a diff, and asking them to start it by hand
+    contradicts the promise that they need no commands. `environment.md` — the
+    file meant to record how this project runs locally — has said "nothing to run
+    yet" in every project set up so far, because no step ever needs it.
+  - **How the interface gets decided.** Nothing in the set draws a UI, chooses a
+    layout, or settles what a screen should feel like. `build-prototype` has a UI
+    branch, but only inside a map, only for one question at a time.
+  - **How the stack gets chosen.** Language, runtime, framework, database. A spec
+    presumes them; nothing ever picks them, so they arrive by whatever the first
+    task happened to reach for.
+  - **How it gets documented and shipped.** Nothing writes documentation for the
+    people who will use or run the thing, and nothing takes it from a green main
+    branch to somewhere it is actually running — deployment, configuration,
+    secrets, the first release, what to do when it breaks. The workflow's own
+    documents are written for agents; the app's are written for nobody.
+  - **Which further skills belong in the loop when the work is done with AI.**
+    Named as candidates, not evaluated: documentation lookup for current library
+    APIs, frontend design guidance, browser-driving for end-to-end checks. The
+    end-to-end check class is empty in every project so far, which follows
+    directly from the first item: nothing is ever running to drive.
 - **`build-work` step 2 lists ready tasks without saying what each unblocks.**
   The step asks for it; three runs in a row gave titles and descriptions only.
   Harmless while tasks are independent, misleading as soon as they are not.
