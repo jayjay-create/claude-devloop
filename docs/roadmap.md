@@ -57,10 +57,6 @@ to call them on their own.
   on the plugin itself — including the main-branch guard.
 - **`docs/workflow.md`** in this repository predates the README and may
   contradict it. Reconcile or delete.
-- **`record-lessons` has no answer for working inside this repository.** It says
-  workflow-level lessons become issues against the workflow's own repository —
-  which is where you already are when you are working on devloop itself. Its
-  first run wrote into the README instead.
 - **End-to-end testing has no worked-out approach.** The class exists in
   `checks.md`; nothing fills it.
 - **Only one stack has been exercised**: a small Python project with GitHub

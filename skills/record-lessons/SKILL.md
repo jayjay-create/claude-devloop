@@ -48,6 +48,33 @@ through. **File an issue against the workflow's own repository** — do not edit
 skill mid-run. A skill that rewrites itself while working cannot be reviewed, and
 the change would be invisible to everyone else using it.
 
+### When this repository is the workflow
+
+You are inside the workflow's own repository when `.claude-plugin/plugin.json`
+exists and names this plugin. Check that before anything else here, because two
+things then change: the table above points at files that do not exist, and the
+rule just above collapses — filing an issue against the workflow's own repository
+means filing it here.
+
+Write the lesson where whoever builds the workflow would read it:
+
+| The failure was | Where it goes |
+|---|---|
+| A rule about how a skill must be written, or a property of the environment somebody measured | `docs/skill-conventions.md` |
+| Something missing or known to be broken | the "Known gaps" section of `docs/roadmap.md` |
+| A name that should not be proposed again | the "Names that were rejected" section of `docs/roadmap.md` |
+| Something a user of the plugin needs to know | `README.md` |
+
+The README is the last resort, not the first. It is written for people who
+install the plugin, not for whoever builds it, so a lesson about building belongs
+under `docs/`.
+
+Not editing a skill mid-run holds harder here, not less, because editing skills is
+what this repository is for. Record the lesson, then let a branch and a pull
+request carry the change. Do not lean on the guard that normally stops writes to
+the main branch: it needs `docs/agents/`, this repository has none, so devloop's
+own hooks stay inert in it.
+
 ## How to write one
 
 One or two lines. What goes wrong, and what to do instead. Not the story of how
