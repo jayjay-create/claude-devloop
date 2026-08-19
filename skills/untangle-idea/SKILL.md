@@ -41,6 +41,10 @@ name, never by a bare id, number, or slug. A wall of `#42, #43, #44` is
 illegible; names read at a glance. The id and URL don't vanish — a name wraps its
 link — but they ride _inside_ the name, never stand in for it.
 
+**Write into the issue tracker in English** — titles, bodies, comments. The
+tracker is part of the project and outlives this conversation. Speak to the user
+in their own language; that is a different thing.
+
 ## The Map
 
 The map is a single issue on this repo's issue tracker, labelled `untangle:map` —

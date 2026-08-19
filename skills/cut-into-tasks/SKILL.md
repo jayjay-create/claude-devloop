@@ -14,6 +14,10 @@ queried. No code is written here.
 Read `docs/agents/issue-tracker.md` first — it holds the exact commands for
 creating, attaching and ordering issues in this project.
 
+**Write into the issue tracker in English** — titles, bodies, comments. The
+tracker is part of the project and outlives this conversation. Speak to the user
+in their own language; that is a different thing.
+
 ## What a task is
 
 **One session's work, demonstrable on its own.** Someone who does not know the

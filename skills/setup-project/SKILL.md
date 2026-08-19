@@ -20,8 +20,10 @@ project's task runner, and a pointer block in `CLAUDE.md`.
 
 ## Language
 
-Write every file you create in English — these files are part of the repository
-and may be read by anyone. Speak to the user in the language they use.
+Write every file you create in English, and everything you put into the issue
+tracker: issue titles, bodies, comments. Both are part of the project and may be
+read by anyone who joins it, the same way a repository settles on one language
+and keeps to it. Speak to the user in the language they use.
 
 ## How to ask
 

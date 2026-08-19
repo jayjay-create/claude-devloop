@@ -15,6 +15,10 @@ for drafting and reviewing, which write nothing. Not for tasks.
 
 Read `docs/agents/checks.md` and `docs/agents/issue-tracker.md` first.
 
+**Write into the issue tracker in English** — titles, bodies, comments. The
+tracker is part of the project and outlives this conversation. Speak to the user
+in their own language; that is a different thing.
+
 ## Never assert state — always query it
 
 Which task is next, which blockers are open, whether something merged: each is a
