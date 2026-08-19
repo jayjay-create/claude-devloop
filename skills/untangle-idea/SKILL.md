@@ -65,7 +65,8 @@ live is tracker-specific.** This project's tracker and its exact commands are in
 `docs/agents/issue-tracker.md`, under **Ordering work** — how to attach a child
 issue, how to record that one waits for another, and how to ask which are ready.
 If `docs/agents/` is missing, this project is not set up: say so and offer to run
-`setup-project` first, and do not improvise around it. There is no way past this
+`setup-project` first, without asking — there is nothing to decide here,
+and the user has already said what they want, and do not improvise around it. There is no way past this
 one — without a tracker there is nowhere to put a map or a ticket, so a no ends
 the attempt rather than pausing it. Say that instead of starting anyway. There is no
 local-markdown fallback here — a tracker with no queryable blocking relationship

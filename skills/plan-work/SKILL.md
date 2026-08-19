@@ -18,7 +18,8 @@ interrupted session costs the stage you were in, not all four.
 The output is a spec in the issue tracker. No code is written here.
 
 If `docs/agents/` is missing, this project is not set up. Say so and offer to run
-`setup-project` first; do not improvise around it. This is the one offer with no
+`setup-project` first, without asking — there is nothing to decide here,
+and the user has already said what they want; do not improvise around it. This is the one offer with no
 way past it: without the tracker there is nowhere to put a spec, so a no ends the
 attempt rather than pausing it. Say that plainly instead of starting anyway.
 
