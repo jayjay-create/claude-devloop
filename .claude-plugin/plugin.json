@@ -1,6 +1,6 @@
 {
   "name": "devloop",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "From idea to merged, reviewed code \u2014 a guided development loop for Claude Code",
   "license": "MIT",
   "author": {
@@ -13,6 +13,8 @@
     "./skills/setup-project",
     "./skills/setup-checks",
     "./skills/untangle-idea",
+    "./skills/research",
+    "./skills/build-prototype",
     "./skills/plan-work",
     "./skills/cut-into-tasks",
     "./skills/build-work",
