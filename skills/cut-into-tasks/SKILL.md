@@ -99,4 +99,5 @@ issue too), and which one is ready first.
 
 Then offer to start building, and do it on a yes. Say in plain words what that
 means: one task at a time, each with tests, each reviewed before it lands, and
-you see the result before anything is merged.
+you see the result before anything is merged. On a no, say the tasks are waiting
+in order and the next session will report which one is ready.

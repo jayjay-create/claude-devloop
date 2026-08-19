@@ -80,8 +80,11 @@ Writing only the yes leaves the user guessing whether declining ends the run, an
 the recommended answer stops being a recommendation and starts being the only
 door. Assume every offer gets declined sometimes.
 
-Most of the time a no means not now and the conversation carries on — say that
-and move on. Where a no changes what happens later, say what changes **at the
+**The default a no lands in:** the run stops where it is, and nothing is lost,
+because the state is in the tracker and in git rather than in the conversation.
+The next session's entry point reports it — by name, with how far it got — and
+picks up from there. Say that in one clause when you offer the next stage; it is
+what makes declining a real option instead of an exit. Where a no changes what happens later, say what changes **at the
 moment of asking**, not three steps on when it bites. A no never leaves the run
 without a next move: if the only honest answer is to stop, say what would unblock
 it and what to do once that is done.

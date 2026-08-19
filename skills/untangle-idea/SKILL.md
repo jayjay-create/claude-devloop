@@ -59,7 +59,9 @@ live is tracker-specific.** This project's tracker and its exact commands are in
 `docs/agents/issue-tracker.md`, under **Ordering work** — how to attach a child
 issue, how to record that one waits for another, and how to ask which are ready.
 If `docs/agents/` is missing, this project is not set up: say so and offer to run
-`setup-project` first, and do not improvise around it. There is no
+`setup-project` first, and do not improvise around it. There is no way past this
+one — without a tracker there is nowhere to put a map or a ticket, so a no ends
+the attempt rather than pausing it. Say that instead of starting anyway. There is no
 local-markdown fallback here — a tracker with no queryable blocking relationship
 stops the setup, so by the time you are reading this the tracker has one.
 
@@ -212,7 +214,9 @@ this).
   (credentials location, new URLs, row counts) later tickets depend on.
 
 **If `research` or `build-prototype` is not installed, say so and stop that
-ticket.** Do not silently substitute another and do not improvise the stage
+ticket** — and say what would unblock it: installing that skill, or resolving the
+ticket a different way, which is the user's call. The rest of the map is
+unaffected; only this ticket waits. Do not silently substitute another and do not improvise the stage
 yourself — a ticket resolved by the wrong method looks identical to one resolved
 by the right one, and nothing downstream can tell them apart.
 
@@ -325,4 +329,5 @@ editing the tracker concurrently.
 No open tickets and no fog left means the way is clear: the destination is
 reached and there is nothing more to decide before someone builds. Say that the
 questions are settled, gist what the map decided, and offer to carry straight on
-into planning and building the work.
+into planning and building the work. On a no, say the map stands as the record of
+what was decided and the next session will find it.
