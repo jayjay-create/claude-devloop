@@ -28,6 +28,11 @@ Three properties hold everywhere:
     /plugin marketplace add jayjay-create/claude-devloop
     /plugin install devloop@jayjay-create
 
+You need git, a GitHub account, and `gh` signed in. The workflow keeps its state
+in issues and their blocking relationships, so a tracker is not optional — the
+setup stops without one and says so. A repository is not needed up front; it
+offers to create one.
+
 ## What you type
 
     /devloop:start-work

@@ -83,6 +83,11 @@ not substitute something else without naming what failed.
 ## Step 1 — Explore, change nothing
 
 - Git: remote, branch, whether there is any commit at all
+- Whether `gh` is installed and signed in (`gh auth status`). It is not, and no
+  amount of setting up gets around it: a tracker account is a prerequisite, the
+  sign-in needs the user's own browser, and creating an account is a web signup.
+  Name `gh auth login` and stop — say what it is for, and that everything else
+  waits on it.
 - Is there code? Count source files outside config and docs
 - Existing control documents: `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, `docs/adr/`, `README.md`
 - Task runner: `Makefile`, `justfile`, `Taskfile.yml`, `scripts` in `package.json`
@@ -112,16 +117,21 @@ single word can answer.
    The tracker must *support* blocking relationships between issues; GitHub
    Issues and comparable trackers do, whether or not any exist yet. A text file
    never does — `build-work` picks the next task by which blockers are closed.
-   If no suitable tracker is available, stop the setup and say exactly that. Do
-   not carry on without one: every later step publishes specs and tasks there and
-   picks up work from there. A repository with no remote cannot run this workflow
-   yet — say so plainly and stop, rather than merging straight to the main branch
-   as a substitute.
+   If there is no remote at all, do not stop yet — offer to create one, since
+   that is a single command and the user is right here. Ask for the name and
+   whether it should be private, then `gh repo create NAME --private --source=.
+   --push`. On a no, say plainly that the workflow cannot run without a tracker
+   and stop, rather than merging straight to the main branch as a substitute.
+   If no suitable tracker is available at all, stop the setup and say exactly
+   that: every later step publishes specs and tasks there and picks up work from
+   there.
 2. **Auto-merge** — only if the remote has it switched off
    (`gh api repos/OWNER/REPO -q .allow_auto_merge` returns false). Every later
    step opens pull requests and sets them to merge once the gates pass; direct
    merges are refused. Offer to switch it on:
-   `gh api -X PATCH repos/OWNER/REPO -f allow_auto_merge=true`.
+   `gh api -X PATCH repos/OWNER/REPO -f allow_auto_merge=true`. Say what a no
+   costs, at the moment of asking: the workflow still runs, but every merge from
+   then on stops and hands the pull request to the user to merge by hand.
 3. **Checks** — always. Present your mapping: which tool found fills which class,
    and which classes stay empty. Ask separately whether missing tools should be
    installed — that changes the project. Never install anything system-wide
@@ -313,8 +323,9 @@ merge, say so and stop here; do not offer the next step on top of unmerged setup
 Merging can also be refused for reasons that are not a gate: auto-merge may be
 switched off on the repository, and a direct merge is a shared-state action that
 an agent may be refused. Both are repository or platform settings, not something
-this step changes. Say which one it was, hand the user the pull request, and stop
-— the same rule the build step follows.
+this step changes. Say which one it was, hand the user the pull request, and say
+that this picks up again as soon as it has landed — the same rule the build step
+follows. Do not leave them holding a pull request with no idea what comes next.
 
 ## Step 9 — Close
 

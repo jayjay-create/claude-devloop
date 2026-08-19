@@ -56,6 +56,18 @@ who has never heard of this workflow must be able to answer.
 Close with a proposal for the next step and carry it out on a yes. Name a command
 only when the next step cannot start itself.
 
+## Every offer says where a no leads
+
+Writing only the yes leaves the user guessing whether declining ends the run, and
+the recommended answer stops being a recommendation and starts being the only
+door. Assume every offer gets declined sometimes.
+
+Most of the time a no means not now and the conversation carries on — say that
+and move on. Where a no changes what happens later, say what changes **at the
+moment of asking**, not three steps on when it bites. A no never leaves the run
+without a next move: if the only honest answer is to stop, say what would unblock
+it and what to do once that is done.
+
 ## Describe what must be said; never dictate wording
 
 A model performs a task; it does not transcribe. Asking for a fixed paragraph
