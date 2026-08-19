@@ -15,7 +15,9 @@ interrupted session costs the stage you were in, not all four.
 The output is a spec in the issue tracker. No code is written here.
 
 If `docs/agents/` is missing, this project is not set up. Say so and offer to run
-`setup-project` first; do not improvise around it.
+`setup-project` first; do not improvise around it. This is the one offer with no
+way past it: without the tracker there is nowhere to put a spec, so a no ends the
+attempt rather than pausing it. Say that plainly instead of starting anyway.
 
 **Write into the issue tracker in English** — titles, bodies, comments. The
 tracker is part of the project and outlives this conversation. Speak to the user
@@ -88,7 +90,10 @@ Two things are not the user's job:
 
 If a question cannot be settled in conversation because it needs something running
 to look at — a state model, a flow, an interface someone has to see — stop and
-offer to build a throwaway prototype. Do not start one unasked; it costs real time.
+offer to build a throwaway prototype. Do not start one unasked; it costs real
+time. On a no the question is still open: either settle it on their word and
+record that it was decided without seeing anything, or carry it into the spec as
+undecided. Do not quietly pick one and move on.
 
 When a decision is hard to reverse, would surprise someone without the reasoning,
 and came out of a real trade-off, offer a decision record. Only then.
@@ -143,6 +148,8 @@ Two things this stage also settles:
 - **The ground under the decision records** this design leans on. Each record
   carries a line saying what would make it invalid. Check those lines. If one no
   longer holds, say so and stop — do not extend a decision whose basis is gone.
+  Say what it would take to go on: that decision has to be made again, now, on
+  what is true today. Offer to do that here rather than leaving them stranded.
 
 **Do not start writing anything until the user has picked a design.**
 
@@ -182,4 +189,5 @@ Report the spec's issue number and one line on what it covers.
 
 Then offer to cut it into tasks and do that on a yes — run `cut-into-tasks`.
 Say what that means in plain words: single pieces of work, each one demonstrable
-on its own, in an order.
+on its own, in an order. On a no, say the spec is finished and waiting, and that
+the next session will report it — nothing has to be held onto.

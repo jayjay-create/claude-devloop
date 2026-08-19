@@ -128,7 +128,9 @@ Say how many classes are `filled`, how many `skipped` and why, and how many are
 still `empty`.
 
 Then offer the next step and do it on a yes: more classes if any are still
-`empty`, otherwise starting on the first piece of work.
+`empty`, otherwise starting on the first piece of work. On a no, say what stays
+as it is: the remaining classes keep saying `empty`, which is a record that
+nobody decided yet, and the unattended mode stays unavailable until none are.
 
 If nothing is `empty` any more, say that the unattended mode's first condition is
 now met — the check suite can stand in for a human's approval.

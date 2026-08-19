@@ -32,7 +32,11 @@ complete.
 ## Before each task
 
 Fetch and compare the local main branch with the remote. If they have diverged,
-say so and stop — a task cut from a stale main lands on the wrong base.
+say so and stop — a task cut from a stale main lands on the wrong base. Say what
+would clear it and let the user decide: usually the local branch has commits the
+remote does not, or the reverse, and reconciling them is their call, not
+something to resolve by force. Nothing is lost meanwhile; the tasks are in the
+tracker and this picks up once the branches agree.
 
 ## Pick the next task
 
@@ -112,7 +116,9 @@ say what it is still waiting on and offer the next step; do not block the sessio
 
 Once it has landed:
 
-- Fetch and fast-forward the local main branch. If that fails, say so and stop.
+- Fetch and fast-forward the local main branch. If that fails, say so and stop —
+  and say what it would take: the merge landed, so the work is safe, and only the
+  local copy is behind. Naming the divergence is enough; do not force it.
 - Delete the merged branch locally and on the remote if it is still there;
   `--delete-branch` does not always take effect on an auto-merge.
 - Confirm the task issue closed. Check whether this also closed anything else,
