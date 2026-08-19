@@ -16,6 +16,12 @@ loudest kind bury the quietest.
 
 Read `docs/agents/checks.md` and `docs/agents/standards.md` first.
 
+**If a command this skill needs is missing from `docs/agents/`, say so.** Those
+files were written when the project was set up and the template has moved on
+since. Do not improvise a replacement — an invented query that returns something
+plausible is worse than no answer, because nobody can tell it went wrong. Name
+the file, say what is missing, and offer to bring it up to date.
+
 ## Pin the target
 
 Establish exactly what is under review — the diff between the branch and the main

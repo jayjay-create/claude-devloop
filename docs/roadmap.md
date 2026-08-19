@@ -52,6 +52,10 @@ to call them on their own.
 
 ## Known gaps
 
+- **Most offers still do not say what a no leads to.** The convention is written
+  and three places follow it — auto-merge, the setup pull request, a missing
+  remote. The remaining offers across the skills were never swept against it, so
+  declining most of them still leaves the run without a stated next move.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.
