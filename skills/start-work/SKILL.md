@@ -15,8 +15,10 @@ Run exactly one command and nothing else:
 Do not read files. Do not check git. Do not look at the tracker. One command,
 then go to step 2.
 
-If it lists files, read the version marker at the top of one of them — the line
-`<!-- devloop: X.Y.Z -->` — and compare it with the running version. Older means
+If it lists files, find the version marker in `docs/agents/issue-tracker.md` —
+the line matching `<!-- devloop: ` — and compare it with the running version.
+Search the file for that line rather than assuming which one it is; in a file
+with a frontmatter block it sits below that, not on line one. Older means
 these files were written from templates this workflow has since changed. Say that
 in one line, in ordinary words: the setup files here are from an older version of
 this workflow, and offer to bring them up to date, which takes a minute and
