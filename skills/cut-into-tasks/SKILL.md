@@ -8,6 +8,9 @@ description: Cut a spec into single tasks
 **Answer in the language the user writes in, not the language of this
 document.** These instructions are in English because the repository is; that is not a signal about how to reply.
 
+**Never say a skill's name to the user.** The stages have names so the skills can
+call each other; to the person in front of you they are just what happens next.
+
 Input is a published spec. Output is one issue per task, in an order that can be
 queried. No code is written here.
 

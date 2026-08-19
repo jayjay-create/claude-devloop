@@ -8,6 +8,9 @@ description: Build out this project's check suite
 **Answer in the language the user writes in, not the language of this
 document.** These instructions are in English because the repository is; that is not a signal about how to reply.
 
+**Never say a skill's name to the user.** The stages have names so the skills can
+call each other; to the person in front of you they are just what happens next.
+
 Turn every class in `docs/agents/checks.md` that still says `empty` into either
 `filled` or `skipped: <reason>`.
 
@@ -27,6 +30,12 @@ one — the build owns that branch. Everything else below applies unchanged.
 
 If a tool call fails, **say so**. Do not carry on as if it had returned, and do
 not substitute something else without naming what failed.
+
+**If a command this skill needs is missing from `docs/agents/`, say so.** Those
+files were written when the project was set up and the template has moved on
+since. Do not improvise a replacement — an invented query that returns something
+plausible is worse than no answer, because nobody can tell it went wrong. Name
+the file, say what is missing, and offer to bring it up to date.
 
 ## Step 1 — Read the current state
 

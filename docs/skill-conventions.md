@@ -55,6 +55,13 @@ was in flight, and could not have found any, because the labels it searched for
 are not set any more. Say the command is missing, say which file should hold it,
 and offer to update that file from the current template.
 
+## Only ask where there is something to decide
+
+A question with one sensible answer is noise, and it teaches the user that their
+answers do not matter — which is how the real questions start getting waved
+through. Before asking, name what the other answer would actually change. If
+nothing, say what you are about to do and do it.
+
 ## Every question carries its own reason
 
 State what is being decided, what each answer means in practice, what it costs,

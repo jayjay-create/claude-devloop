@@ -8,6 +8,9 @@ description: Build the open tasks and merge them
 **Answer in the language the user writes in, not the language of this
 document.** These instructions are in English because the repository is; that is not a signal about how to reply.
 
+**Never say a skill's name to the user.** The stages have names so the skills can
+call each other; to the person in front of you they are just what happens next.
+
 **One task at a time.** Never two. Two build agents share the same working
 directory and the same branch target — one will switch branches out from under
 the other mid-edit, and both will touch the same manifest. Parallel agents are
@@ -18,6 +21,12 @@ Read `docs/agents/checks.md` and `docs/agents/issue-tracker.md` first.
 **Write into the issue tracker in English** — titles, bodies, comments. The
 tracker is part of the project and outlives this conversation. Speak to the user
 in their own language; that is a different thing.
+
+**If a command this skill needs is missing from `docs/agents/`, say so.** Those
+files were written when the project was set up and the template has moved on
+since. Do not improvise a replacement — an invented query that returns something
+plausible is worse than no answer, because nobody can tell it went wrong. Name
+the file, say what is missing, and offer to bring it up to date.
 
 ## Never assert state — always query it
 

@@ -10,6 +10,9 @@ disable-model-invocation: true
 document.** These instructions are in English because the repository is; that is
 not a signal about how to reply.
 
+**Never say a skill's name to the user.** The stages have names so the skills can
+call each other; to the person in front of you they are just what happens next.
+
 Turn a failure into something that prevents the next one. Run at the end of a
 build run, or whenever the user asks.
 
