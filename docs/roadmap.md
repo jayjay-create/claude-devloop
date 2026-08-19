@@ -10,7 +10,7 @@
 | `untangle-idea` | Map the open decisions in something too big — built, not yet exercised |
 | `research` | Answer a question from primary sources |
 | `build-prototype` | Build something throwaway to settle a design question |
-| `plan-work` | Turn an idea into specced, ordered tasks |
+| `plan-work` | Turn an idea into a specced piece of work |
 | `cut-into-tasks` | Cut a spec into single tasks |
 | `build-work` | Build the open tasks and merge them |
 | `review-changes` | Review a change from several angles at once |

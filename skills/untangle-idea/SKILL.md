@@ -219,6 +219,12 @@ this).
   when the work is done; the answer records what was done and any resulting facts
   (credentials location, new URLs, row counts) later tickets depend on.
 
+**If a tracker operation fails, say so.** Attaching a sub-issue, recording a
+blocker, closing a ticket: each one either happened or it did not. A map that
+looks complete while one of its blocking edges silently never landed is worse
+than one that is visibly incomplete, because the frontier query will hand out a
+ticket that was supposed to be blocked. Name what failed and stop there.
+
 **If `research` or `build-prototype` is not installed, say so and stop that
 ticket** — and say what would unblock it: installing that skill, or resolving the
 ticket a different way, which is the user's call. The rest of the map is
