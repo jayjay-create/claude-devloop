@@ -18,11 +18,17 @@ for drafting and reviewing, which write nothing. Not for tasks.
 
 Read `docs/agents/checks.md` and `docs/agents/issue-tracker.md` first.
 
-**Steps 1 to 7 run in that order, per task.** Do not pick whichever looks
-pending: the base has to be sound before a branch is cut, the review reads a diff
-that only exists after the build, and the merge waits on the review. Finish a
-step, then take the next one — do not stop and report between them unless the
-step itself says to.
+**Steps 1 to 7 run in that order, per task, and none of them is optional.** Do
+not pick whichever looks pending, and do not skip ahead to the one that looks
+like the goal: the base has to be sound before a branch is cut, the review reads
+a diff that only exists after the build, and the merge waits on both the review
+and the user.
+
+Running in order is not the same as running without stopping. Two of these steps
+end by asking the user something — that is the step doing its job, not an
+interruption of it. What to avoid between steps is the other thing: finishing a
+step, writing a status summary, and waiting for permission to continue with a
+step that asks for none.
 
 **Write into the issue tracker in English** — titles, bodies, comments. The
 tracker is part of the project and outlives this conversation. Speak to the user
@@ -120,9 +126,19 @@ the same breath as naming it: it stays open until fixed or explicitly deferred.
 Show the diff and the findings — what was fixed, what was filed. Ask whether to
 merge or revise, and say what each means.
 
-In unattended mode the check suite is this gate instead.
+**This is the gate.** It is the one place in the loop where a human decides
+whether work lands, and it is the reason the loop is trustworthy. Reaching step 6
+without it means unreviewed code merged on nobody's authority. Being told to
+build a task is not that authority: it authorised the build, and this is the
+question the build exists to earn.
+
+In unattended mode the check suite is this gate instead — the gate is replaced,
+never removed.
 
 ## Step 6 — Merge it
+
+**Only after steps 4 and 5.** If the review has not run, or the user has not
+answered, this step has not started yet. Go back rather than forward.
 
 **Never merge directly.** Open the pull request, then set it to merge
 automatically once the gates are green:
