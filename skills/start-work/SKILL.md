@@ -31,9 +31,17 @@ language — covering all four of these:
 Then ask what they would like to build, and **stop.** Nothing else in this reply:
 no repository findings, no offer to set anything up.
 
-**If the status line says the project is set up**, skip the introduction. Ask one
-question and nothing else: what would they like to build? Report no state.
-Propose nothing. An open issue is somebody's suggestion, not an instruction.
+**If the status line says the project is set up**, skip the introduction. Run the
+in-flight query from `docs/agents/issue-tracker.md` and say what it found, in at
+most four lines: which specs still have open tasks, which planning was started
+and left unfinished, how many loose issues are sitting there. Then ask the same
+open question: what would they like to build?
+
+Reporting is not proposing. Say what is there and stop — do not rank it, do not
+recommend one, do not offer to pick it up. An open issue is somebody's
+suggestion, not an instruction, and someone coming back after a week needs to see
+where they stood before they can answer at all. If the query comes back empty,
+say the tracker is clear and ask the question on its own.
 
 Either way: stop here until they answer.
 
