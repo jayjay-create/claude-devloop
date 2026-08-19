@@ -18,6 +18,12 @@ for drafting and reviewing, which write nothing. Not for tasks.
 
 Read `docs/agents/checks.md` and `docs/agents/issue-tracker.md` first.
 
+**Steps 1 to 7 run in that order, per task.** Do not pick whichever looks
+pending: the base has to be sound before a branch is cut, the review reads a diff
+that only exists after the build, and the merge waits on the review. Finish a
+step, then take the next one — do not stop and report between them unless the
+step itself says to.
+
 **Write into the issue tracker in English** — titles, bodies, comments. The
 tracker is part of the project and outlives this conversation. Speak to the user
 in their own language; that is a different thing.
@@ -47,7 +53,7 @@ secrets, dependencies, code-security. The set is fixed; what varies per project
 is which are `filled`, which are `skipped` with a reason, and which are still
 `empty`.
 
-## Before each task
+## Step 1 — Check the base
 
 Fetch and compare the local main branch with the remote. If they have diverged,
 say so and stop — a task cut from a stale main lands on the wrong base. Say what
@@ -56,7 +62,7 @@ remote does not, or the reverse, and reconciling them is their call, not
 something to resolve by force. Nothing is lost meanwhile; the tasks are in the
 tracker and this picks up once the branches agree.
 
-## Pick the next task
+## Step 2 — Pick the next task
 
 Run the readiness query from `docs/agents/issue-tracker.md`. Ready means: open,
 and zero open blockers.
@@ -68,7 +74,7 @@ and zero open blockers.
   ties, the lowest issue number. Say which you took and why.
 - **None ready** — say which task blocks which, and stop.
 
-## Build it
+## Step 3 — Build it
 
 Hand the task to a subagent with a fresh context: the task issue, the spec it
 belongs to, and the paths of the control documents — not this conversation.
@@ -95,7 +101,7 @@ produced both failures available: a status word that does not exist, and a raw
 shell command in a column that holds a bare target name, which the turn-end hook
 then ran as `make python3 -m unittest ...` and blocked the report.
 
-## Review it
+## Step 4 — Review it
 
 Run `review-changes` on the diff.
 
@@ -109,14 +115,14 @@ Each finding goes one of two ways:
 Never leave a finding in the conversation. Never explain a named defect away in
 the same breath as naming it: it stays open until fixed or explicitly deferred.
 
-## Hand it to the user
+## Step 5 — Hand it to the user
 
 Show the diff and the findings — what was fixed, what was filed. Ask whether to
 merge or revise, and say what each means.
 
 In unattended mode the check suite is this gate instead.
 
-## Merge it
+## Step 6 — Merge it
 
 **Never merge directly.** Open the pull request, then set it to merge
 automatically once the gates are green:
@@ -149,7 +155,7 @@ Once it has landed:
 Build the commit from `git status --short`, never from a reported list of paths —
 a guessed list drops new files silently. Add paths explicitly, never with `-A`.
 
-## Then the next task
+## Step 7 — Back to step 2
 
 Query again **before you say anything about what is left**. One ready task:
 continue. Several: ask. None: stop. Whatever you knew before the merge is stale
