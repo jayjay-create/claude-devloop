@@ -7,6 +7,7 @@
 | `start-work` | Take a piece of work from idea to merged |
 | `setup-project` | Set up this repository for devloop |
 | `setup-checks` | Build out this project's check suite |
+| `untangle-idea` | Map the open decisions in something too big — built, not yet exercised |
 | `plan-work` | Turn an idea into specced, ordered tasks |
 | `cut-into-tasks` | Cut a spec into single tasks |
 | `build-work` | Build the open tasks and merge them |
@@ -20,7 +21,6 @@ A description is a menu entry: verb first, no trigger conditions.
 
 | Skill | Description | Origin |
 |---|---|---|
-| `untangle-idea` | Map the open decisions in something too big | Pocock `wayfinder`, verbatim |
 | `diagnose-bug` | Find what actually causes a bug | Pocock, verbatim |
 | `sort-incoming-requests` | Triage issues you didn't write | Pocock `triage`, verbatim |
 | `which-skill` | Find out what to do next | Pocock `ask-matt`, renamed |
