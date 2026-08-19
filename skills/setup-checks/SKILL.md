@@ -1,7 +1,6 @@
 ---
 name: setup-checks
 description: Build out this project's check suite
-disable-model-invocation: true
 ---
 
 # Build out the check suite
