@@ -61,6 +61,14 @@ State what is being decided, what each answer means in practice, what it costs,
 and why it comes up now. Never name a bare term the user may not know. Someone
 who has never heard of this workflow must be able to answer.
 
+## Refer to work by its name
+
+Every spec, task and planning issue has a title. In everything the human reads,
+use it. A number is an index into a tracker they are not looking at: `#9, #10`
+after a week away says nothing, and a list of numbers says nothing several times
+over. The id and the link do not vanish — they ride inside the name, they never
+stand in for it.
+
 ## End by offering, not by naming
 
 Close with a proposal for the next step and carry it out on a yes. Name a command
