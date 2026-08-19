@@ -52,6 +52,16 @@ to call them on their own.
 
 ## Known gaps
 
+- **`build-work` step 2 lists ready tasks without saying what each unblocks.**
+  The step asks for it; three runs in a row gave titles and descriptions only.
+  Harmless while tasks are independent, misleading as soon as they are not.
+- **A finding announced as filed is not always filed.** One run said it would
+  record a point as an issue and the issue list did not grow. Nothing checks that
+  a promised issue exists.
+- **Refreshing the control documents opens a pull request for a five-character
+  change.** Correct by the rules — never merge directly — and out of proportion.
+  Worth revisiting only with a rule that does not carve an exception into that
+  one.
 - **Most offers still do not say what a no leads to.** The convention is written
   and three places follow it — auto-merge, the setup pull request, a missing
   remote. The remaining offers across the skills were never swept against it, so
