@@ -45,6 +45,16 @@ If a skill you call does not exist, say so — do not silently substitute anothe
 If a background agent fails to return, say so — do not present a comparison that
 is quietly one draft short. Both happened repeatedly and went unmentioned.
 
+**The same goes for a command a control document should hold and does not.** The
+files under `docs/agents/` are written once at setup, from a template that keeps
+changing, so a project set up months ago is missing whatever was added since.
+Improvising a replacement is the worst answer available: it produces an answer
+that looks right and is not, and it hides the stale document that caused it. This
+has already happened — a substitute built from label searches reported which work
+was in flight, and could not have found any, because the labels it searched for
+are not set any more. Say the command is missing, say which file should hold it,
+and offer to update that file from the current template.
+
 ## Every question carries its own reason
 
 State what is being decided, what each answer means in practice, what it costs,
