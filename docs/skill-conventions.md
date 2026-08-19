@@ -186,6 +186,14 @@ is an `initialUserMessage` field for seeding a turn, and an open Anthropic bug
 (#16538) where `hookSpecificOutput.additionalContext` from a *plugin* hook does
 not reach Claude while the same hook in user settings does. Plain stdout works.
 
+**A hook cannot see consent.** It gets the command and the branch, never the
+conversation, so "the user just said yes" and "the agent decided this itself"
+look identical to it. That rules out enforcing anything the user is allowed to
+authorise — unless the authorised and unauthorised forms are different commands.
+Merging is: `gh pr merge --auto` hands the decision to the platform, `gh pr merge`
+without it has the agent decide. A hook can tell those apart, so that one is
+enforced while a merge the user asked for still goes through.
+
 **A blocking hook must exit 2.** On `PreToolUse` that blocks the tool call and
 feeds stderr to the model as the reason. Exit 1 does not block — the action runs
 and the failure is only logged. A hook that cannot start, wrong path or missing

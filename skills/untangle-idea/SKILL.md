@@ -201,6 +201,18 @@ you have reached a shared understanding.
 
 ## Ticket Types
 
+**Choose the type for each ticket; do not fall into one.** Ask in this order, and
+take the first that fits: is the answer somewhere outside this repository, in
+documentation or a third-party API — research. Does the question turn on how
+something looks or behaves, so that nobody can judge it without seeing it —
+prototype. Does something have to be done before the question can even be
+discussed — task. Only what none of those fit is an interview.
+
+Getting this wrong is invisible and expensive: a research question put to the
+user asks them for something they would have to go and read, and a look-and-feel
+question settled in conversation gets an answer nobody has seen. If every ticket
+on a map came out an interview, that is worth a second look before creating them.
+
 Every ticket is either **HITL** — human in the loop, worked _with_ a human who
 speaks for themselves — or **AFK**, driven by the agent alone. A HITL ticket only
 resolves through that live exchange; the agent never stands in for the human's
@@ -216,8 +228,9 @@ this).
   UI/logic code, by calling the Skill tool with `build-prototype`. Links the
   prototype as an asset. Use when "how should it look" or "how should it behave"
   is the key question.
-- **Interview** (HITL): Conversation. The default case. Run [The
-  interview](#the-interview).
+- **Interview** (HITL): Conversation, where the answer is a judgement only this
+  person can make and nothing has to be read or seen first. The fallback, not the
+  starting assumption. Run [The interview](#the-interview).
 - **Task** (HITL or AFK): Manual work that must happen before a _decision_ can be
   made — nothing to decide, prototype, or research, but the discussion is blocked
   until it's done. Signing up for a service so its API can be judged,
@@ -323,7 +336,9 @@ User invokes with a loose idea.
    directly instead.
 3. **Create the map** (label `untangle:map`): Destination and Notes filled in,
    Decisions-so-far empty, the fog sketched into **Not yet specified**.
-4. **Create the tickets you can specify now** as child issues of the map — then
+4. **Create the tickets you can specify now** as child issues of the map, each
+   with its type chosen the way **Ticket Types** describes and named in one line
+   where it is not an interview — then
    wire blocking edges in a **second pass** (issues need ids before they can
    reference each other). Wiring sorts them into the frontier and the blocked;
    everything you can't yet specify stays in the fog — the **Not yet specified**
