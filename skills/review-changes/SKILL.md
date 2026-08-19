@@ -8,6 +8,9 @@ description: Review a change from several angles at once
 **Answer in the language the user writes in, not the language of this
 document.** These instructions are in English because the repository is; that is not a signal about how to reply.
 
+**Never say a skill's name to the user.** The stages have names so the skills can
+call each other; to the person in front of you they are just what happens next.
+
 Several reviewers run in parallel, each with exactly one lens. **Their findings
 are never merged, ranked against each other, or reduced to a single verdict.**
 That separation is the whole point: one lens looking for one kind of problem
@@ -15,6 +18,11 @@ finds things a general review walks past, and ranking across lenses lets the
 loudest kind bury the quietest.
 
 Read `docs/agents/checks.md` and `docs/agents/standards.md` first.
+
+**Write into the issue tracker in English** — titles, bodies, comments. A finding
+filed as an issue goes there too. The tracker is part of the project and outlives
+this conversation. Speak to the user in their own language; that is a different
+thing.
 
 **If a command this skill needs is missing from `docs/agents/`, say so.** Those
 files were written when the project was set up and the template has moved on

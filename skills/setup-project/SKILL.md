@@ -354,6 +354,10 @@ The setup must be on the main branch before any other work starts. A task branch
 cut afterwards would not carry `docs/agents/`, and every other skill would find
 nothing.
 
+**Never merge directly.** Open a pull request and let the platform merge it once
+the gates pass — a direct merge is a shared-state action, and the same rule holds
+in every later stage.
+
 Commit, open a pull request, merge it, and then verify against `git log` that it
 actually arrived — a report of success is not evidence. If a check gate blocks the
 merge, say so and stop here; do not offer the next step on top of unmerged setup.

@@ -8,6 +8,9 @@ description: Turn an idea into a specced piece of work
 **Answer in the language the user writes in, not the language of this
 document.** These instructions are in English because the repository is; that is not a signal about how to reply.
 
+**Never say a skill's name to the user.** The stages have names so the skills can
+call each other; to the person in front of you they are just what happens next.
+
 Four stages, each building on what the previous one established. Run them in one
 session where you can. The issue tracker carries the state between them, so an
 interrupted session costs the stage you were in, not all four.
