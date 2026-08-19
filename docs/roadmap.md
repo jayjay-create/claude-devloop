@@ -8,6 +8,8 @@
 | `setup-project` | Set up this repository for devloop |
 | `setup-checks` | Build out this project's check suite |
 | `untangle-idea` | Map the open decisions in something too big — built, not yet exercised |
+| `research` | Answer a question from primary sources |
+| `build-prototype` | Build something throwaway to settle a design question |
 | `plan-work` | Turn an idea into specced, ordered tasks |
 | `cut-into-tasks` | Cut a spec into single tasks |
 | `build-work` | Build the open tasks and merge them |
@@ -27,8 +29,6 @@ A description is a menu entry: verb first, no trigger conditions.
 | `interview` | Ask until nothing is left open | Pocock `grilling`, verbatim |
 | `define-terms` | Keep the glossary and decision records straight | Pocock `domain-modeling`, verbatim |
 | `clarify-idea` | Sharpen an idea into something buildable | Pocock `grill-with-docs`, verbatim |
-| `research` | Answer a question from primary sources | Pocock, adapted |
-| `build-prototype` | Build something throwaway to settle a design question | Pocock `prototype`, verbatim |
 | `write-questionnaire` | Get facts out of someone else's head | Pocock `to-questionnaire`, verbatim |
 | `explore-codebase` | Read the code and report, change nothing | new |
 | `design-options` | Draft several designs and pick one | Pocock `DESIGN-IT-TWICE` + Anthropic `feature-dev` |
