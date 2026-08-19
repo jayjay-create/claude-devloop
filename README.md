@@ -111,7 +111,9 @@ Hooks run without being asked: the check suite after every file change and at
 the end of every turn, and a guard that blocks file writes, `git commit` and
 `git push` on the main branch. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
-than looping.
+than looping. What it hands you is meant to be actionable in one step: a command
+to paste, a script that gathers the environment, a smaller case that reproduces
+the failure, or a question only you can answer.
 
 ## What it writes into your project
 

@@ -136,6 +136,13 @@ feeds stderr to the model as the reason. Exit 1 does not block — the action ru
 and the failure is only logged. A hook that cannot start, wrong path or missing
 `chmod +x`, lands in that same non-blocking bucket, so the gate is silently off.
 
+**Stderr only reaches the model when the hook exits 2.** On exit 0 it goes to the
+debug log and nowhere else. That makes a give-up message on `Stop` a trap: exit 0
+and nobody reads it, exit 2 and the turn continues. The way out is a counter that
+keeps counting past its limit — exit 2 exactly once at the limit so the model gets
+one turn to hand the problem over, then exit 0 silently on every further stop with
+the same failure.
+
 
 ## Who may invoke a skill
 
