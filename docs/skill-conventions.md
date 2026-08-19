@@ -164,8 +164,10 @@ Everything else is model-invocable, because `start-work` chains through them:
 `build-work`, `review-changes`. Note the consequence — the model can also reach
 for `build-work` or `setup-project` on its own. If that ever proves to be a
 problem, the fix is not to lock it, which would break the chain, but to keep the
-human gate inside the skill where it already is: `setup-project` introduces
-itself and waits for a yes before its first tool call.
+gate inside the skill. For `setup-project` that gate is not a confirmation
+prompt — it asks nothing, because both ways in already carry the user's intent:
+either they typed the command, or they said what they wanted built and the chain
+brought them here. It says what it is about to do and does it.
 
 **A locked skill cannot be run by another skill.** The Skill tool refuses it and
 tells the model to ask the user to type the command — the one thing no skill in

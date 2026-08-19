@@ -21,9 +21,10 @@ Write a short introduction in your own words — four or five sentences, their
 language — covering all four of these:
 
 - What this does: takes a piece of work from an idea to merged, reviewed code.
-- What you will do along the way: ask questions, read their code, draft three or
-  four designs under different constraints and recommend one, write a spec, cut
-  it into single pieces of work, build each one test-first and reviewed.
+- What you will do along the way: ask questions, read their code, draft designs
+  under different constraints and recommend one, write a spec, cut it into single
+  pieces of work, build each one test-first and reviewed. No counts, no numbers —
+  how many designs is your problem, not theirs.
 - That they need to remember nothing: no commands, no steps. You say what is
   next; they decide where there is something real to decide.
 - That they can ask about any step and you will explain it.

@@ -35,7 +35,7 @@ know. Someone who has never heard of this workflow must be able to answer.
 What is a convention of this workflow gets created and reported, not asked.
 What you can look up yourself, look up. Never ask the user for a fact.
 
-## Step 0 — Introduce yourself, then confirm
+## Step 0 — Introduce yourself, then get on with it
 
 Do this before any tool call, including reading files. Someone seeing this for the
 first time should not watch six commands run before learning what is going on.
@@ -51,7 +51,7 @@ their first contact. Say roughly this:
 >
 > 1. We sharpen the idea until nothing important is open.
 > 2. I read the existing code before proposing anything.
-> 3. I draft three or four designs under different constraints and recommend one — you choose.
+> 3. I draft designs under different constraints and recommend one — you choose.
 > 4. That becomes a written spec, cut into single tasks with an order.
 > 5. Each task gets built test-first, checked, and reviewed by separate reviewers before it lands.
 >
@@ -66,7 +66,14 @@ their first contact. Say roughly this:
 If that section exists, one line is enough: what you are about to do and roughly
 how long it takes.
 
-Wait for the user to confirm before doing anything else.
+Then get on with it. **Do not ask whether to proceed.** Reaching this skill means
+the user either said what they want built or typed the command themselves; a
+question with one sensible answer is noise, and it teaches them that their
+answers do not matter.
+
+Stop only where something is genuinely undecided and you would otherwise guess:
+this is not a git repository, there is no remote, or the working directory does
+not look like the project they meant. Then say what is wrong and ask about that.
 
 Work on a branch cut from the current main branch. Never commit to main directly.
 
