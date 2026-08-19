@@ -284,6 +284,15 @@ boundary isn't a step on it.
 Two modes. Either way, **never resolve more than one ticket per session** — with
 the exception of research tickets.
 
+**The numbered steps in each mode run in that order, and none is optional.** They
+are not a summary of the work; they are the work. Skipping one leaves a map that
+looks finished and is not — wire the blocking edges late and the frontier query
+starts handing out tickets that were meant to be blocked, with nothing to show
+that anything went wrong.
+
+Running in order is not the same as running without stopping. Where a step ends
+by asking or by handing back, that is the step doing its job.
+
 ### Chart the map
 
 User invokes with a loose idea.
@@ -308,10 +317,12 @@ User invokes with a loose idea.
    spin up a subagent that calls the Skill tool with `research` to resolve it in
    parallel, capturing its findings on a throwaway `research/<n>` branch with a
    context pointer from the ticket.
-6. Stop — charting is one session's work; it hand-resolves nothing. Close by
+6. **Stop here.** Charting is one session's work and it hand-resolves nothing;
+   this step is where the session ends, not a note about pacing. Close by
    offering to take the first frontier ticket, and say why that wants a fresh
    session: each ticket is sized against a full context window, and this one is
-   already part spent.
+   already part spent. On a no, say the map stands and the next session will
+   find it.
 
 ### Work through the map
 
