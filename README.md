@@ -103,8 +103,9 @@ recorded as skipped, with the reason. Two rules hold throughout: a check target
 renders a verdict and changes nothing, and it must be proven able to fail before
 it counts as configured.
 
-Three hooks run the suite without being asked — after every file change, at the
-end of every turn, and blocking writes to the main branch. The turn-end hook
+Hooks run without being asked: the check suite after every file change and at
+the end of every turn, and a guard that blocks file writes, `git commit` and
+`git push` on the main branch. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
 than looping.
 

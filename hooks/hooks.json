@@ -1,6 +1,10 @@
 {
-  "description": "Session status and the project's check suite",
+  "description": "Session status, the project's check suite, and the main-branch guard",
   "hooks": {
+    "PreToolUse": [
+      { "matcher": "Edit|Write|MultiEdit|Bash",
+        "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-branch-guard.sh" } ] }
+    ],
     "SessionStart": [
       { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh" } ] }
     ],
