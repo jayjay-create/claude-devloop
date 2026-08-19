@@ -57,6 +57,10 @@ you choose. This also fixes the seams: where the work will be checked.
 **Write the spec.** No new questions. It records what was decided and publishes
 it to the issue tracker.
 
+Planning writes as it goes. The issue is created before the first question and
+each step is posted to it as it finishes, so an interrupted session picks up at
+the step it was in rather than starting over.
+
 **Cut it into tasks.** Each cuts vertically through every layer so it can be
 demonstrated on its own, fits one fresh session, and records which tasks must
 land first as real, queryable blocking relationships. You confirm the cut before
