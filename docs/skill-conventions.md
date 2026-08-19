@@ -33,6 +33,21 @@ section among sections, and the model acted on whatever was obviously pending
 instead. `## Step 1 — Look` followed by "run exactly one command and nothing
 else" worked on the first try.
 
+## Shared words are defined in one place
+
+A word two skills lean on has to be defined somewhere both of them read, or the
+one that did not get the definition guesses. Two carry real weight here.
+
+**A seam is a place where this work will be checked** — a function boundary, a
+module edge, an entry point. The spec confirms them; nothing gets tested at an
+unconfirmed seam, and a test at one is a review finding. Every skill that builds
+or reviews works to that list.
+
+**A class is one of the nine kinds of check** this workflow tracks: format, lint,
+types, unit, integration, end-to-end, secrets, dependencies, code-security. Nine
+is fixed — the set does not grow per project. What varies is which of them a
+project fills, skips with a reason, or leaves undecided.
+
 ## Never assert state — query it
 
 Which task is next, whether something merged, whether a check is configured:

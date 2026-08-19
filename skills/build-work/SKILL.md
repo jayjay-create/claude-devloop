@@ -38,6 +38,15 @@ If a skill you call does not exist, or a background agent fails, **say so**. Do
 not silently substitute something else and do not carry on as if the result were
 complete.
 
+**A seam is a place where this work is checked** — a function boundary, a module
+edge, an entry point. The spec names them and the user confirms them; nothing is
+tested at an unconfirmed seam.
+
+**The nine classes** are format, lint, types, unit, integration, end-to-end,
+secrets, dependencies, code-security. The set is fixed; what varies per project
+is which are `filled`, which are `skipped` with a reason, and which are still
+`empty`.
+
 ## Before each task
 
 Fetch and compare the local main branch with the remote. If they have diverged,

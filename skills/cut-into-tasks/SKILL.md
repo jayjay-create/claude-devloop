@@ -27,6 +27,10 @@ since. Do not improvise a replacement — an invented query that returns somethi
 plausible is worse than no answer, because nobody can tell it went wrong. Name
 the file, say what is missing, and offer to bring it up to date.
 
+**A seam is a place where this work is checked** — a function boundary, a module
+edge, an entry point. The spec names them and the user confirms them; nothing is
+tested at an unconfirmed seam.
+
 ## What a task is
 
 **One session's work, demonstrable on its own.** Someone who does not know the

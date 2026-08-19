@@ -89,7 +89,9 @@ Two things are not the user's job:
   in the background and carry on.
 - **Terms.** When a word contradicts the glossary, or means three things at once,
   say so and propose a precise one. What gets settled goes into the glossary
-  immediately, not collected for later.
+  immediately, not collected for later. `docs/agents/domain.md` says where this
+  project keeps its glossary and its decision records — read it before writing
+  either, rather than guessing the location.
 
 If a question cannot be settled in conversation because it needs something running
 to look at — a state model, a flow, an interface someone has to see — stop and
