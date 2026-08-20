@@ -30,3 +30,26 @@ The two branches produce very different artifacts, so getting this wrong wastes 
 4. **Skip the polish.** No tests, no error handling beyond what makes the prototype _runnable_, no abstractions. The point is to learn something fast.
 5. **Surface the state.** After every action (logic) or on every variant switch (UI), print or render the full relevant state so the user can see what changed.
 6. **Capture it when done.** Fold any validated decision into the real code, then capture the prototype itself as a **primary source**: commit it to a throwaway branch, out of main, and leave a context pointer to that branch on the implementation issue. Capture the answer too (the verdict and the question it settled) in the issue or a commit. The main branch keeps only the validated decision.
+
+## Hand it over so it gets looked at
+
+A prototype nobody opens settles nothing, and the ticket it belongs to cannot be
+resolved without looking. Naming a file on a branch the user is not on is not
+handing it over — that is three git commands they did not ask to learn.
+
+Give them **one action**. For a single HTML file, the exact command that opens it
+in a browser, checkout included, as one line they can paste. For anything that
+needs a process, the one command that starts it and the address to visit. Say how
+to get back afterwards. If getting to it honestly takes more than one paste, say
+that too, rather than leaving them to work it out.
+
+## Make the variants actually differ
+
+Variants exist so that seeing them changes someone's mind. Three layouts that
+read as different in your description and look nearly alike on screen are one
+variant in three coats of paint, and the user has learned nothing by looking.
+
+Before handing over, check them against each other the way the user will: side by
+side, on screen, ignoring what you meant them to be. If two of them arrange the
+same things in the same order, one of them is not a variant. Fewer, genuinely
+different options beat three that converge.
