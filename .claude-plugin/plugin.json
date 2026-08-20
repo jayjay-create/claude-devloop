@@ -1,6 +1,6 @@
 {
   "name": "devloop",
-  "version": "0.33.1",
+  "version": "0.34.0",
   "description": "From idea to merged, reviewed code \u2014 a guided development loop for Claude Code",
   "license": "MIT",
   "author": {
