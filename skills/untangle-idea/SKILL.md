@@ -318,10 +318,17 @@ boundary isn't a step on it.
 Two modes. Either way, **never resolve more than one ticket per session** — with
 the exception of research tickets.
 
-That applies at the end as much as the start: when a ticket resolves, this
-session is over. Say what it decided, say which tickets that just unblocked, and
-say the next one wants a fresh session. Do not ask what to work on next — the
-answer to that question is "nothing, not here".
+That applies at the end as much as the start: when a ticket resolves, **stop
+there**. Say what it decided and which tickets that just unblocked. Then say how
+to start the next one, in exactly two steps and nothing more:
+
+> Type `/clear`, then `/devloop:start-work`.
+
+That empties the context window without leaving the terminal, and the entry point
+picks the map up from the tracker. Do not tell them to quit and restart, do not
+ask whether to carry on — the answer to that is fixed — and do not carry on
+yourself. Two keystrokes is the whole cost of the rule, and it is only that small
+if you name them.
 
 **The numbered steps in each mode run in that order, and none is optional.** They
 are not a summary of the work; they are the work. Skipping one leaves a map that
@@ -350,6 +357,18 @@ User invokes with a loose idea.
    one thread, and **surface the open decisions without answering them** — they
    become tickets, one per session, which is what the map is for. Resolving six
    of them in a round would leave nothing to chart.
+
+   **Sweep for what you are not naturally looking for.** A workflow aimed at
+   working software surfaces function and technology by reflex — what it does,
+   what it is built with, where it runs — and skips the rest. Before putting the
+   list up, walk these deliberately: what it should look like and feel to use;
+   who uses it and what they are doing when they reach for it; what happens when
+   it is empty, slow, or wrong; how it gets documented; how it gets deployed and
+   kept running; what happens to the data if it moves or goes away. **This list
+   is a prompt, not a checklist** — it is what has been missed so far, not
+   everything that can be missed, and no map is complete because it covers these.
+   Most efforts need only some. A map with none of them is not a map of the
+   effort, it is a map of the parts that were easy to see.
 
    So this is not a round of questions. Put the list to the user and ask one
    thing about it: is anything missing, is anything on it already settled, is
