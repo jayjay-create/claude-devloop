@@ -48,6 +48,29 @@ types, unit, integration, end-to-end, secrets, dependencies, code-security. Nine
 is fixed — the set does not grow per project. What varies is which of them a
 project fills, skips with a reason, or leaves undecided.
 
+## A rule holds only on the path it is written on
+
+The most expensive mistakes in this set were not wrong rules. They were right
+rules written at one point in a skill, which then did not hold when a run reached
+the same situation by another route. Four in one day:
+
+- The handover naming `/clear` sat with the one-ticket rule, so charting ended
+  without it and asked "shall I carry on?" instead — three times in one run.
+- Reporting what is in flight sat in step 2 of the entry point, so a run that
+  detoured through the document refresh came back and skipped it, greeting a map
+  with eleven open tickets by asking what the user would like to build.
+- The check table's format rules sat with the two skills that create the file, so
+  the skill that edits it mid-build wrote a status word that does not exist.
+- The rule that a question can need both reading and deciding sat with the ticket
+  types, so the step that creates tickets in bulk kept turning it into one
+  interview.
+
+Before writing a rule, ask which routes reach the situation it governs, and put
+it where all of them pass — or write it at each. Two copies that agree beat one
+copy that half the runs never read. And when a rule is written and the behaviour
+does not change, **rewrite the sentence rather than appending to it**: "offer to
+run X, without asking" was patched that way and kept producing the offer.
+
 ## Never assert state — query it
 
 Which task is next, whether something merged, whether a check is configured:
