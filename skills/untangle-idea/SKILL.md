@@ -381,7 +381,16 @@ User invokes with a loose idea.
    Decisions-so-far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child issues of the map, each
    with its type chosen the way **Ticket Types** describes and named in one line
-   where it is not an interview — then
+   where it is not an interview.
+
+   Before creating them, check the list once more for questions whose answer
+   depends on how the world is today — what a library or framework can do now,
+   what an API offers, what something costs, what already exists. Nobody holds
+   that in their head, and neither do you. Each one is a research ticket, and the
+   decision that follows it is a separate ticket blocked on it. Choosing a stack
+   is the standard case and the one that keeps being missed.
+
+   Then
    wire blocking edges in a **second pass** (issues need ids before they can
    reference each other). Wiring sorts them into the frontier and the blocked;
    everything you can't yet specify stays in the fog — the **Not yet specified**
