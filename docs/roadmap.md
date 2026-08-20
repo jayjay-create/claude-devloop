@@ -7,7 +7,7 @@
 | `start-work` | Take a piece of work from idea to merged |
 | `setup-project` | Set up this repository for devloop |
 | `setup-checks` | Build out this project's check suite |
-| `untangle-idea` | Map the open decisions in something too big — built, not yet exercised |
+| `untangle-idea` | Map the open decisions in something too big |
 | `research` | Answer a question from primary sources |
 | `build-prototype` | Build something throwaway to settle a design question |
 | `plan-work` | Turn an idea into a specced piece of work |
@@ -90,15 +90,13 @@ to call them on their own.
   change.** Correct by the rules — never merge directly — and out of proportion.
   Worth revisiting only with a rule that does not carve an exception into that
   one.
-- **Most offers still do not say what a no leads to.** The convention is written
-  and three places follow it — auto-merge, the setup pull request, a missing
-  remote. The remaining offers across the skills were never swept against it, so
-  declining most of them still leaves the run without a stated next move.
+- **Not everything is exercised yet.** Version 0.40.0 has not been run: the
+  entry point proposing the next step by title on a map in flight, and the
+  session-end handover naming the next question. `devloop-test-i` holds a map
+  with open tickets if it has not been deleted.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.
-- **`docs/workflow.md`** in this repository predates the README and may
-  contradict it. Reconcile or delete.
 - **End-to-end testing has no worked-out approach.** The class exists in
   `checks.md`; nothing fills it.
 - **Only one stack has been exercised**: a small Python project with GitHub
