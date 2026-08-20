@@ -207,6 +207,14 @@ something looks or behaves, so that nobody can judge it without seeing it —
 prototype. Does something have to be done before the question can even be
 discussed — task. Only what none of those fit is an interview.
 
+**A question can need both reading and deciding** — which framework to build on
+is the standard case: nobody holds the current state of an ecosystem in their
+head, and the choice is still the user's. Those are two tickets, not one. The
+research ticket asks what the options are today and what each costs; the
+interview ticket that follows it asks which one, and is blocked on it. Folding
+them into one interview asks the user to go and read something, which is the
+failure the types exist to prevent.
+
 Getting this wrong is invisible and expensive: a research question put to the
 user asks them for something they would have to go and read, and a look-and-feel
 question settled in conversation gets an answer nobody has seen. If every ticket
@@ -310,6 +318,11 @@ boundary isn't a step on it.
 Two modes. Either way, **never resolve more than one ticket per session** — with
 the exception of research tickets.
 
+That applies at the end as much as the start: when a ticket resolves, this
+session is over. Say what it decided, say which tickets that just unblocked, and
+say the next one wants a fresh session. Do not ask what to work on next — the
+answer to that question is "nothing, not here".
+
 **The numbered steps in each mode run in that order, and none is optional.** They
 are not a summary of the work; they are the work. Skipping one leaves a map that
 looks finished and is not — wire the blocking edges late and the frontier query
@@ -323,9 +336,16 @@ by asking or by handing back, that is the step doing its job.
 
 User invokes with a loose idea.
 
-1. **Name the destination.** Interview to pin down what this map is finding its
-   way to — the spec, decision, or change. The destination fixes the scope, so
-   it's settled first.
+1. **Name the destination.** What is the end of this map — the spec, the
+   decision, or the change? It fixes the scope, so it is settled first.
+
+   **Usually there is nothing to ask here.** Someone who said they want a thing
+   built wants the spec; that is the destination, so say it in one line and carry
+   on. Ask only when they said something else — that they are weighing whether to
+   do this at all, or that one decision is all they came for. And if you ask, ask
+   in their words about their work, never in this workflow's: "should this end
+   with a spec, or just the decision" is a question about your machinery, and
+   they have no way to judge it.
 2. **Map the frontier.** Fan out across the whole space rather than deep on any
    one thread, and **surface the open decisions without answering them** — they
    become tickets, one per session, which is what the map is for. Resolving six
