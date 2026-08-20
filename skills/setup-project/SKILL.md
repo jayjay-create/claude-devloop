@@ -118,6 +118,32 @@ Work on a branch cut from the current main branch. Never commit to main directly
 If a tool call fails, **say so**. Do not carry on as if it had returned, and do
 not substitute something else without naming what failed.
 
+### Permissions, before the first command
+
+Ask this **before running anything**, at the end of this step. Exploring the
+repository is what triggers the first round of confirmations — reading git state,
+listing labels, querying the tracker — so an offer made afterwards arrives too
+late, every time. None of those is a decision. That contradicts what they were promised at the start, and it gets
+worse later: an unattended run needs those permissions granted up front, because
+nobody is there to answer.
+
+So ask once, here, while they are present: offer to grant the command patterns
+this workflow uses on every run, and name them in plain words — reading git
+state, reading and writing issues, opening and merging pull requests. These are
+the workflow's own, so nothing about the project has to be known yet; the
+project's check commands are added in step 5, once they exist. On a yes, say where they are recorded so they can
+be taken back. On a no, say what it costs: a confirmation prompt per command
+kind, and no unattended runs.
+
+**Say what this is not.** It is not the unattended mode, and the two are easy to
+confuse because both sound like "stop asking me". This settles which commands may
+run without a prompt. It changes nothing about who decides: the design choice,
+the task cut and the go-ahead before anything merges all still come to them, one
+at a time, exactly as before. The unattended mode is the separate thing that
+replaces those decisions with a green check suite, it has to be asked for by
+name, and it has its own preconditions. Granting permissions here does not switch
+it on and does not bring it closer.
+
 ## Step 1 — Explore, change nothing
 
 - Git: remote, branch, whether there is any commit at all
@@ -184,30 +210,6 @@ single word can answer.
 
 Never ask about the user's preferred language or tone here — that belongs to the
 plugin's one-time setup, not to a per-project run.
-
-## Step 4b — Permissions, once
-
-The user has just been asked to confirm the same kinds of command over and over —
-reading git state, listing labels, querying the tracker — none of which is a
-decision. That contradicts what they were promised at the start, and it gets
-worse later: an unattended run needs those permissions granted up front, because
-nobody is there to answer.
-
-So ask once, here, while they are present: offer to grant the command patterns
-this workflow uses on every run, and name them in plain words — reading git
-state, reading and writing issues, opening and merging pull requests, the
-project's own check commands. On a yes, say where they are recorded so they can
-be taken back. On a no, say what it costs: a confirmation prompt per command
-kind, and no unattended runs.
-
-**Say what this is not.** It is not the unattended mode, and the two are easy to
-confuse because both sound like "stop asking me". This settles which commands may
-run without a prompt. It changes nothing about who decides: the design choice,
-the task cut and the go-ahead before anything merges all still come to them, one
-at a time, exactly as before. The unattended mode is the separate thing that
-replaces those decisions with a green check suite, it has to be asked for by
-name, and it has its own preconditions. Granting permissions here does not switch
-it on and does not bring it closer.
 
 ## Step 5 — Canonical targets in the task runner
 

@@ -75,9 +75,13 @@ the file, say what is missing, and offer to bring it up to date.
 ## Step 3 — Judge what they asked for
 
 If it is too large to see the end of — where the questions are not "how do we
-build this" but "what are we even building" — say so and offer to map the open
-decisions first, one session at a time, coming back here when the path is clear.
-That is `untangle-idea`.
+build this" but "what are we even building" — **say so and start mapping. Do not
+ask.** You have just made that judgement yourself, on what they told you; asking
+now invites them to overrule it with no more information than you have, and the
+usual answer to a question with one sensible answer is that it gets waved
+through. Say what happens next in one line: the open decisions get mapped first,
+one session at a time, and this picks up again when the path is clear. That is
+`untangle-idea`.
 
 Otherwise carry on.
 

@@ -17,11 +17,10 @@ interrupted session costs the stage you were in, not all four.
 
 The output is a spec in the issue tracker. No code is written here.
 
-If `docs/agents/` is missing, this project is not set up. Say so and offer to run
-`setup-project` first, without asking — there is nothing to decide here,
-and the user has already said what they want; do not improvise around it. This is the one offer with no
-way past it: without the tracker there is nowhere to put a spec, so a no ends the
-attempt rather than pausing it. Say that plainly instead of starting anyway.
+If `docs/agents/` is missing, this project is not set up. **Say in one line what
+you are doing and run `setup-project`. Do not ask.** There is nothing to decide:
+without a tracker there is nowhere to put a spec, so the only other answer is to
+abandon what the user just asked for. Do not improvise around it either.
 
 **Write into the issue tracker in English** — titles, bodies, comments. The
 tracker is part of the project and outlives this conversation. Speak to the user
