@@ -405,11 +405,20 @@ User invokes with a loose idea.
    parallel, capturing its findings on a throwaway `research/<n>` branch with a
    context pointer from the ticket.
 6. **Stop here.** Charting is one session's work and it hand-resolves nothing;
-   this step is where the session ends, not a note about pacing. Close by
-   offering to take the first frontier ticket, and say why that wants a fresh
-   session: each ticket is sized against a full context window, and this one is
-   already part spent. On a no, say the map stands and the next session will
-   find it.
+   this step is where the session ends. Say what the map holds and which tickets
+   are free. Then say how to start the first one, in these two steps and nothing
+   more:
+
+   > Type `/clear`, then `/devloop:start-work`.
+
+   Say why: each ticket is sized against a full context window and this one is
+   part spent, and `/clear` empties it without leaving the terminal. **Do not ask
+   whether to carry on.** Offering to take the ticket now contradicts the
+   sentence before it, and the user cannot know those two commands unless you
+   name them — leaving them out turns a two-keystroke rule into a dead end.
+
+   A research ticket finishing later does not reopen this. Report what it found
+   and stop again, with the same two steps.
 
 ### Work through the map
 
