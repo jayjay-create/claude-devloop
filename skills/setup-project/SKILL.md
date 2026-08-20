@@ -135,8 +135,11 @@ project's check commands are added in step 5, once they exist. On a yes, say whe
 be taken back. On a no, say what it costs: a confirmation prompt per command
 kind, and no unattended runs.
 
-**Say what this is not.** It is not the unattended mode, and the two are easy to
-confuse because both sound like "stop asking me". This settles which commands may
+**Say what this is not, in the options themselves.** A caveat in the paragraph
+above them does not get read — the two lines the user chooses between do. So the
+yes says, in its own words, that the real decisions still come to them one at a
+time; and the wording never suggests otherwise. It is not the unattended mode,
+and the two are easy to confuse because both sound like "stop asking me". This settles which commands may
 run without a prompt. It changes nothing about who decides: the design choice,
 the task cut and the go-ahead before anything merges all still come to them, one
 at a time, exactly as before. The unattended mode is the separate thing that
