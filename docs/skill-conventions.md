@@ -72,8 +72,10 @@ and offer to update that file from the current template.
 
 ## Only ask where there is something to decide
 
-A question with one sensible answer is noise, and it teaches the user that their
-answers do not matter — which is how the real questions start getting waved
+A question with one sensible answer is noise, and so is a question the user has
+just answered — asking someone who opened with "I have no idea about any of this"
+whether they have a direction in mind reads as not having listened. Both teach
+the user that their answers do not matter — which is how the real questions start getting waved
 through. Before asking, name what the other answer would actually change. If
 nothing, say what you are about to do and do it.
 
