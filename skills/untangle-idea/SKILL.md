@@ -324,6 +324,9 @@ to start the next one, in exactly two steps and nothing more:
 
 > Type `/clear`, then `/devloop:start-work`.
 
+Name the next question with it — you just queried the frontier, so say in one
+line which one is next.
+
 That empties the context window without leaving the terminal, and the entry point
 picks the map up from the tracker. Do not tell them to quit and restart, do not
 ask whether to carry on — the answer to that is fixed — and do not carry on
@@ -422,6 +425,10 @@ User invokes with a loose idea.
    more:
 
    > Type `/clear`, then `/devloop:start-work`.
+
+   **Name the next question with it.** You have just queried the frontier, so you
+   know its title — say which question is next in one line, so they know what
+   they are walking into rather than just how to get there.
 
    Say why: each ticket is sized against a full context window and this one is
    part spent, and `/clear` empties it without leaving the terminal. **Do not ask
