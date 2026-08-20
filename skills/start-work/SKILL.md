@@ -22,8 +22,11 @@ with a frontmatter block it sits below that, not on line one. Older means
 these files were written from templates this workflow has since changed. Say that
 in one line, in ordinary words: the setup files here are from an older version of
 this workflow, and offer to bring them up to date, which takes a minute and
-touches nothing the project decided for itself. On a yes, run `setup-project` and
-carry on afterwards. On a no, carry on with what is there and do not raise it
+touches nothing the project decided for itself. On a yes, run `setup-project`,
+and when it returns **carry on with step 2 as if nothing had happened** — the
+refresh is an errand, not the answer to why they are here. Reporting what is in
+flight is the thing they came for, and it is exactly what gets dropped when a
+detour ends and the run picks up wherever it left off. On a no, carry on with what is there and do not raise it
 again this session. A file with no marker at all predates the marker; treat it as
 older.
 
