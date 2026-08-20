@@ -273,7 +273,12 @@ for collaborators reading where the effort is headed.
 _not_ whether you can answer it now.
 
 - **Ticket when** the question is already sharp — even if it's blocked and you
-  can't act on it yet.
+  can't act on it yet. **"That depends on X" is a blocker, not fog.** It is the
+  most common way a perfectly sharp question gets left uncharted: how it should
+  look depends on the platform, which stack to use depends on the platform, where
+  to host depends on the storage — every one of those is a question you can
+  already write down in one line, so every one is a ticket, blocked on the
+  ticket it depends on. Fog is when you cannot yet say what the question _is_.
 - **Not yet specified when** you can't yet phrase it that sharply. Don't
   pre-slice the fog into ticket-sized pieces: it's coarser than a ticket, and one
   patch may graduate into several tickets, or none, once the frontier reaches it.
@@ -343,6 +348,11 @@ User invokes with a loose idea.
    reference each other). Wiring sorts them into the frontier and the blocked;
    everything you can't yet specify stays in the fog — the **Not yet specified**
    section.
+
+   If this leaves you with one or two tickets and everything else in the fog,
+   look again: something depending on an open decision belongs in the blocked
+   pile, not the fog. A map whose whole shape is "answer this, then we'll see"
+   charts nothing.
 5. **Fire the research subagents.** For each `research` ticket you just created,
    spin up a subagent that calls the Skill tool with `research` to resolve it in
    parallel, capturing its findings on a throwaway `research/<n>` branch with a

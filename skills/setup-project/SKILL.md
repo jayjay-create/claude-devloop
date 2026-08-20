@@ -185,6 +185,30 @@ single word can answer.
 Never ask about the user's preferred language or tone here — that belongs to the
 plugin's one-time setup, not to a per-project run.
 
+## Step 4b — Permissions, once
+
+The user has just been asked to confirm the same kinds of command over and over —
+reading git state, listing labels, querying the tracker — none of which is a
+decision. That contradicts what they were promised at the start, and it gets
+worse later: an unattended run needs those permissions granted up front, because
+nobody is there to answer.
+
+So ask once, here, while they are present: offer to grant the command patterns
+this workflow uses on every run, and name them in plain words — reading git
+state, reading and writing issues, opening and merging pull requests, the
+project's own check commands. On a yes, say where they are recorded so they can
+be taken back. On a no, say what it costs: a confirmation prompt per command
+kind, and no unattended runs.
+
+**Say what this is not.** It is not the unattended mode, and the two are easy to
+confuse because both sound like "stop asking me". This settles which commands may
+run without a prompt. It changes nothing about who decides: the design choice,
+the task cut and the go-ahead before anything merges all still come to them, one
+at a time, exactly as before. The unattended mode is the separate thing that
+replaces those decisions with a green check suite, it has to be asked for by
+name, and it has its own preconditions. Granting permissions here does not switch
+it on and does not bring it closer.
+
 ## Step 5 — Canonical targets in the task runner
 
 This workflow keeps two files of local state under `.claude/`:
