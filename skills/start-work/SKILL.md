@@ -61,7 +61,16 @@ remembers what they were building, not that it was issue nine.
 
 Then ask the same open question: what would they like to build?
 
-Reporting is not proposing. Say what is there and stop — do not rank it, do not
+**If a map or a spec is in flight, propose the next step.** Name the free
+tickets or tasks by title and say which one comes next, in one line. "Eleven open
+decisions" is a number, not a handhold: the user cannot act on a count, and
+asking what they would like to build is the wrong question when the answer is
+plainly "carry on with the thing I started". They can still say something else.
+
+Reporting is not proposing — with that one exception, and it is a real one.
+Proposing is intrusive when it tells the user what to want; it is help when it
+tells them where they stopped and what comes next. A stray open issue somebody
+filed is the first. A ticket on a map they started themselves is the second. Say what is there and stop — do not rank it, do not
 recommend one, do not offer to pick it up. An open issue is somebody's
 suggestion, not an instruction, and someone coming back after a week needs to see
 where they stood before they can answer at all. If the query comes back empty,
