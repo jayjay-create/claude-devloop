@@ -404,6 +404,18 @@ User invokes with a loose idea.
    spin up a subagent that calls the Skill tool with `research` to resolve it in
    parallel, capturing its findings on a throwaway `research/<n>` branch with a
    context pointer from the ticket.
+
+   **Tell each one it must not change branches.** They run at the same time in
+   one working directory and share its git state, so a checkout by one lands
+   under the other's feet — which has already happened, leaving one agent's file
+   committed on the other's branch. Each writes only its own file and commits
+   only that path.
+
+   If it happens anyway, say so and leave it. **Do not rewrite history to tidy
+   it** — no `rm` on another branch, no cherry-picking a commit out from under
+   it. A stray file in a throwaway research branch costs nothing; quietly
+   reshaping branches to hide a mistake costs the ability to trust what the
+   branches say.
 6. **Stop here.** Charting is one session's work and it hand-resolves nothing;
    this step is where the session ends. Say what the map holds and which tickets
    are free. Then say how to start the first one, in these two steps and nothing
