@@ -53,9 +53,13 @@ Hand this to the human in a form they can act on in one step. Pick whichever fit
   - a named question only they can answer, with what each answer would change
 
 Say what you were trying to do, what you tried, and what the failure actually
-says. Then wait for them. Failing checks:$FAILED" >&2
+says. Name the candidate causes a diagnosis already ruled out, so nobody spends
+the time again. Then wait for them. Failing checks:$FAILED" >&2
   exit 2
 fi
 
-echo "Checks are failing (attempt $COUNT of $MAX). Fix this before reporting done:$FAILED" >&2
+echo "Checks are failing (attempt $COUNT of $MAX). Fix this before reporting done.
+A failure in the unit, integration or end-to-end class does not name its cause.
+Run diagnose-bug on it rather than another guess. The other six classes print
+their cause in the output below and are fixed directly.$FAILED" >&2
 exit 2

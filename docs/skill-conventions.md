@@ -268,9 +268,10 @@ In this set, two are user-invoked: `start-work`, the entry point, and
 `record-lessons`. No other skill runs either of them, so locking them costs
 nothing.
 
-Everything else is model-invocable, because `start-work` chains through them:
-`setup-project`, `setup-checks`, `untangle-idea`, `plan-work`, `cut-into-tasks`,
-`build-work`, `review-changes`. Note the consequence — the model can also reach
+Everything else is model-invocable, because the chain reaches it from
+`start-work` or from another skill: `setup-project`, `setup-checks`,
+`untangle-idea`, `research`, `build-prototype`, `plan-work`, `cut-into-tasks`,
+`build-work`, `review-changes`, `diagnose-bug`. Note the consequence — the model can also reach
 for `build-work` or `setup-project` on its own. If that ever proves to be a
 problem, the fix is not to lock it, which would break the chain, but to keep the
 gate inside the skill. For `setup-project` that gate is not a confirmation

@@ -91,8 +91,13 @@ The subagent:
 2. Works test-first at the seams the spec confirmed, and at no others: the
    failing test, then just enough code to pass it, one slice at a time. Not every
    test up front — that tests imagined behaviour.
-3. Fixes causes, not symptoms. If a second defect remains after the fix, that is
-   its own defect with its own effect, not a leftover of the first.
+3. Fixes causes, not symptoms. A red check in the unit, integration or
+   end-to-end class does not name its cause, so it goes to `diagnose-bug`
+   rather than to a guess — unless it is the deliberately failing test of the
+   loop in point 2, which is working as intended. The other six classes print
+   their cause in their own output and are fixed directly. If a second defect
+   remains after the fix, that is its own defect with its own effect, not a
+   leftover of the first.
 4. Commits behaviour changes separately from mechanical ones.
 5. Runs everything `checks.md` lists before reporting done. A report a later gate
    rejects is not a report.
