@@ -63,15 +63,14 @@ remembers what they were building, not that it was issue nine.
 **If nothing is in flight**, ask the same open question: what would they like to
 build?
 
-**If a map or a spec is in flight, do not ask that question at all.** Propose
-the next step instead: name the free tickets or tasks by title, say which one
-comes next and what it unblocks, in one line, and offer to start it. "Eleven
-open decisions" is a number, not a handhold: the user cannot act on a count, and
-asking what they would like to build is the wrong question when the answer is
-plainly "carry on with the thing I started". The two are exclusive. A reply
-carrying both — in either order, or welded into one sentence — is the failure
-this paragraph exists to prevent. On a no the map stays exactly as it is, and
-they can name something else instead.
+**If a map or a spec is in flight, do not ask a question at all.** Name the free
+tickets or tasks by title, say which one comes next and what it unblocks, in one
+line, and start it. "Eleven open decisions" is a number, not a handhold: the user
+cannot act on a count. And do not ask whether to carry on — typing the command in
+a project with work already in flight is the answer to that, the way saying what
+you want built is the answer everywhere else. Asking again treats what they just
+did as if it had not happened. Say which one you are taking so they can name a
+different one instead.
 
 Reporting is not proposing, and the difference is which of the two cases you are
 in. Proposing is intrusive when it tells the user what to want; it is help when
@@ -89,7 +88,10 @@ it tells them where they stopped and what comes next.
 If the query comes back empty, say the tracker is clear and ask the question on
 its own.
 
-Either way: stop here until they answer.
+**Stop here until they answer — but only where a question was asked.** Nothing
+in flight means a question and a stop. Something in flight means no question,
+so there is nothing to wait for: report where they stopped, say which piece you
+are taking, and take it.
 
 **If a command this skill needs is missing from `docs/agents/`, say so.** Those
 files were written when the project was set up and the template has moved on
