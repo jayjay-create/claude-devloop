@@ -24,15 +24,24 @@ types prints the line and the mismatch, secrets prints the file and the pattern,
 dependencies and code-security print the package or the finding. Fix those
 directly. There is nothing here to diagnose.
 
-Two routes reach a red check and both come here:
+Three routes reach a red check, and all three come here:
 
+- A build checks its base before starting, and the base is already red.
 - A build runs the check suite before reporting done, and it fails.
 - The turn-end gate catches a report that was already made.
 
-There is no third route today. A second one arrives when a person can look at
-the thing running and say it behaves wrongly; the steps below already cover it,
-because the symptom they work from is the one that was described, not the one
-that was convenient to reproduce.
+The first of the three is the one where the cause is certainly **not** in the
+work just done, because none has been done yet. That makes it the case where
+reading your own changes first wastes the most time, and the case where the
+suspects are already enumerated for you: whatever landed since the base was last
+green. Treat those as the first ranked candidates in step 4 and reverting one as
+a falsifiable prediction — a short suspect list is a head start on the
+diagnosis, never a substitute for it.
+
+A fourth route arrives when a person can look at the thing running and say it
+behaves wrongly; the steps below already cover it, because the symptom they work
+from is the one that was described, not the one that was convenient to
+reproduce.
 
 Before reading any code, read `docs/agents/domain.md` for what the words in this
 project mean and which decision records cover the area, `docs/agents/standards.md`

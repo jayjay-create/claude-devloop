@@ -68,6 +68,34 @@ remote does not, or the reverse, and reconciling them is their call, not
 something to resolve by force. Nothing is lost meanwhile; the tasks are in the
 tracker and this picks up once the branches agree.
 
+**Then run the check suite on that base, before cutting anything.** It costs
+seconds and it buys the one thing no later step can recover: knowing whether the
+base was green when you started. Without it, a red check at the end of the build
+is ambiguous — your work or something you inherited — and that ambiguity is
+exactly where a run starts guessing.
+
+**If the base is already red, do not start a task on it.** The cause is not in
+work you have not done yet, so do not read your own plan for it. Say which
+classes are red. Then, for a failure in the unit, integration or end-to-end
+class, run `diagnose-bug` on it; the other six print their own cause and are
+fixed directly. Either way you now have a cause, not a suspicion.
+
+Then say what it is and let the user choose how to clear it, with what each
+answer costs:
+
+- **Undo the change that broke it**, with a revert commit rather than a rewrite,
+  so nothing is lost and the history still shows what happened. The base is
+  green again and the task starts clean.
+- **Fix it inside the task's own branch**, so the fix goes through review and
+  merge like anything else — but the base stays red until that lands, and the
+  task's diff now carries a change that has nothing to do with it.
+- **Leave it to them**, and pick the task up once they say it is done.
+
+A base that went red between two known-good states is the one case where the
+suspects are already enumerated: the commits that landed since the last green
+run. That is a ranked list, and reverting one of them is a falsifiable
+prediction — it belongs in the diagnosis, not instead of it.
+
 ## Step 2 — Pick the next task
 
 Run the readiness query from `docs/agents/issue-tracker.md`. Ready means: open,
