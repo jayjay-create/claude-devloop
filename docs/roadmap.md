@@ -16,10 +16,30 @@
 | `review-changes` | Review a change from several angles at once |
 | `record-lessons` | Write down what went wrong so it does not repeat |
 
-## Not built
+## Named, not built as skills
 
-Names and one-line descriptions are settled; the bodies are not written.
-A description is a menu entry: verb first, no trigger conditions.
+Names and one-line descriptions are settled; the bodies are not written. A
+description is a menu entry: verb first, no trigger conditions. The origin says
+where the body would come from if one is ever needed — mostly a file to copy from
+mattpocock/skills and adjust, which is minutes of work, not days.
+
+**This is a supply of names, not a backlog.** Nothing here is missing: the
+pre-handover check that holds locked skills against their callers comes back
+empty, so no built skill reaches for anything on this list. A name leaves it when
+something needs to call it on its own, which is exactly how `research` and
+`build-prototype` got built.
+
+Two kinds of entry read as gaps and are not:
+
+- **Already done, inside another skill.** `interview`, `define-terms` and
+  `clarify-idea` are written out in `plan-work` and `untangle-idea` rather than
+  delegated to, deliberately — upstream reports that a skill which only delegates
+  loads half its dependencies and guesses at the rest. They will not be built.
+- **Already done, as a stage.** `explore-codebase`, `design-options`,
+  `write-spec`, `implement-ticket`, `test-first-loop` and `merge-and-verify`
+  describe work the workflow does today, as stages inside `plan-work` and
+  `build-work`. Pulling one out is only worth it if something else has to call
+  it separately.
 
 | Skill | Description | Origin |
 |---|---|---|
