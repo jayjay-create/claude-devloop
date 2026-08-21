@@ -216,7 +216,13 @@ single word can answer.
    Then ask: map onto the existing ones, or add ours alongside. Otherwise create
    the five standard labels and report it.
 6. **Where glossary and decision records live** — only if something already lives
-   elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`, created and reported.
+   elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`. **Create both
+   as files that git can carry, and say you did.** `CONTEXT.md` gets a heading
+   and a line saying it stays empty until the first term comes up; `docs/adr/`
+   gets a `README.md` saying what belongs in it. A bare `mkdir` leaves an empty
+   directory, git does not track one, and nobody who clones the repository ever
+   sees it. This matters because `domain.md` is about to point at both: a
+   pointer to something that does not exist is the one outcome to avoid.
 
 Never ask about the user's preferred language or tone here — that belongs to the
 plugin's one-time setup, not to a per-project run.
@@ -362,8 +368,9 @@ If it has no queryable blocking relationship, stop the setup — see above.
 
 ### `domain.md`
 
-Where the glossary and the decision records live. That terms go into the glossary
-the moment they come up, not collected later. The three tests for writing a
+Where the glossary and the decision records live — the two places step 6 just
+created, so check they are there before writing the pointer. That terms go into
+the glossary the moment they come up, not collected later. The three tests for writing a
 decision record: hard to reverse, surprising without explanation, the result of a
 real trade-off. The format: title, context, decision, binding consequences, status
 only for superseded or deprecated, rejected options only when the rejection is not
