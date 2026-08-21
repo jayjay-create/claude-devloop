@@ -69,7 +69,10 @@ Before writing a rule, ask which routes reach the situation it governs, and put
 it where all of them pass — or write it at each. Two copies that agree beat one
 copy that half the runs never read. And when a rule is written and the behaviour
 does not change, **rewrite the sentence rather than appending to it**: "offer to
-run X, without asking" was patched that way and kept producing the offer.
+run X, without asking" was patched that way and kept producing the offer, and
+the entry point was patched that way again: a paragraph saying not to ask what
+the user wants to build was added below the sentence telling it to ask, which
+still stood, so runs did both.
 
 ## Never assert state — query it
 

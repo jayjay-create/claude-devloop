@@ -136,15 +136,17 @@ the size of the work.
   record a point as an issue and the issue list did not grow. Nothing checks that
   a promised issue exists.
 - **Refreshing the control documents opens a pull request for a five-character
-  change.** Correct by the rules — never merge directly — and out of proportion.
-  Worth revisiting only with a rule that does not carve an exception into that
-  one.
-- **Not everything is exercised yet.** Version 0.40.0 has not been run: the
-  entry point proposing the next step by title on a map in flight, and the
-  session-end handover naming the next question. `devloop-test-i` holds a map
-  with open tickets if it has not been deleted. Neither has `diagnose-bug`: it
-  is wired into the build loop and into the turn-end hook, and no run has
-  reached it yet.
+  change.** Seen: a version marker on five files produced a branch, a commit, a
+  pull request and a merge. Correct by the rules — never merge directly — and
+  out of proportion, and it now happens without being asked for. Worth
+  revisiting only with a rule that does not carve an exception into that one.
+- **Not everything is exercised yet.** The entry point proposing the next step
+  by title on a map in flight has now run; the two bugs it showed are fixed. The
+  session-end handover naming the next question has not — that rule only fires
+  once a ticket resolves, so it needs a full interview run to be seen at all.
+  `diagnose-bug` has not run either: it is wired into the build loop and into
+  the turn-end hook, and no project set up so far has a filled behaviour class
+  for it to trigger on.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.

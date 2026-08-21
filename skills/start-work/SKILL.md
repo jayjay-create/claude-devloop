@@ -19,16 +19,17 @@ If it lists files, find the version marker in `docs/agents/issue-tracker.md` —
 the line matching `<!-- devloop: ` — and compare it with the running version.
 Search the file for that line rather than assuming which one it is; in a file
 with a frontmatter block it sits below that, not on line one. Older means
-these files were written from templates this workflow has since changed. Say that
-in one line, in ordinary words: the setup files here are from an older version of
-this workflow, and offer to bring them up to date, which takes a minute and
-touches nothing the project decided for itself. On a yes, run `setup-project`,
-and when it returns **carry on with step 2 as if nothing had happened** — the
-refresh is an errand, not the answer to why they are here. Reporting what is in
-flight is the thing they came for, and it is exactly what gets dropped when a
-detour ends and the run picks up wherever it left off. On a no, carry on with what is there and do not raise it
-again this session. A file with no marker at all predates the marker; treat it as
-older.
+these files were written from templates this workflow has since changed. Say in
+one line, in ordinary words, that the setup files here are from an older version
+of this workflow and that you are bringing them up to date, then run
+`setup-project`. **Do not ask.** The refresh touches nothing the project decided
+for itself, so a no protects nothing — and the question costs a second decision
+in the same reply, which is how a bare "yes" stops being an answer to either
+one. When `setup-project` returns, **carry on with step 2 as if nothing had
+happened** — the refresh is an errand, not the answer to why they are here.
+Reporting what is in flight is the thing they came for, and it is exactly what
+gets dropped when a detour ends and the run picks up wherever it left off. A
+file with no marker at all predates the marker; treat it as older.
 
 ## Step 2 — Orient them, if the status line says this project is not set up
 
@@ -59,22 +60,34 @@ remembers what they were building, not that it was issue nine.
 - Loose issues nobody has picked up: their titles. Past three or four, name the
   newest and say how many others there are.
 
-Then ask the same open question: what would they like to build?
+**If nothing is in flight**, ask the same open question: what would they like to
+build?
 
-**If a map or a spec is in flight, propose the next step.** Name the free
-tickets or tasks by title and say which one comes next, in one line. "Eleven open
-decisions" is a number, not a handhold: the user cannot act on a count, and
+**If a map or a spec is in flight, do not ask that question at all.** Propose
+the next step instead: name the free tickets or tasks by title, say which one
+comes next and what it unblocks, in one line, and offer to start it. "Eleven
+open decisions" is a number, not a handhold: the user cannot act on a count, and
 asking what they would like to build is the wrong question when the answer is
-plainly "carry on with the thing I started". They can still say something else.
+plainly "carry on with the thing I started". The two are exclusive. A reply
+carrying both — in either order, or welded into one sentence — is the failure
+this paragraph exists to prevent. On a no the map stays exactly as it is, and
+they can name something else instead.
 
-Reporting is not proposing — with that one exception, and it is a real one.
-Proposing is intrusive when it tells the user what to want; it is help when it
-tells them where they stopped and what comes next. A stray open issue somebody
-filed is the first. A ticket on a map they started themselves is the second. Say what is there and stop — do not rank it, do not
-recommend one, do not offer to pick it up. An open issue is somebody's
-suggestion, not an instruction, and someone coming back after a week needs to see
-where they stood before they can answer at all. If the query comes back empty,
-say the tracker is clear and ask the question on its own.
+Reporting is not proposing, and the difference is which of the two cases you are
+in. Proposing is intrusive when it tells the user what to want; it is help when
+it tells them where they stopped and what comes next.
+
+- **A stray open issue somebody filed.** Say what is there and stop — do not
+  rank it, do not recommend one, do not offer to pick it up. An open issue is
+  somebody's suggestion, not an instruction, and someone coming back after a
+  week needs to see where they stood before they can answer at all.
+- **A ticket or task on something they started themselves.** This is the
+  exception, and it is a real one: rank it, recommend one, offer to pick it up.
+  That is the paragraph above, and none of the three refusals in the case above
+  apply here.
+
+If the query comes back empty, say the tracker is clear and ask the question on
+its own.
 
 Either way: stop here until they answer.
 
