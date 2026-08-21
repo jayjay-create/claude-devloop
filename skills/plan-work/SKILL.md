@@ -72,8 +72,20 @@ the summary to be complete.
 ## How to ask
 
 Every question states what is being decided, what each answer means in practice,
-and what it costs. Never name a bare term the user may not know. Never ask the
-user for a fact you could look up. Never ask which skill to use.
+what it costs, and why it comes up now. Never name a bare term the user may not
+know. Never ask the user for a fact you could look up. Never ask which skill to
+use.
+
+**Only ask where there is something to decide.** A question with one sensible
+answer is noise, and so is a question the user has just answered. Name what the
+other answer would change before asking; if nothing, say what you are about to
+do and do it. Moving to the next stage of this workflow is not a decision — the
+decisions sit inside the stages, and every one of them comes back on its own.
+
+**A question has to be answerable by what it offers.** "Does this fit, or shall
+I change something?" cannot be answered with yes: an alternative question and a
+yes-or-no question are different shapes, and a reply to the mixed form means
+neither. Ask one or the other.
 
 ## Stage 1 — Sharpen the idea
 
@@ -200,7 +212,7 @@ in `docs/agents/issue-tracker.md`.
 
 Report the spec's issue number and one line on what it covers.
 
-Then offer to cut it into tasks and do that on a yes — run `cut-into-tasks`.
-Say what that means in plain words: single pieces of work, each one demonstrable
-on its own, in an order. On a no, say the spec is finished and waiting, and that
-the next session will report it — nothing has to be held onto.
+Then say you are cutting it into tasks, and do it — run `cut-into-tasks`. Say
+what that means in plain words: single pieces of work, each one demonstrable on
+its own, in an order. Do not ask permission first. The decision here is the
+split itself, and that comes back for confirmation before anything is created.

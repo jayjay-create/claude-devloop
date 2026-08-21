@@ -37,6 +37,24 @@ since. Do not improvise a replacement — an invented query that returns somethi
 plausible is worse than no answer, because nobody can tell it went wrong. Name
 the file, say what is missing, and offer to bring it up to date.
 
+## How to ask
+
+Every question states what is being decided, what each answer means in practice,
+what it costs, and why it comes up now. Never name a bare term the user may not
+know. Never ask the user for a fact you could look up. Never ask which skill to
+use.
+
+**Only ask where there is something to decide.** A question with one sensible
+answer is noise, and so is a question the user has just answered. Name what the
+other answer would change before asking; if nothing, say what you are about to
+do and do it. Moving to the next stage of this workflow is not a decision — the
+decisions sit inside the stages, and every one of them comes back on its own.
+
+**A question has to be answerable by what it offers.** "Does this fit, or shall
+I change something?" cannot be answered with yes: an alternative question and a
+yes-or-no question are different shapes, and a reply to the mixed form means
+neither. Ask one or the other.
+
 ## Step 1 — Read the current state
 
 Read `docs/agents/checks.md`. List which classes are `empty`. For each, judge from
@@ -136,10 +154,10 @@ suite is incomplete.
 Say how many classes are `filled`, how many `skipped` and why, and how many are
 still `empty`.
 
-Then offer the next step and do it on a yes: more classes if any are still
-`empty`, otherwise starting on the first piece of work. On a no, say what stays
-as it is: the remaining classes keep saying `empty`, which is a record that
-nobody decided yet, and the unattended mode stays unavailable until none are.
+Then say what happens next and do it, without asking first: more classes if any
+are still `empty`, otherwise the first piece of work. Say what the state means
+either way — a class still saying `empty` is a record that nobody decided yet,
+and the unattended mode stays unavailable until none are.
 
 If nothing is `empty` any more, say that the unattended mode's first condition is
 now met — the check suite can stand in for a human's approval.

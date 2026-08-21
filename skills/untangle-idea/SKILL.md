@@ -24,6 +24,24 @@ to lock before planning starts, or a change made in place like a data-structure
 migration. The map is domain-agnostic — engineering work, course content,
 whatever fits the shape.
 
+## How to ask
+
+Every question states what is being decided, what each answer means in practice,
+what it costs, and why it comes up now. Never name a bare term the user may not
+know. Never ask the user for a fact you could look up. Never ask which skill to
+use.
+
+**Only ask where there is something to decide.** A question with one sensible
+answer is noise, and so is a question the user has just answered. Name what the
+other answer would change before asking; if nothing, say what you are about to
+do and do it. Moving to the next stage of this workflow is not a decision — the
+decisions sit inside the stages, and every one of them comes back on its own.
+
+**A question has to be answerable by what it offers.** "Does this fit, or shall
+I change something?" cannot be answered with yes: an alternative question and a
+yes-or-no question are different shapes, and a reply to the mixed form means
+neither. Ask one or the other.
+
 ## Plan, don't do
 
 This is **planning** by default: each ticket resolves a decision, and the map is
