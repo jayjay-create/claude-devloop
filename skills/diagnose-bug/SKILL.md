@@ -11,7 +11,19 @@ description: Find what actually causes a bug
 not a tool being run, it is what happens when something fails.
 
 A discipline for a failure that does not name its own cause. The steps run in
-order. Skip one only by saying which one and why.
+order.
+
+**A step you skip has to be named out loud, to the user, with the reason.** Not
+skipped quietly and not summarised afterwards as though it had run. A small
+failure will genuinely not need all six, and saying "the case is one line, so I
+am not cutting it down or ranking causes" is a fine thing to say. Saying nothing
+is not: it leaves nobody able to tell a discipline that was applied from one
+that was walked past, which is the only thing these steps are for.
+
+**Everything here is said in the user's language.** The steps below have
+completion criteria that read like a checklist; ticking one off is still
+speaking to a person, not filling in a form, and a checklist item repeated back
+in the language of this document instead of theirs is the one place that slips.
 
 ## When this runs
 
