@@ -180,8 +180,10 @@ the same breath as naming it: it stays open until fixed or explicitly deferred.
 
 ## Step 5 — Hand it to the user
 
-Show the diff and the findings — what was fixed, what was filed. Ask whether to
-merge or revise, and say what each means.
+Show the diff and the findings — what was fixed, what was filed. Then ask one
+closed question — whether this should land — and say what each answer means: yes
+merges it, no keeps the branch and takes revisions. Not "merge or revise?": that
+is two questions in one and a reply to it answers neither.
 
 **This is the gate.** It is the one place in the loop where a human decides
 whether work lands, and it is the reason the loop is trustworthy. Reaching step 6
@@ -220,7 +222,9 @@ Once it has landed:
   `--delete-branch` does not always take effect on an auto-merge.
 - Confirm the task issue closed. Check whether this also closed anything else,
   naming each one you checked, including the ones it did not close.
-- If every task under a spec is now closed, offer to close the spec.
+- If every task under a spec is now closed, close the spec and say you did. Do
+  not ask: every task under it is done, so there is no second sensible answer,
+  and reopening an issue is one click if it turns out there was one.
 - Re-read the `skipped` reasons in `docs/agents/checks.md`. Many are written
   against a state of the project — no code yet, no entry point, no third-party
   dependencies — and merging is what changes that state. Name any whose reason

@@ -484,6 +484,7 @@ editing the tracker concurrently.
 
 No open tickets and no fog left means the way is clear: the destination is
 reached and there is nothing more to decide before someone builds. Say that the
-questions are settled, gist what the map decided, and offer to carry straight on
-into planning and building the work. On a no, say the map stands as the record of
-what was decided and the next session will find it.
+questions are settled, gist what the map decided, and carry straight on into
+planning and building the work. Do not ask permission for that: the map exists
+because they wanted the thing built, and it is now out of the way. Say what you
+are doing so they can say to stop instead.

@@ -119,8 +119,18 @@ the user to run it.
 
 ## Step 5 — Build it
 
-Run `plan-work`. It carries through to the tasks and offers to build them. Each
-stage ends by offering the next and running it on a yes.
+Which stage you enter depends on what step 2 found, and getting it wrong costs a
+skill load and a correction the user watches happen:
+
+- **A ready task under a finished spec** — no planning is left to do. Go
+  straight to `build-work`.
+- **A planning left unfinished** — `plan-work` picks it up at the stage its
+  comments say it reached.
+- **Anything else, including a fresh idea** — `plan-work` from the start. It
+  carries through to the tasks and into the build.
+
+Each stage says what it is doing next and does it. None of them asks permission
+to reach the following one; the decisions sit inside the stages.
 
 ## How to talk while doing all this
 
