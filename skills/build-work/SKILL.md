@@ -147,6 +147,12 @@ The subagent:
 4. Commits behaviour changes separately from mechanical ones.
 5. Runs everything `checks.md` lists before reporting done. A report a later gate
    rejects is not a report.
+6. Writes down anything that changed about running this project locally — a new
+   dependency, a new command, a service that has to be up, a setting — into
+   `docs/agents/environment.md`, on this same branch. A command the user has to
+   type is a fact about the environment, and it belongs in the file rather than
+   in a sentence that scrolls away. That file is read after every merge to say
+   what to pull; it is only worth reading if something writes it.
 
 Refactoring is not part of this loop. It belongs to the review.
 
@@ -215,6 +221,12 @@ Once it has landed:
 - Confirm the task issue closed. Check whether this also closed anything else,
   naming each one you checked, including the ones it did not close.
 - If every task under a spec is now closed, offer to close the spec.
+- Re-read the `skipped` reasons in `docs/agents/checks.md`. Many are written
+  against a state of the project — no code yet, no entry point, no third-party
+  dependencies — and merging is what changes that state. Name any whose reason
+  no longer holds and call `setup-checks` for that class. Nothing else ever
+  reads those reasons, so a skip that says to revisit once something exists is a
+  note to nobody until this step reads it.
 - Say what to pull locally: a new dependency means install, a schema change means
   migrate, a new setting means check configuration, server code means restart,
   frontend only means a hard reload. `environment.md` says which apply here.
