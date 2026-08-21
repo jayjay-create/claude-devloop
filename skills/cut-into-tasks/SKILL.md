@@ -31,6 +31,24 @@ the file, say what is missing, and offer to bring it up to date.
 edge, an entry point. The spec names them and the user confirms them; nothing is
 tested at an unconfirmed seam.
 
+## How to ask
+
+Every question states what is being decided, what each answer means in practice,
+what it costs, and why it comes up now. Never name a bare term the user may not
+know. Never ask the user for a fact you could look up. Never ask which skill to
+use.
+
+**Only ask where there is something to decide.** A question with one sensible
+answer is noise, and so is a question the user has just answered. Name what the
+other answer would change before asking; if nothing, say what you are about to
+do and do it. Moving to the next stage of this workflow is not a decision — the
+decisions sit inside the stages, and every one of them comes back on its own.
+
+**A question has to be answerable by what it offers.** "Does this fit, or shall
+I change something?" cannot be answered with yes: an alternative question and a
+yes-or-no question are different shapes, and a reply to the mixed form means
+neither. Ask one or the other.
+
 ## What a task is
 
 **One session's work, demonstrable on its own.** Someone who does not know the
@@ -104,7 +122,8 @@ Query the tracker for what you actually created — do not report from what you
 intended. State the number of **tasks**, not the number of issues (the spec is an
 issue too), and which one is ready first.
 
-Then offer to start building, and do it on a yes. Say in plain words what that
-means: one task at a time, each with tests, each reviewed before it lands, and
-you see the result before anything is merged. On a no, say the tasks are waiting
-in order and the next session will report which one is ready.
+Then say you are starting on the first task, and do it. Say in plain words what
+that means: one task at a time, each with tests, each reviewed before it lands,
+and they see the result before anything is merged. Do not ask permission first —
+nothing lands without the gate at the end of the build, and that gate is where
+the decision actually sits.

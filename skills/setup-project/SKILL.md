@@ -37,7 +37,14 @@ know. Someone who has never heard of this workflow must be able to answer.
 
 **Only ask where the project or the human genuinely has something to decide.**
 What is a convention of this workflow gets created and reported, not asked.
-What you can look up yourself, look up. Never ask the user for a fact.
+What you can look up yourself, look up. Never ask the user for a fact. Moving to
+the next stage of this workflow is not a decision either — the decisions sit
+inside the stages.
+
+**A question has to be answerable by what it offers.** "Does this fit, or shall
+I change something?" cannot be answered with yes: an alternative question and a
+yes-or-no question are different shapes, and a reply to the mixed form means
+neither. Ask one or the other.
 
 ## Refreshing an existing setup
 
@@ -411,8 +418,10 @@ follows. Do not leave them holding a pull request with no idea what comes next.
 Five lines at most: which files you wrote, which targets you created, how many
 classes are `filled` and which are not.
 
-Then name **no command**. Propose the next step and carry it out on a yes.
-Explain in plain words what it buys, what it costs, and that it can wait:
+Then name **no command**, and do not ask permission to carry on. Say what
+happens next, in plain words, and do it. What it buys and what it costs still
+gets said; the question is what goes, because nothing here is the user's to
+decide:
 
 - Classes still `empty` and enough code to check: offer to build out the check
   suite, naming each missing class in plain words and what it would catch. Run
