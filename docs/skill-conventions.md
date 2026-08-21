@@ -147,6 +147,21 @@ it and what to do once that is done.
 A model performs a task; it does not transcribe. Asking for a fixed paragraph
 gets a paraphrase. Listing what the paragraph must cover gets all of it.
 
+## Works with nothing else installed
+
+Everything here has to work with this plugin and nothing else. Another plugin
+being present may make a run better; it may never be what makes it work. A user
+who installs this and nothing more gets the whole workflow.
+
+That rules out calling into another plugin's skills. Check whether a capability
+is there and use it if it is, and carry on without it if it is not — never make
+it a step that fails when it is missing. The difference matters because a missing
+skill inside this set is a stop with a stated fix, while a missing plugin outside
+it is not the user's problem at all.
+
+This was written after finding that a second plugin's hooks had been running
+alongside every test for a day without anyone noticing.
+
 ## Adapting from Matt Pocock
 
 Much of this set is taken from https://github.com/mattpocock/skills (MIT), under
@@ -281,7 +296,8 @@ Every skill on disk is registered, and every registered skill exists:
     print('registered but missing:', sorted(set(m)-set(d)))
     print('present but unregistered:', sorted(set(d)-set(m)))"
 
-Nothing in the roadmap is named that neither exists nor sits under "Not built":
+Nothing in the roadmap is named that neither exists nor sits under "Named, not
+built as skills":
 
     comm -23 <(grep -o '`[a-z-]*`' docs/roadmap.md | tr -d '`' | sort -u) <(ls skills/ | sort)
 
