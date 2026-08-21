@@ -289,7 +289,7 @@ run it.
 
 ## Before a handover, run these
 
-Five checks that catch what a conversation loses. Each one has found a real gap.
+Six checks that catch what a conversation loses. Each one has found a real gap.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -316,6 +316,15 @@ skill here may do. Every line this prints needs an eye on it:
     for s in $(grep -l 'disable-model-invocation' skills/*/SKILL.md | sed 's|skills/||;s|/SKILL.md||'); do
       grep -l "\`$s\`" skills/*/SKILL.md | grep -v "skills/$s/SKILL.md" | sed "s|^|locked: $s referenced by |"
     done
+
+No sentence tells a run to ask for permission to reach the next stage, or to
+put a question as an either-or. Every line this prints needs an eye on it: some
+are real offers that stay, and the point is that each one gets looked at rather
+than assumed. Run it after **any** edit to a skill, not only before a handover —
+a rule added at one anchor and a sentence contradicting it further down the same
+file is how three of these got in:
+
+    grep -rn 'Ask whether\|offer to\|Offer to\|on a yes\|offering the next' skills/*/SKILL.md
 
 The installed copy is the copy you changed:
 

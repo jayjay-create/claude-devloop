@@ -430,13 +430,12 @@ happens next, in plain words, and do it. What it buys and what it costs still
 gets said; the question is what goes, because nothing here is the user's to
 decide:
 
-- Classes still `empty` and enough code to check: offer to build out the check
-  suite, naming each missing class in plain words and what it would catch. Run
-  `setup-checks` on a yes.
+- Classes still `empty` and enough code to check: name each missing class in
+  plain words and what it would catch, then run `setup-checks`.
 - Barely any code yet: say the check suite is better built once there is
-  something to check, and offer to start on the first piece of work instead.
+  something to check, and carry on to the first piece of work instead.
 - Otherwise: if they have already said what they want built, say the setup is
-  done and carry straight on into planning it. If they have not, offer to start
-  on the first piece of work and ask what that is. Either way the next stage is
-  `plan-work` — never send them back to the entry point they came from, which
-  would run this setup again.
+  done and carry straight on into planning it. If they have not, say the setup
+  is done and ask what to build — that one is a real question, and it is the
+  only one here. Either way the next stage is `plan-work` — never send them back
+  to the entry point they came from, which would run this setup again.
