@@ -144,9 +144,13 @@ the size of the work.
   by title on a map in flight has now run; the two bugs it showed are fixed. The
   session-end handover naming the next question has not — that rule only fires
   once a ticket resolves, so it needs a full interview run to be seen at all.
-  `diagnose-bug` has not run either: it is wired into the build loop and into
-  the turn-end hook, and no project set up so far has a filled behaviour class
-  for it to trigger on.
+  `diagnose-bug` has still not run. A project with a filled unit class now
+  exists and a run did reach a red check — at the start of a build, checking its
+  base, which was a route nothing had been wired for. That route is wired now.
+  What made the attempt worthless was where the fault was put: a single
+  unreviewed commit on the main branch, one line wide, so the history named the
+  cause and there was nothing left to diagnose. The next attempt has to sit
+  inside a change large enough that the suspect list is longer than one.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.
