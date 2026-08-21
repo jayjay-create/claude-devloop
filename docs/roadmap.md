@@ -151,6 +151,9 @@ the size of the work.
   unreviewed commit on the main branch, one line wide, so the history named the
   cause and there was nothing left to diagnose. The next attempt has to sit
   inside a change large enough that the suspect list is longer than one.
+  Nothing merged after 0.46.0 has run either: the base check, the rewritten
+  questions at four stage boundaries, and the control documents finally getting
+  a writer all came out of a single run and have only been reasoned about since.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.
