@@ -15,6 +15,7 @@
 | `build-work` | Build the open tasks and merge them |
 | `review-changes` | Review a change from several angles at once |
 | `record-lessons` | Write down what went wrong so it does not repeat |
+| `diagnose-bug` | Find what actually causes a bug |
 
 ## Named, not built as skills
 
@@ -43,7 +44,6 @@ Two kinds of entry read as gaps and are not:
 
 | Skill | Description | Origin |
 |---|---|---|
-| `diagnose-bug` | Find what actually causes a bug | Pocock, verbatim |
 | `sort-incoming-requests` | Triage issues you didn't write | Pocock `triage`, verbatim |
 | `which-skill` | Find out what to do next | Pocock `ask-matt`, renamed |
 | `interview` | Ask until nothing is left open | Pocock `grilling`, verbatim |
@@ -76,12 +76,6 @@ The origin column says where a body would come from. It does not say when the
 skill would be reached, which is the thing that decides whether to build it. For
 the ones with a plausible answer:
 
-- **`diagnose-bug`** — after a build, when a check goes red. That already happens
-  and is currently improvised: the build hunts for the cause with no method, and
-  after three failed attempts the turn-end hook gives up. This is the strongest
-  case on the list, and it is not a thing the user asks for — it is what happens
-  when something fails. A second entry point arrives with the aim below: the user
-  looks at something running and says it is wrong.
 - **`resolve-merge-conflict`** — step 1 of a build, where a diverged main branch
   currently stops the run. Parallel work already exists: research subagents run
   at once, and the map explicitly allows working free tickets in parallel.
@@ -148,7 +142,9 @@ the size of the work.
 - **Not everything is exercised yet.** Version 0.40.0 has not been run: the
   entry point proposing the next step by title on a map in flight, and the
   session-end handover naming the next question. `devloop-test-i` holds a map
-  with open tickets if it has not been deleted.
+  with open tickets if it has not been deleted. Neither has `diagnose-bug`: it
+  is wired into the build loop and into the turn-end hook, and no run has
+  reached it yet.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.

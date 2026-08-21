@@ -132,7 +132,7 @@ to be spoken to.
 
 ## What is missing
 
-- Debugging, triaging incoming reports, finding refactor candidates, handing over
+- Triaging incoming reports, finding refactor candidates, handing over
   between sessions, and a router for when you are lost — planned, not built.
 - End-to-end testing has no worked-out approach yet.
 - Everything has been exercised on one small Python project with GitHub Issues.
