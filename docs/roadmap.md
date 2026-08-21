@@ -70,6 +70,41 @@ Several of these currently live inside `plan-work` and `build-work` rather than
 as separate skills. Pulling them out is only worth it where something else needs
 to call them on their own.
 
+### Where these would attach
+
+The origin column says where a body would come from. It does not say when the
+skill would be reached, which is the thing that decides whether to build it. For
+the ones with a plausible answer:
+
+- **`diagnose-bug`** — after a build, when a check goes red. That already happens
+  and is currently improvised: the build hunts for the cause with no method, and
+  after three failed attempts the turn-end hook gives up. This is the strongest
+  case on the list, and it is not a thing the user asks for — it is what happens
+  when something fails. A second entry point arrives with the aim below: the user
+  looks at something running and says it is wrong.
+- **`resolve-merge-conflict`** — step 1 of a build, where a diverged main branch
+  currently stops the run. Parallel work already exists: research subagents run
+  at once, and the map explicitly allows working free tickets in parallel.
+  Building is one task at a time from a fresh main, so today the conflict comes
+  from two sessions or from the user's own work alongside.
+- **`find-refactor-candidates`** — when every task under a spec has closed, which
+  is the one moment the workflow looks back at all; it already asks there whether
+  to close the spec. A second trigger worth measuring: the same file touched by
+  several tasks in a row.
+- **`check-docs-consistency`** — before a handover, which is where the existing
+  five checks run. Done by hand once, and it found three false statements in this
+  file.
+- **`measure-runtime-effect`** — nothing runs today, so there is nothing to
+  measure. Attaches once the first item under Known gaps is built.
+- **`write-questionnaire`** — when the answer sits with a person the workflow
+  cannot interview: a colleague, a customer, whoever holds the operational
+  knowledge. The map has research and interview and nothing for "go and ask
+  someone else". It fits the existing shape — a blocked ticket that waits — but
+  it is the one type whose answer can take days.
+
+The rest have no attachment point yet. That is the reason they are unbuilt, not
+the size of the work.
+
 ## Known gaps
 
 - **The aim is idea to a running application; this gets to merged code.** Not a
