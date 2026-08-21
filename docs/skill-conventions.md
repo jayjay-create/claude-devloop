@@ -83,6 +83,12 @@ If a skill you call does not exist, say so — do not silently substitute anothe
 If a background agent fails to return, say so — do not present a comparison that
 is quietly one draft short. Both happened repeatedly and went unmentioned.
 
+**Record what was decided against.** A rejected option that leaves no trace gets
+rediscovered and proposed again as new, and the reason it was rejected has to be
+worked out a second time. `docs/roadmap.md` has a section for it. Write the
+reason, not the verdict — a verdict cannot be reopened when the reason stops
+holding.
+
 **The same goes for a command a control document should hold and does not.** The
 files under `docs/agents/` are written once at setup, from a template that keeps
 changing, so a project set up months ago is missing whatever was added since.

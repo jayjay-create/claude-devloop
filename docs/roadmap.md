@@ -102,6 +102,30 @@ to call them on their own.
 - **Only one stack has been exercised**: a small Python project with GitHub
   Issues. Other languages, other trackers, monorepos — all untested.
 
+## Decisions taken against
+
+Each of these was examined against a real run, rejected for a reason, and is
+listed so it does not get rediscovered and proposed again as if new. Reopen any
+of them if the reason stops holding — the reason is the point, not the verdict.
+
+- **A context-usage percentage in the prompt.** Read the transcript, sum the
+  token fields, divide by the window size, show a percentage with thresholds.
+  Rejected: the window size is not discoverable, so it rests on a number typed in
+  by hand that goes quietly stale at the next model change, and the token sum is
+  an approximation whose error cannot be measured. What it protected against was
+  losing a long planning session, and that is now handled directly — planning
+  writes each stage to the tracker as it finishes. Reopen if an unattended build
+  run is genuinely cut off mid-flight, or if the window size ever reaches hooks.
+- **A readiness check before clearing a session.** Verify the artifacts are
+  current before the context goes away. Rejected: it answers a question this
+  workflow does not have. The state is the tracker and git — a task is merged or
+  it is not, an issue is open or it is not — so the check would report "current"
+  every time. The one place it applied was planning, fixed as above.
+- **Letting the branch guard pass writes to gitignored files.** Rejected: no real
+  case was found. The two local-state files this workflow writes are produced on
+  a branch or by a hook the guard never sees, and an exception would soften the
+  signal for nothing. Reopen on a real false positive.
+
 ## Names that were rejected
 
 Kept so nobody re-proposes them: `plan-feature` and `build-feature` (the pair
