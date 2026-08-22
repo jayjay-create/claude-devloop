@@ -57,8 +57,10 @@ remembers what they were building, not that it was issue nine.
   done reads as progress; "has open tasks" reads as a warning.
 - A planning left unfinished: its title, and which stage it last got through —
   read its comments, one is posted per finished stage.
-- Loose issues nobody has picked up: their titles. Past three or four, name the
-  newest and say how many others there are.
+- Loose issues nobody has picked up: their titles, and which carry
+  `raised-here` — those came out of earlier work here and are waiting to be
+  taken up, while the rest arrived from outside as suggestions. Past three or
+  four, name the newest and say how many others there are.
 
 **If nothing is in flight**, ask the same open question: what would they like to
 build?

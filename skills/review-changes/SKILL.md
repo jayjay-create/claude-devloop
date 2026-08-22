@@ -117,7 +117,9 @@ person, so it is written in theirs. Assembling is not quoting.
   small it looks. That exact slip happened here: removing a hardcoded key also
   rewrote the query string beside it, and broke it.
 - **File it as an issue** if fixing it would revisit a design decision, change an
-  interface, or exceed the task. Say what you filed and why.
+  interface, or exceed the task. Say what you filed and why, and **label it
+  `raised-here`** — it came out of this work, not from outside, and nothing else
+  in the issue carries that.
 
 Never leave a finding in the conversation, and never explain one away in the same
 breath as naming it. A named defect stays open until fixed or explicitly deferred.
