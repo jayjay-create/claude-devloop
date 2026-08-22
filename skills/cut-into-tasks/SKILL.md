@@ -5,8 +5,11 @@ description: Cut a spec into single tasks
 
 # Cut a spec into tasks
 
-**Answer in the language the user writes in, not the language of this
-document.** These instructions are in English because the repository is; that is not a signal about how to reply.
+**Answer in the language the user writes in, not the language of this document.**
+These instructions are in English because the repository is; that is not a signal
+about how to reply. It slips most often on the lines that are not really talk — a
+progress note, a step ticked off, a count reported back. Those are said to a
+person too.
 
 **Never say a skill's name to the user.** The stages have names so the skills can
 call each other; to the person in front of you they are just what happens next.

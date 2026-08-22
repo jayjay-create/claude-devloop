@@ -6,6 +6,10 @@ description: Find what actually causes a bug
 # Diagnose a bug
 
 **Answer in the language the user writes in, not the language of this document.**
+These instructions are in English because the repository is; that is not a signal
+about how to reply. It slips most often on the lines that are not really talk — a
+progress note, a step ticked off, a count reported back. Those are said to a
+person too.
 
 **Never say a skill's name to the user.** To the person in front of you this is
 not a tool being run, it is what happens when something fails.
@@ -19,11 +23,6 @@ failure will genuinely not need all six, and saying "the case is one line, so I
 am not cutting it down or ranking causes" is a fine thing to say. Saying nothing
 is not: it leaves nobody able to tell a discipline that was applied from one
 that was walked past, which is the only thing these steps are for.
-
-**Everything here is said in the user's language.** The steps below have
-completion criteria that read like a checklist; ticking one off is still
-speaking to a person, not filling in a form, and a checklist item repeated back
-in the language of this document instead of theirs is the one place that slips.
 
 ## When this runs
 

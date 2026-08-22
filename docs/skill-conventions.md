@@ -295,7 +295,7 @@ run it.
 
 ## Before a handover, run these
 
-Six checks that catch what a conversation loses. Each one has found a real gap.
+Seven checks that catch what a conversation loses. Each one has found a real gap.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -322,6 +322,19 @@ skill here may do. Every line this prints needs an eye on it:
     for s in $(grep -l 'disable-model-invocation' skills/*/SKILL.md | sed 's|skills/||;s|/SKILL.md||'); do
       grep -l "\`$s\`" skills/*/SKILL.md | grep -v "skills/$s/SKILL.md" | sed "s|^|locked: $s referenced by |"
     done
+
+The opening block every skill shares is the same block everywhere. One line of
+output means all twelve agree; two or more means a wording was improved in one
+file and left behind in the others, which is how the same defect keeps coming
+back in a skill nobody touched:
+
+    for f in skills/*/SKILL.md; do sed -n '/^\*\*Answer in the language/,/^$/p' "$f" | cksum; done | sort -u
+
+The rule behind it is not about that block. **A change to one skill is a
+question about all of them.** Before writing it, name which other skills reach
+the same situation, and either make the change there too or say why it does not
+apply. Three separate defects this month were a rule written into one file that
+belonged in six.
 
 No sentence tells a run to ask for permission to reach the next stage, or to
 put a question as an either-or. Every line this prints needs an eye on it: some
