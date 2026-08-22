@@ -295,7 +295,11 @@ run it.
 
 ## Before a handover, run these
 
-Seven checks that catch what a conversation loses. Each one has found a real gap.
+Eight checks that catch what a conversation loses. Each one has found a real gap.
+Every one of them has to run on the machine it is needed on: `head -n -1` is a
+GNU extension and does nothing on macOS but print an error, which is how a check
+comes to report a checksum of nothing and look like it passed. Keep them to what
+POSIX gives you.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -330,7 +334,11 @@ back in a skill nobody touched:
 
     for f in skills/*/SKILL.md; do sed -n '/^\*\*Answer in the language/,/^$/p' "$f" | cksum; done | sort -u
 
-The rule behind it is not about that block. **A change to one skill is a
+The same for the block on asking, in the six skills that ask anything:
+
+    for f in $(grep -l '^## How to ask' skills/*/SKILL.md); do awk '/^## How to ask/,/^## [^H]/' "$f" | sed '$d' | cksum; done | sort -u
+
+The rule behind it is not about either block. **A change to one skill is a
 question about all of them.** Before writing it, name which other skills reach
 the same situation, and either make the change there too or say why it does not
 apply. Three separate defects this month were a rule written into one file that
