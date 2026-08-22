@@ -88,10 +88,9 @@ If `docs/agents/` already exists, this is not a first setup. Do not run the step
 below: they ask questions that were answered once already, and re-asking them is
 how a working project gets talked into changing its mind.
 
-Work on a branch cut from the current main branch, and never commit to main
-directly — the same rule as a first setup. Skipping the steps below skips where
-that rule is written, which is how the first refresh ran straight into the
-main-branch guard.
+Cut the branch first — the same rule as a first setup, and the same step below.
+Skipping the steps below skips where that rule is written, which is how the
+first refresh ran straight into the main-branch guard.
 
 The files hold two kinds of content, and only one of them is yours:
 
@@ -156,8 +155,6 @@ Stop only where something is genuinely undecided and you would otherwise guess:
 this is not a git repository, there is no remote, or the working directory does
 not look like the project they meant. Then say what is wrong and ask about that.
 
-Work on a branch cut from the current main branch. Never commit to main directly.
-
 If a tool call fails, **say so**. Do not carry on as if it had returned, and do
 not substitute something else without naming what failed.
 
@@ -217,6 +214,20 @@ it on and does not bring it closer.
 ## Step 2 — Report what you found
 
 Ten lines at most. Say explicitly what you did **not** find.
+
+## Cut the branch before the first write
+
+**Do this as an action, now, before anything below writes a file.** Not as
+something to keep in mind while writing: a run that reads past it hits the
+main-branch guard on its first edit, and on every edit after that, until it
+works out what happened. That has happened three times, twice after this rule
+had already been sharpened in prose — which is why it is a step of its own now
+rather than a sentence in a preamble.
+
+    git switch -c <short-name-for-what-this-run-does>
+
+Never commit to the main branch directly. If the branch already exists because
+an earlier run was interrupted, switch to it rather than making a second one.
 
 ## Step 3 — The empty case
 
