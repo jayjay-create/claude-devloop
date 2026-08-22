@@ -24,8 +24,6 @@ costs runtime and finds nothing. `skipped` with a reason is a finished answer;
 This skill changes the project from the outside — it adds tools and configuration.
 Move carefully and ask before anything that reaches beyond the repository.
 
-Work on a branch cut from the current main branch. Never commit to main directly.
-
 **Called for a single class**, which is how a build step reaches this skill when
 the task it is building created the target: fill that one class, leave the others
 untouched, and stay on the branch you were called on rather than cutting a new
@@ -114,6 +112,20 @@ the repository whether it applies at all:
   committed by accident everywhere.
 - **dependencies** — applies as soon as the project has third-party packages.
 - **code-security** — needs a meaningful amount of the project's own code.
+
+## Cut the branch before the first write
+
+**Do this as an action, now, before anything below writes a file.** Not as
+something to keep in mind while writing: a run that reads past it hits the
+main-branch guard on its first edit, and on every edit after that, until it
+works out what happened. That has happened three times, twice after this rule
+had already been sharpened in prose — which is why it is a step of its own now
+rather than a sentence in a preamble.
+
+    git switch -c <short-name-for-what-this-run-does>
+
+Never commit to the main branch directly. If the branch already exists because
+an earlier run was interrupted, switch to it rather than making a second one.
 
 ## Step 2 — Propose, in plain words
 
