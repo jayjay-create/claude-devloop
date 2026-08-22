@@ -65,6 +65,7 @@ Two kinds of entry read as gaps and are not:
 | `write-handover` | Hand this work to another session | Pocock `handoff`, verbatim |
 | `say-it-plainly` | Say that again in plain words | Pocock `wait-what`, verbatim |
 | `writing-for-agents` | Look up how to write for an agent to read | Pocock, verbatim |
+| `settle-the-look` | Decide once how this project looks, and write it down | new |
 
 Several of these currently live inside `plan-work` and `build-work` rather than
 as separate skills. Pulling them out is only worth it where something else needs
@@ -96,6 +97,35 @@ the ones with a plausible answer:
   someone else". It fits the existing shape — a blocked ticket that waits — but
   it is the one type whose answer can take days.
 
+- **`settle-the-look`** — setup, when the project already has a look worth
+  reading out of its stylesheet; otherwise the first task that draws anything.
+  Every other recurring decision in this workflow has a file: `standards.md` for
+  how the code is written, `checks.md` for how it is checked, `domain.md` for
+  what the words mean. How it looks has none, so each task invents a button
+  again — a slightly different blue, a different spacing step — and no check
+  class covers "does this match the rest", so the drift is only visible to
+  someone who lays five screens side by side. What the file fixes: the colours
+  and what each is for, the type sizes, the spacing steps, the corner radii, a
+  primary button against a secondary one, how a field shows an error, what an
+  empty state looks like. The build subagent then reads it the way it reads
+  `standards.md`.
+
+  The reason to want this is not tidiness, it is that it turns an unmeasurable
+  question into a measurable one. No check can answer "does this look right". A
+  linter can answer "does this use the recorded names, or is there a raw colour
+  value in the file", which is the same move this workflow makes everywhere
+  else. That check is the second half of the work and the part worth building.
+
+  The picking already exists: `build-prototype/UI.md` generates radically
+  different variants, wires them together and has the user choose. It is
+  reachable only from inside a map, for one question at a time, and it throws
+  the answer away afterwards. Sources for the file, in order of preference: read
+  it out of an existing stylesheet; a chosen prototype; a short interview.
+  Anthropic's `/design-sync` could produce one too, and is deliberately not a
+  dependency — it is a research preview whose shape is expected to change, it
+  needs a paid plan, and its artboards live on claude.ai, a third place beside
+  the repository and the tracker.
+
 The rest have no attachment point yet. That is the reason they are unbuilt, not
 the size of the work.
 
@@ -115,7 +145,9 @@ the size of the work.
     yet" in every project set up so far, because no step ever needs it.
   - **How the interface gets decided.** Nothing in the set draws a UI, chooses a
     layout, or settles what a screen should feel like. `build-prototype` has a UI
-    branch, but only inside a map, only for one question at a time.
+    branch, but only inside a map, only for one question at a time, and it keeps
+    no record of what was chosen. `settle-the-look` above is the named answer to
+    the recording half of this; the drawing half is still open.
   - **How the stack gets chosen.** Language, runtime, framework, database. A spec
     presumes them; nothing ever picks them, so they arrive by whatever the first
     task happened to reach for.
@@ -167,6 +199,22 @@ the size of the work.
 Each of these was examined against a real run, rejected for a reason, and is
 listed so it does not get rediscovered and proposed again as if new. Reopen any
 of them if the reason stops holding — the reason is the point, not the verdict.
+
+- **Fetching design references from galleries.** Search Dribbble, Mobbin and
+  similar sites for admired app designs and offer them as the design proposal.
+  Rejected for three reasons, the third being the one that decides it. Gallery
+  shots are portfolio pieces: no empty states, no error states, no long strings,
+  no real data density, so what is built from them looks right in a screenshot
+  and comes apart as a product — Mobbin is better than Dribbble here, being real
+  shipped screens, but not enough better. Both sites carry other people's
+  copyrighted work and forbid automated access, which a public MIT plugin would
+  push onto everyone who installs it. And it inverts the method: every decision
+  in this workflow is derived from constraints, and picking a look from a
+  gallery derives it from an aesthetic that answered somebody else's problem —
+  the same error as adopting an architecture because it looked good in a blog
+  post. What is actually missing is the constraints and a recorded design
+  system, which is `settle-the-look` above. Reopen if a licensed source of real
+  interface patterns appears that can be cited rather than copied.
 
 - **A context-usage percentage in the prompt.** Read the transcript, sum the
   token fields, divide by the window size, show a percentage with thresholds.
