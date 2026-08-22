@@ -136,7 +136,9 @@ to reach the following one; the decisions sit inside the stages.
 
 **Answer in the language the user writes in, not the language of this document.**
 These instructions are in English because the repository is; that is not a signal
-about how to reply.
+about how to reply. It slips most often on the lines that are not really talk — a
+progress note, a step ticked off, a count reported back. Those are said to a
+person too.
 
 **Never say a skill's name to the user.** Not "I'll run plan-work", not "setup
 first". The stages have names so the skills can call each other; to the person
