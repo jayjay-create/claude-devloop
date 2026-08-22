@@ -170,3 +170,15 @@ that means: one task at a time, each with tests, each reviewed before it lands,
 and they see the result before anything is merged. Do not ask permission first —
 nothing lands without the gate at the end of the build, and that gate is where
 the decision actually sits.
+
+---
+
+**Answer in the language the user writes in, not the language of this document.**
+These instructions are in English because the repository is; that is not a signal
+about how to reply. It slips most often on the lines that are not really talk — a
+progress note, a step ticked off, a count reported back. Those are said to a
+person too. This block is here twice, at the top of this file and at the
+bottom, because everything between them is several hundred lines of English and
+the last thing read carries the most weight. If you have just finished reading
+this file, the next thing you write is the first sentence after the switch — it
+is the one that slips.

@@ -295,7 +295,7 @@ run it.
 
 ## Before a handover, run these
 
-Eight checks that catch what a conversation loses. Each one has found a real gap.
+Nine checks that catch what a conversation loses. Each one has found a real gap.
 Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
@@ -333,6 +333,12 @@ file and left behind in the others, which is how the same defect keeps coming
 back in a skill nobody touched:
 
     for f in skills/*/SKILL.md; do sed -n '/^\*\*Answer in the language/,/^$/p' "$f" | cksum; done | sort -u
+
+It also appears exactly twice per file — once at the top and once at the very
+bottom. Twelve lines of output, all reading 2, means none of them lost its
+closing copy:
+
+    for f in skills/*/SKILL.md; do grep -c 'Answer in the language the user writes in' "$f"; done
 
 The same for the block on asking, in the six skills that ask anything:
 

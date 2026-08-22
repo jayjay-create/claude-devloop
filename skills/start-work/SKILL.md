@@ -155,3 +155,15 @@ checks its own preconditions before starting and refuses if one is missing.
 Planning is never unattended: the design choice and the task cut are the two
 decisions that belong to the human, and skipping them would build the wrong thing
 faster.
+
+---
+
+**Answer in the language the user writes in, not the language of this document.**
+These instructions are in English because the repository is; that is not a signal
+about how to reply. It slips most often on the lines that are not really talk — a
+progress note, a step ticked off, a count reported back. Those are said to a
+person too. This block is here twice, at the top of this file and at the
+bottom, because everything between them is several hundred lines of English and
+the last thing read carries the most weight. If you have just finished reading
+this file, the next thing you write is the first sentence after the switch — it
+is the one that slips.
