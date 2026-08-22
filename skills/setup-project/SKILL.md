@@ -174,10 +174,29 @@ worse later: an unattended run needs those permissions granted up front, because
 nobody is there to answer.
 
 So ask once, here, while they are present: offer to grant the command patterns
-this workflow uses on every run, and name them in plain words — reading git
-state, reading and writing issues, opening and merging pull requests. These are
-the workflow's own, so nothing about the project has to be known yet; the
-project's check commands are added in step 5, once they exist. On a yes, say
+this workflow uses on every run, and name them in plain words — **reading git
+state and writing to it** (cutting a branch, staging, committing, pushing,
+fetching), reading and writing issues, opening and merging pull requests, and
+asking the platform about the repository. Do not stop at reading: every run cuts
+a branch and pushes it, and a grant that covers only reads leaves the user
+confirming the same four commands by hand on their first real task.
+
+**The test for what belongs here is what this workflow itself runs, in every
+project, whatever the language.** That set is git and the platform, nothing
+else — the same in C++, Kotlin, Java or anything not written yet. So nothing
+about the project has to be known at this point.
+
+What the project itself runs is its check commands, and those are not known
+yet — `checks.md` is empty until `setup-checks` fills it, so that skill adds
+them where it writes them, whether they read `make check`, `./gradlew check`,
+`mvn verify` or `npm run check`. **Only the check commands, never what was
+needed to install them** — a compiler or an analyser reaching beyond this
+project keeps its own confirmation, and a wrapper that downloads on first use
+does too.
+
+Anything outside those two sets stays a confirmation prompt, and that is the
+right outcome rather than a gap: a command built with a loop or a variable
+cannot be expressed as a pattern at all, and a one-off deserves to be seen. On a yes, say
 where they are recorded so they can be taken back. On a no, say what it costs
 and nothing else: a confirmation prompt per command kind, in every session, for
 as long as that stands. **Do not name the unattended mode as one of the costs.**

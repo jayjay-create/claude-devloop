@@ -172,6 +172,12 @@ A tool declared in the project's own manifest travels with the repository and
 works for everyone who clones it. A tool installed system-wide does not, and it
 changes the user's machine.
 
+**Grant what you just wrote down.** A check command recorded in `checks.md` is
+something this workflow will run on every task from now on, so add its pattern
+where the project's permissions live and say you did. Setup granted the git and
+platform commands; it could not grant these, because they did not exist yet.
+Only the check commands themselves — never what was needed to install them.
+
 **Never install anything system-wide without asking**, and say plainly that it
 reaches beyond this project. If the only candidate for a class needs a system
 install and the user declines, that class becomes `skipped` with that reason —
