@@ -169,10 +169,15 @@ Run the readiness query from `docs/agents/issue-tracker.md`. Ready means: open,
 and zero open blockers.
 
 - **Exactly one ready** — build it.
-- **Several ready** — list them with what each unblocks, and ask which. Do not
-  choose for the user, and never start more than one. In unattended mode there is
-  nobody to ask: take the one that unblocks the most other tasks, and when that
-  ties, the lowest issue number. Say which you took and why.
+- **Several ready** — list them with what each unblocks, then take the one that
+  unblocks the most other tasks, and on a tie the lowest issue number. Say which
+  you took and why, and never start more than one. **Do not ask which.** That
+  rule is the same one this step has always used when nobody is there to ask,
+  and a rule good enough for an unattended run is good enough for a watched one
+  — the difference is whether somebody is present, not whether the answer can be
+  worked out. Being wrong costs one build's wait and no rework, and the user
+  cannot rank two tasks they have not seen the code for. If they want a
+  different one, they will say so.
 - **None ready** — say which task blocks which, and stop.
 
 ## Step 3 — Build it
