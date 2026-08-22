@@ -228,6 +228,10 @@ question offers: which design, not "does this fit".
 If a drafting agent fails, say so and either rerun it or state that the comparison
 is one design short. Never compare silently around a missing draft.
 
+**Restate the drafts in the language the user writes in.** An agent hands its
+draft back in whatever language it worked in; the comparison is read by a person,
+so it is written in theirs. Assembling is not quoting.
+
 **The seams come next, in their own message** — the places where this work will
 be checked. Prefer seams that already exist to new ones, and use the highest one
 that still catches what matters. Nothing gets tested at an unconfirmed seam, so
