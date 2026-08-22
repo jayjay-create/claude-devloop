@@ -215,10 +215,16 @@ measured, one switched branches out from under the other mid-edit, and both
 edited the same manifest. Parallelism needs separate worktrees and is not worth
 it while tasks merge to the same branch one after another.
 
-**Merging is refused; auto-merge is not.** `gh pr merge` is blocked by the
-permission classifier as a shared-state action — reproducibly, not once. `gh pr
-merge --auto --squash --delete-branch` goes through. The platform merges, not
-the agent. Two conditions, and only the first is a setting: auto-merge has to be
+**Merging is refused; auto-merge is not.** `gh pr merge --auto --squash
+--delete-branch` goes through and a bare `gh pr merge` does not, because this
+plugin's own merge guard blocks it. That guard is the enforcing mechanism and it
+has held in the field. The measurement this rule was originally written from —
+that the permission classifier refused a bare `gh pr merge` as a shared-state
+action — is no longer something to lean on: Claude Code's auto mode has since
+become the default, and in a project where this plugin is installed the classifier
+cannot be observed at all, because the guard fires first. Nothing about the
+behaviour changes; the reason for it is the guard, not the classifier. The
+platform merges, not the agent. Two conditions, and only the first is a setting: auto-merge has to be
 enabled on the repository, and the pull request has to be one that cannot
 already be merged — GitHub only offers auto-merge where a required check or
 review is still outstanding. A repository with no branch protection satisfies

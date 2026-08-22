@@ -159,8 +159,11 @@ the size of the work.
   - **Which further skills belong in the loop when the work is done with AI.**
     Named as candidates, not evaluated: documentation lookup for current library
     APIs, frontend design guidance, browser-driving for end-to-end checks. The
-    end-to-end check class is empty in every project so far, which follows
-    directly from the first item: nothing is ever running to drive.
+    end-to-end class was empty in every project until a TypeScript command-line
+    tool filled it: the compiled program invoked as a real subprocess, asserting
+    on its output and exit code. That works because a command-line tool is the
+    one shape that runs to completion on its own — a service or an interface
+    still has nothing to drive, which is the first item above.
 - **`build-work` step 2 lists ready tasks without saying what each unblocks.**
   The step asks for it; three runs in a row gave titles and descriptions only.
   Harmless while tasks are independent, misleading as soon as they are not.
@@ -189,10 +192,23 @@ the size of the work.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.
-- **End-to-end testing has no worked-out approach.** The class exists in
-  `checks.md`; nothing fills it.
-- **Only one stack has been exercised**: a small Python project with GitHub
-  Issues. Other languages, other trackers, monorepos — all untested.
+- **End-to-end testing has one worked-out approach and no second.** Running the
+  compiled program as a subprocess and asserting on output and exit code, which
+  has now been done. Anything that stays up — a service, an interface — still
+  has none.
+- **Two stacks have been exercised**: a small Python project with `make`, and a
+  TypeScript command-line tool with npm and `make`, both on GitHub Issues. Other
+  trackers, monorepos, and anything whose checks need a system install rather
+  than a package — all untested.
+- **The run bundles shell commands where it used to edit files one at a time.**
+  Five version markers changed with one `sed` in a loop, staging and committing
+  and pushing chained into a single call. The result is correct and the file
+  hook never sees it: that hook fires on an edit, not on a shell command, so a
+  bundled change skips the per-file checks entirely. Harmless for version
+  markers, not harmless for content. No fix proposed — telling a run to prefer
+  the edit tool would be wrong wherever the shell is the right instrument, and
+  which of the two a given change wants is not something this file can decide in
+  advance.
 
 ## Decisions taken against
 
