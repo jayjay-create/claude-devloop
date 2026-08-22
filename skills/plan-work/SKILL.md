@@ -208,27 +208,31 @@ Present them one after another, then compare them in prose — on how much behav
 each hides behind how small an interface, on how localised a future change would
 be, and on where each puts the seams.
 
-**End with one recommendation, not a menu.** The user wants a strong read. Then
-they choose.
+**End with one recommendation, not a menu.** The user wants a strong read.
 
-Two things this stage also settles:
+Then ask which design, **and put nothing else in that message.** Not the seams,
+not the next stage, not a second question of any kind. This is the largest
+decision in the plan, and anything travelling beside it gets waved through with
+it — a run that proposes the seams in the same breath has not asked the design
+question, it has answered it. The reply also has to be answerable by what the
+question offers: which design, not "does this fit".
 
-- **The seams** — the places where this work will be checked. Prefer seams that
-  already exist to new ones, and use the highest one that still catches what
-  matters. Confirm them with the user; nothing gets tested at an unconfirmed seam.
-- **The ground under the decision records** this design leans on. Each record
-  carries a line saying what would make it invalid. Check those lines. If one no
-  longer holds, say so and stop — do not extend a decision whose basis is gone.
-  Say what it would take to go on: that decision has to be made again, now, on
-  what is true today. Offer to do that here rather than leaving them stranded.
-
-**Do not start writing anything until the user has picked a design.**
+**Write nothing until they have answered.**
 
 If a drafting agent fails, say so and either rerun it or state that the comparison
 is one design short. Never compare silently around a missing draft.
 
-Only after the design is picked, put the seams to the user as their own question —
-the seam follows from the design, so it cannot be settled before.
+**The seams come next, in their own message** — the places where this work will
+be checked. Prefer seams that already exist to new ones, and use the highest one
+that still catches what matters. Nothing gets tested at an unconfirmed seam, so
+these are confirmed rather than assumed. They cannot be settled earlier because
+they follow from the design.
+
+**The ground under the decision records** this design leans on: each record
+carries a line saying what would make it invalid. Check those lines. If one no
+longer holds, say so and stop — do not extend a decision whose basis is gone.
+Say what it would take to go on: that decision has to be made again, now, on
+what is true today. Offer to do that here rather than leaving them stranded.
 
 Post the chosen design, the reasoning for it, and the confirmed seams as a comment
 on the planning issue.
