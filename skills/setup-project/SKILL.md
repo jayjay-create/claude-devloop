@@ -416,16 +416,23 @@ only `yes` or `no`.
 
 ### `issue-tracker.md`
 
-Where issues live, and the exact commands. The six labels and what they mean:
+Where issues live, and the exact commands. The seven labels and what they mean:
 `needs-triage` (new), `needs-info` (waiting on an answer), `being-planned` (a
 spec is being written into it right now — nobody acts on it, not an agent and
 not a human), `ready-for-agent` (a standalone issue a human has judged buildable
 as written — never on a task under a spec, where readiness is the blocker query
 instead), `needs-human` (needs a human decision), `wont-do` (declined, with a
-reason).
+reason), `raised-here` (this workflow raised it against work in this project,
+rather than somebody filing it from outside).
 
-Create all six in the tracker as part of this step. A label that only exists in
+Create all seven in the tracker as part of this step. A label that only exists in
 this document is not a label.
+
+`raised-here` exists because nothing else in an issue can carry that fact. The
+author is the account the tooling runs as, which is the user's either way, so it
+cannot tell one from the other — and how a loose issue gets treated turns
+entirely on which it is. Anything without the label is from outside, and that is
+then a reading rather than a guess.
 
 For GitHub, write these in verbatim, with OWNER and REPO filled in. Later steps
 read them from here; do not leave the reader to guess the API.

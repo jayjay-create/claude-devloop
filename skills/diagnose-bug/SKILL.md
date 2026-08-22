@@ -218,7 +218,8 @@ by a real failure is not.
 
 **If no honest place exists at all, that is itself the finding.** The structure
 of the code is what is preventing this from being pinned down. File it as an
-issue, say why, and go on.
+issue labelled `raised-here`, say why, and go on — it came out of this work, and
+nothing else in the issue carries that.
 
 Where one exists:
 
