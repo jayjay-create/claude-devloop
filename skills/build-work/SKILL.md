@@ -234,10 +234,14 @@ the same breath as naming it: it stays open until fixed or explicitly deferred.
 
 ## Step 5 — Hand it to the user
 
-Show the diff and the findings — what was fixed, what was filed. Then ask one
-closed question — whether this should land — and say what each answer means: yes
-merges it, no keeps the branch and takes revisions. Not "merge or revise?": that
-is two questions in one and a reply to it answers neither.
+Show the diff and the findings — what was fixed, what was filed. **Then ask, in
+its own message, one closed question:** whether this should land. Say what each
+answer means — yes merges it, no keeps the branch and takes revisions. Not
+"merge or revise?": that is two questions in one and a reply to it answers
+neither. And nothing travels with it: no verdict on the work, no announcement of
+what comes after, no pull request opened first. A question that arrives after
+the outcome has already been named is not a gate, and this is the only one there
+is.
 
 **This is the gate.** It is the one place in the loop where a human decides
 whether work lands, and it is the reason the loop is trustworthy. Reaching step 6

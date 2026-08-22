@@ -88,10 +88,23 @@ not run. Never present a comparison that is quietly one lens short.
 ## Report
 
 One section per lens, in the order above. Under each: the findings, worst first,
-and the single worst one named. Then stop.
+and the single worst one named.
 
-**No overall verdict. No cross-lens ranking. No "looks good overall".** If a lens
-found nothing, say that lens found nothing — that is a result, not an absence.
+**Then stop, and stop means all three of these.** No sentence after the last
+lens. No verdict over the whole thing — no cross-lens ranking, no "looks good
+overall", and above all nothing about what happens next. **"No findings.
+Merging." is the exact failure**: a reviewer settling something a reviewer does
+not decide, one line above the question that was supposed to decide it. Whether
+this lands is asked separately, by the step that owns that gate, and a report
+that has already named the outcome turns that question into a formality. Do not
+open the pull request here either — that belongs to the same step.
+
+If a lens found nothing, say that lens found nothing. That is a result, not an
+absence, and it is the end of that section.
+
+**Restate each lens in the language the user writes in.** A subagent hands its
+findings back in whatever language it worked in; this report is read by a
+person, so it is written in theirs. Assembling is not quoting.
 
 ## What happens to a finding
 
