@@ -218,7 +218,13 @@ it while tasks merge to the same branch one after another.
 **Merging is refused; auto-merge is not.** `gh pr merge` is blocked by the
 permission classifier as a shared-state action — reproducibly, not once. `gh pr
 merge --auto --squash --delete-branch` goes through. The platform merges, not
-the agent. Auto-merge must be enabled on the repository first.
+the agent. Two conditions, and only the first is a setting: auto-merge has to be
+enabled on the repository, and the pull request has to be one that cannot
+already be merged — GitHub only offers auto-merge where a required check or
+review is still outstanding. A repository with no branch protection satisfies
+the first and never the second, so `--auto` is refused there and every merge is
+performed by the user. Protected branches and rulesets are available on public
+repositories on every plan, and on private repositories only from Pro upwards.
 
 **Tool classes can be pre-approved per project**, which is what makes an
 unattended run possible: read commands, the language runner, file edits, `git

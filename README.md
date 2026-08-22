@@ -95,8 +95,12 @@ Planning is never unattended: the design choice and the task cut are the two
 decisions where a mistake sends the whole thing in the wrong direction.
 
 It refuses to start unless every check class is configured or explicitly recorded
-as not applicable, a failing gate genuinely blocks a merge on the remote, and
-auto-merge is enabled. It proposes an iteration cap if you did not give one — a
+as not applicable, a failing gate genuinely blocks a merge on the remote, and the
+repository can merge without a person present — which needs auto-merge enabled
+and a required check for it to wait on. Those are conditions for the run being
+able to finish, not judgements about it: without them it would build a task and
+then sit on a pull request nobody is there to merge. Attended runs are unaffected
+either way. It proposes an iteration cap if you did not give one — a
 rip-cord for a run that gets stuck, not a capacity estimate.
 
 Unattended does not mean unread. Read the diffs afterwards, in one go.
