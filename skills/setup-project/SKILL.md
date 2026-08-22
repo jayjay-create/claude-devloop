@@ -138,16 +138,23 @@ So ask once, here, while they are present: offer to grant the command patterns
 this workflow uses on every run, and name them in plain words — reading git
 state, reading and writing issues, opening and merging pull requests. These are
 the workflow's own, so nothing about the project has to be known yet; the
-project's check commands are added in step 5, once they exist. On a yes, say where they are recorded so they can
-be taken back. On a no, say what it costs: a confirmation prompt per command
-kind, and no unattended runs.
+project's check commands are added in step 5, once they exist. On a yes, say
+where they are recorded so they can be taken back. On a no, say what it costs
+and nothing else: a confirmation prompt per command kind, in every session, for
+as long as that stands. **Do not name the unattended mode as one of the costs.**
+It is true that this grant is one of that mode's preconditions, and saying so
+here turns a yes into a step towards it — which is exactly the confusion the
+next paragraph exists to prevent. If they ask about it, say it is asked for
+separately, by name.
 
 **Say what this is not, in the options themselves.** A caveat in the paragraph
 above them does not get read — the two lines the user chooses between do. So the
-yes says, in its own words, that the real decisions still come to them one at a
-time; and the wording never suggests otherwise. It is not the unattended mode,
-and the two are easy to confuse because both sound like "stop asking me". This settles which commands may
-run without a prompt. It changes nothing about who decides: the design choice,
+yes carries both halves in its own words: that the real decisions still come to
+them one at a time, **and that this is not the unattended mode**. Naming it is
+the part that gets dropped, and dropping it is what leaves the two looking like
+the same thing — and they are easy to confuse, because both sound like "stop
+asking me". This settles which commands may run without a prompt, nothing more.
+It changes nothing about who decides: the design choice,
 the task cut and the go-ahead before anything merges all still come to them, one
 at a time, exactly as before. The unattended mode is the separate thing that
 replaces those decisions with a green check suite, it has to be asked for by
