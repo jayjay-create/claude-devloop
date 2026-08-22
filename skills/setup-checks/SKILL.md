@@ -18,8 +18,9 @@ Turn every class in `docs/agents/checks.md` that still says `empty` into either
 `filled` or `skipped: <reason>`.
 
 **Filling all nine is not the goal.** A class that does not apply to this project
-costs runtime and finds nothing. `skipped` with a reason is a finished answer;
-`empty` means nobody decided yet.
+costs runtime and finds nothing. `skipped` with a reason is a finished answer for
+as long as that reason holds, and some reasons are about a state the project will
+grow out of; `empty` means nobody decided yet.
 
 This skill changes the project from the outside — it adds tools and configuration.
 Move carefully and ask before anything that reaches beyond the repository.
@@ -144,7 +145,26 @@ not read the file; "searches the code and the git history for credentials that
 were committed by accident" does.
 
 Ask which to do now. All of them, some of them, or none — filling them later is
-always possible.
+always possible. That question belongs to a first setup, where what this
+project's check suite will be is genuinely theirs to settle.
+
+**A class that is only back because its own reason expired is not that
+question.** A skip is a decision already made, with its reason written next to
+it — no code yet, no entry point, no third-party dependencies — and a merge is
+what turns one of those false. Then there is nothing left to weigh: say which
+reason no longer holds, fill the class, and report it. Asking again hands back a
+decision the user already made, with nothing new to make it on.
+
+**The reason has to be actually false, not merely older.** "No entry point
+exists yet" still holds while the entry point is a stub, and filling a class
+against a stub produces a check that proves nothing.
+
+**Ask anyway where filling it changes their project rather than this workflow's
+plumbing.** A dependency added to their manifest, or anything installed on their
+machine, is theirs to allow, whatever made the class eligible. A test case and a
+target in the task runner are not. When both kinds come up in one round, state
+the ones that cost them nothing and ask about the ones that do — never side by
+side as though they were the same kind of thing.
 
 ## Step 3 — Prefer tools that live inside the project
 
