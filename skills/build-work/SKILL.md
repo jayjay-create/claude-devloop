@@ -180,6 +180,33 @@ and zero open blockers.
   different one, they will say so.
 - **None ready** — say which task blocks which, and stop.
 
+**A loose issue is not one of these.** The readiness query returns the tasks
+under a spec; an issue filed on its own — by a review, by a check, by the user —
+sits outside that ordering and has broken this step three times, answered three
+different ways. It is not a question either. The order is:
+
+1. **Anything that leaves built work wrong goes first.** A red check suite, or
+   behaviour already merged that does the wrong thing. Building the next feature
+   on top of that widens what has to be put right. A red suite is not reached
+   here anyway — step 1 stops on it — but merged-and-wrong is, and it counts the
+   same.
+2. **Otherwise the open spec is finished first**, and the loose issue waits. Say
+   it is waiting and why, so nobody has to hold it in their head. An input
+   quietly ignored, a message that could be clearer, a case nobody hits — those
+   wait. And a loose issue whose subject belongs to a task still open under the
+   spec waits for that task specifically: it is cheapest where its ground is
+   being opened anyway, and say that too.
+3. **With the spec closed, take it** — the same rule as several ready tasks, and
+   say which and why. Do not stop without saying what comes next.
+
+**Except an issue somebody else filed**, which is a suggestion and not an
+instruction: report it and leave it. The distinction is who it came from, not
+where it sits — one this workflow raised on the user's own work is theirs; one
+that arrived from outside is not. If they say to take it anyway, take it.
+
+**And an issue that would block an open task is not loose at all** — record the
+blocker in the tracker and let the readiness query do its work.
+
 ## Step 3 — Build it
 
 Hand the task to a subagent with a fresh context: the task issue, the spec it
