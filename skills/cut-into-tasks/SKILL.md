@@ -47,11 +47,17 @@ or it is not a question:
   question about what they want has no right answer, and the web holds other
   people's answers to their own version of it, which is never theirs.
 - **Being wrong is expensive.** Measured by what it would cost to put right, not
-  by the size of the change. What a later task can redo is cheap, and taste that
-  a later task can redo is cheap too. What reaches outside this repository is
-  not — sending, deleting, spending, publishing, touching data or people that
-  are not yours to touch — however small the change that does it. Where you
-  cannot tell which of the two it is, that uncertainty is the answer: ask.
+  by the size of the change, and not only today. What a later task can redo is
+  cheap, and taste that a later task can redo is cheap too. What later work will
+  rest on is not: cheap to change now, and no longer cheap once three tasks are
+  built on it. What reaches outside this repository is never cheap — sending,
+  deleting, spending, publishing, touching data or people that are not yours to
+  touch — however small the change that does it. Where you cannot tell which it
+  is, that uncertainty is the answer: ask.
+
+This second test only ever comes up once the first is passed. Something the
+project's own rules already settle stays settled however much rests on it — say
+what you decided and move, and let them overturn it if they want to.
 
 Everything else you decide yourself, say in one line what you decided, and
 record it where the user meets it — listed one by one in the spec, never
@@ -152,12 +158,16 @@ block each other, and false blockers serialise work that could run in parallel.
 ## Before you create anything
 
 Present the split as a numbered list: title, one line each, and which tasks wait
-for which. Ask whether the cut is right.
+for which. Then say it is what you are about to create, and create it — **do not
+ask whether the cut is right.** How to cut follows from the spec and from the
+rules above it: vertical, demonstrable, one at a time, real blockers. It is not
+a matter of taste the user holds and you do not, and they cannot judge whether a
+task is too large without the code in front of them. Asking hands them a
+decision they have nothing to decide it with.
 
-This is the last cheap moment to change it. Once issues exist and work starts,
-re-cutting costs real effort.
-
-Change what the user asks to change, then create.
+Say it in a way they can stop: this is the last cheap moment to change it, and
+once issues exist and work starts, re-cutting costs real effort. If they name a
+different cut, take it and create that instead.
 
 ## After creating
 
