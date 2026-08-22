@@ -206,6 +206,26 @@ single word can answer.
    `gh api -X PATCH repos/OWNER/REPO -f allow_auto_merge=true`. Say what a no
    costs, at the moment of asking: the workflow still runs, but every merge from
    then on stops and hands the pull request to the user to merge by hand.
+
+   **That setting alone is not the gate, and reporting only that setting is how
+   a run comes to a halt in the middle of a task.** Auto-merge can only be
+   switched on for a pull request that cannot already be merged — something has
+   to be outstanding for it to wait on. With no required check and no required
+   review there is nothing outstanding, the request is refused, and the merge
+   step has nowhere to go. Read what this repository can actually do:
+
+   - `gh api repos/OWNER/REPO -q .visibility` — public or private.
+   - `gh api repos/OWNER/REPO/branches/main/protection` — a 404 means no
+     protection, the ordinary state of a fresh repository.
+   - On a private repository protection is not switched off but unavailable:
+     GitHub offers protected branches and rulesets on private repositories only
+     from the Pro, Team and Enterprise plans, and on public repositories on
+     every plan including Free.
+
+   Report it in step 8 and write it into `environment.md`. Never withhold
+   anything over it and never make it a condition — the user decides what their
+   repository is for, and this step's job is that they decide it knowing what
+   holds.
 3. **Checks** — always. Present your mapping: which tool found fills which class,
    and which classes stay empty. Ask separately whether missing tools should be
    installed — that changes the project. Never install anything system-wide
@@ -387,6 +407,13 @@ Processes, order, ports, which terminal window stays occupied. What to pull afte
 which kind of change: new dependency, schema change, new setting, server code,
 frontend only. Which runs cost money and which path is free.
 
+Also **what checks a merge, and who**, from step 2 — the one property of this
+repository that decides whether anything besides the person at the keyboard is
+watching. Whether a required check exists on the default branch and which one;
+if none, that merges are held by the question at the end of a build and by
+nothing else, so the user performs them; and what would change that, where
+anything would.
+
 ## Step 7 — Pointer block in CLAUDE.md
 
 Append to an existing `CLAUDE.md`, delete nothing. Create it if absent.
@@ -414,11 +441,12 @@ actually arrived — a report of success is not evidence. If a check gate blocks
 merge, say so and stop here; do not offer the next step on top of unmerged setup.
 
 Merging can also be refused for reasons that are not a gate: auto-merge may be
-switched off on the repository, and a direct merge is a shared-state action that
-an agent may be refused. Both are repository or platform settings, not something
-this step changes. Say which one it was, hand the user the pull request, and say
-that this picks up again as soon as it has landed — the same rule the build step
-follows. Do not leave them holding a pull request with no idea what comes next.
+switched off on the repository, there may be no required check for it to wait on,
+and a direct merge is a shared-state action that an agent may be refused. None of
+those is something this step changes. Say which one it was, hand the user the one
+command that lands it, and say that this picks up again as soon as it has —
+the same rule the build step follows. Do not leave them holding a pull request
+with no idea what comes next.
 
 ## Step 9 — Close
 

@@ -207,8 +207,22 @@ automatically once the gates are green:
 The platform merges, not the agent. Direct merges are refused as a shared-state
 action, and an unattended run cannot answer that prompt.
 
-If auto-merge is not enabled on the repository, say so and stop: it is a
-repository setting, not something a build step changes. Ask the user to enable it.
+Setting it to merge automatically can be refused, and `environment.md` says
+which of the two cases this repository is in. Neither is a fault, and neither
+stops the stage:
+
+- **Auto-merge switched off at the repository.** A setting, not something a
+  build step changes. Say so and ask the user to switch it on.
+- **Nothing for it to wait on** — no required check, no required review, so the
+  pull request is already mergeable and auto-merge cannot be enabled at all.
+  Nothing is missing: the gate here is the question at the end of step 5, which
+  has already been answered, and the platform has no check of its own to add.
+
+Either way the merge itself is still not yours to perform. Give the user the one
+command that lands it, say the stage picks up the moment it does, and do not
+present it as something having gone wrong. What went wrong in the past was the
+framing and the timing — a run stopping mid-task, over a change nobody asked
+for, as though it had hit an error.
 
 Then check **once** whether it landed — do not poll in a loop. If it has not,
 say what it is still waiting on and offer the next step; do not block the session.
@@ -254,17 +268,27 @@ checks — only the gate differs.
 1. No class in `checks.md` is `empty`. Every one is `filled` or `skipped` with a
    reason. `empty` means undecided, and an undecided check approves nothing.
 2. A failing gate genuinely blocks a merge on the remote — not the model's
-   judgement that it looks fine.
+   judgement that it looks fine. This is also what makes the run able to merge
+   at all: see 6.
 3. `--max-iterations` is set. If the user did not give one, propose twice the
    number of ready tasks plus two, and say that is a rip-cord for a run that gets
    stuck, not a capacity estimate — one round per task is the normal case.
 4. No task in range is blocked by anything outside the range.
 5. The tool classes the run needs are already approved for this project. A run
    nobody is watching cannot answer a permission prompt.
-6. Auto-merge is enabled on the remote repository. Without it the run reaches the
-   pull request and stops there: merging directly is refused, and auto-merge is
-   rejected. Check with
-   `gh api repos/OWNER/REPO -q .allow_auto_merge` and refuse to start on false.
+6. The repository can actually merge without a person. Two things have to hold,
+   and `environment.md` records both: auto-merge is enabled
+   (`gh api repos/OWNER/REPO -q .allow_auto_merge`), and a required check exists
+   for it to wait on (`gh api repos/OWNER/REPO/branches/main/protection`, where
+   a 404 means none). Without the second, auto-merge cannot be switched on at
+   all, direct merging is refused, and nobody is present to do it by hand — the
+   run would build a task and then sit on a pull request forever.
+
+   This refusal is about the run being able to finish, not about trusting it.
+   Say which of the two is missing and what would change it — a required check
+   where protection is available, a public repository or a paid plan where it is
+   not — and say that the attended mode works unchanged in the meantime, because
+   there the person answering step 5 is the one who merges.
 
 Then write `.claude/autorun.local.md` with `iteration`, `max_iterations`,
 `completion_promise`, `scope`, and `started_from` (the current main-branch
