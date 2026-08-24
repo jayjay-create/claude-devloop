@@ -382,7 +382,7 @@ by definition — the merge is what changed it.
 `--auto` replaces the user's approval with a green check suite. Same stages, same
 checks — only the gate differs.
 
-**Refuse to start** unless all five hold, and say which failed:
+**Refuse to start** unless all six hold, and say which failed:
 
 1. No class in `checks.md` is `empty`. Every one is `filled` or `skipped` with a
    reason. `empty` means undecided, and an undecided check approves nothing.
@@ -414,6 +414,15 @@ checks — only the gate differs.
    where protection is available, a public repository or a paid plan where it is
    not — and say that the attended mode works unchanged in the meantime, because
    there the person answering step 5 is the one who merges.
+
+   Where protection is available and simply absent, offer to build the gate
+   rather than only naming it: the workflow file running the blocking targets,
+   landed and seen green on the main branch, and only then the protection
+   requiring it with `enforce_admins` on. Those three happen in that order and
+   not while a pull request is open — a required check added underneath one
+   blocks it. Refuse to build a gate at all where no `filled` class is
+   `Blocking: yes`: a required check that runs nothing would let everything
+   through, which is not a gate but the appearance of one.
 
 Then write `.claude/autorun.local.md` with `iteration`, `max_iterations`,
 `completion_promise`, `scope`, and `started_from` (the current main-branch
