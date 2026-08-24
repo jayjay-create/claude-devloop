@@ -238,7 +238,29 @@ means the class cannot work that way.
 While any class is still `empty`, `check` must fail rather than pass, and say the
 suite is incomplete.
 
-## Step 7 — Offer the unattended mode
+## Step 7 — Land the check suite on the main branch
+
+Skip this whole step when this skill was called for a single class from a build.
+That branch belongs to the build, and the build lands it with the rest of its
+task.
+
+Otherwise the branch cut before Step 2 has to reach the main branch now, before
+anything else happens. Everything from here on reads `checks.md` from the main
+branch: the next task cuts its branch from there and would find no check suite
+at all. Leaving it unmerged has worked so far only because a run improvised the
+merge on its own, which is not something to build on.
+
+**Never merge directly.** Open a pull request and let the platform merge it once
+the gates pass, then check `git log` that it actually arrived — a report of
+success is not evidence.
+
+If the merge is refused, say which reason it was: auto-merge switched off on the
+repository, no required check for it to wait on, or a direct merge refused as a
+shared-state action. Hand the user the one command that lands it, say that this
+picks up again as soon as it has, and do not go on to the next step on top of an
+unmerged suite.
+
+## Step 8 — Offer the unattended mode
 
 Only when no class is `empty` any more. While one is, the mode is unavailable
 whatever the user answers, and asking would be a question with one possible
@@ -298,7 +320,7 @@ it, a public repository or a different plan. Offer to take the workflow file bac
 out, since it was added only for this. The attended mode is untouched and carries
 on either way.
 
-## Step 8 — Close
+## Step 9 — Close
 
 Say how many classes are `filled`, how many `skipped` and why, and how many are
 still `empty`.
