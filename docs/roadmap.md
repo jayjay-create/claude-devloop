@@ -178,16 +178,26 @@ the size of the work.
 - **Not everything is exercised yet.** `diagnose-bug` has run once, reached
   through the turn-end gate, and found its cause correctly — with two of its six
   steps skipped silently, which is what the rule about naming a skipped step
-  came from. Everything merged after that has not run: the install guard, the
-  re-review of what changed after a review, the loose-issue ordering, the
-  origin label, the permission wording, and reading who a branch rule actually
-  binds. They need a fresh project, because most of them only appear at setup or
-  on a first build.
+  came from. A Go project set up from nothing has since exercised three more: the
+  install guard fired and handed the command back, the permission wording
+  arrived, and the re-review of what changed after a review ran on the fix
+  commit. Still unexercised: the loose-issue ordering, the origin label, reading
+  who a branch rule actually binds, and both steps added since — the offer of the
+  unattended mode and the landing of the check suite.
+
+  Reading who a branch rule binds cannot be reached from a fresh repository at
+  all. There is nothing to read: a new repository has no protection, and no skill
+  creates one. It needs a repository prepared by hand, with protection on,
+  `enforce_admins` off and the account holding admin — the shape the defect lived
+  in. `devloop-test-l` has the opposite shape and does not reproduce it either.
 
   The session-end handover naming the next question has still never been seen.
   That rule fires only once a ticket resolves, so it needs an idea large enough
   to be mapped and an interview carried through — not a small tool that goes
-  straight to planning.
+  straight to planning. An attempt with a Go duplicate-file finder failed on
+  exactly that: two undecided parameters do not make an idea unclear, and step 3
+  of `start-work` sent it to planning, correctly. The next attempt needs one
+  where the question really is what to build, not how.
 
   On planting a fault to exercise the diagnosis: a single unreviewed commit on
   the main branch is worthless, because the history names the suspect and there
@@ -203,7 +213,11 @@ the size of the work.
   with Gradle and is the only one with a real platform gate: a required check
   called `checks` run by a workflow on every pull request, with `enforce_admins`
   on, so it binds the account this workflow runs as. That makes it the only
-  place an unattended run can be tried at all.
+  place an unattended run can be tried at all. `devloop-test-m` is Go, set up
+  from nothing on 24 August: five check classes filled and blocking (format,
+  lint, unit, integration, end-to-end), four still `empty`, no platform gate,
+  and two of its three tasks unbuilt. It is the bench for anything wanting a
+  fresh Go project.
   Nothing merged after 0.46.0 has run either: the base check, the rewritten
   questions at four stage boundaries, and the control documents finally getting
   a writer all came out of a single run and have only been reasoned about since.
@@ -214,10 +228,11 @@ the size of the work.
   compiled program as a subprocess and asserting on output and exit code, which
   has now been done. Anything that stays up — a service, an interface — still
   has none.
-- **Two stacks have been exercised**: a small Python project with `make`, and a
-  TypeScript command-line tool with npm and `make`, both on GitHub Issues. Other
-  trackers, monorepos, and anything whose checks need a system install rather
-  than a package — all untested.
+- **Four stacks have been exercised**: a small Python project with `make`, a
+  TypeScript command-line tool with npm and `make`, Kotlin with Gradle, and Go
+  with `make`, all on GitHub Issues. Go was the first whose checks needed a
+  system install rather than a package, which is how the install guard finally
+  got exercised at all. Other trackers and monorepos are still untested.
 - **The install guard does not see a wrapper that downloads on first use.** It
   reads the command, so `brew install` and its relatives are caught and a
   project-local dependency is not. `./gradlew` or `mvnw` fetching a toolchain
@@ -233,6 +248,44 @@ the size of the work.
   the edit tool would be wrong wherever the shell is the right instrument, and
   which of the two a given change wants is not something this file can decide in
   advance.
+
+- **A check class ruled out with a reason is still recorded as `empty`.** In the
+  Go project the run explained at length why there is no separate types class for
+  Go — `go vet` is the closest tool and already fills the lint row — wrote that
+  reasoning into the prose of `checks.md`, and left the row's status at `empty`.
+  `empty` means nobody decided; `skipped` means decided, with a reason. This is
+  not cosmetic: the first start condition of an unattended run and the offer of
+  that mode both turn on no class being `empty`. A run that reasons a class away
+  without recording the decision puts the mode permanently out of reach — and for
+  Go it does so in every project, because the reasoning is the same every time.
+- **The merge approval promises a gate that is not there.** The question offers
+  that the pull request is opened and merged automatically once the checks are
+  green. Where no required check exists nothing goes green and nothing waits: the
+  merge happens at once, unchecked by the platform, which is what then happened.
+  The same run had already written the truth into `environment.md` an hour
+  earlier — auto-merge is on, but with nothing required a pull request has
+  nothing to wait on. What the approval says has to be read off the repository
+  rather than assumed.
+- **The install guard's message drops the decline path.** The hook asks for four
+  things: what it installs and what that unblocks, the exact command, that this
+  picks up as soon as it has run, and — if they decline — that the check class it
+  was for is recorded as skipped with that reason and the run carries on. Three
+  arrived. The fourth did not: the message offered only "let me know once it is
+  through", so declining looked like no answer at all.
+- **The permission step is put as a question although nothing is decided.** The
+  run cannot record the grant itself, so the real answer is given later, to the
+  tool, in its own prompt. There is nothing for the run to wait on or act on, and
+  it carries straight on — which from the outside reads as a question that was
+  ignored. It is preparation and has to be said as one. This holds whether or not
+  the tool is auto-approving prompts; that only changes whether the advice is
+  usable. The skill's own wording is the source: it says to ask, and to offer.
+- **The opening enumerates the loop instead of making it sound light.** What the
+  first message needs: at most four sentences; one promise only, that an idea is
+  all that is needed and the rest is guided; nothing about the individual stages,
+  which is where the current wording goes wrong; that nothing has to be
+  remembered, no commands and no steps; and that asking what is happening at any
+  point gets an explanation. The closing line is fixed and stands verbatim, in
+  English even where the rest is not: `devloop - from idea to built.`
 
 ## Decisions taken against
 
