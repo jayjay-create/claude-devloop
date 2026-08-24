@@ -304,10 +304,20 @@ single word can answer.
    - `gh api repos/OWNER/REPO -q .visibility` — public or private.
    - `gh api repos/OWNER/REPO/branches/main/protection` — a 404 means no
      protection, the ordinary state of a fresh repository.
-   - On a private repository protection is not switched off but unavailable:
-     GitHub offers protected branches and rulesets on private repositories only
-     from the Pro, Team and Enterprise plans, and on public repositories on
-     every plan including Free.
+   - `gh api repos/OWNER/REPO/branches/main/protection -q .enforce_admins.enabled`
+     — **and this one decides whether any of it applies here.** With it off, an
+     account holding admin on the repository walks past every rule above, and
+     this workflow runs as whatever account the tooling is authenticated with.
+     A protected branch that the working account can bypass is not a gate; it
+     is a gate for everybody else. Reporting the protection without this is
+     reporting something that is not true where it matters.
+   - `gh api repos/OWNER/REPO -q .permissions.admin` — whether that account is
+     one of the ones that would walk past it.
+
+   Whether a plan allows protection on a private repository has changed before
+   and will again, so do not carry a table of it: the 404 answers it for this
+   repository, today. If protection is wanted and refused, the message says why
+   and that is the answer to report.
 
    Report it in step 8 and write it into `environment.md`. Never withhold
    anything over it and never make it a condition — the user decides what their
