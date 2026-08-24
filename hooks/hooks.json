@@ -1,5 +1,5 @@
 {
-  "description": "Session status, the check suite, and guards on the main branch and on merging",
+  "description": "Session status, the check suite, and guards on the main branch, on merging, and on installing outside the repository",
   "hooks": {
     "PreToolUse": [
       { "matcher": "Edit|Write|MultiEdit",
@@ -7,7 +7,8 @@
       { "matcher": "Bash",
         "hooks": [ { "type": "command", "if": "Bash(git commit*)", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-branch-guard.sh" },
                    { "type": "command", "if": "Bash(git push*)", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-branch-guard.sh" },
-                   { "type": "command", "if": "Bash(gh pr merge*)", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-merge-guard.sh" } ] }
+                   { "type": "command", "if": "Bash(gh pr merge*)", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-merge-guard.sh" },
+                   { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-install-guard.sh" } ] }
     ],
     "SessionStart": [
       { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh" } ] }

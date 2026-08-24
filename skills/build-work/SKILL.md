@@ -230,7 +230,12 @@ The subagent:
 4. Commits behaviour changes separately from mechanical ones.
 5. Runs everything `checks.md` lists before reporting done. A report a later gate
    rejects is not a report.
-6. Writes down anything that changed about running this project locally — a new
+6. Never installs anything that lands outside the repository — a compiler, a
+   runtime, a tool from a package manager. That is the user's to run, the same
+   way merging is, and a guard blocks it. Say what it installs and what it
+   unblocks, hand them the command, and carry on when it has run. This is the
+   one thing a task can need that the task itself cannot do.
+7. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into
    `docs/agents/environment.md`, on this same branch. A command the user has to
    type is a fact about the environment, and it belongs in the file rather than
