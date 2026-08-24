@@ -245,15 +245,31 @@ The subagent:
    rejects is not a report.
 6. Never installs anything that lands outside the repository — a compiler, a
    runtime, a tool from a package manager. That is the user's to run, the same
-   way merging is, and a guard blocks it. Say what it installs and what it
-   unblocks, hand them the command, and carry on when it has run. This is the
-   one thing a task can need that the task itself cannot do.
+   way merging is, and a guard blocks it. Report what it installs, what it
+   unblocks, and the exact command — and both ways it can go, in the same
+   breath: the build picks up as soon as it has run, and **a decline is an
+   answer too, not a wall**. A message that says only "let me know once it is
+   through" leaves no way to say no, which is how it came out the first time.
+   This is the one thing a task can need that the task itself cannot do.
 7. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into
    `docs/agents/environment.md`, on this same branch. A command the user has to
    type is a fact about the environment, and it belongs in the file rather than
    in a sentence that scrolls away. That file is read after every merge to say
    what to pull; it is only worth reading if something writes it.
+
+**If they decline, the run acts on it.** Which outcome depends on what the tool
+was for:
+
+- **A check class.** Call `setup-checks` for that one class; it records the class
+  as `skipped` with that reason. The build carries on without it.
+- **The task itself.** The branch stays where it is, and the missing install
+  becomes an issue of its own carrying the exact command, labelled `raised-here`
+  and `needs-human`, recorded as a blocker of the task. Nothing else is needed to
+  keep this step from picking the same task straight back up: the readiness query
+  passes over a task with an open blocker by itself, and closing that issue once
+  the command has run frees it again. Say all of it in one message, then go back
+  to step 2 rather than stopping.
 
 Refactoring is not part of this loop. It belongs to the review.
 

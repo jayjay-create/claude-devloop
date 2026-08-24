@@ -184,8 +184,15 @@ the size of the work.
   commit. Still unexercised: the loose-issue ordering, the origin label, reading
   who a branch rule actually binds, the rule that a class reasoned away is
   recorded as `skipped` rather than left `empty`, arming auto-merge through the
-  mutation instead of `gh pr merge --auto`, and both steps added since — the
-  offer of the unattended mode and the landing of the check suite.
+  mutation instead of `gh pr merge --auto`, what happens when an install is
+  declined, and both steps added since — the offer of the unattended mode and
+  the landing of the check suite.
+
+  Declining an install has never been tried. Both times the guard fired, the
+  command was run. It is not a defect waiting to happen but one of the two
+  answers to a question this workflow itself puts, so it has to be walked on
+  purpose the way the missing Java runtime was: a project where a check class
+  needs a system tool, and the answer is no.
 
   Reading who a branch rule binds cannot be reached from a fresh repository at
   all. There is nothing to read: a new repository has no protection, and no skill
@@ -251,19 +258,6 @@ the size of the work.
   which of the two a given change wants is not something this file can decide in
   advance.
 
-- **The install guard's message drops the decline path.** The hook asks for four
-  things: what it installs and what that unblocks, the exact command, that this
-  picks up as soon as it has run, and — if they decline — that the check class it
-  was for is recorded as skipped with that reason and the run carries on. Three
-  arrived. The fourth did not: the message offered only "let me know once it is
-  through", so declining looked like no answer at all.
-- **The permission step is put as a question although nothing is decided.** The
-  run cannot record the grant itself, so the real answer is given later, to the
-  tool, in its own prompt. There is nothing for the run to wait on or act on, and
-  it carries straight on — which from the outside reads as a question that was
-  ignored. It is preparation and has to be said as one. This holds whether or not
-  the tool is auto-approving prompts; that only changes whether the advice is
-  usable. The skill's own wording is the source: it says to ask, and to offer.
 - **The opening enumerates the loop instead of making it sound light.** What the
   first message needs: at most four sentences; one promise only, that an idea is
   all that is needed and the rest is guided; nothing about the individual stages,

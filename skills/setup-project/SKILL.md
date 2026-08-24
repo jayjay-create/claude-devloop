@@ -166,15 +166,23 @@ not substitute something else without naming what failed.
 
 ### Permissions, before the first command
 
-Ask this **before running anything**, at the end of this step. Exploring the
-repository is what triggers the first round of confirmations — reading git state,
-listing labels, querying the tracker — so an offer made afterwards arrives too
-late, every time. None of those is a decision. That contradicts what they were promised at the start, and it gets
-worse later: an unattended run needs those permissions granted up front, because
-nobody is there to answer.
+**This is not a question, and must not be put as one.** You cannot record the
+grant, the tool owns that file, and the real answer is given later at the tool's
+own confirmation prompt. There is nothing here to wait on and nothing that
+changes on an answer, so a question produces one that gets no reply and then
+looks ignored when the run carries straight on. It is preparation, and it is
+said as preparation.
 
-So ask once, here, while they are present: offer to grant the command patterns
-this workflow uses on every run, and name them in plain words — **reading git
+**Say it before running anything, at the end of this step.** Exploring the
+repository is what triggers the first round of confirmations — reading git state,
+listing labels, querying the tracker — so advice that arrives afterwards is too
+late, every time. None of those is a decision. Confirming them one by one
+contradicts what they were promised at the start, and it gets worse later: an
+unattended run needs those permissions granted up front, because nobody is there
+to answer.
+
+So say it once, here, while they are present. Name the command patterns this
+workflow uses on every run, in plain words — **reading git
 state and writing to it** (cutting a branch, staging, committing, pushing,
 fetching), reading and writing issues, opening and merging pull requests, and
 asking the platform about the repository. Do not stop at reading: every run cuts
@@ -201,13 +209,13 @@ cannot be expressed as a pattern at all, and a one-off deserves to be seen.
 **You cannot record the grant yourself, so do not say that you will.** The
 permissions file belongs to the tool, not to this project, and writing it is
 refused — measured, not assumed: a run tried and was blocked by the platform's
-own classifier. What a yes means in practice is that they choose "always allow"
-the first time each pattern comes up, or set them in `/config`. Say that, name
-the patterns so they know what is coming, and say they can take any of it back
-in the same place. Claiming to have recorded something leaves them looking for a
-file that was never written. On a no, say what it costs
-and nothing else: a confirmation prompt per command kind, in every session, for
-as long as that stands. **Do not name the unattended mode as one of the costs.**
+own classifier. So say what will happen either way and leave it with them:
+granting means choosing "always allow" the first time each pattern comes up, or
+setting them in `/config`, and any of it can be taken back in the same place;
+not granting means a confirmation prompt per command kind, in every session, for
+as long as that stands. Claiming to have recorded something leaves them looking
+for a file that was never written. **Do not name the unattended mode as one of
+the costs.**
 It is true that this grant is one of that mode's preconditions, and saying so
 here turns a yes into a step towards it — which is exactly the confusion the
 next paragraph exists to prevent. If they ask about it, say it is asked for

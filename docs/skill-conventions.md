@@ -348,7 +348,7 @@ run it.
 
 ## Before a handover, run these
 
-Nine checks that catch what a conversation loses. Each one has found a real gap.
+Ten checks that catch what a conversation loses. Each one has found a real gap.
 Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
@@ -411,6 +411,16 @@ a rule added at one anchor and a sentence contradicting it further down the same
 file is how three of these got in:
 
     grep -rn 'Ask whether\|offer to\|Offer to\|on a yes\|offering the next' skills/*/SKILL.md
+
+Every place a run hands the user something to do says where a no leads. The
+check above finds offers by their wording and misses one written in other words:
+the rule that a build hands over an install command was three sentences long,
+said what happens once it has run, and said nothing about declining — and none
+of the five phrasings above appears in it. This one looks for the other half,
+the sentence that describes the yes. Every line it prints needs an eye on it,
+and what it is being read for is whether the no is there too:
+
+    grep -rn 'picks up as soon as\|picks up the moment\|carry on when it has run\|once it has run\|hand them the command\|hand the user the\|Hand the user the' skills/*/SKILL.md
 
 The installed copy is the copy you changed:
 
