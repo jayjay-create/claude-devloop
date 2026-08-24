@@ -292,7 +292,10 @@ single word can answer.
    merges are refused. Offer to switch it on:
    `gh api -X PATCH repos/OWNER/REPO -f allow_auto_merge=true`. Say what a no
    costs, at the moment of asking: the workflow still runs, but every merge from
-   then on stops and hands the pull request to the user to merge by hand.
+   then on stops and hands the pull request to the user to merge by hand. Either
+   way this setting is only half of what an unattended run needs; the other half
+   cannot be built yet, because nothing has decided what a required check would
+   run, and it is offered once the check suite exists.
 
    **That setting alone is not the gate, and reporting only that setting is how
    a run comes to a halt in the middle of a task.** Auto-merge can only be

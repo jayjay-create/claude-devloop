@@ -238,7 +238,67 @@ means the class cannot work that way.
 While any class is still `empty`, `check` must fail rather than pass, and say the
 suite is incomplete.
 
-## Step 7 — Close
+## Step 7 — Offer the unattended mode
+
+Only when no class is `empty` any more. While one is, the mode is unavailable
+whatever the user answers, and asking would be a question with one possible
+outcome.
+
+**Read the state before asking; never carry an impression of it.** Whether the
+main branch is protected (`gh api repos/OWNER/REPO/branches/main/protection`, a
+404 means no), whether that protection binds the account this runs as
+(`.enforce_admins.enabled`, together with `gh api repos/OWNER/REPO -q
+.permissions.admin`), and whether auto-merge is on (`gh api repos/OWNER/REPO -q
+.allow_auto_merge`). Protection an admin can step over is not a gate: report it
+as missing, not as present. Where the gate is already there and binding, say the
+mode is available and skip the rest of this step.
+
+**Refuse to build a gate when no `filled` class is `Blocking: yes`,** and say
+why. A required check that runs nothing green-lights everything, so an unattended
+run behind it would have nothing whatever between a change and the main branch —
+worse than not offering the mode at all.
+
+**What the question has to carry.** What it decides: whether builds in this
+project can run through without stopping at every task for approval. What a yes
+costs, said at the moment of asking — a workflow file is added, the main branch
+becomes protected, that protection applies to the user too so they can no longer
+push to it directly either, and on a private repository the workflow spends the
+account's Actions minutes. What a no means: everything works exactly as it does
+now, every task comes back for approval, and this can be set up later without
+redoing anything.
+
+**Do not recommend a yes on a first project.** A green check suite says the code
+does what the tests say, not that it is what the user wanted, and the approval at
+each task is where a build heading the wrong way becomes visible. Say that, so
+the recommendation is theirs to weigh rather than a door being held open.
+
+Record the answer in `environment.md` either way. A later session then reports
+that the mode is available, or that it was declined and can still be set up,
+instead of asking again.
+
+**On a yes, in this order. Do not collapse it.**
+
+1. Write `.github/workflows/checks.yml`, running exactly the blocking targets
+   `checks.md` names and nothing else. Land it on the main branch the ordinary
+   way, through a pull request.
+2. Wait until it has run there and gone green. A required check that has never
+   reported leaves every later pull request waiting on something that will never
+   arrive. If it goes red, that is the answer: say what failed, and that a gate
+   cannot be built on a suite that does not pass away from this machine.
+3. Only then set the protection, requiring that check, with `enforce_admins` on,
+   and switch auto-merge on if it is off.
+
+**Never do this while a pull request is open.** A required check added underneath
+an open one blocks it — the workflow never ran for that branch, so its result
+never comes. Say so, merge what is open first, and come back to this.
+
+**If the protection is refused,** say why in plain words — a private repository
+on a plan that does not allow it is the usual reason — and say what would change
+it, a public repository or a different plan. Offer to take the workflow file back
+out, since it was added only for this. The attended mode is untouched and carries
+on either way.
+
+## Step 8 — Close
 
 Say how many classes are `filled`, how many `skipped` and why, and how many are
 still `empty`.
@@ -247,9 +307,6 @@ Then say what happens next and do it, without asking first: more classes if any
 are still `empty`, otherwise the first piece of work. Say what the state means
 either way — a class still saying `empty` is a record that nobody decided yet,
 and the unattended mode stays unavailable until none are.
-
-If nothing is `empty` any more, say that the unattended mode's first condition is
-now met — the check suite can stand in for a human's approval.
 
 ---
 
