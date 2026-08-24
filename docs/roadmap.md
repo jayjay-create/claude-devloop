@@ -175,17 +175,35 @@ the size of the work.
   pull request and a merge. Correct by the rules — never merge directly — and
   out of proportion, and it now happens without being asked for. Worth
   revisiting only with a rule that does not carve an exception into that one.
-- **Not everything is exercised yet.** The entry point proposing the next step
-  by title on a map in flight has now run; the two bugs it showed are fixed. The
-  session-end handover naming the next question has not — that rule only fires
-  once a ticket resolves, so it needs a full interview run to be seen at all.
-  `diagnose-bug` has still not run. A project with a filled unit class now
-  exists and a run did reach a red check — at the start of a build, checking its
-  base, which was a route nothing had been wired for. That route is wired now.
-  What made the attempt worthless was where the fault was put: a single
-  unreviewed commit on the main branch, one line wide, so the history named the
-  cause and there was nothing left to diagnose. The next attempt has to sit
-  inside a change large enough that the suspect list is longer than one.
+- **Not everything is exercised yet.** `diagnose-bug` has run once, reached
+  through the turn-end gate, and found its cause correctly — with two of its six
+  steps skipped silently, which is what the rule about naming a skipped step
+  came from. Everything merged after that has not run: the install guard, the
+  re-review of what changed after a review, the loose-issue ordering, the
+  origin label, the permission wording, and reading who a branch rule actually
+  binds. They need a fresh project, because most of them only appear at setup or
+  on a first build.
+
+  The session-end handover naming the next question has still never been seen.
+  That rule fires only once a ticket resolves, so it needs an idea large enough
+  to be mapped and an interview carried through — not a small tool that goes
+  straight to planning.
+
+  On planting a fault to exercise the diagnosis: a single unreviewed commit on
+  the main branch is worthless, because the history names the suspect and there
+  is nothing left to work out. It has to sit inside a change with several
+  plausible candidates, and it must not break a case that is directly tested, or
+  the failing test points straight at it.
+
+- **Throwaway projects that exist, and what each is good for.** `devloop-test-i`
+  holds a map with open tickets and no code — the only one where an interview
+  could be carried through. `devloop-test-j` is a Python command-line tool with
+  a filled, blocking unit class, which makes it the standing bench for a planted
+  fault. `devloop-test-k` is TypeScript with npm. `devloop-test-l` is Kotlin
+  with Gradle and is the only one with a real platform gate: a required check
+  called `checks` run by a workflow on every pull request, with `enforce_admins`
+  on, so it binds the account this workflow runs as. That makes it the only
+  place an unattended run can be tried at all.
   Nothing merged after 0.46.0 has run either: the base check, the rewritten
   questions at four stage boundaries, and the control documents finally getting
   a writer all came out of a single run and have only been reasoned about since.
@@ -200,6 +218,12 @@ the size of the work.
   TypeScript command-line tool with npm and `make`, both on GitHub Issues. Other
   trackers, monorepos, and anything whose checks need a system install rather
   than a package — all untested.
+- **The install guard does not see a wrapper that downloads on first use.** It
+  reads the command, so `brew install` and its relatives are caught and a
+  project-local dependency is not. `./gradlew` or `mvnw` fetching a toolchain
+  into the user's home on first run looks like an ordinary build command and
+  goes through. Named when the guard was built rather than discovered later, and
+  left as it is: catching it would mean guessing at what a build command does.
 - **The run bundles shell commands where it used to edit files one at a time.**
   Five version markers changed with one `sed` in a loop, staging and committing
   and pushing chained into a single call. The result is correct and the file
