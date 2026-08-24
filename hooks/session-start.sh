@@ -4,7 +4,7 @@ cd "$PROJECT_DIR" 2>/dev/null || exit 0
 git rev-parse --git-dir >/dev/null 2>&1 || exit 0
 
 if [ ! -d "docs/agents" ]; then
-  echo "[ProjectStatus] devloop: not set up here | first-run text: ${CLAUDE_PLUGIN_ROOT}/reference/first-run.md"
+  echo "[ProjectStatus] devloop: not set up here"
   exit 0
 fi
 

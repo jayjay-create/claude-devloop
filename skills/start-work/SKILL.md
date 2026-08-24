@@ -33,17 +33,25 @@ file with no marker at all predates the marker; treat it as older.
 
 ## Step 2 — Orient them, if the status line says this project is not set up
 
-Write a short introduction in your own words — four or five sentences, their
-language — covering all four of these:
+Write a short introduction in your own words — at most four sentences, not
+counting the closing line, in their language — covering these and nothing else:
 
-- What this does: takes a piece of work from an idea to merged, reviewed code.
-- What you will do along the way: ask questions, read their code, draft designs
-  under different constraints and recommend one, write a spec, cut it into single
-  pieces of work, build each one test-first and reviewed. No counts, no numbers —
-  how many designs is your problem, not theirs.
-- That they need to remember nothing: no commands, no steps. You say what is
-  next; they decide where there is something real to decide.
-- That they can ask about any step and you will explain it.
+- One promise: an idea is all they need to bring, and the rest is guided.
+- That they have to remember nothing — no commands, no steps.
+- That asking what is happening, at any point, gets an explanation.
+
+**Name no stages.** Not sharpening, designing, speccing, cutting, building or
+reviewing, and no counts of anything. A list of what is coming reads as a process
+to learn, which is the opposite of the promise just made, and they meet each
+stage when it arrives anyway.
+
+Close on this line, exactly as written, in English even when the rest is not:
+
+    devloop - from idea to built.
+
+This is the one fixed wording in the set, and it is fixed because it is a
+signature rather than a paragraph — six words a model transcribes, not a text it
+would paraphrase.
 
 Then ask what they would like to build, and **stop.** Nothing else in this reply:
 no repository findings, no offer to set anything up.

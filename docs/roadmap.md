@@ -185,8 +185,8 @@ the size of the work.
   who a branch rule actually binds, the rule that a class reasoned away is
   recorded as `skipped` rather than left `empty`, arming auto-merge through the
   mutation instead of `gh pr merge --auto`, what happens when an install is
-  declined, and both steps added since — the offer of the unattended mode and
-  the landing of the check suite.
+  declined, the shortened opening, and both steps added since — the offer of the
+  unattended mode and the landing of the check suite.
 
   Declining an install has never been tried. Both times the guard fired, the
   command was run. It is not a defect waiting to happen but one of the two
@@ -258,13 +258,6 @@ the size of the work.
   which of the two a given change wants is not something this file can decide in
   advance.
 
-- **The opening enumerates the loop instead of making it sound light.** What the
-  first message needs: at most four sentences; one promise only, that an idea is
-  all that is needed and the rest is guided; nothing about the individual stages,
-  which is where the current wording goes wrong; that nothing has to be
-  remembered, no commands and no steps; and that asking what is happening at any
-  point gets an explanation. The closing line is fixed and stands verbatim, in
-  English even where the rest is not: `devloop - from idea to built.`
 
 ## Decisions taken against
 
