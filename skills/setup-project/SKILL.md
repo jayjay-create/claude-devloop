@@ -196,8 +196,16 @@ does too.
 
 Anything outside those two sets stays a confirmation prompt, and that is the
 right outcome rather than a gap: a command built with a loop or a variable
-cannot be expressed as a pattern at all, and a one-off deserves to be seen. On a yes, say
-where they are recorded so they can be taken back. On a no, say what it costs
+cannot be expressed as a pattern at all, and a one-off deserves to be seen.
+
+**You cannot record the grant yourself, so do not say that you will.** The
+permissions file belongs to the tool, not to this project, and writing it is
+refused — measured, not assumed: a run tried and was blocked by the platform's
+own classifier. What a yes means in practice is that they choose "always allow"
+the first time each pattern comes up, or set them in `/config`. Say that, name
+the patterns so they know what is coming, and say they can take any of it back
+in the same place. Claiming to have recorded something leaves them looking for a
+file that was never written. On a no, say what it costs
 and nothing else: a confirmation prompt per command kind, in every session, for
 as long as that stands. **Do not name the unattended mode as one of the costs.**
 It is true that this grant is one of that mode's preconditions, and saying so

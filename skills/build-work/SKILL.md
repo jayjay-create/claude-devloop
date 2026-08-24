@@ -268,6 +268,18 @@ Each finding goes one of two ways:
 Never leave a finding in the conversation. Never explain a named defect away in
 the same breath as naming it: it stays open until fixed or explicitly deferred.
 
+**If the diff changes after this step, this step runs again on what changed.**
+Not the whole diff — the commits added since the last review. The gate below
+decides whether work lands; it does not make unreviewed work reviewed, and code
+written after the reviewers looked would otherwise ride in beside code they saw.
+This is not rare: a red check at the turn-end gate is answered by writing more
+code, and so is a "no, revise" at the gate itself. Fixes made *inside* this step
+are already covered by it — the boundary is the step, not the change.
+
+A second round follows the same two ways out, and it looks only at what is new.
+If it surfaces nothing beyond what the first round already named, say so and
+carry on rather than starting again.
+
 ## Step 5 — Hand it to the user
 
 Show the diff and the findings — what was fixed, what was filed. **Then ask, in
