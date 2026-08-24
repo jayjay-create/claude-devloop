@@ -11,7 +11,10 @@ TOOL=$(echo "$INPUT" | sed -n 's/.*"tool_name"[[:space:]]*:[[:space:]]*"\([^"]*\
 
 CMD=$(echo "$INPUT" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
 echo "$CMD" | grep -qE '(^|[^[:alnum:]_-])gh[[:space:]]+pr[[:space:]]+merge([[:space:]]|$)' || exit 0
-echo "$CMD" | grep -q -- '--auto' && exit 0
 
-echo "Blocked: merging directly. The platform merges, not you — add --auto so it lands once the gates pass, or hand the pull request to the user and say the stage continues as soon as it does. This holds even if the user just said to merge: their yes authorises the merge, not you performing it. If --auto is refused — switched off on this repository, or no required check for it to wait on — hand the user the command instead and say the stage picks up when it lands." >&2
+cat >&2 <<'MSG'
+Blocked: merging is not yours to perform, in any form. Arm the platform instead, with a command that cannot merge:
+gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
+gh pr merge --auto is not a substitute: the tool drops that flag whenever the pull request is already mergeable and merges on the spot, which is the one thing this stage must not do. If arming is refused, read gh api repos/OWNER/REPO -q .allow_auto_merge to tell the two cases apart - auto-merge switched off on the repository, or no gate for it to wait on at all - then hand the user the merge command, say which case it was, and say the stage picks up the moment it lands. This holds even if the user just said to merge: their yes authorises the merge, not you performing it.
+MSG
 exit 2

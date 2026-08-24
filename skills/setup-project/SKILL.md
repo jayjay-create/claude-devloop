@@ -547,19 +547,27 @@ The setup must be on the main branch before any other work starts. A task branch
 cut afterwards would not carry `docs/agents/`, and every other skill would find
 nothing.
 
-**Never merge directly.** Open a pull request and let the platform merge it once
-the gates pass — a direct merge is a shared-state action, and the same rule holds
-in every later stage.
+**Never merge yourself.** Open a pull request and arm the platform to merge it
+once the gates pass — performing the merge is a shared-state action, and the same
+rule holds in every later stage. Arming is a mutation of its own and cannot
+merge:
 
-Commit, open a pull request, merge it, and then verify against `git log` that it
+    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
+
+`gh pr merge --auto` is not a substitute: the tool drops that flag whenever the
+pull request is already mergeable and merges on the spot.
+
+Commit, open a pull request, arm it, and then verify against `git log` that it
 actually arrived — a report of success is not evidence. If a check gate blocks the
 merge, say so and stop here; do not offer the next step on top of unmerged setup.
 
-Merging can also be refused for reasons that are not a gate: auto-merge may be
-switched off on the repository, there may be no required check for it to wait on,
-and a direct merge is a shared-state action that an agent may be refused. None of
-those is something this step changes. Say which one it was, hand the user the one
-command that lands it, and say that this picks up again as soon as it has —
+Arming can also be refused, and not because of a gate: auto-merge may be switched
+off on the repository, or there may be no required check for it to wait on, which
+means there is no platform gate here at all. Read which one it is (`gh api
+repos/OWNER/REPO -q .allow_auto_merge`) rather than inferring it from the error
+text. None of those is something this step changes. Say which one it was, hand
+the user the one command that lands it, and say that this picks up again as soon
+as it has —
 the same rule the build step follows. Do not leave them holding a pull request
 with no idea what comes next.
 

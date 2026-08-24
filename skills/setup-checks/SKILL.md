@@ -282,15 +282,20 @@ branch: the next task cuts its branch from there and would find no check suite
 at all. Leaving it unmerged has worked so far only because a run improvised the
 merge on its own, which is not something to build on.
 
-**Never merge directly.** Open a pull request and let the platform merge it once
-the gates pass, then check `git log` that it actually arrived — a report of
-success is not evidence.
+**Never merge yourself.** Open a pull request and arm the platform to merge it
+once the gates pass, then check `git log` that it actually arrived — a report of
+success is not evidence. Arming is a mutation of its own and cannot merge:
 
-If the merge is refused, say which reason it was: auto-merge switched off on the
-repository, no required check for it to wait on, or a direct merge refused as a
-shared-state action. Hand the user the one command that lands it, say that this
-picks up again as soon as it has, and do not go on to the next step on top of an
-unmerged suite.
+    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
+
+`gh pr merge --auto` is not a substitute: the tool drops that flag whenever the
+pull request is already mergeable and merges on the spot.
+
+If arming is refused, read which case it is (`gh api repos/OWNER/REPO -q
+.allow_auto_merge`) and say so: auto-merge switched off on the repository, or no
+required check for it to wait on, which means there is no platform gate here at
+all. Hand the user the one command that lands it, say that this picks up again
+as soon as it has, and do not go on to the next step on top of an unmerged suite.
 
 ## Step 8 — Offer the unattended mode
 
