@@ -108,8 +108,10 @@ neither. Ask one or the other.
 Read `docs/agents/checks.md`. List which classes are `empty`. For each, judge from
 the repository whether it applies at all:
 
-- **format, lint, types** — apply to any project with source code. A language
-  without a type checker gets `skipped`.
+- **format, lint, types** — apply to any project with source code. Two shapes get
+  `skipped`: a language with no type checker at all, and one where the same
+  errors are already caught by a tool another class runs. Name the class that
+  covers it as the reason.
 - **unit** — applies wherever there is logic to test.
 - **integration** — needs several parts that talk to each other, or something
   external. A single pure function has nothing to integrate.
@@ -119,6 +121,34 @@ the repository whether it applies at all:
   committed by accident everywhere.
 - **dependencies** — applies as soon as the project has third-party packages.
 - **code-security** — needs a meaningful amount of the project's own code.
+
+**Deciding a class away is a decision — record it as one.** The moment you can
+say why a class will find nothing in this project, that class is
+`skipped: <reason>`, and the reason goes into its Status column when you write
+the table below. `empty` does not record a decision: it means nobody has
+looked yet, and every step that asks whether the suite is complete reads that
+column and nothing else. Reasoning written into the prose of `checks.md` does
+not record it either — that section says what the checks miss, and the review
+reads it for exactly that, but nothing reads it to find out whether a class was
+settled.
+
+- **Not yet built is not skipped.** A class that applies and has no target yet is
+  work outstanding. Skip a class that would find nothing here, never one that is
+  merely inconvenient today.
+- **A class stays `empty` only where you could not judge it, and then you say
+  which one and what would settle it.** That is the exception, not a resting
+  place — the top of this file says the suite gets finished. Silence and `empty`
+  look the same from outside.
+- **`secrets` is never skipped.** Credentials get committed by accident
+  everywhere, whoever owns the repository.
+
+A reason that will expire is still a reason: no third-party packages yet, no
+entry point yet. It goes in as `skipped` with that state named, and the step
+after a merge re-reads these and fills the class once the state has changed.
+
+**The cell is machine-read.** One line, plain ASCII, no `|` — the parsers split
+the row on it by position. Where the reason needs more than a phrase, the phrase
+goes in the cell and the long form under "What these checks do not cover".
 
 ## Cut the branch before the first write
 
@@ -226,8 +256,10 @@ Both target columns hold bare target names — `lint`, not `make lint` and not
 means the class cannot work that way.
 
 - `Status` becomes `filled` only after you ran the target and saw it fail on
-  purpose. Otherwise `skipped: <reason>` when the class does not apply here, or
-  `empty` while it is still undecided. Never guess.
+  purpose. `skipped: <reason>` where you have judged that the class finds nothing
+  here, `empty` only where you have not judged it yet. Having reasoned about a
+  class is having decided it — never leave the reasoning in prose and the column
+  at `empty`. Never guess.
 - `Blocking` becomes `yes` only on rows that are `filled`. A class whose result
   depends on a service you do not control is never blocking — an outage elsewhere
   must not stop work here. Keep it out of `check` and give it its own target.

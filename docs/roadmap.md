@@ -182,8 +182,9 @@ the size of the work.
   install guard fired and handed the command back, the permission wording
   arrived, and the re-review of what changed after a review ran on the fix
   commit. Still unexercised: the loose-issue ordering, the origin label, reading
-  who a branch rule actually binds, and both steps added since — the offer of the
-  unattended mode and the landing of the check suite.
+  who a branch rule actually binds, the rule that a class reasoned away is
+  recorded as `skipped` rather than left `empty`, and both steps added since —
+  the offer of the unattended mode and the landing of the check suite.
 
   Reading who a branch rule binds cannot be reached from a fresh repository at
   all. There is nothing to read: a new repository has no protection, and no skill
@@ -249,15 +250,6 @@ the size of the work.
   which of the two a given change wants is not something this file can decide in
   advance.
 
-- **A check class ruled out with a reason is still recorded as `empty`.** In the
-  Go project the run explained at length why there is no separate types class for
-  Go — `go vet` is the closest tool and already fills the lint row — wrote that
-  reasoning into the prose of `checks.md`, and left the row's status at `empty`.
-  `empty` means nobody decided; `skipped` means decided, with a reason. This is
-  not cosmetic: the first start condition of an unattended run and the offer of
-  that mode both turn on no class being `empty`. A run that reasons a class away
-  without recording the decision puts the mode permanently out of reach — and for
-  Go it does so in every project, because the reasoning is the same every time.
 - **The merge approval promises a gate that is not there.** The question offers
   that the pull request is opened and merged automatically once the checks are
   green. Where no required check exists nothing goes green and nothing waits: the
