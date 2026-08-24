@@ -229,8 +229,20 @@ enabled on the repository, and the pull request has to be one that cannot
 already be merged — GitHub only offers auto-merge where a required check or
 review is still outstanding. A repository with no branch protection satisfies
 the first and never the second, so `--auto` is refused there and every merge is
-performed by the user. Protected branches and rulesets are available on public
-repositories on every plan, and on private repositories only from Pro upwards.
+performed by the user.
+
+**A protected branch is only a gate for accounts that cannot bypass it.** With
+`enforce_admins` off, an account holding admin walks straight through, and this
+workflow runs as whatever account the tooling is authenticated with — which in a
+repository somebody owns is theirs. Measured, not reasoned: a run set auto-merge
+on a pull request under a required check and it merged instantly, because the
+check did not apply to that account. Both parts have to be read, the protection
+and who it binds.
+
+Whether a plan allows protection on a private repository is not something to
+carry as a table. It has changed before, it varies by plan, and a private
+repository on one plan refused it while another allowed it in the same week. The
+API answers it for the repository in front of you.
 
 **Tool classes can be pre-approved per project**, which is what makes an
 unattended run possible: read commands, the language runner, file edits, `git

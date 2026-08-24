@@ -374,7 +374,13 @@ checks — only the gate differs.
 1. No class in `checks.md` is `empty`. Every one is `filled` or `skipped` with a
    reason. `empty` means undecided, and an undecided check approves nothing.
 2. A failing gate genuinely blocks a merge on the remote — not the model's
-   judgement that it looks fine. This is also what makes the run able to merge
+   judgement that it looks fine, and not a rule the account running this can
+   step over. A required check with `enforce_admins` off binds everyone except
+   an admin, and this runs as whoever the tooling is authenticated with; on a
+   repository the user owns, that is an admin. Read both
+   (`enforce_admins.enabled` and `.permissions.admin`) and refuse on a gate that
+   would not apply here — an unattended run has nothing else standing between a
+   red suite and the main branch. This is also what makes the run able to merge
    at all: see 6.
 3. `--max-iterations` is set. If the user did not give one, propose twice the
    number of ready tasks plus two, and say that is a rip-cord for a run that gets
