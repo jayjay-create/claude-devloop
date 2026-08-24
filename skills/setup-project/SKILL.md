@@ -327,9 +327,11 @@ single word can answer.
    repository is for, and this step's job is that they decide it knowing what
    holds.
 3. **Checks** — always. Present your mapping: which tool found fills which class,
-   and which classes stay empty. Ask separately whether missing tools should be
-   installed — that changes the project. Never install anything system-wide
-   without asking; prefer tools that live inside the project.
+   which classes are ruled out and with what reason, and which are genuinely
+   still undecided. A class you have just reasoned away is ruled out, not
+   undecided. Ask separately whether missing tools should be installed — that
+   changes the project. Never install anything system-wide without asking;
+   prefer tools that live inside the project.
 4. **Local environment** — always, unless you could read it all from
    `docker-compose.yml` or the README. Which processes, in what order, on what ports.
 5. **Labels** — only if the tracker already has labels with overlapping meaning.
@@ -428,11 +430,17 @@ only `yes` or `no`.
 - `Files`: comma-separated glob patterns; `-` means it applies to everything.
 - `Duration`: rough, like `<1s`, `20s`, `4min`. It decides where the class runs.
 - `Status` is `filled` only when the target exists, calls a real checking tool,
-  and you have run it once. Otherwise `empty` or `skipped: <reason>`. Never guess.
+  and you have run it once. Otherwise `skipped: <reason>` where you have judged
+  that the class finds nothing in this project, and `empty` only where you have
+  not judged it yet. Never guess.
 - `Blocking` is `yes` only on rows whose `Status` is `filled`. A class with no
   target cannot block anything; leave it `-` until it is filled.
-- `skipped` means this class does not apply to this project, with the reason.
-  `empty` means undecided — a later step will resolve it.
+- `skipped` means this class does not apply to this project, with the reason —
+  including a reason that will expire, like no third-party packages yet. `empty`
+  means nobody has judged it yet, which is what the no-code case in Step 3
+  writes. Reasoning that lands in the prose of the file does not record the
+  decision; the reason belongs in the cell, one line, plain ASCII, no `|`,
+  because the parsers split the row on it by position.
 - The section "What these checks do not cover" is mandatory.
 
 ### `issue-tracker.md`
