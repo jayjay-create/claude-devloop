@@ -121,7 +121,7 @@ Write the running version there, taken from `.claude-plugin/plugin.json`. Nothin
 reads it but this skill and the entry point, and it is what makes a stale file
 visible without diffing every line.
 
-## Step 0 — Introduce yourself, then get on with it
+## Step 0 — Say what is about to happen, then get on with it
 
 Do this before any tool call, including reading files. Someone seeing this for the
 first time should not watch six commands run before learning what is going on.
@@ -130,27 +130,16 @@ If you cannot tell what language the user speaks — they have typed nothing but
 command — ask that first, in English, as a single question. Everything after runs
 in their language.
 
-If `~/.claude/CLAUDE.md` has no section about how to talk to this user, this is
-their first contact. Say roughly this:
+Say what is about to happen here, in one or two sentences: you set this
+repository up — look at what is already in it and write five short files
+recording where tasks live and how to check whether something is broken — and it
+takes a few minutes and two or three questions.
 
-> This workflow takes you from an idea to merged, reviewed code, in stages:
->
-> 1. We sharpen the idea until nothing important is open.
-> 2. I read the existing code before proposing anything.
-> 3. I draft designs under different constraints and recommend one — you choose.
-> 4. That becomes a written spec, cut into single tasks with an order.
-> 5. Each task gets built test-first, checked, and reviewed by separate reviewers before it lands.
->
-> You don't have to remember any of it. I tell you what's next at every step and
-> only ask where there is something real to decide. Ask about any stage and
-> I'll explain it.
->
-> First I set up this repository: I look at what's already here and write five
-> short files recording where tasks live and how to check whether something is
-> broken. A few minutes, two or three questions.
-
-If that section exists, one line is enough: what you are about to do and roughly
-how long it takes.
+**Do not introduce the workflow itself, and name no stages.** Whoever arrives
+here either typed the command or said what they wanted built one message ago,
+and in the second case the introduction has already been given. A second one,
+laid out as a numbered list of what is coming, turns a promise that nothing has
+to be remembered into a process to learn.
 
 Then get on with it. **Do not ask whether to proceed.** Reaching this skill means
 the user either said what they want built or typed the command themselves; a
@@ -250,7 +239,6 @@ it on and does not bring it closer.
 - Existing checks: config for formatting, linting, types; test directories; `.github/workflows/`
 - Existing labels in the tracker, if one is reachable
 - How the project runs locally: `docker-compose.yml`, `.env.example`, README
-- `~/.claude/CLAUDE.md`: is there already a section about how to talk to this user?
 
 ## Step 2 — Report what you found
 
