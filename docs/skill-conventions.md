@@ -76,9 +76,22 @@ still stood, so runs did both.
 
 ## Never assert state — query it
 
-Which task is next, whether something merged, whether a check is configured:
-each is a query, never a memory of what was said earlier in the session.
-Conversation goes stale; the tracker and the git log do not.
+Which task is next, which blockers are open, whether something merged, whether a
+workflow exists, whether a branch is protected, whether auto-merge can be set:
+each is a query, never a memory of what was said earlier and never an impression
+from earlier in the session. Conversation goes stale, and so does a reading
+taken an hour ago — somebody else may have changed it, and this run may have
+changed it itself.
+
+**A statement about the repository or the platform rests on a command from this
+turn.** Not on how it was at the start, not on how it usually is. Where you have
+no such command, say you are going to look, and look.
+
+**Before telling the user something is missing, search for it.** A negative is
+the most expensive claim there is, because it sets them to work: a run reported
+that no CI posted a required status and offered to build one, while the workflow
+sat on the main branch and had gone green an hour earlier. Absence is a finding
+like any other, and it needs the command that came back empty.
 
 ## Say when something did not happen
 
