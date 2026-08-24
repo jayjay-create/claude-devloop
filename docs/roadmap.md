@@ -183,8 +183,9 @@ the size of the work.
   arrived, and the re-review of what changed after a review ran on the fix
   commit. Still unexercised: the loose-issue ordering, the origin label, reading
   who a branch rule actually binds, the rule that a class reasoned away is
-  recorded as `skipped` rather than left `empty`, and both steps added since —
-  the offer of the unattended mode and the landing of the check suite.
+  recorded as `skipped` rather than left `empty`, arming auto-merge through the
+  mutation instead of `gh pr merge --auto`, and both steps added since — the
+  offer of the unattended mode and the landing of the check suite.
 
   Reading who a branch rule binds cannot be reached from a fresh repository at
   all. There is nothing to read: a new repository has no protection, and no skill
@@ -250,14 +251,6 @@ the size of the work.
   which of the two a given change wants is not something this file can decide in
   advance.
 
-- **The merge approval promises a gate that is not there.** The question offers
-  that the pull request is opened and merged automatically once the checks are
-  green. Where no required check exists nothing goes green and nothing waits: the
-  merge happens at once, unchecked by the platform, which is what then happened.
-  The same run had already written the truth into `environment.md` an hour
-  earlier — auto-merge is on, but with nothing required a pull request has
-  nothing to wait on. What the approval says has to be read off the repository
-  rather than assumed.
 - **The install guard's message drops the decline path.** The hook asks for four
   things: what it installs and what that unblocks, the exact command, that this
   picks up as soon as it has run, and — if they decline — that the check class it

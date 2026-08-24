@@ -228,21 +228,36 @@ measured, one switched branches out from under the other mid-edit, and both
 edited the same manifest. Parallelism needs separate worktrees and is not worth
 it while tasks merge to the same branch one after another.
 
-**Merging is refused; auto-merge is not.** `gh pr merge --auto --squash
---delete-branch` goes through and a bare `gh pr merge` does not, because this
-plugin's own merge guard blocks it. That guard is the enforcing mechanism and it
-has held in the field. The measurement this rule was originally written from —
+**Arming auto-merge is allowed; merging is not — and `--auto` is not arming.**
+The guard blocks `gh pr merge` in every form. The one permitted path is the
+mutation that can only arm:
+
+    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
+
+Read off gh's own source on 24 August 2026, because the earlier version of this
+paragraph asserted the opposite: `pkg/cmd/pr/merge/merge.go:588` sets the auto
+flag to `opts.AutoMergeEnable && !isImmediatelyMergeable(pr.MergeStateStatus)`,
+and `:821-828` counts `CLEAN`, `HAS_HOOKS` and `UNSTABLE` as immediately
+mergeable; `http.go:88-103` then picks `enablePullRequestAutoMerge` on that flag
+and `mergePullRequest` without it. So `gh pr merge --auto` performs a direct
+merge whenever nothing is holding the pull request — including where checks
+exist and are red, as long as none of them is required. Reported upstream as
+cli/cli#8792, open since March 2024. What the old paragraph claimed — that
+`--auto` is refused there and every merge comes from the user — was wrong on
+both halves: it was not refused, it merged, and the guard waved it through
+because the command text read as authorised.
+
+Auto-merge itself still has two conditions, and only the first is a setting:
+auto-merge has to be enabled on the repository, and the pull request has to be
+one that cannot already be merged — GitHub only offers it where a required check
+or review is still outstanding. A repository with no branch protection satisfies
+the first and never the second, so arming is refused there and every merge is
+performed by the user. The measurement this rule was originally written from —
 that the permission classifier refused a bare `gh pr merge` as a shared-state
 action — is no longer something to lean on: Claude Code's auto mode has since
-become the default, and in a project where this plugin is installed the classifier
-cannot be observed at all, because the guard fires first. Nothing about the
-behaviour changes; the reason for it is the guard, not the classifier. The
-platform merges, not the agent. Two conditions, and only the first is a setting: auto-merge has to be
-enabled on the repository, and the pull request has to be one that cannot
-already be merged — GitHub only offers auto-merge where a required check or
-review is still outstanding. A repository with no branch protection satisfies
-the first and never the second, so `--auto` is refused there and every merge is
-performed by the user.
+become the default, and in a project where this plugin is installed the
+classifier cannot be observed at all, because the guard fires first. The reason
+is the guard, not the classifier. The platform merges, not the agent.
 
 **A protected branch is only a gate for accounts that cannot bypass it.** With
 `enforce_admins` off, an account holding admin walks straight through, and this
@@ -276,9 +291,16 @@ not reach Claude while the same hook in user settings does. Plain stdout works.
 conversation, so "the user just said yes" and "the agent decided this itself"
 look identical to it. That rules out enforcing anything the user is allowed to
 authorise — unless the authorised and unauthorised forms are different commands.
-Merging is: `gh pr merge --auto` hands the decision to the platform, `gh pr merge`
-without it has the agent decide. A hook can tell those apart, so that one is
-enforced while a merge the user asked for still goes through.
+Merging is, but not where it first looked. A flag whose meaning depends on
+server state is not a different command: `gh pr merge --auto` and `gh pr merge`
+do the same thing whenever the pull request is already mergeable, so the guard
+could not tell an armed merge from a performed one by reading the flag, and
+waved through exactly what it existed to stop. The two commands that really
+differ are the arming mutation, which is incapable of merging, and `gh pr
+merge`, which is not. A hook can tell those apart, so that one is enforced while
+a merge the user asked for still goes through. The general form, paid for once:
+where a guard leans on a difference between commands, the difference has to hold
+in the command itself, not in what a server happens to answer at that moment.
 
 **A blocking hook must exit 2.** On `PreToolUse` that blocks the tool call and
 feeds stderr to the model as the reason. Exit 1 does not block — the action runs

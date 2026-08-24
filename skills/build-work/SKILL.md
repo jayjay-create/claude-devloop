@@ -297,7 +297,10 @@ carry on rather than starting again.
 
 Show the diff and the findings — what was fixed, what was filed. **Then ask, in
 its own message, one closed question:** whether this should land. Say what each
-answer means — yes merges it, no keeps the branch and takes revisions. Not
+answer means — yes lands it, no keeps the branch and takes revisions. Say how a
+yes lands it **here**, read off this repository rather than assumed: the platform
+merges it once a required check goes green, or, where no check is required,
+nothing on the platform looks at it at all and this answer is the whole gate. Not
 "merge or revise?": that is two questions in one and a reply to it answers
 neither. And nothing travels with it: no verdict on the work, no announcement of
 what comes after, no pull request opened first. A question that arrives after
@@ -318,30 +321,39 @@ never removed.
 **Only after steps 4 and 5.** If the review has not run, or the user has not
 answered, this step has not started yet. Go back rather than forward.
 
-**Never merge directly.** Open the pull request, then set it to merge
-automatically once the gates are green:
+**Never merge yourself.** Open the pull request, then arm the platform with a
+command that cannot merge:
 
-    gh pr merge --auto --squash --delete-branch
+    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
 
-The platform merges, not the agent. Direct merges are refused as a shared-state
-action, and an unattended run cannot answer that prompt.
+The platform merges, not the agent. Arming and merging are two different
+mutations, and only the first is yours.
 
-Setting it to merge automatically can be refused, and `environment.md` says
-which of the two cases this repository is in. Neither is a fault, and neither
-stops the stage:
+`gh pr merge --auto` is not a substitute and looks like one. The tool drops that
+flag whenever the pull request is already mergeable — including where checks
+exist and are red, as long as none of them is required — and then performs the
+merge itself. The command reads as authorised and the merge is the agent's.
+
+Arming can be refused, and the two reasons mean different things. Read which one
+it is (`gh api repos/OWNER/REPO -q .allow_auto_merge`) rather than inferring it
+from the error text. Neither is a fault, and neither stops the stage:
 
 - **Auto-merge switched off at the repository.** A setting, not something a
   build step changes. Say so and ask the user to switch it on.
 - **Nothing for it to wait on** — no required check, no required review, so the
-  pull request is already mergeable and auto-merge cannot be enabled at all.
-  Nothing is missing: the gate here is the question at the end of step 5, which
-  has already been answered, and the platform has no check of its own to add.
+  pull request is already mergeable and there is no platform gate here at all.
+  Say that in one clause rather than leaving it implied: what lands this change
+  is the answer given at the end of step 5, and nothing on the platform will
+  look at it.
 
 Either way the merge itself is still not yours to perform. Give the user the one
 command that lands it, say the stage picks up the moment it does, and do not
 present it as something having gone wrong. What went wrong in the past was the
 framing and the timing — a run stopping mid-task, over a change nobody asked
 for, as though it had hit an error.
+
+In unattended mode there is nobody to hand it to. A refusal there is a stop with
+the reason named, which start condition 6 exists to make unreachable.
 
 Then check **once** whether it landed — do not poll in a loop. If it has not,
 say what it is still waiting on and offer the next step; do not block the session.
@@ -351,8 +363,9 @@ Once it has landed:
 - Fetch and fast-forward the local main branch. If that fails, say so and stop —
   and say what it would take: the merge landed, so the work is safe, and only the
   local copy is behind. Naming the divergence is enough; do not force it.
-- Delete the merged branch locally and on the remote if it is still there;
-  `--delete-branch` does not always take effect on an auto-merge.
+- Delete the merged branch locally and on the remote. Nothing does it for you:
+  arming auto-merge carries no branch deletion, and whether the repository
+  deletes head branches on merge is its own setting.
 - Confirm the task issue closed. Check whether this also closed anything else,
   naming each one you checked, including the ones it did not close.
 - If every task under a spec is now closed, close the spec and say you did. Do
@@ -405,9 +418,10 @@ checks — only the gate differs.
    and `environment.md` records both: auto-merge is enabled
    (`gh api repos/OWNER/REPO -q .allow_auto_merge`), and a required check exists
    for it to wait on (`gh api repos/OWNER/REPO/branches/main/protection`, where
-   a 404 means none). Without the second, auto-merge cannot be switched on at
-   all, direct merging is refused, and nobody is present to do it by hand — the
-   run would build a task and then sit on a pull request forever.
+   a 404 means none). Without the second there is nothing to arm: the platform
+   has no gate to hold the pull request, performing the merge is not the agent's
+   to do, and nobody is present to do it by hand — the run would build a task
+   and then sit on a pull request forever.
 
    This refusal is about the run being able to finish, not about trusting it.
    Say which of the two is missing and what would change it — a required check
