@@ -228,6 +228,24 @@ measured, one switched branches out from under the other mid-edit, and both
 edited the same manifest. Parallelism needs separate worktrees and is not worth
 it while tasks merge to the same branch one after another.
 
+**A hook reading the tool's JSON must undo the escapes first.** Measured on 25
+August 2026: every guard here pulled the command out with
+`sed -n 's/.*"command"[^"]*"\([^"]*\)".*/\1/p'`, which leaves the JSON escapes
+standing and stops at the first `\"`. Two holes came out of that, both silent.
+A second command on a new line walked straight past all three guards, because
+the newline arrives as the two characters backslash and `n`, so the letter `n`
+sits where the pattern wants a word boundary — that is how `go install` for
+`gosec` ran unblocked in a real session. And anything after the first quoted
+string was invisible, so `echo "hi" && brew install foo` passed as well. Both
+are fixed by normalising the input once, right after reading it:
+
+    INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' -e 's/\\n/ /g' -e 's/\\t/ /g' -e 's/\\r/ /g')
+
+The general form: a guard that matches on text the tool encoded has to decode it
+before matching, and a guard is only as good as the worst-shaped command it will
+ever be handed. Test one against a command with a quote in it and one with two
+commands in it, or it has not been tested.
+
 **Arming auto-merge is allowed; merging is not — and `--auto` is not arming.**
 The guard blocks `gh pr merge` in every form. The one permitted path is the
 mutation that can only arm:

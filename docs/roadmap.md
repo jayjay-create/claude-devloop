@@ -188,6 +188,11 @@ the size of the work.
   declined, the shortened opening, and both steps added since — the offer of the
   unattended mode and the landing of the check suite.
 
+  Every guard result recorded before 25 August 2026 holds only for a tool call
+  carrying a single command: until that day the guards were blind to anything
+  after a newline or a quote, so a pass proves nothing about a call shaped
+  differently.
+
   Declining an install has never been tried. Both times the guard fired, the
   command was run. It is not a defect waiting to happen but one of the two
   answers to a question this workflow itself puts, so it has to be walked on
