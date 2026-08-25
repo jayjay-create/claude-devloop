@@ -246,6 +246,23 @@ before matching, and a guard is only as good as the worst-shaped command it will
 ever be handed. Test one against a command with a quote in it and one with two
 commands in it, or it has not been tested.
 
+**The install guard matches the outcome as well as the verb, and is still a
+tripwire.** A package manager is one way a binary lands on the machine; a build
+flag, a copy, a `make install` or an installer script piped from the network are
+others, and they leave the same thing in the same place. The guard now catches
+those too — a write verb or `-o` aimed at `/usr/local/bin`, `/usr/bin`, `/opt`,
+`~/.local/bin`, `~/bin` or a Go bin directory, anything under `sudo`, `make
+install`, and `curl` or `wget` feeding a shell. What it does not catch is
+anything genuinely inventive, and it cannot: a `PreToolUse` hook sees a string,
+not a filesystem. So the rule that binds is the one in the skills — nothing
+lands outside the repository without the user running it — and the hook is what
+catches the ordinary case, not a wall.
+
+Its false positives are cheap and deliberate: a command that merely mentions
+`sudo`, or copies something into a directory that looks like a bin directory,
+gets stopped. The guard's own message already says what to do about that — if it
+only looked like an install, say so and let the user decide.
+
 **Arming auto-merge is allowed; merging is not — and `--auto` is not arming.**
 The guard blocks `gh pr merge` in every form. The one permitted path is the
 mutation that can only arm:
