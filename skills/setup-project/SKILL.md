@@ -562,8 +562,8 @@ off on the repository, or there may be no required check for it to wait on, whic
 means there is no platform gate here at all. Read which one it is (`gh api
 repos/OWNER/REPO -q .allow_auto_merge`) rather than inferring it from the error
 text. None of those is something this step changes. Say which one it was, hand
-the user the one command that lands it, and say that this picks up again as soon
-as it has —
+the user the one command that lands it, and say that this picks up as soon as
+they say it has —
 the same rule the build step follows. Do not leave them holding a pull request
 with no idea what comes next.
 

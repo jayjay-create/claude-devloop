@@ -131,6 +131,18 @@ the size of the work.
 
 ## Known gaps
 
+- **Claude Code's own permission classifier refused the arming command, twice in
+  one session.** Auto mode was on, so no prompt was shown; the run reported that
+  the command had been blocked as a cross-boundary action and fell back to
+  handing the user the merge command. If that holds generally, the one permitted
+  route to auto-merge is closed by the tool itself, every merge falls to the
+  user whatever the repository looks like, and an unattended run cannot arm
+  anything — which would take the mode off the table rather than merely
+  unexercised. Not established: the refusal text was not captured, and it is not
+  known whether it named the `gh api graphql` mutation, the branch, or something
+  else. What to capture the next time it fires: the message verbatim, and which
+  part of the command it names.
+
 - **The aim is idea to a running application; this gets to merged code.** Not a
   bug in what exists — the stated aim was idea to merged, reviewed code, and that
   works. It is the aim that has moved. Five things stand between the two, and
