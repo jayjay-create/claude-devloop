@@ -146,7 +146,7 @@ say so and stop — a task cut from a stale main lands on the wrong base. Say wh
 would clear it and let the user decide: usually the local branch has commits the
 remote does not, or the reverse, and reconciling them is their call, not
 something to resolve by force. Nothing is lost meanwhile; the tasks are in the
-tracker and this picks up once the branches agree.
+tracker and this picks up as soon as they say the branches agree.
 
 **Then run the check suite on that base, before cutting anything.** It costs
 seconds and it buys the one thing no later step can recover: knowing whether the
@@ -247,8 +247,8 @@ The subagent:
    runtime, a tool from a package manager. That is the user's to run, the same
    way merging is, and a guard blocks it. Report what it installs, what it
    unblocks, and the exact command — and both ways it can go, in the same
-   breath: the build picks up as soon as it has run, and **a decline is an
-   answer too, not a wall**. A message that says only "let me know once it is
+   breath: the build picks up as soon as they say it has run, and **a decline
+   is an answer too, not a wall**. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
    This is the one thing a task can need that the task itself cannot do.
 7. Writes down anything that changed about running this project locally — a new
@@ -363,7 +363,8 @@ from the error text. Neither is a fault, and neither stops the stage:
   look at it.
 
 Either way the merge itself is still not yours to perform. Give the user the one
-command that lands it, say the stage picks up the moment it does, and do not
+command that lands it, say the stage picks up as soon as they say it has, and
+do not
 present it as something having gone wrong. What went wrong in the past was the
 framing and the timing — a run stopping mid-task, over a change nobody asked
 for, as though it had hit an error.

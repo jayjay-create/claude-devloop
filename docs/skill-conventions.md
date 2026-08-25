@@ -217,6 +217,14 @@ expected number.
 
 ## Environment constraints, measured
 
+**Nothing resumes on its own.** A run that hands the user a command and says it
+will carry on once that command has run has promised something it cannot do:
+Claude Code does nothing until the next message arrives. Seen in a session on 25
+August 2026 — the user ran the merge, waited, and had to ask what was happening.
+Say instead that it picks up as soon as they say it has, and that nothing moves
+until they do. A backgrounded agent is the exception and really does come back
+by itself.
+
 **Agent Teams must stay off.** With `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`,
 every named subagent starts as a teammate, and a teammate reports only that it
 finished — not what it found. `design-options` and `review-changes` both spawn
@@ -453,7 +461,8 @@ the rule that a build hands over an install command was three sentences long,
 said what happens once it has run, and said nothing about declining — and none
 of the five phrasings above appears in it. This one looks for the other half,
 the sentence that describes the yes. Every line it prints needs an eye on it,
-and what it is being read for is whether the no is there too:
+and it is read for two things: whether the no is there too, and whether what it
+promises about carrying on is something this run can actually do:
 
     grep -rn 'picks up as soon as\|picks up the moment\|carry on when it has run\|once it has run\|hand them the command\|hand the user the\|Hand the user the' skills/*/SKILL.md
 

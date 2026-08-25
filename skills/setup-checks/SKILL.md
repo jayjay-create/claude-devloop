@@ -294,8 +294,9 @@ pull request is already mergeable and merges on the spot.
 If arming is refused, read which case it is (`gh api repos/OWNER/REPO -q
 .allow_auto_merge`) and say so: auto-merge switched off on the repository, or no
 required check for it to wait on, which means there is no platform gate here at
-all. Hand the user the one command that lands it, say that this picks up again
-as soon as it has, and do not go on to the next step on top of an unmerged suite.
+all. Hand the user the one command that lands it, say that this picks up as
+soon as they say it has, and do not go on to the next step on top of an unmerged
+suite.
 
 ## Step 8 — Offer the unattended mode
 
