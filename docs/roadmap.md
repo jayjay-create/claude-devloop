@@ -193,12 +193,17 @@ the size of the work.
   came from. A Go project set up from nothing has since exercised three more: the
   install guard fired and handed the command back, the permission wording
   arrived, and the re-review of what changed after a review ran on the fix
-  commit. Still unexercised: the loose-issue ordering, the origin label, reading
-  who a branch rule actually binds, the rule that a class reasoned away is
-  recorded as `skipped` rather than left `empty`, arming auto-merge through the
-  mutation instead of `gh pr merge --auto`, what happens when an install is
-  declined, the shortened opening, and both steps added since — the offer of the
-  unattended mode and the landing of the check suite.
+  commit. Still unexercised: the loose-issue ordering, reading who a branch rule
+  actually binds, and arming auto-merge on a pull request that really has
+  something to wait for.
+
+  Exercised on 25 August 2026 across a Go project and a fresh Rust one: a class
+  reasoned away now records as `skipped`; arming is attempted and its refusal
+  reported rather than the agent merging; the check suite lands through a pull
+  request of its own; the unattended mode is offered with its costs and a no;
+  the shortened opening reads without a stage list; and an install was declined
+  for the first time, leaving `code-security` skipped with that reason while the
+  other four classes were still wired up.
 
   The install guard's reach was widened the same day, from package-manager verbs
   to the outcome: a build flag or a copy aimed at a bin directory, `sudo`, `make
@@ -210,11 +215,6 @@ the size of the work.
   after a newline or a quote, so a pass proves nothing about a call shaped
   differently.
 
-  Declining an install has never been tried. Both times the guard fired, the
-  command was run. It is not a defect waiting to happen but one of the two
-  answers to a question this workflow itself puts, so it has to be walked on
-  purpose the way the missing Java runtime was: a project where a check class
-  needs a system tool, and the answer is no.
 
   Reading who a branch rule binds cannot be reached from a fresh repository at
   all. There is nothing to read: a new repository has no protection, and no skill
@@ -248,7 +248,11 @@ the size of the work.
   from nothing on 24 August: five check classes filled and blocking (format,
   lint, unit, integration, end-to-end), four still `empty`, no platform gate,
   and two of its three tasks unbuilt. It is the bench for anything wanting a
-  fresh Go project.
+  fresh Go project. `devloop-test-n` is Rust, set up from nothing on 25 August
+  through the greeting and the permission step: four classes filled and
+  blocking, five skipped, and the only project where an install has been
+  declined — `cargo-geiger` was chosen and refused, so `code-security` carries
+  that as its reason.
   Nothing merged after 0.46.0 has run either: the base check, the rewritten
   questions at four stage boundaries, and the control documents finally getting
   a writer all came out of a single run and have only been reasoned about since.

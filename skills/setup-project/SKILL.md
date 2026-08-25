@@ -9,7 +9,21 @@ description: Set up this repository for devloop
 These instructions are in English because the repository is; that is not a signal
 about how to reply. It slips most often on the lines that are not really talk — a
 progress note, a step ticked off, a count reported back. Those are said to a
-person too.
+person too. **A slash command is not a language signal.** When nothing the user has written
+shows their language, take it from what is already in front of you — their own
+instructions file if it is in your context, otherwise this project's documents —
+and then hold that one choice for the whole turn: prose, progress lines,
+question headers and option labels alike. Measured on 25 August 2026, one run
+wrote its prose in English and its question in German in the same turn. Switch
+the moment they write in another language, and never mix two inside one message.
+The same holds for how you address them, and two different things are at stake.
+Number is a fact: one person is being helped through their own work, so where a
+language marks singular and plural in address, it is the singular — the same run
+addressed that one person as a group halfway through. Register is set, not
+chosen: where a language has a familiar and a formal form of address, it is
+always the familiar one — `du` and not `Sie`, `tú` and not `usted`, `sinä` and
+not `te` — held from the first sentence to the last. That is about the pair a
+language offers, not about reaching for the most casual register it has.
 
 **Never say a skill's name to the user.** Say what you are about to do, in
 ordinary words.
@@ -202,7 +216,12 @@ own classifier. So say what will happen either way and leave it with them:
 granting means choosing "always allow" the first time each pattern comes up, or
 setting them in `/config`, and any of it can be taken back in the same place;
 not granting means a confirmation prompt per command kind, in every session, for
-as long as that stands. Claiming to have recorded something leaves them looking
+as long as that stands. **Say the first half conditionally, because the prompt
+may never come.** With auto mode on there are no confirmations to answer, so
+"confirm it the first time it comes up" describes something that will not
+happen, and they wait for a window that never opens — measured, in a session on
+25 August 2026. Put it as: if a confirmation does come up, this is what to do
+with it, and `/config` is where it can be set either way. Claiming to have recorded something leaves them looking
 for a file that was never written. **Do not name the unattended mode as one of
 the costs.**
 It is true that this grant is one of that mode's preconditions, and saying so
@@ -597,4 +616,18 @@ person too. This block is here twice, at the top of this file and at the
 bottom, because everything between them is several hundred lines of English and
 the last thing read carries the most weight. If you have just finished reading
 this file, the next thing you write is the first sentence after the switch — it
-is the one that slips.
+is the one that slips. **A slash command is not a language signal.** When nothing the user has written
+shows their language, take it from what is already in front of you — their own
+instructions file if it is in your context, otherwise this project's documents —
+and then hold that one choice for the whole turn: prose, progress lines,
+question headers and option labels alike. Measured on 25 August 2026, one run
+wrote its prose in English and its question in German in the same turn. Switch
+the moment they write in another language, and never mix two inside one message.
+The same holds for how you address them, and two different things are at stake.
+Number is a fact: one person is being helped through their own work, so where a
+language marks singular and plural in address, it is the singular — the same run
+addressed that one person as a group halfway through. Register is set, not
+chosen: where a language has a familiar and a formal form of address, it is
+always the familiar one — `du` and not `Sie`, `tú` and not `usted`, `sinä` and
+not `te` — held from the first sentence to the last. That is about the pair a
+language offers, not about reaching for the most casual register it has.
