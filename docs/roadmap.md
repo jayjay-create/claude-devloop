@@ -232,9 +232,17 @@ the size of the work.
   deliberately vaguer — "something that shows me where my time at the computer
   goes". The run asked three questions with sensible defaults (menu bar or
   command line, per application or per window title, autostart or not) and went
-  to planning, again correctly. Vagueness is not the test. What is needed is an
-  idea whose answers exclude each other, so that choosing one closes the others
-  off, and that no amount of reasonable defaults can resolve.
+  to planning, again correctly. Both attempts were foggy, and fog was not what was
+  missing — what matters is what the fog lies over. The routing test is written
+  in two places and both halves have to hold. `start-work` step 3 sends an idea
+  for mapping when it is too large to see the end of *and* the open questions
+  are what to build rather than how; `untangle-idea` describes what arrives as
+  too big for one session with the way to the destination not yet visible, and
+  works questions whose resolution is a decision rather than a slice of a build.
+  In both attempts the fog lay over the parameters — which interface, how fine,
+  started how — while what the thing was stayed clear throughout, and parameters
+  are exactly what the planning interview exists to settle. What is still needed
+  is an idea where the destination itself is the unknown.
 
   On planting a fault to exercise the diagnosis: a single unreviewed commit on
   the main branch is worthless, because the history names the suspect and there
