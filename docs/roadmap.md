@@ -227,8 +227,14 @@ the size of the work.
   to be mapped and an interview carried through — not a small tool that goes
   straight to planning. An attempt with a Go duplicate-file finder failed on
   exactly that: two undecided parameters do not make an idea unclear, and step 3
-  of `start-work` sent it to planning, correctly. The next attempt needs one
-  where the question really is what to build, not how.
+  of `start-work` sent it to planning, correctly. A second attempt on 25 August
+  failed the same way and is the more useful data point, because the idea was
+  deliberately vaguer — "something that shows me where my time at the computer
+  goes". The run asked three questions with sensible defaults (menu bar or
+  command line, per application or per window title, autostart or not) and went
+  to planning, again correctly. Vagueness is not the test. What is needed is an
+  idea whose answers exclude each other, so that choosing one closes the others
+  off, and that no amount of reasonable defaults can resolve.
 
   On planting a fault to exercise the diagnosis: a single unreviewed commit on
   the main branch is worthless, because the history names the suspect and there
@@ -245,10 +251,13 @@ the size of the work.
   called `checks` run by a workflow on every pull request, with `enforce_admins`
   on, so it binds the account this workflow runs as. That makes it the only
   place an unattended run can be tried at all. `devloop-test-m` is Go, set up
-  from nothing on 24 August: five check classes filled and blocking (format,
-  lint, unit, integration, end-to-end), four still `empty`, no platform gate,
-  and two of its three tasks unbuilt. It is the bench for anything wanting a
-  fresh Go project. `devloop-test-n` is Rust, set up from nothing on 25 August
+  from nothing on 24 August and worked through on 25 August: all nine classes
+  decided — seven filled and blocking, `types` and `dependencies` skipped with
+  reasons — and no platform gate. Its three specced tasks are done except the
+  last, which sits built and committed on `dedup-clean-quarantine` with no pull
+  request, because the run stopped at the approval question and the answer never
+  came. Issues 6, 9, 10, 12 and 13 are open there, all raised by review rather
+  than by a person. It is the bench for anything wanting a fresh Go project. `devloop-test-n` is Rust, set up from nothing on 25 August
   through the greeting and the permission step: four classes filled and
   blocking, five skipped, and the only project where an install has been
   declined — `cargo-geiger` was chosen and refused, so `code-security` carries
@@ -263,11 +272,19 @@ the size of the work.
   compiled program as a subprocess and asserting on output and exit code, which
   has now been done. Anything that stays up — a service, an interface — still
   has none.
-- **Four stacks have been exercised**: a small Python project with `make`, a
-  TypeScript command-line tool with npm and `make`, Kotlin with Gradle, and Go
-  with `make`, all on GitHub Issues. Go was the first whose checks needed a
-  system install rather than a package, which is how the install guard finally
-  got exercised at all. Other trackers and monorepos are still untested.
+- **Five stacks have been exercised**: a small Python project with `make`, a
+  TypeScript command-line tool with npm and `make`, Kotlin with Gradle, Go with
+  `make`, and Rust with `make` over `cargo`, all on GitHub Issues. Go was the
+  first whose checks needed a system install rather than a package, which is how
+  the install guard finally got exercised at all. Other trackers and monorepos
+  are still untested.
+
+  What is on the machine these runs happen on decides what a run can still be
+  made to do, so it is worth knowing: Go, Java, Python, TypeScript and now Rust
+  are installed, as are `gitleaks` and `gosec`. A project in any of those will
+  not ask for an install, and cannot be used to exercise one. .NET, PHP and
+  Elixir are the ones still absent, and Ruby and Swift exist only as the system
+  versions under `/usr/bin`.
 - **The install guard does not see a wrapper that downloads on first use.** It
   reads the command, so `brew install` and its relatives are caught and a
   project-local dependency is not. `./gradlew` or `mvnw` fetching a toolchain
