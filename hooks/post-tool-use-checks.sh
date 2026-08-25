@@ -1,6 +1,7 @@
 #!/bin/bash
 set -uo pipefail
 INPUT=$(cat)
+INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' -e 's/\\n/ /g' -e 's/\\t/ /g' -e 's/\\r/ /g')
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 CHECKS="$PROJECT_DIR/docs/agents/checks.md"
