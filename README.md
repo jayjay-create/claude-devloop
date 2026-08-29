@@ -3,7 +3,7 @@
 A set of skills for Claude Code that takes a piece of work from an idea to
 merged, reviewed code.
 
-**Version 0.1.** Eight skills covering the main path. It has been run end to end
+**Version 0.1.** Twelve skills covering the main path. It has been run end to end
 on a real project twice, once with nobody watching. The side paths — debugging,
 triaging incoming reports, handing over between sessions — are not built yet.
 Read "What is missing" before you rely on it.

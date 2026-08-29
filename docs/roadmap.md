@@ -158,6 +158,33 @@ the size of the work.
     request can fall into the window where the required check has not started
     yet, and is refused there.
 
+- **The stages that arm know two reasons for a refusal, and the one measured is
+  a third.** Three places arm auto-merge — `skills/build-work/SKILL.md:367`,
+  `skills/setup-checks/SKILL.md:311`, `skills/setup-project/SKILL.md:579` — and
+  the message in `hooks/pre-tool-use-merge-guard.sh:19` says the same. All four
+  name exactly two reasons: auto-merge is switched off at the repository, or
+  there is no gate for it to wait on at all. All four tell the two apart by
+  reading `gh api repos/OWNER/REPO -q .allow_auto_merge`.
+
+  The refusal measured on 25 August 2026 — the fourth finding above — is
+  neither. In the window after the push `allow_auto_merge` is true, so the run
+  lands in the second branch, reports "no platform gate here at all", which is
+  false in a repository with a required check, and hands the merge to the user.
+  None of the places reads `mergeStateStatus`, none waits for the check to
+  start, none tries again.
+
+  The cause is not a missing retry. It is a field that cannot answer the
+  question being asked: `allow_auto_merge` says whether auto-merge is permitted
+  on the repository, not whether a gate to wait on exists at this moment. In the
+  measured case the field was true, a gate was there, and the run concluded
+  there was none.
+
+  Attended, the damage is the false statement, and the merge goes to the user
+  either way. Unattended it bites harder. `skills/build-work/SKILL.md:386` says
+  a refusal there is a stop with the reason named, which start condition 6
+  (line 448) exists to make unreachable. The window makes the refusal reachable
+  with condition 6 satisfied, and an unattended run stops there.
+
 - **The aim is idea to a running application; this gets to merged code.** Not a
   bug in what exists — the stated aim was idea to merged, reviewed code, and that
   works. It is the aim that has moved. Five things stand between the two, and
