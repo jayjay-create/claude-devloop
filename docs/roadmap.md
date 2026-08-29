@@ -131,17 +131,59 @@ the size of the work.
 
 ## Known gaps
 
-- **Claude Code's own permission classifier refused the arming command, twice in
-  one session.** Auto mode was on, so no prompt was shown; the run reported that
-  the command had been blocked as a cross-boundary action and fell back to
-  handing the user the merge command. If that holds generally, the one permitted
-  route to auto-merge is closed by the tool itself, every merge falls to the
-  user whatever the repository looks like, and an unattended run cannot arm
-  anything — which would take the mode off the table rather than merely
-  unexercised. Not established: the refusal text was not captured, and it is not
-  known whether it named the `gh api graphql` mutation, the branch, or something
-  else. What to capture the next time it fires: the message verbatim, and which
-  part of the command it names.
+- **Arming was measured on 25 August 2026, in `devloop-test-l` on pull request
+  15, and it separates into four findings.**
+  - devloop's own merge guard let the `enablePullRequestAutoMerge` mutation
+    through while it blocks `gh pr merge`. The distinction works as intended.
+    First proof of that since the guards decode the tool's JSON before matching.
+  - Claude Code's permission classifier did not refuse the mutation; it ran. An
+    explicit confirmation by the user came immediately before it, so whether the
+    classifier refuses without that confirmation is **not** decided. What is
+    established is only that it does not block the command outright. This
+    replaces the earlier record here, which said the classifier had refused the
+    arming command twice in one session.
+  - The run stopped itself before executing, citing a rule in its own memory:
+    never merge directly, always hand the merge command to the user. It sorted
+    arming under the same pattern. That rule sits outside this repository's
+    skills and thereby closes the one route the skills expressly allow.
+  - GitHub accepts arming only while the pull request is still waiting on
+    something. Measured inside the same minute: directly after the push
+    `mergeStateStatus` read `CLEAN`, and the mutation was refused with
+    `UNPROCESSABLE` and the message "Pull request is in clean status"; five
+    seconds later it read `BLOCKED`, and the same mutation was accepted. GitHub
+    then merged the pull request itself once the required check went green, with
+    nobody involved.
+
+    What follows from it: a run that arms immediately after opening a pull
+    request can fall into the window where the required check has not started
+    yet, and is refused there.
+
+- **The stages that arm know two reasons for a refusal, and the one measured is
+  a third.** Three places arm auto-merge — `skills/build-work/SKILL.md:367`,
+  `skills/setup-checks/SKILL.md:311`, `skills/setup-project/SKILL.md:579` — and
+  the message in `hooks/pre-tool-use-merge-guard.sh:19` says the same. All four
+  name exactly two reasons: auto-merge is switched off at the repository, or
+  there is no gate for it to wait on at all. All four tell the two apart by
+  reading `gh api repos/OWNER/REPO -q .allow_auto_merge`.
+
+  The refusal measured on 25 August 2026 — the fourth finding above — is
+  neither. In the window after the push `allow_auto_merge` is true, so the run
+  lands in the second branch, reports "no platform gate here at all", which is
+  false in a repository with a required check, and hands the merge to the user.
+  None of the places reads `mergeStateStatus`, none waits for the check to
+  start, none tries again.
+
+  The cause is not a missing retry. It is a field that cannot answer the
+  question being asked: `allow_auto_merge` says whether auto-merge is permitted
+  on the repository, not whether a gate to wait on exists at this moment. In the
+  measured case the field was true, a gate was there, and the run concluded
+  there was none.
+
+  Attended, the damage is the false statement, and the merge goes to the user
+  either way. Unattended it bites harder. `skills/build-work/SKILL.md:386` says
+  a refusal there is a stop with the reason named, which start condition 6
+  (line 448) exists to make unreachable. The window makes the refusal reachable
+  with condition 6 satisfied, and an unattended run stops there.
 
 - **The aim is idea to a running application; this gets to merged code.** Not a
   bug in what exists — the stated aim was idea to merged, reviewed code, and that
@@ -193,9 +235,10 @@ the size of the work.
   came from. A Go project set up from nothing has since exercised three more: the
   install guard fired and handed the command back, the permission wording
   arrived, and the re-review of what changed after a review ran on the fix
-  commit. Still unexercised: the loose-issue ordering, reading who a branch rule
-  actually binds, and arming auto-merge on a pull request that really has
-  something to wait for.
+  commit. Still unexercised: the loose-issue ordering. The other two — reading
+  who a branch rule actually binds, and arming auto-merge on a pull request that
+  really has something to wait for — were both exercised on 25 August 2026 in
+  `devloop-test-l`, and are recorded above and below.
 
   Exercised on 25 August 2026 across a Go project and a fresh Rust one: a class
   reasoned away now records as `skipped`; arming is attempted and its refusal
@@ -220,7 +263,11 @@ the size of the work.
   all. There is nothing to read: a new repository has no protection, and no skill
   creates one. It needs a repository prepared by hand, with protection on,
   `enforce_admins` off and the account holding admin — the shape the defect lived
-  in. `devloop-test-l` has the opposite shape and does not reproduce it either.
+  in. That shape was set up in `devloop-test-l` on 25 August 2026, and the run
+  reported it correctly: main branch protected, the protection does not bind this
+  account, unattended operation therefore not available. It named on its own that
+  an account without admin rights would serve the purpose as well. The defect
+  pull request 73 was built against is thereby shown fixed in the field.
 
   The session-end handover naming the next question has still never been seen.
   That rule fires only once a ticket resolves, so it needs an idea large enough
@@ -258,7 +305,10 @@ the size of the work.
   with Gradle and is the only one with a real platform gate: a required check
   called `checks` run by a workflow on every pull request, with `enforce_admins`
   on, so it binds the account this workflow runs as. That makes it the only
-  place an unattended run can be tried at all. `devloop-test-m` is Go, set up
+  place an unattended run can be tried at all. `enforce_admins` was switched off
+  there by hand on 25 August 2026 for the branch-rule measurement above and
+  stands at true again. A `PROBE.md` on its main branch is a leftover of the same
+  measurement — of no consequence, and not project content. `devloop-test-m` is Go, set up
   from nothing on 24 August and worked through on 25 August: all nine classes
   decided — seven filled and blocking, `types` and `dependencies` skipped with
   reasons — and no platform gate. Its three specced tasks are done except the
@@ -270,9 +320,10 @@ the size of the work.
   blocking, five skipped, and the only project where an install has been
   declined — `cargo-geiger` was chosen and refused, so `code-security` carries
   that as its reason.
-  Nothing merged after 0.46.0 has run either: the base check, the rewritten
-  questions at four stage boundaries, and the control documents finally getting
-  a writer all came out of a single run and have only been reasoned about since.
+
+  The base check, the rewritten questions at four stage boundaries, and the
+  control documents finally getting a writer came out of a single run merged
+  after 0.46.0, and have only been reasoned about since.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.

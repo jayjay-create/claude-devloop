@@ -3,10 +3,11 @@
 A set of skills for Claude Code that takes a piece of work from an idea to
 merged, reviewed code.
 
-**Version 0.1.** Eight skills covering the main path. It has been run end to end
-on a real project twice, once with nobody watching. The side paths — debugging,
-triaging incoming reports, handing over between sessions — are not built yet.
-Read "What is missing" before you rely on it.
+**Version 0.1.** Twelve skills covering the main path. It has been exercised on
+six throwaway projects across five stacks — Python, TypeScript, Kotlin, Go and
+Rust — once with nobody watching. The side paths — triaging incoming reports and
+handing over between sessions — are not built yet. Read "What is missing" before
+you rely on it.
 
 ## What it is for
 
@@ -139,8 +140,8 @@ to be spoken to.
 - Triaging incoming reports, finding refactor candidates, handing over
   between sessions, and a router for when you are lost — planned, not built.
 - End-to-end testing has no worked-out approach yet.
-- Everything has been exercised on one small Python project with GitHub Issues.
-  Other stacks and other trackers are untested.
+- Everything has been exercised on GitHub Issues. Other trackers and monorepos
+  are untested.
 
 ## Working on devloop itself
 
@@ -151,7 +152,17 @@ update` on its own — the cache is keyed by version, so an unchanged version
 number means nothing is fetched.
 
 To make a change take effect: raise `version` in `.claude-plugin/plugin.json`,
-push, then `/plugin uninstall`, `/plugin marketplace update`, `/plugin install`.
+push, then, from an ordinary command line:
+
+    claude plugin marketplace update <marketplace>
+    claude plugin update <plugin>@<marketplace>
+
+That is how 0.80.0 was raised to 0.81.0, without uninstalling. Anthropic's
+plugin reference points out that these subcommands are meant to run from your
+own terminal and are in part without effect inside a session.
+
+The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
+update`, `/plugin install`.
 
 Old versions stay in the cache alongside the new one. Before testing a change,
 confirm the installed copy actually carries it:
