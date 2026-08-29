@@ -301,21 +301,22 @@ the size of the work.
   holds a map with open tickets and no code — the only one where an interview
   could be carried through. `devloop-test-j` is a Python command-line tool with
   a filled, blocking unit class, which makes it the standing bench for a planted
-  fault. `devloop-test-k` is TypeScript with npm. `devloop-test-l` is Kotlin
-  with Gradle and is the only one with a real platform gate: a required check
-  called `checks` run by a workflow on every pull request, with `enforce_admins`
-  on, so it binds the account this workflow runs as. That makes it the only
-  place an unattended run can be tried at all. `enforce_admins` was switched off
-  there by hand on 25 August 2026 for the branch-rule measurement above and
-  stands at true again. A `PROBE.md` on its main branch is a leftover of the same
-  measurement — of no consequence, and not project content. `devloop-test-m` is Go, set up
-  from nothing on 24 August and worked through on 25 August: all nine classes
+  fault. `devloop-test-l` is Kotlin with Gradle and is the only one with a
+  real platform gate: a required check called `checks` run by a workflow on
+  every pull request, with `enforce_admins` on, so it binds the account this
+  workflow runs as. That makes it the only place an unattended run can be
+  tried at all. `enforce_admins` was switched off there by hand on 25 August
+  2026 for the branch-rule measurement above and stands at true again. A
+  `PROBE.md` on its main branch is a leftover of the same measurement — of no
+  consequence, and not project content. `devloop-test-m` is Go, set up from
+  nothing on 24 August and worked through on 25 August: all nine classes
   decided — seven filled and blocking, `types` and `dependencies` skipped with
   reasons — and no platform gate. Its three specced tasks are done except the
-  last, which sits built and committed on `dedup-clean-quarantine` with no pull
-  request, because the run stopped at the approval question and the answer never
-  came. Issues 6, 9, 10, 12 and 13 are open there, all raised by review rather
-  than by a person. It is the bench for anything wanting a fresh Go project. `devloop-test-n` is Rust, set up from nothing on 25 August
+  last, which sits built and committed on `dedup-clean-quarantine` with no
+  pull request, because the run stopped at the approval question and the
+  answer never came. Issues 6, 9, 10, 12 and 13 are open there, all raised by
+  review rather than by a person. It is the bench for anything wanting a fresh
+  Go project. `devloop-test-n` is Rust, set up from nothing on 25 August
   through the greeting and the permission step: four classes filled and
   blocking, five skipped, and the only project where an install has been
   declined — `cargo-geiger` was chosen and refused, so `code-security` carries
