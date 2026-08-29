@@ -3,10 +3,11 @@
 A set of skills for Claude Code that takes a piece of work from an idea to
 merged, reviewed code.
 
-**Version 0.1.** Twelve skills covering the main path. It has been run end to end
-on a real project twice, once with nobody watching. The side paths — debugging,
-triaging incoming reports, handing over between sessions — are not built yet.
-Read "What is missing" before you rely on it.
+**Version 0.1.** Twelve skills covering the main path. It has been exercised on
+six throwaway projects across five stacks — Python, TypeScript, Kotlin, Go and
+Rust — once with nobody watching. The side paths — triaging incoming reports and
+handing over between sessions — are not built yet. Read "What is missing" before
+you rely on it.
 
 ## What it is for
 
@@ -139,8 +140,8 @@ to be spoken to.
 - Triaging incoming reports, finding refactor candidates, handing over
   between sessions, and a router for when you are lost — planned, not built.
 - End-to-end testing has no worked-out approach yet.
-- Everything has been exercised on one small Python project with GitHub Issues.
-  Other stacks and other trackers are untested.
+- Everything has been exercised on GitHub Issues. Other trackers and monorepos
+  are untested.
 
 ## Working on devloop itself
 
