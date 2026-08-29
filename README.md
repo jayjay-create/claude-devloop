@@ -151,7 +151,17 @@ update` on its own — the cache is keyed by version, so an unchanged version
 number means nothing is fetched.
 
 To make a change take effect: raise `version` in `.claude-plugin/plugin.json`,
-push, then `/plugin uninstall`, `/plugin marketplace update`, `/plugin install`.
+push, then, from an ordinary command line:
+
+    claude plugin marketplace update <marketplace>
+    claude plugin update <plugin>@<marketplace>
+
+That is how 0.80.0 was raised to 0.81.0, without uninstalling. Anthropic's
+plugin reference points out that these subcommands are meant to run from your
+own terminal and are in part without effect inside a session.
+
+The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
+update`, `/plugin install`.
 
 Old versions stay in the cache alongside the new one. Before testing a change,
 confirm the installed copy actually carries it:

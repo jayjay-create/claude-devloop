@@ -225,6 +225,12 @@ Say instead that it picks up as soon as they say it has, and that nothing moves
 until they do. A backgrounded agent is the exception and really does come back
 by itself.
 
+**A rule in the run's own memory can close a route the skills allow.** Measured
+on 25 August 2026: before arming auto-merge, a run stopped itself and cited a
+rule in its own memory — never merge directly, always hand the merge command to
+the user — sorting arming under the same pattern. That rule sits outside this
+repository's skills and thereby closes the one route the skills expressly allow.
+
 **Agent Teams must stay off.** With `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`,
 every named subagent starts as a teammate, and a teammate reports only that it
 finished — not what it found. `design-options` and `review-changes` both spawn
@@ -295,12 +301,27 @@ auto-merge has to be enabled on the repository, and the pull request has to be
 one that cannot already be merged — GitHub only offers it where a required check
 or review is still outstanding. A repository with no branch protection satisfies
 the first and never the second, so arming is refused there and every merge is
-performed by the user. The measurement this rule was originally written from —
-that the permission classifier refused a bare `gh pr merge` as a shared-state
-action — is no longer something to lean on: Claude Code's auto mode has since
-become the default, and in a project where this plugin is installed the
-classifier cannot be observed at all, because the guard fires first. The reason
-is the guard, not the classifier. The platform merges, not the agent.
+performed by the user. The second condition is a state, not a property of the
+repository, and it moves within seconds. Measured on 25 August 2026 in
+`devloop-test-l` on pull request 15, inside the same minute: directly after the
+push `mergeStateStatus` read `CLEAN`, and the mutation was refused with
+`UNPROCESSABLE` and the message "Pull request is in clean status"; five seconds
+later it read `BLOCKED`, and the same mutation was accepted. GitHub then merged
+the pull request itself once the required check went green, with nobody
+involved. So a run that arms immediately after opening a pull request can fall
+into the window where the required check has not started yet, and is refused
+there in a repository that does have a gate.
+
+The measurement this rule was originally written from — that the permission
+classifier refused a bare `gh pr merge` as a shared-state action — is no longer
+something to lean on: Claude Code's auto mode has since become the default, and
+for `gh pr merge` in a project where this plugin is installed the classifier
+cannot be observed at all, because the guard fires first. The reason is the
+guard, not the classifier. Where it can be observed is the arming mutation,
+which the guard passes: on 25 August 2026 the classifier did not refuse it and
+it ran — with an explicit confirmation by the user immediately before it, so
+what happens without that confirmation is not decided. The platform merges, not
+the agent.
 
 **A protected branch is only a gate for accounts that cannot bypass it.** With
 `enforce_admins` off, an account holding admin walks straight through, and this
@@ -344,6 +365,9 @@ merge`, which is not. A hook can tell those apart, so that one is enforced while
 a merge the user asked for still goes through. The general form, paid for once:
 where a guard leans on a difference between commands, the difference has to hold
 in the command itself, not in what a server happens to answer at that moment.
+Measured in the field on 25 August 2026: the guard let the arming mutation
+through while it blocks `gh pr merge` — the first proof of that since the guards
+decode the tool's JSON before matching.
 
 **A blocking hook must exit 2.** On `PreToolUse` that blocks the tool call and
 feeds stderr to the model as the reason. Exit 1 does not block — the action runs
