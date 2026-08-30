@@ -221,6 +221,23 @@ the size of the work.
 - **`build-work` step 2 lists ready tasks without saying what each unblocks.**
   The step asks for it; three runs in a row gave titles and descriptions only.
   Harmless while tasks are independent, misleading as soon as they are not.
+- **`build-work` step 2 named the loose issues nowhere.** Measured on 30 August
+  2026 in `devloop-test-m`: a spec with one open task, whose work already sat
+  built on an unpushed branch, and five loose issues beside it, every one of them
+  labelled `raised-here`. The entry point did its half — it named the newest,
+  said how many others there were, and read the label as where they came from.
+  Step 2 then never mentioned them again. Both sentences it asks for there
+  stayed out: that the loose work is waiting and why, and that a loose issue
+  whose subject belongs to a task still open under the spec waits for that task
+  in particular. Same shape as the bullet above — a step that asks for a
+  sentence, and a run that reaches the right decision without ever saying it.
+
+  What this did **not** measure is the ordering itself. The readiness query came
+  back with exactly one ready task, so nothing was being chosen between, and the
+  three numbered clauses at `skills/build-work/SKILL.md:215-227` never came into
+  play: the run took the one ready task, which is what the rule says to do. A
+  measurement of the ordering needs a spec whose last task is closed, or merged
+  work that is wrong, with the loose issues still lying there.
 - **A finding announced as filed is not always filed.** One run said it would
   record a point as an issue and the issue list did not grow. Nothing checks that
   a promised issue exists.
@@ -235,10 +252,13 @@ the size of the work.
   came from. A Go project set up from nothing has since exercised three more: the
   install guard fired and handed the command back, the permission wording
   arrived, and the re-review of what changed after a review ran on the fix
-  commit. Still unexercised: the loose-issue ordering. The other two — reading
-  who a branch rule actually binds, and arming auto-merge on a pull request that
-  really has something to wait for — were both exercised on 25 August 2026 in
-  `devloop-test-l`, and are recorded above and below.
+  commit. That left three. Two of them — reading who a branch rule actually
+  binds, and arming auto-merge on a pull request that really has something to
+  wait for — were exercised on 25 August 2026 in `devloop-test-l`, and are
+  recorded above and below. The third, the loose-issue rule, was reached on 30
+  August 2026 in `devloop-test-m`, and only half of it held: the enumeration
+  did, the two sentences step 2 asks for did not, and the ordering itself was
+  never put to a choice. That is the bullet above.
 
   Exercised on 25 August 2026 across a Go project and a fresh Rust one: a class
   reasoned away now records as `skipped`; arming is attempted and its refusal
@@ -247,6 +267,27 @@ the size of the work.
   the shortened opening reads without a stage list; and an install was declined
   for the first time, leaving `code-security` skipped with that reason while the
   other four classes were still wired up.
+
+  Seen for the first time on 30 August 2026, all in `devloop-test-m`: a build
+  taken back up from an unpushed branch an earlier run had abandoned, its four
+  commits rebased onto the refreshed main; a branch failing a check class that
+  did not exist when it was built — `code-security`, wired up after those commits
+  were written, so it had never run over them — found red after the rebase and
+  put right before the review; five review lenses running at once as background
+  agents, with the sixth left out and the reason for leaving it out given;
+  German held from the greeting through to the last finding of the last lens;
+  and the stop before the merge. That last one is the second sighting rather than
+  the first: the same project's entry below already records the 25 August run
+  stopping at that same question, which is how the branch came to be lying there.
+  The merge command for the refresh pull request was handed over in the form that
+  waits for a word back: it said it would take the next task as soon as the user
+  said the pull request was in, not that it would carry on once the command had
+  run. That is **Nothing resumes on its own** in `docs/skill-conventions.md` seen
+  holding for the first time — the rule was written from the failure of 25 August
+  2026 and has stood since as wording nothing had yet run against. What it does
+  not settle is the second half of that rule, that nothing moves until the user
+  says so: the run left it implied in the condition rather than saying it. The run also
+  declined to read its own session transcript back into its context.
 
   The install guard's reach was widened the same day, from package-manager verbs
   to the outcome: a build flag or a copy aimed at a bin directory, `sudo`, `make
@@ -309,15 +350,19 @@ the size of the work.
   2026 for the branch-rule measurement above and stands at true again. A
   `PROBE.md` on its main branch is a leftover of the same measurement — of no
   consequence, and not project content. `devloop-test-m` is Go, set up from
-  nothing on 24 August and worked through on 25 August: all nine classes
-  decided — seven filled and blocking, `types` and `dependencies` skipped with
-  reasons — and no platform gate. Its three specced tasks are done except the
-  last, which sits built and committed on `dedup-clean-quarantine` with no
-  pull request, because the run stopped at the approval question and the
-  answer never came. Issues 6, 9, 10, 12 and 13 are open there, all raised by
-  review rather than by a person. It is the bench for anything wanting a fresh
-  Go project. `devloop-test-n` is Rust, set up from nothing on 25 August
-  through the greeting and the permission step: four classes filled and
+  nothing on 24 August, worked through on 25 August and taken up again on 30
+  August: all nine classes decided — seven filled and blocking, `types` and
+  `dependencies` skipped with reasons — and no platform gate. Its three specced
+  tasks are done except the last, which the 25 August run left built and
+  committed on `dedup-clean-quarantine` with no pull request when it stopped at
+  the approval question and the answer never came. On 30 August a run brought
+  the setup files up to the current templates through a pull request of its own,
+  then took that branch back up: rebased onto the refreshed main, `code-security`
+  put right, five review lenses over the diff, and a stop before the merge again.
+  Issues 6, 9, 10, 12 and 13 were the five loose issues that run started with,
+  all raised by review rather than by a person. It is the bench for anything
+  wanting a fresh Go project. `devloop-test-n` is Rust, set up from nothing on
+  25 August through the greeting and the permission step: four classes filled and
   blocking, five skipped, and the only project where an install has been
   declined — `cargo-geiger` was chosen and refused, so `code-security` carries
   that as its reason.

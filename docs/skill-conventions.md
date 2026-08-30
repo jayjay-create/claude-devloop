@@ -225,6 +225,14 @@ Say instead that it picks up as soon as they say it has, and that nothing moves
 until they do. A backgrounded agent is the exception and really does come back
 by itself.
 
+Measured in the field on 30 August 2026 in `devloop-test-m`: handing over the
+merge command for a refresh pull request, a run said it would take the next task
+as soon as the user said the pull request was in, rather than that it would
+carry on once the command had run. That is half of it. The second half — that
+nothing moves until they say so — was left implied in the condition and never
+said, so what this confirms is the wording of the resumption, not that the user
+is told the run is standing still.
+
 **A rule in the run's own memory can close a route the skills allow.** Measured
 on 25 August 2026: before arming auto-merge, a run stopped itself and cited a
 rule in its own memory — never merge directly, always hand the merge command to
