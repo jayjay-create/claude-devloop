@@ -212,6 +212,69 @@ the size of the work.
   or somebody else's pull request in a report, or been kept off a task by the
   third readiness condition.
 
+- **A refused command was repeated in silence, and that was measured on 31
+  August 2026.** In a test project, on a real run: a command came back with no
+  output. The refusal was not the platform's but the runtime's permission check,
+  whose message asks in so many words for a pause and an explanation to the user
+  of what the permission is needed for. The run repeated the command without
+  saying anything, got an answer the second time, and named the refusal in no
+  report. It surfaced later, on a question about something else.
+
+  The refusal is not the finding — nothing here decides whether a permission
+  check fires. The silence is, and the fix costs a sentence: a command whose
+  output does not come back is reported, with the command as it was run and the
+  message that came back in its place. One second attempt is allowed; what stands
+  after it is what gets reported, and a second attempt that answers does not
+  retire the first. That is now a block of its own, `## When a command does not
+  answer`, in all twelve skills, checked for agreement the way the other two
+  shared blocks are.
+
+  The boundary is the part that took the work. An empty answer is an answer: no
+  match, no open issue, an empty ruleset list, a clean working tree — and every
+  negative this workflow states rests on such a command, so a rule that swept
+  those in would break more than it fixed. The test written down is whether
+  emptiness is one of the answers the question has. A list can be empty; a field
+  every object of its kind carries cannot come back absent. An error is an answer
+  too and is read for what it says — a 404 whose body reads "Branch not
+  protected", a check that comes back red, a rejected push. Three places where
+  "found nothing" is an explicit conclusion carry the distinction at the point
+  where it would be crossed: the readiness query in `build-work` step 2, the
+  in-flight query in `plan-work`, and both halves of the entry point's query.
+
+  The second finding hung on the first. The `mergeStateStatus` enumeration
+  carried seven values and a catch for an unknown eighth, and no case for no
+  value at all. In the run measured the repeat succeeded; had it been refused
+  too, the run would have stood in front of a state with no value, and the
+  nearest thing the list offers is `UNKNOWN` — which is an answer GitHub gave
+  about a computation it had not finished, and would have been read as one. The
+  three stages that arm and the merge guard's message now treat a missing value
+  as its own outcome: read once more, and on a second empty read do not arm at
+  all, since the rule is to read the state immediately before the mutation and
+  there is no state to have read. Name the command and the message, hand the
+  merge over on that, and unattended stop with the reason named. The same
+  distinction is drawn one step earlier, at the rollup: a required name missing
+  from an answer is a check that has not started and waiting helps; a rollup
+  query that did not answer is not, and no amount of waiting fixes it.
+
+  Every place a conclusion is drawn from a command's output was read against the
+  wording before it was written, with `grep -rn 'gh api\|gh pr \|gh issue\|gh
+  run \|gh workflow\|gh repo\|git [a-z]\|$RUNNER\|readiness query\|in-flight
+  query' skills/*/SKILL.md hooks/*.sh` — 75 sites in eight skills and five hooks.
+  Most needed nothing: the gate and binding queries in `build-work`,
+  `setup-checks` and `setup-project` already say that a side which did not answer
+  is a third outcome rather than a quiet no, which is this same rule written
+  before it had a name. Two sites outside the arming path did need it, both of
+  the shape where a refusal and a real failure look alike: a command blocked
+  before it ran exits non-zero like a failing test, which `diagnose-bug` step 1
+  would have taken for its red signal, and like a target failing on purpose,
+  which `setup-checks` step 5 would have taken as proof that a class is filled.
+  The five hooks conclude from commands too and are left alone: a hook that
+  cannot read what it needs exits 0, and on exit 0 nothing it writes reaches
+  anybody, so there is no report available to it at all.
+
+  All of it is unwalked. No session has yet reported a refusal it retried, met a
+  `mergeStateStatus` read that came back empty, or had to tell an empty answer
+  from a missing one under this wording.
 - **The aim is idea to a running application; this gets to merged code.** Not a
   bug in what exists — the stated aim was idea to merged, reviewed code, and that
   works. It is the aim that has moved. Five things stand between the two, and

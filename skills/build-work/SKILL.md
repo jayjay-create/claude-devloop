@@ -57,6 +57,53 @@ since. Do not improvise a replacement — an invented query that returns somethi
 plausible is worse than no answer, because nobody can tell it went wrong. Name
 the file, say what is missing, and offer to bring it up to date.
 
+## When a command does not answer
+
+**A command whose output does not come back is reported.** Name the command as
+it was run and the message that came back in its place. One second attempt is
+allowed and needs no announcement; where it answers, the run carries on with
+that answer and reports the first refusal beside it. A silent retry is what lets
+a run come out looking clean while a step of it never ran — measured on 31
+August 2026: a command refused by the runtime's permission check, whose message
+asks in so many words for a pause and an explanation of what the permission is
+for, repeated without a word, answered the second time, and named in no report
+until a question about something else turned it up. The refusal itself is
+nothing this workflow decides and nothing to apologise for. Hiding it is the
+defect.
+
+**Nothing is concluded from an answer that did not come.** Where the output
+would have decided something — the state of a pull request, whether a gate
+exists, whether a check passed — silence decides nothing, and it is not the
+nearest value in the list. Say the query did not answer, name the command and
+the message, and stop short of the conclusion rather than picking the case that
+lets the run carry on. Never substitute a different command without saying that
+the first one did not answer. Where the user is there, hand it over as something
+they can act on: the permission is theirs to grant and the command theirs to
+run.
+
+**An empty answer is not silence.** A command that ran and returned nothing has
+answered — no match, no open issue, an empty list, a clean working tree — and
+that is evidence, used as evidence: every negative this workflow states rests on
+such a command. The line runs between an answer that is empty and an answer that
+never came, and the test is whether emptiness is one of the answers the question
+has: a list can be empty, while a field every object of its kind carries cannot
+come back absent, so nothing where a value was asked for is the read having
+failed rather than the object lacking one. An error is an answer too, read for
+what it says — a 404 whose body reads "Branch not protected", a check that comes
+back red, a push that was rejected. None of those is a command that did not
+answer.
+
+**A guard's refusal is one of these, and its message says what to do**; doing
+that is the report. A re-read a skill prescribes is not a second attempt either:
+waiting ten seconds for a value that moves is an instruction being followed, not
+a command being retried.
+
+**With nobody there to tell, the report is still written.** An unattended run
+has no one to explain a permission to, so the command and the message go into
+its own report and it stops there, rather than carrying on past a step that did
+not run. That a permission prompt appeared at all is a finding in itself: the
+tool classes the run needed were not all approved before it started.
+
 ## How to ask
 
 **Only ask when the answer has to come from them.** Both of these have to hold,
@@ -194,6 +241,12 @@ prediction — it belongs in the diagnosis, not instead of it.
 
 Run the readiness query from `docs/agents/issue-tracker.md`. Ready means: open,
 zero open blockers, **and no open pull request already closing it**.
+
+**A query that did not answer is not a query that found nothing.** "None ready"
+is a conclusion, and it needs a query that came back. Where the readiness query
+returns nothing because the command was refused or errored, say that with the
+command and the message, and do not report the tracker as having nothing ready —
+the two look identical in the reply and mean opposite things.
 
 **A task with an open pull request is not ready — it is built.** Its work is
 sitting in a pull request that has not landed, and the task issue stays open
@@ -464,6 +517,13 @@ named `checks`. Match each required name against the rollup:
   `FAILURE` or `ERROR` — the pull request really is past its gate, and that is
   the third refusal case below.
 
+**A rollup that did not answer is not a check that has not started.** The two
+look alike — nothing for the required name either way — and they are different
+things: a missing entry is an answer, a missing answer is not, and waiting
+another ten seconds only ever fixes the first. Where the rollup query itself
+comes back with nothing, say so with the command and the message rather than
+spending the two minutes on it.
+
 **The wait is bounded at two minutes.** The measured window was five seconds, so
 two minutes is generous against the only measurement there is and short enough
 not to hold the session. If it runs out with the required check still not
@@ -473,6 +533,21 @@ with that named. Do not fall back on "a gate this pull request is already past" 
 that is the sentence this whole reading exists to prevent, and a run that says it
 after waiting is more confident than one that said it straight away and no better
 informed.
+
+**No value at all is not one of the values.** A read that comes back with
+nothing — refused before it ran, blocked, or answering nothing where the field
+was asked for — has not read the pull request. Every pull request carries a
+`mergeStateStatus`, so nothing coming back is a fact about the query and none
+about the pull request, and it is not `UNKNOWN`: that is an answer GitHub gave,
+and this is no answer at all. Read it once more, as the one second attempt allows;
+if that comes back empty too, **do not arm.** The rule this step opens with is
+to read the state immediately before the mutation, and there is no state to have
+read, so arming would be acting on nothing — which is what separates this from a
+value in none of the groups, where the pull request was read and only the name
+is unknown. Say the query did not answer, name the command and the message that
+came back in place of a value, and hand the merge over on that. Unattended it is
+a stop with the reason named. It is none of the three cases below: they are
+readings of a repository, and this is a reading that did not happen.
 
 **A value in none of those groups is put in none of them.** Name it as it read
 and say the stage cannot place it. Arming is still attempted — the mutation
@@ -537,8 +612,10 @@ repository. Name that one for what it is — the gate is there and this pull
 request is already past it — and do not report it as a missing gate. A `BEHIND`
 reading is worked through there like anywhere else, since the rebase needs
 nobody, and so is the two-minute wait on a check that has not started; a second
-`BEHIND`, a wait that runs out, and a value the enumeration cannot place are all
-stops with the reason named.
+`BEHIND`, a wait that runs out, a value the enumeration cannot place and a read
+that came back with no value at all are all stops with the reason named — the
+last of them with the command and the message that came back in place of a
+value, since there is nobody here to hand it to.
 
 Then check **once** whether it landed — do not poll in a loop. If it has not,
 say what it is still waiting on and offer the next step; do not block the session.
