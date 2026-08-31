@@ -318,7 +318,30 @@ later it read `BLOCKED`, and the same mutation was accepted. GitHub then merged
 the pull request itself once the required check went green, with nobody
 involved. So a run that arms immediately after opening a pull request can fall
 into the window where the required check has not started yet, and is refused
-there in a repository that does have a gate.
+there in a repository that does have a gate. The window opens seconds after the
+push and closes again as soon as the required check is green, so the only useful
+reading of `mergeStateStatus` is the one taken immediately before the mutation.
+
+**`allow_auto_merge` cannot say whether there is a gate.** It says whether
+auto-merge is permitted on the repository and nothing else. Measured on 30 August
+2026: in a repository with a required check and in one without, the field read
+true alike. A refusal therefore separates into three cases, not two — the setting
+off, no gate at all, or a gate this pull request is already past — and only the
+first is that field's to answer. The third is read from `mergeStateStatus`; a
+mergeable status with a gate present is a pull request past its gate, not a
+repository without one.
+
+**No single query sees every gate**, so the existence of one takes two.
+`repos/OWNER/REPO/branches/main/protection` sees classic branch protection, is
+blind to a gate set through a ruleset, and needs admin on the repository — a bare
+404 is ambiguous, and only a body reading "Branch not protected" means there
+really is none. `repos/OWNER/REPO/rules/branches/main` sees rulesets at
+repository and organisation level and needs no special rights, but is blind to
+classic protection: measured on 30 August 2026, a repository with classic
+protection and the required check `checks` returned an empty list there. A gate
+found by either is a gate; only both coming back negative means none; and where
+neither answered because the rights were missing, that is what gets said, rather
+than a case picked to have something to report.
 
 The measurement this rule was originally written from — that the permission
 classifier refused a bare `gh pr merge` as a shared-state action — is no longer

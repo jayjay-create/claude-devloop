@@ -308,12 +308,26 @@ success is not evidence. Arming is a mutation of its own and cannot merge:
 `gh pr merge --auto` is not a substitute: the tool drops that flag whenever the
 pull request is already mergeable and merges on the spot.
 
-If arming is refused, read which case it is (`gh api repos/OWNER/REPO -q
-.allow_auto_merge`) and say so: auto-merge switched off on the repository, or no
-required check for it to wait on, which means there is no platform gate here at
-all. Hand the user the one command that lands it, say that this picks up as
-soon as they say it has, and do not go on to the next step on top of an unmerged
-suite.
+Read `gh pr view --json mergeStateStatus -q .mergeStateStatus` immediately before
+arming and not earlier — it moves within seconds of the push, and `BLOCKED` is
+the state GitHub arms on.
+
+If arming is refused there are three cases, and `gh api repos/OWNER/REPO -q
+.allow_auto_merge` answers only the first: auto-merge switched off on the
+repository, the field false; or no gate for it to wait on at all; or a gate this
+pull request is already past — the required check green, nothing outstanding, so
+GitHub will not arm what it would merge on the spot. The field cannot tell the
+last two apart; measured on 30 August 2026, it read true in a repository with a
+required check and in one without alike. The state comes from `mergeStateStatus`.
+Whether a gate exists takes both `gh api repos/OWNER/REPO/branches/main/protection`
+(classic protection; blind to rulesets, needs admin, and a 404 means none only
+where the body says "Branch not protected") and `gh api
+repos/OWNER/REPO/rules/branches/main` (rulesets; no special rights, blind to
+classic protection). A gate found by either is a gate; where neither query
+answered, say the rights did not allow finding out rather than naming a case.
+Then hand the user the one command that lands it, say which case it was, say that
+this picks up as soon as they say it has, and do not go on to the next step on
+top of an unmerged suite.
 
 ## Step 8 — Offer the unattended mode
 
@@ -322,9 +336,11 @@ whatever the user answers, and asking would be a question with one possible
 outcome.
 
 **Read the state before asking; never carry an impression of it.** Whether the
-main branch is protected (`gh api repos/OWNER/REPO/branches/main/protection`, a
-404 means no), whether that protection binds the account this runs as
-(`.enforce_admins.enabled`, together with `gh api repos/OWNER/REPO -q
+main branch is gated at all — both queries from step 7, since
+`branches/main/protection` is blind to rulesets and `rules/branches/main` is
+blind to classic protection, and a 404 from the first means none only where the
+body says "Branch not protected" — whether that gate binds the account this runs
+as (`.enforce_admins.enabled`, together with `gh api repos/OWNER/REPO -q
 .permissions.admin`), and whether auto-merge is on (`gh api repos/OWNER/REPO -q
 .allow_auto_merge`). Protection an admin can step over is not a gate: report it
 as missing, not as present. Where the gate is already there and binding, say the

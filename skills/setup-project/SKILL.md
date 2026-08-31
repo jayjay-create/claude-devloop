@@ -320,8 +320,14 @@ single word can answer.
    step has nowhere to go. Read what this repository can actually do:
 
    - `gh api repos/OWNER/REPO -q .visibility` — public or private.
-   - `gh api repos/OWNER/REPO/branches/main/protection` — a 404 means no
-     protection, the ordinary state of a fresh repository.
+   - `gh api repos/OWNER/REPO/branches/main/protection` — classic branch
+     protection. A 404 means none only where the message in the body says
+     "Branch not protected"; the endpoint needs admin on the repository, so any
+     other message is a query that did not answer.
+   - `gh api repos/OWNER/REPO/rules/branches/main` — rulesets, at repository and
+     organisation level, needing no special rights. It is blind to classic
+     protection as the one above is blind to rulesets, so a gate found by either
+     is a gate and only both coming back negative means there is none.
    - `gh api repos/OWNER/REPO/branches/main/protection -q .enforce_admins.enabled`
      — **and this one decides whether any of it applies here.** With it off, an
      account holding admin on the repository walks past every rule above, and
@@ -333,9 +339,9 @@ single word can answer.
      one of the ones that would walk past it.
 
    Whether a plan allows protection on a private repository has changed before
-   and will again, so do not carry a table of it: the 404 answers it for this
-   repository, today. If protection is wanted and refused, the message says why
-   and that is the answer to report.
+   and will again, so do not carry a table of it: those two queries answer it
+   for this repository, today. If protection is wanted and refused, the message
+   says why and that is the answer to report.
 
    Report it in step 8 and write it into `environment.md`. Never withhold
    anything over it and never make it a condition — the user decides what their
@@ -576,15 +582,23 @@ Commit, open a pull request, arm it, and then verify against `git log` that it
 actually arrived — a report of success is not evidence. If a check gate blocks the
 merge, say so and stop here; do not offer the next step on top of unmerged setup.
 
-Arming can also be refused, and not because of a gate: auto-merge may be switched
-off on the repository, or there may be no required check for it to wait on, which
-means there is no platform gate here at all. Read which one it is (`gh api
-repos/OWNER/REPO -q .allow_auto_merge`) rather than inferring it from the error
-text. None of those is something this step changes. Say which one it was, hand
-the user the one command that lands it, and say that this picks up as soon as
-they say it has —
-the same rule the build step follows. Do not leave them holding a pull request
-with no idea what comes next.
+Arming can also be refused, and for three different reasons. Auto-merge may be
+switched off on the repository — `gh api repos/OWNER/REPO -q .allow_auto_merge`
+returns false, and that is the only one this field answers; measured on 30 August
+2026 it read true in a repository with a required check and in one without alike.
+Or there may be no gate for it to wait on at all. Or there is a gate and this
+pull request is already past it: the required check has gone green, nothing is
+outstanding, and GitHub will not arm what it would merge on the spot. Read `gh pr
+view --json mergeStateStatus -q .mergeStateStatus` immediately before arming —
+`BLOCKED` is the state that accepts it — and read whether a gate exists from both
+queries in step 4: `branches/main/protection`, where a 404 means none only with
+"Branch not protected" in the body, and `rules/branches/main`, which is blind to
+classic protection. A gate found by either is a gate. Where neither query
+answered, say the rights did not allow finding out rather than naming a case.
+None of the three is something this step changes. Say which one it was, hand the
+user the one command that lands it, and say that this picks up as soon as they
+say it has — the same rule the build step follows. Do not leave them holding a
+pull request with no idea what comes next.
 
 ## Step 9 — Close
 

@@ -156,34 +156,11 @@ the size of the work.
 
     What follows from it: a run that arms immediately after opening a pull
     request can fall into the window where the required check has not started
-    yet, and is refused there.
-
-- **The stages that arm know two reasons for a refusal, and the one measured is
-  a third.** Three places arm auto-merge — `skills/build-work/SKILL.md:367`,
-  `skills/setup-checks/SKILL.md:311`, `skills/setup-project/SKILL.md:579` — and
-  the message in `hooks/pre-tool-use-merge-guard.sh:19` says the same. All four
-  name exactly two reasons: auto-merge is switched off at the repository, or
-  there is no gate for it to wait on at all. All four tell the two apart by
-  reading `gh api repos/OWNER/REPO -q .allow_auto_merge`.
-
-  The refusal measured on 25 August 2026 — the fourth finding above — is
-  neither. In the window after the push `allow_auto_merge` is true, so the run
-  lands in the second branch, reports "no platform gate here at all", which is
-  false in a repository with a required check, and hands the merge to the user.
-  None of the places reads `mergeStateStatus`, none waits for the check to
-  start, none tries again.
-
-  The cause is not a missing retry. It is a field that cannot answer the
-  question being asked: `allow_auto_merge` says whether auto-merge is permitted
-  on the repository, not whether a gate to wait on exists at this moment. In the
-  measured case the field was true, a gate was there, and the run concluded
-  there was none.
-
-  Attended, the damage is the false statement, and the merge goes to the user
-  either way. Unattended it bites harder. `skills/build-work/SKILL.md:386` says
-  a refusal there is a stop with the reason named, which start condition 6
-  (line 448) exists to make unreachable. The window makes the refusal reachable
-  with condition 6 satisfied, and an unattended run stops there.
+    yet, and is refused there. The three stages that arm and the merge guard's
+    message now read `mergeStateStatus` immediately before the mutation and know
+    that refusal as its own case, so the reading that used to come out of it —
+    "no platform gate here at all", in a repository that has one — is no longer
+    one of the answers available to them.
 
 - **The aim is idea to a running application; this gets to merged code.** Not a
   bug in what exists — the stated aim was idea to merged, reviewed code, and that
@@ -288,6 +265,18 @@ the size of the work.
   not settle is the second half of that rule, that nothing moves until the user
   says so: the run left it implied in the condition rather than saying it. The run also
   declined to read its own session transcript back into its context.
+
+  Nothing has yet run against the three-case refusal. `allow_auto_merge` used to
+  decide between two of them and cannot: measured on 30 August 2026, it reads
+  true in a repository with a required check and in one without alike, and the
+  same day `repos/OWNER/REPO/rules/branches/main` came back an empty list for a
+  repository whose main branch carried classic protection with the required check
+  `checks`. So the gate is now read from that endpoint and from
+  `branches/main/protection` together, the refusal that means a pull request is
+  already past its gate is read from `mergeStateStatus`, and a run whose rights
+  answer neither query says so rather than naming a case. What that leaves
+  unwalked is every branch of it: no session has yet been refused arming and
+  reported which of the three it was, and none has hit the missing-rights answer.
 
   The install guard's reach was widened the same day, from package-manager verbs
   to the outcome: a build flag or a copy aimed at a bin directory, `sudo`, `make
