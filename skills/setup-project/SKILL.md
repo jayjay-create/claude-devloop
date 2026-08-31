@@ -496,7 +496,9 @@ only `yes` or `no`.
 
 ### `issue-tracker.md`
 
-Where issues live, and the exact commands. The seven labels and what they mean:
+Where issues live, and the exact commands — including the one that asks what is
+open, which covers pull requests as well as issues. The seven labels and what
+they mean:
 `needs-triage` (new), `needs-info` (waiting on an answer), `being-planned` (a
 spec is being written into it right now — nobody acts on it, not an agent and
 not a human), `ready-for-agent` (a standalone issue a human has judged buildable
@@ -534,17 +536,55 @@ read them from here; do not leave the reader to guess the API.
 
         gh api graphql -f query='mutation{addBlockedBy(input:{issueId:"WAITING_ID",blockingIssueId:"MUST_FINISH_FIRST_ID"}){issue{number}}}'
 
-    Ask which task is ready — the first with zero open blockers:
+    Ask which task is ready — open, zero open blockers, and no open pull
+    request already building it:
 
-        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issue(number:SPEC){subIssues(first:20){nodes{number title state blockedBy(first:10){nodes{number state}}}}}}}' -q '.data.repository.issue.subIssues.nodes[] | select(.state=="OPEN") | "\(.number) \(.title) | open blockers: \([.blockedBy.nodes[] | select(.state=="OPEN")] | length)"'
+        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issue(number:SPEC){subIssues(first:20){nodes{number title state blockedBy(first:10){nodes{number state}} closedByPullRequestsReferences(first:10){nodes{number state}}}}}}}' -q '.data.repository.issue.subIssues.nodes[] | select(.state=="OPEN") | "\(.number) \(.title) | open blockers: \([.blockedBy.nodes[] | select(.state=="OPEN")] | length) | open pull requests: \([.closedByPullRequestsReferences.nodes[] | select(.state=="OPEN")] | length)"'
 
-    Ask what is in flight — every open issue, with its parent, how many of its
-    tasks are still open out of how many there are, and its labels:
+    Ask what is in flight — every open issue **and** every open pull request,
+    in one command. Two commands would be two things to remember, and the
+    second is the one that gets forgotten:
 
-        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issues(states:OPEN,first:50){nodes{number title parent{number} subIssues(first:50){totalCount nodes{state}} labels(first:10){nodes{name}}}}}}' -q '.data.repository.issues.nodes[] | "\(.number) | parent: \(.parent.number // "-") | tasks open/total: \([.subIssues.nodes[] | select(.state=="OPEN")] | length)/\(.subIssues.totalCount) | labels: \([.labels.nodes[].name] | join(",")) | \(.title)"'
+        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issues(states:OPEN,first:50){totalCount nodes{number title parent{number} subIssues(first:50){totalCount nodes{state}} labels(first:10){nodes{name}}}} pullRequests(states:OPEN,first:50){totalCount nodes{number title isDraft viewerDidAuthor author{login} closingIssuesReferences(first:10){nodes{number state}}}}}}' -q '"open: \(.data.repository.issues.totalCount) issues, \(.data.repository.pullRequests.totalCount) pull requests (50 of each shown)", (.data.repository.issues.nodes[] | "issue \(.number) | parent: \(.parent.number // "-") | tasks open/total: \([.subIssues.nodes[] | select(.state=="OPEN")] | length)/\(.subIssues.totalCount) | labels: \([.labels.nodes[].name] | join(",")) | \(.title)"), (.data.repository.pullRequests.nodes[] | "pull request \(.number) | draft: \(.isDraft) | mine: \(.viewerDidAuthor) | by: \(.author.login) | closes: \(if (.closingIssuesReferences.nodes|length)==0 then "-" else ([.closingIssuesReferences.nodes[] | "\(.number) \(.state)"] | join("; ")) end) | \(.title)")'
 
     A spec is an open issue with children. An unfinished planning carries
-    `being-planned`. A loose issue has neither.
+    `being-planned`. A loose issue has neither. **An open pull request is work
+    that is built and has not landed** — the ordinary way a session ends, not an
+    exception, because a build opens the pull request and then either arms the
+    platform or hands the merge over, and nothing moves until the user says it
+    has landed.
+
+    What those two return, beside what each value is read for:
+
+    - `issues` returns issues and never pull requests. Its nodes are of type
+      `Issue`, and `PullRequest` is a different type — GitHub's live GraphQL
+      schema, read 31 August 2026 — so no filter and no state makes a pull
+      request appear there. The REST endpoint `repos/OWNER/REPO/issues` does mix
+      the two, measured the same day on `cli/cli` where six of ten open entries
+      carried a `pull_request` key, which is where the expectation that one
+      query covers both comes from.
+    - `states:OPEN` on `pullRequests` is read for "not landed yet", and that is
+      what it says. **A draft is inside it**: measured on `cli/cli` on 31 August
+      2026, 64 open pull requests of which 25 read `isDraft: true`, and a
+      draft's own `state` reads `OPEN`. Draft is a separate field, not a state.
+    - `viewerDidAuthor` says whether the account this runs as opened the pull
+      request, which is what "is this ours" asks. Measured the same day: true on
+      a pull request this account opened, false on one from `cli/cli`. It does
+      not say whether the branch sits on a fork — that is `isCrossRepository`.
+    - `closingIssuesReferences` says which issues this pull request would close
+      on merging, each with its own `state`, and it is read for "which work is
+      this". It is filled from a closing keyword in the body or the commits and
+      is empty without one: measured on `cli/cli`, pull requests 10783 and 11388
+      returned nothing, and 11388's title carries a bare "#326" that is text and
+      not a link. Empty means the pull request names no work, not that it has
+      none — and a branch name is not this field.
+    - `closedByPullRequestsReferences` is the same relationship read from the
+      issue, and it is read for "is this task already built". Its
+      `includeClosedPrs` argument defaults to false, which does **not** mean
+      only open ones come back: measured on 31 August 2026 in `devloop-test-l`,
+      the tasks under spec 2 returned pull requests 7, 11 and 13, every one of
+      them `MERGED`. Filter on each node's own `state`; never on the argument
+      name.
 
 The mutation is `addBlockedBy` with the fields `issueId` and `blockingIssueId`.
 There is no `addIssueBlockedBy`; guessing that name fails.

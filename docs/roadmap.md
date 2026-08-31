@@ -162,6 +162,56 @@ the size of the work.
     "no platform gate here at all", in a repository that has one — is no longer
     one of the answers available to them.
 
+- **The stock-take could not see a pull request at all, and that was measured on
+  31 August 2026.** Twice in a row in a test project, a session started fresh
+  work on an issue whose finished work was sitting in an open pull request: the
+  entry point's step 2 named only the open issues, and the planning stage
+  reported "nothing open" and opened a second planning issue for the same work —
+  the pull request's branch even carried that issue's number.
+
+  The cause is not a filter and not a stale document. `Repository.issues`
+  returns nodes of type `Issue`, and `PullRequest` is a different type — read off
+  GitHub's live GraphQL schema the same day — so the in-flight query could not
+  have returned a pull request under any arguments. The REST endpoint of the
+  same name does mix the two, six of ten open entries on `cli/cli` carrying a
+  `pull_request` key, which is where the expectation came from. Both halves now
+  sit in one command in `issue-tracker.md`, because a second command is a second
+  thing to remember and that is the half that went missing.
+
+  Five things were measured to write the wording, all on 31 August 2026:
+
+  - **A draft is inside `states:OPEN`.** `cli/cli` had 64 open pull requests, 25
+    of them `isDraft: true`, and a draft's own `state` reads `OPEN`. Confirmed in
+    the real shape by converting `devloop-test-l` pull request 14 to a draft and
+    back: it appeared in both queries throughout, reading `draft: true`.
+  - **`viewerDidAuthor` answers "is this ours"** — true on a pull request this
+    account opened, false on `cli/cli` 9847. It is not `isCrossRepository`,
+    which answers whether the branch is on a fork.
+  - **`closingIssuesReferences` carries the linked issue's own state**, so an
+    open pull request against an issue somebody has already closed reads
+    `closes: N CLOSED` rather than dropping the link. Read off merged pull
+    request 13 in `devloop-test-l`, whose issue 6 reads `CLOSED`.
+  - **It is empty wherever no closing keyword was written.** `cli/cli` 10783 and
+    11388 returned nothing, and 11388's title carries a bare "#326" that is text
+    and not a link.
+  - **`closedByPullRequestsReferences` defaults to `includeClosedPrs: false` and
+    still returns merged pull requests.** The tasks under `devloop-test-l` spec 2
+    came back carrying 7, 11 and 13, every one `MERGED`. Reading it needs a
+    filter on each node's own `state`; the argument name answers a different
+    question, which is the shape `docs/skill-conventions.md` already names.
+
+  The finding that came out of chasing it is worth more than the fix. **Nothing
+  in this set had ever said to write `Closes #N` into a pull request body** —
+  `grep -rn 'Closes #' skills/ hooks/ docs/` came back empty — so the one
+  queryable link between a pull request and its task existed by habit. Where the
+  habit lapsed it is simply gone: `devloop-test-l` task 4 was built and merged
+  through this workflow and carries no reference in either direction, even with
+  `includeClosedPrs: true`. The build stage now writes the keyword.
+
+  All of it is unwalked. No session has yet run the widened query, met a draft
+  or somebody else's pull request in a report, or been kept off a task by the
+  third readiness condition.
+
 - **The aim is idea to a running application; this gets to merged code.** Not a
   bug in what exists — the stated aim was idea to merged, reviewed code, and that
   works. It is the aim that has moved. Five things stand between the two, and
@@ -386,7 +436,9 @@ the size of the work.
   fault. `devloop-test-l` is Kotlin with Gradle and is the only one with a
   real platform gate: a required check called `checks` run by a workflow on
   every pull request, with `enforce_admins` on, so it binds the account this
-  workflow runs as. That makes it the only place an unattended run can be
+  workflow runs as. It is also the standing bench for the stock-take: issue 8 is
+  open and pull request 14 closes it and has been open since 24 August, which is
+  the shape that went unseen. That makes it the only place an unattended run can be
   tried at all. `enforce_admins` was switched off there by hand on 25 August
   2026 for the branch-rule measurement above and stands at true again. A
   `PROBE.md` on its main branch is a leftover of the same measurement — of no

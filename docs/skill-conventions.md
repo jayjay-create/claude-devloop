@@ -287,6 +287,51 @@ truth. The check that catches this kind goes to the source: the API answering
 now, the vendor's own words, a measurement with a date on it. Never to the other
 copies of your own text.
 
+**A query is scoped to a type, and a stock-take built on it inherits that
+scope.** The second answer the rule above produced, and it is not a misread
+field: every field was read correctly and the answer was still wrong, because
+the thing being asked about was never in range of the question. GitHub's
+`Repository.issues` returns nodes of type `Issue`; `PullRequest` is a different
+type; so the query that asks a project what is open could not return a pull
+request however its filters were set. Read off the live GraphQL schema on 31
+August 2026, after two runs in a row started fresh work on an issue whose
+finished work was sitting in an open pull request nobody had mentioned.
+
+What makes this kind invisible is that the query is not wrong and does not fail.
+It answers, the answer is complete for what it asked, and the gap sits in the
+question. Nothing goes red, and the same thing is missing every time in the same
+way. Three rules follow.
+
+1. **Before building a stock-take on a query, name what that query cannot
+   return** — not what it filters out, but what is outside its type's range
+   altogether. Where the answer is "nothing", say so. Where something is, it
+   needs its own query, and the stock-take is incomplete until it has one.
+2. **A neighbouring endpoint answering the question is a reason to check, not a
+   reason to assume.** REST `repos/OWNER/REPO/issues` returns pull requests among
+   the issues and the GraphQL field of the same name does not — measured the same
+   day on `cli/cli`, six of ten. Two endpoints wearing one name are two
+   questions.
+3. **Where several stages read the same stock-take, the second query goes into
+   the same command.** A command that has to be remembered is a command a run
+   forgets, which is exactly what happened here, in two skills, inside one week.
+   One command that returns both halves cannot be half-run.
+
+**A relationship nothing writes is not there to query.** The link from a pull
+request to the task it finishes is a real, queryable relationship — and it
+exists only where a closing keyword was written into the pull request body.
+Nothing in this set said to write one. It happened by habit, and where the habit
+lapsed the link is simply absent: measured on 31 August 2026, a task built and
+merged through this workflow with no reference in either direction. So a rule
+that reads a relationship has to name the step that creates it, in the file that
+step lives in, or it is reading a field somebody else's diligence filled in.
+
+**And a naming convention is not that relationship.** The branch in the incident
+above carried the issue number, which is what made the missing pull request
+findable by hand — but a branch name is a string this workflow writes, and the
+first pull request that arrives from outside it carries whatever its author
+chose. Reading identity out of a name works right up to the first case that did
+not come from here.
+
 ## Environment constraints, measured
 
 **Nothing resumes on its own.** A run that hands the user a command and says it
