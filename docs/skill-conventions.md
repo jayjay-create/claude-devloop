@@ -85,7 +85,10 @@ changed it itself.
 
 **A statement about the repository or the platform rests on a command from this
 turn.** Not on how it was at the start, not on how it usually is. Where you have
-no such command, say you are going to look, and look.
+no such command, say you are going to look, and look. That is the rule for a run
+in a session. The same claim written into a skill, where it stands in for every
+future run, is held to more than a command — see "A finding that would have
+passed unsupervised gets written down".
 
 **Before telling the user something is missing, search for it.** A negative is
 the most expensive claim there is, because it sets them to work: a run reported
@@ -214,6 +217,75 @@ Send a SKILL.md in two or three blocks rather than one. A single long heredoc
 gets truncated on paste, the file is left unterminated, and nothing reports an
 error — the skill simply does not exist. End each block with `wc -l` and an
 expected number.
+
+## A finding that would have passed unsupervised gets written down
+
+Two questions after every one of them: can this happen again, and can it be
+prevented. Where both are yes, the answer is written down before the work carries
+on — before, because after is the next session and by then the finding is gone.
+**An unrecorded finding is a repeatable one, and the second time round it looks
+exactly like the first, so nobody notices that it is the second time.** The cost
+is not the defect. The cost is that the defect is invisible as a pattern.
+
+What gets written down is the preventable form, not the incident. Four notes
+saying a particular field was misread are four incidents; one rule naming that
+kind of misreading is a prevention. The rule belongs in this file and the
+measurement backing it in `docs/roadmap.md` — the split those two already run on.
+`record-lessons` is this same move for a project's own work; this is it turned on
+the repository that ships it.
+
+**A finding the check chain reports red does not fall under this**, repeatable or
+not. The chain is already the prevention: it goes red the next time too, and the
+next time somebody sees it. What this rule is for is the finding nothing was
+watching — a sentence in a skill, a rule, a claim about a platform — where no red
+is coming.
+
+Where it can happen again and cannot be prevented, that is the answer and it gets
+written down as one. A run that spends an hour establishing that something has no
+fix here has produced a result, and dropping it sells the next run the same hour.
+Only "this cannot happen again" needs nothing.
+
+**A field is not an answer to a question it was not asked.** This is the first
+answer the rule above produced, out of four defects in a row with a single shape:
+a field or a status code used as the answer to a question it does not answer.
+
+- `allow_auto_merge` says whether auto-merge is permitted on the repository. It
+  was used for "there is a gate".
+- `CLEAN` says nothing is outstanding. It was used for "the gate has been
+  through".
+- A 404 says the query returned nothing. It was used for "there is no
+  protection".
+- `enforce_admins` says whether classic protection binds admins. It was used for
+  "the protection binds at all".
+
+Each of the four stood identically in every file that carried it. Not one was a
+divergence between them. Three rules follow.
+
+1. **Write what the source says beside what the value is being used for** — what
+   the field means, not what is concluded from it. Where the two come apart, that
+   is the defect and the query is the wrong one. This is owed wherever a value
+   decides something; a command that fetches something to show the user decides
+   nothing and needs no gloss.
+2. **A claim about the platform's behaviour holds only with evidence**: a
+   measurement carrying a date, or a primary source from the vendor. Not a
+   recollection of how an API behaves. It is scoped to behaviour outside this
+   repository — an API, a tool, a runner. A claim about this workflow's own
+   procedure is answered by reading these files instead, and that is the one
+   question a file-against-file reading does answer.
+3. **Changing such a claim means finding every place standing on the same
+   query**, with the search command named in the report, and listing what was
+   looked at — including where nothing needed changing. The list is the
+   deliverable even where it holds one entry. A run that skips the search because
+   it already knows there is only one place is making exactly the assumption that
+   put the same four defects into four files.
+
+**Checking the files against each other cannot find this.** Every copy can carry
+the same wrong reading, and then they agree — loudly, and through all four of the
+defects above, which the checks before a handover reported as perfect agreement
+the whole time. Agreement between copies is evidence about copying, not about
+truth. The check that catches this kind goes to the source: the API answering
+now, the vendor's own words, a measurement with a date on it. Never to the other
+copies of your own text.
 
 ## Environment constraints, measured
 
@@ -578,6 +650,13 @@ question about all of them.** Before writing it, name which other skills reach
 the same situation, and either make the change there too or say why it does not
 apply. Three separate defects this month were a rule written into one file that
 belonged in six.
+
+These checks find only the half of that which shows up as disagreement. Where
+every copy carries the same wrong reading they agree, and the cksums come back
+clean — see "A finding that would have passed unsupervised gets written down".
+For a claim about a platform the search goes by the query the claim stands on
+rather than by its wording, and what it turned up is listed even where nothing
+changed.
 
 No sentence tells a run to ask for permission to reach the next stage, or to
 put a question as an either-or. Every line this prints needs an eye on it: some
