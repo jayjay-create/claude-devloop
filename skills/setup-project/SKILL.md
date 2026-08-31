@@ -328,15 +328,45 @@ single word can answer.
      organisation level, needing no special rights. It is blind to classic
      protection as the one above is blind to rulesets, so a gate found by either
      is a gate and only both coming back negative means there is none.
-   - `gh api repos/OWNER/REPO/branches/main/protection -q .enforce_admins.enabled`
-     — **and this one decides whether any of it applies here.** With it off, an
-     account holding admin on the repository walks past every rule above, and
-     this workflow runs as whatever account the tooling is authenticated with.
-     A protected branch that the working account can bypass is not a gate; it
-     is a gate for everybody else. Reporting the protection without this is
-     reporting something that is not true where it matters.
-   - `gh api repos/OWNER/REPO -q .permissions.admin` — whether that account is
-     one of the ones that would walk past it.
+   - **Whether the gate found above binds the account this runs as** — and this
+     decides whether any of it applies here. This workflow runs as whatever
+     account the tooling is authenticated with, and a gate that account can step
+     past is not a gate; it is a gate for everybody else. Reporting the
+     protection without this reports something that is not true where it
+     matters. Each kind of gate answers it in its own place, and the classic
+     endpoint can no more answer for a ruleset than it can see one:
+     - Classic protection: `gh api repos/OWNER/REPO/branches/main/protection -q
+       .enforce_admins.enabled`, with `gh api repos/OWNER/REPO -q
+       .permissions.admin` for whether this account is one of those that would
+       walk past it. Off and admin means it does not bind here.
+     - A ruleset: each rule `rules/branches/main` returns carries a
+       `ruleset_id`; read `gh api repos/OWNER/REPO/rulesets/RULESET_ID -q
+       .current_user_can_bypass`. It answers for the account asking, which is
+       the account that would merge. `never` binds. Anything else does not, and
+       `pull_requests_only` least of all: in GitHub's words that actor "can then
+       choose to bypass any branch protections and merge that pull request",
+       which is the step this gate exists to hold. Name the value either way.
+       Do not reach for `bypass_actors` instead — measured on 31 August 2026 it
+       read `null` on a ruleset that answered everything else, and a run reading
+       it would take that for nobody. The list at `repos/OWNER/REPO/rulesets`
+       does not carry the field at all; only the single-ruleset reply does.
+
+     Neither ruleset reading needs admin, where the classic endpoint does.
+     Measured on 31 August 2026 on `github/docs`, a repository this account has
+     no admin on: `rules/branches/main` returned rules from two rulesets, one
+     `Repository`- and one `Organization`-sourced, and both single-ruleset
+     replies carried `current_user_can_bypass: never`. GitHub says the same in
+     prose — "Anyone with read access to a repository can view its active
+     rulesets."
+   - **Put the two sides together the way the existence question is put
+     together.** Classic protection and rulesets "work alongside each other, and
+     all applicable rules are enforced", so a gate binds here if either side
+     binds, and only both sides coming back bypassable means this account walks
+     through. Where a side did not answer — `protection` needing admin and
+     returning anything but "Branch not protected", or a ruleset reply that does
+     not come back — that is a third outcome and not a quiet no: say the binding
+     could not be determined and which query failed, rather than claiming a gate
+     or ruling one out.
 
    Whether a plan allows protection on a private repository has changed before
    and will again, so do not carry a table of it: those two queries answer it
@@ -589,9 +619,31 @@ returns false, and that is the only one this field answers; measured on 30 Augus
 Or there may be no gate for it to wait on at all. Or there is a gate and this
 pull request is already past it: the required check has gone green, nothing is
 outstanding, and GitHub will not arm what it would merge on the spot. Read `gh pr
-view --json mergeStateStatus -q .mergeStateStatus` immediately before arming —
-`BLOCKED` is the state that accepts it — and read whether a gate exists from both
-queries in step 4: `branches/main/protection`, where a 404 means none only with
+view --json mergeStateStatus -q .mergeStateStatus` immediately before arming.
+`BLOCKED` is the state that accepts it, while `CLEAN`, `HAS_HOOKS` and `UNSTABLE`
+mean nothing is outstanding — which is either everything having run or nothing
+having started, and a freshly pushed branch is the second. `gh pr view --json
+statusCheckRollup` separates them: it sees Actions check runs and older commit
+statuses alike, since `StatusCheckRollupContext` is a union of `CheckRun` and
+`StatusContext` (GitHub's live GraphQL schema, 31 August 2026). The required
+names come from the same two gate queries — `required_status_checks.contexts` for
+classic protection, `parameters.required_status_checks[].context` for a ruleset.
+A required name with no entry, an entry whose `status` is not `COMPLETED`, or a
+status context still `PENDING` or `EXPECTED`, means the check has not run yet:
+not a refusal case, so wait ten seconds and read again, up to two minutes, then
+arm on the `BLOCKED` it moves to. Only every required check `COMPLETED` makes
+this a pull request past its gate; two minutes run out is said as that and not
+as a gate already passed. `UNKNOWN` is a missing answer rather than a state:
+GitHub computes mergeability when it is asked for, so read again a few seconds
+later and use that second value; a second `UNKNOWN` is not read a third time.
+`BEHIND` means the branch is behind the base and the required check ran against a
+state that is not what would be merged — fetch, rebase onto the base and
+force-push, which lands nothing anywhere and is not the merge this step may not
+perform, and the next reading is `BLOCKED` with arming accepted. Measured on 30
+August 2026 on a pull request seven days old: `UNKNOWN` first, `BEHIND` on the
+second reading. A value in none of those groups is put in none of them: name it
+as it read and say it cannot be placed, rather than turning it into one of the
+three cases. Then read whether a gate exists from both queries in step 4: `branches/main/protection`, where a 404 means none only with
 "Branch not protected" in the body, and `rules/branches/main`, which is blind to
 classic protection. A gate found by either is a gate. Where neither query
 answered, say the rights did not allow finding out rather than naming a case.

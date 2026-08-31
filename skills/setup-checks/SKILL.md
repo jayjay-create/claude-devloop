@@ -310,7 +310,33 @@ pull request is already mergeable and merges on the spot.
 
 Read `gh pr view --json mergeStateStatus -q .mergeStateStatus` immediately before
 arming and not earlier — it moves within seconds of the push, and `BLOCKED` is
-the state GitHub arms on.
+the state GitHub arms on. `CLEAN`, `HAS_HOOKS` and `UNSTABLE` mean nothing is
+outstanding and arming is refused — but they cannot say whether that is because
+everything ran or because nothing has started, and a branch pushed a moment ago
+is in the second. Ask the branch: `gh pr view --json statusCheckRollup` sees
+Actions check runs and older commit statuses alike, since
+`StatusCheckRollupContext` is a union of `CheckRun` and `StatusContext` (GitHub's
+live GraphQL schema, 31 August 2026), where `commits/SHA/check-runs` sees only
+the first. The required names come from the two gate queries below —
+`required_status_checks.contexts` for classic protection,
+`parameters.required_status_checks[].context` for a ruleset. A required name with
+no entry, or an entry whose `status` is not `COMPLETED`, or a status context
+still `PENDING` or `EXPECTED`, means the check has not run yet: not a refusal
+case, so wait ten seconds and read again, up to two minutes, then arm on the
+`BLOCKED` it moves to. Only every required check `COMPLETED` makes this a pull
+request past its gate. If the two minutes run out, say the gate is there and no
+check registered in that time, rather than claiming the pull request is past it.
+`UNKNOWN` is a missing answer rather than a
+state: GitHub computes mergeability when it is asked for, so read again a few
+seconds later and use that second value instead of making a case out of the
+first; a second `UNKNOWN` is not read a third time. `BEHIND` means the branch is
+behind the base and the required check ran against a state that is not what would
+be merged — fetch, rebase onto the base and force-push, which lands nothing
+anywhere and is not the merge this step may not perform, and the next reading is
+`BLOCKED` with arming accepted. Measured on 30 August 2026 on a pull request
+seven days old: `UNKNOWN` first, `BEHIND` on the second reading. A value in none
+of those groups is put in none of them — name it as it read, say it cannot be
+placed, and do not turn it into one of the three cases below.
 
 If arming is refused there are three cases, and `gh api repos/OWNER/REPO -q
 .allow_auto_merge` answers only the first: auto-merge switched off on the
@@ -340,10 +366,18 @@ main branch is gated at all — both queries from step 7, since
 `branches/main/protection` is blind to rulesets and `rules/branches/main` is
 blind to classic protection, and a 404 from the first means none only where the
 body says "Branch not protected" — whether that gate binds the account this runs
-as (`.enforce_admins.enabled`, together with `gh api repos/OWNER/REPO -q
-.permissions.admin`), and whether auto-merge is on (`gh api repos/OWNER/REPO -q
-.allow_auto_merge`). Protection an admin can step over is not a gate: report it
-as missing, not as present. Where the gate is already there and binding, say the
+as, and whether auto-merge is on (`gh api repos/OWNER/REPO -q
+.allow_auto_merge`). Binding is read per kind of gate: classic protection in
+`.enforce_admins.enabled` together with `gh api repos/OWNER/REPO -q
+.permissions.admin`, a ruleset in `gh api repos/OWNER/REPO/rulesets/RULESET_ID -q
+.current_user_can_bypass`, with `RULESET_ID` off the rules `rules/branches/main`
+returned — `never` binds, anything else does not, `pull_requests_only` included,
+since that is a bypass at the merge itself. Reading only the classic field
+reports a ruleset gate as missing, because that endpoint 404s where the gate is a
+ruleset. A gate binds if either side binds. Protection this account can step over
+is not a gate: report it as missing, not as present. Where a side did not answer,
+say the binding could not be determined rather than reporting the gate either
+way. Where the gate is already there and binding, say the
 mode is available and skip the rest of this step.
 
 **Refuse to build a gate when no `filled` class is `Blocking: yes`,** and say

@@ -322,6 +322,57 @@ there in a repository that does have a gate. The window opens seconds after the
 push and closes again as soon as the required check is green, so the only useful
 reading of `mergeStateStatus` is the one taken immediately before the mutation.
 
+**A mergeable reading inside that window is not a pull request past its gate, and
+the value cannot say that it is.** `CLEAN`, `HAS_HOOKS` and `UNSTABLE` all mean
+nothing is outstanding, which is either everything having run or nothing having
+started — and every run that builds and pushes goes through the second, where
+`UNKNOWN` and `BEHIND` only reach pull requests that have been lying around. What
+separates them is the branch, not the value: `gh pr view --json
+statusCheckRollup` says whether the required check has run on this head commit.
+One query covers both kinds of gate, because `StatusCheckRollupContext` is a
+union of `CheckRun` and `StatusContext` — read off GitHub's live GraphQL schema
+on 31 August 2026 — so it sees Actions check runs and the older commit statuses
+alike, where `repos/OWNER/REPO/commits/SHA/check-runs` sees only the first. The
+required names come from the two gate queries that were needed anyway:
+`required_status_checks.contexts` in classic protection, measured the same day in
+`devloop-test-l` as `["checks"]` against a rollup entry of exactly that name, and
+`parameters.required_status_checks[].context` in a ruleset. A required name with
+no entry, an entry whose `status` is not `COMPLETED` — the six are `REQUESTED`,
+`QUEUED`, `IN_PROGRESS`, `COMPLETED`, `WAITING`, `PENDING` — or a status context
+still `PENDING` or `EXPECTED`, means the check has not started. That is not a
+refusal but a wait: ten seconds, read again, bounded at two minutes against a
+measured window of five, and a bound that runs out is reported as a gate whose
+check never registered rather than as a gate already passed. The three refusal
+cases stay three. This is what keeps the third of them from swallowing a pull
+request nothing has looked at yet, which is the same wrong sentence the three
+were split apart to stop, over the pull request every run has.
+
+**`mergeStateStatus` carries more than the four values the skills used to name.**
+Measured on 30 August 2026 on a pull request seven days old: the first reading
+was `UNKNOWN` and the second `BEHIND`, and neither value appeared anywhere in
+`skills/` or `hooks/`. `UNKNOWN` is not a state but a computation not yet done —
+GitHub works mergeability out when it is asked for, and a first read can start
+that work rather than report it, so the value to use is the second one, and a
+case derived from the first is derived from no answer at all. `BEHIND` is the
+branch trailing its base, with the required check having run against a state that
+is not what would be merged; it appears only where the base requires branches to
+be up to date, so it is never evidence of a repository without a gate. It is
+answered by rebasing onto the base and force-pushing — which lands nothing
+anywhere and is not the merge these stages may not perform — after which the pull
+request reads `BLOCKED` again and arming is accepted. Handing the merge over on a
+`BEHIND` reading hands over a pull request that was one push away from arming
+itself.
+
+The list has seven values in all — `DIRTY`, `UNKNOWN`, `BLOCKED`, `BEHIND`,
+`UNSTABLE`, `HAS_HOOKS`, `CLEAN`, read off the live schema on 31 August 2026,
+with no `DRAFT` among them — and `DIRTY` is the one still unnamed, which is why
+the shape of the list matters more than its length. **A value in
+none of the groups is put in none of them**: the run names it as it read and says
+it cannot place it, and it does not become one of the three refusal cases below.
+A list read as exhaustive turns every value its author did not know about into a
+confident wrong sentence, and the enumeration that had four values in it had been
+read that way for a week.
+
 **`allow_auto_merge` cannot say whether there is a gate.** It says whether
 auto-merge is permitted on the repository and nothing else. Measured on 30 August
 2026: in a repository with a required check and in one without, the field read
@@ -361,6 +412,33 @@ repository somebody owns is theirs. Measured, not reasoned: a run set auto-merge
 on a pull request under a required check and it merged instantly, because the
 check did not apply to that account. Both parts have to be read, the protection
 and who it binds.
+
+**And who it binds is read per kind of gate, or the read contradicts the one
+above it.** `enforce_admins` lives on `branches/main/protection`, the endpoint
+that is blind to rulesets and 404s where the gate is one — so a run that reads
+the gate from both queries and its binding from that one field alone reports a
+ruleset gate as absent, having just found it. The ruleset side answers in
+`current_user_can_bypass` on `repos/OWNER/REPO/rulesets/RULESET_ID`, with the id
+taken off the rules `rules/branches/main` returns. It answers for the account
+asking, which is the account that would merge: `never` binds, anything else does
+not, and `pull_requests_only` least of all — GitHub's own description of it is
+that the actor "can then choose to bypass any branch protections and merge that
+pull request", which is the step the gate exists to hold. Not `bypass_actors`:
+measured on 31 August 2026 it read `null` on a ruleset that answered everything
+else, and read as an answer that says nobody may bypass. The field is on the
+single-ruleset reply only; the list at `repos/OWNER/REPO/rulesets` does not carry
+it.
+
+Neither ruleset reading needs admin, where the classic endpoint does — measured
+the same day on `github/docs`, a repository the account holds no admin on:
+`rules/branches/main` returned rules from a `Repository`- and an
+`Organization`-sourced ruleset, and both single-ruleset replies carried
+`current_user_can_bypass: never`. GitHub says it in prose too: "Anyone with read
+access to a repository can view its active rulesets." The two sides then go
+together the way existence does — "they work alongside each other, and all
+applicable rules are enforced", so a gate binds if either side binds — and a side
+that did not answer is a third outcome, said as such. Binding has three answers,
+not two, for the same reason existence does.
 
 Whether a plan allows protection on a private repository is not something to
 carry as a table. It has changed before, it varies by plan, and a private
