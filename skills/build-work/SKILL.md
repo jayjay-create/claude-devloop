@@ -370,9 +370,87 @@ mutation and not earlier:
     gh pr view --json mergeStateStatus -q .mergeStateStatus
 
 It moves within seconds of the push, and it is the one thing that says whether
-arming can be accepted at all. `BLOCKED` means something is still outstanding and
-GitHub will arm. `CLEAN`, `HAS_HOOKS` or `UNSTABLE` mean the pull request can
-already be merged, and GitHub refuses to arm what it would merge on the spot.
+arming can be accepted at all. Six values have a reading here, and the last two
+are neither a yes nor a no:
+
+- `BLOCKED` — something is still outstanding, and GitHub will arm.
+- `CLEAN`, `HAS_HOOKS`, `UNSTABLE` — nothing is outstanding, so the pull request
+  can already be merged and GitHub refuses to arm what it would merge on the
+  spot. These three say two different things and cannot separate them:
+  everything that had to run has run, or nothing has started yet. Every run that
+  builds and pushes goes through the second one. Do not read a case out of them
+  before the paragraph after this list has been worked through.
+- `UNKNOWN` — not computed rather than a state. GitHub works mergeability out
+  when it is asked for, so a first reading can return this and start the
+  computation instead of reporting it. Ask again a few seconds later and use the
+  second value: that second reading is then the one taken immediately before the
+  mutation, so the rule above is kept by the wait rather than broken by it. Never
+  derive a case from `UNKNOWN` — it is the absence of an answer, not one. A
+  second `UNKNOWN` is not read a third time; it falls to the paragraph below.
+- `BEHIND` — the branch is behind the base branch, and the required check ran
+  against a state that is not what would be merged. It appears only where the
+  base branch requires branches to be up to date, so a gate exists here by
+  definition and it is never evidence of a repository without one. Fetch, rebase
+  the branch onto the base, force-push it, and read `mergeStateStatus` again: it
+  reads `BLOCKED` and arming is accepted. That rebase is not the merge this stage
+  must not perform — it moves the base under this branch and lands nothing
+  anywhere — and it is no reason to hand the merge over. Measured on 30 August
+  2026 on a pull request seven days old: `UNKNOWN` on the first reading, `BEHIND`
+  on the second. A rebase adds no commits, so step 4 does not run again over it;
+  the required check does run again over the new base and can come back red,
+  which is answered the way any red check is. A second `BEHIND` means the base is
+  moving faster than the check finishes — say that and hand the merge over rather
+  than going round again.
+
+**A mergeable value on a freshly pushed branch is the required check not having
+started, not a pull request past its gate.** Measured on 25 August 2026: directly
+after the push `mergeStateStatus` read `CLEAN`, and five seconds later `BLOCKED`.
+The value cannot tell the two apart; the branch can. Ask whether the required
+check has run on this head commit:
+
+    gh pr view --json statusCheckRollup
+
+One query answers it for both kinds of gate. `StatusCheckRollupContext` is a
+union of `CheckRun` and `StatusContext` — read off GitHub's live GraphQL schema
+on 31 August 2026 — so the rollup sees Actions check runs and the older commit
+statuses alike, where `repos/OWNER/REPO/commits/SHA/check-runs` sees only the
+first. A `CheckRun` carries `name` and `status`; a `StatusContext` carries
+`context` and `state`.
+
+The required names come out of the two gate queries already run: classic
+protection carries them in `required_status_checks.contexts`, a ruleset in
+`parameters.required_status_checks[].context` on its `required_status_checks`
+rule. Measured on 31 August 2026 in `devloop-test-l`: protection returned
+`contexts: ["checks"]`, and the rollup on pull request 14 carried one `CheckRun`
+named `checks`. Match each required name against the rollup:
+
+- **No entry for it, or an entry whose `status` is not `COMPLETED`** — the other
+  five are `REQUESTED`, `QUEUED`, `IN_PROGRESS`, `WAITING` and `PENDING`, read
+  off the same schema the same day — or a `StatusContext` whose `state` is
+  `PENDING` or `EXPECTED`. The check has not run yet. **This is not a refusal
+  case and nothing here has gone wrong.** Wait ten seconds, read
+  `mergeStateStatus` again, and arm on the `BLOCKED` it moves to.
+- **Every required name `COMPLETED`**, or its status context in `SUCCESS`,
+  `FAILURE` or `ERROR` — the pull request really is past its gate, and that is
+  the third refusal case below.
+
+**The wait is bounded at two minutes.** The measured window was five seconds, so
+two minutes is generous against the only measurement there is and short enough
+not to hold the session. If it runs out with the required check still not
+registered on this branch, that is what gets said: the gate is there, no check
+has appeared in two minutes, and this run does not know why. Hand the merge over
+with that named. Do not fall back on "a gate this pull request is already past" —
+that is the sentence this whole reading exists to prevent, and a run that says it
+after waiting is more confident than one that said it straight away and no better
+informed.
+
+**A value in none of those groups is put in none of them.** Name it as it read
+and say the stage cannot place it. Arming is still attempted — the mutation
+cannot merge, so the attempt costs nothing — and what comes back is reported with
+the value named beside it. What must not happen is that value being read as one
+of the three refusal cases below: an unplaceable state is not evidence about the
+repository, and picking a case off it is the same failure those three were split
+apart to fix.
 
 Arming can be refused for three different reasons, and they mean different
 things. `gh api repos/OWNER/REPO -q .allow_auto_merge` answers the first and no
@@ -426,7 +504,11 @@ In unattended mode there is nobody to hand it to. A refusal there is a stop with
 the reason named. Start condition 6 makes the first two unreachable; it cannot
 touch the third, which is a state of one pull request and not a property of the
 repository. Name that one for what it is — the gate is there and this pull
-request is already past it — and do not report it as a missing gate.
+request is already past it — and do not report it as a missing gate. A `BEHIND`
+reading is worked through there like anywhere else, since the rebase needs
+nobody, and so is the two-minute wait on a check that has not started; a second
+`BEHIND`, a wait that runs out, and a value the enumeration cannot place are all
+stops with the reason named.
 
 Then check **once** whether it landed — do not poll in a loop. If it has not,
 say what it is still waiting on and offer the next step; do not block the session.
@@ -474,13 +556,20 @@ checks — only the gate differs.
    reason. `empty` means undecided, and an undecided check approves nothing.
 2. A failing gate genuinely blocks a merge on the remote — not the model's
    judgement that it looks fine, and not a rule the account running this can
-   step over. A required check with `enforce_admins` off binds everyone except
-   an admin, and this runs as whoever the tooling is authenticated with; on a
-   repository the user owns, that is an admin. Read both
-   (`enforce_admins.enabled` and `.permissions.admin`) and refuse on a gate that
-   would not apply here — an unattended run has nothing else standing between a
-   red suite and the main branch. This is also what makes the run able to merge
-   at all: see 6.
+   step over. This runs as whoever the tooling is authenticated with; on a
+   repository the user owns, that is an admin. Each kind of gate says whether it
+   binds in its own place: classic protection in `enforce_admins.enabled`
+   together with `.permissions.admin`, a ruleset in `gh api
+   repos/OWNER/REPO/rulesets/RULESET_ID -q .current_user_can_bypass`, with
+   `RULESET_ID` taken off the rules `rules/branches/main` returned. `never`
+   binds; anything else does not, `pull_requests_only` included, since that is a
+   bypass at the merge itself. Reading only the classic field reports a ruleset
+   gate as absent, because that endpoint 404s where the gate is a ruleset. Ask
+   both sides — a gate binds if either binds — and refuse on a gate that would
+   not apply here: an unattended run has nothing else standing between a red
+   suite and the main branch. Where a side did not answer, this condition is not
+   established; say so rather than reading the silence as a yes or a no. This is
+   also what makes the run able to merge at all: see 6.
 3. `--max-iterations` is set. If the user did not give one, propose twice the
    number of ready tasks plus two, and say that is a rip-cord for a run that gets
    stuck, not a capacity estimate — one round per task is the normal case.

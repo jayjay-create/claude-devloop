@@ -278,6 +278,58 @@ the size of the work.
   unwalked is every branch of it: no session has yet been refused arming and
   reported which of the three it was, and none has hit the missing-rights answer.
 
+  The same day turned up two `mergeStateStatus` values no file carried: on a pull
+  request seven days old it read `UNKNOWN`, and on the second query `BEHIND`.
+  `UNKNOWN` is the computation not yet done rather than a state, so the second
+  reading is the one to use; `BEHIND` is the branch trailing its base, answered
+  by a rebase and a force-push, after which the pull request is `BLOCKED` again
+  and arming is accepted, rather than by handing the merge over. Both are now
+  carried in the three stages that arm and in the merge guard's message, together
+  with the rule that outlives either of them: a value in none of the groups is
+  named rather than filed under the nearest one. `DIRTY` is the one value of the
+  seven still unnamed: the enum was read off the live GraphQL schema on 31 August
+  2026 and carries `DIRTY`, `UNKNOWN`, `BLOCKED`, `BEHIND`, `UNSTABLE`,
+  `HAS_HOOKS` and `CLEAN`, with no `DRAFT` among them, correcting the count this
+  paragraph first carried. All of it is unwalked — no session has read either
+  value out of a live pull request under this wording, and none has met a value
+  it could not place.
+
+  The reading that closes the same hole on the pull request every run has was
+  built the next day. `CLEAN`, `HAS_HOOKS` and `UNSTABLE` were being read as a
+  pull request past its gate, when on a branch pushed a moment ago they are the
+  required check not having started — the window measured on 25 August 2026,
+  `CLEAN` directly after the push and `BLOCKED` five seconds later. The value
+  cannot separate the two and `gh pr view --json statusCheckRollup` can, for both
+  kinds of gate at once: `StatusCheckRollupContext` is a union of `CheckRun` and
+  `StatusContext`, so it sees Actions check runs and older commit statuses alike,
+  where `commits/SHA/check-runs` sees only the first. Measured in
+  `devloop-test-l` on 31 August 2026: `required_status_checks.contexts` read
+  `["checks"]` and the rollup on pull request 14 carried one `CheckRun` of that
+  name — and that pull request stood at `BEHIND`, its `checks` run `COMPLETED`
+  and `SUCCESS` since 24 August, the `BEHIND` case sitting there in the open. A
+  check that has not started is now a wait of ten seconds at a time, bounded at
+  two minutes, and a bound that runs out is said as a gate whose check never
+  registered. Nothing has yet run against any of it.
+
+  The same reading had a second half missing, found on 31 August 2026. Whether a
+  gate binds the account a run works as was read from `enforce_admins` alone —
+  a field on `branches/main/protection`, the endpoint that 404s where the gate is
+  a ruleset. Three skills found a gate from both queries and then decided whether
+  it bound from the one that cannot see half of them, so a ruleset gate came out
+  reported as missing. The ruleset side is `current_user_can_bypass` on
+  `repos/OWNER/REPO/rulesets/RULESET_ID`, the id taken off the rules
+  `rules/branches/main` returns; `never` binds and anything else does not,
+  `pull_requests_only` included, since GitHub describes that actor as able to
+  "bypass any branch protections and merge that pull request". Measured on
+  `github/docs`, where this account holds no admin: two rulesets reached that way,
+  one `Repository`- and one `Organization`-sourced, both answering
+  `current_user_can_bypass: never`, while `bypass_actors` read `null` on the same
+  reply and would have been taken for nobody. The list endpoint does not carry
+  the field at all. So binding now has the shape existence already had — both
+  sides asked, either one binding is a gate, and a side that did not answer said
+  as such rather than counted as a no. Unwalked like the rest of it: no session
+  has met a ruleset gate at all, and the benches carry none.
+
   The install guard's reach was widened the same day, from package-manager verbs
   to the outcome: a build flag or a copy aimed at a bin directory, `sudo`, `make
   install`, and installer scripts piped from the network. None of that has been
