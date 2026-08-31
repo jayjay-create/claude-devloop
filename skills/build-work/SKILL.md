@@ -195,6 +195,12 @@ complete.
 edge, an entry point. The spec names them and the user confirms them; nothing is
 tested at an unconfirmed seam.
 
+**A condition is what a task promises will be true when it is done** — stated so
+that it can be false, and so that breaking it can be seen. The seam says where it
+is checked; the condition says what is checked there. **A check guards a
+condition only where breaking that condition turns the check red**, and a run
+that has not seen that red knows nothing about which of the two it has.
+
 **The nine classes** are format, lint, types, unit, integration, end-to-end,
 secrets, dependencies, code-security. The set is fixed; what varies per project
 is which are `filled`, which are `skipped` with a reason, and which are still
@@ -318,17 +324,23 @@ The subagent:
 2. Works test-first at the seams the spec confirmed, and at no others: the
    failing test, then just enough code to pass it, one slice at a time. Not every
    test up front — that tests imagined behaviour.
-3. Fixes causes, not symptoms. A red check in the unit, integration or
+3. Proves every condition the task names, before reporting it done: the check
+   that guards it goes red when that condition is broken, the red is read for
+   its cause, and it is written down and handed up with the build's report. The
+   section at the end of this step says how, case by case. A condition whose red nobody has
+   seen is unproven, and reporting it as checked is the one defect in this loop
+   that looks exactly like success.
+4. Fixes causes, not symptoms. A red check in the unit, integration or
    end-to-end class does not name its cause, so it goes to `diagnose-bug`
    rather than to a guess — unless it is the deliberately failing test of the
    loop in point 2, which is working as intended. The other six classes print
    their cause in their own output and are fixed directly. If a second defect
    remains after the fix, that is its own defect with its own effect, not a
    leftover of the first.
-4. Commits behaviour changes separately from mechanical ones.
-5. Runs everything `checks.md` lists before reporting done. A report a later gate
+5. Commits behaviour changes separately from mechanical ones.
+6. Runs everything `checks.md` lists before reporting done. A report a later gate
    rejects is not a report.
-6. Never installs anything that lands outside the repository — a compiler, a
+7. Never installs anything that lands outside the repository — a compiler, a
    runtime, a tool from a package manager. That is the user's to run, the same
    way merging is, and a guard blocks it. Report what it installs, what it
    unblocks, and the exact command — and both ways it can go, in the same
@@ -336,7 +348,7 @@ The subagent:
    is an answer too, not a wall**. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
    This is the one thing a task can need that the task itself cannot do.
-7. Writes down anything that changed about running this project locally — a new
+8. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into
    `docs/agents/environment.md`, on this same branch. A command the user has to
    type is a fact about the environment, and it belongs in the file rather than
@@ -365,6 +377,75 @@ live with the skill that owns the file. Writing a row by hand has already
 produced both failures available: a status word that does not exist, and a raw
 shell command in a column that holds a bare target name, which the turn-end hook
 then ran as `make python3 -m unittest ...` and blocked the report.
+
+### Proving a check guards its condition
+
+**Break the condition, watch the check go red, put it back.** That is the whole
+proof, and there is no cheaper one available. Reading the check and judging that
+it covers the condition is exactly the judgement that fails here — it is what a
+run does when it substitutes one check for another and reports done. Coverage
+answers a different question: it says a line ran, not that anything asserted on
+it, and a check with no assertion at all covers everything it touches.
+`setup-checks` step 5 already asks for this red once per target, to establish
+that the target can fail at all. This is the same idiom one level down, once per
+**condition**, to establish which condition it fails for.
+
+Five shapes come up, and they cost different amounts:
+
+- **The check is written in this task.** The red already exists — it is the
+  failing test of point 2 — and all that costs anything is reading it instead of
+  passing through it. It has to be red *because the condition is not met yet*: an
+  import error, a missing fixture, a syntax error, and a command refused before
+  it ran all exit non-zero too, and none of them is evidence about the check.
+  **A check that is green the first time it runs, before the code that satisfies
+  the condition exists, is this defect caught at its cheapest moment.** Do not
+  write the code and look again — the check is the thing that is wrong.
+- **An existing check already covers the condition.** Then this task produces no
+  red anywhere: the check was green before it and is green after it, and nothing
+  in the run tells that apart from a condition nobody checks. Break the condition
+  in the code on purpose, run that check alone, read the red, put the code back —
+  and verify the restoration with `git diff` rather than from memory, because a
+  break left behind is worse than no proof. This is the expensive case: a whole
+  cycle per condition that the task's own work never produced.
+- **The condition cannot be captured as a check at all.** Say so — in the task
+  issue and at the gate, with the reason, the same shape `checks.md` uses for a
+  `skipped` class one level up. What guards it then is step 4's spec lens and the
+  person answering step 5, and unattended there is no person: an unchecked
+  condition is one the unattended gate cannot see, so it is named as that and
+  never filled in with a check that cannot fail. **This is the missing exit that
+  produced the defect** — a step that expects a check, a condition that will not
+  take one, and the only check writable being one that passes whatever the code
+  does.
+- **The task names no condition.** The cut owes every task one, so a task without
+  one is a defect in the cut, and the build does not invent conditions in order
+  to have something to prove. Say the task carries no condition and that nothing
+  here is proven. Where the spec's confirmed seams cover this ground, take the
+  condition from there and say you did; where they do not, file it back against
+  the cut and carry on.
+- **One check guards two conditions.** Then it needs two reds. The proof is per
+  condition and never per check: a check that goes red for one and stays green
+  for the other guards one of them, and a single red reported for both is exactly
+  how a check comes to stand beside a condition instead of on it. Break each one
+  separately.
+
+**Write the proof down where something reads it again.** One line per condition:
+the condition, what was broken, which target was run, and what came back. A proof
+that stays in this subagent's context dies with it, and the run reports green
+either way. So the list travels twice, and neither trip is optional. It comes up
+with the build's report, because step 4's spec lens reads it against the task's
+conditions and there is no pull request yet at that point. Then step 6 writes it
+into the pull request body under the heading `Guarded conditions`, which is where
+it outlives the session — unattended that body is the only record of the proof
+there is, and the review that caught this the first time was read by a person who
+happened to be there.
+
+**What it costs.** One break, one narrow run and one restore, for every condition
+a task names. A condition whose check is written here costs the reading only; a
+condition covered by a check that already existed costs the whole cycle; a check
+guarding two conditions costs two. Where the project has no narrow target and
+only the whole suite can be run, the cycle is a whole suite — say that and pay
+it. Dropping the proof because the target is slow buys back seconds and hands the
+run back its ability to report done on evidence it does not have.
 
 ## Step 4 — Review it
 
@@ -396,7 +477,10 @@ carry on rather than starting again.
 
 ## Step 5 — Hand it to the user
 
-Show the diff and the findings — what was fixed, what was filed. **Then ask, in
+Show the diff and the findings — what was fixed, what was filed — and any
+condition this task left unchecked, with the reason. That last one is what the
+person at the gate is guarding in place of a check, and it does not reach them
+from the pull request body on its own. **Then ask, in
 its own message, one closed question:** whether this should land. Say what each
 answer means — yes lands it, no keeps the branch and takes revisions. Say how a
 yes lands it **here**, read off this repository rather than assumed: the platform
@@ -421,6 +505,10 @@ never removed.
 
 **Only after steps 4 and 5.** If the review has not run, or the user has not
 answered, this step has not started yet. Go back rather than forward.
+
+**The pull request body carries the `Guarded conditions` list from step 3**, one
+line per condition. That is the trip that outlives the session; the one to the
+review has already happened.
 
 **The pull request body names the task it closes**, with a closing keyword —
 `Closes #N` — on a line of its own. That is not decoration. It is the only
