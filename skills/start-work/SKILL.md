@@ -139,6 +139,12 @@ it tells them where they stopped and what comes next.
 If both halves of the query come back empty, say the tracker is clear and ask the
 question on its own.
 
+**Both halves empty is an answer; a query that did not come back is not.** Where
+the command was refused or errored, say so with the command and the message it
+returned, and ask the open question without claiming the tracker is clear — a
+run that reports nothing in flight when it could not look sends the user to
+start work that may already be sitting in a pull request.
+
 **Stop here until they answer — but only where a question was asked.** Nothing
 in flight means a question and a stop. Something in flight means no question,
 so there is nothing to wait for: report where they stopped, say which piece you
@@ -149,6 +155,53 @@ files were written when the project was set up and the template has moved on
 since. Do not improvise a replacement — an invented query that returns something
 plausible is worse than no answer, because nobody can tell it went wrong. Name
 the file, say what is missing, and offer to bring it up to date.
+
+## When a command does not answer
+
+**A command whose output does not come back is reported.** Name the command as
+it was run and the message that came back in its place. One second attempt is
+allowed and needs no announcement; where it answers, the run carries on with
+that answer and reports the first refusal beside it. A silent retry is what lets
+a run come out looking clean while a step of it never ran — measured on 31
+August 2026: a command refused by the runtime's permission check, whose message
+asks in so many words for a pause and an explanation of what the permission is
+for, repeated without a word, answered the second time, and named in no report
+until a question about something else turned it up. The refusal itself is
+nothing this workflow decides and nothing to apologise for. Hiding it is the
+defect.
+
+**Nothing is concluded from an answer that did not come.** Where the output
+would have decided something — the state of a pull request, whether a gate
+exists, whether a check passed — silence decides nothing, and it is not the
+nearest value in the list. Say the query did not answer, name the command and
+the message, and stop short of the conclusion rather than picking the case that
+lets the run carry on. Never substitute a different command without saying that
+the first one did not answer. Where the user is there, hand it over as something
+they can act on: the permission is theirs to grant and the command theirs to
+run.
+
+**An empty answer is not silence.** A command that ran and returned nothing has
+answered — no match, no open issue, an empty list, a clean working tree — and
+that is evidence, used as evidence: every negative this workflow states rests on
+such a command. The line runs between an answer that is empty and an answer that
+never came, and the test is whether emptiness is one of the answers the question
+has: a list can be empty, while a field every object of its kind carries cannot
+come back absent, so nothing where a value was asked for is the read having
+failed rather than the object lacking one. An error is an answer too, read for
+what it says — a 404 whose body reads "Branch not protected", a check that comes
+back red, a push that was rejected. None of those is a command that did not
+answer.
+
+**A guard's refusal is one of these, and its message says what to do**; doing
+that is the report. A re-read a skill prescribes is not a second attempt either:
+waiting ten seconds for a value that moves is an instruction being followed, not
+a command being retried.
+
+**With nobody there to tell, the report is still written.** An unattended run
+has no one to explain a permission to, so the command and the message go into
+its own report and it stops there, rather than carrying on past a step that did
+not run. That a permission prompt appeared at all is a finding in itself: the
+tool classes the run needed were not all approved before it started.
 
 ## Step 3 — Judge what they asked for
 

@@ -102,6 +102,51 @@ If a skill you call does not exist, say so — do not silently substitute anothe
 If a background agent fails to return, say so — do not present a comparison that
 is quietly one draft short. Both happened repeatedly and went unmentioned.
 
+**And when a command gives no answer at all, that is the same rule one layer
+down.** A command whose output does not come back is reported: the command as it
+was run, and the message that came back in its place. One second attempt is
+allowed and reporting is not owed twice — where the second answers, the run
+carries on with that answer and names the first refusal beside it. What is not
+allowed is the silent retry, because it costs nothing to make and hides that a
+step ran once without an answer. Measured on 31 August 2026 in a test project: a
+command was refused by the runtime's permission check — not the platform, and the
+message asks in so many words for a pause and an explanation to the user of what
+the permission is for — the run repeated it without a word, got an answer the
+second time, and mentioned the refusal in no report. It came out on a question
+about something else. The refusal is not this workflow's to prevent. The silence
+is, and it is the whole finding.
+
+**A missing answer is its own outcome, and no enumeration has a case for it.**
+Where the output would have decided something, silence decides nothing: it is
+not the nearest value, not the safest-looking case, not the one that lets the run
+carry on. This is the same shape as **A field is not an answer to a question it
+was not asked** — there a value was read for something it does not say, here
+nothing was read at all — and it is worse in one respect, because a run that
+reasons from a missing value has no wrong reading to point at afterwards. So the
+run says the query did not answer, names the command and the message, and stops
+short of the conclusion. Where the state was going to decide an action, the
+action does not happen: nothing is armed, nothing is declared past its gate,
+nothing is reported clear. Where a person is there, the report goes to them as
+something they can act on — the permission is theirs to grant and the command
+theirs to run — and where nobody is, it goes into the run's own report and the
+run stops there. A permission prompt in an unattended run is a second finding on
+its own: the tool classes were not all approved before it started.
+
+**An empty answer is not a missing one, and this is the line that gets crossed.**
+A command that ran and returned nothing has answered — no match, no open issue,
+an empty ruleset list, a clean working tree — and this workflow rests on exactly
+such commands: **Before telling the user something is missing, search for it**
+asks for a negative backed by the command that came back empty. The test is
+whether emptiness is one of the answers the question has. A list can be empty. A
+field every object of its kind carries cannot come back absent — every pull
+request has a `mergeStateStatus`, so nothing where that value was asked for is
+the read having failed, not the pull request lacking a state. An error is an
+answer too, and it is read for what it says rather than counted as silence: a 404
+whose body reads "Branch not protected", a check that comes back red, a rejected
+push. A guard blocking a command is a missing answer whose message already says
+what to do, and doing that is the report. A re-read a skill prescribes — ten
+seconds for a value that moves — is an instruction being followed, not a retry.
+
 **Record what was decided against.** A rejected option that leaves no trace gets
 rediscovered and proposed again as new, and the reason it was rejected has to be
 worked out a second time. `docs/roadmap.md` has a section for it. Write the
@@ -490,6 +535,18 @@ A list read as exhaustive turns every value its author did not know about into a
 confident wrong sentence, and the enumeration that had four values in it had been
 read that way for a week.
 
+**And no value at all is not the eighth entry.** The list is a list of answers,
+so a read that came back with nothing is outside it altogether — not `UNKNOWN`,
+which is an answer GitHub gave about a computation it had not finished, and not
+the unplaceable value above, where the pull request was read and only the name
+was unknown. Every pull request carries a `mergeStateStatus`; nothing coming back
+is a fact about the query. The three stages that arm read it once more and, where
+that is empty too, do not arm at all: the rule is to read the state immediately
+before the mutation, and there is no state to have read. This came out of the run
+of 31 August 2026 above — the refused command answered on its second attempt, and
+had it been refused again the run would have stood in front of a state with no
+value and an enumeration with nowhere to put it.
+
 **`allow_auto_merge` cannot say whether there is a gate.** It says whether
 auto-merge is permitted on the repository and nothing else. Measured on 30 August
 2026: in a repository with a required check and in one without, the field read
@@ -685,6 +742,12 @@ bottom. Twelve lines of output, all reading 2, means none of them lost its
 closing copy:
 
     for f in skills/*/SKILL.md; do grep -c 'Answer in the language the user writes in' "$f"; done
+
+The same for the block on running commands, which is in all twelve. It has a
+heading after it in some files and a separator in others, so the extract is taken
+by length rather than by what follows it:
+
+    for f in skills/*/SKILL.md; do grep -A45 '^## When a command does not answer' "$f" | cksum; done | sort -u
 
 The same for the block on asking, in the six skills that ask anything:
 
