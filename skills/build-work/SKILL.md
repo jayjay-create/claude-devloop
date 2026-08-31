@@ -364,27 +364,69 @@ flag whenever the pull request is already mergeable — including where checks
 exist and are red, as long as none of them is required — and then performs the
 merge itself. The command reads as authorised and the merge is the agent's.
 
-Arming can be refused, and the two reasons mean different things. Read which one
-it is (`gh api repos/OWNER/REPO -q .allow_auto_merge`) rather than inferring it
-from the error text. Neither is a fault, and neither stops the stage:
+**Read `mergeStateStatus` immediately before arming**, in the same breath as the
+mutation and not earlier:
 
-- **Auto-merge switched off at the repository.** A setting, not something a
-  build step changes. Say so and ask the user to switch it on.
-- **Nothing for it to wait on** — no required check, no required review, so the
-  pull request is already mergeable and there is no platform gate here at all.
-  Say that in one clause rather than leaving it implied: what lands this change
-  is the answer given at the end of step 5, and nothing on the platform will
-  look at it.
+    gh pr view --json mergeStateStatus -q .mergeStateStatus
 
-Either way the merge itself is still not yours to perform. Give the user the one
-command that lands it, say the stage picks up as soon as they say it has, and
-do not
-present it as something having gone wrong. What went wrong in the past was the
-framing and the timing — a run stopping mid-task, over a change nobody asked
-for, as though it had hit an error.
+It moves within seconds of the push, and it is the one thing that says whether
+arming can be accepted at all. `BLOCKED` means something is still outstanding and
+GitHub will arm. `CLEAN`, `HAS_HOOKS` or `UNSTABLE` mean the pull request can
+already be merged, and GitHub refuses to arm what it would merge on the spot.
+
+Arming can be refused for three different reasons, and they mean different
+things. `gh api repos/OWNER/REPO -q .allow_auto_merge` answers the first and no
+more: it says whether auto-merge is permitted on the repository, not whether
+there is a gate to wait on at this moment. Measured on 30 August 2026, it read
+true in a repository with a required check and in one without alike, so a run
+that tells the other two apart by that field is reading a field that cannot
+answer the question. None of the three is a fault, and none stops the stage:
+
+- **Auto-merge switched off at the repository** — `allow_auto_merge` is false. A
+  setting, not something a build step changes. Say so and ask the user to switch
+  it on.
+- **No gate at all** — no required check, no required review, so the pull request
+  is already mergeable and there is no platform gate here. Say that in one clause
+  rather than leaving it implied: what lands this change is the answer given at
+  the end of step 5, and nothing on the platform will look at it.
+- **A gate this pull request is already past** — there is a required check, it
+  has gone green, and nothing is outstanding any more. The refusal reads the same
+  as the one above and means the opposite. Saying "no platform gate here" in a
+  repository that has one is a false statement about the repository, and it is
+  why this third branch exists.
+
+The last two are told apart by two readings, and both are needed. The state:
+`mergeStateStatus` from immediately before the attempt — a mergeable status with
+a gate present is the third case. The gate: no single query sees every kind of
+gate, so ask both.
+
+- `gh api repos/OWNER/REPO/branches/main/protection` sees classic branch
+  protection. It does not see a gate set through a ruleset, and it needs admin on
+  the repository, so a 404 on its own is ambiguous. Read the message in the body:
+  only "Branch not protected" means there is really no protection. Any other
+  message — a rights refusal above all — means this query did not answer.
+- `gh api repos/OWNER/REPO/rules/branches/main` sees rulesets, at repository and
+  organisation level, and needs no special rights. It does not see classic
+  protection: measured on 30 August 2026, a repository with classic protection
+  and the required check `checks` returned an empty list here.
+
+A gate found by either one is a gate. Only both coming back negative — a body
+that really says "Branch not protected", and an empty ruleset list — means there
+is none. Where neither query answered because the rights were missing, say that:
+the run does not know which case this is, and naming one anyway is the failure
+this replaced.
+
+In all three the merge itself is still not yours to perform. Give the user the
+one command that lands it, say which case it was, and say the stage
+picks up as soon as they say it has landed. Do not present it as something having
+gone wrong. What went wrong in the past was the framing and the timing — a run
+stopping mid-task, over a change nobody asked for, as though it had hit an error.
 
 In unattended mode there is nobody to hand it to. A refusal there is a stop with
-the reason named, which start condition 6 exists to make unreachable.
+the reason named. Start condition 6 makes the first two unreachable; it cannot
+touch the third, which is a state of one pull request and not a property of the
+repository. Name that one for what it is — the gate is there and this pull
+request is already past it — and do not report it as a missing gate.
 
 Then check **once** whether it landed — do not poll in a loop. If it has not,
 say what it is still waiting on and offer the next step; do not block the session.
@@ -447,9 +489,14 @@ checks — only the gate differs.
    nobody is watching cannot answer a permission prompt.
 6. The repository can actually merge without a person. Two things have to hold,
    and `environment.md` records both: auto-merge is enabled
-   (`gh api repos/OWNER/REPO -q .allow_auto_merge`), and a required check exists
-   for it to wait on (`gh api repos/OWNER/REPO/branches/main/protection`, where
-   a 404 means none). Without the second there is nothing to arm: the platform
+   (`gh api repos/OWNER/REPO -q .allow_auto_merge`), and a gate exists for it to
+   wait on. The second takes both queries from step 6, for the reason given
+   there: `gh api repos/OWNER/REPO/branches/main/protection` is blind to rulesets
+   and needs admin, so only a body reading "Branch not protected" means none, and
+   `gh api repos/OWNER/REPO/rules/branches/main` is blind to classic protection.
+   A gate found by either is a gate. Where neither query answered, the rights are
+   missing and this condition is not established — say so rather than reading the
+   silence as a yes or a no. Without a gate there is nothing to arm: the platform
    has no gate to hold the pull request, performing the merge is not the agent's
    to do, and nobody is present to do it by hand — the run would build a task
    and then sit on a pull request forever.
