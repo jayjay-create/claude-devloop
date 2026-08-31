@@ -36,12 +36,20 @@ else" worked on the first try.
 ## Shared words are defined in one place
 
 A word two skills lean on has to be defined somewhere both of them read, or the
-one that did not get the definition guesses. Two carry real weight here.
+one that did not get the definition guesses. Three carry real weight here.
 
 **A seam is a place where this work will be checked** — a function boundary, a
 module edge, an entry point. The spec confirms them; nothing gets tested at an
 unconfirmed seam, and a test at one is a review finding. Every skill that builds
 or reviews works to that list.
+
+**A condition is what a task promises will be true when it is done** — stated so
+that it can be false, and so that breaking it can be seen. The seam says where it
+is checked; the condition says what is checked there. A check guards a condition
+only where breaking that condition turns the check red, which is why the build
+produces that red rather than judging the check by reading it. The cut writes the
+conditions, the build proves them, the review reads the proofs, so all three
+carry the definition.
 
 **A class is one of the nine kinds of check** this workflow tracks: format, lint,
 types, unit, integration, end-to-end, secrets, dependencies, code-security. Nine

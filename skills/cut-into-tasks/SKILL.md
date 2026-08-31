@@ -48,6 +48,12 @@ the file, say what is missing, and offer to bring it up to date.
 edge, an entry point. The spec names them and the user confirms them; nothing is
 tested at an unconfirmed seam.
 
+**A condition is what a task promises will be true when it is done** — stated so
+that it can be false, and so that breaking it can be seen. The seam says where it
+is checked; the condition says what is checked there. **A check guards a
+condition only where breaking that condition turns the check red**, and a run
+that has not seen that red knows nothing about which of the two it has.
+
 ## When a command does not answer
 
 **A command whose output does not come back is reported.** Name the command as
@@ -184,7 +190,14 @@ add the new thing beside the old, move callers in batches, delete the old last.
 - **Solution** — what to build, concretely enough to start. Interfaces and
   signatures where the spec fixed them.
 - **Test decisions** — which of the spec's confirmed seams this task is checked
-  at, and what is covered there.
+  at, and the conditions checked at each, one line apiece. **A condition is
+  written so that it can be false**: "rejects an empty input with an error", not
+  "unit tests at the parser boundary". The second is a scope, and a scope cannot
+  be broken — the build proves each condition by breaking it and watching the
+  check go red, and a scope leaves it nothing to break. Where a condition belongs
+  to this task and cannot be captured as a check at all, say that here with the
+  reason, rather than leaving the build to discover it and fill the hole with a
+  check that cannot fail.
 - **Demonstrable as** — how someone sees that it works.
 - **Out of scope** — what this task does not do, pointing at the spec or the
   task that does it.

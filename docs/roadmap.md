@@ -561,6 +561,121 @@ the size of the work.
   the edit tool would be wrong wherever the shell is the right instrument, and
   which of the two a given change wants is not something this file can decide in
   advance.
+- **A check that could not fail was accepted in place of the one the task named,
+  and that was measured on 30 August 2026.** In a test project: a task under a
+  spec named its check, the build wrote a different one, the whole chain came
+  back green, and the task was reported done. The review found it — a lens broke
+  the code on purpose and the chain stayed green — so the work was built against
+  one condition and checked against another. **Nothing in the run said so at any
+  point.** A substituted check does not announce itself; it looks exactly like
+  success, and unattended the review's report is read by nobody. That is what
+  makes this the worst of the three findings from that day rather than the
+  largest.
+
+  The question was what a run can read to tell a check that guards a condition
+  from one that merely stands beside it. Three answers were available and two of
+  them are not evidence. **Reading the check and judging that it covers the
+  condition** is the judgement that already failed — it is exactly what a run
+  does while substituting. **Coverage** answers a different question: it says a
+  line ran, not that anything asserted on it, and a check with no assertion at
+  all covers everything it touches. What is left is the idiom this repository
+  already uses one level up, in `setup-checks` step 5 for a target: break it on
+  purpose, watch it go red, put it back. Now once per **condition** rather than
+  once per target, which is the difference between "this target can fail" and
+  "this target fails for this condition".
+
+  **It is the expensive answer and it is the only one, so the cost is named
+  rather than hidden.** One break, one narrow run and one restore for every
+  condition a task names. Where the check is written in the task the red already
+  exists — test-first produces it — and only the reading is new. Where an
+  existing check already covers the condition, the task produces no red at all
+  and the whole cycle is extra. Where one check guards two conditions it is two
+  cycles, because a check that goes red for one and stays green for the other
+  guards one of them. Where the project has no narrow target, the cycle is a
+  whole suite.
+
+  Five shapes were walked before the wording was written, and four of them moved
+  it:
+
+  - **A condition whose check is written here** already had its red, in
+    `build-work` step 3 point 2, and nothing said to read it. An import error, a
+    missing fixture and a command refused before it ran all exit non-zero too.
+    Worse, the point after it exempts that red from diagnosis by name, so an
+    unread red was in order. The wording now asks what the red says, and names
+    the cheapest catch there is: a check green the first time it runs, before the
+    code exists, is the substitution showing itself.
+  - **A condition an existing check already covers** was the hole the measured
+    defect sat in. That task produces no red anywhere, and nothing in the run
+    distinguished it from a condition nobody checks. This is the branch that
+    costs the full cycle.
+  - **A condition that cannot be captured as a check at all** had no legitimate
+    exit. `checks.md` has `skipped: <reason>` for a class; the task level had
+    nothing, so a step expecting a check, a condition that will not take one, and
+    a run that must report done produce the check that cannot fail. There is now
+    an exit, and it is named in the task issue and at the gate — where unattended
+    there is nobody, which is stated rather than implied.
+  - **A task naming no condition** is a defect in the cut, and the build now says
+    so instead of inventing one. This turned out to be the common case in
+    disguise: `cut-into-tasks` asked for "what is covered there", which a scope
+    satisfies — "unit tests at the parser boundary" — and a scope cannot be
+    broken. The rule would have had nothing to bite on. Conditions are now
+    written so they can be false.
+  - **One check guarding two conditions** breaks any rule phrased per check: one
+    red, counted once, and the second condition unguarded. The proof is per
+    condition.
+
+  And one thing all five needed: **the proof has to be written where something
+  reads it again.** A proof living in the build subagent's context dies with it
+  and the run reports green either way — which would have reproduced this same
+  finding one level up, since what caught it the first time was a review a person
+  happened to read. So the list travels twice: up with the build's report, which
+  is what the review reads, and into the pull request body under `Guarded
+  conditions`, which is what outlives the session. Writing the first draft with
+  only the second trip in it put the list in a pull request that does not exist
+  until two steps after the review that has to read it.
+
+  Every route reaching this situation was looked at, with `grep -rn 'test-first|
+  failing test|just enough code|Test decisions' skills docs README.md` and
+  `grep -rni 'cannot fail|able to fail|always passes'`. Three carry the change:
+  `cut-into-tasks` writes the conditions, `build-work` step 3 proves them, and
+  `review-changes` reads the proofs in its spec lens. Two were read and needed
+  nothing. `setup-checks` step 5 is the class-level proof this is modelled on and
+  is untouched. `diagnose-bug` writes a failing test too, and its steps already
+  read "watch it fail" then "watch it pass" — the code is broken before the test
+  is written there, so the break is the bug and the proof is built in.
+
+  All of it is unwalked. No build has produced a `Guarded conditions` list, no
+  review has read one, and the expensive branch — breaking a condition an
+  existing check covers — has never been run.
+- **The glossary stayed empty while the work coined two terms, and that was
+  measured on 30 August 2026.** `docs/agents/domain.md` is where a project keeps
+  its glossary, `CLAUDE.md`'s pointer block names it, and two skills say a term
+  goes in the moment it resolves. Neither of them was running: the terms were
+  coined during the build, between the spec and the merge, and no step on that
+  path writes the file. `grep -rn 'domain.md' skills/ hooks/ docs/ README.md`
+  returns `setup-project`, `plan-work`, `untangle-idea` and `diagnose-bug`, and
+  the last of those only reads it. `build-work`, `cut-into-tasks` and
+  `review-changes` do not mention the file or the word at all.
+
+  A fix costs one sentence in the build stage — a term this task introduced goes
+  into `domain.md` on the same branch, the way a changed run command already goes
+  into `environment.md` there — plus one line in the review's standards lens for
+  the ones that slip past it. Recorded, not built.
+- **A run split its findings into fixed and filed without saying what separates
+  them, and that was measured on 30 August 2026.** After the review it announced
+  it would fix the obvious defects and file the rest as issues, and named no
+  criterion for the split. Both skills carry one: `build-work` step 4 and
+  `review-changes` under "What happens to a finding" — fix now where the fix is
+  obvious and revisits nothing that was decided, file where fixing it would
+  revisit a design decision, change an interface, or exceed the task. So the rule
+  was there and the sentence was not, which is the shape two bullets above
+  already have: a step that asks for a sentence, and a run that reaches the right
+  decision without ever saying it. Unstated, it is the announcement the user
+  would have had to disagree with before the issues existed.
+
+  A fix costs one clause at each of the two sites — name the criterion per
+  finding as the split is announced — and changes no decision, only what gets
+  said. Recorded, not built.
 
 
 ## Decisions taken against

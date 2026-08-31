@@ -51,6 +51,12 @@ the file, say what is missing, and offer to bring it up to date.
 edge, an entry point. The spec names them and the user confirms them; nothing is
 tested at an unconfirmed seam.
 
+**A condition is what a task promises will be true when it is done** — stated so
+that it can be false, and so that breaking it can be seen. The seam says where it
+is checked; the condition says what is checked there. **A check guards a
+condition only where breaking that condition turns the check red**, and a run
+that has not seen that red knows nothing about which of the two it has.
+
 ## When a command does not answer
 
 **A command whose output does not come back is reported.** Name the command as
@@ -126,6 +132,15 @@ Compare against the task issue and the spec it belongs to. Look for: requirement
 not met, behaviour that contradicts a stated decision, work nobody asked for,
 tests at seams the spec did not confirm, and tests that would pass whatever the
 code did.
+
+**Read the task's conditions one by one against the `Guarded conditions` list the
+build hands up** — the condition, what was broken, which target ran, what came
+back. On a pull request that already exists, the same list is in its body. A condition with no entry is a finding, and so is an entry whose red
+came from somewhere other than the broken condition: an import error, a missing
+fixture, a command refused before it ran. A missing list is itself the finding,
+not a reason to skip this. This lens is where a check standing beside its
+condition was caught the last time, by a reviewer breaking the code by hand; the
+list is what makes that reading cheap instead of lucky.
 
 ## The lenses that run when they apply
 

@@ -115,7 +115,10 @@ analysis of your own code.
 Filling all nine is not the goal. A class that does not apply to your project is
 recorded as skipped, with the reason. Two rules hold throughout: a check target
 renders a verdict and changes nothing, and it must be proven able to fail before
-it counts as configured.
+it counts as configured. The same proof is asked of each task: every condition a
+task names is broken on purpose once, to see the check that guards it go red, and
+what came back is written into the pull request. A check that cannot fail looks
+exactly like a check that passes.
 
 Hooks run without being asked: the check suite after every file change and at
 the end of every turn, and a guard that blocks file writes, `git commit` and
