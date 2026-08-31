@@ -193,7 +193,25 @@ prediction — it belongs in the diagnosis, not instead of it.
 ## Step 2 — Pick the next task
 
 Run the readiness query from `docs/agents/issue-tracker.md`. Ready means: open,
-and zero open blockers.
+zero open blockers, **and no open pull request already closing it**.
+
+**A task with an open pull request is not ready — it is built.** Its work is
+sitting in a pull request that has not landed, and the task issue stays open
+until that merges, so without the third condition the query hands the same task
+straight back and the build does it twice. That is not a rare shape: it is where
+every session that ends at the merge handover leaves the project. The query
+reports `open pull requests:` per task for exactly this. Say which pull request
+it is and that it is waiting to land, and take the next task — or, where it was
+the only one, say the spec is waiting on that merge rather than on a build.
+
+Read that off each pull request's own `state`, never off the argument that looks
+like it answers: `closedByPullRequestsReferences` defaults to
+`includeClosedPrs: false`, and merged pull requests come back all the same —
+measured on 31 August 2026 in `devloop-test-l`, where three long-closed tasks
+returned pull requests 7, 11 and 13, every one of them `MERGED`. The query in
+`issue-tracker.md` filters on `state == "OPEN"`; a hand-written one that trusts
+the argument name counts every task ever built as still in flight and stops the
+build dead.
 
 - **Exactly one ready** — build it.
 - **Several ready** — list them with what each unblocks, then take the one that
@@ -350,6 +368,18 @@ never removed.
 
 **Only after steps 4 and 5.** If the review has not run, or the user has not
 answered, this step has not started yet. Go back rather than forward.
+
+**The pull request body names the task it closes**, with a closing keyword —
+`Closes #N` — on a line of its own. That is not decoration. It is the only
+queryable link between this work and its task, and three stages read it: the
+readiness query above uses it to know the task is built, and the entry point and
+the planning stage use it to say which work an open pull request belongs to. A
+branch named `task-N-…` is not that link — it is a string this workflow happens
+to write, and nothing outside it does. Without the keyword the task looks
+unbuilt and the pull request looks unattached, both silently. Measured on 31
+August 2026 in `devloop-test-l`: task 4 was built and merged through this
+workflow and carries no reference at all, in either direction, because nothing
+here had ever said to write one.
 
 **Never merge yourself.** Open the pull request, then arm the platform with a
 command that cannot merge:
@@ -544,6 +574,11 @@ a guessed list drops new files silently. Add paths explicitly, never with `-A`.
 Query again **before you say anything about what is left**. One ready task:
 continue. Several: ask. None: stop. Whatever you knew before the merge is stale
 by definition — the merge is what changed it.
+
+A pull request that has not landed keeps its own task out of that answer, which
+is the point rather than a gap: the task is built, and the query is what stops
+it being built again. If that leaves nothing ready, say the spec is waiting on
+that merge and say which pull request it is.
 
 ## Unattended mode
 

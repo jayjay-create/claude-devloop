@@ -60,9 +60,36 @@ no repository findings, no offer to set anything up.
 
 **If the status line says the project is set up**, skip the introduction. Run the
 in-flight query from `docs/agents/issue-tracker.md` and say what it found, in at
-most four lines. **Name the work; do not number it.** Someone back after a week
+most five lines. **Name the work; do not number it.** Someone back after a week
 remembers what they were building, not that it was issue nine.
 
+- **An open pull request comes first**, ahead of every issue. It is work that is
+  built and has not landed — closer to done than anything else on the list, and
+  the one thing that must not be started a second time. That is the ordinary end
+  of a session, not an exception: a build opens the pull request and then hands
+  the merge over, and nothing moves until the user says it has landed. Name it
+  by title and say which of these it is, read off the query's own columns and
+  not off its branch name:
+  - **`mine: true`, not a draft, `closes:` an open issue** — built, and waiting
+    to land. This is the normal case.
+  - **`mine: true`, and the issue it closes reads `CLOSED`** — the two
+    disagree. Say so. The pull request is the part that has not landed, and a
+    closed issue is not evidence that it did.
+  - **`draft: true`** — built and not offered yet. It is neither waiting on a
+    merge nor finished, and saying either of those about it is wrong.
+  - **`mine: false`** — somebody else opened it. Report it and leave it, the way
+    a loose issue from outside is reported and left: do not take it up, do not
+    offer to land it, do not count it as the work in flight.
+  - **`closes: -`** — it names no issue. Say it is open and that it does not say
+    which work it belongs to. Do not read its branch name as the answer: a
+    branch named after a task is a string this workflow writes, and a pull
+    request from anywhere else carries whatever its author chose.
+  - **Several at once** — name them, ready ones before drafts and yours before
+    anyone else's. Past three or four, name the newest and say how many others
+    there are, the same as for loose issues.
+  - **None** — say nothing about pull requests at all and carry on down this
+    list. Silence is the report here; a line saying there are none spends one of
+    five on nothing.
 - A spec with open tasks: its title, and how far it got — two of five tasks
   done reads as progress; "has open tasks" reads as a warning.
 - A planning left unfinished: its title, and which stage it last got through —
@@ -73,7 +100,19 @@ remembers what they were building, not that it was issue nine.
   four, name the newest and say how many others there are.
 
 **If nothing is in flight**, ask the same open question: what would they like to
-build?
+build? Nothing in flight now means both halves of the query empty — no open
+issue and no open pull request.
+
+**If an open pull request of yours is waiting to land, that comes before all of
+it.** It is one command from done and nothing else on the list is, and starting
+something new leaves it sitting there for another week. Say it is waiting and
+offer to land it. On a yes, that is `build-work` at step 6 and nothing before
+it — their yes here is the gate, rather than an inference about what some
+earlier session did before opening it. On a no it stays open and nothing is
+lost, because the state is in the tracker and in git; say so, take the next
+thing on the list, and say which. **A draft is not this case** — it was never
+offered, so there is nothing to land, and it is reported and left where it is.
+**Neither is one that reads `mine: false`** — that is somebody else's to land.
 
 **If a map or a spec is in flight, do not ask a question at all.** Name the free
 tickets or tasks by title, say which one comes next and what it unblocks, in one
@@ -97,8 +136,8 @@ it tells them where they stopped and what comes next.
   That is the paragraph above, and none of the three refusals in the case above
   apply here.
 
-If the query comes back empty, say the tracker is clear and ask the question on
-its own.
+If both halves of the query come back empty, say the tracker is clear and ask the
+question on its own.
 
 **Stop here until they answer — but only where a question was asked.** Nothing
 in flight means a question and a stop. Something in flight means no question,
@@ -134,6 +173,10 @@ the user to run it.
 Which stage you enter depends on what step 2 found, and getting it wrong costs a
 skill load and a correction the user watches happen:
 
+- **An open pull request of yours they said to land** — nothing new starts on
+  top of it. `build-work` picks up at its step 6, which is where reading the
+  gate, arming the platform and handing the merge over already live; none of it
+  is repeated here.
 - **A ready task under a finished spec** — no planning is left to do. Go
   straight to `build-work`.
 - **A planning left unfinished** — `plan-work` picks it up at the stage its

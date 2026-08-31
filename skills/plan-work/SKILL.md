@@ -49,6 +49,34 @@ since. Do not improvise a replacement — an invented query that returns somethi
 plausible is worse than no answer, because nobody can tell it went wrong. Name
 the file, say what is missing, and offer to bring it up to date.
 
+## Before anything: what is already built
+
+**Run the in-flight query from `docs/agents/issue-tracker.md` — the whole
+command, both halves.** Not only the label query below. An open pull request is
+work that is already built and has not landed, and it is the one thing a fresh
+plan must never be written on top of. Measured on 31 August 2026 in a test
+project, twice in a row: a run asked only for open issues, reported that nothing
+was open, and opened a planning issue for work whose finished pull request was
+sitting open against the very issue it duplicated.
+
+Read it off the query's own columns, never off a branch name — a branch named
+after a task is a string this workflow writes, and a pull request from anywhere
+else carries whatever its author chose.
+
+- **A pull request whose `closes:` names the issue this work is about** — the
+  work is built, not unplanned. Name it, say it is waiting to land, and stop.
+  Do not open a planning issue for it and do not plan it again. Offer to land
+  it instead; on a no it stays open, nothing is lost, and say what you are doing
+  next.
+- **The same, but `draft: true`** — built and not offered yet, so there is
+  nothing to land. Say that, and ask whether this is the same work before
+  writing anything into the tracker.
+- **`closes: -`** — it names no issue, so it cannot say what it belongs to. Ask
+  whether it is this work. That question has no right answer to look up, which
+  is what makes it one.
+- **`mine: false`** — somebody else opened it. Report it and carry on; it is not
+  this work and not yours to land.
+
 ## The planning issue
 
 **At the start**, before Stage 1, there has to be a planning issue.
@@ -58,6 +86,11 @@ use that one rather than creating a duplicate. Copy its current body into a
 comment first, so nothing anybody wrote disappears, then replace the body with
 the placeholder. Otherwise create a fresh issue, titled after the work in the
 user's own words.
+
+**An issue that an open pull request already closes is not an issue to plan
+into.** Its work is built and waiting to land, so replacing its body with the
+placeholder buries a finished piece of work behind a line saying the spec is
+still being written. Say what is there and stop, the same as above.
 
 Either way the body is one line saying the spec is still being written, and the
 label is `being-planned`. Nothing acts on a `being-planned` issue —
@@ -74,7 +107,12 @@ stage comments stay — they are the record of how the spec was arrived at.
 
 ### Picking up an interrupted plan
 
-Before Stage 1, ask the tracker for open issues labelled `being-planned`.
+Then, still before Stage 1, ask the tracker for open issues labelled
+`being-planned`. This is the second half of the stock-take and not the whole of
+it — the label sits on a planning issue, so an empty answer says only that no
+plan was left half-written, and says nothing whatever about work that is already
+built. Reporting "nothing open" off this query alone is how the run above came
+to duplicate an issue.
 
 - **None** — start fresh.
 - **Exactly one** — name its title and ask whether this is the same work or
