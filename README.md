@@ -196,10 +196,13 @@ to be said, describe what it must cover and let the model write it.
 Both already fixed in the skills, kept here so the same shape of bug does not
 come back in a different file.
 
-- A hook that gates on a state file's existence must have that file **deleted**
-  when the state it tracks ends — never overwritten with a "finished" status.
-  The hook checks presence, not content, so a status field left behind still
-  reads as "in progress" to the next ordinary turn.
+- A state file with no reader is not a safeguard, however carefully it is kept.
+  The unattended mode wrote its round count and its cap into one, and this
+  document described the hook that would read it. No such hook was ever built,
+  so the run that wrote the file was also the only thing that read it — and it
+  raised its own cap in the same write that advanced the count. Either something
+  else reads the file or the file goes, because a run cannot be the reader of
+  its own limit.
 - A step that depends on a precondition (a remote, a permission, a tool) must
   refuse and stop when that precondition is missing, not fall back to a
   locally-equivalent action that quietly breaks one of the workflow's own rules

@@ -449,12 +449,12 @@ plugin's one-time setup, not to a per-project run.
 
 ## Step 5 — Canonical targets in the task runner
 
-This workflow keeps two files of local state under `.claude/`:
-`autorun.local.md`, written by an unattended run, and `check-attempts.local`,
-written by the turn-end hook. Neither belongs in the repository. Make sure
-`.gitignore` covers them — add the two paths if it does not, create the file if
-there is none — and do it here, where both are known, rather than leaving a
-later step to notice.
+This workflow keeps one file of local state under `.claude/`:
+`check-attempts.local`, written by the turn-end hook, which is also the only hook
+that reads a file of its own. It does not belong in the repository. Make sure
+`.gitignore` covers it — add the path if it does not, create the file if there is
+none — and do it here, where it is known, rather than leaving a later step to
+notice.
 
 
 These names mean the same in every project, so a skill can say `make lint` and be
