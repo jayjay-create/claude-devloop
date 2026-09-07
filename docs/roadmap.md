@@ -1090,8 +1090,36 @@ the size of the work.
   That costs more, and those costs belong in the cost list at the moment the mode
   is offered — but only once the rule exists, since a list naming a cost the run
   does not yet incur is wrong in the other direction.
-  A fix costs one sentence where the lenses are picked and one clause in that cost
-  list. Recorded, not built.
+
+  **Built on 7 September 2026.** One sentence under "The lenses that run when
+  they apply" in `review-changes`: unattended, a stated reason buys no exception —
+  where the trigger is in the diff the lens runs, and the reason is a judgement
+  standing where the diff was supposed to decide. The sentence above it is
+  unchanged and no latitude was added to the attended mode; what the new sentence
+  says about it is only that a judgement there reaches somebody who can
+  contradict it. The clause went into the cost list at `setup-checks` step 8 in
+  the same change, phrased in the words that list already speaks — every review
+  runs every angle the change touches, and that costs more than the same review
+  with the user there. **It carries no figure and says why it carries none:** five
+  angles over one task and three over two others is the defect, not a rate. The
+  general form is in `docs/skill-conventions.md` under "A reason is not the
+  evidence the rule asked for", together with the finding below, which has the
+  same shape.
+
+  **The record itself was the weaker half, and that is its own finding.** The 30
+  August entry above says five lenses ran as background agents, the sixth was left
+  out, and the reason was given. It does not say **which** lens, or whether its
+  trigger stood in the diff. So it reads two ways that lead opposite places: a
+  latitude recorded approvingly, or the rule working exactly as written — the
+  change carried no schema or stored-format edit, the data-migration lens did not
+  apply, and that was said. The second is the nearer reading and the entry cannot
+  settle it. Writing this up nearly bought a loosening of the attended rule that
+  nobody had decided, off an entry that never claimed it.
+  Should hold: an entry recording a lens left out names the lens and says whether
+  its trigger was in the diff. Without those two, it is not evidence of anything
+  and the next reader has to guess which way it went. This is the general case of
+  what `docs/skill-conventions.md` already asks of a measurement, applied to the
+  half that records an omission rather than an act.
 
 - **Every review finding fixed on the spot, none raised as an issue, on a
   criterion invented as it went, measured on 6 and 7 September 2026.** The
@@ -1106,7 +1134,28 @@ the size of the work.
   Should hold: the criterion is the written one; and a finding touching an
   acceptance criterion of the run's own task is never mechanical — it gets fixed
   and named at the close.
-  A fix costs one clause at each of the two sites. Recorded, not built.
+
+  **Built on 7 September 2026, at four sites rather than two.** Two clauses at
+  each of the criterion's two homes — `review-changes` under "What happens to a
+  finding" and `build-work` step 4: the split is announced per finding under the
+  written criterion, saying which of its two halves applies and why; and a finding
+  against something the task issue itself asked for is never fixed silently.
+  **The second clause is a duty to say so, not a second route to the tracker**,
+  and it is written that way — the destination does not change, the fix is usually
+  obvious and the first half still takes it. Read as a switch it would have
+  contradicted "fix now if the fix is obvious" one line above it.
+  **And it is written in the words this repository already has** — a condition the
+  issue names, a test decision it records. "Acceptance criterion" would have been
+  a fourth term for something the glossary covers twice, which
+  `docs/skill-conventions.md` makes a defect under "Shared words are defined in
+  one place". The measured case is a test decision, not a condition.
+  The two extra sites are the close, because a clause naming something at the
+  close needs a close with a line for it: `build-work` step 5 gives the case its
+  own line rather than letting it sink into "what was fixed", and the unattended
+  half of step 5 — where the check suite replaces the gate — says the naming is
+  not replaced with it and goes into the report the run writes. The general form
+  is in `docs/skill-conventions.md` under "A duty to say something needs a place
+  where it is said".
 
 - **An install command handed to the user without being backed, measured on 6
   September 2026 in `devloop-test-o`.** The check workflow installed gitleaks from
@@ -1120,9 +1169,49 @@ the size of the work.
   backed before it is handed over — the vendor's own installation line, or the
   module resolving — and its success is read off the result, whether the tool is
   where that command puts it, rather than off the user reporting that it ran.
-  A fix costs one sentence where a build hands over an install command, and one
-  more where the result is checked: `command -v` answers a different question than
-  "did this command put it there". Recorded, not built.
+  **Built on 7 September 2026, at five sites.** In `build-work` step 3, point 7
+  carries both halves: a command that fetches something from outside is backed
+  before it is handed over — by the vendor's own installation line quoted from
+  where it was read, or by the path in it resolving, `go list -m
+  <module>@<version>` and its equivalent elsewhere — and **the text names which of
+  the two the backing hangs on**, because "checked" names neither. Whether it
+  worked is read off the path that installer writes to, read from the installer
+  rather than assumed and not written for one ecosystem: `$(go env GOPATH)/bin`
+  or `$GOBIN`, `$(brew --prefix)/bin`, `$(npm prefix -g)/bin`. The resumption
+  sentence changed with it — the build picks up once the tool is where that
+  command puts it, not once the user says it ran.
+  **Backing before handover covers both channels, not the one that was measured.**
+  A decline turns the command into an issue carrying it verbatim, and an unbacked
+  command in the tracker outlives the session; the rule is written to cover the
+  message and the issue alike.
+  Point 8 got the narrow half only: the line written into `environment.md` is the
+  backed command itself rather than a copy made by hand. **No second backing is
+  owed there** — point 7 is the only route by which such a command enters the
+  step — but that file is read after every merge to say what to pull, so a command
+  retyped or shortened on the way in is wrong for every later reader, none of whom
+  goes back to check it.
+  Two sites outside the build: `setup-checks` step 3, which is where a wrong path
+  is likeliest to be typed because filling a check class means naming a tool — the
+  measured case was a linter — and `setup-project` step 3. The install guard's own
+  message carried the defect too, telling the run to pick up as soon as the user
+  said the command had run; it now says the word is checked against the path that
+  command writes to.
+  **The commands the new text asks for were run against the guard rather than
+  assumed past it**: `go list -m`, `ls` and `test -x` on that path all come back
+  0, the install itself comes back 2. The general form is in
+  `docs/skill-conventions.md` under "A command handed over is backed, and its
+  result is read".
+
+  **Rewriting the resumption sentence dropped it out of the check that watches
+  it**, and that is worth its own line. The handover check in "Before a handover,
+  run these" finds these sites by their wording, and the site it was written for
+  is this one; the new phrasing matched none of its seven patterns, so the output
+  went from seven lines to six with nothing saying a line had gone. `picks up
+  once` was added to the pattern and it stands at seven again.
+  Should hold: a check keyed to wording loses what it watches every time the
+  wording improves, and silently — so a phrasing is added as it is coined, and a
+  line vanishing from that output is read as a question rather than as progress.
+  That is written beside the check itself.
 
 - **`git reset --hard` without looking first, measured on 6 September 2026 in
   `devloop-test-o`.** A run reset without a `git status` before it and took

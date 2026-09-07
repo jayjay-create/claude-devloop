@@ -418,16 +418,50 @@ The subagent:
    runtime, a tool from a package manager. That is the user's to run, the same
    way merging is, and a guard blocks it. Report what it installs, what it
    unblocks, and the exact command — and both ways it can go, in the same
-   breath: the build picks up as soon as they say it has run, and **a decline
-   is an answer too, not a wall**. A message that says only "let me know once it is
+   breath: the build picks up once the tool is where that command puts it, and
+   **a decline is an answer too, not a wall**. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
    This is the one thing a task can need that the task itself cannot do.
+
+   **A command that fetches something from outside is backed before it is handed
+   over**, and the backing is one of two things: the vendor's own installation
+   line, quoted from where it was read, or the path in the command resolving —
+   `go list -m <module>@<version>` and its equivalent wherever the package comes
+   from. **Say which of the two it hangs on**; "checked" names neither and backs
+   nothing. An organisation's name is not a module path: measured on 6 September
+   2026 in `devloop-test-o`, `github.com/gitleaks/gitleaks/v8@latest` went over
+   as it stood, the module path being `github.com/zricethezav/gitleaks/v8`, and
+   it failed first in the workflow on the main branch, after the pull request
+   carrying it had merged. **Before it is handed over covers both ways it
+   travels** — this message, and the issue the decline below files with the exact
+   command in it. An unbacked command in the tracker outlives this session and
+   gets typed later by somebody who no longer knows the case.
+
+   **Whether it worked is read off the result, not off their message.** Look
+   where this command puts things — the path that installer writes to, read from
+   the installer itself rather than assumed: `$(go env GOPATH)/bin`, or `$GOBIN`
+   where it is set, for `go install`; `$(brew --prefix)/bin` for `brew`;
+   `$(npm prefix -g)/bin` for a global `npm` — and see the tool standing there.
+   **`command -v` answers a different question.** It finds any copy anywhere on
+   `PATH`, including an older one something else put there, which is the measured
+   failure exactly: on the user's own machine the broken line looked like a
+   success, because a stale gitleaks was already on `PATH` from elsewhere. Where
+   the tool is not at the path that command writes to, the command did not do
+   what it was handed over for, whatever came back.
+
 8. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into
    `docs/agents/environment.md`, on this same branch. A command the user has to
    type is a fact about the environment, and it belongs in the file rather than
    in a sentence that scrolls away. That file is read after every merge to say
    what to pull; it is only worth reading if something writes it.
+
+   **The line written is the backed command itself, not a copy of it made by
+   hand.** Point 7 backed exactly one string, and that string is what goes in. No
+   second backing is owed here — point 7 is the only route by which such a
+   command comes into this step — but a command shortened, reordered or retyped
+   on the way into the file is wrong there for every later reader, and none of
+   them goes back to the place it was backed to find out.
 
 **If they decline, the run acts on it.** Which outcome depends on what the tool
 was for:
@@ -566,6 +600,24 @@ Each finding goes one of two ways:
   `raised-here`** — it came out of this work, not from outside, and step 2 has
   no other way to tell.
 
+**The criterion is the one written above, and each finding is announced under
+it.** As the split is announced, say per finding which of the two halves it falls
+under and why — not that it is mechanical, small or routine. A word reached for
+at the moment of deciding reads like a criterion and is not one, and nobody can
+disagree with it because nobody can tell where it came from: measured on 6 and 7
+September 2026, an unattended run called every finding mechanical and filed none,
+with both halves of this criterion standing here the whole time.
+
+**A finding against something this task's own issue asked for is never fixed
+silently.** A condition the issue names, a test decision it records: where the
+finding is that one of those is missing or unmet, **the destination does not
+change** — the fix is usually obvious and the first way out takes it — but it is
+named as a finding against the task's own terms when the split is announced, and
+again at the close in step 5. This is a duty to say so, not a second route to the
+issue tracker. On pull request 27 a byte-for-byte regression test the task's own
+Test Decisions had asked for was missing; it went through among the mechanical
+ones and reached the close as nothing at all.
+
 Never leave a finding in the conversation. Never explain a named defect away in
 the same breath as naming it: it stays open until fixed or explicitly deferred.
 
@@ -586,7 +638,14 @@ carry on rather than starting again.
 Show the diff and the findings — what was fixed, what was filed — and any
 condition this task left unchecked, with the reason. That last one is what the
 person at the gate is guarding in place of a check, and it does not reach them
-from the pull request body on its own. **Then ask, in
+from the pull request body on its own.
+
+**A finding against something this task's own issue asked for gets its own
+line**, rather than disappearing into what was fixed: a condition the issue names
+or a test decision it records that the review found missing or unmet. It was
+fixed, and the person at the gate still needs to know the work arrived at review
+without it — that is a fact about how the build went, and "what was fixed" is a
+list long enough to hide it. **Then ask, in
 its own message, one closed question:** whether this should land. Say what each
 answer means — yes lands it, no keeps the branch and takes revisions. Say how a
 yes lands it **here**, read off this repository rather than assumed: the platform
@@ -605,7 +664,11 @@ build a task is not that authority: it authorised the build, and this is the
 question the build exists to earn.
 
 In unattended mode the check suite is this gate instead — the gate is replaced,
-never removed.
+never removed. **What is not replaced is the line above.** With nobody at the
+gate to tell, a finding against something the task's own issue asked for goes
+into the report this run writes, in the same words. A check suite can stand in
+for the decision; it cannot stand in for somebody being told, and a fact with no
+reader is the one thing an unattended run drops most cheaply.
 
 ## Step 6 — Merge it
 

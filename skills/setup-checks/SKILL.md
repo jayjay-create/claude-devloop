@@ -312,6 +312,27 @@ reaches beyond this project. If the only candidate for a class needs a system
 install and the user declines, that class becomes `skipped` with that reason —
 not `empty`.
 
+**The command is backed before it is handed over**, and the backing is one of two
+things: the vendor's own installation line, quoted from where it was read, or the
+path in the command resolving — `go list -m <module>@<version>` and its
+equivalent wherever the package comes from. Say which of the two it hangs on.
+This step is where it matters most: a check class is filled by naming a tool, so
+this is the likeliest place in the whole workflow for a wrong path to be typed.
+Measured on 6 September 2026 in `devloop-test-o`, exactly that happened to a
+linter — `github.com/gitleaks/gitleaks/v8@latest` handed over as it stood, the
+module path being `github.com/zricethezav/gitleaks/v8`, and it failed first in
+the workflow on the main branch after the pull request carrying it had merged.
+**Backed before it is handed over covers every way it travels**, the message and
+any issue carrying the command alike.
+
+**Whether it worked is read off the result, not off their message.** Look where
+that command puts things — the path the installer writes to, read from the
+installer rather than assumed, `$(go env GOPATH)/bin` or `$GOBIN` for `go
+install` — and see the tool there before the class counts as filled. **`command
+-v` answers a different question**: it finds any copy anywhere on `PATH`,
+including an older one something else put there, which is what made the broken
+line above look like a success on the user's machine.
+
 ## Step 4 — Introduce each class in stages
 
 Turning a strict tool on a codebase that has never seen it produces hundreds of
@@ -492,13 +513,20 @@ project can run through without stopping at every task for approval. What a yes
 costs, said at the moment of asking — a workflow file is added, the main branch
 becomes protected, that protection applies to the user too so they can no longer
 push to it directly either, on a private repository the workflow spends the
-account's Actions minutes, **the run works until the thing is done** and
+account's Actions minutes, **the run works until the thing is done**, **every
+review runs every angle the change touches** and
 **the mode only works while this window is open and the machine is awake**. Say
-the first of those two in ordinary words as well: it keeps going until nothing in
+the first of those three in ordinary words as well: it keeps going until nothing in
 scope is left to build, work that nobody could see at the start gets picked up
 along the way where it serves the same goal, and there is no ceiling on how many
 tasks that turns into. What bounds it is the scope and the tasks in it, not a
-number of rounds. Say that last one in ordinary words and without
+number of rounds. The second in ordinary words: with them there, an angle left
+out comes with a reason they can read and disagree with, and unattended nobody
+reads it, so no reason is taken and the full set runs on every change — which
+costs more than the same review with them there. **How much more is not something
+this project can tell them.** The one measurement available ran five angles over
+one task and three over two others, and that gap is the defect being fixed rather
+than a rate anything can be worked out from. Say that last one in ordinary words and without
 naming a setting: it builds one task after the next for as long as it is
 running, and if the machine goes to sleep — the lid closed, or left alone long
 enough that it drops off by itself — it stops where it is and carries on only

@@ -104,6 +104,43 @@ that no CI posted a required status and offered to build one, while the workflow
 sat on the main branch and had gone green an hour earlier. Absence is a finding
 like any other, and it needs the command that came back empty.
 
+## A reason is not the evidence the rule asked for
+
+Where a rule decides something from evidence — what the diff contains, what the
+file says, what a command returned — a sentence explaining why the evidence need
+not be followed is not one of the ways it gets decided. It is a judgement
+standing in the place the evidence was supposed to occupy, and it looks like
+diligence, which is why it goes unchallenged. Two measurements, one shape:
+
+- On 6 and 7 September 2026 a review was cut from five angles to three, each
+  omission carrying a reason, while the triggers for both omitted angles stood in
+  the diffs the rule reads from.
+- The same run split every review finding into fixed and filed on the word
+  "mechanical", with the written criterion for that split standing in two files
+  the whole time.
+
+**Attended and unattended part company here, and the rule is written for the
+harder half.** With the user there, a reason at least reaches somebody who can
+contradict it. Unattended nobody reads it, so nothing separates a case correctly
+ruled out from one talked out of the way, and no reason is taken. The rule that
+gets written is not "give a better reason" — it is that the evidence decides and
+a reason buys no exception to it.
+
+**A criterion in a skill is named per case, not summarised.** Where a run
+announces how it applied one, it says which of its written halves the case falls
+under and why. A word reached for at the moment of deciding — mechanical, small,
+routine — reads like a criterion and cannot be disagreed with, because nobody can
+tell where it came from.
+
+## A duty to say something needs a place where it is said
+
+A clause requiring that something be named at the close is not written until the
+close has a line for it. Otherwise it is a rule whose execution has no site, and
+the run satisfies it by intending to. Both closes count: the one where a person
+is handed the work, and the report an unattended run writes instead. This has
+been repaired twice in the last two rounds, and it is cheaper to check while the
+clause is being written — name the place, and go and look at it.
+
 ## Say when something did not happen
 
 If a skill you call does not exist, say so — do not silently substitute another.
@@ -247,6 +284,30 @@ what makes declining a real option instead of an exit. Where a no changes what h
 moment of asking**, not three steps on when it bites. A no never leaves the run
 without a next move: if the only honest answer is to stop, say what would unblock
 it and what to do once that is done.
+
+## A command handed over is backed, and its result is read
+
+A command a run hands the user to run, where it fetches something from outside,
+is backed before it goes over: the vendor's own installation line, quoted from
+where it was read, or the path in the command resolving. **Name which of the two
+it hangs on** — "checked" names neither. Measured on 6 September 2026 in
+`devloop-test-o`, `github.com/gitleaks/gitleaks/v8@latest` was handed over as it
+stood; the organisation's name is not the module path, which is
+`github.com/zricethezav/gitleaks/v8`, and it failed first in the workflow on the
+main branch after the pull request carrying it had merged.
+
+**Backed before it is handed over covers every channel it travels on**, not the
+one that was measured — the message, and any issue that carries the command
+because the user declined. A command in the tracker outlives the session and gets
+typed by somebody who no longer knows the case.
+
+**Its success is read off the result, not off the user reporting that it ran.**
+Look at the path that installer writes to, read from the installer rather than
+assumed, and see the thing standing there. **`command -v` answers a different
+question**: it finds any copy anywhere on `PATH`, including an older one put
+there by something else, which is exactly why the broken line above looked like a
+success on the user's own machine. Reading the result is not distrust of the
+user — they answered the question they were asked, and it was the wrong question.
 
 ## Describe what must be said; never dictate wording
 
@@ -1005,7 +1066,49 @@ the sentence that describes the yes. Every line it prints needs an eye on it,
 and it is read for two things: whether the no is there too, and whether what it
 promises about carrying on is something this run can actually do:
 
-    grep -rn 'picks up as soon as\|picks up the moment\|carry on when it has run\|once it has run\|hand them the command\|hand the user the\|Hand the user the' skills/*/SKILL.md
+    grep -rn 'picks up as soon as\|picks up once\|picks up the moment\|carry on when it has run\|once it has run\|hand them the command\|hand the user the\|Hand the user the' skills/*/SKILL.md
+
+**`picks up once` was added on 7 September 2026, and why says something about
+this check.** The install handover in `build-work` step 3 used to read "picks up
+as soon as they say it has run", and that sentence was the defect: success came
+off the user's word rather than off the result. Rewriting it to "picks up once
+the tool is where that command puts it" fixed the defect and dropped the site out
+of this check, which is the one site the check was written for. A check keyed to
+wording loses what it watches every time the wording is improved, and it loses it
+silently — one fewer line, and nothing says a line went missing. So the phrasings
+get added as they are coined, and a line disappearing from this output is read as
+a question rather than as progress.
+
+**Two forms now come out of this check, and the boundary between them is what a
+reader has to see, or they will rewrite one into the other.** Their word is
+always what releases the run — nothing else can say they are done — so a line
+resuming on it is not by itself the defect. **What their word may not be is the
+evidence that the act succeeded.** Where the act has an outcome the run can read,
+the word releases it and the outcome decides; where what is being waited for is a
+decision of theirs, there is no outcome to read, the word is the thing itself,
+and resuming on it is the only possible form rather than a defect. Today's seven
+lines fall out like this — seven lines over six sites, because `setup-checks`
+matches on two consecutive ones:
+
+- **The outcome is read, by this sentence.** `build-work` step 3 point 7, the
+  install: the tool is at the path that installer writes to, or the command did
+  not do what it was handed over for. This is the only line phrased "picks up
+  once", and it is the one the rewrite was for.
+- **The outcome is read, elsewhere.** The three merge handovers — `build-work`
+  step 6, `setup-checks` step 7, `setup-project` step 8 — and the diverged-base
+  handover in `build-work` step 1. Their word releases the run; whether the merge
+  landed is then a query like any other under "Never assert state — query it",
+  and `setup-checks` says it outright in the next clause, "do not go on to the
+  next step on top of an unmerged suite". **These stay exactly as they are.**
+  Rewriting them into the install's form would put the reading in the resumption
+  sentence, where it is already done one step later and better.
+- **There is no outcome, and there cannot be.** `build-work`'s lifted guard
+  block: what is waited for is which of two ways they want it to go. A decision
+  leaves nothing on disk to look at. The word is the whole of it.
+
+So the question to ask of a line in this output is not which wording it uses. It
+is whether the act behind it leaves a result anywhere, and if it does, whether
+something reads that result before the run carries on.
 
 The installed copy is the copy you changed:
 
