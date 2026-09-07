@@ -86,9 +86,12 @@ the ones with a plausible answer:
   is the one moment the workflow looks back at all; it already asks there whether
   to close the spec. A second trigger worth measuring: the same file touched by
   several tasks in a row.
-- **`check-docs-consistency`** — before a handover, which is where the existing
-  five checks run. Done by hand once, and it found three false statements in this
-  file.
+- **`check-docs-consistency`** — before a handover, which is where the checks in
+  `docs/skill-conventions.md` run; the count belongs there and is not repeated
+  here, because a second copy of it is what went stale. Done by hand several
+  times and never as a step, and every round has found false statements in this
+  file: three in the first, four in the round before this one, three of those
+  work recorded as run that had not run.
 - **`measure-runtime-effect`** — nothing runs today, so there is nothing to
   measure. Attaches once the first item under Known gaps is built.
 - **`write-questionnaire`** — when the answer sits with a person the workflow
@@ -210,7 +213,10 @@ the size of the work.
 
   All of it is unwalked. No session has yet run the widened query, met a draft
   or somebody else's pull request in a report, or been kept off a task by the
-  third readiness condition.
+  third readiness condition. The unattended run of 6 and 7 September 2026 is not
+  that third one: between two tasks it waited on a pull request it had opened
+  itself, and waiting on work this run just pushed is not the same as being held
+  off a task by a pull request somebody else left open.
 
 - **A refused command was repeated in silence, and that was measured on 31
   August 2026.** In a test project, on a real run: a command came back with no
@@ -259,8 +265,9 @@ the size of the work.
   Every place a conclusion is drawn from a command's output was read against the
   wording before it was written, with `grep -rn 'gh api\|gh pr \|gh issue\|gh
   run \|gh workflow\|gh repo\|git [a-z]\|$RUNNER\|readiness query\|in-flight
-  query' skills/*/SKILL.md hooks/*.sh` — 75 sites in eight skills and five hooks.
-  Most needed nothing: the gate and binding queries in `build-work`,
+  query' skills/*/SKILL.md hooks/*.sh` — 70 sites in eight skills and three
+  hooks, re-run at the commit that recorded it, which is where the figures
+  written here first came from. Most needed nothing: the gate and binding queries in `build-work`,
   `setup-checks` and `setup-project` already say that a side which did not answer
   is a third outcome rather than a quiet no, which is this same rule written
   before it had a name. Two sites outside the arming path did need it, both of
@@ -268,7 +275,7 @@ the size of the work.
   before it ran exits non-zero like a failing test, which `diagnose-bug` step 1
   would have taken for its red signal, and like a target failing on purpose,
   which `setup-checks` step 5 would have taken as proof that a class is filled.
-  The five hooks conclude from commands too and are left alone: a hook that
+  The hooks conclude from commands too and are left alone: a hook that
   cannot read what it needs exits 0, and on exit 0 nothing it writes reaches
   anybody, so there is no report available to it at all.
 
@@ -291,8 +298,10 @@ the size of the work.
     findings, never the thing itself. Whether the work is going in the right
     direction is not visible in a diff, and asking them to start it by hand
     contradicts the promise that they need no commands. `environment.md` — the
-    file meant to record how this project runs locally — has said "nothing to run
-    yet" in every project set up so far, because no step ever needs it.
+    file meant to record how this project runs locally — carries a run command
+    wherever the project is a command-line tool, and says "nothing to run yet"
+    only where there is no code at all. What it never records is a way for the
+    user to see the thing, because no step ever asks for one.
   - **How the interface gets decided.** Nothing in the set draws a UI, chooses a
     layout, or settles what a screen should feel like. `build-prototype` has a UI
     branch, but only inside a map, only for one question at a time, and it keeps
@@ -330,7 +339,7 @@ the size of the work.
 
   What this did **not** measure is the ordering itself. The readiness query came
   back with exactly one ready task, so nothing was being chosen between, and the
-  three numbered clauses at `skills/build-work/SKILL.md:215-227` never came into
+  three numbered clauses at `skills/build-work/SKILL.md:292-304` never came into
   play: the run took the one ready task, which is what the rule says to do. A
   measurement of the ordering needs a spec whose last task is closed, or merged
   work that is wrong, with the loose issues still lying there.
@@ -405,7 +414,7 @@ the size of the work.
   thrown out by the permission classifier and reported rather than repeated in
   silence; and the branch guard biting on a write to the main branch.
 
-  Nothing has yet run against the three-case refusal. `allow_auto_merge` used to
+  The three-case refusal at arming is half walked. `allow_auto_merge` used to
   decide between two of them and cannot: measured on 30 August 2026, it reads
   true in a repository with a required check and in one without alike, and the
   same day `repos/OWNER/REPO/rules/branches/main` came back an empty list for a
@@ -425,10 +434,10 @@ the size of the work.
   the missing-rights answer. Every arming attempt after that gate existed was
   accepted: nine of them across 6 and 7 September, one per pull request.
 
-  The same day turned up two `mergeStateStatus` values no file carried: on a pull
-  request seven days old it read `UNKNOWN`, and on the second query `BEHIND`.
-  `UNKNOWN` is the computation not yet done rather than a state, so the second
-  reading is the one to use; `BEHIND` is the branch trailing its base, answered
+  30 August 2026 turned up two `mergeStateStatus` values no file carried: on a
+  pull request seven days old it read `UNKNOWN`, and on the second query
+  `BEHIND`. `UNKNOWN` is the computation not yet done rather than a state, so
+  the second reading is the one to use; `BEHIND` is the branch trailing its base, answered
   by a rebase and a force-push, after which the pull request is `BLOCKED` again
   and arming is accepted, rather than by handing the merge over. Both are now
   carried in the three stages that arm and in the merge guard's message, together
@@ -456,7 +465,12 @@ the size of the work.
   and `SUCCESS` since 24 August, the `BEHIND` case sitting there in the open. A
   check that has not started is now a wait of ten seconds at a time, bounded at
   two minutes, and a bound that runs out is said as a gate whose check never
-  registered. Nothing has yet run against any of it.
+  registered. Nothing has yet run against any of it. The `UNSTABLE` met on 6
+  September 2026 is not the first sighting it looks like: with neither kind of
+  gate present there, the answer is the second refusal case whatever the rollup
+  would have said, so the reading was never the thing that decided it. What is
+  still needed is that value on a pull request in a repository that does have a
+  gate.
 
   The same reading had a second half missing, found on 31 August 2026. Whether a
   gate binds the account a run works as was read from `enforce_admins` alone —
@@ -530,19 +544,23 @@ the size of the work.
   holds a map with open tickets and no code — the only one where an interview
   could be carried through. `devloop-test-j` is a Python command-line tool with
   a filled, blocking unit class, which makes it the standing bench for a planted
-  fault. `devloop-test-l` is Kotlin with Gradle and is the only one with a
-  real platform gate: a required check called `checks` run by a workflow on
-  every pull request, with `enforce_admins` on, so it binds the account this
-  workflow runs as. It is also the standing bench for the stock-take: issue 8 is
-  open and pull request 14 closes it and has been open since 24 August, which is
-  the shape that went unseen. It was for a while the only place an unattended run
-  could be tried at all; `devloop-test-o` ended that on 6 September 2026 by
-  building its own gate. `enforce_admins` was switched off there by hand on 25 August
-  2026 for the branch-rule measurement above and stands at true again. A
-  `PROBE.md` on its main branch is a leftover of the same measurement — of no
-  consequence, and not project content. `devloop-test-m` is Go, set up from
-  nothing on 24 August, worked through on 25 August and taken up again on 30
-  August: all nine classes decided — seven filled and blocking, `types` and
+  fault. `devloop-test-l` is Kotlin with Gradle and was the first with a real
+  platform gate: a required check called `checks` run by a workflow on every
+  pull request, with `enforce_admins` on, so it binds the account this workflow
+  runs as. `devloop-test-o` carries the same shape now, so those two are the
+  gated benches and the other four have no gate at all. It was also the standing
+  bench for the stock-take — issue 8 open with pull request 14 closing it, the
+  shape that went unseen — and is not any more: that pull request merged on 31
+  August 2026 and closed the issue with it, and `gh pr list --state open` and
+  `gh issue list --state open` both come back empty there now. No bench carries
+  that shape today, so a measurement of the widened query needs one set up for
+  it. It was the only place an unattended run could be tried at all until
+  `devloop-test-o` ended that on 6 September 2026 by building its own gate.
+  `enforce_admins` was switched off there by hand on 25 August 2026 for the
+  branch-rule measurement above and stands at true again. A `PROBE.md` on its
+  main branch is a leftover of the same measurement — of no consequence, and not
+  project content. `devloop-test-m` is Go, set up from nothing on 24 August,
+  worked through on 25 August and taken up again on 30 August: all nine classes decided — seven filled and blocking, `types` and
   `dependencies` skipped with reasons — and no platform gate. Its three specced
   tasks are done except the last, which the 25 August run left built and
   committed on `dedup-clean-quarantine` with no pull request when it stopped at
@@ -568,7 +586,14 @@ the size of the work.
 
   The base check, the rewritten questions at four stage boundaries, and the
   control documents finally getting a writer came out of a single run merged
-  after 0.46.0, and have only been reasoned about since.
+  after 0.46.0, and all three have since run. The base check ran three times in
+  the unattended run in `devloop-test-o`, reporting the base green before each
+  cut. The questions at the stage boundaries were answered across that project:
+  auto-merge and the labels at setup, the symlink decision in planning, and the
+  choice of design. And the control documents got their writer there for good —
+  ten pull requests after the setup one wrote `docs/agents/environment.md`,
+  `checks.md` twice among them, one of them for the gate state alone, and three
+  of them written unattended.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
   on the plugin itself — including the main-branch guard.
@@ -905,6 +930,50 @@ the size of the work.
   the same turn, or it says it is standing still and will need a push. "I will
   come back to you" is neither.
   A fix costs one clause. Recorded, not built.
+
+- **Sixteen false statements in these two documents, and that was measured on 7
+  September 2026.** A reading of `docs/roadmap.md` and `docs/skill-conventions.md`
+  against the repository, the git history and the live platform — not against each
+  other, which is the reading that cannot find this kind.
+
+  Five of the sixteen said something about what had run, or about the state a
+  bench stands in, and they went wrong in both directions. `devloop-test-l` was
+  named as the standing bench for the stock-take, issue 8 open with pull request
+  14 closing it, when that pull request merged on 31 August 2026 and closed the
+  issue with it. The same project was named as the only one with a platform gate,
+  when `devloop-test-o` has carried the same protection since 6 September.
+  `environment.md` was said to read "nothing to run yet" in every project set up
+  so far, when four of the six carry a real run command. A paragraph opened with
+  "nothing has yet run against the three-case refusal" and recorded two walked
+  refusals nine lines further down. And the base check, the questions at the stage
+  boundaries and the control documents getting a writer stood as reasoned about
+  only, when all three had run in `devloop-test-o` — the last of them ten times
+  over. Each of the five was answered by a single command: `gh pr list --state
+  open`, `gh api .../branches/main/protection`, the contents API, and for the two
+  internal ones nothing more than reading the paragraph to its end.
+
+  Three shapes came out of it, and are written where rules live, in
+  `docs/skill-conventions.md`: **a count lives in one place**, after the number of
+  pre-handover checks went stale in one file and short in the other; **a time
+  reference names its date**, after an inserted measurement moved a 30 August
+  reading to 7 September without a word of the sentence changing; and **a figure
+  taken from a command is copied out of that command's output**, after numbers
+  presented as a `grep` result turned out never to have been run — the same `grep`
+  at the same commit answers differently.
+
+  Two more were a sentence pointing at something that is not there: a line
+  reference into `build-work` that had drifted by seventy-seven lines, and a skill
+  named as spawning parallel agents that has never been built. Both are the cheap
+  kind, and both stood through every handover, because the checks before a
+  handover compare copies of this repository's own text against each other and
+  none of these claims is about that text.
+
+  Two claims were left standing without evidence rather than corrected, marked as
+  such where they sit: that two build agents in one working directory collide, and
+  that Agent Teams makes a waiting subagent hang. Both were recorded on 19 August
+  2026 in a commit whose message carries no detail, and neither has a measurement
+  anywhere. They cost nothing to obey, which is why they stay; what they are not
+  is measured.
 
 
 ## Decisions taken against

@@ -38,7 +38,7 @@ else" worked on the first try.
 A word two skills lean on has to be defined somewhere both of them read, or the
 one that did not get the definition guesses. Three carry real weight here.
 
-**A seam is a place where this work will be checked** — a function boundary, a
+**A seam is a place where this work is checked** — a function boundary, a
 module edge, an entry point. The spec confirms them; nothing gets tested at an
 unconfirmed seam, and a test at one is a review finding. Every skill that builds
 or reviews works to that list.
@@ -385,6 +385,37 @@ first pull request that arrives from outside it carries whatever its author
 chose. Reading identity out of a name works right up to the first case that did
 not come from here.
 
+**A count lives in one place, and everywhere else points at it.** The number of
+checks in the handover section stood here and again in `docs/roadmap.md`. A
+check was added to the section, the sentence above it was raised, and the copy
+one file over kept counting the old total — as did the sentence here, one short.
+Both were true when they were written and neither goes red, and a reader who
+meets the smaller number first has no way to tell which is current. So a figure
+describing something this repository holds — how many checks, how many skills,
+how many hooks — is written once, where the thing itself is, and every other
+mention names that place instead of repeating the number. Where a second copy
+really is wanted, it carries the command that regenerates it, so the next reader
+can settle it in one line.
+
+**A time reference names its date, not its neighbour.** "The same day", "the
+next day", "that morning" all resolve against the paragraph above, and the
+paragraph above is exactly what a later measurement gets inserted in front of.
+One insertion moved a reading taken on 30 August 2026 to 7 September without
+changing a word of the sentence carrying it, and the paragraph under it still
+said "built the next day", which then pointed nowhere. Every word stayed
+correct; only what they referred to moved. Write the date.
+
+**A figure taken from a command is copied out of that command's output.** One
+sentence gave three numbers as the result of a named `grep`, and re-running that
+same `grep` at the very commit that recorded it returns different numbers for
+two of them; the sentence after it counted the hooks in this repository and got
+that wrong too, against `ls`. Nobody had run anything — the figures were
+estimated and set down beside a real command, which is what made them read as
+evidence and what makes this shape worth its own rule: printing the command is
+half of the proof, and pasting what it answered is the other half. This is the
+narrow, checkable case of a claim needing evidence, and it is the one where the
+evidence is one command away.
+
 ## Environment constraints, measured
 
 **Nothing resumes on its own.** A run that hands the user a command and says it
@@ -430,14 +461,26 @@ repository's skills and thereby closes the one route the skills expressly allow.
 
 **Agent Teams must stay off.** With `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`,
 every named subagent starts as a teammate, and a teammate reports only that it
-finished — not what it found. `design-options` and `review-changes` both spawn
-parallel agents and wait for their results; both hang. Anthropic's own docs say
-so.
+finished — not what it found. `review-changes` runs one subagent per lens,
+`plan-work` drafts several designs at once and `untangle-idea` fires the research
+subagents, and every one of them waits for what came back; all three hang.
+**The evidence for this one is missing too.** "Anthropic's own docs say so" names
+no page, and it was recorded in the same commit of 19 August 2026 as the entry
+above. What would settle it is the vendor page that describes what a teammate
+reports back, quoted with the date it was read; until that is here, treat the
+setting as off on a reading nobody has checked rather than on a source.
 
-**One build task at a time.** Two build agents share one working directory:
-measured, one switched branches out from under the other mid-edit, and both
-edited the same manifest. Parallelism needs separate worktrees and is not worth
-it while tasks merge to the same branch one after another.
+**One build task at a time.** Two build agents share one working directory: one
+switched branches out from under the other mid-edit, and both edited the same
+manifest. Parallelism needs separate worktrees and is not worth it while tasks
+merge to the same branch one after another. **The evidence for this one is
+missing.** It was recorded on 19 August 2026 in `Ship the tracker commands;
+record the measured environment constraints`, whose message carries no detail and
+no date, and nothing in `docs/roadmap.md` backs it either — so it stands as a
+report of a run nobody can now go back to, not as a measurement. It keeps its
+place because the cost of acting on it is nil, and the rule about behaviour
+outside this repository holds against it like anything else: run two build agents
+in one working directory, with a date, and this either gets its evidence or goes.
 
 **A hook reading the tool's JSON must undo the escapes first.** Measured on 25
 August 2026: every guard here pulled the command out with
@@ -618,8 +661,12 @@ the agent.
 workflow runs as whatever account the tooling is authenticated with — which in a
 repository somebody owns is theirs. Measured, not reasoned: a run set auto-merge
 on a pull request under a required check and it merged instantly, because the
-check did not apply to that account. Both parts have to be read, the protection
-and who it binds.
+check did not apply to that account. Written up on 24 August 2026 in the commit
+that fixed it, `A gate the working account can step over is not a gate` (#73),
+which carries the run — protection present, required check configured,
+`enforce_admins` off, the working account holding admin, and every question setup
+asked coming back yes while the answer it gave was false. Both parts have to be
+read, the protection and who it binds.
 
 **And who it binds is read per kind of gate, or the read contradicts the one
 above it.** `enforce_admins` lives on `branches/main/protection`, the endpoint
@@ -732,8 +779,8 @@ run it.
 
 ## Before a handover, run these
 
-Ten checks that catch what a conversation loses. Each one has found a real gap.
-Every one of them has to run on the machine it is needed on: `head -n -1` is a
+Eleven checks that catch what a conversation loses. Each one has found a real
+gap. Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
 POSIX gives you.
