@@ -339,7 +339,9 @@ The subagent:
    leftover of the first.
 5. Commits behaviour changes separately from mechanical ones.
 6. Runs everything `checks.md` lists before reporting done. A report a later gate
-   rejects is not a report.
+   rejects is not a report. That whole-chain run is a **pass**, and there are five
+   of them — the second section at the end of this step says what happens on the
+   fifth.
 7. Never installs anything that lands outside the repository — a compiler, a
    runtime, a tool from a package manager. That is the user's to run, the same
    way merging is, and a guard blocks it. Report what it installs, what it
@@ -446,6 +448,67 @@ guarding two conditions costs two. Where the project has no narrow target and
 only the whole suite can be run, the cycle is a whole suite — say that and pay
 it. Dropping the proof because the target is slow buys back seconds and hands the
 run back its ability to report done on evidence it does not have.
+
+### Five passes over the check chain
+
+**A pass begins when this build believes it is done and runs the whole chain
+from `checks.md`.** Red on a pass means it was wrong about its own state, and
+that is the only thing counted here. Red while building does not count: point 2
+is test-first, where red is the normal condition and the signal that the loop is
+working. Neither does a narrow target run to prove a condition — that red is
+produced on purpose and is the section above.
+
+**Five passes, and the fifth is run like any other.** A pass that comes back
+green ends the task the ordinary way, on the fifth as much as on the first. What
+ends it the other way is a fifth pass that comes back red. One pass is the normal
+case; a second is common and usually legitimate, because the first whole-chain
+run reaches classes the narrow runs during building never touch. Five is meant to
+catch a task where something is wrong underneath, not a task that is merely
+stubborn — which is why it is not three.
+
+**Five is fixed here and nothing may move it.** No flag, no argument, no reading
+it out of a file: nothing else calls this step, and a limit the run can raise is
+not a limit — which this workflow has already paid for once, in the state file
+that a run kept and whose cap it lifted in the same write.
+
+**A pass that never reached a verdict is not a pass.** Where the chain did not
+run — a command refused, a runner that gave no answer — nothing was learned about
+the code, so nothing is counted. Report it under **When a command does not
+answer**, above, and run the pass again. What is counted is a chain that ran and
+came back.
+
+**Write down what was red, pass by pass, as it happens.** Per pass: which check
+classes came back red and the cause of each. Not a summary at the end — a list
+kept only in this subagent's context dies with it, the same way the condition
+proofs would, and by the fifth pass nobody can reconstruct the first. The list
+travels up with the build's report.
+
+**On a red fifth pass the task goes back, and the list is what makes it useful.**
+Whether it was one class five times for one reason or five different classes is
+the whole of what a reader needs, and only the per-pass list says which.
+
+- **With the user there:** report it, with that list, and **say what should
+  happen next** rather than that it cannot be done. Name the one that fits —
+  the task wants recutting, the design wants checking at this point, or an
+  assumption from planning is wrong and wants correcting.
+- **Unattended:** raise an issue saying the task is not buildable as cut, with
+  the same list, labelled `raised-here` and recorded as a blocker of the task.
+  Then put the task down and go back to step 2. The readiness query passes over a
+  blocked task by itself. Standing still instead would leave nobody to notice,
+  which is worth less than carrying on with the rest.
+
+**The turn-end hook is a different limit and can fire first.** It counts
+turn-ends whose set of failing classes has not changed, stops at three, and asks
+for the problem to be handed over. It counts turns, not passes, and it resets
+whenever the failure changes — so where it speaks first, that is the answer and
+these five are never reached. Say which of the two stopped the task.
+
+**The count does not outlive this build.** A build broken off and taken up again
+starts a new series of five, because nothing here resumes on its own and no file
+carries a count. So when a series ends on a red fifth pass, the list goes into
+the task issue as well as into the report — attended and unattended alike — and a
+build that finds one already there says so and that this is the second series.
+That is the only thing that makes a repeated series visible; nothing enforces it.
 
 ## Step 4 — Review it
 
@@ -750,7 +813,7 @@ that merge and say which pull request it is.
 `--auto` replaces the user's approval with a green check suite. Same stages, same
 checks — only the gate differs.
 
-**Refuse to start** unless all six hold, and say which failed:
+**Refuse to start** unless all five hold, and say which failed:
 
 1. No class in `checks.md` is `empty`. Every one is `filled` or `skipped` with a
    reason. `empty` means undecided, and an undecided check approves nothing.
@@ -769,14 +832,11 @@ checks — only the gate differs.
    not apply here: an unattended run has nothing else standing between a red
    suite and the main branch. Where a side did not answer, this condition is not
    established; say so rather than reading the silence as a yes or a no. This is
-   also what makes the run able to merge at all: see 6.
-3. `--max-iterations` is set. If the user did not give one, propose twice the
-   number of ready tasks plus two, and say that is a rip-cord for a run that gets
-   stuck, not a capacity estimate — one round per task is the normal case.
-4. No task in range is blocked by anything outside the range.
-5. The tool classes the run needs are already approved for this project. A run
+   also what makes the run able to merge at all: see 5.
+3. No task in range is blocked by anything outside the range.
+4. The tool classes the run needs are already approved for this project. A run
    nobody is watching cannot answer a permission prompt.
-6. The repository can actually merge without a person. Two things have to hold,
+5. The repository can actually merge without a person. Two things have to hold,
    and `environment.md` records both: auto-merge is enabled
    (`gh api repos/OWNER/REPO -q .allow_auto_merge`), and a gate exists for it to
    wait on. The second takes both queries from step 6, for the reason given
@@ -806,39 +866,29 @@ checks — only the gate differs.
    through, which is not a gate but the appearance of one.
 
 Then say what this run turns on, in the message that opens it, and keep it in
-the conversation: the scope, the cap and which round this is, the sentence that
-will mean it has finished, and the main-branch commit it starts from. **None of
-it goes into a file.** Nothing on disk reads such a file — no hook watches for an
-unattended run — so one written here is read only by the run that wrote it, which
-is bookkeeping in the coat of a safeguard. Measured on 6 and 7 September 2026: a
-run kept exactly that file across three tasks and raised its own cap from four to
-six in the same write, and nothing anywhere noticed.
+the conversation: the scope, the sentence that will mean it has finished, and the
+main-branch commit it starts from. **None of it goes into a file.** Nothing on
+disk reads such a file — no hook watches for an unattended run — so one written
+here is read only by the run that wrote it, which is bookkeeping in the coat of a
+safeguard. Measured on 6 and 7 September 2026: a run kept exactly that file across
+three tasks and raised its own limit in the same write, and nothing anywhere
+noticed.
 
-**Count the rounds out loud.** Every task opens by saying which round of how
-many. A round is counted when a task is taken and the count is read before taking
-the next one, so the cap never falls in the middle of a half-built task.
-
-**The cap is the user's number and this run does not change it.** Not upward
-because the work turned out larger, not for one more task. Raising it removes the
-only limit the mode has, and nothing else in the mode stops it. Reaching it is a
-stop and not a renewal: say the cap is reached, say what is still ready and what
-is in flight, and say that a new number from them starts a new run from where
-this one got to.
-
-**A run that stops short carries nothing forward.** Nothing here resumes on its
-own, so an interrupted run keeps no count: `--auto` again is a new run against a
-new number, and two runs of six are twelve. Say that when the cap is set — it is
-the one way the cap gets exceeded with nobody breaking a rule.
+**There is no ceiling on how many tasks this run may finish.** It works until
+nothing in scope is ready any more, and that is the only finish. Work that turns
+up along the way is taken on where it serves the same goal, and a run that stops
+with ready work left because a number ran out has stopped for no reason to do
+with the work. The one limit in this mode sits inside a task, not across them:
+five passes over the check chain, in step 3.
 
 **One unattended run per working directory.** Two share a checkout and a main
-branch, count their rounds apart, and neither sees the other's, so across the
-pair the cap means nothing. Same constraint that already allows only one build
-task at a time, not a second one.
+branch and neither sees what the other is building. Same constraint that already
+allows only one build task at a time, not a second one.
 
 **A `.claude/autorun.local.md` lying about is stale, not an instruction.** An
 earlier version of this stage wrote one, and it carries a standing instruction to
 keep taking tasks. Nothing writes it now and nothing ever read it. Delete it, say
-that you did, and take the scope and the cap from this conversation.
+that you did, and take the scope from this conversation.
 
 Emit the finishing sentence only when it is completely and unambiguously true —
 never to get out of the loop.
