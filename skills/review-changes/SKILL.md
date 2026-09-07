@@ -160,6 +160,16 @@ list is what makes that reading cheap instead of lucky.
 Add one reviewer per lens the change touches. Judge this from the diff, not from
 the task description — if the diff contains it, the lens runs.
 
+**Unattended, a stated reason buys no exception.** Where the trigger is in the
+diff the lens runs, and a sentence explaining why it need not run is a judgement
+standing where the diff was supposed to decide. Attended, that judgement at least
+reaches somebody who can contradict it; unattended nobody reads it at all, so
+nothing separates a lens correctly ruled out from one talked out of the way.
+Measured on 6 and 7 September 2026: two tasks went through three lenses instead
+of five, security and failure behaviour left out with a reason given for each,
+while a file path arriving from outside and a default return stood in those very
+diffs.
+
 - **Security** — any input from outside, credential, permission, file path, or
   anything reaching a network or a database.
 - **Data migration** — any schema or stored-format change.
@@ -209,6 +219,26 @@ person, so it is written in theirs. Assembling is not quoting.
   interface, or exceed the task. Say what you filed and why, and **label it
   `raised-here`** — it came out of this work, not from outside, and nothing else
   in the issue carries that.
+
+**The criterion is the one written above, and each finding is announced under
+it.** As the split is announced, say per finding which of the two halves it falls
+under and why — not that it is mechanical, small or routine. A word reached for
+at the moment of deciding reads like a criterion and is not one, and nobody can
+disagree with it because nobody can tell where it came from: measured on 6 and 7
+September 2026, an unattended run called every finding mechanical and filed none,
+with both halves of this criterion standing here the whole time.
+
+**A finding against something the task issue itself asked for is never fixed
+silently.** A condition the issue names, a test decision it records: where the
+finding is that one of those is missing or unmet, **the destination does not
+change** — the fix is usually obvious and the first half sends it there — but it
+is named as a finding against the task's own terms when the split is announced.
+That naming is what the caller's close then carries; **it does not go into the
+report above**, which still stops at the last lens and says nothing after it.
+This is a duty to say so, not a second route to the
+issue tracker. On pull request 27 a byte-for-byte regression test the task's own
+Test Decisions had asked for was missing; it went through among the mechanical
+ones and reached the close as nothing at all.
 
 Never leave a finding in the conversation, and never explain one away in the same
 breath as naming it. A named defect stays open until fixed or explicitly deferred.

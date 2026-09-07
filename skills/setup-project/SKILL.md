@@ -466,6 +466,16 @@ single word can answer.
    undecided. Ask separately whether missing tools should be installed — that
    changes the project. Never install anything system-wide without asking;
    prefer tools that live inside the project.
+
+   **A command handed over for them to run is backed first**, by the vendor's own
+   installation line quoted from where it was read, or by the path in the command
+   resolving — `go list -m <module>@<version>` and its equivalent wherever the
+   package comes from. Say which of the two it hangs on. An organisation's name
+   is not a module path, and the difference does not show until the command runs
+   somewhere that has no older copy lying about. And whether it worked is read
+   off the result — the tool standing at the path that installer writes to — not
+   off them reporting that it ran; `command -v` finds any copy anywhere on
+   `PATH`, which is a different question.
 4. **Local environment** — always, unless you could read it all from
    `docker-compose.yml` or the README. Which processes, in what order, on what ports.
 5. **Labels** — only if the tracker already has labels with overlapping meaning.
