@@ -456,8 +456,13 @@ project can run through without stopping at every task for approval. What a yes
 costs, said at the moment of asking — a workflow file is added, the main branch
 becomes protected, that protection applies to the user too so they can no longer
 push to it directly either, on a private repository the workflow spends the
-account's Actions minutes, and **the mode only works while this window is open
-and the machine is awake**. Say that last one in ordinary words and without
+account's Actions minutes, **the run works until the thing is done** and
+**the mode only works while this window is open and the machine is awake**. Say
+the first of those two in ordinary words as well: it keeps going until nothing in
+scope is left to build, work that nobody could see at the start gets picked up
+along the way where it serves the same goal, and there is no ceiling on how many
+tasks that turns into. What bounds it is the scope and the tasks in it, not a
+number of rounds. Say that last one in ordinary words and without
 naming a setting: it builds one task after the next for as long as it is
 running, and if the machine goes to sleep — the lid closed, or left alone long
 enough that it drops off by itself — it stops where it is and carries on only
@@ -496,11 +501,10 @@ ordinary words:
   and green again, then the whole check suite, then a review from several angles
   at once, then the findings fixed, then a pull request handed to the platform,
   which merges it itself once the required check is green. Then the next task,
-  until nothing in scope is ready any more or the agreed number of rounds is used
-  up. **That number is theirs.** The run counts the rounds out loud and stops when
-  it reaches the agreed one; it never raises it to fit the work, because nothing
-  else in this mode would stop it. Reaching it is a stop with a report, and a new
-  number from them starts a new run.
+  until nothing in scope is ready any more. Inside a single task there is a
+  limit — five whole runs of the check suite, after which the task is put down
+  with a written record of what was red each time and the next one is taken up.
+  Across tasks there is none.
 - **Where it still stops.** Deciding what gets built and cutting it into tasks
   never runs unattended — that stays with them, and this mode only builds tasks
   that already exist. Beyond that it stops rather than guesses: a precondition

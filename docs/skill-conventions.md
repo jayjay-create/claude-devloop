@@ -431,14 +431,23 @@ Two things follow, and the second is the one that costs something.
    conversation instead, where the user can see it. A file suggests a mechanism
    and a sentence does not, and the gap between them is where this hid.
 2. **A limit the limited party maintains is not a limit.** Whoever may raise the
-   number is who the cap actually binds. So a cap set by the user is stated as
-   theirs, the run counts against it out loud and stops on reaching it, and
-   raising it is not among the things a run may do. That is a rule and not a
-   mechanism, and it is said as one: a hook cannot supply the mechanism here —
-   see **Stderr only reaches the model when the hook exits 2**, which leaves a
-   `Stop` hook able to refuse a stop and never able to cause one, and a
-   `PreToolUse` block on a single command name is the shape that was already
-   measured being stepped around.
+   number is who it actually binds. So a limit that has to hold is written into
+   the step itself, with no flag and no argument and nothing to read it out of —
+   which is only available where nothing else calls that step, and where it is
+   available it is the whole of the answer. Where a number does have to come from
+   outside, it is the user's, said as theirs, and raising it is not among the
+   things a run may do. Either way it is a rule and not a mechanism, and it is
+   said as one: a hook cannot supply the mechanism here — see **Stderr only
+   reaches the model when the hook exits 2**, which leaves a `Stop` hook able to
+   refuse a stop and never able to cause one, and a `PreToolUse` block on a single
+   command name is the shape that was already measured being stepped around.
+
+   And a limit is worth having only over the thing that actually goes wrong.
+   A ceiling on how many tasks an unattended run may finish bounds its cost, not
+   its quality, and the person switching that mode on has already accepted the
+   cost; the failure it was supposed to catch — a build going round and round on
+   one task, reaching green by weakening the check — lives inside a task and
+   needed its own count there. Bound the repetition, not the delegation.
 
 ## Environment constraints, measured
 

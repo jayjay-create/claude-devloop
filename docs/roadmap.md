@@ -798,8 +798,9 @@ the size of the work.
   unchecked.
 
   What the file was for, read out of the two skills that wrote it: a loop bound —
-  `build-work` precondition 3 makes `--max-iterations` mandatory and calls it a
-  rip-cord; a trace for the user — `started_from` is the one field something
+  `build-work` precondition 3 made `--max-iterations` mandatory and called it a
+  rip-cord, and that condition has since gone entirely, see the entry below; a
+  trace for the user — `started_from` is the one field something
   actually consumed, in the same skill and the same session, for reading the diffs
   at the end; and a resumption after interruption, claimed by the deletion
   sentence alone. `setup-project` step 5 gave it no job at all, only a place
@@ -819,20 +820,17 @@ the size of the work.
   still be written by the run, which is the measured defect exactly — moving the
   number into a file the run also writes changes nothing about who may raise it.
 
-  What replaced it: the four things are said in the opening message and stay in
-  the conversation; the rounds are counted out loud, one per task taken, read
-  before the next is taken; the cap is the user's number and the run does not
-  change it, with reaching it a stop and a report rather than a renewal; and the
-  same sentence went into `setup-checks` step 8, where the user is promised the
-  cap in the first place. Named rather than hidden, because the wording was walked
-  through five situations first: a restart after an interruption begins a new run
-  against a new number, so two runs of six are twelve; two unattended runs in one
-  working directory count apart and neither sees the other, which is the existing
-  one-task-at-a-time constraint and not a new one; and a `.claude/autorun.local.md`
-  left over from an older version is stale local state carrying a standing
-  instruction to keep taking tasks, so it is deleted and said rather than read.
-  The attended path never reaches any of it — all of it sits inside
-  `## Unattended mode`.
+  What replaced it: the scope, the finishing sentence and the starting commit are
+  said in the opening message and stay in the conversation. The round count and
+  the cap were replaced too, first by a rule that the cap was the user's to raise
+  and then, one entry down, by nothing at all — the cross-task limit is gone.
+  Named rather than hidden, because the wording was walked through five
+  situations first: two unattended runs in one working directory neither see nor
+  bound each other, which is the existing one-task-at-a-time constraint and not a
+  new one; and a `.claude/autorun.local.md` left over from an older version is
+  stale local state carrying a standing instruction to keep taking tasks, so it is
+  deleted and said rather than read. The attended path never reaches any of it —
+  all of it sits inside `## Unattended mode`.
 
   **The same phantom had a second home.** `README.md` carried it as a general
   rule — "a hook that gates on a state file's existence must have that file
@@ -840,6 +838,68 @@ the size of the work.
   skills. No hook gates on existence; `stop-checks.sh` reads
   `check-attempts.local` for its content and deletes it when the checks go green,
   which is the opposite. Replaced by what the incident actually teaches.
+
+- **A ceiling on tasks traded for a ceiling on retries inside one. Built.**
+  `--max-iterations` capped how many tasks an unattended run might finish. That
+  is a cost ceiling wearing the coat of a quality one: whoever switches the mode
+  on has chosen the delegation and accepted the cost, and a run that stops after
+  four tasks with everything going well has interrupted for no reason to do with
+  the work. The honest stop was already built and ran on 7 September 2026 —
+  no ready task left in scope, with the agreed sentence said once.
+
+  Looked up on 7 September 2026: Anthropic's Agent SDK bounds `max_turns`, which
+  is model turns inside one piece of work, not the number of pieces. Matt
+  Pocock's skills, which most of this set is adapted from, carry no iteration
+  limit at all — `grep -rn -i 'max-iterations|max_turns|iteration limit|attempts|
+  give up|stop after'` over his repository finds nothing, and the one place
+  pointing that way asks for the opposite, "Refuse to give up" while diagnosing.
+  A count across pieces of work stood alone, and it is gone. The cost list at
+  `setup-checks` step 8 says so in plain words instead: the run works until the
+  thing is done, work that turns up on the way is taken on where it serves the
+  same goal, and there is no ceiling on the number of tasks.
+
+  **What came in its place sits inside a task, where the failure actually was.**
+  Nothing bounded how often a build could go round on one task, and a build stops
+  when the chain is green — a target reachable by weakening the check instead of
+  repairing the code. Measured on 30 August 2026: a check the task had named by
+  name was replaced by one that cannot fail, and the whole chain came back green.
+  So: a **pass** is one whole run of the chain begun because the build believes it
+  is done, five of them, the fifth run like any other, and a red fifth pass ends
+  the task. Red while building does not count — the loop is test-first and red is
+  the normal state there. Not three, because the first whole-chain run regularly
+  finds what the narrow runs during building never touch, so two passes go to
+  legitimate work often enough. Fixed in the text with no flag: nothing else calls
+  that step, and a limit the run can move is the defect two entries up.
+
+  On the fifth red pass the task goes back, with what was red in each of the five
+  and why — which is what tells one class failing five times for one reason from
+  five different ones. Attended, that goes to the user with a proposal: recut the
+  task, check the design at that point, or correct an assumption from planning.
+  Unattended, it becomes an issue that the task is not buildable as cut, labelled
+  `raised-here` and recorded as a blocker, and the run takes the next task —
+  standing still would leave nobody to notice.
+
+  Five situations were walked before the wording was written, and three moved it.
+  A pass that never reached a verdict, because a command did not answer, is **not
+  a pass** — nothing was learned about the code, and it falls to the
+  command-does-not-answer rule instead. The per-pass list has to be **written as
+  it happens and handed up**, because a list living in the build subagent's
+  context dies with it exactly as the condition proofs would, and by the fifth
+  pass the first is unreconstructable. And the count **does not outlive the
+  build**: an interrupted build taken up again starts a new series of five, so the
+  finished series goes into the task issue and a build that finds one there says
+  it is starting a second. The two that needed nothing: green on the first pass
+  and green on the fifth are the same ordinary ending, and five different red
+  classes count exactly as five identical ones — the difference belongs in the
+  report, not in the counting.
+
+  **It is the second limit over this ground, and the other one is a hook.**
+  `hooks/stop-checks.sh` carries `MAX=3` over turn-ends whose set of failing
+  classes has not changed, and hands the problem over at three. It counts turns
+  rather than passes and resets whenever the failure changes, and only `Stop` is
+  registered — there is no `SubagentStop` — so the two fire on different things
+  and the hook can speak first. Named in `build-work` rather than reconciled: the
+  run says which of the two stopped the task.
 
 - **Work put off with nothing to bring it back, twice in the same session, and
   that was measured in `devloop-test-o`.** On 31 August 2026 the setup stage

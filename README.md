@@ -101,8 +101,11 @@ repository can merge without a person present — which needs auto-merge enabled
 and a required check for it to wait on. Those are conditions for the run being
 able to finish, not judgements about it: without them it would build a task and
 then sit on a pull request nobody is there to merge. Attended runs are unaffected
-either way. It proposes an iteration cap if you did not give one — a
-rip-cord for a run that gets stuck, not a capacity estimate.
+either way. There is no cap on how many tasks it gets through: it runs until
+nothing in scope is ready any more, and picks up work that turns up along the way
+where it serves the same goal. The limit sits inside a task instead — five whole
+runs of the check suite, after which the task is put down with a record of what
+was red each time, and the next one is taken up.
 
 Unattended does not mean unread. Read the diffs afterwards, in one go.
 
