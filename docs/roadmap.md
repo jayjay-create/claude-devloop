@@ -788,18 +788,58 @@ the size of the work.
   A fix costs one sentence at the early exit and one where the build offers the
   gate. Recorded, not built.
 
-- **`build-work` says a hook reads the unattended state file, and no hook does.**
-  The sentence is that the hook checks whether `.claude/autorun.local.md` exists
-  rather than what it says, so a leftover file drags the next ordinary turn back
-  into the loop. `grep -rn autorun hooks/` comes back empty, and the file is named
-  in exactly two places, both of them skills. So an interrupted run leaves the
-  file lying there inert, and nothing takes the loop up again — which is correct
-  behaviour and not what the sentence describes. A claim about this workflow's own
-  procedure, and those are answered by reading these files.
-  A fix costs a corrected sentence. Building the hook instead is a different and
-  much larger decision — it would make a run resume without being asked, which is
-  the one thing the environment constraints say does not happen. Recorded, not
-  built.
+- **The unattended state file had no reader, and it is gone. Built.**
+  `build-work` said a hook checks whether `.claude/autorun.local.md` exists rather
+  than what it says. `grep -rn autorun hooks/` came back empty; the file was named
+  in exactly two skills and read nowhere. So the round count, the cap, the
+  finishing sentence and the starting commit were all written to a file whose only
+  reader was the run that wrote it. Measured on 6 and 7 September 2026: a run kept
+  it across three tasks and raised its own cap from four to six in the same write,
+  unchecked.
+
+  What the file was for, read out of the two skills that wrote it: a loop bound —
+  `build-work` precondition 3 makes `--max-iterations` mandatory and calls it a
+  rip-cord; a trace for the user — `started_from` is the one field something
+  actually consumed, in the same skill and the same session, for reading the diffs
+  at the end; and a resumption after interruption, claimed by the deletion
+  sentence alone. `setup-project` step 5 gave it no job at all, only a place
+  beside `check-attempts.local`, which is the one local file a hook really does
+  read — and that neighbourliness is most of why it looked like machinery.
+
+  **It got no reader, for three reasons that hold together.** The resumption is
+  not unbuilt but ruled out: **Nothing resumes on its own** in
+  `docs/skill-conventions.md`, and the mode's own description at `setup-checks`
+  step 8 promises the user that nothing starts itself again. The bound cannot be
+  enforced from a hook at all — see **Stderr only reaches the model when the hook
+  exits 2**: on `Stop`, exit 2 continues the turn and exit 0 ends it, so a hook
+  can refuse to let a run stop and can never stop one. That leaves a `PreToolUse`
+  block on one command name, and this file already carries what that is worth: on
+  6 September the branch guard blocked `git push origin --delete` and the same act
+  went through as `gh api -X DELETE` one command later. And the counter would
+  still be written by the run, which is the measured defect exactly — moving the
+  number into a file the run also writes changes nothing about who may raise it.
+
+  What replaced it: the four things are said in the opening message and stay in
+  the conversation; the rounds are counted out loud, one per task taken, read
+  before the next is taken; the cap is the user's number and the run does not
+  change it, with reaching it a stop and a report rather than a renewal; and the
+  same sentence went into `setup-checks` step 8, where the user is promised the
+  cap in the first place. Named rather than hidden, because the wording was walked
+  through five situations first: a restart after an interruption begins a new run
+  against a new number, so two runs of six are twelve; two unattended runs in one
+  working directory count apart and neither sees the other, which is the existing
+  one-task-at-a-time constraint and not a new one; and a `.claude/autorun.local.md`
+  left over from an older version is stale local state carrying a standing
+  instruction to keep taking tasks, so it is deleted and said rather than read.
+  The attended path never reaches any of it — all of it sits inside
+  `## Unattended mode`.
+
+  **The same phantom had a second home.** `README.md` carried it as a general
+  rule — "a hook that gates on a state file's existence must have that file
+  deleted" — under a heading saying both rules there were already fixed in the
+  skills. No hook gates on existence; `stop-checks.sh` reads
+  `check-attempts.local` for its content and deletes it when the checks go green,
+  which is the opposite. Replaced by what the incident actually teaches.
 
 - **Work put off with nothing to bring it back, twice in the same session, and
   that was measured in `devloop-test-o`.** On 31 August 2026 the setup stage
@@ -1015,14 +1055,17 @@ of them if the reason stops holding — the reason is the point, not the verdict
   exception would soften the signal for more than it is worth. The reason first
   written here was a second one — that no real case exists, the two local-state
   files being produced on a branch or by a hook the guard never sees — and **that
-  half has since stopped holding.** Measured on 6 September 2026 in
+  half stopped holding and has since come back.** Measured on 6 September 2026 in
   `devloop-test-o` at 20:14 UTC: the unattended run wrote
-  `.claude/autorun.local.md`, gitignored local state its own step prescribes,
-  while still standing on the main branch, and the guard blocked it. What the run
-  did next is why this is not being reopened: it cut the task branch and wrote the
-  file there, which is what the guard's message asks for and what the step needed
-  anyway. So the verdict stands on the first reason alone. Reopen on a case where
-  the file cannot wait for a branch.
+  `.claude/autorun.local.md`, gitignored local state the step prescribed at the
+  time, while still standing on the main branch, and the guard blocked it. What
+  the run did next is why this was not reopened then: it cut the task branch and
+  wrote the file there, which is what the guard's message asks for and what the
+  step needed anyway. That write is gone — the step no longer writes any such
+  file — so the only local state left is `check-attempts.local`, produced by a
+  hook the guard never sees, and the second reason holds again. The verdict rests
+  on both once more. Reopen on a case where such a file cannot wait for a
+  branch.
 
 ## Names that were rejected
 

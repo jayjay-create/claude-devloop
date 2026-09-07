@@ -416,6 +416,30 @@ half of the proof, and pasting what it answered is the other half. This is the
 narrow, checkable case of a claim needing evidence, and it is the one where the
 evidence is one command away.
 
+**A file only its writer reads is not a safeguard, and it looks exactly like
+one.** The unattended mode kept its round count and its cap in
+`.claude/autorun.local.md`, and a sentence in the skill described the hook that
+read it. `grep -rn autorun hooks/` was empty the whole time. So the run wrote the
+limit, the run read the limit, and the run raised the limit — measured on 6 and 7
+September 2026, four to six, in the same write that advanced the count. Nothing
+went red, because a file with no reader cannot disagree with anybody.
+
+Two things follow, and the second is the one that costs something.
+
+1. **Before writing state to a file, name what reads it back.** Where the answer
+   is "this run", the file is a note to self and should be said in the
+   conversation instead, where the user can see it. A file suggests a mechanism
+   and a sentence does not, and the gap between them is where this hid.
+2. **A limit the limited party maintains is not a limit.** Whoever may raise the
+   number is who the cap actually binds. So a cap set by the user is stated as
+   theirs, the run counts against it out loud and stops on reaching it, and
+   raising it is not among the things a run may do. That is a rule and not a
+   mechanism, and it is said as one: a hook cannot supply the mechanism here —
+   see **Stderr only reaches the model when the hook exits 2**, which leaves a
+   `Stop` hook able to refuse a stop and never able to cause one, and a
+   `PreToolUse` block on a single command name is the shape that was already
+   measured being stepped around.
+
 ## Environment constraints, measured
 
 **Nothing resumes on its own.** A run that hands the user a command and says it
@@ -706,8 +730,13 @@ push`, `gh pr *`. They must be granted before the run — nobody is there to
 answer a prompt during it.
 
 **The `checks.md` parsers are shell scripts.** Backticks and apostrophes in a
-table cell used to break them; they are stripped now, but keep machine-read
-columns plain. The `Status` column takes only `filled`, `empty`,
+table cell used to break them. Backticks are stripped, in both parsers, in every
+column they read. Apostrophes are not stripped anywhere and no longer need to be:
+each cell is passed through a quoted `sed`, where an apostrophe is an ordinary
+character — checked on 7 September 2026 by running `stop-checks.sh` over a table
+with one in a cell. Keep machine-read columns plain all the same; the parsers
+split each row by position with `IFS='|'`, so a `|` inside a cell still shifts
+every column after it. The `Status` column takes only `filled`, `empty`,
 `skipped: <reason>` — spelled exactly, ASCII only.
 
 **A hook cannot force wording.** `SessionStart` stdout arrives as context. There

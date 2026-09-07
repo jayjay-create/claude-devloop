@@ -805,23 +805,48 @@ checks — only the gate differs.
    `Blocking: yes`: a required check that runs nothing would let everything
    through, which is not a gate but the appearance of one.
 
-Then write `.claude/autorun.local.md` with `iteration`, `max_iterations`,
-`completion_promise`, `scope`, and `started_from` (the current main-branch
-commit), followed by the standing instruction: take the next ready task in scope,
-build it, run everything in `checks.md`, review, set the pull request to
-auto-merge if green, and emit the completion phrase only when no ready task
-remains in scope.
+Then say what this run turns on, in the message that opens it, and keep it in
+the conversation: the scope, the cap and which round this is, the sentence that
+will mean it has finished, and the main-branch commit it starts from. **None of
+it goes into a file.** Nothing on disk reads such a file — no hook watches for an
+unattended run — so one written here is read only by the run that wrote it, which
+is bookkeeping in the coat of a safeguard. Measured on 6 and 7 September 2026: a
+run kept exactly that file across three tasks and raised its own cap from four to
+six in the same write, and nothing anywhere noticed.
 
-Emit that phrase only when it is completely and unambiguously true — never to get
-out of the loop.
+**Count the rounds out loud.** Every task opens by saying which round of how
+many. A round is counted when a task is taken and the count is read before taking
+the next one, so the cap never falls in the middle of a half-built task.
 
-When the run finishes, **delete the state file.** Do not write a status into it
-and leave it lying there: the hook checks whether the file exists, not what it
-says, so a leftover file drags the next ordinary turn back into the loop. Add its
-path to `.gitignore` — it is runtime state and does not belong in the repository.
+**The cap is the user's number and this run does not change it.** Not upward
+because the work turned out larger, not for one more task. Raising it removes the
+only limit the mode has, and nothing else in the mode stops it. Reaching it is a
+stop and not a renewal: say the cap is reached, say what is still ready and what
+is in flight, and say that a new number from them starts a new run from where
+this one got to.
 
-Tell the user how to read the diffs afterwards, from `started_from` to the
-current main branch, and how to stop the run.
+**A run that stops short carries nothing forward.** Nothing here resumes on its
+own, so an interrupted run keeps no count: `--auto` again is a new run against a
+new number, and two runs of six are twelve. Say that when the cap is set — it is
+the one way the cap gets exceeded with nobody breaking a rule.
+
+**One unattended run per working directory.** Two share a checkout and a main
+branch, count their rounds apart, and neither sees the other's, so across the
+pair the cap means nothing. Same constraint that already allows only one build
+task at a time, not a second one.
+
+**A `.claude/autorun.local.md` lying about is stale, not an instruction.** An
+earlier version of this stage wrote one, and it carries a standing instruction to
+keep taking tasks. Nothing writes it now and nothing ever read it. Delete it, say
+that you did, and take the scope and the cap from this conversation.
+
+Emit the finishing sentence only when it is completely and unambiguously true —
+never to get out of the loop.
+
+Tell the user how to read the diffs afterwards, from the commit named at the
+start to the current main branch, and how to stop the run — which is a message
+from them. If the session itself is gone, the merged pull requests cover the same
+ground.
 
 ---
 

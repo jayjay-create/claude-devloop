@@ -497,7 +497,10 @@ ordinary words:
   at once, then the findings fixed, then a pull request handed to the platform,
   which merges it itself once the required check is green. Then the next task,
   until nothing in scope is ready any more or the agreed number of rounds is used
-  up.
+  up. **That number is theirs.** The run counts the rounds out loud and stops when
+  it reaches the agreed one; it never raises it to fit the work, because nothing
+  else in this mode would stop it. Reaching it is a stop with a report, and a new
+  number from them starts a new run.
 - **Where it still stops.** Deciding what gets built and cutting it into tasks
   never runs unattended — that stays with them, and this mode only builds tasks
   that already exist. Beyond that it stops rather than guesses: a precondition
