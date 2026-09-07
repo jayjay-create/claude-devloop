@@ -98,11 +98,48 @@ that is the report. A re-read a skill prescribes is not a second attempt either:
 waiting ten seconds for a value that moves is an instruction being followed, not
 a command being retried.
 
+**A guard is answered, not got around.** Its block is a message, not a hurdle,
+and the way through is the one the message names. The same act under a different
+command name is the act that was refused, and a text reworded until the match no
+longer catches is the same command with the words changed; neither is a second
+attempt and neither is a way through. Say what was blocked — the command as it
+ran, the message that came back, and what the block costs the work in hand,
+whatever that work is — then do what the message asks. Where the
+block looks wrong, that reading is said and not acted on: a refusal held to be a
+false positive is still a refusal, and overriding one is not the run's call.
+Where nobody is there to hear it, the run does not carry on past it either. A
+block stepped around leaves a run looking clean over an act nobody agreed to,
+which is the whole reason this is written down.
+
 **With nobody there to tell, the report is still written.** An unattended run
 has no one to explain a permission to, so the command and the message go into
 its own report and it stops there, rather than carrying on past a step that did
 not run. That a permission prompt appeared at all is a finding in itself: the
 tool classes the run needed were not all approved before it started.
+
+## A guard's block, with nobody there
+
+The shared block above says a guard's refusal is answered rather than got around,
+and that where nobody is there the run does not carry on past it. This is the
+third case of a shape this skill already carries twice — the turn-end hook in
+step 3, and a refused arming in step 6 — and it gets the same answer.
+
+- **With the user there**, the message is the answer. Hand the block over in the
+  form the message asks for: the command as it ran, the message that came back,
+  and, where the block is held to be a false positive, the reading that rests on.
+  The decision is theirs and it goes both ways. Where they lift it, performing the
+  act is theirs or their say-so is, and this picks up as soon as they say which;
+  where they let it stand, the run does what the message asked and says what that
+  costs the task — a step not taken, or a task that cannot be finished as cut.
+- **Unattended there is nobody to decide**, and waiting is not a stop with a
+  reason — it is a standstill in the middle of a task that still looks like it is
+  running. Raise an issue carrying the command, the message and the reading,
+  label it `raised-here` and `needs-human`, and record it as a blocker of the
+  task. Then put the task down and go back to step 2: the readiness query passes
+  over a blocked task by itself, so the run carries on with the rest instead of
+  standing on one.
+
+**Say which of the two happened**, either way.
 
 ## How to ask
 
@@ -205,6 +242,43 @@ that has not seen that red knows nothing about which of the two it has.
 secrets, dependencies, code-security. The set is fixed; what varies per project
 is which are `filled`, which are `skipped` with a reason, and which are still
 `empty`.
+
+**A body this skill writes goes through a file, not through the command line.**
+An issue body, a pull request body, a comment: write it to a file and pass
+`--body-file`, rather than setting it as a string in the command. Two reasons,
+and the second is the one that bites. Prose gets quoting wrong — a backtick, a
+dollar sign, a newline — and a body the shell mangled is not the body that was
+written. And the guards read the command as text, so a body quoting a command
+one of them matches blocks the very call that was meant to hand that command
+over: the declined install in step 3 becomes an issue carrying the exact command,
+and passed as a string that issue cannot be filed at all. Narrowing what reaches
+a guard is written down here rather than worked out at the block, and that is
+what separates it from the rewording the shared block forbids.
+
+**The file itself is written with the editing tool.** A heredoc, an `echo` or a
+`cat` puts the same text through the shell, where the guard reads it, so nothing
+is narrowed at all — the shell carries the `gh` call and nothing else. This is
+the half the rule was missing when it was first written, and it is the half that
+was measured: the pull request body on 6 September 2026 was blocked as a string
+and blocked again on the way into a file.
+
+**A title names the problem; it does not quote the command.** The title stays on
+the command line — `gh` has no `--title-file` — so what keeps it clear of a guard
+is what it says, not how it travels: "gitleaks cannot be set up", rather than the
+broken install line repeated. The command belongs in the body, where it can be
+copied. Two things that look like the fix are not: putting the title through a
+substitution that reads a file, and setting a plain title and editing it
+afterwards. Both are spellings that get through, which is the one move the shared
+block forbids. And where a title genuinely needs the command in it, that is a
+false positive, and the shared block already says what happens to one: it is
+reported, not reworded.
+
+**`docs/agents/environment.md` is written with the editing tool, not appended
+from the shell.** The same two reasons one layer over — its content is prose
+about commands, so a shell append is both a quoting risk and a line the guards
+read — and a third of its own: a change bundled into a shell command goes past
+the per-file hooks entirely, which is harmless for a version marker and not for
+content.
 
 ## Step 1 — Check the base
 

@@ -72,11 +72,47 @@ that is the report. A re-read a skill prescribes is not a second attempt either:
 waiting ten seconds for a value that moves is an instruction being followed, not
 a command being retried.
 
+**A guard is answered, not got around.** Its block is a message, not a hurdle,
+and the way through is the one the message names. The same act under a different
+command name is the act that was refused, and a text reworded until the match no
+longer catches is the same command with the words changed; neither is a second
+attempt and neither is a way through. Say what was blocked — the command as it
+ran, the message that came back, and what the block costs the work in hand,
+whatever that work is — then do what the message asks. Where the
+block looks wrong, that reading is said and not acted on: a refusal held to be a
+false positive is still a refusal, and overriding one is not the run's call.
+Where nobody is there to hear it, the run does not carry on past it either. A
+block stepped around leaves a run looking clean over an act nobody agreed to,
+which is the whole reason this is written down.
+
 **With nobody there to tell, the report is still written.** An unattended run
 has no one to explain a permission to, so the command and the message go into
 its own report and it stops there, rather than carrying on past a step that did
 not run. That a permission prompt appeared at all is a finding in itself: the
 tool classes the run needed were not all approved before it started.
+
+## A guard's block is not a decline
+
+The shared block above says a block is answered rather than got around, and that
+what it costs this work gets said. Here the cost turns on which of two things
+happened, and the run says which — the guard's own message asks for exactly that
+in its last line.
+
+- **The command really is an install this step needs.** The guard did what it was
+  built for. With the user there this is the question the step already puts about
+  missing tools, answered where that question is answered — nothing new is asked
+  here. With nobody there, there is no one to ask: it becomes an issue
+  labelled `needs-human` carrying the command and the message, and the report is
+  written and the run stops there rather than carrying on past a step that did
+  not run.
+- **The command is not an install and the guard matched on text.** Then nothing
+  needs a human decision, and raising one would put a question to somebody that
+  has no answer to give. Do not raise it. Put the text through the editing tool
+  rather than through the shell, and where that does not reach, the report is
+  written and the run stops there.
+
+What tells the two apart is what the command would have done, not what the guard
+matched.
 
 ## Language
 

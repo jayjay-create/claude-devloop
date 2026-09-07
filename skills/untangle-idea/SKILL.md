@@ -82,6 +82,19 @@ that is the report. A re-read a skill prescribes is not a second attempt either:
 waiting ten seconds for a value that moves is an instruction being followed, not
 a command being retried.
 
+**A guard is answered, not got around.** Its block is a message, not a hurdle,
+and the way through is the one the message names. The same act under a different
+command name is the act that was refused, and a text reworded until the match no
+longer catches is the same command with the words changed; neither is a second
+attempt and neither is a way through. Say what was blocked — the command as it
+ran, the message that came back, and what the block costs the work in hand,
+whatever that work is — then do what the message asks. Where the
+block looks wrong, that reading is said and not acted on: a refusal held to be a
+false positive is still a refusal, and overriding one is not the run's call.
+Where nobody is there to hear it, the run does not carry on past it either. A
+block stepped around leaves a run looking clean over an act nobody agreed to,
+which is the whole reason this is written down.
+
 **With nobody there to tell, the report is still written.** An unattended run
 has no one to explain a permission to, so the command and the message go into
 its own report and it stops there, rather than carrying on past a step that did
