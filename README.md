@@ -103,9 +103,9 @@ able to finish, not judgements about it: without them it would build a task and
 then sit on a pull request nobody is there to merge. Attended runs are unaffected
 either way. There is no cap on how many tasks it gets through: it runs until
 nothing in scope is ready any more, and picks up work that turns up along the way
-where it serves the same goal. The limit sits inside a task instead — five whole
-runs of the check suite, after which the task is put down with a record of what
-was red each time, and the next one is taken up.
+where it serves the same goal. What bounds a single task is the turn-end hook,
+which runs the check suite itself and hands the problem over once the same
+classes have failed three turns running.
 
 Unattended does not mean unread. Read the diffs afterwards, in one go.
 
@@ -129,7 +129,9 @@ the end of every turn, and a guard that blocks file writes, `git commit` and
 gives up after three attempts at the same failure and hands it to you, rather
 than looping. What it hands you is meant to be actionable in one step: a command
 to paste, a script that gathers the environment, a smaller case that reproduces
-the failure, or a question only you can answer.
+the failure, or a question only you can answer. In an unattended run there is
+nobody to hand it to, so the same report becomes an issue against that task and
+the run carries on with the next one.
 
 ## What it writes into your project
 

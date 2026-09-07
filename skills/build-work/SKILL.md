@@ -339,9 +339,7 @@ The subagent:
    leftover of the first.
 5. Commits behaviour changes separately from mechanical ones.
 6. Runs everything `checks.md` lists before reporting done. A report a later gate
-   rejects is not a report. That whole-chain run is a **pass**, and there are five
-   of them — the second section at the end of this step says what happens on the
-   fifth.
+   rejects is not a report.
 7. Never installs anything that lands outside the repository — a compiler, a
    runtime, a tool from a package manager. That is the user's to run, the same
    way merging is, and a guard blocks it. Report what it installs, what it
@@ -449,66 +447,37 @@ only the whole suite can be run, the cycle is a whole suite — say that and pay
 it. Dropping the proof because the target is slow buys back seconds and hands the
 run back its ability to report done on evidence it does not have.
 
-### Five passes over the check chain
+### When the turn-end hook hands the problem over
 
-**A pass begins when this build believes it is done and runs the whole chain
-from `checks.md`.** Red on a pass means it was wrong about its own state, and
-that is the only thing counted here. Red while building does not count: point 2
-is test-first, where red is the normal condition and the signal that the loop is
-working. Neither does a narrow target run to prove a condition — that red is
-produced on purpose and is the section above.
+`hooks/stop-checks.sh` runs the whole chain at the end of every turn and counts
+the turn-ends whose set of failing classes has not changed. At three it exits 2
+once, with the failures written out and a request to hand the problem to a
+person, and then goes quiet. That is enforcement and not instruction — it runs
+the chain itself and nothing here has to co-operate with it — and it is the one
+thing bounding a build that goes round in circles.
 
-**Five passes, and the fifth is run like any other.** A pass that comes back
-green ends the task the ordinary way, on the fifth as much as on the first. What
-ends it the other way is a fifth pass that comes back red. One pass is the normal
-case; a second is common and usually legitimate, because the first whole-chain
-run reaches classes the narrow runs during building never touch. Five is meant to
-catch a task where something is wrong underneath, not a task that is merely
-stubborn — which is why it is not three.
+**It cannot tell whether anybody is there.** It reads nothing from the turn: it
+discards its input, and the only variable it uses is `CLAUDE_PROJECT_DIR`. There
+is no mark of an unattended run for it to find either — `--auto` is a word typed
+to a skill, not a flag the harness passes down, and nothing on disk records the
+mode. So the difference is drawn here, in the text, and the message is read
+differently depending on who is present.
 
-**Five is fixed here and nothing may move it.** No flag, no argument, no reading
-it out of a file: nothing else calls this step, and a limit the run can raise is
-not a limit — which this workflow has already paid for once, in the state file
-that a run kept and whose cap it lifted in the same write.
+- **With the user there**, the message is the answer. Hand the problem over in
+  the form it asks for and wait.
+- **Unattended there is nobody to hand it to**, and waiting is not a stop with a
+  reason — it is a standstill in the middle of a task that still looks like it is
+  running. This is the same shape as a refused arming in step 6, and it gets the
+  same answer. Raise an issue saying the task is not buildable as cut, carrying
+  what the hook reported — the failing classes and their output — together with
+  whatever it asked to have handed over. Label it `raised-here` and
+  `needs-human` and record it as a blocker of the task. Then put the task down
+  and go back to step 2: the readiness query passes over a blocked task by
+  itself, so the run carries on with the rest instead of standing on one.
 
-**A pass that never reached a verdict is not a pass.** Where the chain did not
-run — a command refused, a runner that gave no answer — nothing was learned about
-the code, so nothing is counted. Report it under **When a command does not
-answer**, above, and run the pass again. What is counted is a chain that ran and
-came back.
-
-**Write down what was red, pass by pass, as it happens.** Per pass: which check
-classes came back red and the cause of each. Not a summary at the end — a list
-kept only in this subagent's context dies with it, the same way the condition
-proofs would, and by the fifth pass nobody can reconstruct the first. The list
-travels up with the build's report.
-
-**On a red fifth pass the task goes back, and the list is what makes it useful.**
-Whether it was one class five times for one reason or five different classes is
-the whole of what a reader needs, and only the per-pass list says which.
-
-- **With the user there:** report it, with that list, and **say what should
-  happen next** rather than that it cannot be done. Name the one that fits —
-  the task wants recutting, the design wants checking at this point, or an
-  assumption from planning is wrong and wants correcting.
-- **Unattended:** raise an issue saying the task is not buildable as cut, with
-  the same list, labelled `raised-here` and recorded as a blocker of the task.
-  Then put the task down and go back to step 2. The readiness query passes over a
-  blocked task by itself. Standing still instead would leave nobody to notice,
-  which is worth less than carrying on with the rest.
-
-**The turn-end hook is a different limit and can fire first.** It counts
-turn-ends whose set of failing classes has not changed, stops at three, and asks
-for the problem to be handed over. It counts turns, not passes, and it resets
-whenever the failure changes — so where it speaks first, that is the answer and
-these five are never reached. Say which of the two stopped the task.
-
-**The count does not outlive this build.** A build broken off and taken up again
-starts a new series of five, because nothing here resumes on its own and no file
-carries a count. So when a series ends on a red fifth pass, the list goes into
-the task issue as well as into the report — attended and unattended alike — and a
-build that finds one already there says so and that this is the second series.
-That is the only thing that makes a repeated series visible; nothing enforces it.
+**Say which of the two happened**, either way. A task that came back as an issue
+rather than as a merge is the single most likely outcome this mode has, and it is
+named at the offer for that reason.
 
 ## Step 4 — Review it
 
@@ -878,8 +847,10 @@ noticed.
 nothing in scope is ready any more, and that is the only finish. Work that turns
 up along the way is taken on where it serves the same goal, and a run that stops
 with ready work left because a number ran out has stopped for no reason to do
-with the work. The one limit in this mode sits inside a task, not across them:
-five passes over the check chain, in step 3.
+with the work. What does bound a single task is the turn-end hook, which runs the
+chain itself and hands the problem over after three turn-ends with the same
+classes failing — and with nobody there to hand it to, that becomes an issue
+against the task and the next task is taken up. Step 3 says how.
 
 **One unattended run per working directory.** Two share a checkout and a main
 branch and neither sees what the other is building. Same constraint that already

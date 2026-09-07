@@ -430,24 +430,32 @@ Two things follow, and the second is the one that costs something.
    is "this run", the file is a note to self and should be said in the
    conversation instead, where the user can see it. A file suggests a mechanism
    and a sentence does not, and the gap between them is where this hid.
-2. **A limit the limited party maintains is not a limit.** Whoever may raise the
-   number is who it actually binds. So a limit that has to hold is written into
-   the step itself, with no flag and no argument and nothing to read it out of —
-   which is only available where nothing else calls that step, and where it is
-   available it is the whole of the answer. Where a number does have to come from
-   outside, it is the user's, said as theirs, and raising it is not among the
-   things a run may do. Either way it is a rule and not a mechanism, and it is
-   said as one: a hook cannot supply the mechanism here — see **Stderr only
-   reaches the model when the hook exits 2**, which leaves a `Stop` hook able to
-   refuse a stop and never able to cause one, and a `PreToolUse` block on a single
-   command name is the shape that was already measured being stepped around.
+2. **A limit the limited party maintains is not a limit, and writing the number
+   down does not change that.** Two things are wrong with a cap a run keeps, and
+   they need separating. One is that the run may move it, which is answered by
+   fixing the number in the step where nothing else calls it. The other survives
+   that answer untouched: the run still has to keep the count against itself, and
+   a number in a skill is an instruction like every other instruction in it — the
+   same kind of thing as the steps a run has been measured skipping. Fixing the
+   number removes the adjusting, not the counting.
 
-   And a limit is worth having only over the thing that actually goes wrong.
-   A ceiling on how many tasks an unattended run may finish bounds its cost, not
-   its quality, and the person switching that mode on has already accepted the
-   cost; the failure it was supposed to catch — a build going round and round on
-   one task, reaching green by weakening the check — lives inside a task and
-   needed its own count there. Bound the repetition, not the delegation.
+   **So a limit is either enforced from outside the run or it is not a limit, and
+   the difference has to be said where it is written.** Enforcement here means a
+   hook that does the work itself and blocks: `hooks/stop-checks.sh` runs the
+   check chain, counts the turn-ends whose failure has not changed, and exits 2 at
+   its limit — nothing in the run has to co-operate. Compare **Stderr only
+   reaches the model when the hook exits 2**, which is why a `Stop` hook can
+   refuse a stop and never cause one, and a `PreToolUse` block on a single command
+   name is the shape already measured being stepped around. Where no such
+   mechanism is available, what remains is a rule, and it is said as a rule.
+
+   **A limit that reads like a safeguard and is not one is worse than no limit at
+   all.** Whoever reads it later takes the case for covered and stops looking for
+   the thing that would actually catch it. So an open case is recorded as open in
+   `docs/roadmap.md` rather than answered with a sentence that only looks like an
+   answer — which is the same move as **A file only its writer reads is not a
+   safeguard**, one level further out: there the machinery was missing, here the
+   machinery was never possible.
 
 ## Environment constraints, measured
 
@@ -782,6 +790,19 @@ and nobody reads it, exit 2 and the turn continues. The way out is a counter tha
 keeps counting past its limit — exit 2 exactly once at the limit so the model gets
 one turn to hand the problem over, then exit 0 silently on every further stop with
 the same failure.
+
+**A hook that says "hand this to a person" assumes there is one, and it cannot
+check.** `stop-checks.sh` discards its input and uses one variable,
+`CLAUDE_PROJECT_DIR`; nothing in a `Stop` event says whether anybody is reading,
+and an unattended run is this workflow's own idea rather than a state of the
+harness — the word that starts one is typed to a skill and never reaches the
+process. So a hook's instruction to wait for somebody is written for the ordinary
+case, and every skill on a path that can run unattended has to say what that
+message means when nobody is there. Left unsaid, the run does what the message
+says: it waits, in the middle of a task that still looks like it is working,
+which is a standstill and not a stop with a reason. The general form is the one
+the merge guard already needed — **a hook cannot see consent** — turned around:
+it cannot see absence either.
 
 
 ## Who may invoke a skill
