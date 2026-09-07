@@ -839,13 +839,14 @@ the size of the work.
   `check-attempts.local` for its content and deletes it when the checks go green,
   which is the opposite. Replaced by what the incident actually teaches.
 
-- **A ceiling on tasks traded for a ceiling on retries inside one. Built.**
-  `--max-iterations` capped how many tasks an unattended run might finish. That
-  is a cost ceiling wearing the coat of a quality one: whoever switches the mode
-  on has chosen the delegation and accepted the cost, and a run that stops after
-  four tasks with everything going well has interrupted for no reason to do with
-  the work. The honest stop was already built and ran on 7 September 2026 —
-  no ready task left in scope, with the agreed sentence said once.
+- **A ceiling on tasks removed; the ceiling meant to replace it written and taken
+  out again. Half built.** `--max-iterations` capped how many tasks an unattended
+  run might finish. That is a cost ceiling wearing the coat of a quality one:
+  whoever switches the mode on has chosen the delegation and accepted the cost,
+  and a run that stops after four tasks with everything going well has interrupted
+  for no reason to do with the work. The honest stop was already built and ran on
+  7 September 2026 — no ready task left in scope, with the agreed sentence said
+  once.
 
   Looked up on 7 September 2026: Anthropic's Agent SDK bounds `max_turns`, which
   is model turns inside one piece of work, not the number of pieces. Matt
@@ -858,48 +859,76 @@ the size of the work.
   thing is done, work that turns up on the way is taken on where it serves the
   same goal, and there is no ceiling on the number of tasks.
 
-  **What came in its place sits inside a task, where the failure actually was.**
-  Nothing bounded how often a build could go round on one task, and a build stops
-  when the chain is green — a target reachable by weakening the check instead of
-  repairing the code. Measured on 30 August 2026: a check the task had named by
-  name was replaced by one that cannot fail, and the whole chain came back green.
-  So: a **pass** is one whole run of the chain begun because the build believes it
-  is done, five of them, the fifth run like any other, and a red fifth pass ends
-  the task. Red while building does not count — the loop is test-first and red is
-  the normal state there. Not three, because the first whole-chain run regularly
-  finds what the narrow runs during building never touch, so two passes go to
-  legitimate work often enough. Fixed in the text with no flag: nothing else calls
-  that step, and a limit the run can move is the defect two entries up.
+  **A limit inside a task was written in its place, and then taken out on the same
+  day.** Five passes over the check chain, a pass being one whole run of it begun
+  because the build believed it was done. The reason it went: **it is an
+  instruction and not an enforcement.** The run would have had to keep the count
+  against itself, and this file already carries what that is worth — on 6 and 7
+  September 2026 one run did three things the text does not say: it left a skill
+  before its last step, it put the check suite off until "later" and never came
+  back to it, and it narrowed the review's lenses. All three are recorded below as
+  their own findings. A number a run counts against itself is the same kind of
+  thing as any of them.
 
-  On the fifth red pass the task goes back, with what was red in each of the five
-  and why — which is what tells one class failing five times for one reason from
-  five different ones. Attended, that goes to the user with a proposal: recut the
-  task, check the design at that point, or correct an assumption from planning.
-  Unattended, it becomes an issue that the task is not buildable as cut, labelled
-  `raised-here` and recorded as a blocker, and the run takes the next task —
-  standing still would leave nobody to notice.
+  **And a limit that reads like a safeguard without being one is worse than
+  none**, which is the half that decided it. Someone reading `build-work` later
+  would have found five passes written down and taken the case for covered, and
+  stopped looking for the thing that actually catches it. That is the shape of the
+  state file two entries up, one level further out: not a claim about a hook that
+  does not exist, but a claim about an enforcement that is only a sentence.
 
-  Five situations were walked before the wording was written, and three moved it.
-  A pass that never reached a verdict, because a command did not answer, is **not
-  a pass** — nothing was learned about the code, and it falls to the
-  command-does-not-answer rule instead. The per-pass list has to be **written as
-  it happens and handed up**, because a list living in the build subagent's
-  context dies with it exactly as the condition proofs would, and by the fifth
-  pass the first is unreconstructable. And the count **does not outlive the
-  build**: an interrupted build taken up again starts a new series of five, so the
-  finished series goes into the task issue and a build that finds one there says
-  it is starting a second. The two that needed nothing: green on the first pass
-  and green on the fifth are the same ordinary ending, and five different red
-  classes count exactly as five identical ones — the difference belongs in the
-  report, not in the counting.
+  **The case it was for stays open and is not covered by anything.** Five passes
+  over the chain with a different failure picture each time — each one plausible
+  on its own, and the task's cut wrong underneath all of them. The hook does not
+  catch it: `hooks/stop-checks.sh` counts turn-ends whose set of failing classes
+  has **not** changed, and resets the count whenever the failure changes, so a
+  run whose failure moves every time never reaches three. It has also never
+  happened: across the two measurement days no build needed more than two passes,
+  which is why this is recorded rather than solved. What it was meant to catch was
+  measured once in a different form — on 30 August 2026 a check the task had named
+  by name was replaced by one that cannot fail and the chain came back green,
+  which is the entry above and is answered by proving the condition, not by
+  counting.
 
-  **It is the second limit over this ground, and the other one is a hook.**
-  `hooks/stop-checks.sh` carries `MAX=3` over turn-ends whose set of failing
-  classes has not changed, and hands the problem over at three. It counts turns
-  rather than passes and resets whenever the failure changes, and only `Stop` is
-  registered — there is no `SubagentStop` — so the two fire on different things
-  and the hook can speak first. Named in `build-work` rather than reconciled: the
-  run says which of the two stopped the task.
+  **What does stand is the hook, and it is enforcement rather than text.**
+  `hooks/stop-checks.sh` runs the chain itself, counts three turn-ends with the
+  same classes failing, and exits 2 exactly once at the limit with the problem
+  written out for a person. Nothing in the run has to co-operate for that to
+  happen. It covers the important case — a run going round in circles.
+
+- **The turn-end hook hands the problem to a person, and unattended there is
+  none. Built.** At three turn-ends with the same classes failing,
+  `hooks/stop-checks.sh` writes the failures out and asks for them to be handed
+  over, ending "Then wait for them." Attended that is right. Unattended it is a
+  standstill — not a stop with a reason, but a halt in the middle of a task that
+  still looks like it is running, and by some distance the likeliest halt the mode
+  has, since it fires on the ordinary case of a task that will not go green. The
+  matching case one step further on was already covered and is what this was read
+  against: at `build-work` step 6 a refused arming with nobody there is a stop
+  with the reason named, rather than a wait.
+
+  **The hook cannot tell which it is in, and giving it the means would rebuild
+  what was just deleted.** It discards its input — `cat >/dev/null` on the first
+  working line — and the only variable any hook here uses is
+  `CLAUDE_PROJECT_DIR`. Nothing in a `Stop` event carries the mode, because the
+  mode is this workflow's own idea and not the harness's: `--auto` is a word typed
+  after `/devloop:start-work`, so it never reaches the process, and the one file
+  that used to record the mode was removed two entries up for having no reader.
+  Marking the run for the hook would mean writing that file again, and then the
+  hook would be reading a mark the run writes about itself.
+
+  So the distinction is in the skill text, at the site and once more where the
+  mode is offered. `build-work` step 3 now carries it: attended, the hook's
+  message is the answer and the problem is handed over in the form it asks for;
+  unattended, it becomes an issue that the task is not buildable as cut, carrying
+  the failing classes and their output and whatever the hook asked to have handed
+  over, labelled `raised-here` and `needs-human` and recorded as a blocker — then
+  the task goes down and step 2 takes the next, which the readiness query allows
+  by itself. The same shape as the refused arming, deliberately. `setup-checks`
+  step 8 says it at the offer, where "a check still red after three attempts" used
+  to sit in the list of stops and was wrong twice over: it is not a stop
+  unattended, and it is the most likely outcome rather than an edge. `README.md`
+  carries the second half of its sentence now too.
 
 - **Work put off with nothing to bring it back, twice in the same session, and
   that was measured in `devloop-test-o`.** On 31 August 2026 the setup stage

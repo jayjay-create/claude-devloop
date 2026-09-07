@@ -501,16 +501,20 @@ ordinary words:
   and green again, then the whole check suite, then a review from several angles
   at once, then the findings fixed, then a pull request handed to the platform,
   which merges it itself once the required check is green. Then the next task,
-  until nothing in scope is ready any more. Inside a single task there is a
-  limit — five whole runs of the check suite, after which the task is put down
-  with a written record of what was red each time and the next one is taken up.
-  Across tasks there is none.
+  until nothing in scope is ready any more.
 - **Where it still stops.** Deciding what gets built and cutting it into tasks
   never runs unattended — that stays with them, and this mode only builds tasks
   that already exist. Beyond that it stops rather than guesses: a precondition
-  missing when it starts, named; a check still red after three attempts; a merge
-  it cannot get past; a permission prompt, which nobody is there to answer, which
-  is why the kinds of command it needs have to be approved before it starts.
+  missing when it starts, named; a merge it cannot get past; a permission prompt,
+  which nobody is there to answer, which is why the kinds of command it needs
+  have to be approved before it starts.
+- **What a task that will not go green does, which is not stop.** Where the same
+  checks fail three turns running, the turn-end hook says so and asks for a
+  person — and with nobody there, waiting on that would leave the run standing
+  in the middle of a task that still looks busy. So it writes the failure up as
+  an issue against that task, puts the task down and takes the next one. Say
+  this: it is the likeliest thing that will actually happen, and it means some
+  tasks come back as issues to read rather than as merged work.
 - **How they see it has finished.** The closing sentence agreed at the start,
   said only once nothing ready is left in scope. What was built reads as the diff
   from the commit noted at the start to the current main branch.
