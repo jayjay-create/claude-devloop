@@ -1079,6 +1079,37 @@ silently — one fewer line, and nothing says a line went missing. So the phrasi
 get added as they are coined, and a line disappearing from this output is read as
 a question rather than as progress.
 
+**Two forms now come out of this check, and the boundary between them is what a
+reader has to see, or they will rewrite one into the other.** Their word is
+always what releases the run — nothing else can say they are done — so a line
+resuming on it is not by itself the defect. **What their word may not be is the
+evidence that the act succeeded.** Where the act has an outcome the run can read,
+the word releases it and the outcome decides; where what is being waited for is a
+decision of theirs, there is no outcome to read, the word is the thing itself,
+and resuming on it is the only possible form rather than a defect. Today's seven
+lines fall out like this — seven lines over six sites, because `setup-checks`
+matches on two consecutive ones:
+
+- **The outcome is read, by this sentence.** `build-work` step 3 point 7, the
+  install: the tool is at the path that installer writes to, or the command did
+  not do what it was handed over for. This is the only line phrased "picks up
+  once", and it is the one the rewrite was for.
+- **The outcome is read, elsewhere.** The three merge handovers — `build-work`
+  step 6, `setup-checks` step 7, `setup-project` step 8 — and the diverged-base
+  handover in `build-work` step 1. Their word releases the run; whether the merge
+  landed is then a query like any other under "Never assert state — query it",
+  and `setup-checks` says it outright in the next clause, "do not go on to the
+  next step on top of an unmerged suite". **These stay exactly as they are.**
+  Rewriting them into the install's form would put the reading in the resumption
+  sentence, where it is already done one step later and better.
+- **There is no outcome, and there cannot be.** `build-work`'s lifted guard
+  block: what is waited for is which of two ways they want it to go. A decision
+  leaves nothing on disk to look at. The word is the whole of it.
+
+So the question to ask of a line in this output is not which wording it uses. It
+is whether the act behind it leaves a result anywhere, and if it does, whether
+something reads that result before the run carries on.
+
 The installed copy is the copy you changed:
 
     diff ~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])")/skills/start-work/SKILL.md skills/start-work/SKILL.md
