@@ -455,10 +455,63 @@ worse than not offering the mode at all.
 project can run through without stopping at every task for approval. What a yes
 costs, said at the moment of asking — a workflow file is added, the main branch
 becomes protected, that protection applies to the user too so they can no longer
-push to it directly either, and on a private repository the workflow spends the
-account's Actions minutes. What a no means: everything works exactly as it does
-now, every task comes back for approval, and this can be set up later without
-redoing anything.
+push to it directly either, on a private repository the workflow spends the
+account's Actions minutes, and **the mode only works while this window is open
+and the machine is awake**. Say that last one in ordinary words and without
+naming a setting: it builds one task after the next for as long as it is
+running, and if the machine goes to sleep — the lid closed, or left alone long
+enough that it drops off by itself — it stops where it is and carries on only
+once the user is back and says so. It is a cost like the others, not a footnote:
+measured on 6 September 2026, a run carried straight on by itself after the
+first merge and stood still the moment the machine went to idle sleep; the two
+tasks after it landed the next morning, nine and a half hours later, after a
+one-word message. What a no means: everything works exactly as it does now,
+every task comes back for approval, and this can be set up later without redoing
+anything.
+
+**Say how the machine can be kept from dropping off, and do not make a second
+question out of it.** It is something the user does outside the run, and a second
+question beside the real one blurs the real one. Read what this is running on
+before naming anything — `uname -s` — and name a command only for the system that
+came back. On macOS, which answers `Darwin`, that is `caffeinate`, started by
+them in a terminal of their own and left running until they end it with Ctrl-C:
+`caffeinate(8)` on that machine, read on 7 September 2026, says it creates an
+assertion that prevents idle sleep and holds it for as long as the process runs.
+**Say what it does not cover in the same breath.** That assertion holds off the
+sleep that comes of the machine being left alone. Closing a laptop lid is a
+different route into sleep and does not go through it — a closed lid sleeps
+anyway — so a hint that leaves this out sells a safety it does not have. On any
+other system, name a command only where that machine's own documentation backs
+it, its manual page or the vendor's own words; where nothing does, name none and
+say only that the machine has to stay awake. A `uname -s` that does not answer is
+that same case.
+
+**Say what a yes leads to, before they answer.** Otherwise they are agreeing to a
+mode whose course nobody has described to them. Four things, short and in
+ordinary words:
+
+- **What the run then does, in order.** It takes the ready tasks one after
+  another. Each gets its own branch, then the code, then a deliberate break of
+  every condition the task promises so the check guarding it is seen going red
+  and green again, then the whole check suite, then a review from several angles
+  at once, then the findings fixed, then a pull request handed to the platform,
+  which merges it itself once the required check is green. Then the next task,
+  until nothing in scope is ready any more or the agreed number of rounds is used
+  up.
+- **Where it still stops.** Deciding what gets built and cutting it into tasks
+  never runs unattended — that stays with them, and this mode only builds tasks
+  that already exist. Beyond that it stops rather than guesses: a precondition
+  missing when it starts, named; a check still red after three attempts; a merge
+  it cannot get past; a permission prompt, which nobody is there to answer, which
+  is why the kinds of command it needs have to be approved before it starts.
+- **How they see it has finished.** The closing sentence agreed at the start,
+  said only once nothing ready is left in scope. What was built reads as the diff
+  from the commit noted at the start to the current main branch.
+- **How they see it is standing still.** No closing sentence, and the last
+  message saying what stopped it. Nothing here starts itself again — a word from
+  them does, and until it comes the run is not working on anything. Pull requests
+  merging by themselves are not evidence to the contrary: once armed, the
+  platform merges them whether or not anything on this machine is awake.
 
 **Do not recommend a yes on a first project.** A green check suite says the code
 does what the tests say, not that it is what the user wanted, and the approval at

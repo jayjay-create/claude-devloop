@@ -403,6 +403,25 @@ nothing moves until they say so — was left implied in the condition and never
 said, so what this confirms is the wording of the resumption, not that the user
 is told the run is standing still.
 
+**And the exception has a condition of its own: the machine has to be awake.** A
+backgrounded agent comes back by itself only while there is something running for
+it to come back to. Measured on 6 and 7 September 2026 in `devloop-test-o`,
+inside the unattended run: at 21:00 UTC it merged one task, took the next by
+itself, said it was building it in the background, and stood still from there,
+because the machine went to idle sleep. The session's next message was one word
+from the user nine and a half hours later, and the two remaining tasks were built
+and merged within twenty minutes of it. Nothing was lost — the state sat in the
+tracker and in git, exactly as this file promises — and nothing resumed either.
+So an unattended run is bounded by the window being open and the machine being
+awake, which is a cost the person agreeing to that mode is owed while they are
+agreeing to it; it is in the cost list at `setup-checks` step 8, with what keeps a
+machine awake beside it. On macOS that is `caffeinate`, which holds an assertion
+against idle sleep for as long as the process runs (`caffeinate(8)` on this
+machine, read 7 September 2026). **What it does not reach is a closed lid**,
+which is a separate route into sleep, so a hint that stops at the command
+promises more than it can hold. Off macOS, name a command only where that
+machine's own documentation backs it.
+
 **A rule in the run's own memory can close a route the skills allow.** Measured
 on 25 August 2026: before arming auto-merge, a run stopped itself and cited a
 rule in its own memory — never merge directly, always hand the merge command to
@@ -450,10 +469,17 @@ not a filesystem. So the rule that binds is the one in the skills — nothing
 lands outside the repository without the user running it — and the hook is what
 catches the ordinary case, not a wall.
 
-Its false positives are cheap and deliberate: a command that merely mentions
-`sudo`, or copies something into a directory that looks like a bin directory,
-gets stopped. The guard's own message already says what to do about that — if it
-only looked like an install, say so and let the user decide.
+Its false positives are deliberate: a command that merely mentions `sudo`, or
+copies something into a directory that looks like a bin directory, gets stopped.
+The guard's own message already says what to do about that — if it only looked
+like an install, say so and let the user decide. **Cheap is what they are not,
+where that last part goes unread.** Measured on 6 September 2026 in
+`devloop-test-o`: the guard stopped a pull request body that quoted a broken
+`go install` line in order to fix it, then stopped the same text written to a
+file, and the run reworded the sentence until it passed — saying as it went that
+the hook matches the string in quotes and heredocs alike. It had the reading
+right and stepped around the block anyway, which is the half the message asks for
+and the half no hook can enforce.
 
 **Arming auto-merge is allowed; merging is not — and `--auto` is not arming.**
 The guard blocks `gh pr merge` in every form. The one permitted path is the
