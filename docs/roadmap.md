@@ -966,13 +966,115 @@ the size of the work.
   not. And a run that takes a block for a false positive says so and stops, rather
   than finding a spelling that gets through — which is what both guard messages
   already ask for in so many words, and what neither run did.
-  A fix costs, on the branch guard, one clause letting a `git push` through when
-  what it deletes is a branch other than the default one, plus the two shaped test
-  commands this file already demands. On the install guard it is not cheap: a
-  `PreToolUse` hook sees a string, so telling "runs an install" from "writes about
-  one" means parsing shell quoting and heredocs, which is the guessing this file
-  already refused for wrappers. The cheap half is the second one — the rule for the
-  run, one sentence at the block. Recorded, not built.
+
+  **The branch guard is built**, 7 September 2026. What it reads is no longer
+  where the run stands but what the push moves: the refspecs after the remote are
+  taken for their destination — the part behind the last colon, with a leading `+`
+  and `refs/heads/` stripped — and a destination that is demonstrably another
+  branch goes through, deletions included. No readable destination means the
+  current branch, which here is the default one, so it blocks; `--all` and
+  `--mirror` block; every `git push` in the command is read, so one blocking
+  segment blocks the call; and `git commit` on the default branch is untouched.
+  The cost this entry carried was wrong and is corrected with it. It read "one
+  clause letting a `git push` through when what it deletes is a branch other than
+  the default one", and a clause about deletions is too narrow —
+  `git push origin task-24:task-24` deletes nothing and has to go through as well.
+  The clause reads the destination, not the deletions.
+
+  Three cases it does not answer, all deliberate, all open:
+  - `git push --tags origin` moves no branch, names no refspec and is blocked.
+    Should hold: a block that protects nothing. Kept, because "no readable
+    destination means the current branch" is the rule that holds the guard shut,
+    and giving it an exception is how the guard stops being one.
+  - `git push fork main` moves the default branch of another remote, not this
+    one, and is blocked all the same. Should hold: the same — a block in the safe
+    direction. The guard reads the destination's name, not which remote it lands
+    on, and telling the two apart would mean resolving remotes from a string.
+  - `git -C /elsewhere push origin main` runs today and after, because the
+    condition wants `git` immediately before `push`. Should hold: that moves a
+    default branch and belongs blocked. Not fixed, because `git -C` can point at
+    another repository, where blocking it would be a fresh false positive.
+    Unresolved rather than forgotten.
+
+  **The install guard is unchanged and the case stays open.** The reason it stays
+  open is one thing, and it is not that the false positive is a corner.
+  Telling a string from an execution needs the quotes, and line 4 of every hook
+  destroys them on purpose. That normalisation is the correction from "A hook
+  reading the tool's JSON must undo the escapes first" and it closed two silent
+  holes — a second command on a new line walking past all three guards, and
+  anything after the first quoted string being invisible. Undoing it reopens both.
+  That part holds, and it is why a `PreToolUse` hook cannot tell "runs an install"
+  from "writes about one" without the shell-quoting and heredoc guessing this file
+  already refused for wrappers.
+  **The false positive sits on the normal path**, measured on 7 September 2026
+  against this repository's own hook: `gh issue create --body 'Run: go install …'`
+  exits 2, and so does `echo 'go install …' >> docs/agents/environment.md`. Both
+  are the normal path — step 3 of `build-work` files an issue "carrying the exact
+  command" where an install is declined, and point 8 of the same step writes a
+  command the user has to type into `environment.md`. An earlier reading of this
+  entry had it the other way round, that the false positive sits off the normal
+  path; that reading is measured false and is no reason for anything.
+  **And the rule below cannot catch this one**, which is the part worth writing
+  down. Its unattended answer to a guard block is an issue labelled `raised-here`
+  and `needs-human` — and in the decline path, filing that issue is itself the
+  blocked act. The way out is the thing that is barred. Unattended the run stands
+  still, and it does not look like a standstill.
+  What is built instead narrows what ever reaches the guard, and it is built in
+  `build-work` rather than in the hook: a body goes to `gh` through a file with
+  `--body-file` rather than as a string on the command line, and `environment.md`
+  is written with the editing tool rather than appended from the shell — the second
+  for a reason of its own as well, since a change bundled into a shell command goes
+  past the per-file hooks, which "The run bundles shell commands where it used to
+  edit files one at a time" records. **That is not the rewording the rule below
+  forbids, and the difference is who decided and when**: this is written into the
+  skill, once, in the open, and holds for every body the skill writes, where a
+  rewording is invented by a run at the block, for the one command that was
+  refused.
+  That narrowing was written down incomplete the first time, and the way it was
+  incomplete is worth more than the fix. It said the body goes into a file and the
+  file is passed with `--body-file`, and said nothing about how the file gets
+  written — so a heredoc or an `echo` put the same text back through the shell and
+  the guard blocked that instead. The measured incident had two halves, the string
+  and the file, and the rule covered the first. Should hold: **a rule that leads
+  text past a guard names every channel the text takes, not only the channel that
+  was measured.** The same reading applies to the title, which stays on the command
+  line because `gh` has no `--title-file`: what keeps it clear is what it says, so
+  it names the problem and the body carries the command. A title put through a
+  substitution reading a file, or set plainly and edited afterwards, is not that —
+  it is a spelling that gets through, which is the move the rule below forbids.
+
+  Where the two setup stages meet a block there is a second reading to make, and
+  it is not the same as a decline. Where the command really is the install the
+  class or the step needs, the guard worked and the cost is real: unattended,
+  `setup-checks` records the class `skipped` with the block as its reason, except
+  `secrets`, which is never skipped and stops instead, and `setup-project` raises
+  it as `needs-human` and stops. Where the guard matched on text, nothing is
+  blocking anything, and recording a skip would be an entry that is not true — a
+  class standing as skipped while nothing hinders it. Each stage says which of the
+  two it is, in its own vocabulary, and neither copies the other's.
+
+  One thing the shared rule cannot reach, recorded and not fixed. Ist: the install
+  guard's message offers two ways out — a check class becomes `skipped` with that
+  reason, or the part of the task that needs the tool cannot be built. Both assume
+  the caller has check classes or tasks. `research`, `build-prototype` and
+  `record-lessons` have neither, and the message offers them nothing. Should hold:
+  a message whose ways out apply on every path that can reach it. Not fixed,
+  because that means changing the hook and the hook stays untouched here; the
+  shared block catches it on the skill side instead, by saying that what a block
+  costs the work in hand gets said whatever that work is.
+
+  So the hook is untouched, the false positive is unfixed, and the normal path no
+  longer runs through it.
+
+  **The half about the run is built.** The shared block "When a command does not
+  answer", in all twelve skills, said only that a guard's message says what to do.
+  It now carries the negative half too: the same act under a different command name
+  is the act that was refused, a text reworded until the match no longer catches is
+  the same command with the words changed, and a refusal held to be a false
+  positive is still a refusal — said, and not acted on. `build-work` carries the
+  unattended answer as a third case of the shape it already had at the turn-end
+  hook in step 3 and the refused arming in step 6. The general form is in
+  `docs/skill-conventions.md`.
 
 - **The unattended run narrowed the review from five lenses to three, measured on
   6 and 7 September 2026.** The first task went through standards, spec, security,

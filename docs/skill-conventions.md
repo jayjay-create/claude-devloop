@@ -155,6 +155,40 @@ push. A guard blocking a command is a missing answer whose message already says
 what to do, and doing that is the report. A re-read a skill prescribes — ten
 seconds for a value that moves — is an instruction being followed, not a retry.
 
+**A guard is answered, not got around, and that is the half that has failed.** A
+block is a message; the way through it is the one the message names. The same act
+under a different command name is the act that was refused, and a text reworded
+until the match no longer catches is the same command with the words changed.
+Measured on 6 September 2026 in `devloop-test-o`, twice in one day: the branch
+guard stopped a remote branch deletion and the run's next command was `gh api -X
+DELETE` on the same ref; the install guard stopped a pull request body and the run
+reworded the sentence until it passed, having said in the same breath what the
+hook matches on. Both runs had the reading right, and a correct reading buys the
+right to say it, not to act on it — a refusal held to be a false positive is still
+a refusal. Where a person is there the decision is theirs, and where nobody is the
+run stops rather than carrying on past a block. That last part is what no hook can
+enforce, which is why it belongs here and not only in the guard's own message.
+
+**Narrowing what a guard ever sees is a different act, and it stays allowed.** A
+body passed to `gh` through a file rather than as a string on the command line
+keeps a quoted install command out of the install guard's reach, and that is not
+the move above: it is written into the skill, decided once, in the open, and it
+holds for every body the skill writes. A rewording is decided by the run, at the
+block, for the one command that was refused. The test is who decided and when —
+not whether the guard ended up matching.
+
+**And a narrowing names every channel, not the one that was measured.** The first
+version of the rule above said a body goes into a file and the file is passed
+with `--body-file`, and said nothing about how the file is written — so a heredoc
+put the same text back through the shell and the guard blocked that instead. The
+incident it was drawn from had both halves in it, the string and the file, and
+the rule was drawn from the half that was quoted. A rule that stops one route and
+leaves the next one open has narrowed nothing; it has moved where the block
+happens. So the channels get enumerated as the rule is written, and where one
+cannot be closed — a title that has to stay on the command line, because there is
+no flag to read it from a file — the rule is about what the text says rather than
+about how it travels.
+
 **Record what was decided against.** A rejected option that leaves no trace gets
 rediscovered and proposed again as new, and the reason it was rejected has to be
 worked out a second time. `docs/roadmap.md` has a section for it. Write the
@@ -883,11 +917,58 @@ closing copy:
 
     for f in skills/*/SKILL.md; do grep -c 'Answer in the language the user writes in' "$f"; done
 
-The same for the block on running commands, which is in all twelve. It has a
-heading after it in some files and a separator in others, so the extract is taken
-by length rather than by what follows it:
+The same for the block on running commands, which is in all twelve. What comes
+after it differs per file — a `## ` heading in most, a `---` in one, the closing
+language block elsewhere — so the extract runs to whichever of those three markers
+comes first, rather than to a fixed number of lines:
 
-    for f in skills/*/SKILL.md; do grep -A45 '^## When a command does not answer' "$f" | cksum; done | sort -u
+    for f in skills/*/SKILL.md; do awk '/^## When a command does not answer/{f=1;print;next} f&&(/^## /||/^---/||/^\*\*Answer in the language/){exit} f{print}' "$f" | cksum; done | sort -u
+
+**The number is the part that had to go.** This check was `grep -A45`, and 45 was
+the length of the block on the day it was written. A fixed count fails in both
+directions and both failures are quiet. Too small — which it becomes the moment
+the block grows by a line, as it did on 7 September 2026 — and the check keeps
+reporting agreement while comparing only the part that still fits. Too large and
+it pulls the per-file text after the block into the window: measured the same day,
+`-A46` still gave one line and `-A60` gave nine, so the obvious repair of raising
+the number leaves a check that is permanently red and therefore read by nobody.
+Bounding the extract instead of counting it makes it grow with the block by
+itself.
+
+The third marker is there by construction, not by luck: the closing language block
+stands in all twelve, which the check above it measures, so the shared block is
+never the last thing in a file. Should a fourth kind of paragraph one day follow
+it, the extract runs on to the next marker it does know, takes in text that
+differs per file, and the checksums part — it fails loudly, which is the failure
+worth having.
+
+What it does not cover is the same fault one level in, and it is worth the line.
+**If one of the three markers ever appears inside the shared block, the extract
+stops at that point in all twelve files, the checksums go on agreeing, and only
+the part before it is compared.** The obvious check is to look for a marker
+inside the extract:
+
+    for f in skills/*/SKILL.md; do awk '/^## When a command does not answer/{f=1;next} f&&(/^## /||/^---/||/^\*\*Answer in the language/){exit} f&&(/^---/||/^## /){print FILENAME": "$0}' "$f"; done
+
+It comes back empty, and it comes back empty whatever the files say: the rule
+that exits fires on every marker before the rule that prints can match one, so
+the printing rule is unreachable. That is not a fault in the writing of it. The
+extract is defined as ending at the first marker, so asking whether a marker
+falls inside it asks whether the first marker comes before the first marker, and
+no arrangement of the same test answers that. Kept here because a reader will
+otherwise write it again, and because a check that cannot go red is the thing
+this file is most often wrong about.
+
+What can be asked from outside is whether the extract still reaches the end of
+the block, named by its last sentence — a marker inside the block stops it short.
+This one prints nothing while nothing is wrong, and prints the file when
+something is:
+
+    for f in skills/*/SKILL.md; do awk '/^## When a command does not answer/{f=1;next} f&&(/^## /||/^---/||/^\*\*Answer in the language/){exit} f{print}' "$f" | grep -qF 'were not all approved before it started.' || echo "$f: extract stops short of the end of the block"; done
+
+That anchor is a line of the block like any other, so it moves when the block's
+last paragraph is rewritten. Rewrite it there too — a check anchored on a sentence
+that no longer exists prints all twelve files and says nothing.
 
 The same for the block on asking, in the six skills that ask anything:
 
