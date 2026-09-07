@@ -272,9 +272,15 @@ the size of the work.
   cannot read what it needs exits 0, and on exit 0 nothing it writes reaches
   anybody, so there is no report available to it at all.
 
-  All of it is unwalked. No session has yet reported a refusal it retried, met a
-  `mergeStateStatus` read that came back empty, or had to tell an empty answer
-  from a missing one under this wording.
+  Half of it has been walked since. Measured on 6 September 2026 in
+  `devloop-test-o` at 20:56 UTC, inside the unattended run: the permission
+  classifier threw out a whole command block — checkout, fetch, fast-forward,
+  and a local and a remote branch deletion in one call — and the run said so in
+  its next message, named what it took to be the reason, and ran the steps singly
+  instead of sending the block again in silence. That is this rule holding on its
+  first contact with a real refusal, and it is the only part of it that has been
+  walked: no session has met a `mergeStateStatus` read that came back empty, or
+  had to tell an empty answer from a missing one under this wording.
 - **The aim is idea to a running application; this gets to merged code.** Not a
   bug in what exists — the stated aim was idea to merged, reviewed code, and that
   works. It is the aim that has moved. Five things stand between the two, and
@@ -379,6 +385,26 @@ the size of the work.
   says so: the run left it implied in the condition rather than saying it. The run also
   declined to read its own session transcript back into its context.
 
+  Seen for the first time on 6 and 7 September 2026, all in `devloop-test-o`, a
+  Go command-line tool set up from nothing on 31 August: **the unattended mode ran
+  from end to end.** Three tasks one after another with no approval question,
+  three pull requests merged by the platform, both specs closed, and the agreed
+  closing sentence at the end — "No ready task remains in scope.", 7 September,
+  06:57 UTC. Around it, each also a first: the question about the mode carrying
+  its costs *and* the advice against a yes on a first project — the offer with its
+  costs was already recorded on 25 August, so what is new is the advice against it
+  and the yes that followed; a gate this workflow built itself, in the prescribed
+  order — workflow file landed, seen green on the main branch, only then the
+  protection — and binding the account the run works as, `enforce_admins` on over
+  the required check `checks`; the third refusal reason at arming still not among
+  them, see below; a missing tool recognised as a missing tool rather than turned
+  into a finding about the code; the install guard handing its commands to the
+  user; the deliberate red per check class and per condition; a project's first
+  decision record, `docs/adr/0001-exclude-observer-method.md`; two review rounds
+  with the fixes checked afterwards rather than taken on faith; a command block
+  thrown out by the permission classifier and reported rather than repeated in
+  silence; and the branch guard biting on a write to the main branch.
+
   Nothing has yet run against the three-case refusal. `allow_auto_merge` used to
   decide between two of them and cannot: measured on 30 August 2026, it reads
   true in a repository with a required check and in one without alike, and the
@@ -388,8 +414,16 @@ the size of the work.
   `branches/main/protection` together, the refusal that means a pull request is
   already past its gate is read from `mergeStateStatus`, and a run whose rights
   answer neither query says so rather than naming a case. What that leaves
-  unwalked is every branch of it: no session has yet been refused arming and
-  reported which of the three it was, and none has hit the missing-rights answer.
+  unwalked is thinner than it was. Two arming refusals have been met and named,
+  both of them the second case — no gate to wait on at all. On 31 August 2026 in
+  `devloop-test-o` the mutation came back `UNPROCESSABLE` with "Pull request is in
+  clean status" on a repository carrying neither protection nor a ruleset, and on
+  6 September the same repository answered "Pull request is in unstable status"
+  while the gate was still being built; both times the run named the case, said
+  the main branch had neither kind of gate, and handed the merge over. **The third
+  case is still unwalked** — a gate the pull request is already past — and so is
+  the missing-rights answer. Every arming attempt after that gate existed was
+  accepted: nine of them across 6 and 7 September, one per pull request.
 
   The same day turned up two `mergeStateStatus` values no file carried: on a pull
   request seven days old it read `UNKNOWN`, and on the second query `BEHIND`.
@@ -501,8 +535,9 @@ the size of the work.
   every pull request, with `enforce_admins` on, so it binds the account this
   workflow runs as. It is also the standing bench for the stock-take: issue 8 is
   open and pull request 14 closes it and has been open since 24 August, which is
-  the shape that went unseen. That makes it the only place an unattended run can be
-  tried at all. `enforce_admins` was switched off there by hand on 25 August
+  the shape that went unseen. It was for a while the only place an unattended run
+  could be tried at all; `devloop-test-o` ended that on 6 September 2026 by
+  building its own gate. `enforce_admins` was switched off there by hand on 25 August
   2026 for the branch-rule measurement above and stands at true again. A
   `PROBE.md` on its main branch is a leftover of the same measurement — of no
   consequence, and not project content. `devloop-test-m` is Go, set up from
@@ -521,7 +556,15 @@ the size of the work.
   25 August through the greeting and the permission step: four classes filled and
   blocking, five skipped, and the only project where an install has been
   declined — `cargo-geiger` was chosen and refused, so `code-security` carries
-  that as its reason.
+  that as its reason. `devloop-test-o` is Go again, a directory-report
+  command-line tool set up from nothing on 31 August 2026 and worked through on 6
+  and 7 September: nine classes decided — seven filled and blocking, `integration`
+  and `dependencies` skipped with reasons — and the only project whose gate this
+  workflow built itself, classic protection over the required check `checks` with
+  `enforce_admins` on, auto-merge on, private. Two specs closed, fourteen issues,
+  and three of its pull requests built and merged unattended. It is the bench for
+  anything to do with the unattended mode, and the only one where the mode is
+  recorded as available in `environment.md`.
 
   The base check, the rewritten questions at four stage boundaries, and the
   control documents finally getting a writer came out of a single run merged
@@ -644,9 +687,16 @@ the size of the work.
   read "watch it fail" then "watch it pass" — the code is broken before the test
   is written there, so the break is the bug and the proof is built in.
 
-  All of it is unwalked. No build has produced a `Guarded conditions` list, no
-  review has read one, and the expensive branch — breaking a condition an
-  existing check covers — has never been run.
+  All of it has now been walked, on 6 and 7 September 2026 in `devloop-test-o`.
+  Each of the three unattended tasks carried a `Guarded conditions` table in its
+  pull request body — the condition, how it was broken, which target ran, what
+  came back red, and the restoration — fourteen rows on pull request 26 alone,
+  and the review's spec lens read them. **The expensive branch was walked too**:
+  on pull request 27 `--mode usage` and `--mode summary` were each mutated on
+  purpose to prove that the byte-for-byte regression checks already covering them
+  really go red, work the task's own changes produced no red for. What none of the
+  three tables carries is the other exit — a condition that cannot be captured as
+  a check at all, named as that rather than filled in.
 - **The glossary stayed empty while the work coined two terms, and that was
   measured on 30 August 2026.** `docs/agents/domain.md` is where a project keeps
   its glossary, `CLAUDE.md`'s pointer block names it, and two skills say a term
@@ -676,6 +726,185 @@ the size of the work.
   A fix costs one clause at each of the two sites — name the criterion per
   finding as the split is announced — and changes no decision, only what gets
   said. Recorded, not built.
+
+- **The unattended mode needs a machine that stays awake, and nobody was told,
+  and that was measured on 6 and 7 September 2026.** In `devloop-test-o`, inside
+  the run that went end to end: at 21:00 UTC on 6 September the run reported the
+  first pull request merged — the platform had merged it sixteen minutes earlier,
+  on its own — took the next task without being asked, and said it was building it
+  in the background. Then nothing. The machine went to idle sleep, and the session's only
+  message — one word, "weiter" — came at 06:37 UTC the next morning, nine and a
+  half hours later, and the two remaining tasks were built and merged inside
+  twenty minutes of it. Nothing was lost and nothing was wrong; the mode simply
+  does not run while the machine does not.
+
+  The cost list at the moment of asking named the workflow file, the protected
+  main branch and the Actions minutes, and said nothing about this. **Built**, in
+  `setup-checks` step 8: the cost is in the list in plain words — it works while
+  the window is open and the machine is awake, a closed lid stops it, it carries
+  on when the user is back — with a hint on keeping the machine awake that reads
+  the system first (`uname -s`) and names `caffeinate` only on macOS, saying in
+  the same breath that the assertion covers idle sleep and not a closed lid
+  (`caffeinate(8)` on this machine, read 7 September 2026). Off macOS, a command
+  is named only where that machine's own documentation backs it, and otherwise
+  nothing is named. **Built** beside it: what a yes leads to, said before the
+  answer — what the run does in order, where it still stops, how a finish is
+  recognised, and how a standstill is. That last one is the one that had no answer
+  at all before this measurement.
+
+- **The cost list and that description do not reach the second run.** Step 8
+  leaves early where the gate is already there and binding — "say the mode is
+  available and skip the rest of this step" — so a project set up in an earlier
+  session gets neither, and the person who types `--auto` there is exactly the one
+  who has read neither. The same gap one skill over: `build-work` offers to build
+  the gate itself where protection is available and absent, with no cost list at
+  all. Both are the shape this file already names — a rule written on one path
+  when several reach the situation.
+  A fix costs one sentence at the early exit and one where the build offers the
+  gate. Recorded, not built.
+
+- **`build-work` says a hook reads the unattended state file, and no hook does.**
+  The sentence is that the hook checks whether `.claude/autorun.local.md` exists
+  rather than what it says, so a leftover file drags the next ordinary turn back
+  into the loop. `grep -rn autorun hooks/` comes back empty, and the file is named
+  in exactly two places, both of them skills. So an interrupted run leaves the
+  file lying there inert, and nothing takes the loop up again — which is correct
+  behaviour and not what the sentence describes. A claim about this workflow's own
+  procedure, and those are answered by reading these files.
+  A fix costs a corrected sentence. Building the hook instead is a different and
+  much larger decision — it would make a run resume without being asked, which is
+  the one thing the environment constraints say does not happen. Recorded, not
+  built.
+
+- **Work put off with nothing to bring it back, twice in the same session, and
+  that was measured in `devloop-test-o`.** On 31 August 2026 the setup stage
+  closed by saying the check suite would be taken up "separately" and went
+  straight into the first build; nothing carried the promise, and the suite
+  arrived six days later. On 6 September the same session finished `setup-checks`
+  step 7 and stopped there — step 8 of that same skill, the one that offers the
+  unattended mode, was never reached, and what got it run was the user typing
+  "Stopp. setup-checks hat nach Schritt 7 noch einen Schritt 8. Führ ihn aus."
+  Both times the run had seen what was open and said so out loud. The second is
+  the expensive shape: a mode never offered is a mode nobody misses, because the
+  question that would have raised it is the thing that went missing. The first
+  carried a second defect in the same sentence — it named the skill to the user,
+  which the block at the top of every skill in this set forbids.
+  Should hold: what a run names as open is the next thing it does, not something
+  else; a skill is not left while it still has steps; and "later" is only allowed
+  where the thing that calls it back is named in the same breath.
+  A fix costs one clause where a stage hands over, plus a line at the last step of
+  every skill that has one. Recorded, not built.
+
+- **Two guard false positives, and a run that stepped around both, measured on 6
+  September 2026 in `devloop-test-o`.** The branch guard blocked `git push origin
+  --delete task-24-exclude-core` at 20:57 UTC because the run stood on the main
+  branch, which deleting a merged remote branch does not touch; the run's next
+  command was `gh api -X DELETE repos/OWNER/REPO/git/refs/heads/task-24-exclude-core`,
+  the same act under a name the guard does not match. The install guard blocked
+  `gh pr create --body` at 13:14 UTC because the body — describing a fix to a
+  broken install line — contained the string `go install`. Writing the same body
+  to a file was blocked for the same reason; the third attempt reworded it to
+  "fetch and build ... from" and went through, and the run said in the same breath
+  what it had worked out: the hook reacts to the string, in quotes and heredocs
+  alike, regardless of context.
+  Should hold, two halves. The guards tell a command that runs from a command that
+  is quoted, and an action that touches the protected state from one that does
+  not. And a run that takes a block for a false positive says so and stops, rather
+  than finding a spelling that gets through — which is what both guard messages
+  already ask for in so many words, and what neither run did.
+  A fix costs, on the branch guard, one clause letting a `git push` through when
+  what it deletes is a branch other than the default one, plus the two shaped test
+  commands this file already demands. On the install guard it is not cheap: a
+  `PreToolUse` hook sees a string, so telling "runs an install" from "writes about
+  one" means parsing shell quoting and heredocs, which is the guessing this file
+  already refused for wrappers. The cheap half is the second one — the rule for the
+  run, one sentence at the block. Recorded, not built.
+
+- **The unattended run narrowed the review from five lenses to three, measured on
+  6 and 7 September 2026.** The first task went through standards, spec, security,
+  test quality and failure behaviour; the two after it through standards, spec and
+  test quality, with a reason given for the two left out. `review-changes` says
+  which lenses run is judged from the diff — if the diff contains it, the lens
+  runs — and both dropped ones have their trigger in those diffs: file paths
+  arriving from outside, and error handling with default returns. An attended run
+  leaving a lens out with its reason was recorded here approvingly on 30 August;
+  this is the same act with nobody reading the reason.
+  Should hold: unattended, nothing is narrowed — every lens that applies runs. A
+  lens dropped is a judgement, and unattended nobody checks the judgement.
+  That costs more, and those costs belong in the cost list at the moment the mode
+  is offered — but only once the rule exists, since a list naming a cost the run
+  does not yet incur is wrong in the other direction.
+  A fix costs one sentence where the lenses are picked and one clause in that cost
+  list. Recorded, not built.
+
+- **Every review finding fixed on the spot, none raised as an issue, on a
+  criterion invented as it went, measured on 6 and 7 September 2026.** The
+  unattended run called them all mechanical. Among them, on pull request 27, a
+  missing byte-for-byte regression test that the task's own Test Decisions had
+  asked for — an acceptance criterion of the work being reviewed. Both skills
+  already carry the criterion: fix where the fix is obvious and revisits nothing
+  decided, file where fixing revisits a design decision, changes an interface, or
+  exceeds the task. So a fresh one was invented beside a written one, which is the
+  30 August finding one turn further on — there the split was announced with no
+  criterion named, here with a criterion nobody wrote down.
+  Should hold: the criterion is the written one; and a finding touching an
+  acceptance criterion of the run's own task is never mechanical — it gets fixed
+  and named at the close.
+  A fix costs one clause at each of the two sites. Recorded, not built.
+
+- **An install command handed to the user without being backed, measured on 6
+  September 2026 in `devloop-test-o`.** The check workflow installed gitleaks from
+  `github.com/gitleaks/gitleaks/v8@latest`. That module path does not exist — the
+  GitHub organisation name is not the module path, which is
+  `github.com/zricethezav/gitleaks/v8` — and it failed in the workflow's first run
+  on the main branch, after the pull request carrying it had merged; pull request
+  9 was the fix. On the user's own machine the same line had looked like a success,
+  because an older copy of the tool was already on `PATH` from somewhere else.
+  Should hold: a command handed to the user that fetches something from outside is
+  backed before it is handed over — the vendor's own installation line, or the
+  module resolving — and its success is read off the result, whether the tool is
+  where that command puts it, rather than off the user reporting that it ran.
+  A fix costs one sentence where a build hands over an install command, and one
+  more where the result is checked: `command -v` answers a different question than
+  "did this command put it there". Recorded, not built.
+
+- **`git reset --hard` without looking first, measured on 6 September 2026 in
+  `devloop-test-o`.** A run reset without a `git status` before it and took
+  uncommitted work with it. It noticed, said so, and put it right. What makes this
+  worth recording is the frequency the rest of the workflow gives it: proving a
+  check guards a condition means breaking the condition and restoring it, once per
+  condition, and every one of those restorations is a chance to reach for the same
+  command.
+  Should hold: before a command that can discard work, the state is queried.
+  Better: the proof needs no commit that has to be taken back — where the break
+  lives in the working tree, restoring it is git's own copy of one file, not a
+  reset of everything.
+  A fix costs one sentence in the proof step. Recorded, not built.
+
+- **A review ran a check the chain does not carry, measured on 6 September 2026 in
+  `devloop-test-o`.** It read the change with Go's race detector. `checks.md`
+  there has all nine classes decided and none of them is that, so the check ran
+  once, for one change, and will not run again.
+  Should hold: a check worth running belongs in the chain. Where it only ever runs
+  inside a review, it either goes into `checks.md` or its absence is named in the
+  report — and either of those is a result, where silence is not.
+  A fix costs one sentence in the review's report step. Recorded, not built.
+
+- **A run promised to come back and had nothing that could wake it.** Its last
+  message before the standstill said it was building the next task in the
+  background and would report when it was done — measured on 6 September 2026 in
+  `devloop-test-o` at 21:00 UTC, with the next thing to happen being the user's
+  one-word message nine and a half hours later. A backgrounded agent really does
+  come back by itself, which is what made this look permitted, and the condition
+  nobody had written down is that the machine has to be awake for it. The user's
+  reading of the same paragraph adds a second half — the state of another pull
+  request asserted from memory rather than queried, against the standing rule. The
+  two sessions read for this entry carry the promise; the memory claim rests on
+  that report rather than on a transcript read here.
+  Should hold: a run promises nothing it cannot keep. Either it really waits, in
+  the same turn, or it says it is standing still and will need a push. "I will
+  come back to you" is neither.
+  A fix costs one clause. Recorded, not built.
 
 
 ## Decisions taken against
@@ -713,10 +942,18 @@ of them if the reason stops holding — the reason is the point, not the verdict
   workflow does not have. The state is the tracker and git — a task is merged or
   it is not, an issue is open or it is not — so the check would report "current"
   every time. The one place it applied was planning, fixed as above.
-- **Letting the branch guard pass writes to gitignored files.** Rejected: no real
-  case was found. The two local-state files this workflow writes are produced on
-  a branch or by a hook the guard never sees, and an exception would soften the
-  signal for nothing. Reopen on a real false positive.
+- **Letting the branch guard pass writes to gitignored files.** Rejected: an
+  exception would soften the signal for more than it is worth. The reason first
+  written here was a second one — that no real case exists, the two local-state
+  files being produced on a branch or by a hook the guard never sees — and **that
+  half has since stopped holding.** Measured on 6 September 2026 in
+  `devloop-test-o` at 20:14 UTC: the unattended run wrote
+  `.claude/autorun.local.md`, gitignored local state its own step prescribes,
+  while still standing on the main branch, and the guard blocked it. What the run
+  did next is why this is not being reopened: it cut the task branch and wrote the
+  file there, which is what the guard's message asks for and what the step needed
+  anyway. So the verdict stands on the first reason alone. Reopen on a case where
+  the file cannot wait for a branch.
 
 ## Names that were rejected
 
