@@ -1207,6 +1207,117 @@ the size of the work.
   what `docs/skill-conventions.md` already asks of a measurement, applied to the
   half that records an omission rather than an act.
 
+- **Three findings against the review step, measured on 9 September 2026 across
+  two unattended runs.** The first two are the same rule failing without a rival;
+  the third is a real gap.
+
+  **A. Five applicable lenses were carried by two reviewers.** One read security
+  together with failure behaviour, the other standards with spec and test
+  quality. The run announced the allocation; nothing was hidden.
+  *Ist:* the rule stood in **four** places, every one of them saying the same
+  thing — `review-changes` at "each with exactly one lens", at "Add one reviewer
+  per lens the change touches" and at "One subagent per lens, in parallel", and
+  `skill-conventions.md` under Agent Teams. **And there is no competing
+  sentence.** Searched: `build-work` step 4 says only "Run `review-changes` on
+  the diff" and is silent on allocation; its head permits parallel agents for
+  reviewing without bounding them; the one sentence in the corpus about the cost
+  of the lens count, in `setup-checks` step 8, argues for running the full set;
+  the measured environment constraints record no cap on parallel agents; and the
+  30 August entry above records five lenses running singly, approvingly. So the
+  explanation that answered the loose-issue findings — a rival sentence nearer
+  the moment of deciding — **does not apply here**, and a fifth copy of a rule
+  that four copies did not carry is not the remedy.
+  *Soll:* a lens is one reading of the whole diff by a reviewer given no other
+  lens, so five lenses on two reviewers are two lenses and a false count.
+  *Built:* `lens` defined — in `review-changes` beside `seam` and `condition`,
+  and in `skill-conventions.md` under "Shared words are defined in one place",
+  where it was missing while three lesser words were defined. Not a fifth
+  instruction: the four say how to start reviewers, the definition says what the
+  word the report counts means. And the announcement now carries both numbers in
+  one sentence — lenses that apply, reviewers started — **with its purpose
+  written beside it**, which is to spare the reader a comparison rather than
+  hand them one: "five lenses, five reviewers" reads as nothing, "five lenses,
+  two reviewers" reads as itself. The purpose is written down so a later reader
+  does not take the pair for bookkeeping and cut it.
+  **Its limit is written down too: this is not enforcement.** Nobody reads that
+  sentence in an unattended run; it works when a person reads the report
+  afterwards. What the finding measures next is that report.
+
+  **The enforcement was examined and rejected, and the case stays open.** The
+  obvious quantity — reviewers started against lenses that apply — is one the run
+  announces about itself, and this file already settled what that is worth: a
+  ceiling inside a task went out because **it is an instruction and not an
+  enforcement**, the run having to keep the count against itself, and one of the
+  three examples named there is literally that a run "narrowed the review's
+  lenses". A self-counted number here would be the fourth entry in that list, not
+  its answer. From outside, a `PreToolUse` hook on the agent tool sees each
+  spawn's prompt and fails three ways: it cannot know how many lenses apply
+  without judging the diff, it cannot tell a review subagent from the build
+  subagent of step 3, and matching lens names in a prompt is keyed on wording, so
+  a bundled prompt describing two lenses without naming them passes. The false
+  positives decide it — the build subagent is handed the spec and `standards.md`,
+  so its prompt plausibly carries two lens words, and a block there stops the
+  build. Recorded as open rather than answered with a sentence that only looks
+  like an answer.
+
+  **B. The reason given for a lens left out was a judgement.** One task ran four
+  lenses instead of five, security omitted because there was "no new input, path
+  or network surface". *Whether the omission was substantively right is not the
+  finding, and it may well have been.* The finding is the form.
+  *Ist:* the four conditional lenses are triggered by facts about the diff's
+  content — does it contain a path, a test, a fallback value, a stored form. The
+  reason given was a judgement about what the change means, which no reader can
+  check and which unattended nobody reads.
+  *Soll:* the statement about a lens that did not run is the trigger's own words,
+  negated, item by item — checkable by anyone holding the diff.
+  *Built:* the existing paragraph "Unattended, a stated reason buys no exception"
+  rewritten, not added beside. **The form had to be stricter than "a fact rather
+  than a judgement", and that is worth recording:** a fact can answer a narrower
+  question than the trigger asks. "The diff adds no new error handling" is true,
+  checkable, and about the diff's content, while the trigger reads "**any** error
+  handling, fallback value, or default return" — so a diff changing an existing
+  default return satisfies the sentence and triggers the lens. A rule asking only
+  for a fact stops the judgement and leaves that route open. The general form is
+  in `skill-conventions.md` beside "A field is not an answer to a question it was
+  not asked", which is the same shape one level over.
+
+  **C. The review step fell away entirely.** A run read its own change, called a
+  full five-lens review disproportionate for a comment-only diff, and landed it.
+  *Ist:* **not the void it first looks like.** Two sentences forbid it in general
+  terms — `build-work`'s head, "none of them is optional", and step 6's "Only
+  after steps 4 and 5. If the review has not run… Go back rather than forward."
+  What is missing is the clause that would have caught this run: that the size or
+  kind of the diff is not a reason, and that unattended the review is the only
+  reading the change gets. And one sentence sits near enough to be read the wrong
+  way — step 5's "in unattended mode the check suite is this gate instead", which
+  replaces step 5's gate and says nothing about step 4.
+  *Soll:* unattended the review never falls away; the author's judgement of size
+  is not the measure, because it is the judgement the review checks.
+  *Built:* at `build-work` step 4, which is the **only** place `review-changes`
+  is reached from — a run that decides this never opens that file, so the
+  sentence cannot live there alone. It says what the diff does decide (which
+  lenses apply) and what it does not (whether the step runs), and it says why no
+  exemption for a comment-only diff can be written: the claim that a diff is only
+  comments is one of the things a review reads for. The clause holds over the
+  second review round too, said there. Step 6's precondition now says which of
+  its two halves the unattended mode replaces and which it does not. And
+  `review-changes` carries the corresponding sentence at "Pin the target", with a
+  comment-only diff named as the case where the standards lens has the most to
+  do rather than the least.
+
+  **A third question was added to the two this file asks before a rule is
+  written: what does this sentence not replace?** Both known competing sentences
+  have that shape — step 7 summarised step 2's decision and replaced it, step 5
+  replaces one gate and is silent about the other. It is recorded there that this
+  third question would have caught the first of the two failures already on the
+  page and **not** the second: the unattended finish sentence replaces nothing,
+  it defines in the wrong vocabulary, which is the second question's case. The
+  three are not nested, and a question wide enough to hold all of them would say
+  nothing. It is also recorded that this one does **not** become a check before a
+  handover — whether a sentence considered the other mode is a question of
+  meaning, and a search for the other mode's name would be keyed on wording and
+  mostly noise — so that nobody builds one later and takes the case for covered.
+
 - **Every review finding fixed on the spot, none raised as an issue, on a
   criterion invented as it went, measured on 6 and 7 September 2026.** The
   unattended run called them all mechanical. Among them, on pull request 27, a

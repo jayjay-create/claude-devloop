@@ -56,6 +56,19 @@ types, unit, integration, end-to-end, secrets, dependencies, code-security. Nine
 is fixed — the set does not grow per project. What varies is which of them a
 project fills, skips with a reason, or leaves undecided.
 
+**A lens is one reading of the whole diff by a reviewer that has been given no
+other lens.** The reviewer is inside the definition rather than a detail of how
+one is arranged, which is what makes the count mean anything: `review-changes`
+reports one section per lens, `build-work` names two of them by name, and
+`setup-checks` promises the user at setup that every angle a change touches gets
+read. Two reviewers carrying five lenses between them ran two. **This one was
+added after the fact, and why says something about the other three.** The rule
+that one reviewer carries one lens stood in four places, all agreeing, and was
+still gone round twice on 9 September 2026 — a run bundled five lenses onto two
+reviewers and announced it, having read four sentences about how to start
+reviewers and none about what the word counts. Where a word is what a report
+counts, the definition does work no procedure does.
+
 ## A rule holds only on the path it is written on
 
 The most expensive mistakes in this set were not wrong rules. They were right
@@ -87,7 +100,7 @@ sentence.** Where a rule is written well, at the right place, and the behaviour
 does not follow, the run is usually obeying something else in the same file — an
 older statement of the same decision, standing nearer to the moment the decision
 is actually made. It is not read as a contradiction while it is being read; it is
-read as the instruction. Two tests, both cheap, both to be run on the file the
+read as the instruction. Three tests, all cheap, all to be run on the file the
 rule goes into rather than on the set:
 
 - **Where else does this file decide the same thing?** A step that summarises an
@@ -105,6 +118,32 @@ rule goes into rather than on the set:
   same file says that query cannot see. A finish condition phrased in a
   vocabulary that structurally excludes the exception is a licence to ignore it,
   and no amount of prose at the exception's own anchor outranks it.
+- **What does this sentence not replace?** A sentence that puts one thing in
+  place of another — a mode for a mode, a gate for a gate, a summary for the step
+  it summarises — names the limit of the replacement in the same sentence.
+  Without it, a run already looking for the short way reads the replacement as
+  the whole permission. Two of these are on record and they have one shape.
+  `build-work` step 7 summarised step 2's decision and thereby replaced it,
+  saying nothing about what it left standing. And step 5's "in unattended mode
+  the check suite is this gate instead" replaces the user's answer at step 5 and
+  is silent about step 4, so a run reading it can take a green suite for the
+  whole of the permission and skip the review — which is what happened on 9
+  September 2026. Both said what they replace. Neither said what they do not.
+
+**These three are not nested, and it is worth saying which case each catches.**
+The third would have caught the first of the two failures already recorded here —
+step 7 replacing a decision — and it would not have caught the second. The
+unattended finish sentence replaces nothing; it defines a finish in the wrong
+vocabulary, which is the second question's case and only that one. A question
+broad enough to cover all three would be a question that says think about it.
+Ask all three.
+
+**And the third one does not become a check.** Whether a sentence has considered
+the other mode is a question of meaning, and a search for the other mode's name
+would be keyed on wording and mostly noise — the same defect this file records
+under the handover checks. It belongs with the questions asked before writing,
+not in the list run before a handover. Nobody should build a check for it later
+and take the case for covered.
 
 **This is the fourth case of this convention and the count is the finding.** The
 loose-issue rule in `build-work` step 2 was itself written as the answer to the
@@ -165,6 +204,17 @@ announces how it applied one, it says which of its written halves the case falls
 under and why. A word reached for at the moment of deciding — mechanical, small,
 routine — reads like a criterion and cannot be disagreed with, because nobody can
 tell where it came from.
+
+**And a step is never exempted on a claim the step itself would check.** Measured
+on 9 September 2026: a run skipped the review entirely, on the ground that its
+own change was a comment-only diff and a full review disproportionate. The
+question of whether that description is true is one of the things a review reads
+for, so the exemption is decided by the party whose account is under review. This
+is not about whether the description was right — it may well have been. It is
+that no run can establish it from where it stands, so the exemption cannot be
+written at all: a change announced as comments that carries code is precisely
+what such a clause would let through. Where a step's own subject matter would
+settle whether it may be skipped, it may not be skipped.
 
 ## A duty to say something needs a place where it is said
 
@@ -460,6 +510,19 @@ divergence between them. Three rules follow.
    deliverable even where it holds one entry. A run that skips the search because
    it already knows there is only one place is making exactly the assumption that
    put the same four defects into four files.
+
+**And a fact is no more an answer to a question it was not asked than a field
+is.** The same shape, one level over, and the harder one to catch because nothing
+about it reads as a judgement. Where a rule decides from a written trigger — the
+diff contains this or it does not — a true, checkable statement about the diff
+that answers a *narrower* question passes every test for evidence and still
+decides nothing. "The diff adds no new error handling" is a fact anybody can
+verify against a trigger reading "**any** error handling, fallback value, or
+default return"; a diff that changes an existing default return makes the fact
+true and the trigger fires. So where a trigger is written out, the admissible
+statement is that trigger's own words negated, item by item, and not a fact of
+the writer's choosing about the same subject. A rule that asks only for "a fact
+rather than a judgement" stops one of the two routes and leaves the other open.
 
 **Checking the files against each other cannot find this.** Every copy can carry
 the same wrong reading, and then they agree — loudly, and through all four of the
