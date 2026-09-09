@@ -377,6 +377,25 @@ different ways. It is not a question either. The order is:
 3. **With the spec closed, take it** — the same rule as several ready tasks, and
    say which and why. Do not stop without saying what comes next.
 
+**The announcement names the clause, per issue.** Where loose issues are in play,
+say for each one which of the three above it falls under and what follows from
+that. Not that it is next, not that it is minor, not that it can wait: a word
+reached for at the moment of deciding reads like a criterion and is not one, and
+nobody can disagree with it because nobody can tell where it came from. An
+announcement that orders loose issues and names no clause is incomplete on its
+face, which is the point of asking for the clause rather than for the decision.
+
+**And blocking is not the criterion here.** Zero open blockers is what the
+readiness query asks of a task under a spec, and it is the first thing this step
+says to run, so it is the criterion nearest to hand when the ordering has to be
+said out loud. Clause 1 asks something else entirely: whether leaving this
+undone leaves work that has already landed doing the wrong thing. Measured on 9
+September 2026: four loose issues, every one of them `raised-here`, announced as
+"in order by issue number, since none blocks another" and built that way. One of
+the four was a shipped flag that silently skipped a rule file in a worktree —
+clause 1, and it carried the highest number, so it was built last. The other
+three were hardenings with nothing wrong in service, which is clause 3.
+
 **Except an issue from outside**, which is a suggestion and not an instruction:
 report it and leave it. **`raised-here` is what tells them apart** — this
 workflow sets it on every finding it files, so an issue without it came from
@@ -905,9 +924,20 @@ a guessed list drops new files silently. Add paths explicitly, never with `-A`.
 
 ## Step 7 — Back to step 2
 
-Query again **before you say anything about what is left**. One ready task:
-continue. Several: ask. None: stop. Whatever you knew before the merge is stale
-by definition — the merge is what changed it.
+Query again **before you say anything about what is left**. Whatever you knew
+before the merge is stale by definition — the merge is what changed it, and that
+is why this step exists at all.
+
+**Step 2 then decides, and this step decides nothing.** What to do with one ready
+task, with several, with none, and with a loose issue lying beside them is
+written there once and read from there. This step used to answer those cases in
+three words of its own, and two of the three contradicted step 2 — "ask" where
+step 2 says **Do not ask which**, "stop" where step 2 says **Do not stop without
+saying what comes next**. Measured on 9 September 2026: with the spec closed and
+four loose issues open, a run stopped here and put two ways to the user instead
+of naming the one it was taking. A second statement of a decision is not a
+summary of it. It is the version that gets followed, because it is the one being
+read at the moment of deciding.
 
 A pull request that has not landed keeps its own task out of that answer, which
 is the point rather than a gap: the task is built, and the query is what stops
@@ -972,22 +1002,56 @@ checks — only the gate differs.
    through, which is not a gate but the appearance of one.
 
 Then say what this run turns on, in the message that opens it, and keep it in
-the conversation: the scope, the sentence that will mean it has finished, and the
-main-branch commit it starts from. **None of it goes into a file.** Nothing on
-disk reads such a file — no hook watches for an unattended run — so one written
-here is read only by the run that wrote it, which is bookkeeping in the coat of a
-safeguard. Measured on 6 and 7 September 2026: a run kept exactly that file across
-three tasks and raised its own limit in the same write, and nothing anywhere
-noticed.
+the conversation: the scope, what happens to the loose issues already open, the
+sentence that will mean it has finished, and the main-branch commit it starts
+from.
 
-**There is no ceiling on how many tasks this run may finish.** It works until
-nothing in scope is ready any more, and that is the only finish. Work that turns
-up along the way is taken on where it serves the same goal, and a run that stops
-with ready work left because a number ran out has stopped for no reason to do
-with the work. What does bound a single task is the turn-end hook, which runs the
-chain itself and hands the problem over after three turn-ends with the same
-classes failing — and with nobody there to hand it to, that becomes an issue
-against the task and the next task is taken up. Step 3 says how.
+**The loose issues belong in that opening message, not in whatever the run meets
+later.** Run the in-flight query before announcing anything, name the ones
+carrying `raised-here`, and say under which of step 2's three clauses each stands
+— clause 1 taken now, clause 2 waiting on the open spec and why, clause 3 waiting
+for the spec to close. An issue from outside is reported and left, the same as
+everywhere else. Do not build the scope out of the readiness query alone: that
+query returns the tasks under a spec, step 2 says in so many words that a loose
+issue is not one of them, and a scope taken from it is a scope with the loose
+work already missing from it. Measured on 9 September 2026: a run announced its
+scope as the last open task under one spec, never mentioned the three loose
+issues standing open beside it, closed the spec, reported that nothing was left
+and halted.
+
+**None of it goes into a file.** Nothing on disk reads such a file — no hook
+watches for an unattended run — so one written here is read only by the run that
+wrote it, which is bookkeeping in the coat of a safeguard. Measured on 6 and 7
+September 2026: a run kept exactly that file across three tasks and raised its
+own limit in the same write, and nothing anywhere noticed.
+
+**There is no ceiling on how many tasks this run may finish.** What ends it is
+that step 2 has nothing left to take, and that is **two** conditions, both of
+which have to hold: nothing ready in scope, **and** no loose `raised-here` issue
+that clause 1 or clause 3 would take now.
+
+**Do not phrase the finish in the readiness query's terms alone.** "Nothing
+ready" is that query's answer, and step 2 says the query does not see loose
+issues — so a run that finishes on it finishes on a question it never asked. That
+is not a hypothetical: the sentence here used to read that the run works until
+nothing in scope is ready any more and that this was the only finish, and on 9
+September 2026 a run read it, closed its spec, and halted with three loose issues
+lying open.
+
+**Open loose issues are not by themselves a reason to keep going.** While a spec
+is open, clause 2 is what holds, and a loose issue waiting on it is the ordinary
+state of a healthy run — every finding step 4 files is one of them. There the run
+says they are waiting and why, which clause 2 asks for anyway, and carries on
+with the spec. The two clauses that keep this run working are the other ones:
+something landed and wrong, or a spec closed with a loose issue left beside it.
+
+Work that turns up along the way is taken on where it serves the same goal, and
+a run that stops with ready work left because a number ran out has stopped for
+no reason to do with the work. What does bound a single task is the turn-end
+hook, which runs the chain itself and hands the problem over after three
+turn-ends with the same classes failing — and with nobody there to hand it to,
+that becomes an issue against the task and the next task is taken up. Step 3
+says how.
 
 **One unattended run per working directory.** Two share a checkout and a main
 branch and neither sees what the other is building. Same constraint that already

@@ -343,6 +343,92 @@ the size of the work.
   play: the run took the one ready task, which is what the rule says to do. A
   measurement of the ordering needs a spec whose last task is closed, or merged
   work that is wrong, with the loose issues still lying there.
+- **The loose-issue rule was written by appending, and the sentences it competes
+  with were left standing.** This is the finding; the three violations below are
+  how it showed. Measured on 9 September 2026 on a bench with four loose issues
+  open, every one of them `raised-here` and raised by the run itself.
+
+  **Read the count first, or the fourth break reads as the first.** The rule at
+  `build-work` step 2 says in its own text that this step had been broken three
+  times and answered three different ways — it was written as the answer to
+  exactly that. What follows is the fourth, fifth and sixth violation of the same
+  step, with the rule standing in full, explicit, and at the right anchor
+  throughout.
+
+  **And the lesson is not that a rule was broken a fourth time.** It is that
+  `docs/skill-conventions.md` already carried the convention that answers this —
+  *rewrite the sentence rather than appending to it* — with two earlier cases
+  recorded under it, and that convention was not applied to the file the rule was
+  being written into. Every one of the three violations below matches a sentence
+  elsewhere in that same file saying something different, standing nearer to the
+  moment of deciding. None of them matches a gap. So this is the fourth case of
+  that convention, and it is recorded there as the fourth: applying this page to
+  the file being edited is part of writing a rule, not a review afterwards.
+
+  - **The unattended scope announcement did not mention the loose issues.** The
+    run set its scope to the last open task under one spec, said nothing about
+    the three loose issues open beside it, closed the spec, reported nothing left
+    under that spec and halted. It built the scope from the readiness query —
+    the query step 2 says does not see loose issues — and the finish sentence it
+    halted on read "until nothing in scope is **ready** any more, and that is the
+    only finish", which is that query's own word. *Soll:* the opening message
+    names the loose issues carrying `raised-here` and says which of the three
+    clauses each stands under, and the finish is two conditions — nothing ready
+    in scope **and** no loose `raised-here` issue that clause 1 or clause 3 would
+    take now. Clause 2 is not one of them: a loose issue waiting on an open spec
+    is the ordinary state of a healthy run, and treating it as unfinished work
+    would mean no run ever finishes. *Built:* both rewritten in `build-work`'s
+    unattended section, and the same finish pulled straight in the three places
+    `setup-checks` step 8 promises it to the user.
+  - **Asked what was next, the run offered two ways instead of naming one.** It
+    listed all four issues correctly and classified them correctly, then put the
+    choice to the user, with planning a fresh candidate offered as an equal
+    alternative. The rule says in as many words *say which and why* and *do not
+    stop without saying what comes next*; the knowledge was complete and the rule
+    was not applied. It did not have to be: `build-work` step 7 — which is where
+    a run stands after a merge — answered the same three cases in three words of
+    its own, and two of them were the opposite of step 2's, "ask" against **Do
+    not ask which** and "stop" against **Do not stop without saying what comes
+    next**. `start-work` step 5 supplied the other half of the offer: its four
+    branches have none for a loose issue, so one falls into "anything else,
+    including a fresh idea" and is routed to `plan-work` from the start.
+    *Soll:* with the spec closed the run names the issue it takes and why, as a
+    statement. *Built:* step 7 loses its three answers and points at step 2,
+    keeping the two sentences that are its own — that everything known before the
+    merge is stale, and that an unlanded pull request holds its own task out of
+    the answer. `start-work` step 5 gets a fifth branch sending loose
+    `raised-here` issues to `build-work`, not to `plan-work`.
+  - **The four issues were built in issue-number order.** Announced as "in order
+    by issue number, since none blocks another". Exactly one of the four met
+    clause 1 — a shipped flag that silently skipped a rule file in a worktree —
+    and it carried the highest number, so it was built last. The other three were
+    hardenings with nothing wrong in service, which is clause 3. Blocking is not
+    this rule's criterion at all; it is the readiness query's, for tasks under a
+    spec, and it is the criterion nearest to hand because the query is the first
+    thing the step says to run. *Soll:* the order follows the three clauses, and
+    the announcement names the clause it follows from. *Built:* step 2 now asks
+    for the clause per issue, so an ordering that names none is incomplete on its
+    face, and says outright that blocking is the other query's criterion.
+
+  **A guard was examined and rejected.** The situation is trivially queryable —
+  `gh issue list --state open --label raised-here` — and there is no place it can
+  usefully run. `Stop` is the only hook that fires at the right moment, and it
+  cannot tell a run declaring itself finished from a run waiting at an approval
+  gate: it receives the session id, the working directory and a transcript path,
+  and open `raised-here` issues are the *normal* state at step 5, since step 4
+  files them. Worse, a `Stop` hook blocks with exit 2, which forces the model to
+  continue — it would push runs past the approval gates the whole loop rests on.
+  Its non-blocking form writes to stdout, which the model does not see. Keying it
+  on the transcript's closing sentence fails twice over: that sentence is agreed
+  per run and deliberately written to no file, and a check keyed on wording loses
+  what it watches silently. `SessionStart` can inject context cheaply, but in all
+  three violations the run already had the facts — the second one enumerated and
+  classified all four issues correctly — so supplying them again prevents none of
+  it. **The queryable part of this situation and the failing part do not
+  overlap:** what is queryable is whether loose issues exist, and what failed is
+  the shape of a sentence no hook can read. What was built instead is two checks
+  over the skill text under "Before a handover, run these", where the artefact is
+  a file rather than a run.
 - **A finding announced as filed is not always filed.** One run said it would
   record a point as an issue and the issue list did not grow. Nothing checks that
   a promised issue exists.
