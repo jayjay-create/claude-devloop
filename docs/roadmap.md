@@ -90,8 +90,14 @@ the ones with a plausible answer:
   `docs/skill-conventions.md` run; the count belongs there and is not repeated
   here, because a second copy of it is what went stale. Done by hand several
   times and never as a step, and every round has found false statements in this
-  file: three in the first, four in the round before this one, three of those
-  work recorded as run that had not run.
+  file. The rounds, by date rather than by "the round before this one": three in
+  the first; four in a later one, three of those work recorded as run that had not
+  run; sixteen on 7 September 2026; five on 9 September 2026. **This sentence used
+  to stop at the round of four**, and it was written in the very commit that
+  corrected the sixteen — so the largest round on record was missing from the
+  tally that same day. Relative time is how it happened: "the round before this
+  one" needs a reader who knows which one "this" is, and there is no such reader
+  two commits later.
 - **`measure-runtime-effect`** — nothing runs today, so there is nothing to
   measure. Attaches once the first item under Known gaps is built.
 - **`write-questionnaire`** — when the answer sits with a person the workflow
@@ -339,7 +345,7 @@ the size of the work.
 
   What this did **not** measure is the ordering itself. The readiness query came
   back with exactly one ready task, so nothing was being chosen between, and the
-  three numbered clauses at `skills/build-work/SKILL.md:292-304` never came into
+  three numbered clauses at `skills/build-work/SKILL.md:366-380` never came into
   play: the run took the one ready task, which is what the rule says to do. A
   measurement of the ordering needs a spec whose last task is closed, or merged
   work that is wrong, with the loose issues still lying there.
@@ -520,6 +526,18 @@ the size of the work.
   the missing-rights answer. Every arming attempt after that gate existed was
   accepted: nine of them across 6 and 7 September, one per pull request.
 
+  **Whether that stayed true through 8 and 9 September cannot be read off the
+  platform, and the entry stays as it is because of that.** Seven more pull
+  requests were merged in `devloop-test-o` on those two days, each of them armed
+  or handed over, and GitHub keeps no record of a refused `enablePullRequestAutoMerge`
+  mutation — a refusal leaves nothing on the pull request, so the only place it
+  exists is the session's own transcript. **The uncertainty is about what can be
+  read, not about what happened**: the third case either occurred there or it did
+  not, and this file cannot tell which. So it stays recorded as never walked until
+  a transcript shows otherwise, which is the reading that is wrong in the
+  harmless direction — a case wrongly held open costs one more measurement, a case
+  wrongly retired costs the measurement nobody knows is missing.
+
   30 August 2026 turned up two `mergeStateStatus` values no file carried: on a
   pull request seven days old it read `UNKNOWN`, and on the second query
   `BEHIND`. `UNKNOWN` is the computation not yet done rather than a state, so
@@ -662,13 +680,33 @@ the size of the work.
   declined — `cargo-geiger` was chosen and refused, so `code-security` carries
   that as its reason. `devloop-test-o` is Go again, a directory-report
   command-line tool set up from nothing on 31 August 2026 and worked through on 6
-  and 7 September: nine classes decided — seven filled and blocking, `integration`
-  and `dependencies` skipped with reasons — and the only project whose gate this
+  and 7 September and again on 8 and 9 September: the only project whose gate this
   workflow built itself, classic protection over the required check `checks` with
-  `enforce_admins` on, auto-merge on, private. Two specs closed, fourteen issues,
-  and three of its pull requests built and merged unattended. It is the bench for
-  anything to do with the unattended mode, and the only one where the mode is
-  recorded as available in `environment.md`.
+  `enforce_admins` on, auto-merge on, private. It is the bench for anything to do
+  with the unattended mode, and the only one of the six where the mode is recorded
+  as available in `environment.md`.
+
+  **Its state is read off the platform, and the reading has a date on it**, because
+  this is the bench that moves. On 7 September 2026 it stood at two specs closed,
+  fourteen issues, and three pull requests built and merged unattended. Read again
+  on 9 September 2026: twenty-three issues and twenty-one merged pull requests,
+  the work of 8 and 9 September being `--gitignore` support and four
+  `raised-here` hardenings against it. The three unattended merges are a dated
+  fact and stand; the counts beside them were not, and had gone stale inside two
+  days.
+
+  **Its check suite is nine classes decided — eight filled and blocking, only
+  `integration` skipped**, read off `docs/agents/checks.md` there on 9 September
+  2026. This file said seven filled with `integration` *and* `dependencies`
+  skipped, which was true when it was written. `dependencies` has since been
+  filled: the `scan-deps` target runs `govulncheck` from
+  `golang.org/x/vuln/cmd/govulncheck`, blocking, and that project's own
+  `environment.md` records what it costs — unlike `gosec` and `gitleaks`, which
+  are static analysers, it fetches its database from `https://vuln.go.dev`, so a
+  blocking `make check` there can now stall or fail on network reachability, which
+  was never true of that suite before. That is the first check class in any bench
+  whose blocking target needs the network, and nothing in `checks.md`'s shape
+  records that about a class.
 
   The base check, the rewritten questions at four stage boundaries, and the
   control documents finally getting a writer came out of a single run merged
@@ -836,7 +874,15 @@ the size of the work.
 
   A fix costs one clause at each of the two sites — name the criterion per
   finding as the split is announced — and changes no decision, only what gets
-  said. Recorded, not built.
+  said. **Built on 7 September 2026**, at both sites and in nearly these words:
+  `review-changes` under "What happens to a finding" and `build-work` step 4 both
+  carry "the criterion is the one written above, and each finding is announced
+  under it". It was built as part of the entry below about every finding being
+  fixed on the spot, which is the same rule arriving from the later measurement,
+  and this entry was left reading "Recorded, not built" for two days afterwards.
+  That is its own small lesson: an entry answered by a later entry does not
+  notice, and the reader who checks this list for what is still open is the one
+  who pays for it.
 
 - **The unattended mode needs a machine that stays awake, and nobody was told,
   and that was measured on 6 and 7 September 2026.** In `devloop-test-o`, inside
@@ -1053,21 +1099,49 @@ the size of the work.
   than finding a spelling that gets through — which is what both guard messages
   already ask for in so many words, and what neither run did.
 
-  **The branch guard is built**, 7 September 2026. What it reads is no longer
-  where the run stands but what the push moves: the refspecs after the remote are
+  **The branch guard is built**, 7 September 2026. Where the run stands is no
+  longer the *whole* of what it reads: standing on the default branch is still
+  the precondition for the guard to look at anything at all, and once it is
+  looking, what decides is what the push moves. The refspecs after the remote are
   taken for their destination — the part behind the last colon, with a leading `+`
   and `refs/heads/` stripped — and a destination that is demonstrably another
   branch goes through, deletions included. No readable destination means the
   current branch, which here is the default one, so it blocks; `--all` and
   `--mirror` block; every `git push` in the command is read, so one blocking
   segment blocks the call; and `git commit` on the default branch is untouched.
+
+  **That first sentence read "no longer where the run stands but what the push
+  moves" until 9 September 2026, and it was false**, which mattered because the
+  three cases below were written under it and read as though they held anywhere.
+  `hooks/pre-tool-use-branch-guard.sh` exits 0 before the tool dispatch whenever
+  the current branch is not the default one, and that line was never touched by
+  the change that taught it to read destinations. Measured on 9 September 2026
+  against a scratch repository with `docs/agents/` present, feeding the hook its
+  JSON directly: standing on `main`, `git push origin main` exits 2 and
+  `git push origin --delete task-24` and `git push origin task-24:task-24` exit 0
+  — the fix working as recorded — while standing on `task/x`, every one of those,
+  `git push origin main` included, exits 0.
+
+  **The hook's own comment opened with the same false sentence and was corrected
+  with this entry.** It was nearly left alone on the reasoning that this round
+  changed no file under `hooks/`, and that reasoning is backwards: no version
+  bump is the *consequence* of having changed nothing there, never a reason to
+  leave something wrong. A comment saying the opposite of what the code does sits
+  in the file the next reader opens to understand the guard, which is a worse
+  place for it than this one. The comment now says that standing on the default
+  branch is the precondition and that the destination decides once the guard is
+  looking. Only the comment changed; the six cases above were re-measured
+  afterwards and answer exactly as before.
   The cost this entry carried was wrong and is corrected with it. It read "one
   clause letting a `git push` through when what it deletes is a branch other than
   the default one", and a clause about deletions is too narrow —
   `git push origin task-24:task-24` deletes nothing and has to go through as well.
   The clause reads the destination, not the deletions.
 
-  Three cases it does not answer, all deliberate, all open:
+  Four cases it does not answer, all open. The first three are deliberate, and
+  all three describe the guard **while the run stands on the default branch**;
+  the fourth is what standing somewhere else costs, and it was found by reading
+  this list against the hook rather than by a run hitting it.
   - `git push --tags origin` moves no branch, names no refspec and is blocked.
     Should hold: a block that protects nothing. Kept, because "no readable
     destination means the current branch" is the rule that holds the guard shut,
@@ -1081,6 +1155,21 @@ the size of the work.
     default branch and belongs blocked. Not fixed, because `git -C` can point at
     another repository, where blocking it would be a fresh false positive.
     Unresolved rather than forgotten.
+  - **`git push origin main` from a task branch goes through**, measured on
+    9 September 2026, because the guard exits before it reads anything whenever
+    the current branch is not the default one. That is the act the guard exists
+    for, reached from the branch every build in this workflow actually stands on.
+    Should hold: what is guarded is the default branch moving, so a push whose
+    destination is the default branch is blocked wherever the run stands, and the
+    standing check goes on gating only the two cases that really are about
+    standing — writing files, and `git commit`. Not built: this round corrected
+    the comment describing the guard and changed none of its behaviour, and
+    which of the two the standing check should gate is a decision rather than a
+    wording. **The reason it has never been
+    hit is not that it is safe**, it is that `build-work` step 6 hands the merge
+    over rather than pushing, so nothing in the workflow reaches for this command
+    — and a guard is for the run that departs from the text, which is the only
+    kind of run it ever fires on.
 
   **The install guard is unchanged and the case stays open.** The reason it stays
   open is one thing, and it is not that the false positive is a corner.
@@ -1491,6 +1580,265 @@ the size of the work.
   2026 in a commit whose message carries no detail, and neither has a measurement
   anywhere. They cost nothing to obey, which is why they stay; what they are not
   is measured.
+
+- **The setup cuts its branch before the first question is answered, measured on
+  9 September 2026.** `plan-work` was invoked in a repository with no
+  `docs/agents/`, routed on to `setup-project`, and `setup-project` cut the branch
+  `setup-devloop-project` before it asked anything. The user broke off. The branch
+  stayed behind and was in the way at the next start — `git branch -D` refused it,
+  because it was the checked-out branch. That nothing had been written is not
+  inferred: it stood on exactly the then-current main and `git status --short` was
+  empty.
+
+  *Ist:* `## Cut the branch before the first write` is a step of its own between
+  Step 2 and Step 3, and the questions are Step 4. The paragraph says why it is
+  placed there and the reason is good — a run that reads past it hits the
+  main-branch guard on its first edit and on every edit after, which had happened
+  three times. So the placement answers a real failure; what it never considered
+  is the run that never gets as far as a first edit.
+  *Soll:* the branch comes into being once the last question is answered, or a
+  break-off clears it away. A branch standing there from an abandoned setup looks
+  like work begun and is none, and the next run has to work out which of the two
+  it is before it can do anything.
+
+  **The same pattern is one skill over, in the same words.** `setup-checks`
+  carries that block verbatim, in the same position: before Step 2, which is the
+  step that asks which classes to fill — "All of them, some of them, or none".
+  The branch therefore exists before the question that decides whether anything
+  gets built at all. It is one paragraph living in two files rather than two
+  rules, which is the shape this file already names as *a rule written on one
+  path when several reach the situation* — except that here both paths got the
+  rule and neither got the question that follows from it.
+
+  **And one skill already carries the answer, which is why this is cheap.**
+  `plan-work` opens the planning issue before Stage 1, which looks like the same
+  defect and is not: the issue is the surface each stage writes its output into,
+  it carries the label `being-planned` so that neither an agent nor a person acts
+  on it, and "Picking up an interrupted plan" is a written path back to it. A
+  mark saying *unfinished*, and a reader for that mark next time — the two halves
+  the setup branch has neither of. The other three places something is created
+  were read and are not this pattern: `cut-into-tasks` presents the cut and then
+  creates it without asking, deliberately, because the cut is not the user's to
+  judge; `build-work` step 3 cuts the task branch inside the build subagent, after
+  the task has been chosen; and `build-prototype` commits to a throwaway branch at
+  capture time, after the work exists.
+  Recorded, not built.
+
+- **The check over the installed copy could not be green where it stood, measured
+  on 9 September 2026.** Reported red three times in one day, at 0.95.0, 0.96.0
+  and 0.97.0.
+
+  *Ist:* the command in `docs/skill-conventions.md` read the version out of
+  `.claude-plugin/plugin.json` — the working tree's — and compared against the
+  cache directory of exactly that version. Every change that lands raises that
+  number, so that directory does not exist from the bump until the plugin is
+  updated after the merge. The check stood in the handover list, which is
+  precisely when the bump has happened, so it was red exactly when it was read,
+  and it answered `No such file or directory` rather than a difference.
+  *Soll:* the check belongs where its answer can go either way — at the start of
+  the work, where it matters that you are not working against a stale installed
+  copy — and it reads the version from the installed side, not from the working
+  tree.
+
+  **Built**, and the losing option is written down beside it because it is the
+  repair that suggests itself. Comparing against the version before the bump does
+  not hold: 0.96.0 was merged and released and never entered the cache at all —
+  the install went from 0.95.0 straight to 0.97.0 — so the predecessor's directory
+  need not exist either, and the check would go red for a second reason it cannot
+  tell from the first. Under that sits the reason that decides it: at a handover
+  the text being handed over is by construction not the installed text, so no
+  comparison made at that moment can be green about the change in hand. The check
+  was in the wrong place, not in the wrong form. It now stands under "Before you
+  change anything, run this", reads the installed version out of
+  `~/.claude/plugins/installed_plugins.json`, and diffs the whole `skills` tree
+  rather than one file. Both directions were measured before it was written down:
+  against the installed 0.97.0 it is silent, against 0.95.0 it prints the
+  difference. The general form — **a check that is red by construction at the
+  moment it is read is not a check** — is in `docs/skill-conventions.md` beside
+  it, as the mirror image of the check keyed on wording that goes quietly green
+  and stops watching.
+
+- **A lens checked against a decision it had not been given, measured on 9
+  September 2026.** The standards lens reported a field name as contradicting the
+  intent of the design. That field name was the recorded design decision on the
+  spec issue. The calling run saw it and struck the finding itself, saying the
+  reviewer had not known that connection.
+
+  *Ist:* `review-changes` under "Run them" — "One subagent per lens, in parallel,
+  each given only its own lens and the diff. A reviewer that sees the other lenses
+  starts prioritising across them." What else a reviewer may read is written into
+  each lens: the standards lens is pointed at `standards.md`, the spec lens at the
+  task issue and the spec it belongs to. So the decisions the diff was built
+  against reach the spec reviewer and nobody else, and the standards reviewer has
+  no route to them at all.
+  *Soll:* a lens gets the decisions that hold for the diff it is reading, or the
+  report says which ones it did not have. A reviewer without them manufactures
+  false findings that the caller then clears away one at a time — and that the
+  caller recognises them is not guaranteed. It is the same judgement by the same
+  run that the review exists to check, arriving one step later.
+
+  Recorded, not built, and the build is a decision of its own rather than a
+  clause. It touches what a reviewer may see, and the rule as it stands is not a
+  gap but a reason: a reviewer that sees more starts ranking across lenses, which
+  is the thing that made one reviewer with five lenses a false count in the entry
+  above. So the question is not whether to hand the decisions over but which
+  ones, from where, and whether the reason for the narrow context survives it.
+
+- **A run offered a way around its own guard, and the guard is blind to it,
+  measured on 9 September 2026.** Blocked by the install guard, the run handed the
+  command over correctly — and added that the user could type it with a leading
+  `!` directly in the session, where it would run and the run would see the
+  output.
+
+  **The guard does not fire on that route, and that was measured before this was
+  written.** In this repository, with `docs/agents/` present so the hooks are
+  armed: `echo "brew install probe"` through the Bash tool exits 2 with the
+  install guard's message — run twice, once before the probe and once after, so
+  the two readings are the same state. The same string typed by the user as
+  `! echo "brew install probe"` ran, printed `brew install probe`, and no hook
+  fired at all. The mechanism is visible in the shape it arrives in: a `!` command
+  reaches the session as its own kind of input, not as a tool call, so
+  `PreToolUse` has nothing to fire on. That is the heavier of the two possible
+  answers. It is not a wall the run sends the user against; it is a way past the
+  wall, and the run named it.
+
+  *Ist:* all three guards in this set are `PreToolUse` hooks on `Bash`, `Edit`,
+  `Write` and `MultiEdit`. The `!` channel is none of those, so `! brew install`,
+  `! git push origin main` and `! gh pr merge` are all unguarded — the install
+  guard is only where this was met.
+  *Soll:* where a guard blocks, the run offers no route that ends at the same
+  block or gets around it. It hands the action over **as an action** — what it
+  does, what it costs, and where a no leads — not as a keystroke whose output
+  comes back into the run's own context. `docs/skill-conventions.md` already
+  carries the near half of this, that the same act under a different command name
+  is the act that was refused; a different *channel* for the same act is the same
+  move, and the shared block does not say so.
+
+  **One reading against it, and it is the reason this is worth writing down
+  rather than obvious.** Letting a `!` command through is arguably the guard
+  working: the guard's own message says the act is the user's to run, and a
+  command the user types is the user running it. That reading holds right up to
+  the point where the run is the one that proposed the exact string and then reads
+  the result. Formally the act became theirs; what actually happened is the run's
+  act with the user as a keyboard, and the deliberation the guard exists to force
+  — say what it installs, say what a decline costs, wait — never took place.
+  **The distinction is who decided, not whose fingers moved**, which is the same
+  distinction this file already draws between a rule written into a skill in the
+  open and a rewording invented by a run at the block.
+
+  **And the suggestion comes from outside this repository**, which is why a rule
+  here has to name it. The `!` form is harness guidance, offered to a run
+  independently of anything these skills say; a run that has read it will offer it
+  again unless the skills say not to. That is the mirror image of the entry above
+  about a rule in the run's own memory closing a route the skills expressly allow
+  — there something outside shut a door these skills hold open, here something
+  outside opens one they mean to hold shut. Both say the same thing about how much
+  of this workflow's behaviour is actually decided by its own text.
+  Recorded, not built. Fixing the hook is not the answer available: a hook cannot
+  see an input that never becomes a tool call, so this is a rule on the run's side
+  wherever it lands, and this file already records what that is worth.
+
+- **The second review round cannot read a change to the test scaffolding,
+  measured on 9 September 2026.** In one task the corrections changed the
+  scaffolding itself: the error injection of a fake file system was split apart so
+  that "directory readable, file not" became constructible at all.
+
+  *Ist:* `build-work` step 4 — "Not the whole diff — the commits added since the
+  last review", and "A second round follows the same two ways out, and it looks
+  only at what is new." A reviewer reading only the correction commits sees the
+  change to the scaffolding and cannot judge whether tests that already existed
+  went blunt because of it, since the tests that use that scaffolding are not in
+  the diff it was given.
+  *Soll:* where a correction round changes a test double or test scaffolding, the
+  second round is given the tests that use it as well — or the narrowing to the
+  correction commits does not hold for that commit, and the report says so.
+
+  **A second reading, from the other file, and it points the same way.**
+  `review-changes` defines its target at "Pin the target" as *the diff between the
+  branch and the main branch, at the current commit*. The narrowing to the
+  correction commits is written only in `build-work`. So the second round is the
+  one place in this workflow where the caller hands over a target the callee's own
+  definition does not describe, and neither file says what happens when the two
+  disagree. Whatever is built here belongs in both.
+  Recorded, not built.
+
+- **A closed planning issue still carries `being-planned`, seen on 9 September
+  2026.** Issue 29 in `devloop-test-o` — "Add --format json output for dirstat,
+  all three modes" — is closed and carries the label. It is a planning issue that
+  was closed because the work it proposed turned out to be built already.
+
+  *Ist:* `plan-work` puts the label on at the start and swaps it at Stage 4, when
+  the spec is written into the body. A plan that ends any other way — closed
+  because the work exists, closed because it was abandoned — never reaches Stage 4
+  and keeps the label.
+  *Soll:* a closed planning issue does not carry it. `plan-work` says what the
+  label means in as many words — "Nothing acts on a `being-planned` issue —
+  neither an agent nor a human — because it is not a suggestion and not an
+  instruction, it is unfinished." On a closed issue that is simply false: it is
+  not unfinished, it is settled, and the mark says the opposite of the state it
+  is attached to.
+
+  **Nothing is broken by it today, and the reason is worth stating rather than
+  leaning on.** Both readers of the label filter on state before they ever see
+  it: `plan-work`'s stock-take asks for *open* issues labelled `being-planned`,
+  and the entry point's query is `issues(states:OPEN,…)`. So a closed one is
+  invisible to both, and what protects them is the state filter rather than the
+  label being kept true. That is a coincidence holding a mark honest, not a
+  design, and the mark is still wrong for anyone who reads the tracker by label.
+
+  Recorded, not built. **It stands on a bench and not in this repository**, so
+  nothing here is red because of it; what is wrong is the wording in `plan-work`,
+  which describes exactly one way out of a plan — Stage 4, where the spec is
+  written and the label swaps — and leaves the label behind on every other way one
+  can end.
+
+- **Five false statements in these two documents, and that was measured on 9
+  September 2026.** The same reading as the round of sixteen two days earlier —
+  the documents against the repository, the git history and the live platform.
+  Corrected where they sat; listed here because what they have in common is worth
+  more than any of them.
+
+  - **A "Built" description that overstated what was built.** The branch guard's
+    entry opened "what it reads is no longer where the run stands but what the
+    push moves", and the standing check is still the precondition — the hook exits
+    0 before it reads anything whenever the run is not on the default branch. The
+    three cases written under that sentence therefore only hold on the default
+    branch, and a fourth case was hiding behind it: `git push origin main` from a
+    task branch goes through. Corrected, with the measurement, and the fourth case
+    added to the list. **The same sentence opened the comment in
+    `hooks/pre-tool-use-branch-guard.sh` and was corrected there too**, which is
+    the only file outside `docs/` this round touches and the reason the version
+    moves to 0.98.0.
+  - **A "Recorded, not built" entry that was built.** The 30 August finding about
+    a split announced with no criterion was answered on 7 September by the 6 and 7
+    September finding, at both of the sites it names, and never noticed. An entry
+    answered by a later entry does not update itself.
+  - **Two bench figures that had gone stale in two days.** `devloop-test-o` was
+    recorded at fourteen issues and at seven filled check classes with
+    `dependencies` skipped. Read off the platform on 9 September: twenty-three
+    issues, twenty-one merged pull requests, and `dependencies` filled and
+    blocking with `govulncheck`. Both were true when written. Now dated.
+  - **A line reference that had drifted again.** `build-work`'s three loose-issue
+    clauses were cited at `:292-304` and stand at `:366-380`. The round of sixteen
+    corrected the same reference for the same reason; two commits later it was
+    wrong again.
+  - **A tally written in relative time.** The count of these audit rounds read
+    "three in the first, four in the round before this one" — written in the very
+    commit that corrected sixteen, so the largest round was missing from the tally
+    on the day it happened. Now by date.
+
+  **What the five have in common is the thing to take from them.** Not one of
+  them is about the workflow's rules; every one is about a sentence describing
+  something that had moved — a hook, a bench, a line number, an entry two screens
+  down, an earlier round. Three of the five point at a second copy of a fact that
+  lives somewhere else, which is what "a count lives in one place" already says.
+  The other two are the drifting kind: a figure and a line number, both true when
+  written. The checks before a handover cannot find any of this, and this file
+  already says why — they compare this repository's own text against itself, and
+  none of these claims is about that text. **The only thing that finds them is
+  reading each claim against the thing it claims about**, which is what
+  `check-docs-consistency` would be if it were ever built, and the reason it stays
+  on the list of names rather than leaving it.
 
 
 ## Decisions taken against
