@@ -1028,6 +1028,56 @@ tells the model to ask the user to type the command — the one thing no skill i
 this set may do. So before locking a skill, check that no other skill is told to
 run it.
 
+## Before you change anything, run this
+
+**The installed copy is the copy that runs.** A skill invoked in a session is
+read out of `~/.claude/plugins/cache/`, never out of the working tree, so a
+session that exercises a skill while the install is behind is exercising text
+nobody is reading, and every conclusion drawn from what it did is about the older
+wording. That question has exactly one moment where it can be answered: before
+the first edit, while the working tree is still the main branch.
+
+    diff -r ~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json,pathlib;print(json.load(open(pathlib.Path.home()/'.claude/plugins/installed_plugins.json'))['plugins']['devloop@jayjay-create'][0]['version'])")/skills skills
+
+Silence means what runs in this session is what you are about to change. Anything
+printed is the installed copy being behind: say so before exercising a skill, and
+read what it printed rather than assuming which side is older.
+
+**The version is read from the installed side, and that is the whole of the
+fix.** This check stood under the handover heading until 9 September 2026 and
+read the version out of `.claude-plugin/plugin.json` — the working tree's — then
+compared against the cache directory of exactly that version. Every change that
+lands raises that number, so from the bump until the plugin is updated after the
+merge, that directory does not exist and the check answers `No such file or
+directory` instead of a difference. It stood in the handover list, which is
+precisely when the bump has happened, so it was red every time it was read:
+measured on 9 September 2026, three times in one day, at 0.95.0, 0.96.0 and
+0.97.0, each time while the run was doing exactly what it was supposed to.
+
+**Comparing against the version before the bump does not repair it**, and that is
+worth writing down because it is the repair that suggests itself. Measured the
+same day: 0.96.0 was merged and released and never entered the cache at all — the
+install went from 0.95.0 straight to 0.97.0 — so the predecessor's directory need
+not exist either, and the check would go red for a second reason it cannot tell
+from the first. Underneath that sits the reason that decides it. At a handover
+the text being handed over is, by construction, not the installed text; no
+comparison made at that moment can be green about the change in hand. The check
+was in the wrong place, not in the wrong form.
+
+**The general form: a check that is red by construction at the moment it is read
+is not a check.** It is read once, explained away, and after that skipped — and
+the checks standing beside it are read a little less each time, because a list
+with a known-red line in it is a list you scan rather than run. Where a check
+comes back red in the ordinary case, move it to the moment its answer can go
+either way, or delete it. That is the same failure as a check keyed on wording
+further down this page, arriving from the other side: there the check goes quietly
+green and stops watching, here it goes loudly red and stops being read.
+
+`installed_plugins.json` carries `gitCommitSha` for the installed version beside
+the version itself, so reading that field against `git rev-parse origin/main`
+answers the same question in one line. The diff is what is written here because a
+red answer has to be acted on, and only the diff says what differs.
+
 ## Before a handover, run these
 
 Thirteen checks that catch what a conversation loses. Each one has found a real
@@ -1035,6 +1085,17 @@ gap. Every one of them has to run on the machine it is needed on: `head -n -1` i
 GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
 POSIX gives you.
+
+**Thirteen checks, fourteen command blocks.** The fourteenth cannot go red by
+construction and is kept below as a warning rather than as a check, marked where
+it stands; count it out or this number drifts again. It drifted once already, and
+quietly: on 7 September 2026 one check was split into three blocks, one of them
+that unreachable one, so the checks went from eleven to twelve while this sentence
+stayed at eleven — and the change after it added two real checks and moved the
+number by two, carrying the error forward untouched. Measured on 9 September 2026,
+the sentence read thirteen against fourteen checks. It reads thirteen against
+thirteen now because the installed-copy check moved to the section above, not
+because the arithmetic was ever repaired.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -1115,7 +1176,8 @@ extract is defined as ending at the first marker, so asking whether a marker
 falls inside it asks whether the first marker comes before the first marker, and
 no arrangement of the same test answers that. Kept here because a reader will
 otherwise write it again, and because a check that cannot go red is the thing
-this file is most often wrong about.
+this file is most often wrong about. **This is the block that is not one of the
+thirteen** — the one the count at the top of this section says to leave out.
 
 What can be asked from outside is whether the extract still reaches the end of
 the block, named by its last sentence — a marker inside the block stops it short.
@@ -1246,6 +1308,7 @@ inside the paragraph that replaced it, and `setup-checks` carries the phrase wit
 the loose-issue clause appended to it. Both would read as defects on the wording
 alone, which is the reason this check reports rather than judges.
 
-The installed copy is the copy you changed:
-
-    diff ~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])")/skills/start-work/SKILL.md skills/start-work/SKILL.md
+**The check that used to close this section is not here any more.** "The
+installed copy is the copy you changed" now stands under "Before you change
+anything, run this", because at a handover the answer is red by construction and
+a red-by-construction line stops being read. The reasoning is written out there.
