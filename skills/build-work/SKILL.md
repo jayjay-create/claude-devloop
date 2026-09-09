@@ -610,6 +610,23 @@ named at the offer for that reason.
 
 Run `review-changes` on the diff.
 
+**Unattended this step never falls away, and how small the diff is is not a
+reason.** With nobody at the gate, this is the only reading the change gets
+before it lands on the main branch, and the judgement that it is too small to
+need one is made by whoever wrote it — which is precisely the judgement a review
+exists to check. Measured on 9 September 2026: a run read its own change, called
+a full review disproportionate for a comment-only diff, and landed it with no
+review at all. A comment-only diff is not outside the review either — the
+standards lens is told in as many words to look for comments that restate the
+code instead of explaining it, so that is the diff where that lens has the most
+to do. And the exemption could not be granted from here in any case: "this is
+only comments" is a claim about the diff, made by the run whose claims are what
+is being read, and a change announced as comments that carries code is exactly
+what such an exemption would let through.
+
+What the diff decides is which lenses apply, and `review-changes` decides that
+from the diff. Whether this step runs is not one of the things it decides.
+
 Each finding goes one of two ways:
 
 - **Fix now** if the fix is obvious and touches nothing that was decided —
@@ -647,6 +664,11 @@ written after the reviewers looked would otherwise ride in beside code they saw.
 This is not rare: a red check at the turn-end gate is answered by writing more
 code, and so is a "no, revise" at the gate itself. Fixes made *inside* this step
 are already covered by it — the boundary is the step, not the change.
+
+**The second round is this step, so the paragraph at the top of it holds over the
+second round unchanged**: unattended it does not fall away, and how little the
+new commits contain is not a reason. A round that reviews three added lines is
+cheap; the code that lands unread when it is skipped is not.
 
 A second round follows the same two ways out, and it looks only at what is new.
 If it surfaces nothing beyond what the first round already named, say so and
@@ -693,6 +715,12 @@ reader is the one thing an unattended run drops most cheaply.
 
 **Only after steps 4 and 5.** If the review has not run, or the user has not
 answered, this step has not started yet. Go back rather than forward.
+
+**Unattended, one of those two is replaced and the other is not.** The check
+suite stands in for the user's answer at step 5. Nothing stands in for step 4:
+a green suite says the code does what its tests say, which is not what any lens
+reads for, and no lens reads a test result. So a run arriving here with a green
+suite and no review has met one of the two preconditions, not both.
 
 **The pull request body carries the `Guarded conditions` list from step 3**, one
 line per condition. That is the trip that outlives the session; the one to the
