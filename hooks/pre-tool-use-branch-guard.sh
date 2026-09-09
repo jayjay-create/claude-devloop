@@ -38,13 +38,17 @@ case "$TOOL" in
     if echo "$CMD" | grep -qE '(^|[^[:alnum:]_-])git[[:space:]]+commit([[:space:]]|$)'; then
       MSG="Blocked: committing on the $DEFAULT branch. This workflow requires a branch cut from $DEFAULT, and the commit you are about to make would land on $DEFAULT itself. Cut a branch, then do this again. If the user asked for this on $DEFAULT deliberately, say that this is blocked and why, and let them decide — do not work around it."
     else
-      # What is guarded is the default branch moving, not where you stand. A push
-      # is read for its destination: the refspecs after the remote, taken as the
-      # part behind the last colon with a leading + and refs/heads/ stripped. A
-      # destination that is demonstrably another branch goes through, deletions
-      # included. No readable destination means the current branch — which here
-      # is the default one — so it blocks. Every git push in the command is read,
-      # so one blocking segment blocks the whole call.
+      # Standing on the default branch is still the precondition: this file
+      # exits 0 above whenever the current branch is not the default one, so a
+      # push from a task branch is never read at all — git push origin main from
+      # a task branch goes through, measured 9 September 2026. Once it is
+      # looking, what decides is no longer where the run stands but what the push
+      # moves. A push is read for its destination: the refspecs after the remote,
+      # taken as the part behind the last colon with a leading + and refs/heads/
+      # stripped. A destination that is demonstrably another branch goes through,
+      # deletions included. No readable destination means the current branch —
+      # which here is the default one — so it blocks. Every git push in the
+      # command is read, so one blocking segment blocks the whole call.
       SEGS=$(printf '%s' "$CMD" | tr '&|;()' '\n\n\n\n\n')
       BLOCKED=no
       set -f

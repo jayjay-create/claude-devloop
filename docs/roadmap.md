@@ -526,6 +526,18 @@ the size of the work.
   the missing-rights answer. Every arming attempt after that gate existed was
   accepted: nine of them across 6 and 7 September, one per pull request.
 
+  **Whether that stayed true through 8 and 9 September cannot be read off the
+  platform, and the entry stays as it is because of that.** Seven more pull
+  requests were merged in `devloop-test-o` on those two days, each of them armed
+  or handed over, and GitHub keeps no record of a refused `enablePullRequestAutoMerge`
+  mutation — a refusal leaves nothing on the pull request, so the only place it
+  exists is the session's own transcript. **The uncertainty is about what can be
+  read, not about what happened**: the third case either occurred there or it did
+  not, and this file cannot tell which. So it stays recorded as never walked until
+  a transcript shows otherwise, which is the reading that is wrong in the
+  harmless direction — a case wrongly held open costs one more measurement, a case
+  wrongly retired costs the measurement nobody knows is missing.
+
   30 August 2026 turned up two `mergeStateStatus` values no file carried: on a
   pull request seven days old it read `UNKNOWN`, and on the second query
   `BEHIND`. `UNKNOWN` is the computation not yet done rather than a state, so
@@ -1108,9 +1120,18 @@ the size of the work.
   JSON directly: standing on `main`, `git push origin main` exits 2 and
   `git push origin --delete task-24` and `git push origin task-24:task-24` exit 0
   — the fix working as recorded — while standing on `task/x`, every one of those,
-  `git push origin main` included, exits 0. The hook's own comment carries the
-  same overstatement in its first sentence and is left as it is here, because this
-  round changed no file under `hooks/`.
+  `git push origin main` included, exits 0.
+
+  **The hook's own comment opened with the same false sentence and was corrected
+  with this entry.** It was nearly left alone on the reasoning that this round
+  changed no file under `hooks/`, and that reasoning is backwards: no version
+  bump is the *consequence* of having changed nothing there, never a reason to
+  leave something wrong. A comment saying the opposite of what the code does sits
+  in the file the next reader opens to understand the guard, which is a worse
+  place for it than this one. The comment now says that standing on the default
+  branch is the precondition and that the destination decides once the guard is
+  looking. Only the comment changed; the six cases above were re-measured
+  afterwards and answer exactly as before.
   The cost this entry carried was wrong and is corrected with it. It read "one
   clause letting a `git push` through when what it deletes is a branch other than
   the default one", and a clause about deletions is too narrow —
@@ -1141,8 +1162,10 @@ the size of the work.
     Should hold: what is guarded is the default branch moving, so a push whose
     destination is the default branch is blocked wherever the run stands, and the
     standing check goes on gating only the two cases that really are about
-    standing — writing files, and `git commit`. Not built here: this round records
-    findings and changes no file under `hooks/`. **The reason it has never been
+    standing — writing files, and `git commit`. Not built: this round corrected
+    the comment describing the guard and changed none of its behaviour, and
+    which of the two the standing check should gate is a decision rather than a
+    wording. **The reason it has never been
     hit is not that it is safe**, it is that `build-work` step 6 hands the merge
     over rather than pushing, so nothing in the workflow reaches for this command
     — and a guard is for the run that departs from the text, which is the only
@@ -1739,6 +1762,36 @@ the size of the work.
   disagree. Whatever is built here belongs in both.
   Recorded, not built.
 
+- **A closed planning issue still carries `being-planned`, seen on 9 September
+  2026.** Issue 29 in `devloop-test-o` — "Add --format json output for dirstat,
+  all three modes" — is closed and carries the label. It is a planning issue that
+  was closed because the work it proposed turned out to be built already.
+
+  *Ist:* `plan-work` puts the label on at the start and swaps it at Stage 4, when
+  the spec is written into the body. A plan that ends any other way — closed
+  because the work exists, closed because it was abandoned — never reaches Stage 4
+  and keeps the label.
+  *Soll:* a closed planning issue does not carry it. `plan-work` says what the
+  label means in as many words — "Nothing acts on a `being-planned` issue —
+  neither an agent nor a human — because it is not a suggestion and not an
+  instruction, it is unfinished." On a closed issue that is simply false: it is
+  not unfinished, it is settled, and the mark says the opposite of the state it
+  is attached to.
+
+  **Nothing is broken by it today, and the reason is worth stating rather than
+  leaning on.** Both readers of the label filter on state before they ever see
+  it: `plan-work`'s stock-take asks for *open* issues labelled `being-planned`,
+  and the entry point's query is `issues(states:OPEN,…)`. So a closed one is
+  invisible to both, and what protects them is the state filter rather than the
+  label being kept true. That is a coincidence holding a mark honest, not a
+  design, and the mark is still wrong for anyone who reads the tracker by label.
+
+  Recorded, not built. **It stands on a bench and not in this repository**, so
+  nothing here is red because of it; what is wrong is the wording in `plan-work`,
+  which describes exactly one way out of a plan — Stage 4, where the spec is
+  written and the label swaps — and leaves the label behind on every other way one
+  can end.
+
 - **Five false statements in these two documents, and that was measured on 9
   September 2026.** The same reading as the round of sixteen two days earlier —
   the documents against the repository, the git history and the live platform.
@@ -1752,7 +1805,10 @@ the size of the work.
     three cases written under that sentence therefore only hold on the default
     branch, and a fourth case was hiding behind it: `git push origin main` from a
     task branch goes through. Corrected, with the measurement, and the fourth case
-    added to the list.
+    added to the list. **The same sentence opened the comment in
+    `hooks/pre-tool-use-branch-guard.sh` and was corrected there too**, which is
+    the only file outside `docs/` this round touches and the reason the version
+    moves to 0.98.0.
   - **A "Recorded, not built" entry that was built.** The 30 August finding about
     a split announced with no criterion was answered on 7 September by the 6 and 7
     September finding, at both of the sites it names, and never noticed. An entry

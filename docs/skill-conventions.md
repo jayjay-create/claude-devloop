@@ -1037,11 +1037,23 @@ nobody is reading, and every conclusion drawn from what it did is about the olde
 wording. That question has exactly one moment where it can be answered: before
 the first edit, while the working tree is still the main branch.
 
-    diff -r ~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json,pathlib;print(json.load(open(pathlib.Path.home()/'.claude/plugins/installed_plugins.json'))['plugins']['devloop@jayjay-create'][0]['version'])")/skills skills
+    P=~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json,pathlib;print(json.load(open(pathlib.Path.home()/'.claude/plugins/installed_plugins.json'))['plugins']['devloop@jayjay-create'][0]['version'])")
+    for d in skills hooks; do diff -r "$P/$d" "$d"; done
 
 Silence means what runs in this session is what you are about to change. Anything
 printed is the installed copy being behind: say so before exercising a skill, and
 read what it printed rather than assuming which side is older.
+
+**Both directories, and `hooks` is not an afterthought.** A hook runs from the
+installed path too, which this session can read off a block it received:
+`PreToolUse:Bash hook error:
+[/Users/…/.claude/plugins/cache/jayjay-create/devloop/0.97.0/hooks/pre-tool-use-install-guard.sh]`.
+So a guard edited in the working tree goes on firing in its old form until the
+plugin is updated, and a run that measures a guard's behaviour after editing it
+is measuring the previous version — the one failure this check exists to prevent,
+in the place where it is hardest to notice, because a guard that fires looks the
+same whichever copy fired it. The check was written over `skills` alone first;
+that is what it was widened from.
 
 **The version is read from the installed side, and that is the whole of the
 fix.** This check stood under the handover heading until 9 September 2026 and
