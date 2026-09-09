@@ -247,6 +247,14 @@ skill load and a correction the user watches happen:
   straight to `build-work`.
 - **A planning left unfinished** — `plan-work` picks it up at the stage its
   comments say it reached.
+- **Loose issues carrying `raised-here`, with no task left open under a spec** —
+  work this project already raised against itself, and it goes to `build-work`,
+  which is where the ordering of loose issues is written. **Not to `plan-work`.**
+  An issue that already says what is wrong does not need a spec written around
+  it, and sending it there stands a fresh candidate beside it as an equal choice
+  — measured on 9 September 2026, that is exactly the pair a run put to the user
+  instead of naming the issue it was taking. Loose issues from outside are
+  reported and left, the way step 2 reports them.
 - **Anything else, including a fresh idea** — `plan-work` from the start. It
   carries through to the tasks and into the build.
 

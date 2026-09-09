@@ -516,9 +516,12 @@ push to it directly either, on a private repository the workflow spends the
 account's Actions minutes, **the run works until the thing is done**, **every
 review runs every angle the change touches** and
 **the mode only works while this window is open and the machine is awake**. Say
-the first of those three in ordinary words as well: it keeps going until nothing in
-scope is left to build, work that nobody could see at the start gets picked up
-along the way where it serves the same goal, and there is no ceiling on how many
+the first of those three in ordinary words as well: it keeps going until nothing
+in scope is left to build **and nothing the run raised against itself along the
+way is still waiting** — its own reviews and checks file issues as they go, those
+carry `raised-here`, and the run takes them up under the ordering in `build-work`
+step 2 rather than leaving them lying. Work that nobody could see at the start
+gets picked up where it serves the same goal, and there is no ceiling on how many
 tasks that turns into. What bounds it is the scope and the tasks in it, not a
 number of rounds. The second in ordinary words: with them there, an angle left
 out comes with a reason they can read and disagree with, and unattended nobody
@@ -565,7 +568,8 @@ ordinary words:
   and green again, then the whole check suite, then a review from several angles
   at once, then the findings fixed, then a pull request handed to the platform,
   which merges it itself once the required check is green. Then the next task,
-  until nothing in scope is ready any more.
+  until nothing in scope is ready and nothing it raised against itself is still
+  waiting to be taken up.
 - **Where it still stops.** Deciding what gets built and cutting it into tasks
   never runs unattended — that stays with them, and this mode only builds tasks
   that already exist. Beyond that it stops rather than guesses: a precondition
@@ -580,8 +584,9 @@ ordinary words:
   this: it is the likeliest thing that will actually happen, and it means some
   tasks come back as issues to read rather than as merged work.
 - **How they see it has finished.** The closing sentence agreed at the start,
-  said only once nothing ready is left in scope. What was built reads as the diff
-  from the commit noted at the start to the current main branch.
+  said only once nothing ready is left in scope and nothing the run raised
+  against itself is still waiting. What was built reads as the diff from the
+  commit noted at the start to the current main branch.
 - **How they see it is standing still.** No closing sentence, and the last
   message saying what stopped it. Nothing here starts itself again — a word from
   them does, and until it comes the run is not working on anything. Pull requests

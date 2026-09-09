@@ -82,6 +82,40 @@ the entry point was patched that way again: a paragraph saying not to ask what
 the user wants to build was added below the sentence telling it to ask, which
 still stood, so runs did both.
 
+**So the first thing to look for is not a missing anchor but a competing
+sentence.** Where a rule is written well, at the right place, and the behaviour
+does not follow, the run is usually obeying something else in the same file — an
+older statement of the same decision, standing nearer to the moment the decision
+is actually made. It is not read as a contradiction while it is being read; it is
+read as the instruction. Two tests, both cheap, both to be run on the file the
+rule goes into rather than on the set:
+
+- **Where else does this file decide the same thing?** A step that summarises an
+  earlier step's decision in three words has not summarised it; it has written a
+  second rule that will win. `build-work` step 7 answered what to do with one
+  ready task, several, or none, and two of its three answers were the opposite of
+  step 2's — "ask" against **Do not ask which**, "stop" against **Do not stop
+  without saying what comes next**. It stood that way through three
+  rewrites of step 2, and all three were rewrites of the losing copy.
+- **What vocabulary does the rule's exception live in?** A rule written as an
+  exception to a query — "a loose issue is not one of these" — has to be spoken
+  in that query's terms, and the query's terms are what the rest of the file
+  reaches for. `build-work`'s unattended finish read "until nothing in scope is
+  **ready**", where `ready` is the readiness query's own word for a thing the
+  same file says that query cannot see. A finish condition phrased in a
+  vocabulary that structurally excludes the exception is a licence to ignore it,
+  and no amount of prose at the exception's own anchor outranks it.
+
+**This is the fourth case of this convention and the count is the finding.** The
+loose-issue rule in `build-work` step 2 was itself written as the answer to the
+same step being broken three times and answered three different ways — and it was
+written by appending, at one anchor, while two competing sentences elsewhere in
+the file were left standing. The convention was on this page, with the two cases
+above it, the whole time. Measured on 9 September 2026, three further violations
+followed, and every one of them matched a competing sentence rather than a gap.
+Applying this page to the file being edited is part of writing a rule, not a
+review step afterwards.
+
 ## Never assert state — query it
 
 Which task is next, which blockers are open, whether something merged, whether a
@@ -933,7 +967,7 @@ run it.
 
 ## Before a handover, run these
 
-Eleven checks that catch what a conversation loses. Each one has found a real
+Thirteen checks that catch what a conversation loses. Each one has found a real
 gap. Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
@@ -1109,6 +1143,45 @@ matches on two consecutive ones:
 So the question to ask of a line in this output is not which wording it uses. It
 is whether the act behind it leaves a result anywhere, and if it does, whether
 something reads that result before the run carries on.
+
+The unattended finish is not stated in the readiness query's vocabulary alone.
+Both places that state it name the loose issues too, and the label is what they
+are named by. Silence means both hold; a line means one of them has lost its
+loose-issue clause, or the heading it is keyed to has been renamed — either way
+something needs reading:
+
+    for spec in "skills/build-work/SKILL.md:^## Unattended mode" "skills/setup-checks/SKILL.md:^## Step 8"; do
+      f=${spec%%:*}; h=${spec#*:}
+      awk -v h="$h" '$0 ~ h {n=1;next} n&&/^## /{exit} n' "$f" |
+        grep -q 'raised-here' || echo "$f: the unattended finish does not mention loose raised-here issues"
+    done
+
+**This one is keyed so it cannot drift, and it is worth saying how.** It stands on
+two things that are not prose: a section heading, and `raised-here`, which is a
+label created in the tracker rather than a wording — `setup-project` creates all
+seven, and "a label that only exists in this document is not a label". Neither
+moves when a paragraph is improved. Renaming a heading does not make the check
+quietly pass; it makes the extract empty and the check print, which is the
+failure worth having. What it cannot see is a section that names the label and
+states the finish wrongly anyway. It asserts the element is present, which is the
+strongest thing a static check can assert about prose.
+
+**The check below it is keyed on wording, and there is no drift-safe way to write
+it.** What it looks for is a second statement of step 2's decision, and a second
+statement can be written in any words at all — there is no identifier, no
+heading and no structure that distinguishes one from a paragraph that legitimately
+mentions the same situation. So it carries the same standing note as the handover
+check above: **the phrasings get added as they are coined, and a line disappearing
+from this output is read as a question rather than as progress.** Every line it
+prints needs an eye on it, and the question to ask of each is whether it is the
+decision being made a second time or a place that quotes or qualifies it:
+
+    grep -rn 'Several: ask\|None: stop\|One ready task: continue\|nothing in scope is ready any more\|nothing ready is left in scope' skills/*/SKILL.md
+
+It prints two lines today, and both are sound: `build-work` quotes the old finish
+inside the paragraph that replaced it, and `setup-checks` carries the phrase with
+the loose-issue clause appended to it. Both would read as defects on the wording
+alone, which is the reason this check reports rather than judges.
 
 The installed copy is the copy you changed:
 
