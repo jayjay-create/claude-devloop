@@ -1840,6 +1840,133 @@ the size of the work.
   `check-docs-consistency` would be if it were ever built, and the reason it stays
   on the list of names rather than leaving it.
 
+- **Planning is fenced out of the unattended mode by one sentence, and three
+  places already decide the other way, read on 11 September 2026.** Nothing ran
+  for this one: it is the text read against itself, the same reading as the
+  round of five above.
+
+  *Ist:* `start-work` under `## Unattended` — "Planning is never unattended: the
+  design choice and the task cut are the two decisions that belong to the human,
+  and skipping them would build the wrong thing faster." `--auto` accordingly
+  reaches only the build stage.
+
+  **The fence stands in a second file, on a second reason.** `README.md` under
+  `## Attended and unattended` says the switch "replaces that approval with a
+  green check suite, from the build step onward", and then fences planning off
+  as "the two decisions where a mistake sends the whole thing in the wrong
+  direction" — the same rule resting on what a mistake costs rather than on
+  whose decision it is. Two places, two grounds, and neither names the other: a
+  repair at one of them leaves the other standing, still carrying a reason the
+  repair never answered.
+
+  Three sites settle the same question the other way:
+
+  - `plan-work` at `## Close` creates the cut without asking, and says why: the
+    split "follows from the spec rather than from anything only they know — so
+    it gets presented and created, not put to them as a question."
+  - This file says it a second time, in the entry on the setup branch above:
+    `cut-into-tasks` "presents the cut and then creates it without asking,
+    deliberately, because the cut is not the user's to judge."
+  - `plan-work` at `## How to ask` — "With nobody there to answer, a question
+    that passes this test does not stop the run. Take the reversible option,
+    record it in the spec as decided without an answer, and carry on. Stop only
+    where no reversible option exists." That is a planning stage describing its
+    own unattended behaviour, and it is not a stray line: it stands verbatim in
+    six skills — `plan-work`, `cut-into-tasks`, `build-work`, `setup-checks`,
+    `setup-project` and `untangle-idea` — held byte-identical by the cksum
+    command in `docs/skill-conventions.md`, under "The same for the block on
+    asking, in the six skills that ask anything". **So a word changed in that
+    clause is a change to six files**, which is the rule written directly under
+    that command: *a change to one skill is a question about all of them.* What
+    the command does not find is the other half — where every copy carries the
+    same reading, right or wrong, the checksums agree.
+
+  So the task cut is settled twice in opposite directions, and the design choice
+  is covered by a rule that already says what to do when nobody answers.
+
+  **The sentence that fences planning off is the oldest of the four and the
+  first one a run reads**, and that pair is what keeps it standing. It was
+  written on 18 August 2026 and has not been touched since; both sentences in
+  `plan-work` are from 22 August 2026, and the entry in this file from 9
+  September 2026. It sits at the entry point, in the section where `--auto` is
+  typed, so a run meets it before it opens `plan-work` at all. And of the four
+  skills a piece of work passes through, `start-work` is the only one carrying no
+  `## How to ask` block, so the two never stand in one file — the check that
+  holds the shared blocks together compares copies of the same block across
+  files and cannot see a sentence in another section contradicting one of them.
+
+  *Soll:*
+
+  - **The task cut falls out of that sentence.** It is decided otherwise at its
+    own site already, and one of the two places saying so is this file.
+  - **Both sentences change, the one in `start-work` and the one in
+    `README.md`.** The README's reason does not fall away because a mistake in
+    either decision would be cheap — it would not be. It falls away because both
+    decisions get something to be checked against: the design choice against the
+    user stories, the cut against the spec it follows from. What carries them
+    unattended is that check, not a claim that being wrong stopped costing
+    anything.
+  - **Planning runs unattended from the point where the idea stands.** Stage 1
+    stays attended, because it is the only part that needs something only the
+    user has. Everything after it — reading the code, the drafts, the design
+    choice, the seams, the spec, the cut, the build, the merge — can run alone.
+  - **The hard core of the user stories comes out of the end of Stage 1**
+    instead of Stage 4, so that the design choice has a list to play every draft
+    against.
+  - **The design choice is checked by an agent of its own, and as a question of
+    fact**: which draft does not carry what the user stories demand, and which
+    one builds something the spec expressly rules out. Not as a ranking — "which
+    of these is best" gets a plausible reason for whichever one it is handed,
+    which is no check at all.
+  - **At the end of Stage 1 the user is asked once, with three answers**: carry
+    on unattended now, plan unattended and stop before the first build, or stay
+    attended.
+  - **That question and the one in `setup-checks` step 8 are two questions, and
+    the text has to say which is which.** Step 8 offers the mode once per
+    project, with its costs and with the advice against a yes on a first
+    project. That one is a permission for this repository. The one at the end of
+    Stage 1 is a choice for this piece of work and presupposes the permission.
+    Left unrelated, the same thing is decided in two places. The wording with
+    the costs and the advice stays with the permission and is not repeated in
+    the choice.
+  - **The five preconditions of the unattended mode are checked at that
+    question**, not at the build. Otherwise the user is asked whether the work
+    should go on alone and it emerges afterwards that the repository does not
+    allow it at all.
+  - **The throwaway prototype separates two cases.** A question that can be
+    settled by measuring — a state model, a flow — is built, measured and
+    recorded by the run itself, attended as much as unattended. Only a question
+    where somebody has to look at the thing goes to the user as an offer.
+  - **Whether a question of that second kind is open is checked at the end of
+    Stage 1**, as one of the conditions for the idea standing, so that the case
+    does not arise in the unattended part.
+  - **Where a question is left unanswered unattended, this order holds:** first
+    take the less committing option and record it; then cut the part hanging on
+    the question out of the scope, file the question as an issue of its own and
+    build the rest — only where the rest is still a result on its own; and only
+    after those, record it in the spec as undecided and build on it.
+  - **For questions about the surface, the route in the `settle-the-look` entry
+    applies**: the design decisions are fixed once per project with the user
+    there, and are applicable unattended and checkable by machine afterwards. A
+    surface is reversible as long as it is kept apart from the function, which
+    is why the first option carries there and not the cutting out. **That route
+    does not exist today.** `settle-the-look` is a name under `## Named, not
+    built as skills`, with no body written, so this point hangs on its being
+    built first; until then an unattended stage that meets a surface question
+    falls back on the order in the bullet before this one.
+
+  **What this leaves open, deliberately**: a question that needs someone to look
+  and first appears while drafting in Stage 3. The check at the end of Stage 1
+  catches the ones visible by then, and nothing in the text provides for one that
+  surfaces later — an unattended run meeting it has nothing written to follow.
+
+  **What a repair touches is counted here rather than discovered halfway
+  through it:** two files for the fence, six for the unattended clause and
+  nothing less, one further skill whose existing question has to be told apart
+  from the new one, and `settle-the-look` built before the last point of the
+  Soll means anything.
+  Recorded, not built.
+
 
 ## Decisions taken against
 
