@@ -377,7 +377,7 @@ the size of the work.
     under that spec and halted. It built the scope from the readiness query —
     the query step 2 says does not see loose issues — and the finish sentence it
     halted on read "until nothing in scope is **ready** any more, and that is the
-    only finish", which is that query's own word. *Soll:* the opening message
+    only finish", which is that query's own word. *Should:* the opening message
     names the loose issues carrying `raised-here` and says which of the three
     clauses each stands under, and the finish is two conditions — nothing ready
     in scope **and** no loose `raised-here` issue that clause 1 or clause 3 would
@@ -398,7 +398,7 @@ the size of the work.
     next**. `start-work` step 5 supplied the other half of the offer: its four
     branches have none for a loose issue, so one falls into "anything else,
     including a fresh idea" and is routed to `plan-work` from the start.
-    *Soll:* with the spec closed the run names the issue it takes and why, as a
+    *Should:* with the spec closed the run names the issue it takes and why, as a
     statement. *Built:* step 7 loses its three answers and points at step 2,
     keeping the two sentences that are its own — that everything known before the
     merge is stale, and that an unlanded pull request holds its own task out of
@@ -411,7 +411,7 @@ the size of the work.
     hardenings with nothing wrong in service, which is clause 3. Blocking is not
     this rule's criterion at all; it is the readiness query's, for tasks under a
     spec, and it is the criterion nearest to hand because the query is the first
-    thing the step says to run. *Soll:* the order follows the three clauses, and
+    thing the step says to run. *Should:* the order follows the three clauses, and
     the announcement names the clause it follows from. *Built:* step 2 now asks
     for the clause per issue, so an ordering that names none is incomplete on its
     face, and says outright that blocking is the other query's criterion.
@@ -1228,7 +1228,7 @@ the size of the work.
   class standing as skipped while nothing hinders it. Each stage says which of the
   two it is, in its own vocabulary, and neither copies the other's.
 
-  One thing the shared rule cannot reach, recorded and not fixed. Ist: the install
+  One thing the shared rule cannot reach, recorded and not fixed. Today: the install
   guard's message offers two ways out — a check class becomes `skipped` with that
   reason, or the part of the task that needs the tool cannot be built. Both assume
   the caller has check classes or tasks. `research`, `build-prototype` and
@@ -1303,7 +1303,7 @@ the size of the work.
   **A. Five applicable lenses were carried by two reviewers.** One read security
   together with failure behaviour, the other standards with spec and test
   quality. The run announced the allocation; nothing was hidden.
-  *Ist:* the rule stood in **four** places, every one of them saying the same
+  *Today:* the rule stood in **four** places, every one of them saying the same
   thing — `review-changes` at "each with exactly one lens", at "Add one reviewer
   per lens the change touches" and at "One subagent per lens, in parallel", and
   `skill-conventions.md` under Agent Teams. **And there is no competing
@@ -1316,7 +1316,7 @@ the size of the work.
   explanation that answered the loose-issue findings — a rival sentence nearer
   the moment of deciding — **does not apply here**, and a fifth copy of a rule
   that four copies did not carry is not the remedy.
-  *Soll:* a lens is one reading of the whole diff by a reviewer given no other
+  *Should:* a lens is one reading of the whole diff by a reviewer given no other
   lens, so five lenses on two reviewers are two lenses and a false count.
   *Built:* `lens` defined — in `review-changes` beside `seam` and `condition`,
   and in `skill-conventions.md` under "Shared words are defined in one place",
@@ -1353,11 +1353,11 @@ the size of the work.
   lenses instead of five, security omitted because there was "no new input, path
   or network surface". *Whether the omission was substantively right is not the
   finding, and it may well have been.* The finding is the form.
-  *Ist:* the four conditional lenses are triggered by facts about the diff's
+  *Today:* the four conditional lenses are triggered by facts about the diff's
   content — does it contain a path, a test, a fallback value, a stored form. The
   reason given was a judgement about what the change means, which no reader can
   check and which unattended nobody reads.
-  *Soll:* the statement about a lens that did not run is the trigger's own words,
+  *Should:* the statement about a lens that did not run is the trigger's own words,
   negated, item by item — checkable by anyone holding the diff.
   *Built:* the existing paragraph "Unattended, a stated reason buys no exception"
   rewritten, not added beside. **The form had to be stricter than "a fact rather
@@ -1372,7 +1372,7 @@ the size of the work.
 
   **C. The review step fell away entirely.** A run read its own change, called a
   full five-lens review disproportionate for a comment-only diff, and landed it.
-  *Ist:* **not the void it first looks like.** Two sentences forbid it in general
+  *Today:* **not the void it first looks like.** Two sentences forbid it in general
   terms — `build-work`'s head, "none of them is optional", and step 6's "Only
   after steps 4 and 5. If the review has not run… Go back rather than forward."
   What is missing is the clause that would have caught this run: that the size or
@@ -1380,7 +1380,7 @@ the size of the work.
   reading the change gets. And one sentence sits near enough to be read the wrong
   way — step 5's "in unattended mode the check suite is this gate instead", which
   replaces step 5's gate and says nothing about step 4.
-  *Soll:* unattended the review never falls away; the author's judgement of size
+  *Should:* unattended the review never falls away; the author's judgement of size
   is not the measure, because it is the judgement the review checks.
   *Built:* at `build-work` step 4, which is the **only** place `review-changes`
   is reached from — a run that decides this never opens that file, so the
@@ -1590,13 +1590,13 @@ the size of the work.
   inferred: it stood on exactly the then-current main and `git status --short` was
   empty.
 
-  *Ist:* `## Cut the branch before the first write` is a step of its own between
+  *Today:* `## Cut the branch before the first write` is a step of its own between
   Step 2 and Step 3, and the questions are Step 4. The paragraph says why it is
   placed there and the reason is good — a run that reads past it hits the
   main-branch guard on its first edit and on every edit after, which had happened
   three times. So the placement answers a real failure; what it never considered
   is the run that never gets as far as a first edit.
-  *Soll:* the branch comes into being once the last question is answered, or a
+  *Should:* the branch comes into being once the last question is answered, or a
   break-off clears it away. A branch standing there from an abandoned setup looks
   like work begun and is none, and the next run has to work out which of the two
   it is before it can do anything.
@@ -1628,14 +1628,14 @@ the size of the work.
   on 9 September 2026.** Reported red three times in one day, at 0.95.0, 0.96.0
   and 0.97.0.
 
-  *Ist:* the command in `docs/skill-conventions.md` read the version out of
+  *Today:* the command in `docs/skill-conventions.md` read the version out of
   `.claude-plugin/plugin.json` — the working tree's — and compared against the
   cache directory of exactly that version. Every change that lands raises that
   number, so that directory does not exist from the bump until the plugin is
   updated after the merge. The check stood in the handover list, which is
   precisely when the bump has happened, so it was red exactly when it was read,
   and it answered `No such file or directory` rather than a difference.
-  *Soll:* the check belongs where its answer can go either way — at the start of
+  *Should:* the check belongs where its answer can go either way — at the start of
   the work, where it matters that you are not working against a stale installed
   copy — and it reads the version from the installed side, not from the working
   tree.
@@ -1665,14 +1665,14 @@ the size of the work.
   spec issue. The calling run saw it and struck the finding itself, saying the
   reviewer had not known that connection.
 
-  *Ist:* `review-changes` under "Run them" — "One subagent per lens, in parallel,
+  *Today:* `review-changes` under "Run them" — "One subagent per lens, in parallel,
   each given only its own lens and the diff. A reviewer that sees the other lenses
   starts prioritising across them." What else a reviewer may read is written into
   each lens: the standards lens is pointed at `standards.md`, the spec lens at the
   task issue and the spec it belongs to. So the decisions the diff was built
   against reach the spec reviewer and nobody else, and the standards reviewer has
   no route to them at all.
-  *Soll:* a lens gets the decisions that hold for the diff it is reading, or the
+  *Should:* a lens gets the decisions that hold for the diff it is reading, or the
   report says which ones it did not have. A reviewer without them manufactures
   false findings that the caller then clears away one at a time — and that the
   caller recognises them is not guaranteed. It is the same judgement by the same
@@ -1703,11 +1703,11 @@ the size of the work.
   answers. It is not a wall the run sends the user against; it is a way past the
   wall, and the run named it.
 
-  *Ist:* all three guards in this set are `PreToolUse` hooks on `Bash`, `Edit`,
+  *Today:* all three guards in this set are `PreToolUse` hooks on `Bash`, `Edit`,
   `Write` and `MultiEdit`. The `!` channel is none of those, so `! brew install`,
   `! git push origin main` and `! gh pr merge` are all unguarded — the install
   guard is only where this was met.
-  *Soll:* where a guard blocks, the run offers no route that ends at the same
+  *Should:* where a guard blocks, the run offers no route that ends at the same
   block or gets around it. It hands the action over **as an action** — what it
   does, what it costs, and where a no leads — not as a keystroke whose output
   comes back into the run's own context. `docs/skill-conventions.md` already
@@ -1744,13 +1744,13 @@ the size of the work.
   scaffolding itself: the error injection of a fake file system was split apart so
   that "directory readable, file not" became constructible at all.
 
-  *Ist:* `build-work` step 4 — "Not the whole diff — the commits added since the
+  *Today:* `build-work` step 4 — "Not the whole diff — the commits added since the
   last review", and "A second round follows the same two ways out, and it looks
   only at what is new." A reviewer reading only the correction commits sees the
   change to the scaffolding and cannot judge whether tests that already existed
   went blunt because of it, since the tests that use that scaffolding are not in
   the diff it was given.
-  *Soll:* where a correction round changes a test double or test scaffolding, the
+  *Should:* where a correction round changes a test double or test scaffolding, the
   second round is given the tests that use it as well — or the narrowing to the
   correction commits does not hold for that commit, and the report says so.
 
@@ -1768,11 +1768,11 @@ the size of the work.
   all three modes" — is closed and carries the label. It is a planning issue that
   was closed because the work it proposed turned out to be built already.
 
-  *Ist:* `plan-work` puts the label on at the start and swaps it at Stage 4, when
+  *Today:* `plan-work` puts the label on at the start and swaps it at Stage 4, when
   the spec is written into the body. A plan that ends any other way — closed
   because the work exists, closed because it was abandoned — never reaches Stage 4
   and keeps the label.
-  *Soll:* a closed planning issue does not carry it. `plan-work` says what the
+  *Should:* a closed planning issue does not carry it. `plan-work` says what the
   label means in as many words — "Nothing acts on a `being-planned` issue —
   neither an agent nor a human — because it is not a suggestion and not an
   instruction, it is unfinished." On a closed issue that is simply false: it is
@@ -1846,7 +1846,7 @@ the size of the work.
   for this one: it is the text read against itself, the same reading as the
   round of five above.
 
-  *Ist:* `start-work` under `## Unattended` — "Planning is never unattended: the
+  *Today:* `start-work` under `## Unattended` — "Planning is never unattended: the
   design choice and the task cut are the two decisions that belong to the human,
   and skipping them would build the wrong thing faster." `--auto` accordingly
   reaches only the build stage.
@@ -1896,7 +1896,7 @@ the size of the work.
   holds the shared blocks together compares copies of the same block across
   files and cannot see a sentence in another section contradicting one of them.
 
-  *Soll:*
+  *Should:*
 
   - **The task cut falls out of that sentence.** It is decided otherwise at its
     own site already, and one of the two places saying so is this file.
@@ -1964,8 +1964,8 @@ the size of the work.
   **What a repair touches is counted here rather than discovered halfway
   through it:** two files for the fence, six for the unattended clause and
   nothing less, one further skill whose existing question has to be told apart
-  from the new one, and `settle-the-look` built before the last point of the
-  Soll means anything.
+  from the new one, and `settle-the-look` built before the last point of what
+  should hold means anything.
   Recorded, not built.
 
 - **A run stopped four times after arming auto-merge, each time on a sentence it
@@ -1980,7 +1980,7 @@ the size of the work.
   armed and merged the same morning without a stop, so this is not what every
   arming does.
 
-  *Ist:* **the promise is a sentence no file asks for, and the rule it breaks is
+  *Today:* **the promise is a sentence no file asks for, and the rule it breaks is
   already written down.** `docs/skill-conventions.md` under `## Environment
   constraints, measured`: "A run that hands the user a command and says it will
   carry on once that command has run has promised something it cannot do." That
@@ -2018,7 +2018,7 @@ the size of the work.
   `docs/skill-conventions.md:1207`; this block has none, so a repair made at
   three sites leaves two standing and nothing says a word.
 
-  *Soll:*
+  *Should:*
 
   - **The wait happens in the same answer as the arming**, and the merge is
     proved against the platform before anything depends on it: `gh pr checks
@@ -2085,7 +2085,7 @@ the size of the work.
   run**, four of them test quality, every one of them inside a group of four
   started in parallel, and every repeat answered immediately. Attended throughout.
 
-  *Ist:* a lens that falls over silently is visible, and the workflow already says
+  *Today:* a lens that falls over silently is visible, and the workflow already says
   what to do about it — `review-changes:240`, "If a reviewer fails to return, say
   so and either rerun it or state which lens did not run. Never present a
   comparison that is quietly one lens short." A lens that hands back a report
@@ -2114,7 +2114,7 @@ the size of the work.
   `docs/skill-conventions.md` names under "A rule holds only on the path it is
   written on": look for the competing sentence before the missing anchor.
 
-  *Soll:* a report with no substance never counts as "no findings" — it counts as
+  *Should:* a report with no substance never counts as "no findings" — it counts as
   not having run. The difference is fixed to something the report itself has to
   carry, not to agreement with its neighbours: what the lens read, against what,
   and what it looked for. A count of neighbours is not available to a single lens
@@ -2142,7 +2142,7 @@ the size of the work.
   spec lens opened an issue and summarised all three lenses. The run saw that the
   branch had moved and said so, and drew nothing from it.
 
-  *Ist:* the review ran against a diff pinned at one commit, the branch stood on
+  *Today:* the review ran against a diff pinned at one commit, the branch stood on
   another at the end, and the summary went out over the first. So code sat on the
   branch that no lens had read, and it reached the gate inside a review that
   reported clean over the version before it. The landing question was put twice.
@@ -2194,7 +2194,7 @@ the size of the work.
   instruction it has, which is why no fifth prohibition elsewhere would have
   helped.
 
-  *Soll:* a lens reports and changes nothing. Where one changes something anyway,
+  *Should:* a lens reports and changes nothing. Where one changes something anyway,
   the review counts as not having run and is repeated against the new state — not
   amended, because a report that already went out over the earlier commit says
   something untrue about the branch. The pinned diff is read against the actual
@@ -2229,7 +2229,7 @@ the size of the work.
   changed four check targets and two documentation files and landed them. The run
   said so itself: that skill has no review step.
 
-  *Ist:* attended, the user sees the diff, so nothing was unread. Unattended, the
+  *Today:* attended, the user sees the diff, so nothing was unread. Unattended, the
   check chain is what stands in for the user's approval — `build-work:707` at step
   5, "In unattended mode the check suite is this gate instead" — and on this route
   the chain changes without the chain reading the change. A green suite
@@ -2246,7 +2246,7 @@ the size of the work.
   only on the path it is written on", arriving from the side where the rule was
   never written at either end.
 
-  *Soll:* a change to the check targets themselves goes through the diff review
+  *Should:* a change to the check targets themselves goes through the diff review
   like any other change.
 
   **Searched by subject: which stages land a diff, and which of them review
@@ -2288,7 +2288,7 @@ the size of the work.
   to build it — a recorded reference output against a reference implementation in
   the test code — and waited for an answer. Attended, so it got one.
 
-  *Ist:* the grilling was long over, the spec closed, and both options were
+  *Today:* the grilling was long over, the spec closed, and both options were
   reversible. **The rule that was broken is not the one for an empty room.**
   `build-work:185` — "With nobody there to answer, a question that passes this
   test does not stop the run. Take the reversible option, record it in the spec as
@@ -2301,7 +2301,7 @@ the size of the work.
   clause would have caught it too; the attended test caught it first and is the
   stricter reading.
 
-  *Soll:* a loose issue that opens with a design choice is not a build order.
+  *Should:* a loose issue that opens with a design choice is not a build order.
   Either the choice is taken under that test and recorded, or the issue belongs in
   planning rather than in the build.
 
@@ -2313,9 +2313,10 @@ the size of the work.
   as an equal choice — measured on 9 September 2026, that is exactly the pair a run
   put to the user instead of naming the issue it was taking." So "it belongs in
   planning" is a route this set closed deliberately, with a measurement behind it.
-  Either the first half of the Soll carries the whole case — the choice is taken
-  and recorded, and the issue never leaves the build — or the second half needs a
-  narrower door than "send it to planning", and what that door is, is open.
+  Either the first half of what should hold carries the whole case — the choice
+  is taken and recorded, and the issue never leaves the build — or the second
+  half needs a narrower door than "send it to planning", and what that door is,
+  is open.
 
   **Searched by subject: where a design choice may be made, and by whom.** `grep
   -rn "design choice\|design decision\|reversible\|design question" skills/ hooks/
@@ -2363,8 +2364,8 @@ the size of the work.
     spec closed, take it". That is the clause issue 51 fell under and it is
     correct; it says which issue to take and nothing about an issue that turns out
     not to be buildable as written. That silence is where this case lands.
-  - `start-work:249` — the collision above, and the reason the second half of the
-    *Soll* cannot simply be written.
+  - `start-work:249` — the collision above, and the reason the second half of
+    what should hold cannot simply be written.
   Recorded, not built.
 
 - **The same failure picture came out of the review three times and was fixed
@@ -2373,7 +2374,7 @@ the size of the work.
   call: in task 47, in the first diff of task 48, and in the fix-up commit of 48
   immediately beside a place that does it correctly in the same commit.
 
-  *Ist:* the threshold in `hooks/stop-checks.sh` counts three identical failure
+  *Today:* the threshold in `hooks/stop-checks.sh` counts three identical failure
   pictures, and it cannot see this one. `MAX=3` at line 8, and the signature at
   line 35 is a `cksum` over the `--- class (runner target) ---` headers of
   `$FAILED`, which line 23 builds only from `$RUNNER "$target"` run locally over
@@ -2383,7 +2384,7 @@ the size of the work.
   so it is a count of consecutive answers within one run of the chain. Across
   tasks and pull requests nobody counts anything.
 
-  *Soll:* what comes out of the review three times belongs in the project's
+  *Should:* what comes out of the review three times belongs in the project's
   standards file, so that the build stops producing it, rather than being caught
   again by every review.
 
@@ -2391,9 +2392,9 @@ the size of the work.
   call.** `record-lessons:95` under "What counts as a lesson": "Record it when one
   of these holds: **It happened a second time.** One occurrence is an accident; two
   is a pattern." And `record-lessons:115` routes it: "A rule this project holds
-  that nobody wrote down → `docs/agents/standards.md`". That is the Soll above,
-  written out, with a lower threshold and a named destination. What is missing is
-  not the rule and not the number. It is that `record-lessons` carries
+  that nobody wrote down → `docs/agents/standards.md`". That is what should hold
+  above, written out, with a lower threshold and a named destination. What is
+  missing is not the rule and not the number. It is that `record-lessons` carries
   `disable-model-invocation: true` in its frontmatter, and
   `docs/skill-conventions.md:1046` spells out what that costs: "only a typed
   command starts it — no other skill can". The same passage at
@@ -2472,7 +2473,7 @@ the size of the work.
 
   `build-work:634` and `review-changes:274` — the two ways out of a finding, fix
   or file — are named because they look like the place this belongs and are not.
-  A third way out is not what the *Soll* asks for: the rule is written after the
+  A third way out is not what should hold asks for: the rule is written after the
   finding has already gone one of those two ways, so it belongs at the close
   rather than in the split.
   Recorded, not built.
