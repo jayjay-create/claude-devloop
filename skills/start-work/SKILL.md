@@ -66,10 +66,14 @@ remembers what they were building, not that it was issue nine.
 - **An open pull request comes first**, ahead of every issue. It is work that is
   built and has not landed — closer to done than anything else on the list, and
   the one thing that must not be started a second time. That is the ordinary end
-  of a session, not an exception: a build opens the pull request and then hands
-  the merge over, and nothing moves until the user says it has landed. Name it
-  by title and say which of these it is, read off the query's own columns and
-  not off its branch name:
+  of a session with somebody in it, not an exception: a build opens the pull
+  request and then hands the merge over, and nothing moves until the user says it
+  has landed. **Unattended it is not the ordinary end** — there the run waits for
+  the merge in the same answer, so a pull request still open at the start of an
+  unattended session is one whose wait ran out or whose checks went red, and it
+  is still armed. Read the platform for where it stands before deciding anything
+  about it, and do not arm it a second time. Name it by title and say which of
+  these it is, read off the query's own columns and not off its branch name:
   - **`mine: true`, not a draft, `closes:` an open issue** — built, and waiting
     to land. This is the normal case.
   - **`mine: true`, and the issue it closes reads `CLOSED`** — the two

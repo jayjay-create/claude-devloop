@@ -2003,8 +2003,8 @@ the size of the work.
   - `README.md:84` says it to the reader the same way: "Pull request, set to
     merge when the gates pass, then check the git log that it actually landed."
 
-  **Nothing anywhere waits on a state on the platform.** `gh pr checks --watch`
-  appears in no skill, no hook and no document. The thirteen occurrences of
+  **Nothing anywhere waited on a state on the platform.** `gh pr checks --watch`
+  appeared in no skill, no hook and no document on the day this was read. The thirteen occurrences of
   `watch` in `skills/` are about a person watching or a check somebody sees go
   red, except one — `build-work:1051`, "no hook watches for an unattended run",
   about a file nothing reads.
@@ -2038,8 +2038,9 @@ the size of the work.
     runs inside a single answer reaches a `Stop` once, whatever it tried in
     between. **What the threshold covers is the same classes failing locally on
     three consecutive answers, and that is all it covers.** A wait that loops
-    inside one answer needs a count of its own, and where that count lives is the
-    open question here.
+    inside one answer needs a count of its own, and where that count lives was
+    the open question here — answered in the build below: in the answer itself,
+    and nowhere on disk.
   - **After every merge the linked issues are read, and closed by hand where the
     platform did not close them.** Measured on the five merges of that run: four
     closed within seconds of the merge — issue 47 by pull request 50, 48 by 53,
@@ -2057,9 +2058,9 @@ the size of the work.
   **What is missing at this point is the point itself.** Everything arranged
   after the merge — the fast-forward, the branch deletion, the issue check, the
   spec, the `skipped` reasons, step 7 querying again — is written and is
-  reachable only by a run that got past arming. Today an unattended run ends
-  there, at the first task, before any of it. Those stages are not wrong; they
-  are unreached.
+  reachable only by a run that got past arming. Until the build below, an
+  unattended run ended there, at the first task, before any of it. Those stages
+  were not wrong; they were unreached.
 
   **What a repair touches is counted here rather than discovered halfway through
   it:** five copies of the arming command and not three — three skills, the merge
@@ -2074,7 +2075,59 @@ the size of the work.
   the platform is not that case. And the handover check at
   `docs/skill-conventions.md:1240`, which finds these sentences by their wording
   and loses a line silently every time one of them is improved.
-  Recorded, not built.
+
+  **Built on 13 September 2026**, all of the above except the checksum over the
+  five copies, which stays unwritten and stays recorded here. What now stands:
+
+  - `build-work` step 6 splits attended from unattended where it used to have one
+    answer. Attended keeps the single reading and the offer — a person is there
+    and their next message costs nothing. Unattended the wait happens in the same
+    answer, `gh pr checks <number> --watch --interval 60`, and the merge is read
+    off the platform afterwards, `state MERGED` with a `mergedAt`, because the
+    checks going green is not the merge and the measured gap between the two is
+    forty-five seconds to two minutes.
+  - The wait is bounded by the `Duration` cells of the `Blocking: yes` rows or
+    thirty minutes, whichever is more. Nothing in the shell holds that bound —
+    `gh pr checks` has no timeout of its own and `timeout` is not on a stock
+    macOS, `command -v timeout` empty on this machine the same day — so the run
+    holds it, by giving the call a timeout and repeating it while time is left.
+  - A wait that runs out is a finding: the pull request stays open and stays
+    armed, lands by itself, and step 7 queries with it still open. A red check is
+    a finding like a review finding — resolve, rebuild, step 4 runs again on what
+    changed, wait again, with no cap on the rounds. What ends it is standstill:
+    three rounds on the same signature, built from `gh pr checks --json
+    name,bucket`. That count lives in the answer, since `stop-checks.sh` counts
+    only local runs and only once per `Stop` event, and nothing on disk reads a
+    file this run would write.
+  - The standstill ends the run, where the local twin does not — three turn-ends
+    on the same classes become an issue and the next task is taken up. The
+    difference is written at both anchors, and in the unattended description at
+    `setup-checks` step 8, where the user agreeing to the mode is told it.
+  - Every merge now reads `closingIssuesReferences` and closes by hand what the
+    platform left open.
+  - The mutation fetches the id first and passes it with `-f`, in all five
+    copies, which are byte-identical again.
+  - Two sentences that said waiting unattended is a standstill were narrowed to
+    waiting on a person, which is what they were about. A pull request found open
+    at the start of an unattended session is one whose wait ran out, and it is
+    still armed: `start-work` says so and `build-work` step 6 reads
+    `autoMergeRequest` rather than arming a second time.
+
+  **Two things it stands on are not measured.**
+
+  - **Whether `Duration` predicts anything about the platform.** It is taken from
+    a local run; a runner has to be set up and a queue waited on before the first
+    target starts on GitHub, and nothing here has measured that difference. The
+    thirty-minute floor is what carries the bound in practice — the cells hold
+    seconds and single minutes — so what is really unmeasured is whether thirty
+    minutes is anywhere near right, not whether the sum is.
+  - **Whether the failure signature is stable enough to call two failures the
+    same.** It is the failing checks' names and buckets. A check that fails under
+    a different name each round reads as progress and never reaches the
+    threshold; one that fails identically for two unrelated reasons reads as
+    standstill and stops a run that was getting somewhere. Neither has been seen
+    happen; the threshold was carried over from the local counter, where the
+    signature is built from class names and has stood since 17 August 2026.
 
 - **A lens fell over and reported "no findings", measured on 13 September 2026 in
   `devloop-test-o`.** Reviewing issue 51, the test-quality lens came back with a

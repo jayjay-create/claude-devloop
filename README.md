@@ -81,8 +81,12 @@ standards, faithfulness to the spec, security, migrations, test quality, failure
 behaviour. Findings are kept apart and never ranked against each other. Obvious
 fixes are made; anything that would revisit a decision is filed as an issue.
 
-**Merge and verify.** Pull request, set to merge when the gates pass, then check
-the git log that it actually landed.
+**Merge and verify.** Pull request, set to merge when the gates pass, then prove
+at the platform that it did — not a report of success, and not a git log read
+before the merge has happened. With you there the session does not sit and wait:
+it says what is outstanding and picks up when you say it landed. Unattended it
+waits for the checks in the same answer, because a run that ends its answer is a
+run nothing wakes again.
 
 ## Attended and unattended
 
@@ -106,6 +110,14 @@ nothing in scope is ready any more, and picks up work that turns up along the wa
 where it serves the same goal. What bounds a single task is the turn-end hook,
 which runs the check suite itself and hands the problem over once the same
 classes have failed three turns running.
+
+After the merge is armed the run waits for the platform's checks in the same
+answer rather than ending it — at most thirty minutes, or longer where the suite
+itself takes longer — and proves the merge happened before anything depends on
+it. A check that comes back red is reworked, reviewed again and waited on again,
+with no cap on the rounds; three rounds against the same failing checks is
+standstill and ends the run with a report. A wait that simply runs out ends
+nothing: it is reported, and the pull request stays armed and lands by itself.
 
 Unattended does not mean unread. Read the diffs afterwards, in one go.
 
