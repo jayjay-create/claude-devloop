@@ -1650,13 +1650,14 @@ the size of the work.
   comparison made at that moment can be green about the change in hand. The check
   was in the wrong place, not in the wrong form. It now stands under "Before you
   change anything, run this", reads the installed version out of
-  `~/.claude/plugins/installed_plugins.json`, and diffs the whole `skills` tree
-  rather than one file. Both directions were measured before it was written down:
-  against the installed 0.97.0 it is silent, against 0.95.0 it prints the
-  difference. The general form — **a check that is red by construction at the
-  moment it is read is not a check** — is in `docs/skill-conventions.md` beside
-  it, as the mirror image of the check keyed on wording that goes quietly green
-  and stops watching.
+  `~/.claude/plugins/installed_plugins.json`, and diffs the whole `skills` and
+  `hooks` trees rather than one file — `hooks` added in the commit after this
+  one, since a hook runs from the installed path too. Both directions were
+  measured before it was written down: against the installed 0.97.0 it is
+  silent, against 0.95.0 it prints the difference. The general form — **a check
+  that is red by construction at the moment it is read is not a check** — is in
+  `docs/skill-conventions.md` beside it, as the mirror image of the check keyed
+  on wording that goes quietly green and stops watching.
 
 - **A lens checked against a decision it had not been given, measured on 9
   September 2026.** The standards lens reported a field name as contradicting the

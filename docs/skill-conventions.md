@@ -504,12 +504,49 @@ divergence between them. Three rules follow.
    repository — an API, a tool, a runner. A claim about this workflow's own
    procedure is answered by reading these files instead, and that is the one
    question a file-against-file reading does answer.
-3. **Changing such a claim means finding every place standing on the same
-   query**, with the search command named in the report, and listing what was
-   looked at — including where nothing needed changing. The list is the
-   deliverable even where it holds one entry. A run that skips the search because
-   it already knows there is only one place is making exactly the assumption that
-   put the same four defects into four files.
+3. **Changing a rule or a command means finding every place standing on the
+   same thing**, with the search command named in the report, and every place
+   looked at listed — including the ones where nothing needed changing. **This is
+   the widest of the three and the only one not confined to a claim about the
+   platform:** it holds for any change to a rule or a command in this set. Widened
+   on 13 September 2026, after being walked through four changes that had already
+   happened.
+
+   **The search goes by the subject the statement stands on, not by its wording.**
+   Four places can say one thing in four wordings, and then no search by wording
+   reaches them all. Measured the same day on what follows arming, which
+   `build-work` step 6, `setup-checks` step 7, `setup-project` step 8 and
+   `README.md` under "Merge and verify" all state: `do not block the session`
+   finds the first, `actually arrived` the middle two, `that it actually landed`
+   the last, and no one string finds more than two of the four.
+
+   **The list is what is read; the search is not the proof.** A search that found
+   half the places looks exactly like one that found all of them, so a report does
+   not become checked by carrying a search command. What is read is the list, in
+   words: each place named, and beside it either the change made there or why the
+   rule does not hold there.
+
+   **A dated measurement in `docs/roadmap.md` is not one of the places.** It
+   records what was read on a day, and changing it falsifies the record. That
+   covers measurements and not status: a line saying something is unbuilt is a
+   claim about now, and the round of 9 September 2026 found one that had been
+   built two days earlier.
+
+   **Where the same thing stands in several byte-identical copies, this rule is
+   not the remedy.** It has to be performed again at every change, and nothing
+   notices when it is not. What holds copies together is a checksum over them —
+   the form is the `cksum` command under "The same for the block on asking, in
+   the six skills that ask anything". The arming mutation stands byte-identical
+   in five places with no such command over it, recorded in `docs/roadmap.md` as
+   something to write. **What this replaces is the search, not the copies.** "A
+   rule holds only on the path it is written on" says to write a rule at every
+   route that reaches it, and two copies that agree still beat one copy half the
+   runs never read; the checksum is what that duplication costs, not an argument
+   against it.
+
+   A run that skips the search because it already knows there is only one place
+   is making exactly the assumption that put the same four defects into four
+   files.
 
 **And a fact is no more an answer to a question it was not asked than a field
 is.** The same shape, one level over, and the harder one to catch because nothing
@@ -1207,17 +1244,18 @@ The same for the block on asking, in the six skills that ask anything:
     for f in $(grep -l '^## How to ask' skills/*/SKILL.md); do awk '/^## How to ask/,/^## [^H]/' "$f" | sed '$d' | cksum; done | sort -u
 
 The rule behind it is not about either block. **A change to one skill is a
-question about all of them.** Before writing it, name which other skills reach
-the same situation, and either make the change there too or say why it does not
-apply. Three separate defects this month were a rule written into one file that
-belonged in six.
+question about all of them.** How that is done is not written here — it is the
+third rule under "A field is not an answer to a question it was not asked",
+widened on 13 September 2026 to hold for any change to a rule or a command: the
+search by subject, the command named, and every place looked at listed. Three
+separate defects this month were a rule written into one file that belonged in
+six. What the two blocks above add is that here the places are known in advance,
+which is why they carry a checksum instead of a search — the case that rule names
+as the one it cannot answer.
 
 These checks find only the half of that which shows up as disagreement. Where
 every copy carries the same wrong reading they agree, and the cksums come back
 clean — see "A finding that would have passed unsupervised gets written down".
-For a claim about a platform the search goes by the query the claim stands on
-rather than by its wording, and what it turned up is listed even where nothing
-changed.
 
 No sentence tells a run to ask for permission to reach the next stage, or to
 put a question as an either-or. Every line this prints needs an eye on it: some

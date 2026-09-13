@@ -175,10 +175,19 @@ The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
 update`, `/plugin install`.
 
 Old versions stay in the cache alongside the new one. Before testing a change,
-confirm the installed copy actually carries it:
+confirm the installed copy actually carries it — both directories, because a hook
+runs from the installed path too:
 
-    diff ~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/skills/<name>/SKILL.md \
-         skills/<name>/SKILL.md
+    P=~/.claude/plugins/cache/<marketplace>/<plugin>/<installed version>
+    for d in skills hooks; do diff -r "$P/$d" "$d"; done
+
+The version is the installed one, read out of
+`~/.claude/plugins/installed_plugins.json` and not out of
+`.claude-plugin/plugin.json`: a change ready to land has already raised the
+number in the working tree, so that version names a cache directory which does
+not exist yet, and the check answers `No such file or directory` instead of a
+difference. `docs/skill-conventions.md` carries the same check with the lookup
+written out, under "Before you change anything, run this".
 
 Skipping that check costs more than it saves. Every conclusion drawn from a run
 against a stale copy is worthless, and nothing about the run says it is stale.
