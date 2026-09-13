@@ -2076,6 +2076,406 @@ the size of the work.
   and loses a line silently every time one of them is improved.
   Recorded, not built.
 
+- **A lens fell over and reported "no findings", measured on 13 September 2026 in
+  `devloop-test-o`.** Reviewing issue 51, the test-quality lens came back with a
+  placeholder summary stating there was nothing to report, while three other
+  lenses had already named three real findings between them. The run noticed only
+  because that answer contradicted its neighbours, started the lens again, and got
+  a usable report on the first repeat. **Six of twenty lenses fell over across the
+  run**, four of them test quality, every one of them inside a group of four
+  started in parallel, and every repeat answered immediately. Attended throughout.
+
+  *Ist:* a lens that falls over silently is visible, and the workflow already says
+  what to do about it — `review-changes:240`, "If a reviewer fails to return, say
+  so and either rerun it or state which lens did not run. Never present a
+  comparison that is quietly one lens short." A lens that hands back a report
+  claiming no findings **has** returned, so that sentence never fires, and nothing
+  else separates it from a lens that read the whole diff and found it clean. What
+  separated them here was the comparison with three neighbours that had findings.
+  That comparison is not available on the diff where every lens genuinely finds
+  nothing, and that is the ordinary diff: the case this defect hides in is the
+  case nobody has any reason to look at twice.
+
+  **The distinction exists one layer down and stops at commands.**
+  `review-changes:96` and `docs/skill-conventions.md:264` both draw it — an empty
+  answer is an answer, a missing one is not — and both hand over a test for
+  telling them apart: whether emptiness is one of the answers the question has. A
+  list can be empty; a field every object carries cannot come back absent. Applied
+  to a lens report that test settles the case the wrong way, because emptiness
+  **is** one of the answers the question has. A lens can find nothing. So the rule
+  that would have caught this everywhere else licenses it here, and carrying the
+  wording up a layer is not the repair.
+
+  **And the competing sentence is in the report step, four lines from where the
+  placeholder was accepted.** `review-changes:257` — "If a lens found nothing, say
+  that lens found nothing. That is a result, not an absence, and it is the end of
+  that section." It is right about the lens that ran and is the nearest sentence
+  to the moment a report with nothing in it is read, which is the shape
+  `docs/skill-conventions.md` names under "A rule holds only on the path it is
+  written on": look for the competing sentence before the missing anchor.
+
+  *Soll:* a report with no substance never counts as "no findings" — it counts as
+  not having run. The difference is fixed to something the report itself has to
+  carry, not to agreement with its neighbours: what the lens read, against what,
+  and what it looked for. A count of neighbours is not available to a single lens
+  and is not available at all on a clean diff, so anything resting on it is a
+  check that works only where it is not needed.
+
+  **What a repair touches is counted here rather than discovered halfway through
+  it:** `review-changes:240`, which covers the failure that announces itself and
+  has to cover the one that does not; `review-changes:257`, which has to say what
+  a section reporting nothing is required to contain, since as it stands it says
+  the opposite; and `review-changes:243` under "Report", where one section per
+  lens is asked for and the shape of a section is fixed. `build-work:611` is the
+  only place `review-changes` is reached from and needs nothing, because what is
+  being fixed is the shape of a report rather than whether the step runs. The
+  four-at-a-time pattern is not evidence of a cause and is recorded as a
+  measurement only: nothing here establishes that starting four reviewers at once
+  is what made six of twenty fall over, and `docs/skill-conventions.md` under
+  `## Environment constraints, measured` records no cap on parallel agents to hold
+  it against.
+  Recorded, not built.
+
+- **Reviewing agents built, measured on 11 September 2026 in `devloop-test-o` on
+  task 47.** The test-quality lens committed to the branch itself — switching
+  locks over to a deferred call — and then asked whether the work should land. The
+  spec lens opened an issue and summarised all three lenses. The run saw that the
+  branch had moved and said so, and drew nothing from it.
+
+  *Ist:* the review ran against a diff pinned at one commit, the branch stood on
+  another at the end, and the summary went out over the first. So code sat on the
+  branch that no lens had read, and it reached the gate inside a review that
+  reported clean over the version before it. The landing question was put twice.
+
+  **Four acts, and they do not all land in the same place.** Filing the issue is
+  allowed outright — `review-changes:274` is where a lens is told to file one. Two
+  of the other three are already forbidden in as many words, and that is a finding
+  about the run rather than about the text. `review-changes:248` — "Then stop, and
+  stop means all three of these. No sentence after the last lens. No verdict over
+  the whole thing… and above all nothing about what happens next" — names "No
+  findings. Merging." as the exact failure and adds that the pull request is not
+  opened there either. `review-changes:31` forbids findings being "merged, ranked
+  against each other, or reduced to a single verdict", which is the summary.
+  `build-work:689` puts the landing question in its own message at step 5, and
+  `build-work:701` says "**This is the gate.** It is the one place in the loop
+  where a human decides whether work lands." A run that asks it from inside a lens
+  is not in a gap; it is past four sentences.
+
+  **The fourth act is a real void.** Nothing anywhere says a reviewer may not
+  change the code. Searched by subject rather than by wording, `grep -rn "changes
+  nothing\|change nothing\|read-only\|reads and reports\|does not edit\|never
+  edits" skills/ hooks/ docs/ README.md`, run against the tree as it stood before
+  this entry was written: seven sites, and not one of them is about a reviewer.
+  Each named, with why the rule does not hold there:
+
+  - `setup-checks:350`, `setup-project:511` and `README.md:120` — the rule that a
+    **check target** renders a verdict and changes nothing. Same words, different
+    subject: a target is a command the chain runs, not an agent reading a diff.
+  - `setup-project:329` — the explore step of setup, which reads a repository
+    before writing to it. It is the one site with a reviewer's shape, and it
+    governs one step of one skill.
+  - `setup-project:322` — about who decides, not about who may write.
+  - `docs/roadmap.md:53` — the one-line description of `explore-codebase`, a name
+    under `## Named, not built as skills` with no body written.
+  - `docs/roadmap.md:953` — a dated measurement, about who may raise a number in a
+    file. Not one of the places a rule change touches, by the carve-out in
+    `docs/skill-conventions.md` under "A finding that would have passed
+    unsupervised gets written down".
+
+  The nearest thing to a constraint is `review-changes:221` — "each given only its
+  own lens and the diff" — which bounds what a reviewer **sees** and says nothing
+  about what it may do.
+
+  **And the competing sentence is inside the review skill.**
+  `review-changes:266`, "**Fix it now** if the fix is obvious and revisits nothing
+  that was decided", is written to the caller and stands in the file a lens is
+  working out of. Switching a lock to a deferred call is exactly the obvious fix
+  that sentence describes. So a reviewer that commits is following the nearest
+  instruction it has, which is why no fifth prohibition elsewhere would have
+  helped.
+
+  *Soll:* a lens reports and changes nothing. Where one changes something anyway,
+  the review counts as not having run and is repeated against the new state — not
+  amended, because a report that already went out over the earlier commit says
+  something untrue about the branch. The pinned diff is read against the actual
+  branch state at the end of the review, and a divergence ends the review instead
+  of being summarised. The landing question is put at exactly one place, at the
+  end of the whole review, by the step that owns the gate.
+
+  **The pin has no closing read today, and that is the same gap one file over.**
+  `review-changes:132` establishes the target as the diff between the branch and
+  the main branch at the current commit and says everything below looks at that,
+  "not at the working tree, and not at whatever changed since" — which is an
+  instruction to the reader and not a check on the branch. The entry on the second
+  review round not reading a change to the test scaffolding, measured 9 September
+  2026, records the other side of the same seam: the caller hands
+  over a target the callee's own definition does not describe, and neither file
+  says what happens when the two disagree.
+
+  **What a repair touches is counted here rather than discovered halfway through
+  it:** `review-changes:219` under "Run them", which is where what a reviewer may
+  do has to be said, since that is where the reviewers are started and given their
+  brief; `review-changes:264` under "What happens to a finding", which has to say
+  who the fixing is addressed to, because today it does not; `review-changes:132`,
+  where the pin is set and the closing read against it belongs; and
+  `build-work:609`, the only call site, which is where a repeated review is
+  ordered from. `build-work:689` and `:701` need nothing — the gate is already at
+  one place, and the second appearance was a lens saying something it was already
+  forbidden to say.
+  Recorded, not built.
+
+- **A change to the check chain itself went to the main branch unreviewed,
+  measured on 12 September 2026 in `devloop-test-o` on issue 49.** `setup-checks`
+  changed four check targets and two documentation files and landed them. The run
+  said so itself: that skill has no review step.
+
+  *Ist:* attended, the user sees the diff, so nothing was unread. Unattended, the
+  check chain is what stands in for the user's approval — `build-work:707` at step
+  5, "In unattended mode the check suite is this gate instead" — and on this route
+  the chain changes without the chain reading the change. A green suite
+  after such a change says the suite passes itself as edited.
+
+  **There is a route where it is reviewed, and that is what makes this a path
+  problem rather than a missing rule.** `setup-checks:402`: "Skip this whole step
+  when this skill was called for a single class from a build. That branch belongs
+  to the build, and the build lands it with the rest of its task." Called that way
+  the diff rides on the build's branch and reaches `build-work:609`. Called on its
+  own — as it was here, for a loose issue — step 7 opens its own pull request at
+  `setup-checks:412` and arms it. Same edit, same file, two routes, one of them
+  read. That is the shape `docs/skill-conventions.md` records under "A rule holds
+  only on the path it is written on", arriving from the side where the rule was
+  never written at either end.
+
+  *Soll:* a change to the check targets themselves goes through the diff review
+  like any other change.
+
+  **Searched by subject: which stages land a diff, and which of them review
+  first.** `grep -rn "review-changes" skills/ hooks/ docs/ README.md` returns
+  `build-work:611` as the only call site in the set — every other hit is prose in
+  `docs/` or the skill's own frontmatter. Held against the stages that land
+  something, with `grep -rn "Never merge yourself\|Open a pull request\|Open the
+  pull request" skills/ hooks/`: three sites, one per stage, each named here with
+  what the rule does or does not ask of it.
+
+  - `setup-checks:412` in step 7 — the measured site. This is where the review has
+    to be reached from on the standalone route, and where the skip at `:402`
+    already marks the other route as covered.
+  - `setup-project:734` — the same shape, one stage earlier: it lands the control
+    documents it wrote, the first `checks.md` among them, with no review. Whether
+    the rule holds there is a real question and not an obvious yes, because at
+    that moment there is no check suite to review against and `standards.md` is
+    being written in the same change. Named, not decided here.
+  - `build-work:741` in step 6 — does not apply. It is reached only after step 4,
+    and `build-work:719` already says that unattended only one of its two
+    preconditions is replaced and nothing stands in for the review.
+
+  `hooks/pre-tool-use-merge-guard.sh:18` does not come back from that search and
+  would not apply if it did: it carries the arming command in its message so a
+  blocked run can follow it, and decides nothing about what was read first. The
+  five byte-identical copies of the arming command are counted in the entry on a
+  run stopping four times after arming, and are a different subject from this
+  one.
+
+  And `build-work:500` — "**Do not edit `docs/agents/checks.md` yourself.** If the
+  task creates or changes a check target… call `setup-checks` for that class
+  instead" — is the sentence that sends every build-side edit down the route that
+  **is** reviewed. It needs no change and is named because it is what makes the
+  standalone route the only hole rather than one of two.
+  Recorded, not built.
+
+- **A design question was put in the build stage, measured on 13 September 2026 in
+  `devloop-test-o` on issue 51.** Taking the issue up, the run laid out two ways
+  to build it — a recorded reference output against a reference implementation in
+  the test code — and waited for an answer. Attended, so it got one.
+
+  *Ist:* the grilling was long over, the spec closed, and both options were
+  reversible. **The rule that was broken is not the one for an empty room.**
+  `build-work:185` — "With nobody there to answer, a question that passes this
+  test does not stop the run. Take the reversible option, record it in the spec as
+  decided without an answer, and carry on" — is for the unattended case, and this
+  run was attended. What applies is `build-work:146`, the test itself: both halves
+  have to hold, and the second is "**Being wrong is expensive**… Measured by what
+  it would cost to put right… What a later task can redo is cheap". Two ways of
+  writing one test are cheap by that measure, so under the written test this was
+  not a question at all, with or without somebody in the room. The unattended
+  clause would have caught it too; the attended test caught it first and is the
+  stricter reading.
+
+  *Soll:* a loose issue that opens with a design choice is not a build order.
+  Either the choice is taken under that test and recorded, or the issue belongs in
+  planning rather than in the build.
+
+  **The second half of that runs into a sentence written three days earlier
+  against the opposite failure, and it does not get to stand unexamined.**
+  `start-work:249` routes loose issues carrying `raised-here` to `build-work`,
+  "**Not to `plan-work`.** An issue that already says what is wrong does not need a
+  spec written around it, and sending it there stands a fresh candidate beside it
+  as an equal choice — measured on 9 September 2026, that is exactly the pair a run
+  put to the user instead of naming the issue it was taking." So "it belongs in
+  planning" is a route this set closed deliberately, with a measurement behind it.
+  Either the first half of the Soll carries the whole case — the choice is taken
+  and recorded, and the issue never leaves the build — or the second half needs a
+  narrower door than "send it to planning", and what that door is, is open.
+
+  **Searched by subject: where a design choice may be made, and by whom.** `grep
+  -rn "design choice\|design decision\|reversible\|design question" skills/ hooks/
+  docs/ README.md`, run against the tree as it stood before this entry: 31 lines,
+  of which twelve are the six two-line copies of one clause, and the hits in
+  `docs/roadmap.md` are dated measurements rather than places a rule stands.
+  Twelve sites carry a rule. Each named, with what holds there:
+
+  - `build-work:186`, byte-identical at `plan-work:235`, `cut-into-tasks:159`,
+    `setup-checks:181`, `setup-project:166` and `untangle-idea:146` — the six
+    copies held together by the `cksum` command in `docs/skill-conventions.md`.
+    Does not apply to the measured run, which was attended, and is named because
+    any repair phrased in its vocabulary becomes a change to six files.
+  - `review-changes:274` and `build-work:634` — "File it as an issue if fixing it
+    would revisit a design decision". Does not apply: that is a finding travelling
+    out of a review, the opposite direction, and it is the rule that files issues
+    like 51 in the first place.
+  - `start-work:298` and `README.md:95` — "Planning is never unattended: the
+    design choice and the task cut are the two decisions that belong to the human."
+    Does not apply to this run, and is already open in the entry on planning being
+    fenced out of the unattended mode, read 11 September 2026, where three sites
+    are recorded deciding the same question the other way. A repair here and
+    the repair recorded there have to agree about who takes a design choice, and
+    they are not the same change.
+  - `setup-project:322` — "It changes nothing about who decides: the design
+    choice…", said of the setup skill's own routing. Does not apply: it preserves
+    an allocation made elsewhere rather than making one.
+  - `build-prototype:3` — the skill built for exactly this, "Build something
+    throwaway to settle a design question". Not reachable from here: `grep -rn
+    "build-prototype" skills/` finds one call site, `untangle-idea:378`. A design
+    question that first appears in the build has no route to it — the same void
+    that entry leaves open, in its own words, for a question needing someone to
+    look that first appears while drafting in Stage 3.
+
+  **Three further sites decide this case and no search by that subject finds
+  them**, which is the hazard `docs/skill-conventions.md` names when it says the
+  search goes by the subject the statement stands on and not by its wording. They
+  were reached by reading the two steps the run passed through:
+
+  - `build-work:146` — the asking test, and the rule that was already there. What
+    it needs is the open part: it is right as written and was not followed, which
+    this file says to answer by looking for a competing sentence rather than by
+    adding another copy.
+  - `build-work:361` and `:377` — the loose-issue ordering, clause 3, "With the
+    spec closed, take it". That is the clause issue 51 fell under and it is
+    correct; it says which issue to take and nothing about an issue that turns out
+    not to be buildable as written. That silence is where this case lands.
+  - `start-work:249` — the collision above, and the reason the second half of the
+    *Soll* cannot simply be written.
+  Recorded, not built.
+
+- **The same failure picture came out of the review three times and was fixed
+  three times separately, measured across 11 to 13 September 2026 in
+  `devloop-test-o`.** A lock released by hand instead of through the deferred
+  call: in task 47, in the first diff of task 48, and in the fix-up commit of 48
+  immediately beside a place that does it correctly in the same commit.
+
+  *Ist:* the threshold in `hooks/stop-checks.sh` counts three identical failure
+  pictures, and it cannot see this one. `MAX=3` at line 8, and the signature at
+  line 35 is a `cksum` over the `--- class (runner target) ---` headers of
+  `$FAILED`, which line 23 builds only from `$RUNNER "$target"` run locally over
+  the blocking, filled rows of `docs/agents/checks.md`. A review finding never
+  enters it. The state file is removed the moment the suite goes green, line 31,
+  so the count does not survive a task; and the count rises once per `Stop` event,
+  so it is a count of consecutive answers within one run of the chain. Across
+  tasks and pull requests nobody counts anything.
+
+  *Soll:* what comes out of the review three times belongs in the project's
+  standards file, so that the build stops producing it, rather than being caught
+  again by every review.
+
+  **That is already decided, at two rather than three, in a skill nothing can
+  call.** `record-lessons:95` under "What counts as a lesson": "Record it when one
+  of these holds: **It happened a second time.** One occurrence is an accident; two
+  is a pattern." And `record-lessons:115` routes it: "A rule this project holds
+  that nobody wrote down → `docs/agents/standards.md`". That is the Soll above,
+  written out, with a lower threshold and a named destination. What is missing is
+  not the rule and not the number. It is that `record-lessons` carries
+  `disable-model-invocation: true` in its frontmatter, and
+  `docs/skill-conventions.md:1046` spells out what that costs: "only a typed
+  command starts it — no other skill can". The same passage at
+  `docs/skill-conventions.md:1049` states the ground for locking it — "No other
+  skill runs either of them, so locking them costs nothing" — and this run is what
+  that sentence does not survive. A build loop that produces the same finding three
+  times has something to hand `record-lessons` and no way to reach it.
+
+  **So the open question is narrower than it looked, and it is worth saying which
+  part is open.** Not what the threshold should be: two is written down and this
+  run cleared it by the second occurrence, inside task 48's first diff. What is
+  open is what the count is kept on when the findings are spread over tasks and
+  pull requests — the state `hooks/stop-checks.sh` keeps lives in
+  `.claude/check-attempts.local` and is deleted on green, and a finding's identity
+  is not a check class and a target but a description a lens wrote in prose. Two
+  findings are "the same" here by a judgement, and `docs/skill-conventions.md`
+  under "A reason is not the evidence the rule asked for" is what any such
+  judgement has to answer to. Whether that count belongs in a file, in the tracker
+  under `raised-here`, or nowhere because the reachability is the whole repair, is
+  not settled here.
+
+  **Searched by subject, twice, against the tree as it stood before this entry.**
+  First, where a rule of this kind is meant to end up: `grep -rn "standards.md"
+  skills/ hooks/ docs/ README.md` — ten sites. Each named, with what holds there:
+
+  - `record-lessons:115` — the destination, in the table that routes a lesson.
+    This is half of the decision, and it is reachable only by a typed command.
+  - `review-changes:37` and `:148` — the standards lens reads `standards.md` as
+    its source and does not write to it. No change needed, and it is the reason
+    the destination is the right one: a rule that lands there is read by the build
+    before the finding exists rather than by the review afterwards.
+  - `setup-project:698` and `:725` — where `standards.md` is created at setup and
+    where it is listed among the control documents. Does not apply: both describe
+    the file's initial content, not how it grows.
+  - `diagnose-bug:132` — reads it for context. Does not apply.
+  - `docs/roadmap.md:111` and `:120` — the `settle-the-look` entry, naming
+    `standards.md` as the precedent for a per-project file of recorded decisions.
+    Does not apply, and is the nearest thing here to an argument that the
+    destination is right.
+  - `docs/roadmap.md:1347` and `:1671` — dated measurements, about what the build
+    subagent and the standards lens are handed. Not places a rule change touches,
+    by the carve-out in `docs/skill-conventions.md`.
+
+  Second, what counts occurrences: `grep -rni "second time\|three times\|same
+  defect\|a pattern" skills/ hooks/ docs/skill-conventions.md README.md` — 29
+  lines, and **this is the search that shows why the list is what gets read and
+  not the command.** Twelve of the 29 are one line of the shared `## When a
+  command does not answer` block, about a command retried in silence, and they
+  match on wording alone. The remaining seventeen lines are fifteen sites, of
+  which two carry a rule on this subject; the other thirteen are dated
+  measurements of unrelated repeats, and they are `setup-project:293` and `:354`,
+  `setup-checks:255`, `build-work:363`, `start-work:68`,
+  `docs/skill-conventions.md:79`, `:143`, `:150`, `:244`, `:315`, `:1103`,
+  `:1177` and `:1352`. The two:
+
+  - `record-lessons:102` — "**It happened a second time.** One occurrence is an
+    accident; two is a pattern." The threshold, already decided, at two.
+  - `docs/skill-conventions.md:458` — "An unrecorded finding is a repeatable one,
+    and the second time round it looks exactly like the first, so nobody notices
+    that it is the second time", running on to `:460`. The same rule turned on
+    this repository, and it says so at `:466`. It also carves out what does not fall under it — "A finding
+    the check chain reports red does not fall under this… The chain is already the
+    prevention" — which is exactly why a review finding, where no red is coming,
+    does fall under it.
+  - `docs/skill-conventions.md:1037` under "Who may invoke a skill", reached from
+    the lock at `record-lessons:4` rather than from either search. Its ground for
+    locking — "No other skill runs either of them, so locking them costs nothing"
+    at `:1049` — is the sentence this run falsifies, and it is where a repair has
+    to answer for itself.
+
+  And `hooks/stop-checks.sh:8`, `:23`, `:31` and `:35` — the existing threshold,
+  reached by reading the hook rather than by either search, since it carries none
+  of those words. Does not apply and cannot be widened to apply: its signature is
+  built from local check runs, which the entry on a run stopping four times after
+  arming already establishes in the same words for the platform case.
+
+  `build-work:634` and `review-changes:274` — the two ways out of a finding, fix
+  or file — are named because they look like the place this belongs and are not.
+  A third way out is not what the *Soll* asks for: the rule is written after the
+  finding has already gone one of those two ways, so it belongs at the close
+  rather than in the split.
+  Recorded, not built.
 
 ## Decisions taken against
 
