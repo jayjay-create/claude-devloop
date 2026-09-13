@@ -1967,6 +1967,114 @@ the size of the work.
   Soll means anything.
   Recorded, not built.
 
+- **A run stopped four times after arming auto-merge, each time on a sentence it
+  wrote itself, and every file that does say what follows arming says something
+  that cannot wait.** Measured in `devloop-test-o`, attended throughout: pull
+  requests 50, 54, 55 and 57 were armed with the mutation this workflow uses and
+  merged by the platform between forty-five seconds and two minutes later — 50 on
+  11 September 2026 at 22:08 UTC, the other three on 13 September. Each time the
+  run armed, queried the state once (`state OPEN`, `mergedAt null`), said it
+  would report back once the merge had landed, and ended its answer. Nothing
+  wakes a run, so it stood there until the user wrote a word. Pull request 53 was
+  armed and merged the same morning without a stop, so this is not what every
+  arming does.
+
+  *Ist:* **the promise is a sentence no file asks for, and the rule it breaks is
+  already written down.** `docs/skill-conventions.md` under `## Environment
+  constraints, measured`: "A run that hands the user a command and says it will
+  carry on once that command has run has promised something it cannot do." That
+  was measured on 25 August 2026 on the merge command handed to a user, and the
+  same failure has now appeared one stage later, where what is being waited for
+  is not a person at all.
+
+  **The gap is not a missing connection.** Three stages arm, all three say what
+  comes after, and none of the three waits:
+
+  - `skills/build-work/SKILL.md:924` — "Then check **once** whether it landed —
+    do not poll in a loop. If it has not, say what it is still waiting on and
+    offer the next step; do not block the session." That is the measured
+    behaviour, written down: one read, and the answer ends.
+  - `skills/setup-checks/SKILL.md:413` and `skills/setup-project/SKILL.md:744`
+    both say to arm and then check `git log` "that it actually arrived — a report
+    of success is not evidence". Immediately after arming the git log cannot
+    carry it, because the platform has not merged yet. The sentence is right
+    about what counts as evidence and wrong about when the evidence exists.
+  - `README.md:84` says it to the reader the same way: "Pull request, set to
+    merge when the gates pass, then check the git log that it actually landed."
+
+  **Nothing anywhere waits on a state on the platform.** `gh pr checks --watch`
+  appears in no skill, no hook and no document. The thirteen occurrences of
+  `watch` in `skills/` are about a person watching or a check somebody sees go
+  red, except one — `build-work:1051`, "no hook watches for an unattended run",
+  about a file nothing reads.
+
+  **The arming command stands byte-identical in five places and nothing holds
+  them together.** `skills/setup-project/SKILL.md:739`,
+  `skills/build-work/SKILL.md:744`, `skills/setup-checks/SKILL.md:416`,
+  `hooks/pre-tool-use-merge-guard.sh:18` and `docs/skill-conventions.md:764`, all
+  five on one `cksum`, measured. No check under `## Before a handover, run these`
+  extracts it. The block on asking has such a check, at
+  `docs/skill-conventions.md:1207`; this block has none, so a repair made at
+  three sites leaves two standing and nothing says a word.
+
+  *Soll:*
+
+  - **The wait happens in the same answer as the arming**, and the merge is
+    proved against the platform before anything depends on it: `gh pr checks
+    <number> --watch`, which blocks until the checks have decided and needs
+    nobody outside, then a read of the merge state. Not one read, a promise, and
+    an end of answer.
+  - **A check coming back red is a finding, not a reason to stop.** Resolve it,
+    rebuild, re-run the part that changed, wait again. The pull request stays
+    open and the arming stands.
+  - **Stopping is at the existing threshold of three identical failure pictures
+    in `hooks/stop-checks.sh`, and on a timeout of the wait.** Whether that
+    threshold counts a check that went red on the platform as the same failure
+    picture is not open — it cannot, and the file says why. `$FAILED` is built
+    only from running `$RUNNER "$target"` locally over the blocking rows of
+    `docs/agents/checks.md`, so a failure that exists only on the platform never
+    enters the signature. And the count rises once per `Stop` event: a loop that
+    runs inside a single answer reaches a `Stop` once, whatever it tried in
+    between. **What the threshold covers is the same classes failing locally on
+    three consecutive answers, and that is all it covers.** A wait that loops
+    inside one answer needs a count of its own, and where that count lives is the
+    open question here.
+  - **After every merge the linked issues are read, and closed by hand where the
+    platform did not close them.** Measured on the five merges of that run: four
+    closed within seconds of the merge — issue 47 by pull request 50, 48 by 53,
+    49 by 54, 52 by 57 — and one did not. Pull request 55 merged at 09:21:34
+    carrying a correct closing reference to issue 51; the issue was still open
+    four minutes later and was closed by hand at 09:25:57. So the closing keyword
+    is the right link and is not a guarantee, and an issue standing open over
+    work that has landed reads to every later round as work not done.
+  - **The mutation fetches the id in a step of its own and passes it with `-f`
+    rather than `-F`.** In the same run the one-line form failed with `unexpected
+    end of JSON input`, and the two-step form with the id fetched first went
+    through. Taken from that run and not re-measured here. The change is to all
+    five copies, not three.
+
+  **What is missing at this point is the point itself.** Everything arranged
+  after the merge — the fast-forward, the branch deletion, the issue check, the
+  spec, the `skipped` reasons, step 7 querying again — is written and is
+  reachable only by a run that got past arming. Today an unattended run ends
+  there, at the first task, before any of it. Those stages are not wrong; they
+  are unreached.
+
+  **What a repair touches is counted here rather than discovered halfway through
+  it:** five copies of the arming command and not three — three skills, the merge
+  guard's message in `hooks/pre-tool-use-merge-guard.sh`, and the prose carrying
+  the same command in `docs/skill-conventions.md` — with no checksum check
+  existing to hold them together, so one has to be written or the next repair
+  splits them silently. Then the three sentences saying what follows arming
+  (`build-work:924`, `setup-checks:413`, `setup-project:744`) and the one in
+  `README.md:84` that says it to the reader. Then `docs/skill-conventions.md`
+  under `## Environment constraints, measured`, where "nothing resumes on its
+  own" is right about a command handed to a user and has to say that a state on
+  the platform is not that case. And the handover check at
+  `docs/skill-conventions.md:1240`, which finds these sentences by their wording
+  and loses a line silently every time one of them is improved.
+  Recorded, not built.
+
 
 ## Decisions taken against
 
