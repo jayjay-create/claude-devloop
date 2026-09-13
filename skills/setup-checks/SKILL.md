@@ -410,10 +410,20 @@ at all. Leaving it unmerged has worked so far only because a run improvised the
 merge on its own, which is not something to build on.
 
 **Never merge yourself.** Open a pull request and arm the platform to merge it
-once the gates pass, then check `git log` that it actually arrived — a report of
-success is not evidence. Arming is a mutation of its own and cannot merge:
+once the gates pass, then prove the merge where it happens — `gh pr view --json
+state,mergedAt`, `MERGED` with a time in it — before anything here stands on it.
+A report of success is not evidence, and the git log immediately after arming is
+not evidence either: the platform has not merged at that moment, so the log can
+only carry it after a fetch, once the platform says it did. **This step does not
+wait inside its answer**, because there is a person here: say what is still
+outstanding rather than blocking the session. The wait that runs inside one
+answer belongs to `build-work` step 6, where nobody is there to say it landed —
+and a run that came here for a single class from a build has skipped this step
+altogether, by the line at the top of it. Arming is a mutation of its own and
+cannot merge:
 
-    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
+    PR_ID=$(gh pr view --json id -q .id)
+    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -f id="$PR_ID"
 
 `gh pr merge --auto` is not a substitute: the tool drops that flag whenever the
 pull request is already mergeable and merges on the spot.
@@ -559,7 +569,7 @@ say only that the machine has to stay awake. A `uname -s` that does not answer i
 that same case.
 
 **Say what a yes leads to, before they answer.** Otherwise they are agreeing to a
-mode whose course nobody has described to them. Four things, short and in
+mode whose course nobody has described to them. Six things, short and in
 ordinary words:
 
 - **What the run then does, in order.** It takes the ready tasks one after
@@ -567,9 +577,11 @@ ordinary words:
   every condition the task promises so the check guarding it is seen going red
   and green again, then the whole check suite, then a review from several angles
   at once, then the findings fixed, then a pull request handed to the platform,
-  which merges it itself once the required check is green. Then the next task,
-  until nothing in scope is ready and nothing it raised against itself is still
-  waiting to be taken up.
+  which merges it itself once the required check is green. **It waits for that
+  merge instead of moving on**, since nothing would wake it again afterwards —
+  up to half an hour, or longer where this project's own suite takes longer.
+  Then the next task, until nothing in scope is ready and nothing it raised
+  against itself is still waiting to be taken up.
 - **Where it still stops.** Deciding what gets built and cutting it into tasks
   never runs unattended — that stays with them, and this mode only builds tasks
   that already exist. Beyond that it stops rather than guesses: a precondition
@@ -583,6 +595,14 @@ ordinary words:
   an issue against that task, puts the task down and takes the next one. Say
   this: it is the likeliest thing that will actually happen, and it means some
   tasks come back as issues to read rather than as merged work.
+- **And where it will not go green on the platform, that does end the run.** A
+  check that comes back red after the pull request is armed is fixed, reviewed
+  again and waited on again, as often as the picture keeps changing. Three rounds
+  against the same failing checks is a standstill, and there the run stops and
+  says so, because a reviewed pull request is sitting on a gate that will not
+  open and everything after it would be built without it. Say the difference:
+  a task that will not build becomes an issue and the run goes on, a merge that
+  will not land ends it.
 - **How they see it has finished.** The closing sentence agreed at the start,
   said only once nothing ready is left in scope and nothing the run raised
   against itself is still waiting. What was built reads as the diff from the

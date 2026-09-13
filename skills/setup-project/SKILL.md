@@ -736,14 +736,23 @@ once the gates pass — performing the merge is a shared-state action, and the s
 rule holds in every later stage. Arming is a mutation of its own and cannot
 merge:
 
-    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
+    PR_ID=$(gh pr view --json id -q .id)
+    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -f id="$PR_ID"
 
 `gh pr merge --auto` is not a substitute: the tool drops that flag whenever the
 pull request is already mergeable and merges on the spot.
 
-Commit, open a pull request, arm it, and then verify against `git log` that it
-actually arrived — a report of success is not evidence. If a check gate blocks the
-merge, say so and stop here; do not offer the next step on top of unmerged setup.
+Commit, open a pull request, arm it, and then prove the merge where it happens —
+`gh pr view --json state,mergedAt`, `MERGED` with a time in it — before offering
+anything on top of it. A report of success is not evidence, and the git log
+immediately after arming is not evidence either: the platform has not merged at
+that moment, so the log can only carry it after a fetch, once the platform says
+it did. If a check gate blocks the merge, say so and stop here; do not offer the
+next step on top of unmerged setup. **This step does not wait inside its
+answer**: nothing reaches it unattended — that mode refuses to start while any
+class in `checks.md` is `empty`, and this setup is what makes a `checks.md`
+possible at all — so there is a person here, and the waiting form in `build-work`
+step 6 is written for the case where there is not.
 
 Arming can also be refused, and for three different reasons. Auto-merge may be
 switched off on the repository — `gh api repos/OWNER/REPO -q .allow_auto_merge`

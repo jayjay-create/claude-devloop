@@ -131,9 +131,11 @@ step 3, and a refused arming in step 6 — and it gets the same answer.
   act is theirs or their say-so is, and this picks up as soon as they say which;
   where they let it stand, the run does what the message asked and says what that
   costs the task — a step not taken, or a task that cannot be finished as cut.
-- **Unattended there is nobody to decide**, and waiting is not a stop with a
-  reason — it is a standstill in the middle of a task that still looks like it is
-  running. Raise an issue carrying the command, the message and the reading,
+- **Unattended there is nobody to decide**, and waiting for them is not a stop
+  with a reason — it is a standstill in the middle of a task that still looks
+  like it is running. What that rules out is waiting on a person; a state on the
+  platform is waited for, and step 6 says how. Raise an issue carrying the
+  command, the message and the reading,
   label it `raised-here` and `needs-human`, and record it as a blocker of the
   task. Then put the task down and go back to step 2: the readiness query passes
   over a blocked task by itself, so the run carries on with the rest instead of
@@ -592,10 +594,12 @@ differently depending on who is present.
 
 - **With the user there**, the message is the answer. Hand the problem over in
   the form it asks for and wait.
-- **Unattended there is nobody to hand it to**, and waiting is not a stop with a
-  reason — it is a standstill in the middle of a task that still looks like it is
-  running. This is the same shape as a refused arming in step 6, and it gets the
-  same answer. Raise an issue saying the task is not buildable as cut, carrying
+- **Unattended there is nobody to hand it to**, and waiting for them is not a
+  stop with a reason — it is a standstill in the middle of a task that still
+  looks like it is running. What is ruled out here is waiting on a person, not
+  waiting as such: the checks after arming are waited for inside the answer, and
+  step 6 says with what bound. This is the same shape as a refused arming in step
+  6, and it gets the same answer. Raise an issue saying the task is not buildable as cut, carrying
   what the hook reported — the failing classes and their output — together with
   whatever it asked to have handed over. Label it `raised-here` and
   `needs-human` and record it as a blocker of the task. Then put the task down
@@ -738,13 +742,31 @@ August 2026 in `devloop-test-l`: task 4 was built and merged through this
 workflow and carries no reference at all, in either direction, because nothing
 here had ever said to write one.
 
+**A pull request that is already armed is not armed again.** This step is entered
+on one whenever a previous run's wait ran out — the arming is a state on the
+platform and outlives the session that set it — and `start-work` sends such a
+pull request straight here. `gh pr view <number> --json autoMergeRequest` says
+so: anything but `null` there means the platform is already holding it, and what
+is left to do is the wait below, not the mutation.
+
 **Never merge yourself.** Open the pull request, then arm the platform with a
 command that cannot merge:
 
-    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
+    PR_ID=$(gh pr view --json id -q .id)
+    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -f id="$PR_ID"
 
 The platform merges, not the agent. Arming and merging are two different
 mutations, and only the first is yours.
+
+**The id is fetched in a step of its own and passed with `-f`, not `-F`.**
+Measured on 13 September 2026 in `devloop-test-o`: the one-line form with the
+substitution inside `-F id=$(…)` came back with `unexpected end of JSON input`,
+and the two-step form with the id read first went through. `gh api --help` (gh
+2.96.0, read the same day) gives the reason: `-F` adds "a typed parameter",
+reading the value from a file where it starts with `@`, while `-f` adds "a string
+parameter" and passes what it was given. The same two lines stand in five places — the three skills,
+`hooks/pre-tool-use-merge-guard.sh` and `docs/skill-conventions.md` — byte for
+byte, and a change to one of them is a change to all five.
 
 `gh pr merge --auto` is not a substitute and looks like one. The tool drops that
 flag whenever the pull request is already mergeable — including where checks
@@ -921,8 +943,106 @@ that came back with no value at all are all stops with the reason named — the
 last of them with the command and the message that came back in place of a
 value, since there is nobody here to hand it to.
 
-Then check **once** whether it landed — do not poll in a loop. If it has not,
-say what it is still waiting on and offer the next step; do not block the session.
+**Then the wait, and this is where attended and unattended part company.**
+
+**Attended, check once whether it landed** — do not poll in a loop. If it has
+not, say what it is still waiting on and offer the next step; do not block the
+session. Somebody is sitting here, their next message costs nothing, and half an
+hour of a held-open session is half an hour of theirs. That is the whole of the
+rule where a person is waiting with you, and it is the only place it holds.
+
+**Unattended, the wait happens in this answer or it does not happen at all.**
+Nothing wakes a run: the answer that ends here ends the run, whatever it promised
+about reporting back. Measured on 11 and 13 September 2026 in `devloop-test-o`,
+four times — pull requests 50, 54, 55 and 57 were armed, read once, and each time
+the run said it would report back once the merge had landed and ended its answer;
+the platform merged all four between forty-five seconds and two minutes later,
+and the run stood still until the user wrote a word. So block on the checks
+instead, which needs nobody:
+
+    gh pr checks <number> --watch --interval 60
+
+**The wait is bounded, and the bound is nearly always the floor.** Add up the
+`Duration` cells of the rows in `docs/agents/checks.md` that are `Blocking: yes`
+— that is what this suite costs — and wait that long or thirty minutes, whichever
+is more. **`Duration` measures the local run and not the platform's**: a runner
+has to be set up and a queue waited on before the first target starts there, and
+how much that adds is measured nowhere in this set. A project whose `Duration`
+cells were never kept up gives a number that is too small, which is what the
+floor is for. Those cells hold seconds and single minutes, so the thirty minutes
+is the ordinary answer and the sum is what can raise it, never lower it.
+
+**Nothing in the shell holds that bound, so the run does.** `gh pr checks` has no
+timeout of its own (`gh pr checks --help`, gh 2.96.0, read 13 September 2026),
+and `timeout` is not on a stock macOS — `command -v timeout` came back empty on
+this machine the same day, the same trap as `head -n -1` being a GNU extension.
+Give the call a timeout of its own from whatever runs it, repeat it while time is
+left on the bound, and keep the count of time spent yourself.
+
+**The checks going green is not the merge.** GitHub merges after them, and the
+four pull requests above took between forty-five seconds and two minutes over it.
+Read the platform, and read it again across the next few minutes rather than
+once:
+
+    gh pr view <number> --json state,mergedAt,mergeStateStatus
+
+`MERGED` with a time in `mergedAt` is the merge. Everything below this point
+depends on it — the fast-forward, the branch deletion, the issue check, step 7's
+query — and none of it may run on a green check alone.
+
+**A wait that runs out is a finding, not a failure.** Say what it was waiting on,
+which check was still outstanding, and how long it waited. The pull request stays
+open and stays armed: arming is a state on the platform and does not expire with
+this answer, so it lands by itself when the check finishes and there is nothing
+to arm a second time. Do not call the task failed and do not call the pull
+request stuck. Then go to step 7 and query. The unlanded pull request keeps its
+own task out of the readiness answer, which is what that step already says to
+report.
+
+**This is not the two-minute wait above.** That one runs before arming, waits for
+a required check to register, and running out there is a stop with the reason
+named — nothing is armed and nothing will land on its own. This one runs after
+arming, and running out here leaves a pull request that lands without anybody.
+The same shape with the opposite answer, and the difference is whether the
+platform is already holding it.
+
+**A check coming back red is a finding like a review finding, not a reason to
+stop.** Resolve it, rebuild, and let step 4 run again on what changed — that rule
+is written there and it is the one that holds; do not answer this with a second
+review rule here. Then wait again. The pull request stays open and the arming
+stands through all of it. **There is no cap on the rounds.** Rework after a
+review finding has none either, and in the run of 11 to 13 September 2026 the
+third round on task 48 was still turning up real findings.
+
+**What ends it is standstill, not a number of tries.** That is the distinction
+`hooks/stop-checks.sh` makes locally: its count rises only while the failure
+signature is identical and resets the moment the picture changes. The same
+distinction here, over what `gh` gives back — the name of each failing check and
+its result:
+
+    gh pr checks <number> --json name,bucket -q '[.[]|select(.bucket=="fail")|.name+":"+.bucket]|sort|join(",")'
+
+A red check whose signature differs from the last round is progress and goes into
+the next round. **Three rounds on the same signature is standstill**: end the run
+with a finding, say what stood still and what was tried against it, and leave the
+pull request open and armed.
+
+**That count lives in this answer, and it is not the hook's count.**
+`stop-checks.sh` builds `$FAILED` by running `$RUNNER "$target"` over the
+blocking rows itself, so a failure that exists only on the platform never enters
+its signature, and its count rises once per `Stop` event — a loop inside one
+answer reaches a `Stop` once, whatever it tried in between. The two counts
+measure different things and neither reads the other. Do not write this one to
+`.claude/check-attempts.local`, and do not write it to a file at all: nothing on
+disk reads such a file, for the reason under "Unattended mode".
+
+**And this ends the run, where the local twin does not.** Three turn-ends on the
+same failing classes become an issue against the task and the next task is taken
+up; three rounds on the same red check on the platform stop the run. The
+difference is what is left standing: there the work is still in the tree and
+another task can be built on top of it, here a reviewed, armed pull request is
+sitting on a gate that will not go green, and every task after it would be cut
+from a main branch that does not carry it.
 
 Once it has landed:
 
@@ -932,8 +1052,18 @@ Once it has landed:
 - Delete the merged branch locally and on the remote. Nothing does it for you:
   arming auto-merge carries no branch deletion, and whether the repository
   deletes head branches on merge is its own setting.
-- Confirm the task issue closed. Check whether this also closed anything else,
-  naming each one you checked, including the ones it did not close.
+- Confirm the task issue closed, and **close it by hand where the platform did
+  not**. `gh pr view <number> --json closingIssuesReferences` says which issues
+  the pull request claimed, so the check is over that list rather than over
+  memory. Name each one you checked, including the ones it did not close. **The closing keyword is the
+  right link and is not a guarantee.** Measured on 13 September 2026 in
+  `devloop-test-o` over five merges: four issues closed within seconds — 47 by
+  pull request 50, 48 by 53, 49 by 54, 52 by 57 — and one did not. Pull request
+  55 merged at 09:21:34 carrying a correct `Closes #51`; issue 51 was still open
+  four minutes later and was closed by hand at 09:25:57. An issue left open over
+  work that has landed reads to every later query as work not done, step 2's
+  readiness query among them, so this is checked after every merge and not only
+  when something looks wrong.
 - If every task under a spec is now closed, close the spec and say you did. Do
   not ask: every task under it is done, so there is no second sensible answer,
   and reopening an issue is one click if it turns out there was one.
@@ -1080,6 +1210,14 @@ hook, which runs the chain itself and hands the problem over after three
 turn-ends with the same classes failing — and with nobody there to hand it to,
 that becomes an issue against the task and the next task is taken up. Step 3
 says how.
+
+**Two things bound a task, and the second one ends the run rather than the
+task.** The hook above is the local one. The other is the wait after arming in
+step 6: the checks on the platform are waited for inside one answer, up to a
+bound taken from `Duration` and never under thirty minutes, and three rounds
+against the same failing checks there stop the run. Step 6 says why the two
+answers differ. A wait that merely runs out stops nothing — it is reported, the
+pull request stays armed, and step 7 queries with it still open.
 
 **One unattended run per working directory.** Two share a checkout and a main
 branch and neither sees what the other is building. Same constraint that already

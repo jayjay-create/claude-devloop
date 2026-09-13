@@ -518,7 +518,10 @@ divergence between them. Three rules follow.
    `build-work` step 6, `setup-checks` step 7, `setup-project` step 8 and
    `README.md` under "Merge and verify" all state: `do not block the session`
    finds the first, `actually arrived` the middle two, `that it actually landed`
-   the last, and no one string finds more than two of the four.
+   the last, and no one string finds more than two of the four. All four were
+   rewritten later the same day, when the wait after arming was built, so those
+   strings no longer find anything: what is recorded here is the measurement, not
+   a way to find the places today.
 
    **The list is what is read; the search is not the proof.** A search that found
    half the places looks exactly like one that found all of them, so a report does
@@ -723,6 +726,17 @@ which is a separate route into sleep, so a hint that stops at the command
 promises more than it can hold. Off macOS, name a command only where that
 machine's own documentation backs it.
 
+**What cannot be waited for is a person, and a state on the platform is not
+one.** A check running on GitHub has a command that blocks on it and needs nobody
+— `gh pr checks <number> --watch` — so a run that arms auto-merge and then ends
+its answer has not obeyed this rule; it has skipped a wait that was there for the
+taking. Measured on 11 and 13 September 2026 in `devloop-test-o`: four pull
+requests armed, each read once, each answer ended on a promise to report back,
+each merged by the platform between forty-five seconds and two minutes later, and
+the run stood still in all four until the user wrote a word. The rule is about
+who is being waited for, not about waiting. `build-work` step 6 carries the
+unattended form, with the bound on it and what a red check there means.
+
 **A rule in the run's own memory can close a route the skills allow.** Measured
 on 25 August 2026: before arming auto-merge, a run stopped itself and cited a
 rule in its own memory — never merge directly, always hand the merge command to
@@ -798,7 +812,15 @@ and the half no hook can enforce.
 The guard blocks `gh pr merge` in every form. The one permitted path is the
 mutation that can only arm:
 
-    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -F id=$(gh pr view --json id -q .id)
+    PR_ID=$(gh pr view --json id -q .id)
+    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -f id="$PR_ID"
+
+**The id is fetched first and passed with `-f`.** Measured on 13 September 2026
+in `devloop-test-o`: the one-line form, with the substitution written into
+`-F id=$(…)`, failed with `unexpected end of JSON input`; the two-step form went
+through. `gh api --help` (gh 2.96.0, read the same day) says why: `-F` adds "a
+typed parameter" and reads the value from a file where it starts with `@`, `-f`
+adds "a string parameter".
 
 Read off gh's own source on 24 August 2026, because the earlier version of this
 paragraph asserted the opposite: `pkg/cmd/pr/merge/merge.go:588` sets the auto
