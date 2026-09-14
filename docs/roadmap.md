@@ -3837,6 +3837,464 @@ the size of the work.
   them until the wording is theirs.
   Recorded, not built.
 
+- **Matt Pocock's skill set read in full against this one on 14 September 2026,
+  and it divides into three defects he names that this set has, one he names
+  that it does not, seven mechanisms of his missing at named sites here, and
+  four places where this set is further on.** Read at
+  `github.com/mattpocock/skills`, `main`: 37 `SKILL.md` files, 2465 lines
+  together, the longest of them 140. This set, measured at `b3805bc`: 12 files,
+  6157 lines, the longest `build-work` at 1359 — longer on its own than his
+  whole set by half again. The file the first three findings are read against
+  is `skills/productivity/writing-for-agents/SKILL.md`, his meta-discipline for
+  documents an agent reads; each of the seven below names its own source file.
+
+  **Nothing here is a convention, and nothing here is built.** Each rule below
+  is one document's rule read against another set of documents, which is the
+  weakest kind of evidence this file accepts — the reading that has been wrong
+  twice already, once about what a field means and once about what a run would
+  do. **Before any of it is built it owes a counter-check against real cases**:
+  the runs this file already records, walked through the proposed rule to see
+  what it would have changed and what it would have broken. Where a Should
+  below is already backed by a measurement, that measurement is named beside
+  it; where it is not, it says so.
+
+  **1. Duplication, and he requires one source per meaning**: the same meaning
+  in several places costs maintenance and tokens, and lifts its rank above what
+  it is actually worth. This set decides that expressly the other way —
+  `docs/skill-conventions.md:72`, "A rule holds only on the path it is written
+  on", with the four failures of one day that produced it and the sentence "Two
+  copies that agree beat one copy that half the runs never read"; and `:36`,
+  "Shared words are defined in one place", which is the same decision for words
+  rather than rules.
+
+  *Today:* **24 byte-identical blocks in 165 copies**, measured at `b3805bc` by
+  taking every paragraph of 200 characters or more in `skills/*/SKILL.md` and
+  keeping those standing in more than one file. Three `cksum` checks under
+  `## Before a handover, run these` hold 15 of them —
+  `docs/skill-conventions.md:1212`, `:1225` and `:1276`. **The count has grown
+  by one block and three copies since the entry above measured it** at
+  `b90874b`, where it read 23 blocks in 162 copies, and the new one is the
+  definition of a seam — `cut-into-tasks:47`, `build-work:277`,
+  `review-changes:50` — rewritten identically on 14 September in the change
+  that let planning run alone, and held by nothing. It is the ninth unheld
+  block beside the eight that entry lists, and it arrived in the same change
+  that proved the point: three copies were edited together by hand, correctly,
+  and nothing was written that would notice next time.
+
+  What that costs is measured, and it is the commonest failure class in this
+  file. Four cases in four days where the same thing stood decided differently
+  in several places:
+
+  - **The fence around planning, in two files on two grounds** — read 11
+    September 2026, the entry above: `start-work` under `## Unattended`
+    grounded it on whose decision it is, `README.md` under `## Attended and
+    unattended` on what a mistake costs, and neither named the other, so a
+    repair at one would have left the other standing on a reason it never
+    answered. Repaired in both on 14 September.
+  - **The task cut, settled at three sites against that same fence** — same
+    entry: `plan-work` at `## Close` (`:626` to `:627` today), `cut-into-tasks`
+    at `## Before you create anything` (`:268`), and `README.md:81`, all three
+    saying the cut follows from the spec and is created rather than asked,
+    while the fence called it one of the two decisions that belong to the
+    human.
+  - **"Do not block the session" against "check that it actually arrived"** —
+    measured 11 and 13 September 2026 on pull requests 50, 54, 55 and 57, the
+    entry above: one file told the run to read once and end its answer, two
+    others and the readme told it to check the git log for evidence that could
+    not exist yet. Three stages armed, all three said what came after, none of
+    them waited. Those exact strings find nothing today: all four were
+    rewritten on 13 September when the wait was built.
+  - **"Waiting unattended is a standstill" against the wait that was then
+    built** — 13 September 2026: two sentences saying so had to be narrowed to
+    waiting on a person, because the new step waits on the platform and that is
+    not a standstill.
+
+  **The way he avoids it is reference skills that others call** —
+  `codebase-design`, `grilling`, `domain-modeling` — and this set rejects that
+  route at `docs/roadmap.md:37`: `interview`, `define-terms` and `clarify-idea`
+  "are written out in `plan-work` and `untangle-idea` rather than delegated to,
+  deliberately — upstream reports that a skill which only delegates loads half
+  its dependencies and guesses at the rest." **That is a foreign observation
+  and not a measurement here.** It carries no date, no source page and no run;
+  by the second rule under "A field is not an answer to a question it was not
+  asked" a claim about behaviour outside this repository holds only with
+  evidence, and this one is a recollection standing where a measurement should
+  be. The architecture of the whole set rests on it.
+
+  *Should:* **a repeated rule owes its guard in the same change**, which is
+  already what should hold in the entry above on the eight unheld blocks, and
+  what this entry adds is the count it has to survive: the guard is owed at 24
+  blocks, not at the three that happen to have one. And **the decision that
+  produced them is written down as resting on an unchecked claim**, so that it
+  is reopened on evidence rather than inherited. What would settle it is small:
+  one delegating skill, one run, and a reading of what its dependencies
+  actually loaded. Until that exists, "a skill which only delegates loads half
+  its dependencies" is the same shape as `allow_auto_merge` used for "there is
+  a gate" — a statement about something else, doing duty as the answer.
+
+  **2. Premature completion, and he describes it this way**: every step ends on
+  a completion condition, and a vague condition invites ending the step before
+  it is finished, because attention moves to being done. His worked example of
+  a vague boundary is "understanding reached", word for word.
+
+  *Today:* `plan-work:363` — "Done when nothing important is open, the hard
+  core of the user stories and of what is out of scope is written down, and no
+  question is left whose answer somebody has to see something to give." The
+  first of the three is the run's own judgement of importance. **Measured on 14
+  September 2026** in `devloop-test-o`, the entry above: Stage 1 ended after
+  one round of three questions with at least six the idea raises never put,
+  four of them children of the three that were asked and therefore not askable
+  before those answers and never asked after them. One of the six surfaced
+  later as a filter change reported as a removal and cost two of the three
+  revision rounds.
+
+  **The counter-example is in the same file and it held.** `build-work:1278` to
+  `:1281` — "There is no ceiling on how many tasks this run may finish. What
+  ends it is that step 2 has nothing left to take, and that is **two**
+  conditions, both of which have to hold: nothing ready in scope, **and** no
+  loose `raised-here` issue that clause 1 or clause 3 would take now." Both
+  halves are queries, and the run of 14 September went through it correctly:
+  six pull requests, four loose issues taken up in turn, the tracker empty at
+  the end. The condition that was rewritten after a failure is the one that is
+  checkable; the one that has never been rewritten is the one that failed.
+
+  **He names two properties that make a condition a lever** — clarity, whether
+  the agent can tell done from not-done, and demand, how much it asks for.
+  Those two are the test, and this set has never applied it to more than one
+  condition at a time.
+
+  *Today, across the set:* `grep -rni "done when\|ends when\|what ends it\|is
+  finished when\|until nothing\|the end is" skills/*/SKILL.md README.md` — 10
+  lines, eight of them a stage's own end.
+
+  - **Ends on a state:** `diagnose-bug:211`, one named command already run,
+    with its invocation and output, that is red-capable; `diagnose-bug:244`,
+    removing any remaining element makes it go green; `untangle-idea:344`, the
+    frontier is empty; `build-work:1067`, standstill built from `gh pr checks
+    --json name,bucket`; `build-work:1278`, the two queries above.
+  - **Ends on a judgement:** `plan-work:363`, the finding above. And
+    `untangle-idea:175` — "the map is done when the way is clear" — which reads
+    the same at first and is not: the clause after the dash, "nothing left to
+    decide before someone goes and does the thing", is checkable against the
+    tickets, and `:344` gives the same skill's interview a state to end on. It
+    is named here because it is the nearest miss, not because it is a second
+    defect.
+  - **Not a stage end:** `plan-work:429`, `setup-checks:550` and `:607` — the
+    unattended loop described to a person, pointing at `build-work:1278`. No
+    change; they are readings of a condition written elsewhere.
+
+  *Should:* **every completion condition in the set is read against his two
+  properties, not only Stage 1's.** The repair to Stage 1 is already written in
+  the entry above — the stage ends when the set of questions answerable now is
+  empty — and what this entry adds is that fixing one condition and leaving
+  seven unexamined is the same mistake one level up: eight stage ends, one
+  measured failure, and no reading of the other seven. The pass is cheap, it is
+  text against text, and it is the one Should here that needs no new run before
+  it can be done.
+
+  **3. Sprawl — a document simply too long**, even where every line is alive
+  and unique: attention thins out over the excess. His remedy is an information
+  hierarchy of three ranks — the step in the document, the reference in the
+  document, the reference moved out behind a pointer — and the branch test:
+  what every branch needs stands in the document, what only some branches reach
+  lives behind a pointer.
+
+  *Today:* `build-work` is 1359 lines at `b3805bc`, against 1263 at `b90874b`
+  where the duplication entry above was measured — it grew by 96 lines in the
+  four commits since, none of which was about its length. `## Unattended mode` runs from
+  `:1155` to the end of the file, **205 lines, and every attended run loads all
+  of it**: it is the clearest thing in the set that the branch test would move
+  behind a pointer, since an attended run reaches none of it. The seven step
+  headings before it are the other half of the picture — one document carries
+  the whole loop from base check to merge and back.
+
+  **The evidence usually reached for does not hold, and saying so is the point
+  of this paragraph.** The landing question put to the user in an unattended
+  run — the entry above — was measured on **13 September 2026**, when no mark
+  existed; its own diagnosis is distance, "Between the typed word and it, this
+  run passed through several skill loads, a build subagent with a fresh
+  context, four review subagents and a second review round". The mark was built
+  on 14 September in `e09fa80`, and the run of 14 September under it did not
+  put the question. So that measurement is evidence that distance defeats a
+  difference drawn in text, and it is already answered by something other than
+  shortening. **It is not evidence for sprawl, and this entry does not use it
+  as such.**
+
+  *Should:* **the three ranks are applied to `build-work`, beginning with the
+  205 lines an attended run cannot reach.** And it is written down here that
+  this is the most expensive of the three rebuilds and the only one not yet
+  shown to be worth doing: the duplication finding has four dated failures
+  behind it and the completion finding has one, while this one has a line count
+  and a rule from another repository. **What would settle it is a measurement
+  this set can take** — a run that reaches a late step in `build-work` and is
+  asked what it holds from the early ones — and until that exists, splitting a
+  file that works is a cost paid against a document's advice.
+
+  **The fourth defect he names is not a finding here. Steering by prohibition
+  pulls the forbidden behaviour into context and makes it more available.** He
+  allows a prohibition as a hard guard and requires the positive aim beside it.
+  This set is full of them: `grep -rc "Never \|Do not \|never \|do not "
+  skills/*/SKILL.md` sums to 337 across the twelve files.
+
+  **They stay.** Nearly every one stands for a measured defect, and this file
+  is the record of which — "No sentence after the last lens", "do not ask
+  whether the cut is right", "Do not go on to guess without it", each with a run
+  behind it. Removing a prohibition because a document elsewhere prefers positive
+  phrasing would throw away the evidence and keep the wording. What is owed is
+  the other half: **every prohibition carries the positive aim beside it**,
+  which several already do and which nothing requires. That is a writing rule
+  for `docs/skill-conventions.md`, not a change to any skill, and it binds the
+  next prohibition written rather than the 337 standing.
+
+  **Seven mechanisms of his that are missing at a named site here.**
+
+  - **`skills/productivity/grilling/SKILL.md`** — the mechanism Stage 1 does
+    not have. Rounds; the whole set of questions whose prerequisites are
+    settled, in one round; numbered, each with a recommended answer, in a fixed
+    output form; the set recomputed after every answer, with a question
+    depending on an open one belonging to a later round; facts fetched by a
+    subagent, which blocks nothing but the questions beneath it; the end is the
+    empty set, and nothing is acted on until the user confirms shared
+    understanding. **It has stood in `untangle-idea` almost word for word since
+    19 August 2026** — `:283` to `:288` and `:344` — and not in `plan-work`.
+    Already recorded in the entry above, with what is open: whether the empty
+    frontier replaces the first of the three conditions of "the idea stands" or
+    stands beside it.
+  - **`skills/engineering/code-review/SKILL.md`** — his standards axis carries
+    twelve code smells from Fowler's *Refactoring* as a fixed baseline, each
+    with what it is and how to fix it, bounded by two rules: the repository
+    overrides, and each is a judgement call and never a hard violation. The
+    list at `review-changes:151` to `:155` overlaps in three — duplicated
+    logic, functions doing several things, dead code — and is otherwise
+    behavioural: misleading names, comments restating code, inconsistent error
+    handling, silent failures, magic values, leaked internals, missing edge
+    cases, interfaces that force the caller to know how they work inside. The
+    structural half is absent, and so is the hard-versus-judgement distinction:
+    `:161`, "A documented project rule always beats a general one", settles
+    precedence and not severity. Three further things from the same file: he
+    hands the subagent the whole list, because it has no other access to it —
+    which this set's `:226`, "each given only its own lens and the diff", makes
+    binding here too; he caps the report at four hundred words; and he forbids
+    merging or re-ranking the axes' findings, which stands at `:253` to `:254`
+    already.
+  - **`skills/engineering/tdd/SKILL.md`** — the tautological anti-pattern: a
+    test whose expected value is computed the way the code computes it, so that
+    it passes by construction and can never contradict the code. The nearest
+    thing in this set is four sites about a check that cannot fail —
+    `cut-into-tasks:229` and `:232`, `build-work:592`, `review-changes:272` —
+    and one under the Spec lens, `review-changes:167`, "tests that would pass
+    whatever the code did". None of them names the mechanism, and the Test
+    quality lens has no criteria list at all, which is the finding above on the
+    four conditional lenses. **Reported from the run of 14 September 2026 and
+    not otherwise recorded in this file: the test reading found exactly this
+    defect, without it standing in any list it was given.** If that is right it
+    is the second time a lens found something its brief did not name, and by
+    `record-lessons:102` the second time is the pattern.
+  - **`skills/in-progress/implement-spec/SKILL.md`** — tasks as a graph with an
+    advancing frontier rather than one after another; each implementing
+    subagent in its own worktree; as one finishes the frontier advances and
+    more start. `build-work` builds one task at a time — step 7 at `:1133`
+    returns to step 2, and `docs/skill-conventions.md:757` states the rule:
+    "One build task at a time. Two build agents share one working directory:
+    one switched branches out from under the other mid-edit... Parallelism
+    needs separate worktrees and is not worth it while tasks merge to the same
+    branch one after another." **That passage says its own evidence is
+    missing** — recorded 19 August 2026 from a run nobody can go back to — and
+    names the experiment that would settle it. His worktrees are the answer to
+    the exact failure it describes, so the two do not disagree: this set ruled
+    out parallelism in one directory, he ruled out one directory.
+  - **`skills/engineering/wayfinder/SKILL.md`** — every kind of work is marked
+    "needs the human" or "runs alone", and the agent never stands in for the
+    human; a grilling agent answering its own questions has broken that. **That
+    same distinction was derived here by hand on 14 September**, as the
+    boundary the mark was waiting for — the entry above: "The place the mark is
+    written hangs on a boundary that has not been drawn yet — where the part
+    the user answers in ends and the part that runs alone begins." Drawn once,
+    for one stage, in prose. His is a property of every entry in the set.
+  - **`skills/in-progress/retro/SKILL.md`** — his retrospective searches seven
+    categories: discoverability, automated checks, coding standards, the
+    always-loaded control file, tool economy, instructions with no effect, and
+    access to information. `record-lessons` knows two triggers — `:102`, it
+    happened a second time, and no check could have caught it — and has never
+    run: it carries `disable-model-invocation: true` at `:4`, nothing calls it,
+    and the entry above measures what that costs, a build loop producing the
+    same finding three times with no way to reach it. And his rule that **the
+    review agent carries the standards and not the build agent, because the
+    build agent is under the greatest context pressure** — which this set
+    already does, `review-changes:37` and `:151` read `standards.md` while
+    `build-work` names it nowhere and hands the subagent "the paths of the
+    control documents" at `:460` to `:461`. Named as agreement, not as a gap.
+  - **`skills/engineering/to-tickets/SKILL.md`**, two things. **First, he puts
+    the cut to the user and iterates to agreement**, and this set decides that
+    expressly the other way at `cut-into-tasks:268`, `plan-work:626` to `:627`
+    and `README.md:81`, with the reason: the user cannot judge whether a task
+    is too large without the code in front of them. **The divergence is
+    recorded nowhere** — the deviation from an upstream source this set
+    otherwise copies verbatim is unwritten, and
+    `docs/skill-conventions.md:431`, "Where it is adapted, say why", is the
+    rule it falls under. **Second, his pattern for wide rebuilds that will not
+    fit a vertical slice**: put the new form beside the old, migrate the call
+    sites in batches, each batch its own task, remove the old form last. **That
+    already stands at `cut-into-tasks:214` to `:216`** — "add the new thing
+    beside the old, move callers in batches, delete the old last" — but scoped
+    to "wide mechanical rewrites — renaming something that appears in a
+    thousand places". His is not limited to mechanical rewrites. Whether
+    widening the scope is right is a question for the counter-check, not a
+    finding: the narrow wording is what keeps it from becoming the route by
+    which a horizontal cut gets smuggled past the rule, which the line above it
+    forbids by name.
+
+  **Where this set is further on.** Written so the entry is not read as a list
+  of faults, and because each of these is a place where copying him would be a
+  regression.
+
+  - **Six review lenses against his two.** `review-changes:147` two that always
+    run, `:179` four that run when the diff contains their trigger. His
+    `code-review` has standards and spec and no conditional axis at all, which
+    the entry above already records.
+  - **A check-class matrix that says which class binds.** `setup-checks:392`,
+    the table with `Class | Per-file | Whole | Files | Duration | Blocking |
+    Status`, and `:405`, "`Blocking` becomes `yes` only on rows that are
+    `filled`". Nothing of the kind exists on his side; a check either runs or
+    it does not.
+  - **Real enforcement through guards.** `hooks/` carries three `PreToolUse`
+    guards — branch, install, merge — plus `post-tool-use-checks.sh`,
+    `stop-checks.sh` and `session-start.sh`, six scripts wired in `hooks.json`,
+    against his single script for dangerous `git` commands. A guard's block is
+    also written into the skills as something answered rather than got around,
+    in twelve byte-identical copies.
+  - **The unattended mode with five checked preconditions**, `build-work:1164`
+    to `:1221` — no `empty` class, a gate that genuinely binds on the remote,
+    nothing blocked from outside the range, the tool classes granted, and a
+    repository that can merge without a person — against the fifteen lines his
+    `implement` gives the same subject.
+  - **This file.** A dated measurement protocol in which every rule names the
+    run that produced it, with a carve-out saying a dated measurement is never
+    edited to match a later change. His skills carry their reasons inline or
+    not at all.
+
+  **The order of work, and why.**
+
+  1. **The duplication decision first.** It produces the commonest failure
+     class in this file — four cases in four days, all of them the same shape —
+     and it rests on an unchecked claim about what a delegating skill loads.
+     Everything else written while it stands gets written in 24 blocks' worth
+     of copies.
+  2. **Then the completion conditions.** One measured failure, seven conditions
+     never read against the two properties, and the pass is text against text
+     with no run needed.
+  3. **The cut of `build-work` last.** The most expensive of the three, and the
+     only one whose gain is still a line count. It also gets cheaper once the
+     first two are done: what moves behind a pointer is easier to see when the
+     duplication is held and the stage ends are exact.
+
+  **The searches.** By the third rule under "A field is not an answer to a
+  question it was not asked", widened on 13 September 2026 to any change to a
+  rule or a command. **No site below was changed.** This entry decides nothing;
+  the list is what the first build has to work through, and each site carries
+  either the co-change it would take or the reason it does not apply.
+
+  **Where duplication is decided:** `grep -rn "path it is written
+  on\|byte-identical\|at every route\|every route that\|defined in one
+  place\|in one place" skills/*/SKILL.md README.md docs/skill-conventions.md` —
+  7 lines.
+
+  - `docs/skill-conventions.md:72` to `:95`, `## A rule holds only on the path
+    it is written on`, and `:36` to `:50`, `## Shared words are defined in one
+    place` — the decision itself, with the four failures of 18 August 2026
+    behind it. **The co-change**, and it is one change: the guard owed with the
+    copy, and the note that the delegation route was rejected on an unchecked
+    claim.
+  - `docs/skill-conventions.md:538` to `:547` — where this rule hands off to
+    the checksum, "What this replaces is the search, not the copies". No
+    change; it is the sentence the co-change extends, and it already says what
+    holds copies together.
+  - `docs/skill-conventions.md:620` — "A count lives in one place, and
+    everywhere else points at it". Does not apply: it governs numbers that go
+    stale, not rules written at several routes, and it already decides the
+    other way for its own subject.
+  - `cut-into-tasks:194` — the mode said in one place at the end of the file.
+    The same words on another subject; no change.
+  - `docs/roadmap.md:37`, the delegation rejection, and `:2993` onward, the
+    measurement of 23 blocks. Dated records and a status claim: the carve-out
+    puts the measurement outside this rule, and `:37` is the claim this entry
+    names rather than edits.
+  - The three `cksum` commands, `docs/skill-conventions.md:1212`, `:1225`,
+    `:1276` — where a ninth guard would land. No change until one is written.
+
+  **Where a stage says it is finished:** `grep -rni "done when\|ends when\|what
+  ends it\|is finished when\|until nothing\|the end is" skills/*/SKILL.md
+  README.md` — 10 lines, listed item by item under the second finding above,
+  with which of them end on a state and which on a judgement. `plan-work:363`
+  is the co-change and is already the co-change of the entry above; the other
+  seven are read, not necessarily changed, and that reading is the work.
+
+  **Where a subagent is told what it may see:** `grep -rn "fresh context\|only
+  its own\|and nothing else\|the paths of the control documents"
+  skills/*/SKILL.md docs/skill-conventions.md` — 15 lines.
+
+  - `review-changes:226` — "each given only its own lens and the diff". **The
+    co-change** for the smells list: a lens that may see nothing else has to be
+    handed what it looks for.
+  - `build-work:460` to `:461` — what the build subagent gets. Co-change only
+    if the standards list moves; today it gets paths, which is the arrangement
+    his retro recommends and which this entry records as agreement.
+  - `plan-work:521` — a checking agent gets the draft, the hard core and Stage
+    2's constraints "and nothing else". No change; it is the shape the lens
+    repair copies.
+  - `setup-checks:245`, `:660`, `start-work:11`, `:37`, `:111`,
+    `review-changes:281`, `untangle-idea:331`, `:561`, `build-work:309`,
+    `docs/skill-conventions.md:403`, `:920` — the same phrase on other
+    subjects: a column, a command, a label, a glossary, a shell call, a plugin
+    boundary, a field's meaning. None applies.
+
+  **Where the set builds one task at a time:** `grep -rn "one at a time\|One
+  build task at a time" skills/*/SKILL.md docs/skill-conventions.md` — 7 lines.
+  `docs/skill-conventions.md:757` is the rule and **the co-change**, if the
+  worktree experiment is ever run; it already names the experiment and says its
+  evidence is missing. `cut-into-tasks:269` — "vertical, demonstrable, one at a
+  time, real blockers" — is about how a task is cut, not how many run; no
+  change. `diagnose-bug:238` and `:247`, `setup-project:325` and `:331`,
+  `untangle-idea:417` — elimination, permission grants, ticket graduation. The
+  same words on other subjects.
+
+  **Where the cut is decided without the user:** `grep -rn "do not ask whether
+  the cut\|not the user's to judge\|presented and created\|follows from the
+  spec" skills/*/SKILL.md README.md docs/skill-conventions.md` — 4 lines.
+  `cut-into-tasks:268`, `plan-work:626` to `:627`, `README.md:81` — all three
+  **co-change together** if the divergence is ever written down, and the place
+  it goes is `docs/skill-conventions.md:431`, "Where it is adapted, say why",
+  which is the fourth site and takes no change itself.
+
+  **Where a check that cannot fail is named:** `grep -rn "cannot fail\|pass
+  whatever\|nothing to break\|cannot be broken" skills/*/SKILL.md` — 5 lines.
+  `cut-into-tasks:229` and `:232`, `build-work:592`, `review-changes:272` — the
+  condition that leaves nothing to break, the missing exit, the finding a lens
+  reports. No change; they are the neighbourhood the tautological test belongs
+  in and none of them reaches it. `review-changes:167`, under the Spec lens, is
+  **the co-change**: "tests that would pass whatever the code did" is the
+  nearest sentence in the set, and the mechanism belongs beside it or in the
+  Test quality list that does not exist yet.
+
+  **Where a lesson is routed:** `grep -rn "standards.md" skills/*/SKILL.md` — 6
+  lines. `record-lessons:115`, the destination, and `:4`, the lock — both named
+  in the entry above and unchanged here. `review-changes:37` and `:151`, the
+  review reading the file, which is the arrangement his retro argues for; no
+  change. `diagnose-bug:132` — the file named among what says what the words of
+  this project mean; no change, it reads and does not write.
+  `setup-project:710` and `:737`, the file's creation at setup; no change, and
+  `build-work` returns nothing for this search, which is the agreement rather
+  than a gap.
+
+  **What no search reaches**, and is therefore named from reading: his
+  repository is not on this machine, so every statement above about his files
+  is a reading of one day, 14 September 2026, at `main`, with no commit
+  recorded. `docs/skill-conventions.md:421` gives the clone command that would
+  pin it, and the first build under this entry should run it and record the
+  commit — a comparison against a moving branch is the same defect as a claim
+  about a platform from recollection, one subject over.
+  Recorded, not built.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
