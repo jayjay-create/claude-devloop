@@ -178,8 +178,12 @@ says. Silence is not flow.
 stages, and each one comes back on its own.
 
 **With nobody there to answer**, a question that passes this test does not stop
-the run. Take the reversible option, record it in the spec as decided without an
-answer, and carry on. Stop only where no reversible option exists.
+the run, and what it does instead is not written here. Each skill that can run
+unattended says it in a section of its own, in the words of its own work — a
+spec is not a task and a task is not a check class, and one sentence fitted to
+all of them fits none. A skill without such a section has no unattended path;
+should it meet the case anyway, it stops with the question named rather than
+deciding it.
 
 **If the user has asked to be consulted about something, that stands.** It
 overrides this test in the direction of asking, and it is not yours to weigh.
@@ -199,6 +203,20 @@ must be able to answer. Never ask which skill to use.
 I change something?" cannot be answered with yes: an alternative question and a
 yes-or-no question are different shapes, and a reply to the mixed form means
 neither. Ask one or the other.
+
+## With nobody there
+
+This skill is reached with nobody there from two places, and the mark
+`.claude/unattended.local` says so. From a build that had an install declined for
+a check class, which records the class as `skipped` with that reason and asks
+nothing. And from the step after a merge that re-reads expired skip reasons,
+where "Ask anyway where filling it changes their project" in step 2 can meet
+nobody to ask. There the class stays as it is — `skipped`, with the expired
+reason and a note that filling it needs their say — and an issue carrying
+`raised-here` and `needs-human` says what filling it would add to their manifest
+or put on their machine. The less committing option is the one that changes
+nothing of theirs. Step 8's offer of the mode is never reached with nobody there:
+it stands in a first setup, with them present.
 
 ## Step 1 — Read the current state
 
@@ -518,8 +536,11 @@ why. A required check that runs nothing green-lights everything, so an unattende
 run behind it would have nothing whatever between a change and the main branch —
 worse than not offering the mode at all.
 
-**What the question has to carry.** What it decides: whether builds in this
-project can run through without stopping at every task for approval. What a yes
+**What the question has to carry.** What it decides: whether work in this
+project may run alone at all — from the designs to the merge, without stopping
+at every step for approval. It is a permission for this repository; each piece
+of work is asked separately whether to use it, at the end of its sharpening, and
+`--auto` is that answer given up front. What a yes
 costs, said at the moment of asking — a workflow file is added, the main branch
 becomes protected, that protection applies to the user too so they can no longer
 push to it directly either, on a private repository the workflow spends the
@@ -572,8 +593,11 @@ that same case.
 mode whose course nobody has described to them. Six things, short and in
 ordinary words:
 
-- **What the run then does, in order.** It takes the ready tasks one after
-  another. Each gets its own branch, then the code, then a deliberate break of
+- **What the run then does, in order.** Where a piece of work is still being
+  planned, first the rest of the planning: the code read, the designs drafted
+  and each checked against the stories and exclusions they settled, the spec
+  written, the tasks cut. Then it takes the ready tasks one after another. Each
+  gets its own branch, then the code, then a deliberate break of
   every condition the task promises so the check guarding it is seen going red
   and green again, then the whole check suite, then a review from several angles
   at once, then the findings fixed, then a pull request handed to the platform,
@@ -582,12 +606,17 @@ ordinary words:
   up to half an hour, or longer where this project's own suite takes longer.
   Then the next task, until nothing in scope is ready and nothing it raised
   against itself is still waiting to be taken up.
-- **Where it still stops.** Deciding what gets built and cutting it into tasks
-  never runs unattended — that stays with them, and this mode only builds tasks
-  that already exist. Beyond that it stops rather than guesses: a precondition
-  missing when it starts, named; a merge it cannot get past; a permission prompt,
-  which nobody is there to answer, which is why the kinds of command it needs
-  have to be approved before it starts.
+- **Where it still stops.** Sharpening the idea — the questions at the start of a
+  piece of work — always runs with them, because it needs what only they know.
+  From the point where the idea stands, everything can run alone: the designs,
+  the design choice checked against the stories they settled, the spec, the cut,
+  the build. Whether it does is asked once per piece of work, at the end of that
+  sharpening, with three answers — carry on alone, plan alone and halt before the
+  build, or stay — unless they typed `--auto`, which is that answer given up
+  front. Beyond that it stops rather than guesses: a precondition missing when it
+  starts, named; a design no draft carries; a merge it cannot get past; a
+  permission prompt, which nobody is there to answer, which is why the kinds of
+  command it needs have to be approved before it starts.
 - **What a task that will not go green does, which is not stop.** Where the same
   checks fail three turns running, the turn-end hook says so and asks for a
   person — and with nobody there, waiting on that would leave the run standing
@@ -620,7 +649,10 @@ the recommendation is theirs to weigh rather than a door being held open.
 
 Record the answer in `environment.md` either way. A later session then reports
 that the mode is available, or that it was declined and can still be set up,
-instead of asking again.
+instead of asking again. What is recorded is that the mode is available in this
+repository, or that it is not — a permission, which the question at the end of
+each sharpening presupposes and reads. It is not an answer for any piece of
+work, and no stage reads it as one.
 
 **On a yes, in this order. Do not collapse it.**
 

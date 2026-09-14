@@ -263,7 +263,15 @@ skill load and a correction the user watches happen:
   carries through to the tasks and into the build.
 
 Each stage says what it is doing next and does it. None of them asks permission
-to reach the following one; the decisions sit inside the stages.
+to reach the following one; the decisions sit inside the stages. The one question
+a stage puts at a boundary — how the work runs on from the end of the sharpening
+— is not permission to go on: it goes on whatever the answer.
+
+**`--auto` travels with that choice.** Where it was typed, say in the same line
+that the run goes on alone from where the idea stands, or, on the route straight
+to a build, that the build runs alone; that is the word the stage reads, and the
+section at the end of this file says what it means. The stage then writes the
+mark that carries it further, so the word need not survive past that point.
 
 ## How to talk while doing all this
 
@@ -296,12 +304,37 @@ in ordinary words.
 
     /devloop:start-work --auto
 
-The build stage then replaces the user's approval with a green check suite. It
-checks its own preconditions before starting and refuses if one is missing.
+The flag means: do alone everything that can be done alone. Sharpening the idea
+is the one part that cannot — it needs what only the user knows — so it runs
+with them whatever was typed. From the point where the idea stands, everything
+after it can: reading the code, the drafts, the design choice, the seams, the
+spec, the cut, the build, the merge. Each of those has something to be checked
+against instead of somebody to ask — the design against the user stories and
+exclusions settled in the sharpening, by an agent per draft; the seams against
+the code; the cut against the spec; the build against the check suite — and that
+check, not a claim that a mistake stopped costing anything, is what carries them
+alone.
 
-Planning is never unattended: the design choice and the task cut are the two
-decisions that belong to the human, and skipping them would build the wrong thing
-faster.
+Without the flag, the planning stage asks once, at the end of the sharpening,
+how this piece of work should run from there, with three answers: carry on
+alone, plan alone and halt before the first build, or stay. With the flag that
+question is not asked — the flag is its answer — so the flag and an answer can
+never disagree. On the route that goes straight to a build, because a finished
+spec already has ready tasks or because an earlier run halted before its first
+build, there is no sharpening and no question, and the flag is the only thing
+that sets the mode there.
+
+Either stage checks the mode's preconditions before going alone and refuses,
+saying which failed, where one is missing: the planning stage reads the four it
+can before a cut exists, the build reads all five. Where the repository has not
+been set up for the mode at all — the check setup offers it once and records the
+answer — nothing runs alone whatever was typed, and the run says so once and
+carries on with them.
+
+The stage that steps out of the flow writes a mark for the run,
+`.claude/unattended.local`, and every later stage reads its mode off that file
+rather than off this flag: a word typed here does not survive the skill loads
+and subagents between here and a merge.
 
 ---
 

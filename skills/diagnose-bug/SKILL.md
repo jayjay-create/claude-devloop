@@ -290,11 +290,11 @@ only available one is too shallow — a single-caller test when the failure need
 several, a narrow test that cannot replicate the chain that triggered it — a
 test there gives false confidence and is worse than none.
 
-**The spec confirms where this work gets checked, and this failure happened
+**The spec places where this work gets checked, and this failure happened
 somewhere that list may not name.** The rule does not bend: the list grows. Add
-the place to the spec's confirmed list with this bug as the reason, and say you
-did. A test at a place nobody confirmed is a review finding; a place confirmed
-by a real failure is not.
+the place to the spec's list — the path and the symbol, with this bug as the
+reason — and say you did. A test at a place the spec does not name is a review
+finding; a place named because a real failure happened there is not.
 
 **If no honest place exists at all, that is itself the finding.** The structure
 of the code is what is preventing this from being pinned down. File it as an

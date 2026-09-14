@@ -185,8 +185,12 @@ says. Silence is not flow.
 stages, and each one comes back on its own.
 
 **With nobody there to answer**, a question that passes this test does not stop
-the run. Take the reversible option, record it in the spec as decided without an
-answer, and carry on. Stop only where no reversible option exists.
+the run, and what it does instead is not written here. Each skill that can run
+unattended says it in a section of its own, in the words of its own work — a
+spec is not a task and a task is not a check class, and one sentence fitted to
+all of them fits none. A skill without such a section has no unattended path;
+should it meet the case anyway, it stops with the question named rather than
+deciding it.
 
 **If the user has asked to be consulted about something, that stands.** It
 overrides this test in the direction of asking, and it is not yours to weigh.
@@ -206,6 +210,46 @@ must be able to answer. Never ask which skill to use.
 I change something?" cannot be answered with yes: an alternative question and a
 yes-or-no question are different shapes, and a reply to the mixed form means
 neither. Ask one or the other.
+
+## With nobody there
+
+The block above says that what a run does with a question the test lets through,
+when nobody is there, is written in each skill's own words. In this skill it is
+written in three places already, and this section names them so they are read as
+one rule and not as three:
+
+- **Which task next** — step 2. Not a question in either mode; the rule there
+  decides it and says why the same rule serves both.
+- **A guard's block** — the section above "How to ask". An issue carrying the
+  command, the message and the reading, labelled `raised-here` and
+  `needs-human`, recorded as a blocker of the task; the task is put down and
+  step 2 takes the next.
+- **The turn-end hook handing the problem over** — step 3, its last section.
+  The same shape: an issue saying the task is not buildable as cut, the task put
+  down, the next one taken.
+
+**A question about the work itself that comes up inside a task and passes the
+test** — a choice the task rests on that the spec did not make — is the fourth
+case and gets the same answer as the second and third, not the planning stage's
+order of taking the less committing option. A task is cut from a spec, and a
+task that turns out to need a decision the spec did not take is a task that is
+not buildable as cut. The issue carries the question and the options as far as
+they are seen, labelled `raised-here` and `needs-human`, recorded as a blocker;
+the task is put down; step 2 takes the next. Measured on 13 September 2026 in a
+test project, with the user there: a run laid out two ways to build a task and
+waited. The test under "How to ask" already said that was not a question, since
+both ways were cheap to redo; this fourth case is for the one that is not.
+
+**How this skill knows which mode it is in** is not a word from the start of the
+session. It is the mark, `.claude/unattended.local`, written where the run
+stepped out of the flow — at the end of the sharpening in the planning stage, or
+at the start of an unattended build under "Unattended mode" below — carrying the
+main-branch commit the run started from on its first line and how far it may go
+on its second, `build` or `plan`. Present with this run's commit and `build`:
+alone. Absent: with them. Present with anything else: another run's, and
+"Unattended mode" says what follows. Every place in this file that says
+"unattended" or "with nobody there" reads that file and not the conversation.
+The build subagent in step 3 works in the same directory and reads the same file.
 
 ## Never assert state — always query it
 
@@ -231,8 +275,11 @@ not silently substitute something else and do not carry on as if the result were
 complete.
 
 **A seam is a place where this work is checked** — a function boundary, a module
-edge, an entry point. The spec names them and the user confirms them; nothing is
-tested at an unconfirmed seam.
+edge, an entry point. The spec names them and places each one: the path and the
+symbol where it stands in the code, or the line of the chosen interface that
+creates it. Whether a boundary exists at a place is a fact and not a judgement,
+so nothing is tested at a seam the spec has not placed, and nobody's
+confirmation stands in for the placing. That holds in both modes alike.
 
 **A condition is what a task promises will be true when it is done** — stated so
 that it can be false, and so that breaking it can be seen. The seam says where it
@@ -411,12 +458,13 @@ blocker in the tracker and let the readiness query do its work.
 ## Step 3 — Build it
 
 Hand the task to a subagent with a fresh context: the task issue, the spec it
-belongs to, and the paths of the control documents — not this conversation.
+belongs to, the paths of the control documents, and where the mark stands that
+says which mode this run is in — not this conversation.
 
 The subagent:
 
 1. Cuts a branch from the current main branch.
-2. Works test-first at the seams the spec confirmed, and at no others: the
+2. Works test-first at the seams the spec placed, and at no others: the
    failing test, then just enough code to pass it, one slice at a time. Not every
    test up front — that tests imagined behaviour.
 3. Proves every condition the task names, before reporting it done: the check
@@ -548,7 +596,7 @@ Five shapes come up, and they cost different amounts:
 - **The task names no condition.** The cut owes every task one, so a task without
   one is a defect in the cut, and the build does not invent conditions in order
   to have something to prove. Say the task carries no condition and that nothing
-  here is proven. Where the spec's confirmed seams cover this ground, take the
+  here is proven. Where the spec's placed seams cover this ground, take the
   condition from there and say you did; where they do not, file it back against
   the cut and carry on.
 - **One check guards two conditions.** Then it needs two reds. The proof is per
@@ -586,11 +634,12 @@ the chain itself and nothing here has to co-operate with it — and it is the on
 thing bounding a build that goes round in circles.
 
 **It cannot tell whether anybody is there.** It reads nothing from the turn: it
-discards its input, and the only variable it uses is `CLAUDE_PROJECT_DIR`. There
-is no mark of an unattended run for it to find either — `--auto` is a word typed
-to a skill, not a flag the harness passes down, and nothing on disk records the
-mode. So the difference is drawn here, in the text, and the message is read
-differently depending on who is present.
+discards its input, and the only variable it uses is `CLAUDE_PROJECT_DIR`. It
+reads no mark either: `.claude/unattended.local` records the mode, but the hook
+does not look for it — `--auto` is a word typed to a skill, not a flag the
+harness passes down, and whether the hook should read the file is not decided.
+So the difference is drawn here, in the text, and the message is read
+differently depending on who is present — which the run reads off the mark.
 
 - **With the user there**, the message is the answer. Hand the problem over in
   the form it asks for and wait.
@@ -932,7 +981,8 @@ gone wrong. What went wrong in the past was the framing and the timing — a run
 stopping mid-task, over a change nobody asked for, as though it had hit an error.
 
 In unattended mode there is nobody to hand it to. A refusal there is a stop with
-the reason named. Start condition 6 makes the first two unreachable; it cannot
+the reason named, and the mark is deleted with it. Start condition 6 makes the
+first two unreachable; it cannot
 touch the third, which is a state of one pull request and not a property of the
 repository. Name that one for what it is — the gate is there and this pull
 request is already past it — and do not report it as a missing gate. A `BEHIND`
@@ -1024,8 +1074,8 @@ its result:
 
 A red check whose signature differs from the last round is progress and goes into
 the next round. **Three rounds on the same signature is standstill**: end the run
-with a finding, say what stood still and what was tried against it, and leave the
-pull request open and armed.
+with a finding, say what stood still and what was tried against it, leave the
+pull request open and armed, and delete the mark — the run is over.
 
 **That count lives in this answer, and it is not the hook's count.**
 `stop-checks.sh` builds `$FAILED` by running `$RUNNER "$target"` over the
@@ -1105,9 +1155,20 @@ that merge and say which pull request it is.
 ## Unattended mode
 
 `--auto` replaces the user's approval with a green check suite. Same stages, same
-checks — only the gate differs.
+checks — only the gate differs. This section is reached two ways, and the mark
+tells them apart: from the cut at the end of an unattended planning, where
+`.claude/unattended.local` already stands with this run's commit and `build` on
+its second line; or directly, where the entry point routed a ready task under a
+finished spec here with `--auto` typed and no mark exists yet.
 
-**Refuse to start** unless all five hold, and say which failed:
+**Refuse to start** unless all five hold, and say which failed. Four of them were
+already read at the end of the sharpening where this run came through planning,
+and they are read again here, for two reasons: the direct route has no
+sharpening and no question, so here is the first time they are read on it; and
+what they read — a gate, a setting, a class — can change between the question
+and the build. The third is read here only, because it needs the tasks to exist.
+A refusal on the planning route also deletes the mark that route wrote, since the
+run ends here:
 
 1. No class in `checks.md` is `empty`. Every one is `filled` or `skipped` with a
    reason. `empty` means undecided, and an undecided check approves nothing.
@@ -1159,10 +1220,35 @@ checks — only the gate differs.
    `Blocking: yes`: a required check that runs nothing would let everything
    through, which is not a gate but the appearance of one.
 
+**Then the mark.** Where this run came through planning, `.claude/unattended.local`
+stands with the commit this run wrote and `build` on its second line; carry on.
+Where it stands with any other commit, another run wrote it — one still going in
+another window, or one that broke off — and this run does not start: say what the
+file holds, that one unattended run per working directory is the rule below, and
+do not delete it, since deleting it would leave that other run reading nothing
+at its next fork. Where it stands with `plan` on its second line, the planning
+that wrote it was told to halt before the build and never cleared its mark; that
+is the same case. The planning stage deletes such a mark instead when it picks
+a plan up, and the difference is who is in the room: there somebody is, here
+nobody may be. Where no mark exists, this is the direct route: write one now,
+with a shell command, since the tree stands on the main branch:
+
+    git fetch -q origin main && mkdir -p .claude && { git rev-parse origin/main; echo build; } > .claude/unattended.local
+
+**And where the mark is deleted**, so that creation and deletion stand in one
+place: at the finishing sentence at the end of this section; at the standstill
+after three rounds in step 6, and at a refused arming there that ends the run;
+at a refusal above, where the run came through planning and wrote a mark that a
+refusal here ends; on the user's word to stop; and at the halt before the first
+build, which the cut does before this section is ever reached. Each of those
+sites says so where it stands. A session that simply ends deletes nothing; the
+planning stage's pick-up rule and the refusal above are what meet the mark it
+leaves.
+
 Then say what this run turns on, in the message that opens it, and keep it in
 the conversation: the scope, what happens to the loose issues already open, the
 sentence that will mean it has finished, and the main-branch commit it starts
-from.
+from — the same commit the mark carries.
 
 **The loose issues belong in that opening message, not in whatever the run meets
 later.** Run the in-flight query before announcing anything, name the ones
@@ -1177,11 +1263,17 @@ scope as the last open task under one spec, never mentioned the three loose
 issues standing open beside it, closed the spec, reported that nothing was left
 and halted.
 
-**None of it goes into a file.** Nothing on disk reads such a file — no hook
-watches for an unattended run — so one written here is read only by the run that
-wrote it, which is bookkeeping in the coat of a safeguard. Measured on 6 and 7
-September 2026: a run kept exactly that file across three tasks and raised its
-own limit in the same write, and nothing anywhere noticed.
+**None of it goes into a file — not the scope, not the sentence, not a count.**
+No hook watches for an unattended run, so a file of that kind is read only by
+the run that wrote it, which is bookkeeping in the coat of a safeguard. Measured
+on 6 and 7 September 2026: a run kept exactly that file across three tasks and
+raised its own limit in the same write, and nothing anywhere noticed. **The mark
+is the one file this mode writes, and it is not that kind**: it bounds nothing
+and enforces nothing, it answers a question the run cannot re-derive later —
+which mode it is in, and how far it may go — and it is read at every fork by
+parts of the run that did not write it in the same breath: the build after the
+planning, the subagent inside the build, the next session that finds it. What a
+run may not be is the reader of its own limit; the mark carries no limit.
 
 **There is no ceiling on how many tasks this run may finish.** What ends it is
 that step 2 has nothing left to take, and that is **two** conditions, both of
@@ -1221,7 +1313,8 @@ pull request stays armed, and step 7 queries with it still open.
 
 **One unattended run per working directory.** Two share a checkout and a main
 branch and neither sees what the other is building. Same constraint that already
-allows only one build task at a time, not a second one.
+allows only one build task at a time, not a second one. The mark is what makes
+it checkable: a second run finds the first one's and does not start.
 
 **A `.claude/autorun.local.md` lying about is stale, not an instruction.** An
 earlier version of this stage wrote one, and it carries a standing instruction to
@@ -1229,12 +1322,15 @@ keep taking tasks. Nothing writes it now and nothing ever read it. Delete it, sa
 that you did, and take the scope from this conversation.
 
 Emit the finishing sentence only when it is completely and unambiguously true —
-never to get out of the loop.
+never to get out of the loop. Then delete the mark with a shell command and say
+so: the unattended part is over, and a mark left standing would make the next
+run refuse to start.
 
 Tell the user how to read the diffs afterwards, from the commit named at the
 start to the current main branch, and how to stop the run — which is a message
-from them. If the session itself is gone, the merged pull requests cover the same
-ground.
+from them, and on which the mark is deleted too. If the session itself is gone,
+the merged pull requests cover the same ground, and the mark it left is met by
+the rules above.
 
 ---
 
