@@ -3276,6 +3276,567 @@ the size of the work.
   say so. The two questions above stay undecided. The branch
   `task/unattended-mark` still carries no build.
 
+- **The first planning run alone, measured on 14 September 2026 in
+  `devloop-test-o` — the first run on 0.100.0, five findings, and two places
+  where the wording is the user's to settle before anything is built.** The
+  user gave an idea, answered three questions in Stage 1 and chose to let the
+  run carry on alone. What followed ran without them: four drafts, a checking
+  agent against each, three revision rounds on the recommended draft, the spec,
+  a cut into two tasks, the build, the review, the merge, and then four loose
+  issues raised in the review taken up in turn. Six pull requests landed, the
+  tracker was empty at the end, and the mark was deleted and said. The checking
+  agents earned their place: draft 4 broke two facts about the existing code,
+  draft 2 two structural assumptions, and against the recommended draft the
+  agent found four gaps one after another, two of which would otherwise have
+  surfaced in the build.
+
+  **1. A block from outside the five preconditions stopped the run.** Claude
+  Code's auto mode classed `go test ./cmd/dirstat/... ./internal/snapshot/...`
+  as `Irreversible Local Destruction`, blocked three calls in a row and asked
+  for an approval. The user was there and gave it. Alone, the run would have
+  stood there. A test run deletes nothing.
+
+  *Today:* `build-work:1192` to `:1193` — the fourth precondition, "The tool
+  classes the run needs are already approved for this project. A run nobody is
+  watching cannot answer a permission prompt", read again at `plan-work:462` to
+  `:463` before the question at the end of Stage 1; `docs/skill-conventions.md:995`
+  to `:998`, "Tool classes can be pre-approved per project, which is what makes
+  an unattended run possible … They must be granted before the run"; and the
+  block in twelve byte-identical copies, `build-work:117` to `:118` among them,
+  "That a permission prompt appeared at all is a finding in itself: the tool
+  classes the run needed were not all approved before it started". Every one
+  of them reads a prompt as a grant that is missing. What stopped this run was
+  a second model. Read on 14 September 2026 at
+  `code.claude.com/docs/en/security`: "In auto mode, a separate classifier
+  model reviews actions instead of you and blocks the ones it judges unsafe."
+  And at `code.claude.com/docs/en/permission-modes`, the same day, what it
+  holds against: the list under "What the classifier blocks by default"
+  carries "Irreversibly destroying files that existed before the session", and
+  "In most sessions the reason names the rule the classifier matched, such as
+  `[Data Exfiltration]`, rather than giving a written explanation" — which is
+  the label this run saw, with nothing under it. The three blocks in a row are
+  not an accident of this run either: "if the classifier blocks an action 3
+  times in a row or 20 times total, auto mode pauses and Claude Code resumes
+  prompting", and that prompt is what the run met. The five preconditions read
+  whether a grant stands. None of them can read what a second model will make
+  of a command it has not seen yet, and the workflow cannot write the grant in
+  any case — `setup-project:302` to `:305`, "the permissions file belongs to
+  the tool, not to this project, and writing it is refused — measured, not
+  assumed: a run tried and was blocked by the platform's own classifier". The
+  nearest record of the classifier in this file, `docs/roadmap.md:148` to
+  `:152`, is about the arming mutation, and `docs/skill-conventions.md:940` to
+  `:948` says that measurement is no longer one to lean on; neither is about a
+  check command.
+
+  *Should:* this is recorded as the hardest limit of the unattended mode, and
+  as one the workflow can do nothing about: a judgement made at run time by a
+  model the skills cannot see, over a command they cannot pre-approve, landing
+  as a prompt nobody is there to answer. What the user can do is on the same
+  two pages, and it belongs where the mode is offered and where the check
+  commands are named as something to grant:
+
+  - **A narrow allow rule per check command keeps the classifier off it.** The
+    decision order under "How the classifier evaluates actions": "Actions
+    matching your allow, ask, or deny rules resolve immediately", and on
+    entering auto mode "broad allow rules that grant arbitrary code execution
+    are dropped" — blanket `Bash(*)`, wildcarded interpreters, package-manager
+    run commands — while "Narrow rules like `Bash(npm test)` stay in effect".
+    `setup-checks:320` to `:326` already names the check commands as something
+    to grant, with "always allow" or `/config` as the two ways. What it does
+    not say is that the rule has to be narrow to survive auto mode, and why.
+    Which rule stood in `devloop-test-o` for `go test` is not recorded here, so
+    this entry does not settle whether the grant was missing or had been
+    dropped as broad.
+  - **When it happens anyway:** the blocked action is listed under
+    `/permissions`, tab "Recently denied", "where you can press `r` to retry it
+    with a manual approval"; `/feedback` is where a false positive goes, and
+    "Repeated blocks usually mean the classifier is missing context about your
+    infrastructure".
+  - **In a session that cannot prompt it is worse, not better.** "a
+    non-interactive `-p` run without a `--permission-prompt-tool` has no prompt
+    to fall back to. When repeated blocks reach a threshold, the action doesn't
+    run and Claude keeps working." A check command that does not run, in a run
+    that keeps working, is the case the twelve copies were written against —
+    "Where nobody is there to hear it, the run does not carry on past it
+    either" — and it arrives without a prompt, so the block that names it never
+    fires. Whether the hooks' own runs of the chain go past the classifier is
+    not measured: the page names tool calls as what it reads, and a hook is
+    not one.
+
+  **2. The wrong review was loaded first, for the second time.** Before the
+  review of task 62 the run loaded `code-review:code-review`, with seven
+  pre-approved tools, and corrected itself to `devloop:review-changes`. The
+  same happened on 13 September 2026 before the review of task 47 and was not
+  recorded then: `grep -rn "code-review" docs/roadmap.md` finds only the name
+  under "Names that were rejected". By `record-lessons:102` the second time is
+  the pattern.
+
+  *Today:* `build-work:664` — "Run `review-changes` on the diff." — names the
+  skill bare, without the plugin's prefix, under a heading that reads `## Step
+  4 — Review it` at `:662`. The harness lists `code-review:code-review`, "Code
+  review a pull request", beside `devloop:review-changes`, "Review a change
+  from several angles at once", and the foreign one carries the word the
+  heading uses. The sentence under "Names that were rejected" in this file —
+  "Never reuse the names of skills Claude Code ships: `doctor`, `code-review`
+  …" — is the nearest rule, and it held: the name was not reused. It is a rule
+  about naming, and it says nothing about which of two names a call site
+  reaches. The prefix stands in the set at five places — `start-work:305`,
+  `untangle-idea:472` and `:574`, `README.md:39` and `:106` — every one of them
+  the command a person types, and at no call from one skill to another.
+
+  *Should:* a call from one skill to another names the skill the way the
+  harness lists it, prefix included — `devloop:review-changes` — and this site
+  says that the review skill Claude Code ships is not the one meant. Whether
+  every call site takes the prefix or only the ones with a shipped neighbour is
+  left to the list under the searches below, which names them all. The rule,
+  either way, belongs in `docs/skill-conventions.md` beside "Never say a
+  skill's name to the user" at `:24` to `:26`, which is about the person and
+  says nothing about the call.
+
+  **3. The standards file of the test project is empty after two dozen landed
+  pull requests.** `docs/agents/standards.md` in `devloop-test-o` says there is
+  no code from which rules could be derived, while the repository carries over
+  a thousand lines of Go.
+
+  *Today:* the gap is already recorded, two entries up, from the run of 11 to
+  13 September: the same failure picture three times out of the review, fixed
+  three times separately; the rule at `record-lessons:102`, "It happened a
+  second time … two is a pattern", and the destination at `:115`,
+  `docs/agents/standards.md`; the lock at `record-lessons:4`,
+  `disable-model-invocation: true`; and its ground at
+  `docs/skill-conventions.md:1080` to `:1082`, "No other skill runs either of
+  them, so locking them costs nothing", which is the sentence a build loop with
+  something to hand over falsifies. That entry is recorded and not built, and
+  this run is its second measurement. What is new is the file's own sentence.
+  It is the template's: `setup-project:712` to `:713`, "If you find none, write
+  that down — empty is more honest than invented", written at setup when the
+  repository had no code, and no later step revisits it — the refresh at
+  `start-work:25` "touches nothing the project decided for itself",
+  `review-changes:37` and `:151` read the file and never write it, the build
+  subagent is handed its path at `build-work:460` to `:461` and never writes it
+  either, and the one writer is the skill nothing calls. So the file records
+  the state at setup and asserts it as the state now, which is
+  `docs/skill-conventions.md:158`, "Never assert state — query it", one level
+  up: a document nobody re-queries.
+
+  *Should:* what should hold so that a recurring failure picture lands there,
+  in three sentences. The close of the review — where each finding is announced
+  under fix or file, `build-work:692` and `review-changes:284` — carries a third
+  duty, not a third way out: a finding announced as the second of its kind in
+  this run is written as one rule into `standards.md` in the same change as its
+  fix, and before the fix, so that the next build reads the rule and the next
+  review reads a breach of a written rule rather than judging sameness a third
+  time. The threshold and the destination are `record-lessons:102` and `:115`,
+  said again where the close is, since `docs/skill-conventions.md:1095` to
+  `:1098` says a locked skill cannot be run by another and the alternative —
+  taking the lock off — puts the description into every session's context for
+  the sake of one call; `record-lessons` stays the typed command for what a
+  person notices, and the two lines then stand in two places, which by the
+  entry above on unheld copies owes its guard in the same change. Two things
+  the repair has to know: the check at `docs/skill-conventions.md:1203` prints a
+  line for a locked skill named in backticks by another file, so the close
+  says the rule and not the skill's name; and what stays open is what the
+  entry above left open, narrowed by one step — two findings are "the same" by
+  a judgement once, at the second, and never again after the rule is written,
+  and where that one judgement is kept when the two findings sit in different
+  tasks is not settled here.
+
+  **4. The questioning in Stage 1 closed after one round of three questions.**
+  The idea: a tool that remembers what it saw of a directory tree on its last
+  run and says, the next time, what has changed. Asked: where the last state is
+  kept, what counts as a change, and what is reported as changed. The user
+  answered briefly and without a question back, and the run read that as
+  nothing important left open.
+
+  At least six questions the idea raises were never put: whether directories
+  that appeared or vanished count as changed; what holds when the same tree is
+  scanned with different options than last time, another exclusion list say;
+  what holds when a tree was moved or renamed and the key hangs on the absolute
+  path; how old a stored state may be before it is useless; whether the state
+  is overwritten on every run or an older one can be compared against; and
+  what happens after a run that broke off. The second and the third pass the
+  test under "How to ask" at `plan-work:207` to `:228`: only the user can answer
+  them, and being wrong is expensive. The second the checking agent found on
+  its own, later, as a filter change reported as a removal, and it cost two of
+  the three revision rounds on the draft. Four of the six are children of the
+  three that were asked — not askable before those answers, never asked after
+  them, because no second round came.
+
+  *Today:* `plan-work:359` to `:366` — "Map the open decisions as a tree. Each
+  round, settle what you can settle yourself and say so in one line, then ask
+  what is left … Say roughly how many rounds you expect. Then wait. The answers
+  open the next round. Done when nothing important is open, the hard core of
+  the user stories and of what is out of scope is written down, and no
+  question is left whose answer somebody has to see something to give. Those
+  three are what 'the idea stands' means everywhere in this file." The first
+  condition is the run's judgement of importance, and a run that had asked
+  three questions passed it. The sentence stood alone — "Done when nothing
+  important is open.", at `:263` of the file at `4358ead`, from 22 August 2026
+  — and gained its two companions on 14 September in the change that let
+  planning run alone, so the sentence that ends Stage 1 is now the sentence
+  that hands the run over. `README.md:52` to `:57` describes the stage to a
+  person the same way and says nothing about when it ends.
+
+  **The mechanism that ends on a state rather than on a judgement is already in
+  the set, in the other skill that interviews.** `untangle-idea:283` to `:288`
+  — "Work the tree in rounds. The frontier is every decision whose
+  prerequisites are already settled — the questions answerable now, without
+  guessing at answers you haven't heard yet. Ask the whole frontier in one
+  round, then wait. A question whose answer depends on another question still
+  open in this round belongs to a later round, not this one." And `:344` to
+  `:346` — "The interview is done when the frontier is empty: every branch of
+  the tree visited, nothing left silently assumed. Do not act on it until the
+  user confirms you have reached a shared understanding." Written on 19 August
+  2026, adapted from Pocock's `wayfinder`, and it is his `grilling` nearly to
+  the word — read on 14 September 2026 at `github.com/mattpocock/skills`,
+  `skills/productivity/grilling/SKILL.md`, to which his `grill-me` delegates in
+  one line: "Work the tree in rounds. The frontier is every decision whose
+  prerequisites are already settled … The session is done when the frontier is
+  empty: every branch of the design tree visited, nothing left silently
+  assumed." Its page, `www.aihero.dev/skills-grill-me`, read the same day, says
+  what a session looks like: "Forty-six questions across four rounds" as
+  ordinary, and "Questions arrive in a few rounds rather than one long drip,
+  and later rounds clearly build on what you said earlier" — rounds are what is
+  counted, not questions. `docs/roadmap.md:35` to `:38`, this file, says
+  `interview`, Pocock's `grilling` verbatim, is "written out in `plan-work` and
+  `untangle-idea` rather than delegated to, deliberately" and "will not be
+  built". Written out in both, then, and in one of the two the end is the
+  frontier's emptiness while in the other it is the run's judgement of
+  importance. The measured run went through the second.
+
+  What `plan-work` keeps that `grilling` does not have is the cap:
+  `plan-work:368` to `:376`, "At most three questions in a round", from 20
+  August 2026 and measured, where `grilling` asks the whole frontier at once.
+  The two do not conflict — the cap changes how many rounds a frontier takes,
+  not when the stage ends — but under it a round and the frontier come apart:
+  a round of three out of a frontier of seven leaves four questions askable
+  now, and "the answers open the next round" then has to mean the rest of the
+  frontier before anything the answers unlock. The same pair stands in
+  `untangle-idea` today, "Ask the whole frontier in one round" at `:286` and
+  the cap at `:290`, four lines apart and unmeasured.
+
+  *Should:* Stage 1 asks in rounds; a round is the set of questions answerable
+  now — every prerequisite settled, at most three of them — and the stage ends
+  when that set is empty, not when the run sees nothing important left. That
+  is the answer to how the end is established without a number the run keeps
+  against itself, which the entry above on the removed ceiling says a run may
+  not be the reader of: a state and not a count. Whether a question hangs on
+  an unanswered one is a fact about the tree that anybody holding the tree can
+  check, and nothing is counted. **Open: whether the first of the three
+  conditions of "the idea stands" — nothing important open — is replaced by
+  the empty frontier or stays beside it.** For replacing it: "important" is the
+  judgement that just let three questions through. For keeping it: the
+  frontier is only as complete as the tree the run drew, and "nothing important
+  open" is the one sentence that asks the run to look for a branch it has not
+  drawn. Confirmed from outside, and already decided here: a question that
+  needs something to look at ends the grilling and is answered through a
+  throwaway — `plan-work:389` to `:401`, `untangle-idea:339` to `:342`, and the
+  page says "stop grilling. Build the throwaway version … then come back and
+  answer in one line"; and a scope too large is cut first and grilled piece by
+  piece — `start-work:225` to `:231`, "too large to see the end of … start
+  mapping", and the page says "break the work into smaller pieces first, then
+  grill each one". The recommended answer with every question, and facts looked
+  up rather than asked, stand at `plan-work:360` to `:361` and `:380` to `:382`
+  already.
+
+  **5. The four conditional lenses have a trigger each, and no list of what
+  they look for and none of what they leave alone.** `review-changes:218` to
+  `:222`: Security — "any input from outside, credential, permission, file
+  path, or anything reaching a network or a database"; Data migration — "any
+  schema or stored-format change"; Test quality — "any test added or changed";
+  Failure behaviour — "any error handling, fallback value, or default return".
+  Each says when it runs; `:181` to `:182`, "if the diff contains it, the lens
+  runs". None says what it looks for.
+
+  *Today:* the two fixed lenses have the list — Standards at `:151` to `:155`,
+  eleven items from dead code to interfaces that force the caller to know how
+  they work inside, and Spec at `:165` to `:168`, five, with the reading of the
+  guarded conditions at `:170` to `:177` — and the one exclusion in the file
+  stands under Standards alone, `:157` to `:159`, "Skip anything a tool already
+  enforces". `:226` gives each subagent "only its own lens and the diff", so a
+  conditional lens's subagent gets one line, its trigger, as the whole of its
+  brief. `:250` to `:251` fixes the report to findings worst first and the
+  single worst named, and `:262` to `:263` — "If a lens found nothing, say that
+  lens found nothing. That is a result, not an absence" — is the sentence the
+  entry above on the fallen lens, 13 September, already found says the
+  opposite of what a section with nothing in it has to contain, leaving "what
+  the lens read, against what, and what it looked for" as what should hold.
+  `:187` to `:197` fixes the form of what may be said about a lens that did
+  not run, the trigger's own words negated item by item; nothing fixes the
+  form of what a lens that did run says.
+
+  Read against two primary sources on 14 September 2026. Anthropic's
+  `/security-review`, `github.com/anthropics/claude-code-security-review`, file
+  `.claude/commands/security-review.md`, names categories and no trigger:
+  input validation — SQL, command, XXE, template and NoSQL injection, path
+  traversal; authentication and authorisation — bypass, privilege escalation,
+  session flaws, JWT, authorisation logic; crypto and secrets — hardcoded keys,
+  weak algorithms, key storage, randomness, certificate validation; injection
+  and code execution — deserialisation, pickle, YAML, eval, XSS; data exposure
+  — sensitive data logged or stored, PII, endpoint leakage, debug information.
+  It carries seventeen hard exclusions, among them: lack of hardening
+  measures; theoretical race conditions or timing attacks; outdated
+  third-party library vulnerabilities; memory safety issues; unit test or
+  test-only files; log spoofing; denial of service; input validation on
+  non-security-critical fields without proven impact. And it fixes what every
+  finding carries: "file, line number, severity, category, description,
+  exploit scenario, and fix recommendation". Pocock's `/code-review`,
+  `www.aihero.dev/skills-code-review` dated 24 August 2026 and
+  `skills/engineering/code-review/SKILL.md` in his repository, has two axes,
+  standards and spec, one subagent each, never merged and never re-ranked —
+  the same two this skill runs always — with a fixed baseline of twelve smells
+  under standards even where the repository documents nothing, and every
+  finding cites its ground: a standards finding "the standard (file + the
+  rule)" or the smell "and quote the hunk", a spec finding "Quote the spec
+  line". The four conditional lenses have no counterpart there; this skill is
+  wider. And neither source re-checks its subagents: Pocock's aggregates
+  "verbatim or lightly cleaned", and his page says so as the cost.
+
+  From the runs themselves: the security lens reported no findings throughout
+  13 and 14 September, on a package that builds file paths from an environment
+  variable, reads JSON from disk and writes a file among them. That can be
+  true. It is also the pattern a lens without criteria produces. And on 14
+  September a lens reported "no findings" without having run, noticed only
+  because three neighbours had found something — the shape recorded on 13
+  September, now for the second time.
+
+  *Should:*
+
+  - **Every conditional lens gets a list of what it looks for, as the two fixed
+    ones have.** For security, Anthropic's categories are the source. For data
+    migration, test quality and failure behaviour there is no outside source;
+    they are written on the pattern of the standards list at `:151` to `:155`.
+  - **Every lens gets a list of what it leaves alone**, and the list's second
+    purpose is said with it: to keep noise down, so that not every defect that
+    can be imagined gets reported. Today that is one sentence, under Standards.
+  - **Every finding names what it stands on** — file, line, and the lines of
+    the diff that carry it — and a lens that finds nothing names what it read.
+    The ground: both comparison sources take their subagents at their word,
+    and on 14 September a lens said "no findings" without running, caught only
+    by comparing neighbours. A report carrying its site is distinguishable from
+    a placeholder on its own, which is what the 13 September entry asked for —
+    "fixed to something the report itself has to carry" — and the two are one
+    change. The shape is already in the set for drafts and not for lenses:
+    `plan-work:519` to `:528` hands each checking agent the lists and takes back
+    "three lists, item by item … every answer in the words of the item, so
+    anyone holding the list can check it against the draft".
+
+  **Two places the user sees, whose wording is settled with them before
+  anything is built.**
+
+  - **The three answers at the end of Stage 1 explain the mechanics and not how
+    they differ for the user.** `plan-work:427` to `:437`: what is read,
+    drafted, written, cut, built and merged under each. The user proposed a
+    version that separates them by presence: full flexibility — everything is
+    built to a finished solution without them; planning runs without them and
+    they can look at it once more before the build, from there on like the
+    first; full control — everything is put to them and they decide. That
+    answers `docs/skill-conventions.md:338` to `:342`, "what each answer means
+    in practice", by a different property than the current text does, and
+    `:396` to `:399`, "Describe what must be said; never dictate wording",
+    holds over it: what changes is what each answer has to cover. The three are
+    named in four places — `plan-work:427` to `:437`, `start-work:318` to `:321`,
+    `setup-checks:613` to `:616` in the cost list at the offer, and
+    `README.md:118` to `:123` — and the costs said with them at `plan-work:439`
+    to `:445` stay.
+  - **Nothing at the start of a session says how the whole thing runs**: what
+    comes, where the user is asked and where not, and how they will notice
+    that it has gone on. The build has one — `build-work:1248` to `:1251`, "say
+    what this run turns on, in the message that opens it": the scope, the
+    loose issues, the finishing sentence, the starting commit. Planning has
+    none, and the question at the end of Stage 1 has made the gap larger. **A
+    rule stands against it and has to be answered before a word is written:**
+    `start-work:45` to `:48`, "Name no stages. Not sharpening, designing,
+    speccing, cutting, building or reviewing, and no counts of anything. A list
+    of what is coming reads as a process to learn, which is the opposite of the
+    promise just made", `setup-project:242` to `:246` the same at the second
+    entrance, and `README.md:21` to `:25`, whose "Every decision point announces
+    itself" is a promise per decision and not a map. What is asked for is not
+    the list those forbid. It is where the user is needed and where not, and
+    the two sentences do not tell the two apart. Whether that can be said
+    without becoming the process to learn is the wording question, and it is
+    theirs. The four-sentence introduction at `start-work:34` to `:43` runs
+    only where the project is not yet set up; on a set-up project the session
+    opens with no introduction at all.
+
+  **Searched by subject, seven times, against the tree at `e09fa80`. Nothing
+  was changed: this entry records, and decides nothing about the text, so each
+  place is named with the change it would take or the reason it takes none.**
+
+  Where a permission stands in for the mode's ability to run — finding 1:
+  `grep -rn "approved before it started\|already approved\|are approved for
+  this project\|pre-approved\|permission prompt\|classifier" skills/*/SKILL.md
+  hooks/ README.md docs/skill-conventions.md` — 37 lines.
+
+  - **Twenty-four of them the twelve byte-identical copies of the
+    permission-prompt block**, two lines each — `build-prototype:90`,
+    `build-work:117`, `cut-into-tasks:117`, `diagnose-bug:98`, `plan-work:109`,
+    `record-lessons:92`, `research:100`, `review-changes:132`,
+    `setup-checks:113`, `setup-project:91`, `start-work:220`,
+    `untangle-idea:101`, each with the line after it. Held by the check at
+    `docs/skill-conventions.md:1268`, whose anchor is the same sentence and is
+    the 37th line. All twelve read a prompt as a missing grant. Were the Should
+    built, the sentence would gain its second reading — a granted command a
+    second model refused — as one change to twelve files under that checksum.
+    Not changed.
+  - `build-work:1192` to `:1193` and `plan-work:463` — the precondition, read
+    twice. No change: it reads the grant, which it can, and what it cannot read
+    is named here rather than there.
+  - `setup-checks:618` — the cost list at the offer, "a permission prompt,
+    which nobody is there to answer, which is why the kinds of command it needs
+    have to be approved before it starts". This is where the limit is told to
+    the user, and it is the co-change: the limit, and what they can do.
+  - `setup-project:305` — the classifier blocking a write to the permissions
+    file. A dated measurement about a different command; no change.
+  - `docs/skill-conventions.md:261` to `:262` — the general form of the prompt
+    as a finding, the same reading as the twelve; changes with them.
+  - `docs/skill-conventions.md:941` to `:946` — the classifier on the arming
+    mutation. Dated, outside the rule.
+  - `docs/skill-conventions.md:995` to `:998` — pre-approved tool classes make
+    the mode possible. Gains the qualification that granted is not the same as
+    passed; the co-change one level out.
+  - `hooks/` — nothing. `grep -n "permission\|classif" hooks/*` is empty: no
+    hook sees a permission decision, and none could.
+
+  Not reached by the search and named from reading: `setup-checks:320` to
+  `:326`, where the check commands are named as something to grant — the site
+  where "narrow, and why" would be said.
+
+  Where one skill reaches another by name — finding 2:
+  `grep -rn "\`review-changes\`\|code-review" skills/*/SKILL.md hooks/ README.md
+  docs/skill-conventions.md` — 6 lines. `build-work:664` is the call and the
+  co-change. `build-work:680`, `plan-work:522`, `docs/skill-conventions.md:61`,
+  `:748` and `:1087` name the skill without calling it; no change. The naming
+  rule under "Names that were rejected" is unchanged and named because it is
+  the rule that looks as if it covered this. The prefix: `grep -rn "devloop:"
+  skills/*/SKILL.md hooks/ README.md docs/skill-conventions.md` — 9 lines, five
+  the typed command, listed above; two the version marker, `start-work:19` and
+  `setup-project:222`; two the status line, `hooks/session-start.sh:7` and
+  `:14`. None a call. The calls themselves have no one string, so they were
+  reached by reading each skill for where the Skill tool is used: sixteen
+  sites — `start-work:231`, `:238`, `:247` to `:262`; `plan-work:38`, `:381`,
+  `:397`, `:623`; `untangle-idea:213`, `:315`, `:382`; `cut-into-tasks:295`;
+  `setup-project:834`; `build-work:350`, `:477`, `:664`. Of the sixteen, the
+  one whose target has a neighbour sharing a word in the harness's list on 14
+  September 2026 is `:664`; `debug`, on that list against
+  `diagnose-bug`, was not in the harness's list that day. Whether the
+  prefix goes to all sixteen or to the one is the open half of the Should.
+
+  Where a lesson is meant to land — finding 3: the two searches of the entry
+  from 13 September, re-run. `grep -rn "standards.md" skills/ hooks/ docs/
+  README.md` — 16 lines against ten then, the six new ones all in
+  `docs/roadmap.md` at `:2548`, `:2677`, `:2702`, `:2707`, `:2711` and `:2716`,
+  which are that entry and the one before it; the ten sites in the skills and
+  in this file are unmoved, and the reading given there holds for each. `grep
+  -rni "second time\|three times\|same defect\|a pattern" skills/ hooks/
+  docs/skill-conventions.md README.md` — 31 lines against 29: twelve the shared
+  block, the two rule sites unmoved at `record-lessons:102` and
+  `docs/skill-conventions.md:458` to `:460`, the rest measurements, or rules on
+  another subject that match on the wording alone — `start-work:75` and
+  `build-work:1047`, arming a second time — at lines shifted by the changes
+  since. New from reading:
+
+  - `setup-project:712` to `:713` — the template's sentence. Right at setup;
+    named because it is what the file still says.
+  - `start-work:25` — the refresh; no change.
+  - `build-work:460` to `:461` — the subagent is handed the control documents'
+    paths; no change, and the reason a rule written there reaches the build.
+  - `build-work:692` and `review-changes:284` — the close, where the third duty
+    would stand: the co-change, in two files, byte-identical today and held by
+    nothing, as recorded above.
+  - `docs/skill-conventions.md:1080` to `:1082` — the ground of the lock,
+    false either way the repair goes: the co-change.
+  - `docs/skill-conventions.md:1095` to `:1098` — a locked skill cannot be
+    called; the reason the lock stays.
+  - `docs/skill-conventions.md:1195` and `:1203` — the invocability checks; the
+    second prints a line the day another file names `record-lessons` in
+    backticks.
+
+  Where the end of Stage 1 is stated — finding 4: `grep -rn "idea
+  stands\|nothing important\|frontier\|next round\|rounds you expect\|rounds
+  are left\|last round" skills/*/SKILL.md hooks/ README.md
+  docs/skill-conventions.md` — 34 lines.
+
+  - `plan-work:362` to `:366` — the sentence; the co-change. `:407`, "Before
+    the last round closes" — the last round becomes the one that empties the
+    frontier, and the words stay. `:417`, "only where the idea stands by the
+    three conditions above" — reads the definition; changes only if the first
+    condition is replaced. `:275`, "Planning runs alone from the point where
+    the idea stands" — no change, the definition moves under it.
+  - `start-work:271` and `:309`, `setup-checks:611`, `setup-project:333` — "the
+    idea stands" as the boundary, said to a person or read as the fence. No
+    change; they point at the definition.
+  - `README.md:53` — the stage described to a person, with "an estimate of how
+    many rounds are left" and no end. A co-change if the end is said there.
+  - `untangle-idea:284`, `:286`, `:300`, `:312`, `:314`, `:344` — the
+    interview, the source wording. No change, and after the change the two
+    stages are a near-pair held by nothing, which is the finding above on the
+    eight unheld blocks with a ninth. The other fifteen lines in
+    `untangle-idea`, `:208` to `:596`, are the frontier of the map — tickets,
+    not questions — the same word on another subject. `build-work:1075` to
+    `:1076` — rounds against the platform's checks; another subject.
+  - `plan-work:368` and `untangle-idea:290` — the cap, in two copies held by
+    nothing, recorded above. The co-change in `plan-work` says the cap bounds a
+    round and not the frontier; `untangle-idea` carries the same tension four
+    lines apart today.
+  - `docs/roadmap.md:35` to `:38` — a status claim, not a measurement, and
+    the one line of this file the repair reaches: it becomes exact where today
+    it reads as if the same interview stood in both.
+
+  Where a lens is told what to look for and what to report — finding 5:
+  `grep -rn "lens" skills/*/SKILL.md hooks/ README.md docs/skill-conventions.md`
+  — 50 lines, 34 of them in `review-changes`.
+
+  - `review-changes:218` to `:222` — the co-change. `:151` to `:159` — the
+    pattern and the one exclusion; no change. `:226` — no change in words, its
+    content grows. `:250` to `:251` — the report gains the site each finding
+    stands on. `:262` to `:263` and `:245` to `:246` — the repair the 13
+    September entry already names; one change with this one. `:187` to `:197` —
+    the form for a lens not run; no change, and it is the model for the form.
+  - `build-work:589`, `:612`, `:673` to `:674`, `:680`, `:774` to `:775` — what
+    the lenses read, referred to from the build. No change; `:673` is the one
+    that leans on a criterion by its content, and it shows what a list buys: a
+    sentence elsewhere can stand on it.
+  - `plan-work:523` — the checking agents; no change, and the argument.
+  - `README.md:88` to `:91` — the six lenses to a person; no change unless the
+    criteria are said there.
+  - `docs/skill-conventions.md:59` to `:67` — the definition of a lens: who
+    reads, not what for. No change. `:748` — dated.
+  - `hooks/` — nothing reads a review.
+
+  Second, the sentences on nothing found and on what a tool enforces: `grep
+  -rn "found nothing\|no findings\|No findings\|tool already enforces\|Skip
+  anything" skills/*/SKILL.md hooks/ README.md docs/skill-conventions.md` — 5
+  lines: `review-changes:157`, `:255`, `:262`, named above; `build-work:374`, a
+  query and another subject; `setup-project:712`, the same exclusion at the
+  standards file's birth, unchanged. Third, the form: `grep -rn "item by item"
+  skills/*/SKILL.md docs/skill-conventions.md` — 3 lines, `plan-work:523`,
+  `review-changes:189`, `docs/skill-conventions.md:563`, every one of them a
+  checkable answer asked for by the item; no change, and the shape the third
+  part of the Should takes.
+
+  Where the three answers are named — the first user-visible place: `grep -rn
+  "Carry on alone\|carry on alone\|Plan alone\|plan alone\|halt before the
+  first build\|\*\*Stay\.\*\*\|or stay" skills/*/SKILL.md hooks/ README.md
+  docs/skill-conventions.md` — 12 lines. The four places named above,
+  `plan-work:427`, `:432`, `:436`, `start-work:320`, `setup-checks:614` to
+  `:615`, `README.md:119` to `:120` — the co-change, together. `plan-work:350`,
+  `build-work:1230` and `:1242`, `cut-into-tasks:298` — the halt as an exit of
+  the mark; the same words on another subject, no change.
+
+  Where the opening of a session is governed — the second: `grep -rn "Name no
+  stages\|name no stages\|what is coming\|message that opens\|opening
+  message\|announces itself\|tells you where you are\|Say what happens
+  next\|say what happens next" skills/*/SKILL.md hooks/ README.md
+  docs/skill-conventions.md` — 10 lines. `start-work:45` to `:46` and
+  `setup-project:242` and `:245` — the rule against, named above.
+  `README.md:21` and `:24` — the promises. `build-work:1248` and `:1253` — the
+  build's opening message, the model. `start-work:230` and `setup-checks:684` —
+  "say what happens next in one line", the per-step form that exists, one line
+  at the step, which is what stands where a map would; no change to any of
+  them until the wording is theirs.
+  Recorded, not built.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
