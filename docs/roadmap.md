@@ -2531,6 +2531,311 @@ the size of the work.
   rather than in the split.
   Recorded, not built.
 
+- **The unattended run put the landing question to the user, measured on 13
+  September 2026 in `devloop-test-o`.** The first unattended run on 0.99.0. At the
+  end of the task the check chain was green and all five preconditions had been
+  checked and named, and the run asked whether this should land instead of
+  landing.
+
+  It was started with `--auto`. It refreshed the setup files to 0.99.0 first, and
+  that piece of work went the whole way by itself: armed, waited for the checks in
+  the same answer, proved the merge at the platform and carried on with nobody
+  touching it. Then it read all five preconditions and said each one, announced
+  the scope and the main-branch commit it started from, built issue 56, had four
+  lenses read it, fixed three mechanical findings and ran a second round over the
+  fix-up commit. Then the question. Told no, it raised a push notification and
+  waited. On an explicit instruction it opened the pull request, armed it, waited
+  blocking, proved the merge, cleaned up and checked that the issue had closed.
+
+  *Today:* `build-work:1107` under `## Unattended mode` — "`--auto` replaces the
+  user's approval with a green check suite. Same stages, same checks — only the
+  gate differs." The gate it names is two sentences of step 5: `:705`, "**This
+  is the gate.** It is the one place in the loop where a human decides whether
+  work lands", and `:711`, "In unattended mode the check suite is this gate
+  instead — the gate is replaced, never removed". And the section on the counter
+  at the end of a round already records why the difference has to be drawn in
+  words at all: `:590`, "There is no mark of an unattended run for it to find
+  either — `--auto` is a word typed to a skill, not a flag the harness passes
+  down, and nothing on disk records the mode. So the difference is drawn here, in
+  the text". `docs/skill-conventions.md:1048` states the same one level out, about
+  hooks in general: "an unattended run is this workflow's own idea rather than a
+  state of the harness — the word that starts one is typed to a skill and never
+  reaches the process."
+
+  **What neither of them asked is how far those words have to carry.** Both are
+  written about a hook's message and the sentence answering it, and there the
+  answer stands three lines under the question, inside one section, read in one
+  breath. The landing question sits at the other end of the run. Between the typed
+  word and it, this run passed through several skill loads, a build subagent with
+  a fresh context, four review subagents and a second review round — and what it
+  arrives at is the ordinary case of the same file, written out in full at `:693`
+  with both its answers and a paragraph at `:705` saying why it is the gate,
+  against one sentence eighteen lines further down that replaces it.
+
+  *Should:* what a run knows its mode by at the point of landing is not a word
+  from the beginning of the session. A difference drawn in the text does not carry
+  that far, and what is needed is a mark the run lays down itself when it starts
+  and reads when it lands.
+
+  **Where that mark lies and who writes it stays open here, and the reason is on
+  this page.** The obvious place is a file, and the entry above on the unattended
+  state file is why that is not a decision to take in passing: the last file this
+  mode wrote was deleted for having no reader, and "the counter would still be
+  written by the run" is recorded there as the reason moving a number into a file
+  changes nothing about who may raise it. What that entry rules out is a bound a
+  run keeps against itself. A mode mark bounds nothing and enforces nothing — it
+  answers a question the run cannot re-derive later — so the objection does not
+  obviously reach it, and whether that difference is enough to make a file the
+  right answer is the open part. Recorded as open, not decided.
+
+  **Two further findings of the same run, neither of them this one.**
+
+  - **The first write went to `main` and the branch guard blocked it.** The branch
+    was cut after that and the work went on. The guard did exactly what it exists
+    for — `hooks/pre-tool-use-branch-guard.sh:32`, "Cut a branch, then do this
+    again" — and the instruction it enforced was already written where the run
+    would have read it: `build-work:418`, the first of the seven things step 3
+    gives the build subagent, "Cuts a branch from the current main branch". The
+    finding is not that the guard fired. It is that the guard was the thing that
+    got the branch cut.
+  - **The run made the three review fixes itself** rather than handing them back
+    to the build subagent, and then ran the second round over the fix-up commit.
+    `build-work:636` — "**Fix now** if the fix is obvious and touches nothing that
+    was decided" — says which findings are fixed rather than filed and says
+    nothing about who fixes them, while `:413` hands the work to a subagent with a
+    fresh context and `:419` puts it test-first at the seams the spec confirmed. A
+    fix made in the orchestrating run is under neither. The second round covered
+    the commit, which is what `:664` asks for, so nothing landed unread. Recorded
+    because the silence is real, not because this run went the wrong way through
+    it.
+
+  **Four things ran in operation here for the first time, all of them built into
+  0.99.0 and none of them seen work until this run.** The wait for
+  the platform's checks in the same answer as the arming; the merge proved against
+  the platform rather than reported; `closingIssuesReferences` read after every
+  merge and the issue checked for having actually closed; and the finish taken on
+  both of its conditions — nothing ready in scope **and** no loose `raised-here`
+  issue — against an empty tracker. The entry above on the post-arming gap records
+  what each of them replaced; this is the first run in which the replacements were
+  exercised end to end, including the refresh of the setup files, which went
+  through the whole of it before the task did.
+
+  **Searched by subject, twice, against the tree at `b90874b`.** The subject is
+  what tells a run which mode it is in at the moment it has to act on the
+  difference, and `unattended` is a wording of it rather than the subject. Nothing
+  below was changed: this entry records a gap and takes no repair, so each place
+  is named with what would hold there.
+
+  First, by the word anyway, to have the whole surface: `grep -rn
+  "[Uu]nattended\|--auto" skills/*/SKILL.md hooks/ README.md
+  docs/skill-conventions.md` — 89 lines.
+
+  - **Twelve byte-identical copies of the block on a permission prompt**, "With
+    nobody there to tell, the report is still written" — `build-prototype:87`,
+    `build-work:114`, `cut-into-tasks:111`, `diagnose-bug:95`, `plan-work:106`,
+    `record-lessons:89`, `research:97`, `review-changes:126`, `setup-checks:110`,
+    `setup-project:88`, `start-work:217`, `untangle-idea:98`. Every one of them
+    forks on the mode and would read the mark. No change, and by the rule on
+    byte-identical copies the search is not what holds them together: they sit
+    inside `## When a command does not answer`, whose `cksum` check at
+    `docs/skill-conventions.md:1215` came back one line, `3918197568 3823`.
+  - **The places in `build-work` where the run's own behaviour parts on the
+    mode** — `:134` the guard block, `:356` the rule step 2 uses when nobody is
+    there to ask, `:542` and `:543` an unchecked condition the unattended gate
+    cannot see, `:567` the pull request body as the only record, `:590` to `:597`
+    the turn-end hook, `:617` and `:673` the review not falling away, `:711` and
+    `:716` the gate, `:723` the two preconditions of step 6, `:874` and `:934` a
+    refused arming, `:946` and `:954` the wait, `:1037` the round count that goes
+    into no file, and `:1105` to `:1222`, the section itself. Each is a place the
+    mark would be read. None changed here.
+  - **`start-work:295` to `:302`, `## Unattended`**, where `--auto` is typed. This
+    is the one place in the set where the mark would be written rather than read,
+    and a repair starts here. No change.
+  - **`build-work:1180` and `:1226`.** The first is "**None of it goes into a
+    file.** Nothing on disk reads such a file — no hook watches for an unattended
+    run", the sentence a mark on disk has to reopen; `grep -rn autorun hooks/` is
+    still empty today, so it is still true as written. The second says a
+    `.claude/autorun.local.md` lying about is stale and gets deleted, which a mark
+    written at the start would collide with directly — the same path's
+    neighbourhood, and a rule that says to delete what it finds there. Both are
+    named because a repair cannot be made without them, and neither is touched by
+    an entry that decides nothing.
+  - **`review-changes:181`, `:188`, `:197` and `:236`** — unattended a stated
+    reason buys no exception, and the sentence nobody reads in an unattended run.
+    The mark would be read at all four. No change.
+  - **`setup-checks:491` to `:655`, step 8**, and **`README.md:87` to `:122`** and
+    **`:144`** — where the mode is described to a person at the offer and in the
+    readme. Does not apply: nothing there is read by a run deciding how to act. It
+    becomes a co-change only if the mark is something the user is told about,
+    which this entry does not decide.
+  - **`setup-project:267`, `:308`, `:318`, `:324`, `:394`, `:752`** — permissions
+    granted up front, the instruction not to name the unattended mode while asking
+    for them, and the note that nothing reaches the merge answer unattended. Does
+    not apply: all of it runs at setup, before any run of the mode exists.
+  - **`build-work:771`, `setup-checks:428`, `setup-project:742`,
+    `hooks/pre-tool-use-merge-guard.sh:20`, `docs/skill-conventions.md:811`,
+    `:830`, `:834` and `:1020`** — `gh pr merge --auto`, the tool's flag. Does not
+    apply, and it is named because it is the half of this search that matches on
+    the string alone: two different `--auto`s, one of them not this subject at all.
+  - **`docs/skill-conventions.md:1045` to `:1051`** — "A hook that says 'hand this
+    to a person' assumes there is one, and it cannot check", with the general form
+    underneath it. This is where a repair has to answer for itself, because that
+    passage is what draws the difference into the text in the first place. No
+    change.
+  - **`docs/skill-conventions.md:116`, `:127`, `:136`, `:195`, `:197`, `:224` and
+    `:261`** — rules about how to write for both modes, and the worked examples of
+    the unattended finish and of step 5's replacement. Does not apply: they govern
+    what a sentence has to say, not what a run reads to know which sentence it is
+    under. **`:652`, `:713`, `:719` and `:738`** are dated measurements, which the
+    carve-out puts outside this rule. **`:1344` to `:1353`** is the handover check
+    over the unattended finish, keyed on `raised-here`; it does not look at the
+    mode and needs nothing here.
+  - **`start-work:71` and `:73`** — where the mode decides what an open pull
+    request means: unattended it is one whose wait ran out or whose checks went
+    red, still armed, and read off the platform rather than armed again. The mark
+    would be read there, at the start of a session rather than at its end. No
+    change.
+  - **`docs/skill-conventions.md:996`** — tool classes pre-approved per project,
+    "which is what makes an unattended run possible". Does not apply: it is a
+    condition of the mode being startable at all, granted before any run of it
+    exists.
+  - **`README.md:226`** — "A state file with no reader is not a safeguard,
+    however carefully it is kept", kept in the readme after the unattended state
+    file was deleted, so that the shape does not come back in another file.
+    **This is the sentence a mark on disk has to answer**, and it is the second
+    half of why what should hold above stops where it does: a mark would have a
+    reader, this same run at the landing, which is exactly what that file never
+    had. Whether that is enough is not settled here. No change. **`:243`** is the
+    attribution of the unattended loop to `ralph-wiggum` and does not apply.
+  - **`build-work:648` and `review-changes:284`** — one dated measurement, the
+    unattended run that called every finding mechanical, which the carve-out puts
+    outside this rule. What stands around it is not a measurement and is the last
+    block of this entry: the paragraph carrying that line is byte-identical in
+    both files and nothing holds the two copies together.
+
+  Second, by the subject without the word: `grep -rni "nobody is there\|with
+  nobody\|nobody to\|is nobody\|no one to ask" skills/*/SKILL.md README.md` — 50
+  lines, **and 34 of them the first search does not find**; the other sixteen
+  carry the word and are already listed above. That is the measurement worth
+  keeping from this round, since it is the same hazard this file names when it
+  says the search goes by the subject and not by the wording — and here the two
+  wordings are not even far apart, only the word for who is absent. Neither search
+  reads `docs/roadmap.md`, so this entry does not move either count.
+
+  - **Six byte-identical copies of the asking block's unattended clause**,
+    "**With nobody there to answer**, a question that passes this test does not
+    stop the run" — `build-work:187`, `cut-into-tasks:158`, `plan-work:234`,
+    `setup-checks:180`, `setup-project:165`, `untangle-idea:145`. Held by the
+    `cksum` check at `docs/skill-conventions.md:1266`, which came back one line,
+    `774425850 3827`. **This is the nearest rule in the set to what happened and
+    it did not reach it**, which is worth the line: the landing question is not a
+    question that passes the asking test — it is the gate, and step 5 asks it
+    whatever the test says — so the one clause that already tells a run what to do
+    with a question when nobody is there is written past the case. Named, not
+    changed: widening it would put the gate under a rule about ordinary
+    decisions, which is the opposite of what `:705` says it is.
+  - **Twelve byte-identical copies of "Where nobody is there to hear it, the run
+    does not carry on past it either"** — `build-prototype:83`, `build-work:110`,
+    `cut-into-tasks:107`, `diagnose-bug:91`, `plan-work:102`, `record-lessons:85`,
+    `research:93`, `review-changes:122`, `setup-checks:106`, `setup-project:84`,
+    `start-work:213`, `untangle-idea:94`. Same block and same `cksum` as the first
+    search's twelve. No change.
+  - **`build-work:120`, `:123`, `:355`, `:618`, `:712`, `:944` and `:1210`**, and
+    **`setup-checks:125`, `:126`, `:420`, `:589`, `:593`**, and
+    **`setup-project:104`** — thirteen more places where the run acts on whether
+    somebody is there: a guard's block, a class going `skipped` with the block as
+    its reason, a question that becomes an issue, the report at the gate, the
+    turn-end bound. All of them would read the mark. None changed.
+  - **`README.md:8`, `:107` and `:145`** — the readme again, by the other wording.
+    Does not apply, for the reason given above.
+
+  What no search reached, and what is therefore named from reading rather than
+  from a command: `hooks/` contains nothing that could read a mode at all, which
+  is not an oversight but the finding one level out at
+  `docs/skill-conventions.md:1045`. A mark on disk is the only thing that would
+  change that, and it is the same sentence at `build-work:1180` that says nothing
+  reads one today.
+
+  **One more finding, out of the search rather than out of the run.** The pair
+  the search had to name — `build-work:643` to `:649` and `review-changes:279` to
+  `:285`, "**The criterion is the one written above, and each finding is announced
+  under it**", identical to the byte — is not one loose end. It is one of eight.
+
+  *Today:* **which byte-identical blocks are held has grown rather than been
+  decided.** Measured against `b90874b`, by taking every paragraph of 200
+  characters or more in `skills/*/SKILL.md` and keeping those that appear in more
+  than one place: 23 such blocks. Three `cksum` checks under `## Before a
+  handover, run these` cover 15 of them — the language block in twelve copies at
+  `docs/skill-conventions.md:1202`, the whole of `## When a command does not
+  answer` in twelve at `:1215`, and `## How to ask` in six at `:1266`. Nothing at
+  all covers the other eight:
+
+  - **Seven copies** of "**If a command this skill needs is missing from
+    `docs/agents/`, say so**" — `build-work:54`, `cut-into-tasks:41`,
+    `plan-work:46`, `review-changes:44`, `setup-checks:50`, `start-work:157`,
+    `untangle-idea:189`. It stands immediately above `## When a command does not
+    answer` and is thereby just outside the check that holds everything below it.
+  - **Four copies** of "**Write into the issue tracker in English**" —
+    `build-work:50`, `cut-into-tasks:37`, `plan-work:42`, `untangle-idea:185`.
+  - **Three copies** of the definition of a condition — `build-work:237`,
+    `cut-into-tasks:51`, `review-changes:54`. One of the three shared words under
+    the heading `## Shared words are defined in one place`, which is what the
+    duplication is for — "a word two skills lean on has to be defined somewhere
+    both of them read" — and the definition that is in one place in the rule
+    stands in three copies in the files, held by nothing.
+  - **The criterion pair**, `build-work:643` and `review-changes:279`.
+  - **Two copies** of "**At most three questions in a round**" —
+    `plan-work:265`, `untangle-idea:286`.
+  - **Two copies** of "The shared block above says a block is answered rather
+    than got around" — `setup-checks:118`, `setup-project:96`.
+  - **Two copies** of "**Do this as an action, now, before anything below writes
+    a file.**" — `setup-checks:252`, `setup-project:351`, the branch-cut block
+    the entry on the abandoned setup branch already reads as one paragraph
+    standing in two files.
+  - **Two copies** of the reading of an empty answer from the platform —
+    `setup-checks:459`, `setup-project:788`.
+
+  Beside those eight stands the arming mutation in five copies, recorded above and
+  unheld since it was written; being a command line rather than a paragraph, this
+  measurement does not even see it. An unheld block drifts apart and nothing says
+  a word, and that is the position the arming command has been in the whole time.
+
+  *Should:* **the guard is written in the same change as the copy.** Both halves
+  already stand in `docs/skill-conventions.md` and neither reaches the other: "A
+  rule holds only on the path it is written on" says to write the copy at every
+  route that reaches the situation, and the passage on byte-identical copies says
+  what holds them together is a checksum and that this replaces the search, not
+  the copies. What is missing between them is that nothing makes the second
+  happen when the first does. The copy gets made while a rule is being written;
+  the checksum gets written when somebody remembers. Whoever writes the second
+  copy owes its guard in the same change, and `## Before a handover, run these`
+  is where it lands.
+
+  **And the obvious generalisation does not work, which is why it is written down
+  before somebody builds it.** A check that finds the pairs for itself — compare
+  every paragraph against every other and report the ones that match — goes green
+  exactly when they drift: once two copies differ they are no longer a pair, the
+  finder stops seeing them, and it reports on what still agrees. That is the
+  defect `docs/skill-conventions.md` names as a check going quietly green and
+  stopping watching, arrived at from a new direction. The three that work are
+  anchored on a heading rather than on equality, and that route is not open
+  everywhere: the criterion
+  pair sits under `## Step 4 — Review it` in one file and `## What happens to a
+  finding` in the other, and the paragraphs on both sides of it differ in both
+  files on purpose — so a heading-anchored extract would sweep in text that is
+  meant to differ and be red by construction, which that same page calls not a
+  check at all.
+
+  **What stays open is whether every byte-identical block needs one, and what
+  decides it.** Three candidates, none chosen here: the number of copies; whether
+  the duplication is deliberate — one rule written at several routes — or two
+  passages that merely happen to agree today; and whether an anchor exists at all,
+  since a block with no shared heading needs a different form of check rather than
+  the same one again. A list of the guarded blocks kept somewhere would answer it
+  by hand and moves the remembering one level out rather than removing it, which
+  is worth saying because it is the first answer that suggests itself.
+  Recorded, not built.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
