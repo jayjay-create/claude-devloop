@@ -2834,6 +2834,197 @@ the size of the work.
   the same one again. A list of the guarded blocks kept somewhere would answer it
   by hand and moves the remembering one level out rather than removing it, which
   is worth saying because it is the first answer that suggests itself.
+
+  **Walked through against the sites on 14 September 2026, decided in five
+  places, and then not built.** The branch `task/unattended-mark` stands, cut
+  from `4358ead`, and carries no build. What stopped it is none of the gaps
+  below. The place the mark is written hangs on a boundary that has not been
+  drawn yet — where the part the user answers in ends and the part that runs
+  alone begins — and that boundary is the next piece of work. The entry above on
+  planning being fenced out already names where it would fall: a question at the
+  end of Stage 1 with three answers, carry on unattended now, plan unattended and
+  stop before the first build, or stay attended. Writing the mark at the start of
+  the build stage now would put it exactly where that question then moves it from.
+
+  **Decided, each with what decided it.**
+
+  - **Three states and not two: unattended, attended, and mode unknown.** "No
+    mark means attended" is the safe side only at the gate. At every handover
+    site attended means waiting for a person who is not there, which is the
+    standstill `build-work:590` to `:597` was written against — "waiting for them
+    is not a stop with a reason — it is a standstill in the middle of a task that
+    still looks like it is running". Unknown lands nothing and waits nowhere: it
+    stops with the reason named.
+  - **The mark is written where the user steps out of the flow, and not
+    earlier.** While they are still answering questions, the skills that ask them
+    must not read "nobody there" out of it. That is what makes the write site
+    wait on the boundary rather than on this entry.
+  - **The identifier is the main-branch commit the run starts from, not a random
+    number.** A random number lives in the conversation and has therefore exactly
+    the weakness this entry is about: a run that has lost it can check the mark
+    against nothing but its own memory, which is the thing that failed. A commit
+    is checkable against the repository — it is either in this history or it is
+    not, either an ancestor of where main stands now or not, and the branch in
+    the tree was either cut from it or was not. It is also read anyway:
+    `build-work:285` compares the base against the remote before anything is cut,
+    `:1164` has the opening message name it, and `:1235` with `setup-checks:609`
+    send the user back to it to read the diffs afterwards. What the check cannot
+    be is equality with the current main, for the reason under the first search
+    below.
+  - **A mark that is not this run's is not deleted.** It is a reason to refuse to
+    start, under the rule already at `build-work:1222`, "One unattended run per
+    working directory". The run says what it found and does not start. Deleting
+    it would make the collision that rule forbids destructive rather than merely
+    disallowed: the other run would carry on, read nothing at its next fork and
+    stand still.
+  - **The file is written with a shell command, not with the write tool, and the
+    guard gets no exception.** `hooks/pre-tool-use-branch-guard.sh:32` blocks
+    `Edit|Write|MultiEdit` on every path under the project directory while the
+    tree stands on the default branch, which is where a run stands when it
+    starts; the same hook reads `Bash` only for `git commit` and `git push`, and
+    a write through `Write` would also wake `post-tool-use-checks.sh`. An
+    exception for one path would make the guard porous for everything under the
+    project directory — and the guard is what caught the first write of the run
+    measured above.
+
+  **Eleven gaps came out of the walkthrough, and they hold wherever the boundary
+  ends up.** Five are answered by the decisions above; six stay open.
+
+  - **The fallback inverts at most sites.** Answered, by the third state.
+    Attended is the cautious side at one place, step 5's gate. It is a standstill
+    at `build-work:134` the guard's block, `:187` the asking clause in six
+    byte-identical copies, `:590` to `:597` the turn-end hook, `:934` a refused
+    arming, `:946` to `:955` the wait — "Nothing wakes a run: the answer that
+    ends here ends the run" — `setup-checks:589` and `:593`,
+    `setup-project:104`, and the twelve copies of the permission-prompt block.
+    One site against eight groups.
+  - **A mark written at the session's start would reach the planning skills.**
+    Answered, by writing it at the boundary. The asking clause stands in six
+    skills and four of them are planning or setup — `plan-work:234`,
+    `cut-into-tasks:158`, `untangle-idea:145`, `setup-project:165`,
+    `setup-checks:180` — so a mark true of the session but not of the stage would
+    stop them asking, against `start-work:302` and `README.md:99`.
+  - **A random identifier cannot be checked by a run that has forgotten it**, and
+    the rule that deletes a foreign mark would then have the run destroy its own.
+    Answered twice over, by the starting commit and by refusing instead of
+    deleting.
+  - **The write is blocked by the branch guard.** Answered, by the shell.
+  - **The four sites in `review-changes` are not read by a lens subagent.** Open.
+    `review-changes` runs in the main run — `build-work:615`, "Run
+    `review-changes` on the diff" — so it can read the mark itself, and of the
+    four only `:181` forks behaviour, deciding whether a lens may be left out
+    with a reason; `:188`, `:197` and `:236` are the grounds for that rule rather
+    than instructions. Where the mode does have to travel in a prompt is
+    `build-work:413` to `:419`, the build subagent, which meets the permission
+    prompt, the guard's block and the unanswerable question inside itself.
+  - **At least five sentences have to be rewritten, not two.** Open. Named
+    already: `build-work:1180`, "**None of it goes into a file.** Nothing on disk
+    reads such a file — no hook watches for an unattended run", and `README:225`
+    to `:231`, "A state file with no reader is not a safeguard" — the search
+    above reaches that bullet at `:226`, which is where the word sits, and the
+    sentence itself is the line over it. Not named and equally
+    contradicted: `build-work:590`, "There is no mark of an unattended run for it
+    to find either … nothing on disk records the mode", which is the sentence
+    this entry quotes as *Today*; `build-work:1035` to `:1037`, where the round
+    count must go into no file "for the reason under 'Unattended mode'" — the
+    rule stays right and its stated reason stops holding; and
+    `docs/skill-conventions.md:1045` to `:1056`, whose half about the harness
+    stays true while its conclusion gains a second half. `README:222` is the
+    heading over the state-file rule, "Both already fixed in the skills", and
+    changes with it.
+  - **`setup-project:498` to `:503` says "one file of local state under
+    `.claude/`"** and instructs that `.gitignore` cover it. Open. A second file
+    changes both halves, and this is the place that keeps the mark out of a
+    commit.
+  - **The deletion has five exits and none of them is in the file that creates
+    the mark.** Open. `build-work:1231` the finishing sentence, `:1026` and
+    `:1039` the standstill after three rounds, `:1110` the five preconditions
+    refusing — after a mark written at the session's start would already exist —
+    `:1235` a stop message from the user, and the session simply ending. Creation
+    in one file, deletion in another, five ways out: the case
+    `docs/skill-conventions.md:72` names.
+  - **`build-work` is reachable without `start-work`.** Open.
+    `docs/skill-conventions.md:1077`: "Note the consequence — the model can also
+    reach for `build-work` or `setup-project` on its own", and a typed command
+    does the same. With no mark in existence the whole of `## Unattended mode` is
+    dead text on that route. The entry above on the planning fence touches this
+    from the other side, putting the five preconditions at the question rather
+    than at the build.
+  - **`start-work`'s `## Unattended` is a trailing description, not a step.**
+    Open. It stands at `:295`, the last section of the body, after "Never say a
+    skill's name" and behind steps that end at `:241`, and
+    `docs/skill-conventions.md:28` is the rule it would have to be written
+    against: "A section reads as description; a numbered step reads as an
+    instruction."
+  - **A second run would delete the first run's mark.** Answered, by refusing.
+
+  **Two questions this did not decide.**
+
+  - **Whether `hooks/stop-checks.sh` should read the mark.** Today no hook can
+    see the mode at all, which is the finding at `docs/skill-conventions.md:1045`
+    turned around — a hook cannot see absence either. A mark on disk is the first
+    thing that would let it, and whether the turn-end message should then differ
+    by mode, or stay one message the run reads differently, is not settled here.
+  - **Whether the lens subagents need the mode at all.** `review-changes:221`
+    gives each lens only its own lens and the diff, and nothing inside a lens's
+    own work was found to fork on the mode. The forks are in the skill that
+    decides which lenses run, and that runs where the mark is readable.
+
+  **Searched by subject for what the decisions stand on, against the tree at
+  `4358ead`. Nothing was changed, because nothing was built.** The entry's own
+  two searches were re-run first and are unmoved, 89 lines and 50 — `skills` and
+  `hooks` are byte-identical to `b90874b`, which the check over the installed
+  copy also reported silent the same day. Three more, one per new subject:
+
+  Where the run's starting point on the main branch is read or named: `grep -rn
+  "current main branch\|local main branch\|commit it starts\|commit noted at the
+  start\|main-branch commit\|Check the base\|rev-parse" skills/*/SKILL.md
+  README.md docs/skill-conventions.md hooks/*.sh` — 10 lines.
+
+  - `build-work:285` and `:287` — step 1, which fetches and compares the base
+    before anything is cut. Where the identifier would be read; no change.
+  - **`build-work:1049` — the fast-forward after a merge, and the one hit worth
+    the line.** The starting point does not stand still: after the first merge
+    the local main has moved, so an identifier re-read from "the current main
+    branch" at a later site would not match the one written at the start. What
+    the mark holds is the commit the run began on, and no reader re-derives it
+    from main. Named so that the repair does not read it the wrong way round.
+  - `build-work:1164` — the opening message naming that commit. Where it is
+    already said aloud, and the reason it costs nothing to keep.
+  - `build-work:1235` and `setup-checks:609` — the user sent back to that commit
+    to read the diffs afterwards. The same value in its second use, so anything
+    that changes what "the starting commit" means changes what these two promise.
+  - `build-work:418` — the build subagent cutting from the current main branch.
+    Does not apply: that is the task branch, not the run's starting point.
+  - `docs/skill-conventions.md:1148` — `git rev-parse origin/main` in the check
+    over the installed copy, and `hooks/pre-tool-use-branch-guard.sh:8` and
+    `hooks/session-start.sh:4` — `git rev-parse --git-dir`, which only asks
+    whether this is a repository. All three match on the string and none of them
+    is this subject.
+
+  Where the boundary between the two parts is written: `grep -rn "never
+  unattended\|stays with them\|belong to the human\|belongs to the human"
+  skills/*/SKILL.md README.md docs/skill-conventions.md` — 4 lines.
+
+  - `start-work:302` and `:303`, and `README.md:99` — the fence itself. This is
+    where the write site lands once the boundary is drawn, and it is already open
+    in the entry above, where three sites are recorded deciding the same question
+    the other way. A repair here and the repair recorded there are one change,
+    not two.
+  - `setup-checks:586` — the cost list telling the user what never runs
+    unattended. It is the sentence they agreed to, so it moves whenever the fence
+    moves; unchanged today.
+
+  What the refusal leans on: `grep -rn "One unattended run per working
+  directory\|One build task at a time" skills/*/SKILL.md docs/skill-conventions.md
+  README.md` — 2 lines.
+
+  - `build-work:1222` — the rule itself. It gains a way to be enforced and loses
+    nothing; no change today.
+  - `docs/skill-conventions.md:757` — "One build task at a time", whose own
+    evidence that page records as missing. Does not apply: it is about two build
+    agents in one working directory, not two runs, and it is named because it is
+    the rule that looks like the same one.
   Recorded, not built.
 
 ## Decisions taken against
