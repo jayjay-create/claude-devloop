@@ -1966,7 +1966,236 @@ the size of the work.
   nothing less, one further skill whose existing question has to be told apart
   from the new one, and `settle-the-look` built before the last point of what
   should hold means anything.
-  Recorded, not built.
+
+  **Built on 14 September 2026, on `task/unattended-planning`, after a
+  walkthrough of what should hold against seven situations found six gaps and
+  each was decided.** Nothing here has run yet: every sentence below is text
+  read against text, and the first unattended planning is what measures it.
+  What stands now:
+
+  - **The fence is gone from both files.** `start-work` under `## Unattended`
+    and `README.md` under `## Attended and unattended` say what `--auto` means
+    instead: do alone everything that can be done alone; the sharpening runs
+    with the user whatever was typed, and from the point where the idea stands
+    everything after it has something to be checked against. The README's reason
+    fell away the way this entry said it should — not because a mistake stopped
+    costing anything, but because each decision got its check.
+  - **`--auto` stays and has one meaning.** Typed, the question at the end of
+    Stage 1 is not asked — the flag is its answer — so flag and answer can never
+    disagree. Not typed, the question is asked. On the route straight to a build,
+    from a finished spec or after a halt, the flag is the only thing that sets
+    the mode. Written in `start-work` at `## Unattended` and step 5, in
+    `plan-work` Stage 1, in `setup-checks` step 8.
+  - **Four of the five preconditions are read at the question, all five at the
+    build**, and both places say why two: the direct route has no question, the
+    state can change in between, and the third — no task blocked from outside —
+    has nothing to be read against before a cut exists. `plan-work` Stage 1,
+    `build-work` under `## Unattended mode`, `README.md`.
+  - **Seams are placed at the code, not confirmed by the user**, in both modes:
+    the path and the symbol where the boundary stands, or the line of the chosen
+    interface that creates it. The three byte-identical copies of the definition
+    — `cut-into-tasks:48`, `build-work:234`, `review-changes:51`, `cksum`
+    `3342723713 196` in all three before the change — were rewritten
+    identically, and every sentence leaning on "confirmed seams" with them.
+  - **The hard core of the user stories and of the exclusions comes out of Stage
+    1**, before the drafts exist, and Stage 3's problem space is that list plus
+    what Stage 2 found — one list, not two. Stage 4's long list grows out of it
+    and keeps every line.
+  - **One checking agent per draft**, given the draft, the hard core and Stage
+    2's constraints and nothing else, answering item by item which story the
+    draft does not carry, which exclusion it builds, which constraint it breaks
+    — in the words of the item, never as a ranking. The verdicts and the rejected
+    drafts go into the Stage 3 comment, which until now held the winner alone:
+    read on the tracker of `devloop-test-o` on 14 September 2026, specs 2 and
+    46, and spec 2's body says the rejected alternatives were recorded there.
+  - **The question at the end of Stage 1: three answers, one message, no
+    recommendation**, asked only where `environment.md` records the mode as
+    accepted and only where the idea stands — nothing important open, the hard
+    core written, no question left that somebody has to see something to answer.
+    The costs of this piece of work are said, the repository's costs not
+    repeated. It is defined as standing outside the asking test, the way the
+    landing gate does, in the one place it is asked. That was the cheaper of the
+    two ways to reconcile it with "moving to the next stage is never a
+    question": one sentence in `plan-work` against an exception written into six
+    byte-identical copies.
+  - **The shared block on asking keeps the test and points away.** Its
+    unattended clause no longer says what to do — "take the reversible option,
+    record it in the spec" was wrong for four of the six skills carrying it, a
+    build having no spec to record into and a setup no scope to cut — but that
+    each skill with an unattended path says it in a section of its own, and a
+    skill without one stops with the question named. Six files changed
+    identically; the `cksum` under "The same for the block on asking" reads one
+    line, `3461436879 4084`. The sections stand in `plan-work`, `cut-into-tasks`,
+    `build-work`, `setup-checks` and `build-prototype`, each under `## With
+    nobody there`. `setup-project` and `untangle-idea` have no unattended path
+    and no section, by the rule in the block.
+  - **The order for a question with nobody there** stands in `plan-work`: the
+    less committing option recorded; else the part cut out and filed as an issue
+    where the rest is still a result on its own; else undecided in the spec; and
+    where none holds, a stop with the reason named. `build-work` says why a
+    build does not follow that order — a task needing a decision the spec did
+    not take is not buildable as cut, and goes the way the guard's block and the
+    turn-end hook already go.
+  - **The prototype splits two ways, in both modes.** What can be measured is
+    built, driven and read by the run itself alone, and offered first with the
+    user there because it costs real time; what has to be seen is not built
+    alone at all, and the end of Stage 1 checks that none is open. `plan-work`
+    Stage 1 now names `build-prototype`, which it never did — the only call site
+    was `untangle-idea:378` — and `build-prototype` carries the case under `##
+    With nobody there`.
+  - **The mark from the entry below is built here**, because this is the
+    boundary that entry was waiting for. `.claude/unattended.local`, two lines:
+    the main-branch commit the run starts from, and `build` or `plan` for how
+    far it may go. Written with a shell command where the run steps out of the
+    flow — the end of Stage 1, or the start of a direct unattended build — read
+    at every fork, deleted at every exit: the finish, the standstill, a refused
+    arming that ends the run, a refusal of the preconditions on the planning
+    route, the user's word, and the halt before the first build, which is the
+    sixth exit this walkthrough found. A session that simply ends deletes
+    nothing, and two rules meet what it leaves: the planning stage deletes a
+    mark it finds when picking a plan up and asks the question again, since
+    somebody is there to answer; the build stage refuses on one, since nobody
+    may be. That first half departs from the entry below, which decided a mark
+    not this run's is never deleted, and the difference is written at both
+    sites.
+  - **`setup-project` names two local-state files and has the refresh check
+    `.gitignore` for both**, since a project set up before the second existed
+    has only the first.
+
+  **Eleven skill files and two documents, not three files.** The paragraph above
+  counted two for the fence, six for the clause and one further skill. The
+  walkthrough found `README.md`, `start-work`, `plan-work`, `cut-into-tasks`,
+  `build-work`, `review-changes`, `setup-checks`, `setup-project`,
+  `build-prototype` and `untangle-idea` — the last for the shared block only —
+  and the change added `diagnose-bug` for the seam vocabulary and
+  `docs/skill-conventions.md` for the passage on what a hook cannot see. The
+  version went from 0.99.0 to 0.100.0.
+
+  **Searched by subject against the tree at `e62627c`, and again after the
+  change; each place named with what was done there or why nothing was.** Line
+  numbers are those before the change.
+
+  Who takes the design choice and the cut, and where the fence stood: `grep -rn
+  "design choice\|task cut\|never unattended\|belong to the human\|stays with
+  them\|you choose\|confirm the cut\|only builds tasks\|changes nothing about
+  who decides" skills/*/SKILL.md README.md docs/skill-conventions.md`.
+
+  - `start-work:302`, `README.md:99` — the fence. Rewritten.
+  - `README.md:61`, `:72` — "you choose", "You confirm the cut". Rewritten; the
+    second was already false against `cut-into-tasks`.
+  - `setup-project:322` — "It changes nothing about who decides: the design
+    choice, the task cut… The unattended mode… replaces those decisions". A
+    fourth site deciding the other way, not named above. Rewritten.
+  - `setup-checks:585` — the cost list the user agrees to. Rewritten.
+  - `plan-work:337`, `:344` — the design question and "Write nothing until they
+    have answered". Kept for the case with the user there; the alone case
+    written beside it.
+  - `build-work:335`, `setup-checks:426` — "a task cut from a stale main", "the
+    next task cuts its branch": the verb, not the subject. Unchanged.
+
+  Seams confirmed: `grep -rn -i "confirm" skills/*/SKILL.md README.md`, read
+  past the hits about permission prompts and the installed copy.
+
+  - `cut-into-tasks:48`, `build-work:234`, `review-changes:51` — the definition.
+    Rewritten identically.
+  - `plan-work:356` — "confirmed rather than assumed". Rewritten to placed.
+  - `plan-work:365`, `:379`, `cut-into-tasks:205`, `build-work:419`, `:551`,
+    `review-changes:164`, `diagnose-bug:293` to `:297` — "confirmed seams" as
+    a noun. Rewritten to placed.
+  - `untangle-idea:345` — "Do not act on it until the user confirms" is about
+    the map. Unchanged.
+
+  What carries the mode: `grep -rn "unattended.local\|nothing on disk\|no
+  mark\|word typed\|records the mode" skills/*/SKILL.md README.md
+  docs/skill-conventions.md hooks/*.sh`.
+
+  - `build-work:590` — "There is no mark of an unattended run for it to find
+    either… nothing on disk records the mode". Rewritten: the mark exists, the
+    hook does not read it.
+  - `build-work:1180` — "None of it goes into a file". Rewritten to say which
+    kind of file that rules out and why the mark is not that kind.
+  - `build-work:413` — the build subagent's brief. Told where the mark stands.
+  - `README.md:225` — the state-file rule. Kept, the distinction added.
+  - `docs/skill-conventions.md:1045` to `:1056` — what a hook cannot see. Kept,
+    a paragraph added.
+  - `build-work:1035` — the round count into no file "for the reason under
+    'Unattended mode'". Unchanged: that reason still stands there, about counts.
+  - `hooks/*.sh` — nothing reads the mark. Unchanged; open below.
+
+  Local state: `grep -rn "check-attempts.local\|local state\|autorun.local"
+  skills/*/SKILL.md README.md docs/skill-conventions.md hooks/*.sh`.
+
+  - `setup-project:498` — "one file of local state". Rewritten to two, and the
+    refresh section at `:188` told to check `.gitignore` for both.
+  - `build-work:1226` — the stale `autorun.local.md`. Unchanged: a different
+    file.
+  - The last bullet under `## Decisions taken against` — "the only local state
+    left is `check-attempts.local`". Rewritten there.
+
+  Prototypes: `grep -rn -i "prototype" skills/*/SKILL.md README.md`.
+
+  - `plan-work:288` — "Do not start one unasked". Rewritten with the split.
+  - `build-prototype:111`, `LOGIC.md:52`, `UI.md:94` — the hand-over to a
+    person. Kept; the alone case written in `SKILL.md` under `## With nobody
+    there`, which says the hand-over is skipped there.
+  - `untangle-idea:341`, `:380` — attended by construction. Unchanged.
+
+  The preconditions: `grep -rn -i "precondition" skills/*/SKILL.md README.md`.
+
+  - `build-work:1110` — the five. Kept; the reason for reading them twice
+    written above the list.
+  - `README.md:102` — "It refuses to start unless". Rewritten with both places.
+  - `setup-project:317` — permissions as one precondition. Unchanged.
+
+  The stage boundary: `grep -rn "next stage\|permission to reach"
+  skills/*/SKILL.md`.
+
+  - Six copies of "Moving to the next stage is never a question". Unchanged, by
+    the choice recorded above.
+  - `start-work:265` — "None of them asks permission to reach the following
+    one". Kept, with a sentence saying the one boundary question is not that.
+
+  Attended promises on a path that runs alone: `grep -rn "they see the
+  result\|you see each piece" skills/*/SKILL.md README.md`.
+
+  - `cut-into-tasks:267` — "they see the result before anything is merged".
+    Moved under the attended branch of the fork at "After creating".
+  - `README.md:47` — the default. Unchanged.
+
+  The thirteen checks under "Before a handover, run these" were run after the
+  change: the three checksums read one line each, the offer grep counts 21 lines
+  before and after — two offers rewritten, none added — and the check over the
+  unattended finish is silent.
+
+  **What stays open, and what the text does meanwhile.**
+
+  - **Who chooses among the surviving drafts when the recommended one falls, and
+    what happens when all fall.** Today both are a stop with the reason named,
+    the mark deleted, the planning issue left `being-planned`, and the next
+    session asks with somebody there. Whether a second comparison over the
+    survivors, or a redraft under the failed items, should happen instead is
+    not decided. The stop was chosen because a comparison that recommended a
+    draft now known not to carry the stories is not one to pick the next from.
+  - **A question that has to be seen and first appears in Stage 3.** The check
+    at the end of Stage 1 catches the ones visible by then; one surfacing later
+    goes through the order for a question with nobody there, most often its
+    second step. That is a fallback and not a route to a look; the route is
+    `settle-the-look`, still unbuilt.
+  - **Precondition 4 cannot be read.** "The tool classes the run needs are
+    already approved" is asserted at the question and at the build alike;
+    nothing in the tree reads the permissions file, and `setup-project` records
+    that writing it is refused.
+  - **Whether `hooks/stop-checks.sh` should read the mark.** Carried over from
+    the entry below, unchanged.
+  - **Existing yes-records in `environment.md`** were given under the old cost
+    list, for a mode that built tasks only. Decided here that they stand: the
+    question at the end of each sharpening, or the flag, obtains the choice per
+    piece of work anyway, and step 8's wording now says the record is a
+    permission and not a choice.
+  - **The measured cost of what this buys.** In spec 46 of `devloop-test-o`,
+    Stage 1 settled at 21:45:43 and Stage 3 was posted at 21:51:23 — under six
+    minutes with the user present. What the change buys is not that time; it is
+    that the user can leave after Stage 1.
 
 - **A run stopped four times after arming auto-merge, each time on a sentence it
   wrote itself, and every file that does say what follows arming says something
@@ -3025,7 +3254,27 @@ the size of the work.
     evidence that page records as missing. Does not apply: it is about two build
     agents in one working directory, not two runs, and it is named because it is
     the rule that looks like the same one.
-  Recorded, not built.
+
+  **Built on 14 September 2026 on `task/unattended-planning`, inside the repair
+  of the planning fence above, because that repair drew the boundary this entry
+  was waiting for.** `.claude/unattended.local`, two lines — the main-branch
+  commit the run starts from, and `build` or `plan` for how far it may go —
+  written with a shell command at the end of Stage 1 in `plan-work` or at the
+  start of a direct unattended build in `build-work`, read at every fork, and
+  deleted at six exits listed in `build-work` under `## Unattended mode`. Of the
+  eleven gaps: the four sites in `review-changes` read it in the main run and the
+  build subagent reads the same file, so nothing travels in a prompt; the five
+  sentences named as contradicted are rewritten, with the heading at
+  `README.md:222` left, since both rules under it are still fixed in the skills;
+  `setup-project` says two files; the exits stand in one list in the file that
+  creates the mark; `build-work` reached without `start-work` writes its own
+  mark on the direct route; `start-work`'s `## Unattended` stays a section, but
+  step 5 now carries the instruction. **One decision above was changed at one
+  site**: a mark not this run's is still refused at the start of a build, and is
+  deleted where the planning stage picks up an interrupted plan — somebody is
+  there to answer at the second site and may not be at the first, and both files
+  say so. The two questions above stay undecided. The branch
+  `task/unattended-mark` still carries no build.
 
 ## Decisions taken against
 
@@ -3073,9 +3322,11 @@ of them if the reason stops holding — the reason is the point, not the verdict
   the run did next is why this was not reopened then: it cut the task branch and
   wrote the file there, which is what the guard's message asks for and what the
   step needed anyway. That write is gone — the step no longer writes any such
-  file — so the only local state left is `check-attempts.local`, produced by a
-  hook the guard never sees, and the second reason holds again. The verdict rests
-  on both once more. Reopen on a case where such a file cannot wait for a
+  file. The local state left is `check-attempts.local`, produced by a hook the
+  guard never sees, and since 14 September 2026 the mode mark `unattended.local`,
+  written with a shell command — which the guard reads only for `git commit` and
+  `git push` — so the second reason holds again for both. The verdict rests on
+  both once more. Reopen on a case where such a file cannot wait for a
   branch.
 
 ## Names that were rejected

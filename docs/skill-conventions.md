@@ -1055,6 +1055,16 @@ which is a standstill and not a stop with a reason. The general form is the one
 the merge guard already needed — **a hook cannot see consent** — turned around:
 it cannot see absence either.
 
+**Since 14 September 2026 the run lays down a mark for itself**,
+`.claude/unattended.local`, written where it steps out of the flow — the end of
+the sharpening in `plan-work`, or the start of an unattended build — and read at
+every place a skill forks on the mode. So the skills no longer carry the mode as
+a word from the start of the session; they read a file. The hooks still do not
+read it, and whether `stop-checks.sh` should is recorded as open in
+`docs/roadmap.md`. The sentence above therefore still holds for hooks, and the
+skills' half of it — every skill on such a path says what the message means —
+now rests on a file rather than on memory.
+
 
 ## Who may invoke a skill
 

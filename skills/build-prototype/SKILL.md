@@ -90,6 +90,25 @@ its own report and it stops there, rather than carrying on past a step that did
 not run. That a permission prompt appeared at all is a finding in itself: the
 tool classes the run needed were not all approved before it started.
 
+## With nobody there
+
+A prototype is reached with nobody there from the planning stage, for a question
+that can be measured — a state model, a flow — and for that kind the run is the
+one who looks. It takes the logic branch, states the question at the top of the
+demo as LOGIC.md asks, builds the module and the page, and then drives the page
+itself through the cases the question named — the awkward ones, the ones that
+were hard to reason about on paper — and reads the state after each. The answer
+is what the state says, written on the planning issue with the question and the
+cases that were run, and the prototype is captured the same way as with somebody
+there. "Hand it over" then has nobody to hand to and is skipped; the record on
+the issue is the hand-over.
+
+A question that has to be seen — the UI branch — cannot be settled alone, since
+its answer is what somebody sees. The planning stage checks before it goes alone
+that none is open; where one comes up anyway, this skill is not the answer: say
+so, and the question goes back to the caller's order for a question with nobody
+there. Do not build variants nobody will look at.
+
 ## Pick a branch
 
 Identify which question is being answered, using the user's prompt, the surrounding code, or by asking if the user is around:

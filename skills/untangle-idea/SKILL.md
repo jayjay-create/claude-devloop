@@ -143,8 +143,12 @@ says. Silence is not flow.
 stages, and each one comes back on its own.
 
 **With nobody there to answer**, a question that passes this test does not stop
-the run. Take the reversible option, record it in the spec as decided without an
-answer, and carry on. Stop only where no reversible option exists.
+the run, and what it does instead is not written here. Each skill that can run
+unattended says it in a section of its own, in the words of its own work — a
+spec is not a task and a task is not a check class, and one sentence fitted to
+all of them fits none. A skill without such a section has no unattended path;
+should it meet the case anyway, it stops with the question named rather than
+deciding it.
 
 **If the user has asked to be consulted about something, that stands.** It
 overrides this test in the direction of asking, and it is not yours to weigh.

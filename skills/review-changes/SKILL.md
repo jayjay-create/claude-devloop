@@ -48,8 +48,11 @@ plausible is worse than no answer, because nobody can tell it went wrong. Name
 the file, say what is missing, and offer to bring it up to date.
 
 **A seam is a place where this work is checked** — a function boundary, a module
-edge, an entry point. The spec names them and the user confirms them; nothing is
-tested at an unconfirmed seam.
+edge, an entry point. The spec names them and places each one: the path and the
+symbol where it stands in the code, or the line of the chosen interface that
+creates it. Whether a boundary exists at a place is a fact and not a judgement,
+so nothing is tested at a seam the spec has not placed, and nobody's
+confirmation stands in for the placing. That holds in both modes alike.
 
 **A condition is what a task promises will be true when it is done** — stated so
 that it can be false, and so that breaking it can be seen. The seam says where it
@@ -161,7 +164,7 @@ A documented project rule always beats a general one.
 
 Compare against the task issue and the spec it belongs to. Look for: requirements
 not met, behaviour that contradicts a stated decision, work nobody asked for,
-tests at seams the spec did not confirm, and tests that would pass whatever the
+tests at seams the spec did not place, and tests that would pass whatever the
 code did.
 
 **Read the task's conditions one by one against the `Guarded conditions` list the
@@ -179,7 +182,9 @@ Add one reviewer per lens the change touches. Judge this from the diff, not from
 the task description — if the diff contains it, the lens runs.
 
 **Unattended, a stated reason buys no exception, and the form of what may be said
-instead is fixed.** Where the trigger is in the diff, the lens runs. Where it is
+instead is fixed.** Whether this run is unattended is read off the mark the build
+stage reads — `.claude/unattended.local` with this run's commit — and not off a
+word from earlier in the session. Where the trigger is in the diff, the lens runs. Where it is
 not, the one thing that may be said about the lens that did not run is **the
 trigger's own words, negated, item by item** — "the diff contains no schema and
 no stored-format change" against a trigger reading "any schema or stored-format

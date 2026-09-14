@@ -163,8 +163,12 @@ says. Silence is not flow.
 stages, and each one comes back on its own.
 
 **With nobody there to answer**, a question that passes this test does not stop
-the run. Take the reversible option, record it in the spec as decided without an
-answer, and carry on. Stop only where no reversible option exists.
+the run, and what it does instead is not written here. Each skill that can run
+unattended says it in a section of its own, in the words of its own work — a
+spec is not a task and a task is not a check class, and one sentence fitted to
+all of them fits none. A skill without such a section has no unattended path;
+should it meet the case anyway, it stops with the question named rather than
+deciding it.
 
 **If the user has asked to be consulted about something, that stands.** It
 overrides this test in the direction of asking, and it is not yours to weigh.
@@ -205,8 +209,11 @@ The files hold two kinds of content, and only one of them is yours:
   These were decided here and are never overwritten.
 
 Rewrite the first kind from the current templates, leave the second untouched,
-and say in two or three lines what actually changed — named, not counted. If
-nothing changed, say that and stop. Then land it the way Step 8 describes.
+and say in two or three lines what actually changed — named, not counted. One
+thing outside those files is this workflow's too: the two paths under `.claude/`
+that Step 5 keeps out of the repository. Check `.gitignore` covers both, since a
+project set up before one of them existed has only the other. If nothing
+changed, say that and stop. Then land it the way Step 8 describes.
 
 Each file records the plugin version it was last written from, on its own line.
 Put it directly above the top heading — below the frontmatter block where a file
@@ -319,12 +326,14 @@ them one at a time, **and that this is not the unattended mode**. Naming it is
 the part that gets dropped, and dropping it is what leaves the two looking like
 the same thing — and they are easy to confuse, because both sound like "stop
 asking me". This settles which commands may run without a prompt, nothing more.
-It changes nothing about who decides: the design choice,
-the task cut and the go-ahead before anything merges all still come to them, one
-at a time, exactly as before. The unattended mode is the separate thing that
-replaces those decisions with a green check suite, it has to be asked for by
-name, and it has its own preconditions. Granting permissions here does not switch
-it on and does not bring it closer.
+It changes nothing about who decides: every question this workflow puts to them
+— sharpening the idea, choosing the design, the go-ahead before anything merges
+— still comes to them, one at a time, exactly as before. The unattended mode is
+the separate thing that lets a piece of work run alone from the point where the
+idea stands, with a check standing in for each of those decisions; it has to be
+asked for by name, it has its own preconditions, and each piece of work is asked
+separately whether to use it. Granting permissions here does not switch it on
+and does not bring it closer.
 
 ## Step 1 — Explore, change nothing
 
@@ -495,12 +504,15 @@ plugin's one-time setup, not to a per-project run.
 
 ## Step 5 — Canonical targets in the task runner
 
-This workflow keeps one file of local state under `.claude/`:
-`check-attempts.local`, written by the turn-end hook, which is also the only hook
-that reads a file of its own. It does not belong in the repository. Make sure
-`.gitignore` covers it — add the path if it does not, create the file if there is
-none — and do it here, where it is known, rather than leaving a later step to
-notice.
+This workflow keeps two files of local state under `.claude/`:
+`check-attempts.local`, written and read by the turn-end hook, which is the only
+hook that reads a file of its own; and `unattended.local`, the mark an unattended
+run writes for itself where it steps out of the flow and reads at every place it
+forks on the mode. Neither belongs in the repository. Make sure `.gitignore`
+covers both — add the paths if it does not, create the file if there is none —
+and do it here, where it is known, rather than leaving a later step to notice. A
+refresh does the same, since a project set up before the second file existed has
+only the first.
 
 
 These names mean the same in every project, so a skill can say `make lint` and be

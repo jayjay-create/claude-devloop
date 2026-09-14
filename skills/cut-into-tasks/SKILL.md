@@ -45,8 +45,11 @@ plausible is worse than no answer, because nobody can tell it went wrong. Name
 the file, say what is missing, and offer to bring it up to date.
 
 **A seam is a place where this work is checked** — a function boundary, a module
-edge, an entry point. The spec names them and the user confirms them; nothing is
-tested at an unconfirmed seam.
+edge, an entry point. The spec names them and places each one: the path and the
+symbol where it stands in the code, or the line of the chosen interface that
+creates it. Whether a boundary exists at a place is a fact and not a judgement,
+so nothing is tested at a seam the spec has not placed, and nobody's
+confirmation stands in for the placing. That holds in both modes alike.
 
 **A condition is what a task promises will be true when it is done** — stated so
 that it can be false, and so that breaking it can be seen. The seam says where it
@@ -156,8 +159,12 @@ says. Silence is not flow.
 stages, and each one comes back on its own.
 
 **With nobody there to answer**, a question that passes this test does not stop
-the run. Take the reversible option, record it in the spec as decided without an
-answer, and carry on. Stop only where no reversible option exists.
+the run, and what it does instead is not written here. Each skill that can run
+unattended says it in a section of its own, in the words of its own work — a
+spec is not a task and a task is not a check class, and one sentence fitted to
+all of them fits none. A skill without such a section has no unattended path;
+should it meet the case anyway, it stops with the question named rather than
+deciding it.
 
 **If the user has asked to be consulted about something, that stands.** It
 overrides this test in the direction of asking, and it is not yours to weigh.
@@ -177,6 +184,18 @@ must be able to answer. Never ask which skill to use.
 I change something?" cannot be answered with yes: an alternative question and a
 yes-or-no question are different shapes, and a reply to the mixed form means
 neither. Ask one or the other.
+
+## With nobody there
+
+This stage asks nothing that the test above lets through: the split follows from
+the spec and from the rules below, and "Before you create anything" says so. So
+the order a planning run follows at an unanswered question — under the section
+of the same name in `plan-work` — is not needed here. What this stage does fork
+on is the mode, in one place, at the end: "After creating" says what happens on
+each answer the user gave at the end of the sharpening, or on `--auto`, and reads
+the mode off the mark that answer wrote — `.claude/unattended.local`, this run's
+main-branch commit on its first line and `build` or `plan` on its second — and
+not off a word from earlier in the session.
 
 ## What a task is
 
@@ -202,7 +221,7 @@ add the new thing beside the old, move callers in batches, delete the old last.
 - **Problem** — what is missing or wrong now.
 - **Solution** — what to build, concretely enough to start. Interfaces and
   signatures where the spec fixed them.
-- **Test decisions** — which of the spec's confirmed seams this task is checked
+- **Test decisions** — which of the spec's placed seams this task is checked
   at, and the conditions checked at each, one line apiece. **A condition is
   written so that it can be false**: "rejects an empty input with an error", not
   "unit tests at the parser boundary". The second is a scope, and a scope cannot
@@ -262,11 +281,30 @@ Query the tracker for what you actually created — do not report from what you
 intended. State the number of **tasks**, not the number of issues (the spec is an
 issue too), and which one is ready first.
 
-Then say you are starting on the first task, and do it. Say in plain words what
-that means: one task at a time, each with tests, each reviewed before it lands,
-and they see the result before anything is merged. Do not ask permission first —
-nothing lands without the gate at the end of the build, and that gate is where
-the decision actually sits.
+Then what happens depends on how this piece of work was told to run, and the mark
+says which: `.claude/unattended.local` absent means with them; present with this
+run's commit and `build` means alone, through the build; present with `plan`
+means alone up to here and no further.
+
+- **With them**, say you are starting on the first task, and do it. Say in plain
+  words what that means: one task at a time, each with tests, each reviewed
+  before it lands, and they see the result before anything is merged. Do not ask
+  permission first — nothing lands without the gate at the end of the build, and
+  that gate is where the decision actually sits.
+- **Alone, `build`**: say you are starting on the first task and that the build
+  goes on by itself from here, and run `build-work`. Its section on the
+  unattended mode reads the five preconditions — all five, this time with tasks
+  to read the third against — finds the mark this run wrote, and opens the run.
+- **Alone, `plan`**: this is the halt before the first build, and the run ends
+  here. Say what is in the tracker to read: the spec by its title, how many
+  tasks, which one is ready first and what it unblocks. Say that nothing is
+  built, and how it goes on: the next session opens with this spec and its ready
+  tasks and takes the first — with them there, or alone where they type `--auto`
+  then, which is the only thing that sets the mode on that route. Then delete
+  the mark with a shell command, say that you did, and stop. This is one of the
+  exits the mark has to be cleared at: left standing, it would tell the next
+  session's build that a run is still going, and that build would refuse to
+  start.
 
 ---
 

@@ -51,14 +51,22 @@ You never have to know which step comes next.
 
 **Sharpen the idea.** Rounds of numbered questions, each with a recommended
 answer, and an estimate of how many rounds are left. Facts are looked up, never
-asked of you. Terms go into the glossary as they come up.
+asked of you. Terms go into the glossary as they come up. It ends with the hard
+core written down — the user stories any design has to carry, and what is out
+of scope — and, where this repository allows the unattended mode, one question:
+whether the rest runs alone.
 
 **Read the code.** Read-only, before anything is proposed.
 
 **Draft designs.** Three or four designs written in parallel, each under a
 different constraint — smallest interface, most flexible, optimised for the
-common caller, cleanest separation. You get one recommendation, not a menu, and
-you choose. This also fixes the seams: where the work will be checked.
+common caller, cleanest separation. Each is then checked by an agent of its own
+against the stories and exclusions you settled — which story it does not carry,
+which exclusion it builds anyway — as facts, not as a ranking. You get one
+recommendation with those verdicts beside it, not a menu, and you choose; alone,
+the recommendation is taken where it passed every item. This also fixes the
+seams: where the work will be checked, each placed at a boundary that exists in
+the code.
 
 **Write the spec.** No new questions. It records what was decided and publishes
 it to the issue tracker.
@@ -69,8 +77,9 @@ the step it was in rather than starting over.
 
 **Cut it into tasks.** Each cuts vertically through every layer so it can be
 demonstrated on its own, fits one fresh session, and records which tasks must
-land first as real, queryable blocking relationships. You confirm the cut before
-anything is created.
+land first as real, queryable blocking relationships. The cut is presented and
+then created — it follows from the spec, not from anything only you know — and
+you can name a different one before it is.
 
 **Build each task.** One at a time, in its own subagent with a fresh context.
 Test first. Fast checks after every file change, the full suite before anything
@@ -91,21 +100,38 @@ run nothing wakes again.
 ## Attended and unattended
 
 By default you approve each task before it merges: you see the diff and the
-review findings first.
+review findings first, you choose the design, and every question comes to you as
+it arises.
 
     /devloop:start-work --auto
 
-replaces that approval with a green check suite, from the build step onward.
-Planning is never unattended: the design choice and the task cut are the two
-decisions where a mistake sends the whole thing in the wrong direction.
+means: do alone everything that can be done alone. Sharpening the idea always
+runs with you, because it needs what only you know. Everything after it — the
+designs, the design choice, the seams, the spec, the cut, the build, the merge —
+can run alone, and what carries it is not that a wrong design or a wrong cut
+stopped costing anything. It is that each of them has something to be checked
+against: the design against the user stories and exclusions you settled, by an
+agent per draft, as a question of fact; the seams against boundaries that exist
+in the code; the cut against the spec it follows from; the build against the
+check suite.
 
-It refuses to start unless every check class is configured or explicitly recorded
-as not applicable, a failing gate genuinely blocks a merge on the remote, and the
-repository can merge without a person present — which needs auto-merge enabled
-and a required check for it to wait on. Those are conditions for the run being
-able to finish, not judgements about it: without them it would build a task and
-then sit on a pull request nobody is there to merge. Attended runs are unaffected
-either way. There is no cap on how many tasks it gets through: it runs until
+Without the flag you are asked once, at the end of the sharpening, how this piece
+of work should run: carry on alone now, plan alone and halt before the first
+build so you can read the spec and the tasks, or stay. That question is only
+asked where this repository allows the mode at all — the check setup offers it
+once and records your answer — and it is skipped where you typed the flag, which
+is that answer given up front.
+
+It refuses to go alone unless every check class is configured or explicitly
+recorded as not applicable, a failing gate genuinely blocks a merge on the
+remote, and the repository can merge without a person present — which needs
+auto-merge enabled and a required check for it to wait on. Those are conditions
+for the run being able to finish, not judgements about it: without them it would
+build a task and then sit on a pull request nobody is there to merge. They are
+read where you are asked, so the question is not put and then found to have had
+one answer, and read again where the build starts, since the route straight to a
+build has no question and the state can change in between. Attended runs are
+unaffected either way. There is no cap on how many tasks it gets through: it runs until
 nothing in scope is ready any more, and picks up work that turns up along the way
 where it serves the same goal. What bounds a single task is the turn-end hook,
 which runs the check suite itself and hands the problem over once the same
@@ -228,7 +254,11 @@ come back in a different file.
   so the run that wrote the file was also the only thing that read it — and it
   raised its own cap in the same write that advanced the count. Either something
   else reads the file or the file goes, because a run cannot be the reader of
-  its own limit.
+  its own limit. The one file the mode writes today — the mark under `.claude/`
+  saying which mode a run is in and how far it may go — is not that shape: it
+  carries no limit, and it is read by parts of the run that did not write it,
+  the build after the planning, the subagent inside the build, the next session
+  that finds it left behind.
 - A step that depends on a precondition (a remote, a permission, a tool) must
   refuse and stop when that precondition is missing, not fall back to a
   locally-equivalent action that quietly breaks one of the workflow's own rules
