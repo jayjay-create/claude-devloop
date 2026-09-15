@@ -16,7 +16,7 @@ user asks…" form — that is for agents, and it shows up in the command list.
 Whatever the model needs in order to recognise the situation goes in the body,
 which it loads anyway once it reaches for the skill.
 
-## Every skill opens with these two
+## Every skill carries these two
 
 **Answer in the language the user writes in, not the language of this document.**
 Without it, a long English body drowns out a two-word German message.
@@ -39,9 +39,11 @@ A word two skills lean on has to be defined somewhere both of them read, or the
 one that did not get the definition guesses. Three carry real weight here.
 
 **A seam is a place where this work is checked** — a function boundary, a
-module edge, an entry point. The spec confirms them; nothing gets tested at an
-unconfirmed seam, and a test at one is a review finding. Every skill that builds
-or reviews works to that list.
+module edge, an entry point. The spec names them and places each one: the path
+and the symbol where it stands in the code, or the line of the chosen interface
+that creates it. Nothing is tested at a seam the spec has not placed, nobody's
+confirmation stands in for the placing, and a test at an unplaced seam is a
+review finding. Every skill that builds or reviews works to that list.
 
 **A condition is what a task promises will be true when it is done** — stated so
 that it can be false, and so that breaking it can be seen. The seam says where it
@@ -1211,16 +1213,18 @@ back in a skill nobody touched:
 
     for f in skills/*/SKILL.md; do sed -n '/^\*\*Answer in the language/,/^$/p' "$f" | cksum; done | sort -u
 
-It also appears exactly twice per file — once at the top and once at the very
-bottom. Twelve lines of output, all reading 2, means none of them lost its
-closing copy:
+It also appears exactly twice per file — at the top and at the very bottom in
+eleven, and in `start-work` after the numbered steps and at the very bottom, for
+the reason under "Numbered steps where order matters". Twelve lines of output,
+all reading 2, means none of them lost its closing copy:
 
     for f in skills/*/SKILL.md; do grep -c 'Answer in the language the user writes in' "$f"; done
 
 The same for the block on running commands, which is in all twelve. What comes
-after it differs per file — a `## ` heading in most, a `---` in one, the closing
-language block elsewhere — so the extract runs to whichever of those three markers
-comes first, rather than to a fixed number of lines:
+after it differs per file — a `## ` heading in eleven, a `---` in `research` —
+so the extract runs to whichever of those comes first, with the closing language
+block as a third stop in case a file ever ends that way, rather than to a fixed
+number of lines:
 
     for f in skills/*/SKILL.md; do awk '/^## When a command does not answer/{f=1;print;next} f&&(/^## /||/^---/||/^\*\*Answer in the language/){exit} f{print}' "$f" | cksum; done | sort -u
 

@@ -25,9 +25,12 @@ where the body would come from if one is ever needed — mostly a file to copy f
 mattpocock/skills and adjust, which is minutes of work, not days.
 
 **This is a supply of names, not a backlog.** Nothing here is missing: the
-pre-handover check that holds locked skills against their callers comes back
-empty, so no built skill reaches for anything on this list. A name leaves it when
-something needs to call it on its own, which is exactly how `research` and
+pre-handover check that holds locked skills against their callers prints one
+line since 13 September 2026 (`b90874b`) — `start-work`, named in `build-work`
+step 6 as the place that sends an armed pull request there, not run — and
+nothing else, so no built skill reaches for anything on this list. A name leaves
+it when something needs to call it on its own, which is exactly how `research`
+and
 `build-prototype` got built.
 
 Two kinds of entry read as gaps and are not:
@@ -83,8 +86,8 @@ the ones with a plausible answer:
   Building is one task at a time from a fresh main, so today the conflict comes
   from two sessions or from the user's own work alongside.
 - **`find-refactor-candidates`** — when every task under a spec has closed, which
-  is the one moment the workflow looks back at all; it already asks there whether
-  to close the spec. A second trigger worth measuring: the same file touched by
+  is the one moment the workflow looks back at all; it already closes the spec
+  there, without asking. A second trigger worth measuring: the same file touched by
   several tasks in a row.
 - **`check-docs-consistency`** — before a handover, which is where the checks in
   `docs/skill-conventions.md` run; the count belongs there and is not repeated
@@ -99,7 +102,8 @@ the ones with a plausible answer:
   one" needs a reader who knows which one "this" is, and there is no such reader
   two commits later.
 - **`measure-runtime-effect`** — nothing runs today, so there is nothing to
-  measure. Attaches once the first item under Known gaps is built.
+  measure. Attaches once the entry "The aim is idea to a running application;
+  this gets to merged code" under Known gaps is built.
 - **`write-questionnaire`** — when the answer sits with a person the workflow
   cannot interview: a colleague, a customer, whoever holds the operational
   knowledge. The map has research and interview and nothing for "go and ask
@@ -127,8 +131,9 @@ the ones with a plausible answer:
 
   The picking already exists: `build-prototype/UI.md` generates radically
   different variants, wires them together and has the user choose. It is
-  reachable only from inside a map, for one question at a time, and it throws
-  the answer away afterwards. Sources for the file, in order of preference: read
+  reachable from inside a map and, since 14 September 2026 (`e09fa80`), from
+  `plan-work` Stage 1, for one question at a time, and it throws the answer away
+  afterwards. Sources for the file, in order of preference: read
   it out of an existing stylesheet; a chosen prototype; a short interview.
   Anthropic's `/design-sync` could produce one too, and is deliberately not a
   dependency — it is a research preview whose shape is expected to change, it
@@ -310,8 +315,9 @@ the size of the work.
     user to see the thing, because no step ever asks for one.
   - **How the interface gets decided.** Nothing in the set draws a UI, chooses a
     layout, or settles what a screen should feel like. `build-prototype` has a UI
-    branch, but only inside a map, only for one question at a time, and it keeps
-    no record of what was chosen. `settle-the-look` above is the named answer to
+    branch, reachable from inside a map and, since 14 September 2026 (`e09fa80`),
+    from `plan-work` Stage 1, only for one question at a time, and it keeps no
+    record of what was chosen. `settle-the-look` above is the named answer to
     the recording half of this; the drawing half is still open.
   - **How the stack gets chosen.** Language, runtime, framework, database. A spec
     presumes them; nothing ever picks them, so they arrive by whatever the first
@@ -345,10 +351,11 @@ the size of the work.
 
   What this did **not** measure is the ordering itself. The readiness query came
   back with exactly one ready task, so nothing was being chosen between, and the
-  three numbered clauses at `skills/build-work/SKILL.md:366-380` never came into
-  play: the run took the one ready task, which is what the rule says to do. A
-  measurement of the ordering needs a spec whose last task is closed, or merged
-  work that is wrong, with the loose issues still lying there.
+  three numbered clauses under `build-work` step 2 — beginning "Anything that
+  leaves built work wrong goes first" — never came into play: the run took the
+  one ready task, which is what the rule says to do. A measurement of the
+  ordering needs a spec whose last task is closed, or merged work that is wrong,
+  with the loose issues still lying there.
 - **The loose-issue rule was written by appending, and the sentences it competes
   with were left standing.** This is the finding; the three violations below are
   how it showed. Measured on 9 September 2026 on a bench with four loose issues
@@ -1173,9 +1180,10 @@ the size of the work.
 
   **The install guard is unchanged and the case stays open.** The reason it stays
   open is one thing, and it is not that the false positive is a corner.
-  Telling a string from an execution needs the quotes, and line 4 of every hook
-  destroys them on purpose. That normalisation is the correction from "A hook
-  reading the tool's JSON must undo the escapes first" and it closed two silent
+  Telling a string from an execution needs the quotes, and line 4 of the three
+  guards and of `post-tool-use-checks.sh` destroys them on purpose. That
+  normalisation is the correction from "A hook reading the tool's JSON must undo
+  the escapes first" and it closed two silent
   holes — a second command on a new line walking past all three guards, and
   anything after the first quoted string being invisible. Undoing it reopens both.
   That part holds, and it is why a `PreToolUse` hook cannot tell "runs an install"
@@ -1390,9 +1398,15 @@ the size of the work.
   comments is one of the things a review reads for. The clause holds over the
   second review round too, said there. Step 6's precondition now says which of
   its two halves the unattended mode replaces and which it does not. And
-  `review-changes` carries the corresponding sentence at "Pin the target", with a
-  comment-only diff named as the case where the standards lens has the most to
-  do rather than the least.
+  `review-changes` was recorded here as carrying the corresponding sentence at
+  "Pin the target", with a comment-only diff named as the case where the standards
+  lens has the most to do rather than the least. **It never did.** Read on 14
+  September 2026: what stands at "Pin the target" is "How small it is decides
+  nothing here. A one-line diff gets the lenses its content triggers, and the two
+  that always run always run", and `git log -S 'most to do'` over the file is
+  empty — the sentence was never written. This entry claimed a built state that
+  did not exist, which is a finding of its own: a *Built* line written from the
+  intent rather than from the diff.
 
   **A third question was added to the two this file asks before a rule is
   written: what does this sentence not replace?** Both known competing sentences
@@ -1535,7 +1549,12 @@ the size of the work.
   Should hold: a run promises nothing it cannot keep. Either it really waits, in
   the same turn, or it says it is standing still and will need a push. "I will
   come back to you" is neither.
-  A fix costs one clause. Recorded, not built.
+  Built on 13 September 2026 in `b90874b`, in the entry on the post-arming stop
+  below: `build-work` step 6, "Unattended, the wait happens in this answer or it
+  does not happen at all. Nothing wakes a run: the answer that ends here ends the
+  run, whatever it promised about reporting back"; and with somebody there, "the
+  session does not sit and wait: it says what is outstanding and picks up when you
+  say it landed" (`README.md`, "Merge and verify").
 
 - **Sixteen false statements in these two documents, and that was measured on 7
   September 2026.** A reading of `docs/roadmap.md` and `docs/skill-conventions.md`
@@ -1768,9 +1787,10 @@ the size of the work.
   all three modes" — is closed and carries the label. It is a planning issue that
   was closed because the work it proposed turned out to be built already.
 
-  *Today:* `plan-work` puts the label on at the start and swaps it at Stage 4, when
-  the spec is written into the body. A plan that ends any other way — closed
-  because the work exists, closed because it was abandoned — never reaches Stage 4
+  *Today:* `plan-work` puts the label on at the start and takes it off at Stage
+  4, when the spec is written into the body. A plan that ends any other way —
+  closed because the work exists, closed because it was abandoned — never reaches
+  Stage 4
   and keeps the label.
   *Should:* a closed planning issue does not carry it. `plan-work` says what the
   label means in as many words — "Nothing acts on a `being-planned` issue —
@@ -2062,7 +2082,7 @@ the size of the work.
     `.gitignore` for both**, since a project set up before the second existed
     has only the first.
 
-  **Eleven skill files and two documents, not three files.** The paragraph above
+  **Ten skill files and two documents, not three files.** The paragraph above
   counted two for the fence, six for the clause and one further skill. The
   walkthrough found `README.md`, `start-work`, `plan-work`, `cut-into-tasks`,
   `build-work`, `review-changes`, `setup-checks`, `setup-project`,
@@ -2088,9 +2108,9 @@ the size of the work.
     fourth site deciding the other way, not named above. Rewritten.
   - `setup-checks:585` — the cost list the user agrees to. Rewritten.
   - `plan-work:337`, `:344` — the design question and "Write nothing until they
-    have answered". Kept for the case with the user there; the alone case
-    written beside it.
-  - `build-work:335`, `setup-checks:426` — "a task cut from a stale main", "the
+    have answered", named from reading rather than from a hit. Kept for the case
+    with the user there; the alone case written beside it.
+  - `build-work:288`, `setup-checks:408` — "a task cut from a stale main", "the
     next task cuts its branch": the verb, not the subject. Unchanged.
 
   Seams confirmed: `grep -rn -i "confirm" skills/*/SKILL.md README.md`, read
@@ -2100,9 +2120,10 @@ the size of the work.
     Rewritten identically.
   - `plan-work:356` — "confirmed rather than assumed". Rewritten to placed.
   - `plan-work:365`, `:379`, `cut-into-tasks:205`, `build-work:419`, `:551`,
-    `review-changes:164`, `diagnose-bug:293` to `:297` — "confirmed seams" as
-    a noun. Rewritten to placed.
-  - `untangle-idea:345` — "Do not act on it until the user confirms" is about
+    `review-changes:164` — "confirmed seams" as a noun; `diagnose-bug:293` to
+    `:297` — "the spec's confirmed list", "a place nobody confirmed". Rewritten
+    to placed.
+  - `untangle-idea:341` — "Do not act on it until the user confirms" is about
     the map. Unchanged.
 
   What carries the mode: `grep -rn "unattended.local\|nothing on disk\|no
@@ -2138,14 +2159,25 @@ the size of the work.
   - `build-prototype:111`, `LOGIC.md:52`, `UI.md:94` — the hand-over to a
     person. Kept; the alone case written in `SKILL.md` under `## With nobody
     there`, which says the hand-over is skipped there.
-  - `untangle-idea:341`, `:380` — attended by construction. Unchanged.
+  - `untangle-idea:337`, `:380` — attended by construction. Unchanged.
 
-  The preconditions: `grep -rn -i "precondition" skills/*/SKILL.md README.md`.
+  The preconditions: `grep -rn -i "precondition" skills/*/SKILL.md README.md` —
+  seven lines, none of them the list itself.
 
-  - `build-work:1110` — the five. Kept; the reason for reading them twice
-    written above the list.
-  - `README.md:102` — "It refuses to start unless". Rewritten with both places.
-  - `setup-project:317` — permissions as one precondition. Unchanged.
+  - `setup-checks:587` — the cost list, where a missing precondition is a stop.
+    Rewritten with the list.
+  - `start-work:300` — "checks its own preconditions before starting". Rewritten
+    with both places.
+  - `setup-project:310`, `:326` — permissions as one precondition, and the mode
+    having preconditions of its own. The first unchanged, the second rewritten
+    around the question per piece of work.
+  - `build-work:727` — step 6's two preconditions, the gate's. Another subject;
+    unchanged.
+  - `README.md:232`, `:233` — the general rule on a missing precondition.
+    Unchanged.
+  - Not reached by the word, named from reading: `build-work:1110` — the five.
+    Kept; the reason for reading them twice written above the list.
+    `README.md:102` — "It refuses to start unless". Rewritten with both places.
 
   The stage boundary: `grep -rn "next stage\|permission to reach"
   skills/*/SKILL.md`.
@@ -2162,8 +2194,8 @@ the size of the work.
     Moved under the attended branch of the fork at "After creating".
   - `README.md:47` — the default. Unchanged.
 
-  The thirteen checks under "Before a handover, run these" were run after the
-  change: the three checksums read one line each, the offer grep counts 21 lines
+  The checks under "Before a handover, run these" were run after the change:
+  the three checksums read one line each, the offer grep counts 21 lines
   before and after — two offers rewritten, none added — and the check over the
   unattended finish is silent.
 
@@ -2176,6 +2208,9 @@ the size of the work.
     survivors, or a redraft under the failed items, should happen instead is
     not decided. The stop was chosen because a comparison that recommended a
     draft now known not to carry the stories is not one to pick the next from.
+    Measured once since, the other way: the first planning run alone revised
+    the recommended draft three times instead of stopping — finding 6 of that
+    entry below.
   - **A question that has to be seen and first appears in Stage 3.** The check
     at the end of Stage 1 catches the ones visible by then; one surfacing later
     goes through the order for a question with nobody there, most often its
@@ -2207,7 +2242,8 @@ the size of the work.
   would report back once the merge had landed, and ended its answer. Nothing
   wakes a run, so it stood there until the user wrote a word. Pull request 53 was
   armed and merged the same morning without a stop, so this is not what every
-  arming does.
+  arming does. Line numbers in this entry are those at `e84eb88`, the tree before
+  it was written.
 
   *Today:* **the promise is a sentence no file asks for, and the rule it breaks is
   already written down.** `docs/skill-conventions.md` under `## Environment
@@ -2366,6 +2402,8 @@ the size of the work.
   a usable report on the first repeat. **Six of twenty lenses fell over across the
   run**, four of them test quality, every one of them inside a group of four
   started in parallel, and every repeat answered immediately. Attended throughout.
+  Line numbers in this entry are those at `ac5a5d1`, the tree before it was
+  written.
 
   *Today:* a lens that falls over silently is visible, and the workflow already says
   what to do about it — `review-changes:240`, "If a reviewer fails to return, say
@@ -2422,7 +2460,8 @@ the size of the work.
   task 47.** The test-quality lens committed to the branch itself — switching
   locks over to a deferred call — and then asked whether the work should land. The
   spec lens opened an issue and summarised all three lenses. The run saw that the
-  branch had moved and said so, and drew nothing from it.
+  branch had moved and said so, and drew nothing from it. Line numbers in this
+  entry are those at `ac5a5d1`, the tree before it was written.
 
   *Today:* the review ran against a diff pinned at one commit, the branch stood on
   another at the end, and the summary went out over the first. So code sat on the
@@ -2509,7 +2548,8 @@ the size of the work.
 - **A change to the check chain itself went to the main branch unreviewed,
   measured on 12 September 2026 in `devloop-test-o` on issue 49.** `setup-checks`
   changed four check targets and two documentation files and landed them. The run
-  said so itself: that skill has no review step.
+  said so itself: that skill has no review step. Line numbers in this entry are
+  those at `ac5a5d1`, the tree before it was written.
 
   *Today:* attended, the user sees the diff, so nothing was unread. Unattended, the
   check chain is what stands in for the user's approval — `build-work:707` at step
@@ -2568,7 +2608,8 @@ the size of the work.
 - **A design question was put in the build stage, measured on 13 September 2026 in
   `devloop-test-o` on issue 51.** Taking the issue up, the run laid out two ways
   to build it — a recorded reference output against a reference implementation in
-  the test code — and waited for an answer. Attended, so it got one.
+  the test code — and waited for an answer. Attended, so it got one. Line numbers
+  in this entry are those at `ac5a5d1`, the tree before it was written.
 
   *Today:* the grilling was long over, the spec closed, and both options were
   reversible. **The rule that was broken is not the one for an empty room.**
@@ -2654,7 +2695,8 @@ the size of the work.
   three times separately, measured across 11 to 13 September 2026 in
   `devloop-test-o`.** A lock released by hand instead of through the deferred
   call: in task 47, in the first diff of task 48, and in the fix-up commit of 48
-  immediately beside a place that does it correctly in the same commit.
+  immediately beside a place that does it correctly in the same commit. Line
+  numbers in this entry are those at `ac5a5d1`, the tree before it was written.
 
   *Today:* the threshold in `hooks/stop-checks.sh` counts three identical failure
   pictures, and it cannot see this one. `MAX=3` at line 8, and the signature at
@@ -2892,7 +2934,7 @@ the size of the work.
   - **`review-changes:181`, `:188`, `:197` and `:236`** — unattended a stated
     reason buys no exception, and the sentence nobody reads in an unattended run.
     The mark would be read at all four. No change.
-  - **`setup-checks:491` to `:655`, step 8**, and **`README.md:87` to `:122`** and
+  - **`setup-checks:491` to `:646`, step 8**, and **`README.md:87` to `:122`** and
     **`:144`** — where the mode is described to a person at the offer and in the
     readme. Does not apply: nothing there is read by a run deciding how to act. It
     becomes a co-change only if the mark is something the user is told about,
@@ -3095,7 +3137,7 @@ the size of the work.
     is checkable against the repository — it is either in this history or it is
     not, either an ancestor of where main stands now or not, and the branch in
     the tree was either cut from it or was not. It is also read anyway:
-    `build-work:285` compares the base against the remote before anything is cut,
+    `build-work:287` compares the base against the remote before anything is cut,
     `:1164` has the opening message name it, and `:1235` with `setup-checks:609`
     send the user back to it to read the diffs afterwards. What the check cannot
     be is equality with the current main, for the reason under the first search
@@ -3181,7 +3223,7 @@ the size of the work.
     than at the build.
   - **`start-work`'s `## Unattended` is a trailing description, not a step.**
     Open. It stands at `:295`, the last section of the body, after "Never say a
-    skill's name" and behind steps that end at `:241`, and
+    skill's name" and behind steps that end at `:267`, and
     `docs/skill-conventions.md:28` is the rule it would have to be written
     against: "A section reads as description; a numbered step reads as an
     instruction."
@@ -3264,8 +3306,9 @@ the size of the work.
   deleted at six exits listed in `build-work` under `## Unattended mode`. Of the
   eleven gaps: the four sites in `review-changes` read it in the main run and the
   build subagent reads the same file, so nothing travels in a prompt; the five
-  sentences named as contradicted are rewritten, with the heading at
-  `README.md:222` left, since both rules under it are still fixed in the skills;
+  sentences named as contradicted are rewritten, with the heading "Both already
+  fixed in the skills" in `README.md` left, since both rules under it are still
+  fixed in the skills;
   `setup-project` says two files; the exits stand in one list in the file that
   creates the mark; `build-work` reached without `start-work` writes its own
   mark on the direct route; `start-work`'s `## Unattended` stays a section, but
@@ -3277,7 +3320,7 @@ the size of the work.
   `task/unattended-mark` still carries no build.
 
 - **The first planning run alone, measured on 14 September 2026 in
-  `devloop-test-o` — the first run on 0.100.0, five findings, and two places
+  `devloop-test-o` — the first run on 0.100.0, six findings, and two places
   where the wording is the user's to settle before anything is built.** The
   user gave an idea, answered three questions in Stage 1 and chose to let the
   run carry on alone. What followed ran without them: four drafts, a checking
@@ -3471,7 +3514,7 @@ the size of the work.
   three are what 'the idea stands' means everywhere in this file." The first
   condition is the run's judgement of importance, and a run that had asked
   three questions passed it. The sentence stood alone — "Done when nothing
-  important is open.", at `:263` of the file at `4358ead`, from 22 August 2026
+  important is open.", at `:263` of the file at `4358ead`, from 20 August 2026
   — and gained its two companions on 14 September in the change that let
   planning run alone, so the sentence that ends Stage 1 is now the sentence
   that hands the run over. `README.md:52` to `:57` describes the stage to a
@@ -3621,6 +3664,41 @@ the size of the work.
     "three lists, item by item … every answer in the words of the item, so
     anyone holding the list can check it against the draft".
 
+  **6. The recommended draft was revised three times alone, where the text
+  says to stop.** Against the recommended draft the checking agent found four
+  gaps one after another; the run redrafted under each and had it checked
+  again, three rounds, with nobody there, and the draft that came out of the
+  third is the one that was built.
+
+  *Today:* this entry counts those rounds above as the checking agents earning
+  their place. `plan-work` Stage 3 says otherwise: "Alone, the recommendation is
+  taken where it passed every item … Where the recommended draft failed an item,
+  or no draft passed, the run stops — 'With nobody there' says why that is a
+  stop and not a second-best pick"; under `## With nobody there`, "a design
+  choice where the check leaves nothing standing, or takes away the draft the
+  comparison recommended: alone, that is a stop with the reason named"; and of
+  the check itself, "A draft that fails an item is recorded as failing it; no
+  agent decides what follows from that." No sentence in the file provides for a
+  revision round. The run did not stop, and the five findings above do not
+  carry that. The entry on the planning fence lists the case among what stays
+  open — "Whether a second comparison over the survivors, or a redraft under the
+  failed items, should happen instead is not decided" — and this run is its
+  first measurement, taken by a run that went past the rule rather than by a
+  decision.
+
+  *Should:* one of two things, and which is not decided here. Either the run
+  stops where the text says, and this run's three rounds were a breach that
+  happened to end well; or the rule allows the redraft in so many words and says
+  how many rounds and what ends them — the checking agent's three lists coming
+  back empty, or a bound on rounds after which it is the stop. What speaks
+  against today's rule is the result: the three rounds produced a draft that
+  carried every story, and a stop would have left the planning issue
+  `being-planned` for the next session to put to a person what the checking
+  agent had already found. What speaks for it is the reason it gives — a
+  comparison that recommended a draft now known not to carry the stories is
+  not one to pick the next from — which a redraft answers only where the
+  redraft is checked again, as this run's were.
+
   **Two places the user sees, whose wording is settled with them before
   anything is built.**
 
@@ -3659,7 +3737,7 @@ the size of the work.
     only where the project is not yet set up; on a set-up project the session
     opens with no introduction at all.
 
-  **Searched by subject, seven times, against the tree at `e09fa80`. Nothing
+  **Searched by subject, eight times, against the tree at `e09fa80`. Nothing
   was changed: this entry records, and decides nothing about the text, so each
   place is named with the change it would take or the reason it takes none.**
 
@@ -3713,20 +3791,23 @@ the size of the work.
   the typed command, listed above; two the version marker, `start-work:19` and
   `setup-project:222`; two the status line, `hooks/session-start.sh:7` and
   `:14`. None a call. The calls themselves have no one string, so they were
-  reached by reading each skill for where the Skill tool is used: sixteen
-  sites — `start-work:231`, `:238`, `:247` to `:262`; `plan-work:38`, `:381`,
-  `:397`, `:623`; `untangle-idea:213`, `:315`, `:382`; `cut-into-tasks:295`;
-  `setup-project:834`; `build-work:350`, `:477`, `:664`. Of the sixteen, the
-  one whose target has a neighbour sharing a word in the harness's list on 14
-  September 2026 is `:664`; `debug`, on that list against
-  `diagnose-bug`, was not in the harness's list that day. Whether the
-  prefix goes to all sixteen or to the one is the open half of the Should.
+  reached by reading each skill for where one skill runs another: twenty-four
+  sites, the dispatch list in `start-work` counted once — `start-work:24` to
+  `:25`, `:113`, `:231` to `:232`, `:238`, `:247` to `:262`; `plan-work:38`,
+  `:381`, `:397`, `:623`; `untangle-idea:213`, `:315`, `:378`, `:382`, `:554`,
+  `:598`; `cut-into-tasks:295`; `setup-project:834`; `build-work:350`, `:477`,
+  `:538`, `:551`, `:664`, `:1123`; `diagnose-bug:315`. Of these, the one whose
+  target has a neighbour sharing a word in the harness's list on 14 September
+  2026 is `:664`; `debug`, on that list against `diagnose-bug`, was not in the
+  harness's list that day. Whether the prefix goes to all of them or to the one
+  is the open half of the Should.
 
   Where a lesson is meant to land — finding 3: the two searches of the entry
   from 13 September, re-run. `grep -rn "standards.md" skills/ hooks/ docs/
   README.md` — 16 lines against ten then, the six new ones all in
-  `docs/roadmap.md` at `:2548`, `:2677`, `:2702`, `:2707`, `:2711` and `:2716`,
-  which are that entry and the one before it; the ten sites in the skills and
+  `docs/roadmap.md` at `:2548`, `:2677`, `:2702`, `:2707`, `:2711` and `:2716` —
+  the first in the entry on the check-chain change that went unreviewed, the
+  other five in that entry; the ten sites in the skills and
   in this file are unmoved, and the reading given there holds for each. `grep
   -rni "second time\|three times\|same defect\|a pattern" skills/ hooks/
   docs/skill-conventions.md README.md` — 31 lines against 29: twelve the shared
@@ -3748,7 +3829,7 @@ the size of the work.
     false either way the repair goes: the co-change.
   - `docs/skill-conventions.md:1095` to `:1098` — a locked skill cannot be
     called; the reason the lock stays.
-  - `docs/skill-conventions.md:1195` and `:1203` — the invocability checks; the
+  - `docs/skill-conventions.md:1197` and `:1203` — the invocability checks; the
     second prints a line the day another file names `record-lessons` in
     backticks.
 
@@ -3770,9 +3851,10 @@ the size of the work.
     many rounds are left" and no end. A co-change if the end is said there.
   - `untangle-idea:284`, `:286`, `:300`, `:312`, `:314`, `:344` — the
     interview, the source wording. No change, and after the change the two
-    stages are a near-pair held by nothing, which is the finding above on the
-    eight unheld blocks with a ninth. The other fifteen lines in
-    `untangle-idea`, `:208` to `:596`, are the frontier of the map — tickets,
+    stages are a near-pair held by nothing — one more beside the eight unheld
+    blocks the entry above lists and the ninth the entry below counts. The
+    other fifteen lines in `untangle-idea`, `:208` to `:596`, are the frontier
+    of the map — tickets,
     not questions — the same word on another subject. `build-work:1075` to
     `:1076` — rounds against the platform's checks; another subject.
   - `plan-work:368` and `untangle-idea:290` — the cap, in two copies held by
@@ -3818,11 +3900,11 @@ the size of the work.
   Where the three answers are named — the first user-visible place: `grep -rn
   "Carry on alone\|carry on alone\|Plan alone\|plan alone\|halt before the
   first build\|\*\*Stay\.\*\*\|or stay" skills/*/SKILL.md hooks/ README.md
-  docs/skill-conventions.md` — 12 lines. The four places named above,
+  docs/skill-conventions.md` — 10 lines. The four places named above,
   `plan-work:427`, `:432`, `:436`, `start-work:320`, `setup-checks:614` to
-  `:615`, `README.md:119` to `:120` — the co-change, together. `plan-work:350`,
-  `build-work:1230` and `:1242`, `cut-into-tasks:298` — the halt as an exit of
-  the mark; the same words on another subject, no change.
+  `:615`, `README.md:119` to `:120` — the co-change, together. `plan-work:350`
+  and `cut-into-tasks:298` — the halt as an exit of the mark; the same words on
+  another subject, no change.
 
   Where the opening of a session is governed — the second: `grep -rn "Name no
   stages\|name no stages\|what is coming\|message that opens\|opening
@@ -3835,6 +3917,15 @@ the size of the work.
   "say what happens next in one line", the per-step form that exists, one line
   at the step, which is what stands where a map would; no change to any of
   them until the wording is theirs.
+
+  Where the stop after a failed check is written — finding 6: `grep -rn
+  "recommended draft\|the run stops\|second-best pick\|failed an item\|takes
+  away the draft" skills/*/SKILL.md README.md docs/skill-conventions.md` — 11
+  lines. `plan-work:329`, `:546`, `:552` to `:553` — the rule at its three
+  sites, the co-change whichever way it goes; `:320` and `:431` — the same stop
+  on other questions and in the answer's description, which change only if the
+  redraft is allowed. `setup-checks:128`, `:630`, `setup-project:106`, `:112`,
+  `docs/skill-conventions.md:363` — stops on other subjects; no change.
   Recorded, not built.
 
 - **Matt Pocock's skill set read in full against this one on 14 September 2026,
@@ -3843,8 +3934,8 @@ the size of the work.
   four places where this set is further on.** Read at
   `github.com/mattpocock/skills`, `main`: 37 `SKILL.md` files, 2465 lines
   together, the longest of them 140. This set, measured at `b3805bc`: 12 files,
-  6157 lines, the longest `build-work` at 1359 — longer on its own than his
-  whole set by half again. The file the first three findings are read against
+  6157 lines, the longest `build-work` at 1359 — on its own more than half the
+  length of his whole set. The file the first three findings are read against
   is `skills/productivity/writing-for-agents/SKILL.md`, his meta-discipline for
   documents an agent reads; each of the seven below names its own source file.
 
@@ -3965,7 +4056,7 @@ the size of the work.
 
   *Today, across the set:* `grep -rni "done when\|ends when\|what ends it\|is
   finished when\|until nothing\|the end is" skills/*/SKILL.md README.md` — 10
-  lines, eight of them a stage's own end.
+  lines, seven of them a stage's own end.
 
   - **Ends on a state:** `diagnose-bug:211`, one named command already run,
     with its invocation and output, that is red-capable; `diagnose-bug:244`,
@@ -3987,8 +4078,8 @@ the size of the work.
   properties, not only Stage 1's.** The repair to Stage 1 is already written in
   the entry above — the stage ends when the set of questions answerable now is
   empty — and what this entry adds is that fixing one condition and leaving
-  seven unexamined is the same mistake one level up: eight stage ends, one
-  measured failure, and no reading of the other seven. The pass is cheap, it is
+  six unexamined is the same mistake one level up: seven stage ends, one
+  measured failure, and no reading of the other six. The pass is cheap, it is
   text against text, and it is the one Should here that needs no new run before
   it can be done.
 
@@ -4087,9 +4178,8 @@ the size of the work.
     quality lens has no criteria list at all, which is the finding above on the
     four conditional lenses. **Reported from the run of 14 September 2026 and
     not otherwise recorded in this file: the test reading found exactly this
-    defect, without it standing in any list it was given.** If that is right it
-    is the second time a lens found something its brief did not name, and by
-    `record-lessons:102` the second time is the pattern.
+    defect, without it standing in any list it was given.** It stands here as
+    reported and not otherwise backed, and nothing is built on it until it is.
   - **`skills/in-progress/implement-spec/SKILL.md`** — tasks as a graph with an
     advancing frontier rather than one after another; each implementing
     subagent in its own worktree; as one finishes the frontier advances and
@@ -4180,7 +4270,7 @@ the size of the work.
      and it rests on an unchecked claim about what a delegating skill loads.
      Everything else written while it stands gets written in 24 blocks' worth
      of copies.
-  2. **Then the completion conditions.** One measured failure, seven conditions
+  2. **Then the completion conditions.** One measured failure, six conditions
      never read against the two properties, and the pass is text against text
      with no run needed.
   3. **The cut of `build-work` last.** The most expensive of the three, and the
@@ -4227,7 +4317,7 @@ the size of the work.
   README.md` — 10 lines, listed item by item under the second finding above,
   with which of them end on a state and which on a judgement. `plan-work:363`
   is the co-change and is already the co-change of the entry above; the other
-  seven are read, not necessarily changed, and that reading is the work.
+  six are read, not necessarily changed, and that reading is the work.
 
   **Where a subagent is told what it may see:** `grep -rn "fresh context\|only
   its own\|and nothing else\|the paths of the control documents"
@@ -4357,4 +4447,6 @@ implied planning was not building), `settle-open-questions` (too vague),
 (lost to `untangle-idea`).
 
 Never reuse the names of skills Claude Code ships: `doctor`, `code-review`,
-`batch`, `debug`, `loop`, `claude-api`.
+`batch`, `debug`, `loop`, `claude-api`. The list is what the harness shipped when
+each name was added, not a query: on 14 September 2026 `debug` was not in the
+harness's list, as the entry on the first planning run records.
