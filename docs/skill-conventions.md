@@ -1060,8 +1060,13 @@ it cannot see absence either.
 **Since 14 September 2026 the run lays down a mark for itself**,
 `.claude/unattended.local`, written where it steps out of the flow — the end of
 the sharpening in `plan-work`, or the start of an unattended build — and read at
-every place a skill forks on the mode. So the skills no longer carry the mode as
-a word from the start of the session; they read a file. The hooks still do not
+every place a skill reads the mode off a file: the forks in `plan-work`,
+`cut-into-tasks`, `build-work`, `setup-checks`, `review-changes` and
+`start-work` name it. The block under "When a command does not answer", in
+twelve copies, forks on whether somebody is there and reads nothing — its
+checksum is the one it had before the mark — and five of the twelve files never
+name the mark at all. So where a skill does fork on the file, it no longer
+carries the mode as a word from the start of the session. The hooks still do not
 read it, and whether `stop-checks.sh` should is recorded as open in
 `docs/roadmap.md`. The sentence above therefore still holds for hooks, and the
 skills' half of it — every skill on such a path says what the message means —

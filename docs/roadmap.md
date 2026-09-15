@@ -132,8 +132,10 @@ the ones with a plausible answer:
   The picking already exists: `build-prototype/UI.md` generates radically
   different variants, wires them together and has the user choose. It is
   reachable from inside a map and, since 14 September 2026 (`e09fa80`), from
-  `plan-work` Stage 1, for one question at a time, and it throws the answer away
-  afterwards. Sources for the file, in order of preference: read
+  `plan-work` Stage 1, for one question at a time; the answer — which variant
+  and why — goes onto the issue, under "Capture the answer" in `UI.md`, and
+  nothing reads it afterwards as a decision about the look. Sources for the
+  file, in order of preference: read
   it out of an existing stylesheet; a chosen prototype; a short interview.
   Anthropic's `/design-sync` could produce one too, and is deliberately not a
   dependency — it is a research preview whose shape is expected to change, it
@@ -316,8 +318,9 @@ the size of the work.
   - **How the interface gets decided.** Nothing in the set draws a UI, chooses a
     layout, or settles what a screen should feel like. `build-prototype` has a UI
     branch, reachable from inside a map and, since 14 September 2026 (`e09fa80`),
-    from `plan-work` Stage 1, only for one question at a time, and it keeps no
-    record of what was chosen. `settle-the-look` above is the named answer to
+    from `plan-work` Stage 1, only for one question at a time, and what was
+    chosen is recorded on the issue and read by nothing afterwards.
+    `settle-the-look` above is the named answer to
     the recording half of this; the drawing half is still open.
   - **How the stack gets chosen.** Language, runtime, framework, database. A spec
     presumes them; nothing ever picks them, so they arrive by whatever the first
@@ -960,8 +963,9 @@ the size of the work.
   number into a file the run also writes changes nothing about who may raise it.
 
   What replaced it: the scope, the finishing sentence and the starting commit are
-  said in the opening message and stay in the conversation. The round count and
-  the cap were replaced too, first by a rule that the cap was the user's to raise
+  said in the opening message and stay in the conversation — and since 14
+  September 2026 the starting commit stands in the mark as well, its first line.
+  The round count and the cap were replaced too, first by a rule that the cap was the user's to raise
   and then, one entry down, by nothing at all — the cross-task limit is gone.
   Named rather than hidden, because the wording was walked through five
   situations first: two unattended runs in one working directory neither see nor
@@ -1054,7 +1058,12 @@ the size of the work.
   after `/devloop:start-work`, so it never reaches the process, and the one file
   that used to record the mode was removed two entries up for having no reader.
   Marking the run for the hook would mean writing that file again, and then the
-  hook would be reading a mark the run writes about itself.
+  hook would be reading a mark the run writes about itself. That was read
+  against a file that bounded the run; since 14 September 2026 (`e09fa80`) a
+  mark of another kind exists, `.claude/unattended.local`, which bounds nothing
+  and answers only which mode the run is in, and whether this hook should read
+  it is open in the entry on the landing question below — not decided here
+  either way.
 
   So the distinction is in the skill text, at the site and once more where the
   mode is offered. `build-work` step 3 now carries it: attended, the hook's
@@ -2689,7 +2698,26 @@ the size of the work.
     not to be buildable as written. That silence is where this case lands.
   - `start-work:249` — the collision above, and the reason the second half of
     what should hold cannot simply be written.
-  Recorded, not built.
+
+  **Built in part on 14 September 2026 in `e09fa80`.** The unattended half stands
+  in `build-work` under `## With nobody there`, as the fourth case, with this
+  measurement beside it: a question about the work itself that comes up inside
+  a task and passes the test is a task not buildable as cut — the issue carries
+  the question and the options, labelled `raised-here` and `needs-human`, and
+  step 2 takes the next. The attended half — the asking test applied where the
+  user is there — and the planning route stay recorded and not built.
+
+  **What the label cannot carry.** Every entry here ends on one of two words,
+  built or not, and this one was neither: half of what should hold stood in a
+  skill while the entry still read "Recorded, not built", which is what a reader
+  checking this list for open work reads as nothing built — and then builds the
+  half that exists a second time. The entry above on a run splitting its
+  findings into fixed and filed met the same thing from the other side, an entry
+  answered by a later one that did not notice. A label with two values cannot
+  say "this half"; what can is the sentence under it, which is why this entry
+  names the half rather than picking a word. Recorded as a finding about the
+  labelling and not only about this entry: a build that lands part of a Should
+  owes the entry a line saying which part, in the same change.
 
 - **The same failure picture came out of the review three times and was fixed
   three times separately, measured across 11 to 13 September 2026 in
@@ -3518,7 +3546,8 @@ the size of the work.
   — and gained its two companions on 14 September in the change that let
   planning run alone, so the sentence that ends Stage 1 is now the sentence
   that hands the run over. `README.md:52` to `:57` describes the stage to a
-  person the same way and says nothing about when it ends.
+  person the same way and names an end — "It ends with the hard core written
+  down … and … one question" — without the condition "nothing important open".
 
   **The mechanism that ends on a state rather than on a judgement is already in
   the set, in the other skill that interviews.** `untangle-idea:283` to `:288`
@@ -3847,8 +3876,9 @@ the size of the work.
   - `start-work:271` and `:309`, `setup-checks:611`, `setup-project:333` — "the
     idea stands" as the boundary, said to a person or read as the fence. No
     change; they point at the definition.
-  - `README.md:53` — the stage described to a person, with "an estimate of how
-    many rounds are left" and no end. A co-change if the end is said there.
+  - `README.md:53` to `:57` — the stage described to a person, with "an estimate
+    of how many rounds are left" and an end that names the hard core and the
+    question, not the condition. A co-change if the condition is said there.
   - `untangle-idea:284`, `:286`, `:300`, `:312`, `:314`, `:344` — the
     interview, the source wording. No change, and after the change the two
     stages are a near-pair held by nothing — one more beside the eight unheld
@@ -3964,13 +3994,22 @@ the size of the work.
   `## Before a handover, run these` hold 15 of them —
   `docs/skill-conventions.md:1212`, `:1225` and `:1276`. **The count has grown
   by one block and three copies since the entry above measured it** at
-  `b90874b`, where it read 23 blocks in 162 copies, and the new one is the
-  definition of a seam — `cut-into-tasks:47`, `build-work:277`,
-  `review-changes:50` — rewritten identically on 14 September in the change
-  that let planning run alone, and held by nothing. It is the ninth unheld
-  block beside the eight that entry lists, and it arrived in the same change
-  that proved the point: three copies were edited together by hand, correctly,
-  and nothing was written that would notice next time.
+  `b90874b` — 23 blocks there, and 162 copies measured here the same way — and
+  the one that entered is the definition of a seam, `cut-into-tasks:47`,
+  `build-work:277`, `review-changes:50`, rewritten identically on 14 September
+  in the change that let planning run alone, and held by nothing. It is the
+  ninth unheld block beside the eight that entry lists. **It did not arise in
+  that change.** The three copies were byte-identical before it — the entry on
+  the planning fence records their `cksum` at `e62627c`, `3342723713 196` — and
+  what the rewrite did was carry the block from 194 characters to 461, across
+  the 200-character threshold this measurement reads at. That moves the
+  evidence rather than weakening it: three copies were edited together by hand,
+  correctly, and nothing was written that would notice next time, which is the
+  point either way. **And it names a gap of the measurement itself.** It reads
+  the threshold, not the arising of a copy: a block under 200 characters is as
+  unheld as one over it, and this count does not see it. How many such blocks
+  stand below the line is not measured here; the seam definition was one until
+  14 September.
 
   What that costs is measured, and it is the commonest failure class in this
   file. Four cases in four days where the same thing stood decided differently
@@ -4291,8 +4330,9 @@ the size of the work.
 
   - `docs/skill-conventions.md:72` to `:95`, `## A rule holds only on the path
     it is written on`, and `:36` to `:50`, `## Shared words are defined in one
-    place` — the decision itself, with the four failures of 18 August 2026
-    behind it. **The co-change**, and it is one change: the guard owed with the
+    place` — the decision itself, with the four failures of one day behind it,
+    recorded on 20 August 2026 in `d55ea99`; the section itself carries no
+    date. **The co-change**, and it is one change: the guard owed with the
     copy, and the note that the delegation route was rejected on an unchecked
     claim.
   - `docs/skill-conventions.md:538` to `:547` — where this rule hands off to
