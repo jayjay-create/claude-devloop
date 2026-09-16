@@ -611,12 +611,13 @@ ordinary words:
   From the point where the idea stands, everything can run alone: the designs,
   the design choice checked against the stories they settled, the spec, the cut,
   the build. Whether it does is asked once per piece of work, at the end of that
-  sharpening, with three answers — carry on alone, plan alone and halt before the
-  build, or stay — unless they typed `--auto`, which is that answer given up
-  front. Beyond that it stops rather than guesses: a precondition missing when it
-  starts, named; a design no draft carries; a merge it cannot get past; a
-  permission prompt, which nobody is there to answer, which is why the kinds of
-  command it needs have to be approved before it starts.
+  sharpening, with three answers — everything without them, the plan without
+  them with a look at it before the build, or everything put to them — unless
+  they typed `--auto`, which is the first of those given up front. Beyond that
+  it stops rather than guesses: a precondition missing when it starts, named; a
+  design no draft carries; a merge it cannot get past; a permission prompt,
+  which nobody is there to answer, which is why the kinds of command it needs
+  have to be approved before it starts.
 - **What a task that will not go green does, which is not stop.** Where the same
   checks fail three turns running, the turn-end hook says so and asks for a
   person — and with nobody there, waiting on that would leave the run standing

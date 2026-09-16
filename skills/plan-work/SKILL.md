@@ -422,27 +422,26 @@ typed this session, the question is not asked either: the flag is its answer, an
 the run says in one line that it is going on alone from here. So the flag and an
 answer can never disagree — where one exists, the other was never given.
 
-Three answers, each said with what it means and where it leads:
+Three answers. What tells them apart is where the user is needed and where not,
+so each is said by that and not by what the run does at each stage:
 
-- **Carry on alone now.** The code is read, the designs drafted and checked
-  against the stories they just settled, the spec written, the tasks cut, built
-  and merged, until nothing in scope is left. They read the spec and the diffs
-  afterwards. The design is chosen without them, against the list above; where
-  it cannot be, the run stops and says so rather than guessing.
-- **Plan alone, halt before the first build.** The same up to and including the
-  cut, then a report and a halt: the spec and the tasks are in the tracker to
-  read, and the next session builds the first ready task — with them, or alone
-  where they type `--auto` then.
-- **Stay.** Every decision comes to them as it arises, exactly as it does now.
-  Nothing is lost by this and nothing has to be set up later.
+- **Full flexibility.** Everything is built without them, through to a finished
+  solution; they read the result afterwards.
+- **The plan without them, seen before anything is built.** The planning runs
+  without them and stops once there is a plan to read. They look at it, and from
+  there it is the first answer again.
+- **Full control.** Everything is put to them as it arises and they decide,
+  exactly as it goes now. Nothing is lost by this and nothing has to be set up
+  later.
 
 Say what the first two cost for this piece of work: the design gets chosen
-against the written list and not against their taste, and the machine has to
-stay awake for as long as the run works. Do not repeat what the mode costs the
-repository — the workflow file, the protected branch, the minutes — that was
-said and agreed when the mode was set up. Recommend none of the three: which one
-fits is a question of their time and of how much they want to see, and the run
-cannot weigh that for them.
+against the written list and not against their taste, where no draft carries the
+stories the run stops rather than guessing, and the machine has to stay awake for
+as long as the run works. Do not repeat what the mode costs the repository — the
+workflow file, the protected branch, the minutes — that was said and agreed when
+the mode was set up. Recommend none of the three: which one fits is a question
+of their time and of how much they want to see, and the run cannot weigh that
+for them.
 
 **This question stands outside the test under "How to ask", the way the landing
 question at the end of a build does.** It is not a question about whether the

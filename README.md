@@ -116,11 +116,12 @@ in the code; the cut against the spec it follows from; the build against the
 check suite.
 
 Without the flag you are asked once, at the end of the sharpening, how this piece
-of work should run: carry on alone now, plan alone and halt before the first
-build so you can read the spec and the tasks, or stay. That question is only
-asked where this repository allows the mode at all — the check setup offers it
-once and records your answer — and it is skipped where you typed the flag, which
-is that answer given up front.
+of work should run, and the three answers differ by where you are needed:
+everything built without you; the plan made without you and put in front of you
+before anything is built; or everything put to you as it arises. That question
+is only asked where this repository allows the mode at all — the check setup
+offers it once and records your answer — and it is skipped where you typed the
+flag, which is the first of those given up front.
 
 It refuses to go alone unless every check class is configured or explicitly
 recorded as not applicable, a failing gate genuinely blocks a merge on the
