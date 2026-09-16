@@ -316,13 +316,14 @@ check, not a claim that a mistake stopped costing anything, is what carries them
 alone.
 
 Without the flag, the planning stage asks once, at the end of the sharpening,
-how this piece of work should run from there, with three answers: carry on
-alone, plan alone and halt before the first build, or stay. With the flag that
-question is not asked — the flag is its answer — so the flag and an answer can
-never disagree. On the route that goes straight to a build, because a finished
-spec already has ready tasks or because an earlier run halted before its first
-build, there is no sharpening and no question, and the flag is the only thing
-that sets the mode there.
+how this piece of work should run from there, with three answers that differ by
+where the user is needed: everything built without them; the plan made without
+them and seen before anything is built; or everything put to them as it arises.
+With the flag that question is not asked — the flag is its answer — so the flag
+and an answer can never disagree. On the route that goes straight to a build,
+because a finished spec already has ready tasks or because an earlier run halted
+before its first build, there is no sharpening and no question, and the flag is
+the only thing that sets the mode there.
 
 Either stage checks the mode's preconditions before going alone and refuses,
 saying which failed, where one is missing: the planning stage reads the four it

@@ -3746,6 +3746,64 @@ the size of the work.
     `setup-checks:613` to `:616` in the cost list at the offer, and
     `README.md:118` to `:123` — and the costs said with them at `plan-work:439`
     to `:445` stay.
+
+    **Built on 16 September 2026, on `task/three-answers-wording`.** The three
+    are said by where the user is needed and not by what the run does at each
+    stage: everything built without them; the plan made without them and seen
+    before anything is built, and from there the first answer again; everything
+    put to them as it arises. The mechanics are not repeated with them — they
+    stand where the mode itself is described, `start-work` under
+    `## Unattended` and `README.md` under `## Attended and unattended`. The
+    costs stay where they were, with one clause moved into them out of the
+    first answer: where no draft carries the stories the run stops rather than
+    guessing. And two of the four places said which answer `--auto` stands for
+    with the words "that answer", whose nearest antecedent was the wrong one of
+    the three; both now name the first. The version went from 0.100.0 to
+    0.101.0. The second of the two wordings, below, stays open.
+
+    **Searched by subject against the tree at `b368285`, and again after the
+    change. Line numbers are those before it.** First by the answers'
+    own words: `grep -rn "Carry on alone\|carry on alone\|Plan alone\|plan
+    alone\|halt before the first build\|halt before the build\|\*\*Stay\.\*\*\|or
+    stay" skills/ hooks/ README.md docs/skill-conventions.md` — 11 lines before
+    and 3 after, the three that remain being the ones on another subject.
+    Second by the question rather than by the answers, since a place that names
+    them without using their words is not reachable by the first: `grep -rn -i
+    "three answers\|asks once\|asked once\|how this piece of work should run"
+    skills/ hooks/ README.md docs/skill-conventions.md` — 9 lines before and 10
+    after, the extra one the README's own sentence naming the property.
+
+    - `plan-work:425` to `:437` — the answers themselves, and the only place
+      they are put to anybody. Rewritten.
+    - `start-work:318` to `:320`, `setup-checks:613` to `:616`,
+      `README.md:118` to `:123` — the same three named in one line each, twice
+      to the model and once to the reader. Rewritten to the same property.
+    - `plan-work:439` to `:445` — the costs. Kept, and one clause added.
+    - `plan-work:415` to `:423` — the question itself, and the two cases where
+      it is not asked. Unchanged: what changed is the answers, not whether it
+      is put or when.
+    - `plan-work:350`, `cut-into-tasks:298`, `build-work:1230` — "the halt
+      before the first build" as an exit of the mark and as the mark's second
+      line. The same words on another subject: they say what the run does with
+      the file, not what was answered. Unchanged, and they are why the first
+      search does not come back empty afterwards.
+    - `cut-into-tasks:195` — "each answer the user gave at the end of the
+      sharpening", which points at the three without naming them. Unchanged,
+      and it is the one place the first search would have missed had the second
+      not been run.
+    - `docs/skill-conventions.md:340` to `:344`, "what each answer means in
+      practice, what it costs", and `:398` to `:401`, "Describe what must be
+      said; never dictate wording" — the two rules the wording answers to, both
+      met by the new text: what changed is the property each answer is said by,
+      and the three are still described rather than transcribed. Unchanged.
+    - `docs/skill-conventions.md:111` and `:989` — "two of its three answers"
+      about `build-work` step 7, and "Binding has three answers" about branch
+      protection. Matched by the count alone, two other subjects. Unchanged.
+    - `docs/roadmap.md:1951` to `:1953`, the *Should* of 11 September that first
+      named the three, and `:3144` to `:3145`, the walkthrough of 14 September
+      quoting it. Dated records of what was decided and read on a day, which
+      the carve-out puts outside this rule: editing them to the new wording
+      would falsify what was written then. Unchanged.
   - **Nothing at the start of a session says how the whole thing runs**: what
     comes, where the user is asked and where not, and how they will notice
     that it has gone on. The build has one — `build-work:1248` to `:1251`, "say
@@ -3956,7 +4014,10 @@ the size of the work.
   on other questions and in the answer's description, which change only if the
   redraft is allowed. `setup-checks:128`, `:630`, `setup-project:106`, `:112`,
   `docs/skill-conventions.md:363` — stops on other subjects; no change.
-  Recorded, not built.
+
+  Built in part on 16 September 2026, on `task/three-answers-wording`: the
+  first of the two wordings above, the three answers at the end of Stage 1.
+  The six findings and the second wording are recorded and not built.
 
 - **Matt Pocock's skill set read in full against this one on 14 September 2026,
   and it divides into three defects he names that this set has, one he names
