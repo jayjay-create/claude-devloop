@@ -549,6 +549,21 @@ divergence between them. Three rules follow.
    runs never read; the checksum is what that duplication costs, not an argument
    against it.
 
+   **Measured on 17 September 2026 and recorded in `docs/roadmap.md` under
+   `## Known gaps`, the entry of that date on text inserted into a skill at
+   load: a program bundled in the plugin, with the matching `allowed-tools`
+   rule, has its output in the skill before the model sees it, in both
+   permission modes and through the Skill tool and a subagent alike.** With
+   one source inserted into every skill at load there are no copies to hold
+   together, so the cost this paragraph names falls away with them. What does
+   not move is the rule this paragraph hands off to: it is about routes,
+   within a file and between files — the format rules that sat with the two
+   skills that create the file and not with the one that edits it are one of
+   its cases — and inserted text stands on every route at run time, which is
+   what it asks for. Until the copies are rebuilt onto inserted text, which is
+   its own step with its own design, the copies stand and the three `cksum`
+   checks under "Before a handover, run these" hold as written.
+
    A run that skips the search because it already knows there is only one place
    is making exactly the assumption that put the same four defects into four
    files.
@@ -1071,6 +1086,45 @@ read it, and whether `stop-checks.sh` should is recorded as open in
 `docs/roadmap.md`. The sentence above therefore still holds for hooks, and the
 skills' half of it — every skill on such a path says what the message means —
 now rests on a file rather than on memory.
+
+**A shared file read into a skill with `cat` is never inserted at load, and a
+program bundled in the plugin with its rule in `allowed-tools` is.** Measured
+on 17 September 2026 on Claude Code 2.1.274 with a throwaway plugin; the runs,
+the probe and the vendor pages are in `docs/roadmap.md` under `## Known gaps`,
+the entry of that date on text inserted into a skill at load. The form
+measured is a line in the skill of the shape `` !`command` ``, which runs
+before the model sees the skill and whose output replaces the line — not the
+`!` a user types into the session, which `docs/roadmap.md` records separately
+as a channel no hook sees. With
+`` !`cat ${CLAUDE_PLUGIN_ROOT}/shared/marker.md` `` and the matching
+`allowed-tools: Bash(cat ${CLAUDE_PLUGIN_ROOT}/shared/*)`, the load aborted
+outside auto mode, `cat` on a path outside the session's working directories
+being refused, and in auto mode the skill arrived with an instruction to run
+the command first standing where the output should be, which the model then
+did through Bash. With a POSIX sh program under the plugin's `bin/` and
+`allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/probe-text *)`, the output stood
+in the skill in both modes, typed, through the Skill tool and through a
+subagent, with no prompt; as a bare command, `Bash(probe-text *)`, the same
+typed in both modes, and not measured through Skill or a subagent.
+`${CLAUDE_PLUGIN_ROOT}` arrived substituted with the path in the cache, in the
+line and in the rule alike. `disableSkillShellExecution` is not measured. This
+is a second grant beside the tool classes pre-approved per project, above: it
+is written in the skill, per skill, and it held in manual mode without a
+prompt.
+
+**Whether text was inserted at load is read off the session log, never off the
+window.** In auto mode the fallback looks like an ordinary read: the window
+showed "Read 1 file" while the model fetched the text itself, which is exactly
+the case the criterion rules out. The log is the JSONL file under
+`~/.claude/projects/<working directory>/`, read as JSON: a call of the model is
+a content block of type `tool_use`, every result is matched to its call by
+`tool_use_id`, and the value looked for is searched by its form — sixteen
+hexadecimal characters — and not by its label, because the label stands in the
+task text too. A subagent writes its own log under
+`<session>/subagents/agent-<id>.jsonl`, and the main log holds only the Agent
+call. The vendor names the location, in the Agent SDK documentation under
+"Persist sessions to external storage", read on 17 September 2026; the line
+format it does not document.
 
 
 ## Who may invoke a skill

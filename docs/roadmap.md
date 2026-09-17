@@ -39,6 +39,20 @@ Two kinds of entry read as gaps and are not:
   `clarify-idea` are written out in `plan-work` and `untangle-idea` rather than
   delegated to, deliberately — upstream reports that a skill which only delegates
   loads half its dependencies and guesses at the rest. They will not be built.
+
+  **The reason above stands on an unchecked claim, and since 17 September 2026
+  on one that no longer decides the question.** The entry of that date under
+  `## Known gaps`, on text inserted into a skill at load, measured that a
+  program bundled in the plugin has its output in the skill before the model
+  sees it, so text shared between skills needs neither a skill that delegates
+  nor copies. The claim about what a delegating skill loads is itself still
+  unmeasured. Nothing here is built on that: the three are not built today,
+  and whether they stay written out, come from one inserted source, or become
+  skills is decided in the rebuild that entry names, on the reason this
+  section already carries — a name leaves the list when something needs to
+  call it on its own — and not before. The checksum checks under
+  `## Before a handover, run these` in `docs/skill-conventions.md` hold until
+  then.
 - **Already done, as a stage.** `explore-codebase`, `design-options`,
   `write-spec`, `implement-ticket`, `test-first-loop` and `merge-and-verify`
   describe work the workflow does today, as stages inside `plan-work` and
@@ -4377,6 +4391,8 @@ the size of the work.
      only one whose gain is still a line count. It also gets cheaper once the
      first two are done: what moves behind a pointer is easier to see when the
      duplication is held and the stage ends are exact.
+     Widened to every skill on 17 September 2026; the entry of that date below
+     says why.
 
   **The searches.** By the third rule under "A field is not an answer to a
   question it was not asked", widened on 13 September 2026 to any change to a
@@ -4484,6 +4500,235 @@ the size of the work.
   pin it, and the first build under this entry should run it and record the
   commit — a comparison against a moving branch is the same defect as a claim
   about a platform from recollection, one subject over.
+  Recorded, not built.
+
+- **Text inserted into a skill at load, measured on 17 September 2026 in eight
+  runs against a throwaway plugin, and it divides into four findings and one
+  open line.** The runs are the user's, on their machine, and cannot be
+  repeated from here; the throwaway repository is deleted, so the probe is
+  described in full and this entry has to be followable from it alone. Claude
+  Code 2.1.274 on macOS, shell zsh. Every run was a new session, started with
+  `claude --permission-mode auto` or `claude --permission-mode manual` in an
+  empty working directory.
+
+  **The probe.** A throwaway plugin `probe` in a throwaway marketplace
+  `skill-probe` on GitHub, source `./` as in devloop's own marketplace,
+  installed with scope `local`; the installed copy stood under
+  `~/.claude/plugins/cache/skill-probe/probe/<version>/`. A marketplace in a
+  local folder was ruled out: by `code.claude.com/docs/en/plugins-reference`,
+  read the same day, a plugin given by a relative path from such a marketplace
+  loads in place rather than out of the cache. One shared file,
+  `shared/marker.md`, two lines: `Kennung: ` followed by 16 random hexadecimal
+  characters, and `Zeichen: X=$(printf '%s' "id") 'm($id:ID!){a(b:{c:$id}){d}}'
+  -f id="$X"`, the character classes of the arming command the skills carry.
+  Three skills show the marker and share one task: write the two lines under
+  `## Marker` character for character into `result-$0.txt` with the Write
+  tool, use no other tool, and write `MISSING` if the lines are absent. Two
+  more load one of those three, and one program serves them.
+
+  - `show-marker` (0.1.0): frontmatter
+    `allowed-tools: Bash(cat ${CLAUDE_PLUGIN_ROOT}/shared/*)`, and under
+    `## Marker` the line `` !`cat ${CLAUDE_PLUGIN_ROOT}/shared/marker.md` ``.
+  - `bin/probe-text` (0.2.0): a POSIX sh program. It refuses a name outside
+    lower-case letters, digits and hyphen with exit 2, and otherwise prints the
+    file with `exec cat "$(dirname "$0")/../shared/$1.md"`.
+  - `show-marker-path` (0.2.0):
+    `allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/probe-text *)`, line
+    `` !`${CLAUDE_PLUGIN_ROOT}/bin/probe-text marker` ``.
+  - `show-marker-bare` (0.2.0): `allowed-tools: Bash(probe-text *)`, line
+    `` !`probe-text marker` ``.
+  - `load-marker-skill` and `load-marker-in-subagent` (0.2.0, both
+    `disable-model-invocation: true`): the first has the model load the skill
+    `probe:$0` with the argument `$1` through the Skill tool; the second has it
+    start exactly one subagent through the Agent tool to do that.
+
+  **The criterion, fixed before the runs and written down outside this
+  repository.** "Inserted" means the identifier value — the 16 hexadecimal
+  characters — stands in the text Claude Code delivers as the skill, and no
+  call of the model targets the shared file or the program. By the timestamps
+  of the user's expectation file: the criterion stands there since 17
+  September 2026, 08:54 CEST, before run 5, and was extended at 09:06, before
+  run 9, so that text in the result of the Skill call counts too. For run 1
+  the reading was fixed before the log was read, for run 4 before the run. The
+  expectation for each run was written before it: 08:30 before run 1, 08:54
+  before run 5, 09:00 before run 7, 09:06 before run 9.
+
+  **How it was read.** The session log is the JSONL file under
+  `~/.claude/projects/<working directory>/`; Anthropic names the place in the
+  Agent SDK documentation under "Persist sessions to external storage", and
+  the line format is not documented. Read as JSON: a call of the model is a
+  content block of type `tool_use`, and every tool result is matched to its
+  call by `tool_use_id`. The identifier value was searched by its form, not by
+  the label `Kennung:`, because the label stands in the task text too. The
+  result file was compared with `grep -cFx -f <marker.md> <result file>`,
+  which answered `2` in every run that wrote one.
+
+  | Run | Inserted how | Loaded how | Mode | Result |
+  |---|---|---|---|---|
+  | 1 | `cat` | typed | auto | not inserted |
+  | 4 | `cat` | typed | manual | load aborted |
+  | 5 | program by path | typed | manual | inserted |
+  | 6 | program as bare command | typed | manual | inserted |
+  | 7 | program by path | typed | auto | inserted |
+  | 8 | program as bare command | typed | auto | inserted |
+  | 9 | program by path | through `load-marker-skill` | auto | inserted |
+  | 10 | program by path | through `load-marker-in-subagent` | auto | inserted |
+
+  - **Run 1.** Where the line stood, the loaded skill read ``[run this first,
+    exactly as written, and use its output: `cat
+    /Users/…/.claude/plugins/cache/skill-probe/probe/0.1.0/shared/marker.md`]``.
+    The identifier value was not in the loaded text. The model called `Bash`
+    with that `cat` (log line 28) and wrote the file from its result; the
+    window showed for that call only "Read 1 file". `${CLAUDE_PLUGIN_ROOT}`
+    had been replaced by the path in the cache, `$0` by `run1`. The first
+    attempt at this run ended with "Login expired" before the model did
+    anything; after `/login` it went on.
+  - **Run 4.** The load aborted. The message, verbatim: ``Shell command
+    permission check failed for pattern "!`cat
+    /Users/…/.claude/plugins/cache/skill-probe/probe/0.1.0/shared/marker.md`":
+    cat in
+    '/Users/…/.claude/plugins/cache/skill-probe/probe/0.1.0/shared/marker.md'
+    was blocked. For security, Claude Code may only concatenate files from the
+    allowed working directories for this session:
+    '/Users/…/skill-probe-lauf'.``
+  - **Runs 5 to 8.** The model's only call was Write, and no prompt about the
+    inserted command. The log carried in each an entry of type `attachment`
+    with `"type":"command_permissions"` and the rule: in 5 and 7 with the path
+    in the cache substituted in, in 6 and 8 as `Bash(probe-text *)`.
+  - **Run 9.** The model's calls were Skill (`probe:show-marker-path`) and
+    Write. The identifier value stood in the loaded text after the Skill call.
+    Directly under the load the window read "Allowed by auto mode classifier";
+    which call that applied to is not established.
+  - **Run 10.** The main log holds only the Agent call. The subagent wrote its
+    own log under `<session>/subagents/agent-<id>.jsonl`, and in it Skill, the
+    identifier value in the loaded text, Write and `SubagentHandback`.
+  - **Runs 2 and 3**, `cat` through the Skill tool and through a subagent, did
+    not run.
+  - **Against the expectation written beforehand:** run 1 differed (expected:
+    inserted), run 4 differed (expected: no abort), run 10 had
+    `SubagentHandback` in addition, which touches no file. Runs 5 to 9 went as
+    expected.
+
+  **Vendor sources, read on 17 September 2026.**
+
+  - `code.claude.com/docs/en/skills`, "Inject dynamic context": the command
+    runs before the model sees the skill and its output replaces the line; a
+    command that fails aborts the load; outside auto mode a command that is
+    not permitted aborts the load, and in auto mode the skill loads instead
+    with the instruction to run the command first; with
+    `disableSkillShellExecution` the line reads `[shell command execution
+    disabled by policy]` in place of the output. "Available string
+    substitutions": `${CLAUDE_PLUGIN_ROOT}` is substituted in plugin skills, in
+    the Bash rules of `allowed-tools` too, and expressly for files the skills
+    of one plugin share; the same variable in both places lets a bundled
+    script run without a prompt. "Skill content lifecycle": after a compaction
+    Claude Code re-attaches every loaded skill with its first 5,000 tokens;
+    all of them together share 25,000, filled from the most recently loaded,
+    and older ones drop out entirely.
+  - `code.claude.com/docs/en/plugins-reference`, directory layout: programs in
+    a plugin's `bin/` directory go onto the PATH and can be called in the Bash
+    tool as a bare command.
+  - `code.claude.com/docs/en/tools-reference`, "Output limits": a valid output
+    arrives complete up to about 30,000 characters.
+  - `code.claude.com/docs/en/sub-agents`, "Available tools": background
+    subagents keep Bash, Skill and Write among others, plus
+    `SubagentHandback`.
+
+  **1. A file in the plugin read with `cat` is never inserted at load.**
+  Outside auto mode the load aborts, run 4. In auto mode the model fetches the
+  text itself and nothing shows it: the loaded skill carries an instruction in
+  place of the output, the model obeys it, and the window shows a read of one
+  file, run 1. In neither mode does the text arrive as part of the skill.
+  *Should:* shared text is never inserted by `cat` on a path inside the
+  plugin.
+
+  **2. A program bundled in the plugin, with the matching rule in
+  `allowed-tools`, is inserted at load in both modes and on all three routes
+  measured** — typed, through the Skill tool and through a subagent: runs 5
+  to 10, the identifier in the loaded text every time, the model's only call
+  Write, no prompt. *Should:* this is the route for text that has to stand in
+  several skills. Open: the bare-command form, `Bash(probe-text *)`, is
+  measured typed only, runs 6 and 8, and not through Skill or a subagent; and
+  `disableSkillShellExecution` is not measured at all.
+
+  **3. Two decisions stand on a ground that has gone.** Neither is changed
+  here; each carries a note of this date at its own place, and both are
+  decided again in the rebuild.
+
+  - `## Named, not built as skills` above, the bullet on `interview`,
+    `define-terms` and `clarify-idea`: written out in `plan-work` and
+    `untangle-idea` because "a skill which only delegates loads half its
+    dependencies and guesses at the rest". The entry of 14 September 2026
+    above already records that as an unchecked claim. What this measurement
+    adds is that the claim no longer decides the copies question: on the route
+    measured here no model loads anything, because the text is in the skill
+    before the model sees it. **The claim itself remains unmeasured.** Runs 9
+    and 10 loaded one skill with exactly one dependency through the Skill
+    tool, to see whether the insertion survives that route; a claim about
+    "half its dependencies" needs a skill with several, and none was run. The
+    same sentence stands in `skills/untangle-idea/SKILL.md:278` to `:281`,
+    unchanged here.
+  - `docs/skill-conventions.md:540` to `:550`, the paragraph that names the
+    checksum as what byte-identical copies cost. With one source inserted into
+    every skill at load there are no copies to hold together, so that cost
+    falls away with them. The rule it hands off to, "A rule holds only on the
+    path it is written on", is not touched: it is about routes, within a file
+    and between files, and inserted text stands on every route at run time.
+    The three `cksum` checks under `## Before a handover, run these` hold
+    until the rebuild.
+
+  **4. What survives a compaction is written down nowhere in this set, and the
+  vendor says what it is.** `grep -rni 'compact' skills/ docs/ README.md | wc
+  -l` at `055c861` answers `0`. Against that stand the first 5,000 tokens of
+  each loaded skill and 25,000 in all, from the skills page above. Measured at
+  `055c861`, each figure copied out of its command's output:
+
+  - `## How to ask` in `plan-work`, one of the blocks that would move to a
+    single source: `awk '/^## How to ask/,/^## [^H]/' skills/plan-work/SKILL.md
+    | sed '$d' | wc -c` — `4084`, under the 30,000-character output limit
+    above.
+  - `build-work`: `wc -c skills/build-work/SKILL.md` — `85770`;
+    `grep -c '' skills/build-work/SKILL.md` — `1359`; `wc -m` over the same
+    file — `85328`. `grep -n '^## ' skills/build-work/SKILL.md` lists
+    `## Unattended mode` at `:1155`, the last of the file's sections. The text
+    before it: `head -n 1154 skills/build-work/SKILL.md | wc -c` — `72103`,
+    and `wc -m` over the same lines — `71725`.
+  - The vendor's approximation, read on 17 September 2026: the glossary at
+    `docs.anthropic.com/en/docs/resources/glossary`, under "Tokens", gives
+    about 3.5 English characters per token for Claude, varying by language;
+    the token-counting page at
+    `platform.claude.com/docs/en/build-with-claude/token-counting` says models
+    from Claude 4.7 on produce about 30 percent more tokens for the same text.
+    By that approximation the text before `## Unattended mode` alone is on
+    the order of 20,000 tokens, `71725 / 3.5`, and more on the newer models,
+    so the section stands far beyond the first 5,000. **No exact count was
+    taken**; the approximation is what is used here and nothing finer.
+
+  *Should:* what a run needs after a compaction reaches it again. Part of the
+  reason and not a measurement — no run here was compacted — is what the
+  approximation implies for the unattended mode: after a compaction a build
+  under `build-work` has the head of the file back and not the section that
+  describes the mode it is in, and nobody is there to load it again. **The
+  user's decision on 17 September 2026:** every skill is read against the
+  post-compaction limit and split into several where it has to be. Point 3 of
+  "The order of work, and why" in the entry of 14 September 2026 thereby holds
+  for every skill and not for `build-work` alone, and its gain is no longer
+  only a line count, since a vendor source stands behind it. What it still
+  does not have is the measurement that entry names — a run reaching a late
+  step and asked what it holds — which is about a run without a compaction
+  and is not answered here.
+
+  **Open.** The line "Allowed by auto mode classifier" in the window of run 9,
+  directly under the load: whether it applied to the Skill call, to the
+  inserted command or to the Write is not in the log and not established.
+
+  **What was measured and what was not**, so that this is not read wider than
+  it is. Measured: Anthropic's insertion at load, in the three forms and two
+  modes above. Not measured: the route by which a skill loads other skills,
+  which is what the delegation claim is about; the bare-command form beyond
+  typed; the policy switch; a compaction. The checksum checks stay as they are
+  until the rebuild, and the rebuild — the copies moved onto inserted text —
+  is its own step with its own design, not begun here.
   Recorded, not built.
 
 ## Decisions taken against
