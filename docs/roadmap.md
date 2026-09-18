@@ -4728,7 +4728,7 @@ the size of the work.
   is its own step with its own design, not begun here.
   Recorded, not built.
 
-- **Text inserted into a skill at load, measured once more on 17 September
+- **Text inserted into a skill at load, measured once more on 18 September
   2026 against the installed copy of this plugin after the move, in one run:
   ten insert lines on ten files, every one inserted, and leading whitespace
   kept.** Claude Code 2.1.274, model Sonnet 5, auto mode, an empty directory
@@ -4747,6 +4747,41 @@ the size of the work.
   *Should:* a shared text carries its own indentation; the insert line stands
   at the start of the line.
   Recorded, not built.
+
+- **The rule against saying a skill's name did not hold where a skill could
+  not work, measured on 18 September 2026 in three runs, and the move onto
+  inserted text is not the cause.** Claude Code 2.1.274, model Sonnet 5, auto
+  mode, an empty directory with no git repository; in each run
+  `/devloop:build-work` was typed and interrupted at once.
+
+  - **Run A, plugin 0.102.0.** Ten insert lines on ten files, every one in the
+    loaded text, no abort, no prompt, no line `run this first, exactly as
+    written`, the model's only call `ls -la && git status`. The reply named
+    `build-work` and `setup-project`.
+  - **Run B, plugin 0.103.0.** Nineteen insert lines on nineteen files, all
+    there, no fallback route, one call by the model. Measured in addition: the
+    rule against skill names stood in the loaded text. The reply named
+    `build-work` and `setup-project` all the same.
+  - **Run C, the state before the move.** Commit `f613901` installed beside it
+    as its own plugin, `devloop-old@jayjay-old`, in the same directory with the
+    same model, and removed after the run. There the sentence stands written in
+    the file, not inserted. The reply named `devloop:setup-project`, prefix
+    included, a name the user had not typed.
+
+  **What follows.** The move onto inserted text is not the cause: the rule was
+  in the loaded text in run B and written in the file in run C, and it held in
+  neither. It did not hold in this situation, and it had never been measured
+  in it. The situation is its own: the skill cannot work, and the reply is not
+  a narration of what happens next but a question back, what the user wants
+  instead — and in run C the run introduced the second name itself.
+
+  *Should:* the rule carries this situation expressly, rather than an
+  exception for typed names. Where a skill cannot work, what is missing and
+  what could be done instead are said in ordinary words, without a skill's
+  name. The rule is rewritten, not extended: it describes what is said and
+  prescribes no wording. `shared/skill-name.md` and the same wording under
+  "Every skill carries these two" in `docs/skill-conventions.md` carry it.
+  Built on 18 September 2026, on `task/skill-name-rule`.
 
 ## Decisions taken against
 
