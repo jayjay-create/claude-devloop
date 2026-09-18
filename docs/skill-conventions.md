@@ -26,15 +26,17 @@ which it loads anyway once it reaches for the skill.
 **Answer in the language the user writes in, not the language of this document.**
 Without it, a long English body drowns out a two-word German message.
 
-**Never say a skill's name to the user.** Not "I'll run plan-work". The stages
-have names so the skills can call each other; to the person in front of you they
-are just what happens next.
+**Never say a skill's name to the user.** Not "I'll run plan-work", not "setup
+first". The stages have names so the skills can call each other; to the person
+you are talking to they are just what happens next. Say what you are about to do,
+in ordinary words.
 
-The language block is not written into the skills any more: it is inserted at
+Neither is written into the skills any more. The language block is inserted at
 the top of every skill from `shared/language-opening.md` when the skill loads,
-and again at the very bottom from `shared/closing.md`, the way the next section
-describes. The line on skill names still stands written in each file, in three
-wordings; settling on one is a change of its own and has not been made.
+and again at the very bottom from `shared/closing.md`; the line on skill names
+is inserted directly under the opening block from `shared/skill-name.md`, in
+this one wording since 18 September 2026, where it stood in three before. The
+next section describes how.
 
 ## Text shared between skills
 
@@ -82,13 +84,16 @@ check under "Before a handover, run these" holds the twelve copies of that one
 paragraph together, because it is the one thing that cannot come from the
 shared source.
 
-**What is shared today** is what stood byte-identical in more than one skill
-on 17 September 2026 and was moved on 18 September without a word changed;
-`ls shared/` is the list. Text that says the same thing in several wordings
-is not shared, and text missing where its situation arises is not added, by
-that move: each such case is a decision of its own, and the open ones are
-listed under "A field is not an answer to a question it was not asked", where
-the rule about copies hands off.
+**What is shared today** is of two kinds, and `ls shared/` is the list. The
+first is what stood byte-identical in more than one skill on 17 September 2026
+and was moved on 18 September without a word changed. The second came the same
+day in a second step: the places that said one thing in several wordings were
+settled on one wording each, and a rule whose situation arises in a skill that
+did not carry it was inserted there too. Each of those was a decision of its
+own, taken under "A field is not an answer to a question it was not asked",
+where the rule about copies hands off; what a skill says beyond the shared
+text — the consequence that holds on its path alone — stays written in that
+skill, under the inserted line.
 
 ## Numbered steps where order matters
 
@@ -622,20 +627,18 @@ divergence between them. Three rules follow.
    inserted text is that duplication with its cost taken away, not an argument
    against it.
 
-   **Still copied after that move, and each a decision of its own, are the
-   places that say one thing in several wordings**, found in the reading of 17
-   September 2026 that prepared the move and left untouched by it: the line on
-   skill names, in three wordings; "If a tool call fails, say so" in two skills
-   beside the shared block on a command that does not answer; the rule that a
-   body goes through a file, in full in `build-work` and as a clause in two
-   others; that a finding never stays in the conversation, in three wordings;
-   who owns `checks.md`, in two; restating what a subagent hands back, in two;
-   a target rendering a verdict, in two; a command backed before it is handed
-   over, in three; the reading of an empty answer, shared by two skills and
-   longer in `build-work`; the definition of the mode mark, in three; and the
-   places where a shared rule's situation arises and the rule is absent — the
-   tracker rule in four more skills, the seam definition in `plan-work`. None of
-   them is held by anything until it is decided.
+   **The places that said one thing in several wordings**, found in the
+   reading of 17 September 2026 that prepared the move and left untouched by
+   it, were settled on 18 September in a second step, one wording each in
+   `shared/`, inserted wherever the situation arises: the line on skill names;
+   the language of the tracker and of the files a run creates; a body through
+   a file; a finding never left in the conversation; who owns `checks.md`;
+   restating what a subagent hands back; a target rendering a verdict; a
+   command backed before it is handed over; the reading of an empty answer;
+   the definition of the mode mark; referring to work by its name; and the
+   seam definition, now in `plan-work` and `diagnose-bug` as well. "If a tool
+   call fails, say so" went into the shared block on a command that does not
+   answer, as its last paragraph, and the copies beside it fell.
 
    A run that skips the search because it already knows there is only one place
    is making exactly the assumption that put the same four defects into four
@@ -1150,7 +1153,9 @@ it cannot see absence either.
 the sharpening in `plan-work`, or the start of an unattended build — and read at
 every place a skill reads the mode off a file: the forks in `plan-work`,
 `cut-into-tasks`, `build-work`, `setup-checks`, `review-changes` and
-`start-work` name it. The block under "When a command does not answer",
+`start-work` name it, and since 18 September 2026 those six carry the file's
+name and meaning from `shared/mark.md`, inserted at load, with what follows on
+each path still written in the skill. The block under "When a command does not answer",
 inserted into all twelve from `shared/command-does-not-answer.md`, forks on
 whether somebody is there and reads nothing — it was not changed for the mark —
 and five of the twelve files never name the mark at all. So where a skill does fork on the file, it no longer
@@ -1372,12 +1377,13 @@ measurement rules out:
 The language block stands at its two places in every file: inserted once at
 the top — in eleven before any heading, in `start-work` directly under "How to
 talk while doing all this", for the reason under "Numbered steps where order
-matters" — and once as the very last line. Twelve lines saying where the
-opening stands, and nothing else:
+matters" — and once as the very last line. The line on skill names stands two
+lines under the opening, once per file. Twelve lines saying where the opening
+stands, and nothing else:
 
     for f in skills/*/SKILL.md; do
       [ "$(tail -n 1 "$f")" = '!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text closing`' ] || echo "$f: does not end on the closing language block"
-      awk -v f="$f" '/^## /{h=$0} /devloop-text language-opening`$/{n++; print f": opening " (h=="" ? "before any heading" : "under \"" h "\"")} END{if(n!=1) print f": opening block inserted " n+0 " times"}' "$f"
+      awk -v f="$f" '/^## /{h=$0} /devloop-text language-opening`$/{n++; o=NR; print f": opening " (h=="" ? "before any heading" : "under \"" h "\"")} /devloop-text skill-name`$/{m++; if(NR!=o+2) print f": skill-name line not two lines under the opening"} END{if(n!=1) print f": opening block inserted " n+0 " times"; if(m!=1) print f": skill-name line inserted " m+0 " times"}' "$f"
     done
 
 The notice above the first insert line is the same paragraph in all twelve. It

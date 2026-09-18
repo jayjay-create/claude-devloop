@@ -73,6 +73,8 @@ in-flight query from `docs/agents/issue-tracker.md` and say what it found, in at
 most five lines. **Name the work; do not number it.** Someone back after a week
 remembers what they were building, not that it was issue nine.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
+
 - **An open pull request comes first**, ahead of every issue. It is work that is
   built and has not landed — closer to done than anything else on the list, and
   the one thing that must not be started a second time. That is the ordinary end
@@ -227,10 +229,7 @@ mark that carries it further, so the word need not survive past that point.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** Not "I'll run plan-work", not "setup
-first". The stages have names so the skills can call each other; to the person
-you are talking to they are just what happens next. Say what you are about to do,
-in ordinary words.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 ## Unattended
 
@@ -264,10 +263,7 @@ been set up for the mode at all — the check setup offers it once and records t
 answer — nothing runs alone whatever was typed, and the run says so once and
 carries on with them.
 
-The stage that steps out of the flow writes a mark for the run,
-`.claude/unattended.local`, and every later stage reads its mode off that file
-rather than off this flag: a word typed here does not survive the skill loads
-and subagents between here and a merge.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
 
 ---
 

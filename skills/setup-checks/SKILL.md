@@ -17,8 +17,7 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 Turn every class in `docs/agents/checks.md` that still says `empty` into either
 `filled` or `skipped: <reason>`.
@@ -36,8 +35,9 @@ the task it is building created the target: fill that one class, leave the other
 untouched, and stay on the branch you were called on rather than cutting a new
 one — the build owns that branch. Everything else below applies unchanged.
 
-If a tool call fails, **say so**. Do not carry on as if it had returned, and do
-not substitute something else without naming what failed.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text missing-command`
 
@@ -71,10 +71,12 @@ tells them apart is what the command would have done, not what the guard matched
 
 ## With nobody there
 
-This skill is reached with nobody there from two places, and the mark
-`.claude/unattended.local` says so. From a build that had an install declined for
-a check class, which records the class as `skipped` with that reason and asks
-nothing. And from the step after a merge that re-reads expired skip reasons,
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
+
+This skill is reached with nobody there from two places, and the mark says so.
+From a build that had an install declined for a check class, which records the
+class as `skipped` with that reason and asks nothing. And from the step after a
+merge that re-reads expired skip reasons,
 where "Ask anyway where filling it changes their project" in step 2 can meet
 nobody to ask. There the class stays as it is — `skipped`, with the expired
 reason and a note that filling it needs their say — and an issue carrying
@@ -185,26 +187,11 @@ reaches beyond this project. If the only candidate for a class needs a system
 install and the user declines, that class becomes `skipped` with that reason —
 not `empty`.
 
-**The command is backed before it is handed over**, and the backing is one of two
-things: the vendor's own installation line, quoted from where it was read, or the
-path in the command resolving — `go list -m <module>@<version>` and its
-equivalent wherever the package comes from. Say which of the two it hangs on.
-This step is where it matters most: a check class is filled by naming a tool, so
-this is the likeliest place in the whole workflow for a wrong path to be typed.
-Measured on 6 September 2026 in `devloop-test-o`, exactly that happened to a
-linter — `github.com/gitleaks/gitleaks/v8@latest` handed over as it stood, the
-module path being `github.com/zricethezav/gitleaks/v8`, and it failed first in
-the workflow on the main branch after the pull request carrying it had merged.
-**Backed before it is handed over covers every way it travels**, the message and
-any issue carrying the command alike.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
-**Whether it worked is read off the result, not off their message.** Look where
-that command puts things — the path the installer writes to, read from the
-installer rather than assumed, `$(go env GOPATH)/bin` or `$GOBIN` for `go
-install` — and see the tool there before the class counts as filled. **`command
--v` answers a different question**: it finds any copy anywhere on `PATH`,
-including an older one something else put there, which is what made the broken
-line above look like a success on the user's machine.
+This step is where it matters most: a check class is filled by naming a tool, so
+this is the likeliest place in the whole workflow for a wrong path to be typed,
+and the class counts as filled only once the tool stands there.
 
 ## Step 4 — Introduce each class in stages
 
@@ -222,12 +209,10 @@ Only after the class is green does it become blocking.
 
 ## Step 5 — Every target renders a verdict and changes nothing
 
-A tool that rewrites files is invoked with its checking option. The rewriting
-variant gets its own target that appears in no table row and is called by no hook.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text verdict-target`
 
-**A target that always passes is worse than no target**, because it looks like
-protection and is none. Before writing `filled`, prove the target can fail:
-break something on purpose, watch it go red, put it back.
+It looks like protection and is none. Before writing `filled`, prove the target
+can fail: break something on purpose, watch it go red, put it back.
 
 A target that needs an argument fails loudly when it is missing, rather than
 quietly doing something else.
@@ -329,6 +314,10 @@ anywhere and is not the merge this step may not perform, and the next reading is
 seven days old: `UNKNOWN` first, `BEHIND` on the second reading.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text empty-read`
+
+The same distinction holds one step earlier: a required name missing from the
+rollup is an answer and waiting helps, a rollup query that did not answer is not
+and waiting does not.
 
 A value in none of those groups is put in none of them — name it as it read,
 say it cannot be placed, and do not turn it into one of the three cases below.

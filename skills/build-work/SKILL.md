@@ -17,8 +17,7 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 **One task at a time.** Never two. Two build agents share the same working
 directory and the same branch target — one will switch branches out from under
@@ -39,7 +38,7 @@ interruption of it. What to avoid between steps is the other thing: finishing a
 step, writing a status summary, and waiting for permission to continue with a
 step that asks for none.
 
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text tracker-language`
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text missing-command`
 
@@ -106,16 +105,14 @@ test project, with the user there: a run laid out two ways to build a task and
 waited. The test under "How to ask" already said that was not a question, since
 both ways were cheap to redo; this fourth case is for the one that is not.
 
-**How this skill knows which mode it is in** is not a word from the start of the
-session. It is the mark, `.claude/unattended.local`, written where the run
-stepped out of the flow — at the end of the sharpening in the planning stage, or
-at the start of an unattended build under "Unattended mode" below — carrying the
-main-branch commit the run started from on its first line and how far it may go
-on its second, `build` or `plan`. Present with this run's commit and `build`:
-alone. Absent: with them. Present with anything else: another run's, and
-"Unattended mode" says what follows. Every place in this file that says
-"unattended" or "with nobody there" reads that file and not the conversation.
-The build subagent in step 3 works in the same directory and reads the same file.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
+
+It is written at the end of the sharpening in the planning stage, or at the
+start of an unattended build under "Unattended mode" below, and where it
+carries another run's commit, "Unattended mode" says what follows. Every place
+in this file that says "unattended" or "with nobody there" reads that file and
+not the conversation. The build subagent in step 3 works in the same directory
+and reads the same file.
 
 ## Never assert state — always query it
 
@@ -136,10 +133,6 @@ that no CI posted a required status and offered to build one, while the workflow
 sat on the main branch and had gone green an hour earlier. Absence is a finding
 like any other, and it needs the command that came back empty.
 
-If a skill you call does not exist, or a background agent fails, **say so**. Do
-not silently substitute something else and do not carry on as if the result were
-complete.
-
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text seam-and-condition`
 
 **The nine classes** are format, lint, types, unit, integration, end-to-end,
@@ -147,35 +140,7 @@ secrets, dependencies, code-security. The set is fixed; what varies per project
 is which are `filled`, which are `skipped` with a reason, and which are still
 `empty`.
 
-**A body this skill writes goes through a file, not through the command line.**
-An issue body, a pull request body, a comment: write it to a file and pass
-`--body-file`, rather than setting it as a string in the command. Two reasons,
-and the second is the one that bites. Prose gets quoting wrong — a backtick, a
-dollar sign, a newline — and a body the shell mangled is not the body that was
-written. And the guards read the command as text, so a body quoting a command
-one of them matches blocks the very call that was meant to hand that command
-over: the declined install in step 3 becomes an issue carrying the exact command,
-and passed as a string that issue cannot be filed at all. Narrowing what reaches
-a guard is written down here rather than worked out at the block, and that is
-what separates it from the rewording the shared block forbids.
-
-**The file itself is written with the editing tool.** A heredoc, an `echo` or a
-`cat` puts the same text through the shell, where the guard reads it, so nothing
-is narrowed at all — the shell carries the `gh` call and nothing else. This is
-the half the rule was missing when it was first written, and it is the half that
-was measured: the pull request body on 6 September 2026 was blocked as a string
-and blocked again on the way into a file.
-
-**A title names the problem; it does not quote the command.** The title stays on
-the command line — `gh` has no `--title-file` — so what keeps it clear of a guard
-is what it says, not how it travels: "gitleaks cannot be set up", rather than the
-broken install line repeated. The command belongs in the body, where it can be
-copied. Two things that look like the fix are not: putting the title through a
-substitution that reads a file, and setting a plain title and editing it
-afterwards. Both are spellings that get through, which is the one move the shared
-block forbids. And where a title genuinely needs the command in it, that is a
-false positive, and the shared block already says what happens to one: it is
-reported, not reworded.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 **`docs/agents/environment.md` is written with the editing tool, not appended
 from the shell.** The same two reasons one layer over — its content is prose
@@ -249,6 +214,8 @@ returned pull requests 7, 11 and 13, every one of them `MERGED`. The query in
 `issue-tracker.md` filters on `state == "OPEN"`; a hand-written one that trusts
 the argument name counts every task ever built as still in flight and stops the
 build dead.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
 
 - **Exactly one ready** — build it.
 - **Several ready** — list them with what each unblocks, then take the one that
@@ -347,31 +314,7 @@ The subagent:
    through" leaves no way to say no, which is how it came out the first time.
    This is the one thing a task can need that the task itself cannot do.
 
-   **A command that fetches something from outside is backed before it is handed
-   over**, and the backing is one of two things: the vendor's own installation
-   line, quoted from where it was read, or the path in the command resolving —
-   `go list -m <module>@<version>` and its equivalent wherever the package comes
-   from. **Say which of the two it hangs on**; "checked" names neither and backs
-   nothing. An organisation's name is not a module path: measured on 6 September
-   2026 in `devloop-test-o`, `github.com/gitleaks/gitleaks/v8@latest` went over
-   as it stood, the module path being `github.com/zricethezav/gitleaks/v8`, and
-   it failed first in the workflow on the main branch, after the pull request
-   carrying it had merged. **Before it is handed over covers both ways it
-   travels** — this message, and the issue the decline below files with the exact
-   command in it. An unbacked command in the tracker outlives this session and
-   gets typed later by somebody who no longer knows the case.
-
-   **Whether it worked is read off the result, not off their message.** Look
-   where this command puts things — the path that installer writes to, read from
-   the installer itself rather than assumed: `$(go env GOPATH)/bin`, or `$GOBIN`
-   where it is set, for `go install`; `$(brew --prefix)/bin` for `brew`;
-   `$(npm prefix -g)/bin` for a global `npm` — and see the tool standing there.
-   **`command -v` answers a different question.** It finds any copy anywhere on
-   `PATH`, including an older one something else put there, which is the measured
-   failure exactly: on the user's own machine the broken line looked like a
-   success, because a stale gitleaks was already on `PATH` from elsewhere. Where
-   the tool is not at the path that command writes to, the command did not do
-   what it was handed over for, whatever came back.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
 8. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into
@@ -402,13 +345,7 @@ was for:
 
 Refactoring is not part of this loop. It belongs to the review.
 
-**Do not edit `docs/agents/checks.md` yourself.** If the task creates or changes
-a check target — a test runner, a linter, a formatter — call `setup-checks` for
-that class instead. Its columns are read by shell scripts, and the rules for them
-live with the skill that owns the file. Writing a row by hand has already
-produced both failures available: a status word that does not exist, and a raw
-shell command in a column that holds a bare target name, which the turn-end hook
-then ran as `make python3 -m unittest ...` and blocked the report.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text checks-owner`
 
 ### Proving a check guards its condition
 
@@ -556,8 +493,7 @@ issue tracker. On pull request 27 a byte-for-byte regression test the task's own
 Test Decisions had asked for was missing; it went through among the mechanical
 ones and reached the close as nothing at all.
 
-Never leave a finding in the conversation. Never explain a named defect away in
-the same breath as naming it: it stays open until fixed or explicitly deferred.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-not-in-conversation`
 
 **If the diff changes after this step, this step runs again on what changed.**
 Not the whole diff — the commits added since the last review. The gate below
@@ -582,6 +518,8 @@ Show the diff and the findings — what was fixed, what was filed — and any
 condition this task left unchecked, with the reason. That last one is what the
 person at the gate is guarding in place of a check, and it does not reach them
 from the pull request body on its own.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text restate`
 
 **A finding against something this task's own issue asked for gets its own
 line**, rather than disappearing into what was fixed: a condition the issue names
@@ -758,20 +696,9 @@ that is the sentence this whole reading exists to prevent, and a run that says i
 after waiting is more confident than one that said it straight away and no better
 informed.
 
-**No value at all is not one of the values.** A read that comes back with
-nothing — refused before it ran, blocked, or answering nothing where the field
-was asked for — has not read the pull request. Every pull request carries a
-`mergeStateStatus`, so nothing coming back is a fact about the query and none
-about the pull request, and it is not `UNKNOWN`: that is an answer GitHub gave,
-and this is no answer at all. Read it once more, as the one second attempt allows;
-if that comes back empty too, **do not arm.** The rule this step opens with is
-to read the state immediately before the mutation, and there is no state to have
-read, so arming would be acting on nothing — which is what separates this from a
-value in none of the groups, where the pull request was read and only the name
-is unknown. Say the query did not answer, name the command and the message that
-came back in place of a value, and hand the merge over on that. Unattended it is
-a stop with the reason named. It is none of the three cases below: they are
-readings of a repository, and this is a reading that did not happen.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text empty-read`
+
+Unattended it is a stop with the reason named.
 
 **A value in none of those groups is put in none of them.** Name it as it read
 and say the stage cannot place it. Arming is still attempted — the mutation

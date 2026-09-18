@@ -1,11 +1,14 @@
-A read that comes back with nothing at all is none of these: refused before it
-ran, blocked, or answering nothing where the field was asked for, it has not
-read the pull request, and every pull request carries a `mergeStateStatus`, so
-it says something about the query and nothing
-about the pull request. It is not `UNKNOWN` either, which is an answer GitHub
-gave. Read it once more; if that comes back empty too, do not arm — the reading
-this rests on never happened — and say the query did not answer, naming the
-command and the message that came back in place of a value, rather than filing
-it under one of the three cases below. The same distinction holds one step
-earlier: a required name missing from the rollup is an answer and waiting helps,
-a rollup query that did not answer is not and waiting does not.
+**No value at all is not one of the values.** A read that comes back with
+nothing — refused before it ran, blocked, or answering nothing where the field
+was asked for — has not read the pull request. Every pull request carries a
+`mergeStateStatus`, so nothing coming back is a fact about the query and none
+about the pull request, and it is not `UNKNOWN`: that is an answer GitHub gave,
+and this is no answer at all. Read it once more, as the one second attempt
+allows; if that comes back empty too, **do not arm.** The state is read
+immediately before the mutation, and there is no state to have read, so arming
+would be acting on nothing — which is what separates this from a value in none
+of the groups, where the pull request was read and only the name is unknown.
+Say the query did not answer, name the command and the message that came back
+in place of a value, and hand the merge over on that. It is none of the three
+cases below: they are readings of a repository, and this is a reading that did
+not happen.
