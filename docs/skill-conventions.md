@@ -8,7 +8,12 @@ comes from something that went wrong.
     ---
     name: <directory name, exactly>
     description: <menu entry: verb first, under ten words, no trigger conditions>
+    allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)
     ---
+
+The third line is the grant that lets the program under `bin/` run while the
+skill loads, without a prompt; every skill carries it, because every skill
+inserts text that way — see "Text shared between skills".
 
 The description is what a person reads while browsing commands, so it reads like
 a menu entry: "Cut a spec into single tasks". Not the long "Use this when the
@@ -24,6 +29,66 @@ Without it, a long English body drowns out a two-word German message.
 **Never say a skill's name to the user.** Not "I'll run plan-work". The stages
 have names so the skills can call each other; to the person in front of you they
 are just what happens next.
+
+The language block is not written into the skills any more: it is inserted at
+the top of every skill from `shared/language-opening.md` when the skill loads,
+and again at the very bottom from `shared/closing.md`, the way the next section
+describes. The line on skill names still stands written in each file, in three
+wordings; settling on one is a change of its own and has not been made.
+
+## Text shared between skills
+
+Text that has to stand in several skills in the same words stands once, in
+`shared/<name>.md`, and each skill that needs it carries one line where the
+text stood:
+
+    !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text <name>`
+
+Claude Code runs that line before the model sees the skill and puts the
+program's output in its place, so the text is in the skill on every route the
+skill is loaded by — typed, through the Skill tool, from a subagent — and is
+never fetched by the model. `bin/devloop-text` is a POSIX sh program in this
+plugin: it takes one name made of lower-case letters, digits and hyphens,
+prints `shared/<name>.md` found relative to its own location, and exits 2 on
+any other name and on a missing file, which aborts the load out loud rather
+than leaving a rule out quietly. The measurement this rests on is under
+"Environment constraints, measured", and with its runs in `docs/roadmap.md`
+under `## Known gaps`, the entry of 17 September 2026.
+
+**A shared file is a body, not a section.** Headings, and the `---` before the
+closing language block, stay in the skill; the file holds what stood under
+them. It carries no frontmatter and no heading of its own and ends in exactly
+one newline.
+
+**Adding one.** Write the file. Put the insert line on a line of its own, at
+the start of the line and outside any code block, wherever the text stood, and
+make sure the skill's frontmatter carries the `allowed-tools` line above. Then
+run `scripts/devloop-expand skills/<skill>/SKILL.md`, which prints the skill with
+every insert line replaced by what the program prints for it — the text a
+session receives — and read that. A shared file is not registered anywhere;
+the version is raised as for any change, since the installed copy is what
+runs.
+
+**The insert line is written out only in `docs/`.** Claude Code runs it
+wherever it stands at the start of a line in a skill, an example included, so
+no skill quotes the form to explain it. This file may; a skill may not.
+
+**The notice above the first insert line is not inserted, and that is its
+point.** With `disableSkillShellExecution` set, every insert line reads
+`[shell command execution disabled by policy]` and no shared text arrives —
+the language block among it. So every skill opens, in its own text, with the
+same paragraph telling the run what to say in that case and to stop, and a
+check under "Before a handover, run these" holds the twelve copies of that one
+paragraph together, because it is the one thing that cannot come from the
+shared source.
+
+**What is shared today** is what stood byte-identical in more than one skill
+on 17 September 2026 and was moved on 18 September without a word changed;
+`ls shared/` is the list. Text that says the same thing in several wordings
+is not shared, and text missing where its situation arises is not added, by
+that move: each such case is a decision of its own, and the open ones are
+listed under "A field is not an answer to a question it was not asked", where
+the rule about copies hands off.
 
 ## Numbered steps where order matters
 
@@ -443,7 +508,9 @@ of each choice).
 
 Add its directory to the `skills` array in `.claude-plugin/plugin.json`, then
 raise `version`. Without the version bump the installed copy does not change —
-see "Working on devloop itself" in the README.
+see "Working on devloop itself" in the README. A shared file under `shared/`
+needs no entry anywhere — the program finds it by name at load — and the
+version goes up for it all the same, for the same reason.
 
 ## Writing long files
 
@@ -512,7 +579,10 @@ divergence between them. Three rules follow.
    the widest of the three and the only one not confined to a claim about the
    platform:** it holds for any change to a rule or a command in this set. Widened
    on 13 September 2026, after being walked through four changes that had already
-   happened.
+   happened. The search runs over `skills/`, `hooks/`, `docs/`, `README.md`,
+   `shared/`, `bin/` and `scripts/` — everything here that states a rule or
+   carries a command, the text inserted into skills, the program that inserts
+   it and the tool that expands it included.
 
    **The search goes by the subject the statement stands on, not by its wording.**
    Four places can say one thing in four wordings, and then no search by wording
@@ -539,30 +609,33 @@ divergence between them. Three rules follow.
 
    **Where the same thing stands in several byte-identical copies, this rule is
    not the remedy.** It has to be performed again at every change, and nothing
-   notices when it is not. What holds copies together is a checksum over them —
-   the form is the `cksum` command under "The same for the block on asking, in
-   the six skills that ask anything". The arming mutation stands byte-identical
-   in five places with no such command over it, recorded in `docs/roadmap.md` as
-   something to write. **What this replaces is the search, not the copies.** "A
-   rule holds only on the path it is written on" says to write a rule at every
-   route that reaches it, and two copies that agree still beat one copy half the
-   runs never read; the checksum is what that duplication costs, not an argument
+   notices when it is not. Until 18 September 2026 what held such copies
+   together was a checksum over them, three of which stood under "Before a
+   handover, run these"; since then the text stands once under `shared/` and is
+   inserted into every skill at load — see "Text shared between skills" — and
+   there are no copies to hold. Where a copy has to stand outside the skills,
+   as the arming command does in `hooks/pre-tool-use-merge-guard.sh` and in
+   this file, a check under the same heading compares it with the shared file.
+   **What this replaces is the search, not the copies.** "A rule holds only on
+   the path it is written on" says to write a rule at every route that reaches
+   it, and two copies that agree still beat one copy half the runs never read;
+   inserted text is that duplication with its cost taken away, not an argument
    against it.
 
-   **Measured on 17 September 2026 and recorded in `docs/roadmap.md` under
-   `## Known gaps`, the entry of that date on text inserted into a skill at
-   load: a program bundled in the plugin, with the matching `allowed-tools`
-   rule, has its output in the skill before the model sees it, in both
-   permission modes and through the Skill tool and a subagent alike.** With
-   one source inserted into every skill at load there are no copies to hold
-   together, so the cost this paragraph names falls away with them. What does
-   not move is the rule this paragraph hands off to: it is about routes,
-   within a file and between files — the format rules that sat with the two
-   skills that create the file and not with the one that edits it are one of
-   its cases — and inserted text stands on every route at run time, which is
-   what it asks for. Until the copies are rebuilt onto inserted text, which is
-   its own step with its own design, the copies stand and the three `cksum`
-   checks under "Before a handover, run these" hold as written.
+   **Still copied after that move, and each a decision of its own, are the
+   places that say one thing in several wordings**, found in the reading of 17
+   September 2026 that prepared the move and left untouched by it: the line on
+   skill names, in three wordings; "If a tool call fails, say so" in two skills
+   beside the shared block on a command that does not answer; the rule that a
+   body goes through a file, in full in `build-work` and as a clause in two
+   others; that a finding never stays in the conversation, in three wordings;
+   who owns `checks.md`, in two; restating what a subagent hands back, in two;
+   a target rendering a verdict, in two; a command backed before it is handed
+   over, in three; the reading of an empty answer, shared by two skills and
+   longer in `build-work`; the definition of the mode mark, in three; and the
+   places where a shared rule's situation arises and the rule is absent — the
+   tracker rule in four more skills, the seam definition in `plan-work`. None of
+   them is held by anything until it is decided.
 
    A run that skips the search because it already knows there is only one place
    is making exactly the assumption that put the same four defects into four
@@ -1077,10 +1150,10 @@ it cannot see absence either.
 the sharpening in `plan-work`, or the start of an unattended build — and read at
 every place a skill reads the mode off a file: the forks in `plan-work`,
 `cut-into-tasks`, `build-work`, `setup-checks`, `review-changes` and
-`start-work` name it. The block under "When a command does not answer", in
-twelve copies, forks on whether somebody is there and reads nothing — its
-checksum is the one it had before the mark — and five of the twelve files never
-name the mark at all. So where a skill does fork on the file, it no longer
+`start-work` name it. The block under "When a command does not answer",
+inserted into all twelve from `shared/command-does-not-answer.md`, forks on
+whether somebody is there and reads nothing — it was not changed for the mark —
+and five of the twelve files never name the mark at all. So where a skill does fork on the file, it no longer
 carries the mode as a word from the start of the session. The hooks still do not
 read it, and whether `stop-checks.sh` should is recorded as open in
 `docs/roadmap.md`. The sentence above therefore still holds for hooks, and the
@@ -1110,7 +1183,8 @@ typed in both modes, and not measured through Skill or a subagent.
 line and in the rule alike. `disableSkillShellExecution` is not measured. This
 is a second grant beside the tool classes pre-approved per project, above: it
 is written in the skill, per skill, and it held in manual mode without a
-prompt.
+prompt. Since 18 September 2026 the program is `bin/devloop-text`, under
+"Text shared between skills".
 
 **Whether text was inserted at load is read off the session log, never off the
 window.** In auto mode the fallback looks like an ordinary read: the window
@@ -1168,13 +1242,13 @@ wording. That question has exactly one moment where it can be answered: before
 the first edit, while the working tree is still the main branch.
 
     P=~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json,pathlib;print(json.load(open(pathlib.Path.home()/'.claude/plugins/installed_plugins.json'))['plugins']['devloop@jayjay-create'][0]['version'])")
-    for d in skills hooks; do diff -r "$P/$d" "$d"; done
+    for d in skills hooks shared bin scripts; do diff -r "$P/$d" "$d"; done
 
 Silence means what runs in this session is what you are about to change. Anything
 printed is the installed copy being behind: say so before exercising a skill, and
 read what it printed rather than assuming which side is older.
 
-**Both directories, and `hooks` is not an afterthought.** A hook runs from the
+**All five directories, and `hooks` is not an afterthought.** A hook runs from the
 installed path too, which this session can read off a block it received:
 `PreToolUse:Bash hook error:
 [/Users/…/.claude/plugins/cache/jayjay-create/devloop/0.97.0/hooks/pre-tool-use-install-guard.sh]`.
@@ -1183,7 +1257,10 @@ plugin is updated, and a run that measures a guard's behaviour after editing it
 is measuring the previous version — the one failure this check exists to prevent,
 in the place where it is hardest to notice, because a guard that fires looks the
 same whichever copy fired it. The check was written over `skills` alone first;
-that is what it was widened from.
+that is what it was widened from. `shared`, `bin` and `scripts` came with the
+inserted text: a skill reads its shared text out of the installed copy as well,
+so a shared file edited in the working tree is as invisible to a run as an
+edited hook.
 
 **The version is read from the installed side, and that is the whole of the
 fix.** This check stood under the handover heading until 9 September 2026 and
@@ -1222,22 +1299,24 @@ red answer has to be acted on, and only the diff says what differs.
 
 ## Before a handover, run these
 
-Thirteen checks that catch what a conversation loses. Each one has found a real
-gap. Every one of them has to run on the machine it is needed on: `head -n -1` is a
+Seventeen checks that catch what a conversation loses. Each one has found a
+real gap, or guards a mechanism that fails without a sound when nobody runs it.
+Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
 POSIX gives you.
 
-**Thirteen checks, fourteen command blocks.** The fourteenth cannot go red by
-construction and is kept below as a warning rather than as a check, marked where
-it stands; count it out or this number drifts again. It drifted once already, and
-quietly: on 7 September 2026 one check was split into three blocks, one of them
-that unreachable one, so the checks went from eleven to twelve while this sentence
-stayed at eleven — and the change after it added two real checks and moved the
-number by two, carrying the error forward untouched. Measured on 9 September 2026,
-the sentence read thirteen against fourteen checks. It reads thirteen against
-thirteen now because the installed-copy check moved to the section above, not
-because the arithmetic was ever repaired.
+**Seventeen checks, seventeen command blocks.** Count them, or this number
+drifts again. It drifted once already, and quietly: on 7 September 2026 one
+check was split into three blocks, one of them unreachable, so the checks went
+from eleven to twelve while this sentence stayed at eleven — and the change
+after it added two real checks and moved the number by two, carrying the error
+forward untouched. Measured on 9 September 2026, the sentence read thirteen
+against fourteen checks. It reads seventeen against seventeen since 18
+September 2026, when the five checks that held byte-identical copies together
+by checksum went with the copies, together with the block beside them that
+could not go red, and nine checks over the text now inserted at load took
+their place.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -1259,107 +1338,109 @@ Invocability is set deliberately, not by omission:
 
 No skill is told to run a skill that is locked against being run. A locked skill
 refuses the call and tells the model to ask the user to type the command, which no
-skill here may do. Every line this prints needs an eye on it:
+skill here may do. The shared files are searched too, because text inserted
+into a skill is that skill's text. Every line this prints needs an eye on it:
 
     for s in $(grep -l 'disable-model-invocation' skills/*/SKILL.md | sed 's|skills/||;s|/SKILL.md||'); do
-      grep -l "\`$s\`" skills/*/SKILL.md | grep -v "skills/$s/SKILL.md" | sed "s|^|locked: $s referenced by |"
+      grep -l "\`$s\`" skills/*/SKILL.md shared/*.md | grep -v "skills/$s/SKILL.md" | sed "s|^|locked: $s referenced by |"
     done
 
-The opening block every skill shares is the same block everywhere. One line of
-output means all twelve agree; two or more means a wording was improved in one
-file and left behind in the others, which is how the same defect keeps coming
-back in a skill nobody touched:
+No shared text still stands written out in a skill. Every line of forty
+characters or more from the files under `shared/` is looked for in every
+skill. A file printed here carries a copy of something that is inserted, and
+the copy goes:
 
-    for f in skills/*/SKILL.md; do sed -n '/^\*\*Answer in the language/,/^$/p' "$f" | cksum; done | sort -u
+    cat shared/*.md | awk 'length >= 40' | grep -Fl -f - skills/*/SKILL.md
 
-It also appears exactly twice per file — at the top and at the very bottom in
-eleven, and in `start-work` after the numbered steps and at the very bottom, for
-the reason under "Numbered steps where order matters". Twelve lines of output,
-all reading 2, means none of them lost its closing copy:
+Every insert line has exactly the form the frontmatter grants, and names a file
+that exists. The first command prints any line in a skill that starts with the
+insert marker or names the program and is neither an insert line nor the grant —
+a line that would run at load without being meant to, or abort the load; the
+second prints every name that does not resolve. Both silent means every insert
+is one:
 
-    for f in skills/*/SKILL.md; do grep -c 'Answer in the language the user writes in' "$f"; done
+    grep -n -e '^!`' -e 'devloop-text' skills/*/SKILL.md | awk '{ l=$0; sub(/^[^:]*:[^:]*:/, "", l) } l != "allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)" && l !~ /^!`\$\{CLAUDE_PLUGIN_ROOT\}\/bin\/devloop-text [a-z0-9-]+`$/'
+    for n in $(grep -ho 'devloop-text [a-z0-9-]*`$' skills/*/SKILL.md | sed 's/devloop-text //;s/`$//' | sort -u); do [ -f "shared/$n.md" ] || echo "no shared/$n.md"; done
 
-The same for the block on running commands, which is in all twelve. What comes
-after it differs per file — a `## ` heading in eleven, a `---` in `research` —
-so the extract runs to whichever of those comes first, with the closing language
-block as a third stop in case a file ever ends that way, rather than to a fixed
-number of lines:
+Every skill that inserts anything carries the grant that lets the program run
+at load without a prompt. Without it the load aborts outside auto mode, and in
+auto mode the model is told to run the command itself — the case the
+measurement rules out:
 
-    for f in skills/*/SKILL.md; do awk '/^## When a command does not answer/{f=1;print;next} f&&(/^## /||/^---/||/^\*\*Answer in the language/){exit} f{print}' "$f" | cksum; done | sort -u
+    for f in skills/*/SKILL.md; do grep -q '^!`' "$f" && ! grep -qF 'allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)' "$f" && echo "$f: inserts without the allowed-tools line"; done
 
-**The number is the part that had to go.** This check was `grep -A45`, and 45 was
-the length of the block on the day it was written. A fixed count fails in both
-directions and both failures are quiet. Too small — which it becomes the moment
-the block grows by a line, as it did on 7 September 2026 — and the check keeps
-reporting agreement while comparing only the part that still fits. Too large and
-it pulls the per-file text after the block into the window: measured the same day,
-`-A46` still gave one line and `-A60` gave nine, so the obvious repair of raising
-the number leaves a check that is permanently red and therefore read by nobody.
-Bounding the extract instead of counting it makes it grow with the block by
-itself.
+The language block stands at its two places in every file: inserted once at
+the top — in eleven before any heading, in `start-work` directly under "How to
+talk while doing all this", for the reason under "Numbered steps where order
+matters" — and once as the very last line. Twelve lines saying where the
+opening stands, and nothing else:
 
-The third marker is there by construction, not by luck: the closing language block
-stands in all twelve, which the check above it measures, so the shared block is
-never the last thing in a file. Should a fourth kind of paragraph one day follow
-it, the extract runs on to the next marker it does know, takes in text that
-differs per file, and the checksums part — it fails loudly, which is the failure
-worth having.
+    for f in skills/*/SKILL.md; do
+      [ "$(tail -n 1 "$f")" = '!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text closing`' ] || echo "$f: does not end on the closing language block"
+      awk -v f="$f" '/^## /{h=$0} /devloop-text language-opening`$/{n++; print f": opening " (h=="" ? "before any heading" : "under \"" h "\"")} END{if(n!=1) print f": opening block inserted " n+0 " times"}' "$f"
+    done
 
-What it does not cover is the same fault one level in, and it is worth the line.
-**If one of the three markers ever appears inside the shared block, the extract
-stops at that point in all twelve files, the checksums go on agreeing, and only
-the part before it is compared.** The obvious check is to look for a marker
-inside the extract:
+The notice above the first insert line is the same paragraph in all twelve. It
+is the one paragraph that cannot come from the shared source, being what the
+run reads when nothing was inserted, so it is the one place a checksum over
+copies remains. One line means all twelve agree; the count says none is
+missing:
 
-    for f in skills/*/SKILL.md; do awk '/^## When a command does not answer/{f=1;next} f&&(/^## /||/^---/||/^\*\*Answer in the language/){exit} f&&(/^---/||/^## /){print FILENAME": "$0}' "$f"; done
+    for f in skills/*/SKILL.md; do sed -n '/^\*\*If `\[shell command execution disabled by policy\]`/,/^$/p' "$f" | cksum; done | sort -u
+    grep -l '^\*\*If `\[shell command execution disabled by policy\]`' skills/*/SKILL.md | wc -l
 
-It comes back empty, and it comes back empty whatever the files say: the rule
-that exits fires on every marker before the rule that prints can match one, so
-the printing rule is unreachable. That is not a fault in the writing of it. The
-extract is defined as ending at the first marker, so asking whether a marker
-falls inside it asks whether the first marker comes before the first marker, and
-no arrangement of the same test answers that. Kept here because a reader will
-otherwise write it again, and because a check that cannot go red is the thing
-this file is most often wrong about. **This is the block that is not one of the
-thirteen** — the one the count at the top of this section says to leave out.
+Every skill expands without error — each insert line replaced by what the
+program prints for it, which is what a session receives. A name that does not
+resolve or a program that cannot run prints here. The expanded file is also
+how a change to a skill is read at all, since the file on disk is no longer
+the text a run gets:
 
-What can be asked from outside is whether the extract still reaches the end of
-the block, named by its last sentence — a marker inside the block stops it short.
-This one prints nothing while nothing is wrong, and prints the file when
-something is:
+    for f in skills/*/SKILL.md; do scripts/devloop-expand "$f" > /dev/null || echo "$f: expansion failed"; done
 
-    for f in skills/*/SKILL.md; do awk '/^## When a command does not answer/{f=1;next} f&&(/^## /||/^---/||/^\*\*Answer in the language/){exit} f{print}' "$f" | grep -qF 'were not all approved before it started.' || echo "$f: extract stops short of the end of the block"; done
+The program under `bin/` and the tool under `scripts/` are executable, in the
+working tree and in what git records, and git tracks every file there. A
+program that cannot start aborts every load that names it:
 
-That anchor is a line of the block like any other, so it moves when the block's
-last paragraph is rewritten. Rewrite it there too — a check anchored on a sentence
-that no longer exists prints all twelve files and says nothing.
+    for p in bin/* scripts/*; do [ -x "$p" ] || echo "$p: not executable"; done; git ls-files -s bin/ scripts/ | grep -v '^100755 '; [ "$(git ls-files bin/ scripts/ | wc -l)" -eq "$(find bin scripts -type f | wc -l)" ] || echo "bin/ or scripts/ has files git does not track"
 
-The same for the block on asking, in the six skills that ask anything:
+The arming command in the merge guard's message is the one in
+`shared/arming-command.md`. A hook cannot insert text, so it carries a copy,
+and this looks for the shared file's two lines in the hook, where they stand
+without the indentation the skills give them — `2` means both stand there
+unchanged:
 
-    for f in $(grep -l '^## How to ask' skills/*/SKILL.md); do awk '/^## How to ask/,/^## [^H]/' "$f" | sed '$d' | cksum; done | sort -u
+    sed 's/^    //' shared/arming-command.md | grep -cFx -f - hooks/pre-tool-use-merge-guard.sh
 
-The rule behind it is not about either block. **A change to one skill is a
-question about all of them.** How that is done is not written here — it is the
-third rule under "A field is not an answer to a question it was not asked",
-widened on 13 September 2026 to hold for any change to a rule or a command: the
-search by subject, the command named, and every place looked at listed. Three
-separate defects this month were a rule written into one file that belonged in
-six. What the two blocks above add is that here the places are known in advance,
-which is why they carry a checksum instead of a search — the case that rule names
-as the one it cannot answer.
+The same for the copy in this file, under "Arming auto-merge is allowed;
+merging is not", indented as in the shared file — `2` again:
 
-These checks find only the half of that which shows up as disagreement. Where
-every copy carries the same wrong reading they agree, and the cksums come back
-clean — see "A finding that would have passed unsupervised gets written down".
+    grep -cFx -f shared/arming-command.md docs/skill-conventions.md
+
+**A change to one skill is a question about all of them.** How that is done is
+not written here — it is the third rule under "A field is not an answer to a
+question it was not asked", widened on 13 September 2026 to hold for any change
+to a rule or a command: the search by subject, the command named, and every
+place looked at listed. Three separate defects this month were a rule written
+into one file that belonged in six. Text inserted from `shared/` is the case
+where the places are known in advance and the question answers itself; text
+that says one thing in several wordings is the case the search is for.
+
+The checks above find only what shows up as a difference between a skill and
+what it is meant to carry. Where the shared text itself carries a wrong
+reading, every skill agrees with it — see "A finding that would have passed
+unsupervised gets written down".
 
 No sentence tells a run to ask for permission to reach the next stage, or to
 put a question as an either-or. Every line this prints needs an eye on it: some
 are real offers that stay, and the point is that each one gets looked at rather
 than assumed. Run it after **any** edit to a skill, not only before a handover —
 a rule added at one anchor and a sentence contradicting it further down the same
-file is how three of these got in:
+file is how three of these got in. The shared files are read with the skills,
+because an offer inserted into seven skills is an offer in seven skills — the
+missing-command rule ends on one, and it comes out here once instead of seven
+times:
 
-    grep -rn 'Ask whether\|offer to\|Offer to\|on a yes\|offering the next' skills/*/SKILL.md
+    grep -rn 'Ask whether\|offer to\|Offer to\|on a yes\|offering the next' skills/*/SKILL.md shared/*.md
 
 Every place a run hands the user something to do says where a no leads. The
 check above finds offers by their wording and misses one written in other words:
@@ -1370,7 +1451,7 @@ the sentence that describes the yes. Every line it prints needs an eye on it,
 and it is read for two things: whether the no is there too, and whether what it
 promises about carrying on is something this run can actually do:
 
-    grep -rn 'picks up as soon as\|picks up once\|picks up the moment\|carry on when it has run\|once it has run\|hand them the command\|hand the user the\|Hand the user the' skills/*/SKILL.md
+    grep -rn 'picks up as soon as\|picks up once\|picks up the moment\|carry on when it has run\|once it has run\|hand them the command\|hand the user the\|Hand the user the' skills/*/SKILL.md shared/*.md
 
 **`picks up once` was added on 7 September 2026, and why says something about
 this check.** The install handover in `build-work` step 3 used to read "picks up
@@ -1446,7 +1527,7 @@ from this output is read as a question rather than as progress.** Every line it
 prints needs an eye on it, and the question to ask of each is whether it is the
 decision being made a second time or a place that quotes or qualifies it:
 
-    grep -rn 'Several: ask\|None: stop\|One ready task: continue\|nothing in scope is ready any more\|nothing ready is left in scope' skills/*/SKILL.md
+    grep -rn 'Several: ask\|None: stop\|One ready task: continue\|nothing in scope is ready any more\|nothing ready is left in scope' skills/*/SKILL.md shared/*.md
 
 It prints two lines today, and both are sound: `build-work` quotes the old finish
 inside the paragraph that replaced it, and `setup-checks` carries the phrase with

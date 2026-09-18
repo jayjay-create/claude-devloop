@@ -1,0 +1,21 @@
+#!/bin/sh
+# Prints shared/<name>.md, the text a skill inserts at load.
+# See docs/skill-conventions.md, "Text shared between skills".
+set -u
+if [ $# -ne 1 ]; then
+  echo "devloop-text: expected exactly one name, got $#" >&2
+  exit 2
+fi
+name=$1
+case $name in
+  ''|*[!a-z0-9-]*)
+    echo "devloop-text: '$name' is not a name: only a-z, 0-9 and - are allowed" >&2
+    exit 2
+    ;;
+esac
+file=$(dirname "$0")/../shared/$name.md
+if [ ! -f "$file" ]; then
+  echo "devloop-text: $file does not exist" >&2
+  exit 2
+fi
+cat "$file" || exit 2
