@@ -40,19 +40,16 @@ Two kinds of entry read as gaps and are not:
   delegated to, deliberately — upstream reports that a skill which only delegates
   loads half its dependencies and guesses at the rest. They will not be built.
 
-  **The reason above stands on an unchecked claim, and since 17 September 2026
-  on one that no longer decides the question.** The entry of that date under
-  `## Known gaps`, on text inserted into a skill at load, measured that a
-  program bundled in the plugin has its output in the skill before the model
-  sees it, so text shared between skills needs neither a skill that delegates
-  nor copies. The claim about what a delegating skill loads is itself still
-  unmeasured. Nothing here is built on that: the three are not built today,
-  and whether they stay written out, come from one inserted source, or become
-  skills is decided in the rebuild that entry names, on the reason this
-  section already carries — a name leaves the list when something needs to
-  call it on its own — and not before. The checksum checks under
-  `## Before a handover, run these` in `docs/skill-conventions.md` hold until
-  then.
+  **Since 18 September 2026 the one text the three share stands in one place.**
+  The paragraph `plan-work` and `untangle-idea` carry word for word — the
+  ceiling on questions in a round — is inserted into both at load from
+  `shared/three-questions.md`; the rest of the interview is written in each in
+  its own words. The claim above about what a delegating skill loads was never
+  measured and, since the measurement of 17 September 2026 under
+  `## Known gaps`, decides nothing here: inserted text is neither delegated to
+  nor copied. What decides whether the three stay written out or become skills
+  is the reason this section already carries — a name leaves the list when
+  something needs to call it on its own — and nothing does today.
 - **Already done, as a stage.** `explore-codebase`, `design-options`,
   `write-spec`, `implement-ticket`, `test-first-loop` and `merge-and-verify`
   describe work the workflow does today, as stages inside `plan-work` and

@@ -1,0 +1,24 @@
+#!/bin/sh
+# Prints a skill with every insert line replaced by what devloop-text prints
+# for it, so the text a session receives can be read and compared.
+# Usage: devloop-expand <path to SKILL.md>
+set -u
+if [ $# -ne 1 ]; then
+  echo "devloop-expand: expected exactly one file, got $#" >&2
+  exit 2
+fi
+here=$(cd "$(dirname "$0")" && pwd)
+status=0
+while IFS= read -r line || [ -n "$line" ]; do
+  case $line in
+    '!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text '*'`')
+      name=${line#'!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text '}
+      name=${name%'`'}
+      "$here/../bin/devloop-text" "$name" || status=2
+      ;;
+    *)
+      printf '%s\n' "$line"
+      ;;
+  esac
+done < "$1"
+exit $status

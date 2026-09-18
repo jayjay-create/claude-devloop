@@ -214,11 +214,12 @@ The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
 update`, `/plugin install`.
 
 Old versions stay in the cache alongside the new one. Before testing a change,
-confirm the installed copy actually carries it — both directories, because a hook
-runs from the installed path too:
+confirm the installed copy actually carries it — all five directories, because a
+hook runs from the installed path too, and so does the text the skills insert
+from `shared/` at load:
 
     P=~/.claude/plugins/cache/<marketplace>/<plugin>/<installed version>
-    for d in skills hooks; do diff -r "$P/$d" "$d"; done
+    for d in skills hooks shared bin scripts; do diff -r "$P/$d" "$d"; done
 
 The version is the installed one, read out of
 `~/.claude/plugins/installed_plugins.json` and not out of
