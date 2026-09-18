@@ -17,8 +17,7 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** To the person in front of you this is
-not a tool being run, it is what happens when something fails.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 A discipline for a failure that does not name its own cause. The steps run in
 order.
@@ -29,6 +28,10 @@ failure will genuinely not need all six, and saying "the case is one line, so I
 am not cutting it down or ranking causes" is a fine thing to say. Saying nothing
 is not: it leaves nobody able to tell a discipline that was applied from one
 that was walked past, which is the only thing these steps are for.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 ## When a command does not answer
 
@@ -226,6 +229,8 @@ only available one is too shallow — a single-caller test when the failure need
 several, a narrow test that cannot replicate the chain that triggered it — a
 test there gives false confidence and is worse than none.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text seam-and-condition`
+
 **The spec places where this work gets checked, and this failure happened
 somewhere that list may not name.** The rule does not bend: the list grows. Add
 the place to the spec's list — the path and the symbol, with this bug as the
@@ -247,10 +252,7 @@ Where one exists:
 4. Watch it pass.
 5. Re-run the command from step 1 against the original, un-cut scenario.
 
-**Do not edit `docs/agents/checks.md` yourself.** If the regression test creates
-or changes a check target, call `setup-checks` for that class instead. Its
-columns are read by shell scripts, and the rules for them live with the skill
-that owns the file.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text checks-owner`
 
 ## Step 6 — Clean up, or hand it over
 
@@ -283,10 +285,7 @@ Hand it over in one of these forms, whichever fits:
 Say what you were trying to do, what you tried, and what the failure actually
 says. Then wait.
 
-**Never leave a finding in the conversation** — an issue, the pull request body,
-or a control document, but not a sentence that scrolls away. And never explain a
-named defect away in the same breath as naming it: it stays open until it is
-fixed or explicitly deferred.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-not-in-conversation`
 
 ---
 

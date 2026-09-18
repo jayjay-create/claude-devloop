@@ -18,11 +18,14 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 Turn a failure into something that prevents the next one. Run at the end of a
 build run, or whenever the user asks.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 ## When a command does not answer
 

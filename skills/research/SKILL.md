@@ -15,8 +15,7 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 # Answer a question from primary sources
 
@@ -31,6 +30,8 @@ Your job:
    convention the repository already has for such notes, and say where you put
    it. Never leave the findings only in your own reply — the session that asked
    is not the session that reads.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
 ## When a command does not answer
 

@@ -17,11 +17,14 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** Say what you are about to do, in
-ordinary words.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 Produces five short files under `docs/agents/`, canonical targets in the
 project's task runner, and a pointer block in `CLAUDE.md`.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 ## When a command does not answer
 
@@ -46,13 +49,6 @@ project's task runner, and a pointer block in `CLAUDE.md`.
 
 What tells the two apart is what the command would have done, not what the guard
 matched.
-
-## Language
-
-Write every file you create in English, and everything you put into the issue
-tracker: issue titles, bodies, comments. Both are part of the project and may be
-read by anyone who joins it, the same way a repository settles on one language
-and keeps to it. Speak to the user in the language they use.
 
 ## How to ask
 
@@ -122,9 +118,6 @@ answers do not matter.
 Stop only where something is genuinely undecided and you would otherwise guess:
 this is not a git repository, there is no remote, or the working directory does
 not look like the project they meant. Then say what is wrong and ask about that.
-
-If a tool call fails, **say so**. Do not carry on as if it had returned, and do
-not substitute something else without naming what failed.
 
 ### Permissions, before the first command
 
@@ -335,15 +328,7 @@ single word can answer.
    changes the project. Never install anything system-wide without asking;
    prefer tools that live inside the project.
 
-   **A command handed over for them to run is backed first**, by the vendor's own
-   installation line quoted from where it was read, or by the path in the command
-   resolving — `go list -m <module>@<version>` and its equivalent wherever the
-   package comes from. Say which of the two it hangs on. An organisation's name
-   is not a module path, and the difference does not show until the command runs
-   somewhere that has no older copy lying about. And whether it worked is read
-   off the result — the tool standing at the path that installer writes to — not
-   off them reporting that it ran; `command -v` finds any copy anywhere on
-   `PATH`, which is a different question.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 4. **Local environment** — always, unless you could read it all from
    `docker-compose.yml` or the README. Which processes, in what order, on what ports.
 5. **Labels** — only if the tracker already has labels with overlapping meaning.
@@ -379,11 +364,7 @@ right everywhere. If there is no task runner, create a `Makefile`. If there is o
 with different names, add thin targets that call the existing commands; leave the
 existing ones untouched.
 
-**A target listed in `checks.md` renders a verdict and changes nothing.** A tool
-that rewrites files is invoked with its checking option — formatting as `--check`
-or equivalent. The rewriting variant gets its own target (`fmt-write`) that appears
-in no table row and is called by no hook. A target that always passes is worse
-than no target at all.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text verdict-target`
 
 | Class | Per-file target | Whole target |
 |---|---|---|
@@ -656,6 +637,10 @@ August 2026 on a pull request seven days old: `UNKNOWN` first, `BEHIND` on the
 second reading.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text empty-read`
+
+The same distinction holds one step earlier: a required name missing from the
+rollup is an answer and waiting helps, a rollup query that did not answer is not
+and waiting does not.
 
 A value in none of those groups is put in none of them: name it
 as it read and say it cannot be placed, rather than turning it into one of the

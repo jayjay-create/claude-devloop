@@ -4728,6 +4728,26 @@ the size of the work.
   is its own step with its own design, not begun here.
   Recorded, not built.
 
+- **Text inserted into a skill at load, measured once more on 17 September
+  2026 against the installed copy of this plugin after the move, in one run:
+  ten insert lines on ten files, every one inserted, and leading whitespace
+  kept.** Claude Code 2.1.274, model Sonnet 5, auto mode, an empty directory
+  with no git repository, the installed copy 0.102.0 equal to `main`.
+  `build-work` was loaded typed and interrupted straight away. It carries ten
+  insert lines on ten files, and the first line of each of those files stands
+  in the loaded text. No abort, no prompt, and no line `run this first,
+  exactly as written` anywhere in the log. The model's only call was `ls -la
+  && git status`.
+
+  **This also measures what the entry above did not:** inserted text keeps its
+  leading whitespace. `shared/arming-command.md` carries four spaces at the
+  start of its lines, and exactly that line stands, with its four spaces, in
+  the loaded text.
+
+  *Should:* a shared text carries its own indentation; the insert line stands
+  at the start of the line.
+  Recorded, not built.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

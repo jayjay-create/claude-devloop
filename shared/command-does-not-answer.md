@@ -55,3 +55,9 @@ has no one to explain a permission to, so the command and the message go into
 its own report and it stops there, rather than carrying on past a step that did
 not run. That a permission prompt appeared at all is a finding in itself: the
 tool classes the run needed were not all approved before it started.
+
+**The same holds for every tool call, every skill this run calls and every
+background agent.** A tool that failed, a skill that is not installed, an agent
+that did not come back: say so, name what failed and the message that came
+back, and do not carry on as if it had returned, nor substitute something else
+without saying that the first one did not answer.

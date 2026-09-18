@@ -17,8 +17,7 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 Several reviewers run in parallel, each with exactly one lens. **Their findings
 are never merged, ranked against each other, or reduced to a single verdict.**
@@ -28,10 +27,9 @@ loudest kind bury the quietest.
 
 Read `docs/agents/checks.md` and `docs/agents/standards.md` first.
 
-**Write into the issue tracker in English** — titles, bodies, comments. A finding
-filed as an issue goes there too. The tracker is part of the project and outlives
-this conversation. Speak to the user in their own language; that is a different
-thing.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text missing-command`
 
@@ -102,10 +100,10 @@ list is what makes that reading cheap instead of lucky.
 Add one reviewer per lens the change touches. Judge this from the diff, not from
 the task description — if the diff contains it, the lens runs.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
+
 **Unattended, a stated reason buys no exception, and the form of what may be said
-instead is fixed.** Whether this run is unattended is read off the mark the build
-stage reads — `.claude/unattended.local` with this run's commit — and not off a
-word from earlier in the session. Where the trigger is in the diff, the lens runs. Where it is
+instead is fixed.** Where the trigger is in the diff, the lens runs. Where it is
 not, the one thing that may be said about the lens that did not run is **the
 trigger's own words, negated, item by item** — "the diff contains no schema and
 no stored-format change" against a trigger reading "any schema or stored-format
@@ -183,9 +181,7 @@ open the pull request here either — that belongs to the same step.
 If a lens found nothing, say that lens found nothing. That is a result, not an
 absence, and it is the end of that section.
 
-**Restate each lens in the language the user writes in.** A subagent hands its
-findings back in whatever language it worked in; this report is read by a
-person, so it is written in theirs. Assembling is not quoting.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text restate`
 
 ## What happens to a finding
 
@@ -216,8 +212,7 @@ issue tracker. On pull request 27 a byte-for-byte regression test the task's own
 Test Decisions had asked for was missing; it went through among the mechanical
 ones and reached the close as nothing at all.
 
-Never leave a finding in the conversation, and never explain one away in the same
-breath as naming it. A named defect stays open until fixed or explicitly deferred.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-not-in-conversation`
 
 ## Refactoring
 

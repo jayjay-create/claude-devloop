@@ -17,8 +17,7 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 Four stages, each building on what the previous one established. Run them in one
 session where you can. The issue tracker carries the state between them, so an
@@ -31,7 +30,9 @@ you are doing and run `setup-project`. Do not ask.** There is nothing to decide:
 without a tracker there is nowhere to put a spec, so the only other answer is to
 abandon what the user just asked for. Do not improvise around it either.
 
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text tracker-language`
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text missing-command`
 
@@ -109,6 +110,8 @@ it — the label sits on a planning issue, so an empty answer says only that no
 plan was left half-written, and says nothing whatever about work that is already
 built. Reporting "nothing open" off this query alone is how the run above came
 to duplicate an issue.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
 
 - **None** — start fresh.
 - **Exactly one** — name its title and ask whether this is the same work or
@@ -198,27 +201,22 @@ is the largest decision in the plan, and a comparison that recommended a draft
 now known not to carry the stories is not a comparison to pick the next one
 from.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
+
 **The mark.** When a run steps out of the flow — at the end of Stage 1, on an
-answer that sends it alone or on `--auto` — it writes a mark: the main-branch
-commit it starts from on the first line, and how far it may go on the second,
-`build` for carrying on through the build and `plan` for halting before it. With
-a shell command and not the editing tool, since the tree stands on the main
-branch at that moment and the branch guard blocks the editing tool there on
-purpose:
+answer that sends it alone or on `--auto` — it writes the mark, with a shell
+command and not the editing tool, since the tree stands on the main branch at
+that moment and the branch guard blocks the editing tool there on purpose:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
-That file is how every later stage of this run knows which mode it is in, at
-every place it forks on the mode, without carrying a word from the start of the
-session across skill loads and subagents. It is this run's mark when the commit
-in it is the one this run wrote; a mark carrying any other commit belongs to
-another run, and `build-work` says what that means at the start of a build. It
-is deleted wherever the unattended part ends — the halt before the first build,
-a stop with a reason, the user's word to stop, the finish of a build — and a
-session that simply ends cannot delete it, which is what the rule under "Picking
-up an interrupted plan" is for. It carries no limit and enforces nothing; it
-answers the one question a run cannot re-derive later, which is why it may be a
-file where a count may not.
+A mark carrying another run's commit: `build-work` says what that means at the
+start of a build. It is deleted wherever the unattended part ends — the halt
+before the first build, a stop with a reason, the user's word to stop, the
+finish of a build — and a session that simply ends cannot delete it, which is
+what the rule under "Picking up an interrupted plan" is for. It carries no
+limit and enforces nothing; it answers the one question a run cannot re-derive
+later, which is why it may be a file where a count may not.
 
 ## Stage 1 — Sharpen the idea
 
@@ -412,20 +410,16 @@ nobody there" says why that is a stop and not a second-best pick.
 If a drafting agent fails, say so and either rerun it or state that the comparison
 is one design short. Never compare silently around a missing draft.
 
-**Restate the drafts in the language the user writes in.** An agent hands its
-draft back in whatever language it worked in; the comparison is read by a person,
-so it is written in theirs. Assembling is not quoting.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text restate`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text seam-and-condition`
 
 **The seams come next, in their own message** — the places where this work will
 be checked. Prefer seams that already exist to new ones, and use the highest one
-that still catches what matters. **Each is placed, not assumed**: a seam is a
-function boundary, a module edge or an entry point, and whether one exists at
-the place named is a fact in the code — so name the path and the symbol where it
-stands, or, where the chosen design creates it, the line of the interface above
-that does. Nothing gets tested at a seam that has not been placed this way, in
-either mode; that is what the cut and the build read, and a person's nod adds
-nothing a path does not already say. They cannot be settled earlier because they
-follow from the design.
+that still catches what matters. **Each is placed, not assumed**: name the path
+and the symbol where it stands, or, where the chosen design creates it, the line
+of the interface above that does; that is what the cut and the build read. They
+cannot be settled earlier because they follow from the design.
 
 **The ground under the decision records** this design leans on: each record
 carries a line saying what would make it invalid. Check those lines. If one no

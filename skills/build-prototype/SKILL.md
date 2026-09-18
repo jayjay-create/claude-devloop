@@ -17,10 +17,11 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 A prototype is **throwaway code that answers a question**. The question decides the shape.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
 ## When a command does not answer
 

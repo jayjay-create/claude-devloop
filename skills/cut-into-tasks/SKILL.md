@@ -17,8 +17,7 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 Input is a published spec. Output is one issue per task, in an order that can be
 queried. No code is written here.
@@ -26,7 +25,9 @@ queried. No code is written here.
 Read `docs/agents/issue-tracker.md` first — it holds the exact commands for
 creating, attaching and ordering issues in this project.
 
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text tracker-language`
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text missing-command`
 
@@ -42,15 +43,15 @@ creating, attaching and ordering issues in this project.
 
 ## With nobody there
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
+
 This stage asks nothing that the test above lets through: the split follows from
 the spec and from the rules below, and "Before you create anything" says so. So
 the order a planning run follows at an unanswered question — under the section
 of the same name in `plan-work` — is not needed here. What this stage does fork
 on is the mode, in one place, at the end: "After creating" says what happens on
 each answer the user gave at the end of the sharpening, or on `--auto`, and reads
-the mode off the mark that answer wrote — `.claude/unattended.local`, this run's
-main-branch commit on its first line and `build` or `plan` on its second — and
-not off a word from earlier in the session.
+the mode off the mark that answer wrote.
 
 ## What a task is
 
@@ -136,10 +137,10 @@ Query the tracker for what you actually created — do not report from what you
 intended. State the number of **tasks**, not the number of issues (the spec is an
 issue too), and which one is ready first.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
+
 Then what happens depends on how this piece of work was told to run, and the mark
-says which: `.claude/unattended.local` absent means with them; present with this
-run's commit and `build` means alone, through the build; present with `plan`
-means alone up to here and no further.
+says which.
 
 - **With them**, say you are starting on the first task, and do it. Say in plain
   words what that means: one task at a time, each with tests, each reviewed

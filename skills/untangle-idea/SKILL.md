@@ -17,8 +17,7 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text language-opening`
 
-**Never say a skill's name to the user.** The stages have names so the skills can
-call each other; to the person in front of you they are just what happens next.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 A loose idea has arrived — too big for one agent session, and wrapped in fog: the
 way from here to the **destination** isn't visible yet. Finding that way is the
@@ -52,13 +51,11 @@ decisions, not deliverables.
 
 ## Refer by name
 
-Every map and ticket is an issue, so it has a **name** — its title. In everything
-the human reads — narration, the map's Decisions-so-far — refer to it by that
-name, never by a bare id, number, or slug. A wall of `#42, #43, #44` is
-illegible; names read at a glance. The id and URL don't vanish — a name wraps its
-link — but they ride _inside_ the name, never stand in for it.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
 
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text tracker-language`
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text missing-command`
 
@@ -251,11 +248,12 @@ this).
   when the work is done; the answer records what was done and any resulting facts
   (credentials location, new URLs, row counts) later tickets depend on.
 
-**If a tracker operation fails, say so.** Attaching a sub-issue, recording a
-blocker, closing a ticket: each one either happened or it did not. A map that
-looks complete while one of its blocking edges silently never landed is worse
-than one that is visibly incomplete, because the frontier query will hand out a
-ticket that was supposed to be blocked. Name what failed and stop there.
+**A tracker operation that silently did not land leaves the frontier wrong.**
+Attaching a sub-issue, recording a blocker, closing a ticket: each one either
+happened or it did not, and a map that looks complete while one of its blocking
+edges never landed is worse than one that is visibly incomplete, because the
+frontier query will hand out a ticket that was supposed to be blocked. Stop
+there.
 
 **If `research` or `build-prototype` is not installed, say so and stop that
 ticket** — and say what would unblock it: installing that skill, or resolving the
