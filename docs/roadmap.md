@@ -4783,6 +4783,27 @@ the size of the work.
   "Every skill carries these two" in `docs/skill-conventions.md` carry it.
   Built on 18 September 2026, on `task/skill-name-rule`.
 
+  **Run D, the same day, plugin 0.104.0, against that rewrite.** The same
+  setup — Claude Code 2.1.274, model Sonnet 5, auto mode, an empty directory
+  with no git repository, `/devloop:build-work` typed — and measured on the
+  session log. The block from `shared/skill-name.md` stood complete in the
+  loaded text, word for word with whitespace collapsed. The reply held the
+  part that has its own bold lead-in, "That holds where the run cannot go
+  on": the alternative came without a name, described by what it does —
+  setting this repository up — and with no command to type. It did not hold
+  the sentence that stands mid-paragraph, behind the measurement and without
+  a lead-in of its own: the reply said the typed name back, "build-work
+  cannot run here".
+
+  *Should:* the block is regrouped, not extended. Each rule stands under its
+  own bold lead-in — the rule, the case where the run cannot go on, the typed
+  name that is not said back — the two things that are not saying a name and
+  the path case each stand set off, and the measurement stands last, behind
+  the rules. Nothing is added and nothing falls out; `shared/skill-name.md`
+  and the same wording in `docs/skill-conventions.md` carry it as the third
+  wording of the day. Regrouped on 18 September 2026, on
+  `task/skill-name-emphasis`.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
