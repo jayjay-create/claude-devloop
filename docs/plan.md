@@ -40,10 +40,13 @@ back mechanically. Beyond that line is the person's.
   cannot decide whether something looks right: "No check can answer 'does this
   look right'" (`docs/roadmap.md`, the `settle-the-look` entry under "Where
   these would attach").
-- **What lands on the machine.** A tool the project declares, or that the
-  person allowed at setup under milestone 3, is the project's and the run may
-  install it. A compiler or interpreter is the person's unless that permission
-  names runtimes as a kind, which is open below.
+- **What lands on the machine.** A tool the project declares in its own
+  manifest is the project's: it lands inside the repository. Anything that
+  lands outside the repository lands there under the person's explicit
+  permission only, asked once at setup under milestone 3 and recorded; what
+  the project declares is what the person is shown at that question, and it
+  does not stand in for it. A compiler or interpreter is the person's unless
+  that permission names runtimes as a kind, which is open below.
 - **Beyond this machine.** Deployment, configuration, secrets, a first release,
   documentation for the people who will use the thing: the roadmap entry on the
   aim lists them, and nothing here builds them.
@@ -150,6 +153,8 @@ run: a text milestone.
 
 Why here: milestones 3, 5 and 9 are blocked by the three. May run before
 milestone 1; neither depends on the other.
+
+Done on 19 September 2026, pull request #<number after the merge>.
 
 ### 3. Informed permission to install (build)
 
