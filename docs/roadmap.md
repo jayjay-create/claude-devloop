@@ -4804,6 +4804,49 @@ the size of the work.
   wording of the day. Regrouped on 18 September 2026, on
   `task/skill-name-emphasis`.
 
+- **The plan is written, on 19 September 2026, and the aim in `README.md`
+  moves with it.** `docs/plan.md` carries the aim — from an idea to an
+  application or tool that runs on this machine — where the set ends, five
+  sentences on how the work is done, and the milestones in order, each with
+  its kind, its end and the conventions it meets; what is open stands there
+  as open. This file stays the measurement record and
+  `docs/skill-conventions.md` the rules; the plan holds neither. The entry
+  above, "The aim is idea to a running application; this gets to merged
+  code", is what the plan answers, and it is not rewritten.
+
+  **What became of "The order of work, and why" in the entry of 14 September
+  2026.** Its first point, the duplication decision, was built on 18 September
+  2026 in `ca0ff3a` (#123) and `d713819` (#124): text standing byte-identical
+  in several skills stands once under `shared/` and is inserted at load, and
+  the places that said one thing in several wordings were settled on one
+  wording each. That entry still ends "Recorded, not built" and is not
+  edited, by the carve-out for dated entries. Its second point, the completion
+  conditions, is the plan's sixth milestone, with the grilling mechanism — the
+  first of that entry's seven — as Stage 1's end. Its third point, the cut of
+  `build-work`, widened to every skill on 17 September 2026, is the ninth,
+  after the road to running is built, so that the split goes once over the
+  final text. The counter-check the entry owes before any of the seven is
+  built is the tenth, over the six that remain.
+
+  **Measured on 19 September 2026, against `hooks/pre-tool-use-install-guard.sh`
+  at `929dabe` in the working tree, fed its JSON directly with a scratch
+  project directory carrying `docs/agents/`:** `npx playwright install` exit
+  0, `npm install -D playwright` exit 0, `brew install node` exit 2,
+  `go install golang.org/x/tools@latest` exit 2. The first two pass, and the
+  first is a download that lands outside the repository — the wrapper case
+  the entry above, "The install guard does not see a wrapper that downloads
+  on first use", records as left alone on purpose. Where what it downloads
+  lands was not read from the vendor. The plan's third milestone, the informed
+  permission to install, covers it expressly. Recorded, not built.
+
+  **Read the same day off the platform, through the contents API:**
+  `docs/agents/environment.md` carries `<!-- devloop: 0.100.0 -->` in
+  `devloop-test-o`, 0.50.0 in `devloop-test-j` and 0.81.0 in
+  `devloop-test-m`, against 0.105.0 installed and equal to `main` at
+  `929dabe` — the check under "Before you change anything, run this" was
+  silent before anything here was changed. Every bench is refreshed before a
+  run on it.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
