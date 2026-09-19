@@ -1,7 +1,9 @@
 # devloop
 
-A set of skills for Claude Code that takes a piece of work from an idea to
-merged, reviewed code.
+A set of skills for Claude Code that takes a piece of work from an idea to an
+application or tool that runs on this machine: started by the run, its answer
+read, its look recorded, and handed to you with one action. Today it gets as
+far as merged, reviewed code; the road from there is `docs/plan.md`.
 
 Twelve skills covering the main path. It has been exercised on six throwaway
 projects across five stacks — Python, TypeScript, Kotlin, Go and Rust — once
@@ -42,7 +44,8 @@ That is the only command you ever type.
 
 It sets the project up if that has not happened yet, asks what you want built,
 and takes it from there all the way to merged code, one step at a time — each
-one ending by offering the next.
+one ending by offering the next. Starting what was built and handing it over
+running is the next stretch of the road: planned in `docs/plan.md`, not built.
 
 You answer questions about the work, and you see each piece before it merges.
 You never have to know which step comes next.
@@ -95,7 +98,9 @@ at the platform that it did — not a report of success, and not a git log read
 before the merge has happened. With you there the session does not sit and wait:
 it says what is outstanding and picks up when you say it landed. Unattended it
 waits for the checks in the same answer, because a run that ends its answer is a
-run nothing wakes again.
+run nothing wakes again. What comes after the merge today is a note on what to
+pull locally; starting the thing, proving it answers and handing it over running
+is where `docs/plan.md` takes the set next.
 
 ## Attended and unattended
 
@@ -146,7 +151,9 @@ with no cap on the rounds; three rounds against the same failing checks is
 standstill and ends the run with a report. A wait that simply runs out ends
 nothing: it is reported, and the pull request stays armed and lands by itself.
 
-Unattended does not mean unread. Read the diffs afterwards, in one go.
+Unattended does not mean unread. Read the diffs afterwards, in one go. Once
+the run can start what it built, it hands you the thing itself as well; today
+the diffs are what there is to read.
 
 ## The check suite
 
@@ -184,6 +191,9 @@ to be spoken to.
 
 ## What is missing
 
+- The road from merged code to an application that runs on this machine, an
+  interface included: `docs/plan.md` says where the set ends, what is built
+  first, and what stays yours.
 - Triaging incoming reports, finding refactor candidates, handing over
   between sessions, and a router for when you are lost — planned, not built.
 - End-to-end testing has one worked-out approach and no second: the compiled
