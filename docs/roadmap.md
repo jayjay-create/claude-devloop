@@ -14,7 +14,7 @@
 | `cut-into-tasks` | Cut a spec into single tasks |
 | `build-work` | Build the open tasks and merge them |
 | `review-changes` | Review a change from several angles at once |
-| `record-lessons` | Write down what went wrong so it does not repeat |
+| `record-lessons` | Write down what went wrong so it does not repeat — built, never run |
 | `diagnose-bug` | Find what actually causes a bug |
 
 ## Named, not built as skills
@@ -52,9 +52,9 @@ Two kinds of entry read as gaps and are not:
   something needs to call it on its own — and nothing does today.
 
   The claim stays as it stands here, unmeasured: it is the measurement
-  milestone 9 of `docs/plan.md` owes before it splits a skill — one split
-  skill, one run, and a reading off the session log of what its other halves
-  loaded when called — and not one this entry can supply.
+  milestone 9 of `docs/plan.md`, the compaction, owes before it splits a
+  skill — one split skill, one run, and a reading off the session log of what
+  its other halves loaded when called — and not one this entry can supply.
 - **Already done, as a stage.** `explore-codebase`, `design-options`,
   `write-spec`, `implement-ticket`, `test-first-loop` and `merge-and-verify`
   describe work the workflow does today, as stages inside `plan-work` and
@@ -4744,6 +4744,18 @@ the size of the work.
   exactly as written` anywhere in the log. The model's only call was `ls -la
   && git status`.
 
+  **The move itself was checked in the pull request that carried it, `ca0ff3a`
+  (#123), and read again on 19 September 2026 at that commit:** every skill
+  expanded with `scripts/devloop-expand` and diffed against the same file at
+  `f613901`, the state before the move. What differs is the `allowed-tools`
+  line in the frontmatter and the notice above the first insert line, in all
+  twelve, and two sentences that described the old copies: `build-work` on the
+  arming command standing in five places, now in three, and `untangle-idea` on
+  why the interview is written out rather than delegated. `diff | grep -c
+  '^[<>]'` over the twelve expanded files against `f613901`: `10` in ten of
+  them, `17` in `build-work`, `14` in `untangle-idea`, `131` in all. No rule
+  moved with the text.
+
   **This also measures what the entry above did not:** inserted text keeps its
   leading whitespace. `shared/arming-command.md` carries four spaces at the
   start of its lines, and exactly that line stands, with its four spaces, in
@@ -4786,7 +4798,7 @@ the size of the work.
   name. The rule is rewritten, not extended: it describes what is said and
   prescribes no wording. `shared/skill-name.md` and the same wording under
   "Every skill carries these two" in `docs/skill-conventions.md` carry it.
-  Built on 18 September 2026, on `task/skill-name-rule`.
+  Built on 18 September 2026 in `0c8f10f` (#125).
 
   **Run D, the same day, plugin 0.104.0, against that rewrite.** The same
   setup — Claude Code 2.1.274, model Sonnet 5, auto mode, an empty directory
@@ -4806,8 +4818,23 @@ the size of the work.
   the path case each stand set off, and the measurement stands last, behind
   the rules. Nothing is added and nothing falls out; `shared/skill-name.md`
   and the same wording in `docs/skill-conventions.md` carry it as the third
-  wording of the day. Regrouped on 18 September 2026, on
-  `task/skill-name-emphasis`.
+  wording of the day. Regrouped on 18 September 2026 in `929dabe` (#126).
+
+  **Run E, 19 September 2026, plugin 0.105.0, against the regrouping.** The
+  same setup — Claude Code 2.1.274, model Sonnet 5, auto mode, the same empty
+  directory with no git repository as runs A to D, the installed copy equal to
+  `main` in the five directories the pre-edit check compares — and
+  `/devloop:build-work` typed. The reply named no stage: not "build-work
+  cannot run here" but, in substance, "I cannot build anything here", and the
+  alternative stood as the setup routine for this repository, described by
+  what it does. No command to type; instead the question whether the run
+  should start it. The plugin's name occurred — "the project setup for
+  devloop" — which the rule allows.
+
+  What this settles: the part of the rule with its own bold lead-in held in
+  run D already; the sentence that stood mid-paragraph did not; regrouped so
+  that it too opens its own paragraph, it holds. A rule that is to hold gets
+  its own opening, not a place inside another rule's paragraph.
 
 - **The plan is written, on 19 September 2026, and the aim in `README.md`
   moves with it.** `docs/plan.md` carries the aim — from an idea to an
@@ -4826,12 +4853,13 @@ the size of the work.
   the places that said one thing in several wordings were settled on one
   wording each. That entry still ends "Recorded, not built" and is not
   edited, by the carve-out for dated entries. Its second point, the completion
-  conditions, is the plan's sixth milestone, with the grilling mechanism — the
-  first of that entry's seven — as Stage 1's end. Its third point, the cut of
-  `build-work`, widened to every skill on 17 September 2026, is the ninth,
-  after the road to running is built, so that the split goes once over the
-  final text. The counter-check the entry owes before any of the seven is
-  built is the tenth, over the six that remain.
+  conditions, is the plan's sixth milestone, the completion conditions, with
+  the grilling mechanism — the first of that entry's seven — as Stage 1's
+  end. Its third point, the cut of `build-work`, widened to every skill on 17
+  September 2026, is the ninth, the compaction, after the road to running is
+  built, so that the split goes once over the final text. The counter-check
+  the entry owes before any of the seven is built is the tenth, the six
+  remaining mechanisms.
 
   **Measured on 19 September 2026, against `hooks/pre-tool-use-install-guard.sh`
   at `929dabe` in the working tree, fed its JSON directly with a scratch
@@ -4851,6 +4879,12 @@ the size of the work.
   `929dabe` — the check under "Before you change anything, run this" was
   silent before anything here was changed. Every bench is refreshed before a
   run on it.
+
+  **Read the same day off the harness, and not measured:** the description of
+  the Bash tool, as a session receives it, says of its background option that
+  it "runs the command detached: it keeps running across turns and re-invokes
+  you when it exits". Whether that holds for a process a devloop run starts is
+  the fourth milestone's to measure; nothing here has.
 
 - **The conventions read against their cases, on 19 September 2026.**
   Milestone 2 of `docs/plan.md`, a text milestone: no run, and no skill,
@@ -4883,18 +4917,91 @@ the size of the work.
     requests, 14 September 2026; and on the line in the entry on Pocock's set
     that `record-lessons` has never run. The lock on `start-work` costs
     nothing, read off the pre-handover check; the lock on `record-lessons`
-    stays with its price beside it, and milestone 5 answers it.
+    stays with its price beside it, and milestone 5, what goes wrong with
+    nobody reading, answers it.
 
   Marked, not rewritten: the delegation claim under "Named, not built as
   skills" above, as the measurement milestone 9 owes before it splits a skill;
   "Writing long files", as a case not seen since the editing tool exists and
-  kept because obeying it costs nothing. The sites — searched by subject over
-  `skills/`, `hooks/`, `docs/`, `README.md`, `shared/`, `bin/` and `scripts/`
-  — are listed in the change that carried this; those in skills, shared files
-  and hooks were listed and not touched, being milestone 3's and 5's.
+  kept because obeying it costs nothing. The sites, searched by subject over
+  `skills/`, `hooks/`, `docs/`, `README.md`, `shared/`, `bin/` and `scripts/`,
+  stand below, each with what happened there. The searches were run on 19
+  September 2026 at `8196ebf`, after the change, and the list is that reading;
+  the change that carried the rewrite named no list. Those in skills, shared
+  files and hooks were not touched, being milestone 3's and 5's.
   `docs/plan.md` moved in one place, "What lands on the machine" under "Where
   the set ends", which had read a tool the project declares as one the run may
   install and now reads as the convention does.
+
+  - **"Works with nothing else installed."** `grep -rn -i "nothing else
+    installed\|another plugin\|other plugin\|second plugin\|plugin's
+    hooks\|plugin's skills"` over the seven — 13 lines, all in `docs/`.
+    `docs/skill-conventions.md`, the section: rewritten. The same file under
+    "The install guard matches the outcome as well as the verb", the clause "in
+    the form 'Works with nothing else installed' gives it": rewritten with it.
+    `docs/plan.md`, milestone 2 and milestone 8, "as milestone 2 rewrites it":
+    no change, the plan names the rewrite. This entry. No skill, shared file,
+    hook, program or script names another plugin, and `README.md` names other
+    plugins only as origin under "Credit": nothing stands on it there.
+  - **The sentence on who runs an install.** `grep -rn -i "outside the
+    repository\|user's machine\|their machine\|theirs to run\|the person
+    runs\|the user runs\|system-wide\|install"` over the seven — 117 lines,
+    most of them the plugin's own installation in `README.md`, the
+    installed-copy check, the guard's own matching, and installs as another
+    subject: a skill not installed, groundwork that installs, what to pull
+    locally. The ones standing on who runs an install:
+    `skills/build-work/SKILL.md` step 3 point 7, the install handed over, and
+    the decline path under it: milestone 3's, untouched.
+    `skills/setup-checks/SKILL.md` step 2, what filling a class would put on
+    their machine, step 3, never install anything system-wide without asking,
+    "With nobody there", the declined install for a class, and "A guard's
+    block is not a decline": milestone 3's, untouched.
+    `skills/setup-project/SKILL.md` step 4 question 3, the same rule at setup,
+    "A guard's block is not a decline", and "Permissions, before the first
+    command", which says the install commands are not known at setup:
+    milestone 3's, untouched. `hooks/pre-tool-use-install-guard.sh`,
+    the message: milestone 3's, untouched. `hooks/hooks.json`, naming the
+    guard: no change. `shared/backed-command.md`, the backing and the reading
+    of the result: no change, the rewrite keeps both.
+    `shared/body-through-file.md`, a declined install line into a body: no
+    change, about the channel. `shared/guard-block-intro.md`: no change, about
+    reading a block. `docs/skill-conventions.md`, the sentence itself and
+    "Works with nothing else installed": rewritten; "A command handed over is
+    backed",
+    "Narrowing what a guard ever sees" and "A guard is answered, not got
+    around": no change, they are about backing and about the guard's reach;
+    "Tool classes can be pre-approved per project": no change now, it gains
+    the install class under milestone 3. `docs/plan.md`, "What lands on the
+    machine": changed with it; milestone 3 and the open items: no change, they
+    are what changes the rest. `docs/roadmap.md`, the entry of 6 September
+    2026 on the unbacked install, the entry on the wrapper the guard does not
+    see, and the measurement above: dated records. `README.md`: no sentence on
+    who runs an install; its hooks paragraph under "The check suite" named
+    neither guard, which the change carrying this list repairs.
+  - **"Locking them costs nothing."** `grep -rn -i
+    "disable-model-invocation\|\block\b\|\blocked\b\|user-invoked\|model-invocable\|nothing
+    calls it\|other skill runs\|typed command\|only command you ever type"`
+    over the seven, piped through `grep -v -i 'blocked\|unblock'` — 49 lines.
+    `skills/start-work/SKILL.md:4` and `skills/record-lessons/SKILL.md:4`, the
+    locks: the first stays and its cost is read off the check, the second is
+    milestone 5's. `README.md` under "What you type", the only command ever
+    typed: no change, it promises the main path, which `start-work`'s lock
+    is; `record-lessons` stands outside that path. `docs/skill-conventions.md`,
+    "Who may invoke a skill": rewritten; the two checks under "Before a
+    handover, run these" on invocability and on locked skills' callers: no
+    change, the second is what `start-work`'s cost is read off. `docs/plan.md`,
+    milestone 2 and milestone 5: no change, the plan names them.
+    `docs/roadmap.md`, "Named, not built as skills" on that check printing one
+    line: no change, it agrees; the entries of 13 and 14 September 2026 and
+    the comparison with Pocock's set: dated records.
+    `skills/untangle-idea/SKILL.md:31`, "to lock before planning starts":
+    another subject. No shared file, hook, program or script names a lock.
+
+  The seventeen checks under "Before a handover, run these" were run on 19
+  September 2026 at `8196ebf`, after the change, and each printed what its
+  explanation says. Of the files they read, the change touched only this one
+  and `docs/skill-conventions.md`, whose copy of the arming command they
+  compare.
 
 ## Decisions taken against
 

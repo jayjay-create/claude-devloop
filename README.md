@@ -170,8 +170,12 @@ what came back is written into the pull request. A check that cannot fail looks
 exactly like a check that passes.
 
 Hooks run without being asked: the check suite after every file change and at
-the end of every turn, and a guard that blocks file writes, `git commit` and
-`git push` on the main branch. The turn-end hook
+the end of every turn; a guard that blocks file writes, `git commit` and
+`git push` on the main branch; a guard that blocks `gh pr merge` in every form
+and leaves only the arming of auto-merge, so that the platform merges and not
+the agent; and a guard that stops a command installing outside the repository
+— a package manager, `sudo`, a copy into a bin directory, an installer piped
+from the network — and hands it to you to run. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
 than looping. What it hands you is meant to be actionable in one step: a command
 to paste, a script that gathers the environment, a smaller case that reproduces
