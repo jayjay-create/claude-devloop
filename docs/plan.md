@@ -154,7 +154,7 @@ run: a text milestone.
 Why here: milestones 3, 5 and 9 are blocked by the three. May run before
 milestone 1; neither depends on the other.
 
-Done on 19 September 2026, pull request #<number after the merge>.
+Done on 19 September 2026, pull request #128.
 
 ### 3. Informed permission to install (build)
 
