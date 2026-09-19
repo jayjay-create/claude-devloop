@@ -531,12 +531,12 @@ their explicit permission only: asked once at setup, with them there, and held
 as recorded state that a hook can read. Nothing else counts as that permission.
 What the project declares in its dependency file does not: a guard that read a
 project's files per language and got one of them wrong would install with
-nobody asked, which is the first thing to go wrong with nobody reading
-(`docs/plan.md`, the second of its five sentences). What the project declares
+nobody asked, and an abort is loud only where somebody is reading: with nobody
+there, it is the first thing to go wrong. What the project declares
 is what the person is shown when the question is put; it does not stand in for
-the question. Until that permission is built — `docs/plan.md`, milestone 3 —
-the person runs every such install themselves, as the skills and the install
-guard say today.
+the question. Until that permission is built — `docs/plan.md`, milestone 3,
+the informed permission to install — the person runs every such install
+themselves, as the skills and the install guard say today.
 
 ## Adapting from Matt Pocock
 
@@ -952,7 +952,8 @@ catches the ordinary case, not a wall. Who runs the command is not part of
 that rule. Today the person runs it, because the permission exists nowhere a
 hook can read — nothing writes such a record and nothing reads one — and every
 skill that hands an install over says so; once it is recorded at setup
-(`docs/plan.md`, milestone 3) the run runs it where the record says yes and
+(`docs/plan.md`, milestone 3, the informed permission to install) the run runs
+it where the record says yes and
 the guard passes what the record allows. What does not move either way is the
 backing: the command is backed before it runs, whoever runs it — the vendor's
 own installation line or the path in it resolving, which is the case of the
@@ -1309,9 +1310,10 @@ reason: the one writer is the skill nothing calls. Both stand in
 says the rest: `record-lessons` has never run. So the lock stays, and its
 price is what those entries measure: a finding of the kind this skill was
 built for, arising where nobody types a command, does not reach it. What
-answers that is milestone 5 of `docs/plan.md`, which decides whether the rule
-is said where the review closes, the lock is lifted, or something else; until
-then, that price is the lock's, not nothing.
+answers that is milestone 5 of `docs/plan.md`, what goes wrong with nobody
+reading, which decides whether the rule is said where the review closes, the
+lock is lifted, or something else; until then, that price is the lock's, not
+nothing.
 
 Everything else is model-invocable, because the chain reaches it from
 `start-work` or from another skill: `setup-project`, `setup-checks`,
@@ -1411,9 +1413,9 @@ after it added two real checks and moved the number by two, carrying the error
 forward untouched. Measured on 9 September 2026, the sentence read thirteen
 against fourteen checks. It reads seventeen against seventeen since 18
 September 2026, when the five checks that held byte-identical copies together
-by checksum went with the copies, together with the block beside them that
-could not go red, and nine checks over the text now inserted at load took
-their place.
+— three of them by checksum — went with the copies, together with the block
+beside them that could not go red, and nine checks over the text now inserted
+at load took their place.
 
 Every skill on disk is registered, and every registered skill exists:
 

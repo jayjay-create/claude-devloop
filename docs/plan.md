@@ -4,11 +4,13 @@ Written on 19 September 2026. This is the plan and not a measurement record:
 what was measured stands in `docs/roadmap.md` under `## Known gaps`, with a
 date on every run, and what holds as a rule stands in
 `docs/skill-conventions.md`. This file says where the set is going, in which
-order, and what "done" means at each step. It changes as milestones land: the
-milestone's section here is rewritten, and the run that closed it gets its
-dated entry in the roadmap. Line numbers below are those at `929dabe`, the
-main branch on the day this was written, and will drift; the file and the
-section name are the durable half of each reference.
+order, and what "done" means at each step. It changes as milestones land: a
+landed milestone keeps its text and gets a line saying when it landed and in
+which pull request; where its text quotes wording the work has since replaced,
+the quote says so where it stands; and the run that closed it gets its dated
+entry in the roadmap. A reference below names a file and a section, never a
+line: the line numbers this file carried at `929dabe` had drifted by the next
+pull request, and the section names had not.
 
 ## The aim
 
@@ -125,21 +127,23 @@ Narrow, not a pass over every section. Four things:
   dropped, with every place standing on it named — and it is never gone
   around. The same move the roadmap makes under "Decisions taken against":
   reopen when the reason stops holding, because the reason is the point.
-- **Three rewritten, each with its sites.** "Works with nothing else installed"
-  (`:496` to `:509`): the case was another plugin's hooks running unnoticed,
-  and it holds for the skills and hooks of another plugin, not for a tool the
-  project declares or the person allowed. The sentence under "The install guard
-  matches the outcome as well as the verb" that nothing lands outside the
-  repository without the user running it (`:911` to `:912`): the backing stays,
-  who runs it changes under milestone 3. "No other skill runs either of them,
-  so locking them costs nothing" under "Who may invoke a skill" (`:1243` to
-  `:1245`): falsified by the same finding three times out of the review, and
-  `record-lessons` has never run.
+- **Three rewritten, each with its sites.** "Works with nothing else installed":
+  the case was another plugin's hooks running unnoticed, and it holds for the
+  skills and hooks of another plugin, not for a tool the project declares or
+  the person allowed. The sentence under "The install guard matches the outcome
+  as well as the verb" that nothing lands outside the repository without the
+  user running it: the backing stays, who runs it changes under milestone 3.
+  That wording is quoted as it stood before pull request #128; the sentence
+  now rests on the person's permission, not on who runs the command. "No other
+  skill runs either of them, so locking them costs nothing" under "Who may
+  invoke a skill": falsified by the same finding three times out of the
+  review, and `record-lessons` has never run. That wording too is the one #128
+  replaced; the section now says what each lock costs.
 - **The claim that a delegating skill loads half its dependencies**
   (`docs/roadmap.md` under "Named, not built as skills") marked as what it is:
   unmeasured, moot for inserted text, and the measurement milestone 9 owes
   before it splits a skill. Not dropped.
-- **"Writing long files"** (`:543` to `:548`) marked as a case not seen since
+- **"Writing long files"** marked as a case not seen since
   the editing tool exists; kept, because obeying it costs nothing.
 
 And, for milestones 3 to 11, the list of conventions each carries below, so
@@ -148,11 +152,12 @@ than this one doing it for all of them now, before the cases of milestones 3
 and 4 exist.
 
 Ends when the sentence stands, the three are rewritten with their sites listed
-in the change, and the checks under "Before a handover, run these" pass. No
-run: a text milestone.
+in the roadmap entry of the day, and the checks under "Before a handover, run
+these" pass. No run: a text milestone.
 
-Why here: milestones 3, 5 and 9 are blocked by the three. May run before
-milestone 1; neither depends on the other.
+Why here: milestones 3 and 5 are blocked by the three rewritten, and 9 by the
+marked delegation claim. May run before milestone 1; neither depends on the
+other.
 
 Done on 19 September 2026, pull request #128.
 
@@ -182,9 +187,9 @@ which is the shape "A limit the limited party maintains is not a limit" warns
 about; what holds it is that it is written only with the person there and read
 by a hook, and that the guard was a tripwire and not a wall before this. And the
 browser download an interface driver needs passes the guard today — measured on
-19 September 2026, `npx playwright install` and `npm install -D playwright` both
-exit 0 — the wrapper case the guard was never meant to see; the record covers
-it expressly, or it goes on landing in silence.
+19 September 2026, both commands pass it, and the roadmap entry of that date
+carries the commands and what came back — the wrapper case the guard was never
+meant to see; the record covers it expressly, or it goes on landing in silence.
 
 Ends with two runs on one bench: the record saying yes, a build installing a
 tool unattended, the guard passing, the tool standing at the path; the record
@@ -193,15 +198,13 @@ saying no, the guard blocking, the decline path as today.
 Why here: blocked by the three conventions milestone 2 rewrites; milestones 4,
 7 and 8 need a driver and a linter that land outside the repository.
 
-Conventions: "A hook cannot see consent" (`:1131` to `:1147`; gains the case
-of consent recorded where the hook reads); "Tool classes can be pre-approved
-per project" (`:1111` to `:1114`; gains the install class); "A file only its
-writer reads is not a safeguard" and "A limit the limited party maintains"
-(`:767` to `:806`); "The install guard matches the outcome as well as the
-verb, and is still a tripwire" (`:903` to `:925`); "A command handed over is
-backed, and its result is read"; "A duty to say something needs a place where
-it is said"; "Every offer says where a no leads"; "Never assert state — query
-it".
+Conventions: "A hook cannot see consent" (gains the case of consent recorded
+where the hook reads); "Tool classes can be pre-approved per project" (gains
+the install class); "A file only its writer reads is not a safeguard" and "A
+limit the limited party maintains"; "The install guard matches the outcome as
+well as the verb, and is still a tripwire"; "A command handed over is backed,
+and its result is read"; "A duty to say something needs a place where it is
+said"; "Every offer says where a no leads"; "Never assert state — query it".
 
 ### 4. The road to running, measured (measurement)
 
@@ -210,10 +213,11 @@ application with an interface. Per shape, the four questions: how it starts,
 what the run reads to know it runs, what happens on a failed start, and where
 it stops. Plus three things the plan cannot claim today: whether a process
 started in the background survives across turns in a devloop run (the harness's
-own tool description, read on 19 September 2026, says it does; nothing here has
-measured it); whether the auto-mode classifier lets a start command through
-unattended (the only record is `go test` blocked as "Irreversible Local
-Destruction" on 14 September 2026, and which allow rule stood is not recorded);
+own tool description, read on 19 September 2026 and quoted in the roadmap entry
+of that date, says it does; nothing here has measured it); whether the
+auto-mode classifier lets a start command through unattended (the only record
+is `go test` blocked as "Irreversible Local Destruction" on 14 September 2026,
+and which allow rule stood is not recorded);
 and who ends a server and a browser the run started. It defines "read
 mechanically" per shape: exit code and output; an answer on the port; state and
 text out of the page. It lays down the interface bench: none of the six benches
@@ -227,10 +231,10 @@ Why here: five milestones build on that boundary, and today it is a reading,
 not a measurement. After 3, because the interface shape needs a driver.
 
 Conventions: "Nothing resumes on its own" and the machine having to be awake
-(`:810` to `:843`; a background process is not the backgrounded agent the
-exception names); "Text shared between skills" (what a skill's inserted blocks
-cost against the 5,000 tokens re-attached after a compaction, which the
-interface shape's longer skills will meet first).
+(a background process is not the backgrounded agent the exception names);
+"Text shared between skills" (what a skill's inserted blocks cost against the
+5,000 tokens re-attached after a compaction, which the interface shape's
+longer skills will meet first).
 
 ### 5. What goes wrong with nobody reading (build)
 
@@ -344,7 +348,11 @@ the end-to-end shape for a service and for an interface: a target that starts
 the thing, drives it and stops it, so that the turn-end hook, which only ever
 runs a target, needs nothing. `setup-project` names the start command as a
 class to grant. `start-work`'s promise — "code that is built, checked and
-merged" — moves with the aim. After the last task of a spec closes, the run
+merged" — moves with the aim, and so do the three lines that say what the set
+does today: the descriptions in `.claude-plugin/plugin.json` and
+`.claude-plugin/marketplace.json`, "from idea to merged, reviewed code", and
+`start-work`'s own description line, "from idea to merged", which the
+roadmap's table repeats. After the last task of a spec closes, the run
 starts the thing, reads the proof, and hands over the one action, the address
 and how to stop it. On a fresh repository the first screen has no page to live
 in, so it is `UI.md`'s second sub-shape, and the cost of bootstrapping a page
@@ -458,10 +466,10 @@ that answers it, or says that none does.
 - Whether an idea whose destination is unknown can be produced on demand
   (milestone 6).
 - The cost per branch (milestone 1).
-- The state of the benches. Read on 19 September 2026 off the platform,
-  `environment.md` carries 0.100.0 in `devloop-test-o`, 0.50.0 in
-  `devloop-test-j` and 0.81.0 in `devloop-test-m`, against 0.105.0 installed;
-  every bench is refreshed before a run on it.
+- The state of the benches. Read on 19 September 2026 off the platform, every
+  bench carries an older version in `environment.md` than the one installed;
+  the roadmap entry of that date carries the figures. Every bench is refreshed
+  before a run on it.
 - Which stack the interface bench gets; the person picks (milestone 4).
 - How many skills and how many control documents there are at the end
   (milestones 7 and 9); both are counted in several places today.
