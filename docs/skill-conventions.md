@@ -1,7 +1,18 @@
 # How a devloop skill is built
 
 Every skill in this set follows these. They are not style preferences — each one
-comes from something that went wrong.
+comes from something that went wrong, and the case is what holds it up, so they
+are not fixed laws either. Where a convention stands in the way of a change
+worth making, the case that produced it is read first. Where the case still
+holds, so does the convention. Where it no longer holds — the situation cannot
+arise any more, or the change is about something the case never covered — the
+convention is re-evaluated: rewritten, or dropped, with every place standing on
+it named in the same change, by the third rule under "A field is not an answer
+to a question it was not asked". It is never gone around: a convention stepped
+past in one change, with its text left standing, holds for every later reader
+and for none of the runs, which is worse than either. That is the move
+`docs/roadmap.md` makes under "Decisions taken against" — reopen when the
+reason stops holding, because the reason is the point and not the verdict.
 
 ## Frontmatter
 
@@ -495,18 +506,37 @@ gets a paraphrase. Listing what the paragraph must cover gets all of it.
 
 ## Works with nothing else installed
 
-Everything here has to work with this plugin and nothing else. Another plugin
-being present may make a run better; it may never be what makes it work. A user
-who installs this and nothing more gets the whole workflow.
-
-That rules out calling into another plugin's skills. Check whether a capability
-is there and use it if it is, and carry on without it if it is not — never make
-it a step that fails when it is missing. The difference matters because a missing
-skill inside this set is a stop with a stated fix, while a missing plugin outside
-it is not the user's problem at all.
+Everything here has to work with this plugin alone. Another plugin being
+present may make a run better; it may never be what makes a run work, and it
+may never be what runs in one without being seen. That rules out calling into
+another plugin's skills, and it rules out a hook another plugin ships standing
+in for anything of this set's: check whether a capability is there and use it
+if it is, carry on without it if it is not, and never make it a step that fails
+when it is missing. A missing skill inside this set is a stop with a stated
+fix; a missing plugin outside it is not the user's problem at all. And a run
+that measures this set is measured with nothing else installed, or its record
+says what else was there.
 
 This was written after finding that a second plugin's hooks had been running
-alongside every test for a day without anyone noticing.
+alongside every test for a day without anyone noticing. That is the case, and
+it is what the convention covers: the skills and hooks of another plugin.
+
+**It does not cover tools.** A tool the project declares in its own manifest is
+the project's: it lands inside the repository, travels with it, and is not what
+this convention or the install guard are about — where the guard stops one all
+the same, that is the false positive its own message names. A tool that lands
+outside the repository — a compiler, a runtime, a linter, a driver, whatever a
+wrapper downloads on first use — is the person's, and it lands there under
+their explicit permission only: asked once at setup, with them there, and held
+as recorded state that a hook can read. Nothing else counts as that permission.
+What the project declares in its dependency file does not: a guard that read a
+project's files per language and got one of them wrong would install with
+nobody asked, which is the first thing to go wrong with nobody reading
+(`docs/plan.md`, the second of its five sentences). What the project declares
+is what the person is shown when the question is put; it does not stand in for
+the question. Until that permission is built — `docs/plan.md`, milestone 3 —
+the person runs every such install themselves, as the skills and the install
+guard say today.
 
 ## Adapting from Matt Pocock
 
@@ -546,6 +576,13 @@ Send a SKILL.md in two or three blocks rather than one. A single long heredoc
 gets truncated on paste, the file is left unterminated, and nothing reports an
 error — the skill simply does not exist. End each block with `wc -l` and an
 expected number.
+
+**The case has not been seen since the editing tool exists.** It came from a
+file pasted through the shell; a file written with the editing tool is neither
+pasted nor terminated by hand, and `docs/roadmap.md` records no occurrence of
+it, dated or otherwise. Kept, because obeying it costs nothing: where a file
+does go through the shell, the count at the end of each block is still the
+one thing that reports a truncation.
 
 ## A finding that would have passed unsupervised gets written down
 
@@ -909,8 +946,18 @@ those too — a write verb or `-o` aimed at `/usr/local/bin`, `/usr/bin`, `/opt`
 install`, and `curl` or `wget` feeding a shell. What it does not catch is
 anything genuinely inventive, and it cannot: a `PreToolUse` hook sees a string,
 not a filesystem. So the rule that binds is the one in the skills — nothing
-lands outside the repository without the user running it — and the hook is what
-catches the ordinary case, not a wall.
+lands outside the repository without the person's explicit permission, in the
+form "Works with nothing else installed" gives it — and the hook is what
+catches the ordinary case, not a wall. Who runs the command is not part of
+that rule. Today the person runs it, because the permission exists nowhere a
+hook can read — nothing writes such a record and nothing reads one — and every
+skill that hands an install over says so; once it is recorded at setup
+(`docs/plan.md`, milestone 3) the run runs it where the record says yes and
+the guard passes what the record allows. What does not move either way is the
+backing: the command is backed before it runs, whoever runs it — the vendor's
+own installation line or the path in it resolving, which is the case of the
+module path that was an organisation's name — and its success is read off the
+path the installer writes to, never off a message that it ran.
 
 Its false positives are deliberate: a command that merely mentions `sudo`, or
 copies something into a directory that looks like a bin directory, gets stopped.
@@ -1240,9 +1287,31 @@ price and the point.
 **User-invoked** (`disable-model-invocation: true` under `description`): costs no
 context, but only a typed command starts it — no other skill can.
 
-In this set, two are user-invoked: `start-work`, the entry point, and
-`record-lessons`. No other skill runs either of them, so locking them costs
-nothing.
+In this set, two are user-invoked, and what each lock costs is written here,
+because "costs nothing" was written for both and held for one.
+
+`start-work`, the entry point. No skill runs it: `build-work` step 6 names it
+as where an armed pull request goes and does not call it, and the check under
+"Before a handover, run these" that holds locked skills against their callers
+prints exactly that line and nothing else. Its lock costs nothing, and that is
+read off the check each time, not assumed.
+
+`record-lessons`. Its lock stood on the same ground — no other skill runs it —
+and the ground did not survive the run of 11 to 13 September 2026 in
+`devloop-test-o`: the same failure picture came out of the review three times
+and was fixed three times separately, the threshold `record-lessons` itself
+names — "it happened a second time" — was cleared at the second occurrence,
+and the skill holding the destination could not be reached by the loop that
+had something to hand it. The run of 14 September 2026 found the standards
+file of the same project empty after two dozen pull requests, for the same
+reason: the one writer is the skill nothing calls. Both stand in
+`docs/roadmap.md`, and the entry there on the comparison with Pocock's set
+says the rest: `record-lessons` has never run. So the lock stays, and its
+price is what those entries measure: a finding of the kind this skill was
+built for, arising where nobody types a command, does not reach it. What
+answers that is milestone 5 of `docs/plan.md`, which decides whether the rule
+is said where the review closes, the lock is lifted, or something else; until
+then, that price is the lock's, not nothing.
 
 Everything else is model-invocable, because the chain reaches it from
 `start-work` or from another skill: `setup-project`, `setup-checks`,

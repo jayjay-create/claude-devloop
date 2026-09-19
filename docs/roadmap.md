@@ -50,6 +50,11 @@ Two kinds of entry read as gaps and are not:
   nor copied. What decides whether the three stay written out or become skills
   is the reason this section already carries — a name leaves the list when
   something needs to call it on its own — and nothing does today.
+
+  The claim stays as it stands here, unmeasured: it is the measurement
+  milestone 9 of `docs/plan.md` owes before it splits a skill — one split
+  skill, one run, and a reading off the session log of what its other halves
+  loaded when called — and not one this entry can supply.
 - **Already done, as a stage.** `explore-codebase`, `design-options`,
   `write-spec`, `implement-ticket`, `test-first-loop` and `merge-and-verify`
   describe work the workflow does today, as stages inside `plan-work` and
@@ -4846,6 +4851,50 @@ the size of the work.
   `929dabe` — the check under "Before you change anything, run this" was
   silent before anything here was changed. Every bench is refreshed before a
   run on it.
+
+- **The conventions read against their cases, on 19 September 2026.**
+  Milestone 2 of `docs/plan.md`, a text milestone: no run, and no skill,
+  shared file, hook, check or version changed. The head of
+  `docs/skill-conventions.md` now says what holds a convention up — its case —
+  and what happens where the case stops holding: read first, re-evaluated,
+  rewritten or dropped with every site named, never gone around. Three
+  rewritten, each on its case:
+
+  - "Works with nothing else installed" — on a second plugin's hooks running
+    alongside every test for a day unnoticed. It now covers the skills and
+    hooks of another plugin and says it does not cover tools: what the project
+    declares is the project's and lands inside the repository; what lands
+    outside lands there under the person's explicit permission only, asked
+    once at setup and recorded, with the project's declaration shown at the
+    question and not standing in for it. **That case has no dated entry in
+    this file.** It stands only in the convention's own text, and a reader
+    checking the rewrite against its case later has that sentence and nothing
+    else.
+  - The sentence under "The install guard matches the outcome as well as the
+    verb" that nothing lands outside the repository without the user running
+    it — on the same case and on the module path that was an organisation's
+    name, 6 September 2026 above. Now written on the permission, not on who
+    runs the command; the backing and the reading of the result stay, and that
+    entry is covered as before.
+  - "No other skill runs either of them, so locking them costs nothing" under
+    "Who may invoke a skill" — on the two entries above that falsified it for
+    `record-lessons`: the same failure picture three times out of the review,
+    11 to 13 September 2026, and the standards file empty after two dozen pull
+    requests, 14 September 2026; and on the line in the entry on Pocock's set
+    that `record-lessons` has never run. The lock on `start-work` costs
+    nothing, read off the pre-handover check; the lock on `record-lessons`
+    stays with its price beside it, and milestone 5 answers it.
+
+  Marked, not rewritten: the delegation claim under "Named, not built as
+  skills" above, as the measurement milestone 9 owes before it splits a skill;
+  "Writing long files", as a case not seen since the editing tool exists and
+  kept because obeying it costs nothing. The sites — searched by subject over
+  `skills/`, `hooks/`, `docs/`, `README.md`, `shared/`, `bin/` and `scripts/`
+  — are listed in the change that carried this; those in skills, shared files
+  and hooks were listed and not touched, being milestone 3's and 5's.
+  `docs/plan.md` moved in one place, "What lands on the machine" under "Where
+  the set ends", which had read a tool the project declares as one the run may
+  install and now reads as the convention does.
 
 ## Decisions taken against
 
