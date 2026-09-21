@@ -1497,7 +1497,7 @@ the text a run gets:
 
     for f in skills/*/SKILL.md; do scripts/devloop-expand "$f" > /dev/null || echo "$f: expansion failed"; done
 
-The program under `bin/` and the tool under `scripts/` are executable, in the
+The program under `bin/` and the tools under `scripts/` are executable, in the
 working tree and in what git records, and git tracks every file there. A
 program that cannot start aborts every load that names it:
 
