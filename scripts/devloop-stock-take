@@ -18,7 +18,8 @@ Usage
 
 The counts by site file - things as straight paths, branches and other kinds,
 the note forms under C, not-a-thing records and findings - are printed so
-that a report copies them rather than counting by hand.
+that a report copies them rather than counting by hand. So are the roots of
+the unattended mode and the skills it reaches, computed on every run.
 
 Exit code 0: nothing broken, nothing uncovered. 1: lines of the search set are
 uncovered, or a unit has no straight path. 2: a record is broken, an anchor
@@ -82,6 +83,15 @@ A branch: every outcome of a condition the run reads at run time and after
 which it does or says something different. Each outcome of each condition
 once, never each path through several conditions.
 
+An offer is a condition. Its answers are outcomes wherever they lead to
+different action, even where the text says the run carries on either way:
+setup-checks offers to take the workflow file back out, and a yes deletes a
+file while a no leaves it in the repository. Where the text does not say what
+a declined offer leads to, the thing stands with an empty evidence, which
+shows the gap by itself; that silence alone is not a finding. The offers are
+found with the search the check for offers under "Before a handover, run
+these" uses, and every hit is walked against this rule.
+
 A unit: what a heading of any level opens, from that heading to the line
 before the next heading of any level. The first unit of a file starts at line
 1, so the frontmatter belongs to it: allowed-tools is what the insert lines
@@ -107,15 +117,35 @@ branch in inserted text is a row of its file under shared/, once. Where the
 shared text hands the decision to the skill (shared/how-to-ask.md does so for
 the case with nobody there), the branch stands only at the skill.
 
-In every skill the unattended mode reaches, every point where the skill hands
-the user something to do or asks something gets a row for the case with
-nobody there, even where the skill does not say what happens then. Which
-skills it reaches is read from the whole of skills/build-work/SKILL.md and
-from the three routes into it (start-work, plan-work, cut-into-tasks), each
-with its anchor. A reached skill with neither a section of its own for the
-case nor shared/how-to-ask.md inserted gets an empty evidence for that row.
-Where the skill does not say what happens then, the evidence stays empty and
-the note carries "outcome with nobody there not stated".
+Which skills the unattended mode reaches is computed, never read off a note.
+A root is a thing carrying the note "enters the unattended mode"; the tool
+takes every thing carrying it as a root, and with no root it says so and does
+not compute the set. From the roots it follows every call note claimed as
+reached, and every call in shared text, until nothing changes: a skill is
+reached when a call to it is claimed as reached and stands in a skill that is
+itself reached, and a call inside shared text counts for every skill that
+inserts that file. The roots and the reached set are printed on every run, so
+a missing or a wrong root is seen there and not only in its consequences. Two
+things carry the note since 22 September 2026: build-work / Unattended mode /
+straight path, where the direct route writes the mark, and plan-work / With
+nobody there / straight path, where planning runs alone from the end of Stage
+1. An order that finds another entry adds the note there.
+
+Reach is per skill, and the boundary is per skill too. plan-work is reached
+only from the end of Stage 1: its preamble and Stage 1 stay with the user,
+and the line "Whether it does is decided once, at the end of Stage 1" draws
+the boundary. In every skill the mode reaches, every point beyond that
+boundary where the skill hands the user something to do or asks something
+gets a row for the case with nobody there, even where the skill does not say
+what happens then; before the boundary nothing is added, since the mode never
+gets there. A reached skill with neither a section of its own for the case
+nor shared/how-to-ask.md inserted gets an empty evidence for that row. Where
+the skill does not say what happens then, the evidence stays empty and the
+note carries "outcome with nobody there not stated". Where two lines of a
+skill disagree about where the boundary runs, that is a finding, and the
+place counts as reached while it stands: an undetermined row that turns out
+to be unreachable is visible and can be dropped, a gap never written down is
+not.
 
 A line that says what a run does with nobody there is a condition like any
 other and gets its thing, whether or not the unattended mode reaches the
@@ -123,7 +153,14 @@ skill. A thing with an empty evidence is added for a handover or a question
 the skill leaves unanswered only where the unattended mode reaches the skill.
 
 A call to another skill is not a thing of its own. It stands as a note, in one
-of the forms under C, on the thing whose outcome makes the call. Calls are
+of the forms under C, on the thing whose outcome makes the call. Which form
+follows from the reached set: in a reached skill, "reached per" where the
+call stands on a path the mode takes, and "not reached per" where it stands
+before the skill's boundary or on a path the mode does not take, naming the
+thing that draws the boundary; in a skill nothing reaches, the third form,
+which says so. In shared text the call stands alone, without a claim, because
+the file stands in several skills and the tool derives the claim from the
+skills that insert it. Calls are
 looked for under shared/ as well as under skills/, because inserted text is
 the skill's text: a search over skills/ alone missed "call `setup-checks`" in
 shared/checks-owner.md, inserted into build-work and diagnose-bug, on 22
@@ -202,17 +239,29 @@ held against skills/.
 
 A thing's note carries each of these forms exactly, separated from anything
 else in the note by "; ":
-- calls <skill>; with nobody there: reached per <thing name>
-- calls <skill>; with nobody there: not reached per <thing name>
-- calls <skill>; with nobody there: not stated per <thing name> - allowed
-  only where the thing it names carries the last form below
+- calls <skill>; with nobody there: reached per <thing name> - only in a
+  skill the mode reaches
+- calls <skill>; with nobody there: not reached per <thing name> - only in a
+  skill the mode reaches, where the call stands before the boundary or on a
+  path the mode does not take
+- calls <skill>; with nobody there: not stated per <thing name> - only in a
+  skill the mode reaches, and only where the thing it names carries the
+  last form below
+- calls <skill>; with nobody there: the mode does not reach this skill -
+  only in a skill nothing reaches
+- calls <skill> - alone, only on a thing under shared/; a claim after it is
+  rejected there, since the tool derives it
+- enters the unattended mode - a root of the computed set; on a record that
+  is not a thing, or on a thing whose site is not under skills/, it is
+  rejected
 - does the work of <named skill> - a name from the table under "Named, not
   built as skills" in docs/roadmap.md
 - outcome with nobody there not stated
 <skill> is a directory under skills/. The thing named after "per" is the one
 whose line shows whether the unattended mode takes the path the call stands
 on. A segment of the note that starts like one of these forms and does not
-carry it exactly rejects the record.
+carry it exactly rejects the record, and so does a reach claim the computed
+set does not carry.
 
 A not-a-thing record starts its note with one reason from this list, separated
 from anything else in the note by "; ", and the tool rejects any other:
@@ -322,6 +371,12 @@ LIMITS
 - The tool checks that a name's source and unit match the site, not that the
   outcome part describes the outcome, and not that a "per" names the right
   thing.
+- The tool checks that a reach claim agrees with the computed set, not that
+  the call stands where the claim says: which side of a skill's boundary a
+  call stands on is read by whoever writes the record. A call in shared text
+  counts for every skill that inserts the file wherever the insert stands, so
+  a call inserted onto a path the mode does not take is derived as reached all
+  the same.
 """
 
 import os
@@ -348,6 +403,8 @@ RECORDED_IN = ("docs", "README.md")
 ZERO_HASH = "0" * 40
 REASONS = ("part of", "rationale", "quoted", "template", "no defect")
 NOT_STATED = "outcome with nobody there not stated"
+ROOT = "enters the unattended mode"
+NOBODY_NONE = "with nobody there: the mode does not reach this skill"
 SHOULD = " — should: "
 STRAIGHT = "straight path"
 WHOLE_FILE = "whole file"
@@ -779,6 +836,8 @@ class Result:
         self.counts = {}            # (state, kind) -> n
         self.reason_counts = {}     # reason -> n
         self.by_file = {}           # site file -> dict of counts, see tally
+        self.roots = []             # names of the things carrying ROOT
+        self.reached = None         # skill -> how it was reached; None: not computed
 
     def broken_count(self):
         return len(self.table_errors) + len(self.broken)
@@ -839,6 +898,37 @@ def unit_files(files, root, only=None):
             if rel.endswith(".md") and wanted(rel) and files.get(rel):
                 out.append(rel)
     return out
+
+
+def inserting_skills(files, root):
+    """shared file -> the skills that insert it, directly or through another
+    shared file that they insert."""
+    direct = {}
+    for rel in unit_files(files, root):
+        for l in files.get(rel)[1]:
+            m = INSERT.match(l)
+            if m:
+                direct.setdefault(rel, set()).add("shared/%s.md" % m.group(1))
+    out = {}
+    for rel, inserted in direct.items():
+        if not rel.startswith("skills/"):
+            continue
+        skill = rel.split("/")[1]
+        seen, stack = set(), list(inserted)
+        while stack:
+            s = stack.pop()
+            if s in seen:
+                continue
+            seen.add(s)
+            out.setdefault(s, set()).add(skill)
+            stack.extend(direct.get(s, ()))
+    return out
+
+
+def skill_of(rel):
+    """The skill a file under skills/ belongs to, else None."""
+    parts = rel.split("/")
+    return parts[1] if rel.startswith("skills/") and len(parts) > 2 else None
 
 
 def search_set(files, root, only=None):
@@ -1026,24 +1116,49 @@ def analyse(root, table=None, only=None):
                               % rec.parts[2])
     # notes of things: the forms
     named = named_skills(files)
+    roots = []    # things carrying ROOT
+    calls = []    # (thing, skill called, mode, per); mode: reached, not
+    #               reached, not stated, none (the third form), shared
     for rec in things:
         segs = rec["note"].split("; ") if rec["note"] != "" else []
+        in_skill = skill_of(rec["file"]) is not None
+        in_shared = rec["file"].startswith("shared/")
         i = 0
         while i < len(segs):
             s = segs[i]
             if s.startswith("calls "):
                 nxt = segs[i + 1] if i + 1 < len(segs) else ""
-                m, m2 = CALLS.match(s), NOBODY.match(nxt)
-                if not m or not m2:
-                    rec.errors.append("note %r does not carry the form 'calls "
-                                      "<skill>; with nobody there: <reached|not "
-                                      "reached|not stated> per <thing name>' "
-                                      "exactly" % "; ".join(segs[i:i + 2]))
-                else:
-                    skill, mode, per = m.group(1), m2.group(1), m2.group(2)
-                    if not os.path.isdir(os.path.join(root, "skills", skill)):
-                        rec.errors.append("calls %r, but skills/%s is not a "
-                                          "directory" % (skill, skill))
+                claim = nxt.startswith("with nobody there:")
+                m = CALLS.match(s)
+                if not m:
+                    rec.errors.append("note %r does not carry the form "
+                                      "'calls <skill>' exactly" % s)
+                    i += 2 if claim else 1
+                    continue
+                skill = m.group(1)
+                if not os.path.isdir(os.path.join(root, "skills", skill)):
+                    rec.errors.append("calls %r, but skills/%s is not a "
+                                      "directory" % (skill, skill))
+                if in_shared:
+                    if claim:
+                        rec.errors.append("%r stands in shared text, where no "
+                                          "reach claim can be made: the file "
+                                          "stands in several skills, and the "
+                                          "tool derives it" % nxt)
+                    else:
+                        calls.append((rec, skill, "shared", None))
+                    i += 2 if claim else 1
+                    continue
+                if not in_skill:
+                    rec.errors.append("a call note stands only on a thing "
+                                      "under skills/ or shared/")
+                    i += 2 if claim else 1
+                    continue
+                m2 = NOBODY.match(nxt)
+                if nxt == NOBODY_NONE:
+                    calls.append((rec, skill, "none", None))
+                elif m2:
+                    mode, per = m2.group(1), m2.group(2)
                     if per not in thing_names:
                         rec.errors.append("per %r names no thing" % per)
                     elif mode == "not stated" and NOT_STATED not in \
@@ -1051,11 +1166,24 @@ def analyse(root, table=None, only=None):
                         rec.errors.append("'not stated per' names %r, which "
                                           "does not carry %r"
                                           % (per, NOT_STATED))
+                    calls.append((rec, skill, mode, per))
+                else:
+                    rec.errors.append("note %r does not carry one of the forms "
+                                      "'calls <skill>; with nobody there: "
+                                      "<reached|not reached|not stated> per "
+                                      "<thing name>' or 'calls <skill>; %s' "
+                                      "exactly" % ("; ".join(segs[i:i + 2]),
+                                                   NOBODY_NONE))
                 i += 2
                 continue
             if s.startswith("with nobody there:"):
                 rec.errors.append("%r stands without its 'calls <skill>' "
                                   "before it" % s)
+            elif s == ROOT:
+                roots.append(rec)
+            elif s.startswith("enters the unattended"):
+                rec.errors.append("note %r does not carry the form %r exactly"
+                                  % (s, ROOT))
             elif s.startswith("does the work of"):
                 m = DOES.match(s)
                 if not m:
@@ -1069,11 +1197,63 @@ def analyse(root, table=None, only=None):
                 rec.errors.append("note %r does not carry the form %r exactly"
                                   % (s, NOT_STATED))
             i += 1
+    # the root note stands on a thing and nowhere else
+    for rec in records:
+        if rec["type"] != "thing" and rec["note"] != "" \
+                and ROOT in rec["note"].split("; "):
+            rec.errors.append("carries %r, which only a thing may carry" % ROOT)
     # not-a-thing: part of names a thing
     for rec in records:
         if rec["type"] == "not-a-thing" and rec.part_of is not None \
                 and rec.part_of not in thing_names:
             rec.errors.append("part of %r, which names no thing" % rec.part_of)
+    # the skills the unattended mode reaches, computed from the roots: every
+    # call claimed as reached in a reached skill, and every call in shared
+    # text that a reached skill inserts, until nothing changes
+    for rec in roots:
+        if not rec.errors and skill_of(rec["file"]) is None:
+            rec.errors.append("carries %r, but its site is not under skills/"
+                              % ROOT)
+    res.roots = [rec["name"] for rec in roots if not rec.errors]
+    if not res.roots:
+        res.table_errors.append("no thing carries %r, so the skills the "
+                                "unattended mode reaches are not computed"
+                                % ROOT)
+    else:
+        inserters = inserting_skills(files, root)
+        reached = {}
+        for rec in roots:
+            if not rec.errors:
+                reached.setdefault(skill_of(rec["file"]), "root: " + rec["name"])
+        changed = True
+        while changed:
+            changed = False
+            for rec, skill, mode, per in calls:
+                if rec.errors or skill in reached:
+                    continue
+                if mode == "reached" and skill_of(rec["file"]) in reached:
+                    reached[skill] = "per " + rec["name"]
+                    changed = True
+                elif mode == "shared":
+                    via = sorted(s for s in inserters.get(rec["file"], ())
+                                 if s in reached)
+                    if via:
+                        reached[skill] = "in %s, inserted into %s" % (
+                            rec["file"], ", ".join(via))
+                        changed = True
+        res.reached = reached
+        for rec, skill, mode, per in calls:
+            if rec.errors or mode == "shared":
+                continue
+            s = skill_of(rec["file"])
+            if mode == "none" and s in reached:
+                rec.errors.append("%r stands in %s, which the mode reaches; a "
+                                  "call before the boundary takes 'not reached "
+                                  "per <thing name>'" % (NOBODY_NONE, s))
+            elif mode != "none" and s not in reached:
+                rec.errors.append("'with nobody there: %s per' stands in %s, "
+                                  "which nothing reaches; the note takes %r"
+                                  % (mode, s, NOBODY_NONE))
     # runs need their thing
     origin_main = resolve(root, "origin/main")
     for rec in records:
@@ -1282,6 +1462,17 @@ def render(res):
     for lineno, e in res.broken:
         out.append("  line %d: %s" % (lineno, e))
     out.append("")
+    out.append("ROOTS OF THE UNATTENDED MODE (things carrying %r): %d"
+               % (ROOT, len(res.roots)))
+    for name in res.roots:
+        out.append("  " + name)
+    if res.reached is None:
+        out.append("SKILLS THE UNATTENDED MODE REACHES: not computed, no root")
+    else:
+        out.append("SKILLS THE UNATTENDED MODE REACHES: %d" % len(res.reached))
+        for skill in sorted(res.reached):
+            out.append("  %-18s %s" % (skill, res.reached[skill]))
+    out.append("")
     out.append("STATES, by file and kind (evidence that decided each)")
     groups = {}
     for t in res.things:
@@ -1431,6 +1622,7 @@ def selftest():
         write(root, "skills/gamma/SKILL.md",
               "# Gamma\n\n```markdown\n## Fake\n```\n\n"
               "If a fence stands here, the heading inside it is not a unit.\n")
+        write(root, "skills/epsilon/SKILL.md", "# Epsilon\n")
         write(root, "shared/note.md",
               "When somebody writes in German, answer in German.\n")
         write(root, "shared/inserted.md", "Inserted text, first wording.\n")
@@ -1525,23 +1717,46 @@ def selftest():
 
         rows = [
             "\t".join(COLUMNS),
-            # things, green
-            thing(SP, A, "# Alpha", note="does the work of implement-ticket"),
+            # things, green; alpha is the root of the unattended mode, beta is
+            # reached through the claim on blue, epsilon through the call in
+            # the shared text alpha inserts
+            thing(SP, A, "# Alpha", note="does the work of implement-ticket; "
+                  + ROOT),
             thing(GREY, A, "Where the sky is grey, say that it is grey"),
             thing(BLUE, A, "If the sky is blue, say that it is blue",
                   note="calls beta; with nobody there: reached per " + NOBODY_T),
             thing(NOBODY_T, A, "Say what you would do, and let the user decide how",
                   ev=False, note=NOT_STATED),
-            thing(SECOND, A, "## Second"),
+            thing(SECOND, A, "## Second",
+                  note="calls beta; with nobody there: not reached per " + SP),
             thing(THIRD, A, "## Third"),
             thing("gamma / Gamma / straight path", G, "# Gamma"),
+            thing("gamma / Gamma / third form where nothing reaches", G,
+                  "```markdown", ev=False, note="calls beta; " + NOBODY_NONE),
+            thing("epsilon / Epsilon / straight path", "skills/epsilon/SKILL.md",
+                  "# Epsilon"),
             thing(NOTE_SP, "shared/note.md", "somebody writes in German, answer",
                   kind="shared text"),
             thing(NOTE_G, "shared/note.md", "When somebody writes in German",
                   kind="shared text"),
             thing("shared/inserted.md / whole file / straight path",
                   "shared/inserted.md", "Inserted text, second wording.",
-                  kind="shared text"),
+                  kind="shared text", note="calls epsilon"),
+            # red: a reach claim in a skill nothing reaches; a per in one; a
+            # reach claim in shared text; the third form where the mode reaches
+            thing("gamma / Gamma / reached claim where nothing reaches", G,
+                  "heading inside it is not a unit", ev=False,
+                  note="calls beta; with nobody there: reached per " + NOBODY_T),
+            thing("gamma / Gamma / per where nothing reaches", G,
+                  "If a fence stands here, the heading", ev=False,
+                  note="calls beta; with nobody there: not reached per " + SP),
+            thing("shared/note.md / whole file / claim in shared text",
+                  "shared/note.md", "answer in German, always.", kind="shared text",
+                  ev=False,
+                  note="calls beta; with nobody there: reached per " + NOBODY_T),
+            thing("alpha / Alpha / third form where the mode reaches", A,
+                  "it rains, carry on with the ordinary", ev=False,
+                  note="calls beta; " + NOBODY_NONE),
             thing(CHECK, "docs/skill-conventions.md",
                   "ls skills/ | grep -c nothing-of-that-name",
                   kind="check command", note="green prints nothing"),
@@ -1642,6 +1857,9 @@ def selftest():
                 note="prose"),
             rec(type="not-a-thing", file="skills/beta/SKILL.md", anchor="# Beta",
                 note="part of: alpha / Alpha / nowhere"),
+            # red: the root note on a record that is not a thing
+            rec(type="not-a-thing", file=A, anchor="and let the user decide how",
+                note="rationale; " + ROOT),
             # findings: green, and red without its should part
             rec(type="finding", file=G,
                 anchor="If a fence stands here, the heading inside it",
@@ -1656,6 +1874,11 @@ def selftest():
         write(root, "docs/stock-take.tsv", "\n".join(rows) + "\n")
         res = analyse(root, table)
         print(render(res))
+        # the same table with no root at all
+        no_root = os.path.join(root, "docs", "no-root.tsv")
+        write(root, "docs/no-root.tsv",
+              "\n".join(r.replace("; " + ROOT, "") for r in rows) + "\n")
+        res_no_root = analyse(root, no_root)
         errors = [e for _, e in res.broken] + res.table_errors
         runs = {(r["thing"]["name"], r["rec"]["date"]): r for r in res.runs}
         states = {t["name"]: t["state"] for t in res.things}
@@ -1791,6 +2014,29 @@ def selftest():
         case("a name whose source is not the site's",
              err("name's source part 'omega' is not 'alpha'"),
              states.get(THIRD) is not None)
+        case("a reached claim in a skill the set does not carry",
+             err("'with nobody there: reached per' stands in gamma, which "
+                 "nothing reaches"),
+             not any(BLUE in e for e in errors) and res.reached is not None
+             and "beta" in res.reached and "gamma" not in res.reached)
+        case("a per on a call in a skill that is not reached",
+             err("'with nobody there: not reached per' stands in gamma, which "
+                 "nothing reaches"),
+             not any(SECOND in e for e in errors))
+        case("a reach claim on a call in shared text",
+             err("stands in shared text, where no reach claim can be made"),
+             "epsilon" in (res.reached or {})
+             and "shared/inserted.md" in res.reached.get("epsilon", ""))
+        case("no thing carrying the root note",
+             any("no thing carries" in e for e in res_no_root.table_errors)
+             and res_no_root.reached is None,
+             res.roots == [SP] and "alpha" in (res.reached or {}))
+        case("the root note on a record that is not a thing",
+             err("which only a thing may carry"),
+             res.roots == [SP])
+        case("the third form in a skill the mode reaches",
+             err("stands in alpha, which the mode reaches"),
+             not any("third form where nothing reaches" in e for e in errors))
         # shallow clone
         shallow = os.path.join(tmp, "shallow")
         subprocess.run(["git", "clone", "-q", "--depth", "1", "file://" + root,
