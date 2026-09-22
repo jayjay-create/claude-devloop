@@ -17,8 +17,9 @@ Usage
                                                 counterpart
 
 Exit code 0: nothing broken, nothing uncovered. 1: lines of the search set are
-uncovered. 2: a record is broken, an anchor does not stand where its record
-says, or the repository is one the tool refuses (a shallow clone).
+uncovered, or a unit has no straight path. 2: a record is broken, an anchor
+does not stand where its record says, or the repository is one the tool
+refuses (a shallow clone).
 
 It needs python3 and git and nothing else, and no GNU tool: it runs on macOS.
 
@@ -32,13 +33,17 @@ branch that fills the table.
 
 A. WHAT GOES IN
 
-- Every branch of the twelve skills, all files in each skill directory.
-- Every branch of the text under shared/.
+- Every branch of the twelve skills, all files in each skill directory, and
+  the straight path of every unit of those files.
+- Every branch of the text under shared/, and the straight path of every unit.
 - Every outcome of each hook, and hooks.json as one thing. A hook's outcomes
   are what it produces (passes, each with the condition that produced it, or
   blocks with a given message), not its exit statements.
 - Every outcome of every program under bin/ and scripts/, this tool included.
-  This tool's outcomes are the cases of its self-test.
+  For hooks and programs alike, an outcome is what the program produces - a
+  pass, a block, an exit code, an output - never an internal condition. An
+  internal condition is "part of" the outcome it leads to. This tool's
+  outcomes are the cases of its self-test.
 - Both outcomes of every command under "Before a handover, run these" and of
   the command under "Before you change anything, run this": the answer its
   section calls green, and any other. The green form is the record's note.
@@ -47,7 +52,7 @@ A. WHAT GOES IN
 - The thirteen entries under "Named, not built as skills" in docs/roadmap.md
   that the section does not record as done inside another skill or as a
   stage. The other nine are not things of their own: each name stands as a
-  note on the row of the branch that does its work. The four side paths under
+  note on the row of the thing that does its work. The four side paths under
   "What is missing" in README.md are four of the thirteen and get no second
   row.
 - Every defect an entry under "Known gaps" names, answered or not, the three
@@ -58,15 +63,34 @@ A. WHAT GOES IN
   still open is computed, never judged while writing.
 - Trigger, bench and cost belong to the thing, as how it could be walked, not
   to a run. Each with its anchor, where the roadmap names them.
+- Every finding made while reading: a line that is wrong, or a place where
+  something is missing. A finding lives in the table, not only in a report.
 
-B. WHAT A BRANCH IS
+B. WHAT A BRANCH IS, AND WHAT A UNIT IS
 
-Every outcome of a condition the run reads at run time and after which it does
-or says something different. Each outcome of each condition once, never each
-path through several conditions. A unit with no condition at all (a step, a
-section) is one row for its straight path; a sentence without a condition
-inside a unit that has one is not a row. A sentence that fixes the same
-wording in every case is not a branch.
+A branch: every outcome of a condition the run reads at run time and after
+which it does or says something different. Each outcome of each condition
+once, never each path through several conditions.
+
+A unit: what a heading of any level opens, from that heading to the line
+before the next heading of any level. The first unit of a file starts at line
+1, so the frontmatter belongs to it: allowed-tools is what the insert lines
+run under. A file without a heading is one unit. A line inside a fenced code
+block is never a heading, neither for the search set nor for the boundaries of
+a unit: skills/untangle-idea/SKILL.md carries a template with headings inside
+a fence and, further down, a heading of the skill in the same words. An insert
+line (!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text NAME`) brings shared/NAME.md
+into the range of its unit, followed once per file.
+
+Every unit has one thing for its straight path - kind skill branch in a skill,
+shared text under shared/ - named <source> / <unit> / straight path and
+anchored at the unit's heading. A sentence without a condition in the unit is
+"part of" it; every condition keeps its own things. A unit whose heading
+cannot carry an anchor anchors its straight path on the nearest anchorable
+line inside the unit; a unit with no anchorable line at all is listed with the
+unanchorable lines. Every unit of a file under skills/ or shared/ has exactly
+one straight path, and the tool checks it: a unit without one is listed and
+counts as uncovered, a second one is a broken record.
 
 Branches are read from the files on disk, never from the expanded text. A
 branch in inserted text is a row of its file under shared/, once. Where the
@@ -80,9 +104,13 @@ skills it reaches is read from the whole of skills/build-work/SKILL.md and
 from the three routes into it (start-work, plan-work, cut-into-tasks), each
 with its anchor. A reached skill with neither a section of its own for the
 case nor shared/how-to-ask.md inserted gets an empty evidence for that row.
+Where the skill does not say what happens then, the evidence stays empty and
+the note carries "outcome with nobody there not stated".
 
-A branch one skill describes and another decides stands once, where it is
-decided; the other place goes in the note.
+A call to another skill is not a thing of its own. It stands as a note, in one
+of the forms under C, on the thing whose outcome makes the call. A branch one
+skill describes and another decides stands once, where it is decided; the
+other place goes in the note.
 
 C. RECORDS
 
@@ -93,7 +121,7 @@ exactly the columns of the header; a tab that an editor turned into spaces
 makes the record one field short, and the record is rejected rather than read.
 Fields a record type does not use stay empty; a required field that is empty,
 an unknown type or kind, or a filled field the type does not use rejects the
-record.
+record. A rejected record covers nothing.
 
 Columns, in this order:
     type name kind file anchor evidence_file evidence_anchor note date
@@ -106,7 +134,7 @@ characters, occurring exactly once in that file. An anchor may be shorter than
 No line numbers anywhere: the opening of docs/plan.md records that line
 numbers drifted by the next pull request while the text did not.
 
-Three record types:
+Four record types:
 
 - thing: name (unique among things), kind, file + anchor (the site: where it
   stands or is named), evidence_file + evidence_anchor (what carries its
@@ -131,8 +159,50 @@ Three record types:
   version its merge will introduce counts before the merge and after it; such
   a run is recorded only at the branch's final state.
 - not-a-thing: file + anchor of a line from the search set judged not to be a
-  branch, or an entry head whose entry names no defect, and a one-word reason
-  in note.
+  branch, or an entry head whose entry names no defect, and a note that starts
+  with one reason from the list below.
+- finding: file + anchor on the line that is wrong or where something is
+  missing, and a note of the form <what is wrong> - should: <what should hold>,
+  with " — should: " between the two parts. The tool rejects one without its
+  "should" part, does not count it for coverage, and lists every finding in
+  its output. A finding is recorded on the branch that reads and repaired
+  nowhere on it: order 9 of the stock-take moves each into the dated roadmap
+  entry and replaces its record by a defect thing whose site is the new
+  roadmap line.
+
+Thing names take the form <source> / <unit> / <outcome>, the parts separated
+by " / ": the skill's name for a file under skills/, otherwise the file's
+path; the heading of the unit the site lies in, without its # marks, or
+"whole file" where the unit has none; the outcome - in English, and unique.
+The tool rejects a name without exactly those three parts and, for a site
+under skills/ or shared/, a source or unit part that does not match the site.
+A name carries no "; ", because the note forms below use it as their
+separator and a "part of:" note names a thing up to it. For a named skill the third part is the skill's name, and that is what is
+held against skills/.
+
+A thing's note carries each of these forms exactly, separated from anything
+else in the note by "; ":
+- calls <skill>; with nobody there: reached per <thing name>
+- calls <skill>; with nobody there: not reached per <thing name>
+- calls <skill>; with nobody there: not stated per <thing name> - allowed
+  only where the thing it names carries the last form below
+- does the work of <named skill> - a name from the table under "Named, not
+  built as skills" in docs/roadmap.md
+- outcome with nobody there not stated
+<skill> is a directory under skills/. The thing named after "per" is the one
+whose line shows whether the unattended mode takes the path the call stands
+on. A segment of the note that starts like one of these forms and does not
+carry it exactly rejects the record.
+
+A not-a-thing record starts its note with one reason from this list, separated
+from anything else in the note by "; ", and the tool rejects any other:
+- part of: <thing name> - the line belongs to a thing anchored on another
+  line: the straight path of its unit, or a branch; the name must be a thing's
+- rationale - it explains why, or where a rule came from, and does not direct
+  the run
+- quoted - it quotes another file or an earlier wording
+- template - it is part of a template or an example the run writes or shows
+- no defect - an entry head under "Known gaps" whose entry names no defect
 
 D. HOW STATES ARE COMPUTED
 
@@ -145,14 +215,20 @@ D. HOW STATES ARE COMPUTED
 - Built, never walked: built, and no run counts. Runs that do not count stay
   in the output, each with the reason.
 
-A run counts when the version it ran already contains the last change to the
-evidence line: git blame names the commit of that change, and the commit that
-introduced the version number into .claude-plugin/plugin.json must have it as
-an ancestor, itself included. That commit and no later one, because a
-version's content is fixed only if every change to the shipped directories
-raised the number; where that does not hold, it is the one commit every copy
-of the version is certain to contain. The rule can undercount and cannot
-overcount. Where the run carries a commit instead, that commit must have the
+A run counts when the version it ran already contains the last change to
+every line the thing stands on. Those lines are: for a straight path, every
+line of its unit from its heading to the line before the next heading, and
+every line of every file its insert lines bring in; for a branch, its site
+line and its evidence line; for either, every line recorded as "part of" it.
+git blame names the commit of each line's last change, and the commit that
+introduced the version number into .claude-plugin/plugin.json must have every
+one of them as an ancestor, itself included. That commit and no later one,
+because a version's content is fixed only if every change to the shipped
+directories raised the number; where that does not hold, it is the one commit
+every copy of the version is certain to contain. Every line, because
+otherwise a change to a unit's content would go unseen and a run on the old
+content would count for the new: the rule can undercount and must never
+overcount. Where the run carries a commit instead, that commit must have every
 blamed commit as an ancestor, itself included.
 
 Blame is plain: a moved line counts as changed, because where a line stands
@@ -162,10 +238,10 @@ attribute the line to (git blame -C -C) is printed as information beside a run
 that does not count, never as a state.
 
 A check command runs in this repository, not from the installed copy: its run
-counts when the run's date is later than the commit date of that last change,
-read in the commit's own timezone; the same day does not count. A run whose
-version is not recorded does not count. An uncommitted line counts as changed
-after every run.
+counts when the run's date is later than the commit date of every one of those
+changes, read in the commit's own timezone; the same day does not count. A run
+whose version is not recorded does not count. An uncommitted line counts as
+changed after every run.
 
 On a shallow clone the tool refuses to work: git blame there reports every
 line as the boundary commit.
@@ -174,15 +250,17 @@ E. THE SEARCH SET, FOR COVERAGE
 
 - In every file under skills/ and shared/: every line holding one of the
   words if, where, when, whenever, wherever, unless, otherwise, either, else,
-  before, as whole words in either case; every heading; every numbered item;
-  every bold list head; every bold paragraph head; every table row except the
-  header row and the separator row.
+  before, as whole words in either case; every heading outside a fenced code
+  block; every numbered item; every bold list head; every bold paragraph head;
+  every table row except the header row and the separator row.
 - In every file under hooks/: every line holding if, elif, else, case or exit
   as whole words.
 - Under bin/ and scripts/: in a shell program the same five words; in a python
-  program if, elif, raise, exit. Not else and not return: an else line on its
-  own is never anchorable and its branch is anchored at its if, and a return
-  is a function's straight path. The language is read off the first line.
+  program if, elif, raise, exit, except - a caught error is a branch, and this
+  tool's own red outcomes sit there. Not else and not return: an else line on
+  its own is never anchorable and its branch is anchored at its if, and a
+  return is a function's straight path. The language is read off the first
+  line.
 - Under the two check headings in docs/skill-conventions.md ("Before you
   change anything, run this" and "Before a handover, run these"): every
   command block, as one item covered by an anchor on any of its lines.
@@ -190,16 +268,17 @@ E. THE SEARCH SET, FOR COVERAGE
   with "- **") and every line holding "Recorded, not built", "Built",
   "Half built" or "Should hold".
 
-A line is covered when an anchor of any record (thing, run or not-a-thing)
-lies on it. A line of the set that can carry no unique anchor at all (too
-short and repeated, or repeated whole) leaves the set and is listed under a
-heading of its own, so it is seen rather than silently dropped; its branch is
-anchored on the nearest line that can carry an anchor, normally the condition
-itself. The exit lines of a hook are the case: pass and block are anchored
-where they are decided.
+A line is covered when an anchor of any record that is not rejected (thing,
+run or not-a-thing; never a finding) lies on it. A line of the set that can
+carry no unique anchor at all (too short and repeated, or repeated whole)
+leaves the set and is listed under a heading of its own, so it is seen rather
+than silently dropped; its branch is anchored on the nearest line that can
+carry an anchor, normally the condition itself. The exit lines of a hook are
+the case: pass and block are anchored where they are decided.
 
 Every order from 2 to 8 of the stock-take ends when the tool reports, for the
-files that order took, no uncovered line of the set and no broken record.
+files that order took, no uncovered line of the set, no unit without a
+straight path and no broken record.
 
 LIMITS
 
@@ -207,8 +286,8 @@ LIMITS
   the record.
 - A condition phrased without any of the search words is caught only by the
   headings, items, list heads and table rows, not with certainty.
-- The version rule sees only the evidence line; a change to a neighbouring
-  line of the same branch goes unseen.
+- The version rule sees the lines a thing stands on; a line of a branch that
+  no record names goes unseen.
 - Walked, for shared text, means walked in at least one skill that inserts it.
 - A version read from a session log is recorded with its source; nobody else
   can read that log again. Two of the session logs of the benches carry no
@@ -220,6 +299,9 @@ LIMITS
 - A defect whose fix stands on disk while its record's evidence points at the
   roadmap line saying nothing is built reads "Recorded, not built"; the tool
   cannot see the fix. Only a named skill whose directory exists is flagged.
+- The tool checks that a name's source and unit match the site, not that the
+  outcome part describes the outcome, and not that a "per" names the right
+  thing.
 """
 
 import os
@@ -234,7 +316,7 @@ COLUMNS = [
     "run_file", "run_anchor", "trigger_file", "trigger_anchor", "bench_file",
     "bench_anchor", "cost_file", "cost_anchor",
 ]
-TYPES = ("thing", "run", "not-a-thing")
+TYPES = ("thing", "run", "not-a-thing", "finding")
 KINDS = (
     "skill branch", "shared text", "hook outcome", "hook registration",
     "program outcome", "check command", "named skill", "defect",
@@ -244,12 +326,18 @@ STATES = ("Undetermined", "Recorded, not built", "Built, never walked", "Walked"
 SHIPPED = ("skills", "shared", "hooks", "bin", "scripts")
 RECORDED_IN = ("docs", "README.md")
 ZERO_HASH = "0" * 40
+REASONS = ("part of", "rationale", "quoted", "template", "no defect")
+NOT_STATED = "outcome with nobody there not stated"
+SHOULD = " — should: "
+STRAIGHT = "straight path"
+WHOLE_FILE = "whole file"
+NAMED_HEADING = "## Named, not built as skills"
 
 PROSE_WORDS = re.compile(
     r"\b(if|where|when|whenever|wherever|unless|otherwise|either|else|before)\b",
     re.IGNORECASE)
 SHELL_WORDS = re.compile(r"\b(if|elif|else|case|exit)\b")
-PYTHON_WORDS = re.compile(r"\b(if|elif|raise|exit)\b")
+PYTHON_WORDS = re.compile(r"\b(if|elif|raise|exit|except)\b")
 HEADING = re.compile(r"^#{1,6}\s")
 NUMBERED = re.compile(r"^\s*\d+\.\s")
 BOLD_LIST_HEAD = re.compile(r"^\s*[-*]\s+\*\*")
@@ -259,6 +347,12 @@ TABLE_SEPARATOR = re.compile(r"^\s*\|?\s*:?-{3,}")
 ENTRY_HEAD = re.compile(r"^- \*\*")
 ROADMAP_STATUS = re.compile(r"\bBuilt\b|Half built|Recorded, not built|Should hold")
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+FENCE = re.compile(r"^ {0,3}(```|~~~)")
+INSERT = re.compile(r"^!`\$\{CLAUDE_PLUGIN_ROOT\}/bin/devloop-text ([a-z0-9-]+)`$")
+CALLS = re.compile(r"^calls ([a-z0-9-]+)$")
+NOBODY = re.compile(r"^with nobody there: (reached|not reached|not stated) per (.+)$")
+DOES = re.compile(r"^does the work of ([a-z0-9-]+)$")
+NAMED_ROW = re.compile(r"^\|\s*`([a-z0-9-]+)`\s*\|")
 CHECK_HEADINGS = (
     "## Before you change anything, run this",
     "## Before a handover, run these",
@@ -290,22 +384,60 @@ def resolve(root, ref):
     return p.stdout.strip() if p.returncode == 0 else None
 
 
-def is_ancestor(root, a, b):
-    """True when commit a is an ancestor of commit b, or the same commit."""
-    return git_ok(root, "merge-base", "--is-ancestor", a, b)
+class Git:
+    """Ancestry and dates, each asked once."""
+
+    def __init__(self, root):
+        self.root = root
+        self.ancestry = {}
+        self.dates = {}
+        self.blames = {}
+
+    def is_ancestor(self, a, b):
+        """True when commit a is an ancestor of commit b, or the same commit."""
+        key = (a, b)
+        if key not in self.ancestry:
+            self.ancestry[key] = git_ok(self.root, "merge-base", "--is-ancestor",
+                                        a, b)
+        return self.ancestry[key]
+
+    def commit_date(self, h):
+        """The committer date, in the commit's own timezone, as YYYY-MM-DD."""
+        if h not in self.dates:
+            self.dates[h] = git(self.root, "show", "-s", "--format=%ci",
+                                h).strip()[:10]
+        return self.dates[h]
+
+    def blame_file(self, rel):
+        """lineno -> (hash or None where uncommitted, committer time)."""
+        if rel not in self.blames:
+            out = {}
+            p = subprocess.run(["git", "-C", self.root, "blame",
+                                "--line-porcelain", "--", rel],
+                               capture_output=True, text=True)
+            if p.returncode == 0:
+                cur = None
+                for line in p.stdout.splitlines():
+                    m = re.match(r"^([0-9a-f]{40}) \d+ (\d+)", line)
+                    if m:
+                        cur = {"hash": m.group(1), "line": int(m.group(2)),
+                               "time": 0}
+                    elif cur is None:
+                        continue
+                    elif line.startswith("committer-time "):
+                        cur["time"] = int(line.split()[1])
+                    elif line.startswith("\t"):
+                        h = None if cur["hash"] == ZERO_HASH else cur["hash"]
+                        out[cur["line"]] = (h, cur["time"])
+                        cur = None
+            self.blames[rel] = out
+        return self.blames[rel]
 
 
-def commit_date(root, h):
-    """The committer date, in the commit's own timezone, as YYYY-MM-DD."""
-    return git(root, "show", "-s", "--format=%ci", h).strip()[:10]
-
-
-def blame(root, path, lineno, copy_detection=False):
-    """The commit that last changed the line, or None where it is uncommitted."""
-    args = ["blame", "--line-porcelain", "-L", "%d,%d" % (lineno, lineno)]
-    if copy_detection:
-        args += ["-C", "-C"]
-    p = subprocess.run(["git", "-C", root] + args + ["--", path],
+def blame_copy(root, path, lineno):
+    """What git blame -C -C attributes the line to: (hash, filename) or None."""
+    p = subprocess.run(["git", "-C", root, "blame", "--line-porcelain", "-C",
+                        "-C", "-L", "%d,%d" % (lineno, lineno), "--", path],
                        capture_output=True, text=True)
     if p.returncode != 0:
         return None
@@ -315,13 +447,11 @@ def blame(root, path, lineno, copy_detection=False):
     h = out[0].split()[0]
     if h == ZERO_HASH:
         return None
-    info = {"hash": h}
+    filename = path
     for line in out[1:]:
         if line.startswith("filename "):
-            info["filename"] = line[len("filename "):]
-        elif line.startswith("committer-time "):
-            info["time"] = int(line.split()[1])
-    return info
+            filename = line[len("filename "):]
+    return h, filename
 
 
 def version_commit(root, version):
@@ -342,12 +472,46 @@ def is_shallow(root):
     return git(root, "rev-parse", "--is-shallow-repository").strip() == "true"
 
 
+def units_of(lines):
+    """(units, fenced line numbers). A unit: heading text or None, hline,
+    start, end. The first unit starts at line 1; a file without a heading is
+    one unit; a heading inside a fenced code block is not a heading."""
+    fenced = set()
+    inside = False
+    for i, l in enumerate(lines, 1):
+        if FENCE.match(l):
+            inside = not inside
+            fenced.add(i)
+        elif inside:
+            fenced.add(i)
+    heads = [i for i, l in enumerate(lines, 1)
+             if HEADING.match(l) and i not in fenced]
+    if not heads:
+        return [{"heading": None, "hline": None, "start": 1,
+                 "end": len(lines)}], fenced
+    units = []
+    for k, h in enumerate(heads):
+        units.append({
+            "heading": lines[h - 1].lstrip("#").strip(),
+            "hline": h,
+            "start": 1 if k == 0 else h,
+            "end": heads[k + 1] - 1 if k + 1 < len(heads) else len(lines),
+        })
+    return units, fenced
+
+
+def is_unit_file(rel):
+    return (rel.startswith("skills/") or rel.startswith("shared/")) \
+        and rel.endswith(".md")
+
+
 class Files:
     """Every file read once."""
 
     def __init__(self, root):
         self.root = root
         self.cache = {}
+        self.unit_cache = {}
 
     def get(self, rel):
         if rel not in self.cache:
@@ -360,6 +524,18 @@ class Files:
             else:
                 self.cache[rel] = (text, text.splitlines())
         return self.cache[rel]
+
+    def units(self, rel):
+        if rel not in self.unit_cache:
+            got = self.get(rel)
+            self.unit_cache[rel] = units_of(got[1]) if got else ([], set())
+        return self.unit_cache[rel]
+
+    def unit_at(self, rel, lineno):
+        for u in self.units(rel)[0]:
+            if u["start"] <= lineno <= u["end"]:
+                return u
+        return None
 
 
 def find_anchor(files, rel, anchor):
@@ -401,6 +577,24 @@ def absolute_path(field):
     return field.startswith("/") or "/Users/" in field or "/home/" in field
 
 
+def named_skills(files):
+    """The names in the table under "Named, not built as skills"."""
+    got = files.get("docs/roadmap.md")
+    if got is None:
+        return set()
+    names = set()
+    inside = False
+    for l in got[1]:
+        if l.startswith("## "):
+            inside = l.rstrip() == NAMED_HEADING
+            continue
+        if inside:
+            m = NAMED_ROW.match(l)
+            if m:
+                names.add(m.group(1))
+    return names
+
+
 # ---------------------------------------------------------------- records
 
 class Record:
@@ -408,10 +602,19 @@ class Record:
         self.lineno = lineno
         self.f = dict(zip(COLUMNS, fields))
         self.errors = []
-        self.anchors = {}   # column pair -> (status, lineno)
+        self.anchors = {}   # anchor column -> (status, lineno)
+        self.parts = None   # a thing's three name parts
+        self.part_of = None  # a not-a-thing's thing
 
     def __getitem__(self, k):
         return self.f[k]
+
+    def site(self):
+        """(file, lineno) where the site anchor resolved, else None."""
+        got = self.anchors.get("anchor")
+        if got and got[0] == "ok":
+            return self.f["file"], got[1]
+        return None
 
 
 def read_table(path):
@@ -454,11 +657,13 @@ USES = {
     "run": {"name", "note", "date", "version", "commit", "source", "run_file",
             "run_anchor"},
     "not-a-thing": {"file", "anchor", "note"},
+    "finding": {"file", "anchor", "note"},
 }
 REQUIRED = {
     "thing": ("name", "kind", "file", "anchor"),
     "run": ("name", "date", "source", "run_file", "run_anchor"),
     "not-a-thing": ("file", "anchor", "note"),
+    "finding": ("file", "anchor", "note"),
 }
 
 
@@ -490,6 +695,16 @@ def validate(rec):
         if f["kind"] in ("check command", "named skill") and f["note"] == "":
             rec.errors.append("note is empty, which a %s may not leave"
                               % f["kind"])
+        parts = f["name"].split(" / ")
+        if f["name"] != "" and (len(parts) != 3 or any(
+                p == "" or p != p.strip() for p in parts)):
+            rec.errors.append("name %r does not have the three parts "
+                              "<source> / <unit> / <outcome>" % f["name"])
+        elif "; " in f["name"]:
+            rec.errors.append("name %r carries '; ', which the note forms use "
+                              "as their separator" % f["name"])
+        elif f["name"] != "":
+            rec.parts = parts
     if t == "run":
         if not DATE.match(f["date"]):
             rec.errors.append("date is not YYYY-MM-DD")
@@ -506,6 +721,23 @@ def validate(rec):
         if has_c and f["source"] != "entry":
             rec.errors.append("a commit is a run's version only where the "
                               "entry names it (source entry)")
+    if t == "not-a-thing" and f["note"] != "":
+        head = f["note"].split("; ")[0]
+        if head.startswith("part of: "):
+            target = head[len("part of: "):].strip()
+            if target == "":
+                rec.errors.append("part of: names nothing")
+            else:
+                rec.part_of = target
+        elif head not in REASONS or head == "part of":
+            rec.errors.append("reason %r is not on the list: %s"
+                              % (head, ", ".join(REASONS)))
+    if t == "finding" and f["note"] != "":
+        halves = f["note"].split(SHOULD, 1)
+        if len(halves) != 2 or halves[0].strip() == "" \
+                or halves[1].strip() == "":
+            rec.errors.append("a finding's note has the form '<what is "
+                              "wrong>%s<what should hold>'" % SHOULD)
 
 
 # ---------------------------------------------------------------- analysis
@@ -517,11 +749,15 @@ class Result:
         self.broken = []            # (record lineno, message)
         self.things = []            # dicts
         self.runs = []              # dicts
+        self.findings = []          # (file, lineno, note)
         self.unanchorable = []      # (file, lineno, text)
+        self.unanchorable_units = []  # (file, lineno, heading)
+        self.no_straight_path = []  # (file, lineno, heading)
         self.uncovered = []         # (file, first, last, text)
         self.set_size = 0
         self.covered_lines = {}     # file -> set of linenos
         self.counts = {}            # (state, kind) -> n
+        self.reason_counts = {}     # reason -> n
 
     def broken_count(self):
         return len(self.table_errors) + len(self.broken)
@@ -538,42 +774,52 @@ def classify_location(rel, kind):
     return None
 
 
-def search_set(files, root, only=None):
-    """Items of the search set: (file, first_line, last_line, text)."""
-    items = []
-
+def wanted_by(only):
     def wanted(rel):
         return not only or any(rel == o or rel.startswith(o.rstrip("/") + "/")
                                for o in only)
+    return wanted
 
-    def walk(top):
-        out = []
-        for dirpath, dirnames, filenames in os.walk(os.path.join(root, top)):
-            dirnames.sort()
-            for fn in sorted(filenames):
-                out.append(os.path.relpath(os.path.join(dirpath, fn), root))
-        return out
 
+def walk(root, top):
+    out = []
+    for dirpath, dirnames, filenames in os.walk(os.path.join(root, top)):
+        dirnames.sort()
+        for fn in sorted(filenames):
+            out.append(os.path.relpath(os.path.join(dirpath, fn), root))
+    return out
+
+
+def unit_files(files, root, only=None):
+    wanted = wanted_by(only)
+    out = []
     for top in ("skills", "shared"):
-        for rel in walk(top):
-            if not rel.endswith(".md") or not wanted(rel):
-                continue
-            got = files.get(rel)
-            if got is None:
-                continue
-            lines = got[1]
-            for i, l in enumerate(lines, 1):
-                if TABLE_ROW.match(l):
-                    nxt = lines[i] if i < len(lines) else ""
-                    if TABLE_SEPARATOR.match(l) or TABLE_SEPARATOR.match(nxt):
-                        continue
-                    items.append((rel, i, i, l))
-                elif (PROSE_WORDS.search(l) or HEADING.match(l)
-                      or NUMBERED.match(l) or BOLD_LIST_HEAD.match(l)
-                      or BOLD_PARA_HEAD.match(l)):
-                    items.append((rel, i, i, l))
+        for rel in walk(root, top):
+            if rel.endswith(".md") and wanted(rel) and files.get(rel):
+                out.append(rel)
+    return out
+
+
+def search_set(files, root, only=None):
+    """Items of the search set: (file, first_line, last_line, text)."""
+    items = []
+    wanted = wanted_by(only)
+    for rel in unit_files(files, root, only):
+        lines = files.get(rel)[1]
+        fenced = files.units(rel)[1]
+        for i, l in enumerate(lines, 1):
+            if TABLE_ROW.match(l):
+                nxt = lines[i] if i < len(lines) else ""
+                if TABLE_SEPARATOR.match(l) or TABLE_SEPARATOR.match(nxt):
+                    continue
+                items.append((rel, i, i, l))
+            elif (PROSE_WORDS.search(l)
+                  or (HEADING.match(l) and i not in fenced)
+                  or NUMBERED.match(l) or BOLD_LIST_HEAD.match(l)
+                  or BOLD_PARA_HEAD.match(l)):
+                items.append((rel, i, i, l))
     for top in ("hooks", "bin", "scripts"):
-        for rel in walk(top):
+        for rel in walk(root, top):
             if not wanted(rel):
                 continue
             got = files.get(rel)
@@ -616,6 +862,41 @@ def search_set(files, root, only=None):
     return items
 
 
+def thing_range(files, rec, part_of_lines):
+    """(file, lineno) -> role, for every line the thing stands on."""
+    rng = {}
+    rel, sline = rec.site()
+    if rec.parts[2] == STRAIGHT and is_unit_file(rel):
+        u = files.unit_at(rel, sline)
+        for n in range(u["start"], u["end"] + 1):
+            rng[(rel, n)] = "unit"
+        visited = set()
+
+        def follow(frel, first, last):
+            lines = files.get(frel)[1]
+            for n in range(first, last + 1):
+                m = INSERT.match(lines[n - 1])
+                if not m:
+                    continue
+                srel = "shared/%s.md" % m.group(1)
+                if srel in visited or files.get(srel) is None:
+                    continue
+                visited.add(srel)
+                slines = files.get(srel)[1]
+                for k in range(1, len(slines) + 1):
+                    rng.setdefault((srel, k), "inserted")
+                follow(srel, 1, len(slines))
+        follow(rel, u["start"], u["end"])
+    else:
+        rng[(rel, sline)] = "site"
+    ev = rec.anchors.get("evidence_anchor")
+    if ev and ev[0] == "ok":
+        rng.setdefault((rec["evidence_file"], ev[1]), "evidence")
+    for p in part_of_lines.get(rec["name"], []):
+        rng.setdefault(p, "part of")
+    return rng
+
+
 def analyse(root, table=None, only=None):
     res = Result()
     if table is None:
@@ -630,6 +911,7 @@ def analyse(root, table=None, only=None):
         res.refused = str(e)
         return res
     files = Files(root)
+    g = Git(root)
     records, res.table_errors = read_table(table)
     for rec in records:
         validate(rec)
@@ -649,13 +931,43 @@ def analyse(root, table=None, only=None):
                     "too-short": "shorter than 20 characters and not a whole line",
                     "whitespace": "carries leading or trailing whitespace",
                 }[status]))
-            else:
-                res.covered_lines.setdefault(rec[a], set()).add(lineno)
-    # duplicates among things
-    seen_anchor, seen_name = {}, {}
-    for rec in records:
-        if rec["type"] != "thing":
-            continue
+    things = [r for r in records if r["type"] == "thing"]
+    thing_names = {r["name"] for r in things if r["name"] != ""}
+    by_name = {}
+    for r in things:
+        by_name.setdefault(r["name"], r)
+    # names against sites; duplicates; named skills; straight paths per unit
+    seen_anchor, seen_name, sp_by_unit = {}, {}, {}
+    for rec in things:
+        site = rec.site()
+        if rec.parts and site and is_unit_file(site[0]):
+            rel, lineno = site
+            src = rel.split("/")[1] if rel.startswith("skills/") else rel
+            if rec.parts[0] != src:
+                rec.errors.append("name's source part %r is not %r, where "
+                                  "the site stands" % (rec.parts[0], src))
+            u = files.unit_at(rel, lineno)
+            heading = u["heading"] if u["heading"] is not None else WHOLE_FILE
+            if rec.parts[1] != heading:
+                rec.errors.append("name's unit part %r is not the heading of "
+                                  "the unit the site lies in, %r"
+                                  % (rec.parts[1], heading))
+            if rec.parts[2] == STRAIGHT:
+                want = "skill branch" if rel.startswith("skills/") \
+                    else "shared text"
+                if rec["kind"] != want:
+                    rec.errors.append("a straight path under %s/ is of kind "
+                                      "%s" % (rel.split("/")[0], want))
+                key = (rel, u["start"])
+                if key in sp_by_unit:
+                    rec.errors.append("second straight path of the unit %r "
+                                      "in %s (the first on line %d)"
+                                      % (heading, rel, sp_by_unit[key]))
+                else:
+                    sp_by_unit[key] = rec.lineno
+        elif rec.parts and rec.parts[2] == STRAIGHT and site:
+            rec.errors.append("a straight path stands only in a file under "
+                              "skills/ or shared/")
         key = (rec["file"], rec["anchor"])
         if key in seen_anchor:
             rec.errors.append("same site anchor as the thing on line %d"
@@ -667,18 +979,66 @@ def analyse(root, table=None, only=None):
                               % seen_name[rec["name"]])
         else:
             seen_name[rec["name"]] = rec.lineno
-        if rec["kind"] == "named skill" and os.path.isdir(
-                os.path.join(root, "skills", rec["name"])):
+        if rec["kind"] == "named skill" and rec.parts and os.path.isdir(
+                os.path.join(root, "skills", rec.parts[2])):
             rec.errors.append("named skill, but skills/%s exists"
-                              % rec["name"])
+                              % rec.parts[2])
+    # notes of things: the forms
+    named = named_skills(files)
+    for rec in things:
+        segs = rec["note"].split("; ") if rec["note"] != "" else []
+        i = 0
+        while i < len(segs):
+            s = segs[i]
+            if s.startswith("calls "):
+                nxt = segs[i + 1] if i + 1 < len(segs) else ""
+                m, m2 = CALLS.match(s), NOBODY.match(nxt)
+                if not m or not m2:
+                    rec.errors.append("note %r does not carry the form 'calls "
+                                      "<skill>; with nobody there: <reached|not "
+                                      "reached|not stated> per <thing name>' "
+                                      "exactly" % "; ".join(segs[i:i + 2]))
+                else:
+                    skill, mode, per = m.group(1), m2.group(1), m2.group(2)
+                    if not os.path.isdir(os.path.join(root, "skills", skill)):
+                        rec.errors.append("calls %r, but skills/%s is not a "
+                                          "directory" % (skill, skill))
+                    if per not in thing_names:
+                        rec.errors.append("per %r names no thing" % per)
+                    elif mode == "not stated" and NOT_STATED not in \
+                            by_name[per]["note"].split("; "):
+                        rec.errors.append("'not stated per' names %r, which "
+                                          "does not carry %r"
+                                          % (per, NOT_STATED))
+                i += 2
+                continue
+            if s.startswith("with nobody there:"):
+                rec.errors.append("%r stands without its 'calls <skill>' "
+                                  "before it" % s)
+            elif s.startswith("does the work of"):
+                m = DOES.match(s)
+                if not m:
+                    rec.errors.append("note %r does not carry the form 'does "
+                                      "the work of <named skill>' exactly" % s)
+                elif m.group(1) not in named:
+                    rec.errors.append("does the work of %r, which the table "
+                                      "under %r in docs/roadmap.md does not "
+                                      "name" % (m.group(1), NAMED_HEADING))
+            elif s.startswith("outcome with nobody there") and s != NOT_STATED:
+                rec.errors.append("note %r does not carry the form %r exactly"
+                                  % (s, NOT_STATED))
+            i += 1
+    # not-a-thing: part of names a thing
+    for rec in records:
+        if rec["type"] == "not-a-thing" and rec.part_of is not None \
+                and rec.part_of not in thing_names:
+            rec.errors.append("part of %r, which names no thing" % rec.part_of)
     # runs need their thing
-    things_by_name = {r["name"]: r for r in records
-                      if r["type"] == "thing" and not r.errors}
     origin_main = resolve(root, "origin/main")
     for rec in records:
         if rec["type"] != "run":
             continue
-        if rec["name"] not in things_by_name:
+        if rec["name"] not in thing_names:
             rec.errors.append("no thing named %r" % rec["name"])
         if rec["commit"] != "" and not rec.errors:
             h = resolve(root, rec["commit"])
@@ -688,20 +1048,43 @@ def analyse(root, table=None, only=None):
             elif origin_main is None:
                 rec.errors.append("origin/main is not here, so the commit "
                                   "cannot be checked against it")
-            elif not is_ancestor(root, h, origin_main):
+            elif not g.is_ancestor(h, origin_main):
                 rec.errors.append("commit %s is not an ancestor of origin/main"
                                   % rec["commit"])
     for rec in records:
         for e in rec.errors:
             res.broken.append((rec.lineno, e))
-    # states
-    things = {}
+    # coverage by records that are not rejected
     for rec in records:
-        if rec["type"] != "thing" or rec.errors:
+        if rec.errors or rec["type"] == "finding":
+            continue
+        for a, b in PAIRS:
+            got = rec.anchors.get(b)
+            if got and got[0] == "ok":
+                res.covered_lines.setdefault(rec[a], set()).add(got[1])
+    # findings, listed
+    for rec in records:
+        if rec["type"] == "finding" and not rec.errors:
+            res.findings.append((rec["file"], rec.site()[1], rec["note"]))
+    # not-a-thing counts by reason
+    for rec in records:
+        if rec["type"] == "not-a-thing" and not rec.errors:
+            head = "part of" if rec.part_of else rec["note"].split("; ")[0]
+            res.reason_counts[head] = res.reason_counts.get(head, 0) + 1
+    # part-of lines per thing
+    part_of_lines = {}
+    for rec in records:
+        if rec["type"] == "not-a-thing" and not rec.errors and rec.part_of:
+            part_of_lines.setdefault(rec.part_of, []).append(rec.site())
+    # states
+    things_by_name = {}
+    valid_sp = set()
+    for rec in things:
+        if rec.errors:
             continue
         t = {"rec": rec, "name": rec["name"], "kind": rec["kind"],
-             "site": (rec["file"], rec.anchors["anchor"][1]),
-             "evidence": None, "state": None, "runs": []}
+             "site": rec.site(), "evidence": None, "state": None, "runs": [],
+             "range": thing_range(files, rec, part_of_lines)}
         if rec["evidence_file"] != "":
             t["evidence"] = (rec["evidence_file"],
                              rec.anchors["evidence_anchor"][1])
@@ -714,13 +1097,16 @@ def analyse(root, table=None, only=None):
             t["state"] = loc
         else:
             t["state"] = "Undetermined"
-        things[t["name"]] = t
+        things_by_name[t["name"]] = t
         res.things.append(t)
+        if rec.parts[2] == STRAIGHT and is_unit_file(rec.site()[0]):
+            u = files.unit_at(*rec.site())
+            valid_sp.add((rec.site()[0], u["start"]))
     # runs
     for rec in records:
         if rec["type"] != "run" or rec.errors:
             continue
-        t = things.get(rec["name"])
+        t = things_by_name.get(rec["name"])
         if t is None:
             continue
         r = {"rec": rec, "thing": t, "counts": False, "reason": "", "info": ""}
@@ -731,27 +1117,43 @@ def analyse(root, table=None, only=None):
                                "cannot be walked" % (t["name"], t["state"])))
             r["reason"] = "the thing is not built"
             continue
-        efile, eline = t["evidence"]
-        b = blame(root, efile, eline)
-        if b is None:
-            r["reason"] = "the evidence line is uncommitted"
+        # the last change of every line the thing stands on
+        uncommitted = None
+        per_hash = {}   # hash -> (time, rel, lineno, role)
+        for (rel, n), role in sorted(t["range"].items()):
+            b = g.blame_file(rel).get(n)
+            if b is None or b[0] is None:
+                uncommitted = (rel, n, role)
+                break
+            h, tm = b
+            if h not in per_hash or tm > per_hash[h][0]:
+                per_hash[h] = (tm, rel, n, role)
+        if uncommitted is not None:
+            r["reason"] = "%s:%d (%s) is uncommitted" % uncommitted
             continue
-        change_date = commit_date(root, b["hash"])
+        failing = None   # (time, rel, n, role, hash)
+
+        def where(h):
+            tm, rel, n, role = per_hash[h]
+            return "%s:%d (%s), %s at %s" % (rel, n, role, g.commit_date(h),
+                                             h[:7])
         if t["kind"] == "check command":
-            if rec["date"] > change_date:
+            latest = max(per_hash, key=lambda h: g.commit_date(h))
+            if rec["date"] > g.commit_date(latest):
                 r["counts"] = True
             else:
+                failing = latest
                 r["reason"] = ("a check command's run counts only after the "
-                               "day of the last change, %s at %s"
-                               % (change_date, b["hash"][:7]))
+                               "day of the last change, %s" % where(latest))
         elif rec["commit"] != "":
-            h = resolve(root, rec["commit"])
-            if is_ancestor(root, b["hash"], h):
+            run_c = resolve(root, rec["commit"])
+            bad = [h for h in per_hash if not g.is_ancestor(h, run_c)]
+            if not bad:
                 r["counts"] = True
             else:
+                failing = max(bad, key=lambda h: per_hash[h][0])
                 r["reason"] = ("the run's commit %s does not contain the last "
-                               "change to the evidence line, %s at %s"
-                               % (rec["commit"], change_date, b["hash"][:7]))
+                               "change to %s" % (rec["commit"], where(failing)))
         elif rec["version"] != "":
             vc = version_commit(root, rec["version"])
             if vc is None:
@@ -759,28 +1161,40 @@ def analyse(root, table=None, only=None):
                                    "introduced into .claude-plugin/plugin.json "
                                    "on this history" % rec["version"]))
                 r["reason"] = "the version is not on this history"
-            elif is_ancestor(root, b["hash"], vc):
-                r["counts"] = True
             else:
-                r["reason"] = ("version %s (introduced at %s) predates the "
-                               "last change to the evidence line, %s at %s"
-                               % (rec["version"], vc[:7], change_date,
-                                  b["hash"][:7]))
+                bad = [h for h in per_hash if not g.is_ancestor(h, vc)]
+                if not bad:
+                    r["counts"] = True
+                else:
+                    failing = max(bad, key=lambda h: per_hash[h][0])
+                    r["reason"] = ("version %s (introduced at %s) predates the "
+                                   "last change to %s"
+                                   % (rec["version"], vc[:7], where(failing)))
         else:
             r["reason"] = "the version of the run is not recorded"
-        if not r["counts"] and b is not None:
-            c = blame(root, efile, eline, copy_detection=True)
-            if c is not None and c["hash"] != b["hash"]:
-                r["info"] = ("copy detection attributes the line to %s (%s) "
-                             "in %s" % (c["hash"][:7],
-                                        commit_date(root, c["hash"]),
-                                        c.get("filename", efile)))
+        if failing is not None:
+            _, frel, fn, _ = per_hash[failing]
+            c = blame_copy(root, frel, fn)
+            if c is not None and c[0] != failing:
+                r["info"] = ("copy detection attributes %s:%d to %s (%s) in %s"
+                             % (frel, fn, c[0][:7], g.commit_date(c[0]), c[1]))
     for t in res.things:
         if t["state"] == "Built":
             t["state"] = ("Walked" if any(r["counts"] for r in t["runs"])
                           else "Built, never walked")
         key = (t["state"], t["kind"])
         res.counts[key] = res.counts.get(key, 0) + 1
+    # units: every one has a straight path and an anchorable line
+    for rel in unit_files(files, root, only):
+        text, lines = files.get(rel)
+        for u in files.units(rel)[0]:
+            heading = u["heading"] if u["heading"] is not None else WHOLE_FILE
+            at = u["hline"] or u["start"]
+            if (rel, u["start"]) not in valid_sp:
+                res.no_straight_path.append((rel, at, heading))
+            if not any(anchorable(text, lines[n - 1])
+                       for n in range(u["start"], u["end"] + 1)):
+                res.unanchorable_units.append((rel, at, heading))
     # coverage
     items = search_set(files, root, only)
     for rel, first, last, text in items:
@@ -833,6 +1247,10 @@ def render(res):
     if n == 0:
         out.append("  none")
     out.append("")
+    out.append("FINDINGS: %d" % len(res.findings))
+    for rel, lineno, note in res.findings:
+        out.append("  %s:%d: %s" % (rel, lineno, note))
+    out.append("")
     out.append("COUNTS per state and kind")
     for state in STATES:
         total = sum(v for (s, k), v in res.counts.items() if s == state)
@@ -842,10 +1260,24 @@ def render(res):
             if v:
                 out.append("    %-20s %d" % (kind, v))
     out.append("")
+    out.append("NOT-A-THING RECORDS by reason: %d"
+               % sum(res.reason_counts.values()))
+    for reason in REASONS:
+        v = res.reason_counts.get(reason, 0)
+        if v:
+            out.append("  %-20s %d" % (reason, v))
+    out.append("")
     out.append("LINES OF THE SEARCH SET THAT CAN CARRY NO UNIQUE ANCHOR "
                "(they leave the set): %d" % len(res.unanchorable))
     for rel, lineno, text in res.unanchorable:
         out.append("  %s:%d: %s" % (rel, lineno, text.strip()[:70]))
+    for rel, lineno, heading in res.unanchorable_units:
+        out.append("  %s:%d: unit %r has no anchorable line at all"
+                   % (rel, lineno, heading))
+    out.append("")
+    out.append("UNITS WITHOUT A STRAIGHT PATH: %d" % len(res.no_straight_path))
+    for rel, lineno, heading in res.no_straight_path:
+        out.append("  %s:%d: %s" % (rel, lineno, heading))
     out.append("")
     out.append("UNCOVERED LINES OF THE SEARCH SET: %d of %d"
                % (len(res.uncovered), res.set_size))
@@ -858,7 +1290,7 @@ def render(res):
 def exit_code(res):
     if res.refused or res.broken_count():
         return 2
-    if res.uncovered:
+    if res.uncovered or res.no_straight_path:
         return 1
     return 0
 
@@ -869,9 +1301,11 @@ def selftest():
     """Builds a temporary repository and produces every red outcome once,
     each beside its green counterpart. Prints one line per case."""
     failures = []
+    cases = []
 
     def case(name, red, green):
         ok = red and green
+        cases.append(name)
         print("%s  %s: red %s, green %s" % ("ok " if ok else "BAD", name,
                                             "seen" if red else "MISSING",
                                             "seen" if green else "MISSING"))
@@ -900,6 +1334,12 @@ def selftest():
     def plugin(v):
         return '{\n  "name": "t",\n  "version": "%s",\n  "skills": []\n}\n' % v
 
+    insert = "!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text inserted`"
+    alpha_tail = ("Say what you would do, and let the user decide how.\n\n"
+                  "## Second\n\nA second unit that says one thing and decides "
+                  "nothing.\n" + insert + "\n\n## Third\n\nThe third unit, "
+                  "stable from the first commit on.\n")
+
     with tempfile.TemporaryDirectory() as tmp:
         root = os.path.join(tmp, "repo")
         os.makedirs(root)
@@ -909,11 +1349,14 @@ def selftest():
               "# Alpha\n\nIf the sky is blue, say that it is blue today.\n"
               "Where the sky is grey, say nothing about the weather.\n"
               "Plain prose that decides nothing at all here.\n"
-              "Unless it rains, carry on with the ordinary work.\n")
-        os.makedirs(os.path.join(root, "skills", "beta"))
+              "Unless it rains, carry on with the ordinary work.\n" + alpha_tail)
         write(root, "skills/beta/SKILL.md", "# Beta\n")
+        write(root, "skills/gamma/SKILL.md",
+              "# Gamma\n\n```markdown\n## Fake\n```\n\n"
+              "If a fence stands here, the heading inside it is not a unit.\n")
         write(root, "shared/note.md",
               "When somebody writes in German, answer in German.\n")
+        write(root, "shared/inserted.md", "Inserted text, first wording.\n")
         write(root, "hooks/guard.sh",
               "#!/bin/sh\n[ -d docs/agents ] || exit 0\n"
               "echo blocked >&2\nexit 2\nexit 0\nexit 0\n")
@@ -932,17 +1375,29 @@ def selftest():
               "- **A run of alpha without a version.**\n"
               "- **A run on the shared note.**\n"
               "- **A run that names a commit of main.**\n"
-              "- **A run that names a commit of a side branch.**\n\n"
+              "- **A run that names a commit of a side branch.**\n"
+              "- **A run of blue before the rain line changed.**\n"
+              "- **A run of blue after the rain line changed.**\n"
+              "- **A run of the first unit before it changed.**\n"
+              "- **A run of the first unit after it changed.**\n"
+              "- **A run of the second unit before its insert changed.**\n"
+              "- **A run of the third unit, which never changed.**\n"
+              "- **A run on a thing nobody recorded.**\n\n"
+              "## Named, not built as skills\n\n"
+              "| Skill | Description | Origin |\n|---|---|---|\n"
+              "| `implement-ticket` | Build one task | test |\n\n"
               "## Decisions\n\nNone.\n")
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c1", date="2026-01-01T12:00:00+0100")
-        c1 = run_git(root, "rev-parse", "HEAD")
-        # c2 changes the evidence line of alpha
+        # c2 changes the evidence line of grey, the part-of line of blue, and
+        # the shared file the second unit inserts
         write(root, "skills/alpha/SKILL.md",
               "# Alpha\n\nIf the sky is blue, say that it is blue today.\n"
               "Where the sky is grey, say that it is grey and stop.\n"
               "Plain prose that decides nothing at all here.\n"
-              "Unless it rains, carry on with the ordinary work.\n")
+              "Unless it rains, carry on with the ordinary work, whistling.\n"
+              + alpha_tail)
+        write(root, "shared/inserted.md", "Inserted text, second wording.\n")
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c2", date="2026-01-05T12:00:00+0100")
         c2 = run_git(root, "rev-parse", "HEAD")
@@ -966,88 +1421,159 @@ def selftest():
         def rec(**kw):
             return "\t".join(kw.get(c, "") for c in COLUMNS)
 
+        A = "skills/alpha/SKILL.md"
+        G = "skills/gamma/SKILL.md"
+        R = "docs/roadmap.md"
+        SP, BLUE, GREY = ("alpha / Alpha / straight path",
+                          "alpha / Alpha / blue sky", "alpha / Alpha / grey sky")
+        NOBODY_T = "alpha / Alpha / nobody"
+        SECOND, THIRD = "alpha / Second / straight path", "alpha / Third / straight path"
+        GUARD = "hooks/guard.sh / guard / block"
+        CHECK = "docs/skill-conventions.md / Before a handover, run these / one check"
+        NOTE_SP = "shared/note.md / whole file / straight path"
+        NOTE_G = "shared/note.md / whole file / german"
+
+        def thing(name, file, anchor, kind="skill branch", ev=True, **kw):
+            d = dict(type="thing", name=name, kind=kind, file=file, anchor=anchor)
+            if ev:
+                d.update(evidence_file=file, evidence_anchor=anchor)
+            d.update(kw)
+            return rec(**d)
+
+        def run(name, date, anchor, **kw):
+            d = dict(type="run", name=name, date=date, source="entry",
+                     run_file=R, run_anchor=anchor)
+            d.update(kw)
+            return rec(**d)
+
         rows = [
             "\t".join(COLUMNS),
-            # things
-            rec(type="thing", name="alpha-grey", kind="skill branch",
-                file="skills/alpha/SKILL.md",
-                anchor="Where the sky is grey, say that it is grey",
-                evidence_file="skills/alpha/SKILL.md",
-                evidence_anchor="Where the sky is grey, say that it is grey"),
-            rec(type="thing", name="alpha-blue", kind="skill branch",
-                file="skills/alpha/SKILL.md",
-                anchor="If the sky is blue, say that it is blue",
-                evidence_file="skills/alpha/SKILL.md",
-                evidence_anchor="If the sky is blue, say that it is blue"),
-            rec(type="thing", name="note-german", kind="shared text",
-                file="shared/note.md",
-                anchor="When somebody writes in German",
-                evidence_file="shared/note.md",
-                evidence_anchor="When somebody writes in German"),
-            rec(type="thing", name="check-one", kind="check command",
-                file="docs/skill-conventions.md",
-                anchor="ls skills/ | grep -c nothing-of-that-name",
-                evidence_file="docs/skill-conventions.md",
-                evidence_anchor="ls skills/ | grep -c nothing-of-that-name",
-                note="green prints nothing"),
-            rec(type="thing", name="guard-block", kind="hook outcome",
-                file="hooks/guard.sh", anchor="echo blocked >&2",
-                evidence_file="hooks/guard.sh", evidence_anchor="echo blocked >&2"),
-            rec(type="thing", name="a-defect", kind="defect",
-                file="docs/roadmap.md",
-                anchor="A defect measured on 2026-01-06",
-                evidence_file="docs/roadmap.md",
-                evidence_anchor="Recorded, not built."),
+            # things, green
+            thing(SP, A, "# Alpha", note="does the work of implement-ticket"),
+            thing(GREY, A, "Where the sky is grey, say that it is grey"),
+            thing(BLUE, A, "If the sky is blue, say that it is blue",
+                  note="calls beta; with nobody there: reached per " + NOBODY_T),
+            thing(NOBODY_T, A, "Say what you would do, and let the user decide how",
+                  ev=False, note=NOT_STATED),
+            thing(SECOND, A, "## Second"),
+            thing(THIRD, A, "## Third"),
+            thing("gamma / Gamma / straight path", G, "# Gamma"),
+            thing(NOTE_SP, "shared/note.md", "somebody writes in German, answer",
+                  kind="shared text"),
+            thing(NOTE_G, "shared/note.md", "When somebody writes in German",
+                  kind="shared text"),
+            thing("shared/inserted.md / whole file / straight path",
+                  "shared/inserted.md", "Inserted text, second wording.",
+                  kind="shared text"),
+            thing(CHECK, "docs/skill-conventions.md",
+                  "ls skills/ | grep -c nothing-of-that-name",
+                  kind="check command", note="green prints nothing"),
+            thing(GUARD, "hooks/guard.sh", "echo blocked >&2", kind="hook outcome"),
+            thing("docs/roadmap.md / Known gaps / a defect", R,
+                  "A defect measured on 2026-01-06", kind="defect", ev=False,
+                  evidence_file=R, evidence_anchor="Recorded, not built."),
             # red: anchor missing
-            rec(type="thing", name="missing-anchor", kind="skill branch",
-                file="skills/alpha/SKILL.md",
-                anchor="this text stands nowhere in the file"),
+            thing("alpha / Alpha / missing anchor", A,
+                  "this text stands nowhere in the file", ev=False),
             # red: anchor found twice (a short whole line that repeats)
-            rec(type="thing", name="double-anchor", kind="hook outcome",
-                file="hooks/guard.sh", anchor="exit 0"),
+            thing("hooks/guard.sh / guard / double", "hooks/guard.sh", "exit 0",
+                  kind="hook outcome", ev=False),
             # red: two things on one anchor
-            rec(type="thing", name="same-anchor-twin", kind="skill branch",
-                file="skills/alpha/SKILL.md",
-                anchor="If the sky is blue, say that it is blue"),
+            thing("alpha / Alpha / same anchor twin", A,
+                  "If the sky is blue, say that it is blue", ev=False),
+            # red: two things with one name
+            thing(GREY, A, "the sky is grey, say that", ev=False),
             # red: named skill whose directory exists; green: one that does not
-            rec(type="thing", name="beta", kind="named skill",
-                file="docs/roadmap.md", anchor="A run of alpha without a version",
-                note="grep -rn beta skills/ came back empty"),
-            rec(type="thing", name="gamma", kind="named skill",
-                file="docs/roadmap.md", anchor="A run on the shared note",
-                note="grep -rn gamma skills/ came back empty"),
+            thing("docs/roadmap.md / Known gaps / beta", R,
+                  "A run of alpha without a version", kind="named skill",
+                  ev=False, note="grep -rn beta skills/ came back empty"),
+            thing("docs/roadmap.md / Known gaps / delta", R,
+                  "A run on the shared note", kind="named skill", ev=False,
+                  note="grep -rn delta skills/ came back empty"),
+            # red: unknown type; unknown kind
+            rec(type="thang", file=A, anchor="The third unit, stable", note="rationale"),
+            thing("alpha / Third / twig", A, "unit, stable from the first",
+                  kind="skill twig", ev=False),
+            # red: a name without its three parts
+            thing("alpha-only", A, "say that it is blue today", ev=False),
+            # red: a name carrying the separator of the note forms
+            thing("alpha / Alpha / semicolon; separated", A,
+                  "The third unit, stable from", ev=False),
+            # red: a name whose source is not the site's
+            thing("omega / Third / wrong source", A,
+                  "stable from the first commit on", ev=False),
+            # red: a heading inside a fenced block taken for a unit
+            thing("gamma / Fake / straight path", G, "## Fake"),
+            # red: a second straight path of one unit
+            thing(SP, A, "rains, carry on with the ordinary work", ev=False),
+            # red: calls naming no directory; per naming no thing;
+            # not stated per a thing without the note; the work of nobody
+            thing("alpha / Alpha / calls nowhere", A, "say that it is grey and stop",
+                  ev=False,
+                  note="calls delta; with nobody there: reached per " + BLUE),
+            thing("alpha / Alpha / per nowhere", A,
+                  "Plain prose that decides nothing at all here", ev=False,
+                  note="calls beta; with nobody there: reached per alpha / Alpha / nowhere"),
+            thing("alpha / Alpha / not stated wrongly", A,
+                  "carry on with the ordinary work, whistling", ev=False,
+                  note="calls beta; with nobody there: not stated per " + GREY),
+            thing("alpha / Alpha / does unknown work", A, "let the user decide how",
+                  ev=False, note="does the work of nothing-of-that-name"),
             # runs
-            rec(type="run", name="alpha-grey", date="2026-01-06", version="0.1.0",
-                source="entry", run_file="docs/roadmap.md",
-                run_anchor="A defect measured on 2026-01-06, on the first"),
-            rec(type="run", name="alpha-grey", date="2026-01-11", version="0.2.0",
-                source="entry", run_file="docs/roadmap.md",
-                run_anchor="A run of alpha on 2026-01-11, on the second"),
-            rec(type="run", name="alpha-blue", date="2026-01-11", source="none",
-                run_file="docs/roadmap.md",
-                run_anchor="A run of alpha without a version"),
-            rec(type="run", name="check-one", date="2026-01-01", version="0.1.0",
-                source="entry", run_file="docs/roadmap.md",
-                run_anchor="A run of the check on the day of the change"),
-            rec(type="run", name="check-one", date="2026-01-02", version="0.1.0",
-                source="entry", run_file="docs/roadmap.md",
-                run_anchor="A run of the check the day after"),
-            rec(type="run", name="note-german", date="2026-01-11", version="0.2.0",
-                source="entry", run_file="docs/roadmap.md",
-                run_anchor="A run on the shared note"),
-            rec(type="run", name="guard-block", date="2026-01-11", commit=c2[:7],
-                source="entry", run_file="docs/roadmap.md",
-                run_anchor="A run that names a commit of main"),
-            rec(type="run", name="guard-block", date="2026-01-13", commit=c4[:7],
-                source="entry", run_file="docs/roadmap.md",
-                run_anchor="A run that names a commit of a side branch"),
-            # not-a-thing
-            rec(type="not-a-thing", file="skills/alpha/SKILL.md",
-                anchor="Unless it rains, carry on", note="prose"),
+            run(GREY, "2026-01-06", "A defect measured on 2026-01-06, on the first",
+                version="0.1.0"),
+            run(GREY, "2026-01-11", "A run of alpha on 2026-01-11, on the second",
+                version="0.2.0"),
+            run(BLUE, "2026-01-11", "A run of alpha without a version",
+                source="none"),
+            run(BLUE, "2026-01-06", "A run of blue before the rain line changed",
+                version="0.1.0"),
+            run(BLUE, "2026-01-12", "A run of blue after the rain line changed",
+                version="0.2.0"),
+            run(CHECK, "2026-01-01", "A run of the check on the day of the change",
+                version="0.1.0"),
+            run(CHECK, "2026-01-02", "A run of the check the day after",
+                version="0.1.0"),
+            run(NOTE_G, "2026-01-11", "A run on the shared note", version="0.2.0"),
+            run(GUARD, "2026-01-11", "A run that names a commit of main",
+                commit=c2[:7]),
+            run(GUARD, "2026-01-13", "A run that names a commit of a side branch",
+                commit=c4[:7]),
+            run(SP, "2026-01-06", "A run of the first unit before it changed",
+                version="0.1.0"),
+            run(SP, "2026-01-12", "A run of the first unit after it changed",
+                version="0.2.0"),
+            run(SECOND, "2026-01-06",
+                "A run of the second unit before its insert changed",
+                version="0.1.0"),
+            run(THIRD, "2026-01-06", "A run of the third unit, which never changed",
+                version="0.1.0"),
+            # red: a run on a name no thing carries
+            run("alpha / Alpha / nowhere", "2026-01-06",
+                "A run on a thing nobody recorded", version="0.1.0"),
+            # not-a-thing, green: part of; rationale
+            rec(type="not-a-thing", file=A, anchor="Unless it rains, carry on",
+                note="part of: " + BLUE),
+            rec(type="not-a-thing", file=A, anchor="decides nothing at all here",
+                note="rationale"),
+            # red: an empty required field; a filled field the type does not
+            # use; a reason not on the list; a part of naming no thing
+            rec(type="not-a-thing", file=A, anchor="A second unit that says"),
+            rec(type="not-a-thing", file=A, anchor="says one thing and decides nothing",
+                note="rationale", kind="skill branch"),
+            rec(type="not-a-thing", file=A, anchor="second unit that says one thing",
+                note="prose"),
+            rec(type="not-a-thing", file="skills/beta/SKILL.md", anchor="# Beta",
+                note="part of: alpha / Alpha / nowhere"),
+            # findings: green, and red without its should part
+            rec(type="finding", file=G,
+                anchor="If a fence stands here, the heading inside it",
+                note="the fence is not explained" + SHOULD + "say why it stands"),
+            rec(type="finding", file="docs/skill-conventions.md",
+                anchor="One check, silent when green:", note="the check is wrong"),
             # red: a record whose first tab became spaces (19 fields)
-            rec(type="thing", name="tab-lost", kind="skill branch",
-                file="skills/alpha/SKILL.md",
-                anchor="Plain prose that decides").replace("\t", "    ", 1),
+            thing("alpha / Alpha / tab lost", A, "Plain prose that decides",
+                  ev=False).replace("\t", "    ", 1),
         ]
         table = os.path.join(root, "docs", "stock-take.tsv")
         write(root, "docs/stock-take.tsv", "\n".join(rows) + "\n")
@@ -1056,57 +1582,138 @@ def selftest():
         errors = [e for _, e in res.broken] + res.table_errors
         runs = {(r["thing"]["name"], r["rec"]["date"]): r for r in res.runs}
         states = {t["name"]: t["state"] for t in res.things}
+        uncovered = {(f, a) for f, a, b, _ in res.uncovered}
+        unanch = {(f, n) for f, n, _ in res.unanchorable}
+        no_sp = {(f, n) for f, n, _ in res.no_straight_path}
 
         def err(sub):
             return any(sub in e for e in errors)
 
+        def counts(name, date):
+            return runs[(name, date)]["counts"]
+
+        def reason(name, date):
+            return runs[(name, date)]["reason"]
+
         case("anchor missing",
              err("'this text stands nowhere in the file' in skills/alpha/SKILL.md: not found"),
-             states.get("alpha-blue") is not None)
+             states.get(BLUE) is not None)
         case("anchor found twice",
              err("'exit 0' in hooks/guard.sh: found more than once"),
-             states.get("guard-block") is not None)
+             states.get(GUARD) is not None)
         case("two thing records with one anchor",
              err("same site anchor as the thing on line"),
-             states.get("alpha-grey") is not None)
+             states.get(GREY) is not None)
         case("run whose version predates the last change",
-             not runs[("alpha-grey", "2026-01-06")]["counts"]
-             and "predates" in runs[("alpha-grey", "2026-01-06")]["reason"],
-             runs[("alpha-grey", "2026-01-11")]["counts"]
-             and states["alpha-grey"] == "Walked")
+             not counts(GREY, "2026-01-06")
+             and "predates" in reason(GREY, "2026-01-06")
+             and "SKILL.md:4 (site)" in reason(GREY, "2026-01-06"),
+             counts(GREY, "2026-01-11") and states[GREY] == "Walked")
         case("run with no recorded version",
-             not runs[("alpha-blue", "2026-01-11")]["counts"]
-             and "not recorded" in runs[("alpha-blue", "2026-01-11")]["reason"]
-             and states["alpha-blue"] == "Built, never walked",
-             runs[("alpha-grey", "2026-01-11")]["counts"])
+             not counts(BLUE, "2026-01-11")
+             and "not recorded" in reason(BLUE, "2026-01-11"),
+             counts(GREY, "2026-01-11"))
         case("check-command run on the day of the change",
-             not runs[("check-one", "2026-01-01")]["counts"],
-             runs[("check-one", "2026-01-02")]["counts"]
-             and states["check-one"] == "Walked")
+             not counts(CHECK, "2026-01-01"),
+             counts(CHECK, "2026-01-02") and states[CHECK] == "Walked")
         case("uncommitted evidence line",
-             not runs[("note-german", "2026-01-11")]["counts"]
-             and "uncommitted" in runs[("note-german", "2026-01-11")]["reason"],
-             runs[("guard-block", "2026-01-11")]["counts"])
-        uncovered = {(f, a) for f, a, b, _ in res.uncovered}
+             not counts(NOTE_G, "2026-01-11")
+             and "uncommitted" in reason(NOTE_G, "2026-01-11")
+             and states[NOTE_G] == "Built, never walked",
+             counts(GUARD, "2026-01-11"))
         case("a line of the set nobody covers",
-             ("skills/alpha/SKILL.md", 1) in uncovered,
-             ("skills/alpha/SKILL.md", 6) not in uncovered
-             and ("skills/alpha/SKILL.md", 3) not in uncovered)
+             (G, 7) in uncovered,
+             (A, 6) not in uncovered and (A, 3) not in uncovered)
         case("named skill whose directory exists",
              err("named skill, but skills/beta exists"),
-             states.get("gamma") == "Undetermined"
-             and not err("skills/gamma exists"))
+             states.get("docs/roadmap.md / Known gaps / delta") == "Undetermined"
+             and not err("skills/delta exists"))
         case("record with a wrong number of fields",
              any("19 fields instead of 20" in e for e in res.table_errors),
-             states.get("a-defect") == "Recorded, not built")
-        unanch = {(f, n) for f, n, _ in res.unanchorable}
+             states.get("docs/roadmap.md / Known gaps / a defect")
+             == "Recorded, not built")
         case("a line of the set that can carry no unique anchor, listed",
              ("hooks/guard.sh", 5) in unanch and ("hooks/guard.sh", 6) in unanch,
              ("hooks/guard.sh", 4) not in unanch
              and ("hooks/guard.sh", 2) not in unanch)
         case("run whose commit is not an ancestor of origin/main",
              err("commit %s is not an ancestor of origin/main" % c4[:7]),
-             runs[("guard-block", "2026-01-11")]["counts"])
+             counts(GUARD, "2026-01-11"))
+        case("unknown type",
+             err("unknown type 'thang'"),
+             states.get(BLUE) is not None)
+        case("unknown kind",
+             err("unknown kind 'skill twig'"),
+             states.get(GREY) is not None)
+        case("an empty required field",
+             err("note is empty"),
+             (A, 6) not in uncovered)
+        case("a field filled that its type does not use",
+             err("kind is filled, which a not-a-thing does not use"),
+             (A, 5) not in uncovered)
+        case("two things with one name",
+             err("same name as the thing on line"),
+             states.get(GREY) is not None)
+        case("a run on a name no thing carries",
+             err("no thing named 'alpha / Alpha / nowhere'"),
+             counts(GREY, "2026-01-11"))
+        case("a reason not on the list",
+             err("reason 'prose' is not on the list"),
+             res.reason_counts.get("rationale", 0) == 1)
+        case("a part of naming no thing",
+             err("part of 'alpha / Alpha / nowhere', which names no thing"),
+             res.reason_counts.get("part of", 0) == 1)
+        case("a thing name without its three parts",
+             err("name 'alpha-only' does not have the three parts"),
+             states.get(BLUE) is not None)
+        case("a calls naming no directory under skills/",
+             err("calls 'delta', but skills/delta is not a directory"),
+             states.get(BLUE) is not None
+             and not any(BLUE in e for e in errors))
+        case("a per naming no thing",
+             err("per 'alpha / Alpha / nowhere' names no thing"),
+             states.get(BLUE) is not None)
+        case("run before a change to a part-of line of its thing",
+             not counts(BLUE, "2026-01-06")
+             and "(part of)" in reason(BLUE, "2026-01-06")
+             and "SKILL.md:6" in reason(BLUE, "2026-01-06"),
+             counts(BLUE, "2026-01-12") and states[BLUE] == "Walked")
+        case("run before a change inside the unit of its straight path",
+             not counts(SP, "2026-01-06") and "(unit)" in reason(SP, "2026-01-06"),
+             counts(SP, "2026-01-12") and states[SP] == "Walked")
+        case("run before a change to a shared file inserted into the unit",
+             not counts(SECOND, "2026-01-06")
+             and "shared/inserted.md:1 (inserted)" in reason(SECOND, "2026-01-06"),
+             counts(THIRD, "2026-01-06") and states[THIRD] == "Walked")
+        case("a heading inside a fenced block taken for a unit",
+             err("name's unit part 'Fake' is not the heading of the unit the "
+                 "site lies in, 'Gamma'"),
+             states.get("gamma / Gamma / straight path") is not None
+             and not any(f == G for f, _, _ in res.no_straight_path))
+        case("a unit with no straight path",
+             ("skills/beta/SKILL.md", 1) in no_sp,
+             (A, 1) not in no_sp and (A, 9) not in no_sp and (A, 14) not in no_sp)
+        case("a unit with two straight paths",
+             err("second straight path of the unit 'Alpha'"),
+             states.get(SP) is not None)
+        case("a not stated per naming a thing without that note",
+             err("'not stated per' names 'alpha / Alpha / grey sky', which does "
+                 "not carry"),
+             states.get(NOBODY_T) == "Undetermined"
+             and not any(BLUE in e for e in errors))
+        case("a finding without its should part",
+             err("a finding's note has the form"),
+             any(f == G and n == 7 for f, n, _ in res.findings)
+             and (G, 7) in uncovered)
+        case("a does the work of naming no named skill",
+             err("does the work of 'nothing-of-that-name', which the table"),
+             not any(SP in e for e in errors))
+        case("a name carrying the separator of the note forms",
+             err("carries '; ', which the note forms use"),
+             states.get(BLUE) is not None)
+        case("a name whose source is not the site's",
+             err("name's source part 'omega' is not 'alpha'"),
+             states.get(THIRD) is not None)
         # shallow clone
         shallow = os.path.join(tmp, "shallow")
         subprocess.run(["git", "clone", "-q", "--depth", "1", "file://" + root,
@@ -1118,8 +1725,8 @@ def selftest():
     if failures:
         print("SELF-TEST FAILED: " + ", ".join(failures))
         return 2
-    print("SELF-TEST PASSED: 13 cases, every red outcome once, every green "
-          "counterpart once")
+    print("SELF-TEST PASSED: %d cases, every red outcome once, every green "
+          "counterpart once" % len(cases))
     return 0
 
 
