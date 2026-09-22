@@ -16,6 +16,12 @@ Usage
                                                 once, each beside its green
                                                 counterpart
 
+Running the tool at all parses the file, so the self-test is the syntax check.
+python3 -m py_compile is not needed and not to be used: it leaves bytecode
+under scripts/__pycache__/, which the check over untracked files under bin/ and
+scripts/ then reports, and a note at that check alone has failed to prevent it
+twice, because the check is read only once it is red.
+
 The counts by site file - things as straight paths, branches and other kinds,
 the note forms under C, not-a-thing records and findings - are printed so
 that a report copies them rather than counting by hand. So are the roots of
@@ -145,7 +151,12 @@ note carries "outcome with nobody there not stated". Where two lines of a
 skill disagree about where the boundary runs, that is a finding, and the
 place counts as reached while it stands: an undetermined row that turns out
 to be unreachable is visible and can be dropped, a gap never written down is
-not.
+not. Where a reached skill draws no boundary at all - no line of its own
+saying from where it runs alone, and no inserted text saying it - the whole
+skill counts as reached, and the report of the order that inventories it says
+which search came back empty for that skill. build-work, setup-checks and
+plan-work each draw theirs under a "With nobody there" section of their own,
+so this rule asks for no retrofit.
 
 A line that says what a run does with nobody there is a condition like any
 other and gets its thing, whether or not the unattended mode reaches the
@@ -259,9 +270,11 @@ else in the note by "; ":
 - outcome with nobody there not stated
 <skill> is a directory under skills/. The thing named after "per" is the one
 whose line shows whether the unattended mode takes the path the call stands
-on. A segment of the note that starts like one of these forms and does not
-carry it exactly rejects the record, and so does a reach claim the computed
-set does not carry.
+on. Where a reached skill draws no boundary, a call inside it takes "reached
+per" naming the thing through which the reached set arrives at that skill -
+the tool prints that thing beside every reached skill. A segment of the note
+that starts like one of these forms and does not carry it exactly rejects the
+record, and so does a reach claim the computed set does not carry.
 
 A not-a-thing record starts its note with one reason from this list, separated
 from anything else in the note by "; ", and the tool rejects any other:

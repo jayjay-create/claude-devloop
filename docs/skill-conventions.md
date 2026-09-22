@@ -1504,10 +1504,10 @@ program that cannot start aborts every load that names it:
     for p in bin/* scripts/*; do [ -x "$p" ] || echo "$p: not executable"; done; git ls-files -s bin/ scripts/ | grep -v '^100755 '; [ "$(git ls-files bin/ scripts/ | wc -l)" -eq "$(find bin scripts -type f | wc -l)" ] || echo "bin/ or scripts/ has files git does not track"
 
 Where this prints that `bin/` or `scripts/` has files git does not track, look
-for `scripts/__pycache__/` before anything else: a syntax check of a python
-program there, `python3 -m py_compile`, leaves bytecode behind unless python3
-runs with `-B`, and that bytecode is what the count then sees. This check has
-answered twice for that reason and for no other.
+for `scripts/__pycache__/` before anything else: bytecode left behind. This
+check has answered twice for that reason and for no other; what to run instead
+of the command that leaves it stands in the header of
+`scripts/devloop-stock-take`, beside its self-test.
 
 The arming command in the merge guard's message is the one in
 `shared/arming-command.md`. A hook cannot insert text, so it carries a copy,
