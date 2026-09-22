@@ -16,6 +16,10 @@ Usage
                                                 once, each beside its green
                                                 counterpart
 
+The counts by site file - things as straight paths, branches and other kinds,
+the note forms under C, not-a-thing records and findings - are printed so
+that a report copies them rather than counting by hand.
+
 Exit code 0: nothing broken, nothing uncovered. 1: lines of the search set are
 uncovered, or a unit has no straight path. 2: a record is broken, an anchor
 does not stand where its record says, or the repository is one the tool
@@ -65,6 +69,12 @@ A. WHAT GOES IN
   to a run. Each with its anchor, where the roadmap names them.
 - Every finding made while reading: a line that is wrong, or a place where
   something is missing. A finding lives in the table, not only in a report.
+  A finding is recorded only where no entry under "Known gaps" in
+  docs/roadmap.md already names the same defect. Where one does, that defect
+  enters the table in order 7 or 8 from its entry, and a finding beside it
+  would be the same thing twice. The report of the order that records a
+  finding says, for every finding, which search of the roadmap came back
+  without a match.
 
 B. WHAT A BRANCH IS, AND WHAT A UNIT IS
 
@@ -106,6 +116,11 @@ with its anchor. A reached skill with neither a section of its own for the
 case nor shared/how-to-ask.md inserted gets an empty evidence for that row.
 Where the skill does not say what happens then, the evidence stays empty and
 the note carries "outcome with nobody there not stated".
+
+A line that says what a run does with nobody there is a condition like any
+other and gets its thing, whether or not the unattended mode reaches the
+skill. A thing with an empty evidence is added for a handover or a question
+the skill leaves unanswered only where the unattended mode reaches the skill.
 
 A call to another skill is not a thing of its own. It stands as a note, in one
 of the forms under C, on the thing whose outcome makes the call. A branch one
@@ -758,9 +773,30 @@ class Result:
         self.covered_lines = {}     # file -> set of linenos
         self.counts = {}            # (state, kind) -> n
         self.reason_counts = {}     # reason -> n
+        self.by_file = {}           # site file -> dict of counts, see tally
 
     def broken_count(self):
         return len(self.table_errors) + len(self.broken)
+
+
+TALLY_KEYS = ("things", "straight paths", "branches", "other kinds", "calls",
+              "does the work of", NOT_STATED, "not-a-thing", "findings")
+
+
+def tally(res, rel, key, n=1):
+    """One count per site file, so a report copies the output."""
+    d = res.by_file.setdefault(rel, dict((k, 0) for k in TALLY_KEYS))
+    d[key] += n
+
+
+def note_forms(note):
+    """(calls, does the work of, outcome with nobody there not stated)
+    carried by a note that passed validation."""
+    segs = note.split("; ") if note != "" else []
+    calls = sum(1 for s in segs if CALLS.match(s))
+    does = sum(1 for s in segs if DOES.match(s))
+    not_stated = sum(1 for s in segs if s == NOT_STATED)
+    return calls, does, not_stated
 
 
 def classify_location(rel, kind):
@@ -1184,6 +1220,25 @@ def analyse(root, table=None, only=None):
                           else "Built, never walked")
         key = (t["state"], t["kind"])
         res.counts[key] = res.counts.get(key, 0) + 1
+        rel = t["site"][0]
+        tally(res, rel, "things")
+        if t["rec"].parts[2] == STRAIGHT:
+            tally(res, rel, "straight paths")
+        elif t["kind"] in ("skill branch", "shared text"):
+            tally(res, rel, "branches")
+        else:
+            tally(res, rel, "other kinds")
+        calls, does, not_stated = note_forms(t["rec"]["note"])
+        tally(res, rel, "calls", calls)
+        tally(res, rel, "does the work of", does)
+        tally(res, rel, NOT_STATED, not_stated)
+    for rec in records:
+        if rec.errors:
+            continue
+        if rec["type"] == "not-a-thing":
+            tally(res, rec["file"], "not-a-thing")
+        elif rec["type"] == "finding":
+            tally(res, rec["file"], "findings")
     # units: every one has a straight path and an anchorable line
     for rel in unit_files(files, root, only):
         text, lines = files.get(rel)
@@ -1259,6 +1314,23 @@ def render(res):
             v = res.counts.get((state, kind), 0)
             if v:
                 out.append("    %-20s %d" % (kind, v))
+    out.append("")
+    out.append("COUNTS by site file (records that are not rejected)")
+    total = dict((k, 0) for k in TALLY_KEYS)
+    for rel in sorted(res.by_file):
+        d = res.by_file[rel]
+        for k in TALLY_KEYS:
+            total[k] += d[k]
+    for rel, d in sorted(res.by_file.items()) + [("all files", total)]:
+        out.append("  %s" % rel)
+        out.append("    things %d: straight paths %d, branches %d, other "
+                   "kinds %d" % (d["things"], d["straight paths"],
+                                 d["branches"], d["other kinds"]))
+        out.append("    notes: calls %d, does the work of %d, %s %d"
+                   % (d["calls"], d["does the work of"], NOT_STATED,
+                      d[NOT_STATED]))
+        out.append("    not-a-thing %d, findings %d"
+                   % (d["not-a-thing"], d["findings"]))
     out.append("")
     out.append("NOT-A-THING RECORDS by reason: %d"
                % sum(res.reason_counts.values()))
