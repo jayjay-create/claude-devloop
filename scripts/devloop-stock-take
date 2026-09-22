@@ -123,7 +123,12 @@ skill. A thing with an empty evidence is added for a handover or a question
 the skill leaves unanswered only where the unattended mode reaches the skill.
 
 A call to another skill is not a thing of its own. It stands as a note, in one
-of the forms under C, on the thing whose outcome makes the call. A branch one
+of the forms under C, on the thing whose outcome makes the call. Calls are
+looked for under shared/ as well as under skills/, because inserted text is
+the skill's text: a search over skills/ alone missed "call `setup-checks`" in
+shared/checks-owner.md, inserted into build-work and diagnose-bug, on 22
+September 2026. A call phrased without "run" or "call" before the name, such
+as "the next stage is `plan-work`", is a call all the same. A branch one
 skill describes and another decides stands once, where it is decided; the
 other place goes in the note.
 
