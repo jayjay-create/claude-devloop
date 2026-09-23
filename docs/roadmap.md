@@ -5032,7 +5032,7 @@ the size of the work.
   c) print c[k], k}' docs/stock-take.tsv`: 1084 things, 172 runs, 858 records of
   lines that are not a thing, and no finding left in it. The tool, run over the
   whole table on 23 September 2026 at 0.106.0 on the tree this change commits: 0
-  broken records, 0 of 1724 lines of the search set uncovered, exit 0. The
+  broken records, 0 of 1722 lines of the search set uncovered, exit 0. The
   things by state and kind are the tool's output under "COUNTS per state and
   kind" and are not repeated here: a count lives in one place, and for a state
   that place is computed. Milestone 5 takes its list from that output, and
@@ -5061,8 +5061,23 @@ the size of the work.
   handover, run these", two in dates of this file, and thirty-nine in the tool:
   thirty-six outcomes and exit codes that no case of the self-test produces, one
   run dropped from the output in silence, and the two lines of its header that
-  still counted nine orders. Every one is recorded and not built, and its
-  evidence is the line of its bullet that says so.
+  still counted nine orders. Every one but those two is recorded and not built,
+  and its evidence is the line of its bullet that says so; the two header lines
+  are repaired in this same change, and the evidence of each is the repaired
+  line, so the tool reads them built and never walked.
+
+  The seventeen checks under "Before a handover, run these" were run on 23
+  September 2026 at 0.106.0, after the change, which touches nothing under
+  `skills/`, `shared/`, `hooks/` or `bin/`. Sixteen printed what their
+  explanations say: the two registration lists empty; the two locks at 1 and the
+  ten other skills at 0; one locked reference, `start-work` from `build-work`;
+  twelve openings, eleven before any heading and `start-work`'s under its
+  talking section; one checksum and the count 12; 2 and 2 for the arming
+  command's copies; fifteen offers, none of them changed here; seven handover
+  lines over six sites; the two second statements; and silence from the seven
+  that are silent when green. The check on names in this file printed 130 lines,
+  one more than before this entry — the `-` a bullet below quotes — and cannot
+  be silent, which is one of the bullets below.
 
   - `skills/build-work/SKILL.md`, under "Step 6 — Merge it", at "Start condition
     6 makes the". Recorded, not built: "Start condition 6" while the section
@@ -5471,13 +5486,15 @@ the size of the work.
     rejection, or listed under RUNS THAT DO NOT COUNT with that reason, and its
     anchor covering nothing.
   - `scripts/devloop-stock-take`, at `nowhere on it: order 9 of the stock-take
-    moves each into the dated roadmap`. Recorded, not built: names order 9 as
-    the order that moves the findings into the dated roadmap entry; order 9
-    inventories this tool and order 10 closes the milestone — should: order 10
-    of the stock-take moves each into the dated roadmap entry.
+    moves each into the dated roadmap`. Repaired in this same change, and the
+    repaired line is its evidence: names order 9 as the order that moves the
+    findings into the dated roadmap entry; order 9 inventories this tool and
+    order 10 closes the milestone — should: order 10 of the stock-take moves
+    each into the dated roadmap entry.
   - `scripts/devloop-stock-take`, at `Every order from 2 to 8 of the stock-take
-    ends when the tool reports, for the`. Recorded, not built: names orders 2 to
-    8; order 9 ends the same way — should: Every order from 2 to 9.
+    ends when the tool reports, for the`. Repaired in this same change, and the
+    repaired line is its evidence: names orders 2 to 8; order 9 ends the same
+    way — should: Every order from 2 to 9.
 
 ## Decisions taken against
 

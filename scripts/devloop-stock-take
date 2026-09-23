@@ -235,7 +235,7 @@ Four record types:
   with " — should: " between the two parts. The tool rejects one without its
   "should" part, does not count it for coverage, and lists every finding in
   its output. A finding is recorded on the branch that reads and repaired
-  nowhere on it: order 9 of the stock-take moves each into the dated roadmap
+  nowhere on it: order 10 of the stock-take moves each into the dated roadmap
   entry and replaces its record by a defect thing whose site is the new
   roadmap line.
 
@@ -394,7 +394,7 @@ than silently dropped; its branch is anchored on the nearest line that can
 carry an anchor, normally the condition itself. The exit lines of a hook are
 the case: pass and block are anchored where they are decided.
 
-Every order from 2 to 8 of the stock-take ends when the tool reports, for the
+Every order from 2 to 9 of the stock-take ends when the tool reports, for the
 files that order took, no uncovered line of the set, no unit without a
 straight path and no broken record.
 
