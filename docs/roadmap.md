@@ -5003,6 +5003,503 @@ the size of the work.
   and `docs/skill-conventions.md`, whose copy of the arming command they
   compare.
 
+- **The stock-take of what is built, closed on 23 September 2026.** Milestone 1
+  of `docs/plan.md`, a measurement milestone, run in ten orders from 21 to 23
+  September 2026 on pull request #131. What was built is not the roadmap entry
+  with a table in it that the plan of 19 September described. It is a table,
+  `docs/stock-take.tsv`, that holds facts only — per thing its kind, the line it
+  stands on and the line that carries its evidence, each as a file and a
+  verbatim substring of one line; per run its date, the version or commit it ran
+  and the line of this file that records it; and for every line of the search
+  set that is not a thing the reason it is not — and a tool,
+  `scripts/devloop-stock-take`, whose header holds the rules and which computes
+  the state of every thing on every run from the records and the git history,
+  one of four: undetermined, where the evidence is empty; recorded and not
+  built, where it lies under `docs/` or in `README.md`; built and never walked,
+  where it lies under a shipped directory or one of the two check headings and
+  no run counts; walked, where a run counts, which is a run whose version
+  already contains the last change to every line the thing stands on. No state
+  is written down anywhere, because a stored state is an asserted state. The
+  search set — every line under `skills/`, `shared/`, `hooks/`, `bin/` and
+  `scripts/` that carries a condition word, a heading, a numbered item, a list
+  head or a table row; every command block under the two check headings of
+  `docs/skill-conventions.md`; every entry head and status line under this
+  heading; every row under "Named, not built as skills" — is what makes the
+  table checkable for completeness: a line of it that no record covers is
+  reported, so a line nobody read is seen rather than missed.
+
+  The table at the close, counted with `awk -F'\t' 'NR>1{c[$1]++} END{for(k in
+  c) print c[k], k}' docs/stock-take.tsv`: 1159 things, 172 runs, 858 records of
+  lines that are not a thing, and no finding left in it. That first figure stood
+  as 1084 for one commit, typed from the order's brief, which counted the things
+  before the seventy-five findings became things; the command prints 1159, and
+  the figure was corrected off its output — the case "A figure taken from a
+  command is copied out of that command's output" is written for, met at the
+  close of the milestone that quotes it. The tool, run over the whole table on
+  23 September 2026 at 0.106.0 on the tree this change commits: 0 broken
+  records, 0 of 1722 lines of the search set uncovered, exit 0. The things by
+  state and kind are the tool's output under "COUNTS per state and kind" and are
+  not repeated here: a count lives in one place, and for a state that place is
+  computed. Milestone 5 takes its list from that output, and `docs/plan.md`,
+  section 1, now describes this shape instead of the one it planned.
+
+  The self-test of the tool, `scripts/devloop-stock-take --self-test`, ran on 23
+  September 2026 at 0.106.0 in this repository, exit 0, and its last line read
+  `SELF-TEST PASSED: 46 cases, every red outcome once, every green counterpart
+  once`. Every outcome of the tool that a case of the self-test produces, 45 of
+  88, carries a run of that date on the line above that names the version. The
+  43 that no case produces carry none: they are built and never walked on
+  purpose, and 36 of them stand below as findings, each asking for its case. The
+  other seven are the report itself, the three exit codes, the two forms of the
+  command line and the information line copy detection adds; the report, exit 0
+  and the passed self-test are produced by the two runs this entry records and
+  carry no run record all the same, because the order that closed the milestone
+  gave runs to the cased outcomes only.
+
+  What the reading found, seventy-five findings, each recorded in the table by
+  the order that read the file and moved here at the close, where it is a defect
+  of this set like every other entry's: what is wrong, what should hold instead,
+  and the file and the line it concerns. Where an entry of this file already
+  named the same defect, the finding was not recorded a second time, and it
+  stands there. Thirty-three stand in skills, one in a check under "Before a
+  handover, run these", two in dates of this file, and thirty-nine in the tool:
+  thirty-six outcomes and exit codes that no case of the self-test produces, one
+  run dropped from the output in silence, and the two lines of its header that
+  still counted nine orders. Every one but those two is recorded and not built,
+  and its evidence is the line of its bullet that says so; the two header lines
+  are repaired in this same change, and the evidence of each is the repaired
+  line, so the tool reads them built and never walked.
+
+  The seventeen checks under "Before a handover, run these" were run on 23
+  September 2026 at 0.106.0, after the change, which touches nothing under
+  `skills/`, `shared/`, `hooks/` or `bin/`. Sixteen printed what their
+  explanations say: the two registration lists empty; the two locks at 1 and the
+  ten other skills at 0; one locked reference, `start-work` from `build-work`;
+  twelve openings, eleven before any heading and `start-work`'s under its
+  talking section; one checksum and the count 12; 2 and 2 for the arming
+  command's copies; fifteen offers, none of them changed here; seven handover
+  lines over six sites; the two second statements; and silence from the seven
+  that are silent when green. The check on names in this file printed 130 lines,
+  one more than before this entry — the `-` a bullet below quotes — and cannot
+  be silent, which is one of the bullets below.
+
+  - `skills/build-work/SKILL.md`, under "Step 6 — Merge it", at "Start condition
+    6 makes the". Recorded, not built: "Start condition 6" while the section
+    names five conditions and every route into it reads all five — should: Start
+    condition 5.
+  - `skills/build-work/SKILL.md`, under "A guard's block, with nobody there", at
+    "step 3, and a refused arming in step 6 — and it gets the same answer.".
+    Recorded, not built: the guard's block is said to get the same answer as a
+    refused arming in step 6, but the block raises an issue and takes the next
+    task while a refused arming ends the run and deletes the mark (step 6,
+    unattended paragraph; "this ends the run, where the local twin does not") —
+    should: name the turn-end hook as the twin and the refused arming as the
+    shape only, or say the answers differ.
+  - `skills/build-work/SKILL.md`, under "When the turn-end hook hands the
+    problem over", at "6, and it gets the same answer". Recorded, not built: the
+    turn-end hook's unattended answer is said to be the same as a refused
+    arming's, which stops the run instead of raising an issue and taking the
+    next task — should: same shape, different answer; or name only the guard's
+    block as the twin.
+  - `skills/build-work/SKILL.md`, under "Build the open tasks", at "running
+    without stopping. Two of these steps". Recorded, not built: "Two of these
+    steps end by asking the user something", while handovers stand in steps 1,
+    3, 5 and 6 — should: name the steps that ask, or drop the count.
+  - `skills/build-work/SKILL.md`, under "Step 1 — Check the base", at "usually
+    the local branch has commits the". Recorded, not built: the diverged base is
+    handed to the user and no line says what a run with nobody there does —
+    should: a sentence for the unattended case, here or under "With nobody
+    there".
+  - `skills/build-work/SKILL.md`, under "Step 1 — Check the base", at "let the
+    user choose how to clear it". Recorded, not built: the red base is put to
+    the user as a choice of three and no line says what a run with nobody there
+    does — should: a sentence for the unattended case, here or under "With
+    nobody there".
+  - `skills/build-work/SKILL.md`, under "Step 3 — Build it", at "runtime, a tool
+    from a package manager. That is the user's to run". Recorded, not built: the
+    install is handed to the user and no line says what a run with nobody there
+    does; the decline paragraph needs a person — should: a sentence for the
+    unattended case, here or under "With nobody there".
+  - `skills/build-work/SKILL.md`, under "Step 6 — Merge it", at "and say what it
+    would take: the merge landed". Recorded, not built: a failed fast-forward
+    stops and hands over, and no line says what a run with nobody there does —
+    should: a sentence for the unattended case, here or in the unattended
+    section.
+  - `skills/setup-checks/SKILL.md`, under "Step 8 — Offer the unattended mode",
+    at "as, and whether auto-merge is on (`gh api repos/OWNER/REPO -q".
+    Recorded, not built: auto-merge is read and the early exit two sentences
+    down does not depend on it: a binding gate with auto-merge off is said to
+    make the mode available, while precondition 5 in build-work needs auto-merge
+    on as well, and the yes path that switches it on is skipped — should: the
+    early exit needs auto-merge on too, or switches it on there.
+  - `skills/setup-checks/SKILL.md`, under "With nobody there", at "From a build
+    that had an install declined for a check class, which records the".
+    Recorded, not built: the first route with nobody there needs a person to
+    decline the install; build-work step 3 point 7 hands the install to the user
+    and states no outcome with nobody there, and its guard's block raises an
+    issue instead of calling this skill — should: name a route that exists with
+    nobody there, or say this route is attended.
+  - `skills/setup-checks/SKILL.md`, under "With nobody there", at "it stands in
+    a first setup, with them present.". Recorded, not built: the offer is said
+    to stand in a first setup, while the single-class route skips step 7 only
+    and step 8 applies there unchanged, so with the user there a build that had
+    a class skipped can meet the offer — should: skip step 8 on the single-class
+    route as well, or say the offer applies there.
+  - `skills/setup-checks/SKILL.md`, under "Step 7 — Land the check suite on the
+    main branch", at "Skip this whole step when this skill was called for a
+    single class from a build.". Recorded, not built: on the route from
+    build-work step 6, after the merge, the build's branch has landed and
+    nothing lands the class this skill fills; this line skips the step for every
+    single-class call and says the build lands it — should: say which branch the
+    call after a merge runs on and what lands it.
+  - `skills/setup-checks/SKILL.md`, under "Step 3 — Prefer tools that live
+    inside the project", at "Name what you just wrote down as something to
+    grant. A check command". Recorded, not built: the check commands are named
+    to the user as something to grant, and no line says what a run with nobody
+    there does with them — should: a sentence for the unattended case, here or
+    under "With nobody there".
+  - `skills/setup-checks/SKILL.md`, under "Step 9 — Close", at "Then say what
+    happens next and do it, without asking first: more classes if any".
+    Recorded, not built: step 2 allows the answer none, filling them later, and
+    this line does more classes without asking while any is empty, overriding
+    that answer at the close — should: a none answer stands until the step after
+    a merge re-reads the reasons, or step 2 loses that answer.
+  - `skills/setup-checks/SKILL.md`, under "Step 9 — Close", at "are still
+    `empty`, otherwise the first piece of work. Say what the state means".
+    Recorded, not built: on the single-class route the caller is a build that
+    continues with its task, and this line sends the run to the first piece of
+    work — should: return to the build where called for a single class.
+  - `skills/setup-project/SKILL.md`, under "Permissions, before the first
+    command", at "Say what this is not, in the options themselves. A caveat in
+    the paragraph". Recorded, not built: "in the options themselves", "the two
+    lines the user chooses between" and "the yes carries both halves" presuppose
+    a question with a yes, while the passage opens with "This is not a question,
+    and must not be put as one" — should: one of the two stands: the two halves
+    are said in the preparation, or the passage is a question.
+  - `skills/setup-project/SKILL.md`, under "Permissions, before the first
+    command", at "yet — `checks.md` is empty until `setup-checks` fills it, so
+    that skill adds". Recorded, not built: checks.md is said to be empty until
+    setup-checks fills it, while step 4 question 3 fills a class from a tool
+    found and step 9 counts filled classes; the check commands known at setup
+    are then never named as something to grant — should: name them here or at
+    the close, as setup-checks step 3 does for the ones it writes.
+  - `skills/setup-project/SKILL.md`, under "Step 1 — Explore, change nothing",
+    at "- Whether `gh` is installed and signed in (`gh auth status`). It is not,
+    and no". Recorded, not built: "It is not, and no amount of setting up gets
+    around it" asserts that gh is not signed in, where the sentence means the
+    case that it is not — should: "Where it is not, no amount of setting up gets
+    around it".
+  - `skills/setup-project/SKILL.md`, under "Step 0 — Say what is about to
+    happen, then get on with it", at "this is not a git repository, there is no
+    remote, or the working directory does". Recorded, not built: a missing
+    remote is listed among the cases to stop and ask about, while step 4
+    question 1 says "do not stop yet" and offers to create one — should: one of
+    the two places decides the missing remote and the other points there.
+  - `skills/setup-project/SKILL.md`, under "Step 4 — Questions", at "undecided.
+    Ask separately whether missing tools should be installed — that".
+    Recorded, not built: the question whether missing tools should be installed
+    says nothing about where a no leads, and the checks.md rules below know only
+    filled, skipped by judgement and empty — should: say what the class becomes
+    on a no, as setup-checks step 3 does: skipped with that reason.
+  - `skills/setup-project/SKILL.md`, under "Step 4 — Questions", at "the five
+    standard labels and report it.". Recorded, not built: "the five standard
+    labels" while issue-tracker.md below names seven and says to create all
+    seven — should: seven, in both places.
+  - `skills/setup-project/SKILL.md`, under "`checks.md`", at "target cannot
+    block anything; leave it `-` until it is filled.". Recorded, not built:
+    "leave it `-` until it is filled" while the column is said two paragraphs up
+    to take only yes or no, and the example row above carries no on a skipped
+    row — should: one value for a row that is not filled, the same in the rule,
+    in the column's definition and in the example.
+  - `skills/setup-project/SKILL.md`, under "`domain.md`", at "Where the glossary
+    and the decision records live — the two places step 6 just".
+    Recorded, not built: "the two places step 6 just created": the two places
+    are created in step 4, question 6, not in step 6 — should: step 4, question
+    6.
+  - `skills/setup-project/SKILL.md`, under "`environment.md`", at "Also what
+    checks a merge, and who, from step 2 — the one property of this".
+    Recorded, not built: "from step 2": the gate is read in step 4, question 2,
+    and step 2 is the report of what was found — should: step 4, question 2.
+  - `skills/start-work/SKILL.md`, under "Step 1 — Look", at "Do not read files.
+    Do not check git. Do not look at the tracker.". Recorded, not built: step 1
+    says one command and no file read, and the paragraph after it reads
+    `docs/agents/issue-tracker.md` for the version marker before step 2 —
+    should: name the marker search as the one read step 1 makes, or move the
+    marker check to step 2.
+  - `skills/start-work/SKILL.md`, under "Step 2 — Orient them, if the status
+    line says this project is not set up", at "tickets or tasks by title, say
+    which one comes next and what it unblocks, in one". Recorded, not built: a
+    map in flight is started here, and step 5 routes nothing to untangle-idea's
+    second mode, its only route being step 3's fresh idea; untangle-idea:331
+    says the entry point picks the map up from the tracker — should: step 5
+    names the route for the next ticket of a map in flight.
+  - `skills/start-work/SKILL.md`, under "Unattended", at "nothing runs alone
+    whatever was typed". Recorded, not built: on the direct route nothing reads
+    the answer setup-checks step 8 recorded: build-work's five start conditions
+    read the repository's state, and plan-work:320 says not to read
+    environment.md's account, so this sentence holds on the planning route only
+    — should: the direct route reads the recorded answer, or this sentence names
+    the planning route as the one it holds on.
+  - `skills/plan-work/SKILL.md`, under "Before anything: what is already built",
+    at "Do not open a planning issue for it and do not plan it again. Offer to
+    land". Recorded, not built: the offer to land says what a no leads to and
+    not what a yes does; the one landing procedure is build-work step 6, which
+    start-work:125 names and this skill does not — should: say that a yes is
+    build-work at step 6, as start-work does.
+  - `skills/build-prototype/SKILL.md`, under "Pick a branch", at "default to
+    whichever branch better matches the surrounding code". Recorded, not built:
+    with nobody there this line takes whichever branch matches the surrounding
+    code, the UI branch included, while "With nobody there" says the run takes
+    the logic branch and a question that has to be seen is not this skill's to
+    answer — should: one rule for the branch with nobody there, the logic
+    branch, and this line kept for the user briefly out of reach or dropped.
+  - `skills/build-prototype/SKILL.md`, under "Rules that apply to both", at
+    "leave a context pointer to that branch on the implementation issue".
+    Recorded, not built: the pointer to the throwaway branch and the answer go
+    on "the implementation issue", which exists on neither route into this skill
+    - plan-work Stage 1 holds a planning issue, untangle-idea a prototype ticket
+    - and "With nobody there" names the planning issue — should: the issue the
+    caller names, the planning issue or the ticket.
+  - `skills/diagnose-bug/SKILL.md`, under "When this runs", at "do not improvise
+    a replacement.". Recorded, not built: a missing control document is handed
+    to the user as the command that should have created it, and no line says
+    what a run with nobody there does; plan-work and start-work run
+    setup-project without asking at the same point — should: a sentence for the
+    unattended case, here or in build-work's section for it.
+  - `skills/diagnose-bug/SKILL.md`, under "Step 6 — Clean up, or hand it over",
+    at "says. Then wait.". Recorded, not built: step 6 hands over and waits for
+    a person, and no line says what a run with nobody there does; build-work
+    step 1 and step 3 send a red test class here without saying it either, while
+    the turn-end hook's same wait became a raised-here issue and the next task —
+    should: a sentence for the unattended case, here or in build-work's section
+    for it.
+  - `skills/record-lessons/SKILL.md`, under "Where it goes", at "the "what these
+    checks do not cover" section of". Recorded, not built: this row has the run
+    write the lesson into docs/agents/checks.md, while shared/checks-owner.md,
+    inserted into build-work and diagnose-bug, says "Do not edit
+    docs/agents/checks.md yourself" and routes every change to that file through
+    setup-checks — should: the section named as the one exception at both
+    places, or the lesson routed through setup-checks.
+  - `docs/skill-conventions.md`, under "Before a handover, run these", the
+    command line "| tr -d '`' | sort -u) <(ls skills/ | sort)".
+    Recorded, not built: the command prints every backticked lower-case name in
+    docs/roadmap.md that is not a directory under skills/, 129 lines on 23
+    September 2026, the twenty-two names under "Named, not built as skills"
+    among them, so it can never be silent and the sentence above it is not what
+    it checks — should: subtract the names of that table as well, so that a line
+    printed is a name the sentence forbids, and the section says that silence is
+    green.
+  - `docs/roadmap.md`, under "Known gaps", at "Run E, 19 September 2026, plugin
+    0.105.0, against the regrouping. The". Recorded, not built: Run E is dated
+    19 September 2026, while the session log of that run, in the directory of
+    runs A to D with plugin 0.105.0 and the reply the entry quotes, begins
+    2026-09-18T21:22Z, 23:22 CEST on 18 September, fifty-three seconds after
+    929dabe was committed — should: 18 September 2026.
+  - `docs/roadmap.md`, under "Known gaps", at "measured on 12 September 2026 in
+    `devloop-test-o` on issue 49. `setup-checks`". Recorded, not built: the run
+    is dated 12 September 2026, while the session log of devloop-test-o shows
+    setup-checks loaded for issue 49 at 2026-09-13T08:14Z, 10:14 CEST on 13
+    September, and its pull request opened at 08:17Z; on 12 September the log
+    carries task 48 and nothing on issue 49 — should: 13 September 2026.
+  - `scripts/devloop-stock-take`, at `if not only:`. Recorded, not built: the
+    outcome '--only without a path: message on stderr, exit 2' is produced by no
+    case of the self-test, so nothing can walk it on purpose — should: a case in
+    the self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `except RuntimeError as e:`.
+    Recorded, not built: the outcome "git failing on the shallow check, a
+    directory that is no repository included: REFUSED with git's message, exit
+    2" is produced by no case of the self-test, so nothing can walk it on
+    purpose — should: a case in the self-test that produces it once, beside its
+    green counterpart.
+  - `scripts/devloop-stock-take`, at `except OSError as e:`.
+    Recorded, not built: the outcome 'the table cannot be read: one table error,
+    nothing read, exit 2' is produced by no case of the self-test, so nothing
+    can walk it on purpose — should: a case in the self-test that produces it
+    once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if not lines or
+    lines[0].rstrip("\r").split("\t") != COLUMNS:`. Recorded, not built: the
+    outcome 'the header is not the 20 columns: one table error, nothing read,
+    exit 2' is produced by no case of the self-test, so nothing can walk it on
+    purpose — should: a case in the self-test that produces it once, beside its
+    green counterpart.
+  - `scripts/devloop-stock-take`, at `if absolute_path(f[col]):`.
+    Recorded, not built: the outcome 'an absolute local path in any field:
+    rejected' is produced by no case of the self-test, so nothing can walk it on
+    purpose — should: a case in the self-test that produces it once, beside its
+    green counterpart.
+  - `scripts/devloop-stock-take`, at `if (f[a] == "") != (f[b] == ""):`.
+    Recorded, not built: the outcome 'a file and anchor pair half empty:
+    rejected' is produced by no case of the self-test, so nothing can walk it on
+    purpose — should: a case in the self-test that produces it once, beside its
+    green counterpart.
+  - `scripts/devloop-stock-take`, at `if f["kind"] in ("check command", "named
+    skill") and f["note"] == "":`. Recorded, not built: the outcome 'a check
+    command or named skill with an empty note: rejected' is produced by no case
+    of the self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if not DATE.match(f["date"]):`.
+    Recorded, not built: the outcome "a run's date not YYYY-MM-DD: rejected" is
+    produced by no case of the self-test, so nothing can walk it on purpose —
+    should: a case in the self-test that produces it once, beside its green
+    counterpart.
+  - `scripts/devloop-stock-take`, at `if f["source"] not in SOURCES:`.
+    Recorded, not built: the outcome "a run's source not entry, log or none:
+    rejected" is produced by no case of the self-test, so nothing can walk it on
+    purpose — should: a case in the self-test that produces it once, beside its
+    green counterpart.
+  - `scripts/devloop-stock-take`, at `if has_v and has_c:`. Recorded, not built:
+    the outcome 'a run with both version and commit: rejected' is produced by no
+    case of the self-test, so nothing can walk it on purpose — should: a case in
+    the self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if f["source"] == "none" and (has_v or
+    has_c):`. Recorded, not built: the outcome 'a run of source none carrying a
+    version or commit: rejected' is produced by no case of the self-test, so
+    nothing can walk it on purpose — should: a case in the self-test that
+    produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if f["source"] in ("entry", "log") and not
+    (has_v or has_c):`. Recorded, not built: the outcome 'a run of source entry
+    or log with neither version nor commit: rejected' is produced by no case of
+    the self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if has_c and f["source"] != "entry":`.
+    Recorded, not built: the outcome 'a run naming a commit with a source other
+    than entry: rejected' is produced by no case of the self-test, so nothing
+    can walk it on purpose — should: a case in the self-test that produces it
+    once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if target == "":`. Recorded, not built:
+    the outcome 'part of: naming nothing: rejected' is produced by no case of
+    the self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `"no-file": "the file cannot be read",`.
+    Recorded, not built: the outcome 'an anchor into a file that cannot be read:
+    rejected' is produced by no case of the self-test, so nothing can walk it on
+    purpose — should: a case in the self-test that produces it once, beside its
+    green counterpart.
+  - `scripts/devloop-stock-take`, at `if len(anchor) > 80:`.
+    Recorded, not built: the outcome 'an anchor longer than 80 characters:
+    rejected' is produced by no case of the self-test, so nothing can walk it on
+    purpose — should: a case in the self-test that produces it once, beside its
+    green counterpart.
+  - `scripts/devloop-stock-take`, at `if len(anchor) < 20 and lines[lineno -
+    1].strip() != anchor:`. Recorded, not built: the outcome 'an anchor shorter
+    than 20 characters that is not a whole line: rejected' is produced by no
+    case of the self-test, so nothing can walk it on purpose — should: a case in
+    the self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if anchor != anchor.strip():`.
+    Recorded, not built: the outcome 'an anchor with leading or trailing
+    whitespace: rejected' is produced by no case of the self-test, so nothing
+    can walk it on purpose — should: a case in the self-test that produces it
+    once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if rec["kind"] != want:`.
+    Recorded, not built: the outcome 'a straight path under skills/ or shared/
+    of the wrong kind: rejected' is produced by no case of the self-test, so
+    nothing can walk it on purpose — should: a case in the self-test that
+    produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `elif rec.parts and rec.parts[2] ==
+    STRAIGHT and site:`. Recorded, not built: the outcome 'a straight path
+    outside skills/ and shared/: rejected' is produced by no case of the
+    self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `rec.errors.append("note %r does not carry
+    the form "`. Recorded, not built: the outcome 'a calls segment not carrying
+    the form exactly: rejected' is produced by no case of the self-test, so
+    nothing can walk it on purpose — should: a case in the self-test that
+    produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if not in_skill:`. Recorded, not built:
+    the outcome 'a call note on a thing outside skills/ and shared/: rejected'
+    is produced by no case of the self-test, so nothing can walk it on purpose —
+    should: a case in the self-test that produces it once, beside its green
+    counterpart.
+  - `scripts/devloop-stock-take`, at `rec.errors.append("note %r does not carry
+    one of the forms "`. Recorded, not built: the outcome 'a calls followed by a
+    segment that is none of the claim forms: rejected' is produced by no case of
+    the self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if s.startswith("with nobody there:"):`.
+    Recorded, not built: the outcome 'a with nobody there segment without its
+    calls before it: rejected' is produced by no case of the self-test, so
+    nothing can walk it on purpose — should: a case in the self-test that
+    produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `elif s.startswith("enters the
+    unattended"):`. Recorded, not built: the outcome 'a segment starting like
+    the root note and not carrying it exactly: rejected' is produced by no case
+    of the self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `rec.errors.append("note %r does not carry
+    the form 'does "`. Recorded, not built: the outcome 'a does the work of
+    segment not carrying the form exactly: rejected' is produced by no case of
+    the self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `elif s.startswith("outcome with nobody
+    there") and s != NOT_STATED:`. Recorded, not built: the outcome 'a segment
+    starting like the not-stated note and not carrying it exactly: rejected' is
+    produced by no case of the self-test, so nothing can walk it on purpose —
+    should: a case in the self-test that produces it once, beside its green
+    counterpart.
+  - `scripts/devloop-stock-take`, at `if not rec.errors and
+    skill_of(rec["file"]) is None:`. Recorded, not built: the outcome 'the root
+    note on a thing whose site is not under skills/: rejected' is produced by no
+    case of the self-test, so nothing can walk it on purpose — should: a case in
+    the self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if h is None:`. Recorded, not built: the
+    outcome 'a run naming a commit that does not resolve here: rejected' is
+    produced by no case of the self-test, so nothing can walk it on purpose —
+    should: a case in the self-test that produces it once, beside its green
+    counterpart.
+  - `scripts/devloop-stock-take`, at `elif origin_main is None:`.
+    Recorded, not built: the outcome 'a run naming a commit with no origin/main
+    here: rejected' is produced by no case of the self-test, so nothing can walk
+    it on purpose — should: a case in the self-test that produces it once,
+    beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if loc is None:`. Recorded, not built: the
+    outcome 'evidence under a directory the tool classifies as neither shipped
+    nor recorded: broken record, the thing in no state' is produced by no case
+    of the self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `bad = [h for h in per_hash if not
+    g.is_ancestor(h, run_c)]`. Recorded, not built: the outcome 'a run naming a
+    commit that does not contain the last change: does not count, the line
+    named' is produced by no case of the self-test, so nothing can walk it on
+    purpose — should: a case in the self-test that produces it once, beside its
+    green counterpart.
+  - `scripts/devloop-stock-take`, at `if vc is None:`. Recorded, not built: the
+    outcome 'a run naming a version never introduced into plugin.json on this
+    history: broken record, does not count' is produced by no case of the
+    self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if not any(anchorable(text, lines[n -
+    1])`. Recorded, not built: the outcome 'a unit with no anchorable line at
+    all: listed among the lines that can carry no anchor' is produced by no case
+    of the self-test, so nothing can walk it on purpose — should: a case in the
+    self-test that produces it once, beside its green counterpart.
+  - `scripts/devloop-stock-take`, at `if res.refused or res.broken_count():`.
+    Recorded, not built: exit 2 is produced by no case of the self-test: neither
+    exit_code() nor main() is called there — should: a case that calls
+    exit_code() on a result with a broken record and on a refused one and sees
+    2.
+  - `scripts/devloop-stock-take`, at `if res.uncovered or
+    res.no_straight_path:`. Recorded, not built: exit 1 is produced by no case
+    of the self-test: neither exit_code() nor main() is called there — should: a
+    case that calls exit_code() on a result with an uncovered line and sees 1,
+    and on a clean one and sees 0.
+  - `scripts/devloop-stock-take`, at `if t is None:`. Recorded, not built: a run
+    keyed to a thing whose record is rejected, or whose evidence lies where the
+    tool classifies nothing, is dropped here without a line in the output while
+    its anchor still covers its roadmap line (seen 2026-09-23 in a temporary
+    repository) — should: the run rejected with a message naming its thing's
+    rejection, or listed under RUNS THAT DO NOT COUNT with that reason, and its
+    anchor covering nothing.
+  - `scripts/devloop-stock-take`, at `nowhere on it: order 9 of the stock-take
+    moves each into the dated roadmap`. Repaired in this same change, and the
+    repaired line is its evidence: names order 9 as the order that moves the
+    findings into the dated roadmap entry; order 9 inventories this tool and
+    order 10 closes the milestone — should: order 10 of the stock-take moves
+    each into the dated roadmap entry.
+  - `scripts/devloop-stock-take`, at `Every order from 2 to 8 of the stock-take
+    ends when the tool reports, for the`. Repaired in this same change, and the
+    repaired line is its evidence: names orders 2 to 8; order 9 ends the same
+    way — should: Every order from 2 to 9.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

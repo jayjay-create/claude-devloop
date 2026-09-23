@@ -2,15 +2,18 @@
 
 Written on 19 September 2026. This is the plan and not a measurement record:
 what was measured stands in `docs/roadmap.md` under `## Known gaps`, with a
-date on every run, and what holds as a rule stands in
-`docs/skill-conventions.md`. This file says where the set is going, in which
-order, and what "done" means at each step. It changes as milestones land: a
-landed milestone keeps its text and gets a line saying when it landed and in
-which pull request; where its text quotes wording the work has since replaced,
-the quote says so where it stands; and the run that closed it gets its dated
-entry in the roadmap. A reference below names a file and a section, never a
-line: the line numbers this file carried at `929dabe` had drifted by the next
-pull request, and the section names had not.
+date on every run, the facts of the stock-take stand in `docs/stock-take.tsv`,
+and what holds as a rule stands in `docs/skill-conventions.md`. This file says
+where the set is going, in which order, and what "done" means at each step.
+It changes as milestones land: a landed milestone keeps its text and gets a
+line saying when it landed and in which pull request; where its text quotes
+wording the work has since replaced, the quote says so where it stands; and
+the run that closed it gets its dated entry in the roadmap. Milestone 1 is
+the one exception: what it built was not the shape its text planned, so its
+section was rewritten on 23 September 2026 to describe what stands. A
+reference below names a file and a section, never a line: the line numbers
+this file carried at `929dabe` had drifted by the next pull request, and the
+section names had not.
 
 ## The aim
 
@@ -90,31 +93,69 @@ it writes.
 
 ### 1. Stock-take of what is built (measurement)
 
-One dated entry in the roadmap with one table: per thing, one of four states,
-each with its evidence. Walked: a dated run in the roadmap. Built and never
-walked: a "Built" line and no run. Recorded only: a "Recorded, not built" line.
-Undetermined: none of those. The things: the twelve skills down to their
-branches, `shared/`, `hooks/`, the seventeen checks under "Before a handover,
-run these", the open findings of the roadmap, the three defects and seven
-mechanisms from the comparison with Matt Pocock's set (by that entry's own
-words "nothing here is built", so they enter as recorded only), the two
-remaining points of "The order of work, and why", and the four side paths under
-"What is missing" in `README.md`. Where the roadmap already names the
-triggering situation, the bench and the cost for an unwalked thing, the table
-carries them; where it does not, that is the building milestone's work, not
-this one's.
+Done on 23 September 2026, pull request #131. This section describes what was
+built, not what was planned on 19 September 2026: the plan said one dated entry
+in the roadmap with one table in it, each line carrying one of four states,
+and what stands is a table beside the roadmap and a tool that computes the
+states. The roadmap entry of 23 September 2026 carries the findings and the
+runs, and no state.
 
-Ends when the entry exists and every line points at the roadmap line, skill
-line or check it rests on, so that a third person can check any line without
-having been there.
+One table, `docs/stock-take.tsv`, and one tool, `scripts/devloop-stock-take`,
+whose header holds the rules. The table holds facts only: per thing its kind,
+the line it stands on and the line that carries its evidence, each as a file
+and a verbatim substring of one line; per run its date, the version or commit
+it ran and the roadmap line that records it; and for every line of the search
+set judged not to be a thing, the reason. No state is written down. The tool
+computes one of four states for every thing on every run, from the records
+and the git history: undetermined, where the evidence is empty; recorded and
+not built, where the evidence lies under `docs/` or in `README.md`; built and
+never walked, where it lies under `skills/`, `shared/`, `hooks/`, `bin/` or
+`scripts/` or under one of the two check headings of
+`docs/skill-conventions.md` and no run counts; walked, where a run counts. A
+run counts when the version it ran already contains the last change to every
+line the thing stands on, read off `git blame`; a run recorded in the roadmap
+with no version does not count, and the runs that do not count are printed
+with their reason.
+
+The things: the twelve skills down to their branches, `shared/`, `hooks/`,
+`bin/` and `scripts/` down to their outcomes, the tool itself included; the
+seventeen checks under "Before a handover, run these" and the check under
+"Before you change anything, run this", both outcomes of each; the twenty-two
+names under "Named, not built as skills", thirteen as things of their own and
+nine as a note on the thing that does their work, the four side paths under
+"What is missing" in `README.md` among the thirteen; every defect an entry
+under "Known gaps" names, the three defects and seven mechanisms of the
+comparison with Matt Pocock's set and the two remaining points of "The order
+of work, and why" among them; and every finding the reading made, which the
+close moved into the roadmap entry of 23 September 2026 as defects of this
+set. Where the roadmap names the triggering situation, the bench and the cost
+for a thing, the table carries them; where it does not, that is the building
+milestone's work, not this one's.
+
+The search set is what makes the table checkable for completeness: every line
+under `skills/`, `shared/`, `hooks/`, `bin/` and `scripts/` that carries a
+condition word, a heading, a numbered item, a list head or a table row; every
+command block under the two check headings; every entry head and status line
+under "Known gaps"; every row under "Named, not built as skills". A line of it
+that no record covers is reported, so a line nobody read is seen rather than
+missed, and a line that can carry no anchor is listed rather than dropped.
+
+Ended when the tool reported no broken record, no unit without a straight
+path, no uncovered line of the search set and no finding left in the table,
+so that a third person can check any line without having been there: the
+tool proves that every anchor stands where its record says, and every state
+is recomputed from the files as they are.
 
 Why here: the roadmap records that an entry answered by a later entry does not
-notice, and that "Recorded, not built" has stood on things already built. The
-table is what the later milestones pick their lists from.
+notice, and that "Recorded, not built" has stood on things already built. A
+later milestone that needs a list of things in a state runs the tool and
+reads it off the output; milestone 5 does so.
 
-Conventions: "A count lives in one place" (the table is that place for these
-states, and nothing else repeats them); "A time reference names its date"; "A
-figure taken from a command is copied out of that command's output".
+Conventions: "A count lives in one place" (the tool's output is that place for
+these states, which the table stores nowhere and the roadmap repeats nowhere);
+"A time reference names its date"; "A figure taken from a command is copied
+out of that command's output"; "Never assert state — query it" (every state
+is computed on every run).
 
 ### 2. Conventions read against their cases (text)
 
@@ -238,9 +279,11 @@ longer skills will meet first).
 
 ### 5. What goes wrong with nobody reading (build)
 
-The list comes from milestone 1: every finding in the class the conventions
-describe under "A finding that would have passed unsupervised gets written
-down" as "the finding nothing was watching … where no red is coming". Known
+The list comes from milestone 1, read off its tool and not off a table in the
+roadmap: run `scripts/devloop-stock-take` and take every defect it reports, in
+whatever state, that is in the class the conventions describe under "A finding
+that would have passed unsupervised gets written down" as "the finding nothing
+was watching … where no red is coming". Known
 members today, each a roadmap entry: the same failure picture three times out
 of the review, with no counter and `record-lessons` locked against being
 called; a lens that fell over and reported "no findings"; reviewing agents that
@@ -253,8 +296,8 @@ situation produced once on a bench, or the roadmap says why it cannot be
 produced — a lens falling over was spontaneous, six of twenty, and there only
 the form of the report is measurable.
 
-Ends when each item's roadmap line reads built with the date of its run, or
-carries the reason it was not run.
+Ends when the tool reports each item walked, its run dated in the roadmap, or
+the item's roadmap line carries the reason it was not run.
 
 Why here: the second sentence. Independent of 4; before 9.
 
@@ -465,7 +508,9 @@ that answers it, or says that none does.
   stopping four times after arming names both, and no milestone covers them.
 - Whether an idea whose destination is unknown can be produced on demand
   (milestone 6).
-- The cost per branch (milestone 1).
+- The cost per branch. Milestone 1 carries a cost only where the roadmap named
+  one, on six things; no milestone names the rest, each building milestone
+  names its own.
 - The state of the benches. Read on 19 September 2026 off the platform, every
   bench carries an older version in `environment.md` than the one installed;
   the roadmap entry of that date carries the figures. Every bench is refreshed

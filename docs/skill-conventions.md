@@ -1497,11 +1497,17 @@ the text a run gets:
 
     for f in skills/*/SKILL.md; do scripts/devloop-expand "$f" > /dev/null || echo "$f: expansion failed"; done
 
-The program under `bin/` and the tool under `scripts/` are executable, in the
+The program under `bin/` and the tools under `scripts/` are executable, in the
 working tree and in what git records, and git tracks every file there. A
 program that cannot start aborts every load that names it:
 
     for p in bin/* scripts/*; do [ -x "$p" ] || echo "$p: not executable"; done; git ls-files -s bin/ scripts/ | grep -v '^100755 '; [ "$(git ls-files bin/ scripts/ | wc -l)" -eq "$(find bin scripts -type f | wc -l)" ] || echo "bin/ or scripts/ has files git does not track"
+
+Where this prints that `bin/` or `scripts/` has files git does not track, look
+for `scripts/__pycache__/` before anything else: bytecode left behind. This
+check has answered twice for that reason and for no other; what to run instead
+of the command that leaves it stands in the header of
+`scripts/devloop-stock-take`, beside its self-test.
 
 The arming command in the merge guard's message is the one in
 `shared/arming-command.md`. A hook cannot insert text, so it carries a copy,
