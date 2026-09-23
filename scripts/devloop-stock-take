@@ -318,7 +318,9 @@ D. HOW STATES ARE COMPUTED
   A repair moves the evidence onto the line that carries it, in the change
   that lands the repair - a case of the self-test, a line of a skill, a line
   of the conventions - since a table reading "Recorded, not built" for
-  something now built is the state this tool exists to end.
+  something now built is the state this tool exists to end. Where the evidence
+  leaves a status line of the roadmap, the defect's site moves onto that line,
+  so that the line stays covered and the entry's text stays as written.
 - Recorded, not built: the evidence lies under docs/ or in README.md, and the
   kind is not check command.
 - Built: the evidence lies under skills/, shared/, hooks/, bin/ or scripts/,
