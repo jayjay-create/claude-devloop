@@ -5029,15 +5029,19 @@ the size of the work.
   reported, so a line nobody read is seen rather than missed.
 
   The table at the close, counted with `awk -F'\t' 'NR>1{c[$1]++} END{for(k in
-  c) print c[k], k}' docs/stock-take.tsv`: 1084 things, 172 runs, 858 records of
-  lines that are not a thing, and no finding left in it. The tool, run over the
-  whole table on 23 September 2026 at 0.106.0 on the tree this change commits: 0
-  broken records, 0 of 1722 lines of the search set uncovered, exit 0. The
-  things by state and kind are the tool's output under "COUNTS per state and
-  kind" and are not repeated here: a count lives in one place, and for a state
-  that place is computed. Milestone 5 takes its list from that output, and
-  `docs/plan.md`, section 1, now describes this shape instead of the one it
-  planned.
+  c) print c[k], k}' docs/stock-take.tsv`: 1159 things, 172 runs, 858 records of
+  lines that are not a thing, and no finding left in it. That first figure stood
+  as 1084 for one commit, typed from the order's brief, which counted the things
+  before the seventy-five findings became things; the command prints 1159, and
+  the figure was corrected off its output — the case "A figure taken from a
+  command is copied out of that command's output" is written for, met at the
+  close of the milestone that quotes it. The tool, run over the whole table on
+  23 September 2026 at 0.106.0 on the tree this change commits: 0 broken
+  records, 0 of 1722 lines of the search set uncovered, exit 0. The things by
+  state and kind are the tool's output under "COUNTS per state and kind" and are
+  not repeated here: a count lives in one place, and for a state that place is
+  computed. Milestone 5 takes its list from that output, and `docs/plan.md`,
+  section 1, now describes this shape instead of the one it planned.
 
   The self-test of the tool, `scripts/devloop-stock-take --self-test`, ran on 23
   September 2026 at 0.106.0 in this repository, exit 0, and its last line read
