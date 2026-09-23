@@ -239,14 +239,24 @@ Four record types:
   roadmap line.
 
 Thing names take the form <source> / <unit> / <outcome>, the parts separated
-by " / ": the skill's name for a file under skills/, otherwise the file's
-path; the heading of the unit the site lies in, without its # marks, or
-"whole file" where the unit has none; the outcome - in English, and unique.
-The tool rejects a name without exactly those three parts and, for a site
-under skills/ or shared/, a source or unit part that does not match the site.
-A name carries no "; ", because the note forms below use it as their
-separator and a "part of:" note names a thing up to it. For a named skill the third part is the skill's name, and that is what is
-held against skills/.
+by " / ". The source: the skill's name where the site is that skill's
+SKILL.md, and the file's path from the repository root everywhere else -
+skills/build-prototype/LOGIC.md, shared/how-to-ask.md, hooks/stop-checks.sh,
+bin/devloop-text - so one form covers everything that is not a SKILL.md. The
+unit: the heading of the unit the site lies in, without its # marks, or
+"whole file" where the unit has none. Where that heading is not unique in its
+file, the unit part carries the headings enclosing it before it, joined by
+" > ", as many as it takes to be unique: two headings alike inside one file
+collide exactly as two files do. Where even the whole chain collides, the two
+units cannot be told apart by their text; that is recorded as a finding
+rather than a name invented, and the tool lists the unit among those without
+a straight path, since none can be named. The outcome - in English, and
+unique. The tool rejects a name without exactly those three parts, a source
+part that does not match the site of any thing, and for a site under skills/
+or shared/ a unit part that does not match. A name carries no "; ", because
+the note forms below use it as their separator and a "part of:" note names a
+thing up to it. For a named skill the third part is the skill's name, and
+that is what is held against skills/.
 
 A thing's note carries each of these forms exactly, separated from anything
 else in the note by "; ":
@@ -577,16 +587,38 @@ def units_of(lines):
     heads = [i for i, l in enumerate(lines, 1)
              if HEADING.match(l) and i not in fenced]
     if not heads:
-        return [{"heading": None, "hline": None, "start": 1,
-                 "end": len(lines)}], fenced
+        return [{"heading": None, "part": WHOLE_FILE, "hline": None,
+                 "start": 1, "end": len(lines)}], fenced
     units = []
     for k, h in enumerate(heads):
+        line = lines[h - 1]
         units.append({
-            "heading": lines[h - 1].lstrip("#").strip(),
+            "heading": line.lstrip("#").strip(),
+            "level": len(line) - len(line.lstrip("#")),
             "hline": h,
             "start": 1 if k == 0 else h,
             "end": heads[k + 1] - 1 if k + 1 < len(heads) else len(lines),
         })
+    # the chain of enclosing headings, top-most first, own heading last
+    for k, u in enumerate(units):
+        chain, level = [u["heading"]], u["level"]
+        for prev in reversed(units[:k]):
+            if prev["level"] < level:
+                chain.insert(0, prev["heading"])
+                level = prev["level"]
+        u["chain"] = chain
+    # the unit part of a name: the heading where it is unique in the file,
+    # else the shortest tail of the chain no other unit's chain ends with;
+    # where even the whole chain is shared, the whole chain, and the two units
+    # cannot be told apart
+    for u in units:
+        tail = u["chain"]
+        for n in range(1, len(u["chain"]) + 1):
+            if not any(o is not u and o["chain"][-n:] == u["chain"][-n:]
+                       for o in units):
+                tail = u["chain"][-n:]
+                break
+        u["part"] = " > ".join(tail)
     return units, fenced
 
 
@@ -944,6 +976,16 @@ def skill_of(rel):
     return parts[1] if rel.startswith("skills/") and len(parts) > 2 else None
 
 
+def source_of(rel):
+    """The source part of a thing's name at this site: the skill's name where
+    the site is that skill's SKILL.md, the path from the repository root
+    everywhere else."""
+    parts = rel.split("/")
+    if rel.startswith("skills/") and len(parts) == 3 and parts[2] == "SKILL.md":
+        return parts[1]
+    return rel
+
+
 def search_set(files, root, only=None):
     """Items of the search set: (file, first_line, last_line, text)."""
     items = []
@@ -1084,14 +1126,15 @@ def analyse(root, table=None, only=None):
     seen_anchor, seen_name, sp_by_unit = {}, {}, {}
     for rec in things:
         site = rec.site()
-        if rec.parts and site and is_unit_file(site[0]):
-            rel, lineno = site
-            src = rel.split("/")[1] if rel.startswith("skills/") else rel
+        if rec.parts and site:
+            src = source_of(site[0])
             if rec.parts[0] != src:
                 rec.errors.append("name's source part %r is not %r, where "
                                   "the site stands" % (rec.parts[0], src))
+        if rec.parts and site and is_unit_file(site[0]):
+            rel, lineno = site
             u = files.unit_at(rel, lineno)
-            heading = u["heading"] if u["heading"] is not None else WHOLE_FILE
+            heading = u["part"]
             if rec.parts[1] != heading:
                 rec.errors.append("name's unit part %r is not the heading of "
                                   "the unit the site lies in, %r"
@@ -1441,7 +1484,7 @@ def analyse(root, table=None, only=None):
     for rel in unit_files(files, root, only):
         text, lines = files.get(rel)
         for u in files.units(rel)[0]:
-            heading = u["heading"] if u["heading"] is not None else WHOLE_FILE
+            heading = u["part"]
             at = u["hline"] or u["start"]
             if (rel, u["start"]) not in valid_sp:
                 res.no_straight_path.append((rel, at, heading))
@@ -1635,7 +1678,12 @@ def selftest():
         write(root, "skills/gamma/SKILL.md",
               "# Gamma\n\n```markdown\n## Fake\n```\n\n"
               "If a fence stands here, the heading inside it is not a unit.\n")
-        write(root, "skills/epsilon/SKILL.md", "# Epsilon\n")
+        write(root, "skills/epsilon/SKILL.md",
+              "# Epsilon\n\n## First\n\n### Twice\n\nText under the first "
+              "twice.\n\n## Second\n\n### Twice\n\nText under the second "
+              "twice.\n")
+        write(root, "skills/alpha/LOGIC.md",
+              "# Alpha\n\nIf the extra file says so, do that too.\n")
         write(root, "shared/note.md",
               "When somebody writes in German, answer in German.\n")
         write(root, "shared/inserted.md", "Inserted text, first wording.\n")
@@ -1705,6 +1753,8 @@ def selftest():
 
         A = "skills/alpha/SKILL.md"
         G = "skills/gamma/SKILL.md"
+        E = "skills/epsilon/SKILL.md"
+        L = "skills/alpha/LOGIC.md"
         R = "docs/roadmap.md"
         SP, BLUE, GREY = ("alpha / Alpha / straight path",
                           "alpha / Alpha / blue sky", "alpha / Alpha / grey sky")
@@ -1746,8 +1796,22 @@ def selftest():
             thing("gamma / Gamma / straight path", G, "# Gamma"),
             thing("gamma / Gamma / third form where nothing reaches", G,
                   "```markdown", ev=False, note="calls beta; " + NOBODY_NONE),
-            thing("epsilon / Epsilon / straight path", "skills/epsilon/SKILL.md",
-                  "# Epsilon"),
+            thing("epsilon / Epsilon / straight path", E, "# Epsilon"),
+            # green: a second file of a skill takes its path as the source;
+            # a heading standing twice in one file takes the enclosing one
+            thing("skills/alpha/LOGIC.md / Alpha / straight path", L, "# Alpha"),
+            thing("epsilon / First / straight path", E, "## First"),
+            thing("epsilon / First > Twice / straight path", E,
+                  "Text under the first twice."),
+            thing("epsilon / Second / straight path", E, "## Second"),
+            thing("epsilon / Second > Twice / straight path", E,
+                  "Text under the second twice."),
+            # red: the skill's name as the source of a file that is not its
+            # SKILL.md; the bare heading where it stands twice
+            thing("alpha / Alpha / the skill's name on a second file", L,
+                  "If the extra file says so", ev=False),
+            thing("epsilon / Twice / bare heading", E, "under the second twice",
+                  ev=False),
             thing(NOTE_SP, "shared/note.md", "somebody writes in German, answer",
                   kind="shared text"),
             thing(NOTE_G, "shared/note.md", "When somebody writes in German",
@@ -2027,6 +2091,17 @@ def selftest():
         case("a name whose source is not the site's",
              err("name's source part 'omega' is not 'alpha'"),
              states.get(THIRD) is not None)
+        case("two files of one skill carrying the same heading",
+             err("name's source part 'alpha' is not 'skills/alpha/LOGIC.md'"),
+             states.get("skills/alpha/LOGIC.md / Alpha / straight path")
+             is not None and (L, 1) not in no_sp)
+        case("one file carrying the same heading twice",
+             err("name's unit part 'Twice' is not the heading of the unit the "
+                 "site lies in, 'Second > Twice'"),
+             states.get("epsilon / First > Twice / straight path") is not None
+             and states.get("epsilon / Second > Twice / straight path")
+             is not None
+             and not any(f == E for f, _, _ in res.no_straight_path))
         case("a reached claim in a skill the set does not carry",
              err("'with nobody there: reached per' stands in gamma, which "
                  "nothing reaches"),
