@@ -243,17 +243,27 @@ by " / ". The source: the skill's name where the site is that skill's
 SKILL.md, and the file's path from the repository root everywhere else -
 skills/build-prototype/LOGIC.md, shared/how-to-ask.md, hooks/stop-checks.sh,
 bin/devloop-text - so one form covers everything that is not a SKILL.md. The
-unit: the heading of the unit the site lies in, without its # marks, or
-"whole file" where the unit has none. Where that heading is not unique in its
-file, the unit part carries the headings enclosing it before it, joined by
-" > ", as many as it takes to be unique: two headings alike inside one file
-collide exactly as two files do. Where even the whole chain collides, the two
-units cannot be told apart by their text; that is recorded as a finding
-rather than a name invented, and the tool lists the unit among those without
-a straight path, since none can be named. The outcome - in English, and
-unique. The tool rejects a name without exactly those three parts, a source
-part that does not match the site of any thing, and for a site under skills/
-or shared/ a unit part that does not match. A name carries no "; ", because
+unit: the heading of the unit the site lies in, without its # marks. Where
+the site lies in a file that has no units - a hook, hooks.json, a program
+under bin/ or scripts/, a markdown file without a heading - it is "whole
+file". Where the site lies in a file with headings that is not a unit file,
+it is the heading of the section the site stands under, written as the file
+writes it: "Before you change anything, run this" and "Before a handover, run
+these" in docs/skill-conventions.md, "Named, not built as skills" in
+docs/roadmap.md. Where that heading is not unique in its file, the unit part
+carries the headings enclosing it before it, joined by " > ", as many as it
+takes to be unique: two headings alike inside one file collide exactly as two
+files do. Where even the whole chain collides, the two units cannot be told
+apart by their text; that is recorded as a finding rather than a name
+invented, and the tool lists the unit among those without a straight path,
+since none can be named. The outcome - in English, and unique. The tool
+rejects a name without exactly those three parts, a source part that does not
+match the site of any thing, and a unit part that does not match the site's
+file: the tool derives the unit part for every site - "whole file" for a file
+that is not markdown, the heading or its chain for every markdown file, in
+docs/ as under skills/ - so an order that names a hook, a check command or a
+named skill cannot drift from the one that names them later. A name carries
+no "; ", because
 the note forms below use it as their separator and a "part of:" note names a
 thing up to it. For a named skill the third part is the skill's name, and
 that is what is held against skills/.
@@ -359,6 +369,13 @@ E. THE SEARCH SET, FOR COVERAGE
 - In docs/roadmap.md under "Known gaps": every entry head (a line starting
   with "- **") and every line holding "Recorded, not built", "Built",
   "Half built" or "Should hold".
+- In docs/roadmap.md under "Named, not built as skills": every row of the
+  table except the header row and the separator row. Those rows are the only
+  record of the names the stock-take accounts for, thirteen as things of
+  kind named skill and nine as "part of" the thing that does their work, so
+  a name added to the table is seen as uncovered until an order takes it.
+  The table under "Built and exercised" stays out: what it claims about the
+  twelve skills, the things of those skills carry themselves.
 
 A line is covered when an anchor of any record that is not rejected (thing,
 run or not-a-thing; never a finding) lies on it. A line of the set that can
@@ -986,6 +1003,17 @@ def source_of(rel):
     return rel
 
 
+def unit_part_of(files, rel, lineno):
+    """The unit part of a thing's name at this site: "whole file" for a file
+    that is not markdown (a hook, hooks.json, a program), the heading of the
+    unit the site lies in - or its chain where the heading repeats - for
+    every markdown file, and "whole file" for one without a heading."""
+    if not rel.endswith(".md"):
+        return WHOLE_FILE
+    u = files.unit_at(rel, lineno)
+    return u["part"] if u else WHOLE_FILE
+
+
 def search_set(files, root, only=None):
     """Items of the search set: (file, first_line, last_line, text)."""
     items = []
@@ -1038,12 +1066,18 @@ def search_set(files, root, only=None):
     rel = "docs/roadmap.md"
     if wanted(rel) and files.get(rel) is not None:
         lines = files.get(rel)[1]
-        inside = False
+        inside = None
         for i, l in enumerate(lines, 1):
             if l.startswith("## "):
-                inside = l.rstrip() == "## Known gaps"
+                inside = l.rstrip()
                 continue
-            if inside and (ENTRY_HEAD.match(l) or ROADMAP_STATUS.search(l)):
+            if inside == "## Known gaps" and (ENTRY_HEAD.match(l)
+                                              or ROADMAP_STATUS.search(l)):
+                items.append((rel, i, i, l))
+            elif inside == NAMED_HEADING and TABLE_ROW.match(l):
+                nxt = lines[i] if i < len(lines) else ""
+                if TABLE_SEPARATOR.match(l) or TABLE_SEPARATOR.match(nxt):
+                    continue
                 items.append((rel, i, i, l))
     return items
 
@@ -1131,14 +1165,20 @@ def analyse(root, table=None, only=None):
             if rec.parts[0] != src:
                 rec.errors.append("name's source part %r is not %r, where "
                                   "the site stands" % (rec.parts[0], src))
+        if rec.parts and site:
+            heading = unit_part_of(files, site[0], site[1])
+            if rec.parts[1] != heading and heading == WHOLE_FILE:
+                rec.errors.append("name's unit part %r is not %r, which a "
+                                  "file without units takes"
+                                  % (rec.parts[1], WHOLE_FILE))
+            elif rec.parts[1] != heading:
+                rec.errors.append("name's unit part %r is not the heading of "
+                                  "the unit the site lies in, %r"
+                                  % (rec.parts[1], heading))
         if rec.parts and site and is_unit_file(site[0]):
             rel, lineno = site
             u = files.unit_at(rel, lineno)
             heading = u["part"]
-            if rec.parts[1] != heading:
-                rec.errors.append("name's unit part %r is not the heading of "
-                                  "the unit the site lies in, %r"
-                                  % (rec.parts[1], heading))
             if rec.parts[2] == STRAIGHT:
                 want = "skill branch" if rel.startswith("skills/") \
                     else "shared text"
@@ -1715,7 +1755,10 @@ def selftest():
               "- **A run on a thing nobody recorded.**\n\n"
               "## Named, not built as skills\n\n"
               "| Skill | Description | Origin |\n|---|---|---|\n"
-              "| `implement-ticket` | Build one task | test |\n\n"
+              "| `implement-ticket` | Build one task | test |\n"
+              "| `beta` | A name whose directory exists | test |\n"
+              "| `delta` | A name whose directory does not exist | test |\n"
+              "| `omega-skill` | A row that no record covers | test |\n\n"
               "## Decisions\n\nNone.\n")
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c1", date="2026-01-01T12:00:00+0100")
@@ -1760,7 +1803,8 @@ def selftest():
                           "alpha / Alpha / blue sky", "alpha / Alpha / grey sky")
         NOBODY_T = "alpha / Alpha / nobody"
         SECOND, THIRD = "alpha / Second / straight path", "alpha / Third / straight path"
-        GUARD = "hooks/guard.sh / guard / block"
+        GUARD = "hooks/guard.sh / whole file / block"
+        NAMED = "docs/roadmap.md / Named, not built as skills / "
         CHECK = "docs/skill-conventions.md / Before a handover, run these / one check"
         NOTE_SP = "shared/note.md / whole file / straight path"
         NOTE_G = "shared/note.md / whole file / german"
@@ -1838,6 +1882,10 @@ def selftest():
                   "ls skills/ | grep -c nothing-of-that-name",
                   kind="check command", note="green prints nothing"),
             thing(GUARD, "hooks/guard.sh", "echo blocked >&2", kind="hook outcome"),
+            # red: a unit part that is not "whole file" in a file without units
+            thing("hooks/guard.sh / guard / unit part in a file without units",
+                  "hooks/guard.sh", "[ -d docs/agents ] || exit 0",
+                  kind="hook outcome", ev=False),
             thing("docs/roadmap.md / Known gaps / a defect", R,
                   "A defect measured on 2026-01-06", kind="defect", ev=False,
                   evidence_file=R, evidence_anchor="Recorded, not built."),
@@ -1845,20 +1893,26 @@ def selftest():
             thing("alpha / Alpha / missing anchor", A,
                   "this text stands nowhere in the file", ev=False),
             # red: anchor found twice (a short whole line that repeats)
-            thing("hooks/guard.sh / guard / double", "hooks/guard.sh", "exit 0",
+            thing("hooks/guard.sh / whole file / double", "hooks/guard.sh", "exit 0",
                   kind="hook outcome", ev=False),
             # red: two things on one anchor
             thing("alpha / Alpha / same anchor twin", A,
                   "If the sky is blue, say that it is blue", ev=False),
             # red: two things with one name
             thing(GREY, A, "the sky is grey, say that", ev=False),
-            # red: named skill whose directory exists; green: one that does not
-            thing("docs/roadmap.md / Known gaps / beta", R,
-                  "A run of alpha without a version", kind="named skill",
-                  ev=False, note="grep -rn beta skills/ came back empty"),
-            thing("docs/roadmap.md / Known gaps / delta", R,
-                  "A run on the shared note", kind="named skill", ev=False,
+            # red: named skill whose directory exists; green: one that does
+            # not; both sit on their rows of the named table, and the row of
+            # the name a thing does the work of is part of that thing
+            thing(NAMED + "beta", R, "`beta` | A name whose directory exists",
+                  kind="named skill", ev=False,
+                  note="grep -rn beta skills/ came back empty"),
+            thing(NAMED + "delta", R,
+                  "`delta` | A name whose directory does not exist",
+                  kind="named skill", ev=False,
                   note="grep -rn delta skills/ came back empty"),
+            rec(type="not-a-thing", file=R,
+                anchor="`implement-ticket` | Build one task",
+                note="part of: " + SP),
             # red: unknown type; unknown kind
             rec(type="thang", file=A, anchor="The third unit, stable", note="rationale"),
             thing("alpha / Third / twig", A, "unit, stable from the first",
@@ -1999,11 +2053,15 @@ def selftest():
              and states[NOTE_G] == "Built, never walked",
              counts(GUARD, "2026-01-11"))
         case("a line of the set nobody covers",
-             (G, 7) in uncovered,
-             (A, 6) not in uncovered and (A, 3) not in uncovered)
+             (G, 7) in uncovered
+             and any(f == R and "`omega-skill`" in t
+                     for f, _, _, t in res.uncovered),
+             (A, 6) not in uncovered and (A, 3) not in uncovered
+             and not any(f == R and ("`delta`" in t or "`implement-ticket`" in t)
+                         for f, _, _, t in res.uncovered))
         case("named skill whose directory exists",
              err("named skill, but skills/beta exists"),
-             states.get("docs/roadmap.md / Known gaps / delta") == "Undetermined"
+             states.get(NAMED + "delta") == "Undetermined"
              and not err("skills/delta exists"))
         case("record with a wrong number of fields",
              any("19 fields instead of 20" in e for e in res.table_errors),
@@ -2039,7 +2097,7 @@ def selftest():
              res.reason_counts.get("rationale", 0) == 1)
         case("a part of naming no thing",
              err("part of 'alpha / Alpha / nowhere', which names no thing"),
-             res.reason_counts.get("part of", 0) == 1)
+             res.reason_counts.get("part of", 0) == 2)
         case("a thing name without its three parts",
              err("name 'alpha-only' does not have the three parts"),
              states.get(BLUE) is not None)
@@ -2067,6 +2125,11 @@ def selftest():
                  "site lies in, 'Gamma'"),
              states.get("gamma / Gamma / straight path") is not None
              and not any(f == G for f, _, _ in res.no_straight_path))
+        case("a unit part that is not 'whole file' where the file has no units",
+             err("name's unit part 'guard' is not 'whole file', which a file "
+                 "without units takes"),
+             states.get(GUARD) is not None
+             and not any(GUARD in e for e in errors))
         case("a unit with no straight path",
              ("skills/beta/SKILL.md", 1) in no_sp,
              (A, 1) not in no_sp and (A, 9) not in no_sp and (A, 14) not in no_sp)
