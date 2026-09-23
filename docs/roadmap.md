@@ -5500,6 +5500,82 @@ the size of the work.
     repaired line is its evidence: names orders 2 to 8; order 9 ends the same
     way — should: Every order from 2 to 9.
 
+- **The repairs the stock-take found, on 23 September 2026.** The first change
+  to something the stock-take measured, on the branch task/stock-take-repairs,
+  cut from the main branch at `b48a323` after the stock-take landed: four works
+  over the defects the entry above recorded, 43 of its 75. Every line changed
+  broke the records anchored on it or left a defect's evidence behind, the tool
+  said which, and mending them was part of the work, since a table that reads
+  recorded and not built for something now built is half a repair.
+
+  What was repaired. The run that vanished: a run whose thing was rejected fell
+  out of the output while its anchor still covered its line. A run on a rejected
+  thing is now rejected with it, with a message naming the thing's line, listed
+  under BROKEN RECORDS and covering nothing, and the check that classifies a
+  thing's evidence runs before coverage, so that a thing with evidence the tool
+  classifies nowhere is rejected rather than left in no state. The 36 outcomes
+  of `scripts/devloop-stock-take` that no case of its self-test produced each
+  have their case now, red once beside its green counterpart, in the temporary
+  repository the self-test builds: the two tables it cannot read, the directory
+  that is no repository, the --only form without a path, every rejection of a
+  record, the runs naming a commit that does not resolve or does not contain the
+  change or a version never introduced, the repository without origin/main, the
+  unit no line of which can carry an anchor, the exit codes 1 and 2. None needed
+  a limit, since every message could be produced on purpose. Copy detection, one
+  of the seven outcomes without a case that were not findings, got its case as
+  well, staged with the extra file changed in the same commit, because git blame
+  -C -C looks only at the files that commit changed; the header names that as a
+  limit. Three lines of `skills/build-work/SKILL.md`, answering four defects:
+  the fifth start condition where a sixth was named; the guard's block given the
+  turn-end hook's answer, an issue raised and the next task taken, where a
+  refused arming ends the run; the turn-end hook's paragraph saying the shape is
+  the same and the answer is not; a step that ends by asking, where two steps
+  were counted. One paragraph of `docs/skill-conventions.md`, beside "A time
+  reference names its date": a run's date is copied from the session log of that
+  run, not from memory. That line answers the two wrong dates and nothing else
+  does. The measurements stand as written, and the tool reads those two defects
+  recorded and not built, a convention being a rule and not a mechanism, which
+  is the rule of its header.
+
+  The closing sentence of the self-test. "Every red outcome once" was true of
+  the cases it had and false in what it suggested, and it stood unseen since the
+  tool was built. The self-test now reads every message the tool can produce off
+  its own source, with the ast module, at the places a message is emitted;
+  matches each against the messages its analyses produced and the text its cases
+  asserted; prints the ones no case asserted; and closes with the count. Four
+  existing cases were tightened to assert the message they produce, which that
+  count showed they did not. The self-test ran on 23 September 2026 at 0.107.0
+  in this repository, exit 0, and its last line read `SELF-TEST PASSED: 84
+  cases; of the 73 messages this tool can produce, read off its own source, 73
+  are asserted by a case and 0 by none`. The 37 outcomes whose case is new, and
+  the one the repair of the vanishing run added, carry a run of that date on the
+  line above that names the version; the 45 runs of 0.106.0 count as before,
+  since no line they stand on changed. The version was raised to 0.107.0 after
+  every change and before the runs: introduced earlier, its commit would not
+  contain the changes, and every run against it would fail the version rule.
+
+  The records. 43 defects' evidence moved onto the line that carries the repair:
+  37 onto a case line, 4 onto `skills/build-work/SKILL.md`, 2 onto the
+  conventions. Where the evidence left a status line of the entry above, the
+  defect's site moved onto that line, so that it stays covered and the entry's
+  text stays as written. 37 benches filled, 3 anchors mended, 1 record on a
+  removed line deleted, 21 records for the lines the change adds to the search
+  set. The tool over the whole table, run on 23 September 2026 at 0.107.0 on the
+  tree this change commits: 0 broken records, 0 of 1746 lines of the search set
+  uncovered, exit 0, and 54 runs that do not count before this work and after
+  it, so no walk was demoted. The counts by state and kind are the tool's output
+  and are not repeated here.
+
+  The seventeen checks under "Before a handover, run these" were run on 23
+  September 2026 at 0.107.0, after the change. Sixteen printed what their
+  explanations say, and the three that print lines needing an eye - fifteen
+  offers, seven handover lines over six sites, two second statements - printed
+  the same lines as at the main branch before this work, their line numbers
+  moved by the repaired paragraph above them and nothing else. The check on
+  names in this file printed 130 lines, as before this entry, and cannot be
+  silent, which the entry above records as a defect still open.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
