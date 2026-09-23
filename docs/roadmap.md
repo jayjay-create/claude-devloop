@@ -5544,27 +5544,36 @@ the size of the work.
   matches each against the messages its analyses produced and the text its cases
   asserted; prints the ones no case asserted; and closes with the count. Four
   existing cases were tightened to assert the message they produce, which that
-  count showed they did not. The self-test ran on 23 September 2026 at 0.107.0
-  in this repository, exit 0, and its last line read `SELF-TEST PASSED: 84
-  cases; of the 73 messages this tool can produce, read off its own source, 73
-  are asserted by a case and 0 by none`. The 37 outcomes whose case is new, and
-  the one the repair of the vanishing run added, carry a run of that date on the
-  line above that names the version; the 45 runs of 0.106.0 count as before,
-  since no line they stand on changed. The version was raised to 0.107.0 after
-  every change and before the runs: introduced earlier, its commit would not
-  contain the changes, and every run against it would fail the version rule.
+  count showed they did not. The count reads the messages the tool rejects,
+  refuses or answers with, not the lines of the report: python3 -m trace --count
+  --missing over the self-test, its coverage written outside the repository,
+  listed three report lines that no case reached - the reached set not computed
+  for a table with no root, the REFUSED report of a refused repository, and none
+  under RUNS THAT DO NOT COUNT - and beside them only lines of the self-test
+  itself that a passing run cannot reach. Each of the three has its case now, as
+  an outcome of its own with its run, and the closing sentence says what the
+  count leaves out. The self-test ran on 23 September 2026 at 0.107.0 in this
+  repository, exit 0, and its last line read `SELF-TEST PASSED: 87 cases; of the
+  73 messages this tool rejects, refuses or answers with, read off its own
+  source, 73 are asserted by a case and 0 by none; the lines of the report are
+  not in that count`. The 40 outcomes whose case is new, and the one the repair
+  of the vanishing run added, carry a run of that date on the line above that
+  names the version; the 45 runs of 0.106.0 count as before, since no line they
+  stand on changed. The version was raised to 0.107.0 after every change and
+  before the runs: introduced earlier, its commit would not contain the changes,
+  and every run against it would fail the version rule.
 
   The records. 43 defects' evidence moved onto the line that carries the repair:
   37 onto a case line, 4 onto `skills/build-work/SKILL.md`, 2 onto the
   conventions. Where the evidence left a status line of the entry above, the
   defect's site moved onto that line, so that it stays covered and the entry's
-  text stays as written. 37 benches filled, 3 anchors mended, 1 record on a
-  removed line deleted, 21 records for the lines the change adds to the search
-  set. The tool over the whole table, run on 23 September 2026 at 0.107.0 on the
-  tree this change commits: 0 broken records, 0 of 1746 lines of the search set
-  uncovered, exit 0, and 54 runs that do not count before this work and after
-  it, so no walk was demoted. The counts by state and kind are the tool's output
-  and are not repeated here.
+  text stays as written. 40 benches filled, 3 outcomes of the report added as
+  things, 4 anchors mended, 1 record on a removed line deleted, 21 records for
+  the lines the change adds to the search set. The tool over the whole table,
+  run on 23 September 2026 at 0.107.0 on the tree this change commits: 0 broken
+  records, 0 of 1746 lines of the search set uncovered, exit 0, and 54 runs that
+  do not count before this work and after it, so no walk was demoted. The counts
+  by state and kind are the tool's output and are not repeated here.
 
   The seventeen checks under "Before a handover, run these" were run on 23
   September 2026 at 0.107.0, after the change. Sixteen printed what their

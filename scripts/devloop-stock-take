@@ -15,9 +15,12 @@ Usage
                                                 and produces every red outcome
                                                 once, each beside its green
                                                 counterpart; then reads every
-                                                message the tool can produce
-                                                off its own source and prints
-                                                the ones no case asserted
+                                                message the tool rejects,
+                                                refuses or answers with off
+                                                its own source and prints the
+                                                ones no case asserted. The
+                                                lines of the report are not
+                                                in that count
 
 Running the tool at all parses the file, so the self-test is the syntax check.
 python3 -m py_compile is not needed and not to be used: it leaves bytecode
@@ -436,8 +439,17 @@ LIMITS
   table-error list, an assignment to a run's reason or info or to the refusal,
   a print to stderr, a RuntimeError raised - and each template is matched
   against the messages the self-test's analyses produced and the text its
-  cases asserted. A message emitted another way is not counted; a message
-  listed as asserted by no case is printed, not red.
+  cases asserted. A message emitted another way is not counted, and neither
+  is any line of the report, what render() prints: a report line is walked
+  only where a case reads the rendered report, which three cases do - a
+  table with no root, a refused repository, a table where every run counts.
+  So "73 of 73" says nothing about the report. What the self-test never
+  reaches is measured with python3 -m trace --count --missing over it, with
+  --coverdir pointing outside the repository, since the check over untracked
+  files under scripts/ reports what it leaves behind; on 23 September 2026
+  that listed the three report lines above, since cased, and beside them
+  only lines of the self-test itself that a passing run cannot reach. A
+  message listed as asserted by no case is printed, not red.
 - Copy detection is staged with the extra file changed in the same commit,
   because git blame -C -C looks only at the files that commit changed: a
   copy from a file the commit left alone goes unseen, by git and so by the
@@ -2741,6 +2753,22 @@ def selftest():
              res_shallow.refused is not None and "shallow" in res_shallow.refused
              and (asserted.append(res_shallow.refused) or True),
              res.refused is None)
+        # the report's own lines, which the count of messages below does not
+        # read: python3 -m trace --count --missing over the self-test found
+        # these three never reached on 23 September 2026
+        case("the report of a table with no root",
+             "SKILLS THE UNATTENDED MODE REACHES: not computed, no root"
+             in render(res_no_root),
+             "SKILLS THE UNATTENDED MODE REACHES: %d" % len(res.reached)
+             in render(res) and "not computed" not in render(res))
+        case("the report of a refused repository",
+             render(res_shallow).startswith("REFUSED: shallow clone")
+             and "BROKEN RECORDS" not in render(res_shallow),
+             render(res).startswith("BROKEN RECORDS: "))
+        case("the report where every run counts",
+             "RUNS THAT DO NOT COUNT\n  none\n" in render(res_clean),
+             "RUNS THAT DO NOT COUNT\n  line " in render(res)
+             and "\n  none\n" not in render(res))
         case("exit code 2 on a broken record and on a refused repository",
              exit_code(res) == 2 and exit_code(res_shallow) == 2
              and exit_code(res_norepo) == 2,
@@ -2764,10 +2792,11 @@ def selftest():
     if failures:
         print("SELF-TEST FAILED: " + ", ".join(failures))
         return 2
-    print("SELF-TEST PASSED: %d cases; of the %d messages this tool can "
-          "produce, read off its own source, %d are asserted by a case and "
-          "%d by none" % (len(cases), len(templates), len(templates) - len(without),
-                         len(without)))
+    print("SELF-TEST PASSED: %d cases; of the %d messages this tool rejects, "
+          "refuses or answers with, read off its own source, %d are asserted "
+          "by a case and %d by none; the lines of the report are not in that "
+          "count" % (len(cases), len(templates), len(templates) - len(without),
+                     len(without)))
     return 0
 
 
