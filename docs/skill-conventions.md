@@ -790,6 +790,16 @@ changing a word of the sentence carrying it, and the paragraph under it still
 said "built the next day", which then pointed nowhere. Every word stayed
 correct; only what they referred to moved. Write the date.
 
+**A run's date is copied from the session log of that run, not from memory.**
+The stock-take of 23 September 2026 held two dated measurements in
+`docs/roadmap.md` against the logs of the runs they record and found each on
+the wrong day: one run dated the day after its log begins, one the day before.
+The measurements stand as written, since a dated record is never edited; what
+is built is the rule. A run's date is the day its session log opens, read in
+the log's own timezone and written out; a date set down from recollection, or
+from the paragraph the entry was written under, is the neighbour's date and
+not the run's.
+
 **A figure taken from a command is copied out of that command's output.** One
 sentence gave three numbers as the result of a named `grep`, and re-running that
 same `grep` at the very commit that recorded it returns different numbers for

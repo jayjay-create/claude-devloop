@@ -32,11 +32,11 @@ like the goal: the base has to be sound before a branch is cut, the review reads
 a diff that only exists after the build, and the merge waits on both the review
 and the user.
 
-Running in order is not the same as running without stopping. Two of these steps
-end by asking the user something — that is the step doing its job, not an
-interruption of it. What to avoid between steps is the other thing: finishing a
-step, writing a status summary, and waiting for permission to continue with a
-step that asks for none.
+Running in order is not the same as running without stopping. A step that ends
+by asking the user something is the step doing its job, not an interruption of
+it. What to avoid between steps is the other thing: finishing a step, writing a
+status summary, and waiting for permission to continue with a step that asks
+for none.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
@@ -51,7 +51,8 @@ step that asks for none.
 The shared block above says a guard's refusal is answered rather than got around,
 and that where nobody is there the run does not carry on past it. This is the
 third case of a shape this skill already carries twice — the turn-end hook in
-step 3, and a refused arming in step 6 — and it gets the same answer.
+step 3, and a refused arming in step 6. It gets the turn-end hook's answer, an
+issue raised and the next task taken; a refused arming ends the run instead.
 
 - **With the user there**, the message is the answer. Hand the block over in the
   form the message asks for: the command as it ran, the message that came back,
@@ -440,7 +441,8 @@ differently depending on who is present — which the run reads off the mark.
   looks like it is running. What is ruled out here is waiting on a person, not
   waiting as such: the checks after arming are waited for inside the answer, and
   step 6 says with what bound. This is the same shape as a refused arming in step
-  6, and it gets the same answer. Raise an issue saying the task is not buildable as cut, carrying
+  6 and not the same answer: that one ends the run and deletes the mark, this
+  one does not. Raise an issue saying the task is not buildable as cut, carrying
   what the hook reported — the failing classes and their output — together with
   whatever it asked to have handed over. Label it `raised-here` and
   `needs-human` and record it as a blocker of the task. Then put the task down
@@ -757,7 +759,7 @@ gone wrong. What went wrong in the past was the framing and the timing — a run
 stopping mid-task, over a change nobody asked for, as though it had hit an error.
 
 In unattended mode there is nobody to hand it to. A refusal there is a stop with
-the reason named, and the mark is deleted with it. Start condition 6 makes the
+the reason named, and the mark is deleted with it. Start condition 5 makes the
 first two unreachable; it cannot
 touch the third, which is a state of one pull request and not a property of the
 repository. Name that one for what it is — the gate is there and this pull

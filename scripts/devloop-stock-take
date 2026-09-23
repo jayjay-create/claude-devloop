@@ -14,7 +14,13 @@ Usage
     scripts/devloop-stock-take --self-test      builds a temporary repository
                                                 and produces every red outcome
                                                 once, each beside its green
-                                                counterpart
+                                                counterpart; then reads every
+                                                message the tool rejects,
+                                                refuses or answers with off
+                                                its own source and prints the
+                                                ones no case asserted. The
+                                                lines of the report are not
+                                                in that count
 
 Running the tool at all parses the file, so the self-test is the syntax check.
 python3 -m py_compile is not needed and not to be used: it leaves bytecode
@@ -227,6 +233,8 @@ Four record types:
   on the history of the checkout, so a run recorded on a branch under the
   version its merge will introduce counts before the merge and after it; such
   a run is recorded only at the branch's final state.
+  A run whose thing is rejected is rejected with it, with a message naming
+  the thing's line, and covers nothing.
 - not-a-thing: file + anchor of a line from the search set judged not to be a
   branch, or an entry head whose entry names no defect, and a note that starts
   with one reason from the list below.
@@ -310,6 +318,12 @@ from anything else in the note by "; ", and the tool rejects any other:
 D. HOW STATES ARE COMPUTED
 
 - Undetermined: the evidence is empty.
+  A repair moves the evidence onto the line that carries it, in the change
+  that lands the repair - a case of the self-test, a line of a skill, a line
+  of the conventions - since a table reading "Recorded, not built" for
+  something now built is the state this tool exists to end. Where the evidence
+  leaves a status line of the roadmap, the defect's site moves onto that line,
+  so that the line stays covered and the entry's text stays as written.
 - Recorded, not built: the evidence lies under docs/ or in README.md, and the
   kind is not check command.
 - Built: the evidence lies under skills/, shared/, hooks/, bin/ or scripts/,
@@ -420,6 +434,26 @@ LIMITS
 - The tool checks that a name's source and unit match the site, not that the
   outcome part describes the outcome, and not that a "per" names the right
   thing.
+- The count of messages at the end of the self-test is read off the places
+  the tool emits one - an append to a record's errors, to the broken or the
+  table-error list, an assignment to a run's reason or info or to the refusal,
+  a print to stderr, a RuntimeError raised - and each template is matched
+  against the messages the self-test's analyses produced and the text its
+  cases asserted. A message emitted another way is not counted, and neither
+  is any line of the report, what render() prints: a report line is walked
+  only where a case reads the rendered report, which three cases do - a
+  table with no root, a refused repository, a table where every run counts.
+  So "73 of 73" says nothing about the report. What the self-test never
+  reaches is measured with python3 -m trace --count --missing over it, with
+  --coverdir pointing outside the repository, since the check over untracked
+  files under scripts/ reports what it leaves behind; on 23 September 2026
+  that listed the three report lines above, since cased, and beside them
+  only lines of the self-test itself that a passing run cannot reach. A
+  message listed as asserted by no case is printed, not red.
+- Copy detection is staged with the extra file changed in the same commit,
+  because git blame -C -C looks only at the files that commit changed: a
+  copy from a file the commit left alone goes unseen, by git and so by the
+  information line.
 - The tool checks that a reach claim agrees with the computed set, not that
   the call stands where the claim says: which side of a skill's boundary a
   call stands on is read by whoever writes the record. A call in shared text
@@ -428,6 +462,9 @@ LIMITS
   the same.
 """
 
+import ast
+import contextlib
+import io
 import os
 import re
 import subprocess
@@ -1236,6 +1273,16 @@ def analyse(root, table=None, only=None):
                 os.path.join(root, "skills", rec.parts[2])):
             rec.errors.append("named skill, but skills/%s exists"
                               % rec.parts[2])
+    # evidence lies where a state can be read off it, or the record is
+    # rejected; checked here, before coverage and before the runs, so that a
+    # run on such a thing is rejected with it instead of vanishing
+    for rec in things:
+        ev = rec.anchors.get("evidence_anchor")
+        if ev and ev[0] == "ok" and classify_location(
+                files, rec["evidence_file"], ev[1], rec["kind"]) is None:
+            rec.errors.append("evidence under %s is neither a shipped "
+                              "directory nor docs/ or README.md"
+                              % rec["evidence_file"])
     # notes of things: the forms
     named = named_skills(files)
     roots = []    # things carrying ROOT
@@ -1383,6 +1430,11 @@ def analyse(root, table=None, only=None):
             continue
         if rec["name"] not in thing_names:
             rec.errors.append("no thing named %r" % rec["name"])
+        elif by_name[rec["name"]].errors:
+            rec.errors.append("the thing named %r is rejected (line %d), so "
+                              "this run is rejected with it and covers "
+                              "nothing" % (rec["name"],
+                                           by_name[rec["name"]].lineno))
         if rec["commit"] != "" and not rec.errors:
             h = resolve(root, rec["commit"])
             if h is None:
@@ -1431,15 +1483,9 @@ def analyse(root, table=None, only=None):
         if rec["evidence_file"] != "":
             t["evidence"] = (rec["evidence_file"],
                              rec.anchors["evidence_anchor"][1])
-            loc = classify_location(files, rec["evidence_file"],
-                                    rec.anchors["evidence_anchor"][1],
-                                    rec["kind"])
-            if loc is None:
-                res.broken.append((rec.lineno, "evidence under %s is neither "
-                                   "a shipped directory nor docs/ or README.md"
-                                   % rec["evidence_file"]))
-                continue
-            t["state"] = loc
+            t["state"] = classify_location(files, rec["evidence_file"],
+                                           rec.anchors["evidence_anchor"][1],
+                                           rec["kind"])
         else:
             t["state"] = "Undetermined"
         things_by_name[t["name"]] = t
@@ -1451,9 +1497,9 @@ def analyse(root, table=None, only=None):
     for rec in records:
         if rec["type"] != "run" or rec.errors:
             continue
-        t = things_by_name.get(rec["name"])
-        if t is None:
-            continue
+        # every run without errors names a thing without errors, which the
+        # block above guarantees, so this lookup cannot miss
+        t = things_by_name[rec["name"]]
         r = {"rec": rec, "thing": t, "counts": False, "reason": "", "info": ""}
         t["runs"].append(r)
         res.runs.append(r)
@@ -1689,11 +1735,89 @@ def exit_code(res):
 
 # ---------------------------------------------------------------- self-test
 
+def message_templates(path):
+    """(shape, line, template) for every message this tool can produce, read
+    off its own source: the strings handed to rec.errors.append,
+    res.broken.append, res.table_errors.append and errors.append, assigned to
+    a run's reason or info or to res.refused, printed to stderr, or raised as
+    RuntimeError. The self-test's own printing is left out. A string inside a
+    dict that a message picks its ending from is a fragment, matched inside a
+    message; every other template is matched whole."""
+    with open(path, encoding="utf-8") as f:
+        tree = ast.parse(f.read())
+
+    def strings(node):
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):
+            return [("whole", node.lineno, node.value)]
+        if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Mod):
+            out = strings(node.left)
+            for sub in ast.walk(node.right):
+                if isinstance(sub, ast.Subscript) \
+                        and isinstance(sub.value, ast.Dict):
+                    out += [("fragment", v.lineno, v.value)
+                            for v in sub.value.values
+                            if isinstance(v, ast.Constant)]
+            return out
+        if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Add):
+            left, right = strings(node.left), strings(node.right)
+            if len(left) == 1 and len(right) == 1:
+                return [("whole", left[0][1], left[0][2] + right[0][2])]
+            return left + right
+        if isinstance(node, ast.Tuple):
+            return [s for e in node.elts for s in strings(e)]
+        return []
+
+    found = []
+    for top in tree.body:
+        if not isinstance(top, ast.FunctionDef) or top.name == "selftest":
+            continue
+        for node in ast.walk(top):
+            if isinstance(node, ast.Call) \
+                    and isinstance(node.func, ast.Attribute) \
+                    and node.func.attr == "append":
+                owner = node.func.value
+                name = owner.attr if isinstance(owner, ast.Attribute) \
+                    else getattr(owner, "id", "")
+                if name in ("errors", "broken", "table_errors"):
+                    for a in node.args:
+                        found += strings(a)
+            elif isinstance(node, ast.Assign):
+                target = node.targets[0]
+                key = None
+                if isinstance(target, ast.Subscript) \
+                        and isinstance(target.slice, ast.Constant):
+                    key = target.slice.value
+                elif isinstance(target, ast.Attribute):
+                    key = target.attr
+                if key in ("reason", "info", "refused"):
+                    found += strings(node.value)
+            elif isinstance(node, ast.Call) \
+                    and getattr(node.func, "id", "") == "print" \
+                    and any(k.arg == "file" for k in node.keywords):
+                for a in node.args:
+                    found += strings(a)
+            elif isinstance(node, ast.Raise) \
+                    and isinstance(node.exc, ast.Call) \
+                    and getattr(node.exc.func, "id", "") == "RuntimeError":
+                for a in node.exc.args:
+                    found += strings(a)
+    return found
+
+
+def template_regex(template):
+    """The template with every %r, %s and %d standing for anything."""
+    parts = re.split(r"%-?\d*[rsd]", template)
+    return re.compile("(?s)" + ".*".join(re.escape(p) for p in parts))
+
+
 def selftest():
     """Builds a temporary repository and produces every red outcome once,
-    each beside its green counterpart. Prints one line per case."""
+    each beside its green counterpart. Prints one line per case, then which
+    of the messages the tool can produce no case asserted."""
     failures = []
     cases = []
+    asserted = []   # every message a case read
+    produced = []   # every message the analyses of this self-test produced
 
     def case(name, red, green):
         ok = red and green
@@ -1703,6 +1827,24 @@ def selftest():
                                             "seen" if green else "MISSING"))
         if not ok:
             failures.append(name)
+
+    def messages_of(res):
+        out = [res.refused] if res.refused else []
+        out += res.table_errors
+        out += [e for _, e in res.broken]
+        for r in res.runs:
+            out += [r[k] for k in ("reason", "info") if r[k]]
+        return out
+
+    def collect(res):
+        produced.extend(messages_of(res))
+        return res
+
+    def has(res, sub):
+        """Whether a result carries a message with this text; the text is
+        counted as asserted by a case."""
+        asserted.append(sub)
+        return any(sub in m for m in messages_of(res))
 
     def run_git(root, *args, date=None):
         env = dict(os.environ)
@@ -1729,8 +1871,13 @@ def selftest():
     insert = "!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text inserted`"
     alpha_tail = ("Say what you would do, and let the user decide how.\n\n"
                   "## Second\n\nA second unit that says one thing and decides "
-                  "nothing.\n" + insert + "\n\n## Third\n\nThe third unit, "
-                  "stable from the first commit on.\n")
+                  "nothing.\n" + insert + "\n\n")
+    third = "## Third\n\nThe third unit, stable from the first commit on.\n"
+    # a unit copied word for word from the extra file into the skill in c2,
+    # its heading long enough for git's copy detection, which looks only at
+    # files the same commit changes, so c2 changes the extra file too
+    fourth_head = "Fourth, copied word for word from the extra file into the skill later"
+    fourth = "## " + fourth_head + "\n\nThe extra file carries the same unit.\n"
 
     with tempfile.TemporaryDirectory() as tmp:
         root = os.path.join(tmp, "repo")
@@ -1741,7 +1888,8 @@ def selftest():
               "# Alpha\n\nIf the sky is blue, say that it is blue today.\n"
               "Where the sky is grey, say nothing about the weather.\n"
               "Plain prose that decides nothing at all here.\n"
-              "Unless it rains, carry on with the ordinary work.\n" + alpha_tail)
+              "Unless it rains, carry on with the ordinary work.\n" + alpha_tail
+              + third)
         write(root, "skills/beta/SKILL.md", "# Beta\n")
         write(root, "skills/gamma/SKILL.md",
               "# Gamma\n\n```markdown\n## Fake\n```\n\n"
@@ -1751,7 +1899,22 @@ def selftest():
               "twice.\n\n## Second\n\n### Twice\n\nText under the second "
               "twice.\n")
         write(root, "skills/alpha/LOGIC.md",
-              "# Alpha\n\nIf the extra file says so, do that too.\n")
+              "# Alpha\n\nIf the extra file says so, do that too.\n\n" + fourth)
+        # zeta: two units whose every line repeats, so none can carry an
+        # anchor; theta: lines for notes written wrongly; misc: a directory
+        # the tool classifies nowhere; two shared files for rejected records
+        write(root, "skills/zeta/SKILL.md",
+              "# Zeta\n\n## Same\n\nsame text\n\n## Same\n\nsame text\n")
+        write(root, "skills/theta/SKILL.md", "# Theta\n\n" + "".join(
+            "Theta line %d, a fixture for a note written wrongly.\n" % i
+            for i in range(1, 9)))
+        write(root, "misc/elsewhere.md", "A file the tool classifies nowhere.\n")
+        write(root, "shared/lines.md", "".join(
+            "Fixture line %02d for a record the tool rejects.\n" % i
+            for i in range(1, 7)) + "A line of more than eighty characters, "
+            "so that an anchor taking the whole of it is too long to be one.\n")
+        write(root, "shared/kind.md", "A shared file whose straight path is "
+              "recorded with the wrong kind.\n")
         write(root, "shared/note.md",
               "When somebody writes in German, answer in German.\n")
         write(root, "shared/inserted.md", "Inserted text, first wording.\n")
@@ -1784,7 +1947,20 @@ def selftest():
               "- **A defect answered by a check.**\n"
               "- **A defect answered a section further on.**\n"
               "- **A run on the defect answered by a check.**\n"
-              "- **A run on the defect that is not built.**\n\n"
+              "- **A run on the defect that is not built.**\n"
+              "- **A defect with evidence elsewhere.**\n"
+              "- **A run on a thing that is rejected.**\n"
+              "- **A run keyed to a thing whose anchor is missing.**\n"
+              "- **A run naming a commit that does not resolve.**\n"
+              "- **A run naming the first commit.**\n"
+              "- **A run naming a version never introduced.**\n"
+              "- **A run with a bad date.**\n"
+              "- **A run with a bad source.**\n"
+              "- **A run with both a version and a commit.**\n"
+              "- **A run of source none with a version.**\n"
+              "- **A run of source entry with neither.**\n"
+              "- **A run naming a commit with source log.**\n"
+              "- **A run of the fourth unit, copied from the extra file.**\n\n"
               "## Named, not built as skills\n\n"
               "| Skill | Description | Origin |\n|---|---|---|\n"
               "| `implement-ticket` | Build one task | test |\n"
@@ -1794,14 +1970,19 @@ def selftest():
               "## Decisions\n\nNone.\n")
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c1", date="2026-01-01T12:00:00+0100")
+        c1 = run_git(root, "rev-parse", "HEAD")
         # c2 changes the evidence line of grey, the part-of line of blue, and
-        # the shared file the second unit inserts
+        # the shared file the second unit inserts, and copies the fourth
+        # unit of the extra file into the skill
         write(root, "skills/alpha/SKILL.md",
               "# Alpha\n\nIf the sky is blue, say that it is blue today.\n"
               "Where the sky is grey, say that it is grey and stop.\n"
               "Plain prose that decides nothing at all here.\n"
               "Unless it rains, carry on with the ordinary work, whistling.\n"
-              + alpha_tail)
+              + alpha_tail + fourth + "\n" + third)
+        write(root, "skills/alpha/LOGIC.md",
+              "# Alpha\n\nIf the extra file says so, do that too.\n\n" + fourth
+              + "A line added to the extra file in the same commit.\n")
         write(root, "shared/inserted.md", "Inserted text, second wording.\n")
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c2", date="2026-01-05T12:00:00+0100")
@@ -1843,6 +2024,11 @@ def selftest():
         DEF_NOT_BUILT = "docs/roadmap.md / Known gaps / a defect"
         NOTE_SP = "shared/note.md / whole file / straight path"
         NOTE_G = "shared/note.md / whole file / german"
+        T = "skills/theta/SKILL.md"
+        LINES = "shared/lines.md"
+        ELSEWHERE = "docs/roadmap.md / Known gaps / a defect with evidence elsewhere"
+        MISSING = "alpha / Alpha / missing anchor"
+        FOURTH = "alpha / " + fourth_head + " / straight path"
 
         def thing(name, file, anchor, kind="skill branch", ev=True, **kw):
             d = dict(type="thing", name=name, kind=kind, file=file, anchor=anchor)
@@ -1934,8 +2120,7 @@ def selftest():
                   evidence_file="docs/skill-conventions.md",
                   evidence_anchor="Text."),
             # red: anchor missing
-            thing("alpha / Alpha / missing anchor", A,
-                  "this text stands nowhere in the file", ev=False),
+            thing(MISSING, A, "this text stands nowhere in the file", ev=False),
             # red: anchor found twice (a short whole line that repeats)
             thing("hooks/guard.sh / whole file / double", "hooks/guard.sh", "exit 0",
                   kind="hook outcome", ev=False),
@@ -2050,31 +2235,189 @@ def selftest():
             # red: a record whose first tab became spaces (19 fields)
             thing("alpha / Alpha / tab lost", A, "Plain prose that decides",
                   ev=False).replace("\t", "    ", 1),
+            # the fixtures' own straight paths, and the fourth unit copied
+            # into the skill, whose run at the first version fails on lines
+            # that copy detection attributes to the extra file
+            thing("zeta / Zeta / straight path", "skills/zeta/SKILL.md", "# Zeta"),
+            thing("theta / Theta / straight path", T, "# Theta"),
+            thing("shared/lines.md / whole file / straight path", LINES,
+                  "Fixture line 01 for a record the tool rejects.",
+                  kind="shared text"),
+            thing(FOURTH, A, "## " + fourth_head),
+            run(FOURTH, "2026-01-06",
+                "A run of the fourth unit, copied from the extra file",
+                version="0.1.0"),
+            # red: evidence in a directory the tool classifies nowhere, and
+            # runs on that thing and on the one with the missing anchor
+            thing(ELSEWHERE, R, "A defect with evidence elsewhere.",
+                  kind="defect", ev=False, evidence_file="misc/elsewhere.md",
+                  evidence_anchor="A file the tool classifies nowhere."),
+            run(ELSEWHERE, "2026-01-11", "A run on a thing that is rejected",
+                version="0.2.0"),
+            run(MISSING, "2026-01-11",
+                "A run keyed to a thing whose anchor is missing",
+                version="0.2.0"),
+            # red: a run naming a commit that does not resolve; one naming the
+            # first commit, which does not contain the change of c2; one
+            # naming a version never introduced
+            run(GUARD, "2026-01-11", "A run naming a commit that does not resolve",
+                commit="deadbee"),
+            run(GREY, "2026-01-07", "A run naming the first commit",
+                commit=c1[:7]),
+            run(GREY, "2026-01-08", "A run naming a version never introduced",
+                version="0.9.0"),
+            # red: a run's date, source, version and commit written wrongly
+            run(GREY, "6 January 2026", "A run with a bad date", version="0.1.0"),
+            run(GREY, "2026-01-06", "A run with a bad source", version="0.1.0",
+                source="memory"),
+            run(GREY, "2026-01-06", "A run with both a version and a commit",
+                version="0.1.0", commit=c2[:7]),
+            run(GREY, "2026-01-06", "A run of source none with a version",
+                version="0.1.0", source="none"),
+            run(GREY, "2026-01-06", "A run of source entry with neither"),
+            run(GUARD, "2026-01-11", "A run naming a commit with source log",
+                commit=c2[:7], source="log"),
+            # red: an absolute path in a field; a file and anchor pair half
+            # empty; a check command with an empty note; a part of naming
+            # nothing
+            rec(type="not-a-thing", file=LINES,
+                anchor="Fixture line 02 for a record the tool rejects.",
+                note="rationale, read at /Users/nobody/repo"),
+            thing("shared/lines.md / whole file / half a pair", LINES,
+                  "Fixture line 03 for a record the tool rejects.",
+                  kind="shared text", ev=False, evidence_file=LINES),
+            thing("docs/skill-conventions.md / Before a handover, run these / "
+                  "empty note", "docs/skill-conventions.md",
+                  "One check, silent when green:", kind="check command",
+                  ev=False),
+            rec(type="not-a-thing", file=LINES,
+                anchor="Fixture line 04 for a record the tool rejects.",
+                note="part of: ; rationale"),
+            # red: an anchor into a file that cannot be read; one longer than
+            # 80 characters; one shorter than 20 that is not a whole line;
+            # one with trailing whitespace
+            thing("skills/nowhere/SKILL.md / whole file / no file",
+                  "skills/nowhere/SKILL.md", "anything at all, the file is not there",
+                  ev=False),
+            thing("shared/lines.md / whole file / too long", LINES,
+                  "A line of more than eighty characters, so that an anchor "
+                  "taking the whole of it is too long", ev=False),
+            thing("shared/lines.md / whole file / too short", LINES,
+                  "Fixture line 05", ev=False),
+            thing("shared/lines.md / whole file / whitespace", LINES,
+                  "Fixture line 06 for a record the tool rejects. ", ev=False),
+            # red: a straight path of the wrong kind; one outside skills/ and
+            # shared/
+            thing("shared/kind.md / whole file / straight path", "shared/kind.md",
+                  "A shared file whose straight path is recorded",
+                  kind="skill branch"),
+            thing("hooks/guard.sh / whole file / straight path", "hooks/guard.sh",
+                  "#!/bin/sh", kind="hook outcome", ev=False),
+            # red: the note forms written wrongly, on theta's lines
+            thing("theta / Theta / calls written wrongly", T,
+                  "Theta line 1, a fixture", ev=False, note="calls beta gamma"),
+            thing("hooks/guard.sh / whole file / a call outside skills",
+                  "hooks/guard.sh", "exit 2", kind="hook outcome", ev=False,
+                  note="calls beta"),
+            thing("theta / Theta / a claim that is no form", T,
+                  "Theta line 2, a fixture", ev=False,
+                  note="calls beta; with nobody there: maybe"),
+            thing("theta / Theta / a claim without its call", T,
+                  "Theta line 3, a fixture", ev=False,
+                  note="with nobody there: reached per " + THIRD),
+            thing("theta / Theta / the root note written wrongly", T,
+                  "Theta line 4, a fixture", ev=False,
+                  note="enters the unattended mode now"),
+            thing("theta / Theta / does the work written wrongly", T,
+                  "Theta line 5, a fixture", ev=False,
+                  note="does the work of Implement Ticket"),
+            thing("theta / Theta / not stated written wrongly", T,
+                  "Theta line 6, a fixture", ev=False,
+                  note="outcome with nobody there not stated yet"),
+            thing("shared/lines.md / whole file / a root outside skills", LINES,
+                  "Fixture line 01 for a record", kind="shared text", note=ROOT),
         ]
         table = os.path.join(root, "docs", "stock-take.tsv")
         write(root, "docs/stock-take.tsv", "\n".join(rows) + "\n")
-        res = analyse(root, table)
+        res = collect(analyse(root, table))
         print(render(res))
         # the same table with no root at all
         no_root = os.path.join(root, "docs", "no-root.tsv")
         write(root, "docs/no-root.tsv",
               "\n".join(r.replace("; " + ROOT, "") for r in rows) + "\n")
-        res_no_root = analyse(root, no_root)
+        res_no_root = collect(analyse(root, no_root))
+        # a table that cannot be read, and one whose header is wrong
+        res_missing = collect(analyse(root, os.path.join(root, "docs",
+                                                         "missing.tsv")))
+        write(root, "docs/bad-header.tsv", "type\tname\n")
+        res_header = collect(analyse(root, os.path.join(root, "docs",
+                                                        "bad-header.tsv")))
+        # a clean table over beta alone, and one over gamma alone, whose
+        # condition line nobody covers
+        write(root, "docs/clean.tsv", "\n".join([
+            "\t".join(COLUMNS),
+            thing("beta / Beta / straight path", "skills/beta/SKILL.md",
+                  "# Beta", note=ROOT)]) + "\n")
+        res_clean = collect(analyse(root, os.path.join(root, "docs", "clean.tsv"),
+                                    only=["skills/beta/SKILL.md"]))
+        write(root, "docs/gaps.tsv", "\n".join([
+            "\t".join(COLUMNS),
+            thing("gamma / Gamma / straight path", G, "# Gamma", note=ROOT)])
+            + "\n")
+        res_gaps = collect(analyse(root, os.path.join(root, "docs", "gaps.tsv"),
+                                   only=[G]))
+        # a directory that is no repository
+        norepo = os.path.join(tmp, "norepo")
+        os.makedirs(norepo)
+        res_norepo = collect(analyse(norepo, table))
+        # a repository without origin/main, with a run naming a commit
+        norigin = os.path.join(tmp, "norigin")
+        os.makedirs(norigin)
+        run_git(norigin, "init", "-q", "-b", "main")
+        write(norigin, ".claude-plugin/plugin.json", plugin("0.1.0"))
+        write(norigin, "skills/eta/SKILL.md", "# Eta\n")
+        write(norigin, "docs/roadmap.md",
+              "# Roadmap\n\n## Known gaps\n\n- **A run naming a commit.**\n")
+        run_git(norigin, "add", "-A")
+        run_git(norigin, "commit", "-q", "-m", "c1", date="2026-01-01T12:00:00+0100")
+        eta_head = run_git(norigin, "rev-parse", "HEAD")
+        write(norigin, "docs/stock-take.tsv", "\n".join([
+            "\t".join(COLUMNS),
+            thing("eta / Eta / straight path", "skills/eta/SKILL.md", "# Eta",
+                  note=ROOT),
+            run("eta / Eta / straight path", "2026-01-02",
+                "A run naming a commit.", commit=eta_head[:7])]) + "\n")
+        res_norigin = collect(analyse(norigin, os.path.join(norigin, "docs",
+                                                            "stock-take.tsv")))
+        # --only without a path, which answers before touching any repository
+        only_err = io.StringIO()
+        with contextlib.redirect_stderr(only_err):
+            only_code = main(["--only"])
+        produced.append(only_err.getvalue().strip())
         errors = [e for _, e in res.broken] + res.table_errors
         runs = {(r["thing"]["name"], r["rec"]["date"]): r for r in res.runs}
+        # two runs of one thing on one date would overwrite each other here
+        # in silence, and a case would then read the wrong run
+        assert len(runs) == len(res.runs), "two runs share a thing and a date"
         states = {t["name"]: t["state"] for t in res.things}
         uncovered = {(f, a) for f, a, b, _ in res.uncovered}
         unanch = {(f, n) for f, n, _ in res.unanchorable}
         no_sp = {(f, n) for f, n, _ in res.no_straight_path}
 
         def err(sub):
+            asserted.append(sub)
             return any(sub in e for e in errors)
 
         def counts(name, date):
             return runs[(name, date)]["counts"]
 
         def reason(name, date):
+            asserted.append(runs[(name, date)]["reason"])
             return runs[(name, date)]["reason"]
+
+        def info(name, date):
+            asserted.append(runs[(name, date)]["info"])
+            return runs[(name, date)]["info"]
 
         case("anchor missing",
              err("'this text stands nowhere in the file' in skills/alpha/SKILL.md: not found"),
@@ -2095,7 +2438,9 @@ def selftest():
              and "not recorded" in reason(BLUE, "2026-01-11"),
              counts(GREY, "2026-01-11"))
         case("check-command run on the day of the change",
-             not counts(CHECK, "2026-01-01"),
+             not counts(CHECK, "2026-01-01")
+             and "counts only after the day of the last change"
+                 in reason(CHECK, "2026-01-01"),
              counts(CHECK, "2026-01-02") and states[CHECK] == "Walked")
         case("uncommitted evidence line",
              not counts(NOTE_G, "2026-01-11")
@@ -2114,7 +2459,7 @@ def selftest():
              states.get(NAMED + "delta") == "Undetermined"
              and not err("skills/delta exists"))
         case("record with a wrong number of fields",
-             any("19 fields instead of 20" in e for e in res.table_errors),
+             has(res, "19 fields instead of 20; the record is not read"),
              states.get("docs/roadmap.md / Known gaps / a defect")
              == "Recorded, not built")
         case("a line of the set that can carry no unique anchor, listed",
@@ -2229,7 +2574,8 @@ def selftest():
              "epsilon" in (res.reached or {})
              and "shared/inserted.md" in res.reached.get("epsilon", ""))
         case("no thing carrying the root note",
-             any("no thing carries" in e for e in res_no_root.table_errors)
+             has(res_no_root, "no thing carries 'enters the unattended mode', "
+                 "so the skills the unattended mode reaches are not computed")
              and res_no_root.reached is None,
              res.roots == [SP] and "alpha" in (res.reached or {}))
         case("the root note on a record that is not a thing",
@@ -2243,21 +2589,214 @@ def selftest():
              states.get(DEF_CHECK) == "Walked")
         case("a run on a defect that is recorded and not built",
              err("a run on %r, which is Recorded, not built and cannot be "
-                 "walked" % DEF_NOT_BUILT),
+                 "walked" % DEF_NOT_BUILT)
+             and reason(DEF_NOT_BUILT, "2026-01-11") == "the thing is not built",
              counts(DEF_CHECK, "2026-01-11"))
+        # the repairs of 23 September 2026: a run on a rejected thing is
+        # rejected with it, and every message the tool can produce has a case
+        case("a run on a thing that is rejected",
+             err("the thing named %r is rejected (line" % ELSEWHERE)
+             and err("the thing named %r is rejected (line" % MISSING)
+             and any(f == R and "A run on a thing that is rejected" in x
+                     for f, _, _, x in res.uncovered)
+             and any(f == R and "whose anchor is missing" in x
+                     for f, _, _, x in res.uncovered),
+             not any(f == R and "A run of alpha on 2026-01-11" in x
+                     for f, _, _, x in res.uncovered))
+        case("evidence under a directory the tool classifies nowhere",
+             err("evidence under misc/elsewhere.md is neither a shipped "
+                 "directory nor docs/ or README.md")
+             and states.get(ELSEWHERE) is None,
+             states.get(DEF_CHECK) is not None)
+        case("a run naming a commit that does not resolve",
+             err("commit deadbee does not resolve here"),
+             counts(GUARD, "2026-01-11"))
+        case("a run naming a commit that does not contain the last change",
+             not counts(GREY, "2026-01-07")
+             and "the run's commit %s does not contain the last change to "
+                 "skills/alpha/SKILL.md:4 (site)" % c1[:7]
+                 in reason(GREY, "2026-01-07"),
+             counts(GUARD, "2026-01-11"))
+        case("a run naming a version never introduced",
+             err("version 0.9.0 was never introduced into "
+                 ".claude-plugin/plugin.json on this history")
+             and any(r["rec"]["version"] == "0.9.0" and not r["counts"]
+                     and "not on this history" in r["reason"]
+                     for r in res.runs)
+             and (asserted.append("the version is not on this history") or True),
+             counts(GREY, "2026-01-11"))
+        case("a run naming a commit with no origin/main here",
+             has(res_norigin, "origin/main is not here, so the commit cannot "
+                 "be checked against it"),
+             counts(GUARD, "2026-01-11"))
+        case("copy detection attributing the failing line elsewhere",
+             not counts(FOURTH, "2026-01-06")
+             and "copy detection attributes skills/alpha/SKILL.md:" in
+                 info(FOURTH, "2026-01-06")
+             and "in skills/alpha/LOGIC.md" in info(FOURTH, "2026-01-06"),
+             not counts(SP, "2026-01-06") and runs[(SP, "2026-01-06")]["info"] == "")
+        case("a run's date not YYYY-MM-DD",
+             err("date is not YYYY-MM-DD"),
+             counts(GREY, "2026-01-11"))
+        case("a run's source not entry, log or none",
+             err("source is not one of entry, log, none"),
+             counts(GREY, "2026-01-11"))
+        case("a run with both a version and a commit",
+             err("both version and commit are filled"),
+             counts(GREY, "2026-01-11"))
+        case("a run of source none carrying a version",
+             err("source is none but a version or commit stands"),
+             not counts(BLUE, "2026-01-11"))
+        case("a run of source entry with neither version nor commit",
+             err("source is entry but neither version nor commit stands"),
+             counts(GREY, "2026-01-11"))
+        case("a run naming a commit with a source other than entry",
+             err("a commit is a run's version only where the entry names it "
+                 "(source entry)"),
+             counts(GUARD, "2026-01-11"))
+        case("an absolute local path in a field",
+             err("note carries an absolute local path"),
+             res.reason_counts.get("rationale", 0) == 1)
+        case("a file and anchor pair half empty",
+             err("evidence_file and evidence_anchor: one is empty and the "
+                 "other not"),
+             states.get(GREY) is not None)
+        case("a check command with an empty note",
+             err("note is empty, which a check command may not leave"),
+             states.get(CHECK) is not None)
+        case("a part of naming nothing",
+             err("part of: names nothing"),
+             res.reason_counts.get("part of", 0) == 2)
+        case("an anchor into a file that cannot be read",
+             err("in skills/nowhere/SKILL.md: the file cannot be read"),
+             states.get(BLUE) is not None)
+        case("an anchor longer than 80 characters",
+             err("in shared/lines.md: longer than 80 characters"),
+             states.get("shared/lines.md / whole file / straight path")
+             is not None)
+        case("an anchor shorter than 20 characters that is not a whole line",
+             err("'Fixture line 05' in shared/lines.md: shorter than 20 "
+                 "characters and not a whole line"),
+             states.get(GUARD) is not None)
+        case("an anchor with leading or trailing whitespace",
+             err("in shared/lines.md: carries leading or trailing whitespace"),
+             states.get(GREY) is not None)
+        case("a straight path of the wrong kind",
+             err("a straight path under shared/ is of kind shared text"),
+             states.get(NOTE_SP) is not None)
+        case("a straight path outside skills/ and shared/",
+             err("a straight path stands only in a file under skills/ or "
+                 "shared/"),
+             states.get(NOTE_SP) is not None)
+        case("a calls segment not carrying the form exactly",
+             err("note 'calls beta gamma' does not carry the form 'calls "
+                 "<skill>' exactly"),
+             not any(BLUE in e for e in errors))
+        case("a call note on a thing outside skills/ and shared/",
+             err("a call note stands only on a thing under skills/ or shared/"),
+             states.get(GUARD) is not None)
+        case("a calls followed by a segment that is none of the claim forms",
+             err("note 'calls beta; with nobody there: maybe' does not carry "
+                 "one of the forms"),
+             not any(BLUE in e for e in errors))
+        case("a with nobody there segment without its calls before it",
+             err("stands without its 'calls <skill>' before it"),
+             not any(BLUE in e for e in errors))
+        case("a segment starting like the root note and not carrying it",
+             err("note 'enters the unattended mode now' does not carry the "
+                 "form 'enters the unattended mode' exactly"),
+             res.roots == [SP])
+        case("a does the work of segment not carrying the form exactly",
+             err("note 'does the work of Implement Ticket' does not carry the "
+                 "form 'does the work of <named skill>' exactly"),
+             not any(SP in e for e in errors))
+        case("a segment starting like the not-stated note and not carrying it",
+             err("note 'outcome with nobody there not stated yet' does not "
+                 "carry the form"),
+             states.get(NOBODY_T) == "Undetermined")
+        case("the root note on a thing whose site is not under skills/",
+             err("carries 'enters the unattended mode', but its site is not "
+                 "under skills/"),
+             res.roots == [SP])
+        case("a unit with no anchorable line at all",
+             ("skills/zeta/SKILL.md", 3) in
+             {(f, n) for f, n, _ in res.unanchorable_units}
+             and ("skills/zeta/SKILL.md", 7) in
+             {(f, n) for f, n, _ in res.unanchorable_units},
+             ("skills/zeta/SKILL.md", 1) not in
+             {(f, n) for f, n, _ in res.unanchorable_units}
+             and not any(f == A for f, _, _ in res.unanchorable_units))
+        case("the table cannot be read",
+             has(res_missing, "cannot read ") and res_missing.things == [],
+             not any("cannot read" in e for e in res.table_errors))
+        case("the header is not the 20 columns",
+             has(res_header, "line 1: the header is not the 20 columns this "
+                 "tool names") and res_header.things == [],
+             not any("the header is not" in e for e in res.table_errors))
+        case("git failing on the shallow check, a directory that is no "
+             "repository included",
+             res_norepo.refused is not None
+             and "not a git repository" in res_norepo.refused
+             and (asserted.append(res_norepo.refused) or True),
+             res.refused is None)
+        case("--only without a path",
+             only_code == 2
+             and "--only needs at least one path" in only_err.getvalue()
+             and (asserted.append("--only needs at least one path") or True),
+             res.refused is None)
         # shallow clone
         shallow = os.path.join(tmp, "shallow")
         subprocess.run(["git", "clone", "-q", "--depth", "1", "file://" + root,
                         shallow], check=True, capture_output=True)
-        res_shallow = analyse(shallow, table)
+        res_shallow = collect(analyse(shallow, table))
         case("shallow clone",
-             res_shallow.refused is not None and "shallow" in res_shallow.refused,
+             res_shallow.refused is not None and "shallow" in res_shallow.refused
+             and (asserted.append(res_shallow.refused) or True),
              res.refused is None)
+        # the report's own lines, which the count of messages below does not
+        # read: python3 -m trace --count --missing over the self-test found
+        # these three never reached on 23 September 2026
+        case("the report of a table with no root",
+             "SKILLS THE UNATTENDED MODE REACHES: not computed, no root"
+             in render(res_no_root),
+             "SKILLS THE UNATTENDED MODE REACHES: %d" % len(res.reached)
+             in render(res) and "not computed" not in render(res))
+        case("the report of a refused repository",
+             render(res_shallow).startswith("REFUSED: shallow clone")
+             and "BROKEN RECORDS" not in render(res_shallow),
+             render(res).startswith("BROKEN RECORDS: "))
+        case("the report where every run counts",
+             "RUNS THAT DO NOT COUNT\n  none\n" in render(res_clean),
+             "RUNS THAT DO NOT COUNT\n  line " in render(res)
+             and "\n  none\n" not in render(res))
+        case("exit code 2 on a broken record and on a refused repository",
+             exit_code(res) == 2 and exit_code(res_shallow) == 2
+             and exit_code(res_norepo) == 2,
+             exit_code(res_clean) == 0 and not res_clean.broken_count()
+             and not res_clean.uncovered)
+        case("exit code 1 on an uncovered line",
+             exit_code(res_gaps) == 1 and not res_gaps.broken_count()
+             and res_gaps.uncovered,
+             exit_code(res_clean) == 0)
+    # every message the tool can produce, against what the cases asserted
+    templates = message_templates(os.path.abspath(__file__))
+    without = []
+    for shape, line, template in templates:
+        rx = template_regex(template)
+        hits = [m for m in produced
+                if (rx.search(m) if shape == "fragment" else rx.fullmatch(m))]
+        if not any(a in m for m in hits for a in asserted):
+            without.append((line, template))
+    for line, template in without:
+        print("no case: line %d: %s" % (line, template))
     if failures:
         print("SELF-TEST FAILED: " + ", ".join(failures))
         return 2
-    print("SELF-TEST PASSED: %d cases, every red outcome once, every green "
-          "counterpart once" % len(cases))
+    print("SELF-TEST PASSED: %d cases; of the %d messages this tool rejects, "
+          "refuses or answers with, read off its own source, %d are asserted "
+          "by a case and %d by none; the lines of the report are not in that "
+          "count" % (len(cases), len(templates), len(templates) - len(without),
+                     len(without)))
     return 0
 
 
