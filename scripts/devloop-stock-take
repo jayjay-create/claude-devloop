@@ -210,8 +210,9 @@ Four record types:
   file + anchor pair. Kinds: skill branch, shared text, hook outcome, hook
   registration, program outcome, check command, named skill, defect. For a
   branch on disk, site and evidence are usually the same line. For a defect,
-  the evidence is the line where its fix stands, or the line in which the
-  entry itself says nothing is built, or empty. For a named skill, the note
+  the evidence is the line where its fix stands - a check command's line
+  included - or the line in which the entry itself says nothing is built, or
+  empty. For a named skill, the note
   carries the search by what it does, not only by its name, that came back
   empty. For a check command, the note carries the green form.
 - run, keyed to a thing by name: date (YYYY-MM-DD), the version it ran or the
@@ -312,7 +313,15 @@ D. HOW STATES ARE COMPUTED
 - Recorded, not built: the evidence lies under docs/ or in README.md, and the
   kind is not check command.
 - Built: the evidence lies under skills/, shared/, hooks/, bin/ or scripts/,
-  or the kind is check command.
+  or the kind is check command, or the evidence lies under one of the two
+  check headings of docs/skill-conventions.md, "Before you change anything,
+  run this" and "Before a handover, run these". The line is drawn around
+  those two sections and not around the whole file because they are run -
+  somebody executes them before a handover - while the rest of that file is
+  a rule for whoever writes a skill, not a mechanism a run meets: a defect
+  answered only by a written convention stays recorded, and that is right.
+  The enclosing heading is derived from the evidence line, never claimed, so
+  an anchor a line away from a check reads the same as one on it.
 - Walked: built, and at least one of its runs counts.
 - Built, never walked: built, and no run counts. Runs that do not count stay
   in the output, each with the reason.
@@ -925,8 +934,25 @@ def note_forms(note):
     return calls, does, not_stated
 
 
-def classify_location(rel, kind):
+def under_check_heading(files, rel, lineno):
+    """True where the line lies under one of the two check headings of
+    docs/skill-conventions.md: the nearest "## " line above it is one."""
+    if rel != "docs/skill-conventions.md":
+        return False
+    got = files.get(rel)
+    if got is None:
+        return False
+    lines = got[1]
+    for i in range(lineno - 1, 0, -1):
+        if lines[i - 1].startswith("## "):
+            return lines[i - 1].rstrip() in CHECK_HEADINGS
+    return False
+
+
+def classify_location(files, rel, lineno, kind):
     if kind == "check command":
+        return "Built"
+    if under_check_heading(files, rel, lineno):
         return "Built"
     top = rel.split("/", 1)[0]
     if top in SHIPPED:
@@ -1405,7 +1431,9 @@ def analyse(root, table=None, only=None):
         if rec["evidence_file"] != "":
             t["evidence"] = (rec["evidence_file"],
                              rec.anchors["evidence_anchor"][1])
-            loc = classify_location(rec["evidence_file"], rec["kind"])
+            loc = classify_location(files, rec["evidence_file"],
+                                    rec.anchors["evidence_anchor"][1],
+                                    rec["kind"])
             if loc is None:
                 res.broken.append((rec.lineno, "evidence under %s is neither "
                                    "a shipped directory nor docs/ or README.md"
@@ -1752,7 +1780,11 @@ def selftest():
               "- **A run of the first unit after it changed.**\n"
               "- **A run of the second unit before its insert changed.**\n"
               "- **A run of the third unit, which never changed.**\n"
-              "- **A run on a thing nobody recorded.**\n\n"
+              "- **A run on a thing nobody recorded.**\n"
+              "- **A defect answered by a check.**\n"
+              "- **A defect answered a section further on.**\n"
+              "- **A run on the defect answered by a check.**\n"
+              "- **A run on the defect that is not built.**\n\n"
               "## Named, not built as skills\n\n"
               "| Skill | Description | Origin |\n|---|---|---|\n"
               "| `implement-ticket` | Build one task | test |\n"
@@ -1806,6 +1838,9 @@ def selftest():
         GUARD = "hooks/guard.sh / whole file / block"
         NAMED = "docs/roadmap.md / Named, not built as skills / "
         CHECK = "docs/skill-conventions.md / Before a handover, run these / one check"
+        DEF_CHECK = "docs/roadmap.md / Known gaps / a defect answered by a check"
+        DEF_FURTHER = "docs/roadmap.md / Known gaps / a defect answered a section further on"
+        DEF_NOT_BUILT = "docs/roadmap.md / Known gaps / a defect"
         NOTE_SP = "shared/note.md / whole file / straight path"
         NOTE_G = "shared/note.md / whole file / german"
 
@@ -1886,9 +1921,18 @@ def selftest():
             thing("hooks/guard.sh / guard / unit part in a file without units",
                   "hooks/guard.sh", "[ -d docs/agents ] || exit 0",
                   kind="hook outcome", ev=False),
-            thing("docs/roadmap.md / Known gaps / a defect", R,
+            thing(DEF_NOT_BUILT, R,
                   "A defect measured on 2026-01-06", kind="defect", ev=False,
                   evidence_file=R, evidence_anchor="Recorded, not built."),
+            # a defect answered under a check heading is built; the same
+            # evidence a section further on is not
+            thing(DEF_CHECK, R, "A defect answered by a check.", kind="defect",
+                  ev=False, evidence_file="docs/skill-conventions.md",
+                  evidence_anchor="One check, silent when green:"),
+            thing(DEF_FURTHER, R, "A defect answered a section further on.",
+                  kind="defect", ev=False,
+                  evidence_file="docs/skill-conventions.md",
+                  evidence_anchor="Text."),
             # red: anchor missing
             thing("alpha / Alpha / missing anchor", A,
                   "this text stands nowhere in the file", ev=False),
@@ -1974,6 +2018,12 @@ def selftest():
             # red: a run on a name no thing carries
             run("alpha / Alpha / nowhere", "2026-01-06",
                 "A run on a thing nobody recorded", version="0.1.0"),
+            # green: a run on the defect answered by a check; red: a run on
+            # a defect that is recorded and not built
+            run(DEF_CHECK, "2026-01-11", "A run on the defect answered by a check",
+                version="0.2.0"),
+            run(DEF_NOT_BUILT, "2026-01-11", "A run on the defect that is not built",
+                version="0.2.0"),
             # not-a-thing, green: part of; rationale
             rec(type="not-a-thing", file=A, anchor="Unless it rains, carry on",
                 note="part of: " + BLUE),
@@ -2188,6 +2238,13 @@ def selftest():
         case("the third form in a skill the mode reaches",
              err("stands in alpha, which the mode reaches"),
              not any("third form where nothing reaches" in e for e in errors))
+        case("a defect answered a section further on than the check headings",
+             states.get(DEF_FURTHER) == "Recorded, not built",
+             states.get(DEF_CHECK) == "Walked")
+        case("a run on a defect that is recorded and not built",
+             err("a run on %r, which is Recorded, not built and cannot be "
+                 "walked" % DEF_NOT_BUILT),
+             counts(DEF_CHECK, "2026-01-11"))
         # shallow clone
         shallow = os.path.join(tmp, "shallow")
         subprocess.run(["git", "clone", "-q", "--depth", "1", "file://" + root,
