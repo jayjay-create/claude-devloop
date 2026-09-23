@@ -2384,6 +2384,9 @@ def selftest():
         produced.append(only_err.getvalue().strip())
         errors = [e for _, e in res.broken] + res.table_errors
         runs = {(r["thing"]["name"], r["rec"]["date"]): r for r in res.runs}
+        # two runs of one thing on one date would overwrite each other here
+        # in silence, and a case would then read the wrong run
+        assert len(runs) == len(res.runs), "two runs share a thing and a date"
         states = {t["name"]: t["state"] for t in res.things}
         uncovered = {(f, a) for f, a, b, _ in res.uncovered}
         unanch = {(f, n) for f, n, _ in res.unanchorable}
