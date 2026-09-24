@@ -1415,6 +1415,13 @@ GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
 POSIX gives you.
 
+A run of any of these counts, for the stock-take in `docs/stock-take.tsv`, only
+from the day after the last change to the lines the check stands on. A check
+runs from the working tree and carries no version, so on the day of a change
+nothing says whether the run stood before it or after it; the header of
+`scripts/devloop-stock-take` states the rule, and a run recorded on that day is
+listed there as one that does not count.
+
 **Seventeen checks, seventeen command blocks.** Count them, or this number
 drifts again. It drifted once already, and quietly: on 7 September 2026 one
 check was split into three blocks, one of them unreachable, so the checks went
@@ -1436,10 +1443,40 @@ Every skill on disk is registered, and every registered skill exists:
     print('registered but missing:', sorted(set(m)-set(d)))
     print('present but unregistered:', sorted(set(d)-set(m)))"
 
-Nothing in the roadmap is named that neither exists nor sits under "Named, not
-built as skills":
+No name in the roadmap resembles a real one without being one. A skill name
+that does not exist is made from one that does, by a typo, a rename left
+behind or a plural, so it stays near the name it was meant to be. This prints
+every backticked lowercase word that is no directory under `skills/`, stands in
+no row of the table "Named, not built as skills", and lies within an edit
+distance of two of one of those names, beside the name it resembles. Silence
+is green. A name invented out of nothing it does not catch, and no form of it
+could: the roadmap quotes flags, labels, tools, check classes and another
+project's skill names, 108 words that are no name on 24 September 2026, the
+nearest of them four edits from any, and the check that printed all of them,
+130 lines that day, was read once and skipped, which is what "a check that is
+red by construction" above comes to. Two guards stand in it. Where the table
+yields no rows, or `skills/` no directory, it says so, and that line is red: a
+check with no knowledge would be silent for the wrong reason, since the names
+of the one half stand nowhere near the names of the other. And the distance of
+two holds only while the names are long. The shortest is eight characters
+today; a name of five would already print a word of the roadmap (`batch` would
+print `watch`, and `tdd` `sed`, measured the same day). So a name of fewer
+than six characters is compared for equality only, which for a word that is
+not one of the names prints nothing, and the day a skill gets such a name,
+this is the sentence that says it goes unwatched:
 
-    comm -23 <(grep -o '`[a-z-]*`' docs/roadmap.md | tr -d '`' | sort -u) <(ls skills/ | sort)
+    python3 -c "
+    import re,pathlib,functools
+    t=open('docs/roadmap.md').read()
+    w=set(re.findall(r'\x60([a-z-]*)\x60',t))
+    d={p.name for p in pathlib.Path('skills').iterdir() if p.is_dir()}
+    s=t.split('\n## Named, not built as skills\n',1)
+    r=set(re.findall(r'^\|\s*\x60([a-z0-9-]+)\x60\s*\|',s[1].split('\n## ',1)[0],re.M)) if len(s)==2 else set()
+    n=d|r
+    e=functools.lru_cache(None)(lambda a,b:len(a+b) if len(a)==0 or len(b)==0 else min(e(a[1:],b)+1,e(a,b[1:])+1,e(a[1:],b[1:])+1-(a[0]==b[0])))
+    if len(r)==0 or len(d)==0: print('nothing to hold the roadmap against: %d rows under the table, %d directories under skills/'%(len(r),len(d)))
+    for x,m in [(x,m) for x in sorted(w-n) for m in sorted(n) if len(m)>=6 and e(x,m)<=2]: print('%s is %d from %s'%(x,e(x,m),m))
+    "
 
 Invocability is set deliberately, not by omission:
 
