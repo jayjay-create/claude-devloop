@@ -1446,12 +1446,12 @@ Every skill on disk is registered, and every registered skill exists:
 No name in the roadmap resembles a real one without being one. A skill name
 that does not exist is made from one that does, by a typo, a rename left
 behind or a plural, so it stays near the name it was meant to be. This prints
-every backticked lowercase word that is no directory under `skills/`, stands in
-no row of the table "Named, not built as skills", and lies within an edit
-distance of two of one of those names, beside the name it resembles. Silence
-is green. A name invented out of nothing it does not catch, and no form of it
+every backticked word of lowercase letters, digits and hyphens that is no
+directory under `skills/`, stands in no row of the table "Named, not built as
+skills", and lies within an edit distance of two of one of those names, beside
+the name it resembles. Silence is green. A name invented out of nothing it does not catch, and no form of it
 could: the roadmap quotes flags, labels, tools, check classes and another
-project's skill names, 108 words that are no name on 24 September 2026, the
+project's skill names, 138 words that are no name on 24 September 2026, the
 nearest of them four edits from any, and the check that printed all of them,
 130 lines that day, was read once and skipped, which is what "a check that is
 red by construction" above comes to. Two guards stand in it. Where the table
@@ -1468,7 +1468,7 @@ this is the sentence that says it goes unwatched:
     python3 -c "
     import re,pathlib,functools
     t=open('docs/roadmap.md').read()
-    w=set(re.findall(r'\x60([a-z-]*)\x60',t))
+    w=set(re.findall(r'\x60([a-z0-9-]*)\x60',t))
     d={p.name for p in pathlib.Path('skills').iterdir() if p.is_dir()}
     s=t.split('\n## Named, not built as skills\n',1)
     r=set(re.findall(r'^\|\s*\x60([a-z0-9-]+)\x60\s*\|',s[1].split('\n## ',1)[0],re.M)) if len(s)==2 else set()
