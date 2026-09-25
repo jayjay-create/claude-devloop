@@ -5584,6 +5584,69 @@ the size of the work.
   names in this file printed 130 lines, as before this entry, and cannot be
   silent, which the entry above records as a defect still open.
 
+- **The check on names in the roadmap repaired, on 25 September 2026.** Defect
+  34 of the stock-take entry, the check under "Before a handover, run these"
+  that could never be silent, closed on the branch task/repair-names-check, cut
+  from the main branch at `1edc955`, pull request 133. The repair is commit
+  `860bc25` of 24 September 2026, and `cd0e476` the same day widened the words
+  it reads to digits and raised the version to 0.108.0. This entry came a day
+  later on purpose: a check's run counts only from the day after the last
+  change to its lines, as the head of that section says since the repair, so a
+  run of 24 September would have stood in the tool's output as one that does
+  not count while this entry claimed the opposite. `date -u +%F` read
+  2026-09-25 before the run was made, and `git log -1 --format=%ad
+  --date=short 860bc25` read 2026-09-24.
+
+  Why the old command could never be silent. It subtracted the directories
+  under `skills/` from the backticked words of this file and printed the rest,
+  and the names under the heading of this file that lists what is named and not
+  a skill are by definition no directory, so every one of them came out on
+  every run: 130 lines on 25 September 2026 on the tree before this entry, the
+  22 rows of that table among them, 107 other words the roadmap quotes as
+  flags, labels, tools and check classes, and one empty line from a bare pair
+  of backticks. What the new one catches: a backticked word of lowercase
+  letters, digits and hyphens that is no directory under `skills/`, stands in
+  no row of that table, and lies within an edit distance of two of one of those
+  names, printed beside the name it resembles, since a typo, a rename left
+  behind or a plural is made from a real name and stays near it. Measured the
+  same day on the same tree: 172 backticked words, 34 names (12 directories and
+  22 rows), 138 words that are no name, the nearest of them four edits from any
+  name. What it does not catch: a name invented out of nothing, which no form
+  of the check could, since nothing ties such a word to the set it is held
+  against; and a word one or two edits from a name of fewer than six
+  characters, since such a name is compared for equality only. Two guards.
+  Where the table yields no rows or `skills/` no directory, the check prints
+  one line saying so, with both counts, and that line is red: with no names on
+  one side it would be silent for the wrong reason. And the distance of two
+  holds only against names of six characters or more, because a name of five
+  would already print words of this file; the shortest name today is
+  `research`, 8 characters, and no name is shorter than six, so nothing goes
+  unwatched yet. The day a skill gets a shorter name, the section's sentence on
+  it is the one that says it goes unwatched.
+
+  The seventeen checks under "Before a handover, run these" were run on 25
+  September 2026 at 0.108.0, each block as it stands in the section, under sh.
+  The repaired check printed nothing, exit 0, which its section calls green,
+  and that silence is the run this entry holds; the other sixteen printed what
+  their explanations say, the same lines as on 23 September, since no file
+  under `skills/`, `shared/`, `hooks/`, `bin/` or `scripts/` changed between
+  `1edc955` and the repair: 3 files changed, the conventions, the table and
+  plugin.json, and this entry adds only this file to that list.
+  The other outcome of the check, a name printed, takes no run: nothing was
+  printed, and like the red side of every other check it waits for something to
+  be wrong. The run of 19 September 2026 on the silent outcome stopped counting
+  with the repair and stays listed as such; this run stands beside it.
+
+  The tool over the whole table, run on 25 September 2026 at 0.108.0 on the
+  tree this entry commits: 0 broken records, 0 of 1747 lines of the search set
+  uncovered, 0 findings, exit 0, and 55 runs that do not count, the same number
+  as before this entry, since the run of 19 September stays in that list and
+  this one is not in it. The self-test ran the same day, exit 0, and its last
+  line read `SELF-TEST PASSED: 87 cases; of the 73 messages this tool rejects,
+  refuses or answers with, read off its own source, 73 are asserted by a case
+  and 0 by none; the lines of the report are not in that count`. The counts by
+  state and kind are the tool's output and are not repeated here.
+
 
 ## Decisions taken against
 
