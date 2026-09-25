@@ -5787,6 +5787,36 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   becomes a condition for the next step, written because two days of work
   waited on a run that changed one line of a table and nothing else.
 
+  The repaired names check ran on 26 September 2026 at 0.110.0, on the tree of
+  `446df65`, the commit that raised the version and carries the repair: it
+  printed nothing, exit 0, which its section calls green, and that run is
+  recorded here. Under the version rule the run of 25 September 2026 at
+  0.108.0 counts again, `834b8d5` containing the repair, and the run of 19
+  September 2026 stays as one that does not count, its commit `8196ebf`
+  predating the repair. The other sixteen checks ran the same day under sh,
+  each block as it stands in the section, and printed what their explanations
+  say: registration two empty lists; invocability twelve counts, `record-lessons`
+  and `start-work` at 1 and the rest at 0; locked skills the one line naming
+  `start-work` in `build-work`; shared copies, insert lines, the grant,
+  expansion, executables and unattended finish silent; language block twelve
+  lines saying where the opening stands; the notice one checksum line and 12;
+  the arming command 2 in the merge guard and 2 in this file; offers 15 lines;
+  handovers seven lines over six sites; second statement two lines.
+
+  The tool over the whole table, run on 26 September 2026 at 0.110.0 on
+  `446df65`: 0 broken records, 0 of 1758 lines of the search set uncovered, 3
+  findings, exit 0, and 56 runs that do not count, as many as it printed at
+  `5d6dea0` before this change: the run of 25 September on the names check left
+  that list, and the run of 23 September 2026 at 0.107.0 on the outcome of a run
+  naming a commit that does not contain the last change entered it, the line
+  that opens that branch being the line this change touched. The self-test ran
+  the same day, exit 0, and its last line read `SELF-TEST PASSED: 87 cases; of
+  the 72 messages this tool rejects, refuses or answers with, read off its own
+  source, 72 are asserted by a case and 0 by none; the lines of the report are
+  not in that count`; that run is recorded on the two things of the tool whose
+  lines this change touched, the defect of the date rule and that outcome. The
+  counts by state and kind are the tool's output and are not repeated here.
+
 
 ## Decisions taken against
 
