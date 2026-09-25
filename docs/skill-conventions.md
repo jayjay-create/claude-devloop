@@ -811,6 +811,12 @@ half of the proof, and pasting what it answered is the other half. This is the
 narrow, checkable case of a claim needing evidence, and it is the one where the
 evidence is one command away.
 
+**A measurement nothing depends on never becomes a condition for the next
+step.** Where a run cannot be recorded, it is not recorded and the work goes
+on; "never walked" is then the honest answer and not an obstacle. Written on 26
+September 2026, because two days of work waited on a run that changed one line
+of a table and nothing else.
+
 **A file only its writer reads is not a safeguard, and it looks exactly like
 one.** The unattended mode kept its round count and its cap in
 `.claude/autorun.local.md`, and a sentence in the skill described the hook that
@@ -1415,12 +1421,15 @@ GNU extension and does nothing on macOS but print an error, which is how a check
 comes to report a checksum of nothing and look like it passed. Keep them to what
 POSIX gives you.
 
-A run of any of these counts, for the stock-take in `docs/stock-take.tsv`, only
-from the day after the last change to the lines the check stands on. A check
-runs from the working tree and carries no version, so on the day of a change
-nothing says whether the run stood before it or after it; the header of
-`scripts/devloop-stock-take` states the rule, and a run recorded on that day is
-listed there as one that does not count.
+A run of any of these counts, for the stock-take in `docs/stock-take.tsv`, the
+way every other run counts: it is recorded under the version
+`.claude-plugin/plugin.json` carried in the tree it ran in, and it counts once
+the commit that introduced that version contains the last change to the lines
+the check stands on. A run made on a branch under the version the branch
+introduces counts there and after the squash merge alike; the header of
+`scripts/devloop-stock-take` states the rule. Until 26 September 2026 such a run
+was held against the commit date of the check's line instead, which a squash
+merge re-dates, so that no run made before a merge survived it.
 
 **Seventeen checks, seventeen command blocks.** Count them, or this number
 drifts again. It drifted once already, and quietly: on 7 September 2026 one

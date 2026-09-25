@@ -198,9 +198,9 @@ to be spoken to.
 - The road from merged code to an application that runs on this machine, an
   interface included: `docs/plan.md` says where the set ends, what is built
   first, and what stays yours.
-- Triaging incoming reports and finding refactor candidates — planned, not
-  built. `docs/roadmap.md` says under "Named, not built as skills" when each
-  would be reached.
+- Triaging incoming reports and finding refactor candidates — decided, not
+  built. `docs/roadmap.md` says under "Named, not built as skills" when the
+  second is reached and why the first has no trigger yet.
 - End-to-end testing has one worked-out approach and no second: the compiled
   program run as a subprocess, asserting on output and exit code. Anything
   that stays up — a service, an interface — still has none.

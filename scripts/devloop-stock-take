@@ -5,7 +5,7 @@ Reads docs/stock-take.tsv, checks every anchor in it, computes the state of
 every thing from the records and the git history, and lists every line of the
 search set that no record covers. It stores nothing: the table holds facts
 only, and every state is computed on every run, because a stored state is an
-asserted state ("Never assert state - query it", docs/skill-conventions.md).
+asserted state ("Never assert state — query it", docs/skill-conventions.md).
 
 Usage
     scripts/devloop-stock-take                  the whole table
@@ -66,15 +66,18 @@ A. WHAT GOES IN
   section calls green, and any other. The green form is the record's note.
   Where the section does not say what green looks like, the note says so;
   whoever writes the record does not supply one.
-- The thirteen entries under "Named, not built as skills" in docs/roadmap.md
-  that the section does not record as done inside another skill or as a
-  stage. The other nine are not things of their own: each name stands as a
-  note on the row of the thing that does its work. The four side paths under
-  "What is missing" in README.md are four of the thirteen and get no second
-  row.
+- The entries under "Named, not built as skills" in docs/roadmap.md that the
+  section does not record as done inside another skill or as a stage, each a
+  thing of kind named skill; how many is read off the tool's output, not off
+  this header. The others are not things of their own: each name stands as a
+  note on the row of the thing that does its work. The side paths under "What
+  is missing" in README.md are among the named things and get no second row.
 - Every defect an entry under "Known gaps" names, answered or not, the three
   defects and seven mechanisms of the Pocock comparison and the remaining
-  points of "The order of work, and why" included. The one defect that entry
+  points of "The order of work, and why" included: the first of the seven,
+  the grilling, stands as part of the defect an earlier entry measured first,
+  and the remaining points are two of the three defects, not rows of their
+  own. The one defect that entry
   says this set does not have, and the four places where it says this set is
   further on, name no defect of this set and get no row. Whether a defect is
   still open is computed, never judged while writing.
@@ -362,11 +365,14 @@ something else, a rule moved onto another route). What copy detection would
 attribute the line to (git blame -C -C) is printed as information beside a run
 that does not count, never as a state.
 
-A check command runs in this repository, not from the installed copy: its run
-counts when the run's date is later than the commit date of every one of those
-changes, read in the commit's own timezone; the same day does not count. A run
-whose version is not recorded does not count. An uncommitted line counts as
-changed after every run.
+A check command runs in this repository, not from the installed copy, and its
+run is held against a version all the same, the one .claude-plugin/plugin.json
+carried in the tree it ran in: recorded on a branch under the version that
+branch introduces, the run counts there and keeps counting after the squash,
+which a commit could not do. Until 26 September 2026 a check command's run was
+held against the commit date of its line instead, and a squash merge re-dates
+that line. A run whose version is not recorded does not count. An uncommitted
+line counts as changed after every run.
 
 On a shallow clone the tool refuses to work: git blame there reports every
 line as the boundary commit.
@@ -394,9 +400,9 @@ E. THE SEARCH SET, FOR COVERAGE
   "Half built" or "Should hold".
 - In docs/roadmap.md under "Named, not built as skills": every row of the
   table except the header row and the separator row. Those rows are the only
-  record of the names the stock-take accounts for, thirteen as things of
-  kind named skill and nine as "part of" the thing that does their work, so
-  a name added to the table is seen as uncovered until an order takes it.
+  record of the names the stock-take accounts for, each as a thing of kind
+  named skill or as "part of" the thing that does its work, so a name added
+  to the table is seen as uncovered until an order takes it.
   The table under "Built and exercised" stays out: what it claims about the
   twelve skills, the things of those skills carry themselves.
 
@@ -424,8 +430,8 @@ LIMITS
 - A version read from a session log is recorded with its source; nobody else
   can read that log again. Two of the session logs of the benches carry no
   version at all; that cannot be repaired.
-- Text that moved unchanged into shared/ on 17 and 18 September 2026 counts
-  for no run before it moved, although those runs received the same words.
+- Text that moved unchanged into shared/ on 18 September 2026 counts for no
+  run before it moved, although those runs received the same words.
 - Coverage counts lines, not branches. A line carrying two conditions is
   covered by the first record on it.
 - A defect whose fix stands on disk while its record's evidence points at the
@@ -1528,15 +1534,7 @@ def analyse(root, table=None, only=None):
             tm, rel, n, role = per_hash[h]
             return "%s:%d (%s), %s at %s" % (rel, n, role, g.commit_date(h),
                                              h[:7])
-        if t["kind"] == "check command":
-            latest = max(per_hash, key=lambda h: g.commit_date(h))
-            if rec["date"] > g.commit_date(latest):
-                r["counts"] = True
-            else:
-                failing = latest
-                r["reason"] = ("a check command's run counts only after the "
-                               "day of the last change, %s" % where(latest))
-        elif rec["commit"] != "":
+        if rec["commit"] != "":
             run_c = resolve(root, rec["commit"])
             bad = [h for h in per_hash if not g.is_ancestor(h, run_c)]
             if not bad:
@@ -1931,8 +1929,8 @@ def selftest():
               "- **A defect measured on 2026-01-06, on the first version.**\n"
               "  Recorded, not built.\n"
               "- **A run of alpha on 2026-01-11, on the second version.**\n"
-              "- **A run of the check on the day of the change.**\n"
-              "- **A run of the check the day after.**\n"
+              "- **A run of the check after its line changed, on the first version.**\n"
+              "- **A run of the check after its line changed, on the second version.**\n"
               "- **A run of alpha without a version.**\n"
               "- **A run on the shared note.**\n"
               "- **A run that names a commit of main.**\n"
@@ -1987,8 +1985,14 @@ def selftest():
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c2", date="2026-01-05T12:00:00+0100")
         c2 = run_git(root, "rev-parse", "HEAD")
-        # c3 raises the version
+        # c3 raises the version, and changes the line the check stands on, so
+        # that a run of the check is held against its version and not its date
         write(root, ".claude-plugin/plugin.json", plugin("0.2.0"))
+        write(root, "docs/skill-conventions.md",
+              "# Conventions\n\n## Before a handover, run these\n\n"
+              "One check, silent when green:\n\n"
+              "    ls skills/ | grep -c nothing-of-that-name  # widened in c3\n\n"
+              "## Something else\n\nText.\n")
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c3", date="2026-01-10T12:00:00+0100")
         c3 = run_git(root, "rev-parse", "HEAD")
@@ -2182,10 +2186,12 @@ def selftest():
                 version="0.1.0"),
             run(BLUE, "2026-01-12", "A run of blue after the rain line changed",
                 version="0.2.0"),
-            run(CHECK, "2026-01-01", "A run of the check on the day of the change",
+            run(CHECK, "2026-01-11",
+                "A run of the check after its line changed, on the first version",
                 version="0.1.0"),
-            run(CHECK, "2026-01-02", "A run of the check the day after",
-                version="0.1.0"),
+            run(CHECK, "2026-01-12",
+                "A run of the check after its line changed, on the second version",
+                version="0.2.0"),
             run(NOTE_G, "2026-01-11", "A run on the shared note", version="0.2.0"),
             run(GUARD, "2026-01-11", "A run that names a commit of main",
                 commit=c2[:7]),
@@ -2437,11 +2443,11 @@ def selftest():
              not counts(BLUE, "2026-01-11")
              and "not recorded" in reason(BLUE, "2026-01-11"),
              counts(GREY, "2026-01-11"))
-        case("check-command run on the day of the change",
-             not counts(CHECK, "2026-01-01")
-             and "counts only after the day of the last change"
-                 in reason(CHECK, "2026-01-01"),
-             counts(CHECK, "2026-01-02") and states[CHECK] == "Walked")
+        case("check-command run held against its version, not its date",
+             not counts(CHECK, "2026-01-11")
+             and "predates" in reason(CHECK, "2026-01-11")
+             and "skill-conventions.md:7 (site)" in reason(CHECK, "2026-01-11"),
+             counts(CHECK, "2026-01-12") and states[CHECK] == "Walked")
         case("uncommitted evidence line",
              not counts(NOTE_G, "2026-01-11")
              and "uncommitted" in reason(NOTE_G, "2026-01-11")

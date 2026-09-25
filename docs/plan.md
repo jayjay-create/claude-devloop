@@ -85,8 +85,8 @@ down as one.
 ## Eleven milestones, in this order
 
 Each carries its kind, what it covers, what ends it, why it stands where it
-stands, and the conventions it meets. "Conventions" names sections of
-`docs/skill-conventions.md` unless another file is named. The list per
+stands, and the conventions it meets. "Conventions" names sections or bold
+heads of `docs/skill-conventions.md` unless another file is named. The list per
 milestone comes from one reading of that file on 19 September 2026, and it is
 what milestone 2 hands each later milestone to re-evaluate under the sentence
 it writes.
@@ -120,17 +120,19 @@ with their reason.
 The things: the twelve skills down to their branches, `shared/`, `hooks/`,
 `bin/` and `scripts/` down to their outcomes, the tool itself included; the
 seventeen checks under "Before a handover, run these" and the check under
-"Before you change anything, run this", both outcomes of each; the twenty-two
-names under "Named, not built as skills", thirteen as things of their own and
-nine as a note on the thing that does their work, the four side paths under
-"What is missing" in `README.md` among the thirteen; every defect an entry
-under "Known gaps" names, the three defects and seven mechanisms of the
-comparison with Matt Pocock's set and the two remaining points of "The order
-of work, and why" among them; and every finding the reading made, which the
-close moved into the roadmap entry of 23 September 2026 as defects of this
-set. Where the roadmap names the triggering situation, the bench and the cost
-for a thing, the table carries them; where it does not, that is the building
-milestone's work, not this one's.
+"Before you change anything, run this", both outcomes of each; the twenty
+names under "Named, not built as skills", eleven as things of their own and
+nine as a note on the thing that does their work, the two side paths under
+"What is missing" in `README.md` among the eleven, since two names left the
+table on 25 September 2026; every defect an entry under "Known gaps" names,
+the three defects and seven mechanisms of the comparison with Matt Pocock's
+set among them, the grilling mechanism standing as part of the defect an
+earlier entry measured first, and the two remaining points of "The order of
+work, and why" being two of those three defects; and every finding the
+reading made, which the close moved into the roadmap entry of 23 September
+2026 as defects of this set. Where the roadmap names the triggering situation,
+the bench and the cost for a thing, the table carries them; where it does not,
+that is the building milestone's work, not this one's.
 
 The search set is what makes the table checkable for completeness: every line
 under `skills/`, `shared/`, `hooks/`, `bin/` and `scripts/` that carries a
@@ -144,7 +146,9 @@ Ended when the tool reported no broken record, no unit without a straight
 path, no uncovered line of the search set and no finding left in the table,
 so that a third person can check any line without having been there: the
 tool proves that every anchor stands where its record says, and every state
-is recomputed from the files as they are.
+is recomputed from the files as they are. A finding recorded since the close
+stands in the table as a finding until an order moves it, and the tool lists
+it on every run; how many stand today is read off that output.
 
 Why here: the roadmap records that an entry answered by a later entry does not
 notice, and that "Recorded, not built" has stood on things already built. A
@@ -268,7 +272,8 @@ Ends with a dated entry that confirms or moves the boundary under "Where the
 set ends", shape by shape, every answer a measurement or marked as not
 measured.
 
-Why here: five milestones build on that boundary, and today it is a reading,
+Why here: milestones 7, 8 and 11 build on that boundary, the first two naming
+this one and the third needing its interface bench, and today it is a reading,
 not a measurement. After 3, because the interface shape needs a driver.
 
 Conventions: "Nothing resumes on its own" and the machine having to be awake
