@@ -7,8 +7,8 @@ far as merged, reviewed code; the road from there is `docs/plan.md`.
 
 Twelve skills covering the main path. It has been exercised on six throwaway
 projects across five stacks — Python, TypeScript, Kotlin, Go and Rust — once
-with nobody watching. The side paths — triaging incoming reports and handing
-over between sessions — are not built yet. Read "What is missing" before you
+with nobody watching. The side paths — triaging incoming reports and finding
+refactor candidates — are not built yet. Read "What is missing" before you
 rely on it.
 
 ## What it is for
@@ -198,8 +198,9 @@ to be spoken to.
 - The road from merged code to an application that runs on this machine, an
   interface included: `docs/plan.md` says where the set ends, what is built
   first, and what stays yours.
-- Triaging incoming reports, finding refactor candidates, handing over
-  between sessions, and a router for when you are lost — planned, not built.
+- Triaging incoming reports and finding refactor candidates — planned, not
+  built. `docs/roadmap.md` says under "Named, not built as skills" when each
+  would be reached.
 - End-to-end testing has one worked-out approach and no second: the compiled
   program run as a subprocess, asserting on output and exit code. Anything
   that stays up — a service, an interface — still has none.

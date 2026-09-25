@@ -474,16 +474,20 @@ Conventions: the machine has to be awake (the person keeps it so, by hand,
 with what `setup-checks` step 8 names); the classifier record in the roadmap's
 entry on the first planning run alone.
 
+Beside the eleven, one piece of work is waiting and is not a milestone:
+`find-refactor-candidates`, decided on 25 September 2026 to be built, reached
+when every task under a spec has closed; whether it becomes a milestone is not
+decided. The other three of the four side paths that stood open here, named
+under "What is missing" in `README.md` until that day, were answered with it:
+triaging incoming reports waits for reports from other people, and the
+handover between sessions and the router for when you are lost were decided
+against, under "Decisions taken against" in `docs/roadmap.md`.
+
 ## Open
 
 Not decided here, and not to be read as content. Each names the milestone
 that answers it, or says that none does.
 
-- **The four side paths** under "What is missing" in `README.md`: triaging
-  incoming reports, finding refactor candidates, handing over between
-  sessions, and a router for when you are lost. None of the eleven covers
-  them. Decided after milestone 1. The handover between sessions touches the
-  main path; the other three do not.
 - **A later task draws what the look file does not cover**: a kind of screen
   or a state that did not exist when the file was written. Two answers: the
   run stops and asks, or it decides by what is recorded and reports it. Not

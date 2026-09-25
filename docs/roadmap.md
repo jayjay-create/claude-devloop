@@ -30,8 +30,9 @@ line since 13 September 2026 (`b90874b`) — `start-work`, named in `build-work`
 step 6 as the place that sends an armed pull request there, not run — and
 nothing else, so no built skill reaches for anything on this list. A name leaves
 it when something needs to call it on its own, which is exactly how `research`
-and
-`build-prototype` got built.
+and `build-prototype` got built, or when it is decided against: `which-skill`
+and `write-handover` left it that way on 25 September 2026 and stand under
+"Decisions taken against", each with its reason.
 
 Two kinds of entry read as gaps and are not:
 
@@ -61,10 +62,17 @@ Two kinds of entry read as gaps and are not:
   `build-work`. Pulling one out is only worth it if something else has to call
   it separately.
 
+**Decided on 25 September 2026, two of the four side paths.**
+`find-refactor-candidates` gets built, reached when every task under a spec has
+closed, the one moment the workflow looks back; the bullet under "Where these
+would attach" carries it. This decides when it is reached, not how it works,
+and it is a piece of work now waiting, not a milestone. `sort-incoming-requests`
+stays here with no trigger, because there are no reports from other people in
+this setup yet; it gets one when there are.
+
 | Skill | Description | Origin |
 |---|---|---|
 | `sort-incoming-requests` | Triage issues you didn't write | Pocock `triage`, verbatim |
-| `which-skill` | Find out what to do next | Pocock `ask-matt`, renamed |
 | `interview` | Ask until nothing is left open | Pocock `grilling`, verbatim |
 | `define-terms` | Keep the glossary and decision records straight | Pocock `domain-modeling`, verbatim |
 | `clarify-idea` | Sharpen an idea into something buildable | Pocock `grill-with-docs`, verbatim |
@@ -81,7 +89,6 @@ Two kinds of entry read as gaps and are not:
 | `merge-and-verify` | Merge and check that it landed | new |
 | `find-refactor-candidates` | Find code worth restructuring | Pocock `improve-codebase-architecture`, verbatim |
 | `check-docs-consistency` | Check the project documents against each other | new |
-| `write-handover` | Hand this work to another session | Pocock `handoff`, verbatim |
 | `say-it-plainly` | Say that again in plain words | Pocock `wait-what`, verbatim |
 | `writing-for-agents` | Look up how to write for an agent to read | Pocock, verbatim |
 | `settle-the-look` | Decide once how this project looks, and write it down | new |
@@ -103,8 +110,10 @@ the ones with a plausible answer:
   from two sessions or from the user's own work alongside.
 - **`find-refactor-candidates`** — when every task under a spec has closed, which
   is the one moment the workflow looks back at all; it already closes the spec
-  there, without asking. A second trigger worth measuring: the same file touched by
-  several tasks in a row.
+  there, without asking. Decided on 25 September 2026: it gets built, and this
+  is its trigger. The second trigger named here before, the same file touched
+  by several tasks in a row, stays what it is, something to measure, and
+  decides nothing today. No body is decided here, only when it is reached.
 - **`check-docs-consistency`** — before a handover, which is where the checks in
   `docs/skill-conventions.md` run; the count belongs there and is not repeated
   here, because a second copy of it is what went stale. Done by hand several
@@ -159,7 +168,10 @@ the ones with a plausible answer:
   the repository and the tracker.
 
 The rest have no attachment point yet. That is the reason they are unbuilt, not
-the size of the work.
+the size of the work. `sort-incoming-requests` is the one of them whose reason
+is written down: there are no reports from other people in this setup yet, so
+nothing arrives to be triaged, and it gets a trigger when there are (decided on
+25 September 2026).
 
 ## Known gaps
 
@@ -5700,6 +5712,23 @@ of them if the reason stops holding — the reason is the point, not the verdict
   `git push` — so the second reason holds again for both. The verdict rests on
   both once more. Reopen on a case where such a file cannot wait for a
   branch.
+- **A router for when you are lost, `which-skill`.** Pocock's `ask-matt`,
+  renamed: a skill that says which skill to run next. Rejected on 25 September
+  2026: the skills of this set are invoked by the model from their
+  descriptions, and only `start-work` and `record-lessons` are typed. A router
+  beside that would mean the descriptions do not work, and then the
+  descriptions get repaired, not a router built next to them. Reopen if a
+  measured run shows a description failing to route and a repair of it not
+  holding.
+- **A handover between sessions, `write-handover`.** Pocock's `handoff`,
+  verbatim: a skill that writes down where a piece of work stands for the next
+  session. Rejected on 25 September 2026: the state of a piece of work stands
+  in the tracker and in the repository, not in the session. `start-work` opens
+  by reading it, and `untangle-idea` already says at the end of a mapping
+  session what the next one picks up. A skill for it would write down a second
+  time what is written down once. Reopen if a piece of state is found that
+  lives in neither the tracker nor the repository and a next session needed
+  it.
 
 ## Names that were rejected
 
