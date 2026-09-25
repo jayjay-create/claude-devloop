@@ -14,8 +14,13 @@
 | `cut-into-tasks` | Cut a spec into single tasks |
 | `build-work` | Build the open tasks and merge them |
 | `review-changes` | Review a change from several angles at once |
-| `record-lessons` | Write down what went wrong so it does not repeat — built, never run |
+| `record-lessons` | Write down what went wrong so it does not repeat |
 | `diagnose-bug` | Find what actually causes a bug |
+
+What each of them has run is not written here: `scripts/devloop-stock-take`
+computes it from `docs/stock-take.tsv` on every run. Until 26 September 2026
+the row of `record-lessons` carried "built, never run", the one state in this
+file written rather than computed.
 
 ## Named, not built as skills
 
@@ -5658,6 +5663,129 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   refuses or answers with, read off its own source, 73 are asserted by a case
   and 0 by none; the lines of the report are not in that count`. The counts by
   state and kind are the tool's output and are not repeated here.
+
+- **The control documents audited against the tree, and mended, on 26 September
+  2026.** An order of 25 September 2026 read `docs/plan.md`, `README.md`, the
+  present-state lines of this file and the header of `scripts/devloop-stock-take`
+  against `5d6dea0`, the tree at 0.109.0, and reported sixteen places over the
+  four documents where a number, a name or a claim no longer held against a
+  command; the report stands outside the repository. Fourteen of them are mended
+  on the branch task/audit-mends, each where it stood and in that document's
+  words, against the command that shows what holds. Two are not a document
+  saying what the tree no longer carries, and stand in `docs/stock-take.tsv` as
+  findings, with their should; they are the last two below. Every one of the
+  sixteen has its row in the table: a defect thing sited on its line here, with
+  the mended line as its evidence, or a finding on the line it concerns.
+
+  The fourteen, in the order of the documents. Each carries the state the tool
+  computes for it, which for a mended sentence in a document reads recorded and
+  not built, a document being a rule and not a mechanism.
+  - `docs/plan.md`, "Conventions" names sections of `docs/skill-conventions.md`,
+    where thirteen of the names are bold paragraph heads inside a section:
+    `grep -n 'A count lives in one place' docs/skill-conventions.md` answers
+    line 773, a bold head, and `grep -n '^## ' docs/skill-conventions.md` has no
+    heading of that name.
+    Recorded, not built: it now says sections or bold heads.
+  - `docs/plan.md`, the twenty-two names under "Named, not built as skills":
+    `sed -n '75,94p' docs/roadmap.md | grep -c '^| \`'` answers 20.
+    Recorded, not built: it now says twenty, and why.
+  - `docs/plan.md`, thirteen of those names as things of their own: the tool's
+    counts per state and kind say `named skill 11`.
+    Recorded, not built: it now says eleven.
+  - `docs/plan.md`, the four side paths under "What is missing" in `README.md`,
+    among the thirteen: that section has named two since 25 September 2026.
+    Recorded, not built: it now says two, among the eleven.
+  - `docs/plan.md`, the three defects and seven mechanisms of the comparison
+    with Pocock's set and the two remaining points of "The order of work, and
+    why", read as twelve rows: the table holds ten sited in that entry, the
+    grilling mechanism standing as part of the defect the entry of 14 September
+    2026 measured first, and the two points being two of the three defects.
+    Recorded, not built: it now says where those rows stand.
+  - `docs/plan.md`, milestone 1 ended when the tool reported no finding left in
+    the table, and nothing said what a finding recorded after the close is: the
+    tool printed `FINDINGS: 3` on 25 September 2026.
+    Recorded, not built: one sentence says such a finding stands in the table
+    until an order moves it, and that the count is read off the output.
+  - `docs/plan.md`, "five milestones build on that boundary", naming none:
+    `grep -n 'milestone 4' docs/plan.md` answers the sections of milestones 7
+    and 8 and the open list, and milestone 11 asks for the interface bench that
+    milestone 4 lays down.
+    Recorded, not built: it now names 7, 8 and 11, and says why each.
+  - `README.md`, this file says under "Named, not built as skills" when each of
+    the two side paths would be reached: it does for `find-refactor-candidates`
+    and says of `sort-incoming-requests` why it has no trigger yet.
+    Recorded, not built: it now says that, and "decided" where it said "planned".
+  - this file, the row of `record-lessons` in the first table carrying "built,
+    never run", the one state among the present-state lines written rather than
+    computed; the tool reads every thing of that skill as built and never
+    walked.
+    Recorded, not built: the note is gone, and a sentence under the table says
+    where the state is read.
+  - the header of `scripts/devloop-stock-take`, "Never assert state - query it"
+    with a hyphen, where the heading of `docs/skill-conventions.md` carries a
+    dash and the header itself carries one where it quotes the should form.
+    Built: the dash, as the heading has it.
+  - the header, the thirteen entries under "Named, not built as skills", the
+    other nine and the four side paths, at A and again at E, the finding the
+    table carried since 25 September 2026: the tool counts eleven named skills
+    and `README.md` names two side paths.
+    Built: the header carries no number there and points at the tool's output,
+    which is where a count lives, and that retires the finding.
+  - the header, three defects and seven mechanisms of the Pocock comparison,
+    against nine rows in that stretch of the entry: the grilling one stands as
+    part of an earlier entry's defect.
+    Built: the header says where that row stands.
+  - the header, "Two of the session logs of the benches carry no version at
+    all": no command in the tree names the two, and this file does not either.
+    Undetermined, and left as it stands, since the mend needs whoever read the
+    logs to name them; its row carries no evidence.
+  - the header, text that moved unchanged into `shared/` on 17 and 18 September
+    2026: `git log --format=%ad --date=short -- shared | sort | uniq -c`
+    answers `4 2026-09-18` and no other day.
+    Built: 18 September 2026.
+
+  The two findings that stand, in the table with their should:
+  - `README.md` under "Attended and unattended" names three conditions for
+    running alone where `build-work` under "Unattended mode" numbers five, and
+    `plan-work` reads four of them where the question is put. Which two the
+    README leaves out, and whether it should name them at all, is a reading
+    somebody has to do. Sited on the README line.
+  - this file, under "Decisions taken against", says `untangle-idea` already
+    tells the next session what it picks up, and no line of that skill does:
+    what stands is the map every session orients to and "When the map is done",
+    which carries straight on into planning. The document is not wrong about
+    itself; a piece of the workflow is missing. Sited where this file claims it.
+
+  How a check command's run is recorded, changed. Such a run was held against
+  the commit date of its line and counted from the day after; a squash merge
+  re-dates that line to the day of the merge, so the run of 25 September 2026
+  on the repaired names check, made on the branch the day after the repair,
+  stopped counting at `834b8d5`, and no run of a check command made before a
+  merge could survive it, the finding the table carried since that day. It is
+  held against a version now, like every other run: recorded under the version
+  `.claude-plugin/plugin.json` carries in the tree it ran in, it counts once the
+  commit that introduced that version contains the last change to the check's
+  lines, which holds on the branch, where that commit is the branch's own, and
+  after the squash, where it is the merge commit. A commit would not do, since
+  the tool requires a run's commit to sit in the history of origin/main, and a
+  branch commit does not until it merges. The rule left the tool at the two
+  lines that carried it, the kind test and the date comparison the finding was
+  sited on, and the search set lost those two lines; the header's D and the
+  paragraph above the seventeen checks in `docs/skill-conventions.md` say the
+  rule as it stands now.
+  Built: the branch that held the date takes every run, on the line that opens
+  it.
+  The self-test's case for the date, red on the day of the change, is the case
+  for the version instead: the third commit of its temporary repository now
+  changes the line the check stands on, a run dated after that change under the
+  first version does not count, the version named as predating the change, and
+  a run under the second version counts and reads walked. The message the date
+  rule produced is gone, and the count of messages the self-test reads off its
+  own source went from 73 to 72, every one asserted by a case. One convention
+  entered `docs/skill-conventions.md` beside "A figure taken from a command is
+  copied out of that command's output": a measurement nothing depends on never
+  becomes a condition for the next step, written because two days of work
+  waited on a run that changed one line of a table and nothing else.
 
 
 ## Decisions taken against
