@@ -289,14 +289,20 @@ roadmap: run `scripts/devloop-stock-take` and take every defect it reports, in
 whatever state, that is in the class the conventions describe under "A finding
 that would have passed unsupervised gets written down" as "the finding nothing
 was watching … where no red is coming". Known
-members today, each a roadmap entry: the same failure picture three times out
-of the review, with no counter and `record-lessons` locked against being
-called; a lens that fell over and reported "no findings"; reviewing agents that
-committed to the branch; a change to the check chain landed unreviewed on the
-standalone route; a finding announced as filed that was not filed; the glossary
-staying empty while the work coined terms; a second review round that cannot
-read a change to the test scaffolding; a lens checked against a decision it was
-not given; the `!` channel the guards do not see. Per item: built, and its
+members today, each a roadmap entry: a lens that fell over and reported "no
+findings"; reviewing agents that committed to the branch; a change to the
+check chain landed unreviewed on the standalone route; a finding announced as
+filed that was not filed; the glossary staying empty while the work coined
+terms; a second review round that cannot read a change to the test
+scaffolding; a lens checked against a decision it was not given; the `!`
+channel the guards do not see. One member has left the list: the same failure
+picture three times out of the review, with no counter and `record-lessons`
+locked against being called, was built on 26 September 2026 at the close of
+the review — `shared/rule-not-written-down.md`, inserted in `review-changes`
+and `build-work`, without a counter, since nothing survives a task that a
+later run could count against; the entry of 14 September 2026 in
+`docs/roadmap.md` records it, and the tool reads it as built and not walked
+until a bench produces a finding at the close. Per item: built, and its
 situation produced once on a bench, or the roadmap says why it cannot be
 produced — a lens falling over was spontaneous, six of twenty, and there only
 the form of the report is measurable.
@@ -306,10 +312,10 @@ the item's roadmap line carries the reason it was not run.
 
 Why here: the second sentence. Independent of 4; before 9.
 
-Conventions: "Who may invoke a skill" (the lock on `record-lessons`); "A
-finding that would have passed unsupervised gets written down"; "A reason is
-not the evidence the rule asked for"; "A duty to say something needs a place
-where it is said".
+Conventions: "Who may invoke a skill" (the lock on `record-lessons`, its price
+met at the close since 26 September 2026); "A finding that would have passed
+unsupervised gets written down"; "A reason is not the evidence the rule asked
+for"; "A duty to say something needs a place where it is said".
 
 ### 6. Completion conditions (build)
 

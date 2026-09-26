@@ -550,7 +550,11 @@ obvious, and one line — "What would make this decision invalid".
 ### `standards.md`
 
 Coding rules of this project beyond what a tool already enforces. If you find
-none, write that down — empty is more honest than invented.
+none, write that down — empty is more honest than invented. Write it as the
+file's state and not the repository's — none recorded yet, rather than there
+is no code — because that line stands until the first rule replaces it: from
+here on the file is written at the close of every review, where a finding no
+written rule would have caught adds one.
 
 ### `environment.md`
 

@@ -497,6 +497,8 @@ ones and reached the close as nothing at all.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-not-in-conversation`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text rule-not-written-down`
+
 **If the diff changes after this step, this step runs again on what changed.**
 Not the whole diff — the commits added since the last review. The gate below
 decides whether work lands; it does not make unreviewed work reviewed, and code

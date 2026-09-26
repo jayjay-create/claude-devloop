@@ -1323,13 +1323,19 @@ had something to hand it. The run of 14 September 2026 found the standards
 file of the same project empty after two dozen pull requests, for the same
 reason: the one writer is the skill nothing calls. Both stand in
 `docs/roadmap.md`, and the entry there on the comparison with Pocock's set
-says the rest: `record-lessons` has never run. So the lock stays, and its
-price is what those entries measure: a finding of the kind this skill was
-built for, arising where nobody types a command, does not reach it. What
-answers that is milestone 5 of `docs/plan.md`, what goes wrong with nobody
-reading, which decides whether the rule is said where the review closes, the
-lock is lifted, or something else; until then, that price is the lock's, not
-nothing.
+says the rest: `record-lessons` has never run. The lock stays, and since 26
+September 2026 its price is met rather than paid: the one rule of this skill
+that a build loop has something to hand — a rule the project holds that nobody
+wrote down goes into `docs/agents/standards.md` — is said where the review
+closes, in `shared/rule-not-written-down.md`, inserted under "What happens to
+a finding" in `review-changes` and under step 4 of `build-work`. The lock was
+not lifted, for two reasons: lifted, the description sits in every session's
+context for the sake of one call; and the skill routes into four destinations
+where the close needs one. `record-lessons` stays the typed command for what a
+person notices, and the shared block names no skill, because the check under
+"Before a handover, run these" prints a locked skill named in backticks by
+another file. The entry of 14 September 2026 in `docs/roadmap.md` records the
+build.
 
 Everything else is model-invocable, because the chain reaches it from
 `start-work` or from another skill: `setup-project`, `setup-checks`,
