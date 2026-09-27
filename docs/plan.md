@@ -260,9 +260,10 @@ it stops. Plus three things the plan cannot claim today: whether a process
 started in the background survives across turns in a devloop run (the harness's
 own tool description, read on 19 September 2026 and quoted in the roadmap entry
 of that date, says it does; nothing here has measured it); whether the
-auto-mode classifier lets a start command through unattended (the only record
-is `go test` blocked as "Irreversible Local Destruction" on 14 September 2026,
-and which allow rule stood is not recorded);
+auto-mode classifier lets a start command through unattended (the records are
+`go test` blocked as "Irreversible Local Destruction" on 14 September 2026 and
+`brew install shellcheck` let through on 28 September 2026, neither a start
+command, and which allow rule stood is recorded for neither);
 and who ends a server and a browser the run started. It defines "read
 mechanically" per shape: exit code and output; an answer on the port; state and
 text out of the page. It lays down the interface bench: none of the six benches
@@ -482,8 +483,9 @@ Why last: it is the aim, and every earlier milestone ends with a run of its
 own, so that this one has one variable.
 
 Conventions: the machine has to be awake (the person keeps it so, by hand,
-with what `setup-checks` step 8 names); the classifier record in the roadmap's
-entry on the first planning run alone.
+with what `setup-checks` step 8 names); the classifier records in the roadmap's
+entries on the first planning run alone and on the install command of 28
+September 2026.
 
 Beside the eleven, one piece of work is waiting and is not a milestone:
 `find-refactor-candidates`, decided on 25 September 2026 to be built, reached
@@ -505,8 +507,12 @@ that answers it, or says that none does.
   decided now; milestone 7 names both and builds neither until it is.
 - Whether a process started in the background survives across turns in a
   devloop run (milestone 4).
-- Whether the classifier lets a start command or an install command through
-  unattended, and which allow rule has to stand for it (milestones 3 and 4).
+- Whether the classifier lets a start command through unattended (milestone
+  4), and which allow rule has to stand for a start or an install command
+  (milestones 3 and 4). Whether it lets an install command through was
+  measured on 28 September 2026: one `brew install` passed it once, with the
+  guard out of the way, and the roadmap entry of that date says what that
+  does and does not license.
 - Whether a headless browser runs on this machine unattended, and who ends it
   (milestone 4).
 - What `npx playwright install` lands outside the repository; not read from

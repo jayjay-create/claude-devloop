@@ -525,10 +525,12 @@ it is what the convention covers: the skills and hooks of another plugin.
 the project's: it lands inside the repository, travels with it, and is not what
 this convention or the install guard are about — where the guard stops one all
 the same, that is the false positive its own message names. A tool that lands
-outside the repository — a compiler, a runtime, a linter, a driver, whatever a
-wrapper downloads on first use — is the person's, and it lands there under
-their explicit permission only: asked once at setup, with them there, and held
-as recorded state that a hook can read. Nothing else counts as that permission.
+outside the repository — a linter, a driver, whatever a wrapper downloads on
+first use — is the person's, and it lands there under their explicit
+permission only: asked once at setup, with them there, and held as recorded
+state that a hook can read. Nothing else counts as that permission, and a
+compiler or an interpreter is not among the kinds it can name — the first
+ruling below says why.
 What the project declares in its dependency file does not: a guard that read a
 project's files per language and got one of them wrong would install with
 nobody asked, and an abort is loud only where somebody is reading: with nobody
@@ -537,6 +539,59 @@ is what the person is shown when the question is put; it does not stand in for
 the question. Until that permission is built — `docs/plan.md`, milestone 3,
 the informed permission to install — the person runs every such install
 themselves, as the skills and the install guard say today.
+
+**Runtimes are not a kind the permission may cover.** Ruled on 28 September
+2026, for how milestone 3 of `docs/plan.md` is built; the plan carries the
+question under "Open" until that milestone lands. A yes to runtimes could not
+be honoured and a no could not be enforced. Through a version manager — `nvm`,
+`rustup`, `asdf`, `mise`, `sdk`, all in the guard's manager list — the
+destination stands in no place list, `~/.nvm`, `~/.rustup`, `~/.asdf`, and the
+change reaches shell profiles the guard never reads, so under the milestone's
+rule, a pass only for an allowed place, the command stays blocked whatever the
+record says. Through Homebrew, `brew install node` and `brew install
+shellcheck` are the same string, and the guard cannot tell a yes to one from a
+no to the other. A kind whose yes the guard cannot pass on one route and
+cannot tell apart on the other is asked for appearance's sake, and **A limit
+that reads like a safeguard and is not one is worse than no limit at all**
+below says what that costs. So a compiler or an interpreter stays the person's
+under every answer, as "Where the set ends" in `docs/plan.md` already says,
+and the question says so as a boundary rather than asking it. Where a runtime
+is genuinely needed, that moment has a person in it: the stack is chosen with
+them — in Stage 1 once milestone 8 puts it there; today nothing picks it, as
+the roadmap records under "How the stack gets chosen" — and a task that turns
+out to need a language the spec did not choose is a task not buildable as
+cut, the fourth case under "With nobody there" in `build-work`. What it
+costs: a check tool that needs a second runtime falls to the person, unless a
+route without one exists — `brew` where the tool has a formula — and
+`setup-checks` step 3 has to say so; and the stage where the person picks the
+stack has to confirm that the runtime stands, or an unattended run loses a
+round to an issue over it. Places that reach the same situation and change
+when milestone 3 is built, none of them changed here: milestone 3 of
+`docs/plan.md`, "and whether a runtime is one of them", and the runtime item
+under its "Open"; "Where the set ends" in the same file, "unless that
+permission names runtimes as a kind, which is open below"; `build-work` step
+3 point 7, "a compiler, a runtime, a tool from a package manager"; and the
+question `setup-project` will put.
+
+**The first kind is a tool, not a tool for a check class.** Ruled on 28
+September 2026, for the same build. Anything that runs and ends — a linter, a
+scanner, a code generator, a migration command. Drawn there because on the
+machine they are the same thing, a binary in a directory, and because the
+narrower line would make the run classify its own need under the pressure of
+finishing a task, with the guard open and the difference nowhere in the
+command: a generator the task needs can be read as something a check class
+runs, and "A reason is not the evidence the rule asked for". What differs
+between the two is only what a decline costs, and `build-work` step 3 carries
+both already: a check class goes `skipped` with the reason, the task becomes
+an issue carrying the exact command. Nothing outside the named kinds changes
+hands: it stays the person's, as today. Places that speak of tools for check
+classes today and change when milestone 3 is built, none of them changed
+here: `setup-checks` step 3, "Never install anything system-wide without
+asking", where a decline makes the class `skipped`; `setup-project` step 4
+question 3, "Ask separately whether missing tools should be installed";
+milestone 3 of `docs/plan.md`, "tools for check classes"; the install guard's
+own message, which names the two costs of a decline; and `build-work` step 3
+point 7 with the two decline cases under it, which stay as the two costs.
 
 ## Adapting from Matt Pocock
 
@@ -1088,6 +1143,38 @@ file, and the run reworded the sentence until it passed — saying as it went th
 the hook matches the string in quotes and heredocs alike. It had the reading
 right and stepped around the block anyway, which is the half the message asks for
 and the half no hook can enforce.
+
+**A named install command may enter the verb list, under two conditions, and
+only together with its destination.** Ruled on 28 September 2026, for how
+milestone 3 of `docs/plan.md` is built. The dated entry of 19 September 2026
+in `docs/roadmap.md` measured `npx playwright install` passing this guard and
+filed it under the entry on a wrapper that downloads on first use, which
+refuses to catch the wrapper because that would mean guessing what a build
+command does. That refusal stands, and the entry stays as written: it holds
+for `./gradlew build`, for `mvnw`, and for `npm install puppeteer`, whose
+named act is project-local and whose download is a side effect. It does not
+hold for a command that names the act itself. A name may enter the guard's
+verb list when both hold: the command names the act, an install subcommand —
+the shape of `brew install` and `nvm install`, and the verbs the list reads
+today, `install`, `add`, `use` and `tap`, stay what they are; and the vendor
+documents a destination outside the repository. `./gradlew build` fails the
+first, `npm install puppeteer` fails the first, `npx playwright install` and
+`npx cypress install` pass both. The difference holds in the command itself,
+which is what **A hook cannot see consent** below asks of any difference a
+guard leans on. And it is worth catching only together with that destination,
+read from the vendor and shown in the list of places the person answers: the
+place list names bin directories and `/opt/`, and a browser is not a binary
+in one of them, so a catch without the destination produces a block under
+every answer, and the driver's destination never appears in what the person
+agreed to. Both or neither. This refines where one command is classified; the
+finding on wrappers is not overturned. What a false positive costs:
+`PLAYWRIGHT_BROWSERS_PATH=0` puts the browsers inside `node_modules`, and a
+block there is wrong; with the person there it is one handover, unattended it
+is the task, by "A guard's block, with nobody there" in `build-work`. Places
+that change when this is built, none of them changed here: the manager list
+and the place list in `hooks/pre-tool-use-install-guard.sh`, and the open
+item in `docs/plan.md`, "What `npx playwright install` lands outside the
+repository; not read from the vendor".
 
 **Arming auto-merge is allowed; merging is not — and `--auto` is not arming.**
 The guard blocks `gh pr merge` in every form. The one permitted path is the

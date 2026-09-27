@@ -5881,6 +5881,85 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   measurement on a project that carries a rule: a build subagent handed the
   file's path, whether it opens the file, against one told to read it.
 
+- **An install command passed the auto-mode classifier with nobody answering,
+  measured on 28 September 2026.** In a directory without `docs/agents/`, so
+  that the install guard was inert by its own first condition, a session in
+  auto mode was given `brew install shellcheck` and nothing else. It ran: no
+  confirmation was asked, and the classifier did not refuse it. Read back off
+  the machine on the day this was written, with `brew list --versions`:
+  `shellcheck 0.11.0` and its dependency `gmp 6.3.0`, the binary linked at
+  `/opt/homebrew/bin/shellcheck`, a place the guard's `BINDIR` list names
+  under `/opt/`. Which allow rule stood, if any, is not recorded, as it was
+  not on 14 September.
+
+  **What this was, and what it licenses.** It was not an unattended run of
+  this set: that mode refuses to start while a class in `checks.md` is
+  `empty`, and a directory without `docs/agents/` has no `checks.md`. It was
+  the harness's auto mode with nobody answering, which is the state an
+  unattended run is in, without the run. What it licenses: on this machine,
+  on that day, one install command through one package manager passed the
+  classifier once, with the guard out of the way. What it does not license:
+  any other command, any other package manager, the same command on another
+  day — the classifier is the harness's, and this set has no record of what
+  decides it — and the same command inside a set-up project, where the guard
+  fires first. Fed the same string with a scratch `docs/agents/` present,
+  `hooks/pre-tool-use-install-guard.sh` exits 2 on `brew install shellcheck`,
+  which is why the probe had to run outside a set-up project: the guard sits
+  in front of the classifier, and a command the guard catches says nothing
+  about what the classifier would have done with it.
+
+  **Two earlier commands measured nothing about the classifier**, because the
+  guard blocked them first. The one recorded here is
+  `go install github.com/client9/misspell/cmd/misspell@latest`; the other is
+  not named in the order that produced this entry. Which half of the guard
+  fired is read off the guard, since its message names neither half: the verb
+  pattern matches, `go` standing in the manager list before `install`, and
+  neither place pattern does, because the command names no path — `~/go/bin`
+  stands in `BINDIR`, and `BINDIR` is read only behind a write verb or `-o`.
+  The verb half alone, exit 2.
+
+  **A write under the home directory that names no install ran unrefused as
+  well**, by the account of the session that ran it:
+  `mkdir -p ~/.cache/devloop-probe && touch ~/.cache/devloop-probe/marker`.
+  Recorded as what it is: a write under the home directory, not refused. Read
+  back on the day this was written, the marker does not stand at that path —
+  `ls` answers "No such file or directory" — so what the write left cannot be
+  read off the machine, and the claim rests on that session's account alone.
+  Fed the same string, the guard exits 0: `~/.cache` stands in no place list,
+  and `mkdir` and `touch` are no write verb it reads, so it would have passed
+  inside a set-up project as well. Where an interface driver lands is carried
+  as open in `docs/plan.md` and has not been read from the vendor; this write
+  says nothing about it.
+
+  **The command did far more than the package it named.** By the same account,
+  Homebrew updated itself, downloaded a portable Ruby, updated two taps, and
+  ran a cleanup that deleted cached files, none of it asked for. What a
+  package manager command does to a machine reaches past the package it
+  names, and nothing in the set says so today — searched by subject on 28
+  September 2026: `package manager` stands in `build-work` step 3 point 7 and
+  under "The install guard matches the outcome as well as the verb" in
+  `docs/skill-conventions.md`, both naming it as a route and neither saying
+  what the route does besides; `auto-update`, `update itself` and `cleanup`
+  come back empty under `skills/`, `shared/` and the conventions. When
+  milestone 3 is built, it has to be said where the question is put, as part
+  of what the tool kind costs — the milestone's "what each kind costs" — and
+  it has to stand in the report of what came back, which is where it showed
+  here. Neither place is changed by this entry. Recorded, not built.
+
+  **Set against 14 September 2026**, where `go test` was refused as
+  "Irreversible Local Destruction" in the entry on the first planning run
+  alone: the two together say the classifier's ruling does not follow whether
+  something is installed — a test run that installs nothing was refused, an
+  install was not. What follows, and only this: the unattended path of
+  milestone 3 is not ruled out by the classifier, since one install command
+  has passed it once; and it cannot rely on any command being let through, so
+  the case where one is refused stays what it is — a permission prompt nobody
+  answers, the fourth precondition under "Unattended mode" in `build-work`.
+  The item under "Open" in `docs/plan.md` that asked whether the classifier
+  lets an install command through unattended is closed by this entry; whether
+  it lets a start command through, and which allow rule has to stand for
+  either, stay open there.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
