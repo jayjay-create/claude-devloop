@@ -2861,7 +2861,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   A third way out is not what should hold asks for: the rule is written after the
   finding has already gone one of those two ways, so it belongs at the close
   rather than in the split.
-  Recorded, not built.
+  **Built on 26 September 2026**, at the close and without the count: the entry
+  of 14 September on the standards file records what was built and why the
+  count went.
 
 - **The unattended run put the landing question to the user, measured on 13
   September 2026 in `devloop-test-o`.** The first unattended run on 0.99.0. At the
@@ -3523,27 +3525,63 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `docs/skill-conventions.md:158`, "Never assert state — query it", one level
   up: a document nobody re-queries.
 
-  *Should:* what should hold so that a recurring failure picture lands there,
-  in three sentences. The close of the review — where each finding is announced
-  under fix or file, `build-work:692` and `review-changes:284` — carries a third
-  duty, not a third way out: a finding announced as the second of its kind in
-  this run is written as one rule into `standards.md` in the same change as its
-  fix, and before the fix, so that the next build reads the rule and the next
-  review reads a breach of a written rule rather than judging sameness a third
-  time. The threshold and the destination are `record-lessons:102` and `:115`,
-  said again where the close is, since `docs/skill-conventions.md:1095` to
-  `:1098` says a locked skill cannot be run by another and the alternative —
-  taking the lock off — puts the description into every session's context for
-  the sake of one call; `record-lessons` stays the typed command for what a
-  person notices, and the two lines then stand in two places, which by the
-  entry above on unheld copies owes its guard in the same change. Two things
-  the repair has to know: the check at `docs/skill-conventions.md:1203` prints a
-  line for a locked skill named in backticks by another file, so the close
-  says the rule and not the skill's name; and what stays open is what the
-  entry above left open, narrowed by one step — two findings are "the same" by
-  a judgement once, at the second, and never again after the rule is written,
-  and where that one judgement is kept when the two findings sit in different
-  tasks is not settled here.
+  *Should:* superseded on 26 September 2026 by what was built. The close of the
+  review — where each finding is announced under fix or file, under "What
+  happens to a finding" in `review-changes` and under step 4 of `build-work` —
+  carries a third duty, not a third way out, in one shared block,
+  `shared/rule-not-written-down.md`, inserted at both places so the wording
+  exists once: as each finding is announced, whether the rule it breaks is
+  already written is looked up in `standards.md`, in a command of `checks.md`
+  and in the task's own issue, and where none carries it and a sentence can be
+  written that names a situation this project's code will meet again and what
+  is done in it, that sentence goes into `standards.md` as one rule, in the
+  same change as the fix. The counting is gone. The earlier wording here
+  counted a finding as the second of its kind before a rule was written, and
+  the entry above left open where that count is kept across tasks; nothing
+  survives a task that a later run could count against — the state the
+  turn-end hook keeps is deleted on green, a finding's identity is prose a lens
+  wrote, and the tracker holds issues, not findings — and the lookup against
+  `standards.md` and `checks.md` answers in the moment instead: a rule found
+  there means the documents did not fail, a rule found nowhere is written at
+  the first finding, and a written rule broken all the same is the one case
+  that files an issue, for a check, labelled `raised-here`. The skill nothing
+  calls is neither changed nor unlocked, and the block names no skill, since
+  the check under "Before a handover, run these" prints a locked skill named
+  in backticks by another file; "Who may invoke a skill" in
+  `docs/skill-conventions.md` says the lock's price is met, and milestone 5 of
+  `docs/plan.md` no longer lists this case.
+
+  Measured on 26 September 2026 across the six bench projects,
+  `devloop-test-i`, `-j`, `-l`, `-m`, `-n` and `-o`, on their checkouts on this
+  machine: every `docs/agents/standards.md` carries only the sentence
+  `setup-project` wrote when it created the file, under a version marker that
+  later refreshes moved. In `devloop-test-o` it reads "No coding rules recorded
+  yet — there is no code in this repository to derive them from.", and `git
+  log --oneline main | grep -c '(#[0-9]*)$'` there answers 36.
+
+  **Built on 26 September 2026**, on `task/record-rules-at-review-close`: the
+  shared block, its two insert lines, this entry, the conventions passage and
+  the plan's list. Not walked: no bench has produced a finding at the close
+  since.
+
+  **Built on 27 September 2026**, on the same branch, three corrections to the
+  block and what they rest on. The sentence no longer says the next build
+  reads the rule: step 3 of `build-work` hands the subagent the paths of the
+  control documents and never tells it to read them, and the entry below on
+  Pocock's set records the review as the carrier of the standards. The third
+  exit of "Clear out as you go" stands in the block in computable form: a rule
+  on the main branch for more than ten landed pull requests that no
+  `raised-here` issue cites comes out, and which one is said. A rule occupies
+  one line, a breach issue quotes it word for word, and a rule written a
+  second time after removal files the check as a breach does, which makes two
+  cases that file where the Should above says one. The rulings behind these,
+  the ten, its evidence and how it is revised stand in
+  `docs/skill-conventions.md` under "A project's rules are written at the
+  review's close", and nowhere else. The tool over the whole table, run on 27
+  September 2026 at 0.111.0 on this branch: 0 broken records, 0 of 1781 lines
+  of the search set uncovered, 3 findings, exit 0, and 56 runs that do not
+  count, the same 56 as at `6a4b9e5`. The self-test the same day: exit 0, 87
+  cases, 72 of 72 messages asserted by a case.
 
   **4. The questioning in Stage 1 closed after one round of three questions.**
   The idea: a tool that remembers what it saw of a directory tree on its last
@@ -4050,7 +4088,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   Built in part on 16 September 2026, on `task/three-answers-wording`: the
   first of the two wordings above, the three answers at the end of Stage 1.
-  The six findings and the second wording are recorded and not built.
+  Five of the six findings and the second wording are recorded and not built;
+  the third, the standards file, is built, above.
 
 - **Matt Pocock's skill set read in full against this one on 14 September 2026,
   and it divides into three defects he names that this set has, one he names
@@ -5817,6 +5856,30 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lines this change touched, the defect of the date rule and that outcome. The
   counts by state and kind are the tool's output and are not repeated here.
 
+
+- **Whether the build subagent reads the project's rules is not decided, and
+  four places disagree about it, read on 27 September 2026.** Three say it
+  reads them: the row of `settle-the-look` under "Named, not built as skills",
+  "The build subagent then reads it the way it reads `standards.md`"; the
+  Should of the entry above on the failure picture that came out of the review
+  three times, "so that the build stops producing it" and "read by the build
+  before the finding exists rather than by the review afterwards"; and
+  milestone 7 of `docs/plan.md`, which rests the look file on that precedent.
+  The entry on Pocock's set, written a day after the second, records the
+  opposite as agreement: the review agent carries the standards and not the
+  build agent, because the build agent is under the greatest context pressure.
+  In the skills today: step 3 of `build-work` hands the subagent the paths of
+  the control documents, `standards.md` among them by the pointer block
+  `setup-project` writes into `CLAUDE.md`, and no line tells it to read the
+  rules; `review-changes` is told to read the file first and makes it the
+  source of the standards lens. The block that writes a rule at the close said
+  from 26 September that the next build reads it, and says from 27 September
+  that the next review reads a breach of it.
+
+  Recorded, not decided: the path is handed over, the reading is not
+  instructed, and the three places stand as written. What would decide it is a
+  measurement on a project that carries a rule: a build subagent handed the
+  file's path, whether it opens the file, against one told to read it.
 
 ## Decisions taken against
 

@@ -531,6 +531,13 @@ read them from here; do not leave the reader to guess the API.
       them `MERGED`. Filter on each node's own `state`; never on the argument
       name.
 
+    Ask which `raised-here` issues carry a given line of `standards.md`. The
+    close of a review asks this of every rule there before it takes one out,
+    and a rule any issue cites stays; the line goes in verbatim, as it stands
+    in the file:
+
+        gh issue list --label raised-here --state all --limit 500 --json number,body -q 'map(select(.body | contains("THE LINE")) | .number)'
+
 The mutation is `addBlockedBy` with the fields `issueId` and `blockingIssueId`.
 There is no `addIssueBlockedBy`; guessing that name fails.
 
@@ -550,7 +557,11 @@ obvious, and one line — "What would make this decision invalid".
 ### `standards.md`
 
 Coding rules of this project beyond what a tool already enforces. If you find
-none, write that down — empty is more honest than invented.
+none, write that down — empty is more honest than invented. Write it as the
+file's state and not the repository's — none recorded yet, rather than there
+is no code — because that line stands until the first rule replaces it: from
+here on the file is written at the close of every review, where a finding no
+written rule would have caught adds one.
 
 ### `environment.md`
 

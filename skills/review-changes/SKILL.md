@@ -214,6 +214,8 @@ ones and reached the close as nothing at all.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-not-in-conversation`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text rule-not-written-down`
+
 ## Refactoring
 
 This is where it belongs — not in the build loop, where a rewrite makes it
