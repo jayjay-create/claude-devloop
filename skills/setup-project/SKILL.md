@@ -531,6 +531,13 @@ read them from here; do not leave the reader to guess the API.
       them `MERGED`. Filter on each node's own `state`; never on the argument
       name.
 
+    Ask which `raised-here` issues carry a given line of `standards.md`. The
+    close of a review asks this of every rule there before it takes one out,
+    and a rule any issue cites stays; the line goes in verbatim, as it stands
+    in the file:
+
+        gh issue list --label raised-here --state all --limit 500 --json number,body -q 'map(select(.body | contains("THE LINE")) | .number)'
+
 The mutation is `addBlockedBy` with the fields `issueId` and `blockingIssueId`.
 There is no `addIssueBlockedBy`; guessing that name fails.
 

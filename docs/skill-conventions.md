@@ -858,6 +858,107 @@ Two things follow, and the second is the one that costs something.
    safeguard**, one level further out: there the machinery was missing, here the
    machinery was never possible.
 
+## A project's rules are written at the review's close
+
+The rule a project holds and nobody wrote down goes into
+`docs/agents/standards.md` where the review closes:
+`shared/rule-not-written-down.md`, inserted under "What happens to a finding"
+in `review-changes` and under step 4 of `build-work`. The rulings behind that
+block stand here and not in `docs/roadmap.md`, whose dated entries are a day's
+measurements and may go stale, so that a ruling filed among them is read as
+one: the Should of the entry of 13 September 2026 there said the build would
+read the rule, the entry on Pocock's set a day later recorded the review as
+the carrier of the standards, and the block of 26 September took the first
+wording over unchecked.
+
+**The lookup replaces the counting.** Nothing survives a task that a later run
+could count against: the state the turn-end hook keeps is deleted on green, a
+finding's identity is prose a lens wrote, and the tracker holds issues, not
+findings. So a threshold at the second occurrence of a finding cannot be
+computed, and the lookup against `standards.md`, a command of `checks.md` and
+the task's own issue answers in the moment instead: a rule found there means
+the documents did not fail, a rule found nowhere is written at the first
+finding.
+
+**The block does not say the build reads the rule.** Step 3 of `build-work`
+hands the subagent the paths of the control documents and never tells it to
+read the rules; `review-changes` is told to read the file first and makes it
+the source of the standards lens. So a rule takes effect through the next
+review, which reads a breach of a written rule instead of judging the same
+thing again. Whether the build should read it is open, under "Known gaps" in
+`docs/roadmap.md`.
+
+**`record-lessons` stays locked.** Lifted, its description would sit in every
+session's context for the sake of one call, and the listing of skills has a
+budget, so one more entry can push another out. "Who may invoke a skill" below
+carries the lock's history and its second reason.
+
+**An issue for a check is filed at a breach, not at a rule's first writing.**
+Filing at the first writing queues a build task behind every rule, through
+step 2 of `build-work`, before there is any evidence that reading was not
+enough; and a check built with no breach behind it has no red to prove itself
+against, which is what step 3 of `build-work` asks of every check. Each breach
+issue is one measurement of whether reading is enough. A rule written a second
+time after the third exit below removed it counts as a breach nobody saw, and
+files the check.
+
+**A rule leaves the file by three exits, and the third carries a number.**
+"Clear out as you go" in `record-lessons` names three: a rule a tool now
+enforces, a rule about code that no longer exists, a rule nothing has bumped
+into for a long time. Until 27 September 2026 the block carried the first two,
+and under two an obeyed rule never left, so the file could only grow. The third
+stands in the block in a form a run computes: a rule that has stood on the
+main branch for more than ten landed pull requests and that no `raised-here`
+issue cites comes out. The age is the merge commit that introduced the rule's
+line and the first-parent commits of the main branch since it; the citation is
+the tracker's own query, in the `issue-tracker.md` template of
+`setup-project`, and it works only because a rule occupies one line and a
+breach issue quotes it word for word. Landed pull requests measure reviews,
+not time: each passed the close at least once, and a project that lands
+nothing has read nothing. Ten is set on 27 September 2026 and is not measured.
+No project of this workflow has ever carried a written rule, so nothing could
+calibrate it, and the bench projects are no evidence for it: interrupted
+throwaway runs, none of which carried a rule. What the number rests on is the
+evidence on what a growing context file costs an agent:
+
+- Gloaguen, Mündler, Müller, Raychev and Vechev, ETH Zurich, February 2026,
+  revised June 2026, arXiv:2602.11988, "Evaluating AGENTS.md: Are
+  Repository-Level Context Files Helpful for Coding Agents?": 138 tasks from
+  12 repositories, four agents, Claude Code with Sonnet 4.5 among them. An
+  LLM-written context file lowered the share of tasks solved, by half a per
+  cent on one benchmark and by two on the other, and raised cost by over
+  twenty per cent; a developer-written one raised the share by 2.4 per cent at
+  up to nineteen per cent more cost; with every other documentation file
+  removed from the repositories the same generated files raised it by 2.7 per
+  cent. What hurts is the line that repeats what the agent reads anyway.
+- Lulla, Mohsenimofidi, Galster, Zhang, Baltes and Treude, the JAWs workshop
+  at ICSE 2026, arXiv:2601.20404, "On the Impact of AGENTS.md Files on the
+  Efficiency of AI Coding Agents": 124 paired pull requests over ten
+  repositories, 28.64 per cent less median runtime with the file.
+
+A line the agent reads that changes nothing it does costs, and a line that
+tells it something it would not otherwise reach pays. A rule ten reviews have
+read without a breach is the first kind until a breach makes it the second.
+
+**How ten is revised, and on what.** Rules written a second time after the
+exit removed them say it is too small; `git log -p -- docs/agents/standards.md`
+shows both writings. Removals that no second writing ever followed allow
+smaller. The first revision is possible once a project has landed ten pull
+requests after its first rule, and not before.
+
+**Which way each cost falls if ten is wrong.** Too small: a rule the review
+still needed goes, and the defect it named comes back to a review reading
+without it, caught there on general grounds or, unattended, landed; the
+second writing then files the check, so the cost is one recurrence per rule.
+Too large: the file grows, every review reads what nothing has touched, and
+nothing shows it, since the exit never fires. The first cost leaves a trace in
+git and the second leaves none, which is why the number errs small.
+
+**Whether a removed line says the same as a rule about to be written is a
+judgement**, the one the exit does not remove. It is made over a list a
+command printed, and made wrong it costs a fresh rule without its check, which
+the next breach files.
+
 ## Environment constraints, measured
 
 **Nothing resumes on its own.** A run that hands the user a command and says it
@@ -1329,9 +1430,11 @@ that a build loop has something to hand — a rule the project holds that nobody
 wrote down goes into `docs/agents/standards.md` — is said where the review
 closes, in `shared/rule-not-written-down.md`, inserted under "What happens to
 a finding" in `review-changes` and under step 4 of `build-work`. The lock was
-not lifted, for two reasons: lifted, the description sits in every session's
+not lifted, for three reasons: lifted, the description sits in every session's
 context for the sake of one call; and the skill routes into four destinations
-where the close needs one. `record-lessons` stays the typed command for what a
+where the close needs one; and, since 27 September 2026, the listing of skills
+has a budget, so one more entry can push another out.
+`record-lessons` stays the typed command for what a
 person notices, and the shared block names no skill, because the check under
 "Before a handover, run these" prints a locked skill named in backticks by
 another file. The entry of 14 September 2026 in `docs/roadmap.md` records the

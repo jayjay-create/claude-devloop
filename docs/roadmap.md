@@ -3564,6 +3564,25 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the plan's list. Not walked: no bench has produced a finding at the close
   since.
 
+  **Built on 27 September 2026**, on the same branch, three corrections to the
+  block and what they rest on. The sentence no longer says the next build
+  reads the rule: step 3 of `build-work` hands the subagent the paths of the
+  control documents and never tells it to read them, and the entry below on
+  Pocock's set records the review as the carrier of the standards. The third
+  exit of "Clear out as you go" stands in the block in computable form: a rule
+  on the main branch for more than ten landed pull requests that no
+  `raised-here` issue cites comes out, and which one is said. A rule occupies
+  one line, a breach issue quotes it word for word, and a rule written a
+  second time after removal files the check as a breach does, which makes two
+  cases that file where the Should above says one. The rulings behind these,
+  the ten, its evidence and how it is revised stand in
+  `docs/skill-conventions.md` under "A project's rules are written at the
+  review's close", and nowhere else. The tool over the whole table, run on 27
+  September 2026 at 0.111.0 on this branch: 0 broken records, 0 of 1781 lines
+  of the search set uncovered, 3 findings, exit 0, and 56 runs that do not
+  count, the same 56 as at `6a4b9e5`. The self-test the same day: exit 0, 87
+  cases, 72 of 72 messages asserted by a case.
+
   **4. The questioning in Stage 1 closed after one round of three questions.**
   The idea: a tool that remembers what it saw of a directory tree on its last
   run and says, the next time, what has changed. Asked: where the last state is
@@ -5837,6 +5856,30 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lines this change touched, the defect of the date rule and that outcome. The
   counts by state and kind are the tool's output and are not repeated here.
 
+
+- **Whether the build subagent reads the project's rules is not decided, and
+  four places disagree about it, read on 27 September 2026.** Three say it
+  reads them: the row of `settle-the-look` under "Named, not built as skills",
+  "The build subagent then reads it the way it reads `standards.md`"; the
+  Should of the entry above on the failure picture that came out of the review
+  three times, "so that the build stops producing it" and "read by the build
+  before the finding exists rather than by the review afterwards"; and
+  milestone 7 of `docs/plan.md`, which rests the look file on that precedent.
+  The entry on Pocock's set, written a day after the second, records the
+  opposite as agreement: the review agent carries the standards and not the
+  build agent, because the build agent is under the greatest context pressure.
+  In the skills today: step 3 of `build-work` hands the subagent the paths of
+  the control documents, `standards.md` among them by the pointer block
+  `setup-project` writes into `CLAUDE.md`, and no line tells it to read the
+  rules; `review-changes` is told to read the file first and makes it the
+  source of the standards lens. The block that writes a rule at the close said
+  from 26 September that the next build reads it, and says from 27 September
+  that the next review reads a breach of it.
+
+  Recorded, not decided: the path is handed over, the reading is not
+  instructed, and the three places stand as written. What would decide it is a
+  measurement on a project that carries a rule: a build subagent handed the
+  file's path, whether it opens the file, against one told to read it.
 
 ## Decisions taken against
 
