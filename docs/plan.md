@@ -516,7 +516,12 @@ that answers it, or says that none does.
 - Whether a headless browser runs on this machine unattended, and who ends it
   (milestone 4).
 - What `npx playwright install` lands outside the repository; not read from
-  the vendor (milestone 3).
+  the vendor before 28 September 2026, and read that day off
+  `playwright.dev/docs/browsers`: three cache directories under the home
+  directory with nothing set, the operating system's own location for Chrome
+  and Edge, and the roadmap entry of that date carries the reading. What stays
+  is that destination entering the guard's list of places, which is milestone
+  3.
 - Whether a runtime is one of the kinds the install permission may cover
   (milestone 3).
 - Whether a look file can be read out of a stylesheet mechanically
