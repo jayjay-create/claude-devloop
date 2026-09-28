@@ -248,9 +248,11 @@ milestone: the tools half — the record's form, the guard reading it off the
 default branch as fetched, the session-start line printing it through the same
 reader, and the four skill places running the install under a yes and
 reporting it in two places — stands as `docs/skill-conventions.md` describes
-under "The install guard reads a record". Not built: the question, drafted in
-the report of that build and left for the person to approve, so no project
-carries a record yet and the guard blocks every install naming that cause; the
+under "The install guard reads a record". The question followed the same day,
+version 0.115.0: question 4 of `setup-project` step 4, beside question 3, in
+the wording approved that day, with the record written into `environment.md`
+by step 6; no project carries a record yet all the same, none having been set
+up with it, so the guard blocks every install naming that cause. Not built: the
 refresh in `setup-project`, which is where a project set up before this version
 would be asked, and which asks nothing anew today; and the drivers half, so the
 place list carries no driver destination and `npx playwright install` passes
@@ -262,13 +264,12 @@ check class"; and "whether a runtime is one of them" is answered no under
 "Runtimes are not a kind the permission may cover". A third, "all say today that
 the person runs the install", held until this build. A fourth, "which is the
 list of places the install guard already carries as `BINDIR`", describes the
-record and the session-start line and not the question: the draft, amended on
-28 September 2026, names the kind of place a yes opens and says that the record
-carries the list; the six places stand in the record and nowhere the person is
-asked. The question, when built,
-goes into `setup-project` step 4 as a question of its own beside question 3,
-and the record into `environment.md` in step 6, counting once step 8 has landed
-it on the default branch.
+record and the session-start line and not the question: the question, as
+built, names the kind of place a yes opens and says that the record carries
+the list; the six places stand in the record and nowhere the person is asked.
+The question stands in `setup-project` step 4 as a question of its own beside
+question 3, and the record in `environment.md` in step 6, counting once step 8
+has landed it on the default branch.
 
 Why here: blocked by the three conventions milestone 2 rewrites; milestones 4,
 7 and 8 need a driver and a linter that land outside the repository.

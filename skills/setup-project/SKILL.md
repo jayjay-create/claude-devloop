@@ -230,7 +230,7 @@ there is something to check.
 ## Step 4 — Questions
 
 Only these, each only under its condition. Lead with your recommendation so a
-single word can answer.
+single word can answer; question 4 says why it gives none.
 
 1. **Issue tracker** — only if there is no remote, or several candidates.
    With exactly one remote: state it and move on.
@@ -333,15 +333,74 @@ single word can answer.
    `environment.md` on the default branch as last fetched — has not landed
    yet, so the guard blocks the command and it is handed over, backed, as "A
    guard's block is not a decline" above says. From the next session on the
-   record decides, and nothing in this skill writes it yet.
+   record decides; question 4 writes it, and step 6 puts it into
+   `environment.md`.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
-4. **Local environment** — always, unless you could read it all from
+4. **Install permission** — always. Say, in a message of its own and in the
+   user's language, that one question about their machine comes now rather
+   than later. Why now: the check commands of this project are not known yet,
+   so what can be named is kinds of thing and places, not tools; and later on,
+   a run that builds alone has nobody to ask.
+
+   Show what the project already declares in its dependency file, and say that
+   this is not what is being asked: those land inside the repository and
+   travel with it.
+
+   Say what a tool is here: a program that runs and ends, such as a checker, a
+   code generator or a migration command. Say what a yes means for the machine
+   in one sentence: such programs land outside the project, in the usual
+   places for installed programs on this machine; which places exactly stands
+   written in the record in the project's own files, where they can read it at
+   any time, and the run reads it at the start of every session once the
+   record has landed on the main branch. Then, for each route this project's
+   stack actually has, say in ordinary words which kind of place it reaches,
+   read off the machine the run is on before anything is named: ask the route
+   itself where it puts things, as the guard does, and say the answer as a
+   kind of place, the directory that package manager keeps for the programs it
+   installs, or the directory that toolchain keeps for programs it builds.
+   Name no operating system, no path, and no route the stack does not have.
+   Where a route does not answer, say that it did not, and name no place for
+   it.
+
+   Say that a package manager command does more than the package it names: it
+   updates itself, fetches what it needs for that, and cleans up on its own,
+   without asking. No figure, no version, no measurement.
+
+   Put the yes so that it says what it does, in the option itself: from now on
+   the run installs such a tool itself, with them there and with nobody there,
+   without asking again, and nothing lands at this moment.
+
+   In one sentence, say what a yes does not hold back together with what stays
+   theirs: through a package manager the guard sees the verb and not what is
+   installed, so a yes to tools also lets through a command that installs a
+   runtime, which is a rule on the run and not a wall; and compilers and
+   runtimes, anything needing sudo, anything piping a script from the network
+   into a shell, and anything outside the places the record names stay theirs
+   under every answer.
+
+   Say that the answer travels with the repository: it is committed, and
+   whoever clones it and uses this set has it applied on their machine.
+
+   Say where a no leads, in two halves: with them there, everything stays as
+   it is now, the run hands them the command and they decide; with nobody
+   there, a check class goes skipped with that reason, or the task becomes an
+   issue carrying the exact command.
+
+   Say that it can be changed later, with them there, and takes effect once
+   the change has landed on the main branch.
+
+   Give no recommendation, and say why: it is their machine, and the run
+   cannot weigh that for them.
+
+   The answer goes into `environment.md` in step 6, as the section the guard
+   reads; nothing is installed on it here.
+5. **Local environment** — always, unless you could read it all from
    `docker-compose.yml` or the README. Which processes, in what order, on what ports.
-5. **Labels** — only if the tracker already has labels with overlapping meaning.
+6. **Labels** — only if the tracker already has labels with overlapping meaning.
    Then ask: map onto the existing ones, or add ours alongside. Otherwise create
    the five standard labels and report it.
-6. **Where glossary and decision records live** — only if something already lives
+7. **Where glossary and decision records live** — only if something already lives
    elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`. **Create both
    as files that git can carry, and say you did.** `CONTEXT.md` gets a heading
    and a line saying it stays empty until the first term comes up; `docs/adr/`
@@ -582,6 +641,31 @@ watching. Whether a required check exists on the default branch and which one;
 if none, that merges are held by the question at the end of a build and by
 nothing else, so the user performs them; and what would change that, where
 anything would.
+
+Also the answer to question 4 of step 4, under a heading of its own, `## Install
+permission`, in the shape the install guard and the session-start hook read it —
+one key and one value per line, spelled exactly, ASCII only, since a script
+reads the start of each line:
+
+    ## Install permission
+
+    install-tools: yes
+    install-place: /usr/local/bin
+    install-place: /usr/local/sbin
+    install-place: /opt
+    install-place: ~/.local/bin
+    install-place: ~/bin
+    install-place: ~/go/bin
+    install-answered: YYYY-MM-DD
+
+`install-tools` is the answer, `yes` or `no` and nothing else. The six
+`install-place` lines are the places a yes opens in this version, written as
+they stand here under either answer, so that the file says what a yes would
+open where the answer is no. `install-answered` is the date the question was
+answered. The guard and the session-start hook read this section off the
+default branch as last fetched, never off the working tree, so it counts once
+step 8 has landed it there: during this setup the guard finds no record, which
+is what question 3 says.
 
 ## Step 7 — Pointer block in CLAUDE.md
 

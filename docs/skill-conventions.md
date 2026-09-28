@@ -538,9 +538,10 @@ there, it is the first thing to go wrong. What the project declares
 is what the person is shown when the question is put; it does not stand in for
 the question. Since 28 September 2026 the install guard reads that recorded
 state and the skills run the install where it says yes — **The install guard
-reads a record** below says how — and the question that writes it is not
-built: until it is, no project carries a record, the guard blocks every such
-install with that cause, and the person runs it themselves, as before.
+reads a record** below says how — and the question that writes it stands in
+`setup-project` step 4 since the same day, version 0.115.0: a project set up
+before it, or set up empty, carries no record, and there the guard blocks every
+such install with that cause and the person runs it themselves, as before.
 
 **Runtimes are not a kind the permission may cover.** Ruled on 28 September
 2026, for how milestone 3 of `docs/plan.md` is built; the plan carries the
@@ -573,9 +574,9 @@ of that milestone — milestone 3 of `docs/plan.md`, "and whether a runtime is
 one of them", and the runtime item under its "Open"; "Where the set ends" in
 the same file, "unless that permission names runtimes as a kind, which is
 open below"; `build-work` step 3 point 7, "a compiler, a runtime, a tool from
-a package manager" — and not changed, because not built: the question
-`setup-project` will put, drafted in the report of that build and left for
-the person to approve.
+a package manager" — and, since the question was built the same day, version
+0.115.0, question 4 of `setup-project` step 4, which says the boundary as
+this ruling asks.
 
 **The first kind is a tool, not a tool for a check class.** Ruled on 28
 September 2026, for the same build. Anything that runs and ends — a linter, a
@@ -1132,11 +1133,11 @@ form "Works with nothing else installed" gives it — and the hook is what
 catches the ordinary case, not a wall. Who runs the command is not part of
 that rule. Since 28 September 2026 the guard reads the record and passes what
 it allows, and every skill that used to hand an install over runs it where
-the record says yes — the paragraph after next says how; what nothing writes
-yet is the record itself, since the question at setup (`docs/plan.md`,
-milestone 3, the informed permission to install) is not built, so on every
-project today the guard finds no record, blocks with that cause, and the
-person runs it, as the skills say for that case. What does not move either way is the
+the record says yes — the paragraph after next says how; the record is written
+by the question at setup, question 4 of `setup-project` step 4 since the same
+day, version 0.115.0, and lands with the setup, so a project set up before it,
+or set up empty, carries no record: there the guard blocks with that cause and
+the person runs it, as the skills say for that case. What does not move either way is the
 backing: the command is backed before it runs, whoever runs it — the vendor's
 own installation line or the path in it resolving, which is the case of the
 module path that was an organisation's name — and its success is read off the
@@ -1161,8 +1162,8 @@ shape `checks.md` uses for a value a script reads — `grep` on the start of the
 line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
 one `install-place:` line per place a yes opens in this version, spelled as
 the guard matches it; `install-answered:` with the date the question was
-answered. The question does not show that list: by the draft amended on 28
-September 2026 it says that programs land outside the project, in the usual
+answered. The question does not show that list: by its text, amended and
+built on 28 September 2026, it says that programs land outside the project, in the usual
 places for installed programs on this machine, that which places exactly
 stands in the record, and for each route the stack has, which kind of place it
 reaches. It carries the
@@ -1235,8 +1236,8 @@ landed on `origin` but not yet fetched blocked, then passed after the fetch.
 second being the drivers half. Not measured: the two runs on a bench that
 milestone 3 ends with, one under a yes and one under a no, from the installed
 copy. Nothing here has run on a bench, the runs are not recorded in
-`docs/stock-take.tsv`, and the question that writes the record is drafted, not
-built.
+`docs/stock-take.tsv`, and the question that writes the record, built the
+same day, has been put to nobody.
 
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how
