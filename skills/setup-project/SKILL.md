@@ -325,8 +325,15 @@ single word can answer.
    which classes are ruled out and with what reason, and which are genuinely
    still undecided. A class you have just reasoned away is ruled out, not
    undecided. Ask separately whether missing tools should be installed — that
-   changes the project. Never install anything system-wide without asking;
-   prefer tools that live inside the project.
+   changes the project — and say where a no leads: the class that tool would
+   fill stays as it is, and `setup-checks` records it as `skipped` with that
+   reason, not `empty`. Prefer tools that live inside the project. A tool that
+   lands outside it is the user's to run during a first setup: the install
+   record the guard reads — the section `## Install permission` of
+   `environment.md` on the default branch as last fetched — has not landed
+   yet, so the guard blocks the command and it is handed over, backed, as "A
+   guard's block is not a decline" above says. From the next session on the
+   record decides, and nothing in this skill writes it yet.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 4. **Local environment** — always, unless you could read it all from

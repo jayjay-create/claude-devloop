@@ -81,8 +81,8 @@ issue raised and the next task taken; a refused arming ends the run instead.
 
 The block above says that what a run does with a question the test lets through,
 when nobody is there, is written in each skill's own words. In this skill it is
-written in three places already, and this section names them so they are read as
-one rule and not as three:
+written in four places already, and this section names them so they are read as
+one rule and not as four:
 
 - **Which task next** — step 2. Not a question in either mode; the rule there
   decides it and says why the same rule serves both.
@@ -93,6 +93,12 @@ one rule and not as three:
 - **The turn-end hook handing the problem over** — step 3, its last section.
   The same shape: an issue saying the task is not buildable as cut, the task put
   down, the next one taken.
+- **An install the record does not open** — step 3 point 7. A no on record is
+  the decline, and the decline paragraph there applies: a check class goes
+  `skipped` through `setup-checks`, the task itself becomes an issue and a
+  blocker and step 2 takes the next; a record never written is a block, and
+  goes as the second bullet says. Under a yes there is nothing to decide: the
+  run installs, as with the user there.
 
 **A question about the work itself that comes up inside a task and passes the
 test** — a choice the task rests on that the spec did not make — is the fourth
@@ -306,22 +312,52 @@ The subagent:
 5. Commits behaviour changes separately from mechanical ones.
 6. Runs everything `checks.md` lists before reporting done. A report a later gate
    rejects is not a report.
-7. Never installs anything that lands outside the repository — a compiler, a
-   runtime, a tool from a package manager. That is the user's to run, the same
-   way merging is, and a guard blocks it. Report what it installs, what it
+7. Installs a tool that lands outside the repository — a linter, a scanner, a
+   generator, a migration command, anything that runs and ends — only where the
+   install record says yes, and reads the record where the guard reads it: the
+   section `## Install permission` of `docs/agents/environment.md` on the
+   default branch as last fetched, which the session-start line printed, never
+   the working tree. Under a yes, run the backed command yourself, with the
+   user there and with nobody there, without asking again; the guard passes it
+   where every place it lands is one the record names and blocks it otherwise,
+   and "A guard's block, with nobody there" above says what follows a block.
+   Read the result off the path the installer writes to, never off
+   `command -v`, and report it in two places, because they are two duties: the
+   standing fact about running this project goes into `environment.md` under
+   point 8, and the report of this run — the command as it ran, what came
+   back, what stands at that path, and what the package manager did besides —
+   goes into the pull request body beside the `Guarded conditions` list, which
+   is what outlives the session; with the user there, say the same in one line
+   as well. A package manager does more than the package it names: on 28
+   September 2026 one `brew install` updated Homebrew itself, fetched a
+   portable Ruby, updated two taps and ran a cleanup, none of it asked for,
+   which is why that last part is in the report. A compiler or a runtime,
+   anything needing `sudo`, anything piping a script from the network into a
+   shell, and anything landing outside the places the record names stay the
+   user's under every answer; through a package manager the guard sees the
+   verb and not what is installed, so a yes to tools also passes `brew install
+   node`, and that is a rule on this run rather than a wall: do not install a
+   runtime under it. Where the record says no, or was never written, the
+   install stays the user's to run, the same way merging is, and the guard
+   blocks it — a compiler, a runtime, a tool from a package manager alike.
+   Report what it installs, what it
    unblocks, and the exact command — and both ways it can go, in the same
    breath: the build picks up once the tool is where that command puts it, and
    **a decline is an answer too, not a wall**. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
-   This is the one thing a task can need that the task itself cannot do.
+   With nobody there, a no on record is the decline, and the paragraph below
+   applies with it as the answer; a record never written is a block and not a
+   decline, and goes the way the guard's block goes. This is the one thing a
+   task can need that the task itself cannot do without the record's yes.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
 8. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into
    `docs/agents/environment.md`, on this same branch. A command the user has to
-   type is a fact about the environment, and it belongs in the file rather than
-   in a sentence that scrolls away. That file is read after every merge to say
+   type — or one this run ran under the install record, which whoever clones
+   this project will have to run — is a fact about the environment, and it
+   belongs in the file rather than in a sentence that scrolls away. That file is read after every merge to say
    what to pull; it is only worth reading if something writes it.
 
    **The line written is the backed command itself, not a copy of it made by
@@ -567,8 +603,12 @@ reads for, and no lens reads a test result. So a run arriving here with a green
 suite and no review has met one of the two preconditions, not both.
 
 **The pull request body carries the `Guarded conditions` list from step 3**, one
-line per condition. That is the trip that outlives the session; the one to the
-review has already happened.
+line per condition, and beside it, where the build installed a tool under the
+install record, the install report point 7 asks for: the command as it ran,
+what came back, what stands at the path the installer writes to, and what the
+package manager did besides. That is the trip that outlives the session; the
+one to the review has already happened, and the standing fact about running
+the project went into `environment.md` under point 8, which is the other duty.
 
 **The pull request body names the task it closes**, with a closing keyword —
 `Closes #N` — on a line of its own. That is not decoration. It is the only

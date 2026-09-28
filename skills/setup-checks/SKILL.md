@@ -28,7 +28,8 @@ as long as that reason holds, and some reasons are about a state the project wil
 grow out of; `empty` means nobody decided yet.
 
 This skill changes the project from the outside — it adds tools and configuration.
-Move carefully and ask before anything that reaches beyond the repository.
+Move carefully and ask before anything that reaches beyond the repository, unless
+the install record has answered it already — step 3 says how.
 
 **Called for a single class**, which is how a build step reaches this skill when
 the task it is building created the target: fill that one class, leave the others
@@ -163,7 +164,8 @@ against a stub produces a check that proves nothing.
 
 **Ask anyway where filling it changes their project rather than this workflow's
 plumbing.** A dependency added to their manifest, or anything installed on their
-machine, is theirs to allow, whatever made the class eligible. A test case and a
+machine that the install record does not already allow, is theirs to allow,
+whatever made the class eligible. A test case and a
 target in the task runner are not. When both kinds come up in one round, state
 the ones that cost them nothing and ask about the ones that do — never side by
 side as though they were the same kind of thing.
@@ -182,10 +184,27 @@ and writing it is refused — so say which commands they are and that choosing
 the confirmations. Setup could not name them, because they did not exist yet.
 Only the check commands themselves — never what was needed to install them.
 
-**Never install anything system-wide without asking**, and say plainly that it
-reaches beyond this project. If the only candidate for a class needs a system
-install and the user declines, that class becomes `skipped` with that reason —
-not `empty`.
+**A tool that lands outside the repository is installed by this run only where
+the install record says yes**, read where the guard reads it: the section
+`## Install permission` of `docs/agents/environment.md` on the default branch
+as last fetched, which the session-start line printed, never the working tree.
+Under a yes, run the backed command yourself, with the user there and with
+nobody there, without asking again; the guard passes it where every place it
+lands is one the record names and blocks it otherwise, and "A guard's block is
+not a decline" above says what follows a block. The class counts as filled only
+once the tool stands at the path the installer writes to, never where
+`command -v` finds one. Report the command as it ran, what came back, what
+stands at that path, and what the package manager did besides — it updates
+itself, fetches what it needs for that and cleans up unasked — in the pull
+request body that lands the class, step 7's or the build's where this skill was
+called for one class, and write the standing fact into `environment.md`. A
+compiler or a runtime, anything needing `sudo`, anything piping a script from
+the network into a shell, and anything landing outside the places the record
+names stay the user's under every answer. Where the record says no, or was
+never written, never install anything system-wide without asking, and say
+plainly that it reaches beyond this project. If the only candidate for a class
+needs a system install and the user declines — or, with nobody there, the
+record says no — that class becomes `skipped` with that reason — not `empty`.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 

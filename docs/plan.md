@@ -50,8 +50,10 @@ back mechanically. Beyond that line is the person's.
   lands outside the repository lands there under the person's explicit
   permission only, asked once at setup under milestone 3 and recorded; what
   the project declares is what the person is shown at that question, and it
-  does not stand in for it. A compiler or interpreter is the person's unless
-  that permission names runtimes as a kind, which is open below.
+  does not stand in for it. A compiler or interpreter is the person's under
+  every answer: ruled on 28 September 2026, "Runtimes are not a kind the
+  permission may cover" in `docs/skill-conventions.md`, which closed the item
+  under "Open" that this sentence used to point at.
 - **Beyond this machine.** Deployment, configuration, secrets, a first release,
   documentation for the people who will use the thing: the roadmap entry on the
   aim lists them, and nothing here builds them.
@@ -119,7 +121,8 @@ with their reason.
 
 The things: the twelve skills down to their branches, `shared/`, `hooks/`,
 `bin/` and `scripts/` down to their outcomes, the tool itself included; the
-seventeen checks under "Before a handover, run these" and the check under
+eighteen checks under "Before a handover, run these", seventeen until 28
+September 2026, and the check under
 "Before you change anything, run this", both outcomes of each; the twenty
 names under "Named, not built as skills", eleven as things of their own and
 nine as a note on the thing that does their work, the two side paths under
@@ -239,6 +242,28 @@ meant to see; the record covers it expressly, or it goes on landing in silence.
 Ends with two runs on one bench: the record saying yes, a build installing a
 tool unattended, the guard passing, the tool standing at the path; the record
 saying no, the guard blocking, the decline path as today.
+
+Built in part on 28 September 2026, version 0.114.0, and not landed as a
+milestone: the tools half — the record's form, the guard reading it off the
+default branch as fetched, the session-start line printing it through the same
+reader, and the four skill places running the install under a yes and
+reporting it in two places — stands as `docs/skill-conventions.md` describes
+under "The install guard reads a record". Not built: the question, drafted in
+the report of that build and left for the person to approve, so no project
+carries a record yet and the guard blocks every install naming that cause; the
+refresh in `setup-project`, which is where a project set up before this version
+would be asked, and which asks nothing anew today; and the drivers half, so the
+place list carries no driver destination and `npx playwright install` passes
+the guard as before. The two runs above have not happened, and nothing of this
+reads as exercised. Two phrases above stand as written on 19 September 2026 and
+were ruled on 28 September 2026: "tools for check classes" reads as a tool,
+anything that runs and ends, under "The first kind is a tool, not a tool for a
+check class"; and "whether a runtime is one of them" is answered no under
+"Runtimes are not a kind the permission may cover". A third, "all say today that
+the person runs the install", held until this build. The question, when built,
+goes into `setup-project` step 4 as a question of its own beside question 3,
+and the record into `environment.md` in step 6, counting once step 8 has landed
+it on the default branch.
 
 Why here: blocked by the three conventions milestone 2 rewrites; milestones 4,
 7 and 8 need a driver and a linter that land outside the repository.
@@ -521,9 +546,12 @@ that answers it, or says that none does.
   directory with nothing set, the operating system's own location for Chrome
   and Edge, and the roadmap entry of that date carries the reading. What stays
   is that destination entering the guard's list of places, which is milestone
-  3.
+  3's drivers half, not built on 28 September 2026 with the tools half.
 - Whether a runtime is one of the kinds the install permission may cover
-  (milestone 3).
+  (milestone 3). Ruled no on 28 September 2026, "Runtimes are not a kind the
+  permission may cover" in `docs/skill-conventions.md`: a yes could not be
+  honoured and a no could not be enforced, so a compiler or interpreter stays
+  the person's under every answer, and this item is closed.
 - Whether a look file can be read out of a stylesheet mechanically
   (milestone 7).
 - Whether a split skill loads its other halves when called (milestone 9).

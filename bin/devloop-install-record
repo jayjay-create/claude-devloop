@@ -1,0 +1,61 @@
+#!/bin/bash
+# Prints the install record: the section "## Install permission" of
+# docs/agents/environment.md as it stands on the default branch as last
+# fetched, refs/remotes/origin/<default>, never as it stands in the working
+# tree. The install guard and the session-start hook both read the record
+# through this program, so that the two cannot disagree about it.
+# See docs/skill-conventions.md, "The install guard reads a record".
+#
+# On exit 0, one key per line:
+#   ref: origin/<default>
+#   tools: yes|no
+#   place: <one line per place the record names, spelled as the record spells it>
+#   answered: <the date the record carries, or none>
+# On exit 1 one line, "cause: <which of the causes it was>", and nothing else.
+# Exit 2 on more than one argument. The one argument is the project directory;
+# without it, CLAUDE_PROJECT_DIR, and without that the current directory.
+set -u
+if [ $# -gt 1 ]; then
+  echo "devloop-install-record: expected at most one argument, the project directory, got $#" >&2
+  exit 2
+fi
+PROJECT_DIR="${1:-${CLAUDE_PROJECT_DIR:-$PWD}}"
+HEADING='## Install permission'
+FILE='docs/agents/environment.md'
+
+cd "$PROJECT_DIR" 2>/dev/null || { echo "cause: the project directory $PROJECT_DIR cannot be entered"; exit 1; }
+git rev-parse --git-dir >/dev/null 2>&1 || { echo "cause: not a git repository, so there is no default branch to read the record off"; exit 1; }
+
+# The default branch, resolved exactly as hooks/pre-tool-use-branch-guard.sh
+# resolves it; a check under "Before a handover, run these" holds the two
+# copies together.
+DEFAULT=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+DEFAULT="${DEFAULT#origin/}"
+if [ -z "$DEFAULT" ]; then
+  for c in main master; do
+    if git show-ref --verify --quiet "refs/heads/$c"; then DEFAULT="$c"; break; fi
+  done
+fi
+[ -n "$DEFAULT" ] || { echo "cause: no default branch: origin/HEAD names none and neither main nor master exists"; exit 1; }
+
+REF="refs/remotes/origin/$DEFAULT"
+git rev-parse --verify --quiet "$REF" >/dev/null 2>&1 || { echo "cause: the ref $REF cannot be read: the default branch $DEFAULT has not been fetched"; exit 1; }
+CONTENT=$(git show "$REF:$FILE" 2>/dev/null) || { echo "cause: no $FILE on origin/$DEFAULT as last fetched"; exit 1; }
+printf '%s\n' "$CONTENT" | grep -qxF "$HEADING" || { echo "cause: no record: $FILE on origin/$DEFAULT has no section \"$HEADING\", so the question was never answered"; exit 1; }
+
+SECTION=$(printf '%s\n' "$CONTENT" | awk -v h="$HEADING" '$0 == h { s = 1; next } s && /^## / { exit } s')
+TOOLS=$(printf '%s\n' "$SECTION" | grep -m1 '^install-tools:' | sed 's/^install-tools:[[:space:]]*//; s/[[:space:]]*$//')
+case "$TOOLS" in
+  yes|no) ;;
+  '') echo "cause: unknown value: the section \"$HEADING\" on origin/$DEFAULT has no install-tools line"; exit 1 ;;
+  *) echo "cause: unknown value: install-tools reads \"$TOOLS\" on origin/$DEFAULT, and yes and no are the only values"; exit 1 ;;
+esac
+ANSWERED=$(printf '%s\n' "$SECTION" | grep -m1 '^install-answered:' | sed 's/^install-answered:[[:space:]]*//; s/[[:space:]]*$//')
+
+echo "ref: origin/$DEFAULT"
+echo "tools: $TOOLS"
+printf '%s\n' "$SECTION" | grep '^install-place:' | sed 's/^install-place:[[:space:]]*//; s/[[:space:]]*$//' | while IFS= read -r p; do
+  [ -n "$p" ] && echo "place: $p"
+done
+echo "answered: ${ANSWERED:-none}"
+exit 0

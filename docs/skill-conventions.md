@@ -536,9 +536,11 @@ project's files per language and got one of them wrong would install with
 nobody asked, and an abort is loud only where somebody is reading: with nobody
 there, it is the first thing to go wrong. What the project declares
 is what the person is shown when the question is put; it does not stand in for
-the question. Until that permission is built — `docs/plan.md`, milestone 3,
-the informed permission to install — the person runs every such install
-themselves, as the skills and the install guard say today.
+the question. Since 28 September 2026 the install guard reads that recorded
+state and the skills run the install where it says yes — **The install guard
+reads a record** below says how — and the question that writes it is not
+built: until it is, no project carries a record, the guard blocks every such
+install with that cause, and the person runs it themselves, as before.
 
 **Runtimes are not a kind the permission may cover.** Ruled on 28 September
 2026, for how milestone 3 of `docs/plan.md` is built; the plan carries the
@@ -566,12 +568,14 @@ route without one exists — `brew` where the tool has a formula — and
 `setup-checks` step 3 has to say so; and the stage where the person picks the
 stack has to confirm that the runtime stands, or an unattended run loses a
 round to an issue over it. Places that reach the same situation and change
-when milestone 3 is built, none of them changed here: milestone 3 of
-`docs/plan.md`, "and whether a runtime is one of them", and the runtime item
-under its "Open"; "Where the set ends" in the same file, "unless that
-permission names runtimes as a kind, which is open below"; `build-work` step
-3 point 7, "a compiler, a runtime, a tool from a package manager"; and the
-question `setup-project` will put.
+when milestone 3 is built: changed on 28 September 2026 with the tools half
+of that milestone — milestone 3 of `docs/plan.md`, "and whether a runtime is
+one of them", and the runtime item under its "Open"; "Where the set ends" in
+the same file, "unless that permission names runtimes as a kind, which is
+open below"; `build-work` step 3 point 7, "a compiler, a runtime, a tool from
+a package manager" — and not changed, because not built: the question
+`setup-project` will put, drafted in the report of that build and left for
+the person to approve.
 
 **The first kind is a tool, not a tool for a check class.** Ruled on 28
 September 2026, for the same build. Anything that runs and ends — a linter, a
@@ -585,13 +589,18 @@ between the two is only what a decline costs, and `build-work` step 3 carries
 both already: a check class goes `skipped` with the reason, the task becomes
 an issue carrying the exact command. Nothing outside the named kinds changes
 hands: it stays the person's, as today. Places that speak of tools for check
-classes today and change when milestone 3 is built, none of them changed
-here: `setup-checks` step 3, "Never install anything system-wide without
-asking", where a decline makes the class `skipped`; `setup-project` step 4
-question 3, "Ask separately whether missing tools should be installed";
-milestone 3 of `docs/plan.md`, "tools for check classes"; the install guard's
-own message, which names the two costs of a decline; and `build-work` step 3
-point 7 with the two decline cases under it, which stay as the two costs.
+classes today and change when milestone 3 is built, changed on 28 September
+2026 with the tools half of that milestone: `setup-checks` step 3, which read
+"Never install anything system-wide without asking" and now installs under a
+record saying yes, a decline still making the class `skipped`;
+`setup-project` step 4 question 3, "Ask separately whether missing tools
+should be installed", which now says where a no leads; the install guard's
+own message, which names the two costs of a decline as before and now the
+cause of the block; and `build-work` step 3 point 7, which names the kind as
+anything that runs and ends, with the two decline cases under it standing as
+the two costs. Milestone 3 of `docs/plan.md` keeps "tools for check classes"
+as written on 19 September 2026 and says beside it what this ruling made of
+it.
 
 ## Adapting from Matt Pocock
 
@@ -1121,12 +1130,13 @@ not a filesystem. So the rule that binds is the one in the skills — nothing
 lands outside the repository without the person's explicit permission, in the
 form "Works with nothing else installed" gives it — and the hook is what
 catches the ordinary case, not a wall. Who runs the command is not part of
-that rule. Today the person runs it, because the permission exists nowhere a
-hook can read — nothing writes such a record and nothing reads one — and every
-skill that hands an install over says so; once it is recorded at setup
-(`docs/plan.md`, milestone 3, the informed permission to install) the run runs
-it where the record says yes and
-the guard passes what the record allows. What does not move either way is the
+that rule. Since 28 September 2026 the guard reads the record and passes what
+it allows, and every skill that used to hand an install over runs it where
+the record says yes — the paragraph after next says how; what nothing writes
+yet is the record itself, since the question at setup (`docs/plan.md`,
+milestone 3, the informed permission to install) is not built, so on every
+project today the guard finds no record, blocks with that cause, and the
+person runs it, as the skills say for that case. What does not move either way is the
 backing: the command is backed before it runs, whoever runs it — the vendor's
 own installation line or the path in it resolving, which is the case of the
 module path that was an organisation's name — and its success is read off the
@@ -1143,6 +1153,85 @@ file, and the run reworded the sentence until it passed — saying as it went th
 the hook matches the string in quotes and heredocs alike. It had the reading
 right and stepped around the block anyway, which is the half the message asks for
 and the half no hook can enforce.
+
+**The install guard reads a record, since 28 September 2026, and passes only
+what the record names.** The record is a section of `docs/agents/environment.md`
+under the heading `## Install permission`, a key and a value per line in the
+shape `checks.md` uses for a value a script reads — `grep` on the start of the
+line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
+one `install-place:` line per place the person was shown, verbatim as shown;
+`install-answered:` with the date the question was answered. It carries the
+places and not only the answer because an answer given against the places of
+one version is not an answer for a place a later version adds: the guard passes
+only a place the record itself names, and a place it does not name is blocked
+as before, until something asks about that one place. The places of this
+version are `/usr/local/bin`, `/usr/local/sbin`, `/opt`, `~/.local/bin`,
+`~/bin` and `~/go/bin`: the guard's `BINDIR` without `/usr/bin` and
+`/usr/sbin`, which nothing reaches without `sudo`, so that a yes to them would
+open nothing and read as if it did. No driver destination is among them; that
+is the second half of the milestone and is not built.
+
+The guard reads the record off the default branch as last fetched,
+`refs/remotes/origin/<default>`, never off the working tree, so that a run
+cannot change it in the turn that installs, and a change to it counts once it
+has landed there and been fetched; the default branch is resolved exactly as
+`hooks/pre-tool-use-branch-guard.sh` resolves it, and a check under "Before a
+handover, run these" holds the two copies together, since two guards that
+disagree about which branch is the main one are worse than one. It reads the
+record only after the command has been found to reach outside the repository,
+because `hooks/hooks.json` runs it on every Bash call. One program does the
+reading, `bin/devloop-install-record`, and `hooks/session-start.sh` prints the
+record through the same program — what a second person who cloned the
+repository meets before the first install rather than after it — so the two
+cannot disagree.
+
+Every failure is a block and never a pass, and the block names which it was
+and that it read the last fetched state: no `environment.md` on the fetched
+ref, no section, an unknown value, a ref that cannot be read, a record saying
+no, and, under a yes, a place the record does not name. A record never written
+and a record saying no are different blocks, because "A guard's block is not a
+decline" needs the run to tell them apart, and an unattended issue carrying the
+wrong cause is what a third unnamed case would produce. Under a yes the guard
+asks the machine where a route lands, for the three routes
+`shared/backed-command.md` names a path for — `brew --prefix`, `go env GOBIN`
+or `GOPATH`, `npm prefix -g` — takes a path written in the command as written,
+and passes only where every destination is a place the record names; a route it
+cannot read this way — `pip`, `pipx`, `cargo`, `gem`, `pnpm`, a system package
+manager, every version manager, `make install` — stays blocked with that
+cause, as before, until a reading of where it puts things is backed. `sudo`
+and a script piped from the network into a shell stay blocked under every
+answer. What a yes passes that the question does not mean: through a package
+manager the guard sees the verb and not what is installed, so `brew install
+node` passes as `brew install shellcheck` does, and that is a rule on the run,
+written in `build-work` step 3 point 7, and not a wall.
+
+Measured on 28 September 2026 against the working tree, the guard fed its JSON
+directly with a scratch project whose `origin` was a local bare repository:
+with no `docs/agents/` exit 0; with the directory in the tree and nothing on
+`origin/main`, with `environment.md` there but no section, with `install-tools:
+maybe`, with the section but no `install-tools` line, and with the fetched ref
+deleted, exit 2, each naming its own cause; under a record saying no, exit 2
+for `brew install shellcheck` and for a copy into `~/bin`; under a record
+saying yes with the six places, exit 0 for `brew install shellcheck`, `brew
+install node`, `go install golang.org/x/tools/cmd/goimports@latest`, `npm
+install -g typescript`, a copy into `~/bin` and into `$HOME/.local/bin`, `ln
+-s` into `${HOME}/bin`, `go build -o` into `/usr/local/bin` and into `$(go env
+GOPATH)/bin`, a copy into `/opt/local/bin`, and `brew install foo` behind
+`echo "hi" &&` and behind a newline; exit 2 for `cargo install ripgrep`, `pip
+install --user black`, `pipx install black`, `uv tool install ruff`, `nvm
+install 20`, `pnpm add -g typescript`, `apt-get install shellcheck`, a copy
+into `/usr/bin`, `sudo brew install shellcheck`, `curl … | sh`, `bash -c
+"$(curl …)"`, `make install` and `make PREFIX=/usr/local install`; a record
+saying yes with `~/bin` as its only place blocked `brew install shellcheck`
+naming `/opt/homebrew/bin` and passed the copy into `~/bin`; the working tree
+saying the opposite of `origin/main` changed nothing either way; and a yes
+landed on `origin` but not yet fetched blocked, then passed after the fetch.
+`npm install -D playwright` and `npx playwright install` exit 0 as before, the
+second being the drivers half. Not measured: the two runs on a bench that
+milestone 3 ends with, one under a yes and one under a no, from the installed
+copy. Nothing here has run on a bench, the runs are not recorded in
+`docs/stock-take.tsv`, and the question that writes the record is drafted, not
+built.
 
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how
@@ -1171,10 +1260,12 @@ finding on wrappers is not overturned. What a false positive costs:
 `PLAYWRIGHT_BROWSERS_PATH=0` puts the browsers inside `node_modules`, and a
 block there is wrong; with the person there it is one handover, unattended it
 is the task, by "A guard's block, with nobody there" in `build-work`. Places
-that change when this is built, none of them changed here: the manager list
-and the place list in `hooks/pre-tool-use-install-guard.sh`, and the open
-item in `docs/plan.md`, "What `npx playwright install` lands outside the
-repository; not read from the vendor".
+that change when this is built, none of them changed here, and none of them
+on 28 September 2026 either, when the tools half of milestone 3 was built and
+this, the drivers half, was not: the manager list and the place list in
+`hooks/pre-tool-use-install-guard.sh`, and the open item in `docs/plan.md`,
+"What `npx playwright install` lands outside the repository; not read from
+the vendor".
 
 **Arming auto-merge is allowed; merging is not — and `--auto` is not arming.**
 The guard blocks `gh pr merge` in every form. The one permitted path is the
@@ -1363,7 +1454,12 @@ API answers it for the repository in front of you.
 **Tool classes can be pre-approved per project**, which is what makes an
 unattended run possible: read commands, the language runner, file edits, `git
 push`, `gh pr *`. They must be granted before the run — nobody is there to
-answer a prompt during it.
+answer a prompt during it. The install class, since 28 September 2026, is
+granted in the project rather than in the tool's settings — the record in
+`environment.md` that **The install guard reads a record** above describes —
+and it opens the guard's pass, not the harness's: whether the classifier lets
+the same command through is its own question, measured once on 28 September
+2026 and recorded in `docs/roadmap.md`.
 
 **The `checks.md` parsers are shell scripts.** Backticks and apostrophes in a
 table cell used to break them. Backticks are stripped, in both parsers, in every
@@ -1396,7 +1492,12 @@ where a guard leans on a difference between commands, the difference has to hold
 in the command itself, not in what a server happens to answer at that moment.
 Measured in the field on 25 August 2026: the guard let the arming mutation
 through while it blocks `gh pr merge` — the first proof of that since the guards
-decode the tool's JSON before matching.
+decode the tool's JSON before matching. The install guard since 28 September
+2026 is the same rule from the other side: consent it cannot see in the
+conversation it reads where the person recorded it once, in the section of
+`environment.md` on the default branch as fetched, and the difference it leans
+on then holds in the record and in the command's destination, not in what
+anybody said in the session — **The install guard reads a record** above.
 
 **A blocking hook must exit 2.** On `PreToolUse` that blocks the tool call and
 feeds stderr to the model as the reason. Exit 1 does not block — the action runs
@@ -1610,7 +1711,7 @@ red answer has to be acted on, and only the diff says what differs.
 
 ## Before a handover, run these
 
-Seventeen checks that catch what a conversation loses. Each one has found a
+Eighteen checks that catch what a conversation loses. Each one has found a
 real gap, or guards a mechanism that fails without a sound when nobody runs it.
 Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
@@ -1627,7 +1728,7 @@ introduces counts there and after the squash merge alike; the header of
 was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.
 
-**Seventeen checks, seventeen command blocks.** Count them, or this number
+**Eighteen checks, eighteen command blocks.** Count them, or this number
 drifts again. It drifted once already, and quietly: on 7 September 2026 one
 check was split into three blocks, one of them unreachable, so the checks went
 from eleven to twelve while this sentence stayed at eleven — and the change
@@ -1637,7 +1738,9 @@ against fourteen checks. It reads seventeen against seventeen since 18
 September 2026, when the five checks that held byte-identical copies together
 — three of them by checksum — went with the copies, together with the block
 beside them that could not go red, and nine checks over the text now inserted
-at load took their place.
+at load took their place. It reads eighteen against eighteen since 28 September
+2026, when the check holding the install record's reader to the branch guard's
+resolution of the default branch came in.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -1773,6 +1876,15 @@ The same for the copy in this file, under "Arming auto-merge is allowed;
 merging is not", indented as in the shared file — `2` again:
 
     grep -cFx -f shared/arming-command.md docs/skill-conventions.md
+
+The default branch is resolved in `bin/devloop-install-record` exactly as
+`hooks/pre-tool-use-branch-guard.sh` resolves it, from `origin/HEAD` and then
+`main` or `master`: two guards that disagree about which branch is the main one
+are worse than one, and the install guard reads its record off that branch.
+The seven lines from `DEFAULT=$(git symbolic-ref` to the `fi` that closes the
+fallback are checksummed in both files — one line means they agree:
+
+    for f in bin/devloop-install-record hooks/pre-tool-use-branch-guard.sh; do sed -n '/^DEFAULT=\$(git symbolic-ref/,/^fi$/p' "$f" | cksum; done | sort -u | wc -l
 
 **A change to one skill is a question about all of them.** How that is done is
 not written here — it is the third rule under "A field is not an answer to a
