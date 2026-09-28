@@ -260,7 +260,12 @@ were ruled on 28 September 2026: "tools for check classes" reads as a tool,
 anything that runs and ends, under "The first kind is a tool, not a tool for a
 check class"; and "whether a runtime is one of them" is answered no under
 "Runtimes are not a kind the permission may cover". A third, "all say today that
-the person runs the install", held until this build. The question, when built,
+the person runs the install", held until this build. A fourth, "which is the
+list of places the install guard already carries as `BINDIR`", describes the
+record and the session-start line and not the question: the draft, amended on
+28 September 2026, names the kind of place a yes opens and says that the record
+carries the list; the six places stand in the record and nowhere the person is
+asked. The question, when built,
 goes into `setup-project` step 4 as a question of its own beside question 3,
 and the record into `environment.md` in step 6, counting once step 8 has landed
 it on the default branch.

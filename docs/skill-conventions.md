@@ -1159,8 +1159,13 @@ what the record names.** The record is a section of `docs/agents/environment.md`
 under the heading `## Install permission`, a key and a value per line in the
 shape `checks.md` uses for a value a script reads — `grep` on the start of the
 line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
-one `install-place:` line per place the person was shown, verbatim as shown;
-`install-answered:` with the date the question was answered. It carries the
+one `install-place:` line per place a yes opens in this version, spelled as
+the guard matches it; `install-answered:` with the date the question was
+answered. The question does not show that list: by the draft amended on 28
+September 2026 it says that programs land outside the project, in the usual
+places for installed programs on this machine, that which places exactly
+stands in the record, and for each route the stack has, which kind of place it
+reaches. It carries the
 places and not only the answer because an answer given against the places of
 one version is not an answer for a place a later version adds: the guard passes
 only a place the record itself names, and a place it does not name is blocked
@@ -1251,7 +1256,9 @@ first, `npm install puppeteer` fails the first, `npx playwright install` and
 `npx cypress install` pass both. The difference holds in the command itself,
 which is what **A hook cannot see consent** below asks of any difference a
 guard leans on. And it is worth catching only together with that destination,
-read from the vendor and shown in the list of places the person answers: the
+read from the vendor and entered in the record's list of places, which is
+what the person's answer covers — the question names the kind of place and the
+record carries the list, since the draft was amended on 28 September 2026: the
 place list names bin directories and `/opt/`, and a browser is not a binary
 in one of them, so a catch without the destination produces a block under
 every answer, and the driver's destination never appears in what the person
