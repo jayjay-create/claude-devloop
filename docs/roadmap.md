@@ -5960,6 +5960,101 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   it lets a start command through, and which allow rule has to stand for
   either, stay open there.
 
+- **What `npx playwright install` lands outside the repository, read on 28
+  September 2026 off the vendor's own documentation.** One page,
+  `playwright.dev/docs/browsers`, read that day. Nothing was run: what stands
+  here was read off the page and not off a machine, and nothing in this
+  repository confirms it. The reading was handed over from a session of the
+  same day; the page was fetched again on this branch the same day, `curl`
+  answering 200 and 133,947 bytes, and read against it section by section.
+  Where the two differ, the page is followed and the difference is named
+  below.
+
+  **Where the browsers land.** Under "Managing browser binaries": Playwright
+  downloads Chromium, WebKit and Firefox "into the OS-specific cache folders",
+  `%USERPROFILE%\AppData\Local\ms-playwright` on Windows,
+  `~/Library/Caches/ms-playwright` on macOS, `~/.cache/ms-playwright` on
+  Linux. None of the three stands in the guard's place list, `BINDIR` in
+  `hooks/pre-tool-use-install-guard.sh`, which names bin directories, `/opt/`
+  and the Go paths. The size the page gives is "a few hundred megabytes of
+  disk space", with a listing whose version numbers are placeholders,
+  `chromium-XXXXXX`, `firefox-XXXX`, `webkit-XXXX`: an order of magnitude from
+  the vendor, not a figure measured anywhere. The same section says
+  `PLAYWRIGHT_BROWSERS_PATH` puts them wherever it points, `$HOME/pw-browsers`
+  in the vendor's example, and its sub-heading "Hermetic install" says
+  `PLAYWRIGHT_BROWSERS_PATH=0` puts them under
+  `node_modules/playwright-core/.local-browsers`, inside the project. That
+  last is the false positive a catch on this command produces, which the
+  ruling named further down already prices. That the variable can name any
+  other place is what the handed-over reading did not carry: the three cache
+  directories are the defaults, not the only places, and a place list that
+  names the three names where the command lands with the variable unset.
+
+  **The same command lands somewhere else with two of its arguments.** Under
+  "Installing Google Chrome & Microsoft Edge": where a branded browser is not
+  on the machine, `npx playwright install msedge` installs it, and the warning
+  beside that line reads "Google Chrome or Microsoft Edge installations will
+  be installed at the default global location of your operating system
+  overriding your current browser installation". The page's example is
+  `msedge`; the handed-over reading names `chrome` beside it, which the page
+  lists as a channel and, for what can be installed, hands to `npx playwright
+  install --help`. The sentence on the variable stands under "Hermetic
+  install", not in the Chrome section as the handed-over reading had it:
+  "`PLAYWRIGHT_BROWSERS_PATH` does not change installation path for Google
+  Chrome and Microsoft Edge". What follows for the build, and is not built
+  here: a permission answered for a cache directory under the home directory
+  cannot cover this, so either the guard reads the argument and not only the
+  command name, or these arguments stay outside every answer, the way `sudo`
+  does today.
+
+  **System packages are a second act.** Under "Install system dependencies":
+  `npx playwright install-deps` installs what the page calls "System
+  dependencies" and "OS dependencies", "useful for CI environments", and `npx
+  playwright install --with-deps chromium` in the vendor's line combines that
+  with the download. Root is said in one place only, under "Install behind a
+  firewall or a proxy", for Linux and for a proxy: run the command as root
+  there, "Otherwise, Playwright will attempt to become a root and will not
+  pass environment variables like `HTTPS_PROXY` to the linux package manager",
+  and the vendor's line begins with `sudo`. What that supports and nothing
+  more: on Linux the dependency install reaches the package manager and
+  involves root, said only where the page speaks of a proxy; how it becomes
+  root, and what happens on macOS and on Windows, the page does not say. What
+  follows for the build: `sudo` stands nowhere in the command string while the
+  flag does, so a guard that leans on the string has to read the flag.
+
+  **The command also deletes.** Under "Stale browser removal": Playwright
+  keeps track of the clients that use its browsers, and "When there are no
+  more clients that require a particular version of the browser, that version
+  is deleted from the system"; `PLAYWRIGHT_SKIP_BROWSER_GC=1` or `--no-remove`
+  on the install command opts out. Beside it, and not in the handed-over
+  reading: `npx playwright uninstall` removes the browsers of the current
+  installation and `--all` those of every installation on the machine, a
+  deletion outside the repository under a subcommand that names no install.
+  What a guard on installs makes of a delete is not this reading's question.
+
+  **What this unblocks, and what it does not.** The ruling of 28 September
+  2026 in `docs/skill-conventions.md`, "A named install command may enter the
+  verb list, under two conditions, and only together with its destination",
+  lets a name in when the command names the act, an install subcommand, and
+  when the vendor documents a destination outside the repository. The first
+  held already, by the ruling's own reading of the command; the second holds
+  from this entry, three cache directories under the home directory, read from
+  the vendor with the date. What still stands before a catch is worth building
+  is the ruling's "both or neither": the destination entering the guard's
+  place list and the list of places the person answers, which is milestone 3
+  of `docs/plan.md` and is not done here. Until then the command passes the
+  guard as it did at `929dabe`, and the entries of 19 and 28 September 2026
+  above stand as written: on their days, where it lands had not been read from
+  the vendor. The item under "Open" in `docs/plan.md` that asked what this
+  command lands outside the repository is closed by this entry and says so
+  where it stands, keeping the words the ruling quotes it by, since the ruling
+  names it among the places that change when milestone 3 is built and it goes
+  with them. The places that change when milestone 3 is built, none of them
+  changed here: the place list and the manager list in
+  `hooks/pre-tool-use-install-guard.sh`, the ruling itself in
+  `docs/skill-conventions.md`, and milestone 3 in `docs/plan.md`.
+  Recorded, not built: nothing of milestone 3 stands on this branch.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
