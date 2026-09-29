@@ -7006,6 +7006,139 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   outcome.
 
 
+- **The install question put through the harness's choice widget on its first
+  asking, none of its thirteen points arriving whole; the question cut to the
+  four that carry the decision and the form named; 30 September 2026, version
+  0.119.0.** On `task/install-question-shorter`, off `f2e6814`.
+
+  **What the run of 30 September 2026 produced.** In `devloop-test-p`, a fresh
+  empty repository set up with 0.118.0, the first time the question was put to
+  anybody: three questions in one multiple-choice form, tabbed "Auto-Merge",
+  "Labels" and "Tool-Installation", answered in one submit, and the install
+  question as one line with two answers of two lines each — a yes saying the
+  run installs by itself without asking again, landing through the usual
+  package manager, "here: go install", in the usual places for installed Go
+  tooling on this machine; a no saying the command is shown for the person to
+  run, or noted as an issue with `needs-human`. Nothing above the form. Held
+  against the thirteen points question 4 required, in the order that read it:
+  none arrived whole, six in part, six not at all, one wrong — a route named
+  where the repository had no go.mod and no stack, against the two sentences
+  that said to name none. What did arrive is the words that stand only in
+  question 4, "usual places on this machine", "without asking again", "from
+  now on", and no recommendation, so the text was reached and read through.
+  Where "go" came from is not settled by the files: the nearest text is
+  `shared/backed-command.md`, inserted between question 3 and question 4 and
+  leading with `go install`, and the machine answers `go env GOPATH` without
+  a go.mod; the transcript of that run would settle it, and it was not read
+  for this entry.
+
+  **The form as the cause.** The harness's question tool takes one to four
+  questions in one call, each a question line, a header and options of a
+  label and a line; nothing in the twelve skills, the shared text or the
+  conventions named it — `AskUserQuestion`, `widget` and `multiple choice`
+  come back empty over `skills/`, `shared/`, `docs/`, `hooks/`, `bin/` and
+  `scripts/` on 30 September 2026, before this entry. Ten of the thirteen
+  points were prose above the options and had no slot; the three with a slot,
+  the subject, the yes and the no, arrived cut to the slot. "In a message of
+  its own" was the one sentence that could have kept the question out of the
+  form, and a tab of its own met it. The sentence in step 0 that a caveat in
+  the paragraph above the options does not get read and the two lines chosen
+  between do, standing in front of step 4, described the outcome exactly; it
+  was a recorded defect already, for saying so in a passage that is no
+  question. So a run following the text lands here, and a form holding this
+  question alone would have delivered the same four lines: the prose had
+  nowhere to go, and nothing said it goes in the run's own message before the
+  form.
+
+  **What the thirteen came down to.** Each was gone through against what the
+  person loses without it, by three tests in this order: whether they would
+  answer differently knowing it; whether they meet it elsewhere before it
+  matters, without going to look; whether it is true at the moment of asking.
+  Four carry the decision and stay: the subject, in the question line —
+  programs that run and end, landing outside the project on this machine, the
+  answer holding for this project and so for anyone who builds on it with this
+  set; what a yes means, in the yes itself — from then on the run installs by
+  itself, with them there and with nobody there, without asking again; what a
+  yes does not hold back — through a package manager the guard sees the verb
+  and not what is installed, so a yes to tools also lets through a runtime, a
+  rule on the run and not a wall, compilers and runtimes theirs under every
+  answer; and where a no leads, in two halves, in the no itself. The standard
+  is that nothing in the question implies something untrue, not that
+  everything true is said. Out of the question, and where each went: what the
+  project declares, to step 2, which reports what was found; which kind of
+  place each route reaches, to step 6, as the run's own reading where it
+  writes the route lines and not text to the person — the reading is what
+  produced "go" where there was nothing to read; where the list of places is
+  written and that a session reads it, to step 9, which names the files
+  written. Out altogether: why it is asked now, the reason behind giving no
+  recommendation, that it can be changed later, and that nothing lands at this
+  moment, "from now on" carrying it. Giving no recommendation stays a rule on
+  the run. The sentence that said which places exactly stand written in the
+  record, false for a route since 29 September 2026 and one half of a recorded
+  defect, went with the cut; the bare-pip half of that defect stands. Two
+  status sentences said the person is shown what the project declares at this
+  question, in `docs/plan.md` under "Where the set ends" and in
+  `docs/skill-conventions.md` under "Works with nothing else installed"; both
+  now say it is reported at setup before the question, in step 2. No wording
+  was written here: the last wording was approved twice and arrived as four
+  lines, so a new approved wording is not what was missing.
+
+  **The form, named, and what the requirement is worth.** Question 4 is put
+  in prose, in the run's own message, in the person's language; a choice
+  widget that follows carries its two answers and no other question,
+  everything above them said by then. Step 0's sentence is resolved for every
+  question of step 4 rather than for this one: the passage itself, being no
+  question, says both halves in the preparation, and the reading about options
+  holds for a choice two lines carry — questions 1, 2, 6 and 7 — and not for a
+  question that needs more said, which step 4's opening names: the mapping of
+  question 3, the permission of question 4, and question 5, which is open and
+  has no options. What can be read off a result afterwards to tell a question
+  put in prose from one that was not: the transcript, and nothing else. The
+  harness keeps a log of the session and can export the conversation, and
+  both hold the run's text before the tool call and the call's own content,
+  so whether a message preceded the form and how many questions the call
+  carried are read there. The record cannot tell — it carries the answer, the
+  places, the routes and the date, whatever form produced them — and nothing
+  else in the repository can, since what the run said to the person is not in
+  it. So this is a requirement that holds only when a run chooses to meet it,
+  as "in a message of its own" was before it, and what catches a run that
+  does not is a measurement: a bench run of the setup, read off its transcript
+  against the list above, which is the question half of the two runs
+  milestone 3 ends with, and neither has happened. What the requirement is
+  worth beyond that: it names the form the harness offers, which no sentence
+  did, and it can be told from the screen the moment the question arrives,
+  where "in a message of its own" could not be told from a tab.
+
+  **Read through afterwards.** Step 4 reads as one flow: its opening says the
+  two forms and which question takes which, question 4 says its own, and
+  questions 1 to 7 stand under their conditions as before. `grep -rn "message of its own" skills shared` finds
+  the phrase in plan-work Stage 1 alone, since question 4's own account of the
+  old rule breaks the phrase over two lines; `grep -rn "shown at that
+  question\|shown when the question" docs README.md skills shared` finds
+  nothing left; `grep -rn "question 4 named\|names no route\|says why it gives
+  none" skills shared docs README.md` found one sentence in
+  `docs/skill-conventions.md` under "The install guard reads a record" still
+  saying the route lines are the routes question 4 named, corrected in this
+  change to say the run reads them where it writes the record, and then
+  nothing; the entries of 29 September 2026 that say the question named the
+  routes stand as written, being dated.
+
+  Built: question 4 of `setup-project` step 4 covers the four points and names
+  its form, step 4's opening says which questions two lines carry, and step
+  0's sentence says where it holds, since 30 September 2026, version 0.119.0;
+  the defect of the permission passage, recorded on 26 September 2026, is
+  repaired by it and its evidence moves onto the repaired line. Nothing has
+  run on a bench: the question has been put once, before this build, and the
+  two runs milestone 3 ends with have not happened.
+
+  **Records.** The tool, run in this tree at 0.119.0, `BROKEN RECORDS: 0`,
+  `UNCOVERED LINES OF THE SEARCH SET: 0 of 1911` and exit 0, recorded on its
+  exit 0 outcome. The self-test at 0.119.0, `SELF-TEST PASSED: 88 cases; of
+  the 74 messages this tool rejects, refuses or answers with, read off its
+  own source, 74 are asserted by a case and 0 by none`, recorded on its
+  outcome.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

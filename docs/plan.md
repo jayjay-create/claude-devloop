@@ -49,8 +49,8 @@ back mechanically. Beyond that line is the person's.
   manifest is the project's: it lands inside the repository. Anything that
   lands outside the repository lands there under the person's explicit
   permission only, asked once at setup under milestone 3 and recorded; what
-  the project declares is what the person is shown at that question, and it
-  does not stand in for it. A compiler or interpreter is the person's under
+  the project declares is reported at setup before that question, in step 2
+  of `setup-project`, and it does not stand in for it. A compiler or interpreter is the person's under
   every answer: ruled on 28 September 2026, "Runtimes are not a kind the
   permission may cover" in `docs/skill-conventions.md`, which closed the item
   under "Open" that this sentence used to point at.
@@ -270,8 +270,16 @@ check class"; and "whether a runtime is one of them" is answered no under
 the person runs the install", held until this build. A fourth, "which is the
 list of places the install guard already carries as `BINDIR`", describes the
 record and the session-start line and not the question: the question, as
-built, names the kind of place a yes opens and says that the record carries
-the list; the six places stand in the record and nowhere the person is asked.
+built on 28 September 2026, named the kind of place a yes opens and said that
+the record carries the list; since 30 September 2026, version 0.119.0, it
+says only that such programs land outside the project on this machine, the
+close of the setup names the record, and the routes of the stack are the run's
+own reading where it writes the record; the six places stand in the record and
+nowhere the person is asked. The same day the question was cut to the four
+points that carry the decision and put in prose, the widget after it, since
+the first run to put it, on 30 September 2026, put it through the harness's
+choice widget and none of its thirteen points arrived whole; the roadmap entry
+of that date says what came of the thirteen and what the form rule is worth.
 The question stands in `setup-project` step 4 as a question of its own beside
 question 3, and the record in `environment.md` in step 6, counting once step 8
 has landed it on the default branch. Widened on 29 September 2026, version

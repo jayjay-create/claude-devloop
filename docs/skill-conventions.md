@@ -535,8 +535,8 @@ What the project declares in its dependency file does not: a guard that read a
 project's files per language and got one of them wrong would install with
 nobody asked, and an abort is loud only where somebody is reading: with nobody
 there, it is the first thing to go wrong. What the project declares
-is what the person is shown when the question is put; it does not stand in for
-the question. Since 28 September 2026 the install guard reads that recorded
+is reported at setup, in step 2 of `setup-project`, before the question is
+put; it does not stand in for the question. Since 28 September 2026 the install guard reads that recorded
 state and the skills run the install where it says yes — **The install guard
 reads a record** below says how — and the question that writes it stands in
 `setup-project` step 4 since the same day, version 0.115.0, and in the empty
@@ -1174,14 +1174,16 @@ shape `checks.md` uses for a value a script reads — `grep` on the start of the
 line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
 one `install-place:` line per place a yes opens in this version, spelled as
 the guard matches it; since 29 September 2026 one `install-route:` line per
-route question 4 named for the stack, a name from the eleven the guard
-resolves — `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
+route the stack has, named by question 4 until 30 September 2026 and since
+then read by the run where it writes the record, a name from the eleven the
+guard resolves — `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
 `pipx`, `uv`, `pip`; `install-answered:` with the date the question was
 answered. The question does not show that list: by its text, amended and
-built on 28 September 2026, it says that programs land outside the project, in the usual
-places for installed programs on this machine, that which places exactly
-stands in the record, and for each route the stack has, which kind of place it
-reaches. It carries the
+built on 28 September 2026 and cut on 30 September 2026 to what carries the
+decision, it says that such programs land outside the project on this
+machine; where the list stands, and that every session reads it, the close of
+the setup says, and the routes of the stack are read by the run where it
+writes the record, in step 6. It carries the
 places and not only the answer because an answer given against the places of
 one version is not an answer for a place a later version adds: the guard passes
 only a place the record itself names, or the answer of a route it names, and a
