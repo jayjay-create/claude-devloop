@@ -6081,7 +6081,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   hooks is the `claude` process, and its PATH, read with `ps eww`, differs
   from the tool shell's by the four plugin `bin` directories the harness
   appends to the shell and by nothing else, so every package manager
-  directory stands in both; the process that started the editor this harness
+  directory stood in both at that hour — `pnpm setup`, run later that day,
+  put `~/Library/pnpm` on the `PATH` of every shell opened since and on
+  neither of these two; the process that started the editor this harness
   runs in carries `/usr/bin:/bin:/usr/sbin:/sbin`, so a harness started from
   there rather than from a terminal would find neither `brew` nor `go` nor
   `npm` in the hook, whatever the shell finds. What happens then is measured
@@ -6247,11 +6249,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   pip install --user black`, `~/Library/Python/3.14/bin`; `make
   PREFIX=/usr/local install`, `/usr/local`, which the record names only
   under `bin` and `sbin`; `make DESTDIR=/tmp/pkg install`, `/tmp/pkg`. Exit
-  2 as not read for `pnpm add -g typescript`, where `pnpm bin -g` prints
-  nothing and exits 0 on this machine, `pnpm setup` never having run; for
+  2 as not read for `pnpm add -g typescript`, where `pnpm bin -g` printed
+  nothing and exited 0 at that hour, `pnpm setup` not having run yet; for
   `yarn global add typescript`, `yarn add --global typescript`, `bun add -g
   cowsay`, `bun install -g cowsay` and `pipx install black`, none of the
-  three programs standing on this machine; for `gem install -i /tmp/g
+  three programs standing here at that hour; for `gem install -i /tmp/g
   rubocop`, `python3 -m pip install --target /tmp/x black`, `python3.99 -m
   pip install black`, `pip install black`, `pip3 install --user black`,
   `/usr/bin/pip3 install black`, `uv pip install --system ruff`, `make
@@ -6295,8 +6297,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   scripts of this measurement and not the vendors' programs: a `pnpm`
   printing `not a path` exit 2 as not read, a `pipx` printing `~/.local/bin`
   exit 0, a `yarn` printing `~/.yarn/bin` and a `bun` printing `~/.bun/bin`
-  exit 2 naming the place — those four arms are exercised as arms, not
-  against the vendors' answers. `cargo install ripgrep` exit 2 with
+  exit 2 naming the place — those four arms were exercised as arms, not
+  against the vendors' answers; the second measurement below holds them
+  against the real programs. `cargo install ripgrep` exit 2 with
   `.cargo/config.toml` in the project setting `install.root`, and exit 0
   with `CARGO_INSTALL_ROOT=~/.local` in the hook's environment. `echo "x" &&
   cargo install ripgrep` and the same behind a newline exit 2 naming
@@ -6305,15 +6308,144 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   under the record naming them and `none:` with the missing section under
   the record never written.
 
+  **Measured again on 29 September 2026, later the same day, with `pipx`,
+  `yarn`, `bun` and `pnpm` standing on this machine.** What was done to the
+  machine first, none of it the state a fresh machine is in: `pipx` 1.17.6,
+  `yarn` 1.22.22 and `bun` 1.4.2 were installed through Homebrew; `pnpm setup`
+  was run for `pnpm` 10.33.3, which wrote `PNPM_HOME` and a line putting that
+  directory on `PATH` into `~/.zshrc`; and an empty `package.json` was placed
+  by hand in `~/.bun/install/global`, because `bun pm bin -g` answers nothing
+  until something has been installed globally, the finding below. Each route's
+  answer, read directly and not off the guard: `pipx environment --value
+  PIPX_BIN_DIR` prints `~/.local/bin`; `yarn global bin` prints
+  `/opt/homebrew/bin`, a directory already under the six places through
+  `/opt`; `bun pm bin -g` prints `~/.bun/bin` with the hand-placed manifest
+  and, with the manifest moved aside or with `BUN_INSTALL_GLOBAL_DIR` pointing
+  at a directory holding nothing, exits 1 with `error: No package.json was
+  found for directory` on stderr and nothing on stdout; `pnpm bin -g` prints
+  nothing and exits 0 where `PNPM_HOME` is not in the environment, exits 1
+  with `ERROR The configured global bin directory "~/Library/pnpm" is not in
+  PATH` on stderr where it is set and its directory is not on `PATH`, and
+  prints `~/Library/pnpm` where both hold, which a shell opened after `pnpm
+  setup` has and the process of the harness this was measured from has not,
+  started from the editor on 15 September 2026, before `pnpm setup` wrote
+  `~/.zshrc`, and carrying neither; the guard fed from this harness therefore
+  blocks `pnpm` as not read, as the first measurement did, and its pass was
+  exercised with `PNPM_HOME` and `PATH` handed to the hook's process. The same
+  way as above, the guard fed its JSON directly against a scratch project with
+  a local bare `origin`, seven records pushed and fetched. Under the yes with
+  the six places and no route: exit 0 for `pipx install black`, `~/.local/bin`
+  being among the places, and for `yarn global add typescript` and `yarn add
+  --global typescript`, `/opt/homebrew/bin` lying under `/opt`, the pass by
+  place with the route not named; exit 2 naming `~/.bun/bin` for `bun add -g
+  cowsay` and `bun install -g cowsay`, and naming `~/Library/pnpm` for `pnpm
+  add -g typescript` with the environment handed over; exit 2 as not read for
+  `pnpm` without it and for `bun` with a global directory holding nothing.
+  Under the yes naming the routes `pipx`, `yarn`, `bun` and `pnpm` beside the
+  six places: exit 0 for all seven commands, `pnpm` with the environment
+  handed over; exit 2 as not read still for `pnpm` without it and for `bun`
+  before its first global install, a route named that does not answer staying
+  a block. Under the record saying no, every one of the seven exits 2 with
+  that cause; under the record never written, every one exits 2 naming the
+  missing section. Under `~/bin` as the only place and no route: exit 2 naming
+  `~/.local/bin` for `pipx`, `/opt/homebrew/bin` for `yarn`, `~/.bun/bin` for
+  `bun` and `~/Library/pnpm` for `pnpm`. Under `~/bin` as the only place and
+  the routes `yarn` and `pipx`: exit 0 for both, the pass by route with the
+  place absent, and exit 2 naming the place for `bun` and `pnpm`. Under
+  `/opt/homebrew/bin` and `~/.local/bin` as the places and no route: exit 0
+  for `yarn` and `pipx` by the literal place. So `yarn` passes three ways that
+  can be told apart, by the place `/opt`, by the literal place and by the
+  route, and blocks under `~/bin` alone; and so does `pipx`, whose
+  `~/.local/bin` stands among the six places as well, so `yarn` is not the
+  only route here where the two paths through the guard can be told apart. The
+  session-start line under the record naming the four routes printed `routes:
+  pipx yarn bun pnpm`, and `none:` with the missing section under the record
+  never written. Passes now where the first measurement blocked: `bun` under a
+  record naming its route, which no record of the first measurement did while
+  no `bun` stood here to answer; `yarn` under the six places, where the
+  stand-in's `~/.yarn/bin` blocked and the real program's `/opt/homebrew/bin`
+  passes; `pnpm` under a record naming its route, with the environment `pnpm
+  setup` writes handed to the hook's process. `pipx` passes as its stand-in
+  did, the two answering the same directory. Its runs stand in
+  `docs/stock-take.tsv` under version 0.116.1, which this correction raises.
+
+  **`bun` answers nothing before the first global install.** Read on 29
+  September 2026: the vendor's page `bun.sh/docs/cli/pm` says `bun pm bin -g`
+  prints "the path to the global `bin` directory", `<$HOME>/.bun/bin`, and
+  nothing about a manifest; on `bun` 1.4.2, the current release, of 5
+  September 2026, `bun pm bin -g` and `bun pm ls -g` exit 1 with `No
+  package.json was found for directory "~/.bun/install/global"` and `note: Run
+  "bun init" to initialize a project` until a `package.json` stands there, and
+  `bun pm ls -g` with an empty one and no lockfile exits 1 with `missing
+  lockfile, nothing to list`. Pull request 36622 in `oven-sh/bun`, "pm: let
+  `bun pm -g bin` / `bun pm ls -g` work before any global install", opened 1
+  August 2026, is open on 29 September 2026; issue 43094, "Listing global
+  packages shouldn't require a package manifest", opened 17 September 2026
+  against 1.4.2, is open as well. `bun add -g cowsay` into a global directory
+  holding nothing, through `BUN_INSTALL_GLOBAL_DIR` and `BUN_INSTALL_BIN`
+  pointing into the scratch directory, whose defaults the vendor's `bunfig`
+  page gives as `~/.bun/install/global` and `~/.bun/bin`, wrote the manifest,
+  the lockfile and the binaries and exited 0: the install itself does not need
+  the manifest, only the query does. What the guard should do when a route
+  that normally answers does not: block, as it does. A route the record names
+  that does not answer is a block, never a pass, and a pass here would need
+  the guard to know `~/.bun/bin` from the vendor's page rather than from the
+  machine, which is the written answer the routes were built to avoid. Whether
+  the message tells the person enough: it says `bun (bun pm bin -g did not
+  answer)`, which hands the install over rightly and tells them what was
+  asked; it does not tell them that the fix is one command of their own, the
+  handed-over `bun add -g` itself, which creates the manifest, or `bun init`
+  in the global directory as bun's own note says, because that note stands on
+  stderr and the guard sends every route's stderr to `/dev/null`. For `pnpm`
+  without `PNPM_HOME` the same shape has nothing to carry, `pnpm bin -g`
+  printing nothing anywhere, and its fix, `pnpm setup` and a shell or a
+  harness started after it, is outside anything the guard reads.
+  Recorded, not built: the block for a route that does not answer names the
+  query and not what the query said on stderr, which for `bun` names the
+  cause and the fix.
+
+  **`bun`'s directory is not on the search path here, and whether that reaches
+  anything.** `~/.bun/bin` is not on this machine's `PATH`. `bun pm bin -g`
+  prints `warn: not in $PATH` on stderr only where stderr is a terminal,
+  measured with `script`: stdout a file and stderr a terminal prints it,
+  stdout a terminal and stderr a file does not, neither does not. The guard
+  captures stdout, sends stderr to `/dev/null` and runs where nothing is a
+  terminal, so the warning never reaches the guard, by construction and not by
+  chance. The install command says so itself: `bun add -g cowsay`, terminal or
+  not, prints on stderr `warn: To run "cowsay", add the global bin folder to
+  $PATH:` and the `export PATH="…/bin:$PATH"` line to run, measured into the
+  scratch directories above. `pnpm` refuses instead: `pnpm add -g cowsay` with
+  `PNPM_HOME` pointing at a directory not on `PATH` installs nothing, exits 1
+  and prints `The configured global bin directory "…" is not in PATH`, and
+  installs once the directory is on `PATH`. So the run sees it, in the
+  install's own output, where the vendor prints one; the guard does not and
+  cannot. Should an install into a place not on the search path be reported,
+  and where: yes, and the places exist. The install report of `build-work`
+  step 3 point 7 asks for "what came back", and the vendor's warning is part
+  of what came back; a run that copies the `installed` line and drops the
+  warning has broken point 7, not found a gap in it. The `export` line is a
+  command whoever clones the project has to run, which is what point 8 puts
+  into `environment.md`, as the vendor prints it. The build itself is not
+  stopped by it: point 7 reads the result off the path the installer writes
+  to, never off `command -v`, so a tool off `PATH` is found all the same,
+  while a check that calls it by its bare name is red until the directory is
+  on `PATH`, one more reason the line belongs in `environment.md`. Where a
+  vendor prints no warning the run cannot see it, and nothing here invents a
+  way. No defect of this set: a search of point 7 for "what came back" finds
+  the duty standing.
+
   **Not done.** The two runs on a bench that milestone 3 ends with, one
   under a yes and one under a no, from the installed copy; nothing here has
   run on a bench. The refresh in `setup-project`, and the drivers half, as
   on 28 September 2026. The session-start line prints the routes as names
   and does not resolve them, so which directory a route reaches on this
-  machine shows in a block and nowhere earlier. `pipx`, `yarn` and `bun`
-  were exercised with stand-ins only, none of the three standing on this
-  machine. `pnpm` answered nothing here, so its pass was not exercised at
-  all. Built, never walked on a bench: every route above.
+  machine shows in a block and nowhere earlier. `pipx`, `yarn`, `bun` and
+  `pnpm` are exercised against the real programs since the second
+  measurement, `bun` with a manifest placed by hand and `pnpm` only with the
+  environment `pnpm setup` writes handed to the hook's process, not in the
+  process of the harness this was measured from, which carries neither
+  `PNPM_HOME` nor its directory on `PATH`. Nothing here has run on a bench.
+  Built, never walked on a bench: every route above.
 
 ## Decisions taken against
 

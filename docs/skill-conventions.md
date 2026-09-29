@@ -1233,8 +1233,12 @@ harness and not the tool shell's — measured on 29 September 2026, the two
 differ on this machine by the plugin directories the harness appends to the
 shell and by nothing else, and a harness started from an editor rather than a
 terminal can carry `/usr/bin:/bin:/usr/sbin:/sbin` — so a route not found
-there, one answering nothing (`pnpm bin -g` prints nothing and exits 0 here,
-`pnpm setup` never having run) or one answering no absolute path is not read,
+there, one answering nothing (`pnpm bin -g` prints nothing and exits 0 where
+`PNPM_HOME` is not in the environment, and `PNPM_HOME` is what `pnpm setup`
+writes into the shell's rc file, so a harness started before that, or from an
+editor, carries it in neither its own process nor the hook's; `bun pm bin -g`
+exits 1 with nothing on stdout until something has been installed globally,
+on bun 1.4.2) or one answering no absolute path is not read,
 and not read is a block, never a pass. What stays blocked with that cause
 under every answer: a system package manager, which owns no directory of its
 own since each package decides, and needs root anyway; a version manager, by
@@ -1285,9 +1289,12 @@ copy. Nothing here has run on a bench, the runs are not recorded in
 `docs/stock-take.tsv`, and the question that writes the record, built the
 same day, has been put to nobody. Measured again on 29 September 2026 against
 the working tree, the same way, with the eleven routes, five records and a
-`.venv` present and absent: the roadmap entry of that date carries every
-command and what came back, and `docs/stock-take.tsv` carries the runs under
-version 0.116.0. Still nothing on a bench.
+`.venv` present and absent, and later that day with `pipx`, `yarn`, `bun` and
+`pnpm` standing on the machine, seven records, `bun` given a manifest by hand
+and `pnpm` the environment `pnpm setup` writes: the roadmap entry of that
+date carries every command and what came back, and `docs/stock-take.tsv`
+carries the runs under versions 0.116.0 and 0.116.1. Still nothing on a
+bench.
 
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how
