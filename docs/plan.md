@@ -269,7 +269,19 @@ built, names the kind of place a yes opens and says that the record carries
 the list; the six places stand in the record and nowhere the person is asked.
 The question stands in `setup-project` step 4 as a question of its own beside
 question 3, and the record in `environment.md` in step 6, counting once step 8
-has landed it on the default branch.
+has landed it on the default branch. Widened on 29 September 2026, version
+0.116.0: the guard resolves eleven routes rather than three — `brew`, `go`,
+`npm` as before, and `pnpm`, `yarn`, `bun`, `cargo`, `gem`, `pipx`, `uv tool`
+and `pip` through an interpreter the command names — each asked on the machine
+with the command its vendor documents, `cargo` read in the vendor's order since
+it cannot be asked on the stable channel; the record carries `install-route:`
+lines beside the places, a route named there opening what it answers on the
+machine the run is on; a pip inside the project passes without a record;
+`make install` takes a destination written on its line; the roadmap entry of
+that date carries the readings and the measurement. Blocked under every
+answer still: the system package managers, the version managers, a bare
+`pip`, and every route that does not answer. The refresh and the drivers half
+stay unbuilt, and the two runs on a bench have not happened.
 
 Why here: blocked by the three conventions milestone 2 rewrites; milestones 4,
 7 and 8 need a driver and a linter that land outside the repository.

@@ -11,18 +11,109 @@ TOOL=$(echo "$INPUT" | sed -n 's/.*"tool_name"[[:space:]]*:[[:space:]]*"\([^"]*\
 [ "$TOOL" = "Bash" ] || exit 0
 
 CMD=$(echo "$INPUT" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+# The directory the tool's JSON says the command runs in. A relative path in
+# the command is placed against it; where the JSON carries none, a relative
+# path cannot be placed at all.
+CWD=$(echo "$INPUT" | sed -n 's/.*"cwd"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+
+# Prints the path where it can be placed inside the project, nothing where it
+# cannot. Absolute: under the project directory. Relative, without a ..
+# segment: against the directory the command runs in, where that lies inside
+# the project and no cd before the point given as $2 leaves it - a cd to a
+# relative path without .. stays inside, any other cd, or one without a target,
+# is not followed. A ~ or $HOME opening is expanded; any other variable is not
+# read. Nothing here says the path exists: a pip that does not exist installs
+# nothing.
+inside() {
+  local p="$1" before="$2" c
+  case "$p" in '~/'*) p="$HOME${p#\~}" ;; '$HOME/'*) p="$HOME${p#\$HOME}" ;; '${HOME}/'*) p="$HOME${p#\$\{HOME\}}" ;; esac
+  case "/$p/" in */../*) return ;; esac
+  case "$p" in # absolute inside the project, absolute or variable elsewhere, or relative
+    "$PROJECT_DIR"|"$PROJECT_DIR"/*) printf '%s' "$p" ;;
+    /*|'~'*|'$'*) ;;
+    *)
+      case "$CWD" in "$PROJECT_DIR"|"$PROJECT_DIR"/*) ;; *) return ;; esac
+      while IFS= read -r c; do
+        [ -n "$c" ] || continue
+        c=$(printf '%s' "$c" | sed -E 's/^cd//; s/^[[:space:]]+//')
+        [ -n "$c" ] || return
+        case "$c" in /*|'~'*|'$'*|-*) return ;; esac
+        case "/$c/" in */../*) return ;; esac
+      done <<< "$(printf '%s' "$before" | grep -oE '(^|[[:space:];&|(])cd([[:space:]]+[^[:space:];|&)]+)?([[:space:];&|)]|$)' | sed -E 's/^[[:space:];&|(]+//; s/[[:space:];&|)]+$//')"
+      printf '%s/%s' "$CWD" "$p" ;;
+  esac
+}
 
 # The verb half. Each route that fires is kept by name, because under a record
-# saying yes the pass turns on where that route puts things.
+# saying yes the pass turns on where that route puts things. cargo add writes
+# the project's own manifest and is no install.
 MANAGER='brew|port|apt|apt-get|yum|dnf|zypper|pacman|apk|snap|choco|winget|scoop|sdk|gem|cargo|go|pipx|uv[[:space:]]+tool|asdf|mise|rustup|nvm'
-ROUTES=$(echo "$CMD" | grep -oE "(^|[^[:alnum:]_.-])($MANAGER)[[:space:]]+(install|add|use|tap)([[:space:]]|$)" | sed -E 's/^[^[:alnum:]]*//; s/[[:space:]]+(install|add|use|tap).*$//; s/[[:space:]]+/ /g')
+ROUTES=$(echo "$CMD" | grep -oE "(^|[^[:alnum:]_.-])($MANAGER)[[:space:]]+(install|add|use|tap)([[:space:]]|$)" | grep -vE '(^|[^[:alnum:]_.-])cargo[[:space:]]+add([[:space:]]|$)' | sed -E 's/^[^[:alnum:]]*//; s/[[:space:]]+(install|add|use|tap).*$//; s/[[:space:]]+/ /g')
 [ -n "$ROUTES" ] && BEYOND=yes
 GLOBALS=$(echo "$CMD" | grep -oE '(^|[^[:alnum:]_.-])(npm|pnpm|yarn|bun)[[:space:]]+(install|i|add)([[:space:]].*)?[[:space:]](-g|--global)([[:space:]]|$)' | sed -E 's/^[^[:alnum:]]*//; s/[[:space:]].*$//')
 [ -n "$GLOBALS" ] && BEYOND=yes
 GLOBALS2=$(echo "$CMD" | grep -oE '(^|[^[:alnum:]_.-])(npm|pnpm|yarn|bun)[[:space:]]+global[[:space:]]+(add|install)([[:space:]]|$)' | sed -E 's/^[^[:alnum:]]*//; s/[[:space:]].*$//')
 [ -n "$GLOBALS2" ] && BEYOND=yes
-echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])pip3?[[:space:]]+install([[:space:]]|$)' && { BEYOND=yes; ROUTES="$ROUTES
-pip"; }
+
+# pip, in the forms that say what runs it: a pip named by a path or bare, an
+# interpreter named by a path or bare followed by -m pip, and uv pip. One that
+# installs inside the project is a dependency and sets nothing here: a pip or
+# an interpreter whose path lies inside the project; a bare one after an
+# environment inside the project was activated earlier in this same command,
+# with source or . on its bin/activate, no deactivate anywhere in the command,
+# and the pip or the interpreter standing in that environment's bin on disk;
+# and uv pip where a .venv stands inside the project at the directory the
+# command runs in or a parent of it, which is the order uv itself looks in,
+# with no --system, --python, --target or --prefix. What an earlier command
+# activated, or what the shell's own configuration put on PATH, is not in
+# this string and does not count: a bare pip stays an install outside the
+# repository.
+PIPS=$(echo "$CMD" | grep -oE "(^|[^[:alnum:]_.-])(uv[[:space:]]+pip|([^[:space:];|&()'\`]*/)?python[0-9.]*[[:space:]]+-m[[:space:]]+pip|([^[:space:];|&()'\`]*/)?pip3?)[[:space:]]+install([[:space:]]|$)")
+ACT=""
+if ! echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])deactivate([[:space:];&|]|$)'; then
+  A=$(echo "$CMD" | grep -oE "(^|[[:space:];&|(])(source|\.)[[:space:]]+[^[:space:];|&()'\`]+/bin/activate([[:space:];&|)]|$)" | head -1 | sed -E 's/^[[:space:];&|(]*(source|\.)[[:space:]]+//; s/\/bin\/activate[[:space:];&|)]*$//')
+  if [ -n "$A" ]; then
+    V=$(inside "$A" "${CMD%%"$A/bin/activate"*}")
+    [ -n "$V" ] && [ -e "$V/bin/activate" ] && ACT="$V" && ACTLINE="$A/bin/activate"
+  fi
+fi
+PIPBEYOND=""
+while IFS= read -r M; do
+  [ -n "$M" ] || continue
+  case "$CMD" in "$M"*) ;; *) M="${M#?}" ;; esac
+  M="${M%"${M##*[![:space:]]}"}"
+  BEFORE="${CMD%%"$M"*}"
+  T=$(printf '%s' "$M" | sed -E 's/[[:space:]]+install$//; s/[[:space:]]+/ /g; s/^[[:space:]]+//')
+  KIND=pip
+  case "$T" in 'uv pip') KIND=uvpip ;; *' -m pip') KIND=py; T="${T% -m pip}" ;; esac
+  ACTHERE=""
+  if [ -n "$ACT" ]; then case "$BEFORE" in *"$ACTLINE"*) ACTHERE="$ACT" ;; esac; fi
+  LOCAL=""
+  case "$KIND" in
+    pip|py)
+      case "$T" in # a path, or a bare name
+        */*) V=$(inside "$T" "$BEFORE"); [ -n "$V" ] && LOCAL=yes ;;
+        *) [ -n "$ACTHERE" ] && [ -x "$ACTHERE/bin/$T" ] && LOCAL=yes ;;
+      esac ;;
+    uvpip)
+      if printf '%s' "${CMD#*uv pip}" | grep -qE -- '(^|[[:space:]])(--system|--python|-p|--target|--prefix|--break-system-packages)([[:space:]=]|$)'; then :
+      elif [ -n "$ACTHERE" ]; then LOCAL=yes
+      else
+        S=$(inside "." "$BEFORE"); S="${S%/.}"
+        E="${VIRTUAL_ENV:-${CONDA_PREFIX:-}}"
+        case "$E" in ''|"$PROJECT_DIR"|"$PROJECT_DIR"/*) ;; *) S="" ;; esac
+        while [ -n "$S" ]; do
+          [ -d "$S/.venv" ] && { LOCAL=yes; break; }
+          [ "$S" = "$PROJECT_DIR" ] && break
+          S="${S%/*}"
+        done
+      fi ;;
+  esac
+  [ -n "$LOCAL" ] && continue
+  BEYOND=yes
+  PIPBEYOND="$PIPBEYOND
+$KIND	$T"
+done <<< "$PIPS"
 
 # The list above catches the verb. These catch the outcome, because the same
 # binary lands on the machine whether a package manager put it there or a build
@@ -42,8 +133,8 @@ echo "$CMD" | grep -qE "<\([[:space:]]*(curl|wget)" && { BEYOND=yes; PIPED=yes; 
 # that stays inside the repository never gets here. The record is read off the
 # default branch as last fetched, never off the working tree, through the same
 # program hooks/session-start.sh prints it with. Every failure below is a block
-# and names its cause; the one pass is a record saying yes whose places name
-# every place this command lands.
+# and names its cause; the one pass is a record saying yes whose places or
+# routes name every place this command lands.
 HERE=$(cd "$(dirname "$0")" && pwd)
 RECORD=$("$HERE/../bin/devloop-install-record" "$PROJECT_DIR" 2>&1)
 if [ $? -ne 0 ]; then
@@ -54,6 +145,7 @@ else
   REF=$(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p' | head -1)
   TOOLS=$(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p' | head -1)
   PLACES=$(printf '%s\n' "$RECORD" | sed -n 's/^place: //p')
+  RROUTES=$(printf '%s\n' "$RECORD" | sed -n 's/^route: //p')
   if [ "$TOOLS" = "no" ]; then
     CAUSE="the record says no (install-tools: no on $REF)"
   elif [ "${SUDO:-no}" = "yes" ]; then
@@ -62,28 +154,126 @@ else
     CAUSE="it pipes a script from the network into a shell, which stays the user's under every answer"
   else
     # Where it lands. A route named in the command is asked on this machine,
-    # for the three routes shared/backed-command.md names a path for; a path
-    # written in the command is taken as written; anything else cannot be read
-    # off the command and stays blocked, as today.
+    # with the command its vendor documents for that, in this hook's own
+    # process and on this hook's own PATH: a route not found here, one that
+    # answers nothing, or one whose answer is no absolute path counts as not
+    # read, and not read is a block. A route the record names by its name
+    # opens whatever that route answers here; any other answer is held against
+    # the places the record names. A path written in the command is taken as
+    # written. A system package manager, a version manager, a make install
+    # whose command names no destination, and anything else cannot be read
+    # off the command and stay blocked, as before.
     DESTS=""
     UNREAD=""
+    OPENED=no
+    absolute() { case "$1" in /*) printf '%s' "$1" ;; esac; }
+    place() {
+      if printf '%s\n' "$RROUTES" | grep -qxF "$1"; then OPENED=yes; else DESTS="$DESTS
+$2"; fi
+    }
     gobin() {
       local b p
-      b=$(go env GOBIN 2>/dev/null); p=$(go env GOPATH 2>/dev/null); p="${p%%:*}"
+      b=$(absolute "$(go env GOBIN 2>/dev/null)"); p=$(absolute "$(go env GOPATH 2>/dev/null)"); p="${p%%:*}"
       if [ -n "$b" ]; then echo "$b"; elif [ -n "$p" ]; then echo "$p/bin"; fi
+    }
+    # cargo cannot be asked on the stable channel - cargo config get is
+    # nightly-only - so its root is read in the vendor's order: --root in the
+    # command, CARGO_INSTALL_ROOT, install.root in a config file, CARGO_HOME,
+    # $HOME/.cargo, and the executables go into its bin. A config file on
+    # cargo's search path that sets install.root is not parsed here and blocks.
+    cargobin() {
+      local r d f
+      r=$(printf '%s' "${CMD#*cargo }" | grep -oE -- '(^|[[:space:]])--root[[:space:]=]+[^[:space:];|&]+' | head -1 | sed -E 's/^[[:space:]]*--root[[:space:]=]+//')
+      if [ -z "$r" ]; then
+        d="${CWD:-$PROJECT_DIR}"
+        while [ -n "$d" ]; do
+          for f in "$d/.cargo/config.toml" "$d/.cargo/config"; do
+            [ -f "$f" ] && grep -qE '^[[:space:]]*(\[install\]|install\.root[[:space:]]*=)' "$f" && { echo CONFIG; return; }
+          done
+          [ "$d" = "/" ] && break
+          d="${d%/*}"; [ -n "$d" ] || d="/"
+        done
+        for f in "${CARGO_HOME:-$HOME/.cargo}/config.toml" "${CARGO_HOME:-$HOME/.cargo}/config"; do
+          [ -f "$f" ] && grep -qE '^[[:space:]]*(\[install\]|install\.root[[:space:]]*=)' "$f" && { echo CONFIG; return; }
+        done
+        r="${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}"
+      fi
+      printf '%s/bin' "$r"
     }
     while IFS= read -r R; do
       [ -n "$R" ] || continue
       case "$R" in
-        brew) P=$(brew --prefix 2>/dev/null); if [ -n "$P" ]; then DESTS="$DESTS
-$P/bin"; else UNREAD="$UNREAD; brew (brew --prefix did not answer)"; fi ;;
-        go) P=$(gobin); if [ -n "$P" ]; then DESTS="$DESTS
-$P"; else UNREAD="$UNREAD; go (go env did not answer)"; fi ;;
-        npm) P=$(npm prefix -g 2>/dev/null); if [ -n "$P" ]; then DESTS="$DESTS
-$P/bin"; else UNREAD="$UNREAD; npm (npm prefix -g did not answer)"; fi ;;
+        brew) P=$(absolute "$(brew --prefix 2>/dev/null)"); if [ -n "$P" ]; then place brew "$P/bin"; else UNREAD="$UNREAD; brew (brew --prefix did not answer)"; fi ;;
+        go) P=$(gobin); if [ -n "$P" ]; then place go "$P"; else UNREAD="$UNREAD; go (go env did not answer)"; fi ;;
+        npm) P=$(absolute "$(npm prefix -g 2>/dev/null)"); if [ -n "$P" ]; then place npm "$P/bin"; else UNREAD="$UNREAD; npm (npm prefix -g did not answer)"; fi ;;
+        pnpm) P=$(absolute "$(pnpm bin -g 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place pnpm "$P"; else UNREAD="$UNREAD; pnpm (pnpm bin -g did not answer)"; fi ;;
+        yarn) P=$(absolute "$(yarn global bin 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place yarn "$P"; else UNREAD="$UNREAD; yarn (yarn global bin did not answer)"; fi ;;
+        bun) P=$(absolute "$(bun pm bin -g 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place bun "$P"; else UNREAD="$UNREAD; bun (bun pm bin -g did not answer)"; fi ;;
+        pipx) P=$(absolute "$(pipx environment --value PIPX_BIN_DIR 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place pipx "$P"; else UNREAD="$UNREAD; pipx (pipx environment --value PIPX_BIN_DIR did not answer)"; fi ;;
+        'uv tool') P=$(absolute "$(uv tool dir --bin 2>/dev/null | tail -1)"); if [ -n "$P" ]; then place uv "$P"; else UNREAD="$UNREAD; uv tool (uv tool dir --bin did not answer)"; fi ;;
+        cargo) P=$(cargobin); case "$P" in
+          CONFIG) UNREAD="$UNREAD; cargo (a config file on cargo's search path sets install.root, which this guard does not read)" ;;
+          '') UNREAD="$UNREAD; cargo (its install root could not be read)" ;;
+          *) place cargo "$P" ;;
+        esac ;;
+        gem)
+          SEG="${CMD#*gem }"
+          if printf '%s' "$SEG" | grep -qE -- '(^|[[:space:]])(-i|--install-dir|--build-root)([[:space:]=]|$)'; then
+            UNREAD="$UNREAD; gem (--install-dir or --build-root moves the destination, which this guard does not read)"
+          else
+            P=$(printf '%s' "$SEG" | grep -oE -- '(^|[[:space:]])(-n|--bindir)[[:space:]=]+[^[:space:];|&]+' | head -1 | sed -E 's/^[[:space:]]*(-n|--bindir)[[:space:]=]+//')
+            if [ -n "$P" ]; then DESTS="${DESTS}
+$P" # --bindir, taken as written
+            else
+              if printf '%s' "$SEG" | grep -qE -- '(^|[[:space:]])--user-install([[:space:]]|$)'; then
+                P=$(absolute "$(gem environment 2>/dev/null | sed -n 's/^[[:space:]]*- USER INSTALLATION DIRECTORY: //p' | head -1)"); [ -n "$P" ] && P="$P/bin"
+              else
+                P=$(absolute "$(gem environment 2>/dev/null | sed -n 's/^[[:space:]]*- EXECUTABLE DIRECTORY: //p' | head -1)")
+              fi
+              if [ -n "$P" ]; then place gem "$P"; else UNREAD="$UNREAD; gem (gem environment did not answer)"; fi
+            fi
+          fi ;;
+        port|apt|apt-get|yum|dnf|zypper|pacman|apk|snap|choco|winget|scoop) UNREAD="$UNREAD; $R (a system package manager: each package decides where it lands, and it needs root, so it stays the user's under every answer)" ;;
+        sdk|asdf|mise|rustup|nvm) UNREAD="$UNREAD; $R (a version manager: what it installs lands in its own tree and reaches shell profiles this guard never reads, so it stays the user's under every answer)" ;;
         *) UNREAD="$UNREAD; $R (where it puts things is not read off this machine by this guard)" ;;
       esac
     done <<< "$(printf '%s\n%s\n%s\n' "$ROUTES" "$GLOBALS" "$GLOBALS2" | grep -v '^$' | sort -u)"
+    # pip outside the project: the destination is the scripts directory of
+    # the interpreter the command names, asked of that interpreter through
+    # sysconfig, the user scheme where --user stands there. A bare pip names
+    # no interpreter and cannot be asked; uv pip that reached here names no
+    # environment inside the project.
+    while IFS='	' read -r K T; do
+      [ -n "$K" ] || continue
+      case "$K" in
+        pip) UNREAD="$UNREAD; $T (a pip outside the project, or one this guard cannot place inside it, names no interpreter, so which Python it installs for is not in the command: run it as python -m pip, or name the project's own pip by a path inside the project)" ;;
+        uvpip) UNREAD="$UNREAD; uv pip (it names no environment inside the project: no activation earlier in this command, no .venv from the directory it runs in up to the project root, or --system, --python, --target or --prefix stands there)" ;;
+        py)
+          SEG="${CMD#*$T -m pip}"
+          if printf '%s' "$SEG" | grep -qE -- '(^|[[:space:]])(-t|--target|--prefix|--root)([[:space:]=]|$)'; then
+            UNREAD="$UNREAD; $T -m pip (--target, --prefix or --root moves the destination, which this guard does not read)"
+          else
+            case "$T" in # the interpreter: a path, expanded where it opens on ~ or $HOME, or a bare name found on this hook's PATH
+              '~/'*) I="$HOME${T#\~}" ;;
+              '$HOME/'*) I="$HOME${T#\$HOME}" ;;
+              '${HOME}/'*) I="$HOME${T#\$\{HOME\}}" ;;
+              /*) I="$T" ;;
+              */*) I="" ;;
+              *) I=$(command -v "$T" 2>/dev/null) ;;
+            esac
+            if [ -z "$I" ] || [ ! -x "$I" ]; then
+              UNREAD="$UNREAD; $T -m pip ($T is not found here)"
+            else
+              if printf '%s' "$SEG" | grep -qE -- '(^|[[:space:]])--user([[:space:]]|$)'; then
+                P=$(absolute "$("$I" -c 'import sysconfig;print(sysconfig.get_path("scripts",sysconfig.get_preferred_scheme("user")))' 2>/dev/null)")
+              else
+                P=$(absolute "$("$I" -c 'import sysconfig;print(sysconfig.get_path("scripts"))' 2>/dev/null)")
+              fi
+              if [ -n "$P" ]; then place pip "$P"; else UNREAD="$UNREAD; $T -m pip ($T did not answer where it puts scripts)"; fi
+            fi
+          fi ;;
+      esac
+    done <<< "$PIPBEYOND"
     if [ "${WRITES:-no}" = "yes" ]; then
       while IFS= read -r D; do
         [ -n "$D" ] || continue
@@ -95,7 +285,14 @@ $D" ;;
         esac
       done <<< "$(echo "$CMD" | grep -oE "$BINDIR[^[:space:];|&)\"']*")"
     fi
-    [ "${MAKEINST:-no}" = "yes" ] && UNREAD="$UNREAD; make install (its destination is not in the command)"
+    # make install: a destination the command itself writes - PREFIX, prefix,
+    # DESTDIR, BINDIR, bindir or exec_prefix as a variable on the make line -
+    # is taken as written; where none stands there, the makefile decides.
+    if [ "${MAKEINST:-no}" = "yes" ]; then
+      MD=$(echo "$CMD" | grep -oE '(^|[^[:alnum:]_.-])make([[:space:]]+[^[:space:];&|]+)*[[:space:]]+install([[:space:]]|$)' | head -1 | grep -oE '(^|[[:space:]])(PREFIX|prefix|DESTDIR|BINDIR|bindir|exec_prefix|EXEC_PREFIX)=[^[:space:]]+' | sed -E 's/^[[:space:]]*[A-Za-z_]+=//')
+      if [ -n "$MD" ]; then DESTS="$DESTS
+$MD"; else UNREAD="$UNREAD; make install (its destination is not in the command: no PREFIX, DESTDIR or BINDIR written on the make line, so the makefile decides)"; fi
+    fi
     UNNAMED=""
     while IFS= read -r D; do
       [ -n "$D" ] || continue
@@ -116,8 +313,8 @@ $D" ;;
     if [ -n "$UNREAD" ]; then
       CAUSE="where it lands cannot be read here${UNREAD}; a place the record does not name stays blocked"
     elif [ -n "$UNNAMED" ]; then
-      CAUSE="it lands in$UNNAMED, which the record does not name; the record names: $(printf '%s\n' "$PLACES" | tr '\n' ' ' | sed 's/ $//')"
-    elif [ -z "$(printf '%s' "$DESTS" | tr -d '\n')" ]; then
+      CAUSE="it lands in$UNNAMED, which the record does not name; the record names: $(printf '%s\n' "$PLACES" | tr '\n' ' ' | sed 's/ $//'); routes: $(printf '%s\n' "$RROUTES" | tr '\n' ' ' | sed 's/ $//; s/^$/none/')"
+    elif [ -z "$(printf '%s' "$DESTS" | tr -d '\n')" ] && [ "$OPENED" != "yes" ]; then
       CAUSE="where it lands could not be read off the command"
     else
       exit 0 # every destination named: the record opens it
@@ -125,5 +322,5 @@ $D" ;;
   fi
 fi
 
-echo "Blocked: this installs outside the repository. The install record does not open it: $CAUSE. The record is the section \"## Install permission\" of docs/agents/environment.md on the default branch as last fetched ($REF), never the working tree, so a change to it counts once it has landed there and been fetched; where it says yes, the guard passes only a command whose destination is a place the record names, and it passes nothing under sudo and no script piped from the network. Under a block the install is the user's to run: their yes to this one command authorises them running it, not you performing it, and the record is the only thing that does that. Say in one line what it installs and what it unblocks, give them the exact command - backed first, by the vendor's own installation line or by the path in it resolving, because an organisation name is not a module path - and say both ways it can go at the same time: this picks up once the tool is at the path that command writes to, which is what their word gets checked against rather than command -v, since that finds an older copy from anywhere on PATH - nothing moves here until they say it has run - and if they decline, that is an answer too. What a decline costs depends on what the tool was for - a check class becomes skipped with that reason, or the part of the task that needs it cannot be built - so say which, and carry on rather than stopping. A block is not a decline: with nobody there, the issue or the skip reason carries the cause named above, not a decline. If it only looked like an install — a project-local dependency, a virtual environment — say so and let them decide." >&2
+echo "Blocked: this installs outside the repository. The install record does not open it: $CAUSE. The record is the section \"## Install permission\" of docs/agents/environment.md on the default branch as last fetched ($REF), never the working tree, so a change to it counts once it has landed there and been fetched; where it says yes, the guard passes only a command whose destination is a place the record names or is answered by a route the record names, and it passes nothing under sudo and no script piped from the network. Under a block the install is the user's to run: their yes to this one command authorises them running it, not you performing it, and the record is the only thing that does that. Say in one line what it installs and what it unblocks, give them the exact command - backed first, by the vendor's own installation line or by the path in it resolving, because an organisation name is not a module path - and say both ways it can go at the same time: this picks up once the tool is at the path that command writes to, which is what their word gets checked against rather than command -v, since that finds an older copy from anywhere on PATH - nothing moves here until they say it has run - and if they decline, that is an answer too. What a decline costs depends on what the tool was for - a check class becomes skipped with that reason, or the part of the task that needs it cannot be built - so say which, and carry on rather than stopping. A block is not a decline: with nobody there, the issue or the skip reason carries the cause named above, not a decline. If it only looked like an install — a project-local dependency, a virtual environment — say so and let them decide; a pip that names the project's own pip or interpreter by its path passes here on its own." >&2
 exit 2
