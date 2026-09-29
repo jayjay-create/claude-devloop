@@ -252,11 +252,16 @@ under "The install guard reads a record". The question followed the same day,
 version 0.115.0: question 4 of `setup-project` step 4, beside question 3, in
 the wording approved that day, with the record written into `environment.md`
 by step 6; no project carries a record yet all the same, none having been set
-up with it, so the guard blocks every install naming that cause. Not built: the
-refresh in `setup-project`, which is where a project set up before this version
-would be asked, and which asks nothing anew today; and the drivers half, so the
-place list carries no driver destination and `npx playwright install` passes
-the guard as before. The two runs above have not happened, and nothing of this
+up with it, so the guard blocks every install naming that cause. Until 0.118.0
+the question was not put in the empty case, step 3 skipping the whole of step 4
+where there is no code; since 29 September 2026, version 0.118.0, step 3 skips
+the two questions that need code and not the step, so a project set up empty is
+asked and carries a record naming no route, and a route its stack later reaches
+for is held against the places until a route line is added with the person
+there. Not built: the refresh in `setup-project`, which is where a project set
+up before this version, or set up empty before 0.118.0, would be asked, and
+which asks nothing anew today; and the drivers half, so the place list carries
+no driver destination and `npx playwright install` passes the guard as before. The two runs above have not happened, and nothing of this
 reads as exercised. Two phrases above stand as written on 19 September 2026 and
 were ruled on 28 September 2026: "tools for check classes" reads as a tool,
 anything that runs and ends, under "The first kind is a tool, not a tool for a

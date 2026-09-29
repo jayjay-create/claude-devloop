@@ -539,9 +539,10 @@ is what the person is shown when the question is put; it does not stand in for
 the question. Since 28 September 2026 the install guard reads that recorded
 state and the skills run the install where it says yes — **The install guard
 reads a record** below says how — and the question that writes it stands in
-`setup-project` step 4 since the same day, version 0.115.0: a project set up
-before it, or set up empty, carries no record, and there the guard blocks every
-such install with that cause and the person runs it themselves, as before.
+`setup-project` step 4 since the same day, version 0.115.0, and in the empty
+case since 0.118.0: a project set up before either carries no record, and
+there the guard blocks every such install with that cause and the person runs
+it themselves, as before.
 
 **Runtimes are not a kind the permission may cover.** Ruled on 28 September
 2026, for how milestone 3 of `docs/plan.md` is built; the plan carries the
@@ -1146,9 +1147,9 @@ that rule. Since 28 September 2026 the guard reads the record and passes what
 it allows, and every skill that used to hand an install over runs it where
 the record says yes — the paragraph after next says how; the record is written
 by the question at setup, question 4 of `setup-project` step 4 since the same
-day, version 0.115.0, and lands with the setup, so a project set up before it,
-or set up empty, carries no record: there the guard blocks with that cause and
-the person runs it, as the skills say for that case. What does not move either way is the
+day, version 0.115.0, in the empty case since 0.118.0, and lands with the
+setup, so a project set up before either carries no record: there the guard
+blocks with that cause and the person runs it, as the skills say for that case. What does not move either way is the
 backing: the command is backed before it runs, whoever runs it — the vendor's
 own installation line or the path in it resolving, which is the case of the
 module path that was an organisation's name — and its success is read off the

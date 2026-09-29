@@ -6871,6 +6871,140 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   source, 74 are asserted by a case and 0 by none`, recorded on its outcome.
   Nothing has run on the server, and nothing from the installed copy.
 
+- **The empty case of `setup-project` asks the questions that need no code,
+  the install permission among them: step 3 skips the two questions that need
+  code, not step 4; 29 September 2026, version 0.118.0.** On
+  `task/empty-case-questions`, off `6e06fbf`.
+
+  **What was observed, and what was recorded already.** The order of this
+  branch reports, as observed on 30 September 2026 in a fresh empty
+  repository, `devloop-test-p`: `start-work` reached `setup-project`, step 3
+  found no code and skipped the whole of step 4, so the install permission
+  question was never put, the project has no record, and the guard blocks
+  every install outside the repository there for good, since nothing asks
+  later. The machine this entry was written on read 29 September 2026, 23:34
+  CEST, at the time; the required check on main the order names as standing
+  since 30 September read as set at that moment, `strict` with the one
+  context `stock-take` and `enforce_admins` on. That the skip does this
+  stood recorded already, as a finding of the stock-take in
+  `docs/stock-take.tsv`, made on 28 September 2026 by the order that put the
+  question in and anchored on the skipping line: question 4 is asked nowhere
+  else, the refresh asking nothing anew, so a project set up empty gets no
+  record and the guard blocks every install for it until the section is
+  written by hand; searched under "Known gaps" that day for the same defect
+  and found no entry. Its should offered two ways out, question 4 put before
+  the rest of step 4 is skipped, or a sentence saying that a project set up
+  empty carries no record and where it is asked later. The first is built
+  here, widened to every question that needs no code; the finding is the
+  defect below. The status sentences of 28 September 2026 in README.md,
+  `docs/plan.md` and `docs/skill-conventions.md`, which said a project set
+  up empty carries no record, now say so of one set up empty before 0.118.0.
+
+  **The drift, and when it started.** The skipping line dates from 17 August
+  2026, the day the skill was written: `e6ece10` put "ueberspringe Schritt
+  4" into the German text and `9d7a784`, the same day, "skip Step 4" into
+  the English. Step 4 held six questions that day, the tracker, the checks,
+  the local environment, the labels, where glossary and decision records
+  live, and the tone, which the translation took out the same day. Of the
+  five that stayed, two need code, the checks and the local environment; the
+  other three did not need it then either, so the skip was wider than its
+  reason from the day it was written. Since then two questions came in, both
+  needing no code, neither touching step 3: auto-merge with the gate reading
+  on 18 August 2026, `e658181`, and the install permission on 28 September
+  2026, `8fbaeee`, version 0.115.0. Read off `git log -S` over the two
+  phrases and the question heads of step 4 at every commit of the file. Five
+  of the seven questions need no code today, and the skip took all seven.
+
+  **What the skip took with it, besides the record.** Two consequences the
+  audit of 26 September 2026 carries as defects already, each recorded there
+  as a wrong cross-reference and not as a consequence of the skip. The
+  pointer in `domain.md`, which step 6 writes at the two places question 7
+  creates, `CONTEXT.md` and `docs/adr/`, and which the skill's own words
+  call the one outcome to avoid, a pointer to something that does not
+  exist: in every empty project it was written at two places nothing had
+  created, the creating question skipped with the rest. And the reading
+  question 2 supplies, whether auto-merge is on, what checks a merge and
+  whether it binds this account, which `environment.md` records and step 8
+  arms against: never made, so `environment.md` had nothing to record there
+  and step 8 met the arming without knowing what the repository can do.
+  This change mends what the skip caused in the empty case: questions 2 and
+  7 run there now, so the two places exist when `domain.md` points at them
+  and the reading is made before `environment.md` records it. It does not
+  mend the two recorded defects, which stand as written: `domain.md` still
+  says step 6 created the two places and `environment.md` still says the
+  reading comes from step 2, with code as without, and both stay as the
+  audit recorded them. The should of the first names question 6, which has
+  been question 7 since 0.115.0 put the install permission in as question 4;
+  recorded as a finding on that line. Also taken: question 1's statement of
+  the one remote, and question 6's mapping onto existing labels where the
+  tracker has some with overlapping meaning, which a fresh repository on
+  GitHub has.
+
+  **Which questions the empty case puts now, and which it skips.** Step 3
+  says it: step 4 is not skipped, and the two questions that need code say
+  so in their own condition, "always where there is code". Question 3, the
+  checks: its mapping is of tools found onto classes, and no code means no
+  tool found and nothing to map; a class is ruled out against what the
+  project is, and against nothing no class can be; and a missing tool is
+  named from a stack. Question 5, the local environment: nothing runs yet,
+  and `environment.md` says so, which is what it has said in that case all
+  along. Questions 1, 2, 6 and 7 are put under their conditions as with
+  code. Question 4 is put as with code, in the approved wording, unchanged:
+  there is no dependency file, and the run says so, the question asking for
+  what the project declares; there is no stack, so no route is named, which
+  the wording provides for by naming no route the stack does not have. Yes,
+  no and the record are unchanged: written into `environment.md` in step 6,
+  `install-tools`, the six `install-place` lines, no `install-route` line and
+  `install-answered`, landed by step 8, the same moment as with code. The
+  reader prints no route line for such a record and the session-start line
+  prints `routes: none`; nothing of the guard, the reader or the record's
+  form changes.
+
+  **What the person loses by being asked before there is a stack.** The
+  route half of the question: with a stack, the question says for each
+  route the stack has which kind of place a yes opens, read off the
+  machine; without one it says only that a yes opens the places the record
+  names. A yes given then opens the six places and no route, and when the
+  stack arrives with the first task and reaches for a route whose
+  destination lies outside those places, `cargo` into its own bin
+  directory, `bun`, `pnpm`, `yarn`, or `npm` under a prefix of its own, the
+  guard holds that destination against the places, blocks, and hands the
+  command over, under a yes as under a no; a route landing inside them,
+  `brew` under `/opt`, `go` under the home directory's go bin, `pipx` and
+  `uv` under `~/.local/bin`, passes. Nothing later would have told them
+  more: the refresh asks nothing anew and `docs/plan.md` carries it as not
+  built, no skill puts the question again when a stack arrives, and the
+  entry on how the stack gets chosen records that nothing picks one. So the
+  choice is between the question now, without its route half, and no
+  question; the route lines are added by hand, with the person there, as
+  the wording says the answer can be changed, and every session start
+  prints the record with `routes: none` until then. The refresh is where the
+  route half would be put, and it stays unbuilt.
+
+  **Read through afterwards.** Step 4 reads as one flow with the empty case
+  in it: its opening rule, each question only under its condition, now
+  carries the case, since the two questions that need code say so where
+  their condition stands, and step 3 says which and why. `grep -rn "skip
+  Step 4" skills shared` and `grep -rn "set up empty" README.md docs skills
+  shared` find no sentence saying the opposite; the four status sentences
+  named above were the ones that did, and the finding's own text in the
+  table, which goes with it. Step 0's "two or three questions", the
+  `checks.md` rule that `empty` is what the no-code case in step 3 writes,
+  and step 9's close for barely any code stand as written and hold.
+
+  Built: step 3 of `setup-project` skips the questions that need code and
+  puts the others, question 4 among them, since 29 September 2026, version
+  0.118.0; the defect's evidence stands on that line. Nothing has run on a
+  bench: the question has been put to nobody in an empty project, and the
+  two runs milestone 3 ends with have not happened.
+
+  **Records.** The tool, run in this tree at 0.118.0, `BROKEN RECORDS: 0`,
+  `UNCOVERED LINES OF THE SEARCH SET: 0 of 1902` and exit 0, recorded on its
+  exit 0 outcome. The self-test at 0.118.0, `SELF-TEST PASSED: 88 cases; of
+  the 74 messages this tool rejects, refuses or answers with, read off its
+  own source, 74 are asserted by a case and 0 by none`, recorded on its
+  outcome.
+
 
 ## Decisions taken against
 

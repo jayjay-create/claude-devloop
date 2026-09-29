@@ -180,8 +180,8 @@ from the network — and hands it to you to run, unless a record in
 and names the place this one lands, or the route it comes through, in which
 case the run installs it itself and reports what it did; the question that
 writes that record is put at setup, so a project whose setup did not put it —
-set up empty, or before 0.115.0 — carries no record and hands every one to
-you. The turn-end hook
+set up before 0.115.0, or set up empty before 0.118.0 — carries no record and
+hands every one to you. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
 than looping. What it hands you is meant to be actionable in one step: a command
 to paste, a script that gathers the environment, a smaller case that reproduces
