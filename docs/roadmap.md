@@ -7006,6 +7006,283 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   outcome.
 
 
+- **The install question put through the harness's choice widget on its first
+  asking, none of its thirteen points arriving whole; the question cut to the
+  four that carry the decision and the form named; 30 September 2026, version
+  0.119.0.** On `task/install-question-shorter`, off `f2e6814`.
+
+  **What the run of 30 September 2026 produced.** In `devloop-test-p`, a fresh
+  empty repository set up with 0.118.0, the first time the question was put to
+  anybody: three questions in one multiple-choice form, tabbed "Auto-Merge",
+  "Labels" and "Tool-Installation", answered in one submit, and the install
+  question as one line with two answers of two lines each — a yes saying the
+  run installs by itself without asking again, landing through the usual
+  package manager, "here: go install", in the usual places for installed Go
+  tooling on this machine; a no saying the command is shown for the person to
+  run, or noted as an issue with `needs-human`. Nothing above the form. Held
+  against the thirteen points question 4 required, in the order that read it:
+  none arrived whole, six in part, six not at all, one wrong — a route named
+  where the repository had no go.mod and no stack, against the two sentences
+  that said to name none. What did arrive is the words that stand only in
+  question 4, "usual places on this machine", "without asking again", "from
+  now on", and no recommendation, so the text was reached and read through.
+  Where "go" came from is not settled by the files: the nearest text is
+  `shared/backed-command.md`, inserted between question 3 and question 4 and
+  leading with `go install`, and the machine answers `go env GOPATH` without
+  a go.mod; the transcript of that run would settle it, and it was not read
+  for this entry.
+
+  **The form as the cause.** The harness's question tool takes one to four
+  questions in one call, each a question line, a header and options of a
+  label and a line; nothing in the twelve skills, the shared text or the
+  conventions named it — `AskUserQuestion`, `widget` and `multiple choice`
+  come back empty over `skills/`, `shared/`, `docs/`, `hooks/`, `bin/` and
+  `scripts/` on 30 September 2026, before this entry. Ten of the thirteen
+  points were prose above the options and had no slot; the three with a slot,
+  the subject, the yes and the no, arrived cut to the slot. "In a message of
+  its own" was the one sentence that could have kept the question out of the
+  form, and a tab of its own met it. The sentence in step 0 that a caveat in
+  the paragraph above the options does not get read and the two lines chosen
+  between do, standing in front of step 4, described the outcome exactly; it
+  was a recorded defect already, for saying so in a passage that is no
+  question. So a run following the text lands here, and a form holding this
+  question alone would have delivered the same four lines: the prose had
+  nowhere to go, and nothing said it goes in the run's own message before the
+  form.
+
+  **What the thirteen came down to.** Each was gone through against what the
+  person loses without it, by three tests in this order: whether they would
+  answer differently knowing it; whether they meet it elsewhere before it
+  matters, without going to look; whether it is true at the moment of asking.
+  Four carry the decision and stay: the subject, in the question line —
+  programs that run and end, landing outside the project on this machine, the
+  answer holding for this project and so for anyone who builds on it with this
+  set; what a yes means, in the yes itself — from then on the run installs by
+  itself, with them there and with nobody there, without asking again; what a
+  yes does not hold back — through a package manager the guard sees the verb
+  and not what is installed, so a yes to tools also lets through a runtime, a
+  rule on the run and not a wall, compilers and runtimes theirs under every
+  answer; and where a no leads, in two halves, in the no itself. The standard
+  is that nothing in the question implies something untrue, not that
+  everything true is said. Out of the question, and where each went: what the
+  project declares, to step 2, which reports what was found; which kind of
+  place each route reaches, to step 6, as the run's own reading where it
+  writes the route lines and not text to the person — the reading is what
+  produced "go" where there was nothing to read; where the list of places is
+  written and that a session reads it, to step 9, which names the files
+  written. Out altogether: why it is asked now, the reason behind giving no
+  recommendation, that it can be changed later, and that nothing lands at this
+  moment, "from now on" carrying it. Giving no recommendation stays a rule on
+  the run. The sentence that said which places exactly stand written in the
+  record, false for a route since 29 September 2026 and one half of a recorded
+  defect, went with the cut; the bare-pip half of that defect stands. Two
+  status sentences said the person is shown what the project declares at this
+  question, in `docs/plan.md` under "Where the set ends" and in
+  `docs/skill-conventions.md` under "Works with nothing else installed"; both
+  now say it is reported at setup before the question, in step 2. No wording
+  was written here: the last wording was approved twice and arrived as four
+  lines, so a new approved wording is not what was missing.
+
+  **The form, named, and what the requirement is worth.** Question 4 is put
+  in prose, in the run's own message, in the person's language; a choice
+  widget that follows carries its two answers and no other question,
+  everything above them said by then. Step 0's sentence is resolved for every
+  question of step 4 rather than for this one: the passage itself, being no
+  question, says both halves in the preparation, and the reading about options
+  holds for a choice two lines carry — questions 1, 2, 6 and 7 — and not for a
+  question that needs more said, which step 4's opening names: the mapping of
+  question 3, the permission of question 4, and question 5, which is open and
+  has no options. What can be read off a result afterwards to tell a question
+  put in prose from one that was not: the transcript, and nothing else. The
+  harness keeps a log of the session and can export the conversation, and
+  both hold the run's text before the tool call and the call's own content,
+  so whether a message preceded the form and how many questions the call
+  carried are read there. The record cannot tell — it carries the answer, the
+  places, the routes and the date, whatever form produced them — and nothing
+  else in the repository can, since what the run said to the person is not in
+  it. So this is a requirement that holds only when a run chooses to meet it,
+  as "in a message of its own" was before it, and what catches a run that
+  does not is a measurement: a bench run of the setup, read off its transcript
+  against the list above, which is the question half of the two runs
+  milestone 3 ends with, and neither has happened. What the requirement is
+  worth beyond that: it names the form the harness offers, which no sentence
+  did, and it can be told from the screen the moment the question arrives,
+  where "in a message of its own" could not be told from a tab.
+
+  **Read through afterwards.** Step 4 reads as one flow: its opening says the
+  two forms and which question takes which, question 4 says its own, and
+  questions 1 to 7 stand under their conditions as before. `grep -rn "message of its own" skills shared` finds
+  the phrase in plan-work Stage 1 alone, since question 4's own account of the
+  old rule breaks the phrase over two lines; `grep -rn "shown at that
+  question\|shown when the question" docs README.md skills shared` finds
+  nothing left; `grep -rn "question 4 named\|names no route\|says why it gives
+  none" skills shared docs README.md` found one sentence in
+  `docs/skill-conventions.md` under "The install guard reads a record" still
+  saying the route lines are the routes question 4 named, corrected in this
+  change to say the run reads them where it writes the record, and then
+  nothing; the entries of 29 September 2026 that say the question named the
+  routes stand as written, being dated.
+
+  Built: question 4 of `setup-project` step 4 covers the four points and names
+  its form, step 4's opening says which questions two lines carry, and step
+  0's sentence says where it holds, since 30 September 2026, version 0.119.0;
+  the defect of the permission passage, recorded on 26 September 2026, is
+  repaired by it and its evidence moves onto the repaired line. Nothing has
+  run on a bench: the question has been put once, before this build, and the
+  two runs milestone 3 ends with have not happened.
+
+  **Records.** The tool, run in this tree at 0.119.0, `BROKEN RECORDS: 0`,
+  `UNCOVERED LINES OF THE SEARCH SET: 0 of 1911` and exit 0, recorded on its
+  exit 0 outcome. The self-test at 0.119.0, `SELF-TEST PASSED: 88 cases; of
+  the 74 messages this tool rejects, refuses or answers with, read off its
+  own source, 74 are asserted by a case and 0 by none`, recorded on its
+  outcome.
+
+
+- **A rule on the length and the form of a delivered text, drawn from the two
+  cuts of 29 and 30 September 2026, the message and the question; 30 September
+  2026, version 0.119.0.** On `task/install-question-shorter`, its second
+  commit, the version not raised again.
+
+  **What the two entries establish.** The block message of
+  `hooks/pre-tool-use-install-guard.sh`, read off the `echo` line carrying
+  `>&2` at each commit `git log --format=%h -- hooks/pre-tool-use-install-guard.sh`
+  names and counted with `wc -w` over the quoted text: d8ed768 of 24 August
+  2026, 112 words; ae89724 the same day, 158; 3627f6e and 5e2c07e of 25 August,
+  158; 2f333b3 the same day, 159; 93b2dc8 of 7 September, 211; 433bdc1 of 28
+  September, 310; 188648d of 29 September, 337; and 2686bd6 the same day, 207,
+  after the cut. Five changes grew it, each answering something a run had got
+  wrong — a declined install with nowhere to land, a run resuming on the user's
+  word, the result deciding whether an install ran, the record, the routes —
+  and none read the message as a whole. The entry of 29 September 2026 above
+  cut it by reading each part for what it was put there for and for what the
+  run has in front of it when the message arrives, and what came out was of
+  three kinds: said already where the run has it, `$REF` in every cause that
+  resolved one; untrue for some of its readers, the stand-in "the default
+  branch as last fetched" where no ref was resolved, and the two costs of a
+  decline, which assumed a caller with check classes and tasks; and the reasons
+  behind duties, why an organisation name is not a module path. Question 4 of
+  `setup-project` grew to thirteen points between 28 and 30 September 2026,
+  each added for a reason, and the entry of 30 September 2026 above cut it to
+  four by three tests in order — would they answer differently knowing it; do
+  they meet it elsewhere before it matters, without going to look; is it true
+  at the moment of asking — and found that the form, not the length, was why
+  nothing arrived: ten points were prose above two option lines, and nothing in
+  the set named the widget. Neither text was read as a whole after any
+  addition; that is the one thing both have, and the rule is drawn from it.
+
+  **The rule, and where it stands.** `docs/skill-conventions.md`, "A text is
+  as long as what carries the decision, and written for its form", after
+  "Describe what must be said; never dictate wording" and before "Works with
+  nothing else installed". There because the sections from "Only ask where
+  there is something to decide" to "Describe what must be said" are the rules
+  on what a run says to a person and how a skill specifies it, and this is what
+  such a specification is held to as it grows: "Describe what must be said" is
+  the sentence the question's cut leaned on — list what the text covers — and
+  the list is what had grown. Its two halves: nothing that carries the reader's
+  decision comes out and nothing that does not stays in, the reader deciding
+  what carries — a run's text carries what the run does differently at that
+  moment, a person's what they would decide differently — part by part, by the
+  three tests of the question's cut; and a text is written for the form that
+  carries it, the form named where the text is specified, a text and a form
+  that do not fit being one thing wrong, never answered by hoping it gets
+  through.
+
+  **What it covers and what not.** The texts a run delivers whole, at one
+  moment, to a reader with nothing else in front of them who does not go and
+  look: what a hook or a program prints into a session, and what a run says or
+  writes for a person — a question, an offer, a handover, a close, an issue or
+  a pull request body. Not the skills and the shared text, which a run reads at
+  load and which can point: the entry of 14 September 2026 above names sprawl
+  for `build-work` with the branch test as remedy, an open defect in
+  `docs/stock-take.tsv`, and the rule leaves it there. Not a project's control
+  documents: the third exit of `standards.md`, in the conventions since 27
+  September 2026, is the same principle for them with its own evidence. Not
+  the conventions, the header of `scripts/devloop-stock-take`, the dated
+  entries or the table: records and cases, written once, read by somebody who
+  went to look, kept by the conventions' own opening. Said in the section so
+  that the rule is applied to the kinds it names rather than to everything.
+
+  **What makes it checkable.** Nothing mechanical. A count cannot tell the
+  message of 337 words, wrong for what it was made of, from one of 337 words
+  that carries, and none was built. What can be shown to have been broken: an
+  order that adds to a delivered text names the reader and the form; reads the
+  whole text as that reader receives it after the addition — the hook fed its
+  JSON and its stderr read, the expanded skill's question read against the
+  form's slots; holds every part, old and new, to the three tests; and lists in
+  its report what came out and where each part went, as the entry of 29
+  September 2026 above does under "What came out" and "What stayed" and the
+  entry of 30 September 2026 under "What the thirteen came down to". A diff that adds to such a text
+  beside a report without that list has broken it, and that is read off the
+  report. The form of a question cannot be read off the repository, as the
+  entry of 30 September 2026 above says: the transcript alone tells, and a
+  bench run reads it. One fit of text and form can be read off the repository,
+  and it is the one place the conventions set a count, the description under
+  "Frontmatter", "under ten words":
+
+      for f in skills/*/SKILL.md; do d=$(grep -m1 '^description:' "$f" | sed 's/^description: *//'); echo "$(echo "$d" | wc -w | tr -d ' ') $f"; done
+
+  printed on 30 September 2026 eleven descriptions of six to nine words and
+  `skills/record-lessons/SKILL.md` at ten, "Write down what went wrong so it
+  does not repeat", which is not under ten. Not built as a check: the rule has
+  stood since the file's first version and this is its first breach, a
+  description is written once and does not grow by additions, and a nineteenth
+  check here would be a count.
+  Recorded, not built: the description of `record-lessons` has ten words
+  against "under ten words" under "Frontmatter" in `docs/skill-conventions.md`;
+  not changed here, since the frontmatter is no part of this rule. The roadmap,
+  searched for `ten words` and `under ten`, names it nowhere.
+
+  **Read through afterwards.** `docs/skill-conventions.md` read in full after
+  the change. What already speaks of length there, and whether it agrees:
+  "Frontmatter", "under ten words, no trigger conditions", a limit set by the
+  form the description is read in, with "Whatever the model needs in order to
+  recognise the situation goes in the body" — the same rule for one text,
+  agreeing; "Only ask where there is something to decide", agreeing; "A rule
+  holds only on the path it is written on", "rewrite the sentence rather than
+  appending to it", the same act on a skill's text, agreeing; the third exit
+  under "A project's rules are written at the review's close", "a line the
+  agent reads that changes nothing it does costs", the same principle for a
+  control document with evidence, agreeing; the check on names under "Before a
+  handover, run these", "130 lines that day, was read once and skipped", the
+  failure of an unread text, agreeing; and "Every question carries its own
+  reason", four things a question states, "why it comes up now" among them,
+  which the cut of 30 September 2026 took out of question 4 as not carrying
+  the decision. The new section reads the four as what has reached the person
+  by the time they answer, and the setup's opening says that questions come
+  with it; read as four sentences in every question, the section and that
+  heading disagree on the one item, and so do `shared/how-to-ask.md` and
+  question 4 as cut, since the shared text carries the same sentence into six
+  skills. `grep -rn "why it comes up now" skills shared docs README.md`: the
+  conventions' heading, `shared/how-to-ask.md`, the template of
+  `untangle-idea`, and nothing else.
+  Recorded, not built: `shared/how-to-ask.md` says every question states why
+  it comes up now, and question 4 of `setup-project`, cut on 30 September
+  2026, states it nowhere, the entry of that date having judged it not to
+  carry the decision; the two disagree as written, and the reading that
+  reconciles them stands only in the new section. Not changed here: the shared
+  line stands in six skills, with the conventions' heading and the template
+  beside it, and rewriting the three is a change of its own. The roadmap,
+  searched for `why it comes up now` and `comes up now`, names it nowhere.
+  `grep -n -i -w "short\|long\|length\|words" docs/skill-conventions.md` over
+  the rest finds "Writing long files", about a heredoc truncated on paste and
+  not about a text read; `caffeinate` running "as long as" a process; "the
+  shape of the list matters more than its length" on `mergeStateStatus`; and
+  the lines of the check on names. No sentence in the file says that a text
+  says everything true, or that a text is shortened without being read, so
+  nothing says the opposite.
+  Recorded, not built: the rule stands in `docs/skill-conventions.md` as a
+  written convention, a duty done at the moment of adding and read off the
+  report, and no mechanism.
+
+  **Records.** The tool, run again in this tree at 0.119.0 after this entry,
+  `BROKEN RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 1915` and
+  exit 0, recorded on its exit 0 outcome. The self-test, run again at 0.119.0
+  after this entry, `SELF-TEST PASSED: 88 cases; of the 74 messages this tool
+  rejects, refuses or answers with, read off its own source, 74 are asserted
+  by a case and 0 by none`, recorded on its outcome.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

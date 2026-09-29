@@ -504,6 +504,99 @@ user — they answered the question they were asked, and it was the wrong questi
 A model performs a task; it does not transcribe. Asking for a fixed paragraph
 gets a paraphrase. Listing what the paragraph must cover gets all of it.
 
+## A text is as long as what carries the decision, and written for its form
+
+Two texts of this set grew the same way between 24 August and 29 September
+2026 and failed the same way. The install guard's block message was written at
+112 words and stood at 337 at the end, grown in five changes, each answering
+something a run had just got wrong; question 4 of `setup-project` grew to
+thirteen points the same way. Every addition was justified, and no addition
+read the text it went into as a whole. The message reached the run, and the
+person watching, verbatim and unreadable. The question did not reach the
+person at all: ten of its thirteen points were prose above two option lines,
+and the form that carried it has no room for prose. Both cuts are recorded in
+`docs/roadmap.md` under `## Known gaps`: the entry of 29 September 2026 on the
+message's cut, the entry of 30 September 2026 on the question's; this is the
+rule drawn from them.
+
+**Nothing that carries the reader's decision comes out, and nothing that does
+not stays in.** A text is held to that part by part, and who reads it decides
+what carries. Where a run reads it — a hook's block message, what a program
+prints into a session — what carries is what the run does differently for it
+at that moment, with nothing else in front of it: the guard fires on any Bash
+call, with no skill loaded none of `shared/` or `skills/` is there, so the
+message carries every duty itself and none of the reasons behind them. Where a
+person reads it — a question, an offer, a handover, a close, an issue or a
+pull request body a run writes — what carries is what they would answer or do
+differently knowing it. Three tests decide a part, in this order, and they are
+the tests the question was cut by: would the reader decide differently with
+it; do they meet it elsewhere before it matters, without going to look; is it
+true at the moment it arrives, for everyone it arrives in front of. A part
+that fails the first goes. One that fails the second goes to where it is met —
+what the project declares went to step 2's report, where the record stands to
+step 9 — or goes altogether where it is met already. One that fails the third
+is wrong rather than long, and the cuts found that kind most often: `$REF`
+stood in every cause that had resolved one and a stand-in phrase, untrue, in
+the causes that had not; the two costs of a decline assumed a caller with check
+classes and tasks. The standard is that nothing in the text implies something
+untrue, not that everything true is said.
+
+**A text is written for the form that carries it.** Ten sentences above two
+option lines are not too long — they do not arrive, whatever they say. The
+harness's choice widget has a slot for a question line, a header and the
+options, and none for prose; a hook's message arrives whole on stderr; a
+question a run puts arrives in whatever the run puts it in. So the form is
+named where the text is specified, as `setup-project` step 4 names its two,
+and a text and a form that do not fit are one thing wrong, not two: the text
+goes into a form that holds it, or it is cut to what the form holds, and it is
+never made shorter in the hope that it gets through. Nothing in this set named
+the widget before 30 September 2026, and that is how a question approved twice
+arrived as four lines.
+
+**What this covers, and what it leaves where it is.** It covers the texts a run
+delivers whole, at one moment, to a reader who has nothing else in front of
+them and does not go and look: what a hook or a program prints into a session,
+and what a run says or writes for a person. Those cannot point elsewhere, which
+is what makes their length the reader's problem. It does not cover the skills
+and the shared text: a run reads those at load, and they can point — the
+branch test under the entry of 14 September 2026 in `docs/roadmap.md` is the
+remedy for a document too long, and the sprawl of `build-work` stands there as
+an open defect this rule does not answer. It does not cover a project's control
+documents; the exit under "A project's rules are written at the review's
+close" is the same principle for `standards.md`, with the evidence on what a
+line costs that the agent reads and does not need. And it does not cover this
+file, the header of `scripts/devloop-stock-take`, the dated entries or the
+table: a record is as long as what it records, written once and read by
+somebody who went to look, and the case is what holds a rule up, by the
+opening of this file. A rule that covered everything written anywhere would be
+applied to nothing.
+
+**What it does not replace.** Every duty this file puts on a text — where a no
+leads, the backing of a command, the cause of a block, what a question states
+under "Every question carries its own reason" — carries the reader's decision
+and stays. What this decides is where each is said: once, where the reader
+meets it, and not again in every text after it. The four things a question
+states are what has reached the person by the time they answer, not four
+sentences in each question: a setup whose opening said that a few questions
+come with it has said why the next one comes now.
+
+**Nothing mechanical catches an overlong text; what holds is a duty at the
+moment of adding, and it is a thing done.** Each of the five changes that grew
+the message did one thing: added a sentence, with a reason. An order that adds
+to a delivered text does three more, and its report shows them. It names the
+reader and the form. It reads the whole text as that reader receives it after
+the addition — the hook is fed its JSON and its stderr is read; the expanded
+skill's question is read against the form's slots — and holds every part, the
+old ones with the new, to the three tests. And it lists what came out and
+where each part went, as the entry of 29 September 2026 does under "What came
+out" and "What stayed" and the entry of 30 September under "What the thirteen
+came down to". An order whose diff adds to such a text and whose report carries no
+such list has not done it, and that is what it can be shown to have broken. A
+guard that counts characters is not built: the message was not wrong for its
+length but for what the length was made of, and a count cannot tell the two
+apart. The one text whose form fixes a length is the description under
+"Frontmatter", and its limit stands there.
+
 ## Works with nothing else installed
 
 Everything here has to work with this plugin alone. Another plugin being
@@ -535,8 +628,8 @@ What the project declares in its dependency file does not: a guard that read a
 project's files per language and got one of them wrong would install with
 nobody asked, and an abort is loud only where somebody is reading: with nobody
 there, it is the first thing to go wrong. What the project declares
-is what the person is shown when the question is put; it does not stand in for
-the question. Since 28 September 2026 the install guard reads that recorded
+is reported at setup, in step 2 of `setup-project`, before the question is
+put; it does not stand in for the question. Since 28 September 2026 the install guard reads that recorded
 state and the skills run the install where it says yes — **The install guard
 reads a record** below says how — and the question that writes it stands in
 `setup-project` step 4 since the same day, version 0.115.0, and in the empty
@@ -1174,14 +1267,16 @@ shape `checks.md` uses for a value a script reads — `grep` on the start of the
 line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
 one `install-place:` line per place a yes opens in this version, spelled as
 the guard matches it; since 29 September 2026 one `install-route:` line per
-route question 4 named for the stack, a name from the eleven the guard
-resolves — `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
+route the stack has, named by question 4 until 30 September 2026 and since
+then read by the run where it writes the record, a name from the eleven the
+guard resolves — `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
 `pipx`, `uv`, `pip`; `install-answered:` with the date the question was
 answered. The question does not show that list: by its text, amended and
-built on 28 September 2026, it says that programs land outside the project, in the usual
-places for installed programs on this machine, that which places exactly
-stands in the record, and for each route the stack has, which kind of place it
-reaches. It carries the
+built on 28 September 2026 and cut on 30 September 2026 to what carries the
+decision, it says that such programs land outside the project on this
+machine; where the list stands, and that every session reads it, the close of
+the setup says, and the routes of the stack are read by the run where it
+writes the record, in step 6. It carries the
 places and not only the answer because an answer given against the places of
 one version is not an answer for a place a later version adds: the guard passes
 only a place the record itself names, or the answer of a route it names, and a

@@ -181,13 +181,13 @@ here turns a yes into a step towards it — which is exactly the confusion the
 next paragraph exists to prevent. If they ask about it, say it is asked for
 separately, by name.
 
-**Say what this is not, in the options themselves.** A caveat in the paragraph
-above them does not get read — the two lines the user chooses between do. So the
-yes carries both halves in its own words: that the real decisions still come to
-them one at a time, **and that this is not the unattended mode**. Naming it is
-the part that gets dropped, and dropping it is what leaves the two looking like
-the same thing — and they are easy to confuse, because both sound like "stop
-asking me". This settles which commands may run without a prompt, nothing more.
+**Say what this is not, in the preparation itself.** This passage has no
+options, being no question, so both halves stand in its own words: that the
+real decisions still come to them one at a time, **and that this is not the
+unattended mode**. Naming it is the part that gets dropped, and dropping it is
+what leaves the two looking like the same thing — and they are easy to confuse,
+because both sound like "stop asking me". This settles which commands may run
+without a prompt, nothing more.
 It changes nothing about who decides: every question this workflow puts to them
 — sharpening the idea, choosing the design, the go-ahead before anything merges
 — still comes to them, one at a time, exactly as before. The unattended mode is
@@ -196,6 +196,11 @@ idea stands, with a check standing in for each of those decisions; it has to be
 asked for by name, it has its own preconditions, and each piece of work is asked
 separately whether to use it. Granting permissions here does not switch it on
 and does not bring it closer.
+
+Where a question does have options, a caveat in the paragraph above them does
+not get read and the two lines the user chooses between do — which holds for a
+choice two lines can carry and not for a question that needs more said than
+that, and step 4 says which of its questions is which.
 
 ## Step 1 — Explore, change nothing
 
@@ -230,16 +235,24 @@ code to answer, and each of those says so in its own condition. Question 3
 needs code: its mapping has nothing to map, no class can be ruled out against
 nothing, and a missing tool has no stack to be named from. Question 5 needs
 code: nothing runs yet, and `environment.md` says so. Every other question is
-put under its condition, as with code, question 4 among them: there is no
-dependency file, and the run says so; there is no stack, so it names no route,
-which its wording already provides for. Yes, no and the record are as with
-code, written in step 6 and landed in step 8, so that the first install this
-project meets finds an answer and not the absence of one.
+put under its condition, as with code, question 4 among them: nothing it
+covers needs a stack. Yes, no and the record are as with code, written in step
+6 and landed in step 8, with no route line, since step 6 reads the routes off a
+stack and there is none, so that the first install this project meets finds an
+answer and not the absence of one.
 
 ## Step 4 — Questions
 
 Only these, each only under its condition. Lead with your recommendation so a
-single word can answer; question 4 says why it gives none.
+single word can answer; question 4 gives none. Two forms, and which one a
+question takes follows from what it has to carry, not from what the harness
+offers. A choice that two option lines carry — questions 1, 2, 6 and 7 — puts
+what counts in the options themselves, because a caveat in a paragraph above
+them does not get read; several such choices may share one form. A question
+that needs more said than two lines hold — the mapping of question 3, the
+permission of question 4, and question 5, which is open and has no options —
+is put in prose, in the run's own message, and a widget that follows carries
+that question's answers and no other question: it shares a form with nothing.
 
 1. **Issue tracker** — only if there is no remote, or several candidates.
    With exactly one remote: state it and move on.
@@ -345,64 +358,43 @@ single word can answer; question 4 says why it gives none.
    session on the record decides; question 4 writes it, and step 6 puts it into
    `environment.md`.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
-4. **Install permission** — always. Say, in a message of its own and in the
-   user's language, that one question about their machine comes now rather
-   than later. Why now: the check commands of this project are not known yet,
-   so what can be named is kinds of thing and places, not tools; and later on,
-   a run that builds alone has nobody to ask.
+4. **Install permission** — always. Put it in prose, in the run's own message
+   and in the user's language: the question is what that message says, and a
+   choice widget that follows carries its two answers and no other question,
+   everything above the answers having been said by then. "In a message of
+   its own" was the rule until 30 September 2026, and the first run to put the
+   question met it with a tab of its own in a form holding three questions,
+   where the ten points that were prose had no slot and did not arrive; the
+   roadmap entry of that date says what this rule is worth and what tells the
+   two apart afterwards.
 
-   Show what the project already declares in its dependency file, and say that
-   this is not what is being asked: those land inside the repository and
-   travel with it.
+   What the question covers, and nothing else:
 
-   Say what a tool is here: a program that runs and ends, such as a checker, a
-   code generator or a migration command. Say what a yes means for the machine
-   in one sentence: such programs land outside the project, in the usual
-   places for installed programs on this machine; which places exactly stands
-   written in the record in the project's own files, where they can read it at
-   any time, and the run reads it at the start of every session once the
-   record has landed on the main branch. Then, for each route this project's
-   stack actually has, say in ordinary words which kind of place it reaches,
-   read off the machine the run is on before anything is named: ask the route
-   itself where it puts things, as the guard does, and say the answer as a
-   kind of place, the directory that package manager keeps for the programs it
-   installs, or the directory that toolchain keeps for programs it builds.
-   Name no operating system, no path, and no route the stack does not have.
-   Where a route does not answer, say that it did not, and name no place for
-   it.
+   - **The subject, in the question line.** Programs that run and end — a
+     checker, a code generator, a migration command — landing outside the
+     project on this machine. The answer holds for this project, so for
+     anyone who builds on it with this set and not for this machine alone;
+     where that last part does not fit the line, it goes rather than crowd
+     out what follows.
+   - **What a yes means, in the yes itself.** From then on the run installs
+     such a tool by itself, with them there and with nobody there, without
+     asking again.
+   - **What a yes does not hold back.** Through a package manager the guard
+     sees the verb and not what is installed, so a yes to tools also lets
+     through a command that installs a runtime; that is a rule on the run and
+     not a wall, and compilers and runtimes stay theirs under every answer.
+   - **Where a no leads, in two halves, in the no itself.** With them there
+     the run hands them the command and they decide; with nobody there a
+     check class goes `skipped` with that reason, or the task becomes an
+     issue carrying the exact command.
 
-   Say that a package manager command does more than the package it names: it
-   updates itself, fetches what it needs for that, and cleans up on its own,
-   without asking. No figure, no version, no measurement.
-
-   Put the yes so that it says what it does, in the option itself: from now on
-   the run installs such a tool itself, with them there and with nobody there,
-   without asking again, and nothing lands at this moment.
-
-   In one sentence, say what a yes does not hold back together with what stays
-   theirs: through a package manager the guard sees the verb and not what is
-   installed, so a yes to tools also lets through a command that installs a
-   runtime, which is a rule on the run and not a wall; and compilers and
-   runtimes, anything needing sudo, anything piping a script from the network
-   into a shell, and anything outside the places the record names stay theirs
-   under every answer.
-
-   Say that the answer travels with the repository: it is committed, and
-   whoever clones it and uses this set has it applied on their machine.
-
-   Say where a no leads, in two halves: with them there, everything stays as
-   it is now, the run hands them the command and they decide; with nobody
-   there, a check class goes skipped with that reason, or the task becomes an
-   issue carrying the exact command.
-
-   Say that it can be changed later, with them there, and takes effect once
-   the change has landed on the main branch.
-
-   Give no recommendation, and say why: it is their machine, and the run
-   cannot weigh that for them.
-
-   The answer goes into `environment.md` in step 6, as the section the guard
-   reads; nothing is installed on it here.
+   These four carry the decision. The standard is that nothing in the
+   question implies something untrue, not that everything true is said: what
+   the project declares stands in step 2's report, which kind of place each
+   route reaches is the run's own reading in step 6, and where the record is
+   written and that every session reads it is said in step 9. Give no
+   recommendation. The answer goes into `environment.md` in step 6, as the
+   section the guard reads; nothing is installed on it here.
 5. **Local environment** — always where there is code, unless you could read it
    all from `docker-compose.yml` or the README. Which processes, in what order,
    on what ports.
@@ -672,14 +664,21 @@ reads the start of each line:
 `install-tools` is the answer, `yes` or `no` and nothing else. The six
 `install-place` lines are the places a yes opens in this version, written as
 they stand here under either answer, so that the file says what a yes would
-open where the answer is no. The `install-route` lines are the routes question
-4 named for this stack, one line per route and none for a route it did not
-name, the two above standing as an example; each is a name from the eleven the
-guard resolves, `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
-`pipx`, `uv`, `pip`. A route named here opens the directory that route answers
-on the machine the run is on, read at the moment of the command and written
-nowhere, so that the answer holds on another machine and under another version
-of the tool; a route not named here is held against the `install-place` lines.
+open where the answer is no. The `install-route` lines are the routes this
+project's stack has, read here by the run off what the project declares and
+the lockfiles beside it, one line per route and none for a route the stack
+does not have, the two above standing as an example; with no stack, none. The
+reading is this run's own work and is not put to the user: ask each route
+where it puts things, as the guard does, and write its line either way, since
+the guard asks again at the moment of every command; a route of the stack
+that does not answer on this machine is named in the pull request body of
+step 8, so that the fact is known before the first install meets it as a
+block. Each is a name from the eleven the guard resolves, `brew`, `go`, `npm`,
+`pnpm`, `yarn`, `bun`, `cargo`, `gem`, `pipx`, `uv`, `pip`. A route named
+here opens the directory that route answers on the machine the run is on, read
+at the moment of the command and written nowhere, so that the answer holds on
+another machine and under another version of the tool; a route not named here
+is held against the `install-place` lines.
 The route lines are written under either answer, like the places.
 `install-answered` is the date the question was answered. The guard and the
 session-start hook read this section off the default branch as last fetched,
@@ -777,7 +776,10 @@ pull request with no idea what comes next.
 ## Step 9 — Close
 
 Five lines at most: which files you wrote, which targets you created, how many
-classes are `filled` and which are not.
+classes are `filled` and which are not, and where the install answer stands:
+the section `## Install permission` of `environment.md`, which carries the
+answer, the places a yes opens and the routes of the stack, and which every
+session reads at its start once step 8 has landed it on the main branch.
 
 Then name **no command**, and do not ask permission to carry on. Say what
 happens next, in plain words, and do it. What it buys and what it costs still
