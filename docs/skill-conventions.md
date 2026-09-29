@@ -596,8 +596,13 @@ classes today and change when milestone 3 is built, changed on 28 September
 record saying yes, a decline still making the class `skipped`;
 `setup-project` step 4 question 3, "Ask separately whether missing tools
 should be installed", which now says where a no leads; the install guard's
-own message, which names the two costs of a decline as before and now the
-cause of the block; and `build-work` step 3 point 7, which names the kind as
+own message, which names the cause of the block since 28 September 2026 and
+named the two costs of a decline until 29 September 2026, when it was cut to
+the approved wording of that day, which says only that what a decline costs
+this work gets said — the roadmap entry of that date says why the shared
+blocks could not carry it, since the guard fires on any Bash call and with no
+skill loaded nothing of `shared/` or `skills/` is in front of the run; and
+`build-work` step 3 point 7, which names the kind as
 anything that runs and ends, with the two decline cases under it standing as
 the two costs. Milestone 3 of `docs/plan.md` keeps "tools for check classes"
 as written on 19 September 2026 and says beside it what this ruling made of
