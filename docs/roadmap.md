@@ -6447,6 +6447,135 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `PNPM_HOME` nor its directory on `PATH`. Nothing here has run on a bench.
   Built, never walked on a bench: every route above.
 
+- **The install guard's block message cut to the approved wording, on 29
+  September 2026, version 0.117.0.** The message of every block in
+  `hooks/pre-tool-use-install-guard.sh` is replaced by the wording approved
+  that day, worked out in the session that approved it sentence by sentence:
+  what each part of the old message was put there for, and what the run has in
+  front of it when the message arrives. It stays one `echo`, since a record in
+  `docs/stock-take.tsv` anchors on that line, and nothing in it was reworded
+  on this branch.
+
+  **What came out.** The name of the record's file and section, and the
+  sentence on what a yes opens — a place the record names or the answer of a
+  route it names, nothing under `sudo`, no script piped from the network —
+  which stand in `docs/skill-conventions.md` under "The install guard reads a
+  record" and in `build-work` step 3 point 7. `$REF`, the name of the ref,
+  which every cause that resolved one carries already, `install-tools: no on
+  origin/main`, `on origin/main as last fetched`, and which the causes that
+  never resolved one stood in for with the phrase "the default branch as last
+  fetched", untrue there: the assignment of that stand-in came out of the
+  failure branch with it, and `$REF` is replaced nowhere. The reason an
+  organisation name is not a module path and the reason `command -v` finds an
+  older copy, both in `shared/backed-command.md`. And the two costs of a
+  decline, a check class `skipped` with that reason or the part of the task
+  that needs the tool not built, which assumed the caller has check classes or
+  tasks and offered `research`, `build-prototype` and `record-lessons` nothing
+  — the gap the entry measured on 6 September 2026 above records under "One
+  thing the shared rule cannot reach". The message now says that what a
+  decline costs this work gets said, whatever that work is, which closes that
+  gap in the hook: the defect's evidence in `docs/stock-take.tsv` moves onto
+  the `echo` line, its site staying where that entry names it.
+
+  **What stayed.** The cause, decided at the lines above the `echo` and
+  carried as `$CAUSE`; that the record is read off the default branch as last
+  fetched and never off the working tree; that the install is the user's to
+  run and a yes said in the session does not change that, only the record
+  does; what it installs and what it unblocks, in one line; the exact command,
+  backed by the vendor's own installation line or by the path in it resolving;
+  both ways it can go, said at once; the pick-up once the tool stands at the
+  path the command writes to, their word saying when to look and the path
+  deciding, never `command -v`; that nothing moves until they say so; a
+  decline as an answer; a block as not a decline, the issue or the skip reason
+  carrying the cause with nobody there; and the last sentence, on a command
+  that only looked like an install, which `shared/guard-block-intro.md` points
+  at and still points at what it means to. The two long dashes are em dashes,
+  as the approved text has them, and the hook's double quotes carry them
+  without escaping, as they carried the two of the old message.
+
+  **Why the shortening could not lean on the shared blocks.** The guard fires
+  on any Bash call, registered in `hooks/hooks.json` with no condition, and
+  with no skill loaded nothing of `shared/` or `skills/` is in front of the
+  run: `shared/backed-command.md`, `shared/command-does-not-answer.md` and the
+  decline paragraph of `build-work` step 3 point 7 are read only where a skill
+  inserts them, and a block met outside a skill has the message and nothing
+  else. So the message carries every duty itself, in fewer words, and the
+  reasons behind them stand in the shared blocks and the conventions for the
+  runs that have those in front of them.
+
+  **The joined sentence, read for every cause the guard can produce, on 29
+  September 2026 against the working tree.** The guard fed its JSON directly,
+  as in the entry above, with a scratch project whose `origin` was a local
+  bare repository and each record pushed and fetched before its run.
+  Thirty-one feeds: twenty-nine blocks and two passes as controls, and the
+  text after the cause was the same in all twenty-nine. The reader's causes,
+  `bin/devloop-install-record`: not a git repository; no default branch, on a
+  repository whose only branch is `trunk`; the ref cannot be read, on `main`
+  without a remote; no `environment.md` on the fetched ref; no section; no
+  `install-tools` line; `install-tools` reading `maybe`; and the guard's own
+  fallback where the reader is not there, with a copy of the hook standing
+  beside no `bin/`, and where it answers nothing, with a stub reader exiting 1
+  in silence. The guard's own causes: the record saying no; `sudo`; a script
+  piped from the network; a place the record does not name, one place and two,
+  with no route named and with `gem` and `pip` named; and fourteen shapes of a
+  destination that cannot be read — a system package manager, a version
+  manager, the two in one command, a bare `pip`, `uv pip --system`,
+  `--target`, an interpreter not found, `make install` without a destination,
+  `gem --install-dir`, `cargo` with `install.root` in a config file in the
+  project, `brew` with the hook's PATH cut to `/usr/bin:/bin`, a copy into
+  `$GOBIN` under the same cut, an interpreter answering nothing for its
+  scripts path, a stand-in `python3` of this reading, and `bun` with
+  `BUN_INSTALL_GLOBAL_DIR` pointing at a directory holding nothing. No cause
+  ends in a full stop, a quotation mark or a colon, so every join into "The
+  install is the user's to run" reads. The join before the cause is poor in
+  seven: the frame ends in a colon and the cause opens with a label and a
+  colon of its own, so the sentence reads "does not open it: no record: …",
+  "does not open it: unknown value: …", "does not open it: no default branch:
+  …", "does not open it: the ref … cannot be read: …" and "does not open it:
+  the record could not be read: …", two colons in one sentence, and where the
+  reader is missing four, since the fallback quotes the shell's own error with
+  two absolute paths and a line number. Three causes read against the frame
+  rather than with it, "read off the default branch as last fetched … does not
+  open it: not a git repository", "… no default branch …", "… has not been
+  fetched", and each reads, the cause saying why the read failed. Not fed,
+  because the guard cannot produce them: the reader's "cannot be entered",
+  since the guard exits 0 on that directory before the reader runs; the
+  reader's exit 2 on more than one argument, since the guard passes one;
+  "where it lands could not be read off the command", since every path that
+  sets `BEYOND` and reaches the record fills a destination, an unread cause or
+  an opened route first; "its install root could not be read" for `cargo`,
+  since the root falls back to `~/.cargo` while `HOME` is set; and the arm for
+  a route with no arm of its own, since every manager the verb pattern matches
+  has one. Recorded, not built: the seven causes carrying a label and a colon
+  of their own — "no default branch", "the ref … cannot be read", "no record",
+  "unknown value" twice, "the record could not be read" twice — chain two
+  colons into one sentence behind "does not open it:", and the fallback for a
+  missing reader puts the shell's error with its paths into it; the causes
+  stand as they were, unchanged here.
+
+  **The run recorded on the message on 29 September 2026 above** walked the
+  old wording and does not stand for this one; it stays in the table as the
+  fact it is, and the tool lists it under the runs that do not count, as the
+  table's rules say. It did not count before this change either: it stands
+  under version 0.116.0, and the squash merge of pull request #141 put 0.116.1
+  onto the main history without it, so the tool rejects it, and eighteen more
+  runs of that measurement with it, as broken records. The roadmap, searched
+  for `0.116.0`, `broken record`, `never introduced` and `squash`, names that
+  nowhere: the first finds the entry above and the other three the self-test's
+  cases and the dating of check commands. Recorded, not built: the nineteen
+  runs of the first measurement of 29 September 2026 above stand under version
+  0.116.0, which the squash merge of pull request #141 never introduced into
+  `.claude-plugin/plugin.json` on the main history, so the tool rejects them
+  as broken records; not repaired here, since the branch's final state they
+  should have been recorded at is gone and a re-run is a task of its own.
+  Eight runs of this reading stand in `docs/stock-take.tsv` under version
+  0.117.0: the message, the reader's cause, the record saying no, `sudo`, the
+  script piped, the unread destination, the unnamed place, and the
+  two-ways-out defect of 6 September 2026 above, walked by the same feeds; the
+  two passes were controls and are not recorded. Nothing here has run on a
+  bench, and nothing from the installed copy, which is 0.116.1 and prints the
+  old message until the plugin is updated.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
