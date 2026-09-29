@@ -7139,6 +7139,150 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   outcome.
 
 
+- **A rule on the length and the form of a delivered text, drawn from the two
+  cuts of 29 and 30 September 2026, the message and the question; 30 September
+  2026, version 0.119.0.** On `task/install-question-shorter`, its second
+  commit, the version not raised again.
+
+  **What the two entries establish.** The block message of
+  `hooks/pre-tool-use-install-guard.sh`, read off the `echo` line carrying
+  `>&2` at each commit `git log --format=%h -- hooks/pre-tool-use-install-guard.sh`
+  names and counted with `wc -w` over the quoted text: d8ed768 of 24 August
+  2026, 112 words; ae89724 the same day, 158; 3627f6e and 5e2c07e of 25 August,
+  158; 2f333b3 the same day, 159; 93b2dc8 of 7 September, 211; 433bdc1 of 28
+  September, 310; 188648d of 29 September, 337; and 2686bd6 the same day, 207,
+  after the cut. Five changes grew it, each answering something a run had got
+  wrong — a declined install with nowhere to land, a run resuming on the user's
+  word, the result deciding whether an install ran, the record, the routes —
+  and none read the message as a whole. The entry of 29 September 2026 above
+  cut it by reading each part for what it was put there for and for what the
+  run has in front of it when the message arrives, and what came out was of
+  three kinds: said already where the run has it, `$REF` in every cause that
+  resolved one; untrue for some of its readers, the stand-in "the default
+  branch as last fetched" where no ref was resolved, and the two costs of a
+  decline, which assumed a caller with check classes and tasks; and the reasons
+  behind duties, why an organisation name is not a module path. Question 4 of
+  `setup-project` grew to thirteen points between 28 and 30 September 2026,
+  each added for a reason, and the entry of 30 September 2026 above cut it to
+  four by three tests in order — would they answer differently knowing it; do
+  they meet it elsewhere before it matters, without going to look; is it true
+  at the moment of asking — and found that the form, not the length, was why
+  nothing arrived: ten points were prose above two option lines, and nothing in
+  the set named the widget. Neither text was read as a whole after any
+  addition; that is the one thing both have, and the rule is drawn from it.
+
+  **The rule, and where it stands.** `docs/skill-conventions.md`, "A text is
+  as long as what carries the decision, and written for its form", after
+  "Describe what must be said; never dictate wording" and before "Works with
+  nothing else installed". There because the sections from "Only ask where
+  there is something to decide" to "Describe what must be said" are the rules
+  on what a run says to a person and how a skill specifies it, and this is what
+  such a specification is held to as it grows: "Describe what must be said" is
+  the sentence the question's cut leaned on — list what the text covers — and
+  the list is what had grown. Its two halves: nothing that carries the reader's
+  decision comes out and nothing that does not stays in, the reader deciding
+  what carries — a run's text carries what the run does differently at that
+  moment, a person's what they would decide differently — part by part, by the
+  three tests of the question's cut; and a text is written for the form that
+  carries it, the form named where the text is specified, a text and a form
+  that do not fit being one thing wrong, never answered by hoping it gets
+  through.
+
+  **What it covers and what not.** The texts a run delivers whole, at one
+  moment, to a reader with nothing else in front of them who does not go and
+  look: what a hook or a program prints into a session, and what a run says or
+  writes for a person — a question, an offer, a handover, a close, an issue or
+  a pull request body. Not the skills and the shared text, which a run reads at
+  load and which can point: the entry of 14 September 2026 above names sprawl
+  for `build-work` with the branch test as remedy, an open defect in
+  `docs/stock-take.tsv`, and the rule leaves it there. Not a project's control
+  documents: the third exit of `standards.md`, in the conventions since 27
+  September 2026, is the same principle for them with its own evidence. Not
+  the conventions, the header of `scripts/devloop-stock-take`, the dated
+  entries or the table: records and cases, written once, read by somebody who
+  went to look, kept by the conventions' own opening. Said in the section so
+  that the rule is applied to the kinds it names rather than to everything.
+
+  **What makes it checkable.** Nothing mechanical. A count cannot tell the
+  message of 337 words, wrong for what it was made of, from one of 337 words
+  that carries, and none was built. What can be shown to have been broken: an
+  order that adds to a delivered text names the reader and the form; reads the
+  whole text as that reader receives it after the addition — the hook fed its
+  JSON and its stderr read, the expanded skill's question read against the
+  form's slots; holds every part, old and new, to the three tests; and lists in
+  its report what came out and where each part went, as the entry of 29
+  September 2026 above does under "What came out" and "What stayed" and the
+  entry of 30 September 2026 under "What the thirteen came down to". A diff that adds to such a text
+  beside a report without that list has broken it, and that is read off the
+  report. The form of a question cannot be read off the repository, as the
+  entry of 30 September 2026 above says: the transcript alone tells, and a
+  bench run reads it. One fit of text and form can be read off the repository,
+  and it is the one place the conventions set a count, the description under
+  "Frontmatter", "under ten words":
+
+      for f in skills/*/SKILL.md; do d=$(grep -m1 '^description:' "$f" | sed 's/^description: *//'); echo "$(echo "$d" | wc -w | tr -d ' ') $f"; done
+
+  printed on 30 September 2026 eleven descriptions of six to nine words and
+  `skills/record-lessons/SKILL.md` at ten, "Write down what went wrong so it
+  does not repeat", which is not under ten. Not built as a check: the rule has
+  stood since the file's first version and this is its first breach, a
+  description is written once and does not grow by additions, and a nineteenth
+  check here would be a count.
+  Recorded, not built: the description of `record-lessons` has ten words
+  against "under ten words" under "Frontmatter" in `docs/skill-conventions.md`;
+  not changed here, since the frontmatter is no part of this rule. The roadmap,
+  searched for `ten words` and `under ten`, names it nowhere.
+
+  **Read through afterwards.** `docs/skill-conventions.md` read in full after
+  the change. What already speaks of length there, and whether it agrees:
+  "Frontmatter", "under ten words, no trigger conditions", a limit set by the
+  form the description is read in, with "Whatever the model needs in order to
+  recognise the situation goes in the body" — the same rule for one text,
+  agreeing; "Only ask where there is something to decide", agreeing; "A rule
+  holds only on the path it is written on", "rewrite the sentence rather than
+  appending to it", the same act on a skill's text, agreeing; the third exit
+  under "A project's rules are written at the review's close", "a line the
+  agent reads that changes nothing it does costs", the same principle for a
+  control document with evidence, agreeing; the check on names under "Before a
+  handover, run these", "130 lines that day, was read once and skipped", the
+  failure of an unread text, agreeing; and "Every question carries its own
+  reason", four things a question states, "why it comes up now" among them,
+  which the cut of 30 September 2026 took out of question 4 as not carrying
+  the decision. The new section reads the four as what has reached the person
+  by the time they answer, and the setup's opening says that questions come
+  with it; read as four sentences in every question, the section and that
+  heading disagree on the one item, and so do `shared/how-to-ask.md` and
+  question 4 as cut, since the shared text carries the same sentence into six
+  skills. `grep -rn "why it comes up now" skills shared docs README.md`: the
+  conventions' heading, `shared/how-to-ask.md`, the template of
+  `untangle-idea`, and nothing else.
+  Recorded, not built: `shared/how-to-ask.md` says every question states why
+  it comes up now, and question 4 of `setup-project`, cut on 30 September
+  2026, states it nowhere, the entry of that date having judged it not to
+  carry the decision; the two disagree as written, and the reading that
+  reconciles them stands only in the new section. Not changed here: the shared
+  line stands in six skills, with the conventions' heading and the template
+  beside it, and rewriting the three is a change of its own. The roadmap,
+  searched for `why it comes up now` and `comes up now`, names it nowhere.
+  `grep -n -i -w "short\|long\|length\|words" docs/skill-conventions.md` over
+  the rest finds "Writing long files", about a heredoc truncated on paste and
+  not about a text read; `caffeinate` running "as long as" a process; "the
+  shape of the list matters more than its length" on `mergeStateStatus`; and
+  the lines of the check on names. No sentence in the file says that a text
+  says everything true, or that a text is shortened without being read, so
+  nothing says the opposite.
+  Recorded, not built: the rule stands in `docs/skill-conventions.md` as a
+  written convention, a duty done at the moment of adding and read off the
+  report, and no mechanism.
+
+  **Records.** The tool, run again in this tree at 0.119.0 after this entry,
+  `BROKEN RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 1915` and
+  exit 0, recorded on its exit 0 outcome. The self-test, run again at 0.119.0
+  after this entry, `SELF-TEST PASSED: 88 cases; of the 74 messages this tool
+  rejects, refuses or answers with, read off its own source, 74 are asserted
+  by a case and 0 by none`, recorded on its outcome.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
