@@ -235,7 +235,19 @@ Four record types:
   a branch, which a squash merge removes. A version, by contrast, is resolved
   on the history of the checkout, so a run recorded on a branch under the
   version its merge will introduce counts before the merge and after it; such
-  a run is recorded only at the branch's final state.
+  a run is recorded only at the branch's final state. A version whose
+  introducing commit is not on origin/main is the branch's own, and a squash
+  merge lands only the version the branch ends on: a run under such a version
+  is a broken record unless the version is the one .claude-plugin/plugin.json
+  carries in the working tree, so that a branch which raised the version
+  twice is red before its merge, where the runs under its first version can
+  still be re-anchored to its last, and not only on main after it. Nineteen
+  runs of pull request #141 went that way on 29 September 2026: recorded
+  under 0.116.0 in the branch's first order, raised over to 0.116.1 in its
+  second, rejected on main as never introduced, and re-anchored to 0.116.1
+  the same day, since the shipped directories had not changed between the two
+  raises. Without origin/main the tool cannot tell a branch's version from
+  main's and does not check this.
   A run whose thing is rejected is rejected with it, with a message naming
   the thing's line, and covers nothing.
 - not-a-thing: file + anchor of a line from the search set judged not to be a
@@ -466,6 +478,11 @@ LIMITS
   counts for every skill that inserts the file wherever the insert stands, so
   a call inserted onto a path the mode does not take is derived as reached all
   the same.
+- The squash check reads what stands when the tool runs: origin/main as last
+  fetched, and the version the working tree carries. A version raised after
+  the tool last ran on the branch is seen only by the next run, on the branch
+  or on main after the merge; the guard in scripts/devloop-version-guard sees
+  it at the edit.
 """
 
 import ast
@@ -635,6 +652,18 @@ def version_commit(root, version):
         if needle in shown:
             return h
     return None
+
+
+def tree_version(root):
+    """The version .claude-plugin/plugin.json carries in the working tree, or
+    None where the file is not there or names none."""
+    text = ""
+    with contextlib.suppress(OSError), \
+            open(os.path.join(root, ".claude-plugin", "plugin.json"),
+                 encoding="utf-8") as f:
+        text = f.read()
+    m = re.search(r'"version":\s*"([^"]*)"', text)
+    return m and m.group(1)
 
 
 def is_shallow(root):
@@ -1431,6 +1460,7 @@ def analyse(root, table=None, only=None):
                                   % (mode, s, NOBODY_NONE))
     # runs need their thing
     origin_main = resolve(root, "origin/main")
+    tree_v = tree_version(root)
     for rec in records:
         if rec["type"] != "run":
             continue
@@ -1550,6 +1580,17 @@ def analyse(root, table=None, only=None):
                                    "introduced into .claude-plugin/plugin.json "
                                    "on this history" % rec["version"]))
                 r["reason"] = "the version is not on this history"
+            elif origin_main is not None and tree_v is not None \
+                    and rec["version"] != tree_v \
+                    and not g.is_ancestor(vc, origin_main):
+                res.broken.append((rec.lineno, "version %s was introduced at "
+                                   "%s, which is not on origin/main, and "
+                                   ".claude-plugin/plugin.json carries %s: a "
+                                   "squash merge lands only the version the "
+                                   "branch ends on, so on main this run would "
+                                   "name a version never introduced"
+                                   % (rec["version"], vc[:7], tree_v)))
+                r["reason"] = "the version would not survive the squash merge"
             else:
                 bad = [h for h in per_hash if not g.is_ancestor(h, vc)]
                 if not bad:
@@ -1952,6 +1993,8 @@ def selftest():
               "- **A run naming a commit that does not resolve.**\n"
               "- **A run naming the first commit.**\n"
               "- **A run naming a version never introduced.**\n"
+              "- **A run naming the first version a branch introduces.**\n"
+              "- **A run naming the last version a branch introduces.**\n"
               "- **A run with a bad date.**\n"
               "- **A run with a bad source.**\n"
               "- **A run with both a version and a commit.**\n"
@@ -2004,6 +2047,15 @@ def selftest():
         run_git(root, "commit", "-q", "-m", "c4", date="2026-01-12T12:00:00+0100")
         c4 = run_git(root, "rev-parse", "HEAD")
         run_git(root, "checkout", "-q", "main")
+        # c5 and c6 bump the version twice past origin/main, the shape of a
+        # branch whose squash merge lands only the second bump
+        write(root, ".claude-plugin/plugin.json", plugin("0.3.0"))
+        run_git(root, "add", "-A")
+        run_git(root, "commit", "-q", "-m", "c5", date="2026-01-13T12:00:00+0100")
+        c5 = run_git(root, "rev-parse", "HEAD")
+        write(root, ".claude-plugin/plugin.json", plugin("0.3.1"))
+        run_git(root, "add", "-A")
+        run_git(root, "commit", "-q", "-m", "c6", date="2026-01-14T12:00:00+0100")
         # an uncommitted change to the shared note
         write(root, "shared/note.md",
               "When somebody writes in German, answer in German, always.\n")
@@ -2272,6 +2324,15 @@ def selftest():
                 commit=c1[:7]),
             run(GREY, "2026-01-08", "A run naming a version never introduced",
                 version="0.9.0"),
+            # red: a run naming the first of two versions bumped past
+            # origin/main, which a squash merge drops; green: one naming the
+            # last, which it lands
+            run(GREY, "2026-01-13",
+                "A run naming the first version a branch introduces",
+                version="0.3.0"),
+            run(GREY, "2026-01-14",
+                "A run naming the last version a branch introduces",
+                version="0.3.1"),
             # red: a run's date, source, version and commit written wrongly
             run(GREY, "6 January 2026", "A run with a bad date", version="0.1.0"),
             run(GREY, "2026-01-06", "A run with a bad source", version="0.1.0",
@@ -2631,6 +2692,13 @@ def selftest():
                      for r in res.runs)
              and (asserted.append("the version is not on this history") or True),
              counts(GREY, "2026-01-11"))
+        case("a run naming a version this branch introduced and raised over",
+             err("version 0.3.0 was introduced at %s, which is not on "
+                 "origin/main, and .claude-plugin/plugin.json carries 0.3.1"
+                 % c5[:7])
+             and reason(GREY, "2026-01-13")
+             == "the version would not survive the squash merge",
+             counts(GREY, "2026-01-14"))
         case("a run naming a commit with no origin/main here",
              has(res_norigin, "origin/main is not here, so the commit cannot "
                  "be checked against it"),

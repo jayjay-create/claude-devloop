@@ -1,0 +1,28 @@
+#!/bin/bash
+# devloop-version-guard: one version per branch.
+#
+# Registered in .claude/settings.json of this repository, after every Edit,
+# Write, MultiEdit and Bash. It reads nothing off the tool call: it reads the
+# three versions of .claude-plugin/plugin.json that matter - where the branch
+# left origin/main, at HEAD, and in the working tree - and says so, with all
+# three named, when the tree raises the version a second time on a branch
+# that already raised it. A squash merge lands only the version the branch
+# ends on, and every run recorded under the first points at nothing on main:
+# the nineteen runs of pull request #141 went that way on 29 September 2026
+# (docs/roadmap.md, the entry of that date). Silent in every other state: outside
+# a repository, without origin/main, without the file, on the first raise of
+# a branch, and on a tree that carries the version HEAD carries.
+set -uo pipefail
+cat >/dev/null
+cd "${CLAUDE_PROJECT_DIR:-$PWD}" 2>/dev/null || exit 0
+version() { sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1; }
+TREE=$(cat .claude-plugin/plugin.json 2>/dev/null | version)
+HEAD_V=$(git show HEAD:.claude-plugin/plugin.json 2>/dev/null | version)
+BASE=$(git merge-base origin/main HEAD 2>/dev/null)
+BASE_V=$(git show "$BASE:.claude-plugin/plugin.json" 2>/dev/null | version)
+[ -n "$TREE" ] && [ -n "$HEAD_V" ] && [ -n "$BASE_V" ] || exit 0
+[ "$TREE" != "$HEAD_V" ] && [ "$HEAD_V" != "$BASE_V" ] || exit 0
+cat >&2 <<MSG
+Blocked: this branch already raised the version, from $BASE_V where it left origin/main to $HEAD_V at HEAD, and the working tree now carries $TREE. A squash merge lands one version, the one the branch ends on, and every run recorded under $HEAD_V would then name a version main never carried - the nineteen runs of pull request #141 went that way on 29 September 2026. Put $HEAD_V back into .claude-plugin/plugin.json and record this order's runs under it: the version goes up once per branch, not once per order.
+MSG
+exit 2
