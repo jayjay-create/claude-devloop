@@ -1,0 +1,57 @@
+# The half of the merge gate that lives in this repository: on every pull
+# request into main, run scripts/devloop-stock-take and its self-test against
+# the merged state, and fail the check when either fails. The other half, the
+# check being required on main, is a setting of the repository and not a file
+# in it: docs/roadmap.md, the entry of 29 September 2026 on the merge gate,
+# carries the command that sets it and the merge sequence that follows.
+#
+# The check appears under the job's name, stock-take. It installs nothing:
+# the tool needs python3 (3.8 or later, for ast.Constant and
+# subprocess.run(capture_output=True)) and git (2.15 or later, for rev-parse
+# --is-shallow-repository), and the runner image carries both. It writes
+# nothing back: contents are read-only and the token is not persisted.
+name: merge gate
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: stock-take-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  stock-take:
+    name: stock-take
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # The tool blames every line of every thing, finds the commit that
+          # introduced a version with git log -S over the history, holds a
+          # run's commit against origin/main, and refuses a shallow clone. A
+          # default checkout is one commit deep with no origin/main; depth 0
+          # fetches all history for all branches. The ref stays the event's
+          # default, refs/pull/N/merge: the branch merged onto main as main
+          # stood when the run started, not the branch tip.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: what the checkout holds
+        run: |
+          git --version
+          python3 --version
+          echo "HEAD $(git rev-parse HEAD) with parents $(git rev-parse 'HEAD^@' | tr '\n' ' ')"
+          [ "$(git rev-parse --is-shallow-repository)" = false ] || { echo "shallow checkout: the tool refuses it"; exit 1; }
+          git rev-parse -q --verify origin/main >/dev/null || { echo "no origin/main: the tool cannot hold runs against it"; exit 1; }
+          echo "origin/main $(git rev-parse origin/main)"
+
+      - name: stock-take
+        run: scripts/devloop-stock-take
+
+      - name: self-test
+        run: scripts/devloop-stock-take --self-test

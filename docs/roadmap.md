@@ -6724,6 +6724,153 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   outcomes. Nothing here has run on a bench, and nothing from the installed
   copy.
 
+- **The merge gate, its half in the files: a workflow that runs the stock-take
+  and its self-test on every pull request into main, against the merged state;
+  29 September 2026, version 0.117.2.** On `task/merge-gate`, off `5e8c6d2`.
+
+  **Whether Actions runs here, established first.** `gh api
+  repos/jayjay-create/claude-devloop/actions/permissions` answers `enabled:
+  true` and `allowed_actions: all`; `actions/workflows` answers `total_count:
+  0` and `actions/runs` answers `total_count: 0`. Read 29 September 2026:
+  Actions is on, and nothing has ever run, because there was nothing to run. A
+  required check that never runs would leave every pull request pending; with
+  Actions on, a workflow can run, and it runs first on the pull request that
+  carries it.
+
+  **What it runs, and on what.** `.github/workflows/stock-take.yml`, on every
+  `pull_request` into main, one job named `stock-take`, which is the name the
+  check appears under: a step that runs `scripts/devloop-stock-take`, a step
+  that runs `scripts/devloop-stock-take --self-test`, each red when its exit
+  code is not 0, the job red when either step is. The checkout is
+  `actions/checkout` with `fetch-depth: 0`: the tool blames every line of
+  every thing, finds the commit that introduced a version with `git log -S`
+  over the history, holds a run's commit against `origin/main`, and refuses a
+  shallow clone, and the action's default checkout is one commit deep with no
+  `origin/main`. Depth 0 fetches all history for all branches, `origin/main`
+  among them. A step before the tool prints the git and python versions and
+  HEAD with its parents, and fails when the checkout is shallow or
+  `origin/main` is missing, so the log says what the tool ran on rather than
+  the tool's refusal. The ref is the event's default, `refs/pull/N/merge`: the
+  pull request merged onto main as main stood when the run started, the merged
+  state and not the branch tip. Read off the tool: it needs python3 at 3.8 or
+  later, `ast.Constant` in the self-test's message inventory and
+  `subprocess.run(capture_output=True)` being the newest things in it, and git
+  at 2.15 or later for `rev-parse --is-shallow-repository`; `ubuntu-latest`
+  carries both, so the workflow installs nothing. `permissions: contents:
+  read`, `persist-credentials: false`, no step that commits, pushes or
+  comments: it writes nothing back. `timeout-minutes: 10`, so a hung run does
+  not hold a pull request for the platform's six-hour default; `concurrency`
+  cancels the run of a pull request's earlier push when a later one arrives.
+
+  **Whether the merged state differs from the branch tip.** It is what main
+  becomes only while main does not move: a merge ref is computed when the run
+  starts, and a branch merged after main took another merge was checked
+  against a main that no longer exists. The setting that closes that is
+  `strict` on the required check, "require branches to be up to date before
+  merging", under which a pull request behind main has to be updated, which
+  runs the check again on the new merge ref. On this repository branches are
+  cut and merged one at a time, so the case is rare and the update cheap. A
+  pull request with a conflict has no merge ref, so the workflow does not run
+  and the check does not report, which is right: the conflict has to be
+  resolved first.
+
+  **What it would have caught, in the two cases this repository has seen.**
+  Both on 29 September 2026, the entry above. Pull request #141, the nineteen
+  runs recorded under 0.116.0 on a branch that ended on 0.116.1: the tool of
+  that day, run on the branch tip, was green, and it would have been green on
+  the merge ref too, since the merge commit's history carries the branch's
+  `3802d25` and 0.116.0 resolves there as it did on the branch; the tool since
+  0.117.1 is red on either, with its squash check. So the gate would not have
+  caught #141 on the day; the tool's own change did, and the gate is what runs
+  that tool from now on without anybody remembering to. Pull request #142,
+  merged at 20:49 with the nineteen already broken on main: its merge ref is
+  main at `188648d` plus the branch, on whose history 0.116.0 was never
+  introduced, so the tool of that day exits 2 there exactly as it did on main,
+  where that order had run it and merged anyway. A required check with
+  `enforce_admins` would have refused that merge, and the branch tip would
+  have said the same, since the branch was cut from the red main. What the
+  merge ref sees that the branch tip does not is a third case, a branch green
+  on its own tree and red once merged because main moved after the branch was
+  cut; neither of the two was that, and it has not happened here yet.
+
+  **What it costs.** In this tree the tool runs in 20 seconds and the
+  self-test in 2, read off `time`; the history is 294 commits, 26 megabytes in this clone. On the runner, with its start and the checkout, a run of one to two
+  minutes, the first run measuring it; the repository is public, so the
+  minutes are not billed. A pull request that changes the workflow file runs
+  the changed file, because on `pull_request` GitHub takes the workflow from
+  the merge ref, and that is how the pull request carrying this file runs it
+  at all. Once the check is required by name, a pull request that renames the
+  job, breaks the file or removes it never reports `stock-take` and cannot
+  merge until the file or the rule is put right, which is the direction a gate
+  should fail in.
+
+  **What exercises it, and when.** A workflow runs once it is on the server,
+  so the order that wrote it could not run it: the pull request carrying
+  `task/merge-gate` is the first thing it runs against, and the run is on the
+  server's merge ref of that pull request, not in this tree. What to look at,
+  so that it worked and did not merely report: `gh pr checks` on that pull
+  request listing `stock-take` with pass and its duration; in its log, the
+  step "what the checkout holds" printing HEAD with two parents, `origin/main`
+  resolved, git and python versions; the stock-take step ending in `BROKEN
+  RECORDS: 0` and `UNCOVERED LINES OF THE SEARCH SET: 0 of N`, N the figure
+  this entry records below; the self-test step ending in `SELF-TEST PASSED: 88
+  cases`. That proves it runs green; only a red pull request proves it
+  catches, and none has met it: a throwaway pull request carrying one broken
+  record, a run under a version never introduced, opened after the merge and
+  closed without merging, would walk the red outcome once. Its run is recorded
+  on the workflow only after it has run, by the order that reads that log.
+
+  **What is not in the files: the setting, and the sequence after it.** Making
+  the check required on main is a setting of the repository, the owner's, not
+  attempted here and not needed for the workflow to run. Read 29 September
+  2026: branch protection on main answers 404 `Branch not protected`, rulesets
+  answer an empty list, `allow_auto_merge` reads `false`. The command, no
+  placeholder in it, the check's name being the one thing that has to match
+  the job's: `gh api -X PUT
+  repos/jayjay-create/claude-devloop/branches/main/protection --input -` with
+  the body
+  `{"required_status_checks":{"strict":true,"checks":[{"context":"stock-take"}]},"enforce_admins":true,"required_pull_request_reviews":null,"restrictions":null}`
+  on its standard input; `enforce_admins` because the owner is an admin and
+  would otherwise merge past a red check with a warning; `strict` for the
+  reason above. The same as a ruleset is a `POST` to
+  `repos/jayjay-create/claude-devloop/rulesets` with a
+  `required_status_checks` rule naming the same context, which binds admins
+  unless they are listed as bypass. The merge sequence after it: `git push -u
+  origin <branch>`, `gh pr create --fill`, `gh pr checks --watch --fail-fast`,
+  then `gh pr merge --squash --delete-branch` on a 0 from the watch; `gh pr
+  merge` straight after `gh pr create`, today's third step, is refused with
+  `not mergeable: the base branch policy prohibits the merge` while the check
+  is pending or red, and `gh pr checks` run in the seconds before the check
+  run is registered answers `no checks reported` and exits 1, so it is run
+  again. Where `strict` finds the branch behind main, `gh pr update-branch`
+  first, then the watch again. Auto-merge, not enabled on this repository: `gh
+  pr merge --auto` is not available, and enabling it is a separate decision of
+  the owner, `allow_auto_merge` on the repository, not part of this; with it
+  on, `--auto` arms the platform to merge once the check is green, and merges
+  at once instead where it is run inside the window before the check
+  registers, which "Arming auto-merge is allowed; merging is not" in
+  `docs/skill-conventions.md` measured. Auto-merge on and a required check
+  that binds are together the two preconditions the unattended mode of
+  `build-work` reads before it goes alone, so that decision is also the
+  decision whether this repository can be built on unattended.
+
+  Half built: the workflow stands in `.github/workflows/stock-take.yml` and
+  has never run, and the required check on main is a setting still to be set.
+  The tool reads the defect of the entry above off this line, and it says what
+  the header's limits say: it rejects an evidence under `.github/`, since that
+  is neither a shipped directory nor docs/, so a fix standing in a workflow
+  cannot carry a state, and the defect keeps reading as recorded while the
+  file stands on disk; recorded as a finding on the tool's location rule, the
+  search of this file for `.github` and `evidence under` having come back with
+  the entry above and the self-test's outcome only.
+
+  **Records.** The tool, run in this tree at 0.117.2, `BROKEN RECORDS: 0`,
+  `UNCOVERED LINES OF THE SEARCH SET: 0 of 1900` and exit 0, recorded on its
+  exit 0 outcome. The self-test at 0.117.2, `SELF-TEST PASSED: 88 cases; of
+  the 74 messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none`, recorded on its outcome.
+  Nothing has run on the server, and nothing from the installed copy.
+
 
 ## Decisions taken against
 
