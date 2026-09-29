@@ -222,7 +222,7 @@ update` on its own — the cache is keyed by version, so an unchanged version
 number means nothing is fetched.
 
 To make a change take effect: raise `version` in `.claude-plugin/plugin.json`,
-push, then, from an ordinary command line:
+once per branch, push, then, from an ordinary command line:
 
     claude plugin marketplace update <marketplace>
     claude plugin update <plugin>@<marketplace>

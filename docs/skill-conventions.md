@@ -638,7 +638,13 @@ Add its directory to the `skills` array in `.claude-plugin/plugin.json`, then
 raise `version`. Without the version bump the installed copy does not change —
 see "Working on devloop itself" in the README. A shared file under `shared/`
 needs no entry anywhere — the program finds it by name at load — and the
-version goes up for it all the same, for the same reason.
+version goes up for it all the same, for the same reason. It goes up once per
+branch, not once per order: a squash merge lands only the number the branch
+ends on, and every run recorded under an earlier one names a version main
+never carried. `scripts/devloop-version-guard`, registered in
+`.claude/settings.json` of this repository, blocks the second raise and names
+the three numbers; the entry of 29 September 2026 in `docs/roadmap.md` has
+the case that taught it.
 
 ## Writing long files
 
@@ -1298,8 +1304,11 @@ the working tree, the same way, with the eleven routes, five records and a
 `pnpm` standing on the machine, seven records, `bun` given a manifest by hand
 and `pnpm` the environment `pnpm setup` writes: the roadmap entry of that
 date carries every command and what came back, and `docs/stock-take.tsv`
-carries the runs under versions 0.116.0 and 0.116.1. Still nothing on a
-bench.
+carries the runs under version 0.116.1: the ten of the later measurement as
+recorded, and the nineteen of the earlier one re-anchored from 0.116.0 on 29
+September 2026, since the squash merge of pull request #141 landed only
+0.116.1 and no shipped file changed between the two numbers. Still nothing on
+a bench.
 
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how
@@ -1792,9 +1801,12 @@ A run of any of these counts, for the stock-take in `docs/stock-take.tsv`, the
 way every other run counts: it is recorded under the version
 `.claude-plugin/plugin.json` carried in the tree it ran in, and it counts once
 the commit that introduced that version contains the last change to the lines
-the check stands on. A run made on a branch under the version the branch
-introduces counts there and after the squash merge alike; the header of
-`scripts/devloop-stock-take` states the rule. Until 26 September 2026 such a run
+the check stands on. A run made on a branch under the version the branch's
+merge will introduce, the one the branch ends on, counts there and after the
+squash merge alike; one made under a version the branch raised over is a
+broken record on the branch already, since the squash lands only the last
+number; the header of `scripts/devloop-stock-take` states both rules. Until 26
+September 2026 such a run
 was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.
 

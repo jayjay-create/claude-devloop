@@ -270,7 +270,8 @@ the list; the six places stand in the record and nowhere the person is asked.
 The question stands in `setup-project` step 4 as a question of its own beside
 question 3, and the record in `environment.md` in step 6, counting once step 8
 has landed it on the default branch. Widened on 29 September 2026, version
-0.116.0: the guard resolves eleven routes rather than three — `brew`, `go`,
+0.116.0 in the tree, 0.116.1 on main: the guard resolves eleven routes rather
+than three — `brew`, `go`,
 `npm` as before, and `pnpm`, `yarn`, `bun`, `cargo`, `gem`, `pipx`, `uv tool`
 and `pip` through an interpreter the command names — each asked on the machine
 with the command its vendor documents, `cargo` read in the vendor's order since

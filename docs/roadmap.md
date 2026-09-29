@@ -6576,6 +6576,155 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   bench, and nothing from the installed copy, which is 0.116.1 and prints the
   old message until the plugin is updated.
 
+- **The nineteen runs of 29 September 2026 re-anchored to 0.116.1, the
+  stock-take made to say on a branch what it will say on main, and a guard
+  against a second raise of the version on one branch; 29 September 2026,
+  version 0.117.1.** On `task/mend-broken-runs`, off `2686bd6`.
+
+  **What the tool said on main, before anything changed.** At `2686bd6`,
+  `scripts/devloop-stock-take` exited 2 with `BROKEN RECORDS: 19`: lines 2422
+  to 2439 and 2441 of `docs/stock-take.tsv`, every one `version 0.116.0 was
+  never introduced into .claude-plugin/plugin.json on this history`. All
+  nineteen are runs dated 29 September 2026 of source entry, the first
+  measurement of the install routes: fifteen on outcomes of
+  `hooks/pre-tool-use-install-guard.sh`, two on `bin/devloop-install-record`,
+  two on `hooks/session-start.sh`. Read off `origin/task/install-routes`,
+  which still stands: its first commit `3802d25` raised 0.115.0 to 0.116.0,
+  its second `054a996` recorded one run, its third `6cd2e6f` raised 0.116.0 to
+  0.116.1; the squash `188648d` carries the tree of `6cd2e6f` byte for byte,
+  so 0.116.0 never entered `plugin.json` on main. The account in the order
+  holds in every particular; the one detail it leaves out is that the first
+  raise was a minor one, 0.115.0 to 0.116.0, not a patch.
+
+  **Whether the gap sits elsewhere.** The 221 runs that name a version name
+  twenty of them, held against every version `plugin.json` has carried on
+  main's history, read with `git log -p` over the file: 0.116.0 is the only
+  one absent. Main's sequence has five other numbers it never carried,
+  0.21.0, 0.30.0, 0.83.0, 0.84.0 and 0.92.0, and no run names any of them.
+  Nothing else.
+
+  **Since when.** Red since `188648d`, the squash of pull request #141, 29
+  September 2026 at 14:06 CEST; the tool at `8fbaeee`, pull request #140, run
+  in a worktree, exits 0. One order came between: the block message of pull
+  request #142, whose defect record says it ran the tool on main at `188648d`
+  before changing anything, saw the nineteen, recorded them under this
+  heading as a defect and left them, and was merged red at 20:49 the same
+  day. So main was red for about seven hours and across one merge before this
+  branch, and the one order in between did run the tool against main.
+
+  **The mend, and the rule it follows.** The header of
+  `scripts/devloop-stock-take`, section C under run: a run recorded on a
+  branch under the version its merge will introduce counts before the merge
+  and after it, and such a run is recorded only at the branch's final state.
+  The branch's final state carried 0.116.1, and that is what the merge
+  introduced, so the nineteen are re-anchored to 0.116.1 and not struck: the
+  version column changes and nothing else, the date, the source and the entry
+  lines stay. That it overcounts nothing was checked rather than assumed:
+  `git diff 3802d25 188648d` over `hooks/`, `bin/`, `skills/`, `shared/` and
+  `scripts/` is empty, so every line the nineteen things stand on is the same
+  in the tree the runs ran in and in the commit that introduced 0.116.1, and
+  the tool of that day, run at `6cd2e6f` in a worktree, exited 0 with none of
+  the nineteen among the runs that do not count. Nothing is lost. The entry
+  above left the nineteen as they were because the branch's final state they
+  should have been recorded at was gone; it is not gone: `origin/task/
+  install-routes` stands on the remote, and `188648d` carries its tree byte
+  for byte, which is what the re-anchoring rests on. The entry of the
+  measurement above still says 0.116.0, which is what the tree carried
+  that day and stays as written; the sentence in `docs/skill-conventions.md`
+  that said the table carries the runs under 0.116.0 and 0.116.1 now says
+  what the table carries.
+
+  **What went wrong, twice, and who has to meet what.** The orders for this
+  repository are written outside it and each ends with "raise the patch
+  version by one, once"; a branch that takes two orders raises twice, a
+  squash merge lands only the last raise, and every run recorded under the
+  first names a number main never carried. The rule that should hold is one
+  version per branch: an order that finds the version already raised on its
+  branch does not raise again, and records its runs under the number the
+  branch already carries. Who has to meet it is the run following the order,
+  at the moment of the raise, and it is met by nobody remembering: built here
+  as `scripts/devloop-version-guard`, registered in `.claude/settings.json`
+  of this repository after every Edit, Write, MultiEdit and Bash. It reads
+  nothing off the tool call; it reads three versions of
+  `.claude-plugin/plugin.json`, where the branch left `origin/main`, at HEAD
+  and in the working tree, and exits 2 with all three named when the tree
+  raises a second time on a branch that already raised, telling the run to
+  put HEAD's number back and record under it. It is silent outside a
+  repository, without `origin/main`, without the file, on a branch's first
+  raise and on a tree that carries what HEAD carries; it does not care
+  whether main has moved on since, since the comparison is against the
+  merge-base. What it depends on: Claude Code loading a trusted repository's
+  project settings, which the hooks guide says it does without an approval
+  step of its own, and picks up on edit; `origin/main` being fetched; and the
+  edit being made in a session, since an editor by hand is not a tool call.
+  Fed eight states on a scratch repository on 29 September 2026: not a
+  repository, exit 0; a repository without `origin/main`, exit 0; tree, HEAD
+  and merge-base all at 0.1.0, exit 0; the first raise to 0.2.0 uncommitted,
+  exit 0; the first raise committed, tree and HEAD at 0.2.0, exit 0; a second
+  raise to 0.2.1 in the tree, exit 2 naming 0.1.0, 0.2.0 and 0.2.1; the file
+  gone from the tree, exit 0 and nothing on stderr; main moved to 0.2.0 by
+  another commit with the branch not rebased, exit 0. And in this repository
+  with tree and HEAD equal, exit 0. Live in the session that built it, picked
+  up from the settings file without a restart: a Bash edit of the file to
+  0.117.2 came back with the message naming 0.117.0, 0.117.1 and 0.117.2, and
+  the number was put back. From now on it runs in every session in this
+  repository, which a measurement of the guards made here records among what
+  else was there, as the conventions ask.
+
+  The second thing: nothing caught it at the merge, because the tool had been
+  run on the branch, where 0.116.0 was a version its history carried, and not
+  against what main would become. Can the tool be run against the merged
+  state before the merge? By hand, yes: a worktree at `origin/main`, `git
+  merge --squash` of the branch, a commit, the tool there. It is not needed
+  for versions any more, because the tool now computes that state on the
+  branch: a run under a version whose introducing commit is not on
+  `origin/main`, and which the working tree no longer carries, is a broken
+  record, `version 0.116.0 was introduced at 3802d25, which is not on
+  origin/main, and .claude-plugin/plugin.json carries 0.116.1: a squash merge
+  lands only the version the branch ends on, so on main this run would name a
+  version never introduced`. The patched tool, run at `6cd2e6f` in a
+  worktree, exits 2 with exactly the nineteen; so the second order of pull
+  request #141 would have been red at its own end, where the nineteen could
+  still have been re-anchored, or the raise taken back. For everything but
+  versions the branch already tells the truth: anchors stand on the same
+  tree, and the squash folds every branch commit into the one that introduces
+  the version, so it can only make runs count that did not, never the
+  reverse. Its case in the self-test, `a run naming a version this branch
+  introduced and raised over`: two commits past `origin/main` bump the
+  fixture's version to 0.3.0 and then 0.3.1, a run under 0.3.0 is broken and
+  does not count, a run under 0.3.1 counts. What this depends on: the tool
+  being run on the branch after the second raise, which the guard now forces
+  to a first raise or a reverted one; and on `origin/main` being here, since
+  without it the tool cannot tell a branch's version from main's and says
+  nothing, as the header's limits state. What runs the tool at the merge
+  itself: nothing. Whoever merges does so by hand in a terminal, there is no
+  workflow under `.github/`, and main is unprotected, read 29 September 2026:
+  branch protection answers 404 `Branch not protected`, rulesets answer an
+  empty list. What would hold without memory is a workflow running the tool
+  and its self-test on every pull request together with a required status
+  check on main, and the second half is a repository setting somebody sets
+  once, outside these files; a workflow without it is a light somebody has to
+  look at. Recorded, not built: nothing runs `scripts/devloop-stock-take` at
+  the merge, and a red branch merges by hand unseen; a workflow under
+  `.github/` and a required check on main would hold it, the check being a
+  setting of the repository, not a file in it.
+
+  **Records.** The nineteen runs, version 0.116.1. The defect of the entry
+  above, its evidence moved onto the tool's squash check, its site staying on
+  the line that said nothing was built. A thing for the tool's new outcome,
+  anchored where the check stands, and three for the guard's, its silent pass
+  where nothing can be compared, its silent pass where the tree carries no
+  second raise, and its block. The self-test, run on 29 September 2026 at
+  0.117.1 in this tree, `SELF-TEST PASSED: 88 cases; of the 74 messages this
+  tool rejects, refuses or answers with, read off its own source, 74 are
+  asserted by a case and 0 by none`, recorded on the new outcome. The tool
+  itself, run on this branch at 0.117.1, `BROKEN RECORDS: 0` and exit 0,
+  recorded on its exit 0 outcome, walked for the first time, and on the
+  defect of the nineteen. The guard's eight feeds, recorded on its three
+  outcomes. Nothing here has run on a bench, and nothing from the installed
+  copy.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
