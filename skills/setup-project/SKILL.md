@@ -656,16 +656,26 @@ reads the start of each line:
     install-place: ~/.local/bin
     install-place: ~/bin
     install-place: ~/go/bin
+    install-route: cargo
+    install-route: pip
     install-answered: YYYY-MM-DD
 
 `install-tools` is the answer, `yes` or `no` and nothing else. The six
 `install-place` lines are the places a yes opens in this version, written as
 they stand here under either answer, so that the file says what a yes would
-open where the answer is no. `install-answered` is the date the question was
-answered. The guard and the session-start hook read this section off the
-default branch as last fetched, never off the working tree, so it counts once
-step 8 has landed it there: during this setup the guard finds no record, which
-is what question 3 says.
+open where the answer is no. The `install-route` lines are the routes question
+4 named for this stack, one line per route and none for a route it did not
+name, the two above standing as an example; each is a name from the eleven the
+guard resolves, `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
+`pipx`, `uv`, `pip`. A route named here opens the directory that route answers
+on the machine the run is on, read at the moment of the command and written
+nowhere, so that the answer holds on another machine and under another version
+of the tool; a route not named here is held against the `install-place` lines.
+The route lines are written under either answer, like the places.
+`install-answered` is the date the question was answered. The guard and the
+session-start hook read this section off the default branch as last fetched,
+never off the working tree, so it counts once step 8 has landed it there:
+during this setup the guard finds no record, which is what question 3 says.
 
 ## Step 7 — Pointer block in CLAUDE.md
 

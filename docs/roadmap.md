@@ -6055,6 +6055,398 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `docs/skill-conventions.md`, and milestone 3 in `docs/plan.md`.
   Recorded, not built: nothing of milestone 3 stands on this branch.
 
+- **The install guard resolves eleven routes instead of three, the record
+  carries routes beside places, and a pip inside the project passes; built
+  and measured on 29 September 2026, version 0.116.0.** On
+  `task/install-routes`, against the tools half of 28 September 2026, which
+  asked the machine where a route lands for `brew`, `go` and `npm` and
+  blocked every other route under any answer. That was what got built, not
+  what was decided, and it was the finding recorded when the question went
+  in the same day: on a stack whose routes were among the blocked ones a yes
+  opened nothing, and the question did not say so.
+
+  **What the check before building found.** Read off the guard rather than
+  off any list, the verb half caught twenty-three managers with `install`,
+  `add`, `use` or `tap` after them — `brew`, `port`, `apt`, `apt-get`,
+  `yum`, `dnf`, `zypper`, `pacman`, `apk`, `snap`, `choco`, `winget`,
+  `scoop`, `sdk`, `gem`, `cargo`, `go`, `pipx`, `uv tool`, `asdf`, `mise`,
+  `rustup`, `nvm` — `npm`, `pnpm`, `yarn` and `bun` with `-g`, `--global` or
+  `global`, and `pip` or `pip3` with `install`; it resolved three. Two things
+  it caught wrongly: `cargo add`, which writes the project's own manifest and
+  installs nothing, blocked as a `cargo` install; and `uv pip install`,
+  caught by the `pip` pattern through the space before `pip`, blocked under
+  every answer although it installs into the project's own environment.
+  Whether the hook's process has the same PATH as the tool shell had not
+  been measured. Measured now, on this machine: the process that spawns the
+  hooks is the `claude` process, and its PATH, read with `ps eww`, differs
+  from the tool shell's by the four plugin `bin` directories the harness
+  appends to the shell and by nothing else, so every package manager
+  directory stood in both at that hour — `pnpm setup`, run later that day,
+  put `~/Library/pnpm` on the `PATH` of every shell opened since and on
+  neither of these two; the process that started the editor this harness
+  runs in carries `/usr/bin:/bin:/usr/sbin:/sbin`, so a harness started from
+  there rather than from a terminal would find neither `brew` nor `go` nor
+  `npm` in the hook, whatever the shell finds. What happens then is measured
+  below with the hook's PATH cut to `/usr/bin:/bin`: a route not found
+  answers nothing, and nothing is a block. That held already for the three
+  routes, an empty answer falling through to the block, and holds for every
+  route now; an answer that is no absolute path counts as none as well,
+  which it did not before.
+
+  **What was read from the vendors, and where, on 29 September 2026.**
+  Homebrew, `docs.brew.sh/Manpage`: `brew --prefix` displays "Homebrew's
+  install path", default `/opt/homebrew` on macOS ARM, `/usr/local` on
+  macOS Intel, `/home/linuxbrew/.linuxbrew` on Linux. Go, `pkg.go.dev/cmd/go`:
+  "Executables are installed in the directory named by the GOBIN environment
+  variable, which defaults to $GOPATH/bin or $HOME/go/bin if the GOPATH
+  environment variable is not set". npm, `docs.npmjs.com`, "folders": "When
+  in global mode, executables are linked into `{prefix}/bin` on Unix". pnpm,
+  `pnpm.io/cli/bin`: `pnpm bin` with `-g` "Prints the location of the
+  globally installed executables". Yarn 1, `classic.yarnpkg.com`, "global":
+  "yarn global bin will output the location where Yarn will install symlinks
+  to your installed executables". Bun, `bun.sh/docs/cli/pm`: `bun pm bin -g`
+  prints "the path to the global `bin` directory", `<$HOME>/.bun/bin`. pipx,
+  read off `src/pipx/main.py` in the vendor's repository since the
+  documentation pages answered 404 that day: `pipx environment` "Prints the
+  names and current values of environment variables used by pipx", among
+  them `PIPX_BIN_DIR`, and `--value` "Print the value of the variable". uv,
+  `docs.astral.sh/uv/reference/storage`: "Use `uv tool dir --bin` to show the
+  tool executable directory"; and `docs.astral.sh/uv/pip/environments` for
+  the order `uv pip install` looks in: `VIRTUAL_ENV`, `CONDA_PREFIX`, "A
+  virtual environment at `.venv` in the current directory, or in the nearest
+  parent directory", and `--system` skipping that search. RubyGems,
+  `guides.rubygems.org/command-reference`: `gem environment`, "For gems with
+  executables ruby installs a wrapper file into the executable directory by
+  default", `--user-install` "Install in user's home directory instead of
+  GEM_HOME", `-n, --bindir DIR` "Directory where executables will be placed",
+  `-i, --install-dir DIR` and `--build-root DIR`; and `Gem.bindir` in
+  `lib/rubygems.rb`, which returns `install_dir/bin` unless the install
+  directory is the default one, so that a user install puts executables
+  under the user installation directory's `bin`. pip,
+  `pip.pypa.io/en/stable/user_guide`: "`python -m pip` executes pip using
+  the Python interpreter you specified as python. So `/usr/bin/python3.7 -m
+  pip` means you are executing pip for your interpreter located at
+  `/usr/bin/python3.7`"; `--user` installs "to the Python user install
+  directory for your platform", `--target`, `--prefix` and `--root` move the
+  installation, and `pip debug`, which prints `sys.executable`, is "only
+  meant for debugging", "provisional and may change without notice", so a
+  bare `pip` is not asked through it. Python, `docs.python.org`, `sysconfig`:
+  the `scripts` path name, "directory for script files", and
+  `get_preferred_scheme("user")`, added in 3.10. Cargo,
+  `doc.rust-lang.org/cargo/commands/cargo-install`: "The installation root is
+  determined, in order of precedence: `--root` option, `CARGO_INSTALL_ROOT`
+  environment variable, `install.root` Cargo config value, `CARGO_HOME`
+  environment variable, `$HOME/.cargo`", and "all executables are installed
+  into the installation root's `bin` folder"; and `reference/config`, which
+  says cargo looks for `.cargo/config.toml` "in the current directory and
+  all parent directories" and then `$CARGO_HOME/config.toml`, and reads the
+  file without the extension as well. `cargo config get install.root` on
+  this machine, cargo 1.98.0 stable: "the `cargo config` command is
+  unstable, and only available on the nightly channel", exit 101, so cargo
+  is the one route read rather than asked.
+
+  **What is built.** Under a yes the guard asks the machine where a route
+  lands for eleven routes: `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`,
+  `pipx`, `uv tool` and `gem` with the command each vendor documents,
+  `gem` taking `--bindir` as written, the user installation directory plus
+  `bin` under `--user-install`, and blocking under `--install-dir` or
+  `--build-root`; `pip` through the interpreter the command names, a path
+  or a bare name found on the hook's PATH, asked through `sysconfig` for its
+  scripts path, the user scheme under `--user`, blocking under `--target`,
+  `--prefix` or `--root`, and a bare `pip` or `pip3` blocking because it
+  names no interpreter; and `cargo`, read in the vendor's order from
+  `--root`, `CARGO_INSTALL_ROOT`, `CARGO_HOME` and `~/.cargo`, blocking
+  where a config file on cargo's search path sets `install.root`, which the
+  guard does not parse. A route not found here, one answering nothing, or
+  one whose answer is no absolute path is not read, and not read is a block.
+  `make install` takes `PREFIX`, `prefix`, `DESTDIR`, `BINDIR`, `bindir` or
+  `exec_prefix` written on its own line as the destination, as written, and
+  blocks where none stands there, since then the makefile decides. A pip
+  inside the project passes without the record being read: a pip or an
+  interpreter named by a path inside the project — absolute under it, or
+  relative without `..` placed against the directory the tool's JSON names
+  as `cwd`, where that lies inside the project and no `cd` earlier in the
+  command leaves it; a bare `pip` or `python` after `source` or `.` on the
+  project's own `bin/activate` earlier in the same command, with no
+  `deactivate` in it and the pip or interpreter standing in that environment
+  on disk; and `uv pip` where a `.venv` stands inside the project from the
+  directory the command runs in up to the project root, with no `--system`,
+  `--python`, `--target` or `--prefix` and no `VIRTUAL_ENV` or
+  `CONDA_PREFIX` in the hook's environment pointing outside the project.
+  What cannot be told from a machine-wide install and stays blocked: a bare
+  `pip` or `python -m pip` under an environment an earlier command activated
+  or the shell's own configuration put on PATH, since the string shows none
+  of it; an activation in the same command of an environment not yet on
+  disk, where a bare `pip` would fall through to the machine's should the
+  chain not stop; a pip named through a variable other than `HOME`; a
+  relative path after a `cd` to an absolute path, to `..`, to `~` or to a
+  variable, or in a JSON without `cwd`; and `uv pip` under an environment
+  variable the hook cannot see. `cargo add` no longer fires. What stays
+  blocked under every answer, each with its own cause: the system package
+  managers, which own no directory of their own since each package decides
+  and need root anyway; the version managers, by the ruling on runtimes of
+  28 September 2026; `sudo`; a script piped from the network. Built in
+  `hooks/pre-tool-use-install-guard.sh`; the record's `install-route:` lines
+  in `bin/devloop-install-record`, `hooks/session-start.sh` and
+  `setup-project` step 6; the conventions under "The install guard reads a
+  record".
+
+  **The record.** A resolution is worth nothing where the record cannot name
+  the place it resolves to, and the six places of 28 September 2026 named
+  none of `~/.cargo/bin`, `~/.gem/ruby/<version>/bin`,
+  `~/Library/Python/<version>/bin`, `~/.bun/bin` or a pnpm directory. What
+  the record carries since this build: `install-place:` lines as before,
+  literal directories held against the destination, and `install-route:`
+  lines, each a name from the eleven the guard resolves, a route named there
+  opening whatever that route answers on the machine the run is on, read at
+  the moment of the command and written nowhere. The two cases that are the
+  same problem: the same package manager answers differently on another
+  operating system — `brew --prefix` is `/opt/homebrew` here and
+  `/usr/local` or `/home/linuxbrew/.linuxbrew` elsewhere, `pip --user` is
+  `~/Library/Python/3.14/bin` here and `~/.local/bin` on Linux — and the
+  same route answers differently under a version manager, `gem` under an
+  rbenv Ruby naming that Ruby's own `bin`. A record of the answers of the
+  machine it was written on would go false on the next machine and block
+  there, while the question, as approved, says the answer travels with the
+  repository and is applied on the cloner's machine; so the record holds
+  the route, which survives the machine changing, and the place is read
+  where the command runs. A route not named is held against the places, as
+  the three were before, so a record of 28 September 2026 reads as it did.
+
+  **The question, whose wording was approved on 28 September 2026 and is
+  not rewritten here.** Two of its sentences no longer match what a yes
+  opens. "Which places exactly stands written in the record in the
+  project's own files, where they can read it at any time" holds for the
+  places and not for a route, whose directory is read on the machine at the
+  moment of the command and stands in no file; the draft, in the report of
+  this build and not in the skill: that the record names places and routes,
+  and that a route named there reaches the directory it keeps on the
+  machine the run is on. And nothing in the question says that a `pip` run
+  bare opens nothing under a yes; the draft: the run names the interpreter,
+  `python -m pip`, or the project's own pip by its path, and a bare `pip`
+  stays theirs. Recorded, not built: the two drafts stand in the report and
+  the question's text stands as approved.
+
+  **Measured on 29 September 2026 against the working tree**, the guard fed
+  its JSON directly, with a scratch project whose `origin` was a local bare
+  repository, five records each pushed to `origin` and fetched before its
+  run — yes with the six places; yes with the six places and the routes
+  `cargo`, `gem`, `pip` and `pnpm`; no; never written; yes with `~/bin` as
+  its only place — with and without a `.venv` in the project. Under the yes
+  with six places: exit 0 for `brew install shellcheck`, for `brew install
+  foo` behind `echo "hi" &&`, `go install golang.org/x/tools/cmd/goimports@latest`,
+  `npm install -g typescript`, `npm i -g typescript`, `cargo install --root
+  ~/.local ripgrep` and the same with `--root=`, `gem install rubocop`,
+  whose executable directory under the system Ruby here is `/usr/local/bin`,
+  `gem install -n ~/bin rubocop`, `gem install --bindir ~/.local/bin
+  rubocop`, `uv tool install ruff`, which answers `~/.local/bin` here,
+  `python3 -m pip install black` and `/opt/homebrew/bin/python3 -m pip
+  install black`, whose scripts directory is `/opt/homebrew/bin` under
+  `/opt`, `make BINDIR=~/bin install`, `make prefix=/opt/x install`, a copy
+  into `~/bin` and `go build -o` into `/usr/local/bin`. Exit 2 naming the
+  place the record does not name for `cargo install ripgrep`, `~/.cargo/bin`;
+  `gem install --user-install rubocop`, `~/.gem/ruby/2.6.0/bin`; `python3 -m
+  pip install --user black`, `~/Library/Python/3.14/bin`; `make
+  PREFIX=/usr/local install`, `/usr/local`, which the record names only
+  under `bin` and `sbin`; `make DESTDIR=/tmp/pkg install`, `/tmp/pkg`. Exit
+  2 as not read for `pnpm add -g typescript`, where `pnpm bin -g` printed
+  nothing and exited 0 at that hour, `pnpm setup` not having run yet; for
+  `yarn global add typescript`, `yarn add --global typescript`, `bun add -g
+  cowsay`, `bun install -g cowsay` and `pipx install black`, none of the
+  three programs standing here at that hour; for `gem install -i /tmp/g
+  rubocop`, `python3 -m pip install --target /tmp/x black`, `python3.99 -m
+  pip install black`, `pip install black`, `pip3 install --user black`,
+  `/usr/bin/pip3 install black`, `uv pip install --system ruff`, `make
+  install`, `apt-get install shellcheck`, `nvm install 20` and `mise use
+  node@20`, each with its own cause. Exit 2 for `sudo make install` and for
+  `curl … | sh`, as before. Under the yes naming the four routes, the same,
+  except exit 0 for `cargo install ripgrep`, `gem install --user-install
+  rubocop` and `python3 -m pip install --user black`, and exit 2 still for
+  `pnpm add -g typescript`: a route named that does not answer stays a
+  block. Under the record saying no, exit 2 with that cause for every
+  command that reaches the record; under the record never written, exit 2
+  naming the missing section; under `~/bin` alone, exit 2 naming
+  `/opt/homebrew/bin` for `brew` and `npm`, `~/go/bin` for `go`,
+  `~/.cargo/bin` for `cargo`, `/usr/local/bin` for `gem` and `~/.local/bin`
+  for `uv tool`, and exit 0 for `gem install -n ~/bin rubocop`, `make
+  BINDIR=~/bin install` and the copy into `~/bin`. Under every record, exit
+  0 with the record unread for `cargo add serde`, `.venv/bin/pip install -r
+  requirements.txt`, `./.venv/bin/python -m pip install -e .`, the
+  project's own `.venv/bin/pip` by its absolute path, and `cd sub &&
+  .venv/bin/pip install x`, with the `.venv` on disk and without; with a
+  `.venv` made by `python3 -m venv` in the project, exit 0 as well for
+  `source .venv/bin/activate && pip install -e .`, `. .venv/bin/activate &&
+  python -m pip install x`, `python3 -m venv .venv && . .venv/bin/activate
+  && pip install x` and `uv pip install ruff`, and without it exit 2 for the
+  same four, each reaching the record and blocked as a bare pip, an
+  interpreter not found or an environment not found; exit 2 for
+  `../other/.venv/bin/pip install x`, `~/elsewhere/.venv/bin/pip install x`,
+  `source .venv/bin/activate && deactivate && pip install x`, `cd /tmp &&
+  .venv/bin/pip install x`, `.venv/bin/pip install x` fed without `cwd` in
+  the JSON, and `uv pip install ruff` with `VIRTUAL_ENV` set to a directory
+  outside the project in the hook's environment. `npx playwright install`
+  and `npm install -D playwright` exit 0 as before. With the hook's PATH cut
+  to `/usr/bin:/bin`: exit 2 as not read for `brew`, `go`, `npm` and `uv
+  tool`; exit 0 for `gem install rubocop`, `gem` standing in `/usr/bin`, and
+  for `python3 -m pip install black`, `/usr/bin/python3`, Apple's, answering
+  `/usr/local/bin` — a different interpreter from the shell's, answering a
+  place the record names all the same, which is the assumption made visible:
+  the hook asks the interpreter its own PATH finds; `python3 -m pip install
+  --user black` there exit 2, that Python being 3.9 without
+  `get_preferred_scheme`, the answer-nothing case. With stand-ins on PATH,
+  scripts of this measurement and not the vendors' programs: a `pnpm`
+  printing `not a path` exit 2 as not read, a `pipx` printing `~/.local/bin`
+  exit 0, a `yarn` printing `~/.yarn/bin` and a `bun` printing `~/.bun/bin`
+  exit 2 naming the place — those four arms were exercised as arms, not
+  against the vendors' answers; the second measurement below holds them
+  against the real programs. `cargo install ripgrep` exit 2 with
+  `.cargo/config.toml` in the project setting `install.root`, and exit 0
+  with `CARGO_INSTALL_ROOT=~/.local` in the hook's environment. `echo "x" &&
+  cargo install ripgrep` and the same behind a newline exit 2 naming
+  `~/.cargo/bin`, the decoding of 25 August 2026 holding. The session-start
+  line, run against the scratch project, printed `routes: cargo gem pip pnpm`
+  under the record naming them and `none:` with the missing section under
+  the record never written.
+
+  **Measured again on 29 September 2026, later the same day, with `pipx`,
+  `yarn`, `bun` and `pnpm` standing on this machine.** What was done to the
+  machine first, none of it the state a fresh machine is in: `pipx` 1.17.6,
+  `yarn` 1.22.22 and `bun` 1.4.2 were installed through Homebrew; `pnpm setup`
+  was run for `pnpm` 10.33.3, which wrote `PNPM_HOME` and a line putting that
+  directory on `PATH` into `~/.zshrc`; and an empty `package.json` was placed
+  by hand in `~/.bun/install/global`, because `bun pm bin -g` answers nothing
+  until something has been installed globally, the finding below. Each route's
+  answer, read directly and not off the guard: `pipx environment --value
+  PIPX_BIN_DIR` prints `~/.local/bin`; `yarn global bin` prints
+  `/opt/homebrew/bin`, a directory already under the six places through
+  `/opt`; `bun pm bin -g` prints `~/.bun/bin` with the hand-placed manifest
+  and, with the manifest moved aside or with `BUN_INSTALL_GLOBAL_DIR` pointing
+  at a directory holding nothing, exits 1 with `error: No package.json was
+  found for directory` on stderr and nothing on stdout; `pnpm bin -g` prints
+  nothing and exits 0 where `PNPM_HOME` is not in the environment, exits 1
+  with `ERROR The configured global bin directory "~/Library/pnpm" is not in
+  PATH` on stderr where it is set and its directory is not on `PATH`, and
+  prints `~/Library/pnpm` where both hold, which a shell opened after `pnpm
+  setup` has and the process of the harness this was measured from has not,
+  started from the editor on 15 September 2026, before `pnpm setup` wrote
+  `~/.zshrc`, and carrying neither; the guard fed from this harness therefore
+  blocks `pnpm` as not read, as the first measurement did, and its pass was
+  exercised with `PNPM_HOME` and `PATH` handed to the hook's process. The same
+  way as above, the guard fed its JSON directly against a scratch project with
+  a local bare `origin`, seven records pushed and fetched. Under the yes with
+  the six places and no route: exit 0 for `pipx install black`, `~/.local/bin`
+  being among the places, and for `yarn global add typescript` and `yarn add
+  --global typescript`, `/opt/homebrew/bin` lying under `/opt`, the pass by
+  place with the route not named; exit 2 naming `~/.bun/bin` for `bun add -g
+  cowsay` and `bun install -g cowsay`, and naming `~/Library/pnpm` for `pnpm
+  add -g typescript` with the environment handed over; exit 2 as not read for
+  `pnpm` without it and for `bun` with a global directory holding nothing.
+  Under the yes naming the routes `pipx`, `yarn`, `bun` and `pnpm` beside the
+  six places: exit 0 for all seven commands, `pnpm` with the environment
+  handed over; exit 2 as not read still for `pnpm` without it and for `bun`
+  before its first global install, a route named that does not answer staying
+  a block. Under the record saying no, every one of the seven exits 2 with
+  that cause; under the record never written, every one exits 2 naming the
+  missing section. Under `~/bin` as the only place and no route: exit 2 naming
+  `~/.local/bin` for `pipx`, `/opt/homebrew/bin` for `yarn`, `~/.bun/bin` for
+  `bun` and `~/Library/pnpm` for `pnpm`. Under `~/bin` as the only place and
+  the routes `yarn` and `pipx`: exit 0 for both, the pass by route with the
+  place absent, and exit 2 naming the place for `bun` and `pnpm`. Under
+  `/opt/homebrew/bin` and `~/.local/bin` as the places and no route: exit 0
+  for `yarn` and `pipx` by the literal place. So `yarn` passes three ways that
+  can be told apart, by the place `/opt`, by the literal place and by the
+  route, and blocks under `~/bin` alone; and so does `pipx`, whose
+  `~/.local/bin` stands among the six places as well, so `yarn` is not the
+  only route here where the two paths through the guard can be told apart. The
+  session-start line under the record naming the four routes printed `routes:
+  pipx yarn bun pnpm`, and `none:` with the missing section under the record
+  never written. Passes now where the first measurement blocked: `bun` under a
+  record naming its route, which no record of the first measurement did while
+  no `bun` stood here to answer; `yarn` under the six places, where the
+  stand-in's `~/.yarn/bin` blocked and the real program's `/opt/homebrew/bin`
+  passes; `pnpm` under a record naming its route, with the environment `pnpm
+  setup` writes handed to the hook's process. `pipx` passes as its stand-in
+  did, the two answering the same directory. Its runs stand in
+  `docs/stock-take.tsv` under version 0.116.1, which this correction raises.
+
+  **`bun` answers nothing before the first global install.** Read on 29
+  September 2026: the vendor's page `bun.sh/docs/cli/pm` says `bun pm bin -g`
+  prints "the path to the global `bin` directory", `<$HOME>/.bun/bin`, and
+  nothing about a manifest; on `bun` 1.4.2, the current release, of 5
+  September 2026, `bun pm bin -g` and `bun pm ls -g` exit 1 with `No
+  package.json was found for directory "~/.bun/install/global"` and `note: Run
+  "bun init" to initialize a project` until a `package.json` stands there, and
+  `bun pm ls -g` with an empty one and no lockfile exits 1 with `missing
+  lockfile, nothing to list`. Pull request 36622 in `oven-sh/bun`, "pm: let
+  `bun pm -g bin` / `bun pm ls -g` work before any global install", opened 1
+  August 2026, is open on 29 September 2026; issue 43094, "Listing global
+  packages shouldn't require a package manifest", opened 17 September 2026
+  against 1.4.2, is open as well. `bun add -g cowsay` into a global directory
+  holding nothing, through `BUN_INSTALL_GLOBAL_DIR` and `BUN_INSTALL_BIN`
+  pointing into the scratch directory, whose defaults the vendor's `bunfig`
+  page gives as `~/.bun/install/global` and `~/.bun/bin`, wrote the manifest,
+  the lockfile and the binaries and exited 0: the install itself does not need
+  the manifest, only the query does. What the guard should do when a route
+  that normally answers does not: block, as it does. A route the record names
+  that does not answer is a block, never a pass, and a pass here would need
+  the guard to know `~/.bun/bin` from the vendor's page rather than from the
+  machine, which is the written answer the routes were built to avoid. Whether
+  the message tells the person enough: it says `bun (bun pm bin -g did not
+  answer)`, which hands the install over rightly and tells them what was
+  asked; it does not tell them that the fix is one command of their own, the
+  handed-over `bun add -g` itself, which creates the manifest, or `bun init`
+  in the global directory as bun's own note says, because that note stands on
+  stderr and the guard sends every route's stderr to `/dev/null`. For `pnpm`
+  without `PNPM_HOME` the same shape has nothing to carry, `pnpm bin -g`
+  printing nothing anywhere, and its fix, `pnpm setup` and a shell or a
+  harness started after it, is outside anything the guard reads.
+  Recorded, not built: the block for a route that does not answer names the
+  query and not what the query said on stderr, which for `bun` names the
+  cause and the fix.
+
+  **`bun`'s directory is not on the search path here, and whether that reaches
+  anything.** `~/.bun/bin` is not on this machine's `PATH`. `bun pm bin -g`
+  prints `warn: not in $PATH` on stderr only where stderr is a terminal,
+  measured with `script`: stdout a file and stderr a terminal prints it,
+  stdout a terminal and stderr a file does not, neither does not. The guard
+  captures stdout, sends stderr to `/dev/null` and runs where nothing is a
+  terminal, so the warning never reaches the guard, by construction and not by
+  chance. The install command says so itself: `bun add -g cowsay`, terminal or
+  not, prints on stderr `warn: To run "cowsay", add the global bin folder to
+  $PATH:` and the `export PATH="…/bin:$PATH"` line to run, measured into the
+  scratch directories above. `pnpm` refuses instead: `pnpm add -g cowsay` with
+  `PNPM_HOME` pointing at a directory not on `PATH` installs nothing, exits 1
+  and prints `The configured global bin directory "…" is not in PATH`, and
+  installs once the directory is on `PATH`. So the run sees it, in the
+  install's own output, where the vendor prints one; the guard does not and
+  cannot. Should an install into a place not on the search path be reported,
+  and where: yes, and the places exist. The install report of `build-work`
+  step 3 point 7 asks for "what came back", and the vendor's warning is part
+  of what came back; a run that copies the `installed` line and drops the
+  warning has broken point 7, not found a gap in it. The `export` line is a
+  command whoever clones the project has to run, which is what point 8 puts
+  into `environment.md`, as the vendor prints it. The build itself is not
+  stopped by it: point 7 reads the result off the path the installer writes
+  to, never off `command -v`, so a tool off `PATH` is found all the same,
+  while a check that calls it by its bare name is red until the directory is
+  on `PATH`, one more reason the line belongs in `environment.md`. Where a
+  vendor prints no warning the run cannot see it, and nothing here invents a
+  way. No defect of this set: a search of point 7 for "what came back" finds
+  the duty standing.
+
+  **Not done.** The two runs on a bench that milestone 3 ends with, one
+  under a yes and one under a no, from the installed copy; nothing here has
+  run on a bench. The refresh in `setup-project`, and the drivers half, as
+  on 28 September 2026. The session-start line prints the routes as names
+  and does not resolve them, so which directory a route reaches on this
+  machine shows in a block and nowhere earlier. `pipx`, `yarn`, `bun` and
+  `pnpm` are exercised against the real programs since the second
+  measurement, `bun` with a manifest placed by hand and `pnpm` only with the
+  environment `pnpm setup` writes handed to the hook's process, not in the
+  process of the harness this was measured from, which carries neither
+  `PNPM_HOME` nor its directory on `PATH`. Nothing here has run on a bench.
+  Built, never walked on a bench: every route above.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

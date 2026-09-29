@@ -1161,7 +1161,10 @@ under the heading `## Install permission`, a key and a value per line in the
 shape `checks.md` uses for a value a script reads — `grep` on the start of the
 line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
 one `install-place:` line per place a yes opens in this version, spelled as
-the guard matches it; `install-answered:` with the date the question was
+the guard matches it; since 29 September 2026 one `install-route:` line per
+route question 4 named for the stack, a name from the eleven the guard
+resolves — `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
+`pipx`, `uv`, `pip`; `install-answered:` with the date the question was
 answered. The question does not show that list: by its text, amended and
 built on 28 September 2026, it says that programs land outside the project, in the usual
 places for installed programs on this machine, that which places exactly
@@ -1169,13 +1172,23 @@ stands in the record, and for each route the stack has, which kind of place it
 reaches. It carries the
 places and not only the answer because an answer given against the places of
 one version is not an answer for a place a later version adds: the guard passes
-only a place the record itself names, and a place it does not name is blocked
-as before, until something asks about that one place. The places of this
+only a place the record itself names, or the answer of a route it names, and a
+place it does not name is blocked as before, until something asks about that
+one place. The places of this
 version are `/usr/local/bin`, `/usr/local/sbin`, `/opt`, `~/.local/bin`,
 `~/bin` and `~/go/bin`: the guard's `BINDIR` without `/usr/bin` and
 `/usr/sbin`, which nothing reaches without `sudo`, so that a yes to them would
 open nothing and read as if it did. No driver destination is among them; that
-is the second half of the milestone and is not built.
+is the second half of the milestone and is not built. A route named in the
+record opens the directory that route answers on the machine the run is on,
+read at the moment of the command and written nowhere: the record holds what
+survives the machine changing rather than the answer of the machine it was
+written on, because the same package manager answers differently on another
+operating system and the same route differently under a version manager, and
+a record of literal answers would go false on the next machine and block
+there, while the question says the answer travels with the repository. A route
+the record does not name is held against the places, as the three routes were
+before 29 September 2026; the roadmap entry of that date says why.
 
 The guard reads the record off the default branch as last fetched,
 `refs/remotes/origin/<default>`, never off the working tree, so that a run
@@ -1198,15 +1211,52 @@ no, and, under a yes, a place the record does not name. A record never written
 and a record saying no are different blocks, because "A guard's block is not a
 decline" needs the run to tell them apart, and an unattended issue carrying the
 wrong cause is what a third unnamed case would produce. Under a yes the guard
-asks the machine where a route lands, for the three routes
-`shared/backed-command.md` names a path for — `brew --prefix`, `go env GOBIN`
-or `GOPATH`, `npm prefix -g` — takes a path written in the command as written,
-and passes only where every destination is a place the record names; a route it
-cannot read this way — `pip`, `pipx`, `cargo`, `gem`, `pnpm`, a system package
-manager, every version manager, `make install` — stays blocked with that
-cause, as before, until a reading of where it puts things is backed. `sudo`
-and a script piped from the network into a shell stay blocked under every
-answer. What a yes passes that the question does not mean: through a package
+asks the machine where a route lands, since 29 September 2026 for eleven
+routes and until then for the three `shared/backed-command.md` names a path
+for, each with the command its vendor documents, read from the vendor's page
+on 29 September 2026 and quoted in the roadmap entry of that date: `brew
+--prefix`; `go env GOBIN` or `GOPATH`; `npm prefix -g`; `pnpm bin -g`; `yarn
+global bin`; `bun pm bin -g`; `pipx environment --value PIPX_BIN_DIR`; `uv tool
+dir --bin`; `gem environment`, its executable directory, or its user
+installation directory plus `bin` under `--user-install`, `--bindir` taken as
+written; for `pip`, the scripts path of the interpreter the command names,
+asked of that interpreter through `sysconfig`, the user scheme under `--user`;
+and for `cargo`, which cannot be asked on the stable channel — `cargo config
+get` is nightly-only — the root read in the vendor's order, `--root`,
+`CARGO_INSTALL_ROOT`, a config file on its search path, `CARGO_HOME`,
+`~/.cargo`, plus `bin`. It takes a path written in the command as written,
+`make install` included where `PREFIX`, `DESTDIR` or `BINDIR` stands on its
+line, and passes only where every destination is a place the record names or
+the answer of a route it names. Every resolution runs in the hook's own
+process and on its PATH, which is the PATH of the process that started the
+harness and not the tool shell's — measured on 29 September 2026, the two
+differ on this machine by the plugin directories the harness appends to the
+shell and by nothing else, and a harness started from an editor rather than a
+terminal can carry `/usr/bin:/bin:/usr/sbin:/sbin` — so a route not found
+there, one answering nothing (`pnpm bin -g` prints nothing and exits 0 where
+`PNPM_HOME` is not in the environment, and `PNPM_HOME` is what `pnpm setup`
+writes into the shell's rc file, so a harness started before that, or from an
+editor, carries it in neither its own process nor the hook's; `bun pm bin -g`
+exits 1 with nothing on stdout until something has been installed globally,
+on bun 1.4.2) or one answering no absolute path is not read,
+and not read is a block, never a pass. What stays blocked with that cause
+under every answer: a system package manager, which owns no directory of its
+own since each package decides, and needs root anyway; a version manager, by
+**Runtimes are not a kind the permission may cover** above; a bare `pip` or
+`pip3`, which names no interpreter, so which Python it installs for is not in
+the command, `python -m pip` being the vendor's own form for saying it; a
+config file setting `install.root` for cargo; a `pip` or `gem` option that
+moves the destination; and a `make install` whose line names none. A pip
+inside the project passes without the record being read, as anything landing
+inside the repository does: a pip or an interpreter named by a path inside
+the project, a bare one after `source` or `.` on the project's own
+`bin/activate` earlier in the same command, and `uv pip` where a `.venv`
+stands inside the project from the directory the command runs in upward; what
+an earlier command activated, or the shell's own configuration put on PATH,
+is not in the string and stays blocked, and the block says so. `cargo add`,
+which writes the project's manifest, no longer fires. `sudo` and a script
+piped from the network into a shell stay blocked under every answer. What a
+yes passes that the question does not mean: through a package
 manager the guard sees the verb and not what is installed, so `brew install
 node` passes as `brew install shellcheck` does, and that is a rule on the run,
 written in `build-work` step 3 point 7, and not a wall.
@@ -1237,7 +1287,14 @@ second being the drivers half. Not measured: the two runs on a bench that
 milestone 3 ends with, one under a yes and one under a no, from the installed
 copy. Nothing here has run on a bench, the runs are not recorded in
 `docs/stock-take.tsv`, and the question that writes the record, built the
-same day, has been put to nobody.
+same day, has been put to nobody. Measured again on 29 September 2026 against
+the working tree, the same way, with the eleven routes, five records and a
+`.venv` present and absent, and later that day with `pipx`, `yarn`, `bun` and
+`pnpm` standing on the machine, seven records, `bun` given a manifest by hand
+and `pnpm` the environment `pnpm setup` writes: the roadmap entry of that
+date carries every command and what came back, and `docs/stock-take.tsv`
+carries the runs under versions 0.116.0 and 0.116.1. Still nothing on a
+bench.
 
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how
