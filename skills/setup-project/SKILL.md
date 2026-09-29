@@ -224,8 +224,17 @@ Ten lines at most. Say explicitly what you did **not** find.
 ## Step 3 — The empty case
 
 Finding no code is not an obstacle. Write `checks.md` with all nine classes set
-to `empty`, skip Step 4, and say so at the end: the check suite gets filled once
-there is something to check.
+to `empty`, and say so at the end: the check suite gets filled once there is
+something to check. Step 4 is not skipped: it skips the questions that need
+code to answer, and each of those says so in its own condition. Question 3
+needs code: its mapping has nothing to map, no class can be ruled out against
+nothing, and a missing tool has no stack to be named from. Question 5 needs
+code: nothing runs yet, and `environment.md` says so. Every other question is
+put under its condition, as with code, question 4 among them: there is no
+dependency file, and the run says so; there is no stack, so it names no route,
+which its wording already provides for. Yes, no and the record are as with
+code, written in step 6 and landed in step 8, so that the first install this
+project meets finds an answer and not the absence of one.
 
 ## Step 4 — Questions
 
@@ -321,21 +330,20 @@ single word can answer; question 4 says why it gives none.
    anything over it and never make it a condition — the user decides what their
    repository is for, and this step's job is that they decide it knowing what
    holds.
-3. **Checks** — always. Present your mapping: which tool found fills which class,
-   which classes are ruled out and with what reason, and which are genuinely
-   still undecided. A class you have just reasoned away is ruled out, not
-   undecided. Ask separately whether missing tools should be installed — that
-   changes the project — and say where a no leads: the class that tool would
-   fill stays as it is, and `setup-checks` records it as `skipped` with that
-   reason, not `empty`. Prefer tools that live inside the project. A tool that
-   lands outside it is the user's to run during a first setup: the install
-   record the guard reads — the section `## Install permission` of
-   `environment.md` on the default branch as last fetched — has not landed
-   yet, so the guard blocks the command and it is handed over, backed, as "A
-   guard's block is not a decline" above says. From the next session on the
-   record decides; question 4 writes it, and step 6 puts it into
+3. **Checks** — always where there is code. Present your mapping: which tool
+   found fills which class, which classes are ruled out and with what reason,
+   and which are genuinely still undecided. A class you have just reasoned away
+   is ruled out, not undecided. Ask separately whether missing tools should be
+   installed — that changes the project — and say where a no leads: the class
+   that tool would fill stays as it is, and `setup-checks` records it as
+   `skipped` with that reason, not `empty`. Prefer tools that live inside the
+   project. A tool that lands outside it is the user's to run during a first
+   setup: the install record the guard reads — the section `## Install
+   permission` of `environment.md` on the default branch as last fetched — has
+   not landed yet, so the guard blocks the command and it is handed over,
+   backed, as "A guard's block is not a decline" above says. From the next
+   session on the record decides; question 4 writes it, and step 6 puts it into
    `environment.md`.
-
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 4. **Install permission** — always. Say, in a message of its own and in the
    user's language, that one question about their machine comes now rather
@@ -395,8 +403,9 @@ single word can answer; question 4 says why it gives none.
 
    The answer goes into `environment.md` in step 6, as the section the guard
    reads; nothing is installed on it here.
-5. **Local environment** — always, unless you could read it all from
-   `docker-compose.yml` or the README. Which processes, in what order, on what ports.
+5. **Local environment** — always where there is code, unless you could read it
+   all from `docker-compose.yml` or the README. Which processes, in what order,
+   on what ports.
 6. **Labels** — only if the tracker already has labels with overlapping meaning.
    Then ask: map onto the existing ones, or add ours alongside. Otherwise create
    the five standard labels and report it.
