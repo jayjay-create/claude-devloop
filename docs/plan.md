@@ -261,8 +261,21 @@ for is held against the places until a route line is added with the person
 there. Not built: the refresh in `setup-project`, which is where a project set
 up before this version, or set up empty before 0.118.0, would be asked, and
 which asks nothing anew today; and the drivers half, so the place list carries
-no driver destination and `npx playwright install` passes the guard as before. The two runs above have not happened, and nothing of this
-reads as exercised. Two phrases above stand as written on 19 September 2026 and
+no driver destination and `npx playwright install` passes the guard as before.
+The two runs above ran on 30 September 2026, both attended, under 0.120.0
+from the installed copy: the record saying yes in `devloop-test-s`, the record
+saying no in `devloop-test-t`; the roadmap entry of that date carries both
+with what they produced. What they walked: the question, put twice and
+answered once each way; the record, written by step 6 and landed by step 8
+under both answers and read back off the default branch; the decline at
+setup, with a person there, ending in `skipped` with the reason. What they
+did not walk, and so what the milestone still cannot claim: the guard against
+a landed record under either answer — the yes run's installs ran before the
+record landed, and the no run ran nothing after it landed; a build installing
+under the record — the setup installed, in the window before the record; the
+unattended half whole — the mode was never offered, since a setup that fills
+every class itself never calls the skill that offers it; and the form of the
+question, which held in neither run. The milestone has not landed. Two phrases above stand as written on 19 September 2026 and
 were ruled on 28 September 2026: "tools for check classes" reads as a tool,
 anything that runs and ends, under "The first kind is a tool, not a tool for a
 check class"; and "whether a runtime is one of them" is answered no under
@@ -295,7 +308,8 @@ machine the run is on; a pip inside the project passes without a record;
 that date carries the readings and the measurement. Blocked under every
 answer still: the system package managers, the version managers, a bare
 `pip`, and every route that does not answer. The refresh and the drivers half
-stay unbuilt, and the two runs on a bench have not happened.
+stay unbuilt, and of the two runs on a bench only the setup half of each has
+happened, as the paragraph above says.
 
 Why here: blocked by the three conventions milestone 2 rewrites; milestones 4,
 7 and 8 need a driver and a linter that land outside the repository.
