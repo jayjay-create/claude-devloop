@@ -50,6 +50,8 @@ project's task runner, and a pointer block in `CLAUDE.md`.
 What tells the two apart is what the command would have done, not what the guard
 matched.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
+
 ## How to ask
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text how-to-ask`
@@ -355,9 +357,7 @@ that question's answers and no other question: it shares a form with nothing.
    permission` of `environment.md` on the default branch as last fetched — has
    not landed yet, so the guard blocks the command and it is handed over,
    backed, as "A guard's block is not a decline" above says. From the next
-   session on the record decides; question 4 writes it, and step 6 puts it into
-   `environment.md`.
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
+   session on the record decides.
 4. **Install permission** — always. Put it in prose, in the run's own message
    and in the user's language: the question is what that message says, and a
    choice widget that follows carries its two answers and no other question,
@@ -371,7 +371,7 @@ that question's answers and no other question: it shares a form with nothing.
    What the question covers, and nothing else:
 
    - **The subject, in the question line.** Programs that run and end — a
-     checker, a code generator, a migration command — landing outside the
+     code generator, a migration command, a checker — landing outside the
      project on this machine. The answer holds for this project, so for
      anyone who builds on it with this set and not for this machine alone;
      where that last part does not fit the line, it goes rather than crowd
@@ -379,14 +379,16 @@ that question's answers and no other question: it shares a form with nothing.
    - **What a yes means, in the yes itself.** From then on the run installs
      such a tool by itself, with them there and with nobody there, without
      asking again.
-   - **What a yes does not hold back.** Through a package manager the guard
-     sees the verb and not what is installed, so a yes to tools also lets
-     through a command that installs a runtime; that is a rule on the run and
-     not a wall, and compilers and runtimes stay theirs under every answer.
+   - **What a yes also lets through, in the message.** Through a package
+     manager the guard sees the verb and not what is installed, so a yes to
+     tools also lets through a command that installs a runtime; that compilers
+     and runtimes stay theirs under every answer is a rule on the run and not
+     a wall.
    - **Where a no leads, in two halves, in the no itself.** With them there
-     the run hands them the command and they decide; with nobody there a
-     check class goes `skipped` with that reason, or the task becomes an
-     issue carrying the exact command.
+     the run hands them the command and they decide; with nobody there
+     nothing is asked: the task becomes an issue carrying the exact command,
+     or a check class goes `skipped` with that reason, not `empty` and not
+     open.
 
    These four carry the decision. The standard is that nothing in the
    question implies something untrue, not that everything true is said: what
