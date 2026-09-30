@@ -7283,6 +7283,183 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   by a case and 0 by none`, recorded on its outcome.
 
 
+- **Question 4 of `setup-project` came out wrong twice on 30 September 2026,
+  from two different texts, its surroundings pulling it toward a question
+  about tools for check classes; the pulls that could be removed removed, and
+  three things in the options that arrived in the run's own words stated at
+  the point where the run writes them; 30 September 2026, version 0.120.0.**
+  On `task/question-pulls`, off `4a2ef85`.
+
+  **What the two runs produced.** The first, in `devloop-test-p` under
+  0.118.0, the entry of 30 September 2026 above records: thirteen points, four
+  lines in a form of three tabs, and a route named where there was no stack.
+  The second, the same day under 0.119.0, with the question cut to the four
+  points that carry the decision: the bold heading of the third point
+  transcribed as a statement, "Ein Ja hält nichts zurück", which is false,
+  since a yes still blocks `sudo`, a script piped from the network into a
+  shell, and any place the record does not name — the three causes
+  `hooks/pre-tool-use-install-guard.sh` names under a record saying yes; the
+  boundary of the third point, that compilers and runtimes stay theirs,
+  arrived and the leak did not, so what the person read was an assurance the
+  guard does not give; and in the options, "bleibt offen" where a declined
+  check class goes `skipped` with that reason, the check class written as an
+  issue where it is the task that becomes one, and the no labelled "jedes Mal
+  fragen", which promises a question that never comes with nobody there. The
+  second run's transcript was not read for this entry; what it produced is
+  taken from the order this branch follows, which read it. Two texts, and
+  neither arrived as written.
+
+  **The pulls as the cause.** The reading of that day, carried in the same
+  order, established that the surroundings pull the question and not its
+  wording, and named five; each was established again on the text as it stood
+  at 0.119.0. Question 3's last sentence, "From the next session on the record
+  decides; question 4 writes it, and step 6 puts it into `environment.md`",
+  announced question 4 before it was read, in terms of the missing tools of
+  question 3's own sub-question. `shared/backed-command.md`, inserted between
+  question 3 and question 4 since 18 September 2026, stood in front of
+  question 4 as twenty-five lines on `go install` and a scanner's module path.
+  In point 4, the first consequence of a no with nobody there was a check
+  class, the task second. In point 1, the first example of a program that runs
+  and ends was a checker. And the bold headings of the four points read as
+  sentences: "What a yes does not hold back", read as a statement, says that
+  a yes holds nothing back.
+
+  **What was done with each.** The announcement is cut: question 3 ends at
+  "From the next session on the record decides", the record having been named
+  in full two sentences earlier, and where it is written question 4 and step 6
+  say. The backed-command block is moved into "A guard's block is not a
+  decline", after the sentence that tells the two blocks apart: that section
+  is where the setup hands a command over, with the user there through
+  question 3 and with nobody there as an issue, and question 3 already points
+  at it — "handed over, backed, as 'A guard's block is not a decline' above
+  says". What the move changes: what stands in front of question 4, which is
+  now question 3 alone; the numbered list of step 4, inside which the insert
+  line had stood since 18 September 2026; and the unit whose runs the shared
+  text's lines are held against, since an insert line brings the file into
+  the range of its unit. What it does not change: the block's text, which is
+  the same in the three skills that insert it, so the scanner and `go install`
+  stay in this skill, above question 3 instead of below it, and a run reaching
+  for a route where there is none can still find one there; the block in
+  `build-work` step 3, between point 7 and point 8, where point 8 reads the
+  backed command off point 7; and the block in `setup-checks` step 3, after
+  the paragraph that runs the install under a yes, where the sentence after
+  it says why that step is where a wrong path gets typed. Neither of those two
+  needs the treatment: in both the block stands where its rule is applied,
+  what follows it is about the block, and no question to a person follows it.
+  Point 4 puts the task first and the check class second; point 1 puts the
+  checker last. The heading of the third point is now "What a yes also lets
+  through, in the message": true read as a statement, naming the leak rather
+  than the boundary, and carrying the slot the other three headings carry,
+  since the point that had none was among those that did not arrive in the
+  first run. Nothing was added telling the run not to narrow: two approved
+  wordings had not held it, and a third sentence would be the same sentence.
+  The approved wording of the four points stands, reordered where it is
+  reordered and rewritten nowhere.
+
+  **Point 3 asked for two things at once.** The leak — through a package
+  manager a yes to tools also passes a command installing a runtime — and the
+  boundary, that compilers and runtimes stay theirs. Both times the boundary
+  arrived alone. As written the point could not carry both: the boundary was
+  the last clause, whole on its own, and the reassuring half of a pair
+  survives compression where the qualifying half does not. Which of the two
+  the person needs was decided by what each costs when it is the one that
+  goes missing. The leak missing is what happened: the person answers yes
+  believing the guard walls off runtimes, and under that yes nothing stops
+  `brew install node` but a rule on the run — "A limit that reads like a
+  safeguard and is not one is worse than no limit at all" in
+  `docs/skill-conventions.md` is that case. The boundary missing costs nothing
+  the leak does not say: the leak's own clause, "a rule on the run and not a
+  wall", is the boundary stated as what it is. So the point carries the leak,
+  and the boundary inside it as the leak's object — "that compilers and
+  runtimes stay theirs under every answer is a rule on the run and not a
+  wall". The words are the approved ones; the boundary is no longer a clause
+  that can be lifted out whole. Whether that holds under compression is not
+  known from this branch.
+
+  **The three things in the options.** Held against what the skill said at
+  point 4, where the run writes them. `skipped` with that reason was stated,
+  in the skill's own status word; that the word settles the class rather than
+  leaving it open was said only in question 3, "not `empty`", of question 3's
+  own no. The task becoming an issue was stated, and the check class going
+  skipped beside it, two consequences with "or" between them, which the run
+  merged into one. That nothing is asked with nobody there was stated in "A
+  guard's block is not a decline" and nowhere at point 4. Now point 4's no
+  says: with nobody there nothing is asked; the task becomes an issue carrying
+  the exact command, or a check class goes `skipped` with that reason, not
+  `empty` and not open.
+
+  **The question read as the person receives it, after the change.** Reader:
+  the person at a first setup, in their language, with the run's message in
+  front of them and nothing else. Form: prose in the run's own message, and a
+  widget after it with a question line and two answers, named in step 4's
+  opening and in question 4. Every part held to the three tests under "A text
+  is as long as what carries the decision" in `docs/skill-conventions.md`.
+  The subject, in the question line: they answer differently knowing what
+  kind of program is meant, meet it nowhere before, true — stays, the examples
+  reordered. What a yes means, in the yes: stays as it was. What a yes also
+  lets through, in the message: they answer differently knowing the guard
+  cannot tell a tool from a runtime through a package manager, meet it nowhere
+  before, true — stays, with the boundary inside it. Where a no leads, in the
+  no: they answer differently knowing that with nobody there no question comes
+  and the work goes the recorded way, meet it nowhere before — the guard-block
+  section is the skill's text and not theirs — true; stays, with the task
+  first and nothing asked said. What came in: "nothing is asked", "not `empty`
+  and not open", and the slot name in one heading. What came out of the
+  question: nothing. Out of question 3: its last clause, whose content stands
+  at question 4 and in step 6. Nothing here reaches the form: whether a run
+  puts the question in prose before the widget is read off the transcript and
+  off nothing in the repository, as the entry of 30 September 2026 above says;
+  what this branch took out is read off the skill, and whether taking it out
+  is enough is read off the next run. A skill text can take out what pulls a
+  question; it cannot make a run deliver a form, and it was not asked to.
+
+  **Read through afterwards.** Step 4 read whole: its opening names the two
+  forms and which question takes which, questions 1 to 7 stand under their
+  conditions, question 3 ends on the record and question 4 follows it
+  directly. What each question has in front of it: question 1 the opening of
+  step 4; question 2 question 1; question 3 the gate reading of question 2;
+  question 4 question 3's mapping and its sub-question on missing tools;
+  questions 5, 6 and 7 the one before. In front of question 3 nothing about
+  backing stands any more; the word "backed" in it points at the section
+  above, where the block now stands after the two cases of a block.
+  `grep -rn "question 4 writes\|between question 3 and question 4\|checker, a
+  code generator\|does not hold back" docs README.md skills shared`: the
+  entry of 30 September 2026 above, "inserted between question 3 and question
+  4" and "what a yes does not hold back", dated and standing; this entry and
+  the note of the re-sited defect row, which quote them; nothing else.
+  `grep -rn "stay theirs under every answer\|says the boundary" docs
+  README.md skills shared`: `docs/skill-conventions.md` under "Runtimes are
+  not a kind the permission may cover", "question 4 of `setup-project` step
+  4, which says the boundary as this ruling asks", which still holds, the
+  boundary standing inside the leak; question 4 itself; this entry; nothing
+  else. `grep -rn "under every answer" skills shared hooks docs README.md`
+  finds the same boundary said of the run, "stay the user's under every
+  answer", in `build-work` step 3 point 7 and `setup-checks` step 3, in two
+  causes of the guard's block message, and as the ruling's own words in
+  `docs/plan.md` and `docs/skill-conventions.md`; those are rules on the run,
+  the guard's causes and the ruling, not a question to a person, and they
+  stand. The defect row on the unbacked command in `docs/stock-take.tsv`
+  named the block's site in this skill as "setup-project step 3", which it
+  never was — the block stood in step 4 after question 3 — and names the new
+  site now. The not-a-thing row on the third point's heading is re-anchored
+  to the new heading, its note saying what the point carries now. No sentence
+  in a changed file says the opposite of what stands.
+
+  Built: the five pulls answered in `setup-project`, since 30 September 2026,
+  version 0.120.0 — the announcement cut, the block moved, the task and the
+  checker moved, the heading changed — and point 3 carrying the leak with the
+  boundary inside it; the three wrong options stated at point 4 in the
+  skill's words. Nothing has run on a bench: the two runs milestone 3 ends
+  with have not happened, and the question has been put twice, both times
+  before this build.
+
+  **Records.** The tool, run in this tree at 0.120.0, `BROKEN RECORDS: 0`,
+  `UNCOVERED LINES OF THE SEARCH SET: 0 of 1917` and exit 0, recorded on its
+  exit 0 outcome. The self-test at 0.120.0, `SELF-TEST PASSED: 88 cases; of
+  the 74 messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none`, recorded on its outcome.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
