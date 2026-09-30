@@ -637,7 +637,8 @@ put; it does not stand in for the question. Since 28 September 2026 the install 
 state and the skills run the install where it says yes — **The install guard
 reads a record** below says how — and the question that writes it stands in
 `setup-project` step 4 since the same day, version 0.115.0, and in the empty
-case since 0.118.0: a project set up before either carries no record, and
+case since 0.118.0, as question 4 until 1 October 2026 and as question 3
+since: a project set up before either carries no record, and
 there the guard blocks every such install with that cause and the person runs
 it themselves, as before.
 
@@ -673,8 +674,8 @@ one of them", and the runtime item under its "Open"; "Where the set ends" in
 the same file, "unless that permission names runtimes as a kind, which is
 open below"; `build-work` step 3 point 7, "a compiler, a runtime, a tool from
 a package manager" — and, since the question was built the same day, version
-0.115.0, question 4 of `setup-project` step 4, which says the boundary as
-this ruling asks.
+0.115.0, question 4 of `setup-project` step 4 — question 3 since 1 October
+2026 — which says the boundary as this ruling asks.
 
 **The first kind is a tool, not a tool for a check class.** Ruled on 28
 September 2026, for the same build. Anything that runs and ends — a linter, a
@@ -693,7 +694,11 @@ classes today and change when milestone 3 is built, changed on 28 September
 "Never install anything system-wide without asking" and now installs under a
 record saying yes, a decline still making the class `skipped`;
 `setup-project` step 4 question 3, "Ask separately whether missing tools
-should be installed", which now says where a no leads; the install guard's
+should be installed", which said where a no leads from that day until 1
+October 2026, version 0.122.0, when the mapping of tools to classes and that
+question left `setup-project` for `setup-checks` steps 1 to 3 alone — the
+sentence on where a no leads standing in its step 3, and the setup filling no
+class and installing nothing since; the install guard's
 own message, which names the cause of the block since 28 September 2026 and
 named the two costs of a decline until 29 September 2026, when it was cut to
 the approved wording of that day, which says only that what a decline costs
@@ -1250,7 +1255,8 @@ that rule. Since 28 September 2026 the guard reads the record and passes what
 it allows, and every skill that used to hand an install over runs it where
 the record says yes — the paragraph after next says how; the record is written
 by the question at setup, question 4 of `setup-project` step 4 since the same
-day, version 0.115.0, in the empty case since 0.118.0, and lands with the
+day, version 0.115.0, in the empty case since 0.118.0, question 3 since 1
+October 2026, and lands with the
 setup, so a project set up before either carries no record: there the guard
 blocks with that cause and the person runs it, as the skills say for that case. What does not move either way is the
 backing: the command is backed before it runs, whoever runs it — the vendor's
