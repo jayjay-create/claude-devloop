@@ -190,8 +190,9 @@ the install record says yes**, read where the guard reads it: the section
 as last fetched, which the session-start line printed, never the working tree.
 Under a yes, run the backed command yourself, with the user there and with
 nobody there, without asking again; the guard passes it where every place it
-lands is one the record names and blocks it otherwise, and "A guard's block is
-not a decline" above says what follows a block. The class counts as filled only
+lands is one the record names or the answer of a route it names, and blocks it
+otherwise, and "A guard's block is not a decline" above says what follows a
+block. The class counts as filled only
 once the tool stands at the path the installer writes to, never where
 `command -v` finds one. Report the command as it ran, what came back, what
 stands at that path, and what the package manager did besides — it updates
@@ -200,7 +201,8 @@ request body that lands the class, step 7's or the build's where this skill was
 called for one class, and write the standing fact into `environment.md`. A
 compiler or a runtime, anything needing `sudo`, anything piping a script from
 the network into a shell, and anything landing outside the places the record
-names stay the user's under every answer. Where the record says no, or was
+names and the directories its routes answer stay the user's under
+every answer. Where the record says no, or was
 never written, never install anything system-wide without asking, and say
 plainly that it reaches beyond this project. If the only candidate for a class
 needs a system install and the user declines — or, with nobody there, the

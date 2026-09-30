@@ -5,7 +5,7 @@ application or tool that runs on this machine: started by the run, its answer
 read, its look recorded, and handed to you with one action. Today it gets as
 far as merged, reviewed code; the road from there is `docs/plan.md`.
 
-Twelve skills covering the main path. It has been exercised on six throwaway
+Twelve skills covering the main path. It has been exercised on throwaway
 projects across five stacks — Python, TypeScript, Kotlin, Go and Rust — once
 with nobody watching. The side paths — triaging incoming reports and finding
 refactor candidates — are not built yet. Read "What is missing" before you
@@ -230,6 +230,13 @@ once per branch, push, then, from an ordinary command line:
 That is how 0.80.0 was raised to 0.81.0, without uninstalling. Anthropic's
 plugin reference points out that these subcommands are meant to run from your
 own terminal and are in part without effect inside a session.
+
+A pull request into main merges only once the check `stock-take` is green: a
+workflow under `.github/` runs the stock-take and its self-test on the merged
+state, and the branch protection on main requires that check, for admins too,
+so `gh pr merge` is refused while it is pending or red. The entry of 29
+September 2026 in `docs/roadmap.md` on the merge gate carries the setting and
+the merge sequence.
 
 The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
 update`, `/plugin install`.

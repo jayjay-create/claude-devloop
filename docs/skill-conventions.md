@@ -118,7 +118,7 @@ check under "Before a handover, run these" holds the twelve copies of that one
 paragraph together, because it is the one thing that cannot come from the
 shared source.
 
-**What is shared today** is of two kinds, and `ls shared/` is the list. The
+**What is shared today** is of three kinds, and `ls shared/` is the list. The
 first is what stood byte-identical in more than one skill on 17 September 2026
 and was moved on 18 September without a word changed. The second came the same
 day in a second step: the places that said one thing in several wordings were
@@ -127,7 +127,11 @@ did not carry it was inserted there too. Each of those was a decision of its
 own, taken under "A field is not an answer to a question it was not asked",
 where the rule about copies hands off; what a skill says beyond the shared
 text — the consequence that holds on its path alone — stays written in that
-skill, under the inserted line.
+skill, under the inserted line. The third is a rule written once, on the day
+it is written, for the skills that share its situation, never a copy and never
+a settled wording: `shared/rule-not-written-down.md`, 27 September 2026,
+inserted into `review-changes` and `build-work`, and "A project's rules are
+written at the review's close" below says why it stands there.
 
 ## Numbered steps where order matters
 
@@ -657,7 +661,7 @@ is genuinely needed, that moment has a person in it: the stack is chosen with
 them — in Stage 1 once milestone 8 puts it there; today nothing picks it, as
 the roadmap records under "How the stack gets chosen" — and a task that turns
 out to need a language the spec did not choose is a task not buildable as
-cut, the fourth case under "With nobody there" in `build-work`. What it
+cut, the fifth case under "With nobody there" in `build-work`. What it
 costs: a check tool that needs a second runtime falls to the person, unless a
 route without one exists — `brew` where the tool has a formula — and
 `setup-checks` step 3 has to say so; and the stage where the person picks the
@@ -738,7 +742,13 @@ ends on, and every run recorded under an earlier one names a version main
 never carried. `scripts/devloop-version-guard`, registered in
 `.claude/settings.json` of this repository, blocks the second raise and names
 the three numbers; the entry of 29 September 2026 in `docs/roadmap.md` has
-the case that taught it.
+the case that taught it. And a pull request into main lands only once the
+check `stock-take` is green: `.github/workflows/stock-take.yml` runs
+`scripts/devloop-stock-take` and its self-test on the merged state, and the
+branch protection on main requires that check, for admins too, since 29
+September 2026, so `gh pr merge` is refused while it is pending or red; the
+entry of that date in `docs/roadmap.md` on the merge gate carries the setting
+and the merge sequence.
 
 ## Writing long files
 
@@ -1428,8 +1438,10 @@ first, `npm install puppeteer` fails the first, `npx playwright install` and
 which is what **A hook cannot see consent** below asks of any difference a
 guard leans on. And it is worth catching only together with that destination,
 read from the vendor and entered in the record's list of places, which is
-what the person's answer covers — the question names the kind of place and the
-record carries the list, since the draft was amended on 28 September 2026: the
+what the person's answer covers — the record carries the list, and the
+question, which named the kind of place a yes opens from 28 to 30 September
+2026, says since version 0.119.0 only that such programs land outside the
+project on this machine: the
 place list names bin directories and `/opt/`, and a browser is not a binary
 in one of them, so a catch without the destination produces a block under
 every answer, and the driver's destination never appears in what the person

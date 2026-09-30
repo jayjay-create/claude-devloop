@@ -104,7 +104,7 @@ in their language.
 Say what is about to happen here, in one or two sentences: you set this
 repository up — look at what is already in it and write five short files
 recording where tasks live and how to check whether something is broken — and it
-takes a few minutes and two or three questions.
+takes a few minutes and a few questions.
 
 **Do not introduce the workflow itself, and name no stages.** Whoever arrives
 here either typed the command or said what they wanted built one message ago,

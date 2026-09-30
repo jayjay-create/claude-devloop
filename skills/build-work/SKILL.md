@@ -81,8 +81,8 @@ issue raised and the next task taken; a refused arming ends the run instead.
 
 The block above says that what a run does with a question the test lets through,
 when nobody is there, is written in each skill's own words. In this skill it is
-written in four places already, and this section names them so they are read as
-one rule and not as four:
+written in five places already, and this section names them so they are read as
+one rule and not as five:
 
 - **Which task next** — step 2. Not a question in either mode; the rule there
   decides it and says why the same rule serves both.
@@ -101,7 +101,7 @@ one rule and not as four:
   run installs, as with the user there.
 
 **A question about the work itself that comes up inside a task and passes the
-test** — a choice the task rests on that the spec did not make — is the fourth
+test** — a choice the task rests on that the spec did not make — is the fifth
 case and gets the same answer as the second and third, not the planning stage's
 order of taking the less committing option. A task is cut from a spec, and a
 task that turns out to need a decision the spec did not take is a task that is
@@ -110,7 +110,7 @@ they are seen, labelled `raised-here` and `needs-human`, recorded as a blocker;
 the task is put down; step 2 takes the next. Measured on 13 September 2026 in a
 test project, with the user there: a run laid out two ways to build a task and
 waited. The test under "How to ask" already said that was not a question, since
-both ways were cheap to redo; this fourth case is for the one that is not.
+both ways were cheap to redo; this fifth case is for the one that is not.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
 
@@ -319,8 +319,9 @@ The subagent:
    default branch as last fetched, which the session-start line printed, never
    the working tree. Under a yes, run the backed command yourself, with the
    user there and with nobody there, without asking again; the guard passes it
-   where every place it lands is one the record names and blocks it otherwise,
-   and "A guard's block, with nobody there" above says what follows a block.
+   where every place it lands is one the record names or the answer of a route
+   it names, and blocks it otherwise, and "A guard's block, with nobody there"
+   above says what follows a block.
    Read the result off the path the installer writes to, never off
    `command -v`, and report it in two places, because they are two duties: the
    standing fact about running this project goes into `environment.md` under
@@ -333,8 +334,9 @@ The subagent:
    portable Ruby, updated two taps and ran a cleanup, none of it asked for,
    which is why that last part is in the report. A compiler or a runtime,
    anything needing `sudo`, anything piping a script from the network into a
-   shell, and anything landing outside the places the record names stay the
-   user's under every answer; through a package manager the guard sees the
+   shell, and anything landing outside the places the record names and the
+   directories its routes answer stay the user's under every answer; through
+   a package manager the guard sees the
    verb and not what is installed, so a yes to tools also passes `brew install
    node`, and that is a rule on this run rather than a wall: do not install a
    runtime under it. Where the record says no, or was never written, the
