@@ -1392,9 +1392,9 @@ landed on `origin` but not yet fetched blocked, then passed after the fetch.
 `npm install -D playwright` and `npx playwright install` exit 0 as before, the
 second being the drivers half. Not measured: the two runs on a bench that
 milestone 3 ends with, one under a yes and one under a no, from the installed
-copy. Nothing here has run on a bench, the runs are not recorded in
-`docs/stock-take.tsv`, and the question that writes the record, built the
-same day, has been put to nobody. Measured again on 29 September 2026 against
+copy. Nothing here had run on a bench that day, the runs were not recorded
+in `docs/stock-take.tsv`, and the question that writes the record, built the
+same day, had been put to nobody. Measured again on 29 September 2026 against
 the working tree, the same way, with the eleven routes, five records and a
 `.venv` present and absent, and later that day with `pipx`, `yarn`, `bun` and
 `pnpm` standing on the machine, seven records, `bun` given a manifest by hand
@@ -1403,8 +1403,11 @@ date carries every command and what came back, and `docs/stock-take.tsv`
 carries the runs under version 0.116.1: the ten of the later measurement as
 recorded, and the nineteen of the earlier one re-anchored from 0.116.0 on 29
 September 2026, since the squash merge of pull request #141 landed only
-0.116.1 and no shipped file changed between the two numbers. Still nothing on
-a bench.
+0.116.1 and no shipped file changed between the two numbers. On a bench, on
+30 September 2026 under 0.120.0, two attended runs of the setup, one under
+each answer, in `devloop-test-s` and `devloop-test-t`: the question and the
+record walked, the guard against a landed record not, the entry of that date
+in `docs/roadmap.md` saying why.
 
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how

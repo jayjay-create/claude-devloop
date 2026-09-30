@@ -7459,6 +7459,535 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the 74 messages this tool rejects, refuses or answers with, read off its own
   source, 74 are asserted by a case and 0 by none`, recorded on its outcome.
 
+- **The two runs milestone 3 ends with, both on 30 September 2026 under
+  0.120.0 and both attended: the record saying yes in `devloop-test-s`, the
+  record saying no in `devloop-test-t`; what they establish, what they do
+  not, and the findings read off them; 30 September 2026, version 0.120.1.**
+  On `task/milestone-3-runs`, off `cd043f1`.
+
+  **What ran, and what this entry was read off.** The installed copy that
+  ran both was 0.120.0: `installed_plugins.json` carries that version with
+  `gitCommitSha` `cd043f1` and a last update at 07:57:58 UTC on 30 September
+  2026, eight seconds before the first repository was created, and the diff
+  under "Before you change anything, run this" over the five shipped
+  directories is silent against the tree at `cd043f1`, read again for this
+  entry. Both repositories are private, on GitHub, and still stand; this
+  entry read them through `gh` on 30 September 2026: metadata, commits, pull
+  requests with bodies and commits, issues with bodies and comments, labels,
+  and the files on `main`. The transcripts of the two sessions were not read.
+  What only a transcript carries — what the run said, in which form, and in
+  which order — stands here as the order's account and is marked as such;
+  what the repositories and this machine show stands as read.
+
+  **The yes run, `devloop-test-s`.** Created at 07:58:06 UTC with a Go
+  skeleton, `go.mod` and `cmd/wordcount/main.go` printing a placeholder. The
+  person answered yes to the install permission, yes to installing the two
+  missing tools, no to auto-merge. The order's account of the sequence:
+  `setup-project` filled the check classes itself, `gofmt`, `go vet`, `go
+  test` and `gitleaks` standing on the machine already; `govulncheck` and
+  `gosec` were missing and were installed under the permission; the setup
+  landed; `plan-work` produced a spec; `cut-into-tasks` made two tasks;
+  `build-work` built the first test-first; `review-changes` ran five lenses;
+  the findings were fixed or filed; the pull request was handed to the person
+  because auto-merge is off. What the repository shows, in the order of its
+  timestamps. Pull request #1, "Set up devloop for this repository", one
+  commit at 08:05:58 UTC, merged at 08:09:29 UTC by hand, its body naming six
+  classes filled — `format`, `lint`, `unit`, `secrets`, `dependencies`,
+  `code-security`, with `gofmt`, `go vet`, `go test`, `gitleaks`,
+  `govulncheck`, `gosec` — `types` skipped since Go typechecks at build and
+  test time, `integration` and `end-to-end` skipped, auto-merge declined, no
+  protection and no required check on `main`. `checks.md` on `main` carries
+  those nine rows, `dependencies` at five seconds and `code-security` at one,
+  and under "What these checks do not cover" the line that `gosec` and
+  `govulncheck` were only just installed and have not been exercised against
+  real findings. The `Makefile` calls `govulncheck ./...` and `gosec ./...`
+  by their bare names. `environment.md` carries the gate reading — the
+  classic endpoint answering "Branch not protected", the rulesets endpoint
+  answering none, auto-merge off, merges held by the question at the end of a
+  build — and the record, read back:
+
+      install-tools: yes
+      install-place: /usr/local/bin
+      install-place: /usr/local/sbin
+      install-place: /opt
+      install-place: ~/.local/bin
+      install-place: ~/bin
+      install-place: ~/go/bin
+      install-route: go
+      install-answered: 2026-09-30
+
+  The seven labels of `issue-tracker.md` stand beside GitHub's ten defaults.
+  Issue #2, "Word count CLI tool", opened at 08:10:49 UTC, carries the spec
+  in its body and three stage comments, Stage 1 at 08:17:36 UTC, Stage 2 at
+  08:17:49 UTC, Stage 3 at 08:18:36 UTC; the tasks #3 and #4 at 08:19:55 UTC.
+  Pull request #7 for task #3, two commits at 08:22:58 and 08:28:13 UTC,
+  merged at 08:32:54 UTC by hand: its body carries a `Guarded conditions`
+  list of six, each with the break, the red and the restore; the five
+  applicable lenses named as run; the findings fixed in the branch; two
+  filed as issues #5 and #6, both carrying `raised-here` and each saying why
+  it exceeds the task; and task #4 narrowed, its file-error half having
+  landed with #3. On this machine `~/go/bin/govulncheck` and `~/go/bin/gosec`
+  carry the timestamp 10:04 CEST, 08:04 UTC, two minutes before the commit of
+  pull request #1. The PATH of the shell the harness runs commands in carries
+  no `~/go/bin`, read for this entry, and `command -v` finds neither tool in
+  it today.
+
+  That timestamp settles one thing the order's account leaves open. The two
+  tools were installed before the record had landed: the commit that carries
+  the record came two minutes later, the merge four minutes after that, and
+  `hooks/pre-tool-use-install-guard.sh` reads the record off `origin/main` as
+  last fetched and nowhere else. So the guard did not pass those installs
+  under a record saying yes. It produced one of its two other outcomes: a
+  silent exit where `docs/agents` did not yet exist in the tree, which
+  `setup-project` step 6 creates after the questions, or a block naming no
+  `environment.md` on `origin/main`, after which the commands were run by
+  someone — which of the two is in the transcript. Pull request #7 carries no
+  install report beside its `Guarded conditions`, which `build-work` step 3
+  point 7 requires where the build installs, so the build installed nothing.
+  No install in this run met the guard with the record in front of it.
+
+  **The no run, `devloop-test-t`.** Created at 08:33:32 UTC, the same shape
+  with `cmd/greet`. The order's account: `govulncheck` and `gosec` were moved
+  aside on the machine first, so they were genuinely missing; the person
+  answered no to the install permission, no to installing the two tools, no
+  to auto-merge; the run handed over both commands, backed, naming where they
+  land, and carried on. What the repository shows: pull request #1, "Set up
+  project for devloop", one commit at 08:38:52 UTC, merged at 08:40:58 UTC by
+  hand, its body saying `dependencies` and `code-security` are skipped
+  because the two tools are not installed and the permission was declined,
+  and that auto-merge cannot be armed and the merge is by hand. `checks.md`
+  on `main`:
+
+      | dependencies | - | - | - | - | no | skipped: govulncheck not installed, install permission declined |
+      | code-security | - | - | - | - | no | skipped: gosec not installed, install permission declined |
+
+  `types` is `filled` there with `go build ./...`, where the yes run skipped
+  it; both readings stand under `setup-checks` step 1, which skips a type
+  class where another class already catches the same errors, and the two
+  runs judged that differently on the same stack. The record on `main`
+  carries `install-tools: no`, the same six `install-place` lines, `install-
+  route: go` and `install-answered: 2026-09-30`. No issue and no other pull
+  request exist: the run ended at the setup. The directory `~/go/bin` carries
+  a modification time of 10:41 CEST, 08:41 UTC, right after that merge, which
+  fits the two tools being moved back. So nothing in this run met the guard
+  with a record saying no in front of it: no command reaching outside the
+  repository was run after the record landed, and the block the guard
+  produces on `install-tools: no` fired nowhere. The decline the run walked is
+  question 3's, with the person there, before any record existed, and the two
+  commands handed over backed are in the transcript alone.
+
+  **What the two runs establish.** The question of `setup-project` step 4,
+  put twice and answered once each way, and the record written by step 6 and
+  landed by step 8 in the shape `bin/devloop-install-record` reads, both
+  answers read back off `main`. A yes at setup followed by the two tools
+  standing under `~/go/bin`, the directory `install-route: go` opens on this
+  machine, and the check classes they fill written `filled`. A no at setup
+  followed by the two classes written `skipped` with that reason, not `empty`
+  — written by `setup-project` itself, since `setup-checks` was never called.
+  Everything after the setup in the yes run: a spec, two tasks, a build
+  test-first with the six conditions broken and restored, five lenses, two
+  findings filed, a pull request handed over under auto-merge off. And that
+  the whole of it ran from the installed copy at 0.120.0, identical to the
+  tree.
+
+  **What they do not establish, said plainly.** The unattended half of
+  milestone 3 was never exercised: the mode was never offered, for the reason
+  under C below, so no install with nobody there has happened and no record
+  has been read by a run with nobody there. The guard's pass under a record
+  saying yes was not exercised, since the installs ran before the record
+  landed. The guard's block under a record saying no was not exercised, since
+  nothing ran after the record landed. No build installed a tool: the setup
+  did, in the window before the record. The session-start line printing the
+  record was not read: whether the second session of the yes run printed it
+  is in that transcript. And the form the question arrived in did not hold,
+  under G below. So milestone 3's end — "the record saying yes, a build
+  installing a tool unattended, the guard passing, the tool standing at the
+  path; the record saying no, the guard blocking, the decline path as today"
+  — is met by these two runs in neither half. What they walked is the
+  question, the record and the two decline paths at setup, with a person
+  there, and that is what the milestone can claim; the guard against the
+  record, the build's install and the unattended install it cannot.
+
+  **The findings.** Eleven were handed to this order and each was
+  established against the files; two were already recorded and stand, nine
+  are recorded here, and one more was found while establishing the yes run.
+  Nothing is repaired in this change.
+
+  **A. The boundary sentence arrived as an assurance again, twice.** The
+  order's account: both runs produced a sentence of the shape "compilers and
+  runtimes stay your decision" right after the sentence naming the leak, and
+  cancelling it. The entry of 30 September 2026 above, version 0.120.0,
+  rewrote the third point of question 4 so that the boundary stands inside
+  the leak as its object — "that compilers and runtimes stay theirs under
+  every answer is a rule on the run and not a wall" — and said that whether
+  that holds under compression was not known from that branch. It is known
+  now: both runs, under 0.120.0, lifted the boundary out again as a sentence
+  of its own. The skill's text is the repaired one; the defect the repair
+  answered stands recorded in the entry above with its evidence on the
+  repaired heading, and the tool reads it as built. Recorded, not built: the
+  repair of point 3 of question 4 made on 30 September 2026 did not hold in
+  either run of that day at 0.120.0, the boundary arriving lifted out of the
+  leak as an assurance the guard does not give; what should hold is that the
+  leak reaches the person or nothing about runtimes does, which no wording of
+  the prose above the widget has managed in four runs. The roadmap, searched
+  for `lifted`, `did not hold` and `under compression`, names this nowhere
+  but in the sentence of the entry above that left it open.
+
+  **B. A tool can be installed and still not runnable.** The order's account:
+  both tools stood in `~/go/bin` and `command -v` found them, but that
+  directory was not on the PATH of the shell `make` runs in, so the check
+  chain was red with "No such file or directory" while nothing was missing.
+  Established: `~/go/bin` is what `go env GOPATH` plus `bin` answers here,
+  the PATH of the harness's shell carries no such entry, and `make` runs its
+  recipes in a shell inheriting that PATH, so `govulncheck ./...` in the
+  `Makefile` fails before the tool runs, with `make`'s own message. Whether
+  the run's `command -v` found them is the transcript's; in the harness's
+  shell today it does not. The duty about a red that does not come from the
+  broken code stands in `setup-checks` step 5: "And the red has to come from
+  the broken code. A target that goes red because the tool is not installed,
+  or because the command was refused before it ran, proves nothing about the
+  target"; read the output before writing `filled`, and where the command did
+  not run, say so with the command and the message. It was never in front of
+  the run: `setup-checks` was not called, under C. Where the run stood, the
+  nearest duties are `setup-project` step 6, `filled` only where the target
+  "calls a real checking tool, and you have run it once", and
+  `shared/command-does-not-answer.md`, an error is an answer read for what it
+  says. What the repository shows: both classes stand `filled` with a
+  duration, which step 6 lets the run write only after running the target
+  once, so either the targets ran at some moment in a shell where the two
+  names resolved or the rows were written without it; the `Makefile` still
+  calls the bare names, `environment.md` says nothing about `~/go/bin` or
+  PATH, and pull request #1's body says nothing about the red. So the red
+  was got past in the session and left in the repository for the next shell,
+  and the standing fact — that the two tools are found only where `~/go/bin`
+  is on PATH — was written nowhere,
+  which `build-work` step 3 point 8 and `setup-checks` step 3 both put into
+  `environment.md`. Not discharged where it counts. Recorded, not built: the
+  yes run's check chain went red on `govulncheck` and `gosec` not found on the
+  PATH `make` runs under, was got past in the session, and left `Makefile`
+  and `environment.md` of `devloop-test-s` saying nothing about how the two
+  are found; what should hold is that a red from a tool not on the PATH is
+  read as that, and the fact that closes it — the directory on the PATH, or
+  the target naming the path the installer wrote to — lands in the repository
+  where the next shell and the next person meet it. The roadmap, searched for
+  `PATH of the shell`, `No such file or directory` and `not runnable`, names
+  this nowhere: the first finds the guard's own PATH under the eleven routes,
+  the second the installed-copy check, the third nothing.
+
+  **C. The unattended mode cannot be reached in a project like this.** The
+  offer stands in `setup-checks` step 8 and nowhere else — `grep -rn -i
+  "offer.*unattended" skills shared` finds that heading alone. `setup-project`
+  step 9 calls `setup-checks` where classes are still `empty` and enough code
+  is there to check, and otherwise carries on into planning; step 6 lets the
+  setup write `filled` itself where the target exists, calls a real tool and
+  has run once. A project whose setup decides every class, as both runs did,
+  never calls `setup-checks`, and the offer never comes; `plan-work` at the
+  end of Stage 1 then reads the four preconditions, finds no gate, and does
+  not ask, and says the question is not asked where the mode was never
+  offered. The one later route to the offer is a build calling `setup-checks`
+  for a single class with the person there, since that call skips step 7 and
+  nothing says it skips step 8; nothing says that route is meant, and neither
+  run met it. What else is lost with the offer, read off `setup-checks`:
+  step 3's naming of the check commands as something to grant, which the
+  permissions passage of
+  `setup-project` step 0 says that skill does where it writes them; step 4's
+  introduction of a class in stages; step 5's proof that every target can
+  fail — break, red, restore — and its duty about a red that does not come
+  from the code, under B; step 6's duration from the run just made and the
+  rewrite of "What these checks do not cover" against the table as it stands;
+  step 8's reading of the gate, its refusal to build one without a blocking
+  class, the six things a yes leads to, the hint on keeping the machine awake,
+  the record of the answer in `environment.md` either way, and on a yes the
+  workflow file, the protection and auto-merge. Recorded, not built: a
+  project whose setup fills every class itself never reaches `setup-checks`,
+  so the offer of the unattended mode in its step 8 and the duties of its
+  steps 3 to 8 are never met, and the mode cannot be reached from that
+  project afterwards; what should hold is that the offer and those duties
+  stand on the path every project takes whose suite is complete, whichever
+  skill completed it. The roadmap, searched for `never called`, `fills the
+  classes` and `offer never`, names it nowhere.
+
+  **D. The planning issue was empty at re-entry.** The order's account: a
+  session worked through Stage 1 in the chat, the next session read the
+  issue, found nothing, and began again without noticing it was beginning
+  again. What the repository shows: issue #2 opened at 08:10:49 UTC, its
+  first comment, Stage 1's, at 08:17:36 UTC, seven minutes later and thirteen
+  seconds before Stage 2's. What `plan-work` says: "After each stage, post
+  that stage's output as a comment", and Stage 1 posts once, at its end,
+  after the mode question and the mark — "Post the settled answers and the
+  hard core as a comment on the planning issue before moving on". So by the
+  skill's own order nothing of Stage 1 is on the issue until the whole stage
+  is closed, and a session ended anywhere inside it leaves the issue as the
+  placeholder. Whether that session ended before that point or the run
+  skipped the post is not established: the transcript was not read, and the
+  repository cannot tell the two apart. Recorded that way. The second half
+  stands either way: "Picking up an interrupted plan" says to read the issue
+  and its comments, say which stage was last finished, and continue at the
+  next; an issue with no comment means no stage was posted, and the skill
+  asks for that to be said — the account says it was not, and that nothing
+  was drawn from it. Recorded, not built: `plan-work` posts Stage 1 to the
+  planning issue once, after the mode question, so a session ended inside
+  Stage 1 leaves the issue empty, and the pick-up in `devloop-test-s` on 30
+  September 2026 found it empty and began Stage 1 again without saying that
+  it was — whether the post was skipped or the session ended first is not
+  established; what should hold is that the settled answers reach the issue
+  before the mode question, and that a pick-up which finds a `being-planned`
+  issue with no stage comment says so and says it is starting Stage 1 again,
+  so that whoever sat through it once can say so. The roadmap, searched for
+  `empty issue`, `began again` and `no stage comment`, names it nowhere.
+
+  **E. The record carries the six places and the route under a no.** By
+  design: step 6 says the six `install-place` lines are "written as they
+  stand here under either answer, so that the file says what a yes would open
+  where the answer is no", and the route lines "are written under either
+  answer, like the places". The session-start line then prints, under a no,
+  `tools: no | places: /usr/local/bin … ~/go/bin | routes: go`, and nothing
+  in the line or the record says that those are what a yes would open. They do
+  nothing under a no, since the guard blocks on `install-tools: no` before it
+  reads a place. Recorded, not built: under `install-tools: no` the record
+  and the session-start line list six places and a route with nothing saying
+  they are closed, so the line reads as though something were open; what
+  should hold is that under a no the record and the line say the places and
+  routes are what a yes would open, or carry none. The roadmap, searched for
+  `under either answer` and `as though something`, names it nowhere.
+
+  **F. The permissions passage at the start of `setup-project`.** Three
+  things in the order's account: it explains confirmations that may come
+  later and is forgotten by the time one does, the run carrying on without a
+  pause since there is nothing to decide; it says "this is not the unattended
+  mode" where no mode has been mentioned; it came out differently in each of
+  three runs. Established: the passage stands under "Permissions, before the
+  first command", says of itself that it is not a question and is said as
+  preparation, and puts its advice — choose "always allow" if a confirmation
+  comes up, or set it in `/config` — before the first command, because
+  "advice that arrives afterwards is too late"; so the moment it is said is
+  by design the moment nothing happens on it. Its last paragraph, "Say what
+  this is not, in the preparation itself", requires the words "this is not
+  the unattended mode" in a passage that stands before any mention of the
+  mode, so the term is introduced there to be denied. The recorded defect on
+  this passage, from the audit of 26 September 2026, was that it spoke of its
+  options and its yes while being no question, repaired at 0.119.0; neither
+  of these two is that. That it came out differently three times is the
+  transcripts', and "Describe what must be said; never dictate wording"
+  allows it; what the three deliveries had in common is not known here.
+  Recorded, not built: the permissions passage of `setup-project` step 0
+  arrives before anything can happen on it and is gone by the time a
+  confirmation comes, and it names the unattended mode only to deny it where
+  nothing has introduced the mode; what should hold is that the passage says
+  what a confirmation is and where the grant is set at the moment one can
+  come, and names no mode the person has not met. The roadmap, searched for
+  `Permissions, before the first command`, `preparation` and `introduce a
+  term`, finds the audit's defect on the options and nothing on these.
+
+  **G. The form did not hold.** The requirement since 0.119.0: question 4 in
+  prose, in the run's own message, and a choice widget after it carrying its
+  two answers and no other question. The order's account: in three runs — the
+  run in `devloop-test-p` under 0.118.0, recorded above, and these two under
+  0.120.0 — the question came as a tab beside "Auto-Merge", one submit. The
+  entry of 30 September 2026 above established that no text in the skills,
+  the shared files or the conventions reaches the form, that the transcript
+  alone shows it, and that a bench run reading the transcript is what catches
+  a run that does not meet it. That has now happened, twice, and both times
+  the requirement was not met. What that means for the requirement as it
+  stands: it is a sentence in the skill that a run meets or does not, with
+  nothing in the repository able to tell, and measured twice since it was
+  written it was met neither time; by the fifth of the five sentences of
+  `docs/plan.md`, a rule that does not hold in a run is rewritten, not
+  appended to, and a third approved wording of the same rule is the same
+  rule. Recorded, not built: the form named for question 4 on 30 September
+  2026 — prose in the run's message, a widget carrying its two answers and no
+  other question — was met in neither run of that day under 0.120.0, the
+  question arriving as one tab of a form beside auto-merge, and nothing in
+  the repository can read whether it was met; what should hold is a form the
+  run cannot fail to deliver, the four points written for the widget's own
+  slots and the call carrying this question alone, or a mechanism at the
+  call, since a sentence about the form has now been measured not to hold.
+  The roadmap, searched for `one submit`, `tab beside` and `did not hold`,
+  finds the entry above, which foresaw the measurement, and nothing that
+  records its outcome.
+
+  **H. Auto-merge is offered with a recommendation.** "Ja, einschalten
+  (Empfehlung)" in all three runs, by the order's account. Established: step
+  4's opening says "Lead with your recommendation so a single word can
+  answer; question 4 gives none", so the recommendation on question 2 is what
+  the skill asks for. The order calls it the set's rule that nothing reaching
+  past the project is recommended; no sentence of the set says that. What
+  stands is three instances: question 4 gives none; `setup-checks` step 8,
+  "Do not recommend a yes on a first project"; and `shared/how-to-ask.md`,
+  which says what reaches outside the repository is never cheap and is a rule
+  on asking, not on recommending. Question 2 reaches past the project — a
+  setting of the repository — and is one half of what the unattended mode
+  needs, which the question says itself, so a recommended yes is a
+  recommended step toward the mode, the confusion the permissions passage
+  above spends a paragraph preventing. Recorded, not built: question 2 of
+  `setup-project` step 4 leads with a recommendation to switch auto-merge on,
+  under the opening line of the step, while question 4 and the offer of the
+  mode give none, and the rule the order names is written nowhere; what
+  should hold is that question 2 gives no recommendation, as the two other
+  questions reaching past the project do, and that the step's opening says
+  so. The roadmap, searched for `Empfehlung`, `recommend` with `auto-merge`
+  and `reaching past the project`, names it nowhere.
+
+  **I. "Our labels."** Twice, by the order's account. The source is the
+  skill: question 6 says "map onto the existing ones, or add ours alongside",
+  and the person does not know who "we" is, for the same reason "A skill's
+  name is not said to the user" gives. Recorded, not built: the run of 30
+  September 2026 spoke of "our labels" to the person, and question 6 of
+  `setup-project` step 4 says "add ours alongside"; what should hold is that
+  the labels are named as this workflow's and by what they do, and the word
+  leaves the skill. The roadmap, searched for `ours alongside` and `our
+  labels`, names it nowhere; the defect that question 6 names five labels
+  where `issue-tracker.md` names seven stands recorded already and is a
+  different one.
+
+  **J. Reporting that the repository does not carry this workflow's labels is
+  noise.** Read here as the repository being set up, which has never met this
+  workflow; it is true of every such repository and step 6 creates the seven
+  in every setup, so the sentence changes nothing. Established: step 1 lists
+  "Existing labels in the tracker, if one is reachable" and step 2 says "Say
+  explicitly what you did not find", which produces it; what step 4 reads off
+  the labels is question 6's condition, labels with overlapping meaning, and
+  both repositories have GitHub's ten defaults, `wontfix` and `question`
+  among them. Recorded, not built: step 2 of `setup-project` reports that the
+  repository carries none of this workflow's labels, which holds for every
+  repository before its setup and changes nothing; what should hold is that
+  step 2 says what step 4 will act on — whether labels with overlapping
+  meaning exist — and not the absence of what step 6 creates. The roadmap,
+  searched for `did not find` with `labels` and `noise`, names it nowhere.
+
+  **K. `setup-checks` step 8 tells the person the run keeps going until
+  nothing it raised against its own work is still waiting**, while a declined
+  install becomes a `needs-human` issue that is still open when the run ends.
+  Already recorded: a finding of the stock-take made on 28 September 2026 on
+  that line of step 8, in `docs/stock-take.tsv`, with its should. Neither run
+  reached it: the mode was never offered, no build declined an install, no
+  `needs-human` issue exists in either repository. The runs change nothing it
+  says; it stands as written.
+
+  **L. Found while establishing the yes run: question 3 promises a block the
+  guard does not make before step 6.** Question 3 of `setup-project` step 4
+  says of a tool that lands outside the repository, during a first setup:
+  "the install record the guard reads … has not landed yet, so the guard
+  blocks the command and it is handed over, backed". The guard exits 0 before
+  reading anything where `docs/agents` does not exist — recorded in the
+  table as the silent pass where the project is not set up — and
+  `docs/agents` is created by step 6, after the questions. So an install
+  run between question 3's answer and step 6 meets no guard at all, and the
+  sentence is untrue for that window; and where step 6 has run, the guard
+  blocks with the reader's cause, no `environment.md` on `origin/main`, which
+  is a block and not the decline question 3 describes. Which of the two the
+  yes run met is the transcript's; that the tools were installed before the
+  record landed is the repository's. Recorded, not built: question 3 of
+  `setup-project` step 4 says the guard blocks an install during a first
+  setup, while `hooks/pre-tool-use-install-guard.sh` is silent until step 6
+  has created `docs/agents`, so the installs of the yes run of 30 September
+  2026 ran with no record landed and no guard established to have seen them;
+  what should hold is that a first setup hands the install over on the
+  ground question 3 gives, no record having landed, without leaning on a
+  block that comes only after step 6, or that the run installs nothing before
+  step 8 has landed the record, so that the first install a project meets is
+  one the guard reads. The roadmap, searched for `before step 6`, `docs/agents
+  does not yet exist` and `silent pass where the project is not set up`,
+  names it nowhere: the third finds the table's own row.
+
+  **Four more, from the same stretch of work, checked against the table.**
+  The merge guard's block message: `hooks/pre-tool-use-merge-guard.sh`
+  prints 618 words on `gh pr merge`, counted for this entry with `wc -w` over
+  the heredoc, the arming sequence, the three refusal cases, every value of
+  `mergeStateStatus` with what to do on each, `BEHIND`, the two gate queries,
+  and the handover; the same shape the install guard's message had at 337
+  words before the cut of 29 September 2026, and the rule drawn from that cut
+  covers what a hook prints into a session. Not recorded: the roadmap,
+  searched for `618` and for `merge guard` beside `words`, names it nowhere,
+  and the entry of 30 September 2026 on the rule names two texts, the install
+  guard's message and question 4. Recorded, not built: the block message of
+  `hooks/pre-tool-use-merge-guard.sh` stands at 618 words, grown the way the
+  install guard's grew and never read as a whole for the run that receives
+  it; what should hold is what "A text is as long as what carries the
+  decision" in `docs/skill-conventions.md` asks — read for the reader with
+  nothing else in front of it, held part by part, and cut to what the run
+  does differently for it. The seven causes of the install guard that join
+  the fixed text on two colons: recorded already, in the entry of 29
+  September 2026 on the cut and as a defect thing in the table; stands. That
+  `shared/how-to-ask.md` requires every question to say why it comes up now,
+  which the shortened question 4 does not: recorded already, in the entry of
+  30 September 2026 on the rule and as a defect thing in the table; stands.
+  The session-start line carrying the record reaches the run as context, not
+  the person: `docs/skill-conventions.md` says under "A hook cannot force
+  wording" that `SessionStart` stdout arrives as context, and the same file
+  under "The install guard reads a record" and the comment in
+  `hooks/session-start.sh` both say the line is what a second person who
+  cloned this repository meets before the first install; a person who clones
+  the project meets it only where the run repeats it, and nothing says the
+  run does. Not recorded: the roadmap,
+  searched for `as context`, `context, not the person` and `second person`,
+  names it nowhere. Recorded, not built: the session-start line printing the
+  install record arrives in the run's context and not in front of the person,
+  while the conventions and the hook's own comment call it what a second
+  person who cloned the repository meets; what should hold is either a place
+  where the run says it to the person, at its first turn in a project with a
+  record, or the three sentences saying that the run meets it and the person
+  does not. The stock-take rejecting evidence under `.github/`: recorded
+  already, as a finding in the table on the tool's location rule, from the
+  entry of 29 September 2026 on the merge gate; stands.
+
+  **Milestone 3 in `docs/plan.md`.** Its two sentences saying the runs have
+  not happened now say they ran on 30 September 2026, attended, and what of
+  the milestone the runs walked and what they did not; the sentence in
+  `docs/skill-conventions.md` under "The install guard reads a record" that
+  said still nothing on a bench now says the same. What of the milestone is
+  done: the question, twice, in a form that did not hold; the record, written
+  and landed under both answers and read back; the decline at setup, with a
+  person there, ending in `skipped` with the reason. What is not: the guard
+  against a landed record, under either answer, on a bench; a build
+  installing under the record; the unattended half whole; the refresh; the
+  drivers half. The milestone has not landed.
+
+  **Read through afterwards.** `docs/plan.md` read whole after the change:
+  "Where the set ends" says a tool landing outside the repository lands under
+  permission asked once at setup and recorded, which the two runs walked and
+  which stands; milestone 3's five parts stand as written with the account
+  beside them; milestone 4's "After 3, because the interface shape needs a
+  driver" stands, the drivers half being unbuilt; nothing else in the file
+  speaks of the runs. `grep -rn "not happened\|nothing on a bench\|put to
+  nobody" README.md docs skills shared`: the two sentences of milestone 3,
+  changed; the sentence of the conventions, changed; the sentence of 28
+  September 2026 in the conventions that the question "has been put to
+  nobody", inside a paragraph headed "Measured on 28 September 2026", which
+  stands as dated; `README.md` and `start-work` on other matters. `grep -rn
+  "the guard passing\|guard passing" docs README.md`: milestone 3's end
+  condition, as written on 19 September 2026, which this entry holds the
+  runs against and does not change. The dated entries of 28 to 30 September
+  2026 above that say the two runs have not happened stand as dated.
+
+  **Records.** A defect thing for each finding recorded here, sited and
+  evidenced on its line of this entry. The runs of 30 September 2026 under
+  0.120.0, source entry, on the things the repositories evidence: question 4
+  answered yes, in `devloop-test-s`; question 4 answered no with the person
+  there, in `devloop-test-t`; missing tools asked about separately, in both;
+  missing tools declined and the classes skipped with that reason, in
+  `devloop-test-t`; step 6's five files, the record among them, in both;
+  the route of the stack read and its line written, `install-route: go`, in
+  both; auto-merge found off and offered, in both, and declined in both,
+  every merge by hand since; both gate queries negative, no gate, in both;
+  step 8's
+  arming refused with auto-merge off, the case named and the merge handed
+  over, in both; and, from pull request #7 of `devloop-test-s`, a review
+  finding that exceeds the task filed as an issue with `raised-here`, twice.
+  Not recorded as runs, since the repositories cannot show them: the guard's
+  outcomes, the reader's, the session-start line's, the labels question, and
+  every line of the two sessions' own words. The thirty notes of the table
+  that said the two runs the milestone ends with have not happened now say
+  what each thing met on 30 September 2026: exercised, for the four the runs
+  walked, and walked the setup and not this, for the twenty-six they did not
+  reach. The tool, run in this tree at 0.120.1 after this entry, `BROKEN
+  RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 1931` and exit 0,
+  recorded on its exit 0 outcome; its counts over all files, things 1265,
+  straight paths 181, branches 582, other kinds 502, not-a-thing 979,
+  findings 6. The self-test at 0.120.1, `SELF-TEST PASSED: 88 cases; of the
+  74 messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none`, recorded on its outcome.
+
 
 ## Decisions taken against
 
