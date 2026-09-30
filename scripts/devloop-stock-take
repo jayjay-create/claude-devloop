@@ -45,7 +45,13 @@ docs/skill-conventions.md. Nearly every change to a skill touches an anchored
 line, so it would answer in the ordinary case, and "Before you change
 anything, run this" says what becomes of such a check: read once, explained
 away, skipped. It runs where the table is used, and after every rebase of the
-branch that fills the table.
+branch that fills the table. Since 29 September 2026 it also runs, with its
+self-test, on every pull request into main, in .github/workflows/stock-take.yml
+against the merged state, and that run is the check main requires before a
+merge - a setting of the repository, read off the platform and standing in no
+file; docs/roadmap.md, the entry of 29 September 2026 on the merge gate, has
+both halves, and the entry of 30 September 2026 on the audit records the
+first run.
 
 
 A. WHAT GOES IN
@@ -61,6 +67,13 @@ A. WHAT GOES IN
   pass, a block, an exit code, an output - never an internal condition. An
   internal condition is "part of" the outcome it leads to. This tool's
   outcomes are the cases of its self-test.
+- Every outcome of every workflow under .github/workflows/, each a thing of
+  kind program outcome: what the platform's run of it produces - the check
+  green or red, a refusal before the tool runs, a run cancelled or stopped -
+  never a step's internal condition. A workflow is a program the platform
+  runs on every pull request, as a hook is one the harness runs on every tool
+  call, so a fix standing in one is built; decided on 30 September 2026, in
+  the roadmap entry of that date on the audit.
 - Both outcomes of every command under "Before a handover, run these" and of
   the command under "Before you change anything, run this": the answer its
   section calls green, and any other. The green form is the record's note.
@@ -341,8 +354,8 @@ D. HOW STATES ARE COMPUTED
   so that the line stays covered and the entry's text stays as written.
 - Recorded, not built: the evidence lies under docs/ or in README.md, and the
   kind is not check command.
-- Built: the evidence lies under skills/, shared/, hooks/, bin/ or scripts/,
-  or the kind is check command, or the evidence lies under one of the two
+- Built: the evidence lies under skills/, shared/, hooks/, bin/, scripts/ or
+  .github/, or the kind is check command, or the evidence lies under one of the two
   check headings of docs/skill-conventions.md, "Before you change anything,
   run this" and "Before a handover, run these". The line is drawn around
   those two sections and not around the whole file because they are run -
@@ -404,6 +417,11 @@ E. THE SEARCH SET, FOR COVERAGE
   its own is never anchorable and its branch is anchored at its if, and a
   return is a function's straight path. The language is read off the first
   line.
+- Under .github/workflows/: the five shell words, and every line holding
+  run:, branches:, timeout-minutes: or cancel-in-progress:, the keys that
+  decide what a workflow runs and when. A step's run: line that repeats
+  another's opening, as the tool's step does the self-test's, can carry no
+  unique anchor and leaves the set as any such line does.
 - Under the two check headings in docs/skill-conventions.md ("Before you
   change anything, run this" and "Before a handover, run these"): every
   command block, as one item covered by an anchor on any of its lines.
@@ -507,7 +525,7 @@ KINDS = (
 )
 SOURCES = ("entry", "log", "none")
 STATES = ("Undetermined", "Recorded, not built", "Built, never walked", "Walked")
-SHIPPED = ("skills", "shared", "hooks", "bin", "scripts")
+SHIPPED = ("skills", "shared", "hooks", "bin", "scripts", ".github")
 RECORDED_IN = ("docs", "README.md")
 ZERO_HASH = "0" * 40
 REASONS = ("part of", "rationale", "quoted", "template", "no defect")
@@ -524,6 +542,8 @@ PROSE_WORDS = re.compile(
     re.IGNORECASE)
 SHELL_WORDS = re.compile(r"\b(if|elif|else|case|exit)\b")
 PYTHON_WORDS = re.compile(r"\b(if|elif|raise|exit|except)\b")
+WORKFLOW_WORDS = re.compile(
+    r"\b(if|elif|else|case|exit)\b|\b(run|branches|timeout-minutes|cancel-in-progress):")
 HEADING = re.compile(r"^#{1,6}\s")
 NUMBERED = re.compile(r"^\s*\d+\.\s")
 BOLD_LIST_HEAD = re.compile(r"^\s*[-*]\s+\*\*")
@@ -1130,16 +1150,20 @@ def search_set(files, root, only=None):
                   or NUMBERED.match(l) or BOLD_LIST_HEAD.match(l)
                   or BOLD_PARA_HEAD.match(l)):
                 items.append((rel, i, i, l))
-    for top in ("hooks", "bin", "scripts"):
+    for top in ("hooks", "bin", "scripts", ".github"):
         for rel in walk(root, top):
             if not wanted(rel):
+                continue
+            if top == ".github" and not rel.startswith(".github/workflows/"):
                 continue
             got = files.get(rel)
             if got is None:
                 continue
             lines = got[1]
             words = SHELL_WORDS
-            if top != "hooks" and lines and "python" in lines[0]:
+            if top == ".github":
+                words = WORKFLOW_WORDS
+            elif top != "hooks" and lines and "python" in lines[0]:
                 words = PYTHON_WORDS
             for i, l in enumerate(lines, 1):
                 if words.search(l):

@@ -111,8 +111,8 @@ set judged not to be a thing, the reason. No state is written down. The tool
 computes one of four states for every thing on every run, from the records
 and the git history: undetermined, where the evidence is empty; recorded and
 not built, where the evidence lies under `docs/` or in `README.md`; built and
-never walked, where it lies under `skills/`, `shared/`, `hooks/`, `bin/` or
-`scripts/` or under one of the two check headings of
+never walked, where it lies under `skills/`, `shared/`, `hooks/`, `bin/`,
+`scripts/` or `.github/` or under one of the two check headings of
 `docs/skill-conventions.md` and no run counts; walked, where a run counts. A
 run counts when the version it ran already contains the last change to every
 line the thing stands on, read off `git blame`; a run recorded in the roadmap
@@ -120,7 +120,8 @@ with no version does not count, and the runs that do not count are printed
 with their reason.
 
 The things: the twelve skills down to their branches, `shared/`, `hooks/`,
-`bin/` and `scripts/` down to their outcomes, the tool itself included; the
+`bin/`, `scripts/` and the workflow under `.github/` down to their outcomes,
+the tool itself included; the
 eighteen checks under "Before a handover, run these", seventeen until 28
 September 2026, and the check under
 "Before you change anything, run this", both outcomes of each; the twenty
@@ -139,7 +140,9 @@ that is the building milestone's work, not this one's.
 
 The search set is what makes the table checkable for completeness: every line
 under `skills/`, `shared/`, `hooks/`, `bin/` and `scripts/` that carries a
-condition word, a heading, a numbered item, a list head or a table row; every
+condition word, a heading, a numbered item, a list head or a table row, and
+under `.github/workflows/` every line that decides what a workflow runs and
+when; every
 command block under the two check headings; every entry head and status line
 under "Known gaps"; every row under "Named, not built as skills". A line of it
 that no record covers is reported, so a line nobody read is seen rather than
@@ -246,8 +249,11 @@ saying no, the guard blocking, the decline path as today.
 Built in part on 28 September 2026, version 0.114.0, and not landed as a
 milestone: the tools half — the record's form, the guard reading it off the
 default branch as fetched, the session-start line printing it through the same
-reader, and the four skill places running the install under a yes and
-reporting it in two places — stands as `docs/skill-conventions.md` describes
+reader, and, of the four skill places, the two that run the install under a
+yes and report it in two places, `build-work` step 3 point 7 and `setup-checks`
+step 3, while question 3 of `setup-project` hands the install over at a first
+setup, no record having landed, and the guard's message says the install is
+the user's to run — stands as `docs/skill-conventions.md` describes
 under "The install guard reads a record". The question followed the same day,
 version 0.115.0: question 4 of `setup-project` step 4, beside question 3, in
 the wording approved that day, with the record written into `environment.md`
@@ -337,8 +343,8 @@ auto-mode classifier lets a start command through unattended (the records are
 command, and which allow rule stood is recorded for neither);
 and who ends a server and a browser the run started. It defines "read
 mechanically" per shape: exit code and output; an answer on the port; state and
-text out of the page. It lays down the interface bench: none of the six benches
-has an interface, and this one needs a stack the person picks.
+text out of the page. It lays down the interface bench: no bench has an
+interface, and this one needs a stack the person picks.
 
 Ends with a dated entry that confirms or moves the boundary under "Where the
 set ends", shape by shape, every answer a measurement or marked as not

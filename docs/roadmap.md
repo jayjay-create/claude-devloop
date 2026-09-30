@@ -125,7 +125,13 @@ the ones with a plausible answer:
   times and never as a step, and every round has found false statements in this
   file. The rounds, by date rather than by "the round before this one": three in
   the first; four in a later one, three of those work recorded as run that had not
-  run; sixteen on 7 September 2026; five on 9 September 2026. **This sentence used
+  run; sixteen on 7 September 2026; five on 9 September 2026; sixteen on 26
+  September 2026, read against the tree at 0.109.0; fourteen on 30 September
+  2026, against 0.120.1. The findings the stock-take recorded at its close on
+  23 September 2026 are not a round of this check: they were read against the
+  tool's states over the whole set and stand in the table with a count the
+  tool prints, and a second copy of that count here is what this bullet warns
+  against. **This sentence used
   to stop at the round of four**, and it was written in the very commit that
   corrected the sixteen — so the largest round on record was missing from the
   tally that same day. Relative time is how it happened: "the round before this
@@ -695,7 +701,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   platform gate: a required check called `checks` run by a workflow on every
   pull request, with `enforce_admins` on, so it binds the account this workflow
   runs as. `devloop-test-o` carries the same shape now, so those two are the
-  gated benches and the other four have no gate at all. It was also the standing
+  gated benches and the others have no gate at all. It was also the standing
   bench for the stock-take — issue 8 open with pull request 14 closing it, the
   shape that went unseen — and is not any more: that pull request merged on 31
   August 2026 and closed the issue with it, and `gh pr list --state open` and
@@ -719,15 +725,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   all raised by review rather than by a person. It is the bench for anything
   wanting a fresh Go project. `devloop-test-n` is Rust, set up from nothing on
   25 August through the greeting and the permission step: four classes filled and
-  blocking, five skipped, and the only project where an install has been
+  blocking, five skipped, and the first project where an install was
   declined — `cargo-geiger` was chosen and refused, so `code-security` carries
-  that as its reason. `devloop-test-o` is Go again, a directory-report
+  that as its reason; `devloop-test-t` declined the second, on 30 September
+  2026, the entry of that date. `devloop-test-o` is Go again, a directory-report
   command-line tool set up from nothing on 31 August 2026 and worked through on 6
   and 7 September and again on 8 and 9 September: the only project whose gate this
   workflow built itself, classic protection over the required check `checks` with
   `enforce_admins` on, auto-merge on, private. It is the bench for anything to do
-  with the unattended mode, and the only one of the six where the mode is recorded
-  as available in `environment.md`.
+  with the unattended mode, and the only one where the mode is recorded as
+  available in `environment.md`.
 
   **Its state is read off the platform, and the reading has a date on it**, because
   this is the bench that moves. On 7 September 2026 it stood at two specs closed,
@@ -761,9 +768,23 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   ten pull requests after the setup one wrote `docs/agents/environment.md`,
   `checks.md` twice among them, one of them for the gate state alone, and three
   of them written unattended.
+
+  **Five more since 29 September 2026**, none of them described above:
+  `devloop-test-p`, empty, set up under 0.117.2 on 29 September 2026 with
+  step 4 skipped, its setup pull request open and unmerged; `devloop-test-q`
+  and `devloop-test-r`, empty, the two askings of the install question under
+  0.118.0 and 0.119.0 on 29 September 2026, each holding its initial commit
+  and nothing else; `devloop-test-s` and `devloop-test-t`, Go, the two runs
+  of milestone 3 on 30 September 2026, the yes and the no, the entry of that
+  date. None of the five has a gate, and `devloop-test-s` is the bench for a
+  Go project whose install record says yes.
 - **devloop's own repository is not set up with devloop.** There is no
   `docs/agents/` here, so the hooks this plugin ships stay inert while you work
-  on the plugin itself — including the main-branch guard.
+  on the plugin itself — including the main-branch guard. What guards work on
+  the plugin is not the plugin's hooks: since 29 September 2026
+  `.claude/settings.json` of this repository runs `scripts/devloop-version-guard`
+  after every edit, and main stands behind the required check `stock-take`, the
+  entries of that date.
 - **End-to-end testing has one worked-out approach and no second.** Running the
   compiled program as a subprocess and asserting on output and exit code, which
   has now been done. Anything that stays up — a service, an interface — still
@@ -776,11 +797,18 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   are still untested.
 
   What is on the machine these runs happen on decides what a run can still be
-  made to do, so it is worth knowing: Go, Java, Python, TypeScript and now Rust
-  are installed, as are `gitleaks` and `gosec`. A project in any of those will
-  not ask for an install, and cannot be used to exercise one. .NET, PHP and
-  Elixir are the ones still absent, and Ruby and Swift exist only as the system
-  versions under `/usr/bin`.
+  made to do, so it is worth knowing, and it moves. Read on 30 September 2026
+  with `command -v`: Go, Python, TypeScript and Rust are installed, as are
+  `gitleaks`, `shellcheck` since 28 September 2026 and `pipx`, `yarn`, `bun`
+  and `pnpm` since 29 September 2026; `gosec` and `govulncheck` stand under
+  `~/go/bin`, which is on no shell's `PATH` here; `java` answers only with the
+  system's stub asking for a runtime, and Kotlin has no command of its own,
+  the Kotlin bench running through its Gradle wrapper. A project in one of
+  those stacks asks for an install only where its tool is moved aside first,
+  which is how the decline of 30 September 2026 in `devloop-test-t` was
+  produced, the entry of that date. .NET, PHP and Elixir are the ones still
+  absent, and Ruby and Swift exist only as the system versions under
+  `/usr/bin`.
 - **The install guard does not see a wrapper that downloads on first use.** It
   reads the command, so `brew install` and its relatives are caught and a
   project-local dependency is not. `./gradlew` or `mvnw` fetching a toolchain
@@ -6877,7 +6905,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `task/empty-case-questions`, off `6e06fbf`.
 
   **What was observed, and what was recorded already.** The order of this
-  branch reports, as observed on 30 September 2026 in a fresh empty
+  branch reports, as observed on 29 September 2026 in a fresh empty
   repository, `devloop-test-p`: `start-work` reached `setup-project`, step 3
   found no code and skipped the whole of step 4, so the install permission
   question was never put, the project has no record, and the guard blocks
@@ -7011,7 +7039,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   four that carry the decision and the form named; 30 September 2026, version
   0.119.0.** On `task/install-question-shorter`, off `f2e6814`.
 
-  **What the run of 30 September 2026 produced.** In `devloop-test-p`, a fresh
+  **What the run of 29 September 2026 produced.** In `devloop-test-q`, a fresh
   empty repository set up with 0.118.0, the first time the question was put to
   anybody: three questions in one multiple-choice form, tabbed "Auto-Merge",
   "Labels" and "Tool-Installation", answered in one submit, and the install
@@ -7283,17 +7311,18 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   by a case and 0 by none`, recorded on its outcome.
 
 
-- **Question 4 of `setup-project` came out wrong twice on 30 September 2026,
+- **Question 4 of `setup-project` came out wrong twice on 29 September 2026,
   from two different texts, its surroundings pulling it toward a question
   about tools for check classes; the pulls that could be removed removed, and
   three things in the options that arrived in the run's own words stated at
   the point where the run writes them; 30 September 2026, version 0.120.0.**
   On `task/question-pulls`, off `4a2ef85`.
 
-  **What the two runs produced.** The first, in `devloop-test-p` under
+  **What the two runs produced.** The first, in `devloop-test-q` under
   0.118.0, the entry of 30 September 2026 above records: thirteen points, four
   lines in a form of three tabs, and a route named where there was no stack.
-  The second, the same day under 0.119.0, with the question cut to the four
+  The second, in `devloop-test-r` the same day under 0.119.0, with the
+  question cut to the four
   points that carry the decision: the bold heading of the third point
   transcribed as a statement, "Ein Ja hält nichts zurück", which is false,
   since a yes still blocks `sudo`, a script piped from the network into a
@@ -7782,7 +7811,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **G. The form did not hold.** The requirement since 0.119.0: question 4 in
   prose, in the run's own message, and a choice widget after it carrying its
   two answers and no other question. The order's account: in three runs — the
-  run in `devloop-test-p` under 0.118.0, recorded above, and these two under
+  run in `devloop-test-q` under 0.118.0, recorded above, and these two under
   0.120.0 — the question came as a tab beside "Auto-Merge", one submit. The
   entry of 30 September 2026 above established that no text in the skills,
   the shared files or the conventions reaches the form, that the transcript
@@ -7987,6 +8016,266 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   findings 6. The self-test at 0.120.1, `SELF-TEST PASSED: 88 cases; of the
   74 messages this tool rejects, refuses or answers with, read off its own
   source, 74 are asserted by a case and 0 by none`, recorded on its outcome.
+
+- **The consistency audit before the handover, run on 30 September 2026
+  against `f4f4dc9`, the tree at 0.120.1, and its fourteen disagreements
+  mended the same day, version 0.121.0.** On `task/audit-mends-0930`, off
+  `f4f4dc9`. The audit read `docs/plan.md`, `docs/skill-conventions.md`,
+  `README.md`, the undated parts of this file and the header of
+  `scripts/devloop-stock-take` against the skills, the hooks, `bin/`,
+  `scripts/` and the workflow, in both directions, and the notes of
+  `docs/stock-take.tsv`; its report stands outside the repository. What held:
+  the tool green with six findings; the self-test at 88 cases; eighteen
+  command blocks under "Before a handover, run these" and one under "Before
+  you change anything, run this", counted with `awk` over the indented blocks;
+  eleven named skills and nine names as notes against the twenty rows of the
+  table; the four greps of the handover section printing what the text beside
+  them says; main protected by the required check `stock-take`, `strict` and
+  `enforce_admins` on, read with `gh api
+  repos/jayjay-create/claude-devloop/branches/main/protection`; and every
+  cross-reference by step number. What did not, by weight: three wrong, eight
+  stale, three worded so they mislead. Each is mended where it stood, in that
+  document's words, against the command or the file that shows what holds, and
+  carries below the state the tool computes for it: a defect thing sited on
+  its line here, with the mended line as its evidence, which for a sentence in
+  a document reads recorded and not built, a document being a rule and not a
+  mechanism.
+
+  **Wrong.**
+
+  - The first asking of question 4 was placed in `devloop-test-p` on 30
+    September 2026 by three entries above and two notes of the table, and the
+    second on the same day. Established off the session logs under
+    `~/.claude/projects/`, by the rule under "A run's date is copied from the
+    session log of that run": `devloop-test-p` opened at 20:33 UTC on 29
+    September 2026 under 0.117.2, put one question, auto-merge, and skipped
+    the rest, and its open pull request carries the 0.117.2 marker and an
+    install-permission section reading "Not asked yet"; `devloop-test-q`
+    opened at 21:49 UTC the same day under 0.118.0, one minute after pull
+    request #145 merged, and put the three-tab form "Auto-Merge", "Labels",
+    "Tool-Installation" at 21:51 UTC; `devloop-test-r` opened at 23:18 UTC the
+    same day under 0.119.0, 42 seconds after #146 merged, and put the two-tab
+    form "Auto-Merge", "Install-Rechte" at 23:19 UTC, which is 01:19 CEST on
+    30 September, the log's own clock being UTC. Neither q nor r was named
+    anywhere in this repository before this entry, and each holds its initial
+    commit and nothing else. Seven places carried the wrong bench or the wrong
+    day, one more than the audit counted: the observation of the skip in the
+    entry of 29 September 2026 on the empty case, dated 30 September there;
+    the run and the bench in the entry of 30 September 2026 on the widget; the
+    head and the two benches in the entry of 30 September 2026 on the pulls,
+    whose defect thing in the table carried the date in its name and is
+    renamed with it; the bench under G in the entry of 30 September 2026 on
+    the two runs; and the notes of the widget defect and of the form defect in
+    `docs/stock-take.tsv`.
+    Recorded, not built: the first asking of question 4 stood in the wrong
+    bench on the wrong day in three entries, a thing name and two notes,
+    mended in all seven.
+  - The defect on the merge gate read as open, and both halves stand. The
+    workflow has run five times, on pull requests #144 to #148, every run
+    green in twelve to sixteen seconds; the check `stock-take` is required on
+    main since 29 September 2026 at 23:34 CEST, with `strict` and
+    `enforce_admins`, and held the merges of #145 to #148, `gh pr view` on
+    each showing `stock-take:SUCCESS`. What was open is narrower: the tool
+    rejected an evidence under `.github/`, so the workflow had no thing of its
+    own and its runs nowhere to go, the finding of 29 September 2026 on the
+    tool's location rule. Decided: `.github/` is a shipped directory for the
+    tool, a workflow being a program the platform runs on every pull request
+    as a hook is one the harness runs on every tool call, so a fix standing in
+    one is built; a workflow's outcomes are things of kind program outcome,
+    what the platform's run of it produces; and its lines enter the search set
+    by the keys that decide what it runs and when, `run:`, `branches:`,
+    `timeout-minutes:` and `cancel-in-progress:`, beside the five shell words.
+    Not a kind of its own, because the header already says an outcome is what
+    a program produces, and not a check command, because nobody runs it by
+    hand. The header's sections A, D and E say so. Nine things stand for the
+    workflow: it runs on every pull request into main, on the merge ref; a
+    later push cancels the run in progress; the stop at ten minutes; the
+    checkout step's printing of git, python, HEAD with its parents and
+    `origin/main`; its two refusals, a shallow checkout and no `origin/main`;
+    the check green; and the two reds, the tool's and the self-test's. The
+    tool's own `run:` line repeats the self-test's opening and can carry no
+    anchor, so the tool lists it, as the header says of such a line. The first
+    run, read off `gh run view 36626615781` and its log for this entry, as the
+    entry of 29 September 2026 asked: on pull request #144 at 20:28 UTC on 29
+    September 2026, the job `stock-take` green in 12 seconds, the step "what
+    the checkout holds" printing `git version 2.55.0`, `Python 3.12.3`, HEAD
+    `a4144d2` with the parents `5e8c6d2` and `50116dc`, and `origin/main
+    5e8c6d2`; the stock-take step ending in `BROKEN RECORDS: 0`, `FINDINGS: 6`
+    and `UNCOVERED LINES OF THE SEARCH SET: 0 of 1900`; the self-test step
+    ending in `SELF-TEST PASSED: 88 cases; of the 74 messages this tool
+    rejects, refuses or answers with, read off its own source, 74 are asserted
+    by a case and 0 by none`. That run is recorded on the three things it
+    walked and on the defect, under version 0.117.2, which the tree carried at
+    `6e06fbf`, the squash that landed the merge ref's tree. The defect's site
+    moves onto the line of the entry of 29 September 2026 that said half
+    built, so that line stays covered and the entry stands as written, and its
+    evidence onto the workflow's `branches:` line; the required check, being
+    no file, stands in the defect's note with the reading of this day. What
+    stays open: the two reds have never been produced, since no red pull
+    request has met the gate, and only one proves it catches; and the workflow
+    rule of the search set has no case of its own in the self-test, which
+    builds no workflow.
+    Built: the tool reads `.github/` as shipped and the workflow's lines as
+    the search set since 30 September 2026, version 0.121.0, and the defect of
+    the merge gate reads walked.
+  - `build-work` under "With nobody there" said the rule was written in four
+    places and named five, the install bullet having come in on 28 September
+    2026, and the paragraph after them called the question about the work
+    itself the fourth case, which by number was the install and by text the
+    question; the conventions under "Runtimes are not a kind the permission
+    may cover" pointed at "the fourth case". Read against the section as it
+    stands: five bullets, and the question is the fifth.
+    Built: the section counts five and the question is the fifth case, in
+    `build-work` and in the conventions, since 30 September 2026.
+
+  **Stale.**
+
+  - `build-work` step 3 point 7 and `setup-checks` step 3 said the guard
+    passes a command only where every place it lands is one the record names,
+    and that anything landing outside the places the record names stays the
+    user's under every answer. Since 29 September 2026 a route the record
+    names opens whatever that route answers on the machine, `~/.cargo/bin`,
+    `~/.bun/bin`, `~/Library/pnpm`, outside the place list, and pull request
+    #141 touched neither skill; a run reading either would hand over a `cargo
+    install` the guard lets through.
+    Built: both sentences in both skills name the answer of a route the record
+    names, since 30 September 2026.
+  - The ruling "A named install command may enter the verb list" in the
+    conventions said the question names the kind of place and the record
+    carries the list. Since version 0.119.0 the question names no kind of
+    place, only that such programs land outside the project on this machine;
+    milestone 3 of `docs/plan.md` said so already.
+    Recorded, not built: the ruling says the record carries the list, and what
+    the question said from 28 to 30 September 2026 and says since.
+  - Where the tool runs. The header of `scripts/devloop-stock-take` said it
+    runs where the table is used and after every rebase; "Registering a skill"
+    in the conventions named the version guard and not the gate; and "Working
+    on devloop itself" in `README.md` said to raise the version, push and
+    update, and nothing of a check a pull request has to pass. The gate is a
+    setting on this repository, not something a user of the set gets, so the
+    README says it under that heading and nowhere else.
+    Built: the header names the workflow and the required check since 30
+    September 2026, and the conventions and the README say the same under
+    their headings.
+  - "Six benches" held nowhere: eleven `devloop-test-*` repositories stand on
+    GitHub, read with `gh repo list`. Decided that no number replaces the
+    number. `README.md` said the set was exercised on six throwaway projects,
+    where the count carried nothing, and says throwaway projects; milestone 4
+    of `docs/plan.md` said none of the six benches has an interface, and says
+    no bench has one; the entry on throwaway projects above said the other
+    four have no gate, the only one of the six records the mode, and the only
+    project where an install was declined, and says the others, the only one,
+    and the first, with `devloop-test-t` named as the second, dated; and it
+    gains a paragraph naming the five since 29 September 2026, each with its
+    date and what it holds, since the entry's title promises what each is good
+    for.
+    Recorded, not built: the count is gone from the three places and the five
+    benches are named with their dates.
+  - The entry on five stacks said Go, Java, Python, TypeScript and Rust are
+    installed, as are `gitleaks` and `gosec`, and that a project in any of
+    those cannot be used to exercise an install. Read with `command -v` on 30
+    September 2026: `shellcheck`, `pipx`, `yarn`, `bun` and `pnpm` came on 28
+    and 29 September, `gosec` and `govulncheck` stand under `~/go/bin` off
+    every `PATH`, and `java` answers only with the system's stub asking for a
+    runtime; and the decline of 30 September 2026 in `devloop-test-t` was
+    produced by moving two tools aside first.
+    Recorded, not built: the paragraph carries the reading of this day and how
+    a decline is produced on this machine.
+  - The tally of `check-docs-consistency` rounds ended at five on 9 September
+    2026, beside its own warning that the sentence had stopped short once
+    before. Decided: the findings of the stock-take's close on 23 September
+    2026 are not a round of this check, since they were read against the
+    tool's states over the whole set and stand in the table with a count the
+    tool prints, and a second copy of that count is what the bullet warns
+    against; the audit of 26 September 2026, sixteen places, and this one,
+    fourteen, are rounds, both read by hand over the control documents against
+    the tree.
+    Recorded, not built: the tally names both rounds and says why the
+    stock-take is not one.
+  - The note of the widget defect in `docs/stock-take.tsv` said the question
+    had been put once, before that build; it has been put twice more since,
+    both under 0.120.0, both after.
+    Recorded, not built: the note says three times, once before and twice
+    after, with the benches, and its evidence is this line, the table being
+    where the mend stands.
+  - "What is shared today is of two kinds" in the conventions named the
+    byte-identical moves and the settled wordings of 18 September 2026;
+    `shared/rule-not-written-down.md` of 27 September is neither.
+    Recorded, not built: the section names three kinds, the third a rule
+    written once for the skills that share its situation.
+
+  **Worded so it misleads.**
+
+  - Milestone 3 of `docs/plan.md` spoke of the four skill places running the
+    install under a yes and reporting it in two places. Two do, `build-work`
+    step 3 point 7 and `setup-checks` step 3; question 3 of `setup-project`
+    hands the install over at a first setup, no record having landed, and the
+    guard's message says the install is the user's to run.
+    Recorded, not built: the sentence names the two and says what the other
+    two do.
+  - The entry above on devloop's own repository not being set up with devloop
+    said the hooks this plugin ships stay inert here, the main-branch guard
+    included, which is true of the plugin's hooks and read as nothing guarding
+    work on the plugin.
+    Recorded, not built: the entry says what guards it, the version guard in
+    `.claude/settings.json` after every edit and the required check on main,
+    since 29 September 2026.
+  - `setup-project` step 0 said the setup takes two or three questions.
+    Question 4 comes always, questions 3 and 5 with code, the rest under their
+    condition: three at least with code, up to seven. The entry of 29
+    September 2026 on the empty case judged the sentence as holding; it
+    understates, and a person told two or three who meets five reads the setup
+    as having gone off its script. Decided to mend it.
+    Built: the step says a few questions, since 30 September 2026.
+
+  **Read through afterwards.** `skills/build-work/SKILL.md` and
+  `skills/setup-checks/SKILL.md` read in full; the changed regions of
+  `README.md`, `docs/plan.md`, `docs/skill-conventions.md`,
+  `skills/setup-project/SKILL.md` and the header of
+  `scripts/devloop-stock-take` read with their sections; the changed lines of
+  this file read with their entries, and this entry whole. Two sentences of
+  `docs/plan.md` under milestone 1 said the opposite of the decision above,
+  naming the five shipped directories as where a state reads built and as the
+  search set; both name `.github/` beside them now, and a third names the
+  workflow among the things. Nothing else in a changed file says the opposite
+  of what stands. `grep -rn` over `README.md`, `docs/`, `skills/`, `shared/`,
+  `hooks/`, `bin/` and `scripts/` for the mended phrases, "six benches", "six
+  throwaway", "the other four have", "only one of the six", "four places
+  already", "fourth case", "two or three questions", "is of two kinds", "names
+  the kind of place and the record", "every place it lands is one the record
+  names and blocks" and "outside the places the record names stay", finds them
+  in dated entries of this file and in this entry alone, and "the fourth case
+  of this convention" in the conventions counts something else and stands;
+  `devloop-test-p` stands only where the skip run is meant; "main is
+  unprotected" stands only in the dated reading of 29 September 2026. The
+  eighteen checks under "Before a handover, run these" ran on 30 September
+  2026 after the change: the fourteen that are silent when green were silent,
+  the locked-skill check printed its one line, the offer check fifteen lines,
+  the handover check seven lines over six sites and the second-statement check
+  two, as the text beside each says.
+
+  **Records.** A defect thing for each of the fourteen, sited on its status
+  line above with the mended line as its evidence, and the head of this entry
+  as no defect; the finding of 29 September 2026 on the tool's location rule
+  replaced by its defect thing, sited on the line of the merge gate above; the
+  merge gate's defect re-sited and re-evidenced as that line says, with the
+  first run of the workflow recorded on it and on the three things of the
+  workflow it walked, under version 0.117.2, source entry, on the line above
+  that carries the run's figures; nine things for the workflow; five
+  not-a-thing rows for the lines the mends of `build-work`, `setup-checks` and
+  the tool brought into the search set, and one for the line of the entry of
+  29 September 2026 that said nothing was built, the defect's site having left
+  it. The notes of the widget defect, of the form defect and of the
+  not-a-thing on the widget's rationale in `setup-project` name
+  `devloop-test-q` and 29 September 2026 now. The tool, run in this tree at
+  0.121.0 after this entry, `BROKEN RECORDS: 0`, `UNCOVERED LINES OF THE
+  SEARCH SET: 0 of 1957` and exit 0, one line more under the lines that can
+  carry no unique anchor, the workflow's `run:` line, recorded on its exit 0
+  outcome; its counts over all files, things 1288, straight paths 181,
+  branches 582, other kinds 525, not-a-thing 986, findings 5. The self-test at
+  0.121.0, `SELF-TEST PASSED: 88 cases; of the 74 messages this tool rejects,
+  refuses or answers with, read off its own source, 74 are asserted by a case
+  and 0 by none`, recorded on its outcome.
 
 
 ## Decisions taken against
