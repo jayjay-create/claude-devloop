@@ -31,10 +31,20 @@ This skill changes the project from the outside — it adds tools and configurat
 Move carefully and ask before anything that reaches beyond the repository, unless
 the install record has answered it already — step 3 says how.
 
-**Called for a single class**, which is how a build step reaches this skill when
-the task it is building created the target: fill that one class, leave the others
-untouched, and stay on the branch you were called on rather than cutting a new
-one — the build owns that branch. Everything else below applies unchanged.
+**This skill is reached three ways, and which one decides the branch and the
+close.** At a first setup, from `setup-project`, in every project with code:
+every class is `empty`, since the setup fills none, and this skill cuts its
+own branch, lands it in step 7 and offers the mode in step 8. From inside a
+build, for a single class, where the task being built created the target:
+fill that one class, leave the others untouched, stay on the branch you were
+called on rather than cutting a new one — the build owns that branch and lands
+it — and skip steps 7 and 8, since a landing and the offer of the mode belong
+to a suite completed with the person there, not to the middle of a task. From
+the step after a merge, for a class whose skip reason has expired or for the
+classes still `empty` once the repository has code: the tree stands on the
+main branch, so cut a branch as at a first setup and land it in step 7; step 8
+is reached where no class is `empty` any more, which is how a project set up
+without code meets the offer. Everything else below applies unchanged.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
@@ -84,7 +94,11 @@ reason and a note that filling it needs their say — and an issue carrying
 `raised-here` and `needs-human` says what filling it would add to their manifest
 or put on their machine. The less committing option is the one that changes
 nothing of theirs. Step 8's offer of the mode is never reached with nobody there:
-it stands in a first setup, with them present.
+it stands in a first setup, with them present, and after a merge only where a
+person is. The third route, the step after a merge finding classes `empty`
+with code in the repository, never arrives with nobody there at all: the mode
+refuses to start while a class is `empty`, so a run that gets there has a
+person in it.
 
 ## Step 1 — Read the current state
 
@@ -147,9 +161,19 @@ Never name a class by its label alone. "secrets" means nothing to someone who ha
 not read the file; "searches the code and the git history for credentials that
 were committed by accident" does.
 
-Ask which to do now. All of them, some of them, or none — filling them later is
-always possible. That question belongs to a first setup, where what this
-project's check suite will be is genuinely theirs to settle.
+Ask which to do now: all of them, or some first and the rest after them. "None"
+is not among the answers, and neither is a class left for later without a
+reason. `empty` means nobody decided, and every step that asks whether the
+suite is complete reads that word as undecided — the mode's first
+precondition, the `check` target, the close of this skill, the step after a
+merge — so an answer that leaves rows `empty` is asked again at each of them,
+which is the asking again the paragraph below names. A class they do not want
+in this project is a decision: it goes into the cell as `skipped` with their
+reason, named as theirs, and is read again after a merge like any reason. That
+question belongs to a first setup, where what this project's check suite will
+be is genuinely theirs to settle. Missing tools are asked about separately,
+below, because installing one changes their machine and filling a class does
+not.
 
 **A class that is only back because its own reason expired is not that
 question.** A skip is a decision already made, with its reason written next to
@@ -187,7 +211,10 @@ Only the check commands themselves — never what was needed to install them.
 **A tool that lands outside the repository is installed by this run only where
 the install record says yes**, read where the guard reads it: the section
 `## Install permission` of `docs/agents/environment.md` on the default branch
-as last fetched, which the session-start line printed, never the working tree.
+as last fetched, which the session-start line printed — or, in the session
+that landed the record, the fetch `setup-project` step 8 made after its merge,
+that line having been printed before the record existed — never the working
+tree.
 Under a yes, run the backed command yourself, with the user there and with
 nobody there, without asking again; the guard passes it where every place it
 lands is one the record names or the answer of a route it names, and blocks it
@@ -215,6 +242,16 @@ this is the likeliest place in the whole workflow for a wrong path to be typed,
 and the class counts as filled only once the tool stands there.
 
 ## Step 4 — Introduce each class in stages
+
+A class is filled under its canonical names, and this is where its target is
+made: in the task runner `setup-project` created, a thin target calling the
+tool with its checking option — the whole target on every row, the per-file
+target where the row has one, taking the path as `FILE=<path>` — and the same
+for the two fixed targets that belong to a class, `test-one` for unit and
+`fmt-write` for format, which stand as failing placeholders until the class
+that owns them is filled here. A class with no tool gets no target.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text canonical-targets`
 
 Turning a strict tool on a codebase that has never seen it produces hundreds of
 findings at once, and fixing them in one commit makes the change unreviewable.
@@ -263,7 +300,9 @@ means the class cannot work that way.
   here, `empty` only where you have not judged it yet. Having reasoned about a
   class is having decided it — never leave the reasoning in prose and the column
   at `empty`. Never guess.
-- `Blocking` becomes `yes` only on rows that are `filled`. A class whose result
+- `Blocking` becomes `yes` only on rows that are `filled`, `no` on a filled
+  row that must not block, and `-` on every row that is not filled — the one
+  value for such a row, as `setup-project` writes it. A class whose result
   depends on a service you do not control is never blocking — an outage elsewhere
   must not stop work here. Keep it out of `check` and give it its own target.
 - `Duration` from the run you just did, roughly.
@@ -273,8 +312,11 @@ means the class cannot work that way.
   had been filled. Every line in that section has to be true of the table as it
   now stands, and a class you just filled has no line there at all.
 
-While any class is still `empty`, `check` must fail rather than pass, and say the
-suite is incomplete.
+`check` is `setup-project`'s target and this skill's to keep true: it runs the
+whole target of every blocking class in sequence, and while any class is still
+`empty` it must fail rather than pass, and say the suite is incomplete and
+which classes are undecided — the failing line the setup wrote goes only when
+no class is `empty` any more.
 
 ## Step 7 — Land the check suite on the main branch
 
@@ -283,7 +325,9 @@ That branch belongs to the build, and the build lands it with the rest of its
 task.
 
 Otherwise the branch cut before Step 2 has to reach the main branch now, before
-anything else happens. Everything from here on reads `checks.md` from the main
+anything else happens — at a first setup and on the route from the step after
+a merge alike, where the tree stood on the main branch and this skill cut its
+own branch, as the opening says. Everything from here on reads `checks.md` from the main
 branch: the next task cuts its branch from there and would find no check suite
 at all. Leaving it unmerged has worked so far only because a run improvised the
 merge on its own, which is not something to build on.
@@ -536,10 +580,18 @@ on either way.
 Say how many classes are `filled`, how many `skipped` and why, and how many are
 still `empty`.
 
-Then say what happens next and do it, without asking first: more classes if any
-are still `empty`, otherwise the first piece of work. Say what the state means
-either way — a class still saying `empty` is a record that nobody decided yet,
-and the unattended mode stays unavailable until none are.
+Then say what happens next and do it, without asking first. More classes while
+any is still `empty`: that is the rest of the answer given in step 2, not a
+second question. Otherwise it depends on the route in: reached from a build
+for a single class, back to the build and its task; reached from the step
+after a merge, back to that step's own next, the query in `build-work` step 7;
+at a first setup, the first piece of work — where they have already said what
+they want built, say the suite is done and carry straight on into planning it,
+where they have not, ask what to build, the one real question here, and either
+way the next stage is `plan-work`, never the entry point they came from. Say
+what the state means either way — a class still saying `empty` is a record
+that nobody decided yet, and the unattended mode stays unavailable until none
+are.
 
 ---
 

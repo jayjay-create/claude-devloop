@@ -19,8 +19,11 @@ those rules. Then do nothing else.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
-Produces five short files under `docs/agents/`, canonical targets in the
-project's task runner, and a pointer block in `CLAUDE.md`.
+Produces five short files under `docs/agents/`, the task runner with its fixed
+targets, and a pointer block in `CLAUDE.md`. It fills no check class:
+`checks.md` leaves here with all nine `empty`, in a project with code as in one
+without, and where there is code the check setup follows as a step of its own,
+from the close.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
@@ -34,10 +37,12 @@ project's task runner, and a pointer block in `CLAUDE.md`.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text guard-block-intro`
 
-- **The command really is an install this step needs.** The guard did what it was
-  built for. With the user there this is the question the step already puts about
-  missing tools, answered where that question is answered — nothing new is asked
-  here. With nobody there, there is no one to ask: it becomes an issue
+- **The command really is an install.** The guard did what it was built for.
+  No step of this setup needs one — nothing is installed here, the check setup
+  being where a tool is installed under the record — so the command is one
+  this run reached for on its own. With the user there, hand it over backed
+  and carry on without it: the record has not landed yet, and once it has, the
+  check setup decides. With nobody there, there is no one to ask: it becomes an issue
   labelled `needs-human` carrying the command and the message, and the report is
   written and the run stops there rather than carrying on past a step that did
   not run.
@@ -103,8 +108,9 @@ in their language.
 
 Say what is about to happen here, in one or two sentences: you set this
 repository up — look at what is already in it and write five short files
-recording where tasks live and how to check whether something is broken — and it
-takes a few minutes and a few questions.
+recording where tasks live — that it takes a few minutes, and that along the
+way you ask wherever something is theirs to decide. Name no count of
+questions.
 
 **Do not introduce the workflow itself, and name no stages.** Whoever arrives
 here either typed the command or said what they wanted built one message ago,
@@ -230,31 +236,33 @@ Ten lines at most. Say explicitly what you did **not** find.
 
 ## Step 3 — The empty case
 
-Finding no code is not an obstacle. Write `checks.md` with all nine classes set
-to `empty`, and say so at the end: the check suite gets filled once there is
-something to check. Step 4 is not skipped: it skips the questions that need
-code to answer, and each of those says so in its own condition. Question 3
-needs code: its mapping has nothing to map, no class can be ruled out against
-nothing, and a missing tool has no stack to be named from. Question 5 needs
-code: nothing runs yet, and `environment.md` says so. Every other question is
-put under its condition, as with code, question 4 among them: nothing it
-covers needs a stack. Yes, no and the record are as with code, written in step
-6 and landed in step 8, with no route line, since step 6 reads the routes off a
-stack and there is none, so that the first install this project meets finds an
-answer and not the absence of one.
+Finding no code is not an obstacle. `checks.md` leaves this skill with all
+nine classes `empty` in every project, so here it is what it is everywhere;
+what differs is the close: say at the end that the check suite gets built once
+there is something to check. Step 4 is not skipped: it skips the one question
+that needs code to answer, and that question says so in its own condition.
+Question 4 needs code: nothing runs yet, and `environment.md` says so. Every
+other question is put under its condition, as with code, question 3 among
+them: nothing it covers needs a stack. Yes, no and the record are as with
+code, written in step 6 and landed in step 8, with no route line, since step 6
+reads the routes off a stack and there is none, so that the first install this
+project meets finds an answer and not the absence of one.
 
 ## Step 4 — Questions
 
 Only these, each only under its condition. Lead with your recommendation so a
-single word can answer; question 4 gives none. Two forms, and which one a
+single word can answer; question 3 gives none. Two forms, and which one a
 question takes follows from what it has to carry, not from what the harness
-offers. A choice that two option lines carry — questions 1, 2, 6 and 7 — puts
+offers. A choice that two option lines carry — questions 1, 2, 5 and 6 — puts
 what counts in the options themselves, because a caveat in a paragraph above
 them does not get read; several such choices may share one form. A question
-that needs more said than two lines hold — the mapping of question 3, the
-permission of question 4, and question 5, which is open and has no options —
-is put in prose, in the run's own message, and a widget that follows carries
-that question's answers and no other question: it shares a form with nothing.
+that needs more said than two lines hold — the permission of question 3, and
+question 4, which is open and has no options — is put in prose, in the run's
+own message, and a widget that follows carries that question's answers and no
+other question: it shares a form with nothing. Nothing here asks about check
+classes or the tools that fill them: that mapping, and whether a missing tool
+gets installed, is the check setup's own question, put once the record this
+step writes has landed.
 
 1. **Issue tracker** — only if there is no remote, or several candidates.
    With exactly one remote: state it and move on.
@@ -345,20 +353,7 @@ that question's answers and no other question: it shares a form with nothing.
    anything over it and never make it a condition — the user decides what their
    repository is for, and this step's job is that they decide it knowing what
    holds.
-3. **Checks** — always where there is code. Present your mapping: which tool
-   found fills which class, which classes are ruled out and with what reason,
-   and which are genuinely still undecided. A class you have just reasoned away
-   is ruled out, not undecided. Ask separately whether missing tools should be
-   installed — that changes the project — and say where a no leads: the class
-   that tool would fill stays as it is, and `setup-checks` records it as
-   `skipped` with that reason, not `empty`. Prefer tools that live inside the
-   project. A tool that lands outside it is the user's to run during a first
-   setup: the install record the guard reads — the section `## Install
-   permission` of `environment.md` on the default branch as last fetched — has
-   not landed yet, so the guard blocks the command and it is handed over,
-   backed, as "A guard's block is not a decline" above says. From the next
-   session on the record decides.
-4. **Install permission** — always. Put it in prose, in the run's own message
+3. **Install permission** — always. Put it in prose, in the run's own message
    and in the user's language: the question is what that message says, and a
    choice widget that follows carries its two answers and no other question,
    everything above the answers having been said by then. "In a message of
@@ -397,13 +392,13 @@ that question's answers and no other question: it shares a form with nothing.
    written and that every session reads it is said in step 9. Give no
    recommendation. The answer goes into `environment.md` in step 6, as the
    section the guard reads; nothing is installed on it here.
-5. **Local environment** — always where there is code, unless you could read it
+4. **Local environment** — always where there is code, unless you could read it
    all from `docker-compose.yml` or the README. Which processes, in what order,
    on what ports.
-6. **Labels** — only if the tracker already has labels with overlapping meaning.
+5. **Labels** — only if the tracker already has labels with overlapping meaning.
    Then ask: map onto the existing ones, or add ours alongside. Otherwise create
    the five standard labels and report it.
-7. **Where glossary and decision records live** — only if something already lives
+6. **Where glossary and decision records live** — only if something already lives
    elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`. **Create both
    as files that git can carry, and say you did.** `CONTEXT.md` gets a heading
    and a line saying it stays empty until the first term comes up; `docs/adr/`
@@ -415,7 +410,7 @@ that question's answers and no other question: it shares a form with nothing.
 Never ask about the user's preferred language or tone here — that belongs to the
 plugin's one-time setup, not to a per-project run.
 
-## Step 5 — Canonical targets in the task runner
+## Step 5 — The task runner and its fixed targets
 
 This workflow keeps two files of local state under `.claude/`:
 `check-attempts.local`, written and read by the turn-end hook, which is the only
@@ -428,43 +423,36 @@ refresh does the same, since a project set up before the second file existed has
 only the first.
 
 
-These names mean the same in every project, so a skill can say `make lint` and be
-right everywhere. If there is no task runner, create a `Makefile`. If there is one
-with different names, add thin targets that call the existing commands; leave the
-existing ones untouched.
+If there is no task runner, create a `Makefile`. If there is one with
+different names, add thin targets that call the existing commands; leave the
+existing ones untouched. What this step creates is what stands without a
+decision about any class: the runner itself, `check`, `test-one`,
+`services-up`, `fmt-write` and the two `.gitignore` lines above. No target for
+a check class: those are the check setup's, made one per class it fills under
+the names in the table below, and a class it does not fill gets **no** target.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text verdict-target`
 
-| Class | Per-file target | Whole target |
-|---|---|---|
-| format | `fmt-file` | `fmt` |
-| lint | `lint-file` | `lint` |
-| types | — | `types` |
-| unit | `test-file` | `test-unit` |
-| integration | — | `test-integration` |
-| end-to-end | — | `test-e2e` |
-| secrets | — | `scan-secrets` |
-| dependencies | — | `scan-deps` |
-| code-security | — | `scan-code` |
-
-Plus: `check` (every blocking class in sequence), `test-one NAME=<name>`,
-`services-up`, `fmt-write`.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text canonical-targets`
 
 While no class is filled, `check` must fail rather than pass, and say that the
 check suite is not configured. A green `check` over nothing is a false all-clear.
-
-Per-file targets take the path as `FILE=<path>`.
-
-Only create targets whose command you actually know. A class with no tool gets
-**no** target.
+`test-one` and `fmt-write` are made the same way — each a target that fails
+and says that the class it belongs to, unit and format, is not configured — so
+that the names exist from here on and say what is missing rather than being
+missing; the check setup gives each its command when it fills that class.
+`services-up` comes from the answer to question 4, and where nothing has to
+run it says so.
 
 ## Step 6 — The five files under `docs/agents/`
 
 ### `checks.md`
 
-Read by shell scripts. Keep the column count and order exactly. The `Status`
-column takes only `filled`, `empty`, or `skipped: <reason>`. `Blocking` takes
-only `yes` or `no`.
+Read by shell scripts. Keep the column count and order exactly. This skill
+writes the header and the nine rows, every one of them `empty`, in a project
+with code as in one without; no other status comes from here. `filled` and
+`skipped: <reason>` are the check setup's to write, and its rules for them
+stand there.
 
     ---
     runner: make
@@ -475,8 +463,15 @@ only `yes` or `no`.
 
     | Class | Per-file | Whole | Files | Duration | Blocking | Status |
     |---|---|---|---|---|---|---|
-    | lint | lint-file | lint | src/**/*.py | <1s | yes | filled |
-    | end-to-end | - | - | - | - | no | skipped: no interface to drive |
+    | format | - | - | - | - | - | empty |
+    | lint | - | - | - | - | - | empty |
+    | types | - | - | - | - | - | empty |
+    | unit | - | - | - | - | - | empty |
+    | integration | - | - | - | - | - | empty |
+    | end-to-end | - | - | - | - | - | empty |
+    | secrets | - | - | - | - | - | empty |
+    | dependencies | - | - | - | - | - | empty |
+    | code-security | - | - | - | - | - | empty |
 
     ## Running a single test
 
@@ -492,21 +487,24 @@ only `yes` or `no`.
 
 - The two target columns hold **bare target names** — `lint`, not `make lint` and
   not `` `lint` ``. A shell script reads this column and puts the runner in front.
+  `-` means the class has no target that way, which is every row written here.
 - `Files`: comma-separated glob patterns; `-` means it applies to everything.
 - `Duration`: rough, like `<1s`, `20s`, `4min`. It decides where the class runs.
-- `Status` is `filled` only when the target exists, calls a real checking tool,
-  and you have run it once. Otherwise `skipped: <reason>` where you have judged
-  that the class finds nothing in this project, and `empty` only where you have
-  not judged it yet. Never guess.
-- `Blocking` is `yes` only on rows whose `Status` is `filled`. A class with no
-  target cannot block anything; leave it `-` until it is filled.
-- `skipped` means this class does not apply to this project, with the reason —
-  including a reason that will expire, like no third-party packages yet. `empty`
-  means nobody has judged it yet, which is what the no-code case in Step 3
-  writes. Reasoning that lands in the prose of the file does not record the
-  decision; the reason belongs in the cell, one line, plain ASCII, no `|`,
-  because the parsers split the row on it by position.
-- The section "What these checks do not cover" is mandatory.
+- `Status` takes only `filled`, `empty`, or `skipped: <reason>`. `empty` means
+  nobody has judged the class yet, and it is what every row says when this
+  file is written, with code as without. `filled` and `skipped` are decisions
+  the check setup records, under its own rules — a target that exists, calls a
+  real checking tool and has been seen going red, or a reason the class finds
+  nothing here; a reason is one line, plain ASCII, no `|`, because the parsers
+  split the row on it by position. Never guess a status, and never write one
+  here.
+- `Blocking` is `yes` or `no` on a row whose `Status` is `filled`, and `-` on
+  every other row, since a class with no target cannot block anything: one
+  value for a row that is not filled, in this rule, in the column and in the
+  rows above.
+- The section "What these checks do not cover" is mandatory. Written here it
+  carries one line: that no class is decided yet. The check setup rewrites it
+  from the table it writes.
 
 ### `issue-tracker.md`
 
@@ -645,7 +643,7 @@ if none, that merges are held by the question at the end of a build and by
 nothing else, so the user performs them; and what would change that, where
 anything would.
 
-Also the answer to question 4 of step 4, under a heading of its own, `## Install
+Also the answer to question 3 of step 4, under a heading of its own, `## Install
 permission`, in the shape the install guard and the session-start hook read it —
 one key and one value per line, spelled exactly, ASCII only, since a script
 reads the start of each line:
@@ -684,8 +682,10 @@ is held against the `install-place` lines.
 The route lines are written under either answer, like the places.
 `install-answered` is the date the question was answered. The guard and the
 session-start hook read this section off the default branch as last fetched,
-never off the working tree, so it counts once step 8 has landed it there:
-during this setup the guard finds no record, which is what question 3 says.
+never off the working tree, so it counts once step 8 has landed it there and
+fetched it back. Nothing is installed during this setup — no class is filled
+here — so the first install a project meets is the check setup's, after step
+8, with the record in front of the guard.
 
 ## Step 7 — Pointer block in CLAUDE.md
 
@@ -720,8 +720,14 @@ Commit, open a pull request, arm it, and then prove the merge where it happens �
 anything on top of it. A report of success is not evidence, and the git log
 immediately after arming is not evidence either: the platform has not merged at
 that moment, so the log can only carry it after a fetch, once the platform says
-it did. If a check gate blocks the merge, say so and stop here; do not offer the
-next step on top of unmerged setup. **This step does not wait inside its
+it did. **Once the merge is proven, fetch, fast-forward the local main branch
+and switch to it, before anything follows.** The check setup that follows in a
+project with code cuts its branch from there, and the install guard reads the
+record off the main branch as last fetched — a merge proven at the platform is
+not yet fetched, and measured on 28 September 2026 a yes landed on `origin` and
+not yet fetched blocked, then passed after the fetch. If a check gate blocks
+the merge, say so and stop here; do not offer the next step on top of unmerged
+setup. **This step does not wait inside its
 answer**: nothing reaches it unattended — that mode refuses to start while any
 class in `checks.md` is `empty`, and this setup is what makes a `checks.md`
 possible at all — so there is a person here, and the waiting form in `build-work`
@@ -777,26 +783,29 @@ pull request with no idea what comes next.
 
 ## Step 9 — Close
 
-Five lines at most: which files you wrote, which targets you created, how many
-classes are `filled` and which are not, and where the install answer stands:
-the section `## Install permission` of `environment.md`, which carries the
-answer, the places a yes opens and the routes of the stack, and which every
-session reads at its start once step 8 has landed it on the main branch.
+Five lines at most: which files you wrote, which targets you created, that
+every check class is `empty`, and where the install answer stands: the section
+`## Install permission` of `environment.md`, which carries the answer, the
+places a yes opens and the routes of the stack, and which every session reads
+at its start once step 8 has landed it on the main branch.
 
 Then name **no command**, and do not ask permission to carry on. Say what
 happens next, in plain words, and do it. What it buys and what it costs still
 gets said; the question is what goes, because nothing here is the user's to
 decide:
 
-- Classes still `empty` and enough code to check: name each missing class in
-  plain words and what it would catch, then run `setup-checks`.
-- Barely any code yet: say the check suite is better built once there is
-  something to check, and carry on to the first piece of work instead.
-- Otherwise: if they have already said what they want built, say the setup is
-  done and carry straight on into planning it. If they have not, say the setup
-  is done and ask what to build — that one is a real question, and it is the
-  only one here. Either way the next stage is `plan-work` — never send them back
-  to the entry point they came from, which would run this setup again.
+- Code in the repository: say that the setup is done and that the checks are
+  now set up as a step of their own, then run `setup-checks`. Every project
+  with code takes this route, since no class is filled here; which classes,
+  with what tools and at what cost is that skill's to present, not this
+  close's.
+- No code: say the check suite is better built once there is something to
+  check, and that it comes up by itself once code has landed. Then, if they
+  have already said what they want built, say the setup is done and carry
+  straight on into planning it; if they have not, say the setup is done and
+  ask what to build — that one is a real question, and it is the only one
+  here. Either way the next stage is `plan-work` — never send them back to the
+  entry point they came from, which would run this setup again.
 
 ---
 

@@ -945,6 +945,15 @@ Once it has landed:
   no longer holds and call `setup-checks` for that class. Nothing else ever
   reads those reasons, so a skip that says to revisit once something exists is a
   note to nobody until this step reads it.
+- Read the same table for a class still `empty` where the repository now has
+  code. That is what a setup without code leaves — all nine `empty`, the suite
+  not built — and the first merge that lands code is where it stops being
+  true. Say so and call `setup-checks`, whole and not for one class: it cuts
+  its own branch from the main branch this step just fast-forwarded, puts its
+  questions, lands the suite through its own step 7 and comes back to step 7
+  here. This never meets nobody: the mode refuses to start while a class is
+  `empty`, so a run that reads `empty` here has a person in it, and no issue
+  stands in for the call.
 - Say what to pull locally: a new dependency means install, a schema change means
   migrate, a new setting means check configuration, server code means restart,
   frontend only means a hard reload. `environment.md` says which apply here.

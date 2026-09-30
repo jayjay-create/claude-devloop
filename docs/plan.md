@@ -299,8 +299,9 @@ points that carry the decision and put in prose, the widget after it, since
 the first run to put it, on 30 September 2026, put it through the harness's
 choice widget and none of its thirteen points arrived whole; the roadmap entry
 of that date says what came of the thirteen and what the form rule is worth.
-The question stands in `setup-project` step 4 as a question of its own beside
-question 3, and the record in `environment.md` in step 6, counting once step 8
+The question stands in `setup-project` step 4 as a question of its own —
+question 4 beside the mapping until 1 October 2026, question 3 since — and the
+record in `environment.md` in step 6, counting once step 8
 has landed it on the default branch. Widened on 29 September 2026, version
 0.116.0 in the tree, 0.116.1 on main: the guard resolves eleven routes rather
 than three — `brew`, `go`,
@@ -315,7 +316,15 @@ that date carries the readings and the measurement. Blocked under every
 answer still: the system package managers, the version managers, a bare
 `pip`, and every route that does not answer. The refresh and the drivers half
 stay unbuilt, and of the two runs on a bench only the setup half of each has
-happened, as the paragraph above says.
+happened, as the paragraph above says. On 1 October 2026, version 0.122.0,
+the mapping of tools to classes and the question about missing tools left
+`setup-project` for `setup-checks`, which every project with code reaches from
+the setup's close: `setup-project` fills no class and installs nothing, so the
+four skill places above are three, the install question is question 3 of its
+step 4, and the first install a project meets comes after step 8 has landed
+the record and fetched it — which closes, by construction, the window the yes
+run of 30 September 2026 installed in; the roadmap entry of that date says
+what else it answers.
 
 Why here: blocked by the three conventions milestone 2 rewrites; milestones 4,
 7 and 8 need a driver and a linter that land outside the repository.

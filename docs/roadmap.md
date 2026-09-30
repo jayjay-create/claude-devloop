@@ -8277,6 +8277,198 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   refuses or answers with, read off its own source, 74 are asserted by a case
   and 0 by none`, recorded on its outcome.
 
+- **The check classes get one owner: `setup-project` fills none and calls
+  `setup-checks` in every project with code, the nine canonical target names
+  stand in `shared/canonical-targets.md`, the answer "none" leaves
+  `setup-checks` step 2, the step after a merge brings a project set up
+  without code to the whole check setup, and `start-work` sends a set-up
+  project with no class filled there first; 1 October 2026, version 0.122.0.**
+  On `task/checks-in-setup-checks`, off `9fa10a7`. The order behind it was a
+  draft, walked through five situations before anything was built; its report
+  stands outside the repository.
+
+  **What changed, and where.** `setup-project`: the opening and step 0 promise
+  five files recording where tasks live and name no count of questions; step
+  3's empty case skips one question, not two; step 4 has six questions, the
+  mapping of tools to classes and the question about missing tools gone, the
+  install permission question 3, local environment 4, labels 5, glossary 6, and
+  its opening says that no question here is about check classes; step 5 makes
+  the runner, `check`, `test-one`, `services-up`, `fmt-write` and the
+  `.gitignore` lines and no target for a class, `check`, `test-one` and
+  `fmt-write` failing and naming what is not configured until the check setup
+  fills the class; step 6 writes `checks.md` with the nine rows `empty` and
+  `-` in every other cell, `filled` and `skipped` being the check setup's
+  words, and `Blocking` takes `-` on a row that is not filled; the
+  `environment.md` note says nothing is installed during the setup; step 8
+  fetches, fast-forwards and switches to the main branch once the merge is
+  proven; step 9 says that the setup is done and the checks follow as a step
+  of their own and runs `setup-checks` wherever there is code, and without
+  code carries on to planning as before. `setup-checks`: the opening names the
+  three routes in and what each decides about the branch and the close, the
+  single-class route from a build skipping steps 7 and 8; "With nobody there"
+  says the route after a merge for `empty` classes never arrives with nobody;
+  step 2 asks all or some first, and a class not wanted is `skipped` with the
+  person's reason; step 3 says where the record is read in the session that
+  landed it; step 4 makes the targets under the canonical names and gives
+  `test-one` and `fmt-write` their commands; step 6 gives `Blocking` its third
+  value and makes `check` this skill's to keep true; step 7 names the branch
+  on the route after a merge; step 9 routes by the way in. `start-work` step 4
+  meets a set-up project with no class filled and code, says three things and
+  runs `setup-checks`. `build-work` step 6 reads the table after a merge for a
+  class still `empty` with code and calls `setup-checks` whole. The new shared
+  file carries the table of the nine classes and the four targets beside them.
+  `docs/skill-conventions.md` and `docs/plan.md` say where the question moved
+  and what number it carries; `README.md`, `plan-work`, `untangle-idea` and
+  `shared/checks-owner.md` were read and stand: the README names the setup
+  and the check suite without saying which skill fills a class, the two skills
+  call `setup-project` where `docs/agents/` is missing and nothing there
+  depends on what it fills, and the shared block sends a build to
+  `setup-checks`, which is still the owner.
+
+  **Where the draft broke, and what stands instead.** Four places. The draft
+  said that where nobody is there, the step after a merge raises an issue with
+  `raised-here` instead of calling the skill; that branch cannot be reached:
+  the mode refuses to start while a class is `empty`, precondition 1 in
+  `build-work` under "Unattended mode", read again by `plan-work` before the
+  question, and nothing but `setup-project` and `setup-checks` writes `empty`.
+  So `build-work` step 6 and `setup-checks` under "With nobody there" say that
+  a run reading `empty` there has a person in it, and no issue stands in for
+  the call — a rule for a state no run reaches would be the safeguard that is
+  none. The draft listed `test-one` and `fmt-write` among what the setup
+  creates without a class decision, and neither has a command before the unit
+  or the format tool is chosen; what stands is a target that exists under its
+  canonical name and fails naming the class not configured, the way `check`
+  already did, so that the names say what is missing rather than being
+  missing, and the check setup fills each with its class. The draft said
+  nothing about the record reaching the guard between the two skills: the
+  guard reads `origin/main` as last fetched, `setup-project` step 8 proved the
+  merge at the platform and fetched nothing, and a yes landed and not fetched
+  blocked on 28 September 2026; so step 8 fetches and switches to the main
+  branch before the close, and `setup-checks` step 3 names that fetch as where
+  the record is read in the session that landed it. And the draft's question
+  4, the install permission, now stands after question 2, the auto-merge
+  reading, where the entry of 30 September 2026 on the pulls had it after the
+  mapping; nothing about check tools stands in front of it any more, which is
+  the direction that entry pulled in.
+
+  **The two points to decide.** The answer "none" in step 2: it is gone, and
+  step 2 says why. `empty` means nobody decided, in `setup-project` step 6,
+  `setup-checks` steps 1 and 6 and "A class is one of the nine kinds of check"
+  in `docs/skill-conventions.md`, and every step that asks whether the suite
+  is complete reads that word and nothing else — the mode's first
+  precondition, the `check` target, the close of `setup-checks`, and since
+  this change the step after a merge. A "none" written as nine `empty` rows is
+  a decision the file cannot carry, so it is asked again at each of those
+  places; with the step after a merge reading `empty` now, the other answer
+  would ask again at every merge, which is what "asking again hands back a
+  decision the user already made" in step 2 forbids. A class the person does
+  not want is `skipped` with their reason, named as theirs, and read again
+  after a merge like any reason. The should of the stock-take of 23 September
+  2026 on that line offered both, and this takes the second. The `filled` rows
+  of a project set up before this version, written by `setup-project` without
+  the red of `setup-checks` step 5: nothing catches them up, and this change
+  builds nothing for it. Recorded, not built: a project set up before 0.122.0
+  carries `filled` rows that `setup-project` wrote without the red proof of
+  `setup-checks` step 5, and the refresh leaves them as they are; what should
+  hold is that the refresh, reading a `checks.md` whose marker is older than
+  0.122.0, names its `filled` rows as written without that proof and calls
+  `setup-checks` step 5 over each once, with the person there, the way the
+  step after a merge calls it for a class, so that a row reads `filled` only
+  where its target has been seen going red. Until then such a row is read as
+  it is by every hook and every build, and the proof each build makes per
+  condition is the only red those targets ever produce.
+
+  **The five situations, on paper.** Code and every tool on the machine: the
+  setup lands with nine `empty` rows, `setup-checks` judges, asks all or some,
+  makes the targets, proves each red, lands the suite, offers the mode — one
+  landing more than before, which is the price, and the offer on the path of
+  every project, which is what finding C of 30 September 2026 asked. Code and
+  two tools missing under a yes: the record has landed and been fetched
+  before `setup-checks` step 3 runs the backed command, so the guard passes it
+  under the record, the pass finding L of that entry asked for, and pull
+  request body and `environment.md` carry the report. The same under a no:
+  the guard blocks on `install-tools: no`, "A guard's block is not a decline"
+  hands the command over with the person there, and a decline makes the class
+  `skipped` with that reason, as step 3 says. No code, then code: the setup
+  leaves nine `empty` rows and goes to planning; the first build meets a
+  `check` that fails saying the suite is not configured, as before this
+  change; after its merge `build-work` step 6 reads `empty` with code and
+  calls `setup-checks` whole, which lands the suite and offers the mode. Set
+  up before this version: `start-work` step 1 refreshes the files, the
+  refresh rewrites the header and the column rules and leaves the rows, so a
+  project with `filled` rows keeps them without the red proof, as the point
+  above records, and a project with a class the setup left `empty` beside
+  code reaches `setup-checks` from `start-work` step 4 or from the step after
+  its next merge. Nothing in `docs/plan.md`, `docs/skill-conventions.md` or the
+  should-states of this file stands against any of the five: the one
+  should-state that names the "none" answer offers both ways out.
+
+  **Should-states met by this change**, each on the line of the entry that
+  recorded it, its defect thing re-evidenced on the built line:
+  - Built: `setup-project` fills no class and runs `setup-checks` in every
+    project with code, so the offer of the mode and the duties of steps 3 to 8
+    stand on the path every project with code takes, finding C of 30
+    September 2026.
+  - Built: nothing is installed during the setup and the first install a
+    project meets comes after step 8 has landed and fetched the record,
+    finding L of 30 September 2026, its second way out.
+  - Built: `setup-checks` step 2 offers no "none", the finding of the
+    stock-take of 23 September 2026 on step 9 overriding it.
+  - Built: `setup-checks` step 9 routes by the way in, back to the build on
+    the single-class route, the finding of the same day on the close.
+  - Built: the single-class route from a build skips step 8 with step 7, the
+    finding of the same day on the offer standing in a first setup.
+  - Built: the route after a merge cuts its own branch and lands it in step 7,
+    the finding of the same day on which branch that call runs on.
+  - Built: `Blocking` takes one value on a row that is not filled, `-`, in
+    the rule, the column and the template, the finding of the same day.
+  - Built: `checks.md` is empty until `setup-checks` fills it, the sentence
+    under "Permissions, before the first command" being true on every path,
+    and the check commands are named as something to grant where they are
+    written, `setup-checks` step 3, the finding of the same day on the
+    permissions passage.
+  - Met in part: finding B of 30 September 2026, a red from a tool off the
+    PATH read as that and the fact landing in the repository. `setup-checks`
+    step 5's duty about a red that does not come from the code now stands on
+    the path every project takes; nothing new says how a tool found only
+    under `~/go/bin` is reached by the shell `make` runs in, and that half
+    stays recorded.
+  - The finding of the stock-take on the roadmap line naming question 6 for
+    the glossary, question 7 from 0.115.0: question 6 again since this
+    version, so the line holds and the finding leaves the table.
+
+  **Read through afterwards.** `grep -rn -i 'question [0-9]\|questions [0-9]'
+  skills/ shared/ hooks/ bin/ scripts/ README.md docs/plan.md
+  docs/skill-conventions.md .github/` finds every place naming a question of
+  `setup-project` by its number: in the skill itself, all renumbered; in the
+  conventions, four sentences amended with the number since 1 October 2026
+  and two left as history, "grew to thirteen points" and "named by question 4
+  until 30 September 2026"; in the plan, one sentence amended and three left as
+  the milestone's text of 19 September 2026 and the account of 28 September
+  2026, with the sentence of this day added to the milestone. The dated
+  entries of this file stand as written. `grep -rn 'Present your
+  mapping\|missing tools should be installed\|Canonical targets in the task
+  runner' skills shared README.md docs/plan.md docs/skill-conventions.md`
+  finds the mapping nowhere but in the conventions' account of 28 September
+  2026, amended to say where it went. The eighteen checks under "Before a
+  handover, run these" ran after the change; what each printed is in the
+  order's report.
+
+  **Records.** The things of question 3 of `setup-project` step 4 and of the
+  step-5 table leave the table with the lines, the two runs of 30 September
+  2026 on the missing-tools question with them, standing in that entry; the
+  nine table rows stand under `shared/canonical-targets.md`; new things for
+  the routes, the placeholders, the fetch, the close and `start-work` step 4;
+  the defect things of the eight should-states above re-evidenced on the built
+  lines, sited on the status lines they leave; a defect thing for the
+  unproven `filled` rows, sited on its line above; the finding on question 6
+  gone. The tool, run in this tree at 0.122.0 after this entry, `BROKEN
+  RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 1988` and exit 0,
+  recorded on its exit 0 outcome. The self-test at 0.122.0, `SELF-TEST
+  PASSED: 88 cases; of the 74 messages this tool rejects, refuses or answers
+  with, read off its own source, 74 are asserted by a case and 0 by none`,
+  recorded on its outcome.
+
 
 ## Decisions taken against
 
