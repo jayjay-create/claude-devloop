@@ -147,10 +147,6 @@ after a merge re-reads these and fills the class once the state has changed.
 the row on it by position. Where the reason needs more than a phrase, the phrase
 goes in the cell and the long form under "What these checks do not cover".
 
-## Cut the branch before the first write
-
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text cut-branch`
-
 ## Step 2 — Propose, in plain words
 
 Present what you would do, one line per class: what it would catch, roughly what
@@ -200,6 +196,12 @@ A tool declared in the project's own manifest travels with the repository and
 works for everyone who clones it. A tool installed system-wide does not, and it
 changes the user's machine.
 
+This step decides, per class, which tool and where it lands, and asks where
+that is the user's to allow. It writes nothing and installs nothing: the
+question about a tool landing outside the repository is the last question of
+this skill, the branch is cut once it is answered, and the manifest line, the
+install and the targets are step 4's, on that branch.
+
 **Name what you just wrote down as something to grant.** A check command
 recorded in `checks.md` is something this workflow will run on every task from
 now on. You cannot record the grant — the permissions file belongs to the tool
@@ -215,17 +217,7 @@ as last fetched, which the session-start line printed — or, in the session
 that landed the record, the fetch `setup-project` step 8 made after its merge,
 that line having been printed before the record existed — never the working
 tree.
-Under a yes, run the backed command yourself, with the user there and with
-nobody there, without asking again; the guard passes it where every place it
-lands is one the record names or the answer of a route it names, and blocks it
-otherwise, and "A guard's block is not a decline" above says what follows a
-block. The class counts as filled only
-once the tool stands at the path the installer writes to, never where
-`command -v` finds one. Report the command as it ran, what came back, what
-stands at that path, and what the package manager did besides — it updates
-itself, fetches what it needs for that and cleans up unasked — in the pull
-request body that lands the class, step 7's or the build's where this skill was
-called for one class, and write the standing fact into `environment.md`. A
+Under a yes there is nothing to ask: step 4 runs the backed command. A
 compiler or a runtime, anything needing `sudo`, anything piping a script from
 the network into a shell, and anything landing outside the places the record
 names and the directories its routes answer stay the user's under
@@ -235,13 +227,35 @@ plainly that it reaches beyond this project. If the only candidate for a class
 needs a system install and the user declines — or, with nobody there, the
 record says no — that class becomes `skipped` with that reason — not `empty`.
 
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
+## Cut the branch, after the last question and before the first write
 
-This step is where it matters most: a check class is filled by naming a tool, so
-this is the likeliest place in the whole workflow for a wrong path to be typed,
-and the class counts as filled only once the tool stands there.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text cut-branch`
+
+Not on the single-class route from a build: there the branch is the build's,
+as the opening says, and this step is skipped — no branch of the name above is
+cut, and the one the run was called on is kept.
 
 ## Step 4 — Introduce each class in stages
+
+First what the class needs standing. A tool inside the project goes into its
+manifest here. A tool outside it, where step 3 found the record saying yes,
+is installed here: run the backed command yourself, with the user there and with
+nobody there, without asking again; the guard passes it where every place it
+lands is one the record names or the answer of a route it names, and blocks it
+otherwise, and "A guard's block is not a decline" above says what follows a
+block. The class counts as filled only
+once the tool stands at the path the installer writes to, never where
+`command -v` finds one. Report the command as it ran, what came back, what
+stands at that path, and what the package manager did besides — it updates
+itself, fetches what it needs for that and cleans up unasked — in the pull
+request body that lands the class, step 7's or the build's where this skill was
+called for one class, and write the standing fact into `environment.md`.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
+
+This is where it matters most: a check class is filled by naming a tool, so
+this is the likeliest place in the whole workflow for a wrong path to be typed,
+and the class counts as filled only once the tool stands there.
 
 A class is filled under its canonical names, and this is where its target is
 made: in the task runner `setup-project` created, a thin target calling the
@@ -324,7 +338,7 @@ Skip this whole step when this skill was called for a single class from a build.
 That branch belongs to the build, and the build lands it with the rest of its
 task.
 
-Otherwise the branch cut before Step 2 has to reach the main branch now, before
+Otherwise the branch cut before Step 4 has to reach the main branch now, before
 anything else happens — at a first setup and on the route from the step after
 a merge alike, where the tree stood on the main branch and this skill cut its
 own branch, as the opening says. Everything from here on reads `checks.md` from the main
