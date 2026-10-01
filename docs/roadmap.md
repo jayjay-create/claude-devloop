@@ -8557,7 +8557,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   other way onto the main branch is a run reading past the cut step, the
   failure the shared text names; the guard would not see it until the second
   file under `docs/agents/` goes through the editing tool, from which point it
-  blocks, since the directory exists. Second reading: whether the silence without `docs/agents/` stands
+  blocks, since the directory exists. Second reading: whether the silence
+  without `docs/agents/` stands
   as a rule anywhere. `grep -n 'docs/agents' hooks/*.sh` finds the line
   `[ -d "docs/agents" ] || exit 0` in the branch guard, the merge guard and
   the install guard, the same test as an `if` in `hooks/session-start.sh`,
