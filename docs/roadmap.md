@@ -8500,7 +8500,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   build skips it, said under the heading, as the opening says. The refresh in
   `setup-project` asks nothing, so its cut is its first act, under the same
   name and rule. The heading reads "Cut the branch, after the last question
-  and before the first write" in both skills.
+  and before the first write" in both skills. Step 4 of `setup-checks` reads
+  "Put each class in place: its tool, its target, its findings in stages"
+  since the second addendum of this order, "Introduce each class in stages"
+  having named only its last part once the targets, on 1 October 2026 under
+  0.122.0, and now the install stood under it; nothing outside the skill
+  names that step by its title or its number, read with `grep -rn 'Introduce
+  each class in stages\|setup-checks.*step 4' skills shared docs README.md`,
+  which finds the heading, the table and the entry of 30 September 2026 that
+  quotes the old title as a record.
 
   **The names, and what the shared text does with an existing branch.**
   `shared/cut-branch.md` names `devloop-setup` for the setup of the project
@@ -8553,7 +8561,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   included, with the guard silent. Recorded, not built: what should hold is
   that `record-lessons`, where `docs/agents/` is missing in a project that is
   not this plugin's own repository, says the project is not set up and what
-  would set it up, by what it does and not by name, and writes nothing. The
+  would set it up, by what it does and not by name, and writes nothing. What
+  the guard does there separates in two: the write reaches the working tree
+  unseen, the directory then exists, and the same hook blocks `git commit`
+  and `git push` on the main branch, `hooks/pre-tool-use-branch-guard.sh`
+  from its line 36, so the file lands in the working tree and nothing reaches
+  the main branch through this workflow's commands. The
   other way onto the main branch is a run reading past the cut step, the
   failure the shared text names; the guard would not see it until the second
   file under `docs/agents/` goes through the editing tool, from which point it

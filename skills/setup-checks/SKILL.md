@@ -235,7 +235,7 @@ Not on the single-class route from a build: there the branch is the build's,
 as the opening says, and this step is skipped — no branch of the name above is
 cut, and the one the run was called on is kept.
 
-## Step 4 — Introduce each class in stages
+## Step 4 — Put each class in place: its tool, its target, its findings in stages
 
 First what the class needs standing. A tool inside the project goes into its
 manifest here. A tool outside it, where step 3 found the record saying yes,
