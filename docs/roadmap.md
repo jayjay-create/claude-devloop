@@ -1711,7 +1711,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   judge; `build-work` step 3 cuts the task branch inside the build subagent, after
   the task has been chosen; and `build-prototype` commits to a throwaway branch at
   capture time, after the work exists.
-  Recorded, not built.
+  Built on 1 October 2026, version 0.123.0, the entry of that date: the cut
+  stands behind the last question in both skills, the branches carry the fixed
+  names `devloop-setup` and `devloop-checks`, and a branch of that name with
+  nothing written on it is deleted and cut afresh, the checked-out one included.
 
 - **The check over the installed copy could not be green where it stood, measured
   on 9 September 2026.** Reported red three times in one day, at 0.95.0, 0.96.0
@@ -8469,6 +8472,150 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   with, read off its own source, 74 are asserted by a case and 0 by none`,
   recorded on its outcome.
 
+
+- **The branch cut of both setup skills stands behind the last question, the
+  branches carry fixed names, `devloop-setup` and `devloop-checks`, and a
+  branch of that name with nothing written on it is deleted and cut afresh,
+  the checked-out one included; 1 October 2026, version 0.123.0.** On
+  `task/branch-cut-after-last-question`, off `62f5ed4`. Builds the should of
+  the entry of 9 September 2026 on the setup cutting its branch before the
+  first question, for both skills. Nothing ran on a bench.
+
+  **Where the cut stands now, and the case it had to settle in each skill.**
+  The rule: behind the last question of the skill and before its first write
+  to the repository. In `setup-project` the last question is step 4's
+  question 6, where the glossary and the decision records live, and the first
+  write stood inside that same question: it created `CONTEXT.md` and
+  `docs/adr/README.md` itself. So the question only decides now, and the two
+  files are made in step 6 under `domain.md`, which already said "the two
+  places step 6 just created" of places step 4 had made; the cut stands
+  between step 4 and step 5, whose `.gitignore` lines and task runner are the
+  first write. In `setup-checks` the last question is step 3's, whether a
+  tool landing outside the repository may be installed where the record does
+  not say yes, and the first writes stood in the same step: the standing fact
+  into `environment.md`, and the manifest line a tool inside the project
+  takes. Step 3 now decides and asks and writes nothing; the install, its
+  report and the manifest line open step 4, where the targets are made; the
+  cut stands between step 3 and step 4, and the single-class route from a
+  build skips it, said under the heading, as the opening says. The refresh in
+  `setup-project` asks nothing, so its cut is its first act, under the same
+  name and rule. The heading reads "Cut the branch, after the last question
+  and before the first write" in both skills. Step 4 of `setup-checks` reads
+  "Put each class in place: its tool, its target, its findings in stages"
+  since the second addendum of this order, "Introduce each class in stages"
+  having named only its last part once the targets, on 1 October 2026 under
+  0.122.0, and now the install stood under it; nothing outside the skill
+  names that step by its title or its number, read with `grep -rn 'Introduce
+  each class in stages\|setup-checks.*step 4' skills shared docs README.md`,
+  which finds the heading, the table and the entry of 30 September 2026 that
+  quotes the old title as a record.
+
+  **The names, and what the shared text does with an existing branch.**
+  `shared/cut-branch.md` names `devloop-setup` for the setup of the project
+  and `devloop-checks` for the check setup and reads three cases off git
+  before cutting. No branch of the name: cut from the main branch. The branch
+  there with nothing written on it, read as the entry of 9 September 2026
+  read it — it stands on the main branch, its tip a commit the main branch
+  holds, and `git status --short` prints nothing — deleted and cut afresh,
+  stepping onto the main branch first, since `git branch -D` refused the
+  checked-out branch in the measured case. The branch there with something
+  written on it, a commit of its own or an unclean tree: switched to, as
+  before; taking up what stands there is not built. "Stood on exactly the
+  then-current main" in that entry is read as the tip being a commit the main
+  branch holds, which is the same test once the main branch has moved on
+  since the break-off, the then-current main being an ancestor of today's.
+
+  **The text the user sees is new, and its form.** One text is added that a
+  person reads: the line or two in the run's own message in the deletion
+  case. Reader: the person at the keyboard, in a first setup or a check
+  setup, the setup's opening already said. Form: prose in the run's own
+  message, no widget. What it carries, each part deciding what they read
+  next: that a branch of this name was already there, left by an earlier
+  setup broken off; that nothing had been written on it; that it was removed
+  and cut again. Nothing came out, nothing having stood there before. The
+  order's approved sentence reached this build cut off after its first word,
+  so the three parts are taken from the should of 9 September 2026 and stand
+  to be read against that sentence.
+
+  **The branch guard is not changed, and two readings about it.** The guard
+  exits 0 while `docs/agents/` is missing, so the write that creates that
+  directory goes through on the main branch too; this change closes nothing
+  there. First reading: after this change, is there a path in the set on
+  which the first file under `docs/agents/` is written with the run on the
+  main branch? `grep -rn 'docs/agents' skills shared bin scripts hooks
+  README.md` lists every place naming the directory. Of those, the writers
+  are `setup-project` step 6 and its refresh, `setup-checks` steps 4 and 6,
+  `build-work` step 3, `review-changes` and `build-work` through
+  `shared/rule-not-written-down.md`, and `record-lessons`. `setup-project`
+  step 6 writes the first file on a first setup, after the cut; the refresh
+  rewrites files that exist, after its cut; `setup-checks` reads `checks.md`
+  in step 1 before it writes anything; `build-work` and `review-changes` read
+  the control documents first, and the shared block writes nothing where
+  `standards.md` does not exist. `grep -rn 'mkdir\|git switch\|git checkout'
+  skills shared` finds no other place creating the directory or switching
+  branches. One path stands: `record-lessons`, typed by a person, in a
+  project that is not set up — no `docs/agents/`, no plugin manifest — follows
+  its table into `docs/agents/standards.md` with no check that the project is
+  set up and no branch cut before the write, so that file is the directory's
+  first and lands on whatever branch the run stands on, the main branch
+  included, with the guard silent. Recorded, not built: what should hold is
+  that `record-lessons`, where `docs/agents/` is missing in a project that is
+  not this plugin's own repository, says the project is not set up and what
+  would set it up, by what it does and not by name, and writes nothing. What
+  the guard does there separates in two: the write reaches the working tree
+  unseen, the directory then exists, and the same hook blocks `git commit`
+  and `git push` on the main branch, `hooks/pre-tool-use-branch-guard.sh`
+  from its line 36, so the file lands in the working tree and nothing reaches
+  the main branch through this workflow's commands. The
+  other way onto the main branch is a run reading past the cut step, the
+  failure the shared text names; the guard would not see it until the second
+  file under `docs/agents/` goes through the editing tool, from which point it
+  blocks, since the directory exists. Second reading: whether the silence
+  without `docs/agents/` stands
+  as a rule anywhere. `grep -n 'docs/agents' hooks/*.sh` finds the line
+  `[ -d "docs/agents" ] || exit 0` in the branch guard, the merge guard and
+  the install guard, the same test as an `if` in `hooks/session-start.sh`,
+  which prints "devloop: not set up here" for it, and the two checks hooks
+  testing `docs/agents/checks.md` instead. `docs/skill-conventions.md` orders
+  it nowhere: `grep -n 'docs/agents' docs/skill-conventions.md` finds the
+  control documents, the install record, and the measurement of 28 September
+  2026 that the install guard exits 0 without the directory, a measurement
+  and not a rule. Outside the conventions it stands as a consequence twice:
+  `record-lessons` under "When this repository is the workflow", "devloop's
+  own hooks stay inert in it", and the entry of this section on devloop's own
+  repository not being set up with devloop. Nothing orders it; it stands in
+  the code lines and is recorded from them.
+
+  **Read through afterwards.** `grep -rn 'cut-branch\|Cut the branch\|git
+  switch' skills shared hooks bin scripts README.md docs/plan.md
+  docs/skill-conventions.md` finds the insert line and the heading in the two
+  setup skills, both moved, the refresh paragraph, amended, and nothing else:
+  `README.md`, `docs/plan.md` and `docs/skill-conventions.md` name neither
+  the step nor the branch, and `start-work`, which routes into both setups,
+  says nothing about branches. `build-work` step 3 cuts the task branch
+  inside the build subagent and `build-prototype` commits to a throwaway
+  branch, as the entry of 9 September 2026 already says; neither is this
+  pattern and neither changes. The eighteen checks under "Before a handover,
+  run these" ran after the change; what each printed is in the order's
+  report.
+
+  **Records.** The two defect things of the entry of 9 September 2026
+  re-evidenced on the moved headings and sited on the status line they
+  leave; the two cut headings renamed in their things; `shared/cut-branch.md`
+  holds five things now, the straight path, the name by the skill and the
+  three cases, the switched-to case keeping its run of 30 August 2026, which
+  no longer counts, since its lines changed; the thing of the glossary places
+  moved from step 4 to step 6 of `setup-project`, step 4 keeping a thing for
+  the decision; the install-under-a-yes thing of `setup-checks` moved from
+  step 3 to step 4 with its lines, step 3 keeping a thing for a yes asking
+  nothing; a thing for the single-class route under the cut heading of
+  `setup-checks`; a defect thing for `record-lessons` sited on its line
+  above. The tool, run in this tree at 0.123.0 after this entry, `BROKEN
+  RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2000` and exit 0,
+  recorded on its exit 0 outcome. The self-test at 0.123.0, `SELF-TEST
+  PASSED: 88 cases; of the 74 messages this tool rejects, refuses or answers
+  with, read off its own source, 74 are asserted by a case and 0 by none`,
+  recorded on its outcome.
 
 ## Decisions taken against
 

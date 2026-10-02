@@ -67,9 +67,11 @@ If `docs/agents/` already exists, this is not a first setup. Do not run the step
 below: they ask questions that were answered once already, and re-asking them is
 how a working project gets talked into changing its mind.
 
-Cut the branch first — the same rule as a first setup, and the same step below.
-Skipping the steps below skips where that rule is written, which is how the
-first refresh ran straight into the main-branch guard.
+Cut the branch first, under the same name and rule as a first setup — the step
+below that stands between the last question and the first write. A refresh asks
+nothing, so here it is the first thing done. Skipping the steps below skips
+where that rule is written, which is how the first refresh ran straight into
+the main-branch guard.
 
 The files hold two kinds of content, and only one of them is yours:
 
@@ -229,10 +231,6 @@ that, and step 4 says which of its questions is which.
 ## Step 2 — Report what you found
 
 Ten lines at most. Say explicitly what you did **not** find.
-
-## Cut the branch before the first write
-
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text cut-branch`
 
 ## Step 3 — The empty case
 
@@ -399,16 +397,17 @@ step writes has landed.
    Then ask: map onto the existing ones, or add ours alongside. Otherwise create
    the five standard labels and report it.
 6. **Where glossary and decision records live** — only if something already lives
-   elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`. **Create both
-   as files that git can carry, and say you did.** `CONTEXT.md` gets a heading
-   and a line saying it stays empty until the first term comes up; `docs/adr/`
-   gets a `README.md` saying what belongs in it. A bare `mkdir` leaves an empty
-   directory, git does not track one, and nobody who clones the repository ever
-   sees it. This matters because `domain.md` is about to point at both: a
-   pointer to something that does not exist is the one outcome to avoid.
+   elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`. Decide it
+   here and create nothing yet: this is the last question of the setup, the
+   branch is cut once it is answered, and the two places are made in step 6,
+   under `domain.md`, on that branch.
 
 Never ask about the user's preferred language or tone here — that belongs to the
 plugin's one-time setup, not to a per-project run.
+
+## Cut the branch, after the last question and before the first write
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text cut-branch`
 
 ## Step 5 — The task runner and its fixed targets
 
@@ -613,8 +612,15 @@ If it has no queryable blocking relationship, stop the setup — see above.
 
 ### `domain.md`
 
-Where the glossary and the decision records live — the two places step 6 just
-created, so check they are there before writing the pointer. That terms go into
+First the two places question 6 of step 4 decided on, where nothing lived
+elsewhere: **create both as files that git can carry, and say you did.**
+`CONTEXT.md` gets a heading and a line saying it stays empty until the first
+term comes up; `docs/adr/` gets a `README.md` saying what belongs in it. A bare
+`mkdir` leaves an empty directory, git does not track one, and nobody who
+clones the repository ever sees it. Then where the glossary and the decision
+records live — the two just created, or what question 6 found living elsewhere
+— checked to be there before the pointer is written: a pointer to something
+that does not exist is the one outcome to avoid. That terms go into
 the glossary the moment they come up, not collected later. The three tests for writing a
 decision record: hard to reverse, surprising without explanation, the result of a
 real trade-off. The format: title, context, decision, binding consequences, status
