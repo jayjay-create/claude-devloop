@@ -227,9 +227,10 @@ only with the person present, since setup never runs unattended. **The guard**:
 `hooks/pre-tool-use-install-guard.sh` reads the record and passes a command
 landing in an allowed place; outside it, it blocks as today. **The skills**:
 `build-work` step 3 point 7, `setup-checks` step 3, `setup-project` step 4
-question 3 and the guard's own message all say today that the person runs the
-install; under a yes the run runs it, backed as today, and reads the result off
-the path the installer writes to. **Unattended**: the run installs, reports
+question 3 — the question that left for `setup-checks` on 1 October 2026 — and
+the guard's own message all say today that the person runs the install; under a
+yes the run runs it, backed as today, and reads the result off the path the
+installer writes to. **Unattended**: the run installs, reports
 the command and what came back at a site that outlives the session, and where
 the record says no, the decline path stays what it is.
 

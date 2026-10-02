@@ -190,8 +190,9 @@ the same situation by another route. Four in one day:
 - Reporting what is in flight sat in step 2 of the entry point, so a run that
   detoured through the document refresh came back and skipped it, greeting a map
   with eleven open tickets by asking what the user would like to build.
-- The check table's format rules sat with the two skills that create the file, so
-  the skill that edits it mid-build wrote a status word that does not exist.
+- The check table's format rules sat with the two skills that created the file
+  then — one does since 1 October 2026 — so the skill that edits it mid-build
+  wrote a status word that does not exist.
 - The rule that a question can need both reading and deciding sat with the ticket
   types, so the step that creates tickets in bulk kept turning it into one
   interview.
@@ -513,9 +514,9 @@ gets a paraphrase. Listing what the paragraph must cover gets all of it.
 Two texts of this set grew the same way between 24 August and 29 September
 2026 and failed the same way. The install guard's block message was written at
 112 words and stood at 337 at the end, grown in five changes, each answering
-something a run had just got wrong; question 4 of `setup-project` grew to
-thirteen points the same way. Every addition was justified, and no addition
-read the text it went into as a whole. The message reached the run, and the
+something a run had just got wrong; question 4 of `setup-project` — question 3
+since 1 October 2026 — grew to thirteen points the same way. Every addition was
+justified, and no addition read the text it went into as a whole. The message reached the run, and the
 person watching, verbatim and unreadable. The question did not reach the
 person at all: ten of its thirteen points were prose above two option lines,
 and the form that carried it has no room for prose. Both cuts are recorded in
