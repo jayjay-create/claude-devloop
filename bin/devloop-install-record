@@ -30,8 +30,8 @@ cd "$PROJECT_DIR" 2>/dev/null || { echo "cause: the project directory $PROJECT_D
 git rev-parse --git-dir >/dev/null 2>&1 || { echo "cause: not a git repository, so there is no default branch to read the record off"; exit 1; }
 
 # The default branch, resolved exactly as hooks/pre-tool-use-branch-guard.sh
-# resolves it; a check under "Before a handover, run these" holds the two
-# copies together.
+# resolves it; a check under "Before a handover, run these" holds the three
+# copies together, bin/devloop-setup-state's among them.
 DEFAULT=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
 DEFAULT="${DEFAULT#origin/}"
 if [ -z "$DEFAULT" ]; then

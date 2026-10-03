@@ -63,9 +63,24 @@ matched.
 
 ## Refreshing an existing setup
 
-If `docs/agents/` already exists, this is not a first setup. Do not run the steps
-below: they ask questions that were answered once already, and re-asking them is
-how a working project gets talked into changing its mind.
+Run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state --fetch` before anything
+else. It reads the main branch as last fetched, fetching first, and never the
+working tree: `docs/agents/` in the tree is what this setup writes before it
+lands, so a setup broken off after the write and before the merge looks set up
+there and is not.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-failed`
+
+Where no `missing:` line stands in the answer, every file is
+on the main branch and this is not a first setup. Do not run the steps below:
+they ask questions that were answered once already, and re-asking them is how
+a working project gets talked into changing its mind. Where every file is
+missing, this is a first setup, whatever the tree holds, and the steps below
+run; a branch `devloop-setup` an earlier run left with something written on it
+is met at the cut, which says what happens with it. Where some file is present
+and some missing, this is a refresh all the same, and a file missing there is
+written from its template in step 6 the way a first setup writes it; the two
+or three lines below name it.
 
 Cut the branch first, under the same name and rule as a first setup — the step
 below that stands between the last question and the first write. A refresh asks
