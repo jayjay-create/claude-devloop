@@ -8617,6 +8617,84 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   with, read off its own source, 74 are asserted by a case and 0 by none`,
   recorded on its outcome.
 
+- **Four things an earlier order left undone: two places of the documents
+  dated, the finding on `shared/cut-branch.md` given its history, and the
+  findings of two reports of 1 October 2026 held against the table and the
+  files; 2 October 2026, version 0.124.0.** On `task/four-leftovers`, off
+  `2a6e713`. No skill, hook or program changes, and no text a user reads.
+  Nothing ran on a bench.
+
+  **The two places.** `docs/skill-conventions.md` under "A rule holds only on
+  the path it is written on" said the check table's format rules sat with "the
+  two skills that create the file"; since 1 October 2026, version 0.122.0,
+  `setup-project` alone creates `checks.md`, so the clause reads as the past
+  now, "created the file then — one does since 1 October 2026". Under "A text
+  is as long as what carries the decision, and written for its form" the
+  question that grew to thirteen points stood as question 4 of `setup-project`
+  with no date, and question 4 is the local environment since 1 October 2026;
+  the line carries "question 3 since 1 October 2026" now, as the other mentions
+  of that number in the file do. `grep -rn 'question [0-9]' docs/ README.md
+  skills/ shared/` was read whole: `docs/plan.md` milestone 3 named question 3
+  of `setup-project` among four places saying the person runs the install, the
+  question that left for `setup-checks` on 1 October 2026, and says so now;
+  every other mention in that file, in the conventions and in the skills
+  carries its date or names today's numbering, and the entries of this file
+  are dated by their heads; two notes of the table, on the record's form under
+  `environment.md` and on the subject of the install question, named question
+  4 without a date and carry "until 1 October 2026 and question 3 since" now.
+  Read through afterwards, no sentence of either document directs anything
+  differently; `grep -rn 'skills that create\|two skills that' docs/ README.md
+  skills/ shared/` finds the amended line, this entry's quotation of the old
+  one and the command itself, and, in this file, "the two skills that wrote"
+  the unattended state file, which is another file and stands.
+
+  **The finding on `shared/cut-branch.md`.** The finding of 1 October 2026
+  that its commands write `main` literally where the hooks resolve the main
+  branch from `origin/HEAD` lacked when the commands came in. `git show
+  62f5ed4:shared/cut-branch.md | grep -n main` prints two lines, 3 and 10,
+  "main-branch guard" and "Never commit to the main branch directly", prose
+  both: before the branch cut of 1 October 2026, version 0.123.0, the file
+  named the main branch in no command, and the three commands carrying the
+  literal came with that change. The note says so now.
+
+  **The findings of two reports.** `~/devloop-gegenprobe-2026-10-01.md`, read
+  against `9fa10a7`, closes on fourteen lines;
+  `~/devloop-checks-umbau-2026-10-01.md`, written on `9f40379`, on seven. Both
+  are a model's output and were held against the table and against the files
+  of this tree, never taken on their word; the list of
+  `~/devloop-zweigschnitt-2026-10-01.md` was taken up by the order of 1 October
+  2026 and stayed out. Thirteen fall away. Ten stand in the table as defects
+  of entries under this heading: the branch guard's silence before
+  `docs/agents/` exists, read in the entry of 1 October 2026 on the branch
+  cut; the session-start line reaching the run and not the person;
+  `start-work` step 1 reading a file; question 2's recommendation; the bench's
+  `Makefile` naming tools under `~/go/bin`; the places and routes listed under
+  a no; the `filled` rows written without the red proof; the check commands
+  named as something to grant with nobody there; and two repaired on 1 October
+  2026 under 0.122.0, the single-class route skipping step 8 with step 7 and
+  step 2 of `setup-checks` losing the "none" answer. One is an observation the
+  entry of 30 September 2026 carries and the report itself calls no rule, the
+  two benches deciding `types` opposite ways. One is the state of this machine
+  on that day, the installed copy a version behind the tree, and stands in no
+  file. One is the question numbers without a date, the first part of this
+  order. Eight remain, each read anew at the files and recorded as a finding
+  row of `docs/stock-take.tsv` — on `skills/setup-checks/SKILL.md` twice,
+  `skills/setup-project/SKILL.md` three times, `skills/build-work/SKILL.md`,
+  `skills/start-work/SKILL.md` and `README.md` — in the form of the rows of 1
+  October 2026, repaired nowhere on this branch, each note carrying the search
+  of this file that came back without a match. The tool lists them, and this
+  entry names none, so that each stands once.
+
+  **Records.** The three notes amended; eight finding rows; the head of this
+  entry as no defect. The tool, run in this tree at 0.124.0 after this entry,
+  `BROKEN RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2001` and
+  exit 0, recorded on its exit 0 outcome. The self-test at 0.124.0, `SELF-TEST
+  PASSED: 88 cases; of the 74 messages this tool rejects, refuses or answers
+  with, read off its own source, 74 are asserted by a case and 0 by none`,
+  recorded on its outcome. The eighteen checks under "Before a handover, run
+  these" ran after the change; what each printed stands in the session and
+  not here.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
