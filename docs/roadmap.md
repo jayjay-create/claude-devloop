@@ -8961,6 +8961,218 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   2048` and exit 0, recorded on its exit 0 outcome; its self-test unchanged,
   its source untouched. The version stays at 0.125.0: one raise per branch.
 
+- **The install question's points stand in the fields of the harness's choice
+  widget — the question line carrying the subject, its scope and the leak, the
+  yes and the no each a label and a line — the form rule rewritten so that
+  prose before the widget carries only a point no field can carry, and the
+  boundary on runtimes and the unattended half of the no out of the question
+  as rules on the run; 3 October 2026, version 0.126.0.** On
+  `task/question-in-widget-fields`, off `0d3ff6e`. The order was a draft,
+  walked through five situations before anything was built. Nothing ran on a
+  bench: the question has not been put since 30 September 2026.
+
+  **The situation it closes.** Question 3 of `setup-project` step 4 required
+  since 30 September 2026, version 0.119.0, that the question stand in prose
+  in the run's own message and that a widget after it carry its two answers
+  and no other question. Nothing in the repository read whether a run met it,
+  and three runs did not — `devloop-test-q` on 29 September 2026 under
+  0.118.0, before the form was named, and `devloop-test-s` and
+  `devloop-test-t` on 30 September 2026 under 0.120.0: the question came as
+  one tab of a form beside another question each time, and the points that
+  stood only in prose did not arrive, findings A and G of the entry of 30
+  September 2026 on the two runs. The fifth of the five sentences of
+  `docs/plan.md` says what becomes of a rule that does not hold in a run:
+  rewritten, not appended to, with every place deciding the same thing named
+  in the same change.
+
+  **What goes in which field.** The entry of 30 September 2026 on the first
+  asking measured the widget: one to four questions in a call, each a
+  question line, a header and options of a label and a line, and content
+  that does not fit a field arrives cut to it. Every point that carries the
+  decision has a field now, and question 3 names it, so that a reader of the
+  skill sees whether a point has a place at all. In the question line, the
+  subject and its scope — tools landing outside the project on this machine,
+  the answer holding for this project — and, directly behind the subject and
+  not at the end of the line, where a cut strikes first, what a yes also
+  lets through: through a package manager the guard sees the verb and not
+  what is installed, so a yes to tools also lets through a command that
+  installs a runtime. That point reached the person in none of three runs:
+  not at all in `devloop-test-r`, and in the two runs of 30 September 2026
+  named and then cancelled by the assurance that followed it. In the yes,
+  label and line, what a yes means; in the no, label and line, where a no
+  leads with them there; in the header a word for the subject, carrying no
+  point. The examples of such a tool — a code generator, a migration
+  command, a checker — carry no decision and have no field. Each field holds
+  a short line, the question line two sentences.
+
+  **Two contents left the question, on purpose.** The boundary, that
+  compilers and runtimes stay theirs under every answer, "as a rule on the
+  run and not a wall": both runs of 30 September 2026 lifted it out of the
+  leak and delivered it as an assurance the guard does not hold, and finding
+  A's should is that the leak reaches the person or nothing about runtimes
+  does. It is built the first way: the leak is said and the assurance is
+  not, and "Runtimes are not a kind the permission may cover" in
+  `docs/skill-conventions.md` stays the rule, saying now that the question
+  does not say the boundary. The unattended half of the no — nothing asked,
+  the task an issue carrying the exact command or a class `skipped` with the
+  reason — names a mode the person has not met at that point, the pattern
+  finding F of the same entry records of the permissions passage. It stands
+  whole as a rule on the run where it is applied: `build-work` step 3 point
+  7, "With nobody there, a no on record is the decline, and the paragraph
+  below applies", that paragraph carrying the two outcomes, the class
+  `skipped` through `setup-checks` and the task an issue with `raised-here`
+  and `needs-human`; and `setup-checks` step 3, "or, with nobody there, the
+  record says no — that class becomes `skipped` with that reason — not
+  `empty`". Question 3 names both places and says the half is not said to
+  the person; the no's line says that nothing is installed without them,
+  which holds in both cases.
+
+  **The form rule, rewritten and not appended to.** The rule since this
+  version: the content of a question stands in the widget's fields, and
+  prose in the run's own message before the widget carries only a point no
+  field can carry, and nothing else. The widget carrying this question alone
+  stays required, for another reason than before — two decisions in one
+  submit, the case `start-work` step 1 gives against a second question in
+  the same reply, where a bare yes stops being an answer to either. Every
+  place deciding the same thing, read and changed or left: `setup-project`
+  step 0's last paragraph, which scoped the reading about options to a
+  choice two lines carry — it says now that the fields are what is read and
+  that step 4 names the field of each point; step 4's opening, which named
+  two forms and sorted the questions between them — now one form for a
+  choice with its content in the fields, the exception for a point no field
+  carries, question 4 open and in prose, and the call of question 3 alone;
+  question 3 itself, which required prose and a widget after it; "A text is
+  written for the form that carries it" in `docs/skill-conventions.md`,
+  which said step 4 names its two forms — now that it names the field of
+  each point; `plan-work` Stage 1, "in a message of its own" for the mode
+  question — the one other sentence of the set that put that form, and the
+  wording a tab of its own met at the install question — now "in a widget
+  call that carries this question and no other", the three answers already
+  a label and a line each; `shared/three-questions.md`, "something that
+  needs weighing goes alone", which decides the same in the same direction,
+  left; `start-work` step 1's reason against a second question in the same
+  reply, the reason the rule now rests on, left; `shared/how-to-ask.md`, "A
+  question has to be answerable by what it offers", which decides the shape
+  of a question and not its form, left; and `setup-checks` step 8's offer of
+  the mode, which names no form and is left — what its six things a yes
+  leads to would do in a widget's fields is not this entry's. `docs/plan.md`
+  milestone 3 carries the change in its account.
+
+  **The five situations, on paper.** (a) A project with code: the question
+  is put, every point in a field, the record written in step 6 and landed in
+  step 8, the check setup after it; nothing stands in prose, so nothing is
+  lost to the form. (b) A project without code: step 3 puts question 3 as
+  before, and no field depends on a stack — the yes says what the run does
+  from then on, the no what the person gets where a tool is missing — and
+  the record carries no route line, as the entry of 29 September 2026 on the
+  empty case says. (c) The run puts the question in one form beside
+  auto-merge: every point of question 3 arrives, since every point has a
+  field, which is the gain over the three runs; what is lost is one submit
+  for two decisions, the half of the rule nothing reads, the finding below;
+  auto-merge carrying a recommendation beside a question that gives none
+  stands recorded as finding H of 30 September 2026. (d) The user's language
+  is not German: the skill says what each field carries and not the words,
+  "Describe what must be said; never dictate wording", and
+  `shared/language-opening.md` holds the question line, the labels and the
+  lines to the user's language; the approved wording below is the German
+  reference. (e) A field does not carry its content: the rule says prose
+  before the widget for that point and nothing else, and "A text is written
+  for the form that carries it" says a text and a form that do not fit are
+  one thing wrong — the text is cut to what the field holds or goes to a form
+  that holds it, and is never made shorter in the hope that it gets through.
+  Of the approved fields, the two labels are four words each against the
+  widget's one to five, the header a word against its twelve characters, and
+  the question line and the two answer lines have no documented limit and
+  wrap in the terminal; which of them a run compresses is read off the next
+  bench run and nothing else. Nothing in `docs/plan.md`,
+  `docs/skill-conventions.md` or the should-states of this file stands
+  against any of the five, read with `grep -n 'should' docs/roadmap.md`, 145
+  lines on 3 October 2026: finding A's should is met its first way, finding
+  G's in its first half, and "Where the set ends" in the plan, that a
+  compiler or interpreter is the person's under every answer, stands as a
+  ruling and not as something the question says.
+
+  **The finding, and what the documentation says.** That the widget carries
+  this question alone cannot be checked mechanically today: the repository
+  reads no widget call. Read on 3 October 2026 off
+  `code.claude.com/docs/en/plugins/mods/reference.md`: `AskUserQuestion` is
+  a render site, one of the sites Claude Code draws itself, keyed by the
+  tool call id and carrying "the question and options" as its props, so the
+  `ui.render` event of the mods system sees the call's content as it is
+  drawn; the same page lists `tool.call`, which fires as a tool is about to
+  run, and `tool.check`, decided "after the `tool.call` and `PreToolUse`
+  hooks". `code.claude.com/docs/en/hooks.md` names `AskUserQuestion`
+  nowhere, and the one tool it names as skipping `PreToolUse` is
+  `EndConversation`. The order behind this entry said the widget is a
+  surface site and not a tool site and that `PreToolUse` does not reach it;
+  the reference says the first and not the second, and the hooks page's one
+  general sentence points the other way. So the candidates are a
+  `PreToolUse` hook matching the question tool and counting the questions in
+  its input — the mechanism this plugin's three guards already use — and a
+  mod's `ui.render` or `tool.call` hook; which of them sees the call is
+  measured with a throwaway plugin, as the entry of 17 September 2026 built
+  `probe`. A finding row of `docs/stock-take.tsv` carries it, on the rule's
+  line in step 4, repaired nowhere: what should hold is that a measured
+  mechanism holds this half of the rule, or it is dropped.
+
+  **The approved wording**, the record of what was approved on 3 October
+  2026; the skill says what is said and not the words, as the entry above
+  does with the sentence for a failed fetch. The question line: "Darf ich
+  für dieses Projekt künftig Werkzeuge installieren, die außerhalb des
+  Projekts auf diesem Rechner landen? Ein Ja lässt über den Paketmanager
+  auch einen Befehl durch, der eine Laufzeitumgebung installiert." The first
+  answer, label "Ja, Werkzeuge selbst installieren", line "Ab jetzt
+  installiert der Lauf solche Werkzeuge selbst, mit dir und ohne dich, ohne
+  erneut zu fragen." The second answer, label "Nein, nicht selbst
+  installieren", line "Nichts wird ohne dich installiert. Wo ein Werkzeug
+  fehlt, bekommst du den Befehl dafür und entscheidest selbst."
+
+  **Read through afterwards.** `grep -rn "in prose\|message of its own\|two
+  option lines\|choice widget\|two lines carry" skills shared docs/plan.md
+  docs/skill-conventions.md README.md`: in `setup-project`, question 4 in
+  prose and the two accounts of the forms that stood before, dated; in
+  `docs/plan.md` and the conventions, the account of 30 September 2026,
+  dated, and the amended sentence under "A text is written for the form that
+  carries it"; `plan-work` Stage 3 comparing drafts in prose and
+  `setup-checks` step 6 on a column, which are not questions; nothing
+  requiring prose for a choice. `grep -rn "says the boundary\|as a
+  boundary\|under every answer" skills shared docs/plan.md
+  docs/skill-conventions.md hooks README.md`: the boundary as a rule on the
+  run in `build-work` step 3 point 7 and `setup-checks` step 3, in two causes
+  of the install guard, in the ruling and in the plan, and in question 3's
+  paragraph on what stays out; no question says it to a person. `grep -rn
+  "no other question\|and no other" skills shared`: step 4's opening and
+  question 3 of `setup-project`, and `plan-work` Stage 1. No sentence in a
+  changed file says the opposite of what stands.
+
+  **Should-states met.** Built, the first of its two ways: finding A of 30
+  September 2026, the leak said and the assurance not, the defect thing
+  re-evidenced on the line of question 3 that says so. Built in part: finding
+  G of the same entry, the points written for the widget's own fields, the
+  defect thing re-evidenced on the line of question 3 that names them; the
+  call carrying this question alone stays the finding above. The defect of
+  29 September 2026 on the first asking and the defect of the pulls of 30
+  September 2026 stand re-evidenced on the lines that carry their repairs
+  now, the form rule and the leak in the question line; the defect of the
+  three things in the options on the paragraph that holds them as a rule on
+  the run.
+
+  **Records.** The things of question 3 re-anchored on the four fields and
+  the two paragraphs, the yes and the no keeping their names and their runs
+  of 30 September 2026, which no longer count, since their lines changed;
+  the thing for the clause that did not fit the question line gone with its
+  line; the two form things of step 4 renamed to the one form and its
+  exception, and a thing for question 4 in prose; the mode question of
+  `plan-work` renamed to its call and its lines re-anchored; the not-a-thing
+  of step 0 re-anchored; one finding row; the head of this entry as no
+  defect. The tool, run in this tree at 0.126.0 after this entry, `BROKEN
+  RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2058` and exit 0,
+  recorded on its exit 0 outcome. The self-test at 0.126.0, `SELF-TEST
+  PASSED: 88 cases; of the 74 messages this tool rejects, refuses or answers
+  with, read off its own source, 74 are asserted by a case and 0 by none`,
+  recorded on its outcome. The eighteen checks under "Before a handover, run
+  these" ran after the change; what each printed stands in the session.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
