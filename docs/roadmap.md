@@ -8915,6 +8915,52 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   recorded on its outcome. The eighteen checks under "Before a handover, run
   these" ran after the change; what each printed stands in the order's report.
 
+  **Addendum of the same day: the text for a failed fetch, built once, and the
+  two others left as proposals.** Of the three texts proposed above one is
+  built, the one for a fetch that failed or did not answer, in the wording
+  approved that day: "Der Hauptzweig lässt sich gerade nicht holen (<Meldung
+  von git>). Ich arbeite mit dem Stand vom letzten Mal weiter; er kann
+  veraltet sein." The four places that read with the flag would have said it
+  in four wordings, which "Text shared between skills" rules out, so it stands
+  once, in `shared/fetch-failed.md`, inserted with its line in `start-work`
+  step 1, in `plan-work` and `untangle-idea` before their first write and in
+  `setup-project` under "Refreshing an existing setup", each directly after
+  the sentence that runs the program and before the sentence that acts on the
+  answer; the skill says what must be said, not the wording, and what follows
+  from the state read stays each skill's own text, under the inserted line.
+  The sentence `start-work` step 1 carried on the `fetch:` line went, since
+  the inserted text decides the same thing. The shared form fits: the
+  statement has to stand in four skills in the same words, carries no
+  consequence of its own, and is the third kind under "What is shared today",
+  a rule written once for the skills that share its situation; that paragraph
+  names it beside `shared/rule-not-written-down.md` now, and the paragraph on
+  the setup state names where it stands. The two other texts, what
+  `start-work` says in the middle state and what `setup-project` says on
+  taking up a written branch, stay as proposals in the report and are not
+  built: each promises that the answers already given are taken up, and
+  nothing takes them up, so a run saying either would say something untrue,
+  which "A text is as long as what carries the decision" rules out before
+  length. The fifth fetch, `setup-project` step 8, "Once the merge is proven,
+  fetch, fast-forward the local main branch and switch to it", describes no
+  path for a fetch that fails, and the shared statement does not belong there:
+  going on with the state as last fetched would go on without the setup, the
+  check setup cutting its branch from a main branch that lacks it and the
+  guard reading no record; `build-work` step 6 says of its own fetch and
+  fast-forward "If that fails, say so and stop", and
+  `shared/command-does-not-answer.md`, inserted in `setup-project`, reads an
+  error as an answer and not as a missing one, so nothing covers it. A finding
+  row of `docs/stock-take.tsv` carries it, sited on that sentence, repaired
+  nowhere; that sentence came on 1 October 2026 and not in this order. Of the
+  checks under "Before a handover, run these", those over shared text and
+  insert lines ran after the change: no shared line written out in a skill,
+  every insert line in the granted form and resolving, every inserting skill
+  carrying the grant, the language block at its two places in all twelve, one
+  checksum of the notice and a count of twelve, every skill expanding; all
+  silent or at their green form. The tool, run again at 0.125.0 after this
+  addendum, `BROKEN RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of
+  2048` and exit 0, recorded on its exit 0 outcome; its self-test unchanged,
+  its source untouched. The version stays at 0.125.0: one raise per branch.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

@@ -67,7 +67,11 @@ Run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state --fetch` before anything
 else. It reads the main branch as last fetched, fetching first, and never the
 working tree: `docs/agents/` in the tree is what this setup writes before it
 lands, so a setup broken off after the write and before the merge looks set up
-there and is not. Where no `missing:` line stands in the answer, every file is
+there and is not.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-failed`
+
+Where no `missing:` line stands in the answer, every file is
 on the main branch and this is not a first setup. Do not run the steps below:
 they ask questions that were answered once already, and re-asking them is how
 a working project gets talked into changing its mind. Where every file is

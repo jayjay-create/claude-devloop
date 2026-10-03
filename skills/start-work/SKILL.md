@@ -30,9 +30,9 @@ the flag is for: which files of the setup stand there, each by name on a
 `present:` or a `missing:` line, and on a `marker:` line the version each
 present file was written from. The working tree is not read, because a run
 writes it: a setup written and not landed looks set up there and is not, and
-every task branch is cut from the main branch. Where its `fetch:` line says
-the fetch failed or did not answer, the answer is the state as last fetched,
-and that line says so.
+every task branch is cut from the main branch.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-failed`
 
 If no `missing:` line stands in the answer, every file of the setup is on the
 main branch: compare the `marker:` line of `docs/agents/issue-tracker.md` with

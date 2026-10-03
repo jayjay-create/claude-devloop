@@ -131,7 +131,11 @@ skill, under the inserted line. The third is a rule written once, on the day
 it is written, for the skills that share its situation, never a copy and never
 a settled wording: `shared/rule-not-written-down.md`, 27 September 2026,
 inserted into `review-changes` and `build-work`, and "A project's rules are
-written at the review's close" below says why it stands there.
+written at the review's close" below says why it stands there; and
+`shared/fetch-failed.md`, 3 October 2026, inserted into the four skills that
+fetch the main branch through `bin/devloop-setup-state`, what to say where
+the fetch failed, which "The setup state is read off the default branch"
+below places.
 
 ## Numbered steps where order matters
 
@@ -1443,8 +1447,13 @@ carries or `none`; the task runner, `CLAUDE.md`, `.gitignore` and the two
 places `domain.md` points at have no fixed name a branch can be asked for, so
 they are not read. With `--fetch` it fetches first, and a fetch that fails or
 does not answer is said on its `fetch:` line while the state as last fetched
-is read; without the flag it says it reads that state. The places that act on
-the answer read with the flag — `start-work` step 1, `plan-work` and
+is read; without the flag it says it reads that state, and the four skills
+that read with the flag say so to the person, in one text under
+`shared/fetch-failed.md` inserted at each, directly after the sentence that
+runs the program and before the one that acts on the answer, in the wording
+approved on 3 October 2026, so that the statement stands once and what
+follows from the state read stays each skill's own text. The places that act
+on the answer read with the flag — `start-work` step 1, `plan-work` and
 `untangle-idea` before their first write, `setup-project` before its refresh
 — and `hooks/session-start.sh` reads without it, so that no network is
 reached at the start of a session. The guards keep `[ -d "docs/agents" ] ||

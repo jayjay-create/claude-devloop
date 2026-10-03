@@ -74,9 +74,13 @@ live is tracker-specific.** This project's tracker and its exact commands are in
 issue, how to record that one waits for another, and how to ask which are ready.
 Run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state --fetch` before anything
 else. It reads the main branch as last fetched, fetching first, and never the
-working tree. Where its answer carries a `missing:` line, this project is not
-set up on the main branch — never set up, or written and not landed, which the
-working tree cannot tell apart. **Say in one line what you are doing and run
+working tree.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-failed`
+
+Where its answer carries a `missing:` line, this project is not set up on the
+main branch — never set up, or written and not landed, which the working tree
+cannot tell apart. **Say in one line what you are doing and run
 `setup-project`. Do not ask.** There is nothing to decide:
 without a tracker there is nowhere to put a map or a ticket, so the only other
 answer is to abandon what the user just asked for. Do not improvise around it
