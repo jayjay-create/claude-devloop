@@ -277,13 +277,12 @@ the options does not get read, and the points of question 3 that stood only
 in prose arrived in none of three runs. Questions 1, 2, 5 and 6 are such
 choices, and several of them may share one widget call. Question 3 is one
 too, and it names the field of each of its points; its call carries this
-question and no other, because two decisions in one submit is the case
-`start-work` gives against a second question in the same reply — a bare yes
-stops being an answer to either. Question 4 is open and has no options, so it
-is put in prose, in the run's own message. Nothing here asks about check
-classes or the tools that fill them: that mapping, and whether a missing tool
-gets installed, is the check setup's own question, put once the record this
-step writes has landed.
+question and no other: two decisions put in one submit come back as one
+answer, and a bare yes is then an answer to neither. Question 4 is open and
+has no options, so it is put in prose, in the run's own message. Nothing here
+asks about check classes or the tools that fill them: that mapping, and
+whether a missing tool gets installed, is the check setup's own question, put
+once the record this step writes has landed.
 
 1. **Issue tracker** — only if there is no remote, or several candidates.
    With exactly one remote: state it and move on.

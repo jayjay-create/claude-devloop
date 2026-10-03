@@ -9171,10 +9171,26 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   PASSED: 88 cases; of the 74 messages this tool rejects, refuses or answers
   with, read off its own source, 74 are asserted by a case and 0 by none`,
   recorded on its outcome. The eighteen checks under "Before a handover, run
-  these" ran after the change; what each printed stands in the session, and
-  one printed a line more than before: the check on locked skills names
-  `start-work` in `setup-project` step 4, where the opening cites its reason
-  against a second question in the same reply and calls nothing.
+  these" ran after the change; what each printed stands in the session.
+
+  **Addendum of the same day: the name taken out of the reason.** The opening
+  of step 4 named `start-work` as the source of its reason for the call
+  carrying question 3 alone, and the check on locked skills under "Before a
+  handover, run these" printed that line beside the one it has printed
+  since, `start-work` in `build-work` — a second line to be judged anew at
+  every run, which is noise in a check. The name is out: the skill carries
+  the reason in its own words, two decisions put in one submit coming back as
+  one answer, and this entry says above where the reason comes from. No
+  other sentence of the skill changed what it directs, the lines after it
+  only rewrapped; no other file carries the reason by reference — `plan-work`
+  Stage 1 puts the mode question alone and gives no reason, and the
+  conventions name none — so nothing else moves with it. The check prints
+  its one line again. The eighteen checks ran after the addendum; the tool,
+  run again at 0.126.0, `BROKEN RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH
+  SET: 0 of 2057` and exit 0 — one line fewer in the set, the rewording having
+  taken the word "either" off a line — its self-test unchanged, its source
+  untouched.
+  The version stays at 0.126.0: one raise per branch.
 
 ## Decisions taken against
 
