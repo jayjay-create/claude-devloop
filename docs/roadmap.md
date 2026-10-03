@@ -9171,7 +9171,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   PASSED: 88 cases; of the 74 messages this tool rejects, refuses or answers
   with, read off its own source, 74 are asserted by a case and 0 by none`,
   recorded on its outcome. The eighteen checks under "Before a handover, run
-  these" ran after the change; what each printed stands in the session.
+  these" ran after the change; what each printed stands in the session, and
+  one printed a line more than before: the check on locked skills names
+  `start-work` in `setup-project` step 4, where the opening cites its reason
+  against a second question in the same reply and calls nothing.
 
 ## Decisions taken against
 
