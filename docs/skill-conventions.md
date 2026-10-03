@@ -555,10 +555,12 @@ option lines are not too long — they do not arrive, whatever they say. The
 harness's choice widget has a slot for a question line, a header and the
 options, and none for prose; a hook's message arrives whole on stderr; a
 question a run puts arrives in whatever the run puts it in. So the form is
-named where the text is specified, as `setup-project` step 4 names its two,
-and a text and a form that do not fit are one thing wrong, not two: the text
-goes into a form that holds it, or it is cut to what the form holds, and it is
-never made shorter in the hope that it gets through. Nothing in this set named
+named where the text is specified — as `setup-project` step 4 does, naming
+since 3 October 2026 the field of the widget each point of question 3 goes
+in, after two named forms that put the points in prose had been met by a tab
+of a form in three runs — and a text and a form that do not fit are one thing
+wrong, not two: the text goes into a form that holds it, or it is cut to what
+the form holds, and it is never made shorter in the hope that it gets through. Nothing in this set named
 the widget before 30 September 2026, and that is how a question approved twice
 arrived as four lines.
 
@@ -662,7 +664,11 @@ cannot tell apart on the other is asked for appearance's sake, and **A limit
 that reads like a safeguard and is not one is worse than no limit at all**
 below says what that costs. So a compiler or an interpreter stays the person's
 under every answer, as "Where the set ends" in `docs/plan.md` already says,
-and the question says so as a boundary rather than asking it. Where a runtime
+and the question does not ask it: until 3 October 2026 it said so as a
+boundary, and since then it says only what a yes lets through — a runtime,
+through a package manager — because the two runs of 30 September 2026
+delivered the boundary as an assurance the guard does not hold; the rule
+stands here, on the run, and is not promised to the person. Where a runtime
 is genuinely needed, that moment has a person in it: the stack is chosen with
 them — in Stage 1 once milestone 8 puts it there; today nothing picks it, as
 the roadmap records under "How the stack gets chosen" — and a task that turns
@@ -680,7 +686,8 @@ the same file, "unless that permission names runtimes as a kind, which is
 open below"; `build-work` step 3 point 7, "a compiler, a runtime, a tool from
 a package manager" — and, since the question was built the same day, version
 0.115.0, question 4 of `setup-project` step 4 — question 3 since 1 October
-2026 — which says the boundary as this ruling asks.
+2026 — which said the boundary as this ruling asks until 3 October 2026 and
+says the leak alone since, the roadmap entry of that date saying why.
 
 **The first kind is a tool, not a tool for a check class.** Ruled on 28
 September 2026, for the same build. Anything that runs and ends — a linter, a

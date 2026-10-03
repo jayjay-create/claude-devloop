@@ -276,15 +276,16 @@ actually settled; Stage 4 writes the long list. This is the list Stage 3 plays
 every draft against, so it is written before the drafts exist and not read back
 out of them.
 
-**Then, in a message of its own, ask once how this piece of work should run from
-here** — but only where `environment.md` records that the unattended mode was
-offered and accepted for this repository, and only where the idea stands by the
-three conditions above. Where the mode was declined or never offered, the
-question has one possible answer and is not asked; the run carries on with them,
-and the offer stays where it is made, in the check setup. Where `--auto` was
-typed this session, the question is not asked either: the flag is its answer, and
-the run says in one line that it is going on alone from here. So the flag and an
-answer can never disagree — where one exists, the other was never given.
+**Then ask once, in a widget call that carries this question and no other, how
+this piece of work should run from here** — but only where `environment.md`
+records that the unattended mode was offered and accepted for this repository,
+and only where the idea stands by the three conditions above. Where the mode
+was declined or never offered, the question has one possible answer and is not
+asked; the run carries on with them, and the offer stays where it is made, in
+the check setup. Where `--auto` was typed this session, the question is not
+asked either: the flag is its answer, and the run says in one line that it is
+going on alone from here. So the flag and an answer can never disagree — where
+one exists, the other was never given.
 
 Three answers. What tells them apart is where the user is needed and where not,
 so each is said by that and not by what the run does at each stage:

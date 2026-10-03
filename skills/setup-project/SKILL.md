@@ -222,10 +222,11 @@ asked for by name, it has its own preconditions, and each piece of work is asked
 separately whether to use it. Granting permissions here does not switch it on
 and does not bring it closer.
 
-Where a question does have options, a caveat in the paragraph above them does
-not get read and the two lines the user chooses between do — which holds for a
-choice two lines can carry and not for a question that needs more said than
-that, and step 4 says which of its questions is which.
+Where a question does have options, what the person reads is the widget's
+fields — the question line, and a label and a line for each answer — and not a
+paragraph above them, which does not get read; so what carries the decision
+stands in those fields, and step 4 says which point of a question goes in
+which field.
 
 ## Step 1 — Explore, change nothing
 
@@ -264,18 +265,24 @@ project meets finds an answer and not the absence of one.
 ## Step 4 — Questions
 
 Only these, each only under its condition. Lead with your recommendation so a
-single word can answer; question 3 gives none. Two forms, and which one a
-question takes follows from what it has to carry, not from what the harness
-offers. A choice that two option lines carry — questions 1, 2, 5 and 6 — puts
-what counts in the options themselves, because a caveat in a paragraph above
-them does not get read; several such choices may share one form. A question
-that needs more said than two lines hold — the permission of question 3, and
-question 4, which is open and has no options — is put in prose, in the run's
-own message, and a widget that follows carries that question's answers and no
-other question: it shares a form with nothing. Nothing here asks about check
-classes or the tools that fill them: that mapping, and whether a missing tool
-gets installed, is the check setup's own question, put once the record this
-step writes has landed.
+single word can answer; question 3 gives none. One form for a choice, and the
+form is where its content goes: the choice goes through the harness's choice
+widget, and everything that carries the decision stands in the widget's own
+fields — a line for the question, a header, and for each answer a label and a
+line — each field kept to a short line, since what does not fit a field
+arrives cut to it, as the roadmap entry of 30 September 2026 on the question's
+first asking measured. Prose in the run's own message before the widget
+carries only a point no field can carry, and nothing else: a paragraph above
+the options does not get read, and the points of question 3 that stood only
+in prose arrived in none of three runs. Questions 1, 2, 5 and 6 are such
+choices, and several of them may share one widget call. Question 3 is one
+too, and it names the field of each of its points; its call carries this
+question and no other: two decisions put in one submit come back as one
+answer, and a bare yes is then an answer to neither. Question 4 is open and
+has no options, so it is put in prose, in the run's own message. Nothing here
+asks about check classes or the tools that fill them: that mapping, and
+whether a missing tool gets installed, is the check setup's own question, put
+once the record this step writes has landed.
 
 1. **Issue tracker** — only if there is no remote, or several candidates.
    With exactly one remote: state it and move on.
@@ -366,45 +373,57 @@ step writes has landed.
    anything over it and never make it a condition — the user decides what their
    repository is for, and this step's job is that they decide it knowing what
    holds.
-3. **Install permission** — always. Put it in prose, in the run's own message
-   and in the user's language: the question is what that message says, and a
-   choice widget that follows carries its two answers and no other question,
-   everything above the answers having been said by then. "In a message of
-   its own" was the rule until 30 September 2026, and the first run to put the
-   question met it with a tab of its own in a form holding three questions,
-   where the ten points that were prose had no slot and did not arrive; the
-   roadmap entry of that date says what this rule is worth and what tells the
-   two apart afterwards.
+3. **Install permission** — always. A choice, put through the widget in the
+   user's language, this question alone in its call. Every point that carries
+   the decision has a field, named below, so that a reader of this skill sees
+   whether a point has a place at all; each field holds a short line, the
+   question line two sentences. Two forms stood before this one — a message of
+   its own, then prose above a widget carrying the answers — and the roadmap
+   entries of 30 September 2026 record that the question met neither in three
+   runs: it came as one tab of a form beside another question each time, and
+   the points that stood only in prose did not reach the person.
 
    What the question covers, and nothing else:
 
-   - **The subject, in the question line.** Programs that run and end — a
-     code generator, a migration command, a checker — landing outside the
-     project on this machine. The answer holds for this project, so for
-     anyone who builds on it with this set and not for this machine alone;
-     where that last part does not fit the line, it goes rather than crowd
-     out what follows.
-   - **What a yes means, in the yes itself.** From then on the run installs
-     such a tool by itself, with them there and with nobody there, without
-     asking again.
-   - **What a yes also lets through, in the message.** Through a package
+   - **In the question line: the subject and its scope, then what a yes also
+     lets through.** Tools that land outside the project on this machine, and
+     that the answer holds for this project. Directly behind the subject, not
+     at the end of the line where a cut strikes first: through a package
      manager the guard sees the verb and not what is installed, so a yes to
-     tools also lets through a command that installs a runtime; that compilers
-     and runtimes stay theirs under every answer is a rule on the run and not
-     a wall.
-   - **Where a no leads, in two halves, in the no itself.** With them there
-     the run hands them the command and they decide; with nobody there
-     nothing is asked: the task becomes an issue carrying the exact command,
-     or a check class goes `skipped` with that reason, not `empty` and not
-     open.
+     tools also lets through a command that installs a runtime — the point
+     that reached the person in none of three runs, once not at all and twice
+     cancelled by the assurance that followed it.
+   - **In the yes, label and line: what a yes means.** From then on the run
+     installs such a tool by itself, with them there and with nobody there,
+     without asking again.
+   - **In the no, label and line: where a no leads, with them there.** Nothing
+     is installed without them; where a tool is missing they get the command
+     for it and decide themselves.
+   - **In the header: a word for the subject.** It carries no point of the
+     decision.
 
-   These four carry the decision. The standard is that nothing in the
-   question implies something untrue, not that everything true is said: what
-   the project declares stands in step 2's report, which kind of place each
-   route reaches is the run's own reading in step 6, and where the record is
-   written and that every session reads it is said in step 9. Give no
-   recommendation. The answer goes into `environment.md` in step 6, as the
-   section the guard reads; nothing is installed on it here.
+   Two things stay out of the question, on purpose. That compilers and
+   runtimes stay theirs under every answer is a rule on the run — "Runtimes
+   are not a kind the permission may cover" in `docs/skill-conventions.md` —
+   and not an assurance the guard holds; both runs of 30 September 2026
+   lifted it out of the leak and delivered it as one, so the leak is said and
+   the assurance is not. And where a no leads with nobody there — nothing is
+   asked; the task becomes an issue carrying the exact command, or a check
+   class goes `skipped` with that reason, not `empty` and not open — names a
+   mode the person has not met at this point and is a rule on the run, which
+   stands where it is applied: `build-work` step 3 point 7, where a no on
+   record is the decline, and `setup-checks` step 3.
+
+   The examples of such a tool — a code generator, a migration command, a
+   checker — carry no decision and have no field. The standard is that
+   nothing in the question implies something untrue, not that everything true
+   is said: what the project declares stands in step 2's report, which kind
+   of place each route reaches is the run's own reading in step 6, and where
+   the record is written and that every session reads it is said in step 9.
+   Give no recommendation. The answer goes into `environment.md` in step 6,
+   as the section the guard reads; nothing is installed on it here. The
+   wording approved on 3 October 2026 stands in the roadmap entry of that
+   date; this skill says what is said, not the words.
 4. **Local environment** — always where there is code, unless you could read it
    all from `docker-compose.yml` or the README. Which processes, in what order,
    on what ports.

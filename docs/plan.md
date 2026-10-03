@@ -300,6 +300,12 @@ points that carry the decision and put in prose, the widget after it, since
 the first run to put it, on 30 September 2026, put it through the harness's
 choice widget and none of its thirteen points arrived whole; the roadmap entry
 of that date says what came of the thirteen and what the form rule is worth.
+Since 3 October 2026, version 0.126.0, the points stand in the widget's own
+fields — the question line carrying the subject, its scope and the leak, the
+yes and the no each a label and a line — and the boundary on runtimes and the
+unattended half of the no stand outside the question as rules on the run; the
+roadmap entry of that date carries the approved wording and the form rule as
+rewritten.
 The question stands in `setup-project` step 4 as a question of its own —
 question 4 beside the mapping until 1 October 2026, question 3 since — and the
 record in `environment.md` in step 6, counting once step 8
