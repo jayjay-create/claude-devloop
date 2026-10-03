@@ -8695,6 +8695,226 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   these" ran after the change; what each printed stands in the session and
   not here.
 
+- **A program answers how far the setup of a project has got,
+  `bin/devloop-setup-state`, read off the default branch as last fetched and
+  never off the working tree; the places that read it off the tree read
+  through it, the status line has three states, and the guards keep their
+  directory test; 3 October 2026, version 0.125.0.** On `task/setup-state`,
+  off `3d6bc6a`. The order was a draft, walked through eight situations before
+  anything was built; its report stands outside the repository, at
+  `~/devloop-setup-state-2026-10-03.md`. Nothing ran on a bench: the program
+  and the hook ran against scratch repositories, below.
+
+  **The situation it closes.** Whether a project was set up was read off
+  `docs/agents/` in the working tree, in `hooks/session-start.sh`,
+  `start-work` step 1 and step 4, `plan-work` and `untangle-idea` before their
+  first write, and `setup-project` before its refresh; `grep -rn 'docs/agents'
+  skills shared hooks bin scripts README.md` lists every place that names the
+  directory. The directory is what the setup writes in step 6, before step 8
+  lands it, so a setup broken off between the two counted as set up in the
+  next session while the main branch held nothing: the status line said `set
+  up`, `start-work` ran the in-flight query and asked what to build, and a
+  task branch cut from the main branch carried no `docs/agents/`.
+
+  **What was built, and where.** `bin/devloop-setup-state`, in the form of
+  `bin/devloop-install-record`: off `refs/remotes/origin/<default>`, the
+  default branch resolved as the branch guard resolves it, nothing written
+  into the project, every call afresh; on exit 0 one key and one value per
+  line, `ref:`, `fetch:`, one `present:` or `missing:` line per file of the
+  setup, one `marker:` line per present file with the version its marker
+  carries or `none`; on exit 1 one `cause:` line, four causes, the directory
+  cannot be entered, not a git repository, no default branch, the ref not
+  fetched. `--fetch` fetches first, bounded by `DEVLOOP_FETCH_SECONDS`, thirty
+  where unset, with a watchdog that kills the fetch and what it started; a
+  fetch that fails or does not answer is said on the `fetch:` line and the
+  state as last fetched is read, and where no state was ever fetched the cause
+  names the fetch's message beside its own. `--self-test` builds repositories
+  under a temporary directory outside the project and produces every outcome
+  once. `hooks/session-start.sh` reads it without the flag. `start-work` step
+  1 runs it with the flag as its one command and compares the `marker:` line
+  of `issue-tracker.md`, reading no file; step 2 says what each of the three
+  states means for the introduction and the in-flight query; step 4 runs
+  `setup-project` where a file is missing. `plan-work` and `untangle-idea` run
+  it before their first write. `setup-project` runs it before deciding between
+  a refresh and a first setup. `docs/skill-conventions.md` carries the rule
+  under "The setup state is read off the default branch", the check holding
+  the default-branch resolution covers three files, and the paragraph under
+  "The install guard reads a record" says so; the comment in
+  `bin/devloop-install-record` names the third copy. Nothing else decides the
+  same thing: the three guards keep `[ -d "docs/agents" ] || exit 0` and the
+  two checks hooks their test on `checks.md`, on purpose, since that test is
+  what leaves the hooks of this plugin inert where the workflow is not set up,
+  and a guard reading the branch would be silent through a first setup, where
+  step 8 holds an unmerged pull request with "Never merge yourself" and no
+  hook behind it; `record-lessons` says of this repository that the hooks need
+  the directory, which stays true; `shared/rule-not-written-down.md` reads
+  `standards.md` at the review's close on a branch cut from the main branch
+  and writes nothing without it; `diagnose-bug` under "When this runs" hands
+  over a missing control document; `start-work` step 4's second paragraph
+  reads the rows of `checks.md`, the state of the check suite and not of the
+  setup. Each read and left.
+
+  **What the program reads, and what it cannot.** The five files
+  `setup-project` step 6 writes under fixed names, `checks.md`,
+  `issue-tracker.md`, `domain.md`, `standards.md`, `environment.md`, each by
+  name, present or missing; nothing is counted. The setup makes more, and none
+  of it can be asked for by name on a branch: `CLAUDE.md` is appended to where
+  it exists and created where not, so its presence says nothing about the
+  setup; the task runner is a `Makefile` only where no runner stood and thin
+  targets in whatever stood otherwise; the two `.gitignore` lines go into a
+  file most repositories have; `CONTEXT.md` and `docs/adr/README.md` are made
+  only where question 6 found nothing living elsewhere; the seven labels live
+  in the tracker, and the branch `devloop-setup` is gone after the merge.
+
+  **The status line, and the combination.** Three states since this version.
+  The branch alone cannot tell a project never set up from a setup written and
+  not landed, so the hook reads the directory in the working tree beside the
+  program's answer. Every file on the branch: `set up`. Some file on the
+  branch, or none and `docs/agents/` in the tree: `set up in part | on
+  origin/main as last fetched: <present files by name> | missing: <missing
+  files by name>`, the ref as the program prints it, so `origin/master` where
+  that is the default branch. Nothing on the branch and no directory: `not set
+  up here`, as before. Where the program cannot read the branch, no default
+  branch or never fetched, the order's three states had no place for it; what
+  stands is the middle state with the cause in place of the files, `on the
+  default branch as last fetched: not read, <cause> | missing: not read`,
+  where the directory is in the tree, and `not set up here` where it is not.
+  The `[InstallRecord]` line is unchanged and is printed in the second state
+  as in the third. One consequence stands: a working tree without
+  `docs/agents/`, a task branch cut before the setup landed, reads `set up`
+  while the guards are inert in it, since the line reads the branch and the
+  guards the tree; the order fixed both halves.
+
+  **Where the draft broke, and what stands instead.** Five places. The version
+  marker: no place orders a first setup to write it. The paragraph describing
+  it stands under "Refreshing an existing setup", whose steps a refresh does
+  not run, and `grep -n 'devloop: \|marker' skills/setup-project/SKILL.md`
+  finds that paragraph and the template line below it and nothing in steps 5
+  to 9; the benches carry markers all the same, read on 19 September 2026 off
+  the platform, since a run reads the whole skill. The program prints `marker:
+  <file> none` for such a file, `start-work` step 1 treats `none` as older and
+  refreshes, so a project set up fresh is refreshed at its next start, a
+  refresh that writes the markers and changes nothing else. A finding row of
+  `docs/stock-take.tsv` carries it, sited on that paragraph, and nothing here
+  builds it. The second: a setup written and not landed. The program reads it
+  as not set up, which is the point, and the next run takes the first-setup
+  path: `start-work` step 2 skips the introduction and the query and step 4
+  runs `setup-project`, which asks the questions again, their answers standing
+  in files on a branch nothing reads, and meets the branch `devloop-setup`
+  with something written on it at the cut, the third case of
+  `shared/cut-branch.md`, which switches to it and describes nothing further,
+  as the entry of 1 October 2026 records. Recorded, not built: a first setup
+  finding that branch with commits of its own, or `docs/agents/` in the tree
+  with nothing on the main branch, should read the answers off the files that
+  stand there and ask only what they do not answer, then land what stands, so
+  that a broken-off setup costs the landing and not the questions; until then
+  the questions are asked again, step 6 overwrites the files on the branch and
+  step 7 appends the pointer block to `CLAUDE.md` a second time. The third: a
+  read that fails, above. The fourth: the order wrote `origin/main` into the
+  middle line, and the program prints the ref it resolved, which is the branch
+  guard's reading; the line carries that. The fifth: the skills run the
+  program through the Bash tool, and no grant is added to `allowed-tools`,
+  whose third line the convention under "Frontmatter" fixes and the check over
+  insert lines holds; outside auto mode the call prompts once, as the `ls` it
+  replaces did. `${CLAUDE_PLUGIN_ROOT}` is substituted in a skill's body, read
+  on 3 October 2026 off `code.claude.com/docs/en/skills.md`, "The skill's
+  markdown content (SKILL.md body)" and "Bash rules in the allowed-tools
+  frontmatter", and the manifest reference says the variable is not in the
+  environment of a Bash tool call; so the skills write the reference in their
+  body, where the path lands at load, and no command expands it. One sentence
+  of the order is read two ways and answered for both: "sein Selbsttest deckt
+  die Ausgänge des neuen Programms ab". The self-test of
+  `scripts/devloop-stock-take` produces that tool's own outcomes and reads its
+  own source for its messages, as its header says, and cannot produce a
+  program's under `bin/`; so the new program carries a self-test of its own,
+  which produces every one of its outcomes once, and the stock-take covers
+  those outcomes as things, every line of the program's search set covered.
+
+  **The eight situations, measured on 3 October 2026 against scratch
+  repositories**, each a bare origin and a clone under a temporary directory,
+  the hook run with `CLAUDE_PROJECT_DIR` set and the program run directly;
+  what each printed stands in the order's report, the lines here copied from
+  it. (a) A first setup, nothing on the main branch and nothing in the tree:
+  the hook printed `[ProjectStatus] devloop: not set up here`, the program
+  five `missing:` lines, with `--fetch` the line `fetch: done` before them.
+  (b) The setup written on `devloop-setup`, committed, pushed, not merged, the
+  next session in the same directory: the hook printed `devloop: set up in
+  part | on origin/main as last fetched: none | missing:` and the five names,
+  and the install record line `none: no docs/agents/environment.md on
+  origin/main as last fetched`; the same with the tree on the main branch and
+  the files uncommitted. (c) A project set up before this change, every file
+  on the main branch with the marker 0.100.0: the hook printed `devloop: set
+  up`, the program five `present:` lines and `marker: docs/agents/checks.md
+  0.100.0` with its four siblings, which `start-work` step 1 reads as older
+  and refreshes; the same project on a branch without `docs/agents/` printed
+  `set up` too, the consequence named above. (d) A repository the workflow was
+  never used in: `not set up here`, the program five `missing:` lines and exit
+  0. (e) The fetch not answering: with a transport that never answers and the
+  bound at two seconds the program printed `fetch: no answer within 2 seconds,
+  reading origin/main as last fetched` and the five present files after it,
+  exit 0; with the origin moved away, `fetch: failed (fatal: '...' does not
+  appear to be a git repository), reading origin/main as last fetched`, exit
+  0; the hook, which does not fetch, printed `set up` either way. (f) Files
+  from an older version, four of five on the main branch with the marker
+  0.50.0: `set up in part | on origin/main as last fetched:` the four names `|
+  missing: docs/agents/environment.md`, the program four `present:` lines, one
+  `missing:` and four `marker:` lines at 0.50.0. (g) This plugin's own
+  repository: `not set up here`, the program five `missing:` lines off
+  `origin/main`. (h) No `origin/main`: with no remote and no directory, `not
+  set up here` and `cause: the ref refs/remotes/origin/main cannot be read:
+  the default branch main has not been fetched`, exit 1; with the directory in
+  the tree, `set up in part | on the default branch as last fetched: not
+  read,` that cause `| missing: not read`, and with `--fetch` the cause ending
+  `, and the fetch failed (fatal: 'origin' does not appear to be a git
+  repository)`; a remote added and never fetched read the same, and after
+  `--fetch` printed `fetch: done` and every file present, the hook then `set
+  up`; a repository on a branch `trunk` with no `origin/HEAD` printed the
+  middle state with `cause: no default branch: origin/HEAD names none and
+  neither main nor master exists`. Nothing in `docs/plan.md`,
+  `docs/skill-conventions.md` or the should-states of this file stands against
+  any of the eight, read with `grep -n 'should' docs/roadmap.md`, 142 lines on
+  3 October 2026, the two on this reading being that step 1 reads a file and
+  that the setup cuts its branch behind the last question, the first met here
+  and the second untouched.
+
+  **Texts proposed and not built.** Two lines a person would read came out of
+  the eight situations and stand in the report as proposed wordings: what
+  `start-work` says in the middle state before it runs the setup, and what a
+  skill says where the `fetch:` line reports a failed fetch; the skills carry
+  the state and the program's line and no duty to say either.
+
+  **Should-states met.** Built: the defect of the stock-take on `start-work`
+  step 1, which said one command and no file read while the paragraph after it
+  read `issue-tracker.md` for the marker; the one command answers the marker
+  now, its thing re-evidenced on the command line and sited on the status line
+  it leaves.
+
+  **Records.** Fourteen things for the program's outcomes, with their
+  self-test lines as part of them; the hook's three states as things, `not set
+  up here` re-sited on its new condition; the branches of the five skill units
+  re-anchored and the new branches added, `start-work` step 1's fetch line and
+  its missing line, step 2's middle state and the older reading,
+  `setup-project`'s first setup whatever the tree holds and its refresh with a
+  file missing; the check's red row re-anchored; the defect of step 1
+  re-evidenced; the defect of the branch takeup sited on the status line
+  above; two finding rows, on `setup-checks` step 1 for the `types` rule two
+  runs read opposite ways on one stack, which the entry of 30 September 2026
+  carries as an observation and the entry of 2 October 2026 called no rule,
+  and on the marker paragraph of `setup-project`; this entry names neither
+  beyond this sentence, so that each stands once. The runs: the program's
+  self-test, run in this tree at 0.125.0, `SELF-TEST PASSED: 15 cases`, one
+  case per outcome and one for the tree saying the opposite of the ref,
+  recorded on every outcome it produced; the hook's four outcomes, recorded on
+  them with the situations above as their line; the check holding the
+  default-branch resolution printed `1` over three files, recorded on its
+  green outcome. The tool, run in this tree at 0.125.0 after this entry,
+  `BROKEN RECORDS: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2047` and exit
+  0, recorded on its exit 0 outcome. The self-test at 0.125.0, `SELF-TEST
+  PASSED: 88 cases; of the 74 messages this tool rejects, refuses or answers
+  with, read off its own source, 74 are asserted by a case and 0 by none`,
+  recorded on its outcome. The eighteen checks under "Before a handover, run
+  these" ran after the change; what each printed stands in the order's report.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
