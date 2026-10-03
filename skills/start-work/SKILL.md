@@ -20,28 +20,51 @@ those rules. Then do nothing else.
 
 Run exactly one command and nothing else:
 
-    ls docs/agents/ 2>/dev/null
+    ${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state --fetch
 
 Do not read files. Do not check git. Do not look at the tracker. One command,
 then go to step 2.
 
-If it lists files, find the version marker in `docs/agents/issue-tracker.md` —
-the line matching `<!-- devloop: ` — and compare it with the running version.
-Search the file for that line rather than assuming which one it is; in a file
-with a frontmatter block it sits below that, not on line one. Older means
-these files were written from templates this workflow has since changed. Say in
-one line, in ordinary words, that the setup files here are from an older version
-of this workflow and that you are bringing them up to date, then run
-`setup-project`. **Do not ask.** The refresh touches nothing the project decided
-for itself, so a no protects nothing — and the question costs a second decision
-in the same reply, which is how a bare "yes" stops being an answer to either
-one. When `setup-project` returns, **carry on with step 2 as if nothing had
-happened** — the refresh is an errand, not the answer to why they are here.
-Reporting what is in flight is the thing they came for, and it is exactly what
-gets dropped when a detour ends and the run picks up wherever it left off. A
-file with no marker at all predates the marker; treat it as older.
+It answers off the main branch as last fetched, fetching first, which is what
+the flag is for: which files of the setup stand there, each by name on a
+`present:` or a `missing:` line, and on a `marker:` line the version each
+present file was written from. The working tree is not read, because a run
+writes it: a setup written and not landed looks set up there and is not, and
+every task branch is cut from the main branch. Where its `fetch:` line says
+the fetch failed or did not answer, the answer is the state as last fetched,
+and that line says so.
+
+If no `missing:` line stands in the answer, every file of the setup is on the
+main branch: compare the `marker:` line of `docs/agents/issue-tracker.md` with
+the running version. Older means these files were written from templates this
+workflow has since changed. Say in one line, in ordinary words, that the setup
+files here are from an older version of this workflow and that you are
+bringing them up to date, then run `setup-project`. **Do not ask.** The refresh
+touches nothing the project decided for itself, so a no protects nothing — and
+the question costs a second decision in the same reply, which is how a bare
+"yes" stops being an answer to either one. When `setup-project` returns,
+**carry on with step 2 as if nothing had happened** — the refresh is an errand,
+not the answer to why they are here. Reporting what is in flight is the thing
+they came for, and it is exactly what gets dropped when a detour ends and the
+run picks up wherever it left off. A marker reading `none` predates the marker;
+treat it as older.
+
+If a `missing:` line stands there — one file or all five — the setup has not
+landed on the main branch: step 2 says what that means for the introduction,
+and step 4 what is done about it.
 
 ## Step 2 — Orient them, if the status line says this project is not set up
+
+The status line at the session start has three states, and the introduction
+belongs to one of them. `not set up here`: nothing of the setup on the main
+branch and no `docs/agents/` in the working tree, so nobody has been here, and
+the introduction below is written. `set up in part`: a setup written and not
+landed, or landed in part — they have been here, so skip the introduction, run
+no in-flight query, since the tracker commands stand in a file that is not on
+the main branch, and carry on with step 3; step 4 lands the setup. `set up`:
+read as the paragraph after the introduction says. Where step 1 found a file
+missing while the line says `set up`, the line is the older reading and step 1
+wins.
 
 Write a short introduction in your own words — at most four sentences, not
 counting the closing line, in their language — covering these and nothing else:
@@ -68,7 +91,8 @@ would paraphrase.
 Then ask what they would like to build, and **stop.** Nothing else in this reply:
 no repository findings, no offer to set anything up.
 
-**If the status line says the project is set up**, skip the introduction. Run the
+**If every file of the setup is on the main branch** — no `missing:` line in
+step 1's answer — skip the introduction. Run the
 in-flight query from `docs/agents/issue-tracker.md` and say what it found, in at
 most five lines. **Name the work; do not number it.** Someone back after a week
 remembers what they were building, not that it was issue nine.
@@ -187,10 +211,11 @@ Otherwise carry on.
 
 ## Step 4 — Set up, if it is not set up
 
-If `docs/agents/` was missing, run `setup-project` now, then continue. Do not ask
-the user to run it.
+If step 1 found a file of the setup missing on the main branch — one or all
+five — run `setup-project` now, then continue. Do not ask the user to run it:
+it reads the same answer and takes a first setup or a refresh from there.
 
-If it was there and no row of `docs/agents/checks.md` reads `filled` while the
+If every file was there and no row of `docs/agents/checks.md` reads `filled` while the
 repository has code — count source files outside config and docs, as the setup
 does — say three things, in their language: the project is set up, the check
 suite is not built yet, and no class is filled, so that comes first. Then run

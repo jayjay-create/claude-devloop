@@ -1,0 +1,193 @@
+#!/bin/bash
+# Prints how far the setup of a project has got, read off the default branch
+# as last fetched, refs/remotes/origin/<default>, never off the working tree:
+# a run writes docs/agents/ itself, so the directory in the tree is no proof
+# that a setup landed, and until 3 October 2026 a setup broken off after the
+# write and before the merge counted as set up in the next session. The
+# session-start hook reads the state through this program without --fetch, so
+# that no network is reached at the start of a session; the skills that act
+# on the answer - start-work step 1, plan-work and untangle-idea before their
+# first write, setup-project before its refresh - read it with --fetch.
+# See docs/skill-conventions.md, "The setup state is read off the default
+# branch".
+#
+# Usage: devloop-setup-state [--fetch] [PROJECT_DIR]
+#        devloop-setup-state --self-test
+# The one directory argument is the project directory; without it,
+# CLAUDE_PROJECT_DIR, and without that the current directory.
+#
+# On exit 0, one key and one value per line:
+#   ref: origin/<default>
+#   fetch: not run, reading origin/<default> as last fetched
+#     or   done
+#     or   failed (<the first line git printed>), reading origin/<default> as last fetched
+#     or   no answer within <N> seconds, reading origin/<default> as last fetched
+#   present: docs/agents/<file>   one line per file of the setup standing on the ref
+#   missing: docs/agents/<file>   one line per file of the setup not standing there
+#   marker: docs/agents/<file> <version>   one line per present file: the version
+#     in its "<!-- devloop: X.Y.Z -->" line, or none where it carries no such line
+# The files of the setup are the five setup-project step 6 writes under fixed
+# names - checks.md, issue-tracker.md, domain.md, standards.md, environment.md,
+# in that order. Nothing is counted.
+# On exit 1 one line, "cause: <which of the causes it was>", and nothing else:
+# the project directory cannot be entered; not a git repository; no default
+# branch; the ref cannot be read, the default branch never fetched - where a
+# fetch was asked for and failed, that cause names the fetch's message too. A
+# fetch that fails or does not answer where the ref can be read is no cause:
+# it is said on the fetch line and the ref as last fetched is read.
+# Exit 2 on an argument it does not know.
+#
+# Every call computes afresh and writes nothing into the project. With
+# --fetch, git fetch is bounded: DEVLOOP_FETCH_SECONDS, 30 where unset, after
+# which the fetch and what it started are killed and the fetch is said not to
+# have answered. --self-test builds repositories under a temporary directory
+# outside the project, produces every outcome above once, prints one line per
+# case and exits 1 on the first that does not come out as this header says.
+set -u
+FETCH=no
+SELFTEST=no
+PROJECT_DIR=""
+for a in "$@"; do
+  case "$a" in
+    --fetch) FETCH=yes ;;
+    --self-test) SELFTEST=yes ;;
+    --*) echo "devloop-setup-state: $a is not an argument: --fetch, --self-test or the project directory" >&2; exit 2 ;;
+    *) [ -z "$PROJECT_DIR" ] || { echo "devloop-setup-state: expected at most one directory, got $PROJECT_DIR and $a" >&2; exit 2; }; PROJECT_DIR="$a" ;;
+  esac
+done
+FILES='docs/agents/checks.md docs/agents/issue-tracker.md docs/agents/domain.md docs/agents/standards.md docs/agents/environment.md'
+SECS="${DEVLOOP_FETCH_SECONDS:-30}"
+
+# Kills a process and everything it started, deepest first; git fetch runs its
+# transport as a child, and a child left alive holds the output pipe open.
+kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null; }
+# Runs a command with a watchdog that kills it after $1 seconds; exits 143 then.
+bounded() {
+  local secs="$1" pid wd rc; shift
+  "$@" &
+  pid=$!
+  ( sleep "$secs"; kill_tree "$pid" ) >/dev/null 2>&1 &
+  wd=$!
+  wait "$pid"; rc=$?
+  kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null
+  return "$rc"
+}
+
+selftest() {
+  local me T out rc n=0
+  me=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-setup-state.XXXXXX") || exit 1
+  trap 'rm -rf "$T"' EXIT
+  run() { out=$("$me" "$@" 2>&1); rc=$?; }
+  # expect NAME EXIT SUBSTRING...: the last run exited EXIT and printed every substring
+  expect() {
+    local name="$1" want="$2" s; shift 2; n=$((n+1))
+    [ "$rc" -eq "$want" ] || { echo "FAIL $name: exit $rc, expected $want"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }
+    for s in "$@"; do printf '%s\n' "$out" | grep -qF -- "$s" || { echo "FAIL $name: nothing holds '$s'"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }; done
+    echo "ok   $name"
+  }
+  absent() { local s="$1"; printf '%s\n' "$out" | grep -qF -- "$s" && { echo "FAIL $2: '$s' stands there and should not"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }; }
+  git_q() { git -c user.name=t -c user.email=t@t -c commit.gpgsign=false "$@"; }
+  mark() { printf '<!-- devloop: %s -->\n# %s\n' "$1" "$2"; }
+
+  run --nope;                            expect "an argument it does not know: exit 2" 2 "is not an argument"
+  run "$T/a" "$T/b";                     expect "two directories: exit 2" 2 "expected at most one directory"
+  run "$T/nowhere";                      expect "cause: the directory cannot be entered" 1 "cause: the project directory"
+  mkdir "$T/plain"
+  run "$T/plain";                        expect "cause: not a git repository" 1 "cause: not a git repository"
+  git_q init -q -b trunk "$T/trunk" && git_q -C "$T/trunk" commit -q --allow-empty -m x
+  run "$T/trunk";                        expect "cause: no default branch" 1 "cause: no default branch: origin/HEAD names none"
+  git_q init -q -b main "$T/local" && git_q -C "$T/local" commit -q --allow-empty -m x
+  run "$T/local";                        expect "cause: the ref cannot be read, never fetched" 1 "cause: the ref refs/remotes/origin/main cannot be read"
+  git_q -C "$T/local" remote add origin "$T/no-such-origin"
+  run --fetch "$T/local";                expect "cause: never fetched and the fetch failed, its message named" 1 "cause: the ref refs/remotes/origin/main cannot be read" "and the fetch failed ("
+  # an origin with two of the five files, one carrying a marker
+  git_q init -q --bare -b main "$T/origin.git"
+  git_q clone -q "$T/origin.git" "$T/work" 2>/dev/null
+  mkdir -p "$T/work/docs/agents"
+  mark 0.0.1 Checks > "$T/work/docs/agents/checks.md"
+  printf '# Issues\n' > "$T/work/docs/agents/issue-tracker.md"
+  git_q -C "$T/work" add -A && git_q -C "$T/work" commit -q -m setup && git_q -C "$T/work" push -q origin main 2>/dev/null
+  git_q clone -q "$T/origin.git" "$T/clone" 2>/dev/null
+  run "$T/clone";                        expect "two files present, three missing, the markers, no fetch" 0 "ref: origin/main" "fetch: not run, reading origin/main as last fetched" "present: docs/agents/checks.md" "present: docs/agents/issue-tracker.md" "missing: docs/agents/domain.md" "missing: docs/agents/standards.md" "missing: docs/agents/environment.md" "marker: docs/agents/checks.md 0.0.1" "marker: docs/agents/issue-tracker.md none"
+  # the working tree says the opposite of the ref, and the ref is what is read
+  for f in domain standards environment; do printf '# x\n' > "$T/clone/docs/agents/$f.md"; done
+  rm "$T/clone/docs/agents/checks.md"
+  run "$T/clone";                        expect "the working tree holding the opposite changes nothing" 0 "present: docs/agents/checks.md" "missing: docs/agents/domain.md"
+  rm "$T/clone/docs/agents/domain.md" "$T/clone/docs/agents/standards.md" "$T/clone/docs/agents/environment.md"; git_q -C "$T/clone" checkout -q -- .
+  # the origin moves on; without --fetch the old state, with it the new
+  for f in domain standards environment; do mark 0.0.2 "$f" > "$T/work/docs/agents/$f.md"; done
+  git_q -C "$T/work" add -A && git_q -C "$T/work" commit -q -m more && git_q -C "$T/work" push -q origin main 2>/dev/null
+  run "$T/clone";                        expect "the state as last fetched, the origin having moved on" 0 "missing: docs/agents/domain.md"
+  run --fetch "$T/clone";                expect "fetched: every file present, none missing" 0 "fetch: done" "present: docs/agents/domain.md" "marker: docs/agents/environment.md 0.0.2"
+  absent "missing:" "fetched: every file present, none missing"
+  # the origin gone: the fetch fails, said, and the last fetched state is read
+  mv "$T/origin.git" "$T/origin-away.git"
+  run --fetch "$T/clone";                expect "the fetch failed, said with git's message, the last fetched state read" 0 "fetch: failed (" "reading origin/main as last fetched" "present: docs/agents/environment.md"
+  mv "$T/origin-away.git" "$T/origin.git"
+  # a transport that never answers: the bound fires, said, the last fetched state read
+  git_q -C "$T/clone" remote set-url origin "git@localhost:nowhere/x.git"
+  out=$(GIT_SSH_COMMAND='sh -c "sleep 60" --' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
+  expect "the fetch not answering within the bound, said, the last fetched state read" 0 "fetch: no answer within 1 seconds, reading origin/main as last fetched" "present: docs/agents/checks.md"
+  git_q -C "$T/clone" remote set-url origin "$T/origin.git"
+  # a repository the workflow never touched: every file missing, exit 0
+  git_q init -q --bare -b main "$T/bare2.git" && git_q clone -q "$T/bare2.git" "$T/w2" 2>/dev/null && git_q -C "$T/w2" commit -q --allow-empty -m x && git_q -C "$T/w2" push -q origin main 2>/dev/null
+  run "$T/w2";                           expect "nothing of the setup on the ref: five missing lines, no present line, exit 0" 0 "missing: docs/agents/checks.md" "missing: docs/agents/environment.md"
+  absent "present:" "nothing of the setup on the ref: five missing lines, no present line, exit 0"
+  # origin/HEAD naming master, read as the hooks read it
+  git_q init -q --bare -b master "$T/bare3.git" && git_q clone -q "$T/bare3.git" "$T/w3" 2>/dev/null && git_q -C "$T/w3" commit -q --allow-empty -m x && git_q -C "$T/w3" push -q origin master 2>/dev/null && git_q -C "$T/w3" remote set-head origin master
+  run "$T/w3";                           expect "the default branch read off origin/HEAD, master" 0 "ref: origin/master" "fetch: not run, reading origin/master as last fetched"
+  echo "SELF-TEST PASSED: $n cases"
+  exit 0
+}
+[ "$SELFTEST" = no ] || selftest
+
+PROJECT_DIR="${PROJECT_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}}"
+cd "$PROJECT_DIR" 2>/dev/null || { echo "cause: the project directory $PROJECT_DIR cannot be entered"; exit 1; }
+git rev-parse --git-dir >/dev/null 2>&1 || { echo "cause: not a git repository, so there is no default branch to read the setup off"; exit 1; }
+
+# The default branch, resolved exactly as hooks/pre-tool-use-branch-guard.sh
+# and bin/devloop-install-record resolve it; a check under "Before a handover,
+# run these" holds the three copies together.
+DEFAULT=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+DEFAULT="${DEFAULT#origin/}"
+if [ -z "$DEFAULT" ]; then
+  for c in main master; do
+    if git show-ref --verify --quiet "refs/heads/$c"; then DEFAULT="$c"; break; fi
+  done
+fi
+[ -n "$DEFAULT" ] || { echo "cause: no default branch: origin/HEAD names none and neither main nor master exists"; exit 1; }
+
+REF="refs/remotes/origin/$DEFAULT"
+FETCHLINE="not run, reading origin/$DEFAULT as last fetched"
+FETCHED=""
+if [ "$FETCH" = yes ]; then
+  MSG=$(bounded "$SECS" git fetch --quiet origin "$DEFAULT" 2>&1); RC=$?
+  if [ "$RC" -eq 0 ]; then
+    FETCHLINE="done"
+  elif [ "$RC" -eq 143 ]; then
+    FETCHED="the fetch did not answer within $SECS seconds"
+    FETCHLINE="no answer within $SECS seconds, reading origin/$DEFAULT as last fetched"
+  else
+    MSG=$(printf '%s\n' "$MSG" | grep -v '^$' | head -1)
+    FETCHED="the fetch failed (${MSG:-git printed nothing})"
+    FETCHLINE="failed (${MSG:-git printed nothing}), reading origin/$DEFAULT as last fetched"
+  fi
+fi
+git rev-parse --verify --quiet "$REF" >/dev/null 2>&1 || { echo "cause: the ref $REF cannot be read: the default branch $DEFAULT has not been fetched${FETCHED:+, and $FETCHED}"; exit 1; }
+
+echo "ref: origin/$DEFAULT"
+echo "fetch: $FETCHLINE"
+MARKERS=""
+for p in $FILES; do
+  if git cat-file -e "$REF:$p" 2>/dev/null; then
+    echo "present: $p"
+    M=$(git show "$REF:$p" 2>/dev/null | grep -m1 -o '<!-- devloop: [^ ]* -->' | sed 's/^<!-- devloop: //; s/ -->$//')
+    MARKERS="$MARKERS
+marker: $p ${M:-none}"
+  else
+    echo "missing: $p"
+  fi
+done
+printf '%s\n' "$MARKERS" | grep -v '^$'
+exit 0

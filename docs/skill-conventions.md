@@ -1319,7 +1319,8 @@ The guard reads the record off the default branch as last fetched,
 cannot change it in the turn that installs, and a change to it counts once it
 has landed there and been fetched; the default branch is resolved exactly as
 `hooks/pre-tool-use-branch-guard.sh` resolves it, and a check under "Before a
-handover, run these" holds the two copies together, since two guards that
+handover, run these" holds the copies together — three since 3 October 2026,
+`bin/devloop-setup-state` resolving it the same way — since two guards that
 disagree about which branch is the main one are worse than one. It reads the
 record only after the command has been found to reach outside the repository,
 because `hooks/hooks.json` runs it on every Bash call. One program does the
@@ -1425,6 +1426,45 @@ September 2026, since the squash merge of pull request #141 landed only
 each answer, in `devloop-test-s` and `devloop-test-t`: the question and the
 record walked, the guard against a landed record not, the entry of that date
 in `docs/roadmap.md` saying why.
+
+**The setup state is read off the default branch, since 3 October 2026, and
+the working tree decides one thing beside it.** Until then every place that
+asked whether a project was set up read `docs/agents/` in the working tree,
+and that directory is what the setup writes before it lands: a setup broken
+off after the write and before the merge counted as set up in the next
+session while the main branch held nothing. One program answers now,
+`bin/devloop-setup-state`, in the form of the install record's reader: off
+`refs/remotes/origin/<default>`, the default branch resolved as the branch
+guard resolves it and held to it by the check under "Before a handover, run
+these", never off the tree, every call afresh, nothing written. It prints, per
+file the setup writes under a fixed name — the five of `setup-project` step 6
+— whether it stands there, and per present file the version its marker
+carries or `none`; the task runner, `CLAUDE.md`, `.gitignore` and the two
+places `domain.md` points at have no fixed name a branch can be asked for, so
+they are not read. With `--fetch` it fetches first, and a fetch that fails or
+does not answer is said on its `fetch:` line while the state as last fetched
+is read; without the flag it says it reads that state. The places that act on
+the answer read with the flag — `start-work` step 1, `plan-work` and
+`untangle-idea` before their first write, `setup-project` before its refresh
+— and `hooks/session-start.sh` reads without it, so that no network is
+reached at the start of a session. The guards keep `[ -d "docs/agents" ] ||
+exit 0`: that test is what leaves the hooks of this plugin inert in a
+repository the workflow is not set up in, and a guard reading the branch
+instead would be silent through a first setup, where the run holds an
+unmerged pull request in step 8 of `setup-project` with "Never merge yourself"
+standing without a hook behind it. The status line has three states since
+the same day, and the directory in the tree is what tells the first two
+apart: every file on the branch, `set up`; some file there, or none and the
+directory in the tree, `set up in part` with the files by name; nothing there
+and no directory, `not set up here`. Where the branch cannot be read, the
+cause stands in place of the files and the directory alone decides. Two
+things stand recorded and not built, in the entry of 3 October 2026 in
+`docs/roadmap.md`: nothing in `setup-project` orders a first setup to write
+the marker, the paragraph describing it standing under "Refreshing an
+existing setup", so a project set up fresh reads `none` until its first
+refresh, which `start-work` step 1 then makes; and a setup written and not
+landed, once the next run finds nothing on the branch, is `shared/cut-branch.md`'s
+third case, which switches to the branch and describes nothing further.
 
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how
@@ -2077,14 +2117,15 @@ merging is not", indented as in the shared file — `2` again:
 
     grep -cFx -f shared/arming-command.md docs/skill-conventions.md
 
-The default branch is resolved in `bin/devloop-install-record` exactly as
-`hooks/pre-tool-use-branch-guard.sh` resolves it, from `origin/HEAD` and then
-`main` or `master`: two guards that disagree about which branch is the main one
-are worse than one, and the install guard reads its record off that branch.
+The default branch is resolved in `bin/devloop-install-record` and in
+`bin/devloop-setup-state` exactly as `hooks/pre-tool-use-branch-guard.sh`
+resolves it, from `origin/HEAD` and then `main` or `master`: two guards that
+disagree about which branch is the main one are worse than one, the install
+guard reads its record off that branch, and the setup state is read off it.
 The seven lines from `DEFAULT=$(git symbolic-ref` to the `fi` that closes the
-fallback are checksummed in both files — one line means they agree:
+fallback are checksummed in all three files — one line means they agree:
 
-    for f in bin/devloop-install-record hooks/pre-tool-use-branch-guard.sh; do sed -n '/^DEFAULT=\$(git symbolic-ref/,/^fi$/p' "$f" | cksum; done | sort -u | wc -l
+    for f in bin/devloop-install-record bin/devloop-setup-state hooks/pre-tool-use-branch-guard.sh; do sed -n '/^DEFAULT=\$(git symbolic-ref/,/^fi$/p' "$f" | cksum; done | sort -u | wc -l
 
 **A change to one skill is a question about all of them.** How that is done is
 not written here — it is the third rule under "A field is not an answer to a

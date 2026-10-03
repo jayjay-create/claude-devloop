@@ -25,10 +25,14 @@ interrupted session costs the stage you were in, not all four.
 
 The output is a spec in the issue tracker. No code is written here.
 
-If `docs/agents/` is missing, this project is not set up. **Say in one line what
-you are doing and run `setup-project`. Do not ask.** There is nothing to decide:
-without a tracker there is nowhere to put a spec, so the only other answer is to
-abandon what the user just asked for. Do not improvise around it either.
+Run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state --fetch` before anything
+else. It reads the main branch as last fetched, fetching first, and never the
+working tree. Where its answer carries a `missing:` line, this project is not
+set up on the main branch — never set up, or written and not landed, which the
+working tree cannot tell apart. **Say in one line what you are doing and run
+`setup-project`. Do not ask.** There is nothing to decide: without a tracker
+there is nowhere to put a spec, so the only other answer is to abandon what
+the user just asked for. Do not improvise around it either.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
