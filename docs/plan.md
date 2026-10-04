@@ -276,7 +276,7 @@ with what they produced. What they walked: the question, put twice and
 answered once each way; the record, written by step 6 and landed by step 8
 under both answers and read back off the default branch; the decline at
 setup, with a person there, ending in `skipped` with the reason. What they
-did not walk, and so what the milestone still cannot claim: the guard against
+did not walk, and so what the milestone could not claim on them: the guard against
 a landed record under either answer — the yes run's installs ran before the
 record landed, and the no run ran nothing after it landed; a build installing
 under the record — the setup installed, in the window before the record; the
@@ -322,8 +322,11 @@ machine the run is on; a pip inside the project passes without a record;
 that date carries the readings and the measurement. Blocked under every
 answer still: the system package managers, the version managers, a bare
 `pip`, and every route that does not answer. The refresh and the drivers half
-stay unbuilt, and of the two runs on a bench only the setup half of each has
-happened, as the paragraph above says. On 1 October 2026, version 0.122.0,
+stay unbuilt; both halves of both runs on a bench, the setup and the guard
+against the landed record, were walked on 3 and 4 October 2026 under 0.126.0
+with the person there, the yes in `devloop-test-u` and the no in
+`devloop-test-v`, and the yes half with nobody there was not, for the reasons
+the roadmap entry of 4 October 2026 names. On 1 October 2026, version 0.122.0,
 the mapping of tools to classes and the question about missing tools left
 `setup-project` for `setup-checks`, which every project with code reaches from
 the setup's close: `setup-project` fills no class and installs nothing, so the
