@@ -9389,16 +9389,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   there, not a build's with nobody there. The yes half with nobody there did
   not run, and not because it cannot: the two builds met the `dependencies`
   class at the moment its reason expired, task #6 having added the crates, and
-  filled nothing, for defects 1, 11 and 2 below — the review rewrote the reason
-  before the merge, so the re-read after the merge had nothing expired to read,
-  and had it read one, the set gives two answers to what a run with nobody
-  there then does with the class, an issue or the fill. With those three
-  repaired, the class would have been filled under the record without asking,
-  and the install would have been the build's, with nobody there. So milestone
-  3 cannot close on these two runs: its yes half asks for an install with
-  nobody there, and the one install was made with the person there; and the
-  refresh and the drivers half stay unbuilt besides. The milestone has not
-  landed.
+  filled nothing, for defects 1 and 11 below — the review's finding on the
+  stale reason had no route of its own, the run rewrote the reason before the
+  merge, and so the re-read after the merge had nothing expired to read. With
+  those two repaired, the class would have been filled under the record without
+  asking — `setup-checks` step 2 fills a class whose own reason expired, and
+  its "Ask anyway" does not reach an install the record allows — and the
+  install would have been the build's, with nobody there. So milestone 3 cannot
+  close on these two runs: its yes half asks for an install with nobody there,
+  and the one install was made with the person there; and the refresh and the
+  drivers half stay unbuilt besides. The milestone has not landed.
 
   **The fifteen defects.** Each was established against the files of this tree
   on 4 October 2026, and against the repositories where they carry it. None is
@@ -9448,54 +9448,69 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   finding at all and the run took the nearest of the two it has. Searched with
   `grep -n 'third destination\|reason cells\|stale skip reason'
   docs/roadmap.md`: no match.
+  Three more places decide the same thing and are named here under the fifth of
+  the five sentences of `docs/plan.md`, as the audit of the same day found. Two
+  are the defects of 23 September 2026 on the single-class route of
+  `setup-checks`, the route a third destination would run through: "on the
+  single-class route the caller is a build that continues with its task, and
+  this line sends the run to the first piece of work", its should to return to
+  the build, and "the offer is said to stand in a first setup, while the
+  single-class route skips step 7 only and step 8 applies there unchanged", its
+  should to skip step 8 on that route as well; both were repaired on 1 October
+  2026, and `scripts/devloop-stock-take` reads them as built and never walked.
+  The third is `README.md` under "Review": "Obvious fixes are made; anything
+  that would revisit a decision is filed as an issue." Those are the two ways
+  of step 4 told to the person, and a third destination makes them three.
   Recorded, not built: a review finding whose object is `docs/agents/checks.md`
   goes neither way of `build-work` step 4, and in `devloop-test-u` the run took
   the first and rewrote the `dependencies` reason itself; what should hold is
   that the prohibition of `shared/checks-owner.md` covers every cell of the
   table, reason cells included, and that step 4 carries a third destination for
   a finding whose object is that file — `setup-checks` for that class, which
-  reads the install record.
+  reads the install record — named together with the single-class route of
+  `setup-checks` it runs through and changed together with the two ways
+  `README.md` gives under "Review".
 
-  **2. The unattended build did not fill the expired `dependencies` class, and
-  four places of the set say different things about what a run with nobody
-  there does with a class that needs filling.** In `devloop-test-u` the reason
-  "no third-party crates yet" expired with task #6, whose commit `f823aeb`
-  added `rusqlite` and `clap`, and neither build, #14 nor #17, filled the
-  class. Pull request #18 filled it later, merged at 22:20:05 UTC, with an
-  install and, by this order's account, with the person there, and its body
-  quotes the reason as #2 wrote it, "The skip reason ("no third-party crates
-  yet") had expired when rusqlite and clap were added", not the rewritten one
-  that stood on `main` by then. What stands is that the unattended build did
-  not fill it, and so the unattended install milestone 3 asks for did not
-  arise. The cause is wider than the rewrite, which defect 11 records: four
-  places decide what an unattended run does with a check class that needs
-  filling, and they do not agree. `skills/setup-checks/SKILL.md` step 2: "**A
+  **2. Under "With nobody there" in `setup-checks`, the case of a class whose
+  fill needs the person's say opens with "There", which can be read as the
+  whole route after a merge.** The first two versions of this defect read four
+  places of the set as disagreeing on what a run with nobody there does with a
+  check class that needs filling, and `setup-checks` as giving two answers in
+  one file. The audit of the same day, in the entry after this one, read the
+  sentence with the condition standing before it, and the file gives one
+  answer. `skills/setup-checks/SKILL.md` under "With nobody there": "And from
+  the step after a merge that re-reads expired skip reasons, where "Ask anyway
+  where filling it changes their project" in step 2 can meet nobody to ask.
+  There the class stays as it is — `skipped`, with the expired reason and a
+  note that filling it needs their say — and an issue carrying `raised-here`
+  and `needs-human` says what filling it would add to their manifest or put on
+  their machine." "There" stands behind "where … can meet nobody to ask", and
+  the issue it names carries the two things step 2 puts under "Ask anyway": "A
+  dependency added to their manifest, or anything installed on their machine
+  that the install record does not already allow, is theirs to allow". So the
+  file says to fill a class back only because its own reason expired — "**A
   class that is only back because its own reason expired is not that
-  question.**" — say which reason no longer holds, fill the class, report it —
-  and "Ask anyway where filling it changes their project rather than this
-  workflow's plumbing" reaches only "anything installed on their machine that
-  the install record does not already allow": under a record saying yes nothing
-  is theirs to allow, so this place says fill it. The same file under "With
-  nobody there": "There the class stays as it is — `skipped`, with the expired
-  reason and a note that filling it needs their say — and an issue carrying
-  `raised-here` and `needs-human`". `skills/plan-work/SKILL.md`, the spec's
-  "**Missing checks**" item: "Alone, that second half goes through the order
-  under "With nobody there" and lands on its first step: the class is named
-  here and raised as an issue carrying `raised-here`, and the work is not held
-  on it". `skills/build-work/SKILL.md` step 6: "Name any whose reason no longer
-  holds and call `setup-checks` for that class." Three say an issue and carry
-  on, step 6 through the section of `setup-checks` its call arrives at; one
-  says fill it. So with defect 11 repaired, the re-read after the merge of #14
-  would have called `setup-checks` and met two answers in one file. Searched
-  with `grep -n 'Missing checks\|needs filling' docs/roadmap.md`: no match.
-  Recorded, not built: the unattended build in `devloop-test-u` did not fill
-  the expired `dependencies` class, #18 filling it later with the person there,
-  and four places of the set disagree on what a run with nobody there does with
-  a class that needs filling, three an issue and one the fill; what should hold
-  is that one place says it, that the other three point at it, and that the
-  answer turns on the install record: where the record allows what filling the
-  class would put on the machine, the run fills it, and only where it does not
-  does the class stay as it is with an issue beside it.
+  question.**" — unless filling it adds to their manifest or installs what the
+  record does not allow; and under a record allowing the install, as
+  `install-route: cargo` allowed `cargo-audit` in `devloop-test-u`, "Ask
+  anyway" does not reach it. The "**Missing checks**" item of `plan-work`
+  answers another question, "whether landing this work requires filling it
+  first", that is whether the work waits on the class; `build-work` step 6
+  calls `setup-checks` and decides nothing itself. What is left is the word:
+  "There" can be read as the route the sentence before it opens, every expired
+  reason re-read after a merge, rather than as the case that sentence names,
+  and a run reading it so leaves every expired class as it is with nobody there
+  and files an issue. That is not why the class went unfilled in
+  `devloop-test-u`: the build met no expired reason after the merge of #14, for
+  defects 1 and 11. Searched for the correction with `grep -n 'There the class
+  stays' docs/roadmap.md`: this entry alone.
+  Recorded, not built: under "With nobody there" in `setup-checks` the case of
+  a class whose fill needs the person's say opens with "There", which can be
+  read as the whole route of an expired reason after a merge rather than as the
+  case where "Ask anyway" meets nobody to ask; what should hold is that the
+  sentence names its case in its own words — a fill that would add to their
+  manifest, or put on their machine what the install record does not allow — so
+  that the route itself reads as step 2 has it, the class filled.
 
   **3. With nobody there `plan-work` stops where a draft fails an item of the
   list it was drafted against, and that is no decision for the person.** There
@@ -9516,37 +9531,52 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   cases follow, and neither is a decision for the person. One draft fails and
   others pass: the drafting agent did not hold to the list, and it runs again,
   with the failed items named, until a draft carries them. Every draft fails
-  the same item: that alone does not show the item cannot be met, and going
-  back to where it was settled is no way out — `skills/plan-work/SKILL.md` says
-  "Stage 1 stays with the user, because it is the only part that needs
-  something only they have", so a return there with nobody present is the stop
-  this defect removes — while a run left free to call an item unsatisfiable has
-  a cheaper way out than drafting again, with nothing holding it. The run in
-  `devloop-test-u` was the second case, every draft failing story 4 on the one
-  code line a new migration needs. A second place decides the same thing: Stage
-  3 with the user there, "they may still choose a draft that failed an item,
-  and the spec then records that item as knowingly given up"; and Stage 3's own
-  line for the case alone, "Where the recommended draft failed an item, or no
-  draft passed, the run stops", points at the section above and goes with it.
-  The fifth of the five sentences of `docs/plan.md`, "A rule that does not hold
-  in a run is rewritten, not appended to, and every place deciding the same
-  thing is named in the same change", requires both to be changed together. The
-  nearest recorded defects are two: "when the recommended draft falls, who
-  chooses among the survivors and what happens when all fall is not decided",
-  in the entry on the planning fence, today a stop; and finding 6 of the entry
-  of 14 September 2026 on the first planning run alone, the recommended draft
-  revised three times alone where the text says to stop, its should left open
-  between the stop and a redraft. This run is the second measurement of that
-  case and the first where the run kept to the text; the two cases above settle
-  it. Searched with `grep -n 'own draft\|drafts again\|absent person'
-  docs/roadmap.md` before the first version of this entry, and with `grep -n
-  'knowingly\|drafted against' docs/roadmap.md` for this one: no match for
-  either.
+  the same item: that alone does not show the item cannot be met, while a run
+  left free to call an item unsatisfiable has a cheaper way out than drafting
+  again, with nothing holding it. The line this defect gave to going back to
+  where the item was settled falls, since Stage 1 stays with the person:
+  `skills/plan-work/SKILL.md` says "Stage 1 stays with the user, because it is
+  the only part that needs something only they have", so with nobody present
+  that return is the stop this defect removes. The run in `devloop-test-u` was
+  the second case, every draft failing story 4 on the one code line a new
+  migration needs. A second place decides the same thing: Stage 3 with the user
+  there, "they may still choose a draft that failed an item, and the spec then
+  records that item as knowingly given up"; and Stage 3's own line for the case
+  alone, "Where the recommended draft failed an item, or no draft passed, the
+  run stops", points at the section above and goes with it. Two more decide the
+  same thing, named by the audit of the same day: Stage 3's checking step, "A
+  draft that fails an item is recorded as failing it; no agent decides what
+  follows from that.", where the second case below has an agent decide; and
+  Stage 1, where the cost of the mode is said to the person, "where no draft
+  carries the stories the run stops rather than guessing", which turns false
+  with the stop. The fifth of the five sentences of `docs/plan.md`, "A rule
+  that does not hold in a run is rewritten, not appended to, and every place
+  deciding the same thing is named in the same change", requires them to be
+  changed together. Settled with defect 14 by the audit of the same day: the
+  two triggers are different, and neither sentence takes the other's case. This
+  one is an item every draft fails twice; the stop of defect 14 is a question
+  the whole of the work hangs on. Where the pair named below takes the whole of
+  the work, nothing being left to cut out, the requirements contradict each
+  other — a case nobody had named — and that ending gets a place of its own in
+  the list under `## Unattended mode` of `build-work` that collects where the
+  mark is deleted. The nearest recorded defects are two: "when the recommended
+  draft falls, who chooses among the survivors and what happens when all fall
+  is not decided", in the entry on the planning fence, today a stop; and
+  finding 6 of the entry of 14 September 2026 on the first planning run alone,
+  the recommended draft revised three times alone where the text says to stop,
+  its should left open between the stop and a redraft. This run is the second
+  measurement of that case and the first where the run kept to the text; the
+  two cases above settle it. Searched with `grep -n 'own draft\|drafts
+  again\|absent person' docs/roadmap.md` before the first version of this
+  entry, and with `grep -n 'knowingly\|drafted against' docs/roadmap.md` for
+  this one: no match for either.
   Recorded, not built: where a draft fails an item of the list it was drafted
   against, `plan-work` stops with nobody there; what should hold, changed
   together with the line of Stage 3 letting the person knowingly take a draft
-  that failed an item, as the fifth of the five sentences of `docs/plan.md`
-  requires, is that the stop falls away and the text says instead:
+  that failed an item, the line of its checking step that no agent decides what
+  follows from a failed item, and the cost of the mode said in Stage 1, as the
+  fifth of the five sentences of `docs/plan.md` requires, is that the stop
+  falls away and the text says instead:
   - where one draft fails an item and others pass, its drafting agent runs
     again with the failed items named, until a draft carries them;
   - where every draft fails the same item, a second drafting round runs first,
@@ -9563,8 +9593,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     so nothing new is invented, and the issue is what lets the person see the
     ground for the cut and overturn it;
   - the run never goes back to the person in the middle, Stage 1 being theirs;
-    only where nothing is left over does it end, and then as a report, which is
-    what defect 15 asks for.
+    only where the named pair takes the whole of the work, nothing being left
+    to cut out, does it end, the requirements contradicting each other, and
+    then as a report, which is what defect 15 asks for, at a place of its own
+    in the list under `## Unattended mode` of `build-work`.
 
   **4. No sentence of the set says that a question about how this workflow runs
   carries no recommendation.** `shared/how-to-ask.md` rules out one case only:
@@ -9582,19 +9614,47 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   have covered it too, and the case says nothing about the width of H's scope.
   What it shows is that the criterion is the wrong one: whether a question
   carries a recommendation turns on what the person is deciding about, not on
-  what the command behind it touches. H's should stays as it is, since
-  auto-merge is a question about the workflow either way; what this replaces is
-  the reason H gives for it. Searched with `grep -n 'how the workflow
+  what the command behind it touches. H's effect on question 2 stays, since
+  auto-merge is a question about the workflow either way; its reason goes, and
+  since H's should carries that reason in its own words, "as the two other
+  questions reaching past the project do", H is rewritten in the same change
+  rather than built as it stands. Searched with `grep -n 'how the workflow
   runs\|carries no recommendation\|secrets scanner' docs/roadmap.md` before the
-  first version of this entry: no match.
+  first version of this entry: no match. Three places decide the same thing and
+  change with it, named by the audit of the same day.
+  `skills/setup-project/SKILL.md` opens step 4 with "Lead with your
+  recommendation so a single word can answer; question 3 gives none." — an
+  order for every question of the step, so that sentence has to say which
+  questions carry one rather than be deleted. `skills/setup-checks/SKILL.md`
+  step 8, "**Do not recommend a yes on a first project.** … Say that, so the
+  recommendation is theirs to weigh rather than a door being held open.",
+  forbids one only on a first project. And `shared/how-to-ask.md` carries a
+  neighbouring category already, "What is a convention of this workflow is not
+  theirs to decide either; it gets created and reported.", which is not asked
+  at all. The boundary between the two: a question is put where the answer
+  changes something of the person's — their machine, their repository's
+  settings, their project's dependencies, or how they want to be worked with —
+  and carries no recommendation there; what is this workflow's own convention
+  is created and reported. Decided with this correction: no marking of each
+  question and no hook refusing a question by its recommendation will be built,
+  since a recommendation the person can decline costs less than a guard that
+  refuses wrongly and ends a run. What is taken instead is the repair of the
+  check under "Before a handover, run these" that says it looks for a question
+  put as an either-or, a defect of the entry after this one.
   Recorded, not built: no sentence of the set says that a question about how
-  this workflow runs carries no recommendation, and both October runs attached
-  one to such a question; what should hold is that a question carries a
-  recommendation only where the person is deciding about the product being
-  built, that a question about how this workflow runs — the install permission,
-  auto-merge, the unattended mode, which tool a check class is built on —
-  carries none, whatever the command behind it touches, and that this sentence
-  stands in `shared/how-to-ask.md`, the block on asking.
+  this workflow runs carries no recommendation, and by this order's account
+  both October runs attached one to such a question; what should hold is that a
+  question carries a recommendation only where the person is deciding about the
+  product being built; that a question about how this workflow runs — the
+  install permission, auto-merge, the unattended mode, which tool a check class
+  is built on — carries none, whatever the command behind it touches, a
+  question being put only where the answer changes their machine, their
+  repository's settings, their project's dependencies or how they want to be
+  worked with, while this workflow's own convention is created and reported and
+  not asked; that this stands in `shared/how-to-ask.md`, the block on asking,
+  beside its sentence on a convention of this workflow; and that the opening of
+  `setup-project` step 4 says which of its questions carry a recommendation and
+  `setup-checks` step 8 gives none on any project, both in the same change.
 
   **5. A `gh` call whose title is several unquoted words hangs, and a hung
   command ends a run with nobody there.** `shared/body-through-file.md` says
@@ -9608,11 +9668,22 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   carry their titles whole. Searched with `grep -n 'unquoted\|120
   seconds\|title as one' docs/roadmap.md`: no match; `/dev/null` alone finds
   the hooks' own input and the guard's routes.
+  One place decides the same thing and is named here under the fifth of the
+  five sentences, as the audit of the same day found:
+  `docs/skill-conventions.md` under "And a narrowing names every channel",
+  "where one cannot be closed — a title that has to stay on the command line,
+  because there is no flag to read it from a file — the rule is about what the
+  text says rather than about how it travels". That sentence speaks of the
+  guard and this defect of quoting and input, but a text saying how the title
+  travels contradicts it in its wording; the entry after this one records the
+  sentence as a defect of its own.
   Recorded, not built: a `gh` call whose title is several unquoted words hangs
   waiting for input, and `shared/body-through-file.md` keeps the title on the
   command line without saying how; what should hold is that the text says the
   title travels as one quoted argument and that the call takes its input from
-  `/dev/null`, so that a call that waits for input fails instead of hanging.
+  `/dev/null`, so that a call that waits for input fails instead of hanging,
+  and that the sentence of `docs/skill-conventions.md` under "And a narrowing
+  names every channel" is bounded to the guard in the same change.
 
   **6. Nothing says where the body file goes.** `shared/body-through-file.md`
   requires the body to go through a file with `--body-file` and names no place
@@ -9641,25 +9712,53 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   secrets class stands in an untracked file and never enters the index, and
   that the run queries the index after restoring.
 
-  **8. The record says nothing about a fetch into a language's own cache.** The
-  record `skills/setup-project/SKILL.md` step 6 writes carries `install-tools`,
-  `install-place` and `install-route` lines and says nothing about a command
-  that downloads a module into the language's own cache without putting
-  anything on a path. In `devloop-test-v` the record said no, and by this
-  order's account the run asked separately and got a yes for exactly such a
-  command. The repository shows the command, the `Makefile`'s `go run
-  $(GITLEAKS) git --redact --no-banner .` under `GITLEAKS :=
+  **8. The record does not spell what the conventions decided about a fetch
+  into a language's own cache, and a second question asked a permission that
+  counts for nothing.** The record `skills/setup-project/SKILL.md` step 6
+  writes carries `install-tools`, `install-place` and `install-route` lines and
+  says nothing about a command that downloads a module into the language's own
+  cache without putting anything on a path. In `devloop-test-v` the record said
+  no, and by this order's account the run asked separately and got a yes for
+  exactly such a command. The repository shows the command, the `Makefile`'s
+  `go run $(GITLEAKS) git --redact --no-banner .` under `GITLEAKS :=
   github.com/zricethezav/gitleaks/v8@v8.30.1`, and the pull request's "The run
   downloads the module into the Go cache; nothing is installed system-wide."
-  The guard passes it without reading the record, above. So under a record
-  saying no a second question decided what the record leaves undecided, and its
-  answer stands nowhere but in the body of an open pull request. Searched with
-  `grep -n 'own cache\|module cache\|go run' docs/roadmap.md`: no match.
-  Recorded, not built: the install record says nothing about a fetch into a
-  language's own cache, and in `devloop-test-v` a separate question settled it
-  under a record saying no; what should hold is that the record says whether a
-  fetch into a language's own cache falls under the permission, and that the
-  question at setup says it in the same words.
+  The guard passes it without reading the record, above. Whether such a fetch
+  falls under the permission is not open, as the first version of this defect
+  had it: `docs/skill-conventions.md` decided it under "It does not cover
+  tools", "A tool that lands outside the repository — a linter, a driver,
+  whatever a wrapper downloads on first use — is the person's, and it lands
+  there under their explicit permission only: asked once at setup, with them
+  there, and held as recorded state that a hook can read. Nothing else counts
+  as that permission". What is left is two things. The record does not spell
+  it: the key list under "The install guard reads a record" — "`install-tools:
+  yes` or `install-tools: no`; one `install-place:` line per place a yes opens
+  in this version … one `install-route:` line per route the stack has …
+  `install-answered:` with the date the question was answered" — names nothing
+  a wrapper fetches, so a run reading the record does not see the case covered.
+  And under a record saying no the run asked a second permission, which the
+  conventions say counts for nothing, and whose answer stands nowhere but in
+  the body of an open pull request. Two more places decide the same thing,
+  named by the audit of the same day under the fifth of the five sentences:
+  `docs/plan.md` under "Where the set ends", "Anything that lands outside the
+  repository lands there under the person's explicit permission only, asked
+  once at setup under milestone 3 and recorded"; and
+  `docs/skill-conventions.md` under "A named install command may enter the verb
+  list", whose refusal "holds for `./gradlew build`, for `mvnw`, and for `npm
+  install puppeteer`, whose named act is project-local and whose download is a
+  side effect", which is why the guard does not see the fetch. Searched with
+  `grep -n 'own cache\|module cache\|go run' docs/roadmap.md` for the first
+  version: no match; the decision stands in the conventions, which that search
+  did not read.
+  Recorded, not built: the install record does not spell what
+  `docs/skill-conventions.md` decided under "It does not cover tools", that
+  what a wrapper downloads on first use lands under the one permission asked at
+  setup, and in `devloop-test-v`, by this order's account, a second question
+  under a record saying no asked a permission that counts for nothing; what
+  should hold is that the record spells the case, its key list under "The
+  install guard reads a record" gaining the line, that the question at setup
+  says it in the same words, and that no run asks a second permission, the
+  record's answer being the only one.
 
   **9. The auto-merge question says what a no costs and not what a yes still
   leaves to be done.** `skills/setup-project/SKILL.md` step 4 question 2: "Say
@@ -9684,26 +9783,43 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   still leaves the first pull request to be merged by hand, because the gate it
   waits on does not exist until the check suite does.
 
-  **10. The labels question's two answers are not a decision.**
-  `skills/setup-project/SKILL.md` step 4 question 5: "**Labels** — only if the
-  tracker already has labels with overlapping meaning. Then ask: map onto the
-  existing ones, or add ours alongside." Finding J of the entry of 30 September
-  2026 establishes that both benches of that day had GitHub's ten defaults,
-  `wontfix` and `question` among them, so the condition fires in every fresh
-  repository; both projects of October carry the same ten beside the seven,
-  read for this entry. Mapping this workflow's vocabulary onto someone else's
-  labels would break the vocabulary the skills read, and step 6 of the same
-  file creates all of them regardless, "Create all seven". Whether question 5
-  was put in either run is not in the repositories. The recorded defects on the
-  same question are findings I and J of that entry, I on the word "ours", J on
-  the report about labels, and neither asks whether the question should exist.
-  Searched with `grep -n 'should exist at all\|not asked about\|created and
-  reported' docs/roadmap.md`: no match.
-  Recorded, not built: the labels question of `setup-project` step 4 asks about
-  this workflow's own labels, and its two answers are not a decision; what
-  should hold is that this workflow's labels are created and reported, not
-  asked about, and that where the tracker has labels of overlapping meaning,
-  that is said in the report.
+  **10. The labels question asks about this workflow's own labels, against a
+  rule that stands.** `skills/setup-project/SKILL.md` step 4 question 5:
+  "**Labels** — only if the tracker already has labels with overlapping
+  meaning. Then ask: map onto the existing ones, or add ours alongside."
+  Finding J of the entry of 30 September 2026 establishes that both benches of
+  that day had GitHub's ten defaults, `wontfix` and `question` among them, so
+  the condition fires in every fresh repository; both projects of October carry
+  the same ten beside the seven, read for this entry. Mapping this workflow's
+  vocabulary onto someone else's labels would break the vocabulary the skills
+  read, and step 6 of the same file creates all of them regardless, "Create all
+  seven". Whether question 5 was put in either run is not in the repositories.
+  This is not a sentence missing, as the first version of this defect had it:
+  `shared/how-to-ask.md`, inserted into `setup-project` under "## How to ask",
+  says "What is a convention of this workflow is not theirs to decide either;
+  it gets created and reported." `git log -S` dates the rule to 17 August 2026
+  in `setup-project` itself, commit `9d7a784`, as "What is a convention of this
+  workflow gets created and reported, not asked.", to 22 August 2026 in the
+  block on asking, `fcd0ce9` of pull request #59, and to 18 September 2026 in
+  `shared/how-to-ask.md`, `ca0ff3a` of pull request #123. So question 5 is the
+  competing sentence "A rule holds only on the path it is written on" warns of,
+  in a skill that inserts the rule it breaks. The first version searched
+  `docs/roadmap.md` alone, with `grep -n 'should exist at all\|not asked
+  about\|created and reported' docs/roadmap.md`, and the rule stands in
+  `shared/`. The recorded defects on the same question are findings I and J of
+  the entry of 30 September 2026: I on the word "ours", its should that the
+  labels are named as this workflow's and the word leaves the skill; J on step
+  2 reporting that the repository carries none of this workflow's labels, its
+  should that step 2 says what step 4 will act on. Building either first writes
+  text this defect then deletes, so the order between them is settled when they
+  are built.
+  Recorded, not built: question 5 of `setup-project` step 4 asks about this
+  workflow's own labels, against the rule of `shared/how-to-ask.md`, inserted
+  into the same skill, that a convention of this workflow gets created and
+  reported, and its two answers are not a decision; what should hold is that
+  question 5 goes, this workflow's labels created and reported and not asked
+  about, and that where the tracker has labels of overlapping meaning, that is
+  said in the report.
 
   **11. A run rewrote a skipped cell's reason, and the rewrite removed the
   trigger the re-read after a merge looks for.** In `devloop-test-u` the
@@ -9725,17 +9841,44 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   that is not `setup-checks` from rewriting one, and nothing tells a reason a
   run wrote from a decision the person made: the rewritten cell reads like any
   skip. Defect 1 asks where the review finding that led to the rewrite goes;
-  this one asks who writes a reason and what step 6 reads. Searched with `grep
-  -n 'written only by\|state of the project against' docs/roadmap.md`: no
-  match; the search the first version of this entry ran on the same rewrite,
-  `grep -n 'erases the trigger\|rewritten skip reason\|rewrites a skipped'
-  docs/roadmap.md`, had found none either.
+  this one asks who writes a reason and what the re-read after a merge looks
+  for. The second half of the should this defect first carried, that step 6
+  read the state of the project against the class rather than the prose of the
+  reason, falls, as the audit of the same day found:
+  `skills/setup-checks/SKILL.md` step 2, as the entry of 1 October 2026 on the
+  check classes decided under "The two points to decide", puts a class the
+  person does not want into the cell "as `skipped` with their reason, named as
+  theirs, and is read again after a merge like any reason", and says of asking
+  again "Asking again hands back a decision the user already made, with nothing
+  new to make it on." A declined class names no state of the project, so a step
+  6 reading the state alone would raise every declined class again after every
+  merge it applies to. Step 1 of the same file decides the other kind, "A
+  reason that will expire is still a reason: no third-party packages yet, no
+  entry point yet. It goes in as `skipped` with that state named, and the step
+  after a merge re-reads these and fills the class once the state has changed";
+  both are named here under the fifth of the five sentences. That a skipped
+  cell's reason is written only by `setup-checks` is a rule on the run and not
+  a guard, since no hook can tell which skill is running, and
+  `docs/skill-conventions.md` says of such a rule "A limit the limited party
+  maintains is not a limit". What a hook can see is the cell, and the cell's
+  form is fixed by `docs/skill-conventions.md` under "The `checks.md` parsers
+  are shell scripts", "The `Status` column takes only `filled`, `empty`,
+  `skipped: <reason>` — spelled exactly", which the entry after this one
+  records as a defect of its own. Searched with `grep -n 'written only
+  by\|state of the project against' docs/roadmap.md`: no match; the search the
+  first version of this entry ran on the same rewrite, `grep -n 'erases the
+  trigger\|rewritten skip reason\|rewrites a skipped' docs/roadmap.md`, had
+  found none either; neither reached the entry of 1 October 2026, which words
+  the subject as "named as theirs, and read again after a merge".
   Recorded, not built: a run that is not `setup-checks` rewrote a skipped
   cell's reason in `devloop-test-u` and so removed the trigger `build-work`
-  step 6 reads; what should hold is that a skipped cell's reason is written
-  only by `setup-checks`, and that what step 6 reads is the state of the
-  project against the class rather than the prose of the reason, so that no
-  rewrite can remove the trigger.
+  step 6 reads, and nothing tells a reason that expires from one the person
+  decided; what should hold, changed together with steps 1 and 2 of
+  `setup-checks`, is two things. Every skipped reason carries one of two forms,
+  one naming what makes it expire and one naming that the person decided it,
+  and the re-read after a merge looks for the first and never puts the second
+  back. And a hook refuses a write that leaves a reason in neither form, while
+  a target in the project's own check suite finds one that got in another way.
 
   **12. A task's own text instructed the run to write
   `docs/agents/checks.md`.** Task #6 of `devloop-test-u`, "record stores a
@@ -9790,28 +9933,49 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
       skills/setup-checks/SKILL.md
 
   Held against each other, `diagnose-bug` and `review-changes` are reached and
-  carry no such section, and neither inserts `shared/how-to-ask.md` either.
-  That file says what follows for such a skill: "A skill without such a section
-  has no unattended path; should it meet the case anyway, it stops with the
-  question named rather than deciding it." `review-changes` is reached from
-  `build-work` step 4, which runs on every task — "Unattended this step never
-  falls away" — so a review that meets a question ends the run; `diagnose-bug`
-  is reached from step 1, a red base in a test class. Searched with `grep -n -i
-  'without such a section\|has no section\|carries no section\|no section of
-  its own\|no such section' docs/roadmap.md`: no match; `grep -n 'diagnose-bug'
-  docs/roadmap.md | grep -i 'section\|unattended\|nobody'`: no match; the same
-  for `review-changes` finds three lines on its lenses run unattended, none on
-  a section for the case. The finding row of `docs/stock-take.tsv` on
+  carry no such section, and neither inserts `shared/how-to-ask.md` either:
+  `grep -c 'how-to-ask' skills/review-changes/SKILL.md
+  skills/diagnose-bug/SKILL.md` answers 0 for both, so they carry neither the
+  section nor the rules on asking. `shared/how-to-ask.md` says what follows for
+  such a skill: "A skill without such a section has no unattended path; should
+  it meet the case anyway, it stops with the question named rather than
+  deciding it." `review-changes` is reached from `build-work` step 4, which
+  runs on every task — "Unattended this step never falls away" — so, concluded
+  from that sentence and not measured, a review that meets a question ends the
+  run; `diagnose-bug` is reached from step 1, a red base in a test class.
+  `docs/skill-conventions.md` requires the section already, under "A hook that
+  says "hand this to a person" assumes there is one": "every skill on a path
+  that can run unattended has to say what that message means when nobody is
+  there." Searched with `grep -n -i 'without such a section\|has no
+  section\|carries no section\|no section of its own\|no such section'
+  docs/roadmap.md`: no match; `grep -n 'diagnose-bug' docs/roadmap.md | grep -i
+  'section\|unattended\|nobody'`: no match, and that empty answer is the wrap
+  of the paragraphs and not an absence, as the audit of the same day found. Two
+  defects of 23 September 2026, in the entry on the close of the stock-take,
+  name `diagnose-bug` already: under "When this runs", "a missing control
+  document is handed to the user as the command that should have created it,
+  and no line says what a run with nobody there does", and under "Step 6 —
+  Clean up, or hand it over", "step 6 hands over and waits for a person, and no
+  line says what a run with nobody there does", each with the should "a
+  sentence for the unattended case, here or in build-work's section for it".
+  This defect stands beside them and narrows their should to a section of each
+  skill's own; the two stay, each a case that section has to answer. The same
+  search for `review-changes` finds three lines on its lenses run unattended,
+  none on a section for the case. The finding row of `docs/stock-take.tsv` on
   `setup-project`, at "With nobody there, there is no one to ask: it becomes an
   issue", names `setup-project` as a skill without the section; that is a
   different defect, since the mode does not reach `setup-project`.
   Recorded, not built: `diagnose-bug` and `review-changes` are reached by the
-  unattended mode and carry no section for the case, and `review-changes` runs
-  on every task, so a review that meets a question ends the run; what should
-  hold is that both carry a section for the case, in the words of their own
-  work, that neither ends a run over a question, and that the fallback sentence
-  of `shared/how-to-ask.md` then covers no skill the mode reaches, which that
-  text says where it stands.
+  unattended mode and carry no section for the case, and neither inserts
+  `shared/how-to-ask.md`; `review-changes` runs on every task, so by conclusion
+  and not by measurement a review that meets a question ends the run; what
+  should hold, beside the two defects of 23 September 2026 on `diagnose-bug`
+  and narrowing their should, is that both carry a section for the case, in the
+  words of their own work, as `docs/skill-conventions.md` requires under "A
+  hook that says "hand this to a person" assumes there is one", that neither
+  ends a run over a question, and that the fallback sentence of
+  `shared/how-to-ask.md` then covers no skill the mode reaches, which that text
+  says where it stands.
 
   **14. Two sentences write what a run does in cases the unattended mode cannot
   reach.** Both stand as what a run does, and neither can happen in one. The
@@ -9828,9 +9992,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `being-planned`." Four things have to hold at once — no answer to look up,
   expensive to get wrong, no option less committing, and nothing left over that
   is a result on its own — and no entry and no run has named a case where they
-  do. Searched with `grep -n 'exception it always is' docs/roadmap.md` for the
-  first and `grep -n 'whole of the work hangs' docs/roadmap.md` for the second:
-  no match for either.
+  do. Settled with defect 3 by the audit of the same day: the two triggers
+  differ, and neither sentence takes the other's case. The drafts route of
+  defect 3 ends where the pair of items it names takes the whole of the work,
+  nothing being left to cut out, and that ending gets a place of its own; the
+  stop here is for a question the whole of the work hangs on, and stays as this
+  defect has it, a real case named or the sentence gone. Searched with `grep -n
+  'exception it always is' docs/roadmap.md` for the first and `grep -n 'whole
+  of the work hangs' docs/roadmap.md` for the second: no match for either.
   Recorded, not built: two sentences write what a run with nobody there does
   where the mode cannot arrive, the `secrets` exception under a guard's block
   in `setup-checks` and the stop of `plan-work` where the whole of the work
@@ -9840,29 +10009,47 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   covering every case until one is.
 
   **15. Nothing says that an unattended run which ends says so as a report, and
-  never as a question.** Two places end a run, both rightly, and stay:
-  `skills/setup-checks/SKILL.md`, "Three rounds against the same failing checks
-  is a standstill, and there the run stops and says so", and
-  `skills/build-work/SKILL.md`, where the wait for a required check to register
-  runs out — "running out there is a stop with the reason named". Neither is a
-  question for the person: the platform will not take the work, and building on
-  would build on something unmerged. What no line says is the form.
-  `skills/plan-work/SKILL.md` says "A stop with a reason is allowed; a wait for
-  a person is not", and an ending delivered through the harness's choice widget
-  is a wait: it names the question and offers answers, and the run ends with
-  nobody to pick one. By this order's account that is what the run did; neither
-  repository shows it. Searched with `grep -n 'wait for a person'
-  docs/roadmap.md`: no match. `grep -n 'stop with a reason' docs/roadmap.md`
-  finds two lines, both on a standstill in the middle of a task, neither this:
+  never as a question.** Two kinds of place end the unattended part, and each
+  stays. `skills/build-work/SKILL.md` step 6: "**Three rounds on the same
+  signature is standstill**: end the run with a finding, say what stood still
+  and what was tried against it, leave the pull request open and armed, and
+  delete the mark"; the refusal there, "A refusal there is a stop with the
+  reason named, and the mark is deleted with it"; and the wait for a required
+  check to register, "running out there is a stop with the reason named". And
+  the list under `## Unattended mode` of the same file that collects them,
+  "**And where the mark is deleted**, so that creation and deletion stand in
+  one place". The first version of this defect named
+  `skills/setup-checks/SKILL.md` at "Three rounds against the same failing
+  checks is a standstill, and there the run stops and says so" as one of the
+  places; that sentence stands in step 8, in what is said to the person at the
+  offer of the mode, and ends no run, as the audit of the same day found.
+  Neither place is a question for the person: the platform will not take the
+  work, and building on would build on something unmerged. What no line says is
+  the form. `skills/plan-work/SKILL.md` says "A stop with a reason is allowed;
+  a wait for a person is not", and an ending delivered through the harness's
+  choice widget is a wait: it names the question and offers answers, and the
+  run ends with nobody to pick one. By this order's account that is what the
+  run did; neither repository shows it. A hook can hold this where a sentence
+  cannot: the mark is `.claude/unattended.local`, and a hook refusing the
+  question tool while the mark stands with this run's commit needs no marking
+  of questions. The one thing it has to get right is a mark another run left:
+  `shared/mark.md` says "A mark carrying any other commit is another run's",
+  and such a mark must not block a question with the person there. Searched
+  with `grep -n 'wait for a person' docs/roadmap.md`: no match. `grep -n 'stop
+  with a reason' docs/roadmap.md` finds two lines, both on a standstill in the
+  middle of a task, neither this:
 
       1107:  standstill — not a stop with a reason, but a halt in the middle of a task that
       3220:    is not a stop with a reason — it is a standstill in the middle of a task that
 
   Recorded, not built: no line says the form in which an unattended run that
-  ends says so, and a run ended through the question widget, which is a wait;
-  what should hold is that an unattended run that ends says it in its own
-  message — what is finished, what it was held on, what the person has to do —
-  and never through the question widget.
+  ends says so, and by this order's account a run ended through the question
+  widget, which is a wait; what should hold is that `build-work` step 6 and the
+  list under `## Unattended mode` that collects where the mark is deleted say
+  that an unattended run that ends says it in its own message — what is
+  finished, what it was held on, what the person has to do — and never through
+  the question widget, and that a hook refuses the question tool while the mark
+  stands with this run's commit, never on a mark another run left.
 
   **Five that are recorded already, and occurred again.** None gets a record of
   its own here, and none a should of its own.
@@ -9945,6 +10132,646 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the 74 messages this tool rejects, refuses or answers with, read off its
   own source, 74 are asserted by a case and 0 by none; the lines of the
   report are not in that count`, exit 0, recorded on its outcome.
+
+- **The consistency audit of 4 October 2026, read against the entry beside it:
+  two counts on its fifteen defects, those fifteen corrected there in place,
+  and twenty defects of its own; 4 October 2026, version 0.128.0.** On
+  `task/audit-and-corrections`, off `5380134`.
+
+  **What was read, and how.** The audit ran on 4 October 2026 on `main` at
+  `5380134`, version 0.127.0, with the working tree clean, and wrote nothing
+  into the repository; in the bench projects it only read, through `gh api`,
+  `gh pr view` and `gh issue view`. It read whole `docs/plan.md`,
+  `docs/skill-conventions.md`, `README.md` and the entry beside this one;
+  `docs/roadmap.md` up to the first entry under `## Known gaps`, and from the
+  end of the last entry on, `## Decisions taken against` and `## Names that
+  were rejected`; the table through `scripts/devloop-stock-take`; and the
+  places of the skills and the shared texts the fifteen defects point at. The
+  rest of the roadmap it reached by search: per defect one `grep -n -E` per
+  name — the skill or the shared file, the heading, the words of the target
+  state — and a script in a scratch directory that printed the paragraph around
+  each hit outside the entry beside this one wherever that paragraph carried a
+  should or a status, every paragraph so printed read. Its report stands on
+  this machine as `~/devloop-konsistenz-2026-10-04.md`, written in German, and
+  is not in the repository; this entry names its sections rather than repeating
+  them. The commands its findings rest on, run again for this entry at
+  `5380134` with the same answers. The lines carrying the phrase that opens a
+  status line, `grep -c 'Recorded, not[ ]built' docs/roadmap.md`, written here
+  with the space in brackets so that this line stays out of the set it counts:
+  152, the last fifteen the status lines of the entry beside this one; of the
+  137 before them four quote the phrase in prose, so the older status lines are
+  133. The lines carrying a should after a dash, `grep -c -- '—[ ]should:'
+  docs/roadmap.md`: 66, every one in the entry of 23 September 2026 on the
+  close of the stock-take, in its list of findings. `python3
+  scripts/devloop-stock-take`: exit 0, `BROKEN RECORDS: 0`, `FINDINGS: 20`, `0
+  of 2073` uncovered lines of the search set, and under `SKILLS THE UNATTENDED
+  MODE REACHES: 7` the seven `build-prototype`, `build-work`, `cut-into-tasks`,
+  `diagnose-bug`, `plan-work`, `review-changes` and `setup-checks`. And `grep
+  -l '^## With nobody there' skills/*/SKILL.md`: five files, those of
+  `build-prototype`, `cut-into-tasks`, `build-work`, `plan-work` and
+  `setup-checks`.
+
+  **What it found about the entry beside it, on two separate counts.** The
+  first count is whether a defect is right. Of the fifteen, one is wrong in
+  substance: defect 2 read a sentence of `setup-checks` without the condition
+  standing before it and found two answers in a file that gives one. Six name a
+  real gap and claim wrongly beside it: defect 4, that the should of finding H
+  of 30 September 2026 stays as it is, where that should carries the very
+  reason defect 4 replaces; defect 8, that whether a fetch into a language's
+  own cache falls under the permission is open, where the conventions decided
+  it; defect 10, that a sentence is missing, where a rule has stood since 17
+  August 2026; defect 11, a reading of the skip reasons that a decision of 1
+  October 2026 rules out; defect 13, that nothing on its subject was recorded,
+  where two defects of 23 September 2026 stand; and defect 15, a place that
+  ends no run. The second count is a different one: whether a defect names
+  every place deciding the same thing, which the fifth of the five sentences of
+  `docs/plan.md` requires — "A rule that does not hold in a run is rewritten,
+  not appended to, and every place deciding the same thing is named in the same
+  change". Nine of the fifteen do not, defects 1, 3, 4, 5, 8, 10, 11, 13 and
+  15, listed with their missing places under section 3.3 of the report; six do,
+  2, 6, 7, 9, 12 and 14. A defect may stand on one count and fall on the other:
+  defect 2 names its places and is wrong, defects 1, 3 and 5 claim nothing
+  wrongly and miss places.
+
+  **Four causes, named separately.** Three — the defects on recommendations, on
+  a language's own cache and on the labels question, 4, 8 and 10 — because the
+  orders that wrote them required a search of `docs/roadmap.md` alone, as this
+  order gives it, and each search the entry names runs over that file only,
+  while the rules of this set also stand in `skills/`, `shared/` and
+  `docs/skill-conventions.md`; the third rule under "A field is not an answer
+  to a question it was not asked" runs the search over `skills/`, `hooks/`,
+  `docs/`, `README.md`, `shared/`, `bin/` and `scripts/`. Two — the defects on
+  the rewritten skip reason and on the two skills without a section, 11 and 13
+  — because the search ran on the right file and answered nothing although the
+  older text stands there. For 13, `grep -n 'diagnose-bug' docs/roadmap.md |
+  grep -i 'section\|unattended\|nobody'` asks for two words on one physical
+  line of hard-wrapped prose, and the defects of 23 September 2026 carry them
+  on other lines. For 11, the needles were the words of its own target state,
+  which found nothing but the entry itself, run across lines for this entry;
+  the entry of 1 October 2026 on the check classes words the subject as "named
+  as theirs, and read again after a merge like any reason", and the last half
+  of that straddles a line break, so even that phrase searched plain answers
+  nothing. One — defect 2 — is a sentence read without the condition standing
+  before it. One — defect 15 — is a place named that is not where the rule
+  stands: the sentence of `setup-checks` it named stands in step 8, in what is
+  said to the person, and the rule that ends a run stands in `build-work` step
+  6.
+
+  **The twenty defects.** Each was established against the files of this tree
+  on 4 October 2026 and against the report, and none is repaired here: nothing
+  under `skills/`, `shared/`, `hooks/`, `bin/` or `scripts/` changed, and
+  neither did `README.md` or `docs/skill-conventions.md`. Every search named
+  below was run before the text that names it was written; across lines means
+  `## Known gaps` of `docs/roadmap.md` at `5380134` with its line breaks
+  joined, the entry beside this one left out.
+
+  **1. No shared text says how the mark is deleted, and three files word it
+  each in their own way.** The mark's creation has one,
+  `shared/mark-command.md`, inserted where `plan-work` and `build-work` write
+  the mark; its deletion has none. `skills/build-work/SKILL.md` collects the
+  places under `## Unattended mode`, "**And where the mark is deleted**, so
+  that creation and deletion stand in one place", and its sites word it "Then
+  delete the mark with a shell command and say so", "and delete the mark — the
+  run is over" and "the mark is deleted with it".
+  `skills/cut-into-tasks/SKILL.md`, at the halt before the first build: "Then
+  delete the mark with a shell command, say that you did, and stop."
+  `skills/plan-work/SKILL.md`: "the run stops, with the question named, the
+  mark deleted and the planning issue left `being-planned`", and under "The
+  mark." "It is deleted wherever the unattended part ends". So no one search
+  finds every ending without a person. `setup-checks` and `setup-project` hold
+  no such ending: `setup-project` names `unattended.local` once, in step 5, as
+  one of the two files of local state `.gitignore` has to cover, and runs with
+  a person only; `setup-checks` names the mark through `shared/mark.md` and the
+  line after it, "This skill is reached with nobody there from two places, and
+  the mark says so", and no line of it ends a run. Against the copy check under
+  "Before a handover, run these", `cat shared/*.md | awk 'length >= 40' | grep
+  -Fl -f - skills/*/SKILL.md`, which prints a skill keeping a line of forty
+  characters or more of a shared file word for word: measured for this entry
+  with a scratch file read beside `shared/*.md`, a text written fresh printed
+  nothing, and one put together from the lines `cut-into-tasks` and
+  `build-work` carry today printed both files. Searched across lines for
+  `delete[sd]? (the|its|a|such a) mark|mark (is |was )?deleted|mark left
+  standing`: three entries on a deletion, the planning fence, the first
+  planning run alone and the close of the stock-take, none on its wording; for
+  `where the mark is deleted|creation and deletion|deleting the
+  mark|mark-command`: no entry.
+  Recorded, not built: no shared text says how the mark is deleted, and
+  `build-work`, `plan-work` and `cut-into-tasks` word it each in their own way,
+  so no one search finds every ending without a person; what should hold is
+  that one shared text says it, inserted at each place the unattended part
+  ends, and that it replaces the wording of those places rather than standing
+  beside it, since a line a skill keeps word for word is what the copy check
+  prints.
+
+  **2. The list of where the mark is deleted misses the stops of `plan-work`.**
+  `skills/build-work/SKILL.md` under `## Unattended mode` lists "at the
+  finishing sentence at the end of this section; at the standstill after three
+  rounds in step 6, and at a refused arming there that ends the run; at a
+  refusal above, where the run came through planning and wrote a mark that a
+  refusal here ends; on the user's word to stop; and at the halt before the
+  first build, which the cut does before this section is ever reached", and
+  says "Each of those sites says so where it stands". It names the cut's halt,
+  so it means to reach past `build-work`. `skills/plan-work/SKILL.md` deletes
+  the mark where it stops with nobody there: "Where the whole of the work hangs
+  on the question and no option is less committing, the run stops, with the
+  question named, the mark deleted", and under "The mark." it names "a stop
+  with a reason" among the places the mark is deleted, its stop at a design
+  choice, "alone, that is a stop with the reason named", being one. None of
+  them is in the list. Defect 3 of the entry beside this one, as corrected,
+  adds an ending to the same route, where the pair of items it names takes the
+  whole of the work. Searched across lines as for defect 1.
+  Recorded, not built: the list under `## Unattended mode` in `build-work` that
+  collects where the mark is deleted misses the stops of `plan-work` under
+  "With nobody there", which delete it where they stand; what should hold is
+  that the list names them, and the ending of defect 3 of the entry beside this
+  one where nothing is left to cut out, at a place of its own.
+
+  **3. The table holds no thing for an install with nobody there under a yes
+  that succeeds.** `docs/stock-take.tsv` carries the case without a person in
+  `build-work` step 3 as one thing, "build-work / Step 3 — Build it / install
+  with nobody there: a no on record is the decline, a record never written a
+  block", its two blocks and nothing else. The success sits in two things that
+  bundle both halves: in `build-work`, "install under a record saying yes: the
+  run runs the backed command itself, with the user there and with nobody
+  there, …", sited on "7. Installs a tool that lands outside the repository";
+  and in `setup-project`, "yes to the install permission: from then on the run
+  installs such a tool by itself, with them there and with nobody there,
+  without asking again, …", which the tool reads as walked since the run of 3
+  October 2026 in `devloop-test-u`, made with the person there. So the half
+  milestone 3 ends with, "a build installing a tool unattended", was invisible
+  in the tool: no thing of it stood as never walked. Step 3 point 7 carries a
+  line the success can be anchored on, "user there and with nobody there,
+  without asking again; the guard passes it", which no record names and which
+  stands once in the file, `grep -c` answering 1. Searched: the names of the
+  table's things holding both "nobody there" and "install", nine, read one by
+  one, none the success; across lines for `with nobody there under a
+  yes|installing a tool unattended|install(s|ed)? (a tool )?with nobody
+  there|unattended install`: the entry of 30 September 2026 on the two runs,
+  which says no install with nobody there has happened, and nothing on the
+  table.
+  Recorded, not built: `docs/stock-take.tsv` holds no thing for an install that
+  runs with nobody there under a yes on record and succeeds, the thing for the
+  case without a person carrying only its two blocks and the two things for the
+  yes bundling both halves, so the open half of milestone 3 was invisible in
+  the tool; what should hold is a thing of its own, "the install runs with
+  nobody there under a yes on record and the tool stands at the path", sited on
+  the line of `build-work` step 3 point 7 that says it, and the outcome of
+  `setup-project` that names both halves split the same way, so that a run with
+  the person there walks only its own half.
+
+  **4. The rule that keeps the runtimes out of the install question was
+  delivered as an assurance again, the fifth time in five runs.**
+  `skills/setup-project/SKILL.md` step 4, since 3 October 2026: "That compilers
+  and runtimes stay theirs under every answer is a rule on the run … and not an
+  assurance the guard holds; both runs of 30 September 2026 lifted it out of
+  the leak and delivered it as one, so the leak is said and the assurance is
+  not." The entry beside this one, among the five recorded already: "By this
+  order's account the yes run lifted it out a fifth time, the first under
+  0.126.0, where the boundary no longer stands in the question at all." It
+  writes no record, and the table shows that repair as built and never walked,
+  its thing, "the repair of point 3 of question 4 made on 30 September 2026 did
+  not hold in either run …", carrying in its note "not exercised: the question
+  has not been put since". Five deliveries in five runs, the last after the
+  boundary had left the question: by the fifth of the five sentences a rule
+  that does not hold is rewritten, and a rewording was tried each time. What is
+  left is a mechanism at the call. `code.claude.com/docs/en/hooks.md`, read on
+  4 October 2026 by the audit, names `AskUserQuestion` under `PreToolUse` with
+  `questions` in its input, so a hook of this plugin could read the question's
+  fields before they reach the person; nothing has measured it, and which
+  mechanism, if any, is a choice this entry does not make. Searched across
+  lines for `fifth time|wording is spent|no wording|did not hold in`: the rule
+  on a skill's name, the widget's first asking and the two runs of 30 September
+  2026, none on the repair of 3 October 2026.
+  Recorded, not built: the rule of `setup-project` step 4 that the leak is said
+  and the assurance on runtimes is not, built on 3 October 2026, was delivered
+  as an assurance again in the yes run of that day, by the account of the order
+  that recorded it, the fifth time in five runs, and the table shows the repair
+  as never walked; what should hold is that no further wording is taken as the
+  repair, and that a mechanism at the question tool holds it or the rule goes,
+  the choice of mechanism open and its first measurement the one the finding on
+  `setup-project` at "question and no other" names.
+
+  **5. `docs/plan.md` carries a measurement record in milestone 3, which its
+  opening says the plan holds none of.** The opening of `docs/plan.md`: "This
+  is the plan and not a measurement record: what was measured stands in
+  `docs/roadmap.md` under `## Known gaps`"; and the roadmap entry of 19
+  September 2026 on the plan: "This file stays the measurement record and
+  `docs/skill-conventions.md` the rules; the plan holds neither." Against them
+  milestone 3, not landed: "The two runs above ran on 30 September 2026, both
+  attended, under 0.120.0 from the installed copy …", "What they walked: …",
+  "What they did not walk, and so what the milestone could not claim on them:
+  …", and "both halves of both runs on a bench, the setup and the guard against
+  the landed record, were walked on 3 and 4 October 2026 under 0.126.0 with the
+  person there". The opening knows only a landed milestone, which "keeps its
+  text and gets a line saying when it landed"; milestone 3 gathers versions,
+  dates, benches and what ran, and grew by the runs of 3 and 4 October 2026.
+  The sentence this entry rewrote there, on which projects carry a record, is
+  another such line. Searched: `grep -n 'not a measurement record'
+  docs/roadmap.md docs/stock-take.tsv`: no match; across lines for `measurement
+  record|holds neither|plan holds`: the entry of 19 September 2026 alone, which
+  says it.
+  Recorded, not built: milestone 3 of `docs/plan.md`, not landed, carries
+  versions, dates, benches and what its runs walked, where the opening of that
+  file and the roadmap entry of 19 September 2026 say the plan holds no
+  measurement record; what should hold is that the record stands in the roadmap
+  entries that carry it already and milestone 3 keeps what it covers and what
+  ends it, moved by an order of its own that passes over every line of the file
+  naming a version or a date.
+
+  **6. `README.md` says no question about the process is asked, and the set
+  puts several.** `README.md` under "What it is for": "1. **No question about
+  the process, only about the thing.**" The same file under "Attended and
+  unattended": "Without the flag you are asked once, at the end of the
+  sharpening, how this piece of work should run"; `setup-project` step 4 asks
+  about auto-merge, the install permission and the labels, and `setup-checks`
+  step 8 about the mode; and defect 4 of the entry beside this one, as
+  corrected, bounds where such a question is put. The property's example,
+  ""What do you want to do next?" is a failure", means the question about the
+  next step; its words say more. Section 4.2 of the report. Searched: `grep -c
+  'question about the process' docs/roadmap.md docs/stock-take.tsv`: 0 and 0;
+  across lines for `question about the process|only about the thing`: no entry.
+  Recorded, not built: property 1 of `README.md`, "No question about the
+  process, only about the thing", is contradicted by the same file and by the
+  questions of `setup-project` and `setup-checks`; what should hold is that the
+  property says what it rules out, a question about which step comes next, and
+  that the questions about how the person wants to be worked with stand beside
+  it as the corrected defect 4 of the entry beside this one bounds them.
+
+  **7. `README.md` states the finish of an unattended run in the words
+  `build-work` names as the cause of a halt.** `README.md` under "Attended and
+  unattended": "it runs until nothing in scope is ready any more, and picks up
+  work that turns up along the way". `skills/build-work/SKILL.md` under `##
+  Unattended mode`: "**Do not phrase the finish in the readiness query's terms
+  alone.** … the sentence here used to read that the run works until nothing in
+  scope is ready any more and that this was the only finish, and on 9 September
+  2026 a run read it, closed its spec, and halted with three loose issues lying
+  open." The finish has two conditions there, nothing ready in scope and no
+  loose `raised-here` issue waiting. The check under "Before a handover, run
+  these" that looks for a competing finish reads `skills/` and `shared/`, not
+  `README.md`. Section 4.2 of the report. Searched: `grep -c 'ready any more'
+  docs/roadmap.md docs/stock-take.tsv`: 0 and 0; across lines for `ready any
+  more|nobody watching`: no entry.
+  Recorded, not built: `README.md` says an unattended run goes until nothing in
+  scope is ready any more, the finish `build-work` records as the cause of a
+  halt on 9 September 2026; what should hold is that `README.md` states the
+  finish with both its conditions, as `build-work` has them.
+
+  **8. `README.md` says the set was exercised once with nobody watching.**
+  `README.md`: "It has been exercised on throwaway projects across five stacks
+  — Python, TypeScript, Kotlin, Go and Rust — once with nobody watching.",
+  standing since 18 August 2026, `git log -S'once with nobody watching' --
+  README.md` naming `97babda` and `de71f73`. The roadmap's own heads: "The
+  unattended run narrowed the review from five lenses to three, measured on 6
+  and 7 September 2026", "The unattended run put the landing question to the
+  user, measured on 13 September 2026 in `devloop-test-o`", "The first planning
+  run alone, measured on 14 September 2026 in `devloop-test-o`"; and the two
+  builds of 3 October 2026 in `devloop-test-u`, with nobody there by the
+  account of the order that recorded them. Read as once, the sentence is false
+  by the dated entries; read as one project, false only by that account.
+  Section 4.2 of the report. Searched across lines for `ready any more|nobody
+  watching`: no entry.
+  Recorded, not built: `README.md` says the set was exercised once with nobody
+  watching, where the roadmap dates at least three such runs; what should hold
+  is that `README.md` says how often by pointing at the dated entries rather
+  than by a count of its own.
+
+  **9. `README.md` lets the install record open `sudo` and a piped installer.**
+  `README.md` under "The check suite": "a guard that stops a command installing
+  outside the repository — a package manager, `sudo`, a copy into a bin
+  directory, an installer piped from the network — and hands it to you to run,
+  unless a record in `docs/agents/environment.md` on the main branch says tools
+  may be installed and names the place this one lands, or the route it comes
+  through, in which case the run installs it itself".
+  `docs/skill-conventions.md` under "The install guard reads a record": "`sudo`
+  and a script piped from the network into a shell stay blocked under every
+  answer." The "unless" hangs on the whole list, so `sudo brew install …`,
+  which comes through a named route, reads as opened by a yes and stays
+  blocked. Section 4.2 of the report. Searched across lines for `piped from the
+  network|under every answer`: eight entries, on the guard and on the install
+  question, none on this sentence of `README.md`.
+  Recorded, not built: the sentence of `README.md` on the install guard hangs
+  its "unless" on a list that includes `sudo` and an installer piped from the
+  network, which `docs/skill-conventions.md` keeps blocked under every answer;
+  what should hold is that the sentence says those two stay blocked whatever
+  the record says.
+
+  **10. A sentence of the conventions says a title's rule is about what the
+  text says and not how it travels, and defect 5 of the entry beside this one
+  needs how it travels.** `docs/skill-conventions.md` under "And a narrowing
+  names every channel": "where one cannot be closed — a title that has to stay
+  on the command line, because there is no flag to read it from a file — the
+  rule is about what the text says rather than about how it travels."
+  `shared/body-through-file.md` bounds the same thought to the guard, "what
+  keeps it clear of a guard is what it says, not how it travels", as did the
+  entry of 6 September 2026 it came from, "what keeps it clear is what it
+  says". Defect 5 of the entry beside this one asks that the text say "the
+  title travels as one quoted argument" and take its input from `/dev/null`,
+  how it travels, for quoting and input rather than for the guard; as written,
+  that repair contradicts the conventions in their wording. Section 5.1 of the
+  report, which says the rule requires a change. Searched across lines for `how
+  it travels|names every channel`: the entry of 6 September 2026 alone.
+  Recorded, not built: the sentence of `docs/skill-conventions.md` under "And a
+  narrowing names every channel" says, unbounded, that the rule for a title is
+  about what the text says rather than how it travels, where defect 5 of the
+  entry beside this one asks how it travels; what should hold is that the
+  sentence is bounded to the guard, in the same change as that repair.
+
+  **11. The rule on the `Status` column of `checks.md` spells one shape for a
+  reason that expires and one the person decided.** `docs/skill-conventions.md`
+  under "The `checks.md` parsers are shell scripts": "The `Status` column takes
+  only `filled`, `empty`, `skipped: <reason>` — spelled exactly, ASCII only."
+  Defect 11 of the entry beside this one, as corrected, asks that every skipped
+  reason carry one of two forms, one naming what makes it expire and one naming
+  that the person decided it, and that a hook refuse a write leaving a reason
+  in neither form. A hook can tell the two apart only where the cell spells
+  them, and the rule spells one shape for both. Section 5.6 of the report left
+  this open on whether step 6 judges from the repository or from the cell; the
+  correction of defect 11 settles it for the cell. The other rule section 5 of
+  the report names, the key list under "The install guard reads a record", is
+  named in the corrected defect 8 of the entry beside this one as the place
+  that gains a line, and is no defect of its own here. Searched across lines
+  for `spelled exactly|Status column|status column`: no entry.
+  Recorded, not built: the rule of `docs/skill-conventions.md` on the `Status`
+  column of `checks.md` spells one shape, `skipped: <reason>`, for a reason
+  that expires and for one the person decided, which the corrected defect 11 of
+  the entry beside this one needs a hook to tell apart; what should hold is
+  that the rule spells the two forms exactly, in the same change as that
+  repair.
+
+  **12. Milestone 7 of `docs/plan.md` names the places that count five control
+  documents, and misses three added on 3 October 2026.** `docs/plan.md`,
+  milestone 7: "The sixth file moves every place that counts five: `README.md`,
+  `setup-project` in three places, and the pointer block it writes into
+  `CLAUDE.md`." `grep -rn -i -E '\bfive\b' README.md skills shared bin hooks
+  docs/skill-conventions.md docs/plan.md | grep -i -E
+  'file|document|docs/agents'` finds those and three more, all added on 3
+  October 2026 with pull request #153, version 0.125.0:
+  `skills/start-work/SKILL.md`, "one file or all five";
+  `bin/devloop-setup-state`, its header "the five setup-project step 6 writes"
+  and its `FILES=` line naming five; and `docs/skill-conventions.md`, "the five
+  of `setup-project` step 6". The pointer block lists five paths and counts
+  nothing. Section 7.2 of the report. Searched across lines for `counts
+  five|sixth file|sixth control`: the audit of 30 September 2026, on another
+  count.
+  Recorded, not built: milestone 7 of `docs/plan.md` names the places that
+  count the five control documents and misses `start-work`,
+  `bin/devloop-setup-state` and `docs/skill-conventions.md`, which count them
+  since 3 October 2026; what should hold is that the milestone names those
+  places by the search that finds them, run when it is built, rather than by a
+  list that goes stale.
+
+  **13. The conventions say three shared words carry real weight and define
+  four.** `docs/skill-conventions.md` under "Shared words are defined in one
+  place": "Three carry real weight here." Four definitions stand under it, a
+  seam, a condition, a class and a lens, and the fourth says "**This one was
+  added after the fact, and why says something about the other three.**" The
+  count stayed when the lens was added. `awk '/^## Shared words are defined in
+  one place/{f=1;next} /^## /{f=0} f && /^\*\*A [a-z]+ is/'
+  docs/skill-conventions.md` prints four. Section 7.2 of the report. Searched:
+  `grep -n 'carry real weight' docs/roadmap.md docs/stock-take.tsv`: no match;
+  across lines for `carry real weight|Three carry`: one entry, on a check that
+  could not fail, using the words for another thing.
+  Recorded, not built: `docs/skill-conventions.md` says three shared words
+  carry real weight and defines four, the count left behind when the lens was
+  added; what should hold is that the sentence counts four or counts nothing.
+
+  **14. The check that looks for an either-or question does not find the labels
+  question.** `docs/skill-conventions.md` under "Before a handover, run these":
+  "No sentence tells a run to ask for permission to reach the next stage, or to
+  put a question as an either-or." Its command, `grep -rn 'Ask whether\|offer
+  to\|Offer to\|on a yes\|offering the next' skills/*/SKILL.md shared/*.md`,
+  prints in `setup-project` only "offer to create one" and "Offer to switch it
+  on", run for this entry. `skills/setup-project/SKILL.md` step 4 question 5,
+  "Then ask: map onto the existing ones, or add ours alongside.", is an
+  either-or the check says it looks for and does not find. The corrected defect
+  4 of the entry beside this one takes the repair of this check instead of a
+  marking of each question or a hook. Section 5.8 of the report. Searched
+  across lines for `either-or|either or|map onto`: finding I of 30 September
+  2026, on the word "ours", nothing on the check.
+  Recorded, not built: the check under "Before a handover, run these" that says
+  it looks for a question put as an either-or does not find question 5 of
+  `setup-project`, "map onto the existing ones, or add ours alongside"; what
+  should hold is that the check finds an either-or by its shape, two answers
+  joined by "or" after a word that asks, and prints that line.
+
+  **15. The head of the entry beside this one says its fifteen defects were
+  read off the runs, and two were not.** The head: "and fifteen defects read
+  off them". Defect 13 was read off the tool and the files, "holding the
+  reached set this tool prints … against grep -l" as its note has it; defect 14
+  off two files, "no entry and no run has named a case where they do". The
+  bodies say so; the head claims more. Section 6.1 of the report.
+  Recorded, not built: the head of the entry of 4 October 2026 on the two runs
+  says its fifteen defects were read off them, where defects 13 and 14 were
+  read off the files and the tool; what should hold is that the head says what
+  the defects were read off, or counts only those the runs carry.
+
+  **16. Status lines and record names of the entry beside this one drop the
+  mark of what only the order's account carries.** That entry's rule: "What
+  only the runs' own account carries stands here as this order's account and is
+  marked as such; what the repositories and this machine show stands as read."
+  Its status lines, as written, dropped the mark where the body carries it:
+  defect 4, "both October runs attached one to such a question", the body "By
+  this order's account"; defect 5, "a `gh` call whose title is several unquoted
+  words hangs waiting for input", the body "That a call of that shape hung is
+  the order's account too"; defect 6, "both runs wrote it inside `.git/`", the
+  body "By this order's account"; defect 15, "a run ended through the question
+  widget", the body "By this order's account … neither repository shows it";
+  and the head of defect 2, "The unattended build", the body "That the two
+  builds ran with nobody there is this order's account". The record names of 5
+  and 6 drop it too; the notes carry it. This entry's corrections rewrote the
+  head of defect 2 and the status lines of 4 and 15, which now carry the mark
+  where they state the account; the status lines of 5 and 6 and the names of
+  both stand as they were. Section 6.2 of the report.
+  Recorded, not built: the status lines and record names of the entry of 4
+  October 2026 on the two runs drop the mark its own rule asks for where they
+  state what only the order's account carries, which stands after this entry's
+  corrections in the status lines of defects 5 and 6 and in the names of both;
+  what should hold is that they carry the mark, as the bodies and the notes do.
+
+  **17. Nothing in a repository tells `setup-checks` called for one class from
+  a build that wrote the cell itself.** Read in `devloop-test-u` by the audit:
+  commit `0990164`, 21:55:49 UTC on 3 October 2026, "Mark unit class filled in
+  checks and note the new dependency", turned the `unit` row from "skipped: no
+  logic to test yet, main.rs only prints" to `test-unit`, `filled`; before it
+  in #14, `a4624ba`, "Run unit tests in check and make test-one take NAME"; and
+  the body of #14 names four guarded conditions, no call of the check setup and
+  no red proof of `test-unit`. `skills/setup-checks/SKILL.md` on the
+  single-class route keeps the build's branch, "the one the run was called on
+  is kept", builds the target, proves it red and writes the row: the same
+  artefacts a build leaves that writes the cell itself. No commit carries a
+  skill's name, and `setup-checks` names a place for its report only for an
+  install, step 4's "in the pull request body that lands the class, step 7's or
+  the build's where this skill was called for one class"; step 5's red proof
+  has none. So whether defect 12 of the entry beside this one is a build
+  writing the cell or the check setup called for it, the repository cannot say;
+  the message, the order after the task and the missing red proof of
+  `test-unit` point at the build, and only the session log could tell. Section
+  8.1 of the report. Searched across lines for `single-class route|single
+  class`: the entries on that route, none on telling the two apart.
+  Recorded, not built: nothing in a repository tells `setup-checks` called for
+  one class from a build that wrote `checks.md` itself, since no commit carries
+  a skill's name and `setup-checks` names no place for the red proof of a class
+  filled without an install; what should hold is that the single-class route
+  reports its red proof in the pull request body that lands the class, as step
+  4 does for an install, so that a row filled with no proof in that body reads
+  as written by something else.
+
+  **18. Stage 2 of `plan-work` skips on "no code yet", which a skeleton leaves
+  undetermined, and says to report the skip without saying where.** Read on
+  issue #5 of `devloop-test-u` by the audit: the comments "## Stage 1:
+  sharpened" at 21:30:23 UTC and "## Stage 3: drafts and checks" at 21:34:28
+  UTC, none for Stage 2; the Stage 3 comment carries "Constraint breaks: none
+  real. The constraint "no dependencies" was an error on our side: rusqlite and
+  clap are planned."; the repository held a Rust skeleton printing a greeting.
+  `skills/plan-work/SKILL.md`: "**After each stage**, post that stage's output
+  as a comment on the issue."; and Stage 2, "Skip this stage if there is no
+  code yet, and say that you skipped it." and "Post that report as a comment on
+  the planning issue." Either Stage 2 ran and its comment was not posted, which
+  a constraint read off the code in the Stage 3 comment suggests; or the run
+  took the skeleton as no code yet, and then nothing decides: "no code yet" is
+  undetermined against a stub — `setup-checks` judged the same project "no
+  logic to test yet, main.rs only prints" — and "say that you skipped it" names
+  no place, the conversation or the issue. The repository does not show which.
+  The run of 30 September 2026 in `devloop-test-s` posted a Stage 2 comment.
+  Section 8.2 of the report. Searched across lines for `no code yet|say that
+  you skipped|skipped it`: the entry of 30 September 2026 on the two runs, on
+  the `types` class, nothing on Stage 2.
+  Recorded, not built: Stage 2 of `plan-work` skips "if there is no code yet",
+  which a skeleton leaves undetermined, and asks the run to say that it skipped
+  without saying where, and issue #5 of `devloop-test-u` carries no Stage 2
+  comment; what should hold is that Stage 2 says what counts as code for its
+  skip, as `setup-checks` step 2 says a stub turns no reason false, and that a
+  skip is posted on the planning issue as the stage's comment.
+
+  **19. A spec assigned the filling of a check class to its first task, where
+  `plan-work` alone raises an issue.** Issue #5 of `devloop-test-u`, under "##
+  Missing checks", read by the audit: "The first task fills the unit class: a
+  `test-unit` target that runs `cargo test`, and `test-one` runs a single test.
+  Nothing else is held on it." Task #6 was cut from it.
+  `skills/plan-work/SKILL.md`, the "**Missing checks**" item: "Alone, that
+  second half goes through the order under "With nobody there" and lands on its
+  first step: the class is named here and raised as an issue carrying
+  `raised-here`, and the work is not held on it — filling a class binds every
+  later task to it, not filling it binds nothing." Whether that stage ran alone
+  is not in the repository; with the person there the item says nothing about
+  who fills the class. Defect 12 of the entry beside this one asks that no task
+  instruct a write to `checks.md`; this one is the step before it, the spec.
+  Sections 8.1 and the closing lines of the report. Searched across lines for
+  `Missing checks|first task fills|fills the unit class`: no entry.
+  Recorded, not built: the spec of issue #5 in `devloop-test-u` assigned the
+  filling of the unit class to its first task, where the "Missing checks" item
+  of `plan-work` raises the class as an issue alone and says nothing of who
+  fills it with the person there; what should hold is that the item says, in
+  both modes, that a class is filled by `setup-checks` and never assigned to a
+  task as its own work.
+
+  **20. The premise of defect 5 of the entry beside this one is a claim about
+  the platform with no evidence behind it.** Defect 5: "A command that hangs is
+  moved to the background after 120 seconds, by this order's account, which
+  ends a run that has nobody to restart it. That a call of that shape hung is
+  the order's account too". `docs/skill-conventions.md`, the second rule under
+  "A field is not an answer to a question it was not asked": "**A claim about
+  the platform's behaviour holds only with evidence**: a measurement carrying a
+  date, or a primary source from the vendor." Neither stands behind the hang,
+  the 120 seconds, or what follows them. The closing lines of the report.
+  Searched across lines for `primary source|measurement carrying a
+  date|title-file|hangs? waiting`: the entry of 6 September 2026 on the title
+  and the first planning run alone, on other sources, nothing on this hang.
+  Recorded, not built: defect 5 of the entry of 4 October 2026 on the two runs
+  rests on a claim about the platform, that a `gh` call with a title of several
+  unquoted words hangs waiting for input and is moved to the background after
+  120 seconds, with neither a dated measurement nor a vendor's line behind it;
+  what should hold is that one of the two stands behind it before its repair is
+  written, or that the defect says it rests on the account alone.
+
+  **What this entry corrected in the entry beside it.** The fifteen stay where
+  they stand, each with its status line and its record; the corrections change
+  paragraphs and records, and no status line of that entry moves into this one.
+  Defect 2 is rewritten to what is left, the word "There", its four-places
+  claim and its should dropped, and the paragraph on what the two runs
+  establish names defects 1 and 11 as the reason no install with nobody there
+  arose. Defect 11 loses the second half of its should and carries instead two
+  forms of a skipped reason, a hook and a target, with the owner sentence named
+  as a rule and not a guard. Defect 4 keeps its target state, names the three
+  places that decide the same and the boundary between a question and a
+  convention, says why finding H is rewritten with it, and records that no
+  marking of each question and no hook on recommendations will be built. Defect
+  15 gets its place, `build-work` step 6 and the list under `## Unattended
+  mode`, loses the sentence of `setup-checks` it named, and names a hook on the
+  question tool and the one thing such a hook has to get right. Defects 3 and
+  14 are settled together: different triggers, neither sentence taking the
+  other's case, the ending of the drafts route where nothing is left to cut out
+  given a place of its own, and the line of defect 3 on going back to where the
+  item was settled dropped. Defect 8 drops its "whether" and names the two
+  things left and the key list that gains a line. Defect 10 is a breach of a
+  rule that stands, dated, beside findings I and J. Defect 13 names the two
+  defects of 23 September 2026 it stands beside, the missing insert of
+  `shared/how-to-ask.md` and the convention that requires the section, and says
+  that a review meeting a question ends the run is concluded and not measured.
+  Under the fifth of the five sentences, twenty-two places were added to the
+  nine that missed some: three to defect 1, the two defects of 23 September
+  2026 on the single-class route and `README.md` under "Review"; two to defect
+  3, its checking step and the cost said in Stage 1; three to defect 4, the
+  opening of `setup-project` step 4, `setup-checks` step 8 and the sentence of
+  `shared/how-to-ask.md` on a convention of this workflow; one to defect 5, the
+  sentence of the conventions on how a title travels; four to defect 8, three
+  places of the conventions, the key list among them, and "Where the set ends"
+  in the plan; one to defect 10, `shared/how-to-ask.md`; three to defect 11,
+  steps 1 and 2 of `setup-checks` and the rule on the `Status` column; three to
+  defect 13, the two defects of 23 September 2026 on `diagnose-bug` and the
+  convention on a hook that hands over; and two to defect 15, `build-work` step
+  6 and the list under `## Unattended mode`.
+
+  **A finding's note corrected.** The finding on `setup-project` at "question
+  and no other: two decisions put in one submit come back as one" said that
+  `code.claude.com/docs/en/hooks.md` names `AskUserQuestion` nowhere. Read on 4
+  October 2026 at 10:25 UTC by the audit, under Claude Code 2.1.289, the page
+  names it under `PreToolUse` among the tools that event matches and gives its
+  input field `questions`, so that premise no longer holds; whether the page
+  changed or the reading of 3 October 2026 missed it neither reading says. A
+  page is not a measurement, and the note now says what the measurement would
+  take, off section 8.4 of the report: a throwaway plugin like `probe` of 17
+  September 2026 registering a `PreToolUse` hook on `AskUserQuestion` whose
+  script writes its input unchanged to a file outside the project and exits 0
+  in silence, installed with nothing else beside devloop; one session in which
+  two questions are put in one call and one alone; and the file read for
+  whether the hook fired, whether the input carried both questions, and how
+  many questions each call held, with the date and the version written beside
+  it. Not measured here.
+
+  **Milestone 3 in `docs/plan.md`.** One sentence was false: "no project
+  carries a record yet all the same, none having been set up with it, so the
+  guard blocks every install naming that cause." It is rewritten in place, off
+  section 8.3 of the report and read again through `gh` for this entry off the
+  default branch of every bench of this account: no project carried a record
+  until 30 September 2026; four carry one now, `devloop-test-s` saying yes and
+  `devloop-test-t` saying no, both answered on 30 September 2026,
+  `devloop-test-u` saying yes on 3 October and `devloop-test-v` saying no on 4
+  October 2026; the nine others carry none, and the guard blocks every install
+  naming that cause there and in any project set up before 0.115.0, or set up
+  empty before 0.118.0. Nothing else in the file changed; that milestone 3
+  carries such lines at all is defect 5 above, and the order that moves them
+  may take this sentence with them.
+
+  **Records.** A defect thing for each of the twenty, sited and evidenced on
+  its status line; the head of this entry as part of defect 1. Of the fifteen
+  records of the entry beside this one, eleven are rewritten in name, anchor or
+  note and the rest stand. The head of that entry stays part of defect 2, its
+  note naming the new name. The note of the finding above corrected; no finding
+  added. The tool and its self-test under 0.128.0 are recorded as runs once a
+  commit carries the raise, as the entry beside this one did under 0.127.0. The
+  check under "Before you change anything, run this" and the eighteen under
+  "Before a handover, run these" ran after the change; what each printed stands
+  in this order's report.
+
+  **Addendum of the same day: the tool's two runs under 0.128.0.** Run in
+  this tree after the commit that carries the raise, with this entry standing
+  at twenty defects. The tool at 0.128.0: `BROKEN RECORDS: 0`, `UNCOVERED
+  LINES OF THE SEARCH SET: 0 of 2094`, exit 0, recorded on its exit 0
+  outcome. The self-test at 0.128.0: `SELF-TEST PASSED: 88 cases; of the 74
+  messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none; the lines of the report
+  are not in that count`, exit 0, recorded on its outcome.
 
 ## Decisions taken against
 

@@ -258,10 +258,16 @@ the user's to run — stands as `docs/skill-conventions.md` describes
 under "The install guard reads a record". The question followed the same day,
 version 0.115.0: question 4 of `setup-project` step 4, beside question 3, in
 the wording approved that day, with the record written into `environment.md`
-by step 6; no project carries a record yet all the same, none having been set
-up with it, so the guard blocks every install naming that cause. Until 0.118.0
-the question was not put in the empty case, step 3 skipping the whole of step 4
-where there is no code; since 29 September 2026, version 0.118.0, step 3 skips
+by step 6; no project carried a record until 30 September 2026, none having
+been set up with it, and read through `gh` on 4 October 2026 off the default
+branch of every bench of this account, four carry one now, `devloop-test-s`
+saying yes and `devloop-test-t` saying no, both answered on 30 September 2026,
+`devloop-test-u` saying yes on 3 October and `devloop-test-v` saying no on 4
+October 2026, while the nine others carry none, and the guard blocks every
+install naming that cause there and in any project set up before 0.115.0, or
+set up empty before 0.118.0. Until 0.118.0 the question was not put in the
+empty case, step 3 skipping the whole of step 4 where there is no code; since
+29 September 2026, version 0.118.0, step 3 skips
 the two questions that need code and not the step, so a project set up empty is
 asked and carries a record naming no route, and a route its stack later reaches
 for is held against the places until a route line is added with the person
