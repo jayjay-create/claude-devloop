@@ -11208,6 +11208,61 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Defect 4 of the audit, that no further wording is taken as the repair of
   the assurance on runtimes, stands as it stood.
 
+  **Addendum of the same day: every outcome of the program and of the two
+  hooks, measured once.** After the commit that carries the raise, `9a6f33a`,
+  with the tree clean, on 5 October 2026 at 16:47 UTC, in a throwaway
+  repository under a scratch directory outside this one: the program handed a
+  table, each hook fed the JSON of its event with `CLAUDE_PROJECT_DIR` set,
+  the exit code and both streams read. Nothing of it ran through the harness,
+  whose installed copy is 0.126.0: that the two hooks fire on their events,
+  and what a run does with their messages, is not measured.
+  `bin/devloop-check-table`: a table whose five statuses carry the four
+  forms, one padded with blanks, and a file with no row, each exit 0 with
+  nothing printed; a table carrying `skipped: no entry point yet`, `filled` in
+  backticks, `Filled`, `skipped (state):` with no state and a row too short to
+  have the cell, found through `CLAUDE_PROJECT_DIR`, exit 1 with those five
+  named one per line; two arguments, exit 2 with its line on stderr; a file
+  that is not there, and one with mode 000, exit 2 with its line on stderr.
+  `hooks/post-tool-use-table-guard.sh` passed in silence, exit 0, six times:
+  a project directory that cannot be entered; a repository with no
+  `docs/agents/`; a JSON naming no file; another file written while the table
+  carried the five cells; the table written with all four forms in it; and
+  the table written while the program could not read it. It reported, exit 2
+  with the message quoted in the entry above and the five cells joined by
+  "; ", for the table written through `Edit`, and again for `MultiEdit`
+  naming the table through a symbolic link.
+  `hooks/pre-tool-use-table-guard.sh` passed in silence, exit 0, seven times:
+  the project directory not to be entered; no `docs/agents/` in the
+  repository; a tool that is not Bash; a command holding no `git commit`
+  while the table carried the five cells; `docs/agents/` standing with no
+  table in it; `git commit` over a table in order; and `git commit` while the
+  program could not read the table. It refused, exit 2 with "Commit refused"
+  and the five cells, for `git commit -m`, for `git add -A && git commit`
+  with a quoted quote in its message, and on a branch other than main. The
+  two gaps came out as the entry names them: `git -C <directory> commit`
+  passed, exit 0, with the five cells standing; and a command that rewrote a
+  cell with `sed` and committed in one go passed, exit 0, the table being in
+  order when the hook read it, then ran and committed `skipped: later`, and
+  the next `git commit` was refused, exit 2, naming that cell. No measurement
+  led to a change. Nineteen runs stand in `docs/stock-take.tsv` under
+  0.129.0, one for each outcome.
+
+  **Addendum of the same day: the tool's two runs and the nineteenth check
+  under 0.129.0.** Run in this tree after the commit that carries the raise.
+  The tool at 0.129.0: `BROKEN RECORDS: 0`, `FINDINGS: 22`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2234`, exit 0,
+  written down on its exit 0 outcome; the twenty-two findings are the
+  seventeen that stood and the five of this entry. The self-test at 0.129.0:
+  `SELF-TEST PASSED: 88 cases; of the 74 messages this tool rejects, refuses
+  or answers with, read off its own source, 74 are asserted by a case and 0
+  by none; the lines of the report are not in that count`, exit 0, written
+  down on its outcome; the tool's source is untouched. The nineteenth check
+  printed `1` for each of the two hooks, which its section calls green, and
+  the eighteen beside it ran after the change: what each printed stands in
+  the report of the order. The check on handovers prints eight lines over
+  seven sites, one more than before, step 3 of `setup-checks` handing a
+  command over under a record that says no; its section names the eighth.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
