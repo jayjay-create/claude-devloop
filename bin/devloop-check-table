@@ -1,0 +1,51 @@
+#!/bin/bash
+# Names every cell of the Status column of docs/agents/checks.md that carries
+# none of the four forms a status has: filled, empty, skipped (state): <the
+# state that keeps the class off>, skipped (user): <the user's reason>. The
+# two table guards under hooks/ read the table through this program, so that
+# the two cannot disagree about what a form is.
+# See docs/skill-conventions.md, "The `checks.md` parsers are shell scripts".
+#
+# Usage: devloop-check-table [FILE]
+# The one argument is the table; without it, docs/agents/checks.md under
+# CLAUDE_PROJECT_DIR, and without that under the current directory.
+#
+# Exit 0, nothing printed: every status carries one of the four forms, or the
+#   file holds no row.
+# Exit 1, one line per cell that carries none: "<class>: <status>", the cell
+#   as it stands between its bars, without the padding around it.
+# Exit 2, one line on stderr: more than one argument, or a file that cannot
+#   be read.
+#
+# The rows are found the way hooks/stop-checks.sh and
+# hooks/post-tool-use-checks.sh find them: every line opening on a bar,
+# without the separator row and without the first, the header. The class is
+# the first cell and the status the seventh, by position. It is strict where
+# those two are lenient: they strip backticks before they compare and this
+# does not, so `filled` in backticks is named, and so is Filled. Blanks around
+# a cell's content are the table's padding and do not count. It does not
+# check for ASCII: the message of the guards could not say that of a cell
+# whose form is one of the four.
+set -u
+if [ $# -gt 1 ]; then
+  echo "devloop-check-table: expected at most one argument, the table, got $#" >&2
+  exit 2
+fi
+FILE="${1:-${CLAUDE_PROJECT_DIR:-$PWD}/docs/agents/checks.md}"
+if [ ! -f "$FILE" ] || [ ! -r "$FILE" ]; then
+  echo "devloop-check-table: $FILE cannot be read" >&2
+  exit 2
+fi
+
+trim() { local s="$1"; s="${s#"${s%%[![:space:]]*}"}"; s="${s%"${s##*[![:space:]]}"}"; printf '%s' "$s"; }
+
+BAD=0
+while IFS='|' read -r _ class _ _ _ _ _ status _; do
+  class=$(trim "$class"); status=$(trim "$status")
+  case "$status" in
+    filled|empty) ;;
+    'skipped (state): '?*|'skipped (user): '?*) ;;
+    *) printf '%s: %s\n' "$class" "$status"; BAD=1 ;;
+  esac
+done < <(grep '^|' "$FILE" | grep -v '^|[[:space:]]*-' | tail -n +2)
+exit $BAD

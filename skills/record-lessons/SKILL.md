@@ -42,7 +42,8 @@ Record it when one of these holds:
 - **No check could have caught it.** Nothing in `checks.md` was ever going to see
   it, so only a written rule stands between it and the next repetition.
 
-Everything else stays where it is: fixed, or filed as an issue.
+Everything else stays where it is: fixed, filed as an issue, or handed to
+the check setup where its object is the check table.
 
 ## Where it goes
 

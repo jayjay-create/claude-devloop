@@ -198,6 +198,8 @@ absence, and it is the end of that section.
   `raised-here`** — it came out of this work, not from outside, and nothing else
   in the issue carries that.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-on-check-table`
+
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text criterion`
 
 **A finding against something the task issue itself asked for is never fixed

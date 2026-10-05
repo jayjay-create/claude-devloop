@@ -46,9 +46,14 @@ back mechanically. Beyond that line is the person's.
   look right'" (`docs/roadmap.md`, the `settle-the-look` entry under "Where
   these would attach").
 - **What lands on the machine.** A tool the project declares in its own
-  manifest is the project's: it lands inside the repository. Anything that
+  manifest is the project's: it lands inside the repository, and whether a
+  run may enter a check tool there itself is a second permission since 5
+  October 2026, asked by the check setup and recorded beside the first.
+  Anything that
   lands outside the repository lands there under the person's explicit
-  permission only, asked once at setup under milestone 3 and recorded; what
+  permission only, asked at setup under milestone 3 and recorded, and asked a
+  second time only where the unattended mode is set up and the record does
+  not say yes; what
   the project declares is reported at setup before that question, in step 2
   of `setup-project`, and it does not stand in for it. A compiler or interpreter is the person's under
   every answer: ruled on 28 September 2026, "Runtimes are not a kind the
@@ -122,8 +127,8 @@ with their reason.
 The things: the twelve skills down to their branches, `shared/`, `hooks/`,
 `bin/`, `scripts/` and the workflow under `.github/` down to their outcomes,
 the tool itself included; the
-eighteen checks under "Before a handover, run these", seventeen until 28
-September 2026, and the check under
+nineteen checks under "Before a handover, run these", seventeen until 28
+September 2026 and eighteen until 5 October 2026, and the check under
 "Before you change anything, run this", both outcomes of each; the twenty
 names under "Named, not built as skills", eleven as things of their own and
 nine as a note on the thing that does their work, the two side paths under
@@ -223,7 +228,10 @@ can be named at setup is kinds and places, not tools: `setup-project` records
 under "Permissions, before the first command" that the check commands are not
 known until the check suite exists. **The record**: in `environment.md`, beside
 the unattended-mode answer that `setup-checks` step 8 writes there; written
-only with the person present, since setup never runs unattended. **The guard**:
+only with the person present, since setup never runs unattended — by
+`setup-project`, and since 5 October 2026 by `setup-checks` step 8 as well,
+where the question is put a second time and which runs only with the person
+there, on the way through `--auto` too. **The guard**:
 `hooks/pre-tool-use-install-guard.sh` reads the record and passes a command
 landing in an allowed place; outside it, it blocks as today. **The skills**:
 `build-work` step 3 point 7, `setup-checks` step 3, `setup-project` step 4
@@ -232,7 +240,10 @@ the guard's own message all say today that the person runs the install; under a
 yes the run runs it, backed as today, and reads the result off the path the
 installer writes to. **Unattended**: the run installs, reports
 the command and what came back at a site that outlives the session, and where
-the record says no, the decline path stays what it is.
+the record says no, the run does not start: until 5 October 2026 this read
+"the decline path stays what it is", and since that day a yes on record is
+one of the conditions the unattended mode starts on, the sixth in
+`build-work`, so that the decline path is walked with the person there only.
 
 Two things said openly. The record opens a guard and is written by a skill,
 which is the shape "A limit the limited party maintains is not a limit" warns
@@ -273,7 +284,9 @@ asked and carries a record naming no route, and a route its stack later reaches
 for is held against the places until a route line is added with the person
 there. Not built: the refresh in `setup-project`, which is where a project set
 up before this version, or set up empty before 0.118.0, would be asked, and
-which asks nothing anew today; and the drivers half, so the place list carries
+which asks nothing anew today — since 5 October 2026 such a project is asked
+where the unattended mode is set up, in `setup-checks` step 8, which writes
+the whole record where none stands; and the drivers half, so the place list carries
 no driver destination and `npx playwright install` passes the guard as before.
 The two runs above ran on 30 September 2026, both attended, under 0.120.0
 from the installed copy: the record saying yes in `devloop-test-s`, the record
@@ -536,7 +549,9 @@ vendor names — 5,000 tokens per loaded skill re-attached after a compaction,
 25,000 in all — and split where it has to be. The count of skills changes with
 it, and every place that counts twelve changes too.
 
-Ends with the full run on the gated bench: with the person through Stage 1,
+Ends with the full run on a fresh project on which the gate is set up — "on
+the gated bench" until 5 October 2026, when the existing benches went out of
+use: with the person through Stage 1,
 alone to the closing sentence, no question in between, the mark written and
 deleted, the merges read off the platform.
 
@@ -644,8 +659,11 @@ that answers it, or says that none does.
   names its own.
 - The state of the benches. Read on 19 September 2026 off the platform, every
   bench carries an older version in `environment.md` than the one installed;
-  the roadmap entry of that date carries the figures. Every bench is refreshed
-  before a run on it.
+  the roadmap entry of that date carries the figures. Until 5 October 2026
+  this item ended "Every bench is refreshed before a run on it". Since that
+  day the existing benches are neither used nor measured any more — their
+  check tables carry the one shape a skip had until then, and nothing is
+  carried over — and every further run gets a fresh project.
 - Which stack the interface bench gets; the person picks (milestone 4).
 - How many skills and how many control documents there are at the end
   (milestones 7 and 9); both are counted in several places today.

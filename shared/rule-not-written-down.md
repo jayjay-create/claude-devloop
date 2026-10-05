@@ -1,6 +1,6 @@
 **A finding that no written rule would have caught is a gap in the documents,
-not only a defect in this code.** As each finding is announced under fix or
-file, say in the same breath whether the rule it breaks is already written: in
+not only a defect in this code.** As each finding is announced under fix,
+file or the check setup, say in the same breath whether the rule it breaks is already written: in
 `docs/agents/standards.md`, in a command `docs/agents/checks.md` runs, or in
 the task's own issue, which is the case named above. Where one of them carries
 it, nothing is added to them — the documents are not what failed. Where none
@@ -19,7 +19,8 @@ found by neither. A reason the rule needs stands on that line after it; the
 story of how it was found does not, it is in the change that carried the fix. A
 finding filed because it would revisit a decision writes no rule either: the
 sentence would settle at the close the question the issue was filed to keep
-open.
+open. Nor does one handed to the check setup: its object is the check table,
+which that skill writes under rules of its own.
 
 **Unattended this does not fall away.** With nobody there it is the only way a
 rule ever reaches the file, and the judgement that a finding is too small to be
@@ -56,7 +57,7 @@ back the next time the defect appears and files its check then.
 
 **Where `docs/agents/standards.md` does not exist, nothing is written and
 nothing is created.** Say that the project has not been set up, and leave the
-finding to the two ways out. A rule written into a file nobody reads is worse
+finding to the three ways out. A rule written into a file nobody reads is worse
 than a rule not written.
 
 **A written rule broken all the same belongs in a command.** Where the diff

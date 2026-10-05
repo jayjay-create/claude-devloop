@@ -8,12 +8,14 @@ preamble. And not earlier either: a branch cut before the questions stays
 behind when the user breaks off in the middle of them, looking like work
 begun and being none, which is what the next run met on 9 September 2026.
 
-The branch has a fixed name, one per skill this stands in: `devloop-setup`
+The branch has a fixed name, one per place this is done: `devloop-setup`
 where this is the setup of the project, `devloop-checks` where it is the
-check setup. Not a name made up for the run: the next run has to find the
+check setup, and `devloop-unattended` where the check setup sets up the
+unattended mode, in its step 8, which cuts by this same rule after its own
+last question. Not a name made up for the run: the next run has to find the
 branch an earlier one left, and it finds it by this name. Read off git which
 of three cases holds before cutting — `git branch --list devloop-setup`, with
-`devloop-checks` in its place in the check setup — and act on that one:
+`devloop-checks` or `devloop-unattended` in its place — and act on that one:
 
 - **No branch of that name.** Cut it from the main branch:
 

@@ -291,11 +291,14 @@ before its first build, there is no sharpening and no question, and the flag is
 the only thing that sets the mode there.
 
 Either stage checks the mode's preconditions before going alone and refuses,
-saying which failed, where one is missing: the planning stage reads the four it
-can before a cut exists, the build reads all five. Where the repository has not
-been set up for the mode at all — the check setup offers it once and records the
-answer — nothing runs alone whatever was typed, and the run says so once and
-carries on with them.
+saying which failed, where one is missing: the planning stage reads the six it
+can before a cut exists, the build reads all seven. Where the mode is not set
+up in this repository — the check setup offers it and records the answer, and
+it needs their yes to two permissions besides — the flag sets it up: the
+stage that would go alone, the planning at the end of the sharpening or the
+build on the route straight to it, calls the check setup for that step
+there, with the person who typed the flag present. On a yes the run goes on
+alone; on a no it carries on with them.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
 

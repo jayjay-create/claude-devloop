@@ -20,31 +20,45 @@ those rules. Then do nothing else.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text skill-name`
 
 Turn every class in `docs/agents/checks.md` that still says `empty` into either
-`filled` or `skipped: <reason>`.
+`filled` or `skipped`, in one of the two forms a skip has: `skipped (state):`
+with the state of the project or of this machine that keeps the class off, or
+`skipped (user):` with the user's own reason.
 
 **Filling all nine is not the goal.** A class that does not apply to this project
-costs runtime and finds nothing. `skipped` with a reason is a finished answer for
-as long as that reason holds, and some reasons are about a state the project will
-grow out of; `empty` means nobody decided yet.
+costs runtime and finds nothing. `skipped` with its reason is a finished answer
+for as long as that reason holds: a state is read again before every task is
+released, at the end of step 4 of `build-work`, and a decision of the user's
+stands until they change it; `empty` means nobody decided yet.
 
 This skill changes the project from the outside — it adds tools and configuration.
 Move carefully and ask before anything that reaches beyond the repository, unless
 the install record has answered it already — step 3 says how.
 
-**This skill is reached three ways, and which one decides the branch and the
+**This skill is reached four ways, and which one decides the branch and the
 close.** At a first setup, from `setup-project`, in every project with code:
 every class is `empty`, since the setup fills none, and this skill cuts its
-own branch, lands it in step 7 and offers the mode in step 8. From inside a
-build, for a single class, where the task being built created the target:
-fill that one class, leave the others untouched, stay on the branch you were
-called on rather than cutting a new one — the build owns that branch and lands
+own branch, lands it in step 7 and offers the mode in step 8. For a single
+class, on the branch of the work that called: fill that one class or write
+its cell, leave the others untouched, stay on the branch you were
+called on rather than cutting a new one — the caller owns that branch and lands
 it — and skip steps 7 and 8, since a landing and the offer of the mode belong
-to a suite completed with the person there, not to the middle of a task. From
-the step after a merge, for a class whose skip reason has expired or for the
+to a suite completed with the person there, not to the middle of a task.
+Four things call it that way. A build whose task created the target. A build
+that had an install declined for a check class. Step 4 of a build: for a
+finding of the review about the table, for a state that has ended, or for
+what the user answered there about a class they had switched off — for the
+class it names, for the class whose row it concerns where it names none, and
+otherwise for the table, its `runner:` line or its section on what the checks
+do not cover. And any skill whose commit the guard on the table refused, for
+the row that guard named. From the step after a merge, for the
 classes still `empty` once the repository has code: the tree stands on the
 main branch, so cut a branch as at a first setup and land it in step 7; step 8
 is reached where no class is `empty` any more, which is how a project set up
-without code meets the offer. Everything else below applies unchanged.
+without code meets the offer. And from `--auto`, typed where the unattended
+mode is not set up in this repository — at the end of the sharpening in
+`plan-work`, or at the start of a build `build-work` was sent straight to —
+for step 8 alone: nothing above it runs, and step 9 goes back to the place
+that called. Everything else below applies unchanged.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
@@ -62,9 +76,10 @@ without code meets the offer. Everything else below applies unchanged.
 
 - **The command really is an install this class needs.** The guard did what it
   was built for. With the user there this is the question already described
-  below, and a decline makes the class `skipped` with that reason. With nobody
-  there, there is no one to ask: the class goes `skipped` with the block as its
-  reason and the report names it. `secrets` is the exception it always is — it is
+  below, and a decline makes the class `skipped (user)` with that reason. With
+  nobody there, there is no one to ask: the class goes `skipped (state)`, the
+  state being what this machine lacks and the block names, and the report
+  names it. `secrets` is the exception it always is — it is
   never `skipped`, so there the run stops with the reason named instead.
 - **The command is not an install and the guard matched on text.** Then nothing
   is blocking the class, and `skipped` would be an entry that is not true: a
@@ -76,6 +91,14 @@ without code meets the offer. Everything else below applies unchanged.
 Neither case is a reason to write the class differently from what it is. What
 tells them apart is what the command would have done, not what the guard matched.
 
+**The guard on the table is neither of these, and this skill is the one its
+message names.** Two hooks hold the `Status` column to its four forms: one
+reports a cell in none of them once the editing tool has written the table,
+the other refuses a `git commit` while the table in the working tree carries
+one. Where either answers a write or a commit of this skill's own, nothing is
+handed on and nothing becomes an issue: decide the row again, by the paragraph
+in step 1 on a row in no allowed form, and commit again.
+
 ## How to ask
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text how-to-ask`
@@ -84,18 +107,30 @@ tells them apart is what the command would have done, not what the guard matched
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
 
-This skill is reached with nobody there from two places, and the mark says so.
-From a build that had an install declined for a check class, which records the
-class as `skipped` with that reason and asks nothing. And from the step after a
-merge that re-reads expired skip reasons,
-where "Ask anyway where filling it changes their project" in step 2 can meet
-nobody to ask. There the class stays as it is — `skipped`, with the expired
-reason and a note that filling it needs their say — and an issue carrying
-`raised-here` and `needs-human` says what filling it would add to their manifest
-or put on their machine. The less committing option is the one that changes
-nothing of theirs. Step 8's offer of the mode is never reached with nobody there:
+This skill is reached with nobody there on one of its four ways only, and the
+mark says so: for a single class, on the branch of a skill that commits — a
+build, or a skill whose commit the guard on the table refused. Step 7 is
+never reached that way, so nothing of this skill's waits on a merge with
+nobody to say it has landed. Both records say yes there, since the mode does
+not start otherwise: a tool the class needs is entered in the dependency file
+or installed by the run, and step 3 asks nothing. Three things are left that
+would have been a question. A command the guard blocks under a yes — a
+runtime, a place the record does not name: "A guard's block is not a decline"
+above answers it, the class going `skipped (state)` with what this machine
+lacks. A row in no allowed form whose text does not say whose decision it
+was: it becomes `skipped (user)`, named in the pull request. And a row that
+reads `skipped (user)`: it is never changed without them, whatever the caller
+found. The less committing option is the one that changes
+nothing of theirs. That "Ask anyway where filling it changes their project"
+in step 2 meets nobody to ask no longer arises: until 5 October 2026 a reason
+that had expired was read again after a merge, with nobody there as well, and
+a fill that needed their say stayed open as an issue; a state is read before
+the task is released now, on the task's branch, and the two records have
+answered what a fill may add. Step 8's offer of the mode is never reached
+with nobody there:
 it stands in a first setup, with them present, and after a merge only where a
-person is. The third route, the step after a merge finding classes `empty`
+person is, and `--auto` is typed by somebody who is there. The third route,
+the step after a merge finding classes `empty`
 with code in the repository, never arrives with nobody there at all: the mode
 refuses to start while a class is `empty`, so a run that gets there has a
 person in it.
@@ -121,7 +156,9 @@ the repository whether it applies at all:
 
 **Deciding a class away is a decision — record it as one.** The moment you can
 say why a class will find nothing in this project, that class is
-`skipped: <reason>`, and the reason goes into its Status column when you write
+`skipped (state):` with the state that keeps it off — no entry point, no
+third-party packages, a language without a type checker, the errors already
+caught by the tool of another class — and it goes into its Status column in
 the table below. `empty` does not record a decision: it means nobody has
 looked yet, and every step that asks whether the suite is complete reads that
 column and nothing else. Reasoning written into the prose of `checks.md` does
@@ -139,9 +176,30 @@ settled.
 - **`secrets` is never skipped.** Credentials get committed by accident
   everywhere, whoever owns the repository.
 
-A reason that will expire is still a reason: no third-party packages yet, no
-entry point yet. It goes in as `skipped` with that state named, and the step
-after a merge re-reads these and fills the class once the state has changed.
+A state that will end is still a state: no third-party packages yet, no
+entry point yet. It goes in as `skipped (state)` with that state named, and
+`build-work` reads every such cell at the end of its step 4, before the task
+is released, against the branch of the task, and calls this skill for the
+class once the state has ended. A state of this machine — a runtime that is
+missing and that only the user installs — is read on the machine, not on the
+branch.
+
+**A row whose status carries none of the four forms is decided again, and
+its old text is read as a hint and no more.** The guard on the table sends
+every such row here — a table written before 5 October 2026 carries
+`skipped: <reason>`, a row written by hand a word that does not exist — and
+what the row becomes is one of four:
+
+- **Meant as `filled`** — `Filled`, or `filled` in backticks: prove the
+  target red as step 5 does, then `filled`.
+- **The text names a state of the project or of this machine**: where that
+  state still holds, `skipped (state):` with it; where it no longer does,
+  fill the class.
+- **The text names a decision of the user's** — an install they declined, a
+  class they did not want: `skipped (user):` with their reason.
+- **The text does not say whose decision it was**: with the user there, ask
+  them; with nobody there it becomes `skipped (user):` with the text as it
+  stood, and the pull request names the row and says so.
 
 **The cell is machine-read.** One line, plain ASCII, no `|` — the parsers split
 the row on it by position. Where the reason needs more than a phrase, the phrase
@@ -164,28 +222,37 @@ suite is complete reads that word as undecided — the mode's first
 precondition, the `check` target, the close of this skill, the step after a
 merge — so an answer that leaves rows `empty` is asked again at each of them,
 which is the asking again the paragraph below names. A class they do not want
-in this project is a decision: it goes into the cell as `skipped` with their
-reason, named as theirs, and is read again after a merge like any reason. That
+in this project is a decision: it goes into the cell as `skipped (user):` with
+their reason, and no run changes that row without them. It is not read again
+after a merge, as it was until 5 October 2026: `build-work` reads it before a
+task is released, and only where the reason says something about the project
+that can be checked; where that no longer holds it asks them, and with nobody
+there the row stays. That
 question belongs to a first setup, where what this project's check suite will
 be is genuinely theirs to settle. Missing tools are asked about separately,
 below, because installing one changes their machine and filling a class does
 not.
 
-**A class that is only back because its own reason expired is not that
-question.** A skip is a decision already made, with its reason written next to
-it — no code yet, no entry point, no third-party dependencies — and a merge is
+**A class that is only back because its state has ended is not that
+question.** A `skipped (state)` is a judgement already made, with the state
+written next to
+it — no code yet, no entry point, no third-party dependencies — and a task is
 what turns one of those false. Then there is nothing left to weigh: say which
-reason no longer holds, fill the class, and report it. Asking again hands back a
-decision the user already made, with nothing new to make it on.
+state no longer holds, fill the class, and report it. Asking again hands back a
+decision the user already made, with nothing new to make it on. A
+`skipped (user)` is the other kind and is never filled that way: the class is
+off by their word, and only their yes fills it.
 
 **The reason has to be actually false, not merely older.** "No entry point
 exists yet" still holds while the entry point is a stub, and filling a class
 against a stub produces a check that proves nothing.
 
 **Ask anyway where filling it changes their project rather than this workflow's
-plumbing.** A dependency added to their manifest, or anything installed on their
+plumbing.** A check tool entered in their dependency file that the record on
+it does not already allow, or anything installed on their
 machine that the install record does not already allow, is theirs to allow,
-whatever made the class eligible. A test case and a
+whatever made the class eligible; step 3 says how each is asked. A test
+case and a
 target in the task runner are not. When both kinds come up in one round, state
 the ones that cost them nothing and ask about the ones that do — never side by
 side as though they were the same kind of thing.
@@ -197,9 +264,10 @@ works for everyone who clones it. A tool installed system-wide does not, and it
 changes the user's machine.
 
 This step decides, per class, which tool and where it lands, and asks where
-that is the user's to allow. It writes nothing and installs nothing: the
-question about a tool landing outside the repository is the last question of
-this skill, the branch is cut once it is answered, and the manifest line, the
+that is the user's to allow. It writes nothing and installs nothing: its
+questions are the last questions of
+this skill, the branch is cut once they are answered, and the record of an
+answer, the manifest line, the
 install and the targets are step 4's, on that branch.
 
 **Name what you just wrote down as something to grant.** A check command
@@ -209,6 +277,59 @@ and writing it is refused — so say which commands they are and that choosing
 "always allow" the first time each appears, or setting them in `/config`, stops
 the confirmations. Setup could not name them, because they did not exist yet.
 Only the check commands themselves — never what was needed to install them.
+
+**A check tool is entered in the project's dependency file by this run only
+where the record on it says yes.** The dependency file is whatever this
+stack declares its packages in — `pyproject.toml`, `package.json`,
+`Cargo.toml` and the like — and the record is the section `## Dependency
+permission` of `docs/agents/environment.md`, read off the main branch as last
+fetched, `git show origin/main:docs/agents/environment.md` after a fetch,
+except in the session in which the question was answered, where the answer
+is known before it has landed. The permission covers the tools this workflow
+enters for its own checks and nothing else: what a task enters for the thing
+it builds is that task's work. No hook holds any of this — tasks change the
+dependency file all the time, and a guard on it could not tell the two apart
+— so it is a rule on the run, and it is said here as one.
+
+Where no record stands and the user is there, put the question, once, and
+put it whether a dependency file exists yet or not. A choice in the form of
+question 3 of
+`setup-project` step 4: through the harness's choice widget, in the user's
+language, alone in its call, every point in a field of its own, and no
+recommendation. It names no file, the project's own included.
+
+- **In the header: a word for the subject**, of twelve characters at most.
+- **In the question line**: whether the run may from now on enter check
+  tools in the dependency file itself, for this project.
+- **In the yes, label and line**: from now on the run enters such tools
+  itself and does not ask again.
+- **In the no, label and line**: the run enters nothing itself and asks each
+  time.
+
+The no's line stops there, on purpose: that the unattended mode is not to be
+had under a no costs nothing with them there, the run asking each time, and
+it is said where it bites — step 8 puts this question a second time, with
+that consequence under its no.
+
+Under a yes nothing more is asked: step 4 enters the tool, with the user
+there and with nobody there. Under a no, ask about each tool that can be
+entered there, in the same form, each alone in its call:
+
+- **In the header**: the same word.
+- **In the question line**: the tool by its name, the check it is for in
+  ordinary words, and whether the run may enter it in the dependency file.
+- **In the yes, label and line**: the run enters it and sets the check up
+  with it.
+- **In the no, label and line**: where a no leads for this tool, as it
+  stands at that moment — one of three. The run installs it outside the
+  project on this machine, where the install record says yes. They get the
+  command to install it outside the project themselves, where that record
+  says no or was never written. The check stays off, where the tool has no
+  way outside the project and no other candidate is left for the class.
+
+After a no the run goes the way that line named, by the paragraph below. The
+wording approved on 5 October 2026 for both questions stands in the roadmap
+entry of that date; this skill says what is said, not the words.
 
 **A tool that lands outside the repository is installed by this run only where
 the install record says yes**, read where the guard reads it: the section
@@ -222,23 +343,47 @@ compiler or a runtime, anything needing `sudo`, anything piping a script from
 the network into a shell, and anything landing outside the places the record
 names and the directories its routes answer stay the user's under
 every answer. Where the record says no, or was
-never written, never install anything system-wide without asking, and say
-plainly that it reaches beyond this project. If the only candidate for a class
-needs a system install and the user declines — or, with nobody there, the
-record says no — that class becomes `skipped` with that reason — not `empty`.
+never written, the run installs nothing, which is what the no of the install
+question said: hand them the command, backed, say
+plainly that it reaches beyond this project, and they decide. If the only
+candidate for a class
+is left with no way — it needs a system install and the user does not run the
+command, or it can only be entered in the dependency file and they said no to
+that — the class becomes `skipped (user):` with that reason, naming the tool
+and what was declined — not `empty`. With nobody there neither record says
+no: the unattended mode does not start under one.
 
 ## Cut the branch, after the last question and before the first write
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text cut-branch`
 
-Not on the single-class route from a build: there the branch is the build's,
+Not on the single-class route: there the branch is the caller's,
 as the opening says, and this step is skipped — no branch of the name above is
-cut, and the one the run was called on is kept.
+cut, and the one the run was called on is kept. And not on the route from
+`--auto`, which runs step 8 alone: that step cuts its own branch, under the
+third of the names above.
 
 ## Step 4 — Put each class in place: its tool, its target, its findings in stages
 
-First what the class needs standing. A tool inside the project goes into its
-manifest here. A tool outside it, where step 3 found the record saying yes,
+First the answer to step 3's question on the dependency file, where it was
+put: write it into `docs/agents/environment.md` with the editing tool, as a
+section of its own in the shape of the install record — one key and one
+value per line, spelled exactly, ASCII only, since the skills that read it
+read the start of each line:
+
+    ## Dependency permission
+
+    dependency-tools: yes
+    dependency-answered: YYYY-MM-DD
+
+`dependency-tools` is the answer, `yes` or `no` and nothing else, and
+`dependency-answered` the date it was given. It lands with this branch — in
+step 7's pull request, or in the caller's where this skill was called for one
+class — and from then on it is read off the main branch.
+
+Then what the class needs standing. A tool inside the project goes into its
+manifest here, under a record saying yes or the user's yes to that tool in
+step 3. A tool outside it, where step 3 found the record saying yes,
 is installed here: run the backed command yourself, with the user there and with
 nobody there, without asking again; the guard passes it where every place it
 lands is one the record names or the answer of a route it names, and blocks it
@@ -279,6 +424,13 @@ For each class:
 
 Only after the class is green does it become blocking.
 
+Where `.github/workflows/checks.yml` stands — step 8 writes it — and a class
+that becomes blocking here needs a tool that exists only outside a project,
+enter that tool's installation line for the platform's machine in the
+workflow file in the same commit, backed as above. The file runs `check`, so
+the class runs there from this commit on, and without the line it would go
+red on a tool that is not there.
+
 ## Step 5 — Every target renders a verdict and changes nothing
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text verdict-target`
@@ -295,6 +447,14 @@ proves nothing about the target — it exits non-zero either way. Read the outpu
 before writing `filled`, and where the command did not run, say so with the
 command and the message rather than recording a class as proven.
 
+**The proof is written into the pull request that switches the class on**,
+as the report of an install is in step 4. One line per class: what was
+broken, which target ran, what came back, and that it was put back. That is
+step 7's pull request; the caller's where this skill was called for one
+class, handed up to it with the class; and step 8's own where a class is
+filled there. A row that turns `filled` with no such line in the pull
+request that carries it reads as written by something else.
+
 ## Step 6 — Record it
 
 `docs/agents/checks.md` is read by shell scripts that split each row on `|` and
@@ -309,9 +469,18 @@ Both target columns hold bare target names — `lint`, not `make lint` and not
 `` `lint` ``. The runner comes from the `runner:` line in the frontmatter. A `-`
 means the class cannot work that way.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text status-forms`
+
+Spelled exactly, with nothing else in the cell: the two guards on the table
+name a cell in any other form — `Filled`, `filled` in backticks, the
+`skipped: <reason>` this workflow wrote until 5 October 2026 — and no commit
+goes through while one stands.
+
 - `Status` becomes `filled` only after you ran the target and saw it fail on
-  purpose. `skipped: <reason>` where you have judged that the class finds nothing
-  here, `empty` only where you have not judged it yet. Having reasoned about a
+  purpose. `skipped (state):` where you have judged that the class finds
+  nothing here, with the state that keeps it off; `skipped (user):` where the
+  user decided it, with their reason;
+  `empty` only where you have not judged it yet. Having reasoned about a
   class is having decided it — never leave the reasoning in prose and the column
   at `empty`. Never guess.
 - `Blocking` becomes `yes` only on rows that are `filled`, `no` on a filled
@@ -346,7 +515,9 @@ branch: the next task cuts its branch from there and would find no check suite
 at all. Leaving it unmerged has worked so far only because a run improvised the
 merge on its own, which is not something to build on.
 
-**Never merge yourself.** Open a pull request and arm the platform to merge it
+**Never merge yourself.** Open a pull request — its body carrying the red
+proof of step 5 for every class it switches on, and step 4's report where a
+tool was installed — and arm the platform to merge it
 once the gates pass, then prove the merge where it happens — `gh pr view --json
 state,mergedAt`, `MERGED` with a time in it — before anything here stands on it.
 A report of success is not evidence, and the git log immediately after arming is
@@ -424,6 +595,8 @@ Only when no class is `empty` any more. While one is, the mode is unavailable
 whatever the user answers, and asking would be a question with one possible
 outcome.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mode-set-up`
+
 **Read the state before asking; never carry an impression of it.** Whether the
 main branch is gated at all — both queries from step 7, since
 `branches/main/protection` is blind to rulesets and `rules/branches/main` is
@@ -440,8 +613,11 @@ reports a ruleset gate as missing, because that endpoint 404s where the gate is 
 ruleset. A gate binds if either side binds. Protection this account can step over
 is not a gate: report it as missing, not as present. Where a side did not answer,
 say the binding could not be determined rather than reporting the gate either
-way. Where the gate is already there and binding, say the
-mode is available and skip the rest of this step.
+way. Then the three records, as the paragraph above reads them. Where the
+mode is set up by all five, say that it is and skip the rest of this step. A
+gate that is there and binding is not enough for that, as it was until 5
+October 2026: with a record that does not say yes, or with auto-merge off,
+the question below is put all the same.
 
 **Refuse to build a gate when no `filled` class is `Blocking: yes`,** and say
 why. A required check that runs nothing green-lights everything, so an unattended
@@ -483,6 +659,14 @@ tasks after it landed the next morning, nine and a half hours later, after a
 one-word message. What a no means: everything works exactly as it does now,
 every task comes back for approval, and this can be set up later without redoing
 anything.
+
+**Two things change what is put.** Where the gate is already there and
+binding and the mode is not set up, the question is put all the same,
+without the part on what a yes sets up on the platform — the workflow file,
+the protection, the minutes — since none of that is added. And where `--auto`
+brought the run here: with the gate there and binding, the flag is their yes
+and the question is not put; with no gate yet it is put all the same, since
+it is what says what setting one up costs.
 
 **Say how the machine can be kept from dropping off, and do not make a second
 question out of it.** It is something the user does outside the run, and a second
@@ -560,24 +744,123 @@ does what the tests say, not that it is what the user wanted, and the approval a
 each task is where a build heading the wrong way becomes visible. Say that, so
 the recommendation is theirs to weigh rather than a door being held open.
 
-Record the answer in `environment.md` either way. A later session then reports
-that the mode is available, or that it was declined and can still be set up,
-instead of asking again. What is recorded is that the mode is available in this
+**On a no, nothing is set up**, on the platform or anywhere else, and every
+piece of work runs with them. The record below says so, with the reason.
+Then say the one thing that changes it: typing `--auto` where a piece of
+work starts sets the mode up then — a flag only they can type, so it is
+given as it is typed.
+
+**On a yes, the two permissions come before anything is set up, each put a
+second time where its record does not say yes.** The mode cannot run under a
+no to either: a tool the run may not install becomes an issue that holds its
+task and everything built on it, and a check whose tool may not be entered
+stays off. First the install question, then the one on the dependency file;
+after a no the other is not put, there being nothing left for it to decide.
+Before each widget stands one line of prose, in the run's own message, that
+names the permission: that work without them needs their yes to it — to
+installing tools outside the project, or to entering check tools in the
+dependency file — and, where the record says no, that they said no to it.
+The question itself is put as it was the first time, alone in its call, with
+the line under its no that belongs to this second asking. The install
+question:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-question`
+
+The question on the dependency file is the one step 3 describes, field for
+field, with one line changed: its no says that the run enters nothing
+itself, and that work without them is then not possible, every piece of
+work running with them. That a first setup puts this question in step 3 and
+again here is meant: here it is the second asking, with its own line under
+the no.
+
+**Every yes to one of the two holds for its permission, whatever follows
+it.** Then, in this order:
+
+1. **The records that changed land first** — the two permissions and the
+   answer about the mode — through a pull request, and are fetched before
+   anything is installed under them: the install guard reads its record off
+   the main branch as last fetched. Where nothing is installed under them,
+   they land in one pull request with the rest of this step; otherwise in
+   one of their own, ahead of it.
+2. **Under a yes to the dependency file**, every check tool that is
+   installed outside the project and can be entered there is entered, and
+   its class is proven red again as in step 5.
+3. **Every class that was off only for an earlier no** — an install they
+   declined, an entry they declined with no other way left, which the reason
+   in its `skipped (user)` cell names — is filled, by steps 4 to 6 for those
+   classes. That changes rows the user switched off, and not without them:
+   they are here and have just said yes.
+4. **Only where every answer is now yes** is the gate set up, by the order
+   further down.
+
+**The install record, where this step changes it.** Until 5 October 2026
+only `setup-project` wrote it; this step writes it as well, and only with
+the user there, which is what holds a record that opens a guard:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-record`
+
+**The record of the answer about the mode.** A section of its own in
+`docs/agents/environment.md`, in the shape of the install record — one key
+and one value per line, spelled exactly, ASCII only — so that a later run
+reads the start of a line and not a sentence every run words differently:
+
+    ## Unattended mode
+
+    unattended-mode: no
+    unattended-reason: <one line>
+    unattended-answered: YYYY-MM-DD
+
+`unattended-mode` is `yes` where they said yes to the question, or typed the
+flag with the gate standing, and yes to both permissions; `no` otherwise,
+and then `unattended-reason` says in one line which no it was — to work
+running alone here, to installing, to the dependency file — or that the
+platform refused the protection, which is no answer of theirs. Under a yes
+there is no reason line. `unattended-answered` is the date. Each of the
+three records is written only where its answer changed or no record stood:
+a no over a no leaves the file alone, and no pull request is opened for a
+date. Where the file still carries the answer as a sentence, the way this
+step wrote it until 5 October 2026, that sentence goes with the first
+writing of the section. What is recorded is that the mode is set up in this
 repository, or that it is not — a permission, which the question at the end of
 each sharpening presupposes and reads. It is not an answer for any piece of
 work, and no stage reads it as one.
 
-**On a yes, in this order. Do not collapse it.**
+**What this step writes lands through a branch of its own**,
+`devloop-unattended`, the third of the fixed names under "Cut the branch"
+above. After this step's last question and before its first write: fetch,
+switch to the main branch and fast-forward it — the tree may still stand on
+the branch step 7 landed, and nothing here is to stand on that — then cut
+the branch by the three cases there. As few pull requests as point 1
+allows, each landed the way step 7 lands one: armed where a gate stands,
+and handed to them to merge where none does yet, since they are here. After
+every merge that is proven: fetch, switch to the main branch, delete the
+branch locally and, where it still stands there, on the remote, and only
+then cut it again for the next pull request.
 
-1. Write `.github/workflows/checks.yml`, running exactly the blocking targets
-   `checks.md` names and nothing else. Land it on the main branch the ordinary
-   way, through a pull request.
+**Setting the gate up, in this order. Do not collapse it.**
+
+1. Write `.github/workflows/checks.yml`. It installs before it checks: first
+   the project's own dependencies, then every tool a blocking check needs
+   that exists only outside a project, each with its vendor's installation
+   line for the platform's machine, backed as step 4 backs a command. Then
+   it runs `check` and nothing else, the target that runs every blocking
+   class and that this skill keeps true, so that a class that becomes
+   blocking later runs on the platform too. Land it on the main branch the
+   ordinary way, through a pull request.
 2. Wait until it has run there and gone green. A required check that has never
    reported leaves every later pull request waiting on something that will never
-   arrive. If it goes red, that is the answer: say what failed, and that a gate
+   arrive. A red that comes of a tool missing on the platform's machine is
+   the workflow file being wrong and not the suite: correct the file, land
+   it and wait again, as step 5 does not take a red that did not come from
+   the code. Only a red from the code itself is the answer: say what failed,
+   and that a gate
    cannot be built on a suite that does not pass away from this machine.
 3. Only then set the protection, requiring that check, with `enforce_admins` on,
    and switch auto-merge on if it is off.
+
+Where the gate was there and binding already, none of the three is done:
+auto-merge is switched on where it is off, before the pull request above is
+armed, since arming needs it.
 
 **Never do this while a pull request is open.** A required check added underneath
 an open one blocks it — the workflow never ran for that branch, so its result
@@ -587,7 +870,9 @@ never comes. Say so, merge what is open first, and come back to this.
 on a plan that does not allow it is the usual reason — and say what would change
 it, a public repository or a different plan. Offer to take the workflow file back
 out, since it was added only for this. The attended mode is untouched and carries
-on either way.
+on either way. The record of the answer then says that the mode is not set
+up, with that refusal as its reason; it is no answer of theirs, so what is
+said beside it is what would change it, and not that the flag sets it up.
 
 ## Step 9 — Close
 
@@ -596,8 +881,11 @@ still `empty`.
 
 Then say what happens next and do it, without asking first. More classes while
 any is still `empty`: that is the rest of the answer given in step 2, not a
-second question. Otherwise it depends on the route in: reached from a build
-for a single class, back to the build and its task; reached from the step
+second question. Otherwise it depends on the route in: reached for a single
+class, back to the caller and its task; reached from `--auto` for step 8
+alone, back to the place that called, with the tree on the main branch as
+freshly fetched — on a yes that place reads the conditions again and goes
+alone, on a no it goes on with them; reached from the step
 after a merge, back to that step's own next, the query in `build-work` step 7;
 at a first setup, the first piece of work — where they have already said what
 they want built, say the suite is done and carry straight on into planning it,
