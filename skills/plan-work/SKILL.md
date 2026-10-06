@@ -284,9 +284,22 @@ and only where the idea stands by the three conditions above.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mode-set-up`
 
 Where the mode is not set up, the question has one possible answer and is not
-asked. Without the flag the run carries on with them, and says in one line
-which of the five is missing and that typing `--auto` where a piece of work
-starts sets the mode up. Where `--auto` was typed this session and the idea
+asked. Without the flag the run carries on with them, and what it says about
+the mode is one of three things, read in this order. Where the record of the
+answer says `no` — their no, a protection the platform refused, or checks
+that do not pass on the platform — nothing, and nothing about the other
+conditions either. Otherwise, where a class in `checks.md` is `empty`, one
+line: that work cannot run without them in this project yet because not
+every check is decided, and that the check setup decides them at the next
+start once there is code — nothing about the flag, since step 8 is not
+reached while a class is `empty`. Otherwise — no record, or a yes with
+something fallen away since, auto-merge switched off on the platform, say,
+or a setup broken off before the question — one line: that work without
+them is not set up in this project, and that typing `--auto` where a piece
+of work starts sets it up. It does not list what is missing: the flag asks
+what has to be asked and sets up the rest. The wording approved on 5 and 6
+October 2026 stands in the roadmap entry of 5 October 2026; this skill says
+what is said, not the words. Where `--auto` was typed this session and the idea
 stands, the run does not stop at that: the person who typed it is here, so
 call `setup-checks` for its step 8 alone, which puts what has to be asked —
 the permissions a second time, where their record does not say yes — and sets
@@ -344,11 +357,11 @@ file. For the gate and auto-merge, read the state; do not read
 `environment.md`'s account of it — the repository says whether it still
 holds. The two records are the exception: there the file on the main branch
 is the state itself, and it is read as the paragraph above reads it. Where
-one fails, the two answers that send the run alone fall away and
-the question is not asked; say which one failed and what would
-change it — for what the setup of the mode can put right, the gate,
-auto-merge and the two records, that typing `--auto` sets it up; for the
-other two, what helps there — and carry on with them there. The build reads
+the mode is not set up, the paragraph above has said what is said, and
+nothing is added here. Where it is set up and one of the other two fails —
+a class `empty`, or a kind of command the run needs not approved — the two
+answers that send the run alone fall away and the question is not asked;
+say which one failed and what helps there, and carry on with them. The build reads
 all seven again when it
 starts, for two reasons written there: on the route that starts from a finished
 spec the build is reached without this question, and the state read here can

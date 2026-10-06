@@ -13,9 +13,10 @@ where this is the setup of the project, `devloop-checks` where it is the
 check setup, and `devloop-unattended` where the check setup sets up the
 unattended mode, in its step 8, which cuts by this same rule after its own
 last question. Not a name made up for the run: the next run has to find the
-branch an earlier one left, and it finds it by this name. Read off git which
-of three cases holds before cutting — `git branch --list devloop-setup`, with
-`devloop-checks` or `devloop-unattended` in its place — and act on that one:
+branch an earlier one left, and it finds it by this name. Read which of four
+cases holds before cutting, three off git and one off the platform — `git
+branch --list devloop-setup`, with `devloop-checks` or `devloop-unattended`
+in its place — and act on that one:
 
 - **No branch of that name.** Cut it from the main branch:
 
@@ -40,6 +41,26 @@ of three cases holds before cutting — `git branch --list devloop-setup`, with
   this name was already here, left by an earlier setup that was broken off;
   that nothing had been written on it; and that it has been removed and cut
   again, so that this setup starts from the main branch as it stands.
+
+- **The branch exists, its pull request is merged, and nothing was committed
+  on it since.** A squash merge leaves the branch's own commits off the main
+  branch, so the test above reads a branch that landed that way as written
+  on. The platform tells the two apart: `gh pr view devloop-setup --json
+  state,headRefOid` says whether the pull request of that branch is
+  `MERGED` and at which commit its head stands, and the branch is landed
+  where the state is `MERGED`, that head is the branch's own tip, `git
+  rev-parse devloop-setup`, and `git status --short` prints nothing:
+
+      [ "$(gh pr view devloop-setup --json state,headRefOid -q '.state + " " + .headRefOid')" = "MERGED $(git rev-parse devloop-setup)" ] && [ -z "$(git status --short)" ]
+
+  A `gh pr view` that finds no pull request for the branch has answered, and
+  this is then not the case. Then delete it and cut it afresh, stepping onto
+  the main branch first as above, and tell the user in a line or two: that a
+  branch of this name was left by an earlier setup that landed, that nothing
+  stood on it beyond what landed, and that it has been removed and cut again.
+  Since 6 October 2026, because the setup that lands with the person
+  merging by hand deletes the branch only once they have said it landed, and
+  a session that ends before that leaves it.
 
 - **The branch exists and something was written on it** — a commit of its
   own, or a working tree that is not clean. Switch to it rather than making a

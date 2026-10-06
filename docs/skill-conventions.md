@@ -686,7 +686,10 @@ last fetched; no reader under `bin/` and no line at the session start are
 built for it. Under a no the run asks about each tool, and after a no to one
 it installs that tool outside the project where the install record says yes,
 or hands the command over where it does not; the class is switched off, in
-the user's name, only where no candidate is left.
+the user's name, where no candidate is left, where the command handed over is
+not run, or where the question — three answers since 6 October 2026 where
+the tool has no way outside the project and another tool is left for the
+check, the other tool or the check off — was answered with the check off.
 
 **Runtimes are not a kind the permission may cover.** Ruled on 28 September
 2026, for how milestone 3 of `docs/plan.md` is built; the plan carries the
@@ -888,7 +891,11 @@ divergence between them. Three rules follow.
    happened. The search runs over `skills/`, `hooks/`, `docs/`, `README.md`,
    `shared/`, `bin/` and `scripts/` — everything here that states a rule or
    carries a command, the text inserted into skills, the program that inserts
-   it and the tool that expands it included.
+   it and the tool that expands it included. What a command printed is taken
+   from its output in the same session, never from memory: on 5 October 2026
+   four notes of findings described what a search of the roadmap had returned,
+   written down from recollection, and two of them said something the command
+   had not printed.
 
    **The search goes by the subject the statement stands on, not by its wording.**
    Four places can say one thing in four wordings, and then no search by wording
@@ -1804,12 +1811,23 @@ handover, run these" holds the copies to it. What answers the refusal is a
 rule and not a wall: the skill that wanted to commit calls `setup-checks` for
 the row and commits again, in both modes, and `build-work` says at both of
 its places that this is no block in the sense of its section on a guard's
-block. Three gaps stand, and the first is the one the README names: a shell
+block. Three gaps stand, and the README names the first two: a shell
 command that writes the table and commits in one go is read before it runs,
-so that one commit goes through and the next is refused; `git -C
-<directory> commit` is not seen, as with the guard on the main branch; and a
-commit made outside a session's Bash tool is read by no hook at all. The
-entry of 5 October 2026 in `docs/roadmap.md` says why the commit is refused
+so that one commit goes through and the next is refused; a commit run
+through a git alias is not read, the command carrying no `commit`; and a
+commit made outside a session's Bash tool is read by no hook at all. A
+fourth stood until 6 October 2026, `git -C <directory> commit` passing
+unseen, as it did the guard on the main branch: since that day both guards
+read git's own options between `git` and its command — `-C <path>`, `-c
+<name>=<value>`, the options that take a value of their own, any other
+`--option`, `-p` and `-P` — and `hooks/hooks.json` starts both on
+`Bash(git *)`, since the `if` field matches everything before its `*` as
+written, so that `Bash(git commit*)` would not have started them for a
+command with an option in between; read off `code.claude.com/docs/en/hooks.md`
+and `code.claude.com/docs/en/permissions.md` on 6 October 2026, and
+measured with the hooks fed their JSON, the entry of 5 October 2026 in
+`docs/roadmap.md` carrying the runs under its addendum of 6 October. The
+entry also says why the commit is refused
 rather than the write, and why no target in the project's own check chain
 was built beside it.
 

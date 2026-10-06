@@ -10883,15 +10883,25 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   step 9, which were `setup-project`'s own and do not hold in the second
   skill that now puts the question.
 
-  **The approved wording, 5 October 2026**, the German reference; the skills
-  say what is said and not the words. The question on the dependency file:
-  header "Abhängigkeit"; question "Darf ich für dieses Projekt künftig
-  Prüfwerkzeuge selbst in die Abhängigkeitsdatei eintragen?"; first answer,
-  label "Ja, selbst eintragen", line "Ich trage solche Werkzeuge ab jetzt
-  selbst ein und frage nicht noch einmal."; second answer, label "Nein", line
-  the first time "Ich trage nichts selbst ein und frage dich jedes Mal.", and
-  the second time "Ich trage nichts selbst ein. Der Lauf ohne dich geht dann
-  nicht, jede Arbeit läuft mit dir." The install question: question "Darf ich
+  **The approved wording, 5 October 2026, amended the same day and on 6
+  October 2026**, the German reference; the skills say what is said and not
+  the words. The question on the dependency file, in the wording of the
+  second approval of 5 October 2026: header "Pakete"; question "Darf ich
+  künftig Prüfwerkzeuge selbst zu den Paketen dieses Projekts hinzufügen?";
+  first answer, label "Ja, selbst hinzufügen", line "Ich füge solche
+  Werkzeuge ab jetzt selbst hinzu und frage nicht noch einmal."; second
+  answer, label "Nein", line the first time "Ich füge nichts selbst hinzu und
+  frage dich jedes Mal.", and in step 8 "Ich füge nichts selbst hinzu. Der
+  Lauf ohne dich geht dann nicht, jede Arbeit läuft mit dir." The first
+  approval of that day read: header "Abhängigkeit"; question "Darf ich für
+  dieses Projekt künftig Prüfwerkzeuge selbst in die Abhängigkeitsdatei
+  eintragen?"; "Ja, selbst eintragen", "Ich trage solche Werkzeuge ab jetzt
+  selbst ein und frage nicht noch einmal."; "Nein", "Ich trage nichts selbst
+  ein und frage dich jedes Mal." and "Ich trage nichts selbst ein. Der Lauf
+  ohne dich geht dann nicht, jede Arbeit läuft mit dir." — replaced because
+  a run on German writes "in die Abhängigkeitsdatei eintragen" from the
+  skill's "enter check tools in the dependency file", and that word tells a
+  person nothing; the fields say now what goes where. The install question: question "Darf ich
   für dieses Projekt künftig Werkzeuge installieren, die außerhalb des
   Projekts auf diesem Rechner landen?"; first answer, label "Ja, Werkzeuge
   selbst installieren", line "Ab jetzt installiert der Lauf solche Werkzeuge
@@ -10900,30 +10910,84 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   ein Werkzeug fehlt, bekommst du den Befehl dafür und entscheidest selbst.",
   and the second time "Nichts wird ohne dich installiert. Der Lauf ohne dich
   geht dann nicht, jede Arbeit läuft mit dir." The question on a single
-  tool, under a no to the dependency file: header "Abhängigkeit"; question
-  "Darf ich `<Werkzeug>` für die Prüfung <Prüfung in Worten> in die
-  Abhängigkeitsdatei eintragen?", as in "Darf ich `pip-audit` für die
-  Prüfung der Abhängigkeiten in die Abhängigkeitsdatei eintragen?"; first
-  answer, label "Ja, eintragen", line "Ich trage es ein und richte die
-  Prüfung damit ein."; second answer, label "Nein", with one of three lines:
-  where installing is allowed, "Dann installiere ich es außerhalb des
-  Projekts auf diesem Rechner."; where it is not, "Dann bekommst du den
-  Befehl, um es außerhalb des Projekts selbst zu installieren."; where there
-  is no way outside, "Dann bleibt diese Prüfung aus." The two lines of prose
-  before the second questions in step 8: "Damit Arbeit ohne dich laufen
+  tool, under a no to the packages, in the wording of the second approval of
+  5 October 2026: header "Pakete"; question "Darf ich `<Werkzeug>` für die
+  Prüfung <Prüfung in Worten> zu den Paketen des Projekts hinzufügen?", as
+  in "Darf ich `pip-audit` für die Prüfung auf bekannte Sicherheitslücken zu
+  den Paketen des Projekts hinzufügen?"; first answer, label "Ja,
+  hinzufügen", line "Ich füge es hinzu und richte die Prüfung damit ein.";
+  second answer, label "Nein", with one of three lines: where installing is
+  allowed, "Dann installiere ich es außerhalb des Projekts auf diesem
+  Rechner."; where it is not, "Dann bekommst du den Befehl, um es außerhalb
+  des Projekts selbst zu installieren."; where there is no way outside,
+  "Dann bleibt diese Prüfung aus." The first approval read: header
+  "Abhängigkeit"; question "Darf ich `<Werkzeug>` für die Prüfung <Prüfung
+  in Worten> in die Abhängigkeitsdatei eintragen?", as in "Darf ich
+  `pip-audit` für die Prüfung der Abhängigkeiten in die Abhängigkeitsdatei
+  eintragen?"; "Ja, eintragen", "Ich trage es ein und richte die Prüfung
+  damit ein."; the three lines under the no as they stand. Where the tool
+  has no way outside the project and another tool is left for the same
+  check, the question has three answers, approved in the second approval of
+  5 October 2026: "Ja, hinzufügen" with its line; "Nein, stattdessen
+  <anderes Werkzeug>" with one of three lines — where the install record
+  says yes, "Ich installiere `<anderes Werkzeug>` außerhalb des Projekts auf
+  diesem Rechner und richte die Prüfung damit ein."; where it says no or
+  none stands, "Du bekommst den Befehl, um `<anderes Werkzeug>` außerhalb
+  des Projekts selbst zu installieren."; where the other tool too can only
+  be added to the packages, "Dann frage ich dich, ob ich `<anderes
+  Werkzeug>` zu den Paketen des Projekts hinzufügen darf."; and "Nein,
+  Prüfung aus" with "Dann bleibt diese Prüfung aus." An example is "Darf ich
+  `Error Prone` für die Prüfung auf typische Programmierfehler zu den
+  Paketen des Projekts hinzufügen?" with the middle answer "Nein,
+  stattdessen PMD": Error Prone runs only through a build system or
+  `javac`, `errorprone.info/docs/installation` read on 5 October 2026
+  naming Bazel, Maven, Gradle, Ant, IntelliJ IDEA, Eclipse and Command
+  Line; PMD installs outside the project, `brew install pmd`, and its
+  formula lists `openjdk` among its dependencies,
+  `formulae.brew.sh/api/formula/pmd.json` read the same day, so where that
+  install would bring a runtime in, the line under the middle answer is the
+  one that gives the command, by the sentence step 3 carries since 6
+  October 2026. The two lines of prose before the second questions in step
+  8, in the wording of the second approval: "Damit Arbeit ohne dich laufen
   kann, brauche ich dein Ja zum Installieren von Werkzeugen außerhalb des
-  Projekts. Dazu hast du Nein gesagt." and "Damit Arbeit ohne dich laufen
-  kann, brauche ich dein Ja zum Eintragen von Prüfwerkzeugen in die
-  Abhängigkeitsdatei. Dazu hast du Nein gesagt." The sentence after a no in
-  step 8: "Mit `--auto` kannst du den Lauf ohne dich später einrichten." The
-  question on a class the user switched off: header "Prüfung"; question "Du
-  hast die Prüfung <Prüfung in Worten> abgeschaltet, weil <Grund>. <Was
-  jetzt gilt>. Soll ich sie einschalten?", as in "Du hast die Prüfung der
-  Abhängigkeiten abgeschaltet, weil es nur zwei Pakete gab. Jetzt sind es
-  dreißig. Soll ich sie einschalten?"; first answer, label "Ja,
-  einschalten", line "Ich richte die Prüfung jetzt ein."; second answer,
-  label "Nein, aus lassen", line "Sie bleibt aus, und ich frage nicht noch
-  einmal."
+  Projekts." and "Damit Arbeit ohne dich laufen kann, brauche ich dein Ja,
+  Prüfwerkzeuge selbst zu den Paketen des Projekts hinzuzufügen.", each
+  followed by "Dazu hast du Nein gesagt." only where the record says no.
+  The first approval read "Damit Arbeit ohne dich laufen kann, brauche ich
+  dein Ja zum Installieren von Werkzeugen außerhalb des Projekts. Dazu hast
+  du Nein gesagt." and "Damit Arbeit ohne dich laufen kann, brauche ich
+  dein Ja zum Eintragen von Prüfwerkzeugen in die Abhängigkeitsdatei. Dazu
+  hast du Nein gesagt." The sentence after a no in step 8: "Mit `--auto`
+  kannst du den Lauf ohne dich später einrichten." The question on a class
+  the user switched off: header "Prüfung"; question "Du hast die Prüfung
+  <Prüfung in Worten> abgeschaltet, weil <Grund>. <Was jetzt gilt>. Soll ich
+  sie einschalten?", as in "Du hast die Prüfung der Abhängigkeiten
+  abgeschaltet, weil es nur zwei Pakete gab. Jetzt sind es dreißig. Soll ich
+  sie einschalten?"; first answer, label "Ja, einschalten", line "Ich richte
+  die Prüfung jetzt ein."; second answer, label "Nein, aus lassen", line
+  "Sie bleibt aus, und ich frage nicht noch einmal." New in the second
+  approval of 5 October 2026: the question on a row in no allowed form
+  whose text does not say whose decision it was, in `setup-checks` step 1:
+  header "Prüfung"; question "Die Prüfung <Prüfung in Worten> ist
+  abgeschaltet. In der Tabelle steht als Grund: ‚<alter Text>'. Hast du das
+  so entschieden?", as in "Die Prüfung, ob mehrere Teile richtig
+  zusammenarbeiten, ist abgeschaltet. In der Tabelle steht als Grund: ‚not
+  needed for now'. Hast du das so entschieden?"; first answer, label "Ja,
+  meine Entscheidung", line "Sie bleibt aus, bis du es änderst."; second
+  answer, label "Nein, nicht von mir", line "Dann richte ich sie ein, außer
+  es gibt in diesem Projekt nichts für sie zu prüfen." The line at the end
+  of Stage 1 of `plan-work` where the mode is not set up, no record says no
+  and no class is `empty`: "Der Lauf ohne dich ist in diesem Projekt nicht
+  eingerichtet. Mit `--auto` kannst du ihn einrichten." What step 8 says
+  after a red from the code on the platform, beside what failed: "Sobald die
+  Prüfungen auf GitHub durchlaufen, kannst du den Lauf ohne dich mit
+  `--auto` einrichten." Approved on 6 October 2026: the line at the end of
+  Stage 1 where the mode is not set up, no record says no and a class is
+  `empty`, "Der Lauf ohne dich geht in diesem Projekt noch nicht, weil noch
+  nicht alle Prüfungen eingerichtet sind. devloop richtet sie beim nächsten
+  Start ein, sobald es Code gibt."; and what `start-work` step 4 says before
+  it calls the check setup, "Das Projekt ist eingerichtet, aber noch nicht
+  alle Prüfungen sind entschieden. Das kommt zuerst."
 
   **Two more start conditions.** New: `install-tools: yes` and
   `dependency-tools: yes` are conditions 6 and 7 of the list under
@@ -11187,7 +11251,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   statements above and not built on: `PostToolUse` on a Bash call receives
   the files that call changed, in `tool_response.bashEditDiff`, since Claude
   Code 2.1.269, which would let a write to the table through the shell be
-  reported after the command and before the next; and `FileChanged`, whose
+  reported after the command and before the next — on a condition, read on
+  5 October 2026 at 19:05 UTC: the changelog of Claude Code says under
+  2.1.269 "Added a diff of the files a Bash command changed to the Bash tool
+  result when the Bash tool handles file edits (setting
+  `bashEditDiffEnabled`)", and the Claude Agent SDK, version 0.3.289,
+  `sdk.d.ts` at `bashEditDiffEnabled`, says "Default: on when the Bash tool
+  handles file edits. Only user, flag or policy settings can turn it on
+  outside auto and bypassPermissions modes.", so the field arrives only
+  where that setting is on, and a plugin cannot turn it on; and
+  `FileChanged`, whose
   exit 2 "Shows stderr to user only".
 
   **Records.** The defects named at the head carry their evidence on the
@@ -11262,6 +11335,310 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the report of the order. The check on handovers prints eight lines over
   seven sites, one more than before, step 3 of `setup-checks` handing a
   command over under a record that says no; its section names the eighth.
+
+  **Addendum of 6 October 2026: what this entry left open, decided and
+  built.** On the same branch, the version unchanged at 0.129.0. The five
+  gaps and two of the eight things the order's report put back were decided
+  in an addendum to the order of 5 October 2026, and the addendum was held
+  against the code before anything was written, as the order had been:
+  places searched by subject, situations written out, grounds held against
+  the code. Seven places came out where the addendum decided nothing or two
+  places ran against each other, and they were put back before the build
+  and answered on 6 October 2026; the answers stand built here with the
+  rest. Nothing ran on a bench. Six findings of this entry are repaired, two
+  of its open things become findings, one case gains a finding of its own,
+  and the two guards on `git commit` and `git push` are repaired.
+
+  **The line of prose before a second question, and what "a second time"
+  covers.** The short wording of the line is approved, the second approval
+  of 5 October 2026 under "The approved wording": the first sentence names
+  the permission, and "Dazu hast du Nein gesagt." follows only where the
+  record says no, as step 8 was built; where no record stands on the main
+  branch, the line is the first sentence alone. Its case is not a project
+  set up before this version: in every project set up from 0.129.0 on both
+  permissions are asked before step 8 — the install question by
+  `setup-project` question 3, in the empty case too, the question on the
+  packages by `setup-checks` step 3 wherever no record stands — and step 8
+  comes only once no class is `empty`; the existing benches are out of use.
+  Its case is a record that never landed, a pull request carrying the
+  answer closed unmerged, say. So "a second time" stays where it stands, in
+  step 8, `plan-work`, `build-work` and `shared/install-question.md`, and
+  in the conventions and the plan, and the fourteen places the addendum
+  would have reworded are left. The finding of 5 October 2026 on the line
+  is repaired.
+
+  **"To the project's packages" in the fields.** The two questions of
+  `setup-checks` step 3 and the line of prose in step 8 describe their
+  fields as adding a check tool to the project's packages, where they said
+  entering it in the dependency file: a run on German wrote "in die
+  Abhängigkeitsdatei eintragen" from that, which tells a person nothing,
+  and the fields say now what goes where. The header is described so that
+  a run arrives at "Pakete". The rule in step 3 on which file that is keeps
+  "dependency file", and so do `README.md`, the record's name `## Dependency
+  permission`, start condition 7 in `build-work`, `shared/mode-set-up.md`
+  and the conventions: none of them is a field, and the change is scoped to
+  the fields. Two places where a run still says "dependency file" to a
+  person, start condition 7 read out at a refusal and the refusal of
+  `build-work` on the way from planning, stay as they are.
+
+  **The question on a single tool has three answers in one case, and a
+  command handed over and not run ends the class.** Where the tool asked
+  about can only be added to the packages, having no way outside the
+  project, and another tool is left for the same check, the question offers
+  three answers — the tool, the other tool instead, the check off — since a
+  tool other than the one proposed needs their yes; the second answer's line
+  is where the other tool goes, by the install record or, where that tool
+  too has only the packages, by this question again; under the third the
+  class goes `skipped (user)` with a reason naming both tools and what was
+  declined. Step 8 point 3 then reads the reason: after a yes to the
+  packages the class is filled with the tool first asked about, after a yes
+  to installing alone it stays off, since the other tool was declined. The
+  finding of 5 October 2026 on the third line is repaired. The line that
+  the run installs a tool outside the project comes only where it may
+  install that tool itself and the install brings no compiler and no
+  runtime along: `brew install pmd` brings `openjdk`, read off the formula
+  on 5 October 2026, and a runtime stays the person's under every answer,
+  so there the line is the one that gives the command; the example in the
+  approved wording holds as wording. Where a command handed over is not
+  run, the class goes `skipped (user)` whether or not another tool would be
+  left, its reason naming the tool and the command not run — what this
+  entry said above, "the command is not run", said in the skill now — and
+  that the other tool is then put to them is a finding of this addendum,
+  with a wording the person approves as its should.
+
+  **The question on an old row, and `secrets`.** A row in no allowed form
+  whose text does not say whose decision it was is put to the person field
+  by field like the other questions of that day, in the second approval's
+  wording: header, the check in words, the old text quoted as the table's
+  reason, and whether they decided that; a yes makes the row
+  `skipped (user)` with that text, a no has the run decide the row as a
+  judgement of its own, `skipped (state)` where the class would find
+  nothing here and filled otherwise. With nobody there the row goes as
+  built on 5 October 2026. The finding on step 1 is repaired. Beside it one
+  sentence: `secrets` is never skipped on a run's own judgement, no state
+  switches it off, and only the person can, in `skipped (user)`; with
+  nobody there the run stops, as the guard-block section had it. Until then
+  "`secrets` is never skipped" stood against the five places where a
+  decision of the person's writes `skipped (user)` for any class.
+
+  **No announcement before the question on the mode.** Decided: the
+  permission questions come directly after the yes, each with its line of
+  prose, and nothing before the question on the mode announces them. The
+  open thing of the order's report on that point is closed without a
+  finding.
+
+  **The line at the end of Stage 1.** Where the mode is not set up and no
+  flag was typed, `plan-work` says one of three things, in this order:
+  where the record of the answer says `no` — their no, a refused
+  protection, checks red on the platform — nothing, and nothing about the
+  other conditions either; otherwise, where a class is `empty`, that work
+  cannot run without them yet because not every check is decided and that
+  the check setup decides them at the next start once there is code, with
+  no word on the flag, since step 8 is not reached while a class is
+  `empty`; otherwise one line, that the mode is not set up and `--auto`
+  sets it up, listing nothing. Until then the line stood after every
+  sharpening, after a no as well, and after a refused protection it said
+  the flag sets the mode up, where step 8 says what would change it. Its
+  case is a yes with something fallen away since, auto-merge switched off
+  on the platform, say, or a setup broken off before the question. The
+  paragraph further down, on the six preconditions read before asking, said
+  the same decision a second time — "say which one failed and what would
+  change it ... that typing `--auto` sets it up" — and names now only the
+  two conditions the setup of the mode cannot put right, a class `empty`
+  and the kinds of command, and what helps there. The refusal of
+  `build-work` on the way from planning stays.
+
+  **A red from the code on the platform is a no.** Where the workflow goes
+  red on the main branch from the code itself, the record of the answer
+  goes to `unattended-mode: no` with that as its reason, through a pull
+  request of its own since the yes has landed by then, as after a refused
+  protection; the workflow file stays, since `--auto` needs it once the code
+  is green; and the run says what failed and that once the checks pass on
+  GitHub the mode can be set up with `--auto`, in the second approval's
+  wording. The reading of the order's report that the record stays on yes
+  with the gate missing is out. A consequence, not built: `--auto` typed
+  while the main branch is still red lands a yes and then the no again, two
+  pull requests, which a reading before the question would save — the
+  finding below on reading the platform before the question is the place
+  for it.
+
+  **Step 7 fetches, switches and deletes, and a landed branch is read as
+  such.** Once the merge is proven, on either way to it, `setup-checks`
+  step 7 fetches, fast-forwards the main branch, switches to it and deletes
+  `devloop-checks` locally and on the remote, as `setup-project` step 8 does
+  since the same day for `devloop-setup` and as step 8 of `setup-checks`
+  did for its branch already. The deletion came out of a measurement: with
+  git 2.50.1 on 5 October 2026, in a scratch repository, after a squash
+  merge of `devloop-checks` into `main`, `git merge-base --is-ancestor
+  devloop-checks main` exits 1 while `git status --short` prints nothing,
+  so `shared/cut-branch.md` read a landed branch as one with something
+  written on it and switched back to it — which the second round of step 9,
+  "More classes while any is still `empty`", and the refresh of the setup
+  would have met, the arming command merging by squash. And since the setup
+  that lands by the person's hand deletes the branch only once they have
+  said it landed, a session ending before that leaves it: so the cut reads
+  a fourth case, off the platform — `gh pr view <branch> --json
+  state,headRefOid` answering `MERGED` with a head that is the branch's tip,
+  and a clean tree — deletes and cuts afresh, and tells the person in a
+  line. Read on 6 October 2026 with gh 2.96.0: `gh pr view
+  task/audit-and-corrections --json number,state,headRefOid,mergedAt`
+  answered `{"headRefOid":"b8d1ba3…","mergedAt":"2026-10-04T12:23:05Z",
+  "number":156,"state":"MERGED"}`, and `gh pr view task/check-table-forms
+  --json state` answered `no pull requests found for branch
+  "task/check-table-forms"`. The finding on step 7 is repaired; the one on
+  `setup-project` step 8 describing no path for a fetch that fails covers
+  step 7 of `setup-checks` as well now, and its note says so. The reason
+  clause of step 8's own fetch, that the tree may still stand on the branch
+  step 7 landed, is replaced: step 7 has done so where it ran, and reached
+  alone through `--auto` step 8 stands wherever the run stood.
+
+  **README, and the two guards repaired.** Three changes to `README.md` in
+  the approved wording: the conditions name all seven, with the two
+  consequences of the two that were missing, waiting at a prompt and
+  starting a task it cannot finish, and the sentence after them says that
+  all but the one about the tasks are read where the person is asked, since
+  the tasks do not exist yet — the addition had made "They are read where
+  you are asked" untrue for that one, as `plan-work` and `start-work` say;
+  the guard on the main branch and the guard on the table each gain that a
+  commit or push run through a git alias is not read. The halves on `git
+  -C <directory>` the addendum had asked for are not written, because the
+  gap went instead: measured on 5 October 2026 at 19:05 UTC with the hooks
+  fed their JSON, both guards let `git -c user.name=x commit`, `git
+  --no-pager commit` and, the one on the main branch, `git -c a=b push
+  origin main` through, exit 0, as they had let `git -C`; both wanted `git`
+  directly before the verb. Since 6 October 2026 both read git's own
+  options between `git` and its command — `-C <path>` and `-c
+  <name>=<value>`, the six options that take a value of their own,
+  `--git-dir`, `--work-tree`, `--namespace`, `--super-prefix`,
+  `--config-env` and `--exec-path`, any other `--option`, `-p` and `-P` —
+  and a word that is no option ends the match, so that `git log --grep
+  commit` passes. And `hooks/hooks.json` starts both on `Bash(git *)` where
+  it started them on `Bash(git commit*)` and `Bash(git push*)`: read off
+  `code.claude.com/docs/en/permissions.md` on 6 October 2026 at 06:56 UTC,
+  "Claude Code matches everything before the first `*` as written", and off
+  `code.claude.com/docs/en/hooks.md` the same minute, "`\"Bash(git *)\"`
+  runs when any subcommand of the Bash input matches `git *`" and "When
+  Claude Code can't determine which commands the Bash input runs, it runs
+  your hook regardless of the pattern", so that a hook started on
+  `Bash(git commit*)` would not have seen a command with an option in
+  between where the harness could tell what it runs. The comment in each
+  hook says so, the conventions name the three gaps that stand — a write
+  and a commit in one command, a git alias, a commit outside the session —
+  and the measurement with the repaired hooks stands in the addendum
+  below. The finding on `README.md` is repaired.
+
+  **The plan.** Under "Open", the rule: every run gets a fresh test project,
+  except that a run may reuse a project an earlier run from 0.129.0 on
+  created where it builds on its content or checks more that way, the
+  milestone then naming the project and the reason; the existing benches
+  stay out. Milestone 3 ends with two runs on one fresh project, in this
+  order — the install record saying no with the person there, a build
+  needing a tool, the guard blocking, the command handed over; then
+  `--auto`, the question put a second time, a yes, and the build with
+  nobody there installing a tool itself, the guard passing, the tool at the
+  path — with two different tools a task needs and no check tool, a code
+  generator such as `sqlc`, whose formula lists no dependency,
+  `formulae.brew.sh/api/formula/sqlc.json` read on 6 October 2026: two,
+  because a command handed over and run has installed its tool, and a
+  task's, because a check class off for the first no is filled in step 8
+  with the person there. The milestone names what stands before that run:
+  the question of step 8 described field by field, the platform read before
+  it, and start condition 4 — the kinds of command approved, which nothing
+  in the tree can read, the defect of the entry read on 11 September 2026
+  — read off `permission_mode`, a field of every hook's input in the Claude
+  Agent SDK, `sdk.d.ts` of version 0.3.289 at line 179, read on 6 October
+  2026, and off the allow rules in the settings files, and said to be
+  unreadable where it is. Milestones 4 and 7 stay; 7 builds on 4's
+  interface project, which the rule allows. The finding on milestone 3 is
+  repaired.
+
+  **The field with the changed files has a condition.** The paragraph above
+  on `tool_response.bashEditDiff` carries it in place now, read off the
+  changelog and the SDK on 5 October 2026: the field arrives only where
+  `bashEditDiffEnabled` is on, by default where the Bash tool handles file
+  edits, and outside auto and bypassPermissions modes only user, flag or
+  policy settings can turn it on — a plugin cannot.
+
+  **What lay beside.** The sentence that the run stops at `secrets` with
+  nobody there, under "A guard's block is not a decline", stays: since the
+  third way a run with nobody there reaches `setup-checks` for `secrets`
+  too, through a finding about its row, so the case the first half of
+  defect 14 of the entry of 4 October 2026 holds unreachable exists now,
+  and the note on that defect says so. Two findings: the question of step
+  8 on the mode has no form, no field naming the points of the decision,
+  which the entry of 3 October 2026 left standing; and step 8 learns that
+  the platform refuses the protection only after the question, the records
+  and the workflow file — GitHub, under "About protected branches", read on
+  5 October 2026 at 19:05 UTC: "Protected branches are available in public
+  repositories with GitHub Free and GitHub Free for organizations. Protected
+  branches are also available in public and private repositories with
+  GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise
+  Server." — where it should read that before the question and say so
+  instead of asking, what the platform answers there measured once first.
+  Without change and without a finding: two open pull requests filling the
+  same class, a conflict like any other; the standalone route of step 7
+  without a review, which milestone 5 names; the route line in the empty
+  case, under milestone 3. And `start-work` step 4 calls the check setup
+  wherever a row reads `empty` and the repository has code, where it did so
+  only with no row `filled`: a project set up without code has all nine
+  classes `empty`, its first work fills only the classes its tasks need, and
+  step 4 then never called the check setup again, so that step 8 was never
+  reached there; what the run says before the call is approved on 6
+  October 2026.
+
+  **What a command printed.** The third rule under "A field is not an
+  answer to a question it was not asked" in `docs/skill-conventions.md`
+  says now that what a command printed is taken from its output in the same
+  session, never from memory: on 5 October 2026 four notes of findings
+  described what a search of the roadmap had returned, written from
+  recollection, and two said something the command had not printed,
+  corrected in `ff8f355`.
+
+  **What the attack found, by decision.** The line of prose: step 8,
+  changed; step 3's "step 8 puts this question a second time", the two
+  sentences of `setup-project` on the second asking, `shared/install-question.md`,
+  the conventions at three places and the plan at two, left, the second
+  asking standing. The packages: the fields in step 3 and step 8, changed;
+  the rule in step 3, the record, condition 7 of `build-work`,
+  `shared/mode-set-up.md`, `shared/finding-on-check-table.md`, the
+  conventions and `README.md`, left, none a field. The single tool: step 3,
+  changed at the fields, the three-answer case, the sentence on a runtime
+  and the end of the paragraph on a tool outside; step 8 point 3, changed;
+  the conventions under "It does not cover tools", changed. The old row:
+  step 1, changed; "With nobody there" in the same skill, left, the case
+  with nobody there as built. The line at the end of Stage 1: both places
+  of `plan-work`, changed; `build-work` on the way from planning and
+  `start-work`, left. The red from the code: the record's reasons and gate
+  step 2 of `setup-checks`, changed; `shared/mode-set-up.md`, left. Step 7:
+  `setup-checks` step 7 and the reason clause of step 8, `setup-project`
+  step 8, `shared/cut-branch.md`, changed; `build-work` step 6, left,
+  deleting its branch already; step 9 of `setup-checks`, left, the tree
+  being on the main branch now where it says so. The README: the three
+  sentences and the one after the conditions, changed; the two hooks and
+  `hooks/hooks.json`, changed; the conventions under "A third reader",
+  changed; the comment in the table guard, changed. The plan: "Open" and
+  milestone 3, changed; milestones 4, 5, 6, 7, 8, 9 and 11, left, naming no
+  second run on one project or naming 4's bench, which the rule allows.
+  Grounds of the addendum that did not hold as written: the install record
+  is missing not only in a project set up before 0.115.0 but in one set up
+  empty before 0.118.0, which the plan says; the person agrees to the tool
+  in step 2 at a first setup only, the single-class route not putting that
+  question, so the three answers rest on the other tool needing their yes
+  and not on step 2; and the PMD example brings a runtime along on this
+  machine, above. The searches and every place looked at stand in the
+  report of the order, `~/devloop-nachtrag-2026-10-05-bau.md`.
+
+  **Records.** The six findings above are defect things sited on the lines
+  of this addendum that say what was built, with their evidence on the
+  repairing lines; three findings are new, on the command handed over and
+  not run with another tool left, on the form of step 8's question, and on
+  reading the platform before it; the note on defect 14 of the entry of 4
+  October 2026 says its first case exists; the note on the finding of 3
+  October 2026 on `setup-project` step 8 says it covers step 7 of
+  `setup-checks` too. The outcomes of the two repaired guards standing on
+  changed lines lose their runs under 0.129.0 until the merge lands the
+  version on the main branch, the header of `scripts/devloop-stock-take`
+  saying why, and are measured again below.
 
 ## Decisions taken against
 

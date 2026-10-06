@@ -254,9 +254,40 @@ browser download an interface driver needs passes the guard today — measured o
 carries the commands and what came back — the wrapper case the guard was never
 meant to see; the record covers it expressly, or it goes on landing in silence.
 
-Ends with two runs on one bench: the record saying yes, a build installing a
-tool unattended, the guard passing, the tool standing at the path; the record
-saying no, the guard blocking, the decline path as today.
+Ends with two runs on one fresh project, in this order, the second reusing
+the first's project because it builds on the no the first put on record,
+which the rule under "Open" allows since 6 October 2026. First the install
+record says no and the person is there: a build needs a tool, the guard
+blocks, and the command is handed over. Then `--auto`, the question put a
+second time and a yes, and the build with nobody there installs a tool
+itself: the guard passes, and the tool stands at the path. The two runs need
+two different tools, each one a task needs and not a check tool — a code
+generator such as `sqlc`, whose Homebrew formula lists no dependency, read
+off `formulae.brew.sh/api/formula/sqlc.json` on 6 October 2026 — two
+because a command handed over in the first run and run by the person has
+installed its tool already, and a task's tool because a check class that was
+off for the first no is filled in `setup-checks` step 8 with the person
+there, before the run goes alone. Until 6 October 2026 this read "Ends with
+two runs on one bench: the record saying yes, a build installing a tool
+unattended, the guard passing, the tool standing at the path; the record
+saying no, the guard blocking, the decline path as today."
+
+Three things stand before that run, each recorded on 5 or 6 October 2026
+and not built. The question of `setup-checks` step 8, on the unattended
+mode, is described field by field like the other questions of that skill,
+in a wording the person approves. Step 8 reads, before that question,
+whether the platform allows the protection on this repository, and says so
+instead of asking where it does not; what the platform answers there is
+measured once first, on a private repository under a plan that does not
+allow it. And start condition 4 of the mode, that the kinds of command the
+run needs are approved for the project, which no run can read in the tree
+today — the entry of 11 September 2026 in `docs/roadmap.md` on planning
+being fenced out of the unattended mode records that under "Precondition 4
+cannot be read" — is read off the permission mode every
+hook receives, `permission_mode`, a field of every hook's input in the
+Claude Agent SDK, `sdk.d.ts` of version 0.3.289, read on 6 October 2026,
+and off the allow rules in the settings files, rather than asserted; where
+it cannot be read, the run says so.
 
 Built in part on 28 September 2026, version 0.114.0, and not landed as a
 milestone: the tools half — the record's form, the guard reading it off the
@@ -288,7 +319,8 @@ which asks nothing anew today — since 5 October 2026 such a project is asked
 where the unattended mode is set up, in `setup-checks` step 8, which writes
 the whole record where none stands; and the drivers half, so the place list carries
 no driver destination and `npx playwright install` passes the guard as before.
-The two runs above ran on 30 September 2026, both attended, under 0.120.0
+The two runs of the end as it read until 6 October 2026 ran on 30 September
+2026, both attended, under 0.120.0
 from the installed copy: the record saying yes in `devloop-test-s`, the record
 saying no in `devloop-test-t`; the roadmap entry of that date carries both
 with what they produced. What they walked: the question, put twice and
@@ -663,7 +695,12 @@ that answers it, or says that none does.
   this item ended "Every bench is refreshed before a run on it". Since that
   day the existing benches are neither used nor measured any more — their
   check tables carry the one shape a skip had until then, and nothing is
-  carried over — and every further run gets a fresh project.
+  carried over — and every further run gets a fresh project. The rule, since
+  6 October 2026: every run gets a fresh test project, with one exception —
+  a run may reuse a project an earlier run from 0.129.0 on created, where it
+  builds on that project's content or checks more that way, and the
+  milestone then names the project and the reason. The existing benches stay
+  out, their check tables carrying the old form.
 - Which stack the interface bench gets; the person picks (milestone 4).
 - How many skills and how many control documents there are at the end
   (milestones 7 and 9); both are counted in several places today.

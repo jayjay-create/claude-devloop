@@ -173,8 +173,13 @@ settled.
   which one and what would settle it.** That is the exception, not a resting
   place — the top of this file says the suite gets finished. Silence and `empty`
   look the same from outside.
-- **`secrets` is never skipped.** Credentials get committed by accident
-  everywhere, whoever owns the repository.
+- **`secrets` is never skipped on a run's own judgement.** Credentials get
+  committed by accident everywhere, whoever owns the repository, so no state
+  of a project or of this machine switches the class off. Only the user can,
+  by a decision of theirs, and then the cell reads `skipped (user)` with
+  their reason, as at every place below where their decision writes that
+  form. With nobody there the run stops instead, as "A guard's block is not
+  a decline" above says.
 
 A state that will end is still a state: no third-party packages yet, no
 entry point yet. It goes in as `skipped (state)` with that state named, and
@@ -198,8 +203,22 @@ what the row becomes is one of four:
 - **The text names a decision of the user's** — an install they declined, a
   class they did not want: `skipped (user):` with their reason.
 - **The text does not say whose decision it was**: with the user there, ask
-  them; with nobody there it becomes `skipped (user):` with the text as it
-  stood, and the pull request names the row and says so.
+  them, in the form of the other questions of this skill — a choice through
+  the harness's choice widget, in the user's language, alone in its call,
+  every point in a field of its own, and no recommendation. In the header, a
+  word for the subject, the check. In the question line: that the check, in
+  ordinary words, is switched off, what the table gives as its reason, quoted
+  as it stands, and whether they decided that. In the yes, label and line:
+  it was their decision, and the check stays off until they change it — the
+  row becomes `skipped (user)` with that text as its reason. In the no,
+  label and line: it was not theirs, and the run sets the check up unless
+  there is nothing in this project for it to check — the row is then decided
+  as a judgement of the run, by the paragraph above: `skipped (state)` with
+  the state where the class would find nothing here, and filled otherwise.
+  With nobody there it becomes `skipped (user):` with the text as it stood,
+  and the pull request names the row and says so. The wording approved on 6
+  October 2026 stands in the roadmap entry of 5 October 2026; this skill
+  says what is said, not the words.
 
 **The cell is machine-read.** One line, plain ASCII, no `|` — the parsers split
 the row on it by position. Where the reason needs more than a phrase, the phrase
@@ -298,12 +317,13 @@ question 3 of
 language, alone in its call, every point in a field of its own, and no
 recommendation. It names no file, the project's own included.
 
-- **In the header: a word for the subject**, of twelve characters at most.
-- **In the question line**: whether the run may from now on enter check
-  tools in the dependency file itself, for this project.
-- **In the yes, label and line**: from now on the run enters such tools
-  itself and does not ask again.
-- **In the no, label and line**: the run enters nothing itself and asks each
+- **In the header: one word for the subject, the project's packages**, of
+  twelve characters at most.
+- **In the question line**: whether the run may from now on add check tools
+  to this project's packages itself.
+- **In the yes, label and line**: from now on the run adds such tools itself
+  and does not ask again.
+- **In the no, label and line**: the run adds nothing itself and asks each
   time.
 
 The no's line stops there, on purpose: that the unattended mode is not to be
@@ -317,19 +337,43 @@ entered there, in the same form, each alone in its call:
 
 - **In the header**: the same word.
 - **In the question line**: the tool by its name, the check it is for in
-  ordinary words, and whether the run may enter it in the dependency file.
-- **In the yes, label and line**: the run enters it and sets the check up
-  with it.
+  ordinary words, and whether the run may add it to the project's packages.
+- **In the yes, label and line**: the run adds it and sets the check up with
+  it.
 - **In the no, label and line**: where a no leads for this tool, as it
   stands at that moment — one of three. The run installs it outside the
   project on this machine, where the install record says yes. They get the
   command to install it outside the project themselves, where that record
   says no or was never written. The check stays off, where the tool has no
-  way outside the project and no other candidate is left for the class.
+  way outside the project and no other tool is left for the class.
+
+**Where the tool has no way outside the project and another tool is left for
+the same check, the question has three answers**, since a tool other than
+the one proposed needs their yes. The header, the question line and the yes
+as above. The second answer, label
+and line: no, the other tool instead, named — and where that leads for it,
+one of three. The run installs it outside the project on this machine and
+sets the check up with it, where the install record says yes. They get the
+command to install the other tool outside the project themselves, where that
+record says no or was never written. The run asks them whether it may add it
+to the project's packages, where that tool too has no way outside — which is
+this question again, put for the other tool. The third answer, label and
+line: no, and the check stays off. Under the second the other tool goes the
+way its line named, by the paragraph below; under the third the class
+becomes `skipped (user)`, its reason naming both tools and what was
+declined. In every other case the question keeps its two answers.
+
+The line that the run installs a tool outside the project comes only where
+the run may install that tool itself: where the install record says yes, and
+the install brings no compiler and no runtime along — `brew install pmd`
+brings `openjdk` with it, read off the formula on 6 October 2026 — since a
+runtime stays the user's under every answer, by the paragraph below. Where
+it would bring one, the line is the one that gives them the command.
 
 After a no the run goes the way that line named, by the paragraph below. The
-wording approved on 5 October 2026 for both questions stands in the roadmap
-entry of that date; this skill says what is said, not the words.
+wording approved on 5 October 2026 for both questions, as amended on 6
+October 2026, stands in the roadmap entry of 5 October 2026; this skill says
+what is said, not the words.
 
 **A tool that lands outside the repository is installed by this run only where
 the install record says yes**, read where the guard reads it: the section
@@ -345,12 +389,15 @@ names and the directories its routes answer stay the user's under
 every answer. Where the record says no, or was
 never written, the run installs nothing, which is what the no of the install
 question said: hand them the command, backed, say
-plainly that it reaches beyond this project, and they decide. If the only
-candidate for a class
-is left with no way — it needs a system install and the user does not run the
-command, or it can only be entered in the dependency file and they said no to
+plainly that it reaches beyond this project, and they decide. Where the
+command handed over is not run, the class becomes `skipped (user):` with
+that reason, naming the tool and the command that was not run — whether or
+not another tool would be left for the class; another tool is not put to
+them after a command that was not run. And so does a class whose only way
+was into the packages and they said no to
 that — the class becomes `skipped (user):` with that reason, naming the tool
-and what was declined — not `empty`. With nobody there neither record says
+and what was declined, or both tools where the question offered another and
+they chose the check off — not `empty`. With nobody there neither record says
 no: the unattended mode does not start under one.
 
 ## Cut the branch, after the last question and before the first write
@@ -589,6 +636,15 @@ Then hand the user the one command that lands it, say which case it was, say tha
 this picks up as soon as they say it has, and do not go on to the next step on
 top of an unmerged suite.
 
+**Once the merge is proven, on either way to it: fetch, fast-forward the
+local main branch and switch to it, and delete `devloop-checks` locally and,
+where it still stands there, on the remote** — as `setup-project` step 8 does
+after its merge, and step 8 below after each of its own. Everything after
+this step then stands on the main branch as freshly fetched, where the
+install guard reads the record and where step 8 cuts; and a later cut under
+this name meets no landed branch, which a squash merge leaves with a commit
+of its own and the cut would otherwise switch back to.
+
 ## Step 8 — Offer the unattended mode
 
 Only when no class is `empty` any more. While one is, the mode is unavailable
@@ -758,8 +814,11 @@ stays off. First the install question, then the one on the dependency file;
 after a no the other is not put, there being nothing left for it to decide.
 Before each widget stands one line of prose, in the run's own message, that
 names the permission: that work without them needs their yes to it — to
-installing tools outside the project, or to entering check tools in the
-dependency file — and, where the record says no, that they said no to it.
+installing tools outside the project, or to adding check tools to the
+project's packages itself. Where the record says no, a second sentence
+follows, that they said no to it; where no record stands on the main branch
+— the pull request carrying the answer never landed, say — the line is the
+first sentence alone.
 The question itself is put as it was the first time, alone in its call, with
 the line under its no that belongs to this second asking. The install
 question:
@@ -767,11 +826,11 @@ question:
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-question`
 
 The question on the dependency file is the one step 3 describes, field for
-field, with one line changed: its no says that the run enters nothing
-itself, and that work without them is then not possible, every piece of
-work running with them. That a first setup puts this question in step 3 and
-again here is meant: here it is the second asking, with its own line under
-the no.
+field, with one line changed: its no says that the run adds nothing itself
+to the packages, and that work without them is then not possible, every
+piece of work running with them. That a first setup puts this question in
+step 3 and again here is meant: here it is the second asking, with its own
+line under the no.
 
 **Every yes to one of the two holds for its permission, whatever follows
 it.** Then, in this order:
@@ -785,11 +844,15 @@ it.** Then, in this order:
 2. **Under a yes to the dependency file**, every check tool that is
    installed outside the project and can be entered there is entered, and
    its class is proven red again as in step 5.
-3. **Every class that was off only for an earlier no** — an install they
-   declined, an entry they declined with no other way left, which the reason
-   in its `skipped (user)` cell names — is filled, by steps 4 to 6 for those
-   classes. That changes rows the user switched off, and not without them:
-   they are here and have just said yes.
+3. **Every class that was off only for an earlier no that the answers just
+   given lift** — the reason in its `skipped (user)` cell names what was
+   declined: an install they declined or did not run, filled where the
+   install record says yes now; a tool they declined into the packages, with
+   no other way left or with the check chosen off over another tool, filled
+   with the tool first asked about where the record on the packages says yes
+   now, and left off where only the install record changed — is filled, by
+   steps 4 to 6 for those classes. That changes rows the user switched off,
+   and not without them: they are here and have just said yes.
 4. **Only where every answer is now yes** is the gate set up, by the order
    further down.
 
@@ -814,8 +877,9 @@ reads the start of a line and not a sentence every run words differently:
 flag with the gate standing, and yes to both permissions; `no` otherwise,
 and then `unattended-reason` says in one line which no it was — to work
 running alone here, to installing, to the dependency file — or that the
-platform refused the protection, which is no answer of theirs. Under a yes
-there is no reason line. `unattended-answered` is the date. Each of the
+platform refused the protection, or that the checks do not pass on the
+platform, the workflow on the main branch red from the code, which are no
+answer of theirs. Under a yes there is no reason line. `unattended-answered` is the date. Each of the
 three records is written only where its answer changed or no record stood:
 a no over a no leaves the file alone, and no pull request is opened for a
 date. Where the file still carries the answer as a sentence, the way this
@@ -828,9 +892,10 @@ work, and no stage reads it as one.
 **What this step writes lands through a branch of its own**,
 `devloop-unattended`, the third of the fixed names under "Cut the branch"
 above. After this step's last question and before its first write: fetch,
-switch to the main branch and fast-forward it — the tree may still stand on
-the branch step 7 landed, and nothing here is to stand on that — then cut
-the branch by the three cases there. As few pull requests as point 1
+switch to the main branch and fast-forward it — step 7 has done so where it
+ran before this step, and reached alone through `--auto` this step stands
+wherever the run stood when the flag was typed — then cut the branch by the
+cases there. As few pull requests as point 1
 allows, each landed the way step 7 lands one: armed where a gate stands,
 and handed to them to merge where none does yet, since they are here. After
 every merge that is proven: fetch, switch to the main branch, delete the
@@ -852,9 +917,13 @@ then cut it again for the next pull request.
    arrive. A red that comes of a tool missing on the platform's machine is
    the workflow file being wrong and not the suite: correct the file, land
    it and wait again, as step 5 does not take a red that did not come from
-   the code. Only a red from the code itself is the answer: say what failed,
-   and that a gate
-   cannot be built on a suite that does not pass away from this machine.
+   the code. Only a red from the code itself is the answer, and it is no
+   answer of theirs: say what failed, and that once the checks pass on
+   GitHub they can set the mode up by typing `--auto`. The record of the
+   answer then says that the mode is not set up, with that red as its
+   reason: the yes has landed by now, so the change goes through a pull
+   request of its own, as after a refused protection. The workflow file
+   stays, since `--auto` needs it once the code is green.
 3. Only then set the protection, requiring that check, with `enforce_admins` on,
    and switch auto-merge on if it is off.
 

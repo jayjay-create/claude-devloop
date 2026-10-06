@@ -215,14 +215,20 @@ If step 1 found a file of the setup missing on the main branch — one or all
 five — run `setup-project` now, then continue. Do not ask the user to run it:
 it reads the same answer and takes a first setup or a refresh from there.
 
-If every file was there and no row of `docs/agents/checks.md` reads `filled` while the
-repository has code — count source files outside config and docs, as the setup
-does — say three things, in their language: the project is set up, the check
-suite is not built yet, and no class is filled, so that comes first. Then run
-`setup-checks`, and continue. Do not ask: with no class filled nothing guards
-a build. Two ways lead here — a setup that landed before its check setup ran,
-and a project set up without code that has code now — and both get the same
-answer, since neither leaves anything to decide.
+If every file was there and a row of `docs/agents/checks.md` reads `empty`
+while the repository has code — count source files outside config and docs,
+as the setup does — say two things, in their language: the project is set
+up, and not every check is decided yet, so that comes first. Then run
+`setup-checks`, and continue. Do not ask: an undecided check approves
+nothing, and the offer of the unattended mode in that skill's step 8 is
+reached only once no class is `empty`. Three ways lead here — a setup that
+landed before its check setup ran, a project set up without code that has
+code now, and a project whose first work filled only the classes its tasks
+needed — and all three get the same answer, since none leaves anything to
+decide. Until 6 October 2026 this read no row `filled`, so the third way
+never came here. The wording approved on 6 October 2026 stands in the
+roadmap entry of 5 October 2026; this skill says what is said, not the
+words.
 
 ## Step 5 — Build it
 

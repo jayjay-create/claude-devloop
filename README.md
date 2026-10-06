@@ -134,17 +134,20 @@ flag is the first of those answers given up front.
 It refuses to go alone unless every check class is configured or explicitly
 switched off with a reason, a failing gate genuinely blocks a merge on the
 remote, the repository can merge without a person present — which needs
-auto-merge enabled and a required check for it to wait on — and you have allowed
-it both to install the tools it needs outside the project and to add check tools
-to your dependency file. Where you said no to either, setting up the mode asks
-you again, and the mode is set up only once you have said yes to both. Those are
-conditions for the run being able to finish, not judgements about it: without
-them it would build a task and then sit on a pull request nobody is there to
-merge, stop at a tool it may not install, or leave a check off that the work has
-made necessary. They are
-read where you are asked, so the question is not put and then found to have had
-one answer, and read again where the build starts, since the route straight to a
-build has no question and the state can change in between. Attended runs are
+auto-merge enabled and a required check for it to wait on — no task in scope
+waits on something outside it, the kinds of command the run needs are approved
+for this project, and you have allowed it both to install the tools it needs
+outside the project and to add check tools to your dependency file. Where you
+said no to either, setting up the mode asks you again, and the mode is set up
+only once you have said yes to both. Those are conditions for the run being
+able to finish, not judgements about it: without them it would build a task and
+then sit on a pull request nobody is there to merge, wait at a prompt nobody is
+there to answer, start a task it cannot finish, stop at a tool it may not
+install, or leave a check off that the work has made necessary. All but the
+one about the tasks, which do not exist yet, are read where you are asked, so
+the question is not put and then found to have had one answer, and all of them
+are read again where the build starts, since the route straight to a build has
+no question and the state can change in between. Attended runs are
 unaffected either way. There is no cap on how many tasks it gets through: it runs until
 nothing in scope is ready any more, and picks up work that turns up along the way
 where it serves the same goal. What bounds a single task is the turn-end hook,
@@ -181,13 +184,15 @@ Hooks run without being asked: after every change made with the editing tool,
 the checks for that file, and at the end of every turn, every blocking check; a
 guard that, while the main branch is checked out, blocks the editing tool's
 writes, `git commit` and a `git push` to it — a file written through the shell
-is not stopped, and a push from another branch is not read; a guard that blocks
+is not stopped, and a push from another branch is not read, and neither is a
+commit or push run through a git alias; a guard that blocks
 `gh pr merge` in every form and names the command that arms auto-merge instead,
 so that the platform merges and not the agent — a merge through `gh api` is not
 read; a guard on the check table that reports a status in no allowed form right
 after the editing tool writes the table, and refuses a commit while the table
 holds one — a shell command that writes the table and commits in one go is read
-before it runs, so that one commit goes through and the next is refused; and a
+before it runs, so that one commit goes through and the next is refused, and a
+commit run through a git alias is not read; and a
 guard that stops a command installing outside the repository — a package
 manager, `sudo`, a copy into a bin directory, an installer piped from the
 network — and hands it to you to run, unless a record in

@@ -707,8 +707,12 @@ anything on top of it. A report of success is not evidence, and the git log
 immediately after arming is not evidence either: the platform has not merged at
 that moment, so the log can only carry it after a fetch, once the platform says
 it did. **Once the merge is proven, fetch, fast-forward the local main branch
-and switch to it, before anything follows.** The check setup that follows in a
-project with code cuts its branch from there, and the install guard reads the
+and switch to it, and delete `devloop-setup` locally and, where it still
+stands there, on the remote, before anything follows.** The check setup that
+follows in a project with code cuts its branch from there; a refresh cuts
+under this step's own name, and a branch a squash merge left standing keeps
+a commit of its own, so that the cut would switch back to it; and the install
+guard reads the
 record off the main branch as last fetched — a merge proven at the platform is
 not yet fetched, and measured on 28 September 2026 a yes landed on `origin` and
 not yet fetched blocked, then passed after the fetch. If a check gate blocks
