@@ -11794,13 +11794,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   editing tool does not reach a text the guard matched, since the list
   covers both.
 
-  **Records.** Thirteen records re-anchored or renamed to the changed
-  lines, with their notes; six things new — the fast-forward of a main
-  branch only behind, the line without code, and in `shared/cut-branch.md`
-  the fetch before a fresh cut, its failure and the remote without a main
-  branch; twelve lines of the search set as parts or rationale; two
-  findings extended, one new. A run of 7 September 2026 on step 1 of
-  `build-work` stops counting, its unit changed.
+  **Records.** Eleven records re-anchored to the changed lines, one of them
+  renamed, and two more given a note; five things new — the fast-forward
+  of a main branch only behind, the line without code, and in
+  `shared/cut-branch.md` the fetch before a fresh cut, its failure and the
+  remote without a main branch; thirteen lines of the search set as parts
+  or rationale; two findings extended, one new. A run of 7 September 2026
+  on step 1 of `build-work` stops counting, its unit changed. The counts
+  here were corrected after the commit from what `git diff` over the table
+  printed, twelve things changed or new, nineteen lines, three findings.
 
   **Addendum of 6 October 2026, after the second: the tool, its self-test
   and the nineteen checks under 0.129.0.** Run in this tree after the
