@@ -289,10 +289,18 @@ the mode is one of three things, read in this order. Where the record of the
 answer says `no` — their no, a protection the platform refused, or checks
 that do not pass on the platform — nothing, and nothing about the other
 conditions either. Otherwise, where a class in `checks.md` is `empty`, one
-line: that work cannot run without them in this project yet because not
-every check is decided, and that the check setup decides them at the next
-start once there is code — nothing about the flag, since step 8 is not
-reached while a class is `empty`. Otherwise — no record, or a yes with
+line in one of two forms, by whether the repository has code — count source
+files outside config and docs, as the setup does. Without code: that work
+cannot run without them in this project yet, because without them only the
+checks secure the work and those can be set up only once there is code, and
+that once the first work has merged devloop sets them up and then asks
+whether it may work without them too. With code and classes still open:
+that work cannot run without them in this project yet, because without
+them only the checks secure the work and not all of them are set up yet,
+and that devloop catches that up after the next merge or at the next start
+and then asks whether it may work without them too. Nothing about the flag
+in either form, since step 8 is not reached while a class is `empty`.
+Otherwise — no record, or a yes with
 something fallen away since, auto-merge switched off on the platform, say,
 or a setup broken off before the question — one line: that work without
 them is not set up in this project, and that typing `--auto` where a piece

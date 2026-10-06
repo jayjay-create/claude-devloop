@@ -16,7 +16,27 @@ last question. Not a name made up for the run: the next run has to find the
 branch an earlier one left, and it finds it by this name. Read which of four
 cases holds before cutting, three off git and one off the platform — `git
 branch --list devloop-setup`, with `devloop-checks` or `devloop-unattended`
-in its place — and act on that one:
+in its place — and act on that one. In the first three the cut is a fresh
+one, and since 6 October 2026 it is made from the main branch as the remote
+holds it: fetch, read whether the main branch stands on the remote, and
+where it does, switch to it and fast-forward it before the cut below —
+
+    git fetch -q origin
+    git rev-parse -q --verify origin/main
+    git switch main && git merge --ff-only origin/main
+
+— the second line printing the commit where the branch stands there and
+nothing, exit 1, where it does not, and the third running only where it
+does. This stands here because the setup that lands by the person's hand,
+as a first one does, may end its session before the fetch after the merge,
+and `git switch main` alone then cuts from the state before it. Where the
+fetch, the switch
+or the fast-forward fails, for whatever reason — a commit of its own on the
+local main branch, a working tree that is not clean — stop and say why,
+with git's message as it came; nothing is cut on top of it. Where no main
+branch stands on the remote yet, as in a repository `setup-project` created
+without a commit, there is nothing to fast-forward, and the cut is made
+from the main branch as it stands. The cases:
 
 - **No branch of that name.** Cut it from the main branch:
 

@@ -80,13 +80,16 @@ that called. Everything else below applies unchanged.
   nobody there, there is no one to ask: the class goes `skipped (state)`, the
   state being what this machine lacks and the block names, and the report
   names it. `secrets` is the exception it always is — it is
-  never `skipped`, so there the run stops with the reason named instead.
+  never `skipped`, so there the run stops with the reason named instead,
+  and the run that called ends with it: the mark is deleted, as the list of
+  its deletion sites in `build-work` says since 6 October 2026.
 - **The command is not an install and the guard matched on text.** Then nothing
   is blocking the class, and `skipped` would be an entry that is not true: a
   class standing as skipped while nothing hinders it, which the next reader takes
   for a decision somebody made. Do not skip it. Put the text through the editing
   tool rather than through the shell, and where that does not reach, stop with
-  the reason named.
+  the reason named — with nobody there the run that called ends there too,
+  the mark deleted as at `secrets` above.
 
 Neither case is a reason to write the class differently from what it is. What
 tells them apart is what the command would have done, not what the guard matched.
@@ -239,7 +242,8 @@ is not among the answers, and neither is a class left for later without a
 reason. `empty` means nobody decided, and every step that asks whether the
 suite is complete reads that word as undecided — the mode's first
 precondition, the `check` target, the close of this skill, the step after a
-merge — so an answer that leaves rows `empty` is asked again at each of them,
+merge, and since 6 October 2026 the start of a session — so an answer that
+leaves rows `empty` is asked again at each of them,
 which is the asking again the paragraph below names. A class they do not want
 in this project is a decision: it goes into the cell as `skipped (user):` with
 their reason, and no run changes that row without them. It is not read again
@@ -891,11 +895,12 @@ work, and no stage reads it as one.
 
 **What this step writes lands through a branch of its own**,
 `devloop-unattended`, the third of the fixed names under "Cut the branch"
-above. After this step's last question and before its first write: fetch,
-switch to the main branch and fast-forward it — step 7 has done so where it
-ran before this step, and reached alone through `--auto` this step stands
-wherever the run stood when the flag was typed — then cut the branch by the
-cases there. As few pull requests as point 1
+above. After this step's last question and before its first write: cut the
+branch by the cases there, which since 6 October 2026 fetch, switch to the
+main branch and fast-forward it before a fresh cut — step 7 has done so
+where it ran before this step, and reached alone through `--auto` this
+step stands wherever the run stood when the flag was typed. As few pull
+requests as point 1
 allows, each landed the way step 7 lands one: armed where a gate stands,
 and handed to them to merge where none does yet, since they are here. After
 every merge that is proven: fetch, switch to the main branch, delete the

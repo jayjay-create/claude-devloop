@@ -169,10 +169,14 @@ content.
 
 ## Step 1 — Check the base
 
-Fetch and compare the local main branch with the remote. If they have diverged,
+Fetch and compare the local main branch with the remote. If the local branch
+is only behind — the remote has commits it lacks, and it has none of its own —
+fast-forward it and go on: that is what a session leaves that ended after a
+merge before step 6 fast-forwarded, and the task is cut from the current main
+branch. If they have diverged,
 say so and stop — a task cut from a stale main lands on the wrong base. Say what
-would clear it and let the user decide: usually the local branch has commits the
-remote does not, or the reverse, and reconciling them is their call, not
+would clear it and let the user decide: the local branch has commits the
+remote does not, and reconciling them is their call, not
 something to resolve by force. Nothing is lost meanwhile; the tasks are in the
 tracker and this picks up as soon as they say the branches agree.
 
@@ -1105,10 +1109,10 @@ run ends here:
    fetched. Under a no, or with no record, a tool a task needs becomes an
    issue that holds that task and everything built on it, and a check class
    whose tool may not be installed stays off.
-7. The record on check tools in the dependency file says yes:
-   `dependency-tools: yes` under `## Dependency permission` in the same file,
-   read the same way. Under a no the run has to ask about every such tool,
-   and nobody is there to answer.
+7. The record on whether the run may add check tools to the project's
+   packages says yes: `dependency-tools: yes` under `## Dependency
+   permission` in the same file, read the same way. Under a no the run has
+   to ask about every such tool, and nobody is there to answer.
 
 **Where the mode is not set up, the direct route sets it up rather than
 refusing.**
@@ -1150,7 +1154,10 @@ with a shell command, since the tree stands on the main branch:
 place: at the finishing sentence at the end of this section; at the standstill
 after three rounds in step 6, and at a refused arming there that ends the run;
 at a refusal above, where the run came through planning and wrote a mark that a
-refusal here ends; on the user's word to stop; and at the halt before the first
+refusal here ends; at a halt of `setup-checks` called with nobody there on
+the branch of a task — `secrets` whose tool cannot be installed among them,
+under "A guard's block is not a decline" there — where the run ends with
+the reason named; on the user's word to stop; and at the halt before the first
 build, which the cut does before this section is ever reached. Each of those
 sites says so where it stands. A session that simply ends deletes nothing; the
 planning stage's pick-up rule and the refusal above are what meet the mark it

@@ -10983,9 +10983,21 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Prüfungen auf GitHub durchlaufen, kannst du den Lauf ohne dich mit
   `--auto` einrichten." Approved on 6 October 2026: the line at the end of
   Stage 1 where the mode is not set up, no record says no and a class is
-  `empty`, "Der Lauf ohne dich geht in diesem Projekt noch nicht, weil noch
-  nicht alle Prüfungen eingerichtet sind. devloop richtet sie beim nächsten
-  Start ein, sobald es Code gibt."; and what `start-work` step 4 says before
+  `empty`, in two forms since the second addendum of that day, by whether
+  the repository has code — without code, "Der Lauf ohne dich geht in
+  diesem Projekt noch nicht: Ohne dich sichern nur die Prüfungen die Arbeit
+  ab, und die lassen sich erst einrichten, wenn es Code gibt. Ist die erste
+  Arbeit gemergt, richtet devloop sie ein und fragt dich dann, ob es auch
+  ohne dich arbeiten darf."; with code and classes still open, "Der Lauf
+  ohne dich geht in diesem Projekt noch nicht: Ohne dich sichern nur die
+  Prüfungen die Arbeit ab, und noch sind nicht alle eingerichtet. devloop
+  holt das nach dem nächsten Merge oder beim nächsten Start nach und fragt
+  dich dann, ob es auch ohne dich arbeiten darf." Both replace the one form
+  approved first that day, "Der Lauf ohne dich geht in diesem Projekt noch
+  nicht, weil noch nicht alle Prüfungen eingerichtet sind. devloop richtet
+  sie beim nächsten Start ein, sobald es Code gibt.", which said nothing of
+  why and named only the next start, where the step after a merge sets the
+  suite up as well; and what `start-work` step 4 says before
   it calls the check setup, "Das Projekt ist eingerichtet, aber noch nicht
   alle Prüfungen sind entschieden. Das kommt zuerst."
 
@@ -11580,10 +11592,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   without a review, which milestone 5 names; the route line in the empty
   case, under milestone 3. And `start-work` step 4 calls the check setup
   wherever a row reads `empty` and the repository has code, where it did so
-  only with no row `filled`: a project set up without code has all nine
-  classes `empty`, its first work fills only the classes its tasks need, and
-  step 4 then never called the check setup again, so that step 8 was never
-  reached there; what the run says before the call is approved on 6
+  only with no row `filled`: it catches a session that ended after a merge
+  before `build-work` step 6 read the table, and a project in which the
+  person chose some of the classes first in `setup-checks` step 2 — not, as
+  this paragraph said until the second addendum of 6 October 2026 below, a
+  project set up without code whose first work filled only the classes its
+  tasks needed and which step 4 never brought to step 8: step 6 calls the
+  check setup whole after every merge wherever a class is still `empty` and
+  the repository has code, so such a project reaches step 8 after its first
+  merge that lands code; what the run says before the call is approved on 6
   October 2026.
 
   **What a command printed.** The third rule under "A field is not an
@@ -11680,6 +11697,110 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   count once the merge lands the version on the main branch, the lines being
   changed after the commit that raised it, as the header of
   `scripts/devloop-stock-take` says.
+
+  **Second addendum of 6 October 2026: six decisions of a second addendum
+  to the order, held against the code and built.** On the same branch, the
+  version unchanged at 0.129.0. The places of each decision were searched
+  by subject before anything was written, with short search texts, and
+  nothing undecided and no two places against each other came out, so
+  nothing was put back; what was added beside the six is named where it
+  stands. Nothing ran on a bench.
+
+  **A reason that did not hold.** The paragraph above under "What lay
+  beside" said that in a project set up without code `start-work` step 4
+  never called the check setup again, so that step 8 was never reached
+  there. It did not hold: `build-work` step 6 calls the check setup whole
+  after every merge wherever a class is still `empty` and the repository
+  has code, so such a project reaches step 8 after its first merge that
+  lands code. The widening of step 4 stays, with the reason that holds: it
+  catches a session that ended after the merge before step 6 read the
+  table, and a project in which the person chose some of the classes first
+  in `setup-checks` step 2 and whose session ended before step 9 took up
+  the rest, which that step does in the same run. The paragraph is
+  corrected in place, the three ways in step 4 read so now, and step 2 of
+  `setup-checks` names the start of a session among the places where a row
+  left `empty` is asked again. The reason stood nowhere else: searched
+  over `skills`, `shared`, `README.md`, `docs/skill-conventions.md` and
+  `docs/plan.md` for "never reached", "no row `filled`", "never called" and
+  "never came", which printed the two lines of step 4, two lines of
+  `setup-checks` on the case with nobody there and one of
+  `shared/command-does-not-answer.md`, none of them it; and for "without
+  code", "has no code" and "no code yet", which printed step 4, `build-work`
+  step 6, the opening of `setup-checks` and its step 2, and one line of
+  `plan-work`, none of them it.
+
+  **The line at the end of Stage 1, in two forms.** Where a class is
+  `empty` and no record says no, `plan-work` says one of two things, by
+  whether the repository has code, counted as the setup counts it: without
+  code, that the run without them does not go in this project yet, because
+  without them only the checks secure the work and those can be set up only
+  once there is code, and that once the first work has merged devloop sets
+  them up and then asks whether it may work without them too; with code
+  and classes still open, the same ground, that not all of them are set up
+  yet, and that devloop catches that up after the next merge or at the
+  next start and then asks. Both say why, which the one form approved first
+  that day did not; the ground is the one `build-work` states, "`--auto`
+  replaces the user's approval with a green check suite". The German
+  wording of both stands under "The approved wording" above, the replaced
+  form beside. One finding: the form without code says once the first work
+  has merged, while step 6 sets the suite up only after a merge that lands
+  code.
+
+  **A fresh cut is made from the main branch as the remote holds it.** In
+  `shared/cut-branch.md`, in the three cases that cut afresh — no branch of
+  the name, nothing written on it, landed — the run fetches, reads whether
+  the main branch stands on the remote, and where it does switches to it
+  and fast-forwards it before the cut: `git fetch -q origin`, `git
+  rev-parse -q --verify origin/main`, `git switch main && git merge
+  --ff-only origin/main`. Where the fetch, the switch or the fast-forward
+  fails, for whatever reason — a commit of its own on the local main
+  branch, a working tree that is not clean — it stops and says why, with
+  git's message, and cuts nothing on top of it. Where no main branch stands
+  on the remote yet, as in a repository `setup-project` created without a
+  commit, nothing is fast-forwarded and the cut is made from the main
+  branch as it stands. The ground: in the landed case the session ended
+  before the fetch after the merge — at a first setup the person merges by
+  hand — and `git switch main` alone cut from the state before it. Step 8
+  of `setup-checks` points to the cases for the fetch it described itself.
+  The finding on `main` written literally extends to the new commands, and
+  the finding on a fetch that fails in `setup-project` step 8 notes that
+  the cut says since this day what its own failing fetch leads to, while
+  that step and step 7 of `setup-checks` still do not.
+
+  **`build-work` step 1 fast-forwards a main branch that is only behind.**
+  Where the local main branch has no commit of its own and the remote has
+  commits it lacks, step 1 fast-forwards it and goes on, since the task is
+  cut from the current main branch and a session that ended after a merge
+  before step 6 fast-forwarded leaves it behind; where they have diverged,
+  it says so and stops as before, the reverse no longer among what the
+  user clears. The handover check prints its eight lines over seven sites
+  as before, the diverged base among them; what a fast-forward that fails
+  here leads to is not said, and the finding on `setup-project` step 8
+  names this place too.
+
+  **Condition 7 is named by what it allows.** "The record on whether the run
+  may add check tools to the project's packages says yes", where it read
+  "The record on check tools in the dependency file says yes"; the record,
+  `dependency-tools: yes` under `## Dependency permission`, is unchanged,
+  and the refusals that name a missing condition take the name from the
+  list. `README.md` stands as it is.
+
+  **A halt of the check setup with nobody there deletes the mark.** The
+  list in `build-work` of where the mark is deleted names a halt of
+  `setup-checks` called with nobody there on the branch of a task —
+  `secrets` whose tool cannot be installed among them, under "A guard's
+  block is not a decline" there — where the run ends with the reason
+  named; that place says so, and so does the stop under it, where the
+  editing tool does not reach a text the guard matched, since the list
+  covers both.
+
+  **Records.** Thirteen records re-anchored or renamed to the changed
+  lines, with their notes; six things new — the fast-forward of a main
+  branch only behind, the line without code, and in `shared/cut-branch.md`
+  the fetch before a fresh cut, its failure and the remote without a main
+  branch; twelve lines of the search set as parts or rationale; two
+  findings extended, one new. A run of 7 September 2026 on step 1 of
+  `build-work` stops counting, its unit changed.
 
 ## Decisions taken against
 
