@@ -12184,6 +12184,42 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   nobody there their rows with empty evidence. The counts stand in the
   addendum below, read off `git diff` over the table after the commit.
 
+  **Addendum of 6 October 2026, after the third: the tool, its self-test
+  and the nineteen checks under 0.129.0.** Run in this tree after the
+  commit that carries the third addendum, `ed7943b`, with the tree clean,
+  on 6 October 2026 at 20:02 UTC. The tool: `BROKEN RECORDS: 0`,
+  `FINDINGS: 23`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF
+  THE SEARCH SET: 0 of 2326`, exit 0, written down on its exit 0 outcome;
+  the twenty-three findings are the twenty that stood less the two
+  repaired, and the five of the third addendum. The self-test: 88 cases,
+  74 of the 74 messages asserted by a case and 0 by none, the passing line
+  as it stands above, exit 0, written down on its outcome, the tool's
+  source untouched. The nineteen checks under "Before a handover, run
+  these" printed what their sections call green, one run written down on
+  each green outcome of the nineteen: the check on offers seventeen lines
+  over the sites of 5 October 2026, their line numbers moved; the check on
+  handovers nine lines over eight sites, the ninth the one line of
+  `shared/fetch-three-times.md`, and its two things renamed to the nine
+  with their four runs, as on 5 October 2026 when the check went from
+  seven to eight; the check on the second statement its two lines; the
+  counts 2, 2 and 1, and 1 twice for the status forms; the rest silent or
+  the answer their section names. Eleven runs stop counting at `ed7943b`,
+  their units changed, none of them under 0.129.0: on the straight path of
+  `setup-checks` step 7, 25 August and 13 September 2026; of `setup-project`
+  step 8, 13 September; of `build-work` step 1, 7 September; of `build-work`
+  under "Unattended mode", 7, 13 and 14 September, and of `plan-work` under
+  "With nobody there", 14 September, through `shared/mark-command.md`
+  inserted there; of `plan-work` Stage 1, 6, 11 and 14 September. The four
+  runs of the two repaired guards named in the addendum after the first
+  stand as they stood, counting once the merge lands the version. The
+  counts of the table at `ed7943b`, read off `git diff 663416e..ed7943b --
+  docs/stock-take.tsv`: 39 thing rows added and 14 removed, the 14 the
+  re-anchored and renamed things and the 25 beyond them new — twenty-three
+  built or measured, two the repaired findings as defects; 30 not-a-thing
+  rows added and 6 removed; 6 finding rows added and 3 removed, five
+  findings new and the one on `main` written literally re-noted; the
+  twenty-one runs of this addendum come in the commit after it.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
