@@ -11640,6 +11640,47 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   version on the main branch, the header of `scripts/devloop-stock-take`
   saying why, and are measured again below.
 
+  **Addendum of 6 October 2026: the two repaired guards, every outcome
+  measured once.** After the commit that carries the build, `adfec5d`, with
+  the tree clean, on 6 October 2026 at 07:16 UTC, in a throwaway repository
+  under a scratch directory outside this one, each hook fed the JSON of its
+  event with `CLAUDE_PROJECT_DIR` set, the exit code and both streams read,
+  thirty-three cases; nothing ran through the harness, whose installed copy
+  is 0.126.0, so that `Bash(git *)` starts the hooks where `Bash(git
+  commit*)` did not is read off the vendor's pages above and not measured.
+  `hooks/pre-tool-use-table-guard.sh` passed in silence, exit 0, nine times:
+  a project directory that cannot be entered, then a repository with no
+  `docs/agents/`; a tool that is not Bash while the table carried
+  `skipped: later`; `git status` and `git log --grep commit` over that
+  table, neither holding `git commit`; `git commit` and `git -C . commit`
+  over a table in order; `git commit` while the program could not read the
+  table, mode 000; and `docs/agents/` standing with no table in it. It
+  refused, exit 2 with "Commit refused" naming `lint: skipped: later`, nine
+  times: `git commit -m x`; `git add -A && git commit` with a quoted
+  apostrophe in its message; `git commit` on the branch `task-1`; and, new
+  since this day, `git -C . commit`, `git -c user.name=x commit`, `git
+  --no-pager commit`, `git --git-dir=.git --work-tree . commit` and `git
+  -C/tmp -p commit`. `hooks/pre-tool-use-branch-guard.sh`, with the
+  project standing on `main`, passed in silence, exit 0, seven times: `git
+  status` and `git log --grep commit`, neither a commit nor a push; `git -C
+  . push origin feature`, `git -c a=b push origin HEAD:refs/heads/feature`,
+  `git push origin feature` and `git -C . push --delete origin feature`,
+  each naming another branch as its destination; and `git -C . commit` on
+  the branch `task-2`, not the default one. It blocked, exit 2 with
+  "Blocked: committing on the main branch", `git commit -m x`, `git -C .
+  commit`, `git -c user.name=x commit` and `git --no-pager commit`, and
+  with "Blocked: pushing to main" `git push origin main`, `git -C . push
+  origin main`, `git -c a=b push origin main` and `git --no-pager push`
+  naming no destination. No measurement led to a change. Thirteen runs
+  stand in `docs/stock-take.tsv` under 0.129.0, one for each outcome
+  measured, eight of the table guard and five of the branch guard. Ten count
+  now; the three on outcomes whose lines this build changed — the pass of
+  the table guard where the command holds no `git commit`, the pass of the
+  branch guard for a command that is neither, and its block of a commit —
+  count once the merge lands the version on the main branch, the lines being
+  changed after the commit that raised it, as the header of
+  `scripts/devloop-stock-take` says.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
