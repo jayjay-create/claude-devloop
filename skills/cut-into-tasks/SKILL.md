@@ -76,7 +76,10 @@ add the new thing beside the old, move callers in batches, delete the old last.
 - **Title** — what will be true when it is done.
 - **Problem** — what is missing or wrong now.
 - **Solution** — what to build, concretely enough to start. Interfaces and
-  signatures where the spec fixed them.
+  signatures where the spec fixed them. A task never says to write
+  `docs/agents/checks.md`: only the check setup writes that file, and a class
+  this work makes necessary is filled by it, before the task that needs it is
+  released.
 - **Test decisions** — which of the spec's placed seams this task is checked
   at, and the conditions checked at each, one line apiece. **A condition is
   written so that it can be false**: "rejects an empty input with an error", not
@@ -149,7 +152,7 @@ says which.
   that gate is where the decision actually sits.
 - **Alone, `build`**: say you are starting on the first task and that the build
   goes on by itself from here, and run `build-work`. Its section on the
-  unattended mode reads the five preconditions — all five, this time with tasks
+  unattended mode reads the seven preconditions — all seven, this time with tasks
   to read the third against — finds the mark this run wrote, and opens the run.
 - **Alone, `plan`**: this is the halt before the first build, and the run ends
   here. Say what is in the tracker to read: the spec by its title, how many

@@ -135,7 +135,12 @@ written at the review's close" below says why it stands there; and
 `shared/fetch-failed.md`, 3 October 2026, inserted into the four skills that
 fetch the main branch through `bin/devloop-setup-state`, what to say where
 the fetch failed, which "The setup state is read off the default branch"
-below places.
+below places; and five of 5 October 2026 — the sentence naming the four
+forms a status takes, which two hooks carry a copy of; the install question
+field by field and the form of its record, which stood in `setup-project`
+alone until a second skill came to put the question and to write the record;
+what makes the unattended mode set up in a repository, read at three places;
+and the third way a review finding can go, to the check setup.
 
 ## Numbered steps where order matters
 
@@ -352,7 +357,14 @@ was run, and the message that came back in its place. One second attempt is
 allowed and reporting is not owed twice — where the second answers, the run
 carries on with that answer and names the first refusal beside it. What is not
 allowed is the silent retry, because it costs nothing to make and hides that a
-step ran once without an answer. Measured on 31 August 2026 in a test project: a
+step ran once without an answer. One command is counted differently since 6
+October 2026: a fetch that something is built on — a cut, a task's base, the
+state after a merge, the mark, a rebase — gets three attempts fifteen seconds
+apart, each failure named, and only the third stops the run;
+`shared/fetch-three-times.md`, inserted into the four skills that fetch so,
+says why, with GitHub's own checkout action as the measure, and the entry of 5
+October 2026 in `docs/roadmap.md` has the reading under its third addendum.
+Measured on 31 August 2026 in a test project: a
 command was refused by the runtime's permission check — not the platform, and the
 message asks in so many words for a pause and an explanation to the user of what
 the permission is for — the run repeated it without a word, got an answer the
@@ -483,6 +495,17 @@ what makes declining a real option instead of an exit. Where a no changes what h
 moment of asking**, not three steps on when it bites. A no never leaves the run
 without a next move: if the only honest answer is to stop, say what would unblock
 it and what to do once that is done.
+
+**A consequence that a later question decides is said at that question.**
+Since 5 October 2026 a no to the install question, or to the one on check
+tools in the dependency file, leaves the unattended mode unavailable, and
+neither question says so the first time it is put: with the person there the
+no costs nothing that is not said, the run handing the command over or asking
+each time, and under a first no the mode is not set up without the question
+being put a second time, in `setup-checks` step 8, where the line under its
+no says exactly that.
+The moment of asking is the moment the consequence can be chosen or avoided,
+and for this one that is the second asking.
 
 ## A command handed over is backed, and its result is read
 
@@ -631,7 +654,9 @@ this convention or the install guard are about — where the guard stops one all
 the same, that is the false positive its own message names. A tool that lands
 outside the repository — a linter, a driver, whatever a wrapper downloads on
 first use — is the person's, and it lands there under their explicit
-permission only: asked once at setup, with them there, and held as recorded
+permission only: asked at setup, with them there — and since 5 October 2026 a
+second time, by the same question, only where the unattended mode is set up
+and the record does not say yes — and held as recorded
 state that a hook can read. Nothing else counts as that permission, and a
 compiler or an interpreter is not among the kinds it can name — the first
 ruling below says why.
@@ -649,6 +674,30 @@ since: a project set up before either carries no record, and
 there the guard blocks every such install with that cause and the person runs
 it themselves, as before.
 
+**Entering a check tool in the project's dependency file is a second
+permission, since 5 October 2026, and no guard holds it.** A tool the project
+declares lands inside the repository, by the paragraph above; but the
+declaration is a line in their dependency file, and `setup-checks` step 2 has
+held all along that such a line is theirs to allow. Whether a run may enter
+one itself is asked in `setup-checks` step 3, with them there, wherever no
+record stands, a dependency file existing or not, and the answer is kept in
+`docs/agents/environment.md` under `## Dependency permission`, a key and a
+value per line in the shape of the install record, written by `setup-checks`.
+It covers the tools this workflow enters for its own checks; what a task
+enters for the thing it builds is that task's work. No hook can hold it:
+tasks change the dependency file all the time, and a guard on that file could
+not tell the two apart. So it is a rule on the run, said as a rule where it
+stands, which **A limit the limited party maintains is not a limit** below
+asks of it. The skills read the record with `git show` off the main branch as
+last fetched; no reader under `bin/` and no line at the session start are
+built for it. Under a no the run asks about each tool, and after a no to one
+it installs that tool outside the project where the install record says yes,
+or hands the command over where it does not; the class is switched off, in
+the user's name, where no candidate is left, where the command handed over is
+not run, or where the question — three answers since 6 October 2026 where
+the tool has no way outside the project and another tool is left for the
+check, the other tool or the check off — was answered with the check off.
+
 **Runtimes are not a kind the permission may cover.** Ruled on 28 September
 2026, for how milestone 3 of `docs/plan.md` is built; the plan carries the
 question under "Open" until that milestone lands. A yes to runtimes could not
@@ -665,9 +714,13 @@ that reads like a safeguard and is not one is worse than no limit at all**
 below says what that costs. So a compiler or an interpreter stays the person's
 under every answer, as "Where the set ends" in `docs/plan.md` already says,
 and the question does not ask it: until 3 October 2026 it said so as a
-boundary, and since then it says only what a yes lets through — a runtime,
-through a package manager — because the two runs of 30 September 2026
-delivered the boundary as an assurance the guard does not hold; the rule
+boundary; from then until 5 October 2026 it said only what a yes lets through
+— a runtime, through a package manager — because the two runs of 30 September
+2026 delivered the boundary as an assurance the guard does not hold; and
+since 5 October 2026 it says nothing about runtimes at all, the second of the
+two ways finding A of 30 September 2026 leaves open, since by the account of
+the entry of 4 October 2026 the assurance was delivered again with only the
+leak in the question; the rule
 stands here, on the run, and is not promised to the person. Where a runtime
 is genuinely needed, that moment has a person in it: the stack is chosen with
 them — in Stage 1 once milestone 8 puts it there; today nothing picks it, as
@@ -686,8 +739,9 @@ the same file, "unless that permission names runtimes as a kind, which is
 open below"; `build-work` step 3 point 7, "a compiler, a runtime, a tool from
 a package manager" — and, since the question was built the same day, version
 0.115.0, question 4 of `setup-project` step 4 — question 3 since 1 October
-2026 — which said the boundary as this ruling asks until 3 October 2026 and
-says the leak alone since, the roadmap entry of that date saying why.
+2026 — which said the boundary as this ruling asks until 3 October 2026, the
+leak alone until 5 October 2026 and nothing about runtimes since, the roadmap
+entries of those two dates saying why.
 
 **The first kind is a tool, not a tool for a check class.** Ruled on 28
 September 2026, for the same build. Anything that runs and ends — a linter, a
@@ -844,7 +898,11 @@ divergence between them. Three rules follow.
    happened. The search runs over `skills/`, `hooks/`, `docs/`, `README.md`,
    `shared/`, `bin/` and `scripts/` — everything here that states a rule or
    carries a command, the text inserted into skills, the program that inserts
-   it and the tool that expands it included.
+   it and the tool that expands it included. What a command printed is taken
+   from its output in the same session, never from memory: on 5 October 2026
+   four notes of findings described what a search of the roadmap had returned,
+   written down from recollection, and two of them said something the command
+   had not printed.
 
    **The search goes by the subject the statement stands on, not by its wording.**
    Four places can say one thing in four wordings, and then no search by wording
@@ -1269,7 +1327,8 @@ the record says yes — the paragraph after next says how; the record is written
 by the question at setup, question 4 of `setup-project` step 4 since the same
 day, version 0.115.0, in the empty case since 0.118.0, question 3 since 1
 October 2026, and lands with the
-setup, so a project set up before either carries no record: there the guard
+setup — and since 5 October 2026 by `setup-checks` step 8 as well, which puts
+the question a second time where the unattended mode is set up — so a project set up before either carries no record: there the guard
 blocks with that cause and the person runs it, as the skills say for that case. What does not move either way is the
 backing: the command is backed before it runs, whoever runs it — the vendor's
 own installation line or the path in it resolving, which is the case of the
@@ -1712,7 +1771,11 @@ granted in the project rather than in the tool's settings — the record in
 `environment.md` that **The install guard reads a record** above describes —
 and it opens the guard's pass, not the harness's: whether the classifier lets
 the same command through is its own question, measured once on 28 September
-2026 and recorded in `docs/roadmap.md`.
+2026 and recorded in `docs/roadmap.md`. Since 5 October 2026 a yes in that
+record is a condition the unattended mode starts on, the sixth, and a yes on
+check tools in the dependency file the seventh: `build-work` numbers them
+under "Unattended mode", and a run that would stop at the first tool it may
+not install, or leave off a check the work made necessary, does not start.
 
 **The `checks.md` parsers are shell scripts.** Backticks and apostrophes in a
 table cell used to break them. Backticks are stripped, in both parsers, in every
@@ -1721,8 +1784,59 @@ each cell is passed through a quoted `sed`, where an apostrophe is an ordinary
 character — checked on 7 September 2026 by running `stop-checks.sh` over a table
 with one in a cell. Keep machine-read columns plain all the same; the parsers
 split each row by position with `IFS='|'`, so a `|` inside a cell still shifts
-every column after it. The `Status` column takes only `filled`, `empty`,
-`skipped: <reason>` — spelled exactly, ASCII only.
+every column after it. The `Status` column takes four forms and no other —
+`filled`, `empty`, `skipped (state): <the state that keeps the class off>`
+and `skipped (user): <the user's reason>` — spelled exactly, ASCII only.
+Until 5 October 2026 a skip had one shape, `skipped: <reason>`, for a state
+the project grows out of and for a decision of the user's alike, so nothing
+could tell a reason a run may act on from one it may not; the entry of 4
+October 2026 in `docs/roadmap.md` on the two runs has the case, a run
+rewriting a reason and taking away with it what the reading after a merge
+looked for.
+
+**A third reader holds that column to its forms, since 5 October 2026, and
+it is strict where the two parsers are lenient.** `bin/devloop-check-table`
+names every status cell that carries none of the four, finding the column by
+position as the parsers do and taking off nothing but the padding: `filled`
+in backticks is named, and so is `Filled`. It does not check for ASCII,
+since the guards' message could not say that of a cell whose form is right;
+ASCII stays a rule on whoever writes the cell. Two hooks call it.
+`hooks/post-tool-use-table-guard.sh` reports, with exit 2, once the editing
+tool has written the table, and cannot refuse: read off
+`code.claude.com/docs/en/hooks.md` on 5 October 2026, exit 2 on
+`PostToolUse` "Shows stderr to Claude; the tool already ran".
+`hooks/pre-tool-use-table-guard.sh` refuses a `git commit` while the table in
+the working tree carries such a cell, on every branch; the same page says of
+the `if` field that "each subcommand is checked" and that "When Claude Code
+can't determine which commands the Bash input runs, it runs your hook
+regardless of the pattern", so the hook reads the command for `git commit`
+itself. Both stay inert where no `docs/agents/` stands, like the other
+guards. The sentence naming the four forms stands once, in
+`shared/status-forms.md`, inserted into `setup-checks` and `setup-project`;
+each hook carries a copy in its message, and a check under "Before a
+handover, run these" holds the copies to it. What answers the refusal is a
+rule and not a wall: the skill that wanted to commit calls `setup-checks` for
+the row and commits again, in both modes, and `build-work` says at both of
+its places that this is no block in the sense of its section on a guard's
+block. Three gaps stand, and the README names the first two: a shell
+command that writes the table and commits in one go is read before it runs,
+so that one commit goes through and the next is refused; a commit run
+through a git alias is not read, the command carrying no `commit`; and a
+commit made outside a session's Bash tool is read by no hook at all. A
+fourth stood until 6 October 2026, `git -C <directory> commit` passing
+unseen, as it did the guard on the main branch: since that day both guards
+read git's own options between `git` and its command — `-C <path>`, `-c
+<name>=<value>`, the options that take a value of their own, any other
+`--option`, `-p` and `-P` — and `hooks/hooks.json` starts both on
+`Bash(git *)`, since the `if` field matches everything before its `*` as
+written, so that `Bash(git commit*)` would not have started them for a
+command with an option in between; read off `code.claude.com/docs/en/hooks.md`
+and `code.claude.com/docs/en/permissions.md` on 6 October 2026, and
+measured with the hooks fed their JSON, the entry of 5 October 2026 in
+`docs/roadmap.md` carrying the runs under its addendum of 6 October. The
+entry also says why the commit is refused
+rather than the write, and why no target in the project's own check chain
+was built beside it.
 
 **A hook cannot force wording.** `SessionStart` stdout arrives as context. There
 is an `initialUserMessage` field for seeding a turn, and an open Anthropic bug
@@ -1964,7 +2078,7 @@ red answer has to be acted on, and only the diff says what differs.
 
 ## Before a handover, run these
 
-Eighteen checks that catch what a conversation loses. Each one has found a
+Nineteen checks that catch what a conversation loses. Each one has found a
 real gap, or guards a mechanism that fails without a sound when nobody runs it.
 Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
@@ -1984,7 +2098,7 @@ September 2026 such a run
 was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.
 
-**Eighteen checks, eighteen command blocks.** Count them, or this number
+**Nineteen checks, nineteen command blocks.** Count them, or this number
 drifts again. It drifted once already, and quietly: on 7 September 2026 one
 check was split into three blocks, one of them unreachable, so the checks went
 from eleven to twelve while this sentence stayed at eleven — and the change
@@ -1996,7 +2110,9 @@ September 2026, when the five checks that held byte-identical copies together
 beside them that could not go red, and nine checks over the text now inserted
 at load took their place. It reads eighteen against eighteen since 28 September
 2026, when the check holding the install record's reader to the branch guard's
-resolution of the default branch came in.
+resolution of the default branch came in. It reads nineteen against nineteen
+since 5 October 2026, when the check holding the two table guards' copy of the
+four status forms to the shared file came in.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -2143,6 +2259,13 @@ fallback are checksummed in all three files — one line means they agree:
 
     for f in bin/devloop-install-record bin/devloop-setup-state hooks/pre-tool-use-branch-guard.sh; do sed -n '/^DEFAULT=\$(git symbolic-ref/,/^fi$/p' "$f" | cksum; done | sort -u | wc -l
 
+The sentence naming the four forms a status takes is, in both table guards,
+the one in `shared/status-forms.md`. A hook cannot insert text, so each
+carries a copy in its message, and this looks for the shared file's one line
+standing whole in each hook — `1` twice means both carry it unchanged:
+
+    for f in hooks/post-tool-use-table-guard.sh hooks/pre-tool-use-table-guard.sh; do grep -cFx -f shared/status-forms.md "$f"; done
+
 **A change to one skill is a question about all of them.** How that is done is
 not written here — it is the third rule under "A field is not an answer to a
 question it was not asked", widened on 13 September 2026 to hold for any change
@@ -2198,9 +2321,12 @@ resuming on it is not by itself the defect. **What their word may not be is the
 evidence that the act succeeded.** Where the act has an outcome the run can read,
 the word releases it and the outcome decides; where what is being waited for is a
 decision of theirs, there is no outcome to read, the word is the thing itself,
-and resuming on it is the only possible form rather than a defect. Today's seven
-lines fall out like this — seven lines over six sites, because `setup-checks`
-matches on two consecutive ones:
+and resuming on it is the only possible form rather than a defect. Today's nine
+lines fall out like this — nine lines over eight sites, because `setup-checks`
+matches on two consecutive ones in its step 7; seven over six until 5 October
+2026, when its step 3 came to hand a command over, and eight over seven until
+6 October 2026, when `shared/fetch-three-times.md` came to say what a run
+says where the main branch cannot be fetched or fast-forwarded:
 
 - **The outcome is read, by this sentence.** `build-work` step 3 point 7, the
   install: the tool is at the path that installer writes to, or the command did
@@ -2213,7 +2339,17 @@ matches on two consecutive ones:
   and `setup-checks` says it outright in the next clause, "do not go on to the
   next step on top of an unmerged suite". **These stay exactly as they are.**
   Rewriting them into the install's form would put the reading in the resumption
-  sentence, where it is already done one step later and better.
+  sentence, where it is already done one step later and better. The eighth
+  line is of this kind too: the install command `setup-checks` step 3 hands
+  over under a record that says no or was never written, whose outcome its
+  step 4 reads off the path the installer writes to, a command not run
+  leaving the class `skipped (user)`. And so is the ninth, the one line
+  `shared/fetch-three-times.md` carries into the four skills that fetch
+  before a cut, a task's base, after a merge, at the mark or before a
+  rebase: the person clears what stood in the way — the connection, the
+  sign-in, a changed file, commits of their own — and says so, and the
+  fetch or the fast-forward is run again on their word and its outcome
+  decides.
 - **There is no outcome, and there cannot be.** `build-work`'s lifted guard
   block: what is waited for is which of two ways they want it to go. A decision
   leaves nothing on disk to look at. The word is the whole of it.

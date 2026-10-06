@@ -48,6 +48,10 @@ the user just asked for. Do not improvise around it either.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text command-does-not-answer`
 
+## When the main branch cannot be fetched or fast-forwarded
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
+
 ## Before anything: what is already built
 
 **Run the in-flight query from `docs/agents/issue-tracker.md` — the whole
@@ -174,7 +178,7 @@ Two departures, and neither is a departure in the order:
   should feel like, which of two layouts reads better — is not this case, and
   the end of Stage 1 makes sure none is open before the run goes alone.
 - **The question at the end of Stage 1 itself** is asked only where the
-  repository allows the mode at all; where it does not, it has one possible
+  mode is set up in this repository; where it is not, it has one possible
   answer and is not asked.
 
 **A question the test lets through, with nobody there, goes through this order,
@@ -214,7 +218,13 @@ from.
 **The mark.** When a run steps out of the flow — at the end of Stage 1, on an
 answer that sends it alone or on `--auto` — it writes the mark, with a shell
 command and not the editing tool, since the tree stands on the main branch at
-that moment and the branch guard blocks the editing tool there on purpose:
+that moment and the branch guard blocks the editing tool there on purpose.
+First the fetch, three attempts, by the command under "When the main branch
+cannot be fetched or fast-forwarded" above; where the third fails too, stop
+as that section says, opening with that the local main branch cannot be
+brought to the state GitHub holds and that nothing is begun here for that —
+the run without them does not begin, and no mark is written. On a fetch
+that answered, the mark:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
@@ -277,12 +287,48 @@ every draft against, so it is written before the drafts exist and not read back
 out of them.
 
 **Then ask once, in a widget call that carries this question and no other, how
-this piece of work should run from here** — but only where `environment.md`
-records that the unattended mode was offered and accepted for this repository,
-and only where the idea stands by the three conditions above. Where the mode
-was declined or never offered, the question has one possible answer and is not
-asked; the run carries on with them, and the offer stays where it is made, in
-the check setup. Where `--auto` was typed this session, the question is not
+this piece of work should run from here** — but only where the unattended
+mode is set up in this repository,
+and only where the idea stands by the three conditions above.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mode-set-up`
+
+Where the mode is not set up, the question has one possible answer and is not
+asked. Without the flag the run carries on with them, and what it says about
+the mode is one of three things, read in this order. Where the record of the
+answer says `no` — their no, a protection the platform refused, or checks
+that do not pass on the platform — nothing, and nothing about the other
+conditions either. Otherwise, where a class in `checks.md` is `empty`, one
+line in one of two forms, by whether the repository has code — count source
+files outside config and docs, as the setup does. Without code: that work
+cannot run without them in this project yet, because without them only the
+checks secure the work and those can be set up only once there is code, and
+that once the first work that lands code has merged devloop sets them up
+and then asks whether it may work without them too — `build-work` step 6
+sets the suite up after a merge only where the repository has code after
+it. With code and classes still open:
+that work cannot run without them in this project yet, because without
+them only the checks secure the work and not all of them are set up yet,
+and that devloop catches that up after the next merge or at the next start
+and then asks whether it may work without them too. Nothing about the flag
+in either form, since step 8 is not reached while a class is `empty`.
+Otherwise — no record, or a yes with
+something fallen away since, auto-merge switched off on the platform, say,
+or a setup broken off before the question — one line: that work without
+them is not set up in this project, and that typing `--auto` where a piece
+of work starts sets it up. It does not list what is missing: the flag asks
+what has to be asked and sets up the rest. The wording approved on 5 and 6
+October 2026 stands in the roadmap entry of 5 October 2026; this skill says
+what is said, not the words. Where `--auto` was typed this session and the idea
+stands, the run does not stop at that: the person who typed it is here, so
+call `setup-checks` for its step 8 alone, which puts what has to be asked —
+the permissions a second time, where their record does not say yes — and sets
+up what the answers allow. It is not reached while a class in `checks.md` is
+`empty`, and sets no protection while a pull request is open; either is said,
+with what would help, and the run carries on with them. When it returns, the
+tree stands on the main branch as freshly fetched: on a yes the conditions
+below are read again and the run goes alone; on a no it carries on with them.
+Where the mode is set up and `--auto` was typed this session, the question is not
 asked either: the flag is its answer, and the run says in one line that it is
 going on alone from here. So the flag and an answer can never disagree — where
 one exists, the other was never given.
@@ -316,21 +362,27 @@ is nobody's to decide but theirs. It is defined here, in the one place it is
 asked, rather than as an exception written into the shared block: one sentence
 here touches one file, an exception there touches six.
 
-**Before asking, read four of the five preconditions of the unattended mode**, so
+**Before asking, read six of the seven preconditions of the unattended mode**, so
 the question is not put and then found to have had one answer all along. The
-five stand numbered in `build-work` under "Unattended mode"; the third — no task
+seven stand numbered in `build-work` under "Unattended mode"; the third — no task
 in range blocked by anything outside it — cannot be read before a cut exists and
-stays at the build. The other four can be read now: no class in `checks.md` is
+stays at the build. The other six can be read now: no class in `checks.md` is
 `empty`; a failing gate genuinely blocks a merge on the remote and binds this
 account — both queries, since each is blind to one kind of protection, and the
 binding read per kind, as that list spells out; the tool classes this run needs
-are approved for this project; and the repository can merge without a person,
+are approved for this project; the repository can merge without a person,
 auto-merge on (`gh api repos/OWNER/REPO -q .allow_auto_merge`) and a gate for it
-to wait on. Read the state; do not read `environment.md`'s account of it — that
-file says whether the mode was accepted, the repository says whether it still
-holds. Where one fails, the two answers that send the run alone fall away and
-the question is not asked, `--auto` or not; say which one failed and what would
-change it, and carry on with them there. The build reads all five again when it
+to wait on; and the two records say yes, on installing and on the dependency
+file. For the gate and auto-merge, read the state; do not read
+`environment.md`'s account of it — the repository says whether it still
+holds. The two records are the exception: there the file on the main branch
+is the state itself, and it is read as the paragraph above reads it. Where
+the mode is not set up, the paragraph above has said what is said, and
+nothing is added here. Where it is set up and one of the other two fails —
+a class `empty`, or a kind of command the run needs not approved — the two
+answers that send the run alone fall away and the question is not asked;
+say which one failed and what helps there, and carry on with them. The build reads
+all seven again when it
 starts, for two reasons written there: on the route that starts from a finished
 spec the build is reached without this question, and the state read here can
 change between now and then.
@@ -464,12 +516,15 @@ No new questions. Write down what was decided, in these sections:
 - **Out of scope** — what someone might reasonably expect and will not get,
   starting from the hard core of Stage 1 and adding what the design and the
   seams put out of reach.
-- **Missing checks** — any class in `checks.md` this work would need and that is
-  not `filled`, and whether landing this work requires filling it first. Alone,
-  that second half goes through the order under "With nobody there" and lands on
-  its first step: the class is named here and raised as an issue carrying
-  `raised-here`, and the work is not held on it — filling a class binds every
-  later task to it, not filling it binds nothing.
+- **Missing checks** — every class in `checks.md` this work would need and that is
+  not `filled`, each with where it stands: for `skipped (state)` the state that
+  keeps it off; for `skipped (user)` that the user switched it off, and why;
+  for `empty` that the checks are set up after the first merge that lands
+  code. A missing class is filled by `setup-checks` and never by a task as
+  work of its own, in both modes: where a task ends a state, the build fills
+  the class before that task is released, at the end of its step 4. Planning
+  does not call `setup-checks` and raises no issue for a class — an issue
+  would be built as a task whose own work is the filling.
 
 Write it into the body of the planning issue, replacing the placeholder line, and
 remove the `being-planned` label. Put no build label in its place: nobody builds

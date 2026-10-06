@@ -215,14 +215,32 @@ If step 1 found a file of the setup missing on the main branch — one or all
 five — run `setup-project` now, then continue. Do not ask the user to run it:
 it reads the same answer and takes a first setup or a refresh from there.
 
-If every file was there and no row of `docs/agents/checks.md` reads `filled` while the
-repository has code — count source files outside config and docs, as the setup
-does — say three things, in their language: the project is set up, the check
-suite is not built yet, and no class is filled, so that comes first. Then run
-`setup-checks`, and continue. Do not ask: with no class filled nothing guards
-a build. Two ways lead here — a setup that landed before its check setup ran,
-and a project set up without code that has code now — and both get the same
-answer, since neither leaves anything to decide.
+If every file was there and a row of `docs/agents/checks.md` reads `empty`
+while the repository has code — count source files outside config and docs,
+as the setup does — say two things, in their language: the project is set
+up, and not every check is decided yet, so that comes first. Then run
+`setup-checks`, and continue. Do not ask: an undecided check approves
+nothing, and the offer of the unattended mode in that skill's step 8 is
+reached only once no class is `empty`. Four ways lead here, and this step
+reads the state and not the way to it, so that any other way gets the same
+answer — a setup that
+landed before its check setup ran; a session that ended after a merge
+before `build-work` step 6 read the table, which is where a project set up
+without code gets its suite once the first merge lands code, and where the
+classes a first work left `empty` are filled, after every merge; a
+check setup in which the person chose some classes first, in
+`setup-checks` step 2, and whose session ended before its step 9 took up
+the rest; and a project set up without code whose code came without a
+merge of `build-work` — written and pushed by the person themselves, or
+merged in a pull request of their own — for which step 6 never runs, so
+that this step is the one place that reads it — and all four get the same
+answer, since none leaves anything
+to decide. Until 6 October 2026 this read no row `filled`, so a table with
+rows `filled` beside the `empty` ones waited for the next merge; from the
+second addendum of that day to the third, the way without a merge of
+`build-work` was not among the ways named. The
+wording approved on 6 October 2026 stands in the roadmap entry of 5
+October 2026; this skill says what is said, not the words.
 
 ## Step 5 — Build it
 
@@ -291,11 +309,14 @@ before its first build, there is no sharpening and no question, and the flag is
 the only thing that sets the mode there.
 
 Either stage checks the mode's preconditions before going alone and refuses,
-saying which failed, where one is missing: the planning stage reads the four it
-can before a cut exists, the build reads all five. Where the repository has not
-been set up for the mode at all — the check setup offers it once and records the
-answer — nothing runs alone whatever was typed, and the run says so once and
-carries on with them.
+saying which failed, where one is missing: the planning stage reads the six it
+can before a cut exists, the build reads all seven. Where the mode is not set
+up in this repository — the check setup offers it and records the answer, and
+it needs their yes to two permissions besides — the flag sets it up: the
+stage that would go alone, the planning at the end of the sharpening or the
+build on the route straight to it, calls the check setup for that step
+there, with the person who typed the flag present. On a yes the run goes on
+alone; on a no it carries on with them.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
 

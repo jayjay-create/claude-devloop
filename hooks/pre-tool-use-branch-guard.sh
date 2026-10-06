@@ -33,9 +33,19 @@ case "$TOOL" in
     ;;
   Bash)
     CMD=$(echo "$INPUT" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
-    echo "$CMD" | grep -qE '(^|[^[:alnum:]_-])git[[:space:]]+(commit|push)([[:space:]]|$)' || exit 0
+    # Between git and its command may stand git's own options, and since
+    # 6 October 2026 they are read over: -C <path> and -c <name>=<value>, with
+    # or without a space; the six that take a value of their own, --git-dir,
+    # --work-tree, --namespace, --super-prefix, --config-env and --exec-path;
+    # any other --option, with or without =value; and -p and -P. A word that
+    # is no option ends the match, as log does in git log --grep commit, so
+    # commit and push are read only as git's command. Until then git -C
+    # <directory> commit passed unseen, measured 5 October 2026.
+    GITOPT='(-[Cc][[:space:]]*[^[:space:]]+|--(git-dir|work-tree|namespace|super-prefix|config-env|exec-path)[[:space:]]+[^[:space:]]+|--[^[:space:]]+|-[pP])'
+    GIT="(^|[^[:alnum:]_-])git([[:space:]]+$GITOPT)*[[:space:]]+"
+    echo "$CMD" | grep -qE "${GIT}(commit|push)([[:space:]]|$)" || exit 0
 
-    if echo "$CMD" | grep -qE '(^|[^[:alnum:]_-])git[[:space:]]+commit([[:space:]]|$)'; then
+    if echo "$CMD" | grep -qE "${GIT}commit([[:space:]]|$)"; then
       MSG="Blocked: committing on the $DEFAULT branch. This workflow requires a branch cut from $DEFAULT, and the commit you are about to make would land on $DEFAULT itself. Cut a branch, then do this again. If the user asked for this on $DEFAULT deliberately, say that this is blocked and why, and let them decide — do not work around it."
     else
       # Standing on the default branch is still the precondition: this file
@@ -54,8 +64,8 @@ case "$TOOL" in
       set -f
       while IFS= read -r SEG; do
         case "$SEG" in *git*push*) ;; *) continue;; esac
-        echo "$SEG" | grep -qE '(^|[^[:alnum:]_-])git[[:space:]]+push([[:space:]]|$)' || continue
-        ARGS=$(printf '%s' "$SEG" | sed -e 's/.*git[[:space:]][[:space:]]*push//')
+        echo "$SEG" | grep -qE "${GIT}push([[:space:]]|$)" || continue
+        ARGS=$(printf '%s' "$SEG" | sed -E "s/.*${GIT}push//")
         REMOTE_SEEN=no
         NREFS=0
         for TOK in $ARGS; do

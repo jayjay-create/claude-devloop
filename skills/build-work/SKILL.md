@@ -46,6 +46,10 @@ for none.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text command-does-not-answer`
 
+## When the main branch cannot be fetched or fast-forwarded
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
+
 ## A guard's block, with nobody there
 
 The shared block above says a guard's refusal is answered rather than got around,
@@ -73,6 +77,13 @@ issue raised and the next task taken; a refused arming ends the run instead.
 
 **Say which of the two happened**, either way.
 
+**The guard on the check table is the exception, in both modes.** Where a
+`git commit` is refused because `docs/agents/checks.md` carries a status in no
+allowed form, that is not a block in the sense of this section: nothing is
+handed to the user, no issue is raised and no task is put down. Call
+`setup-checks` for the row the message names, on the branch this work stands
+on, and make the commit again once it has written the row.
+
 ## How to ask
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text how-to-ask`
@@ -89,15 +100,19 @@ one rule and not as five:
 - **A guard's block** — the section above "How to ask". An issue carrying the
   command, the message and the reading, labelled `raised-here` and
   `needs-human`, recorded as a blocker of the task; the task is put down and
-  step 2 takes the next.
+  step 2 takes the next. Not the guard on the check table: its refusal goes
+  to `setup-checks` for the row, and the commit is made again, as that
+  section says.
 - **The turn-end hook handing the problem over** — step 3, its last section.
   The same shape: an issue saying the task is not buildable as cut, the task put
   down, the next one taken.
-- **An install the record does not open** — step 3 point 7. A no on record is
-  the decline, and the decline paragraph there applies: a check class goes
-  `skipped` through `setup-checks`, the task itself becomes an issue and a
-  blocker and step 2 takes the next; a record never written is a block, and
-  goes as the second bullet says. Under a yes there is nothing to decide: the
+- **An install the record does not open** — step 3 point 7. With nobody there
+  the record says yes: the mode does not start under a no or with no record,
+  start condition 6 below. What is left is what a yes does not open — a
+  runtime, a place the record does not name, a route that does not answer —
+  and that is a block: for the task it goes as the second bullet says, and
+  for a check class through `setup-checks`, which writes the cell
+  `skipped (state)`. Everything else the
   run installs, as with the user there.
 
 **A question about the work itself that comes up inside a task and passes the
@@ -158,12 +173,27 @@ content.
 
 ## Step 1 — Check the base
 
-Fetch and compare the local main branch with the remote. If they have diverged,
-say so and stop — a task cut from a stale main lands on the wrong base. Say what
-would clear it and let the user decide: usually the local branch has commits the
-remote does not, or the reverse, and reconciling them is their call, not
+Fetch — three attempts, by the command under "When the main branch cannot
+be fetched or fast-forwarded" above — and compare the local main branch
+with the remote. If the local branch
+is only behind — the remote has commits it lacks, and it has none of its own —
+fast-forward it and go on, saying nothing of it: that is what a session leaves that ended after a
+merge before step 6 fast-forwarded, and the task is cut from the current main
+branch. If the local branch has commits of its own — git says it is ahead
+of the remote where the remote has nothing new, and that the two have
+diverged where it has —
+say so and stop — a task cut from a stale main lands on the wrong base, and
+one cut from a main branch carrying commits the remote lacks lands on a base
+the remote does not have. Say what
+would clear it and let the user decide: the local branch has commits the
+remote does not, and reconciling them is their call, not
 something to resolve by force. Nothing is lost meanwhile; the tasks are in the
-tracker and this picks up as soon as they say the branches agree.
+tracker and this picks up as soon as they say the branches agree. Where the
+fetch fails on its third attempt, or the fast-forward fails, stop as that
+section says, opening with that the local main branch cannot be brought to
+the state GitHub holds and that nothing is begun here for that: this step
+is here so that no task is cut from a stale main, and a base that could not
+be read or brought up to date is one.
 
 **Then run the check suite on that base, before cutting anything.** It costs
 seconds and it buys the one thing no later step can recover: knowing whether the
@@ -347,9 +377,11 @@ The subagent:
    breath: the build picks up once the tool is where that command puts it, and
    **a decline is an answer too, not a wall**. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
-   With nobody there, a no on record is the decline, and the paragraph below
-   applies with it as the answer; a record never written is a block and not a
-   decline, and goes the way the guard's block goes. This is the one thing a
+   With nobody there the record says yes, since the mode does not start
+   under a no or with no record — start condition 6 under "Unattended mode" —
+   so nothing is declined; what the guard blocks under that yes is a block and
+   not a decline, and goes the way the guard's block goes. This is the one
+   thing a
    task can need that the task itself cannot do without the record's yes.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
@@ -373,7 +405,7 @@ The subagent:
 was for:
 
 - **A check class.** Call `setup-checks` for that one class; it records the class
-  as `skipped` with that reason. The build carries on without it.
+  as `skipped (user)` with that reason. The build carries on without it.
 - **The task itself.** The branch stays where it is, and the missing install
   becomes an issue of its own carrying the exact command, labelled `raised-here`
   and `needs-human`, recorded as a blocker of the task. Nothing else is needed to
@@ -512,7 +544,7 @@ what such an exemption would let through.
 What the diff decides is which lenses apply, and `review-changes` decides that
 from the diff. Whether this step runs is not one of the things it decides.
 
-Each finding goes one of two ways:
+Each finding goes one of three ways:
 
 - **Fix now** if the fix is obvious and touches nothing that was decided —
   a missed error type, a wrong branch, a check that always passes.
@@ -520,6 +552,8 @@ Each finding goes one of two ways:
   interface, or exceed the task. Say which you filed and why. **Label it
   `raised-here`** — it came out of this work, not from outside, and step 2 has
   no other way to tell.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-on-check-table`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text criterion`
 
@@ -537,26 +571,68 @@ ones and reached the close as nothing at all.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text rule-not-written-down`
 
+**Then, before the task is released, read the check table against this
+branch.** After the findings have gone their ways, and at the state the cells
+have by then:
+
+- **Every cell reading `skipped (state)`.** Hold the state it names against
+  the branch of the task as it stands now — no third-party packages yet, no
+  entry point yet — and a state of this machine against the machine: that a
+  runtime is missing cannot be read off a branch. A state that has ended goes
+  the third way above, to `setup-checks` for that class, on this branch. It
+  has to have ended and not merely aged: an entry point that is a stub ends
+  nothing.
+- **Every cell reading `skipped (user)` whose reason says something about
+  the project that can be checked** — only two packages, no network code. A
+  reason with nothing in it to check is not read. Where such a reason no
+  longer holds, the class is still theirs to switch on, and no run switches
+  it on without them. With nobody there the row stays as it stands, and the
+  report this run writes where it ends names it, once, not every pull
+  request. With the user there, ask: a choice through the harness's choice
+  widget, alone in its call, every point in a field of its own and no
+  recommendation, put before the question of step 5 and never together with
+  it.
+  - **In the header**: a word for the subject, of twelve characters at most.
+  - **In the question line**: the check they switched off, in ordinary
+    words; the reason they gave; what holds now; and whether the run should
+    switch it on.
+  - **In the yes, label and line**: the run sets the check up now.
+  - **In the no, label and line**: it stays off, and the run does not ask
+    again.
+
+  On a yes `setup-checks` fills the class on this branch. On a no the row
+  stays `skipped (user)`, and `setup-checks` writes its reason so that it is
+  not asked again. The wording approved on 5 October 2026 stands in the
+  roadmap entry of that date.
+
+Where the review and this reading find the same cell, that is one call of
+`setup-checks` and not two. Every call opens a second round of this step over
+what it committed, and after that round the table is read once more.
+
 **If the diff changes after this step, this step runs again on what changed.**
 Not the whole diff — the commits added since the last review. The gate below
 decides whether work lands; it does not make unreviewed work reviewed, and code
 written after the reviewers looked would otherwise ride in beside code they saw.
 This is not rare: a red check at the turn-end gate is answered by writing more
 code, and so is a "no, revise" at the gate itself. Fixes made *inside* this step
-are already covered by it — the boundary is the step, not the change.
+are already covered by it — the boundary is the step, not the change. What
+`setup-checks` commits when this step calls it is not such a fix: a check
+target changed there would land unread, so those commits get the second
+round like any made after the first.
 
 **The second round is this step, so the paragraph at the top of it holds over the
 second round unchanged**: unattended it does not fall away, and how little the
 new commits contain is not a reason. A round that reviews three added lines is
 cheap; the code that lands unread when it is skipped is not.
 
-A second round follows the same two ways out, and it looks only at what is new.
+A second round follows the same three ways out, and it looks only at what is new.
 If it surfaces nothing beyond what the first round already named, say so and
 carry on rather than starting again.
 
 ## Step 5 — Hand it to the user
 
-Show the diff and the findings — what was fixed, what was filed — and any
+Show the diff and the findings — what was fixed, what was filed, what went to
+the check setup and what it did with it — and any
 condition this task left unchecked, with the reason. That last one is what the
 person at the gate is guarding in place of a check, and it does not reach them
 from the pull request body on its own.
@@ -608,7 +684,9 @@ suite and no review has met one of the two preconditions, not both.
 line per condition, and beside it, where the build installed a tool under the
 install record, the install report point 7 asks for: the command as it ran,
 what came back, what stands at the path the installer writes to, and what the
-package manager did besides. That is the trip that outlives the session; the
+package manager did besides; and, where `setup-checks` filled a class on this
+branch, the red proof it handed up for that class, with its own install
+report. That is the trip that outlives the session; the
 one to the review has already happened, and the standing fact about running
 the project went into `environment.md` under point 8, which is the other duty.
 
@@ -681,7 +759,13 @@ are neither a yes nor a no:
 - `BEHIND` — the branch is behind the base branch, and the required check ran
   against a state that is not what would be merged. It appears only where the
   base branch requires branches to be up to date, so a gate exists here by
-  definition and it is never evidence of a repository without one. Fetch, rebase
+  definition and it is never evidence of a repository without one. Fetch —
+  three attempts, by the command under "When the main branch cannot be
+  fetched or fast-forwarded" above, and where the third fails too, stop as
+  that section says, opening with that the pull request has to be brought up
+  to the latest state of the main branch before it can be merged and that
+  this is not possible just now: nothing is armed and nothing is merged —
+  then rebase
   the branch onto the base, force-push it, and read `mergeStateStatus` again: it
   reads `BLOCKED` and arming is accepted. That rebase is not the merge this stage
   must not perform — it moves the base under this branch and lands nothing
@@ -918,9 +1002,16 @@ from a main branch that does not carry it.
 
 Once it has landed:
 
-- Fetch and fast-forward the local main branch. If that fails, say so and stop —
-  and say what it would take: the merge landed, so the work is safe, and only the
-  local copy is behind. Naming the divergence is enough; do not force it.
+- Fetch — three attempts, by the command under "When the main branch cannot
+  be fetched or fast-forwarded" above — and fast-forward the local main
+  branch, saying nothing of it where it goes through. Where the fetch fails
+  on its third attempt, or the fast-forward fails, stop as that section
+  says, opening with that the merge has landed on GitHub and nothing is
+  lost, and that only the local main branch cannot be brought to that
+  state; nothing below is built on it. What is in the way is said as the
+  measurement there has it — a changed file the fast-forward would change,
+  commits of their own on the local main branch while the remote has new
+  ones, the remote not reached. Do not force it.
 - Delete the merged branch locally and on the remote. Nothing does it for you:
   arming auto-merge carries no branch deletion, and whether the repository
   deletes head branches on merge is its own setting.
@@ -939,13 +1030,8 @@ Once it has landed:
 - If every task under a spec is now closed, close the spec and say you did. Do
   not ask: every task under it is done, so there is no second sensible answer,
   and reopening an issue is one click if it turns out there was one.
-- Re-read the `skipped` reasons in `docs/agents/checks.md`. Many are written
-  against a state of the project — no code yet, no entry point, no third-party
-  dependencies — and merging is what changes that state. Name any whose reason
-  no longer holds and call `setup-checks` for that class. Nothing else ever
-  reads those reasons, so a skip that says to revisit once something exists is a
-  note to nobody until this step reads it.
-- Read the same table for a class still `empty` where the repository now has
+- Read `docs/agents/checks.md` for a class still `empty` where the
+  repository now has
   code. That is what a setup without code leaves — all nine `empty`, the suite
   not built — and the first merge that lands code is where it stops being
   true. Say so and call `setup-checks`, whole and not for one class: it cuts
@@ -992,17 +1078,21 @@ tells them apart: from the cut at the end of an unattended planning, where
 its second line; or directly, where the entry point routed a ready task under a
 finished spec here with `--auto` typed and no mark exists yet.
 
-**Refuse to start** unless all five hold, and say which failed. Four of them were
+**Refuse to start** unless all seven hold, and say which failed — with one
+exception, on the direct route, for what the setup of the mode can put right,
+which the paragraph after the list gives. Six of them were
 already read at the end of the sharpening where this run came through planning,
 and they are read again here, for two reasons: the direct route has no
 sharpening and no question, so here is the first time they are read on it; and
-what they read — a gate, a setting, a class — can change between the question
+what they read — a gate, a setting, a class, a record — can change between
+the question
 and the build. The third is read here only, because it needs the tasks to exist.
 A refusal on the planning route also deletes the mark that route wrote, since the
 run ends here:
 
-1. No class in `checks.md` is `empty`. Every one is `filled` or `skipped` with a
-   reason. `empty` means undecided, and an undecided check approves nothing.
+1. No class in `checks.md` is `empty`. Every one is `filled`, or `skipped` in
+   one of its two forms. `empty` means undecided, and an undecided check
+   approves nothing.
 2. A failing gate genuinely blocks a merge on the remote — not the model's
    judgement that it looks fine, and not a rule the account running this can
    step over. This runs as whoever the tooling is authenticated with; on a
@@ -1037,19 +1127,52 @@ run ends here:
    and then sit on a pull request forever.
 
    This refusal is about the run being able to finish, not about trusting it.
-   Say which of the two is missing and what would change it — a required check
+   Say which of the two is missing and what would change it — the setup of
+   the mode, which the paragraph after this list reaches,
    where protection is available, a public repository or a paid plan where it is
    not — and say that the attended mode works unchanged in the meantime, because
    there the person answering step 5 is the one who merges.
+6. The install record says yes: `install-tools: yes` under `## Install
+   permission` in `docs/agents/environment.md` on the main branch as last
+   fetched. Under a no, or with no record, a tool a task needs becomes an
+   issue that holds that task and everything built on it, and a check class
+   whose tool may not be installed stays off.
+7. The record on whether the run may add check tools to the project's
+   packages says yes: `dependency-tools: yes` under `## Dependency
+   permission` in the same file, read the same way. Under a no the run has
+   to ask about every such tool, and nobody is there to answer.
 
-   Where protection is available and simply absent, offer to build the gate
-   rather than only naming it: the workflow file running the blocking targets,
-   landed and seen green on the main branch, and only then the protection
-   requiring it with `enforce_admins` on. Those three happen in that order and
-   not while a pull request is open — a required check added underneath one
-   blocks it. Refuse to build a gate at all where no `filled` class is
-   `Blocking: yes`: a required check that runs nothing would let everything
-   through, which is not a gate but the appearance of one.
+**Where the mode is not set up, the direct route sets it up rather than
+refusing.**
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mode-set-up`
+
+Where one of those five does not hold and this section was reached directly,
+the person who typed `--auto` is there. Call `setup-checks` for its step 8
+alone: it puts what has to be asked — the permissions a second time, where
+their record does not say yes — and sets up what the answers allow, the gate
+with them. The shorter offer that stood here until 5 October 2026, of the
+workflow file and the protection without the permissions and without a
+record, is gone. Step 8 is not reached while a class is `empty`, condition 1,
+and does not set a protection while a pull request is open: either stays a
+refusal, said with what would help. When it returns, the tree stands on the
+main branch as freshly fetched: on a yes read all seven again and go on to
+the mark; on a no build this task with them there, as without the flag.
+Where this section was reached from planning, nobody is there to ask: refuse,
+say which of the five is missing and that typing `--auto` where a piece of
+work starts sets it up, and delete the mark. For conditions 6 and 7 the
+refusal says, for the person who comes back: that the run without them does
+not start; that it needs their yes — to installing tools outside the
+project, for 6, or to adding check tools to the project's packages itself,
+for 7 — in the sentence step 8 of `setup-checks` puts before its second
+questions; where the record says no, that they said no to it, as there;
+that `--auto` sets it up; and what happens without the flag — the run builds
+the planned tasks with them and, under 6, hands them every installation as a
+command they run themselves, by step 3 point 7, or, under 7, asks them at
+every check tool whether it may add it, by step 3 of `setup-checks`. The
+wording approved on 6 October 2026 stands in the roadmap entry of 5 October
+2026; this skill says what is said, not the words. Conditions 1, 3 and 4 are
+nothing that step can put right: say what would help there, as before.
 
 **Then the mark.** Where this run came through planning, `.claude/unattended.local`
 stands with the commit this run wrote and `build` on its second line; carry on.
@@ -1062,7 +1185,13 @@ that wrote it was told to halt before the build and never cleared its mark; that
 is the same case. The planning stage deletes such a mark instead when it picks
 a plan up, and the difference is who is in the room: there somebody is, here
 nobody may be. Where no mark exists, this is the direct route: write one now,
-with a shell command, since the tree stands on the main branch:
+with a shell command, since the tree stands on the main branch. First the
+fetch, three attempts, by the command under "When the main branch cannot be
+fetched or fast-forwarded" above; where the third fails too, stop as that
+section says, opening with that the local main branch cannot be brought to
+the state GitHub holds and that nothing is begun here for that — the run
+without them does not begin, and no mark is written. On a fetch that
+answered, the mark:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
@@ -1070,7 +1199,10 @@ with a shell command, since the tree stands on the main branch:
 place: at the finishing sentence at the end of this section; at the standstill
 after three rounds in step 6, and at a refused arming there that ends the run;
 at a refusal above, where the run came through planning and wrote a mark that a
-refusal here ends; on the user's word to stop; and at the halt before the first
+refusal here ends; at a halt of `setup-checks` called with nobody there on
+the branch of a task — `secrets` whose tool cannot be installed among them,
+under "A guard's block is not a decline" there — where the run ends with
+the reason named; on the user's word to stop; and at the halt before the first
 build, which the cut does before this section is ever reached. Each of those
 sites says so where it stands. A session that simply ends deletes nothing; the
 planning stage's pick-up rule and the refusal above are what meet the mark it
@@ -1156,6 +1288,12 @@ Emit the finishing sentence only when it is completely and unambiguously true �
 never to get out of the loop. Then delete the mark with a shell command and say
 so: the unattended part is over, and a mark left standing would make the next
 run refuse to start.
+
+**What the run found and could not ask goes into its last message, once.** A
+`skipped (user)` row whose reason step 4 found no longer holding was left as
+it stood, since nobody was there to ask. Name each such row where the run
+ends — at the finishing sentence, or at whichever stop ended it — with its
+reason and what holds now, and not in every pull request.
 
 Tell the user how to read the diffs afterwards, from the commit named at the
 start to the current main branch, and how to stop the run — which is a message

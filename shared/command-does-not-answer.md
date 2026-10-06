@@ -1,6 +1,9 @@
 **A command whose output does not come back is reported.** Name the command as
 it was run and the message that came back in its place. One second attempt is
-allowed and needs no announcement; where it answers, the run carries on with
+allowed and needs no announcement — a fetch that something is built on gets
+three, each failure named, by "When the main branch cannot be fetched or
+fast-forwarded" in the skills that fetch, which says why; where it answers,
+the run carries on with
 that answer and reports the first refusal beside it. A silent retry is what lets
 a run come out looking clean while a step of it never ran — measured on 31
 August 2026: a command refused by the runtime's permission check, whose message

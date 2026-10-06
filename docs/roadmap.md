@@ -10773,6 +10773,1453 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   source, 74 are asserted by a case and 0 by none; the lines of the report
   are not in that count`, exit 0, recorded on its outcome.
 
+- **The status of a check class takes four forms and a guard holds the table
+  to them, the unattended mode starts on two permissions more and is set up
+  in `setup-checks` step 8 or through `--auto`, a state is read before a task
+  is released, and a review finding about the table goes a third way; 5
+  October 2026, version 0.129.0.** On `task/check-table-forms`, off
+  `bf6e0f3`. The order behind this entry was its third version, and before
+  anything was written it was held against the code: the places each decision
+  touches were searched by subject, the situations the decisions have to show
+  in were written out, and what was found stands at the end of this entry.
+  Nothing ran on a bench. The repairs answer four defects of the entry of 4
+  October 2026 on the two runs, 1, 2, 11 and 12, four of the audit of the
+  same day, 9, 11, 17 and 19, three findings of the table and two defects of
+  the close of the stock-take.
+
+  **Four forms, and nothing carried over.** The `Status` column takes
+  `filled`, `empty`, `skipped (state): <the state that keeps the class off>`
+  and `skipped (user): <the user's reason>`; `skipped: <reason>` is gone. The
+  one shape for both kinds of skip was what let a run rewrite a reason in
+  `devloop-test-u` and take away, with it, what the reading after a merge
+  looked for, defect 11 of the entry of 4 October 2026 and defect 11 of the
+  audit. The sentence naming the four stands once, in
+  `shared/status-forms.md`, inserted into `setup-checks` step 6 and
+  `setup-project` step 6, and the rule in `docs/skill-conventions.md` under
+  "The `checks.md` parsers are shell scripts" spells them. Every judgement of
+  a run is a state — no entry point, no third-party packages, a language
+  without a type checker, the errors caught by another class's tool, a
+  runtime this machine lacks — and every state is read again before a task is
+  released; only what the user decided is `(user)`. No existing table is
+  rewritten beforehand. The existing benches are neither used nor measured
+  any more, and every further run gets a fresh project: `docs/plan.md` says
+  so now under "Open", where "Every bench is refreshed before a run on it"
+  stood, and in milestone 9, whose full run "on the gated bench" is one on a
+  fresh project on which the gate is set up. A table in the old form is
+  caught by the guard below at the first commit, and `setup-checks` step 1
+  says what such a row becomes: meant as `filled`, the target proven red and
+  then `filled`; a state named, `skipped (state)` where it still holds and
+  the class filled where it does not; a decision of the user's named,
+  `skipped (user)` with their reason; and where the text does not say whose
+  decision it was, they are asked, and with nobody there the row becomes
+  `skipped (user)` and the pull request names it. One ruling changes with
+  this, the one the entry of 1 October 2026 on the check classes took under
+  "The two points to decide": a class the user does not want went into the
+  cell "as `skipped` with their reason, named as theirs, and is read again
+  after a merge like any reason". For a `(user)` row that reading is gone.
+  Its reason is read before the release and not after the merge, only where
+  it says something about the project that can be checked, and the row is
+  never changed without them; the reason for the change is that a reading
+  after the merge ran with nobody there as well and reached a step that
+  presupposes a person, below.
+
+  **A second permission, for the dependency file.** New, and decided on 5
+  October 2026: whether a run may itself enter check tools in the project's
+  dependency file — `pyproject.toml`, `package.json`, `Cargo.toml` and the
+  like — is asked in `setup-checks` step 3, with the person there, wherever
+  no record stands, a dependency file existing or not, and recorded in
+  `docs/agents/environment.md` as `## Dependency permission` with
+  `dependency-tools:` and `dependency-answered:`, written by `setup-checks`
+  in step 4. The ground is the sentence step 2 has carried all along, "Ask
+  anyway where filling it changes their project": a line in their dependency
+  file is theirs to allow. It covers the tools this workflow enters for its
+  checks; what a task enters is that task's work. Under a yes the run enters
+  the tool, with the person there and without; under a no it asks about each
+  tool that can be entered, and after a no to one it installs that tool
+  outside the project where the install record says yes and hands the
+  command over where it does not, the class going `skipped (user)` only
+  where no candidate is left or the command is not run. No hook holds it,
+  since tasks change the dependency file all the time and a guard on it
+  could not tell the two apart, so it stands as a rule and is said as one in
+  step 3 and in the conventions, under "It does not cover tools". The skills
+  read the record with `git show` off the main branch as last fetched; no
+  reader under `bin/` and no line at the session start are built. Asked on
+  the single-class route, because the person is there and no record stands,
+  the answer stands in `environment.md` on the build's branch and lands with
+  its pull request. Step 3 also says now, under a no and with no record,
+  what the no of the install question says, the command handed over and the
+  class `skipped (user)` on a decline, in one form.
+
+  **The questions, and two departures from what stood.** Four questions are
+  new or reworded, each a choice through the harness's widget, alone in its
+  call, every point in a field of its own, no recommendation, and each
+  described field by field and never worded in a skill: the question on the
+  dependency file and the one on a single tool, in `setup-checks` step 3;
+  the install question, whose description and whose record's form stand once
+  under `shared/`, as `install-question` and `install-record`, inserted into
+  `setup-project` and `setup-checks`; and the question on a class the user
+  switched off, in `build-work` step 4. The first departure is from the
+  wording approved on 3 October 2026 for the install question: the sentence
+  on what a yes also lets through, a runtime through a package manager, and
+  the words "mit dir und ohne dich" in the yes are out. The question says
+  nothing about runtimes now, which is the second of the two ways the should
+  of finding A of 30 September 2026 leaves, "the leak reaches the person or
+  nothing about runtimes does", where the entry of 3 October 2026 built the
+  first; "Runtimes are not a kind the permission may cover" stays the rule
+  and says so. The second departure is from "Every offer says where a no
+  leads", which asks that a later consequence of a no be said at the moment
+  of asking. A no to either permission leaves the unattended mode
+  unavailable, and neither question says so the first time: with the person
+  there the no costs nothing that is not said, the run handing the command
+  over or asking each time, and for work without them the question is put a
+  second time where the mode is set up, with that consequence in the line
+  under its no. The convention carries the case now, as a consequence said at
+  the question that decides it. What left the install question and where it
+  went: the leak, to the ruling on runtimes, a rule on the run in
+  `build-work` step 3 point 7; "with them there and with nobody there", gone,
+  since with nobody there the record says yes by the start conditions below;
+  the paragraph on where a no leads with nobody there, gone with the case;
+  and the pointers to step 2's report, step 6's reading of the routes and
+  step 9, which were `setup-project`'s own and do not hold in the second
+  skill that now puts the question.
+
+  **The approved wording, 5 October 2026, amended the same day and on 6
+  October 2026**, the German reference; the skills say what is said and not
+  the words. The question on the dependency file, in the wording of the
+  second approval of 5 October 2026: header "Pakete"; question "Darf ich
+  künftig Prüfwerkzeuge selbst zu den Paketen dieses Projekts hinzufügen?";
+  first answer, label "Ja, selbst hinzufügen", line "Ich füge solche
+  Werkzeuge ab jetzt selbst hinzu und frage nicht noch einmal."; second
+  answer, label "Nein", line the first time "Ich füge nichts selbst hinzu und
+  frage dich jedes Mal.", and in step 8 "Ich füge nichts selbst hinzu. Der
+  Lauf ohne dich geht dann nicht, jede Arbeit läuft mit dir." The first
+  approval of that day read: header "Abhängigkeit"; question "Darf ich für
+  dieses Projekt künftig Prüfwerkzeuge selbst in die Abhängigkeitsdatei
+  eintragen?"; "Ja, selbst eintragen", "Ich trage solche Werkzeuge ab jetzt
+  selbst ein und frage nicht noch einmal."; "Nein", "Ich trage nichts selbst
+  ein und frage dich jedes Mal." and "Ich trage nichts selbst ein. Der Lauf
+  ohne dich geht dann nicht, jede Arbeit läuft mit dir." — replaced because
+  a run on German writes "in die Abhängigkeitsdatei eintragen" from the
+  skill's "enter check tools in the dependency file", and that word tells a
+  person nothing; the fields say now what goes where. The install question: question "Darf ich
+  für dieses Projekt künftig Werkzeuge installieren, die außerhalb des
+  Projekts auf diesem Rechner landen?"; first answer, label "Ja, Werkzeuge
+  selbst installieren", line "Ab jetzt installiert der Lauf solche Werkzeuge
+  selbst, ohne erneut zu fragen."; second answer, label "Nein, nicht selbst
+  installieren", line the first time "Nichts wird ohne dich installiert. Wo
+  ein Werkzeug fehlt, bekommst du den Befehl dafür und entscheidest selbst.",
+  and the second time "Nichts wird ohne dich installiert. Der Lauf ohne dich
+  geht dann nicht, jede Arbeit läuft mit dir." The question on a single
+  tool, under a no to the packages, in the wording of the second approval of
+  5 October 2026: header "Pakete"; question "Darf ich `<Werkzeug>` für die
+  Prüfung <Prüfung in Worten> zu den Paketen des Projekts hinzufügen?", as
+  in "Darf ich `pip-audit` für die Prüfung auf bekannte Sicherheitslücken zu
+  den Paketen des Projekts hinzufügen?"; first answer, label "Ja,
+  hinzufügen", line "Ich füge es hinzu und richte die Prüfung damit ein.";
+  second answer, label "Nein", with one of three lines: where installing is
+  allowed, "Dann installiere ich es außerhalb des Projekts auf diesem
+  Rechner."; where it is not, "Dann bekommst du den Befehl, um es außerhalb
+  des Projekts selbst zu installieren."; where there is no way outside,
+  "Dann bleibt diese Prüfung aus." The first approval read: header
+  "Abhängigkeit"; question "Darf ich `<Werkzeug>` für die Prüfung <Prüfung
+  in Worten> in die Abhängigkeitsdatei eintragen?", as in "Darf ich
+  `pip-audit` für die Prüfung der Abhängigkeiten in die Abhängigkeitsdatei
+  eintragen?"; "Ja, eintragen", "Ich trage es ein und richte die Prüfung
+  damit ein."; the three lines under the no as they stand. Where the tool
+  has no way outside the project and another tool is left for the same
+  check, the question has three answers, approved in the second approval of
+  5 October 2026: "Ja, hinzufügen" with its line; "Nein, stattdessen
+  <anderes Werkzeug>" with one of three lines — where the install record
+  says yes, "Ich installiere `<anderes Werkzeug>` außerhalb des Projekts auf
+  diesem Rechner und richte die Prüfung damit ein."; where it says no or
+  none stands, "Du bekommst den Befehl, um `<anderes Werkzeug>` außerhalb
+  des Projekts selbst zu installieren."; where the other tool too can only
+  be added to the packages, "Dann frage ich dich, ob ich `<anderes
+  Werkzeug>` zu den Paketen des Projekts hinzufügen darf."; and "Nein,
+  Prüfung aus" with "Dann bleibt diese Prüfung aus." An example is "Darf ich
+  `Error Prone` für die Prüfung auf typische Programmierfehler zu den
+  Paketen des Projekts hinzufügen?" with the middle answer "Nein,
+  stattdessen PMD": Error Prone runs only through a build system or
+  `javac`, `errorprone.info/docs/installation` read on 5 October 2026
+  naming Bazel, Maven, Gradle, Ant, IntelliJ IDEA, Eclipse and Command
+  Line; PMD installs outside the project, `brew install pmd`, and its
+  formula lists `openjdk` among its dependencies,
+  `formulae.brew.sh/api/formula/pmd.json` read the same day, so where that
+  install would bring a runtime in, the line under the middle answer is the
+  one that gives the command, by the sentence step 3 carries since 6
+  October 2026. The two lines of prose before the second questions in step
+  8, in the wording of the second approval: "Damit Arbeit ohne dich laufen
+  kann, brauche ich dein Ja zum Installieren von Werkzeugen außerhalb des
+  Projekts." and "Damit Arbeit ohne dich laufen kann, brauche ich dein Ja,
+  Prüfwerkzeuge selbst zu den Paketen des Projekts hinzuzufügen.", each
+  followed by "Dazu hast du Nein gesagt." only where the record says no.
+  The first approval read "Damit Arbeit ohne dich laufen kann, brauche ich
+  dein Ja zum Installieren von Werkzeugen außerhalb des Projekts. Dazu hast
+  du Nein gesagt." and "Damit Arbeit ohne dich laufen kann, brauche ich
+  dein Ja zum Eintragen von Prüfwerkzeugen in die Abhängigkeitsdatei. Dazu
+  hast du Nein gesagt." The sentence after a no in step 8: "Mit `--auto`
+  kannst du den Lauf ohne dich später einrichten." The question on a class
+  the user switched off: header "Prüfung"; question "Du hast die Prüfung
+  <Prüfung in Worten> abgeschaltet, weil <Grund>. <Was jetzt gilt>. Soll ich
+  sie einschalten?", as in "Du hast die Prüfung der Abhängigkeiten
+  abgeschaltet, weil es nur zwei Pakete gab. Jetzt sind es dreißig. Soll ich
+  sie einschalten?"; first answer, label "Ja, einschalten", line "Ich richte
+  die Prüfung jetzt ein."; second answer, label "Nein, aus lassen", line
+  "Sie bleibt aus, und ich frage nicht noch einmal." New in the second
+  approval of 5 October 2026: the question on a row in no allowed form
+  whose text does not say whose decision it was, in `setup-checks` step 1:
+  header "Prüfung"; question "Die Prüfung <Prüfung in Worten> ist
+  abgeschaltet. In der Tabelle steht als Grund: ‚<alter Text>'. Hast du das
+  so entschieden?", as in "Die Prüfung, ob mehrere Teile richtig
+  zusammenarbeiten, ist abgeschaltet. In der Tabelle steht als Grund: ‚not
+  needed for now'. Hast du das so entschieden?"; first answer, label "Ja,
+  meine Entscheidung", line "Sie bleibt aus, bis du es änderst."; second
+  answer, label "Nein, nicht von mir", line "Dann richte ich sie ein, außer
+  es gibt in diesem Projekt nichts für sie zu prüfen." The line at the end
+  of Stage 1 of `plan-work` where the mode is not set up, no record says no
+  and no class is `empty`: "Der Lauf ohne dich ist in diesem Projekt nicht
+  eingerichtet. Mit `--auto` kannst du ihn einrichten." What step 8 says
+  after a red from the code on the platform, beside what failed: "Sobald die
+  Prüfungen auf GitHub durchlaufen, kannst du den Lauf ohne dich mit
+  `--auto` einrichten." Approved on 6 October 2026: the line at the end of
+  Stage 1 where the mode is not set up, no record says no and a class is
+  `empty`, in two forms since the second addendum of that day, by whether
+  the repository has code — without code, "Der Lauf ohne dich geht in
+  diesem Projekt noch nicht: Ohne dich sichern nur die Prüfungen die Arbeit
+  ab, und die lassen sich erst einrichten, wenn es Code gibt. Ist die erste
+  Arbeit mit Code gemergt, richtet devloop sie ein und fragt dich dann, ob
+  es auch ohne dich arbeiten darf.", since the third addendum of 6 October
+  2026, where from the second addendum of that day until the third it read
+  "Ist die erste Arbeit gemergt, richtet devloop sie ein und fragt dich
+  dann, ob es auch ohne dich arbeiten darf.", naming a merge of any work
+  where `build-work` step 6 sets the suite up only after a merge that lands
+  code; with code and classes still open, "Der Lauf
+  ohne dich geht in diesem Projekt noch nicht: Ohne dich sichern nur die
+  Prüfungen die Arbeit ab, und noch sind nicht alle eingerichtet. devloop
+  holt das nach dem nächsten Merge oder beim nächsten Start nach und fragt
+  dich dann, ob es auch ohne dich arbeiten darf." Both replace the one form
+  approved first that day, "Der Lauf ohne dich geht in diesem Projekt noch
+  nicht, weil noch nicht alle Prüfungen eingerichtet sind. devloop richtet
+  sie beim nächsten Start ein, sobald es Code gibt.", which said nothing of
+  why and named only the next start, where the step after a merge sets the
+  suite up as well; and what `start-work` step 4 says before
+  it calls the check setup, "Das Projekt ist eingerichtet, aber noch nicht
+  alle Prüfungen sind entschieden. Das kommt zuerst." Approved on 6 October
+  2026 in the third addendum of that day: what the run says where the local
+  main branch cannot be brought to the state the remote holds — the fetch
+  failing on its third attempt, the switch or the fast-forward failing —
+  three openings by the place and one middle and end. Before anything
+  begins, in the cut, in `build-work` step 1 and at the mark: "Ich kann
+  deinen lokalen Hauptzweig nicht auf den Stand von GitHub bringen, deshalb
+  fange ich hier nichts an. <in einfachen Worten, was im Weg ist und was du
+  dagegen tun kannst, mit dem Befehl, wo es einen gibt> git meldet:
+  `<Meldung von git>`. Sag Bescheid, sobald das behoben ist, dann mache ich
+  hier weiter. Bis dahin passiert nichts." After a merge, at the four places
+  that fetch after a proven merge: "Der Merge ist auf GitHub gelandet,
+  nichts ist verloren. Nur deinen lokalen Hauptzweig kann ich nicht auf
+  diesen Stand bringen. <in einfachen Worten, was im Weg ist und was du
+  dagegen tun kannst, mit dem Befehl, wo es einen gibt> git meldet:
+  `<Meldung von git>`. Sag Bescheid, sobald das behoben ist, dann mache ich
+  hier weiter. Bis dahin passiert nichts." Where a pull request is behind
+  its base and the fetch before the rebase fails on its third attempt: "Der
+  Pull Request muss auf den neuesten Stand des Hauptzweigs gebracht werden,
+  bevor er gemergt werden kann, und das geht gerade nicht. <in einfachen
+  Worten, was im Weg ist und was du dagegen tun kannst, mit dem Befehl, wo
+  es einen gibt> git meldet: `<Meldung von git>`. Sag Bescheid, sobald das
+  behoben ist, dann mache ich hier weiter. Bis dahin passiert nichts." The
+  examples approved for the middle, the run taking the one that fits its
+  case: "GitHub war bei drei Versuchen nicht erreichbar. Prüfe deine
+  Internetverbindung."; "GitHub hat die Anmeldung abgelehnt. Melde dich neu
+  an: `gh auth login`."; "In deinem Ordner ist `README.md` geändert und
+  nicht committet, und das Nachziehen würde diese Datei ändern. Leg die
+  Änderung mit `git stash` beiseite. Wenn ich fertig bin, holst du sie mit
+  `git stash pop` zurück."; "Auf deinem lokalen Hauptzweig liegen Commits,
+  die auf GitHub fehlen, und auf GitHub ist inzwischen Neues dazugekommen.
+  Leg deine Commits auf einen eigenen Zweig und bring den Hauptzweig auf den
+  Stand von GitHub: `git branch meine-commits`, danach `git reset --keep
+  origin/main`." The refusal of `build-work` on the way from planning, for
+  condition 7: "Der Lauf ohne dich startet nicht. Dafür brauche ich dein Ja,
+  Prüfwerkzeuge selbst zu den Paketen des Projekts hinzuzufügen. Mit
+  `--auto` kannst du ihn einrichten. Ohne `--auto` baue ich die geplanten
+  Aufgaben mit dir und frage dich bei jedem Prüfwerkzeug, ob ich es
+  hinzufügen darf."; for condition 6: "Der Lauf ohne dich startet nicht.
+  Dafür brauche ich dein Ja zum Installieren von Werkzeugen außerhalb des
+  Projekts. Mit `--auto` kannst du ihn einrichten. Ohne `--auto` baue ich
+  die geplanten Aufgaben mit dir und gebe dir jede Installation als Befehl,
+  den du selbst ausführst."; where the record says no, "Dazu hast du Nein
+  gesagt." follows the second sentence, as in `setup-checks` step 8. The
+  halt of `setup-checks` at `secrets` with nobody there: "Die Prüfung, ob
+  versehentlich Zugangsdaten committet wurden, lässt sich ohne dich nicht
+  einrichten. <in einfachen Worten, was im Weg ist> Diese Prüfung schalte
+  ich nie von mir aus ab, deshalb endet der Lauf ohne dich hier. Mit dir
+  zusammen geht es weiter: Dann gebe ich dir die Installation als Befehl,
+  den du selbst ausführst.", with the example approved for the middle "Das
+  Werkzeug `<Name>` bräuchte Java, und eine Laufzeitumgebung installiere ich
+  nie selbst."
+
+  **Two more start conditions.** New: `install-tools: yes` and
+  `dependency-tools: yes` are conditions 6 and 7 of the list under
+  "Unattended mode" in `build-work`, read where the others are read, at the
+  offer in `setup-checks` step 8, at the end of Stage 1 in `plan-work` and
+  where an unattended build starts. For these two the record on the main
+  branch is the state itself and no account of it, so the sentence of
+  `plan-work` not to read `environment.md` does not hold for them and says
+  so. The ground: with nobody there an install the record does not allow
+  becomes an issue that holds its task, and the task and everything built on
+  it is never built in that run; a check class whose tool may not be
+  installed or entered stays off. This changes a ruling of milestone 3 in
+  `docs/plan.md`, "where the record says no, the decline path stays what it
+  is": the unattended mode does not start under a no, the milestone says so
+  in place, and the decline path is walked with the person there only. Three
+  places that described a no on record with nobody there describe a case the
+  mode no longer reaches and are rewritten rather than left: `build-work`
+  step 3 point 7 and its list under "With nobody there", `setup-checks` step
+  3, and the paragraph of the install question on where a no leads with
+  nobody there, which is out. What stays: with both saying yes a run can
+  still stop at a runtime, or at a command the install guard blocks under
+  every answer, and there the way stands as it did — the task an issue, a
+  check class `skipped (state)` with what this machine lacks.
+
+  **Setting the mode up: step 8, and `--auto`.** The unattended mode is set
+  up in a repository only where the answer to whether work may run there with
+  nobody there is yes, a gate stands and binds, auto-merge is on and both
+  permissions say yes; `shared/mode-set-up.md` says it once, for step 8, the
+  end of Stage 1 and the start of a build. New in step 8: the answer has a
+  record, `## Unattended mode` with `unattended-mode:`, `unattended-reason:`
+  under a no and `unattended-answered:`, in the shape of the install record,
+  which `plan-work` reads as a line and not as a sentence every run words
+  differently — the finding on step 8 recording the answer with no heading
+  and no line, of 2 October 2026. On a yes each permission whose record does
+  not say yes is put a second time, the install question first, with a line
+  of prose before each widget naming the permission and, where the record
+  says no, that they said no; after a no the other is not put; every yes
+  holds for its permission. Then, in order: the changed records land through
+  a pull request and are fetched before anything is installed under them;
+  under a yes to the dependency file every check tool installed outside the
+  project that can be entered there is entered and its class proven red
+  again; every class that was off only for an earlier no is filled, which
+  changes `(user)` rows with the person there and having just said yes; and
+  only where every answer is yes the gate is set up. What step 8 writes
+  lands through a branch of its own, `devloop-unattended`, the third fixed
+  name in `shared/cut-branch.md`, cut after a fetch and a switch to the main
+  branch and deleted after every proven merge, so that step 8 no longer
+  stands on the branch step 7 landed. The workflow file installs before it
+  checks, the project's dependencies and then every tool a blocking check
+  needs that exists only outside a project, each by its vendor's line for
+  the platform's machine, and runs `check`; a red there for a missing tool
+  is the file being wrong and is corrected, and only a red from the code is
+  the answer. And `--auto`, typed where the mode is not set up, calls step 8
+  alone, from the end of Stage 1 and from the start of a build on the direct
+  route, the person being there at both: with the gate standing the flag is
+  their yes, with no gate the question is put all the same, since it is what
+  says what setting one up costs. Five rulings change. "Where the gate is
+  already there and binding, say the mode is available and skip the rest of
+  this step" holds only where the mode is set up by all five; with the gate
+  standing and a record not saying yes, or auto-merge off, the question is
+  put, and auto-merge is switched on — the defect of 23 September 2026 on
+  that early exit. Point 1 of the yes ran "exactly the blocking targets
+  `checks.md` names and nothing else"; it runs `check` after installing, so
+  that a class that becomes blocking later runs on the platform, and
+  `setup-checks` enters the installation line of a tool such a class needs
+  in the same commit. The shorter offer `build-work` made under "Unattended
+  mode", of the workflow and the protection without the permissions and
+  without a record, is gone, the call of step 8 standing in its place. The
+  sentence of the entry point that without a mode set up "nothing runs alone
+  whatever was typed" is gone, and with it the defect of 23 September 2026
+  that it held on the planning route only: both routes read the recorded
+  answer now, and the flag sets the mode up on both. And `setup-checks`
+  writes the install record as well, where until now only `setup-project`
+  did: `install-tools` and `install-answered` where a record stands, the
+  whole section where none does. What holds a record that opens a guard is
+  unchanged, that it is written with the person there only, since step 8
+  runs with them on the way through `--auto` too; milestone 3 of
+  `docs/plan.md` says so beside "since setup never runs unattended". What
+  stays a refusal with its reason, no question being able to put it right: a
+  class `empty`, a task in range blocked from outside it, command kinds not
+  approved, a protection the platform does not allow, and a pull request
+  open while a protection would be set.
+
+  **A state is read before the release, not after the merge.** `build-work`
+  reads every `skipped (state)` cell at the end of step 4, before the gate of
+  step 5, against the branch of the task, a state of the machine on the
+  machine; the findings of the review go first, every call of `setup-checks`
+  opens a second round, and the table is read once more after it. A `(user)`
+  row is read only where its reason can be checked, and where it no longer
+  holds the person is asked, before the question of step 5 and not with it;
+  with nobody there the row stays and the run's last message names it once.
+  This moves a ruling. Since pull request #51, 21 August 2026, step 6 read
+  the `skipped` reasons again after every merge and called `setup-checks`
+  for a class whose reason had expired, and `setup-checks` cut a branch of
+  its own on that route and landed it in step 7 — a step that says of itself
+  "This step does not wait inside its answer, because there is a person
+  here", and that was reached with nobody there through exactly that route.
+  The reading after the merge is out of step 6, the half of the route for an
+  expired reason is out of `setup-checks`, and with them the issue carrying
+  `raised-here` and `needs-human` for a fill that needs the person's say,
+  which cannot arise with nobody there now that both records say yes. With
+  nobody there `setup-checks` is reached on the branch of a skill that
+  commits and nowhere else, and step 7 never. Two things differ from before
+  for the person: the reason is read before the release, and a class they
+  switched off is not filled without a question where its reason no longer
+  holds.
+
+  **A third way for a finding about the table.** A review finding whose
+  object is `docs/agents/checks.md`, and every state found ended, is neither
+  fixed on the spot nor filed: it goes to `setup-checks` for that class on
+  the branch of the task, through the single-class route, and what
+  `setup-checks` commits there is read by a second round of the review,
+  where a fix made inside the review step counted as read. The third way
+  stands once, in `shared/finding-on-check-table.md`, inserted beside the two
+  in `build-work` step 4 and in `review-changes`; `shared/checks-owner.md`
+  says that the prohibition covers every cell, the reason beside `skipped`
+  included; and `README.md` under "Review" ends on the three. The route a
+  change to the check targets takes with nobody there is the build's branch
+  alone now, and the review reads it there, which is what the should of the
+  entry on a change to the check chain landing unreviewed, measured on 12
+  September 2026, asked for the unattended side; the standalone route of
+  step 7 stays unread by a review, with the person there.
+
+  **The guard on the table, and two things built otherwise than asked.**
+  `bin/devloop-check-table` names every cell of the `Status` column in none
+  of the four forms, strict where the two parsers strip backticks, and two
+  hooks call it: `hooks/post-tool-use-table-guard.sh` reports with exit 2
+  once the editing tool has written the table, and
+  `hooks/pre-tool-use-table-guard.sh` refuses a `git commit` while the table
+  in the working tree carries such a cell, on every branch. Read off
+  `code.claude.com/docs/en/hooks.md` again on 5 October 2026 at 15:56 UTC:
+  for exit 2 on `PostToolUse`, "Shows stderr to Claude; the tool already
+  ran"; for the `if` field, "each subcommand is checked", and "When Claude
+  Code can't determine which commands the Bash input runs, it runs your hook
+  regardless of the pattern", so the hook reads the command for `git commit`
+  itself. The should of defect 11 asked for a hook that refuses the write and
+  for a target in the project's own check chain; neither is built that way.
+  No target, because the refusal before the commit stands at one place in
+  the plugin, holds in every project and catches a write through the shell
+  as well. And the commit is refused rather than the write, because
+  `PostToolUse` cannot refuse and the refusal before the commit catches
+  every way to the table at one place. Both grounds hold with a gap: a shell
+  command that writes the table and commits in one go is read before it
+  runs, so that one commit goes through and the next is refused. `git -C
+  <directory> commit` is not seen, as with the guard on the main branch, and
+  a commit made outside a session's Bash tool is read by no hook. A refused
+  commit is answered by the skill that wanted it calling `setup-checks` for
+  the row, on the branch it stands on, and committing again, in both modes;
+  it is no block in the sense of `build-work`'s section on a guard's block,
+  and that section and the list under "With nobody there" say so. A
+  nineteenth check under "Before a handover, run these" holds the hooks'
+  copy of the sentence on the four forms to the shared file.
+
+  **Who writes the table.** A task never says to write
+  `docs/agents/checks.md`, in `cut-into-tasks`; the "Missing checks" item of
+  `plan-work` names every class the work needs that is not `filled`, with
+  where it stands, says that `setup-checks` fills a class and never a task
+  as work of its own, and raises no issue — it would be built as a task
+  whose own work is the filling; and the red proof of step 5 goes into the
+  pull request that switches the class on, step 7's, the build's on the
+  single-class route, step 8's own.
+
+  **What the texts of `README.md` and `hooks/hooks.json` said before.** Under
+  "Attended and unattended", that the mode question "is only asked where
+  this repository allows the mode at all — the check setup offers it once
+  and records your answer"; it is offered again by the flag now. That the
+  run refuses to go alone unless every class is "configured or explicitly
+  recorded as not applicable", a failing gate blocks and the repository can
+  merge without a person: three conditions, where the text names five of
+  seven now, the two permissions among them, and still not that no task in
+  range is blocked from outside and that the command kinds are approved. Under
+  "The check suite", "the check suite after every file change and at the end
+  of every turn", where the per-file checks follow a change made with the
+  editing tool and the blocking checks the end of a turn; "a guard that
+  blocks file writes, `git commit` and `git push` on the main branch", where
+  a file written through the shell is not stopped and a push from another
+  branch is not read; the merge guard leaving "only the arming of
+  auto-merge", with no word on a merge through `gh api`; no guard on the
+  check table; an "unless" on the install guard hanging over `sudo` and a
+  piped installer, which stay blocked whatever the record says; and "so a
+  project whose setup did not put it — set up before 0.115.0, or set up
+  empty before 0.118.0 — carries no record and hands every one to you",
+  which is out. The description in `hooks/hooks.json` named the guards "on
+  the main branch, on merging, and on installing outside the repository" and
+  names the one on the check table with them.
+
+  **Three findings of the table that are repaired here.**
+  Built: `README.md` separates what the guard on the main branch stops from
+  what it does not, a file written through the shell reaching the working
+  tree and no commit or push reaching the branch — the finding of 1 October
+  2026 on `hooks/hooks.json`.
+  Built: step 8 of `setup-checks` names the heading and the lines the answer
+  about the mode takes, and `setup-project` names the section in its account
+  of `environment.md` — the finding of 2 October 2026 on step 8.
+  Built: step 3 of `setup-checks` says under a no and under no record what
+  the no of the install question says, in one form — the finding of 2
+  October 2026 on step 3.
+
+  **What the attack found.** By decision, each place with what was done
+  there or why nothing was. The four forms: the opening, the guard-block
+  section, steps 1, 2, 3 and 6 of `setup-checks`, changed; its step 9, which
+  counts `skipped` without a form, left; `setup-project` step 6, changed;
+  `build-work` at the decline for a check class and at condition 1, changed,
+  at "The nine classes" and at the comparison with a `skipped` class in the
+  proof section, left, naming no form; the two parsers, left, reading only
+  `filled`; `README.md` at "recorded as skipped, with the reason", left,
+  true of both forms; the ruling "The first kind is a tool" and the account
+  of the runs in milestone 3, left as dated. The dependency file: steps 2, 3
+  and 4 of `setup-checks`, `setup-project` at the refresh and at
+  `environment.md`, the conventions and "Where the set ends" in the plan,
+  changed; `cargo add` in the install guard and point 8 of `build-work` step
+  3, left, the first writing a manifest and being no install, the second a
+  task's own entry. The questions: question 3 of `setup-project` and step 6
+  there, moved to `shared/`; the opening of its step 4 and the form rule
+  under "A text is written for the form that carries it", left, the fields
+  being named as before; `shared/how-to-ask.md` and
+  `shared/three-questions.md`, left. The start conditions: the list in
+  `build-work`, `plan-work` Stage 1, `cut-into-tasks` and the entry point,
+  changed; "Start condition 5" in `build-work` step 6 and the three mentions
+  of preconditions in `setup-project`, left, each still true; the install
+  guard's message, left, "with nobody there, the issue or the skip reason
+  carries the cause above" holding for a block under a yes. The setup of the
+  mode: the opening, the cut, steps 8 and 9 of `setup-checks`,
+  `shared/cut-branch.md`, `build-work` under "Unattended mode", `plan-work`
+  and the entry point, changed; the session-start hook, left, no line being
+  built; "asked once at setup" in the conventions and in the plan, changed to
+  the second asking, which the order behind this entry did not name; defect
+  8 of the entry of 4 October 2026, "no run asks a second permission", left,
+  the question put a second time writing the same record. The reading before
+  the release: steps 4, 5 and 6 of `build-work` and four places of
+  `setup-checks`, changed. The third way: seven statements of the two ways
+  were expected and found — `build-work` step 4 at the list and at the
+  second round, `review-changes` under "What happens to a finding",
+  `shared/criterion.md`, `shared/rule-not-written-down.md` twice, and
+  `README.md` — and all carry the third; two more name both ways and carry
+  it too, `build-work` step 5 at what is shown and `record-lessons` under
+  "What counts as a lesson"; "the first way out" in `build-work` and "the
+  first half" in `review-changes` mean the first way and are left, and so is
+  the short form in the offer of step 8. The guard: `hooks/hooks.json` and
+  the conventions, changed. Who writes the table: `cut-into-tasks`,
+  `plan-work`, steps 5 and 7 of `setup-checks` and step 6 of `build-work`,
+  changed; `record-lessons` at the section on what the checks do not cover,
+  left, standing as a defect of 23 September 2026.
+
+  **What the attack found against the order itself**, none of it built
+  around. The line of prose before a second question says that they said no,
+  while the question is put for every record that does not say yes, a record
+  that was never written included; the skill says the half about their no
+  only where a record says no, and no wording is approved for the other
+  case. The third line under the no of the question on a single tool, that
+  the check stays off, is untrue while another candidate is left for the
+  class; the skill says the line is where a no leads as it stands at that
+  moment and gives the three, and no fourth is approved. The question on
+  whose decision an old row was has no form and no wording. `docs/plan.md`
+  says at two more places what the benches going out of use touches,
+  milestone 3 ending "with two runs on one bench" and milestone 7 "on the
+  interface bench from milestone 4"; neither is changed. And step 7 of
+  `setup-checks` still neither fetches nor leaves the branch it landed,
+  which step 8 does now only where it writes something. Each is a finding
+  row of `docs/stock-take.tsv`. Read on the vendor's page beside the two
+  statements above and not built on: `PostToolUse` on a Bash call receives
+  the files that call changed, in `tool_response.bashEditDiff`, since Claude
+  Code 2.1.269, which would let a write to the table through the shell be
+  reported after the command and before the next — on a condition, read on
+  5 October 2026 at 19:05 UTC: the changelog of Claude Code says under
+  2.1.269 "Added a diff of the files a Bash command changed to the Bash tool
+  result when the Bash tool handles file edits (setting
+  `bashEditDiffEnabled`)", and the Claude Agent SDK, version 0.3.289,
+  `sdk.d.ts` at `bashEditDiffEnabled`, says "Default: on when the Bash tool
+  handles file edits. Only user, flag or policy settings can turn it on
+  outside auto and bypassPermissions modes.", so the field arrives only
+  where that setting is on, and a plugin cannot turn it on; and
+  `FileChanged`, whose
+  exit 2 "Shows stderr to user only".
+
+  **Records.** The defects named at the head carry their evidence on the
+  lines that repair them; the three findings above are defect things sited
+  on their lines here. The things of the branches that fell — the reading
+  after a merge, the route for an expired reason, the issue with nobody
+  there, the shorter offer in `build-work` with its three answers — are out
+  with their runs; the things of the install question stand under
+  `shared/install-question.md` and `shared/install-record.md`; the two
+  hooks, the program and the nineteenth check have their things. Three
+  entries whose evidence stood on the rewritten lines of question 3 have new
+  sites, and none of them counts as repaired by it: the defect of 29
+  September 2026 on the question coming out wrong twice, the defect of 30
+  September 2026 on the three things in the options, whose rule on the run
+  is out of the text since with nobody there the record says yes, and the
+  defect of the same day on the boundary lifted out of the leak, where the
+  second way of its should stands in the text now instead of the first.
+  Defect 4 of the audit, that no further wording is taken as the repair of
+  the assurance on runtimes, stands as it stood.
+
+  **Addendum of the same day: every outcome of the program and of the two
+  hooks, measured once.** After the commit that carries the raise, `9a6f33a`,
+  with the tree clean, on 5 October 2026 at 16:47 UTC, in a throwaway
+  repository under a scratch directory outside this one: the program handed a
+  table, each hook fed the JSON of its event with `CLAUDE_PROJECT_DIR` set,
+  the exit code and both streams read. Nothing of it ran through the harness,
+  whose installed copy is 0.126.0: that the two hooks fire on their events,
+  and what a run does with their messages, is not measured.
+  `bin/devloop-check-table`: a table whose five statuses carry the four
+  forms, one padded with blanks, and a file with no row, each exit 0 with
+  nothing printed; a table carrying `skipped: no entry point yet`, `filled` in
+  backticks, `Filled`, `skipped (state):` with no state and a row too short to
+  have the cell, found through `CLAUDE_PROJECT_DIR`, exit 1 with those five
+  named one per line; two arguments, exit 2 with its line on stderr; a file
+  that is not there, and one with mode 000, exit 2 with its line on stderr.
+  `hooks/post-tool-use-table-guard.sh` passed in silence, exit 0, six times:
+  a project directory that cannot be entered; a repository with no
+  `docs/agents/`; a JSON naming no file; another file written while the table
+  carried the five cells; the table written with all four forms in it; and
+  the table written while the program could not read it. It reported, exit 2
+  with the message quoted in the entry above and the five cells joined by
+  "; ", for the table written through `Edit`, and again for `MultiEdit`
+  naming the table through a symbolic link.
+  `hooks/pre-tool-use-table-guard.sh` passed in silence, exit 0, seven times:
+  the project directory not to be entered; no `docs/agents/` in the
+  repository; a tool that is not Bash; a command holding no `git commit`
+  while the table carried the five cells; `docs/agents/` standing with no
+  table in it; `git commit` over a table in order; and `git commit` while the
+  program could not read the table. It refused, exit 2 with "Commit refused"
+  and the five cells, for `git commit -m`, for `git add -A && git commit`
+  with a quoted quote in its message, and on a branch other than main. The
+  two gaps came out as the entry names them: `git -C <directory> commit`
+  passed, exit 0, with the five cells standing; and a command that rewrote a
+  cell with `sed` and committed in one go passed, exit 0, the table being in
+  order when the hook read it, then ran and committed `skipped: later`, and
+  the next `git commit` was refused, exit 2, naming that cell. No measurement
+  led to a change. Nineteen runs stand in `docs/stock-take.tsv` under
+  0.129.0, one for each outcome.
+
+  **Addendum of the same day: the tool's two runs and the nineteenth check
+  under 0.129.0.** Run in this tree after the commit that carries the raise.
+  The tool at 0.129.0: `BROKEN RECORDS: 0`, `FINDINGS: 22`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2234`, exit 0,
+  written down on its exit 0 outcome; the twenty-two findings are the
+  seventeen that stood and the five of this entry. The self-test at 0.129.0:
+  `SELF-TEST PASSED: 88 cases; of the 74 messages this tool rejects, refuses
+  or answers with, read off its own source, 74 are asserted by a case and 0
+  by none; the lines of the report are not in that count`, exit 0, written
+  down on its outcome; the tool's source is untouched. The nineteenth check
+  printed `1` for each of the two hooks, which its section calls green, and
+  the eighteen beside it ran after the change: what each printed stands in
+  the report of the order. The check on handovers prints eight lines over
+  seven sites, one more than before, step 3 of `setup-checks` handing a
+  command over under a record that says no; its section names the eighth.
+
+  **Addendum of 6 October 2026: what this entry left open, decided and
+  built.** On the same branch, the version unchanged at 0.129.0. The five
+  gaps and two of the eight things the order's report put back were decided
+  in an addendum to the order of 5 October 2026, and the addendum was held
+  against the code before anything was written, as the order had been:
+  places searched by subject, situations written out, grounds held against
+  the code. Seven places came out where the addendum decided nothing or two
+  places ran against each other, and they were put back before the build
+  and answered on 6 October 2026; the answers stand built here with the
+  rest. Nothing ran on a bench. Six findings of this entry are repaired, two
+  of its open things become findings, one case gains a finding of its own,
+  and the two guards on `git commit` and `git push` are repaired.
+
+  **The line of prose before a second question, and what "a second time"
+  covers.** The short wording of the line is approved, the second approval
+  of 5 October 2026 under "The approved wording": the first sentence names
+  the permission, and "Dazu hast du Nein gesagt." follows only where the
+  record says no, as step 8 was built; where no record stands on the main
+  branch, the line is the first sentence alone. Its case is not a project
+  set up before this version: in every project set up from 0.129.0 on both
+  permissions are asked before step 8 — the install question by
+  `setup-project` question 3, in the empty case too, the question on the
+  packages by `setup-checks` step 3 wherever no record stands — and step 8
+  comes only once no class is `empty`; the existing benches are out of use.
+  Its case is a record that never landed, a pull request carrying the
+  answer closed unmerged, say. So "a second time" stays where it stands, in
+  step 8, `plan-work`, `build-work` and `shared/install-question.md`, and
+  in the conventions and the plan, and the fourteen places the addendum
+  would have reworded are left. The finding of 5 October 2026 on the line
+  is repaired.
+
+  **"To the project's packages" in the fields.** The two questions of
+  `setup-checks` step 3 and the line of prose in step 8 describe their
+  fields as adding a check tool to the project's packages, where they said
+  entering it in the dependency file: a run on German wrote "in die
+  Abhängigkeitsdatei eintragen" from that, which tells a person nothing,
+  and the fields say now what goes where. The header is described so that
+  a run arrives at "Pakete". The rule in step 3 on which file that is keeps
+  "dependency file", and so do `README.md`, the record's name `## Dependency
+  permission`, start condition 7 in `build-work`, `shared/mode-set-up.md`
+  and the conventions: none of them is a field, and the change is scoped to
+  the fields. Two places where a run still says "dependency file" to a
+  person, start condition 7 read out at a refusal and the refusal of
+  `build-work` on the way from planning, stay as they are.
+
+  **The question on a single tool has three answers in one case, and a
+  command handed over and not run ends the class.** Where the tool asked
+  about can only be added to the packages, having no way outside the
+  project, and another tool is left for the same check, the question offers
+  three answers — the tool, the other tool instead, the check off — since a
+  tool other than the one proposed needs their yes; the second answer's line
+  is where the other tool goes, by the install record or, where that tool
+  too has only the packages, by this question again; under the third the
+  class goes `skipped (user)` with a reason naming both tools and what was
+  declined. Step 8 point 3 then reads the reason: after a yes to the
+  packages the class is filled with the tool first asked about, after a yes
+  to installing alone it stays off, since the other tool was declined. The
+  finding of 5 October 2026 on the third line is repaired. The line that
+  the run installs a tool outside the project comes only where it may
+  install that tool itself and the install brings no compiler and no
+  runtime along: `brew install pmd` brings `openjdk`, read off the formula
+  on 5 October 2026, and a runtime stays the person's under every answer,
+  so there the line is the one that gives the command; the example in the
+  approved wording holds as wording. Where a command handed over is not
+  run, the class goes `skipped (user)` whether or not another tool would be
+  left, its reason naming the tool and the command not run — what this
+  entry said above, "the command is not run", said in the skill now — and
+  that the other tool is then put to them is a finding of this addendum,
+  with a wording the person approves as its should.
+
+  **The question on an old row, and `secrets`.** A row in no allowed form
+  whose text does not say whose decision it was is put to the person field
+  by field like the other questions of that day, in the second approval's
+  wording: header, the check in words, the old text quoted as the table's
+  reason, and whether they decided that; a yes makes the row
+  `skipped (user)` with that text, a no has the run decide the row as a
+  judgement of its own, `skipped (state)` where the class would find
+  nothing here and filled otherwise. With nobody there the row goes as
+  built on 5 October 2026. The finding on step 1 is repaired. Beside it one
+  sentence: `secrets` is never skipped on a run's own judgement, no state
+  switches it off, and only the person can, in `skipped (user)`; with
+  nobody there the run stops, as the guard-block section had it. Until then
+  "`secrets` is never skipped" stood against the five places where a
+  decision of the person's writes `skipped (user)` for any class.
+
+  **No announcement before the question on the mode.** Decided: the
+  permission questions come directly after the yes, each with its line of
+  prose, and nothing before the question on the mode announces them. The
+  open thing of the order's report on that point is closed without a
+  finding.
+
+  **The line at the end of Stage 1.** Where the mode is not set up and no
+  flag was typed, `plan-work` says one of three things, in this order:
+  where the record of the answer says `no` — their no, a refused
+  protection, checks red on the platform — nothing, and nothing about the
+  other conditions either; otherwise, where a class is `empty`, that work
+  cannot run without them yet because not every check is decided and that
+  the check setup decides them at the next start once there is code, with
+  no word on the flag, since step 8 is not reached while a class is
+  `empty`; otherwise one line, that the mode is not set up and `--auto`
+  sets it up, listing nothing. Until then the line stood after every
+  sharpening, after a no as well, and after a refused protection it said
+  the flag sets the mode up, where step 8 says what would change it. Its
+  case is a yes with something fallen away since, auto-merge switched off
+  on the platform, say, or a setup broken off before the question. The
+  paragraph further down, on the six preconditions read before asking, said
+  the same decision a second time — "say which one failed and what would
+  change it ... that typing `--auto` sets it up" — and names now only the
+  two conditions the setup of the mode cannot put right, a class `empty`
+  and the kinds of command, and what helps there. The refusal of
+  `build-work` on the way from planning stays.
+
+  **A red from the code on the platform is a no.** Where the workflow goes
+  red on the main branch from the code itself, the record of the answer
+  goes to `unattended-mode: no` with that as its reason, through a pull
+  request of its own since the yes has landed by then, as after a refused
+  protection; the workflow file stays, since `--auto` needs it once the code
+  is green; and the run says what failed and that once the checks pass on
+  GitHub the mode can be set up with `--auto`, in the second approval's
+  wording. The reading of the order's report that the record stays on yes
+  with the gate missing is out. A consequence, not built: `--auto` typed
+  while the main branch is still red lands a yes and then the no again, two
+  pull requests, which a reading before the question would save — the
+  finding below on reading the platform before the question is the place
+  for it.
+
+  **Step 7 fetches, switches and deletes, and a landed branch is read as
+  such.** Once the merge is proven, on either way to it, `setup-checks`
+  step 7 fetches, fast-forwards the main branch, switches to it and deletes
+  `devloop-checks` locally and on the remote, as `setup-project` step 8 does
+  since the same day for `devloop-setup` and as step 8 of `setup-checks`
+  did for its branch already. The deletion came out of a measurement: with
+  git 2.50.1 on 5 October 2026, in a scratch repository, after a squash
+  merge of `devloop-checks` into `main`, `git merge-base --is-ancestor
+  devloop-checks main` exits 1 while `git status --short` prints nothing,
+  so `shared/cut-branch.md` read a landed branch as one with something
+  written on it and switched back to it — which the second round of step 9,
+  "More classes while any is still `empty`", and the refresh of the setup
+  would have met, the arming command merging by squash. And since the setup
+  that lands by the person's hand deletes the branch only once they have
+  said it landed, a session ending before that leaves it: so the cut reads
+  a fourth case, off the platform — `gh pr view <branch> --json
+  state,headRefOid` answering `MERGED` with a head that is the branch's tip,
+  and a clean tree — deletes and cuts afresh, and tells the person in a
+  line. Read on 6 October 2026 with gh 2.96.0: `gh pr view
+  task/audit-and-corrections --json number,state,headRefOid,mergedAt`
+  answered `{"headRefOid":"b8d1ba3…","mergedAt":"2026-10-04T12:23:05Z",
+  "number":156,"state":"MERGED"}`, and `gh pr view task/check-table-forms
+  --json state` answered `no pull requests found for branch
+  "task/check-table-forms"`. The finding on step 7 is repaired; the one on
+  `setup-project` step 8 describing no path for a fetch that fails covers
+  step 7 of `setup-checks` as well now, and its note says so. The reason
+  clause of step 8's own fetch, that the tree may still stand on the branch
+  step 7 landed, is replaced: step 7 has done so where it ran, and reached
+  alone through `--auto` step 8 stands wherever the run stood.
+
+  **README, and the two guards repaired.** Three changes to `README.md` in
+  the approved wording: the conditions name all seven, with the two
+  consequences of the two that were missing, waiting at a prompt and
+  starting a task it cannot finish, and the sentence after them says that
+  all but the one about the tasks are read where the person is asked, since
+  the tasks do not exist yet — the addition had made "They are read where
+  you are asked" untrue for that one, as `plan-work` and `start-work` say;
+  the guard on the main branch and the guard on the table each gain that a
+  commit or push run through a git alias is not read. The halves on `git
+  -C <directory>` the addendum had asked for are not written, because the
+  gap went instead: measured on 5 October 2026 at 19:05 UTC with the hooks
+  fed their JSON, both guards let `git -c user.name=x commit`, `git
+  --no-pager commit` and, the one on the main branch, `git -c a=b push
+  origin main` through, exit 0, as they had let `git -C`; both wanted `git`
+  directly before the verb. Since 6 October 2026 both read git's own
+  options between `git` and its command — `-C <path>` and `-c
+  <name>=<value>`, the six options that take a value of their own,
+  `--git-dir`, `--work-tree`, `--namespace`, `--super-prefix`,
+  `--config-env` and `--exec-path`, any other `--option`, `-p` and `-P` —
+  and a word that is no option ends the match, so that `git log --grep
+  commit` passes. And `hooks/hooks.json` starts both on `Bash(git *)` where
+  it started them on `Bash(git commit*)` and `Bash(git push*)`: read off
+  `code.claude.com/docs/en/permissions.md` on 6 October 2026 at 06:56 UTC,
+  "Claude Code matches everything before the first `*` as written", and off
+  `code.claude.com/docs/en/hooks.md` the same minute, "`\"Bash(git *)\"`
+  runs when any subcommand of the Bash input matches `git *`" and "When
+  Claude Code can't determine which commands the Bash input runs, it runs
+  your hook regardless of the pattern", so that a hook started on
+  `Bash(git commit*)` would not have seen a command with an option in
+  between where the harness could tell what it runs. The comment in each
+  hook says so, the conventions name the three gaps that stand — a write
+  and a commit in one command, a git alias, a commit outside the session —
+  and the measurement with the repaired hooks stands in the addendum
+  below. The finding on `README.md` is repaired.
+
+  **The plan.** Under "Open", the rule: every run gets a fresh test project,
+  except that a run may reuse a project an earlier run from 0.129.0 on
+  created where it builds on its content or checks more that way, the
+  milestone then naming the project and the reason; the existing benches
+  stay out. Milestone 3 ends with two runs on one fresh project, in this
+  order — the install record saying no with the person there, a build
+  needing a tool, the guard blocking, the command handed over; then
+  `--auto`, the question put a second time, a yes, and the build with
+  nobody there installing a tool itself, the guard passing, the tool at the
+  path — with two different tools a task needs and no check tool, a code
+  generator such as `sqlc`, whose formula lists no dependency,
+  `formulae.brew.sh/api/formula/sqlc.json` read on 6 October 2026: two,
+  because a command handed over and run has installed its tool, and a
+  task's, because a check class off for the first no is filled in step 8
+  with the person there. The milestone names what stands before that run:
+  the question of step 8 described field by field, the platform read before
+  it, and start condition 4 — the kinds of command approved, which nothing
+  in the tree can read, the defect of the entry read on 11 September 2026
+  — read off `permission_mode`, a field of every hook's input in the Claude
+  Agent SDK, `sdk.d.ts` of version 0.3.289 at line 179, read on 6 October
+  2026, and off the allow rules in the settings files, and said to be
+  unreadable where it is. Milestones 4 and 7 stay; 7 builds on 4's
+  interface project, which the rule allows. The finding on milestone 3 is
+  repaired.
+
+  **The field with the changed files has a condition.** The paragraph above
+  on `tool_response.bashEditDiff` carries it in place now, read off the
+  changelog and the SDK on 5 October 2026: the field arrives only where
+  `bashEditDiffEnabled` is on, by default where the Bash tool handles file
+  edits, and outside auto and bypassPermissions modes only user, flag or
+  policy settings can turn it on — a plugin cannot.
+
+  **What lay beside.** The sentence that the run stops at `secrets` with
+  nobody there, under "A guard's block is not a decline", stays: since the
+  third way a run with nobody there reaches `setup-checks` for `secrets`
+  too, through a finding about its row, so the case the first half of
+  defect 14 of the entry of 4 October 2026 holds unreachable exists now,
+  and the note on that defect says so. Two findings: the question of step
+  8 on the mode has no form, no field naming the points of the decision,
+  which the entry of 3 October 2026 left standing; and step 8 learns that
+  the platform refuses the protection only after the question, the records
+  and the workflow file — GitHub, under "About protected branches", read on
+  5 October 2026 at 19:05 UTC: "Protected branches are available in public
+  repositories with GitHub Free and GitHub Free for organizations. Protected
+  branches are also available in public and private repositories with
+  GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise
+  Server." — where it should read that before the question and say so
+  instead of asking, what the platform answers there measured once first.
+  Without change and without a finding: two open pull requests filling the
+  same class, a conflict like any other; the standalone route of step 7
+  without a review, which milestone 5 names; the route line in the empty
+  case, under milestone 3. And `start-work` step 4 calls the check setup
+  wherever a row reads `empty` and the repository has code, where it did so
+  only with no row `filled`: it catches a session that ended after a merge
+  before `build-work` step 6 read the table, and a project in which the
+  person chose some of the classes first in `setup-checks` step 2 — not, as
+  this paragraph said until the second addendum of 6 October 2026 below, a
+  project set up without code whose first work filled only the classes its
+  tasks needed and which step 4 never brought to step 8: step 6 calls the
+  check setup whole after every merge wherever a class is still `empty` and
+  the repository has code, so such a project reaches step 8 after its first
+  merge that lands code; what the run says before the call is approved on 6
+  October 2026.
+
+  **What a command printed.** The third rule under "A field is not an
+  answer to a question it was not asked" in `docs/skill-conventions.md`
+  says now that what a command printed is taken from its output in the same
+  session, never from memory: on 5 October 2026 four notes of findings
+  described what a search of the roadmap had returned, written from
+  recollection, and two said something the command had not printed,
+  corrected in `ff8f355`.
+
+  **What the attack found, by decision.** The line of prose: step 8,
+  changed; step 3's "step 8 puts this question a second time", the two
+  sentences of `setup-project` on the second asking, `shared/install-question.md`,
+  the conventions at three places and the plan at two, left, the second
+  asking standing. The packages: the fields in step 3 and step 8, changed;
+  the rule in step 3, the record, condition 7 of `build-work`,
+  `shared/mode-set-up.md`, `shared/finding-on-check-table.md`, the
+  conventions and `README.md`, left, none a field. The single tool: step 3,
+  changed at the fields, the three-answer case, the sentence on a runtime
+  and the end of the paragraph on a tool outside; step 8 point 3, changed;
+  the conventions under "It does not cover tools", changed. The old row:
+  step 1, changed; "With nobody there" in the same skill, left, the case
+  with nobody there as built. The line at the end of Stage 1: both places
+  of `plan-work`, changed; `build-work` on the way from planning and
+  `start-work`, left. The red from the code: the record's reasons and gate
+  step 2 of `setup-checks`, changed; `shared/mode-set-up.md`, left. Step 7:
+  `setup-checks` step 7 and the reason clause of step 8, `setup-project`
+  step 8, `shared/cut-branch.md`, changed; `build-work` step 6, left,
+  deleting its branch already; step 9 of `setup-checks`, left, the tree
+  being on the main branch now where it says so. The README: the three
+  sentences and the one after the conditions, changed; the two hooks and
+  `hooks/hooks.json`, changed; the conventions under "A third reader",
+  changed; the comment in the table guard, changed. The plan: "Open" and
+  milestone 3, changed; milestones 4, 5, 6, 7, 8, 9 and 11, left, naming no
+  second run on one project or naming 4's bench, which the rule allows.
+  Grounds of the addendum that did not hold as written: the install record
+  is missing not only in a project set up before 0.115.0 but in one set up
+  empty before 0.118.0, which the plan says; the person agrees to the tool
+  in step 2 at a first setup only, the single-class route not putting that
+  question, so the three answers rest on the other tool needing their yes
+  and not on step 2; and the PMD example brings a runtime along on this
+  machine, above. The searches and every place looked at stand in the
+  report of the order, `~/devloop-nachtrag-2026-10-05-bau.md`.
+
+  **Records.** The six findings above are defect things sited on the lines
+  of this addendum that say what was built, with their evidence on the
+  repairing lines; three findings are new, on the command handed over and
+  not run with another tool left, on the form of step 8's question, and on
+  reading the platform before it; the note on defect 14 of the entry of 4
+  October 2026 says its first case exists; the note on the finding of 3
+  October 2026 on `setup-project` step 8 says it covers step 7 of
+  `setup-checks` too. The outcomes of the two repaired guards standing on
+  changed lines lose their runs under 0.129.0 until the merge lands the
+  version on the main branch, the header of `scripts/devloop-stock-take`
+  saying why, and are measured again below.
+
+  **Addendum of 6 October 2026: the two repaired guards, every outcome
+  measured once.** After the commit that carries the build, `adfec5d`, with
+  the tree clean, on 6 October 2026 at 07:16 UTC, in a throwaway repository
+  under a scratch directory outside this one, each hook fed the JSON of its
+  event with `CLAUDE_PROJECT_DIR` set, the exit code and both streams read,
+  thirty-three cases; nothing ran through the harness, whose installed copy
+  is 0.126.0, so that `Bash(git *)` starts the hooks where `Bash(git
+  commit*)` did not is read off the vendor's pages above and not measured.
+  `hooks/pre-tool-use-table-guard.sh` passed in silence, exit 0, nine times:
+  a project directory that cannot be entered, then a repository with no
+  `docs/agents/`; a tool that is not Bash while the table carried
+  `skipped: later`; `git status` and `git log --grep commit` over that
+  table, neither holding `git commit`; `git commit` and `git -C . commit`
+  over a table in order; `git commit` while the program could not read the
+  table, mode 000; and `docs/agents/` standing with no table in it. It
+  refused, exit 2 with "Commit refused" naming `lint: skipped: later`, nine
+  times: `git commit -m x`; `git add -A && git commit` with a quoted
+  apostrophe in its message; `git commit` on the branch `task-1`; and, new
+  since this day, `git -C . commit`, `git -c user.name=x commit`, `git
+  --no-pager commit`, `git --git-dir=.git --work-tree . commit` and `git
+  -C/tmp -p commit`. `hooks/pre-tool-use-branch-guard.sh`, with the
+  project standing on `main`, passed in silence, exit 0, seven times: `git
+  status` and `git log --grep commit`, neither a commit nor a push; `git -C
+  . push origin feature`, `git -c a=b push origin HEAD:refs/heads/feature`,
+  `git push origin feature` and `git -C . push --delete origin feature`,
+  each naming another branch as its destination; and `git -C . commit` on
+  the branch `task-2`, not the default one. It blocked, exit 2 with
+  "Blocked: committing on the main branch", `git commit -m x`, `git -C .
+  commit`, `git -c user.name=x commit` and `git --no-pager commit`, and
+  with "Blocked: pushing to main" `git push origin main`, `git -C . push
+  origin main`, `git -c a=b push origin main` and `git --no-pager push`
+  naming no destination. No measurement led to a change. Thirteen runs
+  stand in `docs/stock-take.tsv` under 0.129.0, one for each outcome
+  measured, eight of the table guard and five of the branch guard. Ten count
+  now; the three on outcomes whose lines this build changed — the pass of
+  the table guard where the command holds no `git commit`, the pass of the
+  branch guard for a command that is neither, and its block of a commit —
+  count once the merge lands the version on the main branch, the lines being
+  changed after the commit that raised it, as the header of
+  `scripts/devloop-stock-take` says.
+
+  **Second addendum of 6 October 2026: six decisions of a second addendum
+  to the order, held against the code and built.** On the same branch, the
+  version unchanged at 0.129.0. The places of each decision were searched
+  by subject before anything was written, with short search texts, and
+  nothing undecided and no two places against each other came out, so
+  nothing was put back; what was added beside the six is named where it
+  stands. Nothing ran on a bench.
+
+  **A reason that did not hold.** The paragraph above under "What lay
+  beside" said that in a project set up without code `start-work` step 4
+  never called the check setup again, so that step 8 was never reached
+  there. It did not hold: `build-work` step 6 calls the check setup whole
+  after every merge wherever a class is still `empty` and the repository
+  has code, so such a project reaches step 8 after its first merge that
+  lands code. The widening of step 4 stays, with the reason that holds: it
+  catches a session that ended after the merge before step 6 read the
+  table, and a project in which the person chose some of the classes first
+  in `setup-checks` step 2 and whose session ended before step 9 took up
+  the rest, which that step does in the same run. The paragraph is
+  corrected in place, the three ways in step 4 read so now, and step 2 of
+  `setup-checks` names the start of a session among the places where a row
+  left `empty` is asked again. The reason stood nowhere else: searched
+  over `skills`, `shared`, `README.md`, `docs/skill-conventions.md` and
+  `docs/plan.md` for "never reached", "no row `filled`", "never called" and
+  "never came", which printed the two lines of step 4, two lines of
+  `setup-checks` on the case with nobody there and one of
+  `shared/command-does-not-answer.md`, none of them it; and for "without
+  code", "has no code" and "no code yet", which printed step 4, `build-work`
+  step 6, the opening of `setup-checks` and its step 2, and one line of
+  `plan-work`, none of them it.
+
+  **The line at the end of Stage 1, in two forms.** Where a class is
+  `empty` and no record says no, `plan-work` says one of two things, by
+  whether the repository has code, counted as the setup counts it: without
+  code, that the run without them does not go in this project yet, because
+  without them only the checks secure the work and those can be set up only
+  once there is code, and that once the first work has merged devloop sets
+  them up and then asks whether it may work without them too; with code
+  and classes still open, the same ground, that not all of them are set up
+  yet, and that devloop catches that up after the next merge or at the
+  next start and then asks. Both say why, which the one form approved first
+  that day did not; the ground is the one `build-work` states, "`--auto`
+  replaces the user's approval with a green check suite". The German
+  wording of both stands under "The approved wording" above, the replaced
+  form beside. One finding: the form without code says once the first work
+  has merged, while step 6 sets the suite up only after a merge that lands
+  code.
+
+  **A fresh cut is made from the main branch as the remote holds it.** In
+  `shared/cut-branch.md`, in the three cases that cut afresh — no branch of
+  the name, nothing written on it, landed — the run fetches, reads whether
+  the main branch stands on the remote, and where it does switches to it
+  and fast-forwards it before the cut: `git fetch -q origin`, `git
+  rev-parse -q --verify origin/main`, `git switch main && git merge
+  --ff-only origin/main`. Where the fetch, the switch or the fast-forward
+  fails, it stops and says why, with git's message, and cuts nothing on top
+  of it; which cases fail stands measured in the third addendum of 6
+  October 2026 below — a commit of its own on the local main branch fails
+  the fast-forward only where the remote has new commits too, and a working
+  tree that is not clean only where a changed file is one the fast-forward
+  would change. Until that addendum this paragraph read, written from the
+  commands and from no measurement, "fails, for whatever reason — a commit
+  of its own on the local main branch, a working tree that is not clean —",
+  which did not hold: with nothing new on the remote the fast-forward
+  answers `Already up to date.`, exit 0, and the cut is made from the local
+  main branch with its commit on it, and a changed or new file the
+  fast-forward does not touch goes through with it. Where no main branch stands
+  on the remote yet, as in a repository `setup-project` created without a
+  commit, nothing is fast-forwarded and the cut is made from the main
+  branch as it stands. The ground: in the landed case the session ended
+  before the fetch after the merge — at a first setup the person merges by
+  hand — and `git switch main` alone cut from the state before it. Step 8
+  of `setup-checks` points to the cases for the fetch it described itself.
+  The finding on `main` written literally extends to the new commands, and
+  the finding on a fetch that fails in `setup-project` step 8 notes that
+  the cut says since this day what its own failing fetch leads to, while
+  that step and step 7 of `setup-checks` still do not.
+
+  **`build-work` step 1 fast-forwards a main branch that is only behind.**
+  Where the local main branch has no commit of its own and the remote has
+  commits it lacks, step 1 fast-forwards it and goes on, since the task is
+  cut from the current main branch and a session that ended after a merge
+  before step 6 fast-forwarded leaves it behind; where they have diverged,
+  it says so and stops as before, the reverse no longer among what the
+  user clears. The handover check prints its eight lines over seven sites
+  as before, the diverged base among them; what a fast-forward that fails
+  here leads to is not said, and the finding on `setup-project` step 8
+  names this place too.
+
+  **Condition 7 is named by what it allows.** "The record on whether the run
+  may add check tools to the project's packages says yes", where it read
+  "The record on check tools in the dependency file says yes"; the record,
+  `dependency-tools: yes` under `## Dependency permission`, is unchanged,
+  and the refusals that name a missing condition take the name from the
+  list. `README.md` stands as it is.
+
+  **A halt of the check setup with nobody there deletes the mark.** The
+  list in `build-work` of where the mark is deleted names a halt of
+  `setup-checks` called with nobody there on the branch of a task —
+  `secrets` whose tool cannot be installed among them, under "A guard's
+  block is not a decline" there — where the run ends with the reason
+  named; that place says so, and so does the stop under it, where the
+  editing tool does not reach a text the guard matched, since the list
+  covers both.
+
+  **Records.** Eleven records re-anchored to the changed lines, one of them
+  renamed, and two more given a note; five things new — the fast-forward
+  of a main branch only behind, the line without code, and in
+  `shared/cut-branch.md` the fetch before a fresh cut, its failure and the
+  remote without a main branch; thirteen lines of the search set as parts
+  or rationale; two findings extended, one new. A run of 7 September 2026
+  on step 1 of `build-work` stops counting, its unit changed. The counts
+  here were corrected after the commit from what `git diff` over the table
+  printed, twelve things changed or new, nineteen lines, three findings.
+
+  **Addendum of 6 October 2026, after the second: the tool, its self-test
+  and the nineteen checks under 0.129.0.** Run in this tree after the
+  commit that carries the second addendum, `c6182a9`, with the tree clean,
+  on 6 October 2026 at 15:19 UTC. The tool: `BROKEN RECORDS: 0`,
+  `FINDINGS: 20`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF
+  THE SEARCH SET: 0 of 2279`, exit 0, written down on its exit 0 outcome;
+  the twenty findings are the nineteen that stood and the one of the second
+  addendum. The self-test: 88 cases, 74 of the 74 messages asserted by a
+  case and 0 by none, the passing line as the first addendum of this day
+  quotes it, exit 0, written down on its outcome; the tool's source is
+  untouched. The nineteen checks under "Before a handover, run these"
+  printed what their sections call green, one run written down on each
+  green outcome: the check on offers seventeen lines over the sites of 5
+  October 2026, their line numbers moved; the check on handovers eight
+  lines over seven sites, the diverged base in `build-work` step 1 among
+  them, its line four lines further down; the check on the second
+  statement its two lines; the counts 2, 2 and 1, and 1 twice for the
+  status forms; the rest silent or the answer their section names. The run
+  of 7 September 2026 on the straight path of `build-work` step 1 no longer
+  counts, that unit changed in `c6182a9`, and the thing stands as built,
+  never walked, until a run on it is recorded.
+
+  **Third addendum of 6 October 2026: the three commands before a fresh cut
+  measured, a fetch tried three times, what the run says where the main
+  branch cannot be brought up to date, and six wordings.** On the same
+  branch, the version unchanged at 0.129.0. The third addendum to the order
+  of 5 October 2026 was held against the code and against a measurement
+  before anything was written: the commands of the second addendum were run
+  in the seven cases it named and in three more, the commands of two of its
+  examples in five, places searched by subject, situations written out.
+  Nothing undecided and no two places against each other came out; what the
+  measurement showed against what the second addendum had written stands
+  corrected in place above and below. The report of the second addendum,
+  `~/devloop-nachtrag2-2026-10-06-bau.md`, was not on the disk when this one
+  began, nor in the trash, and what it held was taken from the second
+  addendum above. Nothing ran on a bench.
+
+  **What the three commands do before a fresh cut, measured.** On 6 October
+  2026 at 19:36 UTC with git 2.50.1, outside this repository, with a bare
+  repository of its own as remote and a fresh clone for every case, the
+  three lines of `shared/cut-branch.md` as the second addendum built them,
+  `git fetch -q origin`, `git rev-parse -q --verify origin/main`, `git
+  switch main && git merge --ff-only origin/main`, each with its output and
+  exit code and then whether the local main branch stood where the remote
+  held it. (a) The local main branch only behind: fast-forwarded, exit 0,
+  standing where the remote holds it. (b) A commit of its own on the local
+  main branch and nothing new on the remote: `Your branch is ahead of
+  'origin/main' by 1 commit.`, `Already up to date.`, exit 0 — nothing
+  fails, and the local main branch keeps its commit, one ahead of the
+  remote, so a cut made then is from a main branch the remote does not
+  hold. (c) A commit of its own and a new commit on the remote: `Your branch
+  and 'origin/main' have diverged`, `fatal: Not possible to fast-forward,
+  aborting.`, exit 128, nothing changed. (d) A changed, uncommitted file the
+  fast-forward also changes, the tree on the main branch: `error: Your local
+  changes to the following files would be overwritten by merge: README.md`,
+  `Aborting`, exit 1, the main branch left behind by one; the same with the
+  tree on a branch `devloop-checks`, where `git switch main` carries the
+  change over, `Switched to branch 'main'`, and the merge refuses the same
+  way. (e) A changed and a new file the fast-forward does not touch, on the
+  main branch and on `devloop-checks` alike: fast-forwarded, exit 0, both
+  files as they were. (f) No main branch on the remote and no local commit:
+  the fetch exit 0, `git rev-parse -q --verify origin/main` printing nothing
+  with exit 1; the third line, which the rule does not run then, would
+  answer `fatal: invalid reference: main`, exit 128; `git switch -c
+  devloop-setup` then answers `Switched to a new branch 'devloop-setup'`,
+  exit 0. (g) A remote that is not reachable, a path that does not exist:
+  `fatal: '/nonexistent/remote.git' does not appear to be a git
+  repository`, `fatal: Could not read from remote repository.`, exit 128;
+  a port nothing listens on, `http://127.0.0.1:9/remote.git`: `fatal:
+  unable to access ... Failed to connect to 127.0.0.1 port 9 after 0 ms:
+  Couldn't connect to server`, exit 128; in both the second and the third
+  line, run for the measurement alone, answer on the stale `origin/main`,
+  `Already up to date.`, which is why the rule stops at the fetch. So of the
+  two reasons the second addendum gave for a failure, each holds in one
+  case and not in the other: a commit of its own fails the fast-forward in
+  (c) and passes it in (b), a working tree that is not clean fails it in (d)
+  and passes it in (e). `shared/cut-branch.md` says what fails and what does
+  not, and the paragraph of the second addendum above is corrected in place
+  with what it said and why it did not hold.
+
+  **The gap of case (b), recorded and not closed.** The commands do not
+  catch a local main branch with commits of its own while the remote has
+  nothing new, and no detection is built for it, by decision: such commits
+  arise only outside this workflow, since in a session
+  `hooks/pre-tool-use-branch-guard.sh` blocks a file written with the
+  editing tool, `git commit` and `git push` on the main branch, and a branch
+  is cut only with the person there — `setup-checks` under "With nobody
+  there" and at its cut, `setup-project` step 8. No entry of this file
+  reports a run with commits of its own on the local main branch: `grep -n
+  -i 'ahead of\|local main branch has\|commit of its own on the local
+  main\|commits of its own on the\|unpushed\|not pushed' docs/roadmap.md`,
+  run on 6 October 2026, printed four lines, two on an unpushed branch of a
+  task's and two of the second addendum. It stands as a finding with this
+  should: before every fresh cut the run reads whether the local main
+  branch has commits the remote lacks, `git rev-list --count
+  origin/main..main` answering `1` in case (b), and where it has, stops,
+  cuts nothing, says how many, and the person decides whether they go to
+  the remote or onto a branch of their own.
+
+  **`build-work` step 1.** Two changes. The condition for the halt says what
+  is meant: the local main branch has commits of its own, whether the remote
+  has new ones or not — git says "ahead of" where it has not, measured in
+  case (b), and "have diverged" where it has, case (c) — where it read "If
+  they have diverged", which named the second case only while the sentence
+  after it named the first; the halt itself stands as it was. And where the
+  fetch fails on its third attempt, or the fast-forward fails, the step
+  stops with the opening for before anything begins, where until now it did
+  not say what then happens: the step is there so that no task is cut from
+  a stale main, and a base that could not be read or brought up to date is
+  one. Where the fast-forward goes through, nothing is said of it.
+
+  **After a merge.** The four places that fetch after a proven merge —
+  `build-work` step 6, `setup-project` step 8, `setup-checks` step 7, and
+  `setup-checks` step 8 after each of its own merges — stop where the fetch
+  fails on its third attempt or the fast-forward fails, with the opening for
+  after a merge, and build nothing on it; `setup-project` then offers the
+  check setup no more than on a blocked merge. The fourth place fetched and
+  switched and did not fast-forward, where step 7 said step 8 did as it
+  does; it fast-forwards now. The finding of 3 October 2026 on
+  `setup-project` step 8 describing no path for a fetch that fails is
+  repaired, with the extensions its note had taken, step 7 of `setup-checks`
+  and step 1 of `build-work`.
+
+  **A fetch is tried three times.** At every place where a fetch that fails
+  stops the run — before a fresh cut in `shared/cut-branch.md`, in
+  `build-work` step 1, at the four places after a merge, at the mark in
+  `plan-work` and `build-work`, and where a pull request reads `BEHIND` and
+  the run fetches before it rebases, `build-work` step 6, `setup-project`
+  step 8 and `setup-checks` step 7 — the fetch is tried up to three times,
+  fifteen seconds apart, every failed attempt named with the command and
+  git's message, nothing repeated in silence, and only the third failure
+  stops the run: before a cut and at the mark with the opening for before
+  anything begins, nothing cut and no mark written; in step 1 as above;
+  after a merge as above; at `BEHIND` with the opening for a pull request
+  behind its base, nothing armed and nothing merged. The ground: GitHub's
+  own checkout action does so, up to three attempts at every error with a
+  random pause of ten to twenty seconds, `actions/checkout`,
+  `src/retry-helper.ts` lines 3–5 and 25–43, used by the fetch in
+  `src/git-command-manager.ts` lines 277–318, read on 6 October 2026 at
+  `f548e57` of 20 July 2026; a fetch that fails says only that the state
+  could not be fetched just now, which passes, and without the repetition
+  one short outage stops a run with nobody there until somebody is back.
+  The rule that an error is an answer stays for everything else, and the
+  block that carries the three attempts says why a fetch is counted
+  differently, as does the shared block on a command that does not answer
+  beside its one second attempt, and the conventions under "Say when
+  something did not happen". The pause is fifteen seconds, inside the ten
+  to twenty the vendor draws at random: the jitter serves many clients
+  reaching one server at once, and here one client fetches. The rule, the
+  command, the ground and what the run says stand once, in
+  `shared/fetch-three-times.md`, inserted under "When the main branch
+  cannot be fetched or fast-forwarded" into `build-work`, `setup-project`,
+  `setup-checks` and `plan-work`, and every place that fetches points to it
+  and gives its own opening; `shared/cut-branch.md` lost its fetch line to
+  it, and `shared/mark-command.md` lost its `git fetch -q origin main &&`,
+  the fetch standing before the mark in both skills that write it and the
+  mark written only on a fetch that answered. The command: `git fetch -q
+  origin || { sleep 15; git fetch -q origin; } || { sleep 15; git fetch -q
+  origin; }`, measured on 6 October 2026 at 19:36 UTC against the remote of
+  case (g): three times `fatal: '/nonexistent/remote.git' does not appear
+  to be a git repository` with `fatal: Could not read from remote
+  repository.`, exit 128, thirty seconds from start to end. The places that
+  only read at the start of a session or a stage stay as they are: they do
+  not stop, they read the state as last fetched and say so,
+  `shared/fetch-failed.md`. Three more places fetch and were not named by
+  the addendum, each a finding with its should and none of them changed:
+  `setup-checks` step 3 reads the record on the packages with `git show
+  origin/main:docs/agents/environment.md` after a fetch and says nothing of
+  a fetch that fails; `shared/mode-set-up.md` reads the three records with
+  `git fetch -q origin main && git show origin/main:docs/agents/environment.md`,
+  where a fetch that fails shows nothing and the mode then reads as not set
+  up, a conclusion drawn from an answer that did not come; and
+  `shared/rule-not-written-down.md` computes the third exit on
+  `origin/main` after a fetch and says nothing of one that fails.
+
+  **What the run says, and the silent fast-forward.** Where the third
+  attempt fails too, or the switch or the fast-forward fails, the run says,
+  after the opening its place gives, in plain words what is in the way and
+  what the person can do about it, with the command where there is one,
+  git's message as it came, and that it goes on as soon as they say it is
+  cleared and that nothing happens until then, which "Nothing resumes on its
+  own" in the conventions asks. What is in the way is their own work, a
+  changed file or commits of their own, or something only they can do, the
+  connection or the sign-in. The German wording of the three openings and of
+  the four examples for the middle stands under "The approved wording"
+  above. The commands of the last two examples, measured on 6 October 2026
+  at 19:38 UTC with git 2.50.1 in clones as above: `git stash`, the fetch,
+  the fast-forward and `git stash pop` where the fast-forward changed
+  another line of the file — `Auto-merging README.md`, the change back in
+  the tree, `Dropped refs/stash@{0}`, exit 0; and where it changed the same
+  line — `CONFLICT (content): Merge conflict in README.md`, `The stash
+  entry is kept in case you need it again.`, exit 1, the file carrying both
+  versions for the person to resolve and the main branch standing where the
+  remote holds it; `git branch meine-commits` and `git reset --keep
+  origin/main` with the tree clean, in the state of case (c) — exit 0, the
+  main branch at the remote's commit and the own commit on
+  `meine-commits`; and with a changed file the reset would touch — `error:
+  Entry 'README.md' not uptodate. Cannot merge.`, `fatal: Could not reset
+  index file to revision 'origin/main'.`, exit 128, nothing changed; with a
+  changed file the reset would not touch, exit 0 and the change kept. Both
+  examples are entered: their commands run in every case, nothing is lost
+  in any, and what the same-line case and the refused reset come to stands
+  beside them in the shared block. And where the fast-forward goes through,
+  the run says nothing of it, in `build-work` step 1 and at the four places
+  after a merge alike: it brings only what has merged on GitHub, changes
+  nothing of theirs and asks nothing of them; the proposal in the report of
+  the second addendum to say a line there was not approved.
+
+  **The refusal on the way from planning, for conditions 6 and 7.** Where
+  `build-work` reached its unattended section from planning and refuses
+  because the install record or the record on the packages does not say
+  yes, it says, for the person who comes back: that the run without them
+  does not start; that it needs their yes, in the sentence `setup-checks`
+  step 8 puts before its second questions; where the record says no, that
+  they said no to it, as there; that `--auto` sets it up, as the line at the
+  end of Stage 1 has it; and, new against the skill, what happens without
+  the flag — the planned tasks built with them, every installation handed
+  over as a command under 6, by `build-work` step 3 point 7, and a question
+  at every check tool under 7, by `setup-checks` step 3. The wording stands
+  above and replaces the proposal of the report of the second addendum.
+
+  **The halt at `secrets` with nobody there.** Where the class cannot be set
+  up with nobody there, `setup-checks` ends the run there and says: that the
+  check for credentials committed by accident cannot be set up without
+  them; in plain words what is in the way; that this check is never
+  switched off by the run on its own, which is why the run without them
+  ends here; and that with them it goes on, the installation handed over as
+  a command. The example for the middle, a tool needing Java and a runtime
+  never installed by the run, rests on `build-work` step 3 point 7. The
+  proposal of the report said "Sie wird nie abgeschaltet", which was untrue:
+  the person can switch the class off, in `skipped (user)`, and only the run
+  never does on its own, `setup-checks` step 1.
+
+  **The line without code, and `start-work` step 4.** The finding of the
+  second addendum on the line without code is repaired: it says now that
+  once the first work that lands code has merged devloop sets the checks up
+  and then asks, since `build-work` step 6 sets the suite up after a merge
+  only where the repository has code after it; the German wording stands
+  above with the replaced form beside it. And the ways to step 4 of
+  `start-work` are four, where the second addendum named three: a project
+  set up without code whose code came without a merge of `build-work` —
+  written and pushed by the person themselves, or merged in a pull request
+  of their own — is a way step 6 never runs for, and step 4 is the one
+  place that reads it; it stood among the ways until the second addendum
+  took it out with the reason that did not hold. The step says now that it
+  reads the state and not the way to it, so that any other way gets the
+  same answer.
+
+  **The rebase of a pull request behind its base, left open.** At the three
+  places that read `BEHIND` nothing says what happens where the rebase
+  meets a conflict, fails for another reason, or the push is rejected:
+  `grep -n -i 'conflict' skills/build-work/SKILL.md
+  skills/setup-project/SKILL.md skills/setup-checks/SKILL.md`, run on 6
+  October 2026, printed nothing. Not built here, since it needs a decision
+  of its own — who resolves a conflict, with the person there and without.
+  One finding, its note naming all three places, with this should: where
+  the rebase meets a conflict the run aborts it and the branch stays as it
+  was, and where it fails for another reason the branch stays as it was
+  too, the run stopping in both cases and saying what is in the way, the
+  files at a conflict; who resolves a conflict, with the person there and
+  without, is decided before this is built; and where the push is rejected
+  the run stops and passes the message on.
+
+  **What the attack found, by decision.** The three commands: the cut, the
+  paragraph of the second addendum, changed; the fourth case of the cut,
+  left, the measurement not touching it. Step 1: changed; the thing of 6
+  October 2026 on a main branch only behind, its note left, true; "the
+  diverged-base handover" in the conventions' account of the handover check,
+  left, that halt still among the cases. After a merge: the four places,
+  changed; `setup-checks` step 8 point 1, left, its fetch being the one
+  after each merge; `build-work` under "Unattended mode" on the tree
+  standing on the main branch as freshly fetched when step 8 returns, and
+  `plan-work` and `setup-checks` step 9 saying the same, left, true where
+  step 8 ran through. Three attempts: the ten places, changed; the shared
+  block on a command that does not answer and the conventions under "Say
+  when something did not happen", changed, so that the one second attempt
+  and the three do not compete; `shared/empty-read.md` at "the one second
+  attempt", left, a read of the platform and no fetch; `bin/devloop-setup-state`
+  and the four places that read with `--fetch`, and `hooks/session-start.sh`
+  reading without a fetch, left, by decision; the three fetch places above,
+  findings. What is said: the four skills under the new heading, changed;
+  `README.md` and the hooks' messages, left, by decision. Conditions 6 and
+  7: the refusal from planning, changed; the refusal on the direct route,
+  left, the person there and step 8 called; `README.md` under the
+  conditions, left. `secrets`: the guard-block section of `setup-checks`,
+  changed; its step 1 and the deletion list in `build-work`, left, true.
+  The line without code: `plan-work` at the line, changed; its "Missing
+  checks" item, "after the first merge that lands code", left, true already.
+  Step 4 of `start-work`: changed; `build-work` step 6 and the opening of
+  `setup-checks`, left. The handover check prints nine lines over eight
+  sites now, the one line of `shared/fetch-three-times.md` added, and the
+  conventions place it; the check on offers prints its seventeen as before.
+  Against the addendum itself: the line numbers it gives for the step 6
+  bullet on a class still `empty`, 1001–1010, name the bullet that stands at
+  1005–1014 of `663416e`; its report of the second addendum was not on the
+  disk; and the opening for before anything begins speaks of the local main
+  branch where the mark reads the remote's state and brings nothing up to
+  date — true in effect, the run cannot bring it there without the fetch,
+  and entered as approved. Not built and not a finding: what a halt of step
+  1, of step 6 after a merge or at `BEHIND` on a failed fetch comes to with
+  nobody there, which the table carries as it carried the halts before this
+  addendum, things with the note that the outcome with nobody there is not
+  stated.
+
+  **Records.** Two findings repaired, on `setup-project` step 8 and on the
+  line without code, each a defect thing sited on the line above that says
+  so, its evidence on the repairing line; five findings new — the gap of
+  case (b), the rebase of a pull request behind its base, and the three
+  fetch places; the finding on `main` written literally names `git reset
+  --keep origin/main` in the shared block among the commands; the things of
+  the changed lines re-anchored, the new shared block and the four sections
+  that insert it given their straight paths and branches, the halts with
+  nobody there their rows with empty evidence. The counts stand in the
+  addendum below, read off `git diff` over the table after the commit.
+
+  **Addendum of 6 October 2026, after the third: the tool, its self-test
+  and the nineteen checks under 0.129.0.** Run in this tree after the
+  commit that carries the third addendum, `ed7943b`, with the tree clean,
+  on 6 October 2026 at 20:02 UTC. The tool: `BROKEN RECORDS: 0`,
+  `FINDINGS: 23`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF
+  THE SEARCH SET: 0 of 2326`, exit 0, written down on its exit 0 outcome;
+  the twenty-three findings are the twenty that stood less the two
+  repaired, and the five of the third addendum. The self-test: 88 cases,
+  74 of the 74 messages asserted by a case and 0 by none, the passing line
+  as it stands above, exit 0, written down on its outcome, the tool's
+  source untouched. The nineteen checks under "Before a handover, run
+  these" printed what their sections call green, one run written down on
+  each green outcome of the nineteen: the check on offers seventeen lines
+  over the sites of 5 October 2026, their line numbers moved; the check on
+  handovers nine lines over eight sites, the ninth the one line of
+  `shared/fetch-three-times.md`, and its two things renamed to the nine
+  with their four runs, as on 5 October 2026 when the check went from
+  seven to eight; the check on the second statement its two lines; the
+  counts 2, 2 and 1, and 1 twice for the status forms; the rest silent or
+  the answer their section names. Eleven runs stop counting at `ed7943b`,
+  their units changed, none of them under 0.129.0: on the straight path of
+  `setup-checks` step 7, 25 August and 13 September 2026; of `setup-project`
+  step 8, 13 September; of `build-work` step 1, 7 September; of `build-work`
+  under "Unattended mode", 7, 13 and 14 September, and of `plan-work` under
+  "With nobody there", 14 September, through `shared/mark-command.md`
+  inserted there; of `plan-work` Stage 1, 6, 11 and 14 September. The four
+  runs of the two repaired guards named in the addendum after the first
+  stand as they stood, counting once the merge lands the version. The
+  counts of the table at `ed7943b`, read off `git diff 663416e..ed7943b --
+  docs/stock-take.tsv`: 39 thing rows added and 14 removed, the 14 the
+  re-anchored and renamed things and the 25 beyond them new — twenty-three
+  built or measured, two the repaired findings as defects; 30 not-a-thing
+  rows added and 6 removed; 6 finding rows added and 3 removed, five
+  findings new and the one on `main` written literally re-noted; the
+  twenty-one runs of this addendum come in the commit after it.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

@@ -1,6 +1,7 @@
 **The criterion is the one written above, and each finding is announced under
 it.** As the split is announced, say per finding which of the two halves it falls
-under and why — not that it is mechanical, small or routine. A word reached for
+under and why — or that its object is the check table, which is neither half
+and goes to the check setup — not that it is mechanical, small or routine. A word reached for
 at the moment of deciding reads like a criterion and is not one, and nobody can
 disagree with it because nobody can tell where it came from: measured on 6 and 7
 September 2026, an unattended run called every finding mechanical and filed none,

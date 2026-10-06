@@ -33,6 +33,10 @@ from the close.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text command-does-not-answer`
 
+## When the main branch cannot be fetched or fast-forwarded
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
+
 ## A guard's block is not a decline
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text guard-block-intro`
@@ -94,7 +98,10 @@ The files hold two kinds of content, and only one of them is yours:
   table's header and the rules for its columns, and the fixed section headings.
   These come from the templates below and go stale when the workflow changes.
 - **The project's**: the rows of the check table with their real targets and
-  statuses, the glossary, the coding rules, the notes on running it locally.
+  statuses, the glossary, the coding rules, the notes on running it locally,
+  and the three records in `environment.md` — `## Install permission`, and
+  the two the check setup writes, `## Dependency permission` and
+  `## Unattended mode`.
   These were decided here and are never overwritten.
 
 Rewrite the first kind from the current templates, leave the second untouched,
@@ -374,56 +381,20 @@ once the record this step writes has landed.
    repository is for, and this step's job is that they decide it knowing what
    holds.
 3. **Install permission** — always. A choice, put through the widget in the
-   user's language, this question alone in its call. Every point that carries
-   the decision has a field, named below, so that a reader of this skill sees
-   whether a point has a place at all; each field holds a short line, the
-   question line two sentences. Two forms stood before this one — a message of
-   its own, then prose above a widget carrying the answers — and the roadmap
+   user's language, this question alone in its call. Two forms stood before
+   this one — a message of its
+   own, then prose above a widget carrying the answers — and the roadmap
    entries of 30 September 2026 record that the question met neither in three
    runs: it came as one tab of a form beside another question each time, and
-   the points that stood only in prose did not reach the person.
+   the points that stood only in prose did not reach the person. This is the
+   first asking. Where the unattended mode is set up later and this answer
+   does not say yes, the check setup puts the question a second time, in its
+   step 8, with the other line under the no. The answer goes into
+   `environment.md` in step 6, as the section the guard reads; nothing is
+   installed on it here. What the question covers, and nothing else:
 
-   What the question covers, and nothing else:
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-question`
 
-   - **In the question line: the subject and its scope, then what a yes also
-     lets through.** Tools that land outside the project on this machine, and
-     that the answer holds for this project. Directly behind the subject, not
-     at the end of the line where a cut strikes first: through a package
-     manager the guard sees the verb and not what is installed, so a yes to
-     tools also lets through a command that installs a runtime — the point
-     that reached the person in none of three runs, once not at all and twice
-     cancelled by the assurance that followed it.
-   - **In the yes, label and line: what a yes means.** From then on the run
-     installs such a tool by itself, with them there and with nobody there,
-     without asking again.
-   - **In the no, label and line: where a no leads, with them there.** Nothing
-     is installed without them; where a tool is missing they get the command
-     for it and decide themselves.
-   - **In the header: a word for the subject.** It carries no point of the
-     decision.
-
-   Two things stay out of the question, on purpose. That compilers and
-   runtimes stay theirs under every answer is a rule on the run — "Runtimes
-   are not a kind the permission may cover" in `docs/skill-conventions.md` —
-   and not an assurance the guard holds; both runs of 30 September 2026
-   lifted it out of the leak and delivered it as one, so the leak is said and
-   the assurance is not. And where a no leads with nobody there — nothing is
-   asked; the task becomes an issue carrying the exact command, or a check
-   class goes `skipped` with that reason, not `empty` and not open — names a
-   mode the person has not met at this point and is a rule on the run, which
-   stands where it is applied: `build-work` step 3 point 7, where a no on
-   record is the decline, and `setup-checks` step 3.
-
-   The examples of such a tool — a code generator, a migration command, a
-   checker — carry no decision and have no field. The standard is that
-   nothing in the question implies something untrue, not that everything true
-   is said: what the project declares stands in step 2's report, which kind
-   of place each route reaches is the run's own reading in step 6, and where
-   the record is written and that every session reads it is said in step 9.
-   Give no recommendation. The answer goes into `environment.md` in step 6,
-   as the section the guard reads; nothing is installed on it here. The
-   wording approved on 3 October 2026 stands in the roadmap entry of that
-   date; this skill says what is said, not the words.
 4. **Local environment** — always where there is code, unless you could read it
    all from `docker-compose.yml` or the README. Which processes, in what order,
    on what ports.
@@ -484,7 +455,7 @@ run it says so.
 Read by shell scripts. Keep the column count and order exactly. This skill
 writes the header and the nine rows, every one of them `empty`, in a project
 with code as in one without; no other status comes from here. `filled` and
-`skipped: <reason>` are the check setup's to write, and its rules for them
+the two forms of `skipped` are the check setup's to write, and its rules for them
 stand there.
 
     ---
@@ -523,12 +494,18 @@ stand there.
   `-` means the class has no target that way, which is every row written here.
 - `Files`: comma-separated glob patterns; `-` means it applies to everything.
 - `Duration`: rough, like `<1s`, `20s`, `4min`. It decides where the class runs.
-- `Status` takes only `filled`, `empty`, or `skipped: <reason>`. `empty` means
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text status-forms`
+
+- That sentence is all the `Status` column takes, spelled exactly: two guards
+  read the column and name a cell in any other form. `empty` means
   nobody has judged the class yet, and it is what every row says when this
-  file is written, with code as without. `filled` and `skipped` are decisions
+  file is written, with code as without. `filled` and the two forms of
+  `skipped` are decisions
   the check setup records, under its own rules — a target that exists, calls a
-  real checking tool and has been seen going red, or a reason the class finds
-  nothing here; a reason is one line, plain ASCII, no `|`, because the parsers
+  real checking tool and has been seen going red, a state of the project or
+  of this machine that keeps the class off, or the user's own reason; a
+  reason is one line, plain ASCII, no `|`, because the parsers
   split the row on it by position. Never guess a status, and never write one
   here.
 - `Blocking` is `yes` or `no` on a row whose `Status` is `filled`, and `-` on
@@ -683,49 +660,22 @@ if none, that merges are held by the question at the end of a build and by
 nothing else, so the user performs them; and what would change that, where
 anything would.
 
-Also the answer to question 3 of step 4, under a heading of its own, `## Install
-permission`, in the shape the install guard and the session-start hook read it —
-one key and one value per line, spelled exactly, ASCII only, since a script
-reads the start of each line:
+Also the answer to question 3 of step 4:
 
-    ## Install permission
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-record`
 
-    install-tools: yes
-    install-place: /usr/local/bin
-    install-place: /usr/local/sbin
-    install-place: /opt
-    install-place: ~/.local/bin
-    install-place: ~/bin
-    install-place: ~/go/bin
-    install-route: cargo
-    install-route: pip
-    install-answered: YYYY-MM-DD
-
-`install-tools` is the answer, `yes` or `no` and nothing else. The six
-`install-place` lines are the places a yes opens in this version, written as
-they stand here under either answer, so that the file says what a yes would
-open where the answer is no. The `install-route` lines are the routes this
-project's stack has, read here by the run off what the project declares and
-the lockfiles beside it, one line per route and none for a route the stack
-does not have, the two above standing as an example; with no stack, none. The
-reading is this run's own work and is not put to the user: ask each route
-where it puts things, as the guard does, and write its line either way, since
-the guard asks again at the moment of every command; a route of the stack
-that does not answer on this machine is named in the pull request body of
-step 8, so that the fact is known before the first install meets it as a
-block. Each is a name from the eleven the guard resolves, `brew`, `go`, `npm`,
-`pnpm`, `yarn`, `bun`, `cargo`, `gem`, `pipx`, `uv`, `pip`. A route named
-here opens the directory that route answers on the machine the run is on, read
-at the moment of the command and written nowhere, so that the answer holds on
-another machine and under another version of the tool; a route not named here
-is held against the `install-place` lines.
-The route lines are written under either answer, like the places.
-`install-answered` is the date the question was answered. The guard and the
-session-start hook read this section off the default branch as last fetched,
-never off the working tree, so it counts once step 8 has landed it there and
-fetched it back. Nothing is installed during this setup — no class is filled
+Here that pull request is step 8's. Nothing is installed during this setup —
+no class is filled
 here — so the first install a project meets is the check setup's, after step
 8, with the record in front of the guard.
+
+Two more sections of this file are not written here. `## Dependency
+permission` holds the answer on whether the run may enter check tools in the
+project's dependency file, and `## Unattended mode` the answer on whether
+work may run in this repository with nobody there. The check setup puts both
+questions and writes both sections, in the same shape, and it rewrites the
+answer of the install record where the question is put a second time. A
+refresh leaves all three sections as they stand.
 
 ## Step 7 — Pointer block in CLAUDE.md
 
@@ -761,8 +711,19 @@ anything on top of it. A report of success is not evidence, and the git log
 immediately after arming is not evidence either: the platform has not merged at
 that moment, so the log can only carry it after a fetch, once the platform says
 it did. **Once the merge is proven, fetch, fast-forward the local main branch
-and switch to it, before anything follows.** The check setup that follows in a
-project with code cuts its branch from there, and the install guard reads the
+and switch to it, and delete `devloop-setup` locally and, where it still
+stands there, on the remote, before anything follows.** The fetch is tried
+three times, by the command under "When the main branch cannot be fetched or
+fast-forwarded" above; where the third attempt fails too, or the
+fast-forward fails, stop as that section says, opening with that the merge
+has landed on GitHub and nothing is lost, and that only the local main
+branch cannot be brought to that state, and the check setup is not offered,
+as it is not on a blocked merge below: nothing is built on a main branch
+not brought to the state that landed. The check setup that
+follows in a project with code cuts its branch from there; a refresh cuts
+under this step's own name, and a branch a squash merge left standing keeps
+a commit of its own, so that the cut would switch back to it; and the install
+guard reads the
 record off the main branch as last fetched — a merge proven at the platform is
 not yet fetched, and measured on 28 September 2026 a yes landed on `origin` and
 not yet fetched blocked, then passed after the fetch. If a check gate blocks
@@ -798,7 +759,12 @@ as a gate already passed. `UNKNOWN` is a missing answer rather than a state:
 GitHub computes mergeability when it is asked for, so read again a few seconds
 later and use that second value; a second `UNKNOWN` is not read a third time.
 `BEHIND` means the branch is behind the base and the required check ran against a
-state that is not what would be merged — fetch, rebase onto the base and
+state that is not what would be merged — fetch, three attempts, by the
+command under "When the main branch cannot be fetched or fast-forwarded"
+above, and where the third fails too, stop as that section says, opening
+with that the pull request has to be brought up to the latest state of the
+main branch before it can be merged and that this is not possible just now,
+nothing armed and no merge handed over; then rebase onto the base and
 force-push, which lands nothing anywhere and is not the merge this step may not
 perform, and the next reading is `BLOCKED` with arming accepted. Measured on 30
 August 2026 on a pull request seven days old: `UNKNOWN` first, `BEHIND` on the

@@ -91,7 +91,9 @@ is reported done.
 **Review.** Several reviewers in parallel, each with one lens — this project's
 standards, faithfulness to the spec, security, migrations, test quality, failure
 behaviour. Findings are kept apart and never ranked against each other. Obvious
-fixes are made; anything that would revisit a decision is filed as an issue.
+fixes are made; anything that would revisit a decision is filed as an issue; a
+finding about the check table goes to the check setup for that class instead
+of being fixed on the spot.
 
 **Merge and verify.** Pull request, set to merge when the gates pass, then prove
 at the platform that it did — not a report of success, and not a git log read
@@ -123,20 +125,29 @@ check suite.
 Without the flag you are asked once, at the end of the sharpening, how this piece
 of work should run, and the three answers differ by where you are needed:
 everything built without you; the plan made without you and put in front of you
-before anything is built; or everything put to you as it arises. That question
-is only asked where this repository allows the mode at all — the check setup
-offers it once and records your answer — and it is skipped where you typed the
-flag, which is the first of those given up front.
+before anything is built; or everything put to you as it arises.
+That question is only asked where the mode is set up in this repository. The
+check setup offers to set it up, and where you said no, typing the flag later
+offers it again. Where you typed the flag, the question is skipped, since the
+flag is the first of those answers given up front.
 
 It refuses to go alone unless every check class is configured or explicitly
-recorded as not applicable, a failing gate genuinely blocks a merge on the
-remote, and the repository can merge without a person present — which needs
-auto-merge enabled and a required check for it to wait on. Those are conditions
-for the run being able to finish, not judgements about it: without them it would
-build a task and then sit on a pull request nobody is there to merge. They are
-read where you are asked, so the question is not put and then found to have had
-one answer, and read again where the build starts, since the route straight to a
-build has no question and the state can change in between. Attended runs are
+switched off with a reason, a failing gate genuinely blocks a merge on the
+remote, the repository can merge without a person present — which needs
+auto-merge enabled and a required check for it to wait on — no task in scope
+waits on something outside it, the kinds of command the run needs are approved
+for this project, and you have allowed it both to install the tools it needs
+outside the project and to add check tools to your dependency file. Where you
+said no to either, setting up the mode asks you again, and the mode is set up
+only once you have said yes to both. Those are conditions for the run being
+able to finish, not judgements about it: without them it would build a task and
+then sit on a pull request nobody is there to merge, wait at a prompt nobody is
+there to answer, start a task it cannot finish, stop at a tool it may not
+install, or leave a check off that the work has made necessary. All but the
+one about the tasks, which do not exist yet, are read where you are asked, so
+the question is not put and then found to have had one answer, and all of them
+are read again where the build starts, since the route straight to a build has
+no question and the state can change in between. Attended runs are
 unaffected either way. There is no cap on how many tasks it gets through: it runs until
 nothing in scope is ready any more, and picks up work that turns up along the way
 where it serves the same goal. What bounds a single task is the turn-end hook,
@@ -169,19 +180,27 @@ task names is broken on purpose once, to see the check that guards it go red, an
 what came back is written into the pull request. A check that cannot fail looks
 exactly like a check that passes.
 
-Hooks run without being asked: the check suite after every file change and at
-the end of every turn; a guard that blocks file writes, `git commit` and
-`git push` on the main branch; a guard that blocks `gh pr merge` in every form
-and leaves only the arming of auto-merge, so that the platform merges and not
-the agent; and a guard that stops a command installing outside the repository
-— a package manager, `sudo`, a copy into a bin directory, an installer piped
-from the network — and hands it to you to run, unless a record in
-`docs/agents/environment.md` on the main branch says tools may be installed
-and names the place this one lands, or the route it comes through, in which
-case the run installs it itself and reports what it did; the question that
-writes that record is put at setup, so a project whose setup did not put it —
-set up before 0.115.0, or set up empty before 0.118.0 — carries no record and
-hands every one to you. The turn-end hook
+Hooks run without being asked: after every change made with the editing tool,
+the checks for that file, and at the end of every turn, every blocking check; a
+guard that, while the main branch is checked out, blocks the editing tool's
+writes, `git commit` and a `git push` to it — a file written through the shell
+is not stopped, and a push from another branch is not read, and neither is a
+commit or push run through a git alias; a guard that blocks
+`gh pr merge` in every form and names the command that arms auto-merge instead,
+so that the platform merges and not the agent — a merge through `gh api` is not
+read; a guard on the check table that reports a status in no allowed form right
+after the editing tool writes the table, and refuses a commit while the table
+holds one — a shell command that writes the table and commits in one go is read
+before it runs, so that one commit goes through and the next is refused, and a
+commit run through a git alias is not read; and a
+guard that stops a command installing outside the repository — a package
+manager, `sudo`, a copy into a bin directory, an installer piped from the
+network — and hands it to you to run, unless a record in
+`docs/agents/environment.md` on the main branch says tools may be installed and
+names the place this one lands, or the route it comes through, in which case the
+run installs it itself and reports what it did. `sudo` and an installer piped
+from the network stay with you whatever the record says. The question that
+writes that record is put at setup. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
 than looping. What it hands you is meant to be actionable in one step: a command
 to paste, a script that gathers the environment, a smaller case that reproduces
