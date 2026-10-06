@@ -46,6 +46,10 @@ for none.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text command-does-not-answer`
 
+## When the main branch cannot be fetched or fast-forwarded
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
+
 ## A guard's block, with nobody there
 
 The shared block above says a guard's refusal is answered rather than got around,
@@ -169,16 +173,27 @@ content.
 
 ## Step 1 — Check the base
 
-Fetch and compare the local main branch with the remote. If the local branch
+Fetch — three attempts, by the command under "When the main branch cannot
+be fetched or fast-forwarded" above — and compare the local main branch
+with the remote. If the local branch
 is only behind — the remote has commits it lacks, and it has none of its own —
-fast-forward it and go on: that is what a session leaves that ended after a
+fast-forward it and go on, saying nothing of it: that is what a session leaves that ended after a
 merge before step 6 fast-forwarded, and the task is cut from the current main
-branch. If they have diverged,
-say so and stop — a task cut from a stale main lands on the wrong base. Say what
+branch. If the local branch has commits of its own — git says it is ahead
+of the remote where the remote has nothing new, and that the two have
+diverged where it has —
+say so and stop — a task cut from a stale main lands on the wrong base, and
+one cut from a main branch carrying commits the remote lacks lands on a base
+the remote does not have. Say what
 would clear it and let the user decide: the local branch has commits the
 remote does not, and reconciling them is their call, not
 something to resolve by force. Nothing is lost meanwhile; the tasks are in the
-tracker and this picks up as soon as they say the branches agree.
+tracker and this picks up as soon as they say the branches agree. Where the
+fetch fails on its third attempt, or the fast-forward fails, stop as that
+section says, opening with that the local main branch cannot be brought to
+the state GitHub holds and that nothing is begun here for that: this step
+is here so that no task is cut from a stale main, and a base that could not
+be read or brought up to date is one.
 
 **Then run the check suite on that base, before cutting anything.** It costs
 seconds and it buys the one thing no later step can recover: knowing whether the
@@ -744,7 +759,13 @@ are neither a yes nor a no:
 - `BEHIND` — the branch is behind the base branch, and the required check ran
   against a state that is not what would be merged. It appears only where the
   base branch requires branches to be up to date, so a gate exists here by
-  definition and it is never evidence of a repository without one. Fetch, rebase
+  definition and it is never evidence of a repository without one. Fetch —
+  three attempts, by the command under "When the main branch cannot be
+  fetched or fast-forwarded" above, and where the third fails too, stop as
+  that section says, opening with that the pull request has to be brought up
+  to the latest state of the main branch before it can be merged and that
+  this is not possible just now: nothing is armed and nothing is merged —
+  then rebase
   the branch onto the base, force-push it, and read `mergeStateStatus` again: it
   reads `BLOCKED` and arming is accepted. That rebase is not the merge this stage
   must not perform — it moves the base under this branch and lands nothing
@@ -981,9 +1002,16 @@ from a main branch that does not carry it.
 
 Once it has landed:
 
-- Fetch and fast-forward the local main branch. If that fails, say so and stop —
-  and say what it would take: the merge landed, so the work is safe, and only the
-  local copy is behind. Naming the divergence is enough; do not force it.
+- Fetch — three attempts, by the command under "When the main branch cannot
+  be fetched or fast-forwarded" above — and fast-forward the local main
+  branch, saying nothing of it where it goes through. Where the fetch fails
+  on its third attempt, or the fast-forward fails, stop as that section
+  says, opening with that the merge has landed on GitHub and nothing is
+  lost, and that only the local main branch cannot be brought to that
+  state; nothing below is built on it. What is in the way is said as the
+  measurement there has it — a changed file the fast-forward would change,
+  commits of their own on the local main branch while the remote has new
+  ones, the remote not reached. Do not force it.
 - Delete the merged branch locally and on the remote. Nothing does it for you:
   arming auto-merge carries no branch deletion, and whether the repository
   deletes head branches on merge is its own setting.
@@ -1132,7 +1160,18 @@ main branch as freshly fetched: on a yes read all seven again and go on to
 the mark; on a no build this task with them there, as without the flag.
 Where this section was reached from planning, nobody is there to ask: refuse,
 say which of the five is missing and that typing `--auto` where a piece of
-work starts sets it up, and delete the mark. Conditions 1, 3 and 4 are
+work starts sets it up, and delete the mark. For conditions 6 and 7 the
+refusal says, for the person who comes back: that the run without them does
+not start; that it needs their yes — to installing tools outside the
+project, for 6, or to adding check tools to the project's packages itself,
+for 7 — in the sentence step 8 of `setup-checks` puts before its second
+questions; where the record says no, that they said no to it, as there;
+that `--auto` sets it up; and what happens without the flag — the run builds
+the planned tasks with them and, under 6, hands them every installation as a
+command they run themselves, by step 3 point 7, or, under 7, asks them at
+every check tool whether it may add it, by step 3 of `setup-checks`. The
+wording approved on 6 October 2026 stands in the roadmap entry of 5 October
+2026; this skill says what is said, not the words. Conditions 1, 3 and 4 are
 nothing that step can put right: say what would help there, as before.
 
 **Then the mark.** Where this run came through planning, `.claude/unattended.local`
@@ -1146,7 +1185,13 @@ that wrote it was told to halt before the build and never cleared its mark; that
 is the same case. The planning stage deletes such a mark instead when it picks
 a plan up, and the difference is who is in the room: there somebody is, here
 nobody may be. Where no mark exists, this is the direct route: write one now,
-with a shell command, since the tree stands on the main branch:
+with a shell command, since the tree stands on the main branch. First the
+fetch, three attempts, by the command under "When the main branch cannot be
+fetched or fast-forwarded" above; where the third fails too, stop as that
+section says, opening with that the local main branch cannot be brought to
+the state GitHub holds and that nothing is begun here for that — the run
+without them does not begin, and no mark is written. On a fetch that
+answered, the mark:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 

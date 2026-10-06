@@ -18,22 +18,35 @@ cases holds before cutting, three off git and one off the platform — `git
 branch --list devloop-setup`, with `devloop-checks` or `devloop-unattended`
 in its place — and act on that one. In the first three the cut is a fresh
 one, and since 6 October 2026 it is made from the main branch as the remote
-holds it: fetch, read whether the main branch stands on the remote, and
-where it does, switch to it and fast-forward it before the cut below —
+holds it: fetch — three attempts, by the command under "When the main branch
+cannot be fetched or fast-forwarded" in this skill — read whether the main
+branch stands on the remote, and where it does, switch to it and
+fast-forward it before the cut below —
 
-    git fetch -q origin
     git rev-parse -q --verify origin/main
     git switch main && git merge --ff-only origin/main
 
-— the second line printing the commit where the branch stands there and
-nothing, exit 1, where it does not, and the third running only where it
+— the first line printing the commit where the branch stands there and
+nothing, exit 1, where it does not, and the second running only where it
 does. This stands here because the setup that lands by the person's hand,
 as a first one does, may end its session before the fetch after the merge,
 and `git switch main` alone then cuts from the state before it. Where the
-fetch, the switch
-or the fast-forward fails, for whatever reason — a commit of its own on the
-local main branch, a working tree that is not clean — stop and say why,
-with git's message as it came; nothing is cut on top of it. Where no main
+fetch fails on its third attempt, or the switch or the fast-forward fails,
+stop and say so as that section says, opening with that the local main
+branch cannot be brought to the state GitHub holds and that nothing is
+begun here for that; nothing is cut on top of it. What fails and what does
+not, measured on 6 October 2026 with git 2.50.1: a commit of its own on the
+local main branch fails the fast-forward only where the remote has new
+commits too, `fatal: Not possible to fast-forward, aborting.`; where the
+remote has nothing new, the fast-forward answers `Already up to date.`,
+exit 0, and the cut is then made from the local main branch with that
+commit on it and not from the main branch as the remote holds it — a gap
+recorded in the roadmap entry of 5 October 2026, its third addendum, and
+not closed here. A working tree that is not clean fails the fast-forward
+only where a changed file is one the fast-forward would change, `error:
+Your local changes to the following files would be overwritten by merge`; a
+changed or new file it does not touch goes through with it and stays as it
+was. Where no main
 branch stands on the remote yet, as in a repository `setup-project` created
 without a commit, there is nothing to fast-forward, and the cut is made
 from the main branch as it stands. The cases:

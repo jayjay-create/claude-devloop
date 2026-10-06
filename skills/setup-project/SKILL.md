@@ -33,6 +33,10 @@ from the close.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text command-does-not-answer`
 
+## When the main branch cannot be fetched or fast-forwarded
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
+
 ## A guard's block is not a decline
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text guard-block-intro`
@@ -708,7 +712,14 @@ immediately after arming is not evidence either: the platform has not merged at
 that moment, so the log can only carry it after a fetch, once the platform says
 it did. **Once the merge is proven, fetch, fast-forward the local main branch
 and switch to it, and delete `devloop-setup` locally and, where it still
-stands there, on the remote, before anything follows.** The check setup that
+stands there, on the remote, before anything follows.** The fetch is tried
+three times, by the command under "When the main branch cannot be fetched or
+fast-forwarded" above; where the third attempt fails too, or the
+fast-forward fails, stop as that section says, opening with that the merge
+has landed on GitHub and nothing is lost, and that only the local main
+branch cannot be brought to that state, and the check setup is not offered,
+as it is not on a blocked merge below: nothing is built on a main branch
+not brought to the state that landed. The check setup that
 follows in a project with code cuts its branch from there; a refresh cuts
 under this step's own name, and a branch a squash merge left standing keeps
 a commit of its own, so that the cut would switch back to it; and the install
@@ -748,7 +759,12 @@ as a gate already passed. `UNKNOWN` is a missing answer rather than a state:
 GitHub computes mergeability when it is asked for, so read again a few seconds
 later and use that second value; a second `UNKNOWN` is not read a third time.
 `BEHIND` means the branch is behind the base and the required check ran against a
-state that is not what would be merged — fetch, rebase onto the base and
+state that is not what would be merged — fetch, three attempts, by the
+command under "When the main branch cannot be fetched or fast-forwarded"
+above, and where the third fails too, stop as that section says, opening
+with that the pull request has to be brought up to the latest state of the
+main branch before it can be merged and that this is not possible just now,
+nothing armed and no merge handed over; then rebase onto the base and
 force-push, which lands nothing anywhere and is not the merge this step may not
 perform, and the next reading is `BLOCKED` with arming accepted. Measured on 30
 August 2026 on a pull request seven days old: `UNKNOWN` first, `BEHIND` on the

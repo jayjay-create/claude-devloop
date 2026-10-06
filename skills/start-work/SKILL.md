@@ -221,16 +221,24 @@ as the setup does — say two things, in their language: the project is set
 up, and not every check is decided yet, so that comes first. Then run
 `setup-checks`, and continue. Do not ask: an undecided check approves
 nothing, and the offer of the unattended mode in that skill's step 8 is
-reached only once no class is `empty`. Three ways lead here — a setup that
+reached only once no class is `empty`. Four ways lead here, and this step
+reads the state and not the way to it, so that any other way gets the same
+answer — a setup that
 landed before its check setup ran; a session that ended after a merge
 before `build-work` step 6 read the table, which is where a project set up
 without code gets its suite once the first merge lands code, and where the
-classes a first work left `empty` are filled, after every merge; and a
+classes a first work left `empty` are filled, after every merge; a
 check setup in which the person chose some classes first, in
 `setup-checks` step 2, and whose session ended before its step 9 took up
-the rest — and all three get the same answer, since none leaves anything
+the rest; and a project set up without code whose code came without a
+merge of `build-work` — written and pushed by the person themselves, or
+merged in a pull request of their own — for which step 6 never runs, so
+that this step is the one place that reads it — and all four get the same
+answer, since none leaves anything
 to decide. Until 6 October 2026 this read no row `filled`, so a table with
-rows `filled` beside the `empty` ones waited for the next merge. The
+rows `filled` beside the `empty` ones waited for the next merge; from the
+second addendum of that day to the third, the way without a merge of
+`build-work` was not among the ways named. The
 wording approved on 6 October 2026 stands in the roadmap entry of 5
 October 2026; this skill says what is said, not the words.
 

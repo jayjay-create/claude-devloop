@@ -357,7 +357,14 @@ was run, and the message that came back in its place. One second attempt is
 allowed and reporting is not owed twice — where the second answers, the run
 carries on with that answer and names the first refusal beside it. What is not
 allowed is the silent retry, because it costs nothing to make and hides that a
-step ran once without an answer. Measured on 31 August 2026 in a test project: a
+step ran once without an answer. One command is counted differently since 6
+October 2026: a fetch that something is built on — a cut, a task's base, the
+state after a merge, the mark, a rebase — gets three attempts fifteen seconds
+apart, each failure named, and only the third stops the run;
+`shared/fetch-three-times.md`, inserted into the four skills that fetch so,
+says why, with GitHub's own checkout action as the measure, and the entry of 5
+October 2026 in `docs/roadmap.md` has the reading under its third addendum.
+Measured on 31 August 2026 in a test project: a
 command was refused by the runtime's permission check — not the platform, and the
 message asks in so many words for a pause and an explanation to the user of what
 the permission is for — the run repeated it without a word, got an answer the
@@ -2314,10 +2321,12 @@ resuming on it is not by itself the defect. **What their word may not be is the
 evidence that the act succeeded.** Where the act has an outcome the run can read,
 the word releases it and the outcome decides; where what is being waited for is a
 decision of theirs, there is no outcome to read, the word is the thing itself,
-and resuming on it is the only possible form rather than a defect. Today's eight
-lines fall out like this — eight lines over seven sites, because `setup-checks`
+and resuming on it is the only possible form rather than a defect. Today's nine
+lines fall out like this — nine lines over eight sites, because `setup-checks`
 matches on two consecutive ones in its step 7; seven over six until 5 October
-2026, when its step 3 came to hand a command over:
+2026, when its step 3 came to hand a command over, and eight over seven until
+6 October 2026, when `shared/fetch-three-times.md` came to say what a run
+says where the main branch cannot be fetched or fast-forwarded:
 
 - **The outcome is read, by this sentence.** `build-work` step 3 point 7, the
   install: the tool is at the path that installer writes to, or the command did
@@ -2334,7 +2343,13 @@ matches on two consecutive ones in its step 7; seven over six until 5 October
   line is of this kind too: the install command `setup-checks` step 3 hands
   over under a record that says no or was never written, whose outcome its
   step 4 reads off the path the installer writes to, a command not run
-  leaving the class `skipped (user)`.
+  leaving the class `skipped (user)`. And so is the ninth, the one line
+  `shared/fetch-three-times.md` carries into the four skills that fetch
+  before a cut, a task's base, after a merge, at the mark or before a
+  rebase: the person clears what stood in the way — the connection, the
+  sign-in, a changed file, commits of their own — and says so, and the
+  fetch or the fast-forward is run again on their word and its outcome
+  decides.
 - **There is no outcome, and there cannot be.** `build-work`'s lifted guard
   block: what is waited for is which of two ways they want it to go. A decision
   leaves nothing on disk to look at. The word is the whole of it.

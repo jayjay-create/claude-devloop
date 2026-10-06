@@ -10987,8 +10987,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the repository has code — without code, "Der Lauf ohne dich geht in
   diesem Projekt noch nicht: Ohne dich sichern nur die Prüfungen die Arbeit
   ab, und die lassen sich erst einrichten, wenn es Code gibt. Ist die erste
-  Arbeit gemergt, richtet devloop sie ein und fragt dich dann, ob es auch
-  ohne dich arbeiten darf."; with code and classes still open, "Der Lauf
+  Arbeit mit Code gemergt, richtet devloop sie ein und fragt dich dann, ob
+  es auch ohne dich arbeiten darf.", since the third addendum of 6 October
+  2026, where from the second addendum of that day until the third it read
+  "Ist die erste Arbeit gemergt, richtet devloop sie ein und fragt dich
+  dann, ob es auch ohne dich arbeiten darf.", naming a merge of any work
+  where `build-work` step 6 sets the suite up only after a merge that lands
+  code; with code and classes still open, "Der Lauf
   ohne dich geht in diesem Projekt noch nicht: Ohne dich sichern nur die
   Prüfungen die Arbeit ab, und noch sind nicht alle eingerichtet. devloop
   holt das nach dem nächsten Merge oder beim nächsten Start nach und fragt
@@ -10999,7 +11004,58 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   why and named only the next start, where the step after a merge sets the
   suite up as well; and what `start-work` step 4 says before
   it calls the check setup, "Das Projekt ist eingerichtet, aber noch nicht
-  alle Prüfungen sind entschieden. Das kommt zuerst."
+  alle Prüfungen sind entschieden. Das kommt zuerst." Approved on 6 October
+  2026 in the third addendum of that day: what the run says where the local
+  main branch cannot be brought to the state the remote holds — the fetch
+  failing on its third attempt, the switch or the fast-forward failing —
+  three openings by the place and one middle and end. Before anything
+  begins, in the cut, in `build-work` step 1 and at the mark: "Ich kann
+  deinen lokalen Hauptzweig nicht auf den Stand von GitHub bringen, deshalb
+  fange ich hier nichts an. <in einfachen Worten, was im Weg ist und was du
+  dagegen tun kannst, mit dem Befehl, wo es einen gibt> git meldet:
+  `<Meldung von git>`. Sag Bescheid, sobald das behoben ist, dann mache ich
+  hier weiter. Bis dahin passiert nichts." After a merge, at the four places
+  that fetch after a proven merge: "Der Merge ist auf GitHub gelandet,
+  nichts ist verloren. Nur deinen lokalen Hauptzweig kann ich nicht auf
+  diesen Stand bringen. <in einfachen Worten, was im Weg ist und was du
+  dagegen tun kannst, mit dem Befehl, wo es einen gibt> git meldet:
+  `<Meldung von git>`. Sag Bescheid, sobald das behoben ist, dann mache ich
+  hier weiter. Bis dahin passiert nichts." Where a pull request is behind
+  its base and the fetch before the rebase fails on its third attempt: "Der
+  Pull Request muss auf den neuesten Stand des Hauptzweigs gebracht werden,
+  bevor er gemergt werden kann, und das geht gerade nicht. <in einfachen
+  Worten, was im Weg ist und was du dagegen tun kannst, mit dem Befehl, wo
+  es einen gibt> git meldet: `<Meldung von git>`. Sag Bescheid, sobald das
+  behoben ist, dann mache ich hier weiter. Bis dahin passiert nichts." The
+  examples approved for the middle, the run taking the one that fits its
+  case: "GitHub war bei drei Versuchen nicht erreichbar. Prüfe deine
+  Internetverbindung."; "GitHub hat die Anmeldung abgelehnt. Melde dich neu
+  an: `gh auth login`."; "In deinem Ordner ist `README.md` geändert und
+  nicht committet, und das Nachziehen würde diese Datei ändern. Leg die
+  Änderung mit `git stash` beiseite. Wenn ich fertig bin, holst du sie mit
+  `git stash pop` zurück."; "Auf deinem lokalen Hauptzweig liegen Commits,
+  die auf GitHub fehlen, und auf GitHub ist inzwischen Neues dazugekommen.
+  Leg deine Commits auf einen eigenen Zweig und bring den Hauptzweig auf den
+  Stand von GitHub: `git branch meine-commits`, danach `git reset --keep
+  origin/main`." The refusal of `build-work` on the way from planning, for
+  condition 7: "Der Lauf ohne dich startet nicht. Dafür brauche ich dein Ja,
+  Prüfwerkzeuge selbst zu den Paketen des Projekts hinzuzufügen. Mit
+  `--auto` kannst du ihn einrichten. Ohne `--auto` baue ich die geplanten
+  Aufgaben mit dir und frage dich bei jedem Prüfwerkzeug, ob ich es
+  hinzufügen darf."; for condition 6: "Der Lauf ohne dich startet nicht.
+  Dafür brauche ich dein Ja zum Installieren von Werkzeugen außerhalb des
+  Projekts. Mit `--auto` kannst du ihn einrichten. Ohne `--auto` baue ich
+  die geplanten Aufgaben mit dir und gebe dir jede Installation als Befehl,
+  den du selbst ausführst."; where the record says no, "Dazu hast du Nein
+  gesagt." follows the second sentence, as in `setup-checks` step 8. The
+  halt of `setup-checks` at `secrets` with nobody there: "Die Prüfung, ob
+  versehentlich Zugangsdaten committet wurden, lässt sich ohne dich nicht
+  einrichten. <in einfachen Worten, was im Weg ist> Diese Prüfung schalte
+  ich nie von mir aus ab, deshalb endet der Lauf ohne dich hier. Mit dir
+  zusammen geht es weiter: Dann gebe ich dir die Installation als Befehl,
+  den du selbst ausführst.", with the example approved for the middle "Das
+  Werkzeug `<Name>` bräuchte Java, und eine Laufzeitumgebung installiere ich
+  nie selbst."
 
   **Two more start conditions.** New: `install-tools: yes` and
   `dependency-tools: yes` are conditions 6 and 7 of the list under
@@ -11753,9 +11809,18 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and fast-forwards it before the cut: `git fetch -q origin`, `git
   rev-parse -q --verify origin/main`, `git switch main && git merge
   --ff-only origin/main`. Where the fetch, the switch or the fast-forward
-  fails, for whatever reason — a commit of its own on the local main
-  branch, a working tree that is not clean — it stops and says why, with
-  git's message, and cuts nothing on top of it. Where no main branch stands
+  fails, it stops and says why, with git's message, and cuts nothing on top
+  of it; which cases fail stands measured in the third addendum of 6
+  October 2026 below — a commit of its own on the local main branch fails
+  the fast-forward only where the remote has new commits too, and a working
+  tree that is not clean only where a changed file is one the fast-forward
+  would change. Until that addendum this paragraph read, written from the
+  commands and from no measurement, "fails, for whatever reason — a commit
+  of its own on the local main branch, a working tree that is not clean —",
+  which did not hold: with nothing new on the remote the fast-forward
+  answers `Already up to date.`, exit 0, and the cut is made from the local
+  main branch with its commit on it, and a changed or new file the
+  fast-forward does not touch goes through with it. Where no main branch stands
   on the remote yet, as in a repository `setup-project` created without a
   commit, nothing is fast-forwarded and the cut is made from the main
   branch as it stands. The ground: in the landed case the session ended
@@ -11825,6 +11890,299 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of 7 September 2026 on the straight path of `build-work` step 1 no longer
   counts, that unit changed in `c6182a9`, and the thing stands as built,
   never walked, until a run on it is recorded.
+
+  **Third addendum of 6 October 2026: the three commands before a fresh cut
+  measured, a fetch tried three times, what the run says where the main
+  branch cannot be brought up to date, and six wordings.** On the same
+  branch, the version unchanged at 0.129.0. The third addendum to the order
+  of 5 October 2026 was held against the code and against a measurement
+  before anything was written: the commands of the second addendum were run
+  in the seven cases it named and in three more, the commands of two of its
+  examples in five, places searched by subject, situations written out.
+  Nothing undecided and no two places against each other came out; what the
+  measurement showed against what the second addendum had written stands
+  corrected in place above and below. The report of the second addendum,
+  `~/devloop-nachtrag2-2026-10-06-bau.md`, was not on the disk when this one
+  began, nor in the trash, and what it held was taken from the second
+  addendum above. Nothing ran on a bench.
+
+  **What the three commands do before a fresh cut, measured.** On 6 October
+  2026 at 19:36 UTC with git 2.50.1, outside this repository, with a bare
+  repository of its own as remote and a fresh clone for every case, the
+  three lines of `shared/cut-branch.md` as the second addendum built them,
+  `git fetch -q origin`, `git rev-parse -q --verify origin/main`, `git
+  switch main && git merge --ff-only origin/main`, each with its output and
+  exit code and then whether the local main branch stood where the remote
+  held it. (a) The local main branch only behind: fast-forwarded, exit 0,
+  standing where the remote holds it. (b) A commit of its own on the local
+  main branch and nothing new on the remote: `Your branch is ahead of
+  'origin/main' by 1 commit.`, `Already up to date.`, exit 0 — nothing
+  fails, and the local main branch keeps its commit, one ahead of the
+  remote, so a cut made then is from a main branch the remote does not
+  hold. (c) A commit of its own and a new commit on the remote: `Your branch
+  and 'origin/main' have diverged`, `fatal: Not possible to fast-forward,
+  aborting.`, exit 128, nothing changed. (d) A changed, uncommitted file the
+  fast-forward also changes, the tree on the main branch: `error: Your local
+  changes to the following files would be overwritten by merge: README.md`,
+  `Aborting`, exit 1, the main branch left behind by one; the same with the
+  tree on a branch `devloop-checks`, where `git switch main` carries the
+  change over, `Switched to branch 'main'`, and the merge refuses the same
+  way. (e) A changed and a new file the fast-forward does not touch, on the
+  main branch and on `devloop-checks` alike: fast-forwarded, exit 0, both
+  files as they were. (f) No main branch on the remote and no local commit:
+  the fetch exit 0, `git rev-parse -q --verify origin/main` printing nothing
+  with exit 1; the third line, which the rule does not run then, would
+  answer `fatal: invalid reference: main`, exit 128; `git switch -c
+  devloop-setup` then answers `Switched to a new branch 'devloop-setup'`,
+  exit 0. (g) A remote that is not reachable, a path that does not exist:
+  `fatal: '/nonexistent/remote.git' does not appear to be a git
+  repository`, `fatal: Could not read from remote repository.`, exit 128;
+  a port nothing listens on, `http://127.0.0.1:9/remote.git`: `fatal:
+  unable to access ... Failed to connect to 127.0.0.1 port 9 after 0 ms:
+  Couldn't connect to server`, exit 128; in both the second and the third
+  line, run for the measurement alone, answer on the stale `origin/main`,
+  `Already up to date.`, which is why the rule stops at the fetch. So of the
+  two reasons the second addendum gave for a failure, each holds in one
+  case and not in the other: a commit of its own fails the fast-forward in
+  (c) and passes it in (b), a working tree that is not clean fails it in (d)
+  and passes it in (e). `shared/cut-branch.md` says what fails and what does
+  not, and the paragraph of the second addendum above is corrected in place
+  with what it said and why it did not hold.
+
+  **The gap of case (b), recorded and not closed.** The commands do not
+  catch a local main branch with commits of its own while the remote has
+  nothing new, and no detection is built for it, by decision: such commits
+  arise only outside this workflow, since in a session
+  `hooks/pre-tool-use-branch-guard.sh` blocks a file written with the
+  editing tool, `git commit` and `git push` on the main branch, and a branch
+  is cut only with the person there — `setup-checks` under "With nobody
+  there" and at its cut, `setup-project` step 8. No entry of this file
+  reports a run with commits of its own on the local main branch: `grep -n
+  -i 'ahead of\|local main branch has\|commit of its own on the local
+  main\|commits of its own on the\|unpushed\|not pushed' docs/roadmap.md`,
+  run on 6 October 2026, printed four lines, two on an unpushed branch of a
+  task's and two of the second addendum. It stands as a finding with this
+  should: before every fresh cut the run reads whether the local main
+  branch has commits the remote lacks, `git rev-list --count
+  origin/main..main` answering `1` in case (b), and where it has, stops,
+  cuts nothing, says how many, and the person decides whether they go to
+  the remote or onto a branch of their own.
+
+  **`build-work` step 1.** Two changes. The condition for the halt says what
+  is meant: the local main branch has commits of its own, whether the remote
+  has new ones or not — git says "ahead of" where it has not, measured in
+  case (b), and "have diverged" where it has, case (c) — where it read "If
+  they have diverged", which named the second case only while the sentence
+  after it named the first; the halt itself stands as it was. And where the
+  fetch fails on its third attempt, or the fast-forward fails, the step
+  stops with the opening for before anything begins, where until now it did
+  not say what then happens: the step is there so that no task is cut from
+  a stale main, and a base that could not be read or brought up to date is
+  one. Where the fast-forward goes through, nothing is said of it.
+
+  **After a merge.** The four places that fetch after a proven merge —
+  `build-work` step 6, `setup-project` step 8, `setup-checks` step 7, and
+  `setup-checks` step 8 after each of its own merges — stop where the fetch
+  fails on its third attempt or the fast-forward fails, with the opening for
+  after a merge, and build nothing on it; `setup-project` then offers the
+  check setup no more than on a blocked merge. The fourth place fetched and
+  switched and did not fast-forward, where step 7 said step 8 did as it
+  does; it fast-forwards now. The finding of 3 October 2026 on
+  `setup-project` step 8 describing no path for a fetch that fails is
+  repaired, with the extensions its note had taken, step 7 of `setup-checks`
+  and step 1 of `build-work`.
+
+  **A fetch is tried three times.** At every place where a fetch that fails
+  stops the run — before a fresh cut in `shared/cut-branch.md`, in
+  `build-work` step 1, at the four places after a merge, at the mark in
+  `plan-work` and `build-work`, and where a pull request reads `BEHIND` and
+  the run fetches before it rebases, `build-work` step 6, `setup-project`
+  step 8 and `setup-checks` step 7 — the fetch is tried up to three times,
+  fifteen seconds apart, every failed attempt named with the command and
+  git's message, nothing repeated in silence, and only the third failure
+  stops the run: before a cut and at the mark with the opening for before
+  anything begins, nothing cut and no mark written; in step 1 as above;
+  after a merge as above; at `BEHIND` with the opening for a pull request
+  behind its base, nothing armed and nothing merged. The ground: GitHub's
+  own checkout action does so, up to three attempts at every error with a
+  random pause of ten to twenty seconds, `actions/checkout`,
+  `src/retry-helper.ts` lines 3–5 and 25–43, used by the fetch in
+  `src/git-command-manager.ts` lines 277–318, read on 6 October 2026 at
+  `f548e57` of 20 July 2026; a fetch that fails says only that the state
+  could not be fetched just now, which passes, and without the repetition
+  one short outage stops a run with nobody there until somebody is back.
+  The rule that an error is an answer stays for everything else, and the
+  block that carries the three attempts says why a fetch is counted
+  differently, as does the shared block on a command that does not answer
+  beside its one second attempt, and the conventions under "Say when
+  something did not happen". The pause is fifteen seconds, inside the ten
+  to twenty the vendor draws at random: the jitter serves many clients
+  reaching one server at once, and here one client fetches. The rule, the
+  command, the ground and what the run says stand once, in
+  `shared/fetch-three-times.md`, inserted under "When the main branch
+  cannot be fetched or fast-forwarded" into `build-work`, `setup-project`,
+  `setup-checks` and `plan-work`, and every place that fetches points to it
+  and gives its own opening; `shared/cut-branch.md` lost its fetch line to
+  it, and `shared/mark-command.md` lost its `git fetch -q origin main &&`,
+  the fetch standing before the mark in both skills that write it and the
+  mark written only on a fetch that answered. The command: `git fetch -q
+  origin || { sleep 15; git fetch -q origin; } || { sleep 15; git fetch -q
+  origin; }`, measured on 6 October 2026 at 19:36 UTC against the remote of
+  case (g): three times `fatal: '/nonexistent/remote.git' does not appear
+  to be a git repository` with `fatal: Could not read from remote
+  repository.`, exit 128, thirty seconds from start to end. The places that
+  only read at the start of a session or a stage stay as they are: they do
+  not stop, they read the state as last fetched and say so,
+  `shared/fetch-failed.md`. Three more places fetch and were not named by
+  the addendum, each a finding with its should and none of them changed:
+  `setup-checks` step 3 reads the record on the packages with `git show
+  origin/main:docs/agents/environment.md` after a fetch and says nothing of
+  a fetch that fails; `shared/mode-set-up.md` reads the three records with
+  `git fetch -q origin main && git show origin/main:docs/agents/environment.md`,
+  where a fetch that fails shows nothing and the mode then reads as not set
+  up, a conclusion drawn from an answer that did not come; and
+  `shared/rule-not-written-down.md` computes the third exit on
+  `origin/main` after a fetch and says nothing of one that fails.
+
+  **What the run says, and the silent fast-forward.** Where the third
+  attempt fails too, or the switch or the fast-forward fails, the run says,
+  after the opening its place gives, in plain words what is in the way and
+  what the person can do about it, with the command where there is one,
+  git's message as it came, and that it goes on as soon as they say it is
+  cleared and that nothing happens until then, which "Nothing resumes on its
+  own" in the conventions asks. What is in the way is their own work, a
+  changed file or commits of their own, or something only they can do, the
+  connection or the sign-in. The German wording of the three openings and of
+  the four examples for the middle stands under "The approved wording"
+  above. The commands of the last two examples, measured on 6 October 2026
+  at 19:38 UTC with git 2.50.1 in clones as above: `git stash`, the fetch,
+  the fast-forward and `git stash pop` where the fast-forward changed
+  another line of the file — `Auto-merging README.md`, the change back in
+  the tree, `Dropped refs/stash@{0}`, exit 0; and where it changed the same
+  line — `CONFLICT (content): Merge conflict in README.md`, `The stash
+  entry is kept in case you need it again.`, exit 1, the file carrying both
+  versions for the person to resolve and the main branch standing where the
+  remote holds it; `git branch meine-commits` and `git reset --keep
+  origin/main` with the tree clean, in the state of case (c) — exit 0, the
+  main branch at the remote's commit and the own commit on
+  `meine-commits`; and with a changed file the reset would touch — `error:
+  Entry 'README.md' not uptodate. Cannot merge.`, `fatal: Could not reset
+  index file to revision 'origin/main'.`, exit 128, nothing changed; with a
+  changed file the reset would not touch, exit 0 and the change kept. Both
+  examples are entered: their commands run in every case, nothing is lost
+  in any, and what the same-line case and the refused reset come to stands
+  beside them in the shared block. And where the fast-forward goes through,
+  the run says nothing of it, in `build-work` step 1 and at the four places
+  after a merge alike: it brings only what has merged on GitHub, changes
+  nothing of theirs and asks nothing of them; the proposal in the report of
+  the second addendum to say a line there was not approved.
+
+  **The refusal on the way from planning, for conditions 6 and 7.** Where
+  `build-work` reached its unattended section from planning and refuses
+  because the install record or the record on the packages does not say
+  yes, it says, for the person who comes back: that the run without them
+  does not start; that it needs their yes, in the sentence `setup-checks`
+  step 8 puts before its second questions; where the record says no, that
+  they said no to it, as there; that `--auto` sets it up, as the line at the
+  end of Stage 1 has it; and, new against the skill, what happens without
+  the flag — the planned tasks built with them, every installation handed
+  over as a command under 6, by `build-work` step 3 point 7, and a question
+  at every check tool under 7, by `setup-checks` step 3. The wording stands
+  above and replaces the proposal of the report of the second addendum.
+
+  **The halt at `secrets` with nobody there.** Where the class cannot be set
+  up with nobody there, `setup-checks` ends the run there and says: that the
+  check for credentials committed by accident cannot be set up without
+  them; in plain words what is in the way; that this check is never
+  switched off by the run on its own, which is why the run without them
+  ends here; and that with them it goes on, the installation handed over as
+  a command. The example for the middle, a tool needing Java and a runtime
+  never installed by the run, rests on `build-work` step 3 point 7. The
+  proposal of the report said "Sie wird nie abgeschaltet", which was untrue:
+  the person can switch the class off, in `skipped (user)`, and only the run
+  never does on its own, `setup-checks` step 1.
+
+  **The line without code, and `start-work` step 4.** The finding of the
+  second addendum on the line without code is repaired: it says now that
+  once the first work that lands code has merged devloop sets the checks up
+  and then asks, since `build-work` step 6 sets the suite up after a merge
+  only where the repository has code after it; the German wording stands
+  above with the replaced form beside it. And the ways to step 4 of
+  `start-work` are four, where the second addendum named three: a project
+  set up without code whose code came without a merge of `build-work` —
+  written and pushed by the person themselves, or merged in a pull request
+  of their own — is a way step 6 never runs for, and step 4 is the one
+  place that reads it; it stood among the ways until the second addendum
+  took it out with the reason that did not hold. The step says now that it
+  reads the state and not the way to it, so that any other way gets the
+  same answer.
+
+  **The rebase of a pull request behind its base, left open.** At the three
+  places that read `BEHIND` nothing says what happens where the rebase
+  meets a conflict, fails for another reason, or the push is rejected:
+  `grep -n -i 'conflict' skills/build-work/SKILL.md
+  skills/setup-project/SKILL.md skills/setup-checks/SKILL.md`, run on 6
+  October 2026, printed nothing. Not built here, since it needs a decision
+  of its own — who resolves a conflict, with the person there and without.
+  One finding, its note naming all three places, with this should: where
+  the rebase meets a conflict the run aborts it and the branch stays as it
+  was, and where it fails for another reason the branch stays as it was
+  too, the run stopping in both cases and saying what is in the way, the
+  files at a conflict; who resolves a conflict, with the person there and
+  without, is decided before this is built; and where the push is rejected
+  the run stops and passes the message on.
+
+  **What the attack found, by decision.** The three commands: the cut, the
+  paragraph of the second addendum, changed; the fourth case of the cut,
+  left, the measurement not touching it. Step 1: changed; the thing of 6
+  October 2026 on a main branch only behind, its note left, true; "the
+  diverged-base handover" in the conventions' account of the handover check,
+  left, that halt still among the cases. After a merge: the four places,
+  changed; `setup-checks` step 8 point 1, left, its fetch being the one
+  after each merge; `build-work` under "Unattended mode" on the tree
+  standing on the main branch as freshly fetched when step 8 returns, and
+  `plan-work` and `setup-checks` step 9 saying the same, left, true where
+  step 8 ran through. Three attempts: the ten places, changed; the shared
+  block on a command that does not answer and the conventions under "Say
+  when something did not happen", changed, so that the one second attempt
+  and the three do not compete; `shared/empty-read.md` at "the one second
+  attempt", left, a read of the platform and no fetch; `bin/devloop-setup-state`
+  and the four places that read with `--fetch`, and `hooks/session-start.sh`
+  reading without a fetch, left, by decision; the three fetch places above,
+  findings. What is said: the four skills under the new heading, changed;
+  `README.md` and the hooks' messages, left, by decision. Conditions 6 and
+  7: the refusal from planning, changed; the refusal on the direct route,
+  left, the person there and step 8 called; `README.md` under the
+  conditions, left. `secrets`: the guard-block section of `setup-checks`,
+  changed; its step 1 and the deletion list in `build-work`, left, true.
+  The line without code: `plan-work` at the line, changed; its "Missing
+  checks" item, "after the first merge that lands code", left, true already.
+  Step 4 of `start-work`: changed; `build-work` step 6 and the opening of
+  `setup-checks`, left. The handover check prints nine lines over eight
+  sites now, the one line of `shared/fetch-three-times.md` added, and the
+  conventions place it; the check on offers prints its seventeen as before.
+  Against the addendum itself: the line numbers it gives for the step 6
+  bullet on a class still `empty`, 1001–1010, name the bullet that stands at
+  1005–1014 of `663416e`; its report of the second addendum was not on the
+  disk; and the opening for before anything begins speaks of the local main
+  branch where the mark reads the remote's state and brings nothing up to
+  date — true in effect, the run cannot bring it there without the fetch,
+  and entered as approved. Not built and not a finding: what a halt of step
+  1, of step 6 after a merge or at `BEHIND` on a failed fetch comes to with
+  nobody there, which the table carries as it carried the halts before this
+  addendum, things with the note that the outcome with nobody there is not
+  stated.
+
+  **Records.** Two findings repaired, on `setup-project` step 8 and on the
+  line without code, each a defect thing sited on the line above that says
+  so, its evidence on the repairing line; five findings new — the gap of
+  case (b), the rebase of a pull request behind its base, and the three
+  fetch places; the finding on `main` written literally names `git reset
+  --keep origin/main` in the shared block among the commands; the things of
+  the changed lines re-anchored, the new shared block and the four sections
+  that insert it given their straight paths and branches, the halts with
+  nobody there their rows with empty evidence. The counts stand in the
+  addendum below, read off `git diff` over the table after the commit.
 
 ## Decisions taken against
 

@@ -48,6 +48,10 @@ the user just asked for. Do not improvise around it either.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text command-does-not-answer`
 
+## When the main branch cannot be fetched or fast-forwarded
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
+
 ## Before anything: what is already built
 
 **Run the in-flight query from `docs/agents/issue-tracker.md` — the whole
@@ -214,7 +218,13 @@ from.
 **The mark.** When a run steps out of the flow — at the end of Stage 1, on an
 answer that sends it alone or on `--auto` — it writes the mark, with a shell
 command and not the editing tool, since the tree stands on the main branch at
-that moment and the branch guard blocks the editing tool there on purpose:
+that moment and the branch guard blocks the editing tool there on purpose.
+First the fetch, three attempts, by the command under "When the main branch
+cannot be fetched or fast-forwarded" above; where the third fails too, stop
+as that section says, opening with that the local main branch cannot be
+brought to the state GitHub holds and that nothing is begun here for that —
+the run without them does not begin, and no mark is written. On a fetch
+that answered, the mark:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
@@ -293,8 +303,10 @@ line in one of two forms, by whether the repository has code — count source
 files outside config and docs, as the setup does. Without code: that work
 cannot run without them in this project yet, because without them only the
 checks secure the work and those can be set up only once there is code, and
-that once the first work has merged devloop sets them up and then asks
-whether it may work without them too. With code and classes still open:
+that once the first work that lands code has merged devloop sets them up
+and then asks whether it may work without them too — `build-work` step 6
+sets the suite up after a merge only where the repository has code after
+it. With code and classes still open:
 that work cannot run without them in this project yet, because without
 them only the checks secure the work and not all of them are set up yet,
 and that devloop catches that up after the next merge or at the next start

@@ -70,6 +70,10 @@ that called. Everything else below applies unchanged.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text command-does-not-answer`
 
+## When the main branch cannot be fetched or fast-forwarded
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
+
 ## A guard's block is not a decline
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text guard-block-intro`
@@ -80,9 +84,18 @@ that called. Everything else below applies unchanged.
   nobody there, there is no one to ask: the class goes `skipped (state)`, the
   state being what this machine lacks and the block names, and the report
   names it. `secrets` is the exception it always is — it is
-  never `skipped`, so there the run stops with the reason named instead,
-  and the run that called ends with it: the mark is deleted, as the list of
-  its deletion sites in `build-work` says since 6 October 2026.
+  never `skipped` on a run's own judgement, so there the run stops instead
+  and says, for the person who comes back: that the check for credentials
+  committed by accident cannot be set up without them; in plain words what
+  is in the way — the tool would need a runtime, Java say, and a runtime is
+  never installed by the run, the rule step 3 below and `build-work` step 3
+  point 7 carry; that this check is never switched off by the run on its
+  own, which is why the run without them ends here; and that with them it
+  goes on, the run then handing them the installation as a command they run
+  themselves. The run that called ends with it: the mark is deleted, as the
+  list of its deletion sites in `build-work` says since 6 October 2026. The
+  wording approved on 6 October 2026 stands in the roadmap entry of 5
+  October 2026; this skill says what is said, not the words.
 - **The command is not an install and the guard matched on text.** Then nothing
   is blocking the class, and `skipped` would be an entry that is not true: a
   class standing as skipped while nothing hinders it, which the next reader takes
@@ -609,7 +622,12 @@ state: GitHub computes mergeability when it is asked for, so read again a few
 seconds later and use that second value instead of making a case out of the
 first; a second `UNKNOWN` is not read a third time. `BEHIND` means the branch is
 behind the base and the required check ran against a state that is not what would
-be merged — fetch, rebase onto the base and force-push, which lands nothing
+be merged — fetch, three attempts, by the command under "When the main
+branch cannot be fetched or fast-forwarded" above, and where the third
+fails too, stop as that section says, opening with that the pull request
+has to be brought up to the latest state of the main branch before it can
+be merged and that this is not possible just now, nothing armed and no
+merge handed over; then rebase onto the base and force-push, which lands nothing
 anywhere and is not the merge this step may not perform, and the next reading is
 `BLOCKED` with arming accepted. Measured on 30 August 2026 on a pull request
 seven days old: `UNKNOWN` first, `BEHIND` on the second reading.
@@ -643,7 +661,13 @@ top of an unmerged suite.
 **Once the merge is proven, on either way to it: fetch, fast-forward the
 local main branch and switch to it, and delete `devloop-checks` locally and,
 where it still stands there, on the remote** — as `setup-project` step 8 does
-after its merge, and step 8 below after each of its own. Everything after
+after its merge, and step 8 below after each of its own. The fetch is tried
+three times, by the command under "When the main branch cannot be fetched or
+fast-forwarded" above; where the third attempt fails too, or the
+fast-forward fails, stop as that section says, opening with that the merge
+has landed on GitHub and nothing is lost, and that only the local main
+branch cannot be brought to that state, and build nothing on it — step 8 is
+not reached. Everything after
 this step then stands on the main branch as freshly fetched, where the
 install guard reads the record and where step 8 cuts; and a later cut under
 this name meets no landed branch, which a squash merge leaves with a commit
@@ -903,9 +927,15 @@ step stands wherever the run stood when the flag was typed. As few pull
 requests as point 1
 allows, each landed the way step 7 lands one: armed where a gate stands,
 and handed to them to merge where none does yet, since they are here. After
-every merge that is proven: fetch, switch to the main branch, delete the
+every merge that is proven: fetch — three attempts, by the command under
+"When the main branch cannot be fetched or fast-forwarded" above —
+fast-forward the main branch and switch to it, as step 7 does, delete the
 branch locally and, where it still stands there, on the remote, and only
-then cut it again for the next pull request.
+then cut it again for the next pull request. Where the fetch fails on its
+third attempt, or the fast-forward fails, stop as that section says, opening
+with that the merge has landed on GitHub and nothing is lost, and that only
+the local main branch cannot be brought to that state; nothing more is cut
+and nothing is installed under records not yet fetched.
 
 **Setting the gate up, in this order. Do not collapse it.**
 
