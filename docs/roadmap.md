@@ -11802,6 +11802,28 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   findings extended, one new. A run of 7 September 2026 on step 1 of
   `build-work` stops counting, its unit changed.
 
+  **Addendum of 6 October 2026, after the second: the tool, its self-test
+  and the nineteen checks under 0.129.0.** Run in this tree after the
+  commit that carries the second addendum, `c6182a9`, with the tree clean,
+  on 6 October 2026 at 15:19 UTC. The tool: `BROKEN RECORDS: 0`,
+  `FINDINGS: 20`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF
+  THE SEARCH SET: 0 of 2279`, exit 0, written down on its exit 0 outcome;
+  the twenty findings are the nineteen that stood and the one of the second
+  addendum. The self-test: 88 cases, 74 of the 74 messages asserted by a
+  case and 0 by none, the passing line as the first addendum of this day
+  quotes it, exit 0, written down on its outcome; the tool's source is
+  untouched. The nineteen checks under "Before a handover, run these"
+  printed what their sections call green, one run written down on each
+  green outcome: the check on offers seventeen lines over the sites of 5
+  October 2026, their line numbers moved; the check on handovers eight
+  lines over seven sites, the diverged base in `build-work` step 1 among
+  them, its line four lines further down; the check on the second
+  statement its two lines; the counts 2, 2 and 1, and 1 twice for the
+  status forms; the rest silent or the answer their section names. The run
+  of 7 September 2026 on the straight path of `build-work` step 1 no longer
+  counts, that unit changed in `c6182a9`, and the thing stands as built,
+  never walked, until a run on it is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
