@@ -91,6 +91,18 @@ than leaving a rule out quietly. The measurement this rests on is under
 "Environment constraints, measured", and with its runs in `docs/roadmap.md`
 under `## Known gaps`, the entry of 17 September 2026.
 
+**The program replaces `${CLAUDE_PLUGIN_ROOT}` in what it prints**, since 7
+October 2026, by the plugin's directory, the one above its own `bin/`. Claude
+Code substitutes that variable in a skill's own text, read on 3 October 2026
+off `code.claude.com/docs/en/skills.md` and recorded in the entry of that day
+in `docs/roadmap.md`; whether it does so in what an insert line printed is
+not measured, and need not be. A shared text that names a program of the
+plugin — `shared/fetch-three-times.md` names `bin/devloop-bounded` — writes
+`${CLAUDE_PLUGIN_ROOT}/bin/<program>` as a skill would, and the path reaches
+the model either way. `scripts/devloop-expand` prints the path as a session
+receives it; the check over copies under "Before a handover, run these" reads
+the files under `shared/` as they stand, so nothing there changes.
+
 **A shared file is a body, not a section.** Headings, and the `---` before the
 closing language block, stay in the skill; the file holds what stood under
 them. It carries no frontmatter and no heading of its own and ends in exactly
@@ -363,8 +375,10 @@ carries on with that answer and names the first refusal beside it. What is not
 allowed is the silent retry, because it costs nothing to make and hides that a
 step ran once without an answer. One command is counted differently since 6
 October 2026: a fetch that something is built on — a cut, a task's base, the
-state after a merge, the mark, a rebase — gets three attempts fifteen seconds
-apart, each failure named, and only the third stops the run;
+state after a merge, the mark, a rebase — gets three attempts, each bounded
+to thirty seconds by `bin/devloop-bounded` and ten seconds apart since 7
+October 2026, unbounded and fifteen seconds apart until then, each failure
+named, and only the third stops the run;
 `shared/fetch-three-times.md`, inserted into the four skills that fetch so,
 says why, with GitHub's own checkout action as the measure, and the entry of 5
 October 2026 in `docs/roadmap.md` has the reading under its third addendum.
@@ -1265,6 +1279,48 @@ each merged by the platform between forty-five seconds and two minutes later, an
 the run stood still in all four until the user wrote a word. The rule is about
 who is being waited for, not about waiting. `build-work` step 6 carries the
 unattended form, with the bound on it and what a red check there means.
+
+**A command that reaches the time limit of its call is not ended; it is moved
+to the background and runs on.** Read on 7 October 2026 off the changelog of
+Claude Code, `CHANGELOG.md` of `anthropics/claude-code` on GitHub: 2.0.19,
+"Auto-background long-running bash commands instead of killing them. Customize
+with BASH_DEFAULT_TIMEOUT_MS"; 2.1.210, "Improved the Bash/PowerShell tool
+message when a command hits its timeout and is auto-backgrounded, so the model
+can distinguish a hang from an explicit background request"; 2.1.285, "Changed
+background Bash and PowerShell commands to stop after a time limit (their
+`timeout` with `run_in_background`, default 30 min, max 2 h); Claude is
+notified when one is stopped"; and 2.1.288, "Changed the background command
+time limit to apply only in unattended sessions (`-p`, Agent SDK, CI, cloud);
+terminal, desktop app and VS Code sessions have no limit". The limit of a call
+is 120 seconds where nothing sets it: the Bash tool's own description, "default
+120000", read in a session of 2.1.289 on 7 October 2026 with
+`BASH_DEFAULT_TIMEOUT_MS` set neither in the environment nor under `env` in
+`~/.claude/settings.json`. Two things switch the moving off: `--bare`, under
+which "a shell command that reaches its timeout now stops instead of moving to
+the background" (2.1.286), and `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS`, which
+disables "all background task functionality including auto-backgrounding and
+the Ctrl+B shortcut" (2.1.4). Measured on 7 October 2026 at 10:44 UTC in a
+terminal session of 2.1.289 with git 2.50.1: the three attempts of
+`shared/fetch-three-times.md`, each bounded to thirty seconds, against a
+server on this machine that accepts the connection and never answers, came
+back as one call in 110 seconds with exit 124, nothing of them running on; the
+same against a remote that is not there, three times `fatal: Could not read
+from remote repository.`, exit 128, twenty seconds; and one bounded fetch
+against GitHub, which answers, back in half a second and not at the bound.
+What follows for a skill: no skill relies on the time limit ending a command,
+since in the ordinary session it does not, and a skill that repeated a command
+after the limit would start a second one beside the first, which runs on in
+the background with it. Where a skill bounds a command — the fetch in
+`shared/fetch-three-times.md`, thirty seconds an attempt, and the wait on the
+checks in `build-work` step 6, 100 seconds a call — the command runs under
+`bin/devloop-bounded`, which ends it after a fixed number of seconds, with
+everything it started, and says so in one line with exit 124, as GNU `timeout`
+would, and `timeout` is not on a stock macOS; the bound is chosen so that the
+whole call stays under the 120 seconds. For every other command that may run
+past the limit — a long test suite, an install — this set says nothing yet,
+and `shared/command-does-not-answer.md` allows one second attempt that would
+run beside the first; the addendum of 7 October 2026 to the audit of that day
+in `docs/roadmap.md` records it as a finding.
 
 **A rule in the run's own memory can close a route the skills allow.** Measured
 on 25 August 2026: before arming auto-merge, a run stopped itself and cited a

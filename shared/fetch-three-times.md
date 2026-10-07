@@ -1,45 +1,54 @@
 **A fetch that something here is built on is tried three times before it
-counts as failed**, fifteen seconds apart, and nothing is repeated in
-silence: every attempt that fails is named with the command and the message
-git gave. Only the third failure stops the run, and what it says then is
+counts as failed**, each attempt bounded to thirty seconds and ten seconds
+apart, and nothing is repeated in silence: every attempt that fails is named
+with the command and the message git gave, or the line of the program that
+ended it. Only the third failure stops the run, and what it says then is
 given at each place. The command, whose output carries the message of every
-attempt that failed and whose exit code is the last attempt's:
+attempt that failed and whose exit code is the last attempt's; each attempt
+runs under `bin/devloop-bounded`, which ends it after thirty seconds, the
+bound `bin/devloop-setup-state` sets for its own fetch:
 
-    git fetch -q origin || { sleep 15; git fetch -q origin; } || { sleep 15; git fetch -q origin; }
+    ${CLAUDE_PLUGIN_ROOT}/bin/devloop-bounded 30 git fetch -q origin || { sleep 10; ${CLAUDE_PLUGIN_ROOT}/bin/devloop-bounded 30 git fetch -q origin; } || { sleep 10; ${CLAUDE_PLUGIN_ROOT}/bin/devloop-bounded 30 git fetch -q origin; }
 
-Measured on 6 October 2026 with git 2.50.1 against a remote that is not
+Measured on 7 October 2026 with git 2.50.1 against a remote that is not
 there: three times `fatal: Could not read from remote repository.`, exit
-128, thirty seconds. A fetch that does not come back is a failed attempt
-too: the command ends on the harness's own time limit, with no message of
-git's, and that is what is named in the message's place. The attempts still
-owed — three less those the output shows made, the one that hung among them
-— are then made one at a time, `sleep 15; git fetch -q origin` each, until
-three have been made, and only the third's failure stops the run. The
-command above stays as it is: it makes the three by itself where each
-attempt answers. The block on a command that does not answer allows one
-second attempt; a fetch gets two more, because a fetch that fails says only
-that the remote could not be reached just now, and that may be transient,
-where every other error is an answer read for what it says. GitHub's own
-checkout action
-tries every fetch up to three times with a pause of ten to twenty seconds
-between them — `actions/checkout`, `src/retry-helper.ts` lines 3–5 and
-25–43, used by its fetch in `src/git-command-manager.ts` lines 277–318, read
-on 6 October 2026 at `f548e57` of 20 July 2026 — and without the repetition
-one short outage stops a run with nobody there until somebody is back. This
-covers the fetch before a fresh cut, before the base of a task is read,
-after a proven merge, before the mark is written and before a pull request
-behind its base is rebased. It does not cover the reading of the setup state
-at the start of a session or a stage, which `bin/devloop-setup-state
---fetch` does itself: there a fetch that fails is said and the state as last
-fetched is read, as the line under that command says.
+128, twenty seconds; until that day the attempts were unbounded and fifteen
+seconds apart, measured on 6 October 2026 the same way at thirty seconds. A
+fetch that does not come back is a failed attempt too: the program ends it
+after thirty seconds with one line, `no answer within 30 seconds: git fetch
+-q origin`, and exit 124, and that line stands in the message's place.
+Measured on 7 October 2026 against a server on this machine that accepts
+the connection and never answers: three times that line, exit 124, 110
+seconds, in one call. The bound is what keeps the three attempts under the
+time limit of one Bash call of Claude Code, 120 seconds where nothing sets
+it: a command that reaches that limit is not ended but moved to the
+background, where it runs on, and a run that repeated the fetch would start
+a second one beside it — "Environment constraints, measured" in
+`docs/skill-conventions.md`. The block on a command that does not answer
+allows one second attempt; a fetch gets two more, because a fetch that fails
+says only that the remote could not be reached just now, and that may be
+transient, where every other error is an answer read for what it says.
+GitHub's own checkout action tries every fetch up to three times with a
+pause of ten to twenty seconds between them — `actions/checkout`,
+`src/retry-helper.ts` lines 3–5 and 25–43, used by its fetch in
+`src/git-command-manager.ts` lines 277–318, read on 6 October 2026 at
+`f548e57` of 20 July 2026 — and without the repetition one short outage
+stops a run with nobody there until somebody is back. This covers the fetch
+before a fresh cut, before the base of a task is read, after a proven merge,
+before the mark is written and before a pull request behind its base is
+rebased. It does not cover the reading of the setup state at the start of a
+session or a stage, which `bin/devloop-setup-state --fetch` does itself:
+there a fetch that fails is said and the state as last fetched is read, as
+the line under that command says.
 
 **Where the third attempt fails too, or the switch to the main branch or its
 fast-forward fails, the run stops where it is, and what it says has an
 opening the place gives and three parts after it**: in plain words what is
 in the way and what they can do about it, with the command where there is
-one; git's message as it came; and that this picks up as soon as they say it
-is cleared, and that nothing happens until then — "Nothing resumes on its
-own" in `docs/skill-conventions.md`. What is in the way is either their own
+one; git's message as it came, or the program's line where the attempt was
+ended; and that this picks up as soon as they say it is cleared, and that
+nothing happens until then — "Nothing resumes on its own" in
+`docs/skill-conventions.md`. What is in the way is either their own
 work, a changed file or commits of their own, or something only they can do,
 the connection or the sign-in, which is why the run names what they can do;
 the examples approved for it are these, and the run takes the one that fits

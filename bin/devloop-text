@@ -1,5 +1,10 @@
 #!/bin/sh
-# Prints shared/<name>.md, the text a skill inserts at load.
+# Prints shared/<name>.md, the text a skill inserts at load, with every
+# ${CLAUDE_PLUGIN_ROOT} in it replaced by the plugin's directory, the one
+# above this program's bin/. Claude Code substitutes that variable in a
+# skill's own text; whether it does so in what an insert line printed is not
+# measured, and a shared text naming a program of the plugin by it has to
+# reach the model as a path either way. Since 7 October 2026.
 # See docs/skill-conventions.md, "Text shared between skills".
 set -u
 if [ $# -ne 1 ]; then
@@ -18,4 +23,8 @@ if [ ! -f "$file" ]; then
   echo "devloop-text: $file does not exist" >&2
   exit 2
 fi
-cat "$file" || exit 2
+root=$(cd "$(dirname "$0")/.." && pwd) || exit 2
+# The directory escaped for sed's replacement: a backslash, an ampersand and
+# the delimiter would otherwise be read as sed reads them.
+esc=$(printf '%s\n' "$root" | sed 's/[\&|]/\\&/g')
+sed "s|\${CLAUDE_PLUGIN_ROOT}|$esc|g" "$file" || exit 2

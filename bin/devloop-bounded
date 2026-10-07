@@ -1,0 +1,125 @@
+#!/bin/bash
+# Runs a command and ends it after a fixed number of seconds, so that no
+# command a skill bounds runs over the time limit of a Claude Code Bash call:
+# a command that reaches that limit is moved to the background and goes on
+# running there, not ended, and a skill that repeats it would start a second
+# one beside the first. GNU timeout does this and is not on a stock macOS.
+# bin/devloop-setup-state bounds its own fetch the same way; this is that
+# bounding as a program every call can use. See docs/skill-conventions.md,
+# "Environment constraints, measured", the paragraph on the time limit of a
+# call.
+#
+# Usage: devloop-bounded SECONDS COMMAND [ARGUMENT ...]
+#        devloop-bounded --self-test
+#
+# The command's output, input and exit code pass through unchanged. Where it
+# ends before the bound, this program ends with it at once: the watchdog and
+# its sleep are ended too, and nothing of them holds the output open. Where
+# it has not ended after SECONDS, it is ended with everything it started,
+# deepest first, by SIGTERM as GNU timeout does; one line goes to stderr,
+#   no answer within SECONDS seconds: COMMAND ARGUMENT ...
+# and the exit code is 124, GNU timeout's. Where the command ends in the same
+# instant the bound fires, the bound's answer stands. Ended itself, by
+# SIGTERM, SIGINT or SIGHUP, it ends the command and the watchdog first.
+# Exit 2 with one line on stderr where SECONDS is not a whole number above
+# zero or no command follows it; --self-test alone is the one exception.
+# --self-test produces every outcome above once without a network, prints
+# one line per case and exits 1 on the first that does not come out as this
+# header says. It needs bash, pgrep and sleep and no GNU tool: it runs on
+# macOS.
+set -u
+me=devloop-bounded
+
+usage() { echo "$me: $1" >&2; exit 2; }
+
+# Ends a process and everything it started, deepest first; git fetch runs its
+# transport as a child, and a child left alive holds the output pipe open.
+kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null; }
+
+selftest() {
+  local self T out rc n=0 t0 t1
+  self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-bounded.XXXXXX") || exit 1
+  trap 'rm -rf "$T"' EXIT
+  run() { t0=$SECONDS; out=$("$self" "$@" 2>&1); rc=$?; t1=$((SECONDS - t0)); }
+  fail() { echo "FAIL $1"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }
+  # expect NAME EXIT SUBSTRING...: the last run exited EXIT and printed every substring
+  expect() {
+    local name="$1" want="$2" s; shift 2; n=$((n+1))
+    [ "$rc" -eq "$want" ] || fail "$name: exit $rc, expected $want"
+    for s in "$@"; do printf '%s\n' "$out" | grep -qF -- "$s" || fail "$name: nothing holds '$s'"; done
+    echo "ok   $name"
+  }
+  absent() { printf '%s\n' "$out" | grep -qF -- "$1" && fail "$2: '$1' stands there and should not"; }
+  within() { [ "$t1" -le "$2" ] || fail "$1: took $t1 seconds, expected at most $2"; }
+  gone() { pgrep -f -- "$1" >/dev/null 2>&1 && fail "$2: a process matching '$1' still runs"; }
+  git_q() { git -c user.name=t -c user.email=t@t -c commit.gpgsign=false "$@"; }
+
+  run;                  expect "no argument: exit 2" 2 "expected SECONDS and a command, got nothing"
+  run x true;           expect "seconds not a number: exit 2" 2 "expected a whole number of seconds above zero, got 'x'"
+  run 0 true;           expect "seconds zero: exit 2" 2 "expected a whole number of seconds above zero, got '0'"
+  run -1 true;          expect "seconds negative: exit 2" 2 "expected a whole number of seconds above zero, got '-1'"
+  run 1.5 true;         expect "seconds not whole: exit 2" 2 "expected a whole number of seconds above zero, got '1.5'"
+  run 5;                expect "no command: exit 2" 2 "expected a command after the seconds"
+  run --self-test x;    expect "--self-test with another argument: not the self-test, exit 2" 2 "expected a whole number of seconds above zero, got '--self-test'"
+  # ends in time: output and exit code through, back at once, nothing of the bound left
+  run 7339 sh -c 'echo out; echo err >&2; exit 0'
+  expect "ends in time with 0: output through, exit 0" 0 "out" "err"
+  absent "no answer" "ends in time with 0: output through, exit 0"
+  within "ends in time with 0: back at once, not at the bound" 2
+  gone "sleep 7339" "ends in time with 0: nothing of the bound runs on"
+  run 7339 sh -c 'exit 3'
+  expect "ends in time with 3: exit 3 through" 3
+  absent "no answer" "ends in time with 3: exit 3 through"
+  within "ends in time with 3: back at once, not at the bound" 2
+  gone "sleep 7339" "ends in time with 3: nothing of the bound runs on"
+  t0=$SECONDS; out=$(printf 'in\n' | "$self" 7339 cat 2>&1); rc=$?; t1=$((SECONDS - t0))
+  expect "input through: cat prints what it was fed" 0 "in"
+  within "input through: back at once" 2
+  # does not end: ended with what it started, the line, 124
+  run 1 sh -c 'sleep 7331 & sleep 7333'
+  expect "does not end: ended with what it started, the line, exit 124" 124 "no answer within 1 seconds: sh -c sleep 7331 & sleep 7333"
+  absent "Terminated" "does not end: ended with what it started, the line, exit 124"
+  within "does not end: back at the bound" 3
+  gone "sleep 733[13]" "does not end: what the command started is ended too"
+  # a fetch over a transport that never answers, built as bin/devloop-setup-state builds it
+  git_q init -q "$T/repo" && git_q -C "$T/repo" remote add origin "git@localhost:devloop-bounded-selftest-$$/x.git"
+  t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_COMMAND='sh -c "sleep 7337" --' "$self" 1 git fetch -q origin 2>&1); rc=$?; t1=$((SECONDS - t0))
+  expect "a fetch over a transport that never answers: the line, exit 124" 124 "no answer within 1 seconds: git fetch -q origin"
+  within "a fetch over a transport that never answers: back at the bound" 3
+  gone "sleep 7337" "a fetch over a transport that never answers: the transport is ended"
+  gone "devloop-bounded-selftest-$$" "a fetch over a transport that never answers: the transport is ended"
+  echo "SELF-TEST PASSED: $n cases"
+  exit 0
+}
+[ $# -eq 1 ] && [ "$1" = --self-test ] && selftest
+
+[ $# -ge 1 ] || usage "expected SECONDS and a command, got nothing"
+case $1 in
+  ''|*[!0-9]*) usage "expected a whole number of seconds above zero, got '$1'" ;;
+esac
+[ "$1" -gt 0 ] || usage "expected a whole number of seconds above zero, got '$1'"
+[ $# -ge 2 ] || usage "expected a command after the seconds"
+secs=$1; shift
+
+"$@" <&0 &
+pid=$!
+# The watchdog sleeps the bound out, ends the command's tree and exits 99.
+# Ended while it sleeps, it ends its sleep and exits 143, so that nothing of
+# it runs on; its output goes nowhere, so that it holds no pipe open.
+( s=; trap 'kill "$s" 2>/dev/null; exit 143' TERM; sleep "$secs" & s=$!; wait "$s"; trap '' TERM; kill_tree "$pid"; exit 99 ) >/dev/null 2>&1 &
+wd=$!
+trap 'kill_tree "$pid"; kill "$wd" 2>/dev/null; exit 143' TERM
+trap 'kill_tree "$pid"; kill "$wd" 2>/dev/null; exit 130' INT
+trap 'kill_tree "$pid"; kill "$wd" 2>/dev/null; exit 129' HUP
+# bash reports a job ended by a signal on its stderr, "Terminated: 15"; the
+# redirect on wait keeps that off the output, the command's own stderr is
+# untouched by it.
+wait "$pid" 2>/dev/null; rc=$?
+trap - TERM INT HUP
+kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; wrc=$?
+if [ "$wrc" -eq 99 ]; then
+  echo "no answer within $secs seconds: $*" >&2
+  exit 124
+fi
+exit "$rc"
