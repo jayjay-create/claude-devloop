@@ -12553,6 +12553,31 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   as runs once a commit carries the raise, as the audit of 4 October 2026
   did under 0.128.0.
 
+  **Addendum of the same day: the tool, its self-test and the nineteen
+  checks under 0.130.0.** Run in this tree after the commit that carries
+  the raise, `b72e96c`, with the tree clean, on 7 October 2026 at 07:56
+  UTC. The tool: `BROKEN RECORDS: 0`,
+  `FINDINGS: 27`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF
+  THE SEARCH SET: 0 of 2331`, exit 0, written down on its exit 0 outcome;
+  the twenty-seven findings are the twenty-three that stood and the four of
+  this entry. The self-test at 0.130.0: `SELF-TEST PASSED: 88 cases; of the
+  74 messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none; the lines of the report
+  are not in that count`, exit 0, written down on its outcome, the source
+  of the tool untouched. The nineteen
+  checks under "Before a handover, run these" at 0.130.0 printed what their
+  sections call green, one run written down on each of the nineteen: the
+  check on offers seventeen lines over the sites of 5 October 2026, two of
+  them four lines further down in `setup-checks`; the check on handovers
+  nine lines over eight sites, the line of `shared/fetch-three-times.md`
+  eight lines further down and three of `setup-checks` four; the check on
+  the second statement its two lines; the counts 2, 2 and 1, and 1 twice
+  for the status forms; the rest silent or the answer their section names.
+  The runs the tool lists as not counting with a change of this branch are
+  the two of 3 and 4 October 2026 on `shared/install-question.md`, which
+  stopped at `9a6f33a`, the first finding above; none of this entry's
+  changes took a run out of the count.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
