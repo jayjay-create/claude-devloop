@@ -9,10 +9,18 @@ attempt that failed and whose exit code is the last attempt's:
 
 Measured on 6 October 2026 with git 2.50.1 against a remote that is not
 there: three times `fatal: Could not read from remote repository.`, exit
-128, thirty seconds. The block on a command that does not answer allows one
+128, thirty seconds. A fetch that does not come back is a failed attempt
+too: the command ends on the harness's own time limit, with no message of
+git's, and that is what is named in the message's place. The attempts still
+owed — three less those the output shows made, the one that hung among them
+— are then made one at a time, `sleep 15; git fetch -q origin` each, until
+three have been made, and only the third's failure stops the run. The
+command above stays as it is: it makes the three by itself where each
+attempt answers. The block on a command that does not answer allows one
 second attempt; a fetch gets two more, because a fetch that fails says only
-that the remote could not be reached just now, and that passes, where every
-other error is an answer read for what it says. GitHub's own checkout action
+that the remote could not be reached just now, and that may be transient,
+where every other error is an answer read for what it says. GitHub's own
+checkout action
 tries every fetch up to three times with a pause of ten to twenty seconds
 between them — `actions/checkout`, `src/retry-helper.ts` lines 3–5 and
 25–43, used by its fetch in `src/git-command-manager.ts` lines 277–318, read

@@ -140,7 +140,11 @@ forms a status takes, which two hooks carry a copy of; the install question
 field by field and the form of its record, which stood in `setup-project`
 alone until a second skill came to put the question and to write the record;
 what makes the unattended mode set up in a repository, read at three places;
-and the third way a review finding can go, to the check setup.
+and the third way a review finding can go, to the check setup; and
+`shared/fetch-three-times.md`, 6 October 2026, inserted into the four skills
+that fetch something they build on — a cut, a task's base, the state after a
+merge, the mark, a rebase — the three attempts and what the run says where
+the third fails, which "Say when something did not happen" below places.
 
 ## Numbered steps where order matters
 

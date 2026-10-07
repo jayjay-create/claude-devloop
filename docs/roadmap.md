@@ -11447,7 +11447,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and the conventions: none of them is a field, and the change is scoped to
   the fields. Two places where a run still says "dependency file" to a
   person, start condition 7 read out at a refusal and the refusal of
-  `build-work` on the way from planning, stay as they are.
+  `build-work` on the way from planning, stay as they are — as they stood
+  until later that day: the second addendum renames condition 7 by what it
+  allows, the project's packages, and the third rewords the refusal in the
+  approved wording, which says the packages too; until 7 October 2026 this
+  sentence ended on "stay as they are" and said nothing of either.
 
   **The question on a single tool has three answers in one case, and a
   command handed over and not run ends the class.** Where the tool asked
@@ -12009,7 +12013,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `src/retry-helper.ts` lines 3–5 and 25–43, used by the fetch in
   `src/git-command-manager.ts` lines 277–318, read on 6 October 2026 at
   `f548e57` of 20 July 2026; a fetch that fails says only that the state
-  could not be fetched just now, which passes, and without the repetition
+  could not be fetched just now, which may pass — until 7 October 2026 this
+  read "which passes", more than was decided, that such a failure can be
+  transient — and without the repetition
   one short outage stops a run with nobody there until somebody is back.
   The rule that an error is an answer stays for everything else, and the
   block that carries the three attempts says why a fetch is counted
@@ -12203,13 +12209,23 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   with their four runs, as on 5 October 2026 when the check went from
   seven to eight; the check on the second statement its two lines; the
   counts 2, 2 and 1, and 1 twice for the status forms; the rest silent or
-  the answer their section names. Eleven runs stop counting at `ed7943b`,
-  their units changed, none of them under 0.129.0: on the straight path of
+  the answer their section names. Eleven runs are listed as not counting
+  at `ed7943b` with the last change to their units at that commit, none of
+  them under 0.129.0: on the straight path of
   `setup-checks` step 7, 25 August and 13 September 2026; of `setup-project`
   step 8, 13 September; of `build-work` step 1, 7 September; of `build-work`
   under "Unattended mode", 7, 13 and 14 September, and of `plan-work` under
   "With nobody there", 14 September, through `shared/mark-command.md`
-  inserted there; of `plan-work` Stage 1, 6, 11 and 14 September. The four
+  inserted there; of `plan-work` Stage 1, 6, 11 and 14 September. Until 7
+  October 2026 this read "Eleven runs stop counting at `ed7943b`, their
+  units changed", which did not hold: measured that day by running the tool
+  at `bf6e0f3`, `663416e` and `ed7943b` and comparing the runs it lists as
+  not counting, none of the eleven counted at `663416e`, ten of them did not
+  count at `bf6e0f3` either, before this branch, and the run of 7 September
+  2026 on `build-work` step 1 has not counted since `c6182a9`, as the
+  addendum after the second says; what had been read was the tool's reason
+  line, which names the commit of the last change to the unit, `ed7943b`,
+  and not the commit at which a run stopped counting. The four
   runs of the two repaired guards named in the addendum after the first
   stand as they stood, counting once the merge lands the version. The
   counts of the table at `ed7943b`, read off `git diff 663416e..ed7943b --
@@ -12219,6 +12235,323 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   rows added and 6 removed; 6 finding rows added and 3 removed, five
   findings new and the one on `main` written literally re-noted; the
   twenty-one runs of this addendum come in the commit after it.
+
+- **The consistency audit of 7 October 2026 before the handover, ordered on
+  6 October 2026, read against the entry beside it: the entry of 5 October
+  2026 with its eight addenda held against itself, its records and the code
+  at `03c78af`, three statements of it corrected in place, five notes of
+  the table corrected, four findings, and the five things the order
+  settled, three built and two recorded; 7 October 2026, version 0.130.0.**
+  On `task/audit-2026-10-06`, off `03c78af`.
+
+  **What was read, and how.** The audit ran on 7 October 2026 on a branch
+  cut from `origin/main` at `03c78af`, version 0.129.0, pull request #157,
+  with the working tree clean; the installed copy stood at 0.129.0, and the
+  check under "Before you change anything, run this" printed nothing. It
+  read whole `docs/plan.md`, `docs/skill-conventions.md`, `README.md`, the
+  header of `scripts/devloop-stock-take`, the entry beside this one with
+  its eight addenda, and the entry of 4 October 2026 on the audit of that
+  day as the form of this one; the code, `git diff bf6e0f3 03c78af --
+  skills shared hooks bin scripts`, 2236 lines, whole
+  `skills/setup-checks/SKILL.md`, the sections of `build-work` and
+  `plan-work` the entry stands on, the two table guards, the branch guard,
+  `hooks/hooks.json`, `bin/devloop-check-table` and every file under
+  `shared/` the pull request added or changed; and every row of
+  `docs/stock-take.tsv` the pull request added, 482, and removed, 148, off
+  `git diff bf6e0f3 03c78af -- docs/stock-take.tsv`. The rest of the
+  roadmap it reached by search, by subject and with short texts; the
+  commands and what they printed stand in the report. The commits of the
+  branch, which the squash left off `main`, were fetched through `git
+  fetch origin pull/157/head` and checked out as worktrees at `bf6e0f3`,
+  `9a6f33a`, `4ee9aea`, `c6182a9`, `663416e` and `ed7943b`, and the tool
+  ran at each. The report stands on this machine as
+  `~/devloop-audit-2026-10-06-bau.md`, in German, and is not in the
+  repository.
+
+  **The entry against itself.** Where a later addendum changed what an
+  earlier part says, the earlier place stands corrected in place, or dated
+  with the later addendum saying it is replaced, at every place but one:
+  the first addendum of 6 October 2026 said that start condition 7 and the
+  refusal of `build-work` on the way from planning keep "dependency file"
+  and stay as they are, the second addendum renamed the condition by what
+  it allows and the third reworded the refusal, and neither named that
+  sentence; it is corrected in place below. Every number the entry names
+  was measured at the stand it names it for, and all but one hold. At
+  `9a6f33a`: `FINDINGS: 22`, `UNCOVERED LINES OF THE SEARCH SET: 0 of
+  2234`, the handover check eight lines over seven sites, the nineteenth
+  check `1` twice, the
+  check on offers seventeen lines; the twenty-two findings are twenty at
+  `bf6e0f3` less the three repaired and plus the five of the entry, read
+  off `git diff bf6e0f3 9a6f33a -- docs/stock-take.tsv`, eight finding
+  rows added and six removed, three of the eight re-anchored; and of the
+  twenty-three run rows `a7c5811` added, nineteen are the outcomes of the
+  program and the two hooks, four, seven and eight, the other four the
+  tool, its self-test, the nineteenth check and the handover check. At
+  `4ee9aea`: thirty-three cases, nine, nine, seven and eight; thirteen run
+  rows added; the tool lists three of them as not counting, their lines
+  changed at `adfec5d`, and the run of 5 October 2026 on the table guard's
+  pass beside them, the four the addendum after the third names, which
+  count again at `03c78af`. At `c6182a9`: `FINDINGS: 20`, `0 of 2279`, the
+  handover check eight lines over seven sites, the check on offers
+  seventeen, the second statement two; twenty-one run rows in `6befeaa`;
+  the run of 7 September 2026 on `build-work` step 1 newly not counting
+  there, and nowhere before; `git diff 4ee9aea c6182a9 --
+  docs/stock-take.tsv` twelve thing rows added and seven removed, nineteen
+  not-a-thing rows added and six removed, three finding rows added and two
+  removed, as `663416e` corrected the counts to. At `663416e`: `grep -n -i
+  'ahead of\|local main branch has\|commit of its own on the local
+  main\|commits of its own on the\|unpushed\|not pushed' docs/roadmap.md`
+  four lines, 385, 518, 11756 and 11771; `grep -n -i 'conflict'` over the
+  three skills nothing; the step 6 bullet on a class still `empty` at
+  1005–1014. At `ed7943b`: `FINDINGS: 23`, `0 of 2326`, the handover check
+  nine lines over eight sites, the check on offers seventeen; `git diff
+  663416e ed7943b -- docs/stock-take.tsv` thirty-nine thing rows added and
+  fourteen removed, thirty not-a-thing rows added and six removed, six
+  finding rows added and three removed; `a582708` twenty-five run rows
+  added and four removed, two thing rows added and two removed, the
+  twenty-one runs of the addendum and the four re-keyed to the renamed
+  handover things. The finding counts across the addenda add up: six
+  repaired and three new in the first, twenty-two to nineteen; two
+  extended and one new in the second, twenty; two repaired and five new in
+  the third, twenty-three. The one that does not hold: the addendum after
+  the third says eleven runs stop counting at `ed7943b`, their units
+  changed. The tool at `663416e` and at `ed7943b` lists the same
+  seventy-four runs as not counting, none new at `ed7943b`; ten of the
+  eleven it lists at `bf6e0f3` already, and the eleventh, the run of 7
+  September 2026 on `build-work` step 1, since `c6182a9`. What the eleven
+  have in common is the tool's reason line, which names the commit of the
+  last change to the unit, `ed7943b` for exactly these eleven; the
+  sentence read that commit as the one at which the runs stopped
+  counting. Corrected in place below. The records the pull request added
+  or changed say what the entry and the code say, with five notes
+  excepted: the defect on the five preconditions read at the build only
+  carried "four at the question, all five at the build" where the code
+  reads six of seven and all seven since 5 October 2026; the defect on the
+  install in `build-work` handed to the user carried "a no on record is
+  the decline with nobody there", which that day ended; the branch of
+  `setup-checks` step 3 on a command handed over and not run carried "with
+  nobody there the record's no is the decline, since 28 September 2026",
+  the same; the branch on an install under a record saying no carried
+  "built 28 September 2026" for a line written on 5 October 2026; and the
+  note of defect 15 of the entry of 4 October 2026 gains what the order
+  settled under its fourth point. All five corrected in the table. Nothing
+  else in the 482 rows reads against the entry or the code.
+
+  **The entry against the code.** Every statement of the entry and its
+  addenda about what a skill, a shared text, a hook or a program does was
+  held against the files at `03c78af`, and each holds: the four forms and
+  `bin/devloop-check-table`; the two table guards with their messages,
+  `hooks/hooks.json` starting the branch guard and the table guard on
+  `Bash(git *)`, and both guards reading `-C <path>`, `-c <name>=<value>`,
+  the six options with a value of their own, any other `--option`, `-p`
+  and `-P`; the second permission in `setup-checks` step 3, its record in
+  step 4, the three-answer case and the line on a runtime; the four ways
+  into `setup-checks`, its "With nobody there", the four cases of a row in
+  no allowed form in step 1, `secrets` never skipped on a run's own
+  judgement, the proof in step 5, step 7 fetching, fast-forwarding,
+  switching and deleting, step 8 with the records, the second questions,
+  the four points in order, the branch `devloop-unattended`, the workflow
+  file installing before it checks and the red from the code, step 9; the
+  conditions 6 and 7 of `build-work`, `shared/mode-set-up.md` at its three
+  places, the call of step 8 on the direct route and the refusal from
+  planning, the reading of the table at the end of step 4 with the
+  question on a `skipped (user)` row, the exception for the guard on the
+  table in both places, the deletion list naming the halt of the check
+  setup, the last message naming a row once, step 1 fast-forwarding a
+  branch only behind and stopping on commits of its own, step 6 after a
+  merge and at `BEHIND`; the three forms of the line at the end of Stage 1
+  and the six of seven in `plan-work`, its "Missing checks" item raising
+  no issue, the fetch before the mark in both skills with
+  `shared/mark-command.md` without its fetch; question 3 of
+  `setup-project` and its record inserted from `shared/`, step 8 deleting
+  `devloop-setup`; the four ways to step 4 of `start-work`; the task in
+  `cut-into-tasks`, the three ways in `record-lessons` and
+  `review-changes`; `shared/cut-branch.md` with its fourth case and the
+  commands before a fresh cut; `shared/fetch-three-times.md` and the
+  places that point to it; and the places the entry says it left — the
+  two parsers reading only `filled`, the install guard's message carrying
+  "with nobody there, the issue or the skip reason carries the cause
+  above", `shared/empty-read.md` at "the one second attempt", the seven
+  statements of the ways and the two more, "the first way out" and "the
+  first half". One statement could not be held against anything: that
+  the fourteen places the first addendum to the order would have reworded
+  are left, the report of that addendum,
+  `~/devloop-nachtrag-2026-10-05-bau.md`, not being on the disk;
+  `grep -rn -i 'second time\|second asking'` over the skills, the shared
+  texts, `README.md`, the conventions and the plan prints thirty-two
+  lines, and which fourteen the addendum meant cannot be read off them.
+
+  **The new decisions against the older.** For every decision of the
+  entry and its addenda the roadmap before it, the conventions, the
+  skills and the shared texts were searched by subject: the forms of a
+  skip, the dependency file, the reading after a merge, the ways of a
+  finding, the issue of the "Missing checks" item, the early exit of step
+  8, the five preconditions, the diverged base, the second attempt,
+  `secrets` never skipped, precondition 4, the benches, `git -C`, the
+  single-class route, the fast-forward, `needs-human`, the conflict at a
+  rebase, the sentence that nothing runs alone whatever was typed; the
+  commands and their lines stand in the report. Where an older decision
+  decides the same thing otherwise, the entry names it and says what
+  replaces it — the ruling of 1 October 2026 on a `(user)` row read after
+  a merge, the ruling of pull request #51 on step 6 re-reading the
+  reasons, the should of defect 11 of the entry of 4 October 2026 on a
+  hook refusing the write, the plan's "Every bench is refreshed before a
+  run on it", the early exit of 23 September 2026, "Every offer says where
+  a no leads", the one second attempt — at every place but one. The entry
+  of 6 September 2026 on the two guard false positives decided, at `git -C
+  /elsewhere push origin main`, not to read `-C`, "because `git -C` can
+  point at another repository, where blocking it would be a fresh false
+  positive. Unresolved rather than forgotten", and its thing carries that
+  line as evidence. The first addendum of 6 October 2026 reads `-C <path>`
+  in both guards and names the older decision nowhere; and the false
+  positive it declined to create exists now: measured on 7 October 2026 at
+  07:48 UTC with git 2.50.1, the branch guard fed its JSON with the
+  project standing on `main`, `git -C <another repository> commit -m x`
+  and `git -C <another repository> push origin main` both exit 2 with the
+  block, and `git -C/tmp -p commit` stands among the refusals the addendum
+  measured on 6 October 2026 as the table guard's. Which of the two
+  decisions holds needs a decision, so it stands as a finding below. The
+  older item "Precondition 4 cannot be read", of 11 September 2026, and
+  the plan's reading of it off `permission_mode` since 6 October 2026 do
+  not compete: the item carries no should, the plan names it, and the
+  thing stands with its evidence on the roadmap line, not built. The
+  "Missing checks" item's earlier form, raising an issue alone, stood in
+  the skill since 14 September 2026 and in no entry as a decision, so the
+  entry's "raises no issue" replaces text and not a ruling.
+
+  **`README.md`, `docs/plan.md` and `docs/skill-conventions.md`.** Every
+  sentence of `README.md` on what the pull request changed holds against
+  the skills and the hooks: the seven conditions and the two consequences,
+  the second asking, the flag setting the mode up, the three guards with
+  their gaps, `sudo` and a piped installer staying with the person, the
+  third way of a finding, a class skipped with its reason. Milestone 3 and
+  "Open" of `docs/plan.md` say what stands at `03c78af`: the two runs as
+  the end now reads, the three things before them recorded and not built,
+  the refresh not built and the second asking in its place, the fresh
+  project rule with its exception. Every rule the pull request changed or
+  added in `docs/skill-conventions.md` holds against the skills — the
+  consequence said at the second asking, the second permission with its
+  three ways a class goes off, the four forms and the third reader with
+  its three gaps and the options read since 6 October 2026, the fetch
+  counted differently, the sixth and seventh conditions, the nineteen
+  checks — with one list short: "What is shared today" names the third
+  kind down to the five of 5 October 2026 and not
+  `shared/fetch-three-times.md` of 6 October 2026; corrected in place.
+  Every paragraph describing the output of one of the nineteen checks
+  says what the check printed on 7 October 2026 at `03c78af`: silence
+  where silence is named, `2`, `2` and `1`, `1` twice, twelve lines on the
+  opening, one checksum line and twelve, the one line on `start-work`
+  referenced by `build-work`, seventeen lines of offers, nine handover
+  lines over eight sites as the section lists them, two lines of the
+  second statement, both as the section reads them.
+
+  **The five things the order settled.** Each was held against the code
+  before it was built, and each held as the order gave it.
+  Built: `shared/fetch-three-times.md` says that a fetch that fails says only
+  that the remote could not be reached just now, and that this may be
+  transient, where it said "and that passes"; the third addendum's "which
+  passes" is corrected in place to "which may pass", with what it read.
+  Built: `shared/fetch-three-times.md` says that a fetch that does not come
+  back is a failed attempt too — the command ending on the harness's own
+  time limit with no message of git's, which is named in the message's
+  place — and that the attempts still owed, three less those the output
+  shows made, are then made one at a time, `sleep 15; git fetch -q
+  origin` each, until three have been made, the third's failure alone
+  stopping the run; the command stands as it was.
+  Built: the halt of `setup-checks` at `secrets` with nobody there names the
+  runtime as the example of what is in the way and not the only cause, an
+  install through a route or to a place the record does not name standing
+  beside it, which the guard blocks under a yes as "With nobody there"
+  says; the approved German wording and its example stand unchanged.
+  Recorded: what a run with nobody there does at the halts the third
+  addendum of 6 October 2026 left not built and not a finding —
+  `build-work` step 1 on a fetch or a fast-forward that fails and on
+  commits of its own on the local main branch, step 6 after a merge and at
+  `BEHIND` — belongs to the order for defect 15 of the entry of 4 October
+  2026 on the two runs, together with the handovers the table carries with
+  "nothing says what a run with nobody there does", seven things on 7
+  October 2026, one of them repaired on 28 September 2026; the proposal of
+  the report of the third addendum is the starting point there and not
+  decided: the halt names its reason in the run's own message, the mark is
+  deleted, and the list of deletion sites in `build-work` names these
+  halts. The note of the record carrying defect 15 says so. Recorded, as
+  proposals and not as approved wording: three sentences from the report
+  of the third addendum, for the round on the texts a person reads. At
+  the example with `git stash`, one sentence more: "Hat GitHub dieselbe
+  Zeile geändert, meldet `git stash pop` einen Konflikt in der Datei; dann
+  entscheidest du, welche Fassung gilt. Deine Änderung bleibt bis dahin im
+  Stash." At the writing of the mark, a form of the first sentence of the
+  opening for before anything begins, since nothing is fast-forwarded
+  there: "Ich kann gerade nicht lesen, wo der Hauptzweig auf GitHub steht,
+  deshalb fange ich hier nichts an." At the example with `git reset
+  --keep`, one sentence more: "Ist dabei eine geänderte Datei im Weg,
+  verweigert `git reset --keep` und ändert nichts; leg sie dann zuerst mit
+  `git stash` beiseite."
+
+  **What this entry corrected, and why.** In the third addendum of 6
+  October 2026, "which passes" to "which may pass": more than was decided,
+  which was that such a failure can be transient. In the first addendum of
+  that day, the sentence that two places saying "dependency file" to a
+  person stay as they are: overtaken the same day by the second addendum,
+  which renamed condition 7, and by the third, which reworded the refusal,
+  neither naming it. In the addendum after the third, "Eleven runs stop
+  counting at `ed7943b`, their units changed": none of the eleven counted
+  at `663416e`, ten of them not at `bf6e0f3` either, the eleventh not
+  since `c6182a9`; the tool's reason line had been read as the commit at
+  which a run stops counting. In `docs/skill-conventions.md`, the list of
+  the third kind under "What is shared today" gains
+  `shared/fetch-three-times.md`. In `docs/stock-take.tsv`, the five notes
+  named above, each carrying since when the corrected reading holds and
+  that this audit corrected it. Nothing under `skills/`, `shared/`,
+  `hooks/`, `bin/` or `scripts/` changed beyond the three things the order
+  settled, and `README.md` did not change.
+
+  **Four findings, recorded and not built.** Each stands as a finding row
+  of `docs/stock-take.tsv` on the line it concerns, with its should.
+  First, the records paragraph of the entry of 5 October 2026 says that
+  the things of the install question stand under
+  `shared/install-question.md` and `shared/install-record.md` and not that
+  their five runs — 30 September 2026 three times, 3 and 4 October 2026 —
+  stopped counting with the move, their sites being lines of files created
+  at `9a6f33a`; the addendum after the second says so of the one run that
+  stopped at `c6182a9`; what should hold is that the paragraph says it.
+  Second, the two decisions on `git -C`, above; what should hold is that
+  the addendum says it replaces the decision of 6 September 2026 and what
+  becomes of the false positive — a `-C` naming a path outside the project
+  passing, or the block accepted with its cost named — and the evidence of
+  that entry's thing moves onto the hook line. Third, the entry on the
+  cost list and the description of the mode not reaching the second run,
+  among the entries of 6 and 7 September 2026, is answered since 5 October
+  2026 — step 8 puts the question with its cost list wherever the mode is
+  not set up, the gate standing or not, and `build-work` calls step 8
+  instead of offering the gate — and neither does the entry name it nor
+  did the thing's evidence move, so the tool reads it as not built; what
+  should hold is that the evidence moves onto the repairing lines and the
+  entry names the defect. Fourth, the same for the finding of the close of
+  the stock-take of 23 September 2026 that the first route into
+  `setup-checks` with nobody there needs a person to decline the install:
+  "With nobody there" names since 5 October 2026 the one route that exists,
+  a single class on the branch of a skill that commits with both records
+  saying yes, and the evidence stands on the status line still.
+
+  **Open.** Which decision on `git -C` holds, above. Whether the three
+  settled things and the corrections are read as the order gave them is
+  the person's to check against this entry. What the halts do with nobody
+  there goes to defect 15's order. The standalone route of step 7 stays
+  unread by a review, which milestone 5 names. The reading of start
+  condition 4 off `permission_mode` is recorded in the plan and not
+  built. The evidence moves the third and fourth findings ask for are an
+  order's work.
+
+  **Records.** Three defect things, one per thing built, sited on the
+  lines above that say so and evidenced on the repaired lines; the head of
+  this entry as part of the first. One thing new in
+  `shared/fetch-three-times.md`, the fetch that does not come back, and
+  the rationale row of that file re-anchored onto the line that carries
+  the condition word now. The five notes corrected. Four finding rows. The
+  tool, its self-test and the nineteen checks under 0.130.0 are recorded
+  as runs once a commit carries the raise, as the audit of 4 October 2026
+  did under 0.128.0.
 
 ## Decisions taken against
 
