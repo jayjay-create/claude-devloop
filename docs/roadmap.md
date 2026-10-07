@@ -12889,6 +12889,41 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and the nineteen checks under 0.130.0 after the commit that carries this
   are recorded in the addendum below.
 
+  **Addendum of the same day: the tool, its self-test, `bin/devloop-bounded
+  --self-test` and the nineteen checks under 0.130.0 at `c3adb40`.** Run
+  in this tree after the commit that carries the addendum above,
+  `c3adb40`, with the tree clean, on 7 October 2026 from 10:58 to 10:59
+  UTC. The tool: `BROKEN RECORDS: 0`, `FINDINGS: 25`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2373`, exit
+  0, written down on its exit 0 outcome; the twenty-five findings are the
+  twenty-seven that stood less the four answered plus the two of the
+  addendum. The self-test at 0.130.0 and `c3adb40`: `SELF-TEST PASSED: 88
+  cases; of the 74 messages this tool rejects, refuses or answers with,
+  read off its own source, 74 are asserted by a case and 0 by none; the
+  lines of the report are not in that count`, exit 0, the source of the
+  tool untouched. `bin/devloop-bounded --self-test`: `SELF-TEST PASSED: 12
+  cases`, exit 0, 2.29 seconds, nothing of it left running, written down
+  on its self-test outcome; that run counts only after the squash merge,
+  as the addendum above says, and so do the three of the measurements.
+  The nineteen checks under "Before a handover, run these" printed, at
+  0.130.0 and `c3adb40`, what their sections call green, one run written
+  down on each of the nineteen: the check on offers seventeen lines over
+  the sites of 5 October 2026, one of them eight lines further down in
+  `build-work`; the check on handovers nine lines over eight sites, the
+  line of `shared/fetch-three-times.md` nine lines further down and in
+  other words — "ended; and that this picks up as soon as they say it is
+  cleared, and that" where it read "one; git's message as it came; and
+  that this picks up as soon as they say it", the sentence re-wrapped
+  after "or the program's line where the attempt was ended" came in
+  before it, the same site and the same kind, the outcome read elsewhere;
+  the check on the second statement its two lines, the one in
+  `build-work` eight lines further down; the counts 2, 2 and 1, and 1
+  twice for the status forms; the check on executables silent, where it
+  had named `bin/devloop-bounded` as untracked before the commit; the
+  rest silent or the answer their section names. The runs the tool lists
+  as not counting with a change of this addendum are the five named above
+  and the three on `bin/devloop-bounded`.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
