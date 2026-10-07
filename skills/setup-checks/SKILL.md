@@ -87,12 +87,16 @@ that called. Everything else below applies unchanged.
   never `skipped` on a run's own judgement, so there the run stops instead
   and says, for the person who comes back: that the check for credentials
   committed by accident cannot be set up without them; in plain words what
-  is in the way — the tool would need a runtime, Java say, and a runtime is
-  never installed by the run, the rule step 3 below and `build-work` step 3
-  point 7 carry; that this check is never switched off by the run on its
-  own, which is why the run without them ends here; and that with them it
-  goes on, the run then handing them the installation as a command they run
-  themselves. The run that called ends with it: the mark is deleted, as the
+  is in the way — for instance a runtime the tool would need, Java say,
+  which the run never installs, the rule step 3 below and `build-work` step
+  3 point 7 carry, or an install through a route or to a place the record
+  does not name, which the guard blocks under a yes as well, as "With
+  nobody there" below says; the runtime is the example the approved wording
+  carries and not the only cause; that this check is never switched off by
+  the run on its own, which is why the run without them ends here; and that
+  with them it goes on, the run then handing them the installation as a
+  command they run themselves. The run that called ends with it: the mark
+  is deleted, as the
   list of its deletion sites in `build-work` says since 6 October 2026. The
   wording approved on 6 October 2026 stands in the roadmap entry of 5
   October 2026; this skill says what is said, not the words.

@@ -916,7 +916,7 @@ the platform merged all four between forty-five seconds and two minutes later,
 and the run stood still until the user wrote a word. So block on the checks
 instead, which needs nobody:
 
-    gh pr checks <number> --watch --interval 60
+    ${CLAUDE_PLUGIN_ROOT}/bin/devloop-bounded 100 gh pr checks <number> --watch --interval 60
 
 **The wait is bounded, and the bound is nearly always the floor.** Add up the
 `Duration` cells of the rows in `docs/agents/checks.md` that are `Blocking: yes`
@@ -932,8 +932,16 @@ is the ordinary answer and the sum is what can raise it, never lower it.
 timeout of its own (`gh pr checks --help`, gh 2.96.0, read 13 September 2026),
 and `timeout` is not on a stock macOS — `command -v timeout` came back empty on
 this machine the same day, the same trap as `head -n -1` being a GNU extension.
-Give the call a timeout of its own from whatever runs it, repeat it while time is
-left on the bound, and keep the count of time spent yourself.
+That is what `bin/devloop-bounded` is for, since 7 October 2026: the call above
+runs under it with 100 seconds, under the 120 seconds Claude Code gives one Bash
+call where nothing sets it, because a call that reaches that limit is not ended
+but moved to the background, where it runs on, and a repeat would start a second
+one beside it — "Environment constraints, measured" in
+`docs/skill-conventions.md`. A call that ends with exit 124 and the program's
+line, `no answer within 100 seconds:` and the command, means the checks are still
+running: repeat it while time is left on the bound, and keep the count of time
+spent yourself. No two calls run beside each other, because each comes back
+under the harness's limit.
 
 **The checks going green is not the merge.** GitHub merges after them, and the
 four pull requests above took between forty-five seconds and two minutes over it.
