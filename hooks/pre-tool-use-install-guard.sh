@@ -55,6 +55,33 @@ GLOBALS=$(echo "$CMD" | grep -oE '(^|[^[:alnum:]_.-])(npm|pnpm|yarn|bun)[[:space
 GLOBALS2=$(echo "$CMD" | grep -oE '(^|[^[:alnum:]_.-])(npm|pnpm|yarn|bun)[[:space:]]+global[[:space:]]+(add|install)([[:space:]]|$)' | sed -E 's/^[^[:alnum:]]*//; s/[[:space:]].*$//')
 [ -n "$GLOBALS2" ] && BEYOND=yes
 
+# The forms that fetch a tool and run it without saying install, read by name
+# alone since 8 October 2026 (docs/skill-conventions.md, the ruling of that
+# date): go run with a version suffix on its package, uvx and uv tool run, uv
+# run with --with, -w, --with-editable or --with-requirements, pipx run, pnpm
+# dlx with its aliases pnpx and pnx, pnpm create, the same and a global add
+# under pn, pnpm's short alias, yarn dlx and yarn create, gem exec, brew exec
+# and brew x, brew bundle with no subcommand, with install or upgrade, or with
+# --install on any subcommand. Under a record saying no or never written they
+# block with that record's cause; under a yes they pass without being held
+# against the places, since most land in a cache or a directory of the tool
+# that no record names. npx, npm exec, npm create, npm init, bunx, bun x, bun
+# create and docker run are not read: the first take the project's own copy
+# first and fetch only where it is missing, so the command does not say
+# whether anything is fetched, and docker run pulls into Docker's own store.
+RUN=""
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])go[[:space:]]+run([[:space:]]+-[^[:space:];|&]*)*[[:space:]]+[^[:space:];|&@-][^[:space:];|&@]*@[^[:space:];|&]+' && RUN="$RUN go-run"
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])(uvx|uv[[:space:]]+tool[[:space:]]+run)([[:space:]]|$)' && RUN="$RUN uvx"
+echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])uv[[:space:]]+run([[:space:]]+[^[:space:];|&]+)*[[:space:]]+(--with|-w|--with-editable|--with-requirements)([[:space:]=]|$)' && RUN="$RUN uv-run-with"
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])pipx[[:space:]]+run([[:space:]]|$)' && RUN="$RUN pipx-run"
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])((pnpm|pn)[[:space:]]+(dlx|create)|pnpx|pnx)([[:space:]]|$)' && RUN="$RUN pnpm-dlx"
+echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])pn[[:space:]]+(install|i|add)([[:space:]][^;|&]*)?[[:space:]](-g|--global)([[:space:]]|$)' && RUN="$RUN pn-global"
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])yarn[[:space:]]+(dlx|create)([[:space:]]|$)' && RUN="$RUN yarn-dlx"
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])gem[[:space:]]+exec([[:space:]]|$)' && RUN="$RUN gem-exec"
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])brew[[:space:]]+(exec|x)([[:space:]]|$)' && RUN="$RUN brew-exec"
+echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])brew[[:space:]]+bundle(([[:space:]]+-[^[:space:];|&]*)*([[:space:]]+(install|upgrade))?([[:space:]]+-[^[:space:];|&]*)*[[:space:]]*($|[;|&)])|[[:space:]][^;|&]*[[:space:]]--install([[:space:]]|$))' && RUN="$RUN brew-bundle"
+[ -n "$RUN" ] && BEYOND=yes
+
 # pip, in the forms that say what runs it: a pip named by a path or bare, an
 # interpreter named by a path or bare followed by -m pip, and uv pip. One that
 # installs inside the project is a dependency and sets nothing here: a pip or
@@ -127,6 +154,46 @@ echo "$CMD" | grep -qE "(^|[^[:alnum:]_.-])make([[:space:]]+[^[:space:]]+)*[[:sp
 echo "$CMD" | grep -qE "(curl|wget)[^|]*\|[[:space:]]*(sudo[[:space:]]+)?(ba)?sh([[:space:]]|$)" && { BEYOND=yes; PIPED=yes; }
 echo "$CMD" | grep -qE '(ba)?sh[[:space:]]+-c.*[$]\((curl|wget)' && { BEYOND=yes; PIPED=yes; }
 echo "$CMD" | grep -qE "<\([[:space:]]*(curl|wget)" && { BEYOND=yes; PIPED=yes; }
+
+# Browsers for tests, since 8 October 2026: the named install commands whose
+# vendors document a destination outside the repository, which is the case
+# of the ruling of 28 September 2026 in docs/skill-conventions.md. playwright
+# install in every form the vendor documents - bare or behind any runner, by
+# a path, as python -m playwright, as the .NET playwright.ps1, as the Java CLI
+# through mvn with exec.args - cypress install, and puppeteer browsers
+# install. What follows the verb up to the next separator is read: --dry-run
+# and --list install nothing and set nothing here; a branded channel is
+# installed by Playwright at the system's own location, over the browser
+# already there; install-deps, --with-deps and --install-deps install system
+# packages, which needs root; both stay the user's under every answer.
+# @puppeteer/browsers install is read for --install-deps alone: without it
+# the download lands in the current directory, the default of its --path.
+BROWSERS=""
+PW_CLI='com\.microsoft\.playwright\.CLI[^;|&]*exec\.args=[[:space:]"'"'"']*'
+PW_BIN='(^|[^[:alnum:]_.-])([^[:space:];|&]*/)?playwright(\.ps1)?(@[^[:space:];|&]+)?[[:space:]]+'
+BRANDED='chrome|msedge|chrome-beta|msedge-beta|chrome-dev|msedge-dev|chrome-canary|msedge-canary'
+PWI_RE="(${PW_CLI}|${PW_BIN})install([[:space:]][^;|&]*|[;|&)]|$)"
+if echo "$CMD" | grep -qE "$PWI_RE"; then
+  A=$(echo "$CMD" | grep -oE "$PWI_RE" | head -1 | sed -E 's/^.*install//; s/[;|&)]$//')
+  if ! printf '%s' "$A" | grep -qE -- '(^|[[:space:]])(--dry-run|--list)([[:space:]]|$)'; then
+    BEYOND=yes
+    if printf '%s' "$A" | grep -qE "(^|[[:space:]])($BRANDED)([[:space:]]|$)"; then BRAND=yes
+    elif printf '%s' "$A" | grep -qE -- '(^|[[:space:]])--with-deps([[:space:]]|$)'; then SYSPKG=yes
+    else BROWSERS="$BROWSERS playwright"; fi
+  fi
+fi
+PWD_RE="(${PW_CLI}|${PW_BIN})install-deps([[:space:]][^;|&]*|[;|&)]|$)"
+if echo "$CMD" | grep -qE "$PWD_RE"; then
+  A=$(echo "$CMD" | grep -oE "$PWD_RE" | head -1 | sed -E 's/^.*install-deps//; s/[;|&)]$//')
+  printf '%s' "$A" | grep -qE -- '(^|[[:space:]])--dry-run([[:space:]]|$)' || { BEYOND=yes; SYSPKG=yes; }
+fi
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])([^[:space:];|&]*/)?cypress(@[^[:space:];|&]+)?[[:space:]]+install([[:space:]]|[;|&)]|$)' && { BEYOND=yes; BROWSERS="$BROWSERS cypress"; }
+PP_RE='(^|[^[:alnum:]_.-])puppeteer[[:space:]]+browsers[[:space:]]+install([[:space:]][^;|&]*|[;|&)]|$)'
+if echo "$CMD" | grep -qE "$PP_RE"; then
+  BEYOND=yes
+  if echo "$CMD" | grep -oE "$PP_RE" | head -1 | grep -qE -- '[[:space:]]--install-deps([[:space:]]|$)'; then SYSPKG=yes; else BROWSERS="$BROWSERS puppeteer"; fi
+fi
+echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])@puppeteer/browsers[[:space:]]+install([[:space:]][^;|&]*)?[[:space:]]--install-deps([[:space:]]|$)' && { BEYOND=yes; SYSPKG=yes; }
 [ "${BEYOND:-no}" = "yes" ] || exit 0
 
 # Only now is the record read: this hook runs on every Bash call, and a command
@@ -151,6 +218,10 @@ else
     CAUSE="it needs sudo, which stays the user's under every answer"
   elif [ "${PIPED:-no}" = "yes" ]; then
     CAUSE="it pipes a script from the network into a shell, which stays the user's under every answer"
+  elif [ "${BRAND:-no}" = "yes" ]; then
+    CAUSE="it installs a branded browser at the system's own location, over the one already there, which stays the user's under every answer"
+  elif [ "${SYSPKG:-no}" = "yes" ]; then
+    CAUSE="it installs system packages, which needs root and stays the user's under every answer"
   else
     # Where it lands. A route named in the command is asked on this machine,
     # with the command its vendor documents for that, in this hook's own
@@ -292,6 +363,24 @@ $D" ;;
       if [ -n "$MD" ]; then DESTS="$DESTS
 $MD"; else UNREAD="$UNREAD; make install (its destination is not in the command: no PREFIX, DESTDIR or BINDIR written on the make line, so the makefile decides)"; fi
     fi
+    # Browsers for tests: the vendor's default for the system this guard runs
+    # on, read with uname -s and never from a setting of the vendor that moves
+    # it - PLAYWRIGHT_BROWSERS_PATH, CYPRESS_CACHE_FOLDER, PUPPETEER_CACHE_DIR,
+    # the vendors' configuration files - which is the decision of 8 October
+    # 2026 in docs/skill-conventions.md. Any other system is not read, and
+    # not read is a block.
+    if [ -n "$BROWSERS" ]; then
+      OS=$(uname -s 2>/dev/null)
+      for B in $BROWSERS; do
+        D=""
+        case "$OS" in
+          Darwin) case "$B" in playwright) D='~/Library/Caches/ms-playwright' ;; cypress) D='~/Library/Caches/Cypress' ;; puppeteer) D='~/.cache/puppeteer' ;; esac ;;
+          Linux) case "$B" in playwright) D='~/.cache/ms-playwright' ;; cypress) D='~/.cache/Cypress' ;; puppeteer) D='~/.cache/puppeteer' ;; esac ;;
+        esac
+        if [ -n "$D" ]; then DESTS="$DESTS
+$D"; else UNREAD="$UNREAD; $B (where it puts things is not read off this machine by this guard)"; fi
+      done
+    fi
     UNNAMED=""
     while IFS= read -r D; do
       [ -n "$D" ] || continue
@@ -313,10 +402,10 @@ $MD"; else UNREAD="$UNREAD; make install (its destination is not in the command:
       CAUSE="where it lands cannot be read here${UNREAD}; a place the record does not name stays blocked"
     elif [ -n "$UNNAMED" ]; then
       CAUSE="it lands in$UNNAMED, which the record does not name; the record names: $(printf '%s\n' "$PLACES" | tr '\n' ' ' | sed 's/ $//'); routes: $(printf '%s\n' "$RROUTES" | tr '\n' ' ' | sed 's/ $//; s/^$/none/')"
-    elif [ -z "$(printf '%s' "$DESTS" | tr -d '\n')" ] && [ "$OPENED" != "yes" ]; then
+    elif [ -z "$(printf '%s' "$DESTS" | tr -d '\n')" ] && [ "$OPENED" != "yes" ] && [ -z "$RUN" ]; then
       CAUSE="where it lands could not be read off the command"
     else
-      exit 0 # every destination named: the record opens it
+      exit 0 # every destination named, or a fetch-and-run form alone: the record opens it
     fi
   fi
 fi

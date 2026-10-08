@@ -135,7 +135,10 @@ nobody to say it has landed. Both records say yes there, since the mode does
 not start otherwise: a tool the class needs is entered in the dependency file
 or installed by the run, and step 3 asks nothing. Three things are left that
 would have been a question. A command the guard blocks under a yes — a
-runtime, a place the record does not name: "A guard's block is not a decline"
+runtime, a place the record does not name, and since 8 October 2026 a branded
+browser at the system's own location or the system packages a browser's
+`install-deps`, `--with-deps` or `--install-deps` would install: "A guard's
+block is not a decline"
 above answers it, the class going `skipped (state)` with what this machine
 lacks. A row in no allowed form whose text does not say whose decision it
 was: it becomes `skipped (user)`, named in the pull request. And a row that
@@ -396,7 +399,9 @@ wording approved on 5 October 2026 for both questions, as amended on 6
 October 2026, stands in the roadmap entry of 5 October 2026; this skill says
 what is said, not the words.
 
-**A tool that lands outside the repository is installed by this run only where
+**A tool that lands outside the repository — or, since 8 October 2026, a
+browser for tests that Playwright, Cypress or Puppeteer downloads into the
+vendor's cache — is installed by this run only where
 the install record says yes**, read where the guard reads it: the section
 `## Install permission` of `docs/agents/environment.md` on the default branch
 as last fetched, which the session-start line printed — or, in the session
@@ -405,7 +410,10 @@ that line having been printed before the record existed — never the working
 tree.
 Under a yes there is nothing to ask: step 4 runs the backed command. A
 compiler or a runtime, anything needing `sudo`, anything piping a script from
-the network into a shell, and anything landing outside the places the record
+the network into a shell, a branded browser — `chrome`, `msedge` and their
+channels — that Playwright installs at the system's own location over the one
+already there, the system packages `install-deps`, `--with-deps` or
+`--install-deps` install, and anything landing outside the places the record
 names and the directories its routes answer stay the user's under
 every answer. Where the record says no, or was
 never written, the run installs nothing, which is what the no of the install
@@ -420,6 +428,8 @@ that — the class becomes `skipped (user):` with that reason, naming the tool
 and what was declined, or both tools where the question offered another and
 they chose the check off — not `empty`. With nobody there neither record says
 no: the unattended mode does not start under one.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-and-run`
 
 ## Cut the branch, after the last question and before the first write
 

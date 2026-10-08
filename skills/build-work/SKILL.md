@@ -109,7 +109,10 @@ one rule and not as five:
 - **An install the record does not open** — step 3 point 7. With nobody there
   the record says yes: the mode does not start under a no or with no record,
   start condition 6 below. What is left is what a yes does not open — a
-  runtime, a place the record does not name, a route that does not answer —
+  runtime, a place the record does not name, a route that does not answer,
+  and since 8 October 2026 a branded browser Playwright would install at the
+  system's own location and the system packages `install-deps`,
+  `--with-deps` or `--install-deps` would install —
   and that is a block: for the task it goes as the second bullet says, and
   for a check class through `setup-checks`, which writes the cell
   `skipped (state)`. Everything else the
@@ -343,7 +346,9 @@ The subagent:
 6. Runs everything `checks.md` lists before reporting done. A report a later gate
    rejects is not a report.
 7. Installs a tool that lands outside the repository — a linter, a scanner, a
-   generator, a migration command, anything that runs and ends — only where the
+   generator, a migration command, anything that runs and ends — or, since 8
+   October 2026, a browser for tests that Playwright, Cypress or Puppeteer
+   downloads into the vendor's cache, only where the
    install record says yes, and reads the record where the guard reads it: the
    section `## Install permission` of `docs/agents/environment.md` on the
    default branch as last fetched, which the session-start line printed, never
@@ -364,7 +369,11 @@ The subagent:
    portable Ruby, updated two taps and ran a cleanup, none of it asked for,
    which is why that last part is in the report. A compiler or a runtime,
    anything needing `sudo`, anything piping a script from the network into a
-   shell, and anything landing outside the places the record names and the
+   shell, a branded browser — `chrome`, `msedge` and their channels — that
+   Playwright installs at the system's own location over the one already
+   there, the system packages `install-deps`, `--with-deps` or
+   `--install-deps` install, and anything landing outside the places the
+   record names and the
    directories its routes answer stay the user's under every answer; through
    a package manager the guard sees the
    verb and not what is installed, so a yes to tools also passes `brew install
@@ -385,6 +394,8 @@ The subagent:
    task can need that the task itself cannot do without the record's yes.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-and-run`
 
 8. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into

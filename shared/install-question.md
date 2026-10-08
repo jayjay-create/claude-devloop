@@ -4,16 +4,18 @@ field holds a short line, and nothing of the question stands in prose around
 it.
 
 - **In the question line: the subject and its scope.** Whether the run may
-  from now on install tools that land outside the project on this machine,
-  the answer holding for this project. Nothing else stands there.
+  from now on install tools and browsers for tests that land outside the
+  project on this machine, the answer holding for this project. Nothing else
+  stands there. The browsers stand in the subject since 8 October 2026, when
+  the guard came to hold their download against the record.
 - **In the yes, label and line: what a yes means.** From then on the run
-  installs such a tool by itself, without asking again.
+  installs such tools and browsers by itself, without asking again.
 - **In the no, label and line: where a no leads, which differs by where the
   question is put.** Put at the setup of the project, the first time: nothing
-  is installed without them; where a tool is missing they get the command
-  for it and decide themselves. Put where the unattended mode is set up, the
-  second time: nothing is installed without them, and work without them is
-  then not possible, every piece of work running with them.
+  is installed without them; where a tool or a browser is missing they get
+  the command for it and decide themselves. Put where the unattended mode is
+  set up, the second time: nothing is installed without them, and work
+  without them is then not possible, every piece of work running with them.
 - **In the header: a word for the subject**, of twelve characters at most,
   which is what that field holds. It carries no point of the decision.
 
@@ -32,5 +34,7 @@ The examples of such a tool — a code generator, a migration command, a
 checker — carry no decision and have no field. The standard is that nothing
 in the question implies something untrue, not that everything true is said.
 Give no recommendation. The call carries this question and no other. The
-wording approved on 5 October 2026 stands in the roadmap entry of that date;
-a skill says what is said, not the words.
+wording approved on 5 October 2026 stands in the roadmap entry of that date,
+and the wording approved on 8 October 2026, with the browsers for tests in
+the subject, the yes and the first no, in the roadmap entry of that date; a
+skill says what is said, not the words.
