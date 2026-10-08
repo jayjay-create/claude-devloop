@@ -13477,6 +13477,40 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: the two runs of milestone 3, which the plan ends with
   and which no measurement on a scratch project stands in for.
 
+  **Addendum of the same day: the tool, its self-test and the nineteen
+  checks under 0.131.0 at `c9fdd19`.** Run in this tree after the commit
+  that carries the documents and the table, `c9fdd19`, with the tree clean,
+  on 8 October 2026 from 16:20 to 16:21 UTC. The tool at 0.131.0 and
+  `c9fdd19`: `BROKEN RECORDS: 0`, `FINDINGS: 27`, `UNITS WITHOUT A STRAIGHT
+  PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2402`, exit 0, written
+  down on its exit 0 outcome; the twenty-seven findings are the twenty-five
+  that stood and the two of this entry. The self-test at 0.131.0 and
+  `c9fdd19`: `SELF-TEST PASSED: 88 cases; of the 74 messages this tool
+  rejects, refuses or answers with, read off its own source, 74 are asserted
+  by a case and 0 by none; the lines of the report are not in that count`,
+  exit 0, the source of the tool untouched. The nineteen checks under
+  "Before a handover, run these" at 0.131.0 and `c9fdd19` printed what their
+  sections call green, one run written down on each of the nineteen, and
+  every one of them printed what it printed at `89fb52e` before the first
+  change, line numbers aside: the check on offers seventeen lines over the
+  sites of 7 October 2026, the two of `build-work` eleven lines and the two
+  of `setup-checks` ten lines further down, behind the text this build
+  inserted; the check on handovers nine lines over eight sites, the three of
+  `build-work` three, nine and eleven lines further down, the three of
+  `setup-checks` eight and ten; the check on the second statement its two
+  lines, eleven and ten lines further down; the counts 2, 2 and 1, and 1
+  twice for the status forms; the rest silent or the answer their section
+  names, so that no section of the conventions had to be drawn after them.
+  The runs the tool lists as not counting with a change of this branch are
+  eleven on the guard and on `shared/install-question.md`, two of 19 September, one of 28 September, six of 29 September, one of 30 September, one of 4 October 2026, whose lines `6d5e826` changed — the measurements of 19, 28
+  and 29 September 2026 on the silent pass, the pass and the cannot-read
+  block, and the runs of the setup on the first no of the question — and
+  the one run of this entry on the thing of `npx playwright install`, two
+  lines of this entry being part of that thing and landing in `c9fdd19`,
+  after the commit that introduced 0.131.0, so that it counts after the
+  squash merge and not before; none of the other fifteen runs of this entry
+  is among them, their things standing on lines `6d5e826` carries.
+
 
 ## Decisions taken against
 
