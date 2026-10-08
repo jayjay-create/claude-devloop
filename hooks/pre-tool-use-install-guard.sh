@@ -57,29 +57,53 @@ GLOBALS2=$(echo "$CMD" | grep -oE '(^|[^[:alnum:]_.-])(npm|pnpm|yarn|bun)[[:spac
 
 # The forms that fetch a tool and run it without saying install, read by name
 # alone since 8 October 2026 (docs/skill-conventions.md, the ruling of that
-# date): go run with a version suffix on its package, uvx and uv tool run, uv
-# run with --with, -w, --with-editable or --with-requirements, pipx run, pnpm
-# dlx with its aliases pnpx and pnx, pnpm create, the same and a global add
-# under pn, pnpm's short alias, yarn dlx and yarn create, gem exec, brew exec
-# and brew x, brew bundle with no subcommand, with install or upgrade, or with
-# --install on any subcommand. Under a record saying no or never written they
-# block with that record's cause; under a yes they pass without being held
-# against the places, since most land in a cache or a directory of the tool
-# that no record names. npx, npm exec, npm create, npm init, bunx, bun x, bun
-# create and docker run are not read: the first take the project's own copy
-# first and fetch only where it is missing, so the command does not say
-# whether anything is fetched, and docker run pulls into Docker's own store.
+# date), the options before the name read since the review of pull request
+# #159 the same day: go run with a version suffix on its package, the
+# options before the package without a separate value or, for the build
+# flags that take one and for -exec, with one - -C, -p, -covermode,
+# -coverpkg, -asmflags, -buildmode, -compiler, -gccgoflags, -gcflags,
+# -installsuffix, -ldflags, -mod, -modfile, -overlay, -pgo, -pkgdir, -tags,
+# -toolexec, -exec, with one dash or two; a value in quotes with spaces in
+# it may end the reading, and the command then passes, since in doubt a run
+# with nobody there is not to be blocked, the person's principle in the
+# roadmap entry of 8 October 2026. uvx and uv tool run. uv run with --with,
+# -w, --with-editable or --with-requirements among uv's own options before
+# the command, never behind it, where they belong to the command: before
+# the option may stand options without a separate value, an attached =value
+# among them, and these with one - -p or --python, --project, --directory,
+# --package, --extra, --group, --only-group, --no-group, --env-file,
+# --index, --default-index, -i or --index-url, --extra-index-url, -f or
+# --find-links, --config-file, --cache-dir, --with, --with-editable,
+# --with-requirements; the first word that is neither an option nor the
+# value of one of these is the command, and -- ends the options too; an
+# option with a separate value that is not in that list, or a short option
+# with its value attached, -whttpx, ends the reading as well, and the
+# command then passes, by the same principle. pipx run. pnpm dlx with its
+# aliases pnpx and pnx, pnpm create, the same and a global add under pn,
+# pnpm's short alias, with options before dlx or create, --package,
+# --allow-build and -C or --dir with a separate value. yarn dlx and yarn
+# create, gem exec, brew exec and brew x. brew bundle with no subcommand,
+# with install or upgrade, or with --install on any subcommand, where
+# --file, --upgrade-formulae, --upgrade-formula and --jobs may carry a
+# separate value before and behind the subcommand. Under a record saying no
+# or never written they block with that record's cause; under a yes they
+# pass without being held against the places, since most land in a cache or
+# a directory of the tool that no record names. npx, npm exec, npm create,
+# npm init, bunx, bun x, bun create and docker run are not read: the first
+# take the project's own copy first and fetch only where it is missing, so
+# the command does not say whether anything is fetched, and docker run
+# pulls into Docker's own store.
 RUN=""
-echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])go[[:space:]]+run([[:space:]]+-[^[:space:];|&]*)*[[:space:]]+[^[:space:];|&@-][^[:space:];|&@]*@[^[:space:];|&]+' && RUN="$RUN go-run"
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])go[[:space:]]+run([[:space:]]+(--?(C|p|covermode|coverpkg|asmflags|buildmode|compiler|gccgoflags|gcflags|installsuffix|ldflags|mod|modfile|overlay|pgo|pkgdir|tags|toolexec|exec)[[:space:]]+[^[:space:];|&]+|-[^[:space:];|&]*))*[[:space:]]+[^[:space:];|&@-][^[:space:];|&@]*@[^[:space:];|&]+' && RUN="$RUN go-run"
 echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])(uvx|uv[[:space:]]+tool[[:space:]]+run)([[:space:]]|$)' && RUN="$RUN uvx"
-echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])uv[[:space:]]+run([[:space:]]+[^[:space:];|&]+)*[[:space:]]+(--with|-w|--with-editable|--with-requirements)([[:space:]=]|$)' && RUN="$RUN uv-run-with"
+echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])uv[[:space:]]+run([[:space:]]+(--[^[:space:];|&=]+(=[^[:space:];|&]*)?|-[[:alnum:]]|(-p|--python|--project|--directory|--package|--extra|--group|--only-group|--no-group|--env-file|--index|--default-index|-i|--index-url|--extra-index-url|-f|--find-links|--config-file|--cache-dir|--with|--with-editable|--with-requirements)[[:space:]]+[^[:space:];|&]+))*[[:space:]]+(--with|-w|--with-editable|--with-requirements)([[:space:]=]|$)' && RUN="$RUN uv-run-with"
 echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])pipx[[:space:]]+run([[:space:]]|$)' && RUN="$RUN pipx-run"
-echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])((pnpm|pn)[[:space:]]+(dlx|create)|pnpx|pnx)([[:space:]]|$)' && RUN="$RUN pnpm-dlx"
+echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])((pnpm|pn)([[:space:]]+((--package|--allow-build|-C|--dir)[[:space:]]+[^[:space:];|&]+|-[^[:space:];|&]*))*[[:space:]]+(dlx|create)|pnpx|pnx)([[:space:]]|$)' && RUN="$RUN pnpm-dlx"
 echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])pn[[:space:]]+(install|i|add)([[:space:]][^;|&]*)?[[:space:]](-g|--global)([[:space:]]|$)' && RUN="$RUN pn-global"
 echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])yarn[[:space:]]+(dlx|create)([[:space:]]|$)' && RUN="$RUN yarn-dlx"
 echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])gem[[:space:]]+exec([[:space:]]|$)' && RUN="$RUN gem-exec"
 echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])brew[[:space:]]+(exec|x)([[:space:]]|$)' && RUN="$RUN brew-exec"
-echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])brew[[:space:]]+bundle(([[:space:]]+-[^[:space:];|&]*)*([[:space:]]+(install|upgrade))?([[:space:]]+-[^[:space:];|&]*)*[[:space:]]*($|[;|&)])|[[:space:]][^;|&]*[[:space:]]--install([[:space:]]|$))' && RUN="$RUN brew-bundle"
+echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])brew[[:space:]]+bundle(([[:space:]]+((--file|--upgrade-formulae|--upgrade-formula|--jobs)[[:space:]]+[^[:space:];|&]+|-[^[:space:];|&]*))*([[:space:]]+(install|upgrade))?([[:space:]]+((--file|--upgrade-formulae|--upgrade-formula|--jobs)[[:space:]]+[^[:space:];|&]+|-[^[:space:];|&]*))*[[:space:]]*($|[;|&)])|[[:space:]][^;|&]*[[:space:]]--install([[:space:]]|$))' && RUN="$RUN brew-bundle"
 [ -n "$RUN" ] && BEYOND=yes
 
 # pip, in the forms that say what runs it: a pip named by a path or bare, an
@@ -161,13 +185,20 @@ echo "$CMD" | grep -qE "<\([[:space:]]*(curl|wget)" && { BEYOND=yes; PIPED=yes; 
 # install in every form the vendor documents - bare or behind any runner, by
 # a path, as python -m playwright, as the .NET playwright.ps1, as the Java CLI
 # through mvn with exec.args - cypress install, and puppeteer browsers
-# install. What follows the verb up to the next separator is read: --dry-run
-# and --list install nothing and set nothing here; a branded channel is
-# installed by Playwright at the system's own location, over the browser
-# already there; install-deps, --with-deps and --install-deps install system
-# packages, which needs root; both stay the user's under every answer.
+# install, with or without a version behind puppeteer. What follows the verb
+# up to the next separator is read: --dry-run and --list on playwright
+# install install nothing and set nothing here, and neither does the help,
+# which is --help and -h on playwright install, playwright install-deps and
+# cypress install, and --help alone on puppeteer browsers install and on
+# @puppeteer/browsers install, whose -h is no help (the review of pull
+# request #159, 8 October 2026); a branded channel is installed by
+# Playwright at the system's own location, over the browser already there;
+# install-deps, --with-deps and --install-deps install system packages,
+# which needs root; both stay the user's under every answer.
 # @puppeteer/browsers install is read for --install-deps alone: without it
-# the download lands in the current directory, the default of its --path.
+# the download lands in the current directory, the default of its --path,
+# and a --path to a place outside is not read, the guard taking the default
+# as the decision of 8 October 2026 on a moved location has it.
 BROWSERS=""
 PW_CLI='com\.microsoft\.playwright\.CLI[^;|&]*exec\.args=[[:space:]"'"'"']*'
 PW_BIN='(^|[^[:alnum:]_.-])([^[:space:];|&]*/)?playwright(\.ps1)?(@[^[:space:];|&]+)?[[:space:]]+'
@@ -175,7 +206,7 @@ BRANDED='chrome|msedge|chrome-beta|msedge-beta|chrome-dev|msedge-dev|chrome-cana
 PWI_RE="(${PW_CLI}|${PW_BIN})install([[:space:]][^;|&]*|[;|&)]|$)"
 if echo "$CMD" | grep -qE "$PWI_RE"; then
   A=$(echo "$CMD" | grep -oE "$PWI_RE" | head -1 | sed -E 's/^.*install//; s/[;|&)]$//')
-  if ! printf '%s' "$A" | grep -qE -- '(^|[[:space:]])(--dry-run|--list)([[:space:]]|$)'; then
+  if ! printf '%s' "$A" | grep -qE -- '(^|[[:space:]])(--dry-run|--list|--help|-h)([[:space:]]|$)'; then
     BEYOND=yes
     if printf '%s' "$A" | grep -qE "(^|[[:space:]])($BRANDED)([[:space:]]|$)"; then BRAND=yes
     elif printf '%s' "$A" | grep -qE -- '(^|[[:space:]])--with-deps([[:space:]]|$)'; then SYSPKG=yes
@@ -185,15 +216,26 @@ fi
 PWD_RE="(${PW_CLI}|${PW_BIN})install-deps([[:space:]][^;|&]*|[;|&)]|$)"
 if echo "$CMD" | grep -qE "$PWD_RE"; then
   A=$(echo "$CMD" | grep -oE "$PWD_RE" | head -1 | sed -E 's/^.*install-deps//; s/[;|&)]$//')
-  printf '%s' "$A" | grep -qE -- '(^|[[:space:]])--dry-run([[:space:]]|$)' || { BEYOND=yes; SYSPKG=yes; }
+  printf '%s' "$A" | grep -qE -- '(^|[[:space:]])(--dry-run|--help|-h)([[:space:]]|$)' || { BEYOND=yes; SYSPKG=yes; }
 fi
-echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])([^[:space:];|&]*/)?cypress(@[^[:space:];|&]+)?[[:space:]]+install([[:space:]]|[;|&)]|$)' && { BEYOND=yes; BROWSERS="$BROWSERS cypress"; }
-PP_RE='(^|[^[:alnum:]_.-])puppeteer[[:space:]]+browsers[[:space:]]+install([[:space:]][^;|&]*|[;|&)]|$)'
+CY_RE='(^|[^[:alnum:]_.-])([^[:space:];|&]*/)?cypress(@[^[:space:];|&]+)?[[:space:]]+install([[:space:]][^;|&]*|[;|&)]|$)'
+if echo "$CMD" | grep -qE "$CY_RE"; then
+  A=$(echo "$CMD" | grep -oE "$CY_RE" | head -1 | sed -E 's/^.*cypress(@[^[:space:];|&]+)?[[:space:]]+install//; s/[;|&)]$//')
+  printf '%s' "$A" | grep -qE -- '(^|[[:space:]])(--help|-h)([[:space:]]|$)' || { BEYOND=yes; BROWSERS="$BROWSERS cypress"; }
+fi
+PP_RE='(^|[^[:alnum:]_.-])puppeteer(@[^[:space:];|&]+)?[[:space:]]+browsers[[:space:]]+install([[:space:]][^;|&]*|[;|&)]|$)'
 if echo "$CMD" | grep -qE "$PP_RE"; then
-  BEYOND=yes
-  if echo "$CMD" | grep -oE "$PP_RE" | head -1 | grep -qE -- '[[:space:]]--install-deps([[:space:]]|$)'; then SYSPKG=yes; else BROWSERS="$BROWSERS puppeteer"; fi
+  A=$(echo "$CMD" | grep -oE "$PP_RE" | head -1 | sed -E 's/^.*browsers[[:space:]]+install//; s/[;|&)]$//')
+  if ! printf '%s' "$A" | grep -qE -- '(^|[[:space:]])--help([[:space:]]|$)'; then
+    BEYOND=yes
+    if printf '%s' "$A" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)'; then SYSPKG=yes; else BROWSERS="$BROWSERS puppeteer"; fi
+  fi
 fi
-echo "$CMD" | grep -qE -- '(^|[^[:alnum:]_.-])@puppeteer/browsers[[:space:]]+install([[:space:]][^;|&]*)?[[:space:]]--install-deps([[:space:]]|$)' && { BEYOND=yes; SYSPKG=yes; }
+PB_RE='(^|[^[:alnum:]_.-])@puppeteer/browsers[[:space:]]+install([[:space:]][^;|&]*|[;|&)]|$)'
+if echo "$CMD" | grep -qE "$PB_RE"; then
+  A=$(echo "$CMD" | grep -oE "$PB_RE" | head -1 | sed -E 's/^.*browsers[[:space:]]+install//; s/[;|&)]$//')
+  if printf '%s' "$A" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)' && ! printf '%s' "$A" | grep -qE -- '(^|[[:space:]])--help([[:space:]]|$)'; then BEYOND=yes; SYSPKG=yes; fi
+fi
 [ "${BEYOND:-no}" = "yes" ] || exit 0
 
 # Only now is the record read: this hook runs on every Bash call, and a command
