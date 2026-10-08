@@ -795,6 +795,41 @@ the two costs. Milestone 3 of `docs/plan.md` keeps "tools for check classes"
 as written on 19 September 2026 and says beside it what this ruling made of
 it.
 
+**The second kind is a browser for tests, the plan's "driver for an
+interface".** Ruled on 8 October 2026, when the drivers half of milestone 3
+was built. It covers the browsers Playwright, Cypress and Puppeteer download
+for tests through the commands that name the act — `playwright install` in
+every form the vendor documents, `cypress install`, `puppeteer browsers
+install` — into the vendor's default place for the system the guard runs on,
+read off `uname -s`, which the record names since that day among its eleven
+places: `~/Library/Caches/ms-playwright`, `~/Library/Caches/Cypress` and
+`~/.cache/puppeteer` on macOS, `~/.cache/ms-playwright`, `~/.cache/Cypress`
+and `~/.cache/puppeteer` on Linux, read from the vendors on 8 October 2026
+and quoted in the roadmap entry of that date; on any other system the
+destination is not read, and not read is a block. The question says it since
+the same day, "tools and browsers for tests", in its question line, its yes
+and its first no. What stays the person's under every answer, beside `sudo`
+and the script piped from the network, and is checked after those two and
+before the places: a branded browser — `chrome`, `msedge` and their six
+further channels — which Playwright installs at the system's own location
+over the browser already there, the vendor's own warning; and system
+packages, which `install-deps`, `install --with-deps` and Puppeteer's
+`--install-deps` install and which need root. A browser a package
+installation downloads as a side effect — `npm install cypress`, `npm
+install puppeteer`, a postinstall script — stays outside the guard, by the
+ruling below on a named install command, and is the finding the roadmap
+entry of 8 October 2026 records. What differs between the two kinds is
+nothing in the record: the same `install-tools` line answers for both, the
+browser's places standing beside the bin directories. Places changed on 8
+October 2026 with this kind: the guard; `shared/install-record.md` with the
+five places and "eleven"; `shared/install-question.md`;
+`shared/backed-command.md`, where the result of a browser download is read
+off the directory the vendor names for the system or the one a setting of
+the vendor names where the run finds one set; `build-work` step 3 point 7
+and `setup-checks` step 3, which name the browser beside the tool and the
+two user's-only cases beside `sudo`, and their sections for the case with
+nobody there, which name the two cases among what a yes does not open.
+
 ## Adapting from Matt Pocock
 
 Much of this set is taken from https://github.com/mattpocock/skills (MIT), under
@@ -1432,8 +1467,16 @@ one place. The places of this
 version are `/usr/local/bin`, `/usr/local/sbin`, `/opt`, `~/.local/bin`,
 `~/bin` and `~/go/bin`: the guard's `BINDIR` without `/usr/bin` and
 `/usr/sbin`, which nothing reaches without `sudo`, so that a yes to them would
-open nothing and read as if it did. No driver destination is among them; that
-is the second half of the milestone and is not built. A route named in the
+open nothing and read as if it did. Until 8 October 2026 no driver destination
+was among them, the drivers half of the milestone standing unbuilt; since that
+day, version 0.131.0, five stand beside the six, eleven places in all:
+`~/Library/Caches/ms-playwright`, `~/.cache/ms-playwright`,
+`~/Library/Caches/Cypress`, `~/.cache/Cypress` and `~/.cache/puppeteer`, the
+vendor's default for a browser downloaded for tests on macOS and on Linux
+each, the one the guard holds a browser download against for the system it
+runs on. A record written before that day carries the six and is not amended:
+under its yes a browser download is blocked naming the place, as every place
+a record does not name is, until the five are added with the person there. A route named in the
 record opens the directory that route answers on the machine the run is on,
 read at the moment of the command and written nowhere: the record holds what
 survives the machine changing rather than the answer of the machine it was
@@ -1510,11 +1553,30 @@ stands inside the project from the directory the command runs in upward; what
 an earlier command activated, or the shell's own configuration put on PATH,
 is not in the string and stays blocked, and the block says so. `cargo add`,
 which writes the project's manifest, no longer fires. `sudo` and a script
-piped from the network into a shell stay blocked under every answer. What a
+piped from the network into a shell stay blocked under every answer, and
+since 8 October 2026 so do a branded browser Playwright would install at the
+system's own location — `chrome`, `msedge` and their channels, in any form of
+`playwright install` — and the system packages `install-deps`, `install
+--with-deps` and Puppeteer's `--install-deps` would install, each with its own
+cause, checked after `sudo` and the piped script and before the places. What a
 yes passes that the question does not mean: through a package
 manager the guard sees the verb and not what is installed, so `brew install
 node` passes as `brew install shellcheck` does, and that is a rule on the run,
-written in `build-work` step 3 point 7, and not a wall.
+written in `build-work` step 3 point 7, and not a wall. Since 8 October 2026
+three more things, by the ruling below on the commands that fetch and run a
+tool and by the decision on a moved location: `brew exec`, `brew bundle` and
+`pn add -g` pass without their destination being held against the places,
+although each installs — `brew bundle` everything a `Brewfile` names, through
+`go`, `cargo`, `npm` and `uv` as well, by the extensions under
+`Library/Homebrew/bundle/extensions/` — because the guard reads those forms by
+name alone; `pnx node@22` and `uvx python@3.12` fetch a runtime, as `brew
+install node` does, and the rule on `brew install node` holds for them, said
+in `shared/fetch-and-run.md`; and a browser download moved by a setting of the
+vendor — `PLAYWRIGHT_BROWSERS_PATH`, `CYPRESS_CACHE_FOLDER`,
+`PUPPETEER_CACHE_DIR`, the vendors' configuration files, `XDG_CACHE_HOME` on
+Linux — to a place the record does not name passes under a yes, since the
+guard holds the download against the vendor's default and reads no such
+setting.
 
 Measured on 28 September 2026 against the working tree, the guard fed its JSON
 directly with a scratch project whose `origin` was a local bare repository:
@@ -1556,6 +1618,47 @@ September 2026, since the squash merge of pull request #141 landed only
 each answer, in `devloop-test-s` and `devloop-test-t`: the question and the
 record walked, the guard against a landed record not, the entry of that date
 in `docs/roadmap.md` saying why.
+Measured on 8 October 2026 against the committed guard, `6d5e826`, version
+0.131.0, started as a program through its own first line under `/bin/bash`
+3.2.57 on macOS, fed its JSON directly with a scratch project outside the
+repository whose `origin` was a local bare repository, four records pushed to
+`origin/main` and fetched before each row — no with the eleven places, no
+section, yes with the eleven places and no route, yes with the six places —
+84 commands in six rows, the roadmap entry of that date carrying every command
+and what came back: 31 fetch-and-run forms exit 2 under no and no section with
+each record's cause and exit 0 under both yes; 26 commands the guard does not
+read — `npx`, `npm exec`, `bunx`, `bun create`, `docker run`, `go run` without
+a version suffix, `go build`, `uv run` without `--with`, `pn add` without
+`-g`, `brew bundle check`, `list` and `dump`, `npm install` of the three
+packages, `npx playwright test` and `uninstall`, `install --dry-run`, `install
+--list`, `install-deps --dry-run`, `npx cypress run`, `npx @puppeteer/browsers
+install chrome@stable` — exit 0 under all four; 15 browser downloads, twelve
+forms of `playwright install`, two of `cypress install`, one `puppeteer
+browsers install`, exit 2 under no and no section, exit 0 under the yes with
+eleven places, and exit 2 under the yes with six naming
+`~/Library/Caches/ms-playwright`, `~/Library/Caches/Cypress` or
+`~/.cache/puppeteer` beside the six places and `routes: none`; 8 commands
+that stay the person's — `install chrome`, `install msedge` twice, three
+forms of `install-deps` or `--with-deps`, two of `--install-deps` — exit 2
+under all four, under both yes with the cause for a branded browser or for
+system packages; 2 with `PLAYWRIGHT_BROWSERS_PATH` set, to `0` and to a
+directory, read as the default; and 2 texts, `git commit -m "document how to
+run uvx ruff"` blocked under no and no section and passed under both yes, `git
+commit -m "CI runs npx playwright install --with-deps chromium"` blocked under
+all four. Under no and under no section 58 blocks and 26 passes each, under
+the yes with eleven places 9 blocks and 75 passes, under the yes with six 26
+blocks and 58 passes, every one as expected. With a stand-in `uname` in front
+of the guard's PATH answering `Linux`, the fifteen browser downloads pass
+under the eleven places and block under the six naming `~/.cache/ms-playwright`,
+`~/.cache/Cypress` or `~/.cache/puppeteer`; answering `MINGW64_NT-10.0-26100`,
+they block under both yes as not read, "where it puts things is not read off
+this machine by this guard". Against the guard of `origin/main`, `89fb52e`,
+copied beside its own reader and started as a program too, the 67 commands of
+the measurements of 28 and 29 September 2026 above, under no and under the yes
+with eleven places, came back with the same exit code and the same cause from
+both guards, 134 comparisons, save one: `npx playwright install` under no,
+exit 0 from the old guard and exit 2 with the record's cause from the new.
+Not measured: the two runs of milestone 3.
 
 **The setup state is read off the default branch, since 3 October 2026, and
 the working tree decides one thing beside it.** Until then every place that
@@ -1628,16 +1731,127 @@ place list names bin directories and `/opt/`, and a browser is not a binary
 in one of them, so a catch without the destination produces a block under
 every answer, and the driver's destination never appears in what the person
 agreed to. Both or neither. This refines where one command is classified; the
-finding on wrappers is not overturned. What a false positive costs:
-`PLAYWRIGHT_BROWSERS_PATH=0` puts the browsers inside `node_modules`, and a
-block there is wrong; with the person there it is one handover, unattended it
-is the task, by "A guard's block, with nobody there" in `build-work`. Places
-that change when this is built, none of them changed here, and none of them
-on 28 September 2026 either, when the tools half of milestone 3 was built and
-this, the drivers half, was not: the manager list and the place list in
-`hooks/pre-tool-use-install-guard.sh`, and the open item in `docs/plan.md`,
-"What `npx playwright install` lands outside the repository; not read from
-the vendor".
+finding on wrappers is not overturned. Built on 8 October 2026, version
+0.131.0, the drivers half: `playwright install` in every form the vendor
+documents, `cypress install` and `puppeteer browsers install` stand in the
+guard, their destination the vendor's default for the system the guard runs
+on, and the five defaults stand in the record's list of places, eleven with
+the six; the roadmap entry of that date carries the vendors' pages and the
+measurement. Decided the same day, on where the vendor lets the download be
+moved: the guard looks for none of the vendor's settings — `PLAYWRIGHT_BROWSERS_PATH`,
+with `0` as well, `CYPRESS_CACHE_FOLDER` as a variable or in `.npmrc` and
+`package.json`, `PUPPETEER_CACHE_DIR` and Puppeteer's configuration files,
+`XDG_CACHE_HOME` on Linux, which Playwright and Cypress read — and always takes
+the default. Two of the vendors' own examples move the browsers into the
+project, `PLAYWRIGHT_BROWSERS_PATH=0` and the `cacheDirectory` example on
+pptr.dev under "Configuration", where a block is wrong; what the decision
+overlooks is a move to a place outside the project that the record does not
+name, which happens under a yes only, and that yes was given, by the
+question's words, for browsers landing outside the project on this machine
+without a place being promised; and the person's principle, written down in
+the roadmap entry of that date, that in doubt a run with nobody there is not
+blocked. What a false positive costs, after that decision:
+`PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` puts the browsers inside
+`node_modules` and passes under a yes with the eleven places, the default
+being named; under a record of six places it is blocked naming
+`~/Library/Caches/ms-playwright`, which is wrong there; with the person there
+it is one handover, unattended it is the task, by "A guard's block, with
+nobody there" in `build-work`. And a text that quotes such a command, `git
+commit -m "CI runs npx playwright install --with-deps chromium"`, is blocked
+under every answer with the cause for system packages, a false positive on
+text of the kind measured on 6 September 2026 above, taken on knowingly as
+the guard's other forms are; with nobody there it costs the task. Places that
+changed when this was built, on 8 October 2026, and none of them on 28
+September 2026, when the tools half of milestone 3 was built and this, the
+drivers half, was not: the verb half and the place handling in
+`hooks/pre-tool-use-install-guard.sh`, the place list in
+`shared/install-record.md`, and the open item in `docs/plan.md`, "What `npx
+playwright install` lands outside the repository; not read from the vendor",
+which says since that day that it is closed.
+
+**A command that fetches a tool and runs it without saying install enters the
+guard by name, and under a yes passes without its destination.** Ruled on 8
+October 2026, for how milestone 3 of `docs/plan.md` is finished. The ruling
+above admits a name under two conditions, the act named and the destination
+documented, and asks for both or neither, since a catch without the
+destination blocks under every answer. These forms name the act — they fetch,
+and each vendor says so — but most put the tool where no record names a
+place, so held against the places they would block under every answer, which
+"both or neither" rules out, and left out of the guard a no would not hold for
+them. So the guard reads them by name alone: under a record saying no or
+never written it blocks them with that record's cause, the one it names for
+that record today, and under a yes it passes them without reading where they
+land, the yes having been given for tools that land outside the project. The
+forms, each read from its vendor on 8 October 2026 at the commit the roadmap
+entry of that date names: `go run` whose package argument carries a version
+suffix — "If the package argument has a version suffix (like @latest or
+@v1.0.0), "go run" builds the program in module-aware mode, ignoring the
+go.mod file" (golang/go, `src/cmd/go/alldocs.go`); `uvx` and `uv tool run` —
+"Tools are installed into temporary, isolated environments when using uvx",
+"a virtual environment is stored in the uv cache directory" (astral-sh/uv,
+`docs/guides/tools.md`, `docs/concepts/tools.md`); `uv run` with `--with`,
+its short form `-w`, `--with-editable` or `--with-requirements` — "Run with
+the given packages installed" (`crates/uv-cli/src/lib.rs`, the options of
+`uv run`); `pipx run` — "downloads and runs a Python application in a
+one-time, temporary environment" (pypa/pipx,
+`docs/tutorial/run-applications.rst`); `pnpm dlx` with its aliases `pnpx` and
+`pnx`, and `pnpm create` — "Fetches a package from the registry without
+installing it as a dependency, hotloads it, and runs whatever default command
+binary it exposes" (pnpm/pnpm.io, `docs/cli/pnx.md`, `docs/cli/create.md`),
+and the same under `pn`, "a short alias for pnpm" (`docs/pnpm-cli.md`),
+together with `pn add`, `pn install` and `pn i` under `-g` or `--global`, the
+forms in which the guard reads a global install under `pnpm`; `yarn dlx` and
+`yarn create`, which runs `dlx` — "install a package within a temporary
+environment, and run its binary script" (yarnpkg/berry,
+`packages/plugin-dlx/sources/commands/dlx.ts`, `create.ts`); `gem exec` — "a
+shortcut to running `gem install` and then the executable", "not installed to
+the same gem path as user-installed gems" (rubygems/rubygems,
+`lib/rubygems/commands/exec_command.rb`); `brew exec` and `brew x` — "installs
+those comma-separated formulae if needed", "finds a formula that provides
+command, installs it if needed" (Homebrew/brew, `Library/Homebrew/cmd/exec.rb`,
+`exec.sh`); and `brew bundle` with no subcommand, `brew bundle install`, `brew
+bundle upgrade` — "Install and upgrade (by default) all dependencies from the
+`Brewfile`" (`Library/Homebrew/bundle/subcommand/install.rb`) — and every
+other subcommand of `brew bundle` with `--install` (`check.rb`, `exec.rb`,
+"Run `install` before"). Under a yes the run is not asked to take an install
+command in the form's place: an installed tool does not always stand on the
+PATH `make` runs its recipes in, measured on 4 October 2026, "A tool can be
+installed and still not runnable" in the roadmap entry of that date. Covered
+by the rule and not by the guard: `npx`, `npm exec`, `npm create` and `npm
+init` with a package, which "run a command from a local or remote npm
+package", the local one first (npm/cli, `docs/lib/content/commands/npm-exec.md`,
+`npm-init.md`), and `bunx`, `bun x` and `bun create`, which "checks for a
+locally installed package first, then falls back to auto-installing it"
+(oven-sh/bun, `docs/pm/bunx.mdx`, `docs/runtime/templating/create.mdx`) — the
+command does not say whether anything is fetched; `docker run`, which pulls
+an image into Docker's own store, "pulling the image if needed", and no place
+of a record (docker/cli, `docs/reference/commandline/container_run.md`); and
+every form standing in a file of the project — a `Makefile` target, a package
+script, the first line of a script — rather than in the command. Cargo and
+pip have no such form. The rule stands in `shared/fetch-and-run.md`, inserted
+into `build-work` step 3 after the backed-command text and into `setup-checks`
+step 3 after the paragraph on a tool landing outside: such a command counts
+as an install whether the guard sees it or not; where the record says no or
+was never written, the run hands over the command that installs the tool,
+backed as every handed-over install is, and asks no second permission for the
+form that fetches; under a yes it may run the form itself, backed as every
+command that fetches from outside; a runtime stays the person's under every
+answer, `pnx node@22` and `uvx python@3.12` fetching one. Where this stands
+to "both or neither": the ruling above is about a destination the vendor
+documents outside the repository, and these forms enter without one — not
+because the condition is dropped, but because for them the destination
+decides nothing: a no blocks them whatever it is, a yes passes them whatever
+it is, and the two forms that do install to a place the guard could read,
+`brew exec` and `pn add -g`, pass under a yes with the others and stand under
+"What a yes passes that the question does not mean" above. Defect 8 of the
+roadmap entry of 4 October 2026, `go run` of a module at a version in a
+`Makefile` target under a record saying no with a second question asked, is
+answered by this ruling otherwise than its should: no line enters the record
+and the question keeps its words, the guard reading the record's existing
+answer for these forms, and the shared text saying that they count as an
+install and that no second permission is asked; the `Makefile` case itself
+stays covered by the rule alone, the form standing in a file and not in the
+command.
 
 **Arming auto-merge is allowed; merging is not — and `--auto` is not arming.**
 The guard blocks `gh pr merge` in every form. The one permitted path is the

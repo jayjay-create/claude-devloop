@@ -195,12 +195,18 @@ before it runs, so that one commit goes through and the next is refused, and a
 commit run through a git alias is not read; and a
 guard that stops a command installing outside the repository — a package
 manager, `sudo`, a copy into a bin directory, an installer piped from the
-network — and hands it to you to run, unless a record in
+network, a command that fetches a tool and runs it without saying install,
+such as `uvx` or `go run` of a module at a version, and a browser download for
+tests through `playwright install`, `cypress install` or `puppeteer browsers
+install` — and hands it to you to run, unless a record in
 `docs/agents/environment.md` on the main branch says tools may be installed and
 names the place this one lands, or the route it comes through, in which case the
-run installs it itself and reports what it did. `sudo` and an installer piped
-from the network stay with you whatever the record says. The question that
-writes that record is put at setup. The turn-end hook
+run installs it itself and reports what it did; a command that fetches and
+runs passes under that record without a place being read. `sudo`, an
+installer piped from the network, a branded browser Playwright would install
+at the system's own location and the system packages a browser's
+`install-deps` would install stay with you whatever the record says. The
+question that writes that record is put at setup. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
 than looping. What it hands you is meant to be actionable in one step: a command
 to paste, a script that gathers the environment, a smaller case that reproduces
