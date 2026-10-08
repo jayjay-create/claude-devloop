@@ -17,6 +17,14 @@ where this command puts things — the path that installer writes to, read from
 the installer itself rather than assumed: `$(go env GOPATH)/bin`, or `$GOBIN`
 where it is set, for `go install`; `$(brew --prefix)/bin` for `brew`;
 `$(npm prefix -g)/bin` for a global `npm` — and see the tool standing there.
+For a browser for tests, since 8 October 2026: the directory the vendor names
+for this system — `~/Library/Caches/ms-playwright`, `~/Library/Caches/Cypress`
+and `~/.cache/puppeteer` on macOS, `~/.cache/ms-playwright`, `~/.cache/Cypress`
+and `~/.cache/puppeteer` on Linux — or the directory a setting of the vendor
+names, `PLAYWRIGHT_BROWSERS_PATH`, `CYPRESS_CACHE_FOLDER` or
+`PUPPETEER_CACHE_DIR` and the vendor's configuration files, where the run
+finds one set; the guard looks at no such setting, the run that reads the
+result does.
 **`command -v` answers a different question.** It finds any copy anywhere on
 `PATH`, including an older one something else put there, which is the measured
 failure exactly: on the user's own machine the broken line looked like a

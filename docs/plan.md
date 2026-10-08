@@ -249,10 +249,17 @@ Two things said openly. The record opens a guard and is written by a skill,
 which is the shape "A limit the limited party maintains is not a limit" warns
 about; what holds it is that it is written only with the person there and read
 by a hook, and that the guard was a tripwire and not a wall before this. And the
-browser download an interface driver needs passes the guard today — measured on
+browser download an interface driver needs passed the guard until 8 October
+2026 — measured on
 19 September 2026, both commands pass it, and the roadmap entry of that date
 carries the commands and what came back — the wrapper case the guard was never
 meant to see; the record covers it expressly, or it goes on landing in silence.
+Since 8 October 2026, version 0.131.0, the guard reads the download —
+`playwright install` in every form the vendor documents, `cypress install`,
+`puppeteer browsers install` — and holds it against the vendor's default place
+for the system it runs on, which the record names among eleven places since
+that day; the roadmap entry of that date carries the vendors' pages and the
+measurement.
 
 Ends with two runs on one fresh project, in this order, the second reusing
 the first's project because it builds on the no the first put on record,
@@ -271,6 +278,13 @@ there, before the run goes alone. Until 6 October 2026 this read "Ends with
 two runs on one bench: the record saying yes, a build installing a tool
 unattended, the guard passing, the tool standing at the path; the record
 saying no, the guard blocking, the decline path as today."
+Since 8 October 2026 both runs go through the drivers half as well. Under the
+no, a task needs a browser for tests, the guard blocks the download, and the
+command is handed over. Under the yes, the run with nobody there downloads a
+browser itself, and it stands at the vendor's place — a browser the first run
+did not install, for the reason the paragraph gives for the tools: a command
+handed over in the first run and run by the person has installed its browser
+already.
 
 Three things stand before that run, each recorded on 5 or 6 October 2026
 and not built. The question of `setup-checks` step 8, on the unattended
@@ -317,8 +331,11 @@ there. Not built: the refresh in `setup-project`, which is where a project set
 up before this version, or set up empty before 0.118.0, would be asked, and
 which asks nothing anew today — since 5 October 2026 such a project is asked
 where the unattended mode is set up, in `setup-checks` step 8, which writes
-the whole record where none stands; and the drivers half, so the place list carries
-no driver destination and `npx playwright install` passes the guard as before.
+the whole record where none stands; and, until 8 October 2026, version
+0.131.0, the drivers half, so that the place list carried no driver
+destination and `npx playwright install` passed the guard as before — since
+that day the guard reads the browser downloads, the record names their five
+default places, and the refresh alone stays unbuilt.
 The two runs of the end as it read until 6 October 2026 ran on 30 September
 2026, both attended, under 0.120.0
 from the installed copy: the record saying yes in `devloop-test-s`, the record
@@ -372,8 +389,8 @@ machine the run is on; a pip inside the project passes without a record;
 `make install` takes a destination written on its line; the roadmap entry of
 that date carries the readings and the measurement. Blocked under every
 answer still: the system package managers, the version managers, a bare
-`pip`, and every route that does not answer. The refresh and the drivers half
-stay unbuilt; both halves of both runs on a bench, the setup and the guard
+`pip`, and every route that does not answer. The refresh stays unbuilt, and
+the drivers half did until 8 October 2026, version 0.131.0; both halves of both runs on a bench, the setup and the guard
 against the landed record, were walked on 3 and 4 October 2026 under 0.126.0
 with the person there, the yes in `devloop-test-u` and the no in
 `devloop-test-v`, and the yes half with nobody there was not, for the reasons
@@ -668,9 +685,13 @@ that answers it, or says that none does.
   the vendor before 28 September 2026, and read that day off
   `playwright.dev/docs/browsers`: three cache directories under the home
   directory with nothing set, the operating system's own location for Chrome
-  and Edge, and the roadmap entry of that date carries the reading. What stays
-  is that destination entering the guard's list of places, which is milestone
-  3's drivers half, not built on 28 September 2026 with the tools half.
+  and Edge, and the roadmap entry of that date carries the reading. What
+  stayed was that destination entering the guard's list of places, milestone
+  3's drivers half, not built on 28 September 2026 with the tools half and
+  built on 8 October 2026, version 0.131.0: the five default places of
+  Playwright, Cypress and Puppeteer on macOS and Linux stand in the record,
+  the guard holds the download against the one for the system it runs on,
+  and this item is closed.
 - Whether a runtime is one of the kinds the install permission may cover
   (milestone 3). Ruled no on 28 September 2026, "Runtimes are not a kind the
   permission may cover" in `docs/skill-conventions.md`: a yes could not be
