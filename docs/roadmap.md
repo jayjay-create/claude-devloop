@@ -13750,6 +13750,54 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `~/devloop-report-2026-10-08-install-guard-addendum.md`, in English, and is
   not in the repository.
 
+  **Addendum of the same day, in UTC: the tool, its self-test and the
+  nineteen checks under 0.131.0 at `f8467d3`, after the review of pull
+  request #159.** Run in this tree after the commit that carries the review's
+  documents and the table, `f8467d3`, with the tree clean, on 8 October 2026
+  from 22:04 to 22:05 UTC — past midnight of 9 October in this machine's own
+  time, which is the date git gives `f8467d3` and the commit after it. The
+  tool at `f8467d3` and 0.131.0: `BROKEN RECORDS: 0`, `FINDINGS: 27`, `UNITS
+  WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of
+  2408`, exit 0, written down on its exit 0 outcome; the twenty-seven
+  findings are the twenty-seven that stood at `b0cd553`, the review
+  recording its one gap, the `--path` of `@puppeteer/browsers install`, as a
+  defect of this entry and not as a finding; the search set grew from 2402
+  to 2408 by the four lines of the guard that carry a new `if` — the
+  `cypress install` reading, the `--help` of `puppeteer browsers install`,
+  the two of `@puppeteer/browsers install` — and by the two lines of the
+  review's addendum above that say what is built and what is recorded. The
+  self-test at `f8467d3` and 0.131.0: `SELF-TEST PASSED: 88 cases; of the 74
+  messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none; the lines of the report
+  are not in that count`, exit 0, the source of the tool untouched. The
+  nineteen checks under "Before a handover, run these"
+  at `f8467d3` and 0.131.0 printed what their sections call green, one run
+  written down on each of the nineteen, and every one of them printed what
+  it printed at `b0cd553` before the review, line for line — no line number
+  moved either, since neither the skills nor the shared files changed: the
+  check on offers seventeen lines, the check on handovers nine lines over
+  eight sites, the check on the second statement its two lines, the counts
+  2, 2 and 1, and 1 twice for the status forms, the rest silent or the
+  answer their section names. Four things of the guard read as walked at
+  `b0cd553` and read as built and never walked here, each because a line
+  recorded as part of it changed after the commit that introduced 0.131.0,
+  so that no run under 0.131.0 counts for it before the squash merge and
+  every run of this entry counts after it, as the addendum on `c9fdd19`
+  above says of the thing of `npx playwright install`: the silent pass where
+  the command matches no install pattern, its line reading `--help` and `-h`
+  beside `--dry-run` and `--list` since `4bad07e`; the pass of a record
+  saying yes whose places name every destination, the `cypress install`
+  reading being part of it since `4bad07e`; the block for system packages,
+  the Puppeteer `--install-deps` line being part of it and changed in
+  `4bad07e`; and the pass of a fetch-and-run form under a yes, the line of
+  the review's addendum saying what `4bad07e` built being part of it and
+  landing in `f8467d3`. The runs the tool lists as not counting with a
+  change of this review are seventeen, on those four things and on no
+  other: one of 28 September, three of 29 September, four of this entry's
+  first measurement and nine of the review's measurements, all of 8 October
+  2026. The new thing of the review's addendum, the `--path` defect, reads
+  as recorded and not built, its evidence the line that says so.
+
 
 ## Decisions taken against
 
