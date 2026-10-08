@@ -12937,8 +12937,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   tight where it reads the record: every failure to read the install record
   is a block, as "The install guard reads a record" in
   `docs/skill-conventions.md` says. The report of the build stands on this
-  machine as `~/devloop-report-2026-10-08-install-guard.md`, in German and in
-  English, and is not in the repository.
+  machine as `~/devloop-report-2026-10-08-install-guard.md`, in English, and
+  is not in the repository.
 
   **What the guard did not see.** Two kinds of command put something outside
   the repository without the verb list catching them. Commands that fetch a
@@ -13157,33 +13157,35 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   each repository at the commit named, the files through the raw endpoint at
   that commit and the directory listings through the API: golang/go at
   `5d8f28c94de9`: `src/cmd/go/alldocs.go`; astral-sh/uv at `5e77fbf02ed5`:
-  `docs/guides/tools.md`, `docs/concepts/tools.md`, `crates/uv-
-  cli/src/lib.rs`, `docs/guides/install-python.md`; pypa/pipx at
+  `docs/guides/tools.md`, `docs/concepts/tools.md`,
+  `crates/uv-cli/src/lib.rs`, `docs/guides/install-python.md`; pypa/pipx at
   `3466a65f8b34`: `docs/tutorial/run-applications.rst`; pnpm/pnpm.io at
   `caf7a332ed85`: `docs/cli/pnx.md`, `docs/cli/create.md`, `docs/pnpm-cli.md`;
-  yarnpkg/berry at `e4e423a1eb11`: `packages/plugin-
-  dlx/sources/commands/dlx.ts`, `packages/plugin-
-  dlx/sources/commands/create.ts`; rubygems/rubygems at `f8b8b0283c55`:
-  `lib/rubygems/commands/exec_command.rb`; Homebrew/brew at `cdc1ca503231`:
-  `Library/Homebrew/cmd/exec.rb`, `Library/Homebrew/cmd/exec.sh`,
-  `Library/Homebrew/cmd/bundle.rb`,
+  yarnpkg/berry at `e4e423a1eb11`:
+  `packages/plugin-dlx/sources/commands/dlx.ts`,
+  `packages/plugin-dlx/sources/commands/create.ts`; rubygems/rubygems at
+  `f8b8b0283c55`: `lib/rubygems/commands/exec_command.rb`; Homebrew/brew at
+  `cdc1ca503231`: `Library/Homebrew/cmd/exec.rb`,
+  `Library/Homebrew/cmd/exec.sh`, `Library/Homebrew/cmd/bundle.rb`,
   `Library/Homebrew/bundle/subcommand/install.rb`,
   `Library/Homebrew/bundle/subcommand/exec.rb`,
   `Library/Homebrew/bundle/subcommand/check.rb`,
   `Library/Homebrew/bundle/extensions/go.rb`; npm/cli at `b317f16c80df`:
-  `docs/lib/content/commands/npm-exec.md`, `docs/lib/content/commands/npm-
-  init.md`; oven-sh/bun at `620b50f6abea`: `docs/pm/bunx.mdx`,
-  `docs/runtime/templating/create.mdx`; docker/cli at `fdb4ee3e75cf`:
-  `docs/reference/commandline/container_run.md`; microsoft/playwright at
-  `4357c237cfde`: `docs/src/browsers.md`, `packages/playwright-
-  core/src/cli/program.ts`, `packages/playwright-
-  core/src/server/registry/index.ts`; puppeteer/puppeteer at `7005ffa3f185`:
-  `docs/guides/configuration.md`, `packages/browsers/src/CLI.ts`,
-  `packages/puppeteer-core/src/common/Configuration.ts`, `docs/browsers-
-  api/index.md`, `docs/guides/installation.md`, `packages/browsers/README.md`;
-  cypress-io/cypress-documentation at `81d0a8b7c922`: `docs/app/get-
-  started/advanced-installation.mdx`, `docs/app/get-started/install-
-  cypress.mdx`, `docs/partials/_cypress-install-commands.mdx`,
+  `docs/lib/content/commands/npm-exec.md`,
+  `docs/lib/content/commands/npm-init.md`; oven-sh/bun at `620b50f6abea`:
+  `docs/pm/bunx.mdx`, `docs/runtime/templating/create.mdx`; docker/cli at
+  `fdb4ee3e75cf`: `docs/reference/commandline/container_run.md`;
+  microsoft/playwright at `4357c237cfde`: `docs/src/browsers.md`,
+  `packages/playwright-core/src/cli/program.ts`,
+  `packages/playwright-core/src/server/registry/index.ts`;
+  puppeteer/puppeteer at `7005ffa3f185`: `docs/guides/configuration.md`,
+  `packages/browsers/src/CLI.ts`,
+  `packages/puppeteer-core/src/common/Configuration.ts`,
+  `docs/browsers-api/index.md`, `docs/guides/installation.md`,
+  `packages/browsers/README.md`; cypress-io/cypress-documentation at
+  `81d0a8b7c922`: `docs/app/get-started/advanced-installation.mdx`,
+  `docs/app/get-started/install-cypress.mdx`,
+  `docs/partials/_cypress-install-commands.mdx`,
   `docs/partials/_cypress-install-binary-commands.mdx`; cypress-io/cypress at
   `769cdad7c95b`: `cli/lib/tasks/state.ts`, `cli/lib/tasks/install.ts`,
   `cli/lib/cli.ts`, `cli/lib/util.ts`. Homebrew/brew at the same commit: the
@@ -13195,8 +13197,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   /dotnet/docs/browsers and /java/docs/browsers;
   docs.cypress.io/app/references/advanced-installation, the live path of the
   repository's `docs/app/get-started/advanced-installation.mdx`, which answers
-  404 under its repository path, and docs.cypress.io/app/get-started/install-
-  cypress; pptr.dev/guides/configuration. What they say, beyond the quotations
+  404 under its repository path, and
+  docs.cypress.io/app/get-started/install-cypress;
+  pptr.dev/guides/configuration. What they say, beyond the quotations
   in the conventions: Playwright's "Managing browser binaries" names
   `%USERPROFILE%\AppData\Local\ms-playwright` on Windows,
   `~/Library/Caches/ms-playwright` on macOS and `~/.cache/ms-playwright` on
@@ -13204,9 +13207,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Microsoft Edge" warns that "Google Chrome or Microsoft Edge installations
   will be installed at the default global location of your operating system
   overriding your current browser installation" and lists the channels
-  `chrome`, `msedge`, `chrome-beta`, `msedge-beta`, `chrome-dev`, `msedge-
-  dev`, `chrome-canary`, `msedge-canary`; `program.ts` gives `install` the
-  options `--with-deps`, `--dry-run`, `--list`, `--force`, `--only-shell`,
+  `chrome`, `msedge`, `chrome-beta`, `msedge-beta`, `chrome-dev`,
+  `msedge-dev`, `chrome-canary`, `msedge-canary`; `program.ts` gives `install`
+  the options `--with-deps`, `--dry-run`, `--list`, `--force`, `--only-shell`,
   `--no-shell`, `--no-progress` and `--no-remove`, and `install-deps`, "will
   ask for sudo permissions", the option `--dry-run`; the registry resolves the
   default cache directory per platform and `PLAYWRIGHT_BROWSERS_PATH` over it,
@@ -13366,10 +13369,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     record names: /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin
     ~/go/bin; routes: none".
   - `mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D
-    exec.args="install"` — 2 2 0 2; yes6: "it lands in ~/Library/Caches/ms-
-    playwright, which the record does not name; the record names:
-    /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin; routes:
-    none".
+    exec.args="install"` — 2 2 0 2; yes6: "it lands in
+    ~/Library/Caches/ms-playwright, which the record does not name; the
+    record names: /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin
+    ~/go/bin; routes: none".
   - `npx cypress install` — 2 2 0 2; yes6: "it lands in
     ~/Library/Caches/Cypress, which the record does not name; the record
     names: /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin;
@@ -13444,16 +13447,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Row 7, another system: row 3 again under both yes, with a stand-in for
   `uname` in front of the guard's PATH, a script of this measurement and not
   the system's program. Answering `Linux`: under yes11 all fifteen exit 0;
-  under yes6 all fifteen exit 2, the twelve of Playwright naming `~/.cache/ms-
-  playwright`, the two of Cypress `~/.cache/Cypress`, the one of Puppeteer
-  `~/.cache/puppeteer`, each with "which the record does not name; the record
-  names: /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin;
-  routes: none". Answering `MINGW64_NT-10.0-26100`: under both yes all fifteen
-  exit 2 with "where it lands cannot be read here; playwright (where it puts
-  things is not read off this machine by this guard); a place the record does
-  not name stays blocked", `cypress` and `puppeteer` in the place of
-  `playwright` for theirs — 30 runs, every one as expected, as were the 30
-  under `Linux`.
+  under yes6 all fifteen exit 2, the twelve of Playwright naming
+  `~/.cache/ms-playwright`, the two of Cypress `~/.cache/Cypress`, the one of
+  Puppeteer `~/.cache/puppeteer`, each with "which the record does not name;
+  the record names: /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin
+  ~/go/bin; routes: none". Answering `MINGW64_NT-10.0-26100`: under both yes
+  all fifteen exit 2 with "where it lands cannot be read here; playwright
+  (where it puts things is not read off this machine by this guard); a place
+  the record does not name stays blocked", `cypress` and `puppeteer` in the
+  place of `playwright` for theirs — 30 runs, every one as expected, as were
+  the 30 under `Linux`.
 
   Row 8, against `main`: every command the measurements of 28 and 29 September
   2026 name — 67 commands, the two behind a newline fed with the newline —
@@ -13510,6 +13513,242 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   after the commit that introduced 0.131.0, so that it counts after the
   squash merge and not before; none of the other fifteen runs of this entry
   is among them, their things standing on lines `6d5e826` carries.
+
+  **Addendum of the same day: the review of pull request #159, seven points,
+  six built in `4bad07e` and one recorded.** The review of the pull request
+  that carries this entry found seven points. Each was checked against its
+  vendor before anything was built, the files read through the raw endpoint
+  at the stand named, on 8 October 2026 from 21:38 to 21:44 UTC, and the
+  machine's own programs asked where the order asked for it:
+  - `uv run`: the guard of `b0cd553` counted `--with`, `-w`, `--with-editable`
+    and `--with-requirements` anywhere behind `uv run`, behind the command
+    too, where they belong to the command, so `uv run gunicorn -w 4 app:app`
+    blocked under "no" and "none". astral-sh/uv at the tag `0.11.8`, the
+    version on this machine, and at `5411378eb76d`: `crates/uv-cli/src/lib.rs`,
+    `enum ExternalCommand` with `#[command(external_subcommand)]` (at 0.11.8
+    lines 3294 to 3296), the field `command: Option<ExternalCommand>` of
+    `RunArgs` (3636), `with` with `short = 'w'` (3643 to 3644); every option
+    of the list a field of a type that is not `bool` — `--extra`, `--group`,
+    `--no-group`, `--only-group`, `--env-file`, `--with-editable`,
+    `--with-requirements`, `--package` and `-p`/`--python` in `RunArgs`
+    (3498 to 3823), the three groups standing in `RunArgs` itself at 0.11.8
+    and in `ProjectDependencyGroupsArgs` flattened into it at the head (6703,
+    3247); `--index`, `--default-index`, `-i`/`--index-url`,
+    `--extra-index-url` and `-f`/`--find-links` in `IndexArgs` (6873 to 6974),
+    which `ResolverInstallerArgs` flattens into `RunArgs`; `--config-file`
+    (138), `--directory` (356) and `--project` (371) with `global = true`;
+    `--cache-dir` with `global = true` in `crates/uv-cache/src/cli.rs` (30 to
+    31). On this machine, uv 0.11.8, in an empty directory: `uv run
+    --no-project --offline echo -w 4 app:app` printed `-w 4 app:app`, exit 0.
+    Found beside the order's list and left as it is: `--python-platform` in
+    `RunArgs` takes a value too (3821 to 3822), so `--python-platform x`
+    before `--with` ends the reading and the command passes, by the
+    principle.
+  - `go run`: only options without a separate value could stand before the
+    package, so `go run -tags integration
+    github.com/sqlc-dev/sqlc/cmd/sqlc@v1.31.1 generate` passed under every
+    answer. golang/go at the tag `go1.27.0`, the version on this machine, and
+    at `2557edd671b4`: `src/flag/flag.go` lines 53 and 54, `-flag=x` and
+    `-flag x  // non-boolean flags only`; `src/cmd/go/alldocs.go` line 1523,
+    `go run [build flags] [-exec xprog] package [arguments...]`, the build
+    flags with a value at lines 109 to 246 — `-C dir`, `-p n`, `-covermode`,
+    `-coverpkg`, `-asmflags`, `-buildmode`, `-compiler`, `-gccgoflags`,
+    `-gcflags`, `-installsuffix`, `-ldflags`, `-mod`, `-modfile`, `-overlay`,
+    `-pgo`, `-pkgdir`, `-tags`, `-toolexec` — and `-exec xprog` at 1712. On
+    this machine, go1.27.0, in an empty directory: `GOFLAGS= GOPROXY=off
+    GOPRIVATE= GONOPROXY= go run -tags integration example.invalid/tool@v1.0.0`
+    answered `go: example.invalid/tool@v1.0.0: module lookup disabled by
+    GOPROXY=off`, exit 1.
+  - `pnpm` and `pn`: `dlx` or `create` had to follow the name directly, so
+    `pnpm --package=@pnpm/meta-updater dlx meta-updater --help` passed.
+    pnpm/pnpm.io at `caf7a332ed85`: `versioned_docs/version-10.x/cli/dlx.md`
+    lines 40 and 41, `pnpm --package=@pnpm/meta-updater dlx meta-updater
+    --help`, line 71, `pnpm --package cowsay --package lolcatjs -c dlx 'echo
+    "hi pnpm" | cowsay | lolcatjs'`, lines 50 to 59, `--allow-build`;
+    `versioned_docs/version-10.x/pnpm-cli.md` line 19, `-C <path>, --dir
+    <path>`.
+  - `brew bundle`: options without a separate value only, before and behind
+    `install` or `upgrade`, so `brew bundle --file Brewfile` passed although
+    it installs. Homebrew/brew at `96d7c8ba12bc`:
+    `Library/Homebrew/cmd/bundle.rb` line 27, `bundle [<subcommand>]`, line
+    33, `flag "--file="`; `Library/Homebrew/bundle/subcommand/install.rb`
+    line 12, `default: true`, line 35, `flag "--upgrade-formulae=",
+    "--upgrade-formula="`, line 38, `flag "--jobs="`;
+    `Library/Homebrew/cli/parser.rb` lines 347 to 350, `def flag`, a name
+    ending on `=` giving `OptionParser::REQUIRED_ARGUMENT`. On this machine,
+    ruby 2.6.10: `OptionParser` with `--file` as a required argument, parsing
+    `--file Brewfile`, printed `file=Brewfile named=[]`.
+  - Puppeteer with a version: `PP_RE` lacked the version suffix that the
+    patterns for Playwright and Cypress carry, so `npx puppeteer@latest
+    browsers install chrome` passed. npm/cli at `b317f16c80df` and at the tag
+    `v11.12.1`, the npm on this machine, the file the same at both:
+    `docs/lib/content/commands/npx.md` lines 23 and 24, "Package names
+    provided without a specifier will be matched with whatever version exists
+    in the local project. Package names with a specifier will only be
+    considered a match if they have the exact same name and version as the
+    local dependency."
+  - The help of the browser installers blocked like an install. In the
+    packages fetched into an empty project outside the repository with `npm
+    install` on 8 October 2026, their browser downloads switched off with
+    `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1`, `CYPRESS_INSTALL_BINARY=0` and
+    `PUPPETEER_SKIP_DOWNLOAD=1`: playwright and playwright-core 1.64.0,
+    `lib/coreBundle.js`, `command("install [browser...]")` at line 75870 and
+    `command("install-deps [browser...]")` at 75889 without `helpOption(false)`,
+    the package's one `helpOption(false)` at 75987 standing on its `cli`
+    command; cypress 15.21.1, `dist/cli-_xePNEPj.js`, `command('install')` at
+    3046 without it, the one `helpOption(false)` at 3116 standing on `tap`;
+    commander 6.2.1 under cypress; @puppeteer/browsers 3.2.4, `lib/CLI.js`,
+    `.help()` at 116 and 359 and no `alias` `h` anywhere, the file's two
+    aliases `g` and `b` standing on `bisect`, yargs 18.2.0; puppeteer 25.13.0
+    handing `puppeteer browsers` to that same `CLI`
+    (`lib/puppeteer/node/cli.js`). Measured in that project with `HOME` on an
+    empty directory at 21:44 UTC: `npx playwright install --help`, `npx
+    playwright install -h`, `npx playwright install-deps --help`, `npx
+    playwright install-deps -h`, `npx cypress install --help`, `npx cypress
+    install -h`, `npx puppeteer browsers install --help` and `npx
+    @puppeteer/browsers install chrome --install-deps --help` — exit 0 each,
+    nothing new in the project, and under `HOME` only `.npm`, which npm
+    itself lays down. `npx puppeteer browsers install -h` was not run: the
+    order carries its measurement under Linux the same day, puppeteer 25.13.0
+    and `HOME` on an empty directory, exit 1 with `~/.cache/puppeteer/chrome`
+    and `~/.cache/puppeteer/chrome-headless-shell` laid down, the
+    installation begun, so `-h` there is no help. Both directories of this
+    measurement were deleted afterwards.
+  - `--path` on `@puppeteer/browsers install`: `npx @puppeteer/browsers
+    install chrome@stable --path ~/.cache/puppeteer` passes under every
+    answer, under "no" too. The guard reads that command for `--install-deps`
+    alone, since `--path` without a value is the current directory, and a
+    `--path` to a place outside moves the download in the sense of the
+    decision on a moved location above; unlike the moves that decision
+    names, this one passes under a no as well, because without
+    `--install-deps` the command is not read at all. Recorded, not built: the
+    guard takes the default and reads no `--path`, and the conventions say so
+    in the paragraph on the moved location.
+
+  Built in `4bad07e`, in `hooks/pre-tool-use-install-guard.sh` alone: `uv run`
+  read for the four options among uv's own options before the command only,
+  the options of the list above taking their separate value, `--` and the
+  first word that is neither an option nor such a value ending the options,
+  an option with a separate value outside the list or a short option with its
+  value attached ending the reading so that the command passes; `go run` read
+  with the build flags and `-exec` above carrying a separate value, one dash
+  or two, before the package; `pnpm` and `pn` read with options before `dlx`
+  or `create`, `--package`, `--allow-build` and `-C`/`--dir` with a separate
+  value; `brew bundle` read with `--file`, `--upgrade-formulae`,
+  `--upgrade-formula` and `--jobs` carrying a separate value before and
+  behind the subcommand; `puppeteer@<version> browsers install` read as
+  `puppeteer browsers install`; `--help` and `-h` on `playwright install`,
+  `playwright install-deps` and `cypress install`, and `--help` alone on
+  `puppeteer browsers install` and `@puppeteer/browsers install`, passing as
+  `--dry-run` and `--list` do, the `-h` of the two Puppeteer forms read as
+  before. The comments over the forms and over the browsers say what is read
+  and, for `uv run` and `go run`, where the reading ends and the command
+  passes, with the principle as the reason. No cause changed, and the block
+  message stands word for word. The conventions carry the reading in the
+  paragraphs on the fetch-and-run forms and on the browsers, the moved
+  `--path` in the paragraph on the moved location, the measurement below in
+  the measurement paragraph, and `shared/fetch-and-run.md` in "What is shared
+  today", where it was missing; `shared/fetch-and-run.md` itself stays as
+  written, since nothing in it names an option. Corrected in this entry: "in
+  German and in English" above, read against a report that is English alone;
+  and ten lines of this entry, the nine the order named and one more at the
+  Cypress page `install-cypress`, broke a path, a name or a quotation at a
+  hyphen over a line end, which Markdown renders with a space and `grep`
+  cannot find — none does now.
+
+  **Measured on 8 October 2026 against the guard of `b0cd553` from 21:41 to
+  21:44 UTC and against the guard of `4bad07e` from 21:54 to 21:56 UTC**, on
+  the machine and in the arrangement of the measurement above: the guard
+  started as a program through `#!/bin/bash`, fed its JSON on stdin, the
+  scratch project with its bare `origin`, the four records pushed and fetched
+  before each row, the stand-in for `uname` in front of `/usr/bin` in the
+  guard's PATH for row 7, and the guard of `89fb52e` beside its own reader for
+  row 8. Before the build: rows 1 to 6, the 84 commands, every one as this
+  entry lists it, 58 and 26, 58 and 26, 9 and 75, 26 and 58 blocks and passes
+  under no, none, yes11 and yes6; and row 9, the 36 commands below, every one
+  with its value before the build, 21 and 15, 21 and 15, 3 and 33, 9 and 27.
+  After the build: rows 1 to 6 compared run for run with the runs before, 336
+  comparisons, every one the same exit code and the same cause; row 7, the
+  fifteen browser downloads of row 3 and the three Puppeteer commands of row
+  9 — the two downloads with a version and `npx puppeteer browsers install
+  -h` — under yes11 and yes6 with `uname` answering `Linux` and
+  `MINGW64_NT-10.0-26100`, 72 runs: under `Linux` all eighteen exit 0 under
+  yes11 and exit 2 under yes6, the three of Puppeteer naming
+  `~/.cache/puppeteer`, the twelve of Playwright `~/.cache/ms-playwright`,
+  the two of Cypress `~/.cache/Cypress`, each with "which the record does not
+  name; the record names: /usr/local/bin /usr/local/sbin /opt ~/.local/bin
+  ~/bin ~/go/bin; routes: none"; under `MINGW64_NT-10.0-26100` all eighteen
+  exit 2 under both yes with "where it lands cannot be read here; puppeteer
+  (where it puts things is not read off this machine by this guard); a place
+  the record does not name stays blocked", `playwright` and `cypress` in the
+  place of `puppeteer` for theirs; row 8, the 67 commands of 28 and 29
+  September 2026 under no and yes11, against the guard of `89fb52e` and
+  against this one, 134 comparisons, 133 the same and the one the order
+  excepts differing, `npx playwright install` under no, exit 0 from `main` and
+  exit 2 with "the record says no (install-tools: no on origin/main)" here;
+  and row 9 below, every command with its value after the build, 16 and 20,
+  16 and 20, 0 and 36, 3 and 33. The causes in row 9: under no "the record
+  says no (install-tools: no on origin/main)"; under none "no record:
+  docs/agents/environment.md on origin/main has no section "## Install
+  permission", so the question was never answered"; under yes6, for the three
+  Puppeteer downloads, "it lands in ~/.cache/puppeteer, which the record does
+  not name; the record names: /usr/local/bin /usr/local/sbin /opt
+  ~/.local/bin ~/bin ~/go/bin; routes: none"; under yes11 nothing blocks.
+
+  Row 9, the review's 36 commands, before and after the build, in the order no, none, yes11, yes6:
+  - `uv run gunicorn -w 4 app:app` — before 2 2 0 0, after 0 0 0 0.
+  - `uv run codespell -w` — before 2 2 0 0, after 0 0 0 0.
+  - `uv run python script.py --with x` — before 2 2 0 0, after 0 0 0 0.
+  - `uv run --python 3.12 gunicorn -w 4 app:app` — before 2 2 0 0, after 0 0
+    0 0.
+  - `uv run -- gunicorn -w 4 app:app` — before 2 2 0 0, after 0 0 0 0.
+  - `uv run -m gunicorn -w 4 app:app` — before 2 2 0 0, after 0 0 0 0.
+  - `uv run --env-file .env codespell -w` — before 2 2 0 0, after 0 0 0 0.
+  - `uv run --python 3.12 --with httpx script.py` — before 2 2 0 0, after 2 2
+    0 0.
+  - `uv run -p 3.12 -w httpx script.py` — before 2 2 0 0, after 2 2 0 0.
+  - `uv run --frozen --with rich script.py` — before 2 2 0 0, after 2 2 0 0.
+  - `uv run --with=httpx script.py` — before 2 2 0 0, after 2 2 0 0.
+  - `uv run --package api --with pytest-cov pytest` — before 2 2 0 0, after 2
+    2 0 0.
+  - `go run -tags integration github.com/sqlc-dev/sqlc/cmd/sqlc@v1.31.1
+    generate` — before 0 0 0 0, after 2 2 0 0.
+  - `go run -C tools github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+    run` — before 0 0 0 0, after 2 2 0 0.
+  - `go run -mod mod github.com/vektra/mockery/v2@v2.53.3` — before 0 0 0 0,
+    after 2 2 0 0.
+  - `go run -tags integration ./cmd/server --email ops@example.com` — before
+    0 0 0 0, after 0 0 0 0.
+  - `go run -C tools .` — before 0 0 0 0, after 0 0 0 0.
+  - `pnpm --package=@pnpm/meta-updater dlx meta-updater --help` — before 0 0
+    0 0, after 2 2 0 0.
+  - `pnpm --package cowsay --package lolcatjs -c dlx 'cowsay hi'` — before 0 0
+    0 0, after 2 2 0 0.
+  - `pnpm run create` — before 0 0 0 0, after 0 0 0 0.
+  - `brew bundle --file Brewfile` — before 0 0 0 0, after 2 2 0 0.
+  - `brew bundle --file ./Brewfile install` — before 0 0 0 0, after 2 2 0 0.
+  - `brew bundle --upgrade-formulae node` — before 0 0 0 0, after 2 2 0 0.
+  - `brew bundle --file Brewfile check` — before 0 0 0 0, after 0 0 0 0.
+  - `npx puppeteer@latest browsers install chrome` — before 0 0 0 0, after 2
+    2 0 2.
+  - `npx puppeteer@24.10.0 browsers install chrome-headless-shell` — before 0
+    0 0 0, after 2 2 0 2.
+  - `npx playwright install --help` — before 2 2 0 2, after 0 0 0 0.
+  - `npx playwright install -h` — before 2 2 0 2, after 0 0 0 0.
+  - `npx playwright install-deps --help` — before 2 2 2 2, after 0 0 0 0.
+  - `npx playwright install-deps -h` — before 2 2 2 2, after 0 0 0 0.
+  - `npx cypress install --help` — before 2 2 0 2, after 0 0 0 0.
+  - `npx cypress install -h` — before 2 2 0 2, after 0 0 0 0.
+  - `npx puppeteer browsers install --help` — before 2 2 0 2, after 0 0 0 0.
+  - `npx puppeteer browsers install -h` — before 2 2 0 2, after 2 2 0 2.
+  - `npx @puppeteer/browsers install chrome@stable --path ~/.cache/puppeteer`
+    — before 0 0 0 0, after 0 0 0 0.
+  - `npx @puppeteer/browsers install chrome --install-deps --help` — before 2
+    2 2 2, after 0 0 0 0.
+
+  The report of this review stands on this machine as
+  `~/devloop-report-2026-10-08-install-guard-addendum.md`, in English, and is
+  not in the repository.
 
 
 ## Decisions taken against

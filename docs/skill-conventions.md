@@ -156,7 +156,12 @@ and the third way a review finding can go, to the check setup; and
 `shared/fetch-three-times.md`, 6 October 2026, inserted into the four skills
 that fetch something they build on — a cut, a task's base, the state after a
 merge, the mark, a rebase — the three attempts and what the run says where
-the third fails, which "Say when something did not happen" below places.
+the third fails, which "Say when something did not happen" below places; and
+`shared/fetch-and-run.md`, 8 October 2026, inserted into `build-work` step 3
+and `setup-checks` step 3, the rule that a command which fetches a tool and
+runs it without saying install counts as an install whether the guard sees
+it or not, which "A command that fetches a tool and runs it without saying
+install enters the guard by name" below places.
 
 ## Numbered steps where order matters
 
@@ -806,9 +811,25 @@ places: `~/Library/Caches/ms-playwright`, `~/Library/Caches/Cypress` and
 `~/.cache/puppeteer` on macOS, `~/.cache/ms-playwright`, `~/.cache/Cypress`
 and `~/.cache/puppeteer` on Linux, read from the vendors on 8 October 2026
 and quoted in the roadmap entry of that date; on any other system the
-destination is not read, and not read is a block. The question says it since
-the same day, "tools and browsers for tests", in its question line, its yes
-and its first no. What stays the person's under every answer, beside `sudo`
+destination is not read, and not read is a block. Since the review of pull
+request #159 the same day, `puppeteer browsers install` is read with a
+version behind `puppeteer` as without one, `npx puppeteer@latest browsers
+install chrome`, as `playwright install` and `cypress install` were read
+from the start (npm/cli, `docs/lib/content/commands/npx.md`, a package name
+with a specifier); and the help of these installers passes, since it
+installs nothing and sets nothing, as `--dry-run` and `--list` on
+`playwright install` did from the start: `--help` and `-h` on `playwright
+install`, `playwright install-deps` and `cypress install`, whose commands
+are read with commander and keep its help option — the one `helpOption(false)`
+of each package stands on another command, Playwright's `cli` and Cypress's
+`tap` — and `--help` alone on `puppeteer browsers install` and on
+`@puppeteer/browsers install`, read with yargs's `.help()` and no alias, so
+that `-h` there is no help and stays read as before. Measured on 8 October
+2026 with playwright 1.64.0, cypress 15.21.1 and puppeteer 25.13.0 under an
+empty `HOME`: the eight help commands exit 0 each, and nothing new lies
+under `HOME` or in the project afterwards, npm's own `.npm` aside. The
+question says it since the same day, "tools and browsers for tests", in its
+question line, its yes and its first no. What stays the person's under every answer, beside `sudo`
 and the script piped from the network, and is checked after those two and
 before the places: a branded browser — `chrome`, `msedge` and their six
 further channels — which Playwright installs at the system's own location
@@ -1658,6 +1679,30 @@ the measurements of 28 and 29 September 2026 above, under no and under the yes
 with eleven places, came back with the same exit code and the same cause from
 both guards, 134 comparisons, save one: `npx playwright install` under no,
 exit 0 from the old guard and exit 2 with the record's cause from the new.
+After the review of pull request #159 the same day, against the guard of
+`4bad07e` in the same arrangement: the 84 commands came back run for run as
+against `b0cd553` before the build, 336 comparisons; the 67 commands of row 8
+the same, 134 comparisons with the one difference; row 7 again with the three
+Puppeteer commands of the review's row 9 beside the fifteen — the two
+downloads with a version and `npx puppeteer browsers install -h` — 72 runs,
+under `Linux` the eighteen passing with the eleven places and blocking with
+the six naming the Linux place, under `MINGW64_NT-10.0-26100` blocking under
+both yes as not read; and the review's row 9, 36 commands, each with its
+value before and after the build in the roadmap entry's addendum: twelve `uv
+run` forms, seven of them with the option behind the command or none at all
+passing now, five with it before the command still blocked under no and no
+section; five `go run` forms, three with a build flag and its value before a
+package at a version blocked now, two without a version passing; three `pnpm`
+forms, two with options before `dlx` blocked now, `pnpm run create` passing;
+four `brew bundle` forms, three with `--file` or `--upgrade-formulae` and a
+value blocked now, `--file Brewfile check` passing; two Puppeteer downloads
+with a version blocked under no and no section and under the six places
+naming `~/.cache/puppeteer`; eight help commands passing under every record,
+`npx puppeteer browsers install -h` alone still read as a download; and `npx
+@puppeteer/browsers install chrome@stable --path ~/.cache/puppeteer` passing
+under every record as before. Under no and no section 16 blocks and 20 passes
+each, under the yes with eleven places none and 36, under the yes with six 3
+and 33, every one as the order expected.
 Not measured: the two runs of milestone 3.
 
 **The setup state is read off the default branch, since 3 October 2026, and
@@ -1750,7 +1795,16 @@ name, which happens under a yes only, and that yes was given, by the
 question's words, for browsers landing outside the project on this machine
 without a place being promised; and the person's principle, written down in
 the roadmap entry of that date, that in doubt a run with nobody there is not
-blocked. What a false positive costs, after that decision:
+blocked. One more move stands beside those, found in the review of pull
+request #159 the same day and not built: `--path` on `@puppeteer/browsers
+install`, which moves the download from its default, the current directory,
+to the place written — `npx @puppeteer/browsers install chrome@stable --path
+~/.cache/puppeteer`. The guard takes the default here as it does with the
+settings above and reads no `--path`; and unlike the moves above, this
+command passes under every answer, under a no too, because
+`@puppeteer/browsers install` is read for `--install-deps` alone and without
+it is not read at all. The roadmap entry of that date records it in its
+addendum. What a false positive costs, after that decision:
 `PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` puts the browsers inside
 `node_modules` and passes under a yes with the eleven places, the default
 being named; under a record of six places it is blocked naming
@@ -1813,7 +1867,47 @@ command, installs it if needed" (Homebrew/brew, `Library/Homebrew/cmd/exec.rb`,
 bundle upgrade` — "Install and upgrade (by default) all dependencies from the
 `Brewfile`" (`Library/Homebrew/bundle/subcommand/install.rb`) — and every
 other subcommand of `brew bundle` with `--install` (`check.rb`, `exec.rb`,
-"Run `install` before"). Under a yes the run is not asked to take an install
+"Run `install` before"). How the options around these names are read, since
+the review of pull request #159 on the same day, each read from its vendor
+at the stand the roadmap entry's addendum names: `go run` may carry, before
+its package, options with a separate value where they are build flags that
+take one, or `-exec` — `-C`, `-p`, `-covermode`, `-coverpkg`, `-asmflags`,
+`-buildmode`, `-compiler`, `-gccgoflags`, `-gcflags`, `-installsuffix`,
+`-ldflags`, `-mod`, `-modfile`, `-overlay`, `-pgo`, `-pkgdir`, `-tags`,
+`-toolexec`, `-exec`, with one dash or two (golang/go, `src/flag/flag.go`,
+"-flag x // non-boolean flags only"; `src/cmd/go/alldocs.go`, "go run [build
+flags] [-exec xprog] package [arguments...]") — so that `go run -tags
+integration github.com/sqlc-dev/sqlc/cmd/sqlc@v1.31.1 generate` is read,
+which until then passed; a value in quotes with spaces in it may end the
+reading, and the command then passes. `uv run` is read for `--with`, `-w`,
+`--with-editable` and `--with-requirements` among uv's own options before
+the command only, never behind it, where they belong to the command: `uv run
+gunicorn -w 4 app:app` passes, which until then was blocked. The command is
+the first word that is neither an option nor the value of one — uv's
+`ExternalCommand` with `external_subcommand`, the field `command` of
+`RunArgs` in `crates/uv-cli/src/lib.rs` — and before it may stand options
+without a separate value, an attached `=value` among them, and these with
+one: `-p` or `--python`, `--project`, `--directory`, `--package`, `--extra`,
+`--group`, `--only-group`, `--no-group`, `--env-file`, `--index`,
+`--default-index`, `-i` or `--index-url`, `--extra-index-url`, `-f` or
+`--find-links`, `--config-file`, `--cache-dir`, `--with`, `--with-editable`,
+`--with-requirements`, each a field of a type that is not `bool` in
+`RunArgs`, in `IndexArgs`, among the global options of `lib.rs` or in
+`crates/uv-cache/src/cli.rs`; `--` ends the options; an option with a
+separate value that is not in that list, or a short option with its value
+attached, `-whttpx`, ends the reading as well, and the command then passes,
+by the person's principle in the roadmap entry of that date that in doubt a
+run with nobody there is not blocked. `pnpm` and `pn` may carry options
+before `dlx` or `create`, `--package`, `--allow-build` and `-C` or `--dir`
+with a separate value (pnpm/pnpm.io, `versioned_docs/version-10.x/cli/dlx.md`,
+`pnpm-cli.md`) — so that `pnpm --package=@pnpm/meta-updater dlx meta-updater
+--help` is read, which until then passed. `brew bundle` may carry `--file`,
+`--upgrade-formulae`, `--upgrade-formula` and `--jobs` with a separate value
+before and behind its subcommand (Homebrew/brew, `Library/Homebrew/cmd/bundle.rb`
+and `Library/Homebrew/bundle/subcommand/install.rb`, each a `flag` whose name
+ends on `=`, which `Library/Homebrew/cli/parser.rb` makes a required
+argument) — so that `brew bundle --file Brewfile` is read, which until then
+passed. Under a yes the run is not asked to take an install
 command in the form's place: an installed tool does not always stand on the
 PATH `make` runs its recipes in, measured on 4 October 2026, "A tool can be
 installed and still not runnable" in the roadmap entry of that date. Covered
