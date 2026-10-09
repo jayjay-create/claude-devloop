@@ -15900,12 +15900,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   prints — "unattended finish: silence, both places name the loose issues"
   and "second statement: two lines, both sound" — since runs hang on both,
   the rule in section C of the tool; their notes say what holds since this
-  day. The tool at the branch's last commit, after this addendum and one
+  day. The tool at the branch's last commit, after this addendum, one
   rewrapped line of it — the self-test's sentence, which wrapped so that one
   of its lines repeated a line of an earlier entry and broke the anchor of a
-  run recorded there — answers as at `bd0419c`: nothing broken, twenty-three
-  findings, no unit without a straight path, none of its lines uncovered, and
-  ninety-seven runs that do not count.
+  run recorded there — and the run row of the self-test re-anchored on the
+  rewrapped line, answers as at `bd0419c` in all but one thing: nothing
+  broken, twenty-three findings, no unit without a straight path, none of
+  its lines uncovered, ninety-seven runs that do not count, and the check on
+  the unattended finish reading as walked on the run this addendum records,
+  since that run ran under 0.134.0, which contains the change to its line;
+  so built and never walked counts 1170, the check commands 20, and walked
+  264, the check commands 20.
 
 ## Decisions taken against
 
