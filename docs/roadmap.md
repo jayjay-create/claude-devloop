@@ -15220,7 +15220,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   Three errors of this entry, corrected. First, lines 15138 to 15139 said the
   tool listed as not counting the seventy-four runs it listed at `ab34f96`;
-  `sed -n '/^RUNS THAT DO NOT COUNT/,/^FINDINGS:/p' | grep -c '^ line '` over
+  `sed -n '/^RUNS THAT DO NOT COUNT/,/^FINDINGS:/p' | grep -c '^  line '` over
   the tool's output counts 87 at `ab34f96` and 87 at `6851919`, the same runs,
   their reasons naming the changes of this branch today; seventy-four is the
   number of messages in the self-test. The lines say eighty-seven now. Second,
@@ -15364,6 +15364,21 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   twelve for the notice, 2, 2 and 1 for the arming and the default branch, 1
   twice for the status forms, the rest silent. The hook harness ran once more
   at `f5e621a`, 14:25 UTC, with the results of 14:20 UTC line for line.
+
+  The twenty-one run rows the first addendum recorded at `fc76feb` on the
+  tool, its self-test and the nineteen checks are taken out of the table in
+  the commit after `07a1543`, since a run on a branch is recorded at the
+  branch's final state alone, the header of `scripts/devloop-stock-take`
+  lines 250 to 251, as the nineteen rows of R1 to R6, E1 and E2 were
+  replaced above. Those rows recorded what the tree answered at `fc76feb`, a
+  search set of 2493 lines and the checks' line numbers before this
+  addendum; the rows of `f5e621a` stand for the same runs at the final
+  state. In the same commit the count command under the first error above
+  reads `grep -c '^  line '`, with the two spaces the tool's lines of runs
+  begin with; with one space it counts none. The tool at that commit answers
+  as at `f5e621a`: nothing broken, twenty-six findings, no unit without a
+  straight path, none of 2497 lines uncovered, and ninety-eight runs that do
+  not count.
 
 ## Decisions taken against
 
