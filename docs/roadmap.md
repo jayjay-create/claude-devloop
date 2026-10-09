@@ -14974,7 +14974,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   identifier.
 
   **Measured before the build, 2.2: what a command returns at its time limit.**
-  On 9 October 2026 at 11:00 UTC in this session of 2.1.295 in the terminal,
+  On 9 October 2026 at 11:02 UTC in this session of 2.1.295 in the terminal,
   `sleep 12; echo done` with the Bash tool's `timeout` of 5000 milliseconds
   came back as `Exit code 143` with the message `Command timed out after 5s`,
   naming no output file; `pgrep -fl 'sleep 12'` fifteen seconds later found no
@@ -14990,10 +14990,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of its output file where one is named.
 
   **Measured after the build, the hooks and programs for themselves.** On 9
-  October 2026 from 11:17 to 11:20 UTC against the working tree before
-  `ddee4e1` and once more at `ddee4e1`, the hooks fed JSON on stdin in a
-  throwaway project with `docs/agents/`, `CLAUDE_PROJECT_DIR` on it, every
-  output and exit code written down; the tool is the harness in the session's
+  October 2026 at 11:17 UTC against the working tree before `ddee4e1` and at
+  11:45 UTC at `ddee4e1`, with the same results line for line, the hooks fed
+  JSON on stdin in a throwaway project with `docs/agents/`,
+  `CLAUDE_PROJECT_DIR` on it, every output and exit code written down; the
+  tool is the harness in the session's
   scratch directory. R1, `hooks/pre-tool-use-mark-guard.sh` with `tool_name`
   `Bash` and a command calling `bin/devloop-permission-mode` by its absolute
   path, under `default`, `acceptEdits`, `plan`, `auto`, `dontAsk`,
