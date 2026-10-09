@@ -14615,8 +14615,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `accept edits on`, `plan mode on`, `auto mode on`, `don't ask on`, `bypass
   permissions on` — a value that is none of the six being its own label; or the
   form "could not be read" where the input carries no `permission_mode`; and it
-  decides nothing over the call, so the call goes through the normal permission
-  flow, which E2 below shows. Where the command writes
+  decides nothing over a call that does not write the mark, so the call goes
+  through the normal permission flow, which E2 below shows; since the second
+  addendum below the statement is given where the command goes through, and a
+  command that calls the reader and writes the mark is read like every other,
+  R7 and R8 there. Where the command writes
   `.claude/unattended.local`, it blocks in every mode but `auto` with text C,
   exit 2 and the message on stderr as every guard of this plugin blocks, and
   passes in `auto` without a word; the editing tool's write onto the mark the
@@ -14740,11 +14743,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the path of its output file where the message names one, as the measurement
   of 2.2 below shows the answer. An install that did not finish did not go
   through; a check chain that did not finish is not answered, nothing is closed
-  from it, and with nobody there the run stops with the reason named and
-  deletes the mark, since a chain moved to the background runs on, in a session
-  in the terminal without a limit, beside the chain of the next task in the
-  same directory. `shared/command-does-not-answer.md` says it in a new block
-  after "Nothing is concluded", and its first block allows the second attempt
+  from it, and with nobody there — since the second addendum below, which
+  replaced the stop of the run built first — the task ends where one is in
+  hand and the run stops in step 1 alone, where without the answer the state
+  of `main` is not known. `shared/command-does-not-answer.md` says it in a new
+  block after "Nothing is concluded", and its first block allows the second
+  attempt
   no longer for that case, lines 1 to 14; `docs/skill-conventions.md` lines
   1375 to 1379, "this set says nothing yet", say what holds and what was
   measured. The finding of the addendum of 7 October 2026 on line 3 of the
@@ -14792,17 +14796,20 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   instead of at the wording of 6 October 2026 in the entry of 5 October 2026.
   In `build-work` the list of the places where the mark is deleted, lines 1217
   to 1225, loses the halt of `setup-checks` and gains the two stops of this
-  entry, a refusal with no task in hand and a check chain that did not finish;
-  "With nobody there" there gets the case.
+  entry, a refusal with no task in hand and a check chain that did not finish
+  in step 1 — in step 3 the task ends instead, since the second addendum
+  below; "With nobody there" there gets the case.
 
   Built: what no longer held elsewhere. `shared/command-does-not-answer.md`
   lines 56 to 60 and `docs/skill-conventions.md` lines 405 to 412 said that
   with nobody there every command that does not answer stops the run and that a
   permission prompt was a finding of its own, the tool classes not all
-  approved; they part three cases now, the refusal, the install that does not
-  go through, and every other command, which still stops the run, and the
-  sentence on the prompt is gone, since condition 4 reads no tool classes and
-  the hook answers the prompt. Conventions lines 2134 to 2146, "Tool classes
+  approved; they part four cases now, since the second addendum below: the
+  refusal, the install that does not go through, the check chain or target
+  that does not finish inside its call, and every other command, which still
+  stops the run; the sentence on the prompt is gone, since condition 4 reads
+  no tool classes and the hook answers the prompt. Conventions lines 2134 to
+  2146, "Tool classes
   can be pre-approved per project", keep their heading, which `docs/plan.md`
   lines 411 and 586 name, and say what holds. `setup-checks` lines 811 to 814
   no longer count a permission prompt among what stops the run; nothing stands
@@ -15135,7 +15142,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   recorded as part of a hook's outcome ties that outcome's runs to the
   roadmap's commits. The line's record was moved onto the registration of the
   hooks in `hooks/hooks.json` in the commit that carries this addendum, and the
-  tool at that commit lists as not counting the seventy-four runs it listed at
+  tool at that commit lists as not counting the eighty-seven runs it listed at
   `ab34f96`, no run of the table losing its count with this branch. The
   self-test at 0.133.0 and `fc76feb` answered `SELF-TEST PASSED: 88 cases; of
   the 74 messages this tool rejects, refuses or answers with, read off its own
@@ -15156,6 +15163,160 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   printed `skills/plan-work/SKILL.md`: a line written into `shared/mark.md`
   here stood word for word in the new paragraph of `plan-work` too, and that
   sentence was reordered before `ddee4e1`.
+
+  **Addendum of the same day, the second: a check chain that does not finish
+  inside its ten minutes ends the task with nobody there and not the run, the
+  mark guard reads a command that calls the reader for a write of the mark, and
+  three errors of this entry corrected.** On the same branch, in the commits
+  after `6851919`, the version staying at 0.133.0; every line number in this
+  addendum holds at `6851919`. The report stands on this machine as
+  `~/devloop-report-2026-10-09-behaviour-with-nobody-there-addendum.md`, in
+  English, and is not in the repository.
+
+  The decision of 9 October 2026 after the build, with its reason. The build
+  had it that where the check chain did not finish inside its call with nobody
+  there, the run stopped and deleted the mark, since a chain moved to the
+  background would have run on beside the chain of the next task. Measurement
+  2.2 above shows for a call with a limit of its own that it is ended and
+  nothing of it runs on, and every run of the chain and of a check target is
+  called with ten minutes of its own, so that reason held for no such call.
+  Decided therefore: in `build-work` step 3 point 6, lines 400 to 408, and at
+  every run of a target in `setup-checks` steps 4 and 5, lines 518 to 521, the
+  task ends with nobody there and not the run — an issue carrying the command,
+  the message, the path of the output file where the message names one, and
+  that the call did not finish inside its ten minutes, labelled `raised-here`
+  and `needs-human`, recorded as a blocker of the task; the task put down; step
+  2 takes the next; no second start, nothing closed from it; the check class as
+  it stands; met by the build subagent, the subagent raises the issue, as at a
+  refusal, lines 90 to 95. `build-work` step 1, lines 243 to 253, stays a stop
+  with the reason named and the mark deleted, the reason now the step's own,
+  lines 244 to 247: without the answer the state of `main` is not known, and no
+  task begins on an unknown base. Where the texts gave as a reason that a chain
+  or an install would run on in the background or that a second start would run
+  beside the first, that reason is gone for a call with a limit of its own; the
+  rules themselves, no second start and no wait, stand as decision 2 above set
+  them. That a command without a limit of its own is moved to the background
+  the changelog of Claude Code says and nothing here has measured, and no
+  install and no run of the chain is called so any more; the places that speak
+  of a call without a limit of its own, the bounded fetch and the bounded wait
+  on the checks, stand as they were. Changed for it:
+  `shared/command-does-not-answer.md`, the block on a command that does not
+  finish, lines 28 to 46, and the block on nobody there to tell, lines 78 to
+  89, which parts four cases now, the chain that does not finish the fourth;
+  `shared/install-not-through.md` lines 4 to 5 and 20 to 23; `build-work` lines
+  90 to 95, 158 to 161, 243 to 253, 368 to 378, 400 to 408 and 1311 to 1323,
+  where the list of the places that delete the mark names the stop on a chain
+  for step 1 alone; `setup-checks` lines 518 to 521;
+  `docs/skill-conventions.md` lines 408 to 419 and 1346 to 1400; and in this
+  entry the paragraphs at lines 14609 to 14623, 14741 to 14746, 14793 to 14796
+  and 14798 to 14804, which say what is built now. The search `grep -rn -iE
+  'background|runs on beside|beside the first|moved to'` over `skills`,
+  `shared`, `hooks`, `bin`, the conventions, the plan and the README found
+  beside those places `build-work` lines 1013 to 1026,
+  `shared/fetch-three-times.md` lines 24 to 26 and `bin/devloop-bounded` lines
+  4 to 6, all on the default limit of a call without a limit of its own and
+  left as they stand, and `docs/plan.md` lines 428 and 678 on a process started
+  in the background, another matter.
+
+  Three errors of this entry, corrected. First, lines 15138 to 15139 said the
+  tool listed as not counting the seventy-four runs it listed at `ab34f96`;
+  `sed -n '/^RUNS THAT DO NOT COUNT/,/^FINDINGS:/p' | grep -c '^ line '` over
+  the tool's output counts 87 at `ab34f96` and 87 at `6851919`, the same runs,
+  their reasons naming the changes of this branch today; seventy-four is the
+  number of messages in the self-test. The lines say eighty-seven now. Second,
+  `docs/skill-conventions.md` lines 1346 to 1347 said in bold that a command at
+  the time limit of its call is not ended but moved to the background, while
+  lines 1391 to 1397 of the same section record the measurement that a call
+  with a limit of its own is ended; the bold sentence says both now — ended
+  with a limit of its own, measured; moved without one, by the changelog and
+  not measured — and the rest of the section agrees with it, lines 1373 to 1376
+  and 1391 to 1400 rewritten. Third, `hooks/pre-tool-use-mark-guard.sh` lines
+  37 to 49 ended with exit 0 as soon as the command called
+  `devloop-permission-mode` and read it no further for a write of the mark, so
+  `bin/devloop-permission-mode && echo x > .claude/unattended.local` passed in
+  every mode with the statement beside it. The hook keeps the statement and
+  reads on: a command that calls the reader and writes the mark is blocked
+  outside auto like every other that writes it, with no statement beside the
+  block, and goes through in auto with the statement beside the result; every
+  pass leaves through one function, `pass`, which prints the statement where
+  the command called the reader and exits 0, and the comment at the head of the
+  hook says so. The first duty holds in every directory as before, the second
+  in a project with `docs/agents/` alone, R8 below.
+
+  **Measured after the addendum, the hooks for themselves.** On 9 October 2026
+  at 14:06 UTC against the working tree at `6851919` with the hook changed, and
+  again at 14:20 UTC after a comment in the hook was reworded, its code the
+  same, with the same results line for line; the harness of the measurement
+  above copied into this session's scratch directory with R7 and R8 added, JSON
+  on stdin, a throwaway project with `docs/agents/`, `CLAUDE_PROJECT_DIR` on
+  it. R1 to R6 and the write forms beside the order
+  answered line for line what they answered at 11:45 UTC: R1 exit 0 with text B
+  on all eight inputs; R2 exit 0 without output under `auto` and exit 2 with
+  text C under the seven others, `build` and `plan` alike; R3 and R4 exit 0
+  without output; R5 exit 2 with text C under `default` and exit 0 without
+  output under `auto`; R6 exit 0 without output. R7, `tool_name` `Bash`, the
+  command `<absolute path>/bin/devloop-permission-mode && echo x >
+  .claude/unattended.local`: under `default` exit 2, stdout empty, stderr text
+  C with `default` and `manual mode on`; under `auto` exit 0, stderr empty,
+  stdout the JSON with `additionalContext` carrying text B with `auto` and
+  `auto mode on`. R8, the same command in a throwaway project without
+  `docs/agents/`, `CLAUDE_PROJECT_DIR` on it, under `default`: exit 0, stderr
+  empty, stdout the JSON with text B with `default` and `manual mode on`. P1 to
+  P6 of the hook on permission prompts, run by the same harness, unchanged.
+
+  **Measured after the addendum, end to end.** On 9 October 2026 at 14:07 UTC
+  and again at 14:20 UTC, against the two states of the hook named above, with
+  `claude -p` of 2.1.295 started with `CLAUDECODE` unset, in a throwaway
+  project with git and `docs/agents/` in this session's scratch directory,
+  whose `.claude/settings.json` named the branch's `hooks/session-start.sh`,
+  `hooks/pre-tool-use-mark-guard.sh` on `Bash` and on the editing tool, and
+  `hooks/permission-request-unattended.sh` without a matcher by their absolute
+  paths, a logging hook beside each; the installed plugin devloop 0.132.0 ran
+  its hooks in the same sessions; the task, to run
+  `bin/devloop-permission-mode` by its absolute path once with the Bash tool
+  and write back its output; every result read off the session log under
+  `~/.claude/projects/` by `session_id`. E1, `--permission-mode auto`, session
+  `d49e6676-063c-4254-b4b5-26f8f7571c36` and at 14:20 UTC session
+  `83e0071a-4354-4f1d-a70f-cd14ba4f4625`: the `tool_result` is text A, and the
+  attachment `hook_additional_context` holds "devloop: the permission mode of
+  this session is auto, shown in the status bar as auto mode on."; the logging
+  hook saw `PreToolUse` with `permission_mode` `auto` and no
+  `PermissionRequest`. E2, `--permission-mode default`, session
+  `4df09979-94a9-4063-8eb1-64892199a06c` and at 14:20 UTC session
+  `2ddb8205-3f78-4156-9e78-5db44a2e7b48`: `PreToolUse` and `PermissionRequest`
+  fired, no mark standing and the hook on prompts silent; the `tool_result`
+  reads "This command requires approval", and the attachment holds "devloop:
+  the permission mode of this session is default, shown in the status bar as
+  manual mode on." In both the branch's `session-start.sh` wrote `export
+  DEVLOOP_SESSION_ID=<session_id>` into
+  `~/.claude/session-env/<session_id>/sessionstart-hook-0.sh`. Both as at 11:23
+  UTC, and the same in the four sessions.
+
+  The four commits of this branch were rewritten after the report of the build,
+  since they had been committed with an address GitHub holds as private for the
+  account and refused to push, GH007; content and messages are the same, the
+  identifiers in them replaced: `3cd3c13` became `ddee4e1`, `6448d04` became
+  `b6a510e`, `0f96d26` became `fc76feb`, `e973ad0` became `6851919`.
+
+  In the table: the nineteen run rows of this branch from R1 to R6, E1 and E2 —
+  on the mark guard, on `bin/devloop-permission-mode`, on
+  `hooks/session-start.sh` and on the hook on permission prompts — are replaced
+  by the twenty-five rows of the runs above, anchored here, since a run on a
+  branch is recorded at the branch's final state alone, the header of
+  `scripts/devloop-stock-take`; the tool lists those on the mark guard whose
+  lines this addendum changes as not counting until the squash merge, since
+  0.133.0 was introduced at `ddee4e1` and the lines are changed after it, and
+  counts them on `main` after the merge. Four things whose names stated the
+  stop of the run — the chain block of `shared/command-does-not-answer.md`, the
+  bullet under "With nobody there" and point 6 of step 3 in `build-work`, the
+  target runs of `setup-checks` step 4 — and six of the mark guard whose names
+  said the pass was silent or the call undecided are renamed to what they say
+  now, since no run hangs on them that the name would have to keep; the
+  practice of this table, a changed thing keeping its name with a note, is for
+  the identity of its runs, and these things were born on this branch. The
+  chain case under "With nobody there to tell" in the shared file is a thing of
+  its own, as the refusal and the install are. Records on changed lines are
+  re-anchored, and the notes of the things this addendum changes say so.
 
 ## Decisions taken against
 

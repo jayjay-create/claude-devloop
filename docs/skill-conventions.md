@@ -415,8 +415,10 @@ mark of the run with nobody there stands — goes as the skill's section for
 the case says, an issue and the next task in a build with a task in hand,
 the planning stage's order for an unanswerable question before the build; an
 install that does not go through goes as the four ways in `build-work` step
-3 and `setup-checks` step 4 say; every other command that does not answer
-stops the run there.
+3 and `setup-checks` step 4 say; a check chain or a check target that does
+not finish inside its call ends the task where one is in hand and stops the
+run in `build-work` step 1, as the addendum of 9 October 2026 to that entry
+says; every other command that does not answer stops the run there.
 
 **An empty answer is not a missing one, and this is the line that gets crossed.**
 A command that ran and returned nothing has answered — no match, no open issue,
@@ -1343,8 +1345,10 @@ the run stood still in all four until the user wrote a word. The rule is about
 who is being waited for, not about waiting. `build-work` step 6 carries the
 unattended form, with the bound on it and what a red check there means.
 
-**A command that reaches the time limit of its call is not ended; it is moved
-to the background and runs on.** Read on 7 October 2026 off the changelog of
+**A command that reaches the time limit of its call is ended where the call
+carries a limit of its own, measured; where it carries none, the changelog
+says it is moved to the background and runs on, and that is not measured.**
+The moving is read on 7 October 2026 off the changelog of
 Claude Code, `CHANGELOG.md` of `anthropics/claude-code` on GitHub: 2.0.19,
 "Auto-background long-running bash commands instead of killing them. Customize
 with BASH_DEFAULT_TIMEOUT_MS"; 2.1.210, "Improved the Bash/PowerShell tool
@@ -1370,10 +1374,11 @@ back as one call in 110 seconds with exit 124, nothing of them running on; the
 same against a remote that is not there, three times `fatal: Could not read
 from remote repository.`, exit 128, twenty seconds; and one bounded fetch
 against GitHub, which answers, back in half a second and not at the bound.
-What follows for a skill: no skill relies on the time limit ending a command,
-since in the ordinary session it does not, and a skill that repeated a command
-after the limit would start a second one beside the first, which runs on in
-the background with it. Where a skill bounds a command — the fetch in
+What follows for a skill: no skill relies on the default limit ending a
+command, since the changelog says it does not and nothing here has measured
+it, and a skill that repeated a command after that limit would start a
+second one beside the first, which by that reading runs on in the background
+with it. Where a skill bounds a command — the fetch in
 `shared/fetch-three-times.md`, thirty seconds an attempt, and the wait on the
 checks in `build-work` step 6, 100 seconds a call — the command runs under
 `bin/devloop-bounded`, which ends it after a fixed number of seconds, with
@@ -1392,12 +1397,17 @@ second attempt for that case. Measured on 9 October 2026 in a session of
 2.1.295 in the terminal, with a limit given on the call: `sleep 12; echo
 done` under 5000 milliseconds came back as exit code 143 with the message
 `Command timed out after 5s`, no output file named, and no process of it
-left running — ended, not moved, against what the changelog reading above
-says; the same session's harness blocks a foreground `sleep` of two minutes,
-so what the default limit does to a command was not measured there. What a
-skill does with either answer is the same, and a check chain that is moved
-runs on beside the next task's chain in the same directory, which is why a
-chain that does not finish stops a run with nobody there.
+left running — ended, not moved, which is the first half of the sentence
+above; the same session's harness blocks a foreground `sleep` of two
+minutes, so what the default limit does to a command was not measured there,
+and the second half rests on the changelog alone. What a skill does with
+either answer is the same. Since the addendum of 9 October 2026 a check
+chain that does not finish inside its call ends the task with nobody there
+where a task is in hand, and stops the run in `build-work` step 1, where
+without the answer the state of the main branch is not known; that a moved
+chain would run on beside the next task's chain, the reason the stop rested
+on until then, holds for no call with a limit of its own, which is ended,
+and every run of the chain is called with one.
 
 **A rule in the run's own memory can close a route the skills allow.** Measured
 on 25 August 2026: before arming auto-merge, a run stopped itself and cited a
