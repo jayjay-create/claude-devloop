@@ -15105,6 +15105,58 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the mark command and to `bin/devloop-permission-mode` in auto mode in a
   session with a person, which E1 shows for `-p` alone.
 
+  **Addendum of the same day: the tool, its self-test and the nineteen checks
+  under 0.133.0 at `fc76feb`.** Run in this tree after the commits that carry
+  the build, `ddee4e1`, this entry and the table, `b6a510e`, and two corrected
+  times in this entry, `fc76feb`, with the tree clean, on 9 October 2026 from
+  11:48:06 to 11:48:54 UTC. The tool at 0.133.0 and `fc76feb` answered `BROKEN
+  RECORDS: 0`, `FINDINGS: 26`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED
+  LINES OF THE SEARCH SET: 0 of 2493`, exit 0, written down on its exit 0
+  outcome; the twenty-six findings are the twenty-seven that stood at `ab34f96`
+  less the one on `shared/command-does-not-answer.md` line 3, which became a
+  defect of this entry; the search set grew from 2421 to 2493 by the lines this
+  branch adds to it, in the two hooks, the program, the shared rule, the five
+  skills and this entry, whose head and eight status lines it takes in. The
+  counts per state and kind, at `ab34f96` and at `fc76feb`: undetermined 28 and
+  28; recorded and not built 196 and 193, the defects 185 and 182; built and
+  never walked 1119 and 1157, the skill branches 731 and 751, the shared texts
+  138 and 148, the hook outcomes 30 and 34, the hook registration 1 and 1, the
+  program outcomes 31 and 31, the check commands 20 and 20, the defects 168 and
+  172; walked 223 and 241, the skill branches 28 and 28, the shared texts 3 and
+  4, the hook outcomes 46 and 62, the program outcomes 116 and 117, the check
+  commands 20 and 20, the defects 10 and 10. The three defects this entry mends
+  read as built and never walked, their evidence on the lines of `build-work`
+  that carry the repair, and so does the defect the finding became, its
+  evidence on the new block of the shared file. At `fc76feb` the tool listed
+  three runs of this entry as not counting, P2, P4 to P6 and E3 on the deny of
+  the hook on permission prompts, since the status line of this entry on that
+  hook stood in the table as part of that thing and was last changed in
+  `b6a510e`, after `ddee4e1` introduced the version: a line of the roadmap
+  recorded as part of a hook's outcome ties that outcome's runs to the
+  roadmap's commits. The line's record was moved onto the registration of the
+  hooks in `hooks/hooks.json` in the commit that carries this addendum, and the
+  tool at that commit lists as not counting the seventy-four runs it listed at
+  `ab34f96`, no run of the table losing its count with this branch. The
+  self-test at 0.133.0 and `fc76feb` answered `SELF-TEST PASSED: 88 cases; of
+  the 74 messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none; the lines of the report are
+  not in that count`, exit 0, the source of the tool untouched. The nineteen
+  checks under "Before a handover, run these" at 0.133.0 and `fc76feb` printed
+  what their sections call green, one run written down on each of the nineteen:
+  the check on offers seventeen lines, the check on handovers nine lines over
+  eight sites, the check on the second statement its two lines, the check on
+  locked skills its one line, `start-work` named in `build-work` in prose and
+  not as a call, the counts 2, 2 and 1, and 1 twice for the status forms, the
+  check on executables silent, where it had named `bin/` as holding a file git
+  does not track before `ddee4e1` committed the program, the rest silent or the
+  answer their section names; every line the checks on offers, handovers and
+  the second statement print is the line they printed at `ab34f96`, the line
+  numbers moved by what this branch inserted in `build-work`, `plan-work` and
+  `setup-checks`. Before the first commit the check on shared copies had
+  printed `skills/plan-work/SKILL.md`: a line written into `shared/mark.md`
+  here stood word for word in the new paragraph of `plan-work` too, and that
+  sentence was reordered before `ddee4e1`.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
