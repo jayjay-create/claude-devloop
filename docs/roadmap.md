@@ -15877,10 +15877,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   "read":` twice and `if state == "standing":` twice in
   `bin/devloop-auto-mode-rule`, each repeated in its file; every one of them
   is part of an outcome anchored on another line. The self-test at 0.134.0
-  and `bd0419c` answered `SELF-TEST PASSED: 88 cases; of the 74 messages this
-  tool rejects, refuses or answers with, read off its own source, 74 are
-  asserted by a case and 0 by none; the lines of the report are not in that
-  count`, exit 0, the source of the tool changed in its head alone. The
+  and `bd0419c` answered, exit 0, `SELF-TEST PASSED: 88 cases; of the 74
+  messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none; the lines of the report
+  are not in that count`, the source of the tool changed in its head alone. The
   nineteen checks under "Before a handover, run these" at 0.134.0 and
   `bd0419c` printed what their sections call green, one run written down on
   each of the nineteen: the two empty lists of the registration, the twelve
@@ -15900,10 +15900,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   prints — "unattended finish: silence, both places name the loose issues"
   and "second statement: two lines, both sound" — since runs hang on both,
   the rule in section C of the tool; their notes say what holds since this
-  day. The tool at the commit that carries this addendum answers as at
-  `bd0419c`: nothing broken, twenty-three findings, no unit without a
-  straight path, none of its lines uncovered, and ninety-seven runs that do
-  not count.
+  day. The tool at the branch's last commit, after this addendum and one
+  rewrapped line of it — the self-test's sentence, which wrapped so that one
+  of its lines repeated a line of an earlier entry and broke the anchor of a
+  run recorded there — answers as at `bd0419c`: nothing broken, twenty-three
+  findings, no unit without a straight path, none of its lines uncovered, and
+  ninety-seven runs that do not count.
 
 ## Decisions taken against
 
