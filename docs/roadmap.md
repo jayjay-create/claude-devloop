@@ -14530,6 +14530,40 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   red proof of step 5 stands, with the refresh that `docs/plan.md` names as not
   built at lines 330 to 338.
 
+  **Addendum of the same day: the tool, its self-test and the nineteen checks
+  under 0.132.0 at `a6a2de4`.** Run in this tree after the commit that carries
+  this entry, the three corrections and the table, `a6a2de4`, with the tree
+  clean, on 9 October 2026 from 06:59:46 to 07:00:32 UTC. The tool at 0.132.0
+  and `a6a2de4` answered `BROKEN RECORDS: 0`, `FINDINGS: 27`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2421`, exit 0,
+  written down on its exit 0 outcome; the twenty-seven findings are the
+  twenty-seven that stood at `2460bb7`, the third correction above changing the
+  words of one of them and not their number; the search set grew from 2408 to
+  2421 by the thirteen lines of this entry it takes in, the twelve status lines
+  of the findings and the questions and the head of the entry; the list of runs
+  that do not count is the one that stood at `2460bb7`, no run of the table
+  losing its count with this branch, since no line a thing stands on changed
+  outside this file and the table. The self-test at 0.132.0 and `a6a2de4`
+  answered `SELF-TEST PASSED: 88 cases; of the 74 messages this tool rejects,
+  refuses or answers with, read off its own source, 74 are asserted by a case
+  and 0 by none; the lines of the report are not in that count`, exit 0, the
+  source of the tool untouched. The nineteen checks under "Before a handover,
+  run these" at 0.132.0 and `a6a2de4` printed what their sections call green,
+  one run written down on each of the nineteen, and every one of them printed
+  what it printed at `2460bb7` before the first change of this branch, line for
+  line and line number for line number, since neither the skills nor the shared
+  files nor the hooks changed: the check on offers seventeen lines, the check
+  on handovers nine lines over eight sites, the check on the second statement
+  its two lines, the check on locked skills its one line, `start-work` named in
+  `build-work` line 718 in prose and not as a call, the counts 2, 2 and 1, and
+  1 twice for the status forms, the rest silent or the answer their section
+  names. One thing reads otherwise than at `2460bb7`, by the table alone: the
+  thing of the second correction, `build-work` offering the gate itself, reads
+  as built and never walked, its evidence on the line of `build-work` that says
+  the offer is gone, where it read as recorded and not built before; no run
+  counts for it, the measurement of this entry having read the guard and not
+  that skill.
+
 
 ## Decisions taken against
 
