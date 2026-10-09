@@ -1273,8 +1273,9 @@ refusing.**
 Where one of those five does not hold and this section was reached directly,
 the person who typed `--auto` is there. Call `setup-checks` for its step 8
 alone: it puts what has to be asked — the permissions a second time, where
-their record does not say yes — and sets up what the answers allow, the gate
-with them. The shorter offer that stood here until 5 October 2026, of the
+their record does not say yes, and since 9 October 2026 the question on the
+rule for the classifier of auto mode, where it does not stand in their
+settings — and sets up what the answers allow, the gate with them. The shorter offer that stood here until 5 October 2026, of the
 workflow file and the protection without the permissions and without a
 record, is gone. Step 8 is not reached while a class is `empty`, condition 1,
 and does not set a protection while a pull request is open: either stays a

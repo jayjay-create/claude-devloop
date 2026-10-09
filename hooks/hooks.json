@@ -1,5 +1,5 @@
 {
-  "description": "Session status with the session's identifier, the check suite, guards on the main branch, on merging, on the check table, on installing outside the repository and on the mark of a run with nobody there, the permission mode stated beside bin/devloop-permission-mode, and a no to every permission prompt while that mark stands",
+  "description": "Session status with the session's identifier, the check suite, guards on the main branch, on merging, on the check table, on installing outside the repository, on the mark of a run with nobody there and on a command that sets the identity of a commit itself, the permission mode stated beside bin/devloop-permission-mode, and a no to every permission prompt while that mark stands",
   "hooks": {
     "PreToolUse": [
       { "matcher": "Edit|Write|MultiEdit",
@@ -10,7 +10,8 @@
                    { "type": "command", "if": "Bash(gh pr merge*)", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-merge-guard.sh" },
                    { "type": "command", "if": "Bash(git *)", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-table-guard.sh" },
                    { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-install-guard.sh" },
-                   { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-mark-guard.sh" } ] }
+                   { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-mark-guard.sh" },
+                   { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-identity-guard.sh" } ] }
     ],
     "PermissionRequest": [
       { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/permission-request-unattended.sh" } ] }
