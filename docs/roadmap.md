@@ -7597,12 +7597,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   it; both readings stand under `setup-checks` step 1, which skips a type
   class where another class already catches the same errors, and the two
   runs judged that differently on the same stack. The record on `main`
-  carries `install-tools: no`, the same six `install-place` lines, `install-
-  route: go` and `install-answered: 2026-09-30`. No issue and no other pull
-  request exist: the run ended at the setup. The directory `~/go/bin` carries
-  a modification time of 10:41 CEST, 08:41 UTC, right after that merge, which
-  fits the two tools being moved back. So nothing in this run met the guard
-  with a record saying no in front of it: no command reaching outside the
+  carries `install-tools: no`, the same six `install-place` lines,
+  `install-route: go` and `install-answered: 2026-09-30`. No issue and no other
+  pull request exist: the run ended at the setup. The directory `~/go/bin`
+  carries a modification time of 10:41 CEST, 08:41 UTC, right after that merge,
+  which fits the two tools being moved back. So nothing in this run met the
+  guard with a record saying no in front of it: no command reaching outside the
   repository was run after the record landed, and the block the guard
   produces on `install-tools: no` fired nowhere. The decline the run walked is
   question 3's, with the person there, before any record existed, and the two
@@ -13797,6 +13797,781 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   first measurement and nine of the review's measurements, all of 8 October
   2026. The new thing of the review's addendum, the `--path` defect, reads
   as recorded and not built, its evidence the line that says so.
+
+- **The open findings on the install guard, eight, measured on this machine;
+  four questions never examined; the decisions for the next orders of milestone
+  3 and the texts the person approved, word for word; three corrections; 9
+  October 2026, version 0.132.0.** On
+  `task/record-open-findings-and-decisions`, off `2460bb7`, version 0.131.0 on
+  `main`. Nothing is built here: this entry, `docs/stock-take.tsv` and the
+  version in `.claude-plugin/plugin.json` change, and no hook, skill, shared
+  text, program or text a user sees does; the approved texts below are recorded
+  and not put in. What stood only in the conversation until this day stands
+  here: the findings on the guard with their measurement, the questions, the
+  decisions taken by 8 October 2026 and on 9 October 2026 for the orders that
+  come after this one, and the wordings the person approved on 8 October 2026
+  for them. The order of 9 October 2026 fixed all of it; where this entry
+  departs from that order, the report says so, and the report stands on this
+  machine as `~/devloop-report-2026-10-09-record-open-findings.md`, in English,
+  not in the repository. A line number below names `2460bb7`, today's `main`,
+  unless another stand is named beside it; the order named most of its places
+  at `89fb52e`, and each was read again at `2460bb7`, where
+  `skills/build-work/SKILL.md`, `skills/setup-checks/SKILL.md`, `docs/plan.md`
+  and `docs/skill-conventions.md` grew since then and every other file the
+  order names stands line for line as it did.
+
+  **Measured on 9 October 2026 against the guard of `2460bb7`, from 06:41:11 to
+  06:41:26 UTC**, on Darwin Mac 25.6.0 Darwin Kernel Version 25.6.0: Fri Jul 31
+  19:11:03 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T8132 arm64; `GNU
+  bash, version 3.2.57(1)-release (arm64-apple-darwin25)`; `git version 2.50.1
+  (Apple Git-155)`. Nothing below was run; the guard alone read each command,
+  started as a program through its own first line, `#!/bin/bash`, fed its JSON
+  on stdin with `tool_name` `Bash`, `tool_input.command` the command and `cwd`
+  the project, `CLAUDE_PROJECT_DIR` pointing at the project — a scratch project
+  outside the repository with `docs/agents/`, its `origin` a local bare
+  repository whose `origin/HEAD` names `main`, each record committed, pushed to
+  `origin/main` and fetched back before the commands under it ran. Four
+  records, each the whole of `docs/agents/environment.md` of that project:
+  "no", `## Install permission`, a blank line, `install-tools: no`, the eleven
+  places, `install-answered: 2026-10-08`; "none", `# Environment`, a blank
+  line, `Nothing here yet.`; "yes11", as "no" with `install-tools: yes`;
+  "yes6", `## Install permission`, a blank line, `install-tools: yes`, the six
+  places, `install-answered: 2026-10-08`. Every place stands as a line
+  `install-place: …` of its own: the six are `/usr/local/bin`,
+  `/usr/local/sbin`, `/opt`, `~/.local/bin`, `~/bin` and `~/go/bin`; the eleven
+  are the six and `~/Library/Caches/ms-playwright`, `~/.cache/ms-playwright`,
+  `~/Library/Caches/Cypress`, `~/.cache/Cypress` and `~/.cache/puppeteer`. A
+  command written below with ⏎ stands on two lines and was fed with the
+  newline, once as the tool's JSON carries it, the two characters backslash and
+  `n`, and once more with a newline character in their place; the three such
+  commands answered the same exit code and the same message both ways under
+  every record. The exit codes stand in the order no, none, yes11, yes6; 2 is
+  exit 2, a block, 0 is exit 0, a pass. 35 commands under four records, 140
+  runs, every one as the order of 9 October 2026 expected from its own
+  measurement of that day under Linux against the same guard with a stand-in
+  for `uname` answering `Darwin`, the values the order marked as hanging on the
+  machine included: on this machine `npm prefix -g` answers `/opt/homebrew`,
+  whose `bin` lies under `/opt`, and `go env GOBIN` answers `~/go/bin`, both
+  places the record names, so every such value is 0 under both yes here. The
+  cause under "no" is "the record says no (install-tools: no on origin/main)"
+  and under "none" "no record: docs/agents/environment.md on origin/main has no
+  section "## Install permission", so the question was never answered", at
+  every block under those two records; every other cause is quoted at its
+  command. The 140 runs are recorded in this entry and as no run row of the
+  table, since the order asked for runs of the tool, its self-test and the
+  nineteen checks alone; none of the 140 meets one of the four outcomes of the
+  guard that read as built and never walked at `8efb3f8` — the three silent
+  passes of lines 7, 8 and 11, where the project directory cannot be entered,
+  the project is not set up or the tool is not Bash, and the block of line 448
+  where no destination is read off the command — and every outcome they do
+  meet, the two blocks on the record, the pass with every destination named,
+  the blocks on an unnamed place, on a destination that cannot be read and on a
+  piped script, and the silent pass where no pattern matches, reads as walked
+  already, so a run row would change no state.
+
+  **The eight findings on the guard, each a gap of this entry and not built.**
+  Each stands below with what is, its cause in
+  `hooks/pre-tool-use-install-guard.sh` at `2460bb7`, its commands with the
+  exit codes now and the ones that should come, and what should hold. The
+  command boundaries, findings 1 to 5 and the newline reading of finding 4,
+  come behind the closing runs of milestone 3 by decision 13 below; findings 6
+  to 8 and the should of finding 7 are open beside them.
+
+  **Finding 1. Of the browser downloads on one line the guard reads the first
+  match alone.** The five readers for `playwright install`, `playwright
+  install-deps`, `cypress install`, `puppeteer browsers install` and
+  `@puppeteer/browsers install` take the first hit of the line and no other,
+  `grep -oE … | head -1`, lines 208, 218, 223, 228 and 236. So a help, a
+  `--dry-run` or a `--list` in the first command passes the download, the
+  branded browser or the system packages in the second, and a download in the
+  first command hides a branded browser or the system packages in the second
+  under a yes. For comparison, `main` before `2460bb7` read no browser download
+  at all. Measured, now and should:
+  - `npx playwright install --help && npx playwright install chromium` — now 0
+    0 0 0, should 2 2 0 2.
+  - `npx playwright install --dry-run && npx playwright install chromium` — now
+    0 0 0 0, should 2 2 0 2.
+  - `npx cypress install --help && npx cypress install` — now 0 0 0 0, should 2
+    2 0 2.
+  - `npx puppeteer browsers install --help; npx puppeteer browsers install
+    chrome` — now 0 0 0 0, should 2 2 0 2.
+  - `npx playwright install-deps --help && npx playwright install-deps` — now 0
+    0 0 0, should 2 2 2 2.
+  - `npx playwright install --list && npx playwright install chrome` — now 0 0
+    0 0, should 2 2 2 2.
+  - `npx playwright install chromium && npx playwright install chrome` — now 2
+    2 0 2, should 2 2 2 2; yes6 now: "it lands in
+    ~/Library/Caches/ms-playwright, which the record does not name; the record
+    names: /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin;
+    routes: none".
+  - `npx playwright install chromium && npx playwright install --with-deps
+    chromium` — now 2 2 0 2, should 2 2 2 2; yes6 now as the line above.
+  - `npx puppeteer browsers install chrome && npx puppeteer browsers install
+    chrome --install-deps` — now 2 2 0 2, should 2 2 2 2; yes6 now: "it lands
+    in ~/.cache/puppeteer, which the record does not name; the record names:
+    /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin; routes:
+    none".
+  What should hold: every matching command of the line is read for itself; a
+  help, `--dry-run` and `--list` exempt their own command and no other, and a
+  branded browser or system packages in a later command stay the person's under
+  every answer.
+
+  Recorded, not built: every browser download on a line read for itself.
+
+  **Finding 2. Four patterns read across `&&`, `;` and `|` into the next
+  command.** Line 177, `make([[:space:]]+[^[:space:]]+)*[[:space:]]+install`,
+  takes `&&` and the next command's words for arguments of `make`; line 53,
+  `([[:space:]].*)?` before `-g` or `--global`, takes a `-g` anywhere later on
+  the line for npm's; line 175, `[^|;]*` without `&`, runs a `cp`, `mv`,
+  `install` or `ln` into the command after `&&`; line 179,
+  `(ba)?sh[[:space:]]+-c.*[$]\((curl|wget)`, takes a `$(curl` anywhere after
+  `sh -c` for a piped installer. Measured, now and should:
+  - `make build && npm install` — now 2 2 2 2, should 0 0 0 0; under both yes
+    now: "where it lands cannot be read here; make install (its destination is
+    not in the command: no PREFIX, DESTDIR or BINDIR written on the make line,
+    so the makefile decides); a place the record does not name stays blocked".
+  - `npm install && git log -g --oneline` — now 2 2 0 0, should 0 0 0 0; the
+    two 0 hang on the machine, `npm prefix -g` answering `/opt/homebrew` here.
+  - `cp dist/tool ./bin/tool && ls ~/bin` — now 2 2 0 0, should 0 0 0 0.
+  - `bash -c 'make test' && STATUS=$(curl -s https://example.com/health)` — now
+    2 2 2 2, should 0 0 0 0; under both yes now: "it pipes a script from the
+    network into a shell, which stays the user's under every answer".
+  What should hold: a pattern ends at the separator, and what follows the
+  separator is a command of its own.
+
+  Recorded, not built: a pattern of the guard ending at the separator.
+
+  **Finding 3. A variable behind `install` on the make line is not read.** Line
+  404 reads PREFIX, prefix, DESTDIR, BINDIR, bindir, exec_prefix and
+  EXEC_PREFIX before `install` only, so `make install BINDIR=~/bin` names its
+  destination and blocks under a yes as if it named none. Measured, now and
+  should:
+  - `make install BINDIR=~/bin` — now 2 2 2 2, should 2 2 0 0; under both yes
+    now: "where it lands cannot be read here; make install (its destination is
+    not in the command: no PREFIX, DESTDIR or BINDIR written on the make line,
+    so the makefile decides); a place the record does not name stays blocked".
+  - for comparison `make BINDIR=~/bin install` — 2 2 0 0, and stays so.
+  What should hold: a variable on the line of `make` counts before and behind
+  `install` alike. That `PREFIX` is taken as written, so that `make
+  PREFIX=/usr/local install` blocks under a yes at `/usr/local`, is no finding.
+
+  Recorded, not built: a make variable behind install read as one before it.
+
+  **Finding 4. A newline becomes a space, and two commands run together.** Line
+  4, the same in the six hooks that prepare the tool's JSON this way —
+  `pre-tool-use-install-guard.sh`, `pre-tool-use-branch-guard.sh`,
+  `pre-tool-use-merge-guard.sh`, `pre-tool-use-table-guard.sh`,
+  `post-tool-use-table-guard.sh` and `post-tool-use-checks.sh` — turns a
+  newline into a space with `tr '\n' ' '` and the escaped one with `s/\\n/ /g`;
+  the rule behind it is "A hook reading the tool's JSON must undo the escapes
+  first" in `docs/skill-conventions.md`, line 1410, measured on 25 August 2026
+  against a second command on a new line that walked past the guards. Measured,
+  now and should:
+  - `make build` ⏎ `npm install` — now 2 2 2 2, should 0 0 0 0; under both yes
+    now the make-install cause of finding 2.
+  - `npx playwright install chromium` ⏎ `df -h` — now 0 0 0 0, should 2 2 0 2:
+    the `-h` of `df` on the second line is read as the installer's help.
+  - `brew bundle` ⏎ `npm test` — now 0 0 0 0, should 2 2 0 0.
+  What should hold: commands on separate lines are read as separate commands,
+  and a continuation with a backslash stays one command. How that is done, and
+  in which of the six hooks, is open; it is decided with the order on the
+  command boundaries, decision 13 below.
+
+  Recorded, not built: a newline in the command read as a command boundary.
+
+  **Finding 5. Of make, cargo and gem the guard reads the destination of the
+  first command of its kind alone.** `head -1` on the reading of the make
+  variables, line 404, of `--root` behind `cargo`, line 298, and of `--bindir`
+  behind `gem`, line 336, so that a second command of the same kind on the line
+  goes to a place the record does not name unseen. Measured, now and should:
+  - `make BINDIR=~/bin install && make BINDIR=/srv/tools install` — now 2 2 0
+    0, should 2 2 2 2.
+  - `cargo install --root ~/.local ripgrep && cargo install --root /srv/tools
+    fd-find` — now 2 2 0 0, should 2 2 2 2.
+  - `gem install --bindir ~/bin rake && gem install --bindir /srv/tools
+    rubocop` — now 2 2 0 0, should 2 2 2 2.
+  What should hold: every destination written on the line is held against the
+  places.
+
+  Recorded, not built: every destination on a line held against the places.
+
+  **Finding 6. Global installs with npm in other spellings stay unread.** Line
+  53 demands `install`, `i` or `add` and after it exactly `-g` or `--global`.
+  Measured, now, 0 0 0 0 each: `npm -g install typescript`; `npm install
+  --location=global typescript`; `npm install --glob typescript`; `npm isntall
+  -g typescript`. The sources, npm/cli, read again on 9 October 2026 off the
+  default branch through the raw endpoint:
+  `docs/lib/content/using-npm/config.md`, lines 65 to 78, the shorthand `-g`,
+  an abbreviation that "resolves unambiguously to a known configuration
+  parameter" such as `npm ls --par` for `--parseable`, and single-character
+  shorthands strung together, `npm ls -gpld`;
+  `workspaces/config/lib/definitions/definitions.js`, `global` with `short:
+  'g'` at lines 937 to 940 and `location` with the values `global`, `user` and
+  `project` at 1396 to 1402, "When set to "global" mode, packages are installed
+  into the `prefix` folder"; `lib/utils/cmd-list.js`, lines 122 to 130, `in`,
+  `ins`, `inst`, `insta`, `instal`, `isnt`, `isnta`, `isntal` and `isntall` as
+  names for `install`, beside `add` and `i`.
+
+  What should hold: every form npm reads as a global install the guard reads as
+  it reads `npm install -g typescript`; under a yes the value then hangs on the
+  machine, as it does for that command.
+
+  Recorded, not built: npm's other spellings of a global install read.
+
+  **Finding 7. A variable before the command that moves the destination is not
+  read.** The guard asks the place in its own process: `go env GOBIN` and `go
+  env GOPATH` at line 288, `npm prefix -g` at 320, `pipx environment` at 324,
+  and `CARGO_INSTALL_ROOT` out of its own environment at 311. A variable set
+  for the command alone it does not see; the same holds for `PIPX_BIN_DIR=`,
+  `UV_TOOL_BIN_DIR=` and `CARGO_INSTALL_ROOT=` before the command. Measured,
+  now:
+  - `GOBIN=/srv/tools go install golang.org/x/tools/cmd/goimports@latest` — 2 2
+    0 0; the order measured 2 2 and two values hanging on the machine, 0 0
+    under Linux, and here `go env GOBIN` answers `~/go/bin`, a place the record
+    names.
+  - `npm_config_prefix=/srv/tools npm install -g typescript` — 2 2 0 0; the two
+    0 hang on the machine as in finding 2.
+  The should is open, decision 15 below: either the variable before the command
+  is read as the place and held against the places, or the conventions name the
+  gap, as the decision of 8 October 2026 on a moved browser location is named
+  there.
+
+  Recorded, not built: the variable before the command that moves the place.
+
+  **Finding 8. Eight install routes the guard does not know.** Measured, now, 0
+  0 0 0 each: `deno install -g -A npm:cowsay`; `dotnet tool install --global
+  dotnet-ef`; `conda install -c conda-forge ripgrep`; `nix profile install
+  nixpkgs#ripgrep`; `pkgx install ripgrep`; `gh extension install
+  dlvhdr/gh-dash`; `volta install node@22`; `fnm install 22`. None of them
+  stands in the list of routes the guard reads, `MANAGER` at line 50.
+
+  What should hold: each of these routes is read like the one it resembles. A
+  version manager stays the person's under every answer, as `nvm` does; a tool
+  installer is read with its destination. What is not read, the conventions
+  name with the reason.
+
+  Recorded, not built: eight install routes the guard does not know.
+
+  **Four questions never examined, each a gap of this entry and not built.**
+  The sentences the order quoted were read again on 9 October 2026: the
+  changelog of Claude Code off `anthropics/claude-code`, `CHANGELOG.md` on the
+  default branch through the raw endpoint, whose newest entry is 2.1.295, the
+  version on this machine, and the pages under code.claude.com/docs/en as
+  Markdown.
+
+  **Question 1. When the build subagent in auto mode hands its report back.**
+  The changelog says, word for word: 2.1.271, "Changed auto mode so a subagent
+  reports back to its caller through a dedicated hand-back call that the safety
+  classifier reviews, instead of its last message being reviewed after the
+  fact"; 2.1.285, "Improved subagents in auto mode: a subagent's run now ends
+  as soon as it hands its report back to its caller, instead of taking extra
+  turns that reach no one"; 2.1.290, "Fixed plugin hooks reading an empty
+  `answer` on `turn.complete` for a subagent that hands its report back in auto
+  mode"; 2.1.243, "Fixed background subagents not waking when their last
+  background Bash task completes". The page on subagents says that a background
+  subagent keeps `SubagentHandback` "for a subagent that reports through it"
+  and that "a background subagent's results reach Claude as a completion
+  notification in a later turn"; the page on permission modes, under "How auto
+  mode handles subagents", that "when the subagent finishes, the classifier
+  reviews its work and its final report before the parent reads the report". No
+  skill and no shared text says when the build subagent hands back: `grep
+  -rniE` over `skills/*/SKILL.md` and `shared/*.md` for a hand-back or a report
+  back finds three lines, `build-work` line 925 on a merge, `setup-checks` line
+  284 on a cell and `shared/restate.md` line 1 on the language, none on the
+  moment. Outside this entry the roadmap names `SubagentHandback` on lines
+  4693, 4698 and 4724 only, as seen in run 10 of 17 September 2026 and on the
+  page of that day.
+
+  What should hold: measured and recorded.
+
+  Recorded, not built: when the build subagent hands back, measured.
+
+  **Question 2. The sandbox of Claude Code is never examined.** `grep -rniE
+  sandbox docs/*.md README.md skills/*/SKILL.md shared/*.md hooks/*` came back
+  empty before this entry was written, on 9 October 2026; what it finds since
+  is this entry alone. The page "Configure the sandboxed Bash tool" says that
+  "the sandbox covers shell commands only" and that "Claude's file tools, MCP
+  servers, and hooks run outside it", command hooks "with your full access";
+  that by default "sandboxed commands can write to the current working
+  directory, the per-user temp directory, and any directories you've added",
+  and "if subprocess commands like `kubectl`, `terraform`, or `npm` need to
+  write outside those directories, use `sandbox.filesystem.allowWrite`"; and
+  the hooks reference that "Claude Code doesn't run PermissionRequest hooks for
+  a sandboxed command's network request". The settings files of this machine,
+  `~/.claude/settings.json` and `.claude/settings.json` of this repository,
+  carry no `sandbox` key on 9 October 2026, so whether the sandbox stood in any
+  run of the roadmap is not written anywhere.
+
+  What should hold: examined whether the sandbox touches installs and the
+  guard, and recorded.
+
+  Recorded, not built: the sandbox of Claude Code examined for the guard.
+
+  **Question 3. The Stop hook while the build subagent builds in the
+  background.** Since 2.1.232 subagents in a session with a person run in the
+  background by default, "Subagent forking is now on by default: a
+  `subagent_type: "fork"` subagent inherits the full conversation and prompt
+  cache, and non-teammate agent spawns in interactive sessions now run in the
+  background by default". Where the main run's turn ends while the subagent
+  builds, `hooks/stop-checks.sh`, on `Stop` in `hooks/hooks.json`, runs the
+  whole check chain in the same directory and counts the turn ends with the red
+  classes unchanged; at three it hands the problem over, and with nobody there
+  `build-work` puts the task down, lines 520 to 531, 509 to 520 at `89fb52e` —
+  which can be the task the subagent still builds. Whether `Stop` fires in that
+  case is not read. The hooks reference says of `Stop` that it "runs when the
+  main Claude Code agent has finished responding", and gives its input a
+  `background_tasks` array that lets "hooks distinguish "session is done" from
+  "session is paused waiting for background work to wake it back up"", with
+  `subagent` among the task types — which says the event comes while a subagent
+  is in flight and says nothing of a check chain run meanwhile.
+
+  What should hold: measured and recorded.
+
+  Recorded, not built: the Stop hook while the subagent builds, measured.
+
+  **Question 4. VS Code runs a part of the commands and skills.** The page "VS
+  Code extension vs. Claude Code CLI" lists "Commands and skills" as "All" for
+  the CLI and "Subset (type `/` to see available)" for the extension. Whether
+  the skills of devloop are in that subset is not read. Beside it, read the
+  same day for decision 3 below: the JetBrains page says under "Installation"
+  that the plugin "runs the `claude` command in your IDE's integrated terminal
+  and connects to it" and "does not bundle its own copy of the CLI"; the
+  desktop page says under "Install plugins" that "the plugin browser is not
+  available in cloud sessions, and plugins you install from the desktop app
+  aren't available for cloud sessions", and that "plugins aren't available in
+  WSL sessions".
+
+  What should hold: read for the milestone on every operating system and every
+  surface, decision 3.
+
+  Recorded, not built: whether VS Code runs the skills of devloop.
+
+  **The decisions, taken by 8 October 2026 where no other date stands, with the
+  order that builds each.** None is built here. A decision gets a thing in the
+  table only where the conventions ask for one, and none of these does: each
+  names a defect already in the table or a build to come. The texts they put
+  before a person are approved and stand word for word further down.
+
+  For the order after this one, order 2, the behaviour with nobody there:
+
+  **Decision 1. A refusal by the classifier of auto mode with nobody there**
+  goes as a guard's block goes: no second attempt, no other way to the same
+  tool, an issue carrying the command and the reason, the task put down, the
+  next one taken — `build-work` lines 68 to 76, the same at `89fb52e`. Beside
+  it comes a rule in prose under `autoMode.allow` in `~/.claude/settings.json`,
+  the user's level, which devloop enters itself after a question of its own put
+  directly after the yes to the run with nobody there in `setup-checks` step 8,
+  order 3, decision 10; the rule and the question stand in approved text 4
+  below. Under a no the guard blocks before the classifier is reached.
+  Rejected: that the guard itself allows, `permissionDecision: allow`. The
+  sentence on the refusal belongs in the list the build subagent gets too,
+  `build-work` step 3, since the subagent gets the task, the spec, the paths
+  and the mark alone, lines 322 to 324, 319 to 321 at `89fb52e`.
+
+  **Decision 2. A command that does not finish inside its call.** The install
+  and the check chain are called with ten minutes. What does not finish inside
+  its call, because it is moved to the background or ended, is neither started
+  a second time nor waited for: it counts as not finished and is reported with
+  the command, the message and the path of its output file. For an install that
+  means "did not go through", on as decision 4 says; for the check chain "not
+  answered", nothing closed, `shared/command-does-not-answer.md` lines 16 to
+  24. Its places: `shared/command-does-not-answer.md`, where the case replaces
+  the "second attempt" of lines 2 and 3; the subagent's list in `build-work`
+  step 3; and in `docs/skill-conventions.md` the place "this set says nothing
+  yet", lines 1375 to 1379, 1319 to 1323 at `89fb52e`. Rejected: waiting for
+  the message, a sentence on the hand-back of the report, and an addition to
+  "Nothing resumes on its own".
+
+  **Decision 3. A new milestone directly after milestone 3: every operating
+  system, every surface.** Milestone 3 closes as planned on the person's Mac in
+  the terminal, and its text says so. The new milestone fixes which systems and
+  surfaces count. It brings the hooks, the programs and the guards into a form
+  that runs there, the guard for PowerShell too. It decides how devloop reaches
+  cloud sessions, or that it does not. It ends with one run per system, the
+  cases of milestone 3 included. The evidence: `hooks/hooks.json`, where every
+  command guard stands on the tool `Bash` alone; the hooks reference, whose
+  `shell` field on a command hook "defaults to "bash", or to "powershell" on
+  Windows when Git Bash isn't installed", whose shell form runs `sh -c` on
+  macOS and Linux, Git Bash on Windows, or PowerShell when Git Bash isn't
+  installed, and whose PowerShell section says "a hook that matches only `Bash`
+  never fires there" — the order named that reading as the hooks page's
+  "Default shell on Windows", a heading the page does not carry on 9 October
+  2026; the skills page, "How injected commands run" and "When an injected
+  command fails"; the tools reference, "PowerShell tool"; the VS Code page, "VS
+  Code extension vs. Claude Code CLI"; the JetBrains page, "Installation"; the
+  desktop page, "Install plugins". The plan entry comes with order 3, decision
+  11.
+
+  **Decision 4. One rule for the four ways an install does not go through with
+  nobody there.** The four ways: the guard blocks, the classifier refuses, the
+  installer reports an error, the call does not finish. What follows: an issue
+  with the command, the message and what stands at the destination path,
+  labelled `raised-here` and `needs-human`, recorded as a blocker of the task;
+  the task put down, and step 2 takes the next. There is no other way to the
+  same tool. Only on the installer's error there are up to three attempts ten
+  seconds apart, each failed one named with command and message; the model is
+  `shared/fetch-three-times.md`, lines 27 to 36, and actions/checkout. In
+  `setup-checks` the class goes `skipped (state)` as at a block today, lines 81
+  to 86; `build-work` reads before the release whether the state still stands,
+  lines 589 to 595, 578 to 584 at `89fb52e`; the exception `secrets` is
+  decision 5. The guard stays tight: "Every failure is a block" in the
+  conventions, line 1526, stands unchanged. On how often this happens: four
+  recorded installs, all through, the roadmap at lines 5915 to 5924, 7668 to
+  7677 and 9290 to 9302. The installers' own repetitions, read again on 9
+  October 2026 off the default branch of each through the raw endpoint:
+  Homebrew, `HOMEBREW_CURL_RETRIES` with the default 3,
+  `Library/Homebrew/env_config.rb` lines 290 to 293, passed as `--retry` in
+  `Library/Homebrew/utils/curl.rb` line 185; curl, the pages `retry.md` and
+  `retry-connrefused.md` under `docs/cmdline-opts/`; cargo, `net.retry` with
+  the default 3, `doc/book/src/reference/config.md` lines 977 to 982, "Number
+  of times to retry possibly spurious network errors"; pip, `--retries` with
+  the default 5, `src/pip/_internal/cli/cmdoptions.py` lines 361 to 368; npm,
+  `fetch-retries` with the default 2,
+  `workspaces/config/lib/definitions/definitions.js` lines 790 to 798; uv,
+  `UV_HTTP_RETRIES` with the default 3, `crates/uv-static/src/env_vars.rs`
+  lines 899 to 901.
+
+  **Decision 5. The two places where `setup-checks` with nobody there ends the
+  run.** The places: `secrets` cannot be set up, lines 86 to 102; a guard fired
+  on text and the editing tool does not reach, lines 103 to 109; both arise on
+  the branch of a task alone, `build-work` lines 1221 to 1224, 1210 to 1213 at
+  `89fb52e`. At both the task ends from now on and not the run: an issue with
+  the command, the message and what is in the way; the task put down; the next
+  one taken. The class stays as it stands. `secrets` the run still never
+  switches off, the rule of 5 October 2026 at roadmap lines 11507 to 11509. The
+  sentence for the person at `secrets` changes against the one of 6 October
+  2026, roadmap lines 11062 to 11069; the new wording is approved text 1 below.
+  In `build-work` the list of the places where the mark is deleted loses the
+  entry "a halt of `setup-checks` … where the run ends", lines 1217 to 1225,
+  and the section "With nobody there" gets the case, lines 91 to 140, 91 to 137
+  at `89fb52e`.
+
+  **Decision 6. A hook for permission prompts with nobody there**, start
+  condition 4 of the mode. A `PermissionRequest` hook answers every permission
+  prompt with no while the mark of the run with nobody there stands; the run
+  treats that as every refusal, issue, task down, next task. The hook's message
+  is approved text 5 below. Start condition 4 reads only whether the mode is
+  `auto`, off the field `permission_mode` of the hook's input, whose values the
+  hooks reference gives as `default`, `plan`, `acceptEdits`, `auto`, `dontAsk`
+  and `bypassPermissions`, adding that "the mode labeled Manual arrives as
+  "default"" and that "not all events receive this field"; `bypassPermissions`
+  and `dontAsk` do not count, and allow rules are not read. The refusal where
+  the mode is not `auto` is approved text 2 below. Why no yes: an ask rule is
+  the express wish for a person; three blocks mean the classifier holds the act
+  dangerous; and self-approval is rejected in decision 1. The price: after a
+  pause of auto mode — three blocks in a row or twenty in all, which the
+  permission-modes page gives under "When auto mode falls back", "auto mode
+  pauses and Claude Code resumes prompting. Approving the prompted action
+  resumes auto mode" — it resumes only after a yes; with a no the rest of the
+  run yields issues alone, and ends. To measure in the closing runs: whether
+  the hook fires at that pause too, and on prompts of subagents in the
+  background; the pages do not say so in so many words, the hooks reference
+  saying that in sessions that cannot show a prompt "Claude Code still runs
+  these hooks, and if no hook returns a decision, it denies the tool call". The
+  evidence: `build-work` lines 1132 to 1133, 1121 to 1122 at `89fb52e`, start
+  condition 4, and roadmap lines 2292 to 2295, the condition asserted only;
+  roadmap lines 3430 to 3434, on 14 September 2026 three blocks, a question,
+  the run standing with nobody there; `setup-checks` lines 812 to 814, 802 to
+  804 at `89fb52e`, and `docs/plan.md` lines 296 to 304, 282 to 290 at
+  `89fb52e`; the page "Permission modes", the hooks guide and the hooks
+  reference with the decision table of `PermissionRequest` and the field
+  `permission_mode`.
+
+  **Decision 7. The missing thing in the table** for an install that goes
+  through with nobody there under a yes, roadmap line 10312, whose thing stands
+  in the table as recorded and not built since 4 October 2026.
+
+  For order 3, `setup-checks` step 8 and the plan:
+
+  **Decision 8. A reading before the question on the mode with nobody there.**
+  It answers the finding on `skills/setup-checks/SKILL.md` line 698, 688 at
+  `89fb52e`: step 8 learns only after the question that the platform refuses
+  the protection. The run calls `gh api repos/OWNER/REPO/rules/branches/` with
+  the main branch, which needs no special rights, `setup-checks` line 668, 658
+  at `89fb52e`. Where it answers `[]` or a list, the question comes as before.
+  Where it answers HTTP 403 with "Upgrade to GitHub Pro or make this repository
+  public", no question comes but the statement of approved text 3 below, and
+  the run with the person goes on. Every other answer counts as not answered:
+  command and message are named, nothing is closed,
+  `shared/command-does-not-answer.md` lines 16 to 24. After auto-merge is
+  switched on, the value is read back. Rejected: reading the status 403 alone,
+  since it comes from a GitHub CLI locked out of an organization too; and the
+  query of the protection itself, since it needs admin rights, `setup-checks`
+  line 666, 656 at `89fb52e`. The measurement of 8 October 2026 on the person's
+  Mac with gh 2.96.0, recorded here: the personal account `jayjay-create`,
+  whose plan is not readable, `gh api user -q .plan.name` empty, the private
+  repository `jayjay-create/devloop-probe-protection`, branch `main` —
+  `branches/main/protection` answers HTTP 404 "Branch not protected", exit 1;
+  `rules/branches/main` answers `[]`, exit 0; a PUT on the protection answers
+  200 with `enforce_admins` on; by GitHub's own statements that fits Pro alone.
+  The organization `jayjay-create-probe` on the plan Free, the private
+  repository `jayjay-create-probe/devloop-probe-protection` — protection, rules
+  and PUT each answer HTTP 403 "Upgrade to GitHub Pro or make this repository
+  public to enable this feature."; `allow_auto_merge` is `false`; a PATCH with
+  `allow_auto_merge=true` answers `false`, exit 0. GitHub's statements on
+  docs.github.com, read on 8 October 2026: protection in public repositories
+  with Free, in public and private ones with Pro, Team, Enterprise Cloud and
+  Enterprise Server; rulesets and auto-merge the same. Read again on 9 October
+  2026 with gh 2.96.0: `gh api user -q .plan.name` is empty still;
+  `jayjay-create/devloop-probe-protection` is private, its owner of type
+  `User`; the organization answers to the name `jay-hey`, of type
+  `Organization`, created 2026-10-08T11:58:49Z, the one organization `gh api
+  user/orgs` lists for this account, and `gh api
+  repos/jayjay-create-probe/devloop-probe-protection` answers with the full
+  name `jay-hey/devloop-probe-protection`, private, `allow_auto_merge` false —
+  the organization was renamed after the measurement, and GitHub follows the
+  old name.
+
+  **Decision 9. The question on the mode with nobody there field by field**,
+  like every other question of the skill. It answers the finding on
+  `skills/setup-checks/SKILL.md` line 725, 715 at `89fb52e`, "the question of
+  step 8 on the unattended mode has no form". The window, the short text before
+  it and what goes against today are approved text 6 below.
+
+  **Decision 10. The rule of decision 1 devloop writes itself** into
+  `~/.claude/settings.json`, after the question of approved text 4. A list
+  already standing under `autoMode.allow` is extended; `"$defaults"` is set
+  only where the list is created. To measure in the closing runs: whether the
+  classifier reads the yes from the question window as express permission, its
+  rule "Self-Modification", and whether the rule takes effect in the same
+  session. The evidence: the page "Configure auto mode", read on 9 October 2026
+  as `auto-mode-config`, with "Where the classifier reads configuration", which
+  names `~/.claude/settings.json` as the scope of one developer, "Override the
+  block and allow rules", where `autoMode.allow` holds "exceptions to soft
+  block rules" as "an array of prose descriptions, read as natural-language
+  rules", and the note that "to keep the built-in rules while adding your own,
+  include the literal string `"$defaults"` in the array"; the page "Permission
+  modes", "Protected paths"; and `claude auto-mode defaults` on this machine
+  under 2.1.295, whose entry "Self-Modification" stands under `soft_deny` and
+  says it must name "that this specific permission or consent change is
+  wanted".
+
+  **Decision 11. In the plan:** the milestone of decision 3, and that milestone
+  3 closes on the person's Mac in the terminal; milestone 3 stands at
+  `docs/plan.md` line 220.
+
+  For the closing runs of milestone 3:
+
+  **Decision 12. The arrangement of the runs.** The fresh test project gets
+  code before the setup, a Go program with a function and a test, committed and
+  pushed, so that `setup-project` calls `setup-checks` at its close, lines 803
+  to 807, and `check` runs green; the finding on `build-work` line 207, 204 at
+  `89fb52e`, an empty project with a red base, is not met. Run 2 takes the
+  direct route: the spec is planned together, `--auto` comes at the build
+  alone, and the install question comes a second time through `setup-checks`
+  step 8, `build-work` lines 1094 to 1098 and 1170, 1083 to 1087 and 1159 at
+  `89fb52e`; defect 3 of 4 October 2026, planning with nobody there standing
+  still, roadmap lines 9515 to 9599, is not met. Both defects stay in the table
+  and are built before the run that meets them, at the latest in milestone 11,
+  `docs/plan.md` lines 636 to 654. The browser downloads run once under no and
+  once under yes. After each run the project's files are searched with `git
+  grep` for the commands that fetch a tool and run it. The refresh of projects
+  set up earlier is not built before milestone 3 closes. Open is the choice of
+  the two tools: they may not be enterable into the project's package file,
+  conventions lines 700 to 710, 695 to 705 at `89fb52e`, and come through
+  Homebrew to `/opt/homebrew/bin`; `sqlc` is enterable in Go with `go get
+  -tool`. Proposed and not decided: for the task that needs a browser,
+  Playwright, not Cypress or Puppeteer, whose download runs alongside `npm
+  install`.
+
+  Decided on 9 October 2026:
+
+  **Decision 13. The command boundaries come after the closing runs of
+  milestone 3**, with the rest of the plan: findings 1 to 5 above and the
+  question how the six hooks read a newline, finding 4. Until then they stand
+  as gaps of this entry.
+
+  Open, to decide:
+
+  **Decision 14. The person's principle**, "In doubt, a run with nobody there
+  is not to be blocked: security matters, but not endangering the production
+  run matters a little more." It stands in the entry of 8 October 2026 above
+  and is given as a reason in the conventions, lines 1797 and 1899, not as a
+  rule of its own. Whether it becomes one is open.
+
+  **Decision 15. The should of finding 7.**
+
+  **Decision 16. Tidying up at the end of the stage:** the organization
+  `jayjay-create-probe`, which answers to the name `jay-hey` since the
+  measurement, and the two repositories
+  `jayjay-create/devloop-probe-protection` and
+  `jayjay-create-probe/devloop-probe-protection`, the second now
+  `jay-hey/devloop-probe-protection`.
+
+  **The approved texts, word for word.** Approved by the person on 8 October
+  2026, recorded here as approved, the German ones in German and the English
+  ones in English, without translation and without rewording; what stands in
+  angle brackets the run fills when it runs. Two more texts of the same
+  approval are built already, in 0.131.0: the install question with the
+  browsers for tests, and the two new causes in the install guard's message;
+  they are not recorded a second time.
+
+  Text 1, the halt at `secrets` with nobody there, decision 5, changed: „Die
+  Prüfung, ob versehentlich Zugangsdaten committet wurden, lässt sich ohne dich
+  nicht einrichten. <in einfachen Worten, was im Weg ist> Diese Prüfung schalte
+  ich nie von mir aus ab, deshalb schreibe ich ein Issue mit dem Grund und
+  mache mit den anderen Aufgaben weiter. Im Issue steht der Befehl, mit dem du
+  das selbst installierst. Führ ihn aus und schließ das Issue, dann ist die
+  Aufgabe wieder frei.“ The example for the middle stays: „Das Werkzeug
+  `<Name>` bräuchte Java, und eine Laufzeitumgebung installiere ich nie
+  selbst.“ Until now, 6 October 2026, roadmap lines 11062 to 11069: „… Diese
+  Prüfung schalte ich nie von mir aus ab, deshalb endet der Lauf ohne dich
+  hier. Mit dir zusammen geht es weiter: Dann gebe ich dir die Installation als
+  Befehl, den du selbst ausführst.“
+
+  Text 2, the refusal at start condition 4, decision 6, new: „Der Lauf ohne
+  dich startet nicht. Dafür muss Claude Code im Auto-Modus laufen, gerade ist
+  „<Modus, wie Claude Code ihn anzeigt>“ eingestellt. Stell den Auto-Modus ein,
+  im Terminal mit Umschalt+Tab, und tippe dann `--auto` noch einmal. Ohne
+  `--auto` baue ich die geplanten Aufgaben mit dir.“
+
+  Text 3, the statement in `setup-checks` step 8 where GitHub offers no
+  protection, decision 8, new: „Der Lauf ohne dich geht in diesem Projekt
+  nicht, weil GitHub für dieses Repository keinen Schutz des Hauptzweigs
+  anbietet. Du hast zwei Möglichkeiten: Du machst das Repository öffentlich,
+  oder es bleibt privat und du nimmst <GitHub Pro / GitHub Team>. Mit dir
+  zusammen läuft alles weiter wie bisher.“ The plan is chosen after `gh api
+  repos/OWNER/REPO -q .owner.type`: `User` gives GitHub Pro, `Organization`
+  GitHub Team.
+
+  Text 4, the rule for the classifier, decisions 1 and 10, which devloop enters
+  itself after a question put directly after the yes to the run with nobody
+  there in `setup-checks` step 8, new. The question: „Darf ich in deiner Datei
+  `~/.claude/settings.json` eine Regel eintragen, damit der Auto-Modus
+  Installationen in devloop-Projekten nicht von sich aus blockiert?“ Yes,
+  button „Ja, eintragen“, line „Ich trage die Regel ein. Sie erlaubt nur
+  Installationen in Projekten, die mit devloop eingerichtet sind.“ No, button
+  „Nein, nicht eintragen“, line „Dann kann der Auto-Modus eine Installation
+  ablehnen. Ohne dich schreibt der Lauf dann ein Issue mit dem Grund und macht
+  mit der nächsten Aufgabe weiter.“ The entry refused: „Ich konnte die Regel
+  nicht eintragen: <Meldung>. Der Lauf ohne dich geht trotzdem. Lehnt der
+  Auto-Modus eine Installation ab, schreibt der Lauf ein Issue mit dem Grund
+  und macht mit der nächsten Aufgabe weiter.“ The rule, in English, under
+  `autoMode.allow`: "Installing a tool that the current task needs is allowed
+  in a repository set up with devloop: a command-line tool with brew install,
+  go install, cargo install, uv tool install or pipx install, and a browser for
+  tests with playwright install, cypress install or puppeteer browsers install.
+  A devloop hook reads the project's install permission before every such
+  command and blocks it where the person has not said yes."
+
+  Text 5, the message of the `PermissionRequest` hook, decision 6, in English,
+  new: "Refused by devloop: this is a run with nobody there
+  (.claude/unattended.local stands), so no one can answer this permission
+  prompt. Do not try it again or reach the same result another way. Raise an
+  issue carrying this tool call and this refusal, label it raised-here and
+  needs-human, record it as a blocker of the task, then put the task down and
+  take the next one, as "A guard's block, with nobody there" in build-work
+  says."
+
+  Text 6, the question on the run with nobody there in `setup-checks` step 8,
+  decision 9, approved in a second round on 8 October 2026. In the window — the
+  head: „Ohne dich“. The question: „Darf devloop in diesem Projekt künftig ohne
+  dich arbeiten, von den Entwürfen bis zum Merge? Ob eine Idee dann wirklich
+  ohne dich umgesetzt wird, fragt devloop bei jeder neuen Idee, sobald ihr sie
+  gemeinsam geschärft habt. Die Antwort gilt für alle Aufgaben dieser Idee.“
+  Yes, button „Ja, ohne mich erlauben“, line „devloop richtet eine Prüfung auf
+  GitHub ein und schützt den Hauptzweig, auch gegen deine eigenen direkten
+  Pushes. Ein Lauf arbeitet dann, bis alles gebaut ist, solange dieses Fenster
+  offen und der Rechner wach ist.“; where the protection stands already, the
+  first sentence goes. No, button „Nein, alles mit mir“, line „Alles bleibt wie
+  jetzt, jede Aufgabe kommt zur Freigabe zu dir. Mit `--auto` kannst du es
+  später einrichten.“
+
+  Before the window, as a short text, only what no field can carry. 1, the
+  course: „Ohne dich nimmt devloop eine fertig geplante Aufgabe nach der
+  anderen: eigener Zweig, Code, Prüfungen, Review, Pull Request. GitHub mergt
+  ihn von selbst, sobald alle Prüfungen grün sind, und devloop wartet darauf,
+  bevor es die nächste nimmt.“ 2, what can go wrong: „Wird eine Aufgabe nicht
+  grün, schreibt devloop ein Issue mit dem Grund und macht mit der nächsten
+  weiter. Das ist der häufigste Fall. Geht ein Merge auf GitHub nicht durch,
+  endet der Lauf, denn alles danach würde ohne diese Prüfung gebaut.“ 3, the
+  end: „Ist alles gebaut, sagt dir der Lauf das in seiner letzten Nachricht.
+  Hört er vorher auf, sagt seine letzte Nachricht, warum. Von selbst fängt er
+  dann nicht wieder an.“ — the closing sentence of the run stays internal,
+  `build-work` lines 1306 to 1307, 1295 to 1296 at `89fb52e`. 4, the costs:
+  „Bei einem privaten Repository verbraucht die Prüfung auf GitHub Minuten aus
+  dem Kontingent deines Kontos.“; „Ohne dich lässt das Review keine
+  Prüfrichtung weg, etwa Sicherheit, Tests oder Fehlerbehandlung; mit dir darf
+  es eine mit Begründung weglassen. Ohne dich kostet jedes Review deshalb
+  mehr.“; „Ohne dich siehst du erst am Ende, ob das Gebaute das ist, was du
+  wolltest; mit dir siehst du es bei jeder Aufgabe.“ 5, keeping the machine
+  awake — for every system: „Der Rechner muss wach bleiben, solange der Lauf
+  arbeitet. Schläft er ein, bleibt der Lauf stehen, bis du etwas schreibst.“;
+  on macOS alone, where `uname -s` answers `Darwin`: „Dafür startest du in
+  einem eigenen Terminal `caffeinate` und beendest es mit Ctrl-C, wenn du
+  zurück bist. Einen zugeklappten Laptop hält das nicht wach.“; the commands
+  for Linux and Windows come with the new milestone, the rule in `setup-checks`
+  lines 769 to 784, 759 to 774 at `89fb52e`.
+
+  What goes against today, `setup-checks` lines 725 to 843, 715 to 833 at
+  `89fb52e`: the rule "Do not recommend a yes on a first project", lines 840 to
+  843; as details before the question, that issues the run raises itself are
+  worked off too, that there is no cap on the number of tasks, and that the
+  result can be read as a diff from the starting commit — the behaviour stays,
+  it is only no longer said before the question; the sentence "a permission
+  prompt … stops", lines 812 to 814, which since decision 6 no longer holds;
+  and the explanation of the closing sentence for the person.
+
+  **Three corrections, made in this entry and in the table.** First: line 7600
+  of this file at `2460bb7` broke `install-route` at its hyphen over the line
+  end, which Markdown renders as `install- route`; the lines are rewrapped so
+  that the word stands on one line. A search on 9 October 2026 for a line
+  ending on a letter or a digit and a hyphen whose next line begins with a word
+  found that line and no other in the whole document, as the order's search of
+  the same day had. Second: the thing "docs/roadmap.md / Known gaps /
+  build-work offers to build the gate itself with no cost list at all", on the
+  entry at lines 983 to 992, stood as recorded and not built, while
+  `build-work` itself says since 5 October 2026, version 0.129.0, pull request
+  #157, that "the shorter offer that stood here until 5 October 2026 … is gone"
+  and calls `setup-checks` step 8 in its place, lines 1170 to 1175; `grep -n -i
+  'build the gate\|offer.*gate\|gate.*offer' skills/build-work/SKILL.md` comes
+  back empty. Its evidence moved onto the line of `build-work` that says so,
+  and its note names the repair; its site stays on the entry, since the status
+  line the evidence left carries the site of the thing beside it, "the cost
+  list and the description of the mode do not reach a project set up in an
+  earlier session", which stays as it is, and the tool rejects two things on
+  one site anchor. Third: the finding on `skills/setup-project/SKILL.md` line
+  79, recorded on 2 October 2026, said among other things that the offer of the
+  mode with nobody there in `setup-checks` step 8 is never reached in a project
+  set up earlier; since 5 October 2026 `--auto` reaches step 8 directly,
+  whatever the table's rows, `build-work` lines 1164 to 1179 and `plan-work`
+  lines 322 to 330, so that half is gone from the finding, and the half on the
+  red proof of step 5 stands, with the refresh that `docs/plan.md` names as not
+  built at lines 330 to 338.
+
+  **Addendum of the same day: the tool, its self-test and the nineteen checks
+  under 0.132.0 at `a6a2de4`.** Run in this tree after the commit that carries
+  this entry, the three corrections and the table, `a6a2de4`, with the tree
+  clean, on 9 October 2026 from 06:59:46 to 07:00:32 UTC. The tool at 0.132.0
+  and `a6a2de4` answered `BROKEN RECORDS: 0`, `FINDINGS: 27`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2421`, exit 0,
+  written down on its exit 0 outcome; the twenty-seven findings are the
+  twenty-seven that stood at `2460bb7`, the third correction above changing the
+  words of one of them and not their number; the search set grew from 2408 to
+  2421 by the thirteen lines of this entry it takes in, the twelve status lines
+  of the findings and the questions and the head of the entry; the list of runs
+  that do not count is the one that stood at `2460bb7`, no run of the table
+  losing its count with this branch, since no line a thing stands on changed
+  outside this file and the table. The self-test at 0.132.0 and `a6a2de4`
+  answered `SELF-TEST PASSED: 88 cases; of the 74 messages this tool rejects,
+  refuses or answers with, read off its own source, 74 are asserted by a case
+  and 0 by none; the lines of the report are not in that count`, exit 0, the
+  source of the tool untouched. The nineteen checks under "Before a handover,
+  run these" at 0.132.0 and `a6a2de4` printed what their sections call green,
+  one run written down on each of the nineteen, and every one of them printed
+  what it printed at `2460bb7` before the first change of this branch, line for
+  line and line number for line number, since neither the skills nor the shared
+  files nor the hooks changed: the check on offers seventeen lines, the check
+  on handovers nine lines over eight sites, the check on the second statement
+  its two lines, the check on locked skills its one line, `start-work` named in
+  `build-work` line 718 in prose and not as a call, the counts 2, 2 and 1, and
+  1 twice for the status forms, the rest silent or the answer their section
+  names. One thing reads otherwise than at `2460bb7`, by the table alone: the
+  thing of the second correction, `build-work` offering the gate itself, reads
+  as built and never walked, its evidence on the line of `build-work` that says
+  the offer is gone, where it read as recorded and not built before; no run
+  counts for it, the measurement of this entry having read the guard and not
+  that skill.
 
 
 ## Decisions taken against
