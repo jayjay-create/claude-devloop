@@ -44,7 +44,12 @@ A question that has to be seen — the UI branch — cannot be settled alone, si
 its answer is what somebody sees. The planning stage checks before it goes alone
 that none is open; where one comes up anyway, this skill is not the answer: say
 so, and the question goes back to the caller's order for a question with nobody
-there. Do not build variants nobody will look at.
+there. Do not build variants nobody will look at. A refusal with nobody there
+— a guard's block, the no of the classifier of auto mode, the no of the hook
+on permission prompts — is tried no second time and reached no other way
+here either, since 9 October 2026: say so, and it goes back to the same
+order of the caller, where the refusal is named with the command as it ran
+and the message that came back.
 
 ## Pick a branch
 

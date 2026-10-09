@@ -1,4 +1,18 @@
 #!/bin/bash
+# The session's identifier, read off the hook's input and persisted for every
+# Bash call of this session as DEVLOOP_SESSION_ID through CLAUDE_ENV_FILE,
+# which a SessionStart hook alone holds (hooks reference, "Persist environment
+# variables"), so that the command in shared/mark-command.md can write it as
+# the third line of the mark and hooks/permission-request-unattended.sh can
+# hold a prompt's session against it. First, before every early exit below,
+# so that the variable stands in every session, one not set up included; the
+# identifier is kept to letters, digits, dot, hyphen and underscore. Since 9
+# October 2026. What the hook prints is unchanged by it.
+INPUT=$(cat)
+if [ -n "${CLAUDE_ENV_FILE:-}" ]; then
+  SID=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -n 's/.*"session_id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1 | tr -cd 'A-Za-z0-9._-')
+  printf 'export DEVLOOP_SESSION_ID=%s\n' "$SID" >> "$CLAUDE_ENV_FILE"
+fi
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0
 git rev-parse --git-dir >/dev/null 2>&1 || exit 0

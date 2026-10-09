@@ -48,7 +48,13 @@ creating, attaching and ordering issues in this project.
 This stage asks nothing that the test above lets through: the split follows from
 the spec and from the rules below, and "Before you create anything" says so. So
 the order a planning run follows at an unanswered question — under the section
-of the same name in `plan-work` — is not needed here. What this stage does fork
+of the same name in `plan-work` — is needed here for one thing alone, since 9
+October 2026: a refusal — a guard's block, the no of the classifier of auto
+mode, the no of the hook on permission prompts — goes through it, with the
+thing the refused command would have settled as the question, tried no
+second time and reached no other way, and the refusal is named where that
+order records the step, the command as it ran and the message with it. What
+this stage does fork
 on is the mode, in one place, at the end: "After creating" says what happens on
 each answer the user gave at the end of the sharpening, or on `--auto`, and reads
 the mode off the mark that answer wrote.

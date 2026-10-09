@@ -83,9 +83,15 @@ that called. Everything else below applies unchanged.
   below, and a decline makes the class `skipped (user)` with that reason. With
   nobody there, there is no one to ask: the class goes `skipped (state)`, the
   state being what this machine lacks and the block names, and the report
-  names it. `secrets` is the exception it always is — it is
-  never `skipped` on a run's own judgement, so there the run stops instead
-  and says, for the person who comes back: that the check for credentials
+  names it; since 9 October 2026 the same holds for the three other ways an
+  install does not go through, which the rule inserted in step 4 names.
+  `secrets` is the exception it always is — it is
+  never `skipped` on a run's own judgement, so there the task ends instead,
+  and since 9 October 2026 not the run: an issue carrying the command, the
+  message and what is in the way, labelled `raised-here` and `needs-human`,
+  recorded as a blocker of the task whose branch this is; the task is put
+  down and the caller takes the next; the class stays as it stands. The run
+  says, for the person who comes back: that the check for credentials
   committed by accident cannot be set up without them; in plain words what
   is in the way — for instance a runtime the tool would need, Java say,
   which the run never installs, the rule step 3 below and `build-work` step
@@ -93,20 +99,23 @@ that called. Everything else below applies unchanged.
   does not name, which the guard blocks under a yes as well, as "With
   nobody there" below says; the runtime is the example the approved wording
   carries and not the only cause; that this check is never switched off by
-  the run on its own, which is why the run without them ends here; and that
-  with them it goes on, the run then handing them the installation as a
-  command they run themselves. The run that called ends with it: the mark
-  is deleted, as the
-  list of its deletion sites in `build-work` says since 6 October 2026. The
-  wording approved on 6 October 2026 stands in the roadmap entry of 5
-  October 2026; this skill says what is said, not the words.
+  the run on its own, which is why the run writes an issue with the reason
+  and goes on with the other tasks; that the issue carries the command with
+  which they install it themselves; and that running it and closing the
+  issue frees the task again. Until 9 October 2026 the run that called
+  ended here and deleted the mark; the deletion list in `build-work` says
+  so no longer. The wording approved on 8 October 2026 stands in the
+  roadmap entry of 9 October 2026 as text 1; this skill says what is said,
+  not the words.
 - **The command is not an install and the guard matched on text.** Then nothing
   is blocking the class, and `skipped` would be an entry that is not true: a
   class standing as skipped while nothing hinders it, which the next reader takes
   for a decision somebody made. Do not skip it. Put the text through the editing
   tool rather than through the shell, and where that does not reach, stop with
-  the reason named — with nobody there the run that called ends there too,
-  the mark deleted as at `secrets` above.
+  the reason named — with nobody there, since 9 October 2026, the task ends
+  as at `secrets` above and not the run: the issue carrying the command, the
+  message and what is in the way, the task put down, the next taken, the
+  class as it stands.
 
 Neither case is a reason to write the class differently from what it is. What
 tells them apart is what the command would have done, not what the guard matched.
@@ -134,13 +143,21 @@ never reached that way, so nothing of this skill's waits on a merge with
 nobody to say it has landed. Both records say yes there, since the mode does
 not start otherwise: a tool the class needs is entered in the dependency file
 or installed by the run, and step 3 asks nothing. Three things are left that
-would have been a question. A command the guard blocks under a yes — a
-runtime, a place the record does not name, and since 8 October 2026 a branded
-browser at the system's own location or the system packages a browser's
-`install-deps`, `--with-deps` or `--install-deps` would install: "A guard's
-block is not a decline"
-above answers it, the class going `skipped (state)` with what this machine
-lacks. A row in no allowed form whose text does not say whose decision it
+would have been a question. An install that does not go through, on any of
+the four ways the rule in step 4 names since 9 October 2026 — the guard
+blocks it under a yes, a runtime, a place the record does not name, and
+since 8 October 2026 a branded browser at the system's own location or the
+system packages a browser's `install-deps`, `--with-deps` or
+`--install-deps` would install; the classifier of auto mode refuses it; the
+installer ran and ended with an error, after its three attempts; the call
+did not finish inside its ten minutes: "A guard's block is not a decline"
+above answers all four, the class going `skipped (state)` with what this
+machine lacks, and `secrets` ending the task. A refusal of anything else
+here — a guard's block on a command that is no install, the classifier's
+no, the no of the hook on permission prompts while the mark stands — ends
+the task as "A guard's block, with nobody there" in `build-work` says, since
+this skill is reached with nobody there on a task's branch alone. A row in
+no allowed form whose text does not say whose decision it
 was: it becomes `skipped (user)`, named in the pull request. And a row that
 reads `skipped (user)`: it is never changed without them, whatever the caller
 found. The less committing option is the one that changes
@@ -463,10 +480,13 @@ Then what the class needs standing. A tool inside the project goes into its
 manifest here, under a record saying yes or the user's yes to that tool in
 step 3. A tool outside it, where step 3 found the record saying yes,
 is installed here: run the backed command yourself, with the user there and with
-nobody there, without asking again; the guard passes it where every place it
-lands is one the record names or the answer of a route it names, and blocks it
-otherwise, and "A guard's block is not a decline" above says what follows a
-block. The class counts as filled only
+nobody there, without asking again, with ten minutes on the call, 600000
+milliseconds, as "When a command does not answer" says; the guard passes it
+where every place it lands is one the record names or the answer of a route
+it names, and blocks it otherwise, and "A guard's block is not a decline"
+above says what follows a block, the rule inserted after the backed command
+below what follows the three other ways an install does not go through with
+nobody there. The class counts as filled only
 once the tool stands at the path the installer writes to, never where
 `command -v` finds one. Report the command as it ran, what came back, what
 stands at that path, and what the package manager did besides — it updates
@@ -475,6 +495,8 @@ request body that lands the class, step 7's or the build's where this skill was
 called for one class, and write the standing fact into `environment.md`.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-not-through`
 
 This is where it matters most: a check class is filled by naming a tool, so
 this is the likeliest place in the whole workflow for a wrong path to be typed,
@@ -493,7 +515,15 @@ that owns them is filled here. A class with no tool gets no target.
 Turning a strict tool on a codebase that has never seen it produces hundreds of
 findings at once, and fixing them in one commit makes the change unreviewable.
 
-For each class:
+For each class, every run of a target here and in step 5 with ten minutes on
+the call, 600000 milliseconds, as "When a command does not answer" says — a
+run that does not finish inside it is not answered, and with nobody there,
+since the addendum of 9 October 2026, the task ends and not the run: an
+issue carrying the command, the message, the path of the output file where
+the message names one, and that the call did not finish inside its ten
+minutes, labelled `raised-here` and `needs-human`, recorded as a blocker of
+the task whose branch this is; the task put down, the caller takes the next;
+nothing closed from it, no second start; the class as it stands:
 
 1. Turn it on and see how many findings there are.
 2. Fix what the tool can fix by itself, as its own commit.
@@ -809,9 +839,7 @@ ordinary words:
   them with a look at it before the build, or everything put to them — unless
   they typed `--auto`, which is the first of those given up front. Beyond that
   it stops rather than guesses: a precondition missing when it starts, named; a
-  design no draft carries; a merge it cannot get past; a permission prompt,
-  which nobody is there to answer, which is why the kinds of command it needs
-  have to be approved before it starts.
+  design no draft carries; a merge it cannot get past.
 - **What a task that will not go green does, which is not stop.** Where the same
   checks fail three turns running, the turn-end hook says so and asks for a
   person — and with nobody there, waiting on that would leave the run standing
