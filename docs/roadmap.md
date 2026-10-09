@@ -13859,7 +13859,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   every block under those two records; every other cause is quoted at its
   command. The 140 runs are recorded in this entry and as no run row of the
   table, since the order asked for runs of the tool, its self-test and the
-  nineteen checks alone; the report names the outcomes they walked.
+  nineteen checks alone; none of the 140 meets one of the four outcomes of the
+  guard that read as built and never walked at `8efb3f8` — the three silent
+  passes of lines 7, 8 and 11, where the project directory cannot be entered,
+  the project is not set up or the tool is not Bash, and the block of line 448
+  where no destination is read off the command — and every outcome they do
+  meet, the two blocks on the record, the pass with every destination named,
+  the blocks on an unnamed place, on a destination that cannot be read and on a
+  piped script, and the silent pass where no pattern matches, reads as walked
+  already, so a run row would change no state.
 
   **The eight findings on the guard, each a gap of this entry and not built.**
   Each stands below with what is, its cause in
@@ -13904,9 +13912,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     /usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin; routes:
     none".
   What should hold: every matching command of the line is read for itself; a
-  help, `--dry-run` and `--list` except their own command alone, and a branded
-  browser or system packages in a later command stay the person's under every
-  answer.
+  help, `--dry-run` and `--list` exempt their own command and no other, and a
+  branded browser or system packages in a later command stay the person's under
+  every answer.
 
   Recorded, not built: every browser download on a line read for itself.
 
@@ -13934,9 +13942,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: a pattern of the guard ending at the separator.
 
   **Finding 3. A variable behind `install` on the make line is not read.** Line
-  404 reads PREFIX, prefix, DESTDIR, BINDIR, bindir and exec_prefix before
-  `install` only, so `make install BINDIR=~/bin` names its destination and
-  blocks under a yes as if it named none. Measured, now and should:
+  404 reads PREFIX, prefix, DESTDIR, BINDIR, bindir, exec_prefix and
+  EXEC_PREFIX before `install` only, so `make install BINDIR=~/bin` names its
+  destination and blocks under a yes as if it named none. Measured, now and
+  should:
   - `make install BINDIR=~/bin` — now 2 2 2 2, should 2 2 0 0; under both yes
     now: "where it lands cannot be read here; make install (its destination is
     not in the command: no PREFIX, DESTDIR or BINDIR written on the make line,
@@ -13999,7 +14008,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `workspaces/config/lib/definitions/definitions.js`, `global` with `short:
   'g'` at lines 937 to 940 and `location` with the values `global`, `user` and
   `project` at 1396 to 1402, "When set to "global" mode, packages are installed
-  into the `prefix` folder"; `lib/utils/cmd-list.js`, lines 123 to 131, `in`,
+  into the `prefix` folder"; `lib/utils/cmd-list.js`, lines 122 to 130, `in`,
   `ins`, `inst`, `insta`, `instal`, `isnt`, `isnta`, `isntal` and `isntall` as
   names for `install`, beside `add` and `i`.
 
@@ -14069,8 +14078,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   -rniE` over `skills/*/SKILL.md` and `shared/*.md` for a hand-back or a report
   back finds three lines, `build-work` line 925 on a merge, `setup-checks` line
   284 on a cell and `shared/restate.md` line 1 on the language, none on the
-  moment. The roadmap names `SubagentHandback` on lines 4693, 4698 and 4724
-  only, as seen in run 10 of 17 September 2026 and on the page of that day.
+  moment. Outside this entry the roadmap names `SubagentHandback` on lines
+  4693, 4698 and 4724 only, as seen in run 10 of 17 September 2026 and on the
+  page of that day.
 
   What should hold: measured and recorded.
 
@@ -14078,10 +14088,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **Question 2. The sandbox of Claude Code is never examined.** `grep -rniE
   sandbox docs/*.md README.md skills/*/SKILL.md shared/*.md hooks/*` came back
-  empty on 9 October 2026. The page "Configure the sandboxed Bash tool" says
-  that "the sandbox covers shell commands only" and that "Claude's file tools,
-  MCP servers, and hooks run outside it", command hooks "with your full
-  access"; that by default "sandboxed commands can write to the current working
+  empty before this entry was written, on 9 October 2026; what it finds since
+  is this entry alone. The page "Configure the sandboxed Bash tool" says that
+  "the sandbox covers shell commands only" and that "Claude's file tools, MCP
+  servers, and hooks run outside it", command hooks "with your full access";
+  that by default "sandboxed commands can write to the current working
   directory, the per-user temp directory, and any directories you've added",
   and "if subprocess commands like `kubectl`, `terraform`, or `npm` need to
   write outside those directories, use `sandbox.filesystem.allowWrite`"; and
@@ -14105,7 +14116,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   builds, `hooks/stop-checks.sh`, on `Stop` in `hooks/hooks.json`, runs the
   whole check chain in the same directory and counts the turn ends with the red
   classes unchanged; at three it hands the problem over, and with nobody there
-  `build-work` puts the task down, lines 516 to 531, 505 to 520 at `89fb52e` —
+  `build-work` puts the task down, lines 520 to 531, 509 to 520 at `89fb52e` —
   which can be the task the subagent still builds. Whether `Stop` fires in that
   case is not read. The hooks reference says of `Stop` that it "runs when the
   main Claude Code agent has finished responding", and gives its input a
@@ -14202,11 +14213,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `shared/fetch-three-times.md`, lines 27 to 36, and actions/checkout. In
   `setup-checks` the class goes `skipped (state)` as at a block today, lines 81
   to 86; `build-work` reads before the release whether the state still stands,
-  lines 589 to 594, 578 to 583 at `89fb52e`; the exception `secrets` is
+  lines 589 to 595, 578 to 584 at `89fb52e`; the exception `secrets` is
   decision 5. The guard stays tight: "Every failure is a block" in the
   conventions, line 1526, stands unchanged. On how often this happens: four
   recorded installs, all through, the roadmap at lines 5915 to 5924, 7668 to
-  7676 and 9290 to 9302. The installers' own repetitions, read again on 9
+  7677 and 9290 to 9302. The installers' own repetitions, read again on 9
   October 2026 off the default branch of each through the raw endpoint:
   Homebrew, `HOMEBREW_CURL_RETRIES` with the default 3,
   `Library/Homebrew/env_config.rb` lines 290 to 293, passed as `--retry` in
@@ -14231,7 +14242,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   sentence for the person at `secrets` changes against the one of 6 October
   2026, roadmap lines 11062 to 11069; the new wording is approved text 1 below.
   In `build-work` the list of the places where the mark is deleted loses the
-  entry "a halt of `setup-checks` … where the run ends", lines 1217 to 1224,
+  entry "a halt of `setup-checks` … where the run ends", lines 1217 to 1225,
   and the section "With nobody there" gets the case, lines 91 to 140, 91 to 137
   at `89fb52e`.
 
@@ -14261,7 +14272,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   condition 4, and roadmap lines 2292 to 2295, the condition asserted only;
   roadmap lines 3430 to 3434, on 14 September 2026 three blocks, a question,
   the run standing with nobody there; `setup-checks` lines 812 to 814, 802 to
-  804 at `89fb52e`, and `docs/plan.md` lines 295 to 303, 281 to 289 at
+  804 at `89fb52e`, and `docs/plan.md` lines 296 to 304, 282 to 290 at
   `89fb52e`; the page "Permission modes", the hooks guide and the hooks
   reference with the decision table of `PermissionRequest` and the field
   `permission_mode`.
@@ -14337,28 +14348,27 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **Decision 11. In the plan:** the milestone of decision 3, and that milestone
   3 closes on the person's Mac in the terminal; milestone 3 stands at
-  `docs/plan.md` line 220 and the milestone after which the new one is named at
-  636 to 644, 619 to 627 at `89fb52e`.
+  `docs/plan.md` line 220.
 
   For the closing runs of milestone 3:
 
   **Decision 12. The arrangement of the runs.** The fresh test project gets
   code before the setup, a Go program with a function and a test, committed and
-  pushed, so that `setup-project` calls `setup-checks` at its close, lines 802
-  to 806, and `check` runs green; the finding on `build-work` line 207, 204 at
+  pushed, so that `setup-project` calls `setup-checks` at its close, lines 803
+  to 807, and `check` runs green; the finding on `build-work` line 207, 204 at
   `89fb52e`, an empty project with a red base, is not met. Run 2 takes the
   direct route: the spec is planned together, `--auto` comes at the build
   alone, and the install question comes a second time through `setup-checks`
-  step 8, `build-work` lines 1094 to 1103 and 1170, 1083 to 1092 and 1159 at
+  step 8, `build-work` lines 1094 to 1098 and 1170, 1083 to 1087 and 1159 at
   `89fb52e`; defect 3 of 4 October 2026, planning with nobody there standing
-  still, roadmap lines 9515 to 9600, is not met. Both defects stay in the table
+  still, roadmap lines 9515 to 9599, is not met. Both defects stay in the table
   and are built before the run that meets them, at the latest in milestone 11,
-  `docs/plan.md` lines 636 to 644. The browser downloads run once under no and
+  `docs/plan.md` lines 636 to 654. The browser downloads run once under no and
   once under yes. After each run the project's files are searched with `git
   grep` for the commands that fetch a tool and run it. The refresh of projects
   set up earlier is not built before milestone 3 closes. Open is the choice of
   the two tools: they may not be enterable into the project's package file,
-  conventions lines 709 to 710, 704 to 705 at `89fb52e`, and come through
+  conventions lines 700 to 710, 695 to 705 at `89fb52e`, and come through
   Homebrew to `/opt/homebrew/bin`; `sqlc` is enterable in Go with `go get
   -tool`. Proposed and not decided: for the task that needs a browser,
   Playwright, not Cypress or Puppeteer, whose download runs alongside `npm
@@ -14419,10 +14429,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   protection, decision 8, new: „Der Lauf ohne dich geht in diesem Projekt
   nicht, weil GitHub für dieses Repository keinen Schutz des Hauptzweigs
   anbietet. Du hast zwei Möglichkeiten: Du machst das Repository öffentlich,
-  oder es bleibt privat und du nimmst <GitHub Pro / GitHub Team>.
-
-  Mit dir zusammen läuft alles weiter wie bisher.“ The plan is chosen after `gh
-  api repos/OWNER/REPO -q .owner.type`: `User` gives GitHub Pro, `Organization`
+  oder es bleibt privat und du nimmst <GitHub Pro / GitHub Team>. Mit dir
+  zusammen läuft alles weiter wie bisher.“ The plan is chosen after `gh api
+  repos/OWNER/REPO -q .owner.type`: `User` gives GitHub Pro, `Organization`
   GitHub Team.
 
   Text 4, the rule for the classifier, decisions 1 and 10, which devloop enters
@@ -14492,11 +14501,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   einem eigenen Terminal `caffeinate` und beendest es mit Ctrl-C, wenn du
   zurück bist. Einen zugeklappten Laptop hält das nicht wach.“; the commands
   for Linux and Windows come with the new milestone, the rule in `setup-checks`
-  lines 770 to 785, 760 to 775 at `89fb52e`.
+  lines 769 to 784, 759 to 774 at `89fb52e`.
 
-  What goes against today, `setup-checks` lines 724 to 844, 714 to 834 at
-  `89fb52e`: the rule "Do not recommend a yes on a first project", lines 841 to
-  844; as details before the question, that issues the run raises itself are
+  What goes against today, `setup-checks` lines 725 to 843, 715 to 833 at
+  `89fb52e`: the rule "Do not recommend a yes on a first project", lines 840 to
+  843; as details before the question, that issues the run raises itself are
   worked off too, that there is no cap on the number of tasks, and that the
   result can be read as a diff from the starting commit — the behaviour stays,
   it is only no longer said before the question; the sentence "a permission
