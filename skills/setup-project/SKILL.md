@@ -420,7 +420,9 @@ This workflow keeps two files of local state under `.claude/`:
 `check-attempts.local`, written and read by the turn-end hook, which is the only
 hook that reads a file of its own; and `unattended.local`, the mark an unattended
 run writes for itself where it steps out of the flow and reads at every place it
-forks on the mode. Neither belongs in the repository. Make sure `.gitignore`
+forks on the mode, and which the hook on permission prompts reads since 9
+October 2026, holding the session its third line names against the
+prompt's. Neither belongs in the repository. Make sure `.gitignore`
 covers both — add the paths if it does not, create the file if there is none —
 and do it here, where it is known, rather than leaving a later step to notice. A
 refresh does the same, since a project set up before the second file existed has

@@ -203,6 +203,19 @@ planning issue left `being-planned`. A stop with a reason is allowed; a wait for
 a person is not. The next session picks the plan up at the stage it reached and
 asks the question with somebody there.
 
+**A refusal before the build goes through the same order, since 9 October
+2026**: a guard's block, the no of the classifier of auto mode, or the no of
+the hook on permission prompts, which answers every prompt of this session
+while the mark stands, `hooks/permission-request-unattended.sh`. None of
+them is tried again or reached another way. The thing the refused command
+would have settled is the question, and the step the order stops at records
+the refusal where it records the question — the command as it ran and the
+message that came back, in the spec beside the decision, on the issue that
+carries the cut part, or in the spec as undecided; where the whole of the
+work hangs on it, the stop above, with the refusal named. In the build the
+same refusal becomes an issue against the task, "A guard's block, with
+nobody there" in `build-work`; here there is no task yet to put down.
+
 **Two places in Stage 3 are questions of this kind, and are answered here so the
 stage does not have to.** A decision record whose ground no longer holds: alone,
 the decision is neither extended nor remade — the part of the work resting on it
@@ -369,8 +382,10 @@ in range blocked by anything outside it — cannot be read before a cut exists a
 stays at the build. The other six can be read now: no class in `checks.md` is
 `empty`; a failing gate genuinely blocks a merge on the remote and binds this
 account — both queries, since each is blind to one kind of protection, and the
-binding read per kind, as that list spells out; the tool classes this run needs
-are approved for this project; the repository can merge without a person,
+binding read per kind, as that list spells out; Claude Code runs in auto
+mode, read by running `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode`
+once with the shell and reading the mode the hook on that call puts beside
+its result, as condition 4 of that list says; the repository can merge without a person,
 auto-merge on (`gh api repos/OWNER/REPO -q .allow_auto_merge`) and a gate for it
 to wait on; and the two records say yes, on installing and on the dependency
 file. For the gate and auto-merge, read the state; do not read
@@ -378,10 +393,21 @@ file. For the gate and auto-merge, read the state; do not read
 holds. The two records are the exception: there the file on the main branch
 is the state itself, and it is read as the paragraph above reads it. Where
 the mode is not set up, the paragraph above has said what is said, and
-nothing is added here. Where it is set up and one of the other two fails —
-a class `empty`, or a kind of command the run needs not approved — the two
+nothing is added here. Where it is set up and a class is `empty`, the two
 answers that send the run alone fall away and the question is not asked;
-say which one failed and what helps there, and carry on with them. The build reads
+say which one failed and what helps there, and carry on with them. Where it
+is set up and condition 4 fails — the mode is not `auto`, `dontAsk` and
+`bypassPermissions` included, or it could not be read, no statement beside
+the result or the statement that the input carried no `permission_mode` —
+the question is not asked either, and where `--auto` was typed this session
+the flag does not send the run alone: say the sentence the roadmap entry of
+9 October 2026 records for this skill — that the run without them does not
+start; that Claude Code has to run in auto mode, the mode set now named as
+the status bar shows it; how to switch, Shift+Tab in the terminal, and then
+to type `--auto`; and that without the flag the planning goes on with them —
+and carry on with them. Where the mode could not be read, "When a command
+does not answer" holds and no wording of its own. This skill says what is
+said, not the words. The build reads
 all seven again when it
 starts, for two reasons written there: on the route that starts from a finished
 spec the build is reached without this question, and the state read here can
@@ -389,8 +415,10 @@ change between now and then.
 
 **On either of the first two answers, or on `--auto`, write the mark** — the
 command and what it is for are under "With nobody there" above, `build` on its
-second line for the first answer and for the flag, `plan` for the second — and
-say so.
+second line for the first answer and for the flag, `plan` for the second, the
+third line, this session's identifier, the same in both — and say so. The
+hook on the mark lets the command through in auto mode alone, the mode
+condition 4 has read by now, and blocks it in every other.
 
 Post the settled answers and the hard core as a comment on the planning issue
 before moving on, and the answer to the last question where it was asked — as a

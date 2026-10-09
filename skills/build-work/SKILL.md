@@ -58,6 +58,15 @@ third case of a shape this skill already carries twice — the turn-end hook in
 step 3, and a refused arming in step 6. It gets the turn-end hook's answer, an
 issue raised and the next task taken; a refused arming ends the run instead.
 
+**Since 9 October 2026 a refusal is any of three things, and the three go the
+same way here**: a guard's block; the refusal of the classifier of auto mode,
+the second model that reads every command there, whose no comes with its own
+message in the tool's result; and the no of the hook on permission prompts,
+`hooks/permission-request-unattended.sh`, which answers every prompt of this
+session while the mark stands, with the message the roadmap entry of 9
+October 2026 records as text 5. None of the three is this run's to overturn:
+no second attempt, no other way to the same result.
+
 - **With the user there**, the message is the answer. Hand the block over in the
   form the message asks for: the command as it ran, the message that came back,
   and, where the block is held to be a false positive, the reading that rests on.
@@ -73,9 +82,26 @@ issue raised and the next task taken; a refused arming ends the run instead.
   label it `raised-here` and `needs-human`, and record it as a blocker of the
   task. Then put the task down and go back to step 2: the readiness query passes
   over a blocked task by itself, so the run carries on with the rest instead of
-  standing on one.
+  standing on one. This holds while a task is in hand, from step 3 to the
+  proof of its merge in step 6.
 
 **Say which of the two happened**, either way.
+
+**Where the refusal meets the build subagent, or any other subagent of the
+build**, the subagent raises the issue and records it as the blocker, as
+text 5 tells it, stops with the task, and names the issue and the refusal in
+its report; the main run raises no second issue and takes the next task in
+step 2. The subagent reads this rule in what step 3 hands it, since it reads
+this file nowhere.
+
+**Where no task is in hand there is nothing to put down**: in step 1, after a
+merge is proven in step 6, at the queries of step 2 and step 7, and at the
+deletion of the mark where the run ends. There a refusal is a stop with the
+reason named, as every command that does not answer with nobody there is
+under "When a command does not answer" above, and the mark is deleted as at
+every stop with a reason; where the deletion itself was refused, say that the
+mark stands. Step 6 says the same of a refusal there, beside the halt on a
+refused arming.
 
 **The guard on the check table is the exception, in both modes.** Where a
 `git commit` is refused because `docs/agents/checks.md` carries a status in no
@@ -92,34 +118,50 @@ on, and make the commit again once it has written the row.
 
 The block above says that what a run does with a question the test lets through,
 when nobody is there, is written in each skill's own words. In this skill it is
-written in five places already, and this section names them so they are read as
-one rule and not as five:
+written in seven places already, and this section names them so they are read as
+one rule and not as seven:
 
 - **Which task next** — step 2. Not a question in either mode; the rule there
   decides it and says why the same rule serves both.
-- **A guard's block** — the section above "How to ask". An issue carrying the
-  command, the message and the reading, labelled `raised-here` and
-  `needs-human`, recorded as a blocker of the task; the task is put down and
-  step 2 takes the next. Not the guard on the check table: its refusal goes
+- **A refusal** — a guard's block, the classifier's no, the no of the hook on
+  permission prompts — the section above "How to ask". With a task in hand,
+  an issue carrying the command, the message and the reading, labelled
+  `raised-here` and `needs-human`, recorded as a blocker of the task; the
+  task is put down and step 2 takes the next; met by a subagent, the
+  subagent raises it. With no task in hand, a stop with the reason named and
+  the mark deleted. Not the guard on the check table: its refusal goes
   to `setup-checks` for the row, and the commit is made again, as that
   section says.
 - **The turn-end hook handing the problem over** — step 3, its last section.
   The same shape: an issue saying the task is not buildable as cut, the task put
   down, the next one taken.
-- **An install the record does not open** — step 3 point 7. With nobody there
+- **An install that does not go through** — step 3 point 7. With nobody there
   the record says yes: the mode does not start under a no or with no record,
-  start condition 6 below. What is left is what a yes does not open — a
-  runtime, a place the record does not name, a route that does not answer,
-  and since 8 October 2026 a branded browser Playwright would install at the
-  system's own location and the system packages `install-deps`,
-  `--with-deps` or `--install-deps` would install —
-  and that is a block: for the task it goes as the second bullet says, and
-  for a check class through `setup-checks`, which writes the cell
-  `skipped (state)`. Everything else the
-  run installs, as with the user there.
+  start condition 6 below. Four ways are left, and the rule inserted there
+  since 9 October 2026 gives them one end: the guard blocks, on what a yes
+  does not open — a runtime, a place the record does not name, a route that
+  does not answer, and since 8 October 2026 a branded browser Playwright
+  would install at the system's own location and the system packages
+  `install-deps`, `--with-deps` or `--install-deps` would install; the
+  classifier of auto mode refuses; the installer ran and ended with an error,
+  the one way with three attempts; the call did not finish inside its ten
+  minutes. For the task it goes as the second bullet says, with what stands
+  at the destination path in the issue, and for a check class through
+  `setup-checks`, which writes the cell `skipped (state)`. Everything else
+  the run installs, as with the user there.
+- **A class `setup-checks` cannot set up** — `secrets` whose tool cannot be
+  installed, and a guard fired on text where the editing tool does not
+  reach. Since 9 October 2026 the task ends there and not the run: the
+  issue, the task put down, the next taken, as "A guard's block is not a
+  decline" in that skill says; the class stays as it stands. Until that day
+  the run ended and deleted the mark.
+- **A check chain that does not finish inside its call** — step 1 and step 3
+  point 6. A stop with the reason named and the mark deleted, as "When a
+  command does not answer" says: a chain moved to the background would run
+  on beside the chain of the next task in the same directory.
 
 **A question about the work itself that comes up inside a task and passes the
-test** — a choice the task rests on that the spec did not make — is the fifth
+test** — a choice the task rests on that the spec did not make — is the seventh
 case and gets the same answer as the second and third, not the planning stage's
 order of taking the less committing option. A task is cut from a spec, and a
 task that turns out to need a decision the spec did not take is a task that is
@@ -202,7 +244,13 @@ be read or brought up to date is one.
 seconds and it buys the one thing no later step can recover: knowing whether the
 base was green when you started. Without it, a red check at the end of the build
 is ambiguous — your work or something you inherited — and that ambiguity is
-exactly where a run starts guessing.
+exactly where a run starts guessing. The call gets ten minutes, 600000
+milliseconds, the most a foreground call may have, as "When a command does
+not answer" says; a suite that does not finish inside it is not answered,
+and with nobody there the run stops here with the reason named — the
+command, the message, the path of the output file where one is named — and
+deletes the mark, since a suite moved to the background would run on beside
+the next one in this directory.
 
 **If the base is already red, do not start a task on it.** The cause is not in
 work you have not done yet, so do not read your own plan for it. Say which
@@ -320,8 +368,14 @@ blocker in the tracker and let the readiness query do its work.
 ## Step 3 — Build it
 
 Hand the task to a subagent with a fresh context: the task issue, the spec it
-belongs to, the paths of the control documents, and where the mark stands that
-says which mode this run is in — not this conversation.
+belongs to, the paths of the control documents, where the mark stands that
+says which mode this run is in — not this conversation — and, since 9
+October 2026, two rules it reads nowhere else, since it reads this file
+nowhere: what a refusal is and what follows one with nobody there, under "A
+guard's block, with nobody there" above, the issue raised by the subagent
+itself; and what a command that does not finish inside its call is, under
+"When a command does not answer" above, with the ten minutes every install
+and every run of the check chain is called with.
 
 The subagent:
 
@@ -343,8 +397,15 @@ The subagent:
    remains after the fix, that is its own defect with its own effect, not a
    leftover of the first.
 5. Commits behaviour changes separately from mechanical ones.
-6. Runs everything `checks.md` lists before reporting done. A report a later gate
-   rejects is not a report.
+6. Runs everything `checks.md` lists before reporting done, each call with
+   ten minutes, 600000 milliseconds, as "When a command does not answer"
+   says. A report a later gate rejects is not a report. A chain that does
+   not finish inside its call is not answered: the subagent reports the
+   command, the message and the path of the output file where one is named,
+   closes nothing from it and starts it no second time; with nobody there
+   the run stops on that report with the reason named and deletes the mark,
+   since a chain moved to the background would run on beside the chain of
+   the next task in this directory.
 7. Installs a tool that lands outside the repository — a linter, a scanner, a
    generator, a migration command, anything that runs and ends — or, since 8
    October 2026, a browser for tests that Playwright, Cypress or Puppeteer
@@ -353,10 +414,13 @@ The subagent:
    section `## Install permission` of `docs/agents/environment.md` on the
    default branch as last fetched, which the session-start line printed, never
    the working tree. Under a yes, run the backed command yourself, with the
-   user there and with nobody there, without asking again; the guard passes it
+   user there and with nobody there, without asking again, with ten minutes
+   on the call, 600000 milliseconds, as "When a command does not answer"
+   says; the guard passes it
    where every place it lands is one the record names or the answer of a route
-   it names, and blocks it otherwise, and "A guard's block, with nobody there"
-   above says what follows a block.
+   it names, and blocks it otherwise, and with nobody there the four ways an
+   install does not go through, inserted after the fetch-and-run rule below,
+   say what follows a block and the three other ways.
    Read the result off the path the installer writes to, never off
    `command -v`, and report it in two places, because they are two duties: the
    standing fact about running this project goes into `environment.md` under
@@ -396,6 +460,8 @@ The subagent:
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-and-run`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-not-through`
 
 8. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into
@@ -897,8 +963,13 @@ picks up as soon as they say it has landed. Do not present it as something havin
 gone wrong. What went wrong in the past was the framing and the timing — a run
 stopping mid-task, over a change nobody asked for, as though it had hit an error.
 
-In unattended mode there is nobody to hand it to. A refusal there is a stop with
-the reason named, and the mark is deleted with it. Start condition 5 makes the
+In unattended mode there is nobody to hand it to. A refusal by GitHub to arm,
+in any of the three cases, is a stop with
+the reason named, and the mark is deleted with it. A refusal in the sense of
+"A guard's block, with nobody there" above — a guard's block, the
+classifier's no, the no of the hook on permission prompts — is not that: the
+task is in hand until its merge is proven, so it goes as that section says,
+the issue, the task put down, the next taken. Start condition 5 makes the
 first two unreachable; it cannot
 touch the third, which is a state of one pull request and not a property of the
 repository. Name that one for what it is — the gate is there and this pull
@@ -1129,8 +1200,26 @@ run ends here:
    established; say so rather than reading the silence as a yes or a no. This is
    also what makes the run able to merge at all: see 5.
 3. No task in range is blocked by anything outside the range.
-4. The tool classes the run needs are already approved for this project. A run
-   nobody is watching cannot answer a permission prompt.
+4. Claude Code runs in auto mode. Read it by running
+   `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` once, with the shell:
+   the program prints one line, and the hook on that call puts the mode
+   beside its result, the value and the label the status bar shows for it —
+   the field `permission_mode` of a hook's input is the one place the mode
+   stands, and no file, setting or variable carries it. `auto` holds. Every
+   other mode fails, `dontAsk` and `bypassPermissions` included, since with
+   nobody there the classifier and the hook on permission prompts are what
+   answer in a person's place, and so does a mode that could not be read: no
+   statement beside the result, or the statement that the input carried no
+   `permission_mode`. Allow rules are not read. Where it fails, say so with
+   the sentence the roadmap entry of 9 October 2026 records as text 2 — that
+   the run without them does not start; that Claude Code has to run in auto
+   mode, the mode set now named as the status bar shows it; how to switch,
+   Shift+Tab in the terminal, and then to type `--auto`; and that without
+   the flag the planned tasks are built with them — on the direct route and
+   after a planning alike, this skill saying what is said and not the words.
+   Where the mode could not be read, "When a command does not answer" holds
+   and no wording of its own: the command, and the message or the missing
+   statement in its place.
 5. The repository can actually merge without a person. Two things have to hold,
    and `environment.md` records both: auto-merge is enabled
    (`gh api repos/OWNER/REPO -q .allow_auto_merge`), and a gate exists for it to
@@ -1190,8 +1279,11 @@ the planned tasks with them and, under 6, hands them every installation as a
 command they run themselves, by step 3 point 7, or, under 7, asks them at
 every check tool whether it may add it, by step 3 of `setup-checks`. The
 wording approved on 6 October 2026 stands in the roadmap entry of 5 October
-2026; this skill says what is said, not the words. Conditions 1, 3 and 4 are
+2026; this skill says what is said, not the words. Conditions 1 and 3 are
 nothing that step can put right: say what would help there, as before.
+Condition 4 is nothing it can put right either: there the run says text 2,
+as the list says, and where the mode could not be read, what "When a command
+does not answer" says.
 
 **Then the mark.** Where this run came through planning, `.claude/unattended.local`
 stands with the commit this run wrote and `build` on its second line; carry on.
@@ -1210,7 +1302,8 @@ fetched or fast-forwarded" above; where the third fails too, stop as that
 section says, opening with that the local main branch cannot be brought to
 the state GitHub holds and that nothing is begun here for that — the run
 without them does not begin, and no mark is written. On a fetch that
-answered, the mark:
+answered, the mark, which the hook on the mark lets through in auto mode
+alone, the mode condition 4 has read by now, and blocks in every other:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
@@ -1218,11 +1311,13 @@ answered, the mark:
 place: at the finishing sentence at the end of this section; at the standstill
 after three rounds in step 6, and at a refused arming there that ends the run;
 at a refusal above, where the run came through planning and wrote a mark that a
-refusal here ends; at a halt of `setup-checks` called with nobody there on
-the branch of a task — `secrets` whose tool cannot be installed among them,
-under "A guard's block is not a decline" there — where the run ends with
-the reason named; on the user's word to stop; and at the halt before the first
-build, which the cut does before this section is ever reached. Each of those
+refusal here ends; at a stop on a refusal with no task in hand, under "A
+guard's block, with nobody there"; at a stop on a check chain that did not
+finish inside its call, in step 1 or in step 3; on the user's word to stop;
+and at the halt before the first
+build, which the cut does before this section is ever reached. Not at a halt
+of `setup-checks` called with nobody there on the branch of a task: since 9
+October 2026 the task ends there and the run goes on. Each of those
 sites says so where it stands. A session that simply ends deletes nothing; the
 planning stage's pick-up rule and the refusal above are what meet the mark it
 leaves.

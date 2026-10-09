@@ -1,0 +1,14 @@
+#!/bin/sh
+# Prints one line, for the run that reads start condition 4 of the mode with
+# nobody there: that Claude Code runs in auto mode. The permission mode of a
+# session stands in no file and in no environment variable - grep -o
+# 'CLAUDE_[A-Z_]*' over sdk.d.ts of the Agent SDK 0.3.295 names none for it -
+# and only in the field permission_mode of a hook's input (hooks reference,
+# "Common input fields"). So this program reads nothing: the call of it is
+# what hooks/pre-tool-use-mark-guard.sh answers, which puts the mode beside
+# this result as additionalContext. Where no such statement stands beside the
+# result, the mode could not be read, and the run says so. The text is the one
+# approved on 9 October 2026, in docs/roadmap.md under the entry of that day.
+# Since 9 October 2026.
+printf '%s\n' "devloop: the hook on this command states the permission mode of this session beside this result; where no such statement stands, the mode could not be read."
+exit 0
