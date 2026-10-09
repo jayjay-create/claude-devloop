@@ -135,15 +135,18 @@ It refuses to go alone unless every check class is configured or explicitly
 switched off with a reason, a failing gate genuinely blocks a merge on the
 remote, the repository can merge without a person present — which needs
 auto-merge enabled and a required check for it to wait on — no task in scope
-waits on something outside it, the kinds of command the run needs are approved
-for this project, and you have allowed it both to install the tools it needs
+waits on something outside it, Claude Code runs in auto mode, so that its
+classifier answers in your place what would otherwise be asked, and you have
+allowed it both to install the tools it needs
 outside the project and to add check tools to your dependency file. Where you
 said no to either, setting up the mode asks you again, and the mode is set up
 only once you have said yes to both. Those are conditions for the run being
 able to finish, not judgements about it: without them it would build a task and
-then sit on a pull request nobody is there to merge, wait at a prompt nobody is
-there to answer, start a task it cannot finish, stop at a tool it may not
-install, or leave a check off that the work has made necessary. All but the
+then sit on a pull request nobody is there to merge, stand at a prompt nobody
+is there to answer, start a task it cannot finish, stop at a tool it may not
+install, or leave a check off that the work has made necessary. A prompt that
+comes during the run anyway is answered no by a hook, and the run writes an
+issue and takes the next task instead of waiting. All but the
 one about the tasks, which do not exist yet, are read where you are asked, so
 the question is not put and then found to have had one answer, and all of them
 are read again where the build starts, since the route straight to a build has
@@ -206,7 +209,15 @@ runs passes under that record without a place being read. `sudo`, an
 installer piped from the network, a branded browser Playwright would install
 at the system's own location and the system packages a browser's
 `install-deps` would install stay with you whatever the record says. The
-question that writes that record is put at setup. The turn-end hook
+question that writes that record is put at setup. Since 9 October 2026 two
+more: a guard that blocks the file marking an unattended run from being
+written in any mode but auto, and states the permission mode beside a call
+of `bin/devloop-permission-mode`, which is how the run reads whether it may
+go alone; and a hook that answers no to every permission prompt while that
+mark stands and names the session that wrote it, so that a run with nobody
+there never waits at a prompt and a mark left behind touches no later
+session of yours. The session-start hook sets the session's identifier for
+the mark. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
 than looping. What it hands you is meant to be actionable in one step: a command
 to paste, a script that gathers the environment, a smaller case that reproduces
@@ -313,7 +324,8 @@ come back in a different file.
   saying which mode a run is in and how far it may go — is not that shape: it
   carries no limit, and it is read by parts of the run that did not write it,
   the build after the planning, the subagent inside the build, the next session
-  that finds it left behind.
+  that finds it left behind, and since 9 October 2026 the hook on permission
+  prompts, which holds the session the mark names against the prompt's.
 - A step that depends on a precondition (a remote, a permission, a tool) must
   refuse and stop when that precondition is missing, not fall back to a
   locally-equivalent action that quietly breaks one of the workflow's own rules

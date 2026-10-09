@@ -286,22 +286,26 @@ did not install, for the reason the paragraph gives for the tools: a command
 handed over in the first run and run by the person has installed its browser
 already.
 
-Three things stand before that run, each recorded on 5 or 6 October 2026
-and not built. The question of `setup-checks` step 8, on the unattended
+Three things stand before that run, each recorded on 5 or 6 October 2026.
+Two are not built. The question of `setup-checks` step 8, on the unattended
 mode, is described field by field like the other questions of that skill,
 in a wording the person approves. Step 8 reads, before that question,
 whether the platform allows the protection on this repository, and says so
 instead of asking where it does not; what the platform answers there is
 measured once first, on a private repository under a plan that does not
-allow it. And start condition 4 of the mode, that the kinds of command the
-run needs are approved for the project, which no run can read in the tree
-today — the entry of 11 September 2026 in `docs/roadmap.md` on planning
+allow it. The third is built on 9 October 2026, version 0.133.0: start
+condition 4 of the mode, which until then said that the kinds of command
+the run needs are approved for the project, which no run could read in the
+tree — the entry of 11 September 2026 in `docs/roadmap.md` on planning
 being fenced out of the unattended mode records that under "Precondition 4
-cannot be read" — is read off the permission mode every
-hook receives, `permission_mode`, a field of every hook's input in the
-Claude Agent SDK, `sdk.d.ts` of version 0.3.289, read on 6 October 2026,
-and off the allow rules in the settings files, rather than asserted; where
-it cannot be read, the run says so.
+cannot be read" — says now that Claude Code runs in auto mode, read off the
+permission mode every hook receives, `permission_mode`, a field of every
+hook's input in the Claude Agent SDK, `sdk.d.ts` of version 0.3.295, through
+`bin/devloop-permission-mode` and the statement the hook on that call puts
+beside its result; `dontAsk` and `bypassPermissions` do not count, allow
+rules are not read, and where the mode cannot be read, the run says so.
+A permission prompt that comes during the run anyway is answered no by a
+hook while the mark stands, built the same day.
 
 Built in part on 28 September 2026, version 0.114.0, and not landed as a
 milestone: the tools half — the record's form, the guard reading it off the

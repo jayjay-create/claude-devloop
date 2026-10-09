@@ -13865,6 +13865,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the project is not set up or the tool is not Bash, and the block of line 448
   where no destination is read off the command — and every outcome they do
   meet, the two blocks on the record, the pass with every destination named,
+  the pass under a yes with `PREFIX`, `DESTDIR` or `BINDIR` written on the
+  `make install` line, which `make BINDIR=~/bin install` under a yes meets,
   the blocks on an unnamed place, on a destination that cannot be read and on a
   piped script, and the silent pass where no pattern matches, reads as walked
   already, so a run row would change no state.
@@ -14573,6 +14575,534 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   counts for it, the measurement of this entry having read the guard and not
   that skill.
 
+
+- **The behaviour with nobody there: a refusal, a command that does not finish
+  inside its call, an install that does not go through, the two halts of
+  `setup-checks`, a hook for permission prompts, and start condition 4 off the
+  permission mode; 9 October 2026, version 0.133.0.** On
+  `task/behaviour-with-nobody-there`, off `ab34f96`, version 0.132.0 on `main`;
+  the build in `ddee4e1`, the documents and the table in the commits after it.
+  The order of 9 October 2026 fixed what is built here off decisions 1, 2 and 4
+  to 7 of the entry above and what was decided and approved the same day after
+  them, below; every line number in it holds at `ab34f96`. Of decision 1 this
+  builds the handling of the refusal; the rule under `autoMode.allow` and its
+  question come with the next order, decision 10, and are not built here. The
+  report of the build stands on this machine as
+  `~/devloop-report-2026-10-09-behaviour-with-nobody-there.md`, in English, and
+  is not in the repository. Claude Code 2.1.295 on this machine, read with
+  `claude --version`; the types of the Agent SDK read off `npm pack
+  @anthropic-ai/claude-agent-sdk@0.3.295`, `sdk.d.ts` and `sdk-tools.d.ts`.
+
+  Built: start condition 4 reads the permission mode, with a reader and a
+  guard, decision 6 and the decision of 9 October 2026 below. The mode of a
+  session stands in no file and in no environment variable — `grep -o
+  'CLAUDE_[A-Z_]*' sdk.d.ts` names thirty-four variables and none for it — and
+  only in the field `permission_mode` of a hook's input, which the hooks
+  reference lists under "Common input fields" with the values `default`,
+  `plan`, `acceptEdits`, `auto`, `dontAsk` and `bypassPermissions`, Manual
+  arriving as `default`, and which not every event receives: in every
+  measurement below `SessionStart` carried none, `PreToolUse` and
+  `PermissionRequest` carried it. So `bin/devloop-permission-mode`, a POSIX sh
+  program, prints one line, text A below, and exits 0; it reads nothing. The
+  hook `hooks/pre-tool-use-mark-guard.sh`, on `PreToolUse` for `Bash` and for
+  `Edit`, `Write` and `MultiEdit` in `hooks/hooks.json`, whose description on
+  line 2 names it, has two duties. Where the command calls
+  `devloop-permission-mode` by name, it answers with `additionalContext` under
+  `hookSpecificOutput`, the way the hooks reference gives under "Add context
+  for Claude", text B: the value and the label the status bar shows for it, the
+  six labels off the page "Choose a permission mode" under "Switch permission
+  modes", CLI tab, without the characters before them — `manual mode on`,
+  `accept edits on`, `plan mode on`, `auto mode on`, `don't ask on`, `bypass
+  permissions on` — a value that is none of the six being its own label; or the
+  form "could not be read" where the input carries no `permission_mode`; and it
+  decides nothing over the call, so the call goes through the normal permission
+  flow, which E2 below shows. Where the command writes
+  `.claude/unattended.local`, it blocks in every mode but `auto` with text C,
+  exit 2 and the message on stderr as every guard of this plugin blocks, and
+  passes in `auto` without a word; the editing tool's write onto the mark the
+  same; a command that deletes or reads the mark passes, and so does every
+  other command. What the guard reads as a write, off the decoded command, in
+  every segment between `&`, `|`, `;` and parentheses: a redirection `>` or
+  `>>`, with or without a descriptor, onto a token ending in
+  `.claude/unattended.local`, relative or absolute; `tee`, `cp`, `mv`,
+  `install`, `touch`, `truncate`, `ln` and `rsync` with that token among their
+  arguments; `sed` and `perl` with `-i`; `dd` with `of=`. What it does not
+  read, measured and named here: a path that does not end in those two names,
+  `unattended.local` alone after a `cd .claude`, `.claude/./unattended.local`;
+  a path whose prefix is a quoted variable, `"$PWD"/.claude/unattended.local`,
+  since the decoding turns the quotes into spaces and the redirection then
+  reads `$PWD` as its target; a path held in a variable alone; a write from
+  inside an interpreter, `python3 -c`; a program behind `sudo`, `command` or
+  `exec`; a `mv` or `cp` onto the directory. The run is told so in no skill,
+  since the guard is a tripwire on the one command the skills give and not a
+  wall: `build-work` under "Unattended mode" and `plan-work` at the mark say
+  the hook lets the command through in auto mode alone. Start condition 4 in
+  `build-work`, lines 1132 to 1133, says now that Claude Code runs in auto
+  mode, read by running the program once and reading the hook's statement
+  beside the result; `auto` holds, every other mode fails, `dontAsk` and
+  `bypassPermissions` included, and so does a mode that could not be read, no
+  statement or the statement that the input carried no `permission_mode`; allow
+  rules are not read; where it fails the run says text 2, on the direct route
+  and after a planning alike, and where the mode could not be read, "When a
+  command does not answer" holds and no wording of its own. Lines 1193 to 1194,
+  where step 8 of `setup-checks` can put conditions 1, 3 and 4 not right, say
+  so of 1 and 3 and send 4 to text 2. `plan-work` reads condition 4 before the
+  question the same way, lines 365 to 388: the condition "the tool classes this
+  run needs are approved for this project" is gone, and where it is set up and
+  condition 4 fails the question is not asked, the flag does not send the run
+  alone, and the run says the sentence for `plan-work` below and goes on with
+  them. `docs/plan.md` lines 289 to 304 said the condition would be read off
+  the permission mode and off the allow rules in the settings files; it says
+  now what is built, the allow rules not read.
+
+  Built: the session's identifier in the mark, the decision of 9 October 2026
+  below. `hooks/session-start.sh` reads its input, and where `CLAUDE_ENV_FILE`
+  is set — the hooks reference, "Persist environment variables": a file path a
+  `SessionStart` hook alone holds, whose `export` lines reach every later Bash
+  call of the session — appends `export DEVLOOP_SESSION_ID=<session_id>`, the
+  identifier kept to letters, digits, dot, hyphen and underscore. That stands
+  first, before the three early exits at lines 3, 4 and 36, so the variable
+  stands in every session, one not set up and one outside a repository
+  included, and what the hook prints is unchanged, S1 to S3 below. The command
+  in `shared/mark-command.md` writes `echo "$DEVLOOP_SESSION_ID"` as the third
+  line after the commit and `build`; where the variable is not set the line is
+  empty, M1 and M2 below. `shared/mark.md` describes the third line and its
+  reader; where `plan-work` writes `plan` on the second line, line 392, the
+  third is the same.
+
+  Built: a hook for permission prompts, decision 6.
+  `hooks/permission-request-unattended.sh`, on `PermissionRequest` in
+  `hooks/hooks.json` without a matcher, which the hooks reference under
+  "Matcher patterns" gives as matching every tool — `"*"`, `""` or omitted —
+  and named in the description on line 2. It reads the project directory as
+  every hook of this plugin does. Where `.claude/unattended.local` does not
+  stand, it prints nothing and decides nothing. Where it stands and its third
+  line equals the `session_id` of the input, or the third line is missing or
+  empty, or the input carries no `session_id` although `sdk.d.ts` line 172
+  gives it as a required field of every hook's input, it denies: under
+  `hookSpecificOutput` a `decision` with `behavior` `deny` and `message` text
+  5, without `interrupt`, the form the hooks reference gives under
+  "PermissionRequest decision control", exit 0 — in doubt the run with nobody
+  there is not blocked, the person's principle in the entry of 8 October 2026.
+  Where the third line names another session it prints nothing and decides
+  nothing, so a mark a broken-off session left standing touches no later
+  session with a person in it. Exit code 2 is not honoured on this event, the
+  hooks reference says, so the deny stands in the JSON alone.
+
+  Built: a refusal with nobody there, decision 1 and the decision of 9 October
+  2026 on planning. A refusal is any of three things: a guard's block, the
+  refusal of the classifier of auto mode, and the no of the hook above.
+  `build-work` under "A guard's block, with nobody there", lines 53 to 85,
+  whose name stays since text 5 names it, says so and keeps its answer: no
+  second attempt, no other way to the same result, an issue carrying the
+  command, the message and the reading, labelled `raised-here` and
+  `needs-human`, recorded as a blocker of the task, the task put down, the next
+  taken — while a task is in hand, from step 3 to the proof of its merge in
+  step 6; the exception for the guard on the check table stays. Where the
+  refusal meets the build subagent or another subagent of the build, the
+  subagent raises the issue and the blocker, stops with the task and names both
+  in its report, and the main run raises no second issue; the skill said until
+  now neither who raises it. Where no task is in hand — step 1, after a proven
+  merge, the queries of steps 2 and 7, the deletion of the mark — a refusal is
+  a stop with the reason named, as every command that does not answer with
+  nobody there, and the mark is deleted as at every stop with a reason; where
+  the deletion itself was refused, the run says the mark stands. Step 6, lines
+  900 to 901, parts the two readings of "A refusal there": GitHub's refusal to
+  arm stays a halt that deletes the mark, a refusal in the sense of that
+  section goes as the section says, the task being in hand until its merge is
+  proven. The list under "With nobody there", lines 91 to 131, names the
+  refusal in its second bullet and counts seven places now, the question about
+  the work being the seventh case; until now five and the fifth. The build
+  subagent gets, with the task, the spec, the paths and the mark, lines 322 to
+  324, the two rules it reads nowhere else: the refusal, and the command that
+  does not finish inside its call. Before the build a refusal goes through the
+  order `plan-work` has for a question nobody can answer, lines 184 to 204: the
+  thing the refused command would have settled is the question, and the step
+  the order stops at records the refusal where it records the question, the
+  command as it ran and the message; `plan-work` under "With nobody there" says
+  so, `cut-into-tasks` under "With nobody there", lines 44 to 54, which said
+  the order was not needed there, says it is needed for that one thing, and
+  `build-prototype` under "With nobody there", lines 30 to 47, sends a refusal
+  back to the caller's order as it sends a question that has to be seen.
+
+  Built: a command that does not finish inside its call, decision 2. Every
+  install and every run of the check chain is called with ten minutes, 600000
+  milliseconds, the most a foreground call may have, `sdk-tools.d.ts` line 815,
+  "max 600000 for a foreground command": `build-work` step 1, the suite on the
+  base; step 3 point 6, the chain before the report; step 3 point 7, the
+  install; `setup-checks` step 4, the install and every run of a target there
+  and in step 5; the search for further places — `grep -rn -i '600000|time
+  limit|timeout|ten minutes|120 seconds|devloop-bounded' skills shared` — found
+  beside them the bounded fetch and the bounded wait on the checks, which have
+  their own bounds, and no other call of an install or of the chain. What does
+  not finish inside its call is neither started a second time nor waited for;
+  it counts as not finished and is reported with the command, the message and
+  the path of its output file where the message names one, as the measurement
+  of 2.2 below shows the answer. An install that did not finish did not go
+  through; a check chain that did not finish is not answered, nothing is closed
+  from it, and with nobody there the run stops with the reason named and
+  deletes the mark, since a chain moved to the background runs on, in a session
+  in the terminal without a limit, beside the chain of the next task in the
+  same directory. `shared/command-does-not-answer.md` says it in a new block
+  after "Nothing is concluded", and its first block allows the second attempt
+  no longer for that case, lines 1 to 14; `docs/skill-conventions.md` lines
+  1375 to 1379, "this set says nothing yet", say what holds and what was
+  measured. The finding of the addendum of 7 October 2026 on line 3 of the
+  shared file is thereby mended: its record left the table and a defect of this
+  entry stands in its place, its evidence on the new block, and `FINDINGS` goes
+  from 27 to 26.
+
+  The finding of 7 October 2026 on `shared/command-does-not-answer.md` line 3,
+  mended here: the one second attempt the block allowed would have run beside a
+  command Claude Code moved to the background at the time limit of its call,
+  and the block said nothing of a command so moved. The block says now that
+  such a command is neither waited for nor started again.
+
+  Built: one rule for the four ways an install does not go through with nobody
+  there, decision 4. The ways: the guard blocks, the classifier refuses, the
+  installer reports an error, the call does not finish. The rule stands once,
+  in `shared/install-not-through.md`, inserted into `build-work` step 3 after
+  the fetch-and-run rule and into `setup-checks` step 4 after the backed
+  command, since it is one rule written on the day for the two skills that
+  share its situation, "Text shared between skills" in the conventions. For a
+  tool the task needs: an issue carrying the command, the message and what
+  stands at the destination path, labelled `raised-here` and `needs-human`,
+  recorded as a blocker; the task put down; step 2 takes the next; no other way
+  to the same tool. Only the installer's own error gets up to three attempts,
+  each its own call with the same ten minutes, ten seconds apart, every failed
+  one named, on the model of `shared/fetch-three-times.md`; the third failing
+  goes as the other ways. For a check class the class goes `skipped (state)` as
+  at a block, `setup-checks` lines 81 to 86, and `build-work` reads before the
+  release whether the state stands, lines 589 to 595; `secrets` is decision 5.
+  "Every failure is a block", conventions line 1526, stands unchanged. The
+  sections "With nobody there" of `build-work`, lines 109 to 119, and
+  `setup-checks`, lines 137 to 143, which named the block alone, name the four
+  ways.
+
+  Built: the two places where `setup-checks` with nobody there ended the run
+  end the task, decision 5. `secrets` that cannot be set up, lines 86 to 102,
+  and a guard fired on text where the editing tool does not reach, lines 103 to
+  109: at both an issue carrying the command, the message and what is in the
+  way, labelled `raised-here` and `needs-human`, recorded as a blocker of the
+  task, since text 1 says the task is free again when the issue is closed; the
+  task put down; the next taken; the class as it stands. Lines 98 to 100 and
+  107 to 109, which said the run ended and the mark was deleted, say so no
+  longer; `secrets` the run still never switches off. What the run says at
+  `secrets` is text 1 below, and lines 100 to 102 point at it in this entry
+  instead of at the wording of 6 October 2026 in the entry of 5 October 2026.
+  In `build-work` the list of the places where the mark is deleted, lines 1217
+  to 1225, loses the halt of `setup-checks` and gains the two stops of this
+  entry, a refusal with no task in hand and a check chain that did not finish;
+  "With nobody there" there gets the case.
+
+  Built: what no longer held elsewhere. `shared/command-does-not-answer.md`
+  lines 56 to 60 and `docs/skill-conventions.md` lines 405 to 412 said that
+  with nobody there every command that does not answer stops the run and that a
+  permission prompt was a finding of its own, the tool classes not all
+  approved; they part three cases now, the refusal, the install that does not
+  go through, and every other command, which still stops the run, and the
+  sentence on the prompt is gone, since condition 4 reads no tool classes and
+  the hook answers the prompt. Conventions lines 2134 to 2146, "Tool classes
+  can be pre-approved per project", keep their heading, which `docs/plan.md`
+  lines 411 and 586 name, and say what holds. `setup-checks` lines 811 to 814
+  no longer count a permission prompt among what stops the run; nothing stands
+  in its place, the text before the question of step 8 coming with the next
+  order after text 6 of the entry above. `README.md` lines 134 to 146 name auto
+  mode in place of the approved command kinds and say what a prompt during the
+  run meets; lines 183 onward name the two hooks and the session-start hook's
+  identifier; lines 312 to 316 name the hook among the readers of the mark, as
+  `skills/setup-project/SKILL.md` lines 419 to 423 do; `hooks/hooks.json` names
+  both hooks on line 2. The search for further places — `grep -rn -i 'tool
+  classes|kinds of command|kind of command|permission prompt|approved for this
+  project|pre-approved|command kinds'` over `skills`, `shared`, the
+  conventions, the plan and the README, and `unattended.local` over the same —
+  found the places the order named and no other.
+
+  The missing thing in the table, decision 7: a thing for an install with
+  nobody there under a yes that goes through, `build-work` step 3 point 7, its
+  site the sentence that runs the backed command with the user there and with
+  nobody there, is in the table, and the defect of 4 October 2026 that the
+  table held none reads as mended, its evidence on that line. The sentence of
+  the entry above at lines 13866 to 13870, which counted the outcomes of the
+  install guard the 140 runs meet and left out the pass under a yes with
+  `PREFIX`, `DESTDIR` or `BINDIR` on the `make install` line, names it.
+
+  **The decisions of 9 October 2026, with their reasons.** The reader and the
+  guard for condition 4, both: the reader so that `plan-work` can read the
+  condition before the question, lines 365 to 366, where no hook stands between
+  the run and its answer, and the guard so that the run with nobody there
+  begins in auto mode alone, whatever a skill says. The session's identifier in
+  the mark, so that a mark a broken-off session left standing touches no later
+  session with a person in it; written through `SessionStart` and
+  `CLAUDE_ENV_FILE`, so that the command shows what it writes and no command is
+  rewritten. Rejected: the guard adding the identifier to the command through
+  `updatedInput`, which the hooks reference allows on `PreToolUse` — the run
+  would then run a command other than the one it typed. A refusal before the
+  build through the order of `plan-work` for a question nobody can answer, so
+  that the run with nobody there is not blocked in doubt, the person's
+  principle of the entry of 8 October 2026. Of decision 1 the handling of the
+  refusal alone, the rule and the question with decision 10.
+
+  **The approved texts, word for word.** Approved by the person, recorded here
+  as approved, the German ones in German and the English ones in English; what
+  stands in angle brackets the run fills when it runs. The programs and hooks
+  carry the English texts word for word; the skills say what is said and point
+  here for the wording, as at every earlier approval.
+
+  Text 1, the halt at `secrets` with nobody there, approved on 8 October 2026:
+  „Die Prüfung, ob versehentlich Zugangsdaten committet wurden, lässt sich ohne
+  dich nicht einrichten. <in einfachen Worten, was im Weg ist> Diese Prüfung
+  schalte ich nie von mir aus ab, deshalb schreibe ich ein Issue mit dem Grund
+  und mache mit den anderen Aufgaben weiter. Im Issue steht der Befehl, mit dem
+  du das selbst installierst. Führ ihn aus und schließ das Issue, dann ist die
+  Aufgabe wieder frei.“ The example for the middle stays: „Das Werkzeug
+  `<Name>` bräuchte Java, und eine Laufzeitumgebung installiere ich nie
+  selbst.“
+
+  Text 2, the refusal at start condition 4 in `build-work`, approved on 8
+  October 2026 and changed on 9 October 2026, „noch einmal“ gone: „Der Lauf
+  ohne dich startet nicht. Dafür muss Claude Code im Auto-Modus laufen, gerade
+  ist „<Modus, wie Claude Code ihn anzeigt>“ eingestellt. Stell den Auto-Modus
+  ein, im Terminal mit Umschalt+Tab, und tippe dann `--auto`. Ohne `--auto`
+  baue ich die geplanten Aufgaben mit dir.“
+
+  The text for `plan-work` before the question, approved on 9 October 2026:
+  „Der Lauf ohne dich startet nicht. Dafür muss Claude Code im Auto-Modus
+  laufen, gerade ist „<Modus, wie Claude Code ihn anzeigt>“ eingestellt. Stell
+  den Auto-Modus ein, im Terminal mit Umschalt+Tab, und tippe dann `--auto`.
+  Ohne `--auto` plane ich mit dir weiter.“ For both: the mode is filled with
+  the label of the status bar, without the characters before it, „manual mode
+  on“ for instance.
+
+  Text 5, the message of the hook on permission prompts, approved on 8 October
+  2026 and changed on 9 October 2026: "Refused by devloop: this is a run with
+  nobody there (.claude/unattended.local stands), so no one can answer this
+  permission prompt. Do not try it again or reach the same result another way.
+  In the build, raise an issue carrying this tool call and this refusal, label
+  it raised-here and needs-human, record it as a blocker of the task, then put
+  the task down and take the next one, as "A guard's block, with nobody there"
+  in build-work says. Before the build, go on as plan-work says for a question
+  nobody is there to answer, and name this refusal where that order records
+  it."
+
+  Text A, the output of `bin/devloop-permission-mode`, approved on 9 October
+  2026: "devloop: the hook on this command states the permission mode of this
+  session beside this result; where no such statement stands, the mode could
+  not be read."
+
+  Text B, the hook's line beside the result, approved on 9 October 2026,
+  `<value>` the value of `permission_mode`, `<label>` the label of the status
+  bar: "devloop: the permission mode of this session is <value>, shown in the
+  status bar as <label>." and "devloop: the permission mode of this session
+  could not be read: the hook input carried no permission_mode."
+
+  Text C, the message of the block on the mark, approved on 9 October 2026:
+  "Blocked by devloop: the mark for a run with nobody there is written only in
+  auto mode, and this session is in <value>, shown in the status bar as
+  <label>. Do not write the mark another way. The run with nobody there does
+  not start: tell the user so with the sentence the skill gives for start
+  condition 4, and carry on with them." and "Blocked by devloop: the mark for a
+  run with nobody there is written only in auto mode, and the permission mode
+  of this session could not be read: the hook input carried no permission_mode.
+  Do not write the mark another way. The run with nobody there does not start:
+  say that the mode could not be read, with this message, and carry on with the
+  user."
+
+  **Measured before the build, 2.1: the session's identifier in subagents and
+  after compaction.** On 9 October 2026 from 11:06 to 11:17 UTC, with `claude
+  -p` of 2.1.295 started from inside this session with `CLAUDECODE` unset, in a
+  throwaway project outside the repository with a `.claude/settings.json` of
+  its own: a `SessionStart` hook writing `source` and `session_id` to a log and
+  `export PROBE_SESSION_ID=<session_id>` to `"$CLAUDE_ENV_FILE"`, and a hook on
+  `PreToolUse` for `Bash` and one on `PermissionRequest` writing
+  `hook_event_name`, `session_id`, `agent_id`, `agent_type` and
+  `permission_mode` to the same log and deciding nothing. The installed plugin
+  devloop 0.132.0 ran its own hooks in these sessions beside them. The hooks'
+  input carried `permission_mode` on `PreToolUse` and `PermissionRequest` and
+  not on `SessionStart`, in every run. Run 1, `--permission-mode default`,
+  session `959c062d-d7fc-4787-bcfe-3b78d55fb1b3`: every entry carries that
+  identifier — the main run's `echo main "$PROBE_SESSION_ID"` at 11:06:05, a
+  foreground subagent's `echo sub` with `agent_id` `addfec3686dfeed10` at
+  11:06:12, a background subagent's `echo bg` with `agent_id`
+  `a4ec698f53d8896ae` at 11:06:20, the main run's `touch probe.txt` at 11:06:26
+  and a subagent's at 11:06:31, each on `PreToolUse` and on
+  `PermissionRequest`, `permission_mode` `default` on all ten; the
+  `SessionStart` hook's `CLAUDE_ENV_FILE` was
+  `~/.claude/session-env/959c062d-…/sessionstart-hook-0.sh`. Every one of the
+  five commands was refused, since a `-p` run in `default` has nobody to
+  answer: the two `echo`s with "A variable in this command can't be checked
+  before it runs", the background subagent's with "Permission to use Bash has
+  been denied", the two `touch`es as needing approval; `probe.txt` was not
+  created, and the variable was not read in that run. Run 2, `--permission-mode
+  auto`, session `5a54078a-57d3-4f09-bd92-42cd49df8664`: `echo hi` printed
+  `hi`, `permission_mode` `auto` on `PreToolUse`, no `PermissionRequest`. The
+  list `slash_commands` in the `init` message of run 1 — not the first message
+  of `--output-format stream-json --verbose`, a `hook_started` message precedes
+  it — holds 81 entries, `compact` among them. Run 3, `claude -p --resume
+  959c062d-… "/compact"`: `SessionStart` with `source` `resume` at 11:11:27 and
+  with `source` `compact` at 11:12:04, both with the identifier of run 1 and
+  the same `CLAUDE_ENV_FILE`, the result with zero turns. Run 4, `--resume
+  959c062d-…` in `default` with `echo after "$PROBE_SESSION_ID"`:
+  `SessionStart` `resume` with the same identifier, the `echo` refused as in
+  run 1 and a `printenv PROBE_SESSION_ID` after it refused with "This command
+  requires approval", every hook carrying the identifier of run 1. Since
+  `default` in `-p` lets no command with a variable run, the variable was read
+  in auto mode: run 1c, `--permission-mode auto`, session
+  `3b11151a-7bfa-4eb3-80ac-613f1d128f97`, printed `main 3b11151a-…` in the main
+  run, `sub 3b11151a-…` in a foreground subagent, `agent_id`
+  `ad1b68509fbae603b`, and `bg 3b11151a-…` in a background subagent, `agent_id`
+  `a3c957af1a185c49f`, each equal to the session's identifier; run 3c,
+  `--resume 3b11151a-… "/compact"`, `SessionStart` `resume` at 11:15:55 and
+  `compact` at 11:16:22 with that identifier; run 4c, `--resume 3b11151a-…`
+  with `echo after "$PROBE_SESSION_ID"`, printed `after 3b11151a-…`, the
+  `CLAUDE_ENV_FILE` of that session holding four `export` lines with the one
+  identifier, one per `SessionStart`. A run in `default` with `printenv` in the
+  main run and in a foreground and a background subagent, session
+  `12e68bbc-0fc0-4e02-a05c-99e5a2cb8998`, was refused three times, "This
+  command requires approval" and the background subagent's denial, every hook
+  carrying the one identifier. So none of the three conditions that would have
+  stopped this order held: a subagent carries the main run's `session_id`, in
+  the foreground and in the background, on `PreToolUse` and on
+  `PermissionRequest`; `PROBE_SESSION_ID` in the main run equals the
+  identifier; and after compaction and after `--resume` the identifier is the
+  one of the first run, as `sdk.d.ts` lines 1707 to 1710 say of a resumed
+  session without `forkSession`. Of the things the order said to name and build
+  on: `PermissionRequest` fires in a subagent, in the background too; a
+  background subagent starts under `claude -p` and the run waits for it, the
+  `-p` run answering in two result messages; `PROBE_SESSION_ID` stands in a
+  subagent; `/compact` runs through `--resume`; `--resume` keeps the
+  identifier.
+
+  **Measured before the build, 2.2: what a command returns at its time limit.**
+  On 9 October 2026 at 11:00 UTC in this session of 2.1.295 in the terminal,
+  `sleep 12; echo done` with the Bash tool's `timeout` of 5000 milliseconds
+  came back as `Exit code 143` with the message `Command timed out after 5s`,
+  naming no output file; `pgrep -fl 'sleep 12'` fifteen seconds later found no
+  process, so the command was ended and not moved. The same with no limit of
+  its own, `sleep 125; echo done`, this session's harness blocked before it ran
+  — "Blocked: sleep 125 followed by: echo done. To wait for a condition, use
+  Monitor with an until-loop" — so what the default limit of 120 seconds does
+  to a command in this session was not measured, and the changelog reading in
+  the conventions, a command at the limit moved to the background, stands
+  beside this measurement as what holds in other sessions. What 3.5 says
+  follows the answer: a command that reaches its limit is ended or moved,
+  either way not finished, reported with the command, the message and the path
+  of its output file where one is named.
+
+  **Measured after the build, the hooks and programs for themselves.** On 9
+  October 2026 from 11:17 to 11:20 UTC against the working tree before
+  `ddee4e1` and once more at `ddee4e1`, the hooks fed JSON on stdin in a
+  throwaway project with `docs/agents/`, `CLAUDE_PROJECT_DIR` on it, every
+  output and exit code written down; the tool is the harness in the session's
+  scratch directory. R1, `hooks/pre-tool-use-mark-guard.sh` with `tool_name`
+  `Bash` and a command calling `bin/devloop-permission-mode` by its absolute
+  path, under `default`, `acceptEdits`, `plan`, `auto`, `dontAsk`,
+  `bypassPermissions`, `foo` and without the field: exit 0 on all eight, no
+  stderr, stdout the JSON with `additionalContext` carrying text B — the value
+  and its label, `default` with `manual mode on`, `acceptEdits` with `accept
+  edits on`, `plan` with `plan mode on`, `auto` with `auto mode on`, `dontAsk`
+  with `don't ask on`, `bypassPermissions` with `bypass permissions on`, `foo`
+  with `foo`, and the form "could not be read: the hook input carried no
+  permission_mode" without the field — no decision in any. R2, the command of
+  `shared/mark-command.md` word for word and the same with `plan` for `build`,
+  under the same eight inputs each: under `auto` exit 0 with no output; under
+  the six other values exit 2 with text C on stderr carrying the value and its
+  label; without the field exit 2 with the second form of text C. R3, `rm -f
+  .claude/unattended.local` under `default` and under `auto`: exit 0, no
+  output. R4, `git status` under `default`: exit 0, no output. R5, `tool_name`
+  `Write` with `file_path` on the project's `.claude/unattended.local`: under
+  `default` exit 2 with text C, under `auto` exit 0 without output. R6, `Write`
+  on another file under `default`: exit 0, no output. Beside the order, under
+  `default`: `echo x > .claude/unattended.local`, `printf "a\nb" >>
+  .claude/unattended.local`, `echo x | tee .claude/unattended.local`, `cp
+  /tmp/m .claude/unattended.local`, `touch .claude/unattended.local`, `sed -i
+  "" s/a/b/ .claude/unattended.local` and a redirection onto the absolute path
+  under the project each exit 2 with text C; `cat .claude/unattended.local`,
+  `sed -n 1p .claude/unattended.local`, `test -f .claude/unattended.local`, `rm
+  .claude/unattended.local` and a redirection onto
+  `.claude/unattended.local.bak` each exit 0 without output; `echo x >
+  "$PWD"/.claude/unattended.local`, `cd .claude && echo x > unattended.local`
+  and `python3 -c "open('.claude/unattended.local','w')"` each exit 0 without
+  output, the forms named above as not read. P1 to P6,
+  `hooks/permission-request-unattended.sh` with `session_id` `abc` and
+  `tool_name` `Bash`: P1 without a mark exit 0, no output; P2 with `abc` on the
+  third line the JSON with `behavior` `deny` and `message` text 5, exit 0; P3
+  with `xyz` on the third line exit 0, no output; P4 with two lines the deny
+  with text 5; P5 with an empty third line the deny with text 5; P6 with `xyz`
+  on the third line and no `session_id` in the input the deny with text 5. S1
+  to S3, `hooks/session-start.sh` against its copy at `ab34f96` with the
+  programs that copy reads beside it: S1 with `CLAUDE_ENV_FILE` on an empty
+  file and `session_id` `abc` in a git repository not set up — exit 0, the file
+  holding `export DEVLOOP_SESSION_ID=abc`, `echo "$DEVLOOP_SESSION_ID"` after
+  `. <file>` printing `abc`, the output `[ProjectStatus] devloop: not set up
+  here`, byte for byte the output at `ab34f96`; S2 without `CLAUDE_ENV_FILE` —
+  exit 0, no stderr, the same output; S3 as S1 in a directory that is no git
+  repository — exit 0, the file holding the line, the output empty as at
+  `ab34f96`. M1 and M2, the command of `shared/mark-command.md` in a throwaway
+  repository with `origin/main` at `98ae862`: M1 with `DEVLOOP_SESSION_ID=abc`
+  wrote three lines, `98ae8621…`, `build`, `abc`; M2 without the variable three
+  lines, the third empty.
+
+  **Measured after the build, end to end.** On 9 October 2026 from 11:23 to
+  11:25 UTC with `claude -p` of 2.1.295, in a throwaway project with git and
+  `docs/agents/` whose `.claude/settings.json` named the branch's
+  `hooks/session-start.sh`, `hooks/pre-tool-use-mark-guard.sh` on `Bash` and on
+  the editing tool, and `hooks/permission-request-unattended.sh` without a
+  matcher by their absolute paths, a logging hook beside each; the installed
+  plugin devloop 0.132.0 ran its hooks in the same sessions. Every result is
+  read off the session log under `~/.claude/projects/`, by `session_id`, not
+  off the model's report: a tool call is a `tool_use` block, its result a
+  `tool_result` block, and a hook's statement an attachment of type
+  `hook_additional_context`. E1, `--permission-mode auto`, session
+  `55e5d1f5-021d-4cd5-9c21-f2a0abae288a`: the `tool_result` is text A, and the
+  attachment holds "devloop: the permission mode of this session is auto, shown
+  in the status bar as auto mode on." — Claude Code took the hook's JSON and
+  put the statement beside the result. E2, `--permission-mode default`, session
+  `75b25570-dd49-4a74-aa15-10862ca2ffcc`: the call was a permission prompt,
+  `PermissionRequest` fired with no mark standing and the hook stayed silent,
+  the `tool_result` reads "This command requires approval", and the attachment
+  holds "devloop: the permission mode of this session is default, shown in the
+  status bar as manual mode on." — the statement stands beside a refused call
+  too, so condition 4 is read in every mode. E3, `--session-id
+  7c64c6c9-49e7-4559-a409-ff53dfa9d671`, a mark with that identifier on its
+  third line, `--permission-mode default`, `touch probe.txt`: the `tool_result`
+  is text 5 word for word, and `probe.txt` does not exist — Claude Code took
+  the hook's deny and gave the model its message. E4, `--session-id
+  035744c4-ea26-420e-8fc0-9bef9627118e`, the mark with `other-session-xyz` on
+  its third line: the `tool_result` reads "touch in '…/probe.txt' needs
+  approval. The path is inside the working directories for this session (…),
+  and Claude Code asks before a shell command creates, changes or removes files
+  there.", Claude Code's own denial where no hook decided, without text 5, and
+  `probe.txt` does not exist. E5, `--session-id
+  17486493-ba3f-46c4-bfad-8bca1ad3cc92`, the mark with that identifier,
+  `--permission-mode default`, the task to ask with `AskUserQuestion`: the
+  `init` message's `tools` carry no `AskUserQuestion`, the model's `ToolSearch`
+  for it answered "No matching deferred tools found", no `PreToolUse` and no
+  `PermissionRequest` fired, and nothing came back from the tool; the hooks
+  reference says under "Tools that require user interaction" that `-p` offers
+  it only with a permission host. In E1 and E3 the branch's `session-start.sh`
+  wrote `export DEVLOOP_SESSION_ID=<session_id>` into
+  `~/.claude/session-env/<session_id>/sessionstart-hook-0.sh`, read there
+  afterwards.
+
+  **A known limit.** A check chain that runs longer than ten minutes on this
+  machine never finishes inside its call with nobody there, and the run stops
+  at the chain of step 1 already, before the first task. How long each class
+  runs stands in `docs/agents/checks.md` in the column `Duration`.
+
+  **What the closing runs of milestone 3 still measure.** Whether the hook on
+  permission prompts fires at the pause of auto mode too, three blocks in a row
+  or twenty in all, as decision 6 names; whether the two hooks and the
+  identifier work where they run as part of the installed plugin out of
+  `hooks/hooks.json` and not out of a `settings.json` as in 2.1 and end to end
+  above — the identifier to be seen on the third line of the mark; whether the
+  statement beside the reader reaches the model in a session with a person,
+  where the measurements above ran `claude -p`; whether a `PreToolUse` hook on
+  the editing tool blocks a write onto the mark in a live session, measured
+  here fed alone; what the default time limit does to a command, which this
+  session's harness kept from being measured; and the classifier's answer to
+  the mark command and to `bin/devloop-permission-mode` in auto mode in a
+  session with a person, which E1 shows for `-p` alone.
 
 ## Decisions taken against
 

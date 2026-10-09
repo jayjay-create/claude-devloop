@@ -407,9 +407,16 @@ short of the conclusion. Where the state was going to decide an action, the
 action does not happen: nothing is armed, nothing is declared past its gate,
 nothing is reported clear. Where a person is there, the report goes to them as
 something they can act on — the permission is theirs to grant and the command
-theirs to run — and where nobody is, it goes into the run's own report and the
-run stops there. A permission prompt in an unattended run is a second finding on
-its own: the tool classes were not all approved before it started.
+theirs to run — and where nobody is, it goes into the run's own report. Since
+9 October 2026 three cases part there, as `shared/command-does-not-answer.md`
+says: a refusal — a guard's block, the no of the classifier of auto mode, the
+no of the hook on permission prompts, which answers every prompt while the
+mark of the run with nobody there stands — goes as the skill's section for
+the case says, an issue and the next task in a build with a task in hand,
+the planning stage's order for an unanswerable question before the build; an
+install that does not go through goes as the four ways in `build-work` step
+3 and `setup-checks` step 4 say; every other command that does not answer
+stops the run there.
 
 **An empty answer is not a missing one, and this is the line that gets crossed.**
 A command that ran and returned nothing has answered — no match, no open issue,
@@ -1373,10 +1380,24 @@ checks in `build-work` step 6, 100 seconds a call — the command runs under
 everything it started, and says so in one line with exit 124, as GNU `timeout`
 would, and `timeout` is not on a stock macOS; the bound is chosen so that the
 whole call stays under the 120 seconds. For every other command that may run
-past the limit — a long test suite, an install — this set says nothing yet,
-and `shared/command-does-not-answer.md` allows one second attempt that would
-run beside the first; the addendum of 7 October 2026 to the audit of that day
-in `docs/roadmap.md` records it as a finding.
+past the limit — a long test suite, an install — this set says since 9
+October 2026, decision 2 of the roadmap entry of that day: every install and
+every run of the check chain is called with ten minutes, 600000
+milliseconds, the most one foreground call may have (`sdk-tools.d.ts` of the
+Agent SDK 0.3.295, the Bash tool's `timeout`); what does not finish inside
+its call is neither waited for nor started a second time, and is reported
+with the command, the message and the path of its output file where one is
+named, `shared/command-does-not-answer.md`, which no longer allows the
+second attempt for that case. Measured on 9 October 2026 in a session of
+2.1.295 in the terminal, with a limit given on the call: `sleep 12; echo
+done` under 5000 milliseconds came back as exit code 143 with the message
+`Command timed out after 5s`, no output file named, and no process of it
+left running — ended, not moved, against what the changelog reading above
+says; the same session's harness blocks a foreground `sleep` of two minutes,
+so what the default limit does to a command was not measured there. What a
+skill does with either answer is the same, and a check chain that is moved
+runs on beside the next task's chain in the same directory, which is why a
+chain that does not finish stops a run with nobody there.
 
 **A rule in the run's own memory can close a route the skills allow.** Measured
 on 25 August 2026: before arming auto-merge, a run stopped itself and cited a
@@ -2131,10 +2152,20 @@ carry as a table. It has changed before, it varies by plan, and a private
 repository on one plan refused it while another allowed it in the same week. The
 API answers it for the repository in front of you.
 
-**Tool classes can be pre-approved per project**, which is what makes an
-unattended run possible: read commands, the language runner, file edits, `git
-push`, `gh pr *`. They must be granted before the run — nobody is there to
-answer a prompt during it. The install class, since 28 September 2026, is
+**Tool classes can be pre-approved per project**, and since 9 October 2026
+that is not what makes an unattended run possible: the run with nobody there
+begins only in auto mode, where the classifier answers in a person's place,
+and a permission prompt that comes anyway is answered no by
+`hooks/permission-request-unattended.sh` while the mark stands, the no going
+as every refusal goes, an issue against the task and the next task taken.
+Start condition 4 of the mode reads the mode alone, through
+`bin/devloop-permission-mode` and the statement `hooks/pre-tool-use-mark-guard.sh`
+puts beside its result off the field `permission_mode` of its input, the one
+place the mode stands; allow rules are not read, and `dontAsk` and
+`bypassPermissions` do not count. Until that day this paragraph said the
+classes — read commands, the language runner, file edits, `git push`, `gh pr
+*` — had to be granted before the run, which nothing in the tree could read.
+The install class, since 28 September 2026, is
 granted in the project rather than in the tool's settings — the record in
 `environment.md` that **The install guard reads a record** above describes —
 and it opens the guard's pass, not the harness's: whether the classifier lets
