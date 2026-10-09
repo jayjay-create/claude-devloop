@@ -15380,6 +15380,464 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   straight path, none of 2497 lines uncovered, and ninety-eight runs that do
   not count.
 
+- **Step 8 of `setup-checks`: a reading before the question, the question
+  field by field, the rule for auto mode after its yes; a guard on the
+  identity of a commit; milestone 12 in the plan; the findings of 9 October
+  2026; 9 October 2026, version 0.134.0.** On
+  `task/mode-offer-and-commit-identity`, off `c819499`, version 0.133.0 on
+  `main`; the build in `1d57f2a`, this entry and the table in the commits
+  after it. The order of 9 October 2026 fixed what is built here off decisions
+  3 and 8 to 11 and texts 3, 4 and 6 of the entry of 9 October 2026 on the
+  open findings, and off what was decided and approved the same day after
+  them, below; every line number in it holds at `c819499`, and a line number
+  given as "at `1d57f2a`" holds at the build. The report stands on this
+  machine as `~/devloop-report-2026-10-09-mode-offer-and-commit-identity.md`,
+  in English, and is not in the repository. Claude Code 2.1.295 and `git
+  version 2.50.1 (Apple Git-155)` on this machine, read with `claude
+  --version` and `git --version`; gh 2.96.0.
+
+  Built: the reading before the question, decision 8, text 3. `setup-checks`
+  step 8, lines 755 to 781 at `1d57f2a`: before the question the run reads
+  `gh api repos/OWNER/REPO/rules/branches/<main branch>`, the second of the
+  two queries of step 7, which needs no special rights, and decides on its
+  answer and not on its status alone, since a 403 comes from a GitHub CLI
+  locked out of an organization too. `[]` or a list: the question is put.
+  HTTP 403 whose body says "Upgrade to GitHub Pro or make this repository
+  public": no question, the statement of text 3 instead, the plan in it read
+  off `gh api repos/OWNER/REPO -q .owner.type`, `User` giving GitHub Pro and
+  `Organization` GitHub Team; then step 9 as after a no, except that nothing
+  is written — nothing set up, no branch cut, no section into
+  `docs/agents/environment.md` — and where `--auto` brought the run there,
+  back to the place that called, which goes on with the person. Every other
+  answer is a command that did not answer, `shared/command-does-not-answer.md`:
+  command and message named, nothing closed, the question not put. In the
+  gate order, point 3, lines 1038 to 1045 at `1d57f2a`, auto-merge comes
+  before the protection and is read back with `gh api repos/OWNER/REPO -q
+  .allow_auto_merge`, since a PATCH on it answered `false` with exit 0 on 8
+  October 2026 in an organization on the plan Free; where it reads `false`,
+  no protection is set and it goes on as at a refused protection, that
+  reading as the reason; the same where the gate stood already, lines 1047
+  to 1051 at `1d57f2a`. The finding on `setup-checks` line 728, "step 8 reads
+  the gate, its binding and auto-merge before asking and learns that the
+  platform refuses the protection only after the question", left the table
+  and stands as a defect of this entry, its evidence on the new paragraph.
+
+  Built: the question field by field, decision 9, text 6. `setup-checks`
+  step 8, lines 783 to 869 at `1d57f2a`, in the form of the other questions
+  of the skill, on the pattern of `shared/install-question.md`: in the
+  header a word for the subject, twelve characters at most; in the question
+  line the subject and its scope — work without them from the designs to
+  the merge, asked at every new idea once it is sharpened, the answer
+  holding for every task of that idea; in the yes, label and line, the check
+  on GitHub and the protected main branch against their own direct pushes
+  too, and a run working until everything is built as long as the window is
+  open and the machine awake, the first sentence gone where the protection
+  stands; in the no, label and line, everything as it is, every task coming
+  to them, `--auto` later. Before the window, as a short text, five parts
+  and nothing else, lines 810 to 847 at `1d57f2a`: the course, what can go
+  wrong, the end, the costs, keeping the machine awake — the last naming
+  `caffeinate` on macOS alone, where `uname -s` answers `Darwin`, with the
+  closed lid in the same breath, and on every other system and where `uname
+  -s` does not answer the sentence for every system and no command, backed
+  or not, since the commands for Linux and Windows come with milestone 12;
+  lines 810 to 814, which allowed a backed command on another system, say
+  so, and so does `docs/skill-conventions.md` under "Environment
+  constraints, measured", lines 1342 to 1345 at `1d57f2a`. What stood before
+  the question until this day and is not said any more, lines 755 to 877
+  read paragraph by paragraph against text 6: that the run takes up the
+  issues it raised against itself, that there is no ceiling on the number of
+  tasks, that the result reads as the diff from the starting commit, how the
+  run ends and how a standstill is seen, the sentence against a yes on a
+  first project, lines 858 to 861, and the six bullets on what a yes leads
+  to, lines 818 to 856; the behaviour stands where it is decided,
+  `build-work` under "Unattended mode" and step 6 and `plan-work` at the end
+  of Stage 1, and nothing of it changed; the paragraph at lines 849 to 856
+  at `1d57f2a` says so. The two cases stay, lines 858 to 863 at `1d57f2a`:
+  where the gate stands, the first sentence of the yes goes; under `--auto`
+  with the gate standing the flag is the yes and no question is put, with no
+  gate it is put. The sentence "a permission prompt … stops" was gone since
+  0.133.0 already. Two findings on step 8 left the table and stand as
+  defects of this entry: the one on line 755, "the question of step 8 on the
+  unattended mode has no form", its evidence on the question's form; and
+  the one on line 768, "step 8 tells the person … that the run goes on until
+  nothing the run raised against itself is still waiting … while build-work
+  ends the run with an issue labelled needs-human still open", answered by
+  the omission text 6 fixes and not by its should — step 8 states the finish
+  to the person no more, and `build-work` states it once, under "Unattended
+  mode" with the loose issues named. Two checks under "Before a handover,
+  run these" read that section. The check on the unattended finish, lines
+  2770 to 2780, ran over `build-work` and step 8 and asked of both that they
+  name `raised-here`; step 8 states the finish no longer, so a check over it
+  would be red by construction and would guard nothing, and the check runs
+  over `build-work` alone since this day, lines 2794 to 2809 at `1d57f2a`,
+  its prose saying why and that a second place that comes to state the
+  finish goes back into the list. The check on the second statement, lines
+  2792 to 2802, printed `setup-checks` line 859, "said only once nothing
+  ready is left in scope and nothing the run raised", a line of the
+  explanation of the closing sentence that went with text 6; its prose,
+  lines 2834 to 2843 at `1d57f2a`, says the line went and why, as that
+  section asks of a disappearing line; the check itself is unchanged and
+  prints `build-work` line 1380 alone.
+
+  Built: the rule for the classifier of auto mode, decision 10, text 4.
+  `setup-checks` step 8, lines 871 to 911 at `1d57f2a`: directly after the
+  yes — their answer, or the flag where the gate stands — and before the two
+  permissions, one question more, field by field like the one above, in the
+  header a word of twelve characters at most, in the question line whether
+  devloop may enter a rule into their `~/.claude/settings.json` so that auto
+  mode does not block installs in devloop projects by itself, in the yes that
+  devloop enters it and that it allows installs only in projects set up with
+  devloop, in the no that auto mode can then refuse an install and the run
+  without them writes an issue and goes on; not put where the rule stands
+  already. The program `bin/devloop-auto-mode-rule`, python3, reads with
+  `read` — exit 0 where the rule stands, 1 where it does not with the reason,
+  2 where the file cannot be read for it — and enters with `write`: the rule
+  of text 4 in English word for word, its lines joined with one space each,
+  as one entry of `autoMode.allow`; the list created with `"$defaults"`
+  before the rule where the file or the list is missing, the rule appended
+  where a list stands, nothing changed where it stands, every other key and
+  value kept in its order, the file written through a temporary file in the
+  same directory and moved over the old one; exit 2 and nothing written
+  where the file is not valid JSON, a key stands twice in one object,
+  `autoMode` is not an object, `autoMode.allow` is not a list, or the write
+  is refused, the reason on stdout, and the run then says the sentence text
+  4 gives for the refused entry with that reason. The file is
+  `settings.json` under `CLAUDE_CONFIG_DIR` where that is set and under
+  `~/.claude` otherwise: the settings page of Claude Code, read on 9 October
+  2026 under "Configuration directories", says "To keep the home-directory
+  files somewhere else, set `CLAUDE_CONFIG_DIR`; Claude Code then stores your
+  settings, session history, and plugins there instead", and the page on
+  environment variables gives the variable as "Override the directory where
+  Claude Code stores configuration, cache, debug logs, and transcripts.
+  Defaults to `~/.claude`", read "only from the environment you start
+  `claude` from". What the program rests on: python3 and nothing else — on
+  a Mac python3 comes with the Command Line Tools that bring git, the
+  stock-take tool and the check under "Before you change anything, run
+  this" rest on it already, and jq is not on a Mac by default; python3's
+  `json` keeps the order of keys and, with `ensure_ascii` off, every
+  character as it stood. Without the yes the program is not called and the
+  file not touched. `README.md` lines 244 to 249 at `1d57f2a` say so in
+  place of "It does not touch your global configuration". The two callers of
+  step 8 name the question beside the permissions: `build-work` lines 1274
+  to 1278 and `plan-work` lines 337 to 340 at `1d57f2a`. Not asked, and
+  named in the report as a finding: where the mode is set up by all five,
+  step 8 says so and skips the rest, lines 744 to 745, and `plan-work` asks
+  nothing where the mode is set up and `--auto` was typed, so a project
+  whose mode was set up before this version meets the question on no path.
+
+  Built: a guard on the identity of a commit, decided on 9 October 2026.
+  The commits of the order before this one were made with `git -c
+  user.email` and an address taken from the session's context, one GitHub
+  holds as private for the account, and the push was refused, GH007.
+  `hooks/pre-tool-use-identity-guard.sh`, on `PreToolUse` for `Bash` in
+  `hooks/hooks.json` without an `if`, since a variable before the command
+  does not begin with `git`; the description on line 2 names it, as
+  `README.md` lines 220 to 229 at `1d57f2a` do. In a project with
+  `docs/agents/` alone, as the other guards; on every other tool and in
+  every other directory a silent pass. It reads the decoded command in
+  every segment between `&`, `|`, `;` and parentheses, as the install guard
+  and the mark guard do, and blocks: `git` with `-c` or `--config-env` on
+  `user.name`, `user.email`, `author.name`, `author.email`,
+  `committer.name` or `committer.email`, the key in any mixture of upper and
+  lower case as git reads it, read between `git` and its command alone, the
+  options read as the branch guard reads git's own options, so that `git
+  commit -c <commit>` is not read; `--author` at `git commit`, with
+  `--reset-author` passing and `--author` at `git log` and the other
+  commands that filter by it passing; `GIT_AUTHOR_NAME`,
+  `GIT_AUTHOR_EMAIL`, `GIT_COMMITTER_NAME` and `GIT_COMMITTER_EMAIL` set
+  anywhere in the command, with `env` or `export` too; `EMAIL` set in a
+  command that calls git; `GIT_CONFIG_KEY_<n>` set to one of the keys; and
+  `git config` writing, setting or removing one of the keys — a key with a
+  value, `--add`, `--replace-all`, `--unset`, `--unset-all`, `set`, `unset`,
+  and a section named `user`, `author` or `committer` behind
+  `--remove-section` or `--rename-section` — where a key alone, `--get`,
+  `get`, `--list`, `list`, `--edit` and the other reading options pass.
+  Measured on 9 October 2026 with git 2.50.1 in a scratch repository with
+  `GIT_CONFIG_GLOBAL` on a throwaway file: `author.name`, `author.email`,
+  `committer.name` and `committer.email` given with `-c` overwrite
+  `user.name` and `user.email` in the commit; without `user.email` git
+  takes `EMAIL`; `User.Email` reads as `user.email`; `git commit -c HEAD`
+  takes the message and the author of `HEAD`, the committer from the
+  configuration — the order said it takes a message, and the manual page
+  and the measurement say the authorship as well, so the hook's head names
+  it among what is not read; and without `user.email` and `EMAIL` git
+  2.50.1 does not refuse but guesses an address from the machine's name,
+  with a warning, which the approved message below does not say — it says
+  git refuses, which holds with `user.useConfigOnly` set or where the guess
+  fails — and the message stands as approved. The block: the message on
+  stderr and exit 2, through no function, since a line routed through one
+  stands in no search set of the stock-take, the first of the three defects
+  recorded below; `<what was read>` filled with the form read without its
+  value, `-c user.email`, `-c Author.Name`, `--config-env=user.name`,
+  `--author`, `GIT_AUTHOR_EMAIL`, `EMAIL`, `GIT_CONFIG_KEY_0=user.email`,
+  `git config --global user.name`, as the measurement below shows them. Not
+  read, and said so in the head of the hook: a configuration file written
+  with the editing tool, with `git config --edit` or by another program;
+  `include.path`; `GIT_CONFIG_GLOBAL`, `GIT_CONFIG_SYSTEM`,
+  `GIT_CONFIG_PARAMETERS`, `HOME`, `XDG_CONFIG_HOME` and the other detours
+  that point git at another file; a git alias; `git commit -c` or `-C
+  <commit>`; `git am`, `cherry-pick`, `rebase` and the other commands that
+  carry an author over from a patch or a commit; a key held in a variable
+  alone. The three block lines of the loop carry a short comment each, so
+  that each can be an anchor; two comment lines of the hook hold the word
+  "case" and stand in the search set as the second defect below says, each
+  recorded as rationale.
+
+  Text 7, the message of the identity guard, approved on 9 October 2026,
+  `<what was read>` the form read, without its value: "Blocked by devloop:
+  this command sets the identity of a commit itself — <what was read> —
+  instead of using the one git config gives. Commit with that identity, and
+  do not set another one another way: not with git -c, --author, the
+  variables GIT_AUTHOR_…, GIT_COMMITTER_…, EMAIL or GIT_CONFIG_…, and not
+  with git config user.name or user.email. Not with an address from your
+  session's context either: what stands in a commit becomes public with the
+  push. Where git config gives no identity, git refuses to commit; then hand
+  the user the two commands git config --global user.name and git config
+  --global user.email, to run with values of their own choosing."
+
+  Built: the plan, decisions 3 and 11. `docs/plan.md` milestone 3 says that
+  its two closing runs go on the person's Mac in the terminal, where it
+  closes as planned, lines 266 to 269 at `1d57f2a`; the paragraph "Three
+  things stand before that run", lines 289 to 308, says now that all three
+  are built and what this order built, lines 292 to 308 at `1d57f2a`.
+  Milestone 12, "Every operating system, every surface", stands directly
+  after milestone 3, lines 434 to 475 at `1d57f2a`, in the form of the
+  others — its kind, what it covers, what ends it, why it stands there, the
+  conventions it meets — with decision 3 and its evidence, and with the
+  commands that keep a machine awake under Linux and Windows, text 6 part 5;
+  its first sentence says that it comes directly after milestone 3 and why
+  it carries this number: `grep -o -i -E 'milestones? [0-9]+'` finds a
+  numbered milestone 103 times in this file and 104 times in
+  `docs/stock-take.tsv`, and none is moved. The heading "Eleven milestones,
+  in this order", line 92, counts twelve, and so does "Beside the eleven",
+  line 660.
+
+  Built: the findings of the reports of 9 October 2026. Two things of the
+  table carried names that no longer held, with no run on either, and are
+  renamed after what they say, the note naming the old name: "hooks/hooks.json
+  / whole file / the eight hooks registered: four guards on PreToolUse, the
+  status line on SessionStart, the checks and the table guard on PostToolUse,
+  the checks on Stop", ten hooks since 0.133.0 and eleven with the guard
+  above; and "build-work / Unattended mode / precondition 4 fails, tool
+  classes not approved, refuse", where condition 4 reads the permission mode
+  since 0.133.0. The rule stands in the head of `scripts/devloop-stock-take`,
+  section C, lines 308 to 313 at `1d57f2a`: a thing whose name no longer
+  holds is renamed where no run hangs on it; where runs hang on it, it keeps
+  its name and the note says what holds. Beside it, lines 353 to 361 at
+  `1d57f2a`: a status line of the roadmap is never recorded as part of a
+  thing whose runs are to count, since it ties those runs to every later
+  change of the roadmap, as the entry of 9 October 2026 on the behaviour
+  with nobody there met at lines 15136 to 15146. In
+  `docs/skill-conventions.md` under "Writing long files", lines 921 to 927
+  at `1d57f2a`: no wrapped line begins with a number and a period, since
+  Markdown starts a list there — CommonMark 0.31.2, section 5.2, an ordered
+  list starting with 1 may interrupt a paragraph — and the tool reads the
+  line as a numbered item. Under "Environment constraints, measured", lines
+  2371 to 2383 at `1d57f2a`: `claude -p` with `--output-format stream-json`
+  writes the task into no message of its output, so an entry that records
+  such a run records the command line it was started with — the order had
+  it that the session log carries no such message either, and the log of
+  the end-to-end run below, read by `session_id`, holds the prompt as its
+  first user message, so the paragraph says what was read and not what the
+  order said.
+
+  Recorded, not built: an exit of a hook through a function, such as `||
+  pass` in `hooks/pre-tool-use-mark-guard.sh` lines 68, 69, 121 and 122,
+  stands in no search set, which for hooks takes lines with `if`, `elif`,
+  `else`, `case` or `exit` alone, `scripts/devloop-stock-take` lines 412 to
+  413 and 543 — should: such a line stands in the search set as an `exit`
+  does. Decision 13 of the entry above: the tool changes with the command
+  boundaries after the closing runs of milestone 3, each change with its
+  cases in the self-test.
+
+  Recorded, not built: a comment line of a hook or a program holding one of
+  the search words stands in the search set as code does, lines 1153 to
+  1169 of the tool — should: comment lines of hooks and programs stand in no
+  search set. Decision 13, as above.
+
+  Recorded, not built: an anchor found more than once is reported as "found
+  more than once, so it is not an anchor", line 1270 of the tool, and not
+  where — should: the message names the lines. Decision 13, as above.
+
+  **What the closing runs of milestone 3 still measure**, beside what the
+  entry above lists. What the hook on permission prompts does at a prompt of
+  `AskUserQuestion` while the mark stands: under `claude -p` the tool is
+  missing, E5 of the entry above, so it is measured in a session with a
+  person alone. From decision 6: whether the hook fires at the pause of
+  auto mode too, three blocks in a row or twenty in all, and on prompts of
+  subagents in the background. From decision 10: whether the classifier
+  reads the yes from the question window as express permission, its rule
+  "Self-Modification", and whether the rule takes effect in the same
+  session it was entered in.
+
+  **Measured after the build, the hook for itself.** On 9 October 2026 from
+  19:33:07 to 19:33:09 UTC at `1d57f2a`, the tree clean, the hook started
+  through its own first line and fed its JSON on stdin — `tool_name`,
+  `permission_mode`, `cwd` and `tool_input.command`, the command encoded as
+  the tool encodes it — in a throwaway project with `docs/agents/` and one
+  without, `CLAUDE_PROJECT_DIR` on each, in this session's scratch
+  directory; the harness is a shell script there, not in the repository.
+  Nothing below was run; the hook alone read each command. Under `default`
+  in the project with `docs/agents/`: I1 `git -c user.email=probe@example.invalid
+  commit --allow-empty -m m`, exit 2, stdout empty, text 7 on stderr with
+  `-c user.email`; I2 `git -C . -c Author.Name=Probe commit --allow-empty
+  -m m`, exit 2 with `-c Author.Name`; I3 `git --config-env=user.name=PROBE
+  commit --allow-empty -m m`, exit 2 with `--config-env=user.name`; I4 `git
+  commit --allow-empty --author="Probe <probe@example.invalid>" -m m`, exit
+  2 with `--author`; I5 `GIT_AUTHOR_EMAIL=probe@example.invalid git commit
+  --allow-empty -m m` and the same behind `env`, exit 2 with
+  `GIT_AUTHOR_EMAIL` both; I6 `export GIT_COMMITTER_NAME=Probe && git commit
+  --allow-empty -m m`, exit 2 with `GIT_COMMITTER_NAME`; I7
+  `EMAIL=probe@example.invalid git commit --allow-empty -m m`, exit 2 with
+  `EMAIL`; I8 `GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=user.email
+  GIT_CONFIG_VALUE_0=probe@example.invalid git commit --allow-empty -m m`,
+  exit 2 with `GIT_CONFIG_KEY_0=user.email`; I9 `git config user.email
+  probe@example.invalid`, `git config --global user.name Probe`, `git config
+  --unset user.email` and `git config set user.email probe@example.invalid`,
+  exit 2 each, with `git config user.email`, `git config --global
+  user.name`, `git config --unset user.email` and `git config set
+  user.email`; I10 `git config user.email`, `git config --get user.name` and
+  `git config --list`, exit 0 each, no output; I11 `git commit --allow-empty
+  -m m`, `git commit -c HEAD`, `git commit --amend --reset-author
+  --no-edit`, `git -c commit.gpgsign=false commit --allow-empty -m m`, `git
+  log --author=Probe`, `grep -n user.email README.md` and `git status`, exit
+  0 each, no output. I12, in the project without `docs/agents/`: I1, the two
+  of I5 and the four of I9, exit 0 each, no output. Beside the order's
+  cases, under `auto` in the project with `docs/agents/`: `git -c
+  "user.email=probe@example.invalid" commit -m m` and the same with single
+  quotes, exit 2 with `-c user.email`, the quotes decoded as every hook of
+  this plugin decodes them; `git -cuser.email=probe@example.invalid commit
+  -m m`, exit 2 with `-cuser.email`; `git --config-env user.name=PROBE
+  commit -m m`, exit 2 with `--config-env user.name`; `git commit --author
+  "Probe <probe@example.invalid>" -m m`, exit 2 with `--author`; `git
+  config --file x user.email y`, exit 2 with `git config --file x
+  user.email`; `git config --remove-section user`, exit 2 with `git config
+  --remove-section user`; `git config --add user.email probe@example.invalid`,
+  exit 2 with `git config --add user.email`; `git config --global --unset-all
+  user.email`, exit 2 with `git config --global --unset-all user.email`;
+  `echo $(git -c user.email=probe@example.invalid commit -m m)`, exit 2 with
+  `-c user.email`; and `git config get user.email`, `git config list`, `git
+  config --global --edit`, `git config core.editor vim`, `git -c
+  core.pager=cat log -1`, `EMAIL=probe@example.invalid ls`, `git commit -m
+  "fix user.email handling"`, `GIT_CONFIG_KEY_0=core.editor
+  GIT_CONFIG_VALUE_0=vim GIT_CONFIG_COUNT=1 git commit -m m` and `git var
+  GIT_AUTHOR_IDENT`, exit 0 each, no output. With `tool_name` `Edit` on a
+  file named `.gitconfig`, exit 0, no output; with `CLAUDE_PROJECT_DIR` on a
+  directory that does not exist, exit 0, no output. The same cases against
+  the working tree before `1d57f2a` answered line for line the same, the
+  three block lines of the loop having gained their comments in between.
+
+  **Measured after the build, the program for itself.** On 9 October 2026 at
+  19:33:10 and 19:33:11 UTC at `1d57f2a`, `bin/devloop-auto-mode-rule` with
+  `HOME` on a throwaway directory per case and `CLAUDE_CONFIG_DIR` unset,
+  `read`, then `write`, then `read` again, every output on stdout; `<HOME>`
+  stands for that directory. No file: `read` exit 1, "the rule does not
+  stand in <HOME>/.claude/settings.json: the file does not exist"; `write`
+  exit 0, "the rule is entered in <HOME>/.claude/settings.json: the list
+  autoMode.allow created, with "$defaults" before the rule", the directory
+  `.claude` created with it; `read` exit 0, "the rule stands in
+  <HOME>/.claude/settings.json"; the file holds `autoMode` with `allow`,
+  `"$defaults"` and the rule, and nothing else. A file with other keys and
+  no `autoMode`, `theme`, `permissions` and `env`: `read` exit 1, "the file
+  holds no autoMode"; `write` exit 0, the list created; the three keys stand
+  as they stood, in their order, `autoMode` after them. `autoMode` with
+  `classifyAllShell` and no `allow`, between `theme` and `z`: `read` exit
+  1, "autoMode holds no allow list"; `write` exit 0, the list created;
+  `theme`, `autoMode`, `z` in that order and `classifyAllShell` before
+  `allow`. `autoMode` a string: `read` exit 2, "the settings file cannot be
+  read for the rule: autoMode in <HOME>/.claude/settings.json is not an
+  object"; `write` exit 2, "not written: autoMode in … is not an object";
+  the file as it was. A list with `"$defaults"` and another rule: `read`
+  exit 1, "the list autoMode.allow does not carry it"; `write` exit 0,
+  "appended to the list autoMode.allow"; the list holds the two entries and
+  the rule third, `model` after it as before. A list carrying the rule,
+  compact: `read` exit 0; `write` exit 0, "the rule stands in … already;
+  nothing changed"; the file byte for byte as it was. Not valid JSON: `read`
+  and `write` exit 2, "… is not valid JSON: Expecting value: line 1 column
+  25 (char 24)", the file as it was. `allow` a string: exit 2, "autoMode.allow
+  in … is not a list". A key twice in one object: exit 2, "… is not valid
+  JSON: the key 'theme' stands twice in one object". The directory not
+  writable: `write` exit 2, "not written: the write was refused: [Errno 13]
+  Permission denied: …", the file as it was. `CLAUDE_CONFIG_DIR` on
+  `<HOME>/cfg` with no `.claude` under `<HOME>`: `write` exit 0 into
+  `<HOME>/cfg/settings.json`, nothing under `<HOME>/.claude`. No argument
+  and a wrong one: "devloop-auto-mode-rule: expected one argument, read or
+  write" on stderr, exit 2. The checksum of this machine's own
+  `~/.claude/settings.json` before and after every measurement of this
+  order, `cksum`, is the same, `1386259301`. The same cases ran against the
+  working tree before `1d57f2a`, the program unchanged since, with the same
+  answers.
+
+  **Measured after the build, end to end.** On 9 October 2026 from 19:33:11
+  to 19:33:25 UTC at `1d57f2a`, session `70a42d0f-ad99-48aa-a8db-a36580c7da0f`,
+  and before it at 19:28 UTC against the working tree, session
+  `3540f865-b749-48d4-870f-4a2b21206528`, with the same results: `claude -p
+  --permission-mode auto --output-format stream-json --verbose` of 2.1.295,
+  started with `CLAUDECODE` unset and `GIT_CONFIG_GLOBAL` on a throwaway
+  file giving `user.name` Probe and `user.email` probe@example.invalid, in a
+  throwaway project in this session's scratch directory with git, one commit
+  under that identity, the branch `work` checked out, `docs/agents/`, and a
+  `.claude/settings.json` naming the branch's identity guard on `Bash` by
+  its absolute path with a logging hook beside it; the installed plugin
+  devloop 0.133.0 ran its hooks in the same session. The task, on the
+  command line: "Run exactly this one command once with the Bash tool, and
+  then write back what came back from it, word for word: git -c
+  user.email=other@example.invalid commit --allow-empty -m probe". The
+  `init` message carries `permissionMode` `auto` and no `AskUserQuestion`
+  among its tools. The model called the Bash tool once with that command;
+  the logging hook saw `PreToolUse` with `permission_mode` `auto`; the
+  `tool_result`, with `is_error` true, reads "PreToolUse:Bash hook error:
+  [<the hook's absolute path>]: Blocked by devloop: this command sets the
+  identity of a commit itself — -c user.email — instead of using the one git
+  config gives. …", text 7 whole. What the model did then: it wrote back, in
+  German, that the command was not run, that a hook had blocked it, the
+  message word for word in a code block, that there is no commit and no git
+  output, and that a commit would go only without the override, with the
+  identity from the git configuration; it tried nothing else, and the result
+  came in two turns. `git log --format='%ae'` in the project shows the one
+  commit of the setup under probe@example.invalid and no commit under
+  other@example.invalid. `git config --global user.email` on this machine
+  gave the same value before and after the run. The session's log under
+  `~/.claude/projects/`, read by `session_id`, holds the prompt as its first
+  user message and the hook's message in the `tool_result`, which is where
+  the paragraph in the conventions on `claude -p` comes from.
+
+  **The reading of decision 8, read only, at the two probe repositories.**
+  On 9 October 2026 at 19:15 UTC with gh 2.96.0: `gh api
+  repos/jayjay-create/devloop-probe-protection/rules/branches/main` answers
+  `[]`, exit 0; `gh api repos/jay-hey/devloop-probe-protection/rules/branches/main`
+  answers `{"message":"Upgrade to GitHub Pro or make this repository public
+  to enable this feature.","documentation_url":"https://docs.github.com/rest/repos/rules#get-rules-for-a-branch","status":"403"}`
+  and `gh: Upgrade to GitHub Pro or make this repository public to enable
+  this feature. (HTTP 403)`, exit 1; `gh api repos/<each> -q .owner.type`
+  answers `User` and `Organization`, exit 0. Step 8 itself runs first in the
+  two runs that close milestone 3.
+
+  **In the table.** The three findings on `setup-checks` step 8 left the
+  table and stand as defects of this entry, their sites on the status lines
+  above and their evidence on the lines of the skill that answer them. The
+  records on the lines of step 8 that this order replaced are re-anchored
+  where the thing still stands — the no, `caffeinate` on `Darwin`, the two
+  cases under `--auto`, the yes before the two permissions, the gate order's
+  point 3 — or taken out where the line and its branch went, the six bullets
+  and the sentence against a first project among them; the branch "another
+  system whose own documentation backs a command, that command named" is
+  gone with lines 810 to 814, and the thing for another system is the one
+  that names no command, renamed after what it says. New things stand for
+  the reading before the question and its three answers, the plan off the
+  owner type, the question's yes with its first sentence gone, the five
+  parts as part of the straight path, the rule question with its four
+  outcomes, auto-merge read back in the gate order and where the gate stood,
+  the thirteen outcomes of the identity guard, the eight outcomes of
+  `bin/devloop-auto-mode-rule`, and the defects above; the registration in
+  `hooks/hooks.json` is re-anchored on the new description and renamed. The
+  runs above are recorded on the hook's outcomes and on the program's
+  outcomes, at the branch's final state alone, the head of the tool. In the
+  commit that carries this entry the header line of the rule question in
+  step 8 is rewrapped, two lines, so that it and the header line of the
+  question above it, which read the same, can each carry an anchor; nothing
+  of what it says changed.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

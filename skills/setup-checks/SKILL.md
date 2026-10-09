@@ -877,8 +877,8 @@ decision 1 of the roadmap entry of 9 October 2026, an entry of the list
 to its own rules. In the same form as the question above, alone in its
 call:
 
-- **In the header: a word for the subject**, of twelve characters at most —
-  the rule.
+- **In the header: a word for the subject** of twelve characters at most, the
+  rule.
 - **In the question line**: whether devloop may enter a rule into their file
   `~/.claude/settings.json`, so that auto mode does not block installations
   in devloop projects by itself.
