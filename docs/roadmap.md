@@ -15838,6 +15838,73 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   question above it, which read the same, can each carry an anchor; nothing
   of what it says changed.
 
+  **Addendum of the same day: the tool, its self-test and the nineteen checks
+  under 0.134.0 at `bd0419c`.** Run in this tree after the two commits that
+  carry the build, `1d57f2a`, and this entry with the table, `bd0419c`, with
+  the tree clean, on 9 October 2026 from 19:46:39 to 19:47:33 UTC. The tool
+  at 0.134.0 and `bd0419c` answered `BROKEN RECORDS: 0`, `FINDINGS: 23`,
+  `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0
+  of 2579`, exit 0, written down on its exit 0 outcome; the twenty-three
+  findings are the twenty-six that stood at `c819499` less the three on
+  `setup-checks` step 8, which became defects of this entry; the search set
+  grew from 2497 to 2579 by the lines this branch adds to it, in the hook,
+  the program, the three skills, the conventions and this entry, whose head
+  and nine status lines it takes in. The counts per state and kind, at
+  `c819499` and at `bd0419c`: undetermined 28 and 28; recorded and not built
+  193 and 196, the defects 182 and 185; built and never walked 1156 and 1171,
+  the skill branches 751 and 762, the shared texts 149 and 149, the hook
+  outcomes 32 and 32, the hook registration 1 and 1, the program outcomes 31
+  and 31, the check commands 20 and 21, the defects 172 and 175; walked 243
+  and 263, the skill branches 28 and 28, the shared texts 4 and 4, the hook
+  outcomes 64 and 77, the program outcomes 117 and 125, the check commands 20
+  and 19, the defects 10 and 10. The thirteen hook outcomes and the eight
+  program outcomes of this entry read as walked on the runs above; the three
+  defects the findings became read as built and never walked, their evidence
+  on the lines of `setup-checks` that answer them; the three defects recorded
+  and not built read so; the one check command that reads as built and never
+  walked now and as walked at `c819499` is the check on the unattended
+  finish, whose command block this order changed. Under `RUNS THAT DO NOT
+  COUNT` stand the eighty-seven runs of `c819499`, the same runs, those on
+  the units of `build-work` under "Unattended mode" and `plan-work` Stage 1
+  and on the no of step 8 with reasons naming `1d57f2a` now, since this order
+  changed lines there; and ten runs more, every run the table held on the
+  check on the unattended finish, from 14 September to 9 October 2026, each
+  with the reason that its version predates the last change to the check's
+  line at `1d57f2a`; ninety-seven in all. The lines of the search set that
+  can carry no unique anchor went from 89 to 97, the eight new ones named by
+  the tool: `nothing else.` in step 8, a line repeated in the skill; `case
+  "$TOK" in` twice in the identity guard; and `raise`, `if argv[1] ==
+  "read":` twice and `if state == "standing":` twice in
+  `bin/devloop-auto-mode-rule`, each repeated in its file; every one of them
+  is part of an outcome anchored on another line. The self-test at 0.134.0
+  and `bd0419c` answered `SELF-TEST PASSED: 88 cases; of the 74 messages this
+  tool rejects, refuses or answers with, read off its own source, 74 are
+  asserted by a case and 0 by none; the lines of the report are not in that
+  count`, exit 0, the source of the tool changed in its head alone. The
+  nineteen checks under "Before a handover, run these" at 0.134.0 and
+  `bd0419c` printed what their sections call green, one run written down on
+  each of the nineteen: the two empty lists of the registration, the twelve
+  counts of the invocability, the one locked skill, `start-work` named in
+  `build-work` in prose and not as a call, the twelve lines of the language
+  block, the checksum line `1375902553 587` and the count of twelve for the
+  notice, 2, 2 and 1 for the two arming commands and the default branch, 1
+  twice for the status forms, the check on offers seventeen lines, the lines
+  of `setup-checks` at 1059 and 1075 now where they stood at 1025 and 1041,
+  the check on handovers nine lines over eight sites, the lines of
+  `setup-checks` at 437, 701 and 702 unchanged, the check on the unattended
+  finish silent over `build-work` alone, the check on the second statement
+  its one line, `build-work` 1381, and the rest silent or the answer their
+  section names; the check on executables, which had named `bin/` as holding
+  a file git does not track before `1d57f2a` committed the program, silent.
+  Two things of the nineteen keep names that no longer say what the check
+  prints — "unattended finish: silence, both places name the loose issues"
+  and "second statement: two lines, both sound" — since runs hang on both,
+  the rule in section C of the tool; their notes say what holds since this
+  day. The tool at the commit that carries this addendum answers as at
+  `bd0419c`: nothing broken, twenty-three findings, no unit without a
+  straight path, none of its lines uncovered, and ninety-seven runs that do
+  not count.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
