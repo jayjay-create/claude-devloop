@@ -92,7 +92,9 @@ build**, the subagent raises the issue and records it as the blocker, as
 text 5 tells it, stops with the task, and names the issue and the refusal in
 its report; the main run raises no second issue and takes the next task in
 step 2. The subagent reads this rule in what step 3 hands it, since it reads
-this file nowhere.
+this file nowhere. Since the addendum of 9 October 2026 a check chain that
+does not finish inside its call in the subagent goes the same way, step 3
+point 6 says how.
 
 **Where no task is in hand there is nothing to put down**: in step 1, after a
 merge is proven in step 6, at the queries of step 2 and step 7, and at the
@@ -155,10 +157,17 @@ one rule and not as seven:
   issue, the task put down, the next taken, as "A guard's block is not a
   decline" in that skill says; the class stays as it stands. Until that day
   the run ended and deleted the mark.
-- **A check chain that does not finish inside its call** — step 1 and step 3
-  point 6. A stop with the reason named and the mark deleted, as "When a
-  command does not answer" says: a chain moved to the background would run
-  on beside the chain of the next task in the same directory.
+- **A check chain that does not finish inside its call** — step 1, step 3
+  point 6, and every run of a target in `setup-checks` step 4 and 5. Since
+  the addendum of 9 October 2026 the task ends and not the run where a task
+  is in hand: an issue carrying the command, the message, the path of the
+  output file where one is named, and that the call did not finish inside
+  its ten minutes, labelled `raised-here` and `needs-human`, recorded as a
+  blocker; the task put down; step 2 takes the next; nothing closed from it,
+  no second start; met by the build subagent, the subagent raises it, as at
+  a refusal. In step 1 no task is in hand, and the run stops with the reason
+  named and deletes the mark: without the answer the state of `main` is not
+  known, and no task begins on an unknown base.
 
 **A question about the work itself that comes up inside a task and passes the
 test** — a choice the task rests on that the spec did not make — is the seventh
@@ -249,8 +258,9 @@ milliseconds, the most a foreground call may have, as "When a command does
 not answer" says; a suite that does not finish inside it is not answered,
 and with nobody there the run stops here with the reason named — the
 command, the message, the path of the output file where one is named — and
-deletes the mark, since a suite moved to the background would run on beside
-the next one in this directory.
+deletes the mark: without the answer the state of the base is not known,
+and no task begins on a base that could not be read, which is what this
+step is for.
 
 **If the base is already red, do not start a task on it.** The cause is not in
 work you have not done yet, so do not read your own plan for it. Say which
@@ -375,7 +385,9 @@ nowhere: what a refusal is and what follows one with nobody there, under "A
 guard's block, with nobody there" above, the issue raised by the subagent
 itself; and what a command that does not finish inside its call is, under
 "When a command does not answer" above, with the ten minutes every install
-and every run of the check chain is called with.
+and every run of the check chain is called with, and, since the addendum of
+that day, that a chain which does not finish ends the task as a refusal
+does, the issue raised by the subagent as well.
 
 The subagent:
 
@@ -402,10 +414,13 @@ The subagent:
    says. A report a later gate rejects is not a report. A chain that does
    not finish inside its call is not answered: the subagent reports the
    command, the message and the path of the output file where one is named,
-   closes nothing from it and starts it no second time; with nobody there
-   the run stops on that report with the reason named and deletes the mark,
-   since a chain moved to the background would run on beside the chain of
-   the next task in this directory.
+   closes nothing from it and starts it no second time; with nobody there,
+   since the addendum of 9 October 2026, it ends the task as at a refusal,
+   the paragraph on the build subagent under "A guard's block, with nobody
+   there" above: an issue carrying those three and that the call did not
+   finish inside its ten minutes, labelled `raised-here` and `needs-human`,
+   recorded as a blocker of the task; the task put down; the main run takes
+   the next in step 2.
 7. Installs a tool that lands outside the repository — a linter, a scanner, a
    generator, a migration command, anything that runs and ends — or, since 8
    October 2026, a browser for tests that Playwright, Cypress or Puppeteer
@@ -1313,8 +1328,9 @@ after three rounds in step 6, and at a refused arming there that ends the run;
 at a refusal above, where the run came through planning and wrote a mark that a
 refusal here ends; at a stop on a refusal with no task in hand, under "A
 guard's block, with nobody there"; at a stop on a check chain that did not
-finish inside its call, in step 1 or in step 3; on the user's word to stop;
-and at the halt before the first
+finish inside its call in step 1, where no task is in hand — in step 3 the
+task ends instead, since the addendum of 9 October 2026; on the user's word
+to stop; and at the halt before the first
 build, which the cut does before this section is ever reached. Not at a halt
 of `setup-checks` called with nobody there on the branch of a task: since 9
 October 2026 the task ends there and the run goes on. Each of those

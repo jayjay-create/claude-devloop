@@ -7,15 +7,20 @@ INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' 
 # which only a hook's input carries, in the field permission_mode (hooks
 # reference, "Common input fields"): no file and no environment variable
 # carries it. Beside a call of bin/devloop-permission-mode the hook states the
-# mode as additionalContext (hooks reference, "Add context for Claude") and
-# decides nothing over the call; that is how a skill reads start condition 4
-# of the mode with nobody there. And it blocks every command and every write
-# of the editing tool that writes the mark of a run with nobody there,
-# .claude/unattended.local, in any mode but auto, since such a run begins only
-# where the classifier of auto mode answers the prompts nobody is there to
-# answer. A command that deletes or reads the mark passes, and every other
-# command passes without a word. The texts are the ones approved on 9 October
-# 2026, in docs/roadmap.md under the entry of that day.
+# mode as additionalContext (hooks reference, "Add context for Claude") where
+# the command goes through; that is how a skill reads start condition 4 of
+# the mode with nobody there, and the first duty holds in every directory,
+# since the reader may be called anywhere. And in a project set up with
+# devloop it blocks every command and every write of the editing tool that
+# writes the mark of a run with nobody there, .claude/unattended.local, in any
+# mode but auto, since such a run begins only where the classifier of auto
+# mode answers the prompts nobody is there to answer. A command that calls the
+# reader and writes the mark is read like every other, since the addendum of
+# 9 October 2026: blocked outside auto, with no statement beside the block,
+# and through in auto with the statement. A command that deletes or reads the
+# mark passes, and every other command passes without a word. The texts are
+# the ones approved on 9 October 2026, in docs/roadmap.md under the entry of
+# that day.
 
 MODE=$(echo "$INPUT" | sed -n 's/.*"permission_mode"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
 # The label the status bar shows for each value: the page "Choose a permission
@@ -34,24 +39,34 @@ esac
 
 TOOL=$(echo "$INPUT" | sed -n 's/.*"tool_name"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
 CMD=""
+TEXT=""
 if [ "$TOOL" = "Bash" ]; then
   CMD=$(echo "$INPUT" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
-  # The first duty, in every directory: the reader may be called anywhere.
+  # The first duty, in every directory: the reader may be called anywhere. The
+  # statement is kept for the pass at the end, so that it stands beside the
+  # result of a command that went through and beside no block.
   if echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])devloop-permission-mode([[:space:]]|$)'; then
     if [ -n "$MODE" ]; then
       TEXT="devloop: the permission mode of this session is $MODE, shown in the status bar as $LABEL."
     else
       TEXT="devloop: the permission mode of this session could not be read: the hook input carried no permission_mode."
     fi
-    printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","additionalContext":"%s"}}\n' "$TEXT"
-    exit 0
   fi
 fi
 
+# Every pass leaves through here, with 0: the statement where the command
+# called the reader, nothing otherwise.
+pass() {
+  if [ -n "$TEXT" ]; then
+    printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","additionalContext":"%s"}}\n' "$TEXT"
+  fi
+  exit 0
+}
+
 # The second duty, in a project set up with devloop, as the other guards.
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
-cd "$PROJECT_DIR" 2>/dev/null || exit 0
-[ -d "docs/agents" ] || exit 0
+cd "$PROJECT_DIR" 2>/dev/null || pass
+[ -d "docs/agents" ] || pass
 
 WRITES=no
 case "$TOOL" in
@@ -103,8 +118,8 @@ case "$TOOL" in
     ;;
   *) exit 0 ;;
 esac
-[ "$WRITES" = yes ] || exit 0
-[ "$MODE" = auto ] && exit 0
+[ "$WRITES" = yes ] || pass
+[ "$MODE" = auto ] && pass
 
 if [ -n "$MODE" ]; then
   echo "Blocked by devloop: the mark for a run with nobody there is written only in auto mode, and this session is in $MODE, shown in the status bar as $LABEL. Do not write the mark another way. The run with nobody there does not start: tell the user so with the sentence the skill gives for start condition 4, and carry on with them." >&2

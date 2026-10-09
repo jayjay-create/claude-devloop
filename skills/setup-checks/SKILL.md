@@ -517,8 +517,13 @@ findings at once, and fixing them in one commit makes the change unreviewable.
 
 For each class, every run of a target here and in step 5 with ten minutes on
 the call, 600000 milliseconds, as "When a command does not answer" says — a
-run that does not finish inside it is not answered, and with nobody there
-the caller stops as that block says:
+run that does not finish inside it is not answered, and with nobody there,
+since the addendum of 9 October 2026, the task ends and not the run: an
+issue carrying the command, the message, the path of the output file where
+the message names one, and that the call did not finish inside its ten
+minutes, labelled `raised-here` and `needs-human`, recorded as a blocker of
+the task whose branch this is; the task put down, the caller takes the next;
+nothing closed from it, no second start; the class as it stands:
 
 1. Turn it on and see how many findings there are.
 2. Fix what the tool can fix by itself, as its own commit.

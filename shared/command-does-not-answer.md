@@ -28,22 +28,31 @@ run.
 **A command that does not finish inside its call is not answered, and is not
 started a second time.** Since 9 October 2026 every install and every run of
 the check chain is called with ten minutes, 600000 milliseconds, the most
-Claude Code gives one foreground call. What reaches that limit is ended —
-measured on 9 October 2026 under Claude Code 2.1.295 with a limit given on
-the call: exit code 143, the message `Command timed out after 5s` in the
-result, nothing of it running on and no output file named — or, as the
-vendor's changelog says of other sessions, moved to the background, where it
-runs on. Either way it did not finish: it is neither waited for nor started
-again, and it is reported with the command as it ran, the message that came
-back, and the path of its output file where the message names one. An
-install that did not finish did not go through, and goes as the four ways
-in `build-work` step 3 and `setup-checks` step 4 say. A check chain that
-did not finish is not answered: nothing is closed from it, and with nobody
-there the run stops as the block below says and deletes the mark, since a
-chain moved to the background runs on, in a session in the terminal without
-a limit, beside the chain of the next task in the same directory. The
-second attempt of the first block is not for this case: it would start a
-second run beside the first.
+Claude Code gives one foreground call. A call with a limit of its own that
+reaches it is ended — measured on 9 October 2026 under Claude Code 2.1.295:
+exit code 143, the message `Command timed out after 5s` in the result,
+nothing of it running on and no output file named. A call without a limit of
+its own the vendor's changelog says is moved to the background, where it runs
+on; that is not measured, and since that day no install and no run of the
+chain is called without one. Either way it did not finish: it is neither
+waited for nor started again, and it is reported with the command as it ran,
+the message that came back, and the path of its output file where the
+message names one. An install that did not finish did not go through, and
+goes as the four ways in `build-work` step 3 and `setup-checks` step 4 say. A
+check chain that did not finish is not answered: nothing is closed from it,
+and with nobody there, since the addendum of 9 October 2026, the task ends
+and not the run where a task is in hand — in `build-work` step 3 and at
+every run of a target in `setup-checks` — an issue carrying the command, the
+message, the path of the output file where the message names one, and that
+the call did not finish inside its ten minutes, labelled `raised-here` and
+`needs-human`, recorded as a blocker of the task; the task put down; step 2
+of `build-work` takes the next; a check class stays as it stands. In
+`build-work` step 1 no task is in hand, and the run stops there with the
+reason named and deletes the mark: without the answer the state of the main
+branch is not known, and no task begins on a base that could not be read.
+The second attempt of the first block is not for this case, decision 2 of
+the roadmap entry of 9 October 2026: a call that did not finish is started
+no second time.
 
 **An empty answer is not silence.** A command that ran and returned nothing has
 answered — no match, no open issue, an empty list, a clean working tree — and
@@ -77,16 +86,18 @@ which is the whole reason this is written down.
 
 **With nobody there to tell, the report is still written.** An unattended run
 has no one to explain a refusal or a silence to, so the command and the
-message go into its own report. Since 9 October 2026 three cases part there.
+message go into its own report. Since 9 October 2026 four cases part there.
 A refusal — a guard's block, the no of the classifier of auto mode, the no of
 the hook on permission prompts, which answers every prompt while the mark
 stands — goes as the skill's own section for the case with nobody there
 says: in a build with a task in hand, an issue and the next task; before the
 build, through the planning stage's order for a question nobody is there to
 answer. An install that does not go through goes as the four ways in
-`build-work` step 3 and `setup-checks` step 4 say. Every other command that
-does not answer stops the run there, rather than carrying on past a step
-that did not run.
+`build-work` step 3 and `setup-checks` step 4 say. A check chain or a check
+target that does not finish inside its call goes as the block above says:
+the task's end where a task is in hand, the run's stop in `build-work`
+step 1. Every other command that does not answer stops the run there, rather
+than carrying on past a step that did not run.
 
 **The same holds for every tool call, every skill this run calls and every
 background agent.** A tool that failed, a skill that is not installed, an agent
