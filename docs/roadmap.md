@@ -15318,6 +15318,53 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   its own, as the refusal and the install are. Records on changed lines are
   re-anchored, and the notes of the things this addendum changes say so.
 
+  **The tool, its self-test and the nineteen checks under 0.133.0 at `f5e621a`,
+  for the second addendum.** Run in this tree after the two commits of the
+  addendum, `94c7b64` the build and `f5e621a` the record, with the tree clean,
+  on 9 October 2026 from 14:25:23 to 14:26:16 UTC. The tool answered `BROKEN
+  RECORDS: 0`, `FINDINGS: 26`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED
+  LINES OF THE SEARCH SET: 0 of 2497`, exit 0; the search set went from 2493 to
+  2497 by the lines this addendum adds and takes away in the hook, the two
+  shared files and the two skills. The counts per state and kind, at `6851919`
+  and at `f5e621a`: undetermined 28 and 28; recorded and not built 193 and 193;
+  built and never walked 1156 and 1160, the shared texts 148 and 149, the hook
+  outcomes 33 and 36, the rest unchanged; walked 242 and 239, the hook outcomes
+  63 and 60, the rest unchanged. The three hook outcomes that read as walked at
+  `6851919` and as built and never walked now are the statement beside the
+  reader, the pass under auto and the pass where nothing writes the mark, whose
+  lines this addendum changed, so that their runs count only after the squash
+  merge; the one shared text is the fourth case of the block on nobody there to
+  tell. Under `RUNS THAT DO NOT COUNT` stand the eighty-seven runs of
+  `6851919`, the same runs, four of them with reasons that name `94c7b64` now
+  where they named `ddee4e1`, since this addendum changed lines of `build-work`
+  step 1 and of its section on the unattended mode once more; and eleven runs
+  of this addendum on the mark guard, each with the reason that version
+  0.133.0, introduced at `ddee4e1`, predates the last change to its line at
+  `94c7b64`: five on the statement beside the reader, R1, R7, R8, E1 and E2,
+  the line `if [ -n "$TEXT" ]` being part of it; three on the pass under auto,
+  R2, R5 and R7; two on the pass where nothing writes the mark, R3 and R4; one
+  on the pass where the project is not set up, R8. They count on `main` after
+  the squash merge, the header of the tool, lines 248 to 251; the fourteen
+  other runs of the addendum count now, their lines unchanged since `ddee4e1`.
+  The self-test, exit 0, answered `SELF-TEST PASSED: 88 cases; of the 74
+  messages this tool rejects, refuses or answers with, read off its own source,
+  74 are asserted by a case and 0 by none; the lines of the report are not in
+  that count`, the source of the tool untouched. The nineteen checks under
+  "Before a handover, run these" printed what their sections call green, one
+  run written down on each of the nineteen for this addendum: every line the
+  checks on offers, handovers and the second statement print is the line they
+  printed at `6851919`, the numbers moved by what this addendum inserted —
+  offers, `build-work` 860 to 875 and 1267 to 1282, `setup-checks` 1012 to 1017
+  and 1028 to 1033; handovers, `build-work` 236 to 245, 450 to 465 and 962 to
+  977, `setup-checks` 696 to 701 and 697 to 702; the second statement,
+  `build-work` 1364 to 1380 and `setup-checks` 854 to 859 — and the sixteen
+  others printed what they printed there, the two empty lists of the
+  registration, the twelve counts of the invocability, the one locked skill,
+  the twelve lines of the language block, the checksum line and the count of
+  twelve for the notice, 2, 2 and 1 for the arming and the default branch, 1
+  twice for the status forms, the rest silent. The hook harness ran once more
+  at `f5e621a`, 14:25 UTC, with the results of 14:20 UTC line for line.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
