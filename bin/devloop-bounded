@@ -1,8 +1,9 @@
 #!/bin/bash
 # Runs a command and ends it after a fixed number of seconds, so that no
 # command a skill bounds runs over the time limit of a Claude Code Bash call:
-# a command that reaches that limit is moved to the background and goes on
-# running there, not ended, and a skill that repeats it would start a second
+# the changelog of Claude Code says a command that reaches that limit is
+# moved to the background and goes on running there, not ended, and nothing
+# here has measured that; a skill that repeats it would then start a second
 # one beside the first. GNU timeout does this and is not on a stock macOS.
 # bin/devloop-setup-state bounds its own fetch the same way; this is that
 # bounding as a program every call can use. See docs/skill-conventions.md,

@@ -1031,9 +1031,10 @@ and `timeout` is not on a stock macOS — `command -v timeout` came back empty o
 this machine the same day, the same trap as `head -n -1` being a GNU extension.
 That is what `bin/devloop-bounded` is for, since 7 October 2026: the call above
 runs under it with 100 seconds, under the 120 seconds Claude Code gives one Bash
-call where nothing sets it, because a call that reaches that limit is not ended
-but moved to the background, where it runs on, and a repeat would start a second
-one beside it — "Environment constraints, measured" in
+call where nothing sets it, because the changelog of Claude Code says that a
+call reaching that limit is not ended but moved to the background and runs on,
+which nothing here has measured, and a repeat would then start a second one
+beside it — "Environment constraints, measured" in
 `docs/skill-conventions.md`. A call that ends with exit 124 and the program's
 line, `no answer within 100 seconds:` and the command, means the checks are still
 running: repeat it while time is left on the bound, and keep the count of time

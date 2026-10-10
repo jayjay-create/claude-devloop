@@ -281,13 +281,32 @@ there, before the run goes alone. Until 6 October 2026 this read "Ends with
 two runs on one bench: the record saying yes, a build installing a tool
 unattended, the guard passing, the tool standing at the path; the record
 saying no, the guard blocking, the decline path as today."
+Decided on 10 October 2026, the roadmap entry of that day on the arrangement
+of the closing runs: the fresh project is a TypeScript project, a function
+and a test committed and pushed before the setup, not the Go program that
+decision 12 of the roadmap entry of 9 October 2026 named, since Go had been
+the usual choice for the test projects and is likely not the common language
+in practice — the Stack Overflow Developer Survey 2026 lists ten languages
+under "Most popular technologies" and Go is not among them, and GitHub's
+Octoverse 2025 has TypeScript as the most used language on GitHub since
+August 2025; the first run's tool is `dasel`, the second run's `re2c` with
+its program `re2js`, and `htmlq` stands in where one of the two falls out,
+none of the three on npm as a package whose command runs, each coming through
+Homebrew; and each task calls for its tool expressly, as an npm script that
+runs `dasel` and as a generation with `re2js`, since otherwise the build
+takes an npm package and the guard on installs is never met. Where doubts
+remain after the two runs, a run with Go follows, as decision 12 first had
+it.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, the guard blocks the download, and the
 command is handed over. Under the yes, the run with nobody there downloads a
 browser itself, and it stands at the vendor's place — a browser the first run
 did not install, for the reason the paragraph gives for the tools: a command
 handed over in the first run and run by the person has installed its browser
-already.
+already. Since 10 October 2026 that task takes Playwright, Chromium in the
+first run and Firefox in the second, so that the second run needs a browser
+the first did not install; decision 12 had proposed Playwright and left it
+open.
 
 Three things stood before that run, each recorded on 5 or 6 October 2026,
 and all three are built. Two on 9 October 2026, version 0.134.0, decisions 8
