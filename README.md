@@ -31,10 +31,16 @@ Three properties hold everywhere:
     /plugin marketplace add jayjay-create/claude-devloop
     /plugin install devloop@jayjay-create
 
-You need git, a GitHub account, and `gh` signed in. The workflow keeps its state
-in issues and their blocking relationships, so a tracker is not optional — the
-setup stops without one and says so. A repository is not needed up front; it
-offers to create one.
+You need git with your name and email address set, a GitHub account, and `gh`
+signed in. Every commit devloop makes carries that name and address, and the
+push puts them on GitHub, where they stay. Where none is set, git takes them
+from your machine — on a Mac your user name and the computer's name — or refuses
+to commit. To keep your address private, use the `noreply` address GitHub offers
+in your email settings. Set both with `git config --global user.name` and
+`git config --global user.email`. The workflow keeps its state in issues and
+their blocking relationships, so a tracker is not optional — the setup stops
+without one and says so. A repository is not needed up front; it offers to
+create one.
 
 ## What you type
 
@@ -217,7 +223,16 @@ go alone; and a hook that answers no to every permission prompt while that
 mark stands and names the session that wrote it, so that a run with nobody
 there never waits at a prompt and a mark left behind touches no later
 session of yours. The session-start hook sets the session's identifier for
-the mark. The turn-end hook
+the mark. And since the same day a guard that blocks a command setting the
+identity of a commit itself — `git -c` or `--config-env` on `user.name`,
+`user.email` and the `author` and `committer` keys, `--author` on `git
+commit`, the variables `GIT_AUTHOR_…` and `GIT_COMMITTER_…`, `EMAIL` beside
+a git call, `GIT_CONFIG_KEY_…`, and `git config` writing or removing one of
+those keys — so that every commit carries the identity your git
+configuration gives and no address taken from a session's context, which
+the push would make public; a configuration file written another way, an
+include, a variable that points git at another file and an alias are not
+read. The turn-end hook
 gives up after three attempts at the same failure and hands it to you, rather
 than looping. What it hands you is meant to be actionable in one step: a command
 to paste, a script that gathers the environment, a smaller case that reproduces
@@ -232,8 +247,12 @@ project, its coding rules, how to run it locally, and where its glossary and
 decision records are. Plus canonical targets in your task runner, so a skill can
 say "lint" and be right in any project.
 
-It does not touch your global configuration, and it does not decide how you like
-to be spoken to.
+It touches your global configuration in one place, `~/.claude/settings.json`,
+and only after asking you: where you let it work without you, it asks whether
+it may enter one rule under `autoMode.allow`, so that auto mode does not block
+by itself the installs a devloop hook already guards; the rule allows installs
+in projects set up with devloop and nothing else, and without your yes the file
+is not touched. It does not decide how you like to be spoken to.
 
 ## What is missing
 

@@ -335,8 +335,9 @@ October 2026 stands in the roadmap entry of 5 October 2026; this skill says
 what is said, not the words. Where `--auto` was typed this session and the idea
 stands, the run does not stop at that: the person who typed it is here, so
 call `setup-checks` for its step 8 alone, which puts what has to be asked —
-the permissions a second time, where their record does not say yes — and sets
-up what the answers allow. It is not reached while a class in `checks.md` is
+the permissions a second time, where their record does not say yes, and since
+9 October 2026 the question on the rule for the classifier of auto mode, where
+it does not stand in their settings — and sets up what the answers allow. It is not reached while a class in `checks.md` is
 `empty`, and sets no protection while a pull request is open; either is said,
 with what would help, and the run carries on with them. When it returns, the
 tree stands on the main branch as freshly fetched: on a yes the conditions

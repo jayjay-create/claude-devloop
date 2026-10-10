@@ -305,6 +305,13 @@ the note forms below use it as their separator and a "part of:" note names a
 thing up to it. For a named skill the third part is the skill's name, and
 that is what is held against skills/.
 
+A thing whose name no longer says what the thing says is renamed, where no
+run hangs on it; where runs hang on it, it keeps its name, since the name is
+what its runs are keyed by, and the note says what holds now. Two things
+were renamed so on 9 October 2026, the registration in hooks.json and
+start condition 4 of build-work, both with no run; the note of a renamed
+thing names the old name.
+
 A thing's note carries each of these forms exactly, separated from anything
 else in the note by "; ":
 - calls <skill>; with nobody there: reached per <thing name> - only in a
@@ -342,6 +349,16 @@ from anything else in the note by "; ", and the tool rejects any other:
 - quoted - it quotes another file or an earlier wording
 - template - it is part of a template or an example the run writes or shows
 - no defect - an entry head under "Known gaps" whose entry names no defect
+
+A status line of docs/roadmap.md is never recorded as "part of" a thing whose
+runs are to count: every line recorded as part of a thing is a line the thing
+stands on, and a line of the roadmap is changed by every later entry, so that
+the thing's runs stop counting with the next entry. The entry of 9 October
+2026 on the behaviour with nobody there met it, its status line on the hook
+for permission prompts recorded as part of that hook's deny, and moved the
+record onto the registration in hooks.json. A status line is covered by the
+defect whose site it is, or by "part of" a thing whose runs are not kept, a
+defect say.
 
 D. HOW STATES ARE COMPUTED
 

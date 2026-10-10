@@ -918,6 +918,14 @@ it, dated or otherwise. Kept, because obeying it costs nothing: where a file
 does go through the shell, the count at the end of each block is still the
 one thing that reports a truncation.
 
+**No wrapped line begins with a number and a period.** A paragraph wrapped so
+that a line opens with `1.` and a space starts a list in Markdown — CommonMark
+0.31.2, section 5.2: an ordered list may interrupt a paragraph where it starts
+with 1 — and the stock-take tool reads every line opening with a number, a
+period and a space as a numbered item, in a skill, a shared file and this file
+alike, so the line lands in the search set as an item that is none. Rewrap
+such a line so that the number stands behind a word, found on 9 October 2026.
+
 ## A finding that would have passed unsupervised gets written down
 
 Two questions after every one of them: can this happen again, and can it be
@@ -1331,8 +1339,10 @@ machine awake beside it. On macOS that is `caffeinate`, which holds an assertion
 against idle sleep for as long as the process runs (`caffeinate(8)` on this
 machine, read 7 September 2026). **What it does not reach is a closed lid**,
 which is a separate route into sleep, so a hint that stops at the command
-promises more than it can hold. Off macOS, name a command only where that
-machine's own documentation backs it.
+promises more than it can hold. Off macOS no command is named, since 9 October
+2026: the commands for Linux and Windows come with milestone 12 of
+`docs/plan.md`, text 6 of the roadmap entry of 9 October 2026, and until then
+the sentence for every system stands alone there.
 
 **What cannot be waited for is a person, and a state on the platform is not
 one.** A check running on GitHub has a command that blocks on it and needs nobody
@@ -2358,6 +2368,20 @@ call. The vendor names the location, in the Agent SDK documentation under
 format it does not document.
 
 
+**`claude -p` with `--output-format stream-json` writes the task into no
+message of its output, and the session log carries it.** Measured on 9 October
+2026 under Claude Code 2.1.295, in the end-to-end run of the roadmap entry of
+that day on the identity of a commit: the output on stdout holds the system
+messages, the assistant's messages, the tool results and the result, and no
+message carrying the prompt given on the command line; the log of the session
+under `~/.claude/projects/`, read by `session_id`, holds the prompt as its
+first user message. The order of that day had it that the log carried no such
+message either; the log read that day says otherwise, and this paragraph says
+what was read. So an entry that records such a run records the command line it
+was started with, since the output alone, which is what a report quotes, does
+not show the task; a reader who wants it from the log reads the first user
+message there.
+
 ## Who may invoke a skill
 
 Two states, no third.
@@ -2768,12 +2792,18 @@ is whether the act behind it leaves a result anywhere, and if it does, whether
 something reads that result before the run carries on.
 
 The unattended finish is not stated in the readiness query's vocabulary alone.
-Both places that state it name the loose issues too, and the label is what they
-are named by. Silence means both hold; a line means one of them has lost its
+The place that states it names the loose issues too, and the label is what they
+are named by. Silence means it holds; a line means the place has lost its
 loose-issue clause, or the heading it is keyed to has been renamed — either way
-something needs reading:
+something needs reading. Until 9 October 2026, version 0.134.0, the loop ran
+over two places, `setup-checks` step 8 beside `build-work`: step 8 stated the
+finish to the person before its question, and since that day it says there
+only that the run says so once everything is built, text 6 of the roadmap
+entry of 9 October 2026, and states the finish nowhere, so the one place that
+states it is the one read here; a second place that comes to state it goes
+back into the list:
 
-    for spec in "skills/build-work/SKILL.md:^## Unattended mode" "skills/setup-checks/SKILL.md:^## Step 8"; do
+    for spec in "skills/build-work/SKILL.md:^## Unattended mode"; do
       f=${spec%%:*}; h=${spec#*:}
       awk -v h="$h" '$0 ~ h {n=1;next} n&&/^## /{exit} n' "$f" |
         grep -q 'raised-here' || echo "$f: the unattended finish does not mention loose raised-here issues"
@@ -2801,10 +2831,16 @@ decision being made a second time or a place that quotes or qualifies it:
 
     grep -rn 'Several: ask\|None: stop\|One ready task: continue\|nothing in scope is ready any more\|nothing ready is left in scope' skills/*/SKILL.md shared/*.md
 
-It prints two lines today, and both are sound: `build-work` quotes the old finish
-inside the paragraph that replaced it, and `setup-checks` carries the phrase with
-the loose-issue clause appended to it. Both would read as defects on the wording
-alone, which is the reason this check reports rather than judges.
+It prints one line since 9 October 2026, version 0.134.0, and it is sound:
+`build-work` quotes the old finish inside the paragraph that replaced it, which
+would read as a defect on the wording alone, which is the reason this check
+reports rather than judges. Until that day it printed a second, `setup-checks`
+carrying the phrase with the loose-issue clause appended to it, in the
+explanation of the closing sentence that step 8 gave the person before its
+question; that explanation went with text 6 of the roadmap entry of 9 October
+2026, and the line went with it — read as the question this section asks of
+a disappearing line, and answered: the decision is stated once, in
+`build-work`, and step 8 states it no more.
 
 **The check that used to close this section is not here any more.** "The
 installed copy is the copy you changed" now stands under "Before you change

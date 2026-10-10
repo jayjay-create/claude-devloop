@@ -752,123 +752,115 @@ why. A required check that runs nothing green-lights everything, so an unattende
 run behind it would have nothing whatever between a change and the main branch —
 worse than not offering the mode at all.
 
-**What the question has to carry.** What it decides: whether work in this
-project may run alone at all — from the designs to the merge, without stopping
-at every step for approval. It is a permission for this repository; each piece
-of work is asked separately whether to use it, at the end of its sharpening, and
-`--auto` is that answer given up front. What a yes
-costs, said at the moment of asking — a workflow file is added, the main branch
-becomes protected, that protection applies to the user too so they can no longer
-push to it directly either, on a private repository the workflow spends the
-account's Actions minutes, **the run works until the thing is done**, **every
-review runs every angle the change touches** and
-**the mode only works while this window is open and the machine is awake**. Say
-the first of those three in ordinary words as well: it keeps going until nothing
-in scope is left to build **and nothing the run raised against itself along the
-way is still waiting** — its own reviews and checks file issues as they go, those
-carry `raised-here`, and the run takes them up under the ordering in `build-work`
-step 2 rather than leaving them lying. Work that nobody could see at the start
-gets picked up where it serves the same goal, and there is no ceiling on how many
-tasks that turns into. What bounds it is the scope and the tasks in it, not a
-number of rounds. The second in ordinary words: with them there, an angle left
-out comes with a reason they can read and disagree with, and unattended nobody
-reads it, so no reason is taken and the full set runs on every change — which
-costs more than the same review with them there. **How much more is not something
-this project can tell them.** The one measurement available ran five angles over
-one task and three over two others, and that gap is the defect being fixed rather
-than a rate anything can be worked out from. Say that last one in ordinary words and without
-naming a setting: it builds one task after the next for as long as it is
-running, and if the machine goes to sleep — the lid closed, or left alone long
-enough that it drops off by itself — it stops where it is and carries on only
-once the user is back and says so. It is a cost like the others, not a footnote:
-measured on 6 September 2026, a run carried straight on by itself after the
-first merge and stood still the moment the machine went to idle sleep; the two
-tasks after it landed the next morning, nine and a half hours later, after a
-one-word message. What a no means: everything works exactly as it does now,
-every task comes back for approval, and this can be set up later without redoing
-anything.
+**Read, before the question, whether GitHub offers the protection on this
+repository at all, and ask nothing where it does not.** The query is the
+second of the two above, `gh api repos/OWNER/REPO/rules/branches/<main
+branch>`, which needs no special rights; what decides is its answer and not
+its status alone, since a 403 comes from a GitHub CLI locked out of an
+organization too. Three answers. `[]` or a list: the protection is offered,
+and the question below is put. HTTP 403 whose body says "Upgrade to GitHub
+Pro or make this repository public": no question is put. Say instead that
+work without them is not possible in this project, because GitHub offers no
+protection of the main branch for this repository; the two things that
+change it — making the repository public, or keeping it private on the plan
+GitHub names, GitHub Pro where `gh api repos/OWNER/REPO -q .owner.type`
+answers `User` and GitHub Team where it answers `Organization`; and that
+everything goes on with them as before. The wording approved on 8 October
+2026 stands in the roadmap entry of 9 October 2026 as text 3; this skill
+says what is said, not the words. Then step 9, as after a no, except that
+nothing is written: nothing is set up, no branch is cut and no section goes
+into `docs/agents/environment.md`; where `--auto` brought the run here, back
+to the place that called, which goes on with them. Every other answer —
+another status, another body, no answer — is a command that did not answer,
+as "When a command does not answer" says: name the command and the message,
+close nothing, and the question is not put. Measured on 8 and 9 October 2026
+with gh 2.96.0 on the two probe repositories the roadmap entry of 9 October
+2026 names: `[]`, exit 0, on a private repository of a personal account; the
+403 with that body, exit 1, on a private repository of an organization on
+the plan Free, whose auto-merge a PATCH left `false` with exit 0, which is
+why the gate order below reads auto-merge back.
+
+**The question, in the form of the other questions of this skill**: a choice
+through the harness's choice widget, in the user's language, alone in its
+call, every point in a field of its own, and no recommendation, on the
+pattern `shared/install-question.md` sets out. What it decides: whether work
+in this project may run alone at all, from the designs to the merge — a
+permission for this repository, which each piece of work is asked
+separately whether to use, at the end of its sharpening, `--auto` being that
+answer given up front.
+
+- **In the header: a word for the subject**, of twelve characters at most —
+  that it is about work without them.
+- **In the question line: the subject and its scope.** Whether devloop may
+  from now on work in this project without them, from the designs to the
+  merge; that whether an idea is then really built without them is asked at
+  every new idea, once they have sharpened it together; and that the answer
+  holds for every task of that idea.
+- **In the yes, label and line: what a yes means.** That devloop sets a
+  check up on GitHub and protects the main branch, against their own direct
+  pushes too; and that a run then works until everything is built, as long
+  as this window is open and the machine is awake. Where the protection
+  stands already, the first of the two sentences goes.
+- **In the no, label and line: where a no leads.** Everything stays as it is
+  and every task comes to them for approval; `--auto` sets it up later.
+
+The wording approved on 8 October 2026 stands in the roadmap entry of 9
+October 2026 as text 6; this skill says what is said, not the words.
+
+**Before the window, as a short text in the run's own message, only what no
+field can carry**: five parts, in this order, in ordinary words, and
+nothing else.
+
+1. **The course.** Without them devloop takes one planned task after the
+   other: its own branch, the code, the checks, the review, a pull request.
+   GitHub merges it by itself once every check is green, and devloop waits
+   for that before taking the next.
+2. **What can go wrong.** A task that does not go green becomes an issue
+   with the reason, and devloop goes on with the next — the commonest case.
+   A merge that does not go through on GitHub ends the run, since everything
+   after it would be built without that check.
+3. **The end.** Once everything is built, the run says so in its last
+   message; where it stops before that, its last message says why; and it
+   does not start again by itself.
+4. **The costs.** On a private repository the check on GitHub spends minutes
+   from the account's quota. Without them the review leaves no angle out —
+   security, tests or error handling, say — where with them it may leave one
+   out with a reason, so every review costs more without them; no rate is
+   given, since the one measurement at hand, five angles over one task and
+   three over two others, is the defect being fixed and not a rate. And
+   without them they see only at the end whether what was built is what
+   they wanted, with them at every task.
+5. **Keeping the machine awake.** For every system: the machine has to stay
+   awake as long as the run works, and where it sleeps the run stands still
+   until they write something — measured on 6 September 2026, the entry in
+   `docs/skill-conventions.md` under "Environment constraints, measured". On
+   macOS alone, where `uname -s` answers `Darwin`, one command: `caffeinate`,
+   started in a terminal of their own and ended with Ctrl-C when they are
+   back, and in the same breath that it does not keep a closed laptop awake —
+   `caffeinate(8)` on that machine, read on 7 September 2026, holds an
+   assertion against idle sleep for as long as the process runs, and a
+   closed lid is a different route into sleep. On every other system, and
+   where `uname -s` does not answer, the sentence for every system and no
+   command, backed or not: the commands for Linux and Windows come with
+   milestone 12 of `docs/plan.md`. It is said here and not made a second
+   question of: it is something they do outside the run, and a second
+   question beside the real one blurs the real one.
+
+What the paragraphs that stood here until 9 October 2026 said before the
+question and the five parts do not — that the run takes up the issues it
+raised against itself, that there is no ceiling on the number of tasks, that
+the result reads as the diff from the starting commit, how the run ends and
+how a standstill is seen, and a word against a yes on a first project — is
+not said here any more; the behaviour stands where it is decided,
+`build-work` under "Unattended mode" and step 6, and `plan-work` at the end
+of Stage 1, and nothing of it has changed.
 
 **Two things change what is put.** Where the gate is already there and
-binding and the mode is not set up, the question is put all the same,
-without the part on what a yes sets up on the platform — the workflow file,
-the protection, the minutes — since none of that is added. And where `--auto`
-brought the run here: with the gate there and binding, the flag is their yes
-and the question is not put; with no gate yet it is put all the same, since
-it is what says what setting one up costs.
-
-**Say how the machine can be kept from dropping off, and do not make a second
-question out of it.** It is something the user does outside the run, and a second
-question beside the real one blurs the real one. Read what this is running on
-before naming anything — `uname -s` — and name a command only for the system that
-came back. On macOS, which answers `Darwin`, that is `caffeinate`, started by
-them in a terminal of their own and left running until they end it with Ctrl-C:
-`caffeinate(8)` on that machine, read on 7 September 2026, says it creates an
-assertion that prevents idle sleep and holds it for as long as the process runs.
-**Say what it does not cover in the same breath.** That assertion holds off the
-sleep that comes of the machine being left alone. Closing a laptop lid is a
-different route into sleep and does not go through it — a closed lid sleeps
-anyway — so a hint that leaves this out sells a safety it does not have. On any
-other system, name a command only where that machine's own documentation backs
-it, its manual page or the vendor's own words; where nothing does, name none and
-say only that the machine has to stay awake. A `uname -s` that does not answer is
-that same case.
-
-**Say what a yes leads to, before they answer.** Otherwise they are agreeing to a
-mode whose course nobody has described to them. Six things, short and in
-ordinary words:
-
-- **What the run then does, in order.** Where a piece of work is still being
-  planned, first the rest of the planning: the code read, the designs drafted
-  and each checked against the stories and exclusions they settled, the spec
-  written, the tasks cut. Then it takes the ready tasks one after another. Each
-  gets its own branch, then the code, then a deliberate break of
-  every condition the task promises so the check guarding it is seen going red
-  and green again, then the whole check suite, then a review from several angles
-  at once, then the findings fixed, then a pull request handed to the platform,
-  which merges it itself once the required check is green. **It waits for that
-  merge instead of moving on**, since nothing would wake it again afterwards —
-  up to half an hour, or longer where this project's own suite takes longer.
-  Then the next task, until nothing in scope is ready and nothing it raised
-  against itself is still waiting to be taken up.
-- **Where it still stops.** Sharpening the idea — the questions at the start of a
-  piece of work — always runs with them, because it needs what only they know.
-  From the point where the idea stands, everything can run alone: the designs,
-  the design choice checked against the stories they settled, the spec, the cut,
-  the build. Whether it does is asked once per piece of work, at the end of that
-  sharpening, with three answers — everything without them, the plan without
-  them with a look at it before the build, or everything put to them — unless
-  they typed `--auto`, which is the first of those given up front. Beyond that
-  it stops rather than guesses: a precondition missing when it starts, named; a
-  design no draft carries; a merge it cannot get past.
-- **What a task that will not go green does, which is not stop.** Where the same
-  checks fail three turns running, the turn-end hook says so and asks for a
-  person — and with nobody there, waiting on that would leave the run standing
-  in the middle of a task that still looks busy. So it writes the failure up as
-  an issue against that task, puts the task down and takes the next one. Say
-  this: it is the likeliest thing that will actually happen, and it means some
-  tasks come back as issues to read rather than as merged work.
-- **And where it will not go green on the platform, that does end the run.** A
-  check that comes back red after the pull request is armed is fixed, reviewed
-  again and waited on again, as often as the picture keeps changing. Three rounds
-  against the same failing checks is a standstill, and there the run stops and
-  says so, because a reviewed pull request is sitting on a gate that will not
-  open and everything after it would be built without it. Say the difference:
-  a task that will not build becomes an issue and the run goes on, a merge that
-  will not land ends it.
-- **How they see it has finished.** The closing sentence agreed at the start,
-  said only once nothing ready is left in scope and nothing the run raised
-  against itself is still waiting. What was built reads as the diff from the
-  commit noted at the start to the current main branch.
-- **How they see it is standing still.** No closing sentence, and the last
-  message saying what stopped it. Nothing here starts itself again — a word from
-  them does, and until it comes the run is not working on anything. Pull requests
-  merging by themselves are not evidence to the contrary: once armed, the
-  platform merges them whether or not anything on this machine is awake.
-
-**Do not recommend a yes on a first project.** A green check suite says the code
-does what the tests say, not that it is what the user wanted, and the approval at
-each task is where a build heading the wrong way becomes visible. Say that, so
-the recommendation is theirs to weigh rather than a door being held open.
+binding and the mode is not set up, the question is put all the same, with
+the first sentence of its yes gone, since no protection is added. And where
+`--auto` brought the run here: with the gate there and binding, the flag is
+their yes and the question is not put; with no gate yet it is put all the
+same, since it is what says what setting one up costs.
 
 **On a no, nothing is set up**, on the platform or anywhere else, and every
 piece of work runs with them. The record below says so, with the reason.
@@ -876,8 +868,50 @@ Then say the one thing that changes it: typing `--auto` where a piece of
 work starts sets the mode up then — a flag only they can type, so it is
 given as it is typed.
 
-**On a yes, the two permissions come before anything is set up, each put a
-second time where its record does not say yes.** The mode cannot run under a
+**On a yes — their answer, or the flag where the gate stands — one question
+more, directly after it and before the two permissions: whether devloop may
+enter a rule into their `~/.claude/settings.json`**, so that auto mode does
+not block installs in devloop projects by itself. The rule is the one of
+decision 1 of the roadmap entry of 9 October 2026, an entry of the list
+`autoMode.allow`, which the classifier of auto mode reads as an exception
+to its own rules. In the same form as the question above, alone in its
+call:
+
+- **In the header: a word for the subject** of twelve characters at most, the
+  rule.
+- **In the question line**: whether devloop may enter a rule into their file
+  `~/.claude/settings.json`, so that auto mode does not block installations
+  in devloop projects by itself.
+- **In the yes, label and line**: devloop enters the rule, and it allows
+  installations only in projects set up with devloop.
+- **In the no, label and line**: auto mode can then refuse an installation;
+  without them the run then writes an issue with the reason and goes on with
+  the next task.
+
+It is not put where the rule stands in the file already, word for word under
+`autoMode.allow`: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read`
+says so with exit 0 and writes nothing. On the yes,
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write` enters it, and
+nothing else does: the rule word for word as one entry of `autoMode.allow`,
+the list created with `"$defaults"` before the rule where the file or the
+list is missing, the rule appended where a list stands, nothing changed
+where it stands already, every other key and value of the file kept in its
+order, written over a temporary file so that no half file is ever left; the
+file is `settings.json` under `CLAUDE_CONFIG_DIR` where that is set, as the
+settings page of Claude Code says. Where the program writes nothing — the
+file is not valid JSON, a key stands twice, `autoMode` is not an object,
+`autoMode.allow` is not a list, or the write itself is refused — it names
+the reason with exit 2, and the run says that it could not enter the rule,
+with that message; that the run without them goes all the same; and that
+where auto mode refuses an installation, the run writes an issue with the
+reason and goes on with the next task. The wording approved on 8 October
+2026 stands in the roadmap entry of 9 October 2026 as text 4, the rule in
+English among it; this skill says what is said, not the words, and the
+program carries the rule. Without the yes the file is never touched, and a
+no here changes nothing of what follows.
+
+**Then the two permissions, before anything is set up, each put a second
+time where its record does not say yes.** The mode cannot run under a
 no to either: a tool the run may not install becomes an issue that holds its
 task and everything built on it, and a check whose tool may not be entered
 stays off. First the install question, then the one on the dependency file;
@@ -1001,12 +1035,20 @@ and nothing is installed under records not yet fetched.
    reason: the yes has landed by now, so the change goes through a pull
    request of its own, as after a refused protection. The workflow file
    stays, since `--auto` needs it once the code is green.
-3. Only then set the protection, requiring that check, with `enforce_admins` on,
-   and switch auto-merge on if it is off.
+3. Only then auto-merge, and the protection after it. Switch auto-merge on
+   where it is off and read it back, `gh api repos/OWNER/REPO -q
+   .allow_auto_merge`: a PATCH on it answered `false` with exit 0 on 8
+   October 2026 in an organization on the plan Free, so the answer of the
+   PATCH is not the state. Where it reads `false`, no protection is set, and
+   it goes on as at a refused protection below, that reading as the reason.
+   Where it reads `true`, set the protection, requiring that check, with
+   `enforce_admins` on.
 
 Where the gate was there and binding already, none of the three is done:
 auto-merge is switched on where it is off, before the pull request above is
-armed, since arming needs it.
+armed, since arming needs it, and read back the same way; where it reads
+`false`, it goes on as at a refused protection below, that reading as the
+reason.
 
 **Never do this while a pull request is open.** A required check added underneath
 an open one blocks it — the workflow never ran for that branch, so its result

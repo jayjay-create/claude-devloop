@@ -1,0 +1,199 @@
+#!/usr/bin/env python3
+"""devloop-auto-mode-rule: the rule for the classifier of auto mode, read or
+entered in the user's settings file.
+
+The rule is text 4 of the roadmap entry of 9 October 2026, in English, word for
+word, one entry of the list autoMode.allow in the settings file of the user:
+~/.claude/settings.json, or settings.json under CLAUDE_CONFIG_DIR where that is
+set - the settings page of Claude Code, "Configuration directories", read on 9
+October 2026: "To keep the home-directory files somewhere else, set
+CLAUDE_CONFIG_DIR; Claude Code then stores your settings, session history, and
+plugins there instead." The page "Configure auto mode", read the same day, gives
+autoMode.allow as an array of prose descriptions read as natural-language rules,
+with the literal string "$defaults" keeping the built-in rules beside them.
+
+Usage
+    bin/devloop-auto-mode-rule read     says whether the rule stands; writes
+                                        nothing. Exit 0 where it stands, 1 where
+                                        it does not, 2 where the file cannot be
+                                        read for it
+    bin/devloop-auto-mode-rule write    enters the rule, after the person's yes
+                                        in setup-checks step 8 and never without
+                                        it. Exit 0 where it stands afterwards,
+                                        2 where nothing was written
+
+What write does. Where the file or the list is missing, the list is created,
+with "$defaults" before the rule; where a list stands, the rule is appended to
+it, without "$defaults"; where the rule stands already, nothing changes. Every
+other key and value of the file stays as it was, in the order it had; the file
+is written through a temporary file in the directory of the file itself and
+moved over the old one, so that no half file is ever left. Where settings.json
+is a symbolic link, the file it points to is written, through every link on the
+way, and the link stays as it is: the temporary file is made in the directory
+of that file, so that the move stays on one file system, and that file keeps
+its permissions. A link to a file that does not exist yet, in a directory that
+does, has the file made there, and the link stays. Where that directory does
+not exist either, nothing is written and no directory is made, since one could
+stand in the way of a repository yet to be fetched to that place; the reason is
+printed, and the answer is the one for a refused write. Until 10 October 2026
+the temporary file was made beside the link and moved over the link itself,
+which left a plain file in its place and the file it pointed to unchanged,
+measured that day, the addendum of the roadmap entry of 9 October 2026; the
+changelog of Claude Code names such links as a setup it serves, under 2.1.181,
+a relative link under a linked ~/.claude, and under 2.1.247, a link managed by
+nix, home-manager or stow. A hard link is not kept, as before: the other name
+keeps the old content. Reading follows a link as any open does. Where the file
+is not valid JSON, holds a key twice, autoMode is not an object or
+autoMode.allow is not a list, nothing is written and the reason is printed,
+exit 2; the same where the write itself is refused. Both ways print one line on
+stdout and exit as above.
+
+It needs python3 and nothing else. On a Mac, python3 comes with the Command
+Line Tools that bring git, so a machine this plugin runs on has it, and the
+stock-take tool and the check under "Before you change anything, run this" in
+docs/skill-conventions.md rest on it already; jq is not on a Mac by default.
+Measured on 9 October 2026 with HOME in a throwaway directory, the roadmap
+entry of that day, and on 10 October 2026 through links, its addendum of that
+day.
+"""
+
+import json
+import os
+import shutil
+import sys
+import tempfile
+
+RULE = (
+    "Installing a tool that the current task needs is allowed in a repository "
+    "set up with devloop: a command-line tool with brew install, go install, "
+    "cargo install, uv tool install or pipx install, and a browser for tests "
+    "with playwright install, cypress install or puppeteer browsers install. "
+    "A devloop hook reads the project's install permission before every such "
+    "command and blocks it where the person has not said yes."
+)
+DEFAULTS = "$defaults"
+
+
+def settings_path():
+    base = os.environ.get("CLAUDE_CONFIG_DIR") or os.path.join(
+        os.path.expanduser("~"), ".claude")
+    return os.path.join(base, "settings.json")
+
+
+def no_duplicate_keys(pairs):
+    seen = set()
+    for key, _ in pairs:
+        if key in seen:
+            raise ValueError("the key %r stands twice in one object" % key)
+        seen.add(key)
+    return dict(pairs)
+
+
+def load(path):
+    """Returns (data, state): data the parsed file or None where it is missing;
+    state one of "missing", "no autoMode", "no allow", "standing", "absent".
+    Raises ValueError with the reason where the file cannot be read for the
+    rule."""
+    if not os.path.exists(path):
+        return None, "missing"
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    try:
+        data = json.loads(text, object_pairs_hook=no_duplicate_keys)
+    except ValueError as e:
+        raise ValueError("%s is not valid JSON: %s" % (path, e))
+    if not isinstance(data, dict):
+        raise ValueError("%s does not hold an object at its top" % path)
+    if "autoMode" not in data:
+        return data, "no autoMode"
+    auto = data["autoMode"]
+    if not isinstance(auto, dict):
+        raise ValueError("autoMode in %s is not an object" % path)
+    if "allow" not in auto:
+        return data, "no allow"
+    allow = auto["allow"]
+    if not isinstance(allow, list):
+        raise ValueError("autoMode.allow in %s is not a list" % path)
+    if RULE in allow:
+        return data, "standing"
+    return data, "absent"
+
+
+def write_file(path, data, existed):
+    # A link is followed to the file it points to, and the link itself stays.
+    target = os.path.realpath(path)
+    d = os.path.dirname(target)
+    if os.path.islink(path) and not os.path.isdir(d):
+        raise OSError("the link %s points to %s, whose directory does not "
+                      "exist, and this program makes none there"
+                      % (path, target))
+    os.makedirs(d, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=".settings.json.", dir=d)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+            f.flush()
+            os.fsync(f.fileno())
+        if existed:
+            shutil.copymode(target, tmp)
+        os.replace(tmp, target)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
+def main(argv):
+    if len(argv) != 2 or argv[1] not in ("read", "write"):
+        print("devloop-auto-mode-rule: expected one argument, read or write",
+              file=sys.stderr)
+        return 2
+    path = settings_path()
+    try:
+        data, state = load(path)
+    except (ValueError, OSError) as e:
+        if argv[1] == "read":
+            print("the settings file cannot be read for the rule: %s" % e)
+        else:
+            print("not written: %s" % e)
+        return 2
+    if argv[1] == "read":
+        if state == "standing":
+            print("the rule stands in %s" % path)
+            return 0
+        why = {
+            "missing": "the file does not exist",
+            "no autoMode": "the file holds no autoMode",
+            "no allow": "autoMode holds no allow list",
+            "absent": "the list autoMode.allow does not carry it",
+        }[state]
+        print("the rule does not stand in %s: %s" % (path, why))
+        return 1
+    if state == "standing":
+        print("the rule stands in %s already; nothing changed" % path)
+        return 0
+    if data is None:
+        data = {}
+    if state in ("missing", "no autoMode"):
+        data["autoMode"] = {"allow": [DEFAULTS, RULE]}
+        how = 'the list autoMode.allow created, with "$defaults" before the rule'
+    elif state == "no allow":
+        data["autoMode"]["allow"] = [DEFAULTS, RULE]
+        how = 'the list autoMode.allow created, with "$defaults" before the rule'
+    else:
+        data["autoMode"]["allow"].append(RULE)
+        how = "appended to the list autoMode.allow"
+    try:
+        write_file(path, data, state != "missing")
+    except OSError as e:
+        print("not written: the write was refused: %s" % e)
+        return 2
+    print("the rule is entered in %s: %s" % (path, how))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

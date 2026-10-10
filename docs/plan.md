@@ -89,7 +89,7 @@ finding that would have passed unsupervised gets written down": where it can
 happen again and cannot be prevented, that is the answer and it gets written
 down as one.
 
-## Eleven milestones, in this order
+## Twelve milestones, in this order
 
 Each carries its kind, what it covers, what ends it, why it stands where it
 stands, and the conventions it meets. "Conventions" names sections or bold
@@ -263,7 +263,10 @@ measurement.
 
 Ends with two runs on one fresh project, in this order, the second reusing
 the first's project because it builds on the no the first put on record,
-which the rule under "Open" allows since 6 October 2026. First the install
+which the rule under "Open" allows since 6 October 2026. Both run on the
+person's Mac in the terminal, where this milestone closes as planned,
+decision 3 of the roadmap entry of 9 October 2026; every other system and
+every other surface is milestone 12, directly after this one. First the install
 record says no and the person is there: a build needs a tool, the guard
 blocks, and the command is handed over. Then `--auto`, the question put a
 second time and a yes, and the build with nobody there installs a tool
@@ -286,14 +289,23 @@ did not install, for the reason the paragraph gives for the tools: a command
 handed over in the first run and run by the person has installed its browser
 already.
 
-Three things stand before that run, each recorded on 5 or 6 October 2026.
-Two are not built. The question of `setup-checks` step 8, on the unattended
-mode, is described field by field like the other questions of that skill,
-in a wording the person approves. Step 8 reads, before that question,
-whether the platform allows the protection on this repository, and says so
-instead of asking where it does not; what the platform answers there is
-measured once first, on a private repository under a plan that does not
-allow it. The third is built on 9 October 2026, version 0.133.0: start
+Three things stood before that run, each recorded on 5 or 6 October 2026,
+and all three are built. Two on 9 October 2026, version 0.134.0, decisions 8
+and 9 of the roadmap entry of 9 October 2026: the question of `setup-checks`
+step 8, on the unattended mode, is described field by field like the other
+questions of that skill, in the wording the person approved on 8 October
+2026, text 6 of that entry, with five parts said before it and the
+explanation of the mode that stood there until then gone; and step 8 reads,
+before that question, whether GitHub offers the protection on this
+repository, off `rules/branches/<main branch>`, and says so instead of
+asking where it does not, text 3 of that entry — what the platform answers
+there was measured first, on 8 October 2026, on a private repository of an
+organization on the plan Free: HTTP 403, "Upgrade to GitHub Pro or make this
+repository public". With them, the same day and version, decision 10: after
+the yes, devloop asks whether it may enter the rule for the classifier of
+auto mode into `~/.claude/settings.json`, text 4 of that entry, and
+`bin/devloop-auto-mode-rule` enters it on the yes. The third is built on 9
+October 2026, version 0.133.0: start
 condition 4 of the mode, which until then said that the kinds of command
 the run needs are approved for the project, which no run could read in the
 tree — the entry of 11 September 2026 in `docs/roadmap.md` on planning
@@ -418,6 +430,50 @@ limit the limited party maintains"; "The install guard matches the outcome as
 well as the verb, and is still a tripwire"; "A command handed over is backed,
 and its result is read"; "A duty to say something needs a place where it is
 said"; "Every offer says where a no leads"; "Never assert state — query it".
+
+### 12. Every operating system, every surface (build)
+
+Directly after milestone 3, and numbered twelve because the numbers 4 to 11
+stay as they are: `grep -o -i -E 'milestones? [0-9]+'` finds a numbered
+milestone 103 times in `docs/roadmap.md` and 104 times in
+`docs/stock-take.tsv` on 9 October 2026, and none of those is moved for it.
+Decision 3 of the roadmap entry of 9 October 2026, where the evidence stands.
+
+Milestone 3 closes on the person's Mac in the terminal. This milestone fixes
+which operating systems and which surfaces of Claude Code count — the
+terminal, the desktop app, the IDE extensions, the web — and brings the
+hooks, the programs and the guards into a form that runs on each: every
+command guard stands on the tool `Bash` alone in `hooks/hooks.json`, and the
+hooks reference says that a command hook's `shell` field "defaults to
+"bash", or to "powershell" on Windows when Git Bash isn't installed", that a
+shell hook runs under `sh -c` on macOS and Linux and under Git Bash on
+Windows, or under PowerShell where Git Bash is not installed, and, under its
+PowerShell section, that "a hook that matches only `Bash` never fires
+there" — so a guard for PowerShell is part of it. It decides how devloop
+reaches cloud sessions, or that it does not: the skills page, "How injected
+commands run" and "When an injected command fails"; the tools reference,
+"PowerShell tool"; the VS Code page, "VS Code extension vs. Claude Code CLI";
+the JetBrains page, "Installation"; the desktop page, "Install plugins". And
+it brings the commands that keep a machine awake under Linux and under
+Windows, which `setup-checks` step 8 names today for macOS alone,
+`caffeinate`, and for no other system — text 6 of the roadmap entry of 9
+October 2026, part 5: until this milestone the sentence for every system
+stands alone there.
+
+Ends with one run per system, the cases of milestone 3 included: the guards
+read, the mark written, the install under a yes, each on that system's
+surface.
+
+Why here: milestone 3 ends on one machine so that it has one variable, and
+what it built — the guards, the record, the mode — is what has to run
+elsewhere before any later milestone measures there; milestones 4 to 11 are
+built on the Mac and measured on it, and this one widens what they stand on
+rather than waiting for them.
+
+Conventions: "Works with nothing else installed" (gains the systems); "A
+hook cannot see consent"; "Every failure is a block"; "Environment
+constraints, measured" (gains the measurements per system, the machine
+being kept awake among them).
 
 ### 4. The road to running, measured (measurement)
 
@@ -657,7 +713,7 @@ with what `setup-checks` step 8 names); the classifier records in the roadmap's
 entries on the first planning run alone and on the install command of 28
 September 2026.
 
-Beside the eleven, one piece of work is waiting and is not a milestone:
+Beside the twelve, one piece of work is waiting and is not a milestone:
 `find-refactor-candidates`, decided on 25 September 2026 to be built, reached
 when every task under a spec has closed; whether it becomes a milestone is not
 decided. The other three of the four side paths that stood open here, named
