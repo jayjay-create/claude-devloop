@@ -16314,6 +16314,296 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   day on the refused write, in place of the run of 9 October 2026 on it, with
   the same reason.
 
+- **The arrangement of the two closing runs of milestone 3 as decided on 10
+  October 2026, three places that said as a fact what is not measured, two
+  sentences in entries; 10 October 2026, version 0.135.0.** On
+  `task/closing-runs-arrangement`, off `1458419`, version 0.134.0 on `main`;
+  the build in `cb22b6e`, this entry and the table in the commits after it.
+  The order of 10 October 2026 carried the decisions of that day, taken
+  before it, and named the three places and the two sentences; every line
+  number in this entry holds at `1458419` unless it says otherwise, and a
+  line number given as "at `cb22b6e`" holds at the build. The report stands
+  on this machine as
+  `~/devloop-report-2026-10-10-closing-runs-arrangement.md`, in English, and
+  is not in the repository. Claude Code 2.1.295, `git version 2.50.1 (Apple
+  Git-155)`, gh 2.96.0, node v25.9.0 and npm 11.12.1 on this machine, read
+  with `claude --version`, `git --version`, `gh --version`, `node --version`
+  and `npm --version`.
+
+  **The arrangement, decided on 10 October 2026.** Decision 12 of the entry
+  of 9 October 2026 on the open findings, lines 14357 to 14377, laid down how
+  the two runs that close milestone 3 go: a fresh project with "a Go program
+  with a function and a test"; open was the choice of the two tools, and
+  Playwright for the task with the browser stood there as a proposal.
+  Everything else of decision 12 stands. Decided on 10 October 2026, before
+  the order of that day:
+
+  The project is a TypeScript project, not a Go program, otherwise as
+  decision 12 describes it: code before the setup, a function and a test,
+  committed and pushed. The person's reason: Go had been the usual choice for
+  the test projects so far, and is in practice presumably not the most common
+  language. Two witnesses, both read on 10 October 2026 in this session, the
+  figures as the order gave them. The Stack Overflow Developer Survey 2026,
+  `survey.stackoverflow.co/2026/technology`, "Most popular technologies", the
+  ten rows of the table of languages: JavaScript 62.0 %, SQL 58.4 %,
+  HTML/CSS 58.2 %, Python 58.0 %, Bash/Shell (all shells) 51.3 %, TypeScript
+  43.8 %, Java 27.6 %, C# 27.1 %, PowerShell 24.6 %, C++ 24.3 %; Go is not
+  among them. GitHub's Octoverse 2025, the post "Octoverse: A new developer
+  joins GitHub every second as AI leads TypeScript to #1" on `github.blog`:
+  "August 2025 marks the first time TypeScript emerged as the most used
+  language on GitHub", 2,636,006 monthly contributors; Python 2.6 million,
+  JavaScript 2.15 million.
+
+  The two tools. The conditions stand: a task needs the tool, it is not a
+  check tool, `docs/plan.md` line 274, the project cannot enter it in its
+  package file, and it comes through Homebrew to `/opt/homebrew/bin`,
+  decision 12. The package file is now `package.json`: no npm package may
+  bring a command of the tool that runs. Run 1, the answer no, the command
+  handed over: `dasel`. Run 2, the answer yes, the run installing itself:
+  `re2c` with its program `re2js`. Read on npm on 10 October 2026 in this
+  session with npm 11.12.1. `npm view dasel` answers 404. `npm search dasel`
+  finds two packages: `gobot-dasel`, "dasel helper for Gobot", with a command
+  `dasel`, `npm view gobot-dasel bin` giving `dist/cli.js`, and
+  `@x-cmd-pkg/dasel`, "publish release of x-cmd organization", without a
+  command. Measured in a throwaway directory outside the repository, node
+  v25.9.0, from 18:49:24 to 18:49:36 UTC: `npm init -y`;
+  `npm i -D gobot-dasel` brings `gobot-dasel` 2.7.0-alpha.23 and `gobot`
+  0.0.15; `npm ls gobot` shows `gobot@0.0.15` under
+  `gobot-dasel@2.7.0-alpha.23`; and `node_modules/.bin/dasel --version` ends
+  with "Error: Cannot find package '…/node_modules/gobot/index.js' imported
+  from …/node_modules/gobot-dasel/dist/cli.js", `ERR_MODULE_NOT_FOUND`, exit
+  1, as measured on 10 October 2026 in another session under Linux. Whether
+  the command runs with a pinned pre-release of `gobot` is not measured. The
+  Homebrew formula, `Formula/d/dasel.rb` in `Homebrew/homebrew-core`, 3.11.2,
+  needs Go to build only, `depends_on "go" => :build`, and describes the tool
+  as "JSON, YAML, TOML, XML, and CSV query and modification tool".
+  `npm view re2c` answers 404; `npm search re2c` finds three packages,
+  `@lotsa/verdant-lang-re2c`, `libcaption-node` and `@platformatic/php-node`,
+  none bringing `re2c` and none with a command. `npm search re2js` finds
+  `re2js`, another library without a command: "RE2JS is the JavaScript port
+  of RE2, a regular expression engine that provides linear time matching",
+  and `npm view re2js bin` prints nothing. The formula `Formula/r/re2c.rb`,
+  4.6, needs Python to build only, `uses_from_macos "python" => :build`.
+  `re2js` produces JavaScript, re2c.org, "User manual (JavaScript)",
+  `re2c.org/manual/manual_js.html`: "It translates them to code in
+  JavaScript and outputs the generated code in place of the block." The
+  formula calls `./configure` with `--disable-dependency-tracking` and the
+  prefix and with no switch for the languages, and `re2js` is built as long
+  as nothing switches it off: `configure.ac` lines 89 to 91, the switch
+  `--enable-js` and the conditional `WITH_JS` holding unless `enable_js` is
+  `no`, and `Makefile.am` lines 848 to 853, `bin_PROGRAMS += re2js` under
+  `WITH_JS`, both read at the tag 4.6 of `skvadrik/re2c`. Derived from the
+  formula and the source, not measured. The stand-in where one of the two
+  falls out: `htmlq`. `npm view htmlq` answers 404, `npm search htmlq` finds
+  one package, `@kieranhunt/crul`, which does not bring it, and the formula
+  `Formula/h/htmlq.rb`, 0.4.0, needs Rust to build only. The PyPI package
+  `htmlq` is another tool with a command of the same name,
+  `pypi.org/pypi/htmlq/json`, 0.1.8, "Script that enables querying an html
+  input (file or url) as using jquery selector strings"; `entry_points.txt`
+  in `htmlq-0.1.8.tar.gz` names `htmlq = htmlq:htmlq` and
+  `urlf = htmlq:urlf`. Ruled out because on npm, each read with `npm view`
+  the same day and each with a command: `jq` (`node-jq`, "Run jq in node"),
+  `flatc` (`flatc-bin`), `hyperfine` (`hyperfine`, `hyperfine-bin`), `just`
+  (`rust-just`, `just-install`). For both tools the formulas carry bottles
+  for Macs with Apple silicon, `arm64_sonoma`, `arm64_sequoia`, `arm64_tahoe`
+  and `arm64_golden_gate`, read off `formulae.brew.sh/api/formula/dasel.json`
+  and `re2c.json`, and neither is `keg_only`. Both have ways beside Homebrew,
+  as `sqlc` had, lines 13265 to 13266, 13291 to 13293, 13307 and 13309:
+  `re2c` lies on PyPI, version 4.0, `pypi.org/pypi/re2c/json`, and its
+  package for macOS, `re2c-4.0-py2.py3-none-macosx_10_9_universal2.whl`,
+  names in `entry_points.txt` among others `re2js = re2c:re2js`; `dasel`
+  names on its page "Installation",
+  `daseldocs.tomwright.me/getting-started/installation`, beside
+  `brew install dasel` also asdf, mise, Nix, `go install`, Docker, the
+  download of the file and Scoop. Where a run takes one of these ways, the
+  tool lies where that way puts it, not necessarily under
+  `/opt/homebrew/bin`. The search after each run that decision 12 asks for,
+  for the commands that fetch a tool and run it, stands.
+
+  The task with the browser takes Playwright, Chromium in run 1 and Firefox
+  in run 2, so that the second run needs a browser the first did not install,
+  for the reason `docs/plan.md` lines 286 to 290 give. Every task calls for
+  its tool expressly, as an npm script that calls `dasel` and as a generation
+  with `re2js`; otherwise the build can take an npm package, and the guard on
+  installs is never met. That both tools are unusual in TypeScript projects
+  does not matter: the runs test the course of devloop. Where doubts remain
+  after the two runs, a run with Go follows, as decision 12 first had it. A
+  consequence, not a decision of its own: check tools for TypeScript such as
+  `typescript`, `prettier` or `eslint` lie on npm; where `setup-checks` picks
+  one, it comes only with the permission in `package.json` that
+  `setup-checks` asks for, lines 341 to 359, and in step 8 a second time,
+  lines 913 to 918; Go brings `gofmt`, `go vet` and `go test` itself.
+
+  **Where it stands since.** `docs/plan.md`, milestone 3: after the sentence
+  on the two tools with `sqlc` as the example, lines 273 to 280, and the old
+  wording it holds, lines 280 to 283, the paragraph names what was decided,
+  with the TypeScript project, the two tools, the stand-in, the express call
+  for each tool and the run with Go where doubts remain, lines 284 to 299 at
+  `cb22b6e`; after the browsers, lines 284 to 290, it names Playwright with
+  Chromium and Firefox, lines 306 to 309 at `cb22b6e`. The sentence with
+  `sqlc` and the quoted old wording stand unchanged, the example standing as
+  the kind of tool the condition means, so no wording of the plan went; line
+  264, which carries an anchor of the table, is unchanged. Decision 12
+  carries one sentence, that it is changed on 10 October 2026 in the
+  project, the two tools and the browser, with the reference to this entry,
+  lines 14377 to 14379 at `cb22b6e`; its other text stands as it stood.
+
+  **Three places that said as a fact what is not measured.** The conventions
+  say since 9 October 2026, in bold, lines 1358 to 1360: "A command that
+  reaches the time limit of its call is ended where the call carries a limit
+  of its own, measured; where it carries none, the changelog says it is moved
+  to the background and runs on, and that is not measured." Three places
+  said the second half as a fact, that a call without a limit of its own is
+  not ended at the limit of its call but moved to the background, where it
+  runs on: `build-work` lines 1033 to 1036, `shared/fetch-three-times.md`
+  lines 23 to 26 and `bin/devloop-bounded` lines 3 to 6. The second addendum
+  of 9 October 2026 had left them standing knowingly, "all on the default
+  limit of a call without a limit of its own and left as they stand", lines
+  15215 to 15218; that they say the unmeasured as a fact was noticed on 10
+  October 2026 in a reading of the documents against `1458419`, before the
+  order of that day. Since `cb22b6e` the three say what the conventions say,
+  and what they conclude from it, no second call beside the first, stands.
+  The same statement, not the same lines: the check "No shared text still
+  stands written out in a skill" under "Before a handover, run these", lines
+  2607 to 2612, looks for every line of forty characters or more from
+  `shared/` in every skill and would print `build-work` for a line of
+  `shared/fetch-three-times.md` repeated there word for word.
+  Built: `build-work` step 6, `shared/fetch-three-times.md` and the head of
+  `bin/devloop-bounded` say that the changelog of Claude Code says a call
+  reaching the limit of its call is moved to the background and runs on, and
+  that nothing here has measured it. `build-work` lines 1033 to 1036, "call
+  where nothing sets it, because a call that reaches that limit is not ended
+  but moved to the background, where it runs on, and a repeat would start a
+  second one beside it", read since `cb22b6e`, lines 1033 to 1037: "because
+  the changelog of Claude Code says that a call reaching that limit is not
+  ended but moved to the background and runs on, which nothing here has
+  measured, and a repeat would then start a second one beside it".
+  `shared/fetch-three-times.md` lines 23 to 26, "a command that reaches that
+  limit is not ended but moved to the background, where it runs on, and a
+  run that repeated the fetch would start a second one beside it", read since
+  `cb22b6e`, lines 23 to 27: "the changelog of Claude Code says a command
+  that reaches that limit is not ended but moved to the background and runs
+  on there, and nothing here has measured that; a run that repeated the fetch
+  would then start a second one beside it". `bin/devloop-bounded` lines 3 to
+  6, "a command that reaches that limit is moved to the background and goes
+  on running there, not ended, and a skill that repeats it would start a
+  second one beside the first", read since `cb22b6e`, lines 3 to 7: "the
+  changelog of Claude Code says a command that reaches that limit is moved to
+  the background and goes on running there, not ended, and nothing here has
+  measured that; a skill that repeats it would then start a second one beside
+  the first". The check on shared copies is silent at `cb22b6e`, and the
+  head of `bin/devloop-bounded` holds none of the five words of the search
+  set, before and after.
+
+  **Two sentences in entries, corrected in place.** The addendum of 10
+  October 2026 to the entry of 9 October 2026 on step 8, lines 16075 to
+  16082, named the case that `~/.claude` is itself a link to a directory
+  that does not exist as a finding, not built, with no reason; the second
+  addendum of 9 October 2026, lines 15212 to 15219, listed the lines that
+  the search `grep -rn -iE 'background|runs on beside|beside the first|moved
+  to'` found beside the places it changed as if they were all of them. Each
+  is corrected where it stands, and each keeps the rule of its own addendum
+  for line numbers, `72b75c2` for the first and `6851919` for the second.
+
+  The first, old: "Measured beside the six cases below and named in the
+  report as a finding, not built: where `~/.claude` is itself a link to a
+  directory that does not exist, `write` at `2bf4824` refused with
+  "[Errno 17] File exists: …/.claude" and made nothing, and at `72b75c2`
+  makes the directory the link points to and writes the file there, since
+  `os.path.realpath` resolves that link and `settings.json` itself is no
+  link; the order of this day decided the case of a linked file alone." New,
+  lines 16086 to 16107 at `cb22b6e`: "Measured beside the six cases below
+  and named in the report as a finding, not built, since the case does not
+  arise in practice: where `~/.claude` is itself a link to a directory that
+  does not exist, `write` at `2bf4824` refused with
+  "[Errno 17] File exists: …/.claude" and made nothing, and at `72b75c2`
+  makes the directory the link points to and writes the file there, since
+  `os.path.realpath` resolves that link and `settings.json` itself is no
+  link; the order of this day decided the case of a linked file alone. The
+  case does not arise because the directory the program writes into is the
+  one it runs out of: it is called as
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule`, `setup-checks` lines
+  892 to 894, the installed copy lies under `~/.claude/plugins/cache/`,
+  `docs/skill-conventions.md` lines 2449 to 2456, and where
+  `CLAUDE_CONFIG_DIR` is set it writes into that directory and the copy lies
+  there, lines 7 to 11 of its head and the settings page of Claude Code,
+  "Claude Code then stores your settings, session history, and plugins there
+  instead"; the session's log lies there too, which the run end to end below
+  read under `~/.claude/projects/`. Not measured: whether Claude Code starts
+  at all with such a link; and a plugin loaded with `--plugin-dir` out of
+  another folder, "Added support for pointing `--plugin-dir` at a folder of
+  plugins", changelog of Claude Code 2.1.265, does not lie there, so for that
+  case the session's log is the one witness." The three line numbers it
+  cites hold at `72b75c2` as at `1458419`, each checked with `git show` and
+  `diff`; the run end to end it names without a line number, since that run
+  stands further down in the same addendum, lines 16209 to 16211. Read for
+  it on 10 October 2026: the settings page of Claude Code, "To keep the
+  home-directory files somewhere else, set `CLAUDE_CONFIG_DIR`; Claude Code
+  then stores your settings, session history, and plugins there instead",
+  and `CHANGELOG.md` of `anthropics/claude-code`, 2.1.265, "Added support
+  for pointing `--plugin-dir` at a folder of plugins: each child folder with
+  a manifest loads, and children added or removed while running are picked
+  up".
+
+  The second, old: "The search `grep -rn -iE 'background|runs on
+  beside|beside the first|moved to'` over `skills`, `shared`, `hooks`,
+  `bin`, the conventions, the plan and the README found beside those places
+  `build-work` lines 1013 to 1026, `shared/fetch-three-times.md` lines 24 to
+  26 and `bin/devloop-bounded` lines 4 to 6, all on the default limit of a
+  call without a limit of its own and left as they stand, and
+  `docs/plan.md` lines 428 and 678 on a process started in the background,
+  another matter." New, lines 15215 to 15230 at `cb22b6e`, the same up to
+  "left as they stand": "…left as they stand, `docs/plan.md` lines 428 and
+  678 on a process started in the background, another matter, and ten lines
+  on other matters still: `docs/plan.md` line 51, the second permission
+  recorded beside the first; `docs/plan.md` line 449 and
+  `docs/skill-conventions.md` lines 1305, 1317 and 1320, the backgrounded
+  agent as the exception under "Nothing resumes on its own" and the machine
+  having to be awake; `docs/skill-conventions.md` line 372 and
+  `shared/command-does-not-answer.md` line 92, a background agent that did
+  not come back is said; `plan-work` line 269 and `untangle-idea` line 177,
+  `research` run in the background; and `research` line 22, the skill being
+  that background agent — thirty-seven lines at `6851919` in all." The
+  search, run on 10 October 2026 as `git grep -n -i -E 'background|runs on
+  beside|beside the first|moved to' 6851919 -- skills shared hooks bin
+  docs/skill-conventions.md docs/plan.md README.md`, prints thirty-seven
+  lines at `6851919` and twenty-eight at `07a1543`; `6851919` is not on
+  `main` and was present here from the fetch of `refs/pull/161/head`. Of the
+  thirty-seven, twenty lie in the places the addendum changed, lines 15203
+  to 15212: `docs/skill-conventions.md` 1347, 1349, 1351, 1352, 1353, 1354,
+  1355, 1363, 1364, 1375, 1376 and 1399, inside lines 1346 to 1400;
+  `shared/command-does-not-answer.md` 35, 43 and 46, inside lines 28 to 46;
+  `shared/install-not-through.md` 5 and 23; `build-work` 160, 252 and 407.
+  Seven the sentence named: `bin/devloop-bounded` 4 and 6, `docs/plan.md`
+  428 and 678, `shared/fetch-three-times.md` 24 and 25, and `build-work`
+  line 1020. Ten neither, the ten the sentence names now, each read in its
+  paragraph at `6851919`. The nine gone at `07a1543` are nine of the twenty
+  in the changed places, rewritten there; the twenty-eight are the ten, the
+  seven, ten lines of the conventions at their new numbers and line 35 of
+  `shared/command-does-not-answer.md`.
+
+  **In the table.** One thing of kind defect, "build-work,
+  shared/fetch-three-times.md and bin/devloop-bounded said as a fact that a
+  call without a limit of its own is moved to the background and runs on,
+  where the conventions say the changelog says so and nothing here has
+  measured it", its site the one status line of this entry, its evidence
+  line 1035 of `build-work` at `cb22b6e`, its note naming when and by what it
+  was found and with which version it is repaired at all three places; built
+  like the thing of 7 October 2026 on `shared/fetch-three-times.md`, line
+  3086 of the table. One row `not-a-thing` for the head of this entry with
+  the note `part of:` and that thing's name, as lines 3355 and 3612 do for
+  the heads of the entries of 9 October 2026. Of the four rationale rows at
+  the three places, lines 3142 to 3145, on `build-work` 1034 and 1035 and
+  `shared/fetch-three-times.md` 23 and 25, two go, those on `build-work`
+  1035 and `shared/fetch-three-times.md` 25, whose lines left the search set
+  with the rewording, no word of the set standing on them any more; the row
+  on `build-work` 1034 is re-anchored on the line as reworded, "call where
+  nothing sets it, because the changelog of Claude Code says that a"; the row
+  on `shared/fetch-three-times.md` 23 stands, its line unchanged. The search
+  set holds 2581 lines as at `1458419`: the two left, and the head and the
+  status line of this entry came. No finding was added to the table; the
+  report of this day names what it found.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
