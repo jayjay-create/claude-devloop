@@ -16647,6 +16647,86 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   last commit, after the rows of these runs and this paragraph, answers as
   at `5319d1c` in every count.
 
+  **Addendum of 10 October 2026: four wordings in the plan and in this
+  roadmap; the version stays 0.135.0.** On `task/closing-runs-arrangement`,
+  pull request #163, off `3ad0b30`, the branch's last commit before it; the
+  four corrections in `f31a105`, this addendum in the commit after it. The
+  order of 10 October 2026 that carried them was read against the source and
+  held in every point. Every line number of this addendum holds at `f31a105`
+  unless it says otherwise, and at `3ad0b30` as well, since each of the four
+  paragraphs keeps its count of lines; a line number given as "at `cb22b6e`"
+  holds at the build. Nothing under `skills/`, `shared/`, `hooks/`, `bin/`,
+  `scripts/` or `.github/` changes and the table does not change, so the
+  version stays. The report stands on this machine as
+  `~/devloop-report-2026-10-10-closing-runs-arrangement-addendum.md`, in
+  English, and is not in the repository.
+
+  The four, each old and new. First, `docs/plan.md` lines 287 to 289, the
+  paragraph on the arrangement added at `cb22b6e`, gave the reason for the
+  TypeScript project as the plan's own, and said "not the common language"
+  where this entry says "not the most common language". Old: "since Go had
+  been the usual choice for the test projects and is likely not the common
+  language in practice". New, the same lines: "the person's reason being
+  that Go had been the usual choice for the test projects so far and is in
+  practice presumably not the most common language", the reason named as the
+  person's, as lines 16343 to 16345 of this entry name it; the two witnesses
+  after the dash stand as they stood. Second, the addendum of 10 October 2026
+  to the entry of 9 October 2026 on step 8, lines 16094 to 16095, said the
+  program writes into the directory it runs out of; it runs out of a folder
+  below that directory, the installed copy under `~/.claude/plugins/cache/`,
+  `docs/skill-conventions.md` lines 2449 to 2456. Old: "the directory the
+  program writes into is the one it runs out of". New: "the directory the
+  program writes into contains the program itself". Third, the second
+  addendum of 9 October 2026, lines 15229 to 15230, closed the search
+  sentence with "thirty-seven lines at `6851919` in all" behind the seven
+  and the ten it names, as if those were the thirty-seven. Old:
+  "— thirty-seven lines at `6851919` in all." New: "— thirty-seven lines at
+  `6851919` in all, the other twenty in the places this addendum changes."
+  The line numbers inside the two corrected sentences keep the rule of their
+  addendum, `72b75c2` for the first and `6851919` for the second, and none
+  of them changes. Fourth, this entry, line 16555, cited the corrected
+  search sentence as "lines 15215 to 15230 at `cb22b6e`"; at `cb22b6e` the
+  sentence begins on line 15214, `git show cb22b6e:docs/roadmap.md | sed -n
+  '15214p'` printing "and 14798 to 14804, which say what is built now. The
+  search `grep -rn -iE". New: "lines 15214 to 15230 at `cb22b6e`". The two
+  quotations of this entry at lines 16515 to 16536 and 16556 to 16566 stand
+  as they are: they say what stood at `cb22b6e`. Each paragraph of the four
+  was read whole after the change for a sentence the change makes wrong, and
+  none was found: the plan's paragraph keeps its witnesses and its tools,
+  the addendum on step 8 goes on to say where the program writes with
+  `CLAUDE_CONFIG_DIR` set and that the copy lies there, the ten lines of the
+  search sentence and the mapping of the thirty-seven in this entry, lines
+  16571 to 16583, agree with the twenty, and the quotation after line 16555
+  is the sentence as it stood.
+
+  **The tool, its self-test and the nineteen checks at `f31a105`.** Run in
+  this tree with the tree clean on 10 October 2026, the tool from 22:01:08
+  to 22:02:00 UTC: `BROKEN RECORDS: 0`, `FINDINGS: 23`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2581`, exit 0,
+  and its whole output line for line what it printed at `3ad0b30`: the
+  counts per state and kind 28, 196, 1171 with 176 defects, and 264, every
+  count under them the same, and under `RUNS THAT DO NOT COUNT` the same
+  ninety-seven runs with the same reasons. The self-test from 22:02:00 to
+  22:02:02 UTC answered, exit 0, `SELF-TEST PASSED: 88 cases` and the rest
+  of its line as at `3ad0b30`. The nineteen checks under "Before a handover,
+  run these" from 22:02:02 to 22:02:07 UTC printed line for line what they
+  printed at `3ad0b30`, as the paragraph above lists it. The table is the
+  table of `3ad0b30`, `git diff 3ad0b30 -- docs/stock-take.tsv` printing
+  nothing, and the twenty-one runs under 0.135.0 stand: they stand on the
+  nineteen checks and the two outcomes of the tool, no line any of those
+  things stands on changes, and nothing here touches what the version
+  covers. The sentence above, that the tool at the branch's last commit
+  answers as at `5319d1c` in every count, stays true: run once more at the
+  branch's last commit, this addendum committed and the tree clean, it
+  printed every count and every line as at `f31a105` but one, the finding
+  of the table whose site is the line of `write-handover` under "Decisions
+  taken against", naming that line as 16794 where it named 16714, the
+  eighty lines this addendum adds standing above it. No line of this
+  addendum holds a word the tool reads under "Known gaps" into the search
+  set, and none begins as an entry head does; the status line of this entry
+  stays the one added line of the roadmap against `origin/main` that holds
+  a status word.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
