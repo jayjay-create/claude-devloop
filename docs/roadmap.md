@@ -16604,6 +16604,49 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   status line of this entry came. No finding was added to the table; the
   report of this day names what it found.
 
+  **The tool, its self-test and the nineteen checks under 0.135.0 at
+  `5319d1c`.** Run in this tree with the tree clean on 10 October 2026, the
+  tool from 19:06:09 to 19:06:58 UTC: `BROKEN RECORDS: 0`, `FINDINGS: 23`,
+  `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0
+  of 2581`, exit 0, written down on its exit 0 outcome; the search set as
+  large as at `1458419`, two lines gone and two come, named above. The counts
+  per state and kind, at `1458419` and at `5319d1c`: undetermined 28 and 28;
+  recorded and not built 196 and 196; built and never walked 1170 and 1171,
+  the defects 175 and 176 and every other kind the same; walked 264 and 264,
+  every kind the same — the one thing that came is the defect of this entry.
+  Under `RUNS THAT DO NOT COUNT` stand the ninety-seven runs of `1458419`,
+  the same runs with the same reasons, four of the reasons naming a line of
+  `build-work` one lower than they did, 1277 and 1373 where they named 1276
+  and 1372, the unit of the unattended mode having moved down by the line
+  step 6 grew, and the table lines of the five runs on the unattended finish
+  two lower, the two rows above them gone. The lines of the search set that
+  can carry no unique anchor are the ninety-seven of `1458419`, `exit 0` and
+  `exit 124` of `bin/devloop-bounded` at 94 and 124 where they stood at 93
+  and 123. The self-test from 19:06:58 to 19:07:00 UTC answered, exit 0,
+  `SELF-TEST PASSED: 88 cases; of the 74 messages this tool rejects, refuses
+  or answers with, read off its own source, 74 are asserted by a case and 0
+  by none; the lines of the report are not in that count`, the source of the
+  tool unchanged. The nineteen checks under "Before a handover, run these"
+  from 19:07:00 to 19:07:04 UTC at `5319d1c` printed what their sections
+  call green, one run written down on each of the nineteen, and line for
+  line what they printed at `1458419` before the build but for three line
+  numbers behind the changed places: the check on offers, `build-work` 1284
+  where it printed 1283; the check on handovers,
+  `shared/fetch-three-times.md` 50 where it printed 49; the check on the
+  second statement, `build-work` 1382 where it printed 1381 — each one line
+  lower, step 6 of `build-work` and the paragraph of the shared file having
+  grown by one line each. The rest as at `1458419`: the two empty lists of
+  the registration, the twelve counts of the invocability, the one locked
+  skill, `start-work` named in `build-work` in prose and not as a call, the
+  twelve lines of the language block, the checksum line `1375902553 587` and
+  the count of twelve for the notice, 2, 2 and 1 for the two arming commands
+  and the default branch, 1 twice for the status forms, the check on offers
+  seventeen lines, the check on handovers nine lines over eight sites, the
+  check on the unattended finish silent over `build-work` alone, and the
+  rest silent or the answer their section names. The tool at the branch's
+  last commit, after the rows of these runs and this paragraph, answers as
+  at `5319d1c` in every count.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
