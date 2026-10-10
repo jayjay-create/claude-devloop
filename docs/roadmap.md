@@ -15227,7 +15227,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   agent that did not come back is said; `plan-work` line 269 and
   `untangle-idea` line 177, `research` run in the background; and `research`
   line 22, the skill being that background agent — thirty-seven lines at
-  `6851919` in all.
+  `6851919` in all, the other twenty in the places this addendum changes.
 
   Three errors of this entry, corrected. First, lines 15138 to 15139 said the
   tool listed as not counting the seventy-four runs it listed at `ab34f96`;
@@ -16091,8 +16091,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   makes the directory the link points to and writes the file there, since
   `os.path.realpath` resolves that link and `settings.json` itself is no
   link; the order of this day decided the case of a linked file alone. The
-  case does not arise because the directory the program writes into is the
-  one it runs out of: it is called as
+  case does not arise because the directory the program writes into contains
+  the program itself: it is called as
   `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule`, `setup-checks` lines
   892 to 894, the installed copy lies under `~/.claude/plugins/cache/`,
   `docs/skill-conventions.md` lines 2449 to 2456, and where
@@ -16552,7 +16552,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   26 and `bin/devloop-bounded` lines 4 to 6, all on the default limit of a
   call without a limit of its own and left as they stand, and
   `docs/plan.md` lines 428 and 678 on a process started in the background,
-  another matter." New, lines 15215 to 15230 at `cb22b6e`, the same up to
+  another matter." New, lines 15214 to 15230 at `cb22b6e`, the same up to
   "left as they stand": "…left as they stand, `docs/plan.md` lines 428 and
   678 on a process started in the background, another matter, and ten lines
   on other matters still: `docs/plan.md` line 51, the second permission
