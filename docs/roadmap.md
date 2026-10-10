@@ -15448,8 +15448,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   issues it raised against itself, that there is no ceiling on the number of
   tasks, that the result reads as the diff from the starting commit, how the
   run ends and how a standstill is seen, the sentence against a yes on a
-  first project, lines 858 to 861, and the six bullets on what a yes leads
-  to, lines 818 to 856; the behaviour stands where it is decided,
+  first project, lines 868 to 871, and the six bullets on what a yes leads
+  to, lines 816 to 866; the behaviour stands where it is decided,
   `build-work` under "Unattended mode" and step 6 and `plan-work` at the end
   of Stage 1, and nothing of it changed; the paragraph at lines 849 to 856
   at `1d57f2a` says so. The two cases stay, lines 858 to 863 at `1d57f2a`:
@@ -15480,8 +15480,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   prints `build-work` line 1380 alone.
 
   Built: the rule for the classifier of auto mode, decision 10, text 4.
-  `setup-checks` step 8, lines 871 to 911 at `1d57f2a`: directly after the
-  yes — their answer, or the flag where the gate stands — and before the two
+  `setup-checks` step 8, lines 871 to 911 at `1d57f2a`: directly after the yes
+  — their answer, or the flag where the gate stands — and before the two
   permissions, one question more, field by field like the one above, in the
   header a word of twelve characters at most, in the question line whether
   devloop may enter a rule into their `~/.claude/settings.json` so that auto
@@ -15492,58 +15492,58 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   already. The program `bin/devloop-auto-mode-rule`, python3, reads with
   `read` — exit 0 where the rule stands, 1 where it does not with the reason,
   2 where the file cannot be read for it — and enters with `write`: the rule
-  of text 4 in English word for word, its lines joined with one space each,
-  as one entry of `autoMode.allow`; the list created with `"$defaults"`
-  before the rule where the file or the list is missing, the rule appended
-  where a list stands, nothing changed where it stands, every other key and
-  value kept in its order, the file written through a temporary file in the
-  same directory and moved over the old one; exit 2 and nothing written
-  where the file is not valid JSON, a key stands twice in one object,
-  `autoMode` is not an object, `autoMode.allow` is not a list, or the write
-  is refused, the reason on stdout, and the run then says the sentence text
-  4 gives for the refused entry with that reason. The file is
-  `settings.json` under `CLAUDE_CONFIG_DIR` where that is set and under
-  `~/.claude` otherwise: the settings page of Claude Code, read on 9 October
-  2026 under "Configuration directories", says "To keep the home-directory
-  files somewhere else, set `CLAUDE_CONFIG_DIR`; Claude Code then stores your
-  settings, session history, and plugins there instead", and the page on
-  environment variables gives the variable as "Override the directory where
-  Claude Code stores configuration, cache, debug logs, and transcripts.
-  Defaults to `~/.claude`", read "only from the environment you start
-  `claude` from". What the program rests on: python3 and nothing else — on
-  a Mac python3 comes with the Command Line Tools that bring git, the
-  stock-take tool and the check under "Before you change anything, run
-  this" rest on it already, and jq is not on a Mac by default; python3's
-  `json` keeps the order of keys and, with `ensure_ascii` off, every
-  character as it stood. Without the yes the program is not called and the
-  file not touched. `README.md` lines 244 to 249 at `1d57f2a` say so in
-  place of "It does not touch your global configuration". The two callers of
-  step 8 name the question beside the permissions: `build-work` lines 1274
-  to 1278 and `plan-work` lines 337 to 340 at `1d57f2a`. Not asked, and
-  named in the report as a finding: where the mode is set up by all five,
-  step 8 says so and skips the rest, lines 744 to 745, and `plan-work` asks
-  nothing where the mode is set up and `--auto` was typed, so a project
-  whose mode was set up before this version meets the question on no path.
+  of text 4 in English word for word, its lines joined with one space each, as
+  one entry of `autoMode.allow`; the list created with `"$defaults"` before
+  the rule where the file or the list is missing, the rule appended where a
+  list stands, nothing changed where it stands, every other key and value kept
+  in its order, the file written through a temporary file in the directory of
+  the file itself and moved over the old one — a link followed, since 10
+  October 2026, to the file it points to, which keeps its permissions, the
+  link staying as it is, the addendum below; exit 2 and nothing written where
+  the file is not valid JSON, a key stands twice in one object, `autoMode` is
+  not an object, `autoMode.allow` is not a list, or the write is refused, the
+  reason on stdout, and the run then says the sentence text 4 gives for the
+  refused entry with that reason. The file is `settings.json` under
+  `CLAUDE_CONFIG_DIR` where that is set and under `~/.claude` otherwise: the
+  settings page of Claude Code, read on 9 October 2026 under "Configuration
+  directories", says "To keep the home-directory files somewhere else, set
+  `CLAUDE_CONFIG_DIR`; Claude Code then stores your settings, session history,
+  and plugins there instead", and the page on environment variables gives the
+  variable as "Override the directory where Claude Code stores configuration,
+  cache, debug logs, and transcripts. Defaults to `~/.claude`", read "only
+  from the environment you start `claude` from". What the program rests on:
+  python3 and nothing else — on a Mac python3 comes with the Command Line
+  Tools that bring git, the stock-take tool and the check under "Before you
+  change anything, run this" rest on it already, and jq is not on a Mac by
+  default; python3's `json` keeps the order of keys and, with `ensure_ascii`
+  off, every character as it stood. Without the yes the program is not called
+  and the file not touched. `README.md` lines 244 to 249 at `1d57f2a` say so
+  in place of "It does not touch your global configuration". The two callers
+  of step 8 name the question beside the permissions: `build-work` lines 1274
+  to 1278 and `plan-work` lines 337 to 340 at `1d57f2a`. Not asked, and named
+  in the report as a finding: where the mode is set up by all five, step 8
+  says so and skips the rest, lines 744 to 745, and `plan-work` asks nothing
+  where the mode is set up and `--auto` was typed, so a project whose mode was
+  set up before this version meets the question on no path.
 
   Built: a guard on the identity of a commit, decided on 9 October 2026.
-  The commits of the order before this one were made with `git -c
-  user.email` and an address taken from the session's context, one GitHub
-  holds as private for the account, and the push was refused, GH007.
+  The commits of the order before this one were made with `git -c user.email`
+  and an address taken from the session's context, one GitHub holds as private
+  for the account, and the push was refused, GH007.
   `hooks/pre-tool-use-identity-guard.sh`, on `PreToolUse` for `Bash` in
-  `hooks/hooks.json` without an `if`, since a variable before the command
-  does not begin with `git`; the description on line 2 names it, as
-  `README.md` lines 220 to 229 at `1d57f2a` do. In a project with
-  `docs/agents/` alone, as the other guards; on every other tool and in
-  every other directory a silent pass. It reads the decoded command in
-  every segment between `&`, `|`, `;` and parentheses, as the install guard
-  and the mark guard do, and blocks: `git` with `-c` or `--config-env` on
-  `user.name`, `user.email`, `author.name`, `author.email`,
-  `committer.name` or `committer.email`, the key in any mixture of upper and
-  lower case as git reads it, read between `git` and its command alone, the
-  options read as the branch guard reads git's own options, so that `git
-  commit -c <commit>` is not read; `--author` at `git commit`, with
-  `--reset-author` passing and `--author` at `git log` and the other
-  commands that filter by it passing; `GIT_AUTHOR_NAME`,
+  `hooks/hooks.json` without an `if`, since a variable before the command does
+  not begin with `git`; the description on line 2 names it, as `README.md`
+  lines 220 to 229 at `1d57f2a` do. In a project with `docs/agents/` alone, as
+  the other guards; on every other tool and in every other directory a silent
+  pass. It reads the decoded command in every segment between `&`, `|`, `;`
+  and parentheses, as the install guard and the mark guard do, and blocks:
+  `git` with `-c` or `--config-env` on `user.name`, `user.email`,
+  `author.name`, `author.email`, `committer.name` or `committer.email`, the
+  key in any mixture of upper and lower case as git reads it, read between
+  `git` and its command alone, the options read as the branch guard reads
+  git's own options, so that `git commit -c <commit>` is not read; `--author`
+  at `git commit`, with `--reset-author` passing and `--author` at `git log`
+  and the other commands that filter by it passing; `GIT_AUTHOR_NAME`,
   `GIT_AUTHOR_EMAIL`, `GIT_COMMITTER_NAME` and `GIT_COMMITTER_EMAIL` set
   anywhere in the command, with `env` or `export` too; `EMAIL` set in a
   command that calls git; `GIT_CONFIG_KEY_<n>` set to one of the keys; and
@@ -15554,46 +15554,52 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `get`, `--list`, `list`, `--edit` and the other reading options pass.
   Measured on 9 October 2026 with git 2.50.1 in a scratch repository with
   `GIT_CONFIG_GLOBAL` on a throwaway file: `author.name`, `author.email`,
-  `committer.name` and `committer.email` given with `-c` overwrite
-  `user.name` and `user.email` in the commit; without `user.email` git
-  takes `EMAIL`; `User.Email` reads as `user.email`; `git commit -c HEAD`
-  takes the message and the author of `HEAD`, the committer from the
-  configuration — the order said it takes a message, and the manual page
-  and the measurement say the authorship as well, so the hook's head names
-  it among what is not read; and without `user.email` and `EMAIL` git
-  2.50.1 does not refuse but guesses an address from the machine's name,
-  with a warning, which the approved message below does not say — it says
-  git refuses, which holds with `user.useConfigOnly` set or where the guess
-  fails — and the message stands as approved. The block: the message on
-  stderr and exit 2, through no function, since a line routed through one
-  stands in no search set of the stock-take, the first of the three defects
-  recorded below; `<what was read>` filled with the form read without its
-  value, `-c user.email`, `-c Author.Name`, `--config-env=user.name`,
-  `--author`, `GIT_AUTHOR_EMAIL`, `EMAIL`, `GIT_CONFIG_KEY_0=user.email`,
-  `git config --global user.name`, as the measurement below shows them. Not
-  read, and said so in the head of the hook: a configuration file written
-  with the editing tool, with `git config --edit` or by another program;
-  `include.path`; `GIT_CONFIG_GLOBAL`, `GIT_CONFIG_SYSTEM`,
-  `GIT_CONFIG_PARAMETERS`, `HOME`, `XDG_CONFIG_HOME` and the other detours
-  that point git at another file; a git alias; `git commit -c` or `-C
-  <commit>`; `git am`, `cherry-pick`, `rebase` and the other commands that
-  carry an author over from a patch or a commit; a key held in a variable
-  alone. The three block lines of the loop carry a short comment each, so
-  that each can be an anchor; two comment lines of the hook hold the word
-  "case" and stand in the search set as the second defect below says, each
-  recorded as rationale.
+  `committer.name` and `committer.email` given with `-c` overwrite `user.name`
+  and `user.email` in the commit; without `user.email` git takes `EMAIL`;
+  `User.Email` reads as `user.email`; `git commit -c HEAD` takes the message
+  and the author of `HEAD`, the committer from the configuration — the order
+  said it takes a message, and the manual page and the measurement say the
+  authorship as well, so the hook's head names it among what is not read; and
+  without `user.email` and `EMAIL` git 2.50.1 does not refuse but guesses an
+  address from the machine's name, with a warning, which the message as
+  approved on 9 October 2026 did not say — it said git refuses, which holds
+  with `user.useConfigOnly` set or where the guess fails — and whose last
+  sentence says since 10 October 2026, the addendum below, that git takes an
+  identity from the machine or refuses. The block: the message on stderr and
+  exit 2, through no function, since a line routed through one stands in no
+  search set of the stock-take, the first of the three defects recorded below;
+  `<what was read>` filled with the form read without its value, `-c
+  user.email`, `-c Author.Name`, `--config-env=user.name`, `--author`,
+  `GIT_AUTHOR_EMAIL`, `EMAIL`, `GIT_CONFIG_KEY_0=user.email`, `git config
+  --global user.name`, as the measurement below shows them. Not read, and said
+  so in the head of the hook: a configuration file written with the editing
+  tool, with `git config --edit` or by another program; `include.path`;
+  `GIT_CONFIG_GLOBAL`, `GIT_CONFIG_SYSTEM`, `GIT_CONFIG_PARAMETERS`, `HOME`,
+  `XDG_CONFIG_HOME` and the other detours that point git at another file; a
+  git alias; `git commit -c` or `-C <commit>`; `git am`, `cherry-pick`,
+  `rebase` and the other commands that carry an author over from a patch or a
+  commit; a key held in a variable alone. The three block lines of the loop
+  carry a short comment each, so that each can be an anchor; two comment lines
+  of the hook hold the word "case" and stand in the search set as the second
+  defect below says, each recorded as rationale.
 
-  Text 7, the message of the identity guard, approved on 9 October 2026,
-  `<what was read>` the form read, without its value: "Blocked by devloop:
-  this command sets the identity of a commit itself — <what was read> —
-  instead of using the one git config gives. Commit with that identity, and
-  do not set another one another way: not with git -c, --author, the
-  variables GIT_AUTHOR_…, GIT_COMMITTER_…, EMAIL or GIT_CONFIG_…, and not
-  with git config user.name or user.email. Not with an address from your
-  session's context either: what stands in a commit becomes public with the
-  push. Where git config gives no identity, git refuses to commit; then hand
-  the user the two commands git config --global user.name and git config
-  --global user.email, to run with values of their own choosing."
+  Text 7, the message of the identity guard, approved on 9 October 2026, its
+  last sentence as it stands since 10 October 2026, `<what was read>` the form
+  read, without its value: "Blocked by devloop: this command sets the identity
+  of a commit itself — <what was read> — instead of using the one git config
+  gives. Commit with that identity, and do not set another one another way:
+  not with git -c, --author, the variables GIT_AUTHOR_…, GIT_COMMITTER_…,
+  EMAIL or GIT_CONFIG_…, and not with git config user.name or user.email. Not
+  with an address from your session's context either: what stands in a commit
+  becomes public with the push. Where git config gives no identity, git takes
+  one from the machine or refuses to commit; then hand the user the two
+  commands git config --global user.name and git config --global user.email,
+  to run with values of their own choosing." The last sentence was approved on
+  10 October 2026, the addendum of that day below, and replaces "Where git
+  config gives no identity, git refuses to commit; then hand the user the two
+  commands git config --global user.name and git config --global user.email,
+  to run with values of their own choosing.", approved on 9 October 2026 with
+  the rest.
 
   Built: the plan, decisions 3 and 11. `docs/plan.md` milestone 3 says that
   its two closing runs go on the person's Mac in the terminal, where it
@@ -15889,7 +15895,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   block, the checksum line `1375902553 587` and the count of twelve for the
   notice, 2, 2 and 1 for the two arming commands and the default branch, 1
   twice for the status forms, the check on offers seventeen lines, the lines
-  of `setup-checks` at 1059 and 1075 now where they stood at 1025 and 1041,
+  of `setup-checks` at 1059 and 1075 now where they stood at 1017 and 1033,
   the check on handovers nine lines over eight sites, the lines of
   `setup-checks` at 437, 701 and 702 unchanged, the check on the unattended
   finish silent over `build-work` alone, the check on the second statement

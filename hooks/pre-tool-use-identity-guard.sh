@@ -33,13 +33,15 @@ INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' 
 # --edit or by another program; include.path; GIT_CONFIG_GLOBAL,
 # GIT_CONFIG_SYSTEM, GIT_CONFIG_PARAMETERS, HOME, XDG_CONFIG_HOME and the other
 # detours that point git at another file; a git alias; git commit -c or -C
-# <commit>, which takes the author of that commit; git am, cherry-pick,
-# rebase and the other commands that carry an author over from a patch or a
-# commit; a key held in a variable alone. The message is the one approved on 9
-# October 2026, word for word in docs/roadmap.md under the entry of that day,
-# <what was read> filled with the form read, without its value. Every block
-# leaves through the two lines at the end, since a line routed through a
-# function stands in no search set of the stock-take.
+# <commit>, which takes the author of that commit; git am, cherry-pick, rebase
+# and the other commands that carry an author over from a patch or a commit; a
+# key held in a variable alone. The message is the one approved on 9 October
+# 2026, its last sentence the one approved on 10 October 2026 - git takes an
+# identity from the machine or refuses - word for word in docs/roadmap.md under
+# the entry of 9 October 2026 and its addendum of 10 October 2026, <what was
+# read> filled with the form read, without its value. Every block leaves
+# through the two lines at the end, since a line routed through a function
+# stands in no search set of the stock-take.
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0
@@ -123,5 +125,5 @@ set +f
 
 [ -n "$READ" ] || exit 0
 
-echo "Blocked by devloop: this command sets the identity of a commit itself — $READ — instead of using the one git config gives. Commit with that identity, and do not set another one another way: not with git -c, --author, the variables GIT_AUTHOR_…, GIT_COMMITTER_…, EMAIL or GIT_CONFIG_…, and not with git config user.name or user.email. Not with an address from your session's context either: what stands in a commit becomes public with the push. Where git config gives no identity, git refuses to commit; then hand the user the two commands git config --global user.name and git config --global user.email, to run with values of their own choosing." >&2
+echo "Blocked by devloop: this command sets the identity of a commit itself — $READ — instead of using the one git config gives. Commit with that identity, and do not set another one another way: not with git -c, --author, the variables GIT_AUTHOR_…, GIT_COMMITTER_…, EMAIL or GIT_CONFIG_…, and not with git config user.name or user.email. Not with an address from your session's context either: what stands in a commit becomes public with the push. Where git config gives no identity, git takes one from the machine or refuses to commit; then hand the user the two commands git config --global user.name and git config --global user.email, to run with values of their own choosing." >&2
 exit 2

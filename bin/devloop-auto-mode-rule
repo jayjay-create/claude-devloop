@@ -26,18 +26,35 @@ What write does. Where the file or the list is missing, the list is created,
 with "$defaults" before the rule; where a list stands, the rule is appended to
 it, without "$defaults"; where the rule stands already, nothing changes. Every
 other key and value of the file stays as it was, in the order it had; the file
-is written through a temporary file in the same directory and moved over the
-old one, so that no half file is ever left. Where the file is not valid JSON,
-holds a key twice, autoMode is not an object or autoMode.allow is not a list,
-nothing is written and the reason is printed, exit 2; the same where the write
-itself is refused. Both ways print one line on stdout and exit as above.
+is written through a temporary file in the directory of the file itself and
+moved over the old one, so that no half file is ever left. Where settings.json
+is a symbolic link, the file it points to is written, through every link on the
+way, and the link stays as it is: the temporary file is made in the directory
+of that file, so that the move stays on one file system, and that file keeps
+its permissions. A link to a file that does not exist yet, in a directory that
+does, has the file made there, and the link stays. Where that directory does
+not exist either, nothing is written and no directory is made, since one could
+stand in the way of a repository yet to be fetched to that place; the reason is
+printed, and the answer is the one for a refused write. Until 10 October 2026
+the temporary file was made beside the link and moved over the link itself,
+which left a plain file in its place and the file it pointed to unchanged,
+measured that day, the addendum of the roadmap entry of 9 October 2026; the
+changelog of Claude Code names such links as a setup it serves, under 2.1.181,
+a relative link under a linked ~/.claude, and under 2.1.247, a link managed by
+nix, home-manager or stow. A hard link is not kept, as before: the other name
+keeps the old content. Reading follows a link as any open does. Where the file
+is not valid JSON, holds a key twice, autoMode is not an object or
+autoMode.allow is not a list, nothing is written and the reason is printed,
+exit 2; the same where the write itself is refused. Both ways print one line on
+stdout and exit as above.
 
 It needs python3 and nothing else. On a Mac, python3 comes with the Command
 Line Tools that bring git, so a machine this plugin runs on has it, and the
 stock-take tool and the check under "Before you change anything, run this" in
 docs/skill-conventions.md rest on it already; jq is not on a Mac by default.
-Measured on 9 October 2026 with HOME in a throwaway directory, the roadmap entry
-of that day.
+Measured on 9 October 2026 with HOME in a throwaway directory, the roadmap
+entry of that day, and on 10 October 2026 through links, its addendum of that
+day.
 """
 
 import json
@@ -103,7 +120,13 @@ def load(path):
 
 
 def write_file(path, data, existed):
-    d = os.path.dirname(path)
+    # A link is followed to the file it points to, and the link itself stays.
+    target = os.path.realpath(path)
+    d = os.path.dirname(target)
+    if os.path.islink(path) and not os.path.isdir(d):
+        raise OSError("the link %s points to %s, whose directory does not "
+                      "exist, and this program makes none there"
+                      % (path, target))
     os.makedirs(d, exist_ok=True)
     fd, tmp = tempfile.mkstemp(prefix=".settings.json.", dir=d)
     try:
@@ -113,8 +136,8 @@ def write_file(path, data, existed):
             f.flush()
             os.fsync(f.fileno())
         if existed:
-            shutil.copymode(path, tmp)
-        os.replace(tmp, path)
+            shutil.copymode(target, tmp)
+        os.replace(tmp, target)
     except BaseException:
         try:
             os.unlink(tmp)

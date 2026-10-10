@@ -31,10 +31,16 @@ Three properties hold everywhere:
     /plugin marketplace add jayjay-create/claude-devloop
     /plugin install devloop@jayjay-create
 
-You need git, a GitHub account, and `gh` signed in. The workflow keeps its state
-in issues and their blocking relationships, so a tracker is not optional — the
-setup stops without one and says so. A repository is not needed up front; it
-offers to create one.
+You need git with your name and email address set, a GitHub account, and `gh`
+signed in. Every commit devloop makes carries that name and address, and the
+push puts them on GitHub, where they stay. Where none is set, git takes them
+from your machine — on a Mac your user name and the computer's name — or refuses
+to commit. To keep your address private, use the `noreply` address GitHub offers
+in your email settings. Set both with `git config --global user.name` and
+`git config --global user.email`. The workflow keeps its state in issues and
+their blocking relationships, so a tracker is not optional — the setup stops
+without one and says so. A repository is not needed up front; it offers to
+create one.
 
 ## What you type
 
