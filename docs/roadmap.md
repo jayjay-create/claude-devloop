@@ -16355,7 +16355,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   JavaScript 2.15 million.
 
   The two tools. The conditions stand: a task needs the tool, it is not a
-  check tool, `docs/plan.md` line 274, the project cannot enter it in its
+  check tool, `docs/plan.md` line 273, the project cannot enter it in its
   package file, and it comes through Homebrew to `/opt/homebrew/bin`,
   decision 12. The package file is now `package.json`: no npm package may
   bring a command of the tool that runs. Run 1, the answer no, the command
