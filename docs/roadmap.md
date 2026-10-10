@@ -14374,7 +14374,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Homebrew to `/opt/homebrew/bin`; `sqlc` is enterable in Go with `go get
   -tool`. Proposed and not decided: for the task that needs a browser,
   Playwright, not Cypress or Puppeteer, whose download runs alongside `npm
-  install`.
+  install`. Changed on 10 October 2026 in the project, the two tools and the
+  browser, the roadmap entry of that day on the arrangement of the closing
+  runs; everything else here stands.
 
   Decided on 9 October 2026:
 
@@ -15215,8 +15217,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   beside those places `build-work` lines 1013 to 1026,
   `shared/fetch-three-times.md` lines 24 to 26 and `bin/devloop-bounded` lines
   4 to 6, all on the default limit of a call without a limit of its own and
-  left as they stand, and `docs/plan.md` lines 428 and 678 on a process started
-  in the background, another matter.
+  left as they stand, `docs/plan.md` lines 428 and 678 on a process started
+  in the background, another matter, and ten lines on other matters still:
+  `docs/plan.md` line 51, the second permission recorded beside the first;
+  `docs/plan.md` line 449 and `docs/skill-conventions.md` lines 1305, 1317
+  and 1320, the backgrounded agent as the exception under "Nothing resumes on
+  its own" and the machine having to be awake; `docs/skill-conventions.md`
+  line 372 and `shared/command-does-not-answer.md` line 92, a background
+  agent that did not come back is said; `plan-work` line 269 and
+  `untangle-idea` line 177, `research` run in the background; and `research`
+  line 22, the skill being that background agent — thirty-seven lines at
+  `6851919` in all.
 
   Three errors of this entry, corrected. First, lines 15138 to 15139 said the
   tool listed as not counting the seventy-four runs it listed at `ab34f96`;
@@ -16073,13 +16084,27 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   after the squash merge, whose one commit on `main` introduces the version
   and contains the change; the seven other outcomes of the program stand on
   lines unchanged since `1d57f2a`, and their runs count. Measured beside the
-  six cases below and named in the report as a finding, not built: where
-  `~/.claude` is itself a link to a directory that does not exist, `write` at
-  `2bf4824` refused with "[Errno 17] File exists: …/.claude" and made nothing,
-  and at `72b75c2` makes the directory the link points to and writes the file
-  there, since `os.path.realpath` resolves that link and `settings.json`
-  itself is no link; the order of this day decided the case of a linked file
-  alone.
+  six cases below and named in the report as a finding, not built, since the
+  case does not arise in practice: where `~/.claude` is itself a link to a
+  directory that does not exist, `write` at `2bf4824` refused with
+  "[Errno 17] File exists: …/.claude" and made nothing, and at `72b75c2`
+  makes the directory the link points to and writes the file there, since
+  `os.path.realpath` resolves that link and `settings.json` itself is no
+  link; the order of this day decided the case of a linked file alone. The
+  case does not arise because the directory the program writes into is the
+  one it runs out of: it is called as
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule`, `setup-checks` lines
+  892 to 894, the installed copy lies under `~/.claude/plugins/cache/`,
+  `docs/skill-conventions.md` lines 2449 to 2456, and where
+  `CLAUDE_CONFIG_DIR` is set it writes into that directory and the copy lies
+  there, lines 7 to 11 of its head and the settings page of Claude Code,
+  "Claude Code then stores your settings, session history, and plugins there
+  instead"; the session's log lies there too, which the run end to end below
+  read under `~/.claude/projects/`. Not measured: whether Claude Code starts
+  at all with such a link; and a plugin loaded with `--plugin-dir` out of
+  another folder, "Added support for pointing `--plugin-dir` at a folder of
+  plugins", changelog of Claude Code 2.1.265, does not lie there, so for that
+  case the session's log is the one witness.
 
   **Measured after the build, the hook for itself.** On 10 October 2026 from
   08:18:34 to 08:18:35 UTC at `72b75c2`, the tree clean, the hook started
