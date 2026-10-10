@@ -15819,104 +15819,475 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   answers `User` and `Organization`, exit 0. Step 8 itself runs first in the
   two runs that close milestone 3.
 
-  **In the table.** The three findings on `setup-checks` step 8 left the
-  table and stand as defects of this entry, their sites on the status lines
-  above and their evidence on the lines of the skill that answer them. The
-  records on the lines of step 8 that this order replaced are re-anchored
-  where the thing still stands — the no, `caffeinate` on `Darwin`, the two
-  cases under `--auto`, the yes before the two permissions, the gate order's
-  point 3 — or taken out where the line and its branch went, the six bullets
-  and the sentence against a first project among them; the branch "another
-  system whose own documentation backs a command, that command named" is
-  gone with lines 810 to 814, and the thing for another system is the one
-  that names no command, renamed after what it says. New things stand for
-  the reading before the question and its three answers, the plan off the
-  owner type, the question's yes with its first sentence gone, the five
-  parts as part of the straight path, the rule question with its four
-  outcomes, auto-merge read back in the gate order and where the gate stood,
-  the thirteen outcomes of the identity guard, the eight outcomes of
-  `bin/devloop-auto-mode-rule`, and the defects above; the registration in
-  `hooks/hooks.json` is re-anchored on the new description and renamed. The
-  runs above are recorded on the hook's outcomes and on the program's
-  outcomes, at the branch's final state alone, the head of the tool. In the
-  commit that carries this entry the header line of the rule question in
-  step 8 is rewrapped, two lines, so that it and the header line of the
-  question above it, which read the same, can each carry an anchor; nothing
-  of what it says changed.
+  **In the table.** The three findings on `setup-checks` step 8 left the table
+  and stand as defects of this entry, their sites on the status lines above
+  and their evidence on the lines of the skill that answer them. The records
+  on the lines of step 8 that this order replaced are re-anchored where the
+  thing still stands — the no, `caffeinate` on `Darwin`, the two cases under
+  `--auto`, the yes before the two permissions, the gate order's point 3 — or
+  taken out where the line and its branch went, the six bullets and the
+  sentence against a first project among them; the branch "another system
+  whose own documentation backs a command, that command named" is gone with
+  lines 810 to 814, and the thing for another system is the one that names no
+  command, renamed after what it says. New things stand for the reading before
+  the question and its three answers, the plan off the owner type, the
+  question's yes with its first sentence gone, the five parts as part of the
+  straight path, the rule question with its four outcomes, auto-merge read
+  back in the gate order and where the gate stood, the thirteen outcomes of
+  the identity guard, the eight outcomes of `bin/devloop-auto-mode-rule`, and
+  the defects above; the registration in `hooks/hooks.json` is re-anchored on
+  the new description and renamed. The runs above were recorded on the hook's
+  outcomes and on the program's outcomes, at what was then the branch's final
+  state, the head of the tool; their rows are replaced by those of the runs of
+  10 October 2026, the addendum of that day below. In the commit that carries
+  this entry the header line of the rule question in step 8 is rewrapped, two
+  lines, so that it and the header line of the question above it, which read
+  the same, can each carry an anchor; nothing of what it says changed.
 
   **Addendum of the same day: the tool, its self-test and the nineteen checks
   under 0.134.0 at `bd0419c`.** Run in this tree after the two commits that
   carry the build, `1d57f2a`, and this entry with the table, `bd0419c`, with
-  the tree clean, on 9 October 2026 from 19:46:39 to 19:47:33 UTC. The tool
-  at 0.134.0 and `bd0419c` answered `BROKEN RECORDS: 0`, `FINDINGS: 23`,
-  `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0
-  of 2579`, exit 0, written down on its exit 0 outcome; the twenty-three
-  findings are the twenty-six that stood at `c819499` less the three on
-  `setup-checks` step 8, which became defects of this entry; the search set
-  grew from 2497 to 2579 by the lines this branch adds to it, in the hook,
-  the program, the three skills, the conventions and this entry, whose head
-  and nine status lines it takes in. The counts per state and kind, at
-  `c819499` and at `bd0419c`: undetermined 28 and 28; recorded and not built
-  193 and 196, the defects 182 and 185; built and never walked 1156 and 1171,
-  the skill branches 751 and 762, the shared texts 149 and 149, the hook
-  outcomes 32 and 32, the hook registration 1 and 1, the program outcomes 31
-  and 31, the check commands 20 and 21, the defects 172 and 175; walked 243
-  and 263, the skill branches 28 and 28, the shared texts 4 and 4, the hook
-  outcomes 64 and 77, the program outcomes 117 and 125, the check commands 20
-  and 19, the defects 10 and 10. The thirteen hook outcomes and the eight
-  program outcomes of this entry read as walked on the runs above; the three
-  defects the findings became read as built and never walked, their evidence
-  on the lines of `setup-checks` that answer them; the three defects recorded
-  and not built read so; the one check command that reads as built and never
-  walked now and as walked at `c819499` is the check on the unattended
-  finish, whose command block this order changed. Under `RUNS THAT DO NOT
-  COUNT` stand the eighty-seven runs of `c819499`, the same runs, those on
-  the units of `build-work` under "Unattended mode" and `plan-work` Stage 1
-  and on the no of step 8 with reasons naming `1d57f2a` now, since this order
-  changed lines there; and ten runs more, every run the table held on the
-  check on the unattended finish, from 14 September to 9 October 2026, each
-  with the reason that its version predates the last change to the check's
-  line at `1d57f2a`; ninety-seven in all. The lines of the search set that
-  can carry no unique anchor went from 89 to 97, the eight new ones named by
-  the tool: `nothing else.` in step 8, a line repeated in the skill; `case
-  "$TOK" in` twice in the identity guard; and `raise`, `if argv[1] ==
-  "read":` twice and `if state == "standing":` twice in
-  `bin/devloop-auto-mode-rule`, each repeated in its file; every one of them
-  is part of an outcome anchored on another line. The self-test at 0.134.0
-  and `bd0419c` answered, exit 0, `SELF-TEST PASSED: 88 cases; of the 74
-  messages this tool rejects, refuses or answers with, read off its own
-  source, 74 are asserted by a case and 0 by none; the lines of the report
-  are not in that count`, the source of the tool changed in its head alone. The
+  the tree clean, on 9 October 2026 from 19:46:39 to 19:47:33 UTC. The tool at
+  0.134.0 and `bd0419c` answered `BROKEN RECORDS: 0`, `FINDINGS: 23`, `UNITS
+  WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 2579`,
+  exit 0, written down then on its exit 0 outcome, a row replaced since by
+  that of the run of 10 October 2026; the twenty-three findings are the
+  twenty-six that stood at `c819499` less the three on `setup-checks` step 8,
+  which became defects of this entry; the search set grew from 2497 to 2579 by
+  the lines this branch adds to it, in the hook, the program, the three
+  skills, the conventions and this entry, whose head and nine status lines it
+  takes in. The counts per state and kind, at `c819499` and at `bd0419c`:
+  undetermined 28 and 28; recorded and not built 193 and 196, the defects 182
+  and 185; built and never walked 1156 and 1171, the skill branches 751 and
+  762, the shared texts 149 and 149, the hook outcomes 32 and 32, the hook
+  registration 1 and 1, the program outcomes 31 and 31, the check commands 20
+  and 21, the defects 172 and 175; walked 243 and 263, the skill branches 28
+  and 28, the shared texts 4 and 4, the hook outcomes 64 and 77, the program
+  outcomes 117 and 125, the check commands 20 and 19, the defects 10 and 10.
+  The thirteen hook outcomes and the eight program outcomes of this entry read
+  as walked on the runs above; the three defects the findings became read as
+  built and never walked, their evidence on the lines of `setup-checks` that
+  answer them; the three defects recorded and not built read so; the one check
+  command that reads as built and never walked now and as walked at `c819499`
+  is the check on the unattended finish, whose command block this order
+  changed. Under `RUNS THAT DO NOT COUNT` stand the eighty-seven runs of
+  `c819499`, the same runs, those on the units of `build-work` under
+  "Unattended mode" and `plan-work` Stage 1 and on the no of step 8 with
+  reasons naming `1d57f2a` now, since this order changed lines there; and ten
+  runs more, every run the table held on the check on the unattended finish,
+  from 14 September to 9 October 2026, each with the reason that its version
+  predates the last change to the check's line at `1d57f2a`; ninety-seven in
+  all. The lines of the search set that can carry no unique anchor went from
+  89 to 97, the eight new ones named by the tool: `nothing else.` in step 8, a
+  line repeated in the skill; `case "$TOK" in` twice in the identity guard;
+  and `raise`, `if argv[1] == "read":` twice and `if state == "standing":`
+  twice in `bin/devloop-auto-mode-rule`, each repeated in its file; every one
+  of them is part of an outcome anchored on another line. The self-test at
+  0.134.0 and `bd0419c` answered, exit 0, `SELF-TEST PASSED: 88 cases; of the
+  74 messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none; the lines of the report are
+  not in that count`, the source of the tool changed in its head alone. The
   nineteen checks under "Before a handover, run these" at 0.134.0 and
-  `bd0419c` printed what their sections call green, one run written down on
-  each of the nineteen: the two empty lists of the registration, the twelve
-  counts of the invocability, the one locked skill, `start-work` named in
+  `bd0419c` printed what their sections call green, one run written down then
+  on each of the nineteen, rows replaced since by those of 10 October 2026:
+  the two empty lists of the registration, the twelve counts of the
+  invocability, the one locked skill, `start-work` named in `build-work` in
+  prose and not as a call, the twelve lines of the language block, the
+  checksum line `1375902553 587` and the count of twelve for the notice, 2, 2
+  and 1 for the two arming commands and the default branch, 1 twice for the
+  status forms, the check on offers seventeen lines, the lines of
+  `setup-checks` at 1059 and 1075 now where they stood at 1017 and 1033, the
+  check on handovers nine lines over eight sites, the lines of `setup-checks`
+  at 437, 701 and 702 unchanged, the check on the unattended finish silent
+  over `build-work` alone, the check on the second statement its one line,
+  `build-work` 1381, and the rest silent or the answer their section names;
+  the check on executables, which had named `bin/` as holding a file git does
+  not track before `1d57f2a` committed the program, silent. Two things of the
+  nineteen keep names that no longer say what the check prints — "unattended
+  finish: silence, both places name the loose issues" and "second statement:
+  two lines, both sound" — since runs hang on both, the rule in section C of
+  the tool; their notes say what holds since this day. The tool at `2bf4824`,
+  the branch's last commit after this addendum, one rewrapped line of it — the
+  self-test's sentence, which wrapped so that one of its lines repeated a line
+  of an earlier entry and broke the anchor of a run recorded there — and the
+  run row of the self-test re-anchored on the rewrapped line, answered as at
+  `bd0419c` in all but one thing: nothing broken, twenty-three findings, no
+  unit without a straight path, none of its lines uncovered, ninety-seven runs
+  that do not count, and the check on the unattended finish reading as walked
+  on the run this addendum records, since that run ran under 0.134.0, which
+  contains the change to its line; so built and never walked counts 1170, the
+  check commands 20, and walked 264, the check commands 20. The rows of the
+  forty-four runs this entry and this addendum record are replaced in the
+  table by those of the runs of 10 October 2026, the addendum of that day
+  below.
+
+  **Addendum of 10 October 2026: three line numbers of this entry, the program
+  writing through a link, the last sentence of text 7, text 8 in the README;
+  the version stays 0.134.0.** On `task/mode-offer-and-commit-identity`, pull
+  request #162, off `2bf4824`, the branch's last commit after the addendum
+  above; the build in `72b75c2`, this addendum and the rows of the table in
+  the commit after it. Every line number of this addendum holds at `72b75c2`
+  unless it says otherwise; the line numbers of this entry that it corrects
+  and names hold at `2bf4824`, since the paragraphs rewrapped in `72b75c2`
+  moved the lines after them. The report stands on this machine as
+  `~/devloop-report-2026-10-10-mode-offer-and-commit-identity-addendum.md`, in
+  English, and is not in the repository. Claude Code 2.1.295, `git version
+  2.50.1 (Apple Git-155)` and gh 2.96.0 on this machine, read with `claude
+  --version`, `git --version` and `gh --version`.
+
+  **Decided on 10 October 2026: git without an identity.** The paragraph on
+  the guard above records that git 2.50.1 without `user.email` and `EMAIL`
+  does not refuse but takes an address from the machine's name, with a
+  warning, where text 7 as approved on 9 October 2026 said that git refuses.
+  Decided: the last sentence of text 7 is corrected, and the README says what
+  to set up before working with devloop, text 8. Considered and rejected: a
+  guard on `git commit` while git has no identity, and an eighth start
+  condition in `build-work` under "Unattended mode". The reason: the seven
+  start conditions concern the quality of what is built and the course of the
+  run, and whether the identity is set or taken from the machine changes
+  neither; where git refuses instead of guessing, that shows at the first
+  commit, which is made at the setup of the project with the person there,
+  `setup-project` line 710 at `2bf4824`.
+
+  **Text 7, its last sentence approved on 10 October 2026**, in place of
+  "Where git config gives no identity, git refuses to commit; then hand the
+  user the two commands git config --global user.name and git config --global
+  user.email, to run with values of their own choosing.": "Where git config
+  gives no identity, git takes one from the machine or refuses to commit; then
+  hand the user the two commands git config --global user.name and git config
+  --global user.email, to run with values of their own choosing." It stands in
+  `hooks/pre-tool-use-identity-guard.sh` line 128, the one `echo` of the hook,
+  word for word; the head of the hook, lines 38 to 42, says that the message
+  was approved on 9 October 2026 and its last sentence on 10 October 2026; the
+  paragraph "Text 7, the message of the identity guard" above carries the text
+  as it holds since this day and names the sentence it replaces, and the
+  paragraph on the guard above says what holds since this day in place of "the
+  message stands as approved". The line of the `echo` carries no anchor of the
+  table and is part of no thing, so the thirteen outcomes of the hook stand on
+  the lines they stood on, and the runs below count.
+
+  **Text 8, approved on 10 October 2026**, the first sentences of the
+  paragraph under "Install" in `README.md`, in place of "You need git, a
+  GitHub account, and `gh` signed in.": "You need git with your name and email
+  address set, a GitHub account, and `gh` signed in. Every commit devloop
+  makes carries that name and address, and the push puts them on GitHub, where
+  they stay. Where none is set, git takes them from your machine — on a Mac
+  your user name and the computer's name — or refuses to commit. To keep your
+  address private, use the `noreply` address GitHub offers in your email
+  settings. Set both with `git config --global user.name` and `git config
+  --global user.email`." The rest of the paragraph stands word for word; the
+  paragraph is lines 34 to 43, wrapped to the width of the file by hand so
+  that no backticked command is split over two lines.
+
+  **The evidence for what the two texts say**, each read at its source on 10
+  October 2026. A commit carries name and address of its author and of its
+  committer: the manual page `git-commit-tree` of git 2.50.1 on this machine,
+  under "COMMIT INFORMATION", "A commit encapsulates: all parent object ids;
+  author name, email and date; committer name and email and the commit time",
+  three points of a list there. Without an identity git makes the address from
+  the user name, "@" and the name of the machine, and the name from the
+  account: the source of git 2.50.1 at the tag `v2.50.1` on
+  `github.com/git/git`, `ident.c` lines 147 to 160, `copy_email`, "Make up a
+  fake email address (name + '@' + hostname [+ '.' + domainname])", and lines
+  162 to 168, `ident_default_name` off the account's gecos field; after such a
+  commit git prints "Your name and email address were configured automatically
+  based on your username and hostname. Please check that they are accurate.",
+  `sequencer.c` lines 1368 to 1370; measured with 2.50.1 on this Mac, the
+  paragraph on the guard above. Where git cannot complete the machine's name,
+  it refuses: `ident.c` lines 139 to 143 append ".(none)" and mark the address
+  as bogus, and lines 477 to 480 die with "unable to auto-detect email address
+  (got '%s')"; the order of this day measured it on 10 October 2026 under
+  Linux with git 2.43.0, machine name `vm`, without any identity: `fatal:
+  unable to auto-detect email address (got 'root@vm.(none)')`, exit 128. The
+  `noreply` address: the GitHub help page "Email addresses reference", "If
+  you'd like to keep your email address private, you can use a GitHub-provided
+  `noreply` email address." "Where they stay": the commits of a pull request
+  stay on GitHub after its branch is deleted — `git ls-remote origin
+  'refs/pull/160/*'` answers `65026ac…` at `refs/pull/160/head`, and after
+  `git fetch origin refs/pull/160/head`, `git merge-base --is-ancestor
+  FETCH_HEAD origin/main` exits 1, so the commit is held though no branch of
+  `main`'s history reaches it; and a squash merge writes the address of a
+  commit of the branch, where it is not the address of the commit on `main`,
+  into that commit as `Co-authored-by`: the last three commits of pull request
+  #160, `git log --format='%ae' FETCH_HEAD -3`, carry the placeholder address
+  with `DEINE-ID`; `git log -1
+  --format='%ae%n%(trailers:key=Co-authored-by,valueonly)' ab34f96` shows the
+  account's address as the author and under it that placeholder address;
+  `c819499`, whose branch commits carried the account's address, has no such
+  line; and `git log origin/main
+  --format='%(trailers:key=Co-authored-by,valueonly)' | grep -c 'DEINE-ID'`
+  answers 155 at 214 commits on `main`, `git rev-list --count origin/main`.
+  devloop merges with squash, `shared/arming-command.md` line 2,
+  `mergeMethod:SQUASH`.
+
+  **The program writing through a link, measured, decided and rebuilt.**
+  Measured on 10 October 2026 at `2bf4824`, before the build,
+  `bin/devloop-auto-mode-rule` with `HOME` on a throwaway directory,
+  `settings.json` under its `.claude` an absolute link to a file in another
+  directory, 38 bytes, the keys `theme` and `model`, the permissions 600:
+  `write` exit 0, "the rule is entered in …/.claude/settings.json: the list
+  autoMode.allow created, with "$defaults" before the rule"; afterwards a
+  plain file of 525 bytes stood where the link had been, the link was gone,
+  and the file it had pointed to stood unchanged at 38 bytes. The reason:
+  `write_file`, lines 105 to 123 at `2bf4824`, made the temporary file in the
+  directory of the link and moved it over the link itself with
+  `os.replace(tmp, path)`, line 117. Whoever fetches their settings through
+  such a link from a repository of their own loses the link without noticing.
+  The changelog of Claude Code names such links as a setup it serves, read
+  there on 10 October 2026: under 2.1.181, "Fixed settings changes (such as
+  `/effort` or `/model`) failing with ENOENT when `~/.claude/settings.json` is
+  a relative symlink under a symlinked `~/.claude`", and under 2.1.247, "Fixed
+  the Bash sandbox's after-command cleanup deleting a dotfile-managed
+  `~/.claude/settings.json` symlink (nix/home-manager, stow) when it is
+  repointed outside the sandbox's writable area". Decided and built in
+  `72b75c2`, `write_file` lines 122 to 146: the path is resolved with
+  `os.path.realpath`, which follows every link on the way, and where
+  `settings.json` is a link the file it points to is written and the link
+  stays as it is; the temporary file is made in the directory of that file, so
+  that the move stays on one file system, that file's permissions are copied
+  onto it, and it is moved over that file. A link to a file that does not
+  exist yet, in a directory that does, has the file made there, and the link
+  stays; where that directory does not exist either, the program makes none,
+  since one could stand in the way of a repository yet to be fetched to that
+  place, writes nothing and raises `OSError` with the reason, which the caller
+  prints as "not written: the write was refused: the link … points to …, whose
+  directory does not exist, and this program makes none there", exit 2, the
+  outcome of a refused write. Reading and every case without a link stay as
+  they were; a hard link is not kept, as before, the other name keeping the
+  old content. The head of the program says all of it, with the two entries of
+  the changelog, lines 25 to 49, and its last paragraph names this day's
+  measurement. `setup-checks` line 899, "written over a temporary file so that
+  no half file is ever left", stays true and stays as it is; the paragraph of
+  this entry on the rule for the classifier says since `72b75c2` what holds.
+  Two lines came into the search set with the build, `if os.path.islink(path)
+  and not os.path.isdir(d):`, line 126, and `raise OSError("the link %s points
+  to %s, whose directory does not "`, line 127, each recorded as part of the
+  outcome "write: the write itself refused, not written with the error, exit
+  2", whose anchor, `except OSError as e:`, stands unchanged like the anchors
+  of the seven other outcomes; the two lines of the head that hold "exit",
+  recorded as rationale, are re-anchored on lines 48 and 49, where the
+  rewrapped paragraph holds the word now; the search set grew from 2579 to
+  2581 by those two lines. The outcome of the refused write stands since
+  `72b75c2` on a line changed after `1d57f2a` introduced 0.134.0, so by the
+  head of the tool its run of this day does not count on the branch and counts
+  after the squash merge, whose one commit on `main` introduces the version
+  and contains the change; the seven other outcomes of the program stand on
+  lines unchanged since `1d57f2a`, and their runs count. Measured beside the
+  six cases below and named in the report as a finding, not built: where
+  `~/.claude` is itself a link to a directory that does not exist, `write` at
+  `2bf4824` refused with "[Errno 17] File exists: …/.claude" and made nothing,
+  and at `72b75c2` makes the directory the link points to and writes the file
+  there, since `os.path.realpath` resolves that link and `settings.json`
+  itself is no link; the order of this day decided the case of a linked file
+  alone.
+
+  **Measured after the build, the hook for itself.** On 10 October 2026 from
+  08:18:34 to 08:18:35 UTC at `72b75c2`, the tree clean, the hook started
+  through its own first line and fed its JSON on stdin — `tool_name`,
+  `permission_mode`, `cwd` and `tool_input.command`, the command encoded as
+  the tool encodes it — in a throwaway project with `docs/agents/` and one
+  without, `CLAUDE_PROJECT_DIR` on each, in this session's scratch directory;
+  the harness is a python3 script there, not in the repository. Nothing below
+  was run; the hook alone read each command. Every case the paragraph of 9
+  October 2026 above lists answered as it did there, exit for exit and form
+  for form, and at every block text 7 stood on stderr whole, ending on the
+  last sentence as approved this day, stdout empty. Under `default` in the
+  project with `docs/agents/`: I1 `git -c user.email=probe@example.invalid
+  commit --allow-empty -m m`, exit 2 with `-c user.email`; I2, exit 2 with `-c
+  Author.Name`; I3, exit 2 with `--config-env=user.name`; I4, exit 2 with
+  `--author`; I5 twice, exit 2 with `GIT_AUTHOR_EMAIL`; I6, exit 2 with
+  `GIT_COMMITTER_NAME`; I7, exit 2 with `EMAIL`; I8, exit 2 with
+  `GIT_CONFIG_KEY_0=user.email`; the four of I9, exit 2 with `git config
+  user.email`, `git config --global user.name`, `git config --unset
+  user.email` and `git config set user.email`; the three of I10 and the seven
+  of I11, exit 0 each, no output. I12, the seven commands in the project
+  without `docs/agents/`, exit 0 each, no output. Under `auto` in the project
+  with `docs/agents/`: the ten blocks of that paragraph, exit 2 each, with `-c
+  user.email` three times, `-cuser.email`, `--config-env user.name`,
+  `--author`, `git config --file x user.email`, `git config --remove-section
+  user`, `git config --add user.email` and `git config --global --unset-all
+  user.email`; its nine passes, exit 0 each, no output. With `tool_name`
+  `Edit` on a file named `.gitconfig`, exit 0, no output; with
+  `CLAUDE_PROJECT_DIR` on a directory that does not exist, exit 0, no output.
+  Fifty-one cases, none answering otherwise than on 9 October 2026.
+
+  **Measured after the build, the program for itself.** On 10 October 2026
+  from 08:18:36 to 08:18:37 UTC at `72b75c2`, `bin/devloop-auto-mode-rule`
+  with `HOME` on a throwaway directory per case and `CLAUDE_CONFIG_DIR` unset
+  but where the case sets it, every output on stdout; `<HOME>` stands for that
+  directory and "…" for a path under it. The twelve cases of the paragraph of
+  9 October 2026 above answered as they did there: no file, `read` exit 1,
+  "the file does not exist", `write` exit 0, "the list autoMode.allow created,
+  with "$defaults" before the rule", `read` exit 0, the file holding
+  `autoMode`, `allow`, `"$defaults"` and the rule and nothing else; `theme`,
+  `permissions` and `env` without `autoMode`, `read` exit 1, "the file holds
+  no autoMode", `write` exit 0, the three keys in their order and `autoMode`
+  after them; `autoMode` with `classifyAllShell` and no `allow` between
+  `theme` and `z`, `read` exit 1, "autoMode holds no allow list", `write` exit
+  0, `theme`, `autoMode`, `z` in that order and `classifyAllShell` before
+  `allow`; `autoMode` a string, `read` exit 2, "the settings file cannot be
+  read for the rule: autoMode in … is not an object", `write` exit 2, "not
+  written: autoMode in … is not an object", the file as it was; a list with
+  `"$defaults"` and another rule, `read` exit 1, "the list autoMode.allow does
+  not carry it", `write` exit 0, "appended to the list autoMode.allow", the
+  rule third and `model` after it; a list carrying the rule, compact, `read`
+  exit 0, `write` exit 0, "the rule stands in … already; nothing changed", the
+  file byte for byte as it was; not valid JSON, the file `{"theme": "dark",
+  "env": }`, `read` and `write` exit 2, "… is not valid JSON: Expecting value:
+  line 1 column 26 (char 25)", the file as it was; `allow` a string, exit 2,
+  "autoMode.allow in … is not a list"; `theme` twice, exit 2, "… is not valid
+  JSON: the key 'theme' stands twice in one object"; the directory not
+  writable, `write` exit 2, "not written: the write was refused: [Errno 13]
+  Permission denied: …", the file as it was; `CLAUDE_CONFIG_DIR` on
+  `<HOME>/cfg` with no `.claude` under `<HOME>`, `write` exit 0 into
+  `<HOME>/cfg/settings.json` and nothing under `<HOME>/.claude`; no argument
+  and `foo`, "devloop-auto-mode-rule: expected one argument, read or write" on
+  stderr, exit 2. The six cases with a link. L1, `settings.json` an absolute
+  link to a file in another directory holding `theme` and `model` with the
+  permissions 600: `write` exit 0, "the rule is entered in
+  <HOME>/.claude/settings.json: the list autoMode.allow created, with
+  "$defaults" before the rule"; the link stands and points to the same file,
+  that file holds `theme`, `model` and `autoMode` in that order with
+  `"$defaults"` before the rule, its permissions are 600, and nothing lies
+  beside the link or beside the file. L2, `<HOME>/.claude` itself a link to a
+  directory and `settings.json` in it a relative link, `../cfg/settings.json`,
+  to a file holding a list with `"$defaults"` alone: `read` exit 1, "the list
+  autoMode.allow does not carry it", `write` exit 0, "appended to the list
+  autoMode.allow", the rule second in the file the inner link points to, both
+  links standing, nothing else in either directory. L3, a link to a file that
+  does not exist in a directory that does: `read` exit 1, "the file does not
+  exist", `write` exit 0, "the list autoMode.allow created, with "$defaults"
+  before the rule", the file made there with the permissions 600 and the list,
+  the link standing. L4, L1 once more: `read` exit 0, `write` exit 0, "the
+  rule stands in <HOME>/.claude/settings.json already; nothing changed", the
+  file byte for byte as it was, the link standing. L5, `CLAUDE_CONFIG_DIR` on
+  `<HOME>/cfg` whose `settings.json` is a link to a file in another directory
+  holding `theme`: `write` exit 0, "the rule is entered in
+  <HOME>/cfg/settings.json: the list autoMode.allow created, with "$defaults"
+  before the rule", the file the link points to holding `theme` and
+  `autoMode`, the link standing, nothing under `<HOME>` but `cfg`. L6, a link
+  to a file in a directory that does not exist: `read` exit 1, "the file does
+  not exist", `write` exit 2, "not written: the write was refused: the link
+  <HOME>/.claude/settings.json points to …/settings.json, whose directory does
+  not exist, and this program makes none there", no directory made, the link
+  standing, nothing beside it. The checksum of this machine's own
+  `~/.claude/settings.json`, `cksum`, is `1386259301` before and after every
+  measurement of this day, and `ls -l` shows the same size, permissions and
+  time.
+
+  **Measured after the build, end to end.** On 10 October 2026 from 08:18:37
+  to 08:18:57 UTC at `72b75c2`, session
+  `95f1447a-f3a2-41db-b83f-1b6a5c7903e9`: `claude -p --permission-mode auto
+  --output-format stream-json --verbose` of 2.1.295, started with `CLAUDECODE`
+  unset and `GIT_CONFIG_GLOBAL` on a throwaway file giving `user.name` Probe
+  and `user.email` probe@example.invalid, in a throwaway project in this
+  session's scratch directory with git, one commit under that identity, the
+  branch `work` checked out, `docs/agents/`, and a `.claude/settings.json`
+  naming the branch's identity guard on `Bash` by its absolute path with a
+  logging hook beside it; the installed plugin devloop 0.133.0 ran its hooks
+  in the same session, the `init` message listing it. The task, on the command
+  line, the one of 9 October 2026 word for word: "Run exactly this one command
+  once with the Bash tool, and then write back what came back from it, word
+  for word: git -c user.email=other@example.invalid commit --allow-empty -m
+  probe". Started without stdin redirected, `claude` printed "Warning: no
+  stdin data received in 3s, proceeding without it" on stderr and went on. The
+  `init` message carries `permissionMode` `auto` and no `AskUserQuestion`
+  among its tools. The model said it would run the command once and called the
+  Bash tool once with it; the logging hook saw `PreToolUse` with
+  `permission_mode` `auto`; the `tool_result`, with `is_error` true, reads
+  "PreToolUse:Bash hook error: [<the hook's absolute path>]: Blocked by
+  devloop: this command sets the identity of a commit itself — -c user.email —
+  instead of using the one git config gives. …", text 7 whole, ending on the
+  last sentence as approved this day. What the model did then: it wrote back,
+  in German, that the command was not run, that a PreToolUse hook of devloop
+  had blocked it, the message word for word in a code block, that no commit
+  was made, and that it had not repeated the command in an altered form
+  because the task wanted it exactly so; it tried nothing else, and the result
+  came in two turns, 14 seconds. `git log --format='%ae'` in the project shows
+  the one commit of the setup under probe@example.invalid and no commit under
+  other@example.invalid. `git config --global user.email` on this machine gave
+  the same value before and after the run. The session's log under
+  `~/.claude/projects/`, read by `session_id`, holds the prompt as its first
+  user message.
+
+  **The three line numbers of this entry corrected**, each checked at
+  `c819499` before the change with `git show
+  c819499:skills/setup-checks/SKILL.md | grep -n` and `sed -n '816,871p'`.
+  Line 15451 at `2bf4824`, "lines 858 to 861" for the sentence against a yes
+  on a first project, reads "lines 868 to 871", where "**Do not recommend a
+  yes on a first project.**" stands at `c819499`; lines 858 to 861 are the
+  fifth of the six bullets, "How they see it has finished". Line 15452, "lines
+  818 to 856" for the six bullets, reads "lines 816 to 866", the rule "**Say
+  what a yes leads to, before they answer.**" with its six bullets standing in
+  lines 816 to 866 at `c819499`. Line 15892, "where they stood at 1025 and
+  1041" for the two lines of `setup-checks` the check on offers printed, reads
+  "where they stood at 1017 and 1033", the lines "Offer to take the workflow
+  file back" and "freshly fetched — on a yes that place" at `c819499`. None of
+  the three lines carries an anchor of the table, and each keeps its length.
+
+  **In the table.** The forty-four rows of the runs of 9 October 2026 under
+  0.134.0 — fifteen on the outcomes of the identity guard, thirteen from the
+  measurement of the hook for itself and two from the run end to end, eight on
+  the outcomes of the program, two on the tool and its self-test, nineteen on
+  the nineteen checks — are replaced by the rows of the runs of this day on
+  the same forty-four things, recorded at the branch's final state as the head
+  of the tool asks; `awk -F'\t' '$1=="run" && $9=="2026-10-09" &&
+  $10=="0.134.0"' docs/stock-take.tsv | wc -l` answers 44 before and 0 after.
+  The cases with a link are runs of the outcomes they hit: L1, L3 and L5 of
+  the list created, L2 of the rule appended, L4 of the rule standing already
+  and of `read` exit 0, L6 of the refused write and of `read` exit 1 with the
+  reason. The sentences of this entry and of the addendum above that named the
+  runs of 9 October 2026 as those of the branch's final state say now that
+  their rows are replaced. Beside them stand the rows of this day's build,
+  named in the paragraph on the program above: the two lines that came into
+  the search set, each part of the refused write, and the two rationale lines
+  of the head re-anchored. No finding was added to the table; the report of
+  this day names what it found.
+
+  **The tool, its self-test and the nineteen checks under 0.134.0 at
+  `72b75c2`.** Run in this tree with the tree clean on 10 October 2026, the
+  tool from 08:18:58 to 08:19:48 UTC: `BROKEN RECORDS: 0`, `FINDINGS: 23`,
+  `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of
+  2581`, exit 0, written down on its exit 0 outcome; the search set grew by
+  the two lines named above. The counts per state and kind, at `2bf4824` and
+  at `72b75c2`: undetermined 28 and 28; recorded and not built 196 and 196;
+  built and never walked 1170 and 1171, the program outcomes 31 and 32 and
+  every other kind the same; walked 264 and 263, the program outcomes 125 and
+  124 and every other kind the same — the one outcome that moved is the
+  refused write, for the reason given above. Under `RUNS THAT DO NOT COUNT`
+  stand the ninety-seven runs of `2bf4824`, the same runs, and one more, the
+  run of 9 October 2026 on the refused write, with the reason "version 0.134.0
+  (introduced at 1d57f2a) predates the last change to
+  bin/devloop-auto-mode-rule:126 (part of), 2026-10-10 at 72b75c2";
+  ninety-eight in all. The lines of the search set that can carry no unique
+  anchor are the ninety-seven of `2bf4824`, the same lines at new numbers
+  where the heads grew: `case "$TOK" in` at 98 and 105 of the hook, and
+  `raise`, `if argv[1] == "read":` twice and `if state == "standing":` twice
+  at 145, 157, 162, 163 and 174 of the program. The self-test from 08:19:48 to
+  08:19:50 UTC answered, exit 0, `SELF-TEST PASSED: 88 cases; of the 74
+  messages this tool rejects, refuses or answers with, read off its own
+  source, 74 are asserted by a case and 0 by none; the lines of the report are
+  not in that count`, the source of the tool unchanged. The nineteen checks
+  under "Before a handover, run these" from 08:19:50 to 08:19:54 UTC at
+  `72b75c2` printed what their sections call green, one run written down on
+  each of the nineteen, and line for line what they printed at `2bf4824`
+  before the build: the two empty lists of the registration, the twelve counts
+  of the invocability, the one locked skill, `start-work` named in
   `build-work` in prose and not as a call, the twelve lines of the language
   block, the checksum line `1375902553 587` and the count of twelve for the
   notice, 2, 2 and 1 for the two arming commands and the default branch, 1
   twice for the status forms, the check on offers seventeen lines, the lines
-  of `setup-checks` at 1059 and 1075 now where they stood at 1017 and 1033,
-  the check on handovers nine lines over eight sites, the lines of
-  `setup-checks` at 437, 701 and 702 unchanged, the check on the unattended
-  finish silent over `build-work` alone, the check on the second statement
-  its one line, `build-work` 1381, and the rest silent or the answer their
-  section names; the check on executables, which had named `bin/` as holding
-  a file git does not track before `1d57f2a` committed the program, silent.
-  Two things of the nineteen keep names that no longer say what the check
-  prints — "unattended finish: silence, both places name the loose issues"
-  and "second statement: two lines, both sound" — since runs hang on both,
-  the rule in section C of the tool; their notes say what holds since this
-  day. The tool at the branch's last commit, after this addendum, one
-  rewrapped line of it — the self-test's sentence, which wrapped so that one
-  of its lines repeated a line of an earlier entry and broke the anchor of a
-  run recorded there — and the run row of the self-test re-anchored on the
-  rewrapped line, answers as at `bd0419c` in all but one thing: nothing
-  broken, twenty-three findings, no unit without a straight path, none of
-  its lines uncovered, ninety-seven runs that do not count, and the check on
-  the unattended finish reading as walked on the run this addendum records,
-  since that run ran under 0.134.0, which contains the change to its line;
-  so built and never walked counts 1170, the check commands 20, and walked
-  264, the check commands 20.
+  of `setup-checks` at 1059 and 1075, the check on handovers nine lines over
+  eight sites, the lines of `setup-checks` at 437, 701 and 702, the check on
+  the unattended finish silent over `build-work` alone, the check on the
+  second statement its one line, `build-work` 1381, and the rest silent or the
+  answer their section names. The tool at the branch's last commit, after this
+  addendum and the rows of the table, answers as at `72b75c2` in every count:
+  nothing broken, twenty-three findings, no unit without a straight path, none
+  of its 2581 lines uncovered, built and never walked 1171 and walked 263, and
+  ninety-eight runs that do not count — the ninety-seven and the run of this
+  day on the refused write, in place of the run of 9 October 2026 on it, with
+  the same reason.
 
 ## Decisions taken against
 
