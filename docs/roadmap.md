@@ -16623,10 +16623,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   can carry no unique anchor are the ninety-seven of `1458419`, `exit 0` and
   `exit 124` of `bin/devloop-bounded` at 94 and 124 where they stood at 93
   and 123. The self-test from 19:06:58 to 19:07:00 UTC answered, exit 0,
-  `SELF-TEST PASSED: 88 cases; of the 74 messages this tool rejects, refuses
-  or answers with, read off its own source, 74 are asserted by a case and 0
-  by none; the lines of the report are not in that count`, the source of the
-  tool unchanged. The nineteen checks under "Before a handover, run these"
+  with `SELF-TEST PASSED: 88 cases; of the 74 messages this tool rejects,
+  refuses or answers with, read off its own source, 74 are asserted by a case
+  and 0 by none; the lines of the report are not in that count`; the tool's
+  source unchanged. The nineteen checks under "Before a handover, run these"
   from 19:07:00 to 19:07:04 UTC at `5319d1c` printed what their sections
   call green, one run written down on each of the nineteen, and line for
   line what they printed at `1458419` before the build but for three line
