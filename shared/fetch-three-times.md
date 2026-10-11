@@ -21,9 +21,10 @@ Measured on 7 October 2026 against a server on this machine that accepts
 the connection and never answers: three times that line, exit 124, 110
 seconds, in one call. The bound is what keeps the three attempts under the
 time limit of one Bash call of Claude Code, 120 seconds where nothing sets
-it: a command that reaches that limit is not ended but moved to the
-background, where it runs on, and a run that repeated the fetch would start
-a second one beside it — "Environment constraints, measured" in
+it: the changelog of Claude Code says a command that reaches that limit is
+not ended but moved to the background and runs on there, and nothing here
+has measured that; a run that repeated the fetch would then start a second
+one beside it — "Environment constraints, measured" in
 `docs/skill-conventions.md`. The block on a command that does not answer
 allows one second attempt; a fetch gets two more, because a fetch that fails
 says only that the remote could not be reached just now, and that may be
