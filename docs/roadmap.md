@@ -16857,8 +16857,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `.claude/`, both made empty before the first session. The installed copy of
   the plugin was version 0.135.0: the comparison under "Before you change
   anything, run this" in `docs/skill-conventions.md` printed nothing after the
-  merge of pull request #164 at `ca0343c`, and `main` has not moved since; the
-  install record names `5ae30eb` as the commit installed, and #164 changed
+  merge of pull request #164 at `ca0343c`, and `main` has not moved since;
+  `installed_plugins.json` carries `gitCommitSha` `5ae30eb`, and #164 changed
   nothing under the five directories the comparison reads. So every hook that
   answered ran as part of the installed plugin out of `hooks/hooks.json`.
   Before that merge, a search of `~/.claude/settings.json`,
