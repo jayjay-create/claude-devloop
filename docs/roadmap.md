@@ -16953,6 +16953,409 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   labels of the five modes other than `default`. These stay with the closing
   runs.
 
+- **The first closing run of milestone 3, made on 11 October 2026 in
+  `devloop-test-w` under a record saying no, read off its session log and the
+  project, with the decisions of that day on the arrangement of the closing
+  runs: eleven defects, four met again, one open question; 11 October 2026, the
+  version stays 0.135.0.** On `task/first-closing-run-findings`, off `429d48c`,
+  version 0.135.0 on `main`; this entry and the twelve rows of the table in one
+  commit. Nothing under `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/` or
+  `.github/` changes, so the version stays and `.claude-plugin/plugin.json` is
+  untouched; `docs/plan.md` is not changed either. The report stands on this
+  machine as `~/devloop-report-2026-10-11-first-closing-run-findings.md`, in
+  English, and is not in the repository. Every line number of a file under
+  `skills/`, `shared/`, `hooks/` or `docs/` in this entry holds at `429d48c`.
+
+  **What this entry was read off.** Everything lies on this machine under
+  `~/devloop-lauf1`, and nothing of it is in the repository: under `logs/` the
+  session log of the run, `3478b439-999c-4ca6-8186-a0d560a7a0b4.jsonl`, 1189
+  records, a record being one line of it counted from 1, and under the
+  directory of that name the logs of its 23 subagents; `checks.md` and
+  `environment.md` as they stand on the test project's main branch after the
+  run; `git-log.txt`, `issues.json` and `prs.json`, its history, issues and
+  pull requests; and `fetch-and-run.txt`, the search that decision 12 of the
+  entry of 9 October 2026, line 14357, asks for after each run. Every fact
+  below was read against that evidence and against the files at `429d48c`, and
+  where the order of this day said something the evidence does not carry, the
+  paragraph says what was read instead. The runs of this run on the things of
+  the table are not recorded here: they come with the entry of the second run.
+
+  **The arrangement, decided on 11 October 2026, before the run.** Decision 12
+  of the entry of 9 October 2026 and the entry of 10 October 2026 on the
+  arrangement stand; these seven come beside them.
+
+  **Decision 1. The test project.** `~/devloop-test-w`, private on GitHub as
+  `jayjay-create/devloop-test-w`. Its first commit, `d529d0e`, "A function that
+  checks a name, and its test": `package.json` with the test script `node
+  --test 'src/**/*.test.ts'` and no dependency, `tsconfig.json`,
+  `src/validate.ts` with the function `isValidName`, a test of two cases in
+  `src/validate.test.ts`, and a `.gitignore` of one line, five files and 35
+  lines by `git show d529d0e --stat`; node v25.9.0 runs the TypeScript tests
+  itself.
+
+  **Decision 2. Each task names its tool and no way to get it.** Where the
+  first closing run takes a way the install guard does not read, the person
+  adds a task in that run that asks for the tool as a program installed through
+  Homebrew. In the second closing run a task asking for `re2js` installed
+  through Homebrew stands in the idea from the start, beside the task that
+  names `re2js` alone. In the first run the way taken was one the guard reads,
+  `brew install dasel`, and no task was added.
+
+  **Decision 3. The ideas, word for word, in German, as the person typed
+  them.** For the first run: „Baue um die Funktion isValidName eine kleine
+  Webseite mit einem Eingabefeld für einen Namen. Bei jeder Eingabe zeigt die
+  Seite an, ob der Name gültig ist. Die erlaubte Höchstlänge steht in einer
+  Datei rules.yaml. Ein npm-Skript liest sie mit dem Kommandozeilenwerkzeug
+  dasel aus und schreibt sie in eine Datei, die die Seite lädt. Ein
+  Browser-Test mit Playwright in Chromium prüft die Seite.“ The log carries it
+  as the argument of the command, record 7, word for word. For the second run:
+  „Ersetze die Prüfung in isValidName durch einen Prüfer, den das Programm
+  re2js von re2c aus einer Musterbeschreibung erzeugt; ein npm-Skript ruft
+  re2js auf. Ein Browser-Test mit Playwright in Firefox prüft die Seite. Als
+  eigene Aufgabe dazu: ein zweiter Prüfer für E-Mail-Adressen, ebenfalls mit
+  re2js erzeugt, wobei re2js als Programm laufen muss, das über Homebrew auf
+  diesem Rechner installiert ist.“
+
+  **Decision 4. The person's answers in the first run.** Auto-merge no; the
+  install question no; the question on check tools in the dependency file no;
+  of the questions per tool, the first yes and every further one no; the
+  install commands handed over for check tools not run. As the run put them,
+  records 57 to 199 and 677: auto-merge "Nein, nicht ändern"; the install
+  question "Nein"; a question which of five checks to set up, which the
+  decision did not foresee, "Alle fünf"; the dependency file "Nein"; then per
+  tool in `setup-checks` step 3, TypeScript "Ja", Prettier "Nein", ESLint
+  "Nein" and `@types/node` "Nein"; and in the build a question per tool the
+  decision did not foresee either, `@playwright/test` into the packages, "Ja".
+  The question of the planning, four designs with B recommended, "B". The
+  commands handed over for the check tools were not run: `checks.md` carries
+  "install command handed over and not run" for format, lint and secrets and
+  "adding it to packages was declined" for types.
+
+  **Decision 5. The person's answers planned for the second run.** The
+  unattended mode yes, the rule for auto mode yes, the install question asked a
+  second time yes, the question on the dependency file asked a second time yes.
+
+  **Decision 6. The machine before the first run, read on 11 October 2026.**
+  `dasel`, `re2c`, `re2js` and `htmlq` installed nowhere; no Firefox in
+  `~/Library/Caches/ms-playwright`; the rule for auto mode not in
+  `~/.claude/settings.json`, `bin/devloop-auto-mode-rule read` answering that
+  `autoMode` holds no allow list. Three Chromium directories and three
+  `chromium_headless_shell` directories of earlier versions, 1229, 1234 and
+  1243, were moved from `~/Library/Caches/ms-playwright` to
+  `~/ms-playwright-backup-2026-10-11`, so that a browser already there could
+  not spare the run its download; they go back after the second run. The run's
+  own reading at 13:16:31 UTC, before the handover, record 672: `which dasel`
+  answering "dasel not found", and the cache holding `b`, `ffmpeg-1011`,
+  `mcp-chrome-3bd21bc` and `webkit-2336`. Read again while this entry was
+  written: `dasel` at `/opt/homebrew/bin/dasel`, installed in the run; `re2c`,
+  `re2js` and `htmlq` still nowhere; the cache holding `chromium-1248` and
+  `chromium_headless_shell-1248` beside `b`, `ffmpeg-1011`, `ffmpeg-1013` and
+  `mcp-chrome-3bd21bc`, with `webkit-2336` gone, by what the log does not say,
+  since the person's shell is not in it; the backup directory holding the six;
+  the rule still not in the settings file, the program answering the same.
+
+  **Decision 7. What the default time limit of a call does to a command is not
+  measured, and stays so.** No place of this set relies on it,
+  `docs/skill-conventions.md` lines 1413 to 1414, "What a skill does with
+  either answer is the same.", and the direct way was blocked by Claude Code
+  itself on 9 October 2026, lines 1411 to 1413 of the same file.
+
+  **The run, as the evidence for what follows.** Started at 12:54:48 UTC with
+  `/devloop:start-work` and the idea as its argument, record 7;
+  Claude Code 2.1.296, the `version` field of every record; auto mode, the 54
+  `permission-mode` records all `auto`; the model `claude-sonnet-5-5` with
+  effort `medium`, the fields `requestedModel`, `effort` and `perTurnEffort` of
+  every one of the 283 assistant records, beside `advisorModel`
+  `claude-opus-5-5`. The installed copy of the plugin: 0.135.0 under
+  `~/.claude/plugins/cache`, its `gitCommitSha` in `installed_plugins.json`
+  `5ae30eb`, last updated at 08:24:50 UTC that day; the five shipped
+  directories equal to `main` at `429d48c`, `git diff --stat 5ae30eb 429d48c`
+  over them printing nothing, and the comparison under "Before you change
+  anything, run this" printing nothing, read while this entry was written,
+  which is the state before the run as well, since the copy did not change
+  after 08:24:50 UTC. Five pull requests, #1, #2, #8, #9 and #11, each merged
+  by the person: the log holds "ist gemerged" five times, records 127, 234,
+  668, 997 and 1156, and `gh pr merge` in no message and no command; the
+  person's own turns are the command, "ist gemerged" five times, "ja" three
+  times and "ist installiert" once, no shell input among them. For `dasel` and
+  Chromium the run handed over `brew install dasel` and `npx playwright install
+  chromium` at 13:17:15 UTC, record 691, the person answered "ist installiert"
+  at 13:19:25 UTC, record 694, and the run read `/opt/homebrew/bin/dasel` and
+  `chromium-1248` with `chromium_headless_shell-1248` in the cache, records 697
+  and 698; the install stands in `environment.md` under "Running locally" and
+  in pull request #9 under "Installs". The run ended at 13:39:08 UTC with the
+  spec #3 and the tasks #4, #5 and #6 closed and #7 and #10 open under
+  `raised-here`. The search decision 12 asks for, `git grep` over the project
+  for the commands that fetch a tool and run it, finds one line,
+  `docs/agents/environment.md` line 11, the handed-over `npx playwright install
+  chromium` quoted as a prerequisite the person runs; the package scripts carry
+  `dasel`, `node` and `playwright test` and no such form. The log holds the
+  guard's block nowhere: "Blocked" stands 20 times, every one inside
+  `addBlockedBy` or `addIssueBlockedBy` of the tracker's queries, and the hook
+  summaries of the log name `stop-checks.sh` alone.
+
+  **The eleven defects.** Each with its evidence in the log and the line of the
+  skill it concerns.
+
+  **1. Step 8 of `setup-checks` was not reached at a first setup.** The merge
+  of #2 was proven at 13:06:39 UTC, record 238; the next message, record 247,
+  reads "Setup und Prüfungen sind damit durch, jetzt plane ich die Webseite",
+  and planning followed. No reading of the gate between that merge and the
+  first task: the queries `branches/main/protection`, `rules/branches/main` and
+  `allow_auto_merge` stand in records 51, 654, 989 and 1142 only, the setup's
+  first step and the three pull requests of the build. No question on the
+  unattended mode: the ten questions of the run are the two of `setup-project`,
+  the six of `setup-checks` step 3, the design question and the one on
+  `@playwright/test`. No section `## Unattended mode` in `environment.md`. The
+  handover before that merge, record 231, said "Der unattended Modus bleibt
+  aus. Dafür bräuchte es u. a. Auto-merge und eine Prüfung, die den Merge
+  blockiert. Mit `--auto` kannst du das später einrichten." Step 8 opens "Only
+  when no class is `empty` any more", line 722, and after #2 no class was:
+  `checks.md` carries one `filled` and eight `skipped`, which the same handover
+  said. `skills/setup-checks/SKILL.md` line 40, the first route of its opening
+  paragraph, "lands it in step 7 and offers the mode in step 8", and step 8
+  from line 720. Recorded, not built: `setup-checks` step 8 was not reached at
+  a first setup, the run going from the proven merge of step 7 to planning with
+  no reading of the gate, no question on the unattended mode and no record of
+  its answer in `environment.md`, while its handover before the merge said the
+  mode stays off and that `--auto` sets it up later — should: once the merge of
+  step 7 is proven at a first setup and no class is empty, step 8 runs, and its
+  question is put with auto-merge off as well.
+
+  **2. No handover of a pull request named the command that lands it.** Five
+  handovers, records 124, 231, 665, 994 and 1147; each says the person merges
+  by hand, "Du mergst von Hand (Squash)" in three of them; none names `gh pr
+  merge`, and the log holds the string only in the text of the skills the
+  run loaded, records 38, 139, 473 and 790, where `gh pr merge --auto` is
+  said not to be a substitute. The three lines that ask
+  for it: `skills/setup-project/SKILL.md` line 788, "hand the user the one
+  command that lands it"; `skills/setup-checks/SKILL.md` line 701, "Then hand
+  the user the one command that lands it"; `skills/build-work/SKILL.md` line
+  976, "Give the user the one command that lands it". Recorded, not built: no
+  handover of a pull request named the command that lands it, five times in one
+  run, no message of the run containing `gh pr merge` — should: every such
+  handover names the one command, as `setup-project` line 788, `setup-checks`
+  line 701 and `build-work` line 976 say.
+
+  **3. After a no to a tool, the run handed over the command that enters it
+  into the project.** The person said no to Prettier, record 163, to ESLint,
+  record 170, and to `@types/node`, record 199; the no of the first two was
+  labelled "Du bekommst den Befehl, es außerhalb des Projekts selbst zu
+  installieren", and the no of the third "Die Typprüfung bleibt abgeschaltet
+  und du bekommst den Befehl, es selbst einzutragen". The handover of #2,
+  record 231, then listed `npm install --save-dev typescript @types/node`, `npm
+  install --save-dev prettier` and `npm install --save-dev eslint`, each of
+  which enters the package into `package.json`, which is what had just been
+  declined; `brew install gitleaks` beside them is a way outside the project
+  and stands. `skills/setup-checks/SKILL.md` step 3, lines 384 to 390, the
+  three ways a no to a single tool leads: the run installs it outside the
+  project where the install record says yes; the person gets the command to
+  install it outside the project where that record says no; the check stays off
+  where the tool has no way outside the project. Recorded, not built: after the
+  person's no to Prettier, to ESLint and to `@types/node`, the run handed over
+  `npm install --save-dev` commands for them, which enter them into the
+  project's packages the person had just declined, and the no of the
+  `@types/node` question promised a command to enter it oneself, `setup-checks`
+  step 3 line 385 — should: the command handed over installs outside the
+  project where such a way exists, and where none exists the check stays off
+  and no command is handed over.
+
+  **4. Planning said nothing of the mode and of `--auto`.** The mode was not
+  set up and no record of it stood; the messages of the planning, records 247
+  to 470, from "jetzt plane ich die Webseite" to the three tasks cut, carry
+  neither that work without the person is not set up in this project nor that
+  typing `--auto` where a piece of work starts sets it up. The sentence stood
+  twice elsewhere: in the handover of #2 before the planning, record 231, and
+  in the closing message, record 1183, "Der unattended Modus ist nicht
+  eingerichtet. Mit `--auto` kannst du ihn später einrichten."
+  `skills/plan-work/SKILL.md` lines 328 to 332: "one line: that work without
+  them is not set up in this project, and that typing `--auto` where a piece of
+  work starts sets it up". Recorded, not built: with the unattended mode not
+  set up and no record of it, no message of the planning said that work without
+  the person is not set up in this project and that typing `--auto` where a
+  piece of work starts sets it up, `plan-work` lines 328 to 332 — should: that
+  one line is said.
+
+  **5. No introduction, and a step a run with the idea in hand cannot follow.**
+  The status line read "devloop: not set up here", the session-start hook's
+  line, record 5; the first text of the run, record 112, is "Labels are
+  created…", with nothing said to the person before it: the sentence "Deine
+  Idee ist klein genug für einen Durchgang, also setze ich zuerst das Projekt
+  auf" stands in a thinking block, record 35, and in no message.
+  `skills/start-work/SKILL.md` step 2, line 91: "Then ask what they would like
+  to build, and **stop.**", which a run that already has the idea from the
+  command cannot follow, and which this run answered by writing no introduction
+  at all. Recorded, not built: the project read "not set up here" and the run
+  wrote no introduction, the idea having come with the command, while
+  `start-work` step 2 line 91 says after the introduction to ask what they
+  would like to build and stop, which a run that already has the idea cannot
+  follow — should: the introduction is written whenever the project is not set
+  up, and where the idea came with the command the run carries on without
+  asking.
+
+  **6. A rule naming no situation of the project.** At the close of the review
+  of the third task, #11, the run wrote into `docs/agents/standards.md`, landed
+  in `ccf34e5`: "Put only the call that can fail for the reported reason inside
+  a try block, and do the setup that follows after it, because a broad catch
+  reports an unrelated bug as that failure and leaves the page half set up."
+  The standards lens had found the finding, "Der `try`-Block ist zu breit",
+  record 1065, with no rule on it, and the run's own account, record 1100, says
+  "Keine geschriebene Regel hätte den zu breiten `try` gefangen, deshalb
+  schreibe ich eine". `shared/rule-not-written-down.md` lines 10 to 14: "Two
+  sentences fail that test and are not written: the fix restated … and a
+  sentence naming no situation of this project — handle every error, no dead
+  code — which the standards lens reads for without being told." The rule is
+  the second: how wide a try block is, is what the lens found by without any
+  rule. The two rules before it, of #8 and #9, name a RegExp built from an
+  interpolated value and a request handler that decodes the request, and stand.
+  Recorded, not built: at the close of the review of the third task the run
+  wrote a rule into `docs/agents/standards.md` that names no situation of the
+  project, putting only the call that can fail inside a try block, a principle
+  the standards lens found the defect by without any rule,
+  `shared/rule-not-written-down.md` line 11 — should: that rule is not written,
+  and the run says which of the two sentences that fail the test it is.
+
+  **7. One reply in English.** Record 112, the run's first text, while the
+  person wrote German: "Labels are created. Next: commit, push and open the PR.
+  Auto-merge is off, so you merge it yourself." Every other text of the run, 57
+  of 58, is German. `shared/language-opening.md` line 1, "Answer in the
+  language the user writes in, not the language of this document", and lines 3
+  to 4, that it slips most often on a progress note. Recorded, not built: one
+  reply came in English while the person wrote German, "Labels are created.
+  Next: commit, push and open the PR. Auto-merge is off, so you merge it
+  yourself.", against `shared/language-opening.md` — should: every reply is in
+  the language the person writes in.
+
+  **8. The permissions passage still ties the grant to the unattended mode.**
+  `skills/setup-project/SKILL.md` under "Permissions, before the first
+  command": lines 167 to 169, "an unattended run needs those permissions
+  granted up front, because nobody is there to answer", and line 211, "It is
+  true that this grant is one of that mode's preconditions". Since 9 October
+  2026 start condition 4 reads auto mode alone and no allow rule is read:
+  `docs/skill-conventions.md` under "Tool classes can be pre-approved per
+  project", lines 2175 to 2185, "allow rules are not read". In this run the
+  passage stood in a thinking block, record 46, "bei denen du einmalig 'always
+  allow' wählen kannst", and in no message. Point F of the entry of 30
+  September 2026, line 7786, that the passage arrives before anything can
+  happen on it and names the mode only to deny it, stands beside this and is
+  another defect. Recorded, not built: the passage of `setup-project` under
+  "Permissions, before the first command" still says that an unattended run
+  needs those permissions granted up front, line 168, and that the grant is one
+  of the mode's preconditions, line 211, while since 9 October 2026 start
+  condition 4 reads auto mode alone and no allow rule is read — should: the
+  passage ties the grant to the unattended mode nowhere.
+
+  **9. The branch on the remote deleted without reading whether it stood.**
+  After the merge of #2, record 238, the run ran `git push -q origin --delete
+  devloop-checks` in the same command as the fetch and the fast-forward, and
+  git answered "error: failed to push some refs"; the person's merge had
+  deleted the branch already. The same after every merge of the run, five
+  times: `devloop-setup` after #1, record 132; `task-4-max-length` after #8,
+  record 672; `task-5-page` after #9, record 1007; `task-6-load-error` after
+  #11, record 1160, where the run then looked and read "remote ref does not
+  exist", record 1170. The order of this day named the one after #2.
+  `skills/setup-checks/SKILL.md` line 707, "where it still stands there, on the
+  remote", and line 1009 for step 8's own merges;
+  `skills/setup-project/SKILL.md` lines 716 to 717 say the same for
+  `devloop-setup`; `skills/build-work/SKILL.md` lines 1121 to 1123 say "Delete
+  the merged branch locally and on the remote" without the condition.
+  Recorded, not built: after the merge of #2 the run deleted the branch
+  `devloop-checks` on GitHub without reading whether it still stood, git
+  answering "error: failed to push some refs", the person's merge having
+  deleted it already, and the same after the four other merges, `setup-checks`
+  line 707 — should: the run reads whether the branch stands and deletes it
+  only then, at `setup-checks` line 707, `setup-project` line 716 and
+  `build-work` line 1121 alike.
+
+  **10. The plan says the guard blocks where no run following the skill meets
+  it.** `docs/plan.md` milestone 3, lines 270 to 271: "a build needs a tool,
+  the guard blocks, and the command is handed over"; lines 301 to 302, for the
+  browser: "the guard blocks the download, and the command is handed over".
+  `skills/build-work/SKILL.md` step 3 point 7, lines 460 to 464: "Where the
+  record says no, or was never written, the install stays the user's to run,
+  the same way merging is, and the guard blocks it … Report what it installs,
+  what it unblocks, and the exact command": the run hands the command over and
+  does not try it, so no run that follows the sentence meets the guard. In this
+  run there was no attempt and no block: the two commands went to the person at
+  13:17:15 UTC without a call of either, and the log holds no block of the
+  guard, as the paragraph on the run says. Recorded, not built: `docs/plan.md`
+  milestone 3 says the first closing run ends with the guard blocking a tool
+  and the browser download and the command handed over, lines 270 to 271 and
+  301 to 302, while `build-work` step 3 point 7 hands the install over under a
+  record saying no without trying it, so that no run following it meets the
+  guard, and in this run there was no attempt and no block — should: the plan
+  says that the run hands the command over without trying it, and where the
+  guard's block under a no stands walked.
+
+  **11. Two forms of Nix that fetch a package and run it, read nowhere.** `nix
+  run` and `nix shell`. The Nix manual, read on 11 October 2026: at
+  `nix.dev/manual/nix/latest/command-ref/new-cli/nix3-run`, version 2.34 at
+  that address, "`nix run` builds and runs installable, which must evaluate to
+  an app or a regular Nix derivation", the first example `nix run nixpkgs#vim`;
+  at `nix.dev/manual/nix/2.18/command-ref/new-cli/nix3-shell.html`, "`nix
+  shell` runs a command in an environment in which the `$PATH` variable
+  provides the specified installables", the first example `nix shell
+  nixpkgs#youtube-dl`; the latest manual carries the second under the name `nix
+  env shell`, at `nix3-env-shell`, with the same sentence, its body still
+  saying `nix shell`, while the address `nix3-shell` under `latest` answered
+  not found, HTTP 404, when read. Neither page names a profile, which `nix
+  profile install`, the form finding 8 of the entry of 9 October 2026 names at
+  line 14045, does: both run a package named by a flake reference without
+  saying install, the case `shared/fetch-and-run.md` line 1 states.
+  `hooks/pre-tool-use-install-guard.sh` reads at lines 97 to 106 `go run`,
+  `uvx`, `uv run` with `--with`, `pipx run`, `pnpm dlx`, a global add under
+  `pn`, `yarn dlx`, `gem exec`, `brew exec` and `brew bundle`, and `nix`
+  nowhere; `shared/fetch-and-run.md` names at lines 2 to 9 what the guard reads
+  and what it does not, `docker run` among the latter since 8 October 2026, and
+  `nix` nowhere. `docker run` is no part of this defect. Recorded, not built:
+  the forms of Nix that fetch a package and run it, `nix run` and `nix shell`,
+  are read by the install guard nowhere, `hooks/pre-tool-use-install-guard.sh`
+  lines 97 to 106, and named by `shared/fetch-and-run.md` nowhere — should: the
+  guard reads them as it reads `uvx`, or the rule names them.
+
+  **Met again in this run, said here and not recorded a second time.** Point H
+  of the entry of 30 September 2026, line 7841: the auto-merge question, record
+  57, offered its yes as "Ja, einschalten (Recommended)". Points I and J of
+  that entry, lines 7863 and 7875: the sentence that the repository carries
+  only GitHub's labels and that "unsere" seven are added, "Die bestehenden
+  Labels sind nur GitHub-Standards, daher lege ich jetzt unsere sieben
+  zusätzlichen Labels an", stood in a thinking block, record 56, which the
+  window showed as a summary, and in no message. The defect of table line 1719,
+  that Stage 1 ends on the run's judgement that nothing important is open: here
+  the sharpening, records 287 to 303, ended on that judgement with no question
+  at all, the thinking block of record 287 saying the idea was made concrete
+  and written into the issue, and the first question of the planning being the
+  one on the design. And the defect recorded at line 9644, that no sentence of
+  the set says a question about how this workflow runs carries no
+  recommendation: the auto-merge question is one about how this workflow runs
+  and carried one.
+
+  **Observed, an open question.** Of the run's messages, the summary of what
+  step 2 found, the permissions passage and the sentence on the labels stood in
+  thinking blocks of the model, records 56, 46 and 56, which the window showed
+  as summaries, and not in text: the log holds 77 thinking blocks, 18 with
+  content and 59 empty, every one with content a few German sentences
+  addressing the person as "du", such as record 35, "Deine Idee ist klein genug
+  für einen Durchgang, also setze ich zuerst das Projekt auf, da es noch nicht
+  eingerichtet ist", and record 46, the permissions passage. The model is
+  `claude-sonnet-5-5` with effort `medium`, as the log gives it. Whether that
+  is the model's or a skill's is not known.
+
+  **Records.** Twelve rows at the end of `docs/stock-take.tsv`: a defect thing
+  for each of the eleven, named "docs/roadmap.md / Known gaps / " and the
+  defect, sited and evidenced on its status line above, the note saying when
+  and by what it was found, which line it concerns and the should; and one
+  not-a-thing row for this entry's head, part of the first defect. The tool
+  after the change, measured in a copy with the change committed: no broken
+  record, 23 findings as at `429d48c`, no unit without a straight path, no
+  uncovered line of 2595, exit 0; the counts against `429d48c`: the state this
+  entry's eleven things take, 207 where it was 196, its defects 196 where they
+  were 185, every other count unchanged; not-a-thing records 1321, of which
+  part of 1122; the self-test 88 cases, its line as at `429d48c`; the nineteen
+  checks under "Before a handover, run these" green, and the check holding the
+  roadmap against the skill names printing nothing. The figures as printed
+  stand in the report.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
