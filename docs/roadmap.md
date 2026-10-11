@@ -17125,7 +17125,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **2. No handover of a pull request named the command that lands it.** Five
   handovers, records 124, 231, 665, 994 and 1147; each says the person merges
   by hand, "Du mergst von Hand (Squash)" in three of them; none names `gh pr
-  merge`, and the string stands nowhere in the log. The three lines that ask
+  merge`, and the log holds the string only in the text of the skills the
+  run loaded, records 38, 139, 473 and 790, where `gh pr merge --auto` is
+  said not to be a substitute. The three lines that ask
   for it: `skills/setup-project/SKILL.md` line 788, "hand the user the one
   command that lands it"; `skills/setup-checks/SKILL.md` line 701, "Then hand
   the user the one command that lands it"; `skills/build-work/SKILL.md` line
