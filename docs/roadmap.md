@@ -16824,6 +16824,135 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   closing runs of milestone 3 and stays unmeasured, with this as the reason; a
   run that meets the pause by itself records it.
 
+- **The guard on the mark at a write by the editing tool, and the hook on
+  permission prompts at a question of `AskUserQuestion` while the mark stands,
+  both measured on 11 October 2026 in live sessions as part of the installed
+  plugin; 11 October 2026, the version stays 0.135.0.** On
+  `task/mark-guard-askuserquestion-measurement`, off `ca0343c`, version 0.135.0
+  on `main`; this entry and the four rows of the table in one commit. Nothing
+  under `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/` or `.github/`
+  changes, so the version stays and `.claude-plugin/plugin.json` is untouched.
+  The report stands on this machine as
+  `~/devloop-report-2026-10-11-mark-guard-askuserquestion.md`, in English, and
+  is not in the repository.
+
+  **Decided on 11 October 2026: the two points no closing run reaches by itself
+  are measured in throwaway sessions first.** The two paragraphs headed "What
+  the closing runs of milestone 3 still measure", in the entry of 9 October
+  2026 on the behaviour with nobody there and in the entry of that day on step
+  8 of `setup-checks`, each carry one point that no closing run of milestone 3
+  reaches by itself: whether a `PreToolUse` hook on the editing tool blocks a
+  write onto the mark in a live session, and what the hook on permission
+  prompts does at a prompt of `AskUserQuestion` while the mark stands. Both
+  were measured on 11 October 2026 in throwaway sessions before the closing
+  runs of milestone 3, so that the runs carry no task a real run would not
+  have. Both paragraphs stay as they stand, being dated records. Session A ran
+  under `default`, because the guard blocks a write of the mark only outside
+  auto mode, its line `[ "$MODE" = auto ] && pass`.
+
+  **Common to both sessions.** On this machine on 11 October 2026, live
+  sessions in the terminal, Claude Code 2.1.296 by the version field of both
+  session logs. The project was a throwaway directory outside this repository,
+  `~/devloop-mark-probe`, not a git repository, holding `docs/agents/` and
+  `.claude/`, both made empty before the first session. The installed copy of
+  the plugin was version 0.135.0: the comparison under "Before you change
+  anything, run this" in `docs/skill-conventions.md` printed nothing after the
+  merge of pull request #164 at `ca0343c`, and `main` has not moved since; the
+  install record names `5ae30eb` as the commit installed, and #164 changed
+  nothing under the five directories the comparison reads. So every hook that
+  answered ran as part of the installed plugin out of `hooks/hooks.json`.
+  Before that merge, a search of `~/.claude/settings.json`,
+  `~/.claude/settings.local.json` and `/Library/Application
+  Support/ClaudeCode/managed-settings.json` for `PermissionRequest` and for
+  `permission-request-unattended` found nothing. Neither session made a `Bash`
+  call: the only tool calls in their logs are the `Write` call of session A and
+  the `AskUserQuestion` call of session B, so no hook registered on `Bash` in
+  `hooks/hooks.json` ran. At the `Write` call the guard on the main branch,
+  registered on the editing tool beside the guard on the mark, steps aside at
+  its line 8, the directory being no git repository. At the end of each turn
+  the stop hook ran and steps aside at its line 10 without
+  `docs/agents/checks.md`; both logs show it with no error. Everything below is
+  read off the session logs under `~/.claude/projects/`, not taken from the
+  sessions' own reports. Neither session was on a bench.
+
+  **Measured on 11 October 2026, session A: a write of the mark by the editing
+  tool.** Started with `claude --permission-mode default`; the mode stands in
+  four entries of its log as `default`. No mark stood. The task was exactly one
+  call of the `Write` tool on the file `.claude/unattended.local` with the
+  content of one line, `probe`. The tool was called at 11:13:35.815 UTC with
+  the file `~/devloop-mark-probe/.claude/unattended.local`. The result came at
+  11:13:35.871 UTC carrying `"is_error": true`, `"toolDenialKind":
+  "permission-rule"` and `"permissionDecision": {"decision": "reject",
+  "source": "hook", "reasonType": "hook"}`, and the text `PreToolUse:Write hook
+  error:`, then in brackets the hook's path in the installed copy,
+  `~/.claude/plugins/cache/jayjay-create/devloop/0.135.0/` followed by
+  `hooks/pre-tool-use-mark-guard.sh`, then text C of the entry of 9 October
+  2026 with `default` as the value and `manual mode on` as the label: "Blocked
+  by devloop: the mark for a run with nobody there is written only in auto
+  mode, and this session is in default, shown in the status bar as manual mode
+  on. Do not write the mark another way. The run with nobody there does not
+  start: tell the user so with the sentence the skill gives for start condition
+  4, and carry on with them." Followed by the line "This hook comes from the
+  devloop@jayjay-create plugin." The log carries no entry of type
+  `hook_permission_decision`: no permission prompt came. After the session
+  `.claude/` held nothing; the mark was not written. The run stands in the
+  table on two things of the guard: the write of the mark read off the editing
+  tool, the file named `unattended.local` in the project's `.claude`, the
+  directory resolved, both directories standing; and the block in another mode
+  than auto, text C with the value and the label.
+
+  **Measured on 11 October 2026, session B: a question of `AskUserQuestion`
+  while the mark stands.** Before the session the mark was written from the
+  terminal with three lines: `0000000`, standing in for a commit since the
+  directory is no git repository and the hook does not read the first line;
+  `build`; and a session identifier chosen before the start,
+  `76e32725-3766-48fe-adc8-13dcf6a38dfe`. Started with `claude
+  --permission-mode auto --session-id` and that identifier. The log's
+  `sessionId` equals the mark's third line, and the mode stands in four entries
+  of its log as `auto`. The task was exactly one call of `AskUserQuestion` with
+  one question, "Welche Farbe?", and two answers. The tool was called at
+  11:16:28.778 UTC. The next entry of the log, at 11:16:28.844 UTC, is an
+  attachment of type `hook_permission_decision` carrying `"decision": "deny"`
+  and `"hookEvent": "PermissionRequest"`. The result, at the same time, carries
+  `"is_error": true`, `"toolDenialKind": "permission-rule"` and
+  `"permissionDecision": {"decision": "reject", "source": "hook", "reasonType":
+  "hook"}`, and text 5 of the entry of 9 October 2026 word for word. The
+  session window showed "Denied by PermissionRequest hook". The question did
+  not reach the person. The run stands in the table on the hook's deny with
+  text 5.
+
+  **Read on 11 October 2026 at code.claude.com/docs/en/hooks**, the hooks
+  reference downloaded whole and searched for `AskUserQuestion`. Under "Tools
+  that require user interaction": `AskUserQuestion` and `ExitPlanMode` "require
+  user interaction", and a run with `-p` offers them only when it has a
+  permission host "to receive the prompt". Under "PreToolUse decision control":
+  "allow" skips the permission prompt except, among others, for
+  `AskUserQuestion` and `ExitPlanMode`, which need `updatedInput` paired with
+  it. So the reference treats the tool's question as a permission prompt; no
+  line of it says in so many words that a `PermissionRequest` hook receives it.
+  Session B measures that it does.
+
+  **What this answers of what the closing runs of milestone 3 were to
+  measure.** The first paragraph's point, whether a `PreToolUse` hook on the
+  editing tool blocks a write onto the mark in a live session, measured there
+  fed alone: it does, as part of the installed plugin, under `default`, with
+  text C. The second paragraph's point, what the hook on permission prompts
+  does at a prompt of `AskUserQuestion` while the mark stands: it denies it
+  with text 5, and the question does not reach the person. Beside it, the deny
+  came while the mark's third line named this session, in a live session as
+  part of the installed plugin, where the measurement of 11 October 2026 on the
+  prompt of a subagent had it come through a mark without a third line. Not
+  answered: whether the session-start hook sets `DEVLOOP_SESSION_ID` and the
+  mark command writes it as the third line, since here the third line was
+  written by hand; whether the hook read a `session_id` off its input and found
+  it equal to the third line, or found none, since the log does not carry the
+  hook's input and both answer no, where a mark naming another session, E4 of
+  the entry of 9 October 2026 under `claude -p`, would tell the two apart and
+  was not measured in a live session; the guard's reading of a write of the
+  mark through `Bash`, and its pass under `auto`, in a live session; and the
+  labels of the five modes other than `default`. These stay with the closing
+  runs.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
