@@ -16727,6 +16727,103 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   stays the one added line of the roadmap against `origin/main` that holds
   a status word.
 
+- **The hook on permission prompts at the prompt of a subagent in the
+  background, measured on 11 October 2026 as part of the installed plugin, and
+  the pause of auto mode read off the vendor's page; 11 October 2026, the
+  version stays 0.135.0.** On `task/hook-prompt-subagent-measurement`, off
+  `5ae30eb`, version 0.135.0 on `main`; this entry and the two rows of the
+  table in one commit. Nothing under `skills/`, `shared/`, `hooks/`, `bin/`,
+  `scripts/` or `.github/` changes, so the version stays and
+  `.claude-plugin/plugin.json` is untouched. The report stands on this machine
+  as `~/devloop-report-2026-10-11-hook-prompt-subagent.md`, in English, and is
+  not in the repository.
+
+  **Measured on 11 October 2026: the hook at the prompt of a subagent in the
+  background.** On this machine from 09:20:10 to 09:20:11 UTC, in a live
+  session in the terminal, Claude Code 2.1.296, permission mode `default`. The
+  project was a throwaway directory outside this repository,
+  `~/devloop-pause-probe`, without `docs/agents/`: every guard of this plugin
+  on a tool call passes where that directory is missing, so no hook but the one
+  on permission prompts answered the call below. The mark
+  `.claude/unattended.local` stood there with two lines and no third line, put
+  there by hand; no run wrote it. The installed copy of the plugin was equal to
+  `main` at `5ae30eb`, version 0.135.0: the comparison under "Before you change
+  anything, run this" in `docs/skill-conventions.md` printed nothing before the
+  session, so the hook that answered ran as part of the installed plugin out of
+  `hooks/hooks.json`. The task of the session was one subagent in the
+  background running one command, `sw_vers`. Read afterwards off the session
+  logs under `~/.claude/projects/`, not taken from the session's own report:
+  the subagent called `Bash` with `sw_vers`; the next entry of the subagent's
+  log is an attachment of type `hook_permission_decision` carrying `"decision":
+  "deny"` and `"hookEvent": "PermissionRequest"`; the entry after it is the
+  result of that call, carrying `"is_error": true`, `"toolDenialKind":
+  "permission-rule"` and `"permissionDecision": {"decision": "reject",
+  "source": "hook", "reasonType": "hook"}`. That result carries text 5 of the
+  entry of 9 October 2026 word for word, 575 characters, compared by program
+  against the message in `hooks/permission-request-unattended.sh` and equal.
+  The log of the main session carries no entry of type
+  `hook_permission_decision` at all; starting the subagent asked nothing; the
+  mode stands in five of its entries as `default`. The subagent attempted
+  nothing further. Not on a bench; the run stands in the table on the hook's
+  deny with text 5.
+
+  **What this answers of what the closing runs of milestone 3 were to
+  measure.** Decision 6 of the entry of 9 October 2026 on the open findings
+  named, among what those runs measure, prompts of subagents in the background;
+  the two paragraphs headed "What the closing runs of milestone 3 still
+  measure", in the entry of 9 October 2026 on the behaviour with nobody there
+  and in the entry of that day on step 8 of `setup-checks`, carry the point and
+  the question whether the hooks work as part of the installed plugin. Both
+  paragraphs stay as they stand: they are dated measurements, and changing one
+  would falsify the record. Answered: the hook reaches the prompt of a subagent
+  in the background, and it answers where the prompt arises, in the subagent
+  and not in the session that started it; and it does so as part of the
+  installed plugin out of `hooks/hooks.json`, where the measurements of 9
+  October 2026 named the hooks in a scratch project's `.claude/settings.json`
+  or fed them their input directly. Not answered: the identifier on the mark's
+  third line, which stood on no line here, the deny coming through the branch
+  for a mark without a third line; and the other hook of the two that the first
+  of those paragraphs names, `hooks/pre-tool-use-mark-guard.sh`, which passed
+  here for want of `docs/agents/` and so showed nothing of itself.
+
+  **Read on 11 October 2026 at code.claude.com/docs/en/permission-modes**,
+  under "When auto mode falls back", "Repeated-block thresholds" and "How the
+  classifier evaluates actions". Auto mode pauses where the classifier blocks
+  an action, in the page's words, "3 times in a row or 20 times total". The two
+  thresholds cannot be configured. The total counter holds for the session and
+  resets only where it triggers a fallback itself. The page names one case as
+  not counting toward either threshold: a denial where a safety check separate
+  from auto mode refuses the classifier's own request. The order an action is
+  decided in: the allow, ask and deny rules resolve first; read-only actions
+  and edits in the working directory are approved next; everything else goes to
+  the classifier. A run started with `-p` and with no tool of its own for
+  permission prompts has nothing to fall back to: the action does not run, and
+  Claude Code does not stop the run.
+
+  **Where the two refusals of this plugin lie against that order.** The install
+  guard blocks the call as a `PreToolUse` hook with exit code 2, and the hooks
+  reference at code.claude.com/docs/en/hooks, read the same day, says of
+  `PreToolUse` hooks that they "run before every tool call, whether or not it
+  needs permission": the guard lies before the rules and before the classifier.
+  The hook on permission prompts answers in the permission layer, at the
+  prompt, and lies wherever the prompt arises in that order; the same reference
+  says these hooks "run only when Claude Code is about to ask you for
+  permission, or when it would otherwise auto-deny a call that can't prompt".
+  Under `default`, as measured above, the prompt is the decision and no
+  classifier stands in the order. Under `auto` the pause is a prompt after the
+  classifier, so where the hook fires there it fires behind the classifier and
+  not before it, and whether it fires there is the question decision 6 left
+  open; neither page decides it. The page says of a denial by a hook neither
+  that it counts toward the thresholds nor that it does not.
+
+  **Decided on 11 October 2026: the pause of auto mode is not produced on
+  purpose.** Three blocks of the classifier in a row come about only where
+  somebody holds a model to carrying on after a refusal, and an order of that
+  shape was refused by the safeguards of the model on 11 October 2026 before
+  any command of it ran. So whether the hook answers at the pause leaves the
+  closing runs of milestone 3 and stays unmeasured, with this as the reason; a
+  run that meets the pause by itself records it.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
