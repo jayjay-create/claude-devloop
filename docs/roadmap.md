@@ -127,8 +127,12 @@ the ones with a plausible answer:
   the first; four in a later one, three of those work recorded as run that had not
   run; sixteen on 7 September 2026; five on 9 September 2026; sixteen on 26
   September 2026, read against the tree at 0.109.0; fourteen on 30 September
-  2026, against 0.120.1. The findings the stock-take recorded at its close on
-  23 September 2026 are not a round of this check: they were read against the
+  2026, against 0.120.1; twenty on 4 October 2026, against 0.127.0, read
+  against the entry beside it as well; twelve on 7 October 2026, against
+  0.129.0, three statements corrected, five notes and four findings; fourteen
+  on 12 October 2026, against 0.135.0, read against the nine entries since the
+  round before. The findings the stock-take recorded at its close on 23
+  September 2026 are not a round of this check: they were read against the
   tool's states over the whole set and stand in the table with a count the
   tool prints, and a second copy of that count here is what this bullet warns
   against. **This sentence used
@@ -15391,6 +15395,36 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   straight path, none of 2497 lines uncovered, and ninety-eight runs that do
   not count.
 
+  **Addendum of 12 October 2026: the items of "What the closing runs of
+  milestone 3 still measure" above, each with where it was measured or that it
+  stays open; written by the consistency audit of that day, the paragraph above
+  standing as it is.** Whether the hook on permission prompts fires at the
+  pause of auto mode: open, and not produced on purpose, decided on 11 October
+  2026 in the entry of that day on the hook at a subagent's prompt; a run that
+  meets the pause by itself records it. Whether the two hooks and the
+  identifier work as part of the installed plugin out of `hooks/hooks.json`:
+  measured — the hook on permission prompts on 11 October 2026 at a subagent's
+  prompt in the background and at a question of `AskUserQuestion`, the two
+  entries of that day; the mark guard at a write by the editing tool, session A
+  of the second of those entries, and at the mark command under auto in the
+  second closing run, record 301 of its log, which also shows the identifier on
+  the mark's third line, the entry of 11 October 2026 on that run under "The
+  second run, on the hooks". Whether the statement beside the reader reaches
+  the model in a session with a person: measured in the second closing run,
+  records 127 to 129 of its log, the statement as additional context beside
+  `bin/devloop-permission-mode`. Whether a `PreToolUse` hook on the editing
+  tool blocks a write onto the mark in a live session: measured on 11 October
+  2026 under `default` with text C, session A of the entry of that day on the
+  mark guard. What the default time limit does to a command: open, and stays
+  so, decision 7 of the entry on the first closing run; what would measure it
+  is a call without a limit of its own that runs past 120 seconds in a session
+  whose harness lets it, read for whether it is ended or moved. The
+  classifier's answer to the mark command and to `bin/devloop-permission-mode`
+  in auto mode in a session with a person: measured in the second closing run,
+  the mark written at records 300 and 301 and the reader run at record 129,
+  with no refusal of the classifier and no permission prompt in any of its 21
+  logs.
+
 - **Step 8 of `setup-checks`: a reading before the question, the question
   field by field, the rule for auto mode after its yes; a guard on the
   identity of a commit; milestone 12 in the plan; the findings of 9 October
@@ -16313,6 +16347,33 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   ninety-eight runs that do not count — the ninety-seven and the run of this
   day on the refused write, in place of the run of 9 October 2026 on it, with
   the same reason.
+
+  **Addendum of 12 October 2026: the items of "What the closing runs of
+  milestone 3 still measure" above, each with where it was measured or that it
+  stays open; written by the consistency audit of that day, the paragraph above
+  standing as it is.** What the hook on permission prompts does at a prompt of
+  `AskUserQuestion` while the mark stands: measured on 11 October 2026 in a
+  live session as part of the installed plugin, session B of the entry of that
+  day on the mark guard and the hook, the question denied with text 5 and not
+  reaching the person. From decision 6, whether the hook fires at the pause of
+  auto mode: open, not produced on purpose, decided in the entry of 11 October
+  2026 on the hook at a subagent's prompt; and on prompts of subagents in the
+  background: measured in that entry, the deny arriving in the subagent. From
+  decision 10, whether the classifier reads the yes from the question window as
+  express permission, its rule "Self-Modification": half answered by the second
+  closing run — the rule was entered at records 164 and 165 of its log after
+  the yes at record 157, the four answers in the widget carrying the source
+  `user_temporary`, and no refusal of the classifier stands in any of its 21
+  logs — and no decision of the classifier stands in them either, so whether it
+  read the yes or decided nothing is not shown; what would measure it is the
+  classifier's decision on that write, read where Claude Code records one, or
+  the same write in a session without the yes. Whether the rule takes effect in
+  the same session it was entered in: half answered the same way — `brew
+  install re2c` and `npx playwright install firefox` ran with nobody there at
+  records 21 of the two subagent logs after the rule stood, with no refusal —
+  and whether they passed because of the rule or would have passed without it
+  is not measured; what would measure it is the same two installs in a session
+  without the rule, or the classifier's decision read.
 
 - **The arrangement of the two closing runs of milestone 3 as decided on 10
   October 2026, three places that said as a fact what is not measured, two
@@ -17626,12 +17687,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   has no checksum and is installed with sudo" --label raised-here
   --body-file …`, the body in a file written with the editing tool, record
   713; the guard blocked the call at record 726 with the cause "it needs
-  sudo". The title rule of `shared/body-through-file.md`, lines 23 to 32:
+  sudo". The title rule of `shared/body-through-file.md`, lines 20 to 29:
   the title names the problem and does not quote the command, and where a
   title genuinely needs the command in it, that is a false positive, reported
   and not reworded. This title quoted no command; it named the problem, and
   the word that names it is the word the guard reads. What the run did next
-  stands under "Met again" below. `shared/body-through-file.md` line 23.
+  stands under "Met again" below. `shared/body-through-file.md` line 20.
   Recorded, not built: a title naming the problem, "dasel download in CI has
   no checksum and is installed with sudo", was blocked by the install guard
   for the word `sudo`, record 726, the body having gone through a file as
@@ -17725,9 +17786,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **h. No second review round followed the fixes, in either run — beyond the
   order.** `skills/build-work/SKILL.md` step 4, line 704: "If the diff
   changes after this step, this step runs again on what changed", the
-  commits added since the last review, and line 719, that the second round
-  does not fall away unattended and how little the new commits contain is no
-  reason. In this run the review of #16 ended at record 633 with two
+  commits added since the last review, and lines 716 to 718, that the second
+  round does not fall away unattended and how little the new commits contain
+  is no reason. In this run the review of #16 ended at record 633 with two
   findings to fix now; the run fixed them at records 657 to 677, ran the
   checks at 705, committed and opened the pull request at 731, and no lens
   read the new commits, the next review agents being those of #18 at record
@@ -17857,12 +17918,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   nowhere else: record 151, the five parts; record 167, the line before the
   install question; record 47, the line `start-work` step 5 asks for where
   `--auto` was typed, that the run goes on alone from where the idea stands,
-  line 247; record 502, "Drei Aufgaben sind angelegt; ich starte mit „Name
+  line 274; record 502, "Drei Aufgaben sind angelegt; ich starte mit „Name
   checker is generated by re2js" … Jede läuft eigenständig", the saying
   `cut-into-tasks` asks for before it runs the build, line 159; records 560
   and 863, the lens left out with its trigger negated, "Datenmigration lasse
   ich außen vor, da der Diff keine Schema- oder …", which `review-changes`
-  lines 125 to 131 want written where whoever reads the report afterwards
+  lines 105 to 114 want written where whoever reads the report afterwards
   finds it, and no report of the run carries; and record 730, the reading
   of the block, under "Met again". Whether that is the model's or a skill's
   is still not known; the model and the effort are those of the first run.
@@ -18280,6 +18341,310 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   green and line for line what they print at `c2c8bd5`, the check holding
   the roadmap against the skill names printing nothing. The figures as
   printed stand in the report.
+
+- **The consistency audit of 12 October 2026 before the handover, read against
+  the nine entries since the audit of 7 October 2026 and the code at `704cd1d`:
+  fourteen disagreements, ten mended in the documents and four recorded; the
+  two lists of what the closing runs still measure answered item by item; a
+  status word broken over a line break; two changes to this machine; 12 October
+  2026, the version stays 0.135.0.** On `task/audit-2026-10-12`, off `704cd1d`,
+  version 0.135.0 on `main`; this entry, the mends and the rows of the table in
+  one commit. Nothing under `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`
+  or `.github/` changes, so the version stays and `.claude-plugin/plugin.json`
+  is untouched. The report stands on this machine as
+  `~/devloop-audit-2026-10-12.md`, in English, and is not in the repository.
+  Every line number of a file in this entry holds at `704cd1d` unless it says
+  otherwise.
+
+  **What was read, and how.** On 12 October 2026 on a branch cut from
+  `origin/main` at `704cd1d`, the working tree clean, the installed copy at
+  0.135.0 equal to the tree, the check under "Before you change anything, run
+  this" printing nothing. Read whole: `docs/plan.md`,
+  `docs/skill-conventions.md`, `README.md` and the header of
+  `scripts/devloop-stock-take`; of this file everything before the first entry
+  under "Known gaps", everything from the end of the last entry on, the three
+  audits before this one as the form, and the nine entries after the audit of 7
+  October 2026, from the entry of 8 October 2026 on the install guard to the
+  entry of 11 October 2026 on the second closing run; the code, `git diff
+  89fb52e 704cd1d -- skills shared hooks bin scripts .github`, 25 files, 1261
+  lines added and 227 removed, the two new hooks, the identity guard, the two
+  new programs and the new or changed shared texts read whole in the diff,
+  `build-work` and `setup-checks` in their changed regions; the table through
+  the tool at `704cd1d`, exit 0, nothing broken, twenty-three findings, no unit
+  without a straight path, none of 2605 lines uncovered, 97 runs that do not
+  count, and `git diff 89fb52e 704cd1d -- docs/stock-take.tsv`, 860 rows added
+  — 175 things, 184 not-a-thing, 498 runs, 3 findings — and 93 removed. Of the
+  860 the notes of all 175 things and of all 184 not-a-thing rows were read,
+  and the 39 whose note names a line or says what one reads were held against
+  that line: the eight on the install guard's lines at `2460bb7`, the nine
+  rationale rows on comment and docstring lines, the twenty-one defects of the
+  entries of 10 and 11 October 2026 naming a line of a skill, a shared text or
+  this file, and the branch of step 8 whose note quotes its line; every one
+  holds. The 498 run rows are 260 of the two closing runs with the source
+  `log`, anchored on the paragraphs of the entry of 11 October 2026 that record
+  them, and 238 of the entries of 8 to 11 October 2026 on the tool, its
+  self-test, the nineteen checks and the hooks and programs measured; their
+  anchors the tool checks. Every reference by line number in the entries on the
+  two closing runs was held against `704cd1d`, where the five shipped
+  directories stand as at `5ae30eb`, the commit that introduced 0.135.0; the
+  line numbers of the seven entries before them were spot-checked at the stands
+  each names — `2460bb7`, `ab34f96`, `1d57f2a`, `c819499`, `1458419`, `cb22b6e`
+  — and hold there, and have moved at `704cd1d` as those entries say. The
+  commands and what they printed stand in the report.
+
+  **The entries against the code.** Every statement of the nine entries about
+  what a hook, a program, a skill or a shared text does was held against the
+  files at `704cd1d`, and each holds: the eleven hooks in `hooks/hooks.json`;
+  the mark guard's two duties, its reading of a write off a Bash command and
+  off the editing tool, and every pass through one function; the hook on
+  permission prompts and its three cases of the third line; the session
+  identifier in `hooks/session-start.sh` and in `shared/mark-command.md`; the
+  identity guard's forms and its block through no function;
+  `bin/devloop-auto-mode-rule` with the link followed;
+  `bin/devloop-permission-mode`; the fetch-and-run forms and the browsers in
+  the install guard, with the options read since the review of pull request
+  #159; `shared/install-not-through.md`, `shared/fetch-and-run.md`, the new
+  block of `shared/command-does-not-answer.md` and its four cases with nobody
+  there; start condition 4 in `build-work` and in `plan-work`; the seven places
+  under "With nobody there"; the reading before the question, the question
+  field by field, the rule question and the gate order in `setup-checks` step
+  8; and the three places of 10 October 2026 that say the changelog says so.
+  Four line references of the entry on the second closing run do not point at
+  what they name and are corrected below; the rest hold.
+
+  **The documents against the code and the entries, by weight.** Five wrong,
+  five stale, four recorded as they are. Each mended place carries a defect
+  thing sited on its status line here, with the mended line as its evidence,
+  which for a document reads recorded and not built, as the audit of 30
+  September 2026 had it. A line in a dated entry is corrected in place only
+  where it is a wrong line number, the way the addendum of 10 October 2026
+  corrected three of its own; nothing else in a dated entry is changed, and
+  what the two entries of 9 October 2026 left open gets an addendum under each,
+  the way allowed for adding to a dated record.
+
+  **Wrong.**
+
+  - `docs/skill-conventions.md` under the paragraph that a hook saying "hand
+    this to a person" cannot check that there is one said of the mark: "The
+    hooks still do not read it". Since 9 October 2026 two do —
+    `hooks/permission-request-unattended.sh` answers no to every permission
+    prompt while the mark stands and its third line names the session, and
+    `hooks/pre-tool-use-mark-guard.sh` blocks the mark being written in any
+    mode but auto — and `hooks/stop-checks.sh` still does not. Mended in the
+    paragraph's words.
+
+    Recorded, not built: the conventions name the two hooks that read the mark
+    since 9 October 2026, and the turn-end hook as the one that does not.
+
+  - The entry of 11 October 2026 on the second closing run, defect h, named
+    `build-work` "line 719" for the sentence that the second round does not
+    fall away unattended; line 719 is blank, and the sentence stands at lines
+    716 to 718. Corrected in place.
+
+    Recorded, not built: defect h of the entry on the second closing run names
+    lines 716 to 718 of `build-work`.
+
+  - The same entry, defect d, named "lines 23 to 32" and "line 23" of
+    `shared/body-through-file.md` for the title rule; the file has 29 lines and
+    the rule stands at lines 20 to 29, which the note of that defect's thing
+    had half right, "line 20, to line 32". Corrected in place, and the note.
+
+    Recorded, not built: defect d of the entry on the second closing run names
+    lines 20 to 29 of `shared/body-through-file.md`, and its note the same.
+
+  - The same entry, under "Observed", named `start-work` "line 247" for the
+    line step 5 asks for where `--auto` was typed; line 247 opens step 5, and
+    the sentence stands at line 274, "`--auto` travels with that choice".
+    Corrected in place.
+
+    Recorded, not built: the `--auto` observation of the entry on the second
+    closing run names line 274 of `start-work`.
+
+  - The same entry, under "Observed", named `review-changes` "lines 125 to 131"
+    for the rule that the lens left out is named in a form that survives being
+    read later by somebody who was not there; those lines carry the paragraph
+    on a fact that answers a different question, and the rule stands at lines
+    105 to 114. Corrected in place.
+
+    Recorded, not built: the lens observation of the entry on the second
+    closing run names lines 105 to 114 of `review-changes`.
+
+  **Stale.**
+
+  - "What is shared today" in `docs/skill-conventions.md` listed the third kind
+    down to `shared/fetch-and-run.md` of 8 October 2026 and not
+    `shared/install-not-through.md` of 9 October 2026, as the audit of 7
+    October 2026 found the same list short by one; `grep -n install-not-through
+    docs/skill-conventions.md` printed nothing at `704cd1d`. Mended.
+
+    Recorded, not built: the list of what is shared names
+    `shared/install-not-through.md` with its date and its two places.
+
+  - The measurement paragraph under "The install guard reads a record" in the
+    conventions ended "Not measured: the two runs of milestone 3." Both were
+    made on 11 October 2026. Mended with a dated sentence on what the guard met
+    in them.
+
+    Recorded, not built: the measurement paragraph says the two runs of
+    milestone 3 were made and what the guard passed and blocked in them.
+
+  - The tally of rounds of `check-docs-consistency` under "Where these would
+    attach" above ended at the round of 30 September 2026, beside its own
+    warning that it had stopped short once before: the audits of 4 and 7
+    October 2026 added nothing to it. Mended with those two rounds and this
+    one.
+
+    Recorded, not built: the tally of rounds names the rounds of 4, 7 and 12
+    October 2026.
+
+  - The item under "Open" in `docs/plan.md` on which allow rule has to stand
+    for an install command knew the measurement of 28 September 2026 alone.
+    Since 9 October 2026 the rule is the one `setup-checks` step 8 enters under
+    `autoMode.allow` after a yes, decision 10 and text 4 of the entry of that
+    day, and in the second closing run it stood and the two installs with
+    nobody there met no refusal of the classifier. Mended with a dated
+    sentence; whether they passed because of the rule is not measured, and the
+    item says so.
+
+    Recorded, not built: the plan's open item on the allow rule names the rule
+    of 9 October 2026 and the run of 11 October 2026 under it.
+
+  - The table held no thing for two defects the entry of 9 October 2026 on step
+    8 names as findings of its reports — a project whose mode was set up before
+    0.134.0 meeting the rule question on no path, and `~/.claude` itself a link
+    to a directory that does not exist, which the program then makes — where
+    the head of the tool, section A, says every defect an entry names is a
+    thing. Two defect things added, sited on the lines of that entry that name
+    them.
+
+    Recorded, not built: the two defects the entry of 9 October 2026 on step 8
+    names as report findings stand in the table.
+
+  **Recorded as they are.**
+
+  - Whether milestone 3 has landed has more than one answer, and `docs/plan.md`
+    carries both halves: "The two closing runs were made on 11 October 2026"
+    and, a few sentences on, "The milestone has not landed." Its end as the
+    plan words it was walked by the two runs — the no with the person there,
+    the commands handed over without trying them; the yes with nobody there,
+    `re2c` and Firefox installed by the run and the guard passing — and the
+    entry on the second run says its report answers sentence by sentence and
+    marks nothing done; against it stand the nine defects of that run, two of
+    them met again, and the plan's sentence that a run with Go follows where
+    doubts remain. The answers: the milestone landed with the two runs, and the
+    plan gets its line saying when and in which pull requests, #166 and #167;
+    or it has not landed until the run with Go, and the sentence stands; and
+    either way the person's decision is recorded. Not decided here.
+
+    Recorded, not built: whether milestone 3 landed with the two closing runs
+    is the person's to decide, and the plan says both halves.
+
+  - `hooks/pre-tool-use-mark-guard.sh` states the permission mode beside any
+    command in which the reader's name stands as a token, line 48, `grep -qE
+    '(^|[^[:alnum:]_.-])devloop-permission-mode([[:space:]]|$)'`, and not only
+    beside a call of it. Measured on 12 October 2026 at 08:04 UTC, the hook fed
+    its JSON under `default` in a throwaway project with `docs/agents/`: `grep
+    -n x bin/devloop-permission-mode`, `cat bin/devloop-permission-mode` and
+    `git diff -- bin/devloop-permission-mode` each answered exit 0 with "the
+    permission mode of this session is default, shown in the status bar as
+    manual mode on" as `additionalContext`, as the call itself does, and `ls
+    bin/devloop-permission-mode-x` exit 0 without it; met first in this session
+    beside a `git diff` naming the program among its paths. Harmless to the
+    run, which reads the statement only where it ran the program, and wrong as
+    a statement about the command. Should: the statement stands beside a
+    command that runs the program, the token standing where a command starts.
+
+    Recorded, not built: the mark guard's statement stands beside a command
+    that only names the reader among its arguments.
+
+  - A status word of this file broken over a line break leaves its line out of
+    the search set: the tool reads a line into the set where the pattern at
+    `scripts/devloop-stock-take` line 571 matches it — the capitalised word for
+    built as a whole word, `Half[[:space:]]built`,
+    `Recorded,[[:space:]]not[[:space:]]built` and `Should[[:space:]]hold`,
+    written here with a character class for each space so that these lines stay
+    out of the set they describe — one line at a time, line 1214. Met twice
+    while the entry on the second closing run was written, its defects e and a,
+    both rewrapped before the merge of #167. Searched at `704cd1d` on 12
+    October 2026 with a python3 program over this file that joins every line to
+    the next and reports a match of that pattern spanning the join: `spanning
+    matches: 0`; and with `awk` over the four forms, each broken after its
+    first word or before its last: nothing. Should: the tool reads a status
+    word across a line break, or reports such a line as one that needs a
+    record. Sited on the tool's line 571, not built.
+
+    Recorded, not built: a status word broken over two lines of this file is
+    read by the tool as none, and nothing reports it.
+
+  - The entry of 10 October 2026 on the arrangement of the closing runs says
+    "No finding was added to the table; the report of this day names what it
+    found", and the addendum of 10 October 2026 to the entry on step 8 says the
+    same of the link case above, where the head of the tool, section A, says a
+    finding lives in the table and not only in a report; and on 12 October 2026
+    the reports of 9 and 10 October 2026 on step 8 and on the arrangement,
+    `~/devloop-report-2026-10-09-mode-offer-and-commit-identity.md`, its
+    addendum of 10 October and
+    `~/devloop-report-2026-10-10-closing-runs-arrangement.md`, are not on this
+    disk, so what the arrangement's report found cannot be read. Should: what a
+    report finds enters the table as a finding or the entry as a defect in the
+    same commit, as the header says.
+
+    Recorded, not built: findings named in reports alone by two entries of 10
+    October 2026, two of those reports not on this disk.
+
+  **The two lists of what the closing runs still measure, answered.** The two
+  paragraphs headed "What the closing runs of milestone 3 still measure", in
+  the entry of 9 October 2026 on the behaviour with nobody there, line 15103 at
+  `704cd1d`, and in the entry of that day on step 8, line 15679, stay as they
+  stand; each gets an addendum of this day at the end of its entry, as the
+  addendum of 10 October 2026 was added to the entry on step 8, saying for
+  every item where it was measured or that it stays open and what would measure
+  it. Of the ten items, six are measured — the hook as part of the installed
+  plugin at a subagent's prompt and at a question of `AskUserQuestion`, the
+  identifier on the mark's third line, the statement beside the reader in a
+  session with a person, the mark guard at a write by the editing tool and at
+  the mark command under auto, and the classifier at the mark command and the
+  reader — two stay open with the reason, the pause of auto mode and the
+  default time limit, and two are half answered, the rule under
+  `autoMode.allow`: no refusal came after it was entered, and whether it was
+  the rule that let the installs through was not measured.
+
+  **Two changes to this machine on 12 October 2026, after the second closing
+  run, as facts for later runs.** The six Playwright directories that decision
+  6 of the entry on the first closing run moved to
+  `~/ms-playwright-backup-2026-10-11` — `chromium-1229`, `chromium-1234`,
+  `chromium-1243` and the three `chromium_headless_shell` directories of the
+  same versions — went back to `~/Library/Caches/ms-playwright`, which on 12
+  October 2026 holds them beside `chromium-1248`,
+  `chromium_headless_shell-1248`, `firefox-1555`, `b`, `ffmpeg-1011`,
+  `ffmpeg-1013` and `mcp-chrome-3bd21bc`, and the backup directory is gone. The
+  list `autoMode.allow` that the second run created in
+  `~/.claude/settings.json` was taken out again: `bin/devloop-auto-mode-rule
+  read` answers that the rule does not stand there, `autoMode` holds no allow
+  list, exit 1, as before that run. `dasel`, `re2c` and `re2js` stand under
+  `/opt/homebrew/bin` as the runs left them, `htmlq` nowhere.
+
+  **Records.** Fourteen defect things, one per disagreement above, sited on its
+  status line: the ten mended ones evidenced on the mended line — in the
+  conventions, the plan, the tally above and the entry of 11 October 2026 on
+  the second closing run — and the four recorded ones on their status line, the
+  one on the status word sited on `scripts/devloop-stock-take` line 571 and
+  evidenced on its status line; the head of this entry as part of the first;
+  two defect things for the entry of 9 October 2026 on step 8, sited and
+  evidenced on the lines that name the report findings; the note of the thing
+  of defect d of the entry on the second closing run corrected. No finding
+  added, and the tool's finding count stays. The tool after the change,
+  measured in a copy with the change committed: no broken record, 23 findings
+  as at `704cd1d`, no unit without a straight path, no uncovered line of 2620,
+  exit 0; the counts against `704cd1d`: recorded and not built 232 where it was
+  216, its defects 221 where they were 205; the search set 2620 lines where it
+  was 2605, the head of this entry and its fourteen status lines; not-a-thing
+  records 1323 where they were 1322, of which part of 1124 where it was 1123;
+  97 runs that do not count, the same runs; every other count unchanged; the
+  self-test 88 cases, its line as at `704cd1d`; the nineteen checks under
+  "Before a handover, run these" green and line for line what they print at
+  `704cd1d`, the check holding this file against the skill names printing
+  nothing. The figures as printed stand in the report.
 
 ## Decisions taken against
 

@@ -161,7 +161,12 @@ the third fails, which "Say when something did not happen" below places; and
 and `setup-checks` step 3, the rule that a command which fetches a tool and
 runs it without saying install counts as an install whether the guard sees
 it or not, which "A command that fetches a tool and runs it without saying
-install enters the guard by name" below places.
+install enters the guard by name" below places; and
+`shared/install-not-through.md`, 9 October 2026, inserted into `build-work`
+step 3 after that rule and into `setup-checks` step 4 after the backed
+command, the one rule for the four ways an install does not go through with
+nobody there, which "Say when something did not happen" below names as the
+four ways.
 
 ## Numbered steps where order matters
 
@@ -1744,7 +1749,15 @@ naming `~/.cache/puppeteer`; eight help commands passing under every record,
 under every record as before. Under no and no section 16 blocks and 20 passes
 each, under the yes with eleven places none and 36, under the yes with six 3
 and 33, every one as the order expected.
-Not measured: the two runs of milestone 3.
+The two runs of milestone 3 were made on 11 October 2026 in `devloop-test-w`,
+the roadmap entries of that date on the first and on the second closing run:
+under the no with the person there the run handed `brew install dasel` and
+`npx playwright install chromium` over without trying them, as `build-work`
+step 3 point 7 says, so the guard met neither; under the yes with nobody
+there the guard passed `brew install re2c` and `npx playwright install
+firefox`, inferred from the commands having run in sessions in which it runs
+on every Bash call, and blocked `sudo` twice and `--with-deps` once, each on
+text a run wrote and not on an install it made.
 
 **The setup state is read off the default branch, since 3 October 2026, and
 the working tree decides one thing beside it.** Until then every place that
@@ -2321,9 +2334,13 @@ each path still written in the skill. The block under "When a command does not a
 inserted into all twelve from `shared/command-does-not-answer.md`, forks on
 whether somebody is there and reads nothing — it was not changed for the mark —
 and five of the twelve files never name the mark at all. So where a skill does fork on the file, it no longer
-carries the mode as a word from the start of the session. The hooks still do not
-read it, and whether `stop-checks.sh` should is recorded as open in
-`docs/roadmap.md`. The sentence above therefore still holds for hooks, and the
+carries the mode as a word from the start of the session. Since 9 October 2026
+two hooks read it: `hooks/permission-request-unattended.sh` answers no to every
+permission prompt while the mark stands and its third line names the session,
+and `hooks/pre-tool-use-mark-guard.sh` blocks the mark being written in any
+mode but auto; `stop-checks.sh` still does not read it, and whether it should
+is recorded as open in `docs/roadmap.md`. The sentence above therefore still
+holds for that hook, and the
 skills' half of it — every skill on such a path says what the message means —
 now rests on a file rather than on memory.
 

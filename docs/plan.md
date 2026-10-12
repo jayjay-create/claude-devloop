@@ -770,7 +770,12 @@ that answers it, or says that none does.
   (milestones 3 and 4). Whether it lets an install command through was
   measured on 28 September 2026: one `brew install` passed it once, with the
   guard out of the way, and the roadmap entry of that date says what that
-  does and does not license.
+  does and does not license. Since 9 October 2026 the rule for an install is
+  the one `setup-checks` step 8 enters under `autoMode.allow` after a yes,
+  text 4 of the roadmap entry of that day, decision 10; in the second closing
+  run of 11 October 2026 it stood and the two installs with nobody there met
+  no refusal of the classifier, the roadmap entry of that date on the second
+  closing run, and whether they passed because of it is not measured.
 - Whether a headless browser runs on this machine unattended, and who ends it
   (milestone 4).
 - What `npx playwright install` lands outside the repository; not read from
