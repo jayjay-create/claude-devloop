@@ -2336,7 +2336,7 @@ whether somebody is there and reads nothing — it was not changed for the mark 
 and five of the twelve files never name the mark at all. So where a skill does fork on the file, it no longer
 carries the mode as a word from the start of the session. Since 9 October 2026
 two hooks read it: `hooks/permission-request-unattended.sh` answers no to every
-permission prompt while the mark stands and its third line names the session,
+permission prompt while the mark stands, unless its third line names another session,
 and `hooks/pre-tool-use-mark-guard.sh` blocks the mark being written in any
 mode but auto; `stop-checks.sh` still does not read it, and whether it should
 is recorded as open in `docs/roadmap.md`. The sentence above therefore still
