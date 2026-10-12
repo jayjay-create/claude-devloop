@@ -1,13 +1,17 @@
 #!/bin/bash
 set -uo pipefail
-INPUT=$(cat)
-INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' -e 's/\\n/ /g' -e 's/\\t/ /g' -e 's/\\r/ /g')
+HERE=$(cd "$(dirname "$0")" && pwd)
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 CHECKS="$PROJECT_DIR/docs/agents/checks.md"
 [ -f "$CHECKS" ] || exit 0
 
-FILE=$(echo "$INPUT" | sed -n 's/.*"file_path"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+# The input is read through bin/devloop-command-reader, which decodes the
+# JSON, since 12 October 2026; every hook reads it so, and a check in
+# .github/workflows/stock-take.yml holds them to that. This hook reads the
+# file the editing tool wrote and nothing else of its input.
+INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
+FILE=$(printf '%s\n' "$INPUT" | sed -n 's/^file: //p' | head -1)
 [ -n "$FILE" ] || exit 0
 [ -f "$FILE" ] || exit 0
 REL="${FILE#$PROJECT_DIR/}"

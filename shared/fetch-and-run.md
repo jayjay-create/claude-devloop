@@ -4,7 +4,9 @@ October 2026, `go run` with a version suffix on its package, `uvx` and `uv
 tool run`, `uv run` with `--with`, `-w`, `--with-editable` or
 `--with-requirements`, `pipx run`, `pnpm dlx` with `pnpx` and `pnx`, `pnpm
 create`, the same and a global add under `pn`, `yarn dlx` and `yarn create`,
-`gem exec`, `brew exec` and `brew x`, and `brew bundle` where it installs. It
+`gem exec`, `brew exec` and `brew x`, `brew bundle` where it installs, and
+since 12 October 2026 `nix run`, `nix shell` and `nix env shell`, which run a
+package named by a flake reference without saying install. It
 does not read `npx`, `npm exec`, `npm create`, `npm init` with a package,
 `bunx`, `bun x`, `bun create` or `docker run`, nor any form standing in a
 file of the project — a `Makefile` target, a package script, the first line

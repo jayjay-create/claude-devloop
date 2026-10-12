@@ -72,17 +72,30 @@ waiting ten seconds for a value that moves is an instruction being followed, not
 a command being retried.
 
 **A guard is answered, not got around.** Its block is a message, not a hurdle,
-and the way through is the one the message names. The same act under a different
-command name is the act that was refused, and a text reworded until the match no
-longer catches is the same command with the words changed; neither is a second
-attempt and neither is a way through. Say what was blocked — the command as it
-ran, the message that came back, and what the block costs the work in hand,
-whatever that work is — then do what the message asks. Where the
-block looks wrong, that reading is said and not acted on: a refusal held to be a
-false positive is still a refusal, and overriding one is not the run's call.
-Where nobody is there to hear it, the run does not carry on past it either. A
-block stepped around leaves a run looking clean over an act nobody agreed to,
-which is the whole reason this is written down.
+and the way through is the one the message names. Say what was blocked — the
+command as it ran, the message that came back, and what the block costs the
+work in hand, whatever that work is — then do what the message asks, and
+change nothing else: not the words of what was blocked, not its channel, not
+its name. The same act under a different command name is the act that was
+refused; a text reworded until the match no longer catches is the same
+command with the words changed; the same files written through another tool
+with the matched word taken out, and an issue filed under another title, are
+that rewording with a different hand; none is a second attempt and none is a
+way through. Where a rule of this set names another channel for a text — the
+editing tool for `environment.md` and the workflow file, a file behind
+`--body-file` for a body — the text goes through that channel unchanged: the
+channel moves, the words do not, and that is decided there, once, and not at
+the block. Where the block looks wrong, that reading is said and not acted
+on: a refusal held to be a false positive is still a refusal, reported with
+the command and the message as a finding on the guard, and overriding one is
+not the run's call. Where nobody is there to hear it, the run does not carry
+on past it either: the block goes into the issue the section on a guard's
+block names, and where filing that issue is itself the blocked act, the task
+is put down with the block in the run's final report. A block stepped around
+leaves a run looking clean over an act nobody agreed to, which is the whole
+reason this is written down; the second closing run of milestone 3 stepped
+around two blocks of three on 11 October 2026, the files rewritten without
+the word and the issue renamed, and both read as clean.
 
 **With nobody there to tell, the report is still written.** An unattended run
 has no one to explain a refusal or a silence to, so the command and the

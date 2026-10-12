@@ -1,7 +1,6 @@
 #!/bin/bash
 set -uo pipefail
-INPUT=$(cat)
-INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' -e 's/\\n/ /g' -e 's/\\t/ /g' -e 's/\\r/ /g')
+HERE=$(cd "$(dirname "$0")" && pwd)
 
 # A no to every permission prompt while the mark of a run with nobody there
 # stands, since 9 October 2026, decision 6 of the roadmap entry of that day:
@@ -12,17 +11,22 @@ INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' 
 # standing touches no later session with a person in it: a third line naming
 # another session passes the prompt on unanswered. A mark without a third
 # line, or with an empty one, and an input without a session_id, which the
-# types of the Agent SDK give as a required field, both answer no, since in
-# doubt the run with nobody there is not to be blocked - the person's
-# principle in the roadmap entry of 8 October 2026. The project directory is
-# the one every hook of this plugin reads. The message is approved text 5 of
-# 9 October 2026, word for word, in docs/roadmap.md.
+# types of the Agent SDK give as a required field, both answer no, by the
+# rule "In doubt, a run with nobody there is not blocked" in
+# docs/skill-conventions.md: not standing still is not passing, and the no
+# lets the run go on. The project directory is the one every hook of this
+# plugin reads. The input is read only once the mark is found to stand,
+# through bin/devloop-command-reader, which decodes the JSON, since 12
+# October 2026; every hook reads it so, and a check in
+# .github/workflows/stock-take.yml holds them to that. The message is
+# approved text 5 of 9 October 2026, word for word, in docs/roadmap.md.
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0
 [ -f ".claude/unattended.local" ] || exit 0
 
-SID=$(echo "$INPUT" | sed -n 's/.*"session_id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
+SID=$(printf '%s\n' "$INPUT" | sed -n 's/^session_id: //p' | head -1)
 THIRD=$(sed -n '3p' .claude/unattended.local 2>/dev/null)
 if [ -n "$SID" ] && [ -n "$THIRD" ] && [ "$THIRD" != "$SID" ]; then
   exit 0

@@ -1,4 +1,5 @@
 #!/bin/bash
+HERE=$(cd "$(dirname "$0")" && pwd)
 # The session's identifier, read off the hook's input and persisted for every
 # Bash call of this session as DEVLOOP_SESSION_ID through CLAUDE_ENV_FILE,
 # which a SessionStart hook alone holds (hooks reference, "Persist environment
@@ -7,10 +8,13 @@
 # hold a prompt's session against it. First, before every early exit below,
 # so that the variable stands in every session, one not set up included; the
 # identifier is kept to letters, digits, dot, hyphen and underscore. Since 9
-# October 2026. What the hook prints is unchanged by it.
-INPUT=$(cat)
+# October 2026. The input is read through bin/devloop-command-reader, which
+# decodes the JSON, since 12 October 2026; every hook reads it so, and a
+# check in .github/workflows/stock-take.yml holds them to that. What the hook
+# prints is unchanged by either.
+INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
 if [ -n "${CLAUDE_ENV_FILE:-}" ]; then
-  SID=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -n 's/.*"session_id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1 | tr -cd 'A-Za-z0-9._-')
+  SID=$(printf '%s\n' "$INPUT" | sed -n 's/^session_id: //p' | head -1 | tr -cd 'A-Za-z0-9._-')
   printf 'export DEVLOOP_SESSION_ID=%s\n' "$SID" >> "$CLAUDE_ENV_FILE"
 fi
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
@@ -28,7 +32,6 @@ git rev-parse --git-dir >/dev/null 2>&1 || exit 0
 # no directory: not set up here. Where the program cannot read the branch, its
 # cause stands in place of the files, and the directory alone decides between
 # the last two.
-HERE=$(cd "$(dirname "$0")" && pwd)
 STATE=$("$HERE/../bin/devloop-setup-state" "$PROJECT_DIR" 2>&1)
 RC=$?
 SETUP=""

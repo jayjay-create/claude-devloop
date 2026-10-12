@@ -1,0 +1,989 @@
+#!/bin/bash
+# Reads the input of a hook off stdin - the JSON Claude Code hands every hook -
+# and prints its fields and, for a Bash call, the command taken apart as the
+# shell runs it: one line per simple command, so that a hook judges every
+# command at its first word and never matches a word of a quoted text, a
+# heredoc for another program or the second command behind a newline. Every
+# hook under hooks/ that reads its input reads it through this program and
+# through nothing else, with the one line
+#   INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
+# since 12 October 2026, HERE being the hook's own directory resolved before
+# any change of directory; a check in .github/workflows/stock-take.yml holds
+# them to that. See docs/skill-conventions.md, "A hook reads its input
+# through one program".
+#
+# Usage: devloop-command-reader < the hook's JSON
+#        devloop-command-reader --self-test
+#
+# On exit 0, first the fields, one per line, each where the JSON carries it:
+#   event: <hook_event_name>
+#   tool: <tool_name>
+#   cwd: <cwd>
+#   permission_mode: <permission_mode>
+#   session_id: <session_id>
+#   file: <tool_input.file_path>
+#   parsed: yes          the command was taken apart, and its lines follow
+#   parsed: none         the JSON carries no tool_input.command
+#   parsed: no: <why>    the command cannot be taken apart; no line follows,
+#                        and what cannot be taken apart goes through every
+#                        hook, since the shell runs nothing of such a command
+#                        either - a quote or a substitution not closed, an
+#                        operator with nothing behind it, an if without its fi
+# then, for parsed: yes, one line per simple command, its fields separated by
+# the unit separator, byte 31, so that an empty word stays a field:
+#   <id> <parent> <relation> <pipe> <first> <word> <word> ...
+#   id        counts from 1 in the order the commands stand in the text
+#   parent    the id of the command this one stands in, 0 at the top
+#   relation  how it stands there: list - the text itself or the body of an
+#             if, for, while, until, case, a group, a subshell or a function;
+#             subst - a $( ) or backtick substitution in a word of the parent;
+#             procsub - a <( ) or >( ) in a word of the parent; shell - text
+#             the parent runs as shell source: the argument of bash -c, sh -c,
+#             zsh -c, dash -c, ksh -c or fish -c, of eval, of trap and of
+#             flock -c, and a heredoc or a here-string fed to a shell that
+#             reads its commands from stdin; exec - the command find runs
+#             behind -exec, -execdir, -ok or -okdir
+#   pipe      the id of the command whose output this one reads, 0 where none
+#   first     the number, from 1, of the word the command is judged by: the
+#             first word behind the assignments, the redirections and the
+#             wrappers that run their argument as the command, or 0 where no
+#             such word stands - an assignment alone, a redirection alone
+#   words     every word of the command with its quotes removed and its
+#             escapes undone, as the shell hands it to the program, in order;
+#             $( ), backticks, ${ } and $(( )) stand in a word as written, and
+#             a $( ) or backtick is a command of its own as well; a
+#             redirection stands as two words, the operator with its
+#             descriptor as written - >, >>, >|, <, <>, >&, <&, &>, &>>, 2>,
+#             2>&, <<, <<-, <<< - and then its target, the delimiter for a
+#             heredoc; a line break inside a word is printed as a space
+# The wrappers read over, each with the options its vendor documents and the
+# value some of them take: timeout, time, nice, nohup, stdbuf, command,
+# builtin, noglob, watch, setsid, ionice and flock, and xargs without an
+# option - the ones Claude Code strips before it matches a rule
+# (code.claude.com/docs/en/permissions, "Wrappers" and "Exec wrappers and
+# find actions", read on 12 October 2026); sudo, env and trap - the ones
+# Codex resolves (github.com/openai/codex, codex-rs/shell-command/src/
+# command_safety/is_dangerous_command.rs at c308e12, read the same day); and
+# exec. command -v and command -V look a command up and run none, xargs with
+# an option is xargs, and zsh's nocorrect is not stripped by the vendor and
+# not read over here.
+# Nested text is taken apart like the text itself: $( ) and backticks, <( )
+# and >( ), a subshell, a group, the bodies of if, for, while, until, case,
+# select and a function, the argument of the shells named above with -c, of
+# eval, of trap and of flock -c, a heredoc and a here-string fed to one of
+# those shells where it reads its commands from stdin. Text in quotes is a
+# word of its command and no command: a command standing inside is read only
+# where the shell runs it, in the forms above. Not taken apart, each with its
+# reason in the head of docs/skill-conventions.md under the rule named above:
+# a heredoc or a here-string fed to any other program, python3 or cat say,
+# and a script file named to a shell, since that is another language or a
+# file; what a pipe carries into a shell, since that is the output of a
+# program and stands in no word; the argument of env -S, which the vendor
+# splits by rules of its own; the arguments of ssh, su, doas, chroot, docker
+# exec, nix-shell --run, direnv exec, devbox run, mise exec and npx, which the
+# two vendors above strip nowhere; a case inside $( ) whose pattern ends on a
+# bare parenthesis, which is read as the end of the substitution; an
+# arithmetic $(( )) and the number of a {varname}> redirection, which carry
+# no command.
+# Exit 2 with one line on stderr: nothing on stdin, or input that is not a
+# JSON object. --self-test produces every outcome above once and every form
+# the text is taken apart in, prints one line per case and exits 1 on the
+# first that does not come out as this head says. It needs bash and awk and
+# no GNU tool: it runs under bash 3.2 with the awk of macOS and under
+# ubuntu-latest alike, with LC_ALL=C so that every byte above 127 passes
+# through unchanged.
+set -u
+me=devloop-command-reader
+
+usage() { echo "$me: $1" >&2; exit 2; }
+
+selftest() {
+  local self T out rc n=0
+  self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-command-reader.XXXXXX") || exit 1
+  trap 'rm -rf "$T"' EXIT
+  fail() { echo "FAIL $1"; printf '%s\n' "$out" | tr '\037' '|' | sed 's/^/    /'; exit 1; }
+  # j CMD: the JSON of a Bash call carrying CMD, encoded as the tool encodes it
+  j() { printf '%s' "$1" | awk 'BEGIN{RS="\001"} { gsub(/\\/, "\\\\"); gsub(/"/, "\\\""); gsub(/\t/, "\\t"); gsub(/\n/, "\\n"); printf "{\"hook_event_name\":\"PreToolUse\",\"session_id\":\"s1\",\"cwd\":\"/p\",\"permission_mode\":\"auto\",\"tool_name\":\"Bash\",\"tool_input\":{\"command\":\"%s\",\"description\":\"d\"}}", $0 }'; }
+  # run JSON: feeds the JSON, keeps exit code and output with the separator shown as |
+  run() { printf '%s' "$1" | "$self" > "$T/out" 2>&1; rc=$?; out=$(tr '\037' '|' < "$T/out"); }
+  runc() { run "$(j "$1")"; }
+  # expect NAME EXIT LINE...: the last run exited EXIT and printed every line whole
+  expect() {
+    local name="$1" want="$2" s; shift 2; n=$((n+1))
+    [ "$rc" -eq "$want" ] || fail "$name: exit $rc, expected $want"
+    for s in "$@"; do printf '%s\n' "$out" | grep -qFx -- "$s" || fail "$name: no line '$s'"; done
+    echo "ok   $name"
+  }
+  # lines NAME N: the last run printed N command lines
+  lines() { local got; got=$(printf '%s\n' "$out" | grep -c '^[0-9]'); [ "$got" -eq "$2" ] || fail "$1: $got command lines, expected $2"; }
+  absent() { printf '%s\n' "$out" | grep -qF -- "$1" && fail "$2: '$1' stands there and should not"; }
+
+  # the fields and the input
+  out=$("$self" bogus 2>&1); rc=$?;         expect "an argument that is not --self-test: exit 2" 2 "$me: expected no argument, or --self-test alone, got 1"
+  run '';                                   expect "nothing on stdin: exit 2" 2 "$me: nothing on stdin: expected the JSON of a hook"
+  run 'not json';                           expect "not a JSON object: exit 2" 2 "$me: the input is not a JSON object"
+  run '{"tool_name":"Bash","tool_input":{"command":"ls"';  expect "an object not closed: exit 2" 2 "$me: the JSON ends inside an object"
+  run '{"tool_name":"Bash","tool_input":{"command":"ls}}';  expect "a string not closed: exit 2" 2 "$me: a string in the JSON is not closed"
+  run '{"tool_name":"Bash" "x":1}';         expect "a comma missing: exit 2" 2 "$me: expected , or } in the JSON object"
+  run '{"tool_name":"Bash",1:2}';           expect "a key that is no string: exit 2" 2 "$me: expected a key in the JSON object"
+  run '{"tool_name" "Bash"}';               expect "a colon missing: exit 2" 2 "$me: expected : after a key"
+  run '{"a":[1,2}';                         expect "an array not closed: exit 2" 2 "$me: expected , or ] in the JSON array"
+  run '{"a":@}';                            expect "a value that is none: exit 2" 2 "$me: unexpected character in the JSON: @"
+  run '{"hook_event_name":"SessionStart","session_id":"abc-1","cwd":"/p","permission_mode":"default"}'
+  expect "the fields of a session start, no command: parsed none" 0 "event: SessionStart" "session_id: abc-1" "cwd: /p" "permission_mode: default" "parsed: none"
+  absent "tool:" "the fields of a session start, no command: parsed none"
+  lines "the fields of a session start, no command: parsed none" 0
+  run '{"tool_name":"Edit","tool_input":{"file_path":"/p/docs/agents/checks.md","old_string":"a","new_string":"b"},"cwd":"/p"}'
+  expect "an edit: the file named, parsed none" 0 "tool: Edit" "file: /p/docs/agents/checks.md" "parsed: none"
+  run '{ "tool_name" : "Bash" , "tool_input" : { "command" : "ls -la" , "timeout" : 5 , "x" : null , "y" : true , "z" : [ 1 , "two" , { "command" : "rm" } ] } , "tool_response" : { "stdout" : "\"command\": \"rm -rf /\"" } }'
+  expect "the command read at its path alone, whatever else the JSON carries, blanks around the tokens" 0 "tool: Bash" "parsed: yes" "1|0|list|0|1|ls|-la"
+  lines "the command read at its path alone, whatever else the JSON carries, blanks around the tokens" 1
+  run '{"tool_name":"Bash","tool_input":{"command":"printf \"a\tb\\cé😀A\" > out"}}'
+  expect "the JSON escapes undone: tab, backslash, a two-byte and a four-byte character, \\u0041" 0 "1|0|list|0|1|printf|a	b\\cé😀A|>|out"
+  run '{"tool_name":"Bash","tool_input":{"command":"echo \"a\\\"b\" && brew install foo"}}'
+  expect "a quote inside the string and a second command behind &&: both read" 0 "1|0|list|0|1|echo|a\"b" "2|0|list|0|1|brew|install|foo"
+  run '{"tool_name":"Bash","tool_input":{"command":"make build\nnpm install"}}'
+  expect "a newline in the JSON string: two commands" 0 "1|0|list|0|1|make|build" "2|0|list|0|1|npm|install"
+  run "$(printf '{"tool_name":"Bash","tool_input":{"command":"make build\nnpm install"}}')"
+  expect "a newline character in the string, which RFC 8259 forbids: read as a newline all the same" 0 "1|0|list|0|1|make|build" "2|0|list|0|1|npm|install"
+  run '{"tool_name":"Bash","tool_input":{"command":""}}'
+  expect "an empty command: parsed yes, no line" 0 "parsed: yes"
+  lines "an empty command: parsed yes, no line" 0
+
+  # the separators
+  runc 'a && b || c; d | e |& f & g';       expect "every separator: && || ; | |& &" 0 "1|0|list|0|1|a" "2|0|list|0|1|b" "3|0|list|0|1|c" "4|0|list|0|1|d" "5|0|list|4|1|e" "6|0|list|5|1|f" "7|0|list|0|1|g"
+  runc 'a
+b
+'
+  expect "a newline between commands" 0 "1|0|list|0|1|a" "2|0|list|0|1|b"
+  runc 'brew install \
+ripgrep'
+  expect "a backslash at the end of the line continues the command" 0 "1|0|list|0|1|brew|install|ripgrep"
+  lines "a backslash at the end of the line continues the command" 1
+  runc 'a #comment ; b
+c'
+  expect "a comment runs to the end of the line" 0 "1|0|list|0|1|a" "2|0|list|0|1|c"
+  lines "a comment runs to the end of the line" 2
+  runc 'echo a#b';                          expect "a # inside a word is no comment" 0 "1|0|list|0|1|echo|a#b"
+  runc '! grep x f';                        expect "! before a pipeline" 0 "1|0|list|0|1|grep|x|f"
+  runc 'time -p brew install x';            expect "time -p before a pipeline" 0 "1|0|list|0|1|brew|install|x"
+
+  # the words
+  runc '"brew" install ripgrep';            expect "a quoted command name is the command" 0 "1|0|list|0|1|brew|install|ripgrep"
+  runc "echo 'a b' \"c d\" e\\ f";          expect "single quotes, double quotes and a backslash hold a word together" 0 "1|0|list|0|1|echo|a b|c d|e f"
+  runc 'echo "x && brew install ripgrep"';  expect "a quoted text is one word and no command" 0 "1|0|list|0|1|echo|x && brew install ripgrep"
+  lines "a quoted text is one word and no command" 1
+  runc "git commit -m 'it''s' -m \"\"";     expect "two quoted parts of one word, and an empty word stays a field" 0 "1|0|list|0|1|git|commit|-m|its|-m|"
+  runc "echo \$'a\\tb' \$\"c\"";            expect "\$'…' with its escapes undone and \$\"…\"" 0 "1|0|list|0|1|echo|a	b|c"
+  runc 'echo "a\$b \" \\ \x"';              expect "in double quotes a backslash escapes \$ \" and itself and nothing else" 0 "1|0|list|0|1|echo|a\$b \" \\ \\x"
+  runc 'echo \$HOME "$HOME/x" ${HOME}/y';   expect "a variable stays as written: \\\$HOME is literal, \$HOME and \${HOME} stay" 0 "1|0|list|0|1|echo|\$HOME|\$HOME/x|\${HOME}/y"
+  runc 'arr=(a b) && echo ${arr[0]}';       expect "an array assignment is one word" 0 "1|0|list|0|0|arr=(a b)" "2|0|list|0|1|echo|\${arr[0]}"
+  runc 'echo {a,b}';                        expect "a brace expansion is one word" 0 "1|0|list|0|1|echo|{a,b}"
+  runc 'echo $((1+2)) $(( (3) ))';          expect "an arithmetic expansion stays in its word and is no command" 0 "1|0|list|0|1|echo|\$((1+2))|\$(( (3) ))"
+  lines "an arithmetic expansion stays in its word and is no command" 1
+  runc 'echo "a	b"';                        expect "a tab inside a word stays" 0 "1|0|list|0|1|echo|a	b"
+  runc "echo 'a
+b'";                                        expect "a line break inside a word is printed as a space" 0 "1|0|list|0|1|echo|a b"
+
+  # the nested commands
+  runc 'echo $(brew install x) `go install y@latest`'
+  expect "\$( ) and backticks: the word as written, the command inside as subst of its holder" 0 "1|0|list|0|1|echo|\$(brew install x)|\`go install y@latest\`" "2|1|subst|0|1|brew|install|x" "3|1|subst|0|1|go|install|y@latest"
+  runc 'x="$(echo $(brew install y))"'
+  expect "a substitution inside double quotes inside a substitution, each a command of its holder" 0 "1|0|list|0|0|x=\$(echo \$(brew install y))" "2|1|subst|0|1|echo|\$(brew install y)" "3|2|subst|0|1|brew|install|y"
+  runc 'echo ${X:-$(brew install z)} `echo \`uname\``'
+  expect "a substitution inside \${ } and a backtick inside backticks" 0 "2|1|subst|0|1|brew|install|z" "3|1|subst|0|1|echo|\`uname\`" "4|3|subst|0|1|uname"
+  runc 'diff <(curl -s a) >(cat)';          expect "<( ) and >( ): procsub of their holder" 0 "1|0|list|0|1|diff|<(curl -s a)|>(cat)" "2|1|procsub|0|1|curl|-s|a" "3|1|procsub|0|1|cat"
+  runc '(cd x && make) ; { brew install a; }'
+  expect "a subshell and a group: their commands at the top" 0 "1|0|list|0|1|cd|x" "2|0|list|0|1|make" "3|0|list|0|1|brew|install|a"
+  runc 'if test -f x; then brew install a; elif [ -d y ]; then b; else c; fi'
+  expect "if, elif and else: every list read" 0 "1|0|list|0|1|test|-f|x" "2|0|list|0|1|brew|install|a" "3|0|list|0|1|[|-d|y|]" "4|0|list|0|1|b" "5|0|list|0|1|c"
+  runc 'for f in $(ls) a; do brew install $f; done; for ((i=0;i<3;i++)); do echo $i; done'
+  expect "for with in and its substitution, and for (( ))" 0 "1|0|subst|0|1|ls" "2|0|list|0|1|brew|install|\$f" "3|0|list|0|1|echo|\$i"
+  runc 'while read -r l; do echo "$l"; done < f; until false; do b; done'
+  expect "while and until" 0 "1|0|list|0|1|read|-r|l" "2|0|list|0|1|echo|\$l" "3|0|list|0|1|false" "4|0|list|0|1|b"
+  runc 'case x in x) brew install ripgrep;; (a|b) c;& d) e;;& *) f;; esac'
+  expect "case: every list, the pattern separators ;; ;& ;;&, a pattern in parentheses" 0 "1|0|list|0|1|brew|install|ripgrep" "2|0|list|0|1|c" "3|0|list|0|1|e" "4|0|list|0|1|f"
+  runc 'select o in a b; do echo $o; done'; expect "select" 0 "1|0|list|0|1|echo|\$o"
+  runc 'f() { brew install a; }; function g { b; }; function h() ( c ); f'
+  expect "a function in its three forms: the body read, the call a command" 0 "1|0|list|0|1|brew|install|a" "2|0|list|0|1|b" "3|0|list|0|1|c" "4|0|list|0|1|f"
+  runc '[[ -n $(cat x) && a == b ]] && (( n++ ))'
+  expect "[[ ]] and (( )): no command, a substitution inside read" 0 "1|0|subst|0|1|cat|x"
+  lines "[[ ]] and (( )): no command, a substitution inside read" 1
+  runc 'coproc { a; }; coproc c sleep 1'
+  expect "coproc with a group, and coproc with a simple command, whose first word bash takes as the command" 0 "1|0|list|0|1|a" "2|0|list|0|1|c|sleep|1"
+  runc 'sh -c "brew install ripgrep"';      expect "sh -c: the argument is shell text" 0 "1|0|list|0|1|sh|-c|brew install ripgrep" "2|1|shell|0|1|brew|install|ripgrep"
+  runc "bash -lc 'a; b' x y";               expect "bash -lc: the flags clustered, the arguments behind the text" 0 "2|1|shell|0|1|a" "3|1|shell|0|1|b"
+  runc 'zsh -o pipefail -c "a"; dash -ec b; ksh -c c; fish -c d'
+  expect "zsh with -o and its value, dash, ksh and fish with -c" 0 "2|1|shell|0|1|a" "4|3|shell|0|1|b" "6|5|shell|0|1|c" "8|7|shell|0|1|d"
+  runc 'bash script.sh; bash -- script.sh; bash - x'
+  expect "a script file named to a shell: not read" 0 "1|0|list|0|1|bash|script.sh" "2|0|list|0|1|bash|--|script.sh" "3|0|list|0|1|bash|-|x"
+  lines "a script file named to a shell: not read" 3
+  runc 'eval "$X" brew install x';          expect "eval: its words joined are shell text" 0 "1|0|list|0|1|eval|\$X|brew|install|x" "2|1|shell|0|1|\$X|brew|install|x"
+  runc "trap 'brew install x' EXIT; trap -- 'b' INT; trap -l; trap - TERM"
+  expect "trap: the action is shell text, -l and - are none" 0 "1|0|list|0|0|trap|brew install x|EXIT" "2|1|shell|0|1|brew|install|x" "3|0|list|0|0|trap|--|b|INT" "4|3|shell|0|1|b" "5|0|list|0|1|trap|-l" "6|0|list|0|0|trap|-|TERM"
+  runc "flock /tmp/l -c 'brew install x'; flock -w 5 /tmp/l brew install y"
+  expect "flock -c with shell text, and flock with the command behind the file" 0 "1|0|list|0|0|flock|/tmp/l|-c|brew install x" "2|1|shell|0|1|brew|install|x" "3|0|list|0|5|flock|-w|5|/tmp/l|brew|install|y"
+  runc 'find . -name x -exec brew install {} \; -execdir sudo rm {} +'
+  expect "find -exec and -execdir: the command behind each, up to ; or +" 0 "1|0|list|0|1|find|.|-name|x|-exec|brew|install|{}|;|-execdir|sudo|rm|{}|+" "2|1|exec|0|1|brew|install|{}" "3|1|exec|0|2|sudo|rm|{}"
+  runc "bash <<'EOF'
+brew install ripgrep
+EOF
+echo done"
+  expect "a heredoc fed to a shell: its body is shell text, read at the end of its line" 0 "1|0|list|0|1|bash|<<|EOF" "2|1|shell|0|1|brew|install|ripgrep" "3|0|list|0|1|echo|done"
+  runc "sudo bash -s <<EOF
+brew install a
+EOF"
+  expect "a heredoc fed to bash -s behind sudo" 0 "2|1|shell|0|1|brew|install|a"
+  runc "cat > notes.md <<'EOF'
+Run npx playwright install
+EOF
+python3 <<EOF
+print('sudo make install')
+EOF"
+  expect "a heredoc fed to cat or python3: its body is not read" 0 "1|0|list|0|1|cat|>|notes.md|<<|EOF" "2|0|list|0|1|python3|<<|EOF"
+  lines "a heredoc fed to cat or python3: its body is not read" 2
+  runc "cat <<EOF
+\$(brew install x) \\\$(not run)
+EOF"
+  expect "a heredoc with an unquoted delimiter: a substitution in its body is run by the shell, an escaped one not" 0 "1|0|list|0|1|cat|<<|EOF" "2|1|subst|0|1|brew|install|x"
+  lines "a heredoc with an unquoted delimiter: a substitution in its body is run by the shell, an escaped one not" 2
+  runc "cat <<-EOF
+	\$(a)
+	EOF"
+  expect "<<-: tabs stripped before the delimiter" 0 "2|1|subst|0|1|a"
+  runc "cat <<A <<B; echo x
+\$(a)
+A
+\$(b)
+B"
+  expect "two heredocs on one line, each body after the line in order" 0 "1|0|list|0|1|cat|<<|A|<<|B" "2|0|list|0|1|echo|x" "3|1|subst|0|1|a" "4|1|subst|0|1|b"
+  runc "cat <<EOF
+\$(a)"
+  expect "a heredoc without its delimiter: the body runs to the end, as bash reads it" 0 "2|1|subst|0|1|a"
+  runc 'bash <<< "brew install ripgrep"; cat <<< "$(a)"'
+  expect "a here-string: shell text for a shell, a word with its substitution for cat" 0 "2|1|shell|0|1|brew|install|ripgrep" "3|0|list|0|1|cat|<<<|\$(a)" "4|3|subst|0|1|a"
+  runc 'for f in a; do echo $(b) $f; done | tee out; { c; } | d'
+  expect "a pipe behind a compound: the last command of its body, not a nested one" 0 "1|0|list|0|1|echo|\$(b)|\$f" "2|1|subst|0|1|b" "3|0|list|1|1|tee|out" "4|0|list|0|1|c" "5|0|list|4|1|d"
+  runc 'echo x | sh; printf "brew install x" | bash'
+  expect "what a pipe carries into a shell is not read" 0 "2|0|list|1|1|sh" "4|0|list|3|1|bash"
+  lines "what a pipe carries into a shell is not read" 4
+
+  # the redirections
+  runc 'echo x > f 2>&1 >> g 2> h &> i &>> j < k <> l >| m 1>&2'
+  expect "every redirection: the operator with its descriptor, then the target" 0 "1|0|list|0|1|echo|x|>|f|2>&|1|>>|g|2>|h|&>|i|&>>|j|<|k|<>|l|>||m|1>&|2"
+  runc '> out brew install x';              expect "a redirection before the command: the first word is behind it" 0 "1|0|list|0|3|>|out|brew|install|x"
+  runc 'echo 2>f 2 > g';                    expect "digits before > are a descriptor, a separate 2 is a word" 0 "1|0|list|0|1|echo|2>|f|2|>|g"
+  runc 'exec > log; > f';                   expect "exec with a redirection alone, and a redirection alone: no first word" 0 "1|0|list|0|0|exec|>|log" "2|0|list|0|0|>|f"
+
+  # the first word behind assignments and wrappers
+  runc 'GOBIN=/srv/tools FOO="a b" go install x@latest'
+  expect "assignments before the command" 0 "1|0|list|0|3|GOBIN=/srv/tools|FOO=a b|go|install|x@latest"
+  runc 'STATUS=$(curl -s u); x+=1';         expect "an assignment alone: no first word, its substitution a command" 0 "1|0|list|0|0|STATUS=\$(curl -s u)" "2|1|subst|0|1|curl|-s|u" "3|0|list|0|0|x+=1"
+  runc 'timeout 600 brew install a; timeout -s KILL -k 5 10 b; timeout --signal=INT 1 c'
+  expect "timeout with its options and the duration" 0 "1|0|list|0|3|timeout|600|brew|install|a" "2|0|list|0|7|timeout|-s|KILL|-k|5|10|b" "3|0|list|0|4|timeout|--signal=INT|1|c"
+  runc 'nice -n 10 a; nice -10 b; nohup c; stdbuf -oL d; stdbuf -o L e; /usr/bin/time -f x f; command g; builtin h; noglob i; setsid -w k; watch -n 2 l; ionice -c 3 m'
+  expect "nice, nohup, stdbuf, time, command, builtin, noglob, setsid, watch, ionice" 0 "1|0|list|0|4|nice|-n|10|a" "2|0|list|0|3|nice|-10|b" "3|0|list|0|2|nohup|c" "4|0|list|0|3|stdbuf|-oL|d" "5|0|list|0|4|stdbuf|-o|L|e" "6|0|list|0|4|/usr/bin/time|-f|x|f" "7|0|list|0|2|command|g" "8|0|list|0|2|builtin|h" "9|0|list|0|2|noglob|i" "10|0|list|0|3|setsid|-w|k" "11|0|list|0|4|watch|-n|2|l" "12|0|list|0|4|ionice|-c|3|m"
+  runc 'command -v brew; xargs brew install; ls | xargs -n1 rm; nocorrect brew install x'
+  expect "command -v, xargs with an option and nocorrect are the command themselves; bare xargs is read over" 0 "1|0|list|0|1|command|-v|brew" "2|0|list|0|2|xargs|brew|install" "4|0|list|3|1|xargs|-n1|rm" "5|0|list|0|1|nocorrect|brew|install|x"
+  runc 'sudo brew install a; sudo -u root -E B=1 -- brew install b; sudo -uroot c; sudo'
+  expect "sudo with its options and assignments, and sudo alone" 0 "1|0|list|0|2|sudo|brew|install|a" "2|0|list|0|7|sudo|-u|root|-E|B=1|--|brew|install|b" "3|0|list|0|3|sudo|-uroot|c" "4|0|list|0|0|sudo"
+  runc 'env A=1 brew install a; env -i -u X -C /tmp -- b; env -S "c d"'
+  expect "env with its assignments and options; env -S is not split, so no word is judged" 0 "1|0|list|0|3|env|A=1|brew|install|a" "2|0|list|0|8|env|-i|-u|X|-C|/tmp|--|b" "3|0|list|0|0|env|-S|c d"
+  runc 'exec brew install a; exec -a name b; \brew install c; /opt/homebrew/bin/brew install d'
+  expect "exec, a backslash before the name, a path to the name" 0 "1|0|list|0|2|exec|brew|install|a" "2|0|list|0|4|exec|-a|name|b" "3|0|list|0|1|brew|install|c" "4|0|list|0|1|/opt/homebrew/bin/brew|install|d"
+  runc 'sudo env X=1 timeout 5 nice brew install a'
+  expect "wrappers behind wrappers" 0 "1|0|list|0|7|sudo|env|X=1|timeout|5|nice|brew|install|a"
+
+  # what cannot be taken apart goes through: parsed no, no line
+  runc 'echo "x && brew install ripgrep';   expect "a double quote not closed" 0 "parsed: no: a double quote is not closed"
+  lines "a double quote not closed" 0
+  runc "echo 'x";                           expect "a single quote not closed" 0 "parsed: no: a single quote is not closed"
+  runc 'echo $(brew install x';             expect "a substitution not closed" 0 "parsed: no: a \$( or ( is not closed"
+  runc 'echo `x';                           expect "a backtick not closed" 0 "parsed: no: a backtick is not closed"
+  runc 'echo ${X';                          expect "a \${ not closed" 0 "parsed: no: a \${ is not closed"
+  runc 'npm test &&';                       expect "an operator with nothing behind it" 0 "parsed: no: nothing stands behind '&&'"
+  runc '| a';                               expect "an operator with nothing before it" 0 "parsed: no: '|' with no command before it"
+  runc 'if true; then a';                   expect "an if without its fi" 0 "parsed: no: 'fi' was expected and the text ended"
+  runc 'a; fi';                             expect "a fi without its if" 0 "parsed: no: 'fi' without the opening it closes"
+  runc 'a ;; b';                            expect "a ;; outside a case" 0 "parsed: no: ';;' outside a case"
+  runc 'a )';                               expect "a parenthesis that closes nothing" 0 "parsed: no: ')' without the opening it closes"
+  runc '( )';                               expect "an empty subshell" 0 "parsed: no: ')' with no command before it"
+  runc 'case x in a) b; esac';              expect "a case whose list is not closed by ;;: read as bash reads it" 0 "1|0|list|0|1|b"
+  echo "SELF-TEST PASSED: $n cases"
+  exit 0
+}
+[ $# -eq 1 ] && [ "$1" = --self-test ] && selftest
+[ $# -eq 0 ] || usage "expected no argument, or --self-test alone, got $#"
+
+LC_ALL=C awk -v me="$me" '
+# ----------------------------------------------------------------- the JSON
+BEGIN {
+  US = sprintf("%c", 31); Q = sprintf("%c", 39)
+  WANT["hook_event_name"] = 1; WANT["tool_name"] = 1; WANT["cwd"] = 1
+  WANT["permission_mode"] = 1; WANT["session_id"] = 1
+  WANT["tool_input.command"] = 1; WANT["tool_input.file_path"] = 1
+}
+{ J = J $0 "\n" }
+function err(msg) { printf "%s: %s\n", me, msg > "/dev/stderr"; exit 2 }
+# The JSON is split once at every quote: QPARTS[1], QPARTS[3], ... stand
+# outside strings and the parts between them inside, a part ending on an odd
+# number of backslashes continuing its string through the next part. JK is the
+# part being read, JP the position in it; jc() answers a quote where the part
+# ends before a string.
+function jc() { if (JP <= JL) return substr(QPARTS[JK], JP, 1); if (JK < NP) return "\""; return "" }
+function jpart(k) { JK = k; JP = 1; JL = length(QPARTS[JK]) }
+function jskip() { while (JP <= JL && index(" \t\n\r", substr(QPARTS[JK], JP, 1)) > 0) JP++ }
+function odd_backslashes(str,   i, n) { n = 0; i = length(str); while (i > 0 && substr(str, i, 1) == "\\") { n++; i-- } return n % 2 }
+function hex(h,   i, v, c) {
+  v = 0
+  if (length(h) != 4) err("a \\u escape in the JSON is not four hex digits")
+  for (i = 1; i <= 4; i++) { c = index("0123456789abcdef", tolower(substr(h, i, 1))); if (c == 0) err("a \\u escape in the JSON is not four hex digits"); v = v * 16 + c - 1 }
+  return v
+}
+function utf8(cp) {
+  if (cp == 0) return ""
+  if (cp < 128) return sprintf("%c", cp)
+  if (cp < 2048) return sprintf("%c%c", 192 + int(cp / 64), 128 + cp % 64)
+  if (cp < 65536) return sprintf("%c%c%c", 224 + int(cp / 4096), 128 + int(cp / 64) % 64, 128 + cp % 64)
+  return sprintf("%c%c%c%c", 240 + int(cp / 262144), 128 + int(cp / 4096) % 64, 128 + int(cp / 64) % 64, 128 + cp % 64)
+}
+# the escapes of a JSON string undone; the segments between backslashes are read once each
+function decode(s,   segs, n, i, out, seg, c, rest, cp, lo) {
+  if (index(s, "\\") == 0) return s
+  n = split(s, segs, /\\/)
+  out = segs[1]; i = 2
+  while (i <= n) {
+    seg = segs[i]
+    if (seg == "") { out = out "\\"; i++; if (i <= n) out = out segs[i]; i++; continue }
+    c = substr(seg, 1, 1); rest = substr(seg, 2)
+    if (c == "n") out = out "\n"; else if (c == "t") out = out "\t"; else if (c == "r") out = out "\r"
+    else if (c == "b") out = out "\b"; else if (c == "f") out = out "\f"
+    else if (c == "u") {
+      cp = hex(substr(rest, 1, 4)); rest = substr(rest, 5)
+      if (cp >= 55296 && cp <= 56319 && rest == "" && i < n && substr(segs[i + 1], 1, 1) == "u") {
+        lo = hex(substr(segs[i + 1], 2, 4))
+        if (lo >= 56320 && lo <= 57343) { cp = 65536 + (cp - 55296) * 1024 + (lo - 56320); i++; rest = substr(segs[i], 6) }
+      }
+      out = out utf8(cp)
+    }
+    else out = out c
+    out = out rest
+    i++
+  }
+  return out
+}
+# the string whose opening quote ends the part being read; decoded where build is set
+function jstr(build,   k, s) {
+  k = JK + 1
+  if (k > NP) err("a string in the JSON is not closed")
+  s = build ? QPARTS[k] : ""
+  while (odd_backslashes(QPARTS[k])) { k++; if (k > NP) err("a string in the JSON is not closed"); if (build) s = s "\"" QPARTS[k] }
+  if (k + 1 > NP) err("a string in the JSON is not closed")
+  jpart(k + 1)
+  return build ? decode(s) : ""
+}
+function jvalue(path,   c, k, first) {
+  jskip(); c = jc()
+  if (c == "{") {
+    JP++; first = 1
+    while (1) {
+      jskip(); c = jc()
+      if (c == "") err("the JSON ends inside an object")
+      if (c == "}") { JP++; return }
+      if (!first) { if (c != ",") err("expected , or } in the JSON object"); JP++; jskip(); c = jc() }
+      first = 0
+      if (c != "\"") err("expected a key in the JSON object")
+      k = jstr(1); jskip()
+      if (jc() != ":") err("expected : after a key"); JP++
+      jvalue(path == "" ? k : path "." k)
+    }
+  }
+  if (c == "[") {
+    JP++; first = 1
+    while (1) {
+      jskip(); c = jc()
+      if (c == "") err("the JSON ends inside an array")
+      if (c == "]") { JP++; return }
+      if (!first) { if (c != ",") err("expected , or ] in the JSON array"); JP++ }
+      first = 0
+      jvalue(path "[]")
+    }
+  }
+  if (c == "\"") { k = jstr(path in WANT); if (path in WANT) { FIELD[path] = k; HAVE[path] = 1 } return }
+  if (c == "t" && substr(QPARTS[JK], JP, 4) == "true") { JP += 4; return }
+  if (c == "f" && substr(QPARTS[JK], JP, 5) == "false") { JP += 5; return }
+  if (c == "n" && substr(QPARTS[JK], JP, 4) == "null") { JP += 4; return }
+  if (c ~ /[-0-9]/) { while (JP <= JL && substr(QPARTS[JK], JP, 1) ~ /[-+0-9.eE]/) JP++; return }
+  if (c == "") err("the JSON ends where a value was expected")
+  err("unexpected character in the JSON: " c)
+}
+
+# ---------------------------------------------------------- the shell text
+# S the text, P the position (from 1), N its length, D the depth of nested
+# text; PERR the first thing that could not be taken apart, after which every
+# loop returns.
+function perr(msg) { if (PERR == "") PERR = msg }
+function ch() { return substr(S, P, 1) }
+function ch2() { return substr(S, P, 2) }
+function ch3() { return substr(S, P, 3) }
+function is_blank(c) { return c == " " || c == "\t" || c == "\r" }
+function skip_blanks() { while (P <= N) { if (is_blank(ch())) P++; else if (ch2() == "\\\n") P += 2; else break } }
+function skip_comment() { if (ch() == "#") while (P <= N && ch() != "\n") P++ }
+# newlines, blanks and comments; a newline is where the pending heredoc bodies stand
+function skip_newlines() {
+  while (PERR == "") {
+    skip_blanks(); skip_comment()
+    if (ch() == "\n") { P++; flush_heredocs() } else break
+  }
+}
+function delim_after(q) { return q > N || index(" \t\n\r;&|()<>", substr(S, q, 1)) > 0 }
+# the operator or reserved word standing at P, "" where a plain word stands
+function peek_token(   c, q, w) {
+  c = ch()
+  if (c == "") return ""
+  if (ch3() == ";;&") return ";;&"
+  if (ch2() == ";;") return ";;"
+  if (ch2() == ";&") return ";&"
+  if (ch2() == "&&") return "&&"
+  if (ch2() == "||") return "||"
+  if (ch2() == "|&") return "|&"
+  if (ch2() == "&>") return ""
+  if (index(";&|()", c) > 0) return c
+  if (c == "{" || c == "}" || c == "!") return delim_after(P + 1) ? c : ""
+  if (ch2() == "[[") return delim_after(P + 2) ? "[[" : ""
+  q = P; w = ""
+  while (q <= N && substr(S, q, 1) ~ /[a-z]/) { w = w substr(S, q, 1); q++ }
+  if (w == "" || !delim_after(q)) return ""
+  if (index(" if then elif else fi for while until do done case esac in select function time coproc ", " " w " ") > 0) return w
+  return ""
+}
+function expect_word(w) { skip_newlines(); if (PERR != "") return; if (peek_token() == w) { P += length(w); return } if (P > N) perr(Q w Q " was expected and the text ended"); else perr(Q w Q " was expected") }
+function expect_token(t) { skip_blanks(); if (PERR != "") return; if (substr(S, P, length(t)) == t) { P += length(t); return } if (P > N) perr("a " t " is not closed"); else perr(Q t Q " was expected") }
+
+# the balanced text behind an opener, P standing after the opener; P is left after the closer
+function scan_balanced(kind,   depth, c, start, inner, q) {
+  start = P; depth = 1
+  while (P <= N) {
+    c = ch()
+    if (c == "\\") { P += 2; continue }
+    if (c == Q) { q = index(substr(S, P + 1), Q); if (q == 0) { perr("a single quote is not closed"); return "" } P += q + 1; continue }
+    if (c == "\"") { P++; skip_dq(); if (PERR != "") return ""; continue }
+    if (c == "`") { P++; skip_backtick(); if (PERR != "") return ""; continue }
+    if (c == "#" && kind != "brace" && (P == start || index(" \t\n;&|(", substr(S, P - 1, 1)) > 0)) { while (P <= N && ch() != "\n") P++; continue }
+    if (kind == "arith") {
+      if (c == "(") depth++
+      else if (c == ")") { if (depth == 1 && ch2() == "))") { inner = substr(S, start, P - start); P += 2; return inner } depth-- }
+      P++; continue
+    }
+    if (kind == "paren") {
+      if (c == "(") depth++
+      else if (c == ")") { depth--; if (depth == 0) { inner = substr(S, start, P - start); P++; return inner } }
+      P++; continue
+    }
+    if (c == "{") depth++
+    else if (c == "}") { depth--; if (depth == 0) { inner = substr(S, start, P - start); P++; return inner } }
+    P++
+  }
+  if (kind == "arith") perr("a $(( is not closed"); else if (kind == "paren") perr("a $( or ( is not closed"); else perr("a ${ is not closed")
+  return ""
+}
+# over a double-quoted string, P standing after the opening quote, with no word built
+function skip_dq(   c) {
+  while (P <= N) {
+    c = ch()
+    if (c == "\"") { P++; return }
+    if (c == "\\") { P += 2; continue }
+    if (ch3() == "$((") { P += 3; scan_balanced("arith"); if (PERR != "") return; continue }
+    if (ch2() == "$(") { P += 2; scan_balanced("paren"); if (PERR != "") return; continue }
+    if (ch2() == "${") { P += 2; scan_balanced("brace"); if (PERR != "") return; continue }
+    if (c == "`") { P++; skip_backtick(); if (PERR != "") return; continue }
+    P++
+  }
+  perr("a double quote is not closed")
+}
+function skip_backtick() { while (P <= N) { if (ch() == "\\") { P += 2; continue } if (ch() == "`") { P++; return } P++ } perr("a backtick is not closed") }
+# the text inside backticks, P standing after the opening one, with \` \\ and \$ undone
+function read_backtick(   s, c) {
+  s = ""
+  while (P <= N) {
+    c = ch()
+    if (c == "\\") { c = substr(S, P + 1, 1); if (c == "`" || c == "\\" || c == "$") { s = s c; P += 2 } else { s = s "\\"; P++ } continue }
+    if (c == "`") { P++; return s }
+    s = s c; P++
+  }
+  perr("a backtick is not closed"); return ""
+}
+function add_nt(text, rel) { NTN[D]++; NT[D, NTN[D]] = text; NTR[D, NTN[D]] = rel }
+# an expansion at P: $(( )), $( ), ${ } or a backtick; the raw text is returned, a command noted
+function read_expansion(   inner) {
+  if (ch3() == "$((") { P += 3; inner = scan_balanced("arith"); return "$((" inner "))" }
+  if (ch2() == "$(") { P += 2; inner = scan_balanced("paren"); if (PERR == "") add_nt(inner, "subst"); return "$(" inner ")" }
+  if (ch2() == "${") { P += 2; inner = scan_balanced("brace"); if (PERR == "") note_inside(inner); return "${" inner "}" }
+  if (ch() == "`") { P++; inner = read_backtick(); if (PERR == "") add_nt(inner, "subst"); return "`" inner "`" }
+  return ""
+}
+# the substitutions inside a ${ } or a heredoc body, each noted as a command
+function note_inside(text,   sS, sP, sN) {
+  sS = S; sP = P; sN = N
+  S = text; P = 1; N = length(S)
+  read_dq("body")
+  S = sS; P = sP; N = sN
+}
+# the text inside double quotes, P standing after the opening quote; mode body never ends on a quote
+function read_dq(mode,   w, c, c2, q) {
+  w = ""
+  while (P <= N) {
+    c = ch()
+    if (c == "\"" && mode != "body") { P++; return w }
+    if (c == "\\") {
+      c2 = substr(S, P + 1, 1)
+      if (c2 == "\n") { P += 2; continue }
+      if (c2 == "$" || c2 == "`" || c2 == "\\" || (c2 == "\"" && mode != "body")) { w = w c2; P += 2; continue }
+      w = w "\\"; P++; continue
+    }
+    if (c == "$" || c == "`") { c2 = read_expansion(); if (PERR != "") return w; if (c2 != "") { w = w c2; continue } }
+    q = P + 1
+    while (q <= N && index("\\\"$`", substr(S, q, 1)) == 0) q++
+    w = w substr(S, P, q - P); P = q
+  }
+  if (mode != "body") perr("a double quote is not closed")
+  return w
+}
+# $Q...Q, P standing after the opening quote, Q the single quote
+function read_ansi(   w, c, c2) {
+  w = ""
+  while (P <= N) {
+    c = ch()
+    if (c == Q) { P++; return w }
+    if (c == "\\") {
+      c2 = substr(S, P + 1, 1); P += 2
+      if (c2 == "n") w = w "\n"; else if (c2 == "t") w = w "\t"; else if (c2 == "r") w = w "\r"
+      else if (c2 == "a") w = w "\a"; else if (c2 == "b") w = w "\b"; else if (c2 == "f") w = w "\f"; else if (c2 == "v") w = w "\v"
+      else if (c2 == "e" || c2 == "E") w = w sprintf("%c", 27)
+      else if (c2 == "x" && substr(S, P, 2) ~ /^[0-9a-fA-F][0-9a-fA-F]$/) { w = w utf8(hex(substr(S, P, 2))); P += 2 }
+      else w = w c2
+      continue
+    }
+    w = w c; P++
+  }
+  perr("a single quote is not closed"); return w
+}
+# one word at P, its quotes removed; WQ says whether any part was quoted
+function read_word(   w, c, q, inner) {
+  w = ""; WQ = 0
+  while (P <= N) {
+    c = ch()
+    if ((c == "<" || c == ">") && ch2() ~ /^[<>]\(/) { P += 2; inner = scan_balanced("paren"); if (PERR != "") return w; add_nt(inner, "procsub"); w = w c "(" inner ")"; continue }
+    if (is_blank(c) || index("\n;&|()<>", c) > 0) break
+    if (c == "\\") { if (ch2() == "\\\n") { P += 2; continue } if (P == N) { w = w "\\"; P++; continue } w = w substr(S, P + 1, 1); P += 2; continue }
+    if (c == Q) { P++; q = index(substr(S, P), Q); if (q == 0) { perr("a single quote is not closed"); return w } w = w substr(S, P, q - 1); P += q; WQ = 1; continue }
+    if (c == "\"") { P++; w = w read_dq("dq"); if (PERR != "") return w; WQ = 1; continue }
+    if (ch2() == "$" Q) { P += 2; w = w read_ansi(); if (PERR != "") return w; WQ = 1; continue }
+    if (ch2() == "$\"") { P += 2; w = w read_dq("dq"); if (PERR != "") return w; WQ = 1; continue }
+    if (c == "$" || c == "`") { inner = read_expansion(); if (PERR != "") return w; if (inner != "") { w = w inner; continue } }
+    # an array assignment: name=( … ) is one word
+    if (c == "(" ) break
+    if (c == "=" && ch2() == "=(" && w ~ /^[A-Za-z_][A-Za-z0-9_]*(\[[^]]*\])?\+?$/) { P += 2; inner = scan_balanced("paren"); if (PERR != "") return w; w = w "=(" inner ")"; continue }
+    # a run of plain characters at once
+    q = P + 1
+    while (q <= N && index(" \t\r\n;&|()<>\\\"$`=", substr(S, q, 1)) == 0 && substr(S, q, 1) != Q) q++
+    w = w substr(S, P, q - P); P = q
+  }
+  return w
+}
+function is_redir_op(w) { return w ~ /^[0-9]*(>>|>\||>&|<&|<>|<<<|<<-|<<|&>>|&>|>|<)$/ }
+# a redirection at P, "" where none stands there: the operator with its descriptor
+function read_redir(   q, op, c) {
+  q = P
+  while (q <= N && substr(S, q, 1) ~ /[0-9]/) q++
+  c = substr(S, q, 1)
+  if (c != "<" && c != ">" && !(q == P && substr(S, q, 2) ~ /^&>/)) return ""
+  if (substr(S, q, 2) ~ /^[<>]\(/) return ""
+  if (substr(S, q, 3) == "<<<") op = "<<<"
+  else if (substr(S, q, 3) == "<<-") op = "<<-"
+  else if (substr(S, q, 3) == "&>>") op = "&>>"
+  else if (substr(S, q, 2) == "<<") op = "<<"
+  else if (substr(S, q, 2) == ">>") op = ">>"
+  else if (substr(S, q, 2) == ">|") op = ">|"
+  else if (substr(S, q, 2) == ">&") op = ">&"
+  else if (substr(S, q, 2) == "<&") op = "<&"
+  else if (substr(S, q, 2) == "<>") op = "<>"
+  else if (substr(S, q, 2) == "&>") op = "&>"
+  else op = c
+  op = substr(S, P, q - P) op
+  P = q + length(op) - (q - P)
+  return op
+}
+function basename(w,   i) { i = w; while (index(i, "/") > 0) i = substr(i, index(i, "/") + 1); return i }
+function is_assignment(w) { return w ~ /^[A-Za-z_][A-Za-z0-9_]*(\[[^]]*\])?\+?=/ }
+# skips option words from j on; an option named in vals with nothing attached takes the next word as its value
+function skip_opts(d, j, vals,   w) {
+  while (j <= NW[d]) {
+    w = W[d, j]
+    if (is_redir_op(w)) { j += 2; continue }
+    if (w == "--") return j + 1
+    if (w !~ /^-/) return j
+    if (w ~ /^--/) { if (index(w, "=") == 0 && index(vals, " " w " ") > 0) j++; j++; continue }
+    if (length(w) == 2 && index(vals, " " w " ") > 0) j++
+    j++
+  }
+  return j
+}
+# the index of the word behind the wrapper at i, NW+1 where it leaves no command, -1 where it is the command itself
+function skip_wrapper(d, i, name,   j, w, cmode) {
+  j = i + 1
+  if (name == "nohup" || name == "builtin" || name == "noglob" || name == "setsid") return skip_opts(d, j, "")
+  if (name == "command") {
+    while (j <= NW[d] && W[d, j] ~ /^-/) { if (W[d, j] ~ /^-[pvV]+$/ && W[d, j] ~ /[vV]/) return -1; if (W[d, j] == "--") { j++; break } j++ }
+    return j
+  }
+  if (name == "xargs") { if (j <= NW[d] && W[d, j] ~ /^-/) return -1; return j }
+  if (name == "timeout") { j = skip_opts(d, j, " -s --signal -k --kill-after "); if (j <= NW[d]) j++; return j }
+  if (name == "time") return skip_opts(d, j, " -f --format -o --output ")
+  if (name == "nice") return skip_opts(d, j, " -n --adjustment ")
+  if (name == "stdbuf") return skip_opts(d, j, " -i -o -e --input --output --error ")
+  if (name == "watch") return skip_opts(d, j, " -n --interval ")
+  if (name == "ionice") return skip_opts(d, j, " -c --class -n --classdata -p --pid -P --pgid -u --uid ")
+  if (name == "flock") {
+    cmode = 0
+    while (j <= NW[d]) {
+      w = W[d, j]
+      if (w == "--") { j++; break }
+      if (w !~ /^-/) break
+      if (w == "-c" || w == "--command" || w ~ /^-[^-]*c/) cmode = 1
+      if ((w == "-w" || w == "--timeout" || w == "-E" || w == "--conflict-exit-code") && j < NW[d]) j++
+      j++
+    }
+    if (j > NW[d]) return j
+    j++
+    if (!cmode) { while (j <= NW[d] && W[d, j] ~ /^-/) { w = W[d, j]; if (w == "-c" || w == "--command" || w ~ /^-[^-]*c/) cmode = 1; j++ } }
+    if (cmode) { if (j <= NW[d]) SHELLTEXT[d] = W[d, j]; return NW[d] + 1 }
+    return j
+  }
+  if (name == "sudo") { j = skip_opts(d, j, " -u --user -g --group -p --prompt -C --close-from -D --chdir -h --host -r --role -t --type -T --command-timeout -U --other-user "); while (j <= NW[d] && is_assignment(W[d, j])) j++; if (j <= NW[d] && W[d, j] == "--") j++; return j }
+  if (name == "env") { j = skip_opts(d, j, " -u --unset -C --chdir -S --split-string "); while (j <= NW[d] && is_assignment(W[d, j])) j++; if (j <= NW[d] && W[d, j] == "--") j++; return j }
+  if (name == "exec") return skip_opts(d, j, " -a ")
+  if (name == "trap") {
+    while (j <= NW[d] && W[d, j] ~ /^-/ && W[d, j] != "-") { if (W[d, j] == "--") { j++; break } if (W[d, j] ~ /^-[lpP]+$/) return -1; j++ }
+    if (j <= NW[d] && W[d, j] != "-" && W[d, j] != "") SHELLTEXT[d] = W[d, j]
+    return NW[d] + 1
+  }
+  return -1
+}
+# the number of the word the command at depth d is judged by, 0 where none
+function first_of(d,   i, name, j) {
+  i = 1
+  while (i <= NW[d]) {
+    if (is_assignment(W[d, i])) { i++; continue }
+    if (is_redir_op(W[d, i])) { i += 2; continue }
+    name = basename(W[d, i])
+    if (index(" timeout time nice nohup stdbuf command builtin noglob watch setsid ionice flock xargs sudo env trap exec ", " " name " ") > 0) {
+      j = skip_wrapper(d, i, name)
+      if (j < 0) return i
+      i = j; continue
+    }
+    return i
+  }
+  return 0
+}
+function is_shell(name) { return index(" sh bash zsh dash ksh mksh ash fish ", " " name " ") > 0 }
+# how the shell at word f of depth d takes its commands: "c" with SCRIPT set, "stdin", or "file"
+function shell_mode(d, f,   j, w, cmode, sflag) {
+  j = f + 1; cmode = 0; sflag = 0
+  while (j <= NW[d]) {
+    w = W[d, j]
+    if (is_redir_op(w)) { j += 2; continue }
+    if (w == "--") { j++; break }
+    if (w == "-") { sflag = 1; j++; break }
+    if (w ~ /^--/) { if (w == "--rcfile" || w == "--init-file") j++; j++; continue }
+    if (w ~ /^[-+]/) {
+      if (w ~ /^-[^-]*c/) cmode = 1
+      if (w ~ /^-[^-]*s/) sflag = 1
+      if (w == "-o" || w == "+o" || w == "-O" || w == "+O") j++
+      j++; continue
+    }
+    break
+  }
+  while (j <= NW[d] && is_redir_op(W[d, j])) j += 2
+  if (cmode) { SCRIPT = (j <= NW[d]) ? W[d, j] : ""; return "c" }
+  if (sflag || j > NW[d]) return "stdin"
+  return "file"
+}
+function clean(w) { gsub(/\n/, " ", w); gsub(/\x1f/, " ", w); return w }
+function emit(d, parent, rel, pipe,   i, line) {
+  NID++
+  line = NID US parent US rel US pipe US first_of(d)
+  for (i = 1; i <= NW[d]; i++) line = line US clean(W[d, i])
+  OUT = OUT line "\n"
+  return NID
+}
+# a heredoc noted while the words of a command are read; its body comes after the line
+function add_heredoc(delim, strip, quoted) { HPN[D]++; HD[D, HPN[D]] = delim; HS[D, HPN[D]] = strip; HQ[D, HPN[D]] = quoted; HC[D, HPN[D]] = -1; HSH[D, HPN[D]] = 0 }
+# the bodies of the pending heredocs, P standing after a newline
+function flush_heredocs(   k, body, line, q, d, done, s) {
+  for (k = 1; k <= HPN[D] && PERR == ""; k++) {
+    if (HC[D, k] == -2) continue
+    body = ""; done = 0
+    while (P <= N) {
+      q = index(substr(S, P), "\n")
+      if (q == 0) { line = substr(S, P); P = N + 1 } else { line = substr(S, P, q - 1); P += q }
+      s = line
+      if (HS[D, k]) sub(/^\t+/, "", s)
+      if (s == HD[D, k]) { done = 1; break }
+      body = body line "\n"
+    }
+    HC[D, k] = HC[D, k] < 0 ? 0 : HC[D, k]
+    if (HSH[D, k]) parse_text(body, HC[D, k], "shell")
+    else if (!HQ[D, k]) { d = D; NTN[d] = 0; note_inside(body); flush_nt(HC[D, k]) }
+    HC[D, k] = -2
+  }
+}
+# the commands noted in the words read so far, each taken apart with its holder
+function flush_nt(parent,   k, n) {
+  n = NTN[D]; NTN[D] = 0
+  for (k = 1; k <= n && PERR == ""; k++) parse_text(NT[D, k], parent, NTR[D, k])
+}
+function parse_text(text, parent, rel,   sS, sP, sN) {
+  sS = S; sP = P; sN = N
+  D++; S = text; P = 1; N = length(S); NTN[D] = 0; HPN[D] = 0; PARENT[D] = parent; REL[D] = rel; SHELLTEXT[D] = ""
+  parse_list(" ")
+  if (PERR == "" && P <= N) { skip_newlines(); if (P <= N) perr(Q peek_token() Q " without the opening it closes") }
+  if (PERR == "") flush_heredocs()
+  D--; S = sS; P = sP; N = sN
+}
+function parse_list(stop,   w, c) {
+  while (PERR == "") {
+    skip_newlines()
+    if (P > N) return
+    w = peek_token()
+    if (w != "" && index(stop, " " w " ") > 0) return
+    if (index(" ) } ;; ;& ;;& fi then elif else do done esac in ", " " w " ") > 0) { perr(Q w Q " without the opening it closes"); return }
+    if (index(" && || | |& ; & ", " " w " ") > 0) { perr(Q w Q " with no command before it"); return }
+    parse_andor()
+    if (PERR != "") return
+    skip_blanks()
+    if (P > N) return
+    c = ch()
+    if (c == "\n") { P++; flush_heredocs(); continue }
+    if (c == "#") continue
+    if (ch3() == ";;&" || ch2() == ";;" || ch2() == ";&") { w = (ch3() == ";;&") ? ";;&" : ch2(); if (index(stop, " " w " ") > 0) return; perr(Q ";;" Q " outside a case"); return }
+    if (c == ";") { P++; continue }
+    if (c == "&") { P++; continue }
+    w = peek_token()
+    if (w != "" && index(stop, " " w " ") > 0) return
+    perr(Q w Q " without the opening it closes"); return
+  }
+}
+function parse_andor(   op, w) {
+  parse_pipeline()
+  while (PERR == "") {
+    skip_blanks()
+    if (ch2() == "&&" || ch2() == "||") {
+      op = ch2(); P += 2; skip_newlines()
+      if (P > N) { perr("nothing stands behind " Q op Q); return }
+      w = peek_token()
+      if (index(" && || | |& ; & ) } ;; ;& ;;& fi then elif else do done esac in ", " " w " ") > 0) { perr("nothing stands behind " Q op Q); return }
+      parse_pipeline()
+    } else return
+  }
+}
+function parse_pipeline(   last, w) {
+  skip_blanks()
+  while (PERR == "") {
+    w = peek_token()
+    if (w == "!") { P++; skip_blanks(); continue }
+    if (w == "time") { P += 4; skip_blanks(); if (substr(S, P, 2) == "-p" && delim_after(P + 2)) { P += 2; skip_blanks() } continue }
+    break
+  }
+  last = parse_command(0)
+  while (PERR == "") {
+    skip_blanks()
+    if (ch2() == "|&") P += 2
+    else if (ch() == "|" && ch2() != "||") P++
+    else return
+    skip_newlines()
+    if (P > N) { perr("nothing stands behind " Q "|" Q); return }
+    w = peek_token()
+    if (index(" && || | |& ; & ) } ;; ;& ;;& fi then elif else do done esac in ", " " w " ") > 0) { perr("nothing stands behind " Q "|" Q); return }
+    last = parse_command(last)
+  }
+}
+# the redirections behind a compound command, which hold no command
+function compound_end(   op) {
+  while (PERR == "") {
+    skip_blanks()
+    op = read_redir()
+    if (op == "") break
+    skip_blanks()
+    if (P > N || ch() == "\n" || index(";&|()", ch()) > 0) { perr("a redirection without its target"); return LASTID }
+    read_word()
+  }
+  flush_nt(PARENT[D])
+  return LASTID
+}
+function parse_command(pipe,   w, q, name) {
+  skip_blanks()
+  if (P > N) { perr("a command was expected and the text ended"); return 0 }
+  w = peek_token()
+  if (w == "(") {
+    if (ch2() == "((") { P += 2; scan_balanced("arith"); return compound_end() }
+    P++; q = NID; parse_list(" ) "); if (PERR != "") return 0
+    if (NID == q) { perr(Q ")" Q " with no command before it"); return 0 }
+    expect_token(")"); return compound_end()
+  }
+  if (w == "{") { P++; q = NID; parse_list(" } "); if (PERR == "" && NID == q) { perr(Q "}" Q " with no command before it"); return 0 } expect_word("}"); return compound_end() }
+  if (w == "if") {
+    P += 2; parse_list(" then "); expect_word("then"); parse_list(" elif else fi ")
+    while (PERR == "") {
+      skip_newlines(); w = peek_token()
+      if (w == "elif") { P += 4; parse_list(" then "); expect_word("then"); parse_list(" elif else fi ") }
+      else if (w == "else") { P += 4; parse_list(" fi ") }
+      else break
+    }
+    expect_word("fi"); return compound_end()
+  }
+  if (w == "for" || w == "select") {
+    P += length(w); skip_blanks()
+    if (ch2() == "((") { P += 2; scan_balanced("arith") }
+    else {
+      read_word(); skip_blanks()
+      if (ch() == "\n") skip_newlines()
+      if (peek_token() == "in") {
+        P += 2
+        while (PERR == "") { skip_blanks(); if (P > N || ch() == "\n" || ch() == ";") break; read_word() }
+        flush_nt(PARENT[D])
+      }
+    }
+    skip_blanks(); if (ch() == ";") P++
+    expect_word("do"); parse_list(" done "); expect_word("done"); return compound_end()
+  }
+  if (w == "while" || w == "until") { P += length(w); parse_list(" do "); expect_word("do"); parse_list(" done "); expect_word("done"); return compound_end() }
+  if (w == "case") {
+    P += 4; skip_blanks(); read_word(); flush_nt(PARENT[D]); expect_word("in")
+    while (PERR == "") {
+      skip_newlines()
+      if (peek_token() == "esac") { P += 4; break }
+      if (P > N) { perr(Q "esac" Q " was expected and the text ended"); return 0 }
+      if (ch() == "(") P++
+      while (PERR == "") { skip_blanks(); read_word(); skip_blanks(); if (ch() == "|" && ch2() != "||") { P++; continue } break }
+      flush_nt(PARENT[D])
+      expect_token(")"); if (PERR != "") return 0
+      parse_list(" ;; ;& ;;& esac ")
+      skip_blanks()
+      if (ch3() == ";;&") P += 3; else if (ch2() == ";;" || ch2() == ";&") P += 2
+    }
+    return compound_end()
+  }
+  if (w == "function") { P += 8; skip_blanks(); read_word(); skip_blanks(); if (ch2() == "()") P += 2; skip_newlines(); return parse_command(0) }
+  if (w == "[[") {
+    P += 2
+    while (PERR == "") {
+      skip_newlines()
+      if (ch2() == "]]" && delim_after(P + 2)) { P += 2; break }
+      if (P > N) { perr("a [[ is not closed"); return 0 }
+      if (index(";&|()", ch()) > 0) { P++; continue }
+      read_word()
+    }
+    flush_nt(PARENT[D]); return compound_end()
+  }
+  if (w == "coproc") {
+    P += 6; skip_blanks()
+    q = P; while (q <= N && substr(S, q, 1) ~ /[A-Za-z0-9_]/) q++
+    if (q > P) { name = q; while (name <= N && is_blank(substr(S, name, 1))) name++; if (substr(S, name, 1) == "{" || substr(S, name, 1) == "(") P = name }
+    return parse_command(pipe)
+  }
+  if (index(" ) } ;; ;& ;;& fi then elif else do done esac in ", " " w " ") > 0) { perr(Q w Q " without the opening it closes"); return 0 }
+  return parse_simple(pipe)
+}
+# a simple command: its words and redirections, then every command it holds
+function parse_simple(pipe,   d, w, op, id, k, first, name, mode, text, i, j, n) {
+  d = D; NW[d] = 0; NTN[d] = 0; SHELLTEXT[d] = ""
+  first = HPN[d] + 1
+  while (PERR == "") {
+    skip_blanks()
+    if (P > N || ch() == "\n" || ch() == "#" || (index(";&|)", ch()) > 0 && ch2() != "&>")) break
+    if (ch() == "(" && NW[d] == 1 && ch2() == "()" ) {
+      # name() : a function definition; the body is the command that follows
+      P += 2; skip_newlines(); NW[d] = 0; NTN[d] = 0
+      return parse_command(0)
+    }
+    if (ch() == "(") { perr("a " Q "(" Q " inside a command"); return 0 }
+    if (ch2() == "&&" || ch2() == "||") break
+    op = read_redir()
+    if (PERR != "") return 0
+    if (op != "") {
+      NW[d]++; W[d, NW[d]] = op
+      skip_blanks()
+      if (P > N || ch() == "\n" || index(";&|()", ch()) > 0) { perr("a redirection without its target"); return 0 }
+      w = read_word(); if (PERR != "") return 0
+      NW[d]++; W[d, NW[d]] = w
+      if (op ~ /<<-?$/ && op !~ /<<<$/) add_heredoc(w, op ~ /<<-$/, WQ)
+      continue
+    }
+    w = read_word(); if (PERR != "") return 0
+    NW[d]++; W[d, NW[d]] = w
+  }
+  if (NW[d] == 0) return LASTID
+  id = emit(d, PARENT[d], REL[d], pipe)
+  for (k = first; k <= HPN[d]; k++) if (HC[d, k] == -1) HC[d, k] = id
+  flush_nt(id)
+  LASTID = id
+  if (PERR != "") return id
+  # what this command runs as shell text; LASTID stays this command, the one a pipe behind a compound reads from
+  i = first_of(d)
+  if (SHELLTEXT[d] != "") { text = SHELLTEXT[d]; SHELLTEXT[d] = ""; parse_text(text, id, "shell"); LASTID = id; return id }
+  if (i == 0) return id
+  name = basename(W[d, i])
+  if (name == "eval") {
+    text = ""
+    for (j = i + 1; j <= NW[d]; j++) text = text (j > i + 1 ? " " : "") W[d, j]
+    if (text != "") parse_text(text, id, "shell")
+    LASTID = id
+    return id
+  }
+  if (name == "find") {
+    for (j = i + 1; j <= NW[d] && PERR == ""; j++) {
+      if (W[d, j] == "-exec" || W[d, j] == "-execdir" || W[d, j] == "-ok" || W[d, j] == "-okdir") {
+        n = 0; NW[d + 1] = 0
+        for (k = j + 1; k <= NW[d] && W[d, k] != ";" && W[d, k] != "+"; k++) { NW[d + 1]++; W[d + 1, NW[d + 1]] = W[d, k] }
+        if (NW[d + 1] > 0) emit(d + 1, id, "exec", 0)
+        j = k
+      }
+    }
+    return id
+  }
+  if (is_shell(name)) {
+    mode = shell_mode(d, i)
+    if (mode == "c") { if (SCRIPT != "") parse_text(SCRIPT, id, "shell") }
+    else if (mode == "stdin") {
+      for (k = first; k <= HPN[d]; k++) if (HC[d, k] == id) HSH[d, k] = 1
+      for (j = i + 1; j <= NW[d]; j++) if (W[d, j] == "<<<" && j < NW[d]) parse_text(W[d, j + 1], id, "shell")
+    }
+  }
+  LASTID = id
+  return id
+}
+
+END {
+  if (J == "") err("nothing on stdin: expected the JSON of a hook")
+  NP = split(J, QPARTS, /"/)
+  jpart(1)
+  jskip()
+  if (jc() != "{") err("the input is not a JSON object")
+  jvalue("")
+  if ("hook_event_name" in HAVE) printf "event: %s\n", clean(FIELD["hook_event_name"])
+  if ("tool_name" in HAVE) printf "tool: %s\n", clean(FIELD["tool_name"])
+  if ("cwd" in HAVE) printf "cwd: %s\n", clean(FIELD["cwd"])
+  if ("permission_mode" in HAVE) printf "permission_mode: %s\n", clean(FIELD["permission_mode"])
+  if ("session_id" in HAVE) printf "session_id: %s\n", clean(FIELD["session_id"])
+  if ("tool_input.file_path" in HAVE) printf "file: %s\n", clean(FIELD["tool_input.file_path"])
+  if (!("tool_input.command" in HAVE)) { print "parsed: none"; exit 0 }
+  OUT = ""; NID = 0; LASTID = 0; D = 0; PERR = ""
+  parse_text(FIELD["tool_input.command"], 0, "list")
+  if (PERR != "") { print "parsed: no: " PERR; exit 0 }
+  print "parsed: yes"
+  printf "%s", OUT
+  exit 0
+}
+'

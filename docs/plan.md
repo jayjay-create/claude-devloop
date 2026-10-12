@@ -266,7 +266,12 @@ Since 8 October 2026, version 0.131.0, the guard reads the download —
 `puppeteer browsers install` — and holds it against the vendor's default place
 for the system it runs on, which the record names among eleven places since
 that day; the roadmap entry of that date carries the vendors' pages and the
-measurement.
+measurement. Since 12 October 2026, version 0.137.0, the guard reads every
+command of a call for itself, through `bin/devloop-command-reader`, which
+takes the command apart as the shell runs it, and a browser download moved
+by a variable before the command is held against the place the variable
+names, inside the project opening nothing; the roadmap entry of that date on
+the command reader carries the measurement.
 
 Ends with two runs on one fresh project, in this order, the second reusing
 the first's project because it builds on the no the first put on record,

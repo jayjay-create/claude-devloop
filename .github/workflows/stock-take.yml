@@ -55,3 +55,35 @@ jobs:
 
       - name: self-test
         run: scripts/devloop-stock-take --self-test
+
+      # Since 12 October 2026: every hook reads its input through
+      # bin/devloop-command-reader and through nothing else, the one line
+      # below standing once in each, hooks/stop-checks.sh excepted, which
+      # discards its input with cat >/dev/null and reads nothing of it; every
+      # handler under PreToolUse and the one under PermissionRequest in
+      # hooks/hooks.json carries "onFailure": "block"; and the reader's
+      # self-test is green. docs/skill-conventions.md, "A hook reads its input
+      # through one program". This step is no check of "Before a handover,
+      # run these"; it runs here, on every pull request, and installs nothing.
+      - name: hooks read through the reader, handlers block on failure, the reader's self-test
+        run: |
+          bin/devloop-command-reader --self-test
+          LINE='INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1'
+          HERE='HERE=$(cd "$(dirname "$0")" && pwd)'
+          red=0
+          for f in hooks/*.sh; do
+            if [ "$f" = hooks/stop-checks.sh ]; then
+              [ "$(grep -cFx 'cat >/dev/null' "$f")" -eq 1 ] && ! grep -qF 'devloop-command-reader' "$f" || { echo "$f: reads its input, and it is the one hook that discards it"; red=1; }
+            else
+              [ "$(grep -cFx "$LINE" "$f")" -eq 1 ] && [ "$(grep -cFx "$HERE" "$f")" -eq 1 ] || { echo "$f: does not read its input through the one line"; red=1; }
+            fi
+            grep -nE '\$\(cat\)|<&0|/dev/stdin|cat \| |^cat$' "$f" && { echo "$f: reads its input another way"; red=1; }
+          done
+          python3 - <<'PY' || red=1
+          import json, sys
+          h = json.load(open("hooks/hooks.json"))["hooks"]
+          bad = [x["command"] for ev in ("PreToolUse", "PermissionRequest") for g in h[ev] for x in g["hooks"] if x.get("onFailure") != "block"]
+          if bad:
+              print("handlers without onFailure block:", bad); sys.exit(1)
+          PY
+          exit $red

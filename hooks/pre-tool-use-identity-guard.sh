@@ -1,7 +1,6 @@
 #!/bin/bash
 set -uo pipefail
-INPUT=$(cat)
-INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' -e 's/\\n/ /g' -e 's/\\t/ /g' -e 's/\\r/ /g')
+HERE=$(cd "$(dirname "$0")" && pwd)
 
 # Blocks every command that sets the identity of a commit itself, in a project
 # set up with devloop, since 9 October 2026: a commit carries the identity git
@@ -9,91 +8,145 @@ INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' 
 # becomes public with the push - the four commits of the order before this one
 # were made with git -c user.email and an address GitHub holds as private for
 # the account, and the push was refused, GH007. Read on every Bash call, in
-# every segment of the command between &, |, ; and parentheses, as the install
-# guard and the mark guard read a command: git with -c or --config-env for
-# user.name, user.email, author.name, author.email, committer.name or
-# committer.email, the key in any mixture of upper and lower case, as git reads
-# it, and only between git and its command, as the branch guard reads git's own
-# options - git commit -c <commit> takes a message and the authorship of that
-# commit and is not read here; --author at git commit, where --reset-author
-# passes and --author at git log and every other command that filters by it
-# passes; the variables GIT_AUTHOR_NAME, GIT_AUTHOR_EMAIL, GIT_COMMITTER_NAME
-# and GIT_COMMITTER_EMAIL set in the command, with env or export too; EMAIL set
-# in a command that calls git, since git takes EMAIL where user.email is not
-# set; GIT_CONFIG_KEY_<n> set to one of the keys; and git config writing,
-# setting or removing one of the keys, in the forms git config <key> <value>,
-# --add, --replace-all, --unset, --unset-all, set and unset, and a section
-# named user, author or committer behind --remove-section or --rename-section,
-# where reading passes: git config <key>, --get, get, --list, list, and the
-# other reading options. Measured on 9 October 2026 with git 2.50.1:
-# author.name, author.email, committer.name and committer.email overwrite
-# user.name and user.email; without user.email git takes EMAIL; User.Email
-# reads as user.email. Not read, and said so in the roadmap entry of 9 October
-# 2026: a configuration file written with the editing tool, with git config
-# --edit or by another program; include.path; GIT_CONFIG_GLOBAL,
-# GIT_CONFIG_SYSTEM, GIT_CONFIG_PARAMETERS, HOME, XDG_CONFIG_HOME and the other
-# detours that point git at another file; a git alias; git commit -c or -C
-# <commit>, which takes the author of that commit; git am, cherry-pick, rebase
-# and the other commands that carry an author over from a patch or a commit; a
-# key held in a variable alone. The message is the one approved on 9 October
-# 2026, its last sentence the one approved on 10 October 2026 - git takes an
-# identity from the machine or refuses - word for word in docs/roadmap.md under
-# the entry of 9 October 2026 and its addendum of 10 October 2026, <what was
-# read> filled with the form read, without its value. Every block leaves
-# through the two lines at the end, since a line routed through a function
-# stands in no search set of the stock-take.
+# every command the shell runs, taken apart by bin/devloop-command-reader as
+# the install guard and the mark guard read a command since 12 October 2026:
+# git with -c or --config-env for user.name, user.email, author.name,
+# author.email, committer.name or committer.email, the key in any mixture of
+# upper and lower case, as git reads it, and only between git and its
+# command, as the branch guard reads git's own options - git commit -c
+# <commit> takes a message and the authorship of that commit and is not read
+# here; --author at git commit, where --reset-author passes and --author at
+# git log and every other command that filters by it passes; the variables
+# GIT_AUTHOR_NAME, GIT_AUTHOR_EMAIL, GIT_COMMITTER_NAME and
+# GIT_COMMITTER_EMAIL set before a command, with env, sudo or export too;
+# EMAIL set so in a command that calls git, since git takes EMAIL where
+# user.email is not set; GIT_CONFIG_KEY_<n> set to one of the keys; and git
+# config writing, setting or removing one of the keys, in the forms git
+# config <key> <value>, --add, --replace-all, --unset, --unset-all, set and
+# unset, and a section named user, author or committer behind
+# --remove-section or --rename-section, where reading passes: git config
+# <key>, --get, get, --list, list, and the other reading options. A word
+# inside a quoted text is a word of its command, so git -c "user.email=x" is
+# read and git commit -m "use git -c user.email" is not. Measured on 9
+# October 2026 with git 2.50.1: author.name, author.email, committer.name
+# and committer.email overwrite user.name and user.email; without user.email
+# git takes EMAIL; User.Email reads as user.email. Not read, and said so in
+# the roadmap entry of 9 October 2026: a configuration file written with the
+# editing tool, with git config --edit or by another program; include.path;
+# GIT_CONFIG_GLOBAL, GIT_CONFIG_SYSTEM, GIT_CONFIG_PARAMETERS, HOME,
+# XDG_CONFIG_HOME and the other detours that point git at another file; a
+# git alias; git commit -c or -C <commit>, which takes the author of that
+# commit; git am, cherry-pick, rebase and the other commands that carry an
+# author over from a patch or a commit; a key held in a variable alone. The
+# message is the one approved on 9 October 2026, its last sentence the one
+# approved on 10 October 2026 - git takes an identity from the machine or
+# refuses - word for word in docs/roadmap.md under the entry of 9 October
+# 2026 and its addendum of 10 October 2026, <what was read> filled with the
+# form read, without its value. Every block leaves through the two lines at
+# the end, since a line routed through a function stands in no search set of
+# the stock-take.
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0
 [ -d "docs/agents" ] || exit 0
 
-TOOL=$(echo "$INPUT" | sed -n 's/.*"tool_name"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+# The input is read through bin/devloop-command-reader, which decodes the
+# JSON and takes the command apart as the shell runs it, since 12 October
+# 2026; every hook reads it so, and a check in .github/workflows/stock-take.yml
+# holds them to that.
+INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
+TOOL=$(printf '%s\n' "$INPUT" | sed -n 's/^tool: //p' | head -1)
 [ "$TOOL" = "Bash" ] || exit 0
-
-CMD=$(echo "$INPUT" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
 
 # The six keys, in any mixture of upper and lower case, as git reads them.
 KEY='([Uu][Ss][Ee][Rr]|[Aa][Uu][Tt][Hh][Oo][Rr]|[Cc][Oo][Mm][Mm][Ii][Tt][Tt][Ee][Rr])\.([Nn][Aa][Mm][Ee]|[Ee][Mm][Aa][Ii][Ll])'
 SECTION='([Uu][Ss][Ee][Rr]|[Aa][Uu][Tt][Hh][Oo][Rr]|[Cc][Oo][Mm][Mm][Ii][Tt][Tt][Ee][Rr])'
-# Git's own options between git and its command, as the branch guard reads them.
-GITOPT='(-[Cc][[:space:]]*[^[:space:]]+|--(git-dir|work-tree|namespace|super-prefix|config-env|exec-path)[[:space:]]+[^[:space:]]+|--[^[:space:]]+|-[pP])'
-GIT="(^|[^[:alnum:]_-])git([[:space:]]+$GITOPT)*[[:space:]]+"
-
+# The index of git's command among the words W, from the index of git; 1 on
+# the exit where none stands. Git's own options between git and its command,
+# as the branch guard reads them.
+git_command() {
+  local j="$1" w
+  while :; do
+    j=$((j + 1)); [ "$j" -lt "${#W[@]}" ] || return 1
+    w="${W[$j]}"
+    case "$w" in
+      -C|-c|--git-dir|--work-tree|--namespace|--super-prefix|--config-env|--exec-path) j=$((j + 1)) ;;
+      -C*|-c*|--*|-p|-P) ;;
+      *) echo "$j"; return 0 ;;
+    esac
+  done
+}
+US=$(printf '\037')
 HASGIT=no
-echo "$CMD" | grep -qE '(^|[^[:alnum:]_.-])git([[:space:]]|$)' && HASGIT=yes
+while IFS= read -r LINE; do
+  case "$LINE" in [0-9]*) ;; *) continue ;; esac
+  IFS="$US" read -r ID PARENT REL PIPE FIRST WORDS <<< "$LINE"
+  [ "$FIRST" -gt 0 ] || continue
+  IFS="$US" read -ra W <<< "${WORDS}${US}x"
+  [ "${W[$((FIRST - 1))]##*/}" = "git" ] && HASGIT=yes
+done <<< "$INPUT"
 
 READ=""
-SEGS=$(printf '%s' "$CMD" | tr '&|;()' '\n\n\n\n\n')
-set -f
-while IFS= read -r SEG; do
+while IFS= read -r LINE; do
   [ -z "$READ" ] || break
-  # The four variables, set anywhere in the command, and EMAIL where the
-  # command calls git.
-  V=$(printf '%s' "$SEG" | grep -oE '(^|[[:space:]])GIT_(AUTHOR|COMMITTER)_(NAME|EMAIL)=' | head -1 | sed -E 's/^[[:space:]]*//; s/=$//')
-  if [ -n "$V" ]; then READ="$V"; continue; fi # one of the four variables
-  if [ "$HASGIT" = yes ] && printf '%s' "$SEG" | grep -qE '(^|[[:space:]])EMAIL='; then READ="EMAIL"; continue; fi
-  V=$(printf '%s' "$SEG" | grep -oE "(^|[[:space:]])GIT_CONFIG_KEY_[0-9]+='?$KEY" | head -1 | sed -E "s/^[[:space:]]*//; s/'//")
-  if [ -n "$V" ]; then READ="$V"; continue; fi # GIT_CONFIG_KEY_<n> on a key
-  case "$SEG" in *git*) ;; *) continue ;; esac
+  case "$LINE" in [0-9]*) ;; *) continue ;; esac
+  IFS="$US" read -r ID PARENT REL PIPE FIRST WORDS <<< "$LINE"
+  IFS="$US" read -ra W <<< "${WORDS}${US}x"
+  N=$((${#W[@]} - 1))
+  F=$((FIRST - 1))
+  NAME=""
+  [ "$FIRST" -gt 0 ] && NAME="${W[$F]##*/}"
+  # The four variables and EMAIL, set before the command or by export; GIT_CONFIG_KEY_<n> on a key.
+  i=0
+  while [ "$i" -lt "$N" ]; do
+    TOK="${W[$i]}"
+    if [ "$FIRST" -gt 0 ] && [ "$i" -ge "$F" ] && [ "$NAME" != "export" ]; then break; fi
+    [ "$i" -ne "$F" ] || { i=$((i + 1)); continue; }
+    case "$TOK" in
+      GIT_AUTHOR_NAME=*|GIT_AUTHOR_EMAIL=*|GIT_COMMITTER_NAME=*|GIT_COMMITTER_EMAIL=*) READ="${TOK%%=*}"; break ;;
+      EMAIL=*) if [ "$HASGIT" = yes ]; then READ="EMAIL"; break; fi ;;
+      GIT_CONFIG_KEY_[0-9]*=*) if printf '%s' "${TOK#*=}" | grep -qE "^$KEY\$"; then READ="${TOK%%=*}=${TOK#*=}"; break; fi ;;
+    esac
+    i=$((i + 1))
+  done
+  [ -z "$READ" ] || continue # one of the four variables, EMAIL beside git, or GIT_CONFIG_KEY_<n> on a key
+  [ "$NAME" = "git" ] || continue
   # -c and --config-env between git and its command.
-  OPTS=$(printf '%s' "$SEG" | grep -oE "(^|[^[:alnum:]_-])git([[:space:]]+$GITOPT)*([[:space:]]|$)")
-  V=$(printf '%s' "$OPTS" | grep -oE -- "(^|[[:space:]])(-c[[:space:]]*|--config-env(=|[[:space:]]+))'?$KEY=" | head -1 | sed -E "s/^[[:space:]]*//; s/'//; s/=$//; s/[[:space:]]+/ /g")
-  if [ -n "$V" ]; then READ="$V"; continue; fi # -c or --config-env on a key
+  j=$F
+  while j=$((j + 1)); [ "$j" -lt "$N" ]; do
+    TOK="${W[$j]}"
+    case "$TOK" in
+      -c) if printf '%s' "${W[$((j + 1))]:-}" | grep -qE "^$KEY="; then READ="-c ${W[$((j + 1))]%%=*}"; fi; j=$((j + 1)) ;;
+      -c*) if printf '%s' "${TOK#-c}" | grep -qE "^$KEY="; then READ="-c${TOK#-c}"; READ="${READ%%=*}"; fi ;;
+      --config-env) if printf '%s' "${W[$((j + 1))]:-}" | grep -qE "^$KEY="; then READ="--config-env ${W[$((j + 1))]%%=*}"; fi; j=$((j + 1)) ;;
+      --config-env=*) if printf '%s' "${TOK#--config-env=}" | grep -qE "^$KEY="; then READ="${TOK%%=*}=${TOK#--config-env=}"; READ="${READ%=*}"; fi ;;
+      -C|--git-dir|--work-tree|--namespace|--super-prefix|--exec-path) j=$((j + 1)) ;;
+      -C*|--*|-p|-P) ;;
+      *) break ;;
+    esac
+    [ -z "$READ" ] || break
+  done
+  [ -z "$READ" ] || continue # -c or --config-env on a key
+  C=$(git_command "$F") || continue
   # --author at git commit.
-  if printf '%s' "$SEG" | grep -qE "${GIT}commit([[:space:]]|$)"; then
-    ARGS=$(printf '%s' "$SEG" | sed -E "s/.*${GIT}commit//")
-    if printf '%s' "$ARGS" | grep -qE '(^|[[:space:]])--author(=|[[:space:]]|$)'; then READ="--author"; continue; fi
+  if [ "${W[$C]}" = "commit" ]; then
+    j=$C
+    while j=$((j + 1)); [ "$j" -lt "$N" ]; do
+      case "${W[$j]}" in --author|--author=*) READ="--author"; break ;; esac
+    done
+    [ -z "$READ" ] || continue
   fi
   # git config writing, setting or removing a key, where reading passes.
-  if printf '%s' "$SEG" | grep -qE "${GIT}config([[:space:]]|$)"; then
-    ARGS=$(printf '%s' "$SEG" | sed -E "s/.*${GIT}config//")
+  if [ "${W[$C]}" = "config" ]; then
     FORM="git config"
     K=""
     NVAL=0
     WRITES=no
     READS=no
     SKIP=no
-    for TOK in $ARGS; do
+    j=$C
+    while j=$((j + 1)); [ "$j" -lt "$N" ]; do
+      TOK="${W[$j]}"
       if [ "$SKIP" = yes ]; then SKIP=no; FORM="$FORM $TOK"; continue; fi
       case "$TOK" in
         --add|--replace-all|--unset|--unset-all|--remove-section|--rename-section) WRITES=yes; FORM="$FORM $TOK" ;;
@@ -113,15 +166,14 @@ while IFS= read -r SEG; do
       esac
     done
     if [ "$READS" = no ] && [ -n "$K" ]; then
-      if printf '%s' "$K" | grep -qE "^'?$KEY\$"; then
+      if printf '%s' "$K" | grep -qE "^$KEY\$"; then
         if [ "$WRITES" = yes ] || [ "$NVAL" -gt 0 ]; then READ="$FORM $K"; continue; fi
-      elif [ "$WRITES" = yes ] && printf '%s' "$K" | grep -qE "^'?$SECTION\$"; then
+      elif [ "$WRITES" = yes ] && printf '%s' "$K" | grep -qE "^$SECTION\$"; then
         READ="$FORM $K"; continue
       fi
     fi
   fi
-done <<< "$SEGS"
-set +f
+done <<< "$INPUT"
 
 [ -n "$READ" ] || exit 0
 
