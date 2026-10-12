@@ -18646,6 +18646,677 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `704cd1d`, the check holding this file against the skill names printing
   nothing. The figures as printed stand in the report.
 
+- **The decisions of 12 October 2026: milestone 3 has not landed with the two
+  closing runs and no run with Go follows; twenty-seven things to build before
+  the next run, on the install guard, at the setup and at planning and
+  building; three things decided and not built now; the person's wordings,
+  word for word; who changed the check targets in the second closing run; 12
+  October 2026, the version stays 0.135.0.** On
+  `task/record-decisions-2026-10-12`, off `3ee3a1f`, version 0.135.0 on
+  `main`; this entry, three changes to `docs/plan.md` and the rows of the
+  table in one commit. Nothing under `skills/`, `shared/`, `hooks/`, `bin/`,
+  `scripts/` or `.github/` changes, so the version stays and
+  `.claude-plugin/plugin.json` is untouched; nothing is built here, and every
+  point below says what is to be built and where. The report stands on this
+  machine as `~/devloop-report-2026-10-12-decisions.md`, in English, and is
+  not in the repository. Every line number in this entry holds at `3ee3a1f`.
+  The wordings the person approved on 12 October 2026 stand under "The
+  approved wordings" in German, as approved, without translation. Where a
+  point changes a decision recorded earlier, it names that decision with file
+  and line and is a revision of it; the dated entries it revises stand as
+  written. The words the stock-take tool reads a line of this file into its
+  search set by stand in this entry on the eight lines that record a defect
+  and on no other, so that the tool takes in the head of this entry and those
+  eight and nothing else of it.
+
+  **Part A. Milestone 3.**
+
+  1. Milestone 3 has not landed with the two closing runs of 11 October 2026.
+  It lands when the defects in its own parts, point 2, are built and a run
+  walks them. How that run is arranged the person decides before the run, as
+  decision 12 of the entry of 9 October 2026 on the open findings of the
+  guard, lines 14361 to 14383, did for the two closing runs. This answers what
+  the consistency audit of 12 October 2026 left to the person under "Recorded
+  as they are", lines 18525 to 18540: of its two answers the second is taken
+  in its first half, not landed, and not in its second, since no run with Go
+  follows, point 3.
+
+  2. The milestone's own parts are these defects, each with its entry: the
+  install guard blocking on text that is not run, with the rule on the editing
+  tool that names the workflow file nowhere, defect c of the entry on the
+  second closing run, lines 17646 to 17683; an issue's title blocked for the
+  word `sudo`, defect d, lines 17685 to 17701; step 8 of `setup-checks`
+  entering nothing after the second yes, defect b, lines 17623 to 17644; the
+  five parts before the question and the line before each second question not
+  in the message, defect a, lines 17594 to 17621; two merges where one is
+  owed, defect i, lines 17809 to 17824; step 8 not reached at a first setup,
+  defect 1 of the entry on the first closing run, lines 17161 to 17184; `npm
+  install --save-dev` after a no, defect 3, lines 17201 to 17222; `nix run`
+  and `nix shell` not read, defect 11, lines 17351 to 17375.
+
+  3. The run with Go that `docs/plan.md` has follow where doubts remain after
+  the two runs, lines 305 to 306, falls away. The reasons: no doubt is named
+  that a run with Go would settle; Go brings `gofmt`, `go vet` and `go test`
+  itself, line 16496 of the entry of 10 October 2026 on the arrangement, so
+  that the route through the package file, on which defect b lies, does not
+  arise with Go at all; and defect c such a run would meet again unbuilt. This
+  is a revision of that entry, lines 16491 and 16502, which put the sentence
+  into the plan, and of decision 12 of the entry of 9 October 2026, line
+  14361, which first had the run with Go.
+
+  4. In `docs/plan.md` under milestone 3: the sentence on the run with Go,
+  lines 305 to 306, becomes one that says what stood there until 12 October
+  2026 and that since that day no run with Go follows; behind the paragraph
+  "The two closing runs were made on 11 October 2026 …", lines 307 to 310,
+  comes a dated sentence with point 1. The sentence "The milestone has not
+  landed." at line 401 stands at the end of the paragraph on the runs of 30
+  September 2026 and rests on those, and it stays as it is; after the change
+  the plan says in one place what holds today. Lines 264, "Ends with two runs
+  on one fresh project, in this order, the second reusing", and 271, "hands
+  the command over without trying it, as `build-work` step 3 point 7", carry
+  anchors of the table and stand as they are; the order of this day named the
+  second as line 272, which is the line after it. The thing of the audit of 12
+  October 2026 on whether milestone 3 landed, "whether milestone 3 landed with
+  the two closing runs has more than one answer and the plan says both
+  halves", gets the new dated sentence of the plan as its evidence, its site
+  staying on the audit's status line.
+
+  **Part B. To build before the next run.** Each point with its place and what
+  should hold there; where a should stands in an entry already, the point
+  names it. On the install guard, points 1 to 6; at the setup, 7 to 19; at
+  planning and building, 20 to 27.
+
+  1. The command boundaries: findings 1 to 5 of the entry of 9 October 2026 on
+  the open findings of the guard, lines 13886 to 14002, the reading of a
+  newline of finding 4 included, lines 13966 to 13986, each with the should
+  its finding carries. Decision 13 of that entry, lines 14387 to 14390, put
+  them behind the closing runs of milestone 3; they come now, with point 2.
+
+  2. The guard reads only what the shell runs. It takes the line apart by its
+  quotes, its heredocs, `&&`, `;`, `|` and its newlines; text inside quotes
+  and inside a heredoc it reads only where the shell runs it: `$(…)`,
+  backticks, `bash -c`, `sh -c`, a heredoc fed to a shell. Code in another
+  language, such as a heredoc fed to `python3`, it does not search:
+  `docs/skill-conventions.md` holds under "The install guard matches the
+  outcome as well as the verb, and is still a tripwire", lines 1474 to 1486,
+  that the guard catches the ordinary case and is not a wall. The parser is a
+  program under `bin/`, in Bash with `awk`, called by the six hooks that today
+  flatten the command on their line 4: `hooks/pre-tool-use-install-guard.sh`,
+  `pre-tool-use-branch-guard.sh`, `pre-tool-use-merge-guard.sh`,
+  `pre-tool-use-table-guard.sh`, `post-tool-use-table-guard.sh` and
+  `post-tool-use-checks.sh`. Why Bash with `awk` and not Python: all eleven
+  hooks under `hooks/` begin with `#!/bin/bash`; no hook calls `python3` — the
+  one hook naming it, `hooks/pre-tool-use-mark-guard.sh` line 84, names it in
+  its head as a form the guard reads; for the install guard "Every failure is
+  a block" holds, `docs/skill-conventions.md` line 1572, so that a language
+  not on the machine would stop every command; and milestone 12 of
+  `docs/plan.md`, lines 466 to 508, brings the hooks under Git Bash on
+  Windows. This is a revision of the entry of 6 September 2026 on the two
+  guard false positives, its section from "The install guard is unchanged and
+  the case stays open", line 1255, to "the normal path no longer runs through
+  it", lines 1323 to 1324: its reason, that the normal path no longer runs
+  through the false positive, did not hold in the second closing run, defect c,
+  lines 17667 to 17674, three blocks on text, two of them on the normal path;
+  its two holes of 25 August 2026, lines 1258 to 1262 there and "A hook
+  reading the tool's JSON must undo the escapes first" in
+  `docs/skill-conventions.md`, lines 1456 to 1472 — a second command on a new
+  line walking past the guards, and anything after the first quoted string
+  invisible — stay closed, since every line is a command of its own and every
+  command is read. What stands on the revised decision and changes with the
+  build: line 4 of the six hooks; the normalisation line of that paragraph of
+  the conventions, line 1467, which the parser replaces; and the sentence of
+  the same file at lines 1480 to 1482, that a `PreToolUse` hook sees a string
+  and not a filesystem, which stays true and is the reason the parser reads
+  no other language. Examined and rejected: the `if` field of Claude Code's
+  hooks, which starts a hook only where a subcommand matches its pattern. The
+  vendor calls the filter best-effort and advises against it for a hard allow
+  or deny: the hooks reference, code.claude.com/docs/en/hooks, under "Hook
+  handler fields", "Common fields", the paragraph after the table of `if`
+  patterns, read on 12 October 2026 — "When Claude Code can't determine which
+  commands the Bash input runs, it runs your hook regardless of the pattern.
+  Because the `if` filter is best-effort, use the permission system rather
+  than a hook to enforce a hard allow or deny." The order of this day named
+  that paragraph as a section "Indeterminate commands and best-effort
+  filtering", a heading the page does not carry on 12 October 2026. The two
+  uses of the field that stand, `Bash(git *)` and `Bash(gh pr merge*)` in
+  `hooks/hooks.json` lines 9 to 11, the conventions' reason at lines 2240 to
+  2266, narrow which calls start a guard and hold no hard deny; they stay.
+
+  3. `nix run` and `nix shell`: defect 11 of the entry on the first closing
+  run, lines 17351 to 17375, with its should — the guard reads them as it
+  reads `uvx`, or the rule names them.
+
+  4. A block is reported and not reworded: the defect of the table "a run took
+  a block for a false positive and found a spelling that gets through", the
+  entry of 6 September 2026, line 1179, whose text stands in
+  `shared/command-does-not-answer.md` lines 76 to 82 and, for a title, in
+  `shared/body-through-file.md` lines 20 to 29. In the second closing run it
+  held once in three times, "Met again" of the entry on that run, lines 17839
+  to 17874. What should hold is what those two texts say; the build reads the
+  two times it did not hold and rewrites the texts so that it does.
+
+  5. The person's principle becomes a rule of its own in
+  `docs/skill-conventions.md`, beside "Every failure is a block", line 1572,
+  as decision 14 of the entry of 9 October 2026 on the open findings, lines
+  14394 to 14398, left open. What it says: where a hook cannot say what a
+  command does, the run does not stand still; where it reads the person's
+  permission, every failure to read is a block. Not standing still is not
+  passing: the hook on permission prompts answers no, so that the run goes on.
+  The entry of 8 October 2026 on the guard drew that boundary already, lines
+  12938 to 12942. The rule held against six cases: `uv run` with an option
+  not in the list, through; a browser download moved by a setting of the
+  vendor, through; a permission prompt under a mark without a third line, no
+  and on; no install record on `main`, a block; a quote not closed, through;
+  `sudo brew install` where it runs, a block, since there is no doubt. The
+  four places that give the principle as a reason today point at the rule
+  then: `docs/skill-conventions.md` lines 1850 and 1953,
+  `hooks/pre-tool-use-install-guard.sh` line 68 — and line 81 of the same
+  head, "by the same principle", which the order of this day did not name —
+  and `hooks/permission-request-unattended.sh` lines 16 to 17. The rule is
+  written with the order on the guard, and recorded here.
+
+  Recorded, not built: the person's principle stands at four places as a reason
+  and as no rule of the conventions, `docs/skill-conventions.md` lines 1850 and
+  1953, `hooks/pre-tool-use-install-guard.sh` lines 68 and 81 and
+  `hooks/permission-request-unattended.sh` lines 16 to 17 — should: a rule of
+  its own in `docs/skill-conventions.md` beside "Every failure is a block", the
+  four places pointing at it, point 5 of part B.
+
+  6. The four changes to the stock-take tool come in an order of their own,
+  directly before the one on the guard: the exit of a hook through a
+  function, the comment lines of hooks and programs, and the anchor found more
+  than once, the three defects of the entry of 9 October 2026 on step 8 of
+  `setup-checks`, lines 15695 to 15711, which decision 13 bound to the command
+  boundaries; and the status word broken over a line break, the audit of 12
+  October 2026, lines 18560 to 18577. The reason: the rebuild of six hooks
+  sets many anchors of the table anew, fewer with the changed tool.
+
+  At the setup:
+
+  7. The introduction comes wherever the project is not set up; where the
+  idea came with the command, the run does not ask but says what it
+  understood as the idea and goes on — defect 5 of the entry on the first
+  closing run, lines 17240 to 17255, the wording under "The approved
+  wordings". The place: `skills/start-work/SKILL.md` step 2, lines 69 to 92,
+  whose line 91 says to ask what they would like to build and stop; the three
+  states of the status line that decide whether the introduction is written,
+  lines 58 to 67, stand.
+
+  8. Both notes on permissions fall: the section "Permissions, before the
+  first command" in `skills/setup-project/SKILL.md`, from its heading at line
+  154 to line 231 — the order of this day named lines 154 to 235; the
+  paragraph at lines 232 to 236 states the form of a choice question, which
+  step 4 states at lines 274 to 290, and is no note on permissions, so it is
+  not what falls here — and the paragraph "Name what you just wrote down as
+  something to grant" in `skills/setup-checks/SKILL.md`, lines 333 to 340,
+  its bold head on line 333, where the order named 334. The person's reason:
+  at the moment one reads it, one can decide nothing, and later it is
+  forgotten. The decision falls in Claude Code's own prompt, which offers
+  "Yes, and don't ask again", for shell commands "Permanently per repository
+  and command" — code.claude.com/docs/en/permissions, the table under
+  "Permission system", read on 12 October 2026 — and in auto mode, the
+  starting mode of the terminal since Claude Code 2.1.283, no prompt comes:
+  code.claude.com/docs/en/best-practices, "Configure permissions", read the
+  same day, "With Claude Code v2.1.283 or later, auto mode is the built-in
+  starting permission mode for interactive terminal and VS Code sessions".
+  This replaces the shoulds of point F of the entry on the two runs of 30
+  September 2026, lines 7790 to 7816, of defect 8 of the entry on the first
+  closing run, lines 17290 to 17307, and of the defect "the check commands
+  are named as something to grant and nothing says what a run with nobody
+  there does with them" of the entry of 23 September 2026, lines 5246 to
+  5250. Decisions on the same subject the order of this day did not name,
+  each found by the search of this day and replaced with those: the defect of
+  the entry of 23 September 2026 at lines 5271 to 5276, whose should, "name
+  them here or at the close", falls with the passage, while the thing of that
+  defect keeps its evidence on a line of the passage, `skills/setup-project/
+  SKILL.md` line 185, until the build re-anchors it; the entry of 14 September
+  2026 on the first planning run alone, lines 3477 to 3487 and 3972 to 3974,
+  which names step 3's naming of the check commands as the site where a
+  narrow allow rule and why would be said — that site goes, and the should
+  keeps its other site, where the mode is offered; the status line of the
+  entry of 1 October 2026 at lines 8432 to 8436, which records the naming in
+  step 3 as built; and `docs/plan.md` lines 227 to 229, where milestone 3
+  quotes the passage, to be marked as replaced wording by the plan's own
+  opening when the passage goes.
+
+  Recorded, not built: setup-checks step 3 names the check commands as something
+  to grant three steps before step 6 writes them, `skills/setup-checks/SKILL.md`
+  lines 333 to 340 — should: the paragraph falls, point 8 of part B. Replaces
+  the finding of the table on `skills/setup-checks/SKILL.md` "step 3 says Name
+  what you just wrote down …", recorded 1 October 2026, which leaves the table.
+
+  9. Labels: question 5 of `setup-project` step 4, `skills/setup-project/
+  SKILL.md` lines 401 to 403, goes; the seven labels are always created, and
+  the instruction names seven where line 403 says "the five standard labels"
+  and the template at lines 524 to 526 says seven; step 2 reports nothing on
+  labels; after the creation comes the sentence under "The approved
+  wordings". A revision of the should of the entry on the two runs of 3 and 4
+  October 2026, lines 9820 to 9826, that labels of overlapping meaning are
+  named in the report: that half falls, the person's reason being that
+  existing labels are not deleted for it, devloop reads only its own, and the
+  sentence only pads the report. Decisions on the same subject the order of
+  this day did not name, each answered by this point: the defect of the entry
+  of 23 September 2026 at lines 5294 to 5296, "the five standard labels"
+  where the template names seven, whose should this point builds; points I
+  and J of the entry on the two runs of 30 September 2026, lines 7863 to
+  7889, "our labels" and "add ours alongside" and step 2's report that the
+  repository carries none of this workflow's labels, answered by the question
+  going and step 2 saying nothing on labels; and the defect of the
+  consistency audit of 4 October 2026 at lines 10548 to 10557, that the
+  check for an either-or question does not find question 5, whose example
+  goes with the question.
+
+  10. The auto-merge question, question 2 of `setup-project` step 4,
+  `skills/setup-project/SKILL.md` lines 307 to 330: no recommendation, no
+  sentence on the run with nobody there, and it says that under a yes too the
+  first merges are made by hand; the wording under "The approved wordings".
+  Decisions on the same subject the order of this day did not name, each
+  built by this point: point H of the entry on the two runs of 30 September
+  2026, lines 7841 to 7862, whose should is that question 2 gives no
+  recommendation; defect 9 of the entry on the two runs of 3 and 4 October
+  2026, lines 9767 to 9788, whose should is that the question says at the
+  moment of asking that a yes still leaves the first pull request to be
+  merged by hand; and the defect of the same entry at lines 9606 to 9651,
+  that no sentence of the set says a question about how this workflow runs
+  carries no recommendation, answered here for this question and not as a
+  rule.
+
+  11. The merge handover as one shared text at the four places
+  `skills/setup-project/SKILL.md` lines 787 to 789,
+  `skills/setup-checks/SKILL.md` lines 701 to 703 and 1005, and
+  `skills/build-work/SKILL.md` lines 975 to 977, with a command that runs
+  from anywhere — defect 2 of the entry on the first closing run, lines 17186
+  to 17199, and defect f of the entry on the second, lines 17736 to 17757,
+  the wording under "The approved wordings". The check on handovers under
+  "Before a handover, run these", `docs/skill-conventions.md` lines 2745 to
+  2809, reads three of these lines today as the kind whose outcome is read
+  elsewhere and says they stay as they are, against being rewritten into the
+  install's form; the shared text keeps their resumption on the person's
+  word, and the list under that check is read again when the text lands.
+
+  12. The branch on GitHub is deleted only after the run has read that it
+  still stands there: defect 9 of the entry on the first closing run, lines
+  17309 to 17329, with its should and its three sites.
+
+  13. The version marker at a first setup: no step of a first setup writes
+  it, `skills/setup-project/SKILL.md` line 114, the paragraph under
+  "Refreshing an existing setup", so that the next start refreshes; step 6
+  writes it. Recorded on 3 October 2026, lines 8793 to 8801, and in
+  `docs/skill-conventions.md` lines 1798 to 1802; this point takes it up.
+
+  Recorded, not built: no step of a first setup writes the version marker, so
+  that the next start refreshes, `skills/setup-project/SKILL.md` line 114 —
+  should: step 6 writes it, the marker line above the top heading of each of the
+  five files, point 13 of part B. Replaces the finding of the table on
+  `skills/setup-project/SKILL.md` "the marker paragraph stands under Refreshing
+  an existing setup …", recorded 3 October 2026, which leaves the table.
+
+  14. Two text errors in `skills/setup-project/SKILL.md` from the entry of 23
+  September 2026: line 241, "It is not" for "Where it is not", lines 5277 to
+  5281 of that entry; line 658, "from step 2" for "step 4, question 2", lines
+  5309 to 5313.
+
+  15. Step 3 of `setup-checks` names beside the compiler and the runtime the
+  system packages of `--with-deps`, `skills/setup-checks/SKILL.md` line 409;
+  the entry of 8 October 2026 on the guard recorded it, lines 13147 to 13156.
+
+  Recorded, not built: setup-checks step 3 names the compiler and the runtime
+  and not the system packages of --with-deps, `skills/setup-checks/SKILL.md`
+  line 409 — should: the sentence names the system packages beside the compiler
+  and the runtime, so that the line gives the command where the browser needs
+  them, point 15 of part B. Replaces the finding of the table on
+  `skills/setup-checks/SKILL.md` "step 3 says the line that the run installs a
+  tool outside the project comes only where …", recorded 8 October 2026, which
+  leaves the table.
+
+  16. The value that turns the secrets check red stays out of the index:
+  defect 7 of the entry on the two runs of 3 and 4 October 2026, lines 9702 to
+  9717, with its should.
+
+  17. The file for the text of a pull request or an issue lies outside
+  `.git/`: defect 6 of the same entry, lines 9692 to 9700, with its should,
+  in `shared/body-through-file.md`.
+
+  18. Every command devloop hands to the person runs as it stands, from
+  anywhere: the merge command with `--repo`, an install command that needs
+  the project directory with the change into it before it. The person's
+  reason: no knowledge of commands in the terminal may be assumed, everything
+  has to be there for copying. The rule of `docs/skill-conventions.md` lines
+  56 to 59, that a command is handed over only where the run cannot do the
+  thing itself, stands; this says what such a command carries. The example
+  under "The approved wordings".
+
+  Recorded, not built: an install command handed over carries no change into the
+  project directory, in the first closing run `npx playwright install chromium`,
+  lines 17141 to 17146 — should: every command handed to the person runs as it
+  stands from anywhere, an install command with the change into the project
+  directory before it and the merge command with `--repo`, point 18 of part B.
+
+  19. Where the fetch of the main branch fails, the person gets no git
+  commands where the run can do the thing itself: where a changed file is in
+  the way, it asks whether it may set the file aside, and brings it back
+  afterwards; where bringing it back meets the same line, it shows both lines
+  and asks which holds; where commits of their own lie on the main branch, it
+  asks whether it may put them on a branch of their own and bring the main
+  branch to GitHub's state. The wordings under "The approved wordings". This
+  replaces the two proposals of the audit of 7 October 2026 on `git stash
+  pop` and `git reset --keep`, lines 12537 to 12548; its third proposal, the
+  sentence at the writing of the mark, is approved and stands below. A
+  revision of the examples approved on 6 October 2026, the entry of 5 October
+  2026 under "The approved wording", lines 11046 to 11055, and of
+  `shared/fetch-three-times.md` lines 56 to 71, which hand the person `git
+  stash`, `git stash pop`, `git branch` and `git reset --keep`; the two
+  examples for the connection and the sign-in stay, in the wordings approved
+  this day. The finding of the table on `shared/cut-branch.md` line 99, that
+  the run resolves a refused switch itself without handing the user a git
+  command, points the same way and stays a finding, part D.
+
+  Recorded, not built: the messages at a failed fetch hand git commands over
+  where the run can do the thing itself after a question,
+  `shared/fetch-three-times.md` lines 56 to 71 — should: the run asks and does
+  it, for a changed file, for the same line changed on both sides and for
+  commits of their own on the main branch, in the wordings approved on 12
+  October 2026, point 19 of part B.
+
+  At planning and building:
+
+  20. The sharpening of the idea in `plan-work` Stage 1 ends as Matt Pocock's
+  grilling ends: when no question is answerable now, every branch is visited
+  and nothing is silently assumed, and the run acts only once the person
+  confirms that a shared understanding is reached; "nothing important is
+  open" goes. The source: github.com/mattpocock/skills at `49dd158`,
+  `skills/productivity/grilling/SKILL.md` line 30, read on 12 October 2026 —
+  "The session is done when the frontier is empty: every branch of the design
+  tree visited, nothing left silently assumed. Do not act on it until the
+  user confirms you have reached a shared understanding."; `skills/
+  untangle-idea/SKILL.md` lines 205 to 207 say the same. The place:
+  `skills/plan-work/SKILL.md` line 258, "Done when nothing important is open,
+  the hard core …". With this the open question of the entry of 14 September
+  2026 on the first planning run alone, lines 3703 to 3705, whether the empty
+  frontier replaces the condition or stands beside it, is decided: replaced,
+  the person's reason being that "nothing important" is pure interpretation.
+  The cap of at most three questions in a round stays,
+  `shared/three-questions.md`; it changes the number of rounds and not the
+  end, lines 3686 to 3697 of that entry. The settled answers go to the
+  planning issue after every round — the defect "plan-work posts Stage 1 to
+  the planning issue once …" of the entry on the two runs of 30 September
+  2026, lines 7764 to 7770, whose should asks for the issue before the mode
+  question; after every round reaches it. This part of milestone 6 is brought
+  forward; in `docs/plan.md` under milestone 6, after lines 582 to 587, comes
+  a dated sentence that the end on the empty frontier is brought forward so
+  and that the stack and the look stay in milestone 6. The entry of 11
+  September 2026 on planning fenced out of the unattended mode, lines 2105 to
+  2112, has the question at the end of Stage 1 put only where the idea stands,
+  "nothing important open" among the three conditions; that condition is the
+  one replaced, and the other two stand.
+
+  21. A revision of `skills/build-work/SKILL.md` lines 709 to 710, "Fixes
+  made inside this step are already covered by it — the boundary is the step,
+  not the change", standing since 24 August 2026, pull request #72, commit
+  `bb3f74b`: what is changed after the report of the review agents gets a
+  second round over exactly those commits. The reason: the sentence before,
+  lines 704 to 707, says that code written after the reviewers looked would
+  otherwise ride in unreviewed, and the exception gives as its only reason
+  "the boundary is the step, not the change". Defect h of the entry on the
+  second closing run, lines 17786 to 17807, stands with it as its should
+  says. Decisions on the same subject the order of this day did not name,
+  each consistent with this point: the entry of 9 September 2026 on the
+  second review round and the test scaffolding, lines 1838 to 1860, which
+  asks that the second round be given the tests that use a changed
+  scaffolding; and the entry of 5 October 2026 on the status forms at lines
+  11183 to 11186, where what `setup-checks` commits inside the review step is
+  read by a second round "where a fix made inside the review step counted as
+  read" — the exception that goes.
+
+  22. Check targets belong to `setup-checks`, and the rule arrives: the build
+  subagent gets `shared/checks-owner.md` as the third rule in `build-work`
+  step 3, beside the two it reads nowhere else, `skills/build-work/SKILL.md`
+  line 383, the shared text standing in that skill at line 511; it changes no
+  check target itself and names a needed change in its report; where a
+  report names one, the main run calls `setup-checks` for that class on the
+  task's branch. The evidence under "Who changed the check targets" below.
+  Decisions on the same subject the order of this day did not name, each
+  consistent with this point: the entry of 12 September 2026 on a change to
+  the check chain landing unreviewed, lines 2625 to 2683, whose should is
+  that a change to the check targets goes through the diff review like any
+  other, and which names "Do not edit `docs/agents/checks.md` yourself" as
+  the sentence that sends every build-side edit down the reviewed route; and
+  the entry of 5 October 2026 at lines 11183 to 11195, where the route a
+  change to the check targets takes with nobody there is the build's branch
+  alone, through the single-class route.
+
+  Recorded, not built: a build subagent changed three check targets in the
+  Makefile itself in the second closing run, the rule of
+  `shared/checks-owner.md` reached it nowhere, and the main run did not call
+  `setup-checks` — should: the build subagent gets the rule as its third,
+  changes no check target itself and names a needed change in its report, and
+  the main run calls `setup-checks` for that class on the task's branch where a
+  report names one, point 22 of part B.
+
+  23. The review is called as `devloop:review-changes` and not without the
+  prefix, `skills/build-work/SKILL.md` line 620: the entry of 14 September
+  2026 on the first planning run alone, lines 3507 to 3534, with its should.
+
+  24. Deleting the mark as one shared text: the defects "no shared text says
+  how the mark is deleted …" and "the list in build-work of where the mark is
+  deleted misses the stops of plan-work" of the audit of 4 October 2026,
+  lines 10232 to 10290, with their shoulds.
+
+  25. `shared/how-to-ask.md` lines 57 to 58, `docs/skill-conventions.md`
+  lines 502 to 506 and the template in `skills/untangle-idea/SKILL.md` line
+  165 are brought to the reading of `docs/skill-conventions.md` lines 645 to
+  652, that the four things a question states are what has reached the
+  person by the time they answer: the defect "shared/how-to-ask.md says every
+  question states why it comes up now …" of the entry of 30 September 2026
+  on the length and the form of a delivered text, lines 7284 to 7301, with
+  its should.
+
+  26. The rule that `environment.md` is written with the editing tool,
+  `skills/build-work/SKILL.md` lines 221 to 226, holds for every file whose
+  content is text about commands, the workflow file included, and reaches the
+  build subagent and `setup-checks` step 8: defect c of the entry on the
+  second closing run, lines 17646 to 17683, with its should. A rule for every
+  change the entry on bundled shell commands, lines 826 to 830, deliberately
+  does not propose; that stands. `shared/
+  body-through-file.md` line 13 says the same of the body file, and the rule
+  here is of that kind.
+
+  27. The places where text that belongs in the message stood in the model's
+  thinking part: the five parts before the question and the line before each
+  second question, defect a; `setup-project` step 2, the entry on the first
+  closing run, lines 17394 to 17397, and the entry on the second, lines 18221
+  to 18223; `start-work` line 274, `cut-into-tasks` line 159 and
+  `review-changes` lines 105 to 114, the entry on the second closing run,
+  lines 17909 to 17929, and `cut-into-tasks` line 159 in the first run too,
+  lines 18266 to 18268. It is built only after a measurement of the cause on
+  the two session logs, as an order of its own, since whether that is the
+  model's or a skill's is not known, lines 17402 to 17403 and 17928 to 17929.
+
+  Recorded, not built: text that belongs in the message stood in the thinking
+  part at six further places of the two closing runs, beyond defect a —
+  `setup-project` step 2 and `cut-into-tasks` line 159 in the first run,
+  `start-work` line 274, `cut-into-tasks` line 159 and `review-changes` lines
+  105 to 114 twice in the second — should: it stands in the message, built after
+  the measurement of the cause, point 27 of part B.
+
+  **Part C. Decided, not built now.**
+
+  1. Findings 6 to 8 of the entry of 9 October 2026 on the open findings of
+  the guard, lines 14004 to 14059, are not built; decision 15, line 14400,
+  stays open. The reason: no run with `brew` and `npx` meets them, they do
+  not block milestone 3, and under a no they would bring more blocks.
+
+  2. The finding of the table on `skills/setup-checks/SKILL.md` "a command
+  handed over for a tool and not run leaves the class skipped (user) …",
+  recorded 6 October 2026 in the addendum of the entry of 5 October 2026 on
+  the status forms, lines 11494 to 11500, falls: after a command that was not
+  run, no question about another tool comes, as `skills/setup-checks/
+  SKILL.md` lines 438 to 442 say and `docs/skill-conventions.md` lines 731 to
+  736 say with it. The person's reason: who wants another tool says so at the
+  first question; who knows none, their no holds for a second too. The
+  finding leaves the table.
+
+  3. One session for a whole run can become a problem on larger ideas and is
+  not built now. Measured in the closing runs, the entry on the second, lines
+  17931 to 17953: in the first run from the end of the planning, 215,292
+  tokens, to the close, 410,613, three tasks, about 65,000 per task; in the
+  second from the cutting of the tasks, 195,773, to the close, 343,921, about
+  50,000 per task. The automatic compaction sets in at about 967,000 tokens,
+  lines 17976 to 17980; computed and not measured, that is after about 12 to
+  16 tasks, and a larger idea reaches that easily, only small ones having
+  been tested so far. After it, of every loaded skill only the first 5,000
+  tokens come back, `docs/plan.md` lines 689 to 690, and the section on the
+  run with nobody there stands in `build-work` after about 20,000, lines 4795
+  to 4808 of the entry of 17 September 2026. A defect from the context was
+  seen in neither run. For milestone 9 as an option: the build loop as a
+  workflow the plugin ships — code.claude.com/docs/en/workflows, read on 12
+  October 2026, "Distribute a workflow in a plugin", a script in a
+  `workflows/` directory at the plugin root — with three measurements before
+  it: whether devloop's hooks fire on the commands of the workflow's agents;
+  how auto mode judges their installs, since by the same page "the prompt
+  your script passes to `agent()` doesn't count as a request from you when
+  the classifier reviews that subagent's actions"; and that the first start
+  of a workflow in auto mode needs an approval, the page's table under
+  "Approve the plan before it runs", "First launch only". With the person,
+  the handover after the planning, "Type `/clear`, then
+  `/devloop:start-work`", as `skills/untangle-idea/SKILL.md` lines 334 and
+  436 have it. Examined and rejected: each task as a session of its own with
+  `claude -p`, since the mark names the writing session on its third line,
+  `shared/mark-command.md`, and `hooks/permission-request-unattended.sh`
+  steps aside where the third line names another session, its head lines 10
+  to 13, so that the prompts of such a session would stand unanswered. The
+  two ways rejected under "Decisions taken against", the context-usage
+  percentage and the handover between sessions, stay untouched. In
+  `docs/plan.md` under milestone 9, after lines 684 to 705, comes a dated
+  sentence with this point; the note of defect g of the entry on the second
+  closing run says what holds since this day.
+
+  **Part D. Not the subject of this entry:** the remaining findings of the
+  table, the reading of the documents against each other, and everything a
+  later audit takes.
+
+  **The approved wordings, word for word.** Approved by the person on 12
+  October 2026, recorded here as approved, in German, without translation and
+  without rewording; the skill says what is said, and the run writes it in
+  its own words, except where a line is fixed.
+
+  The introduction where the idea came with the command, point 7 of part B:
+  of the four points the second reads "der Rest wird geführt", without "eine
+  Idee genügt"; the fixed line `devloop - from idea to built.` stays; in
+  place of the question comes a sentence with the idea as understood and that
+  the setup comes first, then it goes on. The approved example, on the first
+  closing run: „Am Ende steht Code, der gebaut, geprüft und gemerged ist. Den
+  Rest führe ich. Merken musst du dir nichts, keine Befehle und keine
+  Schritte. Und wenn du irgendwann wissen willst, was gerade passiert, frag
+  einfach." / „devloop - from idea to built." / „Deine Idee: eine kleine
+  Webseite um isValidName, die bei jeder Eingabe zeigt, ob der Name gültig
+  ist. Zuerst richte ich das Projekt ein, dann geht es damit weiter." Without
+  an idea given, the second sentence reads „Du bringst nur eine Idee mit, den
+  Rest führe ich", and at the end stands the question what is to be built.
+
+  The labels, point 9: „Im Tracker habe ich sieben Labels angelegt, mit denen
+  der Stand der Arbeit markiert wird, zum Beispiel `needs-human`, wenn du
+  entscheiden musst."
+
+  Auto-merge, point 10: the question „Auto-Merge ist ausgeschaltet. Soll ich
+  es einschalten?"; the first answer „Ja, einschalten" with the line „GitHub
+  mergt dann selbst, sobald eine Pflichtprüfung grün ist. Die kommt erst
+  später, bis dahin mergst du von Hand."; the second answer „Nein, aus
+  lassen" with the line „Jeden Merge machst du von Hand."
+
+  The merge handover, point 11, on the example of the setup: „Der Pull Request
+  „Set up devloop: control documents, task runner, labels" ist offen. GitHub
+  kann ihn nicht selbst mergen, weil es noch keine Pflichtprüfung gibt, auf
+  die es warten könnte. Merge ihn mit:" then in a code block `gh pr merge 1
+  --squash --repo jayjay-create/devloop-test-w`, then „Sag mir Bescheid,
+  sobald er drin ist. Bis dahin passiert hier nichts." The two other cases in
+  the middle sentence: „Auto-Merge ist in diesem Repository aus." and „Die
+  Prüfungen sind schon durch, deshalb nimmt GitHub keinen Auto-Merge mehr
+  an." No `--delete-branch`; the run deletes the branch itself afterwards.
+
+  The fetch failed with a changed file in the way, point 19, in the choice
+  widget: the question „In deinem Projekt ist `README.md` geändert und nicht
+  committet. Um weiterzumachen, muss ich den Stand von GitHub holen, und das
+  würde diese Datei ändern. Soll ich deine Änderung so lange beiseitelegen?";
+  „Ja, beiseitelegen" with „Ich hole sie zurück, wenn ich fertig bin."; „Nein"
+  with „Dann halte ich hier an, bis du Bescheid gibst." Where bringing the
+  change back meets the same line as the change from GitHub, the run shows
+  both lines and asks which is to hold; the change stays set aside until
+  then.
+
+  Commits of their own on the main branch, point 19, in the choice widget:
+  the question „Auf deinem Hauptzweig liegen Commits, die auf GitHub fehlen,
+  und auf GitHub ist inzwischen Neues dazugekommen. Soll ich deine Commits auf
+  einen eigenen Zweig `meine-commits` legen und den Hauptzweig auf den Stand
+  von GitHub bringen?"; „Ja" with „Deine Commits bleiben auf `meine-commits`
+  erhalten."; „Nein" with „Dann halte ich hier an."
+
+  The sign-in refused, point 19: „GitHub hat die Anmeldung abgelehnt. Gib das
+  im Terminal ein und folge den Anweisungen im Browser:" then in a code block
+  `gh auth login`, then „Sag Bescheid, sobald das erledigt ist."
+
+  GitHub not reached, point 19: „GitHub war bei drei Versuchen nicht
+  erreichbar. Prüfe deine Internetverbindung und sag Bescheid, wenn sie
+  wieder steht."
+
+  At the writing of the mark, as the opening, point 19: „Ich kann gerade
+  nicht lesen, wo der Hauptzweig auf GitHub steht, deshalb fange ich hier
+  nichts an."
+
+  An install command, point 18, the example: `cd ~/devloop-test-w && npx
+  playwright install chromium`.
+
+  **Who changed the check targets in the second closing run, read on 12
+  October 2026.** The report the question rested on is not on this machine
+  any more, so the evidence is read at the source. In `~/devloop-test-w`
+  after `git fetch -q origin`: `git log -p origin/main -- Makefile` shows
+  `d4d97b0`, "Name checker is generated by re2js (#20)", which puts `npm run
+  build:matchers` before the `node --test` line of `test-unit`, `test-file`
+  and `test-one`, three targets. Under `~/.claude/projects/` in the directory
+  for `devloop-test-w`, the log `65a9b587-7cff-46b3-8323-b094c98b1d3a.jsonl`
+  and beside it the directory of the logs of its agents, 21 logs together:
+  tool calls naming `Makefile` and `build:matchers` together stand in the log
+  of the build subagent `agent-a6bc4331d9f616008` at records 59, 74 and 78,
+  all three Bash calls, and at record 136, its report through
+  `SubagentHandback`, which names the change; in the main log at records 381,
+  382, 384 and 562, Agent calls, and 454, 484 and 715, writes of the spec,
+  the task text and the pull request body into the session's scratch
+  directory, none of them a change to the Makefile; the main run loads
+  `setup-checks` once, the Skill call at record 134 and its text at record
+  136, for step 8, lines 18112 to 18113 of the entry on the second closing
+  run naming the six skill loads. Nothing else of these logs was read for
+  this, and no log of another project.
+
+  **Records.** Eight defect things at the end of `docs/stock-take.tsv`, each
+  named "docs/roadmap.md / Known gaps / " and the defect, sited and evidenced
+  on its status line above, the note saying what it concerns and the should,
+  and one not-a-thing row for the head of this entry, part of the first;
+  four findings leave the table, the three the eight replace and the one
+  part C point 2 drops; the thing of the audit of 12 October 2026 on whether
+  milestone 3 landed gets the new sentence of `docs/plan.md` as its
+  evidence; and the notes of eight things say what holds since this day,
+  each naming this entry — defect h of the entry on the second closing run,
+  the labels question, point F of the entry of 30 September 2026, defect 8
+  of the entry on the first closing run and the check commands named as
+  something to grant, the two defects of 14 September 2026 on Stage 1's end
+  and on the frontier in `untangle-idea`, and defect g of the entry on the
+  second closing run. The tool after the change, measured in a copy with the
+  change committed: no broken record, 19 findings where 23 stood at
+  `3ee3a1f`, the three the eight replace and the one part C drops having left
+  the table, no unit without a straight path, no uncovered line of 2629, exit
+  0; the counts against `3ee3a1f`: the search set 2629 lines where it was
+  2620, the head of this entry and its eight status lines; recorded and not
+  built 240 where it was 232, its defects 229 where they were 221;
+  not-a-thing records 1324 where they were 1323, of which part of 1125 where
+  it was 1124; undetermined 28, built and never walked 1015 and walked 420,
+  every kind as at `3ee3a1f`; 97 runs that do not count, the same runs; the
+  self-test 88 cases, its line as at `3ee3a1f`, 74 of 74 messages asserted
+  by a case; the nineteen checks under "Before a handover, run these" green
+  and line for line what they print at `3ee3a1f`, the check holding this file
+  against the skill names printing nothing; and the search for a status word
+  broken over a line break in this file, the one the order of this day gave,
+  printing 0. The figures as printed stand in the report.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

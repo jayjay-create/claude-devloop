@@ -302,12 +302,19 @@ run's tool is `dasel`, the second run's `re2c` with its program `re2js`, and
 a package whose command runs, each coming through Homebrew; and each task
 calls for its tool expressly, as an npm script that runs `dasel` and as a
 generation with `re2js`, since otherwise the build takes an npm package and
-the guard on installs is never met. Where doubts remain after the two runs,
-a run with Go follows, as decision 12 first had it.
+the guard on installs is never met. Until 12 October 2026 this went on "Where
+doubts remain after the two runs, a run with Go follows, as decision 12 first
+had it."; since that day no run with Go follows, the roadmap entry of that
+date on the decisions.
 The two closing runs were made on 11 October 2026 in `devloop-test-w`, the
 first under the record saying no with the person there and the second under
 `--auto` and a yes, the roadmap entries of that date on the first closing
 run and on the second closing run.
+Decided on 12 October 2026, the roadmap entry of that date on the decisions:
+the milestone has not landed with the two closing runs; it lands when the
+defects in its own parts, eight named there, are built and a run walks them,
+arranged by the person before the run as decision 12 of the roadmap entry of
+9 October 2026 arranged the two closing runs.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
@@ -584,7 +591,12 @@ comparison, five ending on a state and two on a judgement. Stage 1 of
 carries under "The interview": a round is the set of questions answerable now,
 at most three of them, and the stage ends when that set is empty — not when
 the run sees nothing important left, which is what let three questions through
-on 14 September 2026.
+on 14 September 2026. Brought forward on 12 October 2026, the roadmap entry of that
+date on the decisions: the end on the empty frontier — no question answerable
+now, every branch visited, nothing silently assumed, and the run acting only
+once the person confirms a shared understanding, "nothing important is open"
+gone — is built before the next run of milestone 3; the stack and the look
+stay here.
 
 Two things enter that end here and are read from here by milestone 8: the
 stack — language, runtime, framework, database — which nothing in the set
@@ -703,6 +715,16 @@ set forbids "alone" before the end of Stage 1, so the run is attended that far.
 Conventions: "Text shared between skills"; "Registering a skill"; the checks
 under "Before a handover, run these" that count twelve files; "A count lives
 in one place"; the delegation claim in the roadmap, measured first.
+
+Recorded on 12 October 2026, the roadmap entry of that date on the decisions:
+one session for a whole run can become a problem on larger ideas and is not
+built now — the two closing runs of 11 October 2026 used about 65,000 and
+50,000 tokens per task after the planning, which by arithmetic reaches the
+compaction at about 967,000 after some 12 to 16 tasks, and no defect from the
+context was seen in either; as an option for this milestone, the build loop as
+a workflow the plugin ships, with the three measurements that entry names
+first, each task as a session of its own with `claude -p` examined there and
+rejected.
 
 ### 10. The six remaining mechanisms (measurement, then build)
 
