@@ -19317,6 +19317,201 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   broken over a line break in this file, the one the order of this day gave,
   printing 0. The figures as printed stand in the report.
 
+- **The four changes to the stock-take tool decided on 12 October 2026: an
+  exit through a function in the search set, comment lines and docstrings out
+  of it, an anchor found more than once named with its lines, a status word
+  broken over a line break listed and red; 12 October 2026, version
+  0.136.0.** On `task/stock-take-four-changes`, off `c42039a`, version 0.135.0
+  on `main`; the tool with its self-test and head, `docs/plan.md` and the
+  version in `393983c`, this entry and the rows of the table in the commit
+  after it, the runs under 0.136.0 in the third. Every line number of the tool
+  in this entry holds at `393983c`; every line number of this file holds at
+  `c42039a` unless it says otherwise. Part B point 6 of the entry of 12
+  October 2026 on the decisions put the four in an order of their own,
+  directly before the one on the guard: the three defects of the entry of 9
+  October 2026 on step 8 of `setup-checks`, lines 15695 to 15711, which
+  decision 13 of the entry of that day on the open findings of the install
+  guard, lines 14387 to 14390, had bound to the command boundaries, and the
+  defect of the audit of 12 October 2026, lines 18560 to 18577. Each change
+  with the cases in the self-test that show its result and its limit, as
+  decision 13 asks. The report stands on this machine as
+  `~/devloop-report-2026-10-12-stock-take.md`, in English, and is not in the
+  repository.
+
+  **Read before the build.** Every line the order named was held against the
+  file at `c42039a` and stood: the three defects at 15695 to 15711, decision
+  13 at 14387 to 14390, the paragraphs on the runs under 0.134.0 and 0.135.0
+  from 16306 and from 16668, the runs under 0.107.0 at 5646, the audit's
+  defect at 18560 to 18577, the message of the anchor check at line 1287 of
+  the tool, the pattern at 571 read at 1214, section E at 422 to 466 and the
+  exit codes at 36 to 39, the plan's paragraph at 146 to 154. Searched with
+  grep over this file, `docs/skill-conventions.md`, `docs/plan.md` and
+  `scripts/` for earlier rulings on each of the four: none beyond the places
+  the order named - the defects themselves, part B point 6, the audit's note
+  that its search printed `spanning matches: 0`, and section A of the tool's
+  head, "not its exit statements", which stands. Which shell functions end
+  the program, read off the files before the build: `pass` in
+  `hooks/pre-tool-use-mark-guard.sh`; `usage`, `fail`, `selftest`, `expect`,
+  `absent`, `within` and `gone` in `bin/devloop-bounded`; `selftest`,
+  `expect` and `absent` in `bin/devloop-setup-state`; none of `inside`,
+  `absolute`, `place`, `gobin` and `cargobin` in
+  `hooks/pre-tool-use-install-guard.sh`, `trim` in `bin/devloop-check-table`,
+  `version` in `scripts/devloop-version-guard`, and `kill_tree`, `run`,
+  `git_q`, `bounded` and `mark` in the two programs. No python program under
+  `bin/` or `scripts/` ends through a function: `bin/devloop-auto-mode-rule`
+  and the tool exit at the module's last line with what `main` returns, and
+  their functions raise, which the word `raise` brings into the set already.
+
+  **Point 1, an exit through a function.** The rule, in the head of the tool
+  at lines 453 to 469: a shell function ends the program when a line of its
+  body other than a comment line holds the word `exit` or calls a function
+  that ends the program; every line that calls such a function at the place
+  of a command - at the start of the line, or after `;`, `&&`, `||`, `|`,
+  `!`, `(`, `{`, the parenthesis that closes a case pattern, `then`, `do` or
+  `else` - stands in the set as an `exit` does, inside the body of another
+  function too; a line that defines a function is no call of it, and counts
+  where it calls another such function on the same line; a name that does not
+  stand at the place of a command is no call. It stands in `search_set` at
+  line 1406, with `unquoted`, `shell_functions`, `call_pattern`, `calls_in`
+  and `ending_functions`, lines 1209 to 1322: the text of a quoted string is
+  blanked and a comment behind the code cut off before a name is looked for,
+  a `$( ... )` inside double quotes read as code, and the body of a function
+  runs from its definition to the brace that closes it. The person decided on
+  12 October 2026 that a call inside the body of another function counts too:
+  an exit stays visible there as well, where a function decides it, and the
+  cases of the self-tests under `bin/` get one record each for it. In this
+  repository thirty-eight lines come into the set: four of the mark guard,
+  `|| pass` at 68, 69 and 121 and `&& pass` at 122; twenty of
+  `bin/devloop-bounded`, the helpers at 51, 54, 55 and 56, the cases at 70,
+  71, 75, 76, 78, 79, 84, 85, 90, 91 and 92, `selftest` at 96 and `usage` at
+  98, 100, 102 and 103; fourteen of `bin/devloop-setup-state`, the cases at
+  95, 97, 99, 101, 103, 112, 116, 121, 122, 123, 126, 131 and 139 and
+  `selftest` at 143. Six carry an anchor already, the four of the mark guard
+  and the two lines calling `selftest`; thirty-two get a not-a-thing row
+  each, part of the thing they belong to: the helpers of the fail outcome,
+  the cases of the self-test's outcome, the `usage` lines of the exit 2
+  outcome. Cases in the self-test, on `bin/ender` of its repository: a call
+  after `||`, after `&&`, at the start of the line, after the parenthesis
+  that closes a case pattern and after `do`, inside the body of another
+  function, a function that ends through two others, a line defining a
+  function with a call of another on it, a name in a string at the place of
+  no command and a name after `;` inside a string, a comment line calling
+  such a function. The limit, in the head at lines 552 to 556: a program
+  that ends another way - a trap, `exec`, `set -e`, a kill of its own process
+  - is not seen.
+  Built: point 1, the exit through a function, at `scripts/devloop-stock-take`
+  line 1406 since `393983c`.
+
+  **Point 2, comment lines.** The rule, lines 447 to 452 of the head: in a
+  file under `hooks/`, `bin/`, `scripts/` and `.github/workflows/` a line
+  whose first character other than a space or a tab is `#` stands in no set,
+  in a python program every line of a string that stands as a statement of
+  its own, a docstring, neither; a code line with a comment behind it stays a
+  code line. It stands at line 1404 with `python_strings`, lines 1325 to
+  1337, which reads the docstrings off the program's syntax tree. Seventeen
+  lines leave the set outside the tool: `hooks/pre-tool-use-identity-guard.sh`
+  15 and 55, `hooks/pre-tool-use-install-guard.sh` 183 and 276,
+  `hooks/session-start.sh` 7, `bin/devloop-bounded` 16, 22, 28 and 66,
+  `bin/devloop-install-record` 9 and 17, `bin/devloop-setup-state` 19, 32, 45
+  and 133, `bin/devloop-auto-mode-rule` 48 and 49, the last two docstring
+  lines; none under `.github/workflows/`. On fourteen of them a not-a-thing
+  row stood, each dropped; on the other three, `bin/devloop-bounded` 16, 22
+  and 28, a thing stands, sited on the line of the header that names its
+  outcome, and stays. In the tool itself ten docstring lines of its head held
+  a search word at `c42039a`, each with a rationale row, each dropped. Cases:
+  a comment line of a hook holding `if`, an indented one, a docstring line of
+  a python program holding `exit`, `if` and `raise`, a comment line of a
+  workflow holding `run:`, and a code line with a comment behind it in each
+  of the three, which counts.
+  Built: point 2, the comment lines, at `scripts/devloop-stock-take` line 1404
+  since `393983c`.
+
+  **Point 3, the anchor found more than once.** `find_anchor` returns the
+  lines the anchor stands on where it stands more than once, line 861 and
+  the line before it, and the message at lines 1504 to 1506 names them:
+  "found more than once, on lines 2, 5 and 6, so it is not an anchor", where
+  it said "found more than once, so it is not an anchor", line 1287 at
+  `c42039a`. Cases: the anchor `exit 0` of the hook of the self-test's
+  repository, on three lines, and `same text` of `skills/zeta/SKILL.md`
+  there, on two, the message naming both.
+  Built: point 3, the lines of an anchor found more than once, at
+  `scripts/devloop-stock-take` line 1504 since `393983c`.
+
+  **Point 4, the status word broken over a line break.** The person decided
+  on 12 October 2026 to reject the place rather than read across the break:
+  every status line on `main` has that form already, and the fault shows at
+  the run of the tool before the commit and at the check before the merge at
+  the latest. That revises the should of the audit's defect, lines 18573 to
+  18575, which had left both ways open. It stands in `status_breaks`, lines
+  1340 to 1365, read in `analyse` at 1913 wherever `docs/roadmap.md` is among
+  the files a run reads: under "Known gaps" every place where one of the
+  three status words stands with a line break between two of its words is
+  listed under the heading `STATUS WORDS OF docs/roadmap.md BROKEN OVER A LINE
+  BREAK (a status word belongs on one line)`, line 2022, with the file and
+  the line it starts on, and the tool exits 1, line 2043, as it does for an
+  uncovered line; the head says so at lines 36 to 40 and 475 to 483. The
+  pattern of line 571 at `c42039a` stands as it was, one line at a time; the
+  break is read by a second pattern over the section's text. Cases, on a
+  repository of their own in the self-test from line 2786: the first status
+  word broken after `Recorded,` and after `not`, the second after `Half`, the
+  third after `Should`, each listed with the line it starts on and exit 1,
+  nothing else red; the same words on one line, not listed, exit 0; the same
+  break outside "Known gaps", not listed. The search the order gave, a
+  python3 program over this file counting the matches that span a line break,
+  prints 0 at `c42039a` and with this entry.
+  Built: point 4, the status word broken over a line break, at
+  `scripts/devloop-stock-take` line 1362 since `393983c`.
+
+  **The self-test.** 110 cases where 88 stood, the twenty-two above, each
+  with its red and its green seen; of the 74 messages the tool rejects,
+  refuses or answers with, read off its own source, 74 are asserted by a case
+  and 0 by none, the one message that changed being the anchor's. The
+  self-test's repository carries four files for the cases,
+  `hooks/commented.sh`, `bin/ender`, `bin/docstrung` and
+  `.github/workflows/w.yml`, lines 2288 to 2332, and a fifth repository for
+  the status words from line 2786. `docs/plan.md` lines 146 to 161 say what
+  the set is now, section E of the head lines 426 to 503 and the exit codes
+  36 to 40; no other place of either file named the old rule.
+
+  **The records.** Twenty-five not-a-thing rows leave the table: the fourteen
+  on the lines that left the set outside the tool, the ten on the docstring
+  lines of its head, and the one on `if words.search(l):`, the line the thing
+  of point 1 is sited on now. Eight rows move: the thing of exit 1 and the
+  thing of the anchor found more than once onto their changed lines, the
+  notes saying what holds now; two rows of the self-test's lines onto the
+  lines as changed; the three defects of 9 October 2026 get the case that
+  shows each fixed as evidence, their sites staying on their status lines;
+  the audit's defect gets its case as evidence and, as the evidence leaves
+  the status line, its site moves onto that line and its name takes
+  `docs/roadmap.md / Known gaps /` as its source, the note naming the old
+  name. Three things come, program outcomes of the tool, each sited on the
+  line that decides it with its case as bench: the comment line in no set,
+  the call of a function that ends the program in the set, the status word
+  broken over a line break listed. Sixty-nine not-a-thing rows come: the
+  thirty-two above; twenty-one on the lines of the tool that came into the
+  set, part of the thing each serves; eleven template rows on the fixtures
+  the self-test writes; five on the case lines that hold a search word, part
+  of the thing whose case each is; and five on this entry, its head and its
+  four status lines, part of the four defects. The figures, at `c42039a` and
+  with this entry: the search set 2629 and 2687 lines - 17 gone and 38 come
+  outside the tool, 14 gone and 46 come inside it, the 10 docstring lines and
+  4 lines rewritten among the 14, and the 5 of this entry; lines that can
+  carry no unique anchor 97 and 106, the 58 outside the tool the same, 39 and
+  48 inside it; not-a-thing rows 1324 and 1373, part of 1125 and 1185,
+  rationale 156 and 134, template 23 and 34, quoted 7 and no defect 13 as
+  they were; undetermined 28 and 28; recorded and not built 240 and 236, the
+  defects 229 and 225; built and never walked 1015 and 1025, the defects 175
+  and 179 and the program outcomes 30 and 36; walked 420 and 417, the program
+  outcomes 126 and 123, three things having left it: the thing of exit 1,
+  whose site changed, the thing of the anchor found more than once, whose
+  site and evidence changed, and the thing of the anchor not found, whose
+  part-of line `elif status != "ok":` changed; their runs of 23 September
+  2026 stand under `RUNS THAT DO NOT COUNT`, 100 runs there where 97 stood,
+  the 97 with the same reasons. `FINDINGS: 19`, `BROKEN RECORDS: 0`, `UNITS
+  WITHOUT A STRAIGHT PATH: 0`, no line uncovered, nothing under the new
+  heading, exit 0; the nineteen checks under "Before a handover, run these"
+  line for line as at `c42039a`.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
