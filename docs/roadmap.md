@@ -17551,8 +17551,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   message; before the dependency question record 171 names the permission
   and not that they had said no to it. The two are one defect, text owed in
   the message before a widget standing in a thinking block or nowhere, and
-  are cut as one. `setup-checks` lines 810 to 847 and 919 to 923. Recorded,
-  not built: the five parts before the mode question and the line of prose
+  are cut as one. `setup-checks` lines 810 to 847 and 919 to 923.
+  Recorded, not built: the five parts before the mode question and the line of prose
   before each second question stood in thinking blocks or nowhere, no
   message of the run carrying them, records 146 to 152 and 167 to 172 —
   should: the five parts stand as text in the run's own message before the
@@ -17745,7 +17745,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   added since the last review, `build-work` line 704, before the pull
   request is opened.
 
-  **i. Three pull requests where point 1 of step 8 allows one — beyond the
+  **i. Two merges by hand where point 1 of step 8 owes one — beyond the
   order.** `setup-checks` step 8 lands what it writes in "as few pull
   requests as point 1 allows", lines 1002 to 1005, and point 1 says that
   where nothing is installed under the changed records they land "in one
@@ -18266,14 +18266,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   version 0.135.0 with the source `log`, anchored on the paragraph above that
   records it, and every one counting. The tool after the change, measured in
   a copy with the change committed: no broken record, 23 findings as at
-  `c2c8bd5`, no unit without a straight path, no uncovered line of 2604,
+  `c2c8bd5`, no unit without a straight path, no uncovered line of 2605,
   exit 0; the counts against `c2c8bd5`: the state recorded and not built 216
   where it was 207, its defects 205 where they were 196; built and never
   walked 1015 where it was 1171; walked 420 where it was 264 — skill branches
   148 where they were 28, shared texts 34 where they were 4, hook outcomes 80
   where they were 77, the hook registration 1 where it was 0, program
   outcomes 126 where they were 125, defects 11 where they were 10; the
-  search set 2604 lines where it was 2595, the nine status lines above;
+  search set 2605 lines where it was 2595, the head of this entry and its nine status lines;
   not-a-thing records 1322 where they were 1321, of which part of 1123 where
   it was 1122; every other count unchanged; the self-test 88 cases, its line
   as at `c2c8bd5`; the nineteen checks under "Before a handover, run these"
