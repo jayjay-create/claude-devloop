@@ -19512,6 +19512,33 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   heading, exit 0; the nineteen checks under "Before a handover, run these"
   line for line as at `c42039a`.
 
+  **The tool, its self-test and the nineteen checks under 0.136.0 at
+  `e0d36ec`.** Run in this tree with the tree clean on 12 October 2026, the
+  tool from 15:17:40 to 15:18:50 UTC: `BROKEN RECORDS: 0`, `FINDINGS: 19`,
+  nothing under `STATUS WORDS OF docs/roadmap.md BROKEN OVER A LINE BREAK`,
+  `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0
+  of 2687`, exit 0, written down on its exit 0 outcome; every count as the
+  paragraph above gives it with this entry, and the 100 runs under `RUNS THAT
+  DO NOT COUNT` the same. The self-test from 15:18:50 to 15:18:52 UTC
+  answered, exit 0, with `SELF-TEST PASSED: 110 cases; of the 74 messages
+  this tool rejects, refuses or answers with, read off its own source, 74
+  are asserted by a case and 0 by none; the lines of the report are not in
+  that count`; one run is written down on the self-test's outcome and one on
+  each of the six outcomes of the tool this order touched and the self-test
+  produced: the three that came, with their cases named in their notes; the
+  thing of exit 1 and the thing of the anchor found more than once, whose
+  site or evidence changed; and the thing of the anchor not found, whose
+  part-of line changed - beyond the letter of the order, which names site and
+  evidence, so that the table does not show as never walked what this order
+  alone unwalked. The nineteen checks under "Before a handover, run these"
+  from 15:18:52 to 15:18:56 UTC at `e0d36ec` printed what their sections
+  call green, line for line what they printed at `c42039a` on a clean tree,
+  one run written down on each of the nineteen. The tool at the branch's
+  last commit, after the rows of these runs and this paragraph, answers as
+  at `e0d36ec` in every count but two: walked 423 where it was 417 and built
+  and never walked 1019 where it was 1025, the six program outcomes above
+  having moved; the 100 runs that do not count the same.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
