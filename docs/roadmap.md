@@ -20283,6 +20283,52 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   they stood on and 6 re-anchored; and 480 not-a-thing rows added, part of
   the outcome each line leads to, the whole set covered.
 
+  **The tool, its self-test, the reader's self-test, the workflow's step and
+  the nineteen checks under 0.137.0 at `f3452aa`.** Run in this tree with
+  the tree clean on 12 October 2026, the tool from 20:11:46 to 20:13:03 UTC:
+  `BROKEN RECORDS: 0`, `FINDINGS: 19`, 159 lines that can carry no unique
+  anchor, nothing under `STATUS WORDS OF docs/roadmap.md BROKEN OVER A LINE
+  BREAK`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH
+  SET: 0 of 3142`, exit 0, written down on its exit 0 outcome; 269 runs
+  under `RUNS THAT DO NOT COUNT`, walked 382, built and never walked 1091,
+  recorded and not built 228, undetermined 28, as the paragraph above gives
+  them with this entry. The self-test of the tool from 20:13:03 to 20:13:05 UTC answered, exit 0,
+  with `SELF-TEST PASSED: 110 cases; of the 74 messages this tool rejects,
+  refuses or answers with, read off its own source, 74 are asserted by a
+  case and 0 by none; the lines of the report are not in that count`, one
+  run written down on its outcome, the source of the tool untouched by this
+  order. The reader's self-test at 20:13:05 UTC, `SELF-TEST PASSED: 94 cases`, exit
+  0, one run written down on each of its six outcomes beside the
+  measurement above. The workflow's step run as a script at 20:13:06 UTC
+  printed the self-test and nothing red, exit 0, which is no run of the
+  platform and is written down on nothing. The nineteen checks under "Before a handover, run these" from
+  20:15:54 to 20:15:57 UTC at `f3452aa` printed what their sections call
+  green, line for line what they printed at `e0d36ec` on a clean tree as
+  the entry of 12 October 2026 on the four changes to the tool records
+  them, the names check silent, the offers at seventeen lines, the
+  handovers at nine over eight sites, the second statement at one line; one
+  run written down on each of the nineteen. The runs of the measurement
+  above stand on the outcomes of the hooks and of the reader they produced,
+  79 runs under 0.137.0 with this entry as their source, each on the line of
+  this entry that records it. The silent passes of the hooks and the labels of the mark guard, measured at
+  20:18:24 UTC the same way: every hook with `CLAUDE_PROJECT_DIR` on a
+  directory that does not exist, exit 0 without output; every guard in a
+  git repository without `docs/agents/`, exit 0 without output, the session
+  start printing `[ProjectStatus] devloop: not set up here`; every guard on
+  `Bash` alone with `tool_name` `Edit` and `Read`, exit 0 without output,
+  the branch guard blocking the `Edit` on `main` and passing the `Read`; the
+  mark guard with the reader called and no `permission_mode`, the statement
+  that the mode could not be read, with `plan`, the statement naming plan
+  mode on, and with `weird`, text C naming `weird` as its own label — 25
+  runs more, 104 in all, and with the tool's, its self-test's and the
+  nineteen checks' 125. The hooks' outcomes not met by this day keep the
+  runs they had, which count where their lines did not change and stand
+  under `RUNS THAT DO NOT COUNT` where they did. The tool at the branch's last commit,
+  after the rows of these runs and this paragraph, answers as at `f3452aa`
+  in every count but two: walked 443 where it was 382 and built and never
+  walked 1030 where it was 1091; the 269 runs that do not count the same,
+  `UNCOVERED LINES OF THE SEARCH SET: 0 of 3142`, exit 0.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
