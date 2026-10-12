@@ -720,7 +720,7 @@ Recorded on 12 October 2026, the roadmap entry of that date on the decisions:
 one session for a whole run can become a problem on larger ideas and is not
 built now — the two closing runs of 11 October 2026 used about 65,000 and
 50,000 tokens per task after the planning, which by arithmetic reaches the
-compaction at about 967,000 after some 12 to 15 tasks, and no defect from the
+compaction at about 967,000 after some 12 to 16 tasks, and no defect from the
 context was seen in either; as an option for this milestone, the build loop as
 a workflow the plugin ships, with the three measurements that entry names
 first, each task as a session of its own with `claude -p` examined there and

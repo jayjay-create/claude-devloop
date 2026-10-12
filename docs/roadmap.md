@@ -18901,8 +18901,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and J of the entry on the two runs of 30 September 2026, lines 7863 to
   7889, "our labels" and "add ours alongside" and step 2's report that the
   repository carries none of this workflow's labels, answered by the question
-  going and step 2 saying nothing on labels; and the defect of the entry on
-  the two runs of 3 and 4 October 2026 at lines 10548 to 10557, that the
+  going and step 2 saying nothing on labels; and the defect of the
+  consistency audit of 4 October 2026 at lines 10548 to 10557, that the
   check for an either-or question does not find question 5, whose example
   goes with the question.
 
@@ -19107,29 +19107,30 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   165 are brought to the reading of `docs/skill-conventions.md` lines 645 to
   652, that the four things a question states are what has reached the
   person by the time they answer: the defect "shared/how-to-ask.md says every
-  question states why it comes up now …" of the entry on the two runs of 30
-  September 2026, lines 7284 to 7301, with its should.
+  question states why it comes up now …" of the entry of 30 September 2026
+  on the length and the form of a delivered text, lines 7284 to 7301, with
+  its should.
 
   26. The rule that `environment.md` is written with the editing tool,
   `skills/build-work/SKILL.md` lines 221 to 226, holds for every file whose
   content is text about commands, the workflow file included, and reaches the
   build subagent and `setup-checks` step 8: defect c of the entry on the
   second closing run, lines 17646 to 17683, with its should. A rule for every
-  change the entry of 6 September 2026 on bundled shell commands, lines 826
-  to 830, deliberately does not propose; that stands. `shared/
+  change the entry on bundled shell commands, lines 826 to 830, deliberately
+  does not propose; that stands. `shared/
   body-through-file.md` line 13 says the same of the body file, and the rule
   here is of that kind.
 
   27. The places where text that belongs in the message stood in the model's
   thinking part: the five parts before the question and the line before each
   second question, defect a; `setup-project` step 2, the entry on the first
-  closing run, lines 17394 to 17397 and 18221 to 18223; `start-work` line
-  274, `cut-into-tasks` line 159 and `review-changes` lines 105 to 114, the
-  entry on the second closing run, lines 17909 to 17929, and `cut-into-tasks`
-  line 159 in the first run too, lines 18266 to 18268. It is built only after
-  a measurement of the cause on the two session logs, as an order of its own,
-  since whether that is the model's or a skill's is not known, lines 17402 to
-  17403 and 17928 to 17929.
+  closing run, lines 17394 to 17397, and the entry on the second, lines 18221
+  to 18223; `start-work` line 274, `cut-into-tasks` line 159 and
+  `review-changes` lines 105 to 114, the entry on the second closing run,
+  lines 17909 to 17929, and `cut-into-tasks` line 159 in the first run too,
+  lines 18266 to 18268. It is built only after a measurement of the cause on
+  the two session logs, as an order of its own, since whether that is the
+  model's or a skill's is not known, lines 17402 to 17403 and 17928 to 17929.
 
   Recorded, not built: text that belongs in the message stood in the thinking
   part at six further places of the two closing runs, beyond defect a —
@@ -19162,7 +19163,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   second from the cutting of the tasks, 195,773, to the close, 343,921, about
   50,000 per task. The automatic compaction sets in at about 967,000 tokens,
   lines 17976 to 17980; computed and not measured, that is after about 12 to
-  15 tasks, and a larger idea reaches that easily, only small ones having
+  16 tasks, and a larger idea reaches that easily, only small ones having
   been tested so far. After it, of every loaded skill only the first 5,000
   tokens come back, `docs/plan.md` lines 689 to 690, and the section on the
   run with nobody there stands in `build-work` after about 20,000, lines 4795
@@ -19182,8 +19183,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   436 have it. Examined and rejected: each task as a session of its own with
   `claude -p`, since the mark names the writing session on its third line,
   `shared/mark-command.md`, and `hooks/permission-request-unattended.sh`
-  steps aside where the third line names another session, its head lines 14
-  to 17, so that the prompts of such a session would stand unanswered. The
+  steps aside where the third line names another session, its head lines 10
+  to 13, so that the prompts of such a session would stand unanswered. The
   two ways rejected under "Decisions taken against", the context-usage
   percentage and the handover between sessions, stay untouched. In
   `docs/plan.md` under milestone 9, after lines 684 to 705, comes a dated
