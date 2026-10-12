@@ -267,8 +267,15 @@ which the rule under "Open" allows since 6 October 2026. Both run on the
 person's Mac in the terminal, where this milestone closes as planned,
 decision 3 of the roadmap entry of 9 October 2026; every other system and
 every other surface is milestone 12, directly after this one. First the install
-record says no and the person is there: a build needs a tool, the guard
-blocks, and the command is handed over. Then `--auto`, the question put a
+record says no and the person is there: a build needs a tool, and the run
+hands the command over without trying it, as `build-work` step 3 point 7
+says, so that no run following the skill meets the guard there; the guard's
+block under a record saying no stands walked with the person there in
+`devloop-test-v` on 4 October 2026, the roadmap entry of that date on the
+two runs of milestone 3. Until 11 October 2026 this read "a build needs a
+tool, the guard blocks, and the command is handed over", corrected by the
+roadmap entry of that date on the second closing run, defect 10 of the entry
+on the first. Then `--auto`, the question put a
 second time and a yes, and the build with nobody there installs a tool
 itself: the guard passes, and the tool stands at the path. The two runs need
 two different tools, each one a task needs and not a check tool — a code
@@ -297,9 +304,15 @@ calls for its tool expressly, as an npm script that runs `dasel` and as a
 generation with `re2js`, since otherwise the build takes an npm package and
 the guard on installs is never met. Where doubts remain after the two runs,
 a run with Go follows, as decision 12 first had it.
+The two closing runs were made on 11 October 2026 in `devloop-test-w`, the
+first under the record saying no with the person there and the second under
+`--auto` and a yes, the roadmap entries of that date on the first closing
+run and on the second closing run.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
-no, a task needs a browser for tests, the guard blocks the download, and the
-command is handed over. Under the yes, the run with nobody there downloads a
+no, a task needs a browser for tests, and the run hands the download command
+over without trying it, as under the no for a tool above; until 11 October
+2026 this read "the guard blocks the download, and the command is handed
+over". Under the yes, the run with nobody there downloads a
 browser itself, and it stands at the vendor's place — a browser the first run
 did not install, for the reason the paragraph gives for the tools: a command
 handed over in the first run and run by the person has installed its browser
