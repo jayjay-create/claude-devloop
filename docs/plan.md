@@ -145,13 +145,20 @@ that is the building milestone's work, not this one's.
 
 The search set is what makes the table checkable for completeness: every line
 under `skills/`, `shared/`, `hooks/`, `bin/` and `scripts/` that carries a
-condition word, a heading, a numbered item, a list head or a table row, and
-under `.github/workflows/` every line that decides what a workflow runs and
-when; every
-command block under the two check headings; every entry head and status line
-under "Known gaps"; every row under "Named, not built as skills". A line of it
-that no record covers is reported, so a line nobody read is seen rather than
-missed, and a line that can carry no anchor is listed rather than dropped.
+condition word, a heading, a numbered item, a list head or a table row; in a
+shell file under `hooks/`, `bin/` and `scripts/` every line that calls, at the
+place of a command, a function of the file that ends the program; under
+`.github/workflows/` every line that decides what a workflow runs and when;
+every command block under the two check headings; every entry head and status
+line under "Known gaps"; every row under "Named, not built as skills". A
+comment line of a hook, a program or a workflow and a docstring line of a
+python program stand in no search set. A line of it that no record covers is
+reported, so a line nobody read is seen rather than missed, and a line that
+can carry no anchor is listed rather than dropped; a status word under "Known
+gaps" broken over a line break is listed under a heading of its own and turns
+the tool red. The calls, the comment lines and the broken status word since 12
+October 2026, the roadmap entry of that day on the four changes to the tool;
+the rules stand in the tool's header, section E.
 
 Ended when the tool reported no broken record, no unit without a straight
 path, no uncovered line of the search set and no finding left in the table,
