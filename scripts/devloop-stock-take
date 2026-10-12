@@ -34,9 +34,10 @@ that a report copies them rather than counting by hand. So are the roots of
 the unattended mode and the skills it reaches, computed on every run.
 
 Exit code 0: nothing broken, nothing uncovered. 1: lines of the search set are
-uncovered, or a unit has no straight path. 2: a record is broken, an anchor
-does not stand where its record says, or the repository is one the tool
-refuses (a shallow clone).
+uncovered, a unit has no straight path, or a status word of docs/roadmap.md
+is broken over a line break. 2: a record is broken, an anchor does not stand
+where its record says, or the repository is one the tool refuses (a shallow
+clone).
 
 It needs python3 and git and nothing else, and no GNU tool: it runs on macOS.
 
@@ -221,6 +222,9 @@ Columns, in this order:
 An anchor is a file and a verbatim substring of one line of it, 20 to 80
 characters, occurring exactly once in that file. An anchor may be shorter than
 20 characters where it is a whole line, and it must still occur exactly once.
+One found more than once is rejected with the lines it stands on named, since
+12 October 2026; until then the message said only that it was found more than
+once.
 No line numbers anywhere: the opening of docs/plan.md records that line
 numbers drifted by the next pull request while the text did not.
 
@@ -427,24 +431,56 @@ E. THE SEARCH SET, FOR COVERAGE
   block; every numbered item; every bold list head; every bold paragraph head;
   every table row except the header row and the separator row.
 - In every file under hooks/: every line holding if, elif, else, case or exit
-  as whole words.
-- Under bin/ and scripts/: in a shell program the same five words; in a python
-  program if, elif, raise, exit, except - a caught error is a branch, and this
-  tool's own red outcomes sit there. Not else and not return: an else line on
-  its own is never anchorable and its branch is anchored at its if, and a
-  return is a function's straight path. The language is read off the first
-  line.
+  as whole words, and every line that calls, at the place of a command, a
+  function of the file that ends the program; the rule two items below.
+- Under bin/ and scripts/: in a shell program the same five words and the
+  same calls; in a python program if, elif, raise, exit, except - a caught
+  error is a branch, and this tool's own red outcomes sit there. Not else and
+  not return: an else line on its own is never anchorable and its branch is
+  anchored at its if, and a return is a function's straight path. The
+  language is read off the first line.
 - Under .github/workflows/: the five shell words, and every line holding
   run:, branches:, timeout-minutes: or cancel-in-progress:, the keys that
   decide what a workflow runs and when. A step's run: line that repeats
   another's opening, as the tool's step does the self-test's, can carry no
   unique anchor and leaves the set as any such line does.
+- In none of these files a comment line: a line whose first character other
+  than a space or a tab is #, and in a python program every line of a string
+  that stands as a statement of its own, a docstring. A code line with a
+  comment behind it stays a code line. Until 12 October 2026 such a line
+  stood in the set as code did, and each one holding a search word carried a
+  record saying so.
+- An exit through a function, in a shell file under hooks/, bin/ or scripts/.
+  A function ends the program when a line of its body other than a comment
+  line holds the word exit or calls a function that ends the program. Every
+  line that calls such a function at the place of a command - at the start of
+  the line, or after ;, &&, ||, |, !, (, {, the parenthesis that closes a
+  case pattern, then, do or else - stands in the set as an exit does, inside
+  the body of another function too: an exit stays visible where a function
+  decides it, decided on 12 October 2026, and the cases of the self-tests
+  under bin/ carry one record each for it. A line that defines a function is
+  no call of that function; where it calls another such function on the same
+  line, as within() { ... || fail ...; } in bin/devloop-bounded does, it
+  counts. A name that does not stand at the place of a command, inside a
+  string say, as selftest in gone "devloop-bounded-selftest-$$" ..., is no
+  call. The body of a function runs from its definition to the brace that
+  closes it, braces inside quotes left out. Until 12 October 2026 such a line
+  stood in no set; || pass in hooks/pre-tool-use-mark-guard.sh was the case
+  the entry of 9 October 2026 on step 8 of setup-checks recorded.
 - Under the two check headings in docs/skill-conventions.md ("Before you
   change anything, run this" and "Before a handover, run these"): every
   command block, as one item covered by an anchor on any of its lines.
 - In docs/roadmap.md under "Known gaps": every entry head (a line starting
   with "- **") and every line holding "Recorded, not built", "Built",
-  "Half built" or "Should hold".
+  "Half built" or "Should hold". One of those three status words with a line
+  break between two of its words stands in no line of the set; since 12
+  October 2026 every such place is listed under a heading of its own, with
+  the line it starts on, and the tool exits 1: the status word belongs on one
+  line. Decided that day, rejecting the place rather than reading across the
+  break, a form every status line on main already had; the fault shows at
+  the run of the tool before the commit and at the check before the merge at
+  the latest. That revises the should of the audit of 12 October 2026, which
+  had left both ways open.
 - In docs/roadmap.md under "Named, not built as skills": every row of the
   table except the header row and the separator row. Those rows are the only
   record of the names the stock-take accounts for, each as a thing of kind
@@ -513,6 +549,11 @@ LIMITS
   counts for every skill that inserts the file wherever the insert stands, so
   a call inserted onto a path the mode does not take is derived as reached all
   the same.
+- Whether a shell function ends the program is read off the word exit on the
+  lines of its body and off calls of such functions; a program that ends
+  another way - a trap, exec, set -e, a kill of its own process - is not
+  seen, and a function whose closing brace is not found is read to the end
+  of its file.
 - The squash check reads what stands when the tool runs: origin/main as last
   fetched, and the version the working tree carries. A version raised after
   the tool last ran on the branch is seen only by the next run, on the branch
@@ -561,6 +602,12 @@ SHELL_WORDS = re.compile(r"\b(if|elif|else|case|exit)\b")
 PYTHON_WORDS = re.compile(r"\b(if|elif|raise|exit|except)\b")
 WORKFLOW_WORDS = re.compile(
     r"\b(if|elif|else|case|exit)\b|\b(run|branches|timeout-minutes|cancel-in-progress):")
+COMMENT = re.compile(r"^[ \t]*#")
+FUNCTION_DEF = re.compile(
+    r"^\s*(?:function\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*\(\s*\)"
+    r"|^\s*function\s+([A-Za-z_][A-Za-z0-9_]*)\b")
+EXIT_WORD = re.compile(r"\bexit\b")
+STATUS_BREAK = re.compile(r"Recorded,\s+not\s+built|Half\s+built|Should\s+hold")
 HEADING = re.compile(r"^#{1,6}\s")
 NUMBERED = re.compile(r"^\s*\d+\.\s")
 BOLD_LIST_HEAD = re.compile(r"^\s*[-*]\s+\*\*")
@@ -797,7 +844,8 @@ class Files:
 
 def find_anchor(files, rel, anchor):
     """(status, lineno). status: ok, missing, multiple, no-file, too-long,
-    too-short, whitespace."""
+    too-short, whitespace. For multiple, the lines it stands on in place of
+    the line."""
     if anchor != anchor.strip():
         return "whitespace", None
     if len(anchor) > 80:
@@ -809,9 +857,9 @@ def find_anchor(files, rel, anchor):
     total = text.count(anchor)
     if total == 0:
         return "missing", None
-    if total > 1:
-        return "multiple", None
     hits = [i for i, l in enumerate(lines, 1) if anchor in l]
+    if total > 1:
+        return "multiple", hits
     lineno = hits[0]
     if len(anchor) < 20 and lines[lineno - 1].strip() != anchor:
         return "too-short", None
@@ -1011,6 +1059,7 @@ class Result:
         self.unanchorable_units = []  # (file, lineno, heading)
         self.no_straight_path = []  # (file, lineno, heading)
         self.uncovered = []         # (file, first, last, text)
+        self.status_breaks = []     # (lineno, text) in docs/roadmap.md
         self.set_size = 0
         self.covered_lines = {}     # file -> set of linenos
         self.counts = {}            # (state, kind) -> n
@@ -1149,6 +1198,173 @@ def unit_part_of(files, rel, lineno):
     return u["part"] if u else WHOLE_FILE
 
 
+def lines_named(linenos):
+    """'line 5', 'lines 5 and 6', 'lines 2, 5 and 6'."""
+    if len(linenos) == 1:
+        return "line %d" % linenos[0]
+    return "lines %s and %d" % (", ".join(str(n) for n in linenos[:-1]),
+                                linenos[-1])
+
+
+def unquoted(line):
+    """The line with the text of its quoted strings blanked and a comment
+    behind the code cut off; a $( ... ) inside double quotes is code. A
+    name inside a string is not at the place of a command, and a brace
+    there opens no body."""
+    out, stack, i = [], [], 0
+    while i < len(line):
+        c = line[i]
+        state = stack[-1] if stack else "code"
+        if state == "'":
+            if c == "'":
+                stack.pop()
+                out.append(c)
+            else:
+                out.append(" ")
+        elif state == '"':
+            if c == "\\" and i + 1 < len(line):
+                out.append("  ")
+                i += 1
+            elif c == '"':
+                stack.pop()
+                out.append(c)
+            elif c == "$" and line[i + 1:i + 2] == "(":
+                stack.append("(")
+                out.append("$(")
+                i += 1
+            else:
+                out.append(" ")
+        else:
+            if c == "\\" and i + 1 < len(line):
+                out.append(line[i:i + 2])
+                i += 1
+            elif c in ("'", '"'):
+                stack.append(c)
+                out.append(c)
+            elif c == "#" and (i == 0 or line[i - 1] in " \t;(&|"):
+                break
+            elif c == "(" and state == "(":
+                stack.append("(")
+                out.append(c)
+            elif c == ")" and state == "(":
+                stack.pop()
+                out.append(c)
+            else:
+                out.append(c)
+        i += 1
+    return "".join(out)
+
+
+def shell_functions(lines):
+    """name -> (first line, last line) of every function a shell file
+    defines, the body running from the definition to the brace that closes
+    it, braces inside quotes and comments left out; a function whose closing
+    brace is not found runs to the end of the file."""
+    out = {}
+    for i, l in enumerate(lines, 1):
+        if COMMENT.match(l):
+            continue
+        m = FUNCTION_DEF.match(l)
+        if not m:
+            continue
+        depth, end = 0, len(lines)
+        for j in range(i, len(lines) + 1):
+            if COMMENT.match(lines[j - 1]):
+                continue
+            code = unquoted(lines[j - 1])
+            depth += code.count("{") - code.count("}")
+            if depth <= 0 and (j > i or "{" in code):
+                end = j
+                break
+        out[m.group(1) or m.group(2)] = (i, end)
+    return out
+
+
+def call_pattern(name):
+    """The name at the place of a command: at the start of the line, or after
+    ;, &&, ||, |, !, (, {, the parenthesis that closes a case pattern, then,
+    do or else."""
+    return re.compile(r"(?:^|[;|!({)]|&&|\bthen\b|\bdo\b|\belse\b)[ \t]*"
+                      + re.escape(name) + r"(?![A-Za-z0-9_])")
+
+
+def calls_in(line, names):
+    """Whether the line calls one of the named functions at the place of a
+    command. The line that defines a function is no call of that function;
+    what follows the definition on the line is read."""
+    code = unquoted(line)
+    m = FUNCTION_DEF.match(code)
+    if m:
+        code = code[m.end():]
+    return any(call_pattern(n).search(code) for n in names)
+
+
+def ending_functions(lines):
+    """The names of the functions that end the program: a line of the body
+    other than a comment line holds the word exit, or calls a function that
+    ends the program."""
+    funcs = shell_functions(lines)
+    ends = set()
+    changed = True
+    while changed:
+        changed = False
+        for name, (first, last) in funcs.items():
+            if name in ends:
+                continue
+            for j in range(first, last + 1):
+                l = lines[j - 1]
+                if COMMENT.match(l):
+                    continue
+                if EXIT_WORD.search(l) or (ends and calls_in(l, ends)):
+                    ends.add(name)
+                    changed = True
+                    break
+    return ends
+
+
+def python_strings(text):
+    """The lines of every string that stands as a statement of its own in a
+    python program, a docstring; none where the program does not parse."""
+    try:
+        tree = ast.parse(text)
+    except (SyntaxError, ValueError):
+        return set()
+    out = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Expr) and isinstance(node.value, ast.Constant) \
+                and isinstance(node.value.value, str):
+            out.update(range(node.lineno, node.end_lineno + 1))
+    return out
+
+
+def status_breaks(files):
+    """(lineno, text) for every status word under "Known gaps" in
+    docs/roadmap.md with a line break between two of its words, lineno the
+    line it starts on."""
+    got = files.get("docs/roadmap.md")
+    if got is None:
+        return []
+    inside = False
+    chunk = []
+    for i, l in enumerate(got[1], 1):
+        if l.startswith("## "):
+            inside = l.rstrip() == "## Known gaps"
+            continue
+        if inside:
+            chunk.append((i, l))
+    text = "\n".join(l for _, l in chunk)
+    starts, pos = [], 0
+    for i, l in chunk:
+        starts.append((pos, i))
+        pos += len(l) + 1
+    out = []
+    for m in STATUS_BREAK.finditer(text):
+        if "\n" in m.group():
+            lineno = max(i for p, i in starts if p <= m.start())
+            out.append((lineno, m.group()))
+    return out
+
+
 def search_set(files, root, only=None):
     """Items of the search set: (file, first_line, last_line, text)."""
     items = []
@@ -1176,14 +1392,18 @@ def search_set(files, root, only=None):
             got = files.get(rel)
             if got is None:
                 continue
-            lines = got[1]
-            words = SHELL_WORDS
+            text, lines = got
+            words, strings, ends = SHELL_WORDS, set(), set()
             if top == ".github":
                 words = WORKFLOW_WORDS
             elif top != "hooks" and lines and "python" in lines[0]:
-                words = PYTHON_WORDS
+                words, strings = PYTHON_WORDS, python_strings(text)
+            else:
+                ends = ending_functions(lines)
             for i, l in enumerate(lines, 1):
-                if words.search(l):
+                if COMMENT.match(l) or i in strings:
+                    continue
+                if words.search(l) or (ends and calls_in(l, ends)):
                     items.append((rel, i, i, l))
     rel = "docs/skill-conventions.md"
     if wanted(rel) and files.get(rel) is not None:
@@ -1281,10 +1501,13 @@ def analyse(root, table=None, only=None):
                 continue
             status, lineno = find_anchor(files, rec[a], rec[b])
             rec.anchors[b] = (status, lineno)
-            if status != "ok":
+            if status == "multiple":
+                rec.errors.append("%s %r in %s: found more than once, on %s, "
+                                  "so it is not an anchor"
+                                  % (b, rec[b], rec[a], lines_named(lineno)))
+            elif status != "ok":
                 rec.errors.append("%s %r in %s: %s" % (b, rec[b], rec[a], {
                     "missing": "not found",
-                    "multiple": "found more than once, so it is not an anchor",
                     "no-file": "the file cannot be read",
                     "too-long": "longer than 80 characters",
                     "too-short": "shorter than 20 characters and not a whole line",
@@ -1685,6 +1908,9 @@ def analyse(root, table=None, only=None):
             if not any(anchorable(text, lines[n - 1])
                        for n in range(u["start"], u["end"] + 1)):
                 res.unanchorable_units.append((rel, at, heading))
+    # a status word of the roadmap broken over a line break: listed, red
+    if wanted_by(only)("docs/roadmap.md"):
+        res.status_breaks = status_breaks(files)
     # coverage
     items = search_set(files, root, only)
     for rel, first, last, text in items:
@@ -1793,6 +2019,12 @@ def render(res):
         out.append("  %s:%d: unit %r has no anchorable line at all"
                    % (rel, lineno, heading))
     out.append("")
+    out.append("STATUS WORDS OF docs/roadmap.md BROKEN OVER A LINE BREAK (a "
+               "status word belongs on one line): %d" % len(res.status_breaks))
+    for lineno, text in res.status_breaks:
+        out.append("  docs/roadmap.md:%d: %s"
+                   % (lineno, " / ".join(s.strip() for s in text.split("\n"))))
+    out.append("")
     out.append("UNITS WITHOUT A STRAIGHT PATH: %d" % len(res.no_straight_path))
     for rel, lineno, heading in res.no_straight_path:
         out.append("  %s:%d: %s" % (rel, lineno, heading))
@@ -1808,7 +2040,7 @@ def render(res):
 def exit_code(res):
     if res.refused or res.broken_count():
         return 2
-    if res.uncovered or res.no_straight_path:
+    if res.uncovered or res.no_straight_path or res.status_breaks:
         return 1
     return 0
 
@@ -2050,6 +2282,54 @@ def selftest():
               "| `delta` | A name whose directory does not exist | test |\n"
               "| `omega-skill` | A row that no record covers | test |\n\n"
               "## Decisions\n\nNone.\n")
+        # fixtures for the rules of 12 October 2026: comment lines and
+        # docstrings in no set, a code line with a comment behind it in it,
+        # an exit through a function in it, and a workflow's comment line
+        write(root, "hooks/commented.sh",
+              "#!/bin/sh\n"
+              "# A hook whose comment line holds if, and stands in no search set.\n"
+              "    # An indented comment line holding exit, in no search set either.\n"
+              "echo commented # a code line with a comment behind it holding exit, "
+              "which counts\n"
+              "exit 0\n")
+        write(root, "bin/ender",
+              "#!/bin/sh\n"
+              "# fail \"a call on a comment line, which is no call\"\n"
+              "fail() { echo \"FAIL: $1\" >&2; exit 1; }\n"
+              "need() { [ -n \"$1\" ] || fail \"nothing given for $2\"; }\n"
+              "check() {\n"
+              "  [ -e \"$1\" ] && fail \"$1 stands there already\"\n"
+              "  need \"$1\" \"the path to check\"\n"
+              "}\n"
+              "echo \"fail and need named in a string, at the place of no command\"\n"
+              "echo \"a string holding ; fail after a separator, no call either\"\n"
+              "fail \"called at the start of the line\"\n"
+              "cd /nowhere 2>/dev/null || fail \"called after the or\"\n"
+              "[ -d /nowhere ] && fail \"called after the and\"\n"
+              "check \"a call of the function that ends through two others\"\n"
+              "case \"$1\" in\n"
+              "  x) need \"$1\" \"called after the parenthesis that closes a case "
+              "pattern\" ;;\n"
+              "esac\n"
+              "for p in \"$@\"; do need \"$p\" \"called after do\"; done\n"
+              "echo done # a code line with a comment behind it holding exit, "
+              "which counts\n")
+        write(root, "bin/docstrung",
+              "#!/usr/bin/env python3\n"
+              "\"\"\"A program whose docstring holds exit and if, and stands in no "
+              "search set;\n"
+              "its second line holds raise, in no search set either.\"\"\"\n"
+              "import sys\n"
+              "# a comment line holding except, in no search set\n"
+              "if len(sys.argv) > 1:  # a code line with a comment behind it, which "
+              "counts\n"
+              "    raise SystemExit(2)\n")
+        write(root, ".github/workflows/w.yml",
+              "# A workflow whose comment line holds run: and stands in no search "
+              "set.\n"
+              "on: push\njobs:\n  w:\n    runs-on: ubuntu-latest\n    steps:\n"
+              "      - run: echo w # a code line with a comment behind it, which "
+              "counts\n")
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c1", date="2026-01-01T12:00:00+0100")
         c1 = run_git(root, "rev-parse", "HEAD")
@@ -2218,9 +2498,12 @@ def selftest():
                   evidence_anchor="Text."),
             # red: anchor missing
             thing(MISSING, A, "this text stands nowhere in the file", ev=False),
-            # red: anchor found twice (a short whole line that repeats)
+            # red: anchor found twice (a short whole line that repeats), on
+            # three lines of the hook and on two of zeta
             thing("hooks/guard.sh / whole file / double", "hooks/guard.sh", "exit 0",
                   kind="hook outcome", ev=False),
+            thing("zeta / Zeta / an anchor on two lines", "skills/zeta/SKILL.md",
+                  "same text", ev=False),
             # red: two things on one anchor
             thing("alpha / Alpha / same anchor twin", A,
                   "If the sky is blue, say that it is blue", ev=False),
@@ -2497,6 +2780,59 @@ def selftest():
                 "A run naming a commit.", commit=eta_head[:7])]) + "\n")
         res_norigin = collect(analyse(norigin, os.path.join(norigin, "docs",
                                                             "stock-take.tsv")))
+        # a repository whose roadmap breaks the three status words over a
+        # line break under "Known gaps", once after each word, and once
+        # outside the section; then the same words on one line, covered
+        status = os.path.join(tmp, "status")
+        os.makedirs(status)
+        run_git(status, "init", "-q", "-b", "main")
+        write(status, ".claude-plugin/plugin.json", plugin("0.1.0"))
+        write(status, "skills/kappa/SKILL.md", "# Kappa\n")
+        broken = ("# Roadmap\n\n## Known gaps\n\n"
+                  "- **A status word broken after the comma.**\n"
+                  "  Recorded,\n  not built: broken after the comma.\n"
+                  "- **A status word broken after not.**\n"
+                  "  Recorded, not\n  built: broken after not.\n"
+                  "- **A status word broken after Half.**\n"
+                  "  Half\n  built: broken after Half.\n"
+                  "- **A status word broken after Should.**\n"
+                  "  Should\n  hold: broken after Should.\n"
+                  "- **A status word on one line.**\n"
+                  "  Recorded, not built: on one line.\n\n"
+                  "## Decisions\n\nShould\nhold, outside Known gaps.\n")
+        joined = (broken.replace("Recorded,\n  not built", "Recorded, not built")
+                  .replace("Recorded, not\n  built", "Recorded, not built")
+                  .replace("Half\n  built", "Half built")
+                  .replace("Should\n  hold", "Should hold"))
+        STATUS_D = "docs/roadmap.md / Known gaps / a status word "
+
+        def status_rows(evidenced):
+            return "\n".join([
+                "\t".join(COLUMNS),
+                thing("kappa / Kappa / straight path", "skills/kappa/SKILL.md",
+                      "# Kappa", note=ROOT),
+                thing(STATUS_D + "on one line", R, "A status word on one line.",
+                      kind="defect", ev=False, evidence_file=R,
+                      evidence_anchor="Recorded, not built: on one line.")]
+                + [thing(STATUS_D + "broken after " + w, R,
+                         "A status word broken after %s.**" % w, kind="defect",
+                         ev=False, **(dict(evidence_file=R, evidence_anchor=ev)
+                                      if evidenced else {}))
+                   for w, ev in (("the comma", "built: broken after the comma."),
+                                 ("not", "built: broken after not."),
+                                 ("Half", "built: broken after Half."),
+                                 ("Should", "hold: broken after Should."))]
+            ) + "\n"
+        write(status, "docs/roadmap.md", broken)
+        write(status, "docs/stock-take.tsv", status_rows(False))
+        run_git(status, "add", "-A")
+        run_git(status, "commit", "-q", "-m", "c1", date="2026-01-01T12:00:00+0100")
+        res_status = collect(analyse(status, os.path.join(status, "docs",
+                                                          "stock-take.tsv")))
+        write(status, "docs/roadmap.md", joined)
+        write(status, "docs/joined.tsv", status_rows(True))
+        res_joined = collect(analyse(status, os.path.join(status, "docs",
+                                                          "joined.tsv")))
         # --only without a path, which answers before touching any repository
         only_err = io.StringIO()
         with contextlib.redirect_stderr(only_err):
@@ -2531,7 +2867,8 @@ def selftest():
              err("'this text stands nowhere in the file' in skills/alpha/SKILL.md: not found"),
              states.get(BLUE) is not None)
         case("anchor found twice",
-             err("'exit 0' in hooks/guard.sh: found more than once"),
+             err("'exit 0' in hooks/guard.sh: found more than once, on lines 2, 5 "
+                 "and 6, so it is not an anchor"),
              states.get(GUARD) is not None)
         case("two thing records with one anchor",
              err("same site anchor as the thing on line"),
@@ -2893,6 +3230,99 @@ def selftest():
              exit_code(res_gaps) == 1 and not res_gaps.broken_count()
              and res_gaps.uncovered,
              exit_code(res_clean) == 0)
+        # the four changes of 12 October 2026: comment lines and docstrings
+        # in no set, an exit through a function in it, an anchor found more
+        # than once named with its lines, a status word broken over a line
+        # break listed and red. A line of the fixtures is in the set where
+        # it is listed as uncovered, since no record covers one; out of it
+        # where it is listed neither there nor among the unanchorable lines
+        H, EN, PY, W = ("hooks/commented.sh", "bin/ender", "bin/docstrung",
+                        ".github/workflows/w.yml")
+
+        def listed(f, n):
+            return (f, n) in uncovered or (f, n) in unanch
+
+        case("a comment line of a hook holding if or exit: in no search set",
+             (H, 4) in uncovered and (H, 5) in uncovered,
+             not listed(H, 2))
+        case("an indented comment line: in no search set",
+             (H, 4) in uncovered,
+             not listed(H, 3))
+        case("a docstring line of a python program holding exit, if or raise: "
+             "in no search set",
+             (PY, 6) in uncovered and (PY, 7) in uncovered,
+             not listed(PY, 2) and not listed(PY, 3) and not listed(PY, 5))
+        case("a comment line of a workflow holding a key: in no search set",
+             (W, 7) in uncovered,
+             not listed(W, 1))
+        case("a code line with a comment behind it holding a search word: in "
+             "the search set",
+             (H, 4) in uncovered and (PY, 6) in uncovered
+             and (EN, 19) in uncovered,
+             not listed(H, 2) and not listed(PY, 5))
+        case("an exit through a function: a call after ||, in the search set",
+             (EN, 12) in uncovered,
+             not listed(EN, 9))
+        case("an exit through a function: a call after &&, in the search set",
+             (EN, 13) in uncovered,
+             not listed(EN, 9))
+        case("an exit through a function: a call at the start of the line, in "
+             "the search set",
+             (EN, 11) in uncovered,
+             not listed(EN, 9))
+        case("an exit through a function: a call after the parenthesis that "
+             "closes a case pattern, and one after do",
+             (EN, 16) in uncovered and (EN, 18) in uncovered,
+             not listed(EN, 17))
+        case("an exit through a function: a call inside the body of another "
+             "function",
+             (EN, 6) in uncovered and (EN, 7) in uncovered,
+             not listed(EN, 5) and not listed(EN, 8))
+        case("a function that ends the program through another one",
+             (EN, 14) in uncovered and (EN, 4) in uncovered,
+             not listed(EN, 5))
+        case("a line defining a function: no call of it; a call of another "
+             "such function on the same line counts",
+             (EN, 4) in uncovered,
+             not listed(EN, 5))
+        case("a name not at the place of a command: no call",
+             (EN, 11) in uncovered,
+             not listed(EN, 9) and not listed(EN, 10))
+        case("a comment line calling a function that ends the program: no call",
+             (EN, 11) in uncovered,
+             not listed(EN, 2))
+        case("an anchor on two lines: both named",
+             err("'same text' in skills/zeta/SKILL.md: found more than once, on "
+                 "lines 5 and 9, so it is not an anchor"),
+             states.get(GUARD) is not None)
+        breaks = dict(res_status.status_breaks)
+        joined_breaks = dict(res_joined.status_breaks)
+        for lineno, word in ((6, "Recorded,\n  not built"),
+                             (9, "Recorded, not\n  built"),
+                             (12, "Half\n  built"), (15, "Should\n  hold")):
+            case("a status word broken after %r under Known gaps: listed with "
+                 "the line it starts on" % word.split("\n")[0].strip(),
+                 breaks.get(lineno) == word and exit_code(res_status) == 1,
+                 lineno not in joined_breaks and exit_code(res_joined) == 0)
+        case("a status word on one line: not listed",
+             len(breaks) == 4,
+             18 not in breaks and not joined_breaks)
+        case("a status word broken outside Known gaps: not listed",
+             len(breaks) == 4,
+             22 not in breaks and 21 not in breaks)
+        case("exit 1 on a status word broken over a line break, with the "
+             "heading in the report, nothing else red",
+             exit_code(res_status) == 1 and not res_status.uncovered
+             and not res_status.broken_count()
+             and ("STATUS WORDS OF docs/roadmap.md BROKEN OVER A LINE BREAK (a "
+                  "status word belongs on one line): 4\n"
+                  "  docs/roadmap.md:6: Recorded, / not built\n"
+                  "  docs/roadmap.md:9: Recorded, not / built\n"
+                  "  docs/roadmap.md:12: Half / built\n"
+                  "  docs/roadmap.md:15: Should / hold\n") in render(res_status),
+             exit_code(res_joined) == 0 and not res_joined.broken_count()
+             and "BROKEN OVER A LINE BREAK (a status word belongs on one "
+                 "line): 0\n" in render(res_joined))
     # every message the tool can produce, against what the cases asserted
     templates = message_templates(os.path.abspath(__file__))
     without = []
