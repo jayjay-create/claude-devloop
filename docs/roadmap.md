@@ -19539,6 +19539,750 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and never walked 1019 where it was 1025, the six program outcomes above
   having moved; the 100 runs that do not count the same.
 
+- **The command reader: every hook reads its input through one program that
+  decodes the JSON and takes the command apart as the shell runs it; the
+  install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix
+  shell` and `nix env shell`, and the browser and route variables before the
+  command; every handler under PreToolUse and PermissionRequest blocks the
+  action where the hook fails; two rules in the conventions; a block reported
+  and not reworded; two findings recorded, not built; 12 October 2026,
+  version 0.137.0.** On `task/command-reader`, off `3ab792a`, version
+  0.136.0 on `main`; the program, the hooks, `hooks/hooks.json`, the
+  workflow, the conventions, the three shared texts, `docs/plan.md` and the
+  version in `fe8b98d`, this entry and the rows of the table in the commit
+  after it, the runs in the third. Every line number of this file in this
+  entry holds at `3ab792a`, every line number of another file at `fe8b98d`,
+  unless it says otherwise. The report stands on this machine as
+  `~/devloop-report-command-reader.md`, in English, and is not in the
+  repository. Claude Code on this machine answers `claude --version` with
+  `2.1.296 (Claude Code)`. The words the stock-take tool reads a line of this
+  file into its search set by stand in this entry on the two lines that
+  record a defect and on no other.
+
+  **What the person decided on 12 October 2026, and what each decision
+  revises.** The order of this day carries nine points; where a point changes
+  a decision recorded earlier, that decision is named here with file and
+  line and is revised, the dated entries standing as written.
+
+  1. A program under `bin/`, in Bash with `awk`, reads the input of a hook:
+  it decodes the JSON and takes the command apart as the shell runs it — at
+  `&&`, `||`, `;`, `|`, `|&`, `&` and the newline, a backslash at the end of
+  a line continuing the command; the nested forms like the text itself,
+  `$( )`, backticks, the subshell, the group, the bodies of `if`, `for`,
+  `while` and `until`, `bash -c`, `sh -c`, `eval`, `trap`, and a heredoc or
+  a here-string fed to a shell; every command judged at its first word behind
+  the wrappers that run their argument as the command; text in quotes a word
+  of its command, a command only where the shell runs it; a heredoc fed to
+  another program not searched; every form of the shell's syntax that can
+  carry a command line taken apart, every form it cannot named with its
+  reason, every form it can a case of the self-test; what cannot be taken
+  apart going through; bash 3.2 with the `awk` of macOS and ubuntu-latest
+  alike, the self-test producing every outcome once. This revises part B
+  point 2 of the entry of 12 October 2026 on the decisions, lines 18735 to
+  18746, in three pieces: the separators, which that point gave as `&&`,
+  `;`, `|` and the newlines and which are now the seven above; the nested
+  commands, which that point gave as `$( )`, backticks, `bash -c`, `sh -c`
+  and a heredoc fed to a shell and which are now the forms above, the shell
+  compounds and `eval`, `trap` and the here-string among them; and the list
+  of the six hooks that flatten the command on their line 4, which came from
+  finding 4 of the entry of 9 October 2026, lines 13966 to 13986, measured
+  at `2460bb7`, before `hooks/pre-tool-use-mark-guard.sh`,
+  `hooks/pre-tool-use-identity-guard.sh` and
+  `hooks/permission-request-unattended.sh` came with the same line 4 — nine
+  hooks carried it at `3ab792a`, and `hooks/session-start.sh` read the
+  session's identifier with a `sed` of its own at its line 13, ten readers in
+  all. The `if` fields of the three handlers in `hooks/hooks.json`, lines 9
+  to 11, stay, as that point says.
+
+  2. Every hook under `hooks/` that reads its input reads it through this
+  program alone, with the same one line at the place it needs it; the line 4
+  of the nine hooks falls. `hooks/permission-request-unattended.sh` reads its
+  input only once the mark is found to stand. `hooks/stop-checks.sh` discards
+  its input with `cat >/dev/null` at its line 3 and reads nothing of it: it
+  keeps that line and does not go through the program, decided here —
+  running the reader on an input nobody reads would be work for nothing and
+  one more way for the hook to fail, and the step below holds the hook to
+  the one discarding line and to naming the program nowhere, so that a
+  reader slipped in later is seen. A step of the job `stock-take` in
+  `.github/workflows/stock-take.yml` checks on every pull request that no
+  hook reads its input another way, that every handler of point 5 carries
+  `"onFailure": "block"`, and that the program's self-test is green; it
+  stands in the existing job, so that the check `main` requires stays the
+  one of the workflow's head, line 8, installs nothing, and is no check
+  under "Before a handover, run these", whose number stays nineteen.
+
+  3. The install guard reads, each with the should of its finding: findings 1
+  to 5 of the entry of 9 October 2026 on the open findings, lines 13886 to
+  14002, which part B point 1 of the entry on the decisions, lines 18729 to
+  18733, put with the command boundaries; finding 6, lines 14004 to 14025;
+  finding 7, lines 14027 to 14045, decided so: a variable before the command
+  that moves a route's place is read as the place and held against the
+  places of the record, as `--root` on `cargo` is, the variables per route
+  the ones the vendor documents, and a place inside the project going
+  through under every answer — decision 15 of that entry, line 14400,
+  decided with it; finding 8 with its should, lines 14047 to 14059; and `nix
+  run`, `nix shell` and `nix env shell`, read as `uvx` is, defect 11 of the
+  entry on the first closing run, lines 17351 to 17375. This revises part C
+  point 1 of the entry on the decisions, lines 19144 to 19147: its first
+  reason, that no run with `brew` and `npx` meets findings 6 to 8, no longer
+  holds by point 6 below, and the three are built here.
+
+  4. The browser variables before the command are read as in finding 7 —
+  `PLAYWRIGHT_BROWSERS_PATH`, `CYPRESS_CACHE_FOLDER`, `PUPPETEER_CACHE_DIR`
+  on every system, `XDG_CACHE_HOME` on Linux alone, the system its vendors
+  read it on; a place inside the project through under every answer, every
+  other held against the places of the record; a setting in a file of the
+  vendor still not read. This revises the decision of 8 October 2026 on a
+  moved browser location, `docs/skill-conventions.md` lines 1839 to 1852 at
+  `3ab792a`, for a variable in the command only.
+
+  5. Every handler under `PreToolUse` in `hooks/hooks.json`, both groups, the
+  guard on the main branch and the guard on the mark before the editing
+  tool among them, and the handler under `PermissionRequest` carry
+  `"onFailure": "block"`: a hook that cannot start, times out or exits with
+  an unexpected code blocks the action instead of letting it through, the
+  hooks reference under "Block the action when a hook fails", read on 12
+  October 2026 — "Requires Claude Code v2.1.295 or later" — and the changelog
+  of Claude Code under 2.1.295, "Added `onFailure: "block"` for command and
+  HTTP hooks: a hook that can't start, times out, or exits with an unexpected
+  code blocks the action instead of letting it through".
+
+  6. Two rules in `docs/skill-conventions.md` beside "Every failure is a
+  block": the person's principle as a rule of its own, as part B point 5 of
+  the entry on the decisions describes it, lines 18798 to 18816, and the
+  four places that gave it as a reason pointing at the rule — decision 14 of
+  the entry of 9 October 2026, lines 14394 to 14398, decided; and the rule
+  that a run never having met a form is no reason not to read it, since
+  devloop is used by many people from here on and what can come up comes up.
+
+  7. `shared/command-does-not-answer.md` lines 74 to 85 and
+  `shared/body-through-file.md` lines 20 to 29 rewritten so that a block is
+  reported and not reworded, read against the two cases of the second
+  closing run in which that did not hold, "Met again" of the entry on that
+  run, lines 17839 to 17874: part B point 4 of the entry on the decisions,
+  lines 18779 to 18787, built.
+
+  8. Recorded, not built: under "Before a handover, run these" fourteen of
+  the nineteen checks have a fixed expected answer and run only where
+  somebody starts them, the finding below.
+
+  9. Recorded, not built: nowhere does devloop name the version of Claude Code
+  it needs, the finding below.
+
+  **Read before the build, each at its address and stand.** Claude Code's
+  permissions page, code.claude.com/docs/en/permissions, under "Wrappers" and
+  "Exec wrappers and `find` actions", on 12 October 2026: the stripped
+  wrappers are `timeout`, `time`, `nice`, `nohup` and `stdbuf`, the builtins
+  `command` and `builtin`, and zsh's `noglob`, "Each runs its argument as the
+  actual command"; "Two related forms aren't stripped: the query form
+  `command -v`, which looks up a command rather than running one, and zsh's
+  `nocorrect`"; "Bare `xargs` is also stripped", an `xargs` with a flag not;
+  the exec wrappers `watch`, `setsid`, `ionice` and `flock`, and `find` with
+  an action that runs commands; "Development environment runners such as
+  `direnv exec`, `devbox run`, `mise exec`, `npx`, and `docker exec` are not
+  in the list". The same page under "Compound commands": "The recognized
+  command separators are `&&`, `||`, `;`, `|`, `|&`, `&`, and newlines";
+  "Deny and ask rules apply when any subcommand matches them, including a
+  command nested inside a subshell, a command substitution, or a control-flow
+  body such as a `for` loop"; and "When `&&` or `||` has nothing after it,
+  such as in `npm test &&`, Claude Code treats the command as unparseable".
+  Codex, github.com/openai/codex at `c308e127e0e8cd040f670ca0e0496ae1c7519d3f`,
+  `codex-rs/shell-command/src/command_safety/is_dangerous_command.rs`, the
+  same day: `sudo` — "For sudo <cmd>, simply check <cmd>" — `env`, skipping
+  `-i`, `--ignore-environment`, `--` and every `name=value` argument, and
+  `trap`, whose action "is shell source stored in the first operand", read
+  as `sh -c action`; and `bash -lc` scripts taken apart through
+  `parse_shell_lc_literal_commands`, "including commands nested in control
+  flow or substitutions", with a wrapper depth of eight. The hooks reference,
+  code.claude.com/docs/en/hooks, under "Block the action when a hook fails",
+  as point 5 quotes it, and the changelog, github.com/anthropics/claude-code
+  `CHANGELOG.md` at `3deb873687379f0c199a69fdaccc65f0865f7a29`, line 87 under
+  2.1.295. The vendors, for the variables of finding 7 and the routes of
+  finding 8, each read the same day: `go help install` of the Go on this
+  machine, "Executables are installed in the directory named by the GOBIN
+  environment variable, which defaults to $GOPATH/bin or $HOME/go/bin if the
+  GOPATH environment variable is not set"; npm/cli at `83ea1a1`,
+  `docs/lib/content/using-npm/config.md`, "Any environment variables that
+  start with `npm_config_` will be interpreted as a configuration parameter",
+  "Config values are case-insensitive, so `NPM_CONFIG_FOO=bar` will work the
+  same", `workspaces/config/lib/definitions/definitions.js`, `prefix` "The
+  location to install global items", `global` with `short: 'g'`, `location`
+  with `short: 'L'`, and `lib/utils/cmd-list.js`, the aliases of `install`;
+  `npm prefix --glob` on npm 11.12.1 here answering "npm warn Unknown cli
+  config "--glob"" and the local prefix, so that `--glob` is no global
+  install and finding 6 is built without it; pnpm/pnpm.io at `c3e0883`,
+  `docs/cli/setup.md`, "In v11, globally installed binaries are stored in a
+  `bin` subdirectory of `PNPM_HOME`"; oven-sh/bun at `7583003`,
+  `docs/runtime/bunfig.mdx`, `install.globalBinDir` "Environment variable:
+  `BUN_INSTALL_BIN`"; the Cargo book, "Environment variables",
+  `CARGO_INSTALL_ROOT` "The default directory for `cargo install`" and
+  `CARGO_HOME`; rubygems/rubygems at `6db466b`,
+  `lib/rubygems/commands/environment_command.rb`, "GEM_HOME sets the default
+  repository to install into"; pypa/pipx at `fcd08d8`,
+  `docs/reference/environment-variables.rst`, `PIPX_BIN_DIR` "Directory for
+  application entry-point symlinks. Default: `~/.local/bin`" and
+  `PIPX_GLOBAL_BIN_DIR` "Entry-point directory for global installs. Default:
+  `/usr/local/bin`", and pipx 1.17.6 here answering nothing to `pipx
+  environment --value PIPX_GLOBAL_BIN_DIR` while unset and creating the
+  directory a `PIPX_BIN_DIR` handed to it names, so that both are taken as
+  the place and not asked; docs.astral.sh/uv/reference/environment,
+  `UV_TOOL_BIN_DIR` "Specifies the "bin" directory for installing tool
+  executables"; docs.python.org, "Command line and environment",
+  `PYTHONUSERBASE` "Defines the user base directory, which is used to
+  compute the path of the user site-packages directory and installation
+  paths for `python -m pip install --user`"; pypa/pip at `dc00139`,
+  `docs/html/topics/configuration.md`, "Pip's command line options can be set
+  with environment variables using the format `PIP_<UPPER_LONG_NAME>`";
+  microsoft/playwright at `29b3472`,
+  `packages/playwright-core/src/server/registry/index.ts`,
+  `computeDefaultCacheDirectory` reading `XDG_CACHE_HOME` on linux alone and
+  `registryDirectory` reading `PLAYWRIGHT_BROWSERS_PATH`, `0` for the
+  package's `.local-browsers`, and `docs/src/browsers.md`, the three defaults
+  and the examples; cypress-io/cypress at `869ddff`,
+  `cli/lib/tasks/state.ts`, `CYPRESS_CACHE_FOLDER` through `untildify` and
+  `path.resolve`, and the package `cachedir`, which reads `XDG_CACHE_HOME` on
+  linux and `~/Library/Caches` on darwin, LinusU/node-cachedir `index.js`;
+  puppeteer/puppeteer at `04dee98`, `docs/api/puppeteer.configuration.md`,
+  `cacheDirectory` "Can be overridden by `PUPPETEER_CACHE_DIR`", default
+  `path.join(os.homedir(), '.cache', 'puppeteer')`, no `XDG_CACHE_HOME`;
+  denoland/docs at `9e5dd8d`, `runtime/reference/cli/install.md`, the root
+  "`--root` option", "`DENO_INSTALL_ROOT` environment variable",
+  "`$HOME/.deno`", "Executables are placed in the `bin` subdirectory of the
+  installation root, unless the root path already ends with `bin`";
+  dotnet/docs at `47c4214`, `docs/core/tools/dotnet-tool-install.md`, global
+  tools in `$HOME/.dotnet/tools` on Linux and macOS, `--tool-path` "the
+  location to install the Global Tool", and `dotnet-environment-variables`,
+  where `DOTNET_CLI_HOME` names "The default .NET local tool installation
+  location" and no global one, so that no variable is read for `dotnet`;
+  docs.conda.io, `conda install`, "Install the package 'scipy' into the
+  currently-active environment", `-p, --prefix` "Full path to environment
+  location"; NixOS/nix at `651b0cd`, `src/nix/profile-add.md`, "`nix profile
+  install` is an alias for `nix profile add`", `src/nix/profile.md`, the
+  profile under `$XDG_STATE_HOME/nix/profiles/profile`, `src/nix/run.md`,
+  "`nix run` builds and runs installable", and `src/nix/shell.md`, "`nix
+  shell` runs a command in an environment in which the `$PATH` variable
+  provides the specified installables", the manual carrying the same under
+  `nix env shell`, defect 11 of the entry on the first closing run;
+  pkgxdev/pkgx at `6de1d7e`, README under "`pkgx install`", "We now provide
+  `pkgm` which fully installs `pkgx` packages to `/usr/local/`"; cli/cli at
+  `54a671d`, `pkg/cmd/extension/manager.go`, `installDir()` as `extensions`
+  under `dataDir()`, and cli/go-gh at `7a33a08`, `pkg/config/config.go`,
+  `DataDir()` as `$XDG_DATA_HOME/gh` or `~/.local/share/gh`; docs.volta.sh,
+  "Getting started", `VOLTA_HOME` as `$HOME/.volta`, `volta install node@22`
+  setting the default Node version; Schniz/fnm at `86adc96`, README, "Fast
+  and simple Node.js version manager". `yarn`'s classic documentation,
+  yarnpkg/website at `c6faf3f`, `lang/en/docs/cli/global.md`, gives `--prefix`
+  on `yarn global add` and `yarn config set prefix`, and `envvars.md` names no
+  variable for the prefix, so none is read for `yarn`; Homebrew documents
+  none that moves `brew install`.
+
+  **What is built, in `fe8b98d`.** `bin/devloop-command-reader`, 989 lines,
+  a bash program carrying an `awk` program run under `LC_ALL=C`: it splits
+  the JSON once at every quote and walks the parts, so that a 300-kilobyte
+  `tool_response` costs tens of milliseconds, decodes the string escapes of
+  RFC 8259 with the surrogate pairs, reads `hook_event_name`, `tool_name`,
+  `cwd`, `permission_mode`, `session_id`, `tool_input.file_path` and
+  `tool_input.command` at their paths and nothing at any other — a
+  `"command"` inside a `tool_response` is not the command — and prints the
+  fields one per line, then `parsed: yes`, `parsed: none` or `parsed: no:
+  <why>`, then one line per simple command with its fields separated by byte
+  31, the unit separator, so that an empty word stays a field: the id, the
+  id of the holding command, the relation — `list`, `subst`, `procsub`,
+  `shell`, `exec` — the id of the command whose output it reads, the number
+  of the word it is judged by, and the words with their quotes removed and
+  their escapes undone, `$( )`, backticks, `${ }` and `$(( ))` standing in a
+  word as written and a redirection as its operator and its target. The
+  head of the program, lines 1 to 90, says every form taken apart and every
+  form not: the separators of point 1; the compounds `( )`, `{ }`, `if`,
+  `for` with `in` and with `(( ))`, `while`, `until`, `case` with `;;`, `;&`
+  and `;;&`, `select`, `function` in its three forms, `[[ ]]`, `(( ))`,
+  `coproc`, `!` and `time`; the words with single quotes, double quotes,
+  `$'…'`, `$"…"`, backslashes, array assignments and brace expansions; the
+  substitutions `$( )`, backticks, `${ }` with a substitution inside, `<( )`
+  and `>( )`; the redirections with a descriptor, `<<` and `<<-` heredocs
+  with their bodies read after the line, a body fed to a shell reading its
+  commands from stdin taken apart as shell text and a body with an unquoted
+  delimiter searched for the substitutions the shell runs, `<<<`; the
+  wrappers of the vendors with the options each takes a value for; the
+  shells `sh`, `bash`, `zsh`, `dash`, `ksh`, `mksh`, `ash` and `fish` with
+  `-c`, with a clustered `-lc`, with `-o` and its value, with `--`, with `-`
+  and `-s` for stdin, and a script file named to a shell not read; `eval`
+  with its words joined; `trap` with its action, `--`, `-l`, `-p` and `-`;
+  `flock -c` and `flock` with the command behind the file; `find` behind
+  `-exec`, `-execdir`, `-ok` and `-okdir` up to `;` or `+`. Not taken apart,
+  each with its reason there and in the conventions: what a pipe carries
+  into a shell, since that is the output of a program and stands in no word
+  of the command, decided here — `printf 'brew install x' | sh` is read as
+  `printf` and `sh`, the piped-script rule of the guard holding for `curl`
+  and `wget` all the same; a script file named to a shell; the argument of
+  `env -S`, which the vendor splits by rules of its own; the arguments of
+  `ssh`, `su`, `doas`, `chroot`, `docker exec`, `nix-shell --run`, `direnv
+  exec`, `devbox run`, `mise exec` and `npx`, which neither vendor strips;
+  a `case` inside `$( )` whose pattern ends on a bare parenthesis, read as
+  the end of the substitution; an arithmetic `$(( ))`, which carries no
+  command. What cannot be taken apart — a quote, a substitution, a `${` or a
+  backtick not closed, `&&`, `||` or `|` with nothing behind or before it, an
+  `if` without its `fi`, a closer without its opener, `;;` outside a case, an
+  empty subshell or group — answers `parsed: no` with the reason and prints
+  no command line, so that it goes through every hook; nothing before the
+  fault is read, decided here, since the shell runs nothing of such a
+  command either, bash refusing the whole text at the fault, so that a block
+  on the readable part would stop an act that never happens. A heredoc
+  without its delimiter runs to the end of the text, as bash reads it, and
+  a `case` whose last list is not closed by `;;` is read as bash reads it.
+  The self-test, lines 100 to 315, 94 cases, produces every outcome and every
+  form above once and exits 1 on the first that does not come out; it needs
+  bash, `awk`, `tr`, `sed`, `grep` and `mktemp` and no GNU tool. On this
+  machine, `awk version 20200816` under bash 3.2.57, the program answers a
+  Bash call with a nested command in six milliseconds and the 300-kilobyte
+  response in thirty; ubuntu-latest, whose `awk` is `mawk`, runs it first in
+  the workflow of the pull request carrying this, no other `awk` standing on
+  this machine — named as not measured here.
+
+  Every hook under `hooks/` but `stop-checks.sh` reads its input with the one
+  line `INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1`, after
+  `HERE=$(cd "$(dirname "$0")" && pwd)` as the first statement of the file:
+  a hook started by a relative path, as the measurements of this file start
+  them, changes into the project before it reads, and `$(dirname "$0")`
+  resolved after that change names nothing, which the first run of the
+  measurement showed and the `HERE` line settles — one line more than the
+  order's one line, named here. The reader not answering ends the hook with
+  exit 1, a failure and no decision, which under `"onFailure": "block"`
+  blocks the action and under the hooks after a tool or at the start is a
+  non-blocking error; measured with every hook started beside no `bin/`, the
+  ten hooks exiting 1 where they reach the line and `stop-checks.sh`
+  reading nothing. Each hook judges every command at the word the reader
+  numbers, behind the wrappers: the merge guard `gh pr merge` as three
+  words, the table guard and the branch guard `git` with its own options
+  read over as a loop over the words where a regular expression stood, the
+  identity guard the assignments before the word, `export`'s arguments, `-c`
+  and `--config-env` among git's options, `--author` behind `commit` and the
+  arguments of `config`, the mark guard a redirection operator followed by
+  the mark's word or one of its programs with the word among the arguments,
+  `-i` on `sed` and `perl` before or behind the file, `of=` on `dd`, and
+  `devloop-permission-mode` as a command's own word; the two hooks after a
+  write and the session start read the fields alone. A quoted or variable
+  prefix is part of the word now, since the reader hands the word as the
+  shell hands it to the program: `touch ".claude/unattended.local"` and `echo
+  x > "$PWD"/.claude/unattended.local` are writes of the mark, the second
+  named as not read in the entry of 9 October 2026, line 15033, and read
+  since this build by rule d of the order, a departure from "everything
+  measured behaves as measured" named under the measurement below.
+
+  `hooks/pre-tool-use-install-guard.sh`, 819 lines, reads every command of
+  the call for itself. Finding 1: every browser download on a line is read
+  for itself, a help, `--dry-run` or `--list` exempting its own command and
+  no other, lines 420 to 476. Finding 2: a pattern ends at the separator,
+  since a command is a line of the reader's output and a word is a word —
+  `make build && npm install`, `npm install && git log -g --oneline`, `cp
+  dist/tool ./bin/tool && ls ~/bin` and `bash -c 'make test' &&
+  STATUS=$(curl -s https://example.com/health)` pass under every answer, the
+  piped-script rule read off the relations the reader prints, lines 511 to
+  527: `curl` or `wget` feeding a shell through a pipe, or standing in a
+  substitution, a process substitution, `eval` or `source` a shell runs.
+  Finding 3: a `make` variable counts before and behind `install` alike,
+  lines 398 to 405. Finding 4: a newline is a command boundary, the reader's.
+  Finding 5: every destination on a line is held, each command adding its
+  own, `cargo install --root ~/.local ripgrep && cargo install --root
+  /srv/tools fd-find` blocked under both yes naming `/srv/tools/bin`.
+  Finding 6: `npm` in every spelling it reads as a global install, lines 345
+  to 365, without `--glob`, which npm does not read. Finding 7: the variables
+  of the vendors before the command, handed to the asking for `go`, `npm`,
+  `pnpm`, `gem` and `python -m pip`, taken as the place for `bun`, `pipx`
+  and `uv tool`, read before this hook's own environment for `cargo`, lines
+  113 to 135 and 676 to 718, `export VAR=value` earlier in the same call
+  counting as well, lines 203 to 206; a value inside the project opens
+  nothing, lines 180 to 194; a value this guard cannot read, another
+  variable in it, a block with the cause of a place not read; `--prefix`
+  and `-C` on `npm` and `--prefix` on `yarn global` taken as written, as
+  `--root` on `cargo`. Finding 8: `volta` and `fnm` among the version
+  managers, line 248; `conda install` and `nix profile install` or `add`
+  not read, with the cause of line 350 of the guard at `3ab792a`, lines 250
+  to 255; `pkgx install` and `pkgm install` landing in `/usr/local`, `gh
+  extension install` in gh's data directory, `deno install -g` in its root's
+  `bin` and `dotnet tool install -g` in `$HOME/.dotnet/tools` or
+  `--tool-path`, each held against the places, lines 258 to 282, none of the
+  four a route the record names. `nix run`, `nix shell` and `nix env shell`
+  read as `uvx` is, lines 252 to 256, and named in `shared/fetch-and-run.md`.
+  Point 4: the browser variables, lines 478 to 509, `PLAYWRIGHT_BROWSERS_PATH`
+  with `0` for the project's `node_modules`, `XDG_CACHE_HOME` on Linux for
+  Playwright and Cypress and not for Puppeteer. A destination inside the
+  project, named by a variable before the command or a path written on the
+  line, opens nothing under any answer, a new outcome of the guard, so that
+  `PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` and `GOBIN=./bin go
+  install …` pass under a no as a pip inside the project does. The message,
+  line 818, and every cause stand as they were; the new routes take the
+  three causes the order allows, line 349, line 350 and "it lands in …,
+  which the record does not name" of the guard at `3ab792a`. The pip rules,
+  the activation, the `cd` before a relative path and `cargo add` stand as
+  they were, over the reader's commands now. The sentence of the guard's
+  head at `3ab792a`, lines 66 to 68, that a value in quotes with spaces in
+  it may end the reading of `go run`, holds no longer: a quoted value is one
+  word, and `go run -ldflags "-X main.v=1 -s" pkg@v1 gen` is read.
+
+  `hooks/hooks.json`: `"onFailure": "block"` on the eight handlers under
+  `PreToolUse` and the one under `PermissionRequest`, lines 6 to 14 and 17.
+  What a hook that fails does under that field is read off the vendor's page
+  and not measured on this machine, since no hook of this plugin fails on
+  purpose; the reader missing is the one failure measured, the hooks' exit 1
+  above. `.github/workflows/stock-take.yml`, lines 57 to 89: the step "hooks
+  read through the reader, handlers block on failure, the reader's
+  self-test" in the job `stock-take`, after the tool's two steps — the
+  reader's self-test, then for every hook the one line and the `HERE` line
+  once each, or for `stop-checks.sh` the discarding line once and the
+  program named nowhere, and no `$(cat)`, `<&0`, `/dev/stdin` or bare `cat`
+  anywhere, then `python3` over `hooks/hooks.json` for the field; run as a
+  script on this machine on 12 October 2026 and green, which is no run of
+  the platform, so its outcome stands as built and never walked until the
+  pull request carrying it runs. `docs/skill-conventions.md`: the rule "A
+  hook reads its input through one program, and the command as the shell
+  runs it" at line 1456 in place of "A hook reading the tool's JSON must undo
+  the escapes first", whose measurement of 25 August 2026 and whose
+  normalisation line stand inside it as history; "In doubt, a run with
+  nobody there is not blocked" at line 1624 and "That no run has met a form
+  is no reason not to read it" at line 1639, beside "Every failure is a
+  block"; the paragraph on the deliberate false positives rewritten at line
+  1543 as until 12 October 2026; the reading of the variables at line 1674,
+  the routes of finding 8 at line 1730, the moved browser location at lines
+  1992 to 2015 and what a false positive cost at line 2016, each dated; and
+  the four places that gave the principle as a reason — lines 1850 and 1953
+  of the conventions, lines 68 and 81 of the guard's head and lines 16 to 17
+  of the hook on permission prompts at `3ab792a` — point at the rule.
+  `shared/fetch-and-run.md` names the three forms of Nix. `docs/plan.md`
+  line 269, milestone 3, carries the dated sentence on the reader and the
+  moved browser location. `shared/command-does-not-answer.md` line 74 and
+  `shared/body-through-file.md` lines 6 and 23, point 7 below.
+
+  **Point 7, the two cases read and the texts rewritten.** The two times the
+  block was stepped around in the second closing run, "Met again" of the
+  entry on that run: the build subagent of #16, blocked on a heredoc holding
+  `sudo make install`, wrote the same two files with the editing tool with
+  the word taken out and reported a false positive and no retry — the
+  channel the rule names, the words changed; and the main run, blocked on a
+  title holding `sudo`, filed the issue under another title. The text of "A
+  guard is answered, not got around" said what a rewording is and did not
+  say that the words of what was blocked stay what they are whatever the
+  channel, nor what a run with nobody there does where filing the issue is
+  the blocked act; the title rule said a title that genuinely needs the
+  command is a false positive, reported and not reworded, and the run read
+  its title as one that did not need it. Rewritten: a block is answered and
+  nothing else changes — not the words, not the channel, not the name; where
+  a rule names another channel for a text, the text goes through it
+  unchanged, the channel moving and the words not, decided there once and
+  not at the block; a refusal held to be a false positive is reported as a
+  finding on the guard; with nobody there the block goes into the issue, and
+  where filing the issue is itself the blocked act, the task is put down with
+  the block in the run's final report. The title rule: since this build a
+  title is a word of its command and no command to the guards, so a title
+  naming `sudo` passes; where a block comes all the same, the title is not
+  changed and the issue is not filed under another title, by any of the
+  three spellings. Both texts name the second closing run as the case.
+  `shared/body-through-file.md` lines 6 to 9, that the guards read the
+  command as text, holds as until 12 October 2026, the file staying the
+  channel for the quoting.
+
+  **Measured on 12 October 2026 against the hooks of `fe8b98d`, from 19:32:40
+  to 19:33:54 UTC**, on Darwin Mac 25.6.0 Darwin Kernel Version 25.6.0: Fri
+  Jul 31 19:11:03 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T8132 arm64;
+  `GNU bash, version 3.2.57(1)-release (arm64-apple-darwin25)`; `awk version
+  20200816`; `git version 2.50.1 (Apple Git-155)`. Nothing below was run; each
+  hook alone read each command, started as a program through its own first
+  line by its absolute path and fed its JSON on stdin — `hook_event_name`,
+  `session_id`, `cwd` the project, `permission_mode`, `tool_name` and
+  `tool_input.command`, the command encoded as the tool encodes it, a line
+  break as the two characters backslash and `n` — with `CLAUDE_PROJECT_DIR`
+  on a scratch project outside the repository with `docs/agents/`, its
+  `origin` a local bare repository whose `origin/HEAD` names `main`, each
+  record committed, pushed to `origin/main` and fetched back before the
+  commands under it ran, the four records of the entry of 9 October 2026,
+  lines 13839 to 13852, in the order no, none, yes11, yes6; the harness a
+  python program in this session's scratch directory, not in the repository.
+  A command written with ⏎ stands on two lines and was fed as the tool sends
+  it, the line break as backslash and `n`; the reader decodes a raw line
+  break inside the string, which RFC 8259 section 7 forbids, as the character
+  it is, a case of its self-test, so that the second feeding of the earlier
+  measurements answers the same and was not repeated. 1037 cases, every one
+  as expected, where expected is the should the order names and otherwise
+  the result of the earlier measurement; a first run of the same harness from
+  19:25:10 to 19:26:22 UTC had 27 cases otherwise, all from two faults mended
+  before the second run — `"${ENVS[@]}"` on an empty array under `set -u`,
+  which bash 3.2 reports as unbound and ended the guard with exit 1 wherever
+  a route was asked, and a route variable naming a path inside the project
+  read as a place outside — and the second run is the one recorded.
+
+  The install guard, 777 cases. Row 1 of the entry of 8 October 2026, lines
+  13268 to 13300, the 31 fetch-and-run forms: 2 2 0 0 each, as there. Row 2,
+  lines 13301 to 13328, the 26 not read: 0 0 0 0 each, as there. Row 3,
+  lines 13329 to 13387, the 15 browser downloads: 2 2 0 2 each, yes6 naming
+  the place, as there. Row 4, lines 13388 to 13421, the 8 the user's under
+  every answer: 2 2 2 2, the causes as there. Row 5, lines 13422 to 13431:
+  `PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` 0 0 0 0, where it was 2
+  2 0 2, the should of the order; `PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers
+  npx playwright install` 2 2 2 2 with "it lands in ~/pw-browsers, which the
+  record does not name" under both yes, where it was 2 2 0 2, the should of
+  the order. Row 6, lines 13432 to 13437: `git commit -m "document how to run
+  uvx ruff"` 0 0 0 0 where it was 2 2 0 0, and `git commit -m "CI runs npx
+  playwright install --with-deps chromium"` 0 0 0 0 where it was 2 2 2 2,
+  the shoulds of the order. Row 7, lines 13445 to 13464, the 15 of row 3
+  under both yes with a stand-in `uname` before the guard's PATH: answering
+  `Linux`, 0 under yes11 and 2 under yes6 naming `~/.cache/ms-playwright`,
+  `~/.cache/Cypress` and `~/.cache/puppeteer`; answering
+  `MINGW64_NT-10.0-26100`, 2 under both yes with "where it puts things is
+  not read off this machine by this guard" — 60 runs as there. Row 8, lines
+  13465 to 13478, the commands of the measurements of 28 and 29 September
+  2026, lines 6265 to 6340 and 6370 to 6420 and `docs/skill-conventions.md`
+  lines 1655 to 1668 at `3ab792a`, 67 commands as compiled here — 63 and the
+  four that turn on a `.venv` in the project, each fed with it and without
+  it, and the two that turn on the hook's environment, `uv pip install ruff`
+  with `VIRTUAL_ENV` outside the project and `.venv/bin/pip install x`
+  without `cwd` — under no and yes11, 144 runs: every one as measured then,
+  `npx playwright install` excepted as row 8 excepts it, 2 under no where
+  the guard of `main` answered 0; `pnpm add -g typescript` 2 under yes11
+  naming `~/Library/pnpm`, `PNPM_HOME` standing in this session's
+  environment, where the first measurement blocked it as not read without
+  it, and `bun add -g cowsay` and `bun install -g cowsay` 2 naming
+  `~/.bun/bin`, the manifest of 29 September 2026 standing — the two forms of
+  that day's second measurement; `cargo install ripgrep` 2 naming
+  `~/.cargo/bin`, no config file standing. The commands of findings 1 to 8,
+  lines 13886 to 14059, 35 commands, 140 runs: each as its finding's should
+  — finding 1's nine 2 2 0 2 or 2 2 2 2 as listed there; finding 2's four 0
+  0 0 0; finding 3's `make install BINDIR=~/bin` 2 2 0 0 beside `make
+  BINDIR=~/bin install` 2 2 0 0; finding 4's three 0 0 0 0, 2 2 0 2 and 2 2
+  0 0; finding 5's three 2 2 2 2, each naming `/srv/tools/bin`, `/srv/tools`
+  or `/srv/tools/bin`; finding 6's `npm -g install typescript`, `npm install
+  --location=global typescript` and `npm isntall -g typescript` 2 2 0 0, and
+  `npm install --glob typescript` 0 0 0 0, the departure from the finding's
+  should named above; finding 7's two 2 2 2 2 naming `/srv/tools` and
+  `/srv/tools/bin`; finding 8's eight 2 2 2 2 — `volta install node@22` and
+  `fnm install 22` with the cause of a version manager, `conda install -c
+  conda-forge ripgrep` and `nix profile install nixpkgs#ripgrep` with "where
+  it puts things is not read off this machine by this guard", `deno install
+  -g -A npm:cowsay` naming `~/.deno/bin`, `dotnet tool install --global
+  dotnet-ef` naming `~/.dotnet/tools`, `pkgx install ripgrep` naming
+  `/usr/local`, `gh extension install dlvhdr/gh-dash` naming
+  `~/.local/share/gh/extensions`, each under both yes. The nineteen new
+  commands of the order, 76 runs, each as the order expects: `cp dist/tool
+  "$HOME/.local/bin/"` and `go build -o "$HOME/bin/tool" ./cmd/tool` 2 2 0 0;
+  `make PREFIX="$HOME/.local" install` 2 2 2 2 naming `~/.local`; the `gh
+  issue create` with `sudo` in its title, the `echo` of a `go install` line
+  into `environment.md`, the heredoc into `notes.md`, the heredoc into
+  `python3`, the `sed` writing `npx playwright install --with-deps` into the
+  workflow file and `echo "x && brew install ripgrep` with its quote not
+  closed, 0 0 0 0 each; `"brew" install ripgrep`, `sh -c "brew install
+  ripgrep"`, `bash <<'EOF'` with the install in its body, `bash <<< "brew
+  install ripgrep"`, `timeout 600 brew install ripgrep`, `env
+  HOMEBREW_NO_AUTO_UPDATE=1 brew install ripgrep` and `case x in x) brew
+  install ripgrep;; esac`, 2 2 0 0 each, `/opt/homebrew/bin` lying under
+  `/opt` here; `nix run nixpkgs#vim`, `nix shell nixpkgs#hello` and `nix env
+  shell nixpkgs#hello`, 2 2 0 0 each. Forty commands of this measurement's
+  own, 160 runs, each as expected, the report naming them: among them
+  `CYPRESS_CACHE_FOLDER=/srv/cy npx cypress install` 2 2 2 2 naming
+  `/srv/cy`; `XDG_CACHE_HOME=/srv/cache npx playwright install` 2 2 0 2 on
+  this Darwin, the variable not read here; `PIPX_BIN_DIR=/srv/tools pipx
+  install black` and `UV_TOOL_BIN_DIR=/srv/tools uv tool install ruff` 2 2 2
+  2 naming `/srv/tools`; `CARGO_INSTALL_ROOT=~/.local cargo install ripgrep`
+  2 2 0 0; `GEM_HOME=/srv/gems gem install rubocop` 2 2 2 2 naming
+  `/srv/gems/bin`; `export GOBIN=/srv/tools; go install …` 2 2 2 2; `GOBIN=$X
+  go install …` 2 2 2 2 with "go (where it puts things is not read off this
+  machine by this guard)"; `GOBIN=./bin go install …`, `deno install`,
+  `dotnet tool install dotnet-ef` without `-g`, `echo brew install ripgrep`,
+  `python3 -c 'import os; os.system("brew install ripgrep")'`, `git commit -m
+  'make install'`, `printf '%s\n' 'sudo rm -rf /' > notes.txt`, `ls | xargs
+  -n1 brew install` and `nocorrect brew install ripgrep`, 0 0 0 0 each; `bash
+  <(curl …)`, `source <(curl …)`, `eval "$(curl …)"`, `curl … | zsh` and `sudo
+  -u root brew install ripgrep` 2 2 2 2; `find . -name '*.sh' -exec brew
+  install {} \;`, `trap 'brew install ripgrep' EXIT`, `if true; then ⏎ brew
+  install ripgrep ⏎ fi`, `brew install \⏎ ripgrep`, `xargs brew install <
+  list.txt`, `echo $(brew install ripgrep)`, `pipx install --global black`
+  and `npm_config_global=true npm install typescript` 2 2 0 0; `npm install
+  -g --prefix /srv/tools typescript` and `yarn global add --prefix
+  /srv/tools typescript` 2 2 2 2 naming `/srv/tools/bin`; `PIP_USER=1
+  python3 -m pip install black`, `PYTHONUSERBASE=/srv/py python3 -m pip
+  install --user black` and `PIP_TARGET=/srv/x python3 -m pip install black`
+  2 2 2 2.
+  And under a fifth record, yes with the eleven places and the routes
+  `cargo`, `bun`, `pnpm`, `gem`, `pip`, `pipx`, `uv`, `go` and `npm`, pushed
+  and fetched the same way, at 19:59:23 UTC: `cargo install ripgrep`, `bun
+  add -g cowsay`, `pnpm add -g typescript`, `gem install --user-install
+  rubocop`, `python3 -m pip install --user black`, `yarn global add
+  typescript`, and with a variable before the command `PIPX_BIN_DIR=/srv/tools
+  pipx install black`, `GOBIN=/srv/tools go install …`,
+  `UV_TOOL_BIN_DIR=/srv/tools uv tool install ruff` and
+  `npm_config_prefix=/srv/tools npm install -g typescript`, 0 each — the route
+  named opening what it answers for the command, the moved place among it,
+  as `--root` on `cargo` did — and `make PREFIX=/srv/x install` 2 naming
+  `/srv/x`, `make` being no route; eleven runs.
+
+  The other hooks, 121 cases, each as the roadmap recorded it on 5, 6, 7, 9
+  and 10 October 2026 — searched with `grep -n` for `fed its JSON`, `started
+  as a program`, `touch .claude/unattended.local`, `I1 `, `R1 `, `P1 `, `S1
+  ` and `passed in silence` over this file, the measurements at lines 11377
+  to 11420, 11778 to 11815, 12463 to 12466, 15032 to 15062, 15274 to 15286,
+  15726 to 15790 and 16145 to 16180 — with the departures the order names or
+  rule d brings. The mark guard under `default` in the project: the nine
+  write forms of 9 October 2026 exit 2 with text C, `echo x ⏎ touch
+  .claude/unattended.local` 2 where it was 0, the order's should, `touch
+  ".claude/unattended.local"` 2, and `echo x > "$PWD"/.claude/unattended.local`
+  2 where line 15033 recorded 0 as not read — by rule d, the quoted and the
+  variable prefix part of the word, named as a departure; the reads, the
+  deletion, the redirection onto `.claude/unattended.local.bak`, `cd .claude
+  && echo x > unattended.local` and the `python3 -c` form 0; R7 under
+  `default` 2 with text C and under `auto` 0 with text B in the JSON; the
+  write of the mark with no `permission_mode` in the input 2 with the second
+  form of text C; `Write` on the mark 2 under `default` and 0 under `auto`,
+  `Write` on another file 0 — 26 cases. The identity guard: I1 to I12 and
+  the cases beside the order of 9 October 2026, lines 15726 to 15790, each
+  with the exit and the form read as there, 44 commands, plus `git -c
+  "user.email=a@example.com" commit -m m` 2 with `-c user.email` and `git
+  commit -m "use git -c user.email for nothing"` 0, the order's two; `Edit`
+  on `.gitconfig` 0 and a project directory that does not exist 0 — 46
+  cases. The branch guard on `main`: the seven passes and the eight blocks of
+  the addendum of 6 October 2026, lines 11795 to 11806, the two of 7 October
+  2026 with `-C` on another repository, and `echo "git commit"` 0, `git
+  commit -m x` behind a newline 2, `echo $(git commit -m x)` 2 and `git push
+  --all origin` 2; `Write` inside the project 2, outside 0, relative 2 — 24
+  cases. The table guard on a branch with a table carrying `skipped: later`:
+  the seven refusals of the addendum of 6 October 2026, lines 11787 to
+  11793, `git commit -m x ⏎ ls` 2, `git status`, `git log --grep commit` and
+  `echo "git commit"` 0, and `git commit -m x` over a table in order 0 — 12
+  cases. The hook after a write on the table: 2 with the cell named for the
+  table, 0 for another file and for no file — 3 cases. The hook after a write
+  for the checks, fed a table naming a runner and a `tool_response` holding
+  `"command": "rm -rf /"`: the file read at its path, the response not read
+  as a command — 1 case. The session start, S1 to S3 of 9 October 2026, lines
+  15046 to 15055: `export DEVLOOP_SESSION_ID=abc` in the environment file and
+  `[ProjectStatus] branch: main | uncommitted changes: 0 | devloop: set up in
+  part | …` with the install record line, the same without the file, and
+  the line alone in no repository — 3 cases. The hook on permission prompts,
+  P1 to P6 of that day, lines 15042 to 15046: no output without a mark and
+  with another session on the third line, the deny with text 5 for this
+  session, two lines, an empty third line and no `session_id` — 6 cases.
+
+  **Searched before the build, each with its command and what it found.**
+  `grep -rn -E 'Bash with .awk|parser is a program|command boundar'
+  docs/roadmap.md docs/skill-conventions.md skills shared`: the findings and
+  decisions of 9 and 12 October 2026 named above and nothing else. `grep -rn
+  -E 'onFailure|hook fails|a failed hook'` over the same: nothing. `grep -rn
+  -E 'timeout 600|behind sudo, command or exec|wrapper'` over the
+  conventions, `shared` and `skills`: the wrapper entry of 19 September 2026
+  on a download on first use, which the ruling of 28 September 2026 keeps,
+  and the mark guard's head naming `sudo`, `command` and `exec` as not read,
+  which this build reads. `grep -rn -E 'nix run|nix shell|nix env'` over the
+  conventions, `shared`, `skills` and `docs/plan.md`: nothing; the forms
+  stood in this file alone, defect 11. `grep -rn -E 'nobody there is not to
+  be blocked|In doubt, a run|in doubt the run|in doubt a run'` over the
+  conventions, `hooks`, `shared`, `skills` and `docs/plan.md`: the four
+  places part B point 5 names and no fifth. `grep -rn -E 'no run .*(meets|met)
+  them|never met|has never hit|no run has'` over the conventions: nothing;
+  the reason stood in part C point 1 of this file alone. `grep -rn -E
+  'reported, not reworded|reported and not reworded|rewording'` over
+  `shared`, `skills` and the conventions: `shared/body-through-file.md` lines
+  11 and 29 and `docs/skill-conventions.md` line 461, the three places the
+  rewrite of point 7 touches or leaves standing with its reason. `grep -rn -E
+  'in quotes and heredocs|quoted or variable prefix|has been decoded above'`
+  over `hooks` and the conventions: the mark guard's head at line 76 and the
+  conventions at line 1508, both rewritten. `grep -rn 'merge guard\|merge-
+  guard'` over this file with `exit`, `fed` or `measured` beside it: no
+  measurement of the merge guard by its JSON stands in this file, so its
+  cases above are this measurement's own. For point 9, in the repository:
+  `grep -rn -E 'Claude Code (v|version )?[0-9]+\.[0-9]+\.[0-9]+ (or
+  later|and later|at least)|requires Claude Code|minimum version|lowest
+  version|needs Claude Code' README.md docs skills shared hooks bin scripts
+  .claude-plugin` — one line, this file at 18860 quoting the vendor on
+  2.1.283 and auto mode, and no place naming a version devloop needs; `grep
+  -rhoE 'Claude Code [0-9]+\.[0-9]+\.[0-9]+'` over the same, the versions
+  named as the ones a measurement ran under, 2.1.265 to 2.1.296, none as a
+  need. In the changelog of Claude Code at `3deb873`: `grep -n -i onFailure
+  CHANGELOG.md`, line 87 under 2.1.295 alone, so that 2.1.294 and before name
+  the field nowhere; `grep -n -i -E 'unknown (hook )?(field|key)|unrecognized
+  (hook )?(field|key)|unknown (settings )?key' CHANGELOG.md`, three lines,
+  among them line 1876 under 2.1.274, "Fixed plugins with a top-level
+  `$schema` in `hooks/hooks.json` showing an "unknown key" notice", so that
+  a version of that age noticed a key it did not know in `hooks/hooks.json`
+  and said so, and what a version between 2.1.274 and 2.1.295 does with
+  `onFailure` is written nowhere; the hooks page, `grep -n -i -E 'unknown
+  field|unrecognized|ignored'`, says of a `matcher` on an event without
+  matcher support that it "is silently ignored" and of no other field.
+
+  **The classification of point 8, checked.** The fourteen checks with a
+  fixed expected answer, each named by the sentence that introduces it:
+  "Every skill on disk is registered, and every registered skill exists:",
+  two empty lists; "No name in the roadmap resembles a real one without being
+  one.", silence; "No shared text still stands written out in a skill.",
+  silence; "Every insert line has exactly the form the frontmatter grants,
+  and names a file that exists.", both silent; "Every skill that inserts
+  anything carries the grant that lets the program run at load without a
+  prompt.", silence; "The language block stands at its two places in every
+  file:", twelve lines saying where the opening stands and nothing else;
+  "The notice above the first insert line is the same paragraph in all
+  twelve.", one checksum line and the count twelve; "Every skill expands
+  without error", silence; "The program under `bin/` and the tools under
+  `scripts/` are executable, in the working tree and in what git records,
+  and git tracks every file there.", silence; "The arming command in the
+  merge guard's message is the one in `shared/arming-command.md`.", `2`;
+  "The same for the copy in this file", `2`; "The default branch is resolved
+  in `bin/devloop-install-record` and in `bin/devloop-setup-state` exactly
+  as `hooks/pre-tool-use-branch-guard.sh` resolves it", `1`; "The sentence
+  naming the four forms a status takes is, in both table guards, the one in
+  `shared/status-forms.md`.", `1` twice; "The unattended finish is not
+  stated in the readiness query's vocabulary alone.", silence. The five
+  whose output somebody judges: "Invocability is set deliberately, not by
+  omission:", a count per skill that says nothing by itself; "No skill is
+  told to run a skill that is locked against being run.", every line needs
+  an eye; "No sentence tells a run to ask for permission to reach the next
+  stage, or to put a question as an either-or.", every line needs an eye;
+  "Every place a run hands the user something to do says where a no leads.",
+  every line needs an eye; "The check below it is keyed on wording, and there
+  is no drift-safe way to write it.", every line needs an eye. The order's
+  division, fourteen and five by the lines 2567 to 2811 and 2611 to 2839 at
+  `3ab792a`, is the one found here; none is placed otherwise.
+
+  Recorded, not built: fourteen of the nineteen checks under "Before a
+  handover, run these" have a fixed expected answer and run only where
+  somebody starts them — the checks introduced by the fourteen sentences above
+  — should: they run in `.github/workflows/stock-take.yml` on every pull
+  request, the five whose output somebody judges staying under the heading.
+
+  Recorded, not built: devloop names nowhere the version of Claude Code it
+  needs, searched with the commands above, while `"onFailure": "block"` needs
+  2.1.295 and what an older version does with the field is documented nowhere
+  — should: devloop names the lowest version it needs, and a session on an
+  older one learns that before the first command.
+
+  **Stock-take, before and after.** The tool at `3ab792a`, run on a clean
+  worktree of `origin/main` on 12 October 2026: `BROKEN RECORDS: 0`,
+  `FINDINGS: 19`, `LINES OF THE SEARCH SET THAT CAN CARRY NO UNIQUE ANCHOR
+  (they leave the set): 106`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED
+  LINES OF THE SEARCH SET: 0 of 2687`, 171 runs under `RUNS THAT DO NOT
+  COUNT`, exit 0, the search set every file under `skills/`, `shared/`,
+  `hooks/`, `bin/`, `scripts/` and `.github/workflows/`, the two check
+  headings of the conventions and this file under "Known gaps" and "Named,
+  not built as skills". The tool at `fe8b98d` with the rows of this entry's
+  commit and before the runs: `BROKEN RECORDS: 0`, `FINDINGS: 19`, 159 lines
+  that can carry no unique anchor, `UNITS WITHOUT A STRAIGHT PATH: 0`,
+  `UNCOVERED LINES OF THE SEARCH SET: 0 of 3141`, exit 0, 269 runs under
+  `RUNS THAT DO NOT COUNT` where 171 stood, the 98 more being the runs on
+  the rewritten hooks and on the things whose lines this build changed,
+  each to count again from the runs of the third commit; walked 382 where
+  423 stood, built and never walked 1091 where 1019, recorded and not built
+  228 where 236, undetermined 28 as before; the set grew by 454 lines, 361
+  of them the reader, whose `awk` program carries `if` and `else` on most
+  of its lines, 94 the guard. The rows, 4539 where 4082 stood: 39 things
+  changed in place, their anchor, their evidence or their note, among them
+  the defects of findings 1 to 8, of `nix`, of the title rule and of the
+  block reworded, which carry their evidence on the lines of this build
+  that answer them and read as built, the site of each on the status line
+  it leaves, and the defect of the principle, whose evidence is the rule in
+  the conventions and which the tool reads as recorded by its own rule on
+  evidence under `docs/`; 23 things added — the six outcomes of the reader,
+  the ten exits 1 of the hooks where the reader does not answer, the
+  guard's pass on a destination inside the project, the `onFailure`
+  registration, the workflow's step, the two branches of the rewritten
+  shared text and the two defects of points 8 and 9; 46 not-a-thing rows
+  removed, 40 with the lines of the old guard and of the identity guard
+  they stood on and 6 re-anchored; and 480 not-a-thing rows added, part of
+  the outcome each line leads to, the whole set covered.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
