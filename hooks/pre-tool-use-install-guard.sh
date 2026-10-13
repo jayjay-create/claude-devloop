@@ -201,16 +201,25 @@ while IFS= read -r LINE; do
   # The variables and the wrappers before the judged word: an assignment
   # counts for this command, export for every later one, and sudo anywhere
   # before the word stays the user's under every answer, as does every
-  # other program that runs the command as another user, since 13 October
-  # 2026 - doas, su, run0 and pkexec, the ones the reader reads over - on a
-  # line with no judged word, su -c with its shell text say, anywhere on it.
+  # other program that runs the command as an administrator or as another
+  # user, the first kind of the group the reader reads over, since 13
+  # October 2026 - doas, su, run0, pkexec, runuser, setpriv, gsudo and
+  # login, machinectl with shell and launchctl with asuser behind it, and
+  # runas, which is the judged word itself, since the command line it hands
+  # to Windows is read by nobody here - on a line with no judged word, su -c
+  # with its shell text say, anywhere on it.
   VARS="$EXPORTS"
   i=0
   while [ "$i" -lt "$N" ] && { [ "$F" -lt 0 ] || [ "$i" -lt "$F" ]; }; do
     case "${W[$i]}" in
       [A-Za-z_]*=*) case "${W[$i]%%=*}" in *[!A-Za-z0-9_]*) ;; *) VARS="$VARS
 ${W[$i]}" ;; esac ;;
-      *) case "${W[$i]##*/}" in sudo) BEYOND=yes; SUDO=yes ;; doas|su|run0|pkexec) BEYOND=yes; PRIV="${PRIV:-${W[$i]##*/}}" ;; esac ;;
+      *) case "${W[$i]##*/}" in
+           sudo) BEYOND=yes; SUDO=yes ;;
+           doas|su|run0|pkexec|runuser|setpriv|gsudo|login) BEYOND=yes; PRIV="${PRIV:-${W[$i]##*/}}" ;;
+           machinectl) [ "${W[$((i + 1))]:-}" = shell ] && { BEYOND=yes; PRIV="${PRIV:-machinectl}"; } ;;
+           launchctl) [ "${W[$((i + 1))]:-}" = asuser ] && { BEYOND=yes; PRIV="${PRIV:-launchctl}"; } ;;
+         esac ;;
     esac
     i=$((i + 1))
   done
@@ -219,6 +228,7 @@ ${W[$i]}" ;; esac ;;
   V2="${W[$((F + 2))]:-}"; [ $((F + 2)) -lt "$N" ] || V2=""
   V3="${W[$((F + 3))]:-}"; [ $((F + 3)) -lt "$N" ] || V3=""
   case "$NAME" in
+    runas) BEYOND=yes; PRIV="${PRIV:-runas}" ;;
     export)
       j=$F
       while j=$((j + 1)); [ "$j" -lt "$N" ]; do case "${W[$j]}" in [A-Za-z_]*=*) EXPORTS="$EXPORTS
@@ -278,12 +288,14 @@ ${W[$j]}" ;; esac; done ;;
     winget) case "$V1" in install|add|upgrade|update|import|use|tap) item "sys:$NAME" "" ;; esac ;;
     scoop) case "$V1" in install|update|add|use|tap) item "sys:$NAME" "" ;; esac ;;
     # The version managers, each with every subcommand its vendor documents
-    # as installing a tool, read since 13 October 2026: mise exec and x among
-    # them, since the vendor installs missing tools first unless a setting
-    # turns that off.
+    # as installing a tool, read since 13 October 2026. mise exec and x are
+    # not among them since the second addendum of that day: a command is an
+    # installation only where it names one, and the tools mise fetches
+    # before it runs the command are a side effect the reader reads over,
+    # as it reads over every program of the group.
     sdk) case "$V1" in install|i|upgrade|ug|selfupdate|add|use|tap) item "ver:$NAME" "" ;; esac ;;
     asdf) case "$V1" in install|add|use|tap) item "ver:$NAME" "" ;; plugin) case "$V2" in add|install) item "ver:$NAME" "" ;; esac ;; esac ;;
-    mise) case "$V1" in install|i|use|u|upgrade|up|self-update|install-into|exec|x|add|tap) item "ver:$NAME" "" ;; esac ;;
+    mise|rtx) case "$V1" in install|i|use|u|upgrade|up|self-update|install-into|add|tap) item "ver:$NAME" "" ;; esac ;;
     rustup)
       case "$V1" in
         install|update|add|use|tap) item "ver:$NAME" "" ;;
@@ -686,7 +698,8 @@ else
   elif [ "${SUDO:-no}" = "yes" ]; then
     CAUSE="it needs sudo, which stays the user's under every answer"
   elif [ -n "${PRIV:-}" ]; then
-    # the wording approved on 13 October 2026, the program named
+    # the wording approved on 13 October 2026, the program named, for every
+    # program of the first kind of the group
     CAUSE="it needs $PRIV, which stays the user's under every answer"
   elif [ "${PIPED:-no}" = "yes" ]; then
     CAUSE="it pipes a script from the network into a shell, which stays the user's under every answer"

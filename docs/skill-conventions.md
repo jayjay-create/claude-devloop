@@ -844,8 +844,11 @@ empty `HOME`: the eight help commands exit 0 each, and nothing new lies
 under `HOME` or in the project afterwards, npm's own `.npm` aside. The
 question says it since the same day, "tools and browsers for tests", in its
 question line, its yes and its first no. What stays the person's under every answer, beside `sudo`
-— and `doas`, `su`, `run0` and `pkexec`, which run the command as another
-user too, since 13 October 2026 — and the script piped from the network, and
+— and every program of the first kind of the group the reader reads over,
+which runs the command as an administrator or as another user, `doas`,
+`su`, `run0` and `pkexec` since 13 October 2026 and `runuser`, `setpriv`,
+`gsudo`, `runas`, `login -f`, `machinectl shell` and `launchctl asuser`
+since the second addendum of that day — and the script piped from the network, and
 is checked after those and before the places: a branded browser — `chrome`, `msedge` and their six
 further channels — which Playwright installs at the system's own location
 over the browser already there, the vendor's own warning; and system
@@ -1472,33 +1475,60 @@ the command `find` runs behind `-exec`; every command judged at its first
 word behind the assignments, the redirections and the wrappers that run
 their argument as the command — every program that runs its argument or a
 text as a command on this machine, the group the person decided on 13
-October 2026, the lists of the two vendors among them and not their end:
+October 2026, derived by kinds since the second addendum of that day and
+not from single programs, each kind holding for macOS, Linux and Windows
+with Git Bash, the lists of the two vendors among them and not their end,
+each program read off its vendor's documentation with the options that take
+a value and named with its address in the roadmap entry on the command
+reader and its two addenda of 13 October 2026. The kinds and their
+programs, as the head of `bin/devloop-command-reader` lists them: (1)
+privileges, a command as an administrator or as another user — `sudo`,
+`doas`, `su`, `run0`, `pkexec`, `runuser`, `setpriv`, `gsudo`, `runas`,
+`login -f`, `machinectl shell` and `launchctl asuser` — each of which stays
+the user's under every answer at the install guard; (2) process control, a
+time limit, a priority, an environment, a measurement, a recording —
 `timeout`, `time`, `nice`, `nohup`, `stdbuf`, `command`, `builtin`,
-`noglob`, `watch`, `setsid`, `ionice`, `flock` and `xargs`, the ones Claude
-Code strips before it matches a rule (code.claude.com/docs/en/permissions,
-"Wrappers" and "Exec wrappers and `find` actions", read on 12 October 2026;
-`xargs` with options since 13 October), `sudo`, `env` and `trap`, the ones
-Codex resolves (github.com/openai/codex,
-`codex-rs/shell-command/src/command_safety/is_dangerous_command.rs` at
-`c308e12`, read the same day), `exec`, and since 13 October 2026 zsh's
-`nocorrect`; `doas`, `su`, `run0` and `pkexec`, which run the command as
-another user and stay the user's under every answer as `sudo` does;
-`caffeinate`, `chrt`, `taskset`, `strace`, `valgrind`, `hyperfine`,
-`unbuffer`, `chronic`, `script`, `arch`, `xcrun`, `sandbox-exec` and
-`systemd-run`; and the environment and version runners `direnv exec`,
+`noglob`, zsh's `nocorrect`, `env`, `exec`, `trap`, `ionice`, `chrt`,
+`taskset`, `uclampset`, `prlimit`, `numactl`, `setarch`, `nocache`,
+`cpulimit`, `caffeinate`, `flock`, `lockf`, `lckdo`, `ifne`, `chronic`,
+`unbuffer`, `script`, `arch`, `xcrun`, `sandbox-exec`, `firejail`,
+`winpty`, `ssh-agent`, `kinit`, `strace`, `ltrace`, `valgrind`,
+`heaptrack`, `perf stat`, `record` and `trace`, `gdb --args`, `lldb`, `rr`,
+`hyperfine`, `dtrace -c`, `bpftrace -c`, the DTrace scripts of macOS,
+`sc_usage -E`, `leaks -atExit`, `ktrace trace -c`, `sg`, `pee` and
+`mispipe`; (3) the environments of projects and versions — `direnv exec`,
 `devbox run`, `mise exec`, `nix-shell`, `nix develop`, `nix shell` and `nix
-env shell`, `asdf exec`, `rbenv exec`, `pyenv exec`, `nodenv exec`, `volta
-run`, `fnm exec`, `pipenv run`, `poetry run`, `pdm run`, `hatch run`, `rye
-run`, `conda run`, `pixi run`, `bundle exec`, `pnpm exec` and `yarn exec` —
-each read off its vendor's documentation with the options that take a
-value, named with its address in the roadmap addendum of 13 October 2026 to
-the entry on the command reader. A program that runs the command on another
-machine or in a container, `ssh`, `docker exec`, `chroot` or `nsenter`, is
-not in the group; a program that resolves its argument as a package rather
-than runs a word, `npx` and the other fetch-and-run forms, is read by the
-install guard at its own name; a program of the group that installs
-something before it runs the command, `mise exec` with a tool missing, is
-read as that installation; and what stands on no list goes through, by the
+env shell`, the `exec` of `asdf`, `rbenv`, `pyenv`, `nodenv`, `goenv`,
+`jenv`, `plenv`, `phpenv` and `luaenv`, `volta run`, `fnm exec`, the `run`
+of `pipenv`, `poetry`, `pdm`, `hatch`, `rye`, `conda`, `mamba`,
+`micromamba` and `pixi`, `uv run`, `bundle exec`, `composer exec`, `tox
+exec`, `chruby-exec`, `rvm do`, `proto run`, `dotenvx run`, the three
+programs named `dotenv`, `godotenv`, `env-cmd`, `cross-env`, `aws-vault
+exec`, `op run`, `doppler run`, `infisical run`, `sops exec-env` and
+`exec-file`, `chamber exec`, `envchain`, `teller run` and `railway run`;
+(4) the programs that start many commands — `xargs`, `find -exec`,
+`parallel`, `fd -x` and `-X`, `apply` and `msgexec`; (5) terminal sessions
+and the background — `tmux`, `screen`, `zellij`, `dtach`, `abduco`,
+`setsid`, `nohup`, `nq`, `tsp`, `pueue add`, `daemon`, `daemonize`,
+`systemd-run`, `launchctl submit` and `bsexec`, and `at` and `batch`, which
+read their commands from stdin as a shell does; (6) the programs that run a
+command when a file changes — `entr`, `watchexec`, `nodemon --exec`,
+`reflex`, `chokidar -c`, `onchange`, `cargo watch`, `watchman-make`,
+`when-changed`, `wgo`, `gow` and `watch`; (7) git's own subcommands that
+run a command — `rebase -x`, `bisect run`, `submodule foreach`, the filters
+of `filter-branch` and `difftool -x`; (8) the package managers and the
+tools of the languages that run a command of the shell and resolve no
+package — `npm exec -c` and `npx -c`, `pnpm exec`, `yarn exec` and `bun
+run`. A program that runs the command on another machine, in a container
+or in another root or namespace, `ssh`, `docker exec`, `chroot`, `nsenter`,
+`unshare`, `bwrap` or `wsl`, is not in the group; a program that resolves
+its argument as a package rather than runs a word, `npx` and the other
+fetch-and-run forms, is read by the install guard at its own name; what a
+program of the group fetches on the side before it runs the command — the
+tool `mise exec` installs, the environment `uv run` syncs, the shell `nix
+develop` builds — is not read, since the second addendum of 13 October
+2026, by the decision below that a command is an installation only where
+it names one; and what stands on no list goes through, by the
 rule on doubt below. Text in quotes a word of its
 command and no command, so that `git commit -m "CI runs npx playwright
 install"` and `echo "brew install x"` are read as what they are. A heredoc fed
@@ -1512,11 +1542,13 @@ quote not closed, through" of the rule on doubt below. Not taken apart, each
 named with its reason in the head of the program: what a pipe carries into a
 shell, the output of a program and no word of the command; a script file
 named to a shell; the argument of `env -S`, which the vendor splits by rules
-of its own; the arguments of the programs outside the group named above,
-and of `nvm exec`, whose optional version no rule tells from the command, of
-`unshare`, `bwrap` and `firejail`, whose options take two values and more
-by rules of their own, and of `ltrace`, `perf`, `gdb` and `lldb`; a `case`
-inside `$( )` whose pattern ends on a bare parenthesis; an arithmetic
+of its own; code in another language — the argument of `python3 -c`,
+`node -e`, `ruby -e`, `osascript -e`, `cmd /c` and `powershell -Command`,
+and the command line `runas` hands to Windows; the arguments of the
+programs outside the group named above, of `nvm exec`, whose optional
+version no rule tells from the command, and of a script of a package file,
+`npm run` or `mise run`, which stands in a file and not in the command; a
+`case` inside `$( )` whose pattern ends on a bare parenthesis; an arithmetic
 `$(( ))`, which carries no command. A redirection behind a compound command
 stands on a line of its own with no judged word since 13 October 2026, so
 that `{ printf 'build\n'; } > .claude/unattended.local` is a write of the
