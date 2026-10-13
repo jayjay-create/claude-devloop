@@ -21130,6 +21130,52 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   under a yes for `doas`, `su`, `run0` and `pkexec`; and 124 not-a-thing rows
   added, part of the outcome each line leads to, the whole set covered.
 
+  **At `ac93dfa`: the tool, its self-test, the reader's self-test, the
+  workflow's step and the nineteen checks under 0.137.0.** Run in this tree
+  with the tree clean on 13 October 2026, the tool between 08:26:31 and
+  08:27:58 UTC: broken records none, findings 19, 169 lines that can carry no
+  unique anchor, no status word broken over a line break, no unit without a
+  straight path, uncovered lines none of 3249, exit 0, 209 runs that do not
+  count, walked 432, built and never walked 1049, recorded and not built 228,
+  undetermined 28, each as the paragraph above gives it; the tool's source is
+  untouched by this addendum and its runs of 12 October 2026 count as they
+  did, so no run is written down on it. The tool's own self-test between
+  08:27:58 and 08:28:00 UTC answered with exit 0 and `SELF-TEST PASSED: 110
+  cases`, 74 of its 74 messages asserted by a case and the lines of the report
+  not in that count, as on 12 October 2026, written down on nothing for the
+  same reason. The reader's self-test between 08:28:00 and 08:28:03 UTC
+  answered `SELF-TEST PASSED: 104 cases` with exit 0, one run written down on
+  its outcome and one on the outcome of a command taken apart, whose lines
+  this build changed. The workflow's step, run as a script at 08:28:03 UTC,
+  printed the self-test and nothing red and exited 0, which is no run of the
+  platform and is written down on nothing. Between 08:28:05 and 08:28:10 UTC
+  the nineteen checks of the handover section printed what their sections call
+  green, line for line what they printed at `f3452aa` as the paragraph above
+  records: the names check silent, the offers seventeen lines, the handovers
+  nine, the second statement one line; their lines are untouched by this
+  addendum and their runs of 12 October 2026 count, so no run is written down
+  on them. The runs of the measurement above stand on the ten outcomes of the
+  install guard whose lines this build changed or that it added, on the
+  reader's outcome of a command taken apart, and on the defects of findings 1
+  to 4, fifteen runs, each on the line of this addendum that records it,
+  seventeen with the two of the self-test. The things whose lines changed and
+  that no measurement of this day reaches — the registration in
+  `hooks/hooks.json`, whose runs are live sessions, and the straight paths of
+  `build-work` step 3 and `setup-checks` step 3, whose runs are closing runs —
+  keep the runs they had among those that do not count until a session or a
+  run meets them again. A run written down here counts, by the tool's own
+  rule, only once the commit that introduced the version contains the last
+  change to every line the thing stands on, which on this branch is `fe8b98d`
+  and after the squash merge is the merge commit: on the branch the seventeen
+  stand among the runs that do not count with that reason, as the runs of the
+  addendum of 8 October 2026 did, and count on `main` after the merge. The
+  tool at the branch's last commit, after the rows of these runs and this
+  paragraph, answers as at `ac93dfa` in every count but one, 226 runs that do
+  not count where 209 stood, the seventeen of this day among them with the
+  reason above: broken records none, findings 19, 169 lines that can carry no
+  unique anchor, uncovered lines none of 3249, walked 432, built and never
+  walked 1049, recorded and not built 228, undetermined 28, exit 0.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
