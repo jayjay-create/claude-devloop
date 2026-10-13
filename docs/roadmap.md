@@ -21176,6 +21176,1013 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   unique anchor, uncovered lines none of 3249, walked 432, built and never
   walked 1049, recorded and not built 228, undetermined 28, exit 0.
 
+  **Second addendum of 13 October 2026: two findings on the command reader, A
+  from the review of pull request #171 at the code at `66f1bc2` and B from the
+  review of the first addendum, the two decisions of the person, the group
+  derived by kinds with its programs and their sources, and what is built; the
+  version stays 0.137.0.** On `task/command-reader`, off `66f1bc2`; the code
+  in `67e97a4`, this addendum and the rows of the table in the commit after
+  it, the runs in the third. Every line number of this file in this addendum
+  holds at `66f1bc2`, every line number of another file at `67e97a4`, unless
+  it says otherwise. The report stands on this machine as
+  `~/devloop-report-command-reader-addendum-2.md`, in English, and is not in
+  the repository. The two findings and their should, each with where it was
+  found, then what the person decided on each, the kinds with the search
+  behind each and the programs read with their sources, what is built, what is
+  not in the group and why, the measurement, the searches, this addendum held
+  against itself, and the table.
+
+  **Finding A, from the review of pull request #171 at the code at `66f1bc2`:
+  the group was put together from single programs, and programs were
+  missing.** The first addendum took the group from the two vendors' lists and
+  the programs named on 13 October 2026, finding 3 above at lines 20387 to
+  20423, one by one. Twelve commands that run a command on this machine passed
+  every hook on the branch and were stopped by the install guard on `main`,
+  where the guard of `3ab792a` searched the flat command text for its words
+  wherever they stood: `parallel brew install ::: a b`, `tmux new-session -d
+  'brew install ripgrep'`, `screen -dm brew install ripgrep`, `ls src | entr
+  brew install ripgrep`, `watchexec -- brew install ripgrep`, `nodemon --exec
+  'brew install ripgrep'`, `git rebase -x 'brew install ripgrep' main`, `git
+  bisect run brew install ripgrep`, `git submodule foreach 'brew install
+  ripgrep'`, `fd -e txt -x brew install`, `npm exec -c 'brew install ripgrep'`
+  and `uv run make install`, where `poetry run make install` stopped. Measured
+  on this machine on 13 October 2026 in the review's scratch project against
+  the hooks of `66f1bc2` and of `3ab792a` in two throwaway worktrees, each of
+  the twelve 0 0 0 0 under the four records at `66f1bc2` and 2 2 0 0 at
+  `3ab792a`, `uv run make install` 2 2 2 2 there; `osascript -e 'do shell
+  script "brew install ripgrep"'` and `python3 -c 'import os; os.system("brew
+  install ripgrep")'` 2 2 0 0 at `3ab792a` and 0 0 0 0 at `66f1bc2`, the word
+  search of `main` reading code in another language, which the reader does
+  not. Should: the group holds every program that runs its argument or a text
+  as a command on this machine, derived by kinds that each hold for macOS,
+  Linux and Windows with Git Bash, and not from single programs; the lists of
+  Claude Code and Codex belong to it and are not its end; a program that runs
+  the command on another machine or in a container, `ssh` or `docker exec`, is
+  not in it; what stands on no list goes through, and the conventions say so;
+  a program that runs the command as an administrator or as another user is a
+  stop under every answer, the install guard naming the reason under a yes in
+  the wording the person approved on 13 October 2026, word for word, `it needs
+  <the program>, which stays the user's under every answer`, the reason for
+  `sudo` word for word as it stands; for every kind the programs searched in
+  the vendors' documentation with the search named, each read with the options
+  that take a value, an argument that is code in another language not
+  searched, every program already in the group held against its kind and taken
+  out with a reason where it does not belong, `uv run` without `--with`
+  checked for the group and `shared/fetch-and-run.md` for a change. Decided by
+  the person on 13 October 2026, the five points above, which this addendum
+  builds. This revises finding 3 of the first addendum, lines 20387 to 20423,
+  in the one piece that put the group together from the programs it names, and
+  the sentence of that addendum at lines 20915 to 20916 that left `unshare`,
+  `bwrap` and `firejail` out for options that take two values and `ltrace`,
+  `perf`, `gdb` and `lldb` out as not read: `firejail`'s options take one
+  value attached with `=` and its sandbox is this machine's root with the
+  system directories read-only, so it is of the second kind as `sandbox-exec`
+  is; `unshare` and `bwrap` stay out, `unshare` for the new namespace it opens
+  and `bwrap` for the root it builds, which is the container the person named;
+  `ltrace`, `perf`, `gdb` and `lldb` are of the second kind and read. Built in
+  `67e97a4`: the group as the paragraphs on the kinds below list it,
+  `bin/devloop-command-reader` lines 446 to 548 the tables, 887 to 927 the
+  helpers, 928 to 1221 the one-word programs, 1222 to 1275 `tmux` and
+  `screen`, 1276 to 1375 the two-word programs, 1653 to 1736 the commands a
+  line hands on, the forms of `git`, and `at` and `batch`, the head at lines
+  62 to 151, the self-test's cases at lines 386 to 416;
+  `hooks/pre-tool-use-install-guard.sh` lines 201 to 231 and 700 to 703 the
+  first kind; `docs/skill-conventions.md` lines 846 to 851, 1472 to 1532 and
+  1545 to 1551.
+
+  **Finding B, from the review of the first addendum: `mise exec` was read as
+  an installation, against a decision that stands.** The install guard read
+  `mise exec` and `mise x` as `mise install`,
+  `hooks/pre-tool-use-install-guard.sh` lines 280 to 286 at `66f1bc2`, and the
+  conventions at lines 1499 to 1501 and the head of the reader at lines 85 to
+  88 said why: a program of the group that installs something before it runs
+  the command is read as that installation. The decision of 28 September 2026
+  in the conventions, "A named install command may enter the verb list, under
+  two conditions, and only together with its destination" at line 1976 at
+  `66f1bc2`, 2008 at `67e97a4`, says the opposite: a command is an
+  installation only where it names one, and what a program downloads on the
+  side is not read, `./gradlew build` and `npm install puppeteer` its cases.
+  `mise exec` names no installation, and that it fetches a missing tool first
+  is such a side effect. Should: the decision at line 1976 holds. Decided by
+  the person on 13 October 2026: `mise exec` and `mise x` are programs of the
+  group like `poetry run`, judged by the command behind them; what a program
+  of the group fetches on the side is not read; the sentence of the
+  conventions at lines 1499 to 1501 and its counterparts in the head of the
+  reader and in the guard fall; every other program of the group read
+  differently for the same reason is treated the same. Held against the group:
+  `nix develop`, which the first addendum judged itself with the command
+  behind `-c` a line of its own "since the install guard reads what they
+  install or fetch", lines 20829 to 20831, builds the shell's environment
+  first and is read over to the command behind `-c` as well; `uv run` syncs
+  the project's environment first, `devbox run` installs the packages of
+  `devbox.json`, `pixi run` installs the environment where it must, `volta
+  run` fetches the version it is told - each a side effect, each read over;
+  `nix-shell`, `nix shell` and `nix env shell` stay judged themselves and `uv
+  run` with `--with`, `-w`, `--with-editable` or `--with-requirements` too,
+  since the install guard reads `nix-shell -p`, the two nix shells and those
+  four forms as fetch-and-run forms at their own names, the decisions of 8, 12
+  and 13 October 2026 in `shared/fetch-and-run.md`, which this addendum leaves
+  as they are; the command each of those hands on is a line of its own, as
+  before. This revises the decision of finding 3 of the first addendum at
+  lines 20401 to 20403, "a program of the group that installs something before
+  it runs the command is read as every other installation", the point 4 of
+  that addendum held against itself at lines 21082 to 21085, which rejected
+  the reading built here, and the sentence under "What is built" at lines
+  20829 to 20831. Built in `67e97a4`: `hooks/pre-tool-use-install-guard.sh`
+  line 298, the arm of `mise` and `rtx` without `exec` and `x`, its comment at
+  lines 289 to 296; `bin/devloop-command-reader` lines 1295 to 1306, `mise
+  exec` read over to the command behind `--`, its `-c` text shell text, a
+  shell without either, lines 1284 to 1294, `nix develop` read over to the
+  command behind `-c`, the head at lines 105 to 112;
+  `docs/skill-conventions.md` lines 1523 to 1531; the self-test's cases at
+  lines 379 to 384. Measured, the four cases of the first addendum that change
+  their should by this decision: `mise exec -- go install
+  golang.org/x/tools/cmd/goimports@latest`, `mise x -- brew install ripgrep`
+  and `mise exec -c 'brew install ripgrep'` 2 2 0 0 where 2 2 2 2 stood, `mise
+  exec -- pytest` 0 0 0 0 where 2 2 2 2 stood; `mise install node@20` 2 2 2 2
+  with the version manager's cause as before.
+
+  **The kinds, how each was searched, and the programs read with their
+  sources, on 13 October 2026.** The searches. For macOS, every page in
+  sections 1 and 8 of the manuals on this machine, under `/usr/share/man` and
+  the Command Line Tools, whose SYNOPSIS names a `command`, `utility`, `prog`
+  or `cmd` argument, 104 pages found with a search over the SYNOPSIS section
+  of each and read one by one: the ones that run the argument are of the group
+  - `arch`, `builtin`, `env`, `nice`, `nohup`, `stdbuf`, `time`, `xargs`,
+  `script`, `sandbox-exec`, `caffeinate`, `su`, `login`, `launchctl`,
+  `dtrace`, `dtruss`, `dappprof`, `dapptrace`, `procsystime`, `leaks`,
+  `ktrace`, `sc_usage`, `lockf`, `ssh-agent`, `apply`, `msgexec`, `kinit` and
+  `screen` - and the rest name a subcommand of their own, `csrutil`, `log` or
+  `gem`, a process by name, `fs_usage`, `dyld_usage` or `lastcomm`, a command
+  on another machine, `ssh`, `sftp`, `slogin`, `uux` or `uustat`, code in
+  another language, `ruby`, `python3` or `osacompile`, or a word that is no
+  command, `tcpdump -z` running one program with the file as its only argument
+  among them. For Linux, the manuals of util-linux, coreutils, procps-ng,
+  moreutils, findutils, shadow-utils, systemd and polkit at man7.org and
+  manpages.debian.org, read for the programs whose synopsis ends on a command,
+  and the sources of moreutils at sources.debian.org, version 0.70-1 of sid,
+  where the page does not say whether a shell runs the command. For Windows
+  with Git Bash, Microsoft Learn for `runas` and Sudo for Windows, the
+  documentation of `gsudo` and the source of `winpty`; the programs Git for
+  Windows ships from MSYS2 are the ones of coreutils and findutils already
+  read, and `cmd /c`, `powershell -Command` and `wsl` are named below. For the
+  third, fifth, sixth and eighth kinds, the pages and repositories of the
+  tools, each found by its name and named with its address below; a page that
+  answered 403, 404 or 429 is named with what was read in its place.
+
+  (1) Privileges, a command as an administrator or as another user, each a
+  stop under every answer at the install guard. `sudo`, `doas`, `su`, `run0`
+  and `pkexec` as the first addendum read them. `runuser`:
+  man7.org/linux/man-pages/man1/runuser.1.html, util-linux
+  2.43.devel-739-eee2e of 2026-05-24, "runuser [options] -u user [[--] command
+  [argument...]]" and "runuser [options] [-] [user [argument...]]", `-c`,
+  `--command` and `--session-command` run by the shell with its own `-c`,
+  `-g`, `-G`, `-s`, `-w` and `--user` taking a value; read as `su` is, with
+  the command behind `-u user` as it stands. `setpriv`: man7.org setpriv.1,
+  util-linux 2.43.devel-1062 of 2026-08-03, "setpriv [options] program
+  [arguments]", `--ruid`, `--euid`, `--reuid`, `--rgid`, `--egid` and
+  `--regid` changing the ids, `--groups`, `--inh-caps`, `--ambient-caps`,
+  `--bounding-set`, `--securebits`, `--pdeathsig`, `--ptracer`,
+  `--selinux-label`, `--apparmor-profile`, `--landlock-access`,
+  `--landlock-rule` and `--seccomp-filter` taking a value, `-d`, `--dump` and
+  `--list-caps` running nothing; read as a stop whatever its options, as `sudo
+  -u` with one's own name is, named below among the doubts read on the
+  blocking side. `gsudo`: gerardog.github.io/gsudo/docs/usage, "gsudo
+  [options] {command} [args]", `-u`/`--user`, `-i`/`--integrity`, `--loglevel`
+  and `--chdir` taking a value, `config`, `status` and `cache` running
+  nothing; Sudo for Windows: learn.microsoft.com/en-us/windows/sudo/, Windows
+  11 24H2, "prepend sudo to the command you want to run as an administrator",
+  the name the reader reads already. `runas`: learn.microsoft.com, the
+  archived page "Runas: Logon and Authentication" for Windows Server 2003,
+  cc772672(v=ws.10), "runas [{/profile | /noprofile}] [/env] [/netonly]
+  [/savedcreds] [/smartcard] [/showtrustlevels] [/trustlevel]
+  /user:UserAccountName "ProgramName PathToProgramFile"", the program one
+  quoted string that Windows parses; the page under windows-commands answered
+  404. The reader judges `runas` itself, since that string is a command line
+  of Windows and not of the shell, and the install guard reads the judged word
+  `runas` as the first kind. `login`: login(1) on this machine, "login -f
+  [-lpq] [-h hostname] [user [prog [args...]]]", "With the -f option, an
+  alternate program (and any arguments) may be run instead of the user's
+  default shell"; without `-f` a login. `machinectl shell`: man7.org
+  machinectl.1, systemd 262~devel, "shell [[NAME@]NAME [PATH
+  [ARGUMENTS...]]]", "Open an interactive shell session in a container or on
+  the local host", root unless a user is named, the host for `.host`; `-p`,
+  `--property`, `--kill-whom`, `-s`, `--signal`, `--uid`, `-E`, `--setenv`,
+  `-n`, `--lines`, `-o`, `--output`, `--runner`, `--max-addresses`, `-H`,
+  `--host`, `-M` and `--machine` taking a value; with a container's name the
+  command runs elsewhere and the form is the command itself. `launchctl
+  asuser`: launchctl(1) on this machine, "asuser UID command [args]", "This
+  executes the given command in as similar an execution context as possible to
+  that of the target user's bootstrap".
+
+  (2) Process control, a time limit, a priority, an environment, a
+  measurement, a recording. `timeout`, `time`, `nice`, `nohup`, `stdbuf`,
+  `command`, `builtin`, `noglob`, `nocorrect`, `env`, `exec`, `trap`,
+  `ionice`, `chrt`, `taskset`, `caffeinate`, `flock`, `chronic`, `unbuffer`,
+  `script`, `arch`, `xcrun`, `sandbox-exec`, `strace`, `valgrind` and
+  `hyperfine` as the first addendum read them. `watch`: man7.org watch.1,
+  procps-ng of 2025-04-16, "watch [option ...] command", "-x, --exec Pass
+  command to an exec(3) call instead of sh -c", `-n`, `--interval`, `-q`,
+  `--equexit`, `-s` and `--shotsdir` taking a value - its words joined are a
+  text for `sh` since this addendum, as they stand with `-x`, where the first
+  addendum read them as they stand. `prlimit`: man7.org prlimit.1, util-linux
+  2.43.devel-739-eee2e, "prlimit [options] [--resource[=limits]] command
+  [argument...]", the resource options attached with `=`, `-o`, `--output`,
+  `-p` and `--pid` taking a value, `--pid` acting on a process. `numactl`:
+  man7.org numactl.8, `-i`, `--interleave`, `-w`, `--weighted-interleave`,
+  `-m`, `--membind`, `-N`, `--cpunodebind`, `-C`, `--physcpubind`, `-p`,
+  `--preferred`, `-P`, `--preferred-many`, `--offset`, `--shmmode`,
+  `--length`, `--shmid`, `--shm`, `--file` and `--cpubind` taking a value,
+  `-s`, `--show`, `-H`, `--hardware`, `--version` and the shared-memory forms
+  running nothing. `setarch`: man7.org setarch.8, util-linux
+  2.43.devel-739-eee2e, "setarch [arch] [options] [program [argument...]]",
+  the architecture optional since 2.33, `-p` and `--pid` taking a value,
+  `--show` running nothing; `linux32` and `linux64` the same program under its
+  other names, the architecture word read where it is one of the known names.
+  `nocache`: github.com/Feh/nocache on `master`, "nocache -n 2 cat
+  ~/file.mp3", `-n` and `-D` taking a value. `cpulimit`: manpages.debian.org
+  cpulimit(1), "cpulimit [TARGET] [OPTIONS...] [ -- PROGRAM]", `-l`,
+  `--limit`, `-p`, `--pid`, `-e`, `--exe`, `-P`, `--path`, `-c`, `--cpu`,
+  `-j`, `--hz`, `-s` and `--signal` taking a value, `-p`, `-e` and `-P` naming
+  a process. `ltrace`: man7.org ltrace.1, "ltrace [-e filter|-L]
+  [-l|--library=library_pattern] [-x filter] [-S] [-b|--no-signals] [-i]
+  [-w|--where=nr] [-r|-t|-tt|-ttt] [-T] [[-F|--config] pathlist] [-A maxelts]
+  [-s strsize] [-d|--max-depth maxdepth] [-C|--demangle] [-a|--align column]
+  [-n|--indent nr] [-o|--output filename] [-D|--debug mask] [-u username] [-f]
+  [-p pid] [[--] command [arg ...]]", `-p` attaching. `heaptrack`:
+  github.com/KDE/heaptrack on `master`, "heaptrack <your application and its
+  parameters>", `--pid`, `--analyze`, `--interpret`, `--sysroot`,
+  `--debug-paths` and `--extra-paths` taking a value, the first three running
+  no new program. `perf stat`, `perf record` and `perf trace`: man7.org
+  perf-stat.1, perf-record.1 and perf-trace.1, "perf stat [-e <EVENT> |
+  --event=EVENT] [-a] -- <command> [<options>]", "perf record [-e <EVENT> |
+  --event=EVENT] [-a] -- <command> [<options>]", the options of the three
+  taking a value read into one list, `-p`, `--pid`, `-t`, `--tid`, `-u`,
+  `--uid`, `-a`, `--all-cpus`, `-C`, `--cpu`, `-G`, `--cgroup`, `-b`,
+  `--bpf-prog`, `-i` and `--input` measuring what runs already and running
+  nothing. `gdb`: man7.org gdb.1, "gdb [OPTIONS] [prog|prog procID|prog
+  core]", `--args` "Change interpretation of command line so that arguments
+  following this option are passed as arguments to the inferior", `-x`, `-ex`,
+  `-iex`, `-cd`, `-d`, `-p`, `-c`, `-s`, `-e`, `-b`, `-l`, `--tty`,
+  `--command`, `--eval-command`, `--init-eval-command`, `--core`, `--exec`,
+  `--symbols`, `--directory`, `--pid`, `--se` and `--data-directory` taking a
+  value; the words behind `--args` are the command, and without `--args` `gdb`
+  is the command itself, since it loads the program named and runs it only on
+  a command of its own. `lldb`: lldb.llvm.org/man/lldb.html, "lldb [options]
+  executable", "arguments starting with a - must be passed after --", `-f` and
+  `--file` naming the program, `-a`, `--arch`, `-c`, `--core`, `-n`,
+  `--attach-name`, `-p`, `--attach-pid`, `-s`, `--source`, `-S`,
+  `--source-before-file`, `-K`, `--source-on-crash`, `-O`,
+  `--one-line-before-file`, `-o`, `--one-line`, `-k`, `--one-line-on-crash`,
+  `-l`, `--script-language`, `-R`, `--repl-language`, `-r`, `--repl`,
+  `--capture-path` and `--replay` taking a value, `-n`, `-p` and `-w`
+  attaching; judged by the program as `gdb --args` is. `rr`:
+  github.com/rr-debugger/rr, `src/RecordCommand.cc` on `master`, "rr record
+  [OPTION]... <exe> [exe-args]...", and the wiki page Usage, "The record token
+  is optional"; `-c`, `--num-cpu-ticks`, `--disable-cpuid-features`,
+  `--disable-cpuid-features-ext`, `--disable-cpuid-features-xsave`,
+  `--num-cores`, `-o`, `--output-trace-dir`, `-p`, `--print-trace-dir`,
+  `--syscall-buffer-sig`, `-t`, `--continue-through-signal`, `--bind-to-cpu`,
+  `-v`, `--env`, `--nested`, `--trace-id`, `--syscall-buffer-size`, `-i` and
+  `--ignore-signal` taking a value; `replay`, `ps`, `dump`, `rerun`,
+  `traceinfo`, `pack`, `cpufeatures`, `buildid`, `sources`, `explicit-sources`
+  and `mv` running no new program. `uclampset`: man7.org uclampset.1,
+  util-linux 2.43.devel-739-eee2e, "uclampset [options] [-m minimum] [-M
+  maximum] command [argument...]", `-p` a pid. `winpty`:
+  github.com/rprichard/winpty, `src/unix-adapter/main.cc` on `master`, "Usage:
+  %s [options] [--] program [args]", flags only. `firejail`:
+  manpages.debian.org firejail(1), "firejail [OPTIONS] [program and
+  arguments]", the options attached with `=`, "the sandbox is built from the
+  host filesystem", the system directories read-only, home and `/tmp`
+  writable, `--ls`, `--get`, `--put`, `--cat`, `--bandwidth`, `--list`,
+  `--netstats`, `--top`, `--tree` and the `--debug-*` forms running nothing.
+  `ssh-agent`: ssh-agent(1) on this machine, "ssh-agent [-TU] [-a
+  bind_address] [-E fingerprint_hash] [-O option] [-P allowed_providers] [-t
+  life] command [arg ...]", `-k` killing the agent. `lockf`: lockf(1) on this
+  machine, "lockf [-knsw] [-t seconds] file command [arguments]". `lckdo`:
+  manpages.debian.org moreutils lckdo(1), "lckdo [options] {lockfile}
+  {program} [arguments]", `-W` and `-E` taking a value, `lckdo.c` running the
+  program with execvp. `ifne`: moreutils ifne(1), "ifne [-n] command",
+  `ifne.c` running it with execvp. `apply`: apply(1) on this machine, "apply
+  [-a c] [-d] [-#] command argument ...", "SHELL Pathname of shell to use. If
+  this variable is not defined, the Bourne shell is used" - the command a text
+  for the shell, run once per argument. `msgexec`: msgexec(1) of gettext on
+  this machine, "msgexec [OPTION] COMMAND [COMMAND-OPTION]", "Applies a
+  command to all translations of a translation catalog", `-i`, `--input`, `-D`
+  and `--directory` taking a value. `kinit`: kinit(1) of Heimdal on this
+  machine, "[principal [command]]", "If a command is given, kinit will set up
+  new credentials caches, and AFS PAG, and then run the given command", `-c`,
+  `--cache`, `-t`, `--keytab`, `-l`, `--lifetime`, `-r`, `--renewable-life`,
+  `-S`, `--server`, `-s`, `--start-time`, `-e`, `--enctype`, `-a`,
+  `--extra-addresses`, `-T` and `--ticket` taking a value, the principal the
+  word before the command. `sc_usage`: sc_usage(1) on this machine, "sc_usage
+  [-c codefile] [-e] [-l] [-s interval] pid | cmd | -E execute", "If the -E
+  flag is used, sc_usage will launch the executable, pass along any optional
+  arguments". `dtruss`, `dapptrace`, `dappprof` and `procsystime`, the DTrace
+  scripts of macOS, their pages on this machine: "dtruss [-acdeflhoLs] [-t
+  syscall] { -p PID | -n name | command }", "dapptrace [-acdeFlhoU] [-u lib] {
+  -p PID | command }", "dappprof [-acehoTU] [-u lib] { -p PID | command }",
+  "procsystime [-acehoT] [ -p PID | -n name | command ]", `-p` and `-n` naming
+  a process. `dtrace`: dtrace(1) on this machine, "-c cmd Run the specified
+  command cmd and exit upon its completion", the one string a command split at
+  blanks, a line of its own. `bpftrace`: github.com/bpftrace/bpftrace,
+  `man/adoc/bpftrace.adoc` on `master`, "-c" "Run COMMAND as a child process",
+  `-B`, `-c`, `-d`, `-e`, `-f`, `-I`, `-o`, `-p`, `--debuginfo`, `--fmt`,
+  `--include`, `--no-feature`, `--probe-filter` and `--traceable-functions`
+  taking a value, the string read as `dtrace -c` is. `leaks`: leaks(1) on this
+  machine, "leaks [options] -atExit -- command", "Launches the specified
+  command and runs leaks when that process exits". `ktrace`: ktrace(1) on this
+  machine, "ktrace trace [...] [-c command [...]]", the words behind `-c` the
+  command. `sg`: man7.org sg.1, shadow-utils 4.19.0 of 08/04/2026, "sg [-]
+  group [[-c] command]", "The command will be executed with the /bin/sh shell"
+  - a text for the shell, the group changed and not the user, so no stop.
+  `pee` and `mispipe`: moreutils pee(1), "pee [--[no-]ignore-sigpipe]
+  [--[no-]ignore-write-errors] [["command"...]]", `pee.c` opening each with
+  popen; mispipe(1), "mispipe ["command1"] ["command2"]", `mispipe.c` running
+  each with system - each argument a text for the shell.
+
+  (3) The environments of projects and versions. `direnv exec`, `devbox run`,
+  `mise exec`, `nix-shell`, `nix develop`, `nix shell`, `nix env shell`, `asdf
+  exec`, `rbenv exec`, `pyenv exec`, `nodenv exec`, `volta run`, `fnm exec`,
+  `pipenv run`, `poetry run`, `pdm run`, `hatch run`, `rye run`, `conda run`,
+  `pixi run`, `bundle exec`, `pnpm exec` and `yarn exec` as the first addendum
+  read them, with the four readings this addendum changes: `mise exec`, `nix
+  develop`, `devbox run` and `pixi run`. `uv run`:
+  docs.astral.sh/uv/reference/cli/, "Run a command or script", "the project
+  environment will be created and updated before invoking the command",
+  `--no-sync`, `--with` installing "in a separate, ephemeral environment
+  layered on the project environment"; the options of `uv run` that take a
+  value as the conventions read them off `crates/uv-cli/src/lib.rs` on 8
+  October 2026, lines 2124 to 2135 at `66f1bc2`. Decided here by the order's
+  question: `uv run` without `--with`, `-w`, `--with-editable` or
+  `--with-requirements` is of this kind and read over, so that `uv run make
+  install` is judged at `make`; with one of the four it is the fetch-and-run
+  form the guard reads at its own name, the command behind it a line of its
+  own; `shared/fetch-and-run.md` does not change, since it names the four
+  forms as the ones that fetch and says nothing of a `uv run` without them,
+  which fetches nothing. `devbox run`: github.com/jetify-com/devbox,
+  `internal/boxcli/run.go` on `main`, "Run a script or command in a shell with
+  access to your packages" - its words joined a text for its shell since this
+  addendum, where the first addendum read them as they stand. `pixi run`:
+  pixi.prefix.dev/latest/reference/cli/pixi/run/, "It is using the
+  deno_task_shell to run the task", `-e`, `--environment`, `-p`, `--platform`,
+  `-m`, `--manifest-path`, `-w`, `--workspace`, `-s`, `--script`,
+  `--config-file`, `--auth-file`, `--concurrent-downloads`,
+  `--concurrent-solves`, `--pinning-strategy`, `--pypi-keyring-provider` and
+  `--tls-root-certs` taking a value - its words joined a text for its shell
+  since this addendum. `hatch run`: github.com/pypa/hatch,
+  `src/hatch/cli/run/__init__.py` and `src/hatch/utils/platform.py` on
+  `master`, the arguments kept as a list and joined with shlex.join before the
+  shell runs them, so that a quoted word stays one word and the words are read
+  as they stand. `yarn exec`: github.com/yarnpkg/berry,
+  `packages/plugin-essentials/sources/commands/exec.ts` on `master`,
+  executePackageShellcode with the command name and its arguments apart - the
+  words as they stand. `composer exec`: getcomposer.org/doc/03-cli.md,
+  "Executes a vendored binary/script", `--list` and `-l` listing them;
+  `src/Composer/Command/ExecCommand.php` and
+  `src/Composer/EventDispatcher/EventDispatcher.php` on `main`, the arguments
+  escaped and joined before ProcessExecutor runs them - the words as they
+  stand. `mamba run` and `micromamba run`: github.com/mamba-org/mamba,
+  `micromamba/src/run.cpp` on `main`, `-a`, `--attach`, `--cwd`, `-e`, `--env`
+  and `--label` taking a value, `-d`, `--detach` and `--clean-env` flags,
+  `-n`, `--name`, `-p` and `--prefix` from the prefix options; "mamba and
+  micromamba are the same code base", mamba.readthedocs.io. `tox exec`:
+  github.com/tox-dev/tox, `src/tox/session/cmd/exec_.py` on `main`, "execute
+  an arbitrary command within a tox environment", alias `e`, "tox exec -e py39
+  -- python --version", the command behind `--` alone; tox.wiki answered with
+  an empty page twice. `chruby-exec`: github.com/postmodern/chruby on
+  `master`, "chruby-exec jruby -- gem update", the command behind `--`. `rvm
+  do`: rvm.io/set/do, "rvm [all|all-gemsets|<ruby>,...|<path>]
+  [--verbose|--summary|--yaml|--json] do <command> ...", "exec the command
+  directly", the command behind `do`. `proto run`:
+  moonrepo.dev/docs/proto/commands/run, "proto run <tool> [version]",
+  "Arguments can be passed to the underlying tool binary by providing
+  additional arguments after --" - judged at the tool, which is the program
+  run. `goenv exec`, `jenv exec`, `plenv exec`, `phpenv exec` and `luaenv
+  exec`: `libexec/goenv-exec`, `libexec/jenv-exec`, `libexec/plenv-exec`,
+  `libexec/phpenv-exec` and `libexec/luaenv-exec` on `master` of go-nv/goenv,
+  jenv/jenv, tokuhirom/plenv, phpenv/phpenv and cehoffman/luaenv, "Usage:
+  goenv exec <command> [arg1 arg2...]" and the same for each; tfutils/tfenv on
+  `master` documents `install`, `use`, `uninstall`, `list`, `list-remote` and
+  `pin` and no `exec`, so `tfenv` is not in. `dotenvx run`:
+  dotenvx.com/docs/cli/run, "dotenvx run -- node index.js";
+  github.com/dotenvx/dotenvx, `src/cli/dotenvx.js` on `main`, `-e`, `--env`,
+  `-f`, `--env-file`, `-fk`, `--env-keys-file`, `--convention`, `--ignore`,
+  `-l` and `--log-level` taking a value, `src/lib/helpers/executeCommand.js`
+  running the first token with the rest as its arguments. `dotenv`, three
+  programs of one name: python-dotenv, github.com/theskumar/python-dotenv on
+  `master`, "dotenv run -- python foo.py", `set`, `get`, `list` and `unset`
+  beside it; the ruby gem, github.com/bkeepers/dotenv on `master`, "dotenv -f
+  ".env.local,.env" ./script.rb", `-i`, `-o` and `-t`; dotenv-cli,
+  github.com/entropitor/dotenv-cli on `master`, "dotenv -e .env -- command",
+  `-e`, `-v`, `-c` and `-p` taking a value, `-p` printing a value and running
+  nothing - read as one program whose options `-f`, `-q`, `-e`, `-v`, `-c` and
+  `-p` take a value, a `run` word read over, the command behind them or behind
+  `--`. `godotenv`: github.com/joho/godotenv on `master`, "godotenv -f
+  /some/path/to/.env some_command with some args", `-o` a flag. `env-cmd`:
+  github.com/toddbluhm/env-cmd on `master`, "env-cmd [options] -- <command>
+  [...args]", `-f`, `--file`, `-e` and `--environments` taking a value,
+  `--use-shell` running the command in a shell, where the words joined are a
+  text for it. `cross-env`: github.com/kentcdodds/cross-env on `master`,
+  "cross-env NODE_ENV=production node ./start.js", the command through
+  cross-spawn without a shell, `cross-env-shell` with one, where the words
+  joined are a text. `aws-vault exec`: github.com/99designs/aws-vault,
+  `cli/exec.go` on `master`, the profile required, the command optional and
+  `$SHELL` without it, `-d`, `--duration`, `-t`, `--mfa-token` and `--region`
+  taking a value, the command run with an argument vector; `USAGE.md`,
+  "aws-vault exec myprofile -- aws s3 ls". `op run`:
+  1password.dev/cli/reference/commands/run, "op run -- <command> <command>...
+  [flags]", `--env-file` and `--environment` taking a value, the command a
+  subprocess; developer.1password.com redirected there. `doppler run`:
+  github.com/DopplerHQ/cli, `pkg/cmd/run.go` on `master`, "run [command]",
+  `--command` one string, "YOUR_COMMAND && YOUR_OTHER_COMMAND";
+  docs.doppler.com/docs/cli, the shell from `SHELL`, falling back to `sh` -
+  `--command` a text for the shell, the words behind `--` as they stand;
+  `--command`, `-p`, `--project`, `-c`, `--config`, `--preserve-env`,
+  `--name-transformer`, `--passphrase`, `--fallback`, `--format`, `--mount`,
+  `--mount-template`, `--mount-max-reads`, `--dynamic-ttl` and
+  `--only-secrets` taking a value. `infisical run`:
+  infisical.com/docs/cli/commands/run, "infisical run [flags] -- [command]",
+  `--command` "npm run build && npm start", `-c`, `--command`, `-e`, `--env`,
+  `--path`, `--projectId`, `--token`, `-t`, `--tags`, `--project-config-dir`
+  and `--watch-interval` taking a value - `--command` a text for a shell as
+  `doppler`'s. `sops exec-env` and `sops exec-file`:
+  getsops.io/docs/usage/advanced/, "sops exec-env out.json 'command'", "sops
+  exec-file --no-fifo out.json 'command {}'", `--user` and `--filename` taking
+  a value, the examples expanding `$database_password` inside the command, so
+  a shell runs the text; the README and the usage index answered without the
+  section. `chamber exec`: github.com/segmentio/chamber on `master`, "chamber
+  exec <service...> -- <your executable>", the command behind `--`.
+  `envchain`: github.com/sorah/envchain on `master`, "envchain aws s3cmd blah
+  blah blah", `--set` and `--list` running nothing, the namespace the word
+  before the command. `teller run`: github.com/tellerops/teller,
+  `teller-cli/src/cli.rs` on `master`, `Run { reset, shell "Run command as
+  shell command", command (raw) }` - the words as they stand, joined into a
+  text where `--shell` stands. `railway run`:
+  docs.railway.com/reference/cli-api, "railway run npm start", "Run command
+  with Railway env vars", `-s`, `--service`, `-e` and `--environment` taking a
+  value. `rtx`, the former name of `mise`, read as `mise` is.
+
+  (4) The programs that start many commands, for every line, file, value or
+  subproject. `xargs` and `find` as the first addendum read them. `parallel`,
+  two programs of one name: GNU parallel, manpages.debian.org parallel(1),
+  "parallel [options] [command [arguments]] < list_of_arguments", "parallel
+  [options] [command [arguments]] ( ::: arguments | :::+ arguments | ::::
+  argfile(s) | ::::+ argfile(s) ) ...", "If no command is given, the line of
+  input is executed", "$PARALLEL_SHELL Use this shell for the commands run by
+  GNU parallel", the options that take an argument, `-a`, `--arg-file`, `-j`,
+  `--jobs`, `-N`, `--max-replace-args`, `-n`, `--max-args`, `-S`,
+  `--sshlogin`, `--slf`, `--sshloginfile`, `--results`, `--joblog`,
+  `--tmpdir`, `--colsep`, `-C`, `--delay`, `--timeout`, `--retries`,
+  `--block`, `--block-size`, `-I`, `--nice`, `--memfree`, `--load`, `--halt`,
+  `--env`, `--basefile`, `--return`, `--rpl`, `--recstart`, `--recend`, `-d`,
+  `--delimiter`, `-E`, `-L`, `--max-procs`, `-P`, `--compress-program`,
+  `--header`, `--ssh`, `--tagstring`, `--seqreplace`, `--slotreplace`,
+  `--limit`, `--memsuspend`, `--id`, `-J`, `--profile`, `--arg-sep`,
+  `--arg-file-sep`, `--trim`, `--transferfile`, `--trc`, `--wd`, `--workdir`,
+  `-s`, `--max-chars`, `--sshdelay`, `--ssh-delay`, `--term-seq`, `--termseq`,
+  `--process-slot-var` and `--minversion`, the page at gnu.org answering 429
+  twice; moreutils parallel(1), "parallel [options] [command] -- [argument
+  ...]" and "parallel [options] -- [command ...]", `-j`, `-l` and `-n` taking
+  a value, `parallel.c` running the first form with execvp and each command of
+  the second with system. Read as one program: the command words up to `:::`,
+  `::::`, `:::+` or `::::+` joined are a text for the shell; with no command
+  words, or behind a `--` directly after the options, every argument is a text
+  of its own; a GNU `parallel -- cmd ::: a`, which nobody writes, is then read
+  as texts of one word each and goes through, named below. `fd`:
+  github.com/sharkdp/fd, `doc/fd.1` on `master`, "-x, --exec command" and "-X,
+  --exec-batch command", "all subsequent positional arguments are considered
+  to be arguments to the command", a `;` ending it, repeatable, `-d`,
+  `--max-depth`, `--min-depth`, `--exact-depth`, `-E`, `--exclude`, `-e`,
+  `--extension`, `-t`, `--type`, `-S`, `--size`, `-o`, `--owner`,
+  `--changed-within`, `--changed-before`, `-c`, `--color`, `-j`, `--threads`,
+  `--and`, `--format`, `--batch-size`, `--ignore-file`, `--ignore-contain`,
+  `-C`, `--base-directory`, `--path-separator`, `--search-path` and
+  `--max-results` taking a value - `fd` the command itself, every command
+  behind `-x` and `-X` a line of its own. `apply` and `msgexec` as above.
+
+  (5) Terminal sessions and the background, a command in a new session,
+  detached or later. `setsid`, `nohup`, `systemd-run` and `caffeinate` as
+  before. `tmux`: man.openbsd.org/tmux and github.com/tmux/tmux, `tmux.1` on
+  `master`, "tmux [-2CDhlNuVv] [-c shell-command] [-f file] [-L socket-name]
+  [-S socket-path] [-T features] [command [flags]]", "shell-command arguments
+  are sh(1) commands", a single argument passed to the shell, "the new-window,
+  new-session, split-window, respawn-window, respawn-pane and display-popup
+  commands allow shell-command to be given as multiple arguments and executed
+  directly (without sh -c)", "each command is terminated by a newline or a
+  semicolon"; the commands read with their aliases and the options that take a
+  value: `new-session` (`new`), `new-window` (`neww`), `split-window`
+  (`splitw`), `respawn-pane` (`respawnp`), `respawn-window` (`respawnw`),
+  `pipe-pane` (`pipep`), `run-shell` (`run`) "Execute shell-command using
+  /bin/sh", `if-shell` (`if`) "Execute the first command if shell-command (run
+  with /bin/sh) returns success", `display-popup` (`popup`) and `send-keys`
+  (`send`), whose words up to `Enter`, `C-m` or `KPEnter` joined are a text
+  typed into the pane's shell. `screen`: screen(1) on this machine, Screen
+  version 4.00.03 (FAU) of 23-Oct-06, "screen [ -options ] [ cmd [ args ] ]",
+  `-c`, `-e`, `-h`, `-p`, `-S`, `-s`, `-t` and `-T` taking a value, `-d -m`
+  creating a session detached, `-r`, `-R`, `-RR`, `-x`, `-ls`, `-list`,
+  `-wipe` and `-v` attaching or listing and running nothing, `-X` "Send the
+  specified command to a running screen session", the commands `stuff` "Stuff
+  the string string in the input buffer of the current window", `exec`
+  "[[fdpat] newcommand [args ...]] Run a unix subprocess", "the word exec can
+  be omitted here and can always be replaced by !", and `screen [opts] [cmd
+  [args]]` opening a window with the command. `zellij`:
+  github.com/zellij-org/zellij, `zellij-utils/src/cli.rs` on `main`, `run`
+  with its command last and required, `--name`, `--cwd`, `--direction`, `-x`,
+  `-y`, `--width`, `--height` and `--pinned` taking a value, `action new-pane`
+  and `action new-tab` with their command last, `action write-chars` with a
+  text; zellij.dev/documentation/commands.html, `attach`: "Trailing arguments
+  given after -- are run as a command in the first pane of the session"; the
+  page zellij-run answered 404. `dtach`: manpages.debian.org dtach(1), "dtach
+  -A|-c|-n|-N <socket> <options> <command...>", `-a` and `-p` attaching, `-e`
+  and `-r` taking a value. `abduco`: manpages.debian.org abduco(1), "abduco
+  [-e detachkey] [-r] [-f] -c name command [args ...]", `-n` and `-A` the
+  same, `-a name` attaching, `-e` taking a value. `nq`:
+  github.com/leahneukirchen/nq, `nq.c` on `master`, "usage: nq [-c] [-q] [-w
+  ... | -t ... | CMD...]", execvp. `tsp`: manpages.debian.org task-spooler
+  tsp(1), "tsp [actions] [options] [command...]", "It does not start a shell
+  parser", `-S`, `-L`, `-D`, `-N` and `-U` taking a value; `ts`, the name it
+  carries on other systems, read the same, moreutils' `ts` of that name
+  reading stdin and running nothing. `pueue add`: github.com/Nukesor/pueue,
+  the wiki page Get-started, "pueue add -- ls -al /tmp", "Pueue wraps the
+  command in sh -c", `-g`, `--group`, `-a` and `--after` taking a value - the
+  words joined a text for the shell; the further options of `pueue add` were
+  not read today, and one with a separate value ends the reading, the command
+  then going through. `daemon`: libslack.org/daemon/manpages/daemon.1.html,
+  "usage: daemon [options] [--] [cmd arg...]", `-C`, `--config`, `-n`,
+  `--name`, `-X`, `--command`, `-P`, `--pidfiles`, `-F`, `--pidfile`, `-u`,
+  `--user`, `-R`, `--chroot`, `-D`, `--chdir`, `-m`, `--umask`, `-e`, `--env`,
+  `-a`, `--acceptable`, `-A`, `--attempts`, `-L`, `--delay`, `-M`, `--limit`,
+  `-l`, `--errlog`, `-b`, `--dbglog`, `-o`, `--output`, `-O`, `--stdout`,
+  `-E`, `--stderr` and `--signal` taking a value, `-X` and `--command` a
+  command string read as a text for a shell. `daemonize`:
+  software.clapper.org/daemonize/daemonize.html, "daemonize [-a] [-c
+  directory] [-e stderr] [-o stdout] [-p pidfile] [-l lockfile] [-u user] [-v]
+  path [arg] ...", `-E` taking a value too. `at` and `batch`: at(1) on this
+  machine, "The at and batch utilities read commands from standard input or a
+  specified file which are to be executed at a later time, using sh(1)" - a
+  heredoc or a here-string fed to either is shell text, as one fed to a shell
+  reading its commands from stdin is; `-f file` a file, not read. `launchctl
+  submit` and `bsexec`: launchctl(1) on this machine, "submit -l label [-p
+  executable] [-o stdout-path] [-e stderr-path] -- command [arg0] [arg1]
+  [...]", "bsexec PID command [args]".
+
+  (6) The programs that run a command when a file changes. `watch` as above.
+  `entr`: github.com/eradman/entr, `entr.1` on `master`, "entr [-acdnprsxz]
+  utility [argument [/_] ...]", "-s Evaluate the first argument using the
+  interpreter specified by the SHELL environment variable" - the utility as it
+  stands, the first argument a text for the shell with `-s`. `watchexec`:
+  github.com/watchexec/watchexec, `doc/watchexec.1.md` on `main`, "every part
+  of the command is joined together into one string with a single ascii space
+  character" and given to `$SHELL`, `-n` "--shell=none", "The special value
+  'none' can be used to disable shell use entirely", `-w`, `--watch`, `-W`,
+  `--watch-non-recursive`, `-e`, `--exts`, `-f`, `--filter`, `-i`, `--ignore`,
+  `-d`, `--debounce`, `-s`, `--signal`, `--stop-signal`, `--stop-timeout`,
+  `--timeout`, `--delay-run`, `--shell`, `--emit-events-to`, `-E`, `--env`,
+  `--workdir`, `--project-origin`, `--ignore-file`, `--filter-file`, `-j`,
+  `--filter-prog`, `--fs-events`, `--completions`, `-o`, `--on-busy-update`,
+  `-F`, `--watch-file`, `--socket`, `--color`, `--wrap-process` and
+  `--map-signal` taking a value - the words joined a text for the shell, as
+  they stand with `-n` or `--shell=none`. `nodemon`: github.com/remy/nodemon
+  on `main`, the README, "nodemon --exec "python -v" ./app.py",
+  `lib/monitor/run.js`, the command built as one string and run with `sh -c`,
+  `cmd` on Windows, `-e`, `--ext`, `-w`, `--watch`, `-i`, `--ignore`,
+  `--delay`, `-x`, `--exec`, `--signal`, `-C` and `--config` taking a value -
+  the text of `--exec` shell text, `nodemon` itself the command, since a
+  script file is what it runs otherwise. `reflex`: github.com/cespare/reflex
+  on `master`, "reflex [OPTIONS] [COMMAND]", "--" splitting the flags from the
+  command, the command run directly, `-r`, `-R`, `-g`, `-G`, `-c`, `-d`,
+  `--decoration`, `-t` and `--substitute` taking a value. `chokidar`:
+  github.com/open-cli-tools/chokidar-cli on `master`, the README and
+  `utils.js`, "-c/--command", the shell started with `-c` and the command
+  string, `-i`, `--ignore`, `-d`, `--debounce`, `-t`, `--throttle`,
+  `--poll-interval` and `--poll-interval-binary` taking a value. `onchange`:
+  github.com/Qard/onchange on `main`, the README, "onchange [...file] --
+  <command> [...args]", "-o, --outpipe <cmd> Shell command to execute every
+  change", `-e`, `--exclude`, `-d`, `--delay`, `-j`, `--jobs`, `-p`, `--poll`,
+  `-f`, `--filter` and `--await-write-finish` taking a value; the source at
+  `cli.js` and `index.js` on `main` and `master` answered 404, so the command
+  behind `--` is read as its words stand. `cargo watch`:
+  github.com/watchexec/cargo-watch on `master`, "-x, --exec <cmd> Runs a cargo
+  subcommand", "-s, --shell <cmd> Runs a shell command", "-- <command> runs
+  everything after -- as a full command", `-w`, `--watch`, `-i`, `--ignore`,
+  `-d`, `--delay`, `-B`, `-C`, `--workdir` and `--use-shell` taking a value -
+  `-x` a text `cargo <cmd>` for the shell, `-s` and the words behind `--`
+  texts too. `watchman-make`:
+  facebook.github.io/watchman/docs/watchman-make.html, "--make" "concatenate
+  the value of --make with the name of the target and execute that command
+  using the shell", "--run" "provide the path to a script which watchman-make
+  will execute", `-p`, `--pattern`, `-t`, `--target`, `--make`, `--run`,
+  `--settle`, `--root` and `--connect-timeout` taking a value - `--make` and
+  `--run` texts for the shell. `when-changed`: github.com/joh/when-changed,
+  `whenchanged/whenchanged.py` on `master`, "when-changed [OPTION] FILE
+  COMMAND..." and "when-changed [OPTION] FILE [FILE ...] -c COMMAND",
+  subprocess with a shell where the list has one item - one word a text for
+  the shell, several the command as they stand, behind `-c` where it stands
+  and behind the first file otherwise. `wgo`: github.com/bokwoon95/wgo on
+  `main`, "wgo [FLAGS] <command> [ARGUMENTS...]", "wgo run [FLAGS]
+  [GO_BUILD_FLAGS] <package> [ARGUMENTS...]", "::" chaining commands, "not
+  implicitly wrapped in a shell", `-file`, `-xfile`, `-dir`, `-xdir`, `-cd`,
+  `-debounce` and `-root` taking a value - every command of the chain a line
+  of its own, `wgo run` a `go run`. `gow`: github.com/mitranim/gow on
+  `master`, "gow invokes an arbitrary executable; by default it invokes go",
+  "The first argument to gow, after the flags, can be any Go subcommand",
+  `-e`, `-i` and `-g` taking a value - a line `go <words>`, or the executable
+  `-g` names.
+
+  (7) git's own subcommands that run a command. git-scm.com/docs/git-rebase:
+  "--exec <cmd>, -x <cmd> Append "exec <cmd>" after each line creating a
+  commit", "The "exec" command launches the command in a shell (the default
+  one, usually /bin/sh)" - a text for the shell. git-scm.com/docs/git-bisect:
+  "git bisect run [--reset-when-found[=<where>]] <cmd> [<arg>…]";
+  github.com/git/git, `builtin/bisect.c` on `master`, the words joined with
+  sq_quote_argv into one string run with use_shell - quoted, so the words as
+  they stand, a line of their own. git-scm.com/docs/git-submodule: "foreach
+  [--recursive] <command> Evaluate an arbitrary shell <command> in each
+  checked out submodule" - a text for the shell.
+  git-scm.com/docs/git-filter-branch: "The <command> argument is always
+  evaluated in the shell context using the eval command", `--setup`,
+  `--env-filter`, `--tree-filter`, `--index-filter`, `--parent-filter`,
+  `--msg-filter`, `--commit-filter` and `--tag-name-filter` texts for the
+  shell, `--subdirectory-filter` a directory and `--state-branch` a branch.
+  git-scm.com/docs/git-difftool: "-x <command>, --extcmd=<command> … runs
+  <command> $LOCAL $REMOTE"; `git-difftool--helper.sh` on `master`, `eval
+  $GIT_DIFFTOOL_EXTCMD '"$LOCAL"' '"$REMOTE"'` - a text for the shell. The
+  `git` line itself is judged at `git`, as before, and git's own options
+  before the subcommand are read over as the branch guard reads them. Named
+  and not read: git-scm.com/docs/git-for-each-repo, "git for-each-repo
+  --config=<config> [--] <arguments>", which runs a `git` command with those
+  arguments in every repository of the list - the branch guard reads git's own
+  command and finds `for-each-repo` there, not the `push` behind it; and the
+  configuration keys that name a command, `core.pager`, `core.editor`,
+  `core.sshCommand`, `diff.external`, an `alias` or `credential.helper`
+  opening on `!`, given with `-c` on the line, which run a text through the
+  shell only where the command that uses them follows.
+
+  (8) The package managers and the tools of the languages that run a command
+  of the shell and resolve no package. `pnpm exec` and `yarn exec` as above.
+  `npm exec` and `npx`: docs.npmjs.com/cli/v11/commands/npm-exec, "npm exec -c
+  '<cmd> [args...]'", "npm exec --package=foo -c '<cmd> [args...]'", alias
+  `x`, "--call Optional companion option for npm exec, npx that allows for
+  specifying a custom command", "Run an arbitrary shell script, in the context
+  of the current project", `npx -c 'eslint && say "hooray, lint passed"'`
+  among the examples - the text of `-c` and `--call` a text for the shell,
+  `npm exec` and `npx` themselves the command, since without `-c` they resolve
+  a package, which `shared/fetch-and-run.md` names. `bun run`:
+  bun.sh/docs/cli/run, in this order a package.json script, a source file, a
+  binary from the project's packages, and "System commands (bun run only)",
+  "bun run ls" - judged at the word behind `run` and bun's options,
+  `--filter`, `-F`, `--cwd`, `-c`, `--config`, `--env-file`, `--port`,
+  `--preload`, `-r`, `--inspect`, `--define`, `-d`, `--loader`, `-l`,
+  `--shell`, `--elide-lines`, `-e`, `--eval` and `--install` taking a value; a
+  script's name is judged like a program's and matches nothing, and `bun
+  <script>` without `run` reaches no program of the system, the page says, so
+  it stays out.
+
+  **Not in the group, or not read, each with its reason, named in the head of
+  the reader and in the conventions.** `ssh`, `docker exec`, `chroot`,
+  `nsenter`, `unshare`, `bwrap` and `wsl`, which run the command on another
+  machine, in a container or in another root or namespace: not in the group,
+  as the person decided. `npx`, `npm exec`, `bunx`, `bun x`, `pnpm dlx`, `yarn
+  dlx`, `uvx`, `uv tool run`, `pipx run`, `go run` with a version, `gem exec`,
+  `brew exec`, `nix run`, `nix shell` without `-c` and `uv run` with `--with`:
+  they resolve a package rather than run a word, and the install guard reads
+  them at their own names, `shared/fetch-and-run.md`; `npm exec -c` and `npx
+  -c` are read for their text. `nvm exec`, as before. A script of a package
+  file - `npm run`, `pnpm run`, `yarn run`, `bun run` of a script, `mise run`,
+  `deno task`, `composer run-script`, `make`, `just` - which stands in a file
+  and not in the command: the file is not read, by the rule of
+  `shared/fetch-and-run.md` on forms standing in a file. `byobu`, whose
+  backend is `tmux` or `screen` by a setting of the machine. `git
+  for-each-repo` and git's configuration keys as above. `rg --pre` and
+  `tcpdump -z`, which run one program word with the file as its only argument,
+  and `fs_usage`, `dyld_usage`, `sc_usage` without `-E` and `lastcomm`, which
+  name a process. `crontab`, whose lines are a schedule and a command in a
+  format of its own, `schtasks`, whose `/tr` is a Windows command line, and
+  `launchctl bootstrap` and `kickstart`, which start services from files.
+  `python3 -c`, `node -e`, `ruby -e`, `perl -e`, `php -r`, `osascript -e`,
+  `cmd /c`, `powershell -Command` and `expect -c`, code in another language,
+  as the order says. `pbrun`, `dzdo` and `start-stop-daemon`, which were not
+  read today. `hyperfine` stays read as shell text against the vendor's
+  default, as the first addendum names it. `hatch run env:cmd` stays as
+  before. Doubts read on the blocking side, each named: `setpriv` a stop
+  whatever its options, since its purpose is the privileges of the process and
+  the person's rule names the kind; a text typed into a terminal read as shell
+  text where it ends a line, `screen -X stuff $'brew install x\n'`, `zellij
+  action write-chars` the same, `tmux send-keys` with `Enter`, `C-m` or
+  `KPEnter` behind it, and not otherwise, since without the line's end nothing
+  runs.
+
+  **What is built, in `67e97a4`.** `bin/devloop-command-reader`, 1766 lines
+  where 1273 stood. The head, lines 62 to 151, says the group by kinds with
+  every program, the texts and the commands handed on, what is read over and
+  what is judged itself and why, the typed texts, and under "Not taken apart"
+  what is not in the group and why. The tables in the awk program's `BEGIN`,
+  lines 446 to 548: `ONEWORD` and `TWOWORD` the programs, line 447 and 448;
+  the one-word programs read by their tables, lines 449 to 496 - `VALS` the
+  options that take a value, `SELF` the options under which a program runs no
+  command or runs it elsewhere and is the command itself, `SELFALWAYS` the
+  programs that are the command itself and hand on only the texts of
+  `TEXTOPT`, a text for a shell, or `CHTOPT`, a command split at blanks,
+  `DDONLY` the programs whose command stands behind `--` alone, `SKIP1` a word
+  of the program itself before the command, `JOIN` the programs whose words
+  joined are a text for a shell; the two-word programs, lines 497 to 540 -
+  `SUBS` the second words, `PRE` and `POST` the options before and behind
+  them, `SELF2`, `DD2`, `JOIN2`, `TEXTOPT2` and `SKIP2` the same for a program
+  and its second word; `tmux`'s aliases, options and the commands that run a
+  shell-command, lines 545 to 548. The helpers, lines 887 to 927: `add_ch` and
+  `add_cht`, a command handed on as a range of words or as a text split at
+  blanks, several per line where the first addendum held one; `joined`;
+  `ends_line`, the typed text's end; `flags_only`; `behind_dd`; `has_optv`,
+  `has_opt` with the values of the options read over, so that an option behind
+  a valued one is seen, which `has_opt` did not; `note_textopts`.
+  `skip_wrapper`, lines 928 to 1221: the programs with rules of their own -
+  `command`, `doas`, `su` and `runuser`, `login`, `hyperfine`, `script`,
+  `nix-shell`, `timeout`, `chrt`, `taskset`, `watch`, `flock`, `sudo`, `env`,
+  `cross-env`, `env-cmd`, `dotenv`, `trap`, `setarch`, `entr`, `watchexec`,
+  `when-changed`, `apply`, `sg`, `pee` and `mispipe`, `sc_usage`, `leaks`,
+  `gdb`, `lldb`, `rr`, `parallel`, `fd`, `dtach`, `abduco`, `wgo`, `gow`,
+  `kinit` and `gsudo`'s subcommands - and the generic reading by the tables at
+  lines 1207 to 1220. `tmux_read`, lines 1222 to 1247, and `screen_read`,
+  lines 1248 to 1275. `skip_two`, lines 1276 to 1375: `rvm`, `nix`, `mise` and
+  `rtx`, `direnv`, `pnpm`, `npm`, `uv`, `machinectl`, `ktrace`, `zellij
+  action`, `cargo watch`, `sops`, `teller` with rules of their own, the
+  generic reading by the tables at lines 1365 to 1374. `judge`, lines 1653 to
+  1710: every command a line hands on, in order, at lines 1665 to 1669, `git`
+  at lines 1690 to 1694 through `git_read`, lines 1720 to 1736, and `at` and
+  `batch` reading their commands from stdin at lines 1695 to 1699;
+  `childtext`, lines 1711 to 1719. The self-test, 116 cases where 104 stood:
+  the twelve cases of the kinds at lines 386 to 416, one program of the group
+  at least once in each, and four cases of the first addendum changed -
+  `watch` at line 360, `devbox run`, `mise exec`, `nix develop` and the nix
+  shells at lines 379 to 380, `pixi run` at 382, the shell with `-c` behind
+  `mise exec` at 384. The program answers the self-test in under three seconds
+  here, bash 3.2.57 and awk 20200816 as before.
+  `hooks/pre-tool-use-install-guard.sh`, 920 lines where 907 stood: the first
+  kind at lines 201 to 226, `runuser`, `setpriv`, `gsudo` and `login` beside
+  `doas`, `su`, `run0` and `pkexec` at line 219, `machinectl` with `shell` and
+  `launchctl` with `asuser` behind it at lines 220 and 221, `runas` at the
+  judged word at line 231; the cause under a yes at lines 700 to 703 as it
+  stood, its comment naming the kind; `mise` and `rtx` at lines 289 to 298
+  without `exec` and `x`. `docs/skill-conventions.md`: the rule "A hook reads
+  its input through one program" at lines 1472 to 1532 names the group by
+  kinds with every program, what stands outside it and why, the fetch-and-run
+  forms read at their own names, the side effects not read, and what stands on
+  no list going through; lines 1545 to 1551 code in another language, the
+  programs outside the group, `nvm exec` and the scripts of package files
+  among the forms not taken apart; lines 846 to 851 the first kind beside
+  `sudo` under what stays the person's. `shared/fetch-and-run.md`,
+  `hooks/hooks.json`, the workflow and the other hooks unchanged: the branch
+  guard, the merge guard, the mark guard, the identity guard and the table
+  guard read every line the reader prints and so read what a program of the
+  group hands on without a change, which the measurement shows. No message of
+  a hook changed but for the cause of the first kind, whose wording is the
+  approved one with the program named.
+
+  **Measured on 13 October 2026 against the hooks of `67e97a4`, from 10:16:48
+  to 10:18:56 UTC**, as the first addendum measured: the same scratch project
+  with `docs/agents/`, its `origin` a bare repository whose `origin/HEAD`
+  names `main`, the four records of the entry of 9 October 2026, lines 13838
+  to 13847 - no, none, yes11, yes6 - each committed, pushed and fetched before
+  the commands under it, every hook started as a program through its own first
+  line by its absolute path and fed its JSON on stdin with
+  `CLAUDE_PROJECT_DIR` on the project, the harness a python program in this
+  session's scratch directory, rebuilt from the tables of the report of the
+  first addendum, which it reads for the commands and their shoulds; the
+  harness of the first addendum stands outside the repository and was not
+  read. Darwin 25.6.0, bash 3.2.57, awk 20200816, git 2.50.1. 611 cases, every
+  one as expected: 450 commands of the install guard under the four records,
+  1590 feedings, in 123 seconds, and 161 cases of the other hooks, 11 of them
+  not fed here - the three of the session hook, the six of the permission
+  hook, the one of the post-checks hook, and the identity guard's write of
+  `.gitconfig` and its case without a project directory, whose setups the
+  report of the first addendum describes and this harness does not rebuild;
+  this build changes none of those hooks, and their runs of 13 October 2026
+  count as they did. Three earlier runs of the harness, from 10:03 to 10:15
+  UTC, found no fault in a hook and three in the harness, mended before the
+  run recorded: the check table of the cases on the table guards written with
+  two columns where `bin/devloop-check-table` reads the seventh cell, so that
+  the table in order read as one in no allowed form; the three cases of the
+  PostToolUse table guard fed to the PreToolUse one; and nine cases of this
+  order and of this build dropped from the list by a filter on the names of
+  their sections, restored for the run recorded. Every case of the first
+  addendum keeps its should, 513 cases, with the four exceptions finding B
+  names. The order's cases, 21: `parallel brew install ::: a b`, `tmux
+  new-session -d 'brew install ripgrep'`, `screen -dm brew install ripgrep`,
+  `ls src | entr brew install ripgrep`, `watchexec -- brew install ripgrep`,
+  `nodemon --exec 'brew install ripgrep'`, `git rebase -x 'brew install
+  ripgrep' main`, `git bisect run brew install ripgrep`, `git submodule
+  foreach 'brew install ripgrep'`, `fd -e txt -x brew install` and `npm exec
+  -c 'brew install ripgrep'` 2 2 0 0; `uv run make install` 2 2 2 2, under
+  both yes "where it lands cannot be read here; make install (its destination
+  is not in the command: no PREFIX, DESTDIR or BINDIR written on the make
+  line, so the makefile decides); a place the record does not name stays
+  blocked", the reading of the vendor the order asked for: `uv run` syncs the
+  project's environment, a side effect inside the project, and then runs `make
+  install` as it stands, whose destination the makefile decides, as for a bare
+  `make install`; `mise exec node@20 -- node -v` 0 0 0 0; `mise install
+  node@20` 2 2 2 2 with the version manager's cause; `osascript -e 'do shell
+  script "brew install ripgrep"'` and `python3 -c 'import os; os.system("brew
+  install ripgrep")'` 0 0 0 0; the branch guard on `main` with `tmux
+  new-session -d 'git push origin main'` 2; the merge guard with `screen -dm
+  gh pr merge 5 --squash` 2; the identity guard with `tmux new-session -d 'git
+  -c user.email=a@example.com commit -m m'` 2, `-c user.email` read; the mark
+  guard with `screen -dm touch .claude/unattended.local` 2 under `default` and
+  0 under `auto`. Seventy-seven of this build's own, every one as planned:
+  `runuser -u root -- brew install ripgrep`, `gsudo brew install ripgrep`,
+  `runas /user:admin "brew install ripgrep"`, `launchctl asuser 501 brew
+  install ripgrep`, `machinectl shell .host /usr/bin/make install`, `setpriv
+  --reuid=0 make test` and `login -f root brew install ripgrep` 2 2 2 2, under
+  both yes "it needs runuser, …", "it needs gsudo, …", "it needs runas, …",
+  "it needs launchctl, …", "it needs machinectl, …", "it needs setpriv, …" and
+  "it needs login, which stays the user's under every answer"; `tmux new -d
+  sudo make install` 2 2 2 2 with `sudo`'s cause; `machinectl shell box make
+  install` 0 0 0 0, a container; `launchctl submit -l x -- brew install
+  ripgrep`, `tmux send-keys -t x 'brew install ripgrep' Enter`, `tmux new -d
+  -s x brew install ripgrep`, `screen -S s -X stuff $'brew install
+  ripgrep\n'`, `zellij run -- brew install ripgrep`, `pueue add -- brew
+  install ripgrep`, `at now <<EOF`, `brew install ripgrep`, `EOF`, `nq brew
+  install ripgrep`, `entr -s 'brew install ripgrep' < list`, `watchexec -n
+  brew install ripgrep`, `cargo watch -s 'brew install ripgrep'`, `chokidar
+  'src/**' -c 'brew install ripgrep'`, `watch 'brew install ripgrep'`, `git
+  filter-branch --tree-filter 'brew install ripgrep' HEAD`, `git difftool -x
+  'brew install ripgrep'`, `git rebase --exec='brew install ripgrep' main`,
+  `npx -c 'brew install ripgrep'`, `bun run brew install ripgrep`, `uv run
+  --with ruff ruff check .`, `nix develop -c brew install ripgrep`, `pixi run
+  brew install ripgrep && echo done`, `devbox run 'brew install ripgrep'`,
+  `doppler run --command 'brew install ripgrep'`, `doppler run -- brew install
+  ripgrep`, `sops exec-env s.yaml 'brew install ripgrep'`, `aws-vault exec
+  prof -- brew install ripgrep`, `cross-env A=1 brew install ripgrep`, `dotenv
+  -e .env -- brew install ripgrep`, `apply 'brew install' ripgrep fd`,
+  `parallel ::: 'brew install ripgrep' 'make test'`, `gdb --args brew install
+  ripgrep`, `rr record brew install ripgrep`, `perf stat -- brew install
+  ripgrep`, `ltrace -e malloc brew install ripgrep`, `firejail --net=none brew
+  install ripgrep`, `ssh-agent brew install ripgrep`, `dtrace -n
+  'syscall:::entry' -c 'brew install ripgrep'`, `leaks -atExit -- brew install
+  ripgrep`, `sg staff -c 'brew install ripgrep'`, `wgo run main.go :: brew
+  install ripgrep`, `gow install golang.org/x/tools/cmd/goimports@latest`,
+  `pee 'brew install ripgrep' 'cat'`, `ifne brew install ripgrep < list`,
+  `when-changed f -c 'brew install ripgrep'`, `proto run npm -- install -g
+  typescript` and `kinit -l 1h user brew install ripgrep` 2 2 0 0; `cargo
+  watch -x 'install ripgrep'` and `uv run --with ruff make install` 2 2 2 2,
+  the first naming `~/.cargo/bin`, the second with `make install`'s cause;
+  `tmux send-keys -t x 'brew install ripgrep'`, `screen -S s -X stuff 'brew
+  install ripgrep'`, `git commit -m 'parallel brew install ::: a'`, `npx -p
+  prisma prisma generate`, `uv run pytest`, `nix develop`, `parallel -j 2 make
+  test ::: a b`, `fd -e txt -X rm`, `perf stat -p 1`, `unshare -r brew install
+  ripgrep` and `composer exec -- phpunit` 0 0 0 0; the branch guard on `main`
+  with `parallel 'git push origin main' ::: a`, `git bisect run git push
+  origin main` and `tmux send-keys 'git push origin main' Enter` 2; the merge
+  guard with `watchexec -- gh pr merge 5` and `nodemon --exec 'gh pr merge 5'`
+  2; the identity guard with `parallel 'git commit --author="A
+  <a@example.com>" -m m' ::: a` 2; the mark guard with `tmux new -d 'echo x >
+  .claude/unattended.local'` 2 under `default` and 0 under `auto`, `uv run tee
+  .claude/unattended.local` 2 under `default`.
+
+  **Searched before the build, at `66f1bc2`, each with its command and what it
+  found**, with `grep -rn -F -e <pattern>` over `docs/skill-conventions.md`,
+  `skills`, `shared`, `README.md`, `docs/plan.md`, `hooks`, `bin`, `scripts`
+  and `.github`: `mise exec`, the conventions at 1489 and 1500, the guard at
+  281, the reader at 43, 76, 83, 85, 348, 349, 353, 753 and 1189, every one
+  changed; `mise x`, nothing; `uv run`, the conventions at 1663, 1868, 2088,
+  2091, 2124 and 2126, `shared/fetch-and-run.md` 4 and the guard at 403, which
+  speak of the four forms and stay; `nix-shell` and `nix develop`, the
+  conventions at 1489 and the reader, changed; `installs missing`, the guard
+  at 282, changed; `exec_auto_install` and `auto_install`, nothing; `side
+  effect`, the conventions at 854 and 1984, which speak of a browser and of
+  `npm install puppeteer` and stay; `npm exec`, the conventions at 1492, 1867
+  and 2155 and `shared/fetch-and-run.md` 12, which name the form the guard
+  does not read and stay, the reader at 44, 79 and 83, changed; `parallel`,
+  `tmux`, `screen`, `entr`, `watchexec`, `nodemon`, `rebase -x`, `bisect run`,
+  `submodule foreach`, `fd -`, `osascript`, `cmd /c`, `at now`, `crontab`,
+  `launchctl`, `chpst`, `daemonize`, `pueue`, `nq `: nothing of the subject,
+  the hits for `parallel`, `screen`, `entr` and `batch` being words of the
+  skills in another sense; `powershell`, `docs/plan.md` 499, the shell of a
+  hook on Windows, stays; `python3 -c`, the conventions at 2669, 2765 and 2794
+  and the mark guard at 65, which stay; `nohup`, `setsid` and `systemd-run`,
+  the conventions at 1476 to 1488 and the reader, changed; `caffeinate`, as
+  the first addendum found it, stays. Over this file, `grep -c -F`: `mise
+  exec` 20, `uv run` 27, `npm exec` 8, `python3 -c` 4, `side effect` 3,
+  `installs missing` 1, `exec_auto_install` 1, `parallel ` 4, `tmux`, `screen
+  -`, `watchexec`, `nodemon`, `rebase -x`, `bisect run`, `submodule foreach`,
+  `osascript` and `nebenbei` 0 - the hits in dated entries that stay as
+  written, the first addendum's among them, revised by the sentences above and
+  not rewritten. The texts that state the `sudo` rule, `grep -rn "sudo" shared
+  skills README.md docs/plan.md | grep -i "every answer"`: nothing outside the
+  conventions; in the conventions, line 846, changed, and line 1484, changed.
+  Held against the list at the end of the order: every place on it was found
+  by these searches before the list was read, and the list's
+  `shared/fetch-and-run.md` "where it names uv run" changes nothing, for the
+  reason under the third kind; the searches found beyond the list the
+  conventions at line 846 and the reader's self-test cases, which the list
+  names in the whole file and not by line.
+
+  **This addendum, held against itself.** The order says the group holds
+  "jedes Programm" that runs a command, and a list of programs can never be
+  the whole of it: the searches above are named so that the next reader sees
+  where this build looked and where it did not, and what stands on no list
+  goes through, which the conventions say. The order lists `uv run make
+  install` with "2 2, unter beiden yes nach deiner Lesung des Herstellers":
+  the reading is 2 2 2 2, since a bare `make install` names no destination and
+  the makefile decides. `runas` hands Windows one string, which the order's
+  rule on code in another language covers and which the reader does not take
+  apart; it is a stop all the same, since the program is of the first kind.
+  `setpriv` is read as a stop whatever its options, where the program's own
+  purpose is the privileges of the process and not always another user: a
+  doubt read on the blocking side, named, as `hyperfine` is. GNU parallel and
+  moreutils parallel share a name and not a grammar; the reading chosen takes
+  `--` as moreutils reads it, and a GNU `parallel -- brew install ::: a` goes
+  through, named under the fourth kind. A text typed into a terminal is read
+  only where it ends a line; `tmux send-keys 'brew install x'` without `Enter`
+  and `screen -X stuff 'brew install x'` go through, since nothing runs. The
+  order's kinds name an environment under the second kind and the environments
+  of projects under the third; `env`, `ssh-agent`, `kinit`, `cross-env`,
+  `env-cmd` and `dotenv` were placed by what they set, the process's
+  environment under the second and a project's or a secret store's under the
+  third, a judgement of this build. The first addendum's reasons for
+  `unshare`, `bwrap` and `firejail` were wrong for two of the three and are
+  corrected above; its "not read" for `ltrace`, `perf`, `gdb` and `lldb` gave
+  no reason and is replaced by the second kind. `pueue add`'s further options
+  and GNU screen's `-Logfile` were not read today and are not in the tables; a
+  form with one of them ends the reading and goes through. `bun run <script>`
+  is judged at the script's name, which matches nothing, and `bun <name>`
+  stays out. Nothing in the order was found contradictory, and no question
+  with two ways was left to the person: where the order left a reading open -
+  `uv run` with and without `--with`, the typed texts, the two programs named
+  `parallel`, the three named `dotenv` - the vendors' documentation decided
+  it, and where it did not, this addendum chose and named the choice.
+
+  **Stock-take, before and after.** The tool at `66f1bc2`, run on the clean
+  tree on 13 October 2026 before this build: `BROKEN RECORDS: 0`, `FINDINGS:
+  19`, 169 lines that can carry no unique anchor, `UNITS WITHOUT A STRAIGHT
+  PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 3249`, 228 runs under
+  `RUNS THAT DO NOT COUNT`, walked 432, built and never walked 1049, recorded
+  and not built 228, undetermined 28, exit 0. The tool at `67e97a4` with the
+  table of `66f1bc2`: `BROKEN RECORDS: 34`, the anchors the build moved,
+  `FINDINGS: 19`, 190 lines that can carry no unique anchor, `UNCOVERED LINES
+  OF THE SEARCH SET: 172 of 3390`, exit 2. The tool with this addendum and the
+  rows of its commit, before the runs, run on the tree with the changes in
+  place on 13 October 2026: `BROKEN RECORDS: 0`, `FINDINGS: 19`, 190 lines
+  that can carry no unique anchor, nothing under `STATUS WORDS OF
+  docs/roadmap.md BROKEN OVER A LINE BREAK`, `UNITS WITHOUT A STRAIGHT PATH:
+  0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 3392`, exit 0; 226 runs under
+  `RUNS THAT DO NOT COUNT`, among them since `67e97a4` the runs of 29
+  September and 8, 12 and 13 October 2026 on two outcomes of the install guard
+  - the block under a yes with a destination the guard cannot read, whose arm
+  of `mise` changed, and the block under a yes for a program of the first
+  kind, whose lines changed - the runs of 12 and 13 October 2026 on the
+  reader's outcome of a command taken apart and on its self-test, and the run
+  of 13 October 2026 on the defect of finding 3 of the first addendum, whose
+  evidence lies on the lines this build rewrote, each with the reason that a
+  line of the thing changed at `67e97a4`; walked 432, built and never walked
+  1051 where 1049 stood, the two defects of this addendum, recorded and not
+  built 228, undetermined 28. The rows, 4955 where 4814 stood: 33 rows gone,
+  the coverage of lines of the reader and the guard that this build rewrote,
+  with the anchors the tool reported as not found; one record re-anchored, the
+  evidence of the defect on the widened guard, whose anchor was the privilege
+  arm this build extended; one thing's note extended, the guard's block for a
+  program of the first kind, which keeps its name since runs hang on it; four
+  new lines of the reader reworded so that the anchors of lines they doubled
+  stay unique, the loop ends of `tmux`, `screen` and `lldb` written with
+  `substr`; two things added, the defects of findings A and B, each with its
+  site on the line of this addendum that says it is built and its evidence on
+  the line of the build that answers it; and 174 not-a-thing rows added, part
+  of the outcome each line leads to - the reader's outcome of a command taken
+  apart, its self-test, and the two outcomes of the guard named above - the
+  whole set covered.
+
+  **At the commit carrying this addendum and the rows: the tool, its
+  self-test, the reader's self-test, the workflow's step and the nineteen
+  checks under 0.137.0.** Run in this tree on 13 October 2026 with the changes
+  in place and again on the clean tree at the commit, the same answers: the
+  tool as the paragraph above gives it, exit 0; its own self-test between
+  11:38:37 and 11:38:39 UTC with exit 0 and `SELF-TEST PASSED: 110 cases`, 74
+  of its 74 messages asserted by a case and the lines of the report not in
+  that count, as on 12 October 2026, its source untouched by this addendum,
+  written down on nothing; the reader's self-test between 11:38:34 and
+  11:38:37 UTC, `SELF-TEST PASSED: 116 cases` with exit 0, one run to be
+  written down on its outcome and one on the outcome of a command taken apart
+  in the commit after this one; the workflow's step, run as a script between
+  11:38:39 and 11:38:42 UTC, printed the self-test and nothing red and exited
+  0, no run of the platform, written down on nothing; between 11:38:42 and
+  11:38:46 UTC the nineteen checks of the handover section printed what their
+  sections call green, line for line what they printed at `66f1bc2`: the names
+  check silent, the offers seventeen lines, the handovers nine, the second
+  statement one line, the one locked skill named by its caller as before;
+  their lines are untouched by this addendum and their runs count, so no run
+  is written down on them. The runs of the measurement above are written down
+  in the commit after this one, on the two outcomes of the install guard named
+  under the stock-take and on the reader's outcome of a command taken apart,
+  whose runs of 12 and 13 October 2026 stopped counting at `67e97a4`, on the
+  defect of finding 3 of the first addendum for the same reason, and on the
+  two defects of this addendum, each on the line of this addendum that records
+  it; the reader's self-test on its outcome. A run written down there counts,
+  by the tool's own rule, only once the commit that introduced the version
+  contains the last change to every line the thing stands on, which on this
+  branch is `fe8b98d` and after the squash merge is the merge commit: on the
+  branch they stand among the runs that do not count with that reason, as the
+  runs of the first addendum do, and count on `main` after the merge.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
