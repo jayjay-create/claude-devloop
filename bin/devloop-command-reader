@@ -40,9 +40,12 @@
 #             procsub - a <( ) or >( ) in a word of the parent; shell - text
 #             the parent runs as shell source: the argument of bash -c, sh -c,
 #             zsh -c, dash -c, ksh -c or fish -c, of eval, of trap and of
-#             flock -c, and a heredoc or a here-string fed to a shell that
+#             flock -c, of su -c, mise exec -c, nix-shell --run and
+#             --command, script -c and pnpm exec -c, every command of
+#             hyperfine, and a heredoc or a here-string fed to a shell that
 #             reads its commands from stdin; exec - the command find runs
-#             behind -exec, -execdir, -ok or -okdir
+#             behind -exec, -execdir, -ok or -okdir, and the command mise
+#             exec, nix develop, nix shell or nix env shell hands on
 #   pipe      the id of the command whose output this one reads, 0 where none
 #   first     the number, from 1, of the word the command is judged by: the
 #             first word behind the assignments, the redirections and the
@@ -56,17 +59,37 @@
 #             descriptor as written - >, >>, >|, <, <>, >&, <&, &>, &>>, 2>,
 #             2>&, <<, <<-, <<< - and then its target, the delimiter for a
 #             heredoc; a line break inside a word is printed as a space
-# The wrappers read over, each with the options its vendor documents and the
-# value some of them take: timeout, time, nice, nohup, stdbuf, command,
-# builtin, noglob, watch, setsid, ionice and flock, and xargs without an
-# option - the ones Claude Code strips before it matches a rule
+# The wrappers read over - every program that runs its argument or a text as
+# a command on this machine, the group decided on 13 October 2026, the lists
+# of the two vendors among them and not their end - each with the options
+# its vendor documents and the value some of them take: timeout, time, nice,
+# nohup, stdbuf, command, builtin, noglob, watch, setsid, ionice, flock and
+# xargs, the ones Claude Code strips before it matches a rule
 # (code.claude.com/docs/en/permissions, "Wrappers" and "Exec wrappers and
-# find actions", read on 12 October 2026); sudo, env and trap - the ones
-# Codex resolves (github.com/openai/codex, codex-rs/shell-command/src/
-# command_safety/is_dangerous_command.rs at c308e12, read the same day); and
-# exec. command -v and command -V look a command up and run none, xargs with
-# an option is xargs, and zsh's nocorrect is not stripped by the vendor and
-# not read over here.
+# find actions", read on 12 October 2026, xargs with options since 13
+# October); sudo, env and trap, the ones Codex resolves (github.com/openai/
+# codex, codex-rs/shell-command/src/command_safety/is_dangerous_command.rs at
+# c308e12, read the same day); exec; and since 13 October 2026 zsh's
+# nocorrect; doas, su, run0 and pkexec, which run the command as another
+# user; caffeinate, chrt, taskset, strace, valgrind, hyperfine, unbuffer,
+# chronic, script, arch, xcrun, sandbox-exec and systemd-run; and the
+# environment and version runners direnv exec, devbox run, mise exec and x,
+# nix-shell, nix develop, nix shell and nix env shell, asdf exec, rbenv exec,
+# pyenv exec, nodenv exec, volta run, fnm exec, pipenv run, poetry run, pdm
+# run, hatch run, rye run, conda run, pixi run, bundle exec, pnpm exec and
+# yarn exec - each read off its vendor's documentation, named with its
+# address in docs/roadmap.md under the addendum of 13 October 2026 to the
+# entry on the command reader. A text one of them hands to a shell - su -c,
+# mise exec -c, nix-shell --run and --command, script -c, pnpm exec -c and
+# every command of hyperfine - is shell text of its line, relation shell.
+# mise exec, nix-shell, nix develop, nix shell and nix env shell are judged
+# themselves, since the install guard reads what they install or fetch, and
+# the command they hand on behind -- or -c is a line of its own, relation
+# exec, as the command behind find -exec is. command -v and command -V,
+# xcrun --find, doas -C and -L, pkexec --version, chrt --pid and --max,
+# taskset --pid and strace -p look something up or act on a process and run
+# no command; systemd-run with --host, --machine or --capsule and run0 with
+# --machine run the command elsewhere; each of those is the command itself.
 # Nested text is taken apart like the text itself: $( ) and backticks, <( )
 # and >( ), a subshell, a group, the bodies of if, for, while, until, case,
 # select and a function, the argument of the shells named above with -c, of
@@ -79,12 +102,22 @@
 # and a script file named to a shell, since that is another language or a
 # file; what a pipe carries into a shell, since that is the output of a
 # program and stands in no word; the argument of env -S, which the vendor
-# splits by rules of its own; the arguments of ssh, su, doas, chroot, docker
-# exec, nix-shell --run, direnv exec, devbox run, mise exec and npx, which the
-# two vendors above strip nowhere; a case inside $( ) whose pattern ends on a
-# bare parenthesis, which is read as the end of the substitution; an
-# arithmetic $(( )) and the number of a {varname}> redirection, which carry
-# no command.
+# splits by rules of its own; the arguments of ssh, docker exec, chroot,
+# nsenter and every program that runs the command on another machine or in a
+# container, which are not in the group; the arguments of nvm exec, whose
+# optional version no rule tells from the command, of unshare, bwrap and
+# firejail, whose options take two values and more by rules of their own, of
+# ltrace, perf, gdb and lldb, and of npx and every fetch-and-run form, which
+# resolve a package rather than run a word, and of every program this head
+# does not name: what stands on no list goes through, and the install guard
+# reads the fetch-and-run forms at their own names; a case inside $( ) whose
+# pattern ends on a bare parenthesis, which is read as the end of the
+# substitution; an arithmetic $(( )) and the number of a {varname}>
+# redirection, which carry no command. A redirection behind a compound
+# command - a group, a subshell, if, for, while, until, case, select, [[ ]],
+# (( )) or a function's body - stands on a line of its own with no judged
+# word, since 13 October 2026, and its heredoc is read after the line as a
+# simple command's is.
 # Exit 2 with one line on stderr: nothing on stdin, or input that is not a
 # JSON object. --self-test produces every outcome above once and every form
 # the text is taken apart in, prints one line per case and exits 1 on the
@@ -201,7 +234,7 @@ b'";                                        expect "a line break inside a word i
   runc 'for f in $(ls) a; do brew install $f; done; for ((i=0;i<3;i++)); do echo $i; done'
   expect "for with in and its substitution, and for (( ))" 0 "1|0|subst|0|1|ls" "2|0|list|0|1|brew|install|\$f" "3|0|list|0|1|echo|\$i"
   runc 'while read -r l; do echo "$l"; done < f; until false; do b; done'
-  expect "while and until" 0 "1|0|list|0|1|read|-r|l" "2|0|list|0|1|echo|\$l" "3|0|list|0|1|false" "4|0|list|0|1|b"
+  expect "while and until, the redirection behind done a line of its own" 0 "1|0|list|0|1|read|-r|l" "2|0|list|0|1|echo|\$l" "3|0|list|0|0|<|f" "4|0|list|0|1|false" "5|0|list|0|1|b"
   runc 'case x in x) brew install ripgrep;; (a|b) c;& d) e;;& *) f;; esac'
   expect "case: every list, the pattern separators ;; ;& ;;&, a pattern in parentheses" 0 "1|0|list|0|1|brew|install|ripgrep" "2|0|list|0|1|c" "3|0|list|0|1|e" "4|0|list|0|1|f"
   runc 'select o in a b; do echo $o; done'; expect "select" 0 "1|0|list|0|1|echo|\$o"
@@ -275,6 +308,16 @@ B"
   runc '> out brew install x';              expect "a redirection before the command: the first word is behind it" 0 "1|0|list|0|3|>|out|brew|install|x"
   runc 'echo 2>f 2 > g';                    expect "digits before > are a descriptor, a separate 2 is a word" 0 "1|0|list|0|1|echo|2>|f|2|>|g"
   runc 'exec > log; > f';                   expect "exec with a redirection alone, and a redirection alone: no first word" 0 "1|0|list|0|0|exec|>|log" "2|0|list|0|0|>|f"
+  runc '{ printf x; } > .claude/unattended.local; ( echo a ) >> f 2>&1; for l in a b; do echo $l; done > g; if true; then a; fi < h; f() { b; } > log; f'
+  expect "a redirection behind a group, a subshell, for, if and a function body: a line of its own with no judged word" 0 "1|0|list|0|1|printf|x" "2|0|list|0|0|>|.claude/unattended.local" "3|0|list|0|1|echo|a" "4|0|list|0|0|>>|f|2>&|1" "5|0|list|0|1|echo|\$l" "6|0|list|0|0|>|g" "7|0|list|0|1|true" "8|0|list|0|1|a" "9|0|list|0|0|<|h" "10|0|list|0|1|b" "11|0|list|0|0|>|log" "12|0|list|0|1|f"
+  runc "while read l; do echo \$l; done <<EOF
+brew install x
+EOF
+echo done"
+  expect "a heredoc behind a compound: noted for the body after the line, which is no command" 0 "1|0|list|0|1|read|l" "2|0|list|0|1|echo|\$l" "3|0|list|0|0|<<|EOF" "4|0|list|0|1|echo|done"
+  lines "a heredoc behind a compound: noted for the body after the line, which is no command" 4
+  runc '{ c; } > o | d; { echo $(a); } > "$(b)"'
+  expect "a pipe behind a compound with a redirection reads from the last command of the body; a substitution in the target is a command of the redirection line" 0 "1|0|list|0|1|c" "2|0|list|0|0|>|o" "3|0|list|1|1|d" "4|0|list|0|1|echo|\$(a)" "5|4|subst|0|1|a" "6|0|list|0|0|>|\$(b)" "7|6|subst|0|1|b"
 
   # the first word behind assignments and wrappers
   runc 'GOBIN=/srv/tools FOO="a b" go install x@latest'
@@ -284,8 +327,9 @@ B"
   expect "timeout with its options and the duration" 0 "1|0|list|0|3|timeout|600|brew|install|a" "2|0|list|0|7|timeout|-s|KILL|-k|5|10|b" "3|0|list|0|4|timeout|--signal=INT|1|c"
   runc 'nice -n 10 a; nice -10 b; nohup c; stdbuf -oL d; stdbuf -o L e; /usr/bin/time -f x f; command g; builtin h; noglob i; setsid -w k; watch -n 2 l; ionice -c 3 m'
   expect "nice, nohup, stdbuf, time, command, builtin, noglob, setsid, watch, ionice" 0 "1|0|list|0|4|nice|-n|10|a" "2|0|list|0|3|nice|-10|b" "3|0|list|0|2|nohup|c" "4|0|list|0|3|stdbuf|-oL|d" "5|0|list|0|4|stdbuf|-o|L|e" "6|0|list|0|4|/usr/bin/time|-f|x|f" "7|0|list|0|2|command|g" "8|0|list|0|2|builtin|h" "9|0|list|0|2|noglob|i" "10|0|list|0|3|setsid|-w|k" "11|0|list|0|4|watch|-n|2|l" "12|0|list|0|4|ionice|-c|3|m"
-  runc 'command -v brew; xargs brew install; ls | xargs -n1 rm; nocorrect brew install x'
-  expect "command -v, xargs with an option and nocorrect are the command themselves; bare xargs is read over" 0 "1|0|list|0|1|command|-v|brew" "2|0|list|0|2|xargs|brew|install" "4|0|list|3|1|xargs|-n1|rm" "5|0|list|0|1|nocorrect|brew|install|x"
+  runc 'command -v brew; xargs brew install';  expect "command -v is the command itself; bare xargs is read over" 0 "1|0|list|0|1|command|-v|brew" "2|0|list|0|2|xargs|brew|install"
+  runc 'ls | xargs -n1 brew install; xargs -I{} go install {}@latest < tools.txt; xargs -0 -P 4 -n 1 rm; nocorrect brew install x; nocorrect noglob b'
+  expect "xargs with its options, and nocorrect" 0 "2|0|list|1|3|xargs|-n1|brew|install" "3|0|list|0|3|xargs|-I{}|go|install|{}@latest|<|tools.txt" "4|0|list|0|7|xargs|-0|-P|4|-n|1|rm" "5|0|list|0|2|nocorrect|brew|install|x" "6|0|list|0|3|nocorrect|noglob|b"
   runc 'sudo brew install a; sudo -u root -E B=1 -- brew install b; sudo -uroot c; sudo'
   expect "sudo with its options and assignments, and sudo alone" 0 "1|0|list|0|2|sudo|brew|install|a" "2|0|list|0|7|sudo|-u|root|-E|B=1|--|brew|install|b" "3|0|list|0|3|sudo|-uroot|c" "4|0|list|0|0|sudo"
   runc 'env A=1 brew install a; env -i -u X -C /tmp -- b; env -S "c d"'
@@ -294,6 +338,19 @@ B"
   expect "exec, a backslash before the name, a path to the name" 0 "1|0|list|0|2|exec|brew|install|a" "2|0|list|0|4|exec|-a|name|b" "3|0|list|0|1|brew|install|c" "4|0|list|0|1|/opt/homebrew/bin/brew|install|d"
   runc 'sudo env X=1 timeout 5 nice brew install a'
   expect "wrappers behind wrappers" 0 "1|0|list|0|7|sudo|env|X=1|timeout|5|nice|brew|install|a"
+  runc "doas brew install a; doas -u root -n b; doas -C /etc/doas.conf c; su -c 'brew install d' root; su - root -c 'e'; su root; run0 f; run0 --unit=x -u root g; run0 --machine=m h; pkexec --user root i; pkexec --version; sudo -Eu root brew install j"
+  expect "doas, su, run0 and pkexec, and a cluster of sudo options whose last letter takes a value" 0 "1|0|list|0|2|doas|brew|install|a" "2|0|list|0|5|doas|-u|root|-n|b" "3|0|list|0|1|doas|-C|/etc/doas.conf|c" "4|0|list|0|0|su|-c|brew install d|root" "5|4|shell|0|1|brew|install|d" "6|0|list|0|0|su|-|root|-c|e" "7|6|shell|0|1|e" "8|0|list|0|0|su|root" "9|0|list|0|2|run0|f" "10|0|list|0|5|run0|--unit=x|-u|root|g" "11|0|list|0|1|run0|--machine=m|h" "12|0|list|0|4|pkexec|--user|root|i" "13|0|list|0|1|pkexec|--version" "14|0|list|0|4|sudo|-Eu|root|brew|install|j"
+  runc 'caffeinate -i brew install a; caffeinate -t 60 -s b; chrt -f 10 c; chrt 0 d; chrt -p 10 1234; taskset -c 0-3 e; taskset 0x1 f; strace -o out -e trace=file g; strace -p 1; valgrind --leak-check=full ./h; unbuffer i; chronic -e j; arch -x86_64 k; arch -arch arm64 -e A=1 l; xcrun --sdk macosx clang m; xcrun --find clang; sandbox-exec -n no-network n; systemd-run --unit=x -p MemoryMax=1G o; systemd-run -M box p'
+  expect "caffeinate, chrt, taskset, strace, valgrind, unbuffer, chronic, arch, xcrun, sandbox-exec and systemd-run" 0 "1|0|list|0|3|caffeinate|-i|brew|install|a" "2|0|list|0|5|caffeinate|-t|60|-s|b" "3|0|list|0|4|chrt|-f|10|c" "4|0|list|0|3|chrt|0|d" "5|0|list|0|1|chrt|-p|10|1234" "6|0|list|0|4|taskset|-c|0-3|e" "7|0|list|0|3|taskset|0x1|f" "8|0|list|0|6|strace|-o|out|-e|trace=file|g" "9|0|list|0|1|strace|-p|1" "10|0|list|0|3|valgrind|--leak-check=full|./h" "11|0|list|0|2|unbuffer|i" "12|0|list|0|3|chronic|-e|j" "13|0|list|0|3|arch|-x86_64|k" "14|0|list|0|6|arch|-arch|arm64|-e|A=1|l" "15|0|list|0|4|xcrun|--sdk|macosx|clang|m" "16|0|list|0|1|xcrun|--find|clang" "17|0|list|0|4|sandbox-exec|-n|no-network|n" "18|0|list|0|5|systemd-run|--unit=x|-p|MemoryMax=1G|o" "19|0|list|0|1|systemd-run|-M|box|p"
+  runc "hyperfine -w 3 'brew install a' 'b c' -N; script -q /dev/null d e; script -c 'brew install f' out; script -q out -- g; nix-shell -p ripgrep --run 'brew install h'; nix-shell shell.nix --command 'i'; pnpm -c exec j k; pnpm exec l"
+  expect "hyperfine, script, nix-shell and pnpm exec -c hand a text to a shell" 0 "1|0|list|0|0|hyperfine|-w|3|brew install a|b c|-N" "2|1|shell|0|1|brew|install|a" "3|1|shell|0|1|b|c" "4|0|list|0|4|script|-q|/dev/null|d|e" "5|0|list|0|0|script|-c|brew install f|out" "6|5|shell|0|1|brew|install|f" "7|0|list|0|5|script|-q|out|--|g" "8|0|list|0|1|nix-shell|-p|ripgrep|--run|brew install h" "9|8|shell|0|1|brew|install|h" "10|0|list|0|1|nix-shell|shell.nix|--command|i" "11|10|shell|0|1|i" "12|0|list|0|0|pnpm|-c|exec|j|k" "13|12|shell|0|1|j|k" "14|0|list|0|3|pnpm|exec|l"
+  runc 'direnv exec . brew install a; devbox run -- b; devbox run --env X=1 c; mise exec -- go install d@latest; mise x node@20 -- e; mise exec -c "f g"; mise install h; nix develop -c i; nix shell nixpkgs#j -c k; nix env shell nixpkgs#l --command m; nix run nixpkgs#n'
+  expect "direnv exec, devbox run, mise exec and the nix shells: mise and nix judged themselves, the command handed on a line of its own" 0 "1|0|list|0|4|direnv|exec|.|brew|install|a" "2|0|list|0|4|devbox|run|--|b" "3|0|list|0|5|devbox|run|--env|X=1|c" "4|0|list|0|1|mise|exec|--|go|install|d@latest" "5|4|exec|0|1|go|install|d@latest" "6|0|list|0|1|mise|x|node@20|--|e" "7|6|exec|0|1|e" "8|0|list|0|1|mise|exec|-c|f g" "9|8|shell|0|1|f|g" "10|0|list|0|1|mise|install|h" "11|0|list|0|1|nix|develop|-c|i" "12|11|exec|0|1|i" "13|0|list|0|1|nix|shell|nixpkgs#j|-c|k" "14|13|exec|0|1|k" "15|0|list|0|1|nix|env|shell|nixpkgs#l|--command|m" "16|15|exec|0|1|m" "17|0|list|0|1|nix|run|nixpkgs#n"
+  lines "direnv exec, devbox run, mise exec and the nix shells: mise and nix judged themselves, the command handed on a line of its own" 17
+  runc 'asdf exec a; rbenv exec b; pyenv exec -N c; nodenv exec d; volta run --node 20 e; fnm exec --using=18 f; fnm exec --using 18 g; pipenv run h; pipenv --python 3.12 run i; poetry run j; poetry -C x run k; pdm run -p x l; hatch run +py=3.12 m; hatch -e test run n; rye run o; conda run -n env -- p; pixi run -e dev q; bundle exec r; yarn exec s; poetry install t'
+  expect "the exec and run forms of the version and environment managers, another second word the program itself" 0 "1|0|list|0|3|asdf|exec|a" "2|0|list|0|3|rbenv|exec|b" "3|0|list|0|4|pyenv|exec|-N|c" "4|0|list|0|3|nodenv|exec|d" "5|0|list|0|5|volta|run|--node|20|e" "6|0|list|0|4|fnm|exec|--using=18|f" "7|0|list|0|5|fnm|exec|--using|18|g" "8|0|list|0|3|pipenv|run|h" "9|0|list|0|5|pipenv|--python|3.12|run|i" "10|0|list|0|3|poetry|run|j" "11|0|list|0|5|poetry|-C|x|run|k" "12|0|list|0|5|pdm|run|-p|x|l" "13|0|list|0|4|hatch|run|+py=3.12|m" "14|0|list|0|5|hatch|-e|test|run|n" "15|0|list|0|3|rye|run|o" "16|0|list|0|6|conda|run|-n|env|--|p" "17|0|list|0|5|pixi|run|-e|dev|q" "18|0|list|0|3|bundle|exec|r" "19|0|list|0|3|yarn|exec|s" "20|0|list|0|1|poetry|install|t"
+  runc 'mise exec -- sh -c "brew install a"; find . -exec bash -c "b" \;'
+  expect "a shell with -c behind mise exec and behind find -exec: read, since the command handed on is judged as a line" 0 "2|1|exec|0|1|sh|-c|brew install a" "3|2|shell|0|1|brew|install|a" "5|4|exec|0|1|bash|-c|b" "6|5|shell|0|1|b"
 
   # what cannot be taken apart goes through: parsed no, no line
   runc 'echo "x && brew install ripgrep';   expect "a double quote not closed" 0 "parsed: no: a double quote is not closed"
@@ -323,6 +380,37 @@ BEGIN {
   WANT["hook_event_name"] = 1; WANT["tool_name"] = 1; WANT["cwd"] = 1
   WANT["permission_mode"] = 1; WANT["session_id"] = 1
   WANT["tool_input.command"] = 1; WANT["tool_input.file_path"] = 1
+  # the wrappers read over, one word and two words, with the options that take a value before and behind the second word
+  ONEWORD = " timeout time nice nohup stdbuf command builtin noglob nocorrect watch setsid ionice flock xargs sudo doas su run0 pkexec env trap exec caffeinate chrt taskset strace valgrind hyperfine unbuffer chronic script arch xcrun sandbox-exec systemd-run nix-shell "
+  TWOWORD = " direnv devbox mise nix asdf rbenv pyenv nodenv volta fnm pipenv poetry pdm hatch rye conda pixi bundle pnpm pn yarn "
+  SUBS["direnv"] = " exec "; SUBS["devbox"] = " run "; SUBS["mise"] = " exec x "; SUBS["nix"] = " develop shell env "
+  SUBS["asdf"] = " exec "; SUBS["rbenv"] = " exec "; SUBS["pyenv"] = " exec "; SUBS["nodenv"] = " exec "
+  SUBS["volta"] = " run "; SUBS["fnm"] = " exec "; SUBS["pipenv"] = " run "; SUBS["poetry"] = " run "; SUBS["pdm"] = " run "
+  SUBS["hatch"] = " run "; SUBS["rye"] = " run "; SUBS["conda"] = " run "; SUBS["pixi"] = " run "; SUBS["bundle"] = " exec "
+  SUBS["pnpm"] = " exec "; SUBS["pn"] = " exec "; SUBS["yarn"] = " exec "
+  PRE["devbox"] = " -c --config -e --env --env-file --environment "; POST["devbox"] = PRE["devbox"]
+  PRE["mise"] = " -C --cd -E --env -j --jobs -P --profile "
+  PRE["nix"] = " --option:2 --log-format -I --include --arg:2 --argstr:2 --eval-store --store -j --max-jobs --cores --builders --extra-experimental-features --experimental-features --access-tokens "
+  PRE["pyenv"] = ""; POST["pyenv"] = ""
+  POST["volta"] = " --node --npm --yarn --pnpm --env "
+  PRE["fnm"] = " --using --fnm-dir --log-level --arch --node-dist-mirror --version-file-strategy "; POST["fnm"] = PRE["fnm"]
+  PRE["pipenv"] = " --python --pypi-mirror "
+  PRE["poetry"] = " -C --directory -P --project "
+  PRE["pdm"] = " -c --config "; POST["pdm"] = " -p --project -k --skip --venv --env --env-file --working-dir "
+  PRE["hatch"] = " -e --env -p --project --config --data-dir --cache-dir "
+  PRE["rye"] = " --env-file "; POST["rye"] = " --pyproject "
+  POST["conda"] = " -n --name -p --prefix --cwd "
+  PRE["pixi"] = " --color "; POST["pixi"] = " -e --environment -m --manifest-path --auth-file --pypi-keyring-provider --concurrent-solves --concurrent-downloads --color "
+  PRE["bundle"] = " -r --retry --gemfile "; POST["bundle"] = PRE["bundle"]
+  PRE["pnpm"] = " -C --dir --filter --resume-from --reporter --loglevel "; PRE["pn"] = PRE["pnpm"]
+  PRE["yarn"] = " --cwd "
+  MISEOPTS = " -j --jobs --allow-env --allow-net --allow-read --allow-write --secrets "
+  HYPEROPTS = " -w --warmup -m --min-runs -M --max-runs -r --runs -s --setup -p --prepare -c --cleanup -C --conclude -n --command-name -L:2 --parameter-list:2 -P:3 --parameter-scan:3 -D --parameter-step-size -u --time-unit --export-asciidoc --export-csv --export-json --export-markdown --export-orgmode --input --output --style --sort --min-benchmarking-time --reference --metrics --env -S --shell "
+  SCRIPTOPTS = " -E --echo -B --log-io -I --log-in -O --log-out -T --log-timing -m --logging-format -o --output-limit -t "
+  STRACEOPTS = " -a -b -e -E -I -o -O -P -s -S -u -U -X --columns --detach-on --trace --env --interruptible --output --summary-syscall-overhead --trace-path --string-limit --summary-sort-by --user --summary-columns --const-print-style --stack-trace-frame-limit --syscall-limit --signal --status --read --write --decode-fds --decode-pids --inject --fault --kvm --attach "
+  SYSRUNOPTS = " -u --unit -p --property --description --slice --expand-environment --service-type --uid --gid --nice --working-directory -E --setenv --on-active --on-boot --on-startup --on-unit-active --on-unit-inactive --on-calendar --path-property --socket-property --timer-property --job-mode --background --output --json --root-directory "
+  RUN0OPTS = " -u --user -g --group -D --chdir --unit --property --description --slice --nice --setenv --background --machine --shell-prompt-prefix --lightweight --area "
+  XARGSOPTS = " -E -I -J -L -n -P -R -S -s -a -d --arg-file --delimiter --max-args --max-procs --max-chars --process-slot-var "
 }
 { J = J $0 "\n" }
 function err(msg) { printf "%s: %s\n", me, msg > "/dev/stderr"; exit 2 }
@@ -515,6 +603,8 @@ function read_backtick(   s, c) {
   perr("a backtick is not closed"); return ""
 }
 function add_nt(text, rel) { NTN[D]++; NT[D, NTN[D]] = text; NTR[D, NTN[D]] = rel }
+# a text the command at depth d hands to a shell, noted by a wrapper; taken apart once the line is emitted
+function add_st(d, text) { STN[d]++; ST[d, STN[d]] = text }
 # an expansion at P: $(( )), $( ), ${ } or a backtick; the raw text is returned, a command noted
 function read_expansion(   inner) {
   if (ch3() == "$((") { P += 3; inner = scan_balanced("arith"); return "$((" inner "))" }
@@ -617,28 +707,141 @@ function read_redir(   q, op, c) {
 }
 function basename(w,   i) { i = w; while (index(i, "/") > 0) i = substr(i, index(i, "/") + 1); return i }
 function is_assignment(w) { return w ~ /^[A-Za-z_][A-Za-z0-9_]*(\[[^]]*\])?\+?=/ }
-# skips option words from j on; an option named in vals with nothing attached takes the next word as its value
+# the number of values an option takes, read off a list " -x --long -L:2 ":
+# one where it is listed without a count, none where it is not listed
+function optn(vals, w,   p) {
+  p = index(vals, " " w ":")
+  if (p > 0) return int(substr(vals, p + length(w) + 2))
+  return index(vals, " " w " ") > 0 ? 1 : 0
+}
+# the words an option at w takes behind it: its values where nothing is
+# attached; in a cluster of letters the first letter that takes a value takes
+# the rest of the cluster, or the next word where it is the last letter
+function opt_width(vals, w,   n, k) {
+  if (w ~ /^--/) return index(w, "=") == 0 ? optn(vals, w) : 0
+  if (length(w) == 2 || index(vals, " " w " ") > 0 || index(vals, " " w ":") > 0) return optn(vals, w)
+  if (w ~ /^-[A-Za-z]+$/) for (k = 2; k <= length(w); k++) if (optn(vals, "-" substr(w, k, 1)) > 0) return k == length(w) ? optn(vals, "-" substr(w, k, 1)) : 0
+  return 0
+}
+# skips option words from j on, each with the values it takes
 function skip_opts(d, j, vals,   w) {
   while (j <= NW[d]) {
     w = W[d, j]
     if (is_redir_op(w)) { j += 2; continue }
     if (w == "--") return j + 1
     if (w !~ /^-/) return j
-    if (w ~ /^--/) { if (index(w, "=") == 0 && index(vals, " " w " ") > 0) j++; j++; continue }
-    if (length(w) == 2 && index(vals, " " w " ") > 0) j++
-    j++
+    j += opt_width(vals, w) + 1
   }
   return j
 }
-# the index of the word behind the wrapper at i, NW+1 where it leaves no command, -1 where it is the command itself
-function skip_wrapper(d, i, name,   j, w, cmode) {
+# whether one of the options in list stands among the option words from j on,
+# an attached =value left out, a letter of a cluster counted
+function has_opt(d, j, list,   w, k) {
+  while (j <= NW[d]) {
+    w = W[d, j]
+    if (is_redir_op(w)) { j += 2; continue }
+    if (w == "--" || w !~ /^-/) return 0
+    sub(/=.*/, "", w)
+    if (index(list, " " w " ") > 0) return 1
+    if (w ~ /^-[A-Za-z]+$/ && length(w) > 2) for (k = 2; k <= length(w); k++) if (index(list, " -" substr(w, k, 1) " ") > 0) return 1
+    j++
+  }
+  return 0
+}
+# the index of the word behind the wrapper at i, NW+1 where it leaves no
+# command, -1 where it is the command itself; a text it hands to a shell is
+# noted with add_st, and the command mise exec and the nix shells hand on is
+# noted in CHILD as the index of its first word
+function skip_wrapper(d, i, name,   j, w, cmode, dd, k) {
   j = i + 1
-  if (name == "nohup" || name == "builtin" || name == "noglob" || name == "setsid") return skip_opts(d, j, "")
+  if (name == "nohup" || name == "builtin" || name == "noglob" || name == "setsid" || name == "valgrind" || name == "unbuffer" || name == "chronic") return skip_opts(d, j, "")
+  if (name == "nocorrect") return j
   if (name == "command") {
     while (j <= NW[d] && W[d, j] ~ /^-/) { if (W[d, j] ~ /^-[pvV]+$/ && W[d, j] ~ /[vV]/) return -1; if (W[d, j] == "--") { j++; break } j++ }
     return j
   }
-  if (name == "xargs") { if (j <= NW[d] && W[d, j] ~ /^-/) return -1; return j }
+  if (name == "xargs") return skip_opts(d, j, XARGSOPTS)
+  if (name == "caffeinate") return skip_opts(d, j, " -t -w ")
+  if (name == "arch") return skip_opts(d, j, " -arch -d -e ")
+  if (name == "sandbox-exec") return skip_opts(d, j, " -f -n -p -D ")
+  if (name == "pkexec") { if (has_opt(d, j, " --version --help ")) return -1; return skip_opts(d, j, " --user ") }
+  if (name == "run0") { if (has_opt(d, j, " --machine ")) return -1; return skip_opts(d, j, RUN0OPTS) }
+  if (name == "systemd-run") { if (has_opt(d, j, " -H --host -M --machine -C --capsule ")) return -1; return skip_opts(d, j, SYSRUNOPTS) }
+  if (name == "strace") { if (has_opt(d, j, " -p --attach -h --help -V --version ")) return -1; return skip_opts(d, j, STRACEOPTS) }
+  if (name == "xcrun") { if (has_opt(d, j, " -f --find -find --show-sdk-path -show-sdk-path --show-sdk-version -show-sdk-version --show-sdk-build-version -show-sdk-build-version --show-sdk-platform-path -show-sdk-platform-path --show-sdk-platform-version -show-sdk-platform-version --show-toolchain-path -show-toolchain-path -h --help -version --version ")) return -1; return skip_opts(d, j, " --sdk -sdk --toolchain -toolchain ") }
+  if (name == "chrt") { if (has_opt(d, j, " -p --pid -m --max -h --help -V --version ")) return -1; j = skip_opts(d, j, " -T --sched-runtime -P --sched-period -D --sched-deadline -U -X "); if (j <= NW[d] && W[d, j] ~ /^[0-9]+$/) j++; return j }
+  if (name == "taskset") { if (has_opt(d, j, " -p --pid -h --help -V --version ")) return -1; j = skip_opts(d, j, ""); if (j <= NW[d]) j++; return j }
+  if (name == "doas") {
+    # -C and -L run no command, -s runs a shell; -a and -u take a value
+    while (j <= NW[d] && W[d, j] ~ /^-/) {
+      w = W[d, j]
+      if (w == "--") { j++; break }
+      if (w ~ /[CL]/) return -1
+      if (w ~ /s/) return NW[d] + 1
+      if (w ~ /[au]$/) j++
+      j++
+    }
+    return j
+  }
+  if (name == "su") {
+    # the text of -c, --command and --session-command is run by the shell of the user named; the words behind the user are arguments of that shell and no command
+    while (j <= NW[d]) {
+      w = W[d, j]
+      if (w == "--") break
+      if (w == "-") { j++; continue }
+      if (w !~ /^-/) {
+        # the user; -c among the arguments behind it reaches the shell as its own -c, so its text is shell text too
+        for (k = j + 1; k < NW[d]; k++) if (W[d, k] == "-c" || W[d, k] ~ /^-[^-]*c$/) { add_st(d, W[d, k + 1]); break }
+        break
+      }
+      if (w == "--command" || w == "--session-command") { if (j < NW[d]) add_st(d, W[d, j + 1]); j += 2; continue }
+      if (w ~ /^--(session-)?command=/) { sub(/^--[a-z-]*=/, "", w); add_st(d, w); j++; continue }
+      if (w ~ /^-[^-]*c$/) { if (j < NW[d]) add_st(d, W[d, j + 1]); j += 2; continue }
+      if (w ~ /^--/) { j += opt_width(" --group --supp-group --shell --whitelist-environment ", w) + 1; continue }
+      if (w ~ /^-[^-]*[gGsw]$/) { j += 2; continue }
+      j++
+    }
+    return NW[d] + 1
+  }
+  if (name == "hyperfine") {
+    # every word that is no option is a command, run through a shell with -S and split like one without
+    while (j <= NW[d]) {
+      w = W[d, j]
+      if (is_redir_op(w)) { j += 2; continue }
+      if (w == "--") { j++; continue }
+      if (w ~ /^-/) { j += opt_width(HYPEROPTS, w) + 1; continue }
+      add_st(d, w); j++
+    }
+    return NW[d] + 1
+  }
+  if (name == "script") {
+    # -c and --command take shell text; otherwise the first word behind the options names the file and the command stands behind it, behind -- where one stands
+    cmode = 0; dd = 0
+    while (j <= NW[d]) {
+      w = W[d, j]
+      if (is_redir_op(w)) { j += 2; continue }
+      if (w == "--") { j++; dd = 1; break }
+      if (w !~ /^-/) { break }
+      if (w == "-c" || w == "--command") { if (j < NW[d]) add_st(d, W[d, j + 1]); cmode = 1; j += 2; continue }
+      if (w ~ /^--command=/) { sub(/^--command=/, "", w); add_st(d, w); cmode = 1; j++; continue }
+      if (w ~ /^-[^-]*c$/) { if (j < NW[d]) add_st(d, W[d, j + 1]); cmode = 1; j += 2; continue }
+      j += opt_width(SCRIPTOPTS, w) + 1
+    }
+    if (cmode) return NW[d] + 1
+    if (dd) return j
+    if (j <= NW[d]) j++
+    if (j <= NW[d] && W[d, j] == "--") j++
+    return j
+  }
+  if (name == "nix-shell") {
+    # judged itself, since -p fetches; the text of --run and --command is shell text of this line
+    for (k = j; k <= NW[d]; k++) {
+      w = W[d, k]
+      if (w == "--run" || w == "--command") { if (k < NW[d]) add_st(d, W[d, k + 1]); k++ }
+      else if (w ~ /^--(run|command)=/) { sub(/^--[a-z]*=/, "", w); add_st(d, w) }
+    }
+    return -1
+  }
   if (name == "timeout") { j = skip_opts(d, j, " -s --signal -k --kill-after "); if (j <= NW[d]) j++; return j }
   if (name == "time") return skip_opts(d, j, " -f --format -o --output ")
   if (name == "nice") return skip_opts(d, j, " -n --adjustment ")
@@ -658,7 +861,7 @@ function skip_wrapper(d, i, name,   j, w, cmode) {
     if (j > NW[d]) return j
     j++
     if (!cmode) { while (j <= NW[d] && W[d, j] ~ /^-/) { w = W[d, j]; if (w == "-c" || w == "--command" || w ~ /^-[^-]*c/) cmode = 1; j++ } }
-    if (cmode) { if (j <= NW[d]) SHELLTEXT[d] = W[d, j]; return NW[d] + 1 }
+    if (cmode) { if (j <= NW[d]) add_st(d, W[d, j]); return NW[d] + 1 }
     return j
   }
   if (name == "sudo") { j = skip_opts(d, j, " -u --user -g --group -p --prompt -C --close-from -D --chdir -h --host -r --role -t --type -T --command-timeout -U --other-user "); while (j <= NW[d] && is_assignment(W[d, j])) j++; if (j <= NW[d] && W[d, j] == "--") j++; return j }
@@ -666,10 +869,48 @@ function skip_wrapper(d, i, name,   j, w, cmode) {
   if (name == "exec") return skip_opts(d, j, " -a ")
   if (name == "trap") {
     while (j <= NW[d] && W[d, j] ~ /^-/ && W[d, j] != "-") { if (W[d, j] == "--") { j++; break } if (W[d, j] ~ /^-[lpP]+$/) return -1; j++ }
-    if (j <= NW[d] && W[d, j] != "-" && W[d, j] != "") SHELLTEXT[d] = W[d, j]
+    if (j <= NW[d] && W[d, j] != "-" && W[d, j] != "") add_st(d, W[d, j])
     return NW[d] + 1
   }
   return -1
+}
+# the index of the word behind a two-word wrapper at i - the program, its
+# options, its second word, the options behind that - NW+1 where it leaves no
+# command, -1 where the second word is another or the program is judged itself
+function skip_two(d, i, name,   j, sc, w, k, text) {
+  j = skip_opts(d, i + 1, PRE[name])
+  if (j > NW[d]) return -1
+  sc = W[d, j]
+  if (name == "nix") {
+    # nix develop, nix shell and nix env shell: the command behind -c or --command is handed on as a line of its own
+    if (sc == "env" && j < NW[d] && W[d, j + 1] == "shell") j++
+    else if (sc != "develop" && sc != "shell") return -1
+    for (k = j + 1; k <= NW[d]; k++) { w = W[d, k]; if (w == "-c" || w == "--command") { if (k < NW[d]) CHILD[d] = k + 1; break } }
+    return -1
+  }
+  if (index(SUBS[name], " " sc " ") == 0) return -1
+  j++
+  if (name == "mise") {
+    # the tools before -- are not the command; -c takes shell text; the command stands behind --
+    while (j <= NW[d]) {
+      w = W[d, j]
+      if (w == "--") { if (j < NW[d]) CHILD[d] = j + 1; break }
+      if (w == "-c" || w == "--command") { if (j < NW[d]) add_st(d, W[d, j + 1]); j += 2; continue }
+      if (w ~ /^--command=/) { sub(/^--command=/, "", w); add_st(d, w); j++; continue }
+      if (w ~ /^-/) { j += opt_width(MISEOPTS, w) + 1; continue }
+      j++
+    }
+    return -1
+  }
+  if (name == "direnv") return j <= NW[d] ? j + 1 : j
+  if (name == "pnpm" || name == "pn") {
+    # -c or --shell-mode before exec: the words behind exec, joined, are run by a shell
+    if (has_opt(d, i + 1, " -c --shell-mode ")) { text = ""; for (k = j; k <= NW[d]; k++) text = text (k > j ? " " : "") W[d, k]; if (text != "") add_st(d, text); return NW[d] + 1 }
+    return j
+  }
+  j = skip_opts(d, j, POST[name])
+  if (name == "hatch") while (j <= NW[d] && W[d, j] ~ /^\+/) j++
+  return j
 }
 # the number of the word the command at depth d is judged by, 0 where none
 function first_of(d,   i, name, j) {
@@ -678,9 +919,14 @@ function first_of(d,   i, name, j) {
     if (is_assignment(W[d, i])) { i++; continue }
     if (is_redir_op(W[d, i])) { i += 2; continue }
     name = basename(W[d, i])
-    if (index(" timeout time nice nohup stdbuf command builtin noglob watch setsid ionice flock xargs sudo env trap exec ", " " name " ") > 0) {
+    if (index(ONEWORD, " " name " ") > 0) {
       j = skip_wrapper(d, i, name)
       if (j < 0) return i
+      i = j; continue
+    }
+    if (index(TWOWORD, " " name " ") > 0) {
+      j = skip_two(d, i, name)
+      if (j < 0) { return i }
       i = j; continue
     }
     return i
@@ -713,7 +959,8 @@ function shell_mode(d, f,   j, w, cmode, sflag) {
 function clean(w) { gsub(/\n/, " ", w); gsub(/\x1f/, " ", w); return w }
 function emit(d, parent, rel, pipe,   i, line) {
   NID++
-  line = NID US parent US rel US pipe US first_of(d)
+  FIRSTW[d] = first_of(d)
+  line = NID US parent US rel US pipe US FIRSTW[d]
   for (i = 1; i <= NW[d]; i++) line = line US clean(W[d, i])
   OUT = OUT line "\n"
   return NID
@@ -746,7 +993,7 @@ function flush_nt(parent,   k, n) {
 }
 function parse_text(text, parent, rel,   sS, sP, sN) {
   sS = S; sP = P; sN = N
-  D++; S = text; P = 1; N = length(S); NTN[D] = 0; HPN[D] = 0; PARENT[D] = parent; REL[D] = rel; SHELLTEXT[D] = ""
+  D++; S = text; P = 1; N = length(S); NTN[D] = 0; HPN[D] = 0; PARENT[D] = parent; REL[D] = rel; STN[D] = 0; CHILD[D] = 0
   parse_list(" ")
   if (PERR == "" && P <= N) { skip_newlines(); if (P <= N) perr(Q peek_token() Q " without the opening it closes") }
   if (PERR == "") flush_heredocs()
@@ -809,17 +1056,28 @@ function parse_pipeline(   last, w) {
     last = parse_command(last)
   }
 }
-# the redirections behind a compound command, which hold no command
-function compound_end(   op) {
+# the redirections behind a compound command: a line of their own with no
+# judged word, read as those of a simple command are, a heredoc among them noted for
+# the body after the line; the id of the last command of the body stays the one a
+# pipe behind the compound reads from
+function compound_end(   op, w, d, first, last) {
+  d = D; NW[d] = 0; NTN[d] = 0; STN[d] = 0; CHILD[d] = 0
+  first = HPN[d] + 1
   while (PERR == "") {
     skip_blanks()
     op = read_redir()
     if (op == "") break
+    NW[d]++; W[d, NW[d]] = op
     skip_blanks()
     if (P > N || ch() == "\n" || index(";&|()", ch()) > 0) { perr("a redirection without its target"); return LASTID }
-    read_word()
+    w = read_word(); if (PERR != "") return LASTID
+    NW[d]++; W[d, NW[d]] = w
+    if (op ~ /<<-?$/ && op !~ /<<<$/) { add_heredoc(w, op ~ /<<-$/, WQ) }
   }
-  flush_nt(PARENT[D])
+  if (NW[d] == 0) { flush_nt(PARENT[D]); return LASTID }
+  last = LASTID
+  judge(d, 0, first)
+  LASTID = last
   return LASTID
 }
 function parse_command(pipe,   w, q, name) {
@@ -897,8 +1155,8 @@ function parse_command(pipe,   w, q, name) {
   return parse_simple(pipe)
 }
 # a simple command: its words and redirections, then every command it holds
-function parse_simple(pipe,   d, w, op, id, k, first, name, mode, text, i, j, n) {
-  d = D; NW[d] = 0; NTN[d] = 0; SHELLTEXT[d] = ""
+function parse_simple(pipe,   d, w, op, first) {
+  d = D; NW[d] = 0; NTN[d] = 0; STN[d] = 0; CHILD[d] = 0
   first = HPN[d] + 1
   while (PERR == "") {
     skip_blanks()
@@ -925,14 +1183,30 @@ function parse_simple(pipe,   d, w, op, id, k, first, name, mode, text, i, j, n)
     NW[d]++; W[d, NW[d]] = w
   }
   if (NW[d] == 0) return LASTID
+  return judge(d, pipe, first)
+}
+# the command whose words stand at depth d: its line, then every command it
+# holds - the texts its wrappers hand to a shell, the command mise exec or a
+# nix shell hands on, the words of eval, the actions of find, the -c of a shell and a shell
+# reading its commands from stdin; LASTID stays this command, the one a pipe
+# behind a compound reads from
+function judge(d, pipe, first,   id, k, i, name, mode, text, j, n, hs) {
   id = emit(d, PARENT[d], REL[d], pipe)
   for (k = first; k <= HPN[d]; k++) if (HC[d, k] == -1) HC[d, k] = id
   flush_nt(id)
   LASTID = id
   if (PERR != "") return id
-  # what this command runs as shell text; LASTID stays this command, the one a pipe behind a compound reads from
-  i = first_of(d)
-  if (SHELLTEXT[d] != "") { text = SHELLTEXT[d]; SHELLTEXT[d] = ""; parse_text(text, id, "shell"); LASTID = id; return id }
+  i = FIRSTW[d]
+  if (STN[d] > 0) {
+    n = STN[d]; STN[d] = 0
+    for (k = 1; k <= n && PERR == ""; k++) parse_text(ST[d, k], id, "shell")
+    LASTID = id
+  }
+  if (CHILD[d] > 0) {
+    k = CHILD[d]; CHILD[d] = 0
+    child(d, id, k, NW[d])
+    LASTID = id
+  }
   if (i == 0) return id
   name = basename(W[d, i])
   if (name == "eval") {
@@ -945,12 +1219,12 @@ function parse_simple(pipe,   d, w, op, id, k, first, name, mode, text, i, j, n)
   if (name == "find") {
     for (j = i + 1; j <= NW[d] && PERR == ""; j++) {
       if (W[d, j] == "-exec" || W[d, j] == "-execdir" || W[d, j] == "-ok" || W[d, j] == "-okdir") {
-        n = 0; NW[d + 1] = 0
-        for (k = j + 1; k <= NW[d] && W[d, k] != ";" && W[d, k] != "+"; k++) { NW[d + 1]++; W[d + 1, NW[d + 1]] = W[d, k] }
-        if (NW[d + 1] > 0) emit(d + 1, id, "exec", 0)
+        for (k = j + 1; k <= NW[d] && W[d, k] != ";" && W[d, k] != "+"; k++) ;
+        child(d, id, j + 1, k - 1)
         j = k
       }
     }
+    LASTID = id
     return id
   }
   if (is_shell(name)) {
@@ -958,11 +1232,21 @@ function parse_simple(pipe,   d, w, op, id, k, first, name, mode, text, i, j, n)
     if (mode == "c") { if (SCRIPT != "") parse_text(SCRIPT, id, "shell") }
     else if (mode == "stdin") {
       for (k = first; k <= HPN[d]; k++) if (HC[d, k] == id) HSH[d, k] = 1
-      for (j = i + 1; j <= NW[d]; j++) if (W[d, j] == "<<<" && j < NW[d]) parse_text(W[d, j + 1], id, "shell")
+      hs = 0
+      for (j = i + 1; j <= NW[d]; j++) if (W[d, j] == "<<<" && j < NW[d]) { hs++; HS[d, hs] = W[d, j + 1] }
+      for (j = 1; j <= hs && PERR == ""; j++) parse_text(HS[d, j], id, "shell")
     }
   }
   LASTID = id
   return id
+}
+# the words from a to b of depth d as a command of their own at depth d+1, relation exec of its holder, judged as a line is
+function child(d, parent, a, b,   k) {
+  if (a > b) return
+  NW[d + 1] = 0; NTN[d + 1] = 0; STN[d + 1] = 0; CHILD[d + 1] = 0; HPN[d + 1] = 0
+  for (k = a; k <= b; k++) { NW[d + 1]++; W[d + 1, NW[d + 1]] = W[d, k] }
+  PARENT[d + 1] = parent; REL[d + 1] = "exec"
+  judge(d + 1, 0, 1)
 }
 
 END {

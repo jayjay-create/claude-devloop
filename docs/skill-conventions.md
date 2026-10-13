@@ -844,8 +844,9 @@ empty `HOME`: the eight help commands exit 0 each, and nothing new lies
 under `HOME` or in the project afterwards, npm's own `.npm` aside. The
 question says it since the same day, "tools and browsers for tests", in its
 question line, its yes and its first no. What stays the person's under every answer, beside `sudo`
-and the script piped from the network, and is checked after those two and
-before the places: a branded browser — `chrome`, `msedge` and their six
+— and `doas`, `su`, `run0` and `pkexec`, which run the command as another
+user too, since 13 October 2026 — and the script piped from the network, and
+is checked after those and before the places: a branded browser — `chrome`, `msedge` and their six
 further channels — which Playwright installs at the system's own location
 over the browser already there, the vendor's own warning; and system
 packages, which `install-deps`, `install --with-deps` and Puppeteer's
@@ -1469,14 +1470,36 @@ subshell, a group, the bodies of `if`, `for`, `while`, `until`, `case`,
 here-string fed to such a shell where it reads its commands from stdin, and
 the command `find` runs behind `-exec`; every command judged at its first
 word behind the assignments, the redirections and the wrappers that run
-their argument as the command — `timeout`, `time`, `nice`, `nohup`,
-`stdbuf`, `command`, `builtin`, `noglob`, `watch`, `setsid`, `ionice`,
-`flock` and a bare `xargs`, the ones Claude Code strips before it matches a
-rule (code.claude.com/docs/en/permissions, "Wrappers" and "Exec wrappers and
-`find` actions", read on 12 October 2026), `sudo`, `env` and `trap`, the ones
+their argument as the command — every program that runs its argument or a
+text as a command on this machine, the group the person decided on 13
+October 2026, the lists of the two vendors among them and not their end:
+`timeout`, `time`, `nice`, `nohup`, `stdbuf`, `command`, `builtin`,
+`noglob`, `watch`, `setsid`, `ionice`, `flock` and `xargs`, the ones Claude
+Code strips before it matches a rule (code.claude.com/docs/en/permissions,
+"Wrappers" and "Exec wrappers and `find` actions", read on 12 October 2026;
+`xargs` with options since 13 October), `sudo`, `env` and `trap`, the ones
 Codex resolves (github.com/openai/codex,
 `codex-rs/shell-command/src/command_safety/is_dangerous_command.rs` at
-`c308e12`, read the same day), and `exec`; text in quotes a word of its
+`c308e12`, read the same day), `exec`, and since 13 October 2026 zsh's
+`nocorrect`; `doas`, `su`, `run0` and `pkexec`, which run the command as
+another user and stay the user's under every answer as `sudo` does;
+`caffeinate`, `chrt`, `taskset`, `strace`, `valgrind`, `hyperfine`,
+`unbuffer`, `chronic`, `script`, `arch`, `xcrun`, `sandbox-exec` and
+`systemd-run`; and the environment and version runners `direnv exec`,
+`devbox run`, `mise exec`, `nix-shell`, `nix develop`, `nix shell` and `nix
+env shell`, `asdf exec`, `rbenv exec`, `pyenv exec`, `nodenv exec`, `volta
+run`, `fnm exec`, `pipenv run`, `poetry run`, `pdm run`, `hatch run`, `rye
+run`, `conda run`, `pixi run`, `bundle exec`, `pnpm exec` and `yarn exec` —
+each read off its vendor's documentation with the options that take a
+value, named with its address in the roadmap addendum of 13 October 2026 to
+the entry on the command reader. A program that runs the command on another
+machine or in a container, `ssh`, `docker exec`, `chroot` or `nsenter`, is
+not in the group; a program that resolves its argument as a package rather
+than runs a word, `npx` and the other fetch-and-run forms, is read by the
+install guard at its own name; a program of the group that installs
+something before it runs the command, `mise exec` with a tool missing, is
+read as that installation; and what stands on no list goes through, by the
+rule on doubt below. Text in quotes a word of its
 command and no command, so that `git commit -m "CI runs npx playwright
 install"` and `echo "brew install x"` are read as what they are. A heredoc fed
 to another program, `python3` or `cat`, is not searched: code in another
@@ -1489,13 +1512,20 @@ quote not closed, through" of the rule on doubt below. Not taken apart, each
 named with its reason in the head of the program: what a pipe carries into a
 shell, the output of a program and no word of the command; a script file
 named to a shell; the argument of `env -S`, which the vendor splits by rules
-of its own; the arguments of `ssh`, `su`, `doas`, `chroot`, `docker exec`,
-`nix-shell --run`, `direnv exec`, `devbox run`, `mise exec` and `npx`, which
-neither vendor strips; a `case` inside `$( )` whose pattern ends on a bare
-parenthesis; an arithmetic `$(( ))`, which carries no command. A step of
+of its own; the arguments of the programs outside the group named above,
+and of `nvm exec`, whose optional version no rule tells from the command, of
+`unshare`, `bwrap` and `firejail`, whose options take two values and more
+by rules of their own, and of `ltrace`, `perf`, `gdb` and `lldb`; a `case`
+inside `$( )` whose pattern ends on a bare parenthesis; an arithmetic
+`$(( ))`, which carries no command. A redirection behind a compound command
+stands on a line of its own with no judged word since 13 October 2026, so
+that `{ printf 'build\n'; } > .claude/unattended.local` is a write of the
+mark and a heredoc behind `done` is a body and no command, which until that
+day it was. A step of
 `.github/workflows/stock-take.yml` holds every hook to the one line, every
 handler under `PreToolUse` and the one under `PermissionRequest` in
-`hooks/hooks.json` to `"onFailure": "block"` — a hook that cannot start,
+`hooks/hooks.json` to `"onFailure": "block"`, and since 13 October 2026
+every handler under `PreToolUse` to carrying no `if` field — a hook that cannot start,
 times out or fails blocks the action instead of letting it through, Claude
 Code 2.1.295 and later, the hooks reference under "Block the action when a
 hook fails" — and the program's self-test green, on every pull request.
@@ -2395,11 +2425,17 @@ tool has written the table, and cannot refuse: read off
 `code.claude.com/docs/en/hooks.md` on 5 October 2026, exit 2 on
 `PostToolUse` "Shows stderr to Claude; the tool already ran".
 `hooks/pre-tool-use-table-guard.sh` refuses a `git commit` while the table in
-the working tree carries such a cell, on every branch; the same page says of
-the `if` field that "each subcommand is checked" and that "When Claude Code
-can't determine which commands the Bash input runs, it runs your hook
-regardless of the pattern", so the hook reads the command for `git commit`
-itself. Both stay inert where no `docs/agents/` stands, like the other
+the working tree carries such a cell, on every branch, and reads the command
+for `git commit` itself, since 13 October 2026 on every Bash call: the same
+page says of the `if` field that "Because the `if` filter is best-effort,
+use the permission system rather than a hook to enforce a hard allow or
+deny", and the permissions page says a Bash rule matches the command text
+after the vendor's own wrappers are stripped and not the same program behind
+`sh -c` or a runner such as `caffeinate`, so that the three handlers that
+carried an `if` field — this guard, the guard on the main branch and the
+guard on merging — carry none since that day, decided by the person on 13
+October 2026, since the two prohibitions they hold are hard. Both stay inert
+where no `docs/agents/` stands, like the other
 guards. The sentence naming the four forms stands once, in
 `shared/status-forms.md`, inserted into `setup-checks` and `setup-project`;
 each hook carries a copy in its message, and a check under "Before a
@@ -2416,13 +2452,16 @@ fourth stood until 6 October 2026, `git -C <directory> commit` passing
 unseen, as it did the guard on the main branch: since that day both guards
 read git's own options between `git` and its command — `-C <path>`, `-c
 <name>=<value>`, the options that take a value of their own, any other
-`--option`, `-p` and `-P` — and `hooks/hooks.json` starts both on
-`Bash(git *)`, since the `if` field matches everything before its `*` as
-written, so that `Bash(git commit*)` would not have started them for a
-command with an option in between; read off `code.claude.com/docs/en/hooks.md`
-and `code.claude.com/docs/en/permissions.md` on 6 October 2026, and
-measured with the hooks fed their JSON, the entry of 5 October 2026 in
-`docs/roadmap.md` carrying the runs under its addendum of 6 October. The
+`--option`, `-p` and `-P` — and `hooks/hooks.json` started both on
+`Bash(git *)` until 13 October 2026, since the `if` field matches everything
+before its `*` as written, so that `Bash(git commit*)` would not have started
+them for a command with an option in between; read off
+`code.claude.com/docs/en/hooks.md` and `code.claude.com/docs/en/permissions.md`
+on 6 October 2026, and measured with the hooks fed their JSON, the entry of 5
+October 2026 in `docs/roadmap.md` carrying the runs under its addendum of 6
+October; since 13 October 2026 both start on every Bash call, as above, and
+the step of `.github/workflows/stock-take.yml` holds every handler under
+`PreToolUse` to carrying no `if` field. The
 entry also says why the commit is refused
 rather than the write, and why no target in the project's own check chain
 was built beside it.

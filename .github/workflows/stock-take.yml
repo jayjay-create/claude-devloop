@@ -61,11 +61,14 @@ jobs:
       # below standing once in each, hooks/stop-checks.sh excepted, which
       # discards its input with cat >/dev/null and reads nothing of it; every
       # handler under PreToolUse and the one under PermissionRequest in
-      # hooks/hooks.json carries "onFailure": "block"; and the reader's
-      # self-test is green. docs/skill-conventions.md, "A hook reads its input
-      # through one program". This step is no check of "Before a handover,
-      # run these"; it runs here, on every pull request, and installs nothing.
-      - name: hooks read through the reader, handlers block on failure, the reader's self-test
+      # hooks/hooks.json carries "onFailure": "block"; since 13 October 2026
+      # no handler under PreToolUse carries an if field, since the vendor
+      # calls that filter best-effort and the three guards it narrowed hold
+      # hard prohibitions; and the reader's self-test is green.
+      # docs/skill-conventions.md, "A hook reads its input through one
+      # program". This step is no check of "Before a handover, run these"; it
+      # runs here, on every pull request, and installs nothing.
+      - name: hooks read through the reader, handlers block on failure and carry no if field, the reader's self-test
         run: |
           bin/devloop-command-reader --self-test
           LINE='INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1'
@@ -85,5 +88,8 @@ jobs:
           bad = [x["command"] for ev in ("PreToolUse", "PermissionRequest") for g in h[ev] for x in g["hooks"] if x.get("onFailure") != "block"]
           if bad:
               print("handlers without onFailure block:", bad); sys.exit(1)
+          filtered = [x["command"] for g in h["PreToolUse"] for x in g["hooks"] if "if" in x]
+          if filtered:
+              print("handlers under PreToolUse with an if field:", filtered); sys.exit(1)
           PY
           exit $red

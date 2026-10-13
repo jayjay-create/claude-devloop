@@ -174,6 +174,7 @@ VARS=""
 EXPORTS=""
 ACT=""
 ACTID=0
+PRIV=""
 # item ROUTE EXTRA: a route that fires, unless a variable before the command
 # that the vendor documents, or a path written on the line, moves its place
 # inside the project, where it opens nothing under any answer
@@ -199,14 +200,17 @@ while IFS= read -r LINE; do
   load "$LINE"
   # The variables and the wrappers before the judged word: an assignment
   # counts for this command, export for every later one, and sudo anywhere
-  # before the word stays the user's under every answer.
+  # before the word stays the user's under every answer, as does every
+  # other program that runs the command as another user, since 13 October
+  # 2026 - doas, su, run0 and pkexec, the ones the reader reads over - on a
+  # line with no judged word, su -c with its shell text say, anywhere on it.
   VARS="$EXPORTS"
   i=0
   while [ "$i" -lt "$N" ] && { [ "$F" -lt 0 ] || [ "$i" -lt "$F" ]; }; do
     case "${W[$i]}" in
       [A-Za-z_]*=*) case "${W[$i]%%=*}" in *[!A-Za-z0-9_]*) ;; *) VARS="$VARS
 ${W[$i]}" ;; esac ;;
-      *) [ "${W[$i]##*/}" = "sudo" ] && { BEYOND=yes; SUDO=yes; } ;;
+      *) case "${W[$i]##*/}" in sudo) BEYOND=yes; SUDO=yes ;; doas|su|run0|pkexec) BEYOND=yes; PRIV="${PRIV:-${W[$i]##*/}}" ;; esac ;;
     esac
     i=$((i + 1))
   done
@@ -229,8 +233,12 @@ ${W[$j]}" ;; esac; done ;;
       esac ;;
     deactivate) ACT=""; ACTID=0; DEACT=yes ;;
     brew)
+      # install, and since 13 October 2026 reinstall and upgrade, which put a
+      # new version at the same place: brew help upgrade and brew help
+      # reinstall on this machine, "Upgrade outdated, unpinned packages" and
+      # "Uninstall and then reinstall a formula or cask"
       case "$V1" in
-        install|add|use|tap) item brew "" ;;
+        install|reinstall|upgrade|add|use|tap) item brew "" ;;
         exec|x) RUN="$RUN brew-exec"; BEYOND=yes ;;
         bundle)
           # brew bundle with no subcommand, with install or upgrade, or with
@@ -243,27 +251,84 @@ ${W[$j]}" ;; esac; done ;;
           done
           case "$SUB" in ''|install|upgrade) RUN="$RUN brew-bundle"; BEYOND=yes ;; *) [ "$INST" = yes ] && { RUN="$RUN brew-bundle"; BEYOND=yes; } ;; esac ;;
       esac ;;
-    port|apt|apt-get|yum|dnf|zypper|pacman|apk|snap|choco|winget|scoop)
-      case "$V1" in install|add|use|tap) item "sys:$NAME" "" ;; esac ;;
-    sdk|asdf|mise|rustup|nvm|volta|fnm)
-      case "$V1" in install|add|use|tap) item "ver:$NAME" "" ;; esac ;;
+    # The system package managers, each with every subcommand its vendor
+    # documents as installing or replacing a package, read since 13 October
+    # 2026 and named with its source in the roadmap addendum of that day; an
+    # update puts a new version at the same place, and the record holds for it
+    # as for the first install.
+    port) case "$V1" in install|upgrade|selfupdate|add|use|tap) item "sys:$NAME" "" ;; esac ;;
+    apt) case "$V1" in install|reinstall|upgrade|full-upgrade|dist-upgrade|build-dep|add|use|tap) item "sys:$NAME" "" ;; esac ;;
+    apt-get) case "$V1" in install|upgrade|dist-upgrade|build-dep|add|use|tap) item "sys:$NAME" "" ;; esac ;;
+    yum|dnf)
+      case "$V1" in
+        install|in|install-n|install-na|install-nevra|localinstall|reinstall|rei|upgrade|up|update|upgrade-to|update-to|localupdate|upgrade-minimal|distro-sync|dsync|distrosync|distribution-synchronization|downgrade|dg|swap|groupinstall|groupupdate|add|use|tap) item "sys:$NAME" "" ;;
+        group) case "$V2" in install|upgrade) item "sys:$NAME" "" ;; esac ;;
+      esac ;;
+    zypper) case "$V1" in install|in|update|up|dist-upgrade|dup|patch|install-new-recommends|inr|source-install|si|add|use|tap) item "sys:$NAME" "" ;; esac ;;
+    pacman)
+      # -S installs from the repositories and -U from a file; a -S cluster
+      # with s, i, l, g, p, w or c searches, lists, prints, downloads or cleans
+      case "$V1" in
+        --sync|--upgrade|-U*|install|add|use|tap) item "sys:$NAME" "" ;;
+        -S*) case "$V1" in -S*[silgpwc]*) ;; *) item "sys:$NAME" "" ;; esac ;;
+      esac ;;
+    apk) case "$V1" in add|upgrade|fix|install|use|tap) item "sys:$NAME" "" ;; esac ;;
+    snap) case "$V1" in install|refresh|revert|add|use|tap) item "sys:$NAME" "" ;; esac ;;
+    choco) case "$V1" in install|upgrade|add|use|tap) item "sys:$NAME" "" ;; esac ;;
+    winget) case "$V1" in install|add|upgrade|update|import|use|tap) item "sys:$NAME" "" ;; esac ;;
+    scoop) case "$V1" in install|update|add|use|tap) item "sys:$NAME" "" ;; esac ;;
+    # The version managers, each with every subcommand its vendor documents
+    # as installing a tool, read since 13 October 2026: mise exec and x among
+    # them, since the vendor installs missing tools first unless a setting
+    # turns that off.
+    sdk) case "$V1" in install|i|upgrade|ug|selfupdate|add|use|tap) item "ver:$NAME" "" ;; esac ;;
+    asdf) case "$V1" in install|add|use|tap) item "ver:$NAME" "" ;; plugin) case "$V2" in add|install) item "ver:$NAME" "" ;; esac ;; esac ;;
+    mise) case "$V1" in install|i|use|u|upgrade|up|self-update|install-into|exec|x|add|tap) item "ver:$NAME" "" ;; esac ;;
+    rustup)
+      case "$V1" in
+        install|update|add|use|tap) item "ver:$NAME" "" ;;
+        toolchain) [ "$V2" = install ] && item "ver:$NAME" "" ;;
+        component|target) [ "$V2" = add ] && item "ver:$NAME" "" ;;
+        self) [ "$V2" = update ] && item "ver:$NAME" "" ;;
+      esac ;;
+    nvm|fnm) case "$V1" in install|add|use|tap) item "ver:$NAME" "" ;; esac ;;
+    volta) case "$V1" in install|fetch|add|use|tap) item "ver:$NAME" "" ;; esac ;;
     conda)
-      case "$V1" in install|add|use|tap) item "unread:conda" "" ;; esac ;;
+      case "$V1" in install|update|upgrade|create|add|use|tap) item "unread:conda" "" ;; esac ;;
     nix)
       case "$V1" in
-        profile) case "$V2" in install|add) item "unread:nix profile" "" ;; esac ;;
+        profile) case "$V2" in install|add|upgrade) item "unread:nix profile" "" ;; esac ;;
         run|shell) RUN="$RUN nix"; BEYOND=yes ;;
         env) [ "$V2" = shell ] && { RUN="$RUN nix"; BEYOND=yes; } ;;
       esac ;;
-    pkgx|pkgm)
+    nix-env)
+      # --install, -i with any letters behind it, --upgrade and -u put a
+      # package into the user's profile, wherever the operation stands among
+      # the options
+      j=$F
+      while j=$((j + 1)); [ "$j" -lt "$N" ]; do case "${W[$j]}" in --install|-i*|--upgrade|-u*) item "unread:nix-env" ""; break ;; esac; done ;;
+    nix-shell)
+      # -p or --packages puts the packages named into the store and runs the
+      # shell with them, a fetch-and-run form since 13 October 2026; without
+      # it the shell of the project's own shell.nix, which is no install
+      j=$F
+      while j=$((j + 1)); [ "$j" -lt "$N" ]; do case "${W[$j]}" in -p|--packages) RUN="$RUN nix-shell"; BEYOND=yes; break ;; esac; done ;;
+    pkgx)
       # pkgm "fully installs pkgx packages to /usr/local/", the vendor's README
       [ "$V1" = install ] && dest "/usr/local" ;;
+    pkgm)
+      # pkgm install "installs latest node to ~/.local. ie. you get
+      # ~/.local/bin/node", and pkgm update "updates ~/.local packages to
+      # latest versions", the README of pkgxdev/pkgm, read 13 October 2026;
+      # under sudo both land in /usr/local, and sudo blocks before the place
+      case "$V1" in install|i|update|up) dest '~/.local/bin' ;; esac ;;
     gh)
-      case "$V1" in extension|extensions|ext) [ "$V2" = install ] && {
+      case "$V1" in extension|extensions|ext) case "$V2" in install|upgrade)
         # gh keeps its extensions under its data directory, $XDG_DATA_HOME/gh
-        # or ~/.local/share/gh, config.go of cli/go-gh
+        # or ~/.local/share/gh, config.go of cli/go-gh; upgrade since 13
+        # October 2026, "Upgrade installed extensions", gh extension --help here
         X=$(moved XDG_DATA_HOME); [ -n "$X" ] || X="${XDG_DATA_HOME:-}"
-        case "$X" in INSIDE) ;; UNREAD) UNREAD="$UNREAD; gh extension (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; '') dest "$HOME/.local/share/gh/extensions" ;; *) dest "$X/gh/extensions" ;; esac; } ;; esac ;;
+        case "$X" in INSIDE) ;; UNREAD) UNREAD="$UNREAD; gh extension (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; '') dest "$HOME/.local/share/gh/extensions" ;; *) dest "$X/gh/extensions" ;; esac ;; esac ;; esac ;;
     deno)
       # deno install -g: the root from --root, DENO_INSTALL_ROOT or
       # $HOME/.deno, the executables in its bin unless it ends on bin
@@ -272,18 +337,27 @@ ${W[$j]}" ;; esac; done ;;
         if [ -n "$R" ]; then X=$(inside "$R" "$ID"); [ -n "$X" ] && R=INSIDE || { X=$(expand "$R"); [ -n "$X" ] && R="$X" || R=UNREAD; }
         else R=$(moved DENO_INSTALL_ROOT); [ -n "$R" ] || R="$HOME/.deno"; fi
         case "$R" in INSIDE) ;; UNREAD) UNREAD="$UNREAD; deno (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; */bin) dest "$R" ;; *) dest "$R/bin" ;; esac
+      elif [ "$V1" = upgrade ]; then
+        # deno upgrade replaces the deno executable itself, at --output or
+        # where the deno found on this hook's PATH stands, since 13 October
+        # 2026: "Upgrade deno executable to given version", docs.deno.com
+        R=$(value --output -o)
+        if [ -n "$R" ]; then X=$(inside "$R" "$ID"); [ -n "$X" ] || { X=$(expand "$R"); if [ -n "$X" ]; then dest "${X%/*}"; else UNREAD="$UNREAD; deno upgrade (where it puts things is not read off this machine by this guard)"; BEYOND=yes; fi; }
+        else X=$(command -v deno 2>/dev/null); if [ -n "$X" ]; then dest "${X%/*}"; else UNREAD="$UNREAD; deno upgrade (deno is not found on this hook's PATH, so the executable it replaces cannot be placed)"; BEYOND=yes; fi; fi
       fi ;;
     dotnet)
       # dotnet tool install -g lands in $HOME/.dotnet/tools; --tool-path as
       # written; without either it is a local tool of the project
-      if [ "$V1" = tool ] && [ "$V2" = install ]; then
+      if [ "$V1" = tool ] && { [ "$V2" = install ] || [ "$V2" = update ]; }; then
         if has -g --global; then dest "$HOME/.dotnet/tools"
         elif has --tool-path; then R=$(value --tool-path); X=$(inside "$R" "$ID"); [ -n "$X" ] || { X=$(expand "$R"); [ -n "$X" ] && dest "$X" || { UNREAD="$UNREAD; dotnet tool (where it puts things is not read off this machine by this guard)"; BEYOND=yes; }; }
         fi
       fi ;;
     gem)
       case "$V1" in
-        install|add|use|tap)
+        install|update|add|use|tap)
+          # update since 13 October 2026, "Update installed gems to the latest
+          # version", with the same options as install, gem help update here
           if has -i --install-dir --build-root; then item gem installdir
           elif [ -n "$(value -n --bindir)" ]; then item gem "bindir=$(value -n --bindir)"
           elif has --user-install; then item gem user
@@ -291,7 +365,11 @@ ${W[$j]}" ;; esac; done ;;
         exec) RUN="$RUN gem-exec"; BEYOND=yes ;;
       esac ;;
     cargo)
-      case "$V1" in install|use|tap) item cargo "root=$(value --root)" ;; esac ;;
+      # binstall, "a drop-in replacement for cargo install" with the same
+      # options, and install-update of cargo-update, which updates through
+      # cargo install, since 13 October 2026, each landing where cargo
+      # install lands
+      case "$V1" in install|binstall|install-update|use|tap) item cargo "root=$(value --root)" ;; esac ;;
     go)
       case "$V1" in
         install|add|use|tap) item go "" ;;
@@ -311,14 +389,16 @@ ${W[$j]}" ;; esac; done ;;
           case "$PKG" in ''|@*) ;; *@*) RUN="$RUN go-run"; BEYOND=yes ;; esac ;;
       esac ;;
     pipx)
+      # upgrade, upgrade-all, reinstall, reinstall-all and install-all since 13
+      # October 2026, each placing the entry points again, pipx --help here
       case "$V1" in
-        install|add|use|tap) if has --global; then item pipx global; else item pipx ""; fi ;;
+        install|install-all|upgrade|upgrade-all|reinstall|reinstall-all|add|use|tap) if has --global; then item pipx global; else item pipx ""; fi ;;
         run) RUN="$RUN pipx-run"; BEYOND=yes ;;
       esac ;;
     uvx) RUN="$RUN uvx"; BEYOND=yes ;;
     uv)
       case "$V1" in
-        tool) case "$V2" in install) item "uv tool" "" ;; run) RUN="$RUN uvx"; BEYOND=yes ;; esac ;;
+        tool) case "$V2" in install|upgrade) item "uv tool" "" ;; run) RUN="$RUN uvx"; BEYOND=yes ;; esac ;;
         run)
           # uv run with --with, -w, --with-editable or --with-requirements
           # among uv's own options before the command, never behind it: the
@@ -364,14 +444,19 @@ uvpip$US$ID$US" ;;
       done
       case "$(var npm_config_global)$(var NPM_CONFIG_GLOBAL)" in *true*|*1*) GLOB=yes ;; esac
       case "$(var npm_config_location)$(var NPM_CONFIG_LOCATION)" in *global*) GLOB=yes ;; esac
-      case "$VERB" in install|i|add|in|ins|inst|insta|instal|isnt|isnta|isntal|isntall) [ "$GLOB" = yes ] && item npm "prefix=$PFX" ;; esac ;;
+      # update with its aliases since 13 October 2026, "If the -g flag is
+      # specified, this command will update globally installed packages",
+      # npm help update on this machine, npm 11.12.1
+      case "$VERB" in install|i|add|in|ins|inst|insta|instal|isnt|isnta|isntal|isntall|update|u|up|upgrade|udpate) [ "$GLOB" = yes ] && item npm "prefix=$PFX" ;; esac ;;
     pnpm|pn)
       case "$V1" in
-        install|i|add)
+        install|i|add|update|up|upgrade)
+          # update, up and upgrade with -g since 13 October 2026, "Update
+          # global packages", pnpm.io/cli/update
           if has -g --global; then
             if [ "$NAME" = pn ]; then RUN="$RUN pn-global"; BEYOND=yes; else item pnpm ""; fi
           fi ;;
-        global) case "$V2" in add|install) item pnpm "" ;; esac ;;
+        global) case "$V2" in add|install|update|upgrade) item pnpm "" ;; esac ;;
         dlx|create) RUN="$RUN pnpm-dlx"; BEYOND=yes ;;
         *)
           # options before dlx or create: --package, --allow-build and -C or
@@ -385,12 +470,12 @@ uvpip$US$ID$US" ;;
     pnpx|pnx) RUN="$RUN pnpm-dlx"; BEYOND=yes ;;
     yarn)
       case "$V1" in
-        global) case "$V2" in add|install) item yarn "prefix=$(value --prefix)" ;; esac ;;
+        global) case "$V2" in add|install|upgrade) item yarn "prefix=$(value --prefix)" ;; esac ;;
         install|i|add) has -g --global && item yarn "prefix=$(value --prefix)" ;;
         dlx|create) RUN="$RUN yarn-dlx"; BEYOND=yes ;;
       esac ;;
     bun)
-      case "$V1" in install|i|add) has -g --global && item bun "" ;; esac ;;
+      case "$V1" in install|i|add|update|up) has -g --global && item bun "" ;; esac ;;
     cp|mv|install|ln)
       j=$F
       while j=$((j + 1)); [ "$j" -lt "$N" ]; do printf '%s' "${W[$j]}" | grep -qE "$BINDIR" && { WRITES=yes; dest "${W[$j]}"; }; done ;;
@@ -455,19 +540,17 @@ py$US$ID$US${W[$F]}" ;;
     case "$BR:$BV" in
       playwright:install)
         if ! printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])(--dry-run|--list|--help|-h)([[:space:]]|$)'; then
-          BEYOND=yes
-          if printf '%s' "$BA" | grep -qE "(^|[[:space:]])($BRANDED)([[:space:]]|$)"; then BRAND=yes
-          elif printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--with-deps([[:space:]]|$)'; then SYSPKG=yes
+          if printf '%s' "$BA" | grep -qE "(^|[[:space:]])($BRANDED)([[:space:]]|$)"; then BRAND=yes; BEYOND=yes
+          elif printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--with-deps([[:space:]]|$)'; then SYSPKG=yes; BEYOND=yes
           else BROWSER=playwright; fi
         fi ;;
       playwright:install-deps)
         printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])(--dry-run|--help|-h)([[:space:]]|$)' || { BEYOND=yes; SYSPKG=yes; } ;;
       cypress:install)
-        printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])(--help|-h)([[:space:]]|$)' || { BEYOND=yes; BROWSER=cypress; } ;;
+        printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])(--help|-h)([[:space:]]|$)' || BROWSER=cypress ;;
       puppeteer:install)
         if ! printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--help([[:space:]]|$)'; then
-          BEYOND=yes
-          if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)'; then SYSPKG=yes; else BROWSER=puppeteer; fi
+          if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)'; then SYSPKG=yes; BEYOND=yes; else BROWSER=puppeteer; fi
         fi ;;
       puppeteer-pkg:install)
         if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)' && ! printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--help([[:space:]]|$)'; then BEYOND=yes; SYSPKG=yes; fi ;;
@@ -479,7 +562,10 @@ py$US$ID$US${W[$F]}" ;;
     # PUPPETEER_CACHE_DIR, and XDG_CACHE_HOME on Linux, which Playwright and
     # Cypress read there; a place inside the project opens nothing. The
     # vendors' configuration files are not read. Any other system is not
-    # read, and not read is a block.
+    # read, and not read is a block. A download that lands inside the project
+    # opens nothing and sets nothing here, and what the command brings
+    # outside otherwise - sudo before it, another download on the line - stands
+    # as it stands, since 13 October 2026.
     if [ -n "${BROWSER:-}" ]; then
       D=""; M=""
       case "$BROWSER" in
@@ -490,20 +576,19 @@ py$US$ID$US${W[$F]}" ;;
         puppeteer) M=$(moved PUPPETEER_CACHE_DIR) ;;
       esac
       case "$M" in
-        INSIDE) BEYOND="${BEYONDBEFORE:-no}" ;;
-        UNREAD) UNREAD="$UNREAD; $BROWSER (where it puts things is not read off this machine by this guard)" ;;
+        INSIDE) : ;; # inside the project: opens nothing and brings nothing outside
+        UNREAD) UNREAD="$UNREAD; $BROWSER (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;;
         '')
           case "$OS" in
             Darwin) case "$BROWSER" in playwright) D='~/Library/Caches/ms-playwright' ;; cypress) D='~/Library/Caches/Cypress' ;; puppeteer) D='~/.cache/puppeteer' ;; esac ;;
             Linux) case "$BROWSER" in playwright) D='~/.cache/ms-playwright' ;; cypress) D='~/.cache/Cypress' ;; puppeteer) D='~/.cache/puppeteer' ;; esac ;;
           esac
-          if [ -n "$D" ]; then dest "$D"; else UNREAD="$UNREAD; $BROWSER (where it puts things is not read off this machine by this guard)"; fi ;;
+          if [ -n "$D" ]; then dest "$D"; else UNREAD="$UNREAD; $BROWSER (where it puts things is not read off this machine by this guard)"; BEYOND=yes; fi ;;
         *) dest "$M" ;;
       esac
       BROWSER=""
     fi
   fi
-  BEYONDBEFORE="$BEYOND"
 done <<< "$CMDS"
 
 # A script piped from the network into a shell, in any of its forms: curl or
@@ -600,6 +685,9 @@ else
     CAUSE="the record says no (install-tools: no on $REF)"
   elif [ "${SUDO:-no}" = "yes" ]; then
     CAUSE="it needs sudo, which stays the user's under every answer"
+  elif [ -n "${PRIV:-}" ]; then
+    # the wording approved on 13 October 2026, the program named
+    CAUSE="it needs $PRIV, which stays the user's under every answer"
   elif [ "${PIPED:-no}" = "yes" ]; then
     CAUSE="it pipes a script from the network into a shell, which stays the user's under every answer"
   elif [ "${BRAND:-no}" = "yes" ]; then

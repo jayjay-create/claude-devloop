@@ -82,8 +82,8 @@ command with the words changed; the same files written through another tool
 with the matched word taken out, and an issue filed under another title, are
 that rewording with a different hand; none is a second attempt and none is a
 way through. Where a rule of this set names another channel for a text — the
-editing tool for `environment.md` and the workflow file, a file behind
-`--body-file` for a body — the text goes through that channel unchanged: the
+editing tool for `environment.md`, a file behind `--body-file` for a body —
+the text goes through that channel unchanged: the
 channel moves, the words do not, and that is decided there, once, and not at
 the block. Where the block looks wrong, that reading is said and not acted
 on: a refusal held to be a false positive is still a refusal, reported with

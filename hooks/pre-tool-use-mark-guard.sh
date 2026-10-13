@@ -53,8 +53,11 @@ if [ "$TOOL" = "Bash" ]; then
   # relative or absolute, whatever stands before it - a quoted or variable
   # prefix is part of the word, since the reader hands the word as the shell
   # hands it to the program. A write is a redirection onto that word, with or
-  # without a descriptor, or one of the programs below with the word among
-  # its arguments: tee, cp, mv, install, touch, truncate, ln and rsync; sed
+  # without a descriptor, behind a simple command or, since 13 October 2026,
+  # behind a compound one - a group, a subshell, a loop or an if - which the
+  # reader prints as a line of its own, or one of the programs below with the
+  # word among its arguments, behind any wrapper the reader reads over,
+  # caffeinate say: tee, cp, mv, install, touch, truncate, ln and rsync; sed
   # and perl with -i; dd with of=. Not read, and said so in the roadmap
   # entry of 9 October 2026: a path that does not end in those two names -
   # unattended.local alone after a cd into .claude, .claude/./unattended.local,

@@ -9,9 +9,10 @@ cd "$PROJECT_DIR" 2>/dev/null || exit 0
 # The input is read through bin/devloop-command-reader, which decodes the
 # JSON and takes the command apart as the shell runs it, since 12 October
 # 2026; every hook reads it so, and a check in .github/workflows/stock-take.yml
-# holds them to that. hooks.json starts this on Bash(git *), and Claude Code
-# starts a hook regardless of that pattern where it cannot tell which
-# commands a call runs, so the command is read here as well. On every branch:
+# holds them to that. hooks.json starts this on every Bash call since 13
+# October 2026, with no if field, since the vendor calls that filter
+# best-effort and it looks behind no sh -c and no runner; the command is
+# read here, in every form the reader takes apart. On every branch:
 # a cell in no allowed form is wrong wherever it is committed. What is read
 # is the table in the working tree at this moment, before the command runs:
 # a command that writes the table and commits in one go is read before its
@@ -26,7 +27,8 @@ INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
 TOOL=$(printf '%s\n' "$INPUT" | sed -n 's/^tool: //p' | head -1)
 [ "$TOOL" = "Bash" ] || exit 0
 
-# The index of git's command among the words W, from the index of git; -1 where none
+# The index of git's command among the words W, from the index of git; 1 on
+# the exit where none stands, as in hooks/pre-tool-use-branch-guard.sh.
 git_command() {
   local j="$1" w
   while :; do
