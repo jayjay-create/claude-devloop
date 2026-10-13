@@ -20329,6 +20329,807 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   walked 1030 where it was 1091; the 269 runs that do not count the same,
   `UNCOVERED LINES OF THE SEARCH SET: 0 of 3142`, exit 0.
 
+  **Addendum of 13 October 2026: seven findings on the command reader, six
+  from the review of pull request #171 at the code and one from the review of
+  this addendum, two decisions of the person, the wording approved, and what
+  is built; the version stays 0.137.0.** On `task/command-reader`, off
+  `27a2e5d`; the code in `6a62e4d`, this addendum and the rows of the table in
+  the commit after it, the runs in the third. Every line number of this file
+  in this addendum holds at `27a2e5d`, every line number of another file at
+  `6a62e4d`, unless it says otherwise. The report stands on this machine as
+  `~/devloop-report-command-reader-addendum.md`, in English, and is not in the
+  repository. The seven findings and their should, each with where it was
+  found, then what the person decided on the two that needed a decision, the
+  sources read, what is built, the measurement, the searches, and the table.
+
+  **Finding 1, from the review of #171 at the code: a redirection behind a
+  compound command belonged to no command the program printed.** `{ printf
+  'build\n'; } > .claude/unattended.local`, `( … ) > file`, a loop or an `if`
+  with `> file` behind it: the program of `27a2e5d` read the redirections
+  behind a compound in `compound_end`, lines 813 to 824, and dropped them, so
+  that the mark guard, which reads a write of the mark as a redirection
+  operator followed by the mark's word on a line, saw nothing, and the mark
+  was written outside auto mode; on `main`, where the guard read the flat
+  command text, it blocked. A heredoc behind `done` went the same way, worse:
+  `compound_end` read its delimiter as a word and noted no heredoc, so that
+  the body's lines were read as commands of the text — `while read l; do echo
+  $l; done <<EOF`, `brew install x`, `EOF` printed `brew install x` and `EOF`
+  as two commands at the top, measured on this machine on 13 October 2026
+  against the program of `27a2e5d` — a false block waiting to happen. Should:
+  a redirection behind a compound command is read as one behind a simple
+  command is; how the program prints it is this build's to decide. Built in
+  `6a62e4d`: the redirections behind a compound stand on a line of their own
+  with no judged word, their words the operator with its descriptor and the
+  target as a simple command's are, relation and holder those of the compound,
+  and a heredoc among them is noted for the body after the line, which is then
+  no command; the id a pipe behind the compound reads from stays the last
+  command of the body, so `{ c; } > o | d` reads `d` from `c`; a substitution
+  in a target is a command of the redirection line. `compound_end` at
+  `bin/devloop-command-reader` lines 1063 to 1087, the line emitted through
+  `judge`, the self-test's cases at lines 311 to 320, and the heads of the
+  program and of the mark guard.
+
+  **Finding 2, from the review of #171 at the code: a browser landing inside
+  the project put the command's "beyond" back to where it stood before the
+  command, and a `sudo` on the same command went with it.** Line 493 of
+  `hooks/pre-tool-use-install-guard.sh` at `27a2e5d`, `INSIDE)
+  BEYOND="${BEYONDBEFORE:-no}"`, so that `sudo PLAYWRIGHT_BROWSERS_PATH=0 npx
+  playwright install`, whose `sudo` line 209 had read, went through under
+  every answer. Should: `sudo` stays a stop under every answer, and what a
+  command brings outside otherwise stands, even where its browser lands inside
+  the project. Built in `6a62e4d`: the browser download sets nothing beyond
+  until its place is known — `BROWSER=playwright` alone at line 545, `cypress`
+  at 550, `puppeteer` at 553 — and the place decides, lines 578 to 591: inside
+  the project nothing, line 579; a place not read, the vendor's default or a
+  moved place beyond; `BEYONDBEFORE` is gone, and what `sudo`, a second
+  download or any other reading set before stays set.
+
+  **Finding 3, from the review of #171 at the code: the program read as
+  wrappers the lists of the two vendors and `exec` alone, so a program that
+  runs its argument as a command and stands on neither list was judged itself
+  and the command behind it went through** — `xargs` with an option,
+  `nocorrect`, `doas`, `su -c`, `run0`, `pkexec`, `direnv exec`, `devbox run`,
+  `mise exec`, `nix-shell --run`, `nix develop -c`, `caffeinate` and more; the
+  head of the program at `27a2e5d`, lines 59 to 69 and 82 to 84, and the
+  conventions at lines 1488 to 1495 named several of them as not taken apart,
+  which neither vendor strips. Decided by the person on 13 October 2026: the
+  group is every program that runs its argument or a text as a command on this
+  machine; the vendors' lists belong to it and are not its end; each program
+  is read off its vendor's documentation with the options that take a value,
+  the source named with address and stand; a program that runs the command
+  elsewhere, on another machine or in a container, `ssh` or `docker exec`, is
+  not in the group; what stands on no list goes through, and the conventions
+  say so; a program of the group that installs something before it runs the
+  command is read as every other installation; and a program that runs the
+  command as an administrator or another user — `doas`, `su`, `run0`, `pkexec`
+  and every further one of that kind — is a stop under every answer, as `sudo`
+  is, the install guard naming the reason under a yes in the wording approved
+  by the person on 13 October 2026, word for word:
+
+      it needs <the program>, which stays the user's under every answer
+
+  for example "it needs doas, which stays the user's under every answer"; the
+  reason for `sudo` stays word for word as it stood at line 602 of the guard
+  at `27a2e5d`, line 687 at `6a62e4d`. This revises the head of the program
+  and the paragraph of the conventions named above, and the sentence of this
+  entry under "What is built" that named the arguments of `ssh`, `su`, `doas`,
+  `chroot`, `docker exec`, `nix-shell --run`, `direnv exec`, `devbox run`,
+  `mise exec` and `npx` as not taken apart: `ssh`, `docker exec` and `chroot`
+  stay outside the group, `npx` is a fetch-and-run form the guard reads at its
+  own name, and the rest are read. Built in `6a62e4d`: the group as the
+  paragraph "What is built" below lists it, `bin/devloop-command-reader` lines
+  384 to 406 the tables, 712 to 935 the reading, the self-test's cases at
+  lines 331 to 353; the install guard's privilege line 213 and cause lines 688
+  to 690; the conventions at lines 1472 to 1502, 1515 to 1521 and 847 to 849.
+
+  **Finding 4, from the review of #171 at the code: commands that put a
+  program outside the project and were not read**, by the rule "That no run
+  has met a form is no reason not to read it": `nix-env -i` and `--install`,
+  `nix-shell -p`, `cargo binstall`, and the updates `brew upgrade`, `brew
+  reinstall`, `pipx upgrade`, `uv tool upgrade`, `npm update -g` and `gem
+  update`. Should: every subcommand its vendor documents as placing a program
+  is read as the install of its route; an update puts a new version at the
+  same place, and the record holds for it as for the first install; the
+  subcommands of every route the guard knows read off the vendor's
+  documentation, each named with its source. Built in `6a62e4d`: the
+  subcommands as the paragraph "What is built" below lists them with their
+  sources, `hooks/pre-tool-use-install-guard.sh` lines 230 to 325 and 362 to
+  478, `nix-shell -p` a fetch-and-run form named in `shared/fetch-and-run.md`
+  line 10.
+
+  **Finding 5, from the review of #171 at the code: `shared/command-does-not-
+  answer.md` line 85 named the workflow file among the texts a rule of this
+  set writes with the editing tool.** No such rule stands: it is part B point
+  26 of the entry of 12 October 2026 on the decisions, line 19114, and not
+  built. Should: the workflow file does not stand there until point 26 is
+  built. Built in `6a62e4d`: the sentence names `environment.md` and the body
+  file alone, `shared/command-does-not-answer.md` lines 84 to 86; the two
+  places of `skills/setup-checks/SKILL.md` that name the workflow file, lines
+  1029 and 1059 at `27a2e5d`, speak of correcting it and of taking it back out
+  and stay.
+
+  **Finding 6, from the review of #171 at the code: `hooks/pre-tool-use-
+  table-guard.sh` line 29 said of `git_command` "-1 where none", and the
+  function prints nothing and ends with 1.** Should: the comment says what the
+  function does, as `hooks/pre-tool-use-branch-guard.sh` says it. Built in
+  `6a62e4d`: lines 30 to 31 of the table guard, "1 on the exit where none
+  stands, as in hooks/pre-tool-use-branch-guard.sh".
+
+  **Finding 7, from the review of this addendum: three handlers started only
+  where their `if` field matched** — `hooks/hooks.json` lines 9 to 11 at
+  `27a2e5d`, the guard on the main branch and the guard on the check table on
+  `Bash(git *)`, the guard on merging on `Bash(gh pr merge*)` — and Claude
+  Code applies that filter by its own rules: the page "Configure permissions"
+  says a Bash rule matches the command text after its own wrappers are
+  stripped and not the same program behind `sh -c`, so that none of the three
+  started at `caffeinate -i git push origin main` or `sh -c "gh pr merge 5"`,
+  and what finding 3 adds to the wrappers never reached them; the hooks
+  reference says of the filter "Because the `if` filter is best-effort, use
+  the permission system rather than a hook to enforce a hard allow or deny".
+  Decided by the person on 13 October 2026: the three `if` fields fall; the
+  three guards start at every Bash call and judge the program themselves. This
+  revises the last sentence of part B point 2 of the entry of 12 October 2026
+  on the decisions, lines 18779 to 18783, by which the filters stayed because
+  they "hold no hard deny" — the prohibition on merging and the prohibition on
+  committing on the main branch are hard — and the sentence of point 1 of this
+  entry, line 19594, that the three fields stay. Built in `6a62e4d`:
+  `hooks/hooks.json` lines 9 to 11 carry no `if`; the step of
+  `.github/workflows/stock-take.yml`, lines 59 to 96, checks beside the one
+  line and `"onFailure": "block"` that no handler under `PreToolUse` carries
+  an `if` field, lines 91 to 93; the conventions at lines 2426 to 2437 and
+  2455 to 2464; the head of the table guard, lines 12 to 15.
+
+  **Read before the build, each at its address and stand, on 13 October
+  2026.** Claude Code's permissions page, code.claude.com/docs/en/permissions,
+  under "Wrappers": "The stripped wrappers are `timeout`, `time`, `nice`,
+  `nohup`, and `stdbuf`, plus the shell builtins `command` and `builtin`, and
+  zsh's `noglob`"; "Two related forms aren't stripped: the query form `command
+  -v`, which looks up a command rather than running one, and zsh's
+  `nocorrect`"; "Bare `xargs` is also stripped", "an invocation like `xargs
+  -n1 grep pattern` is matched as an `xargs` command"; "Development
+  environment runners such as `direnv exec`, `devbox run`, `mise exec`, `npx`,
+  and `docker exec` are not in the list. Because these tools execute their
+  arguments as a command, a rule like `Bash(devbox run *)` matches whatever
+  comes after `run`"; under "Exec wrappers and `find` actions": `watch`,
+  `setsid`, `ionice`, `flock` and `find` with an action that runs commands;
+  under "What a Bash rule doesn't match": "A Bash rule matches the command
+  text Claude writes, after Claude Code splits compound commands and strips
+  wrappers. It doesn't match the same program invoked in a different form",
+  the table giving `/usr/bin/curl`, `sh -c 'curl …'`, `bash -c 'rm -rf
+  build/'`, `git -C . push origin main` and `git 'push' origin main` as what
+  `Bash(curl *)`, `Bash(rm *)` and `Bash(git push *)` do not stop. The hooks
+  reference, code.claude.com/docs/en/hooks, under "Hook handler fields", the
+  row of `if`: "Permission rule syntax to filter when this hook runs … The
+  hook command only runs if the tool call matches the pattern"; the table of
+  `if` patterns against Bash commands: leading assignments stripped, "each
+  subcommand is checked", commands inside `$()` and backticks checked; and the
+  paragraph after it, "When Claude Code can't determine which commands the
+  Bash input runs, it runs your hook regardless of the pattern. Because the
+  `if` filter is best-effort, use the permission system rather than a hook to
+  enforce a hard allow or deny"; the page says nowhere that the filter looks
+  behind `bash -c` or strips a wrapper of its own.
+
+  The programs of the group, each read for the words that follow it and the
+  options that take a value. `doas`: man.openbsd.org/doas, OpenBSD-current,
+  December 22, 2022, "doas [-Lns] [-a style] [-C config] [-u user] command
+  [arg ...]", "The doas utility executes the given command as another user",
+  `-C` "Parse and check the configuration file config, then exit", `-L` "Clear
+  any persisted authentications from previous invocations, then immediately
+  exit", `-s` "Execute the shell from SHELL or /etc/passwd", `-a` and `-u`
+  taking a value. `su`: man7.org/linux/man-pages/man1/su.1.html, util-linux
+  2.43.devel-739-eee2e of 2026-05-24, "su [options] [-] [user|UID
+  [argument...]]", `-c`/`--command` and `--session-command=` taking the
+  command the shell runs with its own `-c`, `-g`, `-G`, `-s` and `-w` taking a
+  value, "When user is specified, additional arguments can be supplied, in
+  which case they are passed to the shell"; and su(1) of macOS on this
+  machine, "su [-] [-flm] [login [args]]", the arguments passed to the shell.
+  `run0`: github.com/systemd/systemd, `man/run0.xml` on `main`, its options
+  tagged v256 to v262, "run0 [OPTIONS...] [COMMAND...]", "If no command line
+  is specified an interactive shell is invoked", `--machine=` "a local
+  container", `--user=`/`-u`, `--group=`/`-g`, `--chdir=`/`-D`, `--unit=`,
+  `--property=`, `--description=`, `--slice=`, `--nice=`, `--setenv=`,
+  `--background=`, `--shell-prompt-prefix=`, `--lightweight=` and `--area=`
+  taking a value; the page at freedesktop.org answered 403. `pkexec`:
+  github.com/polkit-org/polkit, `docs/man/pkexec.xml` on `main`, "pkexec
+  [--keep-cwd] [--user username] PROGRAM [ARGUMENTS...]", "If username is not
+  specified, then the program will be executed as the administrative super
+  user, root", `--version` and `--help` running nothing; the pages at
+  freedesktop.org answered 403 and 404. `nocorrect`:
+  zsh.sourceforge.io/Doc/Release/Shell-Grammar.html, "Precommand Modifiers",
+  zsh 5.9.2, "Spelling correction is not done on any of the words", "It has no
+  effect in non-interactive shells". `xargs`: xargs(1) of macOS on this
+  machine and man.freebsd.org for FreeBSD 15.1, "xargs [-0oprt] [-E eofstr]
+  [-I replstr [-R replacements] [-S replsize]] [-J replstr] [-L number] [-n
+  number [-x]] [-P maxprocs] [-s size] [utility [argument ...]]", "If utility
+  is omitted, echo(1) is used"; GNU findutils at
+  man7.org/linux/man-pages/man1/xargs.1.html, 2024-06-03, `-a`, `-d`, `-E`,
+  `-I`, `-L`, `-n`, `-P` and `-s` taking an argument, `--arg-file`,
+  `--delimiter`, `--max-args`, `--max-procs`, `--max-chars` and
+  `--process-slot-var` with a value, `-e`, `-i` and `-l` an optional one
+  attached. `caffeinate`: caffeinate(8) on this machine, Darwin, November 9,
+  2012, "caffeinate [-disu] [-t timeout] [-w pid] [utility arguments...]",
+  "caffeinate forks a process, execs "make" in it". `chrt` and `taskset`:
+  man7.org, util-linux 2.43.devel, "chrt [options] [priority] command
+  [argument...]", `-T`, `-P`, `-D`, `-U` and `-X` taking a value, `--pid` and
+  `--max` running no command; "taskset [options] mask command [argument...]",
+  `-p` running no command. `strace`: man7.org, strace 7.1.0, "strace
+  [-ACdffhikkqqrtttTvVwxxyyYzZ] [-a column] [-b execve] [-e expr]... [-I n]
+  [-o file] [-O overhead] [-p pid]... [-P path]... [-s strsize] [-S sortby]
+  [-U columns] [-X format] … { -p pid | [-DDD] [-E var[=val]]... [-u username]
+  command [args] }", `-p` attaching to a process and running none. `valgrind`:
+  valgrind.org/docs/manual/manual-core.html, "valgrind [valgrind-options]
+  your-prog [your-prog-options]", the options in the `--name=value` form.
+  `hyperfine`: github.com/sharkdp/hyperfine, README at v2.0.0, the commands
+  "executed directly, without an intermediate shell", `-S`/`--shell=default`
+  selecting `sh`, `-N`/`--shell=none` the default, `-w`, `-m`, `-M`, `-r`,
+  `-s`, `-p`, `-c`, `-C`, `-n`, `-u`, `-D`, the `--export-*` forms, `--input`,
+  `--output`, `--style`, `--sort`, `--min-benchmarking-time`, `--reference`,
+  `--metrics`, `--env` and `--shell` taking a value, `-L`/`--parameter-list`
+  two and `-P`/`--parameter-scan` three. `unbuffer`: manpages.debian.org,
+  expect, "unbuffer program [ args ]", `-p` a flag. `chronic`:
+  manpages.debian.org, moreutils, "chronic [-ev] COMMAND...". `script`:
+  man7.org, util-linux 2.43.devel, "script [options] [file] [-- command
+  [argument...]]", `-c`/`--command` running the command "rather than an
+  interactive shell", `-E`, `-B`, `-I`, `-O`, `-T`, `-m` and `-o` taking a
+  value; and script(1) on this machine, "script [-aeFkqr] [-t time] [file
+  [command ...]]", "If the argument command is given, script will run the
+  specified command with an optional argument vector instead of an interactive
+  shell". `arch`: arch(1) on this machine, "arch [-32] [-64] [[-arch_name |
+  -arch arch_name]...] [-c] [-d envname]... [-e envname=value]... [-h] prog
+  [args ...]". `xcrun`: xcrun(1) on this machine, "xcrun [--sdk <SDK name>]
+  <tool name> ... tool arguments ...", `--find` printing the path "instead of
+  the tool being executed", `--sdk` and `--toolchain` taking a value.
+  `sandbox-exec`: sandbox-exec(1) on this machine, Mac OS X, March 9, 2017,
+  "sandbox-exec [-f profile-file] [-n profile-name] [-p profile-string] [-D
+  key=value ...] command [arguments ...]". `systemd-run`:
+  github.com/systemd/systemd, `man/systemd-run.xml` and
+  `man/user-system-options.xml` on `main`, "systemd-run [OPTIONS...] COMMAND
+  [ARGS]...", `-u`/`--unit=`, `-p`/`--property=`, `--description=`,
+  `--slice=`, `--expand-environment=`, `--service-type=`, `--uid=`, `--gid=`,
+  `--nice=`, `--working-directory=`, `-E`/`--setenv=`, the `--on-*=` timers,
+  `--path-property=`, `--socket-property=`, `--timer-property=`,
+  `--job-mode=`, `--background=`, `--output=`, `--json=` and
+  `--root-directory=` taking an argument; `-H`/`--host=` "Execute the
+  operation remotely", `-M`/`--machine=` "Execute operation on a local
+  container", `-C`/`--capsule=` "Execute operation on a capsule", which run
+  the command elsewhere.
+
+  The environment and version runners. `direnv exec`:
+  direnv.net/man/direnv.1.html, direnv 1 of 2019, "direnv exec DIR COMMAND
+  [...ARGS]: Executes a command after loading the first .envrc or .env found
+  in DIR". `devbox run`: github.com/jetify-com/devbox on `main`,
+  `internal/boxcli/run.go`, `Use: "run [<script> | <cmd>]"`, "The script must
+  be defined in devbox.json, or else it will be interpreted as an arbitrary
+  command", "Everything after -- will be passed verbatim into your command";
+  `internal/boxcli/config.go`, `--config`/`-c` and `--environment` with a
+  value; `internal/boxcli/env.go`, `--env`/`-e` and `--env-file` with a value;
+  the documentation pages at jetify.com answered 404 at every address tried,
+  so the source is the vendor's program. `mise exec`:
+  mise.jdx.dev/cli/exec.html, "mise exec [FLAGS] [TOOL@VERSION]… [--
+  COMMAND]…", alias `x`, `-c`/`--command <COMMAND>` "Runs a command string
+  through a shell", `-j`/`--jobs`, `--allow-env`, `--allow-net`,
+  `--allow-read`, `--allow-write` and `--secrets` taking a value, and "Missing
+  tools are installed first unless the `exec_auto_install` or `auto_install`
+  setting is off", which is why the install guard reads `mise exec` and `mise
+  x` as it reads `mise install`; mise.jdx.dev/cli/, `install` "Install the
+  tools in your config, or specific tool versions", `use` "Install a tool and
+  add it to configuration", `upgrade` "Upgrade outdated tools", `self-update`
+  "Update mise itself", `install-into` "Install a tool version into a
+  directory outside mise". `nix-shell`: the Nix Reference Manual 2.35.2 at
+  nix.dev, command-ref/nix-shell, "nix-shell [--arg name value] [--argstr name
+  value] [{--attr | -A} attrPath] [--command cmd] [--run cmd] [--exclude
+  regexp] [--pure] [--keep name] {{--packages | -p} {packages | expressions} …
+  | [path]}", `--run` "Like --command, but executes the command in a
+  non-interactive shell", `-p` building the packages named into the store,
+  `--arg`, `--argstr` and `--option` taking two values. `nix develop`:
+  command-ref/new-cli/nix3-develop, "nix develop [option…] installable",
+  `--command`/`-c` "Instead of starting an interactive shell, start the
+  specified command and arguments"; `nix shell` and `nix env shell` read the
+  same way, their `-c` as the entry of 12 October 2026 read their form. `asdf
+  exec`: github.com/asdf-vm/asdf on `master`, `internal/cli/cli.go`, the
+  `exec` command with `SkipFlagParsing: true`, "We want all arguments to exec
+  to remain unparsed so we can pass them"; `docs/guide/getting-started.md`,
+  `asdf plugin add nodejs …` and `asdf install nodejs latest`, the data under
+  `${ASDF_DATA_DIR:-$HOME/.asdf}`; the page asdf-vm.com/manual/commands
+  answered 404 with and without its suffix. `rbenv exec`:
+  github.com/rbenv/rbenv on `master`, `libexec/rbenv-exec`, "Usage: rbenv exec
+  <command> [<args>...]", "Runs an executable by first preparing PATH so that
+  the selected Ruby version's `bin' directory is at the front". `pyenv exec`:
+  github.com/pyenv/pyenv on `master`, `COMMANDS.md`, "pyenv exec
+  [-N|--environment] <command> [arg1 arg2...]". `nodenv exec`:
+  github.com/nodenv/nodenv on `master`, `libexec/nodenv-exec`, "Usage: nodenv
+  exec <command> [<args>...]". `volta run`: docs.volta.sh/reference/run,
+  "volta run [FLAGS] [OPTIONS] <command> [--] [args]...", `--node`, `--npm`,
+  `--yarn` and `--env` taking a value; docs.volta.sh/reference/install, "volta
+  install [FLAGS] <tool[@version]>...", "It will also fetch that tool if it
+  isn't already cached locally", `fetch` a command of its own there. `fnm
+  exec`: github.com/Schniz/fnm on `master`, `docs/commands.md`, "fnm exec
+  [OPTIONS] [ARGUMENTS]...", `--using <VERSION>`, `--fnm-dir`, `--log-level`,
+  `--arch`, `--node-dist-mirror` and `--version-file-strategy` taking a value;
+  "fnm install [OPTIONS] [VERSION]", "Install a new Node.js version"; `fnm
+  use` with `--install-if-missing` "Install the version if it isn't installed
+  yet". `pipenv run`: pipenv.pypa.io/en/latest/cli.html, "pipenv run [OPTIONS]
+  COMMAND [ARGS]...", "Spawns a command installed into the virtualenv",
+  `--python TEXT` and `--pypi-mirror TEXT` before it. `poetry run`:
+  python-poetry.org/docs/cli/, 2.5, "The run command executes the given
+  command inside the project's virtualenv", "this command has no option",
+  `-C`/`--directory` and `-P`/`--project` before it. `pdm run`:
+  pdm-project.org/en/latest/reference/cli/, "Run commands or scripts with
+  local packages loaded", `-p`/`--project`, `-k`/`--skip`, `--venv`, `--env`,
+  `--env-file` and `--working-dir` taking a value. `hatch run`:
+  hatch.pypa.io/latest/cli/reference/, "hatch run [OPTIONS] [ENV:]ARGS...",
+  `-e`/`--env`, `-p`/`--project`, `--config`, `--data-dir` and `--cache-dir`
+  before it taking a value, a leading `+` or `-` word selecting a matrix. `rye
+  run`: rye.astral.sh/guide/commands/run/, "Runs a command installed into this
+  package", `--pyproject` taking a value. `conda run`:
+  docs.conda.io/projects/conda/en/stable/commands/run.html, "conda run [-h]
+  [-n ENVIRONMENT | -p PATH] [-v] [--dev] [--debug-wrapper-scripts] [--cwd
+  CWD] [-s] …", the executable behind the options or behind `--`. `pixi run`:
+  pixi.prefix.dev/latest/reference/cli/pixi/run/, "pixi run [OPTIONS]
+  [TASK]...", "pixi run will also update the lock file and install the
+  environment if it is required", `-e`/`--environment`,
+  `-m`/`--manifest-path`, `--auth-file`, `--pypi-keyring-provider`,
+  `--concurrent-solves` and `--concurrent-downloads` taking a value. `bundle
+  exec`: `bundle exec --help` of the bundler on this machine, "bundle exec
+  [OPTIONS]", "Exec runs a command, providing it access to the gems in the
+  bundle", `--keep-file-descriptors` a flag, `--gemfile=GEMFILE` and
+  `-r`/`--retry=NUM` with a value; the pages at bundler.io answered with an
+  empty body. `pnpm exec`: pnpm.io/cli/exec, "Execute a shell command in scope
+  of a project", "node_modules/.bin is added to the PATH", "Options for exec
+  go before the exec keyword", `--shell-mode`/`-c` "Runs the command inside of
+  a shell", `--resume-from` and `--filter` taking a value; pnpm.io/pnpm-cli,
+  `-C`/`--dir <path>`. `yarn exec`: yarnpkg.com/cli/exec, Yarn Berry, master
+  4.18.1-dev, "yarn exec <commandName> ...", "executes a shell script within
+  the context of the root directory of the active workspace"; yarn 1.22.22 on
+  this machine knows no `exec` and runs the word as a script, which reading
+  over it leaves unchanged.
+
+  The subcommands of the routes the guard knows, each read off the vendor for
+  the ones that place or replace a program. `brew`: docs.brew.sh/Manpage and
+  `brew help upgrade` and `brew help reinstall` on this machine, `upgrade`
+  "Upgrade outdated, unpinned packages using the same options they were
+  originally installed with", with no argument every outdated one, `reinstall`
+  "Uninstall and then reinstall a formula or cask", `update` fetching Homebrew
+  itself and the formulae and installing none. `port`:
+  guide.macports.org/chunked/using.html, `install` "is used to install a
+  port", `upgrade` "upgrades installed ports and their dependencies to the
+  latest version available in MacPorts", `selfupdate` installing a new
+  MacPorts base where one is found, `sync` placing nothing. `apt` and
+  `apt-get`: manpages.debian.org, unstable, APT 3.3.3, `install`, `reinstall`,
+  `upgrade` "used to install available upgrades of all packages currently
+  installed on the system", `full-upgrade`, `dist-upgrade`, `build-dep`
+  "causes apt-get to install/remove packages", `update` downloading package
+  information and installing none. `dnf` and `yum`:
+  dnf.readthedocs.io/en/latest/command_ref.html, which man7.org's yum(8) gives
+  as the same reference, `install` with `in`, `install-n`, `install-na`,
+  `install-nevra` and `localinstall`, `reinstall` with `rei`, `upgrade` with
+  `up`, `update`, `upgrade-to`, `update-to` and `localupdate`,
+  `upgrade-minimal`, `distro-sync` with `dsync`, `distrosync` and
+  `distribution-synchronization`, `downgrade` with `dg`, `swap` "Remove
+  remove-spec and install install-spec in one transaction", `group install`.
+  `zypper`: manpages.opensuse.org, Tumbleweed, zypper 1.14.101, `install`
+  (`in`) "Install or update packages", `update` (`up`), `dist-upgrade`
+  (`dup`), `patch` "Install all available needed patches",
+  `install-new-recommends` (`inr`), `source-install` (`si`). `pacman`:
+  pacman.archlinux.page/pacman.8.html, 2026-02-04, `-S`/`--sync` "Packages are
+  installed directly from the remote repositories", `-U`/`--upgrade` "Upgrade
+  or add package(s) to the system", `-u`/`--sysupgrade` "Upgrades all packages
+  that are out-of-date", `-y` refreshing and installing none; the letters `s`,
+  `i`, `l`, `g`, `p`, `w` and `c` in a `-S` cluster search, show, list, group,
+  print, download and clean. `apk`: github.com/alpinelinux/apk-tools on
+  `master`, `doc/apk-add.8.scd` "apk add adds or updates given constraints to
+  world … and commit changes to disk", `doc/apk-upgrade.8.scd` "apk upgrade
+  upgrades installed packages to the latest version available",
+  `doc/apk-fix.8.scd` "apk fix applies repair strategies to correct errors in
+  the installation of the specified packages"; the wiki and the Debian
+  manpages answered 403 and 404. `snap`: manpages.ubuntu.com, noble, snapd
+  2.76.3, `install` "Install snaps on the system", `refresh` "Refresh snaps in
+  the system", `revert` "Reverts the given snap to the previous state".
+  `choco`: docs.chocolatey.org/en-us/choco/commands/, `install` "installs
+  packages using configured sources", `upgrade` "upgrades packages from
+  various sources". `winget`:
+  learn.microsoft.com/en-us/windows/package-manager/winget/, `install`
+  "Installs the specified application" with the alias `add`, `upgrade`
+  "Upgrades the given specified application" with the alias `update`, `import`
+  "Installs all the packages in a file". `scoop`:
+  github.com/ScoopInstaller/Scoop on `master`, `libexec/scoop-update.ps1`,
+  "Usage: scoop update <app> [options]", "Summary: Update apps, or Scoop
+  itself", and the README's `scoop install`. `sdk`: sdkman.io/usage, SDKMAN!
+  5.7.0, `install` (`i`), `upgrade` (`ug`), `selfupdate`, the candidates under
+  `~/.sdkman/candidates`. `asdf`: `install` and `plugin add` as above. `mise`:
+  as above, `exec` and `x` among them. `rustup`: `rustup --help` of rustup
+  1.29.0 on this machine, `install` "Install or update the given toolchains",
+  `update` "Update Rust toolchains and rustup", `toolchain` "Install,
+  uninstall, or list toolchains", `component` and `target` "Modify a
+  toolchain's …", `self` "Modify the rustup installation";
+  rust-lang.github.io/rustup/basics.html and concepts/components.html, `rustup
+  update`, `rustup toolchain install`, `rustup self update`, `rustup component
+  add`. `nvm`: github.com/nvm-sh/nvm README at v0.40.8, `nvm install`. `volta`
+  and `fnm`: as above, `volta fetch` and `fnm use --install-if-missing` beside
+  `install`. `conda`: docs.conda.io, `update` "Update conda packages to the
+  latest compatible version", `create` "Create a new conda environment from a
+  list of specified packages"; `upgrade` read as `update`, which the vendor's
+  page on `update` names as no alias and whose own page answered 404, by this
+  guard's reading alone. `nix-env`: the manual 2.35.2,
+  command-ref/nix-env/install "nix-env {--install | -i} args… [{--attr | -A}]
+  …" "creates a new user environment", command-ref/nix-env/upgrade "nix-env
+  {--upgrade | -u} args …". `nix profile`: command-ref/new-cli/nix3-profile,
+  `add` "add a package to a profile", `upgrade` "upgrade packages using their
+  most recent flake", `install` the alias the entry of 12 October 2026 read.
+  `pkgm`: github.com/pkgxdev/pkgm README on `main`, "pkgm install node …
+  installs latest node to ~/.local. ie. you get ~/.local/bin/node", "pkgm
+  update … updates ~/.local packages to latest versions", `i` and `up` the
+  short forms, under `sudo` into `/usr/local`, which `sudo` blocks before the
+  place is read; `pkgx install` stays as the entry of 12 October 2026 read it.
+  `gh extension`: `gh extension --help` of the gh on this machine, `upgrade`
+  "Upgrade installed extensions". `deno`:
+  docs.deno.com/runtime/reference/cli/upgrade/, `upgrade` "Upgrade deno
+  executable to given version", `--output`/`-o` "The path to output the
+  updated version to". `dotnet tool`:
+  learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-update, "The command
+  uninstalls and reinstalls a tool, effectively updating it", `-g`,
+  `--tool-path` and `--local` as on `install`. `gem`:
+  guides.rubygems.org/command-reference/, `update` "Update installed gems to
+  the latest version" with the install options, "gem update GEMNAME [GEMNAME
+  ...] [options]", `--system` updating RubyGems itself; `gem help update` on
+  this machine the same. `cargo`:
+  doc.rust-lang.org/cargo/commands/cargo-install.html, `--force` "Force
+  overwriting existing crates or binaries", the root in the order `--root`,
+  `CARGO_INSTALL_ROOT`, `install.root`, `CARGO_HOME`, `$HOME/.cargo`;
+  github.com/cargo-bins/cargo-binstall README, "Binstall aims to be a drop-in
+  replacement for cargo install in many cases, and supports similar options";
+  github.com/nabijaczleweli/cargo-update README, "cargo install-update -a"
+  "check for newer versions and update all installed packages", through `cargo
+  install`. `go`: `go help install` on this machine, `install` alone. `pipx`:
+  `pipx --help` of pipx 1.17.6 on this machine, `install-all` "Install all
+  packages", `upgrade` "Upgrade a package", `upgrade-all` "Upgrade all
+  packages. Runs pip install -U <pkgname> for each package", `reinstall`
+  "Reinstall a package", `reinstall-all` "Reinstall all packages", "Symlinks
+  to apps are placed in" the bin directory; the documentation page answered
+  404. `uv tool`: docs.astral.sh/uv/guides/tools/, `uv tool upgrade`, `uv tool
+  upgrade --all`, "re-install the tool with uv tool install"; `uv tool --help`
+  on this machine, `upgrade` "Upgrade installed tools". `npm`:
+  docs.npmjs.com/cli/v11/commands/npm-update, npm 11.21.0, "npm update
+  [<pkg>...]", "aliases: u, up, upgrade, udpate", "If the -g flag is
+  specified, this command will update globally installed packages"; `npm help
+  update` of npm 11.12.1 on this machine the same aliases. `pnpm`:
+  pnpm.io/cli/update, "Aliases: up, upgrade", `-g` "Update global packages";
+  `pnpm update --help` of pnpm 10.33.3 on this machine, "pnpm update [-g]
+  [<pkg>...]". `yarn`: classic.yarnpkg.com/en/docs/cli/global, "yarn global
+  <add/bin/list/remove/upgrade> [--prefix]"; `yarn global --help` of yarn
+  1.22.22 on this machine. `bun`: bun.sh/docs/cli/update, "bun update
+  [<name>[@<version>] | <pattern>]...", "bun up", "bun update -g updates
+  packages installed with bun add -g". `pip`: `install` alone, `--upgrade` an
+  option of it.
+
+  **What is built, in `6a62e4d`.** `bin/devloop-command-reader`, 1273 lines
+  where 989 stood. The wrappers stand in two tables of the awk program's
+  `BEGIN`, lines 384 to 406: `ONEWORD`, the programs read over at one word,
+  and `TWOWORD`, the programs whose second word names the running form, with
+  `SUBS` the second words, `PRE` the options before the second word and `POST`
+  the options behind it that take a value, and the option lists of `mise`,
+  `hyperfine`, `script`, `strace`, `systemd-run`, `run0` and `xargs`. `optn`
+  and `opt_width`, lines 712 to 726, read how many words an option takes off a
+  list in the form `" -x --long -L:2 "`: one where listed, none where not, and
+  in a cluster of letters the first letter that takes a value takes the rest
+  of the cluster or, as the last letter, the next word — so `sudo -Eu root
+  brew install j` is judged at `brew`, where the program of `27a2e5d` judged
+  `root`, and `sudo -uroot c` at `c` as before; `skip_opts` and `has_opt`,
+  lines 728 to 753; `skip_wrapper`, lines 755 to 878, with the rules of each
+  one-word program — `doas -C` and `-L`, `pkexec --version`, `chrt --pid` and
+  `--max`, `taskset --pid`, `strace -p`, `xcrun --find` and the `--show-*`
+  forms, `run0 --machine` and `systemd-run --host`, `--machine` and
+  `--capsule` the command itself; `doas -s` and `su` without `-c` a shell and
+  no judged word; `su -c`, `script -c`, every command of `hyperfine` and
+  `nix-shell --run` and `--command` shell text of their line, `su`'s `-c`
+  behind the user word too, since both vendors pass the words behind the user
+  to the shell; `script`'s file word read before the command, `chrt`'s
+  priority and `taskset`'s mask before theirs; `nix-shell` judged itself;
+  `skip_two`, lines 880 to 914, with the two-word programs — `direnv exec`'s
+  directory read before the command, `mise exec`'s tools before `--` no
+  command and the words behind `--` the command handed on, its `-c` shell
+  text, `nix develop`, `nix shell` and `nix env shell` judged themselves with
+  the words behind `-c` the command handed on, `pnpm exec` with `-c` or
+  `--shell-mode` before it the words behind `exec` joined as shell text,
+  `hatch run`'s `+` words read over; `first_of`, lines 916 to 935, judging at
+  the first word that is no assignment, no redirection and no wrapper, the two
+  tables consulted in turn. A line's judged word is computed once, in `emit`,
+  and kept in `FIRSTW`, since the wrappers note shell texts and the command
+  handed on as they are read; `judge`, lines 1193 to 1243, emits the line and
+  then every command it holds — the shell texts noted, through `parse_text`
+  with the relation `shell`; the command handed on, through `child`, lines
+  1244 to 1251, as a line of its own at the next depth with the relation
+  `exec`, judged as a line is, so that `mise exec -- sh -c "brew install a"`
+  reads the `brew install a` inside the `sh -c` too, where `find -exec sh -c
+  '…'` at `27a2e5d` did not, `find`'s actions going through the same `child`
+  now; then `eval`, `find`, a shell's `-c` and a shell reading its commands
+  from stdin as before, the here-strings collected before any is taken apart,
+  since taking one apart reuses the depth the words stand at. `compound_end`,
+  finding 1. `parse_simple`, lines 1150 to 1192, reads the words and hands
+  them to `judge`. The self-test, lines 100 to 372, 104 cases where 94 stood:
+  the ten new ones at lines 311 to 320 and 331 to 353, one per family — the
+  redirections behind a group, a subshell, `for`, `if` and a function body,
+  the heredoc behind `done`, the pipe behind a compound with a redirection and
+  the substitution in a target; `command -v` and bare `xargs`; `xargs` with
+  its options and `nocorrect`; `doas`, `su`, `run0`, `pkexec` and the `sudo`
+  cluster; the eleven system runners; the shell-text forms; `direnv exec`,
+  `devbox run`, `mise exec` and the nix shells; the twenty exec and run forms
+  of the managers with `poetry install` judged itself; and the shell with `-c`
+  behind `mise exec` and behind `find -exec`. The head, lines 59 to 100, says
+  the group, the shell-text forms, the forms judged themselves, the forms that
+  look something up or run the command elsewhere, and under "Not taken apart"
+  what is not in the group and why. The program answers the self-test in under
+  two seconds here, bash 3.2.57 and awk 20200816 as before.
+
+  `hooks/pre-tool-use-install-guard.sh`, 907 lines where 819 stood. The
+  privilege group, line 213: `sudo` as before, and `doas`, `su`, `run0` and
+  `pkexec`, read among the words before the judged word and, on a line with no
+  judged word — `su -c 'brew install ripgrep'`, whose text is a line of its
+  own — among all its words, `PRIV` keeping the first found; the cause under a
+  yes at lines 688 to 690, after `sudo`'s and before the piped script's, in
+  the approved wording with the program's name; `sudo`'s cause at line 687 as
+  it stood. Finding 2, lines 541 to 591. Finding 4: the routes at lines 230 to
+  325 and 362 to 478, each with the subcommands above — `brew` line 235, the
+  system package managers at lines 259 to 279, each an arm of its own where
+  one arm stood, `pacman` by its `-S` and `-U` clusters where the arm of
+  `27a2e5d` matched `install` and never pacman's own syntax, the version
+  managers 284 to 296 each an arm of its own, `mise exec` and `x` among its
+  verbs, `conda` 297, `nix profile` with `upgrade` 300, `nix-env` 304 to 309
+  by its operation anywhere among the options, `nix-shell` 310 to 315 with
+  `-p` or `--packages` a fetch-and-run form, `pkgm` 319 to 324 landing in
+  `~/.local/bin`, `gh extension upgrade` 326, `deno upgrade` 340 to 346
+  landing where the `deno` on this hook's PATH stands or at `--output`, not
+  found a block, `dotnet tool update` 351, `gem update` 362, `cargo binstall`
+  and `install-update` 372, `pipx` 395, `uv tool upgrade` 401, `npm` with
+  `update`, `u`, `up`, `upgrade` and `udpate` 448, `pnpm` 453 and 459, `yarn
+  global upgrade` 473, `bun update` and `up` 478. `hooks/hooks.json`: lines 9
+  to 11 without the `if` fields, the three handlers now identical in form to
+  the others. `.github/workflows/stock-take.yml`: the step at lines 59 to 96
+  checks the handlers under `PreToolUse` for an `if` field beside the field
+  `"onFailure"`, red where one carries it, its name at line 71 saying so; run
+  as a script on this machine on 13 October 2026, green, which is no run of
+  the platform. `docs/skill-conventions.md`: the rule "A hook reads its input
+  through one program" at lines 1472 to 1502 names the group, the programs
+  outside it and why, the fetch-and-run forms read at their own names, and the
+  installation a program of the group makes first; lines 1515 to 1521 the
+  forms not read with their reasons and the redirection behind a compound;
+  lines 1526 to 1528 the `if` field in the step; lines 847 to 849 the four
+  programs beside `sudo` under what stays the person's; lines 2426 to 2437 and
+  2455 to 2464 the `if` fields gone and why.
+  `hooks/pre-tool-use-table-guard.sh` lines 12 to 15 and 30 to 31,
+  `hooks/pre-tool-use-mark-guard.sh` lines 55 to 61,
+  `shared/command-does-not-answer.md` lines 84 to 86 and
+  `shared/fetch-and-run.md` lines 8 to 11, as the findings say. No message of
+  a hook changed but for the cause of finding 3.
+
+  **Not in the group, or not read, each with its reason, named in the head of
+  the program and in the conventions.** `ssh`, `docker exec`, `chroot` and
+  `nsenter`, which run the command on another machine or in another root or
+  namespace: not in the group, as the person decided. `npx`, `bunx`, `pnpm
+  dlx`, `yarn dlx`, `uvx`, `pipx run`, `go run` with a version, `nix run` and
+  `nix shell` without `-c`: they resolve a package rather than run a word, and
+  the install guard reads them at their own names as the fetch-and-run forms
+  they are; `uv run` the same, which the guard reads at `uv` for `--with`.
+  `nvm exec`: its version is optional and no rule tells `nvm exec 18 node -v`
+  from `nvm exec node -v`, and `nvm` is a shell function a non-interactive
+  shell does not carry. `unshare`, `bwrap` and `firejail`: options taking two
+  values and more by rules of their own. `ltrace`, `perf`, `gdb` and `lldb`:
+  not read. `hatch run test:pytest`: the first word carries the environment
+  before the colon, and the program hands the words as the shell hands them,
+  so the judged word is `test:pytest` and goes through; `hatch run pytest` is
+  read. `hyperfine` at v2.0.0 runs its commands without a shell unless `-S`
+  stands there, so a `&&` inside a command string is a literal argument to the
+  program and no second command; the program reads every command string as
+  shell text all the same, named here, by the rule that a doubt goes through
+  on the install guard's side alone. `script -t` is read as taking a value,
+  the form of macOS, where util-linux attaches the file to the option. `mise
+  exec` without `--` and without `-c` hands no command on, since the vendor's
+  usage puts the command behind `--`. `doas -C` and `doas -L`, `pkexec
+  --version` and `--help`, `xcrun --find`, `chrt --pid`, `taskset --pid` and
+  `strace -p` run no command and are judged themselves.
+
+  **Measured on 13 October 2026 against the hooks of `6a62e4d`, from 08:06:00
+  to 08:07:40 UTC**, as on 12 October 2026: the same scratch project with
+  `docs/agents/`, its `origin` a bare repository whose `origin/HEAD` names
+  `main`, the four records of the entry of 9 October 2026 — no, none, yes11,
+  yes6 — each committed, pushed and fetched before the commands under it,
+  every hook started as a program through its own first line by its absolute
+  path and fed its JSON on stdin with `CLAUDE_PROJECT_DIR` on the project, the
+  harness a python program in this session's scratch directory rebuilt from
+  the report of 12 October 2026, whose tables it reads for the commands and
+  their shoulds. Darwin 25.6.0, bash 3.2.57, awk 20200816, git 2.50.1. 1401
+  cases, every one as expected: 1254 on the install guard from 08:06:00 to
+  08:07:36 UTC, 147 on the other hooks to 08:07:40 UTC. Three earlier runs of
+  the same harness, the last ending at 08:03:28 UTC, found no fault in a hook
+  and four in the harness, mended before the run recorded: a stand-in `uname`
+  written once for both systems of row 7, so that the Linux rows ran as MINGW;
+  the path of the scratch project of 12 October 2026 left in one command of
+  the September table, so that a pip inside the project read as outside; the
+  cause column of the report of 12 October 2026 cut at 200 characters and
+  holding the yes11 cause alone, against which the yes6 cause was held; and a
+  should of this measurement's own, `doas -C /etc/doas.conf brew install
+  ripgrep` expected a stop where `doas -C` "Parse[s] and check[s] the
+  configuration file config, then exit[s]" and runs nothing, so that the pass
+  is right and the should was wrong. Every case of the measurement of 12
+  October 2026 keeps its should, 1037 cases, with the two exceptions the order
+  named, `ls | xargs -n1 brew install` and `nocorrect brew install ripgrep` 2
+  2 0 0 where they were 0 0 0 0; among them `PLAYWRIGHT_BROWSERS_PATH=0 npx
+  playwright install` 0 0 0 0 and the browser rows 2 2 0 2 as before, finding
+  2 having moved nothing but the `sudo` case.
+
+  The install guard's new cases, 88 commands under the four records, 352 runs,
+  in the order no, none, yes11, yes6, the cause under a yes where blocked:
+  `sudo PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` and
+  `PLAYWRIGHT_BROWSERS_PATH=0 sudo npx playwright install` 2 2 2 2, "it needs
+  sudo, which stays the user's under every answer" under both yes;
+  `PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install && npx playwright install
+  chromium` 2 2 0 2, under yes6 "it lands in ~/Library/Caches/ms-playwright,
+  which the record does not name"; `xargs -I{} go install {}@latest <
+  tools.txt` 2 2 0 0; `doas brew install ripgrep`, `su -c 'brew install
+  ripgrep'`, `run0 make install` and `pkexec make install` 2 2 2 2, under both
+  yes "it needs doas, …", "it needs su, …", "it needs run0, …" and "it needs
+  pkexec, which stays the user's under every answer"; `mise exec -- go install
+  golang.org/x/tools/cmd/goimports@latest` 2 2 2 2, under both yes "where it
+  lands cannot be read here; mise (a version manager: what it installs lands
+  in its own tree and reaches shell profiles this guard never reads, so it
+  stays the user's under every answer); a place the record does not name stays
+  blocked", by the vendor's sentence that missing tools are installed first;
+  `direnv exec . brew install ripgrep`, `caffeinate -i brew install ripgrep`,
+  `nix-shell --run 'brew install ripgrep'` and `nix-shell -p ripgrep --run rg`
+  2 2 0 0; `nix-env -iA nixpkgs.ripgrep` and `nix-env --install ripgrep` 2 2 2
+  2, "where it lands cannot be read here; nix-env (where it puts things is not
+  read off this machine by this guard)", as `nix profile install
+  nixpkgs#ripgrep`; `cargo binstall ripgrep` 2 2 2 2 naming `~/.cargo/bin`, as
+  `cargo install ripgrep`; `brew upgrade ripgrep`, `brew reinstall ripgrep`
+  and `brew upgrade` 2 2 0 0; `pipx upgrade black`, `uv tool upgrade ruff`,
+  `npm update -g typescript` and `gem update rails` 2 2 0 0, as their installs
+  here; `ssh server 'brew install ripgrep'`, `docker exec c apt-get install -y
+  jq`, `brew update`, `npm update` and `command -v brew` 0 0 0 0. Sixty of
+  this measurement's own: `sudo -Eu root brew install ripgrep`, `caffeinate -i
+  sudo make install` 2 2 2 2 with `sudo`'s cause, `timeout 600 su -c 'make
+  install'` and `su root` 2 2 2 2 with `su`'s; `doas -C /etc/doas.conf brew
+  install ripgrep` 0 0 0 0; `hyperfine 'brew install ripgrep'`, `script -q
+  /dev/null brew install ripgrep`, `chrt -f 10 brew install ripgrep`, `nix
+  develop -c brew install ripgrep`, `nix shell nixpkgs#hello -c brew install
+  ripgrep`, `pixi run brew install ripgrep`, `conda run -n env -- brew install
+  ripgrep`, `{ brew install ripgrep; } > log`, `for t in a b; do go install
+  $t@latest; done` and `xargs -0 -P 4 -n 1 brew install < list` 2 2 0 0;
+  `systemd-run -M box brew install ripgrep`, `env -S 'brew install ripgrep'`,
+  `nvm exec 18 brew install ripgrep`, `unshare -r brew install ripgrep`,
+  `poetry run pytest` and `bundle exec rake` 0 0 0 0; `mise x -- brew install
+  ripgrep`, `mise exec -c 'brew install ripgrep'` and `mise exec -- pytest` 2
+  2 2 2 with `mise`'s cause; `poetry run pip install requests` 2 2 2 2 with
+  the bare pip's cause, since the pip of poetry's environment names no
+  interpreter, as every bare pip; `pnpm exec playwright install` 2 2 0 2 as in
+  row 3; `pacman -S ripgrep`, `pacman -Syu`, `apt upgrade`, `apt-get install
+  -y jq`, `dnf upgrade`, `zypper up`, `snap refresh code`, `apk upgrade`,
+  `winget upgrade --all`, `scoop update`, `choco upgrade all` and `port
+  upgrade outdated` 2 2 2 2 with the system package manager's cause, `pacman
+  -Ss ripgrep` 0 0 0 0; `rustup update`, `rustup component add clippy`, `sdk
+  upgrade`, `volta fetch node@22`, `asdf plugin add nodejs` and `fnm use
+  --install-if-missing 20` 2 2 2 2 with the version manager's cause; `nix
+  profile upgrade ripgrep` and `conda update -n base conda` 2 2 2 2 not read;
+  `pnpm update -g typescript` 2 2 2 2 naming `~/Library/pnpm`, `bun update -g
+  cowsay` naming `~/.bun/bin`, `dotnet tool update -g dotnet-ef` naming
+  `~/.dotnet/tools`, `gh extension upgrade dlvhdr/gh-dash` naming
+  `~/.local/share/gh/extensions`, `cargo install-update -a` naming
+  `~/.cargo/bin`, each as its install; `yarn global upgrade typescript` 2 2
+  under no and none and as `yarn global add typescript` under both yes; `deno
+  upgrade` 2 2 2 2, "deno upgrade (deno is not found on this hook's PATH, so
+  the executable it replaces cannot be placed)"; `pkgm install node`, `pipx
+  reinstall-all` and `pipx install-all pipx.json` 2 2 0 0.
+
+  The other hooks, 147 cases: the 121 of 12 October 2026 as recorded there,
+  and 26 of this addendum. The mark guard under `default`: `{ printf
+  'build\n'; } > .claude/unattended.local`, `( echo build ) >
+  .claude/unattended.local`, `for l in build x; do echo $l; done >
+  .claude/unattended.local`, `if true; then echo build; fi >
+  .claude/unattended.local` and `caffeinate -i touch .claude/unattended.local`
+  2 with text C each, the same five under `auto` 0, `{ echo x; } > notes.txt`
+  0. The branch guard on `main`: `caffeinate -i git push origin main` and `sh
+  -c "git push origin main"` 2, `doas git push origin feature` 0. The merge
+  guard: `mise exec -- gh pr merge 5 --squash`, `sh -c "gh pr merge 5"`, `gh
+  pr merge 5` and `caffeinate -i gh pr merge 5` 2, `echo "gh pr merge"` and
+  `gh pr view` 0 — this file's first measurement of the merge guard by its
+  JSON stood in the entry above, and these six are the second. The table guard
+  on a branch with a cell in no allowed form: `sh -c 'git commit -m x'`,
+  `caffeinate -i git commit -m x` and `mise exec -- git commit -m x` 2. The
+  identity guard: `doas git -c user.email=a@example.com commit -m m` with `-c
+  user.email`, `caffeinate -i git commit --author='A <a@example.com>' -m m`
+  with `--author`, `mise exec -- git -c user.name=x commit -m m` with `-c
+  user.name`, 2 each. That Claude Code starts the three guards at every Bash
+  call is held by the step in the workflow and not by this measurement, which
+  feeds each hook its JSON.
+
+  **Searched before the build, at `27a2e5d`, each with its command and what it
+  found**, over `docs/skill-conventions.md`, `docs/plan.md`, `README.md`,
+  `shared`, `skills`, `hooks`, `bin`, `scripts`, `.github` and
+  `.claude-plugin` with `grep -rn -F -e <pattern>`: `Bash(git`, the
+  conventions at 2420 and 2421, the table guard at 12, `hooks/hooks.json` 9
+  and 11, every one changed; `Bash(gh pr merge`, `hooks/hooks.json` 10,
+  changed; `"if"`, the three lines of `hooks/hooks.json` and the reader's line
+  836, which is the awk word; `` `if` field ``, the conventions at 2399 and
+  2420, changed; `nocorrect`, the reader at 68, 287 and 288, changed; `doas`,
+  the conventions at 1492 and the reader at 82, changed; `direnv`, `devbox`,
+  `mise exec` and `nix-shell`, the conventions at 1493 and the reader at 83,
+  changed; `BEYONDBEFORE`, the guard at 493 and 506, gone; `caffeinate`,
+  `docs/plan.md` 510, the conventions 1343 and 1344 and
+  `skills/setup-checks/SKILL.md` 837 and 840, which speak of keeping the
+  machine awake and stay; `the workflow file`, `shared/command-does-not-
+  answer.md` 85, changed, `skills/setup-checks/SKILL.md` 1029 and 1059 and
+  `scripts/devloop-stock-take` 117, which speak of correcting the file and of
+  taking it back out and stay; `xargs`, the conventions at 1474 and the
+  reader, changed; `su -c`, `nix develop`, `cargo binstall`, `nix-env`, `brew
+  upgrade`, `pipx upgrade`, `npm update`, `gem update` and `redirection
+  behind`: nothing. Over this file, `grep -c -F`: `Bash(git` 7, `` `if` field
+  `` 3, `nocorrect` 2, `doas` 1, `the workflow file` 19, each in a dated entry
+  that stays as written, `BEYONDBEFORE`, `cargo binstall`, `nix-env` and
+  `behind a compound` 0. The texts that state the `sudo` rule, `grep -rn
+  "sudo" shared skills README.md docs/plan.md | grep -i "every answer"`:
+  nothing outside the conventions; in the conventions, line 846, changed, and
+  line 1484, this build's own.
+
+  **This addendum, held against itself.** Finding 4 asks that `nix-shell -p`
+  be read as the install of its route and expects `nix-shell -p ripgrep --run
+  rg` 2 2 0 0, which is the answer of a fetch-and-run form and not of a place
+  held against the record; the form puts the packages into the Nix store,
+  where no route of the record lies, so it is read as `nix shell` is, a
+  fetch-and-run form opened by any yes, and named so in
+  `shared/fetch-and-run.md`. Finding 3's definition takes in every program
+  that runs a word as a command, and `npx`, `uvx`, `pipx run` and the other
+  fetch-and-run forms do; they are read out of the group here, since they
+  resolve a package and the guard reads them at their own names, which reading
+  them over would hide. `doas -C` was my should and not the order's, and it
+  was wrong. The order expected `mise exec -- go install …` 2 2 and left both
+  yes to the vendor's reading; the reading gives a stop under both, since the
+  vendor installs missing tools first by default. The person's decision on
+  finding 7 revises point 1 of this entry as well as part B point 2 of the
+  decisions, named above. The three guards start at every Bash call now, three
+  hook starts more per call than before, each reading the JSON through the
+  reader; the cost is not measured here. `hyperfine` is read as shell text
+  against the vendor's default, named above as the one doubt read on the
+  blocking side. Nothing else in the addendum was found wrong or
+  contradictory, and no question with two ways was left to the person: where
+  the addendum left a reading open, the vendor decided it.
+
+  **Stock-take, before and after.** The tool at `27a2e5d`, run on the clean
+  tree on 12 October 2026, as the paragraph above records it: `BROKEN RECORDS:
+  0`, `FINDINGS: 19`, 159 lines that can carry no unique anchor, `UNITS
+  WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 3142`,
+  269 runs under `RUNS THAT DO NOT COUNT`, exit 0. The tool at `6a62e4d` with
+  the table of `27a2e5d`, run on 13 October 2026 before this addendum: `BROKEN
+  RECORDS: 37`, the anchors the build moved or made ambiguous, `FINDINGS: 19`,
+  174 lines that can carry no unique anchor, `UNCOVERED LINES OF THE SEARCH
+  SET: 124 of 3237`, exit 2. The tool at `27a2e5d`, run on 13 October 2026 in
+  a clean worktree of that commit: `BROKEN RECORDS: 0`, `FINDINGS: 19`, 159
+  lines that can carry no unique anchor, `UNITS WITHOUT A STRAIGHT PATH: 0`,
+  `UNCOVERED LINES OF THE SEARCH SET: 0 of 3142`, 198 runs under `RUNS THAT DO
+  NOT COUNT`, where the paragraph above gives 269 at the branch's last commit,
+  walked 443, built and never walked 1030, recorded and not built 228,
+  undetermined 28, exit 0. The tool with this addendum and the rows of its
+  commit, before the runs: `BROKEN RECORDS: 0`, `FINDINGS: 19`, 169 lines that
+  can carry no unique anchor, nothing under `STATUS WORDS OF docs/roadmap.md
+  BROKEN OVER A LINE BREAK`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED
+  LINES OF THE SEARCH SET: 0 of 3249`, exit 0; 209 runs under `RUNS THAT DO
+  NOT COUNT`, the eleven more being runs of 12 October 2026 on the outcomes of
+  the install guard and of the reader whose lines this build changed, on the
+  registration in `hooks/hooks.json`, and on the straight paths of
+  `build-work` step 3 and `setup-checks` step 3, which insert
+  `shared/fetch-and-run.md`, each with the reason that a line of the thing
+  changed at `6a62e4d`; walked 432 where 443 stood, built and never walked
+  1049 where 1030, recorded and not built 228, undetermined 28. The rows, 4797
+  where 4665 stood: 28 records re-anchored, the lines the build moved or made
+  ambiguous — three lines of the reader made distinct again for that, `if (w
+  !~ /^-/) { break }` in `script`'s loop, `if (j < 0) { return i }` at the
+  two-word wrappers and the heredoc line of `compound_end` in braces, so that
+  the three lines of `27a2e5d` they had doubled keep their anchors; one thing
+  renamed, the workflow's step, which carries no run, its note naming the old
+  name; eight things added, the seven defects of the findings above, each with
+  its site on the line of this addendum that says it is built and its evidence
+  on the line of the build that answers it, and the install guard's block
+  under a yes for `doas`, `su`, `run0` and `pkexec`; and 124 not-a-thing rows
+  added, part of the outcome each line leads to, the whole set covered.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
