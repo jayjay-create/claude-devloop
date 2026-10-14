@@ -22880,8 +22880,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   for what was built on 14 October 2026 - `sg`, the rule of `rg --pre`, the
   first kind at the judged word, `man`, `bat`, `fzf --bind`, `sk`, `rsync -e`,
   `tcpclient`, `feh` and both batches of the check of the reading again - each
-  with its commands and the answer foreseen, and every answer came out as
-  foreseen; for findings 1 to 3 and the tables of the searches, built on 13
+  with its commands and the answer foreseen; the first probe of `pueue add`
+  came out otherwise, its `-a` and `-e` passed by the table before the new
+  branch read them, and the first probe of the second batch stopped on a
+  syntax error of the `git rebase -xcmd` branch before reading any command,
+  both set right before the commit, and every answer of the final probes
+  came out as foreseen, as section 4 of that addendum's report says and the
+  fourth addendum below records; for findings 1 to 3 and the tables of the
+  searches, built on 13
   and 14 October 2026, no walk was written down before the build. What the
   walks missed and the measurement found: `start-stop-daemon --start -c nobody
   --exec /usr/bin/make -- test` passing; what the self-test found: `composer
@@ -22890,6 +22896,372 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Windows with Git Bash and Linux are read through `DEVLOOP_READER_OS` in the
   self-test, not on those systems; the 40 programs of the AUR and the 30 of
   nixpkgs and Fedora without a documented form stay unread.
+
+  **Fourth addendum of 14 October 2026: the reader runs on every system, a
+  change of group is no stop, a doubt lets through; the version stays
+  0.137.0.** On `task/command-reader`, off `84f1aab`; the code and what
+  describes it outside this file and the table in `1d295f2`, this addendum,
+  the correction of the sentence of finding 5 below and the rows of the table
+  in the second commit, the runs in the third. Every line number in this
+  addendum holds at `84f1aab` unless it says otherwise. The report stands on
+  this machine as `~/devloop-report-command-reader-addendum-4.md`, in English,
+  and is not in the repository. The person decided on 14 October 2026: devloop
+  runs on every system; a stop under every answer at the install guard is only
+  what runs the command as an administrator or as another user, a program or
+  an option that changes only the group or the supplementary groups is read
+  over and the command behind it judged as any other, and an option that sets
+  user and group together stays a stop; every doubt the reader had read on the
+  blocking side lets through, and where the system the reader runs on decides
+  which program is meant, the system decides and no doubt remains; the tables
+  of the group are not cached and the reader's time stays as it is. Every
+  reading of a vendor below rests on the wording of the source, fetched raw
+  with `curl` from raw.githubusercontent.com, the vendor's page or the GitHub
+  API, the release or commit named with the command that shows it exists; the
+  report quotes each sentence with its command and output.
+
+  **Finding 1: under Linux the reader did not run.**
+  `bin/devloop-command-reader` gave awk its program as one argument of the
+  command line, line 787 up to the closing quote on line 3501, 204 937 bytes
+  at `84f1aab` and 80 725 at `aca54c0`. Linux refuses a single argument of 131
+  072 bytes and more: measured on 14 October 2026 in Docker `ubuntu:24.04`
+  with mawk 1.3.4 20240123, `/bin/true` with an argument of 131 071 bytes runs
+  and with 131 072 bytes answers "Argument list too long", and in
+  `alpine:3.22` the same. There `bin/devloop-command-reader --self-test` ended
+  with `/usr/bin/awk: Argument list too long` at its first case, and
+  `hooks/pre-tool-use-install-guard.sh` and
+  `hooks/pre-tool-use-merge-guard.sh` ended with exit 1 for the command `ls`
+  in a project with `docs/agents/`, the branch guard too where the project is
+  a git repository on its default branch; since every handler under
+  `PreToolUse` and `PermissionRequest` in `hooks/hooks.json` carries
+  `"onFailure": "block"`, under Linux every Bash call was blocked since the
+  third addendum, and the check `stock-take` of pull request #171 was red at
+  `84f1aab`. Should: the reader runs under macOS, under Linux and under
+  Windows with Git Bash, with the awk each system brings, and no limit the
+  command line sets on the size of its program. Built in `1d295f2`: the
+  program is the body of a quoted here-document on file descriptor 3,
+  `LC_ALL=C awk -v me="$me" -v os="$OS" -f /dev/fd/3 3<<'AWK'`, closed by a
+  line `AWK`; bash writes the body to a temporary file and opens it on
+  descriptor 3 for the awk command alone, no process is added, no argument
+  carries the program, the JSON stays on stdin. Read for the three systems:
+  macOS has `/dev/fd` as a file system, measured on this Mac with awk
+  20200816; Linux opens `/dev/fd/3` through `/proc/self/fd/3`, measured in
+  Docker `ubuntu:24.04` with mawk and `alpine:3.22` with busybox awk 1.37.0, a
+  200 KB here-document program off `/dev/fd/3` in each; Windows with Git Bash:
+  the MSYS2 runtime, msys2/msys2-runtime at the head of its default branch
+  msys2-3.6.11, commit `7eb3b4b` of 11 October 2026,
+  `winsup/cygwin/devices.in` line 190 `"/dev/fd", BRACK(FH_DEV_FD),
+  "/proc/self/fd", exists, S_IFLNK` and
+  `winsup/cygwin/fhandler/process_fd.cc`, `fhandler_process_fd::fetch_fh`,
+  which for the own process takes the descriptor with `cygheap_fdget cfd (fd,
+  true)` and duplicates its handle with `DuplicateHandle`, so that opening
+  `/proc/self/fd/3` yields the descriptor's file or pipe, and `fd_reopen`
+  opens it; and Git for Windows ships gawk, git-for-windows/build-extra
+  `make-file-list.sh` at `75e6f0e` of 7 October 2026 keeping `gawk.*\.exe`
+  under `/usr/bin`, whose `io.c` at 5.3.2, read off sources.debian.org
+  `1:5.3.2-1`, `devopen_simple` takes `/dev/fd/N` off the inherited descriptor
+  after an `fstat` before any open of a path, and `srcopen` reads a program
+  file through `devopen`. Not a second file under `bin/`: hundreds of rows of
+  the table stand on the lines of the reader, and a temporary file of the
+  reader's own would cost three processes on every hook call. The self-test
+  passes on this Mac in 6.5 s and in Docker `ubuntu:24.04` in 1.7 s, 158
+  cases; under `alpine:3.22` with busybox awk 1.37.0 its 21st case, "a
+  backslash at the end of the line continues the command", fails, the reader
+  printing `brew install nripgrep` where the backslash and the newline inside
+  a word should vanish, the twenty cases before it green. Recorded, not built:
+  busybox awk reads a backslash before a newline inside a word otherwise than
+  the awk of macOS, mawk and gawk, one case of the reader's self-test red
+  under Alpine; busybox awk is none of the awks of the three systems the
+  person named, and the reading is not repaired here. The reader's time for a
+  short command, measured as the third addendum did, three rounds of 100 runs:
+  20.8 to 21.1 ms at `84f1aab` and 17.1 to 17.5 ms at `1d295f2`, the
+  here-document faster than the quoted argument by about 3.5 ms.
+
+  **Finding 2: nothing showed that the reader and the hooks run under macOS
+  and Windows.** `.github/workflows/stock-take.yml` ran the reader's self-test
+  under `ubuntu-latest` alone, in the step "hooks read through the reader,
+  handlers block on failure and carry no if field, the reader's self-test";
+  under Windows with Git Bash the reader had never run, section 18 of the
+  third addendum's report; the repository had no `.gitattributes`. Should:
+  devloop runs on every system, the person's decision of 14 October 2026; on
+  every pull request into `main` the reader's self-test and every hook of
+  `hooks/hooks.json` run once with a harmless input of its event in a
+  throwaway project under `ubuntu-latest`, `macos-latest` and
+  `windows-latest`, there under Git Bash, the hooks on the tool `Bash` with
+  the command `ls`, and the check is red where a hook answers otherwise than
+  0; every file a shell or awk reads arrives on every system with the line
+  endings it runs with; the job `stock-take` keeps its name, since `main`
+  requires the check `stock-take`, lines 6863 to 6868. Built in `1d295f2`: the
+  job `hooks-on-every-system`, named "hooks on every system", a matrix over
+  the three systems with `shell: bash` as the default of its steps - GitHub's
+  docs, github/docs `data/reusables/actions/supported-shells.md` at `ba6f6f9`
+  of 14 October 2026: "When specifying a bash shell on Windows, the bash shell
+  included with Git for Windows is used." - whose second step runs the
+  self-test and starts every handler of `hooks/hooks.json` once by absolute
+  path with the JSON of its event on stdin and `CLAUDE_PROJECT_DIR` on a
+  throwaway project outside the checkout: `docs/agents/`, a commit on `main`
+  pushed to a local bare `origin` whose `HEAD` is `main`, the work on a branch
+  `work`, since the branch guard blocks a Write on `main` by design; the six
+  handlers for `Bash` with `ls`, the two for `Edit|Write|MultiEdit` with a
+  Write of the project's `README.md`, the permission request with `ls`, the
+  session start, the two post-tool handlers with an Edit of `README.md`, the
+  stop with an empty event; the handlers read off the file with python3, so
+  that a handler added later runs without the step being touched, and a
+  handler answering otherwise than 0 makes the check red with what it printed.
+  The checks carry the job's name with the system in brackets. And
+  `.gitattributes` with `* text=auto eol=lf`: Git for Windows sets
+  `core.autocrlf=true` by default, git-for-windows/build-extra
+  `installer/install.iss` at `75e6f0e`, the radio button "Checkout
+  Windows-style, commit Unix-style line endings" checked unless a previous
+  install chose otherwise and `GitSystemConfigSet('core.autocrlf', 'true')`
+  written from it; and the Windows runner of GitHub installs Git for Windows
+  with the installer's defaults, actions/runner-images
+  `images/windows/scripts/build/Install-Git.ps1` at `021614e` of 14 October
+  2026, `/VERYSILENT` with `PathOption`, `BashTerminalOption` and
+  `EnableSymlinks` set and no CRLF option, Git 2.56.0.windows.1 and Bash
+  5.3.15 on the Windows 2025 image; `git ls-files --eol` names every tracked
+  file `i/lf w/lf`, so the attribute changes no blob. The command that makes
+  the three checks required on `main` beside `stock-take`, built from the
+  command of lines 6863 to 6868, no placeholder in it: `gh api -X PUT
+  repos/jayjay-create/claude-devloop/branches/main/protection --input -` with
+  the body `{"required_status_checks":{"strict":true,"checks":[{"context":"stock-take"},{"context":"hooks on every system (ubuntu-latest)"},{"context":"hooks on every system (macos-latest)"},{"context":"hooks on every system (windows-latest)"}]},"enforce_admins":true,"required_pull_request_reviews":null,"restrictions":null}` on its standard input. What ran where: the step's
+  script, extracted off the YAML, on this Mac with exit 0, 13 handlers each 0,
+  and in Docker `ubuntu:24.04` with git 2.43.0 and Python 3.12.3 with exit 0;
+  the two steps of the job on this Mac with exit 0; `windows-latest` not run
+  here, the pull request's run shows it after the push. What `docs/plan.md`
+  foresees under milestone 12 beyond this, a guard for PowerShell among it,
+  stays there.
+
+  **Finding 3: a change of group was a stop under every answer.** The install
+  guard stopped `sg` under every answer, line 273, and `cond_priv`, lines 217
+  to 242, stopped options that set only a group or the supplementary groups:
+  `setpriv --rgid`, `--egid`, `--regid`, `--groups`, `--clear-groups` and
+  `--init-groups`, `capsh --gid` and `--groups`, `minijail0 -g`, `lrun --gid`,
+  `tcpserver -g`, `spawn-fcgi -g`, `compartment --group`, `systemd-run --gid`
+  and `pm2 --gid`; the conventions named them so at lines 846 to 863; `sg
+  staff -c 'brew install ripgrep'` answered 2 2 2 2. Should, the person's
+  decision of 14 October 2026: a stop under every answer is only what runs the
+  command as an administrator or as another user; a program or an option that
+  changes only the group or the supplementary groups is read over and the
+  command behind it judged as any other; an option that sets user and group
+  together stays a stop. Built in `1d295f2`: `sg` and `s6-applyuidgid` leave
+  the list of the first kind in the guard, `s6-applyuidgid` into `cond_priv`
+  with `-u` and `-U`, skarnet/s6 at v2.15.1.0, tag `1b595a5`,
+  `doc/s6-applyuidgid.html`: "-u uid : set the process' user ID to uid", "-g
+  gid : set the process' group ID to gid", "-G gidlist : set the process'
+  supplementary group list", "-U : set the process' user ID, group ID and
+  supplementary group list to the values of the UID, GID and GIDLIST
+  environment variables"; `setpriv` keeps `--ruid --euid --reuid`, `capsh`
+  `--user --uid`, `minijail0` `-u`, `lrun` `--uid`, `tcpserver`, `unixserver`
+  and `s6-ipcserver` `-u -U`, `spawn-fcgi` `-u`, `compartment` `--user`,
+  `systemd-run` `--uid`, `pm2` `--uid`; `sg` stays in the group and is read as
+  shadow 4.20.3 runs it, `src/newgrp.c` lines 494 to 502, "sg group -c
+  command" or "sg group command", `command = argv[1]` behind `-c` and
+  `argv[0]` otherwise, line 715 `execl (SHELL, "sh", "-c", command, (char *)
+  NULL)`: one word, a text for `sh -c`, so that `sg staff make test` runs
+  `make` alone. `sudo -g group` stays a stop under every answer: `sudo` is the
+  program of the first kind itself, the administrator's policy and its
+  password prompt stand before any of its options, and the decision names a
+  program or an option that changes only the group, which `sudo` is not. This
+  revises the should of finding 1 of the third addendum, lines 22207 to 22210,
+  "a stop under every answer only where it sets another user, another group or
+  other supplementary groups", to another user alone, and the reading of `sg`
+  of the first kind at lines 22733 to 22766 and the defect "sg ran the command
+  as another group and passed under a yes", whose should falls with this
+  decision: `sg` passes to its command now, the defect decided against. The
+  conventions say the new first kind at the install question and at the kinds
+  of the reader rule, the head of the reader and the comment of the guard the
+  same.
+
+  **Finding 4: a doubt was read on the blocking side.** The rule of the
+  conventions, line 1744, says that where a hook cannot say what a command
+  does the run does not stand still; section 7 of the third addendum's report
+  names 21 points read "on the blocking side", lines 23, 54, 67, 94, 104, 139,
+  156, 168, 187, 188, 195, 200, 226, 233, 235, 240, 260, 263, 270, 285 and 297
+  of its table, the reader read the text of `man -P` under man-db as shell
+  text on the same side, and this entry names more such places: a text typed
+  into a terminal read as shell text where it ends a line, lines 21868 to
+  21875 and 22095 to 22097, and the two names two vendors share, `ts` and
+  `dotenv`, lines 22590 to 22596. Should, the person's decision of 14 October
+  2026: every such doubt lets through; where the system the reader runs on
+  decides which program is meant, the system decides and no doubt remains;
+  every failure to read the person's permission stays a block as the
+  conventions say. Searched for further such places in the reader and the
+  guard with the patterns `blocking|doubt|cannot (be )?(tell|told|say)|no rule
+  tells|either way|whatever its|all the same|stop whatever|read as a stop|safe
+  side|regardless|kept as|conservativ|stricter|over-read|wider`, six hits,
+  none a doubt read on the blocking side: the nvm reading of line 175, a JSON
+  newline of line 441, the comment of the third addendum's self-test block,
+  tar's `--blocking-factor`, the cargo comment of the guard and the uv rule of
+  its line 489, which reads the passing side. Built in `1d295f2`, each at its
+  place in the reader: `login -f` runs the program behind the user on macOS
+  alone, elsewhere shadow 4.20.3 takes the words as environment settings and
+  util-linux has no such form, judged itself, the guard stopping `login` under
+  every answer either way; `script` read by the system, on macOS `-c` and
+  `--command` do not exist so the invocation fails and nothing runs, judged
+  itself, the first operand the file and the words behind it the command, `-T`
+  and `-p` running none, and under Linux as util-linux v2.42.4 runs it,
+  `term-utils/script.c` lines 915 to 923 "script [options] <outfile> --
+  <command ...>" and lines 956 to 958, a second operand without `--`
+  "unexpected number of arguments", nothing run, judged itself; `kinit` the
+  command behind the principal on macOS alone, Heimdal, elsewhere MIT kinit,
+  which runs no command and refuses extra operands, judged itself; `gdb` with
+  `--help`, `--version` or `--configuration`, one dash or two, before `--args`
+  judged itself, `gdb/main.c` at gdb-18.1-release lines 811, 823, 824 and 1165
+  to 1180, each printing and `exit (0)`; `rr` without a subcommand word judged
+  itself, rr 5.9.0, tag `aaed29d`, `src/main.cc` lines 106 to 108 "If no
+  subcommand is provided, we check if the first non-option argument is a
+  directory. If it is, we assume the 'replay' subcommand otherwise we assume
+  the 'record' subcommand." and lines 271 to 274
+  `is_directory(args[0].c_str())`, which the line cannot tell; `devbox` with
+  `-c`, `--config`, `-e`, `--env`, `--env-file` and `--environment` before
+  `run` judged itself, the vendor registering them on `run` alone, the third
+  addendum's reading at 0.18.4; `pdm --pep582` judged itself, pdm 2.29.2, tag
+  `5c0dbc4`, `src/pdm/cli/options.py` lines 203 to 220, `nargs="?"` and
+  `sys.exit(0)` after `print_pep582_command`; `pixi run --offline` and
+  `dotenvx run --mask` take the next word unless it begins with `-`, the third
+  addendum's readings at v0.81.0 and v2.34.2, with a marker `?` behind the
+  option in the tables, and `dotenvx run -e`, `--env`, `--ignore`, `env-cmd
+  -e` and `--environments` take every following word up to one that begins
+  with `-`, the marker `*`, `env-cmd -f`, `--file`, `-r` and `--rc-file` the
+  marker `?`, read by `skip_opts` and `has_optv`; `dotenv` read as dotenv-cli
+  v11.0.0 alone, every option word before `--` taking the next word unless it
+  begins with `-`, `--name=value` and `-xVALUE` attached, `--no-name` none,
+  `-p` running nothing, the first positional the command, the reading under
+  which the Ruby gem's and python-dotenv's forms pass where they differ,
+  `dotenv run brew install x` judged at `run`; `xargs --help` and `--version`,
+  GNU parallel's `--help`, `-h`, `--version`, `-V` and `--dry-run`, parallel
+  20260922 `src/parallel.pod` lines 1028 "Print the job to run on stdout
+  (standard output), but do not run the job.", 1437 to 1441 and 4046 to 4050,
+  `msgexec -h`, `--help`, `-V`, `--version` and its built-in command `0`,
+  `setsid -V`, `--version`, `-h` and `--help`, each judged itself; the words
+  behind a `--` that follows command words of `parallel` not read, the data of
+  moreutils parallel; `systemd-run -S` and `--shell` judged itself, systemd
+  v262, tag `1f7dffa`, `src/run/run.c` line 613 "If --shell is used, no
+  command line is expected."; `onchange` with `--` as its very first argument
+  judged itself, v7.1.0, tag `27f3a2d`, `src/bin.ts` lines 151 to 155, `if
+  (index)` false for index 0; `when-changed` with `-h` or `--help` anywhere
+  judged itself, v0.3.0, tag `6c2050f`, `whenchanged/whenchanged.py` lines 134
+  to 136 `if '-h' in args or '--help' in args`; `ts` out of the group, since
+  no system tells task-spooler from the timestamp filter of moreutils and
+  Debian installs task-spooler as `tsp`, which stays; `man -P` and `--pager` a
+  text for `sh` on macOS alone, whose `/usr/bin/man` evals it, elsewhere the
+  words man-db 2.13.1 splits, `man/man1/man.man1` lines 767 to 771 "may use
+  shell quoting ... It may not use pipes to connect multiple commands", judged
+  at the first; a text typed into a terminal not read, `tmux send-keys`,
+  `screen -X stuff`, `zellij action write-chars` and `paste`, since the line
+  does not name the program of the pane that receives it. The sentences of the
+  earlier addenda this corrects, each by line: 21868 to 21875 and 22095 to
+  22097, the typed text read as shell text where it ends a line, which falls;
+  22590 to 22596, `ts` and `dotenv` read on the blocking side, `ts` out and
+  `dotenv` as dotenv-cli, the passing side at every difference; 22697 to
+  22701, `man -P` a text for `sh`, on macOS alone now; 22810 to 22816, the
+  programs read on the blocking side, each built now. `pnpm <cmd>`, line
+  22595, stays unread, the passing side already.
+
+  **Finding 5: a sentence of the third addendum said more than happened.**
+  Lines 22882 to 22884 said that for what was built on 14 October 2026 every
+  answer came out as foreseen; section 4 of that addendum's report says the
+  first probe of `pueue add` and the first probe of the second batch came out
+  otherwise. The sentence is corrected in place above, at the lines that
+  carried it, to what the report says.
+
+  **Finding 6: the reader's time.** The third addendum left open whether the
+  tables should be read once and kept, the reader taking about 20.5 ms for a
+  short command where `aca54c0` took about 9 ms. Decided by the person on 14
+  October 2026: the tables are not cached, the time stays. Claude Code's hooks
+  reference says "All matching hooks run in parallel. If you define the same
+  handler in more than one settings file, it runs once. A plugin's or skill's
+  copy of the same handler stays separate.", fetched raw from
+  code.claude.com/docs/en/hooks and its `hooks.md` on 14 October 2026 at 08:02
+  UTC, twice on the page: the six handlers of a Bash call run side by side,
+  and the call waits for the slowest, not for their sum. Measured after this
+  addendum as section 13 of the third addendum's report measured, 20.8 to 21.1
+  ms at `84f1aab` and 17.1 to 17.5 ms at `1d295f2`, under finding 1.
+
+  **The measurement**, on 14 October 2026, with the bench of the third
+  addendum's report rebuilt in a throwaway directory by a subagent of this
+  session from the reports' descriptions: a project with `docs/agents/`, a
+  bare local `origin` with `origin/HEAD` on `main`, the four install records
+  no, none, yes11 and yes6 as lines 13257 to 13264 fix them, with the eleven
+  places of `shared/install-record.md` lines 9 to 19 and the first six of
+  them, each committed, pushed and fetched; the hooks started by absolute
+  path, the JSON on stdin, `CLAUDE_PROJECT_DIR` on the project; against the
+  hooks of `84f1aab` in a throwaway worktree, removed at the end, and against
+  `1d295f2`. Every case of the tables of section 12 of that report, 1 056
+  cases, 1 044 fed and 12 skipped as there: at `84f1aab` every one as
+  recorded, the bench holding; at `1d295f2` fifteen otherwise, each by this
+  addendum - `setpriv --init-groups make test` 0 0 0 0 twice, `sg staff -c
+  'brew install ripgrep'` 2 2 0 0 four times and `sg -l staff -c` the same,
+  `sg staff make test` and `sg - staff -c 'make test'` 0 0 0 0, `script -c
+  'brew install ripgrep' /tmp/log` and `typescript` 0 0 0 0 on this Mac,
+  `dotenv run -- brew install ripgrep` 0 0 0 0, `tmux send-keys -t x 'brew
+  install ripgrep' Enter` and `screen -S s -X stuff $'brew install ripgrep\n'`
+  0 0 0 0 and `tmux send-keys 'git push origin main' Enter` 0 at the branch
+  guard. The nine cases of the order and 48 of this work beside them, 57 in
+  all: at `1d295f2` every one as foreseen - `sg staff -c 'brew install
+  ripgrep'`, `setpriv --regid=20 brew install ripgrep`, `capsh --gid=20 -- -c
+  'brew install ripgrep'` and `s6-applyuidgid -g 20 brew install ripgrep` 2 2
+  0 0 as `brew install ripgrep` alone, `sg staff make test`, `setpriv
+  --init-groups make test`, `xargs --help brew install ripgrep`, `when-changed
+  -h a.py brew install ripgrep` and the group options of `tcpserver`,
+  `spawn-fcgi`, `compartment`, `systemd-run`, `pm2`, `minijail0` and `lrun` 0
+  0 0 0, `setpriv --reuid=1000 make test`, `setpriv --reuid=1000 --regid=1000
+  make test`, `capsh --user=nobody -- -c 'make test'`, `s6-applyuidgid -u` and
+  `-U`, `tcpserver -U`, `sudo -g staff brew install ripgrep`, `gosu
+  nobody:nogroup make test` and `login -f root brew install ripgrep` 2 2 2 2
+  with the program named under a yes, the readings of finding 4 as named
+  there, `dotenvx run --mask x brew install ripgrep` 2 2 0 0 where `84f1aab`
+  answered 0 0 0 0, having read `--mask` as a flag and `x` as the command -
+  and at `84f1aab` 40 of the 57 otherwise. The reader's self-test holds 158
+  cases, green on this Mac and in Docker `ubuntu:24.04`.
+
+  **The documents, the searches before the build, the walk by hand, and what
+  was not run.** Searched for decisions already taken before the build, for
+  every object of this addendum, `grep -rn -E` over `docs/roadmap.md`,
+  `docs/skill-conventions.md`, `skills` and `shared` with short patterns, 38
+  searches, and over `skills`, `shared`, `hooks`, `bin`, `scripts`, `docs`,
+  `README.md` and `.github` for the places that say the same, 34 searches,
+  each command and its count in the report, the empty ones too; the decisions
+  found are those this addendum revises, each named above with its line. The
+  walk by hand before each of the four parts of the build is on record in the
+  report, written before the code was changed, each with its commands and the
+  answer foreseen; what the walks missed and the build or the probe found: the
+  judged word of `pm2 start m --gid nobody`, which the walk had wrong and the
+  vendor's reading right; the branch of `onchange --`, which the first edit
+  had left out and the probe found; a Write of the project's `README.md` on
+  `main` in the throwaway project of the workflow step, blocked by the branch
+  guard by design, so the project works on a branch; and two faults of the
+  step's first form, the fields of a handler with an empty matcher folded by
+  `read` over tabs and a here-document inside a process substitution mangled
+  by bash 3.2. The nineteen checks under "Before a handover, run these" answer
+  line for line as at `84f1aab`. Not run: `windows-latest`, which only the
+  pull request's run can show; no program of the group was run on this
+  machine; busybox awk's one red case stays as recorded above. The 611 cases
+  and the 445 of the third addendum's report ran through the rebuilt bench,
+  whose description stands in the report.
+
+  **Stock-take, before and after.** The tool at `84f1aab`, run on the clean
+  tree before the build: exit 0, `BROKEN RECORDS: 0`, `FINDINGS: 19`, `STATUS
+  WORDS OF docs/roadmap.md BROKEN OVER A LINE BREAK: 0`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 3633`, 239 runs
+  under `RUNS THAT DO NOT COUNT`. The tool on the tree with this addendum and
+  the rows of its commit in place, before the runs: exit 0, `BROKEN RECORDS:
+  0`, `FINDINGS: 19`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF
+  THE SEARCH SET: 0 of 3670`, 239 runs under `RUNS THAT DO NOT COUNT`, the
+  same 432 things walked as at `84f1aab`, none having lost a counting run; new
+  are four outcomes of the workflow's second job, built and never walked until
+  the platform runs it, the defects of findings 1 to 4, built and never walked
+  until the third commit records their runs, and two defects recorded and not
+  built, the sentence of finding 5 corrected in this file and busybox awk's
+  red case. The rows of the second commit re-anchor eleven rows whose lines
+  the build rewrote or whose evidence moved - nine part-of rows of the reader,
+  the evidence of the third addendum's `setpriv` defect onto its narrowed line
+  and of its `sg` defect onto the reader's line that reads `sg` - and add 42:
+  the seven defects, the four outcomes of the new job, and part-of rows for
+  every new line of the search set in the reader, its self-test and the
+  workflow; three anchors of the workflow were made unique first, since the
+  new job repeated `timeout-minutes: 10`, `git --version` and `exit $red` and
+  would have broken the rows of the first job.
 
 ## Decisions taken against
 
