@@ -23957,10 +23957,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   comments, the tool with its self-test, the version, the 24 rows taken out,
   the rows of the table for all of it and this entry without its runs in one
   commit, the runs and their rows in a second; the date test taken out with
-  its rows and this entry corrected in a third, the runs made again on the
-  tool and the checks with their rows in a fourth, no commit after the third
-  changing code, so that the tool's check leaves this branch green. The
-  reports stand on this machine as `~/devloop-catch-up-2026-10-14.md` and
+  its rows and this entry corrected in a third, the three runs on the tool
+  made again with their rows in a fourth, no commit after the third changing
+  code, so that the tool's check leaves this branch green. The reports stand
+  on this machine as `~/devloop-catch-up-2026-10-14.md` and
   `~/devloop-catch-up-2026-10-14-addendum.md`, in English, and are not in the
   repository. Every line number of a file in this entry holds at `78a250d`
   unless it says otherwise.
@@ -24174,17 +24174,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     install ripgrep' /tmp/lock`, `echo 'brew install ripgrep'` and
     `hyperfine --reference 'brew install ripgrep' make` 0 0 0 0.
 
-  One run written down on each of the four. Then, on the same tree: the tool
-  from 15:55:09 to 15:56:38 UTC, exit 0, BROKEN RECORDS 0, FINDINGS 19,
-  UNCOVERED LINES OF THE SEARCH SET 0 of 3641, UNITS WITHOUT A STRAIGHT PATH
-  0, STATUS WORDS BROKEN OVER A LINE BREAK 0, Walked 461 and 1046 built and
-  never walked, one run written down on its outcome; the tool's self-test
-  from 15:56:38 to 15:56:40 UTC, `SELF-TEST PASSED: 112 cases; of the 77
-  messages this tool rejects, refuses or answers with, read off its own
-  source, 77 are asserted by a case and 0 by none`, exit 0, one run written
-  down on its outcome and one on each of the two outcomes this entry added,
-  which that self-test produced once each, the date test's row gone with the
-  test in the third commit; the reader's self-test from
+  One run written down on each of the four. Then, on the same tree: the
+  reader's self-test from
   15:56:41 to 15:56:47 UTC, `SELF-TEST PASSED: 159 cases`, exit 0, one run
   written down on its outcome; the nineteen checks under "Before a handover,
   run these" from 15:56:47 to 15:56:54 UTC, in a clean bash with
@@ -24197,8 +24188,31 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   arming command 2 and 2, the default branch 1, the status forms 1 twice, the
   offers seventeen lines, the handovers nine over eight sites, the unattended
   finish silent, the second statement one line - one run written down on
-  each of the nineteen. The runs stand in the second commit, 28 of them, each
-  held against `45e089f`.
+  each of the nineteen. The tool and its self-test ran on that tree too, from
+  15:55:09 to 15:56:40 UTC, the tool exit 0 with 0 of 3641 uncovered and
+  Walked 461, the self-test at 112 cases with 77 of 77 messages asserted,
+  three runs written down then; their rows gave way in the fourth commit to
+  the runs on the tree of the third, below, the third having changed the
+  tool. The runs stand in the second commit, 25 of them, each held against
+  `45e089f`.
+
+  **The runs on the tool after the third commit**, on the clean tree at
+  `f70871b`, no commit after it changing code: the tool from 18:47:05 to
+  18:48:40 UTC, exit 0, BROKEN RECORDS 0, no run under 0.138.0 reported as
+  recorded too early, FINDINGS 19, UNCOVERED LINES OF THE SEARCH SET 0 of
+  3639, the two lines of the date test gone from the set, UNITS WITHOUT A
+  STRAIGHT PATH 0, STATUS WORDS BROKEN OVER A LINE BREAK 0, Walked 466 and
+  1040 built and never walked, one run written down on its outcome; the
+  tool's self-test from 18:48:40 to 18:48:42 UTC, `SELF-TEST PASSED: 111
+  cases; of the 76 messages this tool rejects, refuses or answers with, read
+  off its own source, 76 are asserted by a case and 0 by none`, exit 0, one
+  run written down on its outcome and one on the outcome this entry adds,
+  which the self-test produces once; the reader's self-test from 18:48:42 to
+  18:48:49 UTC, `SELF-TEST PASSED: 159 cases`, and the nineteen checks from
+  18:48:49 to 18:48:56 UTC in the clean bash, each printing line for line
+  what it printed at `c688aaa`, run again and not written down a second
+  time, no line of their things changed since their runs above. The three
+  runs stand in the fourth commit, each held against `f70871b`.
 
 ## Decisions taken against
 
