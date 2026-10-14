@@ -23263,6 +23263,277 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   new job repeated `timeout-minutes: 10`, `git --version` and `exit $red` and
   would have broken the rows of the first job.
 
+  **Fifth addendum of 14 October 2026: the self-test on every system, the
+  typed text, busybox awk; the version stays 0.137.0.** On
+  `task/command-reader`, off `6365a96`; the code and what describes it outside
+  this file and the table in `ef1b470`, this addendum and the rows of the
+  table in the second commit, the runs in the third. Every line number in this
+  addendum holds at `6365a96` unless it says otherwise. The report stands on
+  this machine as `~/devloop-report-command-reader-addendum-5.md`, in English,
+  and is not in the repository. The person decided on 14 October 2026: a text
+  typed into a terminal that ends a line is read as a command again, as at
+  `84f1aab`, since in the ordinary case a shell receives it and it is no
+  doubt; and devloop runs on every system, Alpine with busybox awk among them.
+  Every reading of a vendor below rests on the wording of the source, fetched
+  raw with `curl` from raw.githubusercontent.com or the vendor's page, the
+  release or commit named with the command that shows it exists; the report
+  quotes each sentence with its command and output.
+
+  **Finding 1: the self-test depended on the system it ran on.** The check
+  "hooks on every system (windows-latest)" of pull request #171 was red at
+  `6365a96`: its log ends `FAIL kind 6, on a change: entr with and without -s,
+  ... no line '11|10|shell|0|1|brew|install|h|app.py'`, every case before it
+  green; under Git Bash the reader does not read the text `nodemon` hands to
+  `cmd.exe`, and the case expected the reading of macOS and Linux. Run with
+  `DEVLOOP_READER_OS=msys` on this Mac in a copy whose `fail()`, line 416,
+  does not exit at the first red case, four cases fail and no other: "kind 6,
+  on a change", "the third addendum: setpriv read over, hyperfine ...", "the
+  second pass of the check for completeness, further: sk --bind ..." and "the
+  third addendum, block 29 of 30: xidlehook to shellrunas ..." - the texts of
+  `nodemon --exec`, of `hyperfine -S`, `--shell default` and its lifecycle
+  options, of `sk -c` and of `pm2 start` with a word holding a blank, each a
+  text for the platform shell, which is `cmd.exe` on Windows and not read
+  there, lines 2608, 2523 to 2525, 2879 and 3077; and the step of the job
+  ended at the red self-test, `|| exit 1`, line 151, so that the hooks never
+  started under Windows. Should: the self-test green on every system; every
+  case whose reading depends on the system names it, `runw`, `runm` and
+  `runl`, lines 422 to 426, and where Windows reads otherwise it has a case of
+  its own; every red case reported, not the first alone, and exit 1 where any
+  is red; the job starts the hooks after a red self-test and is red where
+  either is. Built in `ef1b470`: `fail()` prints `FAIL <case>: <what>` with
+  the reader's output once per case, counts and goes on, `expect()` names
+  every missing line, and the self-test ends with `SELF-TEST PASSED: <n>
+  cases` or with `SELF-TEST FAILED: <f> of <n> cases red` and exit 1; the four
+  cases are pinned to Linux with `runl`, each with its reason beside it, since
+  their readings differ by `WINDOWS` alone and macOS and Linux read them
+  alike; a case under `runw` holds the Windows readings of those forms -
+  `nodemon -x 'brew install a' app.py` judged at `nodemon`, `hyperfine --shell
+  default` and `-s` not read, `--shell zsh` a text for zsh, `--shell=none` and
+  a bare command words, `sk -c` not read and `sk --bind` read, `pm2 start
+  'brew install h'` judged at the word; the step sets `red=1` at a red
+  self-test and runs on. Measured on 14 October 2026: `SELF-TEST PASSED: 159
+  cases` on this Mac without the variable and with `msys`, `darwin25` and
+  `linux-gnu`, in Docker `ubuntu:24.04` and in Docker `alpine:3.22`; a copy
+  with one case broken on purpose reports it with the reader's output and ends
+  `SELF-TEST FAILED: 1 of 159 cases red`, exit 1, one with three cases broken
+  `3 of 159 cases red`; the step's script, extracted off the YAML, with the
+  broken copy: thirteen handlers started after the red self-test, each 0, exit
+  1. This corrects the sentence of the entry at line 19834, "exits 1 on the
+  first that does not come out", and the head of the reader at lines 388 to
+  391 says the new form; `windows-latest`, which the fourth addendum left to
+  the pull request's run at lines 23029 to 23030 and 23237 to 23238, ran and
+  was red, which this finding answers.
+
+  **Finding 2: a text typed into a terminal came past the guards.** Since
+  `6365a96` the reader did not read a text typed into a terminal, the fourth
+  addendum's reading under finding 4, lines 23150 to 23152: `tmux send-keys -t
+  x 'brew install ripgrep' Enter` answered 0 0 0 0 at the install guard where
+  `84f1aab` answered 2 2 0 0, `screen -S s -X stuff $'brew install ripgrep\n'`
+  the same, and `tmux send-keys -t x 'git push origin main' Enter` 0 at the
+  branch guard on `main` where `84f1aab` answered 2, measured under Linux in a
+  throwaway project, the hooks of `84f1aab` given their awk program through a
+  file, since `84f1aab` runs under Linux no other way. Should, the person's
+  decision of 14 October 2026: a text typed into a terminal that ends a line
+  is read as a command again, as at `84f1aab` - it is no doubt, since in the
+  ordinary case a shell receives it; a text without the line's end runs
+  nothing and is not read. Built in `ef1b470`: the three branches of `84f1aab`
+  are back - `tmux send-keys` with `Enter`, `C-m` or `KPEnter` among its words
+  joins the words before the key into a text for the shell of the pane, its
+  line 2897; `screen -X stuff` with a text that ends a line hands it on, its
+  line 2919; `zellij action write-chars` and `paste` with `-p` and `--pane-id`
+  read over the same, its line 3034; `ends_line`, its line 2322, and with it
+  `line_end_off`, new: the text is handed on without its line's end, since the
+  vendor reads the escape and the shell of the pane never sees it, where
+  `84f1aab` handed `brew install q\015` on whole and the shell reader read
+  `\0` as its own escape, the child's last word `q015`; a text without the
+  line's end leaves the wrapper judged itself, first word 1, as at `6365a96`,
+  where `84f1aab` had judged `screen -X stuff 'p'` and `zellij action
+  write-chars 'ag'` at no word, the guard answering 0 0 0 0 either way. The
+  conventions say it at the reader rule, lines 1509 to 1516, and at "In
+  doubt", lines 1774 to 1780, with the reason; the head of the reader at lines
+  154 to 158 too. The sentences of the fourth addendum this corrects, each by
+  line: 23081 to 23083, the typed text named among the doubts; 23150 to 23152,
+  not read; 23153 to 23154, the readings of 21868 to 21875 and 22095 to 22097
+  said to fall - they stand again, the second addendum's reading of the typed
+  text, with the line's end taken off; and 23197 to 23199, the measurement of
+  0 0 0 0 and 0, which the measurement below replaces. The self-test's cases
+  on lines 652 to 660 and 709 to 711 carry the `84f1aab` lines again, the ids
+  behind a child shifted by one.
+
+  **Finding 3: under busybox awk the self-test was red, and not where the
+  fourth addendum said.** Lines 22966 to 22974 said that under `alpine:3.22`
+  with busybox awk 1.37.0 the 21st case, "a backslash at the end of the line
+  continues the command", fails with the reader printing `brew install
+  nripgrep`, and recorded, unbuilt, that busybox awk reads a backslash before
+  a newline inside a word otherwise than the awk of macOS, mawk and gawk;
+  lines 23239 and 23254 to 23255 name the one red case. What held: the reader
+  reads it right under busybox awk - fed the JSON
+  `{"tool_name":"Bash","tool_input":{"command":"brew install \\\nripgrep"}}`
+  built by python3's `json.dumps`, it prints
+  `1|0|list|0|1|brew|install|ripgrep` in Docker `alpine:3.22` as on this Mac,
+  and the same for `echo 'a b' "c d" e\ f` and `echo "a\$b \" \\ \x"`; what
+  differs is the self-test's own encoder of a command into the JSON of a hook,
+  `j()` on line 418, `gsub(/\\/, "\\\\")`, which busybox awk 1.37.0 runs as
+  one backslash for one where the awk of macOS 20200816 and mawk 1.3.4 keep
+  two - `printf 'a\\b' | awk '{ gsub(/\\/, "\\\\"); print }'` prints `a\b`
+  under Alpine and `a\\b` on this Mac and under Ubuntu - so that the JSON
+  carried `brew install \\nripgrep`, which the reader rightly decodes to a
+  backslash and an `n` and bash rightly reads as the word `nripgrep`; and not
+  one case was red but fourteen, every one with a backslash in its command,
+  which the self-test of `6365a96` could not show since it stopped at the
+  first. busybox reads the replacement as POSIX says: the awk page of
+  POSIX.1-2024, pubs.opengroup.org, "sub(ere, repl[, in ])": "An occurrence of
+  two consecutive <backslash> characters shall be interpreted as just a single
+  literal <backslash> character."; busybox 1.37.0, tag `1_37_0` at `be7d1b7`,
+  `editors/awk.c`, `awk_sub`, the loop over the replacement: `if (c == '\\' &&
+  s[1]) { bslash ^= 1; if (bslash) continue; }` and then `resbuf[residx++] =
+  c`, the first backslash dropped and the second written; the gawk manual,
+  "Gory details", Table 9.3 and the sentence under it, "The only case where
+  the difference is noticeable is the last one: '\\\\' is seen as '\\' and
+  produces '\' instead of '\\'", gawk following its historical rule unless
+  `--posix` is given, as the awk of macOS and mawk do. Should: the self-test
+  green under busybox awk, the defect built; the workflow runs the self-test
+  and the hooks under Alpine with busybox awk as well, in a container on
+  `ubuntu-latest`. Built in `ef1b470`: `j()` doubles a backslash with the
+  matched text, `gsub(/\\/, "&&")`, which every awk reads alike -
+  `a\\b\"c\td\ne` from `a\b"c`, a tab, `d`, a newline and `e` under the three,
+  measured; and the job `hooks-on-every-system` has a fourth entry, the matrix
+  an `include` of four with `system`, `runner` and, for Alpine, `container:
+  alpine:3.22`, `runs-on: ${{ matrix.runner }}`, `container: ${{
+  matrix.container }}` - an empty value is no container: actions/runner at
+  `5f0b3dd` of 12 October 2026,
+  `src/Sdk/DTPipelines/Pipelines/ObjectTemplating/PipelineTemplateConverter.cs`,
+  `ConvertToJobContainer`, `if (String.IsNullOrEmpty(containerLiteral.Value))
+  { return null; }` - and `name: hooks on every system (${{ matrix.system
+  }})`, so that the three checks keep their names and the fourth is "hooks on
+  every system (alpine)"; GitHub's docs, github/docs at `e52ecac` of 14
+  October 2026,
+  `data/reusables/actions/jobs/section-running-jobs-in-a-container.md`: "Use
+  `jobs.<job_id>.container` to create a container to run any steps in a job
+  that don't already specify a container." and "The default shell for `run`
+  steps inside a container is `sh` instead of `bash`. This can be overridden
+  with `jobs.<job_id>.defaults.run` or `jobs.<job_id>.steps[*].shell`.",
+  `data/reusables/actions/docker-container-os-support.md`: "If your workflows
+  use Docker container actions, job containers, or service containers, then
+  you must use a Linux runner", and
+  `content/actions/reference/workflows-and-actions/contexts.md`, which lists
+  `jobs.<job_id>.container`, `jobs.<job_id>.runs-on` and `jobs.<job_id>.name`
+  with `matrix` among the contexts each may use; a first step under Alpine
+  alone, `shell: sh`, `apk add --no-cache bash git python3`, before the
+  checkout, since the image carries none of the three and `shell: bash` is the
+  job's default; the runner runs a JavaScript action such as actions/checkout
+  in an Alpine container with its own build of node,
+  `src/Runner.Worker/Handlers/StepHost.cs`, `CheckPlatformForAlpineContainer`,
+  "JavaScript Actions in Alpine containers are only supported on x64 Linux
+  runners", which `ubuntu-latest` is; the step that prints what the checkout
+  holds prints the system's name off `/etc/os-release` or `sw_vers` and
+  busybox's version where awk names none. The command that makes the four
+  checks required on `main` beside `stock-take`, built from the command of
+  lines 6863 to 6868 as the fourth addendum's at lines 23024 to 23026 was, no
+  placeholder in it: `gh api -X PUT
+  repos/jayjay-create/claude-devloop/branches/main/protection --input -` with
+  the body
+  `{"required_status_checks":{"strict":true,"checks":[{"context":"stock-take"},{"context":"hooks
+  on every system (ubuntu-latest)"},{"context":"hooks on every system
+  (macos-latest)"},{"context":"hooks on every system
+  (windows-latest)"},{"context":"hooks on every system
+  (alpine)"}]},"enforce_admins":true,"required_pull_request_reviews":null,"restrictions":null}`
+  on its standard input, to run once the fourth check has run once on the pull
+  request. What ran where: the self-test in Docker `alpine:3.22` with
+  `SELF-TEST PASSED: 159 cases`; the job's two steps, extracted off the YAML,
+  in Docker `alpine:3.22` after `apk add --no-cache bash git python3`, git
+  2.49.1, with exit 0 each, thirteen handlers each 0, and in Docker
+  `ubuntu:24.04` with git 2.43.0 and Python 3.12.3 the same; the platform's
+  own run of the Alpine entry not run here, the pull request's run shows it
+  after the push. Claude Code's system requirements, read raw at
+  code.claude.com/docs/en/setup on 14 October 2026, name "Ubuntu 20.04+",
+  "Debian 10+" and "Alpine Linux 3.19+" among the operating systems and
+  "Shell: Bash, Zsh, PowerShell, or CMD.", and under "Alpine Linux and
+  musl-based distributions": "Installing Claude Code on Alpine and other
+  musl/uClibc-based distributions requires `bash` and `curl` for the install
+  command, and `libgcc`, `libstdc++`, and `ripgrep` at runtime. Alpine doesn't
+  include `bash` or `curl` by default"; the hooks and the reader are scripts
+  for bash, and what devloop does on a system without bash belongs to
+  milestone 12 of `docs/plan.md`, which names it since this addendum; nothing
+  of it is built here.
+
+  **The measurement**, on 14 October 2026, with the bench of the earlier
+  reports rebuilt in a throwaway directory from their descriptions - a project
+  with `docs/agents/`, a bare local `origin` with `origin/HEAD` on `main`, the
+  four install records no, none, yes11 and yes6 as lines 13257 to 13264 fix
+  them, with the eleven places of `shared/install-record.md` lines 9 to 19 and
+  the first six of them, each committed, pushed and fetched; the hooks started
+  by absolute path, the JSON on stdin, `CLAUDE_PROJECT_DIR` on the project -
+  against the hooks of `6365a96` in a throwaway worktree, removed at the end,
+  and against `ef1b470`. The 57 cases of the fourth addendum's report and the
+  fifteen of its table of the cases that had changed: at `6365a96` every one
+  as that report records; at `ef1b470` every one the same but the six of the
+  typed text, which answer again as the third addendum's tables record - `tmux
+  send-keys -t x 'brew install ripgrep' Enter`, `screen -S s -X stuff $'brew
+  install ripgrep\n'` and `zellij action paste $'brew install ripgrep\n'` 2 2
+  0 0 as `brew install ripgrep` alone, with "no record" under none, and `tmux
+  send-keys 'git push origin main' Enter` 2 at the branch guard on `main`,
+  "Blocked: pushing to main". The cases of this order: `tmux send-keys -t x
+  'brew install ripgrep' Enter`, `screen -S s -X stuff $'brew install
+  ripgrep\n'` and `zellij action write-chars $'brew install ripgrep\n'` 2 2 0
+  0 as `brew install ripgrep` alone, `tmux send-keys -t x 'brew install
+  ripgrep'` 0 0 0 0, and `tmux send-keys -t x 'git push origin main' Enter` 2
+  as `git push origin main` alone - each as the order says, and at `6365a96` 0
+  0 0 0 and 0. The 1 056 cases of section 12 of the third addendum's report, 1
+  044 fed and 12 skipped as there, through the bench of the fourth addendum's
+  measurement rebuilt by a subagent of this session: at `6365a96` every one as
+  the fourth addendum records, at `ef1b470` every one the same but the three
+  typed texts, rows 391, 394 and 601 of the 611, back as the third addendum's
+  tables record, and rows 392 and 395 without a line's end 0 0 0 0 at both.
+  The reader's self-test holds 159 cases, green on this Mac without
+  `DEVLOOP_READER_OS` and with `msys`, `darwin25` and `linux-gnu`, in Docker
+  `ubuntu:24.04` with mawk 1.3.4 and in Docker `alpine:3.22` with busybox awk
+  1.37.0, the walk of the typed text through the reader line for line as the
+  report's table shows.
+
+  **The documents, the searches before the build, the walk by hand, and what
+  was not run.** Searched for decisions already taken before the build, for
+  every object of this addendum, `grep -rn -E` over `docs/roadmap.md`,
+  `docs/skill-conventions.md`, `skills` and `shared` with short patterns, 19
+  searches, and over `skills`, `shared`, `hooks`, `bin`, `scripts`, `docs`,
+  `README.md` and `.github` for the places that say the same, 21 searches,
+  each command and its count in the report, the empty ones too; the decisions
+  found are those this addendum revises, each named above with its line: the
+  fourth addendum's reading of the typed text and of busybox awk, and the
+  entry's sentence on the self-test. The walk by hand before each of the three
+  parts of the build is on record in the report, written before the code was
+  changed, each with its commands and the answer foreseen; what the walks
+  missed and the build found: the line's end handed on with the typed text,
+  `line_end_off`, under finding 2. The nineteen checks under "Before a
+  handover, run these" answer line for line as at `6365a96`. Not run: the
+  platform's own run of the workflow, `windows-latest`, `macos-latest` and the
+  Alpine entry as the platform runs them; no program of the group was run on
+  this machine; the hooks under Alpine ran with the step's harmless inputs
+  alone.
+
+  **Stock-take, before and after.** The tool at `6365a96`, run on the clean
+  tree before the build: exit 0, `BROKEN RECORDS: 0`, `FINDINGS: 19`, `STATUS
+  WORDS OF docs/roadmap.md BROKEN OVER A LINE BREAK: 0`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 3670`, 243 runs
+  under `RUNS THAT DO NOT COUNT`. The tool on the tree with this addendum and
+  the rows of its commit in place, before the runs: exit 0, `BROKEN RECORDS:
+  0`, `FINDINGS: 19`, `UNITS WITHOUT A STRAIGHT PATH: 0`, `UNCOVERED LINES OF
+  THE SEARCH SET: 0 of 3614`, 243 runs under `RUNS THAT DO NOT COUNT`, the
+  same 432 things walked as at `6365a96`, none having lost a counting run; the
+  search set is smaller by 56 lines, since the self-test's `fail()` ends the
+  program no longer and the calls of it leave the set. New are two defects,
+  findings 1 and 2, built and never walked until the third commit records
+  their runs; the busybox defect of the fourth addendum is renamed, since no
+  run hung on it, with its evidence on the encoder's line, built; the outcome
+  of the job's green check is renamed for its fourth entry. The rows of the
+  second commit re-anchor nine rows whose lines the build rewrote or removed -
+  the self-test's outcome and three part-of rows of its harness, the two
+  part-of rows of the typed-text lines, the evidence of the fourth addendum's
+  defect of finding 4 off the `stuff` line onto `rr`'s, the step's self-test
+  line of the workflow and the busybox defect - and add seven: the two
+  defects, a part-of row on the status line of finding 3, and part-of rows for
+  the new lines of the search set in the reader and the workflow.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
