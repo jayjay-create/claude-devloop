@@ -849,16 +849,20 @@ which runs the command as an administrator or as another user, `doas`,
 `su`, `run0` and `pkexec` since 13 October 2026, `runuser`, `gsudo`,
 `runas`, `login -f`, `machinectl shell` and `launchctl asuser` since the
 second addendum of that day, and since its third addendum `gosu` and
-`setpriv` where it sets another user, a group or the supplementary groups,
-with `--ruid`, `--euid`, `--reuid`, `--rgid`, `--egid`, `--regid`,
-`--groups`, `--clear-groups` or `--init-groups`, and not otherwise, and
-`sg`, which runs the command as another group, and every program of the
+`setpriv` where it sets another user, with `--ruid`, `--euid` or `--reuid`,
+and not otherwise, and every program of the
 first kind the searches of that addendum found, `sudo-rs`, `su-rs`,
 `su-exec`, `really`, `please`, `ksu`,
 `pbrun` and `dzdo` among them, as the head of `bin/devloop-command-reader`
 lists them, and those that run the command as another user only under an
-option, `chpst -u`, `start-stop-daemon -c`, `daemon -u` or `systemd-run
---uid`, there and not otherwise — and the script piped from the network, and
+option, `chpst -u`, `start-stop-daemon -c`, `daemon -u`, `s6-applyuidgid -u`
+or `systemd-run --uid`, there and not otherwise; a program or an option that
+changes only the group or the supplementary groups, `sg`, `setpriv --regid`
+or `--init-groups`, `capsh --gid`, `s6-applyuidgid -g` or `systemd-run
+--gid`, is no stop since the fourth addendum of 14 October 2026, by the
+person's decision of that day, the command behind it judged as any other,
+and an option that sets user and group together, `chpst -u user:group` or
+`capsh --user`, stays one — and the script piped from the network, and
 is checked after those and before the places: a branded browser — `chrome`, `msedge` and their six
 further channels — which Playwright installs at the system's own location
 over the browser already there, the vendor's own warning; and system
@@ -1497,17 +1501,30 @@ as words, the release or commit named together with the command that shows
 it exists and the sentence the reading rests on quoted, and named with its
 address in the roadmap entry on the command reader and its three addenda of
 13 October 2026; a reading made from a summary and not from the source is
-no reading, since the third addendum of that day. The kinds and their
+no reading, since the third addendum of that day. Since the fourth addendum
+of 14 October 2026 the program runs on macOS, on Linux and on Windows with
+Git Bash alike, the awk program handed to awk as a here-document on file
+descriptor 3 and not as one argument of the command line, which Linux
+refuses at 131 072 bytes; a workflow job runs its self-test and every hook
+on the three systems on every pull request. Where the reader cannot say
+what a command does, it reads the side on which the hook does not block,
+by the person's decision of 14 October 2026 — a text typed into a terminal,
+`rr` without a subcommand word, the names `ts` and `dotenv` that two
+vendors share, the points the fourth addendum names — and where the system
+decides which program is meant, the system decides, read off bash's
+`OSTYPE`: `login -f`, `script`, `kinit` and `man -P` as macOS runs them and
+as Linux and Git Bash do. The kinds and their
 programs, as the head of `bin/devloop-command-reader` lists them: (1)
 privileges, a command as an administrator or as another user — `sudo`,
 `doas`, `su`, `run0`, `pkexec`, `runuser`, `gsudo`, `gosu`, `runas`,
 `login -f`, `machinectl shell` and `launchctl asuser`, and `setpriv` where
-it sets another user, a group or the supplementary groups, with `--ruid`,
-`--euid`, `--reuid`, `--rgid`, `--egid`, `--regid`, `--groups`,
-`--clear-groups` or `--init-groups`, and `sg`, which runs the command as
-another group — each of which stays the user's under every answer at the
-install guard, `setpriv` without one of those being process control, read
-over; (2) process control, a time limit, a priority, an environment, a
+it sets another user, with `--ruid`, `--euid` or `--reuid` — each of which
+stays the user's under every answer at the install guard, `setpriv` without
+one of those being process control, read over, and `sg`, which hands one
+word behind the group, or behind `-c`, to `sh -c` and changes only the
+group, read over to that text since the fourth addendum of 14 October 2026,
+as every option that changes only the group or the supplementary groups is;
+(2) process control, a time limit, a priority, an environment, a
 measurement, a recording — `timeout`, `time`, `nice`, `nohup`, `stdbuf`,
 `command`, `builtin`,
 `noglob`, zsh's `nocorrect`, `env`, `exec`, `trap`, `ionice`, `chrt`,
@@ -1754,7 +1771,13 @@ prompts answers no, so that the run goes on. The rule held against six cases:
 a setting in a file of the vendor, through; a permission prompt under a mark
 without a third line, no and on; no install record on the main branch, a
 block; a quote not closed, through; `sudo brew install` where it runs, a
-block, since there is no doubt.
+block, since there is no doubt. On 14 October 2026 the person decided that
+every doubt the reader had read on the blocking side lets through, the
+fourth addendum of the roadmap entry on the command reader: the
+twenty-one points of the third addendum's check of its readings, `man -P`
+under man-db, a text typed into a terminal and the two names two vendors
+share, each named there with its reading; where the system the reader runs
+on decides which program is meant, the system decides and no doubt remains.
 
 **That no run has met a form is no reason not to read it.** devloop is used
 by many people from here on, and what can come up comes up: a form the vendor

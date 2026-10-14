@@ -77,12 +77,18 @@
 # Windows with Git Bash: (1) privileges, a command as an administrator or as
 # another user - sudo, doas, su, run0, pkexec, runuser, gsudo, gosu, runas,
 # login -f, machinectl shell and launchctl asuser, and setpriv where it sets
-# another user, a group or the supplementary groups with --ruid, --euid,
-# --reuid, --rgid, --egid, --regid, --groups, --clear-groups or
-# --init-groups, and sg, which runs the command as another group, each of
-# which stays the user's under every answer at the install guard, setpriv
-# without one of those being process control, read over, since the third
-# addendum of 13 October 2026; (2) process control, a time limit, a
+# another user with --ruid, --euid or --reuid, each of which stays the
+# user's under every answer at the install guard, setpriv without one of
+# those being process control, read over, since the third addendum of 13
+# October 2026; a program or an option that changes only the group or the
+# supplementary groups - sg, which hands one word behind the group, or
+# behind -c, to sh -c, setpriv --rgid, --egid, --regid, --groups,
+# --clear-groups and --init-groups, s6-applyuidgid -g and -G, capsh --gid
+# and --groups, minijail0 -g, lrun --gid, tcpserver -g, spawn-fcgi -g,
+# compartment --group, systemd-run --gid and pm2 --gid - is read over to
+# the command, which is judged as any other, since the fourth addendum of
+# 14 October 2026, by the person's decision of that day; an option that
+# sets user and group together stays a stop; (2) process control, a time limit, a
 # priority, an environment, a measurement, a recording - timeout, time, nice,
 # nohup, stdbuf, command, builtin, noglob, nocorrect, env, exec,
 # trap, ionice, chrt, taskset, uclampset, prlimit, numactl, setarch with
@@ -102,7 +108,7 @@
 # exec-file, chamber exec, envchain, teller run and railway run; (4) the
 # programs that start many commands - xargs, find -exec, parallel, fd -x and
 # -X, apply and msgexec; (5) terminal sessions and the background - tmux,
-# screen, zellij, dtach, abduco, setsid, nohup, nq, tsp with ts, pueue add,
+# screen, zellij, dtach, abduco, setsid, nohup, nq, tsp, pueue add,
 # daemon, daemonize, systemd-run, launchctl submit and bsexec, and at and
 # batch, which read their commands from stdin as a shell does; (6) the
 # programs that run a command when a file changes - entr, watchexec, nodemon
@@ -146,9 +152,11 @@
 # run no command; systemd-run with --host, --machine or --capsule, run0 with
 # --machine and machinectl shell with a container's name run the command
 # elsewhere; each of those is the command itself. A text typed into a
-# terminal - screen -X stuff, zellij action write-chars, tmux send-keys - is
-# shell text where it ends a line, with Enter, C-m or KPEnter behind it for
-# tmux. Nested text is taken apart like the text itself: $( ) and
+# terminal - screen -X stuff, zellij action write-chars and paste, tmux
+# send-keys - is not read since the fourth addendum of 14 October 2026: the
+# line does not name the program of the pane that receives it, a doubt that
+# lets through by the person's decision of that day. Nested text is taken
+# apart like the text itself: $( ) and
 # backticks, <( ) and >( ), a subshell, a group, the bodies of if, for,
 # while, until, case, select and a function, the argument of the shells
 # named above with -c, of eval, of trap and of flock -c, a heredoc and a
@@ -172,7 +180,15 @@
 # own names, of a script of a package file - npm run, bun run of a script,
 # mise run, deno task - which stands in a file and not in the command, and
 # of every program this head does not name: what stands on no list goes
-# through; a case inside $( ) whose pattern ends on a bare parenthesis,
+# through; rr without a subcommand word, which replays where its first
+# word is a directory and records otherwise, and ts, a name task-spooler
+# and the timestamp filter of moreutils share, out of the group - each a
+# doubt the line cannot settle, let through since the fourth addendum of
+# 14 October 2026 by the person's decision of that day, as every doubt that
+# addendum names is; and where the system decides which program is meant,
+# the system decides, read off bash's OSTYPE: login -f, script, kinit and
+# man -P as macOS runs them and as Linux and Git Bash do, named at their
+# place in the code; a case inside $( ) whose pattern ends on a bare parenthesis,
 # which is read as the end of the substitution; an arithmetic $(( )) and the
 # number of a {varname}> redirection, which carry no command. A redirection
 # behind a compound command - a group, a subshell, if, for, while, until,
@@ -333,16 +349,17 @@
 # doas-keepenv, dosr, dzdo, elevate, gasroot, kdesu, key2root, ksu, lxdoas,
 # lxqt-sudo, lxsu, lxsudo, MinSudo, nircmd elevate, oslo-rootwrap, pbrun,
 # please, qsudo, qt-sudo, rdo, really, run-as, RunAsTI, RunFromProcess,
-# RunFromProcess.exe, s6-applyuidgid, s6-setuidgid, security
+# RunFromProcess.exe, s6-setuidgid, security
 # execute-with-privileges, setuid, setuidgid, ShellRunas, shellrunas, su-exec,
 # su-rs, sudo-cli, sudo-request, sudo-rs, super, sux, sv shell, syca, tsudo,
 # voix, win-sudo, wsudox, xdg-su, xfsudo, xuserrun and yas are a stop under
 # every answer at the install guard, and chpst, xchpst and runtool with -u or
-# -U, psexec with -s, -u or -h, compartment with --user or --group, capsh with
-# --user, --uid, --gid or --groups, AdvancedRun with /RunAs, immortal, dmon,
-# minijail0, lrun, tcpserver, tcpsvd, unixserver, s6-ipcserver, spawn-fcgi,
-# shellinaboxd, start-stop-daemon, daemon, daemonize, systemd-run and pm2 with
-# their option naming a user or a group a stop only there. The tables read:
+# -U, psexec with -s, -u or -h, compartment with --user, capsh with --user or
+# --uid, s6-applyuidgid with -u or -U, AdvancedRun with /RunAs, immortal,
+# dmon, minijail0, lrun, tcpserver, tcpsvd, unixserver, s6-ipcserver,
+# spawn-fcgi, shellinaboxd, start-stop-daemon, daemon, daemonize, systemd-run
+# and pm2 with their option naming a user a stop only there, their option
+# naming a group alone no stop since the fourth addendum of 14 October 2026. The tables read:
 # SKIPN the operands before the command; EXECOPT an option behind which the
 # rest of the line is the command; PROGOPT and ARGOPT an option naming the
 # program and one carrying its arguments as one text; DDARGS a program whose
@@ -372,9 +389,20 @@
 # JSON object. --self-test produces every outcome above once and every form
 # the text is taken apart in, prints one line per case and exits 1 on the
 # first that does not come out as this head says. It needs bash and awk and
-# no GNU tool: it runs under bash 3.2 with the awk of macOS and under
-# ubuntu-latest alike, with LC_ALL=C so that every byte above 127 passes
-# through unchanged.
+# no GNU tool: it runs under bash 3.2 with the awk of macOS, under
+# ubuntu-latest with mawk and under Windows with Git Bash, whose awk is
+# gawk, alike, with LC_ALL=C so that every byte above 127 passes through
+# unchanged. The awk program reaches awk as a here-document on file
+# descriptor 3, awk -f /dev/fd/3, since the fourth addendum of 14 October
+# 2026, and not as one argument of the command line: Linux refuses a single
+# argument of 131 072 bytes and more, and the program is 205 kilobytes, so
+# that under Linux every hook blocked every command until then. /dev/fd/3 is
+# a file system on macOS, /proc/self/fd/3 on Linux, and under Git Bash the
+# MSYS2 runtime's /proc/self/fd/3, which duplicates the descriptor, gawk
+# reading /dev/fd/N off the descriptor itself before any open. An option the
+# tables name with ? behind it takes the next word unless that word begins
+# with -, one named with * every following word up to one that does, since
+# the same addendum.
 set -u
 me=devloop-command-reader
 
@@ -393,6 +421,9 @@ selftest() {
   runc() { run "$(j "$1")"; }
   # runw CMD: the same on Windows with Git Bash, the system named through DEVLOOP_READER_OS
   runw() { printf '%s' "$(j "$1")" | DEVLOOP_READER_OS=msys "$self" > "$T/out" 2>&1; rc=$?; out=$(tr '\037' '|' < "$T/out"); }
+  # runm CMD and runl CMD: the same on macOS and on Linux, for the readings that differ by the system since the fourth addendum of 14 October 2026 - script, kinit, login, man -P
+  runm() { printf '%s' "$(j "$1")" | DEVLOOP_READER_OS=darwin25 "$self" > "$T/out" 2>&1; rc=$?; out=$(tr '\037' '|' < "$T/out"); }
+  runl() { printf '%s' "$(j "$1")" | DEVLOOP_READER_OS=linux-gnu "$self" > "$T/out" 2>&1; rc=$?; out=$(tr '\037' '|' < "$T/out"); }
   # expect NAME EXIT LINE...: the last run exited EXIT and printed every line whole
   expect() {
     local name="$1" want="$2" s; shift 2; n=$((n+1))
@@ -594,8 +625,8 @@ echo done"
   expect "doas, su, run0 and pkexec, and a cluster of sudo options whose last letter takes a value" 0 "1|0|list|0|2|doas|brew|install|a" "2|0|list|0|5|doas|-u|root|-n|b" "3|0|list|0|1|doas|-C|/etc/doas.conf|c" "4|0|list|0|0|su|-c|brew install d|root" "5|4|shell|0|1|brew|install|d" "6|0|list|0|0|su|-|root|-c|e" "7|6|shell|0|1|e" "8|0|list|0|0|su|root" "9|0|list|0|2|run0|f" "10|0|list|0|5|run0|--unit=x|-u|root|g" "11|0|list|0|1|run0|--machine=m|h" "12|0|list|0|4|pkexec|--user|root|i" "13|0|list|0|1|pkexec|--version" "14|0|list|0|4|sudo|-Eu|root|brew|install|j"
   runc 'caffeinate -i brew install a; caffeinate -t 60 -s b; chrt -f 10 c; chrt 0 d; chrt -p 10 1234; taskset -c 0-3 e; taskset 0x1 f; strace -o out -e trace=file g; strace -p 1; valgrind --leak-check=full ./h; unbuffer i; chronic -e j; arch -x86_64 k; arch -arch arm64 -e A=1 l; xcrun --sdk macosx clang m; xcrun --find clang; sandbox-exec -n no-network n; systemd-run --unit=x -p MemoryMax=1G o; systemd-run -M box p'
   expect "caffeinate, chrt, taskset, strace with -p attaching and running a command given beside it, valgrind, unbuffer, chronic, arch, xcrun, sandbox-exec and systemd-run" 0 "1|0|list|0|3|caffeinate|-i|brew|install|a" "2|0|list|0|5|caffeinate|-t|60|-s|b" "3|0|list|0|4|chrt|-f|10|c" "4|0|list|0|3|chrt|0|d" "5|0|list|0|1|chrt|-p|10|1234" "6|0|list|0|4|taskset|-c|0-3|e" "7|0|list|0|3|taskset|0x1|f" "8|0|list|0|6|strace|-o|out|-e|trace=file|g" "9|0|list|0|0|strace|-p|1" "10|0|list|0|3|valgrind|--leak-check=full|./h" "11|0|list|0|2|unbuffer|i" "12|0|list|0|3|chronic|-e|j" "13|0|list|0|3|arch|-x86_64|k" "14|0|list|0|6|arch|-arch|arm64|-e|A=1|l" "15|0|list|0|4|xcrun|--sdk|macosx|clang|m" "16|0|list|0|1|xcrun|--find|clang" "17|0|list|0|4|sandbox-exec|-n|no-network|n" "18|0|list|0|5|systemd-run|--unit=x|-p|MemoryMax=1G|o" "19|0|list|0|1|systemd-run|-M|box|p"
-  runc "hyperfine -w 3 'brew install a' 'b c' -N; script -q /dev/null d e; script -c 'brew install f' out; script -q out -- g; nix-shell -p ripgrep --run 'brew install h'; nix-shell shell.nix --command 'i'; pnpm -c exec j k; pnpm exec l"
-  expect "hyperfine runs its commands as words without a shell since v2.0.0; script with -c and behind --, nix-shell and pnpm exec -c hand a text to a shell" 0 "1|0|list|0|0|hyperfine|-w|3|brew install a|b c|-N" "2|1|exec|0|1|brew|install|a" "3|1|exec|0|1|b|c" "4|0|list|0|4|script|-q|/dev/null|d|e" "5|0|list|0|0|script|-c|brew install f|out" "6|5|shell|0|1|brew|install|f" "7|0|list|0|0|script|-q|out|--|g" "8|7|shell|0|1|g" "9|0|list|0|1|nix-shell|-p|ripgrep|--run|brew install h" "10|9|shell|0|1|brew|install|h" "11|0|list|0|1|nix-shell|shell.nix|--command|i" "12|11|shell|0|1|i" "13|0|list|0|0|pnpm|-c|exec|j|k" "14|13|shell|0|1|j|k" "15|0|list|0|3|pnpm|exec|l"
+  runm "hyperfine -w 3 'brew install a' 'b c' -N; script -q /dev/null d e; script -c 'brew install f' out; script -q out -- g; nix-shell -p ripgrep --run 'brew install h'; nix-shell shell.nix --command 'i'; pnpm -c exec j k; pnpm exec l"
+  expect "hyperfine runs its commands as words without a shell since v2.0.0; script with -c and behind --, nix-shell and pnpm exec -c hand a text to a shell" 0 "1|0|list|0|0|hyperfine|-w|3|brew install a|b c|-N" "2|1|exec|0|1|brew|install|a" "3|1|exec|0|1|b|c" "4|0|list|0|4|script|-q|/dev/null|d|e" "5|0|list|0|1|script|-c|brew install f|out" "6|0|list|0|4|script|-q|out|--|g" "7|0|list|0|1|nix-shell|-p|ripgrep|--run|brew install h" "8|7|shell|0|1|brew|install|h" "9|0|list|0|1|nix-shell|shell.nix|--command|i" "10|9|shell|0|1|i" "11|0|list|0|0|pnpm|-c|exec|j|k" "12|11|shell|0|1|j|k" "13|0|list|0|3|pnpm|exec|l"
   runc 'direnv exec . brew install a; devbox run -- b; devbox run --env X=1 c; mise exec -- go install d@latest; mise x node@20 -- e; mise exec -c "f g"; mise install h; mise exec node@20; nix develop -c i; nix develop; nix shell nixpkgs#j -c k; nix env shell nixpkgs#l --command m; nix run nixpkgs#n'
   expect "direnv exec, devbox run, mise exec and the nix shells: devbox run a text for a shell, mise exec and nix develop read over to the command behind -- or -c, the nix shells judged themselves with the command handed on a line of its own" 0 "1|0|list|0|4|direnv|exec|.|brew|install|a" "2|0|list|0|0|devbox|run|--|b" "3|2|shell|0|1|b" "4|0|list|0|0|devbox|run|--env|X=1|c" "5|4|shell|0|1|c" "6|0|list|0|4|mise|exec|--|go|install|d@latest" "7|0|list|0|5|mise|x|node@20|--|e" "8|0|list|0|0|mise|exec|-c|f g" "9|8|shell|0|1|f|g" "10|0|list|0|1|mise|install|h" "11|0|list|0|0|mise|exec|node@20" "12|0|list|0|4|nix|develop|-c|i" "13|0|list|0|0|nix|develop" "14|0|list|0|1|nix|shell|nixpkgs#j|-c|k" "15|14|exec|0|1|k" "16|0|list|0|1|nix|env|shell|nixpkgs#l|--command|m" "17|16|exec|0|1|m" "18|0|list|0|1|nix|run|nixpkgs#n"
   lines "direnv exec, devbox run, mise exec and the nix shells: devbox run a text for a shell, mise exec and nix develop read over to the command behind -- or -c, the nix shells judged themselves with the command handed on a line of its own" 18
@@ -605,28 +636,28 @@ echo done"
   expect "a shell with -c behind mise exec and behind find -exec: read, since mise exec is read over to it and the command find hands on is judged as a line" 0 "1|0|list|0|4|mise|exec|--|sh|-c|brew install a" "2|1|shell|0|1|brew|install|a" "4|3|exec|0|1|bash|-c|b" "5|4|shell|0|1|b"
 
   # the group by kinds, since the second addendum of 13 October 2026, one case per program
-  runc 'runuser -u root -- brew install a; runuser -c "brew install b" root; setpriv --reuid=1000 --init-groups c; setpriv --dump; gsudo brew install d; gsudo -u admin --integrity High e; gsudo config; runas /user:admin "brew install f"; login -f root brew install g; login root; machinectl shell .host /bin/h -l; machinectl shell root@.host i; machinectl shell box j; launchctl asuser 501 brew install k; launchctl bsexec 1 l; launchctl submit -l x -o /tmp/o -- brew install m; launchctl list'
+  runm 'runuser -u root -- brew install a; runuser -c "brew install b" root; setpriv --reuid=1000 --init-groups c; setpriv --dump; gsudo brew install d; gsudo -u admin --integrity High e; gsudo config; runas /user:admin "brew install f"; login -f root brew install g; login root; machinectl shell .host /bin/h -l; machinectl shell root@.host i; machinectl shell box j; launchctl asuser 501 brew install k; launchctl bsexec 1 l; launchctl submit -l x -o /tmp/o -- brew install m; launchctl list'
   expect "kind 1, privileges: runuser, setpriv, gsudo with its words a text for bash, runas, login -f, machinectl shell on the host and in a container, launchctl asuser, bsexec and submit" 0 "1|0|list|0|5|runuser|-u|root|--|brew|install|a" "2|0|list|0|0|runuser|-c|brew install b|root" "3|2|shell|0|1|brew|install|b" "4|0|list|0|4|setpriv|--reuid=1000|--init-groups|c" "5|0|list|0|1|setpriv|--dump" "6|0|list|0|0|gsudo|brew|install|d" "7|6|shell|0|1|brew|install|d" "8|0|list|0|0|gsudo|-u|admin|--integrity|High|e" "9|8|shell|0|1|e" "10|0|list|0|1|gsudo|config" "11|0|list|0|1|runas|/user:admin|brew install f" "12|0|list|0|4|login|-f|root|brew|install|g" "13|0|list|0|1|login|root" "14|0|list|0|4|machinectl|shell|.host|/bin/h|-l" "15|0|list|0|4|machinectl|shell|root@.host|i" "16|0|list|0|1|machinectl|shell|box|j" "17|0|list|0|4|launchctl|asuser|501|brew|install|k" "18|0|list|0|4|launchctl|bsexec|1|l" "19|0|list|0|8|launchctl|submit|-l|x|-o|/tmp/o|--|brew|install|m" "20|0|list|0|1|launchctl|list"
   lines "kind 1, privileges: runuser, setpriv, gsudo with its words a text for bash, runas, login -f, machinectl shell on the host and in a container, launchctl asuser, bsexec and submit" 20
   runc 'prlimit --nofile=1024 a; prlimit --pid 1 --nofile; numactl -m 0 b; numactl -H; setarch x86_64 -R c; linux32 d; setarch -R e; nocache -n 2 f; cpulimit -l 50 g; cpulimit -l 50 -- h; cpulimit -l 50 -e firefox; ltrace -e malloc -o out i; ltrace -p 1; heaptrack j; heaptrack --analyze f.gz; gdb -batch -ex run --args k; gdb l; lldb -o run -- m; lldb --file n; lldb -p 1; rr record -n o; rr p; rr replay; uclampset -m 10 q; winpty -- r; firejail --net=none s; firejail --list; ssh-agent -t 1h t; ssh-agent -k; lockf -t 0 /tmp/l u'
-  expect "kind 2, process control: prlimit, numactl, setarch with linux32, nocache, cpulimit, ltrace, heaptrack, gdb --args, lldb, rr, uclampset, winpty, firejail, ssh-agent, lockf" 0 "1|0|list|0|3|prlimit|--nofile=1024|a" "2|0|list|0|1|prlimit|--pid|1|--nofile" "3|0|list|0|4|numactl|-m|0|b" "4|0|list|0|1|numactl|-H" "5|0|list|0|4|setarch|x86_64|-R|c" "6|0|list|0|2|linux32|d" "7|0|list|0|3|setarch|-R|e" "8|0|list|0|4|nocache|-n|2|f" "9|0|list|0|4|cpulimit|-l|50|g" "10|0|list|0|5|cpulimit|-l|50|--|h" "11|0|list|0|1|cpulimit|-l|50|-e|firefox" "12|0|list|0|6|ltrace|-e|malloc|-o|out|i" "13|0|list|0|0|ltrace|-p|1" "14|0|list|0|2|heaptrack|j" "15|0|list|0|1|heaptrack|--analyze|f.gz" "16|0|list|0|6|gdb|-batch|-ex|run|--args|k" "17|0|list|0|1|gdb|l" "18|0|list|0|5|lldb|-o|run|--|m" "19|0|list|0|3|lldb|--file|n" "20|0|list|0|1|lldb|-p|1" "21|0|list|0|4|rr|record|-n|o" "22|0|list|0|2|rr|p" "23|0|list|0|1|rr|replay" "24|0|list|0|4|uclampset|-m|10|q" "25|0|list|0|3|winpty|--|r" "26|0|list|0|3|firejail|--net=none|s" "27|0|list|0|1|firejail|--list" "28|0|list|0|4|ssh-agent|-t|1h|t" "29|0|list|0|1|ssh-agent|-k" "30|0|list|0|5|lockf|-t|0|/tmp/l|u"
-  runc "apply -2 'brew install' a b; msgexec -i f.po v; kinit -l 1h user w; sc_usage -E x; sc_usage 1; dtruss -t open y; dtruss -p 1; dapptrace -u libc z; dappprof aa; procsystime -n ab; dtrace -n 'syscall:::entry' -c 'brew install ac'; leaks -quiet -atExit -- ad; leaks 1; sg staff -c 'brew install ae'; bpftrace -e 'x' -c 'af'; ifne ag; lckdo /tmp/l ah; pee 'brew install ai' 'aj'; mispipe 'ak' 'al'"
+  expect "kind 2, process control: prlimit, numactl, setarch with linux32, nocache, cpulimit, ltrace, heaptrack, gdb --args, lldb, rr, uclampset, winpty, firejail, ssh-agent, lockf" 0 "1|0|list|0|3|prlimit|--nofile=1024|a" "2|0|list|0|1|prlimit|--pid|1|--nofile" "3|0|list|0|4|numactl|-m|0|b" "4|0|list|0|1|numactl|-H" "5|0|list|0|4|setarch|x86_64|-R|c" "6|0|list|0|2|linux32|d" "7|0|list|0|3|setarch|-R|e" "8|0|list|0|4|nocache|-n|2|f" "9|0|list|0|4|cpulimit|-l|50|g" "10|0|list|0|5|cpulimit|-l|50|--|h" "11|0|list|0|1|cpulimit|-l|50|-e|firefox" "12|0|list|0|6|ltrace|-e|malloc|-o|out|i" "13|0|list|0|0|ltrace|-p|1" "14|0|list|0|2|heaptrack|j" "15|0|list|0|1|heaptrack|--analyze|f.gz" "16|0|list|0|6|gdb|-batch|-ex|run|--args|k" "17|0|list|0|1|gdb|l" "18|0|list|0|5|lldb|-o|run|--|m" "19|0|list|0|3|lldb|--file|n" "20|0|list|0|1|lldb|-p|1" "21|0|list|0|4|rr|record|-n|o" "22|0|list|0|1|rr|p" "23|0|list|0|1|rr|replay" "24|0|list|0|4|uclampset|-m|10|q" "25|0|list|0|3|winpty|--|r" "26|0|list|0|3|firejail|--net=none|s" "27|0|list|0|1|firejail|--list" "28|0|list|0|4|ssh-agent|-t|1h|t" "29|0|list|0|1|ssh-agent|-k" "30|0|list|0|5|lockf|-t|0|/tmp/l|u"
+  runm "apply -2 'brew install' a b; msgexec -i f.po v; kinit -l 1h user w; sc_usage -E x; sc_usage 1; dtruss -t open y; dtruss -p 1; dapptrace -u libc z; dappprof aa; procsystime -n ab; dtrace -n 'syscall:::entry' -c 'brew install ac'; leaks -quiet -atExit -- ad; leaks 1; sg staff -c 'brew install ae'; bpftrace -e 'x' -c 'af'; ifne ag; lckdo /tmp/l ah; pee 'brew install ai' 'aj'; mispipe 'ak' 'al'"
   expect "kind 2, measurement and recording: apply, msgexec, kinit, sc_usage -E, the DTrace scripts, dtrace -c, leaks -atExit, sg, bpftrace -c, ifne, lckdo, pee and mispipe" 0 "1|0|list|0|0|apply|-2|brew install|a|b" "2|1|shell|0|1|brew|install" "3|0|list|0|4|msgexec|-i|f.po|v" "4|0|list|0|5|kinit|-l|1h|user|w" "5|0|list|0|3|sc_usage|-E|x" "6|0|list|0|1|sc_usage|1" "7|0|list|0|4|dtruss|-t|open|y" "8|0|list|0|1|dtruss|-p|1" "9|0|list|0|4|dapptrace|-u|libc|z" "10|0|list|0|2|dappprof|aa" "11|0|list|0|1|procsystime|-n|ab" "12|0|list|0|1|dtrace|-n|syscall:::entry|-c|brew install ac" "13|12|exec|0|1|brew|install|ac" "14|0|list|0|5|leaks|-quiet|-atExit|--|ad" "15|0|list|0|1|leaks|1" "16|0|list|0|0|sg|staff|-c|brew install ae" "17|16|shell|0|1|brew|install|ae" "18|0|list|0|1|bpftrace|-e|x|-c|af" "19|18|exec|0|1|af" "20|0|list|0|2|ifne|ag" "21|0|list|0|3|lckdo|/tmp/l|ah" "22|0|list|0|0|pee|brew install ai|aj" "23|22|shell|0|1|brew|install|ai" "24|22|shell|0|1|aj" "25|0|list|0|0|mispipe|ak|al" "26|25|shell|0|1|ak" "27|25|shell|0|1|al"
   runc 'uv run make install; uv run --with ruff ruff check .; uv run -m pytest; devbox run -- brew install a; pixi run -e dev brew install b; hatch run +py=3.12 c; composer exec -- phpunit d; composer exec -l; micromamba run -n env e; mamba run -p /p f; tox exec -e py311 -- g; tox e -- h; chruby-exec jruby -- i; rvm 3.2 do j; rvm all do bundle exec k; proto run npm -- install -g l; goenv exec m; jenv exec n; plenv exec o; phpenv exec p; luaenv exec q'
   expect "kind 3, environments: uv run with and without --with, devbox run, pixi run, hatch run, composer exec, micromamba and mamba run, tox exec, chruby-exec, rvm do, proto run, the exec of goenv, jenv, plenv, phpenv and luaenv" 0 "1|0|list|0|3|uv|run|make|install" "2|0|list|0|1|uv|run|--with|ruff|ruff|check|." "3|2|exec|0|1|ruff|check|." "4|0|list|0|1|uv|run|-m|pytest" "5|0|list|0|0|devbox|run|--|brew|install|a" "6|5|shell|0|1|brew|install|a" "7|0|list|0|5|pixi|run|-e|dev|brew|install|b" "8|0|list|0|4|hatch|run|+py=3.12|c" "9|0|list|0|0|composer|exec|--|phpunit|d" "10|9|shell|0|1|phpunit|d" "11|0|list|0|1|composer|exec|-l" "12|0|list|0|5|micromamba|run|-n|env|e" "13|0|list|0|5|mamba|run|-p|/p|f" "14|0|list|0|6|tox|exec|-e|py311|--|g" "15|0|list|0|4|tox|e|--|h" "16|0|list|0|4|chruby-exec|jruby|--|i" "17|0|list|0|4|rvm|3.2|do|j" "18|0|list|0|6|rvm|all|do|bundle|exec|k" "19|0|list|0|3|proto|run|npm|--|install|-g|l" "20|0|list|0|3|goenv|exec|m" "21|0|list|0|3|jenv|exec|n" "22|0|list|0|3|plenv|exec|o" "23|0|list|0|3|phpenv|exec|p" "24|0|list|0|3|luaenv|exec|q"
   runc "dotenvx run -f .env -- r; dotenv run -- s; dotenv -e .env -- t; dotenv -f .env u; godotenv -f .env v; env-cmd -f .env w; env-cmd --use-shell -f .env x y; cross-env A=1 z; cross-env-shell A=1 aa bb; aws-vault exec prof -- ab; aws-vault exec prof; op run --env-file=.env -- ac; doppler run -p p -c c -- ad; doppler run --command 'brew install ae'; infisical run --env=dev -- af; infisical run -c 'ag'; sops exec-env s.yaml 'brew install ah'; sops exec-file --no-fifo s.yaml 'ai {}'; chamber exec svc -- aj; envchain aws ak; teller run -- al; teller run --shell -- am an; railway run -s svc ao"
-  expect "kind 3, variables and secrets: dotenvx run, the three programs named dotenv, godotenv, env-cmd, cross-env and cross-env-shell, aws-vault exec, op run, doppler run, infisical run, sops exec-env and exec-file, chamber exec, envchain, teller run and railway run" 0 "1|0|list|0|6|dotenvx|run|-f|.env|--|r" "2|0|list|0|4|dotenv|run|--|s" "3|0|list|0|5|dotenv|-e|.env|--|t" "4|0|list|0|4|dotenv|-f|.env|u" "5|0|list|0|4|godotenv|-f|.env|v" "6|0|list|0|4|env-cmd|-f|.env|w" "7|0|list|0|0|env-cmd|--use-shell|-f|.env|x|y" "8|7|shell|0|1|x|y" "9|0|list|0|3|cross-env|A=1|z" "10|0|list|0|0|cross-env-shell|A=1|aa|bb" "11|10|shell|0|1|aa|bb" "12|0|list|0|5|aws-vault|exec|prof|--|ab" "13|0|list|0|0|aws-vault|exec|prof" "14|0|list|0|5|op|run|--env-file=.env|--|ac" "15|0|list|0|8|doppler|run|-p|p|-c|c|--|ad" "16|0|list|0|0|doppler|run|--command|brew install ae" "17|16|shell|0|1|brew|install|ae" "18|0|list|0|5|infisical|run|--env=dev|--|af" "19|0|list|0|0|infisical|run|-c|ag" "20|19|shell|0|1|ag" "21|0|list|0|0|sops|exec-env|s.yaml|brew install ah" "22|21|shell|0|1|brew|install|ah" "23|0|list|0|0|sops|exec-file|--no-fifo|s.yaml|ai {}" "24|23|shell|0|1|ai|{}" "25|0|list|0|5|chamber|exec|svc|--|aj" "26|0|list|0|3|envchain|aws|ak" "27|0|list|0|4|teller|run|--|al" "28|0|list|0|0|teller|run|--shell|--|am|an" "29|28|shell|0|1|am|an" "30|0|list|0|5|railway|run|-s|svc|ao"
+  expect "kind 3, variables and secrets: dotenvx run, the three programs named dotenv, godotenv, env-cmd, cross-env and cross-env-shell, aws-vault exec, op run, doppler run, infisical run, sops exec-env and exec-file, chamber exec, envchain, teller run and railway run" 0 "1|0|list|0|6|dotenvx|run|-f|.env|--|r" "2|0|list|0|2|dotenv|run|--|s" "3|0|list|0|5|dotenv|-e|.env|--|t" "4|0|list|0|4|dotenv|-f|.env|u" "5|0|list|0|4|godotenv|-f|.env|v" "6|0|list|0|4|env-cmd|-f|.env|w" "7|0|list|0|0|env-cmd|--use-shell|-f|.env|x|y" "8|7|shell|0|1|x|y" "9|0|list|0|3|cross-env|A=1|z" "10|0|list|0|0|cross-env-shell|A=1|aa|bb" "11|10|shell|0|1|aa|bb" "12|0|list|0|5|aws-vault|exec|prof|--|ab" "13|0|list|0|0|aws-vault|exec|prof" "14|0|list|0|5|op|run|--env-file=.env|--|ac" "15|0|list|0|8|doppler|run|-p|p|-c|c|--|ad" "16|0|list|0|0|doppler|run|--command|brew install ae" "17|16|shell|0|1|brew|install|ae" "18|0|list|0|5|infisical|run|--env=dev|--|af" "19|0|list|0|0|infisical|run|-c|ag" "20|19|shell|0|1|ag" "21|0|list|0|0|sops|exec-env|s.yaml|brew install ah" "22|21|shell|0|1|brew|install|ah" "23|0|list|0|0|sops|exec-file|--no-fifo|s.yaml|ai {}" "24|23|shell|0|1|ai|{}" "25|0|list|0|5|chamber|exec|svc|--|aj" "26|0|list|0|3|envchain|aws|ak" "27|0|list|0|4|teller|run|--|al" "28|0|list|0|0|teller|run|--shell|--|am|an" "29|28|shell|0|1|am|an" "30|0|list|0|5|railway|run|-s|svc|ao"
   runc "parallel brew install ::: a b; parallel -j 4 'brew install {}' ::: c; parallel ::: 'brew install d' 'e f'; parallel -- 'brew install g' 'h'; parallel echo :::: file; fd -e txt -x brew install; fd -e rs -x wc -l \; -X rm; fd pat"
   expect "kind 4, many commands: GNU and moreutils parallel with a command, with the arguments as commands and behind --, fd -x and -X up to a ; and fd alone" 0 "1|0|list|0|0|parallel|brew|install|:::|a|b" "2|1|shell|0|1|brew|install" "3|0|list|0|0|parallel|-j|4|brew install {}|:::|c" "4|3|shell|0|1|brew|install|{}" "5|0|list|0|0|parallel|:::|brew install d|e f" "6|5|shell|0|1|brew|install|d" "7|5|shell|0|1|e|f" "8|0|list|0|0|parallel|--|brew install g|h" "9|8|shell|0|1|brew|install|g" "10|8|shell|0|1|h" "11|0|list|0|0|parallel|echo|::::|file" "12|11|shell|0|1|echo" "13|0|list|0|1|fd|-e|txt|-x|brew|install" "14|13|exec|0|1|brew|install" "15|0|list|0|1|fd|-e|rs|-x|wc|-l|;|-X|rm" "16|15|exec|0|1|wc|-l" "17|15|exec|0|1|rm" "18|0|list|0|1|fd|pat"
   runc "tmux new-session -d 'brew install a'; tmux new -d -s x brew install b; tmux neww -t x 'c'; tmux splitw -h d e; tmux send-keys -t x 'brew install f' Enter; tmux send-keys -t x 'g'; tmux run 'brew install h'; tmux if-shell 'i' 'display x'; tmux popup -E 'j'; tmux -L s new -d 'k' \; neww 'l'; tmux attach; tmux -c 'brew install m'"
-  expect "kind 5, tmux: a shell-command of one word a text for sh, of several words run as they stand, send-keys with Enter, run-shell, if-shell, display-popup, two commands behind an escaped semicolon, attach, -c" 0 "1|0|list|0|0|tmux|new-session|-d|brew install a" "2|1|shell|0|1|brew|install|a" "3|0|list|0|0|tmux|new|-d|-s|x|brew|install|b" "4|3|exec|0|1|brew|install|b" "5|0|list|0|0|tmux|neww|-t|x|c" "6|5|shell|0|1|c" "7|0|list|0|0|tmux|splitw|-h|d|e" "8|7|exec|0|1|d|e" "9|0|list|0|0|tmux|send-keys|-t|x|brew install f|Enter" "10|9|shell|0|1|brew|install|f" "11|0|list|0|1|tmux|send-keys|-t|x|g" "12|0|list|0|0|tmux|run|brew install h" "13|12|shell|0|1|brew|install|h" "14|0|list|0|0|tmux|if-shell|i|display x" "15|14|shell|0|1|i" "16|0|list|0|0|tmux|popup|-E|j" "17|16|shell|0|1|j" "18|0|list|0|0|tmux|-L|s|new|-d|k|;|neww|l" "19|18|shell|0|1|k" "20|18|shell|0|1|l" "21|0|list|0|1|tmux|attach" "22|0|list|0|0|tmux|-c|brew install m" "23|22|shell|0|1|brew|install|m"
+  expect "kind 5, tmux: a shell-command of one word a text for sh, of several words run as they stand, send-keys with Enter, run-shell, if-shell, display-popup, two commands behind an escaped semicolon, attach, -c" 0 "1|0|list|0|0|tmux|new-session|-d|brew install a" "2|1|shell|0|1|brew|install|a" "3|0|list|0|0|tmux|new|-d|-s|x|brew|install|b" "4|3|exec|0|1|brew|install|b" "5|0|list|0|0|tmux|neww|-t|x|c" "6|5|shell|0|1|c" "7|0|list|0|0|tmux|splitw|-h|d|e" "8|7|exec|0|1|d|e" "9|0|list|0|1|tmux|send-keys|-t|x|brew install f|Enter" "10|0|list|0|1|tmux|send-keys|-t|x|g" "11|0|list|0|0|tmux|run|brew install h" "12|11|shell|0|1|brew|install|h" "13|0|list|0|0|tmux|if-shell|i|display x" "14|13|shell|0|1|i" "15|0|list|0|0|tmux|popup|-E|j" "16|15|shell|0|1|j" "17|0|list|0|0|tmux|-L|s|new|-d|k|;|neww|l" "18|17|shell|0|1|k" "19|17|shell|0|1|l" "20|0|list|0|1|tmux|attach" "21|0|list|0|0|tmux|-c|brew install m" "22|21|shell|0|1|brew|install|m"
   runc "screen -dmS s brew install n; screen -S s -X stuff \$'brew install o\\n'; screen -S s -X stuff 'p'; screen -S s -X exec brew install q; screen -S s -X screen -t w r; screen -r; screen -ls; dtach -n /tmp/s brew install s; dtach -a /tmp/s; abduco -c n brew install t; abduco -a n; nq brew install u; nq -w; tsp -L l brew install v; ts w; daemon -n d -- brew install x; daemon -X 'y'; daemonize -p /tmp/p /bin/z aa"
-  expect "kind 5, screen with -dmS, -X stuff ending a line and not, -X exec and -X screen, attaching and listing; dtach, abduco, nq, tsp and ts, daemon with -- and with -X, daemonize" 0 "1|0|list|0|4|screen|-dmS|s|brew|install|n" "2|0|list|0|0|screen|-S|s|-X|stuff|brew install o " "3|2|shell|0|1|brew|install|o" "4|0|list|0|0|screen|-S|s|-X|stuff|p" "5|0|list|0|0|screen|-S|s|-X|exec|brew|install|q" "6|5|exec|0|1|brew|install|q" "7|0|list|0|0|screen|-S|s|-X|screen|-t|w|r" "8|7|exec|0|1|r" "9|0|list|0|1|screen|-r" "10|0|list|0|1|screen|-ls" "11|0|list|0|4|dtach|-n|/tmp/s|brew|install|s" "12|0|list|0|1|dtach|-a|/tmp/s" "13|0|list|0|4|abduco|-c|n|brew|install|t" "14|0|list|0|1|abduco|-a|n" "15|0|list|0|2|nq|brew|install|u" "16|0|list|0|1|nq|-w" "17|0|list|0|4|tsp|-L|l|brew|install|v" "18|0|list|0|2|ts|w" "19|0|list|0|5|daemon|-n|d|--|brew|install|x" "20|0|list|0|0|daemon|-X|y" "21|20|exec|0|1|y" "22|0|list|0|4|daemonize|-p|/tmp/p|/bin/z|aa"
+  expect "kind 5, screen with -dmS, -X stuff ending a line and not, -X exec and -X screen, attaching and listing; dtach, abduco, nq, tsp and ts, daemon with -- and with -X, daemonize" 0 "1|0|list|0|4|screen|-dmS|s|brew|install|n" "2|0|list|0|1|screen|-S|s|-X|stuff|brew install o " "3|0|list|0|1|screen|-S|s|-X|stuff|p" "4|0|list|0|0|screen|-S|s|-X|exec|brew|install|q" "5|4|exec|0|1|brew|install|q" "6|0|list|0|0|screen|-S|s|-X|screen|-t|w|r" "7|6|exec|0|1|r" "8|0|list|0|1|screen|-r" "9|0|list|0|1|screen|-ls" "10|0|list|0|4|dtach|-n|/tmp/s|brew|install|s" "11|0|list|0|1|dtach|-a|/tmp/s" "12|0|list|0|4|abduco|-c|n|brew|install|t" "13|0|list|0|1|abduco|-a|n" "14|0|list|0|2|nq|brew|install|u" "15|0|list|0|1|nq|-w" "16|0|list|0|4|tsp|-L|l|brew|install|v" "17|0|list|0|1|ts|w" "18|0|list|0|5|daemon|-n|d|--|brew|install|x" "19|0|list|0|0|daemon|-X|y" "20|19|exec|0|1|y" "21|0|list|0|4|daemonize|-p|/tmp/p|/bin/z|aa"
   runc "at now <<EOF
 brew install ab
 EOF
 batch <<< 'ac'; at -f file now; zellij run -n x -- ad; zellij action new-pane -- ae; zellij action write-chars \$'af\\n'; zellij action write-chars 'ag'; zellij attach s -- ah; pueue add -g g -- brew install ai; pueue add 'aj && ak'"
-  expect "kind 5, at and batch reading their commands from stdin, zellij run, action new-pane, write-chars ending a line and not, attach with a command, pueue add as a text for sh" 0 "1|0|list|0|1|at|now|<<|EOF" "2|1|shell|0|1|brew|install|ab" "3|0|list|0|1|batch|<<<|ac" "4|3|shell|0|1|ac" "5|0|list|0|1|at|-f|file|now" "6|0|list|0|6|zellij|run|-n|x|--|ad" "7|0|list|0|5|zellij|action|new-pane|--|ae" "8|0|list|0|0|zellij|action|write-chars|af " "9|8|shell|0|1|af" "10|0|list|0|0|zellij|action|write-chars|ag" "11|0|list|0|5|zellij|attach|s|--|ah" "12|0|list|0|0|pueue|add|-g|g|--|brew|install|ai" "13|12|shell|0|1|brew|install|ai" "14|0|list|0|0|pueue|add|aj && ak" "15|14|shell|0|1|aj" "16|14|shell|0|1|ak"
+  expect "kind 5, at and batch reading their commands from stdin, zellij run, action new-pane, write-chars ending a line and not, attach with a command, pueue add as a text for sh" 0 "1|0|list|0|1|at|now|<<|EOF" "2|1|shell|0|1|brew|install|ab" "3|0|list|0|1|batch|<<<|ac" "4|3|shell|0|1|ac" "5|0|list|0|1|at|-f|file|now" "6|0|list|0|6|zellij|run|-n|x|--|ad" "7|0|list|0|5|zellij|action|new-pane|--|ae" "8|0|list|0|1|zellij|action|write-chars|af " "9|0|list|0|1|zellij|action|write-chars|ag" "10|0|list|0|5|zellij|attach|s|--|ah" "11|0|list|0|0|pueue|add|-g|g|--|brew|install|ai" "12|11|shell|0|1|brew|install|ai" "13|0|list|0|0|pueue|add|aj && ak" "14|13|shell|0|1|aj" "15|13|shell|0|1|ak"
   runc "ls | entr brew install a; entr -s 'brew install b'; watchexec -- brew install c; watchexec -e py -n d e; watchexec -w src f g; nodemon --exec 'brew install h' app.py; nodemon app.py; reflex -r '\\.go$' -- i; chokidar '**/*.js' -c 'brew install j'; onchange 'src/**' -- k; onchange -o 'l' 'x'; watchman-make -p '*.c' --run 'brew install m'; when-changed f 'n o'; when-changed f p q; when-changed f g -c r; wgo run main.go :: s; gow -e=go install t; watch -n 2 'brew install u'; watch -x v w"
   expect "kind 6, on a change: entr with and without -s, watchexec as a text and with -n, nodemon --exec, reflex, chokidar -c, onchange with -- and -o, watchman-make --run, when-changed in its forms with one word a text even behind -c, wgo with :: and run, gow, watch with and without -x" 0 "2|0|list|1|2|entr|brew|install|a" "3|0|list|0|0|entr|-s|brew install b" "4|3|shell|0|1|brew|install|b" "5|0|list|0|0|watchexec|--|brew|install|c" "6|5|shell|0|1|brew|install|c" "7|0|list|0|5|watchexec|-e|py|-n|d|e" "8|0|list|0|0|watchexec|-w|src|f|g" "9|8|shell|0|1|f|g" "10|0|list|0|1|nodemon|--exec|brew install h|app.py" "11|10|shell|0|1|brew|install|h|app.py" "12|0|list|0|1|nodemon|app.py" "13|0|list|0|5|reflex|-r|\\.go\$|--|i" "14|0|list|0|1|chokidar|**/*.js|-c|brew install j" "15|14|shell|0|1|brew|install|j" "16|0|list|0|4|onchange|src/**|--|k" "17|0|list|0|0|onchange|-o|l|x" "18|17|shell|0|1|l" "19|0|list|0|1|watchman-make|-p|*.c|--run|brew install m" "20|19|shell|0|1|brew|install|m" "21|0|list|0|0|when-changed|f|n o" "22|21|shell|0|1|n|o" "23|0|list|0|3|when-changed|f|p|q" "24|0|list|0|0|when-changed|f|g|-c|r" "25|24|shell|0|1|r" "26|0|list|0|0|wgo|run|main.go|::|s" "27|26|exec|0|1|go|run|main.go" "28|26|exec|0|1|s" "29|0|list|0|0|gow|-e=go|install|t" "30|29|exec|0|1|go|install|t" "31|0|list|0|0|watch|-n|2|brew install u" "32|31|shell|0|1|brew|install|u" "33|0|list|0|3|watch|-x|v|w"
   runc "git rebase -x 'brew install a' main; git -C . rebase --exec='b' c; git bisect run brew install d; git bisect run --reset-when-found=good e; git submodule foreach 'brew install f'; git submodule foreach --recursive 'g'; git filter-branch --tree-filter 'h' -- --all; git difftool -x 'i' HEAD~1; git difftool --extcmd='j'; git commit -m 'git rebase -x brew'"
@@ -640,6 +671,24 @@ batch <<< 'ac'; at -f file now; zellij run -n x -- ad; zellij action new-pane --
   runc "setpriv --no-new-privs brew install a; setpriv --reuid=1000 --init-groups b; hyperfine 'brew install c'; hyperfine -N 'echo d && brew install e'; hyperfine -S 'echo f && brew install g'; hyperfine --shell=none 'h i'; hyperfine --shell default 'j k'; hyperfine --shell zsh 'l m'; hyperfine --shell=cmd.exe 'brew install n' -p 'brew install o'; hyperfine --prepare 'brew install p' make; hyperfine -s 'q' -c 'r' -C 's' make; hyperfine --reference 'brew install t' make; hyperfine --reference-name 'brew install u' make; hyperfine -w 3 \"sleep '0.1' v\" -- w; nodemon --exec brew install x; nodemon -x 'brew install y' app.py; nodemon -x brew -- install z; nodemon --exec python -v app.py; nodemon -h; flock /tmp/l -c 'brew install aa'; flock -c 'brew install ab' /tmp/l; flock /tmp/l; flock 9; gosu nobody brew install ac; gosu --help"
   expect "the third addendum: setpriv read over, hyperfine without a shell by default and with -S, --shell none, default, a shell of the list and another program, its lifecycle texts always for a shell, --reference and --reference-name no command, a word split as shell_words splits it; nodemon's exec program with the script and its arguments one text, -v its own version, -h nothing; flock -c only behind the file; gosu" 0 "1|0|list|0|3|setpriv|--no-new-privs|brew|install|a" "2|0|list|0|4|setpriv|--reuid=1000|--init-groups|b" "3|0|list|0|0|hyperfine|brew install c" "4|3|exec|0|1|brew|install|c" "5|0|list|0|0|hyperfine|-N|echo d && brew install e" "6|5|exec|0|1|echo|d|&&|brew|install|e" "7|0|list|0|0|hyperfine|-S|echo f && brew install g" "8|7|shell|0|1|echo|f" "9|7|shell|0|1|brew|install|g" "10|0|list|0|0|hyperfine|--shell=none|h i" "11|10|exec|0|1|h|i" "12|0|list|0|0|hyperfine|--shell|default|j k" "13|12|shell|0|1|j|k" "14|0|list|0|0|hyperfine|--shell|zsh|l m" "15|14|shell|0|1|l|m" "16|0|list|0|0|hyperfine|--shell=cmd.exe|brew install n|-p|brew install o" "17|0|list|0|0|hyperfine|--prepare|brew install p|make" "18|17|shell|0|1|brew|install|p" "19|17|exec|0|1|make" "20|0|list|0|0|hyperfine|-s|q|-c|r|-C|s|make" "21|20|shell|0|1|q" "22|20|shell|0|1|r" "23|20|shell|0|1|s" "24|20|exec|0|1|make" "25|0|list|0|0|hyperfine|--reference|brew install t|make" "26|25|exec|0|1|make" "27|0|list|0|0|hyperfine|--reference-name|brew install u|make" "28|27|exec|0|1|make" "29|0|list|0|0|hyperfine|-w|3|sleep '0.1' v|--|w" "30|29|exec|0|1|sleep|0.1|v" "31|29|exec|0|1|w" "32|0|list|0|1|nodemon|--exec|brew|install|x" "33|32|shell|0|1|brew|install|x" "34|0|list|0|1|nodemon|-x|brew install y|app.py" "35|34|shell|0|1|brew|install|y|app.py" "36|0|list|0|1|nodemon|-x|brew|--|install|z" "37|36|shell|0|1|brew|install|z" "38|0|list|0|1|nodemon|--exec|python|-v|app.py" "39|0|list|0|1|nodemon|-h" "40|0|list|0|0|flock|/tmp/l|-c|brew install aa" "41|40|shell|0|1|brew|install|aa" "42|0|list|0|0|flock|-c|brew install ab|/tmp/l" "43|0|list|0|0|flock|/tmp/l" "44|0|list|0|0|flock|9" "45|0|list|0|3|gosu|nobody|brew|install|ac" "46|0|list|0|1|gosu|--help"
   lines "the third addendum: setpriv read over, hyperfine without a shell by default and with -S, --shell none, default, a shell of the list and another program, its lifecycle texts always for a shell, --reference and --reference-name no command, a word split as shell_words splits it; nodemon's exec program with the script and its arguments one text, -v its own version, -h nothing; flock -c only behind the file; gosu" 46
+
+  # the fourth addendum of 14 October 2026: a change of the group or of the supplementary groups alone is read over to the command, by the person's decision of that day; sg hands one word behind the group, or behind -c, to sh -c; the install guard, not the reader, decides which option makes a stop
+  runc "sg staff make test; sg staff -c 'brew install a'; sg - staff -c 'make test'; setpriv --regid=20 brew install b; setpriv --init-groups c; setpriv --reuid=1000 --regid=1000 d; capsh --gid=20 -- -c 'brew install e'; capsh --user=nobody -- -c 'make test'; s6-applyuidgid -g 20 brew install f; s6-applyuidgid -G 20,12 g; s6-applyuidgid -u 65534 h; s6-applyuidgid -U i; tcpserver -g 20 0 8080 j; spawn-fcgi -g nobody -- k; systemd-run --gid=nobody l; pm2 start m --gid nobody"
+  expect "the fourth addendum: sg with one word, with -c and with -, setpriv with a group option, capsh --gid and --user, s6-applyuidgid -g, -G, -u and -U, tcpserver -g, spawn-fcgi -g, systemd-run --gid, pm2 --gid, each read over to its command" 0 "1|0|list|0|0|sg|staff|make|test" "2|1|shell|0|1|make" "3|0|list|0|0|sg|staff|-c|brew install a" "4|3|shell|0|1|brew|install|a" "5|0|list|0|0|sg|-|staff|-c|make test" "6|5|shell|0|1|make|test" "7|0|list|0|3|setpriv|--regid=20|brew|install|b" "8|0|list|0|3|setpriv|--init-groups|c" "9|0|list|0|4|setpriv|--reuid=1000|--regid=1000|d" "10|0|list|0|1|capsh|--gid=20|--|-c|brew install e" "11|10|shell|0|1|brew|install|e" "12|0|list|0|1|capsh|--user=nobody|--|-c|make test" "13|12|shell|0|1|make|test" "14|0|list|0|4|s6-applyuidgid|-g|20|brew|install|f" "15|0|list|0|4|s6-applyuidgid|-G|20,12|g" "16|0|list|0|4|s6-applyuidgid|-u|65534|h" "17|0|list|0|3|s6-applyuidgid|-U|i" "18|0|list|0|6|tcpserver|-g|20|0|8080|j" "19|0|list|0|5|spawn-fcgi|-g|nobody|--|k" "20|0|list|0|3|systemd-run|--gid=nobody|l" "21|0|list|0|3|pm2|start|m|--gid|nobody"
+  lines "the fourth addendum: sg with one word, with -c and with -, setpriv with a group option, capsh --gid and --user, s6-applyuidgid -g, -G, -u and -U, tcpserver -g, spawn-fcgi -g, systemd-run --gid, pm2 --gid, each read over to its command" 21
+
+  # the fourth addendum of 14 October 2026: a doubt lets through, by the person's decision of that day - where the line cannot say what runs, the reading under which the hook does not block; the markers ? and * in the tables for an optional and a variadic value
+  runc "gdb --version --args brew install a; gdb --args brew install b; rr brew install c; rr record brew install d; rr -A x brew install e; devbox -c x run brew install f; devbox run -c x brew install g; pdm --pep582 run brew install h; pdm --pep582 bash run brew install i; pixi run --offline brew install j; pixi run --offline -e dev brew install k; pixi run --offline=true brew install l; dotenvx run --mask x brew install m; dotenvx run --mask -- brew install n; dotenvx run -e A=1 B=2 brew install o; dotenvx run -e A=1 -- brew install p; dotenv -o brew install q; dotenv -e .env brew install r; dotenv --debug -- brew install s; dotenv -t x brew install t; dotenv -p VAR brew install u; dotenv run brew install v; dotenv -e.env brew install w; env-cmd -e dev brew install x; env-cmd -f .env brew install y; env-cmd -e dev -- brew install z; env-cmd -f brew install aa; xargs --help brew install ab; parallel --dry-run brew install ::: ac; parallel echo -- 'a; brew install ad'; parallel brew install -- ae af; msgexec -h brew install ag; msgexec -i f.po 0; setsid -h brew install ah; ts brew install ai; tsp brew install aj; systemd-run -S brew install ak; onchange -- brew install al; onchange '*.js' -- brew install am; when-changed -h a.py brew install an; when-changed a.py brew install -h"
+  expect "the fourth addendum, a doubt lets through: gdb --version, rr without record, devbox -c before run, pdm --pep582, pixi --offline and dotenvx --mask taking the next word, dotenvx -e and env-cmd -e variadic, dotenv as dotenv-cli, xargs --help, parallel --dry-run and the data behind --, msgexec -h and 0, setsid -h, ts out of the group, systemd-run -S, onchange -- first, when-changed -h anywhere" 0 "1|0|list|0|1|gdb|--version|--args|brew|install|a" "2|0|list|0|3|gdb|--args|brew|install|b" "3|0|list|0|1|rr|brew|install|c" "4|0|list|0|3|rr|record|brew|install|d" "5|0|list|0|1|rr|-A|x|brew|install|e" "6|0|list|0|1|devbox|-c|x|run|brew|install|f" "7|0|list|0|0|devbox|run|-c|x|brew|install|g" "8|7|shell|0|1|brew|install|g" "9|0|list|0|1|pdm|--pep582|run|brew|install|h" "10|0|list|0|1|pdm|--pep582|bash|run|brew|install|i" "11|0|list|0|5|pixi|run|--offline|brew|install|j" "12|0|list|0|6|pixi|run|--offline|-e|dev|brew|install|k" "13|0|list|0|4|pixi|run|--offline=true|brew|install|l" "14|0|list|0|5|dotenvx|run|--mask|x|brew|install|m" "15|0|list|0|5|dotenvx|run|--mask|--|brew|install|n" "16|0|list|0|0|dotenvx|run|-e|A=1|B=2|brew|install|o" "17|0|list|0|6|dotenvx|run|-e|A=1|--|brew|install|p" "18|0|list|0|4|dotenv|-o|brew|install|q" "19|0|list|0|4|dotenv|-e|.env|brew|install|r" "20|0|list|0|4|dotenv|--debug|--|brew|install|s" "21|0|list|0|4|dotenv|-t|x|brew|install|t" "22|0|list|0|1|dotenv|-p|VAR|brew|install|u" "23|0|list|0|2|dotenv|run|brew|install|v" "24|0|list|0|3|dotenv|-e.env|brew|install|w" "25|0|list|0|0|env-cmd|-e|dev|brew|install|x" "26|0|list|0|4|env-cmd|-f|.env|brew|install|y" "27|0|list|0|5|env-cmd|-e|dev|--|brew|install|z" "28|0|list|0|4|env-cmd|-f|brew|install|aa" "29|0|list|0|1|xargs|--help|brew|install|ab" "30|0|list|0|1|parallel|--dry-run|brew|install|:::|ac" "31|0|list|0|0|parallel|echo|--|a; brew install ad" "32|31|shell|0|1|echo" "33|0|list|0|0|parallel|brew|install|--|ae|af" "34|33|shell|0|1|brew|install" "35|0|list|0|1|msgexec|-h|brew|install|ag" "36|0|list|0|1|msgexec|-i|f.po|0" "37|0|list|0|1|setsid|-h|brew|install|ah" "38|0|list|0|1|ts|brew|install|ai" "39|0|list|0|2|tsp|brew|install|aj" "40|0|list|0|1|systemd-run|-S|brew|install|ak" "41|0|list|0|1|onchange|--|brew|install|al" "42|0|list|0|4|onchange|*.js|--|brew|install|am" "43|0|list|0|1|when-changed|-h|a.py|brew|install|an" "44|0|list|0|1|when-changed|a.py|brew|install|-h"
+  lines "the fourth addendum, a doubt lets through: gdb --version, rr without record, devbox -c before run, pdm --pep582, pixi --offline and dotenvx --mask taking the next word, dotenvx -e and env-cmd -e variadic, dotenv as dotenv-cli, xargs --help, parallel --dry-run and the data behind --, msgexec -h and 0, setsid -h, ts out of the group, systemd-run -S, onchange -- first, when-changed -h anywhere" 44
+  # where the system decides which program is meant, the system decides: login, script, kinit and man -P on Linux, where shadow login takes no program, util-linux script refuses a second operand, MIT kinit runs no command and man-db splits the pager into words
+  runl "login -f root brew install a; script -c 'brew install b' out; script out brew install c; script -q out -- brew install d; kinit -l 1h user brew install e; man -P 'brew install f' ls; man -P 'less; brew install g' ls"
+  expect "the fourth addendum on Linux: login -f no program, script -c a text and a second operand nothing, -- a text, kinit no command, man -P words" 0 "1|0|list|0|1|login|-f|root|brew|install|a" "2|0|list|0|0|script|-c|brew install b|out" "3|2|shell|0|1|brew|install|b" "4|0|list|0|1|script|out|brew|install|c" "5|0|list|0|0|script|-q|out|--|brew|install|d" "6|5|shell|0|1|brew|install|d" "7|0|list|0|1|kinit|-l|1h|user|brew|install|e" "8|0|list|0|1|man|-P|brew install f|ls" "9|8|exec|0|1|brew|install|f" "10|0|list|0|1|man|-P|less; brew install g|ls" "11|10|exec|0|1|less;|brew|install|g"
+  lines "the fourth addendum on Linux: login -f no program, script -c a text and a second operand nothing, -- a text, kinit no command, man -P words" 11
+  # and on macOS, where login -f runs the program, script has no -c and takes the command behind the file, kinit is Heimdal and man evals the pager
+  runm "login -f root brew install a; script -c 'brew install b' out; script out brew install c; kinit -l 1h user brew install e; man -P 'brew install f' ls; man -P 'less; brew install g' ls"
+  expect "the fourth addendum on macOS: login -f the program, script -c nothing and the command behind the file, kinit the command, man -P a text" 0 "1|0|list|0|4|login|-f|root|brew|install|a" "2|0|list|0|1|script|-c|brew install b|out" "3|0|list|0|3|script|out|brew|install|c" "4|0|list|0|5|kinit|-l|1h|user|brew|install|e" "5|0|list|0|1|man|-P|brew install f|ls" "6|5|shell|0|1|brew|install|f" "7|0|list|0|1|man|-P|less; brew install g|ls" "8|7|shell|0|1|less" "9|7|shell|0|1|brew|install|g"
+  lines "the fourth addendum on macOS: login -f the program, script -c nothing and the command behind the file, kinit the command, man -P a text" 9
   runc "hyperfine 'brew install a && b'; hyperfine 'brew install c \"&&\" d'"
   expect "hyperfine v2.0.0 refuses a command with an operator standing alone, unquoted, where neither -S nor -N stands, and runs nothing; a quoted one is an argument" 0 "1|0|list|0|0|hyperfine|brew install a && b" "2|0|list|0|0|hyperfine|brew install c \"&&\" d" "3|2|exec|0|1|brew|install|c|&&|d"
   lines "hyperfine v2.0.0 refuses a command with an operator standing alone, unquoted, where neither -S nor -N stands, and runs nothing; a quoted one is an argument" 3
@@ -650,16 +699,16 @@ batch <<< 'ac'; at -f file now; zellij run -n x -- ad; zellij action new-pane --
   expect "one program word run with arguments of the program's own, as rg --pre runs it, is no command: git difftool -x under -d, aws-vault --pass-cmd and pandoc --filter not read" 0 "1|0|list|0|1|git|difftool|-d|-x|brew install a" "2|0|list|0|1|git|difftool|--dir-diff|--extcmd=brew install b" "3|0|list|0|1|git|difftool|-yd|-x|brew install c" "4|0|list|0|1|git|difftool|-x|brew install d|HEAD" "5|4|shell|0|1|brew|install|d" "6|0|list|0|7|aws-vault|--pass-cmd|brew install e|exec|p|--|make" "7|0|list|0|1|pandoc|--filter|brew|in.md"
   lines "one program word run with arguments of the program's own, as rg --pre runs it, is no command: git difftool -x under -d, aws-vault --pass-cmd and pandoc --filter not read" 7
 
-  runc "fzf --bind 'enter:execute(brew install a)'; fzf --bind 'ctrl-r:reload:brew install b'; fzf --bind='enter:become[brew install c]'; fzf --bind 'ctrl-a:change-prompt(brew install d)'; fzf --bind 'x:execute-silent(echo e)+abort,y:transform-header~echo f~'; man -P 'brew install g' ls; man --pager=less ls; bat --pager 'brew install h' f; bat -l md f"
+  runm "fzf --bind 'enter:execute(brew install a)'; fzf --bind 'ctrl-r:reload:brew install b'; fzf --bind='enter:become[brew install c]'; fzf --bind 'ctrl-a:change-prompt(brew install d)'; fzf --bind 'x:execute-silent(echo e)+abort,y:transform-header~echo f~'; man -P 'brew install g' ls; man --pager=less ls; bat --pager 'brew install h' f; bat -l md f"
   expect "the second pass of the check for completeness: fzf --bind with the actions that run a command in each notation, an action that runs none, man -P a text for sh, bat --pager words" 0 "1|0|list|0|1|fzf|--bind|enter:execute(brew install a)" "2|1|shell|0|1|brew|install|a" "3|0|list|0|1|fzf|--bind|ctrl-r:reload:brew install b" "4|3|shell|0|1|brew|install|b" "5|0|list|0|1|fzf|--bind=enter:become[brew install c]" "6|5|shell|0|1|brew|install|c" "7|0|list|0|1|fzf|--bind|ctrl-a:change-prompt(brew install d)" "8|0|list|0|1|fzf|--bind|x:execute-silent(echo e)+abort,y:transform-header~echo f~" "9|8|shell|0|1|echo|e" "10|8|shell|0|1|echo|f" "11|0|list|0|1|man|-P|brew install g|ls" "12|11|shell|0|1|brew|install|g" "13|0|list|0|1|man|--pager=less|ls" "14|13|shell|0|1|less" "15|0|list|0|1|bat|--pager|brew install h|f" "16|15|exec|0|1|brew|install|h" "17|0|list|0|1|bat|-l|md|f"
   lines "the second pass of the check for completeness: fzf --bind with the actions that run a command in each notation, an action that runs none, man -P a text for sh, bat --pager words" 17
 
-  runc $'leaks --outputGraph g -atExit -- brew install a; leaks --atExit -- brew install b; lldb -source s.txt -- brew install c; login -h host -f root brew install d; su root --command \'brew install e\'; runuser root --session-command=\'brew install f\'; pee --ignore-sigpipe \'brew install g\'; ktrace trace -c brew --global install h; sg -l staff -c \'brew install i\'; kinit -T cc user brew install j; godotenv --f .env brew install k; sudo -h -u root brew install l; sudo -h host brew install m'
+  runm $'leaks --outputGraph g -atExit -- brew install a; leaks --atExit -- brew install b; lldb -source s.txt -- brew install c; login -h host -f root brew install d; su root --command \'brew install e\'; runuser root --session-command=\'brew install f\'; pee --ignore-sigpipe \'brew install g\'; ktrace trace -c brew --global install h; sg -l staff -c \'brew install i\'; kinit -T cc user brew install j; godotenv --f .env brew install k; sudo -h -u root brew install l; sudo -h host brew install m'
   expect "the reading again checked against the vendors, first part: leaks --atExit behind an option with a value, lldb -source, login -h host -f, su and runuser --command behind the user, pee with its flag before the commands, ktrace -c, sg -l, kinit -T, godotenv --f, sudo -h as help and as host" 0 "1|0|list|0|6|leaks|--outputGraph|g|-atExit|--|brew|install|a" "2|0|list|0|4|leaks|--atExit|--|brew|install|b" "3|0|list|0|5|lldb|-source|s.txt|--|brew|install|c" "4|0|list|0|6|login|-h|host|-f|root|brew|install|d" "5|0|list|0|0|su|root|--command|brew install e" "6|5|shell|0|1|brew|install|e" "7|0|list|0|0|runuser|root|--session-command=brew install f" "8|7|shell|0|1|brew|install|f" "9|0|list|0|0|pee|--ignore-sigpipe|brew install g" "10|9|shell|0|1|brew|install|g" "11|0|list|0|1|ktrace|trace|-c|brew|--global|install|h" "12|11|exec|0|1|brew|--global|install|h" "13|0|list|0|0|sg|-l|staff|-c|brew install i" "14|13|shell|0|1|brew|install|i" "15|0|list|0|5|kinit|-T|cc|user|brew|install|j" "16|0|list|0|4|godotenv|--f|.env|brew|install|k" "17|0|list|0|5|sudo|-h|-u|root|brew|install|l" "18|0|list|0|4|sudo|-h|host|brew|install|m"
   lines "the reading again checked against the vendors, first part: leaks --atExit behind an option with a value, lldb -source, login -h host -f, su and runuser --command behind the user, pee with its flag before the commands, ktrace -c, sg -l, kinit -T, godotenv --f, sudo -h as help and as host" 18
   runc $'parallel --shard 1 \'brew install {}\' ::: a; parallel -l brew install b ::: c; tmux run-shell -s x \'brew install d\'; zellij ac new-pane -- brew install e; zellij -s sess run -- brew install f; zellij action paste $\'brew install g\n\'; tsp -a x brew install h; pueue add -a 1 2 -- brew install i; pueue add -e -- brew install j; daemon -X \'brew install\' k; cargo watch --env-file e -s \'brew install l\'; git rebase -x\'brew install m\' main; git submodule foreach brew install n; npm --tag latest exec -c \'brew install o\'; pnpm exec -c brew install p; sops --kms k exec-env f.yaml \'brew install q\'; sops exec-env f.yaml --user u \'brew install r\'; aws-vault exec prof --region r -- brew install s; composer exec \'brew install t\'; cross-env --max-old-space-size=4096 brew install u; nix --update-input x develop -c brew install v'
-  expect "the reading again checked against the vendors, second part: parallel --shard and -l without a number, tmux run-shell -s, zellij ac, zellij -s and action paste, tsp -a, pueue add -a and -e, daemon -X with operands, cargo watch --env-file, git rebase -xcmd, submodule foreach of several words, npm --tag, pnpm exec -c, sops options around the file, aws-vault flags behind the profile, composer exec a text, cross-env --name=value, nix --update-input" 0 "1|0|list|0|0|parallel|--shard|1|brew install {}|:::|a" "2|1|shell|0|1|brew|install|{}" "3|0|list|0|0|parallel|-l|brew|install|b|:::|c" "4|3|shell|0|1|brew|install|b" "5|0|list|0|0|tmux|run-shell|-s|x|brew install d" "6|5|shell|0|1|brew|install|d" "7|0|list|0|5|zellij|ac|new-pane|--|brew|install|e" "8|0|list|0|6|zellij|-s|sess|run|--|brew|install|f" "9|0|list|0|0|zellij|action|paste|brew install g " "10|9|shell|0|1|brew|install|g" "11|0|list|0|4|tsp|-a|x|brew|install|h" "12|0|list|0|0|pueue|add|-a|1|2|--|brew|install|i" "13|12|shell|0|1|brew|install|i" "14|0|list|0|5|pueue|add|-e|--|brew|install|j" "15|0|list|0|0|daemon|-X|brew install|k" "16|15|exec|0|1|brew|install|k" "17|0|list|0|1|cargo|watch|--env-file|e|-s|brew install l" "18|17|shell|0|1|brew|install|l" "19|0|list|0|1|git|rebase|-xbrew install m|main" "20|19|shell|0|1|brew|install|m" "21|0|list|0|1|git|submodule|foreach|brew|install|n" "22|21|shell|0|1|brew|install|n" "23|0|list|0|1|npm|--tag|latest|exec|-c|brew install o" "24|23|shell|0|1|brew|install|o" "25|0|list|0|0|pnpm|exec|-c|brew|install|p" "26|25|shell|0|1|brew|install|p" "27|0|list|0|0|sops|--kms|k|exec-env|f.yaml|brew install q" "28|27|shell|0|1|brew|install|q" "29|0|list|0|0|sops|exec-env|f.yaml|--user|u|brew install r" "30|29|shell|0|1|brew|install|r" "31|0|list|0|7|aws-vault|exec|prof|--region|r|--|brew|install|s" "32|0|list|0|0|composer|exec|brew install t" "33|32|shell|0|1|brew|install|t" "34|0|list|0|3|cross-env|--max-old-space-size=4096|brew|install|u" "35|0|list|0|6|nix|--update-input|x|develop|-c|brew|install|v"
-  lines "the reading again checked against the vendors, second part: parallel --shard and -l without a number, tmux run-shell -s, zellij ac, zellij -s and action paste, tsp -a, pueue add -a and -e, daemon -X with operands, cargo watch --env-file, git rebase -xcmd, submodule foreach of several words, npm --tag, pnpm exec -c, sops options around the file, aws-vault flags behind the profile, composer exec a text, cross-env --name=value, nix --update-input" 35
+  expect "the reading again checked against the vendors, second part: parallel --shard and -l without a number, tmux run-shell -s, zellij ac, zellij -s and action paste, tsp -a, pueue add -a and -e, daemon -X with operands, cargo watch --env-file, git rebase -xcmd, submodule foreach of several words, npm --tag, pnpm exec -c, sops options around the file, aws-vault flags behind the profile, composer exec a text, cross-env --name=value, nix --update-input" 0 "1|0|list|0|0|parallel|--shard|1|brew install {}|:::|a" "2|1|shell|0|1|brew|install|{}" "3|0|list|0|0|parallel|-l|brew|install|b|:::|c" "4|3|shell|0|1|brew|install|b" "5|0|list|0|0|tmux|run-shell|-s|x|brew install d" "6|5|shell|0|1|brew|install|d" "7|0|list|0|5|zellij|ac|new-pane|--|brew|install|e" "8|0|list|0|6|zellij|-s|sess|run|--|brew|install|f" "9|0|list|0|1|zellij|action|paste|brew install g " "10|0|list|0|4|tsp|-a|x|brew|install|h" "11|0|list|0|0|pueue|add|-a|1|2|--|brew|install|i" "12|11|shell|0|1|brew|install|i" "13|0|list|0|5|pueue|add|-e|--|brew|install|j" "14|0|list|0|0|daemon|-X|brew install|k" "15|14|exec|0|1|brew|install|k" "16|0|list|0|1|cargo|watch|--env-file|e|-s|brew install l" "17|16|shell|0|1|brew|install|l" "18|0|list|0|1|git|rebase|-xbrew install m|main" "19|18|shell|0|1|brew|install|m" "20|0|list|0|1|git|submodule|foreach|brew|install|n" "21|20|shell|0|1|brew|install|n" "22|0|list|0|1|npm|--tag|latest|exec|-c|brew install o" "23|22|shell|0|1|brew|install|o" "24|0|list|0|0|pnpm|exec|-c|brew|install|p" "25|24|shell|0|1|brew|install|p" "26|0|list|0|0|sops|--kms|k|exec-env|f.yaml|brew install q" "27|26|shell|0|1|brew|install|q" "28|0|list|0|0|sops|exec-env|f.yaml|--user|u|brew install r" "29|28|shell|0|1|brew|install|r" "30|0|list|0|7|aws-vault|exec|prof|--region|r|--|brew|install|s" "31|0|list|0|0|composer|exec|brew install t" "32|31|shell|0|1|brew|install|t" "33|0|list|0|3|cross-env|--max-old-space-size=4096|brew|install|u" "34|0|list|0|6|nix|--update-input|x|develop|-c|brew|install|v"
+  lines "the reading again checked against the vendors, second part: parallel --shard and -l without a number, tmux run-shell -s, zellij ac, zellij -s and action paste, tsp -a, pueue add -a and -e, daemon -X with operands, cargo watch --env-file, git rebase -xcmd, submodule foreach of several words, npm --tag, pnpm exec -c, sops options around the file, aws-vault flags behind the profile, composer exec a text, cross-env --name=value, nix --update-input" 34
   runc $'sk --bind \'enter:execute(brew install a)\' \'ctrl-r:reload:brew install b\'; sk -c \'brew install c\'; rsync -e \'brew install d\' src/ host:dst/; rsync -av --rsh=\'ssh -p 22\' a b:c; tcpclient -T 5 host 80 brew install e; feh --action \';[t]brew install f\' a.jpg; feh --action1 \'brew install g\' --info \'echo h\' a.jpg'
   expect "the second pass of the check for completeness, further: sk --bind with several bindings and -c, rsync -e and --rsh=, tcpclient, feh --action with its flag and title and --info" 0 "1|0|list|0|1|sk|--bind|enter:execute(brew install a)|ctrl-r:reload:brew install b" "2|1|shell|0|1|brew|install|a" "3|1|shell|0|1|brew|install|b" "4|0|list|0|1|sk|-c|brew install c" "5|4|shell|0|1|brew|install|c" "6|0|list|0|1|rsync|-e|brew install d|src/|host:dst/" "7|6|exec|0|1|brew|install|d" "8|0|list|0|1|rsync|-av|--rsh=ssh -p 22|a|b:c" "9|8|exec|0|1|ssh|-p|22" "10|0|list|0|6|tcpclient|-T|5|host|80|brew|install|e" "11|0|list|0|1|feh|--action|;[t]brew install f|a.jpg" "12|11|shell|0|1|brew|install|f" "13|0|list|0|1|feh|--action1|brew install g|--info|echo h|a.jpg" "14|13|shell|0|1|brew|install|g" "15|13|shell|0|1|echo|h"
   lines "the second pass of the check for completeness, further: sk --bind with several bindings and -c, rsync -e and --rsh=, tcpclient, feh --action with its flag and title and --info" 15
@@ -746,7 +795,7 @@ batch <<< 'ac'; at -f file now; zellij run -n x -- ad; zellij action new-pane --
   runc $'withlock /tmp/l brew install ripgrep; wl-restart -- brew install ripgrep; workmux add x -a \'brew install ripgrep\'; workspaces-run -- brew install ripgrep; wrapsrv _x._tcp.example.org brew install ripgrep; wrash brew; echo ripgrep | wrld -- brew install {}; ws run -- brew install ripgrep; wsrun -c brew install ripgrep; wtrace -c brew install ripgrep; x-args -f \'./*\' -c \'brew install ripgrep\'; x86_64 brew install ripgrep; echo ripgrep | xagrs brew install; xargh "brew install %s" list.txt; echo ripgrep | xarspand brew install %; xautolock -time 1 -locker \'brew install ripgrep\'; xchpst -u nobody -- brew install ripgrep; xclickroot brew install ripgrep; xdg-su -c \'brew install ripgrep\'; xdg-terminal-exec brew install ripgrep; xdotool exec --sync brew install ripgrep; echo ripgrep | xe brew install; xenv brew install ripgrep; xfce4-terminal -x brew install ripgrep; xfsudo brew install ripgrep; xinit /bin/sh -c \'brew install ripgrep\' -- :1; echo ripgrep | xjobs -- brew install; xpra start --start=\'brew install ripgrep\'; xsecurelock -- brew install ripgrep; xss brew install ripgrep'
   expect "the third addendum, block 27 of 30: withlock to xss, each judged at brew or handing it on" 0 "1|0|list|0|3|withlock|/tmp/l|brew|install|ripgrep" "2|0|list|0|3|wl-restart|--|brew|install|ripgrep" "3|0|list|0|1|workmux|add|x|-a|brew install ripgrep" "4|3|shell|0|1|brew|install|ripgrep" "5|0|list|0|3|workspaces-run|--|brew|install|ripgrep" "6|0|list|0|3|wrapsrv|_x._tcp.example.org|brew|install|ripgrep" "7|0|list|0|2|wrash|brew" "8|0|list|0|1|echo|ripgrep" "9|0|list|8|3|wrld|--|brew|install|{}" "10|0|list|0|4|ws|run|--|brew|install|ripgrep" "11|0|list|0|3|wsrun|-c|brew|install|ripgrep" "12|0|list|0|3|wtrace|-c|brew|install|ripgrep" "13|0|list|0|1|x-args|-f|./*|-c|brew install ripgrep" "14|13|shell|0|1|brew|install|ripgrep" "15|0|list|0|2|x86_64|brew|install|ripgrep" "16|0|list|0|1|echo|ripgrep" "17|0|list|16|2|xagrs|brew|install" "18|0|list|0|0|xargh|brew install %s|list.txt" "19|18|shell|0|1|brew|install|%s|list.txt" "20|0|list|0|1|echo|ripgrep" "21|0|list|20|2|xarspand|brew|install|%" "22|0|list|0|1|xautolock|-time|1|-locker|brew install ripgrep" "23|22|shell|0|1|brew|install|ripgrep" "24|0|list|0|5|xchpst|-u|nobody|--|brew|install|ripgrep" "25|0|list|0|2|xclickroot|brew|install|ripgrep" "26|0|list|0|1|xdg-su|-c|brew install ripgrep" "27|26|shell|0|1|brew|install|ripgrep" "28|0|list|0|2|xdg-terminal-exec|brew|install|ripgrep" "29|0|list|0|4|xdotool|exec|--sync|brew|install|ripgrep" "30|0|list|0|1|echo|ripgrep" "31|0|list|30|2|xe|brew|install" "32|0|list|0|2|xenv|brew|install|ripgrep" "33|0|list|0|3|xfce4-terminal|-x|brew|install|ripgrep" "34|0|list|0|2|xfsudo|brew|install|ripgrep" "35|0|list|0|2|xinit|/bin/sh|-c|brew install ripgrep|--|:1" "36|35|shell|0|1|brew|install|ripgrep" "37|0|list|0|1|echo|ripgrep" "38|0|list|37|3|xjobs|--|brew|install" "39|0|list|0|1|xpra|start|--start=brew install ripgrep" "40|39|shell|0|1|brew|install|ripgrep" "41|0|list|0|3|xsecurelock|--|brew|install|ripgrep" "42|0|list|0|2|xss|brew|install|ripgrep"
   lines "the third addendum, block 27 of 30: withlock to xss, each judged at brew or handing it on" 42
-  runc $'xss-lock -- brew install ripgrep; printf \'x\' | xstream brew install ripgrep; xterm -e brew install ripgrep; xtrace -- brew install ripgrep; xtruss brew install ripgrep; xuserrun brew install ripgrep; xvfb-run brew install ripgrep; echo ripgrep | yargs brew install %; yas brew install ripgrep; echo ripgrep | yup-xargs brew install; za \'(*)\' brew install ripgrep; zdaemon -p \'brew install ripgrep\' fg; zenv -f .env -- brew install ripgrep; zinkrun brew install ripgrep; zip -T -TT \'brew install ripgrep #\' out.zip file; zitify -i id.json brew install ripgrep; zkexec -c zk:2181 -e "brew install ripgrep"; zmx run s1 brew install ripgrep; zrun brew install ripgrep; zutty -e brew install ripgrep; zvbi-chains brew install ripgrep; socat - SYSTEM:\'brew install a\'; man -P \'brew install zz1\' ls; bat --pager \'brew install zz2\' f; sk -c \'brew install zz3\'; rsync -e \'brew install zz4\' a b:c; tcpclient host 80 brew install zz5; feh --action \'brew install zz6\' a.jpg; websocat -s 8080 cmd:\'brew install b\'; swayidle timeout 1 \'brew install c\''
+  runm $'xss-lock -- brew install ripgrep; printf \'x\' | xstream brew install ripgrep; xterm -e brew install ripgrep; xtrace -- brew install ripgrep; xtruss brew install ripgrep; xuserrun brew install ripgrep; xvfb-run brew install ripgrep; echo ripgrep | yargs brew install %; yas brew install ripgrep; echo ripgrep | yup-xargs brew install; za \'(*)\' brew install ripgrep; zdaemon -p \'brew install ripgrep\' fg; zenv -f .env -- brew install ripgrep; zinkrun brew install ripgrep; zip -T -TT \'brew install ripgrep #\' out.zip file; zitify -i id.json brew install ripgrep; zkexec -c zk:2181 -e "brew install ripgrep"; zmx run s1 brew install ripgrep; zrun brew install ripgrep; zutty -e brew install ripgrep; zvbi-chains brew install ripgrep; socat - SYSTEM:\'brew install a\'; man -P \'brew install zz1\' ls; bat --pager \'brew install zz2\' f; sk -c \'brew install zz3\'; rsync -e \'brew install zz4\' a b:c; tcpclient host 80 brew install zz5; feh --action \'brew install zz6\' a.jpg; websocat -s 8080 cmd:\'brew install b\'; swayidle timeout 1 \'brew install c\''
   expect "the third addendum, block 28 of 30: xss-lock to swayidle, each judged at brew or handing it on" 0 "1|0|list|0|3|xss-lock|--|brew|install|ripgrep" "2|0|list|0|1|printf|x" "3|0|list|2|2|xstream|brew|install|ripgrep" "4|0|list|0|3|xterm|-e|brew|install|ripgrep" "5|0|list|0|3|xtrace|--|brew|install|ripgrep" "6|0|list|0|2|xtruss|brew|install|ripgrep" "7|0|list|0|2|xuserrun|brew|install|ripgrep" "8|0|list|0|2|xvfb-run|brew|install|ripgrep" "9|0|list|0|1|echo|ripgrep" "10|0|list|9|2|yargs|brew|install|%" "11|0|list|0|2|yas|brew|install|ripgrep" "12|0|list|0|1|echo|ripgrep" "13|0|list|12|2|yup-xargs|brew|install" "14|0|list|0|3|za|(*)|brew|install|ripgrep" "15|0|list|0|1|zdaemon|-p|brew install ripgrep|fg" "16|15|exec|0|1|brew|install|ripgrep" "17|0|list|0|5|zenv|-f|.env|--|brew|install|ripgrep" "18|0|list|0|2|zinkrun|brew|install|ripgrep" "19|0|list|0|1|zip|-T|-TT|brew install ripgrep #|out.zip|file" "20|19|shell|0|1|brew|install|ripgrep" "21|0|list|0|4|zitify|-i|id.json|brew|install|ripgrep" "22|0|list|0|1|zkexec|-c|zk:2181|-e|brew install ripgrep" "23|22|shell|0|1|brew|install|ripgrep" "24|0|list|0|4|zmx|run|s1|brew|install|ripgrep" "25|0|list|0|2|zrun|brew|install|ripgrep" "26|0|list|0|3|zutty|-e|brew|install|ripgrep" "27|0|list|0|2|zvbi-chains|brew|install|ripgrep" "28|0|list|0|1|socat|-|SYSTEM:brew install a" "29|28|shell|0|1|brew|install|a" "30|0|list|0|1|man|-P|brew install zz1|ls" "31|30|shell|0|1|brew|install|zz1" "32|0|list|0|1|bat|--pager|brew install zz2|f" "33|32|exec|0|1|brew|install|zz2" "34|0|list|0|1|sk|-c|brew install zz3" "35|34|shell|0|1|brew|install|zz3" "36|0|list|0|1|rsync|-e|brew install zz4|a|b:c" "37|36|exec|0|1|brew|install|zz4" "38|0|list|0|4|tcpclient|host|80|brew|install|zz5" "39|0|list|0|1|feh|--action|brew install zz6|a.jpg" "40|39|shell|0|1|brew|install|zz6" "41|0|list|0|1|websocat|-s|8080|cmd:brew install b" "42|41|shell|0|1|brew|install|b" "43|0|list|0|1|swayidle|timeout|1|brew install c" "44|43|shell|0|1|brew|install|c"
   lines "the third addendum, block 28 of 30: xss-lock to swayidle, each judged at brew or handing it on" 44
   runc $'xidlehook --timer 1 \'brew install d\' \'\'; shellinaboxd -s \'/:nobody:nogroup:/:brew install e\'; multiplex \'x,brew install f\'; sinfonia \'x=brew install g\'; rmux new-session -d \'brew install h\'; busybox timeout 9 brew install i; toybox nice brew install j; rust-parallel \'brew install {}\' ::: k; watchmedo shell-command --command=\'brew install l\' .; watchmedo auto-restart -d . -- brew install m; nircmd elevate brew install n; sv shell -- brew install o; uftrace record brew install p; forever start -c brew install q; tuios new-window w -- brew install r; ksu root -e brew install s; scl enable c1 \'brew install t\'; pbrun brew install u; dzdo brew install v; devenv shell brew install w; lerna exec -- brew install x; yarn workspaces foreach -A exec brew install y; pm2 start \'brew install z\'; AdvancedRun /EXEFilename brew /CommandLine \'install aa\' /Run; kdesu brew install ab; MinSudo --NoLogo brew install ac; RunAsDate 22.10.2002 12:35:22 brew install ad; RunAsTI \'brew install ae\'; RunFromProcess admin winlogon.exe brew install af; shellrunas /netonly brew install ag'
@@ -784,7 +833,7 @@ batch <<< 'ac'; at -f file now; zellij run -n x -- ad; zellij action new-pane --
 # under Cygwin, so that no program is started for it; DEVLOOP_READER_OS
 # stands in for it in the self-test alone.
 OS="${DEVLOOP_READER_OS:-${OSTYPE:-}}"
-LC_ALL=C awk -v me="$me" -v os="$OS" '
+LC_ALL=C awk -v me="$me" -v os="$OS" -f /dev/fd/3 3<<'AWK'
 # ----------------------------------------------------------------- the JSON
 BEGIN {
   US = sprintf("%c", 31); Q = sprintf("%c", 39)
@@ -793,18 +842,18 @@ BEGIN {
   WANT["permission_mode"] = 1; WANT["session_id"] = 1
   WANT["tool_input.command"] = 1; WANT["tool_input.file_path"] = 1
   # the wrappers read over, one word and two words, each with the options that take a value, read off the vendors as docs/roadmap.md names them under the entry on the command reader and its addenda of 13 October 2026
-  ONEWORD = " - timeout time nice nohup stdbuf command builtin noglob nocorrect watch setsid ionice flock xargs sudo doas su run0 pkexec env trap exec caffeinate chrt taskset strace valgrind hyperfine unbuffer chronic script arch xcrun sandbox-exec systemd-run nix-shell runuser setpriv gsudo runas login gosu prlimit numactl setarch linux32 linux64 nocache cpulimit ltrace heaptrack gdb lldb rr uclampset winpty firejail ssh-agent lockf apply msgexec kinit sc_usage dtruss dapptrace dappprof procsystime dtrace leaks sg bpftrace ifne lckdo pee mispipe parallel fd tmux screen dtach abduco nq tsp ts daemon daemonize entr watchexec nodemon reflex chokidar onchange watchman-make when-changed wgo gow chruby-exec envchain godotenv env-cmd cross-env cross-env-shell dotenv npx "
+  ONEWORD = " - timeout time nice nohup stdbuf command builtin noglob nocorrect watch setsid ionice flock xargs sudo doas su run0 pkexec env trap exec caffeinate chrt taskset strace valgrind hyperfine unbuffer chronic script arch xcrun sandbox-exec systemd-run nix-shell runuser setpriv gsudo runas login gosu prlimit numactl setarch linux32 linux64 nocache cpulimit ltrace heaptrack gdb lldb rr uclampset winpty firejail ssh-agent lockf apply msgexec kinit sc_usage dtruss dapptrace dappprof procsystime dtrace leaks sg bpftrace ifne lckdo pee mispipe parallel fd tmux screen dtach abduco nq tsp daemon daemonize entr watchexec nodemon reflex chokidar onchange watchman-make when-changed wgo gow chruby-exec envchain godotenv env-cmd cross-env cross-env-shell dotenv npx "
   TWOWORD = " direnv devbox mise rtx nix asdf rbenv pyenv nodenv goenv jenv plenv phpenv luaenv volta fnm pipenv poetry pdm hatch rye conda mamba micromamba pixi bundle pnpm pn yarn uv composer tox rvm proto dotenvx aws-vault op doppler infisical sops chamber teller railway bun launchctl machinectl ktrace perf zellij pueue cargo npm "
   # the one-word programs read by their tables: VALS the options that take a value, SELF the options under which the program runs no command or runs it elsewhere and is the command itself, SELFALWAYS the programs that are the command itself and hand on only the texts of TEXTOPT (a text for a shell) or CHTOPT (a command split at blanks), DDONLY the programs whose command stands behind -- alone, SKIP1 a word of the program itself before the command, JOIN the programs whose command words joined are a text for a shell
-  VALS["nohup"] = ""; VALS["builtin"] = ""; VALS["noglob"] = ""; VALS["setsid"] = ""; VALS["valgrind"] = ""; SELF["valgrind"] = " -h --help --help-debug --help-dyn-options --version "; VALS["chronic"] = ""; VALS["ifne"] = ""; VALS["winpty"] = ""; VALS["firejail"] = ""; VALS["nq"] = ""
+  VALS["nohup"] = ""; VALS["builtin"] = ""; VALS["noglob"] = ""; VALS["setsid"] = ""; SELF["setsid"] = " -V --version -h --help "; VALS["valgrind"] = ""; SELF["valgrind"] = " -h --help --help-debug --help-dyn-options --version "; VALS["chronic"] = ""; VALS["ifne"] = ""; VALS["winpty"] = ""; VALS["firejail"] = ""; VALS["nq"] = ""
   VALS["time"] = " -f --format -o --output --output-file "; VALS["unbuffer"] = " -open -leaveopen -ignore "; SELF["unbuffer"] = " -open -leaveopen "; VALS["nice"] = " -n --adjustment "; VALS["stdbuf"] = " -i -o -e --input --output --error "
   VALS["ionice"] = " -c --class -n --classdata -p --pid -P --pgid -u --uid "; SELF["ionice"] = " -p --pid -P --pgid -u --uid "; VALS["exec"] = " -a "; VALS["caffeinate"] = " -t -w "; VALS["arch"] = " -arch -d -e "; SELF["arch"] = " -h "
   VALS["sandbox-exec"] = " -f -n -p -D "; VALS["pkexec"] = " --user -u "; SELF["pkexec"] = " --version --help "
   VALS["run0"] = " -u --user -g --group -D --chdir --unit --property --description --slice --nice --setenv --background --machine --shell-prompt-prefix --lightweight --area "; SELF["run0"] = " --machine -v --validate "
-  VALS["systemd-run"] = " -u --unit -p --property --description --slice --expand-environment --service-type --uid --gid --nice --working-directory -E --setenv --on-active --on-boot --on-startup --on-unit-active --on-unit-inactive --on-calendar --path-property --socket-property --timer-property --job-mode --background --output --json --root-directory "; SELF["systemd-run"] = " -H --host -M --machine -C --capsule "
+  VALS["systemd-run"] = " -u --unit -p --property --description --slice --expand-environment --service-type --uid --gid --nice --working-directory -E --setenv --on-active --on-boot --on-startup --on-unit-active --on-unit-inactive --on-calendar --path-property --socket-property --timer-property --job-mode --background --output --json --root-directory "; SELF["systemd-run"] = " -H --host -M --machine -C --capsule -S --shell "
   VALS["strace"] = " -a -b -e -E -I -o -O -p -P -s -S -u -U -X --columns --detach-on --trace --env --interruptible --output --summary-syscall-overhead --trace-path --string-limit --summary-sort-by --user --summary-columns --const-print-style --stack-trace-frame-limit --syscall-limit --signal --signals --status --read --write --decode-pids --inject --fault --kvm --attach --argv0 --color --trace-fds --abbrev --verbose --raw "; SELF["strace"] = " -h --help -V --version "
   VALS["xcrun"] = " --sdk -sdk --toolchain -toolchain "; SELF["xcrun"] = " -f --find -find --show-sdk-path -show-sdk-path --show-sdk-version -show-sdk-version --show-sdk-build-version -show-sdk-build-version --show-sdk-platform-path -show-sdk-platform-path --show-sdk-platform-version -show-sdk-platform-version --show-toolchain-path -show-toolchain-path -h --help -version --version "
-  VALS["xargs"] = " -E -I -J -L -n -P -R -S -s -a -d --arg-file --delimiter --max-args --max-procs --max-chars --process-slot-var "
+  VALS["xargs"] = " -E -I -J -L -n -P -R -S -s -a -d --arg-file --delimiter --max-args --max-procs --max-chars --process-slot-var "; SELF["xargs"] = " --help --version "
   VALS["setpriv"] = " --groups --inh-caps --ambient-caps --bounding-set --securebits --pdeathsig --ptracer --selinux-label --apparmor-profile --landlock-access --landlock-rule --seccomp-filter --rgid --egid --regid --ruid --euid --reuid "; SELF["setpriv"] = " -d --dump --list-caps -h --help -V --version "
   VALS["gsudo"] = " -u --user -i --integrity --loglevel --chdir -D "
   VALS["prlimit"] = " -o --output -p --pid "; SELF["prlimit"] = " -p --pid "
@@ -818,11 +867,11 @@ BEGIN {
   SELF["firejail"] = " --ls --get --put --cat --bandwidth --list --netstats --top --tree --help --version -? --shutdown --dnstrace --icmptrace --nettrace --snitrace --apparmor.print --caps.print --cpu.print --dns.print --fs.print --net.print --netfilter.print --netfilter6.print --profile.print --protocol.print --seccomp.print --debug-syscall-groups --debug-caps --debug-errnos --debug-syscalls --debug-syscalls32 --debug-protocols "
   VALS["ssh-agent"] = " -A -a -E -O -P -t "; SELF["ssh-agent"] = " -k -u -V -c -s -d -D "
   VALS["lockf"] = " -t "; SKIP1["lockf"] = 1; VALS["lckdo"] = " -W -E "; SELF["lckdo"] = " -t "; SKIP1["lckdo"] = 1
-  VALS["msgexec"] = " -i --input -D --directory "
+  VALS["msgexec"] = " -i --input -D --directory "; SELF["msgexec"] = " -h --help -V --version "
   VALS["dtruss"] = " -t -b -n -p -W "; SELF["dtruss"] = " -p -n -W -h "; VALS["dapptrace"] = " -u -b -p "; SELF["dapptrace"] = " -p -h "; VALS["dappprof"] = " -u -b -p "; SELF["dappprof"] = " -p -h "; VALS["procsystime"] = " -n -p "; SELF["procsystime"] = " -p -n -h "
   VALS["dtrace"] = " -b -c -D -I -L -o -s -U -x -p -P -m -f -n -i -W -arch -3 -6 "; CHTOPT["dtrace"] = " -c "; SELFALWAYS["dtrace"] = 1
   VALS["bpftrace"] = " -B -c -d -e -f -I -o -p --cmd --aot --debug --debuginfo --emit-elf --emit-llvm --include --no-feature --output --pid --probe-filter --mode --dwarf-pid --traceable-functions "; CHTOPT["bpftrace"] = " -c --cmd "; SELFALWAYS["bpftrace"] = 1
-  SELF["nq"] = " -w -t -h "; VALS["tsp"] = " -S -L -D -N -U -r -t -c -o -p -w -k -u -s -i -a -F -G -W -g -O -M --get_label --full_cmd --serialize --getenv --setenv --unsetenv --set_logdir --gpus --gpu_indices --set_gpu_free_perc "; SELF["tsp"] = " -K -C -l -h -V -g -t -c -o -p -s -r -w -k -u -i -U -S "; VALS["ts"] = VALS["tsp"]; SELF["ts"] = SELF["tsp"]
+  SELF["nq"] = " -w -t -h "; VALS["tsp"] = " -S -L -D -N -U -r -t -c -o -p -w -k -u -s -i -a -F -G -W -g -O -M --get_label --full_cmd --serialize --getenv --setenv --unsetenv --set_logdir --gpus --gpu_indices --set_gpu_free_perc "; SELF["tsp"] = " -K -C -l -h -V -g -t -c -o -p -s -r -w -k -u -i -U -S "
   VALS["daemon"] = " -C --config -n --name -X --command -P --pidfiles -F --pidfile -u --user -R --chroot -D --chdir -m --umask -e --env -a --acceptable -A --attempts -L --delay -M --limit -l --errlog -b --dbglog -o --output -O --stdout -E --stderr --signal "; CHTOPT["daemon"] = " -X --command "; SELF["daemon"] = " --running --restart --stop --signal --list -h --help -V --version "
   VALS["daemonize"] = " -c -e -E -o -p -l -u "
   VALS["reflex"] = " -r --regex -R --inverse-regex -g --glob -G --inverse-glob -c --config -d --decoration -t --shutdown-timeout --substitute "
@@ -835,8 +884,8 @@ BEGIN {
   VALS["chruby-exec"] = ""; DDONLY["chruby-exec"] = 1; SELF["chruby-exec"] = " -h --help -V --version "
   VALS["envchain"] = ""; SELF["envchain"] = " --set --list --unset -l -s "; SKIP1["envchain"] = 1
   VALS["godotenv"] = " -f --f "; SELF["godotenv"] = " -h "
-  VALS["env-cmd"] = " -f --file -e --environments "
-  VALS["dotenv"] = " -f -q -e -v -c -p "; SELF["dotenv"] = " -p -t --template "
+  VALS["env-cmd"] = " -f? --file? -e* --environments* -r? --rc-file? "
+  VALS["dotenv"] = ""; SELF["dotenv"] = " -p "
   VALS["kinit"] = " -c -t -l -r -S -s -e -C -D -T -I -X "; SKIP1["kinit"] = 1
   VALS["lldb"] = " -a --arch -arch -c --core -core -f --file -file -n --attach-name -attach-name -p --attach-pid -attach-pid -s --source -source -S --source-before-file -source-before-file -K --source-on-crash -source-on-crash -O --one-line-before-file -one-line-before-file -o --one-line -one-line -k --one-line-on-crash -one-line-on-crash -l --script-language -script-language -R --repl-language -repl-language "; SELF["lldb"] = " -n --attach-name -attach-name -p --attach-pid -attach-pid -w --wait-for -v --version -h --help -P --python-path --print-script-interpreter-info -r --repl "
   VALS["rr"] = " -A --microarch -C --checksum -D --dump-on -T --dump-at --resource-path --log -c --num-cpu-ticks --disable-cpuid-features --disable-cpuid-features-ext --disable-cpuid-features-xsave --num-cores -o --output-trace-dir -p --print-trace-dir --syscall-buffer-sig -t --continue-through-signal --bind-to-cpu -v --env --nested --trace-id --syscall-buffer-size -i --ignore-signal "; SELF["rr"] = " -L --list-commands -N --version "
@@ -851,25 +900,25 @@ BEGIN {
   SUBS["pnpm"] = " exec "; SUBS["pn"] = " exec "; SUBS["yarn"] = " exec "; SUBS["uv"] = " run "; SUBS["composer"] = " exec "; SUBS["tox"] = " exec e "; SUBS["rvm"] = " do "; SUBS["proto"] = " run r "
   SUBS["dotenvx"] = " run "; SUBS["aws-vault"] = " exec "; SUBS["op"] = " run "; SUBS["doppler"] = " run "; SUBS["infisical"] = " run "; SUBS["sops"] = " exec-env exec-file "; SUBS["chamber"] = " exec "; SUBS["teller"] = " run "; SUBS["railway"] = " run local "
   SUBS["bun"] = " run exec "; JOIN2["bun exec"] = 1; SUBS["launchctl"] = " submit asuser bsexec "; SUBS["machinectl"] = " shell "; SUBS["ktrace"] = " trace artrace "; SUBS["perf"] = " stat record trace "; SUBS["zellij"] = " run r action ac attach a "; SUBS["pueue"] = " add "; SUBS["cargo"] = " watch workspaces env-run "; SUBS["npm"] = " exec x explore "
-  PRE["devbox"] = " -c --config -e --env --env-file --environment "; POST["devbox run"] = PRE["devbox"]; JOIN2["devbox run"] = 1; SELF2["devbox run"] = " -l --list "
+  PRE["devbox"] = ""; POST["devbox run"] = " -c --config -e --env --env-file --environment "; JOIN2["devbox run"] = 1; SELF2["devbox run"] = " -l --list "
   PRE["mise"] = " -C --cd -E --env -j --jobs -P --profile --log-level "; PRE["rtx"] = PRE["mise"]
   PRE["nix"] = " --update-input --reference-lock-file --output-lock-file --arg-from-file:2 --arg-from-stdin --override-flake:2 --override-input:2 -f --file --expr --inputs-from --option:2 --log-format -I --include --arg:2 --argstr:2 --eval-store --store -j --max-jobs --cores --builders --extra-experimental-features --experimental-features --access-tokens "
   POST["volta run"] = " --node --npm --yarn --pnpm --env "
   PRE["fnm"] = " --using --fnm-dir --log-level --arch --node-dist-mirror --version-file-strategy --multishell-path "; POST["fnm exec"] = PRE["fnm"]
   PRE["pipenv"] = " --python --pypi-mirror "
   PRE["poetry"] = " -C --directory -P --project "; POST["poetry run"] = PRE["poetry"]
-  PRE["pdm"] = " -c --config "; POST["pdm run"] = " -p --project -k --skip --venv --env --env-file --working-dir "; SELF2["pdm run"] = " -l --list -j --json "
+  PRE["pdm"] = " -c --config --pep582? "; SELFPRE["pdm"] = " --pep582 "; POST["pdm run"] = " -p --project -k --skip --venv --env --env-file --working-dir "; SELF2["pdm run"] = " -l --list -j --json "
   PRE["hatch"] = " -e --env -p --project --config --data-dir --cache-dir "
   PRE["rye"] = " --env-file "; POST["rye run"] = " --pyproject "; SELF2["rye run"] = " -l --list "
   POST["conda run"] = " -n --name -p --prefix --cwd "; POST["mamba run"] = " -n --name -p --prefix --cwd -a --attach -e --env --label -r --root-prefix --relocate-prefix "; PRE["mamba"] = " --rc-file --log-level -r --root-prefix -p --prefix --relocate-prefix -n --name "; PRE["micromamba"] = PRE["mamba"]; POST["micromamba run"] = POST["mamba run"]
-  PRE["pixi"] = " --color "; POST["pixi run"] = " -e --environment -p --platform -m --manifest-path -w --workspace -s --script --config-file --auth-file --concurrent-downloads --concurrent-solves --pinning-strategy --pypi-keyring-provider --tls-root-certs --color "; SELF2["pixi run"] = " -n --dry-run "
+  PRE["pixi"] = " --color "; POST["pixi run"] = " -e --environment -p --platform -m --manifest-path -w --workspace -s --script --config-file --auth-file --concurrent-downloads --concurrent-solves --pinning-strategy --pypi-keyring-provider --tls-root-certs --color --offline? "; SELF2["pixi run"] = " -n --dry-run "
   PRE["bundle"] = " -r --retry --gemfile "; POST["bundle exec"] = PRE["bundle"]
   PRE["pnpm"] = " -C --dir --prefix --filter -F --filter-prod --resume-from --reporter --loglevel --store-dir --store --state-dir --npmrc-auth-file --userconfig --workspace-packages --registry --https-proxy --http-proxy --no-proxy --test-pattern --changed-files-ignore-pattern --workspace-concurrency "; PRE["pn"] = PRE["pnpm"]
   PRE["yarn"] = " --cwd --link-folder --global-folder --preferred-cache-folder --cache-folder --mutex --proxy --https-proxy --registry --network-concurrency --network-timeout --otp --use-yarnrc --modules-folder "
   POST["uv run"] = " -p --python --project --directory --package --extra --no-extra --group --only-group --no-group --env-file --index --default-index -i --index-url --extra-index-url -f --find-links --config-file --cache-dir -w --with --with-editable --with-requirements --exclude-newer --link-mode --resolution --prerelease --prerelease-package --python-platform --color --python-preference --python-fetch --fork-strategy --index-strategy --keyring-provider --allow-insecure-host --trusted-host --no-binary-package --no-build-package --no-build-isolation-package --no-sources-package --no-editable-package --exclude-newer-package --upgrade-package --upgrade-group -P --reinstall-package --refresh-package -C --config-setting --config-settings --config-settings-package --max-recursion-depth --preview-features --preview-feature "
   SELF2["composer exec"] = " -l --list "; PRE["composer"] = " -d --working-dir "; POST["composer exec"] = PRE["composer"]
   PRE["tox"] = " -c --conf --workdir --root --runner -e --colored --result-json --hashseed --installpkg -x --override --discover --skip-missing-interpreters --exit-and-dump-after -p --parallel --stderr-color --skip-env "; POST["tox exec"] = PRE["tox"]; DD2["tox exec"] = 1; DD2["tox e"] = 1
-  PRE["dotenvx"] = " -l --log-level "; POST["dotenvx run"] = " -e --env -f --env-file -fk --env-keys-file --convention --ignore -l --log-level --profile --token "
+  PRE["dotenvx"] = " -l --log-level "; POST["dotenvx run"] = " -e* --env* -f --env-file -fk --env-keys-file --convention --ignore* -l --log-level --profile --token --mask? "
   PRE["aws-vault"] = " --prompt --backend --keychain --pass-dir --pass-cmd --pass-prefix --file-dir --secret-service-collection "; POST["aws-vault exec"] = " -d --duration -t --mfa-token --region --prompt --backend --keychain --pass-dir --pass-cmd --pass-prefix --file-dir --secret-service-collection "; SKIP2["aws-vault exec"] = 1
   POST["op run"] = " --env-file --environment --account --session --config --format --encoding "; DD2["op run"] = 1
   POST["doppler run"] = " -t --mount-format --timeout --attempts --dns-resolver-address --dns-resolver-proto --dns-resolver-timeout --configuration --command -p --project -c --config --name-transformer --passphrase --fallback --format --mount --mount-template --mount-max-reads --dynamic-ttl --only-secrets --token --api-host --dashboard-host --config-dir --scope "; TEXTOPT2["doppler run"] = " --command "
@@ -1913,7 +1962,7 @@ BEGIN {
   VALS["coreutils"] = ""; VALS["run-one"] = ""; VALS["run-one-constantly"] = ""; VALS["run-one-until-success"] = ""; VALS["run-one-until-failure"] = ""; VALS["run-this-one"] = ""; VALS["keep-one-running"] = ""
   # found by the second pass of the check for completeness of 14 October 2026, read off their vendors: man -P and --pager, a text for sh in the shell script man of macOS 26.6 (eval of the cat tool piped into MANPAGER) and a command with arguments split by shell quoting in man-db 2.13.1; bat --pager of bat v0.26.1, split by shell_words and run with no shell
   ONEWORD = ONEWORD "man bat "
-  VALS["man"] = " -C --config-file -R --recode -L --locale -m --systems -M --manpath -S -s --sections -e --extension -P --pager -r --prompt -E --encoding -p --preprocessor "; TEXTOPT["man"] = " -P --pager "; SELFALWAYS["man"] = 1
+  VALS["man"] = " -C --config-file -R --recode -L --locale -m --systems -M --manpath -S -s --sections -e --extension -P --pager -r --prompt -E --encoding -p --preprocessor "; SELFALWAYS["man"] = 1
   VALS["bat"] = " --nonprintable-notation --binary -l --language -H --highlight-line --file-name --diff-context --tabs --wrap --terminal-width --color --italic-text --decorations --paging --pager -m --map-syntax --ignored-suffix --theme --theme-light --theme-dark --squeeze-limit --strip-ansi --style -r --line-range --completion "; CHTOPT["bat"] = " --pager "; SELFALWAYS["bat"] = 1
   # the second pass of the check for completeness, further: sk of skim v5.7.4, rsync -e of rsync v3.5.1, the remote shell program run on this machine with the host and the remote command behind its words, tcpclient of ucspi-tcp, feh 3.13.1
   ONEWORD = ONEWORD "sk rsync tcpclient feh "
@@ -2248,14 +2297,21 @@ function opt_width(vals, w,   n, k) {
   if (w ~ /^-[A-Za-z]+$/) for (k = 2; k <= length(w); k++) if (optn(vals, "-" substr(w, k, 1)) > 0) return k == length(w) ? optn(vals, "-" substr(w, k, 1)) : 0
   return 0
 }
-# skips option words from j on, each with the values it takes
-function skip_opts(d, j, vals,   w) {
+# skips option words from j on, each with the values it takes; an option
+# listed with a ? behind it takes the next word where that word does not
+# begin with -, one listed with a * every following word up to one that does,
+# the optional and the variadic values of commander, clap and minimist, since
+# the fourth addendum of 14 October 2026
+function skip_opts(d, j, vals,   w, m) {
   while (j <= NW[d]) {
     w = W[d, j]
     if (is_redir_op(w)) { j += 2; continue }
     if (w == "--") { DDSEEN = 1; return j + 1 }
     if (SLASH && w ~ /^\/[A-Za-z][A-Za-z0-9_-]*(:.*)?$/) { j += (index(w, ":") > 0 ? 0 : optn(vals, w)) + 1; continue }
     if (w !~ /^-/) return j
+    m = w; sub(/=.*/, "", m)
+    if (m == w && index(vals, " " m "* ") > 0) { j++; while (j <= NW[d] && W[d, j] !~ /^-/) j++; continue }
+    if (m == w && index(vals, " " m "? ") > 0) { j++; if (j <= NW[d] && W[d, j] !~ /^-/) j++; continue }
     j += opt_width(vals, w) + 1
   }
   return j
@@ -2319,7 +2375,6 @@ function shwords(text, arr,   n, i, c, w, q, inw, L) {
 # the words from a to b joined with one blank
 function joined(d, a, b,   k, t) { t = ""; for (k = a; k <= b; k++) t = t (k > a ? " " : "") W[d, k]; return t }
 # whether a text typed into a terminal ends a line: a newline or a carriage return, or the escapes \n, \r, \012, \015 and ^M the vendors read
-function ends_line(w) { return w ~ /(\n|\r|\\n|\\r|\\012|\\015|\^M)$/ }
 # whether every letter of a cluster of short options is a flag on the list
 function flags_only(vals, w,   k) { if (w !~ /^-[A-Za-z]+$/) return 0; for (k = 2; k <= length(w); k++) if (optn(vals, "-" substr(w, k, 1)) > 0) return 0; return 1 }
 # has_opt with the values of the options on vals read over, so that an option behind a valued one is seen
@@ -2331,6 +2386,8 @@ function has_optv(d, j, list, vals,   w, k, m) {
     if (w !~ /^-/) return 0
     m = w; sub(/=.*/, "", m)
     if (index(list, " " m " ") > 0) return 1
+    if (m == w && index(vals, " " m "* ") > 0) { j++; while (j <= NW[d] && W[d, j] !~ /^-/) j++; continue }
+    if (m == w && index(vals, " " m "? ") > 0) { j++; if (j <= NW[d] && W[d, j] !~ /^-/) j++; continue }
     if (index(vals, " " m " ") > 0) { j += opt_width(vals, w) + 1; continue }
     if (w ~ /^-[A-Za-z]+$/ && length(w) > 2) { for (k = 2; k <= length(w); k++) if (index(list, " -" substr(w, k, 1) " ") > 0) return 1 }
     j += opt_width(vals, w) + 1
@@ -2435,7 +2492,8 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
     return NW[d] + 1
   }
   if (name == "login") {
-    # login -f user prog args runs the program as the user; without -f or a program it is a login
+    # login -f user prog args runs the program as the user on macOS; without -f or a program it is a login. Elsewhere login takes no program: shadow 4.20.3 reads the words behind the user as environment settings, util-linux has no such form - judged itself, since the fourth addendum of 14 October 2026; the install guard stops login under every answer either way
+    if (!MACOS) return -1
     if (!has_optv(d, j, " -f ", " -h ")) return -1
     j = skip_opts(d, j, " -h ")
     if (j <= NW[d]) j++
@@ -2484,8 +2542,14 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
     return NW[d] + 1
   }
   if (name == "script") {
-    # -c and --command take shell text; otherwise the first word behind the options names the file and the command stands behind it, behind -- where one stands, where util-linux 2.42.4 joins the words into one text for the shell; -p, and -T on macOS, play a recording back and run nothing
-    if (has_opt(d, j, " -p ") || (MACOS && has_opt(d, j, " -T "))) return -1
+    # macOS: no -c and no --, so a -c fails the invocation and nothing runs, judged itself; -p and -T run no command; -t takes a value; the first operand is the file and the words behind it the command as words. util-linux 2.42.4: -c and --command a text for the shell; the words behind -- joined into one text for it; a second operand without -- is "unexpected number of arguments", nothing runs, judged itself; -t takes its file attached only. Read by the system since the fourth addendum of 14 October 2026
+    if (has_opt(d, j, " -p ")) return -1
+    if (MACOS) {
+      if (has_opt(d, j, " -T ") || has_optv(d, j, " -c --command ", SCRIPTOPTS)) return -1
+      j = skip_opts(d, j, SCRIPTOPTS)
+      if (j <= NW[d]) j++
+      return j
+    }
     cmode = 0; dd = 0
     while (j <= NW[d]) {
       w = W[d, j]
@@ -2495,13 +2559,14 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
       if (w == "-c" || w == "--command") { if (j < NW[d]) add_st(d, W[d, j + 1]); cmode = 1; j += 2; continue }
       if (w ~ /^--command=/) { sub(/^--command=/, "", w); add_st(d, w); cmode = 1; j++; continue }
       if (w ~ /^-[^-]*c$/) { if (j < NW[d]) add_st(d, W[d, j + 1]); cmode = 1; j += 2; continue }
-      if (w == "-t" && !MACOS) { j++; continue }
+      if (w == "-t") { j++; continue }
       j += opt_width(SCRIPTOPTS, w) + 1
     }
     if (cmode) return NW[d] + 1
     if (!dd) { if (j <= NW[d]) j++; if (j <= NW[d] && W[d, j] == "--") { j++; dd = 1 } }
     if (dd) { if (j <= NW[d]) add_st(d, joined(d, j, NW[d])); return NW[d] + 1 }
-    return j
+    if (j <= NW[d]) return -1
+    return NW[d] + 1
   }
   if (name == "nix-shell") {
     # judged itself, since the install guard reads -p; the text of --run and --command is shell text of this line
@@ -2584,11 +2649,17 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
     return j
   }
   if (name == "dotenv") {
-    # three programs of one name: python-dotenv with run behind its options, the ruby one and dotenv-cli with the command behind theirs, -- in between where one stands
-    if (has_optv(d, j, SELF["dotenv"], VALS["dotenv"])) return -1
-    j = skip_opts(d, j, VALS["dotenv"])
-    if (j <= NW[d] && W[d, j] == "run") { j++; j = skip_opts(d, j, "") }
-    return j
+    # three programs of one name, which no system tells apart - dotenv-cli of npm, the Ruby gem and python-dotenv - read as dotenv-cli v11.0.0 since the fourth addendum of 14 October 2026, the reading under which the two others' forms pass where they differ: minimist takes for every option word before -- the next word as its value unless that word begins with -, an attached value behind = or behind a short option's letter, none for --no-name; -p prints a variable and runs nothing; the first positional is the command, run as words
+    for (k = j; k <= NW[d]; k++) {
+      w = W[d, k]
+      if (w == "--") return k < NW[d] ? k + 1 : NW[d] + 1
+      if (w !~ /^-/ || w == "-") return k
+      if (w == "-p") return -1
+      if (w ~ /^--no-/ || index(w, "=") > 0) continue
+      if (w ~ /^-[A-Za-z][^A-Za-z]/) continue
+      if (k < NW[d] && W[d, k + 1] !~ /^-/) k++
+    }
+    return NW[d] + 1
   }
   if (name == "trap") {
     while (j <= NW[d] && W[d, j] ~ /^-/ && W[d, j] != "-") { if (W[d, j] == "--") { j++; break } if (W[d, j] ~ /^-[lpP]+$/) return -1; j++ }
@@ -2624,7 +2695,8 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
     return NW[d] + 1
   }
   if (name == "when-changed") {
-    # when-changed [-vr1s] FILE COMMAND..., or FILE... -c COMMAND...; one word is a text for the shell, several the command as they stand (subprocess with shell where the list has one item)
+    # when-changed [-vr1s] FILE COMMAND..., or FILE... -c COMMAND...; one word is a text for the shell, several the command as they stand (subprocess with shell where the list has one item); -h or --help anywhere prints the usage and exits, nothing run (v0.3.0), since the fourth addendum of 14 October 2026
+    for (k = j; k <= NW[d]; k++) if (W[d, k] == "-h" || W[d, k] == "--help") return -1
     j = skip_opts(d, j, "")
     m = 0
     for (k = j; k <= NW[d]; k++) if (W[d, k] == "-c") { m = k; break }
@@ -2666,6 +2738,8 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
   }
   if (name == "gdb") {
     # gdb 18.1 reads its options with one dash or two: the words behind --args or -args are the inferior and its arguments, which gdb starts through a shell with each argument escaped, so they stay words; with --no-escape-args they are joined unescaped and the shell reads them as a text; without --args gdb is the command itself
+    # --help, --version and --configuration, with one dash or two, print and exit, nothing run (gdb 18.1 main.c), since the fourth addendum of 14 October 2026
+    for (k = j; k <= NW[d]; k++) { w = W[d, k]; if (w == "--args" || w == "-args") break; if (w ~ /^--?(help|version|configuration)$/) return -1 }
     m = 0
     for (k = j; k <= NW[d]; k++) { w = W[d, k]; if (w == "--no-escape-args" || w == "-no-escape-args") m = 1; if (w == "--args" || w == "-args") { if (m && k < NW[d]) { add_st(d, joined(d, k + 1, NW[d])); return NW[d] + 1 } return k + 1 } }
     return -1
@@ -2677,21 +2751,22 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
     return skip_opts(d, j, VALS["lldb"])
   }
   if (name == "rr") {
-    # rr [record] [options] exe args: record is the one subcommand that runs a program, and it may be left out; the others replay or read a trace
+    # rr [record] [options] exe args: record is the one subcommand that runs a program; without a subcommand rr 5.9.0 replays where the first word is a directory and records otherwise, which the line cannot tell: judged itself, since the fourth addendum of 14 October 2026; the other subcommands replay or read a trace
     j = skip_opts(d, j, VALS["rr"])
     if (j <= NW[d] && W[d, j] == "record") return skip_opts(d, j + 1, VALS["rr"])
-    if (j <= NW[d] && index(" replay ps dump rerun traceinfo pack cpufeatures buildid sources explicit-sources mv help ", " " W[d, j] " ") > 0) return -1
-    return j
+    return -1
   }
   if (name == "parallel" || name == "rust-parallel") {
     # GNU parallel and moreutils parallel: the command words up to ::: :::: :::+ ::::+ joined are a text the shell runs, the words behind the separator its arguments; with no command words, or behind a -- directly after the options, every argument is a text of its own
     for (k = j; k <= NW[d]; k++) { w = W[d, k]; if (w == "--" || w !~ /^-/) break; m = w; sub(/=.*/, "", m); if (index(" --limit --compress-program --use-compress-program --compressprogram --usecompressprogram --decompress-program --use-decompress-program --decompressprogram --usedecompressprogram ", " " m " ") > 0) { t = (index(w, "=") > 0) ? substr(w, index(w, "=") + 1) : (k < NW[d] ? W[d, k + 1] : ""); if (t != "" && t !~ /^(io|load|mem)( |$)/) add_st(d, t) } k += opt_width(VALS[name], w) }
     v = VALS[name]; for (k = j; k <= NW[d]; k++) { w = W[d, k]; if (w == "--" || w !~ /^-/) break; if (w == "-l" && !(k < NW[d] && W[d, k + 1] ~ /^[0-9.]+$/)) { sub(/ -l /, " ", v); break } k += opt_width(v, w) }
+    # --help, -h, --version, -V and --dry-run run nothing (GNU parallel 20260922), since the fourth addendum of 14 October 2026; and the words behind a -- that follows command words are the data of moreutils parallel, not read, by the same addendum
+    if (has_optv(d, j, " --help -h --version -V --dry-run ", v)) return -1
     cmode = has_optv(d, j, " -q --quote ", v)
     j = skip_opts(d, j, v)
     if (DDSEEN) { for (k = j; k <= NW[d]; k++) add_st(d, W[d, k]); return NW[d] + 1 }
     m = 0
-    for (k = j; k <= NW[d]; k++) { w = W[d, k]; if (w == ":::" || w == "::::" || w == ":::+" || w == "::::+") break; if (m == 0) m = k }
+    for (k = j; k <= NW[d]; k++) { w = W[d, k]; if (w == "--" || w == ":::" || w == "::::" || w == ":::+" || w == "::::+") break; if (m == 0) m = k }
     if (m > 0) { if (cmode) add_ch(d, m, k - 1); else add_st(d, joined(d, m, k - 1)); return NW[d] + 1 }
     if (k <= NW[d]) { t = W[d, k]; for (k = k + 1; k <= NW[d]; k++) { w = W[d, k]; if (w == ":::" || w == "::::" || w == ":::+" || w == "::::+") { t = w; continue } if (t == "::::" || t == "::::+") continue; add_st(d, w) } }
     return NW[d] + 1
@@ -2735,7 +2810,8 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
     return NW[d] + 1
   }
   if (name == "kinit") {
-    # kinit [options] [principal [command]]: the command behind the principal
+    # kinit [options] [principal [command]]: on macOS, Heimdal, the command behind the principal; elsewhere MIT kinit, which runs no command and refuses extra operands, judged itself, since the fourth addendum of 14 October 2026
+    if (!MACOS) return -1
     j = skip_opts(d, j, VALS["kinit"])
     if (j <= NW[d]) j++
     return j
@@ -2852,6 +2928,24 @@ function skip_wrapper(d, i, name,   j, w, cmode, dd, k, m, t, uflag) {
     if (j <= NW[d]) add_st(d, joined(d, j, NW[d]))
     return NW[d] + 1
   }
+  # onchange v7.1.0: a -- as its very first argument leaves it no command, index 0 being false in its getArgs, nothing run, since the fourth addendum of 14 October 2026
+  if (name == "onchange" && j <= NW[d] && W[d, j] == "--") return -1
+  if (name == "man") {
+    # man is the command itself; -P and --pager: on macOS /usr/bin/man is a shell script that evals the value, a text for sh; man-db 2.13.1 splits the value with shell quoting into words and runs no pipe, "It may not use pipes to connect multiple commands", so elsewhere the words judged at the first, since the fourth addendum of 14 October 2026
+    for (k = j; k <= NW[d]; k++) {
+      w = W[d, k]; m = w; sub(/=.*/, "", m)
+      if (m == "-P" || m == "--pager") { if (m != w) t = substr(w, length(m) + 2); else if (k < NW[d]) { t = W[d, k + 1]; k++ } else continue; if (MACOS) add_st(d, t); else add_chw(d, t); continue }
+      if (w ~ /^-/) k += opt_width(VALS["man"], w)
+    }
+    return -1
+  }
+  if (name == "msgexec") {
+    # msgexec 1.0: -h, -V and the built-in command 0 run no program, since the fourth addendum of 14 October 2026
+    if (has_optv(d, j, SELF["msgexec"], VALS["msgexec"])) return -1
+    j = skip_opts(d, j, VALS["msgexec"])
+    if (j <= NW[d] && W[d, j] == "0") return -1
+    return j
+  }
   if (name in VALS) {
     # the generic one-word programs, read by their tables; SLASH reads a word such as /min or /box:x as an option, the form of a Windows program
     SLASH = (name in SLASHOPT)
@@ -2894,7 +2988,7 @@ function tmux_read(d, j,   w, k, c, a, n, t, got, m) {
     else if (c == "run-shell" && n > 0 && !has_tmux_flag(d, j, a, "C")) { add_st(d, W[d, a]); got = 1 }
     else if (c == "if-shell" && n > 0 && !has_tmux_flag(d, j, a, "F")) { add_st(d, W[d, a]); got = 1 }
     else if (c == "detach-client") { for (m = j; m < a; m++) if (W[d, m] == "-E" && m + 1 < a) { add_st(d, W[d, m + 1]); got = 1 } }
-    else if (c == "send-keys" && n > 0) { t = ""; for (m = a; m < k; m++) { w = W[d, m]; if (w == "Enter" || w == "C-m" || w == "KPEnter") break; t = t (t == "" ? "" : " ") w } if (m < k && t != "") { add_st(d, t); got = 1 } }
+    # send-keys types into the pane, whose program the line does not name: not read, since the fourth addendum of 14 October 2026
     j = k
   }
   return got ? NW[d] + 1 : -1
@@ -2916,7 +3010,8 @@ function screen_read(d, j,   w, k, c, xmode) {
   if (!xmode) return j <= NW[d] ? j : NW[d] + 1
   if (j > NW[d]) return NW[d] + 1
   c = W[d, j]
-  if (c == "stuff") { if (j < NW[d] && ends_line(W[d, j + 1])) add_st(d, W[d, j + 1]); return NW[d] + 1 }
+  # stuff types into the window, whose program the line does not name: not read, since the fourth addendum of 14 October 2026
+  if (c == "stuff") return -1
   if (c == "exec" || c ~ /^!/) {
     k = j + 1
     if (k <= NW[d] && W[d, k] ~ /^[.!|:]+$/) k++
@@ -2940,6 +3035,7 @@ function skip_two(d, i, name,   j, sc, w, k, text, key, m) {
     for (k = i + 1; k <= NW[d]; k++) { w = W[d, k]; if (w == "do" || w == "exec") return k < NW[d] ? k + 1 : NW[d] + 1; if (w ~ /^-/ && w !~ /^--(verbose|summary|yaml|json)$/) return -1 }
     return -1
   }
+  if (SELFPRE[name] != "" && has_optv(d, i + 1, SELFPRE[name], PRE[name])) return -1
   j = skip_opts(d, i + 1, PRE[name])
   if (j > NW[d]) return -2
   sc = W[d, j]
@@ -3031,7 +3127,8 @@ function skip_two(d, i, name,   j, sc, w, k, text, key, m) {
     # zellij action new-pane and new-tab: the command behind --; write-chars: a text that ends a line is typed into the shell of the pane
     w = (j <= NW[d]) ? W[d, j] : ""
     if (w == "new-pane" || w == "new-tab") return behind_dd(d, j + 1)
-    if (w == "write-chars" || w == "paste") { k = skip_opts(d, j + 1, " -p --pane-id "); if (k <= NW[d] && ends_line(W[d, k])) add_st(d, W[d, k]); return NW[d] + 1 }
+    # write-chars and paste type into the pane, whose program the line does not name: not read, since the fourth addendum of 14 October 2026
+    if (w == "write-chars" || w == "paste") return -1
     return -1
   }
   if (name == "cargo" && sc == "env-run") return j
@@ -3498,4 +3595,4 @@ END {
   printf "%s", OUT
   exit 0
 }
-'
+AWK

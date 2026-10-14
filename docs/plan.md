@@ -513,7 +513,12 @@ stands alone there.
 
 Ends with one run per system, the cases of milestone 3 included: the guards
 read, the mark written, the install under a yes, each on that system's
-surface.
+surface. A first piece stands since 14 October 2026, the fourth addendum of
+the roadmap entry on the command reader: the reader runs on the three
+systems, and a workflow job runs its self-test and every hook on
+`ubuntu-latest`, `macos-latest` and `windows-latest`, there under Git Bash,
+on every pull request; the guard for PowerShell and the rest of this
+milestone stand as before.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

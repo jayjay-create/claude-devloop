@@ -10,6 +10,19 @@
 # subprocess.run(capture_output=True)) and git (2.15 or later, for rev-parse
 # --is-shallow-repository), and the runner image carries both. It writes
 # nothing back: contents are read-only and the token is not persisted.
+#
+# Since the fourth addendum of 14 October 2026 to the roadmap entry on the
+# command reader a second job, hooks on every system, runs on ubuntu-latest,
+# macos-latest and windows-latest - there under the bash of Git for Windows,
+# which "shell: bash" selects - the reader's self-test and every handler of
+# hooks/hooks.json once with a harmless input of its event in a throwaway
+# project, and is red where a handler answers otherwise than 0: devloop runs
+# on every system, the person's decision of that day, and until then nothing
+# showed that the reader ran under Linux at all, where it did not. Its three
+# checks carry the job's name with the system in brackets; making them
+# required on main is the owner's setting, as for stock-take, and the fourth
+# addendum carries the command. .gitattributes keeps every text file at LF on
+# every system, Git for Windows' default core.autocrlf=true notwithstanding.
 name: merge gate
 
 on:
@@ -93,3 +106,97 @@ jobs:
               print("handlers under PreToolUse with an if field:", filtered); sys.exit(1)
           PY
           exit $red
+
+  # Since the fourth addendum of 14 October 2026: the reader's self-test and
+  # every handler of hooks/hooks.json once, on the three systems devloop runs
+  # on, Windows under the bash of Git for Windows. The handlers are read off
+  # hooks/hooks.json with python3 so that one added later runs without this
+  # step being touched; the input of each event stands below, harmless - the
+  # command ls for the tool Bash, a Write and an Edit of the project's README
+  # on a branch cut from main, a permission request for ls, a session start,
+  # a stop - in a throwaway project outside the checkout with docs/agents/, a
+  # commit on main pushed to a local bare origin whose HEAD is main, and the
+  # work on a branch, since the branch guard blocks a Write on main by design.
+  # A handler that answers otherwise than 0 makes the check red, with what it
+  # printed.
+  hooks-on-every-system:
+    name: hooks on every system
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: what the checkout holds
+        run: |
+          uname -a
+          bash --version | head -1
+          awk --version 2>/dev/null | head -1 || awk -W version 2>&1 | head -1
+          git version
+          git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
+          git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
+
+      - name: the reader's self-test, and every handler of hooks.json once with a harmless input of its event
+        run: |
+          set -u
+          ROOT=$(pwd)
+          "$ROOT/bin/devloop-command-reader" --self-test || exit 1
+          PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
+          T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-hooks.XXXXXX")
+          P="$T/project"
+          mkdir -p "$P/docs/agents"
+          git -C "$P" init -q
+          git -C "$P" checkout -q -b main 2>/dev/null || true
+          printf '# project\n' > "$P/README.md"
+          git -C "$P" add README.md
+          git -C "$P" -c user.name=hooks -c user.email=hooks@example.invalid commit -q -m init
+          git init -q --bare "$T/origin.git"
+          git -C "$P" remote add origin "$T/origin.git"
+          git -C "$P" push -q origin main
+          git -C "$P" remote set-head origin main
+          git -C "$P" checkout -q -b work
+          export CLAUDE_PROJECT_DIR="$P"
+          PROG=$(cat <<'PYEOF'
+          import json, sys
+          p = sys.argv[1]
+          h = json.load(open("hooks/hooks.json"))["hooks"]
+          base = {"session_id": "s1", "cwd": p, "permission_mode": "default"}
+          inputs = {
+              ("PreToolUse", "Bash"): dict(base, hook_event_name="PreToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}),
+              ("PreToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PreToolUse", tool_name="Write", tool_input={"file_path": p + "/README.md", "content": "# project\n"}),
+              ("PermissionRequest", ""): dict(base, hook_event_name="PermissionRequest", tool_name="Bash", tool_input={"command": "ls"}),
+              ("SessionStart", ""): dict(base, hook_event_name="SessionStart", source="startup"),
+              ("PostToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PostToolUse", tool_name="Edit", tool_input={"file_path": p + "/README.md", "old_string": "a", "new_string": "b"}, tool_response={"filePath": p + "/README.md"}),
+              ("Stop", ""): dict(base, hook_event_name="Stop", stop_hook_active=False),
+          }
+          for event, groups in h.items():
+              for g in groups:
+                  matcher = g.get("matcher", "")
+                  inp = inputs.get((event, matcher))
+                  if inp is None:
+                      sys.exit("no input known for the event %s with the matcher %r: add one to this step" % (event, matcher))
+                  for x in g["hooks"]:
+                      print("\t".join([event, matcher or "-", x["command"], json.dumps(inp)]))
+          PYEOF
+          )
+          LIST=$("$PY" -c "$PROG" "$P") || exit 1
+          red=0; n=0
+          while IFS=$'\t' read -r EVENT MATCHER CMD INPUT; do
+            [ -n "$CMD" ] || continue
+            HOOK="${CMD/\$\{CLAUDE_PLUGIN_ROOT\}/$ROOT}"
+            OUT=$(cd "$P" && printf '%s' "$INPUT" | "$HOOK" 2>&1); RC=$?
+            n=$((n + 1))
+            echo "$EVENT $MATCHER $(basename "$HOOK"): exit $RC"
+            [ "$RC" -eq 0 ] || { printf '%s\n' "$OUT" | sed 's/^/    /'; red=1; }
+          done <<< "$LIST"
+          echo "$n handlers started"
+          rm -rf "$T"
+          exit "$red"

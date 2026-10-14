@@ -210,33 +210,37 @@ priv_if() {
   done
   return 0
 }
-# cond_priv I: the programs of the first kind that run the command as another
-# user, a group or the supplementary groups only under an option, since the
-# third addendum of 13 October 2026, read over as process control otherwise;
-# called for every word before the judged word and for the judged word
+# cond_priv I: the programs that run the command as another user only under
+# an option, since the third addendum of 13 October 2026, read over as process
+# control otherwise; an option that sets only the group or the supplementary
+# groups is no stop since the fourth addendum of 14 October 2026, by the
+# person's decision of that day, and an option that sets user and group
+# together stays one; called for every word before the judged word and for
+# the judged word
 cond_priv() {
   local i="$1"
   case "${W[$i]##*/}" in
-    setpriv) priv_if "$i" --ruid --euid --reuid --rgid --egid --regid --groups --clear-groups --init-groups ;;
+    setpriv) priv_if "$i" --ruid --euid --reuid ;;
+    s6-applyuidgid) priv_if "$i" -u -U ;;
     chpst|runtool) priv_if "$i" -u -U ;;
     xchpst) priv_if "$i" -u -U --user ;;
     psexec|psexec.exe|PsExec|PsExec.exe) priv_if "$i" -s -u -h ;;
-    compartment) priv_if "$i" --user --group ;;
-    capsh) priv_if "$i" --user --uid --gid --groups ;;
+    compartment) priv_if "$i" --user ;;
+    capsh) priv_if "$i" --user --uid ;;
     immortal) priv_if "$i" -u ;;
     dmon) priv_if "$i" -u -U ;;
-    minijail0) priv_if "$i" -u -g ;;
-    lrun) priv_if "$i" --uid --gid ;;
-    tcpserver|unixserver|s6-ipcserver) priv_if "$i" -u -g -U ;;
+    minijail0) priv_if "$i" -u ;;
+    lrun) priv_if "$i" --uid ;;
+    tcpserver|unixserver|s6-ipcserver) priv_if "$i" -u -U ;;
     tcpsvd|udpsvd) priv_if "$i" -u ;;
     shellinaboxd) priv_if "$i" -s --service ;;
     start-stop-daemon) priv_if "$i" -c --chuid ;;
-    spawn-fcgi) priv_if "$i" -u -g ;;
+    spawn-fcgi) priv_if "$i" -u ;;
     daemon) priv_if "$i" -u --user ;;
     daemonize) priv_if "$i" -u ;;
-    systemd-run) priv_if "$i" --uid --gid ;;
+    systemd-run) priv_if "$i" --uid ;;
     # pm2 start reads its options behind the script as well, up to --
-    pm2) FS=$F; F=-1; priv_if "$i" --uid --gid; F=$FS ;;
+    pm2) FS=$F; F=-1; priv_if "$i" --uid; F=$FS ;;
   esac
   return 0
 }
@@ -253,8 +257,12 @@ while IFS= read -r LINE; do
   # October 2026 - doas, su, run0, pkexec, runuser, gsudo and login,
   # machinectl with shell and launchctl with asuser behind it, gosu since
   # the third addendum of that day, setpriv where one of its options sets
-  # another user, a group or the supplementary groups and not otherwise,
-  # and sg, which always sets another group, since the same addendum,
+  # another user and not otherwise - a change of the group or of the
+  # supplementary groups alone, setpriv --regid or --init-groups, sg,
+  # s6-applyuidgid -g and the group options of the programs in cond_priv,
+  # is no stop since the fourth addendum of 14 October 2026, by the
+  # person's decision of that day, and an option that sets user and group
+  # together stays one -
   # every program of the first kind the searches of that addendum found,
   # and those of them that run the command as another user only under an
   # option, through priv_if, each listed below and in the head of
@@ -270,7 +278,7 @@ while IFS= read -r LINE; do
 ${W[$i]}" ;; esac ;;
       *) case "${W[$i]##*/}" in
            sudo) BEYOND=yes; SUDO=yes ;;
-           doas|su|run0|pkexec|runuser|gsudo|login|gosu|pbrun|dzdo|ksu|addo|asroot|autologin|cado|doas-keepenv|dosr|gasroot|kdesu|key2root|lxdoas|lxqt-sudo|lxsu|lxsudo|oslo-rootwrap|please|qsudo|qt-sudo|rdo|really|run-as|s6-applyuidgid|s6-setuidgid|sg|setuid|setuidgid|ShellRunas|shellrunas|su-exec|su-rs|sudo-cli|sudo-request|sudo-rs|super|sux|syca|tsudo|voix|xdg-su|xfsudo|xuserrun|yas|RunFromProcess|RunFromProcess.exe) BEYOND=yes; PRIV="${PRIV:-${W[$i]##*/}}" ;;
+           doas|su|run0|pkexec|runuser|gsudo|login|gosu|pbrun|dzdo|ksu|addo|asroot|autologin|cado|doas-keepenv|dosr|gasroot|kdesu|key2root|lxdoas|lxqt-sudo|lxsu|lxsudo|oslo-rootwrap|please|qsudo|qt-sudo|rdo|really|run-as|s6-setuidgid|setuid|setuidgid|ShellRunas|shellrunas|su-exec|su-rs|sudo-cli|sudo-request|sudo-rs|super|sux|syca|tsudo|voix|xdg-su|xfsudo|xuserrun|yas|RunFromProcess|RunFromProcess.exe) BEYOND=yes; PRIV="${PRIV:-${W[$i]##*/}}" ;;
            security) [ "${W[$((i + 1))]:-}" = execute-with-privileges ] && { BEYOND=yes; PRIV="${PRIV:-security}"; } ;;
            sv) [ "${W[$((i + 1))]:-}" = shell ] && { BEYOND=yes; PRIV="${PRIV:-sv}"; } ;;
            nircmd|nircmd.exe) case "${W[$((i + 1))]:-}" in elevate|runas|runassystem|elevatecmd) BEYOND=yes; PRIV="${PRIV:-nircmd}" ;; esac ;;

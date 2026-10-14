@@ -1,0 +1,7 @@
+# Every text file is checked out with LF on every system, since the fourth
+# addendum of 14 October 2026 to the roadmap entry on the command reader:
+# the hooks, the programs under bin/ and scripts/ and the files they read are
+# run by bash and awk, which read a CR as part of a line, and Git for Windows
+# sets core.autocrlf=true by default, the GitHub Windows runner installs it
+# with that default. text=auto lets git tell a binary file from a text file.
+* text=auto eol=lf
