@@ -1,17 +1,32 @@
 #!/bin/bash
 set -uo pipefail
-INPUT=$(cat)
-INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' -e 's/\\n/ /g' -e 's/\\t/ /g' -e 's/\\r/ /g')
+HERE=$(cd "$(dirname "$0")" && pwd)
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0
 [ -d "docs/agents" ] || exit 0
 
-TOOL=$(echo "$INPUT" | sed -n 's/.*"tool_name"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+# The input is read through bin/devloop-command-reader, which decodes the
+# JSON and takes the command apart as the shell runs it, since 12 October
+# 2026; every hook reads it so, and a check in .github/workflows/stock-take.yml
+# holds them to that. gh pr merge is read as the first three words of any
+# command the shell runs, behind the wrappers the reader reads over; the same
+# words inside a quoted text are a word of their command and no command.
+INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
+TOOL=$(printf '%s\n' "$INPUT" | sed -n 's/^tool: //p' | head -1)
 [ "$TOOL" = "Bash" ] || exit 0
 
-CMD=$(echo "$INPUT" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
-echo "$CMD" | grep -qE '(^|[^[:alnum:]_-])gh[[:space:]]+pr[[:space:]]+merge([[:space:]]|$)' || exit 0
+US=$(printf '\037')
+MERGE=no
+while IFS= read -r LINE; do
+  case "$LINE" in [0-9]*) ;; *) continue ;; esac
+  IFS="$US" read -r ID PARENT REL PIPE FIRST WORDS <<< "$LINE"
+  [ "$FIRST" -gt 0 ] || continue
+  IFS="$US" read -ra W <<< "${WORDS}${US}x"
+  F=$((FIRST - 1))
+  [ "${W[$F]##*/}" = "gh" ] && [ "${W[$((F + 1))]:-}" = "pr" ] && [ "${W[$((F + 2))]:-}" = "merge" ] && MERGE=yes
+done <<< "$INPUT"
+[ "$MERGE" = yes ] || exit 0
 
 cat >&2 <<'MSG'
 Blocked: merging is not yours to perform, in any form. Arm the platform instead, with a command that cannot merge:

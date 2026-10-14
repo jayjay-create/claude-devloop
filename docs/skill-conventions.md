@@ -844,8 +844,26 @@ empty `HOME`: the eight help commands exit 0 each, and nothing new lies
 under `HOME` or in the project afterwards, npm's own `.npm` aside. The
 question says it since the same day, "tools and browsers for tests", in its
 question line, its yes and its first no. What stays the person's under every answer, beside `sudo`
-and the script piped from the network, and is checked after those two and
-before the places: a branded browser — `chrome`, `msedge` and their six
+— and every program of the first kind of the group the reader reads over,
+which runs the command as an administrator or as another user, `doas`,
+`su`, `run0` and `pkexec` since 13 October 2026, `runuser`, `gsudo`,
+`runas`, `login -f`, `machinectl shell` and `launchctl asuser` since the
+second addendum of that day, and since its third addendum `gosu` and
+`setpriv` where it sets another user, with `--ruid`, `--euid` or `--reuid`,
+and not otherwise, and every program of the
+first kind the searches of that addendum found, `sudo-rs`, `su-rs`,
+`su-exec`, `really`, `please`, `ksu`,
+`pbrun` and `dzdo` among them, as the head of `bin/devloop-command-reader`
+lists them, and those that run the command as another user only under an
+option, `chpst -u`, `start-stop-daemon -c`, `daemon -u`, `s6-applyuidgid -u`
+or `systemd-run --uid`, there and not otherwise; a program or an option that
+changes only the group or the supplementary groups, `sg`, `setpriv --regid`
+or `--init-groups`, `capsh --gid`, `s6-applyuidgid -g` or `systemd-run
+--gid`, is no stop since the fourth addendum of 14 October 2026, by the
+person's decision of that day, the command behind it judged as any other,
+and an option that sets user and group together, `chpst -u user:group` or
+`capsh --user`, stays one — and the script piped from the network, and
+is checked after those and before the places: a branded browser — `chrome`, `msedge` and their six
 further channels — which Playwright installs at the system's own location
 over the browser already there, the vendor's own warning; and system
 packages, which `install-deps`, `install --with-deps` and Puppeteer's
@@ -1453,23 +1471,193 @@ place because the cost of acting on it is nil, and the rule about behaviour
 outside this repository holds against it like anything else: run two build agents
 in one working directory, with a date, and this either gets its evidence or goes.
 
-**A hook reading the tool's JSON must undo the escapes first.** Measured on 25
-August 2026: every guard here pulled the command out with
-`sed -n 's/.*"command"[^"]*"\([^"]*\)".*/\1/p'`, which leaves the JSON escapes
-standing and stops at the first `\"`. Two holes came out of that, both silent.
-A second command on a new line walked straight past all three guards, because
-the newline arrives as the two characters backslash and `n`, so the letter `n`
-sits where the pattern wants a word boundary — that is how `go install` for
-`gosec` ran unblocked in a real session. And anything after the first quoted
-string was invisible, so `echo "hi" && brew install foo` passed as well. Both
-are fixed by normalising the input once, right after reading it:
-
-    INPUT=$(printf '%s' "$INPUT" | tr '\n' ' ' | sed -e 's/\\\\/ /g' -e 's/\\"/ /g' -e 's/\\n/ /g' -e 's/\\t/ /g' -e 's/\\r/ /g')
-
-The general form: a guard that matches on text the tool encoded has to decode it
-before matching, and a guard is only as good as the worst-shaped command it will
-ever be handed. Test one against a command with a quote in it and one with two
-commands in it, or it has not been tested.
+**A hook reads its input through one program, and the command as the shell
+runs it.** Since 12 October 2026, version 0.137.0, every hook under `hooks/`
+that reads its input reads it through `bin/devloop-command-reader`, with the
+one line `INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1`, `HERE`
+the hook's own directory resolved before any change of directory;
+`hooks/stop-checks.sh` discards its input and reads nothing of it. The
+program decodes the JSON and takes the command apart as the shell runs it:
+one line per simple command, split at `&&`, `||`, `;`, `|`, `|&`, `&` and the
+newline, a backslash at the end of a line continuing the command; the nested
+forms read like the text itself — `$( )`, backticks, `<( )` and `>( )`, a
+subshell, a group, the bodies of `if`, `for`, `while`, `until`, `case`,
+`select` and a function, the argument of `bash -c`, `sh -c`, `zsh -c`, `dash
+-c`, `ksh -c` and `fish -c`, of `eval`, `trap` and `flock -c`, a heredoc or a
+here-string fed to such a shell where it reads its commands from stdin, and
+the command `find` runs behind `-exec`; every command judged at its first
+word behind the assignments, the redirections and the wrappers that run
+their argument as the command — every program that runs its argument or a
+text as a command on this machine, the group the person decided on 13
+October 2026, derived by kinds since the second addendum of that day and
+not from single programs, each kind holding for macOS, Linux and Windows
+with Git Bash, the lists of the two vendors among them and not their end,
+each program read off the wording of its vendor's source, fetched raw — the
+man page's source, the option parser or the README at the newest release,
+the manual on this machine for a program that comes with the system — with
+the options that take a value and the options whose value is itself a
+command, each with how the vendor runs that value, as a text for a shell or
+as words, the release or commit named together with the command that shows
+it exists and the sentence the reading rests on quoted, and named with its
+address in the roadmap entry on the command reader and its three addenda of
+13 October 2026; a reading made from a summary and not from the source is
+no reading, since the third addendum of that day. Since the fourth addendum
+of 14 October 2026 the program runs on macOS, on Linux and on Windows with
+Git Bash alike, the awk program handed to awk as a here-document on file
+descriptor 3 and not as one argument of the command line, which Linux
+refuses at 131 072 bytes; a workflow job runs its self-test and every hook
+on the three systems on every pull request, and since the fifth addendum of
+that day under Alpine with busybox awk as well, in a container, the
+self-test naming every red case and the system a case's reading depends on,
+so that it is green on each. Where the reader cannot say
+what a command does, it reads the side on which the hook does not block,
+by the person's decision of 14 October 2026 — `rr` without a subcommand
+word, the names `ts` and `dotenv` that two vendors share, the points the
+fourth addendum names — and where the system decides which program is
+meant, the system decides, read off bash's `OSTYPE`: `login -f`, `script`,
+`kinit` and `man -P` as macOS runs them and as Linux and Git Bash do. A text
+typed into a terminal that ends a line — `tmux send-keys` with `Enter`,
+`C-m` or `KPEnter` behind it, `screen -X stuff`, `zellij action write-chars`
+and `paste` with a line's end — is no doubt and is read as shell text, since
+the fifth addendum of 14 October 2026 by the person's decision of that day,
+as it was until the fourth: in the ordinary case a shell receives it;
+without the line's end nothing runs and nothing is read. The kinds and their
+programs, as the head of `bin/devloop-command-reader` lists them: (1)
+privileges, a command as an administrator or as another user — `sudo`,
+`doas`, `su`, `run0`, `pkexec`, `runuser`, `gsudo`, `gosu`, `runas`,
+`login -f`, `machinectl shell` and `launchctl asuser`, and `setpriv` where
+it sets another user, with `--ruid`, `--euid` or `--reuid` — each of which
+stays the user's under every answer at the install guard, `setpriv` without
+one of those being process control, read over, and `sg`, which hands one
+word behind the group, or behind `-c`, to `sh -c` and changes only the
+group, read over to that text since the fourth addendum of 14 October 2026,
+as every option that changes only the group or the supplementary groups is;
+(2) process control, a time limit, a priority, an environment, a
+measurement, a recording — `timeout`, `time`, `nice`, `nohup`, `stdbuf`,
+`command`, `builtin`,
+`noglob`, zsh's `nocorrect`, `env`, `exec`, `trap`, `ionice`, `chrt`,
+`taskset`, `uclampset`, `prlimit`, `numactl`, `setarch`, `nocache`,
+`cpulimit`, `caffeinate`, `flock`, `lockf`, `lckdo`, `ifne`, `chronic`,
+`unbuffer`, `script`, `arch`, `xcrun`, `sandbox-exec`, `firejail`,
+`winpty`, `ssh-agent`, `kinit`, `strace`, `ltrace`, `valgrind`,
+`heaptrack`, `perf stat`, `record` and `trace`, `gdb --args`, `lldb`, `rr`,
+`hyperfine`, `dtrace -c`, `bpftrace -c`, the DTrace scripts of macOS,
+`sc_usage -E`, `leaks -atExit`, `ktrace trace -c`, `pee` and `mispipe` —
+`hyperfine` since v2.0.0 running its benchmarked commands directly, each
+split as shell_words splits a text and with no shell, a command with an
+operator standing alone as a word refused and nothing run, so that under
+`-N` a `&&` inside one is an argument and no second command, with `-S` or
+`--shell` naming a shell a text for that shell, and the texts of its `-s`,
+`-p`, `-c` and `-C` always for a shell; (3) the environments of projects
+and versions — `direnv exec`,
+`devbox run`, `mise exec`, `nix-shell`, `nix develop`, `nix shell` and `nix
+env shell`, the `exec` of `asdf`, `rbenv`, `pyenv`, `nodenv`, `goenv`,
+`jenv`, `plenv`, `phpenv` and `luaenv`, `volta run`, `fnm exec`, the `run`
+of `pipenv`, `poetry`, `pdm`, `hatch`, `rye`, `conda`, `mamba`,
+`micromamba` and `pixi`, `uv run`, `bundle exec`, `composer exec`, `tox
+exec`, `chruby-exec`, `rvm do`, `proto run`, `dotenvx run`, the three
+programs named `dotenv`, `godotenv`, `env-cmd`, `cross-env`, `aws-vault
+exec`, `op run`, `doppler run`, `infisical run`, `sops exec-env` and
+`exec-file`, `chamber exec`, `envchain`, `teller run` and `railway run`;
+(4) the programs that start many commands — `xargs`, `find -exec`,
+`parallel`, `fd -x` and `-X`, `apply` and `msgexec`; (5) terminal sessions
+and the background — `tmux`, `screen`, `zellij`, `dtach`, `abduco`,
+`setsid`, `nohup`, `nq`, `tsp`, `pueue add`, `daemon`, `daemonize`,
+`systemd-run`, `launchctl submit` and `bsexec`, and `at` and `batch`, which
+read their commands from stdin as a shell does; (6) the programs that run a
+command when a file changes — `entr`, `watchexec`, `nodemon --exec`, whose
+program with the script and its arguments is one text for `sh -c`,
+`reflex`, `chokidar -c`, `onchange`, `cargo watch`, `watchman-make`,
+`when-changed`, `wgo`, `gow` and `watch`; (7) git's own subcommands that
+run a command — `rebase -x`, `bisect run`, `submodule foreach`, the filters
+of `filter-branch` and `difftool -x` without `-d`; (8) the package
+managers and the tools of the languages that run a command of the shell and
+resolve no package — `npm exec -c` and `npx -c`, `pnpm exec`, `yarn exec` and
+`bun run`. Since the third addendum of 13 October 2026 the group holds as well
+the 880 programs or forms the searches of that addendum and the two passes of
+its check for completeness found, the searches each in a source that lists the
+programs of a whole area and not only those one knows by name — the package
+lists of Debian, Alpine, Arch, the AUR, nixpkgs and Fedora, the formulae of
+Homebrew, MacPorts, the manuals of macOS, the registries of npm, crates.io,
+RubyGems and pkg.go.dev, Scoop, Chocolatey, MSYS2, winget and Microsoft Learn
+— with every search, its count and every hit judged in the roadmap entry, each
+program read off its vendor and listed by kind in the head of
+`bin/devloop-command-reader`, three kinds derived there among them: (9) the
+programs that run a command on an event other than a file change — idleness,
+sleep, a lock, a connection, a message — `swayidle`, `socat`, `tcpserver` or
+`tcpclient`; (10) the multi-call binaries, `busybox` and `toybox`, read over
+to the applet their first argument names; (11) the programs whose own work
+runs a command an option names — `zip -TT`, `tar -I`, `man -P`, `bat --pager`,
+`rsync -e`, `feh --action`, the actions of `fzf --bind` and `sk --bind` that
+run a command, and the options of `git send-email`, `git grep -O` and git's
+transports whose value is a command. A name a builtin of the shell or a
+program of another meaning carries, `bg` or `foreach`, and a name two programs
+share with different grammars, `run` or `wt`, is not in the group, each with
+its two ways in the roadmap entry; an option that runs one program word with
+arguments the program itself chooses, as `rg --pre` does, `pandoc --filter` or
+`git difftool -x` under `-d`, is not read; nor are the commands a program
+reads from a file or a pipe. A program that runs the command on another
+machine, in a container or in another root or namespace, `ssh`, `docker exec`,
+`chroot`, `nsenter`, `unshare`, `bwrap` or `wsl`, is not in the group; a
+program that resolves its argument as a package rather than runs a word, `npx`
+and the other
+fetch-and-run forms, is read by the install guard at its own name; what a
+program of the group fetches on the side before it runs the command — the
+tool `mise exec` installs, the environment `uv run` syncs, the shell `nix
+develop` builds — is not read, since the second addendum of 13 October
+2026, by the decision below that a command is an installation only where
+it names one; and what stands on no list goes through, by the
+rule on doubt below. Text in quotes a word of its
+command and no command, so that `git commit -m "CI runs npx playwright
+install"` and `echo "brew install x"` are read as what they are. A heredoc fed
+to another program, `python3` or `cat`, is not searched: code in another
+language is not read, and a `PreToolUse` hook sees a string and not a
+filesystem; the platform shell a vendor hands a text to is `sh` here and
+`cmd.exe` on Windows with Git Bash, whose command line is such code, so
+that the reader, which reads bash's `OSTYPE` for this, does not read on
+Windows the texts `hyperfine` and `nodemon` hand to it, since the third
+addendum of 13 October 2026. What the program cannot take apart — a quote
+or a substitution
+not closed, an operator with nothing behind it, an `if` without its `fi` —
+goes through every hook, since the shell runs nothing of such a command
+either; nothing before the fault is read, for the same reason, the case "a
+quote not closed, through" of the rule on doubt below. Not taken apart, each
+named with its reason in the head of the program: what a pipe carries into a
+shell, the output of a program and no word of the command; a script file
+named to a shell; the argument of `env -S`, which the vendor splits by rules
+of its own; code in another language — the argument of `python3 -c`,
+`node -e`, `ruby -e`, `osascript -e`, `cmd /c` and `powershell -Command`,
+and the command line `runas` hands to Windows; the arguments of the
+programs outside the group named above, of `nvm exec`, whose optional
+version no rule tells from the command, and of a script of a package file,
+`npm run` or `mise run`, which stands in a file and not in the command; a
+`case` inside `$( )` whose pattern ends on a bare parenthesis; an arithmetic
+`$(( ))`, which carries no command. A redirection behind a compound command
+stands on a line of its own with no judged word since 13 October 2026, so
+that `{ printf 'build\n'; } > .claude/unattended.local` is a write of the
+mark and a heredoc behind `done` is a body and no command, which until that
+day it was. A step of
+`.github/workflows/stock-take.yml` holds every hook to the one line, every
+handler under `PreToolUse` and the one under `PermissionRequest` in
+`hooks/hooks.json` to `"onFailure": "block"`, and since 13 October 2026
+every handler under `PreToolUse` to carrying no `if` field — a hook that cannot start,
+times out or fails blocks the action instead of letting it through, Claude
+Code 2.1.295 and later, the hooks reference under "Block the action when a
+hook fails" — and the program's self-test green, on every pull request.
+Until that day every hook pulled the command out with `sed -n
+'s/.*"command"[^"]*"\([^"]*\)".*/\1/p'` after normalising its input with `tr
+'\n' ' '` and five `sed` substitutions that turned every quote, backslash and
+escaped newline into a space — the correction measured on 25 August 2026
+against two silent holes, a second command on a new line walking past every
+guard, which is how `go install` for `gosec` ran unblocked in a real
+session, and anything after the first quoted string invisible, so that `echo
+"hi" && brew install foo` passed; both stay closed, since every line is a
+command of its own and every command is read — and that normalisation is
+what made a quoted text a command, the false positives the paragraph after
+next records. The general form stands: a guard that matches on text the tool
+encoded has to decode it before matching, and a guard is only as good as the
+worst-shaped command it will ever be handed. Test one against a command with
+a quote in it and one with two commands in it, or it has not been tested.
 
 **The install guard matches the outcome as well as the verb, and is still a
 tripwire.** A package manager is one way a binary lands on the machine; a build
@@ -1497,17 +1685,26 @@ own installation line or the path in it resolving, which is the case of the
 module path that was an organisation's name — and its success is read off the
 path the installer writes to, never off a message that it ran.
 
-Its false positives are deliberate: a command that merely mentions `sudo`, or
-copies something into a directory that looks like a bin directory, gets stopped.
-The guard's own message already says what to do about that — if it only looked
-like an install, say so and let the user decide. **Cheap is what they are not,
-where that last part goes unread.** Measured on 6 September 2026 in
+Its false positives were deliberate until 12 October 2026: a command that
+merely mentioned `sudo`, or copied something into a directory that looked
+like a bin directory, got stopped, in quotes and heredocs alike, and the
+guard's own message said what to do about that — if it only looked like an
+install, say so and let the user decide. **Cheap is what they were not, where
+that last part went unread.** Measured on 6 September 2026 in
 `devloop-test-o`: the guard stopped a pull request body that quoted a broken
 `go install` line in order to fix it, then stopped the same text written to a
 file, and the run reworded the sentence until it passed — saying as it went that
 the hook matches the string in quotes and heredocs alike. It had the reading
 right and stepped around the block anyway, which is the half the message asks for
-and the half no hook can enforce.
+and the half no hook can enforce; the second closing run of milestone 3 met
+the same three times on 11 October 2026, twice on the normal path, defects c
+and d of the roadmap entry of that date. Since 12 October 2026 the guard
+reads every command at its first word, by the rule above on the one program:
+a word in quotes is a value, a heredoc for `python3` is not searched, and
+`sudo` counts where the shell runs it, so that a title naming `sudo` and a
+text documenting an install pass, and `sh -c "brew install x"` and `bash
+<<'EOF'` with the install in its body are read. The message's last sentence
+stays, for a word that is run and still only looks like an install.
 
 **The install guard reads a record, since 28 September 2026, and passes only
 what the record names.** The record is a section of `docs/agents/environment.md`
@@ -1569,6 +1766,39 @@ record through the same program — what a second person who cloned the
 repository meets before the first install rather than after it — so the two
 cannot disagree.
 
+**In doubt, a run with nobody there is not blocked.** The person's principle,
+"In doubt, a run with nobody there is not to be blocked: security matters,
+but not endangering the production run matters a little more", stood as a
+reason at four places since 8 October 2026 and is a rule since 12 October
+2026, part B point 5 of the roadmap entry of that date on the decisions:
+where a hook cannot say what a command does, the run does not stand still;
+where it reads the person's permission, every failure to read is a block, the
+paragraph below. Not standing still is not passing: the hook on permission
+prompts answers no, so that the run goes on. The rule held against six cases:
+`uv run` with an option not in the list, through; a browser download moved by
+a setting in a file of the vendor, through; a permission prompt under a mark
+without a third line, no and on; no install record on the main branch, a
+block; a quote not closed, through; `sudo brew install` where it runs, a
+block, since there is no doubt. On 14 October 2026 the person decided that
+every doubt the reader had read on the blocking side lets through, the
+fourth addendum of the roadmap entry on the command reader: the
+twenty-one points of the third addendum's check of its readings, `man -P`
+under man-db and the two names two vendors share, each named there with
+its reading; where the system the reader runs on decides which program is
+meant, the system decides and no doubt remains. The fourth addendum had
+counted a text typed into a terminal among the doubts; the person decided
+the same day, the fifth addendum, that it is none: in the ordinary case a
+shell receives it, so a typed text that ends a line is read as shell text
+again, as it was until the fourth.
+
+**That no run has met a form is no reason not to read it.** devloop is used
+by many people from here on, and what can come up comes up: a form the vendor
+documents is read when it is built, not when a closing run happens to hit it.
+Decided on 12 October 2026 with the order on the command reader, revising
+part C point 1 of the roadmap entry of that date on the decisions, whose
+first reason for leaving findings 6 to 8 of the entry of 9 October 2026
+unbuilt — that no run with `brew` and `npx` met them — holds no longer.
+
 Every failure is a block and never a pass, and the block names which it was
 and that it read the last fetched state: no `environment.md` on the fetched
 ref, no section, an unknown value, a ref that cannot be read, a record saying
@@ -1591,8 +1821,39 @@ get` is nightly-only — the root read in the vendor's order, `--root`,
 `CARGO_INSTALL_ROOT`, a config file on its search path, `CARGO_HOME`,
 `~/.cargo`, plus `bin`. It takes a path written in the command as written,
 `make install` included where `PREFIX`, `DESTDIR` or `BINDIR` stands on its
-line, and passes only where every destination is a place the record names or
-the answer of a route it names. Every resolution runs in the hook's own
+line, before or behind `install` since 12 October 2026, and passes only
+where every destination is a place the record names or the answer of a route
+it names — every command of the call read for itself and every destination
+on a line held, since that day, findings 1 to 5 of the roadmap entry of 9
+October 2026 built with the order on the command reader. Since the same day
+a variable before the command that the vendor documents as moving the place
+is handed to the asking, so that the route answers as it would for that
+command: `GOBIN` and `GOPATH` for `go` (`go help install`), `npm_config_prefix`
+for `npm` (npm/cli, `docs/lib/content/using-npm/config.md`, "Environment
+Variables"), `PNPM_HOME` for `pnpm` (pnpm/pnpm.io, `docs/cli/setup.md`),
+`GEM_HOME` for `gem` (rubygems/rubygems,
+`lib/rubygems/commands/environment_command.rb`), `PYTHONUSERBASE` and
+`PIP_USER` for `python -m pip` (docs.python.org, "Command line and
+environment"; pip, `docs/html/topics/configuration.md`); and where the
+variable is the bin directory itself it is taken as the place, as `--root`
+on `cargo` is: `BUN_INSTALL_BIN` for `bun` (oven-sh/bun,
+`docs/runtime/bunfig.mdx`), `PIPX_BIN_DIR` and, with `--global`,
+`PIPX_GLOBAL_BIN_DIR` or the vendor's default `/usr/local/bin` for `pipx`
+(pypa/pipx, `docs/reference/environment-variables.rst`) — `pipx environment
+--value` answers the value the user set and not the effective one for the
+global directory, and creates the directory a handed-over `PIPX_BIN_DIR`
+names, measured on 12 October 2026 with pipx 1.17.6 — `UV_TOOL_BIN_DIR` for
+`uv tool` (docs.astral.sh/uv/reference/environment), `CARGO_INSTALL_ROOT`
+and `CARGO_HOME` for `cargo` (the Cargo book, "Environment variables"), read
+before this hook's own environment; each read on 12 October 2026 at the
+stand the roadmap entry of that date names; `brew` documents none, `yarn`
+none for its prefix, and `--prefix` on `npm` and on `yarn global` and
+`--root` on `cargo` are taken as written, as `--root` was.
+A value inside the project opens nothing under any answer; a value this
+guard cannot read, another variable in it, is a destination it cannot read,
+a block. That is finding 7 of the roadmap entry of 9 October 2026 and
+decision 15 of that entry, decided on 12 October 2026. Every resolution
+runs in the hook's own
 process and on its PATH, which is the PATH of the process that started the
 harness and not the tool shell's — measured on 29 September 2026, the two
 differ on this machine by the plugin directories the harness appends to the
@@ -1607,11 +1868,40 @@ on bun 1.4.2) or one answering no absolute path is not read,
 and not read is a block, never a pass. What stays blocked with that cause
 under every answer: a system package manager, which owns no directory of its
 own since each package decides, and needs root anyway; a version manager, by
-**Runtimes are not a kind the permission may cover** above; a bare `pip` or
-`pip3`, which names no interpreter, so which Python it installs for is not in
-the command, `python -m pip` being the vendor's own form for saying it; a
+**Runtimes are not a kind the permission may cover** above — `volta` and
+`fnm` among them since 12 October 2026, `volta install node@22` setting the
+default Node version under `$VOLTA_HOME`, docs.volta.sh, and `fnm` "a fast
+and simple Node.js version manager", its README; `conda install`, whose
+package lands in whichever environment is active, "into the currently-active
+environment", docs.conda.io, which is not in the command; `nix profile
+install`, an alias of `nix profile add`, whose profile under
+`$XDG_STATE_HOME/nix/profiles` reaches the PATH through a link this guard does
+not read, NixOS/nix, `src/nix/profile-add.md` and `profile.md`; a bare `pip`
+or `pip3`, which names no interpreter, so which Python it installs for is not
+in the command, `python -m pip` being the vendor's own form for saying it; a
 config file setting `install.root` for cargo; a `pip` or `gem` option that
-moves the destination; and a `make install` whose line names none. A pip
+moves the destination, and since 12 October 2026 `PIP_TARGET`, `PIP_PREFIX`
+and `PIP_ROOT` before the command, which move it as the options do; and a
+`make install` whose line names none. Read with their destination since 12
+October 2026, finding 8 of the roadmap entry of 9 October 2026 built: `deno
+install -g`, "Executables are placed in the `bin` subdirectory of the
+installation root", `--root`, `DENO_INSTALL_ROOT` or `$HOME/.deno` in that
+order, denoland/docs, `runtime/reference/cli/install.md`; `dotnet tool
+install -g`, `$HOME/.dotnet/tools` on Linux and macOS, or `--tool-path` as
+written, and a local tool without either not read, dotnet/docs,
+`docs/core/tools/dotnet-tool-install.md`; `gh extension install`, the
+directory `extensions` under gh's data directory, `$XDG_DATA_HOME/gh` or
+`~/.local/share/gh`, cli/cli `pkg/cmd/extension/manager.go` and cli/go-gh
+`pkg/config/config.go`; `pkgx install` and `pkgm install`, `/usr/local`,
+"fully installs pkgx packages to `/usr/local/`", pkgxdev/pkgx README — none
+of the four a route the record names, so each is held against the places;
+and `npm` in every spelling it reads as a global install, finding 6: the
+aliases `in`, `ins`, `inst`, `insta`, `instal`, `isnt`, `isnta`, `isntal`
+and `isntall` beside `install`, `i` and `add`, `-g` anywhere among the
+options or inside a cluster of short ones, `--global`, `--location=global`,
+`-L global`, and `npm_config_global` or `npm_config_location` before the
+command — not `--glob`, which npm 11.12.1 answers "Unknown cli config" and
+reads as nothing, measured on 12 October 2026 with `npm prefix --glob`. A pip
 inside the project passes without the record being read, as anything landing
 inside the repository does: a pip or an interpreter named by a path inside
 the project, a bare one after `source` or `.` on the project's own
@@ -1638,12 +1928,17 @@ although each installs — `brew bundle` everything a `Brewfile` names, through
 `Library/Homebrew/bundle/extensions/` — because the guard reads those forms by
 name alone; `pnx node@22` and `uvx python@3.12` fetch a runtime, as `brew
 install node` does, and the rule on `brew install node` holds for them, said
-in `shared/fetch-and-run.md`; and a browser download moved by a setting of the
-vendor — `PLAYWRIGHT_BROWSERS_PATH`, `CYPRESS_CACHE_FOLDER`,
-`PUPPETEER_CACHE_DIR`, the vendors' configuration files, `XDG_CACHE_HOME` on
-Linux — to a place the record does not name passes under a yes, since the
-guard holds the download against the vendor's default and reads no such
-setting.
+in `shared/fetch-and-run.md`; and, until 12 October 2026, a browser download
+moved by a setting of the vendor — `PLAYWRIGHT_BROWSERS_PATH`,
+`CYPRESS_CACHE_FOLDER`, `PUPPETEER_CACHE_DIR`, the vendors' configuration
+files, `XDG_CACHE_HOME` on Linux — to a place the record does not name
+passed under a yes, since the guard held the download against the vendor's
+default and read no such setting; since that day a variable before the
+command is read and held against the places, a setting in a file still not,
+the decision of 8 October 2026 below as revised. Since 12 October 2026 as
+well `nix run`, `nix shell` and `nix env shell` are read as `uvx` is, by
+name alone, defect 11 of the roadmap entry on the first closing run of
+milestone 3.
 
 Measured on 28 September 2026 against the working tree, the guard fed its JSON
 directly with a scratch project whose `origin` was a local bare repository:
@@ -1848,8 +2143,23 @@ overlooks is a move to a place outside the project that the record does not
 name, which happens under a yes only, and that yes was given, by the
 question's words, for browsers landing outside the project on this machine
 without a place being promised; and the person's principle, written down in
-the roadmap entry of that date, that in doubt a run with nobody there is not
-blocked. One more move stands beside those, found in the review of pull
+the roadmap entry of that date and a rule of this file since 12 October
+2026, "In doubt, a run with nobody there is not blocked" above. Revised on
+12 October 2026 for a variable in the command, point 4 of the order on the
+command reader: the guard reads `PLAYWRIGHT_BROWSERS_PATH`,
+`CYPRESS_CACHE_FOLDER` and `PUPPETEER_CACHE_DIR` before the command on every
+system, and `XDG_CACHE_HOME` on Linux alone for Playwright and Cypress, the
+system each vendor reads it on — microsoft/playwright
+`packages/playwright-core/src/server/registry/index.ts`,
+`computeDefaultCacheDirectory`; cypress-io/cypress `cli/lib/tasks/state.ts`
+through the package `cachedir`; puppeteer/puppeteer
+`docs/api/puppeteer.configuration.md`, "Can be overridden by
+`PUPPETEER_CACHE_DIR`", `os.homedir()` and no `XDG_CACHE_HOME` — a
+destination inside the project opening nothing under any answer,
+`PLAYWRIGHT_BROWSERS_PATH=0` among them, the vendor's `node_modules`, and
+every other held against the places of the record. A setting in a file of
+the vendor stays unread, and so does `--path` on `@puppeteer/browsers
+install`, the paragraph below. One more move stands beside those, found in the review of pull
 request #159 the same day and not built: `--path` on `@puppeteer/browsers
 install`, which moves the download from its default, the current directory,
 to the place written — `npx @puppeteer/browsers install chrome@stable --path
@@ -1858,17 +2168,20 @@ settings above and reads no `--path`; and unlike the moves above, this
 command passes under every answer, under a no too, because
 `@puppeteer/browsers install` is read for `--install-deps` alone and without
 it is not read at all. The roadmap entry of that date records it in its
-addendum. What a false positive costs, after that decision:
-`PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` puts the browsers inside
-`node_modules` and passes under a yes with the eleven places, the default
-being named; under a record of six places it is blocked naming
-`~/Library/Caches/ms-playwright`, which is wrong there; with the person there
-it is one handover, unattended it is the task, by "A guard's block, with
-nobody there" in `build-work`. And a text that quotes such a command, `git
-commit -m "CI runs npx playwright install --with-deps chromium"`, is blocked
+addendum. What a false positive cost, after that decision and until 12
+October 2026: `PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` put the
+browsers inside `node_modules` and passed under a yes with the eleven
+places, the default being named; under a record of six places it was blocked
+naming `~/Library/Caches/ms-playwright`, which was wrong there; with the
+person there one handover, unattended the task, by "A guard's block, with
+nobody there" in `build-work`. And a text that quoted such a command, `git
+commit -m "CI runs npx playwright install --with-deps chromium"`, was blocked
 under every answer with the cause for system packages, a false positive on
 text of the kind measured on 6 September 2026 above, taken on knowingly as
-the guard's other forms are; with nobody there it costs the task. Places that
+the guard's other forms were; with nobody there it cost the task. Since 12
+October 2026 both pass under every answer, the first landing inside the
+project and the second a quoted text, by the rule on the one program and the
+revision above. Places that
 changed when this was built, on 8 October 2026, and none of them on 28
 September 2026, when the tools half of milestone 3 was built and this, the
 drivers half, was not: the verb half and the place handling in
@@ -1950,8 +2263,7 @@ one: `-p` or `--python`, `--project`, `--directory`, `--package`, `--extra`,
 `crates/uv-cache/src/cli.rs`; `--` ends the options; an option with a
 separate value that is not in that list, or a short option with its value
 attached, `-whttpx`, ends the reading as well, and the command then passes,
-by the person's principle in the roadmap entry of that date that in doubt a
-run with nobody there is not blocked. `pnpm` and `pn` may carry options
+by the rule "In doubt, a run with nobody there is not blocked" above. `pnpm` and `pn` may carry options
 before `dlx` or `create`, `--package`, `--allow-build` and `-C` or `--dir`
 with a separate value (pnpm/pnpm.io, `versioned_docs/version-10.x/cli/dlx.md`,
 `pnpm-cli.md`) — so that `pnpm --package=@pnpm/meta-updater dlx meta-updater
@@ -2238,11 +2550,17 @@ tool has written the table, and cannot refuse: read off
 `code.claude.com/docs/en/hooks.md` on 5 October 2026, exit 2 on
 `PostToolUse` "Shows stderr to Claude; the tool already ran".
 `hooks/pre-tool-use-table-guard.sh` refuses a `git commit` while the table in
-the working tree carries such a cell, on every branch; the same page says of
-the `if` field that "each subcommand is checked" and that "When Claude Code
-can't determine which commands the Bash input runs, it runs your hook
-regardless of the pattern", so the hook reads the command for `git commit`
-itself. Both stay inert where no `docs/agents/` stands, like the other
+the working tree carries such a cell, on every branch, and reads the command
+for `git commit` itself, since 13 October 2026 on every Bash call: the same
+page says of the `if` field that "Because the `if` filter is best-effort,
+use the permission system rather than a hook to enforce a hard allow or
+deny", and the permissions page says a Bash rule matches the command text
+after the vendor's own wrappers are stripped and not the same program behind
+`sh -c` or a runner such as `caffeinate`, so that the three handlers that
+carried an `if` field — this guard, the guard on the main branch and the
+guard on merging — carry none since that day, decided by the person on 13
+October 2026, since the two prohibitions they hold are hard. Both stay inert
+where no `docs/agents/` stands, like the other
 guards. The sentence naming the four forms stands once, in
 `shared/status-forms.md`, inserted into `setup-checks` and `setup-project`;
 each hook carries a copy in its message, and a check under "Before a
@@ -2259,13 +2577,16 @@ fourth stood until 6 October 2026, `git -C <directory> commit` passing
 unseen, as it did the guard on the main branch: since that day both guards
 read git's own options between `git` and its command — `-C <path>`, `-c
 <name>=<value>`, the options that take a value of their own, any other
-`--option`, `-p` and `-P` — and `hooks/hooks.json` starts both on
-`Bash(git *)`, since the `if` field matches everything before its `*` as
-written, so that `Bash(git commit*)` would not have started them for a
-command with an option in between; read off `code.claude.com/docs/en/hooks.md`
-and `code.claude.com/docs/en/permissions.md` on 6 October 2026, and
-measured with the hooks fed their JSON, the entry of 5 October 2026 in
-`docs/roadmap.md` carrying the runs under its addendum of 6 October. The
+`--option`, `-p` and `-P` — and `hooks/hooks.json` started both on
+`Bash(git *)` until 13 October 2026, since the `if` field matches everything
+before its `*` as written, so that `Bash(git commit*)` would not have started
+them for a command with an option in between; read off
+`code.claude.com/docs/en/hooks.md` and `code.claude.com/docs/en/permissions.md`
+on 6 October 2026, and measured with the hooks fed their JSON, the entry of 5
+October 2026 in `docs/roadmap.md` carrying the runs under its addendum of 6
+October; since 13 October 2026 both start on every Bash call, as above, and
+the step of `.github/workflows/stock-take.yml` holds every handler under
+`PreToolUse` to carrying no `if` field. The
 entry also says why the commit is refused
 rather than the write, and why no target in the project's own check chain
 was built beside it.
