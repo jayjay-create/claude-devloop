@@ -24084,6 +24084,107 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     as new tools and options appear, and nothing holds each program's named
     release against the vendor's newest.
 
+  **The runs**, on the clean tree at `45e089f`, the first commit, no commit
+  after it changing code; every run under 0.138.0, the version that commit
+  introduces, and recorded in the second commit, whose rows the tool's new
+  check holds against that commit. The four things, each walked on the code
+  of this branch with the bench of the second addendum's report rebuilt in a
+  throwaway directory outside the clone: a project with `docs/agents/`, a bare
+  local `origin` with `origin/HEAD` on `main`, the four records no, none,
+  yes11 and yes6 as `shared/install-record.md` spells them, each committed,
+  pushed and fetched before the commands under it; the hooks of `45e089f`
+  started by absolute path, the JSON on stdin with `tool_name` Bash,
+  `tool_input.command`, `cwd` and `permission_mode`, `CLAUDE_PROJECT_DIR` on
+  the project; Darwin 25.6.0, bash 3.2.57, awk 20200816, git 2.50.1; from
+  15:54:27 to 15:55:09 UTC, 142 commands, 128 at the install guard under the
+  four records and 14 at the four other guards, 526 feedings, every one as
+  the four paragraphs this order named record them - lines 20931 to 21020,
+  21942 to 22040 and 22818 to 22849 at `78a250d` - but the four `mise exec`
+  forms, which answer as the second addendum reads `mise exec` since, over to
+  the command: `mise exec -- go install golang.org/x/tools/cmd/goimports@latest`,
+  `mise x -- brew install ripgrep` and `mise exec -c 'brew install ripgrep'`
+  2 2 0 0 and `mise exec -- pytest` 0 0 0 0, where the first addendum's
+  paragraph has 2 2 2 2 with `mise`'s cause for each; `sg staff -c 'brew
+  install ripgrep'` 2 2 0 0 as the fourth addendum reads `sg`, and
+  `hyperfine --reference 'brew install ripgrep' make` 0 0 0 0 as the third
+  reads `hyperfine`. The exit codes stand in the order no, none, yes11, yes6.
+  - The install guard's block under a yes for `doas`, `su`, `run0` and
+    `pkexec`, 16 commands: `doas brew install ripgrep`, `su -c 'brew install
+    ripgrep'`, `run0 make install`, `pkexec make install`, `timeout 600 su -c
+    'make install'` and `su root` 2 2 2 2, under both yes "it needs doas, …",
+    "it needs su, …", "it needs run0, …" and "it needs pkexec, which stays
+    the user's under every answer"; `doas -C /etc/doas.conf brew install
+    ripgrep` 0 0 0 0; the first kind of the group as the second addendum
+    walked it, `runuser -u root -- brew install ripgrep`, `gsudo brew install
+    ripgrep`, `runas /user:admin "brew install ripgrep"`, `launchctl asuser
+    501 brew install ripgrep`, `machinectl shell .host /usr/bin/make
+    install`, `setpriv --reuid=0 make test` and `login -f root brew install
+    ripgrep` 2 2 2 2, each naming its program; `tmux new -d sudo make
+    install` 2 2 2 2 with `sudo`'s cause; `machinectl shell box make
+    install` 0 0 0 0.
+  - The reader reading as wrappers the two vendors' lists and `exec` alone,
+    119 commands: the 31 wrapper forms of the first addendum's paragraph
+    from `sudo -Eu root brew install ripgrep` to `docker exec c apt-get
+    install -y jq`, the 74 of the second's - the order's twelve, `mise exec
+    node@20 -- node -v`, `mise install node@20`, the `osascript -e` and
+    `python3 -c` forms, `tmux new -d sudo make install` and the build's own
+    57 from `launchctl submit -l x -- brew install ripgrep` to `composer exec
+    -- phpunit` - each as recorded, the four `mise exec` forms as above; and
+    the 14 at the other guards: the branch guard on `main` with `tmux
+    new-session -d 'git push origin main'`, `parallel 'git push origin main'
+    ::: a`, `git bisect run git push origin main` and `tmux send-keys 'git
+    push origin main' Enter` 2; the merge guard with `screen -dm gh pr merge
+    5 --squash`, `watchexec -- gh pr merge 5` and `nodemon --exec 'gh pr
+    merge 5'` 2; the identity guard with `tmux new-session -d 'git -c
+    user.email=a@example.com commit -m m'` and `parallel 'git commit
+    --author="A <a@example.com>" -m m' ::: a` 2; the mark guard with `screen
+    -dm touch .claude/unattended.local` and `tmux new -d 'echo x >
+    .claude/unattended.local'` 2 under `default` and 0 under `auto`, `uv run
+    tee .claude/unattended.local` 2 under `default`.
+  - The group put together from single programs, 19 commands: the twelve of
+    finding A, `parallel brew install ::: a b`, `tmux new-session -d 'brew
+    install ripgrep'`, `screen -dm brew install ripgrep`, `ls src | entr brew
+    install ripgrep`, `watchexec -- brew install ripgrep`, `nodemon --exec
+    'brew install ripgrep'`, `git rebase -x 'brew install ripgrep' main`,
+    `git bisect run brew install ripgrep`, `git submodule foreach 'brew
+    install ripgrep'`, `fd -e txt -x brew install` and `npm exec -c 'brew
+    install ripgrep'` 2 2 0 0 and `uv run make install` 2 2 2 2 with `make
+    install`'s cause; the seven privilege forms above 2 2 2 2 under every
+    answer.
+  - `setpriv`, 9 commands: `setpriv --reuid=1000 make test`, `setpriv
+    --reuid=1000 brew install ripgrep` and `setpriv --reuid=0 make test`
+    2 2 2 2 with "it needs setpriv, which stays the user's under every
+    answer"; `setpriv --no-new-privs make test` 0 0 0 0 and `setpriv
+    --keep-groups brew install ripgrep` 2 2 0 0, read over to the command;
+    `gosu nobody make test` 2 2 2 2 with "it needs gosu, …"; `flock -c 'brew
+    install ripgrep' /tmp/lock`, `echo 'brew install ripgrep'` and
+    `hyperfine --reference 'brew install ripgrep' make` 0 0 0 0.
+
+  One run written down on each of the four. Then, on the same tree: the tool
+  from 15:55:09 to 15:56:38 UTC, exit 0, BROKEN RECORDS 0, FINDINGS 19,
+  UNCOVERED LINES OF THE SEARCH SET 0 of 3641, UNITS WITHOUT A STRAIGHT PATH
+  0, STATUS WORDS BROKEN OVER A LINE BREAK 0, Walked 461 and 1046 built and
+  never walked, one run written down on its outcome; the tool's self-test
+  from 15:56:38 to 15:56:40 UTC, `SELF-TEST PASSED: 112 cases; of the 77
+  messages this tool rejects, refuses or answers with, read off its own
+  source, 77 are asserted by a case and 0 by none`, exit 0, one run written
+  down on its outcome and one on each of the two outcomes this entry adds,
+  which the self-test produces once each; the reader's self-test from
+  15:56:41 to 15:56:47 UTC, `SELF-TEST PASSED: 159 cases`, exit 0, one run
+  written down on its outcome; the nineteen checks under "Before a handover,
+  run these" from 15:56:47 to 15:56:54 UTC, in a clean bash with
+  `/usr/bin/grep` first on its path, each printing what it printed at
+  `78a250d` before the first edit, line for line: the registration two empty
+  lists, the roadmap names silent, the invocability one count per skill, the
+  locked skill named by `build-work`, the copies silent, the insert lines
+  silent, the grant silent, the language block twelve lines, the notice one
+  checksum line and twelve, the expansion silent, the executables silent, the
+  arming command 2 and 2, the default branch 1, the status forms 1 twice, the
+  offers seventeen lines, the handovers nine over eight sites, the unattended
+  finish silent, the second statement one line - one run written down on
+  each of the nineteen. The runs stand in the second commit, 28 of them, each
+  held against `45e089f`.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
