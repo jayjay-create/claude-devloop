@@ -193,6 +193,53 @@ $1$US$2$US$(printf '%s' "$VARS" | tr '\n' "$RS")"; BEYOND=yes
 dest() { DESTS="$DESTS
 $1"; BEYOND=yes; }
 BINDIR='^(/usr/local/(bin|sbin)|/usr/(bin|sbin)|/opt/|(~|\$HOME|\$\{HOME\})/(\.local/bin|bin|go/bin)|\$\(go env GOPATH\)/bin|\$GOBIN|\$GOPATH/bin)'
+# priv_if I OPTION...: the program at word I is of the first kind where one
+# of the options stands among its words before the judged word, or among all
+# its words where the line has none, the value attached by = or standing
+# apart, a short option also with its value attached
+priv_if() {
+  local at="$1" j w o; shift
+  j=$at
+  while j=$((j + 1)); [ "$j" -lt "$N" ] && { [ "$F" -lt 0 ] || [ "$F" -le "$at" ] || [ "$j" -lt "$F" ]; }; do
+    w="${W[$j]}"
+    [ "$w" = "--" ] && return 0
+    for o in "$@"; do
+      case "$w" in "$o"|"$o="*|"$o:"*) BEYOND=yes; PRIV="${PRIV:-${W[$at]##*/}}"; return 0 ;; esac
+      case "$o" in -[A-Za-z]) case "$w" in "$o"?*) BEYOND=yes; PRIV="${PRIV:-${W[$at]##*/}}"; return 0 ;; esac ;; esac
+    done
+  done
+  return 0
+}
+# cond_priv I: the programs of the first kind that run the command as another
+# user, a group or the supplementary groups only under an option, since the
+# third addendum of 13 October 2026, read over as process control otherwise;
+# called for every word before the judged word and for the judged word
+cond_priv() {
+  local i="$1"
+  case "${W[$i]##*/}" in
+    setpriv) priv_if "$i" --ruid --euid --reuid --rgid --egid --regid --groups --clear-groups --init-groups ;;
+    chpst|runtool) priv_if "$i" -u -U ;;
+    xchpst) priv_if "$i" -u -U --user ;;
+    psexec|psexec.exe|PsExec|PsExec.exe) priv_if "$i" -s -u -h ;;
+    compartment) priv_if "$i" --user --group ;;
+    capsh) priv_if "$i" --user --uid --gid --groups ;;
+    immortal) priv_if "$i" -u ;;
+    dmon) priv_if "$i" -u -U ;;
+    minijail0) priv_if "$i" -u -g ;;
+    lrun) priv_if "$i" --uid --gid ;;
+    tcpserver|unixserver|s6-ipcserver) priv_if "$i" -u -g -U ;;
+    tcpsvd|udpsvd) priv_if "$i" -u ;;
+    shellinaboxd) priv_if "$i" -s --service ;;
+    start-stop-daemon) priv_if "$i" -c --chuid ;;
+    spawn-fcgi) priv_if "$i" -u -g ;;
+    daemon) priv_if "$i" -u --user ;;
+    daemonize) priv_if "$i" -u ;;
+    systemd-run) priv_if "$i" --uid --gid ;;
+    # pm2 start reads its options behind the script as well, up to --
+    pm2) FS=$F; F=-1; priv_if "$i" --uid --gid; F=$FS ;;
+  esac
+  return 0
+}
 BRANDED='chrome|msedge|chrome-beta|msedge-beta|chrome-dev|msedge-dev|chrome-canary|msedge-canary'
 SHELLS=' sh bash zsh dash ksh mksh ash fish '
 while IFS= read -r LINE; do
@@ -203,11 +250,18 @@ while IFS= read -r LINE; do
   # before the word stays the user's under every answer, as does every
   # other program that runs the command as an administrator or as another
   # user, the first kind of the group the reader reads over, since 13
-  # October 2026 - doas, su, run0, pkexec, runuser, setpriv, gsudo and
-  # login, machinectl with shell and launchctl with asuser behind it, and
-  # runas, which is the judged word itself, since the command line it hands
-  # to Windows is read by nobody here - on a line with no judged word, su -c
-  # with its shell text say, anywhere on it.
+  # October 2026 - doas, su, run0, pkexec, runuser, gsudo and login,
+  # machinectl with shell and launchctl with asuser behind it, gosu since
+  # the third addendum of that day, setpriv where one of its options sets
+  # another user, a group or the supplementary groups and not otherwise,
+  # and sg, which always sets another group, since the same addendum,
+  # every program of the first kind the searches of that addendum found,
+  # and those of them that run the command as another user only under an
+  # option, through priv_if, each listed below and in the head of
+  # bin/devloop-command-reader, and runas with the
+  # programs that hand Windows a command line, which are the judged word
+  # itself, since that command line is read by nobody here - on a line with
+  # no judged word, su -c with its shell text say, anywhere on it.
   VARS="$EXPORTS"
   i=0
   while [ "$i" -lt "$N" ] && { [ "$F" -lt 0 ] || [ "$i" -lt "$F" ]; }; do
@@ -216,19 +270,27 @@ while IFS= read -r LINE; do
 ${W[$i]}" ;; esac ;;
       *) case "${W[$i]##*/}" in
            sudo) BEYOND=yes; SUDO=yes ;;
-           doas|su|run0|pkexec|runuser|setpriv|gsudo|login) BEYOND=yes; PRIV="${PRIV:-${W[$i]##*/}}" ;;
+           doas|su|run0|pkexec|runuser|gsudo|login|gosu|pbrun|dzdo|ksu|addo|asroot|autologin|cado|doas-keepenv|dosr|gasroot|kdesu|key2root|lxdoas|lxqt-sudo|lxsu|lxsudo|oslo-rootwrap|please|qsudo|qt-sudo|rdo|really|run-as|s6-applyuidgid|s6-setuidgid|sg|setuid|setuidgid|ShellRunas|shellrunas|su-exec|su-rs|sudo-cli|sudo-request|sudo-rs|super|sux|syca|tsudo|voix|xdg-su|xfsudo|xuserrun|yas|RunFromProcess|RunFromProcess.exe) BEYOND=yes; PRIV="${PRIV:-${W[$i]##*/}}" ;;
+           security) [ "${W[$((i + 1))]:-}" = execute-with-privileges ] && { BEYOND=yes; PRIV="${PRIV:-security}"; } ;;
+           sv) [ "${W[$((i + 1))]:-}" = shell ] && { BEYOND=yes; PRIV="${PRIV:-sv}"; } ;;
+           nircmd|nircmd.exe) case "${W[$((i + 1))]:-}" in elevate|runas|runassystem|elevatecmd) BEYOND=yes; PRIV="${PRIV:-nircmd}" ;; esac ;;
            machinectl) [ "${W[$((i + 1))]:-}" = shell ] && { BEYOND=yes; PRIV="${PRIV:-machinectl}"; } ;;
            launchctl) [ "${W[$((i + 1))]:-}" = asuser ] && { BEYOND=yes; PRIV="${PRIV:-launchctl}"; } ;;
+           *) cond_priv "$i" ;;
          esac ;;
     esac
     i=$((i + 1))
   done
   [ "$F" -ge 0 ] || continue
+  # the judged word itself, where it hands on a command of its own as a line
+  # of its own - start-stop-daemon -c with --exec and -- say
+  cond_priv "$F"
   V1="${W[$((F + 1))]:-}"; [ $((F + 1)) -lt "$N" ] || V1=""
   V2="${W[$((F + 2))]:-}"; [ $((F + 2)) -lt "$N" ] || V2=""
   V3="${W[$((F + 3))]:-}"; [ $((F + 3)) -lt "$N" ] || V3=""
   case "$NAME" in
-    runas) BEYOND=yes; PRIV="${PRIV:-runas}" ;;
+    runas|RunAsTI|MinSudo|elevate|wsudox|win-sudo|xdg-su|su-rs) BEYOND=yes; PRIV="${PRIV:-$NAME}" ;;
+    AdvancedRun|AdvancedRun.exe) priv_if "$F" /RunAs ;;
     export)
       j=$F
       while j=$((j + 1)); [ "$j" -lt "$N" ]; do case "${W[$j]}" in [A-Za-z_]*=*) EXPORTS="$EXPORTS

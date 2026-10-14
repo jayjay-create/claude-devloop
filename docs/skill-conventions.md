@@ -846,9 +846,19 @@ question says it since the same day, "tools and browsers for tests", in its
 question line, its yes and its first no. What stays the person's under every answer, beside `sudo`
 — and every program of the first kind of the group the reader reads over,
 which runs the command as an administrator or as another user, `doas`,
-`su`, `run0` and `pkexec` since 13 October 2026 and `runuser`, `setpriv`,
-`gsudo`, `runas`, `login -f`, `machinectl shell` and `launchctl asuser`
-since the second addendum of that day — and the script piped from the network, and
+`su`, `run0` and `pkexec` since 13 October 2026, `runuser`, `gsudo`,
+`runas`, `login -f`, `machinectl shell` and `launchctl asuser` since the
+second addendum of that day, and since its third addendum `gosu` and
+`setpriv` where it sets another user, a group or the supplementary groups,
+with `--ruid`, `--euid`, `--reuid`, `--rgid`, `--egid`, `--regid`,
+`--groups`, `--clear-groups` or `--init-groups`, and not otherwise, and
+`sg`, which runs the command as another group, and every program of the
+first kind the searches of that addendum found, `sudo-rs`, `su-rs`,
+`su-exec`, `really`, `please`, `ksu`,
+`pbrun` and `dzdo` among them, as the head of `bin/devloop-command-reader`
+lists them, and those that run the command as another user only under an
+option, `chpst -u`, `start-stop-daemon -c`, `daemon -u` or `systemd-run
+--uid`, there and not otherwise — and the script piped from the network, and
 is checked after those and before the places: a branded browser — `chrome`, `msedge` and their six
 further channels — which Playwright installs at the system's own location
 over the browser already there, the vendor's own warning; and system
@@ -1478,16 +1488,28 @@ text as a command on this machine, the group the person decided on 13
 October 2026, derived by kinds since the second addendum of that day and
 not from single programs, each kind holding for macOS, Linux and Windows
 with Git Bash, the lists of the two vendors among them and not their end,
-each program read off its vendor's documentation with the options that take
-a value and named with its address in the roadmap entry on the command
-reader and its two addenda of 13 October 2026. The kinds and their
+each program read off the wording of its vendor's source, fetched raw — the
+man page's source, the option parser or the README at the newest release,
+the manual on this machine for a program that comes with the system — with
+the options that take a value and the options whose value is itself a
+command, each with how the vendor runs that value, as a text for a shell or
+as words, the release or commit named together with the command that shows
+it exists and the sentence the reading rests on quoted, and named with its
+address in the roadmap entry on the command reader and its three addenda of
+13 October 2026; a reading made from a summary and not from the source is
+no reading, since the third addendum of that day. The kinds and their
 programs, as the head of `bin/devloop-command-reader` lists them: (1)
 privileges, a command as an administrator or as another user — `sudo`,
-`doas`, `su`, `run0`, `pkexec`, `runuser`, `setpriv`, `gsudo`, `runas`,
-`login -f`, `machinectl shell` and `launchctl asuser` — each of which stays
-the user's under every answer at the install guard; (2) process control, a
-time limit, a priority, an environment, a measurement, a recording —
-`timeout`, `time`, `nice`, `nohup`, `stdbuf`, `command`, `builtin`,
+`doas`, `su`, `run0`, `pkexec`, `runuser`, `gsudo`, `gosu`, `runas`,
+`login -f`, `machinectl shell` and `launchctl asuser`, and `setpriv` where
+it sets another user, a group or the supplementary groups, with `--ruid`,
+`--euid`, `--reuid`, `--rgid`, `--egid`, `--regid`, `--groups`,
+`--clear-groups` or `--init-groups`, and `sg`, which runs the command as
+another group — each of which stays the user's under every answer at the
+install guard, `setpriv` without one of those being process control, read
+over; (2) process control, a time limit, a priority, an environment, a
+measurement, a recording — `timeout`, `time`, `nice`, `nohup`, `stdbuf`,
+`command`, `builtin`,
 `noglob`, zsh's `nocorrect`, `env`, `exec`, `trap`, `ionice`, `chrt`,
 `taskset`, `uclampset`, `prlimit`, `numactl`, `setarch`, `nocache`,
 `cpulimit`, `caffeinate`, `flock`, `lockf`, `lckdo`, `ifne`, `chronic`,
@@ -1495,8 +1517,14 @@ time limit, a priority, an environment, a measurement, a recording —
 `winpty`, `ssh-agent`, `kinit`, `strace`, `ltrace`, `valgrind`,
 `heaptrack`, `perf stat`, `record` and `trace`, `gdb --args`, `lldb`, `rr`,
 `hyperfine`, `dtrace -c`, `bpftrace -c`, the DTrace scripts of macOS,
-`sc_usage -E`, `leaks -atExit`, `ktrace trace -c`, `sg`, `pee` and
-`mispipe`; (3) the environments of projects and versions — `direnv exec`,
+`sc_usage -E`, `leaks -atExit`, `ktrace trace -c`, `pee` and `mispipe` —
+`hyperfine` since v2.0.0 running its benchmarked commands directly, each
+split as shell_words splits a text and with no shell, a command with an
+operator standing alone as a word refused and nothing run, so that under
+`-N` a `&&` inside one is an argument and no second command, with `-S` or
+`--shell` naming a shell a text for that shell, and the texts of its `-s`,
+`-p`, `-c` and `-C` always for a shell; (3) the environments of projects
+and versions — `direnv exec`,
 `devbox run`, `mise exec`, `nix-shell`, `nix develop`, `nix shell` and `nix
 env shell`, the `exec` of `asdf`, `rbenv`, `pyenv`, `nodenv`, `goenv`,
 `jenv`, `plenv`, `phpenv` and `luaenv`, `volta run`, `fnm exec`, the `run`
@@ -1512,17 +1540,42 @@ and the background — `tmux`, `screen`, `zellij`, `dtach`, `abduco`,
 `setsid`, `nohup`, `nq`, `tsp`, `pueue add`, `daemon`, `daemonize`,
 `systemd-run`, `launchctl submit` and `bsexec`, and `at` and `batch`, which
 read their commands from stdin as a shell does; (6) the programs that run a
-command when a file changes — `entr`, `watchexec`, `nodemon --exec`,
+command when a file changes — `entr`, `watchexec`, `nodemon --exec`, whose
+program with the script and its arguments is one text for `sh -c`,
 `reflex`, `chokidar -c`, `onchange`, `cargo watch`, `watchman-make`,
 `when-changed`, `wgo`, `gow` and `watch`; (7) git's own subcommands that
 run a command — `rebase -x`, `bisect run`, `submodule foreach`, the filters
-of `filter-branch` and `difftool -x`; (8) the package managers and the
-tools of the languages that run a command of the shell and resolve no
-package — `npm exec -c` and `npx -c`, `pnpm exec`, `yarn exec` and `bun
-run`. A program that runs the command on another machine, in a container
-or in another root or namespace, `ssh`, `docker exec`, `chroot`, `nsenter`,
-`unshare`, `bwrap` or `wsl`, is not in the group; a program that resolves
-its argument as a package rather than runs a word, `npx` and the other
+of `filter-branch` and `difftool -x` without `-d`; (8) the package
+managers and the tools of the languages that run a command of the shell and
+resolve no package — `npm exec -c` and `npx -c`, `pnpm exec`, `yarn exec` and
+`bun run`. Since the third addendum of 13 October 2026 the group holds as well
+the 880 programs or forms the searches of that addendum and the two passes of
+its check for completeness found, the searches each in a source that lists the
+programs of a whole area and not only those one knows by name — the package
+lists of Debian, Alpine, Arch, the AUR, nixpkgs and Fedora, the formulae of
+Homebrew, MacPorts, the manuals of macOS, the registries of npm, crates.io,
+RubyGems and pkg.go.dev, Scoop, Chocolatey, MSYS2, winget and Microsoft Learn
+— with every search, its count and every hit judged in the roadmap entry, each
+program read off its vendor and listed by kind in the head of
+`bin/devloop-command-reader`, three kinds derived there among them: (9) the
+programs that run a command on an event other than a file change — idleness,
+sleep, a lock, a connection, a message — `swayidle`, `socat`, `tcpserver` or
+`tcpclient`; (10) the multi-call binaries, `busybox` and `toybox`, read over
+to the applet their first argument names; (11) the programs whose own work
+runs a command an option names — `zip -TT`, `tar -I`, `man -P`, `bat --pager`,
+`rsync -e`, `feh --action`, the actions of `fzf --bind` and `sk --bind` that
+run a command, and the options of `git send-email`, `git grep -O` and git's
+transports whose value is a command. A name a builtin of the shell or a
+program of another meaning carries, `bg` or `foreach`, and a name two programs
+share with different grammars, `run` or `wt`, is not in the group, each with
+its two ways in the roadmap entry; an option that runs one program word with
+arguments the program itself chooses, as `rg --pre` does, `pandoc --filter` or
+`git difftool -x` under `-d`, is not read; nor are the commands a program
+reads from a file or a pipe. A program that runs the command on another
+machine, in a container or in another root or namespace, `ssh`, `docker exec`,
+`chroot`, `nsenter`, `unshare`, `bwrap` or `wsl`, is not in the group; a
+program that resolves its argument as a package rather than runs a word, `npx`
+and the other
 fetch-and-run forms, is read by the install guard at its own name; what a
 program of the group fetches on the side before it runs the command — the
 tool `mise exec` installs, the environment `uv run` syncs, the shell `nix
@@ -1534,7 +1587,12 @@ command and no command, so that `git commit -m "CI runs npx playwright
 install"` and `echo "brew install x"` are read as what they are. A heredoc fed
 to another program, `python3` or `cat`, is not searched: code in another
 language is not read, and a `PreToolUse` hook sees a string and not a
-filesystem. What the program cannot take apart — a quote or a substitution
+filesystem; the platform shell a vendor hands a text to is `sh` here and
+`cmd.exe` on Windows with Git Bash, whose command line is such code, so
+that the reader, which reads bash's `OSTYPE` for this, does not read on
+Windows the texts `hyperfine` and `nodemon` hand to it, since the third
+addendum of 13 October 2026. What the program cannot take apart — a quote
+or a substitution
 not closed, an operator with nothing behind it, an `if` without its `fi` —
 goes through every hook, since the shell runs nothing of such a command
 either; nothing before the fault is read, for the same reason, the case "a
