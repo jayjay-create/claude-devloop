@@ -23594,7 +23594,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1` and the `HERE`
   line once in each of the ten hooks that read their input, `cat >/dev/null`
   as the one line of `hooks/stop-checks.sh` and the reader named nowhere in
-  it, the workflow's first step run as a script on this machine and green;
+  it, the workflow's hooks step run as a script on this machine and green;
   `"onFailure": "block"` on the eight handlers under `PreToolUse` and the one
   under `PermissionRequest`, no `if` field under `PreToolUse`, thirteen
   handlers in all; the reader's head with the eleven kinds and what stands
@@ -23788,10 +23788,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     loaded as a module with `sys.dont_write_bytecode` set: 89 not-a-thing
     records stand on lines outside the search set — 62 under `bin/`, all in
     the reader, 16 under `skills/`, 5 under `docs/`, 4 under `hooks/`, 1 under
-    `shared/` and 1 under `.github/` — where 22 stood at `3ab792a`. The 67 that
-    came are rows the branch added on lines that later left the set, the 56
-    calls of the self-test's `lines` helper among them, which left the set with
-    the fifth addendum when `fail()` stopped ending the program. Nothing in the
+    `shared/` and 1 under `.github/` — where 22 stood at `3ab792a`, measured
+    there the same way, all 22 among the 89. Of the 67 that came, 66 are rows
+    the branch added: the 62 in the reader — 59 calls of the self-test's
+    `lines` helper, one of its `absent` helper and the line defining `lines`,
+    which left the set with the fifth addendum when `fail()` stopped ending
+    the program and the helpers with it, and the `SELF-TEST FAILED` line
+    beside the exit, which never stood in it — three in `hooks/hooks.json` and
+    the one in the workflow; the one other is an older row, on line 572 of the
+    install guard, whose line the branch's rewrite of the guard left outside
+    the set. Nothing in the
     tool checks that a not-a-thing record stands on a line of the set; such a
     record covers nothing and harms nothing, and the entry of 12 October 2026
     on the four changes to the tool dropped 25 such rows by hand. Should: the
