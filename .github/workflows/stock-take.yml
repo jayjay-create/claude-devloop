@@ -14,15 +14,17 @@
 # Since the fourth addendum of 14 October 2026 to the roadmap entry on the
 # command reader a second job, hooks on every system, runs on ubuntu-latest,
 # macos-latest and windows-latest - there under the bash of Git for Windows,
-# which "shell: bash" selects - the reader's self-test and every handler of
-# hooks/hooks.json once with a harmless input of its event in a throwaway
-# project, and is red where a handler answers otherwise than 0: devloop runs
-# on every system, the person's decision of that day, and until then nothing
-# showed that the reader ran under Linux at all, where it did not. Its three
-# checks carry the job's name with the system in brackets; making them
-# required on main is the owner's setting, as for stock-take, and the fourth
-# addendum carries the command. .gitattributes keeps every text file at LF on
-# every system, Git for Windows' default core.autocrlf=true notwithstanding.
+# which "shell: bash" selects - and, since the fifth addendum of that day,
+# under Alpine 3.22 with busybox awk in a container on ubuntu-latest, the
+# reader's self-test and every handler of hooks/hooks.json once with a
+# harmless input of its event in a throwaway project, and is red where the
+# self-test or a handler answers otherwise than 0: devloop runs on every
+# system, the person's decision of that day, and until then nothing showed
+# that the reader ran under Linux at all, where it did not. Its four checks
+# carry the job's name with the system in brackets; making them required on
+# main is the owner's setting, as for stock-take, and the fifth addendum
+# carries the command. .gitattributes keeps every text file at LF on every
+# system, Git for Windows' default core.autocrlf=true notwithstanding.
 name: merge gate
 
 on:
@@ -109,7 +111,13 @@ jobs:
 
   # Since the fourth addendum of 14 October 2026: the reader's self-test and
   # every handler of hooks/hooks.json once, on the three systems devloop runs
-  # on, Windows under the bash of Git for Windows. The handlers are read off
+  # on, Windows under the bash of Git for Windows, and since the fifth
+  # addendum of that day under Alpine 3.22 with busybox awk as well, the
+  # fourth entry of the matrix: a container on ubuntu-latest - GitHub's docs,
+  # "jobs.<job_id>.container", a job container needs a Linux runner, and an
+  # empty value is no container - in which the first step installs bash, git
+  # and python3, since the image carries none of them and "shell: bash" is
+  # the job's default. The handlers are read off
   # hooks/hooks.json with python3 so that one added later runs without this
   # step being touched; the input of each event stands below, harmless - the
   # command ls for the tool Bash, a Write and an Edit of the project's README
@@ -117,20 +125,38 @@ jobs:
   # a stop - in a throwaway project outside the checkout with docs/agents/, a
   # commit on main pushed to a local bare origin whose HEAD is main, and the
   # work on a branch, since the branch guard blocks a Write on main by design.
-  # A handler that answers otherwise than 0 makes the check red, with what it
-  # printed.
+  # A red self-test or a handler that answers otherwise than 0 makes the
+  # check red, with what it printed; the handlers start after a red self-test
+  # too, since the fifth addendum, so that one run shows every fault at once.
+  # The name below keeps the three checks' names of the fourth addendum and
+  # adds "hooks on every system (alpine)".
   hooks-on-every-system:
-    name: hooks on every system
+    name: hooks on every system (${{ matrix.system }})
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+        include:
+          - system: ubuntu-latest
+            runner: ubuntu-latest
+          - system: macos-latest
+            runner: macos-latest
+          - system: windows-latest
+            runner: windows-latest
+          - system: alpine
+            runner: ubuntu-latest
+            container: alpine:3.22
+    runs-on: ${{ matrix.runner }}
+    container: ${{ matrix.container }}
     timeout-minutes: 15
     defaults:
       run:
         shell: bash
     steps:
+      - name: what the container needs, under Alpine alone
+        if: matrix.system == 'alpine'
+        shell: sh
+        run: apk add --no-cache bash git python3
+
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
@@ -138,8 +164,9 @@ jobs:
       - name: what the checkout holds
         run: |
           uname -a
+          { grep -m1 PRETTY_NAME /etc/os-release 2>/dev/null || sw_vers 2>/dev/null || true; } | head -1
           bash --version | head -1
-          awk --version 2>/dev/null | head -1 || awk -W version 2>&1 | head -1
+          { awk --version 2>/dev/null || awk -W version 2>/dev/null || busybox 2>/dev/null || true; } | head -1
           git version
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
@@ -148,7 +175,8 @@ jobs:
         run: |
           set -u
           ROOT=$(pwd)
-          "$ROOT/bin/devloop-command-reader" --self-test || exit 1
+          red=0
+          "$ROOT/bin/devloop-command-reader" --self-test || red=1
           PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
           T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-hooks.XXXXXX")
           P="$T/project"
@@ -188,7 +216,7 @@ jobs:
           PYEOF
           )
           LIST=$("$PY" -c "$PROG" "$P") || exit 1
-          red=0; n=0
+          n=0
           while IFS=$'\t' read -r EVENT MATCHER CMD INPUT; do
             [ -n "$CMD" ] || continue
             HOOK="${CMD/\$\{CLAUDE_PLUGIN_ROOT\}/$ROOT}"

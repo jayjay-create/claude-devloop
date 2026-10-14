@@ -517,8 +517,16 @@ surface. A first piece stands since 14 October 2026, the fourth addendum of
 the roadmap entry on the command reader: the reader runs on the three
 systems, and a workflow job runs its self-test and every hook on
 `ubuntu-latest`, `macos-latest` and `windows-latest`, there under Git Bash,
-on every pull request; the guard for PowerShell and the rest of this
-milestone stand as before.
+on every pull request, and since the fifth addendum of that day under Alpine
+3.22 with busybox awk as well, in a container on `ubuntu-latest`; the guard
+for PowerShell and the rest of this milestone stand as before. What devloop
+does on a system without bash belongs here too: the hooks and the programs
+are scripts for bash, and Claude Code's system requirements, read raw at
+code.claude.com/docs/en/setup on 14 October 2026, name "Alpine Linux 3.19+"
+among the systems and "Bash, Zsh, PowerShell, or CMD" as the shell, Alpine
+not carrying bash by default - the page's own section on Alpine installs it
+with `apk add bash curl libgcc libstdc++ ripgrep` before Claude Code runs
+there. Nothing of this is built yet.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

@@ -1506,14 +1506,22 @@ of 14 October 2026 the program runs on macOS, on Linux and on Windows with
 Git Bash alike, the awk program handed to awk as a here-document on file
 descriptor 3 and not as one argument of the command line, which Linux
 refuses at 131 072 bytes; a workflow job runs its self-test and every hook
-on the three systems on every pull request. Where the reader cannot say
+on the three systems on every pull request, and since the fifth addendum of
+that day under Alpine with busybox awk as well, in a container, the
+self-test naming every red case and the system a case's reading depends on,
+so that it is green on each. Where the reader cannot say
 what a command does, it reads the side on which the hook does not block,
-by the person's decision of 14 October 2026 — a text typed into a terminal,
-`rr` without a subcommand word, the names `ts` and `dotenv` that two
-vendors share, the points the fourth addendum names — and where the system
-decides which program is meant, the system decides, read off bash's
-`OSTYPE`: `login -f`, `script`, `kinit` and `man -P` as macOS runs them and
-as Linux and Git Bash do. The kinds and their
+by the person's decision of 14 October 2026 — `rr` without a subcommand
+word, the names `ts` and `dotenv` that two vendors share, the points the
+fourth addendum names — and where the system decides which program is
+meant, the system decides, read off bash's `OSTYPE`: `login -f`, `script`,
+`kinit` and `man -P` as macOS runs them and as Linux and Git Bash do. A text
+typed into a terminal that ends a line — `tmux send-keys` with `Enter`,
+`C-m` or `KPEnter` behind it, `screen -X stuff`, `zellij action write-chars`
+and `paste` with a line's end — is no doubt and is read as shell text, since
+the fifth addendum of 14 October 2026 by the person's decision of that day,
+as it was until the fourth: in the ordinary case a shell receives it;
+without the line's end nothing runs and nothing is read. The kinds and their
 programs, as the head of `bin/devloop-command-reader` lists them: (1)
 privileges, a command as an administrator or as another user — `sudo`,
 `doas`, `su`, `run0`, `pkexec`, `runuser`, `gsudo`, `gosu`, `runas`,
@@ -1775,9 +1783,13 @@ block, since there is no doubt. On 14 October 2026 the person decided that
 every doubt the reader had read on the blocking side lets through, the
 fourth addendum of the roadmap entry on the command reader: the
 twenty-one points of the third addendum's check of its readings, `man -P`
-under man-db, a text typed into a terminal and the two names two vendors
-share, each named there with its reading; where the system the reader runs
-on decides which program is meant, the system decides and no doubt remains.
+under man-db and the two names two vendors share, each named there with
+its reading; where the system the reader runs on decides which program is
+meant, the system decides and no doubt remains. The fourth addendum had
+counted a text typed into a terminal among the doubts; the person decided
+the same day, the fifth addendum, that it is none: in the ordinary case a
+shell receives it, so a typed text that ends a line is read as shell text
+again, as it was until the fourth.
 
 **That no run has met a form is no reason not to read it.** devloop is used
 by many people from here on, and what can come up comes up: a form the vendor
