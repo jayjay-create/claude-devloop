@@ -2872,10 +2872,13 @@ broken record on the branch already, since the squash lands only the last
 number; the header of `scripts/devloop-stock-take` states both rules. Since
 14 October 2026 the tool holds a run under the branch's own version to the
 branch's final state as well: a run whose row came into the table in a commit
-that does not contain the last change to a line of its thing, or that is dated
-before the day of that change, is a broken record on the branch, so that the
-check `main` requires goes red on the pull request; the header says in its
-section C what that check does not see. Until 26
+that does not contain the last change to a line of its thing is a broken
+record on the branch, so that the check `main` requires goes red on the pull
+request; the header says in its section C what that check does not see, a row
+re-anchored after the change among it, and why the run's date is not held
+against the day of the change: a run's date is the day its session log opens,
+read in the log's own timezone, and a commit's day is read in its author's, so
+the two days can differ on a run made after the change. Until 26
 September 2026 such a run
 was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.

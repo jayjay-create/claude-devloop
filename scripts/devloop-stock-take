@@ -271,11 +271,9 @@ Four record types:
   the version .claude-plugin/plugin.json carries in the working tree was
   introduced on this branch - its commit not on origin/main - every run under
   it is held, for every line its thing stands on, against the commit that
-  brought its row into the table, read with git blame of the table, and
-  against its date. A row whose commit does not contain the last change to
-  such a line is a broken record, the row's commit, the line and the change's
-  commit named; so is a run dated before the day of that change, by the
-  change's author date, where the change's commit is not the row's own. The
+  brought its row into the table, read with git blame of the table. A row
+  whose commit does not contain the last change to such a line is a broken
+  record, the row's commit, the line and the change's commit named. The
   check main requires goes red on the pull request, whose run reads the
   branch with its full history on refs/pull/N/merge; on main after the squash
   merge nothing of this can be seen, every line blaming to the one commit.
@@ -283,12 +281,17 @@ Four record types:
   October 2026 on the branch, lines of their things changed by later commits
   of it, counted on main against a03a720, and taken out of the table on 14
   October 2026. Not seen: a row re-anchored after the change carries the
-  later commit and is caught by its date alone, so one re-anchored on the day
-  of the change passes; a run made before a change and recorded in the one
-  commit with it passes, the row's commit being the change's; and with
-  origin/main not fetched the check runs on main as well, where every row's
-  commit is the squash commit and contains everything, so nothing is
-  reported there.
+  later commit and passes, whenever its run was made; a run made before a
+  change and recorded in the one commit with it passes, the row's commit
+  being the change's; and with origin/main not fetched the check runs on
+  main as well, where every row's commit is the squash commit and contains
+  everything, so nothing is reported there. The run's date is not held
+  against the day of the change, and was for a day: a run's date is the day
+  its session log opens, in the log's own timezone, and a commit's day is
+  read in its author's, so a session opened before midnight that commits
+  after it and runs after the commit carries the earlier day on the run and
+  the later on the change, and a test on the dates reports a run that was
+  not early.
   A run whose thing is rejected is rejected with it, with a message naming
   the thing's line, and covers nothing.
 - not-a-thing: file + anchor of a line from the search set judged not to be a
@@ -584,10 +587,10 @@ LIMITS
   or on main after the merge; the guard in scripts/devloop-version-guard sees
   it at the edit.
 - The check against a run recorded too early reads the commit of the run's
-  row off git blame of the table and the run's date, and only where the
-  tree's version was introduced on this branch; section C says what it does
-  not see - a row re-anchored on the day of the change, a run recorded in
-  the one commit with the change, and main after the squash.
+  row off git blame of the table, and only where the tree's version was
+  introduced on this branch; section C says what it does not see - a row
+  re-anchored after the change, a run recorded in the one commit with the
+  change, and main after the squash - and why the run's date is not read.
 """
 
 import ast
@@ -706,16 +709,6 @@ class Git:
             self.dates[h] = git(self.root, "show", "-s", "--format=%ci",
                                 h).strip()[:10]
         return self.dates[h]
-
-    def author_date(self, h):
-        """The author date, in the commit's own timezone, as YYYY-MM-DD: the
-        day the change was made, which a rebase keeps where it re-dates the
-        committer."""
-        key = ("author", h)
-        if key not in self.dates:
-            self.dates[key] = git(self.root, "show", "-s", "--format=%ai",
-                                  h).strip()[:10]
-        return self.dates[key]
 
     def blame_file(self, rel):
         """lineno -> (hash or None where uncommitted, committer time)."""
@@ -1900,9 +1893,9 @@ def analyse(root, table=None, only=None):
                 if origin_main is not None and tree_v is not None \
                         and rec["version"] == tree_v \
                         and not g.is_ancestor(vc, origin_main):
-                    # the version is this branch's own: the run's row and
-                    # its date against the last change to every line of the
-                    # thing, since 14 October 2026 - section C of the header
+                    # the version is this branch's own: the run's row
+                    # against the last change to every line of the thing,
+                    # since 14 October 2026 - section C of the header
                     b = g.blame_file(table_rel).get(rec.lineno)
                     row = None if b is None or b[0] is None else b[0]
                     for h in sorted(per_hash, key=lambda h: -per_hash[h][0]):
@@ -1920,21 +1913,6 @@ def analyse(root, table=None, only=None):
                                                "merge this could not be seen"
                                                % (row[:7], g.commit_date(row),
                                                   where(h))))
-                            early = True
-                            break
-                        if h != row and g.author_date(h) > rec["date"]:
-                            res.broken.append((rec.lineno, "recorded too "
-                                               "early: the run is dated %s "
-                                               "and %s:%d (%s) was changed on "
-                                               "%s at %s, by the author date "
-                                               "of that commit, so the run "
-                                               "cannot have met the line as "
-                                               "it stands; a run under the "
-                                               "version this branch "
-                                               "introduces is recorded only "
-                                               "at the branch's final state"
-                                               % (rec["date"], hrel, hn, hrole,
-                                                  g.author_date(h), h[:7])))
                             early = True
                             break
                 if early:
@@ -2361,8 +2339,7 @@ def selftest():
               "- **A run naming a commit with source log.**\n"
               "- **A run of the fourth unit, copied from the extra file.**\n"
               "- **A run recorded before a later commit changed its thing.**\n"
-              "- **A run recorded after the last change to its thing.**\n"
-              "- **A run dated before the day its thing last changed.**\n\n"
+              "- **A run recorded after the last change to its thing.**\n\n"
               "## Named, not built as skills\n\n"
               "| Skill | Description | Origin |\n|---|---|---|\n"
               "| `implement-ticket` | Build one task | test |\n"
@@ -2505,13 +2482,12 @@ def selftest():
             d.update(kw)
             return rec(**d)
 
-        # c7, c8 and c9, the shape of a branch that recorded a run under its
-        # own version and changed a line of the thing after: c7 commits a
-        # hook and a table with a run on it under 0.3.1, c8 changes the
-        # hook's line and records a second run, c9 records a third run dated
-        # before c8, the shape of a row re-anchored after the change. The
-        # three rows stand unchanged in the table written below, so that git
-        # blame attributes each to its commit.
+        # c7 and c8, the shape of a branch that recorded a run under its own
+        # version and changed a line of the thing after: c7 commits a hook
+        # and a table with a run on it under 0.3.1, c8 changes the hook's
+        # line and records a second run. The rows stand unchanged in the
+        # table written below, so that git blame attributes each to its
+        # commit.
         EARLY = "hooks/early.sh / whole file / silent pass outside a project"
         early_rows = [
             thing(EARLY, "hooks/early.sh", "[ -d docs/agents ] || exit 0",
@@ -2521,9 +2497,6 @@ def selftest():
                 version="0.3.1"),
             run(EARLY, "2026-01-16",
                 "A run recorded after the last change to its thing",
-                version="0.3.1"),
-            run(EARLY, "2026-01-14",
-                "A run dated before the day its thing last changed",
                 version="0.3.1"),
         ]
 
@@ -2543,9 +2516,6 @@ def selftest():
         run_git(root, "add", "hooks/early.sh", "docs/stock-take.tsv")
         run_git(root, "commit", "-q", "-m", "c8", date="2026-01-16T12:00:00+0100")
         c8 = run_git(root, "rev-parse", "HEAD")
-        early_table(4)
-        run_git(root, "add", "docs/stock-take.tsv")
-        run_git(root, "commit", "-q", "-m", "c9", date="2026-01-17T12:00:00+0100")
         # an uncommitted change to the shared note
         write(root, "shared/note.md",
               "When somebody writes in German, answer in German, always.\n")
@@ -3218,15 +3188,6 @@ def selftest():
              == "the run was recorded before the last change to its thing",
              not early_broken and reason(EARLY, "2026-01-16").startswith(
                  "version 0.3.1 (introduced at"))
-        case("a run under the branch's version dated before the day its "
-             "thing last changed, its row re-anchored after: broken by its "
-             "date",
-             err("recorded too early: the run is dated 2026-01-14 and "
-                 "hooks/early.sh:2 (site) was changed on 2026-01-16 at %s, by "
-                 "the author date of that commit" % c8[:7])
-             and reason(EARLY, "2026-01-14")
-             == "the run was recorded before the last change to its thing",
-             not early_broken and counts(GREY, "2026-01-14"))
         case("a run naming a commit with no origin/main here",
              has(res_norigin, "origin/main is not here, so the commit cannot "
                  "be checked against it"),

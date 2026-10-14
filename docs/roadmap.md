@@ -23949,16 +23949,19 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   0.137.0 recorded before later commits of their branch changed their things
   taken out of the table, the 89 not-a-thing records outside the search set
   kept, the tool rejecting a run under the branch's own version whose row came
-  in before a later commit changed its thing or whose date lies before that
-  change, one defect recorded and not built on the group of programs the
-  reader reads over going stale; four runs on the final code; the version
-  raised to 0.138.0.** On `task/catch-up-2026-10-14`, off `78a250d`, version
-  0.137.0 on `main`; the comments, the tool with its self-test, the version,
-  the 24 rows taken out, the rows of the table for all of it and this entry
-  without its runs in one commit, the runs and their rows in a second, no
-  commit after the first changing code, so that the tool's new check leaves
-  this branch green. The report stands on this machine as
-  `~/devloop-catch-up-2026-10-14.md`, in English, and is not in the
+  in before a later commit changed its thing, a second test on the run's date
+  built and taken out again by the person's decision, one defect recorded and
+  not built on the group of programs the reader reads over going stale; four
+  runs on the final code; the version raised to 0.138.0.** On
+  `task/catch-up-2026-10-14`, off `78a250d`, version 0.137.0 on `main`; the
+  comments, the tool with its self-test, the version, the 24 rows taken out,
+  the rows of the table for all of it and this entry without its runs in one
+  commit, the runs and their rows in a second; the date test taken out with
+  its rows and this entry corrected in a third, the runs made again on the
+  tool and the checks with their rows in a fourth, no commit after the third
+  changing code, so that the tool's check leaves this branch green. The
+  reports stand on this machine as `~/devloop-catch-up-2026-10-14.md` and
+  `~/devloop-catch-up-2026-10-14-addendum.md`, in English, and are not in the
   repository. Every line number of a file in this entry holds at `78a250d`
   unless it says otherwise.
 
@@ -24019,29 +24022,40 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     on `main` after the squash merge nothing of this can be seen, every line
     blaming to the one commit. The weakness the order named - a row
     re-anchored after the change carries the later commit and so hides an
-    early run - is answered by the run's date: a run dated before the day of
-    the last change to a line of its thing, by the author date of the
-    change's commit, which a rebase keeps where it re-dates the committer, is
-    a broken record as well, where the change's commit is not the row's own.
-    What stays unseen, and the head says so in section C and under LIMITS: a
-    row re-anchored on the day of the change; a run made before a change and
-    recorded in the one commit with it, the row's commit being the change's;
-    and with `origin/main` not fetched the check runs on `main` too, where
-    every row's commit is the squash commit and nothing is reported. The
-    check rests on what the counting rule already asks, a run made at a
-    committed state: a run on an uncommitted change committed on a later day
-    would be dated before that commit and rejected. What is built in
-    `scripts/devloop-stock-take`: `author_date` on `Git`, the table's path
-    held in `analyse`, the two tests in the block that counts runs, behind
-    the check on a version raised over, each test an outcome of the tool with
-    a row of its own; two cases in the self-test on a hook of the fixture and
-    three commits `c7` to `c9` after `c6`, one case for each test with its
-    green beside it, the self-test at 112 cases where 110 stood and 77 of 77
-    messages asserted by a case; the exit codes, section C and LIMITS of the
-    head; the conventions under "Before a handover, run these" name the check
-    beside the two rules the header states. The 24 runs above would have been
-    rejected on the branch of #171 by the first test, their rows committed on
-    12 and 13 October 2026 and lines of their things changed after.
+    early run - stays as the limit of this test, and the head says so in
+    section C and under LIMITS beside the two others: a run made before a
+    change and recorded in the one commit with it, the row's commit being
+    the change's; and with `origin/main` not fetched the check runs on `main`
+    too, where every row's commit is the squash commit and nothing is
+    reported. A second test against that weakness was built in the first
+    commit of this branch and taken out again in the third, by the person's
+    decision: it held the run's date against the day of the last change to a
+    line of its thing, by the author date of the change's commit, and
+    rejected a run dated before that day where the change's commit was not
+    the row's own. The reason stands in the conventions under "A run's date
+    is copied from the session log of that run, not from memory": a run's
+    date is the day its session log opens, read in the log's own timezone,
+    while `%ai` reads a commit's day in its author's timezone, so a session
+    that opens at eleven in the evening, commits code after midnight and
+    runs after the commit carries the earlier day on the run and the later
+    one on the change, and the test reported a run made after the change as
+    an early one. What is built in `scripts/devloop-stock-take`: the table's
+    path held in `analyse`, the one test in the block that counts runs,
+    behind the check on a version raised over, an outcome of the tool with a
+    row of its own; one case in the self-test on a hook of the fixture and
+    two commits `c7` and `c8` after `c6`, the case with its green beside it,
+    the self-test at 111 cases where 110 stood and 76 of 76 messages asserted
+    by a case; the exit codes, section C and LIMITS of the head; the
+    conventions under "Before a handover, run these" name the check beside
+    the two rules the header states, and why the run's date is not read. The
+    24 runs above would have been rejected on the branch of #171 by this
+    test, their rows committed on 12 and 13 October 2026 and lines of their
+    things changed after. Gone with the date test in the third commit:
+    `author_date` on `Git`, the second case with the third run row and the
+    commit `c9` of the fixture, the thing of the second test with its run row
+    in the table and the part-of record on the cache of `author_date`; the
+    self-test stood at 112 cases and 77 of 77 messages between the first
+    commit and the third.
 
   **The three comments, built as the audit's shoulds say.**
 
@@ -24168,8 +24182,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   from 15:56:38 to 15:56:40 UTC, `SELF-TEST PASSED: 112 cases; of the 77
   messages this tool rejects, refuses or answers with, read off its own
   source, 77 are asserted by a case and 0 by none`, exit 0, one run written
-  down on its outcome and one on each of the two outcomes this entry adds,
-  which the self-test produces once each; the reader's self-test from
+  down on its outcome and one on each of the two outcomes this entry added,
+  which that self-test produced once each, the date test's row gone with the
+  test in the third commit; the reader's self-test from
   15:56:41 to 15:56:47 UTC, `SELF-TEST PASSED: 159 cases`, exit 0, one run
   written down on its outcome; the nineteen checks under "Before a handover,
   run these" from 15:56:47 to 15:56:54 UTC, in a clean bash with
