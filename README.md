@@ -214,7 +214,10 @@ run installs it itself and reports what it did; a command that fetches and
 runs passes under that record without a place being read. `sudo`, an
 installer piped from the network, a branded browser Playwright would install
 at the system's own location and the system packages a browser's
-`install-deps` would install stay with you whatever the record says. The
+`install-deps` would install stay with you whatever the record says, and so
+does, since 13 October 2026, every program that runs the command as an
+administrator or as another user — `doas`, `su`, `run0`, `pkexec` and the
+rest of that kind, which `docs/skill-conventions.md` lists. The
 question that writes that record is put at setup. Since 9 October 2026 two
 more: a guard that blocks the file marking an unattended run from being
 written in any mode but auto, and states the permission mode beside a call
@@ -291,7 +294,12 @@ workflow under `.github/` runs the stock-take and its self-test on the merged
 state, and the branch protection on main requires that check, for admins too,
 so `gh pr merge` is refused while it is pending or red. The entry of 29
 September 2026 in `docs/roadmap.md` on the merge gate carries the setting and
-the merge sequence.
+the merge sequence. Since 14 October 2026 the protection requires four checks
+more, `hooks on every system (ubuntu-latest)`, `(macos-latest)`,
+`(windows-latest)` and `(alpine)`, which a second job of the same workflow
+runs: the reader's self-test and every hook once on each system; the fourth
+and fifth addenda of the roadmap entry on the command reader carry the
+command, and the setting was read off the platform on 14 October 2026.
 
 The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
 update`, `/plugin install`.
