@@ -20365,7 +20365,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   no command; the id a pipe behind the compound reads from stays the last
   command of the body, so `{ c; } > o | d` reads `d` from `c`; a substitution
   in a target is a command of the redirection line. `compound_end` at
-  `bin/devloop-command-reader` lines 1063 to 1087, the line emitted through
+  `bin/devloop-command-reader` lines 1063 to 1082, the line emitted through
   `judge`, the self-test's cases at lines 311 to 320, and the heads of the
   program and of the mark guard.
 
@@ -20474,7 +20474,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   committing on the main branch are hard — and the sentence of point 1 of this
   entry, line 19594, that the three fields stay. Built in `6a62e4d`:
   `hooks/hooks.json` lines 9 to 11 carry no `if`; the step of
-  `.github/workflows/stock-take.yml`, lines 59 to 96, checks beside the one
+  `.github/workflows/stock-take.yml`, lines 59 to 95, checks beside the one
   line and `"onFailure": "block"` that no handler under `PreToolUse` carries
   an `if` field, lines 91 to 93; the conventions at lines 2426 to 2437 and
   2455 to 2464; the head of the table guard, lines 12 to 15.
@@ -20845,7 +20845,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   now; then `eval`, `find`, a shell's `-c` and a shell reading its commands
   from stdin as before, the here-strings collected before any is taken apart,
   since taking one apart reuses the depth the words stand at. `compound_end`,
-  finding 1. `parse_simple`, lines 1150 to 1192, reads the words and hands
+  finding 1. `parse_simple`, lines 1158 to 1187, reads the words and hands
   them to `judge`. The self-test, lines 100 to 372, 104 cases where 94 stood:
   the ten new ones at lines 311 to 320 and 331 to 353, one per family — the
   redirections behind a group, a subshell, `for`, `if` and a function body,
@@ -20884,7 +20884,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `update`, `u`, `up`, `upgrade` and `udpate` 448, `pnpm` 453 and 459, `yarn
   global upgrade` 473, `bun update` and `up` 478. `hooks/hooks.json`: lines 9
   to 11 without the `if` fields, the three handlers now identical in form to
-  the others. `.github/workflows/stock-take.yml`: the step at lines 59 to 96
+  the others. `.github/workflows/stock-take.yml`: the step at lines 59 to 95
   checks the handlers under `PreToolUse` for an `if` field beside the field
   `"onFailure"`, red where one carries it, its name at line 71 saying so; run
   as a script on this machine on 13 October 2026, green, which is no run of
@@ -23533,6 +23533,410 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   line of the workflow and the busybox defect - and add seven: the two
   defects, a part-of row on the status line of finding 3, and part-of rows for
   the new lines of the search set in the reader and the workflow.
+- **The consistency audit of 14 October 2026 before the handover, read against
+  the three entries since the audit of 12 October 2026, the five addenda of the
+  third among them, and the code at `a03a720`: fifteen disagreements, seven
+  mended in the documents, two rows of the table brought to the tool's rule
+  and six recorded; the nine points of the order answered, two of them
+  measured on the tool; the platform's run of pull request #171 read; 14
+  October 2026, the version stays 0.137.0.** On `task/audit-2026-10-14`, off
+  `a03a720`, version 0.137.0 on `main`; this entry, the mends and the rows of
+  the table in one commit, the runs made on the clean tree in a second.
+  Nothing under `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/` or
+  `.github/` changes, so the version stays and `.claude-plugin/plugin.json` is
+  untouched; what is wrong outside `docs/` and `README.md` stands below with
+  what is and what should be, and is not built. The report stands on this
+  machine as `~/devloop-audit-2026-10-14.md`, in English, and is not in the
+  repository. Every line number of a file in this entry holds at `a03a720`
+  unless it says otherwise.
+
+  **What was read, and how.** On 14 October 2026 on a branch cut from
+  `origin/main` at `a03a720`, the working tree clean, the installed copy at
+  0.137.0 equal to the tree in all five directories, the check under "Before
+  you change anything, run this" printing nothing. Read whole: `docs/plan.md`,
+  `docs/skill-conventions.md`, `README.md` and the header of
+  `scripts/devloop-stock-take`; of this file everything before the first entry
+  under "Known gaps", everything from "## Decisions taken against" on, the
+  four audits before this one as the form, and the three entries after the
+  audit of 12 October 2026 — the decisions of that day, the four changes to the
+  tool, and the command reader with its five addenda of 13 and 14 October
+  2026; the code, `git diff 3ee3a1f a03a720 -- skills shared hooks bin scripts
+  .github .gitattributes`, 18 files, 5495 lines added and 549 removed, the
+  reader and the install guard read whole at `a03a720`, 3623 and 990 lines,
+  the workflow whole, the nine other hooks, `hooks/hooks.json`,
+  `.gitattributes` and the three shared texts in the diff, the tool in its
+  changed regions; the table through the tool at `a03a720`, exit 0, nothing
+  broken, nineteen findings, no unit without a straight path, none of 3614
+  lines uncovered, 206 lines that can carry no unique anchor, no status word
+  broken over a line break, 198 runs that do not count, and `git diff 3ee3a1f
+  a03a720 -- docs/stock-take.tsv`, 1397 rows added — 114 things, 1094
+  not-a-thing, 189 runs — and 131 removed — 53 things, 74 not-a-thing, 4
+  findings. Of the 1094 the notes of the 114 things and of the 11 template
+  rows were read; every line a note names is one an entry names too, and
+  holds at the stand that entry names. The 1083 rows reading "part of" were
+  held mechanically, each to stand in the file of its thing's site or of its
+  evidence: every one does, no exception. The line references of the three
+  entries and the five addenda were held against the stand each names —
+  `3ee3a1f`, `c42039a` and `393983c`, `3ab792a` and `fe8b98d`, `27a2e5d` and
+  `6a62e4d`, `66f1bc2` and `67e97a4`, `aca54c0` and `cde29cf`, `84f1aab` and
+  `1d295f2`, `6365a96` and `ef1b470`, the branch commits fetched as the heads
+  of pull requests #169, #170 and #171, the tree of `84a0bf6` equal to that of
+  `a03a720` — more than four hundred of them, read with `git show` at the
+  commit named, and hold there, three ranges of the first addendum excepted,
+  corrected below. The fifth addendum's line numbers of the reader and the
+  conventions hold at `6365a96`, where the text it replaced stood, as its
+  opening says, and its "its line" numbers at `84f1aab`, whose branches came
+  back. The commands and what they printed stand in the report.
+
+  **The entries against the code.** Every statement of the three entries and
+  the five addenda about what a hook, a program, a shared text or the workflow
+  does was held against the files at `a03a720`, and each holds: the one line
+  `INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1` and the `HERE`
+  line once in each of the ten hooks that read their input, `cat >/dev/null`
+  as the one line of `hooks/stop-checks.sh` and the reader named nowhere in
+  it, the workflow's first step run as a script on this machine and green;
+  `"onFailure": "block"` on the eight handlers under `PreToolUse` and the one
+  under `PermissionRequest`, no `if` field under `PreToolUse`, thirteen
+  handlers in all; the reader's head with the eleven kinds and what stands
+  outside the group, its tables, `skip_wrapper`, `skip_two`, `first_of`,
+  `judge`, `git_read`, `compound_end` and the typed text with `ends_line` and
+  `line_end_off`, its self-test at 159 cases green on this Mac, naming every
+  red case and ending with the count, `runw`, `runm` and `runl` for the
+  readings that depend on the system, the awk program on file descriptor 3,
+  `j()` doubling a backslash with `&&`; the install guard reading every
+  command for itself — the first kind at line 281 and through `priv_if` and
+  `cond_priv`, `sg` and `s6-applyuidgid` out of the first kind and the group
+  options no stop, the routes with their vendors' subcommands, `mise exec` and
+  `x` out of the version managers' verbs, the browser variables, a destination
+  inside the project opening nothing, the cause under a yes for the first kind
+  in the approved wording at line 773; the mark guard reading a redirection
+  behind a compound command and the word as the shell hands it; the branch
+  guard, the table guard and the identity guard with `git_command` and the
+  table guard's comment corrected; the merge guard at three words; the hook on
+  permission prompts reading its input once the mark stands; the session start
+  reading the identifier through the reader; `shared/command-does-not-answer.md`
+  and `shared/body-through-file.md` as point 7 of the entry rewrote them and
+  the first addendum narrowed the one sentence; `shared/fetch-and-run.md` with
+  the three forms of Nix and `nix-shell -p`; the workflow's two jobs, the
+  second with its matrix of four, `shell: bash` as its default, the handlers
+  read off `hooks/hooks.json` with python3 and `.gitattributes` with `* text=auto
+  eol=lf`. One thing the fifth addendum does not say stands below under what is
+  recorded: the first step of the Alpine entry marks the checkout a safe
+  directory for git beside installing bash, git and python3, which `84a0bf6`,
+  the branch's last commit, added after the addendum was written.
+
+  **The documents against the code and the entries, by weight.** Three wrong,
+  four stale, two rows of the table out of date against the files, six
+  recorded as they are. Each mended place carries a defect thing sited on its
+  status line here, with the mended line as its evidence, which for a document
+  reads recorded and not built, as the audit of 30 September 2026 had it. A
+  line in a dated entry is corrected in place only where it is a wrong line
+  number, the way the audit of 12 October 2026 corrected four; nothing else in
+  a dated entry is changed, and what a dated entry does not say this entry
+  says with the line.
+
+  **Wrong.**
+
+  - The first addendum of 13 October 2026 to the entry on the command reader,
+    finding 1, named "`compound_end` at `bin/devloop-command-reader` lines
+    1063 to 1087" at `6a62e4d`; the function runs from line 1063 to its
+    closing brace at 1082, and 1083 opens `parse_command`. Corrected in place.
+
+    Recorded, not built: for `compound_end` the first addendum of 13 October
+    2026 names lines 1063 to 1082 of the reader.
+
+  - The same addendum, under "What is built", named "`parse_simple`, lines
+    1150 to 1192" at `6a62e4d`; the function runs from 1158 to 1187, lines
+    1150 to 1157 being the end of `parse_command` and 1188 to 1192 the comment
+    lines before `judge`. Corrected in place.
+
+    Recorded, not built: for `parse_simple` the first addendum of 13 October
+    2026 names lines 1158 to 1187 of the reader.
+
+  - The same addendum named the workflow's step as "lines 59 to 96" twice,
+    under finding 7 and under "What is built"; `.github/workflows/stock-take.yml`
+    has 95 lines at `6a62e4d`, and the step ends on `exit $red` at 95.
+    Corrected in place at both places.
+
+    Recorded, not built: for the workflow's step the first addendum of 13
+    October 2026 names lines 59 to 95, at both places.
+
+  **Stale.**
+
+  - `README.md` under "The check suite" named what stays with the person
+    whatever the record says: `sudo`, an installer piped from the network, a
+    branded browser and the system packages of `install-deps`. Since 13 October
+    2026 every program that runs the command as an administrator or as another
+    user is a stop under every answer as well — `doas`, `su`, `run0`, `pkexec`
+    and the rest of the first kind of the group the reader reads over, 58
+    programs at `a03a720`, `hooks/pre-tool-use-install-guard.sh` line 281 and
+    `cond_priv`, the conventions saying so under "The second kind is a browser
+    for tests". Mended with a dated clause that sends to the conventions for
+    the list.
+
+    Recorded, not built: README.md names the programs that run a command as an
+    administrator or as another user among what stays with the person whatever
+    the record says.
+
+  - `README.md` under "Working on devloop itself" and `docs/skill-conventions.md`
+    under "Registering a skill" said the branch protection on `main` requires
+    the one check `stock-take`. Since 14 October 2026 it requires five: read
+    off the platform on 14 October 2026 with `gh api
+    repos/jayjay-create/claude-devloop/branches/main/protection`, the contexts
+    `stock-take`, `hooks on every system (ubuntu-latest)`, `hooks on every
+    system (macos-latest)`, `hooks on every system (windows-latest)` and `hooks
+    on every system (alpine)`, `strict` true and `enforce_admins` true; the
+    fourth and fifth addenda carried the command, and the owner ran it. Mended
+    in both with a dated sentence. The header of the tool says of the
+    stock-take that its run is the check `main` requires; that stays true of
+    that check and is not changed.
+
+    Recorded, not built: README.md says the branch protection on main requires
+    five checks since 14 October 2026.
+
+    Recorded, not built: the conventions say under "Registering a skill" that
+    the protection requires five checks since 14 October 2026.
+
+  - `docs/skill-conventions.md` under "A hook reads its input through one
+    program" sent the reader of a program's source to "the roadmap entry on
+    the command reader and its three addenda of 13 October 2026". The fourth
+    and fifth addenda of 14 October 2026 read vendors as well — skarnet's
+    `s6-applyuidgid`, `rr`, `gdb`, man-db, GNU parallel, `systemd-run`,
+    `onchange`, `when-changed`, `pdm`, the `script` of util-linux, busybox awk
+    among them — so a reader sent to the three would not find them. Mended:
+    its five addenda of 13 and 14 October 2026. The head of the reader says the
+    same at its line 75 and stands below.
+
+    Recorded, not built: the conventions send the reader of a program's source
+    to the five addenda of 13 and 14 October 2026.
+
+  **Two rows of the table, out of date against the files.** The head of the
+  tool, section D: a repair moves the evidence onto the line that carries it,
+  since a table reading recorded and not built for something now built is the
+  state the tool exists to end; where the evidence leaves a status line, the
+  site moves onto it.
+
+  - The defect of the audit of 4 October 2026 on the rule keeping runtimes out
+    of the install question, status line 10349, carried its evidence on that
+    status line. Its should left two ways, a mechanism at the question tool or
+    the rule going, and the second was taken on 5 October 2026: the question
+    says nothing about runtimes at all, `shared/install-question.md` lines 22
+    to 28, "so since 5 October 2026 nothing of it is said", and the
+    conventions say so under "Runtimes are not a kind the permission may
+    cover". The evidence moves onto line 28 of the shared text; the site stays
+    on the status line, and the note says why.
+
+    Recorded, not built: the defect on the rule keeping runtimes out of the
+    install question carries its evidence on the line of
+    shared/install-question.md saying nothing of it is said since 5 October
+    2026.
+
+  - The defect of the stock-take of 23 September 2026 on `domain.md` naming the
+    two places as created in step 6, status line 5307, carried its evidence on
+    that status line. Since 1 October 2026 step 6 creates the two places
+    itself, behind the branch cut, and the sentence reads "the two just
+    created, or what question 6 found living elsewhere",
+    `skills/setup-project/SKILL.md` line 634. The evidence moves onto that
+    line; as it leaves the status line, the site moves onto the status line,
+    and the note says why.
+
+    Recorded, not built: the defect on domain.md and the two places carries its
+    evidence on line 634 of setup-project and its site on its status line.
+
+  **Recorded as they are.**
+
+  - `hooks/pre-tool-use-identity-guard.sh` lines 45 to 47 say that every block
+    leaves through the two lines at the end "since a line routed through a
+    function stands in no search set of the stock-take". Since 12 October 2026,
+    version 0.136.0, a line that calls a function of its file that ends the
+    program stands in the search set as an exit does, point 1 of the entry of
+    that day on the four changes to the tool. The two lines at the end are
+    right; the reason is not. Should: the comment says why the block leaves
+    through the two lines without that reason, or drops it. Outside `docs/`,
+    not built here.
+
+    Recorded, not built: the identity guard's comment gives as its reason that a
+    line routed through a function stands in no search set, which has not held
+    since 12 October 2026.
+
+  - `.github/workflows/stock-take.yml` line 158, the first step of the Alpine
+    entry, runs `apk add --no-cache bash git python3 && git config --global
+    --add safe.directory "$GITHUB_WORKSPACE"`; the comment above it, lines 112
+    to 132, and the fifth addendum, lines 23421 to 23423, name the installation
+    alone. The second half came with `84a0bf6`, the branch's last commit,
+    whose subject names it, after the addendum was written and the Alpine
+    check had run on the pull request. Should: the comment names both halves
+    and why the second, git refusing in a container a repository owned by
+    another user unless the directory is marked safe. Outside `docs/` for the
+    comment; the addendum stands as written, and this entry says what it does
+    not.
+
+    Recorded, not built: the workflow's comment and the fifth addendum name the
+    Alpine step's installation and not its marking the checkout a safe
+    directory for git.
+
+  - `bin/devloop-command-reader` line 75 sends, as the conventions did, to "the
+    entry on the command reader and its three addenda of 13 October 2026" for
+    the sources of the group; the fourth and fifth addenda read vendors as
+    well. Should: the five addenda of 13 and 14 October 2026. Outside `docs/`.
+
+    Recorded, not built: the head of the reader sends to three addenda of 13
+    October 2026 for the sources of the group, where two of 14 October 2026
+    read vendors as well.
+
+  - Measured at `a03a720` with `search_set` and `find_anchor` of the tool,
+    loaded as a module with `sys.dont_write_bytecode` set: 89 not-a-thing
+    records stand on lines outside the search set — 62 under `bin/`, all in
+    the reader, 16 under `skills/`, 5 under `docs/`, 4 under `hooks/`, 1 under
+    `shared/` and 1 under `.github/` — where 22 stood at `3ab792a`. The 67 that
+    came are rows the branch added on lines that later left the set, the 56
+    calls of the self-test's `lines` helper among them, which left the set with
+    the fifth addendum when `fail()` stopped ending the program. Nothing in the
+    tool checks that a not-a-thing record stands on a line of the set; such a
+    record covers nothing and harms nothing, and the entry of 12 October 2026
+    on the four changes to the tool dropped 25 such rows by hand. Should: the
+    tool lists such records under a heading of its own, as it lists the lines
+    that can carry no anchor, so that they are seen; whether they are dropped
+    is then each order's to decide. Two ways for the 89 rows, neither decided
+    by a rule: drop them, as that entry did, or keep them as facts on lines
+    that may re-enter the set. Not changed here; both in the report.
+
+    Recorded, not built: 89 not-a-thing records stand on lines outside the
+    search set at a03a720 and the tool lists none of them.
+
+  - Measured in a throwaway worktree at `84a0bf6`, outside the clone and
+    removed at the end, with `analyse` of the tool for the lines each thing
+    stands on, `git blame` of the table for the commit of each run's row,
+    `git blame` of those lines, and `git merge-base --is-ancestor`: of the 162
+    runs under 0.137.0, 24 stand on a row whose commit does not contain the
+    last change to every line of their thing — the run was recorded and a
+    later commit of the branch changed the code it ran against — on 15 things,
+    6 of which have no other run under 0.137.0 that does: the reader's "the
+    fields and the commands of a Bash call" and its "--self-test", the install
+    guard's block under a yes for `doas`, `su`, `run0` and `pkexec`, and the
+    defects on `setpriv`, on the group put together from single programs and on
+    the two vendors' lists. The head of the tool, section C: a run under the
+    version a branch introduces is recorded only at the branch's final state;
+    the branch of #171 recorded runs on 12, 13 and 14 October 2026 and changed
+    lines of their things after, without raising the version, which the guard
+    allows once per branch. On `main` the tool holds every one against
+    `a03a720`, the squash commit, which contains everything, and counts them:
+    the rule that must undercount overcounts here. The measurement undercounts,
+    since a run row re-anchored later carries the later commit. Should: on a
+    branch whose version is the tree's and was introduced on that branch, the
+    tool holds a run's row commit against the commits of its thing's lines and
+    reports a row older than a line, which `main` cannot after the squash. Two
+    ways for the 24 runs, neither decided by a rule: they go, since the rule
+    they were recorded against says they were recorded too early, and the six
+    things read built and never walked until a run on the final code; or they
+    stay as facts with this entry naming them. Not changed here; both in the
+    report. The runs of this entry's second commit on the reader's self-test
+    and its outcomes, made at `a03a720`, are runs on the final code and walk
+    two of the six.
+
+    Recorded, not built: 24 of the 162 runs under 0.137.0 were recorded before
+    later commits of the branch changed lines of their things, and the tool
+    counts them on main.
+
+  - The entries on the two closing runs of 11 October 2026 name their evidence
+    under `~/devloop-lauf1` and `~/devloop-lauf2`, lines 17031, 17436 and
+    17447, and their reports
+    `~/devloop-report-2026-10-11-first-closing-run-findings.md` and
+    `~/devloop-report-2026-10-11-second-closing-run.md`, lines 17017 and
+    17420; the two entries of that day before them name
+    `~/devloop-report-2026-10-11-hook-prompt-subagent.md` and
+    `~/devloop-report-2026-10-11-mark-guard-askuserquestion.md`, lines 16799
+    and 16897. None of the six is on this disk on 14 October 2026, checked with
+    `ls -d` on each, the person having deleted them. What the four entries
+    record of the runs is what remains; they stand as written, and a later
+    reader knows not to look for the files.
+
+    Recorded, not built: the evidence and the reports the four entries of 11
+    October 2026 name are not on this disk since the person deleted them, and
+    the entries are their record.
+
+  **The list of the order, answered.** Points 1 and 2 are the last item above.
+  Points 3 and 4 are the two rows of the table above. Point 5 is the fourth
+  item above, point 7 the first, point 8 the second, point 9 the fifth. Point
+  6, whether the list `RUNS THAT DO NOT COUNT` and the old run rows should go:
+  `docs/plan.md` line 124 and the head of the tool at line 389 foresee the
+  list, and `grep -rn -i 'runs that do not count' skills shared hooks bin
+  .github` prints nothing. The head decides it, section D, "Runs that do not
+  count stay in the output, each with the reason", and section C, the table
+  holds facts and a run is one; neither the list nor the rows go, and no two
+  ways are left to the person.
+
+  **The platform's run of pull request #171, read on 14 October 2026.** Run
+  38556330326 on the merge ref of `84a0bf6`, `HEAD 1bbb9a2` with the parents
+  `3ab792a` and `84a0bf6`, five jobs green between 11:24:24 and 11:26:09 UTC:
+  `stock-take`, git 2.55.0 and Python 3.12.3, `origin/main` at `3ab792a`, the
+  tool `BROKEN RECORDS: 0`, `FINDINGS: 19`, `UNCOVERED LINES OF THE SEARCH
+  SET: 0 of 3614`, its self-test 110 cases, the hooks step `SELF-TEST PASSED:
+  159 cases`; `hooks on every system (ubuntu-latest)`, Ubuntu 24.04.5 LTS,
+  bash 5.2.21, GNU Awk 5.2.1, git 2.55.0, `core.autocrlf` unset, the reader
+  and the install guard `i/lf w/lf`; `(macos-latest)`, Darwin 25.6.0, bash
+  3.2.57, awk version 20200816, git 2.55.0, `core.autocrlf` unset; `(windows-
+  latest)`, MINGW64_NT-10.0-26100, bash 5.3.15, GNU Awk 5.4.1, git
+  2.55.0.windows.5, `core.autocrlf` true from the system's gitconfig and both
+  files `i/lf w/lf` all the same; `(alpine)`, Alpine Linux v3.22, bash 5.2.37,
+  BusyBox v1.37.0, git 2.49.1, `core.autocrlf` unset — on each the self-test
+  `SELF-TEST PASSED: 159 cases` and `13 handlers started`, each exit 0. The
+  outcomes of the workflow this run walked carry a run each in the second
+  commit, with this paragraph as the line that records them: the four-system
+  check green, its checkout step, the `stock-take` check green, its checkout
+  step, the run on every pull request and the hooks step.
+
+  **Records.** Fifteen defect things, one per disagreement above, sited on its
+  status line: the seven mended ones evidenced on the mended line — in the
+  first addendum of 13 October 2026 for the three corrected ranges, in
+  `README.md` for two, in the conventions for two — and the eight others on
+  their status line; the head of this entry as part of the first; the two rows
+  brought to the rule, the evidence of the defect on runtimes onto
+  `shared/install-question.md` and of the defect on `domain.md` onto
+  `skills/setup-project/SKILL.md` with its site onto its status line, each
+  note saying why. No finding added, and the tool's finding count stays; no
+  thing lost a run, since no mended line carries a record with runs. The tool
+  after the change, measured on 14 October 2026 from 12:30:56 to 12:32:23 UTC
+  on this tree with the changes in place, before the first commit: no broken
+  record, 19 findings as at `a03a720`, no unit without a straight path, no
+  status word broken over a line break, none of 3630 lines uncovered, exit 0;
+  the counts against `a03a720`: the search set 3630 lines where it was 3614,
+  the head of this entry and its fifteen status lines; recorded and not built
+  242 where it was 229, its defects 231 where they were 218, the fifteen come
+  and the two rows gone from it; built and never walked 1039 where it was
+  1037, the two rows; walked 462 and undetermined 28 as they were;
+  not-a-thing records 2344 where they were 2343, of which part of 2156 where
+  it was 2155; 206 lines that can carry no unique anchor as before; 198 runs
+  that do not count, the same runs; every other count unchanged. The figures
+  as printed stand in the report, with the tool at the branch's last commit.
+
+  **The tool, its self-test, the reader's self-test and the nineteen checks
+  under 0.137.0 at `a03a720`.** Run on 14 October 2026 on the clean tree at
+  `a03a720`, before the first edit of this entry: the tool from 11:54:37 to
+  11:56:07 UTC, `BROKEN RECORDS: 0`, `FINDINGS: 19`, nothing under `STATUS
+  WORDS OF docs/roadmap.md BROKEN OVER A LINE BREAK`, `UNITS WITHOUT A
+  STRAIGHT PATH: 0`, `UNCOVERED LINES OF THE SEARCH SET: 0 of 3614`, exit 0,
+  written down on its exit 0 outcome; the nineteen checks under "Before a
+  handover, run these" from 12:12:04 to 12:12:08 UTC, each printing what its
+  section calls green, line for line what they printed at `f3452aa` as the
+  entry on the command reader records them — the registration two empty
+  lists, the names check silent, invocability one count per skill, the one
+  locked skill named by `build-work`, the copies silent, the insert lines
+  silent, the grant silent, the language block twelve lines, the notice one
+  checksum line and twelve, the expansion silent, the executables silent, the
+  arming command 2 and 2, the default branch 1, the status forms 1 twice, the
+  offers seventeen lines, the handovers nine over eight sites, the unattended
+  finish silent, the second statement one line — one run written down on each
+  of the nineteen; the reader's self-test from 12:12:09 to 12:12:15 UTC,
+  `SELF-TEST PASSED: 159 cases`, exit 0, one run written down on its outcome
+  and one on each of its five other outcomes, which the self-test produces
+  once each; the tool's self-test from 12:12:15 to 12:12:17 UTC, exit 0,
+  `SELF-TEST PASSED: 110 cases; of the 74 messages this tool rejects, refuses
+  or answers with, read off its own source, 74 are asserted by a case and 0 by
+  none`, one run written down on its outcome. The runs stand in the second
+  commit, 27 of them beside the six read off the platform above, 33 in all,
+  each held against `a03a720`, whose lines these things stand on this branch
+  does not change.
 
 ## Decisions taken against
 

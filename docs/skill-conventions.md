@@ -925,7 +925,12 @@ check `stock-take` is green: `.github/workflows/stock-take.yml` runs
 branch protection on main requires that check, for admins too, since 29
 September 2026, so `gh pr merge` is refused while it is pending or red; the
 entry of that date in `docs/roadmap.md` on the merge gate carries the setting
-and the merge sequence.
+and the merge sequence. Since 14 October 2026 four checks more are required,
+`hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
+and `(alpine)`, the second job of the same workflow, which runs the reader's
+self-test and every hook once on each system — the fourth and fifth addenda
+of the entry on the command reader carry the command, and the audit of 14
+October 2026 read the setting off the platform.
 
 ## Writing long files
 
@@ -1499,8 +1504,8 @@ the options that take a value and the options whose value is itself a
 command, each with how the vendor runs that value, as a text for a shell or
 as words, the release or commit named together with the command that shows
 it exists and the sentence the reading rests on quoted, and named with its
-address in the roadmap entry on the command reader and its three addenda of
-13 October 2026; a reading made from a summary and not from the source is
+address in the roadmap entry on the command reader and its five addenda of
+13 and 14 October 2026; a reading made from a summary and not from the source is
 no reading, since the third addendum of that day. Since the fourth addendum
 of 14 October 2026 the program runs on macOS, on Linux and on Windows with
 Git Bash alike, the awk program handed to awk as a here-document on file
