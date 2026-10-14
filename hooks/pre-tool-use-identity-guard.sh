@@ -43,8 +43,8 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # refuses - word for word in docs/roadmap.md under the entry of 9 October
 # 2026 and its addendum of 10 October 2026, <what was read> filled with the
 # form read, without its value. Every block leaves through the two lines at
-# the end, since a line routed through a function stands in no search set of
-# the stock-take.
+# the end, so that the message stands once, with what was read filled in,
+# and the block's record in docs/stock-take.tsv stands on the one exit line.
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0

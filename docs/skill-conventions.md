@@ -2869,7 +2869,13 @@ the check stands on. A run made on a branch under the version the branch's
 merge will introduce, the one the branch ends on, counts there and after the
 squash merge alike; one made under a version the branch raised over is a
 broken record on the branch already, since the squash lands only the last
-number; the header of `scripts/devloop-stock-take` states both rules. Until 26
+number; the header of `scripts/devloop-stock-take` states both rules. Since
+14 October 2026 the tool holds a run under the branch's own version to the
+branch's final state as well: a run whose row came into the table in a commit
+that does not contain the last change to a line of its thing, or that is dated
+before the day of that change, is a broken record on the branch, so that the
+check `main` requires goes red on the pull request; the header says in its
+section C what that check does not see. Until 26
 September 2026 such a run
 was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.
