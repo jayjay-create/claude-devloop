@@ -155,7 +155,7 @@ jobs:
       - name: what the container needs, under Alpine alone
         if: matrix.system == 'alpine'
         shell: sh
-        run: apk add --no-cache bash git python3
+        run: apk add --no-cache bash git python3 && git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - uses: actions/checkout@v7
         with:
