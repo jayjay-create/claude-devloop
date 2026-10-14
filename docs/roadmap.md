@@ -22183,6 +22183,714 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   branch they stand among the runs that do not count with that reason, as the
   runs of the first addendum do, and count on `main` after the merge.
 
+  **Third addendum of 13 October 2026: `setpriv`, `hyperfine`, the options
+  whose value is a command, and the search for the group; the version stays
+  0.137.0.** On `task/command-reader`, off `aca54c0`; the code in the first
+  commit after it, this addendum and the rows of the table in the second, the
+  runs in the third. Every line number in this addendum, of this file or of
+  another, holds at `aca54c0` unless it says otherwise. The report stands on
+  this machine as `~/devloop-report-command-reader-addendum-3.md`, in English,
+  and is not in the repository. Every reading of a vendor below rests on the
+  wording of the source, fetched raw with `curl` from
+  raw.githubusercontent.com, from the vendor's page or from the GitHub API,
+  and the release or commit is named with what shows that it exists; the
+  report quotes the sentence each reading rests on with the command and its
+  output.
+
+  **Finding 1: `setpriv` was a stop whatever its options.** The install guard
+  stopped `setpriv` under every answer, `hooks/pre-tool-use-install-guard.sh`
+  line 219 at `aca54c0`, and `setpriv --no-new-privs make test` answered 0 0 0
+  0 at `3ab792a` and 2 2 2 2 at `aca54c0`; the second addendum called that a
+  doubt read on the blocking side, lines 21868 to 21870 and 22090 to 22092,
+  where the conventions name as the first kind the programs that run a command
+  as an administrator or as another user, `docs/skill-conventions.md` lines
+  846 to 851 and 1484 to 1488. Should: `setpriv` is a stop under every answer
+  only where it sets another user, another group or other supplementary
+  groups; without such an option the reader reads over it and the command
+  behind decides. Read off `sys-utils/setpriv.1.adoc` of util-linux at the tag
+  `v2.42.4`, commit `a1d2b6980b84`, the newest release tag, the project
+  publishing tags and no GitHub releases: "--ruid uid, --euid uid, --reuid
+  uid:: Set the real, effective, or both UIDs", "--rgid gid, --egid gid,
+  --regid gid:: Set the real, effective, or both GIDs", "--groups group...::
+  Set supplementary groups", "--clear-groups:: Clear supplementary groups",
+  "--keep-groups:: Preserve supplementary groups. Only useful in conjunction
+  with --rgid, --egid, or --regid", "--init-groups:: Initialize supplementary
+  groups using initgroups3. Only useful in conjunction with --ruid or --reuid"
+  - nine of the ten options the order names. The tenth, `--keep-groups`,
+  "Preserve supplementary groups. Only useful in conjunction with --rgid,
+  --egid, or --regid", sets nothing, so that by the order's own should it is
+  no stop, and `setpriv --keep-groups make test` answers 0 0 0 0. Built in
+  `cde29cf` for finding 1: the guard reads the words between `setpriv` and the
+  judged word, or all of its words where the line has no judged word or
+  `setpriv` is the judged word itself, and stops on one of the nine, its value
+  attached by `=` or standing apart, with the cause in the wording of line 703
+  as it stands, "it needs setpriv, which stays the user's under every answer";
+  the reader reads over `setpriv` as before, its table naming the options that
+  take a value. This revises the sentences of the second addendum at lines
+  21341 to 21350, "read as a stop whatever its options, as `sudo -u` with
+  one's own name is", at lines 21868 to 21870 and at lines 22090 to 22092.
+
+  **Finding 2: the reading of `hyperfine`, and the claim of the order about
+  it.** The order says the roadmap names as its source "README at v2.0.0",
+  lines 20562 to 20564, that the list of releases names v1.20.0 of 18 November
+  2025 as the newest and that `CHANGELOG.md` on `master` has no section
+  v2.0.0, and it quotes the README on `master` as saying "By default, commands
+  are executed using a predefined shell (`/bin/sh` on Unix, `cmd.exe` on
+  Windows)." Read raw on 13 October 2026, that does not hold:
+  `api.github.com/repos/sharkdp/hyperfine/releases` names v2.0.0, published
+  2026-10-07T21:13:36Z, neither draft nor prerelease, then v2.0.0-alpha.2,
+  v2.0.0-alpha.1, v1.21.0 of 2026-10-05 and v1.20.0 of 2025-11-18; the tag
+  v2.0.0 is commit `b33755fe1fca`;
+  github.com/sharkdp/hyperfine/releases/latest redirects to the tag v2.0.0;
+  `CHANGELOG.md` on `master`, commit `c51615249805` of 2026-10-12, opens on "#
+  v2.0.0"; the sentence the order quotes stands in the README at v1.20.0, line
+  115, and not on `master`, whose README says at line 112 "By default,
+  benchmarked commands, including warmup runs, are executed directly, without
+  an intermediate shell (`--shell=none`)." The first addendum's reading at
+  lines 20562 to 20564 named a release that exists and read its default right;
+  what was wrong stands beside it: `-S` read as taking a value, which since
+  v2.0.0 is a flag, "An alias for '--shell=default'", and every command read
+  as shell text against that default, lines 20920 to 20924, 21089 to 21091 and
+  21866 to 21867, named a doubt read on the blocking side. That doubt falls
+  with this addendum. Built in `cde29cf` for finding 2, read off `src/cli.rs`,
+  `src/options.rs`, `src/command.rs`, `src/main.rs` and `src/shell_syntax.rs`
+  at the tag v2.0.0 and its `CHANGELOG.md`: without `-S`, `-N` and `--shell` a
+  benchmarked command is split by shell_words, "Arguments are split using
+  shell-like quoting", and run with no shell, and a command holding `&&`,
+  `||`, `|`, `;`, `>`, `>>` or `<` as a word of its own, unquoted, is refused
+  with "contains unquoted shell syntax", nothing run; with `-N` or
+  `--shell=none` it is split the same and run with no shell, an `&&` in it an
+  argument and no second command; with `-S`, `--shell default` or `--shell`
+  naming a shell it is a text for that shell; "Setup, prepare, conclude, and
+  cleanup commands always use a shell: the selected shell, or the platform
+  shell when this option is omitted or set to "none"", `sh` on Unix and
+  `cmd.exe` on Windows. The order's should, which reads every command without
+  `-N` and `-S` as a text for the shell, is the behaviour of v1.x; the order's
+  own rule for finding 3, the vendor's grammar at the newest release, decides
+  for v2.0.0, which is also what Homebrew ships, formula `hyperfine` 2.0.0.
+  The order's `-S none` is under v2.0.0 the flag `-S` and a benchmarked
+  command `none`, read so. Decided by the same rule: `cmd.exe`, the platform
+  shell on Windows, takes a command line that is code in another language, so
+  on Windows with Git Bash the texts `hyperfine` hands to it are not read, by
+  the rule of the conventions on code in another language; the reader tells
+  the systems apart by bash's own `OSTYPE`, `msys` under Git Bash and `cygwin`
+  under Cygwin, so that no program is started for it. Not read: v1.x, still in
+  the packages of distributions that have not taken 2.0.0, runs every command
+  through `sh` by default and takes `--reference`; a command written for it is
+  read as v2.0.0 reads it.
+
+  **Finding 3: the options whose value is a command.** The reader read the
+  value of every option of `hyperfine` as a value, lines 979 to 989 and the
+  table `HYPEROPTS` at line 541, so that `hyperfine --prepare 'brew install
+  ripgrep' make` answered 2 2 0 0 at `3ab792a` and 0 0 0 0 at `aca54c0`, and
+  `nodemon` only the value of `--exec` as a text, line 481, so that `nodemon
+  --exec brew install ripgrep` answered 0 0 0 0. Should: every option of a
+  program of the group whose value is a command is read as one, by the
+  vendor's grammar at the newest release, by its manual for a program that
+  comes with the system, and every option that takes a value stands in the
+  table. Built in `cde29cf` for finding 3: `hyperfine`'s `-s`, `--setup`,
+  `-p`, `--prepare`, `-c`, `--cleanup`, `-C` and `--conclude`, short, long and
+  with `=`, texts for the shell of their line; `--reference` and
+  `--reference-name` taking a value that is no command, since v2.0.0 removed
+  both - "`--reference` and `--reference-name` have been removed (for now).
+  The first command is always considered as the reference command", and
+  `--reference` given fails with "The --reference option has been removed" and
+  runs nothing - so that the order's case `hyperfine --reference 'brew install
+  ripgrep' make` answers 0 0 0 0 where the order wrote "wie allein", by the
+  vendor's sentence; `nodemon` at v3.1.14, `lib/cli/parse.js`,
+  `lib/config/command.js` and `lib/monitor/run.js`: `-x` and `--exec` take the
+  program as one word, every word that is no option of `nodemon` and no value
+  of one, and everything behind `--`, is appended to it, and the whole is one
+  string `sh -c` runs, `cmd` with `/d /s /c` on Windows; the README's "nodemon
+  --exec "python -v" ./app.py" with "Now nodemon will run `app.py` with python
+  in verbose mode". `nodemon`'s table corrected beside it: `-C` is
+  `--on-change-only`, a flag, where it stood as taking a value; `-d`, `-s`,
+  `-P`, `--polling-interval` and `--cwd` take a value and were missing; `-h`,
+  `--help`, `-v` and `--version` run nothing. `flock` at util-linux v2.42.4,
+  `sys-utils/flock.c`: the options read with `getopt_long(argc, argv,
+  "+sexnoFuw:E:hV?", ...)`, which knows no `c`, and `-c` or `--command` taken
+  only as the word right after the file, "if (!strcmp(argv[optind + 1], "-c")
+  || !strcmp(argv[optind + 1], "--command"))"; before the file `-c` is an
+  option it does not know, the call ends in `errtryhelp(EX_USAGE)`, exit 64,
+  and nothing runs, which the order measured with "flock: invalid option --
+  'c'"; `-w`, `--wait`, `--timeout`, `-E`, `--conflict-exit-code`, `--start`
+  and `--length` take a value, where the table had `-w`, `--timeout`, `-E` and
+  `--conflict-exit-code`. Every program already in the group was held against
+  the same two questions at the same source, the options that take a value and
+  the options whose value is a command, each named with its source below and
+  in the report.
+
+  **The programs already in the group, read again.** Every program the group
+  held at `aca54c0` was read again on 13 October 2026 against the two
+  questions of finding 3, at the source the order names, 183 programs or forms
+  in four parts, each by a subagent of this session that wrote its readings
+  into a throwaway directory outside the repository; the report holds each
+  with its source address, release or commit, the command and output that show
+  it exists, the options that take a value, those whose value is a command and
+  how the vendor runs it. 142 differed from the tables in 331 points, and each
+  point was held against the code afterwards, as the paragraph on the check
+  below says. At the first reading these were built, of the first kind: `sudo`
+  1.9.17p2, its options and `VAR=value` read interleaved, `-l`, `-e`, `-v`,
+  `-V` and `-K` running nothing; `run0` of systemd v262, `--via-shell` and
+  `-i` joining the words into a text for the login shell; `pkexec` 127, `-u`
+  taking a value; `gsudo` v2.6.1, the words a text for `bash -c` under Git
+  Bash, `-d` handing them to `cmd`, not read, and `config`, `status`, `cache`,
+  `help` and `!!` running nothing; `machinectl` with `-P`, `--verify` and
+  `--format`; `login -f` of shadow 4.20.3 running no program, the reading of
+  macOS kept, a stop either way. Of the second: `script` of util-linux 2.42.4,
+  the words behind `--` one text, and macOS's `-p` and `-T` playing back a
+  file; `firejail` 0.9.80, `ssh-agent` 10.6p1, `kinit` of Heimdal 7.8.0 and
+  macOS, `strace` 7.2 and `ltrace` 0.8.1, where `-p` no longer makes them
+  judged themselves since a command beside it still runs, `valgrind` 3.27.1,
+  `heaptrack` 1.5.0, `perf` 7.2 with the texts of `stat --pre` and `--post`,
+  `gdb` 18.1 with `--no-escape-args` joining the inferior's words into a text,
+  `lldb` 23.1.3, `rr` 5.9.0, `dtrace`, `bpftrace` 0.27.0 with `--cmd`, `time`,
+  `env` with `-a`, `-P` and `--env0-from`, `ionice`, `uclampset`, `numactl`,
+  `lckdo`, `unbuffer`, and zsh's precommand modifier `-` taken in. Of the
+  third: `devbox run`, `mise`, `nix`, `fnm`, `poetry`, `pdm run`, `rye run`,
+  `mamba` and `micromamba`, `pixi run`, whose one word is a text for its own
+  shell and whose several words are words, `uv run` at 0.13.0, whose `-c`,
+  `-b`, `--overrides` and `--torch-backend` were not its own, `composer`,
+  `tox`, `dotenvx`, `doppler`, `infisical`, `sops`, `chamber`, `railway`,
+  `chruby-exec`, `envchain`, `godotenv`, `rvm exec`, `teller run` and
+  `aws-vault --pass-cmd`. Of the fourth to the eighth: `find`, whose `+` ends
+  `-exec` only behind `{}`, GNU `parallel` 20260922 joining the command into a
+  shell text unless `-q`, moreutils' `parallel`, `fd` v10.5.0, macOS's
+  `apply`, `tmux` 3.8 with `new-pane`, `detach-client -E`, `run-shell` and
+  `if-shell` unless `-C` or `-F`, GNU `screen` 5.0.2 with its options that
+  take a value and `-X` with `exec`, `backtick` and `printcmd`, `zellij`
+  v0.45.1, `dtach` v0.9 and `abduco` v0.6, whose socket or session word stands
+  before the command, `tsp`, whose actions run nothing, `pueue add` v4.0.4,
+  where `-p` prints and `-o` is the priority, `daemon` v0.8.4, splitting `-X`
+  at blanks, `entr` 5.9 under `-s`, `watchexec` v2.8.0 joining the command
+  unless `-n`, `reflex`, `onchange` v7.1.0, `cargo watch` v8.5.3,
+  `watchman-make`, `when-changed`, `wgo` v0.7.2, `watch` of procps-ng 4.0.7
+  joining its words into a text for `sh -c` unless `-x`, `git difftool -x`
+  under `-d` one program word, `npm exec`, `npm explore`, `pnpm exec` with
+  `-c`, `yarn exec`, whose first word is a text for berry's own shell, and
+  `bun run` and `bun exec`. Named and not built at the first reading: `direnv
+  exec` with a file as its directory, hatch's matrix words and its `ENV:`
+  prefix, `conda run` with a newline inside one argument, `bundle exec` of a
+  single word not on `PATH`, cross-env's unanchored test of a setter, the
+  variadic options of `dotenvx` and `env-cmd`, the flags kingpin and urfave
+  read anywhere on the line for `aws-vault` and `sops`, `proto`'s version word
+  and `pdm --pep582`'s optional value, each read on the side that the command
+  behind decides; `pkexec` taking a `--` as its program, a stop in any case;
+  and `uv run` with an `http` or `https` address as its first word, which
+  fetches a script and runs it, a fetch-and-run form the guard does not name.
+
+  **Finding 4: the search for the group was narrower than the group.** The
+  conventions name the group every program that runs its argument or a text as
+  a command on this machine, lines 1476 to 1483; the second addendum searched
+  the manuals of macOS and the Command Line Tools, the manuals of eight Linux
+  projects, four Windows pages and, for the third, fifth, sixth and eighth
+  kinds, the pages of tools "each found by its name", lines 21305 to 21331,
+  and named `pbrun`, `dzdo` and `start-stop-daemon` as "not read today", lines
+  21865 to 21866. Should: every kind searched in sources that list the
+  programs of a whole area, every source with its search and the number of
+  hits, every hit read or left out with a reason, what is found taken into the
+  group with the options that take a value and those whose value is a command,
+  a program that runs the command as an administrator or as another user of
+  the first kind and a stop under every answer, only under an option where it
+  does so only there, a new kind named where none of the eight fits. What the
+  documents leave out by a decision stays out and is named where a search
+  meets it. Searched on 13 and 14 October 2026, each source by a subagent of
+  this session with the same brief, which named the group, the eight kinds,
+  the decisions that leave things out and the programs already in the group,
+  and which each wrote its hits into a throwaway directory outside the
+  repository; the report holds every search with its pattern and its count,
+  every hit with its verdict and every program taken in with the sentence of
+  its vendor, its release or commit and the command and output that show it
+  exists.
+
+  The sources. Debian sid main, amd64: `Packages.xz` and
+  `i18n/Translation-en.bz2`, 76 656 packages with their long descriptions, 107
+  regular expressions over the descriptions by kind - among them, for the
+  first kind, "privilege" 217, "sudo" 68, "switch(ing)? user" 96, "as root"
+  28; for the second "wrapper" 1801, "lock" 2338, "trace|profil" 2199; for the
+  fifth "daemon" 1411 - and a search of 227 names of known runners in the
+  package names, which found 34 packages no description matched, busybox,
+  toybox, bfs, dvtm, ttyd, xinit and dpkg's start-stop-daemon among them; 13
+  212 packages hit, 8 510 put aside by group as libraries, bindings,
+  documentation, data, fonts, games, kernels and debug symbols after 974 of
+  them were read by name, 4 702 read one by one; 218 taken in. Alpine edge,
+  main and community: the descriptions of 29 052 records by the same patterns,
+  "wrapper" 142, "lock" 133, "init|PID 1|zombie|reap|signal" 173, "daemon"
+  247; Arch through its JSON search, 42 terms, "wrapper" 153, "daemon" 162,
+  "lock" 140; the AUR through its RPC, the same 42 terms, "wrapper" 1323,
+  "lock" 1411, "daemon" 1327, "proxy" 805, "watch" 500; 865 hits judged over
+  the three after the mechanical grouping of 556 AUR hits, 376 taken in, 40
+  left open where the vendor documents no form or did not answer. Homebrew:
+  the 8 658 formulae of `formula.json`, 673 hits, 82 taken in, the casks out
+  as applications; MacPorts through its API, 33 terms, 1 013 ports, 74 taken
+  in; the manuals of this Mac, 4 271 page files of 2 117 pages in sections 1
+  and 8, 97 hits on the synopsis, 4 taken in, and 114 further hits read, 5
+  taken in. The registries: npm, crates.io, RubyGems and pkg.go.dev, 36 term
+  sets each, the first two pages of each answer on npm and crates.io, up to
+  five on RubyGems and two on pkg.go.dev, 28 414 entries read, 19 537 hits,
+  320 taken in; PyPI answered every search with a page of its own that asked
+  for JavaScript, and the descriptions of the python3 packages of Debian
+  trixie were searched in its place, 214 packages, 4 taken in. Windows with
+  Git Bash: the 4 100 manifests of the Scoop buckets main and extras, 429
+  hits; Chocolatey's feed, 39 terms, 2 397 packages; MSYS2's database, 4 703
+  packages, 226 hits; winget through api.winget.run, 888 packages; Microsoft
+  Learn's windows-commands, 737 pages read, 113 hits; 89 taken in. nixpkgs:
+  `packages.json.br` of nixos-unstable, 150 810 attributes; Fedora 44, whose
+  `primary.xml.zst` lists 67 430 packages, Fedora 42 answering 404; 55
+  patterns by kind and an added search for terminal emulators, netcat and
+  compiler launchers, 13 405 hits, 215 groups of programs taken in, 30 left
+  unverified. Merged over all sources by program and form, 913 candidates: 837
+  built from the tables the merge wrote, 29 left out by name or grammar with
+  their reasons below, 19 read by hand, 24 through a form of two words and 4
+  already in the group or read in its reading of git; the 40 of the AUR and
+  the 30 of nixpkgs and Fedora that their vendors leave without a documented
+  form stay open, each named in the report.
+
+  **The searches by kind**, each source with the number of its distinct
+  searches for the kind, the sum of their hits and the search with the most
+  hits, every search with its pattern and count in the report, 878 rows: (1)
+  privileges - Debian sid 14, 598 hits, `privilege` 217; Alpine edge 8, 21
+  hits, `/privilege/` 12; Arch official 4, 37 hits, `as root` 19; AUR 4, 192
+  hits, `sudo` 96; Homebrew formulae 8, 9 hits, `/privilege/` 5; MacPorts 3,
+  12 hits, `sudo` 6; Scoop 7, 9 hits, `privilege` 6; MSYS2 listing 7, 1 hit,
+  `privilege` 1; MSYS2 search API 3, 0 hits; Chocolatey 3, 33 hits, `sudo` 12;
+  winget 3, 3 hits, `privilege` 2; nixpkgs 8, 99 hits, `privilege` 44; Fedora
+  44 8, 126 hits, `privilege` 50. (2) process control - Debian sid 34, 10126
+  hits, `lock` 2338; Alpine edge 16, 730 hits, `/init|PID
+  1|zombie|reap|signal/` 173; Arch official 13, 599 hits, `wrapper` 153; AUR
+  13, 5013 hits, `lock` 1411; Homebrew formulae 16, 334 hits, `/wrapper/` 66;
+  MacPorts 11, 575 hits, `lock` 163; Scoop 14, 197 hits, `proxif|proxy` 48;
+  MSYS2 listing 14, 114 hits, `wrapper` 52; MSYS2 search API 9, 32 hits,
+  `benchmark` 13; Chocolatey 9, 905 hits, `console` 396; winget 9, 155 hits,
+  `lock` 44; nixpkgs 16, 4069 hits, `wrapper` 1609; Fedora 44 16, 4724 hits,
+  `trace|profil` 1641. (3) the environments of projects and versions - Debian
+  sid 13, 559 hits, `environment variable` 209; Alpine edge 6, 121 hits,
+  `/environment/` 95; Arch official 3, 5 hits, `version manager` 3; AUR 3, 76
+  hits, `version manager` 62; Homebrew formulae 6, 129 hits, `/environment/`
+  69; MacPorts 2, 26 hits, `dotenv` 20; Scoop 5, 70 hits, `environment` 55;
+  MSYS2 listing 5, 26 hits, `environment` 22; MSYS2 search API 2, 1 hit,
+  `dotenv` 1; Chocolatey 2, 153 hits, `version manager` 145; winget 2, 272
+  hits, `version manager` 272; nixpkgs 9, 317 hits, `secret` 181; Fedora 44 9,
+  308 hits, `secret` 149. (4) the programs that start many commands - Debian
+  sid 12, 1871 hits, `parallel` 1017; Alpine edge 5, 59 hits, `/parallel/` 37;
+  Arch official 2, 45 hits, `parallel` 44; AUR 2, 334 hits, `parallel` 322;
+  Homebrew formulae 5, 53 hits, `/parallel/` 38; MacPorts 2, 250 hits,
+  `parallel` 250; Scoop 4, 17 hits, `parallel` 15; MSYS2 listing 4, 21 hits,
+  `parallel` 15; MSYS2 search API 3, 12 hits, `parallel` 12; Chocolatey 3, 105
+  hits, `parallel` 102; winget 3, 15 hits, `parallel` 14; nixpkgs 7, 538 hits,
+  `parallel` 330; Fedora 44 7, 647 hits, `parallel` 433. (5) terminal sessions
+  and the background - Debian sid 18, 4371 hits, `daemon` 1411; Alpine edge 8,
+  301 hits, `/daemon/` 247; Arch official 7, 204 hits, `daemon` 162; AUR 7,
+  1614 hits, `daemon` 1327; Homebrew formulae 8, 84 hits, `/daemon/` 39;
+  MacPorts 7, 100 hits, `daemon` 54; Scoop 8, 109 hits, `daemon|service` 87;
+  MSYS2 listing 8, 49 hits, `daemon|service` 37; MSYS2 search API 9, 10 hits,
+  `service` 4; Chocolatey 9, 945 hits, `service` 654; winget 9, 345 hits,
+  `process manager` 248; Microsoft Learn 1, 41 hits, `\bservice\b` 41; nixpkgs
+  9, 1257 hits, `daemon` 508; Fedora 44 9, 1593 hits, `daemon` 598. (6) a
+  command on a file change - Debian sid 8, 772 hits, `watch` 305; Alpine edge
+  3, 79 hits, `/change/` 53; Arch official 2, 28 hits, `watch` 20; AUR 2, 599
+  hits, `watch` 500; Homebrew formulae 3, 81 hits, `/change/` 56; MacPorts 2,
+  51 hits, `watch` 50; Scoop 3, 41 hits, `change` 32; MSYS2 listing 3, 21
+  hits, `change` 17; MSYS2 search API 2, 5 hits, `watch` 5; Chocolatey 2, 182
+  hits, `watch` 153; winget 2, 4 hits, `watch` 4; nixpkgs 4, 280 hits, `watch`
+  191; Fedora 44 4, 174 hits, `watch` 109. (7) git's own subcommands - Debian
+  sid 4, 1012 hits, `\bgit\b` 613; Alpine edge 1, 4 hits, `/git/ AND
+  /run|exec|hook/` 4; Homebrew formulae 1, 12 hits, `/git/ with
+  /run|exec|hook/` 12; Scoop 1, 7 hits,
+  `git.*(run|exec|hook)|(run|exec|hook).*git` 7; MSYS2 listing 1, 1 hit,
+  `git.*(run|exec|hook)|(run|exec|hook).*git` 1; nixpkgs 1, 104 hits, `git AND
+  run|exec|hook` 104; Fedora 44 1, 127 hits, `git AND run|exec|hook` 127. (8)
+  the package managers - Debian sid 4, 5440 hits,
+  `\b(run|exec|execute|executes|running|executing)\b` 5100; Alpine edge 1, 1
+  hit, `/package manager|workspace|monorepo/ AND /run|exec/` 1; Homebrew
+  formulae 1, 2 hits, `/package manager|workspace|monorepo/ with /run|exec/`
+  2; Scoop 1, 4 hits, `(package
+  manager|workspace|monorepo).*(run|exec)|(run|exec).*(package
+  manager|workspace|monorepo)` 4; MSYS2 listing 1, 0 hits; nixpkgs 1, 47 hits,
+  `package manager|workspace|monorepo AND run|exec` 47; Fedora 44 1, 23 hits,
+  `package manager|workspace|monorepo AND run|exec` 23. Beyond the kinds: the
+  names of 227 known runners searched among the package names of Debian; two
+  supplementary searches in Alpine, 355 hits; and terminal emulators, netcat
+  and compiler launchers in nixpkgs, 149, and Fedora, 128. Without a kind: the
+  36 terms of the registries, each run on npm, crates.io, RubyGems,
+  pkg.go.dev, PyPI and its fallback over the python3 packages of Debian
+  trixie; twelve terms each on Arch and the AUR and six on MacPorts, monorepo
+  and workspace among them; the two searches over the manuals of this Mac, 97
+  synopses and 114 further matches; seven terms each on the search API of
+  MSYS2, Chocolatey and winget, and eight on Microsoft Learn. MacPorts repeats
+  its total on every page of an answer, so its sums are taken over distinct
+  terms.
+
+  The three kinds this addendum derives, each where none of the eight fits.
+  (9) The programs that run a command on an event other than a file change, as
+  the sixth kind runs it on a file change: idleness, sleep and wake, a lock of
+  the screen, an incoming connection, a message - `swayidle`, `xidlehook`,
+  `xss-lock`, `xautolock`, `sleepwatcher`, `mbidled`, `wayidle`, `silentjack`,
+  `socat`, `ncat`, `websocat`, `tcpserver`, `tcpsvd`, `unixserver`,
+  `micro_inetd`, `mini-inetd`, `websocketd`, the servers of s6,
+  `shellinaboxd`, `tcpclient` and others the head of the reader lists. (10)
+  The multi-call binaries, which carry many programs and run the one their
+  first argument names: `busybox` and `toybox`, read over to the applet, which
+  is then read as its own program. (11) The programs whose own work runs a
+  command an option names: `zip -TT`, `tar -I`, `--use-compress-program`,
+  `--to-command`, `-F`, `--info-script` and `--new-volume-script`, `man -P`,
+  `bat --pager`, `rsync -e`, `feh --action` and `--info`, `fzf --preview` and
+  the actions of `fzf --bind` and `sk --bind` that run a command, and the
+  options of `git send-email`, `git grep -O` and git's transports, read in the
+  reader's reading of git. The compiler launchers, `ccache`, `sccache`,
+  `distcc`, `icecc` and `icerun`, which run what they cannot cache, stand
+  under the second kind.
+
+  **Taken in for finding 4.** Built in `cde29cf`: 880 programs or forms, each
+  with the options that take a value and those whose value is a command, as
+  the head of `bin/devloop-command-reader` lists them by kind: of the first
+  58, of the second 297, of the third 146, of the fourth 129, of the fifth
+  138, of the sixth 62, of the seventh 1 with `git test run --exec` of
+  git-branchless and the `ext::` address of git-remote-ext, of the eighth 2,
+  of the ninth 36, of the tenth 3, of the eleventh 8 with the options of `git
+  send-email`, `git grep -O`, git's transports and `git instaweb` whose value
+  is a command. Of the first kind a stop under every answer since this
+  addendum: `sg` and `gosu` beside those the searches found, `addo`, `asroot`,
+  `autologin`, `cado`, `doas-keepenv`, `dosr`, `dzdo`, `elevate`, `gasroot`,
+  `kdesu`, `key2root`, `ksu`, `lxdoas`, `lxqt-sudo`, `lxsu`, `lxsudo`,
+  `MinSudo`, `nircmd elevate`, `oslo-rootwrap`, `pbrun`, `please`, `qsudo`,
+  `qt-sudo`, `rdo`, `really`, `run-as`, `RunAsTI`, `RunFromProcess`,
+  `s6-applyuidgid`, `s6-setuidgid`, `security execute-with-privileges`,
+  `setuid`, `setuidgid`, `ShellRunas`, `shellrunas`, `su-exec`, `su-rs`,
+  `sudo-cli`, `sudo-request`, `sudo-rs`, `super`, `sux`, `sv shell`, `syca`,
+  `tsudo`, `voix`, `win-sudo`, `wsudox`, `xdg-su`, `xfsudo`, `xuserrun` and
+  `yas`; a stop only under an option that sets another user, a group or the
+  supplementary groups, read for the words before the judged word and for the
+  judged word itself: `setpriv` with the nine options of finding 1, `chpst`
+  and `runtool` with `-u` or `-U`, `xchpst` with `-u`, `-U` or `--user`,
+  `psexec` with `-s`, `-u` or `-h`, `compartment` with `--user` or `--group`,
+  `capsh` with `--user`, `--uid`, `--gid` or `--groups`, `immortal` with `-u`,
+  `dmon` with `-u` or `-U`, `minijail0` with `-u` or `-g`, `lrun` with `--uid`
+  or `--gid`, `tcpserver`, `unixserver` and `s6-ipcserver` with `-u`, `-g` or
+  `-U`, `tcpsvd` and `udpsvd` with `-u`, `shellinaboxd` with `-s` or
+  `--service`, `start-stop-daemon` with `-c` or `--chuid`, `spawn-fcgi` with
+  `-u` or `-g`, `daemon` with `-u` or `--user`, `daemonize` with `-u`,
+  `systemd-run` with `--uid` or `--gid` and `pm2` with `--uid` or `--gid`, and
+  `AdvancedRun` with `/RunAs`. The cause under a yes is the one of line 703 of
+  the guard as it stands, "it needs <the program>, which stays the user's
+  under every answer".
+
+  Left out, each with its reason, the two ways named where the order asks for
+  them. A name a builtin of the shell or another program carries: `bg`, a
+  builtin of bash and zsh, and `foreach`, a reserved word of zsh, which npm
+  packages install as well; `atlas`, `dms`, `el`, `fw`, `llexec`, `proxy`,
+  `rush`, `sd`, `srt`, `sx`, `watcher` and `wd`, which Debian ships as
+  programs of another meaning, GNU Rush and sd the find-and-replace tool among
+  them, and `s`, `g` and `z`, one letter; `rush`, met again by both passes of
+  the check for completeness, is GNU Rush in Debian. A name two programs share
+  with different grammars: `executor`, `loop`, `mp` alone - the text of
+  python-multiplex, where `mp plan` of microplane is read - `prun`, `run`,
+  `watch-and-run`, `wt` - WiredTiger's `wt`, worktrunk and Windows Terminal -
+  `concurrent` and `using`; and, of the programs already in the group, `ts`,
+  task-spooler and the timestamp filter of moreutils, and `dotenv`, dotenv-cli
+  of npm and the Ruby gem, both read as the second addendum reads them, on the
+  blocking side, and `pnpm <cmd>`, which runs a script of that name or, where
+  none is, the command. For these the two ways are: read the name as the
+  program of the group, and misread the other program whose argument may name
+  an installation, a false stop on the blocking side; or leave the name out,
+  and miss the command the program of the group runs. Neither a vendor nor a
+  rule of the conventions decides between two vendors of one name, so they are
+  not built. Not commands at all: the words win-node-env installs, `NODE_ENV`
+  and its kin, which bash reads as assignments. Out by the decisions the
+  documents carry: the commands a program reads from a file, `jobqueue` and
+  `ParaFly`, as a script file named to a shell is out; the commands piped into
+  a program, `xjobs` and `rust-parallel` fed through a pipe, as what a pipe
+  carries into a shell is out; a Windows command line, `forfiles /C` and the
+  texts of `RunAsTI`, `MinSudo`, `elevate`, `wsudox` and `win-sudo`, code in
+  another language - those five are judged themselves and are of the first
+  kind; the programs that run the command elsewhere, which the searches met
+  and left out: `forkfs`, `hakoniwa`, `ia-sandbox`, `vopono`, `zerobox`,
+  `kubectl exec`, `podman exec`, `vagrant ssh`, `pdsh`, `mpirun` with a
+  hostfile and `psexec` with a computer; the fetch-and-run forms met: `guix
+  shell` with packages, `fades`, `stack exec --package`, judged themselves
+  with the command they hand on a line of its own as `nix shell` is; `uv run`
+  with a URL as its first word, which fetches a script and runs it, named and
+  not built, a form the documents name nowhere. Without a form their vendor
+  documents, or unread, each named in the report: 40 of the AUR, among them
+  `gwae`, `jobman`, `latch`, `teru` and `tmxr`, and 30 of nixpkgs and Fedora,
+  among them `beesu` behind a 403, `contour` and `roxterm` behind a 404, `tym`
+  and `germinal`.
+
+  **The list of the order, held against the searches once they stood.** Every
+  one of its 25 cases answered 2 2 0 0 or 2 2 2 2 at `3ab792a` and 0 0 0 0
+  under no at `aca54c0`, as the order says, measured again on 14 October 2026.
+  Found by the searches and read off their vendors: `gosu`, `su-exec`,
+  `chpst`, `setuidgid`, `s6-setuidgid`, `tini`, `dumb-init`, `proxychains4`,
+  `torsocks`, `faketime`, `retry`, `foreman`, `envdir`, `opam exec`,
+  `concurrently`, `nx exec` and `pm2`, and `npm explore` in the reading again
+  of the programs already in the group. Missed, each with why: `pbrun`, of
+  BeyondTrust's Endpoint Privilege Management, and `dzdo`, of Delinea's Server
+  Suite, which no distribution, formula collection or registry packages, the
+  sources enumerating packaged software only; `ksu`, which Debian ships inside
+  `krb5-user` and Homebrew inside `krb5`, where the searches read the
+  descriptions of packages, which name the package's purpose and not its
+  binaries; `scl` of scl-utils, whose description, "Utilities for alternative
+  packaging", holds no search term of the kinds; `devenv shell`, found in
+  nixpkgs with its reading pending when the search ended; `lerna exec`, whose
+  npm description names publishing the packages of a monorepo, of which the
+  searches read the first two pages per term; and `yarn workspaces foreach`, a
+  subcommand of a program already in the group, where the reading again took
+  `yarn exec` only. Each is read off its vendor and built: `ksu` of MIT
+  Kerberos at `krb5-1.22.2-final`, the command behind `-e`; `scl` of scl-utils
+  at 2.0.3, `enable` and `run` with the collections up to the text, or the
+  words behind `--`; `devenv shell` at v2.4.0, the words behind it; `lerna
+  exec` at v10.1.1 and `yarn workspaces foreach` at `@yarnpkg/cli/4.18.1`, the
+  command behind `exec`; `pm2 start` at v7.0.4, a script holding a blank
+  handed to `bash -c`, "If command is like pm2 start "python xx.py --ok" Then
+  automatically start the script with bash -c"; `pbrun` read off BeyondTrust's
+  page, "pbrun [options] command [command_arguments]", and `dzdo` with the
+  options of `sudo`, Delinea's three reference pages answering 404 and its
+  page on events saying "The dzdo program is similar to sudo", an assumption
+  named. Corrected by the vendor: none of the 25; `scl enable devtoolset-9
+  'brew install ripgrep'` is the form scl-utils documents, and `ksu root -e
+  /usr/bin/brew install ripgrep` names the program by its path, as the
+  manual's `-e` asks.
+
+  **The check for completeness, two passes, each by a subagent that knew
+  nothing of this work.** Each got the definition of the group from the
+  conventions, lines 1476 to 1478, the kinds with their definitions and
+  without their programs, what the documents leave out by a decision, and the
+  brief to find programs for macOS, Linux and Windows with Git Bash from
+  sources of its choice, with a case `brew install ripgrep` in the form the
+  vendor describes, the vendor's sentence and the source, into a throwaway
+  directory outside the repository; it was told to open neither the repository
+  nor the lists of the searches, and got neither the order nor its list. Every
+  case was fed as the JSON of a hook through the new
+  `bin/devloop-command-reader`, and a program stands on no list where no line
+  names in the field `first` a word that is `brew` or ends on `/brew`. The
+  first pass, on 14 October 2026, read 153 programs off 62 pages of
+  raw.githubusercontent.com, 41 of man7.org, 30 of manpages.ubuntu.com, 7 of
+  linux.die.net, 5 of the macOS manuals at keith.github.io, 4 of cr.yp.to and
+  one each of man.openbsd.org, man.freebsd.org, git.savannah.gnu.org and
+  busybox.net; 16 of them stood on no list. Taken in, each with the source
+  that should have found it and why it did not: `capsh` and `dockerize`, whose
+  descriptions in Debian and Homebrew name capabilities and templates;
+  `wait-for-it.sh`, which the searches found as `wait-for-it` only; `ncat`
+  with `--sh-exec` and `-c`, a text, and `-e`, words, where the searches had
+  read its `--exec` alone; `mate-terminal -e`, whose `-e` takes the command as
+  one text; `tar` with `-I`, `--use-compress-program`, `--to-command`,
+  `--info-script` and `--new-volume-script`, `fzf --preview` and GNU
+  coreutils' multi-call binary of uutils, programs whose descriptions name
+  their own work and no command, the eleventh kind none of the searches had
+  looked for by name; and `run-one` with its five siblings, whose Debian
+  description the pattern for the fifth kind did not match. Left out, each
+  with its reason: `machinectl shell` into a container, a command run
+  elsewhere; `gow`, whose case `gow install ripgrep` runs `go install ripgrep`
+  and no `brew`; `modd` and `air`, whose commands stand in a configuration
+  file, as a script file named to a shell is out; `rush`, a name GNU Rush
+  carries in Debian; `rg --pre`, decided out in the second addendum, lines
+  21857 to 21858; and `pandoc --filter`, taken in after the pass and taken
+  back by the same rule, as below.
+
+  The second pass, on 14 October 2026, under the same conditions and with a
+  new subagent, read 154 programs off the manuals of this Mac, the sources of
+  util-linux, systemd, polkit and shadow, the pages of runit, daemontools,
+  ucspi-tcp and moreutils, procps-ng, npm's documentation, busybox.net, GNU
+  gettext and parallel, and about seventy READMEs and manual sources fetched
+  raw from GitHub and GitLab, 22 families of sources in all; 9 of them stood
+  on no list. Taken in, each with the source that should have found it and why
+  it did not: `man -P` and `--pager`, a text for `sh` in the shell script
+  `man` of macOS 26.6, "eval "$cattool \"$catpage\" | $MANPAGER"", and a
+  command with arguments split by shell quoting in man-db 2.13.1, "The value
+  may be a simple command name or a command with arguments, and may use shell
+  quoting"; `bat --pager` of bat v0.26.1, commit `979ba22628bc`, split by
+  shell_words and run with no shell; `fzf --bind` of fzf v0.74.5, commit
+  `23e0dc1aef6e`, whose actions `execute`, `execute-silent`, `become`,
+  `reload`, `reload-sync`, `preview`, `change-preview` and the `transform` and
+  `bg-transform` forms run a command "with $SHELL -c if SHELL is set,
+  otherwise with sh -c", their argument in parentheses or in any of the
+  fifteen other notations of the manual's ACTION ARGUMENT or behind a colon;
+  `sk` of skim v5.7.4, commit `c147380a6a02`, whose `-c`, `--cmd` and
+  `--preview` are "invoked using sh -c on Unix-like systems and cmd /c on
+  Windows" and whose `--bind` takes one or more bindings read as fzf's are;
+  `rsync -e` and `--rsh` of rsync v3.5.1, commit `b9e5f7cb7799`, "an
+  alternative remote shell program", which runs on this machine with the host
+  and the remote command behind its words, "Command-line arguments are
+  permitted in COMMAND", where `--rsync-path` runs on the remote host and is
+  not read; `tcpclient` of ucspi-tcp, "tcpclient opts host port prog", "If it
+  is successful, it runs prog", of the ninth kind; and `feh` 3.13.1, commit
+  `718ceef3746b`, whose `-A`, `--action`, `--action1` to `--action9` and
+  `--info` are run by `/bin/sh`, "The action will be executed by /bin/sh", a
+  leading `;` and a `[title]` taken off. The searches missed them for the
+  reason the first pass names for the eleventh kind: the descriptions of man,
+  bat, fzf, skim, rsync and feh name their own work; `tcpclient` ships in the
+  packages of ucspi-tcp beside `tcpserver`, which the searches took in, and
+  was not read beside it. Left out: `rush`, as above; and `sandbox-exec`,
+  already in the group, whose case `sandbox-exec -p (version 1) brew install
+  ripgrep` is no command bash parses, the parentheses unquoted, while the form
+  the vendor documents, `sandbox-exec -p '(version 1)(allow default)' brew
+  install ripgrep`, is judged at `brew`. The second pass also met `xdotool`,
+  `zrun`, `alacritty` and `firejail` among the programs on a list, and named
+  `rofi` and `dmenu`, whose commands are typed and not on the line, as out.
+  There is no third pass; after the second, 152 of its 154 programs stand on a
+  list and the two others are left out with their reasons.
+
+  **Three readings beyond the four findings, each decided by a rule the
+  documents or the order carry.** `sg`: the second addendum read it as "a text
+  for the shell, the group changed and not the user, so no stop", lines 21496
+  to 21498, and measured `sg staff -c 'brew install ripgrep'` 2 2 0 0, line
+  22022; finding 1's should makes a stop of `setpriv` where it sets "another
+  user, another group or other supplementary groups", and the guard stops the
+  options of `minijail0`, `spawn-fcgi`, `tcpserver`, `lrun` and `compartment`
+  that set a group; `sg` of shadow 4.20.3, tag `4.20.3`, commit
+  `c3c4cda2714a`, `man/sg.1.xml`: "execute command as different group ID",
+  "The sg command works similar to newgrp but accepts a command. The command
+  will be executed with the /bin/sh shell." - it sets another group whatever
+  its words. Built in `cde29cf` for `sg`: of the first kind, a stop under
+  every answer with "it needs sg", its text still read for the shell; the
+  sentence at lines 21496 to 21498 and the line 22022 are revised by this one.
+  The options that run one program word with arguments the program chooses:
+  the second addendum leaves out `rg --pre` and `tcpdump -z`, "which run one
+  program word with the file as its only argument", lines 21857 to 21858;
+  three readings built in this work were of that class and are taken back:
+  `pandoc -F` and `--filter`, which the first pass of the check for
+  completeness found, pandoc running the filter with the output format as its
+  argument, so that `pandoc` is not in the group; `aws-vault --pass-cmd`, the
+  executable of the pass backend, run with arguments of its own; and `git
+  difftool -x` under `-d` or `--dir-diff`, which git v2.56.0, commit
+  `2478544319`, runs in `builtin/difftool.c`, lines 599 to 607, as
+  `strvec_push(&cmd.args, extcmd)` with the two directories behind it and no
+  shell - without `-d` the value stays a text for the shell, as lines 21808 to
+  21810 read it. And the first kind at the judged word: the guard read the
+  programs of the first kind among the words before the judged word only, so
+  that a program the reader judges itself while it hands on a command of its
+  own as a line of its own escaped it - `start-stop-daemon --start -c nobody
+  --exec /usr/bin/make -- test` answered 0 0 0 0, found by the measurement of
+  14 October 2026 and not by the walk before the build; the programs that are
+  a stop only under an option are read since then for the judged word as well.
+
+  **The reading again, held against the code.** A further subagent of this
+  session checked on 14 October 2026 each of the 331 points in which the
+  reading again found the tables of `aca54c0` differing from the vendor,
+  reading the code and feeding at least one command per point through the
+  reader: 216 were built, 82 were not, 29 in part, and 4 were decided
+  otherwise by a comment. The working notes of this work had called every
+  point built; that did not hold, and the check is what found it. Since then
+  built, each command of the check judged at the word the vendor runs: `leaks`
+  with `--atExit` and behind an option with a value; `lldb -source`, `-arch`
+  and `-core`, which the reader split into letters, a whole word the table
+  lists being read since then with its value for every program; `login -f`
+  behind `-h host`; `su` and `runuser` with `--command` and
+  `--session-command` behind the user; `pee` with its flags only before the
+  commands; everything behind `ktrace trace -c`; `sg -l`; `kinit -T`, `-I` and
+  `-X`; `godotenv --f`; `arch -h`; `sudo -h` as the help flag where an option
+  or an assignment follows; util-linux `script -t` with its value attached
+  only; GNU `parallel` with fifteen options more and `-l` taking a number
+  only; `tmux run-shell -s`; `zellij` with its options before the subcommand,
+  the alias `ac` and `action paste`; the options of task-spooler 2.0.0; `pueue
+  add -a` with several values and `-e`; `daemon -X` with the operands behind
+  its words; `cargo watch --env-file`; `gow -P`, `-S` and `-re`; `git rebase
+  -x` with its value attached and `git submodule foreach` with several words;
+  104 options of `npm` that take a value; `pnpm exec -c` behind `exec`; the
+  options of `proto`; the global options of `sops` and its options behind the
+  file; the global options of `aws-vault` behind `exec` and behind the
+  profile; `composer exec`, whose binary goes into a command line for the
+  shell as it stands; `cross-env` with a setter anywhere in a word,
+  `--max-old-space-size=4096` among them; and `nix` with `--update-input`,
+  `--reference-lock-file` and `--output-lock-file`. Named and not built, each
+  with its reason in the report: options with an optional value, `perf trace
+  -F`, `pdm --pep582`, `pixi --offline`, `tox --no-provision` and `-s`,
+  `dotenvx --mask` and `env-cmd -f`, read as flags; options with several
+  values, `dotenvx -e` and `--ignore`, `env-cmd -e`, `tox --discover` and
+  `watchman-make -t` and `-p`, read with one; the options a program reads
+  behind its command, `reflex`, `doppler`, `infisical`, `dotenvx` and
+  `dotenv-cli`, which do not change the judged word; a long option abbreviated
+  to a unique prefix, which getopt_long and git accept and the reader reads
+  for no program; the GDB commands of `gdb -ex`, `-iex` and `-eiex`, code in
+  another language; the shell `watchexec --shell`, `cargo watch --use-shell`,
+  `npm --script-shell` and `npx --shell` name, the text read for `sh` whatever
+  they name; a file as the first word of `direnv exec` and a directory behind
+  `rr`, which the line does not tell; `hatch run` with its matrix words,
+  `ENV:CMD` and a `.py` file; `conda run` with a newline in one argument;
+  `bundle exec` of a single word; `uv run` with an address; `apply` pasting
+  its arguments into its text; the session words of `screen` and its `-X
+  eval`, `at` and `|`; `zellij action write` and `send-keys`; `onchange`
+  without `--`; the hidden `-p` and subcommands of `cargo watch`; `aws-vault
+  @FILE`; and the programs that run nothing under `--help` and the like where
+  no table says so, `xargs`, `parallel`, `msgexec`, `setsid`, `when-changed`,
+  `gdb` and `systemd-run -S`, read on the blocking side.
+
+  **The measurement**, on 14 October 2026, with the bench of the second
+  addendum's report rebuilt in a throwaway directory: a project with
+  `docs/agents/`, a bare local `origin` with `origin/HEAD` on `main`, the four
+  install records no, none, yes11 and yes6 as lines 13257 to 13264 fix them,
+  with the eleven places of `shared/install-record.md` lines 9 to 19 and the
+  first six of them, each committed, pushed and fetched; the hooks started by
+  absolute path, the JSON on stdin, `CLAUDE_PROJECT_DIR` on the project;
+  against the hooks of `3ab792a` and of `aca54c0` in two throwaway worktrees
+  and against the new state, one run at a time. The 611 cases of the second
+  addendum's report: 599 fed to a hook and 12 skipped as there; at `aca54c0`
+  every one as recorded, at the new state every one as recorded but `sg staff
+  -c 'brew install ripgrep'`, recorded 2 2 0 0 and now 2 2 2 2 by the reading
+  of `sg` above. The 24 cases of the order, at the new state each as the order
+  says but `hyperfine --reference 'brew install ripgrep' make`, which answers
+  0 0 0 0 where the order wrote as alone, since v2.0.0 refuses `--reference`
+  and runs nothing; `setpriv --reuid=1000 make test` and `setpriv --reuid=1000
+  brew install ripgrep` answer 2 2 2 2 with "it needs setpriv", `gosu nobody
+  make test` with "it needs gosu", `flock -c 'brew install ripgrep' /tmp/lock`
+  and `echo 'brew install ripgrep'` 0 0 0 0. The 25 cases of the order's list
+  answered 2 under no at `3ab792a` and 0 at `aca54c0`, each, as the order
+  says; at the new state those of the first kind - `gosu`, `su-exec`, `chpst
+  -u`, `setuidgid`, `s6-setuidgid`, `pbrun`, `dzdo` and `ksu` - answer 2 2 2 2
+  with their names under a yes and the others 2 2 0 0, as `brew install
+  ripgrep` alone does. Beside them 27 cases of this work, 28 of the first kind
+  with and without the options that make a stop, 3 of `sg`, 40 of the check of
+  the reading again and of the readings taken back, and every case of the two
+  passes whose program stands on a list, 146 and 152: all as foreseen at the
+  new state. The reader's self-test holds 154 cases. The reader's time for a
+  short command, the JSON of `brew install ripgrep`, median of 100 runs after
+  5 to warm up, three rounds alternating on this machine: 8.7 to 9.0 ms at
+  `aca54c0` and 20.3 to 20.5 ms at `cde29cf`, the tables of the group read on
+  every call.
+
+  **The documents, the searches before the build, the walk by hand, and what
+  was not run.** The conventions name the new state where they said the old:
+  the first kind, lines 846 to 851, with `gosu`, `sg`, `setpriv` under its
+  nine options and the programs the searches found; the sentence on how a
+  program of the group is read, lines 1481 to 1483, with the wording of the
+  vendor's source fetched raw, the release or commit with what shows that it
+  exists, the sentence quoted, and beside the options that take a value those
+  whose value is a command; the kinds, lines 1484 to 1532, with `hyperfine` at
+  v2.0.0 and `nodemon`, and the group with its 880 programs or forms, three
+  kinds more and what stays out; and, lines 1545 to 1551, the platform shell
+  of Windows with Git Bash. The head of the reader lists every program by kind
+  and what is not in the group; the comment of the guard, lines 201 to 210,
+  names the first kind as it stands, read through `priv_if` and `cond_priv`.
+  Searched for decisions already taken, in the six forms the order names, with
+  `grep -rn -E` over `docs/roadmap.md`, `docs/skill-conventions.md`, `skills`
+  and `shared` for `setpriv`, `hyperfine`, `nodemon`, `flock`, `gosu`, `sg`,
+  `pandoc`, `difftool`, `aws-vault` and every program taken in, 881 names,
+  each bounded so that it matches no longer word: 43 names have hits, 4680 in
+  all, 524 of them in a paragraph that carries one of the forms, 40 of those
+  with the name inside code, and none of the 40 is a decision on a program of
+  the group - they are the status word `empty` and the words with and after
+  inside other commands; this search ran on the tree of `aca54c0` on 14
+  October 2026, after the build; the first searches of the kind, for
+  `setpriv`, `hyperfine`, `nodemon`, `flock`, `gosu` and eight more patterns,
+  ran on 13 October 2026 on the working tree, after the first edits for
+  findings 1 to 3, and found no decision either. Every search command, the
+  empty ones too, stands in the report, with the searches over `skills`,
+  `shared`, `hooks`, `bin`, `scripts`, `docs`, `README.md` and `.github` for
+  the places that say the same. The walk by hand before the build is on record
+  for what was built on 14 October 2026 - `sg`, the rule of `rg --pre`, the
+  first kind at the judged word, `man`, `bat`, `fzf --bind`, `sk`, `rsync -e`,
+  `tcpclient`, `feh` and both batches of the check of the reading again - each
+  with its commands and the answer foreseen, and every answer came out as
+  foreseen; for findings 1 to 3 and the tables of the searches, built on 13
+  and 14 October 2026, no walk was written down before the build. What the
+  walks missed and the measurement found: `start-stop-daemon --start -c nobody
+  --exec /usr/bin/make -- test` passing; what the self-test found: `composer
+  exec` and `daemon -X`, whose cases changed with the build as intended and
+  were read again. Not run: no program of the group was run on this machine;
+  Windows with Git Bash and Linux are read through `DEVLOOP_READER_OS` in the
+  self-test, not on those systems; the 40 programs of the AUR and the 30 of
+  nixpkgs and Fedora without a documented form stay unread.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
