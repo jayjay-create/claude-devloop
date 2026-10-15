@@ -24214,6 +24214,501 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   time, no line of their things changed since their runs above. The three
   runs stand in the fourth commit, each held against `f70871b`.
 
+- **The thinking part of the two closing runs of milestone 3 measured on their
+  session logs, and two questions on milestone 12 held as not measured: the
+  text a skill owes in the run's own message went, before a tool call, into the
+  model's progress updates, of which the log keeps a summary only; the cause
+  lies with the model at defect a's two places and cannot be decided from the
+  logs at point 27's six; four defects beyond point 27; fourteen places that
+  read a file of the person's project and three that call awk, none measured on
+  Windows or under Alpine; 15 October 2026, the version stays 0.138.0.** On
+  `task/measure-thinking-part`, off `e687f51`, version 0.138.0 on `main`; this
+  entry and the rows of the table in one commit. Nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/` or `.github/` changes, so the version
+  stays and `.claude-plugin/plugin.json` is untouched; nothing is built here,
+  and what is built after it is decided after this measurement, as point 27 of
+  part B of the entry of 12 October 2026, lines 19131 to 19133, has it. The
+  report stands on this machine as
+  `~/devloop-report-2026-10-15-thinking-part.md`, in English, and is not in the
+  repository. A line of a file under `skills/` holds at `e687f51` and at
+  `5ae30eb`, the commit of the installed 0.135.0 both runs ran, alike,
+  `git diff --stat 5ae30eb e687f51 -- skills` printing nothing; a line under
+  `shared/` is given at `e687f51`, and where the text the runs loaded stood on
+  another line at `5ae30eb` the entry says so, three shared files having
+  changed since; a line of this file holds at `e687f51`. The words the
+  stock-take tool reads a line of this file into its search set by stand in
+  this entry on the twenty-one lines that record a defect and on no other, so
+  that the tool takes in the head of this entry and those twenty-one and
+  nothing else of it.
+
+  **What this entry was read off.** Under `~/.claude/projects/` in the
+  directory for `devloop-test-w`, the two main logs of the closing runs:
+  `3478b439-999c-4ca6-8186-a0d560a7a0b4.jsonl`, the first, 1189 records and
+  2851494 bytes, and `65a9b587-7cff-46b3-8323-b094c98b1d3a.jsonl`, the second,
+  1047 records and 2501216 bytes, a record being one line of a log counted from
+  1, as the two entries on the runs count; beside each the directory of its
+  subagents, 23 logs of 4047975 bytes and 20 of 4548477, each log with a
+  `meta.json` beside it. These are the originals of the copies under
+  `~/devloop-lauf1` and `~/devloop-lauf2` the two entries were read off, which
+  are gone from this disk, the audit of 14 October 2026 at lines 23847 to
+  23848; the record counts are the ones those entries give. No log was read
+  whole: scripts read the records as JSON and wrote their extracts outside the
+  repository. Seven subagents of this session read one loaded skill text each
+  for the places owing text in the run's own message and handed back findings
+  with record, quote and line; every finding used below was checked at its
+  record, the 55 places said to have arrived among them, each standing in the
+  text record named.
+
+  **Part 1, a. The thinking blocks.** Both main logs carry Claude Code 2.1.296
+  in the `version` field of every record that has one, 733 and 660, and
+  `claude-sonnet-5-5` with effort `medium` in `requestedModel`,
+  `message.model`, `effort` and `perTurnEffort` of every assistant record, 283
+  and 247. Each holds 77 thinking blocks, 18 with text and 59 empty, as the two
+  entries say. The 36 with text have one form: a block of its own with its own
+  signature, after an empty block of the same message, 16 in the first run and
+  15 in the second, or at the message's start, 2 and 3, followed in every case
+  by a tool call, the Skill tool, Bash, Write, Edit, Agent or the widget, and
+  in no case by a text block; one to three sentences of 123 to 343 characters,
+  German, addressed to the person. The skill text loaded at each is read in the
+  log: a Skill call answers "Launching skill" and the text arrives as the next
+  user record, opening "Base directory for this skill", at records 8, 38, 139,
+  250, 440, 473, 514 and 790 of the first run and 12, 50, 136, 470, 505 and 544
+  of the second, all under 0.135.0, each staying in the context after its load.
+
+  **Part 1, c. What such a block is, read at the vendor on 15 October 2026.**
+  The tag `v2.1.296` of `github.com/anthropics/claude-code`, `git ls-remote`
+  answering `2301018b1f61073c501a8e7a4813ef48c239163b`, and its `CHANGELOG.md`,
+  read raw; the pages of the platform and of Claude Code fetched as the vendor
+  publishes them in Markdown. The platform's page "Thinking",
+  `platform.claude.com/docs/en/build-with-claude/thinking`: among others on
+  Claude Sonnet 5.5, "thinking is already on and needs no configuration.
+  `display` defaults to "omitted" on these models", and under "omitted"
+  "thinking blocks are returned with an empty `thinking` field"; under
+  "Progress updates between tool calls", "the model can write a progress update
+  between tool calls. A progress update is a note on what the model just found
+  and what it's about to do next, written for the person watching the agent
+  rather than as reasoning. Each one comes back as its own `thinking` block
+  with its own `signature`", sitting "immediately before the `tool_use` … block
+  it introduces", Claude Sonnet 5.5 among the models named; its table, under
+  "omitted" reasoning and progress update both returned empty, under "updates"
+  the reasoning empty and the progress update as summary text, under
+  "summarized" both as text; "The text you receive is a summary of the progress
+  update, normally a sentence or two … The progress update counts toward
+  `usage.output_tokens` at its full length, not the summary's"; and
+  "Summarization is processed by a different model from the one you target in
+  your requests." The page "Prompting Claude Sonnet 5.5", under "User-facing
+  progress updates": "Between tool calls, Claude Sonnet 5.5 writes user-facing
+  notes about what it just found and what it's doing next. Notes longer than a
+  sentence or two come back as progress-update `thinking` blocks … Shorter
+  remarks stay `text`", and for exact text partway through a long turn, "give
+  it a simple tool for sending the user a message". Claude Code's page on model
+  configuration, `code.claude.com/docs/en/model-config`: thinking cannot be
+  turned off on Sonnet 5.5, "the model decides per step how much to think based
+  on the effort level", and "Claude Code collapses thinking output by default";
+  its changelog at the tag, under version 2.1.89, "Changed thinking summaries
+  to no longer be generated by default in interactive sessions", and under
+  version 2.1.152, "Thinking summaries in the collapsed group now stay readable
+  for at least 3 seconds". No line of the changelog names the `display` Claude
+  Code sends, no record of the logs carries one, and `~/.claude/settings.json`
+  holds none of the keys `showThinkingSummaries`, `alwaysThinkingEnabled` and
+  `thinking`. So an empty block is a reasoning block returned empty, as this
+  model's default returns it, or a progress update returned empty, which the
+  page allows under any `display` value, and a block with text is a progress
+  update, returned as its summary: the two runs show the mix "updates" gives,
+  and neither "omitted", every block empty, nor "summarized", every block with
+  text.
+
+  **The log keeps a summary.** Every assistant record carries
+  `usage.output_tokens` and `usage.output_tokens_details.thinking_tokens`. Per
+  message, the output not counted as thinking is what the visible tool input
+  accounts for, at a median of 1.85 and 1.75 characters a token where a
+  progress update stands and of 1.68 where only tool calls do, so the update's
+  tokens lie in `thinking_tokens`. Where a message holds one thinking block,
+  its progress update, and no other, those tokens are the update's full length:
+  159 tokens against 210 stored characters at records 437 to 438 of the first
+  run and 367 against 213 at records 470 to 471; 132 against 239, 115 against
+  225 and 156 against 278 at records 167 to 168, 288 to 289 and 467 to 468 of
+  the second. What a block in the log shows is the summary another model made
+  of it; what the model wrote there is not in the log, and no setting of the
+  platform returns it. Record 151 of the second run, "ich habe erklärt, wie der
+  autonome Ablauf, mögliche Fehlerfälle, Kosten und das Wachhalten des Rechners
+  dabei funktionieren", reads as such a summary of a longer update; its
+  message, records 150 to 152, holds an empty block beside it, and the log does
+  not split its 878 thinking tokens between the two.
+
+  **Where the text lands.** Every message of the two runs that ends on a text
+  block is followed by a prompt of the person or by the log's end, 29 and one
+  in the first run and 23 in the second: text that ends a turn arrived as text
+  every time. Before a tool call the model wrote a text block in 28 and 25
+  cases and a progress update in 18 and 18; long text stayed text there too,
+  1703 to 2258 characters at records 407, 600, 930 and 1100 of the first run
+  and 633 and 917 of the second, so the length the vendor names does not sort
+  them in these logs. One line of a skill went both ways within four records:
+  `setup-checks` line 919, the line of prose before each second question, went
+  into the progress update of record 167 before the install question and into
+  the text of record 171 before the dependency question, "Jetzt die zweite:
+  Darf devloop Check-Werkzeuge selbst in die Pakete des Projekts eintragen?",
+  the same model at the same effort.
+
+  **Part 1, d. The subagents, as a comparison.** The 43 logs carry 2.1.296,
+  `claude-sonnet-5-5` and effort `medium` throughout; they hold 19 and 45
+  thinking blocks, every one empty. Each handed its report back through the
+  tool `SubagentHandback`, one call in every log, the report in its `message`
+  field, 1909 to 7322 characters, so no text a subagent owed stood in a
+  thinking block. What limits the comparison: every subagent ran in the
+  background and not interactively, `requestShape` "background" and
+  `requestNonInteractive` true in each `meta.json`, with a task prompt and no
+  skill loaded, and what it owed went as the input of a tool and never as prose
+  before one; and an empty block can be a progress update returned empty as
+  well as reasoning, the page "Thinking": "A progress-update block can come
+  back with an empty `thinking` field under any `display` value", so whether a
+  subagent wrote progress updates the logs do not say. The subagents are
+  counted among none of the places below.
+
+  **Part 1, b. The places.** Of the 36 blocks with text, 24 stand where a line
+  of a loaded skill asks for text in the run's own message and that text
+  reached no message: records 35, 46, 56, 149, 287, 422, 437, 453, 470, 676 and
+  1011 of the first run and 47, 151, 167, 467, 483, 502, 516, 522, 560, 730,
+  792, 863 and 1025 of the second. The other twelve stand where no line asks
+  for text or where the owed text came in a later message: records 524 and 856,
+  the numbers of a review coming at 542 and 874, 824, the ended state of a
+  check class coming at 974, and 623, 714, 800 and 1035 of the first run; 133,
+  288, 686, 824 and 958 of the second.
+
+  Point 27's six places stand as it names them, at records 56 and 470 of the
+  first run and 47, 502, 560 and 863 of the second, with one line to correct:
+  at record 470 the run went with the person, no `--auto` at record 7 and no
+  mark, so the line it did not follow is `cut-into-tasks` line 154, "With them,
+  say you are starting on the first task, and do it. Say in plain words what
+  that means", and not line 159, the route alone, which point 27 at line 19130
+  and the note of its thing in the table name for the first run; the entry on
+  the second run, lines 18266 to 18268, describes line 154. Defect a stands at
+  records 151 and 167; record 171 names the permission, and that they had said
+  no stands for both questions in the progress update of record 167, "bisher
+  hast du beide abgelehnt".
+
+  Beyond those eight, the same at 29 places on 21 records, 16 of the records
+  not named by point 27. In the first run: record 35, `start-work` line 269,
+  "Each stage says what it is doing next and does it"; 46, `setup-project` line
+  133, step 0's announcement; 149, `setup-checks` lines 267 to 269, step 2, one
+  line per class; 287, `plan-work` lines 254 to 255, the line on what is
+  settled, and lines 450 to 451, the problem space given to read while the
+  drafting runs; 422, `plan-work` line 507, the seams in their own message;
+  437, `plan-work` lines 565 and 567, the spec's number and its line, and that
+  the run is cutting it into tasks; 453, `cut-into-tasks` lines 131 and 139,
+  the split as a numbered list and the last cheap moment to change it; 470,
+  `cut-into-tasks` line 146, the number of tasks and which one is ready first;
+  and 676 and 1011, `build-work` lines 1124 to 1127, the task issue confirmed
+  closed and named. In the second: record 47, `start-work` lines 96, 137, 190
+  and 269, the in-flight report, the loose issues by title and `raised-here`,
+  which piece is taken, and the stage said; 467, `plan-work` lines 565 and 567;
+  483, `cut-into-tasks` line 131, said with nobody there too, since the stage
+  forks on the mode only after creating, lines 44 to 60; 502, `cut-into-tasks`
+  line 146; 516, `build-work` lines 1343 to 1348, the scope and the loose
+  issues of the opening message; 522 and 792, `build-work` lines 320 to 321,
+  why the task was taken, which one it was standing in the texts of 532 and
+  802; 560 and 863, `review-changes` line 148, both numbers, the texts of 578
+  and 879 carrying one; 730, `shared/command-does-not-answer.md` line 78 at
+  `5ae30eb`, line 75 now, "Say what was blocked", the texts of 712 and 736
+  silent on the block; and 1025, `build-work` lines 1420 to 1421, the mark
+  deleted and said so, the text of 1030 silent on it.
+
+  Recorded, not built: text owed in the run's own message stood only in the
+  model's progress updates at 29 further places of the two closing runs, on the
+  21 records the paragraph above lists — should: it stands in the message, with
+  the six places of point 27 and defect a, built after this measurement.
+
+  **Text owed in the message that arrived nowhere.** At ten places the text
+  stood in no message and in no thinking block, or came without the part its
+  line names. `setup-project` lines 294 to 295, "With exactly one remote: state
+  it and move on": one remote, record 48 of the first run, and no text of
+  records 112, 124 and 136 names the tracker. `setup-project` lines 794 to 797,
+  the close: the text of record 124 says the install answer is entered as no,
+  "Die Installationserlaubnis ist als `no` eingetragen", without the section,
+  the places a yes opens or the routes. `plan-work` line 256, "Say roughly how
+  many rounds you expect": the texts of records 65 and 101 of the second run,
+  its two rounds, name none. `plan-work` lines 494 to 496, alone at the choice
+  of a design: no text between records 430 and 452 of the second run, and
+  record 453, "Als Nächstes schreibe ich die Spezifikation in das Issue."; what
+  the line asks went into the comment of record 446, lines 18177 to 18178,
+  which is no message. `build-work` lines 340 to 341, the loose issue waiting
+  and why: issue 7 of the first run, filed at record 640 with `raised-here`,
+  waited through two tasks, and no text from record 665 to 1163 says so.
+  `build-work` lines 1343 to 1352: the sentence that will mean the run has
+  finished, the main-branch commit it starts from and the clause each loose
+  issue stands under are in neither record 516 nor the text of record 532 of
+  the second run. `review-changes` lines 56 to 57, "Say which commits it
+  covers": no commit and no hash in any of the ten review messages, records
+  542, 600, 874, 930, 1056 and 1100 of the first run and 578, 633, 879 and 917
+  of the second. `review-changes` lines 169 to 170, the worst finding of each
+  lens named: none in records 600, 930, 1100, 633 and 917.
+  `shared/rule-not-written-down.md` line 36, unchanged since `5ae30eb`, what
+  came out of the standards file by which exit, or that nothing did: nowhere at
+  the three rules of the first run, pull requests #8, #9 and #11, nor at the
+  one of #22 in the second, and said at #20, record 639. `build-work` line 656
+  and `review-changes` line 209, a finding against the task's own terms named
+  as one when the split is announced: the conditions of #18 never seen red,
+  which the specification lens found, stand in the text of record 917 among the
+  fixes and are not named so.
+
+  Recorded, not built: text owed in the run's own message reached neither a
+  message nor a thinking block, or came without the part its line names, at ten
+  places of the two closing runs, which the paragraph above lists — should:
+  each stands in the message as its line says.
+
+  **Four findings left in the conversation.** At the close of the review of the
+  second task of the first run the run wrote, in the text of record 930,
+  "Kleinkram im Server: jeder Lesefehler wird 404, `.mjs` fehlt in der
+  MIME-Tabelle, der Port 4173 steht doppelt, kein Symlink-Check. Nichts davon
+  ist heute erreichbar.", and at the gate, record 974, "Kleinkram im Server ist
+  heute nicht erreichbar und bleibt": four findings neither fixed nor filed,
+  the run filing issues 7 and 10 alone, and explained away in the same breath.
+  `shared/finding-not-in-conversation.md` line 1: "Never leave a finding in the
+  conversation … And never explain a named defect away in the same breath as
+  naming it". The entry on the second run, line 18299, has that text holding in
+  the first run "as in the second run"; at record 930 it did not, which this
+  entry says and that one keeps as written.
+
+  Recorded, not built: four review findings of the first closing run stayed in
+  the conversation, records 930 and 974, neither fixed nor filed and called
+  unreachable in the same breath — should: each is fixed, filed or explicitly
+  deferred, `shared/finding-not-in-conversation.md` line 1.
+
+  **The spec closed, the loose issues left.** With the spec of the first run
+  closed at records 1163 to 1164, its two open issues carrying `raised-here`,
+  "isValidName accepts non-string names at runtime" and "Page stays silent when
+  validate.js or the rules request fails to arrive", were neither taken nor
+  given a clause, and the run ended at record 1183 with "Noch offen (beides
+  unter dem Label `raised-here`, nichts davon ist dringend)". `build-work`
+  lines 346 to 347: "With the spec closed, take it — the same rule as several
+  ready tasks, and say which and why. Do not stop without saying what comes
+  next."; lines 349 to 351, the announcement names the clause per issue, "Not
+  that it is next, not that it is minor".
+
+  Recorded, not built: with the spec closed the first closing run took neither
+  loose issue carrying raised-here and ended, record 1183, calling them not
+  urgent — should: the run takes one by clause 3 and says which and why,
+  `build-work` lines 346 to 347, the clause of each named, line 349.
+
+  **Part 1, e. The cause, per place.** The common evidence: the blocks have the
+  form of the model's progress updates; text that ends a turn arrived as text
+  every time and the losses stand before tool calls only; one line went both
+  ways; and the log keeps a summary, so whether the full update held the owed
+  text is not readable on any bench, the platform returning no more than the
+  summary. At defect a's two places the cause lies with the model:
+  `setup-checks` line 810 asks for the five parts "as a short text in the run's
+  own message" and line 919 for "one line of prose, in the run's own message",
+  both lines name the channel, and the model wrote the text into a progress
+  update, records 151 and 167, and for the same line 919 into the text of
+  record 171 as well. At point 27's six places it cannot be decided from the
+  logs: `setup-project` lines 254 to 256 say "Report" and "Say",
+  `cut-into-tasks` lines 154 and 159 and `start-work` line 274 say "say",
+  `review-changes` line 107 says "the one thing that may be said", none names
+  the channel, and the model wrote such a sentence before a tool call as text
+  28 and 25 times and as a progress update 18 and 18 times. The measurement
+  that would decide it, not run: each of the six places again on a bench under
+  Claude Code 2.1.296 or later with `claude-sonnet-5-5` at effort `medium`,
+  from the state the run had at that record, several times with the line as it
+  stands and as many times with the line naming the channel as line 810 does,
+  counting at the place text blocks, thinking blocks with text and neither;
+  where the named channel brings the text into text and the line as it stands
+  does not, the cause lies with the skill, and where neither does, with the
+  model. Defect a's two places speak against the named channel helping, at two
+  places of one run.
+
+  **Part 2, a. Line endings.** Milestone 12 is `docs/plan.md` line 485. devloop
+  keeps its own files at LF through `.gitattributes`; a project of the person
+  has no such file, and Git for Windows sets `core.autocrlf=true` by default,
+  this file at lines 23011 to 23015. git's own documentation, read raw at the
+  tag `v2.56.0` of `github.com/git/git`, the newest release tag,
+  `git ls-remote` answering `2478544319491bbd2a42cc57a83e3d2f4730a280`:
+  `Documentation/config/core.adoc` on `core.autocrlf`, "Setting this variable
+  to "true" is the same as setting the `text` attribute to "auto" on all files
+  and core.eol to "crlf". Set to true if you want to have `CRLF` line endings
+  in your working directory and the repository has LF line endings.";
+  `Documentation/gitattributes.adoc` under "Checking-out and checking-in", the
+  conversion acting where "the contents stored in the repository are copied to
+  the working tree files" and on `git add` and `git commit`, text files
+  "normalized to LF when they are added"; `Documentation/git-show.adoc`, "For
+  plain blobs, it shows the plain contents."; and
+  `Documentation/git-cat-file.adoc` on `--filters`, the one way named to read a
+  blob "as converted by the filters configured in the current working tree". So
+  at `core.autocrlf=true` a file git checked out arrives in the working tree
+  with CRLF where git takes it for text, a file a program wrote arrives as
+  written, and a blob read with `git show` or `git log -p` arrives as it is
+  stored, with LF where it was added under the setting and with CRLF where a
+  file with CRLF was committed without conversion.
+
+  A place is a line where a hook, a program or a command a skill prescribes
+  takes a file of the person's project apart by machine. Not a place: the check
+  runner the hooks start, `make` reading the project's own `Makefile`, a file
+  the model reads with its reading tool, a file under the home directory such
+  as `~/.claude/settings.json` or the one under `$CARGO_HOME` at
+  `hooks/pre-tool-use-install-guard.sh` line 834, and a test of whether a file
+  stands, `git cat-file -e` at `bin/devloop-setup-state` line 183 among them.
+  Searched over `hooks/`, `bin/`, `skills/` and `shared/` for `git show`, for
+  `git cat-file`, `git ls-files`, `git grep` and `git check-ignore`, for the
+  project files the hooks and programs name, for every `grep`, `sed`, `awk`,
+  `cat`, `head`, `tail` and `cut` beside a file, and over `skills/` and
+  `shared/` for a file of `docs/agents/` beside a reading verb, for `Makefile`,
+  `package.json`, `pyproject`, `.gitignore` and `CLAUDE.md` beside one, that
+  search coming back empty, and for the inline commands; every hit decided, the
+  hits listed in the report. Fourteen places, read with what arrives there and
+  measured on Windows at none; each line below is one thing of the table, since
+  a thing has one line as its evidence, `docs/plan.md` lines 112 to 114.
+
+  Recorded, not built: `bin/devloop-install-record` line 46 reads
+  `docs/agents/environment.md` off the default branch with `git show`, for the
+  install guard at its line 757 and the session start at its line 64, and finds
+  the section by its heading with `grep -qxF` at line 47, the whole line
+  compared and a carriage return part of it; what arrives is the blob as
+  stored, not measured on Windows — should: a record with CRLF is read as the
+  same record with LF, measured in milestone 12 on Windows with real input.
+
+  Recorded, not built: `bin/devloop-setup-state` line 185 reads the marker of
+  each of the five files off the default branch with `git show` and `grep -o`,
+  for the session start and the skills; what arrives is the blob as stored, not
+  measured on Windows — should: a file with CRLF is read as the same file with
+  LF, measured in milestone 12 on Windows with real input.
+
+  Recorded, not built: `skills/setup-checks/SKILL.md` line 346 prescribes
+  `git show origin/main:docs/agents/environment.md` after a fetch, whose output
+  the run reads; what arrives is the blob as stored, not measured on Windows —
+  should: a record with CRLF is read as the same record with LF, measured in
+  milestone 12 on Windows with real input.
+
+  Recorded, not built: `shared/mode-set-up.md` line 14 prescribes
+  `git fetch -q origin main && git show origin/main:docs/agents/environment.md`,
+  inserted into `build-work` line 1272, `plan-work` line 307 and `setup-checks`
+  line 726; what arrives is the blob as stored, not measured on Windows —
+  should: the records with CRLF are read as the same records with LF, measured
+  in milestone 12 on Windows with real input.
+
+  Recorded, not built: `shared/rule-not-written-down.md` line 45 prescribes
+  `git log -1 --format=%H -S'<the line>' origin/main -- docs/agents/standards.md`,
+  which compares a rule's line with the stored blobs, not measured on Windows —
+  should: a standards file with CRLF is searched as the same file with LF,
+  measured in milestone 12 on Windows with real input.
+
+  Recorded, not built: `shared/rule-not-written-down.md` line 73 prescribes
+  `git log -p origin/main -- docs/agents/standards.md`, whose lines the run
+  reads for a rule removed before; what arrives is the stored blobs, not
+  measured on Windows — should: a standards file with CRLF is read as the same
+  file with LF, measured in milestone 12 on Windows with real input.
+
+  Recorded, not built: `hooks/stop-checks.sh` line 11 reads the runner off
+  `docs/agents/checks.md` in the working tree with `grep` and `sed`, which
+  strip the key and leave a carriage return on the runner's name, run at line
+  23; what arrives is CRLF where git checked the file out, not measured on
+  Windows — should: a table with CRLF is read as the same table with LF,
+  measured in milestone 12 on Windows with real input.
+
+  Recorded, not built: `hooks/stop-checks.sh` line 28 reads the rows of
+  `docs/agents/checks.md` in the working tree, split on the bars with `read`;
+  what arrives is CRLF where git checked the file out, the carriage return in
+  the field after the last bar, not measured on Windows — should: a table with
+  CRLF is read as the same table with LF, measured in milestone 12 on Windows
+  with real input.
+
+  Recorded, not built: `hooks/post-tool-use-checks.sh` line 19 reads the runner
+  off `docs/agents/checks.md` in the working tree as `hooks/stop-checks.sh`
+  line 11 does, run at line 35; what arrives is CRLF where git checked the file
+  out, not measured on Windows — should: a table with CRLF is read as the same
+  table with LF, measured in milestone 12 on Windows with real input.
+
+  Recorded, not built: `hooks/post-tool-use-checks.sh` line 40 reads the rows
+  of `docs/agents/checks.md` in the working tree, their globs and status, split
+  on the bars; what arrives is CRLF where git checked the file out, not
+  measured on Windows — should: a table with CRLF is read as the same table
+  with LF, measured in milestone 12 on Windows with real input.
+
+  Recorded, not built: `bin/devloop-check-table` line 50 reads the status cells
+  of `docs/agents/checks.md` in the working tree for both table guards, a cell
+  compared with the four forms after its blanks are trimmed; what arrives is
+  CRLF where git checked the file out, not measured on Windows — should: a
+  table with CRLF is read as the same table with LF, measured in milestone 12
+  on Windows with real input.
+
+  Recorded, not built: `hooks/permission-request-unattended.sh` line 30 reads
+  the third line of the mark `.claude/unattended.local` and compares it with
+  the session's id at line 31; the mark is written by the command of
+  `shared/mark-command.md`, ignored by git and never checked out, so it arrives
+  as written, not measured on Windows — should: the mark is read as the command
+  wrote it on every system, measured in milestone 12 on Windows with real
+  input.
+
+  Recorded, not built: `hooks/stop-checks.sh` line 37 reads
+  `.claude/check-attempts.local`, which the hook itself writes at line 40 and
+  git never checks out, so it arrives as written, not measured on Windows —
+  should: the file is read as the hook wrote it, measured in milestone 12 on
+  Windows with real input.
+
+  Recorded, not built: `hooks/pre-tool-use-install-guard.sh` line 826 reads
+  `.cargo/config.toml` and `.cargo/config` in the command's directory and each
+  one above it with a pattern not anchored at the line's end; what arrives is
+  CRLF where git checked such a file out, not measured on Windows — should: a
+  cargo configuration with CRLF is read as the same file with LF, measured in
+  milestone 12 on Windows with real input.
+
+  **Part 2, b. awk under Alpine.** Searched with
+  `grep -rn -w awk hooks bin skills shared`, `bin/devloop-command-reader` left
+  out, whose self-test runs under Alpine with busybox awk,
+  `docs/skill-conventions.md` lines 1514 to 1517: three places, none under
+  `skills/` or `shared/`;
+  `grep -rn -E '\b(gawk|nawk|mawk|busybox awk)\b' hooks bin skills shared` came
+  back empty outside the reader; `docs/skill-conventions.md` names awk on six
+  lines, four of them its own checks under "Before a handover, run these" and
+  two on the reader, and this file on 64 before this entry, neither a command a
+  run is told to run in a project. The check "hooks on every system (alpine)",
+  `.github/workflows/stock-take.yml` lines 137 to 234, the matrix entry at
+  lines 149 to 151 and the step at lines 178 to 234: every handler of
+  `hooks/hooks.json` once with the inputs of lines 203 to 210, `ls` for Bash, a
+  Write and an Edit of the README, a permission request for `ls`, a session
+  start and a stop, in a throwaway project with an empty `docs/agents/` and the
+  README alone committed on `main`, lines 186 to 197.
+
+  Recorded, not built: `hooks/pre-tool-use-table-guard.sh` line 64 calls awk to
+  join the cells it names, and the check "hooks on every system (alpine)" does
+  not reach it, `ls` being no `git commit`, so that line 56 exits first; not
+  measured under busybox awk — should: busybox awk gives what awk gives on the
+  other systems, measured in milestone 12 under Alpine with real input.
+
+  Recorded, not built: `hooks/post-tool-use-table-guard.sh` line 27 calls awk
+  to join the cells it names, and the check "hooks on every system (alpine)"
+  does not reach it, the Edit naming the README, so that line 20 exits first;
+  not measured under busybox awk — should: busybox awk gives what awk gives on
+  the other systems, measured in milestone 12 under Alpine with real input.
+
+  Recorded, not built: `bin/devloop-install-record` line 49 calls awk to cut
+  the section out of the record, and the check "hooks on every system (alpine)"
+  does not reach it: at the session start line 46 finds no
+  `docs/agents/environment.md` on the throwaway project's main branch and
+  exits, and the install guard calls it only past its line 749, which `ls`
+  never reaches; not measured under busybox awk — should: busybox awk gives
+  what awk gives on the other systems, measured in milestone 12 under Alpine
+  with real input.
+
+  **Records.** Twenty-one defect things at the end of `docs/stock-take.tsv`,
+  each named "docs/roadmap.md / Known gaps / " and the defect, sited and
+  evidenced on its status line above, the note saying when and by what it was
+  found, which line it concerns and the should; one not-a-thing row for the
+  head of this entry, part of the first; and the note of the thing of point 27
+  naming this entry and what the measurement gave. No run is recorded, since
+  nothing was walked. The tool on the tree with this change: no broken record,
+  19 findings as at `e687f51`, no unit without a straight path, no status word
+  broken over a line break, no uncovered line of 3661, exit 0; against
+  `e687f51`, where the search set held 3639 lines, 22 lines more, the head of
+  this entry and its twenty-one status lines; recorded and not built 260 where
+  it was 239, its defects 249 where they were 228; things 1794 where they were
+  1773, of them sited in this file 495 where they were 474; not-a-thing records
+  2351 where they were 2350, of which part of 2163 where it was 2162;
+  undetermined 28, built and never walked 1040 and walked 466, as at `e687f51`;
+  the one finding sited in this file listed at its line moved down by this
+  entry; the self-test 111 cases, 76 of 76 messages asserted by a case; the
+  nineteen checks under "Before a handover, run these" green and line for line
+  what they print at `e687f51`, the check holding this file against the skill
+  names printing nothing. The figures as printed stand in the report.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
