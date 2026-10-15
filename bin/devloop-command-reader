@@ -21,6 +21,8 @@
 #   cwd: <cwd>
 #   permission_mode: <permission_mode>
 #   session_id: <session_id>
+#   transcript: <transcript_path>
+#   agent_id: <agent_id>   only in a subagent or an in-process teammate
 #   file: <tool_input.file_path>
 #   parsed: yes          the command was taken apart, and its lines follow
 #   parsed: none         the JSON carries no tool_input.command
@@ -462,7 +464,11 @@ selftest() {
   run '{"hook_event_name":"SessionStart","session_id":"abc-1","cwd":"/p","permission_mode":"default"}'
   expect "the fields of a session start, no command: parsed none" 0 "event: SessionStart" "session_id: abc-1" "cwd: /p" "permission_mode: default" "parsed: none"
   absent "tool:" "the fields of a session start, no command: parsed none"
+  absent "transcript:" "the fields of a session start, no command: parsed none"
+  absent "agent_id:" "the fields of a session start, no command: parsed none"
   lines "the fields of a session start, no command: parsed none" 0
+  run '{"hook_event_name":"PostToolUse","session_id":"abc-1","transcript_path":"/h/.claude/projects/p/abc-1.jsonl","agent_id":"agent-7","cwd":"/p","tool_name":"Bash","tool_input":{"command":"ls"},"tool_response":{"stdout":""}}'
+  expect "the transcript and the agent named where the JSON carries them, since 15 October 2026" 0 "event: PostToolUse" "transcript: /h/.claude/projects/p/abc-1.jsonl" "agent_id: agent-7" "parsed: yes" "1|0|list|0|1|ls"
   run '{"tool_name":"Edit","tool_input":{"file_path":"/p/docs/agents/checks.md","old_string":"a","new_string":"b"},"cwd":"/p"}'
   expect "an edit: the file named, parsed none" 0 "tool: Edit" "file: /p/docs/agents/checks.md" "parsed: none"
   run '{ "tool_name" : "Bash" , "tool_input" : { "command" : "ls -la" , "timeout" : 5 , "x" : null , "y" : true , "z" : [ 1 , "two" , { "command" : "rm" } ] } , "tool_response" : { "stdout" : "\"command\": \"rm -rf /\"" } }'
@@ -862,6 +868,7 @@ BEGIN {
   WINDOWS = (os ~ /^(msys|cygwin|MINGW|MSYS|CYGWIN)/); MACOS = (os ~ /^darwin/)
   WANT["hook_event_name"] = 1; WANT["tool_name"] = 1; WANT["cwd"] = 1
   WANT["permission_mode"] = 1; WANT["session_id"] = 1
+  WANT["transcript_path"] = 1; WANT["agent_id"] = 1
   WANT["tool_input.command"] = 1; WANT["tool_input.file_path"] = 1
   # the wrappers read over, one word and two words, each with the options that take a value, read off the vendors as docs/roadmap.md names them under the entry on the command reader and its addenda of 13 October 2026
   ONEWORD = " - timeout time nice nohup stdbuf command builtin noglob nocorrect watch setsid ionice flock xargs sudo doas su run0 pkexec env trap exec caffeinate chrt taskset strace valgrind hyperfine unbuffer chronic script arch xcrun sandbox-exec systemd-run nix-shell runuser setpriv gsudo runas login gosu prlimit numactl setarch linux32 linux64 nocache cpulimit ltrace heaptrack gdb lldb rr uclampset winpty firejail ssh-agent lockf apply msgexec kinit sc_usage dtruss dapptrace dappprof procsystime dtrace leaks sg bpftrace ifne lckdo pee mispipe parallel fd tmux screen dtach abduco nq tsp daemon daemonize entr watchexec nodemon reflex chokidar onchange watchman-make when-changed wgo gow chruby-exec envchain godotenv env-cmd cross-env cross-env-shell dotenv npx "
@@ -3612,6 +3619,8 @@ END {
   if ("cwd" in HAVE) printf "cwd: %s\n", clean(FIELD["cwd"])
   if ("permission_mode" in HAVE) printf "permission_mode: %s\n", clean(FIELD["permission_mode"])
   if ("session_id" in HAVE) printf "session_id: %s\n", clean(FIELD["session_id"])
+  if ("transcript_path" in HAVE) printf "transcript: %s\n", clean(FIELD["transcript_path"])
+  if ("agent_id" in HAVE) printf "agent_id: %s\n", clean(FIELD["agent_id"])
   if ("tool_input.file_path" in HAVE) printf "file: %s\n", clean(FIELD["tool_input.file_path"])
   if (!("tool_input.command" in HAVE)) { print "parsed: none"; exit 0 }
   OUT = ""; NID = 0; LASTID = 0; D = 0; PERR = ""

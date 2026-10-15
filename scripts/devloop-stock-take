@@ -61,6 +61,10 @@ A. WHAT GOES IN
 - Every branch of the twelve skills, all files in each skill directory, and
   the straight path of every unit of those files.
 - Every branch of the text under shared/, and the straight path of every unit.
+- Every branch of the output style under output-styles/, and the straight
+  path of every unit, since 15 October 2026: the one file there is text the
+  model reads in every session in which the plugin is enabled, a text no
+  skill inserts and none owns, of kind output style.
 - Every outcome of each hook, and hooks.json as one thing. A hook's outcomes
   are what it produces (passes, each with the condition that produced it, or
   blocks with a given message), not its exit statements.
@@ -133,14 +137,15 @@ line (!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text NAME`) brings shared/NAME.md
 into the range of its unit, followed once per file.
 
 Every unit has one thing for its straight path - kind skill branch in a skill,
-shared text under shared/ - named <source> / <unit> / straight path and
-anchored at the unit's heading. A sentence without a condition in the unit is
-"part of" it; every condition keeps its own things. A unit whose heading
-cannot carry an anchor anchors its straight path on the nearest anchorable
-line inside the unit; a unit with no anchorable line at all is listed with the
-unanchorable lines. Every unit of a file under skills/ or shared/ has exactly
-one straight path, and the tool checks it: a unit without one is listed and
-counts as uncovered, a second one is a broken record.
+shared text under shared/, output style under output-styles/ - named
+<source> / <unit> / straight path and anchored at the unit's heading. A
+sentence without a condition in the unit is "part of" it; every condition
+keeps its own things. A unit whose heading cannot carry an anchor anchors its
+straight path on the nearest anchorable line inside the unit; a unit with no
+anchorable line at all is listed with the unanchorable lines. Every unit of a
+file under skills/, shared/ or output-styles/ has exactly one straight path,
+and the tool checks it: a unit without one is listed and counts as uncovered,
+a second one is a broken record.
 
 Branches are read from the files on disk, never from the expanded text. A
 branch in inserted text is a row of its file under shared/, once. Where the
@@ -234,8 +239,9 @@ Four record types:
 - thing: name (unique among things), kind, file + anchor (the site: where it
   stands or is named), evidence_file + evidence_anchor (what carries its
   state; may be empty), note, and optionally trigger, bench and cost, each a
-  file + anchor pair. Kinds: skill branch, shared text, hook outcome, hook
-  registration, program outcome, check command, named skill, defect. For a
+  file + anchor pair. Kinds: skill branch, shared text, output style, hook
+  outcome, hook registration, program outcome, check command, named skill,
+  defect. For a
   branch on disk, site and evidence are usually the same line. For a defect,
   the evidence is the line where its fix stands - a check command's line
   included - or the line in which the entry itself says nothing is built, or
@@ -402,8 +408,9 @@ D. HOW STATES ARE COMPUTED
   so that the line stays covered and the entry's text stays as written.
 - Recorded, not built: the evidence lies under docs/ or in README.md, and the
   kind is not check command.
-- Built: the evidence lies under skills/, shared/, hooks/, bin/, scripts/ or
-  .github/, or the kind is check command, or the evidence lies under one of the two
+- Built: the evidence lies under skills/, shared/, output-styles/, hooks/,
+  bin/, scripts/ or .github/, or the kind is check command, or the evidence
+  lies under one of the two
   check headings of docs/skill-conventions.md, "Before you change anything,
   run this" and "Before a handover, run these". The line is drawn around
   those two sections and not around the whole file because they are run -
@@ -452,11 +459,12 @@ line as the boundary commit.
 
 E. THE SEARCH SET, FOR COVERAGE
 
-- In every file under skills/ and shared/: every line holding one of the
-  words if, where, when, whenever, wherever, unless, otherwise, either, else,
-  before, as whole words in either case; every heading outside a fenced code
-  block; every numbered item; every bold list head; every bold paragraph head;
-  every table row except the header row and the separator row.
+- In every file under skills/, shared/ and output-styles/: every line
+  holding one of the words if, where, when, whenever, wherever, unless,
+  otherwise, either, else, before, as whole words in either case; every
+  heading outside a fenced code block; every numbered item; every bold list
+  head; every bold paragraph head; every table row except the header row and
+  the separator row.
 - In every file under hooks/: every line holding if, elif, else, case or exit
   as whole words, and every line that calls, at the place of a command, a
   function of the file that ends the program; the rule two items below.
@@ -610,12 +618,14 @@ COLUMNS = [
 ]
 TYPES = ("thing", "run", "not-a-thing", "finding")
 KINDS = (
-    "skill branch", "shared text", "hook outcome", "hook registration",
-    "program outcome", "check command", "named skill", "defect",
+    "skill branch", "shared text", "output style", "hook outcome",
+    "hook registration", "program outcome", "check command", "named skill",
+    "defect",
 )
 SOURCES = ("entry", "log", "none")
 STATES = ("Undetermined", "Recorded, not built", "Built, never walked", "Walked")
-SHIPPED = ("skills", "shared", "hooks", "bin", "scripts", ".github")
+SHIPPED = ("skills", "shared", "output-styles", "hooks", "bin", "scripts",
+           ".github")
 RECORDED_IN = ("docs", "README.md")
 ZERO_HASH = "0" * 40
 REASONS = ("part of", "rationale", "quoted", "template", "no defect")
@@ -836,8 +846,11 @@ def units_of(lines):
     return units, fenced
 
 
+UNIT_TOPS = ("skills", "shared", "output-styles")
+
+
 def is_unit_file(rel):
-    return (rel.startswith("skills/") or rel.startswith("shared/")) \
+    return any(rel.startswith(t + "/") for t in UNIT_TOPS) \
         and rel.endswith(".md")
 
 
@@ -1171,7 +1184,7 @@ def walk(root, top):
 def unit_files(files, root, only=None):
     wanted = wanted_by(only)
     out = []
-    for top in ("skills", "shared"):
+    for top in UNIT_TOPS:
         for rel in walk(root, top):
             if rel.endswith(".md") and wanted(rel) and files.get(rel):
                 out.append(rel)
@@ -1575,8 +1588,9 @@ def analyse(root, table=None, only=None):
             u = files.unit_at(rel, lineno)
             heading = u["part"]
             if rec.parts[2] == STRAIGHT:
-                want = "skill branch" if rel.startswith("skills/") \
-                    else "shared text"
+                want = ("skill branch" if rel.startswith("skills/")
+                        else "shared text" if rel.startswith("shared/")
+                        else "output style")
                 if rec["kind"] != want:
                     rec.errors.append("a straight path under %s/ is of kind "
                                       "%s" % (rel.split("/")[0], want))
@@ -1589,7 +1603,7 @@ def analyse(root, table=None, only=None):
                     sp_by_unit[key] = rec.lineno
         elif rec.parts and rec.parts[2] == STRAIGHT and site:
             rec.errors.append("a straight path stands only in a file under "
-                              "skills/ or shared/")
+                              "skills/, shared/ or output-styles/")
         key = (rec["file"], rec["anchor"])
         if key in seen_anchor:
             rec.errors.append("same site anchor as the thing on line %d"
@@ -1945,7 +1959,7 @@ def analyse(root, table=None, only=None):
         tally(res, rel, "things")
         if t["rec"].parts[2] == STRAIGHT:
             tally(res, rel, "straight paths")
-        elif t["kind"] in ("skill branch", "shared text"):
+        elif t["kind"] in ("skill branch", "shared text", "output style"):
             tally(res, rel, "branches")
         else:
             tally(res, rel, "other kinds")
@@ -2293,6 +2307,16 @@ def selftest():
         write(root, "shared/note.md",
               "When somebody writes in German, answer in German.\n")
         write(root, "shared/inserted.md", "Inserted text, first wording.\n")
+        # an output style, a unit file outside skills/ and shared/ since 15
+        # October 2026: its first unit holds the frontmatter, a line with a
+        # search word covered as part of the straight path and one no record
+        # covers; its second unit a straight path of the wrong kind
+        write(root, "output-styles/style.md",
+              "---\nname: t\nforce-for-plugin: true\n---\n\n# Style\n\n"
+              "Where a skill says to say it, say it as text of the message.\n"
+              "Plain prose of the style, deciding nothing.\n"
+              "Unless a skill owes it, nothing changes here.\n\n"
+              "## Second\n\nA second unit of the style.\n")
         write(root, "hooks/guard.sh",
               "#!/bin/sh\n[ -d docs/agents ] || exit 0\n"
               "echo blocked >&2\nexit 2\nexit 0\nexit 0\n")
@@ -2339,7 +2363,8 @@ def selftest():
               "- **A run naming a commit with source log.**\n"
               "- **A run of the fourth unit, copied from the extra file.**\n"
               "- **A run recorded before a later commit changed its thing.**\n"
-              "- **A run recorded after the last change to its thing.**\n\n"
+              "- **A run recorded after the last change to its thing.**\n"
+              "- **A defect answered by the output style.**\n\n"
               "## Named, not built as skills\n\n"
               "| Skill | Description | Origin |\n|---|---|---|\n"
               "| `implement-ticket` | Build one task | test |\n"
@@ -2462,6 +2487,9 @@ def selftest():
         DEF_FURTHER = "docs/roadmap.md / Known gaps / a defect answered a section further on"
         DEF_NOT_BUILT = "docs/roadmap.md / Known gaps / a defect"
         NOTE_SP = "shared/note.md / whole file / straight path"
+        STYLE = "output-styles/style.md"
+        STYLE_SP = "output-styles/style.md / Style / straight path"
+        STYLE_DEF = "docs/roadmap.md / Known gaps / a defect answered by the output style"
         NOTE_G = "shared/note.md / whole file / german"
         T = "skills/theta/SKILL.md"
         LINES = "shared/lines.md"
@@ -2556,6 +2584,18 @@ def selftest():
                   ev=False),
             thing(NOTE_SP, "shared/note.md", "somebody writes in German, answer",
                   kind="shared text"),
+            # green: the output style's first unit, its kind; red: a straight
+            # path of its second unit with the kind of a shared text
+            thing(STYLE_SP, STYLE, "# Style", kind="output style"),
+            thing("output-styles/style.md / Second / straight path", STYLE,
+                  "## Second", kind="shared text"),
+            rec(type="not-a-thing", file=STYLE,
+                anchor="Where a skill says to say it, say it as text",
+                note="part of: " + STYLE_SP),
+            # green: evidence under output-styles/ reads built
+            thing(STYLE_DEF, R, "A defect answered by the output style.",
+                  kind="defect", ev=False, evidence_file=STYLE,
+                  evidence_anchor="Plain prose of the style, deciding nothing."),
             thing(NOTE_G, "shared/note.md", "When somebody writes in German",
                   kind="shared text"),
             thing("shared/inserted.md / whole file / straight path",
@@ -3037,7 +3077,7 @@ def selftest():
              res.reason_counts.get("rationale", 0) == 1)
         case("a part of naming no thing",
              err("part of 'alpha / Alpha / nowhere', which names no thing"),
-             res.reason_counts.get("part of", 0) == 2)
+             res.reason_counts.get("part of", 0) == 3)
         case("a thing name without its three parts",
              err("name 'alpha-only' does not have the three parts"),
              states.get(BLUE) is not None)
@@ -3229,7 +3269,7 @@ def selftest():
              states.get(CHECK) is not None)
         case("a part of naming nothing",
              err("part of: names nothing"),
-             res.reason_counts.get("part of", 0) == 2)
+             res.reason_counts.get("part of", 0) == 3)
         case("an anchor into a file that cannot be read",
              err("in skills/nowhere/SKILL.md: the file cannot be read"),
              states.get(BLUE) is not None)
@@ -3247,10 +3287,21 @@ def selftest():
         case("a straight path of the wrong kind",
              err("a straight path under shared/ is of kind shared text"),
              states.get(NOTE_SP) is not None)
-        case("a straight path outside skills/ and shared/",
-             err("a straight path stands only in a file under skills/ or "
-                 "shared/"),
+        case("a straight path outside skills/, shared/ and output-styles/",
+             err("a straight path stands only in a file under skills/, "
+                 "shared/ or output-styles/"),
              states.get(NOTE_SP) is not None)
+        case("a straight path under output-styles/ of the wrong kind",
+             err("a straight path under output-styles/ is of kind output "
+                 "style"),
+             states.get(STYLE_SP) == "Built, never walked")
+        case("a line of the output style in the search set: covered as part "
+             "of the straight path, or listed",
+             (STYLE, 10) in uncovered,
+             (STYLE, 8) not in uncovered and (STYLE, 6) not in uncovered)
+        case("evidence under output-styles/ reads built",
+             states.get(DEF_NOT_BUILT) == "Recorded, not built",
+             states.get(STYLE_DEF) == "Built, never walked")
         case("a calls segment not carrying the form exactly",
              err("note 'calls beta gamma' does not carry the form 'calls "
                  "<skill>' exactly"),

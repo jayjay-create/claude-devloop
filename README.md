@@ -255,7 +255,16 @@ and only after asking you: where you let it work without you, it asks whether
 it may enter one rule under `autoMode.allow`, so that auto mode does not block
 by itself the installs a devloop hook already guards; the rule allows installs
 in projects set up with devloop and nothing else, and without your yes the file
-is not touched. It does not decide how you like to be spoken to.
+is not touched. It does not decide how you like to be spoken to, with one
+exception it makes itself: devloop brings its own output style and forces it,
+so while devloop is enabled the output style you chose does not apply, in
+every session, and devloop's stands in its place. That style says only that
+what a skill owes you is written as visible text in the message rather than
+in a collapsed progress note, and it keeps Claude Code's coding instructions.
+Where another plugin forces a style of its own and Claude Code loads it
+first, devloop's does not apply, and the run tells you so once in the
+session. Disable devloop and your style applies again from the next session
+on.
 
 ## What is missing
 
@@ -305,12 +314,12 @@ The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
 update`, `/plugin install`.
 
 Old versions stay in the cache alongside the new one. Before testing a change,
-confirm the installed copy actually carries it — all five directories, because a
+confirm the installed copy actually carries it — all six directories, because a
 hook runs from the installed path too, and so does the text the skills insert
-from `shared/` at load:
+from `shared/` at load, and the output style is read at start from there:
 
     P=~/.claude/plugins/cache/<marketplace>/<plugin>/<installed version>
-    for d in skills hooks shared bin scripts; do diff -r "$P/$d" "$d"; done
+    for d in skills hooks shared bin scripts output-styles; do diff -r "$P/$d" "$d"; done
 
 The version is the installed one, read out of
 `~/.claude/plugins/installed_plugins.json` and not out of

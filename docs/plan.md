@@ -116,15 +116,16 @@ set judged not to be a thing, the reason. No state is written down. The tool
 computes one of four states for every thing on every run, from the records
 and the git history: undetermined, where the evidence is empty; recorded and
 not built, where the evidence lies under `docs/` or in `README.md`; built and
-never walked, where it lies under `skills/`, `shared/`, `hooks/`, `bin/`,
-`scripts/` or `.github/` or under one of the two check headings of
+never walked, where it lies under `skills/`, `shared/`, `output-styles/`,
+`hooks/`, `bin/`, `scripts/` or `.github/` or under one of the two check headings of
 `docs/skill-conventions.md` and no run counts; walked, where a run counts. A
 run counts when the version it ran already contains the last change to every
 line the thing stands on, read off `git blame`; a run recorded in the roadmap
 with no version does not count, and the runs that do not count are printed
 with their reason.
 
-The things: the twelve skills down to their branches, `shared/`, `hooks/`,
+The things: the twelve skills down to their branches, `shared/`, since 15
+October 2026 `output-styles/`, `hooks/`,
 `bin/`, `scripts/` and the workflow under `.github/` down to their outcomes,
 the tool itself included; the
 nineteen checks under "Before a handover, run these", seventeen until 28
@@ -144,7 +145,8 @@ the bench and the cost for a thing, the table carries them; where it does not,
 that is the building milestone's work, not this one's.
 
 The search set is what makes the table checkable for completeness: every line
-under `skills/`, `shared/`, `hooks/`, `bin/` and `scripts/` that carries a
+under `skills/`, `shared/`, `output-styles/`, `hooks/`, `bin/` and `scripts/`
+that carries a
 condition word, a heading, a numbered item, a list head or a table row; in a
 shell file under `hooks/`, `bin/` and `scripts/` every line that calls, at the
 place of a command, a function of the file that ends the program; under
