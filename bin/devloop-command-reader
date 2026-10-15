@@ -72,7 +72,8 @@
 # or, for a program that comes with the system, off its manual, with the
 # options that take a value and the options whose value is itself a command,
 # named with its address and its release or commit in docs/roadmap.md under
-# the entry on the command reader and its three addenda of 13 October 2026.
+# the entry on the command reader and its five addenda of 13 and 14 October
+# 2026.
 # The kinds, each for macOS, Linux and
 # Windows with Git Bash: (1) privileges, a command as an administrator or as
 # another user - sudo, doas, su, run0, pkexec, runuser, gsudo, gosu, runas,

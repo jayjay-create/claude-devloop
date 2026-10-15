@@ -117,7 +117,11 @@ jobs:
   # "jobs.<job_id>.container", a job container needs a Linux runner, and an
   # empty value is no container - in which the first step installs bash, git
   # and python3, since the image carries none of them and "shell: bash" is
-  # the job's default. The handlers are read off
+  # the job's default, and marks the checkout a safe directory for git,
+  # since git refuses in a container a repository owned by another user
+  # unless the directory is marked safe; that second half came with the
+  # branch's last commit, after the fifth addendum was written, which names
+  # the installation alone. The handlers are read off
   # hooks/hooks.json with python3 so that one added later runs without this
   # step being touched; the input of each event stands below, harmless - the
   # command ls for the tool Bash, a Write and an Edit of the project's README

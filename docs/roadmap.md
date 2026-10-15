@@ -23944,6 +23944,276 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   each held against `a03a720`, whose lines these things stand on this branch
   does not change.
 
+- **The catch-up of 14 October 2026 after the consistency audit: the three
+  comments outside `docs/` built as the audit's shoulds say, the 24 runs under
+  0.137.0 recorded before later commits of their branch changed their things
+  taken out of the table, the 89 not-a-thing records outside the search set
+  kept, the tool rejecting a run under the branch's own version whose row came
+  in before a later commit changed its thing, a second test on the run's date
+  built and taken out again by the person's decision, one defect recorded and
+  not built on the group of programs the reader reads over going stale; four
+  runs on the final code; the version raised to 0.138.0.** On
+  `task/catch-up-2026-10-14`, off `78a250d`, version 0.137.0 on `main`; the
+  comments, the tool with its self-test, the version, the 24 rows taken out,
+  the rows of the table for all of it and this entry without its runs in one
+  commit, the runs and their rows in a second; the date test taken out with
+  its rows and this entry corrected in a third, the three runs on the tool
+  made again with their rows in a fourth, no commit after the third changing
+  code, so that the tool's check leaves this branch green. The reports stand
+  on this machine as `~/devloop-catch-up-2026-10-14.md` and
+  `~/devloop-catch-up-2026-10-14-addendum.md`, in English, and are not in the
+  repository. Every line number of a file in this entry holds at `78a250d`
+  unless it says otherwise.
+
+  **The decisions of the person, and what follows from them.**
+
+  - The 24 runs under 0.137.0 the audit entry names go: lines 4524, 4530,
+    4531, 4536, 4537, 4539, 4540, 4541, 4542, 4597, 4601, 4751, 4759, 4760,
+    4763, 4765, 4766, 4914, 4915, 4916, 4917, 4919, 4920 and 5205 of
+    `docs/stock-take.tsv`, each a run row under 0.137.0, checked before they
+    went. They were recorded on the branch of pull request #171 before later
+    commits of that branch changed lines of their things; the head of the tool
+    says in section C that a run under the version a branch introduces is
+    recorded only at the branch's final state, and in section D that the rule
+    can undercount and must never overcount. The paragraphs of this file that
+    describe those runs stay as written. Measured at `78a250d` without the 24
+    rows and nothing else changed: exit 0, Walked 461 where 465 stood, the
+    things built and never walked 1040 where 1036 stood, and exactly four
+    things lose Walked: the install guard's block under a yes for `doas`,
+    `su`, `run0` and `pkexec`, and the defects on `setpriv`, on the group put
+    together from single programs and on the two vendors' lists. The two
+    other things of the six the audit named, the reader's "the fields and the
+    commands of a Bash call" and its "--self-test", keep Walked by the runs of
+    the audit's second commit at `a03a720`. Each of the four is walked again
+    below, on the code of this branch's first commit.
+
+  - The 89 not-a-thing records outside the search set stay, by the same rule
+    of section D. A record whose note starts "part of:" brings its line into
+    the lines its thing stands on, in the search set or not, wherever the
+    thing does not have the line through its unit already -
+    `scripts/devloop-stock-take` lines 1474 and 1475, off the list built at
+    lines 1770 to 1773 - so a run of the thing stops counting when such a
+    line changes; dropped, the runs would go on counting after it. 88 of the
+    89 carry "part of:", measured on this branch with `search_set` and
+    `find_anchor` of the tool as the audit measured, 62 under `bin/`, 16
+    under `skills/`, 5 under `docs/`, 4 under `hooks/`, 1 under `shared/`
+    and 1 under `.github/`; the one that carries "rationale" instead,
+    `skills/start-work/SKILL.md` line 44, stays as well, since it changes no
+    count. Of the two ways the audit entry laid out as equal, dropping does
+    not hold: such a record is not one that covers nothing and harms
+    nothing, it binds runs. The audit entry's should, that the tool lists
+    such records under a heading of its own so that they are seen and each
+    order decides whether they go, has no purpose after this and is not built:
+    the one action a listing could lead to, dropping, this decision rules out
+    for a "part of" record and takes for the one other; a list nobody acts on
+    is read once and then skipped, as the conventions say of a check that is
+    red by construction.
+
+  - The tool rejects a run recorded too early itself, since this entry. Where
+    the version `.claude-plugin/plugin.json` carries in the working tree was
+    introduced on the branch, its commit not on `origin/main`, every run under
+    it is held, for every line its thing stands on, against the commit that
+    brought its row into the table, read with `git blame` of the table: a row
+    whose commit does not contain the last change to such a line is a broken
+    record, the row's commit, the line and the change's commit named, so that
+    the tool exits 2 and the check `stock-take` that `main` requires goes red
+    on the pull request, whose run reads the branch with its full history on
+    `refs/pull/N/merge`, `.github/workflows/stock-take.yml` lines 47 to 66;
+    on `main` after the squash merge nothing of this can be seen, every line
+    blaming to the one commit. The weakness the order named - a row
+    re-anchored after the change carries the later commit and so hides an
+    early run - stays as the limit of this test, and the head says so in
+    section C and under LIMITS beside the two others: a run made before a
+    change and recorded in the one commit with it, the row's commit being
+    the change's; and with `origin/main` not fetched the check runs on `main`
+    too, where every row's commit is the squash commit and nothing is
+    reported. A second test against that weakness was built in the first
+    commit of this branch and taken out again in the third, by the person's
+    decision: it held the run's date against the day of the last change to a
+    line of its thing, by the author date of the change's commit, and
+    rejected a run dated before that day where the change's commit was not
+    the row's own. The reason stands in the conventions under "A run's date
+    is copied from the session log of that run, not from memory": a run's
+    date is the day its session log opens, read in the log's own timezone,
+    while `%ai` reads a commit's day in its author's timezone, so a session
+    that opens at eleven in the evening, commits code after midnight and
+    runs after the commit carries the earlier day on the run and the later
+    one on the change, and the test reported a run made after the change as
+    an early one. What is built in `scripts/devloop-stock-take`: the table's
+    path held in `analyse`, the one test in the block that counts runs,
+    behind the check on a version raised over, an outcome of the tool with a
+    row of its own; one case in the self-test on a hook of the fixture and
+    two commits `c7` and `c8` after `c6`, the case with its green beside it,
+    the self-test at 111 cases where 110 stood and 76 of 76 messages asserted
+    by a case; the exit codes, section C and LIMITS of the head; the
+    conventions under "Before a handover, run these" name the check beside
+    the two rules the header states, and why the run's date is not read. The
+    24 runs above would have been rejected on the branch of #171 by this
+    test, their rows committed on 12 and 13 October 2026 and lines of their
+    things changed after. Gone with the date test in the third commit:
+    `author_date` on `Git`, the second case with the third run row and the
+    commit `c9` of the fixture, the thing of the second test with its run row
+    in the table and the part-of record on the cache of `author_date`; the
+    self-test stood at 112 cases and 77 of 77 messages between the first
+    commit and the third.
+
+  **The three comments, built as the audit's shoulds say.**
+
+  - `hooks/pre-tool-use-identity-guard.sh` lines 45 to 47: the reason that a
+    line routed through a function stands in no search set is gone; the
+    comment says why every block leaves through the two lines at the end: the
+    message stands once, with what was read filled in, and the block's record
+    in the table stands on the one exit line.
+  - `.github/workflows/stock-take.yml` lines 112 to 132: the comment names
+    both halves of the Alpine step and why the second - git refuses in a
+    container a repository owned by another user unless the directory is
+    marked safe - and that the half came with the branch's last commit after
+    the fifth addendum was written, which names the installation alone.
+  - `bin/devloop-command-reader` line 75: its five addenda of 13 and 14
+    October 2026, as the conventions say since the audit.
+
+  The three defect things of the audit entry carry their evidence on the
+  repaired lines and their sites on the audit's status lines, as the audit
+  holds its own corrections under "Two rows of the table"; the defect on the
+  89 records carries its evidence on the line above saying the listing has no
+  purpose and is not built, and the defect on the 24 runs on the tool's new
+  test. No record is anchored on any of the three comments' lines, and the
+  comment lines stand in no search set.
+
+  **One defect recorded, not built, at the person's wish.** The group of
+  programs the reader reads over - every program that runs its argument or a
+  text as a command, each read off its vendor's source at a release or commit
+  named in this file - goes stale with time: new tools and new options
+  appear, in JavaScript and Python above all, and nothing holds the group
+  against them. Should: a check that holds, per program, the release named in
+  this file against the vendor's newest release, and reads again only the
+  programs for which a newer one has appeared since. It builds on the rule in
+  `docs/skill-conventions.md` under "A hook reads its input through one
+  program", that every reading of a program names the release or commit it
+  was made at, with the command that shows it exists and the vendor's
+  sentence quoted: without that line per program there would be nothing to
+  hold against.
+
+    Recorded, not built: the group of programs the reader reads over goes stale
+    as new tools and options appear, and nothing holds each program's named
+    release against the vendor's newest.
+
+  **The runs**, on the clean tree at `45e089f`, the first commit, no commit
+  after it changing code; every run under 0.138.0, the version that commit
+  introduces, and recorded in the second commit, whose rows the tool's new
+  check holds against that commit. The four things, each walked on the code
+  of this branch with the bench of the second addendum's report rebuilt in a
+  throwaway directory outside the clone: a project with `docs/agents/`, a bare
+  local `origin` with `origin/HEAD` on `main`, the four records no, none,
+  yes11 and yes6 as `shared/install-record.md` spells them, each committed,
+  pushed and fetched before the commands under it; the hooks of `45e089f`
+  started by absolute path, the JSON on stdin with `tool_name` Bash,
+  `tool_input.command`, `cwd` and `permission_mode`, `CLAUDE_PROJECT_DIR` on
+  the project; Darwin 25.6.0, bash 3.2.57, awk 20200816, git 2.50.1; from
+  15:54:27 to 15:55:09 UTC, 142 commands, 128 at the install guard under the
+  four records and 14 at the four other guards, 526 feedings, every one as
+  the four paragraphs this order named record them - lines 20931 to 21020,
+  21942 to 22040 and 22818 to 22849 at `78a250d` - but the four `mise exec`
+  forms, which answer as the second addendum reads `mise exec` since, over to
+  the command: `mise exec -- go install golang.org/x/tools/cmd/goimports@latest`,
+  `mise x -- brew install ripgrep` and `mise exec -c 'brew install ripgrep'`
+  2 2 0 0 and `mise exec -- pytest` 0 0 0 0, where the first addendum's
+  paragraph has 2 2 2 2 with `mise`'s cause for each; `sg staff -c 'brew
+  install ripgrep'` 2 2 0 0 as the fourth addendum reads `sg`, and
+  `hyperfine --reference 'brew install ripgrep' make` 0 0 0 0 as the third
+  reads `hyperfine`. The exit codes stand in the order no, none, yes11, yes6.
+  - The install guard's block under a yes for `doas`, `su`, `run0` and
+    `pkexec`, 16 commands: `doas brew install ripgrep`, `su -c 'brew install
+    ripgrep'`, `run0 make install`, `pkexec make install`, `timeout 600 su -c
+    'make install'` and `su root` 2 2 2 2, under both yes "it needs doas, …",
+    "it needs su, …", "it needs run0, …" and "it needs pkexec, which stays
+    the user's under every answer"; `doas -C /etc/doas.conf brew install
+    ripgrep` 0 0 0 0; the first kind of the group as the second addendum
+    walked it, `runuser -u root -- brew install ripgrep`, `gsudo brew install
+    ripgrep`, `runas /user:admin "brew install ripgrep"`, `launchctl asuser
+    501 brew install ripgrep`, `machinectl shell .host /usr/bin/make
+    install`, `setpriv --reuid=0 make test` and `login -f root brew install
+    ripgrep` 2 2 2 2, each naming its program; `tmux new -d sudo make
+    install` 2 2 2 2 with `sudo`'s cause; `machinectl shell box make
+    install` 0 0 0 0.
+  - The reader reading as wrappers the two vendors' lists and `exec` alone,
+    119 commands: the 31 wrapper forms of the first addendum's paragraph
+    from `sudo -Eu root brew install ripgrep` to `docker exec c apt-get
+    install -y jq`, the 74 of the second's - the order's twelve, `mise exec
+    node@20 -- node -v`, `mise install node@20`, the `osascript -e` and
+    `python3 -c` forms, `tmux new -d sudo make install` and the build's own
+    57 from `launchctl submit -l x -- brew install ripgrep` to `composer exec
+    -- phpunit` - each as recorded, the four `mise exec` forms as above; and
+    the 14 at the other guards: the branch guard on `main` with `tmux
+    new-session -d 'git push origin main'`, `parallel 'git push origin main'
+    ::: a`, `git bisect run git push origin main` and `tmux send-keys 'git
+    push origin main' Enter` 2; the merge guard with `screen -dm gh pr merge
+    5 --squash`, `watchexec -- gh pr merge 5` and `nodemon --exec 'gh pr
+    merge 5'` 2; the identity guard with `tmux new-session -d 'git -c
+    user.email=a@example.com commit -m m'` and `parallel 'git commit
+    --author="A <a@example.com>" -m m' ::: a` 2; the mark guard with `screen
+    -dm touch .claude/unattended.local` and `tmux new -d 'echo x >
+    .claude/unattended.local'` 2 under `default` and 0 under `auto`, `uv run
+    tee .claude/unattended.local` 2 under `default`.
+  - The group put together from single programs, 19 commands: the twelve of
+    finding A, `parallel brew install ::: a b`, `tmux new-session -d 'brew
+    install ripgrep'`, `screen -dm brew install ripgrep`, `ls src | entr brew
+    install ripgrep`, `watchexec -- brew install ripgrep`, `nodemon --exec
+    'brew install ripgrep'`, `git rebase -x 'brew install ripgrep' main`,
+    `git bisect run brew install ripgrep`, `git submodule foreach 'brew
+    install ripgrep'`, `fd -e txt -x brew install` and `npm exec -c 'brew
+    install ripgrep'` 2 2 0 0 and `uv run make install` 2 2 2 2 with `make
+    install`'s cause; the seven privilege forms above 2 2 2 2 under every
+    answer.
+  - `setpriv`, 9 commands: `setpriv --reuid=1000 make test`, `setpriv
+    --reuid=1000 brew install ripgrep` and `setpriv --reuid=0 make test`
+    2 2 2 2 with "it needs setpriv, which stays the user's under every
+    answer"; `setpriv --no-new-privs make test` 0 0 0 0 and `setpriv
+    --keep-groups brew install ripgrep` 2 2 0 0, read over to the command;
+    `gosu nobody make test` 2 2 2 2 with "it needs gosu, …"; `flock -c 'brew
+    install ripgrep' /tmp/lock`, `echo 'brew install ripgrep'` and
+    `hyperfine --reference 'brew install ripgrep' make` 0 0 0 0.
+
+  One run written down on each of the four. Then, on the same tree: the
+  reader's self-test from
+  15:56:41 to 15:56:47 UTC, `SELF-TEST PASSED: 159 cases`, exit 0, one run
+  written down on its outcome; the nineteen checks under "Before a handover,
+  run these" from 15:56:47 to 15:56:54 UTC, in a clean bash with
+  `/usr/bin/grep` first on its path, each printing what it printed at
+  `78a250d` before the first edit, line for line: the registration two empty
+  lists, the roadmap names silent, the invocability one count per skill, the
+  locked skill named by `build-work`, the copies silent, the insert lines
+  silent, the grant silent, the language block twelve lines, the notice one
+  checksum line and twelve, the expansion silent, the executables silent, the
+  arming command 2 and 2, the default branch 1, the status forms 1 twice, the
+  offers seventeen lines, the handovers nine over eight sites, the unattended
+  finish silent, the second statement one line - one run written down on
+  each of the nineteen. The tool and its self-test ran on that tree too, from
+  15:55:09 to 15:56:40 UTC, the tool exit 0 with 0 of 3641 uncovered and
+  Walked 461, the self-test at 112 cases with 77 of 77 messages asserted,
+  three runs written down then; their rows gave way in the fourth commit to
+  the runs on the tree of the third, below, the third having changed the
+  tool. The runs stand in the second commit, 25 of them, each held against
+  `45e089f`.
+
+  **The runs on the tool after the third commit**, on the clean tree at
+  `f70871b`, no commit after it changing code: the tool from 18:47:05 to
+  18:48:40 UTC, exit 0, BROKEN RECORDS 0, no run under 0.138.0 reported as
+  recorded too early, FINDINGS 19, UNCOVERED LINES OF THE SEARCH SET 0 of
+  3639, the two lines of the date test gone from the set, UNITS WITHOUT A
+  STRAIGHT PATH 0, STATUS WORDS BROKEN OVER A LINE BREAK 0, Walked 466 and
+  1040 built and never walked, one run written down on its outcome; the
+  tool's self-test from 18:48:40 to 18:48:42 UTC, `SELF-TEST PASSED: 111
+  cases; of the 76 messages this tool rejects, refuses or answers with, read
+  off its own source, 76 are asserted by a case and 0 by none`, exit 0, one
+  run written down on its outcome and one on the outcome this entry adds,
+  which the self-test produces once; the reader's self-test from 18:48:42 to
+  18:48:49 UTC, `SELF-TEST PASSED: 159 cases`, and the nineteen checks from
+  18:48:49 to 18:48:56 UTC in the clean bash, each printing line for line
+  what it printed at `c688aaa`, run again and not written down a second
+  time, no line of their things changed since their runs above. The three
+  runs stand in the fourth commit, each held against `f70871b`.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
