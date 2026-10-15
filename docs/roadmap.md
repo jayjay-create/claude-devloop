@@ -24311,10 +24311,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   for at least 3 seconds". No line of the changelog names the `display` Claude
   Code sends, no record of the logs carries one, and `~/.claude/settings.json`
   holds none of the keys `showThinkingSummaries`, `alwaysThinkingEnabled` and
-  `thinking`. So an empty block is a reasoning block, returned empty as this
-  model's default returns it, and a block with text is a progress update,
-  returned as its summary: the two runs show the mix "updates" gives, and
-  neither "omitted", every block empty, nor "summarized", every block with
+  `thinking`. So an empty block is a reasoning block returned empty, as this
+  model's default returns it, or a progress update returned empty, which the
+  page allows under any `display` value, and a block with text is a progress
+  update, returned as its summary: the two runs show the mix "updates" gives,
+  and neither "omitted", every block empty, nor "summarized", every block with
   text.
 
   **The log keeps a summary.** Every assistant record carries
@@ -24327,15 +24328,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   159 tokens against 210 stored characters at records 437 to 438 of the first
   run and 367 against 213 at records 470 to 471; 132 against 239, 115 against
   225 and 156 against 278 at records 167 to 168, 288 to 289 and 467 to 468 of
-  the second. At three to four characters of German a token the stored text is
-  a third to a seventh of what the model wrote. What a block in the log shows
-  is the summary another model made of it; what the model wrote there is not in
-  the log, and no setting of the platform returns it. Record 151 of the second
-  run, "ich habe erklärt, wie der autonome Ablauf, mögliche Fehlerfälle, Kosten
-  und das Wachhalten des Rechners dabei funktionieren", reads as such a summary
-  of a longer update; its message, records 150 to 152, holds an empty block
-  beside it, and the log does not split its 878 thinking tokens between the
-  two.
+  the second. What a block in the log shows is the summary another model made
+  of it; what the model wrote there is not in the log, and no setting of the
+  platform returns it. Record 151 of the second run, "ich habe erklärt, wie der
+  autonome Ablauf, mögliche Fehlerfälle, Kosten und das Wachhalten des Rechners
+  dabei funktionieren", reads as such a summary of a longer update; its
+  message, records 150 to 152, holds an empty block beside it, and the log does
+  not split its 878 thinking tokens between the two.
 
   **Where the text lands.** Every message of the two runs that ends on a text
   block is followed by a prompt of the person or by the log's end, 29 and one
@@ -24441,8 +24440,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the second run. `review-changes` lines 56 to 57, "Say which commits it
   covers": no commit and no hash in any of the ten review messages, records
   542, 600, 874, 930, 1056 and 1100 of the first run and 578, 633, 879 and 917
-  of the second. `review-changes` line 169, the worst finding of each lens
-  named: none in records 600, 930, 1100, 633 and 917.
+  of the second. `review-changes` lines 169 to 170, the worst finding of each
+  lens named: none in records 600, 930, 1100, 633 and 917.
   `shared/rule-not-written-down.md` line 36, unchanged since `5ae30eb`, what
   came out of the standards file by which exit, or that nothing did: nowhere at
   the three rules of the first run, pull requests #8, #9 and #11, nor at the
@@ -24502,19 +24501,20 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   both lines name the channel, and the model wrote the text into a progress
   update, records 151 and 167, and for the same line 919 into the text of
   record 171 as well. At point 27's six places it cannot be decided from the
-  logs: `setup-project` line 256 says "Report", `cut-into-tasks` lines 154 and
-  159 and `start-work` line 274 say "say", `review-changes` line 108 says "the
-  one thing that may be said", none names the channel, and the model wrote such
-  a sentence before a tool call as text 28 and 25 times and as a progress
-  update 18 and 18 times. The measurement that would decide it, not run: each
-  of the six places again on a bench under Claude Code 2.1.296 or later with
-  `claude-sonnet-5-5` at effort `medium`, from the state the run had at that
-  record, several times with the line as it stands and as many times with the
-  line naming the channel as line 810 does, counting at the place text blocks,
-  thinking blocks with text and neither; where the named channel brings the
-  text into text and the line as it stands does not, the cause lies with the
-  skill, and where neither does, with the model. Defect a's two places speak
-  against the named channel helping, at two places of one run.
+  logs: `setup-project` lines 254 to 256 say "Report" and "Say",
+  `cut-into-tasks` lines 154 and 159 and `start-work` line 274 say "say",
+  `review-changes` line 107 says "the one thing that may be said", none names
+  the channel, and the model wrote such a sentence before a tool call as text
+  28 and 25 times and as a progress update 18 and 18 times. The measurement
+  that would decide it, not run: each of the six places again on a bench under
+  Claude Code 2.1.296 or later with `claude-sonnet-5-5` at effort `medium`,
+  from the state the run had at that record, several times with the line as it
+  stands and as many times with the line naming the channel as line 810 does,
+  counting at the place text blocks, thinking blocks with text and neither;
+  where the named channel brings the text into text and the line as it stands
+  does not, the cause lies with the skill, and where neither does, with the
+  model. Defect a's two places speak against the named channel helping, at two
+  places of one run.
 
   **Part 2, a. Line endings.** Milestone 12 is `docs/plan.md` line 485. devloop
   keeps its own files at LF through `.gitattributes`; a project of the person
