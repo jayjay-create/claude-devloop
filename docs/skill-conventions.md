@@ -668,6 +668,83 @@ length but for what the length was made of, and a count cannot tell the two
 apart. The one text whose form fixes a length is the description under
 "Frontmatter", and its limit stands there.
 
+## The output style is forced, and it replaces the person's
+
+Since 15 October 2026, version 0.139.0, the plugin ships one output style,
+`output-styles/devloop.md`, with `force-for-plugin: true` and
+`keep-coding-instructions: true`. The page "Output styles" of Claude Code's
+documentation, read that day: a style with `force-for-plugin` applies
+"automatically whenever the plugin is enabled, without requiring users to
+select it", "Overrides the user's `outputStyle` setting", and "If multiple
+enabled plugins set this, Claude Code uses the first one loaded";
+`keep-coding-instructions` keeps Claude Code's software-engineering
+instructions beside the style; and "Claude Code sends the active style's
+instructions with every request". Measured the same day under Claude Code
+2.1.299 with throwaway plugins, the roadmap entry of that date: the style's
+text arrives in every request of the conversation under the heading
+`# Output Style: <plugin>:<style>`, `devloop:devloop` for this one.
+
+**What it says, and why it is a style.** One thing: text a skill of devloop
+owes the person — what a line tells the run to say, state, report, present,
+name, confirm, announce or explain, or to put in its own message — is a text
+block of the run's message, before the tool call or the question it comes
+before, and never a progress note between tool calls. The entry of 15
+October 2026 on the thinking part of the two closing runs measured such text
+at thirty-seven places in the model's progress updates, which the session
+keeps as a summary and shows collapsed. A style is sent with every request
+of a session in which the plugin is enabled, which no skill's text is, and it
+reaches the model before the first skill is loaded; a line in twelve skills
+would reach it twelve times and after each load. It is forced because a
+style the person has to pick is a step they would have to know, against
+"The session start tells you where you are" in README.md. A session in which
+no skill of devloop is loaded changes nothing under it, the style saying so
+in its first lines, so that work without devloop is not touched.
+
+**What it costs.** While devloop is enabled, the person's own output style
+does not apply, in every session and every project, whether a skill of
+devloop runs in it or not: the style of devloop stands in its place, and
+`/output-style` does not show that — measured on 15 October 2026 under
+2.1.299, the listing names `default` as current while the forced style stands
+in every request. README.md says so to the person under "What it writes into
+your project". A second plugin that forces a style of its own takes the place
+of devloop's where Claude Code loads it first: a session-only plugin, loaded
+with `--plugin-dir`, before every installed one; among installed ones in the
+order of their keys under `enabledPlugins`, the user's settings file before
+the project's; measured the same day, the entry carries the table.
+
+**Where it does not apply, the run says so.** Nothing in a hook's input names
+the style in effect; the transcript at `transcript_path` does, in the
+attachment of type `output_style_instructions` written with the first prompt
+and again when a session is resumed, measured under 2.1.299 and 2.1.300 and
+documented on no page. `hooks/post-tool-use-output-style.sh`, on
+`PostToolUse` and on `PostToolUseFailure` without a matcher — the first fires
+only after a tool call that succeeded, and the first call of a session can
+fail, as the first walk met — reads it once a skill of devloop stands in
+the transcript, typed or called, and where the last such attachment is not
+`devloop:devloop` hands the run as context what to say and why — once per
+session and style, held by a mark under the system's temporary directory —
+and the run says it to the person in their language, as text of its message
+at the start of the step: that the style does not apply, because of what;
+that what a step is to tell them beforehand can then land in the collapsed
+part instead of the message; and what makes it apply again, disabling the
+other plugin from the next session on. The place where it is said is that
+message, by "A duty to say something needs a place where it is said". The
+hook blocks nothing, by "In doubt, a run with nobody there is not blocked",
+and it is the one handler after a tool call without a matcher rather than a
+PreToolUse one: every PreToolUse handler carries `"onFailure": "block"`, and
+a hook that cannot start would then block the call it fires on. A mod could
+read the system prompt as it is composed, `prompt.compose`, and is not built:
+a mod loads on one build of Claude Code, and one that does not load says
+nothing. The transcript reading is a record shape no page documents too;
+where it changes, the hook reads no attachment and says that none stands,
+which is loud and not silent.
+
+**The directory is a shipped one.** `scripts/devloop-stock-take` reads
+`output-styles/` into its search set as it reads `shared/`, with one straight
+path per unit of kind output style, and evidence under it reads built; the
+comparison of the installed copy under "Before you change anything, run this"
+covers it; a change to it raises the version as a change to a skill does.
+
 ## Works with nothing else installed
 
 Everything here has to work with this plugin alone. Another plugin being
@@ -2797,13 +2874,13 @@ wording. That question has exactly one moment where it can be answered: before
 the first edit, while the working tree is still the main branch.
 
     P=~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json,pathlib;print(json.load(open(pathlib.Path.home()/'.claude/plugins/installed_plugins.json'))['plugins']['devloop@jayjay-create'][0]['version'])")
-    for d in skills hooks shared bin scripts; do diff -r "$P/$d" "$d"; done
+    for d in skills hooks shared bin scripts output-styles; do diff -r "$P/$d" "$d"; done
 
 Silence means what runs in this session is what you are about to change. Anything
 printed is the installed copy being behind: say so before exercising a skill, and
 read what it printed rather than assuming which side is older.
 
-**All five directories, and `hooks` is not an afterthought.** A hook runs from the
+**All six directories, and `hooks` is not an afterthought.** A hook runs from the
 installed path too, which this session can read off a block it received:
 `PreToolUse:Bash hook error:
 [/Users/…/.claude/plugins/cache/jayjay-create/devloop/0.97.0/hooks/pre-tool-use-install-guard.sh]`.
@@ -2815,7 +2892,10 @@ same whichever copy fired it. The check was written over `skills` alone first;
 that is what it was widened from. `shared`, `bin` and `scripts` came with the
 inserted text: a skill reads its shared text out of the installed copy as well,
 so a shared file edited in the working tree is as invisible to a run as an
-edited hook.
+edited hook. `output-styles` came on 15 October 2026 with the output style:
+Claude Code reads a plugin's style files at start out of the installed copy,
+the page "Output styles", so a style edited in the working tree is as
+invisible as the rest.
 
 **The version is read from the installed side, and that is the whole of the
 fix.** This check stood under the handover heading until 9 September 2026 and

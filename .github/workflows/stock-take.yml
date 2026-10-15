@@ -126,7 +126,10 @@ jobs:
   # step being touched; the input of each event stands below, harmless - the
   # command ls for the tool Bash, a Write and an Edit of the project's README
   # on a branch cut from main, a permission request for ls, a session start,
-  # a stop - in a throwaway project outside the checkout with docs/agents/, a
+  # a stop, and since 15 October 2026 the result of ls and a failed ls for
+  # the handler under PostToolUse and PostToolUseFailure without a matcher,
+  # which reads nothing where the input names no transcript - in a throwaway
+  # project outside the checkout with docs/agents/, a
   # commit on main pushed to a local bare origin whose HEAD is main, and the
   # work on a branch, since the branch guard blocks a Write on main by design.
   # A red self-test or a handler that answers otherwise than 0 makes the
@@ -207,6 +210,8 @@ jobs:
               ("PermissionRequest", ""): dict(base, hook_event_name="PermissionRequest", tool_name="Bash", tool_input={"command": "ls"}),
               ("SessionStart", ""): dict(base, hook_event_name="SessionStart", source="startup"),
               ("PostToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PostToolUse", tool_name="Edit", tool_input={"file_path": p + "/README.md", "old_string": "a", "new_string": "b"}, tool_response={"filePath": p + "/README.md"}),
+              ("PostToolUse", ""): dict(base, hook_event_name="PostToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, tool_response={"stdout": "", "stderr": "", "interrupted": False}),
+              ("PostToolUseFailure", ""): dict(base, hook_event_name="PostToolUseFailure", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, error="Exit code 1", is_interrupt=False),
               ("Stop", ""): dict(base, hook_event_name="Stop", stop_hook_active=False),
           }
           for event, groups in h.items():

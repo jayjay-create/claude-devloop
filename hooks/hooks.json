@@ -1,5 +1,5 @@
 {
-  "description": "Session status with the session's identifier, the check suite, guards on the main branch, on merging, on the check table, on installing outside the repository, on the mark of a run with nobody there and on a command that sets the identity of a commit itself, the permission mode stated beside bin/devloop-permission-mode, and a no to every permission prompt while that mark stands",
+  "description": "Session status with the session's identifier, the check suite, guards on the main branch, on merging, on the check table, on installing outside the repository, on the mark of a run with nobody there and on a command that sets the identity of a commit itself, the permission mode stated beside bin/devloop-permission-mode, and a no to every permission prompt while that mark stands, and the note on PostToolUse and PostToolUseFailure that the output style of devloop does not apply in this session",
   "hooks": {
     "PreToolUse": [
       { "matcher": "Edit|Write|MultiEdit",
@@ -22,7 +22,11 @@
     "PostToolUse": [
       { "matcher": "Edit|Write|MultiEdit",
         "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/post-tool-use-checks.sh" },
-                   { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/post-tool-use-table-guard.sh" } ] }
+                   { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/post-tool-use-table-guard.sh" } ] },
+      { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/post-tool-use-output-style.sh" } ] }
+    ],
+    "PostToolUseFailure": [
+      { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/post-tool-use-output-style.sh" } ] }
     ],
     "Stop": [
       { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/stop-checks.sh" } ] }
