@@ -24709,6 +24709,187 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   what they print at `e687f51`, the check holding this file against the skill
   names printing nothing. The figures as printed stand in the report.
 
+- **The output style of devloop, forced for the plugin, brings the text a skill
+  owes the person into the message as visible text instead of a progress note,
+  and a hook says, once per session, where it does not apply and why; measured
+  with throwaway plugins under Claude Code 2.1.299 before anything was built;
+  15 October 2026, version 0.139.0.** On `task/output-style`, off `919c9de`,
+  version 0.138.0 on `main`; the code with the version in one commit, this
+  entry and the rows of the table in a second, the runs in a third. The report
+  stands on this machine as `~/devloop-report-2026-10-15-output-style.md`, in
+  English, and is not in the repository. The order of this day, the person's,
+  decided the way — a style the plugin ships, `force-for-plugin: true` and
+  `keep-coding-instructions: true` — its name, `devloop`, its description,
+  `Write what devloop owes you as visible text`, and the content of what the
+  person reads where the style does not apply; what it left to measure stands
+  below. The words the stock-take tool reads a line of this file into its
+  search set by stand in this entry on the three lines that record a defect
+  and on no other.
+
+  **What was built.** `output-styles/devloop.md`, the one file of a new
+  shipped directory: frontmatter with the four fields, and an instruction
+  that holds for every text a skill of devloop tells the run to say, state,
+  report, present, name, confirm, announce or explain, to give the person to
+  read, or to put in its own message — it stands as a text block of the
+  message, in the person's language, before the tool call or the question it
+  comes before, and never as a progress note between tool calls, which the
+  session keeps as a summary and shows collapsed; a session in which no skill
+  of devloop is loaded changes nothing under it. Held against the places of
+  the entry of 15 October 2026 on the thinking part before it was written:
+  the twenty-nine further places of its part 1 b, each a line that says say,
+  report, state, present, name, confirm, announce or "in their own message";
+  the six of point 27, lines saying "Report", "Say", "say" and "the one thing
+  that may be said"; and the two of defect a, "as a short text in the run's
+  own message" and "one line of prose, in the run's own message": every one a
+  text a skill tells the run to say to the person before a tool call or a
+  question, and so within the instruction's words. Not within them, and not
+  claimed: the ten places where the text reached neither a message nor a
+  thinking block, the four findings left in the conversation and the loose
+  issues left after the spec closed — text that was not written or a
+  decision not taken, which a rule on the channel does not reach. Then
+  `hooks/post-tool-use-output-style.sh`, registered in `hooks/hooks.json`
+  under `PostToolUse` and under `PostToolUseFailure` without a matcher, the
+  first handler of this set there; `bin/devloop-command-reader` printing two
+  more fields, `transcript:` for `transcript_path` and `agent_id:` where the
+  input carries it, with a case in its self-test, 160 cases where there were
+  159; the directory in `scripts/devloop-stock-take`, among the shipped
+  directories, in the search set as `shared/` is, with one straight path per
+  unit of the new kind output style and evidence under it reading built,
+  three cases in its self-test, 114 where there were 111; the directory in
+  the command under "Before you change anything, run this" and in README.md
+  under "Working on devloop itself", "All six directories" there and in the
+  conventions, and in the three enumerations of `docs/plan.md` milestone 1;
+  the rule "The output style is forced, and it replaces the person's" in
+  `docs/skill-conventions.md`, before "Works with nothing else installed",
+  found by the search over the subject that came back with no rule deciding
+  it; the sentence to the person in README.md under "What it writes into your
+  project"; and the harmless inputs of the two new handlers in the step of
+  `.github/workflows/stock-take.yml` that starts every handler once, which
+  would otherwise refuse with "no input known for the event". The version
+  raised once, to 0.139.0.
+
+  **Measured before building, 4 a to 4 e of the order.** Claude Code on this
+  Mac at the start: 2.1.299; `git ls-remote` on `anthropics/claude-code`:
+  `v2.1.299` is `db93774d73e8fdbaf315a6f4c175ae99ad3d515a`, `v2.1.300`
+  `94506ff0d3bd9185f1752da36e968775021fb48f`; `force-for-plugin` stands in
+  CHANGELOG.md at neither tag, the nearest lines being "Plugins: Added
+  support for sharing and installing output styles" under 2.0.41 and "Added
+  `keep-coding-instructions` frontmatter field support for plugin output
+  styles" under 2.1.94; it stands on the page "Output styles" in the table of
+  the frontmatter, as the order quotes it. A plugin ships a style in
+  `output-styles/`, the default location of the manifest reference; the key
+  `outputStyles` replaces that scan and is not needed, so
+  `.claude-plugin/plugin.json` changes only its version. Every measurement
+  ran in an isolated configuration directory, `CLAUDE_CONFIG_DIR` under the
+  scratch directory, with `ANTHROPIC_API_KEY` set to a dummy and
+  `ANTHROPIC_BASE_URL` pointed at a local server that writes every request
+  body to a file and answers 400, so that the request was read as sent and no
+  model answered; the plugins loaded with `--plugin-dir`, which the vendor
+  names for a plugin tested from a directory, and the installed devloop never
+  loaded there, the isolated directory holding no `installed_plugins.json`.
+  Three throwaway plugins, each one style with `force-for-plugin: true` and
+  a marker sentence. 4 c: with one of them the request of a `-p` session
+  carries the marker once, in the second message of `messages`, a message of
+  role `system` whose text block opens `# Environment` and holds the section
+  `# Output Style: os-one:os-one-style` after the model line; not in the
+  request's `system` field; the debug log of the same session, `--debug-file`,
+  prints `Using forced plugin output style: os-one:os-one-style`; an
+  interactive session driven through a pty, entrypoint `cli`, carries the
+  same section in each of its three conversation requests, the first request
+  of the session being the one for its title and carrying no style. 4 d: with
+  two throwaway plugins both forcing, which applies, each read off the
+  request body and the debug line: `--plugin-dir` one then two, one; two then
+  one, two; both installed from a directory marketplace, one installed first,
+  one; after `claude plugin disable os-one@bench-mkt`, the way the vendor
+  names, the next session carried two; one enabled again and two disabled,
+  one; both uninstalled and installed two then one, two; a third loaded with
+  `--plugin-dir` beside the two installed, the third; the keys of
+  `enabledPlugins` reordered by hand to one, two with `installed_plugins.json`
+  left at two, one: one; one at the user's scope and two at the project's,
+  one, and swapped, two. So "the first one loaded" is a session-only plugin
+  before every installed one, and among installed ones the order of the keys
+  under `enabledPlugins`, the user's settings file before the project's; the
+  last sentence of the approved text holds, and the person reads it in the
+  form the order approved. 4 e: no field of a hook's input names the style,
+  the hooks reference searched for `output_style` and `outputStyle` without
+  a hit; the transcript at `transcript_path` does, in a record of type
+  `attachment` whose `attachment.type` is `output_style_instructions` and
+  whose `attachment.style.name` is the style's name, `<plugin>:<style>` for a
+  plugin's, `Concise` for the person's own, written with the first prompt of
+  a session before the assistant's record and again at a resume, and absent
+  where no style applies; the mods API could read the system prompt as it is
+  composed, `prompt.compose`, and was not taken, a mod loading on one build
+  of Claude Code and saying nothing where it does not load. The
+  `/output-style` listing of a session under a forced style prints `default
+  (current)` and the forced style by its name, not as current.
+
+  **The hook.** On `PostToolUse` and `PostToolUseFailure`, after the first
+  walk met the one and not the other: the only tool call of that session
+  failed, the setup state read with `--fetch` in a project without a remote,
+  and `PostToolUse` fires after a call that succeeded alone. It reads its
+  input through the reader, leaves a subagent alone where `agent_id` stands,
+  reads nothing until a skill of devloop stands in the transcript, typed as
+  `/devloop:` or called through the Skill tool, and then the last
+  `output_style_instructions` record: `devloop:devloop` and it writes its
+  mark and says nothing; another plugin's, the person's own, or none, and it
+  hands the run as `additionalContext` what to say and why, once per session
+  and style by a mark under the system's temporary directory, and the run
+  says it to the person in their language at the start of the step. Walked
+  twice in real sessions from the working tree, `--plugin-dir
+  ~/claude-devloop` replacing the installed copy for the session, as the
+  vendor says it does, in a throwaway project with a bare origin: with
+  `os-one` loaded first the transcript carried `os-one:os-one-style` at line
+  8, the hook finished with status 0 after the first Bash call, and the run
+  opened with the three sentences in German, the plugin named, the collapsed
+  part named, the disabling and the next session named; with devloop alone
+  the transcript carried `devloop:devloop` and the hook stayed silent, its
+  mark written. Walked by hand with crafted transcripts for every other
+  outcome.
+
+  **What the measurements changed on this Mac.** Nothing under `~/.claude`:
+  the checksums of `settings.json` and `installed_plugins.json` are what they
+  were, and no project directory for the bench stood under
+  `~/.claude/projects` until the two walks of the hook, whose transcripts
+  under the two throwaway projects' directories the report names. The first
+  interactive bench session auto-updated Claude Code to 2.1.300 on this Mac,
+  the launcher symlink under `~/.local/bin` with it; the symlink was put back
+  on 2.1.299 and `claude --version` answers 2.1.299 again, the downloaded
+  2.1.300 left where the updater put it, since the next interactive session
+  of the person updates again; every later bench session ran with
+  `DISABLE_AUTOUPDATER=1`. Every capture but the second interactive one ran
+  under `cc_version=2.1.299.d43`, that one under `2.1.300.76c`.
+
+  Recorded, not built: no run on a bench shows that the forced style brings
+  the owed text into the message at a place where the two closing runs put it
+  in a progress update, the style being an instruction the model follows and
+  nothing that enforces it — should: the bench the entry of 15 October 2026
+  on the thinking part describes, each of the six places of point 27 again
+  from the state the run had, several times under the style, counting text
+  blocks, thinking blocks with text and neither.
+
+  Recorded, not built: the hook reads the style in effect off a transcript
+  record whose shape no page of the vendor documents, measured under 2.1.299
+  and 2.1.300, and the day the shape changes it finds no record and says that
+  none stands, which is loud and wrong — should: a documented reading, a field
+  of the hook input naming the style in effect or the record's shape on a
+  page, read when the vendor publishes one.
+
+  Recorded, not built: `/output-style` in a session under a forced plugin
+  style lists `default` as current and the forced style by its name only,
+  measured under 2.1.299, so a person who asks the session which style is on
+  is told the wrong one — should: the listing marks the forced style as
+  current, which is the vendor's to build; until then README.md says that
+  devloop's style stands in place of theirs while devloop is enabled.
+
+  **Records.** Things for the style, one straight path of the whole file and
+  three branches; the hook's outcomes and its registration; the reader's two
+  fields; the tool's three cases; the three defect things of the thinking
+  part, of point 27 and of defect a with their evidence on the style's line
+  and their notes saying what holds since this day; the six records of the
+  table whose anchors the tool's changed lines broke re-anchored; three
+  defect things of this entry, and a not-a-thing row for its head. The figures
+  of the tool and the checks as printed stand in the report.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
