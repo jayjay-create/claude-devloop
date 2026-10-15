@@ -24723,7 +24723,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `Write what devloop owes you as visible text`, and the content of what the
   person reads where the style does not apply; what it left to measure stands
   below. The words the stock-take tool reads a line of this file into its
-  search set by stand in this entry on the three lines that record a defect
+  search set by stand in this entry on the five lines that record a defect
   and on no other.
 
   **What was built.** `output-styles/devloop.md`, the one file of a new
@@ -24844,7 +24844,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   part named, the disabling and the next session named; with devloop alone
   the transcript carried `devloop:devloop` and the hook stayed silent, its
   mark written. Walked by hand with crafted transcripts for every other
-  outcome.
+  outcome but the exit without a session identifier, which none walked.
 
   **What the measurements changed on this Mac.** Nothing under `~/.claude`:
   the checksums of `settings.json` and `installed_plugins.json` are what they
@@ -24881,13 +24881,29 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   current, which is the vendor's to build; until then README.md says that
   devloop's style stands in place of theirs while devloop is enabled.
 
+  Recorded, not built: `hooks/post-tool-use-output-style.sh` line 41 keeps of
+  the style's name only letters, digits and `._:-`, so that the person's own
+  style named with a space, as `Diagrams first` on the page "Output styles",
+  is named `Diagramsfirst` in what the run is handed to say; measured on 15
+  October 2026 with a crafted transcript against the hook of this version
+  — should: the run is handed the name as the record carries it, the
+  stripped form serving the mark's path alone.
+
+  Recorded, not built: `hooks/post-tool-use-output-style.sh` lines 54 and 61
+  hand the run, where the record names no style or the person's own, that
+  the forced style applies "under a Claude Code that forces a plugin's
+  output style, 2.1.299 or later", where only 2.1.299 and 2.1.300 were
+  measured — should: what the run is handed names the versions measured
+  and none beyond them.
+
   **Records.** Things for the style, one straight path of the whole file and
   three branches; the hook's outcomes and its registration; the reader's two
   fields; the tool's three cases; the three defect things of the thinking
   part, of point 27 and of defect a with their evidence on the style's line
   and their notes saying what holds since this day; the six records of the
-  table whose anchors the tool's changed lines broke re-anchored; three
-  defect things of this entry, and a not-a-thing row for its head. The figures
+  table whose anchors the tool's changed lines broke re-anchored; five
+  defect things of this entry, the last two found at the check of the branch
+  before the merge, and a not-a-thing row for its head. The figures
   of the tool and the checks as printed stand in the report.
 
 ## Decisions taken against
