@@ -25470,16 +25470,19 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   under the installed 0.141.0, read off their session logs and the projects,
   the bench for defects d and 11 and for the install guard of defect c, and
   where milestone 3 stands after part A of the entry of 12 October 2026:
-  defects 1, 3, c and i held, b in its third point and not in its second, a
-  did not hold at four places, d and 11 held on the bench and met no run;
-  thirteen new defects, eight met again; the milestone has not landed; 16
-  October 2026, the version stays 0.141.0.** On
+  defects 1, 3, b, c and i held, a did not hold at four places, d and 11 held
+  on the bench and met no run; fifteen new defects, nine met again; the
+  milestone has not landed; 16 October 2026, the version stays 0.141.0.** On
   `task/closing-runs-16-october`, off `7e35090`, version 0.141.0 on `main`;
   this entry, the point under "Decisions taken against", the dated sentence in
-  `docs/plan.md` and the rows of the table in one commit. Nothing under
-  `skills/`, `shared/`, `output-styles/`, `hooks/`, `bin/`, `scripts/` or
-  `.github/` changes, so the version stays and `.claude-plugin/plugin.json` is
-  untouched; nothing is built here. The report stands on this machine as
+  `docs/plan.md` and the rows of the table in one commit, and a second commit
+  of the same day correcting this entry where a check of the first against the
+  evidence found it wrong or incomplete, at the six places the order named and
+  in the expanded line numbers of the skills, with the table rows and the
+  dated sentence that move with it, by the last section of the report. Nothing
+  under `skills/`, `shared/`, `output-styles/`, `hooks/`, `bin/`, `scripts/`
+  or `.github/` changes, so the version stays and `.claude-plugin/plugin.json`
+  is untouched; nothing is built here. The report stands on this machine as
   `~/devloop-report-2026-10-16-closing-runs.md`, in English, and is not in the
   repository. Every line number of a file in this entry holds at `7e35090`; a
   line of a skill is given in the text the runs loaded,
@@ -25489,7 +25492,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   earlier entry holds at the commit that entry names, and was read again at
   `7e35090`. What the runs wrote and said is quoted as written, in German. The
   words the stock-take tool reads a line of this file into its search set by
-  stand in this entry in its head and on the thirteen lines that record a
+  stand in this entry in its head and on the fifteen lines that record a
   defect, and on no other.
 
   **What this entry was read off.** Everything lies on this machine, nothing
@@ -25630,7 +25633,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   UTC. Project 2: #2 proven at record 417, `MERGED` at 16:15:22 UTC, the gate
   read at 416, the question at 444. Held in both: step 8 followed the proven
   merge of step 7 at a first setup with auto-merge off and no gate,
-  `setup-checks` expanded 1525 to 1531.
+  `setup-checks` expanded 1522 to 1531.
 
   **Walk of defect 3 (no `npm install --save-dev` after a no).** Entry of 11
   October 2026 on the first closing run, defect 3. Project 1 alone, project 2
@@ -25643,7 +25646,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   deshalb bekommst du keinen Befehl.", and record 266 handing over nothing for
   it: "Typen: Dieser Check bleibt aus, weil du `@types/node` nicht ins Projekt
   lassen wolltest." No `npm install --save-dev` line in any message from
-  record 184 to 266. Held, `setup-checks` expanded 876 to 897; what stood
+  record 184 to 266. Held, `setup-checks` expanded 873 to 888; what stood
   beside it is defect 7 below.
 
   **Walk of defect 11 (the nix forms) on the bench.** Entry of 11 October 2026
@@ -25669,7 +25672,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   before each second question).** Entry of 11 October 2026 on the second
   closing run, defect a; the should, the five parts as text in the run's own
   message before the widget and the line of prose before each second question
-  in the message, `setup-checks` expanded 1870 to 1920 and 1980 to 1988, with
+  in the message, `setup-checks` expanded 1647 to 1684 and 1756 to 1762, with
   `output-styles/devloop.md` in effect since 15 October 2026. Project 1:
   between the reading of the gate at record 279 and the question at record 289
   the log holds no text block; record 288 is a thinking block, "Die Checks
@@ -25696,23 +25699,37 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   yes. Did not hold, at four places, records 288, 308 and 312 of project 1 and
   443 of project 2, the output style standing in both transcripts. The person
   saw, in the window, "· summary" at the end of a part of the runs' texts: the
-  collapsed form of a progress update.
+  collapsed form of a progress update. No status line held this open, the
+  thing of defect a counting as walked by this walk: defect 14 below records
+  it.
 
   **Walk of defect b (points 2 and 3 of step 8).** Entry of 11 October 2026
-  on the second closing run, defect b; `setup-checks` expanded 2007 to 2031.
-  Project 1: after the two yes, records 310 and 314, the records landed as
-  #3, proven at record 362 and fetched there; then record 365 `brew install
-  biome`, 2.5.15 poured; record 371 `npm install --save-dev typescript
-  @types/node`; records 376 to 426 the targets and the red proofs for
-  format, lint and types at record 405 and dependencies at record 426;
-  record 413 the workflow file; #4 carrying it all, record 451, before the
-  gate at record 465. `checks.md` at `c8c7c6a` holds format, lint and types
-  filled. Point 3 held. Point 2 did not: biome, installed outside the
-  project at record 365 and a package of npm, `@biomejs/biome`, whose
-  version the run read at record 409, was not entered, `package.json` on the
-  main branch carrying `@types/node` and `typescript` alone and
-  `package-lock.json` no biome, defect 9 below. Project 2 had no class off
-  for an earlier no and did not meet this.
+  on the second closing run, defect b; `setup-checks` expanded 1827 to 1851.
+  Project 1: after the two yes, records 310 and 314, the records landed as #3,
+  point 1, proven at record 362 and fetched there; then record 365 `brew
+  install biome`, 2.5.15 poured, where biome had stood nowhere on the machine
+  before, `ls /opt/homebrew/bin/biome` at record 235 answering "No such file
+  or directory" and the person's `brew list --versions biome` outside the
+  window answering nothing; record 371 `npm install --save-dev typescript
+  @types/node`; records 376 to 426 the targets and the red proofs for format,
+  lint and types at record 405 and dependencies at record 426; record 413 the
+  workflow file; #4 carrying it all, record 451, before the gate at record
+  465, and `checks.md` at `c8c7c6a` holds format, lint and types filled. The
+  run took the points in their order. Point 2, due before point 3, could not
+  enter biome, which stood nowhere until record 365, and entered nothing else.
+  Point 3 then filled format and lint, off for the `brew install biome` handed
+  over and not run, the reason in their cells at record 239 "biome not
+  installed, command not run: brew install biome", by its first clause, "an
+  install they declined or did not run, filled where the install record says
+  yes now": the install outside the project at record 365; and types, off for
+  `@types/node` declined into the packages, by its second clause, "filled with
+  the tool first asked about where the record on the packages says yes now",
+  record 371. Held, in both points, against its should at lines 17638 to 17644
+  of this file, that points 2 and 3 run after the two yes and before the gate.
+  Until the correction of this entry this walk read point 2 as not held, biome
+  installed outside the project and not entered; the install is point 3's
+  doing, by the text as it stands, and the text is at fault, defect 9 below.
+  Project 2 had no class off for an earlier no and did not meet this.
 
   **Walk of defect c (the editing-tool rule reaches the workflow file, the
   subagents and step 8).** Entry of 11 October 2026 on the second closing run,
@@ -25744,7 +25761,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **Walk of defect i (one pull request where nothing is installed under the
   records).** Entry of 11 October 2026 on the second closing run, defect i;
-  `setup-checks` expanded 2007 to 2016. Project 2: nothing to install or enter
+  `setup-checks` expanded 1827 to 1834. Project 2: nothing to install or enter
   under the changed records, the install record yes since the setup, the
   dependency record yes since #2, no class off for a no; #3 "Add checks
   workflow and record the unattended mode" carried
@@ -25803,7 +25820,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   message of the build and why the task was taken, records 516 and 522; 843,
   the negated trigger for the lens that did not run, record 863; 1253, the
   task issue confirmed closed and the loose issues waiting under clause 2,
-  records 676 and 1011 and `build-work` lines 340 to 341; project 2 records
+  records 676 and 1011 and `build-work` expanded 912 to 913; project 2 records
   59, step 2's report, 190, the close of `setup-project`, and 219, step 2 of
   `setup-checks`. Of the ten places: `review-changes` "Say which commits it
   covers", no commit hash in any of the nine review messages, records 917,
@@ -25823,11 +25840,23 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   every handover naming `gh pr merge <n> --squash --repo
   jayjay-create/<repo>`, records 133, 266, 355 and 454 and 156, 403 and 526;
   defect h of the second, every fix reviewed in a round over its commits,
-  records 984 to 1208 and 1456 to 1643.
+  records 984 to 1208 and 1456 to 1643. The defect of the entry of 16 October
+  2026 on part B at the setup, points 7 to 19, that no line of `setup-checks`
+  step 8 orders the section of `environment.md` on what checks a merge to be
+  rewritten once the protection stands, lines 25143 to 25149 of this file:
+  project 2 switched auto-merge on and set the protection at record 553, read
+  back at 554, and wrote the section at no record after it, `environment.md`
+  on its main branch after the run reading "No gate stands on the main branch:
+  no branch protection, no ruleset, no required check. Auto-merge is switched
+  off in the repository."; project 1 rewrote it at record 480 with the gate it
+  had set at 465 and landed it as #5, armed at record 491, as the second
+  closing run's #15 was.
 
-  **The new defects.** Thirteen, each with its record and its should; the
-  first three and the fifth cost the person something in the window, the
-  others were read off the logs.
+  **The new defects.** Fifteen, each with its record and its should; the first
+  three and the fifth cost the person something in the window, the fourteenth
+  and the fifteenth stood in their window, the others were read off the logs.
+  Defects 14 and 15 came in, and 3, 4 and 9 were corrected, with the second
+  commit of this entry.
 
   **1. The introduction of `start-work` step 2 reached no message.** Project
   1, records 16 to 44: after the skill loaded at 16 the assistant records are
@@ -25836,17 +25865,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Live-Validierung, Höchstlänge aus `rules.yaml` (via npm-Skript mit dasel)
   und einem Playwright-Test in Chromium. Ich richte jetzt zuerst das Projekt
   ein.", and the Skill call at 44; no text block. Owed, `start-work` expanded
-  126 to 171, point 7 of part B of the entry of 12 October 2026, built on 16
+  126 to 163, point 7 of part B of the entry of 12 October 2026, built on 16
   October 2026: the four points, the line `devloop - from idea to built.`, the
   idea as understood and that the setup comes first. The summary of record 43
   carries the last two; the four points and the fixed line stand nowhere.
   Recorded, not built: the introduction of `start-work` step 2, the four
   points, the fixed line and the idea as understood, reached no message of
   project 1, the only trace a progress update at record 43 — should: it stands
-  as text in the run's own message, `start-work` expanded 126 to 171.
+  as text in the run's own message, `start-work` expanded 126 to 163.
 
   **2. The sentence on the seven labels was said in neither run.**
-  `setup-project`, the `issue-tracker.md` section, expanded 1905 to 1913,
+  `setup-project`, the `issue-tracker.md` section, expanded 1204 to 1207,
   point 9 of part B of the entry of 12 October 2026: one sentence of the run's
   own message that seven labels were created, with `needs-human` as the
   example, approved as „Im Tracker habe ich sieben Labels angelegt …“. Project
@@ -25856,7 +25885,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: the sentence that seven labels were created in the
   tracker was said in neither run, records 114 to 133 of project 1 and 124 to
   156 of project 2 — should: it stands in one sentence of the run's own
-  message, `setup-project` expanded 1905 to 1913.
+  message, `setup-project` expanded 1204 to 1207.
 
   **3. Stage 1 of `plan-work` showed the hard core in no message, put no round
   of questions, and asked the confirmation over a list the person could not
@@ -25873,18 +25902,50 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   run then wrote the list as text at 576, "Du hast recht, die Liste stand in
   einer Nachricht, die du offenbar nicht gesehen hast. Hier ist sie noch
   einmal vollständig.", put one round of three questions at 577, each with a
-  recommendation, and the confirmation again at 587, yes at 588. Owed,
-  `plan-work` expanded 804 to 835 and 896 to 921, point 20 of part B of the
-  entry of 12 October 2026: the rounds over the frontier with what is left
-  asked, the hard core shown as written, the confirmation after the hard core
-  has been shown.
+  recommendation, and the confirmation again at 587, yes at 588. Between the
+  three answers and the second confirmation the person saw the text of record
+  581, "Danke, damit stimmen deine Antworten mit dem überein, was ich
+  festgelegt hatte. Ich halte sie im Planungs-Issue fest.", the comment of 582
+  carrying the three answers to the issue, the progress update of 586, "Ich
+  halte den vollständigen Entwurf der Idee mit allen Anforderungen und
+  Ausschlüssen fest, damit du ihn vor meiner nächsten Frage prüfen kannst.",
+  shown collapsed with "· summary", and the widget of 587 asking again over
+  "die Liste oben". The hard core as Stage 1 defines it, expanded 873 to 879 —
+  the user stories, the ordinary path and the failures settled here, and what
+  is out of scope — stood in no message before 587 either: the list of 576 was
+  headed "Was ich selbst festgelegt habe", six settled decisions, no story and
+  no line on what is out of scope; the progress update of 586 claimed the
+  draft written down, and no tool call stands between 583 and 587; the
+  planning issue carried at 553 the seven points of "Taken as given" and at
+  582 the three answers. So the yes at 588 confirmed the settled decisions and
+  the three answers, not the hard core. And the frontier: the progress update
+  of 559 says the run had "offene Designfragen selbst entschieden", the three
+  it then asked at 577 on the person's demand, the display, the umlauts and
+  the language, each answered with the recommendation. Stage 1 expanded 810 to
+  811, "settle what you can settle yourself and say so in one line, then ask
+  what is left", draws no line of its own between the two; the test it rests
+  on, `shared/how-to-ask.md` lines 1 to 31, in `plan-work` expanded 575 to
+  646, and `shared/three-questions.md` lines 3 to 6 let a run decide
+  everything that has a right answer to find or is cheap to put right and
+  everything answerable in one word from its own recommendation, so a run that
+  leaves nothing over puts no round and breaks no line, and the person asked
+  at 566 to be asked what they should decide themselves. Owed, `plan-work`
+  expanded 804 to 832 and 873 to 897, point 20 of part B of the entry of 12
+  October 2026: the rounds over the frontier with what is left asked, the hard
+  core shown as written, the confirmation after the hard core has been shown.
   Recorded, not built: Stage 1 of project 1 settled the frontier itself in a
   progress update and a tracker comment, showed the hard core in no message
-  and put the confirmation question at record 560 over it, so that the person
-  answered no and asked for the list and the questions at record 566 — should:
-  the settled line and the hard core stand in the message before the widget
-  and what is left is asked in rounds, `plan-work` expanded 804 to 835 and 896
-  to 921.
+  before either confirmation, records 560 and 587, and put the confirmation
+  question over a list of settled decisions, so that the person answered no
+  and asked for the list and the questions at record 566 and the yes at 588
+  confirmed the decisions and three answers, not the hard core — should: the
+  settled line and the hard core, the stories and what is out of scope, stand
+  in the message before the widget, what is left is asked in rounds, and Stage
+  1 says which decisions the run takes itself and which it puts to the person,
+  where today its line "settle what you can settle yourself", expanded 810 to
+  811, and the test of `shared/how-to-ask.md` let a run settle a whole
+  frontier itself, `plan-work` expanded 804 to 832 and 873 to 897; which
+  boundary is the right one this entry does not decide.
 
   **4. The merge handover carried sentences beside it and on what comes after
   the merge.** `shared/merge-handover.md` lines 1 to 3, what is said "and
@@ -25897,12 +25958,30 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   "Wichtig für dich" beside the handover; project 2 record 526 "Danach warte
   ich, bis der Workflow auf `main` grün durchgelaufen ist. Erst dann schalte
   ich Auto-merge ein und schütze `main` mit diesem Check.", record 403 a list
-  of what the pull request contains. The case sentence and the command with
-  `--repo` held at all seven handovers.
+  of what the pull request contains. The command with `--repo` held at all
+  seven handovers. The case sentence held at the three of project 2, "weil auf
+  `main` noch kein Required Check steht, auf den es warten könnte", and at
+  none of the four of project 1: records 133, 266 and 355 named auto-merge off
+  beside the missing check, 133 "weil auf `main` noch keine Prüfung verlangt
+  wird, auf die es warten könnte, und Auto-merge ausgeschaltet ist", 266 and
+  355 "weil auf `main` noch keine Prüfung verlangt wird und Auto-merge aus
+  ist", where `shared/merge-handover.md` lines 4 to 6 give the case with no
+  gate its one sentence "whether or not auto-merge is on" and auto-merge off
+  is the sentence of another case, lines 6 to 8; and all four, 454 among them
+  with "weil auf `main` noch keine Prüfung verlangt wird", closed the case on
+  "Das ist kein Fehler.", a sentence beside the three things, lines 1 to 3,
+  and one answering a fault the text says is not to be suggested, lines 27 to
+  28; 454 opened on two sentences on what was installed and set up, and 355 on
+  "Er hält deine drei Antworten fest.", beside it as well. Record 156 of
+  project 2 alone said the three things and nothing beside them.
   Recorded, not built: the merge handover said what comes after the merge at
-  records 355 and 454 of project 1 and 526 of project 2, and carried a list
-  beside it at 266 and 403 — should: the handover says the three things and
-  nothing beside them, `shared/merge-handover.md` lines 1 to 3 and 23 to 27.
+  records 355 and 454 of project 1 and 526 of project 2, carried a list beside
+  it at 266 and 403, named auto-merge off beside the missing required check at
+  133, 266 and 355 and closed on "Das ist kein Fehler." at all four of project
+  1 — should: the handover says the three things and nothing beside them, the
+  case in the one sentence that fits it, whether or not auto-merge is on, and
+  not as something having gone wrong, `shared/merge-handover.md` lines 1 to 8
+  and 23 to 28.
 
   **5. The arming of #16 was not read and done in the same breath, and the run
   ended on the refusal.** Project 1: record 1656 at 13:07:07 UTC pushed,
@@ -25910,11 +25989,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `BLOCKED`, the answer at 1665 at 13:07:24; record 1668 at 13:07:32, a call
   of its own, armed and was refused, "Pull request is in clean status", record
   1669, the check having gone green in between, 13 seconds by the rollup.
-  `build-work` step 6 expanded 1626 to 1628: "Read `mergeStateStatus`
+  `build-work` step 6 expanded 1634 to 1637: "Read `mergeStateStatus`
   immediately before arming, in the same breath as the mutation and not
   earlier", as the run had done for #12 at record 1238, the loop and the
   mutation in one call. The refusal was then the stop step 6 names for a gate
-  already past with nobody there, expanded 1830 to 1838: the reason named at
+  already past with nobody there, expanded 1770 to 1774: the reason named at
   1678, "Beim Pull Request der zweiten Aufgabe lief der Check so schnell
   durch, dass GitHub das Auto-merge nicht mehr annahm. Der Lauf darf nicht
   selbst mergen, also hört er hier auf.", the mark deleted at 1674 and said
@@ -25923,8 +26002,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: the state of #16 was read in one call, record 1656, and
   the arming done in the next, record 1668, 25 seconds later, so that GitHub
   refused it as past its gate and the run without them ended there — should:
-  the reading and the mutation stand in one call, `build-work` expanded 1626
-  to 1628.
+  the reading and the mutation stand in one call, `build-work` expanded 1634
+  to 1637.
 
   **6. The workflow file was changed with `sed` from the shell by the main run
   in the build.** Project 1 record 1405: a python heredoc editing
@@ -25952,20 +26031,20 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the two. The command of the second way for Biome came at record 266, nine
   minutes after the no at 184, inside the handover of #2, without its backing,
   `brew info biome` at record 188 having read the formula and nothing of it
-  standing in the message. `setup-checks` expanded 828 to 831, step 3 writes
-  nothing and installs nothing, its questions the last; 876 to 897, the
+  standing in the message. `setup-checks` expanded 809 to 814, step 3 writes
+  nothing and installs nothing, its questions the last; 873 to 888, the
   command handed over directly after the no, in the run's own message, backed;
-  970 to 975, the reason naming what was declined.
+  945 to 952, the reason naming what was declined.
   Recorded, not built: step 3 of project 1 entered `@types/node` before its
   question, record 194, took TypeScript out after its yes, record 215, wrote a
   types reason naming both as declined, and handed the Biome command over nine
   minutes after the no and unbacked, record 266 — should: nothing is entered
   before its question, a yes enters the tool, the reason names what was
   declined, and the command of the second way follows the no at once, backed,
-  `setup-checks` expanded 828 to 831, 876 to 897 and 970 to 975.
+  `setup-checks` expanded 809 to 814, 873 to 888 and 945 to 952.
 
   **8. The list line of step 8 stood in no message.** Project 1: after the two
-  yes at records 310 and 314 the one line `setup-checks` expanded 1999 to 2005
+  yes at records 310 and 314 the one line `setup-checks` expanded 1815 to 1825
   owe before the first pull request, the classes the answers open each with
   its tool, approved on 16 October 2026 as „Mit deinen beiden Ja richte ich
   jetzt …“, stood in the thinking block of record 317, "Zuerst stelle ich die
@@ -25977,18 +26056,34 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   its tool, stood in a progress update at record 317 and in the handover's
   tail at 355 of project 1 and in no message of its own — should: it stands as
   one line of the run's own message before the first pull request,
-  `setup-checks` expanded 1999 to 2005.
+  `setup-checks` expanded 1815 to 1825.
 
-  **9. Point 2 of step 8: biome installed outside the project and not
-  entered.** Project 1, records 365, 371 and 409, and `package.json` on the
-  main branch without `@biomejs/biome`, as the walk of defect b above reads
-  it; `setup-checks` expanded 2013 to 2016.
-  Recorded, not built: after the yes to the dependency file, step 8 of project
-  1 installed biome outside the project at record 365 and entered it into the
-  packages nowhere, though `@biomejs/biome` is a package of the stack and the
-  run read its version at record 409 — should: every check tool installed
-  outside the project that can be entered is entered, `setup-checks` expanded
-  2013 to 2016.
+  **9. Points 2 and 3 of step 8: the text has point 3 install a tool outside
+  the project where the record on the packages says yes as well, and point 2
+  come before the tool it would enter stands.** Project 1, records 365, 371
+  and 409, and `package.json` on the main branch without `@biomejs/biome`, as
+  the walk of defect b above reads it: the run followed points 1 to 3 in their
+  order, `setup-checks` expanded 1827 to 1847, and the fault lies in the text.
+  Point 3's first clause, for a class off for an install handed over and not
+  run, fills it "where the install record says yes now", an install outside
+  the project, with no word on the record on the packages, which said yes as
+  well at record 314, against "Prefer tools that live inside the project", the
+  heading of step 3, expanded 803 to 807; so biome went to `/opt/homebrew` at
+  record 365 though `@biomejs/biome` is a package of the stack whose version
+  the run read at record 409. And point 2, which enters every check tool
+  installed outside the project that the yes lets into the packages, comes
+  before point 3 and so before the install, and entered nothing. Until the
+  correction of this entry this defect read the run as having skipped point 2.
+  Recorded, not built: point 3 of step 8 has a class off for an install handed
+  over and not run filled by an install outside the project where the install
+  record says yes now, whatever the record on the packages says, and point 2
+  enters what stands outside before point 3 installs, so that project 1
+  installed biome outside at record 365 under two yes and entered it nowhere —
+  should: a class off for an install not run is filled with the tool in the
+  packages where the record on them says yes now and the tool is a package of
+  the stack, and outside the project only where it is not, and what point 3
+  installs outside is entered or point 2 follows it, `setup-checks` expanded
+  803 to 807 and 1835 to 1847.
 
   **10. Text owed in the message stood in a progress update at further places,
   not recorded before.** Project 1 record 510, the close of `setup-checks`,
@@ -25997,23 +26092,24 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Gate für `main` ist aktiv. Jetzt gehe ich zu deiner `isValidName`-Idee über
   und kläre vorher noch ein paar Punkte mit dir.", with no count, where
   project 2 said it as text at 567; record 603, what the two answers that send
-  the run alone cost, `plan-work` expanded 1019 to 1024, neither in the
-  thinking block nor in the widget's lines; record 612, Stage 2's report,
-  expanded 1053 to 1056, and that the mark was written, expanded 1049 to 1052,
-  both in one thinking block, "Ich habe die Marke gesetzt und die Antworten im
-  Issue festgehalten. Beim Lesen des Codes zeige sich: …"; and in both runs
-  the `domain.md` sentence of `setup-project`, expanded 2006 to 2008, "create
-  both as files that git can carry, and say you did", the files created at
-  records 84 and 85 of project 1 and 90 of project 2 and nothing said.
+  the run alone cost, `plan-work` expanded 978 to 985, neither in the thinking
+  block nor in the widget's lines; record 612, Stage 2's report, expanded 1056
+  to 1057, and that the mark was written, expanded 1033 to 1036, both in one
+  thinking block, "Ich habe die Marke gesetzt und die Antworten im Issue
+  festgehalten. Beim Lesen des Codes zeige sich: …"; and in both runs the
+  `domain.md` sentence of `setup-project`, expanded 1305 to 1306, "create both
+  as files that git can carry, and say you did", the files created at records
+  84 and 85 of project 1 and 90 of project 2 and nothing said.
   Recorded, not built: text owed in the run's own message stood in a progress
   update or nowhere at four further places, records 510, 603 and 612 of
   project 1 and the two places that created the glossary and the decision
   records, records 84 and 85 and 90 — should: each stands in the message as
   its line says, `setup-checks` expanded 2047 to 2048, `plan-work` expanded
-  1019 to 1024, 1049 to 1056, `setup-project` expanded 2006 to 2008.
+  978 to 985, 1033 to 1036 and 1056 to 1057, `setup-project` expanded 1305 to
+  1306.
 
-  **11. Question 4 of `setup-project` was not put in project 1.** Expanded 749
-  to 751: the local environment is asked "always where there is code, unless
+  **11. Question 4 of `setup-project` was not put in project 1.** Expanded 923
+  to 925: the local environment is asked "always where there is code, unless
   you could read it all from `docker-compose.yml` or the README". The
   repository had neither, record 56 listing its files; the run went from the
   install question at 67 to the cut at 73 without it, and `environment.md`
@@ -26023,7 +26119,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   was not put in project 1 though neither `docker-compose.yml` nor a README
   stood in the repository, records 56 to 73 — should: it is put as prose in
   the run's own message wherever there is code and neither file answers it,
-  `setup-project` expanded 749 to 751.
+  `setup-project` expanded 923 to 925.
 
   **12. A refusal of a fourth kind met a planning subagent and went nowhere.**
   Project 1, the check of draft C in Stage 3, subagent `a671b3d9` started at
@@ -26035,7 +26131,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   report, "Biome-/dasel-Verhalten habe ich nicht ausgeführt (mein Testlauf
   wurde vom Safety-Check blockiert)", its record 25 and record 705 of the main
   log; the main run's text at 714 says nothing of it, and no issue and no
-  comment records it. `plan-work` expanded 683 to 695 send a refusal before
+  comment records it. `plan-work` expanded 738 to 749 send a refusal before
   the build through the order for a question nobody can answer and record it
   where the step records the question, naming three refusals, a guard's block,
   the classifier's no and the hook's no; the harness's own check is a fourth.
@@ -26043,8 +26139,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of a planning subagent of project 1, its record 22, a refusal of a kind
   `plan-work` names nowhere, and the main run neither recorded it where it
   records the question nor said it, records 705 and 714 — should: the
-  harness's own refusal stands among the refusals of `plan-work` expanded 683
-  to 695 and is recorded and said as they are.
+  harness's own refusal stands among the refusals of `plan-work` expanded 738
+  to 749 and is recorded and said as they are.
 
   **13. Two points of the mode question were missing from its fields in
   project 1.** Record 289: the question line "Darf devloop in diesem Projekt
@@ -26054,12 +26150,67 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   idea, and the yes line "devloop richtet auf GitHub einen Check ein und
   schützt main, auch gegen deine eigenen Pushes; ein Lauf arbeitet dann bis
   alles gebaut ist." lacks that this holds as long as the window is open and
-  the machine is awake, `setup-checks` expanded 1843 to 1856; record 444 of
+  the machine is awake, `setup-checks` expanded 1629 to 1642; record 444 of
   project 2 carries both.
   Recorded, not built: the mode question of project 1 at record 289 carried
   neither that the answer holds for every task of the idea nor that the run
   works only while the window is open and the machine awake — should: every
-  point stands in its field, `setup-checks` expanded 1843 to 1856.
+  point stands in its field, `setup-checks` expanded 1629 to 1642.
+
+  **14. The texts of defect a stood in progress updates under the forced
+  output style, at one place as text without the sentence that they had said
+  no.** The walk of defect a above: records 288 and 308 of project 1 and 443
+  of project 2 are thinking blocks, the five parts and the line before the
+  second install question in them and in no message, the person seeing "·
+  summary"; record 312 of project 1 is a text block naming the permission and
+  not that they had said no to it. `output-styles/devloop.md` lines 11 to 27,
+  in effect in both transcripts, say such text is never a progress note and
+  stands before the call that shows the question; `setup-checks` expanded 1647
+  to 1684 and 1756 to 1762 say what the texts are. The thing of defect a
+  counts as walked and keeps its two runs, since it was walked, and no line of
+  the table held open that under the style the texts still went where they
+  went.
+  Recorded, not built: under the forced output style the five parts before the
+  mode question and the line before the second install question stood in
+  progress updates at records 288 and 308 of project 1 and 443 of project 2,
+  and the line before the second packages question at record 312 of project 1
+  as text without that they had said no — should: the five parts and the line
+  before each second question stand as text in the run's own message before
+  the widget, the line naming their no where the record says no,
+  `setup-checks` expanded 1647 to 1684 and 1756 to 1762 under
+  `output-styles/devloop.md` lines 11 to 27.
+
+  **15. The classes were named by their labels alone in the questions of
+  `setup-checks`, in both runs.** Step 2, expanded 756 to 758: "Never name a
+  class by its label alone"; step 3, expanded 862 to 863: the question on a
+  tool names "the check it is for in ordinary words". Project 1: the proposal
+  with what each class would catch stood in the progress update of record 167,
+  met again above, and the question of 168 read "Welche der fünf Checks
+  (Format, Lint, Typen, Unit-Tests, Secrets) soll ich jetzt einrichten?", its
+  answers "Alle fünf" and "Nur Unit-Tests und Secrets"; the questions on the
+  tools, 182 "Darf der Lauf Biome (Format- und Lint-Check) in die Pakete des
+  Projekts eintragen?", 183 "Darf der Lauf TypeScript (`typescript`, für den
+  Typen-Check) in die Pakete des Projekts eintragen?" and 211 "Darf der Lauf
+  `@types/node` (Typdefinitionen für die Tests, für den Typen-Check) in die
+  Pakete des Projekts eintragen?", named the check by its label. Project 2:
+  the proposal in the progress update of 219, the question of 220 "Welche
+  Checks soll ich jetzt einrichten?" with the answers "Unit, Zugangsdaten,
+  Typen, Format, Lint, Abhängigkeits-Scan; vier Dev-Abhängigkeiten kommen
+  dazu." and "Unit, Zugangsdaten, Abhängigkeits-Scan; Typen, Format und Lint
+  bleiben aus, mit deinem Grund."; no question on a tool, the record on the
+  packages saying yes. The person answered every one of them, records 169,
+  184, 185, 212 and 221, with the labels as all that had reached them. A
+  defect of its own and not a point of defect 7: that one is step 3 of project
+  1 and what it entered, took out, wrote and handed over; this one is a rule
+  of step 2 and of the question of step 3, broken in both runs, with a should
+  of its own.
+  Recorded, not built: the questions of `setup-checks` named the classes by
+  their labels alone, records 168, 182, 183 and 211 of project 1 and 220 of
+  project 2, the proposal with what each catches standing in a progress update
+  at 167 and 219 — should: a class is named by what it catches, in the
+  proposal and in the question that follows it, and the question on a tool
+  names the check in ordinary words, `setup-checks` expanded 756 to 758 and
+  862 to 863.
 
   **The runs on the things of the table, both runs and the bench.** Every run
   below is recorded under version 0.141.0, the version the installed copy
@@ -26107,9 +26258,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **Project 1 on setup-checks.** Walked, records 152 to 511: the head reached
   at a first setup; step 1 with integration, end-to-end, code-security and
   dependencies skipped for their states; step 2's proposal in a progress
-  update, 167, met again, and the question which classes, 168; step 3 with the
-  dependency question put once, 172, its no, the per-tool questions at 182,
-  183 and 211, the second way for Biome at 184 and 266, the third way for
+  update, 167, met again, and the question which classes at 168 naming them by
+  their labels, defect 15; step 3 with the dependency question put once, 172,
+  its no, the per-tool questions at 182, 183 and 211 naming the check by its
+  label, defect 15, the second way for Biome at 184 and 266, the third way for
   `@types/node` at 212, the yes to TypeScript at 185 that entered nothing,
   defect 7, the `skipped (user)` cells with their reasons at 239, the answer
   known before it landed; the cut at 188; steps 4, 5 and 6 with the canonical
@@ -26119,38 +26271,41 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   following; step 8 with the reading of `rules/branches/main` at 279, the rule
   question at 302 and its write at 305, the two second questions at 309 and
   313 with the line before each in a progress update and without the no,
-  defect a, the records landed first as #3 and fetched at 361, the installs
-  under them at 365 and 371 with the classes filled by steps 4 to 6, the list
-  line in a progress update, defect 8, biome not entered, defect 9, the
-  workflow file at 413, green on `main` at 460, auto-merge switched on and
-  read back and the protection set at 465 and 466, `caffeinate` named nowhere
-  after `Darwin` at 285, the record of the mode at 328 and 329, the branch
-  `devloop-unattended` cut and re-cut, #5 armed where the gate stood at 491;
-  step 9 with the planning following, 510 and 511, its counts in a progress
-  update, defect 10; how to ask throughout.
+  defects a and 14, the records landed first as #3 and fetched at 361, the
+  installs under them at 365 and 371 by point 3 with the classes filled by
+  steps 4 to 6, the list line in a progress update, defect 8, biome installed
+  outside and not entered by the order of points 2 and 3 as the text has it,
+  defect 9, the workflow file at 413, green on `main` at 460, auto-merge
+  switched on and read back and the protection set at 465 and 466,
+  `caffeinate` named nowhere after `Darwin` at 285, the record of the mode at
+  328 and 329, the branch `devloop-unattended` cut and re-cut, #5 armed where
+  the gate stood at 491; step 9 with the planning following, 510 and 511, its
+  counts in a progress update, defect 10; how to ask throughout.
 
   **Project 2 on setup-checks.** Walked, records 193 to 567: the head, step 1
-  with the three states skipped, step 2 at 219 and 220, step 3 with the
-  dependency question at 232 and its yes entering the tools at 253, the cut at
-  245, steps 4 to 6 at 269 to 360, step 7 at 389 to 430 with step 8 following,
-  step 8 with the reading at 416, the rule standing already at 456 and 457, no
-  second question, the records and the workflow file in one pull request at
-  511, green on `main` at 539, auto-merge and the protection at 553 and 554,
-  the mode record at 484, `Darwin` at 431 and `caffeinate` in no message,
-  defect a; step 9 asking what to build, 567.
+  with the three states skipped, step 2 at 219 and 220, the classes by their
+  labels at 220, defect 15, step 3 with the dependency question at 232 and its
+  yes entering the tools at 253, the cut at 245, steps 4 to 6 at 269 to 360,
+  step 7 at 389 to 430 with step 8 following, step 8 with the reading at 416,
+  the rule standing already at 456 and 457, no second question, the records
+  and the workflow file in one pull request at 511, green on `main` at 539,
+  auto-merge and the protection at 553 and 554, the mode record at 484,
+  `Darwin` at 431 and `caffeinate` in no message, defects a and 14; step 9
+  asking what to build, 567.
 
   **Project 1 on plan-work.** Walked, records 513 to 741: the head, what is
   already built at 522, the planning issue created at 549, nothing to pick up,
   how to ask, with nobody there from 607; Stage 1 with the frontier not worked
   in rounds and the confirmation at 560 over a hard core shown nowhere, defect
   3, the settled answers posted at 553 and 582, the no at 561 opening a round
-  at 577, the yes at 588, six preconditions read at 597, the mode question
-  alone at 604 without its costs, defect 10, the answer "Ohne dich bis zum
-  Ende", the mark written at 607 and said in a progress update, defect 10;
-  Stage 2 read at 528 and 532 and reported in a progress update, defect 10;
-  Stage 3 with three drafts, three checks and the recommendation taken at 714,
-  where it had passed every item; Stage 4 at 726 and 736; the close at 740 and
-  741, met again.
+  at 577 over what the run had settled itself, the second confirmation at 587
+  over the list of settled decisions, the yes at 588, six preconditions read
+  at 597, the mode question alone at 604 without its costs, defect 10, the
+  answer "Ohne dich bis zum Ende", the mark written at 607 and said in a
+  progress update, defect 10; Stage 2 read at 528 and 532 and reported in a
+  progress update, defect 10; Stage 3 with three drafts, three checks and the
+  recommendation taken at 714, where it had passed every item; Stage 4 at 726
+  and 736; the close at 740 and 741, met again.
 
   **Project 1 on cut-into-tasks.** Walked, records 743 to 779: the head, what
   a task is, each issue's parts at 759 to 761, the order with the real
@@ -26185,9 +26340,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   them: the install question at its first and second asking with a no and a
   yes, records 66, 67, 309 and 310 of project 1 and 60 and 61 of project 2;
   the install record written with `install-route: npm` and its answer changed
-  alone at 328 and 329; the merge handover at seven places, its case sentence
-  held and its "nothing beside it" not, defect 4; the editing tool at 238,
-  413, 1306, 483 and 484, broken at 1405, defect 6; the mode read off the main
+  alone at 328 and 329; the merge handover at seven places, its command held
+  at all seven, its case sentence at the three of project 2 alone and its
+  "nothing beside it" at 156 alone, defect 4; the editing tool at 238, 413,
+  1306, 483 and 484, broken at 1405, defect 6; the mode read off the main
   branch at 361 and 597; the mark deleted and said at 1674 and 1678 with
   nothing to bring back; every body through a file in a `mktemp -d` directory,
   119 to 126, 258 to 261, 339 to 343, 440 to 449, 487 to 491, 537 to 549, 719
@@ -26251,48 +26407,52 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `bin/devloop-check-table` finding every status in one of the four forms at
   239, 414, 431 and 360; the output style standing in both transcripts, its
   two rules on text before a question and before a tool call walked and not
-  held at the places of defect a and of the new defects 1, 3, 8 and 10, held
-  at 252, 312, 805, 1247 and 36, 146, 244, 330 and 359.
+  held at the places of defect a, defect 14, and of the new defects 1, 3, 8
+  and 10, held at 252, 312, 805, 1247 and 36, 146, 244, 330 and 359.
 
   **Milestone 3.** By part A point 1 of the entry of 12 October 2026 the
   milestone lands when the eight defects are built and a run walks them. After
-  the two runs of 16 October 2026 and the bench: defects 1, 3, c and i held in
-  a run; b held in its third point and not in its second, defect 9 above; a
-  did not hold at four places of the two runs; d and 11 held on the bench and
-  met no run. So the milestone has not landed. What stands between it and
-  landing is defect a, text the model writes into a progress update where the
-  skill and the output style say message, and the two defects no run has met;
-  the thirteen defects above stand beside them, defects 3, 5 and 12 among them
-  having cost the person a round, a halt and an unrecorded refusal.
+  the two runs of 16 October 2026 and the bench: defects 1, 3, b, c and i held
+  in a run, b in both points, where the text of its points 2 and 3 had biome
+  installed outside the project and entered nowhere, defect 9 above, as the
+  correction of this entry found; a did not hold at four places of the two
+  runs; d and 11 held on the bench and met no run. So the milestone has not
+  landed. What stands between it and landing is defect a, text the model
+  writes into a progress update where the skill and the output style say
+  message, and the two defects no run has met; the fifteen defects above stand
+  beside them, defects 3, 5 and 12 among them having cost the person a round,
+  a halt and an unrecorded refusal.
 
-  **Records.** Thirteen defect things at the end of `docs/stock-take.tsv`,
-  each named "docs/roadmap.md / Known gaps / " and the defect, sited and
-  evidenced on its status line above, the note saying when and by what it was
-  found, which line it concerns and the should; one not-a-thing row for the
-  head of this entry, part of the first; and the run rows, each under version
-  0.141.0 with the source `log` for a run and `entry` for the bench, anchored
-  on the paragraph above that records it, every one counting, the walks of the
-  eight defects of part A among them on the eight things of their entries. The
-  figures of the tool after the change stand in the report and in the sentence
-  that closes this paragraph: no broken record, 19 findings as at `7e35090`,
-  no unit without a straight path, no status word broken over a line break, no
-  uncovered line of 3823, exit 0; against `7e35090`, where the search set held
-  3809 lines, 14 lines more, the head of this entry and its thirteen status
-  lines; recorded and not built 247 where it was 234, its defects 236 where
-  they were 223; built and never walked 1014 where it was 1172, its skill
-  branches 585 where they were 696, shared texts 125 where they were 162, the
-  output style 1 where it was 3, defects 233 where they were 241; walked 603
-  where it was 445, skill branches 221 where they were 110, shared texts 63
-  where they were 26, the output style 3 where it was 1, defects 35 where they
-  were 27; hook outcomes, the hook registration, program outcomes and check
-  commands unchanged in both states, since every hook and program outcome
-  walked here was walked before; undetermined 26 as before; runs that do not
-  count 251 as before, none of the 388 recorded here among them; not-a-thing
-  records 2444 where they were 2443; the self-test 114 cases, 76 of 76
-  messages asserted by a case, as at `7e35090`; the nineteen checks under
-  "Before a handover, run these" green and line for line what they print at
-  `7e35090`, the check holding this file against the skill names printing
-  nothing. The figures as printed stand in the report.
+  **Records.** Fifteen defect things at the end of `docs/stock-take.tsv`, each
+  named "docs/roadmap.md / Known gaps / " and the defect, sited and evidenced
+  on its status line above, the note saying when and by what it was found,
+  which line it concerns and the should; one not-a-thing row for the head of
+  this entry, part of the first; and the run rows, each under version 0.141.0
+  with the source `log` for a run and `entry` for the bench, anchored on the
+  paragraph above that records it, every one counting, the walks of the eight
+  defects of part A among them on the eight things of their entries. The
+  figures of the tool after the second commit stand in the report and in the
+  sentence that closes this paragraph: no broken record, 19 findings as at
+  `7e35090`, no unit without a straight path, no status word broken over a
+  line break, no uncovered line of 3825, exit 0; against `7e35090`, where the
+  search set held 3809 lines, 16 lines more, the head of this entry and its
+  fifteen status lines; recorded and not built 249 where it was 234, its
+  defects 238 where they were 223; built and never walked 1014 where it was
+  1172, its skill branches 585 where they were 696, shared texts 125 where
+  they were 162, the output style 1 where it was 3, defects 233 where they
+  were 241; walked 603 where it was 445, skill branches 221 where they were
+  110, shared texts 63 where they were 26, the output style 3 where it was 1,
+  defects 35 where they were 27; hook outcomes, the hook registration, program
+  outcomes and check commands unchanged in both states, since every hook and
+  program outcome walked here was walked before; undetermined 26 as before;
+  runs that do not count 251 as before, none of the 388 recorded here among
+  them; not-a-thing records 2444 where they were 2443, the renamed thing of
+  defect 9 and the two things of defects 14 and 15 moving the defect count
+  alone; the self-test 114 cases, 76 of 76 messages asserted by a case, as at
+  `7e35090`; the nineteen checks under "Before a handover, run these" green
+  and line for line what they print at `7e35090`, the check holding this file
+  against the skill names printing nothing. The figures as printed stand in
+  the report.
 
 ## Decisions taken against
 
