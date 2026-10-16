@@ -24925,7 +24925,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   approved on 16 October 2026 stands below in German, as approved, without
   translation, as the entry of 12 October 2026 holds its wordings. The words
   the stock-take tool reads a line of this file into its search set by stand
-  in this entry on the three lines that record a defect and on no other.
+  in this entry on the five lines that record a defect and on no other.
 
   **What the two logs showed at the records the order named.** Under
   `~/.claude/projects/` in the directory for `devloop-test-w`, the two logs
@@ -25108,6 +25108,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   hand, has its evidence on the line that says the question is not put where
   no gate stands, since the case that defect described no longer arises.
 
+  **Approved by the person on 16 October 2026 at the check of this branch
+  before the merge.** Two lines the person reads, which this branch added
+  beyond the approved wordings, where the order of this day had said that
+  such a line is proposed and not written: in step 8 of `setup-checks`,
+  after the two yes, one line naming the classes the run sets up now, each
+  with its tool, the example approved in German being „Mit deinen beiden Ja
+  richte ich jetzt Formatierung mit Prettier, Lint mit ESLint und Secrets
+  mit gitleaks ein.“; and in `shared/fetch-three-times.md`, once a change
+  set aside is brought back, one line saying so, the example approved being
+  „Deine Änderung an `README.md` ist wieder da.“ Both stay as they stand.
+
   **Decided here, beyond the order's words.** The item of `setup-project`
   step 1 that read the tracker's labels went with the question, nothing
   reading what it found. `build-work` step 1 sends a diverged main branch to
@@ -25143,6 +25154,27 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   is `empty` and calls the check setup for its step 8 where none stands,
   with a sentence to the person approved for it.
 
+  Recorded, not built: `shared/branch-deletion.md` asks the remote with `git
+  ls-remote --heads origin <branch>`, which matches the end of a longer name
+  as well: measured on 16 October 2026 with git 2.43.0 at the check of this
+  branch before the merge, a remote carrying `x/devloop-checks` and no
+  `devloop-checks` answered the query for `devloop-checks` with the line of
+  `x/devloop-checks`, exit 0, so that the run would delete a branch that no
+  longer stands there, the case of defect 9 of the first closing run
+  — should: the query names the exact ref, `git ls-remote origin
+  refs/heads/<branch>`, which printed nothing, exit 0, on the same remote.
+
+  Recorded, not built: the message of `hooks/pre-tool-use-install-guard.sh`
+  line 989 tells the run to hand the person the exact command, backed, and
+  says nothing of point 18 of part B of the entry of 12 October 2026, that a
+  command handed over runs as it stands from wherever the person is; the
+  reason given above for leaving it, that a changed line of that guard would
+  stop its walked runs from counting, is no reason on what the message says;
+  found at the check of this branch before the merge
+  — should: the message says that the command is handed over as it runs
+  from wherever the person is, the change into the project's directory
+  before it where it needs one.
+
   **The runs.** The nineteen checks under "Before a handover, run these" ran
   green on the tree of the second commit, `e500aa7`,
   from 07:48:29 to 07:48:35 UTC, in a clean bash with `/usr/bin/grep` first
@@ -25155,6 +25187,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   command under "Before you change anything, run this" printed the
   differences of this branch against the installed 0.139.0, red by
   construction on a branch and recorded as no run. Nothing ran on a bench.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
