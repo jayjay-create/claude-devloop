@@ -233,9 +233,12 @@ thing may land on the machine — tools for check classes, a driver for an
 interface, and whether a runtime is one of them — where they may land, which
 is the list of places the install guard already carries as `BINDIR`, what each
 kind costs, and where a no leads: installs stay the person's, as today. What
-can be named at setup is kinds and places, not tools: `setup-project` records
+can be named at setup is kinds and places, not tools: `setup-project` recorded
 under "Permissions, before the first command" that the check commands are not
-known until the check suite exists. **The record**: in `environment.md`, beside
+known until the check suite exists — a passage that went on 16 October 2026
+with the two notes on permissions, point 8 of part B of the roadmap entry of
+12 October 2026, so that this sentence quotes a wording the work has since
+replaced and stands as written on 19 September 2026. **The record**: in `environment.md`, beside
 the unattended-mode answer that `setup-checks` step 8 writes there; written
 only with the person present, since setup never runs unattended — by
 `setup-project`, and since 5 October 2026 by `setup-checks` step 8 as well,

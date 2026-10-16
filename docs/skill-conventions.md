@@ -58,6 +58,20 @@ run cannot do the thing itself** — a `/clear` only they can trigger. Where the
 run could call the stage itself, it asks in ordinary words and hands over no
 command.
 
+**A command handed over runs as it stands, from wherever the person is.** No
+knowledge of commands in a terminal is assumed of them: the line is copied
+whole into whatever terminal is open, so it carries everything it needs. A
+`gh` command carries the repository, `--repo OWNER/REPO`, since `gh` resolves
+it from the directory it runs in. A command that needs the project's
+directory — an install into the project's packages, a browser download a
+dependency of the project makes, a check command — carries the change into
+it before it, `cd <directory> && <command>`, the directory written as their
+shell takes it: `~` for their home directory, and the rest in double quotes
+where it carries a space, `cd ~/"my project" && …`. A command that needs
+nothing of the kind, `gh auth login` say, is given bare. Decided on 12
+October 2026, point 18 of part B of the roadmap entry of that date, with the
+example `cd ~/devloop-test-w && npx playwright install chromium`.
+
 **A file is named by its path where the work is about the file.**
 
 Measured on 18 September 2026, three times in a directory with nothing in it: a
@@ -2171,14 +2185,17 @@ the same day, and the directory in the tree is what tells the first two
 apart: every file on the branch, `set up`; some file there, or none and the
 directory in the tree, `set up in part` with the files by name; nothing there
 and no directory, `not set up here`. Where the branch cannot be read, the
-cause stands in place of the files and the directory alone decides. Two
-things stand recorded and not built, in the entry of 3 October 2026 in
-`docs/roadmap.md`: nothing in `setup-project` orders a first setup to write
+cause stands in place of the files and the directory alone decides. One
+thing stands recorded and not built, in the entry of 3 October 2026 in
+`docs/roadmap.md`: a setup written and not landed, once the next run finds
+nothing on the branch, is `shared/cut-branch.md`'s third case, which
+switches to the branch and describes nothing further. The other thing that
+entry recorded — nothing in `setup-project` ordered a first setup to write
 the marker, the paragraph describing it standing under "Refreshing an
-existing setup", so a project set up fresh reads `none` until its first
-refresh, which `start-work` step 1 then makes; and a setup written and not
-landed, once the next run finds nothing on the branch, is `shared/cut-branch.md`'s
-third case, which switches to the branch and describes nothing further.
+existing setup", so that a project set up fresh read `none` until its first
+refresh, which `start-work` step 1 then made — is built since 16 October
+2026: step 6 of `setup-project` writes the marker, at a first setup and at
+a refresh alike, point 13 of part B of the roadmap entry of 12 October 2026.
 
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how
@@ -3186,35 +3203,43 @@ resuming on it is not by itself the defect. **What their word may not be is the
 evidence that the act succeeded.** Where the act has an outcome the run can read,
 the word releases it and the outcome decides; where what is being waited for is a
 decision of theirs, there is no outcome to read, the word is the thing itself,
-and resuming on it is the only possible form rather than a defect. Today's nine
-lines fall out like this — nine lines over eight sites, because `setup-checks`
-matches on two consecutive ones in its step 7; seven over six until 5 October
-2026, when its step 3 came to hand a command over, and eight over seven until
-6 October 2026, when `shared/fetch-three-times.md` came to say what a run
-says where the main branch cannot be fetched or fast-forwarded:
+and resuming on it is the only possible form rather than a defect. Today's six
+lines fall out like this — six lines over six sites; nine over eight until 16
+October 2026, when the three merge handovers became the one text of
+`shared/merge-handover.md`, which this check reads once, in the shared file,
+for the three skills that insert it, and until then `setup-checks` matched on
+two consecutive lines in its step 7; seven over six until 5 October 2026,
+when its step 3 came to hand a command over, and eight over seven until 6
+October 2026, when `shared/fetch-three-times.md` came to say what a run says
+where the main branch cannot be fetched or fast-forwarded:
 
 - **The outcome is read, by this sentence.** `build-work` step 3 point 7, the
   install: the tool is at the path that installer writes to, or the command did
   not do what it was handed over for. This is the only line phrased "picks up
   once", and it is the one the rewrite was for.
-- **The outcome is read, elsewhere.** The three merge handovers — `build-work`
-  step 6, `setup-checks` step 7, `setup-project` step 8 — and the diverged-base
-  handover in `build-work` step 1. Their word releases the run; whether the merge
-  landed is then a query like any other under "Never assert state — query it",
-  and `setup-checks` says it outright in the next clause, "do not go on to the
-  next step on top of an unmerged suite". **These stay exactly as they are.**
-  Rewriting them into the install's form would put the reading in the resumption
-  sentence, where it is already done one step later and better. The eighth
-  line is of this kind too: the install command `setup-checks` step 3 hands
-  over under a record that says no or was never written, whose outcome its
-  step 4 reads off the path the installer writes to, a command not run
-  leaving the class `skipped (user)`. And so is the ninth, the one line
-  `shared/fetch-three-times.md` carries into the four skills that fetch
+- **The outcome is read, elsewhere.** The merge handover, the one line
+  `shared/merge-handover.md` carries into `build-work` step 6, `setup-checks`
+  step 7 and `setup-project` step 8 since 16 October 2026, and the
+  diverged-base handover in `build-work` step 1. Their word releases the run;
+  whether the merge landed is then a query like any other under "Never assert
+  state — query it", which the shared text says outright — `MERGED` with a
+  time in it, read off the platform and never off their word — and
+  `setup-checks` says in the clause before its insert line, "do not go on to
+  the next step on top of an unmerged suite". **These stay exactly as they
+  are.** Rewriting them into the install's form would put the reading in the
+  resumption sentence, where it is already done one step later and better.
+  The fourth line is of this kind too: the install command `setup-checks`
+  step 3 hands over under a record that says no or was never written, whose
+  outcome its step 4 reads off the path the installer writes to, a command
+  not run leaving the class `skipped (user)`. And so is the fifth, the one
+  line `shared/fetch-three-times.md` carries into the four skills that fetch
   before a cut, a task's base, after a merge, at the mark or before a
-  rebase: the person clears what stood in the way — the connection, the
-  sign-in, a changed file, commits of their own — and says so, and the
-  fetch or the fast-forward is run again on their word and its outcome
-  decides.
+  rebase: the person clears what stood in the way — the connection or the
+  sign-in, since 16 October 2026; until then a changed file and commits of
+  their own as well, which the run now sets aside or puts on a branch of
+  their own itself, on their yes to a question of the third kind — and says
+  so, and the fetch or the fast-forward is run again on their word and its
+  outcome decides.
 - **There is no outcome, and there cannot be.** `build-work`'s lifted guard
   block: what is waited for is which of two ways they want it to go. A decision
   leaves nothing on disk to look at. The word is the whole of it.

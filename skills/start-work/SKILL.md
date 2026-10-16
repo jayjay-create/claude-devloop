@@ -71,7 +71,9 @@ counting the closing line, in their language — covering these and nothing else
 
 - Where this ends up, in one clause: code that is built, checked and merged.
   Where it ends up, never how it gets there.
-- One promise: an idea is all they need to bring, and the rest is guided.
+- One promise: the rest is guided. Where no idea has come yet, this one says
+  as well that an idea is all they need to bring; where the idea came with
+  the command, that half is left out, since they have brought it already.
 - That they have to remember nothing — no commands, no steps.
 - That asking what is happening, at any point, gets an explanation.
 
@@ -88,8 +90,20 @@ This is the one fixed wording in the set, and it is fixed because it is a
 signature rather than a paragraph — six words a model transcribes, not a text it
 would paraphrase.
 
-Then ask what they would like to build, and **stop.** Nothing else in this reply:
-no repository findings, no offer to set anything up.
+**Then one of two things, read off whether the idea came with the command.**
+Where it did not — they typed the command and nothing else — ask what they
+would like to build, and **stop.** Nothing else in this reply: no repository
+findings, no offer to set anything up. Where it did — they said what they
+want built in the message that brought this up, beside the command or in
+place of a question — ask nothing: say in one sentence what you understood
+as the idea, and that the project is set up first and it goes on from there,
+and go on to step 3 in the same reply. Until 16 October 2026 this line asked
+in both cases, which a run with the idea in hand cannot follow; the first
+closing run of milestone 3 answered that by writing no introduction at all,
+defect 5 of the roadmap entry of 11 October 2026 on that run, built as point
+7 of part B of the roadmap entry of 12 October 2026. The wording approved on
+12 October 2026 stands in that entry under "The approved wordings"; this
+skill says what is said, not the words.
 
 **If every file of the setup is on the main branch** — no `missing:` line in
 step 1's answer — skip the introduction. Run the

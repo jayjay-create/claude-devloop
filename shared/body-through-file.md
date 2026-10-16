@@ -20,6 +20,20 @@ the half the rule was missing when it was first written, and it is the half that
 was measured: the pull request body on 6 September 2026 was blocked as a string
 and blocked again on the way into a file.
 
+**The file lies outside the repository.** It goes into a directory `mktemp
+-d` makes — under the system's temporary directory, on macOS, Linux, Windows
+with Git Bash and Alpine alike — and the path the editing tool writes it to
+is the one that command printed, so the directory is made before the file.
+Never under `.git/`, which is git's own directory and no place for a file of
+the run's, and nowhere in the tree the commit is built from, where it would
+stand untracked in `git status --short` and go in with the next `git add`
+of its directory; the two runs of 3 and 4 October 2026 wrote it inside
+`.git/`, defect 6 of the roadmap entry of that date on the two runs, built
+as point 17 of part B of the roadmap entry of 12 October 2026. The branch
+guard blocks the editing tool on the main branch for files under the
+project alone, so a body is written there on the main branch as well, where
+a planning issue is filed from.
+
 **A title names the problem; it does not quote the command.** The title stays on
 the command line — `gh` has no `--title-file` — so it says what the problem
 is, "gitleaks cannot be set up", and the command belongs in the body, where it

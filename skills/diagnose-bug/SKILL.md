@@ -272,8 +272,10 @@ another variation of what already failed.
 
 Hand it over in one of these forms, whichever fits:
 
-- A command they can paste into their own terminal, and what to look for in the
-  output.
+- A command they can paste into their own terminal, as it runs from wherever
+  they are — the change into the project's directory before it, by "A command
+  handed over runs as it stands" in `docs/skill-conventions.md` — and what to
+  look for in the output.
 - A small script that collects the versions, paths and environment this needs,
   ready to run.
 - A script that walks them through the steps only a person can do — clicking,

@@ -238,10 +238,17 @@ of the remote where the remote has nothing new, and that the two have
 diverged where it has —
 say so and stop — a task cut from a stale main lands on the wrong base, and
 one cut from a main branch carrying commits the remote lacks lands on a base
-the remote does not have. Say what
+the remote does not have. Where the two have diverged, that is the case
+"Commits of their own on the main branch" under "When the main branch cannot
+be fetched or fast-forwarded" above, since 16 October 2026: ask as there,
+and on their yes put the commits on a branch of their own, bring the main
+branch to GitHub's state and go on; on their no, stop as there. Where the
+local branch is ahead alone, the remote having nothing new, say what
 would clear it and let the user decide: the local branch has commits the
 remote does not, and reconciling them is their call, not
-something to resolve by force. Nothing is lost meanwhile; the tasks are in the
+something to resolve by force — the question approved for the other case
+presupposes new commits on GitHub, so it is not put here. Nothing is lost
+meanwhile; the tasks are in the
 tracker and this picks up as soon as they say the branches agree. Where the
 fetch fails on its third attempt, or the fast-forward fails, stop as that
 section says, opening with that the local main branch cannot be brought to
@@ -461,7 +468,10 @@ The subagent:
    install stays the user's to run, the same way merging is, and the guard
    blocks it — a compiler, a runtime, a tool from a package manager alike.
    Report what it installs, what it
-   unblocks, and the exact command — and both ways it can go, in the same
+   unblocks, and the exact command, as it runs from wherever they are, with
+   the change into the project's directory before it where it needs one, by
+   "A command handed over runs as it stands" in `docs/skill-conventions.md`
+   — and both ways it can go, in the same
    breath: the build picks up once the tool is where that command puts it, and
    **a decline is an answer too, not a wall**. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
@@ -939,8 +949,11 @@ that tells the other two apart by that field is reading a field that cannot
 answer the question. None of the three is a fault, and none stops the stage:
 
 - **Auto-merge switched off at the repository** — `allow_auto_merge` is false. A
-  setting, not something a build step changes. Say so and ask the user to switch
-  it on.
+  setting, not something a build step changes, and since 16 October 2026 not
+  something this step asks them to change: at a first setup it stays off
+  wherever no gate stood, the setup asking about it only where one does, and
+  the check setup's step 8 switches it on where it sets a gate up. The
+  handover below names the case.
 - **No gate at all** — no required check, no required review, so the pull request
   is already mergeable and there is no platform gate here. Say that in one clause
   rather than leaving it implied: what lands this change is the answer given at
@@ -972,10 +985,12 @@ is none. Where neither query answered because the rights were missing, say that:
 the run does not know which case this is, and naming one anyway is the failure
 this replaced.
 
-In all three the merge itself is still not yours to perform. Give the user the
-one command that lands it, say which case it was, and say the stage
-picks up as soon as they say it has landed. Do not present it as something having
-gone wrong. What went wrong in the past was the framing and the timing — a run
+In all three the merge itself is still not yours to perform. The handover, the
+same text the two setup skills hand a merge over with:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text merge-handover`
+
+What went wrong in the past was the framing and the timing — a run
 stopping mid-task, over a change nobody asked for, as though it had hit an error.
 
 In unattended mode there is nobody to hand it to. A refusal by GitHub to arm,
@@ -1114,13 +1129,13 @@ Once it has landed:
   on its third attempt, or the fast-forward fails, stop as that section
   says, opening with that the merge has landed on GitHub and nothing is
   lost, and that only the local main branch cannot be brought to that
-  state; nothing below is built on it. What is in the way is said as the
-  measurement there has it — a changed file the fast-forward would change,
-  commits of their own on the local main branch while the remote has new
-  ones, the remote not reached. Do not force it.
-- Delete the merged branch locally and on the remote. Nothing does it for you:
-  arming auto-merge carries no branch deletion, and whether the repository
-  deletes head branches on merge is its own setting.
+  state; nothing below is built on it. What is in the way goes as that
+  section says since 16 October 2026 — a changed file set aside and brought
+  back on their yes, commits of their own put on a branch of their own on
+  their yes, the connection and the sign-in theirs to clear. Do not force
+  it.
+- Delete the merged branch locally and, by the rule below the list, on the
+  remote.
 - Confirm the task issue closed, and **close it by hand where the platform did
   not**. `gh pr view <number> --json closingIssuesReferences` says which issues
   the pull request claimed, so the check is over that list rather than over
@@ -1149,6 +1164,8 @@ Once it has landed:
 - Say what to pull locally: a new dependency means install, a schema change means
   migrate, a new setting means check configuration, server code means restart,
   frontend only means a hard reload. `environment.md` says which apply here.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text branch-deletion`
 
 Build the commit from `git status --short`, never from a reported list of paths —
 a guessed list drops new files silently. Add paths explicitly, never with `-A`.
@@ -1316,10 +1333,12 @@ nobody may be. Where no mark exists, this is the direct route: write one now,
 with a shell command, since the tree stands on the main branch. First the
 fetch, three attempts, by the command under "When the main branch cannot be
 fetched or fast-forwarded" above; where the third fails too, stop as that
-section says, opening with that the local main branch cannot be brought to
-the state GitHub holds and that nothing is begun here for that — the run
-without them does not begin, and no mark is written. On a fetch that
-answered, the mark, which the hook on the mark lets through in auto mode
+section says, opening with that the run cannot read just now where the main
+branch stands on GitHub and that for that nothing is begun here — the
+wording approved on 12 October 2026, point 19 of part B of the roadmap
+entry of that date, since nothing is fast-forwarded here and only the fetch
+can fail — the run without them does not begin, and no mark is written. On
+a fetch that answered, the mark, which the hook on the mark lets through in auto mode
 alone, the mode condition 4 has read by now, and blocks in every other:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
