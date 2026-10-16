@@ -25409,6 +25409,31 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   command against the pattern of the program, or the program takes the push
   itself and the shared text calls it.
 
+  **The runs.** The nineteen checks under "Before a handover, run these" ran
+  green on the tree of the second commit, `dfeb09f`,
+  from 09:57:31 to 09:57:38 UTC, in a clean bash with `/usr/bin/grep` first
+  on its path, line for line as at `49bd995` but for the line numbers the
+  changes moved and the one line of the handover check whose tail changed,
+  `build-work` step 1's "this picks up as soon as they say the branches
+  agree"; the tool on that tree,
+  the tool from 09:57:41 to 09:59:15 UTC, exit 0, BROKEN RECORDS 0, and
+  FINDINGS 19, UNCOVERED LINES 0 of 3806;
+  its self-test from 09:57:41 to 09:57:43 UTC, 114 cases, 76 of 76 messages
+  asserted by a case;
+  the self-test of `bin/devloop-setup-state` at 09:57:38 UTC, 18 cases, the
+  three on the `set-aside:` line among them; all recorded in the third
+  commit under 0.141.0. The command under "Before you change anything, run
+  this" printed nothing at `49bd995` before the branch was cut, the
+  installed 0.140.0 being the tree, and is red by construction on the branch
+  after the raise, recorded as no run. Nothing ran on a bench: every thing
+  of the skills and the shared texts of this entry stands as never walked,
+  and the two runs of 11 October 2026 on the thing "the fetch and the
+  fast-forward go through" of `shared/fetch-three-times.md` had stopped
+  counting at `49bd995` already, that commit having changed its line; its
+  three lines stand in this branch as they stood. The run of 11 October 2026
+  on the handover of `build-work` step 3 stops counting with this branch,
+  the handover naming four rules now.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
