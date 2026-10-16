@@ -25144,13 +25144,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   with a sentence to the person approved for it.
 
   **The runs.** The nineteen checks under "Before a handover, run these" ran
-  green on the tree of the second commit, in a clean shell with
-  `/usr/bin/grep`, and are recorded in the third commit under 0.140.0; the
-  tool exited 0 on
-  that tree with its self-test green, and the command under "Before you
-  change anything, run this" printed the differences of this branch against
-  the installed 0.139.0, red by construction on a branch and recorded as no
-  run. Nothing ran on a bench.
+  green on the tree of the second commit, `e500aa7`,
+  from 07:48:29 to 07:48:35 UTC, in a clean bash with `/usr/bin/grep` first
+  on its path, line for line as at 9b40c07 but for the line numbers the
+  changes moved and the handover check's six lines; the tool on that tree,
+  the tool from 07:48:35 to 07:50:09 UTC, exit 0, BROKEN RECORDS 0, FINDINGS
+  19, UNCOVERED LINES 0 of 3745; its self-test,
+  the self-test from 07:50:09 to 07:50:11 UTC, 114 cases, 76 of 76 messages
+  asserted by a case; all recorded in the third commit under 0.140.0. The
+  command under "Before you change anything, run this" printed the
+  differences of this branch against the installed 0.139.0, red by
+  construction on a branch and recorded as no run. Nothing ran on a bench.
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
