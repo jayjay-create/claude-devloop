@@ -43,32 +43,78 @@ there a fetch that fails is said and the state as last fetched is read, as
 the line under that command says.
 
 **Where the third attempt fails too, or the switch to the main branch or its
-fast-forward fails, the run stops where it is, and what it says has an
-opening the place gives and three parts after it**: in plain words what is
-in the way and what they can do about it, with the command where there is
-one; git's message as it came, or the program's line where the attempt was
-ended; and that this picks up as soon as they say it is cleared, and that
-nothing happens until then — "Nothing resumes on its own" in
-`docs/skill-conventions.md`. What is in the way is either their own
-work, a changed file or commits of their own, or something only they can do,
-the connection or the sign-in, which is why the run names what they can do;
-the examples approved for it are these, and the run takes the one that fits
-its case. GitHub not reached in three attempts: check the connection. The
-sign-in refused: sign in again, `gh auth login`. A file changed and not
-committed that the fast-forward would change, named: set it aside with `git
-stash`, and take it back with `git stash pop` once the run is done — measured
-on 6 October 2026 with git 2.50.1, the pop merges the change back where the
-fast-forward changed another line of the file, and where it changed the same
-line it reports a conflict for them to resolve and keeps the stash, exit 1.
-Commits on the local main branch that GitHub lacks, while GitHub has new
-ones: put them on a branch of their own and bring the main branch to
-GitHub's state, `git branch <a name for them>` and then `git reset --keep
-origin/main` — measured the same day, the reset moves the main branch and
-keeps the commits on the new branch, and where a changed file stands in its
-way it refuses, `error: Entry '<file>' not uptodate. Cannot merge.`,
-changing nothing. The German wording of the three openings and of the
-examples, approved on 6 October 2026, stands in the roadmap entry of 5
-October 2026 under "The approved wording"; a skill says what is said, not
-the words. Where the fetch and the fast-forward go through, nothing is said
-of them: they bring only what has merged on GitHub, change nothing of theirs
-and ask nothing of them.
+fast-forward fails, what follows depends on what is in the way, and the
+person gets no git command where the run can do the thing itself.** Four
+things stand in the way, and git's message says which: GitHub not reached;
+the sign-in refused; a file changed and not committed that the switch or the
+fast-forward would change, `error: Your local changes to the following files
+would be overwritten`; commits of their own on the local main branch while
+GitHub has new ones, `fatal: Not possible to fast-forward, aborting.` The
+first two only they can clear, and there the run stops where it is, and what
+it says has an opening the place gives and three parts after it: in plain
+words what is in the way and what they do about it, with the command where
+there is one; git's message as it came, or the program's line where the
+attempt was ended; and that this picks up as soon as they say it is cleared,
+and that nothing happens until then — "Nothing resumes on its own" in
+`docs/skill-conventions.md`. GitHub not reached in three attempts: that it
+was not reached in three attempts, and that they check their connection and
+say when it stands again. The sign-in refused: that GitHub refused the
+sign-in, that they type `gh auth login` in the terminal and follow the
+instructions in the browser, and say when that is done. The two others are
+their own work, and the run asks instead of handing a command over: a choice
+through the harness's choice widget, in their language, alone in its call,
+every point in a field of its own and no recommendation, and it acts on the
+answer.
+
+- **A changed file in the way.** In the question line: that the file, by
+  its path, is changed in their project and not committed; that to go on
+  the run has to fetch GitHub's state, which would change this file; and
+  whether it may set their change aside for that long. In the yes, label
+  and line: set it aside, and the run brings it back when it is done. In
+  the no, label and line: no, and the run stops here until they say so —
+  then it stops as at the two cases above, with git's message and that
+  nothing happens until then. On the yes: `git stash push -- <file>`, the
+  switch or the fast-forward, and `git stash pop` once the run is done with
+  the main branch — after the cut, after the fast-forward that follows a
+  merge, before the rebase — and one line to them that the change is back.
+  Measured on 6 October 2026 with git 2.50.1: the pop merges the change
+  back where the fast-forward changed another line of the file; where it
+  changed the same line, the pop reports a conflict in the file, keeps the
+  stash, exit 1, and leaves both versions in the file between conflict
+  markers, measured again on 16 October 2026. Then the run shows them both
+  lines, theirs and GitHub's, and asks which is to hold, in the same form;
+  the change stays set aside until they answer. On the answer the file is
+  written with the line they chose — through the shell, since the tree
+  stands on the main branch, where the branch guard blocks the editing tool
+  on purpose — the file is taken out of the index the conflicted pop put it
+  in, `git restore --staged -- <file>`, so that their change stands as it
+  stood, uncommitted, and the stash is dropped, `git stash drop`; measured
+  on 16 October 2026, `git status --short` then reads ` M` for the file and
+  the stash list is empty.
+- **Commits of their own on the main branch.** In the question line: that
+  commits lie on their main branch that GitHub lacks, and that GitHub has
+  new ones meanwhile; and whether the run may put their commits on a branch
+  of their own, named in the question, and bring the main branch to
+  GitHub's state. In the yes, label and line: yes; their commits stay on
+  that branch. In the no, label and line: no, and the run stops here. The
+  branch is named so that they see it is theirs, `meine-commits` in the
+  approved wording; where a branch of that name stands already, from an
+  earlier time, a number goes on the end and the question names it so. On
+  the yes: `git branch <name>` and then `git reset --keep origin/main` —
+  measured on 6 October 2026, the reset moves the main branch and keeps the
+  commits on the new branch, and where a changed file stands in its way it
+  refuses, `error: Entry '<file>' not uptodate. Cannot merge.`, changing
+  nothing: then the changed file is the case above, asked first, and the
+  reset follows their yes to that.
+
+The German wording of the three openings, approved on 6 October 2026,
+stands in the roadmap entry of 5 October 2026 under "The approved wording";
+the wordings of the two questions and of the two cases only they can clear,
+approved on 12 October 2026, stand in the roadmap entry of that date under
+"The approved wordings", point 19 of part B, which replaced the examples
+that handed `git stash`, `git stash pop`, `git branch` and `git reset
+--keep` to the person; a skill says what is said, not the words. With
+nobody there the run stops at every one of the four, as the places say.
+Where the fetch and the fast-forward go through, nothing is said of them:
+they bring only what has merged on GitHub, change nothing of theirs and ask
+nothing of them.

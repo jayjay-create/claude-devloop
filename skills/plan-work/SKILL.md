@@ -234,10 +234,12 @@ command and not the editing tool, since the tree stands on the main branch at
 that moment and the branch guard blocks the editing tool there on purpose.
 First the fetch, three attempts, by the command under "When the main branch
 cannot be fetched or fast-forwarded" above; where the third fails too, stop
-as that section says, opening with that the local main branch cannot be
-brought to the state GitHub holds and that nothing is begun here for that —
-the run without them does not begin, and no mark is written. On a fetch
-that answered, the mark:
+as that section says, opening with that the run cannot read just now where
+the main branch stands on GitHub and that for that nothing is begun here —
+the wording approved on 12 October 2026, point 19 of part B of the roadmap
+entry of that date, since nothing is fast-forwarded here and only the fetch
+can fail — the run without them does not begin, and no mark is written. On
+a fetch that answered, the mark:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 

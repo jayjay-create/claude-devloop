@@ -37,7 +37,10 @@ the install record has answered it already — step 3 says how.
 **This skill is reached four ways, and which one decides the branch and the
 close.** At a first setup, from `setup-project`, in every project with code:
 every class is `empty`, since the setup fills none, and this skill cuts its
-own branch, lands it in step 7 and offers the mode in step 8. For a single
+own branch, lands it in step 7 and goes on to step 8, which every first setup
+reaches once that merge is proven and no class is `empty` — with auto-merge
+off and no gate on the main branch as much as with them, since those are
+what step 8 sets up. For a single
 class, on the branch of the work that called: fill that one class or write
 its cell, leave the others untouched, stay on the branch you were
 called on rather than cutting a new one — the caller owns that branch and lands
@@ -330,13 +333,12 @@ this skill, the branch is cut once they are answered, and the record of an
 answer, the manifest line, the
 install and the targets are step 4's, on that branch.
 
-**Name what you just wrote down as something to grant.** A check command
-recorded in `checks.md` is something this workflow will run on every task from
-now on. You cannot record the grant — the permissions file belongs to the tool
-and writing it is refused — so say which commands they are and that choosing
-"always allow" the first time each appears, or setting them in `/config`, stops
-the confirmations. Setup could not name them, because they did not exist yet.
-Only the check commands themselves — never what was needed to install them.
+No paragraph here names the check commands as something to grant since 16
+October 2026: at the moment one read it one could decide nothing, and later
+it was forgotten; the decision falls in Claude Code's own prompt, which
+offers to allow a command permanently, and in auto mode no prompt comes.
+Point 8 of part B of the roadmap entry of 12 October 2026, with the note
+that stood at the start of `setup-project` until the same day.
 
 **A check tool is entered in the project's dependency file by this run only
 where the record on it says yes.** The dependency file is whatever this
@@ -388,6 +390,22 @@ entered there, in the same form, each alone in its call:
   says no or was never written. The check stays off, where the tool has no
   way outside the project and no other tool is left for the class.
 
+The command of the second way installs the tool outside the project — on a
+route of the record, `brew install prettier` or `npm install -g prettier`
+say — and is handed over directly after the no, in the run's own message,
+backed and as it runs from wherever they are, by "A command handed over runs
+as it stands" in `docs/skill-conventions.md`. It is never the line that
+enters the tool into the project's packages, `npm install --save-dev
+prettier`: that is what the no just declined, and a no to a tool in the
+packages is not a request for the same line by their hand. A tool with no
+way outside the project — a package of type definitions, `@types/node` say,
+which only the project's packages can carry — takes the third way: the
+check stays off, no command is handed over, and the no's line says so and
+promises none. The first closing run of milestone 3 handed over `npm install
+--save-dev` for the three tools declined that way and promised a command
+for `@types/node`, defect 3 of the roadmap entry of 11 October 2026 on that
+run.
+
 **Where the tool has no way outside the project and another tool is left for
 the same check, the question has three answers**, since a tool other than
 the one proposed needs their yes. The header, the question line and the yes
@@ -406,10 +424,15 @@ declined. In every other case the question keeps its two answers.
 
 The line that the run installs a tool outside the project comes only where
 the run may install that tool itself: where the install record says yes, and
-the install brings no compiler and no runtime along — `brew install pmd`
-brings `openjdk` with it, read off the formula on 6 October 2026 — since a
-runtime stays the user's under every answer, by the paragraph below. Where
-it would bring one, the line is the one that gives them the command.
+the install brings no compiler, no runtime and no system packages along —
+`brew install pmd` brings `openjdk` with it, read off the formula on 6
+October 2026, and a browser for tests with `--with-deps`, `install-deps` or
+`--install-deps` brings the system's own packages — since a runtime and those
+packages stay the user's under every answer, by the paragraph below. Where
+it would bring one, the line is the one that gives them the command. Until
+16 October 2026 this sentence named the compiler and the runtime alone,
+recorded on 8 October 2026, built as point 15 of part B of the roadmap
+entry of 12 October 2026.
 
 After a no the run goes the way that line named, by the paragraph below. The
 wording approved on 5 October 2026 for both questions, as amended on 6
@@ -434,8 +457,11 @@ already there, the system packages `install-deps`, `--with-deps` or
 names and the directories its routes answer stay the user's under
 every answer. Where the record says no, or was
 never written, the run installs nothing, which is what the no of the install
-question said: hand them the command, backed, say
-plainly that it reaches beyond this project, and they decide. Where the
+question said: hand them the command, backed and as it runs from wherever
+they are — the change into the project's directory before it where it needs
+one, by "A command handed over runs as it stands" in
+`docs/skill-conventions.md` — say plainly that it reaches beyond this
+project, and they decide. Where the
 command handed over is not run, the class becomes `skipped (user):` with
 that reason, naming the tool and the command that was not run — whether or
 not another tool would be left for the class; another tool is not put to
@@ -545,6 +571,21 @@ red on a tool that is not there.
 
 It looks like protection and is none. Before writing `filled`, prove the target
 can fail: break something on purpose, watch it go red, put it back.
+
+**The break of the secrets class stands in an untracked file and never
+enters the index.** The scanner ignores the documented example values, so
+the break has to be a value that looks like a real key, and such a value in
+the index is one commit away from the history the class exists to keep it
+out of. So: a new file the tree does not track, the value in it, the target
+run, the file deleted — and then the index read: `git status --short` prints
+nothing for it and `git ls-files --stage` does not name it, an intent-to-add
+entry included, which is what a `git reset` that failed without saying so
+left behind in `devloop-test-v` on 4 October 2026, defect 7 of the roadmap
+entry of 3 and 4 October 2026 on the two runs, built as point 16 of part B
+of the roadmap entry of 12 October 2026. Where the target scans the history
+alone, so that a file in the tree cannot turn it red, say so and read
+whether the tool has a mode over the tree; the break goes into no commit
+either way.
 
 A target that needs an argument fails loudly when it is missing, rather than
 quietly doing something else.
@@ -691,20 +732,25 @@ repository, the field false; or no gate for it to wait on at all; or a gate this
 pull request is already past — the required check green, nothing outstanding, so
 GitHub will not arm what it would merge on the spot. The field cannot tell the
 last two apart; measured on 30 August 2026, it read true in a repository with a
-required check and in one without alike. The state comes from `mergeStateStatus`.
+required check and in one without alike. The first is the ordinary case at a
+first setup since 16 October 2026: the setup asks about auto-merge only where
+a gate stands already, so a repository without one arrives here with it off,
+and step 8 switches it on where it sets a gate up; nothing here asks them
+to. The state comes from `mergeStateStatus`.
 Whether a gate exists takes both `gh api repos/OWNER/REPO/branches/main/protection`
 (classic protection; blind to rulesets, needs admin, and a 404 means none only
 where the body says "Branch not protected") and `gh api
 repos/OWNER/REPO/rules/branches/main` (rulesets; no special rights, blind to
 classic protection). A gate found by either is a gate; where neither query
 answered, say the rights did not allow finding out rather than naming a case.
-Then hand the user the one command that lands it, say which case it was, say that
-this picks up as soon as they say it has, and do not go on to the next step on
-top of an unmerged suite.
+Then the handover, and do not go on to the next step on top of an unmerged
+suite:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text merge-handover`
 
 **Once the merge is proven, on either way to it: fetch, fast-forward the
 local main branch and switch to it, and delete `devloop-checks` locally and,
-where it still stands there, on the remote** — as `setup-project` step 8 does
+by the rule below, on the remote** — as `setup-project` step 8 does
 after its merge, and step 8 below after each of its own. The fetch is tried
 three times, by the command under "When the main branch cannot be fetched or
 fast-forwarded" above; where the third attempt fails too, or the
@@ -717,11 +763,28 @@ install guard reads the record and where step 8 cuts; and a later cut under
 this name meets no landed branch, which a squash merge leaves with a commit
 of its own and the cut would otherwise switch back to.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text branch-deletion`
+
+**Step 8 follows now, at a first setup and on the route from the step after
+a merge alike, once no class is `empty`.** The proven merge is what it
+waited for, and nothing else decides it: not auto-merge being off, not the
+main branch having no gate, not a record that does not say yes, since those
+are what step 8 sets up or asks about; and not what the handover said,
+since the handover says nothing of what comes after the merge. The first
+closing run of milestone 3 went from the proven merge of this step to
+planning, its handover having said before the merge that the mode stays off
+and that `--auto` sets it up later, defect 1 of the roadmap entry of 11
+October 2026 on that run.
+
 ## Step 8 — Offer the unattended mode
 
 Only when no class is `empty` any more. While one is, the mode is unavailable
 whatever the user answers, and asking would be a question with one possible
-outcome.
+outcome. That is the one condition, and it holds at every first setup once
+step 7's merge is proven, since the setup fills no class and this skill
+decides every one: the five things below are read, and where they do not
+all hold the question is put, with auto-merge off and no gate on the main
+branch as much as with them.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mode-set-up`
 
@@ -937,28 +1000,51 @@ step 3 and again here is meant: here it is the second asking, with its own
 line under the no.
 
 **Every yes to one of the two holds for its permission, whatever follows
-it.** Then, in this order:
+it.** What follows is read off `checks.md` before anything lands: every row
+`skipped (user)` whose reason names an install they declined or did not run,
+or a tool they declined into the packages — the reasons step 3 writes — is a
+class the answers just given open again, by point 3 below, and every check
+tool installed outside the project that a yes to the dependency file now
+lets into the packages is one point 2 enters. That list, each class with
+the tool it takes, is said to the person in one line of the run's own
+message before the first pull request, and it decides how many pull
+requests there are. Then, in this order, and none of it skipped for the
+records having to land first — that is what point 1 is for:
 
 1. **The records that changed land first** — the two permissions and the
    answer about the mode — through a pull request, and are fetched before
    anything is installed under them: the install guard reads its record off
-   the main branch as last fetched. Where nothing is installed under them,
-   they land in one pull request with the rest of this step; otherwise in
-   one of their own, ahead of it.
+   the main branch as last fetched. Where the list is empty, so that nothing
+   is installed or entered under them, they land in one pull request with
+   the rest of this step — the workflow file, where the gate order below
+   writes one; otherwise in one of their own, ahead of it, and what points 2
+   and 3 fill lands with the rest in the second.
 2. **Under a yes to the dependency file**, every check tool that is
    installed outside the project and can be entered there is entered, and
    its class is proven red again as in step 5.
-3. **Every class that was off only for an earlier no that the answers just
-   given lift** — the reason in its `skipped (user)` cell names what was
+3. **Every class on the list** — off only for an earlier no that the answers
+   just given lift, the reason in its `skipped (user)` cell naming what was
    declined: an install they declined or did not run, filled where the
    install record says yes now; a tool they declined into the packages, with
    no other way left or with the check chosen off over another tool, filled
    with the tool first asked about where the record on the packages says yes
    now, and left off where only the install record changed — is filled, by
-   steps 4 to 6 for those classes. That changes rows the user switched off,
-   and not without them: they are here and have just said yes.
-4. **Only where every answer is now yes** is the gate set up, by the order
-   further down.
+   steps 4 to 6 for those classes, its red proof into the pull request that
+   carries it as step 5 says. That changes rows the user switched off, and
+   not without them: they are here and have just said yes.
+4. **Only then the gate**, by the order further down, and only where every
+   answer is now yes; the workflow file carries the installation line of
+   every tool a blocking class now needs outside a project, as that order
+   says.
+
+The second closing run of milestone 3 went from the yes to the dependency
+file to the records and their pull request, entered no tool and filled no
+class, `checks.md` keeping format, lint, types and secrets as `skipped
+(user)` with the first run's reasons, and set the gate up over three filled
+classes; then it landed the workflow file in a pull request of its own, two
+merges by the person's hand where one was owed, since nothing had been
+installed between: defects b and i of the roadmap entry of 11 October 2026
+on that run.
 
 **The install record, where this step changes it.** Until 5 October 2026
 only `setup-project` wrote it; this step writes it as well, and only with
@@ -1000,13 +1086,13 @@ branch by the cases there, which since 6 October 2026 fetch, switch to the
 main branch and fast-forward it before a fresh cut — step 7 has done so
 where it ran before this step, and reached alone through `--auto` this
 step stands wherever the run stood when the flag was typed. As few pull
-requests as point 1
-allows, each landed the way step 7 lands one: armed where a gate stands,
-and handed to them to merge where none does yet, since they are here. After
-every merge that is proven: fetch — three attempts, by the command under
-"When the main branch cannot be fetched or fast-forwarded" above —
+requests as point 1 above allows, one or two, each landed the way step 7
+lands one: armed where a gate stands, and handed to them to merge where none
+does yet, since they are here, in the text step 7 hands a merge over with.
+After every merge that is proven: fetch — three attempts, by the command
+under "When the main branch cannot be fetched or fast-forwarded" above —
 fast-forward the main branch and switch to it, as step 7 does, delete the
-branch locally and, where it still stands there, on the remote, and only
+branch locally and, by the rule of step 7, on the remote, and only
 then cut it again for the next pull request. Where the fetch fails on its
 third attempt, or the fast-forward fails, stop as that section says, opening
 with that the merge has landed on GitHub and nothing is lost, and that only

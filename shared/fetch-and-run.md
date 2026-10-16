@@ -14,7 +14,9 @@ does not read `npx`, `npm exec`, `npm create`, `npm init` with a package,
 file of the project — a `Makefile` target, a package script, the first line
 of a script — rather than in the command; those count all the same. Where
 the install record says no or was never written, hand over the command that
-installs the tool, backed as every handed-over install is, and ask no second
+installs the tool, backed as every handed-over install is and as it runs from
+wherever they are, by "A command handed over runs as it stands" in
+`docs/skill-conventions.md`, and ask no second
 permission for the form that fetches: the record's answer is the only one.
 Under a yes the run may run the form itself, backed as every command that
 fetches something from outside is, and need not take an install command in

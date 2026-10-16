@@ -104,22 +104,14 @@ The files hold two kinds of content, and only one of them is yours:
   `## Unattended mode`.
   These were decided here and are never overwritten.
 
-Rewrite the first kind from the current templates, leave the second untouched,
+Rewrite the first kind from the current templates — the marker line that
+step 6 puts above each file's top heading among it, written anew with the
+running version — leave the second untouched,
 and say in two or three lines what actually changed — named, not counted. One
 thing outside those files is this workflow's too: the two paths under `.claude/`
 that Step 5 keeps out of the repository. Check `.gitignore` covers both, since a
 project set up before one of them existed has only the other. If nothing
 changed, say that and stop. Then land it the way Step 8 describes.
-
-Each file records the plugin version it was last written from, on its own line.
-Put it directly above the top heading — below the frontmatter block where a file
-has one, since that block is read by scripts that split on `---`:
-
-    <!-- devloop: 0.0.0 -->
-
-Write the running version there, taken from `.claude-plugin/plugin.json`. Nothing
-reads it but this skill and the entry point, and it is what makes a stale file
-visible without diffing every line.
 
 ## Step 0 — Say what is about to happen, then get on with it
 
@@ -151,83 +143,15 @@ Stop only where something is genuinely undecided and you would otherwise guess:
 this is not a git repository, there is no remote, or the working directory does
 not look like the project they meant. Then say what is wrong and ask about that.
 
-### Permissions, before the first command
-
-**This is not a question, and must not be put as one.** You cannot record the
-grant, the tool owns that file, and the real answer is given later at the tool's
-own confirmation prompt. There is nothing here to wait on and nothing that
-changes on an answer, so a question produces one that gets no reply and then
-looks ignored when the run carries straight on. It is preparation, and it is
-said as preparation.
-
-**Say it before running anything, at the end of this step.** Exploring the
-repository is what triggers the first round of confirmations — reading git state,
-listing labels, querying the tracker — so advice that arrives afterwards is too
-late, every time. None of those is a decision. Confirming them one by one
-contradicts what they were promised at the start, and it gets worse later: an
-unattended run needs those permissions granted up front, because nobody is there
-to answer.
-
-So say it once, here, while they are present. Name the command patterns this
-workflow uses on every run, in plain words — **reading git
-state and writing to it** (cutting a branch, staging, committing, pushing,
-fetching), reading and writing issues, opening and merging pull requests, and
-asking the platform about the repository. Do not stop at reading: every run cuts
-a branch and pushes it, and a grant that covers only reads leaves the user
-confirming the same four commands by hand on their first real task.
-
-**The test for what belongs here is what this workflow itself runs, in every
-project, whatever the language.** That set is git and the platform, nothing
-else — the same in C++, Kotlin, Java or anything not written yet. So nothing
-about the project has to be known at this point.
-
-What the project itself runs is its check commands, and those are not known
-yet — `checks.md` is empty until `setup-checks` fills it, so that skill adds
-them where it writes them, whether they read `make check`, `./gradlew check`,
-`mvn verify` or `npm run check`. **Only the check commands, never what was
-needed to install them** — a compiler or an analyser reaching beyond this
-project keeps its own confirmation, and a wrapper that downloads on first use
-does too.
-
-Anything outside those two sets stays a confirmation prompt, and that is the
-right outcome rather than a gap: a command built with a loop or a variable
-cannot be expressed as a pattern at all, and a one-off deserves to be seen.
-
-**You cannot record the grant yourself, so do not say that you will.** The
-permissions file belongs to the tool, not to this project, and writing it is
-refused — measured, not assumed: a run tried and was blocked by the platform's
-own classifier. So say what will happen either way and leave it with them:
-granting means choosing "always allow" the first time each pattern comes up, or
-setting them in `/config`, and any of it can be taken back in the same place;
-not granting means a confirmation prompt per command kind, in every session, for
-as long as that stands. **Say the first half conditionally, because the prompt
-may never come.** With auto mode on there are no confirmations to answer, so
-"confirm it the first time it comes up" describes something that will not
-happen, and they wait for a window that never opens — measured, in a session on
-25 August 2026. Put it as: if a confirmation does come up, this is what to do
-with it, and `/config` is where it can be set either way. Claiming to have recorded something leaves them looking
-for a file that was never written. **Do not name the unattended mode as one of
-the costs.**
-It is true that this grant is one of that mode's preconditions, and saying so
-here turns a yes into a step towards it — which is exactly the confusion the
-next paragraph exists to prevent. If they ask about it, say it is asked for
-separately, by name.
-
-**Say what this is not, in the preparation itself.** This passage has no
-options, being no question, so both halves stand in its own words: that the
-real decisions still come to them one at a time, **and that this is not the
-unattended mode**. Naming it is the part that gets dropped, and dropping it is
-what leaves the two looking like the same thing — and they are easy to confuse,
-because both sound like "stop asking me". This settles which commands may run
-without a prompt, nothing more.
-It changes nothing about who decides: every question this workflow puts to them
-— sharpening the idea, choosing the design, the go-ahead before anything merges
-— still comes to them, one at a time, exactly as before. The unattended mode is
-the separate thing that lets a piece of work run alone from the point where the
-idea stands, with a check standing in for each of those decisions; it has to be
-asked for by name, it has its own preconditions, and each piece of work is asked
-separately whether to use it. Granting permissions here does not switch it on
-and does not bring it closer.
+No note on permissions stands here since 16 October 2026, and none in the
+check setup where it writes the check commands: the passage that stood here
+under "Permissions, before the first command" said what to do at a
+confirmation prompt before any could come, at a moment when nothing can be
+decided, and was forgotten by the time one came; the decision falls in
+Claude Code's own prompt, which offers to allow a command permanently, and
+in auto mode, the starting mode of the terminal since Claude Code 2.1.283,
+no prompt comes at all. Point 8 of part B of the roadmap entry of 12 October
+2026, which names the shoulds it replaces.
 
 Where a question does have options, what the person reads is the widget's
 fields — the question line, and a label and a line for each answer — and not a
@@ -238,8 +162,8 @@ which field.
 ## Step 1 — Explore, change nothing
 
 - Git: remote, branch, whether there is any commit at all
-- Whether `gh` is installed and signed in (`gh auth status`). It is not, and no
-  amount of setting up gets around it: a tracker account is a prerequisite, the
+- Whether `gh` is installed and signed in (`gh auth status`). Where it is not,
+  no amount of setting up gets around it: a tracker account is a prerequisite, the
   sign-in needs the user's own browser, and creating an account is a web signup.
   Name `gh auth login` and stop — say what it is for, and that everything else
   waits on it.
@@ -248,12 +172,20 @@ which field.
 - Task runner: `Makefile`, `justfile`, `Taskfile.yml`, `scripts` in `package.json`
 - Languages and manifests: `pyproject.toml`, `package.json`, `go.mod`, `Cargo.toml`, `pom.xml`
 - Existing checks: config for formatting, linting, types; test directories; `.github/workflows/`
-- Existing labels in the tracker, if one is reachable
 - How the project runs locally: `docker-compose.yml`, `.env.example`, README
+
+Not the labels of the tracker: nothing reads them since 16 October 2026,
+when the question about labels of overlapping meaning went, point 9 of part
+B of the roadmap entry of 12 October 2026 — this workflow creates its seven
+in step 6 in every setup and reads only its own.
 
 ## Step 2 — Report what you found
 
-Ten lines at most. Say explicitly what you did **not** find.
+Ten lines at most. Say explicitly what you did **not** find. Nothing on
+labels, in either direction: that a repository carries none of this
+workflow's seven before its setup holds for every repository and changes
+nothing, and which labels it carries beside them decides nothing, since 16
+October 2026.
 
 ## Step 3 — The empty case
 
@@ -272,7 +204,9 @@ project meets finds an answer and not the absence of one.
 ## Step 4 — Questions
 
 Only these, each only under its condition. Lead with your recommendation so a
-single word can answer; question 3 gives none. One form for a choice, and the
+single word can answer, on questions 1, 4 and 5; questions 2 and 3 give none,
+since both reach past the project — a setting of the repository, and the
+record a guard reads. One form for a choice, and the
 form is where its content goes: the choice goes through the harness's choice
 widget, and everything that carries the decision stands in the widget's own
 fields — a line for the question, a header, and for each answer a label and a
@@ -281,7 +215,7 @@ arrives cut to it, as the roadmap entry of 30 September 2026 on the question's
 first asking measured. Prose in the run's own message before the widget
 carries only a point no field can carry, and nothing else: a paragraph above
 the options does not get read, and the points of question 3 that stood only
-in prose arrived in none of three runs. Questions 1, 2, 5 and 6 are such
+in prose arrived in none of three runs. Questions 1, 2 and 5 are such
 choices, and several of them may share one widget call. Question 3 is one
 too, and it names the field of each of its points; its call carries this
 question and no other: two decisions put in one submit come back as one
@@ -304,16 +238,13 @@ once the record this step writes has landed.
    If no suitable tracker is available at all, stop the setup and say exactly
    that: every later step publishes specs and tasks there and picks up work from
    there.
-2. **Auto-merge** — only if the remote has it switched off
-   (`gh api repos/OWNER/REPO -q .allow_auto_merge` returns false). Every later
-   step opens pull requests and sets them to merge once the gates pass; direct
-   merges are refused. Offer to switch it on:
-   `gh api -X PATCH repos/OWNER/REPO -f allow_auto_merge=true`. Say what a no
-   costs, at the moment of asking: the workflow still runs, but every merge from
-   then on stops and hands the pull request to the user to merge by hand. Either
-   way this setting is only half of what an unattended run needs; the other half
-   cannot be built yet, because nothing has decided what a required check would
-   run, and it is offered once the check suite exists.
+2. **Auto-merge** — only where two things hold together: the remote has it
+   switched off (`gh api repos/OWNER/REPO -q .allow_auto_merge` returns
+   false), and a gate stands on the main branch already — a required check,
+   or a review the protection requires — found by one of the two queries
+   below. The gate is read in every project, before this condition is
+   decided: step 6 writes what it found into `environment.md`, and step 8
+   reads it before arming.
 
    **That setting alone is not the gate, and reporting only that setting is how
    a run comes to a halt in the middle of a task.** Auto-merge can only be
@@ -376,10 +307,45 @@ once the record this step writes has landed.
    for this repository, today. If protection is wanted and refused, the message
    says why and that is the answer to report.
 
-   Report it in step 8 and write it into `environment.md`. Never withhold
-   anything over it and never make it a condition — the user decides what their
-   repository is for, and this step's job is that they decide it knowing what
-   holds.
+   Where no gate stands, the question is not put. GitHub accepts no auto-merge
+   on a pull request that can already be merged, so with auto-merge on and
+   nothing for it to wait on every merge goes to the person all the same,
+   whatever they answered, the second of the three cases of step 8; and
+   whether it is switched on is decided where a gate is set up, in step 8 of
+   the check setup, by the question on work without them, whose yes switches
+   auto-merge on itself and sets the required check up. Until 16 October 2026
+   the question was put wherever auto-merge was off, with a line that a yes
+   still leaves the first merges to be made by hand; point 10 of part B of
+   the roadmap entry of 12 October 2026, revised on 16 October 2026 by the
+   roadmap entry of that date.
+
+   Where a gate stands and auto-merge is off, a choice through the widget: in
+   the user's language, every point in a field of its own, no recommendation,
+   and nothing on the run with nobody there.
+
+   - **In the header: a word for the subject**, of twelve characters at most.
+   - **In the question line**: that auto-merge is switched off, and whether
+     the run may switch it on.
+   - **In the yes, label and line**: switch it on; GitHub then merges by
+     itself as soon as every required check is green — and where the
+     protection requires a review by another person instead of a check, the
+     line names that review as what GitHub waits for.
+   - **In the no, label and line**: leave it off; every merge is then made by
+     the person by hand.
+
+   On the yes, `gh api -X PATCH repos/OWNER/REPO -F allow_auto_merge=true`,
+   read back with the query above: the answer of the PATCH is not the state,
+   measured on 8 October 2026 in step 8 of the check setup, where a PATCH
+   answered `false` with exit 0; `-F` sends a typed value where `-f` sends a
+   string, `gh api --help` of gh 2.96.0, read on 16 October 2026, and the
+   second closing run of milestone 3 read `true` back after `-F` on 11
+   October 2026. The wording approved on 16 October 2026 stands in the
+   roadmap entry of that date; this skill says what is said, not the words.
+
+   Report what was found in step 8 and write it into `environment.md`. Never
+   withhold anything over it and never make it a condition — the user decides
+   what their repository is for, and this step's job is that they decide it
+   knowing what holds.
 3. **Install permission** — always. A choice, put through the widget in the
    user's language, this question alone in its call. Two forms stood before
    this one — a message of its
@@ -398,10 +364,7 @@ once the record this step writes has landed.
 4. **Local environment** — always where there is code, unless you could read it
    all from `docker-compose.yml` or the README. Which processes, in what order,
    on what ports.
-5. **Labels** — only if the tracker already has labels with overlapping meaning.
-   Then ask: map onto the existing ones, or add ours alongside. Otherwise create
-   the five standard labels and report it.
-6. **Where glossary and decision records live** — only if something already lives
+5. **Where glossary and decision records live** — only if something already lives
    elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`. Decide it
    here and create nothing yet: this is the last question of the setup, the
    branch is cut once it is answered, and the two places are made in step 6,
@@ -451,6 +414,23 @@ missing; the check setup gives each its command when it fills that class.
 run it says so.
 
 ## Step 6 — The five files under `docs/agents/`
+
+Each of the five records the plugin version it was written from, on a line of
+its own directly above its top heading — below the frontmatter block where a
+file has one, since that block is read by scripts that split on `---`:
+
+    <!-- devloop: 0.0.0 -->
+
+Write the running version there, read from
+`${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`, at a first setup and at a
+refresh alike. `bin/devloop-setup-state` reads it off the main branch and
+prints it on a `marker:` line, `none` for a file without one, and the entry
+point compares it with the running version at its step 1 to decide a refresh. Until 16
+October 2026 this paragraph stood under "Refreshing an existing setup", whose
+steps a refresh does not run, and no step of a first setup wrote the line, so
+a project set up fresh read `none` at its next start and was refreshed for
+it: recorded on 3 October 2026, built as point 13 of part B of the roadmap
+entry of 12 October 2026.
 
 ### `checks.md`
 
@@ -531,8 +511,20 @@ instead), `needs-human` (needs a human decision), `wont-do` (declined, with a
 reason), `raised-here` (this workflow raised it against work in this project,
 rather than somebody filing it from outside).
 
-Create all seven in the tracker as part of this step. A label that only exists in
-this document is not a label.
+Create all seven in the tracker as part of this step, in every setup, whatever
+labels the tracker carries beside them: none of those is deleted for it, and
+this workflow reads only its own; a label of one of the seven names that
+stands there already is left as it stands, since `gh label create` refuses a
+name that exists. A label that only exists in this document is not a label.
+Then say to the person, in one sentence of the run's own message, that seven
+labels were created in the tracker, with which the state of the work is
+marked, with one named as the example — `needs-human`, for when they have to
+decide. Until 16 October 2026 step 4 asked, where the tracker had labels of
+overlapping meaning, whether to map onto them or add these beside them, a
+question about this workflow's own convention; it went as point 9 of part B
+of the roadmap entry of 12 October 2026, whose approved wording for the
+sentence stands under "The approved wordings" there; this skill says what is
+said, not the words.
 
 `raised-here` exists because nothing else in an issue can carry that fact. The
 author is the account the tooling runs as, which is the user's either way, so it
@@ -625,13 +617,13 @@ If it has no queryable blocking relationship, stop the setup — see above.
 
 ### `domain.md`
 
-First the two places question 6 of step 4 decided on, where nothing lived
+First the two places question 5 of step 4 decided on, where nothing lived
 elsewhere: **create both as files that git can carry, and say you did.**
 `CONTEXT.md` gets a heading and a line saying it stays empty until the first
 term comes up; `docs/adr/` gets a `README.md` saying what belongs in it. A bare
 `mkdir` leaves an empty directory, git does not track one, and nobody who
 clones the repository ever sees it. Then where the glossary and the decision
-records live — the two just created, or what question 6 found living elsewhere
+records live — the two just created, or what question 5 found living elsewhere
 — checked to be there before the pointer is written: a pointer to something
 that does not exist is the one outcome to avoid. That terms go into
 the glossary the moment they come up, not collected later. The three tests for writing a
@@ -655,7 +647,7 @@ Processes, order, ports, which terminal window stays occupied. What to pull afte
 which kind of change: new dependency, schema change, new setting, server code,
 frontend only. Which runs cost money and which path is free.
 
-Also **what checks a merge, and who**, from step 2 — the one property of this
+Also **what checks a merge, and who**, from step 4, question 2 — the one property of this
 repository that decides whether anything besides the person at the keyboard is
 watching. Whether a required check exists on the default branch and which one;
 if none, that merges are held by the question at the end of a build and by
@@ -713,8 +705,8 @@ anything on top of it. A report of success is not evidence, and the git log
 immediately after arming is not evidence either: the platform has not merged at
 that moment, so the log can only carry it after a fetch, once the platform says
 it did. **Once the merge is proven, fetch, fast-forward the local main branch
-and switch to it, and delete `devloop-setup` locally and, where it still
-stands there, on the remote, before anything follows.** The fetch is tried
+and switch to it, and delete `devloop-setup` locally and, by the rule below,
+on the remote, before anything follows.** The fetch is tried
 three times, by the command under "When the main branch cannot be fetched or
 fast-forwarded" above; where the third attempt fails too, or the
 fast-forward fails, stop as that section says, opening with that the merge
@@ -736,10 +728,15 @@ class in `checks.md` is `empty`, and this setup is what makes a `checks.md`
 possible at all — so there is a person here, and the waiting form in `build-work`
 step 6 is written for the case where there is not.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text branch-deletion`
+
 Arming can also be refused, and for three different reasons. Auto-merge may be
 switched off on the repository — `gh api repos/OWNER/REPO -q .allow_auto_merge`
 returns false, and that is the only one this field answers; measured on 30 August
-2026 it read true in a repository with a required check and in one without alike.
+2026 it read true in a repository with a required check and in one without alike;
+since 16 October 2026 that is the ordinary state at a first setup, question 2
+of step 4 being put only where a gate stands already, and the check setup's
+step 8 switches it on where it sets a gate up, so nothing here asks them to.
 Or there may be no gate for it to wait on at all. Or there is a gate and this
 pull request is already past it: the required check has gone green, nothing is
 outstanding, and GitHub will not arm what it would merge on the spot. Read `gh pr
@@ -784,10 +781,10 @@ three cases. Then read whether a gate exists from both queries in step 4: `branc
 "Branch not protected" in the body, and `rules/branches/main`, which is blind to
 classic protection. A gate found by either is a gate. Where neither query
 answered, say the rights did not allow finding out rather than naming a case.
-None of the three is something this step changes. Say which one it was, hand the
-user the one command that lands it, and say that this picks up as soon as they
-say it has — the same rule the build step follows. Do not leave them holding a
-pull request with no idea what comes next.
+None of the three is something this step changes. Then the handover, the same
+text the build step and the check setup hand a merge over with:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text merge-handover`
 
 ## Step 9 — Close
 
