@@ -25212,7 +25212,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   October 2026 stand below in German, as approved, without translation, as
   the entry of 12 October 2026 holds its wordings. The words the stock-take
   tool reads a line of this file into its search set by stand in this entry
-  on the two lines that record a defect and on no other.
+  on the five lines that record a defect and on no other.
 
   **What is built, point by point, each at the place the order named.**
   Point 20: Stage 1 of `plan-work` opens with the tree, the rounds and the
@@ -25284,6 +25284,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   unattended" what a run without you does with a change or commits of yours,
   and under "What it writes into your project" names the stash entry and the
   branch.
+
+  **Approved by the person on 16 October 2026 at the check of this branch
+  before the merge.** The two paragraphs of `README.md` this branch added,
+  where the order of this day had said that a text the person reads beyond
+  the approved wordings is proposed and not written: under "Attended and
+  unattended", what a run without them does with a change or commits of
+  theirs in the way of the main branch, and under "What it writes into your
+  project", the stash entry and the branch it can leave. Both stay as they
+  stand.
 
   **Decided here, beyond the order's words.** The program under `bin/` that
   every start runs, `devloop-setup-state`, reads the set-aside change, through
@@ -25408,6 +25417,29 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   check under "Before a handover, run these" reads the message of the push
   command against the pattern of the program, or the program takes the push
   itself and the shared text calls it.
+
+  Recorded, not built: the question on a change set aside at a fetch is put
+  only by the four skills that read the setup state at their start,
+  `start-work`, `plan-work`, `untangle-idea` and `setup-project`, so that a
+  session opened with `build-work` or `cut-into-tasks`, say, puts it nowhere,
+  where the person decided on 16 October 2026 that every start of devloop
+  asks; found at the check of this branch before the merge, `grep -n
+  'set-aside-at-start' skills/*/SKILL.md` printing those four alone
+  — should: every skill a session can be opened with asks it at its start.
+
+  Recorded, not built: that the run with nobody there put commits of their
+  own on a branch of their own is named in its last message by
+  `shared/mark-deletion.md` off what the run remembers, where a change set
+  aside is read off git at the same place through the `set-aside:` lines, so
+  that a session compacted in a long run can end without the branch named;
+  found at the check of this branch before the merge
+  — should: the end reads the branches the run made off git, as it reads the
+  changes it set aside.
+
+  Recorded, not built: `skills/plan-work/SKILL.md` line 339 reads "the run
+  plans on on that ground", a word doubled in the yes of the question on
+  whether the idea is understood; found at the check of this branch before
+  the merge — should: "the run plans on that ground".
 
   **The runs.** The nineteen checks under "Before a handover, run these" ran
   green on the tree of the second commit, `dfeb09f`,
