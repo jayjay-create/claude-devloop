@@ -332,6 +332,10 @@ the milestone has not landed with the two closing runs; it lands when the
 defects in its own parts, eight named there, are built and a run walks them,
 arranged by the person before the run as decision 12 of the roadmap entry of
 9 October 2026 arranged the two closing runs.
+Decided on 16 October 2026, the roadmap entry of that date on the two runs of
+that day in `devloop-test-x` and `devloop-test-y`: the milestone has not
+landed; defects 1, 3, b, c and i held in a run, a did not hold at four places,
+and d and 11 held on a bench and met no run.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
