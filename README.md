@@ -152,7 +152,17 @@ then sit on a pull request nobody is there to merge, stand at a prompt nobody
 is there to answer, start a task it cannot finish, stop at a tool it may not
 install, or leave a check off that the work has made necessary. A prompt that
 comes during the run anyway is answered no by a hook, and the run writes an
-issue and takes the next task instead of waiting. All but the
+issue and takes the next task instead of waiting. Since 16 October 2026 a
+run without you is not stopped by what is yours on the main branch either:
+a file you changed and did not commit, which bringing the main branch to
+GitHub's state would overwrite, is set aside in git's stash under a name
+devloop knows it by and brought back when the run ends — where GitHub
+changed the same line meanwhile it stays set aside, an issue shows both
+lines, and the next start asks you whether to bring it back, leave it or
+discard it; commits of yours on the main branch that GitHub lacks go onto a
+branch `my-commits`, the main branch is brought to GitHub's state, and the
+last message offers to open a pull request for them. With you there the
+run asks before either. All but the
 one about the tasks, which do not exist yet, are read where you are asked, so
 the question is not put and then found to have had one answer, and all of them
 are read again where the build starts, since the route straight to a build has
@@ -248,7 +258,10 @@ the run carries on with the next one.
 Five short files under `docs/agents/`: where issues live, how to check this
 project, its coding rules, how to run it locally, and where its glossary and
 decision records are. Plus canonical targets in your task runner, so a skill can
-say "lint" and be right in any project.
+say "lint" and be right in any project. And, where a run without you met a
+change or commits of yours in the way of the main branch, a stash entry
+named `devloop … set aside <file>` or a branch `my-commits`, both in your
+repository and both yours to keep or drop.
 
 It touches your global configuration in one place, `~/.claude/settings.json`,
 and only after asking you: where you let it work without you, it asks whether

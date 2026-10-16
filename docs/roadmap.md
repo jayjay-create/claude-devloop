@@ -25188,6 +25188,284 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   differences of this branch against the installed 0.139.0, red by
   construction on a branch and recorded as no run. Nothing ran on a bench.
 
+- **Part B of the decisions of 12 October 2026 at planning and building,
+  points 20 to 26, built; the run with nobody there at a changed file in the
+  way of the main branch and at commits of its own on it, decided by the
+  person on 16 October 2026 and built — the change set aside under a name
+  devloop knows and brought back where the mark goes, the commits onto a
+  branch of their own, the question at the next start; the branch's name
+  revised to `my-commits`; four shared texts; 16 October 2026, version
+  0.141.0.** On `task/planning-and-building`, off `49bd995`, version 0.140.0
+  on `main`; the code with the version in one commit, this entry and the rows
+  of the table in a second, the runs in a third. The report stands on this
+  machine as `~/devloop-report-2026-10-16-planning-building.md`, in English,
+  and is not in the repository. Every line number of a file under `skills/`,
+  `shared/` or `bin/` in this entry holds at `49bd995`, before the changes;
+  the numbers the entry of 12 October 2026 gives for
+  `skills/untangle-idea/SKILL.md`, `skills/cut-into-tasks/SKILL.md`,
+  `shared/how-to-ask.md` and `shared/checks-owner.md` hold there too, `git
+  diff --stat 3ee3a1f 49bd995` over the four printing nothing, and those it
+  and the entries of 11 October 2026 give for `skills/build-work/SKILL.md`,
+  `skills/plan-work/SKILL.md`, `shared/body-through-file.md`,
+  `docs/skill-conventions.md` and `docs/plan.md` do not, the order of this
+  day naming the lines at `49bd995`. The wordings the person approved on 16
+  October 2026 stand below in German, as approved, without translation, as
+  the entry of 12 October 2026 holds its wordings. The words the stock-take
+  tool reads a line of this file into its search set by stand in this entry
+  on the five lines that record a defect and on no other.
+
+  **What is built, point by point, each at the place the order named.**
+  Point 20: Stage 1 of `plan-work` opens with the tree, the rounds and the
+  frontier — every decision whose prerequisites are settled, a question that
+  hangs on an open one to a later round, at most three in a round and the
+  rest of the frontier before what the answers unlock — and ends on the
+  empty frontier, no question answerable now, every branch visited, nothing
+  silently assumed, the way the interview of `untangle-idea` ends at its
+  lines 205 to 207; "nothing important is open" is gone from line 260, the
+  sentence saying why, that it was the run's own interpretation where the
+  empty frontier is a state of the tree anybody holding it can check; the
+  cap stays; the settled answers go to the planning issue after every round,
+  at the opening of the stage, and the line after the mark, 426, posts the
+  hard core and the answer to the last question alone; the hard core is
+  shown to them as written, and the confirmation question follows it, alone
+  in its call, before the question on how the work runs from here and where
+  that one is not put as well — the yes lets the idea stand, the no opens
+  the next round with what is missing. The open question of the entry of 14
+  September 2026 at lines 3703 to 3705 is answered as point 20 says,
+  replaced. Point 21: the exception at `build-work` lines 719 to 720 is
+  gone; what is changed after the report of the review agents gets a round
+  over exactly those commits, after every round, before the pull request is
+  opened, the paragraph naming defect h and the two closing runs; the
+  commits of `setup-checks` go the same way, as before. Point 22: the
+  handover of step 3 names four rules the subagent reads nowhere else, the
+  third the owner of the check targets — the subagent changes no target, in
+  the table or in whatever runs the targets, and names a needed change in
+  its report, the call being the main run's — and a paragraph after the
+  `checks-owner` insert line, 521, says that the main run calls
+  `setup-checks` for that class on the task's branch before step 4 reads the
+  diff. Point 23: line 630 reads `devloop:review-changes`, with the reason
+  and the two dates, and `docs/skill-conventions.md` carries the rule beside
+  "One skill calling another is not saying a name"; whether every call takes
+  the prefix stays open, as the entry of 14 September 2026 left it. Point
+  24: `shared/mark-deletion.md`, the command and the reason, and since the
+  decision below the bring-back of what the run set aside; inserted in
+  `build-work` at the rule for every stop with a reason under "A guard's
+  block, with nobody there", at the standstill of step 6 and at the finishing
+  sentence, every other stop of that file referring to that rule in the
+  words "as at every stop with a reason" — the step 1 stops, the refused
+  arming, the stops of step 6, the refusal of the seven conditions, the
+  user's word — and in `plan-work` at its stop with the question named and
+  in `cut-into-tasks` at the halt; the wordings at lines 103, 134, 998, 1105,
+  1305 and 1439 of `build-work`, 201 and 247 of `plan-work` and 168 to 172
+  of `cut-into-tasks` replaced; the list under "Unattended mode" names the
+  three stops of `plan-work` and the ending of the drafts route, which
+  stands in that stage as the stop at the design choice today and not yet as
+  the second drafting round that names the pair. Point 25: `shared/
+  how-to-ask.md` lines 57 to 58, the section "Every question carries its own
+  reason" of the conventions and the template of `untangle-idea` at line 165
+  read the four things as what has reached the person by the time they
+  answer, said where they meet it and not as four sentences in each
+  question. Point 26: `shared/editing-tool.md`, in place of `build-work`
+  lines 221 to 226, inserted in `setup-checks` step 8 before the branch is
+  cut, named in the handover of step 3 as the fourth rule; it names
+  `environment.md`, the workflow file and a body file, keeps the limit the
+  entry on bundled shell commands draws, and says what the shell channels
+  cost. The decisions of this day: `shared/fetch-three-times.md` from line
+  45 to the end, the stash command with the name, the nobody-there sentence
+  in each of the two cases and in the paragraph before them, `my-commits`,
+  the closing sentence; `build-work` step 1 for nobody there, both the
+  diverged and the ahead-alone case; step 6 after a merge; the eighth place
+  under "With nobody there"; the last-message paragraph; `bin/
+  devloop-setup-state` with its `set-aside:` line; `shared/
+  set-aside-at-start.md` after the `fetch-failed` text in `start-work`,
+  `plan-work`, `untangle-idea` and `setup-project`; `shared/
+  set-aside-back.md` beside it there and under the fetch heading of
+  `build-work` and `setup-checks`. `README.md` says under "Attended and
+  unattended" what a run without you does with a change or commits of yours,
+  and under "What it writes into your project" names the stash entry and the
+  branch.
+
+  **Approved by the person on 16 October 2026 at the check of this branch
+  before the merge.** The two paragraphs of `README.md` this branch added,
+  where the order of this day had said that a text the person reads beyond
+  the approved wordings is proposed and not written: under "Attended and
+  unattended", what a run without them does with a change or commits of
+  theirs in the way of the main branch, and under "What it writes into your
+  project", the stash entry and the branch it can leave. Both stay as they
+  stand.
+
+  **Decided here, beyond the order's words.** The program under `bin/` that
+  every start runs, `devloop-setup-state`, reads the set-aside change, through
+  `git stash list`, and prints it on a `set-aside:` line with the entry, the
+  session and the file, so that the four skills that read the setup state ask
+  without a second command and `start-work` step 1 keeps its one command; the
+  session-start hook, which reads the state through the same program, is left
+  as it is, since the question is the skill's. No program of its own for the
+  push and the pop: the two git commands stand in the shared texts, the name
+  spelled once there and read once in the program, the defect below. The name
+  carries the session that set the change aside, as the mark names it, so
+  that the bring-back at the end of a run takes this run's entries and not
+  one the person left lying with "later"; where the variable is not set, both
+  read `none`. The issue a run without them files where the pop meets the
+  same line is labelled `needs-human` and not `raised-here`, since a later
+  build takes a loose `raised-here` issue up as work under clause 3 of step 2
+  and this one is the person's to decide; the start text finds it by the
+  file's path in its title. The mark-deletion text stands at five places and
+  not at every sentence that ends a run in `build-work`: a stop with a reason
+  is one rule there, named at every stop in the words "as at every stop with
+  a reason", and the text stands at that rule; eight copies of a text of
+  thirty-five lines in one skill was the alternative. The attended bring-back
+  moved out of `shared/fetch-three-times.md` into `shared/set-aside-back.md`
+  because the start skills, which do not fetch three times, need it too; the
+  wording is the one of 16 October 2026, the measurements unchanged. The
+  ahead-alone case of `build-work` step 1 goes with nobody there as the
+  diverged one, onto `my-commits`, since the decision covers commits GitHub
+  does not have and a task cut from such a main branch lands on a base GitHub
+  does not have. The confirmation question of point 20 takes the form the
+  widget gives, a header of twelve characters at most beside the approved
+  question and answers, as the question of step 4 of `build-work` does. `git
+  checkout HEAD -- <file>` after a conflicted pop puts the file back as the
+  branch holds it and leaves the stash standing, measured on 16 October 2026
+  with git 2.50.1, which is how the change stays set aside with nobody there
+  and the tree stays clean. In `build-work` under "With nobody there" the
+  count reads eight places, the question about the work the eighth case in
+  both of its sentences, the last of which had read fifth against the
+  paragraph's own seventh; corrected in place. `setup-project` step 6, which
+  writes `environment.md` from a template at a first setup, is not reached by
+  point 26 and not changed: it carries the text route at a block at its line
+  55, and the point names the build subagent and `setup-checks` step 8.
+
+  **The approved wordings, word for word.** Approved by the person on 16
+  October 2026, recorded here as approved, in German, without translation and
+  without rewording; the skill says what is said, and the run writes it in
+  its own words, in the person's language, except where a line is fixed.
+
+  The confirmation of the idea, point 20, in the choice widget, alone in its
+  call, after the run has shown what it recorded as the core and before the
+  question on how the work runs, and where that question is not put as well:
+  the question „Habe ich deine Idee so richtig verstanden?"; „Ja, so stimmt
+  es" with the line „Dann plane ich auf dieser Grundlage weiter."; „Nein, da
+  fehlt noch etwas" with the line „Dann frage ich weiter, bis es stimmt."
+
+  The last message of a run without them where the change came back, on the
+  example of a file README.md: „Ich musste deine Änderung an `README.md`
+  während des Laufs beiseitelegen. Sie ist jetzt wieder da."
+
+  Where GitHub changed the same line: the title of the issue „Deine Änderung
+  an `README.md` trifft auf eine Änderung von GitHub"; its text „Während des
+  Laufs ohne dich lag deine Änderung an `README.md` beiseite. Auf GitHub
+  wurde inzwischen dieselbe Zeile geändert. Deine Zeile: `…` Die Zeile auf
+  GitHub: `…` Deine Änderung liegt weiter beiseite. Beim nächsten Start
+  frage ich dich, welche Zeile gelten soll."; the last message „Deine
+  Änderung an `README.md` liegt noch beiseite, weil GitHub dieselbe Zeile
+  geändert hat. Issue #12 zeigt beide Zeilen."
+
+  At the next start, in the choice widget: the question „Deine Änderung an
+  `README.md` liegt noch beiseite, seit ein Lauf ohne dich sie dort abgelegt
+  hat. Soll ich sie zurückholen?"; „Ja, zurückholen" with the line „Sie
+  steht dann wieder in deinem Projekt."; „Später" with the line „Ich frage
+  beim nächsten Start wieder."; „Verwerfen" with the line „Die Änderung
+  wird gelöscht und ist danach weg."
+
+  The last message where commits were moved: „Auf deinem Hauptzweig lagen
+  Commits, die auf GitHub fehlten. Ich habe sie auf den Zweig `my-commits`
+  gelegt und den Hauptzweig auf den Stand von GitHub gebracht. Sollen sie
+  nach GitHub, sag es mir, dann öffne ich dafür einen Pull Request."
+
+  **The decision of 16 October 2026 on the run with nobody there, and its
+  reasons.** Where the fetch of the main branch, its switch or its
+  fast-forward fails at a changed, uncommitted file or at commits of their
+  own, the places being `shared/fetch-three-times.md` lines 45 to 120 and
+  `build-work` step 1, lines 228 to 260, the run with nobody there does the
+  thing without asking: a changed file is set aside under a name devloop
+  knows it by again and brought back at every end of the part without them
+  where the mark is deleted, and where GitHub changed the same line it stays
+  set aside, an issue shows both lines and the last message names it; at
+  every start of devloop the run looks for such a change, says that it still
+  lies set aside and asks with three answers, bring it back, later, discard,
+  the bring-back meeting the same line showing both lines and asking which
+  holds as with the person there, and the issue closed on bring back or
+  discard; commits of their own on the local main branch that GitHub lacks,
+  at the start of the build or after a merge, go onto a branch `my-commits`,
+  with a number on the end where the name stands already, the main branch
+  brought to GitHub's state, and the last message names the branch and
+  offers a pull request. The branch is `my-commits` with the person there
+  too: the approved wording of 12 October 2026 under "The approved wordings",
+  lines 19250 to 19251 of this file, and `shared/fetch-three-times.md` line
+  100 read `meine-commits`, revised on 16 October 2026 to the English name,
+  the same in every language; the entry of 12 October 2026 stands as
+  written. The person's reasons: in doubt a run with nobody there is not
+  blocked, `docs/skill-conventions.md` line 1865; git keeps a change set
+  aside until it is brought back; and the protection the check setup puts on
+  the main branch holds against their own direct pushes too, `setup-checks`
+  lines 863 to 864 and 1130 to 1131, so that their commits reach GitHub only
+  through a branch of their own and a pull request in any case. This answers
+  the question the entry of 16 October 2026 at the setup held open on its
+  status line.
+
+  **Not built, and recorded here.** Recorded, not built: the pick-up of a
+  plan in `plan-work`, "Picking up an interrupted plan", that finds a
+  `being-planned` issue with no stage comment says nothing of it and begins
+  Stage 1 again unannounced, the second half of the should of the defect of
+  30 September 2026 on the planning issue left empty, which point 20 did not
+  name — should: the pick-up says that no stage was finished and that it
+  starts Stage 1 again. Recorded, not built: the name by which devloop knows
+  a set-aside change again stands in the push command of
+  `shared/fetch-three-times.md` and is read by the `sed` of
+  `bin/devloop-setup-state`, and no check holds the two spellings together,
+  where the arming command and the status forms have one each — should: a
+  check under "Before a handover, run these" reads the message of the push
+  command against the pattern of the program, or the program takes the push
+  itself and the shared text calls it.
+
+  Recorded, not built: the question on a change set aside at a fetch is put
+  only by the four skills that read the setup state at their start,
+  `start-work`, `plan-work`, `untangle-idea` and `setup-project`, so that a
+  session opened with `build-work` or `cut-into-tasks`, say, puts it nowhere,
+  where the person decided on 16 October 2026 that every start of devloop
+  asks; found at the check of this branch before the merge, `grep -n
+  'set-aside-at-start' skills/*/SKILL.md` printing those four alone
+  — should: every skill a session can be opened with asks it at its start.
+
+  Recorded, not built: that the run with nobody there put commits of their
+  own on a branch of their own is named in its last message by
+  `shared/mark-deletion.md` off what the run remembers, where a change set
+  aside is read off git at the same place through the `set-aside:` lines, so
+  that a session compacted in a long run can end without the branch named;
+  found at the check of this branch before the merge
+  — should: the end reads the branches the run made off git, as it reads the
+  changes it set aside.
+
+  Recorded, not built: `skills/plan-work/SKILL.md` line 339 reads "the run
+  plans on on that ground", a word doubled in the yes of the question on
+  whether the idea is understood; found at the check of this branch before
+  the merge — should: "the run plans on that ground".
+
+  **The runs.** The nineteen checks under "Before a handover, run these" ran
+  green on the tree of the second commit, `dfeb09f`,
+  from 09:57:31 to 09:57:38 UTC, in a clean bash with `/usr/bin/grep` first
+  on its path, line for line as at `49bd995` but for the line numbers the
+  changes moved and the one line of the handover check whose tail changed,
+  `build-work` step 1's "this picks up as soon as they say the branches
+  agree"; the tool on that tree,
+  the tool from 09:57:41 to 09:59:15 UTC, exit 0, BROKEN RECORDS 0, and
+  FINDINGS 19, UNCOVERED LINES 0 of 3806;
+  its self-test from 09:57:41 to 09:57:43 UTC, 114 cases, 76 of 76 messages
+  asserted by a case;
+  the self-test of `bin/devloop-setup-state` at 09:57:38 UTC, 18 cases, the
+  three on the `set-aside:` line among them; all recorded in the third
+  commit under 0.141.0. The command under "Before you change anything, run
+  this" printed nothing at `49bd995` before the branch was cut, the
+  installed 0.140.0 being the tree, and is red by construction on the branch
+  after the raise, recorded as no run. Nothing ran on a bench: every thing
+  of the skills and the shared texts of this entry stands as never walked,
+  and the two runs of 11 October 2026 on the thing "the fetch and the
+  fast-forward go through" of `shared/fetch-three-times.md` had stopped
+  counting at `49bd995` already, that commit having changed its line; its
+  three lines stand in this branch as they stood. The run of 11 October 2026
+  on the handover of `build-work` step 3 stops counting with this branch,
+  the handover naming four rules now.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

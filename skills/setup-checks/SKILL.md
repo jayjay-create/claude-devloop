@@ -77,6 +77,8 @@ that called. Everything else below applies unchanged.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-back`
+
 ## A guard's block is not a decline
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text guard-block-intro`
@@ -1078,6 +1080,14 @@ writing of the section. What is recorded is that the mode is set up in this
 repository, or that it is not — a permission, which the question at the end of
 each sharpening presupposes and reads. It is not an answer for any piece of
 work, and no stage reads it as one.
+
+That section and the workflow file below are written with the editing tool,
+by the rule the build carries for every file whose content is text about
+commands, which stands here since 16 October 2026 because the main run of
+the second closing run of milestone 3 wrote `environment.md` from the shell
+twice in this step, where no rule named the editing tool:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text editing-tool`
 
 **What this step writes lands through a branch of its own**,
 `devloop-unattended`, the third of the fixed names under "Cut the branch"

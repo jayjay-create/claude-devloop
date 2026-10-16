@@ -75,6 +75,10 @@ there and is not.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-failed`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-at-start`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-back`
+
 Where no `missing:` line stands in the answer, every file is
 on the main branch and this is not a first setup. Do not run the steps below:
 they ask questions that were answered once already, and re-asking them is how

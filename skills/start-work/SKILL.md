@@ -34,6 +34,14 @@ every task branch is cut from the main branch.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-failed`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-at-start`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-back`
+
+That question and what follows its answer are the one thing done in this
+step beside the command: they act on a line the command printed, and nothing
+else is read for them.
+
 If no `missing:` line stands in the answer, every file of the setup is on the
 main branch: compare the `marker:` line of `docs/agents/issue-tracker.md` with
 the running version. Older means these files were written from templates this

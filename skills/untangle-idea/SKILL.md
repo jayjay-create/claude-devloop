@@ -78,6 +78,10 @@ working tree.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-failed`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-at-start`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-back`
+
 Where its answer carries a `missing:` line, this project is not set up on the
 main branch — never set up, or written and not landed, which the working tree
 cannot tell apart. **Say in one line what you are doing and run
@@ -162,12 +166,16 @@ Say roughly how many rounds you expect. Number each question and give your
 recommended answer, so a single word can settle it:
 
     Q1 — <what is being decided>: <the question; what each answer means in
-    practice, what it costs, and why it comes up now>
+    practice, and what it costs>
 
     Recommendation: <your answer, and why>
 
 Never name a bare term the user may not know. Someone who has never heard of this
-workflow must be able to answer.
+workflow must be able to answer. Why a question comes up now has reached them
+with the round — the tree, the frontier and how many rounds — and is not said
+again in each question; where it has not, it is said with the question. Since
+16 October 2026, point 25 of part B of the roadmap entry of 12 October 2026;
+until then the template carried it as a fourth part of every question.
 
 **Facts are your job, never the user's.** Anything in the repository, the docs, or
 on the web, you look up yourself. When a frontier question needs a fact from the

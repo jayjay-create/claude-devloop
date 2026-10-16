@@ -165,11 +165,12 @@ says which.
   tasks, which one is ready first and what it unblocks. Say that nothing is
   built, and how it goes on: the next session opens with this spec and its ready
   tasks and takes the first — with them there, or alone where they type `--auto`
-  then, which is the only thing that sets the mode on that route. Then delete
-  the mark with a shell command, say that you did, and stop. This is one of the
-  exits the mark has to be cleared at: left standing, it would tell the next
-  session's build that a run is still going, and that build would refuse to
-  start.
+  then, which is the only thing that sets the mode on that route. Then the
+  mark goes, and the run stops; this is one of the exits the mark has to be
+  cleared at, and nothing was set aside at a fetch on the way here, since
+  the cut fetches nothing:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 
 ---
 

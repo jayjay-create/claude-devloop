@@ -53,6 +53,16 @@ says what that command does.
 
 **One skill calling another is not saying a name.** The call carries it.
 
+**A call names the skill as the harness lists it where a skill Claude Code
+ships carries the same word.** `build-work` step 4 calls
+`devloop:review-changes`, prefix included, since 16 October 2026, point 23 of
+part B of the roadmap entry of 12 October 2026: the harness lists
+`code-review:code-review` beside it, that one carries the word the step's
+heading uses, and a run loaded it first twice, on 13 and 14 September 2026,
+the entry of 14 September 2026 on the first planning run alone. Every other
+call names the skill bare, as before; whether every call takes the prefix
+is not decided, that entry having left it to its list of call sites.
+
 **A command the person is told to type is given as it is typed only where the
 run cannot do the thing itself** — a `/clear` only they can trigger. Where the
 run could call the stage itself, it asks in ordinary words and hands over no
@@ -180,7 +190,17 @@ install enters the guard by name" below places; and
 step 3 after that rule and into `setup-checks` step 4 after the backed
 command, the one rule for the four ways an install does not go through with
 nobody there, which "Say when something did not happen" below names as the
-four ways.
+four ways; and four of 16 October 2026, with part B of the roadmap entry of
+12 October 2026 at planning and building and the person's decisions of that
+day on the run with nobody there: `shared/mark-deletion.md`, how the mark
+of a run with nobody there is deleted and what the run brings back then,
+inserted at the endings of `build-work`, `plan-work` and `cut-into-tasks`;
+`shared/set-aside-at-start.md`, the question at every start about a change
+a run without them set aside, inserted into the four skills that read the
+setup state at their start; `shared/set-aside-back.md`, how such a change
+comes back with the person there, inserted beside the two; and
+`shared/editing-tool.md`, which files are written with the editing tool and
+never from the shell, inserted into `build-work` and `setup-checks` step 8.
 
 ## Numbered steps where order matters
 
@@ -515,8 +535,15 @@ nothing, say what you are about to do and do it.
 
 ## Every question carries its own reason
 
-State what is being decided, what each answer means in practice, what it costs,
-and why it comes up now. Never name a bare term the user may not know. Someone
+Four things have reached the user by the time they answer: what is being
+decided, what each answer means in practice, what it costs, and why it comes
+up now. Not four sentences in each question — what has reached them already,
+a stage's opening saying that a few questions come with it, is not said
+again, and what has not is said where they meet it; "A text is as long as
+what carries the decision" below reads the four so, and since 16 October
+2026 so do this section, `shared/how-to-ask.md` and the template of
+`untangle-idea`, point 25 of part B of the roadmap entry of 12 October 2026.
+Never name a bare term the user may not know. Someone
 who has never heard of this workflow must be able to answer.
 
 ## Refer to work by its name
@@ -3237,7 +3264,8 @@ where the main branch cannot be fetched or fast-forwarded:
   rebase: the person clears what stood in the way — the connection or the
   sign-in, since 16 October 2026; until then a changed file and commits of
   their own as well, which the run now sets aside or puts on a branch of
-  their own itself, on their yes to a question of the third kind — and says
+  their own itself, on their yes to a question of the third kind, and with
+  nobody there without a question since the same day — and says
   so, and the fetch or the fast-forward is run again on their word and its
   outcome decides.
 - **There is no outcome, and there cannot be.** `build-work`'s lifted guard

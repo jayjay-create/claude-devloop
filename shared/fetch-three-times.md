@@ -64,7 +64,13 @@ instructions in the browser, and say when that is done. The two others are
 their own work, and the run asks instead of handing a command over: a choice
 through the harness's choice widget, in their language, alone in its call,
 every point in a field of its own and no recommendation, and it acts on the
-answer.
+answer. With nobody there it does the thing without asking, since 16 October
+2026, as each of the two says below: in doubt a run with nobody there is not
+blocked, git keeps a change set aside until it is brought back, and the
+protection the check setup puts on the main branch holds against their own
+direct pushes too, so that their commits reach GitHub only through a branch
+of their own and a pull request in any case — the person's decision, the
+roadmap entry of that date.
 
 - **A changed file in the way.** In the question line: that the file, by
   its path, is changed in their project and not committed; that to go on
@@ -73,39 +79,45 @@ answer.
   and line: set it aside, and the run brings it back when it is done. In
   the no, label and line: no, and the run stops here until they say so —
   then it stops as at the two cases above, with git's message and that
-  nothing happens until then. On the yes: `git stash push -- <file>`, the
-  switch or the fast-forward, and `git stash pop` once the run is done with
-  the main branch — after the cut, after the fast-forward that follows a
-  merge, before the rebase — and one line to them that the change is back.
-  Measured on 6 October 2026 with git 2.50.1: the pop merges the change
-  back where the fast-forward changed another line of the file; where it
-  changed the same line, the pop reports a conflict in the file, keeps the
-  stash, exit 1, and leaves both versions in the file between conflict
-  markers, measured again on 16 October 2026. Then the run shows them both
-  lines, theirs and GitHub's, and asks which is to hold, in the same form;
-  the change stays set aside until they answer. On the answer the file is
-  written with the line they chose — through the shell, since the tree
-  stands on the main branch, where the branch guard blocks the editing tool
-  on purpose — the file is taken out of the index the conflicted pop put it
-  in, `git restore --staged -- <file>`, so that their change stands as it
-  stood, uncommitted, and the stash is dropped, `git stash drop`; measured
-  on 16 October 2026, `git status --short` then reads ` M` for the file and
-  the stash list is empty.
+  nothing happens until then. On the yes, one entry per file:
+
+      git stash push -m "devloop ${DEVLOOP_SESSION_ID:-none} set aside <file>" -- <file>
+
+  The message is the name by which devloop knows the change again:
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state` lists every entry carrying
+  it on a `set-aside:` line, with the entry, the session that set it aside
+  as the mark names it and the file, since 16 October 2026, and every skill
+  that reads the setup at its start asks about one still lying there. Then
+  the switch or the fast-forward, and the change is brought back once the
+  run is done with the main branch — after the cut, after the fast-forward
+  that follows a merge, before the rebase — by "A change set aside at a
+  fetch is brought back" in this skill, which says what the pop does where
+  GitHub changed the same line and how the two lines are put to them. With
+  nobody there: set it aside the same way without asking, go on, and bring
+  it back where the mark is deleted, at every end of the part without them,
+  by the text on the mark's deletion, which says what then happens where
+  GitHub changed the same line — the change left set aside, an issue showing
+  both lines, the last message naming it, and the next start asking.
 - **Commits of their own on the main branch.** In the question line: that
   commits lie on their main branch that GitHub lacks, and that GitHub has
   new ones meanwhile; and whether the run may put their commits on a branch
   of their own, named in the question, and bring the main branch to
   GitHub's state. In the yes, label and line: yes; their commits stay on
   that branch. In the no, label and line: no, and the run stops here. The
-  branch is named so that they see it is theirs, `meine-commits` in the
-  approved wording; where a branch of that name stands already, from an
-  earlier time, a number goes on the end and the question names it so. On
-  the yes: `git branch <name>` and then `git reset --keep origin/main` —
-  measured on 6 October 2026, the reset moves the main branch and keeps the
-  commits on the new branch, and where a changed file stands in its way it
-  refuses, `error: Entry '<file>' not uptodate. Cannot merge.`, changing
-  nothing: then the changed file is the case above, asked first, and the
-  reset follows their yes to that.
+  branch is named so that they see it is theirs, `my-commits` — the wording
+  approved on 12 October 2026 read `meine-commits`, revised on 16 October
+  2026 to the English name, the same in every language; where a branch of
+  that name stands already, from an earlier time, a number goes on the end,
+  `my-commits-2`, and the question names it so. On the yes: `git branch
+  <name>` and then `git reset --keep origin/main` — measured on 6 October
+  2026, the reset moves the main branch and keeps the commits on the new
+  branch, and where a changed file stands in its way it refuses, `error:
+  Entry '<file>' not uptodate. Cannot merge.`, changing nothing: then the
+  changed file is the case above, asked first, and the reset follows their
+  yes to that. With nobody there: the branch and the reset without asking,
+  the changed file set aside first where one stands in the way, and the run
+  goes on; the last message names the branch and offers to open a pull
+  request for the commits.
 
 The German wording of the three openings, approved on 6 October 2026,
 stands in the roadmap entry of 5 October 2026 under "The approved wording";
@@ -113,8 +125,10 @@ the wordings of the two questions and of the two cases only they can clear,
 approved on 12 October 2026, stand in the roadmap entry of that date under
 "The approved wordings", point 19 of part B, which replaced the examples
 that handed `git stash`, `git stash pop`, `git branch` and `git reset
---keep` to the person; a skill says what is said, not the words. With
-nobody there the run stops at every one of the four, as the places say.
+--keep` to the person; the wordings of what the run says with nobody there,
+approved on 16 October 2026, stand in the roadmap entry of that date; a
+skill says what is said, not the words. With nobody there the run stops at
+the first two of the four and does the two others itself, as the places say.
 Where the fetch and the fast-forward go through, nothing is said of them:
 they bring only what has merged on GitHub, change nothing of theirs and ask
 nothing of them.
