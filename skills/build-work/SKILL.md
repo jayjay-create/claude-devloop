@@ -50,6 +50,8 @@ for none.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-three-times`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-back`
+
 ## A guard's block, with nobody there
 
 The shared block above says a guard's refusal is answered rather than got around,
@@ -100,10 +102,12 @@ point 6 says how.
 merge is proven in step 6, at the queries of step 2 and step 7, and at the
 deletion of the mark where the run ends. There a refusal is a stop with the
 reason named, as every command that does not answer with nobody there is
-under "When a command does not answer" above, and the mark is deleted as at
-every stop with a reason; where the deletion itself was refused, say that the
-mark stands. Step 6 says the same of a refusal there, beside the halt on a
-refused arming.
+under "When a command does not answer" above, and the mark goes as at every
+stop with a reason, by the text below, which every stop in this file with
+the reason named ends on. Step 6 says the same of a refusal there, beside
+the halt on a refused arming.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 
 **The guard on the check table is the exception, in both modes.** Where a
 `git commit` is refused because `docs/agents/checks.md` carries a status in no
@@ -120,8 +124,8 @@ on, and make the commit again once it has written the row.
 
 The block above says that what a run does with a question the test lets through,
 when nobody is there, is written in each skill's own words. In this skill it is
-written in seven places already, and this section names them so they are read as
-one rule and not as seven:
+written in eight places already, and this section names them so they are read as
+one rule and not as eight:
 
 - **Which task next** — step 2. Not a question in either mode; the rule there
   decides it and says why the same rule serves both.
@@ -166,11 +170,19 @@ one rule and not as seven:
   blocker; the task put down; step 2 takes the next; nothing closed from it,
   no second start; met by the build subagent, the subagent raises it, as at
   a refusal. In step 1 no task is in hand, and the run stops with the reason
-  named and deletes the mark: without the answer the state of `main` is not
+  named and the mark goes: without the answer the state of `main` is not
   known, and no task begins on an unknown base.
+- **A changed file or commits of their own in the way of the main branch** —
+  step 1, and step 6 after a merge. Since 16 October 2026 the run does with
+  nobody there what it asks about with them there, as "When the main branch
+  cannot be fetched or fast-forwarded" says: the change set aside under the
+  name devloop knows it by and brought back where the mark goes, their
+  commits onto a branch of their own and the main branch to GitHub's state,
+  the last message naming both. The connection and the sign-in stay theirs,
+  and there the run stops.
 
 **A question about the work itself that comes up inside a task and passes the
-test** — a choice the task rests on that the spec did not make — is the seventh
+test** — a choice the task rests on that the spec did not make — is the eighth
 case and gets the same answer as the second and third, not the planning stage's
 order of taking the less committing option. A task is cut from a spec, and a
 task that turns out to need a decision the spec did not take is a task that is
@@ -179,7 +191,7 @@ they are seen, labelled `raised-here` and `needs-human`, recorded as a blocker;
 the task is put down; step 2 takes the next. Measured on 13 September 2026 in a
 test project, with the user there: a run laid out two ways to build a task and
 waited. The test under "How to ask" already said that was not a question, since
-both ways were cheap to redo; this fifth case is for the one that is not.
+both ways were cheap to redo; this eighth case is for the one that is not.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
 
@@ -218,27 +230,22 @@ is which are `filled`, which are `skipped` with a reason, and which are still
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text body-through-file`
 
-**`docs/agents/environment.md` is written with the editing tool, not appended
-from the shell.** The same two reasons one layer over — its content is prose
-about commands, so a shell append is both a quoting risk and a line the guards
-read — and a third of its own: a change bundled into a shell command goes past
-the per-file hooks entirely, which is harmless for a version marker and not for
-content.
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text editing-tool`
 
 ## Step 1 — Check the base
 
 Fetch — three attempts, by the command under "When the main branch cannot
 be fetched or fast-forwarded" above — and compare the local main branch
-with the remote. If the local branch
+with the remote, `git rev-list --left-right --count origin/main...main`,
+which prints how far behind and how far ahead it is. If the local branch
 is only behind — the remote has commits it lacks, and it has none of its own —
 fast-forward it and go on, saying nothing of it: that is what a session leaves that ended after a
 merge before step 6 fast-forwarded, and the task is cut from the current main
 branch. If the local branch has commits of its own — git says it is ahead
 of the remote where the remote has nothing new, and that the two have
-diverged where it has —
-say so and stop — a task cut from a stale main lands on the wrong base, and
-one cut from a main branch carrying commits the remote lacks lands on a base
-the remote does not have. Where the two have diverged, that is the case
+diverged where it has — a task cut from it would land on a base the remote
+does not have, as one cut from a stale main lands on the wrong base. Where
+the two have diverged, that is the case
 "Commits of their own on the main branch" under "When the main branch cannot
 be fetched or fast-forwarded" above, since 16 October 2026: ask as there,
 and on their yes put the commits on a branch of their own, bring the main
@@ -249,8 +256,20 @@ remote does not, and reconciling them is their call, not
 something to resolve by force — the question approved for the other case
 presupposes new commits on GitHub, so it is not put here. Nothing is lost
 meanwhile; the tasks are in the
-tracker and this picks up as soon as they say the branches agree. Where the
-fetch fails on its third attempt, or the fast-forward fails, stop as that
+tracker and this picks up as soon as they say the branches agree. With
+nobody there both go the one way, since 16 October 2026, as that section
+says of the diverged case: their commits onto `my-commits`, or that name
+with a number on the end where it stands already, the main branch to
+GitHub's state with `git reset --keep origin/main`, and the run goes on,
+its last message naming the branch and offering to open a pull request for
+the commits — the ahead-alone case too, which fast-forwards as `Already up
+to date.` and would otherwise cut the task from a base GitHub does not
+have, measured on 16 October 2026 with git 2.50.1. A changed file in the
+way of the fast-forward goes as that section says as well: asked about with
+them there, set aside without asking with nobody there and brought back
+where the mark goes. Where the
+fetch fails on its third attempt, or the fast-forward fails on what only
+they can clear, stop as that
 section says, opening with that the local main branch cannot be brought to
 the state GitHub holds and that nothing is begun here for that: this step
 is here so that no task is cut from a stale main, and a base that could not
@@ -265,7 +284,8 @@ milliseconds, the most a foreground call may have, as "When a command does
 not answer" says; a suite that does not finish inside it is not answered,
 and with nobody there the run stops here with the reason named — the
 command, the message, the path of the output file where one is named — and
-deletes the mark: without the answer the state of the base is not known,
+the mark goes, as at every stop with a reason under "A guard's block, with
+nobody there": without the answer the state of the base is not known,
 and no task begins on a base that could not be read, which is what this
 step is for.
 
@@ -386,15 +406,25 @@ blocker in the tracker and let the readiness query do its work.
 
 Hand the task to a subagent with a fresh context: the task issue, the spec it
 belongs to, the paths of the control documents, where the mark stands that
-says which mode this run is in — not this conversation — and, since 9
-October 2026, two rules it reads nowhere else, since it reads this file
-nowhere: what a refusal is and what follows one with nobody there, under "A
+says which mode this run is in — not this conversation — and four rules it
+reads nowhere else, since it reads this file nowhere. Two since 9 October
+2026: what a refusal is and what follows one with nobody there, under "A
 guard's block, with nobody there" above, the issue raised by the subagent
 itself; and what a command that does not finish inside its call is, under
 "When a command does not answer" above, with the ten minutes every install
 and every run of the check chain is called with, and, since the addendum of
 that day, that a chain which does not finish ends the task as a refusal
-does, the issue raised by the subagent as well.
+does, the issue raised by the subagent as well. Two since 16 October 2026,
+points 22 and 26 of part B of the roadmap entry of 12 October 2026: that
+the check targets belong to the check setup, the rule inserted below the
+list of this step — the subagent changes no check target itself, not in the
+table and not in the Makefile or whatever runs the targets, and names a
+needed change in its report, the call to `setup-checks` being the main
+run's and not its own, a build subagent of the second closing run of
+milestone 3 having changed three targets in the Makefile where the rule
+reached it nowhere; and that a file whose content is text about commands is
+written with the editing tool, the rule above "Step 1", for
+`environment.md`, the workflow file and a body file alike.
 
 The subagent:
 
@@ -520,6 +550,14 @@ Refactoring is not part of this loop. It belongs to the review.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text checks-owner`
 
+The subagent reads that rule in what this step hands it, and the call it
+names is the main run's: where the subagent's report names a check target
+that needs a change — a target to add, a command to change, a row the table
+should say differently — the main run calls `setup-checks` for that class on
+the task's branch, before step 4 reads the diff, so that the review reads
+what the check setup committed there with the rest. Since 16 October 2026,
+point 22 of part B of the roadmap entry of 12 October 2026.
+
 ### Proving a check guards its condition
 
 **Break the condition, watch the check go red, put it back.** That is the whole
@@ -627,7 +665,13 @@ named at the offer for that reason.
 
 ## Step 4 — Review it
 
-Run `review-changes` on the diff.
+Run `devloop:review-changes` on the diff — the review of this plugin, named
+with its prefix as the harness lists it, since 16 October 2026: the harness
+lists the review skill Claude Code ships beside it, and that one carries the
+word this step's heading uses, so a run loaded it first twice, on 13 and 14
+September 2026, the entry of 14 September 2026 in `docs/roadmap.md` on the
+first planning run alone. The skill Claude Code ships is not the one meant
+here.
 
 **Unattended this step never falls away, and how small the diff is is not a
 reason.** With nobody at the gate, this is the only reading the change gets
@@ -716,11 +760,17 @@ Not the whole diff — the commits added since the last review. The gate below
 decides whether work lands; it does not make unreviewed work reviewed, and code
 written after the reviewers looked would otherwise ride in beside code they saw.
 This is not rare: a red check at the turn-end gate is answered by writing more
-code, and so is a "no, revise" at the gate itself. Fixes made *inside* this step
-are already covered by it — the boundary is the step, not the change. What
-`setup-checks` commits when this step calls it is not such a fix: a check
-target changed there would land unread, so those commits get the second
-round like any made after the first.
+code, and so is a "no, revise" at the gate itself — and so are the fixes of
+this step's own findings: what is changed after the report of the review
+agents gets a round over exactly those commits, after every round, before
+the pull request is opened. Since 16 October 2026, point 21 of part B of the
+roadmap entry of 12 October 2026; until then a fix made inside this step
+counted as covered by it, "the boundary is the step, not the change", whose
+only reason was that sentence, and both closing runs of milestone 3 opened
+their pull requests on fixes no lens had read, defect h of the entry of 11
+October 2026 on the second run. What `setup-checks` commits when this step
+calls it gets the round the same way: a check target changed there would
+otherwise land unread.
 
 **The second round is this step, so the paragraph at the top of it holds over the
 second round unchanged**: unattended it does not fall away, and how little the
@@ -995,7 +1045,7 @@ stopping mid-task, over a change nobody asked for, as though it had hit an error
 
 In unattended mode there is nobody to hand it to. A refusal by GitHub to arm,
 in any of the three cases, is a stop with
-the reason named, and the mark is deleted with it. A refusal in the sense of
+the reason named, the mark going with it as at every such stop. A refusal in the sense of
 "A guard's block, with nobody there" above — a guard's block, the
 classifier's no, the no of the hook on permission prompts — is not that: the
 task is in hand until its merge is proven, so it goes as that section says,
@@ -1102,7 +1152,9 @@ its result:
 A red check whose signature differs from the last round is progress and goes into
 the next round. **Three rounds on the same signature is standstill**: end the run
 with a finding, say what stood still and what was tried against it, leave the
-pull request open and armed, and delete the mark — the run is over.
+pull request open and armed; the run is over, and the mark goes:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 
 **That count lives in this answer, and it is not the hook's count.**
 `stop-checks.sh` builds `$FAILED` by running `$RUNNER "$target"` over the
@@ -1132,7 +1184,9 @@ Once it has landed:
   state; nothing below is built on it. What is in the way goes as that
   section says since 16 October 2026 — a changed file set aside and brought
   back on their yes, commits of their own put on a branch of their own on
-  their yes, the connection and the sign-in theirs to clear. Do not force
+  their yes, and with nobody there both without asking, the change brought
+  back where the mark goes and the branch named in the last message; the
+  connection and the sign-in theirs to clear. Do not force
   it.
 - Delete the merged branch locally and, by the rule below the list, on the
   remote.
@@ -1210,8 +1264,8 @@ sharpening and no question, so here is the first time they are read on it; and
 what they read — a gate, a setting, a class, a record — can change between
 the question
 and the build. The third is read here only, because it needs the tasks to exist.
-A refusal on the planning route also deletes the mark that route wrote, since the
-run ends here:
+A refusal on the planning route also ends with the mark that route wrote going,
+as at every stop with a reason, since the run ends here:
 
 1. No class in `checks.md` is `empty`. Every one is `filled`, or `skipped` in
    one of its two forms. `empty` means undecided, and an undecided check
@@ -1302,7 +1356,8 @@ main branch as freshly fetched: on a yes read all seven again and go on to
 the mark; on a no build this task with them there, as without the flag.
 Where this section was reached from planning, nobody is there to ask: refuse,
 say which of the five is missing and that typing `--auto` where a piece of
-work starts sets it up, and delete the mark. For conditions 6 and 7 the
+work starts sets it up, and the mark goes, as at every stop with a reason
+under "A guard's block, with nobody there". For conditions 6 and 7 the
 refusal says, for the person who comes back: that the run without them does
 not start; that it needs their yes — to installing tools outside the
 project, for 6, or to adding check tools to the project's packages itself,
@@ -1344,15 +1399,35 @@ alone, the mode condition 4 has read by now, and blocks in every other:
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
 **And where the mark is deleted**, so that creation and deletion stand in one
-place: at the finishing sentence at the end of this section; at the standstill
+place, and since 16 October 2026 how, in one shared text, which stands at
+the rule for every stop with a reason under "A guard's block, with nobody
+there", at the standstill in step 6 and at the finishing sentence of this
+section, and in the planning stage and the cut at their endings, and brings
+back what the run set aside at a fetch: at the finishing sentence at the end
+of this section; at the standstill
 after three rounds in step 6, and at a refused arming there that ends the run;
-at a refusal above, where the run came through planning and wrote a mark that a
+at the second `BEHIND`, the wait that runs out, the value the enumeration
+cannot place and the read that came back with no value, the stops of step
+6; at a refusal above, where the run came through planning and wrote a mark that a
 refusal here ends; at a stop on a refusal with no task in hand, under "A
 guard's block, with nobody there"; at a stop on a check chain that did not
 finish inside its call in step 1, where no task is in hand — in step 3 the
-task ends instead, since the addendum of 9 October 2026; on the user's word
-to stop; and at the halt before the first
-build, which the cut does before this section is ever reached. Not at a halt
+task ends instead, since the addendum of 9 October 2026; at a fetch that
+fails on its third attempt or a fast-forward that fails on what only they
+can clear, in step 1 and in step 6, as "When the main branch cannot be
+fetched or fast-forwarded" says; on the user's word
+to stop; at the halt before the first
+build, which the cut does before this section is ever reached; and at the
+stops of the planning stage under its "With nobody there", which end the
+run before any build: where the whole of the work hangs on a question and
+no option is less committing, where a refusal before the build leaves the
+whole of the work hanging on it, and where the design choice in its Stage 3
+leaves nothing standing or takes away the recommended draft — the ending
+the roadmap entry of 3 and 4 October 2026 asks for in its defect 3, where a
+named pair of items that cannot both hold takes the whole of the work and
+nothing is left to cut out, has its place here too, and is built in that
+stage as the stop at the design choice today and not yet as the second
+drafting round that names the pair. Not at a halt
 of `setup-checks` called with nobody there on the branch of a task: since 9
 October 2026 the task ends there and the run goes on. Each of those
 sites says so where it stands. A session that simply ends deletes nothing; the
@@ -1436,19 +1511,23 @@ keep taking tasks. Nothing writes it now and nothing ever read it. Delete it, sa
 that you did, and take the scope from this conversation.
 
 Emit the finishing sentence only when it is completely and unambiguously true —
-never to get out of the loop. Then delete the mark with a shell command and say
-so: the unattended part is over, and a mark left standing would make the next
-run refuse to start.
+never to get out of the loop. Then the mark goes:
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 
 **What the run found and could not ask goes into its last message, once.** A
 `skipped (user)` row whose reason step 4 found no longer holding was left as
 it stood, since nobody was there to ask. Name each such row where the run
 ends — at the finishing sentence, or at whichever stop ended it — with its
-reason and what holds now, and not in every pull request.
+reason and what holds now, and not in every pull request. And since 16
+October 2026, as the text above says: each change of theirs the run set
+aside at a fetch, back or still set aside with the issue that shows both
+lines, and the branch their commits went onto, with the offer of a pull
+request for them.
 
 Tell the user how to read the diffs afterwards, from the commit named at the
 start to the current main branch, and how to stop the run — which is a message
-from them, and on which the mark is deleted too. If the session itself is gone,
+from them, and on which the mark goes as above too. If the session itself is gone,
 the merged pull requests cover the same ground, and the mark it left is met by
 the rules above.
 

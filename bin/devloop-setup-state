@@ -26,6 +26,13 @@
 #   missing: docs/agents/<file>   one line per file of the setup not standing there
 #   marker: docs/agents/<file> <version>   one line per present file: the version
 #     in its "<!-- devloop: X.Y.Z -->" line, or none where it carries no such line
+#   set-aside: stash@{N} <session> <file>   one line per change a run of devloop
+#     set aside at a fetch and has not brought back, since 16 October 2026: the
+#     stash entry, the session that set it aside as the mark names it or none,
+#     and the file; read off git stash list, where the run writes the message
+#     "devloop <session> set aside <file>" - the one thing here read off the
+#     working tree's repository and not off the ref, since the stash is where
+#     git keeps what was set aside and no branch holds it
 # The files of the setup are the five setup-project step 6 writes under fixed
 # names - checks.md, issue-tracker.md, domain.md, standards.md, environment.md,
 # in that order. Nothing is counted.
@@ -137,6 +144,17 @@ selftest() {
   # origin/HEAD naming master, read as the hooks read it
   git_q init -q --bare -b master "$T/bare3.git" && git_q clone -q "$T/bare3.git" "$T/w3" 2>/dev/null && git_q -C "$T/w3" commit -q --allow-empty -m x && git_q -C "$T/w3" push -q origin master 2>/dev/null && git_q -C "$T/w3" remote set-head origin master
   run "$T/w3";                           expect "the default branch read off origin/HEAD, master" 0 "ref: origin/master" "fetch: not run, reading origin/master as last fetched"
+  # a change a run set aside at a fetch: its stash entry on a set-aside line; a stash of another message on none
+  printf 'changed\n' >> "$T/clone/docs/agents/checks.md"
+  git_q -C "$T/clone" stash push -q -m "devloop s1 set aside docs/agents/checks.md" -- docs/agents/checks.md
+  run "$T/clone";                        expect "a change set aside by a run: the set-aside line with its entry, session and file" 0 "set-aside: stash@{0} s1 docs/agents/checks.md"
+  printf 'other\n' >> "$T/clone/docs/agents/issue-tracker.md"
+  git_q -C "$T/clone" stash push -q -- docs/agents/issue-tracker.md
+  run "$T/clone";                        expect "a stash of another message: no set-aside line for it, the run's entry moved to stash@{1}" 0 "set-aside: stash@{1} s1 docs/agents/checks.md"
+  absent "set-aside: stash@{0}" "a stash of another message: no set-aside line for it, the run's entry moved to stash@{1}"
+  git_q -C "$T/clone" stash drop -q 'stash@{0}' && git_q -C "$T/clone" stash drop -q 'stash@{0}'
+  run "$T/clone";                        expect "nothing set aside: no set-aside line" 0 "present: docs/agents/checks.md"
+  absent "set-aside:" "nothing set aside: no set-aside line"
   echo "SELF-TEST PASSED: $n cases"
   exit 0
 }
@@ -190,4 +208,9 @@ marker: $p ${M:-none}"
   fi
 done
 printf '%s\n' "$MARKERS" | grep -v '^$'
+# Every change a run of devloop set aside at a fetch and has not brought back:
+# the stash entries whose message a run wrote as "devloop <session> set aside
+# <file>", which git lists as "On <branch>: <message>"; a branch name carries
+# no colon, so the first colon ends it. Since 16 October 2026.
+git stash list --format='%gd %gs' 2>/dev/null | sed -n 's/^\(stash@{[0-9][0-9]*}\) On [^:]*: devloop \([^ ]*\) set aside /set-aside: \1 \2 /p'
 exit 0

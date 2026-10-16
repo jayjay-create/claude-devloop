@@ -31,6 +31,10 @@ working tree.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-failed`
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-at-start`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text set-aside-back`
+
 Where its answer carries a `missing:` line, this project is not set up on the
 main branch — never set up, or written and not landed, which the working tree
 cannot tell apart. **Say in one line what you are doing and run
@@ -198,10 +202,13 @@ and stops at the first step that applies:**
    whoever reads the spec sees that the work rests on an open question.
 
 Where the whole of the work hangs on the question and no option is less
-committing, the run stops, with the question named, the mark deleted and the
-planning issue left `being-planned`. A stop with a reason is allowed; a wait for
+committing, the run stops, with the question named, the planning issue left
+`being-planned` and the mark going, by the text below, which every stop of
+this stage with nobody there ends on. A stop with a reason is allowed; a wait for
 a person is not. The next session picks the plan up at the stage it reached and
 asks the question with somebody there.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 
 **A refusal before the build goes through the same order, since 9 October
 2026**: a guard's block, the no of the classifier of auto mode, or the no of
@@ -246,21 +253,42 @@ a fetch that answered, the mark:
 A mark carrying another run's commit: `build-work` says what that means at the
 start of a build. It is deleted wherever the unattended part ends — the halt
 before the first build, a stop with a reason, the user's word to stop, the
-finish of a build — and a session that simply ends cannot delete it, which is
+finish of a build — by the one text that stands at the stop above and at the
+endings of the cut and the build, since 16 October 2026, and a session that
+simply ends cannot delete it, which is
 what the rule under "Picking up an interrupted plan" is for. It carries no
 limit and enforces nothing; it answers the one question a run cannot re-derive
 later, which is why it may be a file where a count may not.
 
 ## Stage 1 — Sharpen the idea
 
-Map the open decisions as a tree. Each round, settle what you can settle
-yourself and say so in one line, then ask what is left — numbered, each with
-your recommended answer so a single word can settle it. Say roughly how many
-rounds you expect. Then wait. The answers open the next round.
-Done when nothing important is open, the hard core of the user stories and of
+Map the open decisions as a tree: every decision branches into the decisions
+that hang off it. Work the tree in rounds. The frontier is every decision
+whose prerequisites are already settled — the questions answerable now,
+without guessing at answers you have not heard yet; a question whose answer
+hangs on one still open belongs to a later round. Each round, settle what
+you can settle yourself and say so in one line, then ask what is left —
+numbered, each with your recommended answer so a single word can settle it,
+at most three in a round, and the rest of the frontier before anything the
+answers unlock. Say roughly how many rounds you expect. Then wait. The
+answers open the next round. After every round, post the settled answers as
+a comment on the planning issue, so that a session which ends inside this
+stage leaves the issue with what was settled and not empty — since 16
+October 2026, point 20 of part B of the roadmap entry of 12 October 2026;
+until then they went once, after the question at the end of this stage, and
+a pick-up found the issue empty on 30 September 2026.
+Done when the frontier is empty — no question is answerable now, every
+branch of the tree visited, nothing left silently assumed, the way the
+interview of `untangle-idea` ends — the hard core of the user stories and of
 what is out of scope is written down, and no question is left whose answer
 somebody has to see something to give. Those three are what "the idea stands"
-means everywhere in this file.
+means everywhere in this file, and the run acts on it only once the user
+has confirmed, at the question below, that a shared understanding is
+reached. Since 16 October 2026, point 20: until then the first condition
+read "nothing important is open", which is the run's own interpretation
+where the empty frontier is a state of the tree that anybody holding the
+tree can check; the cap of three questions in a round changes how many
+rounds a frontier takes and not when the stage ends.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text three-questions`
 
@@ -287,8 +315,8 @@ start one unasked, it costs real time and they are in the room. That is
 word and record that it was decided without seeing anything, or carry it into
 the spec as undecided. Do not quietly pick one and move on. **A question of the
 second kind left open means the idea does not stand**, and the question at the
-end of this stage is then not asked: the run stays with them, since alone it
-would meet a question nobody present can answer.
+end of this stage on how the work runs is then not asked: the run stays with
+them, since alone it would meet a question nobody present can answer.
 
 When a decision is hard to reverse, would surprise someone without the reasoning,
 and came out of a real trade-off, offer a decision record. Only then.
@@ -299,7 +327,24 @@ one line each — and what is out of scope, the things someone might reasonably
 expect and that were decided against or put off. Short, and only what was
 actually settled; Stage 4 writes the long list. This is the list Stage 3 plays
 every draft against, so it is written before the drafts exist and not read back
-out of them.
+out of them. Show it to them as written.
+
+**Then ask whether the idea is understood, in a widget call that carries this
+question and no other**, after the hard core has been shown and before the
+question on how the work runs from here, and where that question is not put
+as well — a choice through the harness's choice widget, in their language,
+every point in a field of its own and no recommendation. In the header: a
+word for the subject, of twelve characters at most. In the question line:
+whether the idea is understood so, as the hard core puts it. In the yes,
+label and line: yes, it is right so, and the run plans on on that ground.
+In the no, label and line: no, something is still missing, and the run asks
+on until it is right. On the no the frontier is not empty: ask what is
+missing, and the answer opens the next round. Only on the yes does the idea
+stand. Since 16 October 2026, point 20 of part B of the roadmap entry of 12
+October 2026, with the source it names, the interview of `untangle-idea`:
+"Do not act on it until the user confirms you have reached a shared
+understanding." The wording approved on 16 October 2026 stands in the
+roadmap entry of that date; this skill says what is said, not the words.
 
 **Then ask once, in a widget call that carries this question and no other, how
 this piece of work should run from here** — but only where the unattended
@@ -423,8 +468,9 @@ third line, this session's identifier, the same in both — and say so. The
 hook on the mark lets the command through in auto mode alone, the mode
 condition 4 has read by now, and blocks it in every other.
 
-Post the settled answers and the hard core as a comment on the planning issue
-before moving on, and the answer to the last question where it was asked — as a
+Post the hard core as a comment on the planning issue before moving on — the
+settled answers went there after every round — and the answer to the last
+question where it was asked, as a
 record of what happened, not as something a later run may act on.
 
 ## Stage 2 — Read the code
