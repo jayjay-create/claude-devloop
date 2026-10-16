@@ -24906,6 +24906,251 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   before the merge, and a not-a-thing row for its head. The figures
   of the tool and the checks as printed stand in the report.
 
+- **Part B of the decisions of 12 October 2026 at the setup, points 7 to 19,
+  and the four defects of milestone 3 that lie with the setup — defects 1 and
+  3 of the first closing run, b and i of the second — built; the auto-merge
+  question revised on 16 October 2026 to the case where a gate stands
+  already; the merge handover and the branch deletion as shared texts; a
+  changed file and commits of their own at a failed fetch asked about and
+  done by the run; 16 October 2026, version 0.140.0.** On
+  `task/setup-part-b`, off `9b40c07`, version 0.139.0 on `main`; the code
+  with the version in one commit, this entry and the rows of the table in a
+  second, the runs in a third. The report stands on this machine as
+  `~/devloop-report-2026-10-16-setup.md`, in English, and is not in the
+  repository. Every line number of a file under `skills/` or `shared/` in
+  this entry holds at `9b40c07`, before the changes: `git diff --stat 429d48c
+  9b40c07 -- skills shared/fetch-three-times.md` printed nothing, so the
+  numbers the entries of 11 and 12 October 2026 give for those files held
+  there too, and the order of this day named them so. The wording the person
+  approved on 16 October 2026 stands below in German, as approved, without
+  translation, as the entry of 12 October 2026 holds its wordings. The words
+  the stock-take tool reads a line of this file into its search set by stand
+  in this entry on the three lines that record a defect and on no other.
+
+  **What the two logs showed at the records the order named.** Under
+  `~/.claude/projects/` in the directory for `devloop-test-w`, the two logs
+  the entry of 11 October 2026 on the second closing run names under "What
+  this entry was read off", read as JSON by a script outside the repository
+  and never whole; a record is one line of a log, counted from 1. The first
+  run, records 163 to 231: the person's no to Prettier at 163, to ESLint at
+  170 and to `@types/node` at 199, whose no was labelled "Die Typprüfung
+  bleibt abgeschaltet und du bekommst den Befehl, es selbst einzutragen", and
+  at 231 the handover of pull request #2 listing `npm install --save-dev
+  typescript @types/node`, `npm install --save-dev prettier` and `npm install
+  --save-dev eslint` beside `brew install gitleaks` — three lines that enter
+  the declined tools into the packages; the same message said "Der
+  unattended Modus bleibt aus. Dafür bräuchte es u. a. Auto-merge und eine
+  Prüfung, die den Merge blockiert" and, in its last sentence, that planning
+  follows the merge. Records 231 to 247: "ist gemerged" at 234, the fetch and
+  the fast-forward at 237 with `git push -q origin --delete devloop-checks`
+  in the same call, answered at 238 with `MERGED` at 13:06:19 UTC and `error:
+  failed to push some refs`, and at 247 "Setup und Prüfungen sind damit
+  durch, jetzt plane ich die Webseite": no reading of the gate, no question,
+  step 8 never entered, the handover's own last sentence being what the run
+  then did. The second run, records 169 to 176: the yes to the install record
+  at 169, the question on the dependency file at 172 and its yes at 173, and
+  at 176 the fetch, the switch to the main branch and the cut of
+  `devloop-unattended` — nothing read off `checks.md`, no tool entered and no
+  class filled between the two yes and the records. Records 195 to 283: the
+  records pushed and opened as #13 at 195, handed over at 200 with `gh pr
+  merge 13 --squash`, nothing before it that changes into the directory, and
+  with the sentence that the permissions have to stand on `main` before
+  anything is installed; the merge proven at 207, and nothing installed after
+  it either; the workflow file written at 222 and opened as #14 at 242,
+  handed over at 249 the same way; auto-merge switched on at 256 with `gh api
+  -X PATCH` and `-F allow_auto_merge=true`, read back `true`; the protection
+  at 265; and at 276 to 283 the section of `environment.md` on what checks a
+  merge rewritten and opened as a third pull request, which no line of step 8
+  orders. The extracts, 47555 bytes over the four ranges, stand outside the
+  repository; the report has the command.
+
+  **What is built, point by point, each at the place the order named.**
+  Point 7: `start-work` step 2 asks what they would like to build only where
+  the idea did not come with the command, and where it did says in one
+  sentence what it understood as the idea and that the setup comes first,
+  then goes on; the promise says that an idea is all they need to bring only
+  where none has come. Point 8: the section "Permissions, before the first
+  command" of `setup-project`, lines 154 to 231, and the paragraph "Name what
+  you just wrote down as something to grant" of `setup-checks` step 3, lines
+  333 to 340, are gone, a short note at each place saying so and why; the
+  paragraph on a question's options stays in step 0; `docs/plan.md` marks its
+  quote of the passage as a wording the work replaced; the things of the
+  table whose should the passage carried have their evidence on the two
+  notes, and the straight path of the section with twelve not-a-thing rows
+  and one branch of it left the table with the lines. Point 9: question 5 of
+  `setup-project` step 4 is gone, question 6 is question 5, the seven labels
+  are created in every setup under `issue-tracker.md` in step 6, a label of
+  one of the names that stands already left as it is since `gh label create`
+  refuses a name that exists, the sentence to the person follows in the
+  approved wording, step 2 says nothing on labels in either direction, and
+  the item of step 1 that read the tracker's labels is gone with the question
+  that read it. Point 10, with the revision below: question 2 is put only
+  where auto-merge is off and a gate stands on the main branch already, found
+  by either of its two queries, which are read in every project since step 6
+  and step 8 read them; where no gate stands the question is not put and the
+  check setup's step 8 decides auto-merge; the question's four fields, no
+  recommendation, nothing on the run with nobody there; the PATCH with `-F`,
+  since `-F` sends a typed value where `-f` sends a string, `gh api --help`
+  of gh 2.96.0, and the second closing run read `true` back after `-F`; the
+  opening of step 4 names the questions that carry a recommendation, 1, 4
+  and 5; the three places that say what happens with auto-merge off —
+  `build-work` step 6, `setup-checks` step 7, `setup-project` step 8 — say
+  that it is the ordinary state at a first setup since this day and that
+  nothing there asks them to switch it on. Point 11:
+  `shared/merge-handover.md`, inserted into `setup-project` step 8,
+  `setup-checks` step 7 and
+  `build-work` step 6, the command `gh pr merge <number> --squash --repo
+  OWNER/REPO`, the three middle sentences by case, no `--delete-branch`, no
+  sentence on what comes after the merge; `setup-checks` step 8 names step
+  7's text instead of inserting it a second time; the check on handovers in
+  `docs/skill-conventions.md` reads six lines over six sites now, nine over
+  eight until this day, and its list says so. Point 12:
+  `shared/branch-deletion.md`, inserted at the four places: `git ls-remote
+  --heads origin <branch>` under `bin/devloop-bounded 30` prints the branch's
+  line where it stands and nothing, exit 0, where it does not — measured on
+  16 October 2026 with git 2.50.1 against this repository's remote on a name
+  that is not there — and the deletion on the remote runs after a line and
+  not otherwise. Point 13: the marker paragraph stands in step 6 of
+  `setup-project`, which writes the line at a first setup and at a refresh
+  alike, read from `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`; the
+  refresh names the marker among this workflow's content; the paragraph of
+  `docs/skill-conventions.md` that recorded it as not built says it is.
+  Point 14: "Where it is not" at line 241, "step 4, question 2" at line 658.
+  Point 15: the sentence of `setup-checks` step 3 names the system packages
+  of `--with-deps`, `install-deps` and `--install-deps` beside the compiler
+  and the runtime. Point 16: `setup-checks` step 5 puts the break of the
+  secrets class in an untracked file, reads the index after the restore —
+  `git status --short` and `git ls-files --stage`, an intent-to-add entry
+  included — and says what to do where the target scans the history alone.
+  Point 17: `shared/body-through-file.md` names the place of the body file,
+  a directory `mktemp -d` makes, never `.git/` and never the tree the commit
+  is built from, and says that the branch guard lets the editing tool write
+  there on the main branch, measured off its own file test. Point 18: the
+  rule "A command handed over runs as it stands, from wherever the person
+  is" in `shared/skill-name.md`, which every skill inserts, and in
+  `docs/skill-conventions.md` after the rule it extends — `--repo` on a `gh`
+  command, `cd <directory> && <command>` before a command that needs the
+  project, `~` for the home directory and double quotes around the rest
+  where the path carries a space — named at the five places that hand a
+  command over, `build-work` step 3 point 7, `setup-checks` step 3 twice,
+  `shared/fetch-and-run.md` and `diagnose-bug` step 6; the search ran over
+  `skills/`, `shared/`, `hooks/` and `bin/` with twelve patterns, the report
+  lists every hit, and the two hooks that hand a command over stand as they
+  are: the identity guard hands `git config --global`, which runs from
+  anywhere, and the install guard's message was left alone, since the rule
+  reaches the run through every skill and a changed line of that guard would
+  stop its twenty-four walked runs from counting. Point 19:
+  `shared/fetch-three-times.md` stops the run at the connection and at the
+  sign-in only, in the two approved wordings, and at a changed file or at
+  commits of their own puts the approved question through the widget and
+  acts on the yes — `git stash push -- <file>`, the switch or the
+  fast-forward, `git stash pop`; both lines shown and asked about where the
+  pop meets the same line, the file then written through the shell, `git
+  restore --staged -- <file>` and `git stash drop`; `git branch
+  meine-commits` and `git reset --keep origin/main`, the changed-file question
+  first where the reset refuses — every step measured on 16 October 2026 with
+  git 2.50.1 in a scratch repository, the pop with a conflict exiting 1 and
+  keeping the stash, `git status --short` reading ` M` after the resolution
+  with the stash list empty, `git branch` refusing a name that exists, exit
+  128; the mark's opening in `plan-work` and `build-work` in the approved
+  wording; and `build-work` step 1 sends a diverged main branch to the same
+  question and keeps its own words for a branch that is ahead alone, since
+  the approved question presupposes new commits on GitHub. Defect 1: the
+  opening of `setup-checks` says step 8 follows at every first setup once
+  step 7's merge is proven, step 7 closes on a paragraph saying so and what
+  does not decide it — auto-merge off, no gate, a record not saying yes, the
+  handover's words — and step 8's opening restates its one condition. Defect
+  3: step 3 says that the command handed over under a no installs the tool
+  outside the project, on a route of the record, never the `--save-dev` line
+  that was just declined, and that a tool with no way outside the project
+  gets no command and a no's line that promises none; the handover at a
+  record saying no names the rule of point 18. Defects b and i: the list of
+  classes the two yes open and the tools to enter is read off `checks.md`
+  before anything lands and said in one line, it decides whether the records
+  land alone or with the rest in one pull request, points 2 and 3 run on it
+  before the gate, and the paragraph after the list names both defects with
+  what the run did. No hook and no program holds any of the four: each is a
+  step a run skips or a text it words, which the hooks of this plugin,
+  reading tool calls, never see; a program that computed the classes a yes
+  opens would read reasons step 3 writes as free text and `checks.md` off a
+  branch not yet landed; and a check on the main branch after a setup that
+  the section `## Unattended mode` stands in `environment.md` would catch
+  defect 1 at the next start only, which the third status line below
+  records. The rules are rewritten at the lines the run reads when it
+  decides, by "A rule holds only on the path it is written on".
+
+  **The revision of point 10, decided by the person on 16 October 2026.** A
+  revision of point 10 of part B of the entry of 12 October 2026,
+  `docs/roadmap.md` lines 18909 to 18922 at `9b40c07`, and of its wording,
+  lines 19221 to 19225. Question 2 of `setup-project` step 4 comes only where
+  auto-merge is off and a required check or a required review stands on the
+  main branch already, found by one of the two queries under the question;
+  where none stands it is not put, and step 8 of `setup-checks` decides
+  auto-merge with its question on work without them. The person's reasons:
+  without a required check GitHub accepts no auto-merge, and every merge goes
+  to the person whatever they answered, `setup-project` line 743; devloop
+  sets a required check up only after a yes in step 8 of `setup-checks`, and
+  that yes switches auto-merge on itself, `setup-checks` line 1038; with
+  defect 1 built, step 8 comes at every first setup of a project with code.
+  The wording approved on 16 October 2026, word for word: the question
+  „Auto-Merge ist ausgeschaltet. Soll ich es einschalten?"; the first answer
+  „Ja, einschalten" with the line „GitHub mergt dann selbst, sobald alle
+  Pflichtprüfungen grün sind."; the second answer „Nein, aus lassen" with
+  the line „Jeden Merge machst du von Hand." Where the protection requires a
+  review by another person instead of a check, the yes line names that
+  review. The yes line of 12 October 2026, „GitHub mergt dann selbst, sobald
+  eine Pflichtprüfung grün ist. Die kommt erst später, bis dahin mergst du
+  von Hand.", falls, and with it from point 10 that the question says under a
+  yes the first merges are made by hand; the rest of point 10 stands — no
+  recommendation, and no sentence on the run with nobody there. The thing of
+  the table on defect 9 of the entry of 3 and 4 October 2026, that the
+  question says a yes still leaves the first pull request to be merged by
+  hand, has its evidence on the line that says the question is not put where
+  no gate stands, since the case that defect described no longer arises.
+
+  **Decided here, beyond the order's words.** The item of `setup-project`
+  step 1 that read the tracker's labels went with the question, nothing
+  reading what it found. `build-work` step 1 sends a diverged main branch to
+  the question of point 19, the same situation reached by another route. The
+  branch for their commits takes a number on the end where a branch of the
+  approved name stands already, said so in the question. `setup-checks` step
+  8 names step 7's handover text instead of inserting the shared text a
+  second time into the same file. The things of the table whose lines went
+  with the passages of point 8 and with question 5 left the table; every
+  other record whose anchor a change broke was re-anchored on the line that
+  carries the same thing now, a thing with runs keeping its name and its
+  note saying what holds since this day, a thing without runs renamed where
+  its name no longer said what it says; the report names each by row.
+
+  **Not built, and one question held open.** Recorded, not built: with
+  nobody there the run stops at a changed file in the way and at commits of
+  their own on the main branch, as every place says, where with them there
+  it asks and does the thing itself since 16 October 2026 — should: the
+  person decides whether the run with nobody there sets the file aside and
+  brings it back, and puts their commits on a branch of their own, without
+  asking, or stops as today; the report puts both ways with their costs.
+  Recorded, not built: no line of `setup-checks` step 8 orders the section of
+  `environment.md` on what checks a merge to be rewritten once the
+  protection stands, which the second closing run did in a pull request of
+  its own, #15, records 276 to 283 — should: the third point of the gate
+  order rewrites the section with the gate it set up and lands it armed, or
+  `setup-project` says the section is written once, at the setup, and read
+  as of that date. Recorded, not built: nothing reads at the next start that
+  step 8 of `setup-checks` was never reached where no class is `empty` and
+  `environment.md` carries no section `## Unattended mode`, so a setup that
+  ended as the first closing run did is caught by no later session — should:
+  `start-work` step 4 reads the section off the main branch where no class
+  is `empty` and calls the check setup for its step 8 where none stands,
+  with a sentence to the person approved for it.
+
+  **The runs.** The nineteen checks under "Before a handover, run these" ran
+  green on the tree of the second commit, in a clean shell with
+  `/usr/bin/grep`, and are recorded in the third commit under 0.140.0; the
+  tool exited 0 on
+  that tree with its self-test green, and the command under "Before you
+  change anything, run this" printed the differences of this branch against
+  the installed 0.139.0, red by construction on a branch and recorded as no
+  run. Nothing ran on a bench.
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
