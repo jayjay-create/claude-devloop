@@ -26869,6 +26869,26 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   two runs gone with their things; not-a-thing records 2479 where 2444; the self-test 114 cases, 76
   of 76 messages asserted by a case, as at `89fb29a`.
 
+  **The runs.** The nineteen checks under "Before a handover, run these"
+  ran green on the tree of the second commit, `e71b7f2`, clean, from
+  14:55:42 to 14:55:49 UTC, in a clean bash with `/usr/bin` first on its
+  path, line for line what they print at `89fb29a` but for the line numbers
+  the changes moved; the tool on that tree, the tool from 14:55:54 to
+  14:58:02 UTC, exit 0 with the figures above; its self-test, the self-test
+  from 14:58:02 to 14:58:04 UTC, 114 cases, 76 of 76 messages asserted by a
+  case; all recorded in the third commit under 0.142.0. The command under
+  "Before you change anything, run this" ran on `main` at `89fb29a` before
+  the branch was cut, printing nothing against the installed 0.141.0,
+  recorded under 0.141.0. `hooks/post-tool-use-output-style.sh` of the first
+  commit was fed by hand on 17 October 2026 a JSON input for every branch of
+  its case but the reader's failure, with crafted transcripts and the
+  temporary directory of the bench: an event other than the two, a subagent,
+  no transcript, no session identifier, no skill of devloop, devloop's own
+  style, no style record, the same session again, another plugin's style
+  under PostToolUseFailure and the person's own style, each answer as the
+  report gives it; recorded under 0.142.0. Nothing ran on a bench with a
+  model, and no session of Claude Code was started.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
