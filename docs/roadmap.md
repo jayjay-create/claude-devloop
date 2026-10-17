@@ -27043,9 +27043,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   to 1538 (BW-51); 1545 to 1576, the last message in two groups and what fits
   neither (BW-53, B5); 1578 to 1582, how to read the diffs and how to stop not
   said (BW-54, B3). Inserted texts: `shared/command-does-not-answer.md` lines
-  1 to 18, a refusal the second attempt got past not said (SH-01, SH-02, B1),
-  which reverses what the entry of 31 August 2026 on a refused command
-  repeated in silence built; `shared/skill-name.md` 12 to 14 (SH-09);
+  1 to 18, a command that only did not answer and answered the second time
+  not said (SH-01, B1), and a refusal by a check the second attempt got past
+  said in one line (SH-02), by the person's decision of the same day under
+  the pre-check below, where this build had dropped it too and so reversed
+  what the entry of 31 August 2026 on a refused command repeated in silence
+  built; `shared/skill-name.md` 12 to 14 (SH-09);
   `shared/how-to-ask.md` 33 to 41, a decision said only where it reaches them
   before the work it shapes (SH-10, SH-11, B3), and 74 to 75, B11;
   `shared/cut-branch.md` 73 to 74 (SH-22); `shared/criterion.md` 2 to 7 and
@@ -27075,9 +27078,24 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of `plan-work` with nobody there and the halt of `cut-into-tasks` on the
   `plan` route do not load; built as B5 says, the gap recorded below. B5
   drops the line of 16 October 2026 on a change brought back, above. B1 drops
-  SH-01 and SH-02, and with them the report of a first refusal beside the
-  answer that the entry of 31 August 2026 built; the case is said wherever it
-  changes what the person gets. The headings of `setup-project` step 0 and
+  SH-01, the report of a command that only did not answer and answered the
+  second time. SH-02, the report of a first refusal beside the answer that
+  the entry of 31 August 2026 built, this build dropped as well; the person
+  decided the same day, after the build, that it stays for a refusal by a
+  check: where a permission or safety check refused a command — Claude
+  Code's permission check, the classifier of auto mode, a safety check built
+  into Claude Code — and only the second attempt went through, one line in
+  the next message with which the turn ends with text says which check,
+  which command, and that the second attempt went through; with nobody there
+  the line stands in the pull request of the work it happened at, and where
+  there is none, in its issue, not in the last message; the same for a fetch
+  by `shared/fetch-three-times.md`, an attempt that only failed unsaid and a
+  refused one given the line. The example the person saw: „Die Rechteprüfung
+  hat `npm install -g x` zuerst abgewiesen, beim zweiten Versuch ging es
+  durch.“ The reason is the case of 31 August 2026, in which a check asked
+  for a pause and an explanation and the run repeated the command without a
+  word: a check the person controls is not got around in silence. The
+  addendum below builds it. The headings of `setup-project` step 0 and
   step 2 stay as they stand, runs being keyed to their straight paths; the one
   of step 2 is recorded below.
 
@@ -27198,6 +27216,111 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   install guard on `brew install prettier` blocked, the cost of a decline
   named for that next message; recorded under 0.143.0. Nothing ran on a bench
   with a model, and no session of Claude Code was started.
+
+  **Addendum of the same day: a refusal by a check that the second attempt
+  got past, the last message at every end of the run with nobody there,
+  four headings, and the insert of `shared/backed-command.md`.** Ordered on
+  17 October 2026 after `305490e`, made the same day on
+  `task/owed-text-reports`, the version staying 0.143.0, raised once on this
+  branch already. The report stands on this machine as
+  `~/devloop-report-2026-10-17-owed-text-reports-addendum.md`, in English,
+  and is not in the repository. A line is given as it stands at `305490e`
+  unless the tip of the branch is named. Nothing ran on a bench and no
+  session of Claude Code was started. The pre-check found no place at which
+  no rule decides and none at which the person would get wording not
+  already approved, so nothing halted.
+
+  **The refusal by a check.** The decision stands under the pre-check
+  above. It stands in `shared/command-does-not-answer.md` lines 11 to 26 at
+  the tip of the branch, lines 1 to 11 as they were. With nobody there the
+  line arises only where a second attempt is made at all: a guard's block,
+  the classifier's no and the no of the hook on permission prompts get none
+  there, `build-work` line 70, `plan-work` lines 223 to 224 and
+  `shared/install-not-through.md` lines 20 to 21, and the shared text says
+  so rather than read as allowing one. In `shared/fetch-three-times.md`, lines
+  4 to 8 at the tip: the three attempts are one command in one call, line 11
+  at `305490e`, and a check of Claude Code refuses the call and not one of
+  the three, so the line goes to the call refused and made again, where the
+  order said an attempt. `docs/skill-conventions.md` lines 425 to 449 at the
+  tip follow; until then they said the rule before this branch, the first
+  refusal named beside the answer, each failure of a fetch named, and the
+  silent retry not allowed whatever the first attempt met.
+
+  **The last message.** The description stands in `shared/mark-deletion.md`
+  lines 43 to 68 at the tip, which every end of the run with nobody there
+  inserts — `build-work` lines 112, 1175 and 1543, `plan-work` line 218,
+  `cut-into-tasks` line 176 — and `build-work` lines 1555 to 1561 at the tip
+  refer to it. No new text: `docs/skill-conventions.md` lines 166 to 168 and
+  195 to 197 make `shared/mark-deletion.md` the rule written once for that
+  situation, inserted at those five ends and nowhere else, and a second text
+  beside it at the same five would be the gap again at the next end that
+  took one and not the other. `setup-checks` line 226 said for `secrets`
+  with nobody there that the run stops, where lines 93 to 98 and line 160
+  say the task ends and not the run; decision 5 of the roadmap entry of 9
+  October 2026, lines 14246 to 14259, decides it, and line 226 follows. The
+  run then goes on with the next task and ends at an end of `build-work`,
+  where the description stands. That settles one of the three pairs of the
+  finding of the rule-build entry above, lines 26837 to 26842; the pairs of
+  `start-work` and `plan-work` stay open with it. The finding of this entry
+  on the description in `build-work` alone is answered by this.
+
+  **The headings.** Every heading and every bold sentence start under
+  `skills/` and `shared/` that asks for something to be said, reported,
+  named, announced or handed over was read against the text under it. Four
+  changed. `setup-project` line 123 reads "Step 0 — Get on with it, and put
+  what is about to happen into the first question" and line 209 "Step 2 —
+  Nothing of what you found is said", which answers the finding of this
+  entry on that heading; `review-changes` line 163, "Report", reads "The
+  report, said to nobody"; `start-work` line 64 reads "Step 2 — Orient them,
+  if the status line says this project is not set up and the idea did not
+  come with the command". The others say what the text under them still
+  asks for, and the report names each with the line it rests on.
+  `review-changes` line 106, "the form of what may be said instead is
+  fixed", permits and does not demand, and stays.
+
+  **The insert of `shared/backed-command.md`.** It stays. `setup-project`
+  lines 49 to 51 put an install the guard blocked with nobody there into an
+  issue carrying the command, and `shared/backed-command.md` lines 10 to 13
+  count an issue carrying the command among the ways a command travels; the
+  sentence of this entry that no other line of the skill hands one over was
+  not right, and the finding is answered by those lines. `setup-project` is
+  not among the skills the unattended mode reaches by the tool's computed
+  set, so those lines run only where the skill runs with nobody there,
+  which nothing shows; whether that branch should stand is not this
+  addendum's.
+
+  **Records of the addendum.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`, read off `git diff 305490e --
+  docs/stock-take.tsv`: 49 thing rows changed and three added, 43
+  not-a-thing rows changed and one added, 13 run rows re-keyed. The tool
+  derives the unit part of a name from its heading and rejects a run on a
+  name no thing carries, so the 39 things under the four headings are
+  renamed in their unit part alone, the note of each naming the heading
+  until then, and their 13 runs re-keyed to the new names, as `a582708`
+  did for four runs on 6 October 2026; twelve of the 13 did not count at
+  `305490e` already, their lines changed by `7edb476`, the first commit of
+  this entry, and the thirteenth, on the in-flight report of `start-work`, still
+  counts, none of its lines changed. No run stops counting on account of a
+  heading. Three runs stop counting on account of `setup-checks` line 226,
+  all on the straight path of its step 1: the second closing run of 11
+  October 2026 and the two runs of 16 October 2026. The three things on the
+  last message moved from `build-work` to `shared/mark-deletion.md`, with
+  no run on any; the thing on `secrets` with nobody there in `setup-checks`
+  renamed, no run on it, its name having said the run stops since 9
+  October 2026; the defect of 31 August 2026 on a refused command repeated
+  in silence evidenced on the line that carries the decision, and three new
+  things for that line, with nobody there and at a fetch; the three
+  findings of this entry evidenced on the lines that answer them, the site
+  of each staying its status line, so the tool reads each as built and
+  never walked. The tool on the tree of the addendum's changes before
+  their commit: no broken record, 19 findings as at `305490e`, no unit
+  without a straight path, none of 3930 lines of the search set uncovered,
+  where `305490e` had 3927, exit 0; recorded and not built 247 where it was
+  250, its defects 236 where they were 239; built and never walked 1142
+  where it was 1135 — skill branches 671 where 673, shared texts 147 where
+  141, defects 245 where 242; walked 513 where 514, the step 1 of
+  `setup-checks` above; runs that do not count 413 where 410; not-a-thing
+  records 2538 where 2537.
 
 ## Decisions taken against
 
