@@ -208,23 +208,30 @@ project meets finds an answer and not the absence of one.
 ## Step 4 — Questions
 
 Only these, each only under its condition. Lead with your recommendation so a
-single word can answer, on questions 1, 4 and 5; questions 2 and 3 give none,
+single word can answer, on questions 1, 4 and 5 — on questions 1 and 5 in the
+question field, before the question line, and on question 4 before the
+question in the message that puts it; questions 2 and 3 give none,
 since both reach past the project — a setting of the repository, and the
 record a guard reads. One form for a choice, and the
 form is where its content goes: the choice goes through the harness's choice
 widget, and everything that carries the decision stands in the widget's own
-fields — a line for the question, a header, and for each answer a label and a
-line — each field kept to a short line, since what does not fit a field
-arrives cut to it, as the roadmap entry of 30 September 2026 on the question's
-first asking measured. Prose in the run's own message before the widget
-carries only a point no field can carry, and nothing else: a paragraph above
-the options does not get read, and the points of question 3 that stood only
-in prose arrived in none of three runs. Questions 1, 2 and 5 are such
-choices, and several of them may share one widget call. Question 3 is one
+fields — the question field with the question line at its end, a header, and
+for each answer a label and a line, its description — within the bound the
+output style of devloop sets, since what does not fit arrives cut, as the
+roadmap entry of 30 September 2026 on the question's first asking measured
+and the roadmap entry of 17 October 2026 measured again for the question
+field. Nothing stands in the run's message before the widget, since 17
+October 2026: a paragraph above the options does not get read, the points
+of question 3 that stood only in prose arrived in none of three runs, and
+text before the call lands in a collapsed note. Questions 1, 2 and 5 are such
+choices, and several of them may share one widget call; how a shared call
+shows at 80 columns is not measured, the roadmap entry of 17 October 2026
+says so. Question 3 is one
 too, and it names the field of each of its points; its call carries this
 question and no other: two decisions put in one submit come back as one
 answer, and a bare yes is then an answer to neither. Question 4 is open and
-has no options, so it is put in prose, in the run's own message. Nothing here
+has no options, so it is put as text, last in the message that ends the
+turn, with what it needs before it. Nothing here
 asks about check classes or the tools that fill them: that mapping, and
 whether a missing tool gets installed, is the check setup's own question, put
 once the record this step writes has landed.

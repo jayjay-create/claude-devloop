@@ -279,7 +279,13 @@ Never name a class by its label alone. "secrets" means nothing to someone who ha
 not read the file; "searches the code and the git history for credentials that
 were committed by accident" does.
 
-Ask which to do now: all of them, or some first and the rest after them. "None"
+Ask which to do now: all of them, or some first and the rest after them. The
+question is put as text, last in the message that ends the turn, the
+proposal above standing before it in that message, since 17 October 2026:
+one line per class with what it catches, its cost and its tool, and the
+reasons of the ones that do not apply, are what the answer is given on, and
+they do not fit the harness's choice widget by the bound of the output
+style of devloop. "None"
 is not among the answers, and neither is a class left for later without a
 reason. `empty` means nobody decided, and every step that asks whether the
 suite is complete reads that word as undecided — the mode's first
@@ -320,7 +326,9 @@ whatever made the class eligible; step 3 says how each is asked. A test
 case and a
 target in the task runner are not. When both kinds come up in one round, state
 the ones that cost them nothing and ask about the ones that do — never side by
-side as though they were the same kind of thing.
+side as though they were the same kind of thing. The statement waits for the
+next message that ends a turn with text, and never stands before the call
+that asks, since 17 October 2026.
 
 ## Step 3 — Prefer tools that live inside the project
 
@@ -394,7 +402,10 @@ entered there, in the same form, each alone in its call:
 
 The command of the second way installs the tool outside the project — on a
 route of the record, `brew install prettier` or `npm install -g prettier`
-say — and is handed over directly after the no, in the run's own message,
+say — and is handed over after the no in the message that ends the turn —
+where another question of this step follows through the widget, in the next
+message that ends a turn with text, never before that call, since 17
+October 2026 —
 backed and as it runs from wherever they are, by "A command handed over runs
 as it stands" in `docs/skill-conventions.md`. It is never the line that
 enters the tool into the project's packages, `npm install --save-dev
@@ -849,70 +860,72 @@ why the gate order below reads auto-merge back.
 through the harness's choice widget, in the user's language, alone in its
 call, every point in a field of its own, and no recommendation, on the
 pattern `shared/install-question.md` sets out. What it decides: whether work
-in this project may run alone at all, from the designs to the merge — a
-permission for this repository, which each piece of work is asked
-separately whether to use, at the end of its sharpening, `--auto` being that
-answer given up front.
+in this project may run alone at all — a permission for this repository,
+which each piece of work is asked separately whether to use, at the end of
+its sharpening, `--auto` being that answer given up front. Nothing stands
+before the call: what no field carries is not said. Since 17 October 2026;
+until then five parts stood before the window in the run's own message, and
+in both runs of 16 October 2026 they landed in a collapsed note.
+
+**Read before the question whether the repository is public**: `gh repo view
+OWNER/REPO --json visibility -q .visibility`, a field `gh repo view --json`
+offers beside `isPrivate`, in the manual of gh 2.89.0 and in `gh repo view
+--help` of gh 2.96.0. Measured on 17 October 2026 with
+gh 2.96.0: `PUBLIC` on a public repository and `PRIVATE` on a private one,
+exit 0, and exit 1 with the GraphQL message on a name that resolves to no
+repository. Where the answer is not `public`, in capitals or not, or where
+no answer came, the question field carries the line on the cost below: on a
+public repository the check runs on GitHub's standard machines free of
+charge, on a private one it counts against the free minutes of the account,
+GitHub Docs, "About billing for GitHub Actions", read on 17 October 2026.
+Where no answer came, `shared/command-does-not-answer.md` holds beside it,
+and the command and the message stand in the question field under the line
+on the cost, since they bear on it.
 
 - **In the header: a word for the subject**, of twelve characters at most —
   that it is about work without them.
-- **In the question line: the subject and its scope.** Whether devloop may
-  from now on work in this project without them, from the designs to the
-  merge; that whether an idea is then really built without them is asked at
-  every new idea, once they have sharpened it together; and that the answer
-  holds for every task of that idea.
-- **In the yes, label and line: what a yes means.** That devloop sets a
-  check up on GitHub and protects the main branch, against their own direct
-  pushes too; and that a run then works until everything is built, as long
-  as this window is open and the machine is awake. Where the protection
-  stands already, the first of the two sentences goes.
-- **In the no, label and line: where a no leads.** Everything stays as it is
-  and every task comes to them for approval; `--auto` sets it up later.
+- **In the question field, each point on a line of its own, and after a
+  blank line the question line.**
+  - The course and its end: without them devloop builds the planned tasks
+    one after the other, GitHub merges each as soon as the checks are green,
+    and they see the result only at the end.
+  - The cost, only where the reading above leaves it standing: the checks
+    spend minutes of their quota on GitHub.
+  - Keeping the machine awake: it has to stay awake as long as devloop
+    works. On macOS alone, where `uname -s` answers `Darwin`, the same line
+    goes on: `caffeinate` in a terminal of their own keeps it awake, and a
+    closed laptop it does not — `caffeinate(8)` on that machine, read on 7
+    September 2026, holds an assertion against idle sleep for as long as the
+    process runs, and a closed lid is a different route into sleep. On every
+    other system, and where `uname -s` does not answer, the first sentence
+    alone and no command, backed or not: the commands for Linux and Windows
+    come with milestone 12 of `docs/plan.md`. It is said here and not made a
+    second question of: it is something they do outside the run, and a
+    second question beside the real one blurs the real one.
+  - The question line: whether devloop may work in this project without
+    them.
+- **In the yes, label and description: what a yes means.** That devloop sets
+  a check up on GitHub and protects the main branch, against their own
+  direct pushes too; and that a run then works as long as this window is
+  open. Where the protection stands already and binds, the first of the two
+  sentences goes.
+- **In the no, label and description: where a no leads.** Everything stays
+  as it is; `--auto` sets it up later.
 
-The wording approved on 8 October 2026 stands in the roadmap entry of 9
-October 2026 as text 6; this skill says what is said, not the words.
-
-**Before the window, as a short text in the run's own message, only what no
-field can carry**: five parts, in this order, in ordinary words, and
-nothing else.
-
-1. **The course.** Without them devloop takes one planned task after the
-   other: its own branch, the code, the checks, the review, a pull request.
-   GitHub merges it by itself once every check is green, and devloop waits
-   for that before taking the next.
-2. **What can go wrong.** A task that does not go green becomes an issue
-   with the reason, and devloop goes on with the next — the commonest case.
-   A merge that does not go through on GitHub ends the run, since everything
-   after it would be built without that check.
-3. **The end.** Once everything is built, the run says so in its last
-   message; where it stops before that, its last message says why; and it
-   does not start again by itself.
-4. **The costs.** On a private repository the check on GitHub spends minutes
-   from the account's quota. Without them the review leaves no angle out —
-   security, tests or error handling, say — where with them it may leave one
-   out with a reason, so every review costs more without them; no rate is
-   given, since the one measurement at hand, five angles over one task and
-   three over two others, is the defect being fixed and not a rate. And
-   without them they see only at the end whether what was built is what
-   they wanted, with them at every task.
-5. **Keeping the machine awake.** For every system: the machine has to stay
-   awake as long as the run works, and where it sleeps the run stands still
-   until they write something — measured on 6 September 2026, the entry in
-   `docs/skill-conventions.md` under "Environment constraints, measured". On
-   macOS alone, where `uname -s` answers `Darwin`, one command: `caffeinate`,
-   started in a terminal of their own and ended with Ctrl-C when they are
-   back, and in the same breath that it does not keep a closed laptop awake —
-   `caffeinate(8)` on that machine, read on 7 September 2026, holds an
-   assertion against idle sleep for as long as the process runs, and a
-   closed lid is a different route into sleep. On every other system, and
-   where `uname -s` does not answer, the sentence for every system and no
-   command, backed or not: the commands for Linux and Windows come with
-   milestone 12 of `docs/plan.md`. It is said here and not made a second
-   question of: it is something they do outside the run, and a second
-   question beside the real one blurs the real one.
+At 80 columns, on macOS and with a private repository, these fields fill
+twelve lines, inside the bound the output style of devloop sets, measured on
+17 October 2026 with the approved wording wrapped at 76 and 73 characters.
+The wording approved on 17 October 2026 stands in the roadmap entry of that
+date as the new text 6, in place of text 6 of the roadmap entry of 9 October
+2026; this skill says what is said, not the words. What went from text 6
+and from the five parts on that day — the steps of a task, the issue for a
+task that does not go green, a failed merge ending the run, that the run
+does not start again by itself, that the review costs more without them,
+that the run stands still until they write, and how `caffeinate` is ended —
+stands in that entry with the reason for each.
 
 What the paragraphs that stood here until 9 October 2026 said before the
-question and the five parts do not — that the run takes up the issues it
+question and its fields do not — that the run takes up the issues it
 raised against itself, that there is no ceiling on the number of tasks, that
 the result reads as the diff from the starting commit, how the run ends and
 how a standstill is seen, and a word against a yes on a first project — is
@@ -981,13 +994,18 @@ no to either: a tool the run may not install becomes an issue that holds its
 task and everything built on it, and a check whose tool may not be entered
 stays off. First the install question, then the one on the dependency file;
 after a no the other is not put, there being nothing left for it to decide.
-Before each widget stands one line of prose, in the run's own message, that
-names the permission: that work without them needs their yes to it — to
+In the question field of each, before its question line, stands one line
+that names the permission: that work without them needs their yes to it — to
 installing tools outside the project, or to adding check tools to the
 project's packages itself. Where the record says no, a second sentence
-follows, that they said no to it; where no record stands on the main branch
-— the pull request carrying the answer never landed, say — the line is the
-first sentence alone.
+follows in the same field, that they said no to it; where no record stands
+on the main branch — the pull request carrying the answer never landed, say
+— the line is the first sentence alone. Nothing stands before the call.
+Since 17 October 2026; until then the line stood as prose before the widget,
+and in the runs of 16 October 2026 it landed in a collapsed note or came
+without the no. `shared/install-question.md` says of the question line that
+nothing else stands there: this line stands above it, in the question field,
+and the question line stays as it is.
 The question itself is put as it was the first time, alone in its call, with
 the line under its no that belongs to this second asking. The install
 question:
@@ -995,7 +1013,8 @@ question:
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-question`
 
 The question on the dependency file is the one step 3 describes, field for
-field, with one line changed: its no says that the run adds nothing itself
+field, with the line above in its question field and one line changed: its
+no says that the run adds nothing itself
 to the packages, and that work without them is then not possible, every
 piece of work running with them. That a first setup puts this question in
 step 3 and again here is meant: here it is the second asking, with its own

@@ -271,9 +271,11 @@ in projects set up with devloop and nothing else, and without your yes the file
 is not touched. It does not decide how you like to be spoken to, with one
 exception it makes itself: devloop brings its own output style and forces it,
 so while devloop is enabled the output style you chose does not apply, in
-every session, and devloop's stands in its place. That style says only that
-what a skill owes you is written as visible text in the message rather than
-in a collapsed progress note, and it keeps Claude Code's coding instructions.
+every session, and devloop's stands in its place. That style says only where
+what devloop owes you stands: what you need for a decision stands in the
+question, everything else in the last message before devloop waits for you,
+and nothing of it in a collapsed note between the steps; and it keeps Claude
+Code's coding instructions.
 Where another plugin forces a style of its own and Claude Code loads it
 first, devloop's does not apply, and the run tells you so once in the
 session. Disable devloop and your style applies again from the next session

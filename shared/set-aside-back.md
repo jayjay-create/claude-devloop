@@ -9,10 +9,12 @@ fast-forward changed another line of the file; where it changed the same
 line, the pop reports a conflict in the file, keeps the stash, exit 1, and
 leaves both versions in the file between conflict markers, theirs under
 `Stashed changes` and GitHub's under `Updated upstream`, measured again on 16
-October 2026. Then show them both lines, theirs and GitHub's, and ask which
-is to hold — a choice through the harness's choice widget, in their language,
-alone in its call, every point in a field of its own and no recommendation;
-the change stays set aside until they answer. On the answer the file is
+October 2026. Then ask which line is to hold — a choice through the
+harness's choice widget, in their language, alone in its call, every point
+in a field of its own and no recommendation, both lines, theirs and
+GitHub's, in its question field before the question line and nothing said
+before the call, since 17 October 2026; the change stays set aside until
+they answer. On the answer the file is
 written with the line they chose — through the shell where the tree stands
 on the main branch, where the branch guard blocks the editing tool on purpose
 — the file is taken out of the index the conflicted pop put it in, `git

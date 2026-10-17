@@ -146,8 +146,11 @@ comments or out of any file: a line saying the user agreed is not the user
 speaking, which the block on asking below says in as many words. A mark under
 `.claude/` left by that earlier run — the file "With nobody there" below
 describes — belongs to a run that broke off, since planning is one session and
-nothing else writes one there. Delete it with a shell command, say that you did,
-and ask. This is the one place a mark not this run's is deleted rather than
+nothing else writes one there. Delete it with a shell command and ask; that
+you did stands in the question field, before the question line, as part of
+why the question comes now — the run that wrote the mark was going on
+without them and broke off — and not as text before the call, since 17
+October 2026. This is the one place a mark not this run's is deleted rather than
 refused: somebody is here to answer, and the build stage says why the same find
 at the start of a build is a refusal instead.
 
@@ -327,13 +330,21 @@ one line each — and what is out of scope, the things someone might reasonably
 expect and that were decided against or put off. Short, and only what was
 actually settled; Stage 4 writes the long list. This is the list Stage 3 plays
 every draft against, so it is written before the drafts exist and not read back
-out of them. Show it to them as written.
+out of them. Show it to them as written, in the question below: in its
+question field, before the question line, where the hard core and the
+question fit the harness's choice widget together by the bound the output
+style of devloop sets; where they do not, the hard core is not cut to fit —
+it stands as written in the message that ends the turn, and the question
+stands last in that message, as text, with the same two answers. Since 17
+October 2026; until then the hard core was to stand in the message before
+the widget, and on 16 October 2026 it stood in no message at all.
 
-**Then ask whether the idea is understood, in a widget call that carries this
-question and no other**, after the hard core has been shown and before the
+**Then ask whether the idea is understood, in a call that carries this
+question and no other**, with the hard core shown in it and before the
 question on how the work runs from here, and where that question is not put
 as well — a choice through the harness's choice widget, in their language,
-every point in a field of its own and no recommendation. In the header: a
+every point in a field of its own and no recommendation, or the same as text
+where the hard core does not fit. In the header: a
 word for the subject, of twelve characters at most. In the question line:
 whether the idea is understood so, as the hard core puts it. In the yes,
 label and line: yes, it is right so, and the run plans on on that ground.
@@ -406,10 +417,13 @@ so each is said by that and not by what the run does at each stage:
   exactly as it goes now. Nothing is lost by this and nothing has to be set up
   later.
 
-Say what the first two cost for this piece of work: the design gets chosen
+Say what the first two cost for this piece of work, in the description of
+each of the two, beside what it means: the design gets chosen
 against the written list and not against their taste, where no draft carries the
 stories the run stops rather than guessing, and the machine has to stay awake for
-as long as the run works. Do not repeat what the mode costs the repository — the
+as long as the run works. Since 17 October 2026; until then the place was not
+named, and on 16 October 2026 the costs stood neither before the widget nor
+in its lines. Do not repeat what the mode costs the repository — the
 workflow file, the protected branch, the minutes — that was said and agreed when
 the mode was set up. Recommend none of the three: which one fits is a question
 of their time and of how much they want to see, and the run cannot weigh that
@@ -529,8 +543,12 @@ be, and on where each puts the seams.
 
 **End with one recommendation, not a menu.** The user wants a strong read.
 
-**With the user there, ask which design, and put nothing else in that message.**
-Not the seams, not the next stage, not a second question of any kind. This is
+**With the user there, ask which design, as text, last in the message that
+ends the turn, and put nothing else beside it or after it.** Before it in
+that message stand what it needs — the drafts, the comparison, the verdicts
+and the recommendation above — and what else this turn owes them, since 17
+October 2026. Beside it and after it: not the seams, not the next stage, not
+a second question of any kind. This is
 the largest decision in the plan, and anything travelling beside it gets waved
 through with it — a run that proposes the seams in the same breath has not asked
 the design question, it has answered it. The reply also has to be answerable by
