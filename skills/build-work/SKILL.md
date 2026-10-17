@@ -992,7 +992,8 @@ against the rollup:
   carries one and a `foreign:` line for each that none carries, read off each
   check run's own link to its workflow run in the same query, and arms nothing.
   Where GitHub refuses at `BLOCKED` because the check went green in between,
-  the program reads the state once more and the rollup, and ends the same way.
+  the program reads the state again, as it reads it above, and the rollup,
+  and ends the same way.
 
 **A rollup that did not answer is not a check that has not started.** The two
 look alike — nothing for the required name either way — and they are different
@@ -1092,10 +1093,12 @@ in the first two cases, is a stop with
 the reason named, the mark going with it as at every such stop. **The third
 is not, at first**, since 17 October 2026, by the person's decision of that
 day: a run without them does not end because a check was quick. At `past its
-gate:` with no `foreign:` line, restart once every run its `rerun:` lines name
+gate:` with a `rerun:` line, restart once every run its `rerun:` lines name,
+whatever `foreign:` lines stand beside them, since the addendum of that day
 — `gh run rerun <id>`, one call each, without `--failed` and without `--job`,
 so that the whole run goes again and none of it stands on its old result —
-and call the program again, which arms on the `BLOCKED` the restart brings;
+and call the program again, which arms on the `BLOCKED` the restart brings,
+a foreign check already through staying through;
 GitHub merges once the check is green again, never this run. Measured by the
 person on 17 October 2026 on #16 of `devloop-test-x`: `CLEAN` before, one run
 on the head commit, `BLOCKED` one second after `gh run rerun` with an empty
@@ -1104,14 +1107,16 @@ it. Only the runs that carry a required check are restarted, and a pull
 request once. A restart after which GitHub merges is said nowhere — not in
 the conversation, not in the last message, not in the pull request: it
 changes nothing of what they get. Where the program ends with `past its gate:`
-again after the restart, before GitHub accepted the arming, or with a
-`foreign:` line — a required check from a service outside GitHub Actions,
-which nothing here can restart, whatever the other checks are — it is a stop
+again after the restart, before GitHub accepted the arming, or with no
+`rerun:` line — every required check from a service outside GitHub Actions,
+which nothing here can restart — it is a stop
 with the reason named: the first group of the last message says that at that
 pull request, by its number, the check had already run through before GitHub
 could accept auto-merge — even after a restart, or coming from a foreign
 service devloop cannot restart — and that devloop never merges itself, so
-the run stops here; the merge goes into the second group, handed to them.
+the run stops here; the merge goes into the second group, handed to them,
+without the handover's sentence on why GitHub does not merge it itself,
+since the addendum of 17 October 2026: the first group has said it already.
 The wordings approved that day stand in the roadmap entry of that date on
 arming past the gate; a skill says what is said, not the words. A restart
 that does not answer, or answers with an error message, goes as "When a

@@ -27368,9 +27368,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   check is green again, and devloop never merges itself, `build-work` line
   881. Only runs that carry a required check are restarted, the required
   names coming from the two gate queries of `build-work` lines 1034 to 1053.
-  Where the check is through again before GitHub accepts the arming, or a
-  required check comes from a foreign service — a commit status, no run on
-  GitHub Actions — the run ends as `build-work` lines 1063 to 1079 say, with
+  Where the check is through again before GitHub accepts the arming, or no
+  required check is carried by a run on GitHub Actions — each a commit
+  status or a check run of another app, from a foreign service — the run
+  ends as `build-work` lines 1063 to 1079 say, with
   the reason below; a restart that does not answer, or answers with an error
   message, goes by `shared/command-does-not-answer.md`, and one refused by a
   guard, the classifier of auto mode or `hooks/permission-request-unattended.sh`
@@ -27434,9 +27435,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the run's own command and not the program's, so that the guards, the
   classifier and the hook on permission prompts read it. A pull request whose
   required checks are on GitHub Actions and from a foreign service at once
-  ends the run without a restart, the decision naming "a" required check
-  from a foreign service; the other reading, the runs restarted and the
-  foreign result left standing, is named in the report and not taken.
+  has its runs restarted as any other, since the addendum below: the restart
+  brings `BLOCKED`, and the foreign result, through already, stays through.
 
   **What it builds, file by file.** `bin/devloop-arm`, new: it reads the
   pull request's number, id and base branch, then `mergeStateStatus` once a
@@ -27463,8 +27463,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and its answers, the measurement of 13 September 2026 on `-f` kept; with
   nobody there the third case no stop at first — one restart of the runs the
   `rerun:` lines name, a call of `gh run rerun <id>` each, and the program
-  again; `past its gate:` again, or a `foreign:` line, a stop with the reason
-  approved that day; the restart said nowhere where GitHub merges.
+  again; `past its gate:` again, or no `rerun:` line since the addendum
+  below, a stop with the reason approved that day; the restart said nowhere
+  where GitHub merges.
   `setup-checks` lines 713 to 782 and `setup-project` lines 774 to 837 at the
   tip follow the program, the second not named by the order and saying the
   same as the first. `shared/empty-read.md`: the second read and the not
@@ -27585,6 +27586,166 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `build-work` line 952, "Ask whether the required check has run", which is
   no offer and now says that the program asks. The tool's self-test, 114
   cases, 76 of 76 messages asserted by a case, exit 0.
+
+  **Addendum of the same day: the reason said once in the last message, a
+  pull request whose required checks come from GitHub Actions and from a
+  foreign service at once, two gaps of `bin/devloop-arm`, and a self-test
+  for it on every system.** Ordered on 17 October 2026 after `275be3d`, made
+  the same day on `task/arming-past-gate`, the version staying 0.144.0,
+  raised once on this branch already. The report stands on this machine as
+  `~/devloop-report-2026-10-17-arming-addendum.md`, in English, and is not
+  in the repository. A line is given as it stands at
+  `275be3d` unless the tip of the branch is named. No session of Claude Code
+  was started and no model called outside the session that made it; beyond
+  the `git fetch` the order opens with, GitHub was neither read nor changed.
+  The pre-check found no place at which no rule decides and none at which
+  the person would get wording not already approved, so nothing halted.
+
+  **The reason said once.** At the stop of `build-work` step 6 on a pull
+  request past its gate with nobody there the merge goes into the second
+  group of the last message without the handover's sentence on why GitHub
+  does not merge it itself, `build-work` lines 1117 to 1119 at the tip;
+  `shared/merge-handover.md` stays as it is, and so do both wordings. Which
+  of the two gives way needs no decision of the person:
+  `docs/skill-conventions.md` lines 675 to 681 send a part the reader meets
+  before it matters "altogether where it is met already", lines 759 to 768
+  have it said "once, where the reader meets it", and the first group comes
+  before the second, `shared/mark-deletion.md` lines 48 to 59. So the
+  handover's sentence goes, at that stop and at no other, as the order has
+  it. That answers the finding of this entry above on the reason twice,
+  lines 27521 to 27525, whose status line stays as written; the person keeps
+  nothing to decide there.
+
+  **Both kinds of required check at once.** The order of this branch said
+  the run ends where "a required check from a foreign service" comes, and
+  this entry wrote that into the person's decision; it was narrower than the
+  decision, whose reason is that a run without the person does not end only
+  because a check was quick. Since this addendum, where the program ends
+  with `past its gate:` and at least one `rerun:` line, the run restarts the
+  runs those lines name once and calls the program again, `foreign:` lines
+  beside them or not: the restarted run is outstanding, so the program reads
+  `BLOCKED` and arms on it, `build-work` line 921, and a foreign check that
+  is through stays through. Without a restart the run ends only where no
+  `rerun:` line stands, with the wording for the foreign service, which is
+  then true, every required check found giving one line of the two kinds,
+  `bin/devloop-arm` lines 163 to 172; where the program reads `past its
+  gate:` again after the restart, the run ends with the wording for "even
+  after a restart". `build-work` lines 1095 to 1101 and 1109 to 1112 at the
+  tip say so, and the merge guard's message, line 40 of
+  `hooks/pre-tool-use-merge-guard.sh`; the program printed both kinds of
+  line already and is unchanged in that. The sentences of this entry on the
+  case follow: in its decisions, lines 27371 to 27374 at `275be3d`, in what
+  the order left to the build, lines 27435 to 27439, and in what it builds,
+  lines 27466 to 27467. The label of the second approved wording, line
+  27390, stays, being the case the wording was approved for; when it is said
+  is the skill's.
+
+  **Two gaps of `bin/devloop-arm`, and a third beside them.** After a
+  refusal the program read the state once, lines 219 to 221, and took only
+  `CLEAN`, `HAS_HOOKS` and `UNSTABLE` on to the gate and the rollup, so that
+  `UNKNOWN` or no value ended with `refused:`, line 231, against `build-work`
+  line 934 and `shared/empty-read.md` lines 6 to 9. It reads after a refusal
+  as in its loop now, the function `again`, lines 432 to 457 at the tip: an
+  `UNKNOWN` once more three seconds later, no value once more, the value
+  after that deciding; a second `UNKNOWN` in a row goes to the gate and the
+  rollup as a mergeable value does, and no value twice ends with `no
+  answer:`, nothing armed. Found beside them and built by the rule that
+  decides it: after a refusal the rollup was asked once, line 225, and one
+  that did not answer ended with `refused:`, where `build-work` lines 997 to
+  1002 ask it once more and then end with `no answer:`; it is asked once
+  more there now, line 490 at the tip. And the head, lines 26 and 27, has a
+  second `UNKNOWN` "in a row" go as a mergeable value does, while the count,
+  line 261, ran on across another value; it is reset at every other value
+  now, line 524 at the tip, a read without a value not counting as one,
+  since by `shared/empty-read.md` it is no reading at all. `build-work`
+  lines 994 to 996 at the tip follow.
+
+  **The self-test of `bin/devloop-arm`.** `bin/devloop-arm --self-test`,
+  lines 74 to 284 at the tip, 36 cases and no network: a stand-in for gh,
+  which the self-test writes into a directory of its own and alone puts
+  first on the path, answers each case from its script and logs every call;
+  the program runs in a directory that is no repository, with an empty
+  configuration of gh and no token, and the stand-in is checked to be the
+  gh the path finds before any case. `DEVLOOP_ARM_CLOCK` stands in for the
+  clock in the self-test alone, as `DEVLOOP_READER_OS` stands in for the
+  system in the reader's: the sixty seconds of reading, the three after an
+  `UNKNOWN` and the 95 of a call take none, so that the window and the bound
+  are produced at all and the whole takes seconds. It is called and names
+  its cases as the reader's self-test does since the fifth addendum of 14
+  October 2026 to the entry on the command reader, the model the order
+  named: `--self-test` as the one argument, one line per case named by what
+  it shows, every red case named with what the program printed, exit 1 at
+  the end where any was red. It covers every value of `mergeStateStatus`
+  and no value, a value in none of the groups among them; the arming
+  accepted, refused and unanswered; a required check not begun and one in
+  progress; a run carrying a required check beside one carrying none; a
+  commit status and a check run of another app from a foreign service, and
+  both kinds at once; the gate unknown and absent; the two gaps above and
+  the third; and, by the stand-in's log, that the arming comes in the pass
+  whose value asks for it, in the same call, and that no call starts once
+  fewer than ten of the 95 seconds are left.
+  `.github/workflows/stock-take.yml` runs it in the job "hooks on every
+  system" after the reader's self-test, line 195 at the tip, on all four
+  systems of the matrix, a red case making the check red; the names of the
+  jobs and the values of the matrix stay.
+  It ran green on this Mac under bash 3.2.57, in Docker `ubuntu:24.04` under
+  bash 5.2.21 and in `alpine:3.22` under bash 5.2.37 with BusyBox 1.37.0;
+  Git Bash under Windows was not at hand, and the run on the pull request
+  shows it. Seven programs made from it in a throwaway directory, each with
+  one change of this addendum undone or the arming moved onto `CLEAN`, came
+  out red at the cases for that change.
+
+  **Records of the addendum.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`, read off `git diff 275be3d --
+  docs/stock-take.tsv`: nine thing rows changed in place and four added, 11
+  not-a-thing rows changed in place and ten added. The four new things are
+  outcomes of `bin/devloop-arm`: no value twice after a refusal, and the
+  self-test green, red, and stopped before any case where the stand-in is
+  not the gh the path finds. Three things are renamed, no run hanging on
+  any, the note of each naming the name until then: the restart and the
+  stop at a foreign check in `build-work`, and the red check of the job, the
+  seven not-a-thing rows that name it following. The stop on a gate already
+  past in `build-work` and the green check of the job keep their names, a
+  run hanging on each, and the note of each says what holds since this
+  addendum; the new line of the job is part of the green check, so that its
+  run of 14 October 2026 stops counting. Four not-a-thing anchors and the
+  site of the renamed stop moved onto the lines that carry them now. The
+  finding on the reason twice keeps its site on its status line and has its
+  evidence on `build-work` line 1118 at the tip, so that the tool reads it
+  as built and never walked. The tool on the tree of
+  the addendum's changes before their commit: no broken record, 19 findings
+  as at `275be3d`, no unit without a straight path, no status word broken
+  over a line break, none of 4005 lines of the search set uncovered, where
+  `275be3d` had 3992, exit 0; recorded and not built 246 where it was 247,
+  its defects 235 where they were 236, the finding on the reason twice out;
+  built and never walked 1177 where it was 1171 — program outcomes 52 where
+  47, the four new and the green check of the job, defects 248 where 247;
+  walked 505 where 506, program outcomes 143 where 144, that check;
+  undetermined 26 as before; runs that do not count 427 where 426, the one
+  more the run of that check; not-a-thing records 2599 where 2589; lines
+  that can carry no unique anchor 216 where 215, the `exit 1` that ends a
+  red self-test, whose words stand in other lines of the program. The
+  figures at `275be3d` were read off the tool on a clone of that commit. No
+  run is recorded for this addendum.
+
+  **The tests of the addendum.** The self-test of `bin/devloop-arm` as
+  above, in about five seconds on this Mac and about one in each container.
+  The program was run once in real time, without `DEVLOOP_ARM_CLOCK`,
+  against a stand-in for gh answering `UNKNOWN` and then `BLOCKED`: read at
+  one second and at four, armed, exit 0. The merge guard was fed the JSON of
+  a call of `gh pr merge` in a project with `docs/agents/` and gave its
+  message on stderr with exit 2 and nothing on stdout, 382 words where it
+  had 375. `build-work` was read through `scripts/devloop-expand`, the
+  changed places at expanded lines 1815 to 1817 and 1970 to 1994, after the
+  handover at 1921. The nineteen checks under "Before a handover, run these"
+  ran on the tree of the addendum's changes before their commit, from
+  22:13:33 to 22:13:41 UTC, in a clean bash with `/usr/bin` first on its
+  path, line for line what they print at `275be3d` in a clone of it but for
+  two line numbers of `build-work` the five lines added above them moved,
+  1431 there and 1436 here in the check for offers, 1556 and 1561 in the
+  check on the decision of step 2. The tool, from 22:13:41 to 22:16:07 UTC,
+  exit 0 with the figures above; its self-test, 114 cases, 76 of 76
+  messages asserted by a case, exit 0.
 
 ## Decisions taken against
 
