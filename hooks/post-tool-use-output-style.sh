@@ -18,13 +18,14 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # every hook reads it so, and a check in .github/workflows/stock-take.yml
 # holds them to that. PostToolUse runs once a tool has run, so this blocks
 # nothing: it hands the run the facts as context, and the run says them to
-# the person in their language, as a text of its message, the wording the
-# run's, the content the roadmap entry's. Registered under PostToolUse and
-# under PostToolUseFailure, both without a matcher, since PostToolUse fires
-# only after a tool call that succeeded and the first call of a session can
-# fail, as the first walk of 15 October 2026 met: the event is read off the
-# input and answered under its own name. In a subagent nothing is read:
-# subagents run their own system prompt and no output style.
+# the person in their language in the next message with which it ends its
+# turn with text, never between two tool calls, since 17 October 2026, the
+# wording the run's, the content the roadmap entries'. Registered under
+# PostToolUse and under PostToolUseFailure, both without a matcher, since
+# PostToolUse fires only after a tool call that succeeded and the first call
+# of a session can fail, as the first walk of 15 October 2026 met: the event
+# is read off the input and answered under its own name. In a subagent
+# nothing is read: subagents run their own system prompt and no output style.
 INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
 EVENT=$(printf '%s\n' "$INPUT" | sed -n 's/^event: //p' | head -1)
 case "$EVENT" in PostToolUse|PostToolUseFailure) ;; *) exit 0 ;; esac
@@ -60,6 +61,6 @@ case "$NAME" in
     CAUSE="the output style $NAME, chosen in the settings, is in effect, and this Claude Code did not put the style devloop forces over it; measured to do so under Claude Code 2.1.299"
     LIFT="under a Claude Code that forces a plugin's output style, 2.1.299 or later, it applies from the next session on" ;;
 esac
-CTX="[OutputStyle] Say this to the person now, in their language, as a text block of your message and before anything else of this step, in this session only this once: devloop's output style does not apply in this session, because $CAUSE; what a step is to tell them beforehand can then land in the collapsed part instead of the message; $LIFT."
+CTX="[OutputStyle] Say this to the person in their language, in the next message with which you end your turn with text, and in this session only this once: devloop's output style does not apply in this session, because $CAUSE; what devloop owes them can then land in a collapsed note between the steps instead of in its question or in the message with which its turn ends; $LIFT."
 printf '{"hookSpecificOutput":{"hookEventName":"%s","additionalContext":"%s"}}\n' "$EVENT" "$(printf '%s' "$CTX" | sed 's/\\/\\\\/g; s/"/\\"/g')"
 exit 0

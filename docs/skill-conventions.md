@@ -405,6 +405,17 @@ is handed the work, and the report an unattended run writes instead. This has
 been repaired twice in the last two rounds, and it is cheaper to check while the
 clause is being written — name the place, and go and look at it.
 
+**The place is one of two, and never between two tool calls.** Text a
+decision needs is said in the question: in the fields of the harness's
+choice widget, or before the question in the message that puts it as text.
+Everything else is said in the message with which the turn ends — before a
+question asked as text, with a handover, at a halt, in the last message of
+a run. Between two tool calls nothing is owed: a note written there is kept
+as a summary and shown collapsed, and five runs of five put text owed before
+a question into one, the roadmap entry of 17 October 2026. Since that day,
+by the output style under "The output style is forced, and it replaces the
+person's" below.
+
 ## Say when something did not happen
 
 If a skill you call does not exist, say so — do not silently substitute another.
@@ -537,12 +548,17 @@ nothing, say what you are about to do and do it.
 
 Four things have reached the user by the time they answer: what is being
 decided, what each answer means in practice, what it costs, and why it comes
-up now. Not four sentences in each question — what has reached them already,
-a stage's opening saying that a few questions come with it, is not said
-again, and what has not is said where they meet it; "A text is as long as
-what carries the decision" below reads the four so, and since 16 October
-2026 so do this section, `shared/how-to-ask.md` and the template of
-`untangle-idea`, point 25 of part B of the roadmap entry of 12 October 2026.
+up now. Not four sentences in each question — what has reached them already
+is not said again, and what has not is said where they meet the question:
+put through the widget, in its fields, why it comes up now in the question
+field before the question line; put as text, in the message that puts it.
+Not in an announcement before it: text before the call that shows the
+widget lands in a collapsed note. "A text is as long as what carries the
+decision" below reads the four so, and so do this section,
+`shared/how-to-ask.md` and the template of `untangle-idea`, since 16 October
+2026, point 25 of part B of the roadmap entry of 12 October 2026; since 17
+October 2026 a stage's opening that says a few questions come with it no
+longer stands for why the next one comes, the roadmap entry of that date.
 Never name a bare term the user may not know. Someone
 who has never heard of this workflow must be able to answer.
 
@@ -624,7 +640,9 @@ since 1 October 2026 — grew to thirteen points the same way. Every addition wa
 justified, and no addition read the text it went into as a whole. The message reached the run, and the
 person watching, verbatim and unreadable. The question did not reach the
 person at all: ten of its thirteen points were prose above two option lines,
-and the form that carried it has no room for prose. Both cuts are recorded in
+and prose above the widget does not arrive — the widget's own question field
+carries prose, and nothing in this set used it for that before 17 October
+2026. Both cuts are recorded in
 `docs/roadmap.md` under `## Known gaps`: the entry of 29 September 2026 on the
 message's cut, the entry of 30 September 2026 on the question's; this is the
 rule drawn from them.
@@ -653,17 +671,55 @@ untrue, not that everything true is said.
 
 **A text is written for the form that carries it.** Ten sentences above two
 option lines are not too long — they do not arrive, whatever they say. The
-harness's choice widget has a slot for a question line, a header and the
-options, and none for prose; a hook's message arrives whole on stderr; a
-question a run puts arrives in whatever the run puts it in. So the form is
+harness's choice widget has a header, a question field and the options, each
+with a label and a description, the line a skill gives it: the question field
+carries prose, the question line at its end, and every description stands
+whole under its label. Measured on 17 October 2026 under Claude Code 2.1.301,
+`~/devloop-report-2026-10-17-question-field-bench.md` lines 268 to 288 and
+754 to 780: descriptions of one sentence and of three whole at 160×50 and
+at 80×24, in both renderers, and five runs of five putting the five parts of
+the mode question into the question field when asked to. What does not stand
+in the widget's fields is text before its call, which lands in a collapsed
+note, "The output style is forced" below. A hook's message arrives whole on
+stderr; a question a run puts as text arrives in the message that puts it.
+
+**The widget holds a bounded amount, and what does not fit goes as text.**
+The question field with its question line and the descriptions of all
+answers fill at most 14 lines together at 80 columns where there are two
+answers, and every further answer takes one line away; a line holds about
+76 characters in the question field and about 73 under an answer; every
+paragraph starts a new line and a blank line counts; the header is one word
+of at most twelve characters. At 80×24 the widget hangs at the bottom of the
+window and is cut at the top; above "Type something.", on rows 20 to 22,
+19 rows remain, of which the header, two blank lines and the label of every
+answer take their part; what is cut at the top the fullscreen renderer never
+draws, and the classic one pushes the first frame whole into the terminal's
+scrollback, the bench report lines 289 to 315. The 76 come from the widest
+line of the question field there, 78 characters with its border "│ ", lines
+292 to 293; the 73 are an estimate, the description being indented by a
+width the report does not give. Where several questions share one call, as
+`setup-project` step 4 allows, the picture is not measured. Where the text a
+decision needs does not fit, it is not cut to fit: the question is put as
+text at the end of the turn, the text before it in the same message — the
+choice of a design in `plan-work`, the landing question of `build-work`, the
+rounds of planning and the classes of `setup-checks` step 2 are put so. What
+fails the three tests above goes whatever the form; what carries the
+decision does not go for the form's sake. Decided on 17 October 2026, the
+roadmap entry of that date.
+
+So the form is
 named where the text is specified — as `setup-project` step 4 does, naming
 since 3 October 2026 the field of the widget each point of question 3 goes
 in, after two named forms that put the points in prose had been met by a tab
-of a form in three runs — and a text and a form that do not fit are one thing
-wrong, not two: the text goes into a form that holds it, or it is cut to what
-the form holds, and it is never made shorter in the hope that it gets through. Nothing in this set named
+of a form in three runs, and since 17 October 2026 the question field for the
+recommendation of questions 1 and 5 and text for question 4 — and a text and a
+form that do not fit are one thing
+wrong, not two: the text goes into a form that holds it, and it is never made
+shorter in the hope that it gets through. Nothing in this set named
 the widget before 30 September 2026, and that is how a question approved twice
-arrived as four lines.
+arrived as four lines; nothing named its question field as a place for prose
+before 17 October 2026, and that is how the five parts of the mode question
+stood before it and went into a collapsed note.
 
 **What this covers, and what it leaves where it is.** It covers the texts a run
 delivers whole, at one moment, to a reader who has nothing else in front of
@@ -689,8 +745,10 @@ under "Every question carries its own reason" — carries the reader's decision
 and stays. What this decides is where each is said: once, where the reader
 meets it, and not again in every text after it. The four things a question
 states are what has reached the person by the time they answer, not four
-sentences in each question: a setup whose opening said that a few questions
-come with it has said why the next one comes now.
+sentences in each question: what has reached them is not said again, and
+why the next question comes now stands in its question field, or in the
+message that puts it as text, and not in a setup's opening announcing that
+a few questions come, since 17 October 2026.
 
 **Nothing mechanical catches an overlong text; what holds is a duty at the
 moment of adding, and it is a thing done.** Each of the five changes that grew
@@ -725,11 +783,39 @@ instructions with every request". Measured the same day under Claude Code
 text arrives in every request of the conversation under the heading
 `# Output Style: <plugin>:<style>`, `devloop:devloop` for this one.
 
-**What it says, and why it is a style.** One thing: text a skill of devloop
-owes the person — what a line tells the run to say, state, report, present,
-name, confirm, announce or explain, or to put in its own message — is a text
-block of the run's message, before the tool call or the question it comes
-before, and never a progress note between tool calls. The entry of 15
+**What it says, and why it is a style.** It says where text a skill of devloop owes
+the person stands — what a line tells the run to say, state, report,
+present, name, confirm, announce or explain, or to put in its own message.
+Since 17 October 2026, decided by the person that day, the roadmap entry of
+that date: text a decision needs stands in the question, in the question
+field, the question line at its end, and in the descriptions of the answers
+where it is put through the widget, before the question in the message that
+puts it where it is put as text; why the question comes now stands there
+too, and is not announced before it; everything else stands in the message
+with which the turn ends, the last text before the run waits for the person,
+a turn not ending where one skill ends and the next begins in it; between
+two tool calls nothing is owed. A turn that ends on the widget carries in
+its question field what bears on that decision, and nothing as text before
+the call; the rest waits for the next turn that ends with text. The widget
+holds what the paragraph "The widget holds a bounded amount" above says, and
+what does not fit is put as text. A handover or a question a skill wants
+alone stands last in the message that ends the turn, before it what it needs
+and what else the turn owes, beside and after it nothing. A typed answer
+that matches an offered one counts as that answer; any other, and a chat
+about the question, is taken up and the question put again unless it was
+decided; no question said before what happens on "Type something." or "Chat
+about this", and this stands in the style because it has to reach every
+question of every skill — `start-work` puts questions through the widget by
+`shared/set-aside-at-start.md` and `shared/set-aside-back.md` and inserts no
+`shared/how-to-ask.md`. Until that day the style said that such text is a text block of
+the run's message before the tool call or the question it comes before; the
+progress-update bench of 16 October 2026,
+`~/devloop-report-2026-10-16-progress-update-bench.md` lines 836 to 843, put
+the five parts of the mode question under that style into a progress update
+and into no text block in five runs of five without a hook, six of six with
+an observing hook and one of one with a judge that could not fire, and after
+a denial of the question with the reason, in five of five again; so the
+place before the call is given up rather than held. The entry of 15
 October 2026 on the thinking part of the two closing runs measured such text
 at thirty-seven places in the model's progress updates, which the session
 keeps as a summary and shows collapsed. A style is sent with every request
@@ -764,12 +850,14 @@ fail, as the first walk met — reads it once a skill of devloop stands in
 the transcript, typed or called, and where the last such attachment is not
 `devloop:devloop` hands the run as context what to say and why — once per
 session and style, held by a mark under the system's temporary directory —
-and the run says it to the person in their language, as text of its message
-at the start of the step: that the style does not apply, because of what;
-that what a step is to tell them beforehand can then land in the collapsed
-part instead of the message; and what makes it apply again, disabling the
-other plugin from the next session on. The place where it is said is that
-message, by "A duty to say something needs a place where it is said". The
+and the run says it to the person in their language, in the next message
+with which it ends its turn with text, since 17 October 2026, and until
+then as text of its message at the start of the step: that the style does
+not apply, because of what; that what devloop owes them can then land in a
+collapsed note between the steps instead of in its question or in the
+message with which its turn ends; and what makes it apply again, disabling
+the other plugin from the next session on. The place where it is said is
+that message, by "A duty to say something needs a place where it is said". The
 hook blocks nothing, by "In doubt, a run with nobody there is not blocked",
 and it is the one handler after a tool call without a matcher rather than a
 PreToolUse one: every PreToolUse handler carries `"onFailure": "block"`, and
@@ -1480,15 +1568,18 @@ and merged within twenty minutes of it. Nothing was lost — the state sat in th
 tracker and in git, exactly as this file promises — and nothing resumed either.
 So an unattended run is bounded by the window being open and the machine being
 awake, which is a cost the person agreeing to that mode is owed while they are
-agreeing to it; it is in the cost list at `setup-checks` step 8, with what keeps a
+agreeing to it; it is in the question field of the question at `setup-checks`
+step 8 since 17 October 2026, and was in the cost list said before it until
+then, with what keeps a
 machine awake beside it. On macOS that is `caffeinate`, which holds an assertion
 against idle sleep for as long as the process runs (`caffeinate(8)` on this
 machine, read 7 September 2026). **What it does not reach is a closed lid**,
 which is a separate route into sleep, so a hint that stops at the command
 promises more than it can hold. Off macOS no command is named, since 9 October
 2026: the commands for Linux and Windows come with milestone 12 of
-`docs/plan.md`, text 6 of the roadmap entry of 9 October 2026, and until then
-the sentence for every system stands alone there.
+`docs/plan.md`, text 6 of the roadmap entry of 9 October 2026 and its new
+version in the roadmap entry of 17 October 2026, and until then the sentence
+for every system stands alone there.
 
 **What cannot be waited for is a person, and a state on the platform is not
 one.** A check running on GitHub has a command that blocks on it and needs nobody
@@ -3282,9 +3373,11 @@ are named by. Silence means it holds; a line means the place has lost its
 loose-issue clause, or the heading it is keyed to has been renamed — either way
 something needs reading. Until 9 October 2026, version 0.134.0, the loop ran
 over two places, `setup-checks` step 8 beside `build-work`: step 8 stated the
-finish to the person before its question, and since that day it says there
+finish to the person before its question, and since that day it said there
 only that the run says so once everything is built, text 6 of the roadmap
-entry of 9 October 2026, and states the finish nowhere, so the one place that
+entry of 9 October 2026, and since 17 October 2026, in the question field,
+only that they see the result at the end, text 6 as the roadmap entry of
+that date has it; it states the finish nowhere, so the one place that
 states it is the one read here; a second place that comes to state it goes
 back into the list:
 

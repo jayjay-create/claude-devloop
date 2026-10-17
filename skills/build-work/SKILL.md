@@ -796,8 +796,11 @@ line**, rather than disappearing into what was fixed: a condition the issue name
 or a test decision it records that the review found missing or unmet. It was
 fixed, and the person at the gate still needs to know the work arrived at review
 without it — that is a fact about how the build went, and "what was fixed" is a
-list long enough to hide it. **Then ask, in
-its own message, one closed question:** whether this should land. Say what each
+list long enough to hide it. **Then ask one closed question, as text, last in
+the message that ends the turn:** whether this should land. Before it in that
+message stand what it needs, the diff and the findings above, and what else
+this turn owes them; beside it and after it nothing — since 17 October 2026;
+until then it was asked in its own message. Say what each
 answer means — yes lands it, no keeps the branch and takes revisions. Say how a
 yes lands it **here**, read off this repository rather than assumed: the platform
 merges it once a required check goes green, or, where no check is required,

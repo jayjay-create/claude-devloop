@@ -1,6 +1,10 @@
 **The merge is handed over in one text, and the command in it runs from
-wherever the person is.** What is said, in the run's own message and in their
-language, and nothing beside it: that the pull request, named by its title,
+wherever the person is.** It stands last in the message that ends the turn,
+in their language; before it what else this turn owes them, and beside it
+and after it nothing: no second question, no proposal, no word on what comes
+after it — since 17 October 2026, where until then it was to stand in the
+run's own message with nothing beside it. What is said: that the pull
+request, named by its title,
 is open; why GitHub does not merge it itself, in the one sentence that fits
 the case — where no gate stands on the main branch, that there is no required
 check yet for it to wait on, whether or not auto-merge is on; where a gate

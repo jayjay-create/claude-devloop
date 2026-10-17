@@ -17616,9 +17616,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: the five parts before the mode question and the line of prose
   before each second question stood in thinking blocks or nowhere, no
   message of the run carrying them, records 146 to 152 and 167 to 172 —
-  should: the five parts stand as text in the run's own message before the
-  widget, `setup-checks` lines 810 to 847, and the line of prose before each
-  second question stands in the message, lines 919 to 923.
+  should: what the mode question needs stands in its fields, in the wording
+  approved on 17 October 2026, and nothing as text before its call, and the
+  line before each second question stands in that question's question
+  field, naming their no where the record says no, `setup-checks` lines 859
+  to 925 and 997 to 1008 as the roadmap entry of 17 October 2026 left them;
+  that entry revised this should and quotes the earlier one.
 
   **b. Points 2 and 3 of step 8 were not done.** After the yes to the install
   record and to the dependency file, records 169 and 173, step 8 says that
@@ -25939,13 +25942,18 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   question over a list of settled decisions, so that the person answered no
   and asked for the list and the questions at record 566 and the yes at 588
   confirmed the decisions and three answers, not the hard core — should: the
-  settled line and the hard core, the stories and what is out of scope, stand
-  in the message before the widget, what is left is asked in rounds, and Stage
+  settled line stands in the message of its round, the hard core, the
+  stories and what is out of scope, stands in the question field of the
+  confirmation where it fits the widget with the question and otherwise in
+  the message that ends the turn with the question put as text after it,
+  what is left is asked in rounds, and Stage
   1 says which decisions the run takes itself and which it puts to the person,
   where today its line "settle what you can settle yourself", expanded 810 to
   811, and the test of `shared/how-to-ask.md` let a run settle a whole
   frontier itself, `plan-work` expanded 804 to 832 and 873 to 897; which
-  boundary is the right one this entry does not decide.
+  boundary is the right one this entry does not decide; the place of the
+  hard core revised by the roadmap entry of 17 October 2026, `plan-work`
+  lines 333 to 347 as it left them, which quotes the earlier should.
 
   **4. The merge handover carried sentences beside it and on what comes after
   the merge.** `shared/merge-handover.md` lines 1 to 3, what is said "and
@@ -25978,10 +25986,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   records 355 and 454 of project 1 and 526 of project 2, carried a list beside
   it at 266 and 403, named auto-merge off beside the missing required check at
   133, 266 and 355 and closed on "Das ist kein Fehler." at all four of project
-  1 — should: the handover says the three things and nothing beside them, the
-  case in the one sentence that fits it, whether or not auto-merge is on, and
-  not as something having gone wrong, `shared/merge-handover.md` lines 1 to 8
-  and 23 to 28.
+  1 — should: the handover says the three things and stands last in the
+  message that ends the turn, before it what else the turn owes and beside
+  and after it nothing — no second question, no proposal, no word on what
+  comes after the merge — the case in the one sentence that fits it, whether
+  or not auto-merge is on, and not as something having gone wrong,
+  `shared/merge-handover.md` lines 1 to 14 and 27 to 32 as the roadmap entry
+  of 17 October 2026 left them; that entry revised this should and quotes
+  the earlier one.
 
   **5. The arming of #16 was not read and done in the same breath, and the run
   ended on the refusal.** Project 1: record 1656 at 13:07:07 UTC pushed,
@@ -26040,8 +26052,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   types reason naming both as declined, and handed the Biome command over nine
   minutes after the no and unbacked, record 266 — should: nothing is entered
   before its question, a yes enters the tool, the reason names what was
-  declined, and the command of the second way follows the no at once, backed,
-  `setup-checks` expanded 809 to 814, 873 to 888 and 945 to 952.
+  declined, and the command of the second way stands, backed, in the message
+  that ends the turn after the no, the next one that ends with text where
+  another question follows through the widget, `setup-checks` expanded 809
+  to 814 and 945 to 952 at `7e35090` and lines 403 to 420 as the roadmap
+  entry of 17 October 2026 left them; that entry revised this should and
+  quotes the earlier one.
 
   **8. The list line of step 8 stood in no message.** Project 1: after the two
   yes at records 310 and 314 the one line `setup-checks` expanded 1815 to 1825
@@ -26103,10 +26119,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: text owed in the run's own message stood in a progress
   update or nowhere at four further places, records 510, 603 and 612 of
   project 1 and the two places that created the glossary and the decision
-  records, records 84 and 85 and 90 — should: each stands in the message as
-  its line says, `setup-checks` expanded 2047 to 2048, `plan-work` expanded
-  978 to 985, 1033 to 1036 and 1056 to 1057, `setup-project` expanded 1305 to
-  1306.
+  records, records 84 and 85 and 90 — should: what the two answers that send
+  the run alone cost stands in their descriptions, `plan-work` lines 420 to
+  426 as the roadmap entry of 17 October 2026 left them, and each other text
+  stands in the message that ends the turn as its line says, `setup-checks`
+  expanded 2047 to 2048, `plan-work` expanded 1033 to 1036 and 1056 to 1057,
+  `setup-project` expanded 1305 to 1306 at `7e35090`; that entry revised this
+  should and quotes the earlier one.
 
   **11. Question 4 of `setup-project` was not put in project 1.** Expanded 923
   to 925: the local environment is asked "always where there is code, unless
@@ -26155,7 +26174,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: the mode question of project 1 at record 289 carried
   neither that the answer holds for every task of the idea nor that the run
   works only while the window is open and the machine awake — should: every
-  point stands in its field, `setup-checks` expanded 1629 to 1642.
+  point of the wording approved on 17 October 2026 stands in its field,
+  `setup-checks` lines 859 to 925 as the roadmap entry of that date left
+  them; that entry revised this should and quotes the earlier one.
 
   **14. The texts of defect a stood in progress updates under the forced
   output style, at one place as text without the sentence that they had said
@@ -26174,11 +26195,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   mode question and the line before the second install question stood in
   progress updates at records 288 and 308 of project 1 and 443 of project 2,
   and the line before the second packages question at record 312 of project 1
-  as text without that they had said no — should: the five parts and the line
-  before each second question stand as text in the run's own message before
-  the widget, the line naming their no where the record says no,
-  `setup-checks` expanded 1647 to 1684 and 1756 to 1762 under
-  `output-styles/devloop.md` lines 11 to 27.
+  as text without that they had said no — should: what the mode question
+  needs stands in its fields, in the wording approved on 17 October 2026, and
+  the line before each second question in that question's question field,
+  naming their no where the record says no, nothing as text before either
+  call, `setup-checks` lines 859 to 925 and 997 to 1008 under
+  `output-styles/devloop.md` as the roadmap entry of that date left them;
+  that entry revised this should and quotes the earlier one.
 
   **15. The classes were named by their labels alone in the questions of
   `setup-checks`, in both runs.** Step 2, expanded 756 to 758: "Never name a
@@ -26454,6 +26477,418 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   against the skill names printing nothing. The figures as printed stand in
   the report.
 
+- **Where the text devloop owes the person stands, decided by the person on 17
+  October 2026, and every question put to it: what a decision needs in the
+  question, everything else in the message that ends the turn, nothing between
+  two tool calls; the mode question of `setup-checks` step 8 in the wording
+  approved that day, in its fields and with nothing before it; 17 October
+  2026, version 0.142.0.** On `task/owed-text-rule-and-questions`, off
+  `89fb29a`, version 0.141.0 on `main`; the rule, the questions and the
+  version in one commit, this entry, the three points under "Decisions taken
+  against", the dated sentence in `docs/plan.md`, the shoulds that follow and
+  the rows of the table in a second, the runs in a third. The report stands on
+  this machine as `~/devloop-report-2026-10-17-owed-text-rule-build.md`, in
+  English, and is not in the repository. A line of a file the first commit
+  changes is given as it stands at the tip of the branch; a line of any other
+  file, and of this file outside this entry, as at `89fb29a`; a line of a
+  report as the report stands. The words the stock-take tool reads a line of
+  this file into its search set by stand in this entry in its head and on the
+  five lines that record a defect, and on no other. Nothing ran on a bench and
+  no session of Claude Code was started for this entry.
+
+  **What it rests on: five reports of 16 and 17 October 2026**, on this
+  machine and not in the repository. The progress-update bench,
+  `~/devloop-report-2026-10-16-progress-update-bench.md`: a PreToolUse hook on
+  the choice widget sees, in the transcript, nothing of the message that holds
+  the question, since its records are written after the hook returns, lines
+  812 to 826; a hook can deny the call before the widget shows, lines 828 to
+  834; with `claude-sonnet-5-5` at medium under the forced style of `89fb29a`
+  the five parts before the mode question went into a progress update and into
+  no text block in five runs of five without a hook, six of six with an
+  observing hook and one of one with a judge that could not fire, and after a
+  denial of the question with the reason the model asked again and put the
+  text into a progress update again in five of five, lines 836 to 843; Claude
+  Code cannot switch the progress updates off, lines 845 to 852. The
+  message-tool bench, `~/devloop-report-2026-10-17-message-tool-bench.md`: a
+  tool of the plugin carrying the text shows as one collapsed line in the
+  standard view, its input and result only after Ctrl+O, a hook's system
+  message whole with the hook's name before it, the question field whole
+  inside the widget, and at 80×24 every way's text cut at the top while the
+  widget is open, lines 1050 to 1066; ten runs of ten called such a tool with
+  all five parts, lines 1086 to 1089. The question-field bench,
+  `~/devloop-report-2026-10-17-question-field-bench.md`: the descriptions of
+  the answers stand whole under their labels at 160×50 and at 80×24, in both
+  renderers, lines 268 to 288; at 80×24 the widget hangs at the bottom of the
+  window and is cut at the top, and what is cut there the fullscreen renderer
+  never draws, lines 289 to 309; the widget adds "Type something." and "Chat
+  about this", rows 20 to 22 at 80×24, and no skill says what happens on
+  either, lines 311 to 316; after the answer the whole question field stays as
+  the record with the chosen label, lines 321 to 418; five runs of five put
+  the five parts into the question field, 1728 to 1750 characters, and the two
+  descriptions as asked, lines 628 to 634; four of five wrote a one-line
+  English text block between two tool calls, lines 672 to 681 and 737 to 748.
+  The inventory, `~/devloop-report-2026-10-17-owed-text-inventory.md`: every
+  place a line owes the person a text, by kind, 27 that the rule moves into
+  the widget, 139 into the message that ends the turn, 113 that end a turn
+  already and 7 announcements, lines 691 to 696; 21 widget questions, lines
+  537 to 560, none saying what happens on the two added answers; the questions
+  put as text, lines 564 to 603; where the rule of `89fb29a` stood, lines 605
+  to 628; seven findings at the lines, lines 722 to 730. The triage,
+  `~/devloop-report-2026-10-17-owed-text-triage.md`: 286 places by six
+  features, 243 staying, 15 going only into a pull request, an issue or a
+  file, 28 dropping, three with an approved wording dropped, twelve where the
+  room to object would come after the work, 71 uncertain, lines 611 to 642;
+  the turn ends where more than five texts gather, lines 484 to 498; the parts
+  that drop, lines 500 to 524; the readings with two ways, lines 659 to 664.
+
+  **The decisions of the person, 17 October 2026.** Each holds for every
+  skill. (1) Text the person needs for a decision stands in the question: put
+  through the widget, in the question field, the question line at its end, and
+  in the descriptions of the answers; put as text, before the question in the
+  message that puts it. Everything else devloop owes them stands in the
+  message with which the turn ends — the last text before the run waits for
+  them, at a question put as text, a handover, a halt, or the last message of
+  a run; a skill ending and the next beginning in the same turn does not end
+  it. Between two tool calls devloop owes no text. (2) A turn that ends on the
+  widget carries in the question field what bears on that decision; anything
+  else owed there waits for the next turn that ends with text, and nothing
+  stands as text before the call — which departs from the triage's reading 8.3
+  point 1, way A. (3) Why a question comes now stands in its question field,
+  or in the message that puts it as text, and not in an announcement before
+  it; what has reached the person is not said again. (4) The question field
+  with its question line and the descriptions of all answers fill at most 14
+  lines together at 80 columns where there are two answers, every further
+  answer taking one line away; about 76 characters to a line in the question
+  field and 73 under an answer; every paragraph a new line and a blank line
+  counting; the header one word of at most twelve characters. The 14 are what
+  stands above "Type something." at 80×24, 19 rows, less the header, two blank
+  lines and a label's row per answer; the 76 come from the widest line of the
+  question field, 78 characters with its border "│ ", the question-field
+  report lines 292 to 293; the 73 are an estimate, the indent of a description
+  not being given there; where several questions share one call, as
+  `setup-project` step 4 allows, the picture is not measured. (5) A text a
+  decision needs that does not fit is not cut to fit: the question is put as
+  text at the end of the turn, the text before it in the same message; the
+  landing question of `build-work`, the choice of a design and the rounds of
+  planning are and stay text questions, and so becomes the choice of the
+  classes in `setup-checks` step 2, whose form was not fixed. (6) A handover
+  or a question a line wants alone, or with nothing beside it, stands last in
+  the message that ends the turn; before it what it needs and what else the
+  turn owes; beside and after it nothing — no second question, no proposal, no
+  word on what comes after. (7) A typed answer matching an offered one counts
+  as that answer; any other, and a chat about the question, is taken up, and
+  the question put again unless it was decided; this stands in the output
+  style, since it has to reach every question of every skill and `start-work`
+  inserts no `shared/how-to-ask.md`. (8) The mode question in the wording
+  below. (9) The hook on the output style says its notice in the next message
+  with which the run ends its turn with text, and what it says of where owed
+  text lands is that it can then land in a collapsed note between the steps
+  instead of in its question or in the message with which its turn ends; the
+  cause and what lifts it stay. (10) README.md says where the style puts what
+  devloop owes the person.
+
+  **Decided the same day, for the order that follows, recorded here and not
+  built.** A text stays in the conversation only where one of six features
+  holds — the person has to decide something; they have to do something,
+  merge, run a command, sign in, install; something failed or is blocked and
+  that changes what they get; the run with them decided for them and the skill
+  leaves them room to object there, worth something when they read it, not
+  with nobody there; something was created, changed or deleted they did not
+  initiate, in their project, on GitHub or on their machine; the result, what
+  is built, what is open and how it goes on, at the end of a run or of a
+  section such as the setup, the planning or a task — and otherwise goes only
+  into the pull request, the issue or the file that stands at that place, or
+  drops. At the twelve places with W of the triage, section 6, the room to
+  object drops, at the cut into tasks, CT-2, and at UI-19 too. The
+  introduction of `start-work` stays only where the person brings no idea and
+  ends the turn there; with an idea there is none, and its half on the setup
+  becomes the why-now of the setup's first question. In `plan-work`, PW-24,
+  the forms for an `empty` class and for no record drop, and „Der Lauf ohne
+  dich ist in diesem Projekt nicht eingerichtet. Mit `--auto` kannst du ihn
+  einrichten.“ stays for a yes with something fallen away since. What was
+  installed or changed under a general yes, SC-28, BW-18 and SH-40, stands as
+  one line at the next end of a turn, its details in the pull request. The
+  last message of the run with nobody there, BW-53, has two groups, „Ergebnis“
+  — finished or stopped with the reason, merged with the titles of the pull
+  requests, open what the next run takes up, installed under their yes — and
+  „Für dich zu tun“, which goes where empty; no group for reading the git log
+  and none for what was created and changed. The sentences of the why-now at
+  SP-6, UI-2, PW-2, SW-5, SW-15 and BW-44, the triage's reading 8.3 point 2,
+  come with wording for approval.
+
+  **The wording approved on 17 October 2026, the new text 6**, in place of
+  text 6 of the roadmap entry of 9 October 2026, approved on 8 October 2026.
+  Header „Ohne dich“. In the question field, each paragraph on a line of its
+  own: „Ohne dich baut devloop die geplanten Aufgaben nacheinander; GitHub
+  mergt jede, sobald die Prüfungen grün sind. Das Ergebnis siehst du erst am
+  Ende.“ — „Die Prüfungen verbrauchen Minuten aus deinem Kontingent auf
+  GitHub.“, only where the repository is not public, read before the question
+  with `gh repo view OWNER/REPO --json visibility -q .visibility` and standing
+  where the answer is not `public`, in capitals or not, or where none comes,
+  `shared/command-does-not-answer.md` holding beside it unchanged: on a public
+  repository the check runs on GitHub's standard machines free of charge, on a
+  private one it counts against the free minutes of the account, GitHub Docs,
+  "About billing for GitHub Actions",
+  https://docs.github.com/en/billing/concepts/product-billing/github-actions,
+  read on 17 October 2026 — „Solange devloop arbeitet, muss der Rechner wach
+  bleiben.“, followed on macOS alone, where `uname -s` answers `Darwin`, by
+  „Auf dem Mac hält ihn `caffeinate` in einem eigenen Terminal wach, einen
+  zugeklappten Laptop aber nicht.“ Then, after a blank line, the question line
+  „Darf devloop in diesem Projekt ohne dich arbeiten?“ Yes, label „Ja, ohne
+  mich erlauben“, description „devloop richtet auf GitHub eine Prüfung ein und
+  schützt den Hauptzweig, auch gegen deine eigenen direkten Pushes. Ein Lauf
+  arbeitet dann, solange dieses Fenster offen ist.“, the first sentence gone
+  where the protection stands and binds. No, label „Nein, alles mit mir“,
+  description „Alles bleibt wie jetzt. Mit `--auto` kannst du es später
+  einrichten.“ Nothing stands before the widget. Wrapped by a script at 76
+  characters in the question field and 73 under an answer: on a Mac with a
+  private repository and no protection, eight lines of the field, the blank
+  line and the question line among them, three of the yes and one of the no,
+  twelve; on another system ten, on a public repository eleven, with the
+  protection standing ten. Measured the same day with gh 2.96.0: `PUBLIC` and
+  `PRIVATE` with exit 0 on `jayjay-create/claude-devloop` and
+  `jayjay-create/devloop-test-x`, and on a name that resolves to no repository
+  exit 1 with "GraphQL: Could not resolve to a Repository …".
+
+  **What came out of text 6 and the five parts, and why.** From the question:
+  „künftig“, a permission holding from its answer anyway; „von den Entwürfen
+  bis zum Merge“, the first paragraph saying what happens; „Ob eine Idee dann
+  wirklich ohne dich umgesetzt wird, fragt devloop bei jeder neuen Idee,
+  sobald ihr sie gemeinsam geschärft habt.“ and „Die Antwort gilt für alle
+  Aufgaben dieser Idee.“, the word „erlauben“ of the answer carrying that each
+  idea is asked again, which `plan-work` does at every idea, its lines 360 to
+  363. From the course: the own branch, the code, the checks, the review and
+  the pull request, and that devloop waits before the next task — the steps of
+  a task bear on no decision and „nacheinander“ says the order. From what can
+  go wrong: the issue for a task that does not go green, „the commonest case“,
+  and a merge that fails ending the run — „sobald die Prüfungen grün sind“
+  says that nothing red is merged, and the run's last message says what was
+  not built and why it stopped. From the end: „Von selbst fängt er dann nicht
+  wieder an“; the end and the third sentence on the costs go into „Das
+  Ergebnis siehst du erst am Ende“. From the costs: that the review leaves no
+  angle out without them and costs more, which is not measured, the skill's
+  own „no rate is given“, and a more without a size nobody can weigh. From
+  keeping awake: that the run stands still until they write, „muss wach
+  bleiben“ carrying the consequence, and ending `caffeinate` with Ctrl-C,
+  which ends a command in a terminal anyway. Under the yes: „bis alles gebaut
+  ist“, the machine staying awake standing in the field. Under the no: „jede
+  Aufgabe kommt zur Freigabe zu dir“, which the label „Nein, alles mit mir“
+  says.
+
+  **What the first commit builds, file by file.** `output-styles/devloop.md`
+  lines 11 to 66: decisions 1 to 7, the two lines that the style changes
+  nothing without a skill of devloop and the closing paragraph kept, a number,
+  a list or a name a skill asks for written out in the field or in the
+  message; its description, line 3, still true and kept.
+  `shared/how-to-ask.md` lines 57 to 67, decision 3.
+  `hooks/post-tool-use-output-style.sh` line 64 and its comment at lines 19 to
+  23, decision 9. `shared/set-aside-at-start.md` lines 3 to 9: the sentence
+  before the question goes, its question line saying it.
+  `shared/set-aside-back.md` lines 12 to 17: both lines, theirs and GitHub's,
+  in the question field. `shared/merge-handover.md` lines 1 to 7, decision 6.
+  `build-work` lines 799 to 803, the landing question, decision 6. `plan-work`
+  lines 149 to 153, the mark of a broken-off run deleted at a pick-up said in
+  the question field as part of why the question comes now, decisions 2 and 3;
+  lines 333 to 347, the hard core in the question field where it fits with the
+  question, otherwise in the message that ends the turn and the question as
+  text after it, decisions 4 and 5; lines 420 to 426, what the first two
+  answers of the question on how the work runs cost in their descriptions;
+  lines 546 to 551, the design question, decision 6. `setup-checks` lines 282
+  to 288, step 2's question as text with the proposal before it, decision 5;
+  lines 327 to 331, the statement of what costs them nothing waiting for the
+  next text, decision 2; lines 405 to 408, the command of the second way in
+  the message that ends the turn and never before the next question's call,
+  decisions 1 and 2; lines 859 to 925, the mode question, decision 8, the
+  reading of the visibility at lines 870 to 885; lines 997 to 1008 and 1016 to
+  1017, the line before each second question in its question field with their
+  no where the record says no, `shared/install-question.md`'s "Nothing else
+  stands there" read as of the question line. `setup-project` lines 210 to
+  237: the recommendation of questions 1 and 5 in the question field, of
+  question 4 before it in its message, question 4 a question put as text,
+  nothing before the widget, decisions 1 and 4. `docs/skill-conventions.md`:
+  lines 408 to 417, the place of a duty to say something; 549 to 561 and 746
+  to 751, the four things a question states; 642 to 645, prose above the
+  widget; 672 to 724, the widget's fields as measured, its bound and the way
+  of a text that does not fit; 786 to 818, what the style says and the bench
+  that gave the place before the call up; 853 to 860, the hook; 1571 to 1582,
+  keeping awake; 3376 to 3381, text 6 at the check on the unattended finish.
+  `README.md` lines 274 to 278, decision 10. `.claude-plugin/plugin.json`,
+  0.142.0.
+
+  **What is not built here, for the next order.** The lines that place a
+  report of what was done otherwise than decision 1 has it: `setup-checks`
+  lines 1028 to 1031, the line before the first pull request, SC-28;
+  `setup-project` lines 523 to 526, the seven labels, SP-19; `plan-work` line
+  573, the seams "in their own message", PW-39; `shared/cut-branch.md` lines
+  73 to 76, SH-22; `shared/set-aside-back.md` lines 5 to 6, SH-40;
+  `build-work` lines 476 to 486, BW-18, 1437 to 1453, BW-50, 1518 to 1526,
+  BW-53, and 1528 to 1532, BW-54. The announcements that carry a why-now, SP-6
+  at `setup-project` lines 120 to 144, UI-2 at `untangle-idea` 85 to 92, PW-2
+  at `plan-work` 38 to 43, SW-5 at `start-work` 101 to 108, SW-15 at
+  `start-work` 240 to 265 and BW-44 at `build-work` 1208 to 1217. The places
+  with W, SH-10 and SH-11 at `shared/how-to-ask.md` 20 to 26, CT-2 at
+  `cut-into-tasks` 131 to 141, SW-6, SW-7 and SW-9 in `start-work` step 2,
+  UI-19 at `untangle-idea` 482 to 489, BW-13, BW-15 and BW-16 at `build-work`
+  345 to 382. The introduction of `start-work`, lines 75 to 114, SW-3; PW-24
+  at `plan-work` lines 356 to 382; SC-25 at `setup-checks` lines 930 to 934.
+  The hooks: the mark guard, lines 143 and 145, a report and then carrying on;
+  the install guard, line 989, the cost of a decline and then carrying on; the
+  branch guard, the merge guard, `stop-checks.sh`, the identity guard, the
+  hook on permission prompts and the session start read and found placing
+  nothing against decision 1. `docs/skill-conventions.md` line 822, the report
+  of `setup-project` step 2 "before the question is put", SP-9. Until that
+  order, the style carries each such text to the message that ends the turn or
+  into the question it bears on. The report has the list with every line read.
+
+  **The shoulds that follow.** Seven defects name in their should a line this
+  order changes, and their should is revised on their status line in place,
+  the earlier one quoted here. Defect a of the entry of 11 October 2026 on the
+  second closing run: earlier "the five parts stand as text in the run's own
+  message before the widget, `setup-checks` lines 810 to 847, and the line of
+  prose before each second question stands in the message, lines 919 to 923";
+  its whole should is built here and its evidence moves onto `setup-checks`
+  line 866. Defects of the entry of 16 October 2026 on the runs of that day:
+  3, earlier "the settled line and the hard core, the stories and what is out
+  of scope, stand in the message before the widget, what is left is asked in
+  rounds, and Stage 1 says which decisions the run takes itself and which it
+  puts to the person …", the place of the hard core built and the boundary
+  not, so it stays on its status line; 4, earlier "the handover says the three
+  things and nothing beside them, the case in the one sentence that fits it,
+  whether or not auto-merge is on, and not as something having gone wrong",
+  decision 6 revising "nothing beside them", not built, the run having broken
+  a text it carried; 7, earlier "… and the command of the second way follows
+  the no at once, backed", the place now the message that ends the turn, not
+  built; 10, earlier "each stands in the message as its line says", the costs
+  of the two answers that send the run alone now in their descriptions and the
+  rest in the message that ends the turn, not built; 13, earlier "every point
+  stands in its field, `setup-checks` expanded 1629 to 1642", now every point
+  of the wording above in its field, built here, its evidence on
+  `setup-checks` line 887; 14, earlier "the five parts and the line before
+  each second question stand as text in the run's own message before the
+  widget, the line naming their no where the record says no", now in the
+  fields, built here, its evidence on line 997. Checked and left: 8, 9, 11 and
+  15 of that entry name lines this order does not change; the entries of 12
+  and 15 October 2026 on owed text in the thinking part name no line, their
+  should "it stands in the message" true under decision 1; the entries of 6
+  and 7 September, 30 September, 4 and 5 October 2026 whose evidence stood on
+  a line of step 8 or step 4 that moved keep their text, their evidence moved
+  with the line.
+
+  **What happens on the two answers the widget adds.** The widget adds "Type
+  something." and "Chat about this" under every question, the question-field
+  report lines 311 to 316, and the inventory found no question saying what
+  follows on either, its line 537.
+  Built here: no question said what happens on "Type something." or "Chat
+  about this" — should: a typed answer matching an offered one counts as it,
+  any other and a chat are taken up and the question put again unless decided,
+  `output-styles/devloop.md` line 56.
+
+  **A one-line note in English between two tool calls.** In four of five runs
+  of the question-field bench the model wrote `ls -la listed 4 entries (., ..,
+  .git, README.md).` as a text block between the Read and the Write, shown as
+  a line of its own and kept after the turn, though the run otherwise wrote
+  German, lines 672 to 681 and 737 to 748.
+  Recorded, not built: a one-line English note stood as a text block between
+  two tool calls in four of five runs that otherwise wrote German — should: no
+  text stands between two tool calls, and what the run writes to the person is
+  in their language, `output-styles/devloop.md` lines 25 to 34 and the
+  language block.
+
+  **Three pairs of lines that disagree**, the inventory line 726. `start-work`
+  lines 192 to 193, a stray open issue: "Say what is there and stop", against
+  lines 210 to 213, a stop "only where a question was asked", an open issue
+  being work in flight by lines 164 to 166; no convention decides which holds.
+  `setup-checks` lines 226 to 227, "With nobody there the run stops instead,
+  as "A guard's block is not a decline" above says", against lines 93 to 98,
+  where that paragraph says the task ends and not the run since 9 October
+  2026; the line names the paragraph it follows, and
+  `docs/skill-conventions.md` lines 462 to 471 send a guard's block with a
+  task in hand to an issue and the next task. `plan-work` line 631, "Report
+  the spec's issue number", against `shared/refer-by-name.md` lines 1 to 6 and
+  "Refer to work by its name" in `docs/skill-conventions.md`, which decides
+  it.
+  Recorded, not built: three pairs of lines disagree, `start-work` 192–193
+  against 210–213, `setup-checks` 226–227 against 93–98, `plan-work` 631
+  against `shared/refer-by-name.md` 1–6 — should: each pair agrees;
+  `setup-checks` 226–227 reads as 93–98 and `plan-work` 631 names the spec by
+  its title, the number inside it, by the conventions; for `start-work` no
+  convention decides and this entry does not decide which.
+
+  **The missing command in `diagnose-bug`**, the inventory line 728. The seven
+  skills that need a command from `docs/agents/` insert
+  `shared/missing-command.md`; `diagnose-bug` does not, and its lines 72 to 74
+  say "say which command should have created it", beside
+  `shared/skill-name.md` lines 17 to 20, a command given to type only where
+  the run cannot do the thing itself.
+  Recorded, not built: `diagnose-bug` does not insert
+  `shared/missing-command.md` and names a command for a missing file in its
+  own words, lines 72 to 74 — should: the case is said there as in the seven
+  skills that insert the shared text, and no command is handed over that the
+  run could start itself.
+
+  **A red base with nobody there**, the inventory line 729. `build-work` step
+  1, lines 292 to 307: a red base is said and the person chooses among three
+  ways to clear it; no line says what a run with nobody there does.
+  Recorded, not built: a red base in `build-work` step 1 with nobody there is
+  covered by no line, lines 292 to 307 — should: step 1 says what a run with
+  nobody there does at a red base; this entry does not decide which way.
+
+  The other findings of the inventory's section 9.4 are no new defects: the
+  lines with "in the run's own message" and the hook's notice are what
+  decisions 1 and 9 change, and the sentences beside the merge handover are
+  what decision 6 covers.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the five new defects at the end, each named
+  "docs/roadmap.md / Known gaps / " and the defect, the first evidenced on
+  `output-styles/devloop.md` line 56 and the four others on their status
+  lines, with a not-a-thing row for the head of this entry, part of the
+  first; fourteen further new things, two in `plan-work` Stage 1, three in
+  `setup-checks` step 8 and nine of the output style; every record whose
+  anchor a change broke re-anchored on the line that carries the same thing
+  now, a thing with runs keeping its name and its note saying what holds
+  since this day, three things without runs renamed; the evidence of defects
+  a, 13 and 14 on the lines that carry their repair, and of nine earlier
+  defects on the lines that replaced theirs; the shoulds of the seven
+  defects above revised in their notes as on their status lines; three
+  things that left the table with their lines, two of them of the output
+  style with one run each, and seventeen not-a-thing rows on lines that
+  went; 52 not-a-thing rows on new lines. The tool on the tree of the second
+  commit: no broken record, 19 findings as at `89fb29a`, no unit without a
+  straight path, no status word broken over a line break, none of 3873
+  lines of the search set uncovered, where `89fb29a` had 3825, exit 0;
+  recorded and not built 251 where it was 249, its defects 240 where they
+  were 238; built and never walked 1060 where it was 1014 — skill branches
+  612 where 585, shared texts 129 where 125, the output style 11 where 1,
+  hook outcomes 17 where 16, defects 237 where 233; walked 571 where 603 —
+  skill branches 198 where 221, shared texts 59 where 63, the output style
+  none where 3, hook outcomes 115 where 116, defects 34 where 35; hook
+  registration, program outcomes and check commands as before; undetermined
+  26 as before; runs that do not count 302 where 251, the 51 more each on a
+  thing whose lines, or the shared text it inserts, this order changed, and
+  two runs gone with their things; not-a-thing records 2479 where 2444; the self-test 114 cases, 76
+  of 76 messages asserted by a case, as at `89fb29a`.
+
+  **The runs.** The nineteen checks under "Before a handover, run these"
+  ran green on the tree of the second commit, `e71b7f2`, clean, from
+  14:55:42 to 14:55:49 UTC, in a clean bash with `/usr/bin` first on its
+  path, line for line what they print at `89fb29a` but for the line numbers
+  the changes moved; the tool on that tree, the tool from 14:55:54 to
+  14:58:02 UTC, exit 0 with the figures above; its self-test, the self-test
+  from 14:58:02 to 14:58:04 UTC, 114 cases, 76 of 76 messages asserted by a
+  case; all recorded in the third commit under 0.142.0. The command under
+  "Before you change anything, run this" ran on `main` at `89fb29a` before
+  the branch was cut, printing nothing against the installed 0.141.0,
+  recorded under 0.141.0. `hooks/post-tool-use-output-style.sh` of the first
+  commit was fed by hand on 17 October 2026 a JSON input for every branch of
+  its case but the reader's failure, with crafted transcripts and the
+  temporary directory of the bench: an event other than the two, a subagent,
+  no transcript, no session identifier, no skill of devloop, devloop's own
+  style, no style record, the same session again, another plugin's style
+  under PostToolUseFailure and the person's own style, each answer as the
+  report gives it; recorded under 0.142.0. Nothing ran on a bench with a
+  model, and no session of Claude Code was started.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
@@ -26565,6 +27000,43 @@ of them if the reason stops holding — the reason is the point, not the verdict
   closing run lay at, lines 17161 to 17184 of this file. Reopen if the setup
   of the checks comes before the planning of an idea in a project whose checks
   are all decided already.
+
+- **Text owed before a tool call as a text block, held there by the output
+  style.** From 15 to 17 October 2026 the style told the run that text a
+  skill owes before a tool call or a question stands as a text block of the
+  message before that call. Rejected on 17 October 2026: with
+  `claude-sonnet-5-5` at medium under that style the five parts before the
+  mode question went into a progress update and into no text block in five
+  runs of five, six of six and one of one, and again in five of five after a
+  denial of the question with the reason,
+  `~/devloop-report-2026-10-16-progress-update-bench.md` lines 836 to 843;
+  the runs of 16 October 2026 met the same, defect 14 of the entry of that
+  date. Owed text goes into the question or into the message that ends the
+  turn instead, the entry of 17 October 2026. Reopen if a model or a setting
+  of Claude Code keeps text before a tool call as a block of the message on
+  such a bench, or the session shows progress updates whole.
+- **A hook that denies the question where the text before it stands in a
+  progress update.** A PreToolUse hook on the choice widget that reads the
+  current message and denies the call where the owed text went into a
+  progress update. Rejected on 17 October 2026: the hook does not see the
+  blocks of the message that holds the question, which are written to the
+  transcript after it returns, and after a denial with the reason the model
+  wrote the text into a progress update again in five runs of five,
+  `~/devloop-report-2026-10-16-progress-update-bench.md` lines 812 to 843.
+  Reopen if Claude Code hands a PreToolUse hook the blocks of the current
+  message, and a model then puts the text where the denial asks.
+- **A tool of the plugin that carries the text as its input, with a hook
+  that shows it as a system message.** Measured on 17 October 2026: the call
+  alone shows as one collapsed line, its input and result only after Ctrl+O,
+  while the hook's system message stands whole with the hook's name before
+  it, and ten runs of ten called the tool with all five parts,
+  `~/devloop-report-2026-10-17-message-tool-bench.md` lines 1050 to 1066 and
+  1086 to 1089. Rejected the same day, not on the display but because the
+  person decided that they need no text in the middle of a turn: what a
+  decision needs stands in the question and everything else in the message
+  that ends the turn, the entry of 17 October 2026. Reopen if text the
+  person has to read in the middle of a turn comes back as a need, a long
+  run with nobody there reporting as it goes, say.
 
 ## Names that were rejected
 
