@@ -886,13 +886,23 @@ command that cannot merge:
 The platform merges, not the agent. Arming and merging are two different
 mutations, and only the first is yours.
 
-**The id is fetched in a step of its own and passed with `-f`, not `-F`.**
-Measured on 13 September 2026 in `devloop-test-o`: the one-line form with the
-substitution inside `-F id=$(…)` came back with `unexpected end of JSON input`,
-and the two-step form with the id read first went through. `gh api --help` (gh
+**The program reads the state and arms in one call, since 17 October 2026.**
+A reading in one call and the arming in the next leave room for the state to
+move between them: on 16 October 2026 a run without the person read `BLOCKED`
+for #16 of `devloop-test-x` in one call and armed in the next, 25 seconds
+later, the required check having gone green in between in 13 seconds, and
+GitHub refused — defect 5 of the roadmap entry on the runs of that day; the
+sentence asking for both in the same breath had been kept at #12 and not at
+#16. It prints every reading and what GitHub answered, and its last line says
+how it ended: `armed:`, `refused:`, `past its gate:`, `no required check:`,
+`not started:`, `behind:` or `no answer:`, which the paragraphs below read.
+**It fetches the id first and passes it with `-f`, not `-F`.** Measured on 13
+September 2026 in `devloop-test-o`: the one-line form with the substitution
+inside `-F id=$(…)` came back with `unexpected end of JSON input`, and the
+two-step form with the id read first went through. `gh api --help` (gh
 2.96.0, read the same day) gives the reason: `-F` adds "a typed parameter",
-reading the value from a file where it starts with `@`, while `-f` adds "a string
-parameter" and passes what it was given. The same two lines stand in
+reading the value from a file where it starts with `@`, while `-f` adds "a
+string parameter" and passes what it was given. The same call stands in
 `shared/arming-command.md`, inserted into the three skills that arm, and in
 `hooks/pre-tool-use-merge-guard.sh` and `docs/skill-conventions.md` — and a
 change to one of those three is a change to all three.
@@ -902,40 +912,41 @@ flag whenever the pull request is already mergeable — including where checks
 exist and are red, as long as none of them is required — and then performs the
 merge itself. The command reads as authorised and the merge is the agent's.
 
-**Read `mergeStateStatus` immediately before arming**, in the same breath as the
-mutation and not earlier:
-
-    gh pr view --json mergeStateStatus -q .mergeStateStatus
-
-It moves within seconds of the push, and it is the one thing that says whether
+**The program reads `mergeStateStatus` once a second and arms in the pass
+that reads a value asking for it**, never in a call of its own: the value
+moves within seconds of the push, and it is the one thing that says whether
 arming can be accepted at all. Six values have a reading here, and the last two
 are neither a yes nor a no:
 
-- `BLOCKED` — something is still outstanding, and GitHub will arm.
+- `BLOCKED` — something is still outstanding, and GitHub will arm. The program
+  arms in that pass.
 - `CLEAN`, `HAS_HOOKS`, `UNSTABLE` — nothing is outstanding, so the pull request
   can already be merged and GitHub refuses to arm what it would merge on the
   spot. These three say two different things and cannot separate them:
   everything that had to run has run, or nothing has started yet. Every run that
-  builds and pushes goes through the second one. Do not read a case out of them
-  before the paragraph after this list has been worked through.
+  builds and pushes goes through the second one. The program arms on none of
+  them and reads no case out of them before the paragraph after this list.
 - `UNKNOWN` — not computed rather than a state. GitHub works mergeability out
   when it is asked for, so a first reading can return this and start the
-  computation instead of reporting it. Ask again a few seconds later and use the
-  second value: that second reading is then the one taken immediately before the
-  mutation, so the rule above is kept by the wait rather than broken by it. Never
-  derive a case from `UNKNOWN` — it is the absence of an answer, not one. A
-  second `UNKNOWN` is not read a third time; it falls to the paragraph below.
+  computation instead of reporting it. The program asks again three seconds
+  later and uses the second value: that second reading is then the one taken
+  immediately before the mutation, so the rule above is kept by the wait
+  rather than broken by it. Never derive a case from `UNKNOWN` — it is the
+  absence of an answer, not one. A second `UNKNOWN` in a row is not read a
+  third time; it falls to the paragraph below, in the program as a mergeable
+  value does.
 - `BEHIND` — the branch is behind the base branch, and the required check ran
   against a state that is not what would be merged. It appears only where the
   base branch requires branches to be up to date, so a gate exists here by
-  definition and it is never evidence of a repository without one. Fetch —
+  definition and it is never evidence of a repository without one. The program
+  ends on it with `behind:` and arms nothing. Fetch —
   three attempts, by the command under "When the main branch cannot be
   fetched or fast-forwarded" above, and where the third fails too, stop as
   that section says, opening with that the pull request has to be brought up
   to the latest state of the main branch before it can be merged and that
   this is not possible just now: nothing is armed and nothing is merged —
   then rebase
-  the branch onto the base, force-push it, and read `mergeStateStatus` again: it
+  the branch onto the base, force-push it, and call the program again: it
   reads `BLOCKED` and arming is accepted. That rebase is not the merge this stage
   must not perform — it moves the base under this branch and lands nothing
   anywhere — and it is no reason to hand the merge over. Measured on 30 August
@@ -949,66 +960,82 @@ are neither a yes nor a no:
 **A mergeable value on a freshly pushed branch is the required check not having
 started, not a pull request past its gate.** Measured on 25 August 2026: directly
 after the push `mergeStateStatus` read `CLEAN`, and five seconds later `BLOCKED`.
-The value cannot tell the two apart; the branch can. Ask whether the required
-check has run on this head commit:
+The value cannot tell the two apart; the branch can. The program asks whether
+the required check has run on this head commit, off the commit's
+`statusCheckRollup`. One query answers it for both kinds of gate.
+`StatusCheckRollupContext` is a union of `CheckRun` and `StatusContext` — read
+off GitHub's live GraphQL schema on 31 August 2026 — so the rollup sees
+Actions check runs and the older commit statuses alike, where
+`repos/OWNER/REPO/commits/SHA/check-runs` sees only the first. A `CheckRun`
+carries `name` and `status`; a `StatusContext` carries `context` and `state`.
 
-    gh pr view --json statusCheckRollup
-
-One query answers it for both kinds of gate. `StatusCheckRollupContext` is a
-union of `CheckRun` and `StatusContext` — read off GitHub's live GraphQL schema
-on 31 August 2026 — so the rollup sees Actions check runs and the older commit
-statuses alike, where `repos/OWNER/REPO/commits/SHA/check-runs` sees only the
-first. A `CheckRun` carries `name` and `status`; a `StatusContext` carries
-`context` and `state`.
-
-The required names come out of the two gate queries already run: classic
-protection carries them in `required_status_checks.contexts`, a ruleset in
-`parameters.required_status_checks[].context` on its `required_status_checks`
-rule. Measured on 31 August 2026 in `devloop-test-l`: protection returned
-`contexts: ["checks"]`, and the rollup on pull request 14 carried one `CheckRun`
-named `checks`. Match each required name against the rollup:
+The required names come out of the two gate queries below, which the program
+runs on the pull request's base branch once a call and prints on its `gate:`
+lines: classic protection carries them in `required_status_checks.contexts`, a
+ruleset in `parameters.required_status_checks[].context` on its
+`required_status_checks` rule. Measured on 31 August 2026 in `devloop-test-l`:
+protection returned `contexts: ["checks"]`, and the rollup on pull request 14
+carried one `CheckRun` named `checks`. The program matches each required name
+against the rollup:
 
 - **No entry for it, or an entry whose `status` is not `COMPLETED`** — the other
   five are `REQUESTED`, `QUEUED`, `IN_PROGRESS`, `WAITING` and `PENDING`, read
   off the same schema the same day — or a `StatusContext` whose `state` is
   `PENDING` or `EXPECTED`. The check has not run yet. **This is not a refusal
-  case and nothing here has gone wrong.** Wait ten seconds, read
-  `mergeStateStatus` again, and arm on the `BLOCKED` it moves to.
+  case and nothing here has gone wrong.** The program reads on, once a second,
+  and arms on the `BLOCKED` it moves to.
 - **Every required name `COMPLETED`**, or its status context in `SUCCESS`,
   `FAILURE` or `ERROR` — the pull request really is past its gate, and that is
-  the third refusal case below.
+  the third refusal case below, met without a refusal, since the program arms
+  on no mergeable value. It ends with `past its gate:`, a `required:` line for
+  each required check, a `rerun:` line for each run on GitHub Actions that
+  carries one and a `foreign:` line for each that none carries, read off each
+  check run's own link to its workflow run in the same query, and arms nothing.
+  Where GitHub refuses at `BLOCKED` because the check went green in between,
+  the program reads the state once more and the rollup, and ends the same way.
 
 **A rollup that did not answer is not a check that has not started.** The two
 look alike — nothing for the required name either way — and they are different
-things: a missing entry is an answer, a missing answer is not, and waiting
-another ten seconds only ever fixes the first. Where the rollup query itself
-comes back with nothing, say so with the command and the message rather than
-spending the two minutes on it.
+things: a missing entry is an answer, a missing answer is not, and reading on
+only ever fixes the first. Where the rollup query itself comes back with
+nothing, the program asks once more and then ends with `no answer:` rather than
+spending the two minutes on it; say so with that command and that message.
 
-**The wait is bounded at two minutes.** The measured window was five seconds, so
-two minutes is generous against the only measurement there is and short enough
-not to hold the session. If it runs out with the required check still not
-registered on this branch, that is what gets said: the gate is there, no check
-has appeared in two minutes, and this run does not know why. Hand the merge over
-with that named. Do not fall back on "a gate this pull request is already past" —
-that is the sentence this whole reading exists to prevent, and a run that says it
-after waiting is more confident than one that said it straight away and no better
-informed.
+**The wait is bounded at two minutes, two calls of the program.** It reads for
+sixty seconds a call, every call to gh in it under `bin/devloop-bounded` with
+ten seconds and none started once fewer than ten of 95 are left, so that the
+call stays under the 100 seconds the wait on the checks below gives a call,
+for the reason given there. Where it ends with `not started:`, call it once
+more; a second `not started:` is the two minutes run out. Where that line says
+the required checks are not known, a gate query not having answered, the
+rights did not allow finding out, as below. The measured window was five
+seconds, so two minutes is generous against the only measurement there is and
+short enough not to hold the session. If it runs out with the required check
+still not registered on this branch, that is what gets said: the gate is
+there, no check has appeared in two minutes, and this run does not know why.
+Hand the merge over with that named. Do not fall back on "a gate this pull
+request is already past" — that is the sentence this whole reading exists to
+prevent, and a run that says it after waiting is more confident than one that
+said it straight away and no better informed.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text empty-read`
 
 Unattended it is a stop with the reason named.
 
-**A value in none of those groups is put in none of them.** Name it as it read
-and say the stage cannot place it. Arming is still attempted — the mutation
-cannot merge, so the attempt costs nothing — and what comes back is reported with
-the value named beside it. What must not happen is that value being read as one
-of the three refusal cases below: an unplaceable state is not evidence about the
-repository, and picking a case off it is the same failure those three were split
-apart to fix.
+**A value in none of those groups is put in none of them.** The program names
+it on a `cannot be placed:` line and arms in that pass all the same — the
+mutation cannot merge, so the attempt costs nothing — and its `armed:` or
+`refused:` line names the value beside what came back. Name it as it read and
+say the stage cannot place it. What must not happen is that value being read
+as one of the three refusal cases below: an unplaceable state is not evidence
+about the repository, and picking a case off it is the same failure those
+three were split apart to fix.
 
 Arming can be refused for three different reasons, and they mean different
-things. `gh api repos/OWNER/REPO -q .allow_auto_merge` answers the first and no
+things. The program arms on no mergeable value, so two of them come as its own
+answer rather than as GitHub's: `no required check:` where both gate queries
+answered and name none, and `past its gate:`; the first comes as `refused:`.
+`gh api repos/OWNER/REPO -q .allow_auto_merge` answers the first and no
 more: it says whether auto-merge is permitted on the repository, not whether
 there is a gate to wait on at this moment. Measured on 30 August 2026, it read
 true in a repository with a required check and in one without alike, so a run
@@ -1031,10 +1058,10 @@ answer the question. None of the three is a fault, and none stops the stage:
   repository that has one is a false statement about the repository, and it is
   why this third branch exists.
 
-The last two are told apart by two readings, and both are needed. The state:
-`mergeStateStatus` from immediately before the attempt — a mergeable status with
-a gate present is the third case. The gate: no single query sees every kind of
-gate, so ask both.
+The last two are told apart by two readings, and both are needed; the program
+prints both. The state: `mergeStateStatus` as it read it last — a mergeable
+status with a gate present is the third case. The gate: no single query sees
+every kind of gate, so it asks both.
 
 - `gh api repos/OWNER/REPO/branches/main/protection` sees classic branch
   protection. It does not see a gate set through a ruleset, and it needs admin on
@@ -1061,20 +1088,47 @@ What went wrong in the past was the framing and the timing — a run
 stopping mid-task, over a change nobody asked for, as though it had hit an error.
 
 In unattended mode there is nobody to hand it to. A refusal by GitHub to arm,
-in any of the three cases, is a stop with
-the reason named, the mark going with it as at every such stop. A refusal in the sense of
+in the first two cases, is a stop with
+the reason named, the mark going with it as at every such stop. **The third
+is not, at first**, since 17 October 2026, by the person's decision of that
+day: a run without them does not end because a check was quick. At `past its
+gate:` with no `foreign:` line, restart once every run its `rerun:` lines name
+— `gh run rerun <id>`, one call each, without `--failed` and without `--job`,
+so that the whole run goes again and none of it stands on its old result —
+and call the program again, which arms on the `BLOCKED` the restart brings;
+GitHub merges once the check is green again, never this run. Measured by the
+person on 17 October 2026 on #16 of `devloop-test-x`: `CLEAN` before, one run
+on the head commit, `BLOCKED` one second after `gh run rerun` with an empty
+rollup, armed in the same pass two seconds after it, merged 42 seconds after
+it. Only the runs that carry a required check are restarted, and a pull
+request once. A restart after which GitHub merges is said nowhere — not in
+the conversation, not in the last message, not in the pull request: it
+changes nothing of what they get. Where the program ends with `past its gate:`
+again after the restart, before GitHub accepted the arming, or with a
+`foreign:` line — a required check from a service outside GitHub Actions,
+which nothing here can restart, whatever the other checks are — it is a stop
+with the reason named: the first group of the last message says that at that
+pull request, by its number, the check had already run through before GitHub
+could accept auto-merge — even after a restart, or coming from a foreign
+service devloop cannot restart — and that devloop never merges itself, so
+the run stops here; the merge goes into the second group, handed to them.
+The wordings approved that day stand in the roadmap entry of that date on
+arming past the gate; a skill says what is said, not the words. A restart
+that does not answer, or answers with an error message, goes as "When a
+command does not answer" above says. A refusal in the sense of
 "A guard's block, with nobody there" above — a guard's block, the
-classifier's no, the no of the hook on permission prompts — is not that: the
+classifier's no, the no of the hook on permission prompts — of the arming or
+of the restart is not that: the
 task is in hand until its merge is proven, so it goes as that section says,
-the issue, the task put down, the next taken. Start condition 5 makes the
-first two unreachable; it cannot
+the issue, the task put down, the next taken; whether the classifier lets
+`gh run rerun` through with nobody there is not measured. Start condition 5
+makes the first two unreachable; it cannot
 touch the third, which is a state of one pull request and not a property of the
-repository. Name that one for what it is — the gate is there and this pull
-request is already past it — and do not report it as a missing gate. A `BEHIND`
-reading is worked through there like anywhere else, since the rebase needs
+repository, and it is not reported as a missing gate. A `behind:`
+is worked through there like anywhere else, since the rebase needs
 nobody, and so is the two-minute wait on a check that has not started; a second
-`BEHIND`, a wait that runs out, a value the enumeration cannot place and a read
-that came back with no value at all are all stops with the reason named — the
+`behind:`, a wait that runs out, a value the enumeration cannot place and a
+`no answer:` are all stops with the reason named — the
 last of them with the command and the message that came back in place of a
 value, since there is nobody here to hand it to.
 

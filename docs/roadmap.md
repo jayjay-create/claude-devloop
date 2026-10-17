@@ -27089,13 +27089,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   which command, and that the second attempt went through; with nobody there
   the line stands in the pull request of the work it happened at, and where
   there is none, in its issue, not in the last message; the same for a fetch
-  by `shared/fetch-three-times.md`, an attempt that only failed unsaid and a
-  refused one given the line. The example the person saw: „Die Rechteprüfung
-  hat `npm install -g x` zuerst abgewiesen, beim zweiten Versuch ging es
-  durch.“ The reason is the case of 31 August 2026, in which a check asked
-  for a pause and an explanation and the run repeated the command without a
-  word: a check the person controls is not got around in silence. The
-  addendum below builds it. The headings of `setup-project` step 0 and
+  by `shared/fetch-three-times.md`, an attempt that only failed unsaid, and
+  the call carrying the three that a check refused and that went through when
+  made again given the line, as that text builds it, a check refusing the
+  call and not one of its attempts. The example the person saw: „Die
+  Rechteprüfung hat `npm install -g x` zuerst abgewiesen, beim zweiten Versuch
+  ging es durch.“ The reason is the case of 31 August 2026, in which a check
+  asked for a pause and an explanation and the run repeated the command
+  without a word: a check the person controls is not got around in silence.
+  The addendum below builds it. The headings of `setup-project` step 0 and
   step 2 stay as they stand, runs being keyed to their straight paths; the one
   of step 2 is recorded below.
 
@@ -27337,6 +27339,252 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lines 517, 2092 and 2566 of `build-work`, 793 of `plan-work` and 582 of
   `cut-into-tasks`, after the stop at each, and in neither `setup-project`
   nor `setup-checks`, which insert no end of that run.
+
+- **Arming past the gate, built after the decisions of the person of 17
+  October 2026: the reading of a pull request's state and the arming in one
+  call, by a program of the plugin, and with nobody there one restart of the
+  runs that carry a required check where that check was through before
+  GitHub could accept the arming; defect 5 of the entry of 16 October 2026 on
+  the runs of that day with it; 17 October 2026, version 0.144.0.** On
+  `task/arming-past-gate`, off `6793c5c`, version 0.143.0 on `main`; the
+  changes, the version, this entry and the rows of the table in one commit.
+  The report stands on this machine as
+  `~/devloop-report-2026-10-17-arming-build.md`, in English, and is not in
+  the repository. A line is given as it stands at `6793c5c` unless the tip
+  of the branch is named. Nothing ran on a bench with a model and no session
+  of Claude Code was started for this entry; GitHub was read in
+  `jayjay-create/devloop-test-x` alone, and nothing was changed there. The
+  words the stock-take tool reads a line of this file into its search set by
+  stand in this entry in its head and on the status lines of its two
+  findings, and on no other.
+
+  **The decisions of the person of 17 October 2026.** In the third case of
+  `build-work` step 6, "A gate this pull request is already past", on
+  whatever way it is reached, a refusal by GitHub at `BLOCKED` because the
+  check went through in between among them, devloop restarts with nobody
+  there the runs on the head commit that carry a required check, once and
+  whole — `gh run rerun` without `--failed` and without `--job` — and arms
+  with the command that reads and arms in one call; GitHub merges once the
+  check is green again, and devloop never merges itself, `build-work` line
+  881. Only runs that carry a required check are restarted, the required
+  names coming from the two gate queries of `build-work` lines 1034 to 1053.
+  Where the check is through again before GitHub accepts the arming, or a
+  required check comes from a foreign service — a commit status, no run on
+  GitHub Actions — the run ends as `build-work` lines 1063 to 1079 say, with
+  the reason below; a restart that does not answer, or answers with an error
+  message, goes by `shared/command-does-not-answer.md`, and one refused by a
+  guard, the classifier of auto mode or `hooks/permission-request-unattended.sh`
+  by "A guard's block, with nobody there". With the person there nothing
+  changes: the merge is handed over as `build-work` lines 1055 to 1058 say.
+  The reason: a run without the person does not end only because a check was
+  quick. A restart after which GitHub merges is said nowhere — not in the
+  conversation, not in the last message, not in the pull request — since it
+  changes nothing of what the person gets. Where the run ends so, the reason
+  stands in the first group of the last message `shared/mark-deletion.md`
+  lines 43 to 68 describe, and the merge in the second.
+
+  **The wordings approved that day.** Where the check was through again
+  after the restart: „Bei Pull Request #<Nummer> war die Prüfung schon
+  durchgelaufen, bevor GitHub das automatische Mergen annehmen konnte, auch
+  nach einem Neustart. devloop mergt nie selbst, deshalb hört der Lauf hier
+  auf.“ Where a required check comes from a foreign service: „Bei Pull
+  Request #<Nummer> war die Prüfung schon durchgelaufen, bevor GitHub das
+  automatische Mergen annehmen konnte, und sie kommt von einem fremden
+  Dienst, den devloop nicht neu starten kann. devloop mergt nie selbst,
+  deshalb hört der Lauf hier auf.“ The skill says what is said and not the
+  words, `docs/skill-conventions.md` lines 644 to 650.
+
+  **The measurement the decisions rest on.** Made by the person on 17
+  October 2026 in their terminal with gh, on `jayjay-create/devloop-test-x`,
+  pull request #16, the pull request of defect 5: before, `mergeStateStatus`
+  read `CLEAN` and auto-merge was not on; on the head commit one run,
+  38905427511, workflow `checks`, success; `gh run rerun 38905427511`; one
+  second after it `BLOCKED` with an empty `statusCheckRollup`; two seconds
+  after it `enablePullRequestAutoMerge` accepted, read and armed in the same
+  pass of a loop; 42 seconds after it `MERGED`, `mergedAt`
+  2026-10-17T19:42:48Z. Read off the platform for this entry the same day:
+  the run at attempt 2, its one job `check` from 19:42:14 to 19:42:31 UTC,
+  `autoMergeRequest.enabledAt` 19:42:12Z, so that by the platform's clock the
+  merge came 36 seconds after the arming. GitHub Docs, "Automatically
+  merging a pull request",
+  https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/automatically-merging-a-pull-request,
+  read by the person on 17 October 2026: "The option to enable auto-merge is
+  shown only on pull requests that cannot be merged immediately."; the page
+  says nothing of a restart. Not measured: whether the classifier of auto
+  mode lets `gh run rerun` through in a run without the person — the rule
+  devloop enters for it, `bin/devloop-auto-mode-rule` lines 66 to 73, names
+  installs alone — nor whether it lets the call of the new program through,
+  which it reads in place of the mutation; where it refuses either, "A
+  guard's block, with nobody there" holds.
+
+  **What the order left to the build.** The command is a program,
+  `bin/devloop-arm`, and not a text: a text the model copies into its call
+  can still be split into two calls, which is the run of defect 5, and a
+  model performs and does not transcribe, `docs/skill-conventions.md` lines
+  646 to 647; the Bash tool runs a command in the person's shell, zsh on the
+  machine of this build, and a program with its own interpreter runs the same
+  under macOS, Linux, Git Bash and Alpine. It recognises a pull request past
+  its gate itself and at once, since `build-work` lines 988 to 996 forbid
+  taking a wait that ran out for one, and with nobody there the restart
+  follows that reading. It finds the runs by GitHub's own link from a check
+  run to the workflow run that made it, `checkSuite.workflowRun.databaseId`,
+  in the same query as the rollup — measured on #16: `check`, run
+  38905427511, app `github-actions` — and a required check whose entry is a
+  commit status, or a check run of another app, is foreign. The restart is
+  the run's own command and not the program's, so that the guards, the
+  classifier and the hook on permission prompts read it. A pull request whose
+  required checks are on GitHub Actions and from a foreign service at once
+  ends the run without a restart, the decision naming "a" required check
+  from a foreign service; the other reading, the runs restarted and the
+  foreign result left standing, is named in the report and not taken.
+
+  **What it builds, file by file.** `bin/devloop-arm`, new: it reads the
+  pull request's number, id and base branch, then `mergeStateStatus` once a
+  second for at most sixty seconds, and arms with
+  `enablePullRequestAutoMerge`, the id passed with `-f`, in the pass that
+  reads `BLOCKED` or a value in none of the groups of `build-work` lines 905
+  to 1008; on `CLEAN`, `HAS_HOOKS` and `UNSTABLE`, and on a second `UNKNOWN`
+  in a row, it reads the two gate queries once and the head commit's
+  `statusCheckRollup`, reads on while a required check has no entry or has
+  not completed, and ends at once where every one has; it reads again three
+  seconds after a first `UNKNOWN`, ends on `BEHIND`, and reads an empty value
+  once more. Every call to gh runs under `bin/devloop-bounded` with ten
+  seconds, and none starts once fewer than ten of 95 seconds are left, under
+  the 100 of `build-work` line 1115; the two minutes of line 988 are two
+  calls. It prints every reading and what GitHub answered, and on its last
+  line how it ended: `armed:`, `refused:`, `past its gate:` with a
+  `required:` line for each required check, a `rerun:` line for each run on
+  GitHub Actions that carries one and a `foreign:` line for each that none
+  carries, `no required check:`, `not started:`, `behind:` or `no answer:`.
+  `shared/arming-command.md`: the program's one call in place of the two
+  lines, inserted as before at `build-work` line 884, `setup-checks` line 708
+  and `setup-project` line 738. `build-work` step 6, lines 889 to 1133 at the
+  tip: the reading, the rollup, the wait and the cases said of the program
+  and its answers, the measurement of 13 September 2026 on `-f` kept; with
+  nobody there the third case no stop at first — one restart of the runs the
+  `rerun:` lines name, a call of `gh run rerun <id>` each, and the program
+  again; `past its gate:` again, or a `foreign:` line, a stop with the reason
+  approved that day; the restart said nowhere where GitHub merges.
+  `setup-checks` lines 713 to 782 and `setup-project` lines 774 to 837 at the
+  tip follow the program, the second not named by the order and saying the
+  same as the first. `shared/empty-read.md`: the second read and the not
+  arming are the program's. The merge guard's message,
+  `hooks/pre-tool-use-merge-guard.sh` lines 31 to 41 at the tip: the
+  program's call with the plugin's directory put in for
+  `${CLAUDE_PLUGIN_ROOT}`, as `bin/devloop-text` does, its answers, and the
+  third case with nobody there as above; read whole for the run that
+  receives it, held part by part and cut to what the run does differently
+  for it, 618 words counted on 30 September 2026 and 375 now, the reading the
+  program does gone from it. That answers the should of the entry of 30
+  September 2026 on that message, and its evidence in the table moves onto
+  the message. `docs/skill-conventions.md`, at the tip: the copy under
+  "Arming auto-merge is allowed; merging is not" the one call, lines 2551 to
+  2568; the window, the wait and the classifier's reading follow, lines 2599
+  to 2601, 2620 to 2624 and 2696 to 2698; the two checks under "Before a
+  handover, run these" on the copies green at `1` where it was `2`, lines
+  3267 to 3279. `.claude-plugin/plugin.json`, 0.144.0.
+
+  **Defect 5 of the entry of 16 October 2026.** Its status line, lines 26035
+  to 26039, asks that the reading and the mutation stand in one call; that is
+  what `bin/devloop-arm` does, and the line stays as written. Its evidence in
+  the table moves onto the line of the program that arms in the pass that
+  read `BLOCKED`, so that the tool reads it as built and never walked: no run
+  has met the program.
+
+  **Two records on the entry above.** Its sentence on a refused fetch, lines
+  27091 to 27093 at `6793c5c`, gave the line to an attempt refused;
+  `shared/fetch-three-times.md` lines 4 to 8 give it to the call that carries
+  the three, a check refusing the call and not one of its attempts, and the
+  sentence follows that now. And `setup-project` lines 49 to 53 say what a
+  run does with nobody there at an install the guard blocked, while by the
+  set the stock-take tool computes the unattended mode does not reach
+  `setup-project`, the addendum to the entry above, lines 27281 to 27290.
+  Recorded, not built: `setup-project` lines 49 to 53 say what the run does
+  with nobody there at an install the guard blocked, and no way of the
+  unattended mode reaches `setup-project` by the set the stock-take tool
+  computes — should: either a way is named on which the run with nobody
+  there reaches `setup-project` and the text stays, or the text for the run
+  with nobody there goes.
+
+  **The reason twice in the last message.** Where the run without the
+  person stops at a pull request past its gate, the first group of its last
+  message says the reason approved this day, and the merge handed over in the
+  second says, by `shared/merge-handover.md` lines 8 to 14, why GitHub does
+  not merge it itself, in its sentence for a gate already past, approved on
+  12 October 2026: „Die Prüfungen sind schon durch, deshalb nimmt GitHub
+  keinen Auto-Merge mehr an.“ The two say one thing, and
+  `docs/skill-conventions.md` lines 759 to 768 have a thing said once, where
+  the reader meets it; both are approved wordings, so nothing is cut here.
+  The roadmap, searched for `said twice`, `says it again`, `the reason
+  twice`, `repeats the reason`, `why GitHub does not merge` and `first group`
+  after the entry of 16 October 2026, names it nowhere.
+  Recorded, not built: at the stop of `build-work` step 6 on a pull request
+  past its gate with nobody there, the reason in the first group of the last
+  message and the merge handover's sentence for that case in the second say
+  the same — should: the reason stands once in that message, the person
+  deciding which approved wording gives way.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`, read off `git diff 6793c5c --
+  docs/stock-take.tsv`: 64 rows changed in place — 41 things, 22 not-a-thing
+  rows and one finding, each re-anchored on the line that carries the same
+  thing now, seven things renamed where no run hangs on them, the note of
+  each naming the name until then, and the three not-a-thing rows that named
+  them following — and 73 rows added: 15 things of kind program outcome, one
+  for every way `bin/devloop-arm` ends, with 32 not-a-thing rows for the
+  lines of its search set; five skill branches of `build-work` step 6, the
+  restart, the silence where GitHub merges, the foreign check, a restart
+  without an answer, and the arming or the restart refused; the two findings
+  above as defect things on their status lines; and 19 further not-a-thing
+  rows, one of them the head of this entry, part of the first finding. Where
+  runs hang on a thing whose name no longer says what holds — the wait of
+  ten seconds in `build-work`, the stop on a gate already past there, the
+  two checks that read `2` — the name stays and the note says what holds
+  since this day. The evidence of defect 5 moves onto `bin/devloop-arm` line
+  258, so that the tool reads it as built and never walked; that of the entry
+  of 30 September 2026 on the merge guard's message onto the message; those
+  of the defects on the arming in the window after a push, on `UNKNOWN` and
+  `BEHIND`, on a mergeable value read as past the gate, on the five copies of
+  the arming command, on `-F` and on a sixth start condition onto the lines
+  that carry them now. The tool on the tree of this commit: no broken
+  record, 19 findings as at `6793c5c`, no unit without a straight path, no
+  status word broken over a line break, none of 3992 lines of the search set
+  uncovered, where `6793c5c` had 3930, exit 0; recorded and not built 247 as
+  before, its defects 236 as before, two in and two out; built and never
+  walked 1171 where it was 1142 — skill branches 681 where 671, shared texts
+  148 where 147, hook outcomes 16 where 15, program outcomes 47 where 32,
+  defects 247 where 245; walked 506 where 513 — skill branches 144 where
+  149, shared texts 47 where 48, hook outcomes 116 where 117; undetermined
+  26, the output style, the hook registrations and the check commands as
+  before; runs that do not count 426 where 413, the more each on a thing
+  whose lines this order changed; not-a-thing records 2589 where 2538; lines
+  that can carry no unique anchor 215 where 207. No run is recorded for this
+  entry.
+
+  **The tests.** The program and the restart were run without GitHub,
+  against a stand-in for gh first on the path that answers from a scenario
+  and logs every call: every value of `mergeStateStatus`, arming accepted,
+  refused and unanswered, a run that carries a required check beside two
+  that carry none, a required commit status and a check run of another app.
+  78 checks, every one green, on macOS with bash 3.2.57, on Ubuntu 24.04
+  with bash 5.2.21 and on Alpine 3.22 with bash 5.2.37 and BusyBox 1.37.0,
+  the last two in containers; Git Bash under Windows was not at hand. Two
+  faults of the program's first version were found so and mended before the
+  commit: a field the rollup left empty moved the next, bash collapsing a run
+  of tabs in `IFS`, and the state read after a refusal was overwritten by the
+  reads after it. The merge guard was fed a call of `gh pr merge` and gave
+  the message above on stderr with exit 2; the program's call and the
+  restart were fed as Bash calls to every hook `hooks/hooks.json` names for
+  Bash, in a project with `docs/agents/`, with the mark of the run without
+  the person and without it, and none blocked. The nineteen checks under
+  "Before a handover, run these" ran on the tree of this commit before it was
+  made, from 20:59:17 to 20:59:25 UTC, in a clean bash with `/usr/bin` first
+  on its path, line for line what they print at `6793c5c` but for the line
+  numbers the changes moved, `1` where the two checks on the copies of the
+  arming command printed `2`, and one line fewer in the check for offers:
+  `build-work` line 952, "Ask whether the required check has run", which is
+  no offer and now says that the program asks. The tool's self-test, 114
+  cases, 76 of 76 messages asserted by a case, exit 0.
 
 ## Decisions taken against
 

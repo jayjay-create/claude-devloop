@@ -2550,17 +2550,22 @@ command.
 
 **Arming auto-merge is allowed; merging is not — and `--auto` is not arming.**
 The guard blocks `gh pr merge` in every form. The one permitted path is the
-mutation that can only arm:
+mutation that can only arm, `enablePullRequestAutoMerge` with
+`mergeMethod:SQUASH`, run since 17 October 2026 by the program that reads the
+pull request's state and arms it in one call, in the pass that reads a value
+asking for it, after a run read `BLOCKED` in one call and armed in the next,
+the check having gone green in between, defect 5 of the roadmap entry of 16
+October 2026 on the runs of that day; `bin/devloop-arm` says in its head how
+it reads and what each of its last lines means:
 
-    PR_ID=$(gh pr view --json id -q .id)
-    gh api graphql -f query='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}' -f id="$PR_ID"
+    ${CLAUDE_PLUGIN_ROOT}/bin/devloop-arm <number>
 
-**The id is fetched first and passed with `-f`.** Measured on 13 September 2026
-in `devloop-test-o`: the one-line form, with the substitution written into
-`-F id=$(…)`, failed with `unexpected end of JSON input`; the two-step form went
-through. `gh api --help` (gh 2.96.0, read the same day) says why: `-F` adds "a
-typed parameter" and reads the value from a file where it starts with `@`, `-f`
-adds "a string parameter".
+**The id is fetched first and passed with `-f`**, by the program. Measured on
+13 September 2026 in `devloop-test-o`: the one-line form, with the
+substitution written into `-F id=$(…)`, failed with `unexpected end of JSON
+input`; the two-step form went through. `gh api --help` (gh 2.96.0, read the
+same day) says why: `-F` adds "a typed parameter" and reads the value from a
+file where it starts with `@`, `-f` adds "a string parameter".
 
 Read off gh's own source on 24 August 2026, because the earlier version of this
 paragraph asserted the opposite: `pkg/cmd/pr/merge/merge.go:588` sets the auto
@@ -2591,7 +2596,9 @@ involved. So a run that arms immediately after opening a pull request can fall
 into the window where the required check has not started yet, and is refused
 there in a repository that does have a gate. The window opens seconds after the
 push and closes again as soon as the required check is green, so the only useful
-reading of `mergeStateStatus` is the one taken immediately before the mutation.
+reading of `mergeStateStatus` is the one taken immediately before the mutation,
+and since 17 October 2026 it is taken in the same pass as the mutation, by
+`bin/devloop-arm`, once a second.
 
 **A mergeable reading inside that window is not a pull request past its gate, and
 the value cannot say that it is.** `CLEAN`, `HAS_HOOKS` and `UNSTABLE` all mean
@@ -2611,7 +2618,8 @@ required names come from the two gate queries that were needed anyway:
 no entry, an entry whose `status` is not `COMPLETED` — the six are `REQUESTED`,
 `QUEUED`, `IN_PROGRESS`, `COMPLETED`, `WAITING`, `PENDING` — or a status context
 still `PENDING` or `EXPECTED`, means the check has not started. That is not a
-refusal but a wait: ten seconds, read again, bounded at two minutes against a
+refusal but a wait: read again — ten seconds apart until 17 October 2026, once
+a second since, inside the program — bounded at two minutes against a
 measured window of five, and a bound that runs out is reported as a gate whose
 check never registered rather than as a gate already passed. The three refusal
 cases stay three. This is what keeps the third of them from swallowing a pull
@@ -2685,7 +2693,9 @@ cannot be observed at all, because the guard fires first. The reason is the
 guard, not the classifier. Where it can be observed is the arming mutation,
 which the guard passes: on 25 August 2026 the classifier did not refuse it and
 it ran — with an explicit confirmation by the user immediately before it, so
-what happens without that confirmation is not decided. The platform merges, not
+what happens without that confirmation is not decided. Since 17 October 2026
+the classifier reads the call of `bin/devloop-arm` instead of the mutation,
+and whether it lets that through with nobody there is not measured. The platform merges, not
 the agent.
 
 **A protected branch is only a gate for accounts that cannot bypass it.** With
@@ -3256,14 +3266,15 @@ of the command that leaves it stands in the header of
 
 The arming command in the merge guard's message is the one in
 `shared/arming-command.md`. A hook cannot insert text, so it carries a copy,
-and this looks for the shared file's two lines in the hook, where they stand
-without the indentation the skills give them — `2` means both stand there
-unchanged:
+and this looks for the shared file's line in the hook, where it stands
+without the indentation the skills give it — `1` means it stands there
+unchanged, since 17 October 2026, when the two lines became the one call of
+`bin/devloop-arm`:
 
     sed 's/^    //' shared/arming-command.md | grep -cFx -f - hooks/pre-tool-use-merge-guard.sh
 
 The same for the copy in this file, under "Arming auto-merge is allowed;
-merging is not", indented as in the shared file — `2` again:
+merging is not", indented as in the shared file — `1` again:
 
     grep -cFx -f shared/arming-command.md docs/skill-conventions.md
 
