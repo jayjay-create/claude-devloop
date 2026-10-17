@@ -377,7 +377,12 @@ hook's input in the Claude Agent SDK, `sdk.d.ts` of version 0.3.295, through
 beside its result; `dontAsk` and `bypassPermissions` do not count, allow
 rules are not read, and where the mode cannot be read, the run says so.
 A permission prompt that comes during the run anyway is answered no by a
-hook while the mark stands, built the same day.
+hook while the mark stands, built the same day. Since 17 October 2026,
+version 0.142.0, the question of `setup-checks` step 8 carries in its fields
+the wording the person approved that day, text 6 as the roadmap entry of
+that date has it, and nothing is said before it: the five parts that stood
+before it went into those fields or were dropped, each with its reason in
+that entry.
 
 Built in part on 28 September 2026, version 0.114.0, and not landed as a
 milestone: the tools half — the record's form, the guard reading it off the
