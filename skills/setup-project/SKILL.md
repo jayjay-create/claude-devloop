@@ -120,7 +120,7 @@ changed, say that and stop where the person typed the refresh; reached from
 the entry point, say nothing and go back to it, since 17 October 2026. Then land
 it the way Step 8 describes.
 
-## Step 0 — Say what is about to happen, then get on with it
+## Step 0 — Get on with it, and put what is about to happen into the first question
 
 What is about to happen is said in the first question this setup puts, and
 nothing is said before it, since 17 October 2026, the roadmap entry of that
@@ -206,7 +206,7 @@ when the question about labels of overlapping meaning went, point 9 of part
 B of the roadmap entry of 12 October 2026 — this workflow creates its seven
 in step 6 in every setup and reads only its own.
 
-## Step 2 — Report what you found
+## Step 2 — Nothing of what you found is said
 
 Nothing of what step 1 found is said, since 17 October 2026: it decides
 nothing and is no result, and what a question of step 4 turns on stands in

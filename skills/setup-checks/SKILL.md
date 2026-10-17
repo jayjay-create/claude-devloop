@@ -223,8 +223,8 @@ settled.
   of a project or of this machine switches the class off. Only the user can,
   by a decision of theirs, and then the cell reads `skipped (user)` with
   their reason, as at every place below where their decision writes that
-  form. With nobody there the run stops instead, as "A guard's block is not
-  a decline" above says.
+  form. With nobody there the task ends instead, and not the run, as "A
+  guard's block is not a decline" above says, since 9 October 2026.
 
 A state that will end is still a state: no third-party packages yet, no
 entry point yet. It goes in as `skipped (state)` with that state named, and

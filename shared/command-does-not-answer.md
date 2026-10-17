@@ -8,10 +8,22 @@ fast-forwarded" in the skills that fetch, which says why; where it answers,
 the run carries on with
 that answer and says nothing of the first attempt. Where a command that
 did not answer is said — the blocks below say where — it is named as it was
-run, with the message that came back in its place. Since 17 October 2026, the
-roadmap entry of that date on the reports of what was done: a refusal the
-second attempt got past changes nothing the person gets. Until then the first
-refusal was reported beside the answer, after a measurement on 31 August
+run, with the message that came back in its place. A first attempt that a
+permission or safety check refused is said, though the second went through:
+Claude Code's permission check, the classifier of auto mode, a safety check
+built into Claude Code. One line names the check, the command, and that the
+second attempt went through, in the next message with which the turn ends
+with text; with nobody there it stands in the pull request of the work it
+happened at, and where there is none, in that work's issue, and not in the
+last message — there only where a second attempt is made at all, since the
+refusals named under "With nobody there to tell" below go as the skill's
+own section for that case says. A check the person controls is not got
+around in silence. Decided by the person on 17 October 2026, after the
+build of the roadmap entry of that date on the reports of what was done,
+which had dropped the line; the example the person saw stands in that
+entry, and a skill says what is said, not the words. Until that entry the
+first refusal was reported beside the answer, whatever had refused it,
+after a measurement on 31 August
 2026: a command refused by the runtime's permission check, whose message
 asks in so many words for a pause and an explanation of what the permission is
 for, repeated without a word, answered the second time, and named in no report

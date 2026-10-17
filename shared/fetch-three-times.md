@@ -1,7 +1,11 @@
 **A fetch that something here is built on is tried three times before it
 counts as failed**, each attempt bounded to thirty seconds and ten seconds
 apart. An attempt that fails and is followed by one that answers is not said,
-since 17 October 2026: it changes nothing the person gets. Only the third
+since 17 October 2026: it changes nothing the person gets. A permission or
+safety check of Claude Code refuses the call that carries the three, not one
+of them; where that call went through when made again, it gets the line "When
+a command does not answer" gives a refusal the second attempt got past, by
+the person's decision of the same day. Only the third
 failure stops the run, and what it says then, git's message among it, is
 given at each place. The command, whose output carries the message of every
 attempt that failed and whose exit code is the last attempt's; each attempt

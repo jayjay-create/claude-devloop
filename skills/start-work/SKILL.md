@@ -61,7 +61,7 @@ If a `missing:` line stands there — one file or all five — the setup has not
 landed on the main branch: step 2 says what that means for the introduction,
 and step 4 what is done about it.
 
-## Step 2 — Orient them, if the status line says this project is not set up
+## Step 2 — Orient them, if the status line says this project is not set up and the idea did not come with the command
 
 The status line at the session start has three states, and the introduction
 belongs to one of them. `not set up here`: nothing of the setup on the main

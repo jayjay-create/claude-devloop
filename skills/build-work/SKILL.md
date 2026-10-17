@@ -1552,28 +1552,13 @@ aside at a fetch and still set aside, with the issue that shows both lines,
 and the branch their commits went onto, with the offer of a pull request for
 them.
 
-**The last message has two groups, and nothing outside them.** Since 17
-October 2026, decided by the person that day, the roadmap entry of that date
-on the reports of what was done. The first, under a heading for the result,
-in bullets or paragraphs: whether the run finished or stopped, with the
-reason — the finishing sentence opens it, or the stop that ended the run;
-what was merged, each pull request by its title; what is open and the next
-run takes up — a task not built, a spec still open, a loose `raised-here`
-issue waiting and why, an issue this run filed for a later build, a pull
-request armed and still waiting; and what was installed under their yes. The
-second, under a heading for what is theirs to do: what they have to decide
-or do — an issue labelled `needs-human` the run raised, each row above, a
-change still set aside, the branch with their commits, a mark left standing,
-a merge handed to them, what to pull locally after a merge; where nothing is,
-this group is left out. There is no group for reading the git log and none
-for what was created or changed: where a line of this file, or a text it
-inserts, sends something to the last message, it goes into one of the two by
-this paragraph, and what fits neither stands only in its issue, its pull
-request or its file — a finding fixed against the task's own terms, a rule
-written to or taken out of `docs/agents/standards.md`, an issue closed by
-hand — or nowhere where it has none, as a change set aside and put back, or a
-stale file deleted. The headings approved that day stand in that entry; this
-skill says what is said, not the words.
+The last message is written as the text on the mark's deletion above says,
+in two groups and nothing outside them, since 17 October 2026; the rows of
+the paragraph above go into the second. Since the addendum of that day to
+the roadmap entry of that date on the reports of what was done the
+description stands in that text, inserted at every end of the run with
+nobody there, and until then it stood in this paragraph alone, read by none
+of the ends in `plan-work` and `cut-into-tasks`.
 
 A message from them stops the run, and the mark goes on it as above too.
 Neither how to read the diffs nor how to stop the run is said, since 17

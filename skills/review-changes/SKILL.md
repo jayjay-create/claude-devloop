@@ -160,7 +160,7 @@ either, state which lens did not run. Never present a comparison that is
 quietly one lens short. A rerun that returned is not said, since 17 October
 2026.
 
-## Report
+## The report, said to nobody
 
 The report is said to nobody, since 17 October 2026: the findings reach the
 person at the close of the step that owns the gate, as that step presents
