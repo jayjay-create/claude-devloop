@@ -273,8 +273,9 @@ Map the open decisions as a tree: every decision branches into the decisions
 that hang off it. Work the tree in rounds. The frontier is every decision
 whose prerequisites are already settled — the questions answerable now,
 without guessing at answers you have not heard yet; a question whose answer
-hangs on one still open belongs to a later round. Each round, settle what
-you can settle yourself and say so in one line, then ask what is left —
+hangs on one still open belongs to a later round. Each round, settle only
+what the rule on this interview below leaves to you, say it in one line as
+that rule says, and then ask every decision that is left —
 numbered, each with your recommended answer so a single word can settle it,
 at most three in a round, and the rest of the frontier before anything the
 answers unlock. Say roughly how many rounds you expect. Then wait. The
