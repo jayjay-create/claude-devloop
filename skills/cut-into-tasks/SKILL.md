@@ -128,17 +128,20 @@ block each other, and false blockers serialise work that could run in parallel.
 
 ## Before you create anything
 
-Present the split as a numbered list: title, one line each, and which tasks wait
-for which. Then say it is what you are about to create, and create it — **do not
-ask whether the cut is right.** How to cut follows from the spec and from the
-rules above it: vertical, demonstrable, one at a time, real blockers. It is not
-a matter of taste the user holds and you do not, and they cannot judge whether a
-task is too large without the code in front of them. Asking hands them a
-decision they have nothing to decide it with.
+Create the split — **do not ask whether the cut is right.** How to cut follows
+from the spec and from the rules above it: vertical, demonstrable, one at a
+time, real blockers. It is not a matter of taste the user holds and you do not,
+and they cannot judge whether a task is too large without the code in front of
+them. Asking hands them a decision they have nothing to decide it with.
 
-Say it in a way they can stop: this is the last cheap moment to change it, and
-once issues exist and work starts, re-cutting costs real effort. If they name a
-different cut, take it and create that instead.
+With them there, the split, as a numbered list — title, one line each, and
+which tasks wait for which — is said at the next message that ends a turn
+with text, as what was created, and not before it is created; with nobody
+there it stands in the tracker alone. No room to stop it is offered, since
+17 October 2026: the next message that ends a turn comes only once the
+issues exist and, with them there, once the first task is built, when
+re-cutting costs real effort. Until then it was presented before the
+creating, said in a way they could stop.
 
 ## After creating
 
@@ -151,13 +154,13 @@ issue too), and which one is ready first.
 Then what happens depends on how this piece of work was told to run, and the mark
 says which.
 
-- **With them**, say you are starting on the first task, and do it. Say in plain
-  words what that means: one task at a time, each with tests, each reviewed
-  before it lands, and they see the result before anything is merged. Do not ask
-  permission first — nothing lands without the gate at the end of the build, and
-  that gate is where the decision actually sits.
-- **Alone, `build`**: say you are starting on the first task and that the build
-  goes on by itself from here, and run `build-work`. Its section on the
+- **With them**, start on the first task, and say nothing of it before, since
+  17 October 2026: one task at a time, each with tests, each reviewed before it
+  lands, and they see the result before anything is merged, at the gate. Do not
+  ask permission first — nothing lands without the gate at the end of the
+  build, and that gate is where the decision actually sits.
+- **Alone, `build`**: run `build-work`, and say nothing of it, since 17
+  October 2026. Its section on the
   unattended mode reads the seven preconditions — all seven, this time with tasks
   to read the third against — finds the mark this run wrote, and opens the run.
 - **Alone, `plan`**: this is the halt before the first build, and the run ends

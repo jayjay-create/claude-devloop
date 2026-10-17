@@ -285,7 +285,18 @@ proposal above standing before it in that message, since 17 October 2026:
 one line per class with what it catches, its cost and its tool, and the
 reasons of the ones that do not apply, are what the answer is given on, and
 they do not fit the harness's choice widget by the bound of the output
-style of devloop. "None"
+style of devloop. Where this skill was called whole for the classes still
+`empty` — from `build-work` step 6 after a merge, or from step 4 of the entry
+point at a start — that message opens with why the question comes now: after a
+merge, that the work is merged but not every check is decided yet, so that
+comes first; at a start, that the project is set up but not every check is
+decided yet, so that comes first. Where no question is put here, it stands
+in the message with which this skill's turn ends, before the merge handover.
+Since 17 October 2026, where until then the caller said it before calling;
+the wording for a start was approved on 6 October 2026 and stands in the
+roadmap entry of 5 October 2026, the one after a merge on 17 October 2026 in
+the roadmap entry of that day on the reports of what was done; this skill
+says what is said, not the words. "None"
 is not among the answers, and neither is a class left for later without a
 reason. `empty` means nobody decided, and every step that asks whether the
 suite is complete reads that word as undecided — the mode's first
@@ -324,11 +335,12 @@ it does not already allow, or anything installed on their
 machine that the install record does not already allow, is theirs to allow,
 whatever made the class eligible; step 3 says how each is asked. A test
 case and a
-target in the task runner are not. When both kinds come up in one round, state
-the ones that cost them nothing and ask about the ones that do — never side by
-side as though they were the same kind of thing. The statement waits for the
-next message that ends a turn with text, and never stands before the call
-that asks, since 17 October 2026.
+target in the task runner are not. When both kinds come up in one round, ask
+about the ones that cost them something, and the ones that cost them nothing
+stand in the pull request of step 7, beside the red proof of each class it
+switches on, and are not said — never side by side with the questions as
+though they were the same kind of thing. Since 17 October 2026; until then
+they were stated in the conversation.
 
 ## Step 3 — Prefer tools that live inside the project
 
@@ -596,9 +608,10 @@ entry included, which is what a `git reset` that failed without saying so
 left behind in `devloop-test-v` on 4 October 2026, defect 7 of the roadmap
 entry of 3 and 4 October 2026 on the two runs, built as point 16 of part B
 of the roadmap entry of 12 October 2026. Where the target scans the history
-alone, so that a file in the tree cannot turn it red, say so and read
-whether the tool has a mode over the tree; the break goes into no commit
-either way.
+alone, so that a file in the tree cannot turn it red, read whether the tool
+has a mode over the tree, and that it scans the history alone stands in the
+proof line of the pull request below and is not said, since 17 October
+2026; the break goes into no commit either way.
 
 A target that needs an argument fails loudly when it is missing, rather than
 quietly doing something else.
@@ -815,7 +828,9 @@ returned — `never` binds, anything else does not, `pull_requests_only` include
 since that is a bypass at the merge itself. Reading only the classic field
 reports a ruleset gate as missing, because that endpoint 404s where the gate is a
 ruleset. A gate binds if either side binds. Protection this account can step over
-is not a gate: report it as missing, not as present. Where a side did not answer,
+is not a gate: count it as missing, not as present, and say nothing of it,
+since 17 October 2026 — the yes of the question below says whether a
+protection is added. Where a side did not answer,
 say the binding could not be determined rather than reporting the gate either
 way. Then the three records, as the paragraph above reads them. Where the
 mode is set up by all five, say that it is and skip the rest of this step. A
@@ -942,9 +957,9 @@ same, since it is what says what setting one up costs.
 
 **On a no, nothing is set up**, on the platform or anywhere else, and every
 piece of work runs with them. The record below says so, with the reason.
-Then say the one thing that changes it: typing `--auto` where a piece of
-work starts sets the mode up then — a flag only they can type, so it is
-given as it is typed.
+Nothing more is said on the no, since 17 October 2026: that typing `--auto`
+where a piece of work starts sets the mode up then stands in the no's own
+description already.
 
 **On a yes — their answer, or the flag where the gate stands — one question
 more, directly after it and before the two permissions: whether devloop may
@@ -1027,8 +1042,11 @@ or a tool they declined into the packages — the reasons step 3 writes — is a
 class the answers just given open again, by point 3 below, and every check
 tool installed outside the project that a yes to the dependency file now
 lets into the packages is one point 2 enters. That list, each class with
-the tool it takes, is said to the person in one line of the run's own
-message before the first pull request, and it decides how many pull
+the tool it takes, is said to the person in one line at the next message
+that ends a turn with text, its details standing in the pull request that
+carries them, since 17 October 2026, defect 8 of the roadmap entry of 16
+October 2026 on the runs of that day; until then in one line of the run's
+own message before the first pull request. It decides how many pull
 requests there are. Then, in this order, and none of it skipped for the
 records having to land first — that is what point 1 is for:
 

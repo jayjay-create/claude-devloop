@@ -36,7 +36,8 @@ decision.
 **A turn that ends on the widget** carries in its question field what bears
 on that decision. Anything else owed by then waits for the next turn that
 ends with text. Nothing stands as text before the call that shows the widget:
-text there lands in a collapsed note.
+text there can land in a collapsed note, as owed text did in every measured
+run.
 
 **What fits the widget.** The question field with its question line and the
 descriptions of all answers fill at most 14 lines together, at 80 columns,

@@ -87,7 +87,9 @@ no second attempt, no other way to the same result.
   standing on one. This holds while a task is in hand, from step 3 to the
   proof of its merge in step 6.
 
-**Say which of the two happened**, either way.
+**Which of the two happened** is said with nobody there in the last message,
+the issue raised among what is theirs to decide or do; with the user there
+the handover above says it already, since 17 October 2026.
 
 **Where the refusal meets the build subagent, or any other subagent of the
 build**, the subagent raises the issue and records it as the blocker, as
@@ -213,7 +215,7 @@ changed it itself.
 
 **A statement about the repository or the platform rests on a command from this
 turn.** Not on how it was at the start, not on how it usually is. Where you have
-no such command, say you are going to look, and look.
+no such command, look, without announcing it, since 17 October 2026.
 
 **Before telling the user something is missing, search for it.** A negative is
 the most expensive claim there is, because it sets them to work: a run reported
@@ -343,15 +345,16 @@ build dead.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
 
 - **Exactly one ready** — build it.
-- **Several ready** — list them with what each unblocks, then take the one that
-  unblocks the most other tasks, and on a tie the lowest issue number. Say which
-  you took and why, and never start more than one. **Do not ask which.** That
+- **Several ready** — take the one that unblocks the most other tasks, and on
+  a tie the lowest issue number, and never start more than one. Neither the
+  list nor which you took and why is said, since 17 October 2026: the room to
+  name a different one would reach them only once it is built, at its gate.
+  **Do not ask which.** That
   rule is the same one this step has always used when nobody is there to ask,
   and a rule good enough for an unattended run is good enough for a watched one
   — the difference is whether somebody is present, not whether the answer can be
   worked out. Being wrong costs one build's wait and no rework, and the user
-  cannot rank two tasks they have not seen the code for. If they want a
-  different one, they will say so.
+  cannot rank two tasks they have not seen the code for.
 - **None ready** — say which task blocks which, and stop.
 
 **A loose issue is not one of these.** The readiness query returns the tasks
@@ -370,12 +373,14 @@ different ways. It is not a question either. The order is:
    wait. And a loose issue whose subject belongs to a task still open under the
    spec waits for that task specifically: it is cheapest where its ground is
    being opened anyway, and say that too.
-3. **With the spec closed, take it** — the same rule as several ready tasks, and
-   say which and why. Do not stop without saying what comes next.
+3. **With the spec closed, take it** — the same rule as several ready tasks,
+   and as there, which and why is not said, since 17 October 2026.
 
 **The announcement names the clause, per issue.** Where loose issues are in play,
-say for each one which of the three above it falls under and what follows from
-that. Not that it is next, not that it is minor, not that it can wait: a word
+say for each one that waits which of the three above it falls under and what
+follows from that, at the next message that ends a turn with text; for one
+taken now nothing is said, since 17 October 2026, as for a task taken among
+several. Not that it is next, not that it is minor, not that it can wait: a word
 reached for at the moment of deciding reads like a criterion and is not one, and
 nobody can disagree with it because nobody can tell where it came from. An
 announcement that orders loose issues and names no clause is incomplete on its
@@ -393,7 +398,8 @@ clause 1, and it carried the highest number, so it was built last. The other
 three were hardenings with nothing wrong in service, which is clause 3.
 
 **Except an issue from outside**, which is a suggestion and not an instruction:
-report it and leave it. **`raised-here` is what tells them apart** — this
+report it and leave it — with nobody there leave it and say nothing of it,
+since 17 October 2026. **`raised-here` is what tells them apart** — this
 workflow sets it on every finding it files, so an issue without it came from
 somewhere else. Do not infer it from anything else: the author is the account
 the tooling runs as either way, and an unlabelled, unassigned issue looks
@@ -479,8 +485,11 @@ The subagent:
    point 8, and the report of this run — the command as it ran, what came
    back, what stands at that path, and what the package manager did besides —
    goes into the pull request body beside the `Guarded conditions` list, which
-   is what outlives the session; with the user there, say the same in one line
-   as well. A package manager does more than the package it names: on 28
+   is what outlives the session; with the user there, the main run says it in
+   one line as well, at the next message that ends a turn with text, its
+   details standing in the pull request, and with nobody there it stands in the
+   last message among what was installed under their yes, since 17 October
+   2026. A package manager does more than the package it names: on 28
    September 2026 one `brew install` updated Homebrew itself, fetched a
    portable Ruby, updated two taps and ran a cleanup, none of it asked for,
    which is why that last part is in the report. A compiler or a runtime,
@@ -543,8 +552,9 @@ was for:
   and `needs-human`, recorded as a blocker of the task. Nothing else is needed to
   keep this step from picking the same task straight back up: the readiness query
   passes over a task with an open blocker by itself, and closing that issue once
-  the command has run frees it again. Say all of it in one message, then go back
-  to step 2 rather than stopping.
+  the command has run frees it again. All of it is said together at the next
+  message that ends a turn with text, since 17 October 2026; go back to step 2
+  rather than stopping.
 
 Refactoring is not part of this loop. It belongs to the review.
 
@@ -659,9 +669,11 @@ differently depending on who is present — which the run reads off the mark.
   and go back to step 2: the readiness query passes over a blocked task by
   itself, so the run carries on with the rest instead of standing on one.
 
-**Say which of the two happened**, either way. A task that came back as an issue
-rather than as a merge is the single most likely outcome this mode has, and it is
-named at the offer for that reason.
+**Which of the two happened**: with nobody there the last message names the
+issue, among what is theirs to decide or do, and with the user there the
+hook's handover has said it, since 17 October 2026. A task that came back as
+an issue rather than as a merge is the single most likely outcome this mode
+has, and it is named at the offer for that reason.
 
 ## Step 4 — Review it
 
@@ -707,11 +719,11 @@ Each finding goes one of three ways:
 silently.** A condition the issue names, a test decision it records: where the
 finding is that one of those is missing or unmet, **the destination does not
 change** — the fix is usually obvious and the first way out takes it — but it is
-named as a finding against the task's own terms when the split is announced, and
-again at the close in step 5. This is a duty to say so, not a second route to the
-issue tracker. On pull request 27 a byte-for-byte regression test the task's own
-Test Decisions had asked for was missing; it went through among the mechanical
-ones and reached the close as nothing at all.
+named as a finding against the task's own terms at the close in step 5, and
+not where the findings are split, since 17 October 2026. This is a duty to say
+so, not a second route to the issue tracker. On pull request 27 a byte-for-byte
+regression test the task's own Test Decisions had asked for was missing; it
+went through among the mechanical ones and reached the close as nothing at all.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-not-in-conversation`
 
@@ -778,8 +790,8 @@ new commits contain is not a reason. A round that reviews three added lines is
 cheap; the code that lands unread when it is skipped is not.
 
 A second round follows the same three ways out, and it looks only at what is new.
-If it surfaces nothing beyond what the first round already named, say so and
-carry on rather than starting again.
+If it surfaces nothing beyond what the first round already named, carry on
+rather than starting again, and say nothing of it, since 17 October 2026.
 
 ## Step 5 — Hand it to the user
 
@@ -820,9 +832,11 @@ question the build exists to earn.
 In unattended mode the check suite is this gate instead — the gate is replaced,
 never removed. **What is not replaced is the line above.** With nobody at the
 gate to tell, a finding against something the task's own issue asked for goes
-into the report this run writes, in the same words. A check suite can stand in
-for the decision; it cannot stand in for somebody being told, and a fact with no
-reader is the one thing an unattended run drops most cheaply.
+into the pull request body, in the same words, and not into the last message,
+since 17 October 2026. A check suite can stand in for the decision; it cannot
+stand in for somebody being told, and a fact with no reader is the one thing an
+unattended run drops most cheaply, so the body that outlives the session
+carries it.
 
 ## Step 6 — Merge it
 
@@ -1120,8 +1134,9 @@ once:
 depends on it — the fast-forward, the branch deletion, the issue check, step 7's
 query — and none of it may run on a green check alone.
 
-**A wait that runs out is a finding, not a failure.** Say what it was waiting on,
-which check was still outstanding, and how long it waited. The pull request stays
+**A wait that runs out is a finding, not a failure.** Say what it was waiting on
+and which check was still outstanding, and not how long it waited, since 17
+October 2026. The pull request stays
 open and stays armed: arming is a state on the platform and does not expire with
 this answer, so it lands by itself when the check finishes and there is nothing
 to arm a second time. Do not call the task failed and do not call the pull
@@ -1196,7 +1211,8 @@ Once it has landed:
 - Confirm the task issue closed, and **close it by hand where the platform did
   not**. `gh pr view <number> --json closingIssuesReferences` says which issues
   the pull request claimed, so the check is over that list rather than over
-  memory. Name each one you checked, including the ones it did not close. **The closing keyword is the
+  memory. Each one checked stands as the tracker shows it, and is not named,
+  since 17 October 2026. **The closing keyword is the
   right link and is not a guarantee.** Measured on 13 September 2026 in
   `devloop-test-o` over five merges: four issues closed within seconds — 47 by
   pull request 50, 48 by 53, 49 by 54, 52 by 57 — and one did not. Pull request
@@ -1212,7 +1228,10 @@ Once it has landed:
   repository now has
   code. That is what a setup without code leaves — all nine `empty`, the suite
   not built — and the first merge that lands code is where it stops being
-  true. Say so and call `setup-checks`, whole and not for one class: it cuts
+  true. Call `setup-checks`, whole and not for one class, saying nothing before
+  it: that the work is merged and not every check is decided yet, so that
+  comes first, stands at the start of the message that puts the question of
+  its step 2, as that step says, since 17 October 2026. It cuts
   its own branch from the main branch this step just fast-forwarded, puts its
   questions, lands the suite through its own step 7 and comes back to step 7
   here. This never meets nobody: the mode refuses to start while a class is
@@ -1437,16 +1456,20 @@ sites says so where it stands. A session that simply ends deletes nothing; the
 planning stage's pick-up rule and the refusal above are what meet the mark it
 leaves.
 
-Then say what this run turns on, in the message that opens it, and keep it in
-the conversation: the scope, what happens to the loose issues already open, the
-sentence that will mean it has finished, and the main-branch commit it starts
-from — the same commit the mark carries.
+Then settle what this run turns on: the scope, what happens to the loose issues
+already open, the sentence that will mean it has finished, and the main-branch
+commit it starts from — the same commit the mark carries. None of it is said as
+the run opens, since 17 October 2026: the message that opens the run ends no
+turn, and the room to object it gave would reach them only at the run's end;
+what of it they need — what was merged, what is open — stands in the last
+message, by the paragraph on it below. Until then it was said in the message
+that opened the run and kept in the conversation.
 
-**The loose issues belong in that opening message, not in whatever the run meets
-later.** Run the in-flight query before announcing anything, name the ones
-carrying `raised-here`, and say under which of step 2's three clauses each stands
-— clause 1 taken now, clause 2 waiting on the open spec and why, clause 3 waiting
-for the spec to close. An issue from outside is reported and left, the same as
+**The loose issues belong in that scope, not in whatever the run meets
+later.** Run the in-flight query before settling anything, take the ones
+carrying `raised-here`, and place each under one of step 2's three clauses
+— clause 1 taken now, clause 2 waiting on the open spec, clause 3 waiting
+for the spec to close. An issue from outside is left, the same as
 everywhere else. Do not build the scope out of the readiness query alone: that
 query returns the tasks under a spec, step 2 says in so many words that a loose
 issue is not one of them, and a scope taken from it is a scope with the loose
@@ -1510,8 +1533,9 @@ it checkable: a second run finds the first one's and does not start.
 
 **A `.claude/autorun.local.md` lying about is stale, not an instruction.** An
 earlier version of this stage wrote one, and it carries a standing instruction to
-keep taking tasks. Nothing writes it now and nothing ever read it. Delete it, say
-that you did, and take the scope from this conversation.
+keep taking tasks. Nothing writes it now and nothing ever read it. Delete it,
+and take the scope from this conversation; that it was deleted is not said,
+since 17 October 2026: the last message has no place for it.
 
 Emit the finishing sentence only when it is completely and unambiguously true —
 never to get out of the loop. Then the mark goes:
@@ -1524,15 +1548,38 @@ it stood, since nobody was there to ask. Name each such row where the run
 ends — at the finishing sentence, or at whichever stop ended it — with its
 reason and what holds now, and not in every pull request. And since 16
 October 2026, as the text above says: each change of theirs the run set
-aside at a fetch, back or still set aside with the issue that shows both
-lines, and the branch their commits went onto, with the offer of a pull
-request for them.
+aside at a fetch and still set aside, with the issue that shows both lines,
+and the branch their commits went onto, with the offer of a pull request for
+them.
 
-Tell the user how to read the diffs afterwards, from the commit named at the
-start to the current main branch, and how to stop the run — which is a message
-from them, and on which the mark goes as above too. If the session itself is gone,
-the merged pull requests cover the same ground, and the mark it left is met by
-the rules above.
+**The last message has two groups, and nothing outside them.** Since 17
+October 2026, decided by the person that day, the roadmap entry of that date
+on the reports of what was done. The first, under a heading for the result,
+in bullets or paragraphs: whether the run finished or stopped, with the
+reason — the finishing sentence opens it, or the stop that ended the run;
+what was merged, each pull request by its title; what is open and the next
+run takes up — a task not built, a spec still open, a loose `raised-here`
+issue waiting and why, an issue this run filed for a later build, a pull
+request armed and still waiting; and what was installed under their yes. The
+second, under a heading for what is theirs to do: what they have to decide
+or do — an issue labelled `needs-human` the run raised, each row above, a
+change still set aside, the branch with their commits, a mark left standing,
+a merge handed to them, what to pull locally after a merge; where nothing is,
+this group is left out. There is no group for reading the git log and none
+for what was created or changed: where a line of this file, or a text it
+inserts, sends something to the last message, it goes into one of the two by
+this paragraph, and what fits neither stands only in its issue, its pull
+request or its file — a finding fixed against the task's own terms, a rule
+written to or taken out of `docs/agents/standards.md`, an issue closed by
+hand — or nowhere where it has none, as a change set aside and put back, or a
+stale file deleted. The headings approved that day stand in that entry; this
+skill says what is said, not the words.
+
+A message from them stops the run, and the mark goes on it as above too.
+Neither how to read the diffs nor how to stop the run is said, since 17
+October 2026: the last message has no group for reading the git log, and at
+its end nothing is left to stop. If the session itself is gone, the mark it
+left is met by the rules above.
 
 ---
 

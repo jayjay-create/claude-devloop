@@ -70,7 +70,8 @@ from the main branch as it stands. The cases:
 
       git switch main && git branch -D devloop-setup && git switch -c devloop-setup
 
-  Tell the user, in a line or two of the run's own message: that a branch of
+  Tell the user, in a line or two of the next message that ends a turn with
+  text, since 17 October 2026: that a branch of
   this name was already here, left by an earlier setup that was broken off;
   that nothing had been written on it; and that it has been removed and cut
   again, so that this setup starts from the main branch as it stands.

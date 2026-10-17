@@ -84,8 +84,9 @@ working tree.
 
 Where its answer carries a `missing:` line, this project is not set up on the
 main branch — never set up, or written and not landed, which the working tree
-cannot tell apart. **Say in one line what you are doing and run
-`setup-project`. Do not ask.** There is nothing to decide:
+cannot tell apart. **Run `setup-project`, and say nothing before it. Do not
+ask.** Why its questions come now stands in its first question, as its step
+0 says, since 17 October 2026. There is nothing to decide:
 without a tracker there is nowhere to put a map or a ticket, so the only other
 answer is to abandon what the user just asked for. Do not improvise around it
 either — there is no local-markdown fallback here — a tracker with no queryable blocking relationship
@@ -431,11 +432,12 @@ User invokes with a loose idea.
    committed on the other's branch. Each writes only its own file and commits
    only that path.
 
-   If it happens anyway, say so and leave it. **Do not rewrite history to tidy
-   it** — no `rm` on another branch, no cherry-picking a commit out from under
-   it. A stray file in a throwaway research branch costs nothing; quietly
-   reshaping branches to hide a mistake costs the ability to trust what the
-   branches say.
+   If it happens anyway, leave it, and say nothing of it, since 17 October
+   2026: the ticket's context pointer names the branch its findings stand on.
+   **Do not rewrite history to tidy it** — no `rm` on another branch, no
+   cherry-picking a commit out from under it. A stray file in a throwaway
+   research branch costs nothing; quietly reshaping branches to hide a mistake
+   costs the ability to trust what the branches say.
 6. **Stop here.** Charting is one session's work and it hand-resolves nothing;
    this step is where the session ends. Say what the map holds and which tickets
    are free. Then say how to start the first one, in these two steps and nothing
@@ -485,8 +487,9 @@ No open tickets and no fog left means the way is clear: the destination is
 reached and there is nothing more to decide before someone builds. Say that the
 questions are settled, gist what the map decided, and carry straight on into
 planning and building the work. Do not ask permission for that: the map exists
-because they wanted the thing built, and it is now out of the way. Say what you
-are doing so they can say to stop instead.
+because they wanted the thing built, and it is now out of the way. No room to
+say stop is offered, since 17 October 2026: it would reach them only once the
+planning has begun.
 
 ---
 
