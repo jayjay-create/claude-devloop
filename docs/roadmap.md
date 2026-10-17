@@ -430,9 +430,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     under that spec and halted. It built the scope from the readiness query —
     the query step 2 says does not see loose issues — and the finish sentence it
     halted on read "until nothing in scope is **ready** any more, and that is the
-    only finish", which is that query's own word. *Should:* the opening message
-    names the loose issues carrying `raised-here` and says which of the three
-    clauses each stands under, and the finish is two conditions — nothing ready
+    only finish", which is that query's own word. *Should:* the scope holds the
+    loose issues carrying `raised-here`, each placed under one of the three
+    clauses, said as the run opens until 17 October 2026 and in no message since,
+    the last message naming what is open, by the roadmap entry of that date on
+    the reports of what was done, and the finish is two conditions — nothing ready
     in scope **and** no loose `raised-here` issue that clause 1 or clause 3 would
     take now. Clause 2 is not one of them: a loose issue waiting on an open spec
     is the ordinary state of a healthy run, and treating it as unfinished work
@@ -451,8 +453,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     next**. `start-work` step 5 supplied the other half of the offer: its four
     branches have none for a loose issue, so one falls into "anything else,
     including a fresh idea" and is routed to `plan-work` from the start.
-    *Should:* with the spec closed the run names the issue it takes and why, as a
-    statement. *Built:* step 7 loses its three answers and points at step 2,
+    *Should:* with the spec closed the run takes the issue clause 3 names, as a
+    statement and not an offer, and since 17 October 2026 says nothing of which
+    and why, by the roadmap entry of that date on the reports of what was done,
+    where until then it named it and why. *Built:* step 7 loses its three answers and points at step 2,
     keeping the two sentences that are its own — that everything known before the
     merge is stale, and that an unlanded pull request holds its own task out of
     the answer. `start-work` step 5 gets a fifth branch sending loose
@@ -7887,8 +7891,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   among them. Recorded, not built: step 2 of `setup-project` reports that the
   repository carries none of this workflow's labels, which holds for every
   repository before its setup and changes nothing; what should hold is that
-  step 2 says what step 4 will act on — whether labels with overlapping
-  meaning exist — and not the absence of what step 6 creates. The roadmap,
+  step 2 says nothing of what was found, what a question of step 4 turns on
+  standing in that question's fields, since 17 October 2026, by the roadmap
+  entry of that date on the reports of what was done, where until then it
+  said what step 4 will act on — whether labels with overlapping meaning
+  exist — and not the absence of what step 6 creates. The roadmap,
   searched for `did not find` with `labels` and `noise`, names it nowhere.
 
   **K. `setup-checks` step 8 tells the person the run keeps going until
@@ -17250,9 +17257,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   wrote no introduction, the idea having come with the command, while
   `start-work` step 2 line 91 says after the introduction to ask what they
   would like to build and stop, which a run that already has the idea cannot
-  follow — should: the introduction is written whenever the project is not set
-  up, and where the idea came with the command the run carries on without
-  asking.
+  follow — should: the introduction is written where the project is not set
+  up and the idea did not come with the command, closing on the question what
+  to build, and where the idea came with the command there is none and the
+  run carries on without asking, that the setup comes first standing in the
+  setup's first question, since 17 October 2026, by the roadmap entry of that
+  date on the reports of what was done, where until then the introduction was
+  written whenever the project was not set up.
 
   **6. A rule naming no situation of the project.** At the close of the review
   of the third task, #11, the run wrote into `docs/agents/standards.md`, landed
@@ -24490,8 +24501,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   Recorded, not built: with the spec closed the first closing run took neither
   loose issue carrying raised-here and ended, record 1183, calling them not
-  urgent — should: the run takes one by clause 3 and says which and why,
-  `build-work` lines 346 to 347, the clause of each named, line 349.
+  urgent — should: the run takes one by clause 3, `build-work` lines 346 to
+  347, which and why not said and the clause named for each that waits, line
+  349, since 17 October 2026, by the roadmap entry of that date on the
+  reports of what was done, where until then it said which and why and named
+  the clause of each.
 
   **Part 1, e. The cause, per place.** The common evidence: the blocks have the
   form of the model's progress updates; text that ends a turn arrived as text
@@ -25874,8 +25888,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   carries the last two; the four points and the fixed line stand nowhere.
   Recorded, not built: the introduction of `start-work` step 2, the four
   points, the fixed line and the idea as understood, reached no message of
-  project 1, the only trace a progress update at record 43 — should: it stands
-  as text in the run's own message, `start-work` expanded 126 to 163.
+  project 1, the only trace a progress update at record 43 — should: where the
+  idea did not come with the command the introduction stands in the message
+  that ends the turn, closing on the question what to build, `start-work`
+  lines 77 to 103; where it came with the command there is none, and that the
+  setup comes first stands in the first question the setup puts, `setup-project`
+  lines 137 to 155; the roadmap entry of 17 October 2026 on the reports of
+  what was done revised this should and quotes the earlier one.
 
   **2. The sentence on the seven labels was said in neither run.**
   `setup-project`, the `issue-tracker.md` section, expanded 1204 to 1207,
@@ -25887,8 +25906,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   naming none.
   Recorded, not built: the sentence that seven labels were created in the
   tracker was said in neither run, records 114 to 133 of project 1 and 124 to
-  156 of project 2 — should: it stands in one sentence of the run's own
-  message, `setup-project` expanded 1204 to 1207.
+  156 of project 2 — should: it stands in one sentence in the message with
+  which the setup's turn ends, before the merge handover, `setup-project`
+  lines 557 to 562; the roadmap entry of 17 October 2026 on the reports of
+  what was done revised this should and quotes the earlier one.
 
   **3. Stage 1 of `plan-work` showed the hard core in no message, put no round
   of questions, and asked the confirmation over a list the person could not
@@ -26071,8 +26092,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: the line naming the classes the two yes open, each with
   its tool, stood in a progress update at record 317 and in the handover's
   tail at 355 of project 1 and in no message of its own — should: it stands as
-  one line of the run's own message before the first pull request,
-  `setup-checks` expanded 1815 to 1825.
+  one line at the next message that ends a turn with text, its details in the
+  pull request, `setup-checks` lines 1044 to 1050; the roadmap entry of 17
+  October 2026 on the reports of what was done revised this should and quotes
+  the earlier one.
 
   **9. Points 2 and 3 of step 8: the text has point 3 install a tool outside
   the project where the record on the packages says yes as well, and point 2
@@ -26120,12 +26143,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   update or nowhere at four further places, records 510, 603 and 612 of
   project 1 and the two places that created the glossary and the decision
   records, records 84 and 85 and 90 — should: what the two answers that send
-  the run alone cost stands in their descriptions, `plan-work` lines 420 to
-  426 as the roadmap entry of 17 October 2026 left them, and each other text
-  stands in the message that ends the turn as its line says, `setup-checks`
-  expanded 2047 to 2048, `plan-work` expanded 1033 to 1036 and 1056 to 1057,
-  `setup-project` expanded 1305 to 1306 at `7e35090`; that entry revised this
-  should and quotes the earlier one.
+  the run alone cost stands in their descriptions, `plan-work` lines 417 to
+  423; the count of the classes at the close of `setup-checks`, its line 1200,
+  and that the glossary and the decision records were created, `setup-project`
+  line 662, stand in the message that ends the turn as their lines say;
+  Stage 2's report stands only as the comment on the planning issue,
+  `plan-work` lines 501 to 505, and that the mark was written is not said,
+  lines 478 to 479; the roadmap entries of 17 October 2026 on where owed text
+  stands and on the reports of what was done revised this should, the second
+  quoting the one before it.
 
   **11. Question 4 of `setup-project` was not put in project 1.** Expanded 923
   to 925: the local environment is asked "always where there is code, unless
@@ -26718,27 +26744,28 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **What is not built here, for the next order.** The lines that place a
   report of what was done otherwise than decision 1 has it: `setup-checks`
   lines 1028 to 1031, the line before the first pull request, SC-28;
-  `setup-project` lines 523 to 526, the seven labels, SP-19; `plan-work` line
+  `setup-project` lines 530 to 533, the seven labels, SP-19; `plan-work` line
   573, the seams "in their own message", PW-39; `shared/cut-branch.md` lines
   73 to 76, SH-22; `shared/set-aside-back.md` lines 5 to 6, SH-40;
-  `build-work` lines 476 to 486, BW-18, 1437 to 1453, BW-50, 1518 to 1526,
-  BW-53, and 1528 to 1532, BW-54. The announcements that carry a why-now, SP-6
+  `build-work` lines 476 to 486, BW-18, 1440 to 1456, BW-50, 1521 to 1529,
+  BW-53, and 1531 to 1535, BW-54. The announcements that carry a why-now, SP-6
   at `setup-project` lines 120 to 144, UI-2 at `untangle-idea` 85 to 92, PW-2
   at `plan-work` 38 to 43, SW-5 at `start-work` 101 to 108, SW-15 at
-  `start-work` 240 to 265 and BW-44 at `build-work` 1208 to 1217. The places
+  `start-work` 240 to 265 and BW-44 at `build-work` 1211 to 1220. The places
   with W, SH-10 and SH-11 at `shared/how-to-ask.md` 20 to 26, CT-2 at
   `cut-into-tasks` 131 to 141, SW-6, SW-7 and SW-9 in `start-work` step 2,
   UI-19 at `untangle-idea` 482 to 489, BW-13, BW-15 and BW-16 at `build-work`
   345 to 382. The introduction of `start-work`, lines 75 to 114, SW-3; PW-24
-  at `plan-work` lines 356 to 382; SC-25 at `setup-checks` lines 930 to 934.
+  at `plan-work` lines 367 to 393; SC-25 at `setup-checks` lines 943 to 947.
   The hooks: the mark guard, lines 143 and 145, a report and then carrying on;
   the install guard, line 989, the cost of a decline and then carrying on; the
   branch guard, the merge guard, `stop-checks.sh`, the identity guard, the
   hook on permission prompts and the session start read and found placing
-  nothing against decision 1. `docs/skill-conventions.md` line 822, the report
-  of `setup-project` step 2 "before the question is put", SP-9. Until that
-  order, the style carries each such text to the message that ends the turn or
-  into the question it bears on. The report has the list with every line read.
+  nothing against decision 1. `docs/skill-conventions.md` lines 910 to 911,
+  the report of `setup-project` step 2 "before the question is put", SP-9.
+  Until that order, the style carries each such text to the message that ends
+  the turn or into the question it bears on. The report has the list with
+  every line read.
 
   **The shoulds that follow.** Seven defects name in their should a line this
   order changes, and their should is revised on their status line in place,
@@ -26888,6 +26915,239 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   under PostToolUseFailure and the person's own style, each answer as the
   report gives it; recorded under 0.142.0. Nothing ran on a bench with a
   model, and no session of Claude Code was started.
+
+- **Where each text devloop owes the person stays, goes into a pull request,
+  an issue or a file, or drops, built after the decisions of the person of 17
+  October 2026: the introduction of `start-work`, the sentences that say why
+  a question comes now in the wording approved that day, the last message of
+  the run with nobody there in two groups, and the lines of the skills, the
+  inserted texts and two hooks brought in line with the output style; 17
+  October 2026, version 0.143.0.** On `task/owed-text-reports`, off `b24542a`,
+  version 0.142.0 on `main`; the changes and the version in one commit, this
+  entry, the shoulds that follow and the rows of the table in a second, the
+  runs in a third. The report stands on this machine as
+  `~/devloop-report-2026-10-17-owed-text-reports-build.md`, in English, and
+  is not in the repository. It rests on the triage, the inventory and the
+  rule-build report of the same day, named in the entry above, and on that
+  entry; a line is given as it stands at the tip of the branch, a line of a
+  report as the report stands. The words the stock-take tool reads a line of
+  this file into its search set by stand in this entry in its head and on the
+  status lines of its findings, and on no other. Nothing ran on a bench and no
+  session of Claude Code was started for this entry.
+
+  **The decisions it builds, B1 to B12 of the order, each for every skill.**
+  A text stays in the conversation only where the person has to decide
+  something; has to do something, merge, run a command, sign in, install;
+  something failed or is blocked and that changes what they get; the run with
+  them decided for them and the skill leaves them room to object there, worth
+  something when they read it, never with nobody there; something was
+  created, changed or deleted they did not initiate; or it is the result at
+  the end of a run or of a section. Otherwise a detail someone may need later
+  goes only into the pull request, the issue or the file that stands at that
+  place, and the rest drops; the result per place is the triage's, sections
+  3.1 to 3.13 and 5, with the rules below (B1). A turn that ends on the widget
+  carries in its question field what bears on that decision and the rest waits
+  for the next turn that ends with text, the triage's way A of its 8.3 point 1
+  not holding (B2). At the twelve places with W of the triage, where the text
+  would come only after the work, the room to object drops, at the cut and at
+  UI-19 too (B3). What was installed, entered or brought back under a general
+  yes stands as one line at the next end of a turn with text, its details in
+  the pull request, the approved lines of 16 October 2026 kept (B4). The last
+  message of the run with nobody there has two groups (B5). The introduction
+  of `start-work` stays only where no idea came, and ends the turn (B6). Why
+  the setup's questions come now stands in its first question (B7). PW-24
+  keeps its line for a yes with something fallen away alone (B8). The two
+  hooks say their text in the next message with which the turn ends with text
+  (B9). `docs/skill-conventions.md` follows the report of step 2 that went
+  (B10). Text before the call of the widget can land in a collapsed note, as
+  owed text did in every measured run, and is not said to land there (B11).
+  New wording for the person only in B7 and the two headings of B5 (B12).
+
+  **The wordings approved on 17 October 2026, B7 and B5.** In the first
+  question `setup-project` puts at a first setup that begins with an idea in
+  hand, from `start-work` with the idea or after the person named it, from
+  `untangle-idea` or from `plan-work`: „Bevor ich mit deiner Idee anfange,
+  richte ich das Projekt ein.“ In the first question it puts where the person
+  typed it themselves: „Ich richte dieses Projekt ein.“ At the start of the
+  message that puts the question of `setup-checks` step 2 where `build-work`
+  step 6 calls it after a merge: „Die Arbeit ist gemergt, aber noch nicht alle
+  Prüfungen sind entschieden. Das kommt zuerst.“ Unchanged, approved on 6
+  October 2026, at the same place where `start-work` step 4 calls it: „Das
+  Projekt ist eingerichtet, aber noch nicht alle Prüfungen sind entschieden.
+  Das kommt zuerst.“ The first question is the question field before the
+  question line through the widget, the message before it as text; with no
+  question the sentence stands in the message that ends the turn, before the
+  handover; the question on the language, put in English, carries none. The
+  two headings of the last message of the run with nobody there: „Ergebnis“
+  and „Für dich zu tun“, the second left out where empty.
+
+  **Approved wordings that drop, wholly or in part, and why.** The
+  introduction where the idea came with the command, approved on 12 October
+  2026 with its example, docs/roadmap.md lines 19206 to 19216, drops whole,
+  and „Deine Idee: …“ with it: B6, marker F of the triage at SW-3 and SW-5;
+  the introduction without an idea stands as approved there, lines 19217 to
+  19218. The two forms for a class `empty`, approved on 6 October 2026, lines
+  10999 to 11015, drop: B8, marker F of the triage at PW-24; and „Der Lauf
+  ohne dich ist in diesem Projekt nicht eingerichtet. Mit `--auto` kannst du
+  ihn einrichten.“, approved on 5 October 2026, lines 10993 to 10996, drops for
+  no record and stays for a yes with something fallen away. The last message
+  where a change set aside came back, approved on 16 October 2026, „Ich musste
+  deine Änderung an `README.md` während des Laufs beiseitelegen. Sie ist jetzt
+  wieder da.“, lines 25353 to 25355, drops: it fits neither group of B5 and
+  has no issue, pull request or file, the triage having kept it before B5 was
+  decided.
+
+  **What it builds, file by file.** `start-work`: lines 48 to 50, nothing
+  before the refresh (SW-2, B1); 77 to 120, the introduction only where no
+  idea came, closing on the question, and with an idea no introduction and no
+  sentence, the setup half in the setup's first question (SW-3, SW-5, B6,
+  B7); 122 to 176, the in-flight report said where a question of step 2
+  follows or the stage asks before building and not where the next turn end
+  comes after a build or with the run alone, `draft: true`, `mine: false`,
+  `closes: -`, the counts of further ones and loose issues from outside beside
+  work in flight not named (SW-6, B1, B3); 188 to 191, the no to landing not
+  commented (SW-9); 194 to 205 and 228 to 233, the next piece named only
+  where the stage asks before building (SW-7, B3); 259 to 266, nothing before
+  `setup-checks` (SW-15, B7); 309; 318 to 323, nothing said of `--auto`
+  (SW-16). `setup-project`: 44 to 50, nothing handed over at an install block
+  with them (SP-2); 117 to 121, a refresh from `start-work` with nothing
+  changed silent (SP-4); 123 to 160, step 0 saying nothing before the first
+  question and the sentence of B7 in it (SP-6, B7); 209 to 215, step 2
+  reporting nothing (SP-9, B10); 247 to 250, B11; 264, the one remote taken
+  (SP-12); 316 to 318, 334 to 340 and 381 to 383, the binding and the bypass
+  value into `environment.md`, step 8 saying the case sentence alone (SP-16,
+  SP-18); the sentence on protection wanted and refused gone, line 344
+  (SP-17); 557 to 563, the labels sentence in the message that ends the
+  setup's turn, before the handover (SP-19, defect 2 below); 797 to 798
+  (SP-23); 832 to 838 (SP-27, SP-28). `setup-checks`: 288 to 299, the
+  sentences of B7 at the start of step 2's question; 338 to 343, what costs
+  nothing only in the pull request of step 7 (SC-8); 611 to 614 (SC-11); 831
+  to 833 (SC-19); 958 to 962 (SC-25); 1044 to 1050, the list line at the next
+  end of a turn with text (SC-28, B4, defect 8 below). `plan-work`: 40 to 42
+  (PW-2, B7); 70 to 72 (PW-3); 92 to 94 (PW-8); 140 to 142 (PW-12); 371 to
+  395 (PW-24, B8); 401 to 403 (PW-26); 478 to 481 (PW-30); 497 to 505 (PW-31,
+  PW-32); 513 to 514 (PW-33); 536 to 541 (PW-34); 564 to 566 (PW-37); 570 to
+  573 (PW-38); 579 to 586 (PW-39); 641 to 643 (PW-42). `untangle-idea`: 87
+  to 89 (UI-2, B7); 435 to 440 (UI-16); 490 to 492 (UI-19, B3).
+  `cut-into-tasks`: 131 to 144, the split created without asking and said
+  with them at the next turn end, with nobody there in the tracker alone, no
+  room to stop it (CT-2, B3); 157 to 163 (CT-4, CT-5). `review-changes`: 57
+  to 58 (RC-2); 108 to 109 (RC-3); 150 to 161, the sentence of two numbers
+  gone and a rerun that returned not said (RC-4, RC-5); 165 to 181, the report
+  said to nobody (RC-6); 208 to 210 (RC-8). `build-work`: 90 to 92 and 672 to
+  676 (BW-3, BW-23, B5); 218 (BW-5); 348 to 357, 376 to 383 and 401 to 402
+  (BW-13, BW-15, BW-16, BW-17, B3); 488 to 492 (BW-18, B4); 555 to 557
+  (BW-20); 722 to 726 (BW-25); 793 to 794 (BW-26); 835 to 839 (BW-29); 1137
+  to 1139 (BW-39); 1214 to 1215 (BW-42); 1231 to 1234 (BW-44, B7); 1459 to
+  1472, the scope settled and not said as the run opens (BW-50, B3, B5); 1536
+  to 1538 (BW-51); 1545 to 1576, the last message in two groups and what fits
+  neither (BW-53, B5); 1578 to 1582, how to read the diffs and how to stop not
+  said (BW-54, B3). Inserted texts: `shared/command-does-not-answer.md` lines
+  1 to 18, a refusal the second attempt got past not said (SH-01, SH-02, B1),
+  which reverses what the entry of 31 August 2026 on a refused command
+  repeated in silence built; `shared/skill-name.md` 12 to 14 (SH-09);
+  `shared/how-to-ask.md` 33 to 41, a decision said only where it reaches them
+  before the work it shapes (SH-10, SH-11, B3), and 74 to 75, B11;
+  `shared/cut-branch.md` 73 to 74 (SH-22); `shared/criterion.md` 2 to 7 and
+  `shared/rule-not-written-down.md` 2 to 8, 36 to 43 and 85 to 88, the split
+  said at the close and not as it is made, with nobody there in the pull
+  request, the bare statement that a rule exists and "that nothing did" gone
+  (SH-24 to SH-26, SH-29); `shared/mark-deletion.md` 1 to 2, 17 to 22 and 32
+  to 40 (SH-34, SH-36 to SH-38, B5); `shared/set-aside-back.md` 6 to 7 (SH-40,
+  B4); `shared/fetch-three-times.md` 3 to 5 (SH-42); `shared/fetch-failed.md`
+  2 to 7 (SH-45, B2); `shared/set-aside-at-start.md` 8 to 9, B11. Hooks:
+  `hooks/pre-tool-use-mark-guard.sh` 143 and 145 and
+  `hooks/pre-tool-use-install-guard.sh` 989, B9. `output-styles/devloop.md`
+  39 to 40, B11. `docs/skill-conventions.md` 556 to 557 and 683 to 685, B11,
+  and 912 to 914, B10. `.claude-plugin/plugin.json`, 0.143.0.
+
+  **The pre-check, before the first change.** Every place of the triage this
+  order touches was read at its line at `b24542a` and given its result and
+  the rule that carries it; the report has the table. No place was found at
+  which no rule decides, and none at which the person would get wording
+  outside B12, so nothing halted. Five points are named for the person. The
+  list "What is not built here, for the next order" of the entry above gave
+  eight lines at `89fb29a` in files its first commit changed, where its own
+  head says the tip of its branch and the order said three: SP-19, PW-24 and
+  SC-25 as the order named them, and BW-44, BW-50, BW-53, BW-54 and the line
+  of `docs/skill-conventions.md`; all eight are corrected there in place. B5
+  puts the description of the last message in `build-work`, which the stops
+  of `plan-work` with nobody there and the halt of `cut-into-tasks` on the
+  `plan` route do not load; built as B5 says, the gap recorded below. B5
+  drops the line of 16 October 2026 on a change brought back, above. B1 drops
+  SH-01 and SH-02, and with them the report of a first refusal beside the
+  answer that the entry of 31 August 2026 built; the case is said wherever it
+  changes what the person gets. The headings of `setup-project` step 0 and
+  step 2 stay as they stand, runs being keyed to their straight paths; the one
+  of step 2 is recorded below.
+
+  **The shoulds that follow.** Four defects of the entry of 16 October 2026
+  on the runs of that day are built here as far as their should concerns the
+  place and what is said, their should revised on their status line in place,
+  the earlier one quoted here, their evidence moved onto the line that
+  carries the repair. Defect 1, earlier "it stands as text in the run's own
+  message, `start-work` expanded 126 to 163", evidence on `start-work` line
+  77. Defect 2, earlier "it stands in one sentence of the run's own message,
+  `setup-project` expanded 1204 to 1207", evidence on `setup-project` line
+  557. Defect 8, earlier "it stands as one line of the run's own message
+  before the first pull request, `setup-checks` expanded 1815 to 1825",
+  evidence on `setup-checks` line 1044. Defect 10, earlier "what the two
+  answers that send the run alone cost stands in their descriptions,
+  `plan-work` lines 420 to 426 as the roadmap entry of 17 October 2026 left
+  them, and each other text stands in the message that ends the turn as its
+  line says, `setup-checks` expanded 2047 to 2048, `plan-work` expanded 1033
+  to 1036 and 1056 to 1057, `setup-project` expanded 1305 to 1306 at
+  `7e35090`", evidence on `plan-work` line 501. Five further shoulds name a
+  line this order changes and are revised in place: the entry of 9 September
+  2026 on the unattended scope, earlier "the opening message names the loose
+  issues carrying `raised-here` and says which of the three clauses each
+  stands under"; the same entry on the run that offered two ways, earlier
+  "with the spec closed the run names the issue it takes and why, as a
+  statement"; the entry of 30 September 2026 on step 2 of `setup-project`,
+  earlier "step 2 says what step 4 will act on — whether labels with
+  overlapping meaning exist — and not the absence of what step 6 creates";
+  the entry of 11 October 2026 on the first closing run, its defect 5, earlier
+  "the introduction is written whenever the project is not set up, and where
+  the idea came with the command the run carries on without asking", and its
+  loose issues, earlier "the run takes one by clause 3 and says which and why,
+  `build-work` lines 346 to 347, the clause of each named, line 349". The first
+  four are built, their evidence on lines of the skills that carry them, the
+  first and the third moved there by this order; the fifth keeps its evidence
+  on its status line, the taking by clause 3 not being built here. The entry
+  of 31 August 2026 on a refused command and the entry of 6 October 2026 on
+  the line without code carry no status line, their notes in the table saying
+  what holds since this day.
+
+  **The last message of the run with nobody there is described in
+  `build-work` alone.** B5 puts the description at one place of `build-work`;
+  `plan-work` ends the run with nobody there at its stops, lines 211 to 218,
+  and `cut-into-tasks` at the halt of the `plan` route, lines 166 to 176,
+  each on `shared/mark-deletion.md` and a last message, in sessions that do
+  not load `build-work`; the lines of `shared/mark-deletion.md` say their
+  group by its content, "among what is theirs to decide or do".
+  Recorded, not built: the last message of the run with nobody there is
+  described in `build-work` lines 1545 to 1576 alone, which the stops of
+  `plan-work` and the halt of `cut-into-tasks` never load — should: the
+  description stands where every ending of that run reads it, in a shared text
+  inserted at each, and `build-work` refers to it.
+
+  **The heading of `setup-project` step 2.** Since this day the step reports
+  nothing, and its heading still reads "Report what you found": three runs
+  are keyed to its straight path, and the tool derives the unit part of a
+  thing's name from the heading.
+  Recorded, not built: the heading of `setup-project` step 2, line 209, reads
+  "Report what you found" while the step reports nothing since 17 October 2026
+  — should: the heading says what the step does, the runs re-keyed by a rule
+  the stock-take tool allows.
+
+  **The insert of `shared/backed-command.md` in `setup-project`.** Line 63
+  inserts the text on backing a command handed over; the one command the
+  skill handed over, an install at a guard's block, is not handed over since
+  this day, and no other line of the skill hands one over.
+  Recorded, not built: `setup-project` line 63 inserts
+  `shared/backed-command.md`, whose only use in the skill went with the
+  install handed over at a guard's block on 17 October 2026 — should: the
+  insert goes, or a line of the skill that hands a command over uses it.
 
 ## Decisions taken against
 
