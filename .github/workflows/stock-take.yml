@@ -24,7 +24,10 @@
 # carry the job's name with the system in brackets; making them required on
 # main is the owner's setting, as for stock-take, and the fifth addendum
 # carries the command. .gitattributes keeps every text file at LF on every
-# system, Git for Windows' default core.autocrlf=true notwithstanding.
+# system, Git for Windows' default core.autocrlf=true notwithstanding. Since
+# the addendum of 17 October 2026 to the roadmap entry of that day on arming
+# past the gate the job runs the self-test of bin/devloop-arm beside the
+# reader's, and is red where it is.
 name: merge gate
 
 on:
@@ -136,7 +139,12 @@ jobs:
   # check red, with what it printed; the handlers start after a red self-test
   # too, since the fifth addendum, so that one run shows every fault at once.
   # The name below keeps the three checks' names of the fourth addendum and
-  # adds "hooks on every system (alpine)".
+  # adds "hooks on every system (alpine)". Since the addendum of 17 October
+  # 2026 to the roadmap entry of that day on arming past the gate the step
+  # runs the self-test of bin/devloop-arm after the reader's, every case
+  # answered by a stand-in for gh and none reaching GitHub, and a red case
+  # makes the check red as a red case of the reader's does; the handlers
+  # start after it all the same.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -178,12 +186,13 @@ jobs:
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: the reader's self-test, and every handler of hooks.json once with a harmless input of its event
+      - name: the self-tests of the reader and of the arming program, and every handler of hooks.json once with a harmless input of its event
         run: |
           set -u
           ROOT=$(pwd)
           red=0
           "$ROOT/bin/devloop-command-reader" --self-test || red=1
+          "$ROOT/bin/devloop-arm" --self-test || red=1
           PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
           T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-hooks.XXXXXX")
           P="$T/project"

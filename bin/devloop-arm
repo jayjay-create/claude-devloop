@@ -1,0 +1,545 @@
+#!/bin/bash
+# Reads the state of a pull request and arms GitHub's auto-merge on it in one
+# call, so that nothing lies between the reading and the arming: the roadmap
+# entry of 16 October 2026 on the two runs of that day, defect 5, records a
+# run that read BLOCKED in one call and armed in the next, the required check
+# having gone green in between, and GitHub refused. Since 17 October 2026, the
+# roadmap entry of that day on arming past the gate; build-work step 6 says
+# what a run does with each answer, and docs/skill-conventions.md, "Arming
+# auto-merge is allowed; merging is not", why the arming is this mutation.
+#
+# Usage: devloop-arm [NUMBER]
+#   in the repository's directory; without NUMBER the pull request of the
+#   current branch, as gh pr view takes it.
+#        devloop-arm --self-test
+#
+# It reads the pull request's id and base branch first, and passes the id
+# with -f. Then, once a second for at most sixty seconds, it reads
+# mergeStateStatus and prints each reading:
+#   BLOCKED      it arms in the same pass;
+#   a value in none of the groups below
+#                it says so and arms in the same pass;
+#   CLEAN, HAS_HOOKS, UNSTABLE
+#                it reads the required checks off the two gate queries
+#                (branches/BASE/protection, rules/branches/BASE), once, and
+#                the head commit's statusCheckRollup, and reads on while a
+#                required check has no entry or has not completed;
+#   UNKNOWN      it reads again three seconds later, and a second UNKNOWN in
+#                a row goes as a mergeable value does;
+#   BEHIND       it ends;
+#   no value     it reads once more, and a second one ends it.
+# After a refusal it reads mergeStateStatus again the same way - an UNKNOWN
+# once more three seconds later, no value once more - and the value that
+# follows decides: on CLEAN, HAS_HOOKS, UNSTABLE or a second UNKNOWN the gate
+# and the rollup as above, the rollup asked once more where it did not
+# answer. Until the addendum of 17 October 2026 to the roadmap entry of that
+# day on arming past the gate it read once and ended with refused: on UNKNOWN
+# and on no value, and an UNKNOWN after another value counted on from the
+# UNKNOWN before it.
+# Every call to gh runs under bin/devloop-bounded with ten seconds, and none
+# starts once fewer than ten of the call's ninety-five seconds are left, so
+# that the call stays under the 100 seconds build-work step 6 gives a call
+# under bin/devloop-bounded. The last line says how it ended:
+#   0 armed: GitHub accepted the arming;
+#   1 refused: GitHub refused it, its message and the state read after it;
+#   3 past its gate: every required check has completed and nothing is
+#     outstanding, read before arming or after a refusal; one "required:"
+#     line per check, one "rerun:" line per run on GitHub Actions that
+#     carries one, one "foreign:" line per check no such run carries;
+#   4 no required check: both gate queries answered and name none;
+#   5 not started: sixty seconds of reading, no BLOCKED, and a required check
+#     still without an entry or not completed, or the required checks not
+#     known because a gate query did not answer;
+#   6 behind: the branch is behind its base;
+#   7 no answer: a read gave no value twice, before the arming or after a
+#     refusal, the rollup did not answer twice, or the arming did not answer
+#     and autoMergeRequest reads null or was not read.
+# Exit 2 with one line on stderr where the argument is not a number or more
+# than one is given; --self-test alone is the one exception.
+# --self-test produces every outcome above once without GitHub: a stand-in
+# for gh, which the self-test alone puts first on the path, answers each of
+# its cases from the case's script and logs every call, and
+# DEVLOOP_ARM_CLOCK stands in for the clock in the self-test alone, a file
+# holding the seconds that the program's pauses and the stand-in's calls add
+# to, so that sixty seconds of reading take none. It prints one line per
+# case, names every case that does not come out as this head says with what
+# the program printed, and exits 1 at its end where any was red. It needs
+# bash and no GNU tool; .github/workflows/stock-take.yml runs it on every pull
+# request under Linux, macOS, Windows with Git Bash and Alpine.
+set -u
+me=devloop-arm
+
+usage() { echo "$me: $1" >&2; exit 2; }
+
+selftest() {
+  local self T out rc n=0 f=0 RED=0 LASTRED= TAB US PR
+  self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-arm-selftest.XXXXXX") || exit 1
+  trap 'rm -rf "$T"' EXIT
+  # in the shell's own form, so that it can stand on the path: a drive letter's colon would split it
+  T=$(cd "$T" && pwd)
+  TAB=$(printf '\t'); US=$(printf '\037')
+  mkdir "$T/bin" "$T/w" "$T/gh-config"
+  # The stand-in for gh. It answers call N of each kind from the case's
+  # script, $T/s/KIND.N, or from $T/s/KIND.d where N has none; it logs the
+  # kind of every call in order, adds the answer's seconds to the clock, and
+  # marks a call no answer was scripted for, which makes the case red.
+  cat > "$T/bin/gh" <<'GH'
+#!/bin/sh
+S=$(cd "$(dirname "$0")/.." && pwd)/s
+k=other
+case "$*" in
+  "pr view "*mergeStateStatus*) k=state ;;
+  "pr view "*autoMergeRequest*) k=auto ;;
+  "pr view "*) k=pr ;;
+  "api graphql "*query=mutation*) k=arm ;;
+  "api graphql "*) k=rollup ;;
+  "api repos/{owner}/{repo}/branches/"*/protection*) k=protection ;;
+  "api repos/{owner}/{repo}/rules/branches/"*) k=rules ;;
+esac
+i=$(( $(cat "$S/$k.n" 2>/dev/null || echo 0) + 1 ))
+echo "$i" > "$S/$k.n"
+echo "$k" >> "$S/log"
+a=$S/$k.$i
+[ -e "$a.rc" ] || a=$S/$k.d
+[ -e "$a.rc" ] || { echo "stand-in for gh: no answer scripted for call $i of $k: gh $*" >&2; : > "$S/unscripted"; exit 1; }
+echo $(( $(cat "$DEVLOOP_ARM_CLOCK") + $(cat "$a.t") )) > "$DEVLOOP_ARM_CLOCK"
+cat "$a.out"; cat "$a.err" >&2
+exit "$(cat "$a.rc")"
+GH
+  chmod +x "$T/bin/gh"
+  # Nothing of the self-test reaches GitHub: the stand-in comes first on the
+  # path, the program runs in a directory that is no repository, with an
+  # empty configuration of gh and no token in its environment.
+  [ "$(PATH="$T/bin:$PATH" command -v gh)" = "$T/bin/gh" ] || { echo "FAIL the stand-in for gh is not the gh the path finds"; exit 1; }
+
+  # fresh: a new script - the pull request #7 on main, the required check
+  # checks by classic protection, no ruleset, the clock at 0
+  fresh() { rm -rf "$T/s"; mkdir "$T/s"; echo 0 > "$T/clock"; : > "$T/s/log"; ans pr d 0 "7${TAB}PR_kwDOAseven${TAB}main"; ans protection d 0 checks; ans rules d 0 ''; }
+  # ans KIND N RC OUT [ERR [SECONDS]]: the answer to call N of KIND, d for every call N has none
+  ans() { printf '%s\n' "$3" > "$T/s/$1.$2.rc"; : > "$T/s/$1.$2.out"; : > "$T/s/$1.$2.err"; [ -z "$4" ] || printf '%s\n' "$4" > "$T/s/$1.$2.out"; [ -z "${5:-}" ] || printf '%s\n' "$5" > "$T/s/$1.$2.err"; printf '%s\n' "${6:-0}" > "$T/s/$1.$2.t"; }
+  # states VALUE...: the reads of mergeStateStatus in order, the last for every read after it; - is no value, ! a read gh failed on
+  states() { local i=0 v; for v in "$@"; do i=$((i + 1)); state "$i" "$v"; done; state d "$v"; }
+  state() { case $2 in -) ans state "$1" 0 '' ;; !) ans state "$1" 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/graphql)' ;; *) ans state "$1" 0 "$2" ;; esac; }
+  # cr NAME STATUS RUN WORKFLOW APP and sc CONTEXT STATE: an entry of the rollup as the -q of this program prints it
+  cr() { printf 'CheckRun%s%s%s%s%s%s%s%s%s%s\n' "$US" "$1" "$US" "$2" "$US" "$3" "$US" "$4" "$US" "$5"; }
+  sc() { printf 'StatusContext%s%s%s%s%s%s%s\n' "$US" "$1" "$US" "$2" "$US" "$US" "$US"; }
+  armed() { ans arm d 0 '{"data":{"enablePullRequestAutoMerge":{"clientMutationId":null}}}'; }
+  refused() { ans arm d 1 '' 'GraphQL: Pull request Pull request is in clean status (enablePullRequestAutoMerge)'; }
+  done_() { ans rollup d 0 "$(cr checks COMPLETED 101 checks github-actions)"; }
+  # run [ARGUMENT...]: the program, once, against the stand-in
+  run() { ( cd "$T/w" && unset GH_TOKEN GITHUB_TOKEN GH_ENTERPRISE_TOKEN GITHUB_ENTERPRISE_TOKEN GH_HOST && PATH="$T/bin:$PATH" GH_CONFIG_DIR="$T/gh-config" DEVLOOP_ARM_CLOCK="$T/clock" "$self" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
+  # fail NAME WHAT: the case NAME is red for WHAT; the program's output is printed once per red case, and every red case is named
+  fail() { echo "FAIL $1: $2"; [ "$LASTRED" = "$1" ] || { printf '%s\n' "$out" | sed 's/^/    /'; LASTRED=$1; f=$((f + 1)); }; RED=1; }
+  # calls NAME KIND...: the stand-in was called for these kinds, in this order, and for nothing else
+  calls() { local name=$1 got; shift; got=$(tr '\n' ' ' < "$T/s/log" | sed 's/ $//'); [ "$got" = "$*" ] || fail "$name" "calls '$got', expected '$*'"; }
+  # quiet NAME: the last run printed nothing on stdout
+  quiet() { [ ! -s "$T/stdout" ] || fail "$1" "stdout carries $(wc -l < "$T/stdout") lines"; }
+  # holds NAME TEXT and absent NAME TEXT: the last run printed TEXT, or did not
+  holds() { printf '%s\n' "$out" | grep -qF -- "$2" || fail "$1" "nothing holds '$2'"; }
+  absent() { printf '%s\n' "$out" | grep -qF -- "$2" && fail "$1" "'$2' stands there and should not"; }
+  # expect NAME CODE LINE...: the last run ended with CODE, printed every LINE whole and made no call its script did not answer
+  expect() {
+    local name=$1 want=$2 s; shift 2; n=$((n + 1))
+    [ "$rc" -eq "$want" ] || fail "$name" "ended with $rc, expected $want"
+    for s in "$@"; do printf '%s\n' "$out" | grep -qFx -- "$s" || fail "$name" "no line '$s'"; done
+    [ ! -e "$T/s/unscripted" ] || fail "$name" "a call no answer was scripted for"
+    [ "$LASTRED" = "$name" ] || echo "ok   $name"
+  }
+  PR="pull request #7, base main"
+
+  # the arguments
+  fresh; run x
+  calls "an argument that is no number: 2, one line on stderr"
+  quiet "an argument that is no number: 2, one line on stderr"
+  expect "an argument that is no number: 2, one line on stderr" 2 "devloop-arm: expected a pull request number, got 'x'"
+  fresh; run 7 8
+  calls "two arguments: 2, one line on stderr"
+  quiet "two arguments: 2, one line on stderr"
+  expect "two arguments: 2, one line on stderr" 2 "devloop-arm: expected at most one pull request number, got 2 arguments"
+  fresh; run --self-test 7
+  calls "--self-test beside a number: not the self-test, 2, one line on stderr"
+  quiet "--self-test beside a number: not the self-test, 2, one line on stderr"
+  expect "--self-test beside a number: not the self-test, 2, one line on stderr" 2 "devloop-arm: expected at most one pull request number, got 2 arguments"
+
+  # the pull request
+  fresh; ans pr d 1 '' 'HTTP 401: Bad credentials (https://api.github.com/graphql)'; run 7
+  calls "the pull request not read twice: no answer, nothing armed" pr pr
+  expect "the pull request not read twice: no answer, nothing armed" 7 "no answer: the pull request was not read, twice: gh pr view 7 --json number,id,baseRefName: HTTP 401: Bad credentials (https://api.github.com/graphql); nothing armed"
+  fresh; ans pr 1 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/graphql)'; states BLOCKED; armed; run
+  calls "no number: the current branch's pull request, read at the second attempt" pr pr state arm
+  expect "no number: the current branch's pull request, read at the second attempt" 0 "$PR" "armed: GitHub accepted auto-merge at BLOCKED"
+
+  # each value of mergeStateStatus, and the arming only in the pass whose value asks for it
+  fresh; states BLOCKED; armed; run 7
+  calls "BLOCKED: armed in the pass that read it, in the same call" pr state arm
+  expect "BLOCKED: armed in the pass that read it, in the same call" 0 "$PR" "read 1 at 0s: BLOCKED" 'answer: {"data":{"enablePullRequestAutoMerge":{"clientMutationId":null}}}' "armed: GitHub accepted auto-merge at BLOCKED"
+  fresh; states CLEAN BLOCKED; ans rollup d 0 ''; armed; run 7
+  calls "CLEAN, the required check not begun: read on, armed on the BLOCKED it moves to" pr state protection rules rollup state arm
+  expect "CLEAN, the required check not begun: read on, armed on the BLOCKED it moves to" 0 "read 1 at 0s: CLEAN" "gate: protection: required checks" "gate: rulesets: no required check" "waiting on: checks (no entry)" "read 2 at 1s: BLOCKED" "armed: GitHub accepted auto-merge at BLOCKED"
+  fresh; states HAS_HOOKS BLOCKED; ans rollup d 0 "$(cr checks IN_PROGRESS 101 checks github-actions)"; armed; run 7
+  calls "HAS_HOOKS, the required check in progress: read on, armed on BLOCKED" pr state protection rules rollup state arm
+  expect "HAS_HOOKS, the required check in progress: read on, armed on BLOCKED" 0 "read 1 at 0s: HAS_HOOKS" "waiting on: checks (not completed)" "armed: GitHub accepted auto-merge at BLOCKED"
+  fresh; states UNSTABLE; ans rollup d 0 "$(cr checks COMPLETED 101 checks github-actions; cr lint COMPLETED 102 lint github-actions)"; run 7
+  calls "UNSTABLE, one run carrying the required check and one carrying none: past its gate, that run alone to restart" pr state protection rules rollup
+  absent "UNSTABLE, one run carrying the required check and one carrying none: past its gate, that run alone to restart" "rerun: 102"
+  absent "UNSTABLE, one run carrying the required check and one carrying none: past its gate, that run alone to restart" "foreign:"
+  expect "UNSTABLE, one run carrying the required check and one carrying none: past its gate, that run alone to restart" 3 "required: checks, CheckRun COMPLETED, run 101 of workflow checks" "rerun: 101 (checks)" "past its gate: every required check has completed and nothing is outstanding at UNSTABLE; nothing armed"
+  fresh; ans protection d 0 ci/jenkins; states CLEAN; ans rollup d 0 "$(sc ci/jenkins SUCCESS)"; run 7
+  calls "CLEAN, the required check a commit status of a foreign service: past its gate, no run to restart" pr state protection rules rollup
+  absent "CLEAN, the required check a commit status of a foreign service: past its gate, no run to restart" "rerun:"
+  expect "CLEAN, the required check a commit status of a foreign service: past its gate, no run to restart" 3 "required: ci/jenkins, StatusContext SUCCESS, from a service outside GitHub Actions" "foreign: ci/jenkins" "past its gate: every required check has completed and nothing is outstanding at CLEAN; nothing armed"
+  fresh; ans protection d 0 circleci; states CLEAN; ans rollup d 0 "$(cr circleci COMPLETED '' '' circleci-checks)"; run 7
+  calls "CLEAN, the required check a check run of another app: foreign" pr state protection rules rollup
+  absent "CLEAN, the required check a check run of another app: foreign" "rerun:"
+  expect "CLEAN, the required check a check run of another app: foreign" 3 "required: circleci, CheckRun COMPLETED of the app circleci-checks, no run on GitHub Actions" "foreign: circleci"
+  fresh; ans protection d 0 "$(printf 'checks\nci/jenkins')"; states CLEAN; ans rollup d 0 "$(cr checks COMPLETED 101 checks github-actions; sc ci/jenkins SUCCESS)"; run 7
+  calls "CLEAN, required checks on GitHub Actions and from a foreign service at once: both lines" pr state protection rules rollup
+  expect "CLEAN, required checks on GitHub Actions and from a foreign service at once: both lines" 3 "gate: protection: required checks, ci/jenkins" "rerun: 101 (checks)" "foreign: ci/jenkins" "past its gate: every required check has completed and nothing is outstanding at CLEAN; nothing armed"
+  fresh; states UNKNOWN BLOCKED; armed; run 7
+  calls "UNKNOWN, then BLOCKED: read again three seconds later, armed on the second" pr state state arm
+  expect "UNKNOWN, then BLOCKED: read again three seconds later, armed on the second" 0 "read 1 at 0s: UNKNOWN" "read 2 at 3s: BLOCKED" "armed: GitHub accepted auto-merge at BLOCKED"
+  fresh; states UNKNOWN UNKNOWN; done_; run 7
+  calls "a second UNKNOWN in a row: the gate and the rollup, as a mergeable value" pr state state protection rules rollup
+  expect "a second UNKNOWN in a row: the gate and the rollup, as a mergeable value" 3 "read 2 at 3s: UNKNOWN" "past its gate: every required check has completed and nothing is outstanding at UNKNOWN; nothing armed"
+  fresh; states UNKNOWN CLEAN UNKNOWN BLOCKED; ans rollup d 0 ''; armed; run 7
+  calls "UNKNOWN, CLEAN, UNKNOWN: the row ends at CLEAN, the third read again three seconds later" pr state state protection rules rollup state state arm
+  expect "UNKNOWN, CLEAN, UNKNOWN: the row ends at CLEAN, the third read again three seconds later" 0 "read 1 at 0s: UNKNOWN" "read 2 at 3s: CLEAN" "read 3 at 4s: UNKNOWN" "read 4 at 7s: BLOCKED" "armed: GitHub accepted auto-merge at BLOCKED"
+  fresh; states BEHIND; run 7
+  calls "BEHIND: behind, nothing armed" pr state
+  expect "BEHIND: behind, nothing armed" 6 "behind: the branch is behind its base; nothing armed"
+  fresh; states DIRTY; armed; run 7
+  calls "a value in none of the groups: named, armed in that pass" pr state arm
+  expect "a value in none of the groups: named, armed in that pass" 0 "cannot be placed: DIRTY" "armed: GitHub accepted auto-merge at DIRTY"
+  fresh; states - BLOCKED; armed; run 7
+  calls "no value once, then BLOCKED: read once more, armed" pr state state arm
+  expect "no value once, then BLOCKED: read once more, armed" 0 "read 1 at 0s: no value: gh pr view 7 --json mergeStateStatus -q .mergeStateStatus: nothing came back" "read 2 at 1s: BLOCKED" "armed: GitHub accepted auto-merge at BLOCKED"
+  fresh; states - !; run 7
+  calls "no value twice: no answer, nothing armed" pr state state
+  expect "no value twice: no answer, nothing armed" 7 "read 2 at 1s: no value: gh pr view 7 --json mergeStateStatus -q .mergeStateStatus: HTTP 502: Bad Gateway (https://api.github.com/graphql)" "no answer: mergeStateStatus came back with no value twice; nothing armed"
+
+  # the arming
+  fresh; states BLOCKED BLOCKED; refused; run 7
+  calls "the arming refused at BLOCKED, BLOCKED after it: refused, with GitHub's answer and the state" pr state arm state
+  expect "the arming refused at BLOCKED, BLOCKED after it: refused, with GitHub's answer and the state" 1 "answer: GraphQL: Pull request Pull request is in clean status (enablePullRequestAutoMerge)" "read after the refusal at 0s: BLOCKED" "refused: GitHub refused auto-merge at BLOCKED"
+  fresh; states BLOCKED CLEAN; refused; done_; run 7
+  calls "the arming refused, the required check completed in between: past its gate after the refusal" pr state arm state protection rules rollup
+  expect "the arming refused, the required check completed in between: past its gate after the refusal" 3 "rerun: 101 (checks)" "past its gate: every required check has completed and nothing is outstanding at CLEAN, after GitHub refused the arming at BLOCKED; nothing armed"
+  fresh; states BLOCKED; ans arm d 124 '' 'no answer within 10 seconds: gh api graphql'; ans auto d 0 null; run 7
+  calls "the arming without an answer, autoMergeRequest null: no answer" pr state arm auto
+  expect "the arming without an answer, autoMergeRequest null: no answer" 7 "answer: none: no answer within 10 seconds: gh api graphql" "no answer: the arming did not answer and autoMergeRequest reads null; nothing armed"
+  fresh; states BLOCKED; ans arm d 124 '' 'no answer within 10 seconds: gh api graphql'; ans auto d 0 2026-10-17T19:42:12Z; run 7
+  calls "the arming without an answer, autoMergeRequest enabled: armed" pr state arm auto
+  expect "the arming without an answer, autoMergeRequest enabled: armed" 0 "armed: the arming did not answer, and autoMergeRequest reads enabled at 2026-10-17T19:42:12Z"
+  fresh; states BLOCKED; ans arm d 124 '' 'no answer within 10 seconds: gh api graphql'; ans auto d 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/graphql)'; run 7
+  calls "the arming without an answer, autoMergeRequest not read: no answer" pr state arm auto
+  expect "the arming without an answer, autoMergeRequest not read: no answer" 7 "no answer: the arming did not answer, and autoMergeRequest was not read: HTTP 502: Bad Gateway (https://api.github.com/graphql)"
+  fresh; ans state d 0 BLOCKED '' 88; run 7
+  calls "no call started once fewer than ten of the 95 seconds are left" pr state
+  holds "no call started once fewer than ten of the 95 seconds are left" "answer: none: no time left within the 95 seconds of this call: gh api graphql"
+  expect "no call started once fewer than ten of the 95 seconds are left" 7 "read 1 at 88s: BLOCKED"
+  holds "no call started once fewer than ten of the 95 seconds are left" "no answer: the arming did not answer, and autoMergeRequest was not read: no time left within the 95 seconds of this call: gh pr view 7 --json autoMergeRequest"
+
+  # the gate, the rollup and the window
+  fresh; ans protection d 1 '' 'gh: Branch not protected (HTTP 404)'; states CLEAN; run 7
+  calls "no required check: neither gate query names one, nothing armed" pr state protection rules
+  expect "no required check: neither gate query names one, nothing armed" 4 "gate: protection: Branch not protected" "gate: rulesets: no required check" "no required check: neither gate query names one, at CLEAN; nothing armed"
+  fresh; ans state d 0 CLEAN '' 9; ans rollup d 0 ''; run 7
+  calls "not started: sixty seconds without BLOCKED, the required check without an entry" pr state protection rules rollup state rollup state rollup state rollup state rollup state rollup
+  expect "not started: sixty seconds without BLOCKED, the required check without an entry" 5 "read 6 at 59s: CLEAN" "not started: no BLOCKED in 60 seconds, the last reading CLEAN, waiting on: checks (no entry); nothing armed"
+  fresh; ans protection d 1 '' 'HTTP 403: Must have admin rights to Repository. (https://api.github.com/repos/o/r/branches/main/protection)'; ans rules d 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/repos/o/r/rules/branches/main)'; ans state d 0 CLEAN '' 9; run 7
+  calls "not started, the required checks not known: a gate query did not answer" pr state protection rules state state state state state
+  expect "not started, the required checks not known: a gate query did not answer" 5 "gate: protection: did not answer: HTTP 403: Must have admin rights to Repository. (https://api.github.com/repos/o/r/branches/main/protection)" "gate: rulesets: did not answer: HTTP 502: Bad Gateway (https://api.github.com/repos/o/r/rules/branches/main)" "not started: no BLOCKED in 60 seconds, the last reading CLEAN, and the required checks not known, a gate query not having answered; nothing armed"
+  fresh; states CLEAN; ans rollup d 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/graphql)'; run 7
+  calls "the rollup without an answer twice: no answer, nothing armed" pr state protection rules rollup state rollup
+  expect "the rollup without an answer twice: no answer, nothing armed" 7 "rollup: did not answer: gh api graphql (statusCheckRollup of #7): HTTP 502: Bad Gateway (https://api.github.com/graphql)" "no answer: the rollup did not answer twice; nothing armed"
+
+  # the reading after a refusal, as the loop reads, since the addendum of 17 October 2026
+  fresh; states BLOCKED UNKNOWN CLEAN; refused; done_; run 7
+  calls "after a refusal UNKNOWN, then CLEAN: read again three seconds later, past its gate" pr state arm state state protection rules rollup
+  expect "after a refusal UNKNOWN, then CLEAN: read again three seconds later, past its gate" 3 "read after the refusal at 0s: UNKNOWN" "read after the refusal at 3s: CLEAN" "past its gate: every required check has completed and nothing is outstanding at CLEAN, after GitHub refused the arming at BLOCKED; nothing armed"
+  fresh; states BLOCKED UNKNOWN UNKNOWN; refused; done_; run 7
+  calls "after a refusal two UNKNOWN in a row: as a mergeable value, past its gate" pr state arm state state protection rules rollup
+  expect "after a refusal two UNKNOWN in a row: as a mergeable value, past its gate" 3 "past its gate: every required check has completed and nothing is outstanding at UNKNOWN, after GitHub refused the arming at BLOCKED; nothing armed"
+  fresh; states BLOCKED UNKNOWN BLOCKED; refused; run 7
+  calls "after a refusal UNKNOWN, then BLOCKED: refused" pr state arm state state
+  expect "after a refusal UNKNOWN, then BLOCKED: refused" 1 "read after the refusal at 3s: BLOCKED" "refused: GitHub refused auto-merge at BLOCKED"
+  fresh; states BLOCKED - CLEAN; refused; done_; run 7
+  calls "after a refusal no value, then CLEAN: read once more, past its gate" pr state arm state state protection rules rollup
+  expect "after a refusal no value, then CLEAN: read once more, past its gate" 3 "read after the refusal at 0s: no value: gh pr view 7 --json mergeStateStatus -q .mergeStateStatus: nothing came back" "read after the refusal at 1s: CLEAN" "past its gate: every required check has completed and nothing is outstanding at CLEAN, after GitHub refused the arming at BLOCKED; nothing armed"
+  fresh; states BLOCKED - !; refused; run 7
+  calls "after a refusal no value twice: no answer, as shared/empty-read.md says" pr state arm state state
+  expect "after a refusal no value twice: no answer, as shared/empty-read.md says" 7 "no answer: GitHub refused auto-merge at BLOCKED, and mergeStateStatus came back with no value twice after it; nothing armed"
+  fresh; states BLOCKED CLEAN; refused; ans rollup 1 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/graphql)'; ans rollup d 0 "$(cr checks COMPLETED 101 checks github-actions)"; run 7
+  calls "after a refusal the rollup without an answer once: asked once more, past its gate" pr state arm state protection rules rollup rollup
+  expect "after a refusal the rollup without an answer once: asked once more, past its gate" 3 "past its gate: every required check has completed and nothing is outstanding at CLEAN, after GitHub refused the arming at BLOCKED; nothing armed"
+  fresh; states BLOCKED CLEAN; refused; ans rollup d 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/graphql)'; run 7
+  calls "after a refusal the rollup without an answer twice: no answer" pr state arm state protection rules rollup rollup
+  expect "after a refusal the rollup without an answer twice: no answer" 7 "no answer: the rollup did not answer twice; nothing armed"
+
+  [ "$RED" -ne 0 ] || { echo "SELF-TEST PASSED: $n cases"; exit 0; }
+  echo "SELF-TEST FAILED: $f of $n cases red"
+  exit 1
+}
+[ $# -eq 1 ] && [ "$1" = --self-test ] && selftest
+
+[ $# -le 1 ] || usage "expected at most one pull request number, got $# arguments"
+if [ $# -eq 1 ]; then
+  case $1 in
+    ''|*[!0-9]*) usage "expected a pull request number, got '$1'" ;;
+  esac
+fi
+
+HERE=$(cd "$(dirname "$0")" && pwd)
+BOUNDED=$HERE/devloop-bounded
+WINDOW=60
+LIMIT=95
+STEP=10
+T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-arm.XXXXXX") || usage "mktemp -d failed"
+trap 'rm -rf "$T"' EXIT
+
+TAB=$(printf '\t')
+# The rollup's fields are joined by the unit separator, not a tab: bash
+# collapses a run of tabs in IFS, and an empty field would move the next.
+US=$(printf '\037')
+NL='
+'
+MUTATION='mutation($id:ID!){enablePullRequestAutoMerge(input:{pullRequestId:$id,mergeMethod:SQUASH}){clientMutationId}}'
+ROLLUP='query($owner:String!,$name:String!,$number:Int!){repository(owner:$owner,name:$name){pullRequest(number:$number){commits(last:1){nodes{commit{statusCheckRollup{contexts(first:100){nodes{__typename ... on CheckRun{name status conclusion checkSuite{app{slug} workflowRun{databaseId workflow{name}}}} ... on StatusContext{context state}}}}}}}}}}'
+ROLLUP_Q='(.data.repository.pullRequest.commits.nodes[0].commit.statusCheckRollup.contexts.nodes // [])[] | if .__typename == "CheckRun" then ["CheckRun", .name, .status, ((.checkSuite.workflowRun.databaseId // "") | tostring), (.checkSuite.workflowRun.workflow.name // ""), (.checkSuite.app.slug // "")] else ["StatusContext", .context, .state, "", "", ""] end | join("\u001f")'
+
+finish() { echo "$2"; exit "$1"; }
+
+# The clock: bash's SECONDS and sleep, or, where DEVLOOP_ARM_CLOCK names a
+# file, the seconds in it, which a pause adds to in place of sleeping - the
+# self-test's clock, which its stand-in for gh adds to as well.
+tick() { if [ -n "${DEVLOOP_ARM_CLOCK:-}" ]; then read -r NOW <"$DEVLOOP_ARM_CLOCK"; else NOW=$SECONDS; fi; }
+pause() { if [ -n "${DEVLOOP_ARM_CLOCK:-}" ]; then tick; echo $((NOW + $1)) >"$DEVLOOP_ARM_CLOCK"; else sleep "$1"; fi; }
+
+# ghb ARGUMENT ...: gh under bin/devloop-bounded; its output in OUT, its
+# stderr in ERR, its exit code in RC. Where the call could run past the
+# program's limit it is not started and answers as a call that did not.
+ghb() {
+  tick
+  if [ $((NOW + STEP)) -gt "$LIMIT" ]; then
+    OUT=; ERR="no time left within the $LIMIT seconds of this call: gh $*"; RC=124
+    return
+  fi
+  "$BOUNDED" "$STEP" gh "$@" >"$T/out" 2>"$T/err" </dev/null
+  RC=$?
+  OUT=$(cat "$T/out"); ERR=$(tr '\n' ' ' <"$T/err" | sed 's/ *$//')
+}
+
+# The pull request: its number, its id for the mutation, its base branch.
+ghb pr view ${1+"$1"} --json number,id,baseRefName -q '[.number, .id, .baseRefName] | @tsv'
+[ "$RC" -eq 0 ] && [ -n "$OUT" ] || ghb pr view ${1+"$1"} --json number,id,baseRefName -q '[.number, .id, .baseRefName] | @tsv'
+IFS=$TAB read -r NUM PR_ID BASE <<EOF
+$OUT
+EOF
+if [ "$RC" -ne 0 ] || [ -z "$NUM" ] || [ -z "$PR_ID" ] || [ -z "${BASE:-}" ]; then
+  finish 7 "no answer: the pull request was not read, twice: gh pr view ${1:-} --json number,id,baseRefName: ${ERR:-nothing came back}; nothing armed"
+fi
+echo "pull request #$NUM, base $BASE"
+
+# The required checks, off the two gate queries, read once. NAMES holds one
+# name a line; KNOWN is yes where both queries answered.
+GATE=; NAMES=; KNOWN=yes
+names() { [ -n "$1" ] && printf 'required %s' "$(printf '%s\n' "$1" | sed '/^$/d' | tr '\n' ',' | sed 's/,$//; s/,/, /g')" || printf 'no required check'; }
+gate() {
+  [ -z "$GATE" ] || return 0
+  GATE=read
+  local said=
+  ghb api "repos/{owner}/{repo}/branches/$BASE/protection" -q '[.required_status_checks.contexts[]?, .required_status_checks.checks[]?.context] | unique | .[]'
+  if [ "$RC" -eq 0 ]; then
+    NAMES=$OUT; said="protection: $(names "$OUT")"
+  else
+    case $ERR in
+      *"Branch not protected"*) said="protection: Branch not protected" ;;
+      *) KNOWN=no; said="protection: did not answer: $ERR" ;;
+    esac
+  fi
+  echo "gate: $said"
+  ghb api "repos/{owner}/{repo}/rules/branches/$BASE" -q '[.[] | select(.type == "required_status_checks") | .parameters.required_status_checks[].context] | .[]'
+  if [ "$RC" -eq 0 ]; then
+    NAMES=$(printf '%s\n%s\n' "$NAMES" "$OUT" | sed '/^$/d' | sort -u)
+    echo "gate: rulesets: $(names "$OUT")"
+  else
+    KNOWN=no
+    echo "gate: rulesets: did not answer: $ERR"
+  fi
+}
+
+# The head commit's rollup, one entry a line: kind, name, status or state,
+# the run on GitHub Actions that carries it, that run's workflow, the app,
+# joined by the unit separator.
+ROLL=; ROLL_FAILED=0
+rollup() {
+  ghb api graphql -F owner='{owner}' -F name='{repo}' -F number="$NUM" -f query="$ROLLUP" -q "$ROLLUP_Q"
+  if [ "$RC" -ne 0 ]; then
+    ROLL_FAILED=$((ROLL_FAILED + 1))
+    echo "rollup: did not answer: gh api graphql (statusCheckRollup of #$NUM): ${ERR:-nothing came back}"
+    [ "$ROLL_FAILED" -lt 2 ] || finish 7 "no answer: the rollup did not answer twice; nothing armed"
+    return 1
+  fi
+  ROLL_FAILED=0
+  ROLL=$OUT
+}
+
+# Matches every required name against the rollup. PAST is yes where every
+# one has completed; WAITING names those that have not.
+judge() {
+  local r k n s run wf app found done_
+  PAST=yes; WAITING=; REQ=; RERUN=; FOREIGN=
+  while IFS= read -r r; do
+    [ -n "$r" ] || continue
+    found=no; done_=yes
+    while IFS=$US read -r k n s run wf app; do
+      [ "$n" = "$r" ] || continue
+      found=yes
+      case $k:$s in
+        CheckRun:COMPLETED|StatusContext:SUCCESS|StatusContext:FAILURE|StatusContext:ERROR) ;;
+        *) done_=no ;;
+      esac
+      if [ "$k" = CheckRun ] && [ -n "$run" ]; then
+        REQ="$REQ${NL}required: $r, CheckRun $s, run $run of workflow $wf"
+        case "$NL$RERUN$NL" in *"${NL}rerun: $run "*) ;; *) RERUN="$RERUN${NL}rerun: $run ($wf)" ;; esac
+      elif [ "$k" = CheckRun ]; then
+        REQ="$REQ${NL}required: $r, CheckRun $s of the app ${app:-unknown}, no run on GitHub Actions"
+        FOREIGN="$FOREIGN${NL}foreign: $r"
+      else
+        REQ="$REQ${NL}required: $r, StatusContext $s, from a service outside GitHub Actions"
+        FOREIGN="$FOREIGN${NL}foreign: $r"
+      fi
+    done <<EOF
+$ROLL
+EOF
+    if [ "$found" = no ]; then
+      PAST=no; WAITING="$WAITING $r (no entry)"
+    elif [ "$done_" = no ]; then
+      PAST=no; WAITING="$WAITING $r (not completed)"
+    fi
+  done <<EOF
+$NAMES
+EOF
+}
+
+# past STATE: ends on a pull request past its gate.
+past() {
+  printf '%s\n' "$REQ$RERUN$FOREIGN" | sed '/^$/d'
+  finish 3 "past its gate: every required check has completed and nothing is outstanding at $1; nothing armed"
+}
+
+# again STATE: after GitHub refused the arming at STATE, mergeStateStatus
+# read as the loop below reads it - an UNKNOWN once more three seconds later,
+# no value once more - into AFTER, the value that decides; a second UNKNOWN in
+# a row decides as a mergeable value does, and no value twice ends it, as
+# shared/empty-read.md says.
+again() {
+  local e=0 u=0
+  while :; do
+    ghb pr view "$NUM" --json mergeStateStatus -q .mergeStateStatus
+    AFTER=$(printf '%s' "$OUT" | tr -d '[:space:]')
+    tick
+    if [ "$RC" -ne 0 ] || [ -z "$AFTER" ]; then
+      e=$((e + 1))
+      echo "read after the refusal at ${NOW}s: no value: gh pr view $NUM --json mergeStateStatus -q .mergeStateStatus: ${ERR:-nothing came back}"
+      [ "$e" -lt 2 ] || finish 7 "no answer: GitHub refused auto-merge at $1, and mergeStateStatus came back with no value twice after it; nothing armed"
+      pause 1
+      continue
+    fi
+    e=0
+    echo "read after the refusal at ${NOW}s: $AFTER"
+    [ "$AFTER" = UNKNOWN ] || return 0
+    u=$((u + 1))
+    [ "$u" -lt 2 ] || return 0
+    pause 3
+  done
+}
+
+# A mergeable value, or a second UNKNOWN: the gate and the rollup decide.
+LASTWAIT=
+mergeable() {
+  gate
+  if [ -z "$NAMES" ]; then
+    [ "$KNOWN" = no ] || finish 4 "no required check: neither gate query names one, at $1; nothing armed"
+    return 0
+  fi
+  rollup || return 0
+  judge
+  [ "$PAST" = no ] || past "$1"
+  if [ "$WAITING" != "$LASTWAIT" ]; then
+    echo "waiting on:$WAITING"
+    LASTWAIT=$WAITING
+  fi
+}
+
+# arm STATE: the mutation, in the pass that read STATE.
+arm() {
+  ghb api graphql -f query="$MUTATION" -f id="$PR_ID"
+  if [ "$RC" -eq 0 ]; then
+    echo "answer: $OUT"
+    finish 0 "armed: GitHub accepted auto-merge at $1"
+  fi
+  case "$ERR $OUT" in
+    *GraphQL:*|*"HTTP "[0-9]*)
+      echo "answer: $ERR"
+      again "$1"
+      case $AFTER in
+        CLEAN|HAS_HOOKS|UNSTABLE|UNKNOWN)
+          gate
+          if [ -n "$NAMES" ] && { rollup || rollup; }; then
+            judge
+            [ "$PAST" = no ] || past "$AFTER, after GitHub refused the arming at $1"
+          fi
+          ;;
+      esac
+      finish 1 "refused: GitHub refused auto-merge at $1"
+      ;;
+  esac
+  echo "answer: none: $ERR"
+  ghb pr view "$NUM" --json autoMergeRequest -q 'if .autoMergeRequest == null then "null" else .autoMergeRequest.enabledAt end'
+  case $RC:$OUT in
+    0:null) finish 7 "no answer: the arming did not answer and autoMergeRequest reads null; nothing armed" ;;
+    0:?*) finish 0 "armed: the arming did not answer, and autoMergeRequest reads enabled at $OUT" ;;
+  esac
+  finish 7 "no answer: the arming did not answer, and autoMergeRequest was not read: ${ERR:-nothing came back}"
+}
+
+n=0; EMPTY=0; UNKNOWNS=0
+while tick; [ "$NOW" -lt "$WINDOW" ]; do
+  n=$((n + 1))
+  ghb pr view "$NUM" --json mergeStateStatus -q .mergeStateStatus
+  S=$(printf '%s' "$OUT" | tr -d '[:space:]')
+  tick
+  if [ "$RC" -ne 0 ] || [ -z "$S" ]; then
+    EMPTY=$((EMPTY + 1))
+    echo "read $n at ${NOW}s: no value: gh pr view $NUM --json mergeStateStatus -q .mergeStateStatus: ${ERR:-nothing came back}"
+    [ "$EMPTY" -lt 2 ] || finish 7 "no answer: mergeStateStatus came back with no value twice; nothing armed"
+    pause 1
+    continue
+  fi
+  EMPTY=0
+  # A row of UNKNOWN ends at any other value, as the head says; until the
+  # addendum of 17 October 2026 the count ran on across one.
+  [ "$S" = UNKNOWN ] || UNKNOWNS=0
+  echo "read $n at ${NOW}s: $S"
+  case $S in
+    BLOCKED) arm "$S" ;;
+    BEHIND) finish 6 "behind: the branch is behind its base; nothing armed" ;;
+    UNKNOWN)
+      UNKNOWNS=$((UNKNOWNS + 1))
+      if [ "$UNKNOWNS" -lt 2 ]; then pause 3; continue; fi
+      mergeable "$S"
+      ;;
+    CLEAN|HAS_HOOKS|UNSTABLE) mergeable "$S" ;;
+    *)
+      echo "cannot be placed: $S"
+      arm "$S"
+      ;;
+  esac
+  pause 1
+done
+if [ "$KNOWN" = no ] && [ -z "$NAMES" ]; then
+  finish 5 "not started: no BLOCKED in $WINDOW seconds, the last reading $S, and the required checks not known, a gate query not having answered; nothing armed"
+fi
+finish 5 "not started: no BLOCKED in $WINDOW seconds, the last reading ${S:-none}, waiting on:${LASTWAIT:- the required checks}; nothing armed"

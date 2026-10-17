@@ -710,50 +710,60 @@ cannot merge:
 `gh pr merge --auto` is not a substitute: the tool drops that flag whenever the
 pull request is already mergeable and merges on the spot.
 
-Read `gh pr view --json mergeStateStatus -q .mergeStateStatus` immediately before
-arming and not earlier — it moves within seconds of the push, and `BLOCKED` is
-the state GitHub arms on. `CLEAN`, `HAS_HOOKS` and `UNSTABLE` mean nothing is
-outstanding and arming is refused — but they cannot say whether that is because
-everything ran or because nothing has started, and a branch pushed a moment ago
-is in the second. Ask the branch: `gh pr view --json statusCheckRollup` sees
-Actions check runs and older commit statuses alike, since
-`StatusCheckRollupContext` is a union of `CheckRun` and `StatusContext` (GitHub's
-live GraphQL schema, 31 August 2026), where `commits/SHA/check-runs` sees only
-the first. The required names come from the two gate queries below —
+The program reads `mergeStateStatus` once a second and arms in the pass that
+reads `BLOCKED`, the state GitHub arms on, since 17 October 2026 — it moves
+within seconds of the push, and a reading in one call with the arming in the
+next left room for it to move, defect 5 of the roadmap entry of 16 October
+2026 on the runs of that day; its last line says how it ended. `CLEAN`,
+`HAS_HOOKS` and `UNSTABLE` mean nothing is outstanding and arming is refused —
+but they cannot say whether that is because everything ran or because nothing
+has started, and a branch pushed a moment ago is in the second. The program
+arms on none of them and asks the branch: the head commit's
+`statusCheckRollup` sees Actions check runs and older commit statuses alike,
+since `StatusCheckRollupContext` is a union of `CheckRun` and `StatusContext`
+(GitHub's live GraphQL schema, 31 August 2026), where `commits/SHA/check-runs`
+sees only the first. The required names come from the two gate queries below —
 `required_status_checks.contexts` for classic protection,
-`parameters.required_status_checks[].context` for a ruleset. A required name with
-no entry, or an entry whose `status` is not `COMPLETED`, or a status context
-still `PENDING` or `EXPECTED`, means the check has not run yet: not a refusal
-case, so wait ten seconds and read again, up to two minutes, then arm on the
-`BLOCKED` it moves to. Only every required check `COMPLETED` makes this a pull
-request past its gate. If the two minutes run out, say the gate is there and no
-check registered in that time, rather than claiming the pull request is past it.
-`UNKNOWN` is a missing answer rather than a
-state: GitHub computes mergeability when it is asked for, so read again a few
-seconds later and use that second value instead of making a case out of the
-first; a second `UNKNOWN` is not read a third time. `BEHIND` means the branch is
-behind the base and the required check ran against a state that is not what would
-be merged — fetch, three attempts, by the command under "When the main
-branch cannot be fetched or fast-forwarded" above, and where the third
-fails too, stop as that section says, opening with that the pull request
-has to be brought up to the latest state of the main branch before it can
-be merged and that this is not possible just now, nothing armed and no
-merge handed over; then rebase onto the base and force-push, which lands nothing
-anywhere and is not the merge this step may not perform, and the next reading is
-`BLOCKED` with arming accepted. Measured on 30 August 2026 on a pull request
-seven days old: `UNKNOWN` first, `BEHIND` on the second reading.
+`parameters.required_status_checks[].context` for a ruleset — which it runs
+itself and prints on its `gate:` lines. A required name with no entry, or an
+entry whose `status` is not `COMPLETED`, or a status context still `PENDING`
+or `EXPECTED`, means the check has not run yet: not a refusal case, so it
+reads on, sixty seconds a call, and arms on the `BLOCKED` it moves to; where
+it ends with `not started:`, call it once more, two minutes in all. Only every
+required check `COMPLETED` makes this a pull request past its gate, `past its
+gate:`. If the two minutes run out, say the gate is there and no check
+registered in that time, rather than claiming the pull request is past it.
+`UNKNOWN` is a missing answer rather than a state: GitHub computes
+mergeability when it is asked for, so the program reads again a few seconds
+later and uses that second value instead of making a case out of the first; a
+second `UNKNOWN` is not read a third time but goes to the rollup. `BEHIND`
+means the branch is behind the base and the required check ran against a state
+that is not what would be merged, and the program ends with `behind:` — fetch,
+three attempts, by the command under "When the main branch cannot be fetched
+or fast-forwarded" above, and where the third fails too, stop as that section
+says, opening with that the pull request has to be brought up to the latest
+state of the main branch before it can be merged and that this is not possible
+just now, nothing armed and no merge handed over; then rebase onto the base
+and force-push, which lands nothing anywhere and is not the merge this step
+may not perform, and call the program again, whose next reading is `BLOCKED`
+with arming accepted. Measured on 30 August 2026 on a pull request seven days
+old: `UNKNOWN` first, `BEHIND` on the second reading.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text empty-read`
 
 The same distinction holds one step earlier: a required name missing from the
 rollup is an answer and waiting helps, a rollup query that did not answer is not
-and waiting does not.
+and waiting does not, and the program ends with `no answer:` where the second
+did not answer either.
 
-A value in none of those groups is put in none of them — name it as it read,
-say it cannot be placed, and do not turn it into one of the three cases below.
+A value in none of those groups is put in none of them — the program names it
+on a `cannot be placed:` line and arms all the same; name it as it read, say it
+cannot be placed, and do not turn it into one of the three cases below.
 
-If arming is refused there are three cases, and `gh api repos/OWNER/REPO -q
-.allow_auto_merge` answers only the first: auto-merge switched off on the
+If arming is refused there are three cases. Two come as the program's own
+answer, since it arms on no mergeable value — `no required check:` and `past
+its gate:` — and the first as GitHub's, `refused:`. `gh api repos/OWNER/REPO
+-q .allow_auto_merge` answers only the first: auto-merge switched off on the
 repository, the field false; or no gate for it to wait on at all; or a gate this
 pull request is already past — the required check green, nothing outstanding, so
 GitHub will not arm what it would merge on the spot. The field cannot tell the
@@ -762,13 +772,14 @@ required check and in one without alike. The first is the ordinary case at a
 first setup since 16 October 2026: the setup asks about auto-merge only where
 a gate stands already, so a repository without one arrives here with it off,
 and step 8 switches it on where it sets a gate up; nothing here asks them
-to. The state comes from `mergeStateStatus`.
+to. The state comes from `mergeStateStatus`, as the program read it last.
 Whether a gate exists takes both `gh api repos/OWNER/REPO/branches/main/protection`
 (classic protection; blind to rulesets, needs admin, and a 404 means none only
 where the body says "Branch not protected") and `gh api
 repos/OWNER/REPO/rules/branches/main` (rulesets; no special rights, blind to
-classic protection). A gate found by either is a gate; where neither query
-answered, say the rights did not allow finding out rather than naming a case.
+classic protection), which the program asks and prints. A gate found by
+either is a gate; where neither query answered, say the rights did not allow
+finding out rather than naming a case.
 Then the handover, and do not go on to the next step on top of an unmerged
 suite:
 
