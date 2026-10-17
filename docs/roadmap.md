@@ -27149,6 +27149,56 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   install handed over at a guard's block on 17 October 2026 — should: the
   insert goes, or a line of the skill that hands a command over uses it.
 
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: every record whose anchor a change broke, 179
+  at the first run of the tool, re-anchored on the line that carries the same
+  thing now; 45 things renamed where no run hangs on them, the name of a thing
+  with runs kept and its note saying what holds since this day; eight records
+  gone with their lines, four of them things — the sentence of two numbers
+  with nobody there, the user naming a different cut, protection wanted and
+  refused in `setup-project`, the line without code of `plan-work` — and four
+  not-a-thing rows; 21 new things, the branches the changes opened, among them
+  six in step 0 of `setup-project`, three in step 2 of `setup-checks` and four
+  for the last message in `build-work`, and the three findings above; 62 new
+  not-a-thing rows, one of them the head of this entry, part of the first
+  finding; the evidence of defects 1, 2, 8 and 10 of the entry of 16 October
+  2026 on the lines that carry their repair, and the shoulds revised above in
+  the notes as on the status lines. The tool on the tree of the second commit:
+  no broken record, 19 findings as at `b24542a`, no unit without a straight
+  path, no status word broken over a line break, none of 3927 lines of the
+  search set uncovered, where `b24542a` had 3873, exit 0; recorded and not
+  built 250 where it was 251, its defects 239 where they were 240; built and
+  never walked 1139 where it was 1058 — skill branches 673 where 612, shared
+  texts 141 where 129, hook outcomes 18 where 15, defects 242 where 237;
+  walked 510 where 573 — skill branches 150 where 198, shared texts 48 where
+  59, hook outcomes 114 where 117, defects 33 where 34; the output style, hook
+  registration, program outcomes and check commands as before; undetermined
+  26 as before; runs that do not count 410 where 302, the more each on a thing
+  whose lines, or a shared text it inserts, this order changed; not-a-thing
+  records 2537 where 2479; the self-test 114 cases, 76 of 76 messages asserted
+  by a case, as at `b24542a`.
+
+  **The runs.** The nineteen checks under "Before a handover, run these" ran
+  on the tree of the second commit, `ebb4d6d`, clean, from 17:51:57 to
+  17:52:05 UTC, in a clean bash with `/usr/bin` first on its path, line for
+  line what they print at `b24542a` but for the line numbers the changes moved
+  and, in the check for offers, two lines of `start-work` that carry the same
+  words rewrapped; the tool on that tree, from 17:52:12 to 17:54:27 UTC, exit 0
+  with the figures above; its self-test, from 17:54:27 to 17:54:29 UTC, 114
+  cases, 76 of 76 messages asserted by a case; all recorded in the third
+  commit under 0.143.0. The command under "Before you change anything, run
+  this" ran on `main` at `b24542a` before the branch was cut and printed the
+  installed copy behind, 0.141.0 against 0.142.0 in the ten files #179
+  changed; recorded under 0.142.0. The two hooks of the first commit were fed
+  by hand on 17 October 2026 at 17:55:12 UTC a JSON input for every branch the
+  change touches, in a throwaway directory holding `docs/agents` and a git
+  repository without a default branch: the mark guard under `default` blocked
+  with text C naming the next message that ends the turn with text, with no
+  `permission_mode` blocked with its second form, under `auto` passed; the
+  install guard on `brew install prettier` blocked, the cost of a decline
+  named for that next message; recorded under 0.143.0. Nothing ran on a bench
+  with a model, and no session of Claude Code was started.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
