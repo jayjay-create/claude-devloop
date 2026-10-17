@@ -27322,6 +27322,22 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `setup-checks` above; runs that do not count 413 where 410; not-a-thing
   records 2538 where 2537.
 
+  **The runs of the addendum.** The nineteen checks under "Before a
+  handover, run these" ran on the tree of its second commit, `b0d3582`,
+  clean, from 19:08:26 to 19:08:33 UTC, in a clean bash with `/usr/bin`
+  first on its path, line for line what they print at `305490e` but for one
+  line number in the check for handovers, `shared/fetch-three-times.md` line
+  57 there and 61 here, which the four lines added above it moved; the tool
+  on that tree, from 19:08:58 to 19:11:14 UTC, exit 0 with the figures
+  above, the same as before the commit; its self-test, from 19:11:14 to
+  19:11:17 UTC, 114 cases, 76 of 76 messages asserted by a case; all
+  recorded in its third commit under 0.143.0. The five skills the addendum
+  touches at an end of the run with nobody there, or at a line of N2, were
+  read through `scripts/devloop-expand`: the description stands at expanded
+  lines 517, 2092 and 2566 of `build-work`, 793 of `plan-work` and 582 of
+  `cut-into-tasks`, after the stop at each, and in neither `setup-project`
+  nor `setup-checks`, which insert no end of that run.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
