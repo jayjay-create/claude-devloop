@@ -1,19 +1,33 @@
-**A command whose output does not come back is reported.** Name the command as
-it was run and the message that came back in its place. One second attempt is
-allowed and needs no announcement — not for a command that did not finish
+**A command whose output does not come back is tried once more, and said
+where that changes what the person gets.** One second attempt is allowed and
+needs no announcement — not for a command that did not finish
 inside its call, which the block after the next says, and a fetch that
 something is built on gets
-three, each failure named, by "When the main branch cannot be fetched or
+three, by "When the main branch cannot be fetched or
 fast-forwarded" in the skills that fetch, which says why; where it answers,
 the run carries on with
-that answer and reports the first refusal beside it. A silent retry is what lets
-a run come out looking clean while a step of it never ran — measured on 31
-August 2026: a command refused by the runtime's permission check, whose message
+that answer and says nothing of the first attempt. Where a command that
+did not answer is said — the blocks below say where — it is named as it was
+run, with the message that came back in its place. A first attempt that a
+permission or safety check refused is said, though the second went through:
+Claude Code's permission check, the classifier of auto mode, a safety check
+built into Claude Code. One line names the check, the command, and that the
+second attempt went through, in the next message with which the turn ends
+with text; with nobody there it stands in the pull request of the work it
+happened at, and where there is none, in that work's issue, and not in the
+last message — there only where a second attempt is made at all, since the
+refusals named under "With nobody there to tell" below go as the skill's
+own section for that case says. A check the person controls is not got
+around in silence. Decided by the person on 17 October 2026, after the
+build of the roadmap entry of that date on the reports of what was done,
+which had dropped the line; the example the person saw stands in that
+entry, and a skill says what is said, not the words. Until that entry the
+first refusal was reported beside the answer, whatever had refused it,
+after a measurement on 31 August
+2026: a command refused by the runtime's permission check, whose message
 asks in so many words for a pause and an explanation of what the permission is
 for, repeated without a word, answered the second time, and named in no report
-until a question about something else turned it up. The refusal itself is
-nothing this workflow decides and nothing to apologise for. Hiding it is the
-defect.
+until a question about something else turned it up.
 
 **Nothing is concluded from an answer that did not come.** Where the output
 would have decided something — the state of a pull request, whether a gate

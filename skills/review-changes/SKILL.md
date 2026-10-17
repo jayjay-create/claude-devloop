@@ -54,7 +54,8 @@ lens and none telling it what the word counts.
 ## Pin the target
 
 Establish exactly what is under review — the diff between the branch and the main
-branch, at the current commit. Say which commits it covers. Everything below
+branch, at the current commit. Which commits it covers the pull request of the
+gate names, and it is not said here, since 17 October 2026. Everything below
 looks at that, not at the working tree, and not at whatever changed since.
 
 **How small it is decides nothing here.** A one-line diff gets the lenses its
@@ -104,7 +105,8 @@ the task description — if the diff contains it, the lens runs.
 
 **Unattended, a stated reason buys no exception, and the form of what may be said
 instead is fixed.** Where the trigger is in the diff, the lens runs. Where it is
-not, the one thing that may be said about the lens that did not run is **the
+not, the one thing that may be written about the lens that did not run, where
+the findings go and not in the conversation, since 17 October 2026, is **the
 trigger's own words, negated, item by item** — "the diff contains no schema and
 no stored-format change" against a trigger reading "any schema or stored-format
 change". Not a paraphrase of it, not a narrowing of it, and not what its absence
@@ -145,29 +147,26 @@ diffs.
 One subagent per lens, in parallel, each given only its own lens and the diff.
 A reviewer that sees the other lenses starts prioritising across them.
 
-**Say both numbers in one sentence as they start: how many lenses apply, and how
-many reviewers are being started.** Done right the two are the same number, so
-the right case reads as nothing at all — "five lenses, five reviewers" — and the
-wrong one stands there as "five lenses, two reviewers". **That is the whole
-purpose of putting them side by side: to spare the reader work rather than give
-them any.** Today the lens count sits in one sentence and the reviewers that
-actually started are somewhere else, so the wrong case shows only to somebody who
-goes and holds the two against each other. In one sentence it is a glance instead
-of a comparison. Do not later shorten it to one number: a single number is what
-hid this over two tasks.
+**Start one reviewer for every lens that applies, and say neither number.**
+Done right the two are the same number and say nothing; a reviewer that did not
+start or did not return is the failure, and the paragraph below says it. Since
+17 October 2026; until then both numbers stood in one sentence as the reviewers
+started, "five lenses, five reviewers", so that "five lenses, two reviewers"
+showed at a glance, after a single number had hidden a missing reviewer over
+two tasks.
 
-**And this is not enforcement, and must not be built up as though it were.**
-Nobody reads that sentence in an unattended run. It works when a person reads the
-report afterwards, and not before — it makes the failure legible to whoever does
-look, and nothing anywhere checks it.
+If a reviewer fails to return, rerun it; where the rerun does not return
+either, state which lens did not run. Never present a comparison that is
+quietly one lens short. A rerun that returned is not said, since 17 October
+2026.
 
-If a reviewer fails to return, say so and either rerun it or state which lens did
-not run. Never present a comparison that is quietly one lens short.
+## The report, said to nobody
 
-## Report
-
-One section per lens, in the order above. Under each: the findings, worst first,
-and the single worst one named.
+The report is said to nobody, since 17 October 2026: the findings reach the
+person at the close of the step that owns the gate, as that step presents
+them, and stay where "What happens to a finding" below sends them. The report
+is what the split is made from. One section per lens, in the order above. Under
+each: the findings, worst first, and the single worst one named.
 
 **Then stop, and stop means all three of these.** No sentence after the last
 lens. No verdict over the whole thing — no cross-lens ranking, no "looks good
@@ -178,8 +177,8 @@ this lands is asked separately, by the step that owns that gate, and a report
 that has already named the outcome turns that question into a formality. Do not
 open the pull request here either — that belongs to the same step.
 
-If a lens found nothing, say that lens found nothing. That is a result, not an
-absence, and it is the end of that section.
+A lens that found nothing ends its section with that: a result, not an
+absence. It goes no further than the report.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text restate`
 
@@ -206,8 +205,9 @@ absence, and it is the end of that section.
 silently.** A condition the issue names, a test decision it records: where the
 finding is that one of those is missing or unmet, **the destination does not
 change** — the fix is usually obvious and the first half sends it there — but it
-is named as a finding against the task's own terms when the split is announced.
-That naming is what the caller's close then carries; **it does not go into the
+is named as a finding against the task's own terms at the caller's close,
+where the findings reach the person, and not as the split is made, since 17
+October 2026; **it does not go into the
 report above**, which still stops at the last lens and says nothing after it.
 This is a duty to say so, not a second route to the
 issue tracker. On pull request 27 a byte-for-byte regression test the task's own

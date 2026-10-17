@@ -5,7 +5,8 @@ answer is acted on it is asked about, one question per file, since 16 October
 alone in its call, every point in a field of its own and no recommendation,
 and nothing said before the call: the question line says that the change
 still lies set aside, and a sentence before it, which stood here until 17
-October 2026, said it twice and stood where text lands in a collapsed note.
+October 2026, said it twice and stood where text can land in a collapsed
+note, as owed text did in every measured run.
 In the header: a word for
 the subject, of twelve characters at most. In the question line: that their
 change to the file, by its path, still lies set aside since a run without

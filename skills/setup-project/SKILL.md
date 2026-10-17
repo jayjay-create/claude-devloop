@@ -44,9 +44,10 @@ from the close.
 - **The command really is an install.** The guard did what it was built for.
   No step of this setup needs one — nothing is installed here, the check setup
   being where a tool is installed under the record — so the command is one
-  this run reached for on its own. With the user there, hand it over backed
-  and carry on without it: the record has not landed yet, and once it has, the
-  check setup decides. With nobody there, there is no one to ask: it becomes an issue
+  this run reached for on its own. With the user there, carry on without it
+  and hand nothing over, since 17 October 2026: the record has not landed yet,
+  and once it has, the check setup decides. With nobody there, there is no
+  one to ask: it becomes an issue
   labelled `needs-human` carrying the command and the message, and the report is
   written and the run stops there rather than carrying on past a step that did
   not run.
@@ -115,26 +116,48 @@ and say in two or three lines what actually changed — named, not counted. One
 thing outside those files is this workflow's too: the two paths under `.claude/`
 that Step 5 keeps out of the repository. Check `.gitignore` covers both, since a
 project set up before one of them existed has only the other. If nothing
-changed, say that and stop. Then land it the way Step 8 describes.
+changed, say that and stop where the person typed the refresh; reached from
+the entry point, say nothing and go back to it, since 17 October 2026. Then land
+it the way Step 8 describes.
 
-## Step 0 — Say what is about to happen, then get on with it
+## Step 0 — Get on with it, and put what is about to happen into the first question
 
-Do this before any tool call, including reading files. Someone seeing this for the
-first time should not watch six commands run before learning what is going on.
+What is about to happen is said in the first question this setup puts, and
+nothing is said before it, since 17 October 2026, the roadmap entry of that
+date on the reports of what was done: text before a tool call can land in a
+collapsed note, and why the questions come now is part of what the first
+question needs, as "How to ask" above says. Someone seeing this for the first
+time meets it where they answer, not above six commands they watch run.
 
 If you cannot tell what language the user speaks — they have typed nothing but the
 command — ask that first, in English, as a single question. Everything after runs
-in their language.
+in their language. That question carries neither sentence below; the next
+question does.
 
-Say what is about to happen here, in one or two sentences: you set this
-repository up — look at what is already in it and write five short files
-recording where tasks live — that it takes a few minutes, and that along the
-way you ask wherever something is theirs to decide. Name no count of
-questions.
+At a first setup the first question carries one sentence, by how this setup
+began. Where it began with an idea in hand — from the entry point, where the
+idea came with the command or was named in answer to its question, from
+`untangle-idea`, or from `plan-work` — that the project is set up before
+their idea is begun. Where the person typed this skill themselves, that this
+project is being set up. It stands in the question field, before the
+question line, where the question goes through the choice widget, and in its
+message before it where it is put as text; whichever question comes first
+carries it — the one on what is wrong below, or one of step 4. Where this
+setup puts no question, it stands in the message with which its turn ends,
+before the merge handover.
+Nothing else of what it does is said there: not that it takes a few minutes,
+and not that it asks along the way, which changes no answer. The wordings
+approved on 17 October 2026 stand in the roadmap entry of that day on the
+reports of what was done; this skill says what is said, not the words. A
+refresh carries neither: it says what changed where it lands. Until 17
+October 2026 this step said before any tool call, in one or two sentences,
+that the repository is set up, that it takes a few minutes and that the run
+asks along the way.
 
 **Do not introduce the workflow itself, and name no stages.** Whoever arrives
-here either typed the command or said what they wanted built one message ago,
-and in the second case the introduction has already been given. A second one,
+here either typed the command or said what they wanted built, and in the
+second case an introduction came before they named it, where one came at
+all. A second one,
 laid out as a numbered list of what is coming, turns a promise that nothing has
 to be remembered into a process to learn.
 
@@ -183,13 +206,13 @@ when the question about labels of overlapping meaning went, point 9 of part
 B of the roadmap entry of 12 October 2026 — this workflow creates its seven
 in step 6 in every setup and reads only its own.
 
-## Step 2 — Report what you found
+## Step 2 — Nothing of what you found is said
 
-Ten lines at most. Say explicitly what you did **not** find. Nothing on
-labels, in either direction: that a repository carries none of this
-workflow's seven before its setup holds for every repository and changes
-nothing, and which labels it carries beside them decides nothing, since 16
-October 2026.
+Nothing of what step 1 found is said, since 17 October 2026: it decides
+nothing and is no result, and what a question of step 4 turns on stands in
+that question's fields. Until then it was reported in ten lines at most,
+with what was not found, and since 16 October 2026 with nothing on labels,
+which decide nothing either.
 
 ## Step 3 — The empty case
 
@@ -223,7 +246,8 @@ and the roadmap entry of 17 October 2026 measured again for the question
 field. Nothing stands in the run's message before the widget, since 17
 October 2026: a paragraph above the options does not get read, the points
 of question 3 that stood only in prose arrived in none of three runs, and
-text before the call lands in a collapsed note. Questions 1, 2 and 5 are such
+text before the call can land in a collapsed note, as owed text did in every
+measured run. Questions 1, 2 and 5 are such
 choices, and several of them may share one widget call; how a shared call
 shows at 80 columns is not measured, the roadmap entry of 17 October 2026
 says so. Question 3 is one
@@ -237,7 +261,7 @@ whether a missing tool gets installed, is the check setup's own question, put
 once the record this step writes has landed.
 
 1. **Issue tracker** — only if there is no remote, or several candidates.
-   With exactly one remote: state it and move on.
+   With exactly one remote: take it and move on, saying nothing of it.
    The tracker must *support* blocking relationships between issues; GitHub
    Issues and comparable trackers do, whether or not any exist yet. A text file
    never does — `build-work` picks the next task by which blockers are closed.
@@ -290,7 +314,8 @@ once the record this step writes has landed.
        the account that would merge. `never` binds. Anything else does not, and
        `pull_requests_only` least of all: in GitHub's words that actor "can then
        choose to bypass any branch protections and merge that pull request",
-       which is the step this gate exists to hold. Name the value either way.
+       which is the step this gate exists to hold. Name the value either way,
+       in `environment.md`.
        Do not reach for `bypass_actors` instead — measured on 31 August 2026 it
        read `null` on a ruleset that answered everything else, and a run reading
        it would take that for nobody. The list at `repos/OWNER/REPO/rulesets`
@@ -309,14 +334,14 @@ once the record this step writes has landed.
      binds, and only both sides coming back bypassable means this account walks
      through. Where a side did not answer — `protection` needing admin and
      returning anything but "Branch not protected", or a ruleset reply that does
-     not come back — that is a third outcome and not a quiet no: say the binding
-     could not be determined and which query failed, rather than claiming a gate
-     or ruling one out.
+     not come back — that is a third outcome and not a quiet no: that the
+     binding could not be determined, and which query failed, goes into
+     `environment.md` in step 6 rather than a claimed gate or one ruled out,
+     and is not said, since 17 October 2026.
 
    Whether a plan allows protection on a private repository has changed before
    and will again, so do not carry a table of it: those two queries answer it
-   for this repository, today. If protection is wanted and refused, the message
-   says why and that is the answer to report.
+   for this repository, today.
 
    Where no gate stands, the question is not put. GitHub accepts no auto-merge
    on a pull request that can already be merged, so with auto-merge on and
@@ -353,7 +378,9 @@ once the record this step writes has landed.
    October 2026. The wording approved on 16 October 2026 stands in the
    roadmap entry of that date; this skill says what is said, not the words.
 
-   Report what was found in step 8 and write it into `environment.md`. Never
+   Write what was found into `environment.md`; of it, step 8 says the one
+   sentence of the merge handover that fits the case, and nothing more, since
+   17 October 2026. Never
    withhold anything over it and never make it a condition — the user decides
    what their repository is for, and this step's job is that they decide it
    knowing what holds.
@@ -527,10 +554,13 @@ labels the tracker carries beside them: none of those is deleted for it, and
 this workflow reads only its own; a label of one of the seven names that
 stands there already is left as it stands, since `gh label create` refuses a
 name that exists. A label that only exists in this document is not a label.
-Then say to the person, in one sentence of the run's own message, that seven
-labels were created in the tracker, with which the state of the work is
-marked, with one named as the example — `needs-human`, for when they have to
-decide. Until 16 October 2026 step 4 asked, where the tracker had labels of
+That seven labels were created in the tracker, with which the state of the
+work is marked, with one named as the example — `needs-human`, for when they
+have to decide — is said in one sentence in the message with which the
+setup's turn ends, before the merge handover, since 17 October 2026, defect 2
+of the roadmap entry of 16 October 2026 on the runs of that day; until then
+in one sentence of the run's own message. Until 16 October 2026 step 4
+asked, where the tracker had labels of
 overlapping meaning, whether to map onto them or add these beside them, a
 question about this workflow's own convention; it went as point 9 of part B
 of the roadmap entry of 12 October 2026, whose approved wording for the
@@ -764,8 +794,8 @@ A required name with no entry, an entry whose `status` is not `COMPLETED`, or a
 status context still `PENDING` or `EXPECTED`, means the check has not run yet:
 not a refusal case, so wait ten seconds and read again, up to two minutes, then
 arm on the `BLOCKED` it moves to. Only every required check `COMPLETED` makes
-this a pull request past its gate; two minutes run out is said as that and not
-as a gate already passed. `UNKNOWN` is a missing answer rather than a state:
+this a pull request past its gate; two minutes run out is not taken for a gate
+already passed. `UNKNOWN` is a missing answer rather than a state:
 GitHub computes mergeability when it is asked for, so read again a few seconds
 later and use that second value; a second `UNKNOWN` is not read a third time.
 `BEHIND` means the branch is behind the base and the required check ran against a
@@ -802,12 +832,10 @@ text the build step and the check setup hand a merge over with:
 Five lines at most: which files you wrote, which targets you created, that
 every check class is `empty`, and where the install answer stands: the section
 `## Install permission` of `environment.md`, which carries the answer, the
-places a yes opens and the routes of the stack, and which every session reads
-at its start once step 8 has landed it on the main branch.
+places a yes opens and the routes of the stack.
 
 Then name **no command**, and do not ask permission to carry on. Say what
-happens next, in plain words, and do it. What it buys and what it costs still
-gets said; the question is what goes, because nothing here is the user's to
+happens next, in plain words, and do it, since nothing here is the user's to
 decide:
 
 - Code in the repository: say that the setup is done and that the checks are

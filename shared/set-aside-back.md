@@ -3,7 +3,8 @@ the entry being the one a `set-aside:` line of
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state` names for the file — read
 already where this follows the question at a start, and run without
 `--fetch` for it otherwise — and one line to them says that the change is
-back. Measured on 6 October 2026 with git 2.50.1: the pop merges the change
+back, at the next message that ends a turn with text, since 17 October 2026.
+Measured on 6 October 2026 with git 2.50.1: the pop merges the change
 back where the
 fast-forward changed another line of the file; where it changed the same
 line, the pop reports a conflict in the file, keeps the stash, exit 1, and

@@ -194,7 +194,9 @@ four ways; and four of 16 October 2026, with part B of the roadmap entry of
 12 October 2026 at planning and building and the person's decisions of that
 day on the run with nobody there: `shared/mark-deletion.md`, how the mark
 of a run with nobody there is deleted and what the run brings back then,
-inserted at the endings of `build-work`, `plan-work` and `cut-into-tasks`;
+inserted at the endings of `build-work`, `plan-work` and `cut-into-tasks`,
+and since 17 October 2026 the two groups of that run's last message, which
+until then `build-work` alone described;
 `shared/set-aside-at-start.md`, the question at every start about a change
 a run without them set aside, inserted into the four skills that read the
 setup state at their start; `shared/set-aside-back.md`, how such a change
@@ -423,17 +425,30 @@ If a background agent fails to return, say so — do not present a comparison th
 is quietly one draft short. Both happened repeatedly and went unmentioned.
 
 **And when a command gives no answer at all, that is the same rule one layer
-down.** A command whose output does not come back is reported: the command as it
-was run, and the message that came back in its place. One second attempt is
-allowed and reporting is not owed twice — where the second answers, the run
-carries on with that answer and names the first refusal beside it. What is not
-allowed is the silent retry, because it costs nothing to make and hides that a
-step ran once without an answer. One command is counted differently since 6
+down.** A command whose output does not come back is reported where that
+changes what the person gets: the command as it was run, and the message that
+came back in its place. One second attempt is allowed and needs no
+announcement — where the second answers, the run carries on with that answer
+and says nothing of the first, since 17 October 2026, the roadmap entry of
+that date on the reports of what was done; until then it named the first
+beside the answer. A first attempt that a permission or safety check refused
+is the exception, by the person's decision of the same day: Claude Code's
+permission check, the classifier of auto mode, a safety check built into
+Claude Code. Where the second attempt went through, one line in the next
+message with which the turn ends with text names the check, the command, and
+that the second attempt went through; with nobody there the line stands in
+the pull request of the work it happened at, and where there is none, in its
+issue, and not in the last message. What is not allowed is the silent retry
+past such a check, because it costs nothing to make and hides that a check
+the person controls was got around. One command is counted differently since 6
 October 2026: a fetch that something is built on — a cut, a task's base, the
 state after a merge, the mark, a rebase — gets three attempts, each bounded
 to thirty seconds by `bin/devloop-bounded` and ten seconds apart since 7
-October 2026, unbounded and fifteen seconds apart until then, each failure
-named, and only the third stops the run;
+October 2026, unbounded and fifteen seconds apart until then, and only the
+third stops the run; a failed attempt followed by one that answered is not
+said since 17 October 2026, each failure having been named until then, and
+the call of the three that a check refused and that went through when made
+again gets the line above;
 `shared/fetch-three-times.md`, inserted into the four skills that fetch so,
 says why, with GitHub's own checkout action as the measure, and the entry of 5
 October 2026 in `docs/roadmap.md` has the reading under its third addendum.
@@ -553,7 +568,8 @@ is not said again, and what has not is said where they meet the question:
 put through the widget, in its fields, why it comes up now in the question
 field before the question line; put as text, in the message that puts it.
 Not in an announcement before it: text before the call that shows the
-widget lands in a collapsed note. "A text is as long as what carries the
+widget can land in a collapsed note, as owed text did in every measured run.
+"A text is as long as what carries the
 decision" below reads the four so, and so do this section,
 `shared/how-to-ask.md` and the template of `untangle-idea`, since 16 October
 2026, point 25 of part B of the roadmap entry of 12 October 2026; since 17
@@ -679,8 +695,9 @@ whole under its label. Measured on 17 October 2026 under Claude Code 2.1.301,
 754 to 780: descriptions of one sentence and of three whole at 160×50 and
 at 80×24, in both renderers, and five runs of five putting the five parts of
 the mode question into the question field when asked to. What does not stand
-in the widget's fields is text before its call, which lands in a collapsed
-note, "The output style is forced" below. A hook's message arrives whole on
+in the widget's fields is text before its call, which can land in a collapsed
+note, as owed text did in every measured run, "The output style is forced"
+below. A hook's message arrives whole on
 stderr; a question a run puts as text arrives in the message that puts it.
 
 **The widget holds a bounded amount, and what does not fit goes as text.**
@@ -907,8 +924,9 @@ What the project declares in its dependency file does not: a guard that read a
 project's files per language and got one of them wrong would install with
 nobody asked, and an abort is loud only where somebody is reading: with nobody
 there, it is the first thing to go wrong. What the project declares
-is reported at setup, in step 2 of `setup-project`, before the question is
-put; it does not stand in for the question. Since 28 September 2026 the install guard reads that recorded
+stands at setup, in step 4 of `setup-project`, in the fields of the question
+it bears on, since 17 October 2026, when the report of step 2 went; it does
+not stand in for the question. Since 28 September 2026 the install guard reads that recorded
 state and the skills run the install where it says yes — **The install guard
 reads a record** below says how — and the question that writes it stands in
 `setup-project` step 4 since the same day, version 0.115.0, and in the empty

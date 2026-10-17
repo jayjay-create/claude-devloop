@@ -140,8 +140,8 @@ esac
 [ "$MODE" = auto ] && pass
 
 if [ -n "$MODE" ]; then
-  echo "Blocked by devloop: the mark for a run with nobody there is written only in auto mode, and this session is in $MODE, shown in the status bar as $LABEL. Do not write the mark another way. The run with nobody there does not start: tell the user so with the sentence the skill gives for start condition 4, and carry on with them." >&2
+  echo "Blocked by devloop: the mark for a run with nobody there is written only in auto mode, and this session is in $MODE, shown in the status bar as $LABEL. Do not write the mark another way. The run with nobody there does not start: tell the user so with the sentence the skill gives for start condition 4, in the next message with which you end your turn with text, and carry on with them." >&2
 else
-  echo "Blocked by devloop: the mark for a run with nobody there is written only in auto mode, and the permission mode of this session could not be read: the hook input carried no permission_mode. Do not write the mark another way. The run with nobody there does not start: say that the mode could not be read, with this message, and carry on with the user." >&2
+  echo "Blocked by devloop: the mark for a run with nobody there is written only in auto mode, and the permission mode of this session could not be read: the hook input carried no permission_mode. Do not write the mark another way. The run with nobody there does not start: say that the mode could not be read, with this message, in the next message with which you end your turn with text, and carry on with the user." >&2
 fi
 exit 2

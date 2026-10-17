@@ -30,6 +30,15 @@ the work to go on. A recommendation attached to a question with no second
 sensible answer is not a courtesy: it is a stop they have to clear, and a run of
 them teaches them to wave through the one that mattered.
 
+A decision of either kind, settled by the project's rules or taken by you, is
+said only where it reaches them before the work it shapes is done. Where the
+next message that ends a turn comes only after that work — in a build, in the
+cut into tasks, in planning once the design is chosen — and wherever nobody is
+there, the decision stands only where it is recorded, in the spec or in the
+issue or pull request of the work at hand, and is not said, since 17 October
+2026: room to overturn it would reach them when overturning it costs the work,
+the roadmap entry of that date on the reports of what was done.
+
 **Reporting is not asking.** A blocked step, a contradiction in the spec, a
 finding, something the platform cannot do — those get said whatever this test
 says. Silence is not flow.
@@ -62,7 +71,8 @@ question: put through the choice widget, in its fields, why it comes up now
 in the question field before the question line; put as text, in the message
 that puts it, before the question. Not in an announcement before it, since
 17 October 2026, the roadmap entry of that date: text before the call that
-shows the widget lands in a collapsed note. From 16 October 2026, point 25
+shows the widget can land in a collapsed note, as owed text did in every
+measured run. From 16 October 2026, point 25
 of part B of the roadmap entry of 12 October 2026, a stage's opening that
 said a few questions come with it stood for why the next one comes now. Never name a
 bare term the user may not know — someone who has never heard of this workflow

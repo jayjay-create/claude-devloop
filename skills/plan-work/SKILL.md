@@ -37,8 +37,9 @@ working tree.
 
 Where its answer carries a `missing:` line, this project is not set up on the
 main branch — never set up, or written and not landed, which the working tree
-cannot tell apart. **Say in one line what you are doing and run
-`setup-project`. Do not ask.** There is nothing to decide: without a tracker
+cannot tell apart. **Run `setup-project`, and say nothing before it. Do not
+ask.** Why its questions come now stands in its first question, as its step
+0 says, since 17 October 2026. There is nothing to decide: without a tracker
 there is nowhere to put a spec, so the only other answer is to abandon what
 the user just asked for. Do not improvise around it either.
 
@@ -67,7 +68,8 @@ was open, and opened a planning issue for work whose finished pull request was
 sitting open against the very issue it duplicated.
 
 **And a query that did not answer is not "nothing is in flight".** An empty
-result is an answer and is reported as one; a command that was refused or errored
+result is an answer, and the planning goes on on it without a word, since 17
+October 2026; a command that was refused or errored
 is not, and reporting it as an empty tracker is the same duplicate-planning
 failure by another route. Name the command and the message that came back
 instead, and do not open a planning issue on it.
@@ -87,8 +89,9 @@ else carries whatever its author chose.
 - **`closes: -`** — it names no issue, so it cannot say what it belongs to. Ask
   whether it is this work. That question has no right answer to look up, which
   is what makes it one.
-- **`mine: false`** — somebody else opened it. Report it and carry on; it is not
-  this work and not yours to land.
+- **`mine: false`** — somebody else opened it. Carry on; it is not this work
+  and not yours to land. It is named on the planning issue, as a comment once
+  the issue stands, and not said, since 17 October 2026.
 
 ## The planning issue
 
@@ -134,8 +137,9 @@ to duplicate an issue.
   something new. Do not decide that by matching words against the title.
 - **Several** — list their titles and ask which one, or whether this is new.
 
-If it is the same work, read the issue and its comments, say which stage was last
-finished, and continue at the next one. Do not repeat a finished stage. Stage 2's
+If it is the same work, read the issue and its comments and continue at the
+stage after the one last finished, saying nothing of which, since 17 October
+2026. Do not repeat a finished stage. Stage 2's
 report is a summary, so re-read any code you need to act on rather than trusting
 the summary to be complete.
 
@@ -366,44 +370,37 @@ and only where the idea stands by the three conditions above.
 
 Where the mode is not set up, the question has one possible answer and is not
 asked. Without the flag the run carries on with them, and what it says about
-the mode is one of three things, read in this order. Where the record of the
-answer says `no` — their no, a protection the platform refused, or checks
-that do not pass on the platform — nothing, and nothing about the other
-conditions either. Otherwise, where a class in `checks.md` is `empty`, one
-line in one of two forms, by whether the repository has code — count source
-files outside config and docs, as the setup does. Without code: that work
-cannot run without them in this project yet, because without them only the
-checks secure the work and those can be set up only once there is code, and
-that once the first work that lands code has merged devloop sets them up
-and then asks whether it may work without them too — `build-work` step 6
-sets the suite up after a merge only where the repository has code after
-it. With code and classes still open:
-that work cannot run without them in this project yet, because without
-them only the checks secure the work and not all of them are set up yet,
-and that devloop catches that up after the next merge or at the next start
-and then asks whether it may work without them too. Nothing about the flag
-in either form, since step 8 is not reached while a class is `empty`.
-Otherwise — no record, or a yes with
-something fallen away since, auto-merge switched off on the platform, say,
-or a setup broken off before the question — one line: that work without
-them is not set up in this project, and that typing `--auto` where a piece
-of work starts sets it up. It does not list what is missing: the flag asks
-what has to be asked and sets up the rest. The wording approved on 5 and 6
-October 2026 stands in the roadmap entry of 5 October 2026; this skill says
-what is said, not the words. Where `--auto` was typed this session and the idea
-stands, the run does not stop at that: the person who typed it is here, so
-call `setup-checks` for its step 8 alone, which puts what has to be asked —
-the permissions a second time, where their record does not say yes, and since
-9 October 2026 the question on the rule for the classifier of auto mode, where
-it does not stand in their settings — and sets up what the answers allow. It is not reached while a class in `checks.md` is
+the mode is read in this order. Where the record of the answer says `no` —
+their no, a protection the platform refused, or checks that do not pass on
+the platform — nothing, and nothing about the other conditions either.
+Otherwise, where a class in `checks.md` is `empty`, nothing. Otherwise,
+where the record is a yes with something fallen away since, auto-merge
+switched off on the platform, say, one line: that work without them is not
+set up in this project, and that typing `--auto` where a piece of work
+starts sets it up. It does not list what is missing: the flag asks what has
+to be asked and sets up the rest. Where no record stands — a setup broken
+off before the question among it — nothing. Since 17 October 2026, the
+roadmap entry of that date on the reports of what was done: a class `empty`
+had a line in two forms until then, by whether the repository had code, and
+no record had the line of a yes fallen away, which spoke of an option they
+never took up. The wording approved on 5 and 6 October 2026 stands in the
+roadmap entry of 5 October 2026, the line for a yes fallen away among it,
+the forms for a class `empty` and for no record not said since 17 October
+2026; this skill says what is said, not the words. Where `--auto` was typed
+this session and the idea stands, the run does not stop at that: the person
+who typed it is here, so call `setup-checks` for its step 8 alone, which puts
+what has to be asked — the permissions a second time, where their record does
+not say yes, and since 9 October 2026 the question on the rule for the
+classifier of auto mode, where it does not stand in their settings — and sets
+up what the answers allow. It is not reached while a class in `checks.md` is
 `empty`, and sets no protection while a pull request is open; either is said,
 with what would help, and the run carries on with them. When it returns, the
 tree stands on the main branch as freshly fetched: on a yes the conditions
 below are read again and the run goes alone; on a no it carries on with them.
 Where the mode is set up and `--auto` was typed this session, the question is not
-asked either: the flag is its answer, and the run says in one line that it is
-going on alone from here. So the flag and an answer can never disagree — where
-one exists, the other was never given.
+asked either: the flag is its answer, and that the run goes on alone from
+here is not said, since 17 October 2026. So the flag and an answer can never
+disagree — where one exists, the other was never given.
 
 Three answers. What tells them apart is where the user is needed and where not,
 so each is said by that and not by what the run does at each stage:
@@ -478,9 +475,10 @@ change between now and then.
 **On either of the first two answers, or on `--auto`, write the mark** — the
 command and what it is for are under "With nobody there" above, `build` on its
 second line for the first answer and for the flag, `plan` for the second, the
-third line, this session's identifier, the same in both — and say so. The
-hook on the mark lets the command through in auto mode alone, the mode
-condition 4 has read by now, and blocks it in every other.
+third line, this session's identifier, the same in both — and say nothing of
+it, since 17 October 2026. The hook on the mark lets the command through in
+auto mode alone, the mode condition 4 has read by now, and blocks it in every
+other.
 
 Post the hard core as a comment on the planning issue before moving on — the
 settled answers went there after every round — and the answer to the last
@@ -496,12 +494,15 @@ their current interfaces, how similar things are already done here, what the tes
 around them look like. Verify at the code itself — a summary of a summary
 occasionally inverts what the code does.
 
-Skip this stage if there is no code yet, and say that you skipped it.
+Skip this stage if there is no code yet; that it was skipped is the
+comment this stage posts on the planning issue, and is not said, since 17
+October 2026.
 
-Report what you found in at most fifteen lines. This is input to the next stage,
+Write what you found in at most fifteen lines. This is input to the next stage,
 not a deliverable.
 
-Post that report as a comment on the planning issue.
+Post it as a comment on the planning issue, and nowhere else: it is not said
+in the conversation, since 17 October 2026.
 
 ## Stage 3 — Draft designs
 
@@ -509,8 +510,8 @@ First write the problem space down: the hard core from Stage 1 — the user stor
 any design has to carry and what is out of scope — together with what Stage 2
 found a design has to respect, what it depends on, and a rough sketch so the
 constraints are concrete. This is one list, not a second one: what Stage 1
-settled is not restated in other words here. With the user there, give it to
-them to read while the drafting runs.
+settled is not restated in other words here. It is not given to them to read
+while the drafting runs, since 17 October 2026.
 
 Then draft **three or four designs in parallel, each under a different
 constraint**:
@@ -533,9 +534,11 @@ breaks — every answer in the words of the item, so anyone holding the list can
 check it against the draft. Not "which is best": a ranking gets a plausible
 reason for whichever draft it is handed, which is no check at all. A draft that
 fails an item is recorded as failing it; no agent decides what follows from
-that. **If a checking agent fails to return, say so and rerun it, or state that
-the draft is unchecked** — never present a draft as having passed a check that
-did not run.
+that. **If a checking agent fails to return, rerun it; where the rerun does not
+return either, state that the draft is unchecked** — with the user there
+among the verdicts before the design question, alone in the comment of this
+stage — and never present a draft as having passed a check that
+did not run. A rerun that returned is not said, since 17 October 2026.
 
 Present them one after another, then compare them in prose — on how much behaviour
 each hides behind how small an interface, on how localised a future change would
@@ -558,24 +561,29 @@ still choose a draft that failed an item, and the spec then records that item as
 knowingly given up. **Write nothing until they have answered.**
 
 **Alone, the recommendation is taken where it passed every item**, and the
-message that would have asked says instead which draft was taken and that it
-carried every story, built nothing excluded and broke no constraint. Where the
+comment of this stage below says which draft was taken and that it carried
+every story, built nothing excluded and broke no constraint; no message does,
+since 17 October 2026. Where the
 recommended draft failed an item, or no draft passed, the run stops — "With
 nobody there" says why that is a stop and not a second-best pick.
 
-If a drafting agent fails, say so and either rerun it or state that the comparison
-is one design short. Never compare silently around a missing draft.
+If a drafting agent fails, rerun it; where the rerun fails too, state that the
+comparison is one design short, as the paragraph on a checking agent says
+where. Never compare silently around a missing draft. A rerun that returned
+is not said, since 17 October 2026.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text restate`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text seam-and-condition`
 
-**The seams come next, in their own message** — the places where this work will
-be checked. Prefer seams that already exist to new ones, and use the highest one
-that still catches what matters. **Each is placed, not assumed**: name the path
-and the symbol where it stands, or, where the chosen design creates it, the line
-of the interface above that does; that is what the cut and the build read. They
-cannot be settled earlier because they follow from the design.
+**The seams come next, in the comment of this stage and then in the spec's
+Test decisions, and not in the conversation, since 17 October 2026** — the
+places where this work will be checked. Prefer seams that already exist to new
+ones, and use the highest one that still catches what matters. **Each is
+placed, not assumed**: name the path and the symbol where it stands, or, where
+the chosen design creates it, the line of the interface above that does; that
+is what the cut and the build read. They cannot be settled earlier because they
+follow from the design.
 
 **The ground under the decision records** this design leans on: each record
 carries a line saying what would make it invalid. Check those lines. If one no
@@ -630,9 +638,9 @@ in `docs/agents/issue-tracker.md`.
 
 Report the spec's issue number and one line on what it covers.
 
-Then say you are cutting it into tasks, and do it — run `cut-into-tasks`. Say
-what that means in plain words: single pieces of work, each one demonstrable on
-its own, in an order. Do not ask permission first. The decision here is the
+Then cut it into tasks — run `cut-into-tasks` — and say nothing of it before,
+since 17 October 2026: what the cut created reaches them where it is said.
+Do not ask permission first. The decision here is the
 split itself, and it follows from the spec rather than from anything only they
 know — so it gets presented and created, not put to them as a question.
 

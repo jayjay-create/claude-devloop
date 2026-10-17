@@ -9,8 +9,9 @@ project is not set up, a file it needs is missing, a stage it would hand to is
 not there — say what is missing and what could be done instead, each by what
 it does and not by which skill it is.
 
-**A name the user typed themselves is not repeated back either.** The reply
-says what that command does.
+**A name the user typed themselves is not repeated back either.** What that
+command does is not announced in the reply, since 17 October 2026: it shows in
+what the run does.
 
 **One skill calling another is not saying a name.** The call carries it.
 

@@ -1,9 +1,11 @@
 **A finding that no written rule would have caught is a gap in the documents,
-not only a defect in this code.** As each finding is announced under fix,
-file or the check setup, say in the same breath whether the rule it breaks is already written: in
+not only a defect in this code.** For each finding under fix, file or the
+check setup, read whether the rule it breaks is already written: in
 `docs/agents/standards.md`, in a command `docs/agents/checks.md` runs, or in
 the task's own issue, which is the case named above. Where one of them carries
-it, nothing is added to them — the documents are not what failed. Where none
+it, nothing is added to them — the documents are not what failed — and that it
+was written already is said only where a breach files an issue, by the block
+on a written rule broken all the same below, since 17 October 2026. Where none
 does, and a sentence can be written that names a situation this project's code
 will meet again and what is done in it, write it as one rule into
 `docs/agents/standards.md`, in the same change as the fix, so that the next
@@ -31,14 +33,14 @@ repository had no code, 36 landed pull requests in.
 
 **Writing into that file is also reading the whole of it.** Every rule there is
 read again on every review, so before adding, take out a rule a command now
-enforces, a rule about code that no longer exists, and a rule that has stood
-on the main branch for more than ten landed pull requests without an issue
-filed for a breach of it, and say what came out, which one and by which exit —
-or that nothing did. Where the file still carries the line written at setup
-saying no rules have been recorded yet, that line goes with the first rule
-written. The file keeps the language it is already written in, whatever
-language the user writes in: the lens that reads it is handed the file and not
-this conversation.
+enforces, a rule about code that no longer exists, and a rule that has stood on
+the main branch for more than ten landed pull requests without an issue filed
+for a breach of it, and say what came out, which one and by which exit; where
+nothing did, nothing is said, since 17 October 2026. Where the file still
+carries the line written at setup saying no rules have been recorded yet, that
+line goes with the first rule written. The file keeps the language it is
+already written in, whatever language the user writes in: the lens that reads
+it is handed the file and not this conversation.
 
 **The third exit is computed, never judged, on `origin/main` after a fetch.**
 The age: the commit that introduced the rule's line,
@@ -80,4 +82,7 @@ does not get rid of. It is made over a list a command printed, and made wrong
 it costs a fresh rule without its check, which the next breach files.
 
 None of this goes into the report of the lenses, which stops at the last lens.
-It is said where the split is announced, per finding.
+It is said per finding where the findings reach the person — at the close of
+the task with them, and with nobody there in the pull request that carries the
+rule, an issue filed standing among what the next run takes up — and not as
+the split is made, since 17 October 2026.
