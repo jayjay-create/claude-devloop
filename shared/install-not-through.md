@@ -1,6 +1,7 @@
 **With nobody there an install does not go through on four ways, and the four
 end the same**, since 9 October 2026, decision 4 of the roadmap entry of that
-day: the guard blocks it; the classifier of auto mode refuses it; the
+day: the guard blocks it; the classifier of auto mode refuses it, or since
+18 October 2026 a safety check built into Claude Code does; the
 installer ran and ended with an error; the call did not finish inside its
 ten minutes and was ended at its limit, as "When a command does not answer"
 says. For a tool the task needs: an issue carrying
@@ -17,7 +18,8 @@ installer's own error — it ran and ended red — gets up to three attempts,
 each its own call with the same ten minutes, ten seconds apart, every failed
 one named with the command and the message, on the model of "When the main
 branch cannot be fetched or fast-forwarded"; where the third fails too, it
-goes as the three other ways. The guard's block and the classifier's refusal
+goes as the three other ways. The guard's block and the classifier's refusal,
+and since 18 October 2026 the refusal of a safety check built into Claude Code,
 get no second attempt, since a refusal is answered and not got around, and a
 call that did not finish gets none either, decision 2 of that entry: what
 did not finish inside its ten minutes is not started a second time.

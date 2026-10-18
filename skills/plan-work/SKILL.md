@@ -218,10 +218,14 @@ asks the question with somebody there.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 
 **A refusal before the build goes through the same order, since 9 October
-2026**: a guard's block, the no of the classifier of auto mode, or the no of
+2026**: a guard's block, the no of the classifier of auto mode, the no of
 the hook on permission prompts, which answers every prompt of this session
-while the mark stands, `hooks/permission-request-unattended.sh`. None of
-them is tried again or reached another way. The thing the refused command
+while the mark stands, `hooks/permission-request-unattended.sh`, or, since
+18 October 2026, the refusal of a safety check built into Claude Code,
+defect 12 of the roadmap entry of 16 October 2026 on the runs of that day;
+and since the same day a refusal a subagent of this skill names in its report,
+a drafting or a checking agent of Stage 3 say, as one of the run's own. None
+of them is tried again or reached another way. The thing the refused command
 would have settled is the question, and the step the order stops at records
 the refusal where it records the question — the command as it ran and the
 message that came back, in the spec beside the decision, on the issue that
@@ -525,11 +529,26 @@ constraint**:
 Each draft returns the same five things: the interface, an example of using it,
 what stays hidden behind it, how it handles its dependencies, and its trade-offs.
 
+**Every agent this stage starts is handed two things more, since it reads this
+file nowhere**: where the mark stands that says which mode this run is in —
+not this conversation — and what a refusal is and what follows one. A guard's
+block, the no of the classifier of auto mode, the no of the hook on permission
+prompts or the refusal of a safety check built into Claude Code is reached no
+other way, is tried no second time where the mark says the run is alone, and
+is named in the agent's report with the check, the command as it ran, the
+message that came back and whether a second attempt went through. That holds
+for each drafting and each checking agent and for each rerun, since the
+addendum of 18 October 2026 to the roadmap entry of that day on where step 8
+of `setup-checks` puts the tool of a class off for an install not run; the
+build subagent is handed the same for the same reason, decision 1 of the
+roadmap entry of 9 October 2026.
+
 **Then check every draft, each by an agent of its own, as a question of fact.**
 One agent per draft, given that draft, the hard core from Stage 1 and what Stage
-2 found, and nothing else — not the other drafts, since an agent that sees them
-starts ranking across them, which is the hazard `review-changes` names for its
-lenses. Each answers three lists, item by item: which user story this draft does
+2 found, and beside the two things above nothing else — not the other drafts,
+since an agent that sees them starts ranking across them, which is the hazard
+`review-changes` names for its lenses. Each answers three lists, item by item:
+which user story this draft does
 not carry, which exclusion it builds anyway, which constraint from the code it
 breaks — every answer in the words of the item, so anyone holding the list can
 check it against the draft. Not "which is best": a ranking gets a plausible
@@ -540,6 +559,13 @@ return either, state that the draft is unchecked** — with the user there
 among the verdicts before the design question, alone in the comment of this
 stage — and never present a draft as having passed a check that
 did not run. A rerun that returned is not said, since 17 October 2026.
+A refusal a checking agent names in its report is said beside the verdict on
+its draft, since 18 October 2026, defect 12 of the roadmap entry of 16
+October 2026 on the runs of that day — which check refused, the command as
+it ran and the message that came back — with the user there among the
+verdicts before the design question, alone in the comment of this stage and
+by the order for a refusal before the build under "With nobody there"; what
+it kept from running is a check that did not run.
 
 Present them one after another, then compare them in prose — on how much behaviour
 each hides behind how small an interface, on how localised a future change would

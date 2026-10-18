@@ -60,14 +60,18 @@ third case of a shape this skill already carries twice — the turn-end hook in
 step 3, and a refused arming in step 6. It gets the turn-end hook's answer, an
 issue raised and the next task taken; a refused arming ends the run instead.
 
-**Since 9 October 2026 a refusal is any of three things, and the three go the
-same way here**: a guard's block; the refusal of the classifier of auto mode,
-the second model that reads every command there, whose no comes with its own
-message in the tool's result; and the no of the hook on permission prompts,
+**Since 9 October 2026 a refusal is any of three things, since 18 October
+2026 any of four, and the four go the same way here**: a guard's block; the
+refusal of the classifier of auto mode, the second model that reads every
+command there, whose no comes with its own message in the tool's result; the
+no of the hook on permission prompts,
 `hooks/permission-request-unattended.sh`, which answers every prompt of this
 session while the mark stands, with the message the roadmap entry of 9
-October 2026 records as text 5. None of the three is this run's to overturn:
-no second attempt, no other way to the same result.
+October 2026 records as text 5; and the refusal of a safety check built into
+Claude Code, whose message says that such a check denied the command and not
+the user, defect 12 of the roadmap entry of 16 October 2026 on the runs of
+that day. None of the four is this run's to overturn: no second attempt, no
+other way to the same result.
 
 - **With the user there**, the message is the answer. Hand the block over in the
   form the message asks for: the command as it ran, the message that came back,
@@ -132,8 +136,9 @@ one rule and not as eight:
 - **Which task next** — step 2. Not a question in either mode; the rule there
   decides it and says why the same rule serves both.
 - **A refusal** — a guard's block, the classifier's no, the no of the hook on
-  permission prompts — the section above "How to ask". With a task in hand,
-  an issue carrying the command, the message and the reading, labelled
+  permission prompts, since 18 October 2026 the refusal of a safety check
+  built into Claude Code — the section above "How to ask". With a task in
+  hand, an issue carrying the command, the message and the reading, labelled
   `raised-here` and `needs-human`, recorded as a blocker of the task; the
   task is put down and step 2 takes the next; met by a subagent, the
   subagent raises it. With no task in hand, a stop with the reason named and
@@ -151,7 +156,8 @@ one rule and not as eight:
   does not answer, and since 8 October 2026 a branded browser Playwright
   would install at the system's own location and the system packages
   `install-deps`, `--with-deps` or `--install-deps` would install; the
-  classifier of auto mode refuses; the installer ran and ended with an error,
+  classifier of auto mode refuses, or since 18 October 2026 a safety check
+  built into Claude Code does; the installer ran and ended with an error,
   the one way with three attempts; the call did not finish inside its ten
   minutes. For the task it goes as the second bullet says, with what stands
   at the destination path in the issue, and for a check class through
@@ -1132,7 +1138,8 @@ arming past the gate; a skill says what is said, not the words. A restart
 that does not answer, or answers with an error message, goes as "When a
 command does not answer" above says. A refusal in the sense of
 "A guard's block, with nobody there" above — a guard's block, the
-classifier's no, the no of the hook on permission prompts — of the arming or
+classifier's no, the no of the hook on permission prompts, since 18 October
+2026 the refusal of a safety check built into Claude Code — of the arming or
 of the restart is not that: the
 task is in hand until its merge is proven, so it goes as that section says,
 the issue, the task put down, the next taken; whether the classifier lets

@@ -476,14 +476,16 @@ theirs to run — and where nobody is, it goes into the run's own report. Since
 9 October 2026 three cases part there, as `shared/command-does-not-answer.md`
 says: a refusal — a guard's block, the no of the classifier of auto mode, the
 no of the hook on permission prompts, which answers every prompt while the
-mark of the run with nobody there stands — goes as the skill's section for
-the case says, an issue and the next task in a build with a task in hand,
-the planning stage's order for an unanswerable question before the build; an
-install that does not go through goes as the four ways in `build-work` step
-3 and `setup-checks` step 4 say; a check chain or a check target that does
-not finish inside its call ends the task where one is in hand and stops the
-run in `build-work` step 1, as the addendum of 9 October 2026 to that entry
-says; every other command that does not answer stops the run there.
+mark of the run with nobody there stands, and since 18 October 2026 the
+refusal of a safety check built into Claude Code — goes as the skill's
+section for the case says, an issue and the next task in a build with a
+task in hand, the planning stage's order for an unanswerable question
+before the build; an install that does not go through goes as the four ways
+in `build-work` step 3 and `setup-checks` step 4 say; a check chain or a
+check target that does not finish inside its call ends the task where one is
+in hand and stops the run in `build-work` step 1, as the addendum of 9
+October 2026 to that entry says; every other command that does not answer
+stops the run there.
 
 **An empty answer is not a missing one, and this is the line that gets crossed.**
 A command that ran and returned nothing has answered — no match, no open issue,

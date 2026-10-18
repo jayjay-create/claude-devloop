@@ -116,7 +116,8 @@ has no one to explain a refusal or a silence to, so the command and the
 message go into its own report. Since 9 October 2026 four cases part there.
 A refusal — a guard's block, the no of the classifier of auto mode, the no of
 the hook on permission prompts, which answers every prompt while the mark
-stands — goes as the skill's own section for the case with nobody there
+stands, and since 18 October 2026 the refusal of a safety check built into
+Claude Code — goes as the skill's own section for the case with nobody there
 says: in a build with a task in hand, an issue and the next task; before the
 build, through the planning stage's order for a question nobody is there to
 answer. An install that does not go through goes as the four ways in
@@ -131,3 +132,9 @@ background agent.** A tool that failed, a skill that is not installed, an agent
 that did not come back: say so, name what failed and the message that came
 back, and do not carry on as if it had returned, nor substitute something else
 without saying that the first one did not answer.
+A refusal a subagent names in its report is one of the run's own, since 18
+October 2026, defect 12 of the roadmap entry of 16 October 2026 on the runs
+of that day: the main run says it and records it as the blocks above say of
+a refusal of its own, with the person there and with nobody there, and
+where the skill's own section has the subagent raise the issue, as a build
+does, it raises no second one.

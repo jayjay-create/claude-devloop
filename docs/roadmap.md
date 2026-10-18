@@ -28506,6 +28506,278 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   18:05:00 to 18:05:02 UTC; the tool, from 18:05:35 to 18:07:59 UTC, exit 0
   with the figures above.
 
+- **Where step 8 of `setup-checks` puts the tool of a class off for an
+  install not run, and the refusal of a safety check built into Claude Code
+  among the refusals devloop names, a refusal a subagent names in its report
+  the main run's own; defects 9 and 12 of the entry of 16 October 2026 on the
+  runs of that day; 18 October 2026, version 0.147.0.** On
+  `task/install-place-and-fourth-refusal`, off `d373314`, version 0.146.0 on
+  `main`; the changes, the version, this entry and the rows of the table in
+  one commit. The report stands on this machine as
+  `~/devloop-report-2026-10-18-defects-9-12.md`, in English, and is not in
+  the repository. A line is given as it stands at `d373314` unless the tip of
+  the branch is named. No session of Claude Code was started and no model
+  called outside the session that made it; beyond the `git fetch` the order
+  opens with, GitHub was neither read nor changed. The words the stock-take
+  tool reads a line of this file into its search set by stand in this entry
+  in its head and on the one line that records what was found beside it.
+  The pre-check found no place at which no rule decides and none at which
+  the person would get wording not already decided, so nothing halted; the
+  three readings it settled stand below, each with the rule that settles it.
+
+  **Defect 9.** Lines 26100 to 26125. Point 3 of step 8, `setup-checks`
+  lines 1086 to 1095, filled a class off for an install declined or not run
+  where the install record said yes now, and read the record on the packages
+  nowhere. It fills such a class now with the tool in the packages where the
+  record on them says yes now and the tool can be entered there — the term
+  step 3 lines 400 to 401 and point 2 line 1084 use for a package of the
+  stack — and outside the project where the install record says yes now
+  only where that does not hold, lines 1090 to 1105 at the tip, by the
+  heading of step 3, "Prefer tools that live inside the project", line 345,
+  and its lines 365 to 367. So nothing point 3 installs outside the project
+  under a yes to the packages could have been entered there, and point 2,
+  which comes first and enters what stands outside, has nothing of it left
+  to enter: the second half of the should holds with point 2 where it is,
+  and point 2 is not changed. The should's "outside the project only where
+  it is not" is read as "where that does not hold", not as "where the tool
+  is no package of the stack": the second reading would leave a class off
+  where the record on the packages still says no and the install record now
+  says yes, against the no's line of step 3, lines 408 to 411, and against
+  line 1060, every yes holding for its permission. The line said to the
+  person, lines 1060 to 1072, names each class with its tool and not where
+  it lands, and stays; the pull request carries what step 4, lines 530 to
+  546, gives a tool in the packages. With this, defect 9 is built.
+
+  **Defect 12, the kinds of refusal.** Lines 26169 to 26188. The refusal of
+  a safety check built into Claude Code — the name lines 13 to 14 of
+  `shared/command-does-not-answer.md` and line 436 of
+  `docs/skill-conventions.md` give it since 17 October 2026 — stands beside
+  the three wherever devloop names the kinds, and goes as they go:
+  `plan-work` lines 220 to 231, `shared/command-does-not-answer.md` 117 to
+  119, `build-work` 63 to 70, its head reading four where it read three,
+  134 to 136 and 1134 to 1135, `cut-into-tasks` 52 to 53, `build-prototype`
+  47 to 49, `setup-checks` 160 to 162 and `docs/skill-conventions.md` 476 to
+  479. The four ways an install does not go through with nobody there,
+  decision 4 of 9 October 2026, lines 14218 to 14220, name the guard's block
+  and the classifier's refusal and not the no of the hook on permission
+  prompts; the safety check goes there as the classifier's refusal goes, by
+  decision 1 of that day, lines 14170 to 14171, and stands in the second
+  way, the classifier of auto mode refusing it or a safety check built into
+  Claude Code, so that the four stay four wherever they are counted:
+  `setup-checks` line 156, `build-work` 154, `shared/install-not-through.md`
+  3 and 20. With nobody there it gets no second attempt, as the
+  classifier's no gets none; the line the person decided on 17 October 2026
+  for a refusal by a check that the second attempt got past, lines 27084 to
+  27091, arises with nobody there only where a second attempt is made at
+  all, lines 16 to 20 of the shared text, as the addendum of that day says,
+  lines 27237 to 27241. Every other hit of `grep -rn -i 'classifier'` over
+  `skills/`, `shared/`, `hooks/`, `output-styles/` and
+  `docs/skill-conventions.md` names no kinds of refusal; the report places
+  each.
+
+  **Defect 12, a refusal a subagent names.**
+  `shared/command-does-not-answer.md`, inserted into every skill, says since
+  this entry, lines 135 to 140 at the tip, that a refusal a subagent names
+  in its report is one of the run's own: said and recorded as the blocks
+  above it say of a refusal of the run's own, with the person there and
+  with nobody there, and where the skill's own section has the subagent
+  raise the issue, as `build-work` lines 94 to 99 do, no second one.
+  `plan-work` "With nobody there", lines 226 to 227 at the tip: such a
+  refusal of a drafting or a checking agent goes through the order as one
+  of the run's own, recorded where the step records the question. Stage 3,
+  lines 547 to 553 at the tip: a refusal a checking agent names is said
+  beside the verdict on its draft — which check refused, the command as it
+  ran and the message — with the person there among the verdicts before the
+  design question, by `output-styles/devloop.md` lines 17 to 23, alone in
+  the comment of the stage and through that order; what it kept from
+  running is a check that did not run, lines 541 to 542. With this, defect
+  12 is built.
+
+  **Found beside it.** The agents of Stage 3 get the draft, the hard core and
+  what Stage 2 found "and nothing else", lines 529 to 530; the build
+  subagent is handed what a refusal is and what follows one with nobody
+  there, `build-work` lines 413 to 419, by decision 1 of 9 October 2026,
+  lines 14179 to 14182. Telling the agents of Stage 3 touches the first rule
+  and was the person's to decide; they decided it, and the addendum builds it.
+  Recorded, not built: the agents of Stage 3 of `plan-work` are told nothing
+  of a refusal, lines 529 to 530, so that with nobody there one of them can
+  try a refused command a second time or reach its result another way,
+  which lines 223 to 224 rule out, and a refusal it does not name in its
+  report does not reach the main run — should: a refusal an agent of
+  `plan-work` meets is tried no second time with nobody there, reached no
+  other way, and named in its report with the check, the command as it ran
+  and the message.
+
+  **What the person reads.** By `docs/skill-conventions.md` lines 770 to
+  786; the report lists each part with the three tests of lines 675 to 677.
+  The message that ends the turn of Stage 3 with the person there and asks
+  which design, as text, last, read whole as expanded `plan-work` lines 1203
+  to 1245 at the tip give it: the part added, a refusal a checking agent
+  named, beside the verdict on its draft, stays — they would choose
+  differently knowing a verdict rests on a check that did not run in part,
+  they meet it nowhere else, the agent's report not reaching them, and it
+  is true wherever it arrives, said only where an agent named one; nothing
+  came out. The next message that ends a turn with text in every skill,
+  where a subagent named a refusal: the same three tests, the same result,
+  in the form of lines 11 to 14 and 38 to 40 of the shared text. With nobody
+  there the comment of Stage 3, the spec or the issue the order records in,
+  and in a build the issue of `build-work` lines 79 to 88: the refusal of a
+  safety check stands there with the command and the message as the three
+  others do, the forms as they were. Step 8 of `setup-checks`: the line of
+  lines 1060 to 1072 unchanged; the pull request carries for a class filled
+  in the packages the manifest line and the red proof of steps 4 and 5 in
+  place of an install report, and that stays — where the tool lands is what
+  they said yes to, the red proof stands nowhere else, and it is true for
+  the class so filled.
+
+  **The table.** `docs/stock-take.tsv`: defect 9 keeps its site on its
+  status line, line 26116, and has its evidence on the line of point 3 of
+  step 8 that fills such a class in the packages, `setup-checks` line 1091
+  at the tip; defect 12 keeps its site on line 26183 and has its evidence on
+  the line of `plan-work` "With nobody there" that names the check, line 224
+  at the tip; the tool reads both as built and never walked. Kept, runs
+  hanging on them, each note saying what holds now: the thing of point 3 of
+  step 8, the three not-a-thing rows part of it moved onto its changed
+  lines, and the thing of `build-work` on a refusal of three kinds, its site
+  and evidence moved onto its new head and the evidence of the defect of
+  the classifier of 14 September 2026 with them. Renamed, no run hanging on
+  them, each note naming the name until then: the arming or the restart
+  refused in `build-work` step 6, its site moved onto the changed line; no
+  second attempt in `shared/install-not-through.md`, with the row part of
+  it; and a refusal of anything else in `setup-checks` "With nobody there".
+  Added: five things, the class filled in the packages and the class filled
+  outside the project only where that does not hold in step 8, a refusal a
+  subagent names in `plan-work` "With nobody there", a refusal a checking
+  agent names in Stage 3, and a refusal a subagent names in
+  `shared/command-does-not-answer.md`; the defect found beside it, a defect
+  thing on its status line in this entry, carrying the head of this entry;
+  and four not-a-thing rows, three part of the new things and the dated note
+  of point 3 as rationale. Notes say since when on five things more. No run
+  is recorded for this entry. The tool on the tree of the changes before
+  their commit: no broken record, 19 findings as at `d373314`, no unit
+  without a straight path, no status word broken over a line break, none of
+  4038 lines of the search set uncovered, where `d373314` had 4030, exit 0;
+  recorded and not built 241 where it was 242, its defects 230 where they
+  were 231, defects 9 and 12 out and the one found beside it in; built and
+  never walked 1210 where it was 1198 — skill branches 699 where 690, the
+  four new things of the skills and five that were walked, shared text 155
+  where 154, the new one, defects 256 where 254, the two; walked 496 where
+  501, skill branches 136 where 141, the thing of point 3, the thing of
+  `build-work` on a refusal of three kinds and the straight paths of
+  `build-work` "With nobody there", `cut-into-tasks` "With nobody there" and
+  `setup-checks` step 4, whose runs stop counting; runs that do not count
+  442 where 433; run rows 1719 as at `d373314`; things 1973 where 1967,
+  branches 864 where 859; not-a-thing records 2621 where 2616, part of 2409
+  where 2405 and rationale 157 where 156.
+
+  **The tests.** `setup-checks`, `plan-work`, `build-work`, `cut-into-tasks`
+  and `build-prototype` were read through `scripts/devloop-expand`, every
+  changed place in its paragraph, as a run receives it: expanded
+  `setup-checks` lines 664 to 692 and 1920 to 1975, `plan-work` 826 to 846
+  and 1200 to 1262, `build-work` 225 to 260, 432 to 446, 655 to 685, 1208 to
+  1238 and 2018 to 2030, `cut-into-tasks` 413 to 428 and `build-prototype`
+  244 to 258 at the tip. The nineteen checks under "Before a handover, run
+  these" ran on the tree of the changes before their commit, in a clean bash
+  with `/usr/bin` first on its path, line for line what they print at
+  `d373314` in a clone of it but for eleven line numbers moved by the lines
+  added above them, `build-work` 76, 261, 514, 1446 and 1571 there and 80,
+  267, 520, 1453 and 1578 here, `plan-work` 320, 399 and 593 there and 324,
+  403 and 604 here, `setup-checks` 485, 1214 and 1230 there and 487, 1224
+  and 1240 here, from 19:26:58 to 19:27:06 UTC. At a run before it, from
+  19:23:25 to 19:23:33 UTC, the check for shared text written out in a
+  skill printed `setup-checks`: its line 157 held the line of
+  `shared/install-not-through.md` "18 October 2026 a safety check built into
+  Claude Code does; the", and it was worded again with the same content. No
+  hook and no program under `bin/` changed. The tool, from 19:26:58 to
+  19:29:20 UTC, exit 0 with the figures above; its self-test, 114 cases, 76
+  of 76 messages asserted by a case, exit 0, from 19:26:48 to 19:26:50 UTC.
+
+  **Addendum of the same day: what the agents of `plan-work` are told of a
+  refusal.** On the same branch after `c4249b5`, the version staying
+  0.147.0, raised once on this branch already; the change, this addendum
+  and the rows of the table in one commit. The report stands on this
+  machine as `~/devloop-report-2026-10-18-defects-9-12-addendum.md`, in
+  English, and is not in the repository. A line is given as it stands at
+  `c4249b5` unless the tip of the branch is named. No session of Claude
+  Code was started and no model called outside the session that made it;
+  beyond the `git fetch` the order opens with, GitHub was neither read nor
+  changed. The pre-check found no place at which no rule decides and none
+  at which the person would get wording not already decided, so nothing
+  halted.
+
+  **The decision.** The person decided the same day, in the order for this
+  addendum, that every agent `plan-work` starts is handed what the should of
+  the defect found beside it asks, lines 28606 to 28609, and that what
+  `plan-work` lines 533 to 536 exclude otherwise stays excluded with its
+  reason: the other drafts, since an agent that sees them starts ranking
+  across them. The report of the entry above had recommended it.
+
+  **What is changed for it.** The agents `plan-work` starts are the drafting
+  agents of Stage 3, lines 521 to 530, the checking agents, lines 532 to
+  536, and their reruns, lines 542 to 546 and 582 to 585; Stage 2 reads the
+  code in the run itself, and the skills it calls start agents by their own
+  text. Stage 3 has since this addendum a paragraph of its own, lines 532
+  to 544 at the tip: every agent the stage starts, drafting, checking or a
+  rerun, is handed where the mark stands that says which mode the run is
+  in, not this conversation, by `shared/mark.md` lines 15 to 17, and what a
+  refusal is and what follows one — the four kinds `plan-work` lines 221 to
+  225 name are reached no other way, tried no second time where the mark
+  says the run is alone, and named in the agent's report with the check,
+  the command as it ran, the message and whether a second attempt went
+  through, the last since the line of `shared/command-does-not-answer.md`
+  lines 11 to 16 names that the second attempt went through. It is the
+  hand-over of `build-work` lines 419 to 425 to the build subagent, decision
+  1 of 9 October 2026, lines 14179 to 14182, for the same reason: neither
+  agent reads the skill. The checking agents get the draft, the hard core
+  and what Stage 2 found "and beside the two things above nothing else",
+  lines 547 to 550 at the tip, the dash and its reason as they were. What
+  the main run does with a refusal an agent names stands already, lines 220
+  to 235 and 547 to 553, and `shared/command-does-not-answer.md` lines 135
+  to 140. With this, the defect found beside it is built; its status line
+  above stays as it stands, and the sentence before it now says the
+  decision was the person's and this addendum builds it.
+
+  **What the person reads.** Nothing this addendum adds reaches the person:
+  the paragraph is handed to the agents and read by them, and what the main
+  run says of a refusal an agent names — beside the verdict on its draft,
+  in the message that asks which design, or in the comment of the stage —
+  is the text of the entry above, unchanged; `docs/skill-conventions.md`
+  lines 772 to 787 ask their list of an order that adds to a delivered
+  text, and none is added to here.
+
+  **The table.** `docs/stock-take.tsv`: the defect found beside it keeps
+  its site on its status line, line 28602, and has its evidence on the head
+  of the new paragraph, `plan-work` line 532 at the tip, so that the tool
+  reads it as built and never walked. Added: one thing, every agent the
+  stage starts handed where the mark stands and what a refusal is, on that
+  head; three not-a-thing rows, two part of it, lines 533 and 537, and the
+  dated note, line 541, as rationale. Moved onto its changed line: the
+  rationale row on "and nothing else", line 548. No run is recorded for
+  this addendum. The tool on the tree of the change before its commit: no
+  broken record, 19 findings as at `c4249b5`, no unit without a straight
+  path, no status word broken over a line break, none of 4042 lines of the
+  search set uncovered, where `c4249b5` had 4038, exit 0; recorded and not
+  built 240 where it was 241, its defects 229 where they were 230; built and
+  never walked 1212 where it was 1210, skill branches 700 where 699, the new
+  thing, and defects 257 where 256, the one; walked 496 and runs that do not
+  count 442 as at `c4249b5`, where the runs of the straight path of Stage 3
+  counted already not; things 1974
+  where 1973, branches 865 where 864; not-a-thing records 2624 where 2621,
+  part of 2411 where 2409 and rationale 158 where 157. The figures at
+  `c4249b5` were read off the tool in a clone of it.
+
+  **The tests.** `plan-work` was read through `scripts/devloop-expand`, the
+  changed place in its paragraphs as a run receives it, expanded lines 1190
+  to 1275 at the tip. The nineteen checks under "Before a handover, run
+  these" ran on the tree of the change before its commit, in a clean bash
+  with `/usr/bin` first on its path, line for line what they print at
+  `c4249b5` in a clone of it but for one line number moved by the lines
+  added above it, `plan-work` 604 there and 619 here, from 20:19:44 to
+  20:19:53 UTC. No hook and no program under `bin/` changed. The tool, from
+  20:19:25 to 20:21:55 UTC, exit 0 with the figures above; its self-test,
+  114 cases, 76 of 76 messages asserted by a case, exit 0, from 20:20:08 to
+  20:20:10 UTC.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
