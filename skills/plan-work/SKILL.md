@@ -529,11 +529,26 @@ constraint**:
 Each draft returns the same five things: the interface, an example of using it,
 what stays hidden behind it, how it handles its dependencies, and its trade-offs.
 
+**Every agent this stage starts is handed two things more, since it reads this
+file nowhere**: where the mark stands that says which mode this run is in —
+not this conversation — and what a refusal is and what follows one. A guard's
+block, the no of the classifier of auto mode, the no of the hook on permission
+prompts or the refusal of a safety check built into Claude Code is reached no
+other way, is tried no second time where the mark says the run is alone, and
+is named in the agent's report with the check, the command as it ran, the
+message that came back and whether a second attempt went through. That holds
+for each drafting and each checking agent and for each rerun, since the
+addendum of 18 October 2026 to the roadmap entry of that day on where step 8
+of `setup-checks` puts the tool of a class off for an install not run; the
+build subagent is handed the same for the same reason, decision 1 of the
+roadmap entry of 9 October 2026.
+
 **Then check every draft, each by an agent of its own, as a question of fact.**
 One agent per draft, given that draft, the hard core from Stage 1 and what Stage
-2 found, and nothing else — not the other drafts, since an agent that sees them
-starts ranking across them, which is the hazard `review-changes` names for its
-lenses. Each answers three lists, item by item: which user story this draft does
+2 found, and beside the two things above nothing else — not the other drafts,
+since an agent that sees them starts ranking across them, which is the hazard
+`review-changes` names for its lenses. Each answers three lists, item by item:
+which user story this draft does
 not carry, which exclusion it builds anyway, which constraint from the code it
 breaks — every answer in the words of the item, so anyone holding the list can
 check it against the draft. Not "which is best": a ranking gets a plausible
