@@ -278,8 +278,10 @@ once the record this step writes has landed.
    false), and a gate stands on the main branch already — a required check,
    or a review the protection requires — found by one of the two queries
    below. The gate is read in every project, before this condition is
-   decided: step 6 writes what it found into `environment.md`, and step 8
-   reads it before arming.
+   decided, and read again in step 8, off the two queries the program asks
+   and prints at a mergeable value or, where it asks neither, asked there;
+   nothing of it goes into `environment.md`, since 18 October 2026, step 6
+   saying why.
 
    **That setting alone is not the gate, and reporting only that setting is how
    a run comes to a halt in the middle of a task.** Auto-merge can only be
@@ -314,8 +316,9 @@ once the record this step writes has landed.
        the account that would merge. `never` binds. Anything else does not, and
        `pull_requests_only` least of all: in GitHub's words that actor "can then
        choose to bypass any branch protections and merge that pull request",
-       which is the step this gate exists to hold. Name the value either way,
-       in `environment.md`.
+       which is the step this gate exists to hold. The value decides it and
+       is named nowhere, since 18 October 2026; until then it went into
+       `environment.md`.
        Do not reach for `bypass_actors` instead — measured on 31 August 2026 it
        read `null` on a ruleset that answered everything else, and a run reading
        it would take that for nobody. The list at `repos/OWNER/REPO/rulesets`
@@ -334,10 +337,11 @@ once the record this step writes has landed.
      binds, and only both sides coming back bypassable means this account walks
      through. Where a side did not answer — `protection` needing admin and
      returning anything but "Branch not protected", or a ruleset reply that does
-     not come back — that is a third outcome and not a quiet no: that the
-     binding could not be determined, and which query failed, goes into
-     `environment.md` in step 6 rather than a claimed gate or one ruled out,
-     and is not said, since 17 October 2026.
+     not come back — that is a third outcome and not a quiet no: the
+     binding could not be determined, rather than a claimed gate or one
+     ruled out. It is not said, since 17 October 2026, and not written into
+     `environment.md`, since 18 October 2026, where until then it went with
+     the query that failed.
 
    Whether a plan allows protection on a private repository has changed before
    and will again, so do not carry a table of it: those two queries answer it
@@ -378,9 +382,11 @@ once the record this step writes has landed.
    October 2026. The wording approved on 16 October 2026 stands in the
    roadmap entry of that date; this skill says what is said, not the words.
 
-   Write what was found into `environment.md`; of it, step 8 says the one
-   sentence of the merge handover that fits the case, and nothing more, since
-   17 October 2026. Never
+   Of what was found, step 8 says the one sentence of the merge handover
+   that fits the case, read again there off the program's `gate:` lines, or
+   off both queries asked there where it printed none, and nothing more,
+   since 17 October 2026; none of it goes into a file, since 18 October
+   2026, step 6 saying why. Never
    withhold anything over it and never make it a condition — the user decides
    what their repository is for, and this step's job is that they decide it
    knowing what holds.
@@ -688,12 +694,16 @@ Processes, order, ports, which terminal window stays occupied. What to pull afte
 which kind of change: new dependency, schema change, new setting, server code,
 frontend only. Which runs cost money and which path is free.
 
-Also **what checks a merge, and who**, from step 4, question 2 — the one property of this
-repository that decides whether anything besides the person at the keyboard is
-watching. Whether a required check exists on the default branch and which one;
-if none, that merges are held by the question at the end of a build and by
-nothing else, so the user performs them; and what would change that, where
-anything would.
+This file carries no section on what checks a merge, and who, since 18
+October 2026, decided by the person that day, where from 22 August 2026 it
+carried one, from step 4, question 2. No part of devloop read it; the
+protection is read off the platform — by
+`bin/devloop-arm` on its `gate:` lines, by start condition 5 of
+`build-work`, by `plan-work` reading the conditions of the unattended mode;
+a protection written down goes stale at its next change, in step 8 of the
+check setup at the latest; and what the person needs in a case the merge
+handover tells them. A section an earlier setup wrote stays as it stands,
+and a refresh leaves it: nothing reads it.
 
 Also the answer to question 3 of step 4:
 
@@ -778,9 +788,14 @@ returns false, and that is the only one this field answers; measured on 30 Augus
 since 16 October 2026 that is the ordinary state at a first setup, question 2
 of step 4 being put only where a gate stands already, and the check setup's
 step 8 switches it on where it sets a gate up, so nothing here asks them to.
-Or there may be no gate for it to wait on at all. Or there is a gate and this
-pull request is already past it: the required check has gone green, nothing is
-outstanding, and GitHub will not arm what it would merge on the spot. The
+That is this case only where a gate stands, as the handover has it: where
+none does, the program answers `no required check:` at a mergeable value, and
+the case is the second, whatever the field reads, since 18 October 2026, after
+defect 4 of the roadmap entry of 16 October 2026 on the runs of that day.
+Or there may be no gate for it to wait on at all. Or there is a gate,
+auto-merge is on and this pull request is already past it: the required check
+has gone green, nothing is outstanding, and GitHub will not arm what it would
+merge on the spot. The
 program reads `mergeStateStatus` once a second and arms in the pass that reads
 `BLOCKED`, the state that accepts it, since 17 October 2026, after a reading in
 one call and the arming in the next had left room for it to move, defect 5 of
@@ -829,12 +844,15 @@ on a `cannot be placed:` line and arms all the same; name it as it read and
 say it cannot be placed, rather than turning it into one of the three cases,
 two of which are the program's own answer, since it arms on no mergeable value
 — `no required check:` and `past its gate:` — and the first GitHub's,
-`refused:`. Then read whether a gate exists from both queries in step 4, which
-the program asks and prints: `branches/main/protection`, where a 404 means
+`refused:`, or, where a gate stands and auto-merge is off, `past its gate:`
+as well, since 18 October 2026. Then read whether a gate exists off the two
+queries of step 4, `branches/main/protection`, where a 404 means
 none only with "Branch not protected" in the body, and `rules/branches/main`,
-which is blind to classic protection. A gate found by either is a gate. Where
-neither query answered, say the rights did not allow finding out rather than
-naming a case.
+which is blind to classic protection: off the program's `gate:` lines where
+it read a mergeable value and printed them, and asked here where it printed
+none, not off the reading of step 4, since 18 October 2026. A gate found by
+either is a gate. Where neither query answered, say the rights did not allow
+finding out rather than naming a case.
 None of the three is something this step changes. Then the handover, the same
 text the build step and the check setup hand a merge over with:
 

@@ -1035,7 +1035,9 @@ three were split apart to fix.
 Arming can be refused for three different reasons, and they mean different
 things. The program arms on no mergeable value, so two of them come as its own
 answer rather than as GitHub's: `no required check:` where both gate queries
-answered and name none, and `past its gate:`; the first comes as `refused:`.
+answered and name none, and `past its gate:`; the first comes as `refused:`,
+and as `past its gate:` where a gate stands and auto-merge is off, the
+program reading no setting, since 18 October 2026.
 `gh api repos/OWNER/REPO -q .allow_auto_merge` answers the first and no
 more: it says whether auto-merge is permitted on the repository, not whether
 there is a gate to wait on at this moment. Measured on 30 August 2026, it read
@@ -1043,26 +1045,32 @@ true in a repository with a required check and in one without alike, so a run
 that tells the other two apart by that field is reading a field that cannot
 answer the question. None of the three is a fault, and none stops the stage:
 
-- **Auto-merge switched off at the repository** — `allow_auto_merge` is false. A
-  setting, not something a build step changes, and since 16 October 2026 not
-  something this step asks them to change: at a first setup it stays off
-  wherever no gate stood, the setup asking about it only where one does, and
-  the check setup's step 8 switches it on where it sets a gate up. The
-  handover below names the case.
+- **Auto-merge switched off at the repository** — `allow_auto_merge` is false
+  where a gate stands, whether the program ended on `refused:` or on
+  `past its gate:`, as the handover below has it. A setting, not something a
+  build step changes, and since 16 October 2026 not something this step asks
+  them to change: at a first setup it stays off wherever no gate stood, the
+  setup asking about it only where one does, and the check setup's step 8
+  switches it on where it sets a gate up. The handover below names the case.
 - **No gate at all** — no required check, no required review, so the pull request
-  is already mergeable and there is no platform gate here. Say that in one clause
-  rather than leaving it implied: what lands this change is the answer given at
-  the end of step 5, and nothing on the platform will look at it.
+  is already mergeable and there is no platform gate here. That is this case
+  whatever `allow_auto_merge` reads, since the program arms on no mergeable
+  value: it answers `no required check:`, and the handover below names this
+  case and no other, since 18 October 2026, after defect 4 of the roadmap entry
+  of 16 October 2026 on the runs of that day; until then a clause of its own
+  was said here, that what lands the change is the answer at the end of step 5.
 - **A gate this pull request is already past** — there is a required check, it
-  has gone green, and nothing is outstanding any more. The refusal reads the same
-  as the one above and means the opposite. Saying "no platform gate here" in a
-  repository that has one is a false statement about the repository, and it is
-  why this third branch exists.
+  has gone green, nothing is outstanding any more, and auto-merge is on. The
+  refusal reads the same as the one above and means the opposite. Saying "no
+  platform gate here" in a repository that has one is a false statement about
+  the repository, and it is why this third branch exists.
 
 The last two are told apart by two readings, and both are needed; the program
 prints both. The state: `mergeStateStatus` as it read it last — a mergeable
-status with a gate present is the third case. The gate: no single query sees
-every kind of gate, so it asks both.
+status with a gate present and auto-merge on is the third case. The gate: no
+single query sees every kind of gate, so it asks both. The first case takes
+the gate too: where the program printed no `gate:` line, as at a refusal with
+`BLOCKED` read after it, ask both here, since 18 October 2026.
 
 - `gh api repos/OWNER/REPO/branches/main/protection` sees classic branch
   protection. It does not see a gate set through a ruleset, and it needs admin on
@@ -1090,7 +1098,9 @@ stopping mid-task, over a change nobody asked for, as though it had hit an error
 
 In unattended mode there is nobody to hand it to. A refusal by GitHub to arm,
 in the first two cases, is a stop with
-the reason named, the mark going with it as at every such stop. **The third
+the reason named, the mark going with it as at every such stop, and so is
+`past its gate:` where `allow_auto_merge`, read before anything is restarted,
+is false: that is the first case, since 18 October 2026. **The third
 is not, at first**, since 17 October 2026, by the person's decision of that
 day: a run without them does not end because a check was quick. At `past its
 gate:` with a `rerun:` line, restart once every run its `rerun:` lines name,
@@ -1389,7 +1399,7 @@ as at every stop with a reason, since the run ends here:
    and no wording of its own: the command, and the message or the missing
    statement in its place.
 5. The repository can actually merge without a person. Two things have to hold,
-   and `environment.md` records both: auto-merge is enabled
+   both read off GitHub and not off `environment.md`: auto-merge is enabled
    (`gh api repos/OWNER/REPO -q .allow_auto_merge`), and a gate exists for it to
    wait on. The second takes both queries from step 6, for the reason given
    there: `gh api repos/OWNER/REPO/branches/main/protection` is blind to rulesets
