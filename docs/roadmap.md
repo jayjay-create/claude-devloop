@@ -28861,7 +28861,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   unless it says otherwise. No session of Claude Code was started and no
   model called outside the session that made it, whose subagents read the
   entries; beyond the `git fetch` of the order and of the heads of pull
-  requests #174 to #184, GitHub was neither read nor changed.
+  requests #174 to #184 and one `gh pr view 175` by a subagent, GitHub was
+  neither read nor changed.
 
   **What was read, and how.** On 18 October 2026 on a branch cut from
   `origin/main` at `786b71f`, the working tree clean, the installed copy at
