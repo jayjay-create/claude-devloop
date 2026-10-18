@@ -768,11 +768,17 @@ repository, the field false; or no gate for it to wait on at all; or a gate this
 pull request is already past — the required check green, nothing outstanding, so
 GitHub will not arm what it would merge on the spot. The field cannot tell the
 last two apart; measured on 30 August 2026, it read true in a repository with a
-required check and in one without alike. The first is the ordinary case at a
-first setup since 16 October 2026: the setup asks about auto-merge only where
-a gate stands already, so a repository without one arrives here with it off,
-and step 8 switches it on where it sets a gate up; nothing here asks them
-to. The state comes from `mergeStateStatus`, as the program read it last.
+required check and in one without alike. At a first setup the field
+ordinarily reads false since 16 October 2026: the setup asks about
+auto-merge only where a gate stands already, so a repository without one
+arrives here with it off, and step 8 switches it on where it sets a gate
+up; nothing here asks them to. That is the first case only where a gate
+stands, since GitHub is asked only then: where none does, the program
+answers `no required check:` and the case is the second, whatever the
+field reads, since 18 October 2026, after defect 4 of the roadmap entry of
+16 October 2026 on the runs of that day; until then this paragraph called
+the first the ordinary case at a first setup.
+The state comes from `mergeStateStatus`, as the program read it last.
 Whether a gate exists takes both `gh api repos/OWNER/REPO/branches/main/protection`
 (classic protection; blind to rulesets, needs admin, and a 404 means none only
 where the body says "Branch not protected") and `gh api

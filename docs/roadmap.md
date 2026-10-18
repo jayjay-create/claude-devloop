@@ -28005,6 +28005,242 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   0 with the figures above; its self-test, 114 cases, 76 of 76 messages
   asserted by a case, exit 0.
 
+- **The merge handover: every text a run reads at it held to it, three
+  places made to follow it; and the section of `environment.md` on what
+  checks a merge gone, decided by the person on 18 October 2026; defect 4 of
+  the entry of 16 October 2026 on the runs of that day and the finding of
+  the same entry on that section with it; 18 October 2026, version
+  0.146.0.** On `task/handover-and-gate-section`, off `d7722a7`, version
+  0.145.0 on `main`; the changes, the version, this entry and the rows of
+  the table in one commit. The report stands on this machine as
+  `~/devloop-report-2026-10-18-handover-build.md`, in English, and is not in
+  the repository. A line is given as it stands at `d7722a7` unless the tip
+  of the branch is named. No session of Claude Code was started and no model
+  called outside the session that made it; beyond the `git fetch` the order
+  opens with, GitHub was neither read nor changed. The words the stock-take
+  tool reads a line of this file into its search set by stand in this entry
+  in its head and on no other line. The pre-check found no place at which
+  no rule decides and none at which the person would get wording not
+  already approved, so nothing halted.
+
+  **What the check of the handover found.** The should of defect 4, lines
+  26006 to 26017, is what `shared/merge-handover.md` lines 1 to 14 and 27 to
+  32 say since 17 October 2026, decision 6 of the entry of that date, lines
+  26600 to 26604, and `output-styles/devloop.md` lines 51 to 55; the shared
+  text is not changed here. Every text a run reads at a merge handover was
+  read against it, the text of each skill before and after its insert,
+  `build-work` line 1086, `setup-checks` 786 and `setup-project` 841, the
+  steps standing after the insert, the handover of step 8 of
+  `setup-checks`, the last message with nobody there and the message of
+  `hooks/pre-tool-use-merge-guard.sh` line 40, and every hit of the search
+  the order named; the report has the table, place by place with the rule
+  that decides it. Three places asked for what the handover excludes, each a
+  case said otherwise than in the one sentence that fits it. `setup-project`
+  lines 774 to 780 gave auto-merge switched off, among the reasons arming is
+  refused, as the ordinary state at a first setup, and `setup-checks` lines
+  771 to 775 called it the ordinary case there; at a first setup without a
+  gate the program answers `no required check:` itself and GitHub is not
+  asked, `bin/devloop-arm` lines 44 to 50, so that the case is the one
+  without a gate whatever the field reads, as the person's reason of 16
+  October 2026 on question 2 has it, lines 25106 to 25108. Record 133 of
+  project 1, at the handover of `setup-project`, and records 266 and 355, at
+  those of `setup-checks`, named auto-merge off beside the missing check.
+  Both say now that the case of auto-merge off holds only where a gate
+  stands, since GitHub is asked only then, and that without one the case is
+  the second whatever the field reads, `setup-project` lines 789 to 792 and
+  `setup-checks` lines 775 to 780 at the tip; the sentence that the field
+  reads false at a first setup stays, lines 778 to 780 of `setup-project`
+  unchanged, and `setup-checks` keeps it without "the ordinary case". The
+  third, `build-work` lines 1052 to 1055, "No gate at all", asked for a
+  clause of its own beside the handover, "what lands this change is the
+  answer given at the end of step 5, and nothing on the platform will look
+  at it", a line of 31 August 2026 no decision of the person carries; the
+  sentence approved on 12 October 2026 for the case, lines 19241 to 19248,
+  has none, and step 5 says it already, lines 817 to 819. The bullet says
+  now that this case holds whatever `allow_auto_merge` reads and that the
+  handover names it and no other, lines 1052 to 1058 at the tip.
+
+  No other place asks for it. The cases outside the three — two minutes run
+  out, a second `BEHIND`, `no answer:`, neither gate query answering — say
+  their reason where the handover says why GitHub does not merge, before it
+  and not beside it. "Then the wait", `build-work` lines 1140 to 1146, is the
+  wait on an armed pull request; a merge handed over ends the turn. Step 9 of
+  `setup-project`, lines 843 to 865, and of `setup-checks`, lines 1209 to
+  1228, stand after the insert in the file and are reached only once the
+  merge is proven, `setup-project` lines 743 to 750 and 764 to 766,
+  `setup-checks` 788 to 806 and 1150 to 1158. The line of classes and tools
+  of `setup-checks` step 8, lines 1055 to 1060, is owed text of that turn and
+  stands before the handover; no line asks for the sentences on what step 8
+  does after the merge that records 355 and 454 of project 1 and 526 of
+  project 2 carried. With nobody there the last message carries the merge in
+  its second group beside the other things the person has to do, and without
+  the case sentence: the person's decision of 17 October 2026 on the two
+  groups, lines 26637 to 26641, their decision on arming past the gate, the
+  merge in the second group, lines 27383 to 27385, and the addendum of that
+  day on the reason said once, lines 27604 to 27617, carry both; "what to
+  pull locally after a merge", `shared/mark-deletion.md` line 58, is the
+  duty `build-work` lines 1253 and 1299 to 1301 hold once a merge has
+  landed, not one on the merge handed over. The message of the merge guard
+  asks nothing the handover excludes; it does not carry all of it — the pull
+  request by its title, `--repo`, the place at the end of the message —
+  which a run with no skill loaded would need, and that falls under the
+  defect of the entry of 30 September 2026 on that message, lines 7945 to
+  7951, read for its reader as a whole, and is not recorded a second time.
+  "Das ist kein Fehler.", closing all four handovers of project 1, no line
+  asks for; the nearest is the shared text's own "none of the three cases is
+  a fault", lines 31 to 32, which this order does not change.
+
+  **Whether a check can see it.** At the text of the skills, no: what led the
+  runs astray stood eleven and sixty-one lines before the insert and named
+  nothing after the merge, a case description implying a case, which no
+  pattern tells from one handing the case to the handover — `build-work`
+  lines 1046 to 1051 against `setup-checks` 771 to 775 — and what a pattern
+  can hold of it, that the three places insert the one shared text, says
+  nothing of the text around the insert. At the message with which a run
+  ends before waiting on the person, no: the handover stands in the person's
+  language and in no fixed words, a skill saying what is said and not the
+  words, so that no pattern tells the sentence on resuming from one on what
+  comes after, or owed text before the handover from text beside it; the
+  form alone could be found, the code block with `gh pr merge <number>
+  --squash --repo`, and where it stands; and the one place that sees that
+  message is a hook on `Stop`, whose one answer is to block the stop, which
+  makes the run write on after the handover, the opposite of what the check
+  is for; whether the transcript carries that message when `Stop` fires is
+  not measured in this repository. Nothing is built for either.
+
+  **Defect 4 with it.** With the three places mended, every text a run reads
+  at a merge handover follows `shared/merge-handover.md`; defect 4 of the
+  entry of 16 October 2026 on the runs of that day, lines 25979 to 26017, is
+  built with this entry, its evidence on line 4 of that file, its status
+  line as written.
+
+  **The decision of the person of 18 October 2026 on the section,** as the
+  order of that day gives it. The section of `environment.md` on what checks a
+  merge, and who, which `setup-project` lines 691 to 696 had written since 22
+  August 2026, commit `77be5c5`, from the reading of question 2 of step 4, so
+  that the build read there which case held, goes. The finding of the entry of
+  16 October 2026 on it, lines 25160 to 25166, the second closing run having
+  rewritten it in a pull request of its own, #15, named two ways, rewriting it
+  in step 8 of `setup-checks` or marking it as the state of the setup; the
+  person chose a third. The person's reasons: no part of devloop reads it —
+  every place that switches auto-merge on or checks what it needs reads the
+  protection off GitHub, `bin/devloop-arm` on its `gate:` lines,
+  `setup-project` lines 832 to 837, start condition 5 of `build-work`, lines
+  1391 to 1403, with its two queries, and `plan-work` lines 451 to 453 reading
+  the state and not the account in `environment.md`, `grep -rn 'what checks a
+  merge'` over `skills/`, `shared/`, `hooks/` and `bin/` finding line 691
+  alone; the protection is queried before every merge, "Never assert state —
+  query it", `docs/skill-conventions.md` lines 340 to 347; a protection
+  written down goes stale at its next change, in step 8 of `setup-checks` at
+  the latest; and what the person needs in a case the merge handover tells
+  them.
+
+  **What is changed for it.** `setup-project` step 6 writes no such section;
+  a dated note stands in its place, lines 695 to 704 at the tip, and says
+  that a section an earlier setup wrote stays as it stands and that a
+  refresh leaves it, nothing reading it: the rules of a refresh, lines 100
+  to 121 and 712 to 713, did not settle it, the section standing among
+  neither kind of lines 100 to 110 and not among the three records of lines
+  712 to 713, so that a refresh run could take it for template content gone
+  stale. Lines 280 to 282, where step 6 wrote the reading and step 8 read it
+  before arming, say that it is read again before arming off the two
+  queries the program of step 8 asks and prints, lines 832 to 837, and goes
+  into no file, lines 280 to 283 at the tip. Lines 317 to 318, the bypass
+  value named in `environment.md`, and lines 335 to 340, a binding that
+  could not be determined going there with the query that failed and not
+  said: both are named nowhere now, lines 318 to 320 and 337 to 343 at the
+  tip. "Not said" is the person's of 17 October 2026, SP-16 and SP-18, lines
+  27017 to 27019, and stays; decision 1 of that day leaves an owed text the
+  message, the pull request, issue or file at its place, or nothing, lines
+  26625 to 26627; the file goes by the decision of 18 October 2026, whose
+  reasons cover the binding, the "and who" of the section, and where the
+  rights did not allow finding out the handover's step says so, lines 835 to
+  837. Lines 381 to 383 say that step 8 says the one sentence of the
+  handover from the reading and the queries and that none of it goes into a
+  file, lines 384 to 387 at the tip. `build-work` line 1392, "`environment.md`
+  records both", reads that both are read off GitHub and not off
+  `environment.md`, line 1395 at the tip. `plan-work` lines 451 to 453 stay,
+  true before and after, a section of an earlier setup still standing in a
+  project. The finding of the entry of 16 October 2026 is built with this
+  entry, its evidence on the first line of the note. The finding of the
+  stock-take that the section named step 2 as the source of the gate, lines
+  5314 to 5316, built on 16 October 2026 with its evidence on line 691, keeps
+  its state with its evidence on that line of the note, the section it
+  concerned gone.
+
+  **What the person reads.** By `docs/skill-conventions.md` lines 770 to 786,
+  two texts that reach the person change, and the report lists each part with
+  the three tests of lines 675 to 677. The handover, read by the person as
+  the last text of the message that ends the turn, in their language, read
+  whole as the expanded skills give it, expanded `setup-project` lines 1665 to
+  1705, `build-work` 1924 to 1964 and `setup-checks` 1526 to 1566 at the tip:
+  out came auto-merge off beside the case without a gate, untrue there and
+  deciding nothing, the merge being theirs either way, and the clause of
+  `build-work` on the answer of step 5, met already where step 5 asks it;
+  the rest stays, its wording that of 12 October 2026. `environment.md` as
+  `setup-project` writes it, read by the person and by every later run as a
+  file of the repository, read whole off step 6, expanded lines 1414 to 1501:
+  out came the section on what checks a merge, failing the second test, met
+  where it matters in the handover, and the third, untrue after step 8 of
+  `setup-checks`; it went nowhere, what the person needs of it standing in
+  the handover and what a run needs in the queries before every merge. The
+  rest stays as it was.
+
+  **The table.** `docs/stock-take.tsv`: defect 4 keeps its site on its status
+  line and has its evidence on line 4 of `shared/merge-handover.md`, and the
+  finding on the section keeps its site and has its evidence on the first line
+  of the note in `setup-project`, so that the tool reads both as built and
+  never walked; the finding of the stock-take on step 2 as the source moved
+  its evidence onto the same line. Gone: the two things of the section, a
+  required check written with its name and no required check with merges held
+  by the question at the end of a build, and the not-a-thing row of its last
+  line; the second carried two runs of 16 October 2026 under 0.141.0, read off
+  the session logs of `devloop-test-x` and `devloop-test-y`, which go with it.
+  Renamed, no run hanging on them, each note naming the name until then: the
+  bypass value named nowhere, the binding that could not be determined neither
+  said nor written, and the case without a gate in `build-work` named by the
+  handover alone, with the two not-a-thing rows that are part of it. Moved
+  onto the changed lines: the evidence of the last two, the not-a-thing row
+  part of the question on auto-merge, the one part of the bypass value, and
+  the two part of auto-merge off in `setup-checks`; the note of that thing
+  says since when the field reads false and since when that case holds only
+  where a gate stands. Added: three things, auto-merge off where no gate
+  stands as the second case in `setup-project` step 8 and in `setup-checks`
+  step 7, and a section an earlier setup wrote left standing; five not-a-thing
+  rows, three part of the first two and of the binding, two lines of the note
+  as rationale; and the head of this entry as an entry that names no defect of
+  its own. No run is recorded for this entry. The tool on the tree of the
+  changes before their commit: no broken record, 19 findings as at `d7722a7`,
+  no unit without a straight path, no status word broken over a line break,
+  none of 4018 lines of the search set uncovered, where `d7722a7` had 4013,
+  exit 0; recorded and not built 242 where it was 244, its defects 231 where
+  they were 233, defect 4 and the finding on the section out; built and never
+  walked 1191 where it was 1186 — skill branches 685 where 682, the three
+  things added and the straight path of the unit `environment.md` in, the
+  thing of a required check written with its name out, the three renamed
+  things in the same state under their new names, defects 252 where 250, the
+  two in; walked 502 where 504, skill branches 142 where 144, that straight
+  path, whose two runs of 16 October 2026 stop counting, and the thing that
+  went with its two runs; runs that do not count 430 where 428; run rows 1719
+  where 1721; things 1961 where 1960, branches 855 where 854; not-a-thing
+  records 2607 where 2602. The figures at `d7722a7` were read off the tool on
+  the branch with the changes made so far stashed.
+
+  **The tests.** `setup-project`, `build-work` and `setup-checks` were
+  read through `scripts/devloop-expand`, every changed place and the
+  handover whole at each of its three places with the text before and after
+  it, as a run receives it: expanded `setup-project` lines 835 to 949, 1414
+  to 1501 and 1580 to 1755, `build-work` 1870 to 2020 and 2355 to 2368,
+  `setup-checks` 1497 to 1620 at the tip. The nineteen checks under "Before a
+  handover, run these" ran on the tree of the changes before their commit, in
+  a clean bash with `/usr/bin` first on its path, line for line what they
+  print at `d7722a7` in a clone of it but for four line numbers moved by the
+  lines added above them, `build-work` 1436 and 1561 there and 1439 and 1564
+  here, `setup-checks` 1203 and 1219 there and 1209 and 1225 here, from
+  13:58:07 to 13:58:15 UTC. The tool, from 13:58:58 to 14:01:21 UTC, exit 0
+  with the figures above; its self-test, 114 cases, 76 of 76 messages
+  asserted by a case, exit 0, from 13:57:57 to 13:57:59 UTC.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
