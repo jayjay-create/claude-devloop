@@ -157,9 +157,9 @@ what it means.
 Map the open decisions as a **tree**: every decision branches into the decisions
 that hang off it. Work the tree in **rounds**. The **frontier** is every decision
 whose prerequisites are already settled — the questions answerable _now_, without
-guessing at answers you haven't heard yet. Ask the whole frontier in one round,
-then wait. A question whose answer depends on another question still open in this
-round belongs to a _later_ round, not this one.
+guessing at answers you haven't heard yet. Ask at most three in a round, and the
+rest of the frontier before anything the answers unlock, then wait. A question
+whose answer hangs on one still open belongs to a _later_ round.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text three-questions`
 
@@ -181,7 +181,7 @@ until then the template carried it as a fourth part of every question.
 **Facts are your job, never the user's.** Anything in the repository, the docs, or
 on the web, you look up yourself. When a frontier question needs a fact from the
 environment, dispatch a subagent to find it — and do not block on it: only the
-questions downstream of that fact wait, so ask the rest of the frontier now. If a
+questions downstream of that fact wait, not the rest of the frontier. If a
 fact needs a primary source you do not have, call the Skill tool with `research`
 in the background and carry on. The **decisions** are the user's: put each to
 them and wait.

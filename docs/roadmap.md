@@ -27747,6 +27747,264 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   exit 0 with the figures above; its self-test, 114 cases, 76 of 76
   messages asserted by a case, exit 0.
 
+- **What the interview that sharpens an idea asks: every decision about the
+  idea put to the person as a question with a recommendation, decided by the
+  person on 18 October 2026, in `plan-work` Stage 1 and in the interview of
+  `untangle-idea`; defect 3 of the entry of 16 October 2026 on the runs of
+  that day with it; 18 October 2026, version 0.145.0.** On
+  `task/interview-asks-every-decision`, off `12d04b5`, version 0.144.0 on
+  `main`; the changes, the version, this entry and the rows of the table in
+  one commit. The report stands on this machine as
+  `~/devloop-report-2026-10-18-interview-build.md`, in English, and is not in
+  the repository. A line is given as it stands at `12d04b5` unless the tip of
+  the branch is named. Nothing ran on a bench with a model, no session of
+  Claude Code was started for this entry, and nothing was read or changed on
+  GitHub. The words the stock-take tool reads a line of this file into its
+  search set by stand in this entry in its head and on no other line.
+
+  **The decision of the person of 18 October 2026.** In the interview that
+  sharpens an idea, `plan-work` Stage 1 from line 270 and "The interview" of
+  `untangle-idea`, lines 152 to 216, every decision about the idea goes to
+  the person as a question with a recommendation, one a later task could
+  change cheaply as well. The run settles there only what the first test of
+  `shared/how-to-ask.md`, lines 4 to 10, sorts out — what has a right answer
+  to look up, what follows from what the person has already said, what is a
+  convention of this workflow — and what the project's own rules already
+  settle, lines 20 to 22; facts it looks up itself, as `untangle-idea` lines
+  181 to 187 say. In that interview the second test, "Being wrong is
+  expensive", lines 11 to 18, does not hold, nor "Everything else you decide
+  yourself", lines 24 to 31, beyond what the first test sorts out, nor the
+  sentence of `shared/three-questions.md` lines 2 to 6 that a question
+  answerable in one word from the run's own recommendation is no question.
+  Wherever else `shared/how-to-ask.md` is inserted, `build-work` line 123,
+  `cut-into-tasks` 42, `setup-checks` 138 and `setup-project` 67, and in the
+  two skills themselves outside the interview, the rule stays as it is. What
+  stays in the interview: at most three questions a round and something that
+  needs weighing alone, `shared/three-questions.md` lines 1 and 2, the cap
+  confirmed on 12 October 2026, lines 19052 to 19054 of this file; the end
+  when no question is answerable now, every branch is visited and nothing is
+  silently assumed; the confirmation of a shared understanding. The person's
+  reasons: Stage 1 ends, by the decision of 12 October 2026, only when
+  nothing is silently assumed, and every decision the run takes for the
+  person is such an assumption; every later task builds on what Stage 1
+  settles, and what never reached the person as a question they cannot
+  correct; the occasion of the rule of 22 August 2026, commit `fcd0ce9`,
+  questions with a single sensible answer, falls away in the interview
+  through the first test already, such a question being a fact or following
+  from what was said; and the source of this interview, Matt Pocock's skill
+  "grilling", draws the same line, facts looked up by the agent and
+  decisions put to the user, which `untangle-idea` lines 181 to 187 carry
+  from it. His page www.aihero.dev/skills-grill-me, updated 24 August 2026,
+  read by the person on 18 October 2026 and for this entry the same day:
+  "Forty-six questions across four rounds is an ordinary session."
+
+  **The counter-check, before the first change.** The rule as it was to be
+  built was played through two real cases. The case of 16 October 2026, the
+  idea at lines 17073 to 17078, what the run settled and asked at lines 25917
+  to 25922 and 25945 to 25948: that the check of `isValidName` stays as it is
+  and only the maximum length moves to `rules.yaml` follows from what the
+  person said, and the run settles it and says it in the line of its round;
+  "Default 32" is a fact read off the code where 32 is the length the function
+  enforces today, and a question where it is what the script or the page falls
+  back to without a value in `rules.yaml`, and which of the two the run meant,
+  or whether 32 stood in the function, the repository does not hold; the
+  display is a question; the umlauts are a fact of the code where the question
+  was what the function accepts, and a question where it was whether the page
+  should accept what the function rejects, the repository recording the word
+  alone; the language of the page is a question unless a rule settles it, and
+  `shared/project-language.md`, "write every file this run creates in the
+  project in English", does not say whether it reaches the text a product
+  shows its users. The seven points "Taken as given" and the six decisions of
+  records 553 and 576 are counted at lines 25940 and 25943 and listed nowhere,
+  and were not judged. The case of 22 August 2026, `git show -s fcd0ce9`:
+  three questions with one recommendation, two without a second sensible
+  answer, the questions not named. The third is a question under this rule, as
+  it was in that round, the message naming nothing that would make its answer
+  one to look up, where the rule of 22 August asked it only if being wrong was
+  expensive; the two are settled by the run where their one answer can be
+  looked up, follows from what was said, is a convention of this workflow or
+  is settled by the project's rules, and are questions where it is the run's
+  own judgement alone, so that the stop the commit names can come back for
+  that kind; which kind they were the repository does not hold, and the
+  counter-check reaches no further. Two gaps were found and mended in the
+  wording before it was built. The doubt whether a point is sorted out at all,
+  on which the language and the umlauts turn, had its answer in
+  `shared/how-to-ask.md` lines 17 to 18, "Where you cannot tell which it is,
+  that uncertainty is the answer: ask.", inside the second test this interview
+  switches off; the rule now says that a point the run cannot tell is settled
+  so is a question. And "a right answer to find", the first test's words, lets
+  a run reason its way to the one answer it judges sensible and settle the two
+  questions of 22 August by judgement, the move of 16 October 2026; the rule
+  says a right answer "to look up in the repository, the documents or on the
+  web", the person's "zum Nachschlagen".
+
+  **What is built.** `shared/three-questions.md`, inserted at `plan-work` line
+  300 and `untangle-idea` line 164 and nowhere else: after the cap, whose
+  "and most rounds should be shorter" went with the sentence it led into, a
+  paragraph on the boundary as decided, with the two mended points, and a
+  paragraph on where the line of what the run settled stands — where the
+  round's questions are put, since they rest on it and an answer can
+  overturn it: through the widget in the question field of the first of
+  them, before its question line; as text in the message that puts them,
+  before the first; and a round that asks nothing hands its line on to the
+  next question put. That place is read off `output-styles/devloop.md` lines
+  17 to 23, 31 to 34 and 36 to 40, what bears on a decision standing in the
+  question. The paragraph names the second test under "How to ask" and says
+  that it does not hold in this interview, so that a run which read
+  `shared/how-to-ask.md` at `plan-work` line 163 or `untangle-idea` line 41
+  meets in the interview itself that it does not hold there. The rule stands
+  in the shared file and not under each insert or in a new file:
+  `docs/skill-conventions.md` lines 101 to 103 and 166 to 168, one rule for
+  two skills in the same situation written once, and the file is inserted at
+  exactly the two places the rule holds and carried the sentence it
+  replaces. `shared/how-to-ask.md` is unchanged: an exception there would
+  stand at six places where four keep the rule, as `plan-work` lines 433 to
+  435 say of the mode question. `plan-work` lines 276 and 277, which let the
+  run settle what it could settle itself and then ask what was left, read
+  since this entry that it settles only what the rule on this interview
+  below leaves to it, says it in one line as that rule says, and then asks
+  every decision that is left, lines 276 to 278 at the tip. With the hard
+  core in the question field of the confirmation, built on 17 October 2026,
+  `plan-work` lines 331 to 344, and the rounds, lines 276 to 280, every part
+  of the should of defect 3 now stands on disk: defect 3 of the entry of 16
+  October 2026, on Stage 1 of `plan-work` at the run of that day, lines
+  25914 to 25977, is built with this entry. Not changed by the commit of
+  this entry, and changed by the addendum below: the pair of "Ask the whole
+  frontier in one round", `untangle-idea` line 160, and the cap four lines
+  below it, which the entry of 14 September 2026 records at lines 3697 to
+  3698 and the table as a defect of its own, and which bites more often now
+  that every decision is a question. Not changed: `README.md` lines 61 to
+  62, true before and after.
+
+  **The table.** `docs/stock-take.tsv`: the defect's thing keeps its site on
+  its status line, line 25960, and has its evidence on the head of the new
+  paragraph of `shared/three-questions.md`, so that the tool reads it as
+  built and never walked. Of the four rows of that file the straight path
+  and the question that needs weighing stand as they were. The thing of the
+  question answerable in one word is renamed, no run hanging on it, its note
+  naming the name until then, and anchored on the line of what the run
+  settles itself; the not-a-thing row of the quoted line moved onto the line
+  that says where the round's questions are put, part of that thing. Added:
+  five things — a decision a question with the recommendation, a point the
+  run cannot tell settled so a question, the line in the question field of
+  the first question through the widget, the line in the message before the
+  first as text, the line of a round that asks nothing handed on — and two
+  not-a-thing rows, the line naming what does not hold in this interview as
+  part of the first of the five and the line on silent assumptions as
+  rationale; and the head of this entry as an entry that names no defect of
+  its own. No run is recorded for this entry. The tool on the tree of the
+  changes before their commit: no broken record, 19 findings as at
+  `12d04b5`, no unit without a straight path, no status word broken over a
+  line break, none of 4012 lines of the search set uncovered, where
+  `12d04b5` had 4005, exit 0; recorded and not built 245 where it was 246,
+  its defects 234 where they were 235, defect 3 out; built and never walked
+  1184 where it was 1177 — shared text 154 where 148, the five new things
+  and the straight path of the file, defects 249 where 248, defect 3 in;
+  walked 504 where 505, shared text 46 where 47, that straight path, whose
+  run of 16 October 2026 stops counting; runs that do not count 428 where
+  427; things 1959 where 1954, branches 853 where 848; not-a-thing records
+  2602 where 2599. The figures at `12d04b5` were read off the tool on the
+  branch before its first change.
+
+  **The tests.** `plan-work` and `untangle-idea` were read through
+  `scripts/devloop-expand`, the interview whole as a run receives it,
+  expanded lines 886 to 1153 and 548 to 642 at the tip: in both the rule
+  stands inside the interview, after `shared/how-to-ask.md` at expanded
+  lines 611 and 229, and names the second test under "How to ask" as not
+  holding in this interview. The nineteen checks under "Before a handover,
+  run these" ran on the tree of the changes before their commit, in a clean
+  bash with `/usr/bin` first on its path, line for line what they print at
+  `12d04b5` in a clone of it but for three line numbers of `plan-work` the
+  line added above them moved in the check for offers, 319, 398 and 592
+  there and 320, 399 and 593 here, from 23:27:43 to 23:27:51 UTC. The tool,
+  from 23:25:03 to 23:27:24 UTC, exit 0 with the figures above; its
+  self-test, 114 cases, 76 of 76 messages asserted by a case, exit 0.
+
+  **Addendum of the same day: the whole frontier and the cap of three in the
+  interview of `untangle-idea`.** Ordered on 18 October 2026 after
+  `b8d07ef`, made the same day on `task/interview-asks-every-decision`, the
+  version staying 0.145.0, raised once on this branch already. The report
+  stands on this machine as
+  `~/devloop-report-2026-10-18-interview-addendum.md`, in English, and is
+  not in the repository. A line is given as it stands at `b8d07ef` unless
+  the tip of the branch is named. No session of Claude Code was started and
+  no model called outside the session that made it; beyond the `git fetch`
+  the order opens with, GitHub was neither read nor changed. The pre-check
+  found no place at which no rule decides how many questions a round asks
+  and none at which the person would get new wording, so nothing halted.
+
+  **What is changed.** The interview of `untangle-idea` said "Ask the whole
+  frontier in one round, then wait", lines 160 to 162, and inserted the cap
+  of three questions in a round four lines below, line 164, the pair the
+  entry of 14 September 2026 records at lines 3689 to 3698. Lines 160 to 162
+  say now what `plan-work` lines 275 to 276 and 279 to 281 say, in its
+  words: at most three in a round, and the rest of the frontier before
+  anything the answers unlock, then wait; a question whose answer hangs on
+  one still open belongs to a later round. "Still open in this round" went
+  to "still open", since under the cap a question still open can stand on
+  the frontier and not in the round. Line 184, on a frontier question that
+  needs a fact, said "so ask the rest of the frontier now", which reads as
+  the whole rest in the running round; it says now that only the questions
+  downstream of the fact wait, "not the rest of the frontier", which goes by
+  the rounds of lines 160 to 162. The cap stays as confirmed on 12 October
+  2026, lines 19052 to 19054, and changes the number of rounds and not the
+  end, line 214. No wording the person receives is new: the two places
+  direct the run, and a round keeps every part it had, carrying at most
+  three questions where the frontier is larger, the rest moved to the next
+  round and none cut; the report holds the round to
+  `docs/skill-conventions.md` lines 770 to 786. The three lines stay three,
+  so no later line of the skill moved and the expanded lines this entry
+  names at the tip stand. The commit quotes the old line with its reason, as
+  lines 1125 to 1127 of that file ask of a change to a line adapted from
+  Matt Pocock; the line came with `51ac367`. With this the defect of the
+  entry of 14 September 2026 on the pair is built, and the sentence of this
+  entry above on what was not changed says that the addendum changed it.
+  Every other place `grep -rn -i 'frontier'` and `grep -rn -i -w 'rounds\?'`
+  find over `skills/`, `shared/` and `output-styles/` is decided by the cap
+  or says nothing of how many questions a round asks; the report lists each.
+
+  **Records of the addendum.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`, read off `git diff b8d07ef --
+  docs/stock-take.tsv`: two thing rows and one not-a-thing row changed in
+  place, one thing row added. The defect of the pair keeps its site, line
+  3697, and has its evidence on `untangle-idea` line 160 at the tip, where
+  it had it on line 4130, which says that five of the six findings of its
+  entry are not built; that line holds none of the words the tool reads a
+  line of this file into its search set by, and four defects keep their
+  evidence there, so the site stays where the defect is named, as the site
+  of finding 4 of the same entry stayed at line 3625 when its evidence moved
+  onto `plan-work`. The tool reads it as built and never walked. Added: the
+  thing of the rounds of `untangle-idea`, on line 161 at the tip, which
+  holds "before" and so came into the search set, as `plan-work` has one for
+  its own at line 274 with the cap part of it. The thing of a frontier
+  question that needs a fact is renamed, no run hanging on it, its note
+  naming the name until then, and the not-a-thing row of line 184 moved onto
+  that line as it reads now and follows the name. No run is recorded for
+  this addendum. The tool on the tree of the addendum's changes before their
+  commit: no broken record, 19 findings as at `b8d07ef`, no unit without a
+  straight path, no status word broken over a line break, none of 4013 lines
+  of the search set uncovered, where `b8d07ef` had 4012, the one more line
+  161 of `untangle-idea` at the tip, exit 0; recorded and not built 244
+  where it was 245, its defects 233 where they were 234, the defect of the
+  pair out; built and never walked 1186 where it was 1184 — skill branches
+  682 where 681, the new thing, defects 250 where 249, the defect of the
+  pair in; walked 504, undetermined 26, runs that do not count 428 and
+  not-a-thing records 2602 as before; things 1960 where 1959, branches 854
+  where 853. The figures at `b8d07ef` were read off the tool on a clone of
+  that commit.
+
+  **The tests of the addendum.** `untangle-idea` was read through
+  `scripts/devloop-expand`, the interview whole as a run receives it,
+  expanded lines 548 to 642 at the tip as at `b8d07ef`: the rounds at
+  expanded lines 556 to 558, the cap of `shared/three-questions.md` straight
+  after them at 560, the line on facts at 609. The nineteen checks under
+  "Before a handover, run these" ran on the tree of the addendum's changes
+  before their commit, in a clean bash with `/usr/bin` first on its path,
+  line for line what they print at `b8d07ef` in a clone of it, from
+  08:34:30 to 08:34:38 UTC. The tool, from 08:31:42 to 08:34:05 UTC, exit
+  0 with the figures above; its self-test, 114 cases, 76 of 76 messages
+  asserted by a case, exit 0.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
