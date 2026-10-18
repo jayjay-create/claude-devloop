@@ -172,8 +172,13 @@ nine.
 - Loose issues nobody has picked up: their titles, and which carry
   `raised-here` — those came out of earlier work here and are waiting to be
   taken up, while the rest arrived from outside as suggestions and are not
-  named beside work in flight. Past three or four, name the newest, and not
-  how many others there are, since 17 October 2026.
+  named beside work in flight, all but the issue devloop files without the
+  label for a change set aside whose bring-back met a change from GitHub,
+  labelled `needs-human` alone, which is not from outside, as this read it
+  until 19 October 2026, and is not named here either: the question on a
+  change still set aside and the last message of the run that filed it are
+  where they meet it. Past three or four, name the newest, and not how many
+  others there are, since 17 October 2026.
 
 **If nothing is in flight**, ask the same open question: what would they like to
 build? Nothing in flight now means both halves of the query empty — no open
@@ -306,7 +311,8 @@ skill load and a correction the user watches happen:
   it, and sending it there stands a fresh candidate beside it as an equal choice
   — measured on 9 September 2026, that is exactly the pair a run put to the user
   instead of naming the issue it was taking. Loose issues from outside are
-  left, the way step 2 leaves them.
+  left, the way step 2 leaves them, and so is the issue of a change set aside
+  that step 2 does not name.
 - **Anything else, including a fresh idea** — `plan-work` from the start. It
   carries through to the tasks and into the build.
 

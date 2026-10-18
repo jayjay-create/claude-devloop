@@ -16,8 +16,9 @@ it.
   the command for it and decide themselves. Put where the unattended mode is
   set up, the second time: nothing is installed without them, and work
   without them is then not possible, every piece of work running with them.
-- **In the header: a word for the subject**, of twelve characters at most,
-  which is what that field holds. It carries no point of the decision.
+- **In the header: a name for the subject**, of twelve characters at most,
+  which is what that field holds, and as telling as it can be. It carries no
+  point of the decision.
 
 Two things stay out of the question, on purpose. It says nothing about
 runtimes: that compilers and runtimes stay theirs under every answer is a

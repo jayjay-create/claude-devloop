@@ -354,7 +354,8 @@ question on how the work runs from here, and where that question is not put
 as well — a choice through the harness's choice widget, in their language,
 every point in a field of its own and no recommendation, or the same as text
 where the hard core does not fit. In the header: a
-word for the subject, of twelve characters at most. In the question line:
+name for the subject, as telling as it can be, of twelve characters at most.
+In the question line:
 whether the idea is understood so, as the hard core puts it. In the yes,
 label and line: yes, it is right so, and the run plans on on that ground.
 In the no, label and line: no, something is still missing, and the run asks

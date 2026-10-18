@@ -15,11 +15,19 @@ off, as at a block, and `build-work` reads before the release whether the
 state still stands; `secrets` is the exception "A guard's block is not a
 decline" in `setup-checks` carries, the task ending there. Only the
 installer's own error — it ran and ended red — gets up to three attempts,
-each its own call with the same ten minutes, ten seconds apart, every failed
-one named with the command and the message, on the model of "When the main
-branch cannot be fetched or fast-forwarded"; where the third fails too, it
-goes as the three other ways. The guard's block and the classifier's refusal,
-and since 18 October 2026 the refusal of a safety check built into Claude Code,
+each its own call with the same ten minutes, ten seconds apart. An attempt
+that fails and is followed by one that goes through is not said, since 19
+October 2026, as at a fetch: it changes nothing the person gets. Where the
+third fails too, it goes as the three other ways, and where it says what
+came back — in the issue, and for a class in the report — it says that the
+installer ended with an error on all three attempts, the message being the
+third's, and an earlier attempt's message beside it only where it names
+something in the way the third's does not, by the three tests under
+"Nothing that carries the reader's decision comes out" in
+`docs/skill-conventions.md`; until that day every failed attempt was named
+with the command and the message. The guard's block and the classifier's
+refusal, and since 18 October 2026 the refusal of a safety check built into
+Claude Code,
 get no second attempt, since a refusal is answered and not got around, and a
 call that did not finish gets none either, decision 2 of that entry: what
 did not finish inside its ten minutes is not started a second time.
