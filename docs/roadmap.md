@@ -26026,7 +26026,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   immediately before arming, in the same breath as the mutation and not
   earlier", as the run had done for #12 at record 1238, the loop and the
   mutation in one call. The refusal was then the stop step 6 names for a gate
-  already past with nobody there, expanded 1770 to 1774: the reason named at
+  already past with nobody there, expanded 1841 to 1843: the reason named at
   1678, "Beim Pull Request der zweiten Aufgabe lief der Check so schnell
   durch, dass GitHub das Auto-merge nicht mehr annahm. Der Lauf darf nicht
   selbst mergen, also hört er hier auf.", the mark deleted at 1674 and said
@@ -26983,17 +26983,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **Approved wordings that drop, wholly or in part, and why.** The
   introduction where the idea came with the command, approved on 12 October
-  2026 with its example, docs/roadmap.md lines 19206 to 19216, drops whole,
+  2026 with its example, docs/roadmap.md lines 19217 to 19227, drops whole,
   and „Deine Idee: …“ with it: B6, marker F of the triage at SW-3 and SW-5;
-  the introduction without an idea stands as approved there, lines 19217 to
-  19218. The two forms for a class `empty`, approved on 6 October 2026, lines
-  10999 to 11015, drop: B8, marker F of the triage at PW-24; and „Der Lauf
+  the introduction without an idea stands as approved there, lines 19228 to
+  19229. The two forms for a class `empty`, approved on 6 October 2026, lines
+  11006 to 11022, drop: B8, marker F of the triage at PW-24; and „Der Lauf
   ohne dich ist in diesem Projekt nicht eingerichtet. Mit `--auto` kannst du
-  ihn einrichten.“, approved on 5 October 2026, lines 10993 to 10996, drops for
+  ihn einrichten.“, approved on 5 October 2026, lines 11000 to 11003, drops for
   no record and stays for a yes with something fallen away. The last message
   where a change set aside came back, approved on 16 October 2026, „Ich musste
   deine Änderung an `README.md` während des Laufs beiseitelegen. Sie ist jetzt
-  wieder da.“, lines 25353 to 25355, drops: it fits neither group of B5 and
+  wieder da.“, lines 25367 to 25369, drops: it fits neither group of B5 and
   has no issue, pull request or file, the triage having kept it before B5 was
   decided.
 
@@ -27111,7 +27111,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `setup-project` expanded 1204 to 1207", evidence on `setup-project` line
   557. Defect 8, earlier "it stands as one line of the run's own message
   before the first pull request, `setup-checks` expanded 1815 to 1825",
-  evidence on `setup-checks` line 1044. Defect 10, earlier "what the two
+  evidence on `setup-checks` line 1045. Defect 10, earlier "what the two
   answers that send the run alone cost stands in their descriptions,
   `plan-work` lines 420 to 426 as the roadmap entry of 17 October 2026 left
   them, and each other text stands in the message that ends the turn as its
@@ -27243,7 +27243,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   4 to 8 at the tip: the three attempts are one command in one call, line 11
   at `305490e`, and a check of Claude Code refuses the call and not one of
   the three, so the line goes to the call refused and made again, where the
-  order said an attempt. `docs/skill-conventions.md` lines 425 to 449 at the
+  order said an attempt. `docs/skill-conventions.md` lines 427 to 451 at the
   tip follow; until then they said the rule before this branch, the first
   refusal named beside the answer, each failure of a fetch named, and the
   silent retry not allowed whatever the first attempt met.
@@ -27259,7 +27259,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   took one and not the other. `setup-checks` line 226 said for `secrets`
   with nobody there that the run stops, where lines 93 to 98 and line 160
   say the task ends and not the run; decision 5 of the roadmap entry of 9
-  October 2026, lines 14246 to 14259, decides it, and line 226 follows. The
+  October 2026, lines 14247 to 14260, decides it, and line 226 follows. The
   run then goes on with the next task and ends at an end of `build-work`,
   where the description stands. That settles one of the three pairs of the
   finding of the rule-build entry above, lines 26837 to 26842; the pairs of
@@ -28585,7 +28585,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `plan-work` "With nobody there", lines 226 to 227 at the tip: such a
   refusal of a drafting or a checking agent goes through the order as one
   of the run's own, recorded where the step records the question. Stage 3,
-  lines 547 to 553 at the tip: a refusal a checking agent names is said
+  lines 562 to 568 at the tip: a refusal a checking agent names is said
   beside the verdict on its draft — which check refused, the command as it
   ran and the message — with the person there among the verdicts before the
   design question, by `output-styles/devloop.md` lines 17 to 23, alone in
@@ -28611,8 +28611,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **What the person reads.** By `docs/skill-conventions.md` lines 770 to
   786; the report lists each part with the three tests of lines 675 to 677.
   The message that ends the turn of Stage 3 with the person there and asks
-  which design, as text, last, read whole as expanded `plan-work` lines 1203
-  to 1245 at the tip give it: the part added, a refusal a checking agent
+  which design, as text, last, read whole as expanded `plan-work` lines 1218
+  to 1260 at the tip give it: the part added, a refusal a checking agent
   named, beside the verdict on its draft, stays — they would choose
   differently knowing a verdict rests on a check that did not run in part,
   they meet it nowhere else, the agent's report not reaching them, and it
@@ -28777,6 +28777,542 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   20:19:25 to 20:21:55 UTC, exit 0 with the figures above; its self-test,
   114 cases, 76 of 76 messages asserted by a case, exit 0, from 20:20:08 to
   20:20:10 UTC.
+
+- **Milestone 3: defects d and 11 count as walked by the bench of 16 October
+  2026, and defect 12 of the entry of that date on the runs of that day stays
+  without a run and does not hold the milestone up; decided by the person on
+  18 October 2026, the version stays 0.147.0.** On `task/audit-2026-10-18`,
+  off `786b71f`, version 0.147.0 on `main`, in one commit with the audit
+  entry below and the dated sentence in `docs/plan.md`. Nothing under
+  `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or
+  `.github/` changes, so the version stays and `.claude-plugin/plugin.json`
+  is untouched. Every line number of a file in this entry holds at
+  `786b71f`.
+
+  **What stood.** `docs/plan.md` under milestone 3: decided on 12 October
+  2026, the milestone lands when the defects in its own parts, eight named
+  there, are built and a run walks them; decided on 16 October 2026, it has
+  not landed, defects 1, 3, b, c and i holding in a run, a not holding at
+  four places, d and 11 holding on a bench and meeting no run. The bench is
+  the one the entry of 16 October 2026 on the runs of that day carries:
+  defect 11 of the entry of 11 October 2026 on the first closing run, the
+  forms of Nix, lines 25669 to 25686, and defect d of the entry of that date
+  on the second closing run, a title naming the problem, lines 25766 to
+  25777, the commands of 11 put through the install guard and the command of
+  d through it and the five other hooks of a Bash call, under the four
+  install records no, none, yes11 and yes6, the bench described at lines
+  25793 to 25826. In `docs/stock-take.tsv` both things read
+  walked already, each by a run of 16 October 2026 under 0.141.0 on that
+  entry's paragraph on the bench of the hooks and the reader. Defect 12 of
+  the entry on the runs, a refusal of a fourth kind that met a planning
+  subagent, lines 26169 to 26188, was built on 18 October 2026 by the entry
+  that begins at line 28509, and no run has met it since.
+
+  **What the person decided.** d and 11 count as walked for the milestone,
+  by that bench. Defect 12 stays built and never walked until a run meets
+  it, and does not hold the milestone up. Where what a defect turns on is
+  what the model does, the milestone asks a run, as before.
+
+  **The person's reasons.**
+
+  - d and 11 are repaired in hooks. Between a command and the hook no model
+    decides, so the same command gets the same answer in a run as on the
+    bench; the bench put exactly the commands of a run through every hook,
+    under the four install records, and both held. A run would show only
+    whether the model writes such a command, which does not concern the
+    repair.
+  - A run arranged so that it meets them — no Nix on the machine and a task
+    that goes only through Nix; a task that downloads with `sudo` in the
+    workflow on GitHub — tests the arrangement and not devloop; where it
+    does not meet them, nothing is shown, and the milestone hangs on chance.
+  - Defect 12 depends on what the model does and cannot be forced; it is
+    not counted as walked.
+  - Where the behaviour depends on the model, the milestone asks a run
+    still.
+
+  **What follows.** Of what the entry of 16 October 2026 on the runs of that
+  day names as standing between the milestone and its landing, lines 26469
+  to 26471 — defect a, text the model writes into a progress update, and the
+  two defects no run had met — defect a is left: its should was revised and
+  built on 17 October 2026, lines 26772 to 26776, and what it turns on is
+  where the model puts text owed to the person, which by the last reason a
+  run has to show. `docs/plan.md` carries the decision as a dated sentence
+  under milestone 3, after the sentence of 16 October 2026, and names a as
+  what is left. In the table nothing changes for d, 11 or 12: the tool
+  computes their states off the records, and what the person decided is
+  which of them the milestone counts. This entry names no defect, and its
+  head carries a not-a-thing row for that reason.
+
+- **The consistency audit of 18 October 2026 before the handover, read against
+  the eleven entries since the catch-up of 14 October 2026 and the code at
+  `786b71f`: thirty-three disagreements, nineteen mended — nine in the
+  documents, three dated entries' line numbers corrected in place and seven
+  said right here — three rows of the table brought to the tool's rule and
+  eleven recorded; the two points of the order answered; 18 October 2026,
+  the version stays 0.147.0.** On `task/audit-2026-10-18`, off `786b71f`,
+  version 0.147.0 on `main`; this entry, the entry on milestone 3 above, the
+  mends and the rows of the table in one commit. Nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, so the version stays and `.claude-plugin/plugin.json` is
+  untouched; what is wrong outside `docs/` and `README.md` stands below with
+  what is and what should be, and is not built. The report stands on this
+  machine as `~/devloop-audit-2026-10-18.md`, in English, and is not in the
+  repository. Every line number of a file in this entry holds at `786b71f`
+  unless it says otherwise. No session of Claude Code was started and no
+  model called outside the session that made it, whose subagents read the
+  entries; beyond the `git fetch` of the order and of the heads of pull
+  requests #174 to #184 and one `gh pr view 175` by a subagent, GitHub was
+  neither read nor changed.
+
+  **What was read, and how.** On 18 October 2026 on a branch cut from
+  `origin/main` at `786b71f`, the working tree clean, the installed copy at
+  0.147.0 equal to the tree in all six directories, the check under "Before
+  you change anything, run this" printing nothing. Read whole by the session:
+  `docs/plan.md`, `README.md`, the header of `scripts/devloop-stock-take`
+  and `git diff e687f51 786b71f -- docs/skill-conventions.md`; of this file
+  everything before the first entry under "Known gaps", the audit of 14
+  October 2026 and its catch-up as the form, and everything from "##
+  Decisions taken against" on, 228151 bytes in all. The eleven entries from
+  line 24231 to line 28780, those of pull requests #174 to #184, and the code
+  of `git diff e687f51 786b71f` over `skills`, `shared`, `hooks`, `bin`,
+  `scripts`, `output-styles` and `.github`, 44 files with the three
+  documents, were read by eleven subagents of the session, one entry each
+  with its squash commit's diff, every line number at the commit it names
+  read with `git show`, the branch commits fetched as the heads of the pull
+  requests, each squash commit's tree equal to its head's; every finding they
+  returned was read again by the session at the place before it counted.
+  The table through the tool at `786b71f`: exit 0, nothing broken, nineteen
+  findings, no unit without a straight path, none of 4042 lines uncovered,
+  216 lines that can carry no unique anchor, no status word broken over a
+  line break. The commands and what they printed stand in the report.
+
+  **The entries against the code.** Every statement of the eleven entries
+  about what a skill, a shared text, a hook, a program, the output style or
+  the workflow does was held against the files at `786b71f`, and where it no
+  longer holds there, against the entry's own commit; about 1010 statements
+  and 780 line numbers. What the entries built stands as they say, at their
+  commits: the style and its hook; part B at the setup and at planning and
+  building with `bin/devloop-setup-state`'s `set-aside:` line; the bench for
+  d and 11 against the install guard, unchanged since but for its message;
+  the rule and the questions of 17 October 2026 in the style, the shared
+  texts and the twelve skills; `bin/devloop-arm` with its self-test, 36
+  cases; the interview of `shared/three-questions.md`; the merge handover and
+  the message of the merge guard; the fourth refusal at every place that
+  names the refusals and the class off for an install not run. What a later
+  commit changed of an earlier entry's statements, a later entry records,
+  with one exception below.
+
+  **Mended in the documents.** Each mended place carries a defect thing
+  sited on its status line here, with the mended line as its evidence, which
+  for a document reads recorded and not built.
+
+  - `docs/plan.md` under "Where the set ends" said that what the project
+    declares is reported at setup before the install question, in step 2 of
+    `setup-project`. Since 17 October 2026 step 2 says nothing of what step
+    1 found, `skills/setup-project/SKILL.md` lines 209 to 215. Mended with a
+    dated clause.
+
+    Recorded, not built: the plan says what the project declares stood in the
+    report of step 2 until 17 October 2026 and in the fields of the question
+    since.
+
+  - `docs/skill-conventions.md` line 476 said "three cases part there" and
+    named four, a refusal, an install not through, a check chain or target
+    that does not finish and every other command; `shared/command-does-not-answer.md`
+    line 116 says four since 9 October 2026, `c819499`. Mended: four.
+
+    Recorded, not built: the conventions count four cases where a command
+    with nobody there to tell does not answer.
+
+  - The conventions under "Only ask where there is something to decide",
+    lines 557 to 562, say a question with one sensible answer is not asked;
+    since 18 October 2026 every decision about the idea is a question in the
+    interview that sharpens it, one answerable in one word from the run's
+    recommendation among them, `shared/three-questions.md` lines 7 to 17,
+    the entry of that date at line 27750, whose lines 27822 to 27826 say the
+    kind of 22 August 2026 can come back there. Mended with a dated paragraph
+    naming the interview as the place it does not hold.
+
+    Recorded, not built: the conventions name the interview that sharpens an
+    idea as the place a question with one sensible answer is asked all the
+    same.
+
+  - The conventions, lines 51 to 52: "The reply says what that command
+    does." `shared/skill-name.md` lines 12 to 14 since 17 October 2026: "What
+    that command does is not announced in the reply". Mended with the date,
+    and the sentence on the wording of 18 September 2026 at line 95 with it.
+
+    Recorded, not built: the conventions say what a typed command does is not
+    announced in the reply since 17 October 2026.
+
+  - The conventions under "Never assert state — query it", line 351: "say you
+    are going to look, and look"; `build-work` line 224 since 17 October
+    2026: "look, without announcing it". Mended with the date.
+
+    Recorded, not built: the conventions say a run without a command for a
+    statement looks without announcing it since 17 October 2026.
+
+  - The conventions, lines 2674 to 2676: "a mergeable status with a gate
+    present is a pull request past its gate"; since 18 October 2026 that is
+    the third case only with auto-merge on, `build-work` lines 1075 to 1076,
+    and with the field false the first, lines 1107 to 1109, the second
+    addendum of the entry at line 28008. Mended with a dated sentence.
+
+    Recorded, not built: the conventions say past its gate with auto-merge off
+    is the first case since 18 October 2026.
+
+  - The conventions on `bin/devloop-setup-state`, lines 2300 to 2305, name
+    what it prints per file of the setup and its `fetch:` line, not the
+    `set-aside:` line it prints since 16 October 2026, its head lines 29 to
+    35; `grep -n 'set-aside:' docs/skill-conventions.md` printed nothing.
+    Mended with a dated sentence.
+
+    Recorded, not built: the conventions name the set-aside line of the
+    setup state's program since 16 October 2026.
+
+  - The conventions, line 203, said `shared/set-aside-back.md` is "inserted
+    beside the two"; it stands two lines under `shared/set-aside-at-start.md`
+    in `plan-work`, `setup-project`, `start-work` and `untangle-idea` and two
+    lines under `shared/fetch-three-times.md` in `build-work` and
+    `setup-checks`, beside `shared/mark-deletion.md` nowhere. Mended.
+
+    Recorded, not built: the conventions say where the bring-back with the
+    person there is inserted, beside which text in which skills.
+
+  - `README.md` lines 89 to 91: "The cut is presented and then created … and
+    you can name a different one before it is." `cut-into-tasks` lines 138
+    to 141 since 17 October 2026: the split is said "as what was created,
+    and not before it is created … No room to stop it is offered". Mended
+    with the date.
+
+    Recorded, not built: README.md says the cut is created without asking and
+    seen once it is, since 17 October 2026.
+
+  **Line numbers of dated entries, corrected in place.** As the audit of 12
+  October 2026 corrected four and that of 14 October 2026 three; nothing
+  else in a dated entry is changed, and what a dated entry says wrongly
+  otherwise this entry says, below.
+
+  - The entry that begins at line 28509 named "Stage 3, lines 547 to 553 at
+    the tip" and "expanded `plan-work` lines 1203 to 1245 at the tip", lines
+    28588 and 28614 to 28615, for the text as it stood at `c4249b5`; the
+    addendum moved it, and at the tip, `63e3d09`, the refusal paragraph runs
+    from line 562 to 568 and the message from expanded line 1218 to 1260, the
+    addendum's own "547 to 550 at the tip" naming another text. Corrected.
+
+    Recorded, not built: the entry on defects 9 and 12 names lines 562 to 568
+    and expanded 1218 to 1260 of plan-work at the tip.
+
+  - The entry that begins at line 26919 gives a line "as it stands at the tip
+    of the branch", `5002a1e` with the tree of `6793c5c`, whose in-place
+    revisions above it moved every later line of this file: lines 26986 to
+    26996 named 19206 to 19216, 19217 to 19218, 10999 to 11015, 10993 to
+    10996 and 25353 to 25355, which hold at `b24542a`, now 19217 to 19227,
+    19228 to 19229, 11006 to 11022, 11000 to 11003 and 25367 to 25369; line
+    27262 named 14246 to 14259, now 14247 to 14260; line 27114 named
+    `setup-checks` line 1044 for an anchor on 1045; line 27246 named
+    `docs/skill-conventions.md` lines 425 to 449 at the tip for a paragraph
+    from 427 to 451 there. Corrected, eight places.
+
+    Recorded, not built: the entry of 17 October 2026 on where each owed text
+    stays names eight line ranges as they stand at its tip.
+
+  - The entry that begins at line 25486 named "expanded 1770 to 1774" at line
+    26029 for the stop step 6 names for a gate already past with nobody
+    there; in `build-work` expanded at `7e35090` those lines define the case,
+    and the stop stands at 1841 to 1843, "In unattended mode there is nobody
+    to hand it to. A refusal by GitHub to arm, in any of the three cases, is
+    a stop". Corrected.
+
+    Recorded, not built: the entry on the two runs of 16 October 2026 names
+    expanded 1841 to 1843 of build-work for the stop past the gate.
+
+  **Said wrongly in dated entries, said right here.** Each carries a defect
+  thing sited and evidenced on its status line.
+
+  - Five entries name one commit fewer than their branches have, the last
+    each time a correction at the check before the merge: the entry on the
+    thinking part, line 24240, one where `318d155` and `772808b` stand; on
+    the output style, line 24734, three of four, `5221336`; part B at the
+    setup, line 24933, three of four, `99473da`; at planning and building,
+    line 25216, three of four, `4c00311`; on the two runs, lines 25494 to
+    25499, two of three, `735e25d`, which changed `docs/plan.md` alone.
+
+    Recorded, not built: five entries of 15 and 16 October 2026 name one
+    commit fewer than their branches have, the correction at the check.
+
+  - The entry on the output style, lines 24917 to 24918, names six rows of
+    the table re-anchored; of the nine rows `9b40c07` changed, three are the
+    thinking part's defects, five changed an anchor, and the sixth, the
+    registration in `hooks/hooks.json`, only its note.
+
+    Recorded, not built: the entry on the output style re-anchored five rows
+    of the table, not six, a sixth changing its note alone.
+
+  - The entry on part B at the setup, at `49bd995`: fourteen not-a-thing rows
+    left the table with the section "Permissions, before the first command",
+    ten "part of" and four "rationale", not twelve, line 24988;
+    `shared/branch-deletion.md` is inserted at three places, `build-work`,
+    `setup-checks` step 7 and `setup-project`, and named at the fourth,
+    `setup-checks` step 8, not inserted at four, line 25024; three hooks
+    hand a command over, the merge guard among them at its line 35, not two,
+    line 25057, the merge guard's command given `--repo` by `d373314`, the
+    entry at line 28008; and the install guard's walked runs were 113 on 24
+    things, not twenty-four, line 25061.
+
+    Recorded, not built: the entry on part B at the setup counts fourteen
+    rows gone, three inserts, three hooks and 113 runs on 24 things.
+
+  - The entry on planning and building, at `7e35090`: the wording at
+    `build-work` line 134 of `49bd995` was not replaced, standing at line 138
+    as before, line 25276; three lines of `build-work` carry "as at every
+    stop with a reason", 287, 1268 and 1359, not every other stop, the stops
+    of step 6 saying "as at every such stop" and "are all stops with the
+    reason named", lines 25271 to 25274; `shared/mark-deletion.md` has 36
+    lines, not thirty-five, line 25334; two of the four start skills,
+    `plan-work` and `setup-project`, fetch three times, line 25335; and line
+    339 of `plan-work` reads "plans on on" at `7e35090`, not at the `49bd995`
+    its head names for skills, line 25456.
+
+    Recorded, not built: the entry on planning and building, five statements
+    that do not hold at its own commits, said right here.
+
+  - The entry on the two runs of 16 October 2026 holds its line numbers at
+    `7e35090`, line 25504; nine ranges `6793c5c` wrote into its shoulds in
+    place hold at `6793c5c` and not there: `start-work` 77 to 103, line
+    25894; `setup-project` 137 to 155 and 557 to 562, lines 25896 and 25911;
+    `setup-checks` 1044 to 1050, line 26096; and at lines 26146 to 26152
+    `plan-work` 417 to 423, `setup-checks` line 1200, `setup-project` line
+    662, `plan-work` 501 to 505 and 478 to 479. A number alone cannot say
+    that, so they stay.
+
+    Recorded, not built: nine line ranges written into the entry on the two
+    runs on 17 October 2026 hold at 6793c5c and not at 7e35090.
+
+  - The should on the loose issues in the entry on the thinking part, lines
+    24504 to 24508, revised in place by `6793c5c`, names `build-work` lines
+    346 to 347 and 349, which at `e687f51`, the entry's stand, say "say which
+    and why"; the text it describes stood at 376 to 377 and 379 at `6793c5c`
+    and stands at 382 to 383 and 385. The entry of 17 October 2026 that made
+    the revision, lines 27129 to 27134, gives it to the entry of 11 October
+    2026 on the first closing run, which carries no such should; it is this
+    entry's.
+
+    Recorded, not built: the revised should on the loose issues stands in the
+    entry on the thinking part, its text at lines 376 to 379 of 6793c5c.
+
+  - The entry on the merge handover says in its head, lines 28021 to 28023,
+    that the words of the tool's search set stand in it in the head alone;
+    its second addendum added two status lines, 28343 and 28352. And lines
+    28166 to 28168 name "decision 1 of that day" for lines 26625 to 26627,
+    which are the paragraph "Decided the same day, for the order that
+    follows", line 26616, built as B1 by the entry at line 26919; decision
+    (1) of that day, line 26571, is another.
+
+    Recorded, not built: the entry on the merge handover carries two status
+    lines beside its head, and B1 of 17 October 2026 at lines 26625 to 26627.
+
+  **Three rows of the table, brought to the tool's rule.** The head of the
+  tool, section C: a thing whose name no longer says what the thing says is
+  renamed where no run hangs on it, the note naming the old name; a note
+  carries what holds.
+
+  - `build-work / Step 6 — Merge it / auto-merge off with nobody there,
+    unreachable by start condition 5, stop`, line 178 of the table. Start
+    condition 5, lines 1408 to 1420, reads auto-merge where the build starts,
+    "Refuse to start unless all seven hold", lines 1356 to 1363, and after
+    the set-up, line 1453; auto-merge switched off since is met at step 6, a
+    refusal by GitHub and a stop by lines 1105 to 1107, and since 18 October
+    2026 `past its gate:` with the field false, lines 1107 to 1109, the thing
+    on line 179. No run hangs on it. Renamed: auto-merge off with nobody
+    there, read by start condition 5 at the start alone, stop.
+
+    Recorded, not built: the step 6 thing on auto-merge off with nobody there
+    is renamed, start condition 5 reading it at the start alone.
+
+  - `build-work / Step 6 — Merge it / no gate with nobody there, unreachable
+    by start condition 5, stop`, line 180, likewise: a gate gone since the
+    start ends the program on `no required check:`, lines 1042 to 1044.
+    Renamed the same way; what step 6 does then with nobody there is
+    recorded below.
+
+    Recorded, not built: the step 6 thing on no gate with nobody there is
+    renamed, start condition 5 reading the gate at the start alone.
+
+  - The defect of the entry of 30 September 2026 on the merge guard's
+    message, line 2475, its site on line 7946 and its evidence on the
+    message, ends its note "618 words on 30 September 2026 and 375 since";
+    `wc -w` over the heredoc gives 375 at `275be3d`, 382 at `4552dcc` and
+    `12d04b5`, 549 at `cafa256` and 605 at `01f0d46`, `d373314` and
+    `786b71f`. The note gives each count with its commit.
+
+    Recorded, not built: the note of the defect on the merge guard's message
+    gives its word counts by commit, 605 since 18 October 2026.
+
+  **Recorded as they are.**
+
+  - `skills/build-work/SKILL.md` step 6, lines 1146 to 1147: "Start condition
+    5 makes the first two unreachable"; it reads auto-merge and the gate at
+    the start alone, as above, and the second addendum of the entry at line
+    28008 says so of the second defect, lines 28430 to 28433. With nobody
+    there step 6 states a stop for "A refusal by GitHub to arm, in the first
+    two cases", lines 1105 to 1106, while the second case comes as the
+    program's own `no required check:` since 17 October 2026, lines 1042 to
+    1044, and no line says what a run with nobody there does on it. Should:
+    the sentence says the first two are out of reach at the start alone, and
+    step 6 says what follows `no required check:` with nobody there. Outside
+    `docs/`, not built here.
+
+    Recorded, not built: build-work step 6 calls the first two cases
+    unreachable and states nothing for no required check with nobody there.
+
+  - `skills/build-work/SKILL.md` lines 994 to 996: every required name
+    completed is "the third refusal case below"; since 18 October 2026 it is
+    the third only with auto-merge on and the first with it off, lines 1045
+    to 1046 and 1075 to 1076 of the same file. Should: the line names both.
+    Outside `docs/`.
+
+    Recorded, not built: build-work names every required check completed the
+    third case without the auto-merge it turns on since 18 October 2026.
+
+  - `shared/mark-deletion.md` line 16 pops each change the `set-aside:` lines
+    name, "For each: `git stash pop <entry>`", the entries read once and named
+    by index, `stash@{N}`, `bin/devloop-setup-state` lines 29 and 215; a pop
+    renumbers the entries below it. Measured on 18 October 2026 in a
+    throwaway repository with git of this Mac: an entry of the person's own
+    under two of a run, the lines `stash@{0}` and `stash@{1}`, both pops exit
+    0, after them the run's second entry still set aside and the person's
+    own popped into the tree. `shared/set-aside-back.md` pops by the entry a
+    line names too. Should: each pop takes the entry as read just before it,
+    or the entries go from the highest number down, and an entry whose
+    message is not the run's is never popped. Outside `docs/`.
+
+    Recorded, not built: the bring-back pops stash entries by an index read
+    once, so a second pop takes another entry, the person's own among them.
+
+  - `skills/build-work/SKILL.md` under "Unattended mode", lines 1514 to 1516
+    and 1530 to 1531, names among the places the mark goes "a fetch that
+    fails on its third attempt or a fast-forward that fails on what only they
+    can clear, in step 1 and in step 6" and says "Each of those sites says so
+    where it stands"; step 1, lines 283 to 287, stops "as that section says",
+    and `shared/fetch-three-times.md` says nothing of the mark at its stops.
+    Should: the two stops say the mark goes, as at every stop with a reason.
+    Outside `docs/`.
+
+    Recorded, not built: build-work lists two fetch stops among the places the
+    mark goes, and neither site nor the fetch text says it.
+
+  - `shared/install-not-through.md` lines 17 to 20 name every failed attempt
+    of an installer "on the model of "When the main branch cannot be fetched
+    or fast-forwarded""; `shared/fetch-three-times.md` lines 3 to 4 since 17
+    October 2026: "An attempt that fails and is followed by one that answers
+    is not said". Two ways, neither decided by a rule: the install text names
+    its failed attempts on its own ground, or it follows the fetch text and
+    says only the third. Outside `docs/`; both in the report.
+
+    Recorded, not built: the install text names every failed attempt on the
+    model of a fetch text that names none followed by an answer.
+
+  - `skills/setup-project/SKILL.md` line 578: "Anything without the label is
+    from outside"; `shared/mark-deletion.md` line 26 files the issue of a
+    conflicted bring-back "labelled `needs-human` and not `raised-here`",
+    since 16 October 2026. Two ways: setup-project names the issues devloop
+    files without the label, or that issue carries a mark of devloop's own.
+    Outside `docs/`; both in the report.
+
+    Recorded, not built: setup-project reads every issue without raised-here as
+    from outside, and devloop files one without it since 16 October 2026.
+
+  - `hooks/pre-tool-use-mark-guard.sh` lines 20 to 21: "The texts are the ones
+    approved on 9 October 2026"; its messages at lines 143 and 145 carry "in
+    the next message with which you end your turn with text" since 17 October
+    2026, the entry at line 26919. Should: the comment names that change.
+    Outside `docs/`.
+
+    Recorded, not built: the mark guard's comment gives its texts as the ones
+    of 9 October 2026 where 17 October 2026 changed them.
+
+  - `.github/workflows/stock-take.yml` lines 127 to 128: "The handlers are
+    read off hooks/hooks.json with python3 so that one added later runs
+    without this step being touched"; line 231 refuses a handler under an
+    event and matcher the step has no input for, "add one to this step", as
+    the entry on the output style met, lines 24756 to 24758. Should: the
+    comment says a handler added under a known event and matcher runs
+    untouched and one under a new pair needs its input. Outside `docs/`.
+
+    Recorded, not built: the workflow's comment says every handler added later
+    runs without the hooks step being touched.
+
+  - The wording approved on 17 October 2026 for the mode question has the
+    header „Ohne dich", line 26647, two words; the rule of the same day, line
+    26589, `output-styles/devloop.md` lines 46 to 47 and `setup-checks` line
+    387 have the header one word of at most twelve characters. Two ways: the
+    rule keeps the twelve characters and drops the one word, or the approved
+    header becomes one word. Both in the report.
+
+    Recorded, not built: the approved header of the mode question is two words
+    where the rule of the same day asks one.
+
+  - On 17 October 2026 `b24542a` revised the shoulds of seven defects on the
+    status lines of dated entries in place, `git show b24542a --format= -U0
+    -- docs/roadmap.md` naming hunks at 17619 and 25942 to 26177 before its
+    own entry, and `6793c5c` nine, at 433, 454, 7890, 17253, 24493 and 25877
+    to 26123, each quoting the earlier should in its own entry, lines 26771
+    and 27106 to 27134; `docs/skill-conventions.md` line 1397 says "a dated
+    record is never edited", and the audits correct a dated entry in place
+    only where a line number is wrong, the audit of 14 October 2026 at lines
+    23647 to 23650. The two corrections of entries above that the revisions
+    led to are made or said here. Two ways, neither decided by a rule: the
+    conventions name the case, a should on a status line revised in place
+    where a later decision changes what it names, the earlier quoted in the
+    entry that decides, as since 17 October 2026; or a dated entry is not
+    edited, and the deciding entry carries the revised should alone. Both in
+    the report.
+
+    Recorded, not built: two entries of 17 October 2026 revised shoulds in
+    place in dated entries, which the conventions say are never edited.
+
+  - The session that made this entry, opened on 18 October 2026, carries
+    under "# Output Style: devloop:devloop" the text of
+    `output-styles/devloop.md` as it stood from `9b40c07` to before
+    `b24542a`, the text of the cached copies 0.139.0 to 0.141.0, while the
+    installed copy is 0.147.0, equal to the tree, and the check under
+    "Before you change anything, run this" printed nothing; the conventions
+    say there that silence means what runs in this session is what is about
+    to change, and that Claude Code reads a style at start out of the
+    installed copy. When it read this one is not measured, and
+    `hooks/post-tool-use-output-style.sh` reads the style's name, which
+    matches. Should: the conventions say when Claude Code reads a plugin's
+    style and what the check's silence does not cover, measured. Nothing
+    built here.
+
+    Recorded, not built: this session ran a style older than the installed
+    copy while the check before any change printed nothing.
+
+  **The two points of the order, answered.** The names of rows 178 and 180:
+  neither holds, start condition 5 reading auto-merge and the gate at the
+  start alone; both renamed above, and the skill's sentence and the missing
+  outcome for `no required check:` recorded. The 618, 375 and 605 words, each
+  counted with `wc -w` over the heredoc of `hooks/pre-tool-use-merge-guard.sh`:
+  618 from `b90874b` to `6793c5c`, the defect of 30 September 2026, lines
+  7946 to 7951; 375 at `275be3d`, the first commit of the entry at line
+  27343, line 27478, which its addendum corrects to 382 at its tip, lines
+  27737 to 27738; 605 at `d373314` and `786b71f`, line 28463, the second
+  addendum having put every duty of the merge handover into the message.
+  The defect's row stands with its evidence on the message, and its note is
+  brought to the counts above.
+
+  **Records.** Thirty-three defect things, one per disagreement above, each
+  sited on its status line: the nine mended in the documents evidenced on
+  the mended line, in `docs/plan.md` for one, `README.md` for one and the
+  conventions for seven; the three corrections evidenced on a corrected line
+  of their entry; the other twenty-one on their status line. The head of
+  this entry as part of the first; the head of the entry on milestone 3
+  above as no defect. The two rows renamed with their notes, and the note
+  of the row on the merge guard's message. No finding added, and the tool's
+  finding count stays; no thing lost a run, since no mended line carries a
+  record with runs. No run is recorded for this entry. The figures of the
+  tool and the checks before and after the change stand in the report.
 
 ## Decisions taken against
 
