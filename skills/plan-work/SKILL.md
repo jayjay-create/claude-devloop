@@ -218,10 +218,14 @@ asks the question with somebody there.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 
 **A refusal before the build goes through the same order, since 9 October
-2026**: a guard's block, the no of the classifier of auto mode, or the no of
+2026**: a guard's block, the no of the classifier of auto mode, the no of
 the hook on permission prompts, which answers every prompt of this session
-while the mark stands, `hooks/permission-request-unattended.sh`. None of
-them is tried again or reached another way. The thing the refused command
+while the mark stands, `hooks/permission-request-unattended.sh`, or, since
+18 October 2026, the refusal of a safety check built into Claude Code,
+defect 12 of the roadmap entry of 16 October 2026 on the runs of that day;
+and since the same day a refusal a subagent of this skill names in its report,
+a drafting or a checking agent of Stage 3 say, as one of the run's own. None
+of them is tried again or reached another way. The thing the refused command
 would have settled is the question, and the step the order stops at records
 the refusal where it records the question — the command as it ran and the
 message that came back, in the spec beside the decision, on the issue that
@@ -540,6 +544,13 @@ return either, state that the draft is unchecked** — with the user there
 among the verdicts before the design question, alone in the comment of this
 stage — and never present a draft as having passed a check that
 did not run. A rerun that returned is not said, since 17 October 2026.
+A refusal a checking agent names in its report is said beside the verdict on
+its draft, since 18 October 2026, defect 12 of the roadmap entry of 16
+October 2026 on the runs of that day — which check refused, the command as
+it ran and the message that came back — with the user there among the
+verdicts before the design question, alone in the comment of this stage and
+by the order for a refusal before the build under "With nobody there"; what
+it kept from running is a check that did not run.
 
 Present them one after another, then compare them in prose — on how much behaviour
 each hides behind how small an interface, on how localised a future change would

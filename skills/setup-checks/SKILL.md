@@ -153,13 +153,15 @@ the four ways the rule in step 4 names since 9 October 2026 — the guard
 blocks it under a yes, a runtime, a place the record does not name, and
 since 8 October 2026 a branded browser at the system's own location or the
 system packages a browser's `install-deps`, `--with-deps` or
-`--install-deps` would install; the classifier of auto mode refuses it; the
+`--install-deps` would install; the classifier of auto mode or, since 18
+October 2026, a safety check built into Claude Code refuses it; the
 installer ran and ended with an error, after its three attempts; the call
 did not finish inside its ten minutes: "A guard's block is not a decline"
 above answers all four, the class going `skipped (state)` with what this
 machine lacks, and `secrets` ending the task. A refusal of anything else
 here — a guard's block on a command that is no install, the classifier's
-no, the no of the hook on permission prompts while the mark stands — ends
+no, the refusal of a safety check built into Claude Code since 18 October
+2026, the no of the hook on permission prompts while the mark stands — ends
 the task as "A guard's block, with nobody there" in `build-work` says, since
 this skill is reached with nobody there on a task's branch alone. A row in
 no allowed form whose text does not say whose decision it
@@ -1085,14 +1087,22 @@ records having to land first — that is what point 1 is for:
    its class is proven red again as in step 5.
 3. **Every class on the list** — off only for an earlier no that the answers
    just given lift, the reason in its `skipped (user)` cell naming what was
-   declined: an install they declined or did not run, filled where the
-   install record says yes now; a tool they declined into the packages, with
-   no other way left or with the check chosen off over another tool, filled
-   with the tool first asked about where the record on the packages says yes
-   now, and left off where only the install record changed — is filled, by
-   steps 4 to 6 for those classes, its red proof into the pull request that
-   carries it as step 5 says. That changes rows the user switched off, and
-   not without them: they are here and have just said yes.
+   declined: an install they declined or did not run, filled with the tool
+   in the packages where the record on them says yes now and the tool can be
+   entered there, and outside the project where the install record says yes
+   now only where that does not hold, so that nothing it installs outside the
+   project is a tool point 2, which comes first, would have entered; a tool
+   they declined into the packages, with no other way left or with the check
+   chosen off over another tool, filled with the tool first asked about where
+   the record on the packages says yes now, and left off where only the
+   install record changed — is filled, by steps 4 to 6 for those classes, its
+   red proof into the pull request that carries it as step 5 says. That
+   changes rows the user switched off, and not without them: they are here
+   and have just said yes. A class off for an install has been filled this
+   way since 18 October 2026, defect 9 of the roadmap entry of 16 October
+   2026 on the runs of that day; until then it was filled where the install
+   record said yes now, whatever the record on the packages said, and biome
+   went outside the project under both yes and was entered nowhere.
 4. **Only then the gate**, by the order further down, and only where every
    answer is now yes; the workflow file carries the installation line of
    every tool a blocking class now needs outside a project, as that order

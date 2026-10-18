@@ -50,7 +50,8 @@ the spec and from the rules below, and "Before you create anything" says so. So
 the order a planning run follows at an unanswered question — under the section
 of the same name in `plan-work` — is needed here for one thing alone, since 9
 October 2026: a refusal — a guard's block, the no of the classifier of auto
-mode, the no of the hook on permission prompts — goes through it, with the
+mode, the no of the hook on permission prompts, since 18 October 2026 the
+refusal of a safety check built into Claude Code — goes through it, with the
 thing the refused command would have settled as the question, tried no
 second time and reached no other way, and the refusal is named where that
 order records the step, the command as it ran and the message with it. What
