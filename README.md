@@ -86,9 +86,12 @@ the step it was in rather than starting over.
 
 **Cut it into tasks.** Each cuts vertically through every layer so it can be
 demonstrated on its own, fits one fresh session, and records which tasks must
-land first as real, queryable blocking relationships. The cut is presented and
-then created — it follows from the spec, not from anything only you know — and
-you can name a different one before it is.
+land first as real, queryable blocking relationships. The cut follows from the
+spec, not from anything only you know, so it is created without asking you,
+and since 17 October 2026 you see it as what was created, at the next point
+where the run waits for you, or in the tracker where the run goes alone;
+until that day it was presented first and you could name a different one
+before it was created.
 
 **Build each task.** One at a time, in its own subagent with a fresh context.
 Test first. Fast checks after every file change, the full suite before anything

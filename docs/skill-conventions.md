@@ -48,8 +48,10 @@ project is not set up, a file it needs is missing, a stage it would hand to is
 not there — say what is missing and what could be done instead, each by what
 it does and not by which skill it is.
 
-**A name the user typed themselves is not repeated back either.** The reply
-says what that command does.
+**A name the user typed themselves is not repeated back either.** What that
+command does is not announced in the reply, since 17 October 2026, the
+roadmap entry of that date on the reports of what was done: it shows in what
+the run does. Until then the reply said what that command does.
 
 **One skill calling another is not saying a name.** The call carries it.
 
@@ -94,7 +96,8 @@ and again at the very bottom from `shared/closing.md`; the line on skill names
 is inserted directly under the opening block from `shared/skill-name.md`, in
 one wording since 18 September 2026, where it stood in three before; the
 wording above is the third of that day, written for the situation measured
-under `## Known gaps` in `docs/roadmap.md`. The next section describes how.
+under `## Known gaps` in `docs/roadmap.md`, its sentence on a name the user
+typed as it stands since 17 October 2026. The next section describes how.
 
 ## Text shared between skills
 
@@ -200,7 +203,8 @@ until then `build-work` alone described;
 `shared/set-aside-at-start.md`, the question at every start about a change
 a run without them set aside, inserted into the four skills that read the
 setup state at their start; `shared/set-aside-back.md`, how such a change
-comes back with the person there, inserted beside the two; and
+comes back with the person there, inserted beside it in those four and
+beside `shared/fetch-three-times.md` in `build-work` and `setup-checks`; and
 `shared/editing-tool.md`, which files are written with the editing tool and
 never from the shell, inserted into `build-work` and `setup-checks` step 8.
 
@@ -348,7 +352,9 @@ changed it itself.
 
 **A statement about the repository or the platform rests on a command from this
 turn.** Not on how it was at the start, not on how it usually is. Where you have
-no such command, say you are going to look, and look. That is the rule for a run
+no such command, look, without announcing it, since 17 October 2026, as
+`build-work` says under "Never assert state — always query it"; until then
+the run said it was going to look, and looked. That is the rule for a run
 in a session. The same claim written into a skill, where it stands in for every
 future run, is held to more than a command — see "A finding that would have
 passed unsupervised gets written down".
@@ -473,7 +479,7 @@ action does not happen: nothing is armed, nothing is declared past its gate,
 nothing is reported clear. Where a person is there, the report goes to them as
 something they can act on — the permission is theirs to grant and the command
 theirs to run — and where nobody is, it goes into the run's own report. Since
-9 October 2026 three cases part there, as `shared/command-does-not-answer.md`
+9 October 2026 four cases part there, as `shared/command-does-not-answer.md`
 says: a refusal — a guard's block, the no of the classifier of auto mode, the
 no of the hook on permission prompts, which answers every prompt while the
 mark of the run with nobody there stands, and since 18 October 2026 the
@@ -560,6 +566,16 @@ whether they have a direction in mind reads as not having listened. Both teach
 the user that their answers do not matter — which is how the real questions start getting waved
 through. Before asking, name what the other answer would actually change. If
 nothing, say what you are about to do and do it.
+
+**Not in the interview that sharpens an idea, since 18 October 2026.** There
+every decision about the idea is put to the person with the run's
+recommendation, one the run holds to have a single sensible answer among
+them, by the person's decision of that day, the roadmap entry of that date
+on what that interview asks; `shared/three-questions.md` says so where
+`plan-work` Stage 1 and `untangle-idea` insert it. What has a right answer
+to look up, follows from what they have said, is a convention of this
+workflow or is settled by the project's own rules, the run settles there as
+it does here.
 
 ## Every question carries its own reason
 
@@ -2302,7 +2318,10 @@ file the setup writes under a fixed name — the five of `setup-project` step 6
 — whether it stands there, and per present file the version its marker
 carries or `none`; the task runner, `CLAUDE.md`, `.gitignore` and the two
 places `domain.md` points at have no fixed name a branch can be asked for, so
-they are not read. With `--fetch` it fetches first, and a fetch that fails or
+they are not read. Since 16 October 2026 it prints as well a `set-aside:`
+line per change a run of devloop set aside at a fetch and has not brought
+back, read off `git stash list`, the one thing it reads off the working
+tree's repository and not off the ref, as its head says. With `--fetch` it fetches first, and a fetch that fails or
 does not answer is said on its `fetch:` line while the state as last fetched
 is read; without the flag it says it reads that state, and the four skills
 that read with the flag say so to the person, in one text under
@@ -2673,7 +2692,10 @@ true alike. A refusal therefore separates into three cases, not two — the sett
 off, no gate at all, or a gate this pull request is already past — and only the
 first is that field's to answer. The third is read from `mergeStateStatus`; a
 mergeable status with a gate present is a pull request past its gate, not a
-repository without one.
+repository without one. Since 18 October 2026 it is the third case only with
+auto-merge on: with a gate present and the field false it is the first, as
+`build-work` step 6 says, the second addendum of the roadmap entry of that
+date on the merge handover.
 
 **No single query sees every gate**, so the existence of one takes two.
 `repos/OWNER/REPO/branches/main/protection` sees classic branch protection, is

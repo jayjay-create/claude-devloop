@@ -54,8 +54,11 @@ back mechanically. Beyond that line is the person's.
   permission only, asked at setup under milestone 3 and recorded, and asked a
   second time only where the unattended mode is set up and the record does
   not say yes; what
-  the project declares is reported at setup before that question, in step 2
-  of `setup-project`, and it does not stand in for it. A compiler or interpreter is the person's under
+  the project declares was reported at setup before that question, in step 2
+  of `setup-project`, until 17 October 2026, and since that day step 2 says
+  nothing of what step 1 found and what a question of step 4 turns on stands
+  in that question's fields, the roadmap entry of 18 October 2026 on the
+  audit; it does not stand in for the question. A compiler or interpreter is the person's under
   every answer: ruled on 28 September 2026, "Runtimes are not a kind the
   permission may cover" in `docs/skill-conventions.md`, which closed the item
   under "Open" that this sentence used to point at.
@@ -336,6 +339,19 @@ Decided on 16 October 2026, the roadmap entry of that date on the two runs of
 that day in `devloop-test-x` and `devloop-test-y`: the milestone has not
 landed; defects 1, 3, b, c and i held in a run, a did not hold at four places,
 and d and 11 held on a bench and met no run.
+Decided on 18 October 2026, the roadmap entry of that date on milestone 3:
+d and 11 count as walked by the bench of 16 October 2026, for the person's
+reasons: both are repaired in hooks, where no model decides between a
+command and the hook, so that
+the same command gets the same answer in a run as on the bench, which put
+exactly the commands of a run through every hook under the four install
+records; a run would show only whether the model writes such a command, and
+a run arranged to meet them would test the arrangement and not devloop.
+Defect 12 of the entry of 16 October 2026 stays built and never walked until
+a run meets it, and does not hold the milestone up: it depends on what the
+model does and cannot be forced. Where what a defect turns on is what the
+model does, the milestone asks a run as before; of what that entry named as
+standing between the milestone and its landing, that leaves defect a.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
