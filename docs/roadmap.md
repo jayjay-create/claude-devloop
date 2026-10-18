@@ -27868,12 +27868,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `plan-work` lines 331 to 344, and the rounds, lines 276 to 280, every part
   of the should of defect 3 now stands on disk: defect 3 of the entry of 16
   October 2026, on Stage 1 of `plan-work` at the run of that day, lines
-  25914 to 25977, is built with this entry. Not changed: the pair of "Ask
-  the whole frontier in one round", `untangle-idea` line 160, and the cap
-  four lines below it, which the entry of 14 September 2026 records at lines
-  3697 to 3698 and the table as a defect of its own, and which bites more
-  often now that every decision is a question; `README.md` lines 61 to 62,
-  true before and after.
+  25914 to 25977, is built with this entry. Not changed by the commit of
+  this entry, and changed by the addendum below: the pair of "Ask the whole
+  frontier in one round", `untangle-idea` line 160, and the cap four lines
+  below it, which the entry of 14 September 2026 records at lines 3697 to
+  3698 and the table as a defect of its own, and which bites more often now
+  that every decision is a question. Not changed: `README.md` lines 61 to
+  62, true before and after.
 
   **The table.** `docs/stock-take.tsv`: the defect's thing keeps its site on
   its status line, line 25960, and has its evidence on the head of the new
@@ -27918,6 +27919,91 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   there and 320, 399 and 593 here, from 23:27:43 to 23:27:51 UTC. The tool,
   from 23:25:03 to 23:27:24 UTC, exit 0 with the figures above; its
   self-test, 114 cases, 76 of 76 messages asserted by a case, exit 0.
+
+  **Addendum of the same day: the whole frontier and the cap of three in the
+  interview of `untangle-idea`.** Ordered on 18 October 2026 after
+  `b8d07ef`, made the same day on `task/interview-asks-every-decision`, the
+  version staying 0.145.0, raised once on this branch already. The report
+  stands on this machine as
+  `~/devloop-report-2026-10-18-interview-addendum.md`, in English, and is
+  not in the repository. A line is given as it stands at `b8d07ef` unless
+  the tip of the branch is named. No session of Claude Code was started and
+  no model called outside the session that made it; beyond the `git fetch`
+  the order opens with, GitHub was neither read nor changed. The pre-check
+  found no place at which no rule decides how many questions a round asks
+  and none at which the person would get new wording, so nothing halted.
+
+  **What is changed.** The interview of `untangle-idea` said "Ask the whole
+  frontier in one round, then wait", lines 160 to 162, and inserted the cap
+  of three questions in a round four lines below, line 164, the pair the
+  entry of 14 September 2026 records at lines 3689 to 3698. Lines 160 to 162
+  say now what `plan-work` lines 275 to 276 and 279 to 281 say, in its
+  words: at most three in a round, and the rest of the frontier before
+  anything the answers unlock, then wait; a question whose answer hangs on
+  one still open belongs to a later round. "Still open in this round" went
+  to "still open", since under the cap a question still open can stand on
+  the frontier and not in the round. Line 184, on a frontier question that
+  needs a fact, said "so ask the rest of the frontier now", which reads as
+  the whole rest in the running round; it says now that only the questions
+  downstream of the fact wait, "not the rest of the frontier", which goes by
+  the rounds of lines 160 to 162. The cap stays as confirmed on 12 October
+  2026, lines 19052 to 19054, and changes the number of rounds and not the
+  end, line 214. No wording the person receives is new: the two places
+  direct the run, and a round keeps every part it had, carrying at most
+  three questions where the frontier is larger, the rest moved to the next
+  round and none cut; the report holds the round to
+  `docs/skill-conventions.md` lines 770 to 786. The three lines stay three,
+  so no later line of the skill moved and the expanded lines this entry
+  names at the tip stand. The commit quotes the old line with its reason, as
+  lines 1125 to 1127 of that file ask of a change to a line adapted from
+  Matt Pocock; the line came with `51ac367`. With this the defect of the
+  entry of 14 September 2026 on the pair is built, and the sentence of this
+  entry above on what was not changed says that the addendum changed it.
+  Every other place `grep -rn -i 'frontier'` and `grep -rn -i -w 'rounds\?'`
+  find over `skills/`, `shared/` and `output-styles/` is decided by the cap
+  or says nothing of how many questions a round asks; the report lists each.
+
+  **Records of the addendum.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`, read off `git diff b8d07ef --
+  docs/stock-take.tsv`: two thing rows and one not-a-thing row changed in
+  place, one thing row added. The defect of the pair keeps its site, line
+  3697, and has its evidence on `untangle-idea` line 160 at the tip, where
+  it had it on line 4130, which says that five of the six findings of its
+  entry are not built; that line holds none of the words the tool reads a
+  line of this file into its search set by, and four defects keep their
+  evidence there, so the site stays where the defect is named, as the site
+  of finding 4 of the same entry stayed at line 3625 when its evidence moved
+  onto `plan-work`. The tool reads it as built and never walked. Added: the
+  thing of the rounds of `untangle-idea`, on line 161 at the tip, which
+  holds "before" and so came into the search set, as `plan-work` has one for
+  its own at line 274 with the cap part of it. The thing of a frontier
+  question that needs a fact is renamed, no run hanging on it, its note
+  naming the name until then, and the not-a-thing row of line 184 moved onto
+  that line as it reads now and follows the name. No run is recorded for
+  this addendum. The tool on the tree of the addendum's changes before their
+  commit: no broken record, 19 findings as at `b8d07ef`, no unit without a
+  straight path, no status word broken over a line break, none of 4013 lines
+  of the search set uncovered, where `b8d07ef` had 4012, the one more line
+  161 of `untangle-idea` at the tip, exit 0; recorded and not built 244
+  where it was 245, its defects 233 where they were 234, the defect of the
+  pair out; built and never walked 1186 where it was 1184 — skill branches
+  682 where 681, the new thing, defects 250 where 249, the defect of the
+  pair in; walked 504, undetermined 26, runs that do not count 428 and
+  not-a-thing records 2602 as before; things 1960 where 1959, branches 854
+  where 853. The figures at `b8d07ef` were read off the tool on a clone of
+  that commit.
+
+  **The tests of the addendum.** `untangle-idea` was read through
+  `scripts/devloop-expand`, the interview whole as a run receives it,
+  expanded lines 548 to 642 at the tip as at `b8d07ef`: the rounds at
+  expanded lines 556 to 558, the cap of `shared/three-questions.md` straight
+  after them at 560, the line on facts at 609. The nineteen checks under
+  "Before a handover, run these" ran on the tree of the addendum's changes
+  before their commit, in a clean bash with `/usr/bin` first on its path,
+  line for line what they print at `b8d07ef` in a clone of it, from
+  08:34:30 to 08:34:38 UTC. The tool, from 08:31:42 to 08:34:05 UTC, exit
+  0 with the figures above; its self-test, 114 cases, 76 of 76 messages
+  asserted by a case, exit 0.
 
 ## Decisions taken against
 
