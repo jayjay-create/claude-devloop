@@ -278,9 +278,10 @@ once the record this step writes has landed.
    false), and a gate stands on the main branch already — a required check,
    or a review the protection requires — found by one of the two queries
    below. The gate is read in every project, before this condition is
-   decided, and read again in step 8 off the two queries the program asks
-   and prints at a mergeable value; nothing of it goes into
-   `environment.md`, since 18 October 2026, step 6 saying why.
+   decided, and read again in step 8, off the two queries the program asks
+   and prints at a mergeable value or, where it asks neither, asked there;
+   nothing of it goes into `environment.md`, since 18 October 2026, step 6
+   saying why.
 
    **That setting alone is not the gate, and reporting only that setting is how
    a run comes to a halt in the middle of a task.** Auto-merge can only be
@@ -382,9 +383,10 @@ once the record this step writes has landed.
    roadmap entry of that date; this skill says what is said, not the words.
 
    Of what was found, step 8 says the one sentence of the merge handover
-   that fits the case, read again off the program's `gate:` lines where it
-   printed them, and nothing more, since 17 October 2026; none of it goes
-   into a file, since 18 October 2026, step 6 saying why. Never
+   that fits the case, read again there off the program's `gate:` lines, or
+   off both queries asked there where it printed none, and nothing more,
+   since 17 October 2026; none of it goes into a file, since 18 October
+   2026, step 6 saying why. Never
    withhold anything over it and never make it a condition — the user decides
    what their repository is for, and this step's job is that they decide it
    knowing what holds.
@@ -790,9 +792,10 @@ That is this case only where a gate stands, as the handover has it: where
 none does, the program answers `no required check:` at a mergeable value, and
 the case is the second, whatever the field reads, since 18 October 2026, after
 defect 4 of the roadmap entry of 16 October 2026 on the runs of that day.
-Or there may be no gate for it to wait on at all. Or there is a gate and this
-pull request is already past it: the required check has gone green, nothing is
-outstanding, and GitHub will not arm what it would merge on the spot. The
+Or there may be no gate for it to wait on at all. Or there is a gate,
+auto-merge is on and this pull request is already past it: the required check
+has gone green, nothing is outstanding, and GitHub will not arm what it would
+merge on the spot. The
 program reads `mergeStateStatus` once a second and arms in the pass that reads
 `BLOCKED`, the state that accepts it, since 17 October 2026, after a reading in
 one call and the arming in the next had left room for it to move, defect 5 of
@@ -841,12 +844,15 @@ on a `cannot be placed:` line and arms all the same; name it as it read and
 say it cannot be placed, rather than turning it into one of the three cases,
 two of which are the program's own answer, since it arms on no mergeable value
 — `no required check:` and `past its gate:` — and the first GitHub's,
-`refused:`. Then read whether a gate exists from both queries in step 4, which
-the program asks and prints: `branches/main/protection`, where a 404 means
+`refused:`, or, where a gate stands and auto-merge is off, `past its gate:`
+as well, since 18 October 2026. Then read whether a gate exists off the two
+queries of step 4, `branches/main/protection`, where a 404 means
 none only with "Branch not protected" in the body, and `rules/branches/main`,
-which is blind to classic protection. A gate found by either is a gate. Where
-neither query answered, say the rights did not allow finding out rather than
-naming a case.
+which is blind to classic protection: off the program's `gate:` lines where
+it read a mergeable value and printed them, and asked here where it printed
+none, not off the reading of step 4, since 18 October 2026. A gate found by
+either is a gate. Where neither query answered, say the rights did not allow
+finding out rather than naming a case.
 None of the three is something this step changes. Then the handover, the same
 text the build step and the check setup hand a merge over with:
 

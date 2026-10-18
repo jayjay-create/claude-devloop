@@ -762,10 +762,12 @@ cannot be placed, and do not turn it into one of the three cases below.
 
 If arming is refused there are three cases. Two come as the program's own
 answer, since it arms on no mergeable value — `no required check:` and `past
-its gate:` — and the first as GitHub's, `refused:`. `gh api repos/OWNER/REPO
--q .allow_auto_merge` answers only the first: auto-merge switched off on the
-repository, the field false; or no gate for it to wait on at all; or a gate this
-pull request is already past — the required check green, nothing outstanding, so
+its gate:` — and the first as GitHub's, `refused:`, or as `past its gate:`
+where a gate stands and auto-merge is off, the program reading no setting,
+since 18 October 2026. `gh api repos/OWNER/REPO -q .allow_auto_merge` answers
+only the first: auto-merge switched off on the repository, the field false; or
+no gate for it to wait on at all; or a gate this pull request is already past,
+auto-merge on — the required check green, nothing outstanding, so
 GitHub will not arm what it would merge on the spot. The field cannot tell the
 last two apart; measured on 30 August 2026, it read true in a repository with a
 required check and in one without alike. At a first setup the field
@@ -783,9 +785,12 @@ Whether a gate exists takes both `gh api repos/OWNER/REPO/branches/main/protecti
 (classic protection; blind to rulesets, needs admin, and a 404 means none only
 where the body says "Branch not protected") and `gh api
 repos/OWNER/REPO/rules/branches/main` (rulesets; no special rights, blind to
-classic protection), which the program asks and prints. A gate found by
-either is a gate; where neither query answered, say the rights did not allow
-finding out rather than naming a case.
+classic protection). The program asks both and prints them on its `gate:`
+lines where it reads a mergeable value; where it printed none — at `BLOCKED`,
+at a value it cannot place, at a refusal with `BLOCKED` read after it — ask
+both here, since 18 October 2026. A gate found by either is a gate; where
+neither query answered, say the rights did not allow finding out rather than
+naming a case.
 Then the handover, and do not go on to the next step on top of an unmerged
 suite:
 

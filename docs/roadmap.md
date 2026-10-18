@@ -28120,8 +28120,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **Defect 4 with it.** With the three places mended, every text a run reads
   at a merge handover follows `shared/merge-handover.md` in what defect 4
-  names, the message of the merge guard since the addendum below, which
-  records one case at which three skills do not; defect 4 of the
+  names, the message of the merge guard since the addendum below, and the
+  three skills at a gate with auto-merge off and the pull request past it
+  since the second addendum below; defect 4 of the
   entry of 16 October 2026 on the runs of that day, lines 25979 to 26017, is
   built with this entry, its evidence on line 4 of that file, its status
   line as written.
@@ -28336,8 +28337,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   first line of the note, which says the section is gone and carries the
   fix of the finding of the entry of 16 October 2026 on it.
 
-  **Found beside it.** Neither is repaired here; no line of either was
-  changed on this branch, and the order named neither.
+  **Found beside it.** The first addendum repaired neither, no line of
+  either having been changed on this branch then; the second addendum below
+  builds both.
   Recorded, not built: `setup-project` line 845 and `setup-checks` line 786
   say of the two gate queries that the program asks and prints them, where a
   call that reads no mergeable value asks neither — `BLOCKED` armed, or
@@ -28394,6 +28396,115 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   16:56:30 UTC; the tool's self-test, 114 cases, 76 of 76 messages asserted
   by a case, exit 0, from 16:56:36 to 16:56:38 UTC; the tool, from 17:03:10
   to 17:05:36 UTC, exit 0 with the figures above.
+
+  **Second addendum of the same day: the two defects found beside it
+  built.** In a commit of its own after `cafa256`, the version kept at
+  0.146.0. The report stands on this machine as
+  `~/devloop-report-2026-10-18-handover-addendum-2.md`, in English, and is
+  not in the repository. A line is given as it stands at `cafa256` unless the
+  tip is named; where the paragraphs above name the tip, they name it as it
+  stood at `cafa256`. No session of Claude Code was started and no model
+  called outside the session that made it; beyond the `git fetch` the order
+  opens with, GitHub was neither read nor changed. The pre-check found no
+  place at which no rule decides and none at which the person would get new
+  wording, so nothing halted.
+
+  **The case of auto-merge off past the gate.** `build-work` lines 1036 to
+  1038, `setup-checks` 763 to 765 and `setup-project` 842 to 844 gave the
+  first case as the one that comes as `refused:`; they give it now as that
+  and as `past its gate:` where a gate stands and auto-merge is off, the
+  program reading no setting, `bin/devloop-arm` lines 22 to 26 and 45 to 48:
+  `build-work` lines 1038 to 1040, `setup-checks` 765 to 767 and
+  `setup-project` 847 to 848 at the tip. The bullet of the first case in
+  `build-work` says that it holds where a gate stands whichever of the two
+  lines the program ended on, lines 1048 to 1050 at the tip, and the case
+  past the gate takes auto-merge on, `build-work` lines 1063 and 1070,
+  `setup-checks` 769 to 770 and `setup-project` 795 to 796 at the tip, as
+  `shared/merge-handover.md` lines 9 to 14 have it; `setup-project` lines
+  782 to 792 gave the first case by the field already and stay. With nobody
+  there only `build-work` step 6 of the three is reached, `setup-checks`
+  lines 144 to 148 and `setup-project` lines 774 to 778 saying so of the
+  other two: `past its gate:` with `allow_auto_merge` false, read before
+  anything is restarted, is the first case and a stop as a refusal in the
+  first two cases is, lines 1101 to 1103 at the tip. Start condition 5
+  reads auto-merge on at the run's start, lines 1394 to 1406, and a reading
+  taken then is not the state at the stop, `docs/skill-conventions.md`
+  lines 342 to 351, so that the second defect's "with nobody there it
+  cannot arise" holds of the start alone. The restart, the stop after it,
+  their wordings and the stop past the gate without the case sentence, lines
+  27604 to 27617, stay the third case's, the person's decision of 17
+  October 2026 being one on that case; the message of the merge guard
+  restarts there only with the field true now, line 47 at the tip. At a
+  pull request past its gate with auto-merge off the person now gets the
+  approved sentence of auto-merge off, „Auto-Merge ist in diesem Repository
+  aus.", line 19247, where the skills led to „Die Prüfungen sind schon
+  durch, deshalb nimmt GitHub keinen Auto-Merge mehr an.", lines 19247 to
+  19249.
+
+  **What the program asks.** `setup-project` lines 844 and 845 and
+  `setup-checks` lines 782 to 786 said the program asks and prints the two
+  queries of the gate; they say now that it does where it reads a mergeable
+  value, and that where it printed no `gate:` line the run asks both,
+  `setup-checks` lines 788 to 791 and `setup-project` lines 848 to 853 at the
+  tip. The should of the first defect named, for `setup-project`, the
+  reading of step 4; that does not hold: question 4 of step 4, put where
+  there is code and the files do not say it, ends the turn, lines 256 to
+  258 and 406, so that step 8 then runs in a later turn, and a line of a
+  skill stands for every run,
+  `docs/skill-conventions.md` lines 349 to 354. So `setup-project` reads the
+  gate off the program's `gate:` lines or asks both, not off step 4, and so
+  do its lines 280 to 283 and 384 to 387, which the first addendum had left
+  on step 4's reading where the program printed none, lines 281 to 284 and
+  386 to 389 at the tip. With the first case taking a gate, `build-work`
+  asks both where the program printed no `gate:` line too, lines 1071 to
+  1073 at the tip; and the message of the merge guard says how the gate is
+  read where no `gate:` line stands, line 45 at the tip, its comment, lines
+  35 to 39, since when. The message, fed as in the first addendum: 549
+  words before, 605 after, exit 2.
+
+  **Both defects with it.** The defect on what the program asks and prints
+  and the defect on the case of auto-merge off are built with this addendum,
+  their status lines above as written, their evidence on `setup-project`
+  line 851 and `build-work` line 1039 at the tip.
+
+  **The table.** `docs/stock-take.tsv`: the two defects have their evidence
+  on the lines of the repair, `setup-project` line 851 and `build-work` line
+  1039 at the tip, their sites on their status lines, so that the tool gives
+  both as built and never walked, their notes saying so. Re-anchored onto the
+  changed lines: seven things — the first case in `build-work` and
+  `setup-checks`, no gate, past the gate and neither query answering in
+  `setup-checks`, past the gate and neither query answering in
+  `setup-project` — and seven not-a-thing rows, two in `build-work` and five
+  in `setup-project`, one of them, the line of the first case in
+  `setup-project`, moved from part of the thing of no gate to part of the
+  thing of auto-merge off. Added: four things, the gate asked where no
+  `gate:` line stands in each of the three skills and `past its gate:` with
+  nobody there and auto-merge off a stop; seven not-a-thing rows on new
+  lines of the search set. The thing of no gate in `setup-checks` keeps its
+  name and its three runs, which stop counting, its line changed. No run is
+  recorded for this addendum. The tool on the tree of the changes before
+  their commit: no broken record, 19 findings, no unit without a straight
+  path, no status word broken over a line break, none of 4030 lines of the
+  search set uncovered, where `cafa256` had 4019, exit 0; recorded and not
+  built 242 where it was 244, its defects 231 where they were 233, the two
+  out; built and never walked 1198 where 1191, skill branches 690 where 685
+  and defects 254 where 252; walked 501 where 502, that thing out; things
+  1967 where 1963; not-a-thing records 2616 where 2609.
+
+  **The tests.** `setup-project`, `setup-checks` and `build-work` read
+  through `scripts/devloop-expand`, each changed place in its paragraph and
+  the handover whole at each of its three places with the text before it,
+  expanded `setup-project` lines 835 to 846, 942 to 952 and 1583 to 1711,
+  `setup-checks` 1490 to 1571 and `build-work` 1866 to 1990 at the tip. The
+  nineteen checks under "Before a handover, run these" ran on the tree of the
+  changes before their commit, in a clean bash with `/usr/bin` first on its
+  path, line for line what they print at `cafa256` in a clone of it but for
+  four line numbers moved by the lines added above them, `build-work` 1439
+  and 1564 there and 1446 and 1571 here, `setup-checks` 1209 and 1225 there
+  and 1214 and 1230 here, from 18:05:27 to 18:05:35 UTC. The tool's
+  self-test, 114 cases, 76 of 76 messages asserted by a case, exit 0, from
+  18:05:00 to 18:05:02 UTC; the tool, from 18:05:35 to 18:07:59 UTC, exit 0
+  with the figures above.
 
 ## Decisions taken against
 
