@@ -773,11 +773,11 @@ ordinarily reads false since 16 October 2026: the setup asks about
 auto-merge only where a gate stands already, so a repository without one
 arrives here with it off, and step 8 switches it on where it sets a gate
 up; nothing here asks them to. That is the first case only where a gate
-stands, since GitHub is asked only then: where none does, the program
-answers `no required check:` and the case is the second, whatever the
-field reads, since 18 October 2026, after defect 4 of the roadmap entry of
-16 October 2026 on the runs of that day; until then this paragraph called
-the first the ordinary case at a first setup.
+stands, as the handover has it: where none does, the program answers
+`no required check:` at a mergeable value, and the case is the second,
+whatever the field reads, since 18 October 2026, after defect 4 of the
+roadmap entry of 16 October 2026 on the runs of that day; until then this
+paragraph called the first the ordinary case at a first setup.
 The state comes from `mergeStateStatus`, as the program read it last.
 Whether a gate exists takes both `gh api repos/OWNER/REPO/branches/main/protection`
 (classic protection; blind to rulesets, needs admin, and a 404 means none only

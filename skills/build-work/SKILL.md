@@ -1051,11 +1051,11 @@ answer the question. None of the three is a fault, and none stops the stage:
   handover below names the case.
 - **No gate at all** — no required check, no required review, so the pull request
   is already mergeable and there is no platform gate here. That is this case
-  whatever `allow_auto_merge` reads, since GitHub is not asked: the program
-  answers `no required check:`, and the handover below names this case and
-  no other, since 18 October 2026, after defect 4 of the roadmap entry of 16
-  October 2026 on the runs of that day; until then a clause of its own was
-  said here, that what lands the change is the answer at the end of step 5.
+  whatever `allow_auto_merge` reads, since the program arms on no mergeable
+  value: it answers `no required check:`, and the handover below names this
+  case and no other, since 18 October 2026, after defect 4 of the roadmap entry
+  of 16 October 2026 on the runs of that day; until then a clause of its own
+  was said here, that what lands the change is the answer at the end of step 5.
 - **A gate this pull request is already past** — there is a required check, it
   has gone green, and nothing is outstanding any more. The refusal reads the same
   as the one above and means the opposite. Saying "no platform gate here" in a

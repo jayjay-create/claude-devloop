@@ -278,9 +278,9 @@ once the record this step writes has landed.
    false), and a gate stands on the main branch already — a required check,
    or a review the protection requires — found by one of the two queries
    below. The gate is read in every project, before this condition is
-   decided, and read again before arming, off the two queries the program
-   of step 8 asks and prints; nothing of it goes into `environment.md`,
-   since 18 October 2026, step 6 saying why.
+   decided, and read again in step 8 off the two queries the program asks
+   and prints at a mergeable value; nothing of it goes into
+   `environment.md`, since 18 October 2026, step 6 saying why.
 
    **That setting alone is not the gate, and reporting only that setting is how
    a run comes to a halt in the middle of a task.** Auto-merge can only be
@@ -382,9 +382,9 @@ once the record this step writes has landed.
    roadmap entry of that date; this skill says what is said, not the words.
 
    Of what was found, step 8 says the one sentence of the merge handover
-   that fits the case, read again off the program's `gate:` lines, and
-   nothing more, since 17 October 2026; none of it goes into a file, since
-   18 October 2026, step 6 saying why. Never
+   that fits the case, read again off the program's `gate:` lines where it
+   printed them, and nothing more, since 17 October 2026; none of it goes
+   into a file, since 18 October 2026, step 6 saying why. Never
    withhold anything over it and never make it a condition — the user decides
    what their repository is for, and this step's job is that they decide it
    knowing what holds.
@@ -695,7 +695,7 @@ frontend only. Which runs cost money and which path is free.
 This file carries no section on what checks a merge, and who, since 18
 October 2026, decided by the person that day, where from 22 August 2026 it
 carried one, from step 4, question 2. No part of devloop read it; the
-protection is read off the platform before every merge — by
+protection is read off the platform — by
 `bin/devloop-arm` on its `gate:` lines, by start condition 5 of
 `build-work`, by `plan-work` reading the conditions of the unattended mode;
 a protection written down goes stale at its next change, in step 8 of the
@@ -786,10 +786,10 @@ returns false, and that is the only one this field answers; measured on 30 Augus
 since 16 October 2026 that is the ordinary state at a first setup, question 2
 of step 4 being put only where a gate stands already, and the check setup's
 step 8 switches it on where it sets a gate up, so nothing here asks them to.
-That is this case only where a gate stands, since GitHub is asked only then:
-where none does, the program answers `no required check:` and the case is
-the second, whatever the field reads, since 18 October 2026, after defect 4
-of the roadmap entry of 16 October 2026 on the runs of that day.
+That is this case only where a gate stands, as the handover has it: where
+none does, the program answers `no required check:` at a mergeable value, and
+the case is the second, whatever the field reads, since 18 October 2026, after
+defect 4 of the roadmap entry of 16 October 2026 on the runs of that day.
 Or there may be no gate for it to wait on at all. Or there is a gate and this
 pull request is already past it: the required check has gone green, nothing is
 outstanding, and GitHub will not arm what it would merge on the spot. The

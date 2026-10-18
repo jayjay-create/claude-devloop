@@ -28012,7 +28012,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the same entry on that section with it; 18 October 2026, version
   0.146.0.** On `task/handover-and-gate-section`, off `d7722a7`, version
   0.145.0 on `main`; the changes, the version, this entry and the rows of
-  the table in one commit. The report stands on this machine as
+  the table in one commit, the addendum of the same day below in a second.
+  The report stands on this machine as
   `~/devloop-report-2026-10-18-handover-build.md`, in English, and is not in
   the repository. A line is given as it stands at `d7722a7` unless the tip
   of the branch is named. No session of Claude Code was started and no model
@@ -28039,14 +28040,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lines 774 to 780 gave auto-merge switched off, among the reasons arming is
   refused, as the ordinary state at a first setup, and `setup-checks` lines
   771 to 775 called it the ordinary case there; at a first setup without a
-  gate the program answers `no required check:` itself and GitHub is not
-  asked, `bin/devloop-arm` lines 44 to 50, so that the case is the one
-  without a gate whatever the field reads, as the person's reason of 16
-  October 2026 on question 2 has it, lines 25106 to 25108. Record 133 of
+  gate the program answers `no required check:` itself at a mergeable
+  value, on which it arms none, `bin/devloop-arm` lines 22 to 26 and 49, and
+  the case is the one without a gate whatever the field reads, as
+  `shared/merge-handover.md` lines 9 and 10 and the person's reason of 16
+  October 2026 on question 2 have it, lines 25106 to 25108. Record 133 of
   project 1, at the handover of `setup-project`, and records 266 and 355, at
   those of `setup-checks`, named auto-merge off beside the missing check.
   Both say now that the case of auto-merge off holds only where a gate
-  stands, since GitHub is asked only then, and that without one the case is
+  stands, as the handover has it, and that without one the case is
   the second whatever the field reads, `setup-project` lines 789 to 792 and
   `setup-checks` lines 775 to 780 at the tip; the sentence that the field
   reads false at a first setup stays, lines 778 to 780 of `setup-project`
@@ -28080,12 +28082,20 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   day on the reason said once, lines 27604 to 27617, carry both; "what to
   pull locally after a merge", `shared/mark-deletion.md` line 58, is the
   duty `build-work` lines 1253 and 1299 to 1301 hold once a merge has
-  landed, not one on the merge handed over. The message of the merge guard
-  asks nothing the handover excludes; it does not carry all of it — the pull
-  request by its title, `--repo`, the place at the end of the message —
-  which a run with no skill loaded would need, and that falls under the
-  defect of the entry of 30 September 2026 on that message, lines 7945 to
-  7951, read for its reader as a whole, and is not recorded a second time.
+  landed, not one on the merge handed over. The message of the merge guard,
+  `hooks/pre-tool-use-merge-guard.sh` lines 38 to 40, carried of the
+  handover the command, the case and the sentence on resuming, and not the
+  rest a run with no skill loaded needs, `docs/skill-conventions.md` lines
+  668 to 672 — the one text in the person's language, the pull request by
+  its title, the code block with `--repo` and no `--delete-branch`, the
+  place at the end of the message, nothing after it and nothing as gone
+  wrong, the merge read off the platform — and it gave a pull request past
+  its gate the case past the gate where a gate stands and auto-merge is off,
+  which `shared/merge-handover.md` lines 10 to 14 give to auto-merge off.
+  The addendum of the same day below builds both, lines 41 to 45 at the
+  tip; until it, this paragraph put the gap under the defect of the entry of
+  30 September 2026 on that message, lines 7946 to 7952, which speaks of its
+  length and of its never having been read whole and names none of these.
   "Das ist kein Fehler.", closing all four handovers of project 1, no line
   asks for; the nearest is the shared text's own "none of the three cases is
   a fault", lines 31 to 32, which this order does not change.
@@ -28109,7 +28119,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   not measured in this repository. Nothing is built for either.
 
   **Defect 4 with it.** With the three places mended, every text a run reads
-  at a merge handover follows `shared/merge-handover.md`; defect 4 of the
+  at a merge handover follows `shared/merge-handover.md` in what defect 4
+  names, the message of the merge guard since the addendum below, which
+  records one case at which three skills do not; defect 4 of the
   entry of 16 October 2026 on the runs of that day, lines 25979 to 26017, is
   built with this entry, its evidence on line 4 of that file, its status
   line as written.
@@ -28143,9 +28155,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   neither kind of lines 100 to 110 and not among the three records of lines
   712 to 713, so that a refresh run could take it for template content gone
   stale. Lines 280 to 282, where step 6 wrote the reading and step 8 read it
-  before arming, say that it is read again before arming off the two
-  queries the program of step 8 asks and prints, lines 832 to 837, and goes
-  into no file, lines 280 to 283 at the tip. Lines 317 to 318, the bypass
+  before arming, say that it is read again in step 8 off the two queries
+  the program asks and prints at a mergeable value, lines 832 to 837, and
+  goes into no file, lines 280 to 283 at the tip. Lines 317 to 318, the bypass
   value named in `environment.md`, and lines 335 to 340, a binding that
   could not be determined going there with the query that failed and not
   said: both are named nowhere now, lines 318 to 320 and 337 to 343 at the
@@ -28156,8 +28168,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   reasons cover the binding, the "and who" of the section, and where the
   rights did not allow finding out the handover's step says so, lines 835 to
   837. Lines 381 to 383 say that step 8 says the one sentence of the
-  handover from the reading and the queries and that none of it goes into a
-  file, lines 384 to 387 at the tip. `build-work` line 1392, "`environment.md`
+  handover from the reading, read again off the program's `gate:` lines
+  where it printed them, and that none of it goes into a file, lines 384 to
+  387 at the tip. `build-work` line 1392, "`environment.md`
   records both", reads that both are read off GitHub and not off
   `environment.md`, line 1395 at the tip. `plan-work` lines 451 to 453 stay,
   true before and after, a section of an earlier setup still standing in a
@@ -28165,7 +28178,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   entry, its evidence on the first line of the note. The finding of the
   stock-take that the section named step 2 as the source of the gate, lines
   5314 to 5316, built on 16 October 2026 with its evidence on line 691, keeps
-  its state with its evidence on that line of the note, the section it
+  its state with its evidence on the line of the note that names step 4,
+  question 2 as the section's source, line 697 at the tip, the section it
   concerned gone.
 
   **What the person reads.** By `docs/skill-conventions.md` lines 770 to 786,
@@ -28191,7 +28205,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   finding on the section keeps its site and has its evidence on the first line
   of the note in `setup-project`, so that the tool reads both as built and
   never walked; the finding of the stock-take on step 2 as the source moved
-  its evidence onto the same line. Gone: the two things of the section, a
+  its evidence onto the line of the note naming step 4, question 2, by the
+  addendum below, where until it the same line carried it. Gone: the two
+  things of the section, a
   required check written with its name and no required check with merges held
   by the question at the end of a build, and the not-a-thing row of its last
   line; the second carried two runs of 16 October 2026 under 0.141.0, read off
@@ -28240,6 +28256,144 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   13:58:07 to 13:58:15 UTC. The tool, from 13:58:58 to 14:01:21 UTC, exit 0
   with the figures above; its self-test, 114 cases, 76 of 76 messages
   asserted by a case, exit 0, from 13:57:57 to 13:57:59 UTC.
+
+  **Addendum of the same day: the message of the merge guard held to the
+  handover, the reasons that did not hold at `bin/devloop-arm`, and the
+  evidence of the finding on step 2.** In a commit of its own after
+  `bf62978`, the version kept at 0.146.0, raised once on this branch. The
+  report stands on this machine as
+  `~/devloop-report-2026-10-18-handover-addendum.md`, in English, and is not
+  in the repository. A line is given as it stands at `bf62978` unless the
+  tip is named. No session of Claude Code was started and no model called
+  outside the session that made it; beyond the `git fetch` the order opens
+  with, GitHub was neither read nor changed. The pre-check found no place at
+  which no rule decides and none at which the person would get new wording,
+  so nothing halted.
+
+  **The message.** It carries every duty of `shared/merge-handover.md` lines
+  1 to 35 and none of the reasons behind them, `docs/skill-conventions.md`
+  lines 666 to 672, the report saying part by part which is which: the merge
+  handed over in one text, in the person's language, that the pull request,
+  named by its title, is open, the case in the one sentence on why GitHub
+  does not merge it itself, the command in a code block of its own on a line
+  of its own, `gh pr merge <number> --squash --repo OWNER/REPO`, with no
+  `--delete-branch`, and the sentence on resuming as it stood; the text last
+  in the message that ends the turn, what else the turn owes before it,
+  nothing beside it or after it — no second question, no proposal, nothing
+  on what comes after the merge — and nothing in it as gone wrong; whether
+  it landed read off `gh pr view <number> --json state,mergedAt`, `MERGED`
+  with a time in it, never off their word. Of the cases, auto-merge off
+  holds where a gate stands and the field reads false, `past its gate:` with
+  the field false included, and the case without a gate whatever the field
+  reads, `shared/merge-handover.md` lines 9 to 14; "that field answers this
+  case and no other" had made a pull request past its gate with auto-merge
+  off the third case, and stays, true of the first. With nobody there the
+  text stands among what is theirs to do in the last message instead, and
+  at the stop past the gate without the case sentence: the decisions of 17
+  October 2026, lines 26637 to 26641 and 27383 to 27385, and the addendum of
+  that day, lines 27604 to 27617. The rest of the message stands as it was;
+  it is lines 41 to 45 at the tip, and a comment above it, lines 35 to 37,
+  says since when. The defect of 30 September 2026 on the message, lines 7946 to
+  7952, stands as written, and this builds nothing of it. The hook, fed a
+  Bash call of `gh pr merge` in a throwaway project with `docs/agents/` as
+  `.github/workflows/stock-take.yml` feeds its hooks, ends with exit 2 and
+  the message on stderr: 382 words before, 549 after.
+
+  **The reasons.** `setup-project` line 789 and `setup-checks` line 776 gave
+  as the reason why auto-merge off is a case only where a gate stands that
+  GitHub is asked only then, and this entry said so too, above; but
+  `bin/devloop-arm` asks GitHub at `BLOCKED` and at a value in none of its
+  groups, the second without reading the protection, its lines 19 to 21,
+  and its self-test arms at `DIRTY`, lines 211 to 213. The reason is now the
+  handover's, `shared/merge-handover.md` lines 9 to 12, and "the program
+  answers `no required check:`" holds at a mergeable value, `bin/devloop-arm`
+  lines 22 to 26 and 49, `setup-project` lines 789 to 792 and `setup-checks`
+  776 to 780 at the tip. `build-work` line
+  1054, "since GitHub is not asked", where the program asks GitHub for the
+  pull request, its state and both gate queries, the self-test case at lines
+  244 to 246, reads "since the program arms on no mergeable value", lines
+  1054 to 1055 at the tip. Three more lines of this branch said of the
+  program what it does not do. `setup-project` lines 281 to 282 had the gate
+  read again before arming off the two queries the program asks and prints,
+  where a call that reads `BLOCKED` first arms with neither asked, the
+  self-test case at lines 174 to 176; they read now that it is read again in
+  step 8 off the two queries the program asks and prints at a mergeable
+  value. Line 385 had the case read again off its `gate:` lines, where a
+  call refused at its first `BLOCKED` with `BLOCKED` read again prints none,
+  lines 222 to 224; it reads now "where it printed them". The note at line
+  698 had the protection read off the platform before every merge, by the
+  program among others, where a merge GitHub makes after an arming at a
+  first `BLOCKED` had none read before it; "before every merge" is gone, the
+  person's reason as this entry records it above staying theirs. The
+  paragraph above on lines 280 to 282 and 381 to 383 says now what those
+  lines say.
+
+  **The evidence.** The finding of the stock-take that the section named
+  step 2 as its source, should "step 4, question 2", lines 5316 and 5317,
+  has its evidence on the line where its fix stands, the head of
+  `scripts/devloop-stock-take` lines 245 to 247: the line of the note naming
+  step 4, question 2 as the source, `setup-project` line 697, and not the
+  first line of the note, which says the section is gone and carries the
+  fix of the finding of the entry of 16 October 2026 on it.
+
+  **Found beside it.** Neither is repaired here; no line of either was
+  changed on this branch, and the order named neither.
+  Recorded, not built: `setup-project` line 845 and `setup-checks` line 786
+  say of the two gate queries that the program asks and prints them, where a
+  call that reads no mergeable value asks neither — `BLOCKED` armed, or
+  refused with `BLOCKED` read again, or a value it cannot place —
+  `bin/devloop-arm` lines 19 to 21 and 31 to 35 — should: the program's
+  `gate:` lines named where it reads a mergeable value, and otherwise the
+  reading of step 4 in `setup-project` and both queries asked by the run in
+  `setup-checks`, where the case of auto-merge off after a refusal at
+  `BLOCKED` needs a gate read.
+  Recorded, not built: `build-work` line 1038, `setup-checks` lines 763 to
+  765 and `setup-project` lines 842 to 844 make the case of auto-merge off
+  the one that comes as `refused:`, so that where a gate stands, auto-merge
+  is off and the required check is through, the program ending with `past
+  its gate:` without reading the field, they make it the case past the gate
+  — should: the case of auto-merge off wherever a gate stands and the field
+  reads false, `shared/merge-handover.md` lines 10 to 14, as the message of
+  the merge guard has it since this addendum; with nobody there it cannot
+  arise, start condition 5 of `build-work` requiring auto-merge on.
+
+  **The table.** `docs/stock-take.tsv`: the anchors that stood on changed
+  lines moved onto them — the evidence of the thing of the case without a
+  gate in `build-work`, the site and the evidence of the thing of auto-merge
+  off where no gate stands in `setup-project` step 8, whose note says since
+  when its reason is the handover's, and the not-a-thing rows on
+  `setup-checks` line 776 and `setup-project` lines 281, 698 and 790; three
+  of those lines, 281, 698 and 790, left the search set, having lost
+  "before" or "where", and their rows stay on them, as rows on lines outside
+  the set stand elsewhere in the table. Added: two not-a-thing rows,
+  `setup-project` line 385 part of the thing of question 2 and line 45 of
+  the merge guard part of its block; the two defects above, each a defect
+  thing on its status line, the first of them carrying the head of this
+  entry, whose row read "no defect" until this addendum. The finding of the
+  stock-take on step 2 has its evidence on line 697, its note saying so. No
+  run is recorded for this addendum. The tool on the tree of the changes
+  before their commit: no broken record, 19 findings as at `bf62978`, no
+  unit without a straight path, no status word broken over a line break,
+  none of 4019 lines of the search set uncovered, where `bf62978` had 4018,
+  exit 0; recorded and not built 244 where it was 242, its defects 233 where
+  they were 231, the two in; built and never walked 1191 and walked 502 as
+  at `bf62978`; things 1963 where 1961, the two defects; not-a-thing records
+  2609 where 2607, part of 2398 where 2395 and no defect 14 where 15.
+
+  **The tests.** The message read whole as the run receives it, above.
+  `setup-project`, `setup-checks` and `build-work` read through
+  `scripts/devloop-expand`, each changed place in its paragraph: expanded
+  `setup-project` lines 835 to 843, 940 to 950, 1414 to 1430 and 1578 to
+  1600, `setup-checks` 1497 to 1526 and `build-work` 1870 to 1900 at the
+  tip, the expanded files as long as at `bf62978`. The nineteen checks under
+  "Before a handover, run these" ran on the tree of the changes before their
+  commit, in a clean bash with `/usr/bin` first on its path, line for line
+  what they print at `bf62978` in a clone of it, from 17:03:02 to 17:03:10
+  UTC. `bin/devloop-command-reader --self-test`, 160 cases, and
+  `bin/devloop-arm --self-test`, 36 cases, exit 0, from 16:56:18 to
+  16:56:30 UTC; the tool's self-test, 114 cases, 76 of 76 messages asserted
+  by a case, exit 0, from 16:56:36 to 16:56:38 UTC; the tool, from 17:03:10
+  to 17:05:36 UTC, exit 0 with the figures above.
 
 ## Decisions taken against
 
