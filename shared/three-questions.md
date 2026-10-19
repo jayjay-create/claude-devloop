@@ -22,9 +22,42 @@ and whatever one word from your recommendation could settle was decided, and
 on 16 October 2026 a run settled the whole frontier itself and put no question
 until the person asked for them.
 
-What you settled yourself in a round you say in one line — "taking X, Y and Z
-as given; say if any of those is wrong" — where its questions are put, since
-they rest on it and an answer can overturn it: through the widget, in the
-question field of the first of them, before its question line; as text, in the
-message that puts them, before the first. A round that asks nothing hands its
-line on to the next question put.
+Through the widget, the recommendation stands on the answer, since 19 October
+2026: the recommended answer stands first, its label ends, in brackets, on the
+word for "recommended" in their language, and its description says why it is
+recommended, beside what the answer means and what it costs. As text, the
+recommendation stands after the question, as the template of `untangle-idea`
+and Stage 1 of `plan-work` have it. The form the person approved on 19
+October 2026 stands in the roadmap entry of that date on the questions of a
+round; this text says what is said, not the words. Until then no line said
+where the recommendation stands through the widget, and the four questions
+of the rounds of 19 October 2026 in project z carried none, records 910 and
+945.
+
+What you settled yourself in a round goes into a question of its own, on the
+assumptions of the round, since 19 October 2026: the first in the call that
+puts the round's questions, before them; where you settled nothing, there is
+none. It is not one of the three, and it carries no recommendation. Its
+header names the points as assumptions, in at most twelve characters. Its
+field says first that the points hold for every question of this round, then
+every point on a line of its own, then asks whether that is right. Two
+answers: with the first they confirm, and you plan on with the points; with
+the second they say that something is wrong, and you ask what, and put the
+questions of this round whose answer hangs on it again. Where the round asks
+nothing else, the question stands alone in its call, its field says first
+that the points hold for everything from here, and the second answer says
+only that you ask what is wrong; nothing is handed on to a later question.
+So it never joins a question that has to stand alone in its call, the one
+whether the idea is understood among them; and a question that needs
+weighing stays the only decision of its round, this question standing before
+it in the same call, since it decides nothing. As text, the same parts stand
+in the message that puts the round, before the first question, and they say
+in their answer whether the points hold. Where this question does not fit the
+bound the output style of devloop sets for the widget, the whole round is put
+as text. The form the person approved on 19 October 2026, filled with the
+points of record 910 of project z, stands in the roadmap entry of that date
+on the questions of a round; this text says what is said, not the words.
+Until then the points went in one line into the question field of the first
+question of the round, before its question line, where they read as part of
+that question, and a round that asked nothing handed its line on to the next
+question put.
