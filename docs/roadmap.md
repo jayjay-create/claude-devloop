@@ -31042,17 +31042,20 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **Looked at and left.** The search by subject, over `skills/`, `shared/`,
   `output-styles/`, `README.md`, `docs/plan.md` and
   `docs/skill-conventions.md`, with the patterns the report names: the only
-  other lines on `caffeinate` are `setup-checks` line 963, how it is ended
+  other lines on `caffeinate` are `setup-checks` line 982, how it is ended
   going from text 6, `docs/plan.md` line 549, milestone 12 naming it for
-  macOS alone, and `docs/skill-conventions.md` lines 1635 to 1639, the
-  rationale that a closed lid is a separate route into sleep, which the
-  condition "the laptop stays open" satisfies; the only other lines on a
-  missing required check are the program's answer `no required check:` and
-  which case a handover names, in `build-work`, `setup-checks` and
-  `setup-project`, none the sentence's content; no other line gives the
-  draft's stop as a cost or either label's point; `README.md` says nothing
-  of any of the three. Nothing of these changes. `.claude-plugin/plugin.json`
-  carries 0.149.0; `marketplace.json` carries no version.
+  macOS alone, `docs/skill-conventions.md` lines 1635 to 1639, the rationale
+  that a closed lid is a separate route into sleep, which the condition "the
+  laptop stays open" satisfies, and `docs/skill-conventions.md` lines 1815
+  and 2853, which name it only as a program that runs another command; the
+  only other lines on a missing required check are the program's answer
+  `no required check:` and which case a handover names, in `build-work`,
+  `setup-checks` and `setup-project`, and `setup-project` line 289, why
+  auto-merge cannot be switched on where neither a check nor a review is
+  required, none the sentence's content; no other line gives the draft's stop
+  as a cost or either label's point; `README.md` says nothing of any of the
+  three. Nothing of these changes. `.claude-plugin/plugin.json` carries
+  0.149.0; `marketplace.json` carries no version.
 
   **What changes in the list of the defects that concern milestone 3**, the
   entry of 19 October 2026 above, lines 30409 to 30681 of this file, which
