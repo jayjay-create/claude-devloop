@@ -253,7 +253,7 @@ what the row becomes is one of four:
   them, in the form of the other questions of this skill — a choice through
   the harness's choice widget, in the user's language, alone in its call,
   every point in a field of its own, and no recommendation. In the header, a
-  word for the subject, the check. In the question line: that the check, in
+  name for the subject, the check. In the question line: that the check, in
   ordinary words, is switched off, what the table gives as its reason, quoted
   as it stands, and whether they decided that. In the yes, label and line:
   it was their decision, and the check stays off until they change it — the
@@ -384,8 +384,8 @@ question 3 of
 language, alone in its call, every point in a field of its own, and no
 recommendation. It names no file, the project's own included.
 
-- **In the header: one word for the subject, the project's packages**, of
-  twelve characters at most.
+- **In the header: a name for the subject, the project's packages**, as
+  telling as it can be, of twelve characters at most.
 - **In the question line**: whether the run may from now on add check tools
   to this project's packages itself.
 - **In the yes, label and line**: from now on the run adds such tools itself
@@ -402,7 +402,7 @@ Under a yes nothing more is asked: step 4 enters the tool, with the user
 there and with nobody there. Under a no, ask about each tool that can be
 entered there, in the same form, each alone in its call:
 
-- **In the header**: the same word.
+- **In the header**: the same name.
 - **In the question line**: the tool by its name, the check it is for in
   ordinary words, and whether the run may add it to the project's packages.
 - **In the yes, label and line**: the run adds it and sets the check up with
@@ -921,8 +921,8 @@ Where no answer came, `shared/command-does-not-answer.md` holds beside it,
 and the command and the message stand in the question field under the line
 on the cost, since they bear on it.
 
-- **In the header: a word for the subject**, of twelve characters at most —
-  that it is about work without them.
+- **In the header: a name for the subject**, as telling as it can be, of
+  twelve characters at most — that it is about work without them.
 - **In the question field, each point on a line of its own, and after a
   blank line the question line.**
   - The course and its end: without them devloop builds the planned tasks
@@ -994,8 +994,8 @@ decision 1 of the roadmap entry of 9 October 2026, an entry of the list
 to its own rules. In the same form as the question above, alone in its
 call:
 
-- **In the header: a word for the subject** of twelve characters at most, the
-  rule.
+- **In the header: a name for the subject, the rule**, as telling as it can
+  be, of twelve characters at most.
 - **In the question line**: whether devloop may enter a rule into their file
   `~/.claude/settings.json`, so that auto mode does not block installations
   in devloop projects by itself.

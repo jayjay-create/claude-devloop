@@ -43,8 +43,9 @@ run.
 descriptions of all answers fill at most 14 lines together, at 80 columns,
 where there are two answers; every further answer takes one line away. A line
 holds about 76 characters in the question field and about 73 under an answer;
-every paragraph starts a new line, and a blank line counts. The header is one
-word of at most twelve characters. Where the text a decision needs does not
+every paragraph starts a new line, and a blank line counts. The header is a
+name for what the question is about, as telling as it can be, of at most
+twelve characters. Where the text a decision needs does not
 fit, it is not cut to fit: the question is asked as text at the end of the
 turn, with that text before it in the same message.
 

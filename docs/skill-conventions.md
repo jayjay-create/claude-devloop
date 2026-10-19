@@ -723,9 +723,17 @@ The question field with its question line and the descriptions of all
 answers fill at most 14 lines together at 80 columns where there are two
 answers, and every further answer takes one line away; a line holds about
 76 characters in the question field and about 73 under an answer; every
-paragraph starts a new line and a blank line counts; the header is one word
-of at most twelve characters. At 80×24 the widget hangs at the bottom of the
-window and is cut at the top; above "Type something.", on rows 20 to 22,
+paragraph starts a new line and a blank line counts; the header is a name
+for what the question is about, as telling as it can be, of at most twelve
+characters. The twelve are the limit the question tool of Claude Code names
+for the header itself, the roadmap entry of 3 October 2026 on the install
+question's fields; the one word that stood beside them went on 19 October
+2026, decided by the person that day: within that limit it adds nothing, and
+the header is to name the subject as clearly as twelve characters allow.
+Every header approved before stays as it was approved, the two words of the
+mode question approved on 17 October 2026 among them. At 80×24 the widget
+hangs at the bottom of the window and is cut at the top; above "Type
+something.", on rows 20 to 22,
 19 rows remain, of which the header, two blank lines and the label of every
 answer take their part; what is cut at the top the fullscreen renderer never
 draws, and the classic one pushes the first frame whole into the terminal's
@@ -907,7 +915,9 @@ which is loud and not silent.
 `output-styles/` into its search set as it reads `shared/`, with one straight
 path per unit of kind output style, and evidence under it reads built; the
 comparison of the installed copy under "Before you change anything, run this"
-covers it; a change to it raises the version as a change to a skill does.
+covers it on disk, and what a session carries of it is read as that section
+says since 19 October 2026; a change to it raises the version as a change to
+a skill does.
 
 ## Works with nothing else installed
 
@@ -1415,6 +1425,21 @@ is built is the rule. A run's date is the day its session log opens, read in
 the log's own timezone and written out; a date set down from recollection, or
 from the paragraph the entry was written under, is the neighbour's date and
 not the run's.
+
+**A should a later decision changes is written where the decision is.** Where
+a later decision changes the should of a thing, the new should stands in the
+entry that decides it, with the old one quoted there, and in the note of the
+thing's row in `docs/stock-take.tsv`; the should in the dated entry, and its
+status line, stay as they stand. Written on 19 October 2026 after the
+consistency audit of 18 October 2026: on 17 October 2026 `b24542a` revised
+the shoulds of seven defects on the status lines of dated entries in place
+and `6793c5c` nine, each quoting the earlier should in its own entry, and
+three of that audit's findings went back to the revisions — line numbers
+the revisions moved in an entry below them, ranges written into an entry
+that hold at another commit than the entry's, and a revised should given to
+an entry that carries none. Those sixteen revisions stay as they stand. A
+dated entry is corrected in place where a line number in it is wrong, as the
+audits do, and nowhere else.
 
 **A figure taken from a command is copied out of that command's output.** One
 sentence gave three numbers as the result of a named `grep`, and re-running that
@@ -3063,9 +3088,31 @@ the first edit, while the working tree is still the main branch.
     P=~/.claude/plugins/cache/jayjay-create/devloop/$(python3 -c "import json,pathlib;print(json.load(open(pathlib.Path.home()/'.claude/plugins/installed_plugins.json'))['plugins']['devloop@jayjay-create'][0]['version'])")
     for d in skills hooks shared bin scripts output-styles; do diff -r "$P/$d" "$d"; done
 
-Silence means what runs in this session is what you are about to change. Anything
+Silence means the installed copy, the version `installed_plugins.json` names,
+is what you are about to change, in all six directories. It does not mean
+that this session carries that copy, since 19 October 2026: measured on 18
+October 2026, the session of that day's consistency audit carried under the
+heading `# Output Style: devloop:devloop` the style as it stood at `9b40c07`,
+the text of the cached 0.139.0 to 0.141.0, while 0.147.0 was installed, equal
+to the tree, and this check printed nothing. Anything
 printed is the installed copy being behind: say so before exercising a skill, and
 read what it printed rather than assuming which side is older.
+
+**So the session's own style is read too, before a skill is exercised.** The
+text this session carries under that heading is held against
+`output-styles/devloop.md` in the installed copy; where the two differ, this
+session is not the one to exercise a skill in, and the run goes into a
+session of Claude Code started after the update. Measured on 19 October
+2026: a session started that day, its SessionStart hook run with the source
+`startup`, carried the text of the installed 0.147.0. `installed_plugins.json`,
+read the same day, dates the update to 0.147.0 at 20:52 UTC on 18 October
+2026, four minutes after `786b71f` was committed, and the cache holds no
+version between 0.141.0 and 0.147.0; when the audit's session was started
+against that update is not measured. Not measured either: when Claude Code
+reads the style — at the start of its process, at a new session inside it,
+at `/clear`, when a session is resumed — and whether a session carrying an
+older style reads its skills, shared texts and hooks out of an older copy as
+well, which this check would then not see either.
 
 **All six directories, and `hooks` is not an afterthought.** A hook runs from the
 installed path too, which this session can read off a block it received:
@@ -3082,7 +3129,9 @@ so a shared file edited in the working tree is as invisible to a run as an
 edited hook. `output-styles` came on 15 October 2026 with the output style:
 Claude Code reads a plugin's style files at start out of the installed copy,
 the page "Output styles", so a style edited in the working tree is as
-invisible as the rest.
+invisible as the rest. At start: the copy a session read then is the half of
+the question this comparison cannot see, which the paragraph after the
+command says since 19 October 2026.
 
 **The version is read from the installed side, and that is the whole of the
 fix.** This check stood under the handover heading until 9 September 2026 and

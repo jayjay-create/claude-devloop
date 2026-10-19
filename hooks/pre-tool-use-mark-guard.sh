@@ -19,7 +19,10 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # and through in auto with the statement. A command that deletes or reads the
 # mark passes, and every other command passes without a word. The texts are
 # the ones approved on 9 October 2026, in docs/roadmap.md under the entry of
-# that day. The input is read through bin/devloop-command-reader, which
+# that day, but for the place where the run says them: since 17 October 2026
+# both carry "in the next message with which you end your turn with text",
+# B9 of the entry of that date on where each text devloop owes the person
+# stays. The input is read through bin/devloop-command-reader, which
 # decodes the JSON and takes the command apart as the shell runs it, since
 # 12 October 2026; every hook reads it so, and a check in
 # .github/workflows/stock-take.yml holds them to that.

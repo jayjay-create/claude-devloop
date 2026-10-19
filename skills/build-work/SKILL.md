@@ -281,7 +281,8 @@ they can clear, stop as that
 section says, opening with that the local main branch cannot be brought to
 the state GitHub holds and that nothing is begun here for that: this step
 is here so that no task is cut from a stale main, and a base that could not
-be read or brought up to date is one.
+be read or brought up to date is one. With nobody there the mark goes with
+that stop, as at every stop with a reason.
 
 **Then run the check suite on that base, before cutting anything.** It costs
 seconds and it buys the one thing no later step can recover: knowing whether the
@@ -407,7 +408,15 @@ three were hardenings with nothing wrong in service, which is clause 3.
 report it and leave it — with nobody there leave it and say nothing of it,
 since 17 October 2026. **`raised-here` is what tells them apart** — this
 workflow sets it on every finding it files, so an issue without it came from
-somewhere else. Do not infer it from anything else: the author is the account
+somewhere else — all but the one it files without it on purpose, since 16
+October 2026: the issue of a change set aside at a fetch whose bring-back met
+a change from GitHub, labelled `needs-human` alone, its title naming the file
+and that their change meets a change from GitHub, by the text on the mark's
+deletion. That one is not from outside, and it is left as well, with them
+there as without, and nothing is said of it: it is theirs to decide, the last
+message of the run that filed it named it, and the next start asks about the
+change; until 19 October 2026 this paragraph read it as from outside. Do not
+infer it from anything else: the author is the account
 the tooling runs as either way, and an unlabelled, unassigned issue looks
 identical whichever it is. If they say to take it anyway, take it.
 
@@ -756,7 +765,8 @@ have by then:
   widget, alone in its call, every point in a field of its own and no
   recommendation, put before the question of step 5 and never together with
   it.
-  - **In the header**: a word for the subject, of twelve characters at most.
+  - **In the header**: a name for the subject, as telling as it can be, of
+    twelve characters at most.
   - **In the question line**: the check they switched off, in ordinary
     words; the reason they gave; what holds now; and whether the run should
     switch it on.
@@ -950,8 +960,9 @@ are neither a yes nor a no:
   fetched or fast-forwarded" above, and where the third fails too, stop as
   that section says, opening with that the pull request has to be brought up
   to the latest state of the main branch before it can be merged and that
-  this is not possible just now: nothing is armed and nothing is merged —
-  then rebase
+  this is not possible just now: nothing is armed and nothing is merged, and
+  with nobody there the mark goes with that stop, as at every stop with a
+  reason — then rebase
   the branch onto the base, force-push it, and call the program again: it
   reads `BLOCKED` and arming is accepted. That rebase is not the merge this stage
   must not perform — it moves the base under this branch and lands nothing
@@ -992,7 +1003,9 @@ against the rollup:
   and arms on the `BLOCKED` it moves to.
 - **Every required name `COMPLETED`**, or its status context in `SUCCESS`,
   `FAILURE` or `ERROR` — the pull request really is past its gate, and that is
-  the third refusal case below, met without a refusal, since the program arms
+  the third refusal case below where auto-merge is on and the first where it
+  is off, as the cases below have it since 18 October 2026, met without a
+  refusal, since the program arms
   on no mergeable value. It ends with `past its gate:`, a `required:` line for
   each required check, a `rerun:` line for each run on GitHub Actions that
   carries one and a `foreign:` line for each that none carries, read off each
@@ -1103,10 +1116,13 @@ What went wrong in the past was the framing and the timing — a run
 stopping mid-task, over a change nobody asked for, as though it had hit an error.
 
 In unattended mode there is nobody to hand it to. A refusal by GitHub to arm,
-in the first two cases, is a stop with
+in the first case, is a stop with
 the reason named, the mark going with it as at every such stop, and so is
 `past its gate:` where `allow_auto_merge`, read before anything is restarted,
-is false: that is the first case, since 18 October 2026. **The third
+is false: that is the first case, since 18 October 2026. So is `no required
+check:`, the second case, which comes as the program's own answer and not as
+a refusal by GitHub, since 19 October 2026; until then no line said what
+follows it with nobody there. **The third
 is not, at first**, since 17 October 2026, by the person's decision of that
 day: a run without them does not end because a check was quick. At `past its
 gate:` with a `rerun:` line, restart once every run its `rerun:` lines name,
@@ -1144,7 +1160,10 @@ of the restart is not that: the
 task is in hand until its merge is proven, so it goes as that section says,
 the issue, the task put down, the next taken; whether the classifier lets
 `gh run rerun` through with nobody there is not measured. Start condition 5
-makes the first two unreachable; it cannot
+rules the first two out at the start alone, where it reads auto-merge and
+the gate, so that auto-merge switched off or a gate taken away since is met
+here as above; until 19 October 2026 this sentence called them unreachable.
+It cannot
 touch the third, which is a state of one pull request and not a property of the
 repository, and it is not reported as a missing gate. A `behind:`
 is worked through there like anywhere else, since the rebase needs
@@ -1275,7 +1294,9 @@ Once it has landed:
   on its third attempt, or the fast-forward fails, stop as that section
   says, opening with that the merge has landed on GitHub and nothing is
   lost, and that only the local main branch cannot be brought to that
-  state; nothing below is built on it. What is in the way goes as that
+  state; nothing below is built on it, and with nobody there the mark
+  goes with that stop, as at every stop with a reason. What is in the way
+  goes as that
   section says since 16 October 2026 — a changed file set aside and brought
   back on their yes, commits of their own put on a branch of their own on
   their yes, and with nobody there both without asking, the change brought

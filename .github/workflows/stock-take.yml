@@ -125,8 +125,11 @@ jobs:
   # unless the directory is marked safe; that second half came with the
   # branch's last commit, after the fifth addendum was written, which names
   # the installation alone. The handlers are read off
-  # hooks/hooks.json with python3 so that one added later runs without this
-  # step being touched; the input of each event stands below, harmless - the
+  # hooks/hooks.json with python3 so that one added later under an event and
+  # matcher this step has an input for runs without this step being touched;
+  # one under a new pair of event and matcher needs its input added here, the
+  # step ending red on it until then. The input of each event stands below,
+  # harmless - the
   # command ls for the tool Bash, a Write and an Edit of the project's README
   # on a branch cut from main, a permission request for ls, a session start,
   # a stop, and since 15 October 2026 the result of ls and a failed ls for

@@ -29314,6 +29314,207 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   record with runs. No run is recorded for this entry. The figures of the
   tool and the checks before and after the change stand in the report.
 
+- **The catch-up of 19 October 2026 after the consistency audit of 18
+  October 2026: the eleven findings its entry records as they are, built —
+  a stop at `no required check:` with nobody there, the two cases past the
+  gate named, a read before every pop and drop of a change set aside, the
+  mark at the three fetch stops of `build-work`, the failed attempts of an
+  install, the issue of a conflicted bring-back no longer read as from
+  outside, two comments, the header of a question a name of at most twelve
+  characters by the person's decision of that day, a should a later
+  decision changes, and what the comparison before the first change shows;
+  19 October 2026, version 0.148.0.** On `task/catch-up-2026-10-19`, off
+  `2ff7a05`, version 0.147.0 on `main`; the changes, the version, this entry
+  and the rows of the table in one commit. The report stands on this
+  machine as `~/devloop-report-2026-10-19-catch-up.md`, in English, and is
+  not in the repository. A line of a file is given as it stands at the tip
+  of the branch unless `2ff7a05` is named; the audit's lines, 29152 to
+  29291, hold at both. No session of Claude Code was started and no model
+  called outside the session that made it; beyond the `git fetch` of the
+  order, GitHub was neither read nor changed.
+
+  **The decision of the person, 19 October 2026, on the header (N9).** The
+  header of a question in the choice widget is a name, as telling as it can
+  be, for what the question is about, of at most twelve characters; that it
+  is one word goes. The reason: the limit of twelve characters is the one
+  the question tool of Claude Code names for the header itself, the entry
+  of 3 October 2026 on the install question's fields, lines 9094 to 9096;
+  the one word brings nothing within that limit, and the header is to name
+  the subject as clearly as twelve characters allow. Every header approved
+  stays as it was approved, „Ohne dich" of the mode question of 17 October
+  2026, line 26647, among them. The audit's should, lines 29249 to 29251,
+  "Two ways: the rule keeps the twelve characters and drops the one word, or
+  the approved header becomes one word", is decided for the first.
+
+  **The pre-check, before the first change.** Every place of the eleven was
+  read at its line at `2ff7a05`, with the places the order's searches find
+  and those that reach the same situation, each given the rule that decides
+  it; the report has the list. No place was found at which no rule decides,
+  and none at which the person would get new wording, so nothing halted.
+  Two places beyond those the order names reach the same situation and are
+  built with them: the two drops of a change set aside, under N3, and the
+  sentence on the shipped directory of the style in the conventions, under
+  N11. The order says the session of the audit was opened with `/clear`;
+  no line of the repository says how it was opened, so nothing here says
+  it.
+
+  **What is built, finding by finding.**
+
+  - N1, `build-work` step 6 with nobody there, lines 1118 to 1125:
+    `no required check:`, the second case, which comes as the program's own
+    answer and not as a refusal by GitHub, is a stop with the reason named,
+    the mark going with it as at every such stop, beside a refusal by GitHub
+    in the first case and `past its gate:` with auto-merge off; lines 1162
+    to 1166: start condition 5 rules the first two out at the start alone,
+    where it reads auto-merge and the gate, so that either is met at step 6
+    where it changed since. What the stop says is the reason named, as at
+    the first case; a skill says what is said, not the words.
+  - N2, `build-work` lines 1004 to 1009: every required check completed is
+    the third case with auto-merge on and the first with it off, as the
+    cases have it since 18 October 2026.
+  - N3, `shared/mark-deletion.md` lines 16 to 24: for each file this run set
+    aside, `bin/devloop-setup-state` is run again without `--fetch`
+    immediately before its pop, and the entry its line for that file names
+    then is popped; an entry no line of this run's names is never popped.
+    `shared/set-aside-back.md` lines 1 to 9: the entry is read so at a start
+    too, and lines 26 to 28 the drop after the person chose a line likewise;
+    `shared/set-aside-at-start.md` lines 21 to 24, the drop of the third
+    answer, likewise. A drop renumbers the entries under it as a pop does,
+    and "Never assert state — always query it", `build-work` line 213,
+    decides the drops as it decides the pops. The audit's should, lines
+    29186 to 29188, "each pop takes the entry as read just before it, or the
+    entries go from the highest number down, and an entry whose message is
+    not the run's is never popped", is decided for the first way, by the
+    order.
+  - N4, `build-work` lines 284 to 285 in step 1, 963 to 965 at a `behind:`
+    whose third fetch fails, and 1297 to 1298 after the merge: with nobody
+    there the mark goes with that stop, as at every stop with a reason, the
+    list under "Unattended mode" saying so already.
+    `shared/fetch-three-times.md` stays as it is: it stands in `setup-checks`
+    too, where with nobody there the task ends at a halt and not the run, and
+    in `plan-work` and `setup-project`.
+  - N5, `shared/install-not-through.md` lines 17 to 31: an attempt that fails
+    and is followed by one that goes through is not said, as at a fetch;
+    where the third fails too, what it says of the attempts, in the issue and
+    for a class in the report, is that the installer ended with an error on
+    all three, the message being the third's, and an earlier attempt's
+    beside it only where it names something in the way the third's does not.
+    The three tests decided it part by part: the command once, since they
+    run or change it; the three failures, since without them the issue reads
+    as one failed call and running it again is the obvious next move; the
+    third's message, since it says what is in the way; an earlier one only
+    where it says more, since one that reads as the third's changes nothing
+    they decide. The audit's should, lines 29209 to 29211, "Two ways,
+    neither decided by a rule: the install text names its failed attempts on
+    its own ground, or it follows the fetch text and says only the third",
+    is decided by the order: the second for an attempt followed by one that
+    goes through, the three tests for the rest.
+  - N6, `setup-project` lines 577 to 587, `build-work` lines 407 to 421 in
+    step 2, `start-work` lines 172 to 181 in step 2 and 313 to 315 in step
+    5: the issue `shared/mark-deletion.md` files for a change set aside
+    whose bring-back met a change from GitHub, labelled `needs-human` alone,
+    is not from outside, and no place says every issue without `raised-here`
+    is; it is left, kept from a run's work as that text keeps it, and with
+    the person there `build-work` no longer reports it as from outside: by
+    the second test nothing is said of it, since they meet it in the last
+    message of the run that filed it and in the question at the next start.
+    The audit's should, lines 29219 to 29221, "Two ways: setup-project
+    names the issues devloop files without the label, or that issue carries
+    a mark of devloop's own", is decided by the order for the first, at
+    every place that read the label so: no place says every issue without
+    the label comes from outside, and none has a run name an issue devloop
+    filed as one from outside.
+  - N7, `hooks/pre-tool-use-mark-guard.sh` lines 20 to 25: the comment says
+    that since 17 October 2026 both messages carry "in the next message with
+    which you end your turn with text", B9 of the entry at line 26919.
+  - N8, `.github/workflows/stock-take.yml` lines 127 to 132: a handler added
+    under an event and matcher the step has an input for runs without the
+    step being touched; one under a new pair needs its input, the step
+    ending red on it until then.
+  - N9, the decision above: `output-styles/devloop.md` lines 46 to 48;
+    `build-work` line 768; `plan-work` lines 356 to 358; `setup-project` lines
+    366 to 367; `setup-checks` lines 255 to 256, 387 to 388, 405 (the same
+    name, where it said the same word), 924 to 925 and 997 to 998;
+    `shared/install-question.md` lines 19 to 21;
+    `shared/set-aside-at-start.md` lines 10 to 12; `docs/skill-conventions.md`
+    lines 726 to 735, with the reason. Two of the places, `setup-checks` 255
+    and 405, said a word without the twelve characters beside it, and are
+    found by that and not by the order's search.
+  - N10, `docs/skill-conventions.md` lines 1429 to 1442, after "A run's date
+    is copied from the session log": where a later decision changes the
+    should of a thing, the new should stands in the entry that decides it,
+    the old one quoted there, and in the note of the thing's row; the
+    should in the dated entry and its status line stay as they stand; the
+    sixteen revisions of 17 October 2026 stay as they stand. The audit's
+    should, lines 29265 to 29270, left two ways, the case named as a
+    revision in place or the dated entry left alone; the order decides for
+    the second, with the note of the row. This entry follows it: the
+    shoulds the order decided otherwise than the audit stand above with the
+    audit's quoted, and in the notes of their rows.
+  - N11, `docs/skill-conventions.md` lines 3091 to 3115 and 3130 to 3134
+    under "Before you change anything, run this", and lines 916 to 920: the
+    silence of the comparison says the installed copy is what is about to
+    change, not that the session carries it; the session's own style, the
+    text under `# Output Style: devloop:devloop`, is held against the
+    installed `output-styles/devloop.md` before a skill is exercised, and
+    where they differ the run goes into a session started after the update.
+    Measured on 18 October 2026, the audit; measured on 19 October 2026,
+    this session, started then, carrying the installed text; read the same
+    day, `installed_plugins.json` dating the update to 0.147.0 at 20:52 UTC
+    on 18 October 2026. Not measured: when Claude Code reads the style, and
+    whether a session with an older style reads the rest out of an older
+    copy too. The audit's should, lines 29285 to 29286, "the conventions say
+    when Claude Code reads a plugin's style and what the check's silence does
+    not cover, measured", is put by the order as what the silence shows and
+    what not and what happens before a run so that the session carries the
+    installed copy, the measured with its date and the rest as not measured;
+    when Claude Code reads the style is not measured, and stands so.
+
+  **N3 measured, 19 October 2026, git 2.50.1.** In a throwaway repository
+  with a bare origin, three files committed with the identity of `git
+  config`: an entry of the person's own, `my own work`, under two of a run,
+  `devloop s1 set aside a.txt` and `devloop s1 set aside b.txt`, so that
+  `bin/devloop-setup-state` of the tree printed `set-aside: stash@{0} s1
+  b.txt` and `set-aside: stash@{1} s1 a.txt`. The text at `2ff7a05`, read
+  once and popped by the entries read: both pops exit 0, after them the
+  run's `a.txt` still set aside and the person's own change in the tree.
+  The text at the tip, the program run again before each pop: `stash@{0}`
+  twice, both exit 0, both changes of the run back in the tree and the
+  person's own entry alone in the stash list. At a start, `b.txt` asked
+  first and brought back, `a.txt` then discarded: with the entries read
+  once the drop took `stash@{1}`, the person's own, which is gone for good,
+  and left the run's `a.txt` set aside; read again before each act, the pop
+  took `stash@{0}`, the drop `stash@{0}`, and the person's own stayed.
+
+  **What the person reads.** Four texts that reach the person change, each
+  held to `docs/skill-conventions.md` lines 788 to 803 in the report: the
+  last message of a run with nobody there at `no required check:` (N1), the
+  issue of an install not through (N5), what `build-work` step 2 reports of
+  loose issues with them there (N6) and the header a run writes (N9). No
+  wording of the person's is new: each place says what is said, and the
+  approved wordings stand where they stood.
+
+  **Records.** In `docs/stock-take.tsv` the eleven defect things of the
+  audit, rows 6360 to 6370, keep their site on the audit's status lines and
+  move their evidence onto the line that carries the repair, each note
+  saying what is built and, where the order decided a should otherwise than
+  the audit, the should as decided: N1 to N9 and N11 on lines under
+  `skills/`, `shared/`, `hooks/`, `.github/`, `output-styles/` or the check
+  heading of the conventions, so built and never walked; N10 on a
+  convention, so as before recorded and not built. Two things renamed with
+  no run on them, each note naming the old name: the installer's own error
+  in `shared/install-not-through.md` and the entry read at a start in
+  `shared/set-aside-back.md`. Two things of `build-work` that stood with an
+  empty evidence and the note that the outcome with nobody there is not
+  stated, the fetch stops of step 1 and at a `behind:`, now evidenced on the
+  line that says it. Added, things: the stop after the merge with nobody
+  there in `build-work` step 6, the issue of a conflicted bring-back in
+  `build-work` step 2 and in `start-work` step 2, the third failed attempt
+  in `shared/install-not-through.md`, and the read before each pop in
+  `shared/mark-deletion.md`. The anchors of the changed lines moved with
+  them, the header rows among them. The head of this entry as no defect. No
+  finding added and none taken out; no run recorded for this entry.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

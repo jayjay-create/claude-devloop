@@ -363,7 +363,8 @@ once the record this step writes has landed.
    the user's language, every point in a field of its own, no recommendation,
    and nothing on the run with nobody there.
 
-   - **In the header: a word for the subject**, of twelve characters at most.
+   - **In the header: a name for the subject**, as telling as it can be, of
+     twelve characters at most.
    - **In the question line**: that auto-merge is switched off, and whether
      the run may switch it on.
    - **In the yes, label and line**: switch it on; GitHub then merges by
@@ -577,7 +578,13 @@ said, not the words.
 author is the account the tooling runs as, which is the user's either way, so it
 cannot tell one from the other — and how a loose issue gets treated turns
 entirely on which it is. Anything without the label is from outside, and that is
-then a reading rather than a guess.
+then a reading rather than a guess — all but the one issue devloop files
+without it on purpose, since 16 October 2026: the issue of a change set aside
+at a fetch whose bring-back met a change from GitHub, labelled `needs-human`
+alone so that no build takes it up as work, by the text on the mark's
+deletion. That one is not from outside, and it is left all the same; until
+19 October 2026 this paragraph read every issue without the label as from
+outside.
 
 For GitHub, write these in verbatim, with OWNER and REPO filled in. Later steps
 read them from here; do not leave the reader to guess the API.

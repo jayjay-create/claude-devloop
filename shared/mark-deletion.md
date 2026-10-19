@@ -13,7 +13,15 @@ where it set any aside: the `set-aside:` lines of
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state`, run without `--fetch`, name
 each with its entry, the session that set it aside and the file, and this
 run's are the ones carrying this session's identifier, `DEVLOOP_SESSION_ID`,
-or `none` where the variable is not set. For each: `git stash pop <entry>`.
+or `none` where the variable is not set. For each file of those, run the
+program again, without `--fetch`, immediately before its pop, and `git stash
+pop <entry>` with the entry its line for that file names then, since 19
+October 2026; an entry no line of this run's names is never popped. A pop
+renumbers the entries under it: measured on 18 October 2026, an entry of the
+person's own under two of a run, both popped by the entries read once, the
+second pop took the person's own and left one of the run's set aside; on 19
+October 2026 with git 2.50.1, a read before each pop brought both of the
+run's back and left the person's own where it was.
 Where the pop goes through, nothing is said of it, since 17 October 2026: the
 last message carries what the run did, what is open and what is theirs to
 decide or do, and a change put back where it stood is none of those. Where
