@@ -29515,6 +29515,1386 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   them, the header rows among them. The head of this entry as no defect. No
   finding added and none taken out; no run recorded for this entry.
 
+- **The two runs of 19 October 2026 in `devloop-test-z` and `devloop-test-y`
+  under the installed 0.148.0, read off their session logs and the projects,
+  and where milestone 3 stands under the criterion the person decided that
+  day, in place of the one of 12 October 2026: every defect that concerns the
+  milestone listed in three groups, and the milestone not reached; defects 1,
+  3, b, c and i held, defect a held at every place under one reading and not
+  under another, 13 held but for one point, 14 held at one place and not at
+  the other, 5 and 9 of the entry of 16 October 2026 held, 4, 10 and 11 of it
+  did not, 12 met no run, the defect of 15 October 2026 on the loose issues
+  met again; of the six rows of the check table of `devloop-test-y` four went
+  as their case says and two were decided without the question; nineteen new
+  defects, three of them the person's wordings of that day, one with a should
+  the person has still to decide; 19 October 2026, the version stays
+  0.148.0.** On `task/runs-19-october-2026`, off `3f810fd`, version 0.148.0 on
+  `main`; this entry, the two dated sentences in `docs/plan.md` and the rows
+  of the table in one commit, and a second commit of the same day correcting
+  this entry where a check of the first against the evidence found it wrong or
+  incomplete, by the last section of the report. Nothing under `skills/`,
+  `shared/`, `output-styles/`, `hooks/`, `bin/`, `scripts/` or `.github/`
+  changes, so the version stays and `.claude-plugin/plugin.json` is untouched;
+  nothing is built here. The report stands on this machine as
+  `~/devloop-report-2026-10-19-runs.md`, in English, and is not in the
+  repository. Every line number of a file in this entry holds at `3f810fd`; a
+  line of a skill is given in the text the runs loaded,
+  `scripts/devloop-expand` of the skill at `3f810fd`, which equals the text
+  the logs carry but for the plugin path and, for `start-work`, the appended
+  `ARGUMENTS` line, and is marked "expanded"; a line of this file named by an
+  earlier entry holds at the commit that entry names, and was read again at
+  `3f810fd`. What the runs wrote and said is quoted as written, in German. The
+  words the stock-take tool reads a line of this file into its search set by
+  stand in this entry on the nineteen lines that record a defect and on no
+  other line of it.
+
+  **The arrangement, decided by the person on 19 October 2026 before the runs,
+  as part A point 1 of the entry of 12 October 2026 asks; what stood before
+  the runs and in no log stands here as the person's statement of that day.**
+  The aim: to meet defect a and to walk as many things as the tool lists as
+  built and never walked. The machine before the runs:
+  `bin/devloop-auto-mode-rule read` exit 0; biome, tsc, gitleaks and dasel
+  installed, prettier, eslint and semgrep not. Decided: biome and gitleaks
+  uninstalled, so that defect 9 of the entry of 16 October 2026 can be met in
+  both of its cases — biome 2.5.15 with `brew uninstall`, gitleaks 8.30.1, a
+  single file under `~/.local/bin` since 30 June 2026 by line 9377 of this
+  file, deleted. Before the start a block ran in the terminal: a clone on
+  `main` at `3f810fd`, `claude plugin marketplace update jayjay-create`,
+  `claude plugin update devloop@jayjay-create`, the comparison under "Before
+  you change anything, run this", the entry of the rule taken out of
+  `autoMode.allow` with the functions of `bin/devloop-auto-mode-rule` at
+  `main`, and `bin/devloop-auto-mode-rule read` demanded to exit 1; its output
+  the person did not show. What the logs say of it: every skill loaded names
+  `~/.claude/plugins/cache/jayjay-create/devloop/0.148.0/skills/<name>`, and
+  in project z `setup-checks` step 8 put the question on the rule at record
+  474, `bin/devloop-auto-mode-rule read` answering at 485 "the rule does not
+  stand … the list autoMode.allow does not carry it", exit 1, so the update
+  and the removal had run. `~/devloop-test-z` was created new: the tree of
+  `8985b50` from `~/devloop-test-x` as the first commit `3930803` "A function
+  that checks a name, and its test", `git-log.txt` dating it `2026-10-19
+  10:20:51 +0200`, pushed as the private repository
+  `jayjay-create/devloop-test-z`. `~/devloop-test-y`, set up on 16 October
+  2026 under 0.141.0, was reused by the person's decision, in a second
+  session, to walk the cases of `setup-checks` step 1 for rows in no allowed
+  form; the reuse is the exception under "Open" in `docs/plan.md` for a
+  project an earlier run from 0.129.0 on created, and this entry names the
+  project and the reason: the table has to stand on `main` before
+  `setup-checks` runs, and in a fresh project such a table would make the
+  setup a refresh, `skills/setup-project/SKILL.md` lines 83 and 84. The
+  person's note: such rows arise in practice because devloop itself writes a
+  status wrong, `docs/skill-conventions.md` lines 268 to 270; tables changed
+  by hand and tables from before 5 October 2026 exist in test projects alone
+  and count for nothing.
+
+  **The runs, as the person arranged them.** Project z started with
+  `/devloop:start-work` and the idea of the first closing run word for word,
+  lines 17073 to 17078 of this file; the person's answers in this order: the
+  install question no; the proposal of the checks „Ja, so vorgehen.“; the
+  packages no; Prettier, ESLint and `@types/node` no each; on the message with
+  pull request 2, which named the check for secrets still open, „ist gemergt.
+  gitleaks installiere ich nicht.“; in step 8 work without them yes, the rule
+  for auto mode „Ja, eintragen“, the installation a second time yes, the
+  packages a second time yes; in the planning the language „Deutsch“, the
+  empty field „Neutraler Hinweis“, the reason „Nur gültig/ungültig“, the
+  failure case „Fehler anzeigen“, the core „Ja, so passt das.“, the course
+  „Volle Flexibilität“. Pull requests 1 to 5 the person merged with the
+  command handed over and wrote each time that it was merged; after the
+  questions of step 8 they decided to let the run go to the end of the build
+  without them. Project y: before the session the person rewrote six cells of
+  the Status column of `docs/agents/checks.md` in the terminal and landed them
+  through pull request #4 after a green required check, `git-log.txt` naming
+  `954e54c` "Rewrite six rows of the check table by hand (#4)" at `2026-10-19
+  12:11:27 +0200`, each row meant for one case of
+  `skills/setup-checks/SKILL.md` lines 239 to 265: format from `filled` to
+  `Filled`, the case "meant as filled"; integration from `skipped (state): a
+  single pure function, nothing talks to anything else yet` to `skipped: a
+  single pure function, nothing talks to anything else yet`, the state still
+  holding; unit from `filled` to `skipped: no tests yet` with `-` in the
+  columns before it, the state no longer holding; code-security from `skipped
+  (state): too little own code for a security scan to find anything` to
+  `skipped: the user declined the install of semgrep`, a decision of theirs;
+  end-to-end from `skipped (state): no entry point or interface that someone
+  drives yet` to `off`, whose decision unclear, where the person meant to
+  answer that it had been theirs; types from `filled` to `off` with `-` in the
+  columns before it, whose decision unclear, where the person meant to answer
+  that it had not been theirs. Then a new session with
+  `/devloop:setup-checks`. Pull request #5 the person did not merge; `gh pr
+  view 5` answered `MERGED` after it; the person wrote that it was merged.
+
+  **Decided by the person on 19 October 2026 after the runs.** Two things.
+  First, the criterion of milestone 3: the milestone is reached only when no
+  defect is left that concerns milestone 3, the defects these runs found anew
+  among them and the older ones recorded and not built. This changes the
+  decision of 12 October 2026, part A points 1 and 2 of the entry of that
+  date, lines 18687 to 18703 of this file, and the dated sentence in
+  `docs/plan.md` under milestone 3, its lines 333 to 337, which read "the
+  milestone has not landed with the two closing runs; it lands when the
+  defects in its own parts, eight named there, are built and a run walks them,
+  arranged by the person before the run as decision 12 of the roadmap entry of
+  9 October 2026 arranged the two closing runs." A defect concerns milestone 3
+  where it lies in one of the five parts with which `docs/plan.md` describes
+  the milestone, its lines 234 to 261: the question, its record in
+  `environment.md`, the guard on installs, the places in the skills, and the
+  run without the person; a defect `docs/plan.md` expressly assigns to another
+  milestone counts there, and the list below names the place. The decision of
+  18 October 2026 on defects d, 11 and 12 stands until the person changes it.
+  The dated sentences that stand in `docs/plan.md` stay as they stand; two
+  come after them, the criterion and that the milestone is not reached, the
+  list of defects standing here. Second, the three wordings below, under the
+  complaints, are recorded here and built in an order of their own directly
+  after this one. Where a point changes the should of a thing that stands in
+  the table already, the new should stands in this entry with the old one
+  quoted and in the note of the thing's row, and the status line in the dated
+  entry that carries the old one stays as it stands,
+  `docs/skill-conventions.md` line 1429. Where a should needs a decision of
+  the person's not yet taken, it says what of it the person decides.
+
+  **Project z, as the evidence for what follows.** Started at 08:27:00 UTC,
+  the SessionStart hook at record 4 printing "devloop: not set up here";
+  `/model` at records 7 and 8, "Set model to `Sonnet 5.5`"; the command at
+  record 11 with the idea as its argument, the loaded text at 12 ending on an
+  `ARGUMENTS` line carrying it word for word. Claude Code 2.1.303, the
+  `version` field of every record carrying one, 1222 of 2774, and `state.txt`;
+  auto mode, the 179 `permission-mode` records all `auto`, and the hook on
+  `bin/devloop-permission-mode` at record 974 stating the mode as auto;
+  `claude-sonnet-5-5` with effort `medium` in all 360 assistant records. The
+  output style in effect: the attachment `output_style_instructions` at record
+  15 names `devloop:devloop` with the text of `output-styles/devloop.md`. The
+  installed copy: every loaded skill names the path under 0.148.0. The
+  person's own inputs: the command at 11; the answers in the widget at records
+  83 "Nein", 243 "Nein", 255 "Nein", 261 "Nein", 293 "Nein", 463 "Ja", 475
+  "Ja, eintragen", 498 "Ja, installieren", 509 "Ja, selbst eintragen", 911
+  "Deutsch", "Neutraler Hinweis" and "Nur gültig/ungültig" to the three
+  questions of record 910, 946 "Fehler anzeigen", 993 "Volle Flexibilität";
+  typed, "Ist gemergt" at 175, "Ja, so vorgehen." at 237, "ist gemergt.
+  gitleaks installiere ich nicht." at 365, "ist gemergt" at 438, 570 and 816,
+  "Ja, so passt das." at 960. The run's last message is record 2767 at
+  09:59:12 UTC; no compaction. Seven skills loaded, each through the Skill
+  tool after the first: `start-work` at 12, `setup-project` at 52,
+  `setup-checks` at 209, `plan-work` at 856 with the idea as its argument,
+  `cut-into-tasks` at 1235, `build-work` at 1292, `review-changes` at 1347; no
+  further skill, and `setup-checks` never a second time. 49 subagents: three
+  drafts and three checks of the planning, three build subagents, and five
+  lenses in three rounds for task 1, five in three rounds for task 2, five in
+  two rounds for task 3. The stop hook ran at all 43 turn ends with no output.
+
+  **Project y, as the evidence for what follows.** Started at 10:12:11 UTC,
+  the SessionStart hook at record 5 printing "devloop: set up" with the
+  install record line; the command at record 7, no argument. Claude Code
+  2.1.303, 112 of 213 records; auto mode, 13 records; `claude-sonnet-5-5` with
+  effort `medium`, 27 assistant records; the output style `devloop:devloop` at
+  record 11; the installed copy 0.148.0 at record 8. The person's one input:
+  "ist gemergt" at 174. The run put no question through the widget. The last
+  message is record 201 at 10:16:43 UTC. One skill loaded, `setup-checks` at
+  8.
+
+  **What the runs left.** Project z: pull requests #1 to #5 merged by hand
+  (08:37:35, 08:46:02, 08:52:39, 09:06:43 and 09:12:49 UTC), #11, #13 and #15
+  armed and merged by GitHub (09:38:54, 09:48:22 and 09:58:24); issue 6 the
+  planning issue, closed, 7, 8 and 9 the tasks, closed, 10, 12 and 14 open
+  with `raised-here`; `checks.md` with format, lint, types, unit and secrets
+  filled and blocking, end-to-end and dependencies filled and not blocking,
+  integration and code-security `skipped (state)`; `environment.md` with the
+  three records yes, `install-route: npm`, and no line on gitleaks;
+  `standards.md` with one rule; the search of decision 12 finding the gitleaks
+  download with `curl` into `$HOME/.local/bin` in the workflow file, line 22,
+  `npx prettier`, `npx eslint` and `npx tsc` in the Makefile, and `dasel` in
+  the `rules` script of `package.json`. Project y: #4 merged by hand before
+  the session, #5 armed by the run at 10:13:34 and merged by GitHub at
+  10:14:20; no issue; `checks.md` with format, lint, types, unit, secrets and
+  dependencies filled, integration and end-to-end `skipped (state)`,
+  code-security `skipped (user)`; `environment.md` unchanged from 16 October
+  2026, its section "What checks a merge, and who" still saying that no gate
+  stands; the search finding the download of 16 October with `sudo` in the
+  workflow file and `npx` in the Makefile. No guard blocked anything in either
+  run: no tool result of the 51 logs carries a guard's message, the three
+  results in error of project z being `bin/devloop-arm` with exit 4 at records
+  165 and 349 and `dasel --version` with exit 80 at 897, the one of project y
+  the block of Claude Code's own rule at 159, below; the hook on the output
+  style said nothing, `devloop:devloop` standing in both transcripts.
+
+  **Walk of defect 1, step 8 at a first setup, in these runs.** Entry of 11
+  October 2026 on the first closing run, defect 1. Project z: the merge of #3,
+  the second pull request of step 7, proven at record 448, `MERGED` at
+  08:52:39 UTC; the question on the mode at record 462 at 08:53:03 UTC,
+  nothing between them but an empty thinking block. Held, `setup-checks`
+  expanded 1633 to 1642: step 8 followed the proven merge at a first setup
+  with auto-merge off and no gate. Project y did not meet it, the mode
+  standing set up.
+
+  **Walk of defect 3, no `npm install --save-dev` after a no, in these runs.**
+  Entry of 11 October 2026 on the first closing run, defect 3. Project z:
+  Prettier no at record 255, the no's line "Nichts wird eingetragen; du
+  bekommst den Befehl, Prettier selbst außerhalb des Projekts zu
+  installieren.", ESLint no at 261 with the same line, `@types/node` no at
+  293, the no's line "Nichts wird eingetragen; die Typprüfung bleibt aus,
+  einen Befehl dafür gibt es nicht."; the commands of the second way at 361,
+  "Falls du Prettier oder ESLint doch außerhalb des Projekts willst, gehen
+  `brew install prettier` und `brew install eslint`. Die Formeln habe ich
+  ebenfalls mit `brew info` gelesen.", backed by `brew info --json=v2` at 257;
+  nothing for `@types/node`. No `npm install --save-dev` in any message from
+  242 to 361, and none run before 603. Held, `setup-checks` expanded 943 to
+  949.
+
+  **Walk of defect a (the mode question's fields and the line before each
+  second question).** Entry of 11 October 2026 on the second closing run,
+  defect a; its should as the entry of 17 October 2026 revised it, lines 26770
+  to 26777 of this file: what the mode question needs stands in its fields, in
+  the wording approved on 17 October 2026, and nothing as text before its
+  call, and the line before each second question stands in that question's
+  question field, naming their no where the record says no; `setup-checks`
+  expanded 1733 to 1788 and 1865 to 1883. Project z, record 462, header „Ohne
+  dich“, the question field: „Ohne dich arbeiten: devloop baut die geplanten
+  Aufgaben nacheinander, GitHub mergt jede, sobald die Prüfungen grün sind,
+  und du siehst das Ergebnis erst am Ende.“, „Die Prüfungen verbrauchen
+  Minuten deines GitHub-Kontingents.“, „Der Rechner muss wach bleiben, solange
+  devloop arbeitet; ein `caffeinate` in einem eigenen Terminal reicht, bei
+  zugeklapptem Laptop nicht.“, a blank line, „Darf devloop in diesem Projekt
+  ohne dich arbeiten?“; the yes „Ja“ with „devloop richtet eine Prüfung auf
+  GitHub ein und schützt main, auch gegen deine eigenen Pushes; ein Lauf
+  arbeitet, solange dieses Fenster offen ist.“; the no „Nein“ with „Alles
+  bleibt, wie es ist; mit --auto richtest du es später ein.“ Between the
+  proven merge at 448 and the call at 462 the log holds no text block, record
+  461 a thinking block of no characters, so nothing stood as text before the
+  call. Record 497, the second install question, its field opening „Arbeiten
+  ohne dich braucht dein Ja zum Installieren von Werkzeugen außerhalb des
+  Projekts. Du hast dazu Nein gesagt.“, then the question as at its first
+  asking; record 508, the second packages question, its field opening
+  „Arbeiten ohne dich braucht dein Ja dazu, dass der Lauf Prüfwerkzeuge selbst
+  in die Pakete des Projekts einträgt. Du hast dazu Nein gesagt.“ Project y
+  did not meet it, the mode standing set up. Two readings, and the person
+  decides between them, by section 6 of the order of this day. Under the
+  first, defect a held at every place: each point of the approved wording
+  stands in its field — the course and its end, the cost, the machine kept
+  awake with `caffeinate` for a closed laptop, the question line, the check
+  and the protection against their own pushes and the window under the yes,
+  everything as it is and `--auto` under the no — as the skill reads an
+  approved wording, "this skill says what is said, not the words", expanded
+  1794, and as the walk of defect 13 on 16 October 2026 counted the points of
+  project 2 at its record 444; nothing stood as text before the call of 462;
+  and the line before each second question stood in its field with their no.
+  Under the second, defect a did not hold at 462: the should says "in the
+  wording approved on 17 October 2026", and no sentence of the approved text
+  6, lines 26641 to 26666 of this file, stands as approved — „Ohne dich baut
+  devloop die geplanten Aufgaben nacheinander; GitHub mergt jede, sobald die
+  Prüfungen grün sind. Das Ergebnis siehst du erst am Ende.“ became „Ohne dich
+  arbeiten: devloop baut …, und du siehst das Ergebnis erst am Ende.“, „Die
+  Prüfungen verbrauchen Minuten aus deinem Kontingent auf GitHub.“ became „…
+  Minuten deines GitHub-Kontingents.“, „Solange devloop arbeitet, muss der
+  Rechner wach bleiben.“ and the `caffeinate` sentence became one sentence,
+  the labels „Ja, ohne mich erlauben“ and „Nein, alles mit mir“ became „Ja“
+  and „Nein“, and the point the entry of 17 October 2026 gives the word
+  „erlauben“ of the label to carry, that each idea is asked again, stands in
+  no field; and the text block of record 496 before the call of 497, "Jetzt
+  die Install-Erlaubnis, zum zweiten Mal.", in the same API message as the
+  call, is text before the call of a second question, which the walk of defect
+  14 below records. The thing of defect a counts as walked and keeps its runs;
+  which reading holds is not decided here.
+
+  **Walk of defect 13 (the two points of the mode question).** Entry of 16
+  October 2026 on the runs of that day, defect 13; its should as revised on 17
+  October 2026, every point of the wording approved that day in its field,
+  `setup-checks` expanded 1759 to 1788. Project z, record 462 as quoted above:
+  the course and its end, the cost on a private repository, the awake line
+  with `caffeinate`, the question line, the check and the protection against
+  their own pushes and the window under the yes, everything as it is and
+  `--auto` under the no, each in its field. Held in every point but the one
+  the entry of 17 October 2026 gives the label „Ja, ohne mich erlauben“ to
+  carry, that each idea is asked again, which the label „Ja“ does not; the
+  cost line stood though the visibility was not read before the question,
+  defect 1 below.
+
+  **Walk of defect 14 (the texts of defect a under the forced output style).**
+  Entry of 16 October 2026 on the runs of that day, defect 14; its should as
+  revised on 17 October 2026: the mode question's fields in the approved
+  wording, the line before each second question in that question's question
+  field, naming their no where the record says no, nothing as text before
+  either call, `setup-checks` expanded 1865 to 1883, under
+  `output-styles/devloop.md` lines 11 to 27. Project z: the lines in the
+  fields of 497 and 508 with „Du hast dazu Nein gesagt.“, both records on
+  `main` reading no at 520; before the call of 508 nothing, the API message
+  holding the call alone; before the call of 497 the text block of record 496,
+  "Jetzt die Install-Erlaubnis, zum zweiten Mal.", in the same message as the
+  call, where the skill says "Nothing stands before the call", expanded 1877,
+  and the style says text there can land in a collapsed note. Held at 508 and
+  did not hold at 497.
+
+  **Walk of defect b, points 2 and 3 of step 8, in these runs.** Entry of 11
+  October 2026 on the second closing run, defect b; `setup-checks` expanded
+  1952 to 1985. Project z: after the two yes at 498 and 509 the records landed
+  as #4, point 1, proven at record 587, `MERGED` at 09:06:43 UTC, and fetched
+  there; then `brew install gitleaks` at 602, `gitleaks` at
+  `/opt/homebrew/bin/gitleaks` 8.30.1, and `npm install --save-dev prettier
+  eslint @eslint/js typescript-eslint typescript @types/node` at 603,
+  TypeScript among them the tool point 2 enters, the three others the classes
+  point 3 fills in the packages; the red proofs at 690 and 758; the workflow
+  file at 716 and 729; #5 carrying it all at 798, before the gate at 840.
+  Held, in both points, and in point 3 as the entry of 16 October 2026 wrote
+  it on 18 October, defect 9 below.
+
+  **Walk of defect c (the editing tool reaches the workflow file, the
+  subagents and step 8).** Entry of 11 October 2026 on the second closing run,
+  defect c; the rule `shared/editing-tool.md`, inserted into `build-work` and
+  `setup-checks` step 8 and named in the handover of `build-work` step 3,
+  expanded 1059 to 1081. Project z: `environment.md` with the Edit tool at
+  records 306, 534 and 535, the workflow file with the Write tool at 716 and
+  the Edit tool at 729; the handover to each build subagent carrying the rule,
+  record 1318; the two build subagents that wrote `environment.md` did so with
+  the Edit tool, record 89 of the log of task 2's builder and 70 of task 3's,
+  and no subagent wrote the workflow file. `checks.md` the main run wrote with
+  a python heredoc from the shell at 743, 771 and 1885, a file the rule does
+  not name. Held.
+
+  **Walk of defect i, one pull request where nothing is installed under the
+  records, in these runs.** Entry of 11 October 2026 on the second closing
+  run, defect i; `setup-checks` expanded 1952 to 1959. Project z took point
+  1's other branch, as project 1 of 16 October 2026 did: gitleaks, Prettier,
+  ESLint and `@types/node` were to be installed or entered under the records,
+  so the records went first as #4, record 552, and the installs with the
+  workflow file as #5, record 798; two merges by the person where the text has
+  two. Held. Project y had nothing to land in step 8.
+
+  **Walk of defect 5 of the entry of 16 October 2026 (the arming in the same
+  breath).** `build-work` expanded 1756 to 1765, `bin/devloop-arm` reading
+  `mergeStateStatus` and arming in the same pass. Project z: #11 pushed at
+  record 1788 and armed at 1802 in a call of its own, the program reading
+  `BLOCKED` and arming in one pass, "armed: GitHub accepted auto-merge at
+  BLOCKED"; #13 and #15 pushed, created and armed in one call each, records
+  2350 and 2710, the same answer. Held three times, no refusal.
+
+  **Walk of defect 9 of the entry of 16 October 2026 (point 3 by the packages
+  record).** `setup-checks` expanded 1963 to 1980, since 18 October 2026.
+  Project z: with both records yes, gitleaks, no package of the stack, went
+  outside the project at 602, Prettier, ESLint and `@types/node`, packages of
+  the stack, into `package.json` at 603, and nothing installed outside was
+  left unentered. Held, in both of its cases, as the person arranged.
+
+  **Walk of defect 4 of the entry of 16 October 2026 (the merge handover and
+  what stands beside it).** `shared/merge-handover.md` lines 1 to 7 and 27 to
+  32, as the entry of 17 October 2026 left them: the handover last in the
+  message that ends the turn, before it what else the turn owes, beside and
+  after it nothing, no word on what comes after the merge. Project z, five
+  handovers: record 172 held, the sentence on the labels before it and nothing
+  after "Sag Bescheid, sobald er drin ist. Bis dahin passiert hier nichts.";
+  361 held, the classes, the open decision and the commands before it and
+  nothing after; 435 did not, "Sag Bescheid, sobald er drin ist. Dann geht es
+  mit deiner Webseite weiter, und bis dahin passiert hier nichts."; 566 did
+  not, after the command "Danach richte ich Prettier, ESLint, `@types/node`
+  und gitleaks ein, weil deine Ja-Antworten diese Prüfungen wieder öffnen.
+  Dann kommen der GitHub-Workflow und der Schutz für `main`."; 813 did not,
+  after the command "Danach lasse ich die Prüfung einmal auf `main` laufen,
+  schalte Auto-Merge ein und schütze `main`, auch gegen deine eigenen Pushes."
+  Project y, record 171, did not: after the command "Dann hole ich main, räume
+  den Branch auf und gehe zum Angebot des unattended Mode.", and the sentence
+  before it, "Ob der PR wirklich durchgeht, kann ich nicht sagen. Wenn er
+  nicht von selbst mergt, merge ihn mit diesem Befehl:", none of the three
+  cases, defect 17 below. The case sentence of the five of project z was the
+  one of a missing required check, "Auto-Merge geht nicht, weil auf `main`
+  noch kein Required Check steht, auf den GitHub warten könnte. Du mergst
+  deshalb selbst:", whose words the person's complaint below concerns; the
+  command with `--repo` held at all six. Did not hold at four of six places.
+
+  **Walk of defect 10 of the entry of 16 October 2026 (text owed in the
+  message).** Its should as revised on 17 October 2026. The costs of the two
+  answers that send the run alone stood in their descriptions at record 991,
+  "Das Design wird gegen die Liste oben gewählt, nicht nach deinem Geschmack;
+  trifft kein Entwurf, hält der Lauf an. Der Rechner muss wach bleiben." and
+  "Gleiche Kosten: Design nach Liste, Rechner wach.", held; the count of the
+  classes at the close of `setup-checks`, expanded 2180 to 2181, and that the
+  suite is done, 2192, reached no message: after the protection at 840 the
+  next record of the run is the Skill call of 854, and the next message that
+  ended a turn is the hard core at 957; and that the glossary and the decision
+  records were created, records 107 and 108, `setup-project` expanded 1415 to
+  1417, reached no message, the next message after them the handover of 172.
+  Did not hold at the two places of the setups. Stage 2's report stood as the
+  comment at 1051 and 1052 and in no message, and the mark was not said, 1013,
+  both as revised.
+
+  **Walk of defect 11 of the entry of 16 October 2026 (question 4 of
+  `setup-project`).** Expanded 1024 to 1026: the local environment is asked
+  "always where there is code, unless you could read it all from
+  `docker-compose.yml` or the README". Project z: record 70 listed the files,
+  `src/validate.ts` and its test, no README and no `docker-compose.yml`; the
+  install question at 82, the cut at 93, no question on the environment, and
+  `environment.md` at 110 "Nothing runs yet: the project is a TypeScript
+  module with tests" on the run's own reading. Did not hold.
+
+  **Walk of defect 12 of the entry of 16 October 2026 (a refusal of a fourth
+  kind).** No safety check built into Claude Code denied a command of either
+  run or of any subagent, the search of the 51 logs finding no such message.
+  Not met; stands as the person decided on 18 October 2026. What project y met
+  at record 159 is a block of another kind, defect 18 below.
+
+  **Walk of the four cases of `setup-checks` step 1 in project y.** Expanded
+  770 to 798. Record 37 read the table as the person had left it. Format,
+  `Filled`, the case meant as filled: the targets run green at 72, `make fmt`
+  broken red at 84 ("[warn] src/zz_break.ts"), the file deleted, then `filled`
+  at 92 — held. Integration, `skipped: a single pure function, nothing talks
+  to anything else yet`, a state that still holds: `skipped (state)` with it
+  at 92 — held. Unit, `skipped: no tests yet`, a state that no longer holds:
+  the class filled at 92, its red proof "fail 1" at 84 — held. Code-security,
+  `skipped: the user declined the install of semgrep`, a decision of theirs:
+  `skipped (user)` with that reason at 92 — held. End-to-end, `off`, and
+  types, `off`, whose decision the text does not say: with the person there
+  they are asked, "a choice through the harness's choice widget … In the
+  question line: that the check, in ordinary words, is switched off, what the
+  table gives as its reason, quoted as it stands, and whether they decided
+  that", expanded 778 to 792; no question was put in the whole log, and the
+  run decided both itself at 92, end-to-end `skipped (state): no entry point
+  or interface that anyone drives yet` and types `filled`, its message at 171
+  reading "Die Zeilen waren von Hand geschrieben und in keiner erlaubten Form
+  (`Filled`, `off`, `skipped: no tests yet`)." Did not hold at these two,
+  defect 16 below. The branch was cut at 64 before any question could have
+  been put.
+
+  **The things whose counted runs fell away at `3f810fd`.** The tool lists 73
+  runs under "RUNS THAT DO NOT COUNT" with "2026-10-19 at 3f810fd", on 28
+  things, the lines of their units or of a text they insert changed by the
+  catch-up of that day. These runs reached 26 of them: the straight paths of
+  `start-work` steps 1, 2 and 5, of `setup-project` step 4 and its
+  `issue-tracker.md` section, of `setup-checks` steps 1, 3, 4 and 8, of
+  `plan-work` as a whole, Stage 1 and the case with nobody there, of
+  `cut-into-tasks` after creating, of `build-work` steps 1, 2, 3, 4 and 6 and
+  its unattended mode, of `shared/install-question.md`,
+  `shared/mark-deletion.md` and `shared/set-aside-at-start.md`, and of the
+  output style; the dependency question of step 3 put once, record 242, and
+  the per-tool questions under its no, 254, 260 and 292; and the rule question
+  of step 8, record 474. Not reached: the straight path of `build-work` under
+  "A guard's block, with nobody there", no refusal having met the run, and the
+  auto-merge question of `setup-project` step 4, not put where no gate stands.
+  Each reached thing gets a run of this day under 0.148.0 on the paragraphs
+  below.
+
+  **Met again in these runs, said here and not recorded a second time.** The
+  things of the entry of 15 October 2026 on the thinking part: the report of
+  `setup-project` step 2 and the close of `setup-project`, records 52 to 172
+  of project z holding no text before the handover; "With exactly one remote:
+  take it and move on, saying nothing of it" now, held; `plan-work` "Say
+  roughly how many rounds you expect", not said between 856 and 910; the close
+  of `setup-checks` in both projects, project y saying its counts at 201 with
+  a wrong number, "4 Klassen sind `filled` (lint, secrets, dependencies, plus
+  format, types und unit aus diesem Lauf, also sechs insgesamt)". Defect 9 of
+  the first closing run held at every deletion, `git ls-remote --heads origin
+  <branch>` before every `git push --delete`, records 376 and 389, 448, 587,
+  826, 1830, 2378 and 2739 of project z, 180 and 194 of project y; defect 2 of
+  the first and f of the second, every handover naming `gh pr merge <n>
+  --squash --repo jayjay-create/<repo>`; defect h of the second, every fix
+  reviewed in a round over its commits, three rounds for tasks 1 and 2 and two
+  for task 3. The defect of the entry of 15 October 2026 on the thinking part,
+  line 24502 of this file, that with the spec closed the first closing run
+  took neither loose `raised-here` issue and ended calling them not urgent,
+  recorded and not built, met again in project z: record 2753 closed issue 6
+  with issues 10, 12 and 14 open under `raised-here`, read at 2740, deleted
+  the mark in the same call, and the last message at 2767 said "Der Lauf hat
+  aber kurz vor dem Ende angehalten. Wegen der drei offenen Folge-Issues
+  (siehe unten) ist der Abschlusssatz nicht ganz wahr." and "Drei Issues mit
+  Prüf-Funden von niedriger Priorität bleiben offen, damit der Lauf nicht
+  endlos weiterprüft.", where `build-work` expanded 2609 to 2614 and 2622 to
+  2632 end the run on two conditions and have the spec closed with a loose
+  issue beside it keep the run working under clause 3, expanded 1016 to 1018;
+  no stop the text names happened, the run ending on a ceiling of its own.
+  Text blocks between two tool calls, which the style leaves as a note the run
+  writes to itself, stood at records 321, 673, 895, 1232, 1289, 1829, 2073,
+  2392 and 2614 of project z and 71 of project y; and the run without the
+  person ended a turn with a short text 36 times while it waited for its
+  subagents, "Die drei Prüf-Agents laufen. Ich warte auf ihre Verdikte." at
+  1149 among them, a form no text of the set covers, since the set was written
+  for a run that ends its turn only before the person.
+
+  **The new defects.** Nineteen, each with its record and its should; the
+  first fifteen in project z, the four last in project y. Defects 4, 8, 12,
+  13, 14, 15 and 19 carry the person's complaints of 19 October 2026, each
+  named as their statement; 13, 14 and 15 carry the wordings they approved
+  that day, in German as approved. Where a should changes the should of a
+  thing in the table, the old one is quoted and the row's note carries the new
+  one.
+
+  **1. Step 8 put the mode question without reading the state before it.**
+  "Read the state before asking; never carry an impression of it",
+  `setup-checks` expanded 1676 to 1699: the gate by both queries, its binding,
+  auto-merge and the three records; "Read, before the question, whether GitHub
+  offers the protection", 1705 to 1732; the visibility, 1744 to 1758; and
+  `uname -s` for the awake line, 1769 to 1778. Project z: between the proven
+  merge of #3 at record 448 and the question at 462 no command ran. The gate
+  was last read at record 348 by `bin/devloop-arm 2`, "gate: protection:
+  Branch not protected / gate: rulesets: no required check", nine minutes
+  before; `allow_auto_merge`, the visibility and `permissions.admin` at record
+  70, in `setup-project` step 4, "[false,"private",true]", 25 minutes before;
+  the three records never in this step; `uname -s` never in the session. The
+  fields of 462 carried the cost line and the `caffeinate` line all the same,
+  on the impression.
+  Recorded, not built: step 8 of project z put the mode question at record 462
+  without reading the gate, auto-merge, the records, the visibility or `uname
+  -s` in this step, the last readings standing at records 348 and 70 — should:
+  the five things, the visibility and `uname -s` are read between the proven
+  merge and the question, `setup-checks` expanded 1676 to 1699, 1705 to 1732,
+  1744 to 1758 and 1769 to 1778.
+
+  **2. The rule question came before the reading that decides whether it is
+  put.** `setup-checks` expanded 1843 to 1845: the question is not put where
+  the rule stands already, `bin/devloop-auto-mode-rule read` saying so with
+  exit 0. Project z: the question at record 474, the answer at 475, and only
+  then `read` at 485, exit 1, followed by `write` in the same call. The rule
+  did not stand, so the question was due; the reading that decides it came
+  after it.
+  Recorded, not built: the rule question of step 8 was put at record 474
+  before `bin/devloop-auto-mode-rule read` answered at 485 — should: the
+  reading comes first and the question only where it answers exit 1,
+  `setup-checks` expanded 1843 to 1845.
+
+  **3. The branch of the check setup was cut before the last question of step
+  3.** "Cut the branch, after the last question and before the first write",
+  expanded 1055, and step 3, "its questions are the last questions of this
+  skill, the branch is cut once they are answered", 879 to 882. Project z: the
+  cut of `devloop-checks` at record 278 at 08:43:17 UTC, in the same call as
+  `tsc --noEmit -p .`, whose errors named `@types/node`; the question on
+  `@types/node` at 292 at 08:43:25 UTC, after the cut. The need for
+  `@types/node` was found by running the type checker after the cut, where
+  step 3 decides per class which tool and where it lands before the cut.
+  Recorded, not built: the branch `devloop-checks` was cut at record 278 and
+  the question on `@types/node` put at 292, after it — should: every question
+  of step 3 comes before the cut, the tools a class needs read before it,
+  `setup-checks` expanded 879 to 882 and 1055.
+
+  **4. The secrets class was left `empty`, its decision open in a handover and
+  the mode's loss in a subordinate clause.** Step 3, expanded 1017 to 1024:
+  "Where the command handed over is not run, the class becomes `skipped
+  (user):` with that reason, naming the tool and the command that was not
+  run"; step 1, 749 to 755: `secrets` is never skipped on a run's own
+  judgement, only the user can; step 6, 1413 to 1417: `check` fails while a
+  class is `empty`. Project z: the install question no at 83, gitleaks missing
+  at 221; the proposal of 228 said "Du bekämst von mir den Befehl und
+  installierst selbst. Dieses Prüfen kann ich nicht von mir aus abschalten.";
+  `checks.md` at 305 left secrets `empty`, `make check` failing on it at 322,
+  and #2 landed so; the handover of 361 carried, under "Offen", "Die Prüfung
+  auf versehentlich eingecheckte Zugangsdaten ist noch nicht entschieden.
+  Dafür fehlt `gitleaks`, und ich installiere nichts ohne deine Erlaubnis.
+  `make check` schlägt deshalb absichtlich fehl, bis du das entschieden hast.
+  Ohne diese Prüfung kann ich auch keine unbeaufsichtigten Läufe anbieten."
+  and the command `brew install gitleaks`; the person wrote at 365 "gitleaks
+  installiere ich nicht.", the cell at 403 became `skipped (user): gitleaks
+  not installed by the user; install command handed over`, and a third pull
+  request, #3, carried that one row. The person's statement of 19 October
+  2026: a user overreads the clause, and the offer may fall away only where
+  the decisions do not allow it; their should: the open decision is taken
+  before the offer is made or dropped. The run put the decision in a handover
+  and left the class undecided across a merge, where step 3 has the class
+  decided at once and step 1 has `secrets` decided by the person: which of the
+  two the run follows for `secrets` after a no to installing, the two texts do
+  not say together.
+  Recorded, not built: project z left the secrets class `empty` after the
+  command was handed over, records 305 to 361, said the mode's loss in a
+  subordinate clause at 361 and needed pull request #3 for the decision,
+  record 421 — should: by the person's statement of 19 October 2026 the open
+  decision is taken, as a question of theirs, before the offer of the mode is
+  made or dropped, and `setup-checks` step 1 and step 3, expanded 749 to 755
+  and 1017 to 1024, say together what `secrets` becomes after a no to
+  installing with the person there.
+
+  **5. Three pull requests handed over without arming and without reading the
+  gate.** Step 7, expanded 1437 to 1442: open the pull request "and arm the
+  platform to merge it", the program printing the gate on its `gate:` lines;
+  1547 to 1552: where it printed none, ask both queries here; step 8, 2116 to
+  2120: each pull request of the step landed the way step 7 lands one. Project
+  z: #1 at record 164 and #2 at 348 were armed, the program answering "no
+  required check: neither gate query names one"; #3 at 421, #4 at 552 and #5
+  at 798 were created without `bin/devloop-arm` and without a gate query, and
+  handed over at 435, 566 and 813 with the sentence of a missing required
+  check taken from the reading of 348.
+  Recorded, not built: pull requests #3, #4 and #5 of project z were created
+  at records 421, 552 and 798 without arming and without a gate query, and
+  handed over at 435, 566 and 813 on the reading of record 348 — should: every
+  pull request of steps 7 and 8 is armed with `bin/devloop-arm`, and the case
+  of its handover is read off the program's `gate:` lines or off both queries
+  asked there, `setup-checks` expanded 1437 to 1442, 1547 to 1552 and 2116 to
+  2120.
+
+  **6. The standing fact of the tool installed outside the project was not
+  written into `environment.md`.** Step 4, expanded 1185 to 1203: a tool
+  installed under a record saying yes is reported in the pull request body
+  "and write the standing fact into `environment.md`". Project z: `brew
+  install gitleaks` at record 602, the report in the body of #5 at 786,
+  "standing at `/opt/homebrew/bin/gitleaks`"; `environment.md` on `main` after
+  the run carries no line on it, where the project of 16 October 2026 carried
+  a section "Checks installed outside the project".
+  Recorded, not built: gitleaks installed at `/opt/homebrew/bin` at record 602
+  of project z stands in no line of `environment.md` after the run — should:
+  the standing fact is written into `environment.md` with the install,
+  `setup-checks` expanded 1185 to 1203.
+
+  **7. The questions of the rounds carried no recommended answer.** Stage 1,
+  expanded 920 to 924: the decisions left are asked "numbered, each with your
+  recommended answer so a single word can settle it";
+  `shared/three-questions.md` lines 7 and 8, since 18 October 2026, "every
+  decision about the idea is a question to them with your recommendation".
+  Project z: record 910 put three questions, „Sprache“, „Leeres Feld“ and
+  „Grund“, each with two answers and no recommendation among them, and 945
+  one, „Fehlerfall“, likewise; the person answered all four.
+  Recorded, not built: the four questions of the rounds of project z, records
+  910 and 945, carried no recommended answer — should: each decision of a
+  round is put with the run's recommended answer, `plan-work` expanded 920 to
+  924 and `shared/three-questions.md` lines 7 and 8.
+
+  **8. The settled line stood in the first question's field, where it belongs
+  to the round.** `shared/three-questions.md` lines 25 to 30, in `plan-work`
+  expanded 969 to 974: what the run settled itself in a round is said in one
+  line "through the widget, in the question field of the first of them, before
+  its question line". Project z, record 910: the field of „Sprache“ opens „Als
+  gegeben genommen (sag, wenn etwas nicht stimmt): rules.yaml enthält
+  maxNameLength: 32, wie bisher im Code; isValidName bekommt die Höchstlänge
+  als zweiten, optionalen Parameter; die Seite wird mit tsc für den Browser
+  übersetzt, dasel schreibt rules.json, ein kleiner Node-Server liefert
+  beides, Playwright mit Chromium testet.“, then "1. In welcher Sprache zeigt
+  die Seite ihre Texte?". The person's statement of 19 October 2026: the line
+  has nothing to do with this question. Their should: the line is recognisable
+  as something that holds for every question of the round; how, the person
+  decides before it is built.
+  Recorded, not built: the settled line of the first round of project z stood
+  in the question field of „Sprache“ at record 910, as the text puts it, and
+  reads as part of that question — should: the line is recognisable as holding
+  for every question of the round, the form to be decided by the person before
+  the build, `shared/three-questions.md` lines 25 to 30.
+
+  **9. The build did not read the seven preconditions again at its start.**
+  `build-work` under "Unattended mode", expanded 2376 to 2381: six of the
+  seven were read at the end of the sharpening "and they are read again here",
+  the third here only. Project z: record 1304 fetched, read `git rev-list
+  --left-right --count origin/main...main` as 0 0, the tree clean on `main`,
+  the mark with this run's commit and `build`, and `make check` green; then
+  the first task at 1318. No gate query, no `allow_auto_merge`, no
+  `bin/devloop-permission-mode`, no reading of the records or of `checks.md`
+  for `empty`, and nothing on precondition 3 between 1292 and 1318; the six
+  had been read at 971, in the planning.
+  Recorded, not built: the build of project z read at record 1304 the base and
+  the mark and none of the seven preconditions again — should: all seven are
+  read at the start of the build, the third among them, `build-work` expanded
+  2376 to 2381 and 2383 to 2437.
+
+  **10. The main run wrote the check table and two targets itself in the
+  build.** `build-work` step 3, expanded 1298 to 1320: "Do not edit
+  `docs/agents/checks.md` yourself. If this work creates or changes a check
+  target … call `setup-checks` for that class instead", and the call the
+  subagent's report names is the main run's; step 4, expanded 1599 to 1605: a
+  `skipped (state)` cell whose state has ended goes to `setup-checks` for that
+  class; `shared/checks-owner.md`. Project z: the builder of task 2 named the
+  change for the main run, "Your Makefile call (not done by me, per rule 1):
+  add a target `test-e2e` … in the check setup", its report at record 1860;
+  the main run at 1885 rewrote the Makefile and `checks.md` with a python
+  heredoc, the end-to-end row from `skipped (state): no entry point yet` to
+  `filled`, with a red proof, and committed at 1899; at 2463 it extended the
+  `types` target itself. No call of `setup-checks` stands in the log after
+  209. The bodies of #13 and #15, records 2337 and 2709, say "The check setup
+  filled the end-to-end class" and "the check setup extended the `types` Make
+  target".
+  Recorded, not built: the main run of project z filled the end-to-end class
+  and changed the `types` target itself, records 1885 and 2463, calling
+  `setup-checks` nowhere and naming the check setup in the bodies — should: a
+  state that has ended and a check target the task changes go to
+  `setup-checks` for the class, on the task's branch, before the review,
+  `build-work` expanded 1298 to 1320 and 1599 to 1605 and
+  `shared/checks-owner.md` lines 1 to 15.
+
+  **11. The end-to-end class was filled as not blocking for a tool missing on
+  the platform's machine.** Step 6, expanded 1406 to 1410: `Blocking` is `no`
+  on a filled row that must not block, "A class whose result depends on a
+  service you do not control is never blocking"; step 4, 1326 to 1331: where
+  the workflow file stands and a class becoming blocking needs a tool that
+  exists only outside a project, its installation line goes into the workflow
+  file. Project z: the row at record 1885 "| end-to-end | - | test-e2e | … |
+  3s | no | filled |", the section "End-to-end runs in Chromium through `make
+  test-e2e`; it is not blocking and not part of `check`, because CI installs
+  neither dasel nor a browser", and the last message at 2767 "Er ist auch
+  nicht in CI, weil dort weder `dasel` noch ein Browser installiert sind." The
+  test depends on no service outside the project; what it needs on the
+  platform's machine is the installation line step 4 has the run write. The
+  person's statement of 19 October 2026: why the browser test does not run in
+  the check they could not understand from the run's reason.
+  Recorded, not built: the end-to-end class of project z was filled `Blocking:
+  no` at record 1885 because the workflow installs neither dasel nor a
+  browser, and the last message gave that as the reason — should: a filled
+  class that depends on no service outside the project is blocking, and the
+  tools it needs on the platform's machine enter the workflow file with it,
+  `setup-checks` expanded 1326 to 1331 and 1406 to 1410.
+
+  **12. The last message of project z, in three headings, left the person
+  without the why.** `shared/mark-deletion.md` line 51 and the paragraph it
+  opens, in `build-work` expanded 2709 to 2729: two groups and nothing outside
+  them, the first under a heading for the result opening on the finishing
+  sentence or the stop that ended the run, what was merged, what is open and
+  the next run takes up and why, what was installed; the second under a
+  heading for what is theirs to do, where nothing is, left out. Record 2767:
+  three headings, „Ergebnis“, „Offen, nicht erledigt“ and „Von dir zu klären“;
+  the first opening "Die Webseite ist fertig, gemergt und auf `main` getestet.
+  Der Lauf hat aber kurz vor dem Ende angehalten.", a stop no text of the set
+  names, the defect of the entry of 15 October 2026 met again below; the open
+  issues under the second heading "damit der Lauf nicht endlos weiterprüft",
+  with no clause and no word on the next run; under the third "`make check`
+  prüft Markdown-Dateien nicht auf Format, denn die Control-Dokumente unter
+  `docs/agents/` werden von Skripten gelesen.", which is nothing of the second
+  group's; and no word on where the page is to be seen, which `environment.md`
+  carries under "Run the page locally". The person's statement of 19 October
+  2026: the message leaves a user confused — why there are open issues, why
+  they were not done, what to do with them, where the result is to be seen,
+  and why the browser test does not run in the check, whose reason they did
+  not understand.
+  Recorded, not built: the last message of project z at record 2767 stood in
+  three headings, opened on a stop no text names, gave the open issues no
+  clause and the next run no word, carried under what is theirs a line that is
+  none of that group's, and said nowhere where the result is seen — should:
+  two groups as `shared/mark-deletion.md` line 51 and the paragraph it opens
+  have them, the first naming why each loose issue is open and that the next
+  run takes it, where the result is seen and why a class is not blocking in
+  words a user understands, by the person's statement of 19 October 2026.
+
+  **13. The awake line of the mode question says what does not suffice, not
+  the conditions.** The wording approved on 17 October 2026, lines 26661 to
+  26662 of this file: „Auf dem Mac hält ihn `caffeinate` in einem eigenen
+  Terminal wach, einen zugeklappten Laptop aber nicht.“; the run's line at
+  record 462, "ein `caffeinate` in einem eigenen Terminal reicht, bei
+  zugeklapptem Laptop nicht." The person's statement of 19 October 2026: the
+  line says what does not suffice instead of naming the conditions. Approved
+  that day, in place of the sentence of 17 October: „Auf dem Mac hält ihn
+  `caffeinate` wach, solange es in einem eigenen Terminal läuft und der Laptop
+  aufgeklappt bleibt.“ This changes the should of defect a of the entry of 11
+  October 2026 on the second closing run and of defect 13 of the entry of 16
+  October 2026, which read "in the wording approved on 17 October 2026" and
+  "every point of the wording approved on 17 October 2026", and the awake line
+  of `setup-checks` step 8, expanded 1769 to 1778; the new should stands in
+  their rows' notes, their status lines as they stand.
+  Recorded, not built: the awake line of the mode question, approved on 17
+  October 2026 as „… einen zugeklappten Laptop aber nicht.“ and said at record
+  462 of project z as "bei zugeklapptem Laptop nicht", names what does not
+  suffice — should: the line reads „Auf dem Mac hält ihn `caffeinate` wach,
+  solange es in einem eigenen Terminal läuft und der Laptop aufgeklappt
+  bleibt.“, approved on 19 October 2026, `setup-checks` expanded 1769 to 1778,
+  to be built in the order after this one.
+
+  **14. The descriptions of the two answers that send the run alone foretell a
+  failure.** `plan-work` expanded 1112 to 1116, `skills/plan-work/SKILL.md`
+  lines 423 to 427: the design chosen against the written list, "where no
+  draft carries the stories the run stops rather than guessing", the machine
+  awake. Record 991: „Volle Flexibilität“ with „Alles wird ohne dich gebaut,
+  du liest das Ergebnis danach. Das Design wird gegen die Liste oben gewählt,
+  nicht nach deinem Geschmack; trifft kein Entwurf, hält der Lauf an. Der
+  Rechner muss wach bleiben.“ and „Plan ohne dich“ with „Der Plan entsteht
+  ohne dich und hält an, sobald du ihn lesen kannst; dann läuft es wie die
+  erste Antwort. Gleiche Kosten: Design nach Liste, Rechner wach.“ The
+  person's statement of 19 October 2026: „trifft kein Entwurf, hält der Lauf
+  an“ is unclear and anticipates a failure nobody knows will come. Approved
+  that day, for „Volle Flexibilität“: „Alles wird ohne dich gebaut, du liest
+  das Ergebnis danach. Den Entwurf wählt devloop anhand der Liste oben, nicht
+  nach deinem Geschmack. Der Rechner muss wach bleiben.“; for „Plan ohne
+  dich“: „Der Plan entsteht ohne dich und hält an, sobald du ihn lesen kannst;
+  danach geht es weiter wie bei der ersten Antwort. Auch hier wählt devloop
+  den Entwurf anhand der Liste, und der Rechner muss wach bleiben.“ This
+  changes what the two descriptions say, `plan-work` lines 423 to 427, and the
+  should of defect 10 of the entry of 16 October 2026 as revised on 17
+  October, "what the two answers that send the run alone cost stands in their
+  descriptions, `plan-work` lines 417 to 423", in its row's note.
+  Recorded, not built: the descriptions of „Volle Flexibilität“ and „Plan ohne
+  dich“ at record 991 of project z carry „trifft kein Entwurf, hält der Lauf
+  an“ and „Gleiche Kosten: Design nach Liste, Rechner wach.“, as the text has
+  them — should: the two descriptions read as approved on 19 October 2026,
+  quoted in this defect, and `plan-work` lines 423 to 427 say so, to be built
+  in the order after this one.
+
+  **15. The merge handover's sentence for a missing required check is not
+  understood.** The wording approved on 12 October 2026, lines 19241 to 19244
+  of this file: „GitHub kann ihn nicht selbst mergen, weil es noch keine
+  Pflichtprüfung gibt, auf die es warten könnte.“; the run's sentence at
+  records 172, 361, 435, 566 and 813, "Auto-Merge geht nicht, weil auf `main`
+  noch kein Required Check steht, auf den GitHub warten könnte. Du mergst
+  deshalb selbst:". The person's statement of 19 October 2026: a user hears of
+  auto-merge there for the first time, the run's sentence is not
+  understandable, and it does not say when there is a required check. Approved
+  that day: „GitHub kann ihn nicht selbst mergen, weil es noch keine
+  Pflichtprüfung gibt, auf die es warten könnte. Eine Pflichtprüfung richtet
+  devloop nur ein, wenn du ihm erlaubst, ohne dich zu arbeiten.“, the first
+  sentence the wording of 12 October 2026, the second new. This changes the
+  first case of `shared/merge-handover.md` lines 8 to 10 and the should of
+  defect 4 of the entry of 16 October 2026 as revised on 17 October, "the case
+  in the one sentence that fits it, whether or not auto-merge is on", in their
+  rows' notes.
+  Recorded, not built: the handovers of project z said the case of a missing
+  required check at records 172, 361, 435, 566 and 813 as "Auto-Merge geht
+  nicht, weil auf `main` noch kein Required Check steht, auf den GitHub warten
+  könnte." — should: the case reads as approved on 19 October 2026, „GitHub
+  kann ihn nicht selbst mergen, weil es noch keine Pflichtprüfung gibt, auf
+  die es warten könnte. Eine Pflichtprüfung richtet devloop nur ein, wenn du
+  ihm erlaubst, ohne dich zu arbeiten.“, `shared/merge-handover.md` lines 8 to
+  10, to be built in the order after this one.
+
+  **16. Two rows whose text does not say whose decision it was were decided
+  without the question.** The walk of the four cases above: end-to-end `off`
+  and types `off` at record 37 of project y, the fourth case, expanded 778 to
+  792, with the person there; no question in the log; at 92 end-to-end
+  `skipped (state): no entry point or interface that anyone drives yet` and
+  types `filled`, the branch cut at 64 before them.
+  Recorded, not built: project y decided the rows end-to-end `off` and types
+  `off` at record 92 without the question the fourth case of step 1 puts with
+  the person there — should: each such row is asked about through the widget,
+  alone in its call, the check in ordinary words, the table's reason quoted,
+  and whether they decided it, `setup-checks` expanded 778 to 792.
+
+  **17. At an armed pull request the run handed the merge over and read the
+  gate off `environment.md`.** Step 7, expanded 1437 to 1447: the step does
+  not wait inside its answer, "say what is still outstanding rather than
+  blocking the session"; 1547 to 1552: where the program printed no `gate:`
+  line, as at `BLOCKED`, ask both queries here; `plan-work` expanded 1145 to
+  1147 and step 8, 1676 to 1678: the gate and auto-merge are read off the
+  platform, never off `environment.md`'s account. Project y: `bin/devloop-arm
+  5` at record 136, "read 1 at 2s: BLOCKED … armed: GitHub accepted auto-merge
+  at BLOCKED"; 144 `sleep 20; gh pr view 5` reading `CLEAN`, `OPEN`; 161 the
+  same with `autoMergeRequest` enabled at 10:13:34; no gate query; the message
+  at 171 "Auto-merge ist armiert, GitHub steht aber auf `CLEAN` ohne Merge.
+  Dass `devloop-arm` trotz fehlendem Gate `BLOCKED` gelesen hat, passt nicht
+  zu `environment.md`, das noch "kein Gate" sagt." and "Ob der PR wirklich
+  durchgeht, kann ich nicht sagen. Wenn er nicht von selbst mergt, merge ihn
+  mit diesem Befehl:" with the command; GitHub merged #5 at 10:14:20, eleven
+  seconds after the message, and the person wrote "ist gemergt" at 174 without
+  merging. The gate stood since 16 October 2026 and was read at 180 and 194
+  after the merge, `enforce_admins` true.
+  Recorded, not built: project y handed the merge of the armed pull request #5
+  over at record 171 with a command and a case of its own, having read the
+  gate off the stale section of `environment.md` and not off the two queries —
+  should: at an armed pull request the run says what is outstanding and hands
+  nothing over, and the gate is read off both queries where the program
+  printed none, never off `environment.md`, `setup-checks` expanded 1437 to
+  1447 and 1547 to 1552.
+
+  **18. A block of Claude Code's own rule on a chained `sleep` was got past
+  and said nowhere.** `shared/command-does-not-answer.md`, in `setup-checks`
+  expanded 191 to 212: a first attempt that a permission or safety check
+  refused is said though the second went through, one line naming the check,
+  the command and that the second attempt went through, in the next message
+  that ends the turn with text; the refusals named there are Claude Code's
+  permission check, the classifier of auto mode and a safety check built into
+  Claude Code. Project y, record 159: "Blocked: sleep 30 followed by: gh pr
+  view 5 --repo jayjay-create/devloop-test-y --json
+  state,mergedAt,mergeStateStatus,autoMergeRequest. To wait for a condition,
+  use Monitor with an until-loop … Do not chain shorter sleeps to work around
+  this block."; record 161 the query without the sleep, through; the message
+  at 171 says nothing of it. A block of this kind, a rule of the tool on the
+  shape of a command, the texts name among the refusals nowhere.
+  Recorded, not built: Claude Code's own rule blocked `sleep 30` before `gh pr
+  view` at record 159 of project y, the query was made again without the sleep
+  at 161, and no message named the block — should: the block is said as a
+  refusal a second attempt got past is said, and the texts name a block of the
+  tool's own rule on a command among the refusals or say it is none,
+  `shared/command-does-not-answer.md` lines 11 to 16.
+
+  **19. The last message of project y put a proposal and a second question
+  beside the one question of step 9.** Step 9, expanded 2190 to 2192, at a
+  first setup where they have not said what to build, "ask what to build, the
+  one real question here"; `output-styles/devloop.md` lines 52 to 56, a
+  question a skill wants alone stands last, beside it nothing, no second
+  question, no proposal; `setup-project`'s `environment.md` section, the thing
+  on a section on what checks a merge that an earlier setup wrote: left as it
+  stands, nothing read off it. Record 201: "Der Abschnitt "What checks a
+  merge" in `docs/agents/environment.md` sagt noch "kein Gate" und "Auto-merge
+  aus". Das stimmt nicht mehr. Soll ich ihn über einen eigenen PR
+  korrigieren?" and then "Die Check-Suite ist fertig. Was willst du als
+  Nächstes bauen?"; the count before them "4 Klassen sind `filled` (lint,
+  secrets, dependencies, plus format, types und unit aus diesem Lauf, also
+  sechs insgesamt)". The person's statement of 19 October 2026: the first
+  question can be overread.
+  Recorded, not built: the last message of project y at record 201 put a
+  proposal and the question on the stale section of `environment.md` beside
+  the question what to build, and counted the filled classes as four and six —
+  should: the question what to build stands alone and last, the stale section
+  is left as it stands and nothing is read off it, and the count is one
+  number, `setup-checks` expanded 2180 to 2192 and `output-styles/devloop.md`
+  lines 52 to 56.
+
+  **Milestone 3 under the criterion of 19 October 2026.** Every defect that
+  concerns the milestone, in three groups, each with the line of this file it
+  stands on, the part of the milestone it concerns — 1 the question, 2 the
+  record, 3 the guard, 4 the skills, 5 the run without the person, as
+  `docs/plan.md` lines 234 to 261 word them — and the file and line at which
+  it lies, the evidence line the tool reads it from or the place its row
+  names; where it is not certain that a defect concerns the milestone, it
+  stands with that uncertainty rather than being left out: the run without the
+  person outside the five parts as the plan words them — what it says, how it
+  ends, what it writes, its arming — and the statements of the documents about
+  a part. A defect `docs/plan.md` assigns to another milestone stands with
+  that milestone's lines and counts there. The reasons of every assignment
+  stand in the report. Groups 1 and 2 are not empty, so the milestone is not
+  reached.
+
+  **Group 1, these runs, not held or found anew:** defect a of the entry of 11
+  October 2026 on the second closing run, line 17627, part 1,
+  `skills/setup-checks/SKILL.md` line 905, held under one reading and not
+  under the other, above; defect 13 of the entry of 16 October 2026, line
+  26200, part 1, `skills/setup-checks/SKILL.md` line 926, held but for the
+  point the label carries; defect 14 of the entry of 16 October 2026, line
+  26220, part 1, `skills/setup-checks/SKILL.md` line 1036, not held at record
+  497; defect 1 above, part 5, the run without the person,
+  `skills/setup-checks/SKILL.md` lines 841 to 934; defect 2 above, part 5, the
+  run without the person, `skills/setup-checks/SKILL.md` lines 988 to 1008;
+  defect 3 above, part 4, the skills, `skills/setup-checks/SKILL.md` lines 355
+  and 504; defect 4 above, part 4, the skills, and 5,
+  `skills/setup-checks/SKILL.md` lines 223 and 492; defect 6 above, part 4,
+  the skills, `skills/setup-checks/SKILL.md` line 548; defect 9 above, part 5,
+  the run without the person, `skills/build-work/SKILL.md` lines 1377 to 1381;
+  defect 13 above, part 1, the question, and 5, `skills/setup-checks/SKILL.md`
+  line 934, the wording of 17 October 2026 at lines 26661 to 26662 of this
+  file. With the uncertainty: defect 5 above, `skills/setup-checks/SKILL.md`
+  lines 697, 791 and 1168, the pull requests of step 8 carry the records of
+  part 2; defect 10 above, `skills/build-work/SKILL.md` lines 579 to 581 and
+  755, `shared/checks-owner.md` lines 1 to 15, the run without the person
+  wrote the check table; defect 11 above, `skills/setup-checks/SKILL.md` lines
+  590 and 666, the run without the person filled the class; defect 12 above,
+  `shared/mark-deletion.md` line 51, the last message of the run without the
+  person; where the result is seen is milestone 8, `docs/plan.md` lines 716 to
+  735; defect 14 above, `skills/plan-work/SKILL.md` lines 423 to 427, the
+  question that sends the run alone; defect 18 above,
+  `shared/command-does-not-answer.md` lines 11 to 16, a refusal the texts on
+  the run without the person name nowhere; defect 16 above,
+  `skills/setup-checks/SKILL.md` lines 252 to 265, the fourth case decides
+  whether a class a user switched off is set up; not one of the five parts;
+  defect 15 above, `shared/merge-handover.md` lines 8 to 10, the merge
+  handover; its second sentence names the run without the person; defect 17
+  above, `skills/setup-checks/SKILL.md` lines 697 and 791, the arming of the
+  check setup; not one of the five parts; defect 19 above,
+  `skills/setup-checks/SKILL.md` line 1245 and `output-styles/devloop.md`
+  lines 52 to 56, the close of the check setup; not one of the five parts;
+  defect 4 of the entry of 16 October 2026, line 26006,
+  `shared/merge-handover.md` line 4, not held at four of six places; the merge
+  handover, not one of the five parts; defect 10 of the entry of 16 October
+  2026, line 26142, `skills/setup-checks/SKILL.md` line 1232, not held at the
+  close of the setups; not one of the five parts; defect 11 of the entry of 16
+  October 2026, line 26163, `skills/setup-project/SKILL.md` line 409, not
+  held; question 4 of the setup, not one of the five parts; the defect of the
+  entry of 15 October 2026 on the loose issues after a closed spec, line
+  24502, met again, `skills/build-work/SKILL.md` line 383; the run without the
+  person outside the five parts.
+
+  **Group 2, recorded and not built, undetermined, and the findings of the
+  tool:** line 820, part 3, the guard, built nowhere; line 1174, part 3, the
+  guard, built nowhere; line 6266, part 1, the question, built nowhere; line
+  6442, part 3, the guard, built nowhere; line 6588, part 3, the guard, built
+  nowhere; line 7181, part 1, the question, docs/skill-conventions.md:667;
+  line 7705, part 4, the skills, built nowhere; line 7787, part 2, the record,
+  built nowhere, concerning skills/setup-project/SKILL.md; line 7967, part 2,
+  the record, built nowhere, concerning docs/skill-conventions.md; line 13635,
+  part 3, the guard, built nowhere; line 14121, part 3, the guard, built
+  nowhere; line 15579, part 5, the run without the person, built nowhere,
+  concerning skills/setup-checks/SKILL.md; line 16128, part 5, the run without
+  the person, built nowhere, concerning bin/devloop-auto-mode-rule; line
+  17241, part 5, the run without the person, built nowhere, concerning
+  skills/plan-work/SKILL.md; line 18571, part 5, the run without the person,
+  built nowhere, concerning hooks/pre-tool-use-mark-guard.sh; line 18832, part
+  3, the guard, docs/skill-conventions.md:2044, concerning
+  docs/skill-conventions.md; line 24577, part 2, the record, built nowhere,
+  concerning bin/devloop-install-record line 46; line 24591, part 2, the
+  record, built nowhere, concerning skills/setup-checks/SKILL.md line 346;
+  line 24597, part 2, the record, built nowhere, concerning
+  shared/mode-set-up.md line 14; line 24649, part 5, the run without the
+  person, built nowhere, concerning hooks/permission-request-unattended.sh
+  line 30; line 24663, part 3, the guard, built nowhere, concerning
+  hooks/pre-tool-use-install-guard.sh line 826; line 24699, part 2, the
+  record, built nowhere, concerning bin/devloop-install-record line 49; line
+  25166, part 5, the run without the person, built nowhere, concerning
+  skills/start-work/SKILL.md step 4; line 25184, part 3, the guard, built
+  nowhere, concerning hooks/pre-tool-use-install-guard.sh line 989; line
+  27503, part 4, the skills, built nowhere, concerning
+  skills/setup-project/SKILL.md lines 49 to 53. The findings: finding 19 of
+  the tool, part 3, the guard, shared/install-question.md:14; finding 16 of
+  the tool, part 2, the record, shared/mode-set-up.md:14; finding 15 of the
+  tool, part 2, the record, skills/setup-checks/SKILL.md:372; finding 11 of
+  the tool, part 4, the skills, skills/setup-project/SKILL.md:50; finding 12
+  of the tool, part 1, the question, skills/setup-project/SKILL.md:255;
+  finding 9 of the tool, a statement of the documents about a part,
+  skills/setup-project/SKILL.md:84. With the uncertainty, the run without the
+  person outside the five parts as the plan words them and the statements of
+  the documents about a part: line 204, no evidence; line 384, no evidence;
+  line 387, no evidence; line 5203, built nowhere, concerning
+  skills/build-work/SKILL.md at usually the local branch has commits the; line
+  5208, built nowhere, concerning skills/build-work/SKILL.md at let the user
+  choose how to clear it; line 5218, built nowhere, concerning
+  skills/build-work/SKILL.md; line 5344, built nowhere, concerning
+  skills/build-prototype/SKILL.md; line 5358, built nowhere, concerning
+  skills/diagnose-bug/SKILL.md at do not improvise a replacement.; line 5364,
+  built nowhere, concerning skills/diagnose-bug/SKILL.md at says. Then wait.;
+  line 8162, docs/skill-conventions.md:2402, a statement of the documents
+  about a part; line 8196, built nowhere, concerning docs/roadmap.md under
+  Five stacks have been exercised, a statement of the documents about a part;
+  line 8228, docs/plan.md:406, a statement of the documents about a part; line
+  9584, built nowhere, concerning skills/plan-work/SKILL.md under With nobody
+  there; line 9691, built nowhere, concerning shared/body-through-file.md at
+  has no `--title-file`; line 9979, built nowhere, concerning
+  shared/how-to-ask.md; line 10014, built nowhere, concerning
+  skills/setup-checks/SKILL.md; line 10056, built nowhere, concerning
+  skills/build-work/SKILL.md step 6; line 10425, built nowhere, concerning
+  README.md; line 10463, README.md:230, a statement of the documents about a
+  part; line 11662, README.md:146; line 11686, docs/plan.md:284, a statement
+  of the documents about a part; line 12841, built nowhere, a statement of the
+  documents about a part; line 14100, built nowhere; line 17353,
+  docs/plan.md:291, a statement of the documents about a part; line 18523,
+  docs/plan.md:850, a statement of the documents about a part; line 23691,
+  README.md:232, a statement of the documents about a part; line 23743, built
+  nowhere, concerning docs/stock-take.tsv, a statement of the documents about
+  a part; line 24502, built nowhere, concerning skills/build-work/SKILL.md
+  lines 346 and 349; line 25447, built nowhere, concerning
+  shared/mark-deletion.md; line 26837, built nowhere, concerning
+  skills/start-work/SKILL.md lines 192 to 193 and 210 to 213; line 26859,
+  built nowhere, concerning skills/build-work/SKILL.md step 1, lines 292 to
+  307; line 28924, docs/skill-conventions.md:482, concerning
+  docs/skill-conventions.md line 476 at 786b71f; line 28961,
+  docs/skill-conventions.md:2720, concerning docs/skill-conventions.md lines
+  2674 to 2676 at 786b71f; line 29130, built nowhere, concerning
+  docs/stock-take.tsv; line 29139, built nowhere, concerning
+  docs/stock-take.tsv. Assigned elsewhere by `docs/plan.md`: line 1788, built
+  nowhere, the ! channel the guards do not see, milestone 5 lines 611 to 613;
+  line 2050, built nowhere, settle-the-look, milestone 7 lines 681 to 684;
+  line 2478, built nowhere, a lens handing back a placeholder, milestone 5
+  lines 609 to 611; line 2629, built nowhere, a change to the check chain
+  landed unreviewed, milestone 5 lines 611 to 612; line 3794, built nowhere, a
+  lens report told from a placeholder, milestone 5 lines 609 to 611; line
+  4297, built nowhere, the length of build-work under the limit, milestone 9
+  lines 751 to 757; line 4777, built nowhere, what survives a compaction,
+  milestone 9 lines 751 to 757.
+
+  **Group 3, built and never walked, for the person to decide; d, 11 and 12
+  stand as decided on 18 October 2026, and the things these runs walked stand
+  in group 1 or count as walked:** line 636, part 5, the run without the
+  person, skills/setup-checks/SKILL.md:850; line 655, part 3, the guard,
+  hooks/pre-tool-use-install-guard.sh:281; line 660, part 3, the guard,
+  hooks/pre-tool-use-install-guard.sh:19; line 674, part 5, the run without
+  the person, skills/setup-checks/SKILL.md:848; line 966, part 5, the run
+  without the person, skills/setup-checks/SKILL.md:934; line 986, part 5, the
+  run without the person, skills/setup-checks/SKILL.md:928; line 994, part 5,
+  the run without the person, skills/build-work/SKILL.md:1469; line 1000, part
+  5, the run without the person, skills/setup-checks/SKILL.md:975; line 1270,
+  part 3, the guard, shared/body-through-file.md:3; line 1307, part 4, the
+  skills, skills/setup-checks/SKILL.md:115; line 1317, part 3, the guard,
+  hooks/pre-tool-use-install-guard.sh:989; line 1538, part 4, the skills,
+  shared/backed-command.md:2; line 2026, part 5, the run without the person,
+  skills/setup-checks/SKILL.md:902; line 2034, part 5, the run without the
+  person, skills/plan-work/SKILL.md:443; line 2300, part 5, the run without
+  the person, skills/build-work/SKILL.md:1409; line 2907, part 5, the run
+  without the person, shared/mark.md:3; line 3438, part 5, the run without the
+  person, skills/build-work/SKILL.md:63; line 4968, part 3, the guard,
+  hooks/pre-tool-use-install-guard.sh:614; line 5182, part 5, the run without
+  the person, skills/build-work/SKILL.md:1162, concerning
+  skills/build-work/SKILL.md at Start condition 6 makes the; line 5214, part
+  5, the run without the person, skills/build-work/SKILL.md:532, concerning
+  skills/build-work/SKILL.md at the install handover; line 5225, part 5, the
+  run without the person, skills/setup-checks/SKILL.md:861, concerning
+  skills/setup-checks/SKILL.md; line 5232, part 5, the run without the person,
+  skills/setup-checks/SKILL.md:145, concerning skills/setup-checks/SKILL.md;
+  line 5238, part 5, the run without the person,
+  skills/setup-checks/SKILL.md:47, concerning skills/setup-checks/SKILL.md;
+  line 5252, part 1, the question, skills/setup-checks/SKILL.md:360,
+  concerning skills/setup-checks/SKILL.md; line 5269, part 1, the question,
+  skills/setup-project/SKILL.md:173, concerning skills/setup-project/SKILL.md;
+  line 5295, part 1, the question, skills/setup-checks/SKILL.md:497; line
+  5986, part 4, the skills, skills/build-work/SKILL.md:507; line 6105, part 3,
+  the guard, hooks/pre-tool-use-install-guard.sh:854; line 7034, part 1, the
+  question, skills/setup-project/SKILL.md:222; line 7048, part 1, the
+  question, skills/setup-project/SKILL.md:240; line 7298, part 1, the
+  question, shared/how-to-ask.md:66, concerning shared/how-to-ask.md; line
+  7325, part 1, the question, shared/install-question.md:6; line 7488, part 1,
+  the question, skills/build-work/SKILL.md:533; line 7667, part 1, the
+  question, shared/install-question.md:23, concerning
+  skills/setup-project/SKILL.md; line 7741, part 5, the run without the
+  person, skills/setup-project/SKILL.md:880, concerning
+  skills/setup-project/SKILL.md; line 7813, part 1, the question,
+  skills/setup-project/SKILL.md:173, concerning skills/setup-project/SKILL.md;
+  line 7837, part 1, the question, skills/setup-project/SKILL.md:254,
+  concerning skills/setup-project/SKILL.md; line 7923, part 1, the question,
+  skills/setup-project/SKILL.md:721, concerning skills/setup-project/SKILL.md;
+  line 8155, part 4, the skills, skills/build-work/SKILL.md:493, concerning
+  skills/build-work/SKILL.md; line 9655, part 1, the question,
+  skills/setup-project/SKILL.md:234, concerning shared/how-to-ask.md; line
+  9764, part 2, the record, shared/fetch-and-run.md:20, concerning
+  skills/setup-project/SKILL.md under Step 6; line 10323, part 5, the run
+  without the person, skills/build-work/SKILL.md:490, concerning
+  docs/stock-take.tsv; line 10356, part 1, the question,
+  shared/install-question.md:29, concerning skills/setup-project/SKILL.md;
+  line 11272, part 2, the record, skills/setup-checks/SKILL.md:1137; line
+  11275, part 4, the skills, skills/setup-checks/SKILL.md:486; line 11463,
+  part 1, the question, skills/setup-checks/SKILL.md:1040; line 11496, part 1,
+  the question, skills/setup-checks/SKILL.md:436; line 12527, part 5, the run
+  without the person, skills/setup-checks/SKILL.md:101; line 13932, part 3,
+  the guard, hooks/pre-tool-use-install-guard.sh:614; line 13955, part 3, the
+  guard, hooks/pre-tool-use-install-guard.sh:296; line 13971, part 3, the
+  guard, hooks/pre-tool-use-install-guard.sh:571; line 14009, part 3, the
+  guard, hooks/pre-tool-use-install-guard.sh:454; line 14032, part 3, the
+  guard, hooks/pre-tool-use-install-guard.sh:532; line 14052, part 3, the
+  guard, hooks/pre-tool-use-install-guard.sh:188; line 14066, part 3, the
+  guard, hooks/pre-tool-use-install-guard.sh:376; line 15475, part 5, the run
+  without the person, skills/setup-checks/SKILL.md:870; line 15512, part 5,
+  the run without the person, skills/setup-checks/SKILL.md:898; line 15514,
+  part 5, the run without the person, skills/setup-checks/SKILL.md:966; line
+  17313, part 1, the question, skills/setup-project/SKILL.md:173, concerning
+  skills/setup-project/SKILL.md; line 18896, part 1, the question,
+  skills/setup-checks/SKILL.md:360, concerning skills/setup-checks/SKILL.md;
+  line 18977, part 4, the skills, skills/setup-checks/SKILL.md:454, concerning
+  skills/setup-checks/SKILL.md; line 19003, part 4, the skills,
+  shared/skill-name.md:23; line 27167, part 4, the skills,
+  skills/setup-project/SKILL.md:51, concerning skills/setup-project/SKILL.md
+  line 63; line 29213, part 4, the skills, shared/install-not-through.md:19;
+  line 29253, part 1, the question, output-styles/devloop.md:47, concerning
+  docs/roadmap.md line 26647. With the uncertainty, the run without the person
+  outside the five parts as the plan words them: line 427,
+  skills/build-work/SKILL.md:1567; line 476, docs/skill-conventions.md:3486;
+  line 614, skills/build-work/SKILL.md:981; line 1002,
+  skills/build-work/SKILL.md:1631; line 1054, skills/build-work/SKILL.md:1590;
+  line 1111, skills/build-work/SKILL.md:675; line 1340,
+  skills/review-changes/SKILL.md:106; line 1616,
+  skills/build-work/SKILL.md:1185; line 2023, skills/plan-work/SKILL.md:370;
+  line 2045, skills/plan-work/SKILL.md:198; line 2316,
+  skills/build-work/SKILL.md:1193; line 2377, skills/build-work/SKILL.md:1266;
+  line 2774, skills/build-work/SKILL.md:192; line 3326,
+  skills/start-work/SKILL.md:324; line 3844, skills/plan-work/SKILL.md:414;
+  line 5187, skills/build-work/SKILL.md:61, concerning
+  skills/build-work/SKILL.md; line 5194, skills/build-work/SKILL.md:679,
+  concerning skills/build-work/SKILL.md at 6, and it gets the same answer;
+  line 5332, skills/build-work/SKILL.md:1464, concerning
+  skills/start-work/SKILL.md at nothing runs alone whatever was typed; line
+  7862, skills/setup-project/SKILL.md:234, concerning
+  skills/setup-project/SKILL.md; line 8142, skills/build-work/SKILL.md:133,
+  concerning skills/build-work/SKILL.md; line 9518,
+  skills/setup-checks/SKILL.md:171, concerning skills/setup-checks/SKILL.md
+  under With nobody there; line 9791, skills/setup-project/SKILL.md:350,
+  concerning skills/setup-project/SKILL.md; line 10269,
+  shared/mark-deletion.md:1, concerning skills/build-work/SKILL.md; line
+  10294, skills/build-work/SKILL.md:1541, concerning
+  skills/build-work/SKILL.md under Unattended mode; line 25153,
+  shared/fetch-three-times.md:71, concerning shared/fetch-three-times.md and
+  the places that insert it; line 26183, skills/plan-work/SKILL.md:224,
+  concerning skills/plan-work/SKILL.md With nobody there, expanded lines 738
+  to 749; line 27148, shared/mark-deletion.md:51, concerning
+  skills/build-work/SKILL.md lines 1545 to 1576; line 27522,
+  skills/build-work/SKILL.md:1150, concerning skills/build-work/SKILL.md step
+  6; line 28352, skills/build-work/SKILL.md:1058, concerning
+  skills/build-work/SKILL.md; line 29166, skills/build-work/SKILL.md:1123,
+  concerning skills/build-work/SKILL.md lines 1146 to 1147 and 1105 to 1106;
+  line 29175, skills/build-work/SKILL.md:1006, concerning
+  skills/build-work/SKILL.md lines 994 to 996; line 29190,
+  shared/mark-deletion.md:17; line 29202, skills/build-work/SKILL.md:284,
+  concerning skills/build-work/SKILL.md lines 1514 to 1516 and 1530 to 1531;
+  line 29223, skills/setup-project/SKILL.md:581; line 29232,
+  hooks/pre-tool-use-mark-guard.sh:22, concerning
+  hooks/pre-tool-use-mark-guard.sh lines 20 to 21 against its messages.
+
+  **The runs on the things of the table, both runs.** Every run below is
+  recorded under version 0.148.0, the version the installed copy carried in
+  both runs and the tree carries here, with the source `log`, and counts:
+  `3f810fd`, the commit that introduced 0.148.0, is the tip of `main` and
+  contains the last change to every line a thing stands on. A run on a thing
+  that is not built would be a broken record and none is recorded. Where a
+  thing was walked and did not hold, the paragraph says so, and the row is the
+  same row: this entry carries the outcome, the table the fact that it was
+  walked. Which things each run was held against stands in the report; the
+  paragraphs below are what the rows anchor on.
+
+  **Project z on start-work.** Walked: the file's head and steps 1 to 5, the
+  status line not set up and the five files missing, record 39; the idea come
+  with the command, no introduction and nothing said, 39 to 50, held as the
+  text has it since 17 October 2026; not too large, carry on; the setup run
+  without asking, 50; a fresh idea to `plan-work`, 854; how to talk, German
+  and du throughout.
+
+  **Project z on setup-project.** Walked, records 52 to 207: the head, steps
+  0, 1, 2, 4, 5, 6, 7, 8 and 9 and the cut; the first question carrying that
+  the project is set up before the idea, in its field, 82; the install
+  question through the widget alone, 82, its no; one remote, taken and nothing
+  said; the gate read by both queries and auto-merge at 70, no gate, the
+  auto-merge question not put; question 4 not put, defect 11 of 16 October;
+  the glossary and the decision records decided and created, 107 and 108, not
+  said, defect 10 of 16 October; the Makefile with its failing `check`, 102;
+  `.gitignore` with both paths, 103; the five files with the marker, 104 to
+  110; `checks.md` all `empty`; `issue-tracker.md` with the commands, the
+  labels created at 112 and the sentence said at 172; `standards.md` as none
+  recorded; `environment.md` without a section on the gate; CLAUDE.md at 111;
+  the cut at 93 after the last question; step 8 with the arming at 164, the
+  no-gate case off the program's lines, the handover at 172 held, the merge
+  proven at 185, fetched, the branch read and deleted, 185 and 193; the close
+  with the check setup run, 207, its text in no message, met again.
+
+  **Project z on setup-checks.** Walked, records 209 to 854: the head reached
+  at a first setup; step 1 with integration, end-to-end, dependencies and
+  code-security skipped for their states and secrets left `empty`, defect 4;
+  step 2's proposal and its question as text at 228, each class with what it
+  catches, opening with why the question comes now, the answer at 237; step 3
+  with the dependency question put once, 242, its no, the per-tool questions
+  at 254, 260 and 292 naming the tool and the check, the second way for
+  Prettier and ESLint handed over at 361 backed and in the message that ends
+  the turn, the third way for `@types/node` at 292, nothing entered before a
+  question; the cut at 278, before the last question, defect 3; steps 4, 5 and
+  6 with the canonical targets, the red proof of unit at 322, `check` failing
+  on the `empty` class; step 7 with the arming at 348, the second value after
+  `UNKNOWN`, the no-gate case, the handover at 361, the merge proven and the
+  branch deleted at 376 and 389, #3 without arming, defect 5, its handover at
+  435 with a word on what comes after, defect 4 of 16 October, the merge
+  proven at 448; step 8 following the proven merge, the state not read before
+  the question, defect 1, the mode question at 462 with every point in its
+  fields, defects a, 13 and 14 as walked above, the rule question at 474
+  before its reading at 485, defect 2, the two second questions at 497 and 508
+  with the line in each field and their no, the text block before 497, defect
+  14, the branch `devloop-unattended` cut at 520 after the last question, the
+  records landed first as #4 at 552 and fetched at 587, the list line inside
+  the handover at 566, gitleaks installed outside at 602 and the three tools
+  into the packages at 603 by point 3, TypeScript entered by point 2, the four
+  red proofs at 690 and the dependency proof at 758, the workflow file at 716
+  and 729 with the editing tool, #5 at 798 without arming, defect 5, its check
+  green on the branch, the merge proven at 826 and the workflow green on
+  `main`, auto-merge switched on and read back and the protection set with
+  `enforce_admins` at 840, the record of the mode at 535, the standing fact of
+  gitleaks not written, defect 6; step 9 with the planning following at 854,
+  its counts in no message, defect 10 of 16 October.
+
+  **Project z on plan-work.** Walked, records 856 to 1233: the head, what is
+  already built, the planning issue created at 896 with `being-planned`,
+  nothing to pick up, how to ask, with nobody there from 1013; Stage 1 with
+  the frontier worked in two rounds, 910 and 945, numbered, the settled line
+  in the first question's field, defect 8, no recommendation, defect 7, the
+  settled answers posted after each round, 931 and 990, the hard core as
+  written in the message that ends the turn at 957 with the confirmation as
+  text last, the yes at 960, six preconditions read at 971, the mode question
+  alone at 991 with the costs in its descriptions, defect 14, the answer
+  "Volle Flexibilität", the mark written at 1013 after a fetch and not said;
+  Stage 2 read at 1027 and 1038 and posted at 1052; Stage 3 with three drafts,
+  three checks and the recommended draft taken alone at 1198, where it had
+  passed every item; Stage 4 the spec at 1217; the close into the cut at 1233.
+
+  **Project z on cut-into-tasks.** Walked, records 1233 to 1290: the head,
+  what a task is, each issue's parts at 1259 to 1261, the order with the real
+  blocking relationship at 1276, the split in the tracker alone, the mark with
+  `build` read and the build run at 1290, with nobody there, how to ask.
+
+  **Project z on build-work.** Walked, records 1292 to 2767: the head, never
+  assert state, with nobody there, the unattended mode with the mark of this
+  run read at 1304 and the seven conditions not read again, defect 9; step 1
+  at 1304, the base green; step 2 with two ready tasks and the tie taken at
+  the lower number, 1304 and 1318, exactly one ready at 1830, the loose issues
+  after the spec closed not taken, the defect of 15 October 2026 met again;
+  step 3 with the handover carrying the four rules at 1318, 1844 and 2393, the
+  proofs in the bodies at 1775, 2337 and 2709, the subagent's install under
+  the yes and its result read off the path, the check target named for the
+  main run and done by the main run itself at 1885 and 2463, defect 10; step 4
+  with fixes at 1505, 1519, 1653, 1670, 2011, 2088, 2196, 2449, 2463 and 2579,
+  issues at 1536, 2226 and 2600, rounds over every fix, the state that ended
+  filled by the main run, defect 10; step 5 with the suite as the gate; step 6
+  with `BLOCKED` and the arming at 1802, 2350 and 2710, the wait on the checks
+  at 1815, 2364 and 2726, the merge read, the fast-forward and the deletion at
+  1830, 2378 and 2739, the issues closed by the platform, the spec closed at
+  2753 and the mark deleted there; step 7 at 1830 and 2378; the last message
+  at 2767, defect 12.
+
+  **Project z on review-changes.** Walked, records 1347 to 2619: the head, the
+  target pinned, the two lenses and the three the diffs trigger, five
+  reviewers in every round, eight rounds in all, the report to nobody, the
+  fixes and the issues of the split, a rule written at 1519 with the setup's
+  line gone, the reports restated in German.
+
+  **Project y on setup-checks.** Walked, records 8 to 201: the head, reached
+  in a set-up project on the person's command; step 1 with the six rows in no
+  allowed form decided by their cases at 92, four as their case says and two
+  without the question, defect 16; the branch cut at 64; steps 4 to 6 with the
+  targets run green at 72 and the red proofs at 84; step 7 with the arming at
+  136, `BLOCKED` and accepted, the gate not read where the program printed
+  none, the handover at 171 at an armed pull request, defect 17, the merge
+  proven at 180 and the branch read and deleted at 180 and 194; step 8 with
+  the five things read at 180 and 194 and the mode said to be set up at 201;
+  step 9 with the counts and the question what to build at 201, a proposal
+  beside it, defect 19; the block of the tool's rule at 159 and the query
+  again at 161, defect 18; how to ask throughout, no question put.
+
+  **Both projects of 19 October 2026 on the shared texts.** Walked, in the
+  skills that insert them: the install question at its first asking with a no
+  and its second with a yes, 82 and 83, 497 and 498; the install record
+  written at 534 with `install-route: npm` and its answer changed alone; the
+  merge handover at six places, its command held at all six, its first case at
+  the five of project z with the sentence of this day's defect 15, "nothing
+  beside it" held at 172 and 361 and not at 435, 566, 813 and 171, defect 4 of
+  16 October; the editing tool at 306, 534, 535, 716 and 729 and in both build
+  subagents that wrote `environment.md`; the mode read off the main branch at
+  971 and 194; the mark deleted at 2753 with nothing to bring back and the
+  last message in three groups, defect 12; every body through a file in a
+  `mktemp -d` directory written with the editing tool, 154, 336, 405, 536,
+  786, 882, 930, 972, 1051, 1198, 1217, 1259 to 1261, 1775, 2337 and 2709, and
+  116 of project y; a fetch-and-run form under a yes by the build subagent of
+  task 2, `npx playwright install chromium`, its record 36; every fetch and
+  fast-forward through without a word, 39, 93, 185, 278, 376, 448, 587, 826,
+  868, 1013, 1304, 1830, 2378 and 2739, and 64 and 180; the branch read on the
+  remote before every deletion; a fresh cut after a fetch and a switch at 93,
+  278, 389, 520 and 587, and 64; how to ask at every question; the set-aside
+  question not put where no entry stood, 39 and 868; the fetch reported done,
+  39 and 868; the language opening and closing, German and du throughout; the
+  project's files in English; an error used as evidence at 285 and 897; a tool
+  read at the path the installer writes to at 602 and in the subagent's report
+  at 1860; the status forms in every table written; the arming command in the
+  program's form at 164, 348, 1802, 2350 and 2710, and 136; the mark command
+  at 1013 and the mark read at 1304; a rule first written at 1519 with the
+  setup's line gone; the findings filed as issues and named at 2767; the seams
+  and the conditions at 1217 and 1259 to 1261; three questions in one call at
+  910; the tracker named by titles at 2767; the settled line of the first
+  round in the first question's field, defect 8; the questions of the rounds
+  without a recommendation, defect 7.
+
+  **Both projects of 19 October 2026 on the hooks.** Walked: the session start
+  printing not set up here in project z and set up with the install record
+  line in project y, the session identifier exported, read off the mark's
+  third line at 1013; the stop hook passing at all 45 turn ends with no
+  output; the branch guard passing every write on a branch and every Bash
+  command on `main` that was neither a commit nor a push, and passing before
+  the setup existed; the merge guard passing every command that was not `gh pr
+  merge`; the table guard passing the commits of 348, 421, 798 and 1899 and of
+  104, among them, with every status in one of the four forms, and every
+  command without a commit; the install guard passing every command that
+  matched no install pattern, `brew install gitleaks` at 602 under the yes
+  with `/opt/homebrew/bin` under `/opt` among the record's places, and `npx
+  playwright install chromium` in the subagent under the yes with the vendor's
+  place in the record; the mark guard passing the mark written in auto mode at
+  1013, the reads and the deletion of the mark at 1304 and 2753, the mode
+  stated beside `bin/devloop-permission-mode` at 974, and every edit of a file
+  not named `unattended.local`; the identity guard passing every commit with
+  no identity set; the per-file checks passing every edit of a file whose
+  filled targets passed; the table guard after a write passing every table
+  written with the editing tool, 305 and 403, and every other file; the
+  output-style hook passing with devloop's own style in both transcripts and
+  in every subagent; the registration of that hook under both events.
+
+  **Both projects of 19 October 2026 on the programs and the output style.**
+  Walked: `bin/devloop-setup-state` with `--fetch` answering fetch done and
+  the five missing lines at 39 and the five present lines with their markers
+  at 868, and without `--fetch` at 2753 with no set-aside line;
+  `bin/devloop-bounded` passing the command's output and exit code through
+  where it ended before the bound, the fetches and the watches of 1815, 2364
+  and 2726 among others; `bin/devloop-auto-mode-rule` answering that the rule
+  does not stand with the reason and writing it, 485;
+  `bin/devloop-permission-mode` at 971; `bin/devloop-text` printing every
+  inserted text at every load; `bin/devloop-install-record` printing the
+  record for the guard at 602 and for the session start of project y;
+  `bin/devloop-command-reader` parsing every Bash call for the guards and the
+  fields of every edit; `bin/devloop-check-table` finding every status in one
+  of the four forms at 305, 403, 743, 771 and 1885, and 92; `bin/devloop-arm`
+  answering no required check with both gate lines at 164 and 348, the second
+  value after `UNKNOWN` at 348, and armed at `BLOCKED` at 1802, 2350 and 2710,
+  and 136; the output style standing in both transcripts, its rules walked and
+  held at 82, 172, 228, 242, 254, 260, 292, 361, 462, 474, 508, 910, 945, 957
+  and 991, and not held at 496, 435, 566 and 813 of project z and 171 and 201
+  of project y.
+
+  **Records.** Nineteen defect things at the end of `docs/stock-take.tsv`,
+  each named "docs/roadmap.md / Known gaps / " and the defect, sited and
+  evidenced on its status line above, the note saying when and by what it was
+  found, which line it concerns and the should, the three wordings among them
+  as recorded and not built; one not-a-thing row for the head of this entry,
+  part of the first; the notes of the rows of defect a of the entry of 11
+  October 2026 and of defects 4, 10 and 13 of the entry of 16 October 2026, of
+  the awake line of step 8, the first case of the merge handover and the two
+  answers of the plan-work question, carrying the should of this day with the
+  old one quoted; and the run rows, each under version 0.148.0 with the source
+  `log`, anchored on the paragraph above that records it, every one counting,
+  the walks of the defects of part A among them on the things of their entries
+  and the 26 things whose runs fell away at `3f810fd` among them. The figures
+  of the tool after the second commit stand in the report and in the sentence
+  that closes this paragraph.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

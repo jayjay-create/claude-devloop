@@ -352,6 +352,15 @@ a run meets it, and does not hold the milestone up: it depends on what the
 model does and cannot be forced. Where what a defect turns on is what the
 model does, the milestone asks a run as before; of what that entry named as
 standing between the milestone and its landing, that leaves defect a.
+Decided on 19 October 2026, the roadmap entry of that date on the two runs of
+that day in `devloop-test-z` and `devloop-test-y`: the milestone is reached
+only when no defect is left that concerns it — a defect in one of the five
+parts above, the defects those runs found anew and the older ones recorded
+and not built among them — in place of the decision of 12 October 2026
+above, by which it landed when the eight defects named there were built and
+a run walked them; a defect this plan assigns to another milestone counts
+there. By that criterion the milestone is not reached on 19 October 2026: the
+list of the defects that concern it stands in that entry, in three groups.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
