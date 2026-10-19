@@ -278,9 +278,11 @@ that hang off it. Work the tree in rounds. The frontier is every decision
 whose prerequisites are already settled — the questions answerable now,
 without guessing at answers you have not heard yet; a question whose answer
 hangs on one still open belongs to a later round. Each round, settle only
-what the rule on this interview below leaves to you, say it in one line as
-that rule says, and then ask every decision that is left —
+what the rule on this interview below leaves to you, put it as the question
+on the assumptions of the round that rule describes, first in the call and
+ahead of the round's questions, and then ask every decision that is left —
 numbered, each with your recommended answer so a single word can settle it,
+through the widget on the answer as that rule says, since 19 October 2026 —
 at most three in a round, and the rest of the frontier before anything the
 answers unlock. Say roughly how many rounds you expect. Then wait. The
 answers open the next round. After every round, post the settled answers as

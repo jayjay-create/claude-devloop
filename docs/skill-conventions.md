@@ -741,11 +741,17 @@ scrollback, the bench report lines 289 to 315. The 76 come from the widest
 line of the question field there, 78 characters with its border "│ ", lines
 292 to 293; the 73 are an estimate, the description being indented by a
 width the report does not give. Where several questions share one call, as
-`setup-project` step 4 allows, the picture is not measured. Where the text a
+`setup-project` step 4 allows and as a round of the interview does since 19
+October 2026, up to four with its question on the assumptions, the picture
+is not measured. Where the text a
 decision needs does not fit, it is not cut to fit: the question is put as
 text at the end of the turn, the text before it in the same message — the
-choice of a design in `plan-work`, the landing question of `build-work`, the
-rounds of planning and the classes of `setup-checks` step 2 are put so. What
+choice of a design in `plan-work`, the landing question of `build-work` and
+the classes of `setup-checks` step 2 are put so, and so were the rounds of
+planning until 19 October 2026, when the person decided the form of their
+questions through the widget, the roadmap entry of that date on the
+questions of a round; a round goes as text where its question on the
+assumptions does not fit. What
 fails the three tests above goes whatever the form; what carries the
 decision does not go for the form's sake. Decided on 17 October 2026, the
 roadmap entry of that date.
