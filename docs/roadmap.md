@@ -29626,7 +29626,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   defect is left that concerns milestone 3, the defects these runs found anew
   among them and the older ones recorded and not built. This changes the
   decision of 12 October 2026, part A points 1 and 2 of the entry of that
-  date, lines 18687 to 18703 of this file, and the dated sentence in
+  date, lines 18688 to 18709 of this file, and the dated sentence in
   `docs/plan.md` under milestone 3, its lines 333 to 337, which read "the
   milestone has not landed with the two closing runs; it lands when the
   defects in its own parts, eight named there, are built and a run walks them,
@@ -29996,7 +29996,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Text blocks between two tool calls, which the style leaves as a note the run
   writes to itself, stood at records 321, 673, 895, 1232, 1289, 1829, 2073,
   2392 and 2614 of project z and 71 of project y; and the run without the
-  person ended a turn with a short text 36 times while it waited for its
+  person ended a turn with a short text 35 times while it waited for its
   subagents, "Die drei Prüf-Agents laufen. Ich warte auf ihre Verdikte." at
   1149 among them, a form no text of the set covers, since the set was written
   for a run that ends its turn only before the person.
@@ -30894,6 +30894,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and the 26 things whose runs fell away at `3f810fd` among them. The figures
   of the tool after the second commit stand in the report and in the sentence
   that closes this paragraph.
+
+  **The runs of the checks and the tool.** The command under "Before you
+  change anything, run this" ran on `main` at `3f810fd` before the branch was
+  cut, at 10:44 UTC, printing nothing against the installed 0.148.0. The
+  nineteen checks under "Before a handover, run these" ran green on that tree
+  at 10:44 UTC and again at 11:52 UTC on the tree of the first commit of this
+  branch, in a clean bash with `/usr/bin/grep` first on its path, both times
+  line for line what they print at `3f810fd`, and the second run identical to
+  the first. The tool ran at 10:45 to 10:47 UTC on `3f810fd`, exit 0, and at
+  11:52 to 11:56 UTC on the tree of the first commit, exit 0 with the figures
+  above; all recorded here under 0.148.0.
 
 ## Decisions taken against
 
