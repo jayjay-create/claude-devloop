@@ -422,9 +422,14 @@ so each is said by that and not by what the run does at each stage:
 
 Say what the first two cost for this piece of work, in the description of
 each of the two, beside what it means: the design gets chosen
-against the written list and not against their taste, where no draft carries the
-stories the run stops rather than guessing, and the machine has to stay awake for
-as long as the run works. Since 17 October 2026; until then the place was not
+against the written list and not against their taste, and the machine has to
+stay awake for as long as the run works. That the run stops where no draft
+carries the stories is not said there, since 19 October 2026: it foretold a
+failure nobody knows will come, the person's statement of that day, and the
+wording approved that day stands in the roadmap entry of 19 October 2026
+under defect 14, this skill saying what is said, not the words; the stop
+itself stands in Stage 3 as it stands. The descriptions have carried the costs
+since 17 October 2026; until then the place was not
 named, and on 16 October 2026 the costs stood neither before the widget nor
 in its lines. Do not repeat what the mode costs the repository — the
 workflow file, the protected branch, the minutes — that was said and agreed when
