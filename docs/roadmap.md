@@ -30485,20 +30485,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   skills/plan-work/SKILL.md; line 18571, part 5, the run without the person,
   built nowhere, concerning hooks/pre-tool-use-mark-guard.sh; line 18832, part
   3, the guard, docs/skill-conventions.md:2044, concerning
-  docs/skill-conventions.md; line 24577, part 2, the record, built nowhere,
-  concerning bin/devloop-install-record line 46; line 24591, part 2, the
-  record, built nowhere, concerning skills/setup-checks/SKILL.md line 346;
-  line 24597, part 2, the record, built nowhere, concerning
-  shared/mode-set-up.md line 14; line 24649, part 5, the run without the
-  person, built nowhere, concerning hooks/permission-request-unattended.sh
-  line 30; line 24663, part 3, the guard, built nowhere, concerning
-  hooks/pre-tool-use-install-guard.sh line 826; line 24699, part 2, the
-  record, built nowhere, concerning bin/devloop-install-record line 49; line
-  25166, part 5, the run without the person, built nowhere, concerning
-  skills/start-work/SKILL.md step 4; line 25184, part 3, the guard, built
-  nowhere, concerning hooks/pre-tool-use-install-guard.sh line 989; line
-  27503, part 4, the skills, built nowhere, concerning
-  skills/setup-project/SKILL.md lines 49 to 53. The findings: finding 19 of
+  docs/skill-conventions.md; line 25166, part 5, the run without the person,
+  built nowhere, concerning skills/start-work/SKILL.md step 4; line 25184,
+  part 3, the guard, built nowhere, concerning
+  hooks/pre-tool-use-install-guard.sh line 989; line 27503, part 4, the
+  skills, built nowhere, concerning skills/setup-project/SKILL.md lines 49
+  to 53. The findings: finding 19 of
   the tool, part 3, the guard, shared/install-question.md:14; finding 16 of
   the tool, part 2, the record, shared/mode-set-up.md:14; finding 15 of the
   tool, part 2, the record, skills/setup-checks/SKILL.md:372; finding 11 of
@@ -30553,7 +30545,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lens report told from a placeholder, milestone 5 lines 609 to 611; line
   4297, built nowhere, the length of build-work under the limit, milestone 9
   lines 751 to 757; line 4777, built nowhere, what survives a compaction,
-  milestone 9 lines 751 to 757.
+  milestone 9 lines 751 to 757; and every other system than the person's
+  Mac, milestone 12 by `docs/plan.md` lines 287 to 289, each of these six
+  naming milestone 12 in its should: line 24577, built nowhere,
+  bin/devloop-install-record line 46 on Windows; line 24591, built nowhere,
+  skills/setup-checks/SKILL.md line 346 on Windows; line 24597, built
+  nowhere, shared/mode-set-up.md line 14 on Windows; line 24649, built
+  nowhere, hooks/permission-request-unattended.sh line 30 on Windows; line
+  24663, built nowhere, hooks/pre-tool-use-install-guard.sh line 826 on
+  Windows; line 24699, built nowhere, bin/devloop-install-record line 49
+  under Alpine.
 
   **Group 3, built and never walked, for the person to decide; d, 11 and 12
   stand as decided on 18 October 2026, and the things these runs walked stand
@@ -30892,8 +30893,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `log`, anchored on the paragraph above that records it, every one counting,
   the walks of the defects of part A among them on the things of their entries
   and the 26 things whose runs fell away at `3f810fd` among them. The figures
-  of the tool after the second commit stand in the report and in the sentence
-  that closes this paragraph.
+  of the tool after the second commit stand in the report.
 
   **The runs of the checks and the tool.** The command under "Before you
   change anything, run this" ran on `main` at `3f810fd` before the branch was
@@ -30903,8 +30903,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   branch, in a clean bash with `/usr/bin/grep` first on its path, both times
   line for line what they print at `3f810fd`, and the second run identical to
   the first. The tool ran at 10:45 to 10:47 UTC on `3f810fd`, exit 0, and at
-  11:52 to 11:56 UTC on the tree of the first commit, exit 0 with the figures
-  above; all recorded here under 0.148.0.
+  11:52 to 11:56 UTC on the tree of the first commit, exit 0; all recorded
+  here under 0.148.0.
 
 ## Decisions taken against
 
