@@ -31264,16 +31264,21 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   that "the choice of a design in `plan-work`, the landing question of
   `build-work`, the rounds of planning and the classes of `setup-checks` step
   2" are put as text, on decision 5 of the person of 17 October 2026, lines
-  26596 to 26600 of this file, "the rounds of planning are and stay text
+  26595 to 26600 of this file, "the rounds of planning are and stay text
   questions". Since 18 October 2026, `d7722a7`, the shared text has named the
-  widget as a form for the rounds, the two runs of 19 October 2026 put them
-  through the widget, and the person's decisions of that day on defects 7 and
-  8 fix the form of the rounds' questions in the widget; the later decision
-  governs. Lines 749 to 754 at `e7befca`: the three other questions are put
-  as text, and so were the rounds of planning until 19 October 2026, when the
-  person decided the form of their questions through the widget, this entry;
-  a round goes as text where its question on the assumptions does not fit.
-  Nothing else of the decision of 17 October 2026 changes.
+  widget as a form for the rounds, read off the output style and named there
+  as no decision of the person, lines 27844 to 27852 of this file; the two
+  runs of 19 October 2026 put them through the widget, and the person's
+  decisions of that day on defects 7 and 8 fix the form of the rounds'
+  questions in the widget. Asked after this order on that difference, the
+  person decided on 19 October 2026 that the rounds of planning are put
+  through the widget where they fit and as text where they do not; that
+  changes decision 5 of 17 October 2026 for the rounds and for nothing else.
+  Lines 749 to 754 at `e7befca`: the three other questions are put as text,
+  and so were the rounds of planning until 19 October 2026, when the person
+  decided the form of their questions through the widget, this entry; a round
+  goes as text where its question on the assumptions does not fit. Nothing
+  else of the decision of 17 October 2026 changes.
 
   **The measurement.** The question on the assumptions in the approved
   example, by `output-styles/devloop.md` lines 42 to 46, wrapped by a script
