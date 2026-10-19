@@ -932,8 +932,12 @@ on the cost, since they bear on it.
     spend minutes of their quota on GitHub.
   - Keeping the machine awake: it has to stay awake as long as devloop
     works. On macOS alone, where `uname -s` answers `Darwin`, the same line
-    goes on: `caffeinate` in a terminal of their own keeps it awake, and a
-    closed laptop it does not — `caffeinate(8)` on that machine, read on 7
+    goes on: under which conditions `caffeinate` keeps it awake, as long as
+    it runs in a terminal of their own and the laptop stays open, and not
+    what does not suffice, since 19 October 2026, the person's statement of
+    that day being that the line said what does not suffice instead of
+    naming the conditions; until then that a closed laptop it does not keep
+    awake. The backing stays: `caffeinate(8)` on that machine, read on 7
     September 2026, holds an assertion against idle sleep for as long as the
     process runs, and a closed lid is a different route into sleep. On every
     other system, and where `uname -s` does not answer, the first sentence
@@ -943,19 +947,34 @@ on the cost, since they bear on it.
     second question beside the real one blurs the real one.
   - The question line: whether devloop may work in this project without
     them.
-- **In the yes, label and description: what a yes means.** That devloop sets
+- **In the yes, label and description: what a yes means.** The label: that
+  they allow work without them, in which lies that devloop asks at every idea
+  anew whether it is carried out without them, as the paragraph on what the
+  question decides says above; no sentence of its own says so, since the
+  person struck such sentences on 17 October 2026 and gave the point to the
+  label, the roadmap entry of that date under what came out of text 6. The
+  description: that devloop sets
   a check up on GitHub and protects the main branch, against their own
   direct pushes too; and that a run then works as long as this window is
   open. Where the protection stands already and binds, the first of the two
-  sentences goes.
-- **In the no, label and description: where a no leads.** Everything stays
+  sentences goes. What the two labels say stands here since 19 October 2026,
+  the run of that day having written a bare yes and a bare no, the walk of
+  defect 13 in the roadmap entry of that date.
+- **In the no, label and description: where a no leads.** The label: that
+  everything runs with them, in which lies that every task comes to them for
+  approval; no sentence of its own for it, for the same reason. The
+  description: everything stays
   as it is; `--auto` sets it up later.
 
 At 80 columns, on macOS and with a private repository, these fields fill
 twelve lines, inside the bound the output style of devloop sets, measured on
-17 October 2026 with the approved wording wrapped at 76 and 73 characters.
+19 October 2026 with the approved wording wrapped at 76 and 73 characters,
+the awake line of that day among it, which takes the three lines the line
+of 17 October 2026 took; measured the same twelve on 17 October 2026.
 The wording approved on 17 October 2026 stands in the roadmap entry of that
 date as the new text 6, in place of text 6 of the roadmap entry of 9 October
+2026, and the awake line as approved on 19 October 2026 in the roadmap entry
+of that date under defect 13, in place of the sentence of 17 October
 2026; this skill says what is said, not the words. What went from text 6
 and from the five parts on that day — the steps of a task, the issue for a
 task that does not go green, a failed merge ending the run, that the run
