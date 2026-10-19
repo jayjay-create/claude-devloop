@@ -31114,6 +31114,264 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   for these runs, the checks and the tool standing on no line this order
   changed.
 
+- **The questions of a round in the interview built as the person decided on
+  19 October 2026: what the run settled itself in a round is a question of
+  its own on the assumptions of the round, first in the call and before the
+  round's questions, two answers and no recommendation, alone in its call
+  where the round asks nothing else and nothing handed on any more; through
+  the widget the recommendation stands on the answer, the recommended answer
+  first, its label ending in brackets on the word for recommended in their
+  language, its description saying why; defects 7 and 8 of the entry of 19
+  October 2026 on the two runs built; 19 October 2026, version 0.150.0.** On
+  `task/questions-of-a-round-19-october-2026`, off `a9fb3f7`, version
+  0.149.0 on `main`; the changed places and the version in one commit,
+  `e7befca`, this entry and the rows of the table in a second. The report
+  stands on this machine as `~/devloop-report-2026-10-19-rounds.md`, in
+  English, and is not in the repository. A line of a file the first commit
+  changes is given twice, as at `a9fb3f7` and as at `e7befca`; a line of this
+  file as at `a9fb3f7`, where every line number an earlier entry names was
+  read again. Nothing ran on a bench and no session of Claude Code was
+  started for this entry: a run over the text of a skill needs a session, so
+  no run is recorded, and every thing whose lines this order changed stands
+  as built and never walked. The words the stock-take tool reads a line of
+  this file into its search set by stand in this entry in its head and on no
+  other line.
+
+  **Decided by the person on 19 October 2026, before this order.** Four
+  things. First, the convention "Describe what must be said; never dictate
+  wording", `docs/skill-conventions.md` lines 662 to 665, stays, as the entry
+  of 19 October 2026 on the three wordings records it: the text of a run need
+  not be word for word the approved wording, but its statement must match it,
+  and where it does not, either the run did not follow the skill or the skill
+  says less than the wording. Second, on defect 8 of the entry of 19 October
+  2026 on the two runs, lines 30138 to 30157 of this file: what the run
+  settled itself in a round becomes a question of its own, the first in the
+  call of the widget, before the questions of the round. The wording approved
+  that day, filled with the points of record 910 of project z: header
+  „Annahmen“; in the question field, first the line „Für alle Fragen dieser
+  Runde nehme ich als gegeben:“, then each point on a line of its own, opened
+  by a dash — „– rules.yaml enthält maxNameLength: 32, wie bisher im Code“,
+  „– isValidName bekommt die Höchstlänge als zweiten, optionalen Parameter“,
+  „– die Seite wird mit tsc für den Browser übersetzt“, „– dasel schreibt
+  rules.json“, „– ein kleiner Node-Server liefert beides“, „– Playwright mit
+  Chromium testet“ —, then, after a blank line, the question line „Stimmt das
+  so?“; the first answer with the label „Stimmt so“ and the description „Ich
+  plane mit diesen Punkten weiter.“; the second with the label „Etwas stimmt
+  nicht“ and the description „Ich frage nach, was nicht stimmt, und stelle
+  die Fragen dieser Runde, die davon abhängen, noch einmal.“ Third, the same
+  day: every round in which the run settles something puts this question at
+  once; nothing is handed on any more. Where the round asks nothing else, the
+  question stands alone in its call, and its first line reads, as approved,
+  „Für alles Weitere nehme ich als gegeben:“; the description of „Etwas
+  stimmt nicht“ then says only „Ich frage nach, was nicht stimmt.“, there
+  being no question of the round to put again. Approved with that is the
+  frame: the header, the two first lines, „Stimmt das so?“ and the two
+  answers with their descriptions; the points the run writes anew each time,
+  one per line. The skill describes what the frame says and refers to the
+  wording here; it does not prescribe the German words. This question carries
+  no recommendation. Fourth, on defect 7 of the same entry, lines 30125 to
+  30137: through the widget the recommendation stands on the answer — the
+  recommended answer stands first, its label ends on „(Empfohlen)“, and its
+  description says why. Approved on this example, whose answers are invented
+  and show the form alone: the question line „In welcher Sprache zeigt die
+  Seite ihre Texte?“; the first answer with the label „Deutsch (Empfohlen)“
+  and the description „Die Seite richtet sich an deutschsprachige Nutzer.“;
+  the second with the label „Englisch“ and a description left open. The
+  questions of the rounds are decisions about the product that is built,
+  where a recommendation belongs; that agrees with the should of defect 4 of
+  the entry of 3 and 4 October 2026, lines 9612 to 9668 of this file, a
+  recommendation only where the person decides about the product, which
+  stays recorded and unbuilt as it stands. This order changes no question
+  outside the rounds of the interview, questions 1, 4 and 5 of
+  `setup-project` step 4 among them. The form of the recommendation is the
+  one the question tool of Claude Code names for itself, the first option
+  with "(Recommended)" at the end of its label, in the person's language.
+
+  **The question on the assumptions.** `shared/three-questions.md` lines 25
+  to 30 at `a9fb3f7`: what the run settled in a round said in one line,
+  "taking X, Y and Z as given; say if any of those is wrong", through the
+  widget in the question field of the first question of the round, before its
+  question line, as text in the message that puts them, a round that asks
+  nothing handing its line on to the next question put. Lines 37 to 63 at
+  `e7befca`: what the run settled in a round goes into a question of its own
+  on the assumptions of the round, the first in the call that puts the
+  round's questions, before them, and none where it settled nothing; it is
+  not one of the three and carries no recommendation; its header names the
+  points as assumptions, in at most twelve characters; its field says first
+  that the points hold for every question of this round, then every point on
+  a line of its own, then asks whether that is right; two answers, the first
+  confirming, on which the run plans on with the points, the second saying
+  that something is wrong, on which the run asks what and puts the questions
+  of this round whose answer hangs on it again; where the round asks nothing
+  else, the question alone in its call, its field saying first that the
+  points hold for everything from here and the second answer only that the
+  run asks what is wrong, nothing handed on to a later question; so it never
+  joins a question that has to stand alone in its call, the one whether the
+  idea is understood among them, and a question that needs weighing stays the
+  only decision of its round with this question before it in the same call,
+  since it decides nothing; as text the same parts in the message that puts
+  the round, before the first question, the person saying in their answer
+  whether the points hold; where this question does not fit the bound of the
+  output style, the whole round as text; the reference to the approved form
+  in this entry; and what held until then. Checked point by point against the
+  wording above: the header, the first line in both forms, the points one per
+  line, the question line, the two labels and the two descriptions in both
+  forms — every point stands in the shared text, nothing else is added, and
+  no German word is prescribed. The question is put through `plan-work`
+  Stage 1 and the interview of `untangle-idea`, which insert the shared text
+  at lines 305 and 164.
+
+  **The recommendation through the widget.** `shared/three-questions.md`
+  lines 7 to 8 at `a9fb3f7` and since, "every decision about the idea is a
+  question to them with your recommendation", and `skills/plan-work/SKILL.md`
+  line 283 at `a9fb3f7`, "each with your recommended answer so a single word
+  can settle it", said that a recommendation is given, and no line said where
+  it stands through the widget; the four questions of records 910 and 945 of
+  project z carried none. Lines 25 to 35 at `e7befca`, a paragraph of its own
+  after the rule of lines 7 to 23: through the widget the recommendation
+  stands on the answer, the recommended answer first, its label ending, in
+  brackets, on the word for "recommended" in their language, its description
+  saying why it is recommended beside what the answer means and what it
+  costs; as text the recommendation after the question, as the template of
+  `untangle-idea` at lines 166 to 172 and Stage 1 of `plan-work` have it; the
+  reference to the approved form in this entry; and what held until then.
+  Checked against the example above: the position, the label's ending and the
+  description's content stand there; the words do not.
+
+  **Stage 1 of `plan-work`.** `skills/plan-work/SKILL.md` lines 280 to 284 at
+  `a9fb3f7`: "Each round, settle only what the rule on this interview below
+  leaves to you, say it in one line as that rule says, and then ask every
+  decision that is left — numbered, each with your recommended answer so a
+  single word can settle it, at most three in a round". Lines 280 to 286 at
+  `e7befca`: what the rule leaves to the run is put as the question on the
+  assumptions of the round that rule describes, first in the call and ahead
+  of the round's questions, and the decisions left are asked numbered, each
+  with the recommended answer, through the widget on the answer as that rule
+  says since 19 October 2026, at most three in a round. The interview of
+  `untangle-idea`, lines 152 to 217, read for the same: no line of it says
+  that the settled points stand in one line, in a first question's field or
+  are handed on, and its template of lines 166 to 172 is the text form the
+  shared text names; nothing changes there, `grep -n -i 'widget'
+  skills/untangle-idea/SKILL.md` printing nothing.
+
+  **The conventions.** `docs/skill-conventions.md` lines 743 to 744 at
+  `a9fb3f7` said that where several questions share one call, as
+  `setup-project` step 4 allows, the picture is not measured; lines 743 to
+  746 at `e7befca` say it of a round of the interview as well, which shares
+  one call since 19 October 2026, up to four questions with the one on the
+  assumptions: how a call of several questions looks at 80 columns is not
+  measured, and neither is one of four. Lines 747 to 748 at `a9fb3f7` said
+  that "the choice of a design in `plan-work`, the landing question of
+  `build-work`, the rounds of planning and the classes of `setup-checks` step
+  2" are put as text, on decision 5 of the person of 17 October 2026, lines
+  26596 to 26600 of this file, "the rounds of planning are and stay text
+  questions". Since 18 October 2026, `d7722a7`, the shared text has named the
+  widget as a form for the rounds, the two runs of 19 October 2026 put them
+  through the widget, and the person's decisions of that day on defects 7 and
+  8 fix the form of the rounds' questions in the widget; the later decision
+  governs. Lines 749 to 754 at `e7befca`: the three other questions are put
+  as text, and so were the rounds of planning until 19 October 2026, when the
+  person decided the form of their questions through the widget, this entry;
+  a round goes as text where its question on the assumptions does not fit.
+  Nothing else of the decision of 17 October 2026 changes.
+
+  **The measurement.** The question on the assumptions in the approved
+  example, by `output-styles/devloop.md` lines 42 to 46, wrapped by a script
+  at 76 characters in the question field and 73 under an answer, every
+  paragraph and every point on a line of its own, the blank line counted and
+  the labels not: nine lines of the field — the first line, six points, the
+  blank line, the question line, the longest line 71 characters —, one under
+  „Stimmt so“ and two under „Etwas stimmt nicht“, twelve lines, under the
+  bound of fourteen at `output-styles/devloop.md` line 43, so nothing was
+  held back for a question to the person. The header „Annahmen“ has eight
+  characters, under the twelve of lines 46 to 48. The question tool of Claude
+  Code carries up to four questions in one call, "Questions to ask the user
+  (1-4 questions)" in its description as read this day, so the question on
+  the assumptions beside the three of a round fits a call. Not measured:
+  how a call of four questions looks at 80 columns, the paragraph above.
+
+  **Defects 7 and 8, the run or the skill.** Defect 7 lay with the run and
+  with the skill: `shared/three-questions.md` lines 7 to 8 and
+  `skills/plan-work/SKILL.md` line 283 at `a9fb3f7` asked for a
+  recommendation and the four questions carried none, which is the run not
+  following the skill; and no line said where it stands through the widget,
+  which is the skill saying less than the approved form, built here. Defect 8
+  lay with the skill: `shared/three-questions.md` line 28 at `a9fb3f7`, "in
+  the question field of the first of them, before its question line", is
+  where record 910 put the line, so the run followed the skill, and the skill
+  said less than the person wants; that line is what this order replaces.
+
+  **Looked at and left.** The search by subject, over `skills/`, `shared/`,
+  `output-styles/`, `README.md`, `docs/plan.md` and
+  `docs/skill-conventions.md`, with the patterns the report names: the only
+  other lines on a settled point said in one line are `shared/how-to-ask.md`
+  line 24, the rule outside the interview, which `shared/three-questions.md`
+  lines 13 to 16 set aside for the interview, and lines of other subjects;
+  no line but the changed ones says that the settled points stand in a first
+  question's field or are handed on; the lines that give a recommendation
+  are the template of `untangle-idea`, the text form, `README.md` line 61,
+  true of both forms, the questions outside the rounds that carry none, the
+  recommended draft of Stage 3 and the ranking of issues in `start-work`,
+  none of which says where a recommendation stands in the widget; no line of
+  the set carried „Empfohlen“ before this order. Nothing of these changes.
+  `.claude-plugin/plugin.json` carries 0.150.0; `marketplace.json` carries no
+  version.
+
+  **What changes in the list of the defects that concern milestone 3**, the
+  entry of 19 October 2026 on the two runs, lines 30409 to 30681 of this
+  file: nothing. Defects 7 and 8 of that entry stand in none of its three
+  groups, `sed -n '30409,30681p' docs/roadmap.md | grep -n 'defect 7
+  above\|defect 8 above'` printing nothing where the list names the defects
+  of its entry so; the list stays as it stands, groups 1 and 2 not empty, and
+  the milestone is not reached.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the evidence of defect 7 moved onto the line
+  of `shared/three-questions.md` that puts the recommended answer first, and
+  that of defect 8 onto the line that puts the question on the assumptions
+  first in the call, their sites staying on their status lines; three things
+  of the shared text renamed, no run hanging on any — the point the run
+  settles, said in the one line of its round until then, now put in the
+  question on the assumptions; the questions put as text, the parts of that
+  question in the message before the first question; the round that asks
+  nothing, whose line was handed on, now the round that asks nothing else,
+  the question alone in its call, which is the thing the order asked for
+  anew — each note naming the old name; the thing of the settled line in the
+  first question's field keeps its name, a run of 19 October 2026 hanging on
+  it, re-anchored on the line that puts the question first in the call, its
+  note saying what holds since this day; five things added — the
+  recommendation through the widget, no question where the run settled
+  nothing, the first answer, the second answer, and the whole round as text
+  where the question does not fit the widget; one not-a-thing row gone with
+  the line it stood on, four added, and one for the head of this entry. No
+  run is recorded. Three things lost their counted runs with their lines: the
+  straight path of `shared/three-questions.md`, its runs of 16 and 19 October
+  2026; the thing of the settled line in the first question's field, its run
+  of 19 October 2026; and the straight path of `plan-work` Stage 1, whose
+  seven runs did not count at `a9fb3f7` already, its line 425 changed that
+  day; every run of theirs stays in the output under the runs that do not
+  count. The tool on the tree of the second commit: no broken record, 19
+  findings as at `a9fb3f7`, no unit without a straight path, no status word
+  broken over a line break, none of 4118 lines of the search set uncovered,
+  where `a9fb3f7` had 4112, exit 0; recorded and not built 277 where it was
+  279, its defects 266 where 268; built and never walked 1110 where 1101 —
+  shared texts 142 where 135, defects 266 where 264; walked 625 where 627 —
+  shared texts 66 where 68; undetermined 24, skill branches, the output
+  style, hook outcomes, hook registrations, program outcomes and check
+  commands as before; not-a-thing records 2645 where 2641.
+
+  **The checks and the tool, run for this entry.** The command under "Before
+  you change anything, run this" ran on `main` at `a9fb3f7` before the branch
+  was cut, printing nothing against the installed 0.149.0. The nineteen
+  checks under "Before a handover, run these" ran green on that tree, on the
+  tree of `e7befca` and again on the tree of the second commit, in a clean
+  bash with `/usr/bin/grep` first on its path, line for line what they print
+  at `a9fb3f7` but for the three line numbers of `plan-work` the change
+  moved in the check for offers. The tool ran on `a9fb3f7` with exit 0 and
+  the figures the report names, and on the tree of the second commit with
+  exit 0 and the figures above; nothing is recorded for these runs, the
+  checks and the tool standing on no line this order changed.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
