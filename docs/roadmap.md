@@ -30906,6 +30906,211 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   11:52 to 11:56 UTC on the tree of the first commit, exit 0; all recorded
   here under 0.148.0.
 
+- **The three wordings the person approved on 19 October 2026 built, the
+  places sharpened where the skill said less than the approved wording, and
+  the person's decisions of that day on the convention against dictated
+  wording and on defect a of the second closing run: the first case of the
+  merge handover, the awake line and the two labels of the mode question, the
+  two descriptions that send the run alone; defects 13, 14 and 15 of the entry
+  of 19 October 2026 on the two runs and defect 13 of the entry of 16 October
+  2026 built; defect a held; 19 October 2026, version 0.149.0.** On
+  `task/wordings-19-october-2026`, off `bcc08b2`, version 0.148.0 on `main`;
+  the changed places and the version in one commit, `175a22d`, this entry
+  and the rows of the table in a second. The report stands on this machine
+  as `~/devloop-report-2026-10-19-wordings.md`, in English, and is not in
+  the repository. A line of a file the first commit changes is given twice,
+  as at `bcc08b2` and as at `175a22d`; a line of this file as at `bcc08b2`,
+  where every line number an earlier entry names was read again. Nothing ran
+  on a bench and no session of Claude Code was started for this entry: a run
+  over the text of a skill needs a session, so no run is recorded, and every
+  thing whose lines this order changed stands as built and never walked. The
+  words the stock-take tool reads a line of this file into its search set by
+  stand in this entry in its head and on no other line.
+
+  **Decided by the person on 19 October 2026, before this order.** Three
+  things. First, the convention "Describe what must be said; never dictate
+  wording", `docs/skill-conventions.md` lines 662 to 665, stays, after the
+  person had weighed whether its basis still holds: the basis, that a model
+  rewrites a fixed paragraph, is a statement of 19 August 2026, the commit
+  `8d955fb` that wrote the file, without a measurement; and devloop answers
+  in the language of the person, so a wording approved in German is not the
+  text every run says. Second, what the person holds to: the text of a run
+  need not be word for word the approved wording, but its statement must
+  match it; where it does not, either the run did not follow the skill, or
+  the skill says less than the wording — and the second is what this order
+  looks for and mends. Third, from that, for defect a of the entry of 11
+  October 2026 on the second closing run, whose two readings the entry of 19
+  October 2026 left to the person, lines 29765 to 29792 of this file: the
+  first reading holds. Each point of the approved wording stood in the fields
+  of the question at record 462 of project z, and nothing stood as text
+  before its call; the differences in words the second reading lists are
+  differences in words and not in statement, but for the two labels and the
+  awake line, which are the defects 13 of the entry of 16 October 2026 and 13
+  of the entry of 19 October 2026 and are built here. Defect a held. The
+  three wordings stay where they stand, as defects 13, 14 and 15 of the entry
+  of 19 October 2026, lines 30249 to 30325, in German as approved; a skill
+  says what is said, not the words, and each place below names the entry
+  that holds its wording.
+
+  **The merge handover, its first case.** `shared/merge-handover.md` lines 8
+  to 10 at `bcc08b2`, "why GitHub does not merge it itself, in the one
+  sentence that fits the case — where no gate stands on the main branch,
+  that there is no required check yet for it to wait on, whether or not
+  auto-merge is on"; lines 8 to 17 at `175a22d`: to that there is no
+  required check yet for it to wait on comes that devloop sets a required
+  check up only where they allow it to work without them; the case holds
+  whether or not auto-merge is on, and what is said names neither auto-merge
+  nor whether it is on and uses no term of GitHub's a user need not know —
+  the person's statement of 19 October 2026 in defect 15, that a user hears
+  of auto-merge there for the first time and does not understand the run's
+  sentence, "Auto-Merge geht nicht, weil auf `main` noch kein Required Check
+  steht, auf den GitHub warten könnte." The reference to the approved
+  wording, lines 35 to 37 at `bcc08b2`, names for the first case the entry
+  of 19 October 2026 under defect 15 beside the entry of 12 October 2026,
+  lines 42 to 46 at `175a22d`. Checked point by point against the wording of
+  12 October 2026, lines 19241 to 19249 of this file: the pull request named
+  by its title and open, the case, the command in a code block with the
+  repository, that this picks up when they say it is in and nothing happens
+  until then, the two other cases, no `--delete-branch` — every point stands
+  in the shared text, and nothing else is added.
+
+  **The awake line of the mode question.** `skills/setup-checks/SKILL.md`
+  lines 935 to 936 at `bcc08b2`, "`caffeinate` in a terminal of their own
+  keeps it awake, and a closed laptop it does not"; lines 935 to 940 at
+  `175a22d`: on macOS the line says under which conditions `caffeinate`
+  keeps the machine awake, as long as it runs in a terminal of their own and
+  the laptop stays open, and not what does not suffice — the person's
+  statement of 19 October 2026 in defect 13, approved there as „Auf dem Mac
+  hält ihn `caffeinate` wach, solange es in einem eigenen Terminal läuft und
+  der Laptop aufgeklappt bleibt.“ The backing from `caffeinate(8)` of 7
+  September 2026 stays, lines 940 to 942. The reference to the approved
+  wording, lines 957 to 959 at `bcc08b2`, names for this line the entry of
+  19 October 2026 under defect 13 beside the new text 6 of the entry of 17
+  October 2026, lines 974 to 978 at `175a22d`.
+
+  **The two labels of the mode question.** `skills/setup-checks/SKILL.md`
+  lines 946 to 952 at `bcc08b2` named "label and description" for the yes
+  and for the no and gave the description's content alone; neither label
+  had a line. The person gave the labels their points on 17 October 2026,
+  lines 26679 to 26702 of this file: the word „erlauben“ of „Ja, ohne mich
+  erlauben“ carries that devloop asks at every idea anew whether it is
+  carried out without them, and „Nein, alles mit mir“ carries that every
+  task comes to them for approval; the sentences that said so went that day.
+  The run of 19 October 2026 wrote „Ja“ and „Nein“, the walk of defect 13
+  of the entry of 16 October 2026 at lines 29794 to 29805 of this file, held
+  in every point but that one. Lines 950 to 967 at `175a22d`: the yes label
+  says that they allow work without them, in which the first point lies, and
+  the no label that everything runs with them, in which the second lies; no
+  sentence of its own for either point, since the person struck those
+  sentences and gave the points to the labels. The description of each
+  answer stands as it stood. Checked point by point against the wording of
+  17 October 2026, lines 26645 to 26669 of this file: the header, each
+  paragraph on a line of its own, the course and its end, the cost where the
+  repository is not public, the awake line, the blank line and the question
+  line, the yes description with its first sentence gone where the
+  protection binds, the no description, nothing before the widget — every
+  other point stood in step 8 already, and what the person took out on 17
+  October 2026 is not added.
+
+  **The measurement of the fields.** `skills/setup-checks/SKILL.md` lines
+  954 to 956 at `bcc08b2` said twelve lines, measured on 17 October 2026;
+  lines 969 to 973 at `175a22d` say twelve lines, measured on 19 October
+  2026 with the wording of 17 October 2026 and the awake line of 19 October
+  2026, wrapped by a script at 76 characters in the question field and 73
+  under an answer, on macOS with a private repository and no protection: two
+  lines for the course, one for the cost, three for the awake paragraph, the
+  blank line, the question line, three under the yes and one under the no;
+  the awake paragraph of 19 October 2026 takes the three lines the one of 17
+  October 2026 took, its longest line 73 characters. Twelve lies under the
+  bound of fourteen at `output-styles/devloop.md` line 43, so nothing was
+  held back for a question to the person.
+
+  **The two descriptions that send the run alone.** `skills/plan-work/SKILL.md`
+  lines 423 to 427 at `bcc08b2`: the design chosen against the written list
+  and not against their taste, "where no draft carries the stories the run
+  stops rather than guessing", and the machine awake; the run of 19 October
+  2026 wrote „trifft kein Entwurf, hält der Lauf an“ at record 991, the
+  person's statement of 19 October 2026 in defect 14 being that this is
+  unclear and foretells a failure nobody knows will come. Lines 423 to 432 at
+  `175a22d`: the descriptions say the design chosen against the written list
+  and not against their taste, and that the machine has to stay awake; that
+  the run stops where no draft carries the stories is not said there any
+  more, and the stop itself stands in Stage 3, lines 600 to 601 at
+  `175a22d`, as it stood. The wording approved on 19 October 2026 stands in
+  the entry of that date under defect 14, which the place names.
+
+  **Looked at and left.** The search by subject, over `skills/`, `shared/`,
+  `output-styles/`, `README.md`, `docs/plan.md` and
+  `docs/skill-conventions.md`, with the patterns the report names: the only
+  other lines on `caffeinate` are `setup-checks` line 963, how it is ended
+  going from text 6, `docs/plan.md` line 549, milestone 12 naming it for
+  macOS alone, and `docs/skill-conventions.md` lines 1635 to 1639, the
+  rationale that a closed lid is a separate route into sleep, which the
+  condition "the laptop stays open" satisfies; the only other lines on a
+  missing required check are the program's answer `no required check:` and
+  which case a handover names, in `build-work`, `setup-checks` and
+  `setup-project`, none the sentence's content; no other line gives the
+  draft's stop as a cost or either label's point; `README.md` says nothing
+  of any of the three. Nothing of these changes. `.claude-plugin/plugin.json`
+  carries 0.149.0; `marketplace.json` carries no version.
+
+  **What changes in the list of the defects that concern milestone 3**, the
+  entry of 19 October 2026 above, lines 30409 to 30681 of this file, which
+  stays as it stands. Out of group 1: defect a of the entry of 11 October
+  2026, line 17627, held under the reading the person decided, walked, in no
+  group; defect 13 of the entry of 16 October 2026, line 26200, its one
+  open point the label's, built here, into group 3; defect 13 of the entry of
+  19 October 2026, line 30264, into group 3; defect 14 of that entry, line
+  30294, and defect 15, line 30318, which stood in group 1 with the
+  uncertainty whether they concern the milestone, into group 3 with the same
+  uncertainty. Group 3 holds the things the person decides on; the four stand
+  there as built and never walked, each on the line of the skill that
+  carries its repair, until a session walks them. Group 1 keeps every other
+  defect it named, and group 2 is unchanged, so the milestone is not reached.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the evidence of the four defects moved onto
+  the line that carries each repair — defect 13 of the entry of 19 October
+  2026 onto `setup-checks` line 935, defect 14 onto `plan-work` line 425,
+  defect 15 onto `shared/merge-handover.md` line 10, defect 13 of the entry
+  of 16 October 2026 onto `setup-checks` line 950, their sites staying on
+  their status lines; six records re-anchored on the line that carries the
+  same thing now, the no answer of step 8 and the yes bullet beside it, the
+  `caffeinate` branch of step 8 onto the line that names the conditions, the
+  first and the second case of the merge handover, and the line of
+  `plan-work` on the costs, the two branches with runs keeping their names
+  and their notes saying what holds since this day; four not-a-thing rows on
+  new lines, three in the shared text and one in `plan-work`; one for the
+  head of this entry. No run is recorded. Ten things lost their counted runs
+  with their lines: the straight paths of `build-work` step 6, `setup-checks`
+  steps 7 and 8, `setup-project` step 8, `plan-work` Stage 1 and
+  `shared/merge-handover.md`, the mode question of `plan-work` Stage 1, the
+  `caffeinate` branch of `setup-checks` step 8, the no-gate case of the merge
+  handover, and defect 13 of the entry of 16 October 2026; every run of
+  theirs stays in the output under the runs that do not count. The tool on
+  the tree of the second commit: no broken record, 19 findings as at
+  `bcc08b2`, no unit without a straight path, no status word broken over a
+  line break, none of 4112 lines of the search set uncovered, where
+  `bcc08b2` had 4110, exit 0; recorded and not built 279 where it was 282,
+  its defects 268 where 271; built and never walked 1101 where 1088 — skill
+  branches 611 where 604, shared texts 135 where 133, defects 264 where 260;
+  walked 627 where 637 — skill branches 230 where 237, shared texts 68 where
+  70, defects 39 where 40; undetermined 24, the output style, hook outcomes,
+  hook registrations, program outcomes and check commands as before;
+  not-a-thing records 2641 where 2636.
+
+  **The checks and the tool, run for this entry.** The command under "Before you
+  change anything, run this" ran on `main` at `bcc08b2` before the branch
+  was cut, printing nothing against the installed 0.148.0. The nineteen
+  checks under "Before a handover, run these" ran green on that tree and
+  again on the tree of the second commit, in a clean bash with
+  `/usr/bin/grep` first on its path, line for line what they print at
+  `bcc08b2` but for the line numbers the changes moved. The tool ran on
+  `bcc08b2` with exit 0 and the figures the report names, and on the tree of
+  the second commit with exit 0 and the figures above; nothing is recorded
+  for these runs, the checks and the tool standing on no line this order
+  changed.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
