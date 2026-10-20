@@ -32870,6 +32870,386 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of the tool and the checks before and after the change stand in the
   report.
 
+- **Milestone 3, part 1, the install question, built as the person decided on
+  20 October 2026: the refresh of `setup-project` puts the install question
+  where no record stands on the main branch and writes the record; no
+  question of its step 4 carries a recommendation, the rule standing in
+  `shared/how-to-ask.md`; the call of the install question stays alone,
+  without a mechanism, for the reason of the ceiling on questions in a round;
+  the no of the install question names the exception of a package that
+  downloads something when it is installed, in the wording approved that day;
+  the bullet of `setup-project` for a blocked install with nobody there says
+  the case cannot arise, and the insert of `shared/backed-command.md` goes;
+  the person's decisions of that day on the clusters of the checked list
+  recorded with what follows from the rules; four findings of the tool
+  brought in as defects, three of them built and one closed, four defects
+  closed as left on purpose and one as lapsed; 20 October 2026, version
+  0.152.0.** On `task/milestone-3-part-1-2026-10-20`, off `b8db2c9`, in two
+  commits: `d1250d1`, `skills/setup-project/SKILL.md`,
+  `shared/install-question.md`, `shared/how-to-ask.md` and the version; then
+  this entry, the rows of the table, `docs/plan.md` and
+  `docs/skill-conventions.md`. The report stands on this machine as
+  `~/devloop-report-2026-10-20-milestone-3-part-1.md`, in English, and is
+  not in the repository. Every line number of a file is as at `b8db2c9`
+  unless it says `d1250d1`; a line of this file as at `b8db2c9`, this entry
+  standing after the last. Nothing ran on a bench and no session of Claude
+  Code was started for this entry; no run of this order is recorded, the one
+  run row written being the walk of 19 October 2026 that the entry of that
+  date records at lines 29807 to 29820. `hooks/`, `bin/`, `scripts/`,
+  `output-styles/` and `.github/` do not change. The words the stock-take
+  tool reads a line of this file into its search set by stand in this entry
+  in its head, on the lines that record a defect and on the lines that close
+  one, and on no other line.
+
+  **Decided by the person on 20 October 2026**, each with its reason,
+  answering the decisions under "Decision" of the clusters of the entry of
+  19 October 2026 at line 31380, with the changes of the entry of 20 October
+  2026 at line 32312.
+  Cluster 1. The rule stays that the install question stands alone in its call.
+  Its reason in `skills/setup-project/SKILL.md` lines 254 to 256, that two
+  decisions put in one submit come back as one answer, is wrong for the
+  widget: Claude Code 2.1.304 returns every chosen answer with its question,
+  as `"<question>"="<answer>"`, and only a typed answer holds for the whole
+  call — the function `mapToolResultToToolResultBlockParam` of the tool
+  `AskUserQuestion` in the binary of the package
+  `@anthropic-ai/claude-code-linux-x64@2.1.304`, read on 20 October 2026, and
+  `sdk-tools.d.ts` of the package `@anthropic-ai/claude-agent-sdk@0.3.304`,
+  lines 3956 to 3965, `answers` a map of question text to answer and
+  `response` the typed text, read again for this entry in a fresh unpacking
+  of the package; what holds for a typed answer `output-styles/devloop.md`
+  lines 58 to 62 say. The reason is replaced by the one of
+  `shared/three-questions.md` lines 1 to 5: what needs weighing stands alone,
+  so that it is not waved through beside other questions.
+  No mechanism holds it: a hook cannot tell the install question from another
+  question, since no skill fixes its wording (`shared/install-question.md`
+  lines 19 to 21 and 37 to 41), and the one mark it could read is one the run
+  sets itself, the field `metadata.source` (`sdk-tools.d.ts` lines 2703 to
+  2711, "Not displayed to user"), which a run that packs the question beside
+  others by mistake can leave out just as well.
+  Cluster 2. No question of `setup-project` step 4 carries a recommendation.
+  Question 1, the issue tracker, decides where this workflow keeps its work;
+  question 4, the local environment, asks a fact only the person knows, and
+  what the run found in the code stands before the question as what was
+  found, not as a recommended answer; question 5, where glossary and decision
+  records live, decides how their repository is ordered. None decides about
+  the product being built. The rule from the should of defect 4 of the entry
+  on the runs of 3 and 4 October 2026, lines 9612 to 9668, goes into
+  `shared/how-to-ask.md`, beside its sentence on a convention of this
+  workflow, lines 7 to 8.
+  Cluster 5. The refresh puts every question of `setup-project` whose stored
+  answer is missing on the main branch, as a first setup puts it, and none
+  whose answer stands; today that is the install question, the section
+  `## Install permission`. As a rule into `docs/skill-conventions.md`: a
+  question whose answer is stored is put at the place that needs the answer,
+  wherever the stored answer is missing. `setup-checks` needs nothing for it:
+  it puts its question on the project's packages itself where no answer
+  stands and the person is there (`skills/setup-checks/SKILL.md` line 380),
+  and both permissions a second time in step 8 where their answer does not
+  say yes (line 1049); where the answer on work without the person is
+  missing, the mode is not set up, a valid state that `--auto` sets up. The
+  part of the should of finding 9 for projects set up before 0.122.0 —
+  `setup-checks` called whole where the marker of `checks.md` is older —
+  leaves the should: no such project is in use, devloop is tested by the
+  person alone, and the old test projects stay out by the rule of 6 October
+  2026, `docs/plan.md` lines 933 to 938.
+  Cluster 6. The should of defect 14 of the entry of 16 October 2026, status
+  line 26220, is met where nothing the decision needs stands only before the
+  call; the instruction in `output-styles/devloop.md` line 38 stays as it is.
+  Record 496 of project z carried "Jetzt die Install-Erlaubnis, zum zweiten
+  Mal." and nothing the decision needs, lines 29806 to 29820; under the new
+  should record 497 held.
+  Cluster 8. Under `install-tools: no` the stored answer carries no
+  `install-place` and no `install-route` line, and the line at session start
+  says `places: none` and `routes: none`; a later yes in `setup-checks` step 8
+  writes the answer anew from the same template, `shared/install-record.md`,
+  inserted at `skills/setup-project/SKILL.md` line 717 and
+  `skills/setup-checks/SKILL.md` line 1143. A later order builds it.
+  Cluster 9. The README says that the answer in `docs/agents/environment.md`
+  holds for everyone who works with devloop in a clone of the project;
+  `docs/skill-conventions.md` line 2046 and the comment in
+  `hooks/session-start.sh` lines 61 to 63 are corrected: the line at session
+  start reaches the run, not the person. No hook shows the person anything,
+  because `hooks/session-start.sh` runs in every session, the skills rely on
+  its output (`skills/setup-checks/SKILL.md` lines 473 to 475), and a yes
+  opens only the places and routes of the project while `sudo`, installers
+  piped from the network and system packages stay with the person under
+  every answer (`README.md` lines 227 to 233). The person approves the README
+  sentence before the build. A later order.
+  Cluster 13. The block for a route that does not answer names the query and
+  not its output on stderr, on purpose: the output of a foreign program can
+  carry the home directory with the user name, with nobody there the cause of
+  the block goes into an issue (`hooks/pre-tool-use-install-guard.sh` line
+  989), and the install handed over resolves the case itself (lines 6423 to
+  6428). The two other points of the cluster, lines 6588 and 25184, a later
+  order builds with a wording the person approves first.
+  Cluster 16. The examination of the sandbox of Claude Code, line 14121, does
+  not belong to milestone 3: the milestone ends on one machine so that it has
+  one variable (`docs/plan.md` lines 601 to 602); which milestone takes it
+  up the person decides after milestone 3. `docs/plan.md` says so after its
+  paragraph on the decision of 20 October 2026 under milestone 3.
+  Cluster 18. A PostToolUse hook writes the install command the install
+  guard let through under a yes and that succeeded into a section of its own
+  of `docs/agents/environment.md` on the branch; the person approves the
+  heading before the build. A later order.
+  Finding 19 of the tool (`shared/install-question.md` line 14). The install
+  guard stays as it is, by the ruling of 28 September 2026
+  (`docs/skill-conventions.md` lines 1128 to 1132); instead the line under
+  the no says that some packages of the project download something
+  themselves when they are installed and that the no does not stop that. The
+  wording approved on 20 October 2026, as the German reference; the labels
+  and the line under the yes stay as approved on 8 October 2026, lines 13243
+  to 13251. At the first asking: „Ich installiere nichts außerhalb des
+  Projekts. Fehlt ein Werkzeug oder Browser, bekommst du den Befehl und
+  entscheidest selbst. Ausnahme: Manche Pakete deines Projekts laden beim
+  Installieren selbst etwas nach, etwa einen Browser für Tests.“ At the
+  second asking: „Ich installiere nichts außerhalb des Projekts. Ausnahme:
+  Manche Pakete deines Projekts laden beim Installieren selbst etwas nach,
+  etwa einen Browser für Tests. Mit Nein kann ich nicht ohne dich arbeiten.“
+  Counted for the widget at 76 and 73 columns: the first asking fills 8 of
+  14 lines with the question line of 8 October 2026, the second 9 of 14 with
+  the field line of record 497 of project z before the question line.
+
+  **What follows from the rules without a decision**, each with the rule and
+  its line.
+  Cluster 3. The question does not say that a bare pip opens nothing under a yes.
+  That half of line 6266 goes: the guard blocks a bare `pip` and names the way,
+  `python -m pip` or the project's pip by a path
+  (`hooks/pre-tool-use-install-guard.sh` line 912), the run takes the way the
+  message names (`shared/command-does-not-answer.md` lines 88 to 91) and so
+  installs itself; the draft "a bare pip stays theirs" implied something
+  untrue, against `shared/install-question.md` lines 35 to 36.
+  Cluster 4. Nothing is built. The empty first setup (line 7034) and the first
+  setup with a yes and a check tool missing (line 7923) go into the closing
+  run. The two holds the cluster names are not built: a hold on the setup's
+  branch would cover only the way from the cut to step 6, the questions being
+  put before the cut, on the main branch (`skills/setup-project/SKILL.md` line
+  421), and a missing answer already falls to the safe side (`docs/plan.md`
+  lines 458 to 461 and 469 to 471).
+  Cluster 14. `--path` of `@puppeteer/browsers install` is read as the person
+  decided on 12 October 2026 in point 4 for the variables before the command
+  (lines 19645 to 19650): inside the project through, outside held against
+  the stored answer, under a no blocked. A later order.
+  Cluster 15. Every abbreviation of `--global` counts as global for npm, by
+  the should of finding 6 of the entry of 9 October 2026, lines 14027 to
+  14029. Measured on 20 October 2026 in a Linux workspace: `npm prefix --gl`
+  and `npm prefix --g` name the global directory in npm 10.9.4 and in npm
+  12.2.0 (through npx, under Node 22.22.0 with a warning on the Node
+  version); npm 12.2.0 rejects `--glob`, `--glo` and `--globa` as an unknown
+  option, and what npm rejects installs nothing. Measured the same day on
+  this Mac, in the repository directory, npm 11.12.1 at
+  `/opt/homebrew/bin/npm` under node v25.9.0: `npm prefix` prints the
+  repository directory, exit 0; `npm prefix --g` and `npm prefix --gl` print
+  `/opt/homebrew`, exit 0; `npm prefix --glob`, `--glo` and `--globa` each
+  print `npm warn Unknown cli config "--glob". This will stop working in the
+  next major version of npm.` (with the option as typed) and the repository
+  directory, exit 0 — so npm 11.12.1 does not reject those three, it warns
+  and ignores them, and an install with one of them lands in the project. A
+  later order.
+  Cluster 17. The bullet in `skills/setup-project/SKILL.md` lines 44 to 53
+  says that the case with nobody there cannot arise here, as `setup-checks`
+  lines 176 to 183 say of its own: the run without the person reaches
+  `setup-project` on no way — the tool prints the skills the unattended mode
+  reaches under "SKILLS THE UNATTENDED MODE REACHES", seven, `setup-project`
+  not among them — and the setup never runs without the person
+  (`docs/plan.md` line 253). The insert of `shared/backed-command.md` at line
+  63 loses its one use and goes (line 27167).
+  Cluster 18. The half of line 5986 that the question says what a package
+  manager does beside the package goes, by `shared/install-question.md` lines
+  35 to 36: the yes implies nothing untrue; the half for the report stays
+  (`skills/build-work/SKILL.md` line 507, `skills/setup-checks/SKILL.md` line
+  545). The hooks that run the check chain read exit 127 with "No such file
+  or directory" as a tool not on the search path (the should of line 7705). A
+  later order.
+  Cluster 19. The halves no run has met go into the closing run, by the
+  person's answer to question 5 (line 32372 on).
+  Cluster 21. The wording for line 30085 is approved before the build; lines
+  30054 and 30040 left the list with the answers of 20 October 2026.
+  Cluster 22. The guard on the mark (`hooks/pre-tool-use-mark-guard.sh`)
+  reads start conditions 6 and 7 when the mark is written; it reads the same
+  state of the main branch as the text and refuses only where the text
+  refuses. Whether the run reads the other conditions again at the start of
+  the build depends on the model and goes into the closing run. A later
+  order.
+
+  **What this order built**, at `d1250d1`, each with the should it changes
+  and the old should quoted.
+  (a) Cluster 1. `skills/setup-project/SKILL.md` lines 277 to 284 carry the
+  new reason: the call carries the install question and no other since what
+  needs weighing stands alone so that it is not waved through, the ceiling on
+  questions in a round of `shared/three-questions.md`; and that until 20
+  October 2026 the reason stood there that two decisions put in one submit
+  come back as one answer, which does not hold for the widget. The other
+  places of that form, found with `grep -rn -E 'alone in (its|their|the)
+  call|and no other|no other question|carries this question' skills shared`,
+  eighteen lines, carry no reason or refer to question 3's form, and `grep
+  -rn 'one submit' skills shared` prints line 255 alone, so no other place
+  changes.
+  Line 7837, the form named for question 4 on 30 September 2026 met in neither run and nothing in the repository reading whether it was met, its should a form the run cannot fail to deliver or a mechanism at the call: Closed, left on purpose: decided in `docs/roadmap.md` at "The rule stays that the install question stands alone in its call.".
+  Finding 12 of the tool (`skills/setup-project/SKILL.md` line 255), the half of the form rule that the call carries question 3 alone having nothing that checks it, its should a measured mechanism holding that half or the half dropped: Closed, left on purpose: decided in `docs/roadmap.md` at "No mechanism holds it: a hook cannot tell the install question from another".
+  (b) Cluster 2. The opening of step 4, lines 253 to 261 at `d1250d1`, says
+  that no question of the step carries a recommendation, with the reason
+  above, and that until 20 October 2026 questions 1, 4 and 5 led with one;
+  question 4, lines 437 to 442, says that what the run read in the code
+  stands before the question as what was found and not as a recommended
+  answer; the rule stands in `shared/how-to-ask.md` lines 10 to 19 at
+  `d1250d1`, in the bullet on a question with a right answer to find, beside
+  the sentence on a convention of this workflow, as the should of line 9655
+  says; `docs/skill-conventions.md` line 764 says that the question field
+  carried the recommendation of questions 1 and 5 from 17 to 20 October
+  2026. The places that said which questions of step 4 carry a
+  recommendation, found with `grep -rn -iE 'questions? 1,? 4 and
+  5|questions 1 and 5|recommendation of questions|Lead with your
+  recommendation' skills shared docs/skill-conventions.md README.md
+  docs/plan.md`: the opening of step 4 and line 764 of the conventions, both
+  changed, and no other. The defect of line 9655 reads built since this
+  entry, its evidence on the rule's line; the should stands as the status
+  line has it, every part built. The defect of line 7862, question 2 leading
+  with a recommendation, keeps its should and its evidence moves onto the
+  opening of step 4, which gives question 2 none as it gives none to any.
+  (c) Cluster 5. "Refreshing an existing setup", `skills/setup-project/SKILL.md`
+  lines 84 to 115 at `d1250d1`: the one question of step 4 whose stored
+  answer is missing on the main branch is put, read through
+  `bin/devloop-install-record` after the fetch; where the program answers
+  that no record stands — no section `## Install permission`, or no
+  `environment.md` — question 3 is put as a first setup puts it, with the
+  person there and in the same form, and the answer is written as step 6
+  writes it, the routes read by the run; where the record stands, whatever
+  it says, nothing is asked; the branch is cut after the last question and
+  before the first write, as the step of line 421 says, first thing where
+  nothing is asked, after the answer where the question was put; the record
+  written is named among what changed, lines 133 to 135, and the section of
+  step 6 on `environment.md`, lines 761 to 763, says the refresh writes the
+  install record where it is missing. The rule stands in
+  `docs/skill-conventions.md` under "Only ask where there is something to
+  decide", a paragraph of its own after line 578. `docs/plan.md` says under
+  milestone 3, after its sentence that the refresh alone stays unbuilt, what
+  is built since 20 October 2026, and in its bullet on what lands on the
+  machine, line 54, that the question is asked at a refresh as well; its line
+  529 reads that the refresh stayed unbuilt until 20 October 2026.
+  Built: the refresh of `setup-project` puts the install question where no record stands on the main branch, with the person there, and writes the record as step 6 does, `skills/setup-project/SKILL.md` lines 87 to 101 at `d1250d1`; its should since this entry, in place of finding 9's: the refresh puts every question of `setup-project` whose stored answer is missing on the main branch, as a first setup puts it, and none whose answer stands, today the install question; the old should of finding 9, quoted: "the refresh, reading a checks.md whose marker is older than 0.122.0, calls setup-checks whole with the person there, where step 5 is met, the way the entry of 1 October 2026 asks for step 5 alone".
+  Not decided, named in the report, section 3 item 4: a stored answer with a
+  value other than yes or no, which `bin/devloop-install-record` lines 50 to
+  54 answer with exit 1 and the cause "unknown value" — whether the refresh
+  puts the question and writes over it, or says the record is unreadable and
+  asks nothing; the text puts the question only where the program answers
+  that no record stands.
+  Recorded, not built: `README.md` line 234 says that the question that writes the install record is put at setup, where since 20 October 2026 it is put at a refresh as well where no record stands on the main branch — should: the sentence says both places, in a wording the person approves, `README.md` being in no commit of this order.
+  (d) Finding 19 and cluster 18. `shared/install-question.md` lines 13 to 26
+  at `d1250d1` say the content of the two lines under the no: at the first
+  asking that the run installs nothing outside the project, that where a tool
+  or a browser is missing they get the command and decide, and the exception
+  that some packages of their project download something themselves when
+  they are installed, a browser for tests say, which the no does not stop;
+  at the second asking the same without the command and with work without
+  them not possible; the paragraph on the approved wordings, lines 45 to 51,
+  names this entry for the wording of 20 October 2026; the skill says what is
+  said, not the words. Nothing changes in `skills/setup-checks/SKILL.md`,
+  whose step 8 inserts the same text at line 1071.
+  Built: the no of the install question says at both askings that some packages of the project download something themselves when they are installed and that the no does not stop it, `shared/install-question.md` lines 16 to 18 at `d1250d1`; its should since this entry, in place of finding 19's: the line under the no says that installing a package of the project can download something on the side, a browser say, and that the no does not stop that, and the guard stays as it is; the old should of finding 19, quoted: "under a no nothing lands outside the project without the person, a browser that the installation of a package downloads included".
+  Line 5986, the question's half: its should since this entry is the report
+  half alone — what a package manager did beside the package stands in the
+  report of the install, `skills/build-work/SKILL.md` line 507 and
+  `skills/setup-checks/SKILL.md` line 545 — and the defect reads built with
+  its evidence on line 507; the old should, quoted: "it has to be said where
+  the question is put, as part of what the tool kind costs — the milestone's
+  'what each kind costs' — and it has to stand in the report of what came
+  back". `docs/plan.md` line 244 names the cost among the question's points
+  of 19 September 2026 and lines 503 to 507 record the cut of 30 September
+  2026 to the four points that carry the decision, so nothing there changes.
+  (e) Cluster 17. `skills/setup-project/SKILL.md` lines 49 to 53 at
+  `d1250d1` say that the case with nobody there cannot arise here, the run
+  without the person reaching the skill on no way and a setup never running
+  without the person, and that until 20 October 2026 the bullet said the
+  command becomes an issue; the insert at line 63 goes, "How to ask"
+  following the bullets directly. The defect of line 27503 reads built since
+  this entry, its evidence on line 49, its should met by its second way, the
+  text for the run with nobody there gone.
+  Built: the bullet of `setup-project` for a blocked install says the case with nobody there cannot arise here, `skills/setup-project/SKILL.md` lines 49 to 53 at `d1250d1`; its should as finding 11 had it, met by its second way: "the bullet names the case with them there alone, or says the case cannot arise here, as setup-checks does under With nobody there for its third route".
+  Line 27167, the insert of `shared/backed-command.md` in `setup-project` whose only use went with the install handed over, its should the insert going or a line that hands a command over using it: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "devloop-text backed-command".
+  The closing names no commit, since the commit of this branch does not
+  resolve on `main` after the squash merge, section D of the tool's header;
+  the text stood in the file since `d713819` of 18 September 2026, `git log
+  -S`. No line of the skill hands a command that fetches something over, read
+  with `grep -n -i 'hand' skills/setup-project/SKILL.md`: `gh auth login` at
+  line 195 fetches nothing, the merge handover is its own text, and the
+  refresh question hands nothing over since nothing is installed in the
+  setup.
+  (f) Cluster 3, line 6266: Closed, left on purpose: decided in `docs/roadmap.md` at "The question does not say that a bare pip opens nothing under a yes.".
+  Cluster 6, line 26220: its should since this entry is that what the second
+  question needs stands in its fields, in the wording approved on 17 October
+  2026, and that nothing the decision needs stands only before the call,
+  `output-styles/devloop.md` line 38 carrying the instruction; the old
+  should, quoted: "what the mode question needs stands in its fields, in the
+  wording approved on 17 October 2026, and the line before each second
+  question in its question field, naming their no where the record says no,
+  nothing as text before either call"; the walk of 19 October 2026 at records
+  496 and 497 of project z, lines 29807 to 29820, enters the defect's row as
+  a run under 0.148.0 with this file as its source, by the rule of the answer
+  to question 5, since that entry read the records for exactly this case;
+  the run counts, the site line last changed at `89fb29a` of 16 October 2026
+  and the evidence line at `b24542a` of 17 October 2026, both before
+  `3f810fd`, which introduced 0.148.0.
+  Cluster 13, line 6442: Closed, left on purpose: decided in `docs/roadmap.md` at "not its output on stderr, on purpose".
+  (g) `docs/plan.md` carries after its paragraph on the decision of 20
+  October 2026 under milestone 3, line 394, the dated sentence that the
+  examination of the sandbox leaves the list the milestone stands on, with
+  the decision of cluster 16.
+  (h) Everything else above is recorded only.
+
+  **Looked at and left.** `skills/setup-project/SKILL.md` lines 270 to 271,
+  question 1's `gh repo create NAME --private --source=. --push`: the
+  question asks the name and whether the repository should be private and
+  carries no recommendation in its fields; the command line after it writes
+  the private form only, and is left as it stands, named in the report as a
+  question to the person. `skills/start-work/SKILL.md` lines 48 to 53, "Do
+  not ask" of the refresh: that is the question whether to refresh at all,
+  which stays unasked; the refresh's own question is another question.
+  `skills/setup-checks/SKILL.md` lines 485 to 487, that under a no the run
+  installs nothing, which the no said: still true, the exception being what
+  a package's installation does and not what the run does.
+  `docs/skill-conventions.md` line 2364 names `setup-project` before its
+  refresh among the places reading the setup state with `--fetch` and says
+  nothing of asking. The not-a-thing row of the table on
+  `skills/build-work/SKILL.md` line 507, written on 19 October 2026 for
+  coverage, stays beside the evidence of line 5986 on the same line.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the four findings 9, 11, 12 and 19 replaced
+  by defect things sited on their lines above, 9, 11 and 19 evidenced on the
+  built lines and 12 on its closing line; the evidence of lines 7837, 6266,
+  6442 and 27167 moved onto their closing lines, of line 9655 onto the rule
+  in `shared/how-to-ask.md`, of line 27503 onto the bullet, of line 5986
+  onto `skills/build-work/SKILL.md` line 507, of line 26220 onto
+  `output-styles/devloop.md` line 38 with one run row under 0.148.0, source
+  `entry`; the evidence of line 7862 onto the opening of step 4; one defect
+  thing for `README.md` line 234, sited on its status line above and
+  evidenced on the README line; the thing of the nobody-there bullet of
+  `setup-project` renamed, no run hanging on it, its note naming the old
+  name; two things of kind skill branch for the refresh with no record and
+  with a record standing; one of kind shared text for the rule in
+  `shared/how-to-ask.md`; the not-a-thing rows on the lines this order
+  rewrote re-anchored; the notes of the things whose should changed carry
+  the new should with the old quoted; the head of this entry as part of the
+  first defect thing of this entry. No run of this order is recorded.
+
+  **The checks and the tool, run for this entry.** The command under "Before
+  you change anything, run this" ran on `main` at `b8db2c9` before the branch
+  was cut, printing nothing against the installed 0.151.0 at `8458e47`. The
+  nineteen checks under "Before a handover, run these" ran green on that
+  tree, in a clean bash with `/usr/bin/grep` first on its path, and again on
+  the tree of the second commit; the one difference a line number in the
+  check for offers, `setup-project` line 268 to 296, the same line moved. The
+  tool ran on `b8db2c9` with exit 0 — no broken record, 19 findings, 22
+  closed defects, none of 4186 lines of the search set uncovered, 2064
+  things, 657 walked — and on the tree of the second commit with the figures
+  the report names, every figure that changed with the range it counts over
+  and its reason; the self-test 124 cases, 95 of 95 messages asserted, on
+  both trees.
+
+  **Whether the milestone is reached.** No. What is built here is part 1 at
+  the refresh, the recommendation rule, the reason of the call alone and the no
+  line; clusters 8, 9, 13 (two points), 14, 15, 18, 21 and 22 wait for later
+  orders, and the runs and benches the clusters name are owed as before.
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

@@ -51,7 +51,9 @@ back mechanically. Beyond that line is the person's.
   October 2026, asked by the check setup and recorded beside the first.
   Anything that
   lands outside the repository lands there under the person's explicit
-  permission only, asked at setup under milestone 3 and recorded, and asked a
+  permission only, asked at setup under milestone 3 and recorded — since 20
+  October 2026 at a refresh of the setup as well, where no record stands on
+  the main branch — and asked a
   second time only where the unattended mode is set up and the record does
   not say yes; what
   the project declares was reported at setup before that question, in step 2
@@ -392,6 +394,13 @@ milestone up; and the clusters of the entry of 19 October 2026 with the
 changes the entry of 20 October 2026 records — three uncertain points kept, 33
 taken out, 22 defects closed, clusters 10, 23 and 25 emptied — are the list
 this milestone stands on.
+Decided on 20 October 2026, the roadmap entry of that date on milestone 3,
+part 1: the examination of the sandbox of Claude Code for the install guard,
+recorded and not built in the entry of 9 October 2026 on the open findings on
+the guard, cluster 16 of the checked list, does not belong to this milestone,
+which ends on one machine so that it has one variable, and leaves the list
+this milestone stands on; which milestone takes it up the person decides
+after milestone 3.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
@@ -472,7 +481,12 @@ the whole record where none stands; and, until 8 October 2026, version
 0.131.0, the drivers half, so that the place list carried no driver
 destination and `npx playwright install` passed the guard as before — since
 that day the guard reads the browser downloads, the record names their five
-default places, and the refresh alone stays unbuilt.
+default places, and the refresh alone stays unbuilt. Since 20 October 2026,
+version 0.152.0, the refresh puts the install question where no record
+stands on the main branch, with the person there, as a first setup puts it,
+and writes the record as step 6 does; a project whose record stands is asked
+nothing, whatever it says; the roadmap entry of that date on milestone 3,
+part 1, by the person's decision of that day.
 The two runs of the end as it read until 6 October 2026 ran on 30 September
 2026, both attended, under 0.120.0
 from the installed copy: the record saying yes in `devloop-test-s`, the record
@@ -526,8 +540,8 @@ machine the run is on; a pip inside the project passes without a record;
 `make install` takes a destination written on its line; the roadmap entry of
 that date carries the readings and the measurement. Blocked under every
 answer still: the system package managers, the version managers, a bare
-`pip`, and every route that does not answer. The refresh stays unbuilt, and
-the drivers half did until 8 October 2026, version 0.131.0; both halves of both runs on a bench, the setup and the guard
+`pip`, and every route that does not answer. The refresh stayed unbuilt until
+20 October 2026, and the drivers half until 8 October 2026, version 0.131.0; both halves of both runs on a bench, the setup and the guard
 against the landed record, were walked on 3 and 4 October 2026 under 0.126.0
 with the person there, the yes in `devloop-test-u` and the no in
 `devloop-test-v`, and the yes half with nobody there was not, for the reasons
