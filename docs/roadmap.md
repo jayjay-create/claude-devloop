@@ -33280,6 +33280,266 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the refresh, the recommendation rule, the reason of the call alone and the no
   line; clusters 8, 9, 13 (two points), 14, 15, 18, 21 and 22 wait for later
   orders, and the runs and benches the clusters name are owed as before.
+- **Milestone 3, part 2, the saved answer, built as the person decided on 20
+  October 2026: under `install-tools: no` the record carries the answer and
+  the date alone and the line at session start says `places: none` and
+  `routes: none`, whatever an older record under a no carries; `README.md`
+  says in the wording approved that day that the question is put at setup and
+  at a refresh where no record stands on the main branch and that the record
+  travels with the repository, and `docs/skill-conventions.md` and the comment
+  of `hooks/session-start.sh` say that the line at session start reaches the
+  run and not the person; `README.md` carries no date and says the state of
+  today, eight dates and a version pair gone, the rule in the conventions, and
+  a step of the job `stock-take` is red where it carries one; the hook run on
+  a bench in four cases and the step's command on the tree and on a copy with
+  a date over a line break; 20 October 2026, version 0.153.0.** On
+  `task/milestone-3-part-2-2026-10-20`, off `f82aeae`, in three commits:
+  `a4c2b99`, `shared/install-record.md`, `hooks/session-start.sh`,
+  `.github/workflows/stock-take.yml`, `README.md` and the version; then this
+  entry, the rows of the table and `docs/skill-conventions.md`; then the runs
+  of the bench, measured on the tree of the second commit, as the paragraph on
+  the bench below records. The report stands on this machine as
+  `~/devloop-report-2026-10-20-milestone-3-part-2.md`, in English, and is not
+  in the repository. Every line number of a file is as at `f82aeae` unless it
+  says `a4c2b99` or the second commit; a line of this file as at `f82aeae`,
+  this entry standing after the last. No session of Claude Code was started
+  for this entry; the hook ran by hand with the input a session start gives
+  it. `bin/`, `scripts/`, `output-styles/`, `docs/plan.md` and the skills do
+  not change. The words the stock-take tool reads a line of this file into its
+  search set by stand in this entry in its head and on the one line that
+  records a defect, and on no other line.
+
+  **Decided by the person on 20 October 2026**, each with its reason, on the
+  two clusters the entry of that date on part 1 left to a later order, lines
+  32962 to 32978, and on the README.
+  Cluster 8. Under `install-tools: no` the stored answer carries no
+  `install-place` and no `install-route` line, and the line at session start
+  says `places: none` and `routes: none`; a later yes in `setup-checks` step 8
+  writes the answer anew from the same template, `shared/install-record.md`.
+  Reason: the places and routes do nothing under a no, the guard blocking on
+  the no before it reads a place (`hooks/pre-tool-use-install-guard.sh` lines
+  766 to 767), so that a record listing them under a no read as though
+  something were open, defect E of the entry of 30 September 2026, line 7787.
+  Cluster 9. The README sentence, approved in this wording, replacing "The
+  question that writes that record is put at setup." at `README.md` lines 233
+  to 234: "The question that writes that record is put at setup, and at a
+  refresh of the setup as well where no record stands on the main branch. The
+  record travels with the repository: whoever works with devloop in a clone of
+  the project works under the answer it carries, so under a yes the run
+  installs tools and browsers for tests outside the project on their machine
+  as well, without asking them." `docs/skill-conventions.md` line 2069 and the
+  comment in `hooks/session-start.sh` lines 61 to 63 say that the line at
+  session start reaches the run and not the person.
+  The README is timeless: it says the state of today and carries no date; the
+  history stands in the commits and in this file. The rule goes into
+  `docs/skill-conventions.md`. The rule "A time reference names its date, not
+  its neighbour", line 1440 of the conventions, holds as before for the
+  documents that measure and record; the README is not among them.
+  The rule is held by a mechanism: the job `stock-take` of
+  `.github/workflows/stock-take.yml`, the check `main` requires, gets a step
+  that is red where `README.md` carries a date in a form like "20 October
+  2026" or "2026-10-20", one over a line break included; the job "hooks on
+  every system" stays as it is, and the count of the nineteen checks under
+  "Before a handover, run these" does not change.
+
+  **What this order built**, at `a4c2b99`, each with the should it changes and
+  the old should quoted.
+  (a) Cluster 8. `shared/install-record.md` shows the form under a yes, lines
+  4 to 22 at `a4c2b99`, and under a no, lines 24 to 29: the answer and the
+  date alone. Lines 31 to 39 say that the eleven `install-place` lines are
+  written under a yes and under no other answer, why they stood under a no
+  until 20 October 2026, that the line at session start says none under a no
+  whatever the record carries, and that a record written under a no before
+  that day keeps the places and routes of its day, not amended, as a record of
+  six places written before 8 October 2026 is not; lines 61 to 62 say the same
+  of the route lines; lines 63 to 70 say that where the section stands and the
+  answer changes — a yes after a no, the one way the second asking in
+  `setup-checks` step 8 takes — the section is written anew from the template,
+  the places of this version and the routes read by that run, where until that
+  day only `install-tools` and `install-answered` changed. `hooks/session-start.sh`
+  line 77 at `a4c2b99` reads the answer and line 80 empties the places and
+  routes under a no, one line so that no second bare `else` enters the file, so
+  that line 81, unchanged, prints `places: none | routes: none`; the comment at
+  lines 61 to 74 says so. `docs/skill-conventions.md` says under "The install
+  guard reads a record", lines 2045 to 2049 at the second commit, that under a
+  no the record carries the answer and the date alone since 20 October 2026.
+  The places that said the places and routes stand under either answer, found
+  with `grep -rn -F 'under either answer' skills/ shared/
+  docs/skill-conventions.md docs/plan.md README.md`: the two lines of the
+  shared text, both rewritten, and `docs/plan.md` line 499, where the phrase is
+  the guard against a landed record saying yes or no and stays; `grep -rn -E
+  'install-place|install-route|places and routes|six places|five places|places
+  a yes' skills/ shared/` prints the shared text and
+  `skills/setup-project/SKILL.md` line 916, the close naming what the section
+  carries, "the answer, the places a yes opens and the routes of the stack",
+  true of a yes and left. Nothing reads the place lines under a no: the guard
+  reads them after the no, the session-start hook prints none, and the refresh
+  of `setup-project` reads through `bin/devloop-install-record` only whether a
+  record stands and whether its value can be read
+  (`skills/setup-project/SKILL.md` lines 89 to 96 and 109 to 115); the program
+  itself is unchanged and prints every line the record carries. The defect of
+  line 7787 reads built since this entry, its evidence on the hook's line 80,
+  its should met by its second half, "or carry none".
+  (b) Cluster 9. `README.md` lines 231 to 236 at `a4c2b99` carry the approved
+  sentence, checked whole over the line breaks with `tr '\n' ' ' < README.md |
+  grep -c -F`, which prints 1. `docs/skill-conventions.md` lines 2087 to 2098
+  at the second commit say that the line at session start reaches the run as
+  context and not the person, as "A hook cannot force wording" says, that the
+  run has the answer before the first install rather than meeting it at the
+  guard, that whoever works in a clone works under the answer, which
+  `README.md` says to the person, and that until 20 October 2026 the sentence
+  and the hook's comment called the line what a second person who cloned the
+  repository meets; the comment in `hooks/session-start.sh` lines 61 to 74 at
+  `a4c2b99` says the same. `grep -rn -F 'second person' skills/ shared/ hooks/
+  bin/ docs/skill-conventions.md docs/plan.md README.md` printed the two
+  places, both changed, and `grep -rn -F -e 'cloned this repository' -e
+  'cloned the repository'` over the same files the same two. The defect of
+  line 7967 reads built since this entry, its evidence on the hook's comment,
+  its should met by its second way; the defect of line 33141 reads so by its
+  should, its evidence on the README line, which the tool reads as recorded by
+  section D of its header, as it reads every defect whose evidence stands in
+  `README.md`.
+  (c) The README without a date. The order's command, `tr '\n' ' ' <
+  README.md | grep -o -E '[0-9]{1,2} +(January|…|December) +[0-9]{4}'`,
+  printed eight dates at `f82aeae` — 17 October 2026 (line 91), 16 October
+  2026 (158), 13 October 2026 (231), 9 October 2026 (234), 29 September 2026
+  (321 to 322, over the line break), 14 October 2026 (324 and 329), 9 October
+  2026 (381) — and the version pair stood at line 315; `grep -n -E
+  '[0-9]{4}-[0-9]{2}-[0-9]{2}' README.md` printed nothing, and `grep -n -i -E
+  'until that day|the same day|was raised|entry of [0-9]'` found lines 93,
+  242, 315 and 322 beside them. Each place before and after, the line numbers
+  after at `a4c2b99`: lines 89 to 94, "… so it is created without asking you,
+  and since 17 October 2026 you see it as what was created, at the next point
+  where the run waits for you, or in the tracker where the run goes alone;
+  until that day it was presented first and you could name a different one
+  before it was created." — "… so it is created without asking you, and you
+  see it as what was created, at the next point where the run waits for you,
+  or in the tracker where the run goes alone." (89 to 92); lines 158 to 159,
+  "Since 16 October 2026 a run without you is not stopped by what is yours on
+  the main branch either" — "A run without you is not stopped by what is
+  yours on the main branch either" (156 to 157); lines 230 to 231, "and so
+  does, since 13 October 2026, every program that runs the command as an
+  administrator" — "and so does every program that runs the command as an
+  administrator" (228 to 230, line 230 keeping whole the text "administrator
+  or as another user — `doas`, `su`, `run0`, `pkexec` and the", the proof of
+  the closing of line 23691 at line 32538, which the tool holds on every run);
+  line 234, "Since 9 October 2026 two more" — "Two more" (236); line 242, "And
+  since the same day a guard" — "And a guard" (244); line 315, "That is how
+  0.80.0 was raised to 0.81.0, without uninstalling." — "That works without
+  uninstalling." (317); lines 319 to 329, the paragraph on the merge gate
+  naming the entry of 29 September 2026, "Since 14 October 2026 the protection
+  requires four checks more" and "the setting was read off the platform on 14
+  October 2026" — "A pull request into main merges only once five checks are
+  green: `stock-take`, which runs the stock-take and its self-test on the
+  merged state, and `hooks on every system (ubuntu-latest)`, `(macos-latest)`,
+  `(windows-latest)` and `(alpine)`, which run the reader's self-test and every
+  hook once on each system; both jobs stand in one workflow under `.github/`,
+  and the branch protection on main requires all five, for admins too, so `gh
+  pr merge` is refused while one is pending or red. The entry in
+  `docs/roadmap.md` on the merge gate carries the setting and the merge
+  sequence; the fourth and fifth addenda of the roadmap entry on the command
+  reader carry the command for the five." (321 to 330); line 381, "and since 9
+  October 2026 the hook on permission prompts" — "and the hook on permission
+  prompts" (382). No content was added; "today" at lines 5, 112, 188 and 377
+  states the state of today and stays. Two defects of the README sit on these
+  places and read built since this entry by a should this entry changes: the
+  defect of line 23708, whose should was "README says five checks are required
+  since 14 October 2026" and is, since this entry, that the README says five
+  checks are required, without a date, the README carrying none; and the
+  defect of line 28988, whose should was "README says so with the date" and
+  is, since this entry, that the README says so, without a date. The evidence
+  of each stands on its README line, which the tool reads as recorded, as
+  under (b). No other defect of the README sits on one of these places: the
+  rows whose evidence is `README.md`, read with `awk` over the table, anchor
+  on lines 8, 90, 208, 211, 294 and 371 beside the three above, none of them
+  changed by this pass.
+  (d) The rule and the step. `docs/skill-conventions.md` lines 1448 to 1464 at
+  the second commit, "`README.md` carries no date", directly after "A time
+  reference names its date, not its neighbour", say what the README says and
+  does not, that the rule above holds as before for this file,
+  `docs/roadmap.md`, `docs/plan.md`, the skills and the shared texts, and what
+  the step does. `.github/workflows/stock-take.yml` lines 115 to 128 at
+  `a4c2b99`: the step "README.md carries no date", last in the job
+  `stock-take`, reads the file as one line with `tr '\r\n' '  '` and runs
+  `grep -o -E` over it with the pattern `([0-9]{1,2}
+  +)?(January|…|December) +[0-9]{4}|[0-9]{4}-[0-9]{2}-[0-9]{2}` — a month name
+  with or without a day before it, so that "October 2026" is a date too, and
+  the ISO form; green prints `README.md carries no date` and exits 0, red
+  prints every date found and exits 1. The job "hooks on every system" is
+  unchanged, and the nineteen checks are nineteen.
+
+  **Recorded, not built: the line of `hooks/session-start.sh` without a record, line 70, says that every install outside the repository "is blocked and handed to you", where the line reaches the run and the guard hands a blocked install to the person — should: the line says handed to the person, in a wording the person approves.**
+  Found at the counter-check of this order, question 7; this file, searched
+  for `handed to you` and `handed to the person` with `grep -n`, names it
+  nowhere. The recommendation: the two words changed; two words of a hook line
+  the order did not name, left to the person.
+
+  **Looked at and left.** `skills/setup-checks/SKILL.md` lines 473 to 475
+  read the record off the session-start line, which is the run reading it, as
+  corrected. `skills/setup-checks/SKILL.md` lines 1162 to 1165: a no over a no
+  leaves the file alone, which holds under the new form.
+  `skills/setup-project/SKILL.md` lines 94 to 96: the refresh writes the
+  record "as step 6 writes it", step 6 inserting the template at line 758, so
+  under a no the refresh writes the answer and the date alone without a word
+  changed there. `docs/plan.md` lines 243 to 291 and 452 to 489, milestone 3,
+  name the record's places for a yes and say nothing of the form under a no;
+  nothing changed there, named among the report's questions.
+  `shared/install-question.md` names no place of the record (`grep -n -i
+  place`, line 2 alone, another sense). The check that holds the three copies
+  of the default branch's resolution, `bin/devloop-install-record` among them,
+  is untouched, the program unchanged.
+
+  **Counter-check before building**, answered in the report with the places,
+  in short: an older no with places and a route prints none and the file is
+  not changed, as a record of six places is not amended; a yes after a no in
+  step 8 is written anew from the template by that step, the routes read by
+  it, and a no over a no touches nothing; the refresh writes under a no from
+  the same template; the guard reads places only after the no; the output of
+  `bin/devloop-install-record` is unchanged and its readers are the guard, the
+  hook and the refresh; the line without a record is the defect above; the
+  README's reference to the entry of 29 September 2026 names the entry without
+  the date; the step reads the file as one line, and before this order its
+  command printed the eight dates with "29 September 2026" among them; a run
+  of the step's command on this Mac is no run of the step, section A of the
+  tool's header, the outcome being what the platform's run produces, so the
+  two command runs stand in this entry and not in the table; the
+  time-reference rule and the README rule are stated against each other in the
+  new paragraph.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the evidence of line 7787 moved onto the
+  hook's line 80 and of line 7967 onto the hook's comment, of lines 33141,
+  23708 and 28988 onto their README lines; the notes of lines 23708 and 28988
+  carry the new should with the old quoted; two things of kind shared text for
+  the form under a no and for the older no not amended, one of kind hook
+  outcome for the line under a no, two of kind program outcome for the step
+  green and red; the thing of the section standing already keeps its name,
+  three runs hanging on it, its note saying what holds now and its anchors
+  moved; the not-a-thing rows on the lines this order rewrote re-anchored, two
+  added; one defect thing for the line without a record, sited and evidenced
+  on its status line above, with the head of this entry as part of it. The
+  runs of the bench enter in the third commit, with the paragraph below.
+
+  **The checks and the tool, run for this entry.** The command under "Before
+  you change anything, run this" ran on `main` at `f82aeae` before the branch
+  was cut, printing nothing against the installed 0.152.0. The nineteen
+  checks under "Before a handover, run these" ran green on that tree, in a
+  clean bash with `/usr/bin/grep` first on its path, and again on the tree of
+  the second commit, the report naming what differs. The tool ran on `f82aeae`
+  with exit 0 — no broken record, 15 findings, 27 closed defects, none of 4213
+  lines of the search set uncovered — and on the tree of the second commit
+  with the figures the report names, every figure that changed with the range
+  it counts over and its reason; the self-test 124 cases, 95 of 95 messages
+  asserted, on both trees. The step's command ran on the tree of the second
+  commit, `README.md carries no date`, exit 0, and on a copy of the tree under
+  a throwaway directory whose README carried "29 September 2026" over a line
+  break, which printed that date and exit 1.
+
+  **Whether the milestone is reached.** No. What is built here is clusters 8
+  and 9 and the README without a date; clusters 13 (two points), 14, 15, 18,
+  21 and 22 wait for later orders, and the runs and benches the clusters name
+  are owed as before.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

@@ -1445,6 +1445,22 @@ changing a word of the sentence carrying it, and the paragraph under it still
 said "built the next day", which then pointed nowhere. Every word stayed
 correct; only what they referred to moved. Write the date.
 
+**`README.md` carries no date.** It says the state of today; how the set got
+there stands in the commits and in `docs/roadmap.md`. Decided by the person
+on 20 October 2026, the roadmap entry of that date on milestone 3, part 2,
+which names the eight dates and the version pair the README carried until
+then, each before and after. A sentence that said since when something holds,
+or how it stood before, says in the README what holds; a reference to a dated
+entry of the roadmap names the entry without its date; the state alone, and
+no new content with it. The rule above holds as before for the documents that
+measure and record — this file, `docs/roadmap.md`, `docs/plan.md`, the skills
+and the shared texts — and the README is not among them. A step of the job
+`stock-take` in `.github/workflows/stock-take.yml`, the check `main` requires,
+holds it: red where `README.md` carries a date in a form like `20 October
+2026`, `October 2026` or `2026-10-20`, one broken over a line break included,
+the file read as one line for that, and every date found printed; so a date
+can enter the README on a branch and cannot land.
+
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
 `docs/roadmap.md` against the logs of the runs they record and found each on
@@ -2026,7 +2042,11 @@ built on 28 September 2026 and cut on 30 September 2026 to what carries the
 decision, it says that such programs land outside the project on this
 machine; where the list stands, and that every session reads it, the close of
 the setup says, and the routes of the stack are read by the run where it
-writes the record, in step 6. It carries the
+writes the record, in step 6. Under a no, since 20 October 2026, the record
+carries the answer and the date alone, the places and routes doing nothing
+under a no, and the line at session start says none for both whatever an
+older record carries; `shared/install-record.md` carries both forms, the
+roadmap entry of that date on milestone 3, part 2. It carries the
 places and not only the answer because an answer given against the places of
 one version is not an answer for a place a later version adds: the guard passes
 only a place the record itself names, or the answer of a route it names, and a
@@ -2066,9 +2086,15 @@ disagree about which branch is the main one are worse than one. It reads the
 record only after the command has been found to reach outside the repository,
 because `hooks/hooks.json` runs it on every Bash call. One program does the
 reading, `bin/devloop-install-record`, and `hooks/session-start.sh` prints the
-record through the same program — what a second person who cloned the
-repository meets before the first install rather than after it — so the two
-cannot disagree.
+record through the same program, so the two cannot disagree. That line
+reaches the run as context at the start of every session, and not the
+person, as "A hook cannot force wording" below says; the run has the answer
+before the first install rather than meeting it at the guard, and whoever
+works with devloop in a clone of the project works under the answer the
+record carries, which `README.md` says to the person. Until 20 October 2026
+this sentence and the hook's comment called the line what a second person
+who cloned the repository meets, the roadmap entry of that date on milestone
+3, part 2.
 
 **In doubt, a run with nobody there is not blocked.** The person's principle,
 "In doubt, a run with nobody there is not to be blocked: security matters,
