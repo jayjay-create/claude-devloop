@@ -372,6 +372,19 @@ milestone in none of its parts and stays recorded, and which milestone takes
 it up the person decides after milestone 3; that entry replaces the list of 19
 October 2026 above for everything further, and its clusters are the list this
 milestone stands on.
+Decided on 20 October 2026, the roadmap entry of that date on the person's
+answers to the five questions of the entry of 19 October 2026: the person's
+reasons of 18 October 2026 above hold for the fifteen points of cluster 12 of
+that entry, repaired in the install guard and the command reader and put
+through the benches of 12 and 16 October 2026, which count as walked by them;
+for the benches owed after the builds of its clusters 8, 10, 13, 14, 15, 18
+and 22, hooks and programs, for which a bench suffices; and for the seven
+built points of its cluster 20 that cannot be forced, lines 1307, 18977,
+29213, 5232, 12527, 11463 and 27167 of the roadmap, which do not hold the
+milestone up; and the clusters of the entry of 19 October 2026 with the
+changes the entry of 20 October 2026 records — three uncertain points kept, 33
+taken out, 22 defects closed, clusters 10, 23 and 25 emptied — are the list
+this milestone stands on.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October

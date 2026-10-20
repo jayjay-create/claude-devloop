@@ -32309,6 +32309,288 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the tree of the commit; the report names every figure that changed, the
   range it counts over and its reason.
 
+- **The person's answers of 20 October 2026 to the five questions of the entry
+  of 19 October 2026 on the checked list of milestone 3 recorded; the
+  stock-take tool given a fifth state for closed defects, computed from a line
+  of this file that records a closing with one of three reasons and its proof,
+  read on every run; twenty-two defects closed by it, seven lapsed, eleven
+  corrected in the document, four left on purpose; the fifteen points of
+  cluster 12 given the runs of the benches of 12 and 16 October 2026 on their
+  own rows and eight points of question 5 the runs of the session logs of 16
+  and 19 October 2026, read record by record; the list of the clusters changed
+  by the answers; 20 October 2026, version 0.151.0.** On
+  `task/answers-and-closed-state-20-october-2026`, off `f4cdd74`, in two
+  commits: the tool with the version, then this entry, the rows of the table
+  and one sentence in `docs/plan.md`. The report stands on this machine as
+  `~/devloop-report-2026-10-20-answers-closed-state.md`, in English, and is
+  not in the repository. Every line number of a file is as at `f4cdd74`; a
+  line of this file as at `f4cdd74`, which below line 31380 is its number at
+  `0776389` too, the entry of 19 October 2026 having been appended after that
+  line, so that every "line N" of that entry resolves unchanged. Nothing ran
+  on a bench and no session of Claude Code was started for this entry; no
+  file under `skills/`, `shared/`, `hooks/`, `bin/` or `output-styles/`
+  changes; `scripts/devloop-stock-take` changes. The words the tool reads a
+  line of this file into its search set by stand in this entry in its head
+  and on the twenty-two lines that record a closing, each whole on one line,
+  and on no other line; this entry records no new defect.
+
+  **What the person decided on 20 October 2026**, answering the five questions
+  of the entry of 19 October 2026, lines 32177 to 32225. Question 1: of the 36
+  uncertain points three concern milestone 3 — line 26220, how the install
+  question appears at its second asking in `setup-checks` step 8, part 1; line
+  9655, the rule that a question about how this workflow runs carries no
+  recommendation, part 1; line 5986, what a package manager does beyond the
+  package it names, parts 1 and 5 — and the other 33 do not, for the reasons
+  that entry gives per kind; the statements of the documents of cluster 25
+  with line 23797 and the lapsed points are closed by the answer to question
+  4. Question 2: the points left on purpose do not hold the milestone up where
+  they are decided with a reason — line 820, decided at line 825; line 16128,
+  decided at lines 16128 to 16140; line 10014, decided at line 11697; line
+  9764, answered on 8 October 2026, lines 13107 to 13115. For finding 19 of
+  the tool (`shared/install-question.md` line 14, `npm install cypress` or
+  `puppeteer` downloading a browser as a side effect of installing the
+  package): the ruling of 28 September 2026 stands, `docs/skill-conventions.md`
+  lines 1128 to 1132, and the guard does not hold it; instead the install
+  question will say under its no, in substance, that installing a project's
+  dependencies can download something on the side, a browser say, and that
+  the no does not stop that. The person settles the wording before the build,
+  and this order does not build it; finding 19 stays open until the text is
+  built and belongs to the cluster that changes the text of the install
+  question, cluster 18 below. Question 3: the person's reasons of 18 October
+  2026, `docs/plan.md` lines 342 to 354, hold (a) for the fifteen points of
+  cluster 12 — lines 655, 660, 1174, 1317, 4968, 6105, 13932, 13955, 13971,
+  13993, 14009, 14052, 14066, 1270 and 1294 — which count as walked by the
+  benches of 12 and 16 October 2026; (b) for the benches owed after the builds
+  of clusters 8, 10, 13, 14, 15, 18 and 22, hooks and programs, for which a
+  bench suffices and no run is needed; (c) for seven points that are built,
+  cannot be forced and do not hold the milestone up — lines 1307, 18977,
+  29213, 5232, 12527, 11463 and 27167; line 11496 left with question 1.
+  Question 4: the tool gets a state for closed defects, for three reasons —
+  lapsed, corrected in the document, left on purpose. Corrected in the
+  document holds only for a defect where the wrong sentence itself was the
+  defect; a defect that only a convention answers stays recorded and not
+  built, as `scripts/devloop-stock-take` lines 415 to 419 reason it. Question
+  5: a run standing on the row of a shared text or a branch does not count for
+  a defect by itself — the tool may undercount, never overcount, lines 438 to
+  439 of the tool. A run is entered on the defect's row once the session log
+  of the run has been read for whether it met exactly the defect's case, with
+  the version it ran under, and from now on whoever evaluates a run enters it
+  so on the row of every defect whose case it met. A dated entry is not
+  changed, `docs/skill-conventions.md` line 1429.
+
+  **The fifth state, in the tool.** In `scripts/devloop-stock-take`, the
+  header's section D, lines 400 to 446 at `f4cdd74` and 409 to 493 after the
+  change, describes it: a defect is closed where its evidence stands on a
+  line of this file that records its closing with one of the three reasons
+  and names the proof the reason asks for — lapsed: a file in backticks and,
+  in double quotes, a text of 20 to 80 characters that stood in it and stands
+  there no more, and where it can be found the commit that removed the place;
+  corrected in the document: the file and the text of the corrected sentence;
+  left on purpose: the file and the text of the line that decides it. The
+  four forms stand in that section, each whole on one physical line, opening
+  on the state's word, a comma and the reason. The tool confirms the proof on
+  every run with its own means for anchors and with git: for a lapsed defect
+  that the text is not in the file now, that it stood in the file at some
+  commit of this history (`git log -S`), and where a commit is named, that it
+  resolves, that the file at that commit does not carry the text and that the
+  file at its first parent does; for the two other reasons that the text
+  stands in the file exactly once, the closing line itself left out of the
+  count where the file is this one. A command standing in the text of this
+  file is never run. Where the proof fails, or the line carries the state's
+  word in none of the three forms, the thing's record is rejected as broken
+  with a message naming what failed, the tool exits 2, and the defect is not
+  closed. Only a defect is closed; a closed defect cannot be walked, so a run
+  on it is a broken record. The tool counts closed defects apart, under
+  COUNTS as the fifth state, and lists them under a heading of their own,
+  CLOSED DEFECTS, with reason and proof, and in no list of open things. The
+  state's word enters the search set beside the four status words (section
+  E, lines 508 to 514 at `f4cdd74`, the regular expression at line 660, now
+  at lines 555 to 563 and 714 to 715), measured before the change to stand on
+  no line of this file as a word: `grep -nw` for the state's word over this
+  file printed nothing at `f4cdd74`, the two lines carrying it inside
+  `closedByPullRequestsReferences` and `includeClosedPrs` not matching as a
+  word. The tuple of the states, line 626 at `f4cdd74`, carries the fifth at
+  lines 679 to 680. Section C, lines 251 to 311 at `f4cdd74`, carries the rule
+  of question 5 at the run record, lines 256 to 262 after the change, and the
+  thing record names the closing line as a defect's evidence, lines 249 to
+  250. The self-test has ten cases more, 124 in all: one closed defect per
+  reason, the lapsed one naming the commit that removed its text and read as
+  lapsed with the text gone; a lapsed closing whose text stands in the file
+  again, one naming a commit that does not resolve, one naming a commit at
+  which the text still stands, one naming a commit before which it did not
+  stand, one with a text that never stood in the file, one with a text too
+  short, one naming a file that cannot be read; a corrected closing whose
+  sentence does not stand and one whose sentence stands twice; a closing of
+  the left-on-purpose kind whose decision line is gone; a closing line in
+  none of the three forms; a run on a closed defect; and the report listing
+  the closed apart while a defect answered by a convention alone stays
+  recorded. Every one of the 95 messages the tool rejects, refuses or answers
+  with is asserted by a case.
+
+  **The list of the clusters after the answers.** Of the 36 uncertain points
+  three stay where the entry of 19 October 2026 put them: line 26220 in
+  cluster 6, line 9655 in cluster 2, line 5986 in cluster 18, each in part 1,
+  line 5986 in part 5 as well. The other 33 leave the list, in the order of
+  that entry's kinds: the twelve statements of the documents, cluster 25 with
+  line 23797, closed below, line 7181 excepted, which stays recorded and not
+  built as a defect a convention answers and leaves the list all the same;
+  the five lapsed points with uncertain part, lines 5269, 7813, 17313, 5252
+  and 9518, closed below; line 30104 to the group on the merge; finding 15,
+  finding 16 and line 12057 to the group on the unattended mode's set-up,
+  cluster 10 emptied, its program owed outside the milestone; lines 30040 and
+  30054 to the group on the check setup, cluster 21 keeping line 30085; lines
+  2034, 25166 and 16128 to the group on the unattended mode's set-up and line
+  5187 to the group on the run without the person, cluster 22 keeping line
+  30168 and cluster 11 keeping line 15579, line 16128 closed below; line
+  11496 to the group on the check setup, cluster 7 keeping lines 5295 and
+  11275 and cluster 20 keeping its seven; lines 9691 and 9704 to the group on
+  the run without the person; line 10323 to the group on the other guards and
+  the documents, milestone 1's artefact; line 26837 to the group on the run
+  without the person, cluster 23 emptied; line 10014 closed below. Cluster 24
+  keeps lines 7298, 18896, 18832, 7741, 5214 and 7048, five of them with runs
+  on their rows since this entry; cluster 25 is emptied. The clusters with
+  these changes are the list milestone 3 stands on, `docs/plan.md` after the
+  decision of 19 October 2026.
+
+  **The runs entered on the rows of cluster 12**, by the answer to question 3,
+  each on the thing's own row, the bench's version on it and the roadmap line
+  recording the case as its anchor. The bench of 12 October 2026 against the
+  hooks of `fe8b98d`, version 0.137.0, lines 19998 to 20110: line 655 at line
+  20107, `sudo -u root brew install ripgrep` 2 2 2 2, beside `make
+  PREFIX="$HOME/.local" install` 2 2 2 2, `go build -o "$HOME/bin/tool"` 2 2
+  0 0 and `curl … | zsh` 2 2 2 2, the four kinds of the defect; line 660 at
+  line 20014, a command written over two lines fed as the tool sends it, with
+  the quoted forms of lines 20084 to 20089; line 1174 at line 20081, `gh
+  issue create` with `sudo` in its title and the `echo` of a `go install`
+  line into `environment.md`, 0 0 0 0; line 1270 at the same line; line 1294
+  at line 20082, the heredoc into `notes.md` and the heredoc into `python3`,
+  0 0 0 0; line 4968 at line 20030, the 15 browser downloads 2 2 0 2; line
+  6105 at line 20055, `pnpm add -g typescript` naming `~/Library/pnpm` and
+  the routes beside it; lines 13932, 13955, 13971, 13993, 14009, 14052 and
+  14066 at lines 20062 to 20070, the commands of findings 1, 2, 3, 4, 5, 7 and
+  8 of the entry of 9 October 2026, each as its finding's should. The bench
+  of 16 October 2026 at `7e35090`, version 0.141.0, lines 25800 to 25825: line
+  1270 at line 25815, every command of the runs of that day that wrote a file
+  with text about commands, 0 0 0 0; line 1294 at line 25810, the python
+  heredoc writing the workflow file with `sudo make install` in its text; line
+  1317 at line 25822, the block message handing the install to the person.
+  Whether they count, read off `git blame` and the commits that introduced
+  the versions, `a03a720` for 0.137.0 and `7e35090` for 0.141.0: every line of
+  the fourteen things other than line 1317 was last changed at `a03a720` or
+  before, so the run of 12 October 2026 counts for each, and for lines 1270
+  and 1294 the run of 16 October 2026 as well; the evidence of line 1317,
+  `hooks/pre-tool-use-install-guard.sh` line 989, was last changed at
+  `6793c5c` on 17 October 2026, after both benches, so its run of 16 October
+  2026 does not count and the point needs a new bench on the message as it
+  stands since that day. The evidence of line 1174 moved first from this
+  file's line 1259 onto `bin/devloop-command-reader` line 170, the sentence
+  that text in quotes is a word of its command and no command, which carries
+  the should, so that the tool reads the defect built; its old run row stays.
+  No run is entered for a bench on lines 655, 660, 1174, 4968, 6105, 13932,
+  13955, 13971, 13993, 14009, 14052 and 14066 from 16 October 2026, which put
+  no case of theirs through the hooks that the entry names as such.
+
+  **The runs entered by the answer to question 5**, one line per run row,
+  each line the row's anchor, read in the session logs under the directories
+  of this machine named in the report; project 1 and project 2 are
+  `devloop-test-x` and `devloop-test-y` of 16 October 2026 under the installed
+  0.141.0, project z and project y `devloop-test-z` and `devloop-test-y` of 19
+  October 2026 under the installed 0.148.0, a record the Nth line of the log:
+  Line 7048: 19 October 2026, project z, records 82 and 83, under 0.148.0, the install question through the widget at its first asking, the question line with the subject and its scope, the two answers with their lines, the header, nothing in prose around it, and its no.
+  Line 7325: 16 October 2026, project 1 records 66 and 309 and project 2 record 60, under 0.141.0, question 4 as one text in the widget, the subject and its scope in the question line and nothing pulling it toward tools for check classes.
+  Line 7325: 19 October 2026, project z record 82, under 0.148.0, the same at the first asking of that day.
+  Line 7667: 16 October 2026, project 1 records 66 and 309 and project 2 record 60, under 0.141.0, no boundary and nothing about runtimes in the question.
+  Line 7667: 19 October 2026, project z records 82 and 497, under 0.148.0, the same at both askings.
+  Line 10356: 16 October 2026, project 1 records 66 and 309 and project 2 record 60, under 0.141.0, the assurance about runtimes not delivered.
+  Line 10356: 19 October 2026, project z records 82 and 497, under 0.148.0, the same at both askings.
+  Line 5214: 19 October 2026, project z, the build subagent of task 2 at its record 36 and the hand-back read by the main run at record 1860, under 0.148.0, with nobody there and the record saying yes since record 534, `npx playwright install chromium` run by the run itself and `chromium-1248` read in `~/Library/Caches/ms-playwright`.
+  Line 7741: 16 October 2026, project 1 record 150 and project 2 record 191, under 0.141.0, `setup-checks` called at the close of `setup-project` in a project with code.
+  Line 7741: 19 October 2026, project z record 207, under 0.148.0, the same.
+  Line 9704: 16 October 2026, project 1 records 126, 261, 343, 449, 491, 549, 553, 582, 607, 736, 774, 972, 1216, 1225, 1450 and 1656 and project 2 records 147, 150, 389, 392, 511 and 515, under 0.141.0, every body file under a directory of `mktemp -d` outside the repository.
+  Line 9704: 19 October 2026, project z records 164, 167, 348, 350, 421, 424, 552, 555, 798, 801, 896, 898, 931, 934, 990, 994, 1052, 1055, 1199, 1204, 1218, 1221, 1276, 1278, 1536, 1539, 1788, 1791, 2226, 2229, 2350, 2353, 2600, 2603, 2710 and 2714 and project y records 122 and 126, under 0.148.0, the same.
+  Line 11275: 19 October 2026, project z record 361, under 0.148.0, step 3 of `setup-checks` under the no of the first asking: the run says it installs nothing without their permission, hands `brew install gitleaks` over and asks for no yes.
+  Not entered, with the reason: line 5187, met on 11 October 2026 in
+  `devloop-test-w` by the guard's block of `--with-deps` in #17 with nobody
+  there, whose log is not under the directories read, and met by no block in
+  the logs of 16 and 19 October 2026, which hold none; the runs of 11 October
+  2026 on lines 5214 and 7741, the same log; the run of 11 October 2026 on
+  line 9704, the same. The old run rows of the shared texts and branches stay
+  as they are.
+
+  **The twenty-two defects closed**, each on one line that carries its
+  closing with reason and proof, the line the evidence of its row points at
+  since this entry; the proof was read with git before the line was written
+  and is read by the tool on every run:
+  Line 5269, the permissions passage of setup-project step 0 speaking of its options and its yes: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "in the options themselves", removed at `e484536`.
+  Line 7813, the permissions passage arriving before anything can happen on it: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "advice that arrives afterwards", removed at `49bd995`.
+  Line 17313, the passage tying an allow grant to the unattended mode's preconditions: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "permissions granted up front", removed at `49bd995`.
+  Line 7488, the five pulls of question 4 toward tools for check classes: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "What a yes also lets through", removed at `e484536`.
+  Line 5252, the check commands named in setup-checks step 3 as something to grant: Closed, lapsed: `skills/setup-checks/SKILL.md` no longer carries "Name what you just wrote down", removed at `49bd995`.
+  Line 9518, the case under With nobody there in setup-checks opening with There: Closed, lapsed: `skills/setup-checks/SKILL.md` no longer carries "There the class stays", removed at `03c78af`.
+  Line 25160, the section of environment.md on what checks a merge to be rewritten once the gate stands: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "**what checks a merge, and who**, from step 4, question 2", removed at `d373314`.
+  Line 8162, the ruling on named install commands saying the question names the kind of place: Closed, corrected in the document: `docs/skill-conventions.md` carries "question, which named the kind of place a yes opens from 28 to 30 September".
+  Line 8228, milestone 3 saying the four skill places run the install under a yes: Closed, corrected in the document: `docs/plan.md` carries "reader, and, of the four skill places, the two that run the install under a".
+  Line 10463, README.md hanging the opening of the install record on a list with sudo and a piped installer: Closed, corrected in the document: `README.md` carries "would install stay with you whatever the record says".
+  Line 11662, README.md naming five of the seven conditions for running alone: Closed, corrected in the document: `README.md` carries "auto-merge enabled and a required check for it to wait on — no task in scope".
+  Line 11686, milestone 3 ending with two runs on one bench and milestone 7 on the interface bench: Closed, corrected in the document: `docs/plan.md` carries "Ends with two runs on one fresh project, in this order, the second reusing".
+  Line 17353, milestone 3 saying the first closing run ends with the guard blocking: Closed, corrected in the document: `docs/plan.md` carries "hands the command over without trying it, as `build-work` step 3 point 7".
+  Line 18523, the plan's open item on the allow rule knowing nothing of the rule of 9 October 2026: Closed, corrected in the document: `docs/plan.md` carries "does and does not license. Since 9 October 2026 the rule for an install is".
+  Line 23691, README.md naming what stays with the person and not the programs that run a command as another user: Closed, corrected in the document: `README.md` carries "administrator or as another user — `doas`, `su`, `run0`, `pkexec` and the".
+  Line 23743, the row of the defect on the rule keeping runtimes out of the install question, its evidence on the status line: Closed, corrected in the document: `docs/stock-take.tsv` carries "2026 nothing of it is said. And the first no does not say that work without".
+  Line 28924, the conventions counting four cases where a command does not answer and naming three: Closed, corrected in the document: `docs/skill-conventions.md` carries "9 October 2026 four cases part there, as `shared/command-does-not-answer.md`".
+  Line 23797, the head of the reader sending to three addenda for the sources of the group: Closed, corrected in the document: `bin/devloop-command-reader` carries "the entry on the command reader and its five addenda of 13 and 14 October".
+  Line 820, the wrapper that downloads on first use: Closed, left on purpose: decided in `docs/roadmap.md` at "left as it is: catching it would mean guessing at what a build command does.".
+  Line 16128, ~/.claude itself a link to a directory that does not exist: Closed, left on purpose: decided in `docs/roadmap.md` at "case does not arise in practice: where `~/.claude` is itself a link to a".
+  Line 10014, two sentences writing what a run with nobody there does in cases the mode cannot reach: Closed, left on purpose: decided in `docs/roadmap.md` at "The sentence that the run stops at `secrets` with".
+  Line 9764, the install record not spelling the fetch into a language's own cache, answered otherwise on 8 October 2026: Closed, left on purpose: decided in `docs/roadmap.md` at "Defect 8 of the entry of 4 October 2026, answered otherwise than its".
+  Of the proofs: for line 7488 the entry of 19 October 2026 names `03c78af`,
+  while `git show` of the parents shows the phrase leaving
+  `skills/setup-project/SKILL.md` at `e484536`, which put the question into
+  widget fields, and never standing in `shared/install-question.md`; for line
+  25160 that entry names no commit, and the sentence left at `d373314`, the
+  squash of 18 October 2026 that dropped the section. For line 10014 the
+  decision stands in the sentence opening at line 11696 and ending at 11697;
+  the line 11697 carries double quotes and cannot stand inside the form, so
+  the proof names its opening. Line 7181 of cluster 25 is not closed: its
+  defect is that nothing said what an addition to a delivered text has to do,
+  and what answers it is the rule at `docs/skill-conventions.md` line 667, a
+  convention — the case the answer to question 4 keeps recorded and not
+  built. Finding 19 stays a finding of the table.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the evidence of the twenty-two closed
+  defects moved onto their closing lines above, their notes saying so; the
+  evidence of line 1174 onto the reader's line; 17 run rows on the fifteen
+  things of cluster 12 and 13 run rows on eight things of question 5, with
+  source `entry` and `log` as the head says; one not-a-thing row for the head
+  of this entry; ten things of kind program outcome for the tool's new
+  outcomes — the state, the eight rejections, the closing line in none of
+  the forms and the report's list — with their lines as part of them, and a
+  run on each of them and on the tool's exit 0 and self-test outcomes under
+  0.151.0, the runs of this entry. No row for the sentence in `docs/plan.md`,
+  which stands in no search set of the tool.
+
+  **The checks and the tool, run for this entry.** The command under "Before
+  you change anything, run this" ran on `main` at `f4cdd74` before the branch
+  was cut, printing nothing against the installed 0.150.0. The nineteen
+  checks under "Before a handover, run these" ran green on that tree, in a
+  clean bash with `/usr/bin/grep` first on its path, and again on the tree of
+  the second commit with the same output; the figures stand in the report.
+  The tool ran on `f4cdd74` with exit 0 and the figures the report names —
+  no broken record, 19 findings, none of 4120 lines of the search set
+  uncovered, 2037 things, 625 walked — and on the tree of the second commit
+  with exit 0: no broken record, 19 findings, none of 4168 lines
+  uncovered, 2047 things, 22 closed, 657 walked; its
+  self-test on that tree `SELF-TEST PASSED: 124 cases; of the 95 messages
+  this tool rejects, refuses or answers with, read off its own source, 95 are
+  asserted by a case and 0 by none`. The report names every figure that
+  changed, the range it counts over and its reason.
+
+  **Whether the milestone is reached.** No. The clusters above, with the
+  changes of this entry, stand: builds are owed in clusters 1 to 9, 11 and 13
+  to 22, benches after them, and runs where the texts stand; the lapsed, the
+  left-on-purpose and the points the answers took out are gone from the list.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
