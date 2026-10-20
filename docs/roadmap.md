@@ -33535,6 +33535,37 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   a throwaway directory whose README carried "29 September 2026" over a line
   break, which printed that date and exit 1.
 
+  **The bench of the hook, on the tree of the second commit.** On 20 October
+  2026 at 19:18:46 UTC `hooks/session-start.sh` of `e23adee`, last changed at
+  `a4c2b99`, ran by hand under a throwaway directory outside the repository,
+  against a throwaway project with `docs/agents/` and its five files on
+  `main`, pushed to a bare repository as `origin` whose HEAD is `main`, the
+  work on a branch `work`; the input the one a session start gives,
+  `{"session_id":"bench1","cwd":<the project>,"permission_mode":"default",
+  "hook_event_name":"SessionStart","source":"startup"}` on stdin with
+  `CLAUDE_PROJECT_DIR` set to the project; the record of each case committed
+  on `main` and pushed before the run, under the identity of this machine's
+  git configuration. A yes with the eleven places and `install-route: go`,
+  answered 2026-10-20: `[InstallRecord] tools: yes | places: /usr/local/bin
+  /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin ~/Library/Caches/ms-playwright
+  ~/.cache/ms-playwright ~/Library/Caches/Cypress ~/.cache/Cypress
+  ~/.cache/puppeteer | routes: go | answered: 2026-10-20 | read off
+  origin/main as last fetched, not off the working tree`. A no in the new
+  form: `tools: no | places: none | routes: none | answered: 2026-10-20`. A
+  no in the older form with the six bin directories and `install-route: go`,
+  answered 2026-09-30: `tools: no | places: none | routes: none | answered:
+  2026-09-30`, the file on `origin/main` unchanged by the run. No record:
+  `[InstallRecord] none: no record: docs/agents/environment.md on origin/main
+  has no section "## Install permission", so the question was never answered
+  | every install outside the repository is blocked and handed to you until a
+  record has landed on the default branch`. Before each, `[ProjectStatus]
+  branch: work | uncommitted changes: 0 | devloop: set up`; exit 0 in all
+  four; `CLAUDE_ENV_FILE` unset, so nothing appended. Six run rows under
+  0.153.0, source entry, on this paragraph: the line under a yes, the line
+  under a no, the none line, set up, the status line, and nothing appended
+  with `CLAUDE_ENV_FILE` unset. The step's two command runs stand above and
+  enter no row, section A of the tool's header.
+
   **Whether the milestone is reached.** No. What is built here is clusters 8
   and 9 and the README without a date; clusters 13 (two points), 14, 15, 18,
   21 and 22 wait for later orders, and the runs and benches the clusters name
