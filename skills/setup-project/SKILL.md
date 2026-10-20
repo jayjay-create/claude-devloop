@@ -46,11 +46,14 @@ from the close.
   being where a tool is installed under the record — so the command is one
   this run reached for on its own. With the user there, carry on without it
   and hand nothing over, since 17 October 2026: the record has not landed yet,
-  and once it has, the check setup decides. With nobody there, there is no
-  one to ask: it becomes an issue
-  labelled `needs-human` carrying the command and the message, and the report is
-  written and the run stops there rather than carrying on past a step that did
-  not run.
+  and once it has, the check setup decides. The case with nobody there cannot
+  arise here, since 20 October 2026: the run without the person reaches this
+  skill on no way — it starts in `build-work` and at the end of Stage 1 of
+  `plan-work`, and nothing on its paths calls this skill, as the stock-take
+  of devloop computes — and a setup never runs without the person, as
+  `docs/plan.md` says of the record under milestone 3.
+  Until that day this bullet said the command becomes an issue labelled
+  `needs-human` and the run stops, a case no path reaches.
 - **The command is not an install and the guard matched on text.** Then nothing
   needs a human decision, and raising one would put a question to somebody that
   has no answer to give. Do not raise it. Put the text through the editing tool
@@ -59,8 +62,6 @@ from the close.
 
 What tells the two apart is what the command would have done, not what the guard
 matched.
-
-!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
 ## How to ask
 
@@ -83,7 +84,21 @@ there and is not.
 Where no `missing:` line stands in the answer, every file is
 on the main branch and this is not a first setup. Do not run the steps below:
 they ask questions that were answered once already, and re-asking them is how
-a working project gets talked into changing its mind. Where every file is
+a working project gets talked into changing its mind. One question of step 4
+is put all the same, since 20 October 2026, decided by the person that day:
+the one whose stored answer is missing on the main branch, read where the
+guard reads it, through `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record`
+after the fetch above. Where that program answers that no record stands —
+`environment.md` carries no section `## Install permission`, or the file is
+not there — question 3 of step 4 is put as a first setup puts it, with the
+person there and in the same form, and the answer is written into
+`environment.md` under `## Install permission` as step 6 writes it, the
+routes of the stack read by this run as there; where the record stands,
+whatever it says, nothing is asked. A question whose answer is stored is put
+where the answer is needed, wherever the stored answer is missing, the rule
+in `docs/skill-conventions.md` under "Only ask where there is something to
+decide"; the check setup puts the question a second time where the record
+does not say yes, by its own text. Where every file is
 missing, this is a first setup, whatever the tree holds, and the steps below
 run; a branch `devloop-setup` an earlier run left with something written on it
 is met at the cut, which says what happens with it. Where some file is present
@@ -91,9 +106,11 @@ and some missing, this is a refresh all the same, and a file missing there is
 written from its template in step 6 the way a first setup writes it; the two
 or three lines below name it.
 
-Cut the branch first, under the same name and rule as a first setup — the step
-below that stands between the last question and the first write. A refresh asks
-nothing, so here it is the first thing done. Skipping the steps below skips
+Cut the branch after the last question and before the first write, under the
+same name and rule as a first setup — the step below that stands between the
+two. A refresh that asks nothing cuts it first, as the first thing done after
+the state is read above; one that puts the install question cuts it once the
+answer is in, since 20 October 2026. Skipping the steps below skips
 where that rule is written, which is how the first refresh ran straight into
 the main-branch guard.
 
@@ -107,12 +124,15 @@ The files hold two kinds of content, and only one of them is yours:
   and the three records in `environment.md` — `## Install permission`, and
   the two the check setup writes, `## Dependency permission` and
   `## Unattended mode`.
-  These were decided here and are never overwritten.
+  These were decided here and are never overwritten; a record missing on the
+  main branch is not overwritten by being written, the install record above.
 
 Rewrite the first kind from the current templates — the marker line that
 step 6 puts above each file's top heading among it, written anew with the
 running version — leave the second untouched,
-and say in two or three lines what actually changed — named, not counted. One
+and say in two or three lines what actually changed — named, not counted; an
+install record written from the answer asked for above is among what
+changed. One
 thing outside those files is this workflow's too: the two paths under `.claude/`
 that Step 5 keeps out of the repository. Check `.gitignore` covers both, since a
 project set up before one of them existed has only the other. If nothing
@@ -230,12 +250,15 @@ project meets finds an answer and not the absence of one.
 
 ## Step 4 — Questions
 
-Only these, each only under its condition. Lead with your recommendation so a
-single word can answer, on questions 1, 4 and 5 — on questions 1 and 5 in the
-question field, before the question line, and on question 4 before the
-question in the message that puts it; questions 2 and 3 give none,
-since both reach past the project — a setting of the repository, and the
-record a guard reads. One form for a choice, and the
+Only these, each only under its condition. No question of this step carries a
+recommendation, since 20 October 2026, decided by the person that day: none
+decides about the product being built — question 1 decides where this
+workflow keeps its work, question 4 asks a fact only they know, question 5
+how their repository is ordered, and questions 2 and 3 reach past the
+project, a setting of the repository and the record a guard reads — and a
+recommendation stands only on a question about the product, "How to ask"
+above. Until that day questions 1, 4 and 5 led with one so that a single
+word could answer. One form for a choice, and the
 form is where its content goes: the choice goes through the harness's choice
 widget, and everything that carries the decision stands in the widget's own
 fields — the question field with the question line at its end, a header, and
@@ -252,8 +275,13 @@ choices, and several of them may share one widget call; how a shared call
 shows at 80 columns is not measured, the roadmap entry of 17 October 2026
 says so. Question 3 is one
 too, and it names the field of each of its points; its call carries this
-question and no other: two decisions put in one submit come back as one
-answer, and a bare yes is then an answer to neither. Question 4 is open and
+question and no other, since what needs weighing stands alone so that it is
+not waved through beside other questions, the ceiling on questions in a
+round of `shared/three-questions.md`; until 20 October 2026 the reason stood
+here that two decisions put in one submit come back as one answer, which
+does not hold for the widget: Claude Code 2.1.304 returns every chosen
+answer with its question, and only a typed answer holds for the whole call,
+the roadmap entry of that date. Question 4 is open and
 has no options, so it is put as text, last in the message that ends the
 turn, with what it needs before it. Nothing here
 asks about check classes or the tools that fill them: that mapping, and
@@ -408,7 +436,10 @@ once the record this step writes has landed.
 
 4. **Local environment** — always where there is code, unless you could read it
    all from `docker-compose.yml` or the README. Which processes, in what order,
-   on what ports.
+   on what ports. What the run read in the code — the compose file, the
+   README, the scripts — stands before the question in the message that puts
+   it, as what was found and not as a recommended answer, since 20 October
+   2026.
 5. **Where glossary and decision records live** — only if something already lives
    elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`. Decide it
    here and create nothing yet: this is the last question of the setup, the
@@ -727,7 +758,9 @@ project's dependency file, and `## Unattended mode` the answer on whether
 work may run in this repository with nobody there. The check setup puts both
 questions and writes both sections, in the same shape, and it rewrites the
 answer of the install record where the question is put a second time. A
-refresh leaves all three sections as they stand.
+refresh leaves all three sections as they stand; where the install record
+is missing on the main branch, it writes it from the answer it asked for,
+since 20 October 2026.
 
 ## Step 7 — Pointer block in CLAUDE.md
 

@@ -7,7 +7,16 @@ or it is not a question:
   said is answered — follow it rather than asking again. What is a convention of
   this workflow is not theirs to decide either; it gets created and reported. A
   question about what they want has no right answer, and the web holds other
-  people's answers to their own version of it, which is never theirs.
+  people's answers to their own version of it, which is never theirs. A
+  question about how this workflow runs — the install permission, auto-merge,
+  the unattended mode, which tool a check class is built on — is put only
+  where the answer changes something of theirs, their machine, their
+  repository's settings, their project's dependencies or how they want to be
+  worked with, and carries no recommendation there, whatever the command
+  behind it touches; a recommendation stands only on a question about the
+  product being built, as every question of the interview carries one. Since
+  20 October 2026, decided by the person that day, the roadmap entry of that
+  date on milestone 3, part 1.
 - **Being wrong is expensive.** Measured by what it would cost to put right, not
   by the size of the change, and not only today. What a later task can redo is
   cheap, and taste that a later task can redo is cheap too. What later work will
