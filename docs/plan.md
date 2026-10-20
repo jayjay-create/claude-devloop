@@ -361,6 +361,17 @@ above, by which it landed when the eight defects named there were built and
 a run walked them; a defect this plan assigns to another milestone counts
 there. By that criterion the milestone is not reached on 19 October 2026: the
 list of the defects that concern it stands in that entry, in three groups.
+Decided on 19 October 2026, the roadmap entry of that date on the list of the
+defects that concern milestone 3 checked point by point: of the run without
+the person this milestone covers installing alone, as the fifth part above
+words it — the run installs, reports the command and what came back at a site
+that outlives the session, and where the record says no it does not start; a
+defect of the run without the person that does not concern installing — what
+the run says at its end, what it writes, how it arms a merge — concerns this
+milestone in none of its parts and stays recorded, and which milestone takes
+it up the person decides after milestone 3; that entry replaces the list of 19
+October 2026 above for everything further, and its clusters are the list this
+milestone stands on.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October

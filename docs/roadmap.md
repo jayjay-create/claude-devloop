@@ -31377,6 +31377,938 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   exit 0 and the figures above; nothing is recorded for these runs, the
   checks and the tool standing on no line this order changed.
 
+- **The list of the defects that concern milestone 3 checked point by point
+  against the code at `0776389`, in two passes of subagents, ordered into
+  clusters by cause and repair, the lapsed and the left-on-purpose points
+  found, every point outside the milestone given its place, and the stock-take
+  corrected where it counted as built a defect whose should is not built; the
+  person's decision of 19 October 2026 that of the run without the person the
+  milestone covers installing alone; nothing built; the milestone not reached;
+  19 October 2026, version 0.150.0 stays.** On
+  `task/milestone-3-list-checked-19-october-2026`, off `0776389`, version
+  0.150.0 on `main`; this entry, the rows of the table and one sentence in
+  `docs/plan.md` in one commit. The report stands on this machine as
+  `~/devloop-report-2026-10-19-milestone-3-check.md`, in English, with the
+  whole table of the 218 points in all ten columns after both passes, and is
+  not in the repository. Every line number of a file is as at `0776389`; a
+  line of this file as at `0776389`, where every line number an earlier entry
+  names was read again. Nothing ran on a bench and no session of Claude Code
+  was started for this entry; no run is recorded, and no file under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/` or `output-styles/` changes. The
+  words the stock-take tool reads a line of this file into its search set by
+  stand in this entry in its head and on the one line that records the defect
+  on the roadmap below, and on no other line. This entry replaces the list of
+  19 October 2026 in the entry on the two runs of that day, lines 30409 to
+  30681, for everything further; that list stays as it stands.
+
+  **Decided by the person on 19 October 2026, before this order.** Of the run
+  without the person, milestone 3 covers installing alone, as `docs/plan.md`
+  lines 255 to 261 word the fifth part: the run installs, reports the command
+  and what came back at a site that outlives the session, and where the record
+  says no, the run does not start. A defect of the run without the person that
+  does not concern installing — what the run says at its end, what it writes,
+  how it arms a merge — concerns the milestone in none of its parts. It stays
+  recorded; which milestone takes it up the person decides after milestone 3.
+  The sentence stands in `docs/plan.md` after the decision of 19 October 2026
+  on the criterion, and this entry applies it to every point.
+
+  **What applied.** The criterion of 19 October 2026, `docs/plan.md` lines 355
+  to 363: the milestone is reached only when no defect is left that concerns
+  it, a defect concerning it where it lies in one of the five parts of lines
+  234 to 261 — the question, the record in `environment.md`, the install
+  guard, the places in the skills, the run without the person — and a defect
+  the plan assigns to another milestone counting there. The decision of 18
+  October 2026, lines 342 to 354: a defect repaired in a hook, where no model
+  decides between a command and the hook, counts as walked by a bench that put
+  the commands of a run through every hook; a defect that turns on what the
+  model does asks a run; one that turns on it and cannot be forced does not
+  hold the milestone up and stays built and never walked until a run meets it.
+  A defect counts as built only where the line its evidence stands on in
+  `docs/stock-take.tsv` carries its should; an evidence on a line carrying the
+  should in part or not at all is a defect of the stock-take. A defect lapses
+  where what it describes is gone or works otherwise, so that its should has
+  no object, with the search that comes back empty and the commit that removed
+  the place; a defect is left on purpose where the repository says, with a
+  reason, that it is not built, with the line that decides it. A dated entry
+  is not changed.
+
+  **How it was done.** The points: every point of the three groups of the list
+  of 19 October 2026, lines 30424 to 30681, read mechanically — 197, one of
+  them twice (line 24502 in groups 1 and 2), 196 distinct, with the group,
+  whether it stood with the uncertainty or as assigned elsewhere, its status
+  line (for "defect N above" the status line of defect N of the entry at line
+  29518) and its state in the tool at `0776389`; the shifts the entries at
+  lines 30909 and 31117 record, applied: line 17627 walked and in no group,
+  lines 26200 and 30264 into group 3, lines 30294 and 30318 into group 3 with
+  the uncertainty, defects 7 and 8 of the entry at 29518 in no group.
+  Completeness: every defect of the table not in the list and not walked whose
+  evidence lies in a file or step of the five parts, or whose status line
+  names an install, a guard, `environment.md`, the unattended mode, the mark
+  or a permission — 22 points added, judged like the rest. 218 points in
+  sixteen packages by the place their should concerns, each to one subagent of
+  type general-purpose, twelve at once; each read the whole defect text from
+  its head to its status line and the places in the code, and wrote ten
+  columns per point. The cross-check: first mechanically — every file and line
+  a result cites exists at `0776389` and carries the fragment the subagent
+  copied from it, 547 citations, and every search claimed empty prints nothing
+  when run again in a clean bash, 50 commands; then a second pass of fresh
+  subagents over 182 points — every point judged uncertain, partly built, with
+  an evidence on a line not carrying its should, outside the milestone or
+  assigned to another milestone, lapsed or left on purpose, or whose part
+  deviates from its group of 19 October 2026, and ten drawn at random with
+  `random.Random(0x0776389)` over the sorted ids not otherwise selected — 179
+  agreed, three did not, and the main session read those three at the text and
+  decided for the second judgement each time: line 9764 is left on purpose by
+  the entry of 8 October 2026 and not to build, line 5187 and line 9704 are
+  walked, their runs recorded on another thing's row. The result over the 218:
+  62 in one of the five parts, 36 uncertain, 105 in none, 15 assigned to
+  another milestone by the plan. Of the 98 that concern the milestone or may:
+  29 need a build, 15 a bench the person's word turns into a walk, 13 a run, 8
+  do not hold the milestone up, 22 need nothing, 6 lapsed, 5 are left on
+  purpose.
+
+  **The clusters.** Every point that concerns the milestone or may, and
+  neither lapsed nor is left on purpose, stands in one cluster below, in the
+  order of the five parts and within a part by dependency; each point keeps
+  its own judgement — status line, part, what it needs — and the cluster does
+  not replace it. Per cluster: the points, the common cause, the place of the
+  repair, whether the repair can be mechanical and what that would spare, what
+  is needed after it, what it depends on, and the decisions the person takes
+  before the build, with the ways seen.
+
+  **Cluster 1, the install question at its call** (part 1, `docs/plan.md` line
+  234): finding 12 of the tool (`skills/setup-project/SKILL.md:255`), build;
+  line 7837, part 1, built in part, build; line 7048, part 1, nothing, walked
+  on 19 October 2026 at records 82 and 83 of project z with the run recorded
+  on the shared text's rows; lines 7325, 7667 and 10356, part 1, built, a run
+  — the question's straight path was walked on 16 and 19 October 2026 (rows
+  5894 and 6631 of the table) and neither entry records a sentence beside the
+  widget, the runs standing on the shared text's rows and not on these
+  defects' rows. Cause: that the call carries the install question alone, with
+  its points in the widget's own fields and nothing in prose around it, is
+  held by text alone — `skills/setup-project/SKILL.md` lines 254 to 255,
+  `shared/install-question.md` lines 1 and 37 — and nothing reads the call.
+  Repair: the probe measurement of section 8.4 of the audit of 4 October 2026,
+  a throwaway plugin with a PreToolUse hook on `AskUserQuestion` writing its
+  input to a file, then a hook in `hooks/hooks.json` refusing a call that
+  carries the install question beside another question. Mechanical: yes, for
+  the call's content; prose before the call it does not see. It would spare
+  the run for the form half of line 7837 and, in part, the runs on the three
+  pulls. After: a bench for the hook, by the reasons of 18 October 2026; a run
+  for what stands beside the call. Depends on nothing. Decisions: the probe
+  and the hook, or the half of the rule dropped, which the finding names as
+  the alternative; and whether a run recorded on the shared text's row counts
+  for the defect's row, which decides whether lines 7048, 7325, 7667 and 10356
+  need anything.
+
+  **Cluster 2, the recommendation rule** (uncertain, part 1 by the first case
+  the should names, the install permission): line 9655, built in part, build.
+  Cause: the opening of `setup-project` step 4,
+  `skills/setup-project/SKILL.md` lines 234 to 237, says which questions carry
+  a recommendation, 1, 4 and 5, with the reason the entry of 3 and 4 October
+  2026 rejects, "since both reach past the project"; the rule itself, a
+  question carrying a recommendation only where the person decides about the
+  product and none where they decide about how this workflow runs, stands
+  nowhere — `grep -rn 'how this workflow runs\|deciding about the product'
+  skills shared` prints nothing. Repair: the rule into `shared/how-to-ask.md`,
+  the block on asking, beside its sentence on a convention of this workflow
+  (line 27), and the reason at line 237 corrected; `setup-checks` step 8 gives
+  none already (lines 255, 385, 900). Mechanical: no, decided against on 4
+  October 2026, lines 9649 to 9650 of this file. After: a run, forceable at
+  every setup. Depends on nothing. Decisions: which questions of the setup
+  decide about the product — 1, 4 and 5 carry a recommendation today — and
+  that the rule enters the shared text as the should says.
+
+  **Cluster 3, a bare pip under a yes** (part 1): line 6266, not built, build
+  or drop. Cause: the first half of the should lapsed with the cut of 30
+  September 2026 (`4a2ef85`), the second, that a bare `pip` opens nothing
+  under a yes, was kept standing on purpose (line 7117 of this file) and
+  stands nowhere in a question or a skill; the guard's message names the form
+  at the block, `hooks/pre-tool-use-install-guard.sh:912`. Mechanical: no.
+  After: a run where it is built, nothing where it is dropped. Depends on
+  nothing. Decision: build the draft's sentence, or drop the half under the
+  standard of 30 September 2026, `shared/install-question.md:36`, that nothing
+  in the question implies something untrue, not that everything true is said.
+
+  **Cluster 4, the first setup** (part 1): line 7034, built, a run —
+  `skills/setup-project/SKILL.md` lines 222 to 225, step 4 not skipped in the
+  empty case; line 7923, built, a run — `shared/install-question.md` lines 14
+  to 15 and `skills/setup-project/SKILL.md` lines 719 to 721, nothing
+  installed before step 8. What walks them: a first setup of a fresh project,
+  empty for the one, with a yes and a tool of the stack missing for the other;
+  the runs so far carried code and answered no at the first asking.
+  Mechanical: in part — a check refusing a setup pull request whose
+  `environment.md` carries no `install-tools` line, and the guard holding an
+  install on the setup branch before `docs/agents` exists instead of its
+  silent pass (`hooks/pre-tool-use-install-guard.sh:7`), the latter a decision
+  since the pass is by design. Depends on nothing. Decision: arrange such a
+  run, or build the two holds.
+
+  **Cluster 5, the refresh** (part 1, `docs/plan.md` lines 436 to 444, which
+  name the refresh as not built within this milestone): finding 9 of the tool
+  (`skills/setup-project/SKILL.md:84`), not built, build. Cause: "Refreshing
+  an existing setup", lines 68 to 121, runs no step and calls `setup-checks`
+  nowhere, so a project set up before 0.122.0 whose rows the setup filled
+  never meets step 8's second asking and the record. Repair: the refresh
+  reading a `checks.md` whose marker is older than 0.122.0 and calling
+  `setup-checks` whole with the person there; `bin/devloop-setup-state:27`
+  prints the marker per file already and could print that such a table is due.
+  Mechanical: in part, the reading; the call stays the run's. After: a run on
+  a project set up before 0.122.0 — none of the fresh projects is one, and the
+  old benches stay out of use by the rule of 6 October 2026. Depends on
+  nothing. Decisions: the design, and how it is walked.
+
+  **Cluster 6, the second asking in step 8 and where the owed text lands**
+  (part 1, `docs/plan.md` lines 247 to 248): line 26220, uncertain leaning
+  part 1, built, build — walked on 19 October 2026 and not held at record 497,
+  a text block before the call though `skills/setup-checks/SKILL.md:1061` and
+  `output-styles/devloop.md:38` say nothing stands before the call; line
+  17627, part 1, walked and held under the reading the person decided,
+  nothing; line 11463, part 1, built, does not hold the milestone up — its
+  case, a record that never landed, cannot be forced since both permissions
+  are asked before step 8. Cause: where the run's owed text lands under the
+  output style is the model's per message. Mechanical: no — the hook that
+  would deny the question was rejected on 17 October 2026, lines 31506 to
+  31515 of this file, since it does not see the message's blocks; a check over
+  the session log could report it after the fact. After: a run, forceable at
+  every step 8 with a record saying no. Depends on nothing. Decision: what the
+  repair of line 26220 is, the texts saying it already — a check after the
+  fact, a change to the output style, or another run.
+
+  **Cluster 7, where a no on a tool leads for the class** (parts 1 and 4,
+  `skills/setup-checks/SKILL.md` lines 430 to 437 and 485 to 499): line 5295,
+  part 1, built, a run; line 11275, part 4, built, a run — walked on 19
+  October 2026 at record 361 with no run row on the thing; line 11496,
+  uncertain, built, does not hold the milestone up — the three-answer case
+  needs another tool left for the class and cannot be forced. Cause: what
+  follows the handover under a no is text the model follows, and project z
+  left the class `empty` across the merge (defect 4 of the entry at 29518,
+  cluster 22). Mechanical: in part — the no-install half is the guard's,
+  `hooks/pre-tool-use-install-guard.sh:767`; a check comparing step 3's
+  answers with the table before the pull request would catch a class left
+  `empty`, none does today. After: a run, after the repair of cluster 22.
+  Depends on cluster 22. Decision: confirm that line 11496 does not hold the
+  milestone up.
+
+  **Cluster 8, the record under a no** (part 2, `docs/plan.md` line 244): line
+  7787, not built, build. Cause: under `install-tools: no` the record and the
+  session-start line list places and routes with nothing saying they are
+  closed — `hooks/session-start.sh:68` prints them under either answer, the
+  sentence that the file says what a yes would open stands in the prose of
+  `shared/install-record.md:26` and not in the record a run writes. Repair:
+  the line built from what `bin/devloop-install-record` prints, saying under a
+  no that the places and routes are what a yes would open, or printing none;
+  the record's own form is the template a run copies. Mechanical: yes for the
+  line, a hook's and a program's; the template is text. After: a bench.
+  Depends on nothing. Decision: the line's form under a no.
+
+  **Cluster 9, the session-start line and the person** (part 2): line 7967,
+  not built, build. Cause: the line reaches the run as context and not the
+  person, while `docs/skill-conventions.md:2046` and
+  `hooks/session-start.sh:62` call it what a second person who cloned the
+  repository meets, and `docs/skill-conventions.md:2894` says `SessionStart`
+  stdout arrives as context. Repair, two ways: the run says the record to the
+  person at its first turn in a project that carries one, a place in the
+  skills; or the three sentences say what the line is. Mechanical: no — a
+  wording of the run no hook can force, or a comment and a convention. After:
+  a run for the first way, nothing for the second. Depends on nothing.
+  Decision: which way.
+
+  **Cluster 10, the records read after one fetch** (uncertain; part 2 by the
+  list, none by the narrowing since a failed fetch reads as no and starts
+  nothing): finding 16 of the tool (`shared/mode-set-up.md:14`), not built,
+  build; finding 15 of the tool (`skills/setup-checks/SKILL.md:372`), not
+  built, build; line 12057, uncertain leaning none, built, a run. Cause: the
+  command that reads the three records in `shared/mode-set-up.md:14`, inserted
+  in `setup-checks` step 8, `plan-work` Stage 1 and `build-work`, and the
+  reading of the dependency record in `setup-checks` step 3 at line 372, fetch
+  once, while every fetch something is built on is tried three times since 6
+  October 2026, `shared/fetch-three-times.md:15`; a third failure then reads
+  as records not saying yes. Repair: a program under `bin/` that fetches three
+  times bounded through `bin/devloop-bounded` and prints the records or that
+  they could not be read, with the command and the message, as
+  `bin/devloop-install-record` does for the guard; the two texts insert its
+  answer. Mechanical: yes. It would spare the text in two places and the run
+  for a failing fetch, a case of the program's self-test. After: a bench.
+  Depends on nothing. Decisions: whether these concern the milestone, question
+  1 below; the program.
+
+  **Cluster 11, a setup or a mode set up before a version meets a question on
+  no path** (part 5 for line 15579, `docs/plan.md` line 256, the rule being
+  what lets an install through the classifier of auto mode in a run without
+  the person; uncertain for line 25166): line 15579, not built, build; line
+  25166, uncertain leaning none, not built, build. Cause: the state read at
+  the start — `bin/devloop-setup-state` through `hooks/session-start.sh:35`,
+  the five things of `shared/mode-set-up.md:1`, the start conditions — reads
+  neither the section "Unattended mode" of `environment.md` nor whether the
+  rule for auto mode stands, which `bin/devloop-auto-mode-rule read` answers
+  with exit 0 or 1; the rule question stands in step 8 alone, after the mode
+  question's yes, `skills/setup-checks/SKILL.md:1007`, and step 8 is skipped
+  where the five things hold, line 860. Repair: the reading of the five things
+  or the start conditions runs `bin/devloop-auto-mode-rule read` and sends the
+  run to the question where it answers 1; `bin/devloop-setup-state` prints
+  beside the empty rows whether the section stands. Mechanical: in part, the
+  reading; the question and the call of `setup-checks` stay the model's.
+  After: a run, forceable with the person there at a project set up before
+  0.134.0. Depends on nothing. Decisions: the sentence to the person that line
+  25166 asks for, which the person approves; whether line 25166 concerns the
+  milestone, question 1 below.
+
+  **Cluster 12, the guard's reading, repaired in the hook and the reader and
+  put through the benches of 12 and 16 October 2026** (part 3, `docs/plan.md`
+  lines 249 to 250): lines 655, 660, 1174, 1317, 4968, 6105, 13932, 13955,
+  13971, 13993, 14009, 14052, 14066, 1270 and 1294, every one built, every one
+  a bench. Cause: each is repaired in `hooks/pre-tool-use-install-guard.sh` or
+  in `bin/devloop-command-reader`, the program every hook reads its command
+  through since 12 October 2026, where no model decides between the command
+  and the hook — the person's reason of 18 October 2026 for d and 11; the
+  measurement of 12 October 2026 against `fe8b98d` put the commands of the
+  findings through the guard under the four records, lines 20061 to 20070 of
+  this file, and the bench of 16 October 2026 at `7e35090` put the commands of
+  a run through every hook, lines 25806 to 25822; the run rows the table
+  carries for these things are older than `a03a720`, version 0.137.0, and do
+  not count. Mechanical: already so. After: nothing beyond the person's word
+  that the bench counts for them as it does for d and 11, or bench rows on
+  these things keyed to 0.141.0 by a table order. Depends on nothing.
+  Decision: confirm, question 3 below. Of the stock-take: the evidence of line
+  1174 stands on a line of this file, 1259, while the reader carries the
+  should (`bin/devloop-command-reader:170`, a text in quotes a word of its
+  command and no command), so the tool reads it recorded and not built; for
+  lines 655, 6105, 13932, 13955, 14009 and 14066 the anchor stands on one of
+  several lines the fix stands on, which is no error of the stock-take, the
+  fix standing on several lines and the record naming one of them; for line
+  13993 on the reader's outcome line.
+
+  **Cluster 13, the block message and its causes** (part 3 and, for the
+  message's sentence, part 4, `docs/plan.md` line 254): line 6442, not built,
+  build — the block for a route that does not answer names the query and not
+  what the query said on stderr, `hooks/pre-tool-use-install-guard.sh:863`;
+  line 6588, not built, build — seven causes carrying a label and a colon
+  chain two colons behind "does not open it:", line 989 and
+  `bin/devloop-install-record:47`; line 25184, not built, build — the message
+  says nothing of the command running as it stands from wherever the person
+  is, line 989, which the entry of 16 October 2026 rules out leaving (line
+  25189 of this file). Cause: the one echo line of the guard and the causes
+  joined into it. Mechanical: yes, the message is the hook's own. After: a
+  bench, the message printing the same whatever the model does; a change to
+  line 989 stops the counted runs on it, which the entry of 16 October 2026
+  rules out as a reason. Depends on nothing. Decisions: the wording of the new
+  sentence, a text the run delivers; whether the last line of the query's
+  stderr enters the cause.
+
+  **Cluster 14, `--path` of `@puppeteer/browsers install`** (part 3): line
+  13635, not built, build — the guard reads the command for `--install-deps`
+  alone and takes the vendor's default place,
+  `hooks/pre-tool-use-install-guard.sh` lines 606 to 617, the conventions
+  recording it as not built at `docs/skill-conventions.md:2450`. Repair:
+  `--path` read as `--root` is read for cargo, a place inside the project
+  through, outside held against the record, under a no a block. Mechanical:
+  yes. After: a bench. Depends on nothing. Decision: the reading, point 4 of
+  the decisions of 12 October 2026 having revised the moved-location decision
+  for a variable before the command only.
+
+  **Cluster 15, npm's abbreviations** (part 3): line 14032, built in part,
+  build or the gap named. Cause: `-g`, `--global`, `--location=global`, `-L`,
+  a `g` inside a cluster, the aliases of `install` and the two variables are
+  read, lines 517 to 532 of the guard; an unambiguous abbreviation of a long
+  option, which npm resolves, is not, and whether it counts against the should
+  is uncertain — the entry of 12 October 2026 names `--glob` alone as the
+  departure, which npm does not read. Mechanical: yes, an abbreviation table
+  in the hook; or the gap named in the conventions. After: a bench. Depends on
+  nothing. Decision: measure npm's abbreviation rule and read the forms, or
+  name the gap.
+
+  **Cluster 16, the sandbox** (part 3 by its subject): line 14121, not built,
+  build — whether the sandbox of Claude Code touches installs and the guard
+  was never examined, `grep -rniE 'sandbox([^-]|$)' docs/plan.md
+  docs/skill-conventions.md README.md skills shared hooks` printing nothing.
+  Repair: an examination, recorded; what it finds may become a hook change.
+  Mechanical: no. After: the record of the examination. Depends on nothing.
+  Decision: whether this examination belongs to milestone 3.
+
+  **Cluster 17, setup-project's bullet for nobody there** (part 4,
+  `docs/plan.md` line 252): finding 11 of the tool
+  (`skills/setup-project/SKILL.md:50`), not built, build; line 27503, not
+  built, build; line 27167, built, does not hold the milestone up — its one
+  walk would be a run with nobody there in `setup-project` at a blocked
+  install, which the computed set does not reach. Cause: lines 49 to 53 say
+  what the run does with nobody there at a blocked install, an issue carrying
+  the command, in a skill the unattended mode reaches by no computed way (line
+  27289 of this file); the insert of `shared/backed-command.md` at line 63 has
+  its one use through line 51. Repair: the bullet names the case with them
+  there alone or says the case cannot arise, as `setup-checks` does at line
+  181, or a way is named on which the run reaches the skill. Mechanical: no.
+  After: nothing, a text about a case no path reaches; where the case goes,
+  the insert at line 63 loses its use and line 27167 reopens unless another
+  line hands a command over. Depends on nothing. Decision: which of the three
+  ways.
+
+  **Cluster 18, what an install did, said and written** (part 4 for the
+  report, `docs/plan.md` line 255; part 5 for the site that outlives the
+  session, line 257; part 1 for the question's half of line 5986): line 7705,
+  not built, build — a check chain red on tools not on make's PATH got past in
+  the session and the fact stands nowhere in the repository, `grep -rn 'not on
+  the PATH' skills shared hooks bin` printing nothing; line 30120, defect 6 of
+  the entry at 29518, built as text at `skills/setup-checks/SKILL.md:548` and
+  not followed at record 602, build; line 5986, uncertain, built in part — the
+  report half at `skills/build-work/SKILL.md:507` and
+  `skills/setup-checks/SKILL.md:545`, the question's half, what a package
+  manager does beyond the package it names said where the kind's cost is said,
+  nowhere — build. Cause: what the run says and writes about what an install
+  did is text the model follows, at build-work step 3 point 7 and setup-checks
+  step 4, and the standing fact in `environment.md` depends on the model
+  writing it. Repair: a PostToolUse hook on the install command the guard
+  already takes apart writes the fact — the tool, the path, what came back —
+  into `environment.md` on the branch; `hooks/stop-checks.sh` and
+  `hooks/post-tool-use-checks.sh`, which run the chain, read make's "No such
+  file or directory" and exit 127 as a tool missing from the PATH and name
+  that cause; the question's half is text. Mechanical: yes for the fact and
+  the PATH reading. It would spare the run for line 30120. After: a bench for
+  the hooks, a run for the question's half. Depends on nothing. Decisions: the
+  hook; whether the question says what a package manager does, or that half is
+  dropped as the fielded question of 5 October 2026 leaves it no place.
+
+  **Cluster 19, the handover under a no, text that stands and asks a run**
+  (part 4, `docs/plan.md` lines 251 to 255): line 1538, built at
+  `shared/backed-command.md` lines 2 and 15, a run; line 19003, built at
+  `shared/skill-name.md` lines 23 and 30 with the places that refer to it, a
+  run — the `--repo` half held at seven handovers on 16 and six on 19 October
+  2026, the `cd` half met no run since, the commands handed over being bare
+  `brew` commands; line 8155, built at `skills/build-work/SKILL.md:493` and
+  `skills/setup-checks/SKILL.md:538`, a run — the installs walked so far met
+  the place list and not a route's answer. What walks them: a run under a
+  record saying no on a project whose class or task needs a tool not on the
+  machine, a browser among them for the `cd`, and a yes on a project whose
+  stack installs through a route, cargo, bun or pnpm. Mechanical: in part — a
+  program printing the handover command with `cd <directory> &&` from the
+  directory the hooks resolve; the routes are the guard's. Depends on nothing.
+  Decision: arrange such runs, or take the walks of 11, 16 and 19 October 2026
+  for the halves they met.
+
+  **Cluster 20, cases that cannot be forced, built** (parts 4 and 5): line
+  1307, part 4, a block on a text match met in a setup stage, rarer since the
+  reader; line 18977, part 4, the system packages of `--with-deps` in the
+  no-line, Linux's and held by the guard already
+  (`hooks/pre-tool-use-install-guard.sh:626`); line 29213, part 5 by what is
+  said of an install that did not go through,
+  `shared/install-not-through.md:19`, a transient red followed by a green;
+  line 5232, part 5, the first route into `setup-checks` with nobody there;
+  line 12527, part 5, the secrets halt naming a runtime as the example,
+  `skills/setup-checks/SKILL.md` lines 101 to 106 — every one built and never
+  walked, and every one does not hold the milestone up by the person's reason
+  of 18 October 2026 for defect 12: a run arranged to meet them would test the
+  arrangement and not devloop. With them lines 11463 (cluster 6), 11496
+  (cluster 7) and 27167 (cluster 17). Mechanical: in part —
+  `bin/devloop-bounded` could run the three attempts of an installer in one
+  call and print the third's message, so that what is said of them no longer
+  rests on the model (line 29213). Decision: confirm, question 3 below.
+
+  **Cluster 21, the order of the check setup with the person there** (part 4
+  for line 30085, `docs/plan.md` line 251; uncertain for lines 30054 and
+  30040): line 30085, defect 4 of the entry at 29518, not built, build — the
+  secrets class left `empty` after the install command was handed over, the
+  decision open across a handover; line 30054, defect 3 there, built as text
+  at `skills/setup-checks/SKILL.md` lines 355 and 504 and not followed, build;
+  line 30040, defect 2 there, built in part at line 1027, that the reading
+  comes first not said in words, build. Line 30026, defect 1 there, shares the
+  cause and concerns the mode question, outside the milestone. Cause: an order
+  of step 3 and step 8 the text gives and the run did not keep. Repair: text —
+  for line 30085 the person's should of 19 October 2026 written, that under a
+  no to installing the decision on the class is taken before the offer of the
+  mode is made or dropped, at lines 223 and 492 to 497; for the two others the
+  order said in words. Mechanical: no — the table guard holds `empty` as an
+  allowed form and cannot tell a decision still open from one not yet reached.
+  After: a run, forceable at every setup with a no. Depends on nothing;
+  cluster 7 depends on it. Decisions: approve the wording for line 30085;
+  whether lines 30054 and 30040 concern the milestone, question 1 below.
+
+  **Cluster 22, the start conditions read before the run goes alone** (part 5,
+  `docs/plan.md` lines 258 to 261, the sixth condition being the yes on
+  record): line 30168, defect 9 of the entry at 29518, built as text at
+  `skills/build-work/SKILL.md` lines 1377 to 1444 and not followed at record
+  1304, a run; line 2034, uncertain, built at `skills/plan-work/SKILL.md`
+  lines 450 to 462, a run — the runs of 19 October 2026 reached the question
+  at record 991 of project z, so the session log may carry the walk; line
+  5187, uncertain, built at `skills/build-work/SKILL.md` lines 60 to 61 and
+  met on 11 October 2026 by the install guard's block of `--with-deps` in #17
+  with nobody there, the issue raised and the next task taken, nothing — the
+  run recorded on the section's rows and not on the defect's. Cause: the seven
+  conditions are read by text, and a build that does not read them again can
+  start where the record has turned to no since the question. Repair:
+  `hooks/pre-tool-use-mark-guard.sh:146` refuses the mark write outside auto
+  mode already and could read conditions 6 and 7 off
+  `bin/devloop-install-record` at the same write; on the planning route the
+  mark is written at the cut, so no tool call marks the start of the build.
+  Mechanical: in part, the record half. It would spare the run for the install
+  half of line 30168. After: a bench for the hook half, a run for the
+  re-reading. Depends on nothing. Decisions: build the hook half; whether line
+  2034 concerns the milestone, question 1 below.
+
+  **Cluster 23, three pairs of lines that disagree** (uncertain): line 26837,
+  built in part — the `setup-checks` pair on secrets with nobody there, the
+  one that could fall under part 5, is built at
+  `skills/setup-checks/SKILL.md:228` since 17 October 2026, the `plan-work`
+  and `start-work` pairs stand open and concern no part. For the milestone:
+  nothing; the build of the two pairs is owed outside it, the `start-work`
+  pair needing the person's decision which line holds. A cluster for itself.
+
+  **Cluster 24, walked or mended, nothing owed, the run recorded on another
+  thing's row** (parts 1, 3, 4 and uncertain): line 7298, part 1, the
+  agreement of `shared/how-to-ask.md:68` with the question as cut, read off
+  the files; line 18896, part 1, the paragraph removed in `49bd995`; line
+  18832, part 3, the rule "In doubt, a run with nobody there is not blocked"
+  at `docs/skill-conventions.md:2050` with every place naming it; line 7741,
+  part 4, every project with code reaches `setup-checks`,
+  `skills/setup-project/SKILL.md` lines 880 to 881, the route walked on 19
+  October 2026 on the branch thing of the same line (rows 3809, 5721, 5722,
+  6453); line 5214, part 4, the install with nobody there under a yes, walked
+  on 11 and 19 October 2026 on the thing at row 3356; line 9704, uncertain,
+  the body file in a `mktemp -d` directory, walked on 16 and 19 October 2026
+  on the shared text's rows; line 10323, uncertain, the thing the table lacked
+  stands at row 3356 with its runs; line 23797, uncertain leaning none, a
+  comment of the reader corrected in `e687f51`; and lines 7048 and 5187 above.
+  What they share: nothing to repair and nothing to walk, and for five of them
+  a walk recorded on another thing's row while the defect's row carries none,
+  so that the tool reads them never walked. Decision: whether a run recorded
+  on the thing of a shared text or a branch counts for the defect's row, or a
+  table order adds run rows to the defects' rows, question 5 below.
+
+  **Cluster 25, statements of the documents about a part, mended** (uncertain,
+  every one needing nothing): line 7181 (`docs/skill-conventions.md:667`, the
+  rule on a delivered text's length), line 8162
+  (`docs/skill-conventions.md:2408`), line 8228 (`docs/plan.md:415`), line
+  10463 (`README.md:230`), line 11662 (`README.md` lines 143 to 169), line
+  11686 (`docs/plan.md:284`), line 17353 (`docs/plan.md:291`), line 18523
+  (`docs/plan.md:859`), line 23691 (`README.md:232`), line 23743 (a row of the
+  table carrying its evidence on `shared/install-question.md`), line 28924
+  (`docs/skill-conventions.md:482`). What they share: each is a sentence of
+  `README.md`, `docs/plan.md`, `docs/skill-conventions.md` or a row of the
+  table about the question, the record, the guard, the skills or the run,
+  mended where it was found, and the tool reads them recorded and not built
+  because a document's line is their evidence. Decision: whether a statement
+  of the documents about a part concerns the milestone, question 1 below.
+
+  **The points that lapsed**, each with its status line, the search that came
+  back empty and the commit that removed or rebuilt the place: line 5269, the
+  permissions passage of `setup-project` step 0 said it is no question yet
+  spoke of the options and its yes — `grep -n 'in the options themselves'
+  skills/setup-project/SKILL.md` empty, the phrase gone at `e484536` and the
+  passage at `49bd995`, 16 October 2026, point 8 of part B of the entry of 12
+  October 2026; line 7813, the same passage arriving before anything can
+  happen on it — `grep -n 'advice that arrives afterwards\|always allow'
+  skills/setup-project/SKILL.md` empty, `49bd995`; line 17313, the passage
+  tying an allow grant to the unattended mode — `grep -n "granted up
+  front\|mode's preconditions" skills/setup-project/SKILL.md` empty,
+  `49bd995`; line 7488, question 4's five pulls toward tools for check classes
+  — `grep -rn 'also lets through' skills shared` empty, the question one
+  shared text of four fields since `03c78af`, 5 October 2026, after `e484536`
+  put it into widget fields, the table's own note at row 2460 saying the
+  repair is no longer in the text; line 5252, step 3 of `setup-checks` naming
+  the check commands as something to grant with nothing for nobody there —
+  `grep -n 'Name what you just wrote down' skills/setup-checks/SKILL.md`
+  empty, `49bd995`, its should replaced on 12 October 2026 (line 18876 of this
+  file); line 9518, the case under "With nobody there" in `setup-checks`
+  opening with "There" — `grep -n 'There the class stays'
+  skills/setup-checks/SKILL.md` empty, `03c78af`, which took the re-reading of
+  expired reasons after a merge out. The tool has no state for a lapsed
+  defect: the rows of lines 5269, 7813, 5252, 7488 and 9518 carry their
+  evidence on a line that records the removal or the replacement, so the tool
+  reads them built and never walked, and the row of line 17313 the same; the
+  header of `scripts/devloop-stock-take` does not say how such a defect is
+  closed, so no row is changed here and the person is asked, question 4 below.
+
+  **The points left on purpose**, by kind, each with its status line and the
+  line of the decision: a download the guard would have to guess at — line
+  820, the wrapper that downloads on first use, decided at line 825, "left as
+  it is: catching it would mean guessing at what a build command does", kept
+  by the entry of 8 October 2026; finding 19 of the tool
+  (`shared/install-question.md:14`), `npm install cypress` or `puppeteer`
+  downloading a browser through a postinstall step under a no, ruled outside
+  the guard on 28 September 2026 (lines 9759 and 13123 of this file,
+  `docs/skill-conventions.md:1130`) while the finding of 8 October 2026
+  records the contrary should and nothing decided on it since, so the person
+  decides it expressly; a corner that cannot arise — line 16128,
+  `bin/devloop-auto-mode-rule` where `~/.claude` is a link to a directory that
+  does not exist, decided at lines 16128 to 16129 with the reason at 16136 to
+  16140; a sentence kept because its case exists since 6 October 2026 — line
+  10014, the secrets halt under a guard's block with nobody there, decided at
+  line 11697, the second sentence of that defect, the stop of `plan-work`,
+  concerning no part; a should answered otherwise with a reason — line 9764,
+  the record spelling what a wrapper fetches into a language's own cache and
+  the question saying it, answered on 8 October 2026 without a new line in the
+  record and without new words, the guard reading the record's existing answer
+  for these forms, lines 13107 to 13115 of this file, the third point built at
+  `shared/fetch-and-run.md:20`. Question 2 below asks per kind whether such a
+  point holds the milestone up.
+
+  **Outside milestone 3, the merge — its arming, its gate, the refusal cases
+  and the handover (no milestone of the plan covers the merge mechanics;
+  docs/plan.md lines 888 to 890 name the arming's open measurements as covered
+  by no milestone):** line 614, CLEAN, HAS_HOOKS and UNSTABLE were read as a
+  pull request past its gate when the required check had not …; line 1616, A
+  run promised to report back after arming and nothing could wake it; a run
+  promises nothing it cannot keep; line 2316, Run stopped four times after
+  arming on a self-written promise; the wait must happen in the same answer
+  and …; line 2377, The local turn-end threshold cannot count a check red on
+  the platform only; a wait inside one answer needs a …; line 204, the run
+  stopped itself before arming, citing a rule in its own memory that closed
+  the arming route the skills …; line 5182, build-work step 6 said 'Start
+  condition 6' where the condition on auto-merge and the gate is the fifth;
+  line 28352, build-work 1038, setup-checks 763-765 and setup-project 842-844
+  made auto-merge off the case that comes as …; line 29166, build-work step 6
+  called the first two refusal cases unreachable by start condition 5 and said
+  nothing for no …; line 29175, build-work named every required check
+  completed the third refusal case, without the auto-merge on it takes …; line
+  28961, the conventions read a mergeable status with a gate as past its gate
+  whatever auto-merge reads; with …; line 29130, the step 6 thing on
+  auto-merge off with nobody there was named unreachable by start condition 5,
+  which reads …; line 29139, the step 6 thing on no gate with nobody there was
+  named unreachable by start condition 5, which reads the …; line 29149, the
+  table's note of the merge guard's message defect said 375 words since 17
+  October 2026 where the message …; line 26006, The merge handover said what
+  comes after the merge, carried lists beside it, named auto-merge off beside
+  the …; line 30318, The merge handover's sentence for a missing required
+  check was not understood; the wording approved on 19 …; line 30357, Project
+  y handed the merge of armed pull request #5 over with a command, the gate
+  read off stale …; line 27522, At the step 6 stop on a pull request past its
+  gate with nobody there, the last message said the reason twice: …; line 636,
+  Whether a gate binds was read from enforce_admins alone, blind to a ruleset
+  gate; line 674, A gate the working account can step over was taken for a
+  gate, the defect of pull request 73; line 5225, Step 8 exited early on a
+  binding gate without auto-merge, which build-work's precondition 5 needs;
+  line 28343, setup-project line 845 and setup-checks line 786 said the
+  program asks and prints the two gate queries, where …; line 25160, no line
+  of setup-checks step 8 orders the environment.md section on what checks a
+  merge to be rewritten once …; line 5316, the environment.md template named
+  step 2 as the source of the gate where step 4 question 2 reads it; line
+  2907, The unattended run put the landing question to the user; no mark on
+  disk said which mode a run is in and how …; line 30379, Claude Code's own
+  rule blocked `sleep 30` before `gh pr view`; the query was made again
+  without the sleep; no ….
+
+  **Outside milestone 3, the unattended mode's question and set-up —
+  setup-checks step 8 and the question of plan-work Stage 1 that sends the run
+  alone, the start conditions other than the record (no milestone of the plan
+  covers the mode question; milestones 9 and 11 end with runs that pass
+  through it):** line 966, The unattended mode needs a machine that stays
+  awake and the cost list did not say so; line 986, The offer of the mode did
+  not say what a yes leads to, where it stops, how a finish and a standstill
+  are …; line 1000, The cost list and the description of the mode did not
+  reach a project set up in an earlier session, step 8 …; line 2026, The
+  question per piece of work and the permission per repository at step 8 were
+  not told apart; line 11272, Step 8 recorded the unattended-mode answer with
+  no heading and no line, each run in its own wording, where …; line 15475,
+  Step 8 read gate, binding and auto-merge before asking and learned the
+  platform refuses the protection only …; line 15512, The question of step 8
+  on the unattended mode had no form, no field naming the points of its
+  decision; line 15514, Step 8 told the person the run goes on until nothing
+  it raised is waiting, while build-work ends with a …; line 26200, Mode
+  question of project 1 lacked that the answer holds for every task and that
+  the run works only while …; line 30264, The awake line of the mode question
+  named what does not suffice instead of the conditions under which …; line
+  29253, the header approved on 17 October 2026 for the mode question, „Ohne
+  dich“, is two words where the rule of the …; line 30026, Step 8 of project z
+  put the mode question without reading gate, auto-merge, records, visibility
+  or uname -s …; line 5238, The offer of the unattended mode said to stand in
+  a first setup while the single-class route met step 8; line 994, the cost
+  list and the description of the mode do not reach a second run; build-work
+  offered to build the gate …; line 2300, precondition 4 of the unattended
+  mode, the tool classes approved, asserted at the question and the build and
+  …; line 5332, start-work's "nothing runs alone whatever was typed" holds on
+  the planning route only; the direct route reads …; line 2023, no question at
+  the end of Stage 1 asked how this piece of work should run, with three
+  answers; line 3844, the three answers explained the mechanics, not where the
+  user is needed; two places named the answer --auto …; line 30294,
+  descriptions of „Volle Flexibilität“ and „Plan ohne dich“ foretold a stop
+  where no draft carries the stories; line 17241, planning said nothing of the
+  mode and of --auto where the mode was not set up and no record stood; line
+  3326, start-work's section Unattended is a trailing description, not a step,
+  against the convention that a section …; line 3438, The auto-mode classifier
+  blocked a check command (go test) three times; none of the preconditions can
+  read it ….
+
+  **Outside milestone 3, the run without the person outside installing — its
+  end and last message, the mark, its stops, its questions and reports
+  (milestone 6, docs/plan.md line 648, covers the finish for lines 427, 476
+  and 10425; milestone 8, line 743, the one point of line 30240 on where the
+  result is seen; milestone 5, lines 615 to 619, line 1340 by its class; the
+  rest no milestone of the plan):** line 10269, No shared text said how the
+  mark is deleted; build-work, plan-work and cut-into-tasks worded it each in
+  their …; line 27148, The last message of the run with nobody there was
+  described in build-work alone, which plan-work's stops and …; line 30240,
+  last message of project z: three headings, a stop no text names, open issues
+  without why or next run, a …; line 25447, last message names the branch with
+  their commits off what the run remembers, not off git; a compacted session
+  …; line 10056, No line says an unattended run that ends says so in its own
+  message and never through the question widget; no …; line 29190, The
+  bring-back pops stash entries by an index read once, so a second pop takes
+  another entry, the person's …; line 29202, build-work lists the fetch stops
+  of step 1 and step 6 among the places the mark goes; neither site nor the …;
+  line 29232, Mark guard's comment gives its texts as the ones approved on 9
+  October 2026, which 17 October 2026 changed; line 18450, the conventions
+  said the hooks still do not read the mark, where two hooks read it since 9
+  October 2026; line 18571, The mark guard states the permission mode beside
+  any command naming bin/devloop-permission-mode among its …; line 1002, the
+  unattended state file autorun.local.md was written by the run and read by
+  nothing, its cap raised by the …; line 1054, a ceiling on the number of
+  tasks (--max-iterations) removed; the limit inside a task meant to replace
+  it …; line 1111, the turn-end hook hands the problem to a person; unattended
+  there is none, a halt that looks like running; line 5194, build-work said
+  the turn-end hook's unattended answer is a refused arming's, which ends the
+  run instead of …; line 427, the unattended scope announcement omitted the
+  loose issues and the finish was taken from the readiness …; line 476,
+  nothing enforces the loose-issue rule of build-work step 2; a guard was
+  examined and rejected, two text …; line 384, build-work step 2 asks what
+  each ready task unblocks and three runs gave titles and descriptions only;
+  line 387, build-work step 2 named the loose issues nowhere; the two
+  sentences it asks for stayed out; line 10425, README states the finish of an
+  unattended run as until nothing in scope is ready any more, the
+  one-condition …; line 8142, build-work 'With nobody there' counted four
+  places and named five; the question about the work was called the …; line
+  14100, when the build subagent in auto mode hands its report back is not
+  measured; line 10294, build-work's list of where the mark is deleted misses
+  the stops of plan-work under With nobody there and the …; line 24502, With
+  the spec closed the first closing run took neither loose raised-here issue
+  and ended calling them not …; line 5203, The diverged or ahead-alone base in
+  step 1 is handed to the user; no line said what a run with nobody there …;
+  line 5208, The red base in step 1 is put to the user as a choice of three;
+  no line says what a run with nobody there does; line 5218, A failed
+  fast-forward after the merge in step 6 stops and hands over; no line said
+  what a run with nobody …; line 26859, A red base in build-work step 1 with
+  nobody there is covered by no line; the person chooses among three ways …;
+  line 25153, with nobody there the run stops at a changed file in the way and
+  at commits of their own on main, where with …; line 2774, A design question
+  inside a task with nobody there had no rule; built in part, the attended
+  half (the asking …; line 9979, diagnose-bug and review-changes, reached by
+  the unattended mode, carry no section for the case and do not …; line 5344,
+  build-prototype's branch default with nobody there contradicts its own
+  section, which takes the logic branch; line 5358, diagnose-bug hands a
+  missing control document to the user; nothing says what a run with nobody
+  there does; line 5364, diagnose-bug step 6 hands over and waits for a
+  person; nothing says what a run with nobody there does; line 9584, plan-work
+  stops alone where a draft fails an item of its list; a second drafting round
+  and a named pair of …; line 26183, a built-in safety check of Claude Code
+  refused a planning subagent's command; plan-work named no such refusal …;
+  line 2045, an order for a question left unanswered with nobody there: less
+  committing option, cut out and file, record …; line 1340, the unattended run
+  narrowed the review from five lenses to three with a reason nobody read;
+  line 26142, text owed in the run's message stood in a progress update or
+  nowhere at four places: setup-checks close, …; line 26092, The line naming
+  the classes the two yes open, each with its tool, stood in a progress update
+  and the handover ….
+
+  **Outside milestone 3, the check setup and the check table — who writes it
+  and what its rows say (milestone 5, docs/plan.md lines 615 to 619, for line
+  30189 by its class, a change nothing was watching; the rest no milestone of
+  the plan):** line 30189, The main run of project z filled the end-to-end
+  class and changed the types target itself, calling …; line 30212, End-to-end
+  class of project z filled Blocking: no because CI installs neither dasel nor
+  a browser, given as …; line 30333, Project y decided rows end-to-end off and
+  types off without the question the fourth case of step 1 puts with …; line
+  19102, a build subagent changed three check targets in the Makefile;
+  shared/checks-owner.md reached it nowhere; the …; line 30401, Last message
+  of project y put a proposal and a second question beside the question what
+  to build, and counted …; line 12841, the cost-list-and-description defect
+  was answered since 5 October 2026 while its table evidence stood on its ….
+
+  **Outside milestone 3, the setup's other questions — auto-merge, the local
+  environment, the labels (no milestone of the plan):** line 7862, Question 2
+  (auto-merge) leads with a recommendation to switch auto-merge on under step
+  4's opening; should …; line 9791, The auto-merge question says what a no
+  costs, not that a yes still leaves the first pull request to be merged …;
+  line 10562, The check for a question put as an either-or (a grep word list)
+  does not find question 5's "map onto the …; line 26163, Question 4 of
+  setup-project (local environment) not put in project 1 of 16 October though
+  neither …; line 29223, setup-project read every issue without raised-here as
+  from outside while devloop files the issue of a ….
+
+  **Outside milestone 3, the other guards and the documents about them — the
+  branch guard, the table guards, the merge guard, the version guard,
+  hooks.json's registration, and the roadmap's statements (milestone 4,
+  docs/plan.md lines 573 to 576, for line 1648 on how a project is run; the
+  rest no milestone of the plan):** line 1903, the branch guard's built
+  description overstated what was built, its three cases holding on the
+  default branch …; line 2966, the orchestrating run's first write went to
+  main and only the branch guard's block got the branch cut; line 11268,
+  README said the branch guard blocks file writes on main while a file written
+  through the shell passes unseen; line 8234, the entry on devloop's own
+  repository said the plugin's hooks stay inert here and named nothing that
+  guards …; line 20489, Three handlers in hooks.json (branch guard, merge
+  guard, table guard) started only where their if field …; line 1648, roadmap
+  said environment.md reads "nothing to run yet" in every project set up,
+  where four of six carried a …; line 8196, the entry on five stacks named
+  what is on the machine as of August 2026 and said a project in those stacks
+  …; line 18474, the --auto observation of the entry on the second closing run
+  named start-work line 247 for the sentence at ….
+
+  **The points assigned to another milestone by `docs/plan.md`**, each with
+  its status line: line 1788, the `!` channel the guards do not see, milestone
+  5, `docs/plan.md` line 625; line 2050, `settle-the-look` a name only,
+  milestone 7, line 692; lines 2478 and 3794, a lens handing back a
+  placeholder and a report told from one, milestone 5, line 620; line 2629, a
+  change to the check chain landed unreviewed on the standalone route,
+  milestone 5, line 622; line 4297, the length of `build-work`, milestone 9,
+  line 763; line 4777, what survives a compaction, milestone 9, line 764;
+  lines 24577, 24591, 24597, 24649, 24663 and 24699, every other system than
+  the person's Mac, milestone 12, lines 287 to 289, each naming milestone 12
+  in its should; and, by their own shoulds and the plan's lines 559 to 560 on
+  Alpine with busybox awk, lines 24687 and 24693, the two table guards' awk
+  under Alpine, milestone 12, which the list of 19 October 2026 did not carry.
+  The plan's lines the list of 19 October 2026 names for these are nine lower
+  than at `0776389`, the lines 355 to 363 having come in with `bcc08b2`.
+
+  **The uncertain points by kind**, 36, each kind a question below: statements
+  of the documents about a part, cluster 25, twelve points with line 23797;
+  the lapsed points whose part is uncertain, lines 5269, 7813, 17313, 5252 and
+  9518; the second asking in step 8 and its text, lines 26220 and 30104 — line
+  30104, defect 5 of the entry at 29518, three pull requests of step 8 created
+  without `bin/devloop-arm`, leaning none, the arming of the setup's pull
+  requests being merge mechanics with the person there, the list having read
+  it as part 2 because those pull requests carry the records; the reads of the
+  records and the fetches, finding 15, finding 16 and line 12057; the order of
+  the check setup, lines 30040 and 30054; the start conditions and the mode's
+  reading, lines 2034, 5187, 25166 and 16128; the recommendation rule and the
+  question's content, lines 9655, 5986 and 11496; the body file and the `gh`
+  call, lines 9691 — a `gh` call whose title is several unquoted words hangs,
+  not built, `grep -rn '/dev/null' skills shared` empty, build if it concerns
+  the milestone — and 9704; a row of the table, line 10323; three pairs of
+  lines, line 26837; a sentence kept, line 10014.
+
+  **Questions to the person.** Question 1, per kind of the uncertain points,
+  whether the kind concerns milestone 3, with the recommendation: statements
+  of the documents about a part — no, the five parts name the question, the
+  record, the hook, the skills and the run, and a document's statement about
+  them is mended where found, so these twelve leave the list; the lapsed with
+  uncertain part — moot, question 4 decides their closing; the second asking's
+  text, line 26220 — yes, part 1, the point being the presentation of the
+  install question itself, `docs/plan.md` line 248 naming it; line 30104 — no,
+  the arming of the setup's pull requests; the reads after one fetch — no
+  under the narrowing, a failed fetch reading as no and starting nothing, and
+  the program of cluster 10 built all the same outside the milestone; the
+  order of the check setup — no for lines 30054 and 30040, the install
+  unaffected, with line 30085 staying in part 4; the start conditions — no for
+  lines 2034, 5187, 25166 and 16128, the sixth condition being the one piece
+  of installing in them and read by `plan-work` and `build-work` as the texts
+  stand; the recommendation rule and the question's content — yes for line
+  9655, part 1, the should naming the install permission first and the
+  criteria naming the case, and yes for line 5986, parts 1 and 5, no for line
+  11496, the dependency question; the body file and the `gh` call — no,
+  neither touches what the guard reads since 12 October 2026; the row of the
+  table, line 10323 — no, milestone 1's artefact; three pairs of lines, line
+  26837 — no for the milestone, the part-5 pair standing built. Question 2,
+  per kind of the points left on purpose, whether such a point holds the
+  milestone up, with the line of the decision above and the recommendation: a
+  download the guard would have to guess at — no, for line 820 as decided at
+  line 825; for finding 19 the person decides expressly, the roadmap carrying
+  both a ruling and a contrary finding, the recommendation being to hold the
+  two package names whose installation the vendors document as downloading a
+  browser against the record, a check on the command's text and no guess at a
+  build command, and otherwise to close the finding by the ruling; a corner
+  that cannot arise — no; a sentence kept because its case exists — no; a
+  should answered otherwise with a reason — no, the person confirming the
+  answer of 8 October 2026 or ordering the two points built. Question 3,
+  whether the person confirms that their reasons of 18 October 2026 hold for
+  every point under "bench" and "does not hold the milestone up" above: the
+  fifteen of cluster 12, repaired in the hook and the reader where no model
+  decides, as d and 11 were; the benches owed after the builds of clusters 8,
+  10, 13, 14, 15, 18 and 22, hooks and programs; and the eight that cannot be
+  forced, lines 1307, 18977, 29213, 5232, 12527, 11463, 11496 and 27167, as
+  defect 12 was. Question 4, how a lapsed defect is closed in the table, the
+  header of `scripts/devloop-stock-take` saying nothing of it: a state of its
+  own the tool computes, say from an evidence on the line of this file that
+  records the lapse, or the row left as it stands with its note; the six of
+  this entry and line 25160 wait for that. Question 5, whether a run recorded
+  on the thing of a shared text or a branch counts for the defect's row that
+  carries none — lines 7048, 7325, 7667, 10356, 5214, 7741, 5187, 9704 and
+  11275 — or a table order adds run rows to those defects' rows keyed to the
+  versions the runs ran, 0.141.0 and 0.148.0. The decisions per cluster stand
+  with the clusters.
+
+  **Corrections of the table.** Three defects stood with their evidence on a
+  line that carries their should in part, so that the tool counted them built:
+  the evidence goes back onto the status line, the tool reads them recorded
+  and not built, and the note says what is built. Line 9655, the fixed case of
+  the order: the evidence stood on `skills/setup-project/SKILL.md:234`, which
+  gives questions 1, 4 and 5 a recommendation and carries no rule on a
+  question about the workflow; built is the opening's saying which questions
+  carry one, lines 234 to 236, not built the rule in `shared/how-to-ask.md`
+  and the reason at line 237. Line 7837: the evidence stood on
+  `skills/setup-project/SKILL.md:254`, the text half of the should, every
+  point in a field and the call alone; not built a form the run cannot fail to
+  deliver or a mechanism at the call, finding 12 of the tool. Line 5986: the
+  evidence stood on `skills/build-work/SKILL.md:507`, the report half; not
+  built the question's half. Not changed, by the limit of this order, and
+  named here: the evidence of line 1174 on a line of this file while the
+  reader carries the should (cluster 12); the evidence of line 18571 on a line
+  of this file while `hooks/pre-tool-use-mark-guard.sh:77` carries it, a point
+  outside the milestone; the six lapsed rows and line 25160; the rows of the
+  nine points of question 5; the evidence of line 9764 on the line that
+  carries the alternative answer of 8 October 2026, which the row's note
+  records.
+
+  **The defect on the roadmap, decided by the person on 19 October 2026 to be
+  taken up after milestone 3.** `docs/roadmap.md` has three tasks at once. It
+  is the list of the open defects, the log of the runs and the measurements,
+  and the only place of the approved wordings and of the reasons the skills
+  refer to. So it cannot be shortened without losing something valid. With
+  that, the skills, the shared texts and the output style carry the history of
+  their states in sentences of the form "Since …; until then …", read at every
+  load. Counted on 19 October 2026 at `0776389`, each with its command: 31540
+  lines and 2181560 characters, `wc -l docs/roadmap.md` and `wc -c
+  docs/roadmap.md`; 114 entries under "## Known gaps", `awk '/^## Known
+  gaps/{f=1;next} f&&/^## /{f=0} f&&/^- \*\*/{c++} END{print c}'
+  docs/roadmap.md`; 2800 of 6736 rows of `docs/stock-take.tsv` pointing at
+  `docs/roadmap.md` in their site, evidence, run, trigger, bench or cost file,
+  761 by the site, 229 by the evidence and 2036 by the run file among them, an
+  `awk -F'\t'` over those six columns; 101 references to entries of the
+  roadmap in `skills/`, `shared/` and `output-styles/`, `grep -rn -i -o
+  'roadmap entry\|entry of [0-9]\{1,2\} [A-Z][a-z]* 2026' skills/ shared/
+  output-styles/ | wc -l`, and four lines naming `docs/roadmap.md`; 353 dates
+  of the form "D Month 2026" on 349 lines of those three directories, `grep
+  -rn -o -E` over the twelve months, 157 of them after "since" and 36 lines
+  carrying "until then".
+
+  Recorded, not built: the three tasks of `docs/roadmap.md` are not separated,
+  so that nothing closed can leave it without a wording, a reason or a line of
+  the table being lost, and the history of the skills' states stands in the
+  texts every load reads; what should stand is the three tasks separated, so
+  that what is closed can leave the roadmap without a wording, a reason or a
+  row of the table being lost, and the history standing not in the loaded
+  texts but where only whoever needs it reads it; how, the person decides when
+  the subject comes up, which they decided on 19 October 2026 to do after
+  milestone 3.
+
+  **Whether the milestone is reached.** No. Of the 98 points that concern it
+  or may, 29 need a build, 13 a run, 15 a bench the person's word turns into a
+  walk, and the questions above are open; by the criterion of 19 October 2026
+  the milestone is reached when no point of the clusters above is left that
+  concerns it, the lapsed, the left-on-purpose and the points the person's
+  answers take out of the list gone.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the evidence of the three defects of lines
+  9655, 7837 and 5986 moved back onto their status lines, their notes saying
+  what is built; one thing of kind defect for the defect on the roadmap, sited
+  and evidenced on its status line above; one not-a-thing row for the head of
+  this entry, and one for `skills/build-work/SKILL.md` line 507, a wrapped
+  line of the install paragraph opening on the year, which the tool reads as a
+  numbered item and which the evidence of line 5986 covered until now. No run
+  is recorded, and no row for the sentence in `docs/plan.md`, which stands in
+  no search set of the tool. The sentence in `docs/plan.md` after the decision
+  of 19 October 2026 on the criterion carries the person's decision on the run
+  without the person and refers to this entry.
+
+  **The checks and the tool, run for this entry.** The command under "Before
+  you change anything, run this" ran on `main` at `0776389` before the branch
+  was cut, printing nothing against the installed 0.150.0. The nineteen checks
+  under "Before a handover, run these" ran green on that tree, in a clean bash
+  with `/usr/bin/grep` first on its path, and again on the tree of the commit;
+  the figures and any difference stand in the report. The tool ran on
+  `0776389` with exit 0 and the figures the report names — no broken record,
+  19 findings, none of 4118 lines of the search set uncovered — and again on
+  the tree of the commit; the report names every figure that changed, the
+  range it counts over and its reason.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
