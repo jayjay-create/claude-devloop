@@ -33298,7 +33298,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `.github/workflows/stock-take.yml`, `README.md` and the version; then this
   entry, the rows of the table and `docs/skill-conventions.md`; then the runs
   of the bench, measured on the tree of the second commit, as the paragraph on
-  the bench below records. The report stands on this machine as
+  the bench below records; then, a fourth, the corrections made at the check
+  of the branch before the merge, which the paragraph after the bench
+  records, nothing of the code changing. The report stands on this machine as
   `~/devloop-report-2026-10-20-milestone-3-part-2.md`, in English, and is not
   in the repository. Every line number of a file is as at `f82aeae` unless it
   says `a4c2b99` or the second commit; a line of this file as at `f82aeae`,
@@ -33382,7 +33384,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   its should met by its second half, "or carry none".
   (b) Cluster 9. `README.md` lines 231 to 236 at `a4c2b99` carry the approved
   sentence, checked whole over the line breaks with `tr '\n' ' ' < README.md |
-  grep -c -F`, which prints 1. `docs/skill-conventions.md` lines 2087 to 2098
+  grep -c -F`, which prints 1. `docs/skill-conventions.md` lines 2089 to 2097
   at the second commit say that the line at session start reaches the run as
   context and not the person, as "A hook cannot force wording" says, that the
   run has the answer before the first install rather than meeting it at the
@@ -33392,8 +33394,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   repository meets; the comment in `hooks/session-start.sh` lines 61 to 74 at
   `a4c2b99` says the same. `grep -rn -F 'second person' skills/ shared/ hooks/
   bin/ docs/skill-conventions.md docs/plan.md README.md` printed the two
-  places, both changed, and `grep -rn -F -e 'cloned this repository' -e
-  'cloned the repository'` over the same files the same two. The defect of
+  places, both changed, and no other; `grep -rn -F -e 'cloned this
+  repository' -e 'cloned the repository'` over the same files printed
+  nothing, both phrases breaking over a line end there. The defect of
   line 7967 reads built since this entry, its evidence on the hook's comment,
   its should met by its second way; the defect of line 33141 reads so by its
   should, its evidence on the README line, which the tool reads as recorded by
@@ -33451,9 +33454,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of each stands on its README line, which the tool reads as recorded, as
   under (b). No other defect of the README sits on one of these places: the
   rows whose evidence is `README.md`, read with `awk` over the table, anchor
-  on lines 8, 90, 208, 211, 294 and 371 beside the three above, none of them
+  on lines 8, 208, 211, 294 and 371 beside the three above, none of them
   changed by this pass.
-  (d) The rule and the step. `docs/skill-conventions.md` lines 1448 to 1464 at
+  (d) The rule and the step. `docs/skill-conventions.md` lines 1448 to 1462 at
   the second commit, "`README.md` carries no date", directly after "A time
   reference names its date, not its neighbour", say what the README says and
   does not, that the rule above holds as before for this file,
@@ -33470,9 +33473,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **Recorded, not built: the line of `hooks/session-start.sh` without a record, line 70, says that every install outside the repository "is blocked and handed to you", where the line reaches the run and the guard hands a blocked install to the person — should: the line says handed to the person, in a wording the person approves.**
   Found at the counter-check of this order, question 7; this file, searched
-  for `handed to you` and `handed to the person` with `grep -n`, names it
-  nowhere. The recommendation: the two words changed; two words of a hook line
-  the order did not name, left to the person.
+  for `handed to you` and `handed to the person` with `grep -n` at `f82aeae`,
+  names it nowhere, the two lines found, 7531 and 19005, being on a pull
+  request and on commands handed to the person. The recommendation: the two
+  words changed; two words of a hook line the order did not name, left to the
+  person.
 
   **Looked at and left.** `skills/setup-checks/SKILL.md` lines 473 to 475
   read the record off the session-start line, which is the run reading it, as
@@ -33565,6 +33570,18 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   under a no, the none line, set up, the status line, and nothing appended
   with `CLAUDE_ENV_FILE` unset. The step's two command runs stand above and
   enter no row, section A of the tool's header.
+
+  **Corrected at the check of the branch before the merge**, in a fourth
+  commit of this entry alone, the version staying 0.153.0, each with the line
+  that gives the right answer: under (b) the grep for the two "cloned"
+  phrases printed nothing, since both break over a line end in the two
+  places, where this entry said it printed the same two; under (c) the rows
+  whose evidence is `README.md` anchor on five lines beside the three of this
+  order, not six, line 90 being the old anchor of the row of line 28988,
+  moved by this order onto line 91; the paragraph on the README rule ends at
+  line 1462 of the conventions and the session-start sentence stands at lines
+  2089 to 2097, read with `grep -n`; and the search of this file for the
+  words of the hook's line 70 found two lines on other matters, named now.
 
   **Whether the milestone is reached.** No. What is built here is clusters 8
   and 9 and the README without a date; clusters 13 (two points), 14, 15, 18,
