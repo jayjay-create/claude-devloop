@@ -106,6 +106,14 @@ and some missing, this is a refresh all the same, and a file missing there is
 written from its template in step 6 the way a first setup writes it; the two
 or three lines below name it.
 
+Where that program answers that it cannot read the value — the section
+stands and `install-tools` is neither yes nor no — the record stands as
+well, so nothing is asked and nothing is written over it; the refresh says
+that the record cannot be read, with the program's cause, and says it where
+nothing changed too, since 20 October 2026: the guard blocks every install
+on such a record, and a finding is said whatever else is, as "How to ask"
+says of reporting.
+
 Cut the branch after the last question and before the first write, under the
 same name and rule as a first setup — the step below that stands between the
 two. A refresh that asks nothing cuts it first, as the first thing done after
@@ -254,8 +262,8 @@ Only these, each only under its condition. No question of this step carries a
 recommendation, since 20 October 2026, decided by the person that day: none
 decides about the product being built — question 1 decides where this
 workflow keeps its work, question 4 asks a fact only they know, question 5
-how their repository is ordered, and questions 2 and 3 reach past the
-project, a setting of the repository and the record a guard reads — and a
+how their repository is ordered, and questions 2 and 3 decide how this
+workflow runs, whether it merges by itself and whether the run installs — and a
 recommendation stands only on a question about the product, "How to ask"
 above. Until that day questions 1, 4 and 5 led with one so that a single
 word could answer. One form for a choice, and the
@@ -276,8 +284,8 @@ shows at 80 columns is not measured, the roadmap entry of 17 October 2026
 says so. Question 3 is one
 too, and it names the field of each of its points; its call carries this
 question and no other, since what needs weighing stands alone so that it is
-not waved through beside other questions, the ceiling on questions in a
-round of `shared/three-questions.md`; until 20 October 2026 the reason stood
+not waved through beside other questions, as `shared/three-questions.md`
+says of a round in its first sentence; until 20 October 2026 the reason stood
 here that two decisions put in one submit come back as one answer, which
 does not hold for the widget: Claude Code 2.1.304 returns every chosen
 answer with its question, and only a typed answer holds for the whole call,
@@ -298,6 +306,8 @@ once the record this step writes has landed.
    whether it should be private, then `gh repo create NAME --private --source=.
    --push`. On a no, say plainly that the workflow cannot run without a tracker
    and stop, rather than merging straight to the main branch as a substitute.
+   Where they want it public, the command carries `--public` in place of
+   `--private`: `gh` needs such a flag where it does not ask itself.
    If no suitable tracker is available at all, stop the setup and say exactly
    that: every later step publishes specs and tasks there and picks up work from
    there.

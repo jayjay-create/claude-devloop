@@ -32875,7 +32875,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   where no record stands on the main branch and writes the record; no
   question of its step 4 carries a recommendation, the rule standing in
   `shared/how-to-ask.md`; the call of the install question stays alone,
-  without a mechanism, for the reason of the ceiling on questions in a round;
+  without a mechanism, for the reason that what needs weighing goes alone;
   the no of the install question names the exception of a package that
   downloads something when it is installed, in the wording approved that day;
   the bullet of `setup-project` for a blocked install with nobody there says
@@ -32884,11 +32884,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   recorded with what follows from the rules; four findings of the tool
   brought in as defects, three of them built and one closed, four defects
   closed as left on purpose and one as lapsed; 20 October 2026, version
-  0.152.0.** On `task/milestone-3-part-1-2026-10-20`, off `b8db2c9`, in two
+  0.152.0.** On `task/milestone-3-part-1-2026-10-20`, off `b8db2c9`, in three
   commits: `d1250d1`, `skills/setup-project/SKILL.md`,
   `shared/install-question.md`, `shared/how-to-ask.md` and the version; then
   this entry, the rows of the table, `docs/plan.md` and
-  `docs/skill-conventions.md`. The report stands on this machine as
+  `docs/skill-conventions.md`; then the correction made at the check of the
+  branch before the merge, which the paragraph after (h) below records. The report stands on this machine as
   `~/devloop-report-2026-10-20-milestone-3-part-1.md`, in English, and is
   not in the repository. Every line number of a file is as at `b8db2c9`
   unless it says `d1250d1`; a line of this file as at `b8db2c9`, this entry
@@ -33029,7 +33030,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   decided on 12 October 2026 in point 4 for the variables before the command
   (lines 19645 to 19650): inside the project through, outside held against
   the stored answer, under a no blocked. A later order.
-  Cluster 15. Every abbreviation of `--global` counts as global for npm, by
+  Cluster 15. What npm reads as a global install the guard reads as one, by
   the should of finding 6 of the entry of 9 October 2026, lines 14027 to
   14029. Measured on 20 October 2026 in a Linux workspace: `npm prefix --gl`
   and `npm prefix --g` name the global directory in npm 10.9.4 and in npm
@@ -33043,8 +33044,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   print `npm warn Unknown cli config "--glob". This will stop working in the
   next major version of npm.` (with the option as typed) and the repository
   directory, exit 0 — so npm 11.12.1 does not reject those three, it warns
-  and ignores them, and an install with one of them lands in the project. A
-  later order.
+  and ignores them, and an install with one of them lands in the project.
+  So the forms npm reads as global are `--g` and `--gl` on all three
+  versions, and `--glo`, `--glob` and `--globa` install nothing globally on
+  either, npm 12.2.0 refusing them and npm 11.12.1 installing into the
+  project; the later order reads the forms npm reads as global and measures
+  them again before it builds. A later order.
   Cluster 17. The bullet in `skills/setup-project/SKILL.md` lines 44 to 53
   says that the case with nobody there cannot arise here, as `setup-checks`
   lines 176 to 183 say of its own: the run without the person reaches
@@ -33075,10 +33080,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and the old should quoted.
   (a) Cluster 1. `skills/setup-project/SKILL.md` lines 277 to 284 carry the
   new reason: the call carries the install question and no other since what
-  needs weighing stands alone so that it is not waved through, the ceiling on
-  questions in a round of `shared/three-questions.md`; and that until 20
-  October 2026 the reason stood there that two decisions put in one submit
-  come back as one answer, which does not hold for the widget. The other
+  needs weighing stands alone so that it is not waved through, as
+  `shared/three-questions.md` says of a round in its first sentence; and
+  that until 20 October 2026 the reason stood there that two decisions put
+  in one submit come back as one answer, which does not hold for the
+  widget. The other
   places of that form, found with `grep -rn -E 'alone in (its|their|the)
   call|and no other|no other question|carries this question' skills shared`,
   eighteen lines, carry no reason or refer to question 3's form, and `grep
@@ -33127,12 +33133,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   machine, line 54, that the question is asked at a refresh as well; its line
   529 reads that the refresh stayed unbuilt until 20 October 2026.
   Built: the refresh of `setup-project` puts the install question where no record stands on the main branch, with the person there, and writes the record as step 6 does, `skills/setup-project/SKILL.md` lines 87 to 101 at `d1250d1`; its should since this entry, in place of finding 9's: the refresh puts every question of `setup-project` whose stored answer is missing on the main branch, as a first setup puts it, and none whose answer stands, today the install question; the old should of finding 9, quoted: "the refresh, reading a checks.md whose marker is older than 0.122.0, calls setup-checks whole with the person there, where step 5 is met, the way the entry of 1 October 2026 asks for step 5 alone".
-  Not decided, named in the report, section 3 item 4: a stored answer with a
-  value other than yes or no, which `bin/devloop-install-record` lines 50 to
-  54 answer with exit 1 and the cause "unknown value" — whether the refresh
-  puts the question and writes over it, or says the record is unreadable and
-  asks nothing; the text puts the question only where the program answers
-  that no record stands.
+  A stored answer with a value other than yes or no, which
+  `bin/devloop-install-record` lines 50 to 54 answer with exit 1 and the
+  cause "unknown value": named in the report, section 3 item 4, with two
+  ways, and answered by the rules at the check before the merge, the
+  paragraph after (h) below.
   Recorded, not built: `README.md` line 234 says that the question that writes the install record is put at setup, where since 20 October 2026 it is put at a refresh as well where no record stands on the main branch — should: the sentence says both places, in a wording the person approves, `README.md` being in no commit of this order.
   (d) Finding 19 and cluster 18. `shared/install-question.md` lines 13 to 26
   at `d1250d1` say the content of the two lines under the no: at the first
@@ -33196,12 +33201,37 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the decision of cluster 16.
   (h) Everything else above is recorded only.
 
-  **Looked at and left.** `skills/setup-project/SKILL.md` lines 270 to 271,
-  question 1's `gh repo create NAME --private --source=. --push`: the
-  question asks the name and whether the repository should be private and
-  carries no recommendation in its fields; the command line after it writes
-  the private form only, and is left as it stands, named in the report as a
-  question to the person. `skills/start-work/SKILL.md` lines 48 to 53, "Do
+  **Corrected at the check of the branch before the merge**, in a third
+  commit, each with a single right answer and the line that gives it, the
+  version staying 0.152.0. The opening of step 4 gave questions 2 and 3 the
+  reason that they reach past the project, the criterion the should of
+  defect 4 of the entry on the runs of 3 and 4 October 2026 rejects, lines
+  9612 to 9668, a recommendation turning on what the person decides about
+  and not on what the command behind the question touches; it says now that
+  the two decide how this workflow runs, whether it merges by itself and
+  whether the run installs. The reason of the call alone named the ceiling
+  on questions in a round, where `shared/three-questions.md` gives the
+  ceiling, at most three, and the reason, that something that needs weighing
+  goes alone, in one sentence, its first; the skill and this entry say so
+  now. Where `bin/devloop-install-record` answers that it cannot read the
+  value of a record that stands, the refresh asks nothing and writes nothing
+  over it, by the sentence of the skill that the project's records are never
+  overwritten, and says that the record cannot be read, with the program's
+  cause, where nothing changed too, by "Reporting is not asking" in
+  `shared/how-to-ask.md`, the guard blocking every install on such a record;
+  the way of putting the question and writing over the value, the report's
+  first way, would overwrite the project's own content. Question 1's command
+  wrote the private form alone; `gh repo create --help` of `gh` 2.89.0 says
+  that a repository is created non-interactively with the name and one of
+  `--public`, `--private` or `--internal`, and the run runs `gh` with no
+  prompt to answer, so the item says that the command carries `--public` in
+  place of `--private` where they want it public. The paragraph on cluster
+  15 above said every abbreviation of `--global` counts as global, which the
+  measurement on this Mac shows too wide, npm 11.12.1 installing into the
+  project under `--glob`; it says now that what npm reads as global is read
+  as global.
+
+  **Looked at and left.** `skills/start-work/SKILL.md` lines 48 to 53, "Do
   not ask" of the refresh: that is the question whether to refresh at all,
   which stays unasked; the refresh's own question is another question.
   `skills/setup-checks/SKILL.md` lines 485 to 487, that under a no the run
