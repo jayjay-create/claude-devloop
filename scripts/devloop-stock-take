@@ -37,8 +37,9 @@ Exit code 0: nothing broken, nothing uncovered. 1: lines of the search set are
 uncovered, a unit has no straight path, or a status word of docs/roadmap.md
 is broken over a line break. 2: a record is broken, an anchor does not stand
 where its record says, a run under the version this branch introduces was
-recorded before a later commit of the branch changed a line of its thing, or
-the repository is one the tool refuses (a shallow clone).
+recorded before a later commit of the branch changed a line of its thing, a
+defect's closing names a proof that does not hold, or the repository is one
+the tool refuses (a shallow clone).
 
 It needs python3 and git and nothing else, and no GNU tool: it runs on macOS.
 
@@ -245,13 +246,21 @@ Four record types:
   branch on disk, site and evidence are usually the same line. For a defect,
   the evidence is the line where its fix stands - a check command's line
   included - or the line in which the entry itself says nothing is built, or
-  empty. For a named skill, the note
+  the line of docs/roadmap.md that records its closing with one of the three
+  reasons under D, or empty. For a named skill, the note
   carries the search by what it does, not only by its name, that came back
   empty. For a check command, the note carries the green form.
 - run, keyed to a thing by name: date (YYYY-MM-DD), the version it ran or the
   commit it ran, source (entry: the roadmap entry names it; log: read from the
   session log of that run; none: not recorded), run_file + run_anchor (the
-  roadmap line that records the run). A commit enters a run record only where
+  roadmap line that records the run). A run that stands on the row of a
+  shared text or a branch counts for no defect by itself, since the rule of
+  section D may undercount and never overcount: a run enters a defect's row
+  once the session log of that run has been read for whether it met exactly
+  the defect's case, with the version the run ran under, and whoever
+  evaluates a run enters it so on the row of every defect whose case it met;
+  decided by the person on 20 October 2026, the roadmap entry of that date.
+  A commit enters a run record only where
   the entry says the run ran that commit; a commit named for another reason,
   such as the one that built a fix, is not a run's version. A run's commit
   must be an ancestor of origin/main, and the tool checks it: that rejects a
@@ -422,6 +431,44 @@ D. HOW STATES ARE COMPUTED
 - Walked: built, and at least one of its runs counts.
 - Built, never walked: built, and no run counts. Runs that do not count stay
   in the output, each with the reason.
+- Closed: the thing is a defect and its evidence stands on a line of
+  docs/roadmap.md that records its closing with one of three reasons and the
+  proof that reason asks for, and the tool has confirmed the proof on this
+  run with its own means for anchors; since 20 October 2026, decided by the
+  person that day, the roadmap entry of that date. The line carries the word
+  Closed, which takes it into the search set as a status word does, and one
+  of these three forms, whole on one physical line, the file a path from the
+  repository root in backticks and the text in double quotes, 20 to 80
+  characters, no tab and no double quote in it:
+    Closed, lapsed: `FILE` no longer carries "TEXT", removed at `COMMIT`.
+    Closed, lapsed: `FILE` no longer carries "TEXT".
+    Closed, corrected in the document: `FILE` carries "TEXT".
+    Closed, left on purpose: decided in `FILE` at "TEXT".
+  Lapsed: what the defect describes is gone or works otherwise, so that its
+  should has no object; the proof is a file and a text that stood in it and
+  stands there no more, and where it can be found the commit that removed the
+  place. The tool reads that the text is not in the file now, that it stood in
+  the file at some commit of this history (git log -S), and where a commit is
+  named, that it resolves, that the file at that commit does not carry the
+  text and that the file at its first parent does. Corrected in the document:
+  the wrong sentence itself was the defect and has been corrected where it
+  stood; the proof is the file and the text of the corrected sentence, which
+  the tool reads as an anchor, found exactly once. This reason holds only
+  where the sentence itself was the defect: a defect that a written
+  convention answers is not closed by it and stays recorded, as the paragraph
+  on the two check headings above says. Left on purpose: the repository says,
+  with a reason, that it is not built; the proof is the line that decides it,
+  file and text, read as an anchor found exactly once. Where the file of the
+  proof is docs/roadmap.md, the closing line itself is left out of the count,
+  since it quotes the text. A line carrying the word Closed in none of the
+  three forms, or a proof the tool cannot confirm, rejects the thing's record
+  as broken, the message naming what failed, and the defect is not closed; a
+  command standing in the text of the roadmap is never run. Only a defect is
+  closed: a thing of another kind whose evidence stands on such a line reads
+  by the place of the line as before. A closed defect cannot be walked, so a
+  run on it is a broken record as on a thing that is not built. The tool
+  counts closed defects apart from every other state and lists them in a
+  list of their own, under CLOSED DEFECTS, and in no list of open things.
 
 A run counts when the version it ran already contains the last change to
 every line the thing stands on. Those lines are: for a straight path, every
@@ -507,7 +554,9 @@ E. THE SEARCH SET, FOR COVERAGE
   command block, as one item covered by an anchor on any of its lines.
 - In docs/roadmap.md under "Known gaps": every entry head (a line starting
   with "- **") and every line holding "Recorded, not built", "Built",
-  "Half built" or "Should hold". One of those three status words with a line
+  "Half built" or "Should hold", or the word "Closed", the word of a closing
+  line under D since 20 October 2026, which stood on no line of the file as
+  a word that day. One of those three status words with a line
   break between two of its words stands in no line of the set; since 12
   October 2026 every such place is listed under a heading of its own, with
   the line it starts on, and the tool exits 1: the status word belongs on one
@@ -540,6 +589,10 @@ LIMITS
 
 - It proves that an anchor stands where a record says, not that it supports
   the record.
+- A closing's proof shows that a text is absent from a file and once stood
+  in it, that a sentence stands in a file once, or that a line stands; it
+  does not show that the text was the defect's place, that the corrected
+  sentence is right, or that the line decides what the record says it does.
 - A condition phrased without any of the search words is caught only by the
   headings, items, list heads and table rows, not with certainty.
 - The version rule sees the lines a thing stands on; a line of a branch that
@@ -623,7 +676,8 @@ KINDS = (
     "defect",
 )
 SOURCES = ("entry", "log", "none")
-STATES = ("Undetermined", "Recorded, not built", "Built, never walked", "Walked")
+STATES = ("Undetermined", "Recorded, not built", "Built, never walked", "Walked",
+          "Closed")
 SHIPPED = ("skills", "shared", "output-styles", "hooks", "bin", "scripts",
            ".github")
 RECORDED_IN = ("docs", "README.md")
@@ -657,7 +711,18 @@ BOLD_PARA_HEAD = re.compile(r"^\*\*")
 TABLE_ROW = re.compile(r"^\s*\|")
 TABLE_SEPARATOR = re.compile(r"^\s*\|?\s*:?-{3,}")
 ENTRY_HEAD = re.compile(r"^- \*\*")
-ROADMAP_STATUS = re.compile(r"\bBuilt\b|Half built|Recorded, not built|Should hold")
+ROADMAP_STATUS = re.compile(
+    r"\bBuilt\b|Half built|Recorded, not built|Should hold|\bClosed\b")
+CLOSED_WORD = re.compile(r"\bClosed\b")
+CLOSED_FORMS = (
+    ("lapsed", re.compile(
+        r'Closed, lapsed: `([^`]+)` no longer carries "([^"]+)"'
+        r'(?:, removed at `([0-9a-f]{7,40})`)?\.')),
+    ("corrected in the document", re.compile(
+        r'Closed, corrected in the document: `([^`]+)` carries "([^"]+)"\.')),
+    ("left on purpose", re.compile(
+        r'Closed, left on purpose: decided in `([^`]+)` at "([^"]+)"\.')),
+)
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 FENCE = re.compile(r"^ {0,3}(```|~~~)")
 INSERT = re.compile(r"^!`\$\{CLAUDE_PLUGIN_ROOT\}/bin/devloop-text ([a-z0-9-]+)`$")
@@ -887,10 +952,11 @@ class Files:
         return None
 
 
-def find_anchor(files, rel, anchor):
+def find_anchor(files, rel, anchor, skip=None):
     """(status, lineno). status: ok, missing, multiple, no-file, too-long,
     too-short, whitespace. For multiple, the lines it stands on in place of
-    the line."""
+    the line. A line numbered skip is left out of the count: the closing line
+    of a defect, which quotes the text it names."""
     if anchor != anchor.strip():
         return "whitespace", None
     if len(anchor) > 80:
@@ -899,10 +965,11 @@ def find_anchor(files, rel, anchor):
     if got is None:
         return "no-file", None
     text, lines = got
-    total = text.count(anchor)
+    hits = [i for i, l in enumerate(lines, 1) if anchor in l]
+    hits = [i for i in hits if i != skip]
+    total = sum(lines[i - 1].count(anchor) for i in hits)
     if total == 0:
         return "missing", None
-    hits = [i for i, l in enumerate(lines, 1) if anchor in l]
     if total > 1:
         return "multiple", hits
     lineno = hits[0]
@@ -925,6 +992,86 @@ def anchorable(text, line):
 
 def absolute_path(field):
     return field.startswith("/") or "/Users/" in field or "/home/" in field
+
+
+def closing_of(line):
+    """(reason, file, text, commit or None) where the line carries one of
+    the three closing forms of section D, else None."""
+    for reason, rx in CLOSED_FORMS:
+        m = rx.search(line)
+        if m:
+            g = m.groups()
+            return reason, g[0], g[1], (g[2] if len(g) > 2 else None)
+    return None
+
+
+def check_closing(root, files, rec, closing, skip):
+    """The proof of a closing, read with the tool's own means for anchors
+    and with git; every failure goes to the record's errors. skip: the line
+    of docs/roadmap.md the closing stands on, left out of a count over that
+    file."""
+    reason, rel, text, commit = closing
+    inside = not rel.startswith("/") and ".." not in rel.split("/")
+    found, at = find_anchor(files, rel, text,
+                            skip if rel == "docs/roadmap.md" else None) \
+        if inside else ("no-file", None)
+    if reason == "lapsed":
+        if len(text) < 20:
+            rec.errors.append("closed as lapsed: %r is shorter than 20 "
+                              "characters and shows no place" % text)
+            return
+        if found in ("ok", "multiple"):
+            rec.errors.append("closed as lapsed: %r stands in %s still, on %s"
+                              % (text, rel, lines_named(
+                                  at if found == "multiple" else [at])))
+            return
+        if found != "missing":
+            rec.errors.append("closed as lapsed: %r in %s: %s" % (text, rel, {
+                "no-file": "the file cannot be " "read",
+                "too-long": "longer than 80 " "characters",
+                "whitespace": "carries leading or trailing " "whitespace",
+            }[found]))
+            return
+        stood = git(root, "log", "--format=%H", "-S" + text, "--", rel,
+                    check=False).split()
+        if not stood:
+            rec.errors.append("closed as lapsed: %r never stood in %s on "
+                              "this history" % (text, rel))
+            return
+        if commit is None:
+            return
+        removed = resolve(root, commit)
+        why = None
+        if removed is None:
+            why = "unresolved"
+        elif text in git(root, "show", "%s:%s" % (removed, rel), check=False):
+            why = "still"
+        elif text not in git(root, "show", "%s^:%s" % (removed, rel),
+                             check=False):
+            why = "parent"
+        if why is not None:
+            rec.errors.append("closed as lapsed names %s as the commit that "
+                              "removed %r from %s, but %s"
+                              % (commit, text, rel, {
+                                  "unresolved": "it does not resolve here",
+                                  "still": "the file carries the text at "
+                                           "that commit",
+                                  "parent": "the file did not carry the text "
+                                            "before it",
+                              }[why]))
+        return
+    if found == "multiple":
+        rec.errors.append("closed as %s: %r in %s: found more than once, on "
+                          "%s, so it is not an anchor"
+                          % (reason, text, rel, lines_named(at)))
+    elif found != "ok":
+        rec.errors.append("closed as %s: %r in %s: %s" % (reason, text, rel, {
+            "missing": "not " "found",
+            "no-file": "the file cannot be " "read",
+            "too-long": "longer than 80 " "characters",
+            "too-short": "shorter than 20 characters and not a whole " "line",
+            "whitespace": "carries leading or trailing " "whitespace",
+        }[found]))
 
 
 def named_skills(files):
@@ -955,6 +1102,7 @@ class Record:
         self.anchors = {}   # anchor column -> (status, lineno)
         self.parts = None   # a thing's three name parts
         self.part_of = None  # a not-a-thing's thing
+        self.closing = None  # a defect's confirmed closing, section D
 
     def __getitem__(self, k):
         return self.f[k]
@@ -1629,6 +1777,26 @@ def analyse(root, table=None, only=None):
             rec.errors.append("evidence under %s is neither a shipped "
                               "directory nor docs/ or README.md"
                               % rec["evidence_file"])
+    # a defect closed on a line of docs/roadmap.md: the proof read now, the
+    # record rejected where it does not hold
+    for rec in things:
+        ev = rec.anchors.get("evidence_anchor")
+        if rec["kind"] != "defect" or rec["evidence_file"] != "docs/roadmap.md" \
+                or not ev or ev[0] != "ok":
+            continue
+        line = files.get("docs/roadmap.md")[1][ev[1] - 1]
+        if not CLOSED_WORD.search(line):
+            continue
+        closing = closing_of(line)
+        if closing is None:
+            rec.errors.append("the evidence line of docs/roadmap.md carries "
+                              "the word Closed and none of the three closing "
+                              "forms of section D")
+            continue
+        n = len(rec.errors)
+        check_closing(root, files, rec, closing, ev[1])
+        if len(rec.errors) == n:
+            rec.closing = closing
     # notes of things: the forms
     named = named_skills(files)
     roots = []    # things carrying ROOT
@@ -1835,6 +2003,9 @@ def analyse(root, table=None, only=None):
                                            rec["kind"])
         else:
             t["state"] = "Undetermined"
+        if rec.closing is not None:
+            t["state"] = "Closed"
+        t["closing"] = rec.closing
         things_by_name[t["name"]] = t
         res.things.append(t)
         if rec.parts[2] == STRAIGHT and is_unit_file(rec.site()[0]):
@@ -2029,6 +2200,8 @@ def render(res):
     out.append("STATES, by file and kind (evidence that decided each)")
     groups = {}
     for t in res.things:
+        if t["state"] == "Closed":
+            continue
         gfile = t["evidence"][0] if t["evidence"] else t["site"][0]
         groups.setdefault((gfile, t["kind"]), []).append(t)
     for (gfile, kind) in sorted(groups):
@@ -2036,6 +2209,16 @@ def render(res):
         for t in sorted(groups[(gfile, kind)], key=lambda t: t["name"]):
             ev = ("%s:%d" % t["evidence"]) if t["evidence"] else "no evidence"
             out.append("    %-22s %s  (%s)" % (t["state"], t["name"], ev))
+    out.append("")
+    closed = [t for t in res.things if t["state"] == "Closed"]
+    out.append("CLOSED DEFECTS (reason and proof, in no list of open things): %d"
+               % len(closed))
+    for t in sorted(closed, key=lambda t: t["name"]):
+        reason, rel, text, commit = t["closing"]
+        out.append("  " + t["name"])
+        out.append("    %s: %s %r%s  (%s:%d)" % (
+            (reason, rel, text, ", removed at " + commit if commit else "")
+            + t["evidence"]))
     out.append("")
     out.append("RUNS THAT DO NOT COUNT")
     n = 0
@@ -2325,7 +2508,7 @@ def selftest():
               "One check, silent when green:\n\n"
               "    ls skills/ | grep -c nothing-of-that-name\n\n"
               "## Something else\n\nText.\n")
-        write(root, "docs/roadmap.md",
+        roadmap_c1 = (
               "# Roadmap\n\n## Known gaps\n\n"
               "- **A defect measured on 2026-01-06, on the first version.**\n"
               "  Recorded, not built.\n"
@@ -2372,6 +2555,7 @@ def selftest():
               "| `delta` | A name whose directory does not exist | test |\n"
               "| `omega-skill` | A row that no record covers | test |\n\n"
               "## Decisions\n\nNone.\n")
+        write(root, "docs/roadmap.md", roadmap_c1)
         # fixtures for the rules of 12 October 2026: comment lines and
         # docstrings in no set, a code line with a comment behind it in it,
         # an exit through a function in it, and a workflow's comment line
@@ -2459,7 +2643,70 @@ def selftest():
         c4 = run_git(root, "rev-parse", "HEAD")
         run_git(root, "checkout", "-q", "main")
         # c5 and c6 bump the version twice past origin/main, the shape of a
-        # branch whose squash merge lands only the second bump
+        # branch whose squash merge lands only the second bump; c5 also adds
+        # the entries of the closed defects of 20 October 2026 to the
+        # roadmap, after the entries of c1, which keep their blame: a lapsed
+        # closing names c2, which removed its text, c1, at which the text
+        # still stands, and c3, before which it did not stand
+        closings = "".join([
+            "- **A defect closed as lapsed.**\n",
+            "  Closed, lapsed: `skills/alpha/SKILL.md` no longer carries "
+            "\"say nothing about the weather\", removed at `%s`.\n" % c2[:7],
+            "- **A defect closed as lapsed whose text stands in the file "
+            "again.**\n",
+            "  Closed, lapsed: `skills/alpha/SKILL.md` no longer carries "
+            "\"If the sky is blue, say that it is blue today\".\n",
+            "- **A defect closed as lapsed naming a commit that does not "
+            "resolve.**\n",
+            "  Closed, lapsed: `skills/alpha/SKILL.md` no longer carries "
+            "\"Unless it rains, carry on with the ordinary work.\", removed at "
+            "`deadbee`.\n",
+            "- **A defect closed as lapsed naming a commit at which the text "
+            "still stands.**\n",
+            "  Closed, lapsed: `skills/alpha/SKILL.md` no longer carries "
+            "\"say nothing about the weather\", removed at `%s`.\n" % c1[:7],
+            "- **A defect closed as lapsed naming a commit before which the "
+            "text did not stand.**\n",
+            "  Closed, lapsed: `skills/alpha/SKILL.md` no longer carries "
+            "\"say nothing about the weather\", removed at `%s`.\n" % c3[:7],
+            "- **A defect closed as lapsed whose text never stood in the "
+            "file.**\n",
+            "  Closed, lapsed: `skills/alpha/SKILL.md` no longer carries "
+            "\"a text that never stood in this file at all\".\n",
+            "- **A defect closed as lapsed with a text too short.**\n",
+            "  Closed, lapsed: `skills/alpha/SKILL.md` no longer carries "
+            "\"weather words\".\n",
+            "- **A defect closed as lapsed naming a file that cannot be "
+            "read.**\n",
+            "  Closed, lapsed: `skills/nowhere/SKILL.md` no longer carries "
+            "\"a text in a file that is not there at all\".\n",
+            "- **A defect closed as corrected in the document.**\n",
+            "  Closed, corrected in the document: `docs/skill-conventions.md` "
+            "carries \"One check, silent when green:\".\n",
+            "- **A defect closed as corrected whose sentence does not "
+            "stand.**\n",
+            "  Closed, corrected in the document: `docs/skill-conventions.md` "
+            "carries \"A sentence that stands nowhere in the file\".\n",
+            "- **A defect closed as corrected whose sentence stands twice.**\n",
+            "  Closed, corrected in the document: `skills/zeta/SKILL.md` "
+            "carries \"same text\".\n",
+            "- **A defect closed as left on purpose.**\n",
+            "  Left as it is: the case does not arise, decided here for the "
+            "self-test.\n",
+            "  Closed, left on purpose: decided in `docs/roadmap.md` at \"the "
+            "case does not arise, decided here for the self-test\".\n",
+            "- **A defect closed as left on purpose whose decision line is "
+            "gone.**\n",
+            "  Closed, left on purpose: decided in `docs/roadmap.md` at \"a "
+            "decision line that is not there\".\n",
+            "- **A defect closed in none of the three forms.**\n",
+            "  Closed, for a reason not on the list: nothing to read here.\n",
+            "- **A run on a closed defect.**\n",
+        ])
+        write(root, "docs/roadmap.md", roadmap_c1.replace(
+            "- **A defect answered by the output style.**\n\n## Named",
+            "- **A defect answered by the output style.**\n" + closings
+            + "\n## Named"))
         write(root, ".claude-plugin/plugin.json", plugin("0.3.0"))
         run_git(root, "add", "-A")
         run_git(root, "commit", "-q", "-m", "c5", date="2026-01-13T12:00:00+0100")
@@ -2496,6 +2743,21 @@ def selftest():
         ELSEWHERE = "docs/roadmap.md / Known gaps / a defect with evidence elsewhere"
         MISSING = "alpha / Alpha / missing anchor"
         FOURTH = "alpha / " + fourth_head + " / straight path"
+        CLOSED = "docs/roadmap.md / Known gaps / "
+        DEF_LAPSED = CLOSED + "a defect closed as lapsed"
+        DEF_STILL = CLOSED + "closed as lapsed, the text standing in the file again"
+        DEF_UNRESOLVED = CLOSED + "closed as lapsed naming a commit that does not resolve"
+        DEF_STILL_AT = CLOSED + "closed as lapsed naming a commit at which the text still stands"
+        DEF_PARENT = CLOSED + "closed as lapsed naming a commit before which the text did not stand"
+        DEF_NEVER = CLOSED + "closed as lapsed, the text never in the file"
+        DEF_SHORT = CLOSED + "closed as lapsed with a text too short"
+        DEF_NOFILE = CLOSED + "closed as lapsed naming a file that cannot be read"
+        DEF_CORRECTED = CLOSED + "a defect closed as corrected in the document"
+        DEF_CORR_MISSING = CLOSED + "closed as corrected, the sentence not standing"
+        DEF_CORR_TWICE = CLOSED + "closed as corrected, the sentence standing twice"
+        DEF_LEFT = CLOSED + "a defect closed as left on purpose"
+        DEF_LEFT_MISSING = CLOSED + "closed as left on purpose, the decision line gone"
+        DEF_NOFORM = CLOSED + "closed in none of the three forms"
 
         def thing(name, file, anchor, kind="skill branch", ev=True, **kw):
             d = dict(type="thing", name=name, kind=kind, file=file, anchor=anchor)
@@ -2867,6 +3129,54 @@ def selftest():
                   note="outcome with nobody there not stated yet"),
             thing("shared/lines.md / whole file / a root outside skills", LINES,
                   "Fixture line 01 for a record", kind="shared text", note=ROOT),
+            # the closed defects of 20 October 2026: green, one per reason,
+            # the lapsed one naming the commit that removed its text; red,
+            # every way a proof fails, a closing line in none of the forms,
+            # and a run on a closed defect
+            thing(DEF_LAPSED, R, "A defect closed as lapsed.**", kind="defect",
+                  ev=False, evidence_file=R, evidence_anchor=
+                  '"say nothing about the weather", removed at `%s`' % c2[:7]),
+            thing(DEF_STILL, R, "whose text stands in the file again.",
+                  kind="defect", ev=False, evidence_file=R, evidence_anchor=
+                  'no longer carries "If the sky is blue, say that it is blue today"'),
+            thing(DEF_UNRESOLVED, R, "naming a commit that does not resolve.",
+                  kind="defect", ev=False, evidence_file=R,
+                  evidence_anchor="removed at `deadbee`"),
+            thing(DEF_STILL_AT, R, "naming a commit at which the text still stands.",
+                  kind="defect", ev=False, evidence_file=R, evidence_anchor=
+                  '"say nothing about the weather", removed at `%s`' % c1[:7]),
+            thing(DEF_PARENT, R, "naming a commit before which the text did not stand.",
+                  kind="defect", ev=False, evidence_file=R, evidence_anchor=
+                  '"say nothing about the weather", removed at `%s`' % c3[:7]),
+            thing(DEF_NEVER, R, "whose text never stood in the file.",
+                  kind="defect", ev=False, evidence_file=R, evidence_anchor=
+                  '"a text that never stood in this file at all"'),
+            thing(DEF_SHORT, R, "A defect closed as lapsed with a text too short.",
+                  kind="defect", ev=False, evidence_file=R,
+                  evidence_anchor='no longer carries "weather words"'),
+            thing(DEF_NOFILE, R, "naming a file that cannot be read.",
+                  kind="defect", ev=False, evidence_file=R, evidence_anchor=
+                  '"a text in a file that is not there at all"'),
+            thing(DEF_CORRECTED, R, "A defect closed as corrected in the document.**",
+                  kind="defect", ev=False, evidence_file=R,
+                  evidence_anchor='carries "One check, silent when green:"'),
+            thing(DEF_CORR_MISSING, R, "closed as corrected whose sentence does not stand.",
+                  kind="defect", ev=False, evidence_file=R, evidence_anchor=
+                  'carries "A sentence that stands nowhere in the file"'),
+            thing(DEF_CORR_TWICE, R, "closed as corrected whose sentence stands twice.",
+                  kind="defect", ev=False, evidence_file=R,
+                  evidence_anchor='`skills/zeta/SKILL.md` carries "same text"'),
+            thing(DEF_LEFT, R, "A defect closed as left on purpose.**",
+                  kind="defect", ev=False, evidence_file=R, evidence_anchor=
+                  'at "the case does not arise, decided here for the self-test"'),
+            thing(DEF_LEFT_MISSING, R, "whose decision line is gone.",
+                  kind="defect", ev=False, evidence_file=R,
+                  evidence_anchor='at "a decision line that is not there"'),
+            thing(DEF_NOFORM, R, "A defect closed in none of the three forms.",
+                  kind="defect", ev=False, evidence_file=R,
+                  evidence_anchor="Closed, for a reason not on the list"),
+            run(DEF_LAPSED, "2026-01-11", "A run on a closed defect.",
+                version="0.2.0"),
         ] + early_rows
         table = os.path.join(root, "docs", "stock-take.tsv")
         write(root, "docs/stock-take.tsv", "\n".join(rows) + "\n")
@@ -3485,6 +3795,86 @@ def selftest():
              exit_code(res_joined) == 0 and not res_joined.broken_count()
              and "BROKEN OVER A LINE BREAK (a status word belongs on one "
                  "line): 0\n" in render(res_joined))
+        # the fifth state of 20 October 2026: a defect closed on a line of
+        # the roadmap, its proof read on every run, the closed listed apart
+        report = render(res)
+        closed_block = report.split("CLOSED DEFECTS", 1)[1].split("\n\n", 1)[0]
+        states_block = report.split("STATES, by file and kind", 1)[1].split(
+            "\nCLOSED DEFECTS", 1)[0]
+        case("a defect closed as lapsed: its text gone from the file, or "
+             "standing there still",
+             err("closed as lapsed: 'If the sky is blue, say that it is blue "
+                 "today' stands in skills/alpha/SKILL.md still, on line 3")
+             and states.get(DEF_STILL) is None,
+             states.get(DEF_LAPSED) == "Closed" and DEF_LAPSED in closed_block)
+        case("a defect closed as lapsed naming the commit that removed the "
+             "text: confirmed, or not resolving, or the text standing at it, "
+             "or not standing before it",
+             err("closed as lapsed names deadbee as the commit that removed "
+                 "'Unless it rains, carry on with the ordinary work.' from "
+                 "skills/alpha/SKILL.md, but it does not resolve here")
+             and err("names %s as the commit that removed 'say nothing about "
+                     "the weather' from skills/alpha/SKILL.md, but the file "
+                     "carries the text at that commit" % c1[:7])
+             and err("names %s as the commit that removed 'say nothing about "
+                     "the weather' from skills/alpha/SKILL.md, but the file "
+                     "did not carry the text before it" % c3[:7])
+             and states.get(DEF_UNRESOLVED) is None
+             and states.get(DEF_STILL_AT) is None
+             and states.get(DEF_PARENT) is None,
+             states.get(DEF_LAPSED) == "Closed"
+             and "removed at %s" % c2[:7] in closed_block)
+        case("a defect closed as lapsed with a text that never stood in the "
+             "file",
+             err("closed as lapsed: 'a text that never stood in this file at "
+                 "all' never stood in skills/alpha/SKILL.md on this history")
+             and states.get(DEF_NEVER) is None,
+             states.get(DEF_LAPSED) == "Closed")
+        case("a defect closed as lapsed with a text too short to show a place",
+             err("closed as lapsed: 'weather words' is shorter than 20 "
+                 "characters and shows no place")
+             and states.get(DEF_SHORT) is None,
+             states.get(DEF_LAPSED) == "Closed")
+        case("a defect closed as lapsed naming a file that cannot be read",
+             err("closed as lapsed: 'a text in a file that is not there at "
+                 "all' in skills/nowhere/SKILL.md: the file cannot be read")
+             and states.get(DEF_NOFILE) is None,
+             states.get(DEF_LAPSED) == "Closed")
+        case("a defect closed as corrected in the document: the sentence "
+             "found once, or not at all, or twice",
+             err("closed as corrected in the document: 'A sentence that "
+                 "stands nowhere in the file' in docs/skill-conventions.md: "
+                 "not found")
+             and err("closed as corrected in the document: 'same text' in "
+                     "skills/zeta/SKILL.md: found more than once, on lines 5 "
+                     "and 9, so it is not an anchor")
+             and states.get(DEF_CORR_MISSING) is None
+             and states.get(DEF_CORR_TWICE) is None,
+             states.get(DEF_CORRECTED) == "Closed"
+             and DEF_CORRECTED in closed_block)
+        case("a defect closed as left on purpose: the decision line found "
+             "with the closing line left out of the count, or gone",
+             err("closed as left on purpose: 'a decision line that is not "
+                 "there' in docs/roadmap.md: not found")
+             and states.get(DEF_LEFT_MISSING) is None,
+             states.get(DEF_LEFT) == "Closed" and DEF_LEFT in closed_block)
+        case("a closing line in none of the three forms",
+             err("the evidence line of docs/roadmap.md carries the word Closed "
+                 "and none of the three closing forms of section D")
+             and states.get(DEF_NOFORM) is None,
+             states.get(DEF_LAPSED) == "Closed")
+        case("a run on a closed defect",
+             err("a run on %r, which is Closed and cannot be walked" % DEF_LAPSED)
+             and reason(DEF_LAPSED, "2026-01-11") == "the thing is not built",
+             counts(DEF_CHECK, "2026-01-11"))
+        case("closed defects counted apart and listed in their own list, a "
+             "defect answered by a convention alone staying recorded",
+             "CLOSED DEFECTS (reason and proof, in no list of open things): 3\n"
+             in report and DEF_LAPSED not in states_block
+             and "  %-22s %d\n    %-20s %d\n" % ("Closed", 3, "defect", 3)
+             in report,
+             states.get(DEF_FURTHER) == "Recorded, not built"
+             and DEF_FURTHER not in closed_block and DEF_FURTHER in states_block)
     # every message the tool can produce, against what the cases asserted
     templates = message_templates(os.path.abspath(__file__))
     without = []
