@@ -577,6 +577,26 @@ to look up, follows from what they have said, is a convention of this
 workflow or is settled by the project's own rules, the run settles there as
 it does here.
 
+**A question whose answer is stored is put where the answer is needed,
+wherever the stored answer is missing.** The install question is answered
+at the setup of a project, with the person there, and its answer stands in
+`environment.md` on the main branch; a project set up before the question
+existed, or whose record never landed, carries no answer, and the guard
+blocks every install there naming that cause. So the question is put
+wherever its stored answer is missing and the place needs it: at a first
+setup; at a refresh of the setup where no record stands on the main branch,
+since 20 October 2026, `setup-project` under "Refreshing an existing setup";
+and a second time in `setup-checks` step 8 where the record does not say
+yes, since 5 October 2026. A question whose answer stands is not put again
+there, whatever it says: re-asking is how a working project gets talked into
+changing its mind. The check setup needs nothing for this rule: it puts its
+question on the project's packages where no record stands and the person is
+there, in step 3, and both permissions a second time in step 8 where their
+record does not say yes; where the answer on work without them is missing,
+the mode is not set up, a valid state that `--auto` sets up. Decided by the
+person on 20 October 2026, the roadmap entry of that date on milestone 3,
+part 1.
+
 ## Every question carries its own reason
 
 Four things have reached the user by the time they answer: what is being
@@ -761,8 +781,9 @@ named where the text is specified — as `setup-project` step 4 does, naming
 since 3 October 2026 the field of the widget each point of question 3 goes
 in, after two named forms that put the points in prose had been met by a tab
 of a form in three runs, and since 17 October 2026 the question field for the
-recommendation of questions 1 and 5 and text for question 4 — and a text and a
-form that do not fit are one thing
+recommendation of questions 1 and 5 and text for question 4, until 20
+October 2026, when the person decided that no question of that step carries
+one — and a text and a form that do not fit are one thing
 wrong, not two: the text goes into a form that holds it, and it is never made
 shorter in the hope that it gets through. Nothing in this set named
 the widget before 30 September 2026, and that is how a question approved twice
@@ -948,7 +969,9 @@ this convention or the install guard are about — where the guard stops one all
 the same, that is the false positive its own message names. A tool that lands
 outside the repository — a linter, a driver, whatever a wrapper downloads on
 first use — is the person's, and it lands there under their explicit
-permission only: asked at setup, with them there — and since 5 October 2026 a
+permission only: asked at setup, with them there — since 20 October 2026 at
+a refresh of the setup as well, where no record stands on the main branch,
+with them there — and since 5 October 2026 a
 second time, by the same question, only where the unattended mode is set up
 and the record does not say yes — and held as recorded
 state that a hook can read. Nothing else counts as that permission, and a

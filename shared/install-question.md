@@ -11,11 +11,19 @@ it.
 - **In the yes, label and line: what a yes means.** From then on the run
   installs such tools and browsers by itself, without asking again.
 - **In the no, label and line: where a no leads, which differs by where the
-  question is put.** Put at the setup of the project, the first time: nothing
-  is installed without them; where a tool or a browser is missing they get
-  the command for it and decide themselves. Put where the unattended mode is
-  set up, the second time: nothing is installed without them, and work
-  without them is then not possible, every piece of work running with them.
+  question is put.** Put at the setup of the project, the first time: the run
+  installs nothing outside the project; where a tool or a browser is missing
+  they get the command for it and decide themselves; and the exception, that
+  some packages of their project download something themselves when they are
+  installed, a browser for tests say, which the no does not stop. Put where
+  the unattended mode is set up, the second time: the run installs nothing
+  outside the project, the same exception, and work without them is then not
+  possible, every piece of work running with them. The exception since 20
+  October 2026, decided by the person that day: a browser a package's
+  installation downloads stays outside the guard, by "Works with nothing
+  else installed" in `docs/skill-conventions.md`, and a no that said nothing
+  of it implied something untrue; until then the no said that nothing is
+  installed without them.
 - **In the header: a name for the subject**, of twelve characters at most,
   which is what that field holds, and as telling as it can be. It carries no
   point of the decision.
@@ -36,6 +44,8 @@ checker — carry no decision and have no field. The standard is that nothing
 in the question implies something untrue, not that everything true is said.
 Give no recommendation. The call carries this question and no other. The
 wording approved on 5 October 2026 stands in the roadmap entry of that date,
-and the wording approved on 8 October 2026, with the browsers for tests in
-the subject, the yes and the first no, in the roadmap entry of that date; a
+the wording approved on 8 October 2026, with the browsers for tests in
+the subject, the yes and the first no, in the roadmap entry of that date,
+and the wording approved on 20 October 2026, the two lines under the no with
+the exception, in the roadmap entry of that date on milestone 3, part 1; a
 skill says what is said, not the words.
