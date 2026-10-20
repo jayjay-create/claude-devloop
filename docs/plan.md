@@ -126,6 +126,13 @@ run counts when the version it ran already contains the last change to every
 line the thing stands on, read off `git blame`; a run recorded in the roadmap
 with no version does not count, and the runs that do not count are printed
 with their reason.
+Since 20 October 2026 the tool computes a fifth state, closed: the thing is a
+defect, and its evidence stands on a line of the roadmap that records its
+closing as lapsed, corrected in the document or left on purpose, with the
+proof that reason asks for, which the tool confirms on every run and rejects
+as a broken record where it fails; closed defects are counted apart and stand
+in no list of open things — the roadmap entry of that date on the person's
+answers, and section D of the tool's header.
 
 The things: the twelve skills down to their branches, `shared/`, since 15
 October 2026 `output-styles/`, `hooks/`,
