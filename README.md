@@ -88,10 +88,8 @@ the step it was in rather than starting over.
 demonstrated on its own, fits one fresh session, and records which tasks must
 land first as real, queryable blocking relationships. The cut follows from the
 spec, not from anything only you know, so it is created without asking you,
-and since 17 October 2026 you see it as what was created, at the next point
-where the run waits for you, or in the tracker where the run goes alone;
-until that day it was presented first and you could name a different one
-before it was created.
+and you see it as what was created, at the next point where the run waits
+for you, or in the tracker where the run goes alone.
 
 **Build each task.** One at a time, in its own subagent with a fresh context.
 Test first. Fast checks after every file change, the full suite before anything
@@ -155,8 +153,8 @@ then sit on a pull request nobody is there to merge, stand at a prompt nobody
 is there to answer, start a task it cannot finish, stop at a tool it may not
 install, or leave a check off that the work has made necessary. A prompt that
 comes during the run anyway is answered no by a hook, and the run writes an
-issue and takes the next task instead of waiting. Since 16 October 2026 a
-run without you is not stopped by what is yours on the main branch either:
+issue and takes the next task instead of waiting. A run without you is not
+stopped by what is yours on the main branch either:
 a file you changed and did not commit, which bringing the main branch to
 GitHub's state would overwrite, is set aside in git's stash under a name
 devloop knows it by and brought back when the run ends — where GitHub
@@ -228,10 +226,14 @@ runs passes under that record without a place being read. `sudo`, an
 installer piped from the network, a branded browser Playwright would install
 at the system's own location and the system packages a browser's
 `install-deps` would install stay with you whatever the record says, and so
-does, since 13 October 2026, every program that runs the command as an
+does every program that runs the command as an
 administrator or as another user — `doas`, `su`, `run0`, `pkexec` and the
-rest of that kind, which `docs/skill-conventions.md` lists. The
-question that writes that record is put at setup. Since 9 October 2026 two
+rest of that kind, which `docs/skill-conventions.md` lists. The question
+that writes that record is put at setup, and at a refresh of the setup as
+well where no record stands on the main branch. The record travels with the
+repository: whoever works with devloop in a clone of the project works under
+the answer it carries, so under a yes the run installs tools and browsers for
+tests outside the project on their machine as well, without asking them. Two
 more: a guard that blocks the file marking an unattended run from being
 written in any mode but auto, and states the permission mode beside a call
 of `bin/devloop-permission-mode`, which is how the run reads whether it may
@@ -239,8 +241,8 @@ go alone; and a hook that answers no to every permission prompt while that
 mark stands and names the session that wrote it, so that a run with nobody
 there never waits at a prompt and a mark left behind touches no later
 session of yours. The session-start hook sets the session's identifier for
-the mark. And since the same day a guard that blocks a command setting the
-identity of a commit itself — `git -c` or `--config-env` on `user.name`,
+the mark. And a guard that blocks a command setting the identity of a
+commit itself — `git -c` or `--config-env` on `user.name`,
 `user.email` and the `author` and `committer` keys, `--author` on `git
 commit`, the variables `GIT_AUTHOR_…` and `GIT_COMMITTER_…`, `EMAIL` beside
 a git call, `GIT_CONFIG_KEY_…`, and `git config` writing or removing one of
@@ -312,21 +314,20 @@ once per branch, push, then, from an ordinary command line:
     claude plugin marketplace update <marketplace>
     claude plugin update <plugin>@<marketplace>
 
-That is how 0.80.0 was raised to 0.81.0, without uninstalling. Anthropic's
-plugin reference points out that these subcommands are meant to run from your
-own terminal and are in part without effect inside a session.
+That works without uninstalling. Anthropic's plugin reference points out
+that these subcommands are meant to run from your own terminal and are in
+part without effect inside a session.
 
-A pull request into main merges only once the check `stock-take` is green: a
-workflow under `.github/` runs the stock-take and its self-test on the merged
-state, and the branch protection on main requires that check, for admins too,
-so `gh pr merge` is refused while it is pending or red. The entry of 29
-September 2026 in `docs/roadmap.md` on the merge gate carries the setting and
-the merge sequence. Since 14 October 2026 the protection requires four checks
-more, `hooks on every system (ubuntu-latest)`, `(macos-latest)`,
-`(windows-latest)` and `(alpine)`, which a second job of the same workflow
-runs: the reader's self-test and every hook once on each system; the fourth
-and fifth addenda of the roadmap entry on the command reader carry the
-command, and the setting was read off the platform on 14 October 2026.
+A pull request into main merges only once five checks are green: `stock-take`,
+which runs the stock-take and its self-test on the merged state, and `hooks on
+every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)` and
+`(alpine)`, which run the reader's self-test and every hook once on each
+system; both jobs stand in one workflow under `.github/`, and the branch
+protection on main requires all five, for admins too, so `gh pr merge` is
+refused while one is pending or red. The entry in `docs/roadmap.md` on the
+merge gate carries the setting and the merge sequence; the fourth and fifth
+addenda of the roadmap entry on the command reader carry the command for the
+five.
 
 The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
 update`, `/plugin install`.
@@ -378,8 +379,8 @@ come back in a different file.
   saying which mode a run is in and how far it may go — is not that shape: it
   carries no limit, and it is read by parts of the run that did not write it,
   the build after the planning, the subagent inside the build, the next session
-  that finds it left behind, and since 9 October 2026 the hook on permission
-  prompts, which holds the session the mark names against the prompt's.
+  that finds it left behind, and the hook on permission prompts, which holds
+  the session the mark names against the prompt's.
 - A step that depends on a precondition (a remote, a permission, a tool) must
   refuse and stop when that precondition is missing, not fall back to a
   locally-equivalent action that quietly breaks one of the workflow's own rules
