@@ -3,13 +3,11 @@
 A set of skills for Claude Code that takes a piece of work from an idea to an
 application or tool that runs on this machine: started by the run, its answer
 read, its look recorded, and handed to you with one action. Today it gets as
-far as merged, reviewed code; the road from there is `docs/plan.md`.
+far as merged, reviewed code.
 
-Twelve skills covering the main path. It has been exercised on throwaway
-projects across five stacks — Python, TypeScript, Kotlin, Go and Rust — once
-with nobody watching. The side paths — triaging incoming reports and finding
-refactor candidates — are not built yet. Read "What is missing" before you
-rely on it.
+Twelve skills covering the main path. The side paths — triaging incoming
+reports and finding refactor candidates — are not built yet. Read "What is
+missing" before you rely on it.
 
 ## What it is for
 
@@ -42,6 +40,18 @@ their blocking relationships, so a tracker is not optional — the setup stops
 without one and says so. A repository is not needed up front; it offers to
 create one.
 
+To get a newer version, run in your terminal, not inside a Claude Code session:
+
+    claude plugin marketplace update jayjay-create
+    claude plugin update devloop@jayjay-create
+
+The new version applies from the next session you start. If it does not take,
+run `/plugin uninstall devloop@jayjay-create`,
+`/plugin marketplace update jayjay-create` and
+`/plugin install devloop@jayjay-create`. You can also have this done by itself:
+under `/plugin`, Marketplaces, turn on auto-update for `jayjay-create`; for a
+marketplace like this one it is off by default.
+
 ## What you type
 
     /devloop:start-work
@@ -51,7 +61,7 @@ That is the only command you ever type.
 It sets the project up if that has not happened yet, asks what you want built,
 and takes it from there all the way to merged code, one step at a time — each
 one ending by offering the next. Starting what was built and handing it over
-running is the next stretch of the road: planned in `docs/plan.md`, not built.
+running is the next stretch of the road: planned, not built.
 
 You answer questions about the work, and you see each piece before it merges.
 You never have to know which step comes next.
@@ -88,10 +98,8 @@ the step it was in rather than starting over.
 demonstrated on its own, fits one fresh session, and records which tasks must
 land first as real, queryable blocking relationships. The cut follows from the
 spec, not from anything only you know, so it is created without asking you,
-and since 17 October 2026 you see it as what was created, at the next point
-where the run waits for you, or in the tracker where the run goes alone;
-until that day it was presented first and you could name a different one
-before it was created.
+and you see it as what was created, at the next point where the run waits
+for you, or in the tracker where the run goes alone.
 
 **Build each task.** One at a time, in its own subagent with a fresh context.
 Test first. Fast checks after every file change, the full suite before anything
@@ -111,7 +119,7 @@ it says what is outstanding and picks up when you say it landed. Unattended it
 waits for the checks in the same answer, because a run that ends its answer is a
 run nothing wakes again. What comes after the merge today is a note on what to
 pull locally; starting the thing, proving it answers and handing it over running
-is where `docs/plan.md` takes the set next.
+is planned, not built.
 
 ## Attended and unattended
 
@@ -155,8 +163,8 @@ then sit on a pull request nobody is there to merge, stand at a prompt nobody
 is there to answer, start a task it cannot finish, stop at a tool it may not
 install, or leave a check off that the work has made necessary. A prompt that
 comes during the run anyway is answered no by a hook, and the run writes an
-issue and takes the next task instead of waiting. Since 16 October 2026 a
-run without you is not stopped by what is yours on the main branch either:
+issue and takes the next task instead of waiting. A run without you is not
+stopped by what is yours on the main branch either:
 a file you changed and did not commit, which bringing the main branch to
 GitHub's state would overwrite, is set aside in git's stash under a name
 devloop knows it by and brought back when the run ends — where GitHub
@@ -228,18 +236,19 @@ runs passes under that record without a place being read. `sudo`, an
 installer piped from the network, a branded browser Playwright would install
 at the system's own location and the system packages a browser's
 `install-deps` would install stay with you whatever the record says, and so
-does, since 13 October 2026, every program that runs the command as an
+does every program that runs the command as an
 administrator or as another user — `doas`, `su`, `run0`, `pkexec` and the
-rest of that kind, which `docs/skill-conventions.md` lists. The
-question that writes that record is put at setup. Since 9 October 2026 two
+rest of that kind. The question
+that writes that record is put at setup, and at a refresh of the setup as
+well where no record stands on the main branch. The record travels with the
+repository: whoever works with devloop in a clone of the project works under
+the answer it carries, so under a yes the run installs tools and browsers for
+tests outside the project on their machine as well, without asking them. Two
 more: a guard that blocks the file marking an unattended run from being
-written in any mode but auto, and states the permission mode beside a call
-of `bin/devloop-permission-mode`, which is how the run reads whether it may
-go alone; and a hook that answers no to every permission prompt while that
-mark stands and names the session that wrote it, so that a run with nobody
-there never waits at a prompt and a mark left behind touches no later
-session of yours. The session-start hook sets the session's identifier for
-the mark. And since the same day a guard that blocks a command setting the
+written in any mode but auto; and a hook that answers no to every permission
+prompt while that mark stands and names the session that wrote it, so that a
+run with nobody there never waits at a prompt and a mark left behind touches
+no later session of yours. And a guard that blocks a command setting the
 identity of a commit itself — `git -c` or `--config-env` on `user.name`,
 `user.email` and the `author` and `committer` keys, `--author` on `git
 commit`, the variables `GIT_AUTHOR_…` and `GIT_COMMITTER_…`, `EMAIL` beside
@@ -287,104 +296,14 @@ on.
 ## What is missing
 
 - The road from merged code to an application that runs on this machine, an
-  interface included: `docs/plan.md` says where the set ends, what is built
-  first, and what stays yours.
-- Triaging incoming reports and finding refactor candidates — decided, not
-  built. `docs/roadmap.md` says under "Named, not built as skills" when the
-  second is reached and why the first has no trigger yet.
+  interface included.
+- Triaging incoming reports and finding refactor candidates — not built.
 - End-to-end testing has one worked-out approach and no second: the compiled
   program run as a subprocess, asserting on output and exit code. Anything
   that stays up — a service, an interface — still has none.
-- Everything has been exercised on GitHub Issues. Other trackers and monorepos
-  are untested.
-
-## Working on devloop itself
-
-An installed plugin runs from a copy under
-`~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`. Pushing to this
-repository does not touch that copy, and neither does `/plugin marketplace
-update` on its own — the cache is keyed by version, so an unchanged version
-number means nothing is fetched.
-
-To make a change take effect: raise `version` in `.claude-plugin/plugin.json`,
-once per branch, push, then, from an ordinary command line:
-
-    claude plugin marketplace update <marketplace>
-    claude plugin update <plugin>@<marketplace>
-
-That is how 0.80.0 was raised to 0.81.0, without uninstalling. Anthropic's
-plugin reference points out that these subcommands are meant to run from your
-own terminal and are in part without effect inside a session.
-
-A pull request into main merges only once the check `stock-take` is green: a
-workflow under `.github/` runs the stock-take and its self-test on the merged
-state, and the branch protection on main requires that check, for admins too,
-so `gh pr merge` is refused while it is pending or red. The entry of 29
-September 2026 in `docs/roadmap.md` on the merge gate carries the setting and
-the merge sequence. Since 14 October 2026 the protection requires four checks
-more, `hooks on every system (ubuntu-latest)`, `(macos-latest)`,
-`(windows-latest)` and `(alpine)`, which a second job of the same workflow
-runs: the reader's self-test and every hook once on each system; the fourth
-and fifth addenda of the roadmap entry on the command reader carry the
-command, and the setting was read off the platform on 14 October 2026.
-
-The way out if that does not take: `/plugin uninstall`, `/plugin marketplace
-update`, `/plugin install`.
-
-Old versions stay in the cache alongside the new one. Before testing a change,
-confirm the installed copy actually carries it — all six directories, because a
-hook runs from the installed path too, and so does the text the skills insert
-from `shared/` at load, and the output style is read at start from there:
-
-    P=~/.claude/plugins/cache/<marketplace>/<plugin>/<installed version>
-    for d in skills hooks shared bin scripts output-styles; do diff -r "$P/$d" "$d"; done
-
-The version is the installed one, read out of
-`~/.claude/plugins/installed_plugins.json` and not out of
-`.claude-plugin/plugin.json`: a change ready to land has already raised the
-number in the working tree, so that version names a cache directory which does
-not exist yet, and the check answers `No such file or directory` instead of a
-difference. `docs/skill-conventions.md` carries the same check with the lookup
-written out, under "Before you change anything, run this".
-
-Skipping that check costs more than it saves. Every conclusion drawn from a run
-against a stale copy is worthless, and nothing about the run says it is stale.
-
-## What hooks can and cannot do
-
-Hooks are the only part of this that does not depend on a model deciding to
-comply — they run in the harness. But what they inject is still text.
-
-A hook can make something **happen**: report state, block a turn, feed a prompt
-back in. A hook cannot make something be **said** — plain stdout from
-`SessionStart` arrives as context, which shapes what the model does and does not
-get reproduced word for word.
-
-So: state and enforcement in hooks, wording nowhere. Where a particular thing has
-to be said, describe what it must cover and let the model write it.
-
-## Rules learned from this workflow's own bugs
-
-Both already fixed in the skills, kept here so the same shape of bug does not
-come back in a different file.
-
-- A state file with no reader is not a safeguard, however carefully it is kept.
-  The unattended mode wrote its round count and its cap into one, and this
-  document described the hook that would read it. No such hook was ever built,
-  so the run that wrote the file was also the only thing that read it — and it
-  raised its own cap in the same write that advanced the count. Either something
-  else reads the file or the file goes, because a run cannot be the reader of
-  its own limit. The one file the mode writes today — the mark under `.claude/`
-  saying which mode a run is in and how far it may go — is not that shape: it
-  carries no limit, and it is read by parts of the run that did not write it,
-  the build after the planning, the subagent inside the build, the next session
-  that finds it left behind, and since 9 October 2026 the hook on permission
-  prompts, which holds the session the mark names against the prompt's.
-- A step that depends on a precondition (a remote, a permission, a tool) must
-  refuse and stop when that precondition is missing, not fall back to a
-  locally-equivalent action that quietly breaks one of the workflow's own rules
-  — such as merging straight to main because there is no remote to open a pull
-  request against.
+- Tried in projects in Python, TypeScript, Kotlin, Go and Rust, with GitHub
+  Issues as the tracker. Other stacks, other trackers and monorepos are
+  untested.
 
 ## Credit
 

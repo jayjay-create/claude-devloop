@@ -1,7 +1,7 @@
 The answer stands in `docs/agents/environment.md` under a heading of its own,
 `## Install permission`, in the shape the install guard and the session-start
 hook read it — one key and one value per line, spelled exactly, ASCII only,
-since a script reads the start of each line:
+since a script reads the start of each line. Under a yes:
 
     ## Install permission
 
@@ -21,10 +21,22 @@ since a script reads the start of each line:
     install-route: pip
     install-answered: YYYY-MM-DD
 
+Under a no, the answer and the date alone, since 20 October 2026:
+
+    ## Install permission
+
+    install-tools: no
+    install-answered: YYYY-MM-DD
+
 `install-tools` is the answer, `yes` or `no` and nothing else. The eleven
-`install-place` lines are the places a yes opens in this version, written as
-they stand here under either answer, so that the file says what a yes would
-open where the answer is no: the six bin directories, and since 8 October
+`install-place` lines are the places a yes opens in this version, written
+under a yes and under no other answer: under a no they do nothing, the guard
+blocking on `install-tools: no` before it reads a place, and a record that
+listed them under a no read as though something were open, which is how
+they stood until 20 October 2026; the line at session start says
+`places: none` and `routes: none` under a no whatever the record carries,
+and a record written under a no before that day keeps the places and routes
+of its day, not amended. The places: the six bin directories, and since 8 October
 2026 the five where Playwright, Cypress and Puppeteer put the browsers they
 download for tests, the vendor's default on macOS and on Linux each, since
 the guard holds a browser download against the place the vendor names for
@@ -46,10 +58,15 @@ guard resolves, `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
 answers on the machine the run is on, read at the moment of the command and
 written nowhere, so that the answer holds on another machine and under
 another version of the tool; a route not named here is held against the
-`install-place` lines. The route lines are written under either answer, like
-the places. `install-answered` is the date the question was answered. Where
-the section stands already and only the answer changes, `install-tools` and
-`install-answered` change and every other line stays. The guard and the
-session-start hook read this section off the default branch as last fetched,
-never off the working tree, so it counts once the pull request carrying it
-has landed there and been fetched back.
+`install-place` lines. The route lines are written under a yes, like the
+places, and under no other answer. `install-answered` is the date the
+question was answered. Where the section stands already and the answer
+changes — a yes after a no, the one way the second asking in `setup-checks`
+step 8 takes, which asks only where the record does not say yes — the
+section is written anew from this template under the new answer, the places
+of this version and the routes read by that run as at a first yes, and the
+date new; until 20 October 2026 `install-tools` and `install-answered`
+changed and every other line stayed, the places and routes standing under
+either answer. The guard and the session-start hook read this section off
+the default branch as last fetched, never off the working tree, so it counts
+once the pull request carrying it has landed there and been fetched back.

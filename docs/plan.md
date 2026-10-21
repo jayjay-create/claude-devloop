@@ -487,6 +487,12 @@ stands on the main branch, with the person there, as a first setup puts it,
 and writes the record as step 6 does; a project whose record stands is asked
 nothing, whatever it says; the roadmap entry of that date on milestone 3,
 part 1, by the person's decision of that day.
+Since 20 October 2026, version 0.153.0, the stored answer carries under a no
+the answer and the date alone; the line at session start says under a no
+`places: none` and `routes: none`, under an older answer that still carries
+places and a route as well; the line reaches the run and not the person, and
+`README.md` says that the answer travels with the repository; the roadmap
+entry of that date on milestone 3, part 2.
 The two runs of the end as it read until 6 October 2026 ran on 30 September
 2026, both attended, under 0.120.0
 from the installed copy: the record saying yes in `devloop-test-s`, the record

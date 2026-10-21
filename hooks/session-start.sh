@@ -59,12 +59,25 @@ DIRTY=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 echo "[ProjectStatus] branch: $BRANCH | uncommitted changes: $DIRTY | devloop: $SETUP"
 
 # The install record, read through the same program the install guard reads it
-# with, off the default branch as last fetched: what a second person who cloned
-# this repository meets before the first install, rather than after it.
+# with, off the default branch as last fetched. The line reaches the run as
+# context at the start of every session, and not the person - "A hook cannot
+# force wording" in docs/skill-conventions.md - so that the run has the answer
+# before the first install rather than meeting it at the guard; the answer
+# travels with the repository, and whoever works with devloop in a clone of
+# the project works under it, which README.md says to the person. Until 20
+# October 2026 this comment called the line what a second person who cloned
+# the repository meets. Under a no the line says none for the places and the
+# routes, whatever the record carries, since 20 October 2026: they do nothing
+# under a no, the guard blocking on install-tools: no before it reads a place;
+# a record written under a no since that day carries none
+# (shared/install-record.md), and an older one that carries them is not
+# amended.
 RECORD=$("$HERE/../bin/devloop-install-record" "$PROJECT_DIR" 2>&1)
 if [ $? -eq 0 ]; then
+  TOOLS=$(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p' | head -1)
   PLACES=$(printf '%s\n' "$RECORD" | sed -n 's/^place: //p' | tr '\n' ' ' | sed 's/ $//')
   ROUTES=$(printf '%s\n' "$RECORD" | sed -n 's/^route: //p' | tr '\n' ' ' | sed 's/ $//')
+  if [ "$TOOLS" = "no" ]; then PLACES=""; ROUTES=""; fi
   echo "[InstallRecord] tools: $(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p') | places: ${PLACES:-none} | routes: ${ROUTES:-none} | answered: $(printf '%s\n' "$RECORD" | sed -n 's/^answered: //p') | read off $(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p') as last fetched, not off the working tree"
 else
   echo "[InstallRecord] none: $(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1) | every install outside the repository is blocked and handed to you until a record has landed on the default branch"

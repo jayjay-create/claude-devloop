@@ -558,6 +558,18 @@ was in flight, and could not have found any, because the labels it searched for
 are not set any more. Say the command is missing, say which file should hold it,
 and offer to update that file from the current template.
 
+**And a step whose precondition is missing stops there.** A step that depends
+on a remote, a permission or a tool refuses and stops where that is missing,
+and says what is missing, as "That holds where the run cannot go on" above
+asks; it does not fall back to an action that looks equivalent on this machine
+and quietly breaks one of this workflow's own rules. The case is the one the
+README recorded on 19 August 2026, at `13dc786`, under "Rules learned from this
+workflow's own bugs": a merge straight to the main branch because there was no
+remote to open a pull request against. The rule stood there until 21 October
+2026, when the README was cut to what a user of devloop needs and the rule
+moved here, the roadmap entry on milestone 3, part 2; `setup-project` offers
+to create the remote where there is none, which is the stop with a stated fix.
+
 ## Only ask where there is something to decide
 
 A question with one sensible answer is noise, and so is a question the user has
@@ -1191,13 +1203,19 @@ of each choice).
 ## Registering a skill
 
 Add its directory to the `skills` array in `.claude-plugin/plugin.json`, then
-raise `version`. Without the version bump the installed copy does not change —
-see "Working on devloop itself" in the README. A shared file under `shared/`
-needs no entry anywhere — the program finds it by name at load — and the
-version goes up for it all the same, for the same reason. It goes up once per
-branch, not once per order: a squash merge lands only the number the branch
-ends on, and every run recorded under an earlier one names a version main
-never carried. `scripts/devloop-version-guard`, registered in
+raise `version`. Without the version bump the installed copy does not change:
+an installed plugin runs from a copy under
+`~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`, laid down by
+version, the older versions staying beside the new one, so that a push and
+`/plugin marketplace update` with the version unchanged fetch nothing. The
+commands that install the new version after the merge stand in `README.md`
+under "Install"; they run from a terminal and not inside a session, where
+Anthropic's plugin reference says they are in part without effect. A shared
+file under `shared/` needs no entry anywhere — the program finds it by name at
+load — and the version goes up for it all the same, for the same reason. It
+goes up once per branch, not once per order: a squash merge lands only the
+number the branch ends on, and every run recorded under an earlier one names a
+version main never carried. `scripts/devloop-version-guard`, registered in
 `.claude/settings.json` of this repository, blocks the second raise and names
 the three numbers; the entry of 29 September 2026 in `docs/roadmap.md` has
 the case that taught it. And a pull request into main lands only once the
@@ -1444,6 +1462,36 @@ One insertion moved a reading taken on 30 August 2026 to 7 September without
 changing a word of the sentence carrying it, and the paragraph under it still
 said "built the next day", which then pointed nowhere. Every word stayed
 correct; only what they referred to moved. Write the date.
+
+**`README.md` carries no date.** It says the state of today; how the set got
+there stands in the commits and in `docs/roadmap.md`. Decided by the person
+on 20 October 2026, the roadmap entry of that date on milestone 3, part 2,
+which names the eight dates and the version pair the README carried until
+then, each before and after. A sentence that said since when something holds,
+or how it stood before, says in the README what holds; a reference to a dated
+entry of the roadmap names the entry without its date; the state alone, and
+no new content with it. The rule above holds as before for the documents that
+measure and record — this file, `docs/roadmap.md`, `docs/plan.md`, the skills
+and the shared texts — and the README is not among them. A step of the job
+`stock-take` in `.github/workflows/stock-take.yml`, the check `main` requires,
+holds it: red where `README.md` carries a date in a form like `20 October
+2026`, `October 2026` or `2026-10-20`, one broken over a line break included,
+the file read as one line for that, and every date found printed; so a date
+can enter the README on a branch and cannot land. And it is written for
+those who use devloop, and says nothing of how devloop is built: no reference
+to devloop's own documents — `docs/plan.md`, `docs/roadmap.md`, this file,
+`docs/stock-take.tsv` — no file of devloop named as a mechanism, under `bin/`,
+`scripts/`, `shared/`, `hooks/`, `skills/`, `.github/` or `.claude-plugin/`,
+no history of its tests and no section on the work on devloop; what a user
+needs is said by what it does. `skills/record-lessons/SKILL.md` says the same
+under its table of where a lesson goes — "It is written for people who
+install the plugin, not for whoever builds it, so a lesson about building
+belongs under `docs/`" — and that sentence is the one this rule rests on.
+Decided by the person on 21 October 2026, the same roadmap entry, which names
+each place the README carried until then, before and after: three sections,
+on working on devloop, on what hooks can and cannot do and on rules learned
+from this workflow's own bugs, and eight shorter places pointing at a document
+or naming a file.
 
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
@@ -2026,7 +2074,11 @@ built on 28 September 2026 and cut on 30 September 2026 to what carries the
 decision, it says that such programs land outside the project on this
 machine; where the list stands, and that every session reads it, the close of
 the setup says, and the routes of the stack are read by the run where it
-writes the record, in step 6. It carries the
+writes the record, in step 6. Under a no, since 20 October 2026, the record
+carries the answer and the date alone, the places and routes doing nothing
+under a no, and the line at session start says none for both whatever an
+older record carries; `shared/install-record.md` carries both forms, the
+roadmap entry of that date on milestone 3, part 2. It carries the
 places and not only the answer because an answer given against the places of
 one version is not an answer for a place a later version adds: the guard passes
 only a place the record itself names, or the answer of a route it names, and a
@@ -2066,9 +2118,15 @@ disagree about which branch is the main one are worse than one. It reads the
 record only after the command has been found to reach outside the repository,
 because `hooks/hooks.json` runs it on every Bash call. One program does the
 reading, `bin/devloop-install-record`, and `hooks/session-start.sh` prints the
-record through the same program — what a second person who cloned the
-repository meets before the first install rather than after it — so the two
-cannot disagree.
+record through the same program, so the two cannot disagree. That line
+reaches the run as context at the start of every session, and not the
+person, as "A hook cannot force wording" below says; the run has the answer
+before the first install rather than meeting it at the guard, and whoever
+works with devloop in a clone of the project works under the answer the
+record carries, which `README.md` says to the person. Until 20 October 2026
+this sentence and the hook's comment called the line what a second person
+who cloned the repository meets, the roadmap entry of that date on milestone
+3, part 2.
 
 **In doubt, a run with nobody there is not blocked.** The person's principle,
 "In doubt, a run with nobody there is not to be blocked: security matters,
