@@ -558,6 +558,18 @@ was in flight, and could not have found any, because the labels it searched for
 are not set any more. Say the command is missing, say which file should hold it,
 and offer to update that file from the current template.
 
+**And a step whose precondition is missing stops there.** A step that depends
+on a remote, a permission or a tool refuses and stops where that is missing,
+and says what is missing, as "That holds where the run cannot go on" above
+asks; it does not fall back to an action that looks equivalent on this machine
+and quietly breaks one of this workflow's own rules. The case is the one the
+README recorded on 19 August 2026, at `13dc786`, under "Rules learned from this
+workflow's own bugs": a merge straight to the main branch because there was no
+remote to open a pull request against. The rule stood there until 21 October
+2026, when the README was cut to what a user of devloop needs and the rule
+moved here, the roadmap entry on milestone 3, part 2; `setup-project` offers
+to create the remote where there is none, which is the stop with a stated fix.
+
 ## Only ask where there is something to decide
 
 A question with one sensible answer is noise, and so is a question the user has
@@ -1191,13 +1203,19 @@ of each choice).
 ## Registering a skill
 
 Add its directory to the `skills` array in `.claude-plugin/plugin.json`, then
-raise `version`. Without the version bump the installed copy does not change —
-see "Working on devloop itself" in the README. A shared file under `shared/`
-needs no entry anywhere — the program finds it by name at load — and the
-version goes up for it all the same, for the same reason. It goes up once per
-branch, not once per order: a squash merge lands only the number the branch
-ends on, and every run recorded under an earlier one names a version main
-never carried. `scripts/devloop-version-guard`, registered in
+raise `version`. Without the version bump the installed copy does not change:
+an installed plugin runs from a copy under
+`~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`, laid down by
+version, the older versions staying beside the new one, so that a push and
+`/plugin marketplace update` with the version unchanged fetch nothing. The
+commands that install the new version after the merge stand in `README.md`
+under "Install"; they run from a terminal and not inside a session, where
+Anthropic's plugin reference says they are in part without effect. A shared
+file under `shared/` needs no entry anywhere — the program finds it by name at
+load — and the version goes up for it all the same, for the same reason. It
+goes up once per branch, not once per order: a squash merge lands only the
+number the branch ends on, and every run recorded under an earlier one names a
+version main never carried. `scripts/devloop-version-guard`, registered in
 `.claude/settings.json` of this repository, blocks the second raise and names
 the three numbers; the entry of 29 September 2026 in `docs/roadmap.md` has
 the case that taught it. And a pull request into main lands only once the
@@ -1459,7 +1477,21 @@ and the shared texts — and the README is not among them. A step of the job
 holds it: red where `README.md` carries a date in a form like `20 October
 2026`, `October 2026` or `2026-10-20`, one broken over a line break included,
 the file read as one line for that, and every date found printed; so a date
-can enter the README on a branch and cannot land.
+can enter the README on a branch and cannot land. And it is written for
+those who use devloop, and says nothing of how devloop is built: no reference
+to devloop's own documents — `docs/plan.md`, `docs/roadmap.md`, this file,
+`docs/stock-take.tsv` — no file of devloop named as a mechanism, under `bin/`,
+`scripts/`, `shared/`, `hooks/`, `skills/`, `.github/` or `.claude-plugin/`,
+no history of its tests and no section on the work on devloop; what a user
+needs is said by what it does. `skills/record-lessons/SKILL.md` says the same
+under its table of where a lesson goes — "It is written for people who
+install the plugin, not for whoever builds it, so a lesson about building
+belongs under `docs/`" — and that sentence is the one this rule rests on.
+Decided by the person on 21 October 2026, the same roadmap entry, which names
+each place the README carried until then, before and after: three sections,
+on working on devloop, on what hooks can and cannot do and on rules learned
+from this workflow's own bugs, and eight shorter places pointing at a document
+or naming a file.
 
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in

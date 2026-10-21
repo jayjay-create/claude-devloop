@@ -33300,16 +33300,24 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of the bench, measured on the tree of the second commit, as the paragraph on
   the bench below records; then, a fourth, the corrections made at the check
   of the branch before the merge, which the paragraph after the bench
-  records, nothing of the code changing. The report stands on this machine as
-  `~/devloop-report-2026-10-20-milestone-3-part-2.md`, in English, and is not
-  in the repository. Every line number of a file is as at `f82aeae` unless it
+  records, nothing of the code changing; then, a fifth, on 21 October 2026,
+  the README written for those who use devloop alone, eleven defects closed,
+  the two runs of the bench on defect E entered, a rule and a reason in the
+  conventions and one sentence in `docs/plan.md`, which the paragraphs from
+  "Decided by the person on 21 October 2026" on record, nothing of the code
+  changing there either and the version staying 0.153.0. The reports stand on
+  this machine as `~/devloop-report-2026-10-20-milestone-3-part-2.md` and,
+  for the fifth commit,
+  `~/devloop-report-2026-10-21-milestone-3-part-2-corrections.md`, in
+  English, and are not in the repository. Every line number of a file is as at `f82aeae` unless it
   says `a4c2b99` or the second commit; a line of this file as at `f82aeae`,
   this entry standing after the last. No session of Claude Code was started
   for this entry; the hook ran by hand with the input a session start gives
-  it. `bin/`, `scripts/`, `output-styles/`, `docs/plan.md` and the skills do
-  not change. The words the stock-take tool reads a line of this file into its
-  search set by stand in this entry in its head and on the one line that
-  records a defect, and on no other line.
+  it. `bin/`, `scripts/`, `output-styles/` and the skills do not change;
+  `docs/plan.md` changes in the fifth commit alone, by one sentence. The words
+  the stock-take tool reads a line of this file into its search set by stand
+  in this entry in its head, on the one line that records a defect and on the
+  eleven lines that record a closing, and on no other line.
 
   **Decided by the person on 20 October 2026**, each with its reason, on the
   two clusters the entry of that date on part 1 left to a later order, lines
@@ -33380,8 +33388,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   record stands and whether its value can be read
   (`skills/setup-project/SKILL.md` lines 89 to 96 and 109 to 115); the program
   itself is unchanged and prints every line the record carries. The defect of
-  line 7787 reads built since this entry, its evidence on the hook's line 80,
-  its should met by its second half, "or carry none".
+  line 7787 has its evidence on the hook's line 80 since this entry, its
+  should met by its second half, "or carry none", and reads walked since 21
+  October 2026 by the two runs of the bench on its row, the paragraph on
+  defect E below.
   (b) Cluster 9. `README.md` lines 231 to 236 at `a4c2b99` carry the approved
   sentence, checked whole over the line breaks with `tr '\n' ' ' < README.md |
   grep -c -F`, which prints 1. `docs/skill-conventions.md` lines 2089 to 2097
@@ -33397,11 +33407,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   places, both changed, and no other; `grep -rn -F -e 'cloned this
   repository' -e 'cloned the repository'` over the same files printed
   nothing, both phrases breaking over a line end there. The defect of
-  line 7967 reads built since this entry, its evidence on the hook's comment,
-  its should met by its second way; the defect of line 33141 reads so by its
-  should, its evidence on the README line, which the tool reads as recorded by
-  section D of its header, as it reads every defect whose evidence stands in
-  `README.md`.
+  line 7967 had its evidence on the hook's comment from this entry until 21
+  October 2026, its should met by its second way, and is closed since that
+  day, corrected in the document, the proof the sentence of the conventions;
+  the defect of line 33141 had its evidence on the README line, which the
+  tool read as recorded by section D of its header, as it reads every defect
+  whose evidence stands in `README.md`, and is closed since the same day the
+  same way, the proof the README line; the paragraph on the closed defects
+  below.
   (c) The README without a date. The order's command, `tr '\n' ' ' <
   README.md | grep -o -E '[0-9]{1,2} +(January|…|December) +[0-9]{4}'`,
   printed eight dates at `f82aeae` — 17 October 2026 (line 91), 16 October
@@ -33445,17 +33458,21 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   October 2026 the hook on permission prompts" — "and the hook on permission
   prompts" (382). No content was added; "today" at lines 5, 112, 188 and 377
   states the state of today and stays. Two defects of the README sit on these
-  places and read built since this entry by a should this entry changes: the
+  places, each with a should this entry changes: the
   defect of line 23708, whose should was "README says five checks are required
   since 14 October 2026" and is, since this entry, that the README says five
   checks are required, without a date, the README carrying none; and the
   defect of line 28988, whose should was "README says so with the date" and
   is, since this entry, that the README says so, without a date. The evidence
-  of each stands on its README line, which the tool reads as recorded, as
-  under (b). No other defect of the README sits on one of these places: the
+  of each stood on its README line until 21 October 2026, which the tool read
+  as recorded, as under (b); since that day both are closed, the defect of
+  line 28988 corrected in the document with the README line as its proof and
+  the defect of line 23708 lapsed, its paragraph leaving the README with the
+  fifth commit. No other defect of the README sits on one of these places: the
   rows whose evidence is `README.md`, read with `awk` over the table, anchor
   on lines 8, 208, 211, 294 and 371 beside the three above, none of them
-  changed by this pass.
+  changed by this pass; the fifth commit changes lines 8, 294 and 371, the
+  paragraph on its records below.
   (d) The rule and the step. `docs/skill-conventions.md` lines 1448 to 1462 at
   the second commit, "`README.md` carries no date", directly after "A time
   reference names its date, not its neighbour", say what the README says and
@@ -33488,7 +33505,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   under a no the refresh writes the answer and the date alone without a word
   changed there. `docs/plan.md` lines 243 to 291 and 452 to 489, milestone 3,
   name the record's places for a yes and say nothing of the form under a no;
-  nothing changed there, named among the report's questions.
+  nothing changed there until the fifth commit, which adds one sentence on the
+  form under a no after the sentence on part 1.
   `shared/install-question.md` names no place of the record (`grep -n -i
   place`, line 2 alone, another sense). The check that holds the three copies
   of the default branch's resolution, `bin/devloop-install-record` among them,
@@ -33582,6 +33600,156 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   line 1462 of the conventions and the session-start sentence stands at lines
   2089 to 2097, read with `grep -n`; and the search of this file for the
   words of the hook's line 70 found two lines on other matters, named now.
+
+  **Decided by the person on 21 October 2026**, at the check of the branch
+  before the merge, and carried out in the fifth commit. `README.md` is
+  written for those who use devloop and says nothing of how devloop is built:
+  no reference to devloop's own documents — `docs/plan.md`, `docs/roadmap.md`,
+  `docs/skill-conventions.md`, `docs/stock-take.tsv` — no file of devloop
+  named as a mechanism, under `bin/`, `scripts/`, `shared/`, `hooks/`,
+  `skills/`, `.github/` or `.claude-plugin/`, no history of its tests and no
+  section on the work on devloop; `skills/record-lessons/SKILL.md` says the
+  same under its table of where a lesson goes, "It is written for people who
+  install the plugin, not for whoever builds it, so a lesson about building
+  belongs under `docs/`", and the rule stands since that day in the paragraph
+  of `docs/skill-conventions.md` on the README, after "A time reference names
+  its date, not its neighbour". Approved in this wording, at the end of
+  "Install": "To get a newer version, run in your terminal, not inside a
+  Claude Code session:", the two commands `claude plugin marketplace update
+  jayjay-create` and `claude plugin update devloop@jayjay-create`, and "The
+  new version applies from the next session you start. If it does not take,
+  run `/plugin uninstall devloop@jayjay-create`, `/plugin marketplace update
+  jayjay-create` and `/plugin install devloop@jayjay-create`. You can also
+  have this done by itself: under `/plugin`, Marketplaces, turn on auto-update
+  for `jayjay-create`; for a marketplace like this one it is off by default."
+  Approved in this wording, as the point of "What is missing" in the place of
+  "Everything has been exercised on GitHub Issues. Other trackers and
+  monorepos are untested.": "Tried in projects in Python, TypeScript, Kotlin,
+  Go and Rust, with GitHub Issues as the tracker. Other stacks, other trackers
+  and monorepos are untested." Approved as changes that only strike, each
+  before and after, the line numbers at `f82aeae`: (a) lines 5 to 6, "Today
+  it gets as far as merged, reviewed code; the road from there is
+  `docs/plan.md`." — "Today it gets as far as merged, reviewed code."; (b)
+  lines 8 to 10, the sentence "It has been exercised on throwaway projects
+  across five stacks — Python, TypeScript, Kotlin, Go and Rust — once with
+  nobody watching." gone; (c) line 54, "planned in `docs/plan.md`, not built."
+  — "planned, not built."; (d) lines 113 to 114, "is where `docs/plan.md`
+  takes the set next." — "is planned, not built."; (e) line 233, ", which
+  `docs/skill-conventions.md` lists" gone; (f) lines 236 to 238, ", and states
+  the permission mode beside a call of `bin/devloop-permission-mode`, which is
+  how the run reads whether it may go alone" gone, and lines 241 to 242, the
+  sentence "The session-start hook sets the session's identifier for the
+  mark." gone; (g) lines 289 to 291, ": `docs/plan.md` says where the set
+  ends, what is built first, and what stays yours." — "."; (h) lines 292 to
+  294, "— decided, not built. `docs/roadmap.md` says under "Named, not built
+  as skills" when the second is reached and why the first has no trigger
+  yet." — "— not built."; (i) lines 301 to 388, the sections "Working on
+  devloop itself", "What hooks can and cannot do" and "Rules learned from this
+  workflow's own bugs" gone.
+
+  **What the fifth commit built, on 21 October 2026.** `README.md` as decided,
+  316 lines where it had 398, the approved texts whole, broken at 80 columns
+  as the file breaks, the two commands indented as the install's are. The
+  second search for places the rule hits, `grep -n -i -E` over the paths of
+  devloop's directories, the names of its documents, a version number,
+  `throwaway`, `exercised`, `bench`, `this repository`, `marketplace`, `cache`,
+  `entry`, `audit`, `order`, `report`, `self-test` and `reference`, decided hit
+  by hit: the install line `/plugin marketplace add jayjay-create/claude-devloop`
+  and the paragraph on a newer version are the install; `docs/agents/environment.md`
+  and `docs/agents/` under "The check suite" and "What it writes into your
+  project" are the project's own files; "this repository" under "The steps"
+  and "Attended and unattended" is the project's repository; "report" and
+  "once" name what a run does; the credit names where the skills come from
+  and no file of devloop. Nothing else; no place needing more than striking
+  was found, so no wording is proposed. `docs/skill-conventions.md`: the rule
+  in the paragraph on the README; under "Registering a skill" the reason
+  stands where the reference to the README's section stood — the installed
+  copy under `~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`, laid
+  down by version, the older versions beside the new one, so that a push and
+  a marketplace update with the version unchanged fetch nothing — with the
+  commands referred to `README.md` under "Install" and the sentence that they
+  run from a terminal, where Anthropic's plugin reference says they are in
+  part without effect inside a session; and, last under "Say when something
+  did not happen", the rule that a step whose precondition is missing stops
+  there and does not fall back to an action that looks equivalent, with its
+  case, the merge straight to the main branch for want of a remote the README
+  recorded on 19 August 2026 at `13dc786`. Of the sentences of the three
+  sections, each went there or stood already, the report naming each: the
+  cache keyed by version, the old versions beside the new one, the two
+  commands, the way out and the terminal to "Registering a skill" and the
+  README's "Install"; the five checks stand under "Registering a skill"
+  already; the check of the installed copy, its six directories, the version
+  read from the installed side and what a run against a stale copy is worth
+  stand under "Before you change anything, run this" already; what a hook can
+  and cannot do stands under "A hook cannot force wording", "Describe what
+  must be said; never dictate wording" and "So a limit is either enforced
+  from outside the run or it is not a limit" already; the state file with no
+  reader stands under "A file only its writer reads is not a safeguard", with
+  the mark's readers under "A hook that says "hand this to a person" assumes
+  there is one" already; the precondition rule is the one that stood nowhere.
+  `docs/plan.md`: one sentence on part 2 after the sentence on part 1 under
+  milestone 3, dated, saying what the record carries under a no since 20
+  October 2026, what the line at session start says, whom it reaches and what
+  the README says of the record travelling, with this entry named.
+
+  **Defects closed on 21 October 2026**, each on one line that carries its
+  closing with reason and proof, the line the evidence of its row points at
+  since the fifth commit; the proof was read with git before the line was
+  written and is read by the tool on every run. A defect whose wrong sentence
+  was corrected where it stood is closed as corrected in the document; one
+  whose object left the README with the fifth commit as lapsed, no commit
+  named, since the squash merge removes this branch's, and every text of that
+  form stood on one line of `README.md` at `f82aeae`, so that `git log -S`
+  finds it on `main` after the merge; the three of the order and eight more
+  of the seventeen rows of the table whose name says README or whose evidence
+  stood in `README.md`:
+  Line 33141, README.md saying the question that writes the install record is put at setup alone: Closed, corrected in the document: `README.md` carries "that writes that record is put at setup, and at a refresh of the setup as".
+  Line 28988, README.md saying the cut is presented and can be renamed before it is created: Closed, corrected in the document: `README.md` carries "and you see it as what was created, at the next point where the run waits".
+  Line 7967, the conventions and the hook's comment calling the session-start line what a second person who cloned the repository meets: Closed, corrected in the document: `docs/skill-conventions.md` carries "reaches the run as context at the start of every session, and not the".
+  Line 5073, README.md's hooks paragraph under The check suite naming neither guard: Closed, corrected in the document: `README.md` carries "`gh pr merge` in every form and names the command that arms auto-merge instead,".
+  Line 11268, README.md saying the guard blocks file writes on the main branch: Closed, corrected in the document: `README.md` carries "writes, `git commit` and a `git push` to it — a file written through the shell".
+  Line 5775, the plan counting four side paths under What is missing where README.md names two: Closed, corrected in the document: `docs/plan.md` carries "nine as a note on the thing that does their work, the two side paths under".
+  Line 23708, README.md on what the branch protection on main requires: Closed, lapsed: `README.md` no longer carries "the branch protection on main requires that check".
+  Line 10444, README.md saying the set was exercised once with nobody watching: Closed, lapsed: `README.md` no longer carries "with nobody watching".
+  Line 1047, README.md carrying a rule about a hook gating on a state file's existence: Closed, lapsed: `README.md` no longer carries "A state file with no reader is not a safeguard".
+  Line 5795, README.md saying the roadmap tells when each side path is reached: Closed, lapsed: `README.md` no longer carries "why the first has no trigger yet".
+  Line 8186, six benches as the count in README.md, milestone 4 of the plan and the entry on throwaway projects: Closed, lapsed: `README.md` no longer carries "It has been exercised on throwaway".
+  Not closed, of those seventeen rows: line 1945, planning fenced out by one
+  sentence in start-work and one in README, has its evidence in
+  `skills/start-work/SKILL.md` and reads by it; line 10404, property 1 of the
+  README contradicted by the questions of the setup, and line 10425, the
+  finish of an unattended run in the words of a halt, each need a new wording
+  of the README, which the person approves, and the report proposes one for
+  each; line 26163 names the README of a project and not this one; lines
+  10463, 11662 and 23691 are closed since 20 October 2026 and their proofs
+  stand on lines of `README.md` the fifth commit does not touch, read once
+  each after the change.
+
+  **The runs on defect E.** Cases 2 and 3 of the bench above — the no in the
+  new form and the no of 30 September 2026 in the older form with six places
+  and a route — ran exactly the case of the defect of line 7787, a record
+  under a no and the line printing none for the places and the routes. By the
+  person's answer to question 3 of 20 October 2026, line 32363, a bench
+  suffices for cluster 8, and as the runs of cluster 12 stand, lines 32455 to
+  32458, each run stands on the defect's own row with the bench's version and
+  the roadmap line that records the case as its anchor: two run rows under
+  0.153.0, source entry, dated 20 October 2026, anchored on the two lines of
+  the bench paragraph that carry the outputs. They count: 0.153.0 was
+  introduced at `a4c2b99`, which contains the last change to the hook's line
+  80 and to the status line 7787, and the commit of their rows, the fifth,
+  contains both, so the check against a run recorded too early, section C of
+  the tool's header, passes.
+
+  **Records of the fifth commit.** In `docs/stock-take.tsv`: the evidence of
+  the eleven closed defects moved onto their closing lines above, each note
+  saying so; the finding on the README's count of skills re-anchored on line
+  8 as it stands; the two run rows on defect E; nothing else. No record
+  anchored on a line the fifth commit changed or removed stays broken: the
+  rows whose evidence stood on README lines 8, 294, 321 and 371 at `f82aeae`
+  are among the closed, and the finding on line 8 is re-anchored. The tool,
+  its self-test, the nineteen checks and the step's command ran on the tree
+  of the fifth commit, the report naming every figure that changed against
+  the fourth and the range it counts over.
 
   **Whether the milestone is reached.** No. What is built here is clusters 8
   and 9 and the README without a date; clusters 13 (two points), 14, 15, 18,
