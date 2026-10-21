@@ -1488,10 +1488,15 @@ under its table of where a lesson goes — "It is written for people who
 install the plugin, not for whoever builds it, so a lesson about building
 belongs under `docs/`" — and that sentence is the one this rule rests on.
 Decided by the person on 21 October 2026, the same roadmap entry, which names
-each place the README carried until then, before and after: three sections,
-on working on devloop, on what hooks can and cannot do and on rules learned
-from this workflow's own bugs, and eight shorter places pointing at a document
-or naming a file.
+each place the README carried until then, before and after. A second step of
+the same job holds this half since 21 October 2026, the roadmap entry of that
+date on milestone 3, part 3: red where `README.md` names one of the four
+documents above or a path into `bin/`, `scripts/`, `shared/`, `hooks/`,
+`skills/`, `.github/` or `.claude-plugin/`, the file read as one line as for
+the dates and every find printed; what the README says of the user's
+project, `docs/agents/`, `~/.claude/settings.json` or `.claude/` say, is no
+find. The red line of the first step says since the same day that the file
+must carry no date and what it carries.
 
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
@@ -2164,7 +2169,21 @@ unbuilt — that no run with `brew` and `npx` met them — holds no longer.
 Every failure is a block and never a pass, and the block names which it was
 and that it read the last fetched state: no `environment.md` on the fetched
 ref, no section, an unknown value, a ref that cannot be read, a record saying
-no, and, under a yes, a place the record does not name. A record never written
+no, and, under a yes, a place the record does not name. Since 21 October 2026
+every cause is one whole clause without a label and a colon of its own, and
+the message joins it behind "does not open it, because", in the wordings the
+person approved that day, the roadmap entry of that date on milestone 3,
+part 3: until then seven causes of `bin/devloop-install-record` opened with
+a label and a colon of their own — `no record:`, `unknown value:` — behind
+the message's own colon, and the fallback for a reader that gave no cause
+quoted what the reader printed, the shell's error with its paths among it,
+where it says now that the reader gave no cause; the block for a place the
+record does not name names the places and the routes the record carries, or
+that it carries no route. Since the same day the message says that the
+command is handed over so that it runs from wherever the person is, with the
+change into the project's directory in front of it where it needs one, the
+rule under "A command handed over runs as it stands" at the head of this
+file. A record never written
 and a record saying no are different blocks, because "A guard's block is not a
 decline" needs the run to tell them apart, and an unattended issue carrying the
 wrong cause is what a third unnamed case would produce. Under a yes the guard
@@ -2263,7 +2282,16 @@ and `isntall` beside `install`, `i` and `add`, `-g` anywhere among the
 options or inside a cluster of short ones, `--global`, `--location=global`,
 `-L global`, and `npm_config_global` or `npm_config_location` before the
 command — not `--glob`, which npm 11.12.1 answers "Unknown cli config" and
-reads as nothing, measured on 12 October 2026 with `npm prefix --glob`. A pip
+reads as nothing, measured on 12 October 2026 with `npm prefix --glob`; and
+since 21 October 2026 the abbreviations that at least one of npm 10.9.4,
+11.12.1 and 12.2.0 reads as global, measured with `npm prefix` on Linux on
+21 October 2026 and on this Mac the same day under 11.12.1, the roadmap entry
+of that date on milestone 3, part 3 — `--g`, `--gl`, `--g=true`, `--gl=true`,
+and `--locat`, `--locati`, `--locatio` with `=global` or `global` behind
+them — and not `--glo`, `--globa`, `--loc=global`, `--loca=global`,
+`--l=global` or `--g=false`, which none of the three reads as global, 12.2.0
+refusing `--glo`, `--glob` and `--globa` and 11.12.1 installing into the
+project under all seven. A pip
 inside the project passes without the record being read, as anything landing
 inside the repository does: a pip or an interpreter named by a path inside
 the project, a bare one after `source` or `.` on the project's own
@@ -2526,17 +2554,29 @@ through the package `cachedir`; puppeteer/puppeteer
 destination inside the project opening nothing under any answer,
 `PLAYWRIGHT_BROWSERS_PATH=0` among them, the vendor's `node_modules`, and
 every other held against the places of the record. A setting in a file of
-the vendor stays unread, and so does `--path` on `@puppeteer/browsers
-install`, the paragraph below. One more move stands beside those, found in the review of pull
-request #159 the same day and not built: `--path` on `@puppeteer/browsers
-install`, which moves the download from its default, the current directory,
-to the place written — `npx @puppeteer/browsers install chrome@stable --path
-~/.cache/puppeteer`. The guard takes the default here as it does with the
-settings above and reads no `--path`; and unlike the moves above, this
-command passes under every answer, under a no too, because
-`@puppeteer/browsers install` is read for `--install-deps` alone and without
-it is not read at all. The roadmap entry of that date records it in its
-addendum. What a false positive cost, after that decision and until 12
+the vendor stays unread. One more move stood beside those, found in the
+review of pull request #159 the same day and not built until 21 October
+2026: `--path` on `@puppeteer/browsers install`, which moves the download
+from its default, the current directory, to the place written — `npx
+@puppeteer/browsers install chrome@stable --path ~/.cache/puppeteer`. Until
+that day the guard took the default here as it does with the settings above
+and read no `--path`, and the command passed under every answer, under a no
+too, because `@puppeteer/browsers install` was read for `--install-deps`
+alone and without it not at all; the roadmap entry of 8 October 2026 records
+it in its addendum. Since 21 October 2026, the roadmap entry of that date on
+milestone 3, part 3, by the decision of 20 October 2026 on cluster 14, the
+guard reads `--path`, attached with `=` or as the next word, as it reads a
+variable before the command: a place inside the project opens nothing under
+any answer, a place outside is held against the places of the record, under
+a no a block, and a place it cannot read — another variable in it, or a
+relative path where the command does not run inside the project — is a
+block as not read; without `--path` the command is read as before, its
+default unread. `puppeteer browsers install`, the `puppeteer` package's own
+form, defines no `--path`: its CLI is built with `allowCachePathOverride:
+false` (`packages/puppeteer/src/node/cli.ts` and `#definePathParameter` in
+`packages/browsers/src/CLI.ts`, read at `6fde1bd` on 21 October 2026), and
+its download lands in the cache directory the guard reads already. What a
+false positive cost, after that decision and until 12
 October 2026: `PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` put the
 browsers inside `node_modules` and passed under a yes with the eleven
 places, the default being named; under a record of six places it was blocked

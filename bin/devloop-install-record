@@ -14,7 +14,9 @@
 #           the machine the run is on: brew, go, npm, pnpm, yarn, bun, cargo,
 #           gem, pipx, uv, pip>
 #   answered: <the date the record carries, or none>
-# On exit 1 one line, "cause: <which of the causes it was>", and nothing else.
+# On exit 1 one line, "cause: <which of the causes it was>", and nothing else;
+# each cause is one whole clause without a label and a colon of its own, so
+# that the install guard can join it behind "because", since 21 October 2026.
 # Exit 2 on more than one argument. The one argument is the project directory;
 # without it, CLAUDE_PROJECT_DIR, and without that the current directory.
 set -u
@@ -27,7 +29,7 @@ HEADING='## Install permission'
 FILE='docs/agents/environment.md'
 
 cd "$PROJECT_DIR" 2>/dev/null || { echo "cause: the project directory $PROJECT_DIR cannot be entered"; exit 1; }
-git rev-parse --git-dir >/dev/null 2>&1 || { echo "cause: not a git repository, so there is no default branch to read the record off"; exit 1; }
+git rev-parse --git-dir >/dev/null 2>&1 || { echo "cause: this is not a git repository, so there is no default branch to read the record off"; exit 1; }
 
 # The default branch, resolved exactly as hooks/pre-tool-use-branch-guard.sh
 # resolves it; a check under "Before a handover, run these" holds the three
@@ -39,19 +41,19 @@ if [ -z "$DEFAULT" ]; then
     if git show-ref --verify --quiet "refs/heads/$c"; then DEFAULT="$c"; break; fi
   done
 fi
-[ -n "$DEFAULT" ] || { echo "cause: no default branch: origin/HEAD names none and neither main nor master exists"; exit 1; }
+[ -n "$DEFAULT" ] || { echo "cause: there is no default branch, since origin/HEAD names none and neither main nor master exists"; exit 1; }
 
 REF="refs/remotes/origin/$DEFAULT"
-git rev-parse --verify --quiet "$REF" >/dev/null 2>&1 || { echo "cause: the ref $REF cannot be read: the default branch $DEFAULT has not been fetched"; exit 1; }
-CONTENT=$(git show "$REF:$FILE" 2>/dev/null) || { echo "cause: no $FILE on origin/$DEFAULT as last fetched"; exit 1; }
-printf '%s\n' "$CONTENT" | grep -qxF "$HEADING" || { echo "cause: no record: $FILE on origin/$DEFAULT has no section \"$HEADING\", so the question was never answered"; exit 1; }
+git rev-parse --verify --quiet "$REF" >/dev/null 2>&1 || { echo "cause: the default branch $DEFAULT has not been fetched, so $REF cannot be read"; exit 1; }
+CONTENT=$(git show "$REF:$FILE" 2>/dev/null) || { echo "cause: there is no $FILE on origin/$DEFAULT as last fetched"; exit 1; }
+printf '%s\n' "$CONTENT" | grep -qxF "$HEADING" || { echo "cause: $FILE on origin/$DEFAULT has no section \"$HEADING\", so the question was never answered"; exit 1; }
 
 SECTION=$(printf '%s\n' "$CONTENT" | awk -v h="$HEADING" '$0 == h { s = 1; next } s && /^## / { exit } s')
 TOOLS=$(printf '%s\n' "$SECTION" | grep -m1 '^install-tools:' | sed 's/^install-tools:[[:space:]]*//; s/[[:space:]]*$//')
 case "$TOOLS" in
   yes|no) ;;
-  '') echo "cause: unknown value: the section \"$HEADING\" on origin/$DEFAULT has no install-tools line"; exit 1 ;;
-  *) echo "cause: unknown value: install-tools reads \"$TOOLS\" on origin/$DEFAULT, and yes and no are the only values"; exit 1 ;;
+  '') echo "cause: the section \"$HEADING\" on origin/$DEFAULT has no install-tools line"; exit 1 ;;
+  *) echo "cause: install-tools reads \"$TOOLS\" on origin/$DEFAULT, where yes and no are the only values"; exit 1 ;;
 esac
 ANSWERED=$(printf '%s\n' "$SECTION" | grep -m1 '^install-answered:' | sed 's/^install-answered:[[:space:]]*//; s/[[:space:]]*$//')
 

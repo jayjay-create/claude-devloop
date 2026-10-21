@@ -121,11 +121,29 @@ jobs:
       # included: the file is read as one line, every line break and carriage
       # return a space, and every date found is printed. Before that day the
       # README carried eight such dates, one of them over a line break. This
-      # step is no check of "Before a handover, run these" either.
+      # step is no check of "Before a handover, run these" either. The red
+      # line says since 21 October 2026 that the file must carry no date and
+      # that it carries what follows.
       - name: README.md carries no date
         run: |
           DATES=$(tr '\r\n' '  ' < README.md | grep -o -E '([0-9]{1,2} +)?(January|February|March|April|May|June|July|August|September|October|November|December) +[0-9]{4}|[0-9]{4}-[0-9]{2}-[0-9]{2}') || { echo "README.md carries no date"; exit 0; }
-          echo "README.md carries a date, where it says the state of today and carries none:"; printf '%s\n' "$DATES"; exit 1
+          echo "README.md must carry no date, and it carries:"; printf '%s\n' "$DATES"; exit 1
+
+      # Since 21 October 2026: README.md names no file or document of devloop's
+      # own, the second half of the rule under "README.md carries no date" in
+      # docs/skill-conventions.md, the person's decision of that day, the
+      # roadmap entry of that date on milestone 3, part 3. Red where the file
+      # names one of devloop's documents - docs/plan.md, docs/roadmap.md,
+      # docs/skill-conventions.md, docs/stock-take.tsv - or a path into bin/,
+      # scripts/, shared/, hooks/, skills/, .github/ or .claude-plugin/, the
+      # file read as one line as above and every find printed. What the README
+      # says of the user's project - docs/agents/, ~/.claude/settings.json,
+      # .claude/ - is no find, none of those being in the list. This step is
+      # no check of "Before a handover, run these" either.
+      - name: README.md names no file or document of devloop's own
+        run: |
+          NAMES=$(tr '\r\n' '  ' < README.md | grep -o -E 'docs/(plan\.md|roadmap\.md|skill-conventions\.md|stock-take\.tsv)|(^|[^A-Za-z0-9_./~-])(bin|scripts|shared|hooks|skills|\.github|\.claude-plugin)/[A-Za-z0-9_./-]*') || { echo "README.md names no file or document of devloop's own"; exit 0; }
+          echo "README.md must name no file or document of devloop's own, and it names:"; printf '%s\n' "$NAMES" | sed 's/^[^A-Za-z0-9_.]//'; exit 1
 
   # Since the fourth addendum of 14 October 2026: the reader's self-test and
   # every handler of hooks/hooks.json once, on the three systems devloop runs

@@ -64,10 +64,9 @@ echo "[ProjectStatus] branch: $BRANCH | uncommitted changes: $DIRTY | devloop: $
 # force wording" in docs/skill-conventions.md - so that the run has the answer
 # before the first install rather than meeting it at the guard; the answer
 # travels with the repository, and whoever works with devloop in a clone of
-# the project works under it, which README.md says to the person. Until 20
-# October 2026 this comment called the line what a second person who cloned
-# the repository meets. Under a no the line says none for the places and the
-# routes, whatever the record carries, since 20 October 2026: they do nothing
+# the project works under it, which README.md says to the person. Under a no
+# the line says none for the places and the routes, whatever the record
+# carries, since 20 October 2026: they do nothing
 # under a no, the guard blocking on install-tools: no before it reads a place;
 # a record written under a no since that day carries none
 # (shared/install-record.md), and an older one that carries them is not
@@ -80,6 +79,6 @@ if [ $? -eq 0 ]; then
   if [ "$TOOLS" = "no" ]; then PLACES=""; ROUTES=""; fi
   echo "[InstallRecord] tools: $(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p') | places: ${PLACES:-none} | routes: ${ROUTES:-none} | answered: $(printf '%s\n' "$RECORD" | sed -n 's/^answered: //p') | read off $(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p') as last fetched, not off the working tree"
 else
-  echo "[InstallRecord] none: $(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1) | every install outside the repository is blocked and handed to you until a record has landed on the default branch"
+  echo "[InstallRecord] none: $(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1) | every install outside the repository is blocked and handed to the person until a record has landed on the default branch"
 fi
 exit 0

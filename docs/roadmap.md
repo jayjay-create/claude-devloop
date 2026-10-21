@@ -33756,6 +33756,327 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   21 and 22 wait for later orders, and the runs and benches the clusters name
   are owed as before.
 
+- **Milestone 3, part 3, built as the person decided on 20 and 21 October 2026:
+  every cause of `bin/devloop-install-record` is one whole clause without a
+  label and a colon of its own, and the block message of
+  `hooks/pre-tool-use-install-guard.sh` joins it behind "does not open it,
+  because", the fallback for a reader that gave no cause and the block for a
+  place the record does not name in the wordings approved on 21 October 2026;
+  the message says that the command is handed over so that it runs from
+  wherever the person is; `--path` of `@puppeteer/browsers install` is read;
+  the abbreviated forms npm reads as a global install are read, measured on
+  three versions of npm; the line at session start without a record says
+  handed to the person; the red line of the step on a date in `README.md`
+  reworded and a second step holding `README.md` to naming no file or document
+  of devloop's own; five defects built and one found; 21 October 2026, version
+  0.154.0.** On `task/milestone-3-part-3-2026-10-21`, off `a090677`, in three
+  commits: `bin/`, `hooks/` and `.github/` with the version, `1810ab5`; this
+  entry, the rows of the table, `docs/skill-conventions.md` and `docs/plan.md`;
+  the runs of the bench, with the paragraph on the bench below. The report
+  stands on this machine as `~/devloop-report-2026-10-21-milestone-3-part-3.md`,
+  in English, and is not in the repository. Every line number of a file is as
+  at `a090677` unless a commit is named beside it. No session of Claude Code
+  was started for this entry: the guard and the hook ran by hand, fed the JSON
+  a tool call gives them. The words the tool reads a line of this file into its
+  search set by stand in this entry in its head and on the one status line
+  below that records a defect, and on no other line. No file under `skills/`,
+  `shared/` or `output-styles/` changes; `README.md` does not change.
+
+  **What the person decided on 21 October 2026**, the wordings approved that
+  day and carried out in the first commit. (a) Every cause the reader names is
+  one whole clause without a label and a colon of its own, and the guard joins
+  it with "does not open it, because " where it wrote "does not open it: ";
+  the reader's causes, each between its own quotation marks as the program
+  prints them after `cause: `: "this is not a git repository, so there is no
+  default branch to read the record off"; "there is no default branch, since
+  origin/HEAD names none and neither main nor master exists"; "the default
+  branch $DEFAULT has not been fetched, so $REF cannot be read"; "there is no
+  $FILE on origin/$DEFAULT as last fetched"; "$FILE on origin/$DEFAULT has no
+  section "$HEADING", so the question was never answered"; "the section
+  "$HEADING" on origin/$DEFAULT has no install-tools line"; "install-tools
+  reads "$TOOLS" on origin/$DEFAULT, where yes and no are the only values";
+  "the project directory $PROJECT_DIR cannot be entered" stays as it was. In
+  the guard the cause for a reader that names none, line 760, reads "the
+  record could not be read, and its reader gave no cause" in place of the
+  reader's output with its paths, and the cause for a place the record does
+  not name, line 980, reads "it lands in$UNNAMED, which the record does not
+  name; the record names the places ($PLACES) and the routes ($RROUTES)", with
+  "and no route" in place of the last part where no route stands, the places
+  and routes brought into one line as the code did. The other causes of the
+  guard, lines 767 to 779, 978 and 982, are whole clauses already and stay;
+  the parenthesis in "the record says no (install-tools: no on $REF)" quotes
+  the record's line and is no label. (b) In the block message, after the
+  sentence ending "and say both ways it can go at once.": "Hand it over so
+  that it runs from wherever they are, with the change into the project's
+  directory in front of it where it needs one." (c) In `hooks/session-start.sh`
+  line 83, "is blocked and handed to you until" becomes "is blocked and
+  handed to the person until". (d) In the job `stock-take` of
+  `.github/workflows/stock-take.yml` the step "README.md carries no date"
+  says where it goes red "README.md must carry no date, and it carries:" in
+  place of "README.md carries a date, where it says the state of today and
+  carries none:", each date found under it as before; and a second step of
+  the same job holds the second half of the rule under "`README.md` carries
+  no date" in `docs/skill-conventions.md`, red where `README.md` names a
+  document of devloop's own — `docs/plan.md`, `docs/roadmap.md`,
+  `docs/skill-conventions.md`, `docs/stock-take.tsv` — or a path into `bin/`,
+  `scripts/`, `shared/`, `hooks/`, `skills/`, `.github/` or
+  `.claude-plugin/`, saying "README.md must name no file or document of
+  devloop's own, and it names:" with every find under it, and green
+  "README.md names no file or document of devloop's own"; what the README
+  says of the user's project, `docs/agents/`, `~/.claude/settings.json` or
+  `.claude/`, is no find. Decided on 20 October 2026 and carried out here as
+  well: cluster 14, lines 33029 to 33032, `--path` read as point 4 of the
+  decisions of 12 October 2026 reads the variables before the command, lines
+  19645 to 19650; cluster 15, lines 33033 to 33052, the forms npm reads as a
+  global install read as one, measured again before the build. The first
+  point of cluster 13, the route that does not answer, is left on purpose by
+  the decision of 20 October 2026, lines 32979 to 32984, and stays.
+
+  **Measured on 21 October 2026 before the build.** In `$WORK/npmforms`, a
+  directory outside the repository holding one `package.json`, under
+  `/bin/bash`, `npm prefix <form>` with npm 11.12.1 at `/opt/homebrew/bin/npm`
+  under node v25.9.0, exit 0 in all 22 cases: `--g`, `--gl`, `--g=true`,
+  `--gl=true`, `--global`, `--location=global`, `--location global`,
+  `-L=global` and `-L global` print `/opt/homebrew`; `--locat=global`,
+  `--locati=global`, `--locatio=global`, `--locat global`, `--locati global`
+  and `--locatio global` print `npm warn Expanding --locat to --location.
+  This will stop working in the next major version of npm.` (with the form as
+  typed) and `/opt/homebrew`; `--glo`, `--glob` and `--globa` print `npm warn
+  Unknown cli config "--glo". This will stop working in the next major version
+  of npm.` (with the form as typed) and the project directory; `--loc=global`
+  and `--loca=global` print `npm warn Expanding --loc to --local. …` (as
+  typed) and the project directory; `--l=global` and `--g=false` print the
+  project directory. Form for form what the order's measurement of the same
+  day on Linux found for 11.12.1; with 10.9.4 and 12.2.0 there, fifteen forms
+  are read as global by at least one of the three versions and seven by none.
+  The guard at `a090677` read five of the fifteen, lines 517 to 518: `-g`,
+  `--global`, `--global=true`, `--location=global`, `-L=global`, and
+  `--location` or `-L` with `global` as the next word. `--path` on `puppeteer
+  browsers install`, read from the vendor: `pptr.dev/browsers-api` documents
+  no `--path`; `puppeteer/puppeteer` at `6fde1bd` (main, committed 21 October
+  2026 08:59 UTC), `packages/browsers/src/CLI.ts` line 110
+  `this.#allowCachePathOverride = opts.allowCachePathOverride ?? true;`,
+  lines 161 to 173 `#definePathParameter`, which returns the yargs object
+  without a `path` option where the override is not allowed and otherwise
+  defines `path` as "Path to the root folder for the browser downloads and
+  installation. If a relative path is provided, it will be resolved relative
+  to the current working directory." with the default `process.cwd()`, line
+  315 the `install` command taking it, lines 643 and 667 `cacheDir: args.path
+  ?? this.#cachePath`, no `.strict(` in the file;
+  `packages/puppeteer/src/node/cli.ts` lines 18 to 27 `new CLI({ cachePath:
+  config.cacheDirectory!, scriptName: 'puppeteer', … prefixCommand: { cmd:
+  'browsers', … }, allowCachePathOverride: false, …`. So `puppeteer browsers
+  install` defines no `--path`, and a `--path` written there is not read by
+  yargs and moves nothing: the download lands in `config.cacheDirectory`,
+  which the guard reads already as `~/.cache/puppeteer` or
+  `PUPPETEER_CACHE_DIR` before the command. `--path` is read on
+  `@puppeteer/browsers install` alone.
+
+  **What the first commit built, `1810ab5`.** `bin/devloop-install-record`: the
+  seven causes at lines 30, 42, 45, 46, 47, 53 and 54 (at `1810ab5` lines
+  32, 44, 47, 48, 49, 55 and 56) in the wordings above, the
+  header saying at lines 17 to 19 that a cause is one clause so that the guard
+  can join it behind "because"; the program's output on exit 0 and the
+  resolution of the default branch unchanged, the check holding the three
+  copies together printing `1` as before. `hooks/pre-tool-use-install-guard.sh`:
+  the fallback, line 760, now line 781; the cause for an unnamed place, line
+  980, now lines 1002 to 1003, the routes brought into one line first and "and no
+  route" where none stands; the frame and the new sentence on line 989, now
+  line 1012, the rest of the message word for word; the npm forms, lines 517
+  to 518, now lines 525 to 526, the fifteen forms read as global and the comment
+  above them naming the seven not read and the measurement; `--path`, read in
+  the arm `puppeteer-pkg:install`, lines 637 to 638, now lines 652 to 658: where
+  `--install-deps` stands without `--help` the block for system packages as
+  before, otherwise, where no `--help` stands, the words behind `install` read
+  for `--path=<place>` and `--path <place>`, the last one winning as yargs
+  takes it and `--` ending the reading, and the place read as the guard reads
+  a path written on a line — inside the project through `inside`, opening
+  nothing; outside through `expand`, `~`, `$HOME` and `${HOME}` expanded, an
+  absolute path a destination held against the places, anything else —
+  another variable, a relative path where the command does not run inside the
+  project, a `..` segment — not read, "where it lands cannot be read here;
+  @puppeteer/browsers install (where it puts things is not read off this
+  machine by this guard)"; the index of `install` kept at line 631 for that;
+  the comment at lines 612 to 620 saying so and that `puppeteer browsers install`
+  defines no `--path`; without `--path` the command is read as before, the
+  vendor's default, the current directory, unread. `hooks/session-start.sh`:
+  line 83, now 82, "handed to the person"; the comment's sentence "Until 20
+  October 2026 this comment called the line what a second person who cloned
+  the repository meets." gone, lines 67 to 69 now 67 to 69, a comment saying what
+  the code does and the earlier reading standing in `docs/skill-conventions.md`
+  under "The install guard reads a record" and in the entry of 20 October
+  2026. `.github/workflows/stock-take.yml`: the red line of the step on a
+  date, line 128, now 130; the second step at lines 143 to 146, last in the job
+  `stock-take`, with its comment at lines 132 to 142: the file read as one
+  line with `tr '\r\n' '  '`, `grep -o -E` over it with the pattern
+  `docs/(plan\.md|roadmap\.md|skill-conventions\.md|stock-take\.tsv)|(^|[^A-Za-z0-9_./~-])(bin|scripts|shared|hooks|skills|\.github|\.claude-plugin)/[A-Za-z0-9_./-]*`,
+  a path counting only after a character that is no part of a path, so that
+  `~/go/bin/` and `node_modules/.bin/` are no find and `.claude/` is not in
+  the list; green prints the green line and exits 0, red prints the red line
+  and every find, the character before the path stripped, and exits 1. The
+  job "hooks on every system" is unchanged, and the nineteen checks are
+  nineteen. The version 0.153.0 to 0.154.0. One line of the first commit was
+  corrected before the second: the new `elif` on `--help` carried the text of
+  the `if` above it whole, so that the anchor of the row on that `if` was
+  found twice; it reads `grep -qE -e` now, and the first commit was amended
+  with it before anything else was committed.
+
+  **What the second commit built.** `docs/skill-conventions.md`: under "The
+  install guard reads a record", after the sentence naming the blocks, that
+  every cause is one clause joined behind "because" since 21 October 2026,
+  what the seven and the fallback were, what the block for an unnamed place
+  names, and the sentence on the handover from wherever the person is; in
+  the sentence on the npm forms, lines 2260 to 2266, the abbreviations read
+  since this day and the seven not read, with the measurement; the paragraph
+  on `--path`, lines 2529 to 2538, saying what holds now and until when the
+  old reading held, with the vendor's lines; under "`README.md` carries no
+  date", the second step, and the sentence "and eight shorter places pointing
+  at a document or naming a file", line 1493, dropped: it counted the sentence
+  on the tests and the sentence on the session-start hook, which neither
+  point at a document nor name a file, and by "A count lives in one place",
+  line 1446, the paragraph names the entry that names each place and counts
+  nothing. `docs/plan.md`: one sentence on part 3 after the sentence on part
+  2 under milestone 3, lines 490 to 495. This entry.
+
+  **Counter-check before building**, answered in the report with the places,
+  in short. Nothing reads a cause of the reader or of the guard by its label:
+  the guard and the hook take the cause whole off the `cause:` line; the
+  refresh of `setup-project`, lines 91 to 94 and 109 to 115, tells "no
+  record stands" from "cannot read the value" by what the cause says and
+  still does, the one saying "has no section" or "there is no
+  docs/agents/environment.md" and the other "has no install-tools line" or
+  "where yes and no are the only values"; the conventions, `docs/plan.md`,
+  the README and the table name no label; five dated lines of this file
+  quote `no record: …` and stay. `bin/devloop-setup-state` keeps its causes,
+  two of them with a label and a colon of their own, and one place joins
+  them behind a label with its own colon, `hooks/session-start.sh` line 49,
+  the defect below. The whole message under every cause the guard can
+  produce was composed and then read on the bench, the paragraph below. A
+  record under yes that names no place: none is written by devloop, the
+  template under a yes carrying the eleven places since the record was
+  introduced, and the reader accepts one, so a record edited by hand can
+  produce it; the approved wording then prints "the places () and no
+  route", the variable empty as the code brings it; no wording for that case
+  was invented, and the report puts the question to the person. The runs that
+  counted on lines this order changes: one on the block message (17 October
+  2026), one on the block for an unnamed place (13 October 2026), four on the
+  session-start line without a record and three on the reader's cause for a
+  missing section; each stops counting with this order and the bench below
+  walks each of the four things. The two steps' commands, extracted from the
+  workflow and run under `bash -e` with `/usr/bin/grep` first on the path:
+  green on the tree, `README.md carries no date` and `README.md names no file
+  or document of devloop's own`, exit 0 each; on a copy under a throwaway
+  directory whose README named `docs/plan.md` and `bin/devloop-install-record`
+  and carried "21 October 2026" over a line break beside
+  `~/.claude/settings.json`, `docs/agents/` and `.claude/`: the first step
+  printed its red line and `21 October 2026`, exit 1, the second its red line,
+  `docs/plan.md` and `bin/devloop-install-record` and nothing else, exit 1. A
+  run of a step's command on this Mac is no run of the step, section A of the
+  tool's header, so the four stand here and enter no row.
+
+  **Recorded, not built: `hooks/session-start.sh` line 49 joins a cause of `bin/devloop-setup-state` behind "on the default branch as last fetched: not read, ", where two of its causes, "no default branch: origin/HEAD names none …" and "the ref … cannot be read: the default branch … has not been fetched", open with a label and a colon of their own, so that the status line chains two colons behind its field's — should: the causes of `bin/devloop-setup-state` are whole clauses as those of `bin/devloop-install-record` are since this day, or the line joins them in a form the person approves.**
+  Found at the counter-check of this order; `grep -n 'echo "cause:'
+  bin/devloop-setup-state` prints lines 164, 165, 177 and 195, and `grep -rn
+  'not read, '` over `hooks/ skills/ shared/` prints the hook's line 49 and no
+  other place that joins one. This order does not change the program or the
+  line.
+
+  **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the evidence of the defects of lines 6588
+  and 25184 moved onto the guard's message line, of line 33491 onto the hook's
+  line, of line 13635 onto the guard's line reading `--path` and of line
+  14032 onto the guard's line of the npm forms, each note saying what was
+  built; the rows of the reader's six re-worded causes re-anchored on the
+  wording of this day, the row of the seventh noting the change; the row of
+  the step's red line re-anchored; the notes of the block message, of the
+  block for an unnamed place, of the block with the reader's cause and of the
+  session-start line without a record saying what holds now; one thing of
+  kind hook outcome for the fallback cause, two of kind program outcome for
+  the second step green and red, one defect thing for the line above, sited
+  and evidenced on it, with the head of this entry as part of it; two
+  not-a-thing rows on the guard's new lines. The runs of the bench enter in
+  the third commit, with the paragraph below.
+
+  **The checks and the tool, run for this entry.** The command under "Before
+  you change anything, run this" ran on `main` at `a090677` before the branch
+  was cut, printing nothing against the installed 0.153.0. The nineteen
+  checks under "Before a handover, run these" ran on that tree, in a clean
+  bash with `/usr/bin/grep` first on its path, and again on the tree of the
+  third commit, the report naming each line and what differs. The tool ran
+  on `a090677` with exit 0 — no broken record, 15 findings, 38 closed
+  defects, none of 4230 lines of the search set uncovered — and on the tree
+  of the second and of the third commit with the figures the report names,
+  every figure that changed with the range it counts over and its reason; the
+  self-test 124 cases, 95 of 95 messages asserted, on each tree.
+
+  **The bench, on the tree of the second commit.** On 21 October 2026 at
+  11:12:35 UTC `hooks/pre-tool-use-install-guard.sh` and `hooks/session-start.sh`
+  of `e19e16b`, both last changed at `1810ab5`, ran by hand under a throwaway
+  directory outside the repository, against a throwaway project with
+  `docs/agents/` and its five files on `main`, pushed to a bare repository as
+  `origin` whose HEAD is `main`, the work on a branch `work`; the input the one
+  a tool call gives, `{"session_id":"bench3","cwd":<the project>,
+  "permission_mode":"default","hook_event_name":"PreToolUse","tool_name":"Bash",
+  "tool_input":{"command":<the command>,"description":"x"}}` on stdin with
+  `CLAUDE_PROJECT_DIR` set to the project, and for the hook at session start
+  `"hook_event_name":"SessionStart","source":"startup"` in place of the tool
+  fields; the record of each case committed on `main` and pushed before the
+  run, under the identity of this machine's git configuration; the guard asked
+  this machine under a yes, `npm prefix -g` answering `/opt/homebrew`. 58 feeds
+  of the guard, 39 blocks and 19 passes, each as section 5 of the report
+  expected, and one of the hook at session start; the outcomes those of a dry
+  run of the same cases against the working tree before the first commit, line
+  for line, the one difference being the routes wording corrected before it.
+  Every block carried the frame "does not open it, because " and, after "and say both ways it can go at once.", the approved sentence "Hand it over so that it runs from wherever they are, with the change into the project's directory in front of it where it needs one.", counted with `grep -c` over the message, 1 in each of the 39 blocks and 0 in each of the 19 passes, the rest of the message as before; behind "because" stood, by record:
+  - No record, the file without the section: the hook at session start printed `[ProjectStatus] branch: work | uncommitted changes: 0 | devloop: set up` and `[InstallRecord] none: docs/agents/environment.md on origin/main has no section "## Install permission", so the question was never answered | every install outside the repository is blocked and handed to the person until a record has landed on the default branch`, exit 0, `CLAUDE_ENV_FILE` unset and nothing appended; `brew install shellcheck` exit 2, "docs/agents/environment.md on origin/main has no section "## Install permission", so the question was never answered".
+  - `install-tools: maybe`: `brew install shellcheck` exit 2, "install-tools reads "maybe" on origin/main, where yes and no are the only values".
+  - The section without an `install-tools` line: `brew install shellcheck` exit 2, "the section "## Install permission" on origin/main has no install-tools line".
+  - No: `brew install shellcheck`, `sudo brew install shellcheck`, `npx @puppeteer/browsers install chrome@stable --path ~/.cache/puppeteer`, `npx @puppeteer/browsers install chrome@stable --install-deps` and the fifteen npm forms read as global, `npm install <form> typescript` with `--g`, `--gl`, `--g=true`, `--gl=true`, `--global`, `--location=global`, `--location global`, `-L=global`, `-L global`, `--locat=global`, `--locati=global`, `--locatio=global`, `--locat global`, `--locati global` and `--locatio global`, exit 2 each, "the record says no (install-tools: no on origin/main)"; `npx @puppeteer/browsers install chrome@stable --path=./browsers` and the seven npm forms no version reads as global, `--glo`, `--glob`, `--globa`, `--loc=global`, `--loca=global`, `--l=global` and `--g=false`, exit 0 each.
+  - Yes with the six bin directories and `install-route: go`: `sudo brew install shellcheck` exit 2, "it needs sudo, which stays the user's under every answer"; `npx @puppeteer/browsers install chrome@stable --path ~/.cache/puppeteer` exit 2, "it lands in ~/.cache/puppeteer, which the record does not name; the record names the places (/usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin) and the routes (go)".
+  - Yes with the six and no route: the same download with `--path ~/.cache/puppeteer` and with `--path=$HOME/.cache/puppeteer` exit 2 each, "it lands in ~/.cache/puppeteer, which the record does not name; the record names the places (/usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin) and no route".
+  - Yes with the eleven places and no route: `npx @puppeteer/browsers install chrome@stable` with `--path ~/.cache/puppeteer`, with `--path=./browsers`, with `--path browsers`, without `--path`, and with `--path ~/.cache/puppeteer --help` exit 0 each; with `--path /srv/browsers` exit 2, "it lands in /srv/browsers, which the record does not name; the record names the places (/usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin ~/Library/Caches/ms-playwright ~/.cache/ms-playwright ~/Library/Caches/Cypress ~/.cache/Cypress ~/.cache/puppeteer) and no route"; with `--path "$X"` and with `--path ../elsewhere` exit 2 each, "where it lands cannot be read here; @puppeteer/browsers install (where it puts things is not read off this machine by this guard); a place the record does not name stays blocked"; with `--path ~/.cache/puppeteer --install-deps` exit 2, "it installs system packages, which needs root and stays the user's under every answer"; `npx puppeteer browsers install chrome --path /srv/browsers` exit 0, the download landing in `~/.cache/puppeteer`, which the record names, since that form defines no `--path`; `npm install --g typescript`, `--locat=global`, `--locat global`, `--glo` and `--g --prefix ~/.local` exit 0 each, `/opt/homebrew/bin` lying under `/opt` and `~/.local/bin` named; `npm install --g --prefix /srv/tools typescript` exit 2, "it lands in /srv/tools/bin, which the record does not name; the record names the places (/usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin ~/Library/Caches/ms-playwright ~/.cache/ms-playwright ~/Library/Caches/Cypress ~/.cache/Cypress ~/.cache/puppeteer) and no route".
+  - Yes with `~/bin` alone and no route: `npm install --g typescript`, `npm install --locat=global typescript` and `npm install -g typescript` exit 2 each, "it lands in /opt/homebrew/bin, which the record does not name; the record names the places (~/bin) and no route".
+  - The reader's other causes, each with `brew install shellcheck`, exit 2: a directory with `docs/agents/` and no repository, "this is not a git repository, so there is no default branch to read the record off"; a repository on a branch `trunk` with no remote, "there is no default branch, since origin/HEAD names none and neither main nor master exists"; a clone of the bench's origin with `refs/remotes/origin/main` and `origin/HEAD` deleted, "the default branch main has not been fetched, so refs/remotes/origin/main cannot be read"; a project whose `origin/main` carries no `docs/agents/environment.md`, "there is no docs/agents/environment.md on origin/main as last fetched".
+  - A reader ending without a cause, the guard copied beside a `bin/devloop-install-record` that exits 1 printing nothing: `brew install shellcheck` exit 2, "the record could not be read, and its reader gave no cause".
+
+  **The runs on the things and on the defects**, by the answer of the person
+  to question 3 of 20 October 2026, line 32363, a bench sufficing for clusters
+  13, 14 and 15, and as the runs of cluster 12 stand, lines 32455 to 32458:
+  each run on the thing's own row with the bench's version and the line of
+  this entry that records the case as its anchor, dated 21 October 2026,
+  source entry, under 0.154.0. On the guard: the block message, every block;
+  the block with the reader's cause, the three records and the four causes
+  beside them; the block under a no; the block under a yes for `sudo`; the
+  block for a place the record does not name, with a route and without; the
+  block for a destination the guard cannot read, `--path "$X"` and `--path
+  ../elsewhere`; the block for system packages, `--install-deps`; the pass
+  with every destination named, `--path ~/.cache/puppeteer` and the npm
+  forms under the eleven places; the silent pass for a destination inside the
+  project, `--path=./browsers` and `--path browsers`; the silent pass where
+  the command matches no install pattern, the seven npm forms, the download
+  without `--path` and the help; the fallback cause. On the reader: each of
+  its seven causes and its exit 0. On the hook at session start: the line
+  without a record, the status line, set up, and nothing appended. On the
+  defects of lines 6588 and 25184, every block; of line 33491, the line
+  without a record; of line 13635, `--path` under no, under the six and
+  under the eleven places; of line 14032, the fifteen forms under no and
+  `--g` and `--locat=global` under both yes. They count: 0.154.0 was
+  introduced at `1810ab5`, which contains the last change to every line each
+  thing stands on, and the commit of their rows, the third, contains it, so
+  the check against a run recorded too early passes.
+
+  **Records of the third commit.** In `docs/stock-take.tsv`: the run rows
+  above and nothing else.
+
+  **Whether the milestone is reached.** No. What this order built: the two
+  points of cluster 13 the decision of 20 October 2026 left to this order, cluster 14
+  and cluster 15 as far as the measurement reaches, and the session-start
+  line; what the measurement does not cover — a value behind `--g` or
+  `--global` as a separate word, `--global=false`, an abbreviation of
+  `--location` shorter than `--locat`, versions of npm other than the three
+  — the guard reads as it read before. Clusters 18, 21 and 22 wait for later
+  orders, and the runs and benches the clusters name are owed as before.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

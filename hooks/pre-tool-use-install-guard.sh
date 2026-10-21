@@ -509,13 +509,21 @@ uvpip$US$ID$US" ;;
       # with -g, --global, --location=global or -L global anywhere among the
       # options, -g inside a cluster of short options, or npm_config_global
       # or npm_config_location set before the command; the prefix from
-      # --prefix or -C, the location to install global items
+      # --prefix or -C, the location to install global items. The abbreviated
+      # forms since 21 October 2026, measured that day with npm prefix under
+      # npm 10.9.4, 11.12.1 and 12.2.0 on Linux and 11.12.1 on macOS: --g,
+      # --gl, --g=true, --gl=true, --location global, -L global, and
+      # --locat, --locati, --locatio with =global or global behind them,
+      # which at least one of the three reads as global, are read as global;
+      # --glo, --glob, --globa, --loc=global, --loca=global, --l=global and
+      # --g=false, which none of the three reads as global, are not read,
+      # the install landing in the project or npm refusing the option.
       VERB=""; GLOB=no; PFX=""; j=$F
       while j=$((j + 1)); [ "$j" -lt "$N" ]; do
         w="${W[$j]}"
         case "$w" in
-          -g|--global|--global=true|--location=global|-L=global) GLOB=yes ;;
-          --location|-L) [ "${W[$((j + 1))]:-}" = global ] && GLOB=yes; j=$((j + 1)) ;;
+          -g|--global|--global=true|--location=global|-L=global|--g|--gl|--g=true|--gl=true|--locat=global|--locati=global|--locatio=global) GLOB=yes ;;
+          --location|-L|--locat|--locati|--locatio) [ "${W[$((j + 1))]:-}" = global ] && GLOB=yes; j=$((j + 1)) ;;
           --prefix|-C) PFX="${W[$((j + 1))]:-}"; j=$((j + 1)) ;;
           --prefix=*) PFX="${w#--prefix=}" ;;
           -C?*) PFX="${w#-C}" ;;
@@ -601,10 +609,16 @@ py$US$ID$US${W[$F]}" ;;
   # Playwright at the system's own location, over the browser already there;
   # install-deps, --with-deps and --install-deps install system packages,
   # which needs root; both stay the user's under every answer.
-  # @puppeteer/browsers install is read for --install-deps alone: without it
-  # the download lands in the current directory, the default of its --path,
-  # and a --path to a place outside is not read.
-  BV=""; BA=""; BR=""
+  # @puppeteer/browsers install is read for --install-deps and, since 21
+  # October 2026, for --path, attached with = or as the next word: a place
+  # inside the project opens nothing, one outside is held against the places
+  # of the record, one this guard cannot read blocks; without --path the
+  # download lands in the current directory, the vendor's default, and is
+  # not read. puppeteer browsers install, the puppeteer package's own form,
+  # defines no --path - its CLI is built with allowCachePathOverride false,
+  # packages/puppeteer/src/node/cli.ts - and lands in the cache directory
+  # read below.
+  BV=""; BA=""; BR=""; BK=0
   j=$F
   while [ "$j" -lt "$N" ]; do
     w="${W[$j]}"; b="${w##*/}"; b="${b%%@*}"
@@ -614,7 +628,7 @@ py$US$ID$US${W[$F]}" ;;
       playwright|playwright.ps1) case "${W[$((j + 1))]:-}" in install|install-deps) BR=playwright; BV="${W[$((j + 1))]}"; k=$((j + 1)); while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break ;; esac ;;
       cypress) [ "${W[$((j + 1))]:-}" = install ] && { BR=cypress; BV=install; k=$((j + 1)); while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break; } ;;
       puppeteer) [ "${W[$((j + 1))]:-}" = browsers ] && [ "${W[$((j + 2))]:-}" = install ] && { BR=puppeteer; BV=install; k=$((j + 2)); while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break; } ;;
-      browsers) [ "${w%/*}" = "@puppeteer" ] && [ "${W[$((j + 1))]:-}" = install ] && { BR=puppeteer-pkg; BV=install; k=$((j + 1)); while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break; } ;;
+      browsers) [ "${w%/*}" = "@puppeteer" ] && [ "${W[$((j + 1))]:-}" = install ] && { BR=puppeteer-pkg; BV=install; BK=$((j + 1)); k=$BK; while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break; } ;;
     esac
     j=$((j + 1))
   done
@@ -635,7 +649,13 @@ py$US$ID$US${W[$F]}" ;;
           if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)'; then SYSPKG=yes; BEYOND=yes; else BROWSER=puppeteer; fi
         fi ;;
       puppeteer-pkg:install)
-        if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)' && ! printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--help([[:space:]]|$)'; then BEYOND=yes; SYSPKG=yes; fi ;;
+        if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)' && ! printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--help([[:space:]]|$)'; then BEYOND=yes; SYSPKG=yes
+        elif ! printf '%s' "$BA" | grep -qE -e '(^|[[:space:]])--help([[:space:]]|$)'; then
+          # --path behind install, the last one winning as yargs takes it; -- ends the reading
+          PP=""; k=$BK
+          while k=$((k + 1)); [ "$k" -lt "$N" ]; do case "${W[$k]}" in --) break ;; --path=*) PP="${W[$k]#--path=}" ;; --path) [ $((k + 1)) -lt "$N" ] && PP="${W[$((k + 1))]}"; k=$((k + 1)) ;; esac; done
+          if [ -n "$PP" ]; then X=$(inside "$PP" "$ID"); [ -n "$X" ] || { X=$(expand "$PP"); case "$X" in /*) dest "$X" ;; *) UNREAD="$UNREAD; @puppeteer/browsers install (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; esac; }; fi
+        fi ;;
     esac
     # Where the download lands: the vendor's default for the system this
     # guard runs on, read with uname -s, or the place a variable before the
@@ -757,7 +777,8 @@ done <<< "${PIPS:-}"
 RECORD=$("$HERE/../bin/devloop-install-record" "$PROJECT_DIR" 2>&1)
 if [ $? -ne 0 ]; then
   CAUSE=$(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1)
-  [ -n "$CAUSE" ] || CAUSE="the record could not be read: ${RECORD:-the reader answered nothing}"
+  # the wording approved on 21 October 2026; until then the fallback quoted what the reader printed, the shell's own error with its paths among it
+  [ -n "$CAUSE" ] || CAUSE="the record could not be read, and its reader gave no cause"
 else
   REF=$(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p' | head -1)
   TOOLS=$(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p' | head -1)
@@ -977,7 +998,9 @@ $D" ;;
     if [ -n "$UNREAD" ]; then
       CAUSE="where it lands cannot be read here${UNREAD}; a place the record does not name stays blocked"
     elif [ -n "$UNNAMED" ]; then
-      CAUSE="it lands in$UNNAMED, which the record does not name; the record names: $(printf '%s\n' "$PLACES" | tr '\n' ' ' | sed 's/ $//'); routes: $(printf '%s\n' "$RROUTES" | tr '\n' ' ' | sed 's/ $//; s/^$/none/')"
+      # the wording approved on 21 October 2026, the places and the routes as the record names them, "and no route" where it names none
+      RL=$(printf '%s\n' "$RROUTES" | tr '\n' ' ' | sed 's/ $//'); RL="${RL:+the routes ($RL)}"
+      CAUSE="it lands in$UNNAMED, which the record does not name; the record names the places ($(printf '%s\n' "$PLACES" | tr '\n' ' ' | sed 's/ $//')) and ${RL:-no route}"
     elif [ -z "$(printf '%s' "$DESTS" | tr -d '\n')" ] && [ "$OPENED" != "yes" ] && [ -z "$RUN" ]; then
       CAUSE="where it lands could not be read off the command"
     else
@@ -986,5 +1009,5 @@ $D" ;;
   fi
 fi
 
-echo "Blocked: this installs outside the repository. The install record, read off the default branch as last fetched and never off the working tree, does not open it: $CAUSE. The install is the user's to run, not yours to run for them, and a yes said here does not change that: only the record does. Say in one line what it installs and what it unblocks, and hand them the exact command, backed — by the vendor's own installation line, or by the path in it resolving — and say both ways it can go at once. It picks up once the tool stands at the path that command writes to: their word is when to look, that path is what decides, never command -v, and nothing moves here until they say so. A decline is an answer too: say what it costs this work, in the next message with which you end your turn with text, and carry on. A block is not a decline: with nobody there, the issue or the skip reason carries the cause above, not a decline. If it only looked like an install — a project-local dependency, a virtual environment — say so and let them decide; a pip or an interpreter named by a path inside the project passes here without the record." >&2
+echo "Blocked: this installs outside the repository. The install record, read off the default branch as last fetched and never off the working tree, does not open it, because $CAUSE. The install is the user's to run, not yours to run for them, and a yes said here does not change that: only the record does. Say in one line what it installs and what it unblocks, and hand them the exact command, backed — by the vendor's own installation line, or by the path in it resolving — and say both ways it can go at once. Hand it over so that it runs from wherever they are, with the change into the project's directory in front of it where it needs one. It picks up once the tool stands at the path that command writes to: their word is when to look, that path is what decides, never command -v, and nothing moves here until they say so. A decline is an answer too: say what it costs this work, in the next message with which you end your turn with text, and carry on. A block is not a decline: with nobody there, the issue or the skip reason carries the cause above, not a decline. If it only looked like an install — a project-local dependency, a virtual environment — say so and let them decide; a pip or an interpreter named by a path inside the project passes here without the record." >&2
 exit 2
