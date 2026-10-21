@@ -32,7 +32,17 @@ while IFS='|' read -r _ class target _ globs _ _ status _; do
     case "$REL" in ${p##\*\*/}) MATCH=1;; $p) MATCH=1;; esac
   done
   [ "$MATCH" = "1" ] || continue
-  if ! OUT=$(cd "$PROJECT_DIR" && $RUNNER "$target" FILE="$REL" 2>&1); then
+  OUT=$(cd "$PROJECT_DIR" && $RUNNER "$target" FILE="$REL" 2>&1); RC=$?
+  if [ "$RC" -ne 0 ]; then
+    # A tool of the chain not found on the search path the chain runs under,
+    # read through bin/devloop-missing-tool since 21 October 2026, as
+    # hooks/stop-checks.sh reads it: the check did not run and found
+    # nothing, the tool is named, and what closes it belongs in the
+    # repository.
+    if MISSING=$(printf '%s\n' "$OUT" | "$HERE/../bin/devloop-missing-tool" "$RC"); then
+      OUT="This check did not run and found nothing: $MISSING is not found on the search path the chain runs under. What closes that belongs in the repository and not in this session - the directory of $MISSING on the PATH the runner uses, or the target calling $MISSING by the path the installer wrote to - so that the next shell and the next person meet it; docs/agents/environment.md says where it stands. The output:
+$OUT"
+    fi
     FAILED="$FAILED
 --- $class ($RUNNER $target FILE=$REL) ---
 $OUT"
@@ -40,5 +50,5 @@ $OUT"
 done < <(grep '^|' "$CHECKS" | grep -v '^|[[:space:]]*-' | tail -n +2)
 
 [ -z "$FAILED" ] && exit 0
-echo "The file you just changed fails its checks. Fix this now:$FAILED" >&2
+echo "The file you just changed fails its checks. Fix this now; a class whose output opens on \"This check did not run\" is not red from the code, and what closes it goes into the repository as that line says:$FAILED" >&2
 exit 2

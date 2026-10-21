@@ -1,0 +1,138 @@
+#!/bin/bash
+# Reads the output of a check target that failed and says whether it failed
+# because a tool of the chain is not found on the search path the chain runs
+# under, since 21 October 2026: hooks/stop-checks.sh and
+# hooks/post-tool-use-checks.sh, which run the chain, read every failure
+# through this program, so that the two cannot disagree about what a missing
+# tool looks like. It answers the should of the roadmap entry of 30 September
+# 2026 on devloop-test-s, whose chain went red on govulncheck and gosec not
+# found on the PATH make runs under and was got past in the session: a red
+# from a tool not on the PATH is read as that, and named.
+#
+# Usage: devloop-missing-tool EXIT < the output of the target
+#        devloop-missing-tool --self-test
+# EXIT is the status the runner ended with.
+#
+# Exit 0 and the name of the tool on one line where the output says a tool is
+#   missing, in one of two shapes, measured on 21 October 2026 with GNU Make
+#   3.81 on macOS and the shells of that machine, the roadmap entry of that
+#   date on milestone 3, part 4:
+#   (a) a shell naming the word it could not run - "sh: X: command not
+#   found", "/bin/bash: X: command not found", "/bin/sh: X: No such file or
+#   directory" for a path, with "line N" behind the shell where it prints
+#   one; dash's "sh: 1: X: not found"; zsh's "zsh:1: command not found: X" -
+#   together with 127 as a status in the output ("Error 127", "exit code
+#   127", "exit status 127", "errno 127") or as EXIT: the shell exits 127
+#   where the word is no command, and make reports that as "Error 127" where
+#   the recipe went through the shell;
+#   (b) make naming the word itself, "make: X: No such file or directory",
+#   "make[2]: X: ..." for a sub-make, which make prints where it executes the
+#   recipe's first word itself, with no shell between, and ends with "Error
+#   1" under make 3.81, so that no 127 is asked for there; unless the output
+#   also says "No rule to make target", which is a makefile that is missing
+#   and no tool.
+# Exit 1 and nothing printed where the output says no such thing: a program's
+#   own "No such file or directory" for a file it was given, "cat:
+#   missing.txt: No such file or directory", has a program and not a shell or
+#   make before it; "sh: line 0: cd: /nowhere: No such file or directory"
+#   carries a second colon inside what would be the name; a line of shape (a)
+#   with no 127 anywhere, "X: command not found" from a program that quotes
+#   it say, is not read; a red without such a line is red for its own reason.
+# Exit 2 with one line on stderr: an argument it does not know, more than one
+#   argument, or EXIT not a number.
+# --self-test runs every outcome once, prints one line per case and exits 1
+# at the first that does not come out as this head says.
+set -u
+
+shell_name() {
+  # shape (a): the first line where a shell names the word it could not run, the name printed
+  printf '%s\n' "$1" | sed -n -E \
+    -e 's/^([^ :]*\/)?(sh|bash|zsh|dash|ash|ksh|mksh)(: line [0-9]+)?: ([^ :]+): (command not found|No such file or directory)$/\4/p' \
+    -e 's/^([^ :]*\/)?(sh|dash)(: [0-9]+)?: ([^ :]+): not found$/\4/p' \
+    -e 's/^zsh:[0-9]+: command not found: ([^ ]+)$/\1/p' | head -1
+}
+make_name() {
+  # shape (b): the first line where make names the word it could not execute itself
+  printf '%s\n' "$1" | sed -n -E 's/^make(\[[0-9]+\])?: ([^ :]+): No such file or directory$/\2/p' | head -1
+}
+
+selftest() {
+  local me out rc n=0
+  me=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  run() { local in="$1"; shift; out=$(printf '%s\n' "$in" | "$me" "$@" 2>&1); rc=$?; }
+  expect() {
+    local name="$1" want="$2" text="$3"; n=$((n+1))
+    [ "$rc" -eq "$want" ] || { echo "FAIL $name: exit $rc, expected $want"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }
+    [ "$out" = "$text" ] || { echo "FAIL $name: printed '$out', expected '$text'"; exit 1; }
+    echo "ok   $name"
+  }
+  run "" ;                                  expect "no argument: exit 2" 2 "devloop-missing-tool: expected the runner's exit status, or --self-test"
+  run "" 2 3;                               expect "two arguments: exit 2" 2 "devloop-missing-tool: expected one argument, the runner's exit status, got 2"
+  run "" --nope;                            expect "an argument it does not know: exit 2" 2 "devloop-missing-tool: expected the runner's exit status, or --self-test, got --nope"
+  run "" two;                               expect "an exit that is no number: exit 2" 2 "devloop-missing-tool: expected the runner's exit status as a number, got two"
+  run "govulnchk ./... && true
+/bin/sh: govulnchk: command not found
+make: *** [vuln] Error 127" 2;              expect "shape a: sh with command not found and Error 127 in the output, the name" 0 "govulnchk"
+  run "/bin/bash: govulnchk: command not found
+make: *** [vuln] Error 127" 2;              expect "shape a: bash by its path" 0 "govulnchk"
+  run "bash: line 1: govulnchk: command not found
+Error 127" 2;                               expect "shape a: bash with its line number" 0 "govulnchk"
+  run "/bin/sh: /nowhere/bin/x: No such file or directory
+make: *** [vuln] Error 127" 2;              expect "shape a: a path the shell cannot run, the path printed" 0 "/nowhere/bin/x"
+  run "zsh:1: command not found: govulnchk
+make: *** [vuln] Error 127" 2;              expect "shape a: zsh's wording" 0 "govulnchk"
+  run "/bin/sh: 1: govulnchk: not found
+make: *** [vuln] Error 127" 2;              expect "shape a: dash's wording with its line number" 0 "govulnchk"
+  run "sh: govulnchk: command not found" 127; expect "shape a: no 127 in the output, the runner's own exit 127" 0 "govulnchk"
+  run "sh: govulnchk: command not found
+npm ERR! errno 127" 1;                      expect "shape a: errno 127" 0 "govulnchk"
+  run "sh: govulnchk: command not found
+error: Recipe failed with exit code 127" 1; expect "shape a: exit code 127" 0 "govulnchk"
+  run "sh: govulnchk: command not found
+task: Failed to run task: exit status 127" 1; expect "shape a: exit status 127" 0 "govulnchk"
+  run "sh: govulnchk: command not found
+make: *** [vuln] Error 1" 2;                expect "shape a without any 127: not read, exit 1" 1 ""
+  run "sh: govulnchk: command not found
+make: *** [vuln] Error 1270" 2;             expect "shape a with 1270, which is no 127: not read" 1 ""
+  run "govulnchk ./...
+make: govulnchk: No such file or directory
+make: *** [vuln] Error 1" 2;                expect "shape b: make naming the word itself, Error 1, the name" 0 "govulnchk"
+  run "make[2]: /nowhere/bin/x: No such file or directory
+make[2]: *** [vuln] Error 1" 2;             expect "shape b: a sub-make and a path" 0 "/nowhere/bin/x"
+  run "make: missing.mk: No such file or directory
+make: *** No rule to make target \`missing.mk'.  Stop." 2; expect "make naming a makefile it cannot find: no tool, exit 1" 1 ""
+  run "cat: missing.txt: No such file or directory
+make: *** [x] Error 1" 2;                   expect "a program's own No such file or directory: not read" 1 ""
+  run "/bin/sh: line 0: cd: /nowhere: No such file or directory
+make: *** [x] Error 1" 2;                   expect "a shell's message about cd's argument: not read" 1 ""
+  run "FAIL test_x
+make: *** [test] Error 1" 2;                expect "a red without such a line: exit 1, nothing printed" 1 ""
+  run "" 2;                                 expect "nothing on stdin: exit 1" 1 ""
+  run "sh: a: command not found
+sh: b: command not found
+make: *** [x] Error 127" 2;                 expect "two tools missing: the first named" 0 "a"
+  echo "SELF-TEST PASSED: $n cases"
+  exit 0
+}
+
+[ $# -le 1 ] || { echo "devloop-missing-tool: expected one argument, the runner's exit status, got $#" >&2; exit 2; }
+case "${1:-}" in
+  --self-test) selftest ;;
+  '') echo "devloop-missing-tool: expected the runner's exit status, or --self-test" >&2; exit 2 ;;
+  -*) echo "devloop-missing-tool: expected the runner's exit status, or --self-test, got $1" >&2; exit 2 ;;
+  *[!0-9]*) echo "devloop-missing-tool: expected the runner's exit status as a number, got $1" >&2; exit 2 ;;
+esac
+EXIT="$1"
+OUT=$(cat)
+NAME=$(shell_name "$OUT")
+if [ -n "$NAME" ]; then
+  if [ "$EXIT" -eq 127 ] || printf '%s\n' "$OUT" | grep -qE '(Error|exit code|exit status|errno|code) 127($|[^0-9])'; then
+    printf '%s\n' "$NAME"; exit 0
+  fi
+  exit 1
+fi
+NAME=$(make_name "$OUT")
+[ -n "$NAME" ] || exit 1
+printf '%s\n' "$OUT" | grep -q 'No rule to make target' && exit 1
+printf '%s\n' "$NAME"
+exit 0

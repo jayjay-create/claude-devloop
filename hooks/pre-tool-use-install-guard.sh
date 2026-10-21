@@ -24,6 +24,10 @@ TOOL=$(printf '%s\n' "$INPUT" | sed -n 's/^tool: //p' | head -1)
 # the command is placed against it; where the JSON carries none, a relative
 # path cannot be placed at all.
 CWD=$(printf '%s\n' "$INPUT" | sed -n 's/^cwd: //p' | head -1)
+# The session and the tool call, for the note this guard leaves at its pass
+# under a yes for hooks/post-tool-use-install-fact.sh, since 21 October 2026.
+SID=$(printf '%s\n' "$INPUT" | sed -n 's/^session_id: //p' | head -1)
+TUID=$(printf '%s\n' "$INPUT" | sed -n 's/^tool_use_id: //p' | head -1)
 CMDS=$(printf '%s\n' "$INPUT" | grep '^[0-9]')
 US=$(printf '\037')
 RS=$(printf '\036')
@@ -57,6 +61,28 @@ parent_of() {
   local L
   while IFS= read -r L; do
     case "$L" in "$1$US"*) IFS="$US" read -r _ P2 _ <<< "$L"; printf '%s' "$P2"; return ;; esac
+  done <<< "$CMDS"
+}
+# words_of ID: the command with that id as its words ran, joined by blanks,
+# a word the shell would take apart or read otherwise put in single quotes,
+# a redirection's operator left as it stands; for the line the fact hook
+# writes, since 21 October 2026
+words_of() {
+  local L W2 i out w
+  while IFS= read -r L; do
+    case "$L" in "$1$US"*) ;; *) continue ;; esac
+    IFS="$US" read -r _ _ _ _ _ WORDS2 <<< "$L"
+    IFS="$US" read -ra W2 <<< "${WORDS2}${US}x"
+    out=""; i=0
+    while [ "$i" -lt $((${#W2[@]} - 1)) ]; do
+      w="${W2[$i]}"
+      case "$w" in
+        [0-9]'>'*|[0-9]'<'*|'>'*|'<'*|'&>'*) ;;
+        ''|*[!A-Za-z0-9_@%+=:,./~-]*) w="'$(printf '%s' "$w" | sed "s/'/'\\\\''/g")'" ;;
+      esac
+      out="$out${out:+ }$w"; i=$((i + 1))
+    done
+    printf '%s' "$out"; return
   done <<< "$CMDS"
 }
 # expand PATH: a ~ or $HOME opening replaced by the home directory; the result
@@ -164,6 +190,7 @@ value() {
 # manifest and is no install.
 ITEMS=""
 DESTS=""
+FACTS=""
 UNREAD=""
 ENVS=()
 ENVFAIL=""
@@ -188,10 +215,19 @@ item() {
   for p in $v; do [ "$(moved "$p")" = INSIDE ] && return; done
   case "$2" in root=?*|prefix=?*) p=$(inside "${2#*=}" "$ID"); [ -n "$p" ] && return ;; esac
   ITEMS="$ITEMS
-$1$US$2$US$(printf '%s' "$VARS" | tr '\n' "$RS")"; BEYOND=yes
+$1$US$2$US$(printf '%s' "$VARS" | tr '\n' "$RS")$US$ID"; BEYOND=yes
 }
+# dest PATH: a destination written in the command or documented by the
+# vendor; kept with the command's id as a fact for the note, since 21
+# October 2026
 dest() { DESTS="$DESTS
-$1"; BEYOND=yes; }
+$1"; FACTS="$FACTS
+$ID$US$1"; BEYOND=yes; }
+# destfile PATH: the same for a file written into a bin directory, the fact
+# carrying the directory
+destfile() { DESTS="$DESTS
+$1"; FACTS="$FACTS
+$ID$US${1%/*}"; BEYOND=yes; }
 BINDIR='^(/usr/local/(bin|sbin)|/usr/(bin|sbin)|/opt/|(~|\$HOME|\$\{HOME\})/(\.local/bin|bin|go/bin)|\$\(go env GOPATH\)/bin|\$GOBIN|\$GOPATH/bin)'
 # priv_if I OPTION...: the program at word I is of the first kind where one
 # of the options stands among its words before the judged word, or among all
@@ -568,7 +604,7 @@ uvpip$US$ID$US" ;;
       case "$V1" in install|i|add|update|up) has -g --global && item bun "" ;; esac ;;
     cp|mv|install|ln)
       j=$F
-      while j=$((j + 1)); [ "$j" -lt "$N" ]; do printf '%s' "${W[$j]}" | grep -qE "$BINDIR" && { WRITES=yes; dest "${W[$j]}"; }; done ;;
+      while j=$((j + 1)); [ "$j" -lt "$N" ]; do printf '%s' "${W[$j]}" | grep -qE "$BINDIR" && { WRITES=yes; destfile "${W[$j]}"; }; done ;;
     make)
       # make install: a destination the command itself writes - PREFIX,
       # prefix, DESTDIR, BINDIR, bindir or exec_prefix as a variable on the
@@ -591,8 +627,8 @@ py$US$ID$US${W[$F]}" ;;
   j=$F
   while j=$((j + 1)); [ "$j" -lt "$N" ]; do
     w="${W[$j]}"
-    if [ "$w" = "-o" ]; then printf '%s' "${W[$((j + 1))]:-}" | grep -qE "$BINDIR" && { WRITES=yes; dest "${W[$((j + 1))]}"; }
-    else case "$w" in -o*) printf '%s' "${w#-o}" | grep -qE "$BINDIR" && { WRITES=yes; dest "${w#-o}"; } ;; esac; fi
+    if [ "$w" = "-o" ]; then printf '%s' "${W[$((j + 1))]:-}" | grep -qE "$BINDIR" && { WRITES=yes; destfile "${W[$((j + 1))]}"; }
+    else case "$w" in -o*) printf '%s' "${w#-o}" | grep -qE "$BINDIR" && { WRITES=yes; destfile "${w#-o}"; } ;; esac; fi
   done
   # Browsers for tests, since 8 October 2026: the named install commands
   # whose vendors document a destination outside the repository. playwright
@@ -820,6 +856,8 @@ else
     OPENED=no
     absolute() { case "$1" in /*) printf '%s' "$1" ;; esac; }
     place() {
+      FACTS="$FACTS
+$IID$US$2"
       if printf '%s\n' "$RROUTES" | grep -qxF "$1"; then OPENED=yes; else DESTS="$DESTS
 $2"; fi
     }
@@ -859,7 +897,7 @@ $2"; fi
       fi
       printf '%s/bin' "$r"
     }
-    while IFS="$US" read -r R EXTRA VARS; do
+    while IFS="$US" read -r R EXTRA VARS IID; do
       [ -n "$R" ] || continue
       VARS=$(printf '%s' "$VARS" | tr "$RS" '\n')
       case "$R" in
@@ -906,7 +944,8 @@ $2"; fi
           case "$EXTRA" in
             installdir) UNREAD="$UNREAD; gem (--install-dir or --build-root moves the destination, which this guard does not read)" ;;
             bindir=*) DESTS="${DESTS}
-${EXTRA#bindir=}" ;; # --bindir, taken as written
+${EXTRA#bindir=}"; FACTS="$FACTS
+$IID$US${EXTRA#bindir=}" ;; # --bindir, taken as written
             *)
               envs GEM_HOME
               if [ "$EXTRA" = user ]; then
@@ -978,6 +1017,28 @@ $D" ;;
       done <<< "$DESTS"
       DESTS="$NEWDESTS"
     fi
+    # note: the facts of this call for hooks/post-tool-use-install-fact.sh,
+    # since 21 October 2026 - per install the folder it lands in, the
+    # route's answer on this machine or the path written in the command, a
+    # Go bin directory named by go env asked as the WRITES case asks it, a
+    # home directory written as ~, and the command as its words ran -
+    # handed to bin/devloop-install-note at the one pass under a yes below;
+    # a fetch-and-run form names no folder and leaves no fact
+    note() {
+      local I D C
+      while IFS="$US" read -r I D; do
+        [ -n "$I" ] && [ -n "$D" ] || continue
+        case "$D" in '$(go env GOPATH)/bin'*|'$GOPATH/bin'*|'$GOBIN'*) ENVS=(); D=$(gobin) ;; esac
+        [ -n "$D" ] || continue
+        case "$D" in
+          '$HOME'/*|'$HOME') D="~${D#\$HOME}" ;;
+          '${HOME}'/*|'${HOME}') D="~${D#\$\{HOME\}}" ;;
+          "$HOME"/*|"$HOME") D="~${D#"$HOME"}" ;;
+        esac
+        C=$(words_of "$I")
+        [ -n "$C" ] && printf '%s%s%s\n' "$D" "$US" "$C"
+      done <<< "$(printf '%s\n' "$FACTS" | grep -v '^$' | sort -t "$US" -k1,1n)"
+    }
     UNNAMED=""
     while IFS= read -r D; do
       [ -n "$D" ] || continue
@@ -998,12 +1059,14 @@ $D" ;;
     if [ -n "$UNREAD" ]; then
       CAUSE="where it lands cannot be read here${UNREAD}; a place the record does not name stays blocked"
     elif [ -n "$UNNAMED" ]; then
-      # the wording approved on 21 October 2026, the places and the routes as the record names them, "and no route" where it names none
+      # the wording approved on 21 October 2026, the places and the routes as the record names them, "no place" and "no route" where it names none, the second since the order on part 4 of that day
       RL=$(printf '%s\n' "$RROUTES" | tr '\n' ' ' | sed 's/ $//'); RL="${RL:+the routes ($RL)}"
-      CAUSE="it lands in$UNNAMED, which the record does not name; the record names the places ($(printf '%s\n' "$PLACES" | tr '\n' ' ' | sed 's/ $//')) and ${RL:-no route}"
+      PL=$(printf '%s\n' "$PLACES" | tr '\n' ' ' | sed 's/ $//'); PL="${PL:+the places ($PL)}"
+      CAUSE="it lands in$UNNAMED, which the record does not name; the record names ${PL:-no place} and ${RL:-no route}"
     elif [ -z "$(printf '%s' "$DESTS" | tr -d '\n')" ] && [ "$OPENED" != "yes" ] && [ -z "$RUN" ]; then
       CAUSE="where it lands could not be read off the command"
     else
+      note | "$HERE/../bin/devloop-install-note" write "$SID" "$TUID"
       exit 0 # every destination named, or a fetch-and-run form alone: the record opens it
     fi
   fi

@@ -165,9 +165,12 @@ jobs:
   # harmless - the
   # command ls for the tool Bash, a Write and an Edit of the project's README
   # on a branch cut from main, a permission request for ls, a session start,
-  # a stop, and since 15 October 2026 the result of ls and a failed ls for
+  # a stop, since 15 October 2026 the result of ls and a failed ls for
   # the handler under PostToolUse and PostToolUseFailure without a matcher,
-  # which reads nothing where the input names no transcript - in a throwaway
+  # which reads nothing where the input names no transcript, and since 21
+  # October 2026 the same two with a tool_use_id for the handler under the
+  # two events with the matcher Bash, which finds no note for that id and
+  # writes nothing - in a throwaway
   # project outside the checkout with docs/agents/, a
   # commit on main pushed to a local bare origin whose HEAD is main, and the
   # work on a branch, since the branch guard blocks a Write on main by design.
@@ -248,7 +251,7 @@ jobs:
           import json, sys
           p = sys.argv[1]
           h = json.load(open("hooks/hooks.json"))["hooks"]
-          base = {"session_id": "s1", "cwd": p, "permission_mode": "default"}
+          base = {"session_id": "s1", "cwd": p, "permission_mode": "default", "tool_use_id": "toolu_hooks1"}
           inputs = {
               ("PreToolUse", "Bash"): dict(base, hook_event_name="PreToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}),
               ("PreToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PreToolUse", tool_name="Write", tool_input={"file_path": p + "/README.md", "content": "# project\n"}),
@@ -257,6 +260,8 @@ jobs:
               ("PostToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PostToolUse", tool_name="Edit", tool_input={"file_path": p + "/README.md", "old_string": "a", "new_string": "b"}, tool_response={"filePath": p + "/README.md"}),
               ("PostToolUse", ""): dict(base, hook_event_name="PostToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, tool_response={"stdout": "", "stderr": "", "interrupted": False}),
               ("PostToolUseFailure", ""): dict(base, hook_event_name="PostToolUseFailure", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, error="Exit code 1", is_interrupt=False),
+              ("PostToolUse", "Bash"): dict(base, hook_event_name="PostToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, tool_response={"stdout": "", "stderr": "", "interrupted": False, "isImage": False}),
+              ("PostToolUseFailure", "Bash"): dict(base, hook_event_name="PostToolUseFailure", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, error="Exit code 1", is_interrupt=False),
               ("Stop", ""): dict(base, hook_event_name="Stop", stop_hook_active=False),
           }
           for event, groups in h.items():

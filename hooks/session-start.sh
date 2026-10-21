@@ -30,8 +30,9 @@ git rev-parse --git-dir >/dev/null 2>&1 || exit 0
 # up. Some file there, or none there and docs/agents/ in the working tree:
 # set up in part, the present and the missing files by name. Nothing there and
 # no directory: not set up here. Where the program cannot read the branch, its
-# cause stands in place of the files, and the directory alone decides between
-# the last two.
+# cause stands in place of the files, joined behind "not read, because" since
+# 21 October 2026, each cause being one whole clause, and the directory alone
+# decides between the last two.
 STATE=$("$HERE/../bin/devloop-setup-state" "$PROJECT_DIR" 2>&1)
 RC=$?
 SETUP=""
@@ -46,7 +47,7 @@ if [ "$RC" -eq 0 ]; then
   fi
 elif [ -d "docs/agents" ]; then
   CAUSE=$(printf '%s\n' "$STATE" | sed -n 's/^cause: //p' | head -1)
-  SETUP="set up in part | on the default branch as last fetched: not read, ${CAUSE:-the reader answered nothing} | missing: not read"
+  SETUP="set up in part | on the default branch as last fetched: not read, because ${CAUSE:-the reader answered nothing} | missing: not read"
 fi
 if [ -z "$SETUP" ]; then
   echo "[ProjectStatus] devloop: not set up here"

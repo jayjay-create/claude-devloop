@@ -39,7 +39,10 @@
 # On exit 1 one line, "cause: <which of the causes it was>", and nothing else:
 # the project directory cannot be entered; not a git repository; no default
 # branch; the ref cannot be read, the default branch never fetched - where a
-# fetch was asked for and failed, that cause names the fetch's message too. A
+# fetch was asked for and failed, that cause names the fetch's message too.
+# Each cause is one whole clause without a label and a colon of its own, as
+# the causes of bin/devloop-install-record are, so that hooks/session-start.sh
+# can join it behind "because", since 21 October 2026. A
 # fetch that fails or does not answer where the ref can be read is no cause:
 # it is said on the fetch line and the ref as last fetched is read.
 # Exit 2 on an argument it does not know.
@@ -101,13 +104,13 @@ selftest() {
   run "$T/a" "$T/b";                     expect "two directories: exit 2" 2 "expected at most one directory"
   run "$T/nowhere";                      expect "cause: the directory cannot be entered" 1 "cause: the project directory"
   mkdir "$T/plain"
-  run "$T/plain";                        expect "cause: not a git repository" 1 "cause: not a git repository"
+  run "$T/plain";                        expect "cause: not a git repository" 1 "cause: this is not a git repository, so there is no default branch to read the setup off"
   git_q init -q -b trunk "$T/trunk" && git_q -C "$T/trunk" commit -q --allow-empty -m x
-  run "$T/trunk";                        expect "cause: no default branch" 1 "cause: no default branch: origin/HEAD names none"
+  run "$T/trunk";                        expect "cause: no default branch" 1 "cause: there is no default branch, since origin/HEAD names none and neither main nor master exists"
   git_q init -q -b main "$T/local" && git_q -C "$T/local" commit -q --allow-empty -m x
-  run "$T/local";                        expect "cause: the ref cannot be read, never fetched" 1 "cause: the ref refs/remotes/origin/main cannot be read"
+  run "$T/local";                        expect "cause: the ref cannot be read, never fetched" 1 "cause: the default branch main has not been fetched, so refs/remotes/origin/main cannot be read"
   git_q -C "$T/local" remote add origin "$T/no-such-origin"
-  run --fetch "$T/local";                expect "cause: never fetched and the fetch failed, its message named" 1 "cause: the ref refs/remotes/origin/main cannot be read" "and the fetch failed ("
+  run --fetch "$T/local";                expect "cause: never fetched and the fetch failed, its message named" 1 "cause: the default branch main has not been fetched, so refs/remotes/origin/main cannot be read, and the fetch failed ("
   # an origin with two of the five files, one carrying a marker
   git_q init -q --bare -b main "$T/origin.git"
   git_q clone -q "$T/origin.git" "$T/work" 2>/dev/null
@@ -162,7 +165,7 @@ selftest() {
 
 PROJECT_DIR="${PROJECT_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}}"
 cd "$PROJECT_DIR" 2>/dev/null || { echo "cause: the project directory $PROJECT_DIR cannot be entered"; exit 1; }
-git rev-parse --git-dir >/dev/null 2>&1 || { echo "cause: not a git repository, so there is no default branch to read the setup off"; exit 1; }
+git rev-parse --git-dir >/dev/null 2>&1 || { echo "cause: this is not a git repository, so there is no default branch to read the setup off"; exit 1; }
 
 # The default branch, resolved exactly as hooks/pre-tool-use-branch-guard.sh
 # and bin/devloop-install-record resolve it; a check under "Before a handover,
@@ -174,7 +177,7 @@ if [ -z "$DEFAULT" ]; then
     if git show-ref --verify --quiet "refs/heads/$c"; then DEFAULT="$c"; break; fi
   done
 fi
-[ -n "$DEFAULT" ] || { echo "cause: no default branch: origin/HEAD names none and neither main nor master exists"; exit 1; }
+[ -n "$DEFAULT" ] || { echo "cause: there is no default branch, since origin/HEAD names none and neither main nor master exists"; exit 1; }
 
 REF="refs/remotes/origin/$DEFAULT"
 FETCHLINE="not run, reading origin/$DEFAULT as last fetched"
@@ -192,7 +195,7 @@ if [ "$FETCH" = yes ]; then
     FETCHLINE="failed (${MSG:-git printed nothing}), reading origin/$DEFAULT as last fetched"
   fi
 fi
-git rev-parse --verify --quiet "$REF" >/dev/null 2>&1 || { echo "cause: the ref $REF cannot be read: the default branch $DEFAULT has not been fetched${FETCHED:+, and $FETCHED}"; exit 1; }
+git rev-parse --verify --quiet "$REF" >/dev/null 2>&1 || { echo "cause: the default branch $DEFAULT has not been fetched, so $REF cannot be read${FETCHED:+, and $FETCHED}"; exit 1; }
 
 echo "ref: origin/$DEFAULT"
 echo "fetch: $FETCHLINE"
