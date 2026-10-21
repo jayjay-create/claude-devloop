@@ -2330,6 +2330,50 @@ well `nix run`, `nix shell` and `nix env shell` are read as `uvx` is, by
 name alone, defect 11 of the roadmap entry on the first closing run of
 milestone 3.
 
+**What an install did is written by a hook, since 21 October 2026**, cluster
+18 of milestone 3 as the person decided it on 20 and 21 October 2026, the
+roadmap entry of 21 October 2026 on milestone 3, part 4. After every Bash
+call that the install guard let through under a record saying yes as an
+install outside the project, and that succeeded,
+`hooks/post-tool-use-install-fact.sh`, on `PostToolUse` with the matcher
+`Bash`, writes one line per install into `docs/agents/environment.md` on the
+branch, under the heading `## Installed outside the project`: the command as
+its words ran, in backticks, and the folder it installed into — `` - `brew
+install gitleaks` installed into /opt/homebrew/bin `` — no date, and a line
+that stands there already is not written a second time. The guard is the one
+reader: at its pass under a yes it hands the facts it read — the route's
+answer on this machine or the path written in the command, and the words of
+the simple command that fired — to `bin/devloop-install-note`, keyed by the
+session and the tool call, and the hook takes them back through the same
+program, which alone holds the path of the note and the form of the line; the
+hook reads no command and resolves no place, so that two readings cannot
+drift, and `bin/devloop-command-reader` prints `tool_use_id` and
+`interrupted` for it. `PostToolUse` fires only after a call that succeeded,
+measured on 21 October 2026 under Claude Code 2.1.305: a command that exits
+other than 0 reaches `PostToolUseFailure`, where the hook, registered there
+too, drops the note. A fetch-and-run form leaves no fact, since the guard
+reads no folder for it and the line carries one. Where the hook cannot write
+— the tree on the default branch, which the branch guard holds unchanged for
+the editing tool by design, or the file missing in the tree — it says so with
+exit 2, the line in its message, and the run puts it there as it stands;
+`build-work` step 3 points 7 and 8 and `setup-checks` step 4 say that the
+hook writes the line and the run no second one, where until that day the run
+wrote it, which the run of 19 October 2026 in project z did not, defect 6 of
+the roadmap entry of that date. An install the person makes by their own
+hand, after the question `setup-checks` step 3 puts under a no, the hook does
+not see; whether the run writes that line is the person's to decide, the
+roadmap entry of 21 October 2026 on milestone 3, part 4. The two hooks that
+run the check chain, `hooks/stop-checks.sh` and
+`hooks/post-tool-use-checks.sh`, read a red through
+`bin/devloop-missing-tool` since the same day: where a shell names the word
+it could not run, with 127 as a status in the output or as the runner's own
+exit, or make names the word it could not execute itself, which GNU Make 3.81
+reports with `Error 1` and no 127, measured that day, the message says that
+the check did not run and found nothing, which tool is missing, and that what
+closes it — the directory on the PATH the runner uses, or the target calling
+the tool by the path the installer wrote to — belongs in the repository, the
+should of the entry of 30 September 2026 on `devloop-test-s`.
+
 Measured on 28 September 2026 against the working tree, the guard fed its JSON
 directly with a scratch project whose `origin` was a local bare repository:
 with no `docs/agents/` exit 0; with the directory in the tree and nothing on
@@ -3576,9 +3620,11 @@ where the main branch cannot be fetched or fast-forwarded:
   are.** Rewriting them into the install's form would put the reading in the
   resumption sentence, where it is already done one step later and better.
   The fourth line is of this kind too: the install command `setup-checks`
-  step 3 hands over under a record that says no or was never written, whose
-  outcome its step 4 reads off the path the installer writes to, a command
-  not run leaving the class `skipped (user)`. And so is the fifth, the one
+  step 3 hands over under a record that says no or was never written — since
+  21 October 2026 on the first answer of the question it puts there, that
+  they install it themselves — whose
+  outcome its step 4 reads off the path the installer writes to, a tool not
+  standing there leaving the class `skipped (user)`. And so is the fifth, the one
   line `shared/fetch-three-times.md` carries into the four skills that fetch
   before a cut, a task's base, after a merge, at the mark or before a
   rebase: the person clears what stood in the way — the connection or the

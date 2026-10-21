@@ -268,6 +268,13 @@ the record says no, the run does not start: until 5 October 2026 this read
 "the decline path stays what it is", and since that day a yes on record is
 one of the conditions the unattended mode starts on, the sixth in
 `build-work`, so that the decline path is walked with the person there only.
+Since 21 October 2026 the fact itself is written at the site that outlives
+the session by a mechanism and not by the run:
+`hooks/post-tool-use-install-fact.sh` puts the command and the folder into
+`environment.md` under `Installed outside the project` the moment an install
+the record let through went in, cluster 18 of the roadmap entry of 21
+October 2026 on milestone 3, part 4; the report in the pull request stays
+the run's.
 
 Two things said openly. The record opens a guard and is written by a skill,
 which is the shape "A limit the limited party maintains is not a limit" warns

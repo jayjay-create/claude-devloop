@@ -34077,6 +34077,432 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   — the guard reads as it read before. Clusters 18, 21 and 22 wait for later
   orders, and the runs and benches the clusters name are owed as before.
 
+- **Milestone 3, part 4, built as the person decided on 20 and 21 October 2026:
+  a hook on `PostToolUse` writes what an install the record let through did
+  into `docs/agents/environment.md` under `## Installed outside the project`,
+  the command as its words ran and the folder it installed into, from the
+  facts the install guard leaves at its pass under a yes, so that the guard's
+  reading is the one reading; the two hooks that run the check chain read a
+  tool not found on its search path through one program and say that the
+  check did not run, which tool is missing and that what closes it belongs in
+  the repository; the guard's cause for a yes without a place says no place;
+  the causes of `bin/devloop-setup-state` are whole clauses and the
+  session-start line joins them behind "because"; `setup-checks` step 3 puts
+  the decision on a class whose tool is missing under a no as a question at
+  once, install it themselves or the check off, before the offer of the mode;
+  four defects built, one found and one question halted; 21 October 2026,
+  version 0.155.0.** On `task/milestone-3-part-4-2026-10-21`, off `b52be40`,
+  in three commits: `bin/`, `hooks/`, `skills/` and `.github/` with the
+  version, `6ef979b`; this entry, the rows of the table,
+  `docs/skill-conventions.md` and `docs/plan.md`; the runs of the bench, with
+  the paragraph on the bench below. The report stands on this machine as
+  `~/devloop-report-2026-10-21-milestone-3-part-4.md`, in English, and is not
+  in the repository. Every line number of a file is as at `b52be40` unless a
+  commit is named beside it. One session of Claude Code was started for this
+  entry, `claude -p` for the measurement of which hook event a failed Bash
+  call reaches, below; the hooks and programs ran by hand otherwise, fed the
+  JSON a tool call gives them. The words the tool reads a line of this file
+  into its search set by stand in this entry in its head and on the one
+  status line below that records a defect, and on no other line. No file
+  under `shared/` or `output-styles/` changes; `README.md` does not change,
+  the proposal for it standing below for the person.
+
+  **What the person decided on 21 October 2026 for part 4**, as the order of that day
+  carries it, each text between its own quotation marks; `$NAME` is the
+  variable the code sets there. (a) The guard's cause for a place the saved
+  answer does not name reads, where the answer under a yes names no place,
+  "the record names no place and no route", and where it names a route "the
+  record names no place and the routes (…)" in the form the code writes the
+  routes in; an answer under a yes without a place stays readable and nothing
+  else of it changes. Decided against reading such an answer as broken,
+  because a run with nobody there is not blocked in doubt,
+  `docs/skill-conventions.md` line 2136, and devloop never writes such an
+  answer itself. (b) The causes of `bin/devloop-setup-state` at lines 165,
+  177 and 195 are whole clauses without a label and a colon of their own, as
+  the install record's reader's are: "this is not a git repository, so there
+  is no default branch to read the setup off"; "there is no default branch,
+  since origin/HEAD names none and neither main nor master exists"; "the
+  default branch $DEFAULT has not been fetched, so $REF cannot be
+  read${FETCHED:+, and $FETCHED}"; "the project directory $PROJECT_DIR cannot
+  be entered" at line 164 stays. `hooks/session-start.sh` line 49 joins the
+  cause behind "not read, because " where it joined it behind "not read, ".
+  The program's self-test, lines 100 to 110, expects the new wordings. (c)
+  Cluster 18: a hook on `PostToolUse` writes, after every install outside the
+  project that the install guard let through under a yes and that succeeded,
+  a line into `docs/agents/environment.md`, under this heading and in this
+  form, the two lines being examples of the form and no values of this
+  repository:
+
+      ## Installed outside the project
+
+      - `brew install gitleaks` installed into /opt/homebrew/bin
+      - `go install golang.org/x/vuln/cmd/govulncheck@latest` installed into ~/go/bin
+
+  One line per install, with the command as it ran and the folder it
+  installed into; no date; a line that stands there already is not written a
+  second time. (d) Cluster 21: with the person there, where the saved answer
+  says no or none stands and a class would need a tool outside the project,
+  `setup-checks` puts the decision at once as a question, in step 3, where it
+  handed the command over until then, lines 484 to 499, and so before the
+  offer of the unattended mode in step 8. Approved in this wording, which the
+  run says in the person's language, `gitleaks` for the class `secrets` the
+  example: "Für die Prüfung auf versehentlich eingecheckte Zugangsdaten fehlt
+  gitleaks, und außerhalb des Projekts darf ich nichts installieren. Du
+  kannst es selbst installieren: `brew install gitleaks`. Wie soll es
+  weitergehen?" with the answers "Selbst installieren" and "Prüfung
+  abschalten". On the first the run gives the command once more as a line of
+  its own to copy, as it runs from wherever they are, and waits for the
+  person's word; then it reads the place the command writes to and sets the
+  class up where the tool stands there. On the second the class becomes
+  `skipped (user):` with the reason naming the tool and that the person did
+  not install it. This holds for every class whose tool is missing under a
+  no, `secrets` included, and a class is never left `empty` for it. The skill
+  says what is said and not the words, "Describe what must be said; never
+  dictate wording"; the wording stands here. (e) Cluster 18, the rest after
+  lines 33061 to 33067: the hooks that run the check chain,
+  `hooks/stop-checks.sh` and `hooks/post-tool-use-checks.sh`, read a failure
+  in which a command of the chain ends with 127 and "No such file or
+  directory" or "command not found" as a tool that is not on the search path
+  of the chain, and say in their message that the check did not run for that
+  reason and found nothing, which tool is missing, and that the fact that
+  closes it — the folder on the search path, or the target with the path the
+  installer wrote to — belongs in the repository, the should of line 7705.
+  The decisions of 20 October 2026 on cluster 18 stand at lines 32991 to
+  32994 and 33061 to 33067, on cluster 21 at lines 33070 to 33071.
+
+  **Measured on 21 October 2026 before the build of part 4.** Which hook event a Bash
+  call reaches, under Claude Code 2.1.305: in `$WORK/measure`, a settings file
+  handed to `claude -p` through `--settings` with three handlers that append
+  their whole input to a file each, under `PreToolUse`, `PostToolUse` and
+  `PostToolUseFailure` with the matcher `Bash`, the prompt asking for the two
+  calls `true` and `false`. `true`: `PreToolUse` with `"tool_use_id":
+  "toolu_01C2nhpn2eEJX4g7whX4e4yM"`, then `PostToolUse` with the same id and
+  `"tool_response":{"stdout":"","stderr":"","interrupted":false,"isImage":false,
+  "noOutputExpected":false}`. `false`: `PreToolUse` with a second id, no
+  `PostToolUse`, and `PostToolUseFailure` with that id, `"error":"Exit code
+  1"` and `"is_interrupt":false`. So a call that exits other than 0 never
+  reaches `PostToolUse`, and the id of a call stands in the input of both
+  events. The vendor's page `code.claude.com/docs/en/hooks`, read the same
+  day: `PostToolUse` "Runs immediately after a tool completes successfully";
+  `PostToolUseFailure` "Runs when a tool that started executing fails", "For
+  Bash and PowerShell, a command that ran and exited produces a first line
+  `Exit code N`"; exit 2 on `PostToolUse` "Shows stderr to Claude; the tool
+  already ran". What make prints where a tool of a recipe is missing, GNU
+  Make 3.81, the make of macOS and the one runner on this machine: a recipe
+  `govulnchk-nothere ./...`, no shell metacharacter, make executes the word
+  itself and prints `make: govulnchk-nothere: No such file or directory` and
+  `make: *** [vuln] Error 1`, exit 2, no 127 anywhere; the same for a path;
+  `govulnchk-nothere ./... && true`, through the shell: `/bin/sh:
+  govulnchk-nothere: command not found` and `Error 127`; with
+  `SHELL=/bin/bash` the same with `/bin/bash:`; with `SHELL=/bin/zsh`
+  `zsh:1: command not found: govulnchk-nothere` and `Error 127`; with
+  `SHELL=/bin/dash` `/bin/dash: 1: govulnchk-nothere: not found` and `Error
+  127`; `govulnchk-nothere ./... | cat`: the shell's line and make exit 0,
+  the pipe's status being `cat`'s, which nothing in the hooks can read as
+  red. Other causes: `sh -c "exit 1"`, `Error 1` and no such line; `cat
+  missing.txt`, `cat: missing.txt: No such file or directory`; `cd /nowhere
+  && ls`, `/bin/sh: line 0: cd: /nowhere: No such file or directory`; `make
+  -f missing.mk`, `make: missing.mk: No such file or directory` with `No rule
+  to make target`. The shells alone: `/bin/sh -c govulnchk-nothere` exits 127
+  with `command not found`, `/bin/dash` with `not found`.
+
+  **What the first commit built, `6ef979b`.** `hooks/pre-tool-use-install-guard.sh`:
+  the cause for a place the record does not name at lines 1064 to 1065 of
+  that commit, "the record names ${PL:-no place} and ${RL:-no route}", `PL`
+  "the places (…)" where the record names one; the session and the tool
+  call's id read off the reader at lines 29 to 30; `words_of` at line 70, the
+  words of a command joined, a word the shell would take apart in single
+  quotes, a redirection's operator as it stands; `FACTS` at line 193, filled
+  by `item` with the command's id as a fourth field, by `dest` and `destfile`
+  at lines 223 to 230 — the latter for a file written into a bin directory,
+  its directory the fact — by `place` at line 859 with the route's answer and
+  by the `--bindir` line of gem; `note` at line 1027, which resolves a Go bin
+  directory as the `WRITES` case does, writes a home directory as `~`, sorts
+  the facts by the command's id and hands them, the folder and the command's
+  words, to `bin/devloop-install-note write` at line 1069, the line before
+  the one pass under a yes; nothing for a fetch-and-run form, which names no
+  folder. `bin/devloop-install-note`, new: `write`, `take` and `drop` with the
+  session and the tool call's id kept to letters, digits, dot, hyphen and
+  underscore, the note `$TMPDIR/devloop-install-note-SESSION-ID`; `take`
+  prints `` - `COMMAND` installed into FOLDER `` per fact and removes the
+  note, exit 1 where none stands; its self-test 18 cases.
+  `hooks/post-tool-use-install-fact.sh`, new, registered in `hooks/hooks.json`
+  under `PostToolUse` and `PostToolUseFailure` with the matcher `Bash`: reads
+  its input through the reader, drops the note on `PostToolUseFailure` and
+  where `interrupted` is true, takes it on `PostToolUse`, and writes the lines
+  under the heading at the end of the section, the heading appended at the
+  end of the file where it does not stand, a line that stands whole already
+  not written again; exit 2 with the lines in its message where the tree
+  stands on the default branch, read off `bin/devloop-setup-state`'s `ref`
+  line, or `environment.md` is missing in the tree; the lines as
+  `additionalContext` where it wrote. `bin/devloop-command-reader`: the
+  fields `tool_use_id` and `interrupted`, the decoder keeping a boolean for a
+  wanted path at lines 2114 to 2115, where it skipped every boolean; three
+  cases and four `absent` lines in its self-test, 163 cases.
+  `bin/devloop-missing-tool`, new: the name of the tool where the output has
+  shape (a), a shell naming the word it could not run with 127 in the output
+  or as the runner's exit, dash's and zsh's wordings among the forms, or
+  shape (b), make naming the word itself, which GNU Make 3.81 ends with
+  `Error 1`, unless `No rule to make target` stands beside it; 24 cases in
+  its self-test, a program's own `No such file or directory`, a shell's line
+  about `cd`'s argument and a red without such a line among the ones it does
+  not read. `hooks/stop-checks.sh` and `hooks/post-tool-use-checks.sh`: the
+  runner's exit kept, every red read through that program, and where it
+  names a tool the class's output opens on "This check did not run and found
+  nothing: NAME is not found on the search path the chain runs under. What
+  closes that belongs in the repository and not in this session - the
+  directory of NAME on the PATH the runner uses, or the target calling NAME
+  by the path the installer wrote to - so that the next shell and the next
+  person meet it; docs/agents/environment.md says where it stands. The
+  output:" and the chain's output; the closing message of each hook says that
+  such a class is not red from the code. `bin/devloop-setup-state`: the three
+  causes at lines 168, 180 and 198 of that commit and the self-test's four
+  expectations; the head says that each cause is one whole clause.
+  `hooks/session-start.sh` line 50 of that commit: "not read, because ".
+  `skills/setup-checks/SKILL.md` step 3: the question with its fields,
+  header, question field and two answers, what follows each, and that a class
+  is never left `empty` for it, lines 485 to 536 of that commit; step 1's
+  bullet on `secrets` names the question; "A guard's block is not a decline"
+  names it; step 4 says the hook writes the standing fact, lines 589 to 599;
+  step 8's two reasons read "an install they declined, did not make or did
+  not run". `skills/build-work/SKILL.md` step 3 point 7 says the hook writes
+  the standing fact, lines 499 to 507 of that commit, point 8 that this step
+  writes no line for an install the run made and puts the hook's line where
+  the hook could not, lines 556 to 568, and the pull request paragraph names
+  the hook. `.github/workflows/stock-take.yml`: the inputs for the two new
+  pairs of event and matcher with a `tool_use_id`, lines 263 to 264 of that
+  commit, so that the job "hooks on every system" runs the new hook once on
+  each system; its comment says so. `hooks/hooks.json`: the two groups and
+  the description. The version 0.155.0.
+
+  **Counter-check before building part 4**, answered in the report with the places
+  and summarised here. How the hook knows an install succeeded: measured
+  above, `PostToolUse` alone, the reader's new `interrupted` beside it; how
+  it reads the place: not at all — the guard's reading at its pass under a
+  yes, the route's answer or the written path, never `command -v`, reaches
+  it through the note, so that there is one reading and no check has to hold
+  two copies together. The cases: on the default branch nothing is written
+  and the hook says so with exit 2, since the branch guard holds the tree
+  there unchanged for the editing tool by design; with `environment.md`
+  missing in the tree the same; the heading missing, appended at the end;
+  the same command again, no second line; under a no and without a record
+  the guard blocks and no `PostToolUse` comes; a fetch-and-run form leaves no
+  fact; with nobody there the line lands on the task's branch. The places
+  that read, quote or key on a cause of `bin/devloop-setup-state`: the hook's
+  line 49 alone joins one, the four skills that run the program with
+  `--fetch` read its `missing:` and `fetch:` lines, `shared/fetch-failed.md`
+  the `fetch:` line, the conventions quote no wording, the table's row of the
+  first cause re-anchored. Step 3 of `setup-checks` with nobody there asks
+  nothing, both records saying yes there, and an answer that is neither is
+  what the output style says of every question through the widget, taken up
+  and the question put again. Every place that says the run writes the
+  standing fact: `build-work` step 3 points 7 and 8 and the pull request
+  paragraph, `setup-checks` step 4 line 548, changed; `shared/editing-tool.md`
+  is a rule on the run and stays; `docs/plan.md` gained one sentence under
+  the unattended part of milestone 3.
+
+  **Halted, for the person: who writes the line where the person installs in
+  their own terminal.** On "Selbst installieren" the person installs the tool
+  in a terminal the hook does not see, and the run reads the place and sets
+  the class up. Two ways. (A) The run writes the line itself, in the same
+  form under the same heading, as `build-work` step 3 point 8 had the run
+  write every install line until this day — the file is complete, the fact
+  that closes line 7705 lands; but the writing depends on the model again,
+  which is the cause cluster 18 names, two writers stand on one section, and
+  the run knows the command it handed over, not the one the person ran. (B)
+  Only the hook writes, and a tool the person installed stands in no line of
+  `environment.md`; what the class needs stands in the target that calls the
+  tool by its path — one writer, mechanical; but the fact of the install is
+  in the repository only as the target's path, and a person who clones the
+  project reads nowhere that the tool was installed by hand. Recommendation:
+  A, with the run's line written from the path it read, not from the command
+  it handed over — a sentence in step 3 of `setup-checks` saying that after
+  their word the run writes the line with the command as handed over and the
+  folder it read the tool at, since the hook cannot see that install. Nothing
+  of either is built: `build-work` point 8 keeps its sentence that a command
+  the person has to type is a fact that belongs in the file, and says of an
+  install the run made that the hook writes it; the new text of step 3 says
+  who writes nothing.
+
+  **Decisions of this order, and where it deviates.** A fetch-and-run form
+  leaves no fact and no line: the guard reads no folder for it, line 1006,
+  and the approved form carries one; such a form stands in the target that
+  runs it and puts nothing where a next shell looks. The hook writes nothing
+  on the default branch, with exit 2 naming the line, rather than writing
+  there: the alternative puts a change on that branch which no commit of the
+  run may carry. Shape (b) of `bin/devloop-missing-tool` goes beyond the
+  wording of decision (e), which asks for 127: under the make of this machine
+  the common recipe, a bare tool with its arguments, is executed by make
+  itself and reported with `Error 1` and no 127, measured above, so that
+  without shape (b) the hooks would be silent for the form the defect of line
+  7705 was measured in; built, and said here for the person to confirm or
+  strike. After the person's word on "Selbst installieren", where the tool
+  does not stand at the path the command writes to, the class becomes
+  `skipped (user):` naming the tool and that the person did not install it,
+  which keeps what step 3 said until this day of a command not run. The
+  README is not changed: the proposal below needs the person.
+
+  **Recorded, not built: `README.md` lines 213 to 215 list what the hooks do without being asked — the checks for a changed file, every blocking check at the end of a turn, the guards — and say nothing of the line `hooks/post-tool-use-install-fact.sh` writes into the file on running the project after an install the record let through, so that the list is incomplete since this day — should: the README names it, after "every blocking check" on line 215, in a wording the person approves; proposed: "; after a tool the run installed outside the project under your record has gone in, a line in the file on running the project saying what was installed and where".**
+  Found at the counter-check of this order; `grep -n 'without being asked'
+  README.md` prints line 213 and the paragraph names no such line.
+
+  **Records of part 4.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: the evidence of the defects of lines 7705,
+  30120 and 33977 moved onto the lines that build them — line 7705 onto the
+  line of `hooks/stop-checks.sh` that opens the class's output, line 30120
+  onto the line of `hooks/post-tool-use-install-fact.sh` that writes, line
+  33977 onto the line of `hooks/session-start.sh` that joins the cause — and
+  of line 30085 onto the line of `skills/setup-checks/SKILL.md` that puts the
+  question, each note saying what was built and, where this order changes a
+  should, the old one quoted; the rows of the three re-worded causes of
+  `bin/devloop-setup-state` re-anchored; the row of the block for an unnamed
+  place noting the wording; things of kind hook outcome for the new hook's
+  outcomes and the two check hooks' reading of a missing tool, of kind
+  program outcome for the outcomes of the two new programs, of kind hook
+  registration for the two new groups, and of kind skill branch for the
+  question of step 3 and its answers; one defect thing for the line above,
+  sited and evidenced on it, with the head of this entry as part of it;
+  not-a-thing rows on the new lines of the guard, the reader and the hooks
+  that are part of a thing. The runs of the bench enter in the third commit,
+  with the paragraph below.
+
+  **The checks and the tool, run for the entry of part 4.** The command under "Before
+  you change anything, run this" ran on `main` at `b52be40` before the branch
+  was cut, printing nothing against the installed 0.154.0. The nineteen
+  checks under "Before a handover, run these" ran on that tree, in a clean
+  bash with `/usr/bin/grep` first on its path, and again on the tree of the
+  third commit, the report naming each line and what differs. The tool ran
+  on `b52be40` with exit 0 — no broken record, 15 findings, 38 closed
+  defects, none of 4237 lines of the search set uncovered — and on the tree
+  of the second and of the third commit with the figures the report names,
+  every figure that changed with the range it counts over and its reason; the
+  self-test 124 cases, 95 of 95 messages asserted, on each tree.
+
+  **The bench of part 4, on the tree of the second commit.** On 21 October 2026, at the
+  time the run rows of the third commit name, the hooks and programs of the
+  second commit, last changed at `6ef979b`, ran by hand under a throwaway
+  directory outside the repository, against a throwaway project with
+  `docs/agents/` and its five files on `main`, pushed to a bare repository as
+  `origin` whose HEAD is `main`, the work on a branch `work`, a Makefile with
+  a chain per class; the input the one a tool call gives,
+  `{"session_id":"bench4","cwd":<the project>,"permission_mode":"default",
+  "hook_event_name":"PreToolUse","tool_name":"Bash","tool_input":{"command":
+  <the command>,"description":"x"},"tool_use_id":<the id>}` on stdin with
+  `CLAUDE_PROJECT_DIR` set to the project, for the fact hook
+  `"hook_event_name":"PostToolUse"` with `"tool_response":{"stdout":"",
+  "stderr":"","interrupted":false,"isImage":false}` or
+  `"hook_event_name":"PostToolUseFailure"` with `"error":"Exit code 1"`, for
+  the check hooks a `Stop` and an `Edit` of `src/a.go`, and for the hook at
+  session start `"hook_event_name":"SessionStart","source":"startup"`; the
+  record of each case committed on `main` and pushed before the run; the
+  guard asked this machine under a yes, `brew --prefix` answering
+  `/opt/homebrew`, `go env GOPATH` `~/go`, `npm prefix -g` `/opt/homebrew`.
+  Nothing a hook reads was executed. The outcomes those of a dry run of the
+  same cases against the working tree before the first commit, line for line:
+  - Yes with `install-route: cargo` and no place: `npm install -g typescript`
+    exit 2, "it lands in /opt/homebrew/bin, which the record does not name;
+    the record names no place and the routes (cargo)". Yes with no place and
+    no route: the same, "the record names no place and no route". Yes with
+    `~/bin` alone: "the record names the places (~/bin) and no route", as
+    before.
+  - Yes with the eleven places and the routes `brew` and `go`, the file
+    without the heading: `brew install gitleaks` at `PreToolUse` exit 0 and
+    one note; at `PostToolUse` exit 0, the note gone, the heading appended
+    at the end of the file after a blank line and under it `` - `brew install
+    gitleaks` installed into /opt/homebrew/bin ``, the `additionalContext`
+    naming the line; the same call a second time, exit 0 and the line once
+    in the file; `cd <the project> && go install
+    golang.org/x/vuln/cmd/govulncheck@latest && npx playwright install
+    chromium`, one note and two lines, `` - `go install
+    golang.org/x/vuln/cmd/govulncheck@latest` installed into ~/go/bin `` and
+    `` - `npx playwright install chromium` installed into
+    ~/Library/Caches/ms-playwright ``, in the order of the commands; `npm
+    install -g typescript` at `PreToolUse` one note and at
+    `PostToolUseFailure` exit 0, the note gone and nothing written; `npm
+    install -g eslint` with `"interrupted":true`, nothing written; `uvx ruff
+    check .`, the guard exit 0 and no note, the hook exit 0; `ls -la`, no
+    note; a `PostToolUse` with no note for its id, exit 0 and nothing; `npm
+    install -g "@scope/pkg name"`, `` - `npm install -g '@scope/pkg name'`
+    installed into /opt/homebrew/bin ``; `cp build/tool ~/bin/tool`, `` -
+    `cp build/tool ~/bin/tool` installed into ~/bin ``; a section `## Later`
+    appended after the heading and `brew install shellcheck`, its line
+    written after the last line of the section and before `## Later`;
+    `environment.md` moved out of the tree and `brew install jq`, the hook
+    exit 2, "Not written: the install went through, and
+    docs/agents/environment.md is missing in the working tree, so its line
+    has no file to stand in. Put it there once the file stands, under "##
+    Installed outside the project", as it stands here: - `brew install jq`
+    installed into /opt/homebrew/bin"; the tree on `main` and the same
+    call, exit 2, "Not written: the install went through, and its line for
+    docs/agents/environment.md is not written while the tree stands on the
+    default branch main, where nothing of a run may change. Cut the branch
+    of this work and put it there, under "## Installed outside the
+    project", as it stands here: - `brew install jq` installed into
+    /opt/homebrew/bin".
+  - No: `brew install gitleaks` exit 2, "the record says no (install-tools:
+    no on origin/main)", no note, the hook exit 0 and nothing. No record:
+    exit 2 with the reader's cause, no note.
+  - `bin/devloop-setup-state`: a directory with no repository, "cause: this
+    is not a git repository, so there is no default branch to read the setup
+    off", exit 1; a repository on `trunk` with no remote, "cause: there is
+    no default branch, since origin/HEAD names none and neither main nor
+    master exists", exit 1; a repository on `main` never fetched, "cause:
+    the default branch main has not been fetched, so
+    refs/remotes/origin/main cannot be read", exit 1, and with `--fetch`
+    against a remote that does not exist the same with ", and the fetch
+    failed (fatal: '…' does not appear to be a git repository)"; its
+    self-test 18 cases. `hooks/session-start.sh` in that repository with
+    `docs/agents/` in the tree: `[ProjectStatus] branch: main | uncommitted
+    changes: 0 | devloop: set up in part | on the default branch as last
+    fetched: not read, because the default branch main has not been fetched,
+    so refs/remotes/origin/main cannot be read | missing: not read`, exit 0.
+  - The check hooks, the table with `lint` on `golangci-lint-nothere run`
+    (make executing the word itself), `dependencies` on `govulncheck-nothere
+    ./... && true` (through the shell), `secrets` on `gitleaks-nothere detect
+    | cat` and `unit` on `sh -c "echo FAIL TestX; exit 1"`, all blocking and
+    filled: `hooks/stop-checks.sh` exit 2, attempt 1 of 3, the class `lint`
+    opening on "This check did not run and found nothing: golangci-lint-nothere
+    is not found on the search path the chain runs under." over `make:
+    golangci-lint-nothere: No such file or directory` and `Error 1`, the
+    class `dependencies` the same for `govulncheck-nothere` over `/bin/sh:
+    govulncheck-nothere: command not found` and `Error 127`, the class `unit`
+    with its output alone, `FAIL TestX` and `Error 1`, and `secrets` green,
+    the pipe's status being `cat`'s; the closing message naming the class
+    whose output opens on "This check did not run".
+    `hooks/post-tool-use-checks.sh` for `src/a.go` exit 2, the class `lint`
+    opening on the same line over `make lint-file FILE=src/a.go`.
+  - The two new programs' self-tests, 18 and 24 cases, and the reader's, 163
+    cases, green; the step of the job "hooks on every system", run on this
+    machine as the job runs it, 17 handlers started and every one exit 0.
+
+  **The runs of part 4 on the things and on the defects**, by the answer of the person
+  to question 3 of 20 October 2026, line 32363, a bench sufficing for cluster
+  18, and as the runs of cluster 12 stand, lines 32455 to 32458: each run on
+  the thing's own row with the bench's version and the line of this entry
+  that records the case as its anchor, dated 21 October 2026, source entry,
+  under 0.155.0. On the guard: the block for a place the record does not
+  name, with and without a route, and the pass with every destination named.
+  On the new hook: each of its outcomes the bench met. On the two check
+  hooks: the block with the missing tool named, each. On the two new
+  programs: each outcome the bench met. On `bin/devloop-setup-state`: the
+  three causes. On `hooks/session-start.sh`: set up in part with the cause.
+  On the defects of lines 7705, 30120 and 33977, which the bench walked
+  exactly; not on line 30085, which needs a run and no bench. They count:
+  0.155.0 was introduced at `6ef979b`, which contains the last change to
+  every line each thing stands on, and the commit of their rows, the third,
+  contains it.
+
+  **Records of the third commit of part 4.** In `docs/stock-take.tsv`: the run rows
+  above and nothing else.
+
+  **Whether the milestone is reached after part 4.** No. What this order built: cluster 18
+  as the decisions of 20 and 21 October 2026 cut it, the hooks and the
+  programs, cluster 21 as text, the session-start line and the guard's
+  wording. Owed: a run for cluster 21, forceable at every setup with a no;
+  the person's word on the halted question and on shape (b); the README
+  line; cluster 22 and the runs and benches the other clusters name, as
+  before.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
