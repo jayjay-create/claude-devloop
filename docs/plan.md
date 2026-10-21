@@ -493,6 +493,14 @@ the answer and the date alone; the line at session start says under a no
 places and a route as well; the line reaches the run and not the person, and
 `README.md` says that the answer travels with the repository; the roadmap
 entry of that date on milestone 3, part 2.
+Since 21 October 2026, version 0.154.0, the guard's block message joins each
+cause behind "because" as one clause without a label of its own and says
+that the command is handed over as it runs from wherever the person is; the
+guard reads `--path` on `@puppeteer/browsers install` and the abbreviated
+forms npm reads as a global install; the line at session start without a
+record says handed to the person; and a second step of the merge gate holds
+`README.md` to naming no file or document of devloop's own; the roadmap
+entry of that date on milestone 3, part 3.
 The two runs of the end as it read until 6 October 2026 ran on 30 September
 2026, both attended, under 0.120.0
 from the installed copy: the record saying yes in `devloop-test-s`, the record
