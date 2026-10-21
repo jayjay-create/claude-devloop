@@ -567,6 +567,18 @@ The subagent:
    main branch, or the file missing — its message carries the line, and this
    step puts it there as it stands.
 
+   **A command the person typed themselves that is an install outside the
+   project** — the one point 7 handed over under a record saying no or never
+   written, or the one `setup-checks` step 3 put to them as a question, run
+   in their own terminal, which the hook does not see — has its line here
+   all the same, under the same heading `Installed outside the project` and
+   in the form the hook writes: one list item, the command as it was handed
+   over in backticks, the words `installed into` and the folder the tool was
+   read at, and not a second time where that line stands there already; for
+   a check class `setup-checks` step 4 writes it, on this branch. The
+   person's decision of 21 October 2026, the roadmap entry of that date on
+   milestone 3, part 4.
+
 **If they decline, the run acts on it.** Which outcome depends on what the tool
 was for:
 
@@ -883,8 +895,8 @@ package manager did besides; and, where `setup-checks` filled a class on this
 branch, the red proof it handed up for that class, with its own install
 report. That is the trip that outlives the session; the
 one to the review has already happened, and the standing fact about running
-the project went into `environment.md` by the hook point 7 names, which is the
-other duty.
+the project went into `environment.md` by the hook point 7 names, or by point
+8 for a command the person ran themselves, which is the other duty.
 
 **The pull request body names the task it closes**, with a closing keyword —
 `Closes #N` — on a line of its own. That is not decoration. It is the only

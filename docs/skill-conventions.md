@@ -2361,8 +2361,13 @@ hook writes the line and the run no second one, where until that day the run
 wrote it, which the run of 19 October 2026 in project z did not, defect 6 of
 the roadmap entry of that date. An install the person makes by their own
 hand, after the question `setup-checks` step 3 puts under a no, the hook does
-not see; whether the run writes that line is the person's to decide, the
-roadmap entry of 21 October 2026 on milestone 3, part 4. The two hooks that
+not see: that line the run writes itself, `setup-checks` step 4 for a check
+class and `build-work` step 3 point 8 for a command the person typed on the
+build's handover, under the same heading and in the same form — the command
+as it was handed over and the folder the run read the tool at — and not
+where it stands already, the person's decision of 21 October 2026 at the
+check of the branch before the merge, the roadmap entry of that date on
+milestone 3, part 4, which carries the two ways weighed. The two hooks that
 run the check chain, `hooks/stop-checks.sh` and
 `hooks/post-tool-use-checks.sh`, read a red through
 `bin/devloop-missing-tool` since the same day: where a shell names the word
@@ -3623,8 +3628,12 @@ where the main branch cannot be fetched or fast-forwarded:
   step 3 hands over under a record that says no or was never written — since
   21 October 2026 on the first answer of the question it puts there, that
   they install it themselves — whose
-  outcome its step 4 reads off the path the installer writes to, a tool not
-  standing there leaving the class `skipped (user)`. And so is the fifth, the one
+  outcome its step 3 reads off the path the installer writes to after their
+  word, a tool standing there taking the class into step 4 and one not
+  standing there putting the same question again, until the check is chosen
+  off or the tool stands there, since the check of the branch of 21 October
+  2026; until then the text of that day left the class `skipped (user)` on
+  a tool not standing there. And so is the fifth, the one
   line `shared/fetch-three-times.md` carries into the four skills that fetch
   before a cut, a task's base, after a merge, at the mark or before a
   rebase: the person clears what stood in the way — the connection or the

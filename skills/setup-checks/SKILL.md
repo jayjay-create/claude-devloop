@@ -523,9 +523,19 @@ they are, once more as a line of its own to copy, last in the message that
 ends the turn, and wait for their word; then read the place the command
 writes to, never `command -v`, and set the class up in step 4 where the
 tool stands there — the branch is cut after their word, as after the last
-answer. Where it does not stand there, say so with the path, and the
-question is not put again: the class becomes `skipped (user):` with that
-reason, naming the tool and that the person did not install it. On the
+answer — and step 4 writes the line for that install into
+`docs/agents/environment.md`, since the hook that writes the line for an
+install the run made does not see one made in their own terminal, as step 4
+says. Where it does not stand there, put the same question again, with the
+place that was read and that the tool does not stand there in its question
+field before the question line, and so each time the tool is not there
+after their word, until they choose the check off or the tool stands there:
+no check goes off but on their choice, which is the second answer, and not
+on a tool not found — the person's decision of 21 October 2026, the roadmap
+entry of that date on milestone 3, part 4; until then this paragraph made
+the class `skipped (user)` the first time the tool was not there, against
+the rule of step 1 that only the user switches `secrets` off and against
+the approved wording, whose second answer alone switches a check off. On the
 second the class becomes `skipped (user):` with that reason, naming the tool
 and that the person did not install it — whether or
 not another tool would be left for the class; another tool is not put to
@@ -597,6 +607,20 @@ of 19 October 2026 in project z did not, defect 6 of the roadmap entry of
 that date. Where the hook says it could not write — the tree on the main
 branch, or the file missing — its message carries the line, and the run puts
 it there as it stands.
+
+**A tool the person installed themselves, on the first answer of the
+question step 3 puts, the hook does not see**: the command ran in their
+terminal and in no call of this run. Its line is this step's to write, with
+the editing tool, under the same heading `Installed outside the project` of
+`environment.md` and in the form the hook writes — one list item, the
+command as it was handed over in backticks, the words `installed into` and
+the folder step 3 read the tool at — and not a second time where that line
+stands there already; on the branch this step writes on, the one cut after
+their word at a first setup and on the route from the step after a merge,
+the caller's where this skill was called for one class, since step 3 stands
+before the cut and writes nothing. The person's decision of 21 October
+2026, the roadmap entry of that date on milestone 3, part 4, which carries
+the two ways weighed.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 

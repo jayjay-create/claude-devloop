@@ -211,8 +211,10 @@ what came back is written into the pull request. A check that cannot fail looks
 exactly like a check that passes.
 
 Hooks run without being asked: after every change made with the editing tool,
-the checks for that file, and at the end of every turn, every blocking check; a
-guard that, while the main branch is checked out, blocks the editing tool's
+the checks for that file, and at the end of every turn, every blocking check;
+after the run has installed a tool outside the project under your yes, a line
+in `docs/agents/environment.md` saying what it installed and where; a guard
+that, while the main branch is checked out, blocks the editing tool's
 writes, `git commit` and a `git push` to it — a file written through the shell
 is not stopped, and a push from another branch is not read, and neither is a
 commit or push run through a git alias; a guard that blocks

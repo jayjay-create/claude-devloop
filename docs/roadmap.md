@@ -34092,20 +34092,28 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   once, install it themselves or the check off, before the offer of the mode;
   four defects built, one found and one question halted; 21 October 2026,
   version 0.155.0.** On `task/milestone-3-part-4-2026-10-21`, off `b52be40`,
-  in three commits: `bin/`, `hooks/`, `skills/` and `.github/` with the
+  in four commits: `bin/`, `hooks/`, `skills/` and `.github/` with the
   version, `6ef979b`; this entry, the rows of the table,
   `docs/skill-conventions.md` and `docs/plan.md`; the runs of the bench, with
-  the paragraph on the bench below. The report stands on this machine as
+  the paragraph on the bench below; and the corrections at the check of the
+  branch before the merge, the paragraphs at the end of this entry, with
+  `README.md`, the two skills, the conventions and the table. The report
+  stands on this machine as
   `~/devloop-report-2026-10-21-milestone-3-part-4.md`, in English, and is not
-  in the repository. Every line number of a file is as at `b52be40` unless a
+  in the repository, and the report of the corrections beside it as
+  `~/devloop-report-2026-10-21-milestone-3-part-4-corrections.md`. Every
+  line number of a file is as at `b52be40` unless a
   commit is named beside it. One session of Claude Code was started for this
   entry, `claude -p` for the measurement of which hook event a failed Bash
   call reaches, below; the hooks and programs ran by hand otherwise, fed the
   JSON a tool call gives them. The words the tool reads a line of this file
-  into its search set by stand in this entry in its head and on the one
-  status line below that records a defect, and on no other line. No file
-  under `shared/` or `output-styles/` changes; `README.md` does not change,
-  the proposal for it standing below for the person.
+  into its search set by stand in this entry in its head, on the one
+  status line below that records a defect and on the line that closes it,
+  and on no other line. No file
+  under `shared/` or `output-styles/` changes; `README.md` changes in the
+  fourth commit alone, by the sentence the person approved at the check of
+  the branch, where the three commits before it left it as it stood and
+  recorded the proposal below.
 
   **What the person decided on 21 October 2026 for part 4**, as the order of that day
   carries it, each text between its own quotation marks; `$NAME` is the
@@ -34495,13 +34503,108 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **Records of the third commit of part 4.** In `docs/stock-take.tsv`: the run rows
   above and nothing else.
 
+  **Corrected at the check of the branch before the merge**, in a fourth
+  commit of this entry alone, the version staying 0.155.0, each with the
+  line that gives the right answer. The sentence of `setup-checks` step 3,
+  lines 526 to 528 at `246dabd`, that after the person's word on "Selbst
+  installieren" a tool not standing at the place the command writes to
+  makes the class `skipped (user)` and the question is not put again, which
+  the paragraph on the decisions of this order above keeps as what step 3
+  said until this day: it contradicted step 1 of the same skill, lines 223
+  to 228 at `b52be40`, "Only the user can, by a decision of theirs", and the
+  wording under (d) above, whose second answer alone switches a check off;
+  what holds since this commit stands under the decision below, as (a). The
+  halted question above, who writes the line where the person installs in
+  their own terminal: decided, below, as (b). The defect recorded above on
+  `README.md`: corrected in the document and closed, below, as (c). The
+  conventions' explanation of the fourth line of the handover check, which
+  said that a tool not standing there leaves the class `skipped (user)`,
+  lines 3622 to 3627 at `246dabd`: says since this commit that the question
+  is put again. Nothing under `hooks/`, `bin/`, `scripts/`, `shared/`,
+  `.github/` or `.claude-plugin/` changes; the version stays 0.155.0, raised
+  in the first commit; the runs of the third commit stand as they are, no
+  line of a thing they stand on changed. The report of the check stands on
+  this machine as `~/devloop-report-2026-10-21-milestone-3-part-4-corrections.md`,
+  in English, and is not in the repository.
+
+  **Decided by the person on 21 October 2026**, at the check of the branch
+  before the merge, and carried out in the fourth commit. (a) Where the tool
+  does not stand at the place the command writes to after the person's word
+  on "Selbst installieren", the run says which place it read and that the
+  tool does not stand there, and puts the same question again — each time
+  the tool is not there after their word, until they choose "Prüfung
+  abschalten" or the tool stands there. A check goes off on their choice
+  alone, for every class, `secrets` included. (b) Where the person installed
+  the tool in their own terminal on "Selbst installieren" and it stands at
+  the place the command writes to, the run itself writes the line under `##
+  Installed outside the project` in `docs/agents/environment.md`, in the
+  form the hook writes — the command as it was handed over and the folder it
+  installed into — and not a second time where the line stands already;
+  whether it stands there step 3 reads, the line step 4 writes, after the
+  cut of the branch and with the other writes, since step 3 stands before
+  the cut, and on the caller's branch on the way for a single class. The
+  hook does not see this install. Way A of the halted question above; way
+  B, the hook alone writing, is rejected. (c) Approved in this wording, in
+  `README.md` in the sentence that opens "Hooks run without being asked:",
+  lines 213 to 215 at `b52be40`, after "every blocking check": "; after the
+  run has installed a tool outside the project under your yes, a line in
+  `docs/agents/environment.md` saying what it installed and where". (d)
+  Shape (b) of `bin/devloop-missing-tool`, make's own line without 127,
+  stays: the should of line 7705 asks that a red for a tool off the search
+  path be read as one, and GNU Make 3.81 reports the usual form of a target
+  without 127, measured above.
+
+  **What the fourth commit built, on 21 October 2026.** `skills/setup-checks/SKILL.md`
+  step 3: the paragraph after the two answers says that after their word
+  step 4 writes the line for that install, and that where the tool does not
+  stand at the place read the same question is put again, with the place and
+  that the tool is not there in its question field, until the check is
+  chosen off or the tool stands there, no check going off but on their
+  choice; step 4: a paragraph after the one on the hook, that a tool the
+  person installed themselves on the first answer is written by this step,
+  with the editing tool, under the same heading and in the hook's form,
+  once, on the branch this step writes on. `skills/build-work/SKILL.md` step
+  3 point 8: a paragraph that a command the person typed themselves that is
+  an install outside the project has its line under the same heading and in
+  the hook's form, once, `setup-checks` step 4 writing it for a check class;
+  the pull request paragraph of step 6 names point 8 beside the hook.
+  `README.md`: the sentence under (c), broken at 80 columns as the file
+  breaks, found once as one line by `tr '\n' ' ' | grep -c -F`; the two
+  checks of `.github/workflows/stock-take.yml` on the README, run on the
+  tree, green. `docs/skill-conventions.md`: the paragraph "What an install
+  did is written by a hook" says that an install by the person's own hand
+  is written by the run, `setup-checks` step 4 and `build-work` step 3 point
+  8, under the same heading and in the same form; the explanation of the
+  fourth line of the handover check says the question is put again.
+  `docs/plan.md` does not change: its sentence speaks of an install the
+  record let through.
+
+  **The defect closed**, on one line that carries its closing with reason
+  and proof, the line the evidence of its row points at since the fourth
+  commit; the proof was read with grep before the line was written and is
+  read by the tool on every run:
+  Line 34345 at `246dabd`, README.md listing what the hooks do without being asked and saying nothing of the line the install-fact hook writes: Closed, corrected in the document: `README.md` carries "after the run has installed a tool outside the project under your yes".
+
+  **Records of the fourth commit.** In `docs/stock-take.tsv`: the evidence of
+  the closed defect moved onto its closing line above, its note saying so;
+  the thing of step 3 on a tool not at the path after their word renamed and
+  re-anchored on the new sentence, no run hanging on it, its note naming the
+  old name; the notes of the things of the two answers of step 3's question
+  updated; one thing each for the new paragraph of `setup-checks` step 4 and
+  of `build-work` point 8, of kind skill branch, sited and evidenced on its
+  head; not-a-thing rows on the new lines that are part of them. The run
+  rows of the third commit stay as they are.
+
   **Whether the milestone is reached after part 4.** No. What this order built: cluster 18
   as the decisions of 20 and 21 October 2026 cut it, the hooks and the
   programs, cluster 21 as text, the session-start line and the guard's
-  wording. Owed: a run for cluster 21, forceable at every setup with a no;
-  the person's word on the halted question and on shape (b); the README
-  line; cluster 22 and the runs and benches the other clusters name, as
-  before.
+  wording, and at the check of the branch the question put again, the line
+  for an install by the person's hand and the README's sentence. Owed: a run
+  for cluster 21, forceable at every setup with a no, which walks the text
+  of the fourth commit as well; cluster 22 and the runs and benches the
+  other clusters name, as before. The person's word on the halted question,
+  on shape (b) and on the README line came at the check of the branch, the
+  paragraphs above.
 
 ## Decisions taken against
 
