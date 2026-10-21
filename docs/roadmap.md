@@ -34009,6 +34009,65 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   every figure that changed with the range it counts over and its reason; the
   self-test 124 cases, 95 of 95 messages asserted, on each tree.
 
+  **The bench, on the tree of the second commit.** On 21 October 2026 at
+  11:12:35 UTC `hooks/pre-tool-use-install-guard.sh` and `hooks/session-start.sh`
+  of `e19e16b`, both last changed at `1810ab5`, ran by hand under a throwaway
+  directory outside the repository, against a throwaway project with
+  `docs/agents/` and its five files on `main`, pushed to a bare repository as
+  `origin` whose HEAD is `main`, the work on a branch `work`; the input the one
+  a tool call gives, `{"session_id":"bench3","cwd":<the project>,
+  "permission_mode":"default","hook_event_name":"PreToolUse","tool_name":"Bash",
+  "tool_input":{"command":<the command>,"description":"x"}}` on stdin with
+  `CLAUDE_PROJECT_DIR` set to the project, and for the hook at session start
+  `"hook_event_name":"SessionStart","source":"startup"` in place of the tool
+  fields; the record of each case committed on `main` and pushed before the
+  run, under the identity of this machine's git configuration; the guard asked
+  this machine under a yes, `npm prefix -g` answering `/opt/homebrew`. 58 feeds
+  of the guard, 39 blocks and 19 passes, each as section 5 of the report
+  expected, and one of the hook at session start; the outcomes those of a dry
+  run of the same cases against the working tree before the first commit, line
+  for line, the one difference being the routes wording corrected before it.
+  Every block carried the frame "does not open it, because " and, after "and say both ways it can go at once.", the approved sentence "Hand it over so that it runs from wherever they are, with the change into the project's directory in front of it where it needs one.", counted with `grep -c` over the message, 1 in each of the 39 blocks and 0 in each of the 19 passes, the rest of the message as before; behind "because" stood, by record:
+  - No record, the file without the section: the hook at session start printed `[ProjectStatus] branch: work | uncommitted changes: 0 | devloop: set up` and `[InstallRecord] none: docs/agents/environment.md on origin/main has no section "## Install permission", so the question was never answered | every install outside the repository is blocked and handed to the person until a record has landed on the default branch`, exit 0, `CLAUDE_ENV_FILE` unset and nothing appended; `brew install shellcheck` exit 2, "docs/agents/environment.md on origin/main has no section "## Install permission", so the question was never answered".
+  - `install-tools: maybe`: `brew install shellcheck` exit 2, "install-tools reads "maybe" on origin/main, where yes and no are the only values".
+  - The section without an `install-tools` line: `brew install shellcheck` exit 2, "the section "## Install permission" on origin/main has no install-tools line".
+  - No: `brew install shellcheck`, `sudo brew install shellcheck`, `npx @puppeteer/browsers install chrome@stable --path ~/.cache/puppeteer`, `npx @puppeteer/browsers install chrome@stable --install-deps` and the fifteen npm forms read as global, `npm install <form> typescript` with `--g`, `--gl`, `--g=true`, `--gl=true`, `--global`, `--location=global`, `--location global`, `-L=global`, `-L global`, `--locat=global`, `--locati=global`, `--locatio=global`, `--locat global`, `--locati global` and `--locatio global`, exit 2 each, "the record says no (install-tools: no on origin/main)"; `npx @puppeteer/browsers install chrome@stable --path=./browsers` and the seven npm forms no version reads as global, `--glo`, `--glob`, `--globa`, `--loc=global`, `--loca=global`, `--l=global` and `--g=false`, exit 0 each.
+  - Yes with the six bin directories and `install-route: go`: `sudo brew install shellcheck` exit 2, "it needs sudo, which stays the user's under every answer"; `npx @puppeteer/browsers install chrome@stable --path ~/.cache/puppeteer` exit 2, "it lands in ~/.cache/puppeteer, which the record does not name; the record names the places (/usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin) and the routes (go)".
+  - Yes with the six and no route: the same download with `--path ~/.cache/puppeteer` and with `--path=$HOME/.cache/puppeteer` exit 2 each, "it lands in ~/.cache/puppeteer, which the record does not name; the record names the places (/usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin) and no route".
+  - Yes with the eleven places and no route: `npx @puppeteer/browsers install chrome@stable` with `--path ~/.cache/puppeteer`, with `--path=./browsers`, with `--path browsers`, without `--path`, and with `--path ~/.cache/puppeteer --help` exit 0 each; with `--path /srv/browsers` exit 2, "it lands in /srv/browsers, which the record does not name; the record names the places (/usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin ~/Library/Caches/ms-playwright ~/.cache/ms-playwright ~/Library/Caches/Cypress ~/.cache/Cypress ~/.cache/puppeteer) and no route"; with `--path "$X"` and with `--path ../elsewhere` exit 2 each, "where it lands cannot be read here; @puppeteer/browsers install (where it puts things is not read off this machine by this guard); a place the record does not name stays blocked"; with `--path ~/.cache/puppeteer --install-deps` exit 2, "it installs system packages, which needs root and stays the user's under every answer"; `npx puppeteer browsers install chrome --path /srv/browsers` exit 0, the download landing in `~/.cache/puppeteer`, which the record names, since that form defines no `--path`; `npm install --g typescript`, `--locat=global`, `--locat global`, `--glo` and `--g --prefix ~/.local` exit 0 each, `/opt/homebrew/bin` lying under `/opt` and `~/.local/bin` named; `npm install --g --prefix /srv/tools typescript` exit 2, "it lands in /srv/tools/bin, which the record does not name; the record names the places (/usr/local/bin /usr/local/sbin /opt ~/.local/bin ~/bin ~/go/bin ~/Library/Caches/ms-playwright ~/.cache/ms-playwright ~/Library/Caches/Cypress ~/.cache/Cypress ~/.cache/puppeteer) and no route".
+  - Yes with `~/bin` alone and no route: `npm install --g typescript`, `npm install --locat=global typescript` and `npm install -g typescript` exit 2 each, "it lands in /opt/homebrew/bin, which the record does not name; the record names the places (~/bin) and no route".
+  - The reader's other causes, each with `brew install shellcheck`, exit 2: a directory with `docs/agents/` and no repository, "this is not a git repository, so there is no default branch to read the record off"; a repository on a branch `trunk` with no remote, "there is no default branch, since origin/HEAD names none and neither main nor master exists"; a clone of the bench's origin with `refs/remotes/origin/main` and `origin/HEAD` deleted, "the default branch main has not been fetched, so refs/remotes/origin/main cannot be read"; a project whose `origin/main` carries no `docs/agents/environment.md`, "there is no docs/agents/environment.md on origin/main as last fetched".
+  - A reader ending without a cause, the guard copied beside a `bin/devloop-install-record` that exits 1 printing nothing: `brew install shellcheck` exit 2, "the record could not be read, and its reader gave no cause".
+
+  **The runs on the things and on the defects**, by the answer of the person
+  to question 3 of 20 October 2026, line 32363, a bench sufficing for clusters
+  13, 14 and 15, and as the runs of cluster 12 stand, lines 32455 to 32458:
+  each run on the thing's own row with the bench's version and the line of
+  this entry that records the case as its anchor, dated 21 October 2026,
+  source entry, under 0.154.0. On the guard: the block message, every block;
+  the block with the reader's cause, the three records and the four causes
+  beside them; the block under a no; the block under a yes for `sudo`; the
+  block for a place the record does not name, with a route and without; the
+  block for a destination the guard cannot read, `--path "$X"` and `--path
+  ../elsewhere`; the block for system packages, `--install-deps`; the pass
+  with every destination named, `--path ~/.cache/puppeteer` and the npm
+  forms under the eleven places; the silent pass for a destination inside the
+  project, `--path=./browsers` and `--path browsers`; the silent pass where
+  the command matches no install pattern, the seven npm forms, the download
+  without `--path` and the help; the fallback cause. On the reader: each of
+  its seven causes and its exit 0. On the hook at session start: the line
+  without a record, the status line, set up, and nothing appended. On the
+  defects of lines 6588 and 25184, every block; of line 33491, the line
+  without a record; of line 13635, `--path` under no, under the six and
+  under the eleven places; of line 14032, the fifteen forms under no and
+  `--g` and `--locat=global` under both yes. They count: 0.154.0 was
+  introduced at `1810ab5`, which contains the last change to every line each
+  thing stands on, and the commit of their rows, the third, contains it, so
+  the check against a run recorded too early passes.
+
+  **Records of the third commit.** In `docs/stock-take.tsv`: the run rows
+  above and nothing else.
+
   **Whether the milestone is reached.** No. What this order built: the two
   points of cluster 13 the decision of 20 October 2026 left to this order, cluster 14
   and cluster 15 as far as the measurement reaches, and the session-start
