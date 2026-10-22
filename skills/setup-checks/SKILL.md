@@ -47,7 +47,10 @@ called on rather than cutting a new one — the caller owns that branch and land
 it — and skip steps 7 and 8, since a landing and the offer of the mode belong
 to a suite completed with the person there, not to the middle of a task.
 Four things call it that way. A build whose task created the target. A build
-that had an install declined for a check class. Step 4 of a build: for a
+that met a check class whose tool lands outside the project under an install
+record saying no or never written, since 22 October 2026: the build hands no
+command over for it and takes no decline, and the question of step 3 on a
+tool the run may not install is put here, on the build's branch. Step 4 of a build: for a
 finding of the review about the table, for a state that has ended, or for
 what the user answered there about a class they had switched off — for the
 class it names, for the class whose row it concerns where it names none, and
@@ -497,6 +500,10 @@ never written, the run installs nothing, which is what the no of the install
 question said: with the person there the decision on the class is put at
 once, here, as a question, before the offer of the unattended mode in step
 8 and never left open across a handover or a merge, since 21 October 2026,
+and since 22 October 2026 on the single-class route from a build as well,
+on the build's branch, where a check class needs such a tool in a build:
+`build-work` step 3 hands no command over for a check class's tool and
+takes no decline for it, under "If they decline, the run acts on it" there,
 the person's decision of 19 October 2026 after the run of that day in
 project z, which handed the command over and left the class `empty` across
 a merge, defect 4 of the roadmap entry of that date. A choice through the
@@ -932,7 +939,21 @@ since 17 October 2026 — the yes of the question below says whether a
 protection is added. Where a side did not answer,
 say the binding could not be determined rather than reporting the gate either
 way. Then the three records, as the paragraph above reads them. Where the
-mode is set up by all five, say that it is and skip the rest of this step. A
+mode is set up by all five, read whether the rule for the classifier of auto
+mode stands in their settings, `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule
+read`, the program the question on it below is put with: where it ends with
+1, put that question, alone, and nothing else of this step, and then say
+that the mode is set up and skip the rest; where it ends with 0, the rule
+standing, or 3, the person having declined it once, say that the mode is set
+up and skip the rest; where it ends with 2, say the sentence that paragraph
+gives for a settings file that cannot be read, and the same. Since 22
+October 2026, cluster 11 of the roadmap entry of 19 October 2026, decided on
+22 October 2026: until then this step was skipped whole where the five hold,
+so that a project whose mode was set up before the question existed met it
+on no path, and the two places that send a run alone with the mode set up
+read the same program and reach this step for that one question. The rule
+is no condition of the mode: without it the run starts as before, and an
+install auto mode then refuses goes the way a refusal goes today. A
 gate that is there and binding is not enough for that, as it was until 5
 October 2026: with a record that does not say yes, or with auto-merge off,
 the question below is put all the same.
@@ -1080,7 +1101,9 @@ where a piece of work starts sets the mode up then stands in the no's own
 description already.
 
 **On a yes — their answer, or the flag where the gate stands — one question
-more, directly after it and before the two permissions: whether devloop may
+more, directly after it and before the two permissions, and, since 22
+October 2026, alone where the mode is set up by all five and the program
+below ends with 1: whether devloop may
 enter a rule into their `~/.claude/settings.json`**, so that auto mode does
 not block installs in devloop projects by itself. The rule is the one of
 decision 1 of the roadmap entry of 9 October 2026, an entry of the list
@@ -1101,7 +1124,19 @@ call:
 
 It is not put where the rule stands in the file already, word for word under
 `autoMode.allow`: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read`
-says so with exit 0 and writes nothing. On the yes,
+says so with exit 0 and writes nothing. Nor where the person declined it
+once, since 22 October 2026: the same program ends with 3 then, naming the
+day of the no and the file that holds it, and the question is not put again
+while that file stands. On the no,
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule decline` records it, in a
+small file of devloop's own, `devloop-auto-mode-rule-declined`, in the
+directory of the settings file — under `CLAUDE_CONFIG_DIR` where that is
+set, `~/.claude` otherwise — and not in the project, since the rule stands
+in their personal settings and not in the repository; the file carries the
+date and nothing else, and the settings file is not touched by it. Where the
+program could not write the no, exit 2, say so with its message in the next
+message that ends a turn with text, and nothing else changes: the question
+comes back the next time. On the yes,
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write` enters it, and
 nothing else does: the rule word for word as one entry of `autoMode.allow`,
 the list created with `"$defaults"` before the rule where the file or the
@@ -1118,7 +1153,8 @@ where auto mode refuses an installation, the run writes an issue with the
 reason and goes on with the next task. The wording approved on 8 October
 2026 stands in the roadmap entry of 9 October 2026 as text 4, the rule in
 English among it; this skill says what is said, not the words, and the
-program carries the rule. Without the yes the file is never touched, and a
+program carries the rule. Without the yes the file is never touched — the no
+is recorded in the file of its own above and nowhere in the settings — and a
 no here changes nothing of what follows.
 
 **Then the two permissions, before anything is set up, each put a second

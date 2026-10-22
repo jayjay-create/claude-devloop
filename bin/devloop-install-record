@@ -6,6 +6,16 @@
 # through this program, so that the two cannot disagree about it.
 # See docs/skill-conventions.md, "The install guard reads a record".
 #
+# With --dependency, since 22 October 2026, the same reading of the section
+# "## Dependency permission" of the same file, the record on whether the run
+# may add check tools to the project's packages - start condition 7 of the
+# mode with nobody there, where the install record is condition 6. The guard
+# on the mark, hooks/pre-tool-use-mark-guard.sh, reads both conditions
+# through this program when the mark is written, so that the hook and the
+# install guard read one record one way. Under --dependency the keys are
+# dependency-tools and dependency-answered, there are no place and no route
+# lines, and every cause names that section.
+#
 # On exit 0, one key per line:
 #   ref: origin/<default>
 #   tools: yes|no
@@ -17,15 +27,29 @@
 # On exit 1 one line, "cause: <which of the causes it was>", and nothing else;
 # each cause is one whole clause without a label and a colon of its own, so
 # that the install guard can join it behind "because", since 21 October 2026.
-# Exit 2 on more than one argument. The one argument is the project directory;
-# without it, CLAUDE_PROJECT_DIR, and without that the current directory.
+# Exit 2 on an option it does not know or on more than one directory. The one
+# directory argument is the project directory; without it, CLAUDE_PROJECT_DIR,
+# and without that the current directory.
 set -u
-if [ $# -gt 1 ]; then
-  echo "devloop-install-record: expected at most one argument, the project directory, got $#" >&2
+HEADING='## Install permission'
+KEY='install-tools'
+ANSWERED_KEY='install-answered'
+DIRS=0
+PROJECT_DIR=""
+BAD=""
+for a in "$@"; do
+  case "$a" in
+    --dependency) HEADING='## Dependency permission'; KEY='dependency-tools'; ANSWERED_KEY='dependency-answered' ;;
+    -*) BAD="unknown option $a; the one option is --dependency" ;;
+    *) DIRS=$((DIRS + 1)); PROJECT_DIR="$a" ;;
+  esac
+done
+[ "$DIRS" -le 1 ] || BAD="expected at most one directory argument, the project directory, got $DIRS"
+if [ -n "$BAD" ]; then
+  echo "devloop-install-record: $BAD" >&2
   exit 2
 fi
-PROJECT_DIR="${1:-${CLAUDE_PROJECT_DIR:-$PWD}}"
-HEADING='## Install permission'
+PROJECT_DIR="${PROJECT_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}}"
 FILE='docs/agents/environment.md'
 
 cd "$PROJECT_DIR" 2>/dev/null || { echo "cause: the project directory $PROJECT_DIR cannot be entered"; exit 1; }
@@ -49,21 +73,23 @@ CONTENT=$(git show "$REF:$FILE" 2>/dev/null) || { echo "cause: there is no $FILE
 printf '%s\n' "$CONTENT" | grep -qxF "$HEADING" || { echo "cause: $FILE on origin/$DEFAULT has no section \"$HEADING\", so the question was never answered"; exit 1; }
 
 SECTION=$(printf '%s\n' "$CONTENT" | awk -v h="$HEADING" '$0 == h { s = 1; next } s && /^## / { exit } s')
-TOOLS=$(printf '%s\n' "$SECTION" | grep -m1 '^install-tools:' | sed 's/^install-tools:[[:space:]]*//; s/[[:space:]]*$//')
+TOOLS=$(printf '%s\n' "$SECTION" | grep -m1 "^$KEY:" | sed "s/^$KEY:[[:space:]]*//; s/[[:space:]]*\$//")
 case "$TOOLS" in
   yes|no) ;;
-  '') echo "cause: the section \"$HEADING\" on origin/$DEFAULT has no install-tools line"; exit 1 ;;
-  *) echo "cause: install-tools reads \"$TOOLS\" on origin/$DEFAULT, where yes and no are the only values"; exit 1 ;;
+  '') echo "cause: the section \"$HEADING\" on origin/$DEFAULT has no $KEY line"; exit 1 ;;
+  *) echo "cause: $KEY reads \"$TOOLS\" on origin/$DEFAULT, where yes and no are the only values"; exit 1 ;;
 esac
-ANSWERED=$(printf '%s\n' "$SECTION" | grep -m1 '^install-answered:' | sed 's/^install-answered:[[:space:]]*//; s/[[:space:]]*$//')
+ANSWERED=$(printf '%s\n' "$SECTION" | grep -m1 "^$ANSWERED_KEY:" | sed "s/^$ANSWERED_KEY:[[:space:]]*//; s/[[:space:]]*\$//")
 
 echo "ref: origin/$DEFAULT"
 echo "tools: $TOOLS"
-printf '%s\n' "$SECTION" | grep '^install-place:' | sed 's/^install-place:[[:space:]]*//; s/[[:space:]]*$//' | while IFS= read -r p; do
-  [ -n "$p" ] && echo "place: $p"
-done
-printf '%s\n' "$SECTION" | grep '^install-route:' | sed 's/^install-route:[[:space:]]*//; s/[[:space:]]*$//' | while IFS= read -r r; do
-  [ -n "$r" ] && echo "route: $r"
-done
+if [ "$KEY" = install-tools ]; then
+  printf '%s\n' "$SECTION" | grep '^install-place:' | sed 's/^install-place:[[:space:]]*//; s/[[:space:]]*$//' | while IFS= read -r p; do
+    [ -n "$p" ] && echo "place: $p"
+  done
+  printf '%s\n' "$SECTION" | grep '^install-route:' | sed 's/^install-route:[[:space:]]*//; s/[[:space:]]*$//' | while IFS= read -r r; do
+    [ -n "$r" ] && echo "route: $r"
+  done
+fi
 echo "answered: ${ANSWERED:-none}"
 exit 0

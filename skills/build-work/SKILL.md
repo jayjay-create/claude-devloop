@@ -526,6 +526,10 @@ The subagent:
    runtime under it. Where the record says no, or was never written, the
    install stays the user's to run, the same way merging is, and the guard
    blocks it — a compiler, a runtime, a tool from a package manager alike.
+   What this point hands over is the tool of the task; a tool a check class
+   needs is not handed over here, since 22 October 2026, and goes to
+   `setup-checks` for that class, under "If they decline, the run acts on
+   it" below, whose step 3 puts the question.
    Report what it installs, what it
    unblocks, and the exact command, as it runs from wherever they are, with
    the change into the project's directory before it where it needs one, by
@@ -582,8 +586,18 @@ The subagent:
 **If they decline, the run acts on it.** Which outcome depends on what the tool
 was for:
 
-- **A check class.** Call `setup-checks` for that one class; it records the class
-  as `skipped (user)` with that reason. The build carries on without it.
+- **A check class.** Not handed over here, and no decline taken here, since
+  22 October 2026: where a check class needs a tool outside the project and
+  the record says no or was never written, call `setup-checks` for that one
+  class, on this branch, whose step 3 puts the decision to them as a question
+  — that they install it themselves, or that the check is switched off — and
+  records the answer, the class `skipped (user)` with that reason on the
+  second, the tool read at its path and the class filled on the first. The
+  build carries on with what the class became. Until that day this bullet
+  took the decline of the command point 7 hands over and sent the class to
+  `setup-checks` as declined, two texts for one decision; the person's
+  statement of 19 October 2026 and the should of defect 4 of the roadmap
+  entry of that date, the open decision taken as a question of theirs.
 - **The task itself.** The branch stays where it is, and the missing install
   becomes an issue of its own carrying the exact command, labelled `raised-here`
   and `needs-human`, recorded as a blocker of the task. Nothing else is needed to
@@ -1496,6 +1510,17 @@ and does not set a protection while a pull request is open: either stays a
 refusal, said with what would help. When it returns, the tree stands on the
 main branch as freshly fetched: on a yes read all seven again and go on to
 the mark; on a no build this task with them there, as without the flag.
+And where the five hold and this section was reached directly, since 22
+October 2026: read whether the rule for the classifier stands,
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read`, and where it ends
+with 1 — the rule does not stand and the person has not declined it — call
+`setup-checks` for its step 8 alone as well, which puts that one question
+and changes nothing of the repository; where it ends with 0 or 3, nothing
+is asked, and where it ends with 2, step 8 says so. The rule is no
+condition of the mode and no start condition: on either answer go on to
+the mark, and where auto mode then refuses an install, that is a refusal
+under "A guard's block, with nobody there" above. Cluster 11 of the roadmap
+entry of 19 October 2026, decided on 22 October 2026.
 Where this section was reached from planning, nobody is there to ask: refuse,
 say which of the five is missing and that typing `--auto` where a piece of
 work starts sets it up, and the mark goes, as at every stop with a reason
@@ -1536,7 +1561,16 @@ wording approved on 12 October 2026, point 19 of part B of the roadmap
 entry of that date, since nothing is fast-forwarded here and only the fetch
 can fail — the run without them does not begin, and no mark is written. On
 a fetch that answered, the mark, which the hook on the mark lets through in auto mode
-alone, the mode condition 4 has read by now, and blocks in every other:
+alone, the mode condition 4 has read by now, and blocks in every other; and
+since 22 October 2026 only where conditions 6 and 7 hold, which the hook
+reads at the write through the install record's reader off the main branch
+as last fetched, the state this list reads: where either does not say yes,
+the hook blocks the write and names which and why, and the run does not
+write the mark another way — with the person there, say the sentence this
+section gives for conditions 6 and 7 above and carry on with them, as the
+block says; with nobody there, a stop with the reason named, under "A
+guard's block, with nobody there". Cluster 22 of the roadmap entry of 19
+October 2026, the decision of 20 October 2026 on it:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
