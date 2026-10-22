@@ -27,12 +27,18 @@
 # system, Git for Windows' default core.autocrlf=true notwithstanding. Since
 # the addendum of 17 October 2026 to the roadmap entry of that day on arming
 # past the gate the job runs the self-test of bin/devloop-arm beside the
-# reader's, and is red where it is.
+# reader's, and is red where it is. Since 22 October 2026 the job stock-take
+# reads the title of the pull request and the head of every entry the branch
+# adds to docs/roadmap.md against the rule on titles, the last step of the
+# job, and the event fires with the type edited as well, so that a title
+# changed on an open pull request is read before it can be merged; the three
+# default types stand beside it, since naming one type names them all.
 name: merge gate
 
 on:
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, edited]
 
 permissions:
   contents: read
@@ -145,6 +151,70 @@ jobs:
           NAMES=$(tr '\r\n' '  ' < README.md | grep -o -E 'docs/(plan\.md|roadmap\.md|skill-conventions\.md|stock-take\.tsv)|(^|[^A-Za-z0-9_./~-])(bin|scripts|shared|hooks|skills|\.github|\.claude-plugin)/[A-Za-z0-9_./-]*') || { echo "README.md names no file or document of devloop's own"; exit 0; }
           echo "README.md must name no file or document of devloop's own, and it names:"; printf '%s\n' "$NAMES" | sed 's/^[^A-Za-z0-9_.]//'; exit 1
 
+      # Since 22 October 2026: a title says what changed and nothing else -
+      # the title of a pull request, the first line of a commit message, the
+      # head of a new entry in docs/roadmap.md - in at most 72 characters,
+      # with no date, no version number and no "the person", written as the
+      # owner's own; decided on 22 October 2026, docs/skill-conventions.md
+      # under "A title says what changed". Red where the title of the pull
+      # request, or the head of an entry this branch adds to docs/roadmap.md
+      # - a line starting with "- **" that git diff origin/main...HEAD lists
+      # as added, read from that line to the closing "**", its lines joined
+      # with one space, the text between the markers measured - is longer
+      # than 72 characters, or carries a date in a form like 20 October 2026,
+      # October 2026 or 2026-10-20, a version number, three numbers joined by
+      # dots, or the words "the person", case not mattering; every find
+      # printed with the title. Old heads are not in the diff and are not
+      # read. The title comes out of the event through the environment
+      # variable PR_TITLE and never stands in the text of this script, so
+      # that a title cannot run as shell. A commit's first line is not read
+      # here: a squash merge takes the title of the pull request. This step
+      # is no check of "Before a handover, run these" either.
+      - name: titles say what changed, in at most 72 characters, with no date, no version and no "the person"
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          python3 - <<'PY'
+          import os, re, subprocess, sys
+          MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
+          RULES = [
+              ("a date", re.compile(r"\b([0-9]{1,2} +)?(%s) +[0-9]{4}\b|\b[0-9]{4}-[0-9]{2}-[0-9]{2}\b" % MONTHS)),
+              ("a version number", re.compile(r"\b[0-9]+\.[0-9]+\.[0-9]+\b")),
+              ('the words "the person"', re.compile(r"\bthe person\b", re.IGNORECASE)),
+          ]
+          red = 0
+          def judge(what, text):
+              global red
+              faults = []
+              if len(text) > 72:
+                  faults.append("%d characters where 72 is the most" % len(text))
+              for name, rx in RULES:
+                  m = rx.search(text)
+                  if m:
+                      faults.append("%s, %s" % (name, m.group(0)))
+              if faults:
+                  red = 1
+                  print("%s must say what changed and nothing else, and it carries %s: %s" % (what, "; ".join(faults), text))
+              else:
+                  print("%s passes: %s" % (what, text))
+          judge("the title of the pull request", os.environ.get("PR_TITLE", ""))
+          diff = subprocess.run(["git", "diff", "origin/main...HEAD", "--", "docs/roadmap.md"], capture_output=True, text=True, check=True).stdout
+          added = {l[1:] for l in diff.splitlines() if l.startswith("+- **")}
+          lines = open("docs/roadmap.md", encoding="utf-8").read().split("\n")
+          n = 0
+          for i, line in enumerate(lines):
+              if line.startswith("- **") and line in added:
+                  text = line[4:]
+                  j = i
+                  while "**" not in text and j + 1 < len(lines):
+                      j += 1
+                      text += " " + lines[j].strip()
+                  n += 1
+                  judge("the head of the new entry at line %d of docs/roadmap.md" % (i + 1), text.split("**", 1)[0])
+          print("%d new entry heads read" % n)
+          sys.exit(red)
+          PY
+
   # Since the fourth addendum of 14 October 2026: the reader's self-test and
   # every handler of hooks/hooks.json once, on the three systems devloop runs
   # on, Windows under the bash of Git for Windows, and since the fifth
@@ -183,7 +253,22 @@ jobs:
   # runs the self-test of bin/devloop-arm after the reader's, every case
   # answered by a stand-in for gh and none reaching GitHub, and a red case
   # makes the check red as a red case of the reader's does; the handlers
-  # start after it all the same.
+  # start after it all the same. Since 22 October 2026 the self-test of
+  # bin/devloop-auto-mode-question runs after those two, and since the
+  # addendum of that day to the roadmap entry on the question after a
+  # refusal on all four systems, Windows included, its stand-in for gh a
+  # Python program behind the launcher the system runs off PATH; until that
+  # addendum it was a shell script, which a process started from Python does
+  # not find on Windows, and the step left that system out. Since the same
+  # addendum the install guard is fed, under PermissionDenied, a counted refusal
+  # beside the harmless ls: the form measured on 22 October 2026 under
+  # Claude Code 2.1.305, pipx install devloop-probe-does-not-exist with the
+  # classifier's verdict as reason, which the guard records through
+  # bin/devloop-auto-mode-question record; the step then reads the record
+  # of the throwaway project and is red where the line is missing or not in
+  # its form, since that event ignores the exit code and the output of a
+  # hook, so that a fault on the way from the hook to the program would be
+  # seen nowhere else.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -222,10 +307,11 @@ jobs:
           bash --version | head -1
           { awk --version 2>/dev/null || awk -W version 2>/dev/null || busybox 2>/dev/null || true; } | head -1
           git version
+          { command -v python3 && python3 --version; } || echo "no python3 on PATH"
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: the self-tests of the reader and of the arming program, and every handler of hooks.json once with a harmless input of its event
+      - name: the self-tests of the reader, of the arming program and of the question program, every handler of hooks.json once with a harmless input of its event, and the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards
         run: |
           set -u
           ROOT=$(pwd)
@@ -233,6 +319,8 @@ jobs:
           "$ROOT/bin/devloop-command-reader" --self-test || red=1
           "$ROOT/bin/devloop-arm" --self-test || red=1
           PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
+          # the self-test of bin/devloop-auto-mode-question, since 22 October 2026, beside the arming program's, on every system since the addendum of that day
+          "$PY" "$ROOT/bin/devloop-auto-mode-question" --self-test || red=1
           T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-hooks.XXXXXX")
           P="$T/project"
           mkdir -p "$P/docs/agents"
@@ -252,10 +340,16 @@ jobs:
           p = sys.argv[1]
           h = json.load(open("hooks/hooks.json"))["hooks"]
           base = {"session_id": "s1", "cwd": p, "permission_mode": "default", "tool_use_id": "toolu_hooks1"}
+          # the counted refusal, in the form measured on 22 October 2026 under Claude Code 2.1.305: every key of the input, the command an install by a way of the rule, the reason a verdict of the classifier
+          denied = {"cwd": p, "effort": {"level": "xhigh"}, "hook_event_name": "PermissionDenied", "permission_mode": "auto", "prompt_id": "prompt_hooks1",
+                    "reason": "The server-side auto mode classifier judged this action dangerous (it gave no explanation)", "session_id": "s1",
+                    "tool_input": {"command": "pipx install devloop-probe-does-not-exist", "description": "install the probe"},
+                    "tool_name": "Bash", "tool_use_id": "toolu_hooksdenied", "transcript_path": p + "/transcript.jsonl"}
           inputs = {
               ("PreToolUse", "Bash"): dict(base, hook_event_name="PreToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}),
               ("PreToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PreToolUse", tool_name="Write", tool_input={"file_path": p + "/README.md", "content": "# project\n"}),
               ("PermissionRequest", ""): dict(base, hook_event_name="PermissionRequest", tool_name="Bash", tool_input={"command": "ls"}),
+              ("PermissionDenied", "Bash"): [dict(base, hook_event_name="PermissionDenied", permission_mode="auto", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, reason="[Test]"), denied],
               ("SessionStart", ""): dict(base, hook_event_name="SessionStart", source="startup"),
               ("PostToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PostToolUse", tool_name="Edit", tool_input={"file_path": p + "/README.md", "old_string": "a", "new_string": "b"}, tool_response={"filePath": p + "/README.md"}),
               ("PostToolUse", ""): dict(base, hook_event_name="PostToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, tool_response={"stdout": "", "stderr": "", "interrupted": False}),
@@ -271,7 +365,8 @@ jobs:
                   if inp is None:
                       sys.exit("no input known for the event %s with the matcher %r: add one to this step" % (event, matcher))
                   for x in g["hooks"]:
-                      print("\t".join([event, matcher or "-", x["command"], json.dumps(inp)]))
+                      for one in (inp if isinstance(inp, list) else [inp]):
+                          print("\t".join([event, matcher or "-", x["command"], json.dumps(one)]))
           PYEOF
           )
           LIST=$("$PY" -c "$PROG" "$P") || exit 1
@@ -285,5 +380,12 @@ jobs:
             [ "$RC" -eq 0 ] || { printf '%s\n' "$OUT" | sed 's/^/    /'; red=1; }
           done <<< "$LIST"
           echo "$n handlers started"
+          # the record of the counted refusal, which the install guard wrote under PermissionDenied through bin/devloop-auto-mode-question record: one line, the time, the way, the call's id and the command, tab-separated; a carriage return is read over, since Python writes the line of the system
+          REC="$P/.git/devloop-auto-mode-denials"
+          if [ -f "$REC" ] && [ "$(tr -d '\r' < "$REC" | grep -c .)" -eq 1 ] && tr -d '\r' < "$REC" | awk -F'\t' 'NF == 4 && $2 == "pipx install" && $3 == "toolu_hooksdenied" && $4 == "pipx install devloop-probe-does-not-exist" { ok = 1 } END { exit !ok }'; then
+            echo "the counted refusal under PermissionDenied is recorded: $(tr -d '\r' < "$REC")"
+          else
+            echo "the counted refusal under PermissionDenied is not recorded in its form; $REC holds: $( [ -f "$REC" ] && tr -d '\r' < "$REC" || echo nothing )"; red=1
+          fi
           rm -rf "$T"
           exit "$red"

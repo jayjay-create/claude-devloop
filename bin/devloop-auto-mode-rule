@@ -18,9 +18,13 @@ Usage
                                         it does not, 2 where the file cannot be
                                         read for it
     bin/devloop-auto-mode-rule write    enters the rule, after the person's yes
-                                        in setup-checks step 8 and never without
-                                        it. Exit 0 where it stands afterwards,
-                                        2 where nothing was written
+                                        to the question on it - in setup-checks
+                                        step 8, or at a start with --auto after
+                                        a refusal of auto mode, which
+                                        bin/devloop-auto-mode-question decides
+                                        since 22 October 2026 - and never
+                                        without it. Exit 0 where it stands
+                                        afterwards, 2 where nothing was written
 
 What write does. Where the file or the list is missing, the list is created,
 with "$defaults" before the rule; where a list stands, the rule is appended to

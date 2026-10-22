@@ -34606,6 +34606,684 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   on shape (b) and on the README line came at the check of the branch, the
   paragraphs above.
 
+- **Conditions 6 and 7 at the mark, the rule asked after a refusal, titles.**
+  22 October 2026, version 0.156.0. On `task/unattended-start-conditions`, off
+  `4fe6374`, in six commits, two orders of the same day. The first three:
+  `bin/`, `hooks/`, `skills/`, `shared/` and `.github/` with the version,
+  `45a7a49`; this entry, the rows of the table and
+  `docs/skill-conventions.md`, `d58bbdc`; the runs of its bench, `70f63a7`.
+  The second order, on the question after a refusal of auto mode, replaced the
+  stored no that the first had built under (b), and landed in three commits
+  more: the code, `bin/`, `hooks/`, `skills/`, `shared/` and `.github/`, with
+  the rows of the table for its things, `4811956`; the documents, `README.md`,
+  this entry and `docs/skill-conventions.md`, with the rows of the table for
+  its defects, the fifth commit of the branch; the runs, the sixth commit of
+  the branch. The rows of the things went into the first and the second of
+  these and not into the third, since the tool has to end with 0 before every
+  commit and a thing whose line changed or went breaks its row: the one
+  deviation from the order of commits that order gave, said in its report. The
+  reports stand on this machine, the first as
+  `~/devloop-report-unattended-start-conditions.md`, in English, the second as
+  `~/devloop-report-2026-10-22-question-after-refusal.md`, in German, and
+  neither is in the repository. Every line number of a file is as at `4fe6374`
+  unless a commit is named beside it. One session of Claude Code was started
+  for this entry, the measurement under (b), in a throwaway directory that is
+  no devloop project; otherwise the hooks and programs ran by hand, fed the
+  JSON a tool call gives them, and the steps of the workflow ran on the tree
+  with their commands. The words the tool reads a line of this file into its
+  search set by stand in this entry in its head and on the two status lines
+  below that record a defect and close one, and on no other line.
+  `output-styles/` does not change; `scripts/devloop-stock-take` does not
+  change. This entry is the first whose head follows the rule under (d): the
+  date and the version stand in this first paragraph and not in the head.
+
+  **What holds, and where it was decided.** (a) Decided on 20 October 2026,
+  lines 33072 to 33077, cluster 22 of the entry of 19 October 2026 on the
+  checked list of milestone 3, lines 31825 to 31845: the guard on the mark,
+  `hooks/pre-tool-use-mark-guard.sh`, reads start conditions 6 and 7 of
+  `build-work` when the mark is written, the same state of the main branch
+  as the text, and blocks only where the text refuses. (b) Decided on 22
+  October 2026, cluster 11, lines 31636 to 31655, and decided again the
+  same day by the order on the question after a refusal, which replaced the
+  first build: the question on the rule for the classifier of auto mode,
+  text 4 of the entry of 9 October 2026, lines 14452 to 14470, is put at a
+  first setup after the yes to the mode in `setup-checks` step 8, as
+  before, and otherwise only at a start with `--auto`, with the person
+  there, where the rule does not stand in their settings, or they cannot be
+  read for it, and the project carries an open issue for an install that
+  auto mode refused in a run without them by one of the ways the rule
+  names; nothing is stored on a no, the question coming at every such start
+  while the issue is open and ending when it is closed; a program decides
+  it off a record a hook writes, not the run's judgement; every counted
+  refusal with nobody there leaves an issue, for a check class as for a
+  task; the rule can stand in the person's settings alone, "Configure auto
+  mode" of Claude Code saying the classifier reads no `autoMode` from a
+  project's `.claude/settings.json` or `.claude/settings.local.json`; the
+  rule is no condition of the mode. (c) From the statement of 19 October 2026 at line 30078 and
+  the should of status line 30085, the open decision taken as a question of
+  theirs, with the question of `setup-checks` step 3 on a tool the run may
+  not install, lines 485 to 553 of that skill, approved on 21 October 2026:
+  a check class that needs a tool outside the project under a record saying
+  no or never written goes from the build to `setup-checks` for that class,
+  whose step 3 puts the question; the build hands no command over for it
+  and takes no decline. (d) Decided on 22 October 2026: every title says
+  what changed in substance and nothing else, in at most 72 characters,
+  without a date, a version number, a part of a milestone, "the person" or
+  "as decided", written as the owner's own; a new entry that records a
+  decision says "Decided on" and not "Decided by the person on"; old entries
+  and titles stay; the job `stock-take` holds it on the title of the pull
+  request and on the heads of new entries; the nineteen checks stay
+  nineteen.
+
+  **(a) The guard on the mark, `45a7a49`.** `bin/devloop-install-record`
+  takes the option `--dependency`, lines 34 to 50 and 73 to 94 at that
+  commit: the same code reads the section `## Dependency permission`, the
+  keys `dependency-tools` and `dependency-answered`, prints `ref`, `tools`
+  and `answered` and no place and no route line, and every cause names that
+  section; an option it does not know, or more than one directory, ends
+  with exit 2 through the one line that ends so. The seven lines that
+  resolve the default branch are untouched, which the check of the three
+  copies under "Before a handover, run these" shows with its `1`. The hook,
+  lines 168 to 202 at `45a7a49`: where the write of the mark comes in auto
+  mode, it reads condition 6 through the reader without the option and
+  condition 7 with it, collects every one that does not say yes, and passes
+  where none fails, with the statement beside it where the command called
+  `bin/devloop-permission-mode`, as before; where one fails it blocks with
+  exit 2 and a message on stderr that names each failing condition with its
+  cause joined behind "because" — a record saying no with the ref and the
+  date it was answered, or the reader's cause where the record cannot be
+  read, no file, no section, no line, another value, a branch never fetched
+  — says that the mark is not written another way, that the run with nobody
+  there does not start, and what the run does: with the user there, tell
+  them so with the sentence the skill gives for start conditions 6 and 7, in
+  the next message that ends a turn with text, and carry on with them; with
+  nobody there, stop with the reason named, as the skill says for a stop
+  with a reason. The sentence for 6 and 7 is the one `build-work` names in
+  the paragraph after the list of the seven conditions, lines 1495 to 1505,
+  the one step 8 of `setup-checks` puts before its second questions,
+  approved on 6 October 2026, lines 29760 to 29763. A deletion or a read of
+  the mark passes as before, line 142, and a project without `docs/agents`
+  passes as before, line 121; outside auto the block of 9 October 2026
+  stands as it stood, before any record is read. Where the mark is
+  written, read for the cross-check: `plan-work` line 481, at the end of
+  Stage 1, and `build-work` line 1517, on the direct route, the two insert
+  sites of `shared/mark-command.md`; the planning route into the build
+  writes no mark, line 1505, and the cut writes none, `cut-into-tasks` line
+  61 reading it and 177 deleting it. The person is there at both writes.
+  `shared/mode-set-up.md` lines 21 to 29 at `45a7a49` say to the three
+  skills that read the five things that the guard reads the last two at
+  the write, and that the rule for the classifier is none of the five;
+  `build-work` lines 1563 to 1573 and `plan-work` lines 502 to 516 at that
+  commit say at the mark what the run does on the block.
+
+  **(b) The question after a refusal, `4811956`, replacing the stored no of
+  `45a7a49`.** The measurement first, on this machine under Claude Code
+  2.1.305, one attempt as the order asked, from 17:45:39 to 17:45:59 UTC,
+  in a throwaway directory under `$WORK` with `git init` and no
+  `docs/agents/`, so no devloop project: `claude -p --permission-mode auto`
+  with `--settings` on a file carrying a `PermissionDenied` hook for `Bash`
+  that appends its input as one line to a file under `$WORK`, and
+  `autoMode.hard_deny` with `"$defaults"` and the entry "Never run pipx
+  install"; the prompt „Run exactly this shell command: pipx install
+  devloop-probe-does-not-exist“. The classifier refused the command, the
+  model said so and did not retry, and the hook fired once. The keys of its
+  input, at the top: `cwd`, `effort`, `hook_event_name`, `permission_mode`,
+  `prompt_id`, `reason`, `session_id`, `tool_input`, `tool_name`,
+  `tool_use_id`, `transcript_path`; in `tool_input`: `command`,
+  `description`; `tool_input.command` read `pipx install
+  devloop-probe-does-not-exist`, `hook_event_name` `PermissionDenied`,
+  `permission_mode` `auto`, `effort` the object `{"level": "xhigh"}`, and
+  `reason` "The server-side auto mode classifier judged this action
+  dangerous (it gave no explanation)". The one field that tells a denial
+  with a verdict from one without is `reason`: the hooks reference of
+  Claude Code, read the same day, says a verdict names the matched rule in
+  square brackets in most sessions, that a no-verdict denial's reason
+  starts with "Auto mode could not evaluate this action and is blocking it
+  for safety", and that a denial because the classifier model was
+  unavailable carries the fixed text "Classifier unavailable"; the measured
+  reason is the other form of a verdict, the page "Review denials" names,
+  a verdict without a rule's name. The first shell line of the attempt
+  failed before `claude` started, on `timeout`, which this Mac does not
+  have; the attempt itself was then made once, without it.
+
+  What the second order decided, and why the stored no went. The no that
+  `45a7a49` recorded in `devloop-auto-mode-rule-declined` beside the
+  settings file is gone whole: the subcommand `decline`, the file and the
+  exit 3 of `read`, since whoever changed their mind would have had to know
+  of a file nothing in devloop shows. Taken against beside it, each with
+  its reason: the no stored for every project on its own, since the
+  classifier reads the rule from the person's settings alone and not from a
+  project's `.claude/settings.json`, so a project cannot hold what the no
+  is about and the file would be one more thing to know of; the no stored
+  for a fixed time, since the time would be a number nobody chose and the
+  question would come back at a moment that has nothing to do with a
+  refusal; the question at every start with `--auto`, since the person who
+  said no would then be asked at every piece of work whether or not auto
+  mode had refused anything, the very thing the stored no was built
+  against. What stands instead: the question comes back only once auto
+  mode has refused an install in a run without them, names that install
+  with its issue, and ends with the issue. Which refusal counts: auto mode
+  refusing, with a verdict of its classifier, a command the install guard
+  reads as an install by one of the ways the rule in text 4 names — brew
+  install, go install, cargo install, uv tool install, pipx install,
+  playwright install, cypress install, puppeteer browsers install, the verb
+  `install` itself, `brew upgrade` and `cargo binstall` not among them —
+  and nothing on the command that stays the person's under every answer,
+  `sudo` before it say; npm, pip and every other way do not count, since
+  the rule does not help there, and neither do the guard's block, the
+  refusal of a safety check built into Claude Code, an installer's error or
+  a call that did not finish, the other ways of `shared/install-not-through.md`
+  lines 1 to 7. A denial without a verdict changes nothing about the rule
+  and is not counted; Claude Code tells it apart by `reason`, so the
+  measured form is read for that and nothing counts in doubt.
+
+  **The program, `bin/devloop-auto-mode-question`, `4811956`**, 638 lines,
+  python3 as the rule program is. Two commands and a self-test. `record
+  WAY ID [DIR]`, lines 152 to 174, with the command on stdin as the JSON
+  string literal the reader prints: one line appended to the file
+  `devloop-auto-mode-denials` in the git directory the project's worktrees
+  share, `git rev-parse --path-format=absolute --git-common-dir`, `.git`
+  of the project in the ordinary case — the time in UTC, the way, the
+  call's id and the literal, tab-separated — exit 0; exit 2 with the reason
+  where the literal is no JSON string, the directory no git repository or
+  the write refused. That place answers the four conditions the order set
+  for the carrier: the file stands inside the project and in no commit, no
+  tree and no `.gitignore`, nobody has to know of it or delete it, since a
+  line no open issue matches does nothing, and the question ends with the
+  issue; the path and the form of the line live in this program and
+  nowhere else, as `bin/devloop-install-note` holds its note. The question,
+  `[DIR]`, lines 220 to 298: first `bin/devloop-auto-mode-rule read`
+  beside it, run with the interpreter running the program, which Windows
+  needs — exit 0 ends it with 1 and `read: 0`, `gh` not called; then the
+  record, no git directory, no file or no line in the form ending it with 1
+  and `gh` not called; then `gh issue list --state open --label raised-here
+  --label needs-human --limit 100 --json number,title,body`, each recorded
+  command held against the title and the body of each issue, verbatim: an
+  issue carrying the command as the tool ran it is one the question names,
+  one carrying it otherwise is not found and the question is not put, the
+  side "In doubt, a run with nobody there is not blocked" reads; the
+  skills have every such issue carry the command as it ran, so the match
+  is mechanical and the run's judgement decides nothing here. For each
+  issue found, its kind off `gh api
+  repos/{owner}/{repo}/issues/N/dependencies/blocking`, the relation the
+  readiness query of `build-work` reads from the other side: `task` where
+  an open issue is blocked by it, `class` otherwise, since an issue for a
+  check class is recorded as a blocker of no task. Exit 0 with `question:
+  yes`, `read: 1|2`, `rule: <the line of read>` and per issue `issue:`,
+  `kind:`, `title:`, `way:` and `command:`, the command on one line, in
+  the order of the numbers, each once; exit 1 with `question: no` and why;
+  exit 2 with `question: not decided`, the command and the message where
+  `gh` did not answer, ended otherwise than 0 or printed no JSON list, or
+  the rule program could not be run, so that the run says so as
+  `shared/command-does-not-answer.md` asks and concludes nothing. Each call
+  of `gh` runs in the project directory with 60 seconds. So of the three
+  things the order asked the program to tell, two are mechanical here, the
+  issue and its kind, and what stays with the run is to write the issue
+  with the command verbatim, which the skills asked for already, to put the
+  question with the lines the program prints, and on the yes to close the
+  issues it named. The self-test, lines 321 to 616, 38 cases, runs against
+  a stand-in for `gh` as `bin/devloop-arm` does, lines 303 to 319: a shell
+  script first on the path that answers `issue list` and the blocking
+  relation of one issue from scripted files and logs every call, the
+  configuration of `gh` on an empty directory, no token in the environment,
+  `CLAUDE_CONFIG_DIR` under the test's own directory, so that nothing
+  reaches GitHub and this machine's settings are not touched; the cases the
+  order asked for among them — the rule missing and no issue, no question;
+  an issue holding a task, the question with `kind: task`; one concerning a
+  class, `kind: class`; both, both named, the lower number first; the rule
+  standing, no question and `gh` not called; `read` ending with 2 on a
+  settings file that is no JSON and an issue open, the question; the issue
+  closed, no question; after a no the issue still open, the question again
+  and again, the record and the settings as before — and beside them a
+  command carried in the title alone, found; carried with two blanks, not
+  found; a command over two lines, matched verbatim and printed on one
+  line; one command in two issues, both named, each once; `gh` failing on
+  the list, printing no JSON, failing on the relation, each not decided
+  with the command and the message. On Windows the self-test refuses with
+  exit 2, since a process started from Python finds no shell script as
+  `gh`; the job runs it on the three other systems.
+
+  **The hook, `4811956`.** The install guard, `hooks/pre-tool-use-install-guard.sh`,
+  stands in `hooks/hooks.json` under `PermissionDenied` for `Bash` as well,
+  lines 19 to 22 at that commit, without `onFailure`, which that event
+  ignores with the exit code and the output: the one file under the two
+  events, so that the refusal is read with the one reading and no second
+  copy of it, which a hook of its own could not have had — a hook reads its
+  input through the reader once, and the reading of the command is the
+  guard's 550 lines. The duty, lines 20 to 38 and 837 to 857 at that
+  commit: where the event is `PermissionDenied`, read off the reader's
+  `event:` line, the guard runs its reading as at `PreToolUse`, and then,
+  instead of the record and the block, decides the ways of the rule the
+  command took — the command-line tools off the routes it collected, the
+  verb behind the judged word read as `install` and nothing else, `uv tool
+  install` at the word after `tool`; the browsers marked where their
+  download lands outside the project, lines 719 and 742, `playwright
+  install` without `--with-deps`, `cypress install`, `puppeteer browsers
+  install` in the puppeteer package's form and as `@puppeteer/browsers
+  install` with `--path` outside, the one spelling of the way the rule
+  names, measured as counted; `PLAYWRIGHT_BROWSERS_PATH=0`, a download
+  into the current directory and the help forms are not. No install at
+  all, no way of the rule, something on the command that stays the
+  person's under every answer, or a `reason` starting with "Auto mode
+  could not evaluate this action" or reading "Classifier unavailable":
+  silent, exit 0, nothing printed, no retry. Otherwise the ways joined
+  with a semicolon, each once, and the command as the JSON carried it,
+  off the reader's new `command:` line, handed to `record` with the call's
+  id and the project directory, exit 0. Outside a devloop project the
+  guard leaves at `docs/agents`, line 7, as before, and at another tool
+  than Bash at line 21. The reader, `bin/devloop-command-reader`, prints
+  two fields more since this commit, lines 33 to 44 of its head: `reason:`
+  where the JSON carries it, a line break in it a space, and `command:`,
+  the string literal of `tool_input.command` between its quotes with its
+  escapes intact, one line, taken at the decoding, lines 2104 and 2134,
+  and printed at lines 3667 and 3668; two cases of its self-test, lines
+  503 to 508, the measured denial among them; no hook reads a command off
+  that line. `.github/workflows/stock-take.yml` feeds the guard once under
+  `PermissionDenied` with `ls`, `permission_mode` `auto` and a reason, line
+  331, in the job `hooks on every system`, and runs the program's
+  self-test beside the reader's and the arming program's, line 307, on
+  every system but Windows.
+
+  **The skills, `4811956`.** `shared/install-not-through.md` lines 15 to
+  27 and `setup-checks` under "A guard's block is not a decline", line 98:
+  with nobody there a counted refusal for a check class leaves an issue
+  beside the cell, for every class and not for `secrets` alone, carrying
+  the command as it ran, the message and what stands in the way, labelled
+  `raised-here` and `needs-human` and recorded as a blocker of no task; the
+  class goes `skipped (state)` as before and the run goes on; `build-work`
+  under "With nobody there", line 165, says the same. `setup-checks` step
+  8, lines 948 to 956: where the five hold the step is skipped whole as
+  before `45a7a49`, unless `build-work` or `plan-work` called it for the
+  question after a refusal alone, where it puts that question in its form
+  for a start with `--auto` and nothing else; lines 1104 to 1125: after
+  the yes to the mode the program decides the form, 1 and `read: 0` no
+  question, 1 otherwise the form of the setup, 0 the form for a start with
+  `--auto`, 2 said with the command and the message and the form of the
+  setup, which rests on nothing `gh` answers; line 1136: the line under
+  the no of the setup's form says that at the next start with `--auto`
+  they are asked once more; lines 1139 to 1184, the form for a start with
+  `--auto`: the refusal named with the command and its issue, each with
+  its issue where several, the yes line by the kinds open, the no line;
+  on the yes `write` enters the rule and where it ends with 0 the run
+  closes every issue the program named, `gh issue close` without a
+  comment, since no wording for one is approved, a task an issue held free
+  then and taken by step 2 of `build-work` as any free task, a check class
+  an issue concerned reaching this skill from step 4 of the next build on
+  that task's branch, where the cell's state, the refusal, has ended with
+  the rule standing, `build-work` line 796 — the route the order's "the
+  run calls setup-checks for that class" takes here, since a single-class
+  call needs a branch the caller owns and a start with `--auto` has none
+  yet; the rule holds in the running session, the settings page of Claude
+  Code under "When edits take effect" saying it watches its settings files
+  and reloads them when they change; `write` ending with 2, the text for
+  the refused entry and the issues open; on the no nothing written, the
+  issues open, the question again at every start with `--auto` while one
+  is open. `build-work` under "Unattended mode", lines 1520 to 1539: where
+  the five hold and the section was reached directly, the program runs
+  once; 0 calls step 8 alone for that question, 1 asks nothing, 2 is said
+  and asks nothing; on either answer the mark. `plan-work` at the end of
+  Stage 1, lines 488 to 506: the same before the mark, on either of the
+  first two answers or on `--auto`, where the mode is set up and step 8
+  was not called this session — the first two answers taken as a start
+  with `--auto` too, since they send a run alone with the person there,
+  which the report names as a reading of the order. On the planning route
+  into the build nobody is there, and nothing is asked and nothing written.
+  `shared/mode-set-up.md` lines 29 to 33 say to the three skills that read
+  the five things that the rule is none of them and how a refusal brings
+  the question. `bin/devloop-auto-mode-rule` is the program of `4fe6374`
+  again, byte for byte but for its usage note on `write`, lines 21 to 28
+  at `4811956`.
+
+  **The texts, decided on 22 October 2026**, which the skills describe and
+  do not quote, by "Describe what must be said; never dictate wording".
+  The question at a start with `--auto`: „Der Auto-Modus hat in einem Lauf
+  ohne dich `<Befehl>` abgelehnt (Issue #<Nummer>). Darf ich in deiner
+  Datei `~/.claude/settings.json` eine Regel eintragen, damit der
+  Auto-Modus Installationen in devloop-Projekten nicht von sich aus
+  blockiert?“ With several issues it names each install with its issue.
+  The button „Ja, eintragen“; where the issue holds a task, under it: „Ich
+  trage die Regel ein, schließe das Issue und nehme die Aufgabe wieder auf.
+  Die Regel erlaubt nur Installationen in Projekten, die mit devloop
+  eingerichtet sind.“ Where it concerns a check class: „Ich trage die Regel
+  ein, schließe das Issue und richte die Prüfung wieder ein. Die Regel
+  erlaubt nur Installationen in Projekten, die mit devloop eingerichtet
+  sind.“ Where both kinds are open: „Ich trage die Regel ein, schließe die
+  Issues, nehme die Aufgabe wieder auf und richte die Prüfung wieder ein.
+  Die Regel erlaubt nur Installationen in Projekten, die mit devloop
+  eingerichtet sind.“ With several it reads „die Issues“, „die Aufgaben“,
+  „die Prüfungen“. The button „Nein, nicht eintragen“, under it: „Dann
+  bleibt das Issue offen, bis du die Installation selbst erledigt und das
+  Issue geschlossen hast. Bis dahin frage ich bei jedem Start mit `--auto`
+  wieder.“ With several, „die Issues“. In text 4 the line under „Nein,
+  nicht eintragen“ gets at its end the sentence: „Beim nächsten Start mit
+  `--auto` frage ich dich dann noch einmal.“ The README paragraph that
+  begins "It touches your global configuration in one place" reads, up to
+  "Auto mode tab." and in these words: It touches your global
+  configuration in one place, `~/.claude/settings.json`, and only after
+  asking you: where you let it work without you, it asks whether it may
+  enter one rule under `autoMode.allow`, so that auto mode does not block
+  by itself the installs a devloop hook already guards. If you say no, it
+  asks again only once auto mode has actually refused an install, names
+  that install, and stops asking when its issue is closed. The rule allows
+  installs in projects set up with devloop and nothing else, and without
+  your yes the file is not touched. You can see and remove it in Claude
+  Code under `/permissions`, on the Auto mode tab.
+
+  **(c) A check class under a no, `45a7a49`.** `build-work` step 3 under
+  "If they decline, the run acts on it", lines 589 to 600 at that commit:
+  a check class that needs a tool outside the project under a record saying
+  no or never written is not handed over there and no decline is taken;
+  the main run calls `setup-checks` for that one class, on the task's
+  branch, whose step 3 puts the question — that they install it themselves,
+  or that the check is switched off — and records the answer, the class
+  `skipped (user)` on the second, filled on the first once the tool stands
+  at its path. Point 7, lines 529 to 532 at that commit, says that what it
+  hands over is the tool of the task. `setup-checks` lines 49 to 53 at that
+  commit name that build as the second of the four things that call the
+  skill for a single class, and step 3, lines 503 to 507, puts its question
+  on the single-class route as well, on the build's branch, the branch
+  being the caller's as line 560 says and step 4 writing the line for a
+  tool the person installed on the caller's branch, lines 613 to 621. Until
+  this commit the bullet "A check class" said that the class is recorded
+  `skipped (user)` with the decline's reason, lines 585 to 586, two texts
+  for one decision beside step 3's question of 21 October 2026. For a tool
+  of the task nothing changes.
+
+  **(d) Titles, `45a7a49`.** The rule stands in `docs/skill-conventions.md`
+  under "A title says what changed, and nothing else", after the rule that
+  the README carries no date. The job `stock-take` in
+  `.github/workflows/stock-take.yml` gets a last step, lines 150 to 215 at
+  that commit, and the trigger the type `edited` beside the three default
+  types, line 41: the title of the pull request comes out of the event into
+  the environment variable `PR_TITLE` of the step and never into the text
+  of the script; python3 reads it and `git diff origin/main...HEAD --
+  docs/roadmap.md` for the heads the branch adds, every added line starting
+  with `- **`, read in the file from that line to the closing `**`, the
+  lines joined with one space and the text between the markers measured;
+  each is red where it is longer than 72 characters, or carries a date as
+  the README step reads one, a version number as three numbers joined by
+  dots, or the words "the person" with a word boundary on both sides, case
+  not mattering; every find is printed with the text, a passing title with
+  the word passes, and the step ends with 1 where anything was red. Old
+  heads are not in the diff and are not read. A title changed on an open
+  pull request fires `edited`, which fires on a change of the body or the
+  base too, so every such edit runs the whole workflow again, five jobs on
+  the same merge ref, the concurrency group cancelling a run in progress
+  for the same pull request; the two other ways were weighed in the report:
+  a job-level condition on the changed field would let a body edit skip the
+  job, and a skipped job reports success to the branch protection over a
+  red run before it; leaving `edited` out leaves a title changed without a
+  push unread, against the decision. The pattern for a version number hits
+  a tool's version in a title too, `gh 2.96.0` say; the narrower form that
+  reads the plugin's own number alone would pass it from 1.0.0 on; the
+  wider one is built and the question stands in the report. Measured on
+  the tree at `45a7a49` with the step's script: a title of 65 characters
+  passes, one of 95 is red with its count, "Build milestone 3, part 4, as
+  decided on 21 October 2026" is red with the date, "Raise the version to
+  0.156.0 and nothing else" with the version, "Record what the person
+  decided about titles" with the words, "Run the hooks under Alpine 3.22 as
+  well" passes; the heads of new entries on this branch are read at the
+  bench below. The head of this entry has 68 characters between its
+  markers and carries none of the three, and the title of its pull request
+  is the first line of its first commit, 65 characters. The nineteen checks
+  under "Before a handover, run these" are nineteen as before: the step is
+  the platform's, as the two README steps are.
+
+  **The README, changed in the fifth commit.** `README.md` line 280 said that
+  devloop touches the global configuration in one place and only after a yes,
+  which the stored no of `45a7a49` made untrue; with the stored no gone the
+  sentence is true again, and the paragraph says since this commit, in the
+  words above, when the question comes back and where the rule can be seen and
+  removed. The defect the first order recorded on that line is closed by the
+  correction:
+  Closed, corrected in the document: `README.md` carries "again only once auto mode has actually refused an install".
+
+  **The two defects built, and what a run must still show.** Line 15579,
+  row 3910 of the table, a project whose mode was set up before 0.134.0
+  meeting the rule question on no path: built by (b) as it stands since
+  `4811956`, its evidence on the line of `setup-checks` step 8 that opens
+  the form for a start with `--auto` — such a project meets the question
+  once auto mode has refused an install by one of the ways the rule names
+  in a run without the person, at their next start with `--auto`; a run
+  with the person is owed, forceable in a project whose mode is set up
+  with such an issue open, and comes in the closing run of the milestone. Line
+  30168, row 6394, the build reading none of the seven conditions again at
+  its start: built by (a) as far as conditions 6 and 7 go on the direct
+  route, where the hook reads both at the write of the mark whatever the
+  run read before, its evidence on the hook's block line; what a run must
+  still show, under the decision on cluster 22, is the reading of the other
+  five at the start of the build on both routes and of 6 and 7 on the
+  planning route, where the mark stands already and no write meets the
+  hook, which depends on the model and goes into the closing run. The
+  should of neither changes.
+
+  **Records of the second commit, `d58bbdc`, of the fourth, `4811956`, and of
+  the fifth.** At `d58bbdc`, in `docs/stock-take.tsv`: the evidence of row
+  3910 moved onto `skills/setup-checks/SKILL.md` and of row 6394 onto
+  `hooks/pre-tool-use-mark-guard.sh`, each note saying so; the pass under auto
+  of the hook, row 3312, re-anchored on the pass that follows the reading,
+  keeping its name, since runs hang on it, its note saying what holds now; the
+  step 8 thing of the mode set up by all five, row 363, re-anchored, keeping
+  its name for the same reason; the reader's thing on more than one argument,
+  row 2301, and its thing on a missing `install-tools` line, row 2311,
+  re-anchored on the lines that carry them now; new things for the hook's
+  block on a record saying no and on a record that cannot be read, for the
+  reader's `--dependency`, for the workflow's step green and red and its
+  `edited` trigger, for the single-class question of `setup-checks` step 3,
+  for the new paragraphs of `build-work` and `plan-work` on the mark;
+  not-a-thing rows on the lines that are part of them. At `4811956`: every row
+  of the stored no gone — the rule program's things on exit 3, `decline` in
+  its three outcomes and the reading of the date, step 8's things on exit 3
+  and on the refused no, the not-a-thing rows on their lines — and the rule
+  program's rows on the arguments, on the no and on `if existed:` as they
+  stood at `4fe6374`; row 363 re-anchored again, on the sentence that skips
+  the step, its note saying that the step called alone for the question is a
+  thing of its own; the things of this order: the reader's two fields, the
+  guard's five outcomes under `PermissionDenied`, the registration in
+  `hooks.json`, the workflow's run of the self-test, the program's thirteen
+  outcomes, and in the skills the step 8 call for the question alone, the
+  three endings of the program in step 8, the form for a start with `--auto`
+  and its three answers, the issue for a check class in `setup-checks`, in
+  `build-work` and in `shared/install-not-through.md`, the three endings in
+  `build-work` and in `plan-work`, the state ended by the rule in `build-work`
+  step 4; the not-a-thing rows on their lines; the defect of row 3910 with its
+  evidence on the form for a start with `--auto` and the built way in its
+  note. The runs of `70f63a7` on the rule program, cases C1 to C13, went out
+  at `4811956` with the lines the revert changed under them, and came back in
+  the sixth commit from the bench below, as the tool's check against a run
+  recorded too early asks. In the fifth commit: the README defect closed as
+  above, its evidence on the closing line. The runs of the straight paths of
+  the three units that insert `shared/mode-set-up.md`, and of that file,
+  stopped counting at `45a7a49`, as every run on a changed unit does.
+
+  **The bench, 22 October 2026, from 07:35:53 to 07:37:41 UTC and case C13 at
+  07:50:42 UTC, against the hooks and programs of `d58bbdc`, which the third
+  commit does not change, last changed at `45a7a49`**, in `$WORK`, a
+  throwaway directory outside the repository: a throwaway project with a bare
+  origin whose HEAD is main and `docs/agents/` on main, the records written
+  on main before each case, committed with a plain `git commit` under the
+  identity git config gives, pushed to the bare origin and fetched; the hook
+  fed the JSON a tool call gives it, `permission_mode`, `tool_name` and
+  `tool_input` among it, with `CLAUDE_PROJECT_DIR` on the project, and the
+  rule program with `CLAUDE_CONFIG_DIR` on a directory under `$WORK`, so that
+  this machine's settings were not touched. The mark command is the one of
+  `shared/mark-command.md`, the tool `Bash`. Each case below names what
+  decided and the exit code; the report carries the lines as printed.
+  Case A1: the mark command under auto with install-tools yes and dependency-tools yes: no output, exit 0; case A1b: the same write by the editing tool, exit 0.
+  Case A2: the mark command under default with both yes: text C naming default and manual mode on, exit 2, as before.
+  Case A3: the mark command under auto with install-tools no: the block naming condition 6, because the install record says no (install-tools: no on origin/main as last fetched, answered 2026-10-20), exit 2.
+  Case A4: rm -f of the mark under auto with install-tools no: no output, exit 0; case A4b: cat of the mark, exit 0.
+  Case A5: the mark command under auto with dependency-tools no: the block naming condition 7, because the record on check tools in the dependency file says no (dependency-tools: no on origin/main as last fetched, answered 2026-10-20), exit 2; case A5b: the same write by the editing tool, exit 2.
+  Case A6: the mark command under auto with no section Install permission: the block naming condition 6, because docs/agents/environment.md on origin/main has no section "## Install permission", so the question was never answered, exit 2.
+  Case A7: the mark command under auto with both no: the block naming condition 6 and condition 7, each with its cause, joined with a semicolon, exit 2.
+  Case A8: no section Dependency permission: the block naming condition 7, because the file has no section "## Dependency permission", so the question was never answered, exit 2. Case A9: the section without its line: condition 7, because the section on origin/main has no dependency-tools line, exit 2. Case A10: dependency-tools maybe: condition 7, because dependency-tools reads "maybe" on origin/main, where yes and no are the only values, exit 2.
+  Case A11: the mark command under auto in a directory without docs/agents: no output, exit 0, the pass of a project not set up, as before.
+  Case B1: the reader with --dependency on dependency-tools yes: ref origin/main, tools yes, answered 2026-10-20, no place and no route line, exit 0; case B2: on no, tools no, exit 0.
+  Case B3: --dependency with no section: the cause naming the section, exit 1; case B4: the section without its line: the cause "has no dependency-tools line", exit 1; case B5: dependency-tools maybe: the cause with the value, exit 1.
+  Case B6: the install form unchanged: ref, tools yes, place /usr/local/bin, route brew, answered, exit 0; case B9: the install form with no section: the cause naming "## Install permission", exit 1.
+  Case B7: an option the reader does not know: "unknown option --foo; the one option is --dependency" on stderr, exit 2; case B8: two directories: "expected at most one directory argument, the project directory, got 2", exit 2.
+  The cases C1 to C13 of that bench ran against the rule program with the stored no, which went at `4811956`; cases C4 to C6, C8 and C9 walked the no alone and have no object any more, and the others ran again below, so that none of them is recorded off the program of `d58bbdc`.
+  Case D1: the title step's script, extracted from the workflow at `d58bbdc`, on a throwaway repository with two new heads on a branch over its origin's main, one head of 56 characters and one of 139 with a date, a version number and "the person": the first passes, the second red with all four finds, two heads read, exit 1, the title passing beside them.
+  Case D2 to D5 and D7, on the tree of this repository at `d58bbdc` against origin/main: a title of 95 characters red with its count, one with "21 October 2026" red with the date, one with "0.156.0" red with the version, one with "the person" red with the words, each exit 1; "Run the hooks under Alpine 3.22 as well" passes, exit 0.
+  Case D6: the same on the tree with the title "Read start conditions 6 and 7 at the mark, store a no to the rule": the title passes, the head of the new entry at line 34609 passes, one head read, exit 0. These are runs of the script on this machine and not the platform's runs of the step, so no run is recorded on the workflow's things; the platform's run comes with the pull request.
+  Case E: the hooks step of the job hooks on every system, extracted from the workflow and run on this machine from 07:36:27 to 07:36:42 UTC, its own throwaway project committed with git -c as the step does: the reader's self-test and that of bin/devloop-arm passed, 36 cases of the latter; 17 handlers started, every one exit 0, the mark guard among them on ls and on a Write of README.md.
+
+  **The bench of the second order, 22 October 2026, against the hooks and
+  programs of `4811956`**, in `$WORK`: the guard fed the JSON in the form
+  measured above, every key of it with `tool_input.command` and `reason`
+  set per case, `CLAUDE_PROJECT_DIR` on a throwaway project with
+  `docs/agents/` and `git init`, from 18:32:15 to 18:32:17 UTC; the rule program
+  with `CLAUDE_CONFIG_DIR` under `$WORK`, at 18:32:18 UTC; the
+  hooks step of the workflow extracted and run on this machine from 18:32:18
+  to 18:32:34 UTC, the throwaway project of the step committed under the
+  identity git config gives and not with `-c`; and the self-tests of the
+  reader, 165 cases, of the question program, 38 cases, and of the arming
+  program, 36, each green, from 18:32:34 to 18:32:48 UTC. Each case names what decided and
+  the exit code; the report carries the lines as printed. Where a case
+  reads "silent" the guard printed nothing on either stream and exited 0,
+  and the record did not grow.
+  Case H1: a counted denial, pipx install devloop-probe-does-not-exist with the measured reason: one line appended to .git/devloop-auto-mode-denials of the project, the way pipx install, the id, the command, exit 0, nothing printed.
+  Case H2: npm install -g, not a way of the rule: silent. Case H8: brew upgrade, not the verb install: silent. Case H20: @puppeteer/browsers install without --path, landing in the current directory: silent. Case H15: playwright install with PLAYWRIGHT_BROWSERS_PATH=0, inside the project: silent. Case H16: playwright install --with-deps, system packages: silent.
+  Case H3: the same denial in a directory without docs/agents: silent, no file made. Case H4: ls under PermissionDenied, no install: silent. Case H26: the input the job feeds, ls with the reason [Test]: exit 0.
+  Case H5: a denial whose reason starts with "Auto mode could not evaluate this action": silent. Case H6: the reason "Classifier unavailable": silent. Case H7: sudo brew install gitleaks: silent. Case H25: curl piped into sh beside brew install: silent.
+  Case H9 to H14 and H17 to H19: brew install, go install, cargo install, uv tool install, pipx install --global, npx playwright install chromium, npx cypress install, npx puppeteer browsers install chrome and npx @puppeteer/browsers install chrome --path ~/.cache/pup: each recorded with its way, the two puppeteer forms both as puppeteer browsers install.
+  Case H21: brew install gitleaks && npm install -g x: recorded for brew install alone. Case H22: brew install twice on one line: one way. Case H23: brew install a; pipx install b: both ways, joined with a semicolon. Case H24: cargo install over two lines with a backslash: the literal kept with its escapes, one line of the record.
+  Case H27: the same pipx install under PreToolUse with no record in the project: the block of the install guard as before, exit 2.
+  Case C1: read with no settings file: "the file does not exist", exit 1; case C3: a settings file without autoMode: "the file holds no autoMode", exit 1; case C2: read with the rule standing: "the rule stands in", exit 0.
+  Case C7: settings.json before and after read and the refused arguments, by cksum: unchanged. Case C10: write, the list autoMode.allow created with "$defaults" before the rule, exit 0; the keys of the file in their order, theme then autoMode. Case C11: an argument the program does not know, and decline, which is no command any more: the message naming read or write on stderr, exit 2, both. Case C13: write with settings.json a link into a directory that does not exist: "not written: the write was refused: the link ... points to ..., whose directory does not exist, and this program makes none there", exit 2, nothing made. No file named declined stands under the configuration directory after the bench.
+  Case E2: the hooks step of the job, run on this machine: the three self-tests passed, 165, 36 and 38 cases; 18 handlers started, every one exit 0, the install guard among them under PermissionDenied on ls.
+  Case Q: the self-test of bin/devloop-auto-mode-question, 38 cases, every one as its head says; the runs of its outcomes are the cases of the self-test, recorded on the rows of the outcomes the order asked for.
+
+  **Addendum of the same day: the question program and its way from the
+  hook run in the job on every system, Windows included.** The third order
+  of 22 October 2026, on `task/unattended-start-conditions`, version
+  0.156.0 as before, in two commits after `ae071c3`: the code, the
+  workflow and the rows of the table for its things, with the conventions
+  and this addendum but for its bench, the seventh commit of the branch;
+  the bench with its runs, the eighth. The report stands on this machine as
+  `~/devloop-report-2026-10-22-question-on-every-system.md`, in German, and
+  is not in the repository. Every line number of a file below is as at the
+  seventh commit unless `ae071c3` is named beside it.
+
+  What was missing, the three things the order named. (a) The job `hooks
+  on every system` left the self-test of `bin/devloop-auto-mode-question`
+  out on `windows-latest`, line 307 of the workflow at `ae071c3`, since its
+  stand-in for `gh` was a shell script, which a process started from Python
+  does not find there: Windows appends `.exe` to a bare name and runs
+  nothing else off it; main asks for the job on all four systems,
+  "Registering a skill" in the conventions. (b) The program starts `gh`,
+  `git` and `bin/devloop-auto-mode-rule`, and is started by the install
+  guard under `PermissionDenied` and by the run at a start with `--auto`;
+  none of these starts had run under Windows. (c) The job fed every hook a
+  harmless input, so no counted refusal ever reached `record` there, and
+  `PermissionDenied` ignores a hook's exit code and output — the hooks
+  reference of Claude Code, the table on exit code 2 per event: "Exit code
+  and stderr are ignored because the denial already occurred" — so a fault
+  on the way from the hook to the program would have recorded nothing,
+  shown nothing, and the question would never have come.
+
+  What the seventh commit built, and the way chosen. The program, lines
+  206 to 216: `gh` is found on `PATH` through `shutil.which` and run by the
+  path found, line 213, with the bare name where `PATH` holds none, so that
+  the error for a missing `gh` stays the one it was. On Windows `which`
+  reads `PATHEXT`, so `gh.exe` and a `gh.cmd` on `PATH` are found alike, as
+  `cmd` and PowerShell find them, where `subprocess` with a bare name finds
+  `gh.exe` and nothing else; on macOS and Linux it is the lookup of the
+  shell, the first executable `gh` on `PATH`. That is the one lookup in
+  operation and in the self-test: nothing of the self-test tells the
+  program where `gh` is, no switch and no variable, and the stand-in comes
+  first on `PATH` as before, the self-test holding `which` to it at line
+  389. The stand-in, lines 317 to 347: a Python program, `gh-stand-in.py`,
+  run by the interpreter running the self-test, behind the launcher the
+  system runs off `PATH` — `gh`, one line of sh with `exec`, on macOS and
+  Linux; `gh.cmd`, one line of cmd handing `%*` on, on Windows, lines 370
+  to 378 — answering as the shell script did: the issue list and the
+  blocking relation of one issue from scripted files, every call logged, a
+  call no case scripted marked. Taken against, each with its reason: a
+  `gh.exe` for Windows, which needs a compiler on the runner or a launcher
+  out of pip's own files, neither a thing a self-test may rest on; a copy
+  of `python.exe` as `gh.exe`, which reads its first argument as a script
+  to run; and a `.cmd` beside the old lookup, which Windows would not have
+  found. The paths the self-test compares are read as the system reads
+  them, `same` at lines 350 to 352: git prints the common directory with
+  its own slashes on Windows, and the temporary directory may carry a short
+  name there, so "recorded in <path>" is held against the record's path
+  through `realpath` and `normcase`, `recorded` at lines 453 to 465, and the
+  refusal on `os.name == "nt"` is gone. 38 cases as before. The other
+  starts: `git` is run by its bare name, which Windows finds as `git.exe`,
+  and `--path-format=absolute` is git 2.31 or later, the runners carrying
+  2.56; the rule program is run with `sys.executable`, as before; the guard
+  starts the program through its shebang, `/usr/bin/env python3`, under
+  the bash of Git for Windows, which looks `python3` up on `PATH`, and the
+  run starts it the same way through the shell. Whether that start finds
+  `python3` on `windows-latest` is what the new check shows first; the
+  checkout step prints since this commit what `command -v python3` finds,
+  line 310, so that a red check there names its cause.
+
+  The workflow. The self-test runs on every system, line 323, no `case` on
+  `uname` before it. The install guard under `PermissionDenied` is fed a
+  second input beside `ls`, lines 344 to 352: the form measured on 22
+  October 2026 under Claude Code 2.1.305, every key of it — `cwd`,
+  `effort`, `hook_event_name`, `permission_mode`, `prompt_id`, `reason`,
+  `session_id`, `tool_input` with `command` and `description`,
+  `tool_name`, `tool_use_id`, `transcript_path` — with `pipx install
+  devloop-probe-does-not-exist` and the classifier's verdict as `reason`;
+  the inputs of a pair of event and matcher may be a list since this
+  commit, line 368, every handler of the pair started once per input, 19
+  handlers now. After the handlers the step reads
+  `.git/devloop-auto-mode-denials` of its throwaway project, lines 383 to
+  389: exactly one line of four tab-separated fields, the way `pipx
+  install`, the id `toolu_hooksdenied` and the command; found, the line is
+  printed and the step goes on; otherwise the step is red with what the
+  file holds, or nothing. A carriage return in the file is read over there,
+  since the program writes the line of the system. The comment of the job,
+  lines 256 to 271, and the name of the step, line 314, say so; the
+  conventions say it under "Registering a skill" and in the paragraph on
+  the question after a refusal.
+
+  The table, in the seventh commit: the workflow's thing on the self-test
+  run on three systems renamed and re-anchored on the line that runs it on
+  four, the program's self-test thing renamed without its exit 2 on
+  Windows, each with its old name in its note; two things for the record of
+  the counted refusal, found and missing; the notes of the three things of
+  the job on the green, the red and the checkout step; not-a-thing rows on
+  the stand-in's lines and on the lines of `recorded`, two on the old
+  stand-in's lines out; the eleven runs of `ae071c3` on the program's
+  things out, the lookup under them changed, and back in the eighth commit
+  from the bench below, as the tool's check against a run recorded too
+  early asks.
+
+  What this machine shows and what only the job shows. Here: the
+  self-test, 38 cases; the step of the job extracted and run, 19 handlers
+  and the record's line; the tool. Only the job: the self-test under
+  Windows through `gh.cmd`, the guard's start of the program through `env
+  python3` there, and the record's line on each of the four systems; the
+  pull request's run is the first, and this entry does not record it. On
+  (f) of the order: the self-test runs `bin/devloop-auto-mode-rule read`
+  and `write` for real, with `sys.executable` and `CLAUDE_CONFIG_DIR` under
+  the test's own directory, lines 468 to 475, in the cases on the rule
+  standing, missing and unreadable; so the self-test under Windows walks
+  that program's `read` in its three states and `write` on a missing file,
+  which nothing did before, while the rule program has no self-test of its
+  own and its other outcomes — a link, a refused write, a file that is no
+  JSON on `write` — stay measured on this Mac alone.
+
+
+  **The bench of the addendum, 22 October 2026, against the program and the
+  workflow of `296f69b`**, on this Mac, in `$WORK`: the self-test of
+  `bin/devloop-auto-mode-question` under Python 3.14.7, and the hooks step
+  of the job extracted from the workflow at that commit and run as a
+  script, its throwaway project committed under the identity git config
+  gives and not with the `-c` of the step, which the script was run
+  without; three earlier runs of the step on this Mac, before the seventh
+  commit and once after it, ran the `-c` as the step carries it, and none
+  of them is recorded. Each case names what decided
+  and the exit code; the report carries the lines as printed.
+  Case Q2: the self-test of bin/devloop-auto-mode-question at 296f69b, from 19:34:48 to 19:34:51 UTC: 38 cases, every one as its head says, the stand-in behind the launcher gh of sh, found by the program through shutil.which, nothing reaching GitHub; the runs of the program's outcomes are the cases of this self-test, recorded on the rows the sixth commit recorded them on, under the version of this branch, which counts once the squash merge introduces it on main, as the runs of the guard under PermissionDenied of the sixth commit do.
+  Case E3: the hooks step of the job at 296f69b, run on this machine from 19:37:02 to 19:37:18 UTC: the three self-tests passed, 165, 36 and 38 cases; 19 handlers started, every one exit 0, the install guard twice under PermissionDenied, on ls and on the counted refusal; the record of the throwaway project read afterwards, one line, the way pipx install, the id toolu_hooksdenied and the command, printed, exit 0. A run of the script on this Mac and not the platform's run of the step, so no run is recorded on the workflow's things; the platform's run comes with the pull request, and on windows-latest it is the first.
+  Case R: the step's check of the record alone, its seven lines extracted and run on this Mac against a file under $WORK: no file, red, "holds: nothing"; one line with a carriage return at its end, found and printed; two lines, red with both printed; the way brew install in the line, red with the line printed. Lines run on this Mac, recorded on no thing.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

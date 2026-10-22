@@ -161,7 +161,10 @@ one rule and not as eight:
   the one way with three attempts; the call did not finish inside its ten
   minutes. For the task it goes as the second bullet says, with what stands
   at the destination path in the issue, and for a check class through
-  `setup-checks`, which writes the cell `skipped (state)`. Everything else
+  `setup-checks`, which writes the cell `skipped (state)` — and, since 22
+  October 2026, where the way is a refusal of auto mode by one of the ways
+  the rule for its classifier names, an issue beside the cell, recorded as
+  a blocker of no task, as the rule inserted in step 3 says. Everything else
   the run installs, as with the user there.
 - **A class `setup-checks` cannot set up** — `secrets` whose tool cannot be
   installed, and a guard fired on text where the editing tool does not
@@ -526,6 +529,10 @@ The subagent:
    runtime under it. Where the record says no, or was never written, the
    install stays the user's to run, the same way merging is, and the guard
    blocks it — a compiler, a runtime, a tool from a package manager alike.
+   What this point hands over is the tool of the task; a tool a check class
+   needs is not handed over here, since 22 October 2026, and goes to
+   `setup-checks` for that class, under "If they decline, the run acts on
+   it" below, whose step 3 puts the question.
    Report what it installs, what it
    unblocks, and the exact command, as it runs from wherever they are, with
    the change into the project's directory before it where it needs one, by
@@ -582,8 +589,18 @@ The subagent:
 **If they decline, the run acts on it.** Which outcome depends on what the tool
 was for:
 
-- **A check class.** Call `setup-checks` for that one class; it records the class
-  as `skipped (user)` with that reason. The build carries on without it.
+- **A check class.** Not handed over here, and no decline taken here, since
+  22 October 2026: where a check class needs a tool outside the project and
+  the record says no or was never written, call `setup-checks` for that one
+  class, on this branch, whose step 3 puts the decision to them as a question
+  — that they install it themselves, or that the check is switched off — and
+  records the answer, the class `skipped (user)` with that reason on the
+  second, the tool read at its path and the class filled on the first. The
+  build carries on with what the class became. Until that day this bullet
+  took the decline of the command point 7 hands over and sent the class to
+  `setup-checks` as declined, two texts for one decision; the person's
+  statement of 19 October 2026 and the should of defect 4 of the roadmap
+  entry of that date, the open decision taken as a question of theirs.
 - **The task itself.** The branch stays where it is, and the missing install
   becomes an issue of its own carrying the exact command, labelled `raised-here`
   and `needs-human`, recorded as a blocker of the task. Nothing else is needed to
@@ -776,7 +793,11 @@ have by then:
   runtime is missing cannot be read off a branch. A state that has ended goes
   the third way above, to `setup-checks` for that class, on this branch. It
   has to have ended and not merely aged: an entry point that is a stub ends
-  nothing.
+  nothing. A state that is the refusal of auto mode on an install by one of
+  the ways the rule for its classifier names has ended where the rule
+  stands in the person's settings now,
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read` ending with 0,
+  since 22 October 2026.
 - **Every cell reading `skipped (user)` whose reason says something about
   the project that can be checked** — only two packages, no network code. A
   reason with nothing in it to check is not read. Where such a reason no
@@ -1496,6 +1517,26 @@ and does not set a protection while a pull request is open: either stays a
 refusal, said with what would help. When it returns, the tree stands on the
 main branch as freshly fetched: on a yes read all seven again and go on to
 the mark; on a no build this task with them there, as without the flag.
+And where the five hold and this section was reached directly, since 22
+October 2026: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
+once, with the shell. Where it ends with 0 — the rule for the classifier
+does not stand in their settings, or they cannot be read for it, and an
+open issue of this project carries an install auto mode refused in a run
+without them — call `setup-checks` for its step 8 alone, for that one
+question in its form for a start with `--auto`, which changes nothing of
+the repository and, on the yes, enters the rule and closes the issues it
+named; where it ends with 1, nothing is asked; where it ends with 2, say
+that the query did not answer, with the command and the message it prints,
+as "When a command does not answer" says, and ask nothing. The rule is no
+condition of the mode and no start condition: on either answer go on to
+the mark, and where auto mode then refuses an install, that is a refusal
+under "A guard's block, with nobody there" above, which for an install by
+one of the ways the rule names leaves the issue that brings this question
+back. A task an issue held is free once the issue is closed, and step 2
+takes it as any free task; a check class an issue concerned goes to
+`setup-checks` from step 4 of the next task, the state of its cell having
+ended with the rule. Decided on 22 October 2026, the roadmap entry of that
+date on the question after a refusal.
 Where this section was reached from planning, nobody is there to ask: refuse,
 say which of the five is missing and that typing `--auto` where a piece of
 work starts sets it up, and the mark goes, as at every stop with a reason
@@ -1536,7 +1577,16 @@ wording approved on 12 October 2026, point 19 of part B of the roadmap
 entry of that date, since nothing is fast-forwarded here and only the fetch
 can fail — the run without them does not begin, and no mark is written. On
 a fetch that answered, the mark, which the hook on the mark lets through in auto mode
-alone, the mode condition 4 has read by now, and blocks in every other:
+alone, the mode condition 4 has read by now, and blocks in every other; and
+since 22 October 2026 only where conditions 6 and 7 hold, which the hook
+reads at the write through the install record's reader off the main branch
+as last fetched, the state this list reads: where either does not say yes,
+the hook blocks the write and names which and why, and the run does not
+write the mark another way — with the person there, say the sentence this
+section gives for conditions 6 and 7 above and carry on with them, as the
+block says; with nobody there, a stop with the reason named, under "A
+guard's block, with nobody there". Cluster 22 of the roadmap entry of 19
+October 2026, the decision of 20 October 2026 on it:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 

@@ -30,6 +30,19 @@
 #   interrupted: true|false   tool_response.interrupted, where the JSON
 #                carries it, since the same day
 #   file: <tool_input.file_path>
+#   reason: <reason>     the denial reason PermissionDenied carries, where the
+#                JSON carries it, since 22 October 2026: for a classifier
+#                verdict it names the matched rule in square brackets or says
+#                the classifier judged the action; a denial without a verdict
+#                starts with "Auto mode could not evaluate this action", and
+#                one with the classifier unavailable reads "Classifier
+#                unavailable" - the hooks reference of Claude Code, read that
+#                day, and the measurement in the roadmap entry of that date
+#   command: <tool_input.command as the JSON carries it>   the string literal
+#                between its quotes, escapes intact, one line, since the same
+#                day, for the record hooks/pre-tool-use-install-guard.sh
+#                leaves at a refusal of auto mode; bin/devloop-auto-mode-question
+#                decodes it, and no hook reads a command off this line
 #   parsed: yes          the command was taken apart, and its lines follow
 #   parsed: none         the JSON carries no tool_input.command
 #   parsed: no: <why>    the command cannot be taken apart; no line follows,
@@ -487,6 +500,12 @@ selftest() {
   run '{"hook_event_name":"PreToolUse","tool_name":"Bash","tool_input":{"command":"ls"},"tool_use_id":"toolu_3"}'
   expect "the id at PreToolUse, no tool_response: no interrupted line" 0 "tool_use_id: toolu_3"
   absent "interrupted:" "the id at PreToolUse, no tool_response: no interrupted line"
+  # the denial reason and the command as the JSON carries it, since 22 October 2026, for the second duty of the install guard under PermissionDenied: the reason as Claude Code 2.1.305 sent it on this machine that day
+  run '{"session_id":"abc-1","cwd":"/p","permission_mode":"auto","hook_event_name":"PermissionDenied","tool_name":"Bash","tool_input":{"command":"pipx install devloop-probe-does-not-exist","description":"d"},"tool_use_id":"toolu_4","reason":"The server-side auto mode classifier judged this action dangerous (it gave no explanation)"}'
+  expect "a denial of auto mode: the reason and the command as the JSON carries it, since 22 October 2026" 0 "event: PermissionDenied" "permission_mode: auto" "tool_use_id: toolu_4" "reason: The server-side auto mode classifier judged this action dangerous (it gave no explanation)" "command: pipx install devloop-probe-does-not-exist" "parsed: yes" "1|0|list|0|1|pipx|install|devloop-probe-does-not-exist"
+  run '{"tool_name":"Bash","tool_input":{"command":"printf \"a\tb\" && brew install x\nls"}}'
+  expect "the command line keeps the escapes of the JSON and stays one line, where the words have them undone" 0 'command: printf \"a\tb\" && brew install x\nls' "1|0|list|0|1|printf|a	b" "2|0|list|0|1|brew|install|x" "3|0|list|0|1|ls"
+  absent "reason:" "the command line keeps the escapes of the JSON and stays one line, where the words have them undone"
   run '{"tool_name":"Edit","tool_input":{"file_path":"/p/docs/agents/checks.md","old_string":"a","new_string":"b"},"cwd":"/p"}'
   expect "an edit: the file named, parsed none" 0 "tool: Edit" "file: /p/docs/agents/checks.md" "parsed: none"
   run '{ "tool_name" : "Bash" , "tool_input" : { "command" : "ls -la" , "timeout" : 5 , "x" : null , "y" : true , "z" : [ 1 , "two" , { "command" : "rm" } ] } , "tool_response" : { "stdout" : "\"command\": \"rm -rf /\"" } }'
@@ -889,6 +908,7 @@ BEGIN {
   WANT["transcript_path"] = 1; WANT["agent_id"] = 1
   WANT["tool_input.command"] = 1; WANT["tool_input.file_path"] = 1
   WANT["tool_use_id"] = 1; WANT["tool_response.interrupted"] = 1
+  WANT["reason"] = 1
   # the wrappers read over, one word and two words, each with the options that take a value, read off the vendors as docs/roadmap.md names them under the entry on the command reader and its addenda of 13 October 2026
   ONEWORD = " - timeout time nice nohup stdbuf command builtin noglob nocorrect watch setsid ionice flock xargs sudo doas su run0 pkexec env trap exec caffeinate chrt taskset strace valgrind hyperfine unbuffer chronic script arch xcrun sandbox-exec systemd-run nix-shell runuser setpriv gsudo runas login gosu prlimit numactl setarch linux32 linux64 nocache cpulimit ltrace heaptrack gdb lldb rr uclampset winpty firejail ssh-agent lockf apply msgexec kinit sc_usage dtruss dapptrace dappprof procsystime dtrace leaks sg bpftrace ifne lckdo pee mispipe parallel fd tmux screen dtach abduco nq tsp daemon daemonize entr watchexec nodemon reflex chokidar onchange watchman-make when-changed wgo gow chruby-exec envchain godotenv env-cmd cross-env cross-env-shell dotenv npx "
   TWOWORD = " direnv devbox mise rtx nix asdf rbenv pyenv nodenv goenv jenv plenv phpenv luaenv volta fnm pipenv poetry pdm hatch rye conda mamba micromamba pixi bundle pnpm pn yarn uv composer tox rvm proto dotenvx aws-vault op doppler infisical sops chamber teller railway bun launchctl machinectl ktrace perf zellij pueue cargo npm "
@@ -2081,6 +2101,7 @@ function jstr(build,   k, s) {
   while (odd_backslashes(QPARTS[k])) { k++; if (k > NP) err("a string in the JSON is not closed"); if (build) s = s "\"" QPARTS[k] }
   if (k + 1 > NP) err("a string in the JSON is not closed")
   jpart(k + 1)
+  RAWSTR = s
   return build ? decode(s) : ""
 }
 function jvalue(path,   c, k, first) {
@@ -2110,7 +2131,7 @@ function jvalue(path,   c, k, first) {
       jvalue(path "[]")
     }
   }
-  if (c == "\"") { k = jstr(path in WANT); if (path in WANT) { FIELD[path] = k; HAVE[path] = 1 } return }
+  if (c == "\"") { k = jstr(path in WANT); if (path in WANT) { FIELD[path] = k; HAVE[path] = 1; RAW[path] = RAWSTR } return }
   if (c == "t" && substr(QPARTS[JK], JP, 4) == "true") { JP += 4; if (path in WANT) { FIELD[path] = "true"; HAVE[path] = 1 } return }
   if (c == "f" && substr(QPARTS[JK], JP, 5) == "false") { JP += 5; if (path in WANT) { FIELD[path] = "false"; HAVE[path] = 1 } return }
   if (c == "n" && substr(QPARTS[JK], JP, 4) == "null") { JP += 4; return }
@@ -3643,6 +3664,8 @@ END {
   if ("tool_use_id" in HAVE) printf "tool_use_id: %s\n", clean(FIELD["tool_use_id"])
   if ("tool_response.interrupted" in HAVE) printf "interrupted: %s\n", clean(FIELD["tool_response.interrupted"])
   if ("tool_input.file_path" in HAVE) printf "file: %s\n", clean(FIELD["tool_input.file_path"])
+  if ("reason" in HAVE) printf "reason: %s\n", clean(FIELD["reason"])
+  if ("tool_input.command" in HAVE) printf "command: %s\n", RAW["tool_input.command"]
   if (!("tool_input.command" in HAVE)) { print "parsed: none"; exit 0 }
   OUT = ""; NID = 0; LASTID = 0; D = 0; PERR = ""
   parse_text(FIELD["tool_input.command"], 0, "list")

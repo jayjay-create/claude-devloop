@@ -12,7 +12,19 @@ the next. There is no other way to the same tool — not another route, not
 another package manager, not a copy by hand. For a check class in
 `setup-checks` the class goes `skipped (state)` with the state that keeps it
 off, as at a block, and `build-work` reads before the release whether the
-state still stands; `secrets` is the exception "A guard's block is not a
+state still stands; and since 22 October 2026, where the way is the refusal
+of the classifier of auto mode on a command the install guard reads as an
+install by one of the ways the rule for the classifier names — brew
+install, go install, cargo install, uv tool install, pipx install,
+playwright install, cypress install, puppeteer browsers install, the guard
+recording such a refusal at the event PermissionDenied through
+`bin/devloop-auto-mode-question` — the run writes an issue beside the cell,
+for every class, carrying the command as it ran, the message and what
+stands in the way, labelled `raised-here` and `needs-human` and recorded as
+a blocker of no task, and goes on: that issue brings the question on the
+rule to the person at their next start with `--auto`, where it is closed on
+their yes, the roadmap entry of 22 October 2026 on the question after a
+refusal. `secrets` is the exception "A guard's block is not a
 decline" in `setup-checks` carries, the task ending there. Only the
 installer's own error — it ran and ended red — gets up to three attempts,
 each its own call with the same ten minutes, ten seconds apart. An attempt

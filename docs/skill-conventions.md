@@ -1226,10 +1226,15 @@ September 2026, so `gh pr merge` is refused while it is pending or red; the
 entry of that date in `docs/roadmap.md` on the merge gate carries the setting
 and the merge sequence. Since 14 October 2026 four checks more are required,
 `hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
-and `(alpine)`, the second job of the same workflow, which runs the reader's
-self-test and every hook once on each system — the fourth and fifth addenda
-of the entry on the command reader carry the command, and the audit of 14
-October 2026 read the setting off the platform.
+and `(alpine)`, the second job of the same workflow, which runs the
+self-tests of the reader, of `bin/devloop-arm` and of
+`bin/devloop-auto-mode-question` and every hook once on each system, and
+since the addendum of 22 October 2026 to the roadmap entry of that day on
+the question after a refusal feeds the install guard a counted refusal under
+`PermissionDenied` as well and is red where its record is missing — the
+fourth and fifth addenda of the entry on the command reader carry the
+command, and the audit of 14 October 2026 read the setting off the
+platform.
 
 ## Writing long files
 
@@ -1497,6 +1502,33 @@ the dates and every find printed; what the README says of the user's
 project, `docs/agents/`, `~/.claude/settings.json` or `.claude/` say, is no
 find. The red line of the first step says since the same day that the file
 must carry no date and what it carries.
+
+**A title says what changed, and nothing else.** The title of a pull
+request, the first line of a commit message and the head of a new entry in
+`docs/roadmap.md` say in plain words what changed in substance: at most 72
+characters, no date, no version number, no "milestone 3, part 4", no "the
+person", no "as decided", written as the owner of the repository writes a
+title of their own. Where a new entry records a decision, it says "Decided
+on <date>" and not "Decided by the person on <date>"; the date and the
+version stand in the body of the entry, in its first lines, where the head
+carried them until 22 October 2026. Old entries and old titles stay as they
+stand. Decided on 22 October 2026, the roadmap entry of that date on the
+start conditions at the mark. A step of the job `stock-take` in
+`.github/workflows/stock-take.yml`, the check `main` requires, holds it:
+red where the title of the pull request, or the head of an entry the branch
+adds to `docs/roadmap.md` — a line starting with `- **` that the diff
+against `origin/main` lists as added, read to its closing `**`, the text
+between the markers measured — is longer than 72 characters or carries a
+date in a form like `20 October 2026`, `October 2026` or `2026-10-20`, a
+version number, three numbers joined by dots, or the words "the person",
+every find printed; the title comes out of the event through an environment
+variable and never stands in the step's own text. The event fires with the
+type `edited` too, so that a title changed on an open pull request is read
+before it can be merged, at the cost of one run of the workflow per edit of
+the title, the body or the base. A commit's first line is not held by the
+workflow: a squash merge takes the title of the pull request, so the one
+title that lands is the one read. The check is not one of the nineteen
+under "Before a handover, run these".
 
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
@@ -2064,7 +2096,14 @@ text documenting an install pass, and `sh -c "brew install x"` and `bash
 stays, for a word that is run and still only looks like an install.
 
 **The install guard reads a record, since 28 September 2026, and passes only
-what the record names.** The record is a section of `docs/agents/environment.md`
+what the record names.** Since 22 October 2026 the guard on the mark reads
+the same record through the same program when the mark of a run with nobody
+there is written in auto mode, and the record on check tools in the
+dependency file beside it, `bin/devloop-install-record --dependency`, the
+one reading of the section `## Dependency permission`: start conditions 6
+and 7 of `build-work`, blocked at the write where either does not say yes,
+exactly where the text refuses, and nowhere else; `shared/mode-set-up.md`
+says so to the three skills that read the five things. The record is a section of `docs/agents/environment.md`
 under the heading `## Install permission`, a key and a value per line in the
 shape `checks.md` uses for a value a script reads — `grep` on the start of the
 line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
@@ -2329,6 +2368,52 @@ the decision of 8 October 2026 below as revised. Since 12 October 2026 as
 well `nix run`, `nix shell` and `nix env shell` are read as `uvx` is, by
 name alone, defect 11 of the roadmap entry on the first closing run of
 milestone 3.
+
+**A refusal of auto mode on an install is recorded by the install guard,
+since 22 October 2026, and asked about at the next start with `--auto`.**
+The guard stands in `hooks/hooks.json` under `PermissionDenied` for `Bash`
+as well, the event Claude Code fires when auto mode denies a tool call,
+and reads the command there with its one reading and no copy of it: where
+the command is an install by one of the ways the rule for the classifier
+names — brew install, go install, cargo install, uv tool install, pipx
+install, playwright install, cypress install, puppeteer browsers install,
+the verb `install` itself — nothing on it stays the person's under every
+answer, and the field `reason` names a verdict of the classifier, it
+records the refusal through `bin/devloop-auto-mode-question record`, which
+owns the record: one file, `devloop-auto-mode-denials`, in the git
+directory the project's worktrees share, never in the tree and never in a
+commit, one line per refusal with the time, the way, the call's id and the
+command as the JSON carried it. The guard is silent at every other
+command, outside a devloop project and at a denial without a verdict, and
+asks for no retry; the reader prints the two fields it needs, `reason:`
+and `command:`, the latter the string literal as the JSON carries it. The
+question is decided by the same program and not by the run: at a start
+with `--auto`, with the person there, `build-work` on its direct route,
+`plan-work` at the end of Stage 1 and `setup-checks` step 8 after the yes
+to the mode run it once, and it ends with 0 where the rule does not stand
+in the person's settings, or they cannot be read for it, and an open
+issue labelled `raised-here` and `needs-human` carries a recorded command
+verbatim in its title or body — the match is mechanical, the skills having
+every such issue carry the command as it ran — naming each such issue,
+whether it holds a task, an open issue being blocked by it, or concerns a
+check class, and the command; with 1 nothing is asked, and with 2 `gh`
+did not answer and the run says so and concludes nothing. Nothing is
+stored on a no: the question comes at every such start while an issue is
+open and ends when it is closed, and nobody has to know of the record or
+delete it. The rule can stand in the person's settings alone, the page
+"Configure auto mode" of Claude Code saying the classifier reads no
+`autoMode` from a project's `.claude/settings.json` or
+`settings.local.json`, so a no cannot be stored per project either. The
+job `hooks on every system` runs the guard under `PermissionDenied` with
+a harmless input and with a counted refusal in the form measured on 22
+October 2026, reads the record afterwards and is red where the line is
+missing, since that event ignores a hook's exit code and output; and it
+runs the program's self-test, against a stand-in for `gh`, on all four
+systems, the program finding `gh` on `PATH` as a shell finds it, through
+`shutil.which`, so that on Windows the stand-in's `gh.cmd` is found as
+`gh.exe` is. Decided on 22 October 2026, the roadmap entry of that date on
+the question after a refusal and its addendum of the same day on every
+system.
 
 **What an install did is written by a hook, since 21 October 2026**, cluster
 18 of milestone 3 as the person decided it on 20 and 21 October 2026, the

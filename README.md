@@ -280,9 +280,12 @@ repository and both yours to keep or drop.
 It touches your global configuration in one place, `~/.claude/settings.json`,
 and only after asking you: where you let it work without you, it asks whether
 it may enter one rule under `autoMode.allow`, so that auto mode does not block
-by itself the installs a devloop hook already guards; the rule allows installs
-in projects set up with devloop and nothing else, and without your yes the file
-is not touched. It does not decide how you like to be spoken to, with one
+by itself the installs a devloop hook already guards. If you say no, it asks
+again only once auto mode has actually refused an install, names that install,
+and stops asking when its issue is closed. The rule allows installs in projects
+set up with devloop and nothing else, and without your yes the file is not
+touched. You can see and remove it in Claude Code under `/permissions`, on the
+Auto mode tab. It does not decide how you like to be spoken to, with one
 exception it makes itself: devloop brings its own output style and forces it,
 so while devloop is enabled the output style you chose does not apply, in
 every session, and devloop's stands in its place. That style says only where

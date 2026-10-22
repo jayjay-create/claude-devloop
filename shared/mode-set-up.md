@@ -18,4 +18,16 @@ have written a moment ago:
 permission`. A section that is not there, a line that is missing and a value
 that is neither `yes` nor `no` are none of them a yes. For these three the
 record on the main branch is the state itself and not an account of it:
-nothing on the platform says what the user allowed.
+nothing on the platform says what the user allowed. The guard on the mark,
+`hooks/pre-tool-use-mark-guard.sh`, reads the last two of the five through
+`bin/devloop-install-record`, the install guard's reader, the second with
+`--dependency`, when the mark is written, and blocks the write where either
+does not say yes, exactly where this text refuses, since 22 October 2026;
+a deletion or a read of the mark passes as before. The rule for the
+classifier of auto mode in the person's settings is none of the five and
+no start condition: without it the run starts, and auto mode can then
+refuse an install, which the run treats as the refusal it is; where the
+install went by one of the ways the rule names, the refusal leaves an
+issue, and the question on the rule meets the person at their next start
+with `--auto`, `bin/devloop-auto-mode-question` deciding it off that issue,
+since 22 October 2026.
