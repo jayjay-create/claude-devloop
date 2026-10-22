@@ -1,5 +1,6 @@
 #!/bin/bash
 set -uo pipefail
+HERE=$(cd "$(dirname "$0")" && pwd)
 cat >/dev/null
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
@@ -20,7 +21,17 @@ while IFS='|' read -r _ class _ target _ _ blocking status _; do
   [ "$blocking" = "yes" ] || continue
   [ "$status" = "filled" ] || continue
   [ -n "$target" ] && [ "$target" != "-" ] || continue
-  if ! OUT=$(cd "$PROJECT_DIR" && $RUNNER "$target" 2>&1); then
+  OUT=$(cd "$PROJECT_DIR" && $RUNNER "$target" 2>&1); RC=$?
+  if [ "$RC" -ne 0 ]; then
+    # A tool of the chain not found on the search path the chain runs under,
+    # read through bin/devloop-missing-tool since 21 October 2026: the check
+    # did not run and found nothing, the tool is named, and what closes it
+    # belongs in the repository - the should of the roadmap entry of 30
+    # September 2026 on devloop-test-s.
+    if MISSING=$(printf '%s\n' "$OUT" | "$HERE/../bin/devloop-missing-tool" "$RC"); then
+      OUT="This check did not run and found nothing: $MISSING is not found on the search path the chain runs under. What closes that belongs in the repository and not in this session - the directory of $MISSING on the PATH the runner uses, or the target calling $MISSING by the path the installer wrote to - so that the next shell and the next person meet it; docs/agents/environment.md says where it stands. The output:
+$OUT"
+    fi
     FAILED="$FAILED
 --- $class ($RUNNER $target) ---
 $OUT"
@@ -61,5 +72,7 @@ fi
 echo "Checks are failing (attempt $COUNT of $MAX). Fix this before reporting done.
 A failure in the unit, integration or end-to-end class does not name its cause.
 Run diagnose-bug on it rather than another guess. The other six classes print
-their cause in the output below and are fixed directly.$FAILED" >&2
+their cause in the output below and are fixed directly. A class whose output
+opens on \"This check did not run\" is not red from the code: put what closes
+it into the repository, as that line says, and run it again.$FAILED" >&2
 exit 2

@@ -1,0 +1,116 @@
+#!/bin/bash
+# Carries what an install the guard let through under a yes will have done,
+# from hooks/pre-tool-use-install-guard.sh, which reads the command and where
+# it lands at PreToolUse, to hooks/post-tool-use-install-fact.sh, which writes
+# it into docs/agents/environment.md at PostToolUse once the call succeeded,
+# since 21 October 2026: a note under the system's temporary directory, keyed
+# by the session and the tool call, so that the hook reads no command and
+# resolves no place itself, the guard's reading being the one reading. The
+# path of the note and the form of the line live here and nowhere else.
+# See docs/skill-conventions.md, "What an install did is written by a hook".
+#
+# Usage: devloop-install-note write SESSION TOOL_USE_ID   < the facts
+#        devloop-install-note take SESSION TOOL_USE_ID
+#        devloop-install-note drop SESSION TOOL_USE_ID
+#        devloop-install-note --self-test
+# The facts on stdin, for write: one per line - the folder the install lands
+# in, the unit separator, byte 31, and the command as its words ran. The two
+# ids are kept to letters, digits, dot, hyphen and underscore; the note is
+# $TMPDIR/devloop-install-note-SESSION-TOOL_USE_ID, under /tmp where TMPDIR is
+# unset.
+#
+# write: exit 0 with the note written, a note of the same key replaced; exit 0
+#   with nothing written where an id is empty after the keeping, or stdin
+#   carries no line with a folder and a command.
+# take: exit 0 and one line per fact in the form the section of
+#   docs/agents/environment.md carries, "- `COMMAND` installed into FOLDER",
+#   the note removed; exit 1 and nothing printed where no note stands for the
+#   key, or an id is empty.
+# drop: exit 0, the note removed where it stands.
+# Exit 2 with one line on stderr: an action it does not know, or not exactly
+# the two ids behind the action.
+# --self-test runs every outcome under a temporary directory of its own as
+# TMPDIR, prints one line per case and exits 1 at the first that does not
+# come out as this head says.
+set -u
+US=$(printf '\037')
+keep() { printf '%s' "$1" | tr -cd 'A-Za-z0-9._-'; }
+note_path() { printf '%s/devloop-install-note-%s-%s' "${TMPDIR:-/tmp}" "$1" "$2"; }
+
+selftest() {
+  local me T out rc n=0
+  me=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-install-note.XXXXXX") || exit 1
+  trap 'rm -rf "$T"' EXIT
+  export TMPDIR="$T"
+  run() { out=$("$me" "$@" 2>&1 </dev/null); rc=$?; }
+  runin() { local in="$1"; shift; out=$(printf '%s' "$in" | "$me" "$@" 2>&1); rc=$?; }
+  # expect NAME EXIT SUBSTRING...: the last run exited EXIT and printed every substring
+  expect() {
+    local name="$1" want="$2" s; shift 2; n=$((n+1))
+    [ "$rc" -eq "$want" ] || { echo "FAIL $name: exit $rc, expected $want"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }
+    for s in "$@"; do printf '%s\n' "$out" | grep -qF -- "$s" || { echo "FAIL $name: nothing holds '$s'"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }; done
+    echo "ok   $name"
+  }
+  absent() { local s="$1"; printf '%s\n' "$out" | grep -qF -- "$s" && { echo "FAIL $2: '$s' stands there and should not"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }; }
+  count() { local want="$1" name="$2" got; got=$(ls "$T" | grep -c '^devloop-install-note-'); [ "$got" -eq "$want" ] || { echo "FAIL $name: $got notes stand under TMPDIR, expected $want"; exit 1; }; }
+
+  run;                                   expect "no action: exit 2" 2 "expected write, take, drop or --self-test"
+  run nope s1 t1;                        expect "an action it does not know: exit 2" 2 "expected write, take, drop or --self-test, got nope"
+  run write s1;                          expect "write with one id: exit 2" 2 "expects the session and the tool call's id, got 1"
+  run take s1 t1 x;                      expect "take with three arguments: exit 2" 2 "expects the session and the tool call's id, got 3"
+  runin "/opt/homebrew/bin${US}brew install gitleaks" write "" t1
+  expect "write with an empty session: nothing written, exit 0" 0; count 0 "write with an empty session: nothing written, exit 0"
+  runin "/opt/homebrew/bin${US}brew install gitleaks" write "/@ /" "t1"
+  expect "write with a session that keeps nothing: nothing written, exit 0" 0; count 0 "write with a session that keeps nothing: nothing written, exit 0"
+  runin "" write s1 t1;                  expect "write with nothing on stdin: nothing written, exit 0" 0; count 0 "write with nothing on stdin: nothing written, exit 0"
+  runin "no separator here" write s1 t1; expect "write with a line without the separator: nothing written, exit 0" 0; count 0 "write with a line without the separator: nothing written, exit 0"
+  runin "${US}brew install x" write s1 t1; expect "write with an empty folder: nothing written, exit 0" 0; count 0 "write with an empty folder: nothing written, exit 0"
+  run take s1 t1;                        expect "take where no note stands: exit 1, nothing printed" 1; [ -z "$out" ] || { echo "FAIL take where no note stands printed something"; exit 1; }
+  run take "" t1;                        expect "take with an empty session: exit 1" 1
+  run drop s1 t1;                        expect "drop where no note stands: exit 0" 0
+  runin "/opt/homebrew/bin${US}brew install gitleaks
+~/go/bin${US}go install golang.org/x/vuln/cmd/govulncheck@latest" write "s 1/x" "toolu_01A.b-c"
+  expect "write with two facts, the ids kept to their letters: exit 0, one note" 0; count 1 "write with two facts, the ids kept to their letters: exit 0, one note"
+  [ -f "$T/devloop-install-note-s1x-toolu_01A.b-c" ] || { echo "FAIL the note does not stand at the key with the ids kept"; ls "$T"; exit 1; }
+  run take "s 1/x" "toolu_01A.b-c"
+  expect "take: the two lines in the form of the section, the note removed" 0 '- `brew install gitleaks` installed into /opt/homebrew/bin' '- `go install golang.org/x/vuln/cmd/govulncheck@latest` installed into ~/go/bin'
+  count 0 "take: the two lines in the form of the section, the note removed"
+  run take s1x toolu_01A.b-c;            expect "take a second time: exit 1" 1
+  runin "/a${US}one" write s2 t2; runin "/b${US}two" write s2 t2
+  run take s2 t2;                        expect "a second write of the same key replaces the note" 0 '- `two` installed into /b'; absent '- `one` installed into /a' "a second write of the same key replaces the note"
+  runin "/c${US}three" write s3 t3; run drop s3 t3; expect "drop removes the note: exit 0" 0; count 0 "drop removes the note: exit 0"
+  run take s3 t3;                        expect "take after drop: exit 1" 1
+  echo "SELF-TEST PASSED: $n cases"
+  exit 0
+}
+
+ACTION="${1:-}"
+case "$ACTION" in
+  --self-test) selftest ;;
+  write|take|drop) ;;
+  *) echo "devloop-install-note: expected write, take, drop or --self-test, got ${ACTION:-nothing}" >&2; exit 2 ;;
+esac
+[ $# -eq 3 ] || { echo "devloop-install-note: $ACTION expects the session and the tool call's id, got $(($# - 1))" >&2; exit 2; }
+SID=$(keep "$2"); TUID=$(keep "$3")
+case "$ACTION" in
+  write)
+    [ -n "$SID" ] && [ -n "$TUID" ] || exit 0
+    FACTS=$(awk -F "$US" 'NF >= 2 && $1 != "" && $2 != ""')
+    [ -n "$FACTS" ] || exit 0
+    printf '%s\n' "$FACTS" > "$(note_path "$SID" "$TUID")"
+    exit 0 ;;
+  take)
+    [ -n "$SID" ] && [ -n "$TUID" ] || exit 1
+    P=$(note_path "$SID" "$TUID")
+    [ -f "$P" ] || exit 1
+    while IFS="$US" read -r D C; do
+      [ -n "$D" ] && [ -n "$C" ] && printf '%s\n' "- \`$C\` installed into $D"
+    done < "$P"
+    rm -f "$P"
+    exit 0 ;;
+  drop)
+    [ -n "$SID" ] && [ -n "$TUID" ] || exit 0
+    rm -f "$(note_path "$SID" "$TUID")"
+    exit 0 ;;
+esac

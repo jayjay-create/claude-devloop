@@ -496,8 +496,13 @@ The subagent:
    say what follows a block and the three other ways.
    Read the result off the path the installer writes to, never off
    `command -v`, and report it in two places, because they are two duties: the
-   standing fact about running this project goes into `environment.md` under
-   point 8, and the report of this run — the command as it ran, what came
+   standing fact about running this project — the command as it ran and the
+   folder it installed into — is written into `environment.md` under the
+   heading `Installed outside the project` by the hook
+   `post-tool-use-install-fact.sh` once the install went through, since 21
+   October 2026, on this same branch, from what the guard read when it let
+   the command through, and this run writes no second line for it, which
+   point 8 says; and the report of this run — the command as it ran, what came
    back, what stands at that path, and what the package manager did besides —
    goes into the pull request body beside the `Guarded conditions` list, which
    is what outlives the session; with the user there, the main run says it in
@@ -545,17 +550,34 @@ The subagent:
 8. Writes down anything that changed about running this project locally — a new
    dependency, a new command, a service that has to be up, a setting — into
    `docs/agents/environment.md`, on this same branch. A command the user has to
-   type — or one this run ran under the install record, which whoever clones
-   this project will have to run — is a fact about the environment, and it
+   type is a fact about the environment, and it
    belongs in the file rather than in a sentence that scrolls away. That file is read after every merge to say
    what to pull; it is only worth reading if something writes it.
 
-   **The line written is the backed command itself, not a copy of it made by
-   hand.** Point 7 backed exactly one string, and that string is what goes in. No
-   second backing is owed here — point 7 is the only route by which such a
-   command comes into this step — but a command shortened, reordered or retyped
-   on the way into the file is wrong there for every later reader, and none of
-   them goes back to the place it was backed to find out.
+   **An install this run made under the record is written there by the hook,
+   not by this step**, since 21 October 2026: `post-tool-use-install-fact.sh`
+   puts the line under `Installed outside the project` — the command as its
+   words ran and the folder it installed into, which whoever clones this
+   project will have to run — from what the guard read, the moment the
+   install went through, and a line that stands there already is not written
+   twice; this step writes no line for it and rewrites none, since a command
+   shortened, reordered or retyped on the way into the file is wrong there for
+   every later reader. Until that day this step wrote the backed command of
+   point 7 itself. Where the hook says it could not write — the tree on the
+   main branch, or the file missing — its message carries the line, and this
+   step puts it there as it stands.
+
+   **A command the person typed themselves that is an install outside the
+   project** — the one point 7 handed over under a record saying no or never
+   written, or the one `setup-checks` step 3 put to them as a question, run
+   in their own terminal, which the hook does not see — has its line here
+   all the same, under the same heading `Installed outside the project` and
+   in the form the hook writes: one list item, the command as it was handed
+   over in backticks, the words `installed into` and the folder the tool was
+   read at, and not a second time where that line stands there already; for
+   a check class `setup-checks` step 4 writes it, on this branch. The
+   person's decision of 21 October 2026, the roadmap entry of that date on
+   milestone 3, part 4.
 
 **If they decline, the run acts on it.** Which outcome depends on what the tool
 was for:
@@ -873,7 +895,8 @@ package manager did besides; and, where `setup-checks` filled a class on this
 branch, the red proof it handed up for that class, with its own install
 report. That is the trip that outlives the session; the
 one to the review has already happened, and the standing fact about running
-the project went into `environment.md` under point 8, which is the other duty.
+the project went into `environment.md` by the hook point 7 names, or by point
+8 for a command the person ran themselves, which is the other duty.
 
 **The pull request body names the task it closes**, with a closing keyword —
 `Closes #N` — on a line of its own. That is not decoration. It is the only

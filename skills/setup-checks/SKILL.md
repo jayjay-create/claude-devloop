@@ -84,8 +84,10 @@ that called. Everything else below applies unchanged.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text guard-block-intro`
 
 - **The command really is an install this class needs.** The guard did what it
-  was built for. With the user there this is the question already described
-  below, and a decline makes the class `skipped (user)` with that reason. With
+  was built for. With the user there this is the question step 3 puts where
+  the tool is missing under a no — they install it themselves, or the check
+  goes off — and the check off makes the class `skipped (user)` with that
+  reason. With
   nobody there, there is no one to ask: the class goes `skipped (state)`, the
   state being what this machine lacks and the block names, and the report
   names it; since 9 October 2026 the same holds for the three other ways an
@@ -225,7 +227,15 @@ settled.
   of a project or of this machine switches the class off. Only the user can,
   by a decision of theirs, and then the cell reads `skipped (user)` with
   their reason, as at every place below where their decision writes that
-  form. With nobody there the task ends instead, and not the run, as "A
+  form. Where the tool it needs is missing and the install record says no or
+  was never written, with the person there, that decision is the question
+  step 3 puts at once — install it themselves, or the check off — and the
+  class is never left `empty` for it, since 21 October 2026: the run of 19
+  October 2026 in project z handed the command over, left the class `empty`
+  across a merge and said the mode's loss in a subordinate clause, defect 4
+  of the roadmap entry of that date, and the person decided that the open
+  decision is taken before the offer of the mode is made or dropped. With
+  nobody there the task ends instead, and not the run, as "A
   guard's block is not a decline" above says, since 9 October 2026.
 
 A state that will end is still a state: no third-party packages yet, no
@@ -484,15 +494,57 @@ already there, the system packages `install-deps`, `--with-deps` or
 names and the directories its routes answer stay the user's under
 every answer. Where the record says no, or was
 never written, the run installs nothing, which is what the no of the install
-question said: hand them the command, backed and as it runs from wherever
-they are — the change into the project's directory before it where it needs
-one, by "A command handed over runs as it stands" in
-`docs/skill-conventions.md` — say plainly that it reaches beyond this
-project, and they decide. Where the
-command handed over is not run, the class becomes `skipped (user):` with
-that reason, naming the tool and the command that was not run — whether or
+question said: with the person there the decision on the class is put at
+once, here, as a question, before the offer of the unattended mode in step
+8 and never left open across a handover or a merge, since 21 October 2026,
+the person's decision of 19 October 2026 after the run of that day in
+project z, which handed the command over and left the class `empty` across
+a merge, defect 4 of the roadmap entry of that date. A choice through the
+harness's choice widget, in the user's language, alone in its call, every
+point in a field of its own, and no recommendation, as every question of
+this step; the wording approved on 21 October 2026 stands in the roadmap
+entry of that date on milestone 3, part 4, with `gitleaks` for the class
+`secrets` as its example, and this skill says what is said, not the words:
+
+- **In the header: a name for the subject**, the check, of twelve characters
+  at most.
+- **In the question field**: that for this check, in ordinary words, the
+  tool is missing, named; that outside the project the run may install
+  nothing; that they can install it themselves, with the command in
+  backticks, backed and as it runs from wherever they are — the change into
+  the project's directory before it where it needs one, by "A command handed
+  over runs as it stands" in `docs/skill-conventions.md`; and the question
+  line, how it is to go on.
+- **The first answer, label and line**: they install it themselves.
+- **The second answer, label and line**: the check is switched off.
+
+On the first: hand them the command, backed and as it runs from wherever
+they are, once more as a line of its own to copy, last in the message that
+ends the turn, and wait for their word; then read the place the command
+writes to, never `command -v`, and set the class up in step 4 where the
+tool stands there — the branch is cut after their word, as after the last
+answer — and step 4 writes the line for that install into
+`docs/agents/environment.md`, since the hook that writes the line for an
+install the run made does not see one made in their own terminal, as step 4
+says. Where it does not stand there, put the same question again, with the
+place that was read and that the tool does not stand there in its question
+field before the question line, and so each time the tool is not there
+after their word, until they choose the check off or the tool stands there:
+no check goes off but on their choice, which is the second answer, and not
+on a tool not found — the person's decision of 21 October 2026, the roadmap
+entry of that date on milestone 3, part 4; until then this paragraph made
+the class `skipped (user)` the first time the tool was not there, against
+the rule of step 1 that only the user switches `secrets` off and against
+the approved wording, whose second answer alone switches a check off. On the
+second the class becomes `skipped (user):` with that reason, naming the tool
+and that the person did not install it — whether or
 not another tool would be left for the class; another tool is not put to
-them after a command that was not run. And so does a class whose only way
+them after the check was switched off. This holds for every class whose
+tool is missing under a no, `secrets` included, which step 1 says is never
+skipped on the run's own judgement and is decided here by theirs, and a
+class is never left `empty` for it. Until 21 October 2026 the command was
+handed over here with both ways said and the class decided by whether it
+was run. And so does a class whose only way
 was into the packages and they said no to
 that — the class becomes `skipped (user):` with that reason, naming the tool
 and what was declined, or both tools where the question offered another and
@@ -545,7 +597,30 @@ once the tool stands at the path the installer writes to, never where
 stands at that path, and what the package manager did besides — it updates
 itself, fetches what it needs for that and cleans up unasked — in the pull
 request body that lands the class, step 7's or the build's where this skill was
-called for one class, and write the standing fact into `environment.md`.
+called for one class; the standing fact — the command as its words ran and
+the folder it installed into — is written into `environment.md` under
+`Installed outside the project` by the hook `post-tool-use-install-fact.sh`
+the moment the install went through, since 21 October 2026, from what the
+guard read when it let the command through, and this run writes no second
+line for it; until that day this sentence had the run write it, and the run
+of 19 October 2026 in project z did not, defect 6 of the roadmap entry of
+that date. Where the hook says it could not write — the tree on the main
+branch, or the file missing — its message carries the line, and the run puts
+it there as it stands.
+
+**A tool the person installed themselves, on the first answer of the
+question step 3 puts, the hook does not see**: the command ran in their
+terminal and in no call of this run. Its line is this step's to write, with
+the editing tool, under the same heading `Installed outside the project` of
+`environment.md` and in the form the hook writes — one list item, the
+command as it was handed over in backticks, the words `installed into` and
+the folder step 3 read the tool at — and not a second time where that line
+stands there already; on the branch this step writes on, the one cut after
+their word at a first setup and on the route from the step after a merge,
+the caller's where this skill was called for one class, since step 3 stands
+before the cut and writes nothing. The person's decision of 21 October
+2026, the roadmap entry of that date on milestone 3, part 4, which carries
+the two ways weighed.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
@@ -1080,7 +1155,8 @@ line under the no.
 
 **Every yes to one of the two holds for its permission, whatever follows
 it.** What follows is read off `checks.md` before anything lands: every row
-`skipped (user)` whose reason names an install they declined or did not run,
+`skipped (user)` whose reason names an install they declined, did not make
+or did not run,
 or a tool they declined into the packages — the reasons step 3 writes — is a
 class the answers just given open again, by point 3 below, and every check
 tool installed outside the project that a yes to the dependency file now
@@ -1106,7 +1182,7 @@ records having to land first — that is what point 1 is for:
    its class is proven red again as in step 5.
 3. **Every class on the list** — off only for an earlier no that the answers
    just given lift, the reason in its `skipped (user)` cell naming what was
-   declined: an install they declined or did not run, filled with the tool
+   declined: an install they declined, did not make or did not run, filled with the tool
    in the packages where the record on them says yes now and the tool can be
    entered there, and outside the project where the install record says yes
    now only where that does not hold, so that nothing it installs outside the
