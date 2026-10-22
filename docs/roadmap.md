@@ -35269,6 +35269,21 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   JSON on `write` — stay measured on this Mac alone.
 
 
+  **The bench of the addendum, 22 October 2026, against the program and the
+  workflow of `296f69b`**, on this Mac, in `$WORK`: the self-test of
+  `bin/devloop-auto-mode-question` under Python 3.14.7, and the hooks step
+  of the job extracted from the workflow at that commit and run as a
+  script, its throwaway project committed under the identity git config
+  gives and not with the `-c` of the step, which the script was run
+  without; three earlier runs of the step on this Mac, before the seventh
+  commit and once after it, ran the `-c` as the step carries it, and none
+  of them is recorded. Each case names what decided
+  and the exit code; the report carries the lines as printed.
+  Case Q2: the self-test of bin/devloop-auto-mode-question at 296f69b, from 19:34:48 to 19:34:51 UTC: 38 cases, every one as its head says, the stand-in behind the launcher gh of sh, found by the program through shutil.which, nothing reaching GitHub; the runs of the program's outcomes are the cases of this self-test, recorded on the rows the sixth commit recorded them on, under the version of this branch, which counts once the squash merge introduces it on main, as the runs of the guard under PermissionDenied of the sixth commit do.
+  Case E3: the hooks step of the job at 296f69b, run on this machine from 19:37:02 to 19:37:18 UTC: the three self-tests passed, 165, 36 and 38 cases; 19 handlers started, every one exit 0, the install guard twice under PermissionDenied, on ls and on the counted refusal; the record of the throwaway project read afterwards, one line, the way pipx install, the id toolu_hooksdenied and the command, printed, exit 0. A run of the script on this Mac and not the platform's run of the step, so no run is recorded on the workflow's things; the platform's run comes with the pull request, and on windows-latest it is the first.
+  Case R: the step's check of the record alone, its seven lines extracted and run on this Mac against a file under $WORK: no file, red, "holds: nothing"; one line with a carriage return at its end, found and printed; two lines, red with both printed; the way brew install in the line, red with the line printed. Lines run on this Mac, recorded on no thing.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
