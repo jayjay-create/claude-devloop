@@ -1226,10 +1226,15 @@ September 2026, so `gh pr merge` is refused while it is pending or red; the
 entry of that date in `docs/roadmap.md` on the merge gate carries the setting
 and the merge sequence. Since 14 October 2026 four checks more are required,
 `hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
-and `(alpine)`, the second job of the same workflow, which runs the reader's
-self-test and every hook once on each system — the fourth and fifth addenda
-of the entry on the command reader carry the command, and the audit of 14
-October 2026 read the setting off the platform.
+and `(alpine)`, the second job of the same workflow, which runs the
+self-tests of the reader, of `bin/devloop-arm` and of
+`bin/devloop-auto-mode-question` and every hook once on each system, and
+since the addendum of 22 October 2026 to the roadmap entry of that day on
+the question after a refusal feeds the install guard a counted refusal under
+`PermissionDenied` as well and is red where its record is missing — the
+fourth and fifth addenda of the entry on the command reader carry the
+command, and the audit of 14 October 2026 read the setting off the
+platform.
 
 ## Writing long files
 
@@ -2399,11 +2404,16 @@ delete it. The rule can stand in the person's settings alone, the page
 "Configure auto mode" of Claude Code saying the classifier reads no
 `autoMode` from a project's `.claude/settings.json` or
 `settings.local.json`, so a no cannot be stored per project either. The
-job `hooks on every system` runs the guard once under `PermissionDenied`
-with a harmless input and the program's self-test, against a stand-in for
-`gh`, on every system but Windows, where a process started from Python
-finds no shell script as `gh`. Decided on 22 October 2026, the roadmap
-entry of that date on the question after a refusal.
+job `hooks on every system` runs the guard under `PermissionDenied` with
+a harmless input and with a counted refusal in the form measured on 22
+October 2026, reads the record afterwards and is red where the line is
+missing, since that event ignores a hook's exit code and output; and it
+runs the program's self-test, against a stand-in for `gh`, on all four
+systems, the program finding `gh` on `PATH` as a shell finds it, through
+`shutil.which`, so that on Windows the stand-in's `gh.cmd` is found as
+`gh.exe` is. Decided on 22 October 2026, the roadmap entry of that date on
+the question after a refusal and its addendum of the same day on every
+system.
 
 **What an install did is written by a hook, since 21 October 2026**, cluster
 18 of milestone 3 as the person decided it on 20 and 21 October 2026, the

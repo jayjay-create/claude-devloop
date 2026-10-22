@@ -89,16 +89,25 @@ then command: <the command that did not answer> and message: <what came
 back>. record prints one line, recorded in <path>: <way>, or not recorded:
 <reason>.
 
-It needs python3, git and gh, and nothing else. The self-test runs every
-outcome against a stand-in for gh that answers from scripted files, as the
-self-test of bin/devloop-arm does: the stand-in comes first on the path, the
+It needs python3, git and gh, and nothing else. gh is looked up on PATH as
+a shell looks a command up, through shutil.which: on Windows with the
+extensions of PATHEXT, so that gh.exe and a gh.cmd beside it are found
+alike, where a bare name handed to subprocess alone is found there as
+gh.exe and as nothing else; where PATH holds no gh, the name goes through as
+it is and the error names it. The self-test runs every outcome against a
+stand-in for gh that answers from scripted files, as the self-test of
+bin/devloop-arm does: the stand-in comes first on the path, the
 configuration of gh points at an empty directory, no token stands in the
 environment, and nothing of it reaches GitHub; the settings of this machine
 are not touched, CLAUDE_CONFIG_DIR pointing under the test's own directory.
-The stand-in is a shell script, which a process started from Python finds
-on macOS and Linux and not on Windows, so the self-test refuses there with
-exit 2 and the workflow does not run it on that system; the program itself
-runs there, gh being found as gh.exe.
+The stand-in is a Python program, run by the interpreter running the
+self-test, behind the launcher the system runs off PATH - gh, a line of sh,
+on macOS and Linux, and gh.cmd, a line of cmd, on Windows - so that the
+self-test runs on every system, and the program finds the stand-in there as
+it finds gh in operation, through the one lookup; the addendum of 22 October
+2026 to the roadmap entry of that day on the question after a refusal. Until
+that addendum the stand-in was a shell script, which a process started from
+Python does not find on Windows, and the self-test refused there with exit 2.
 """
 
 import datetime
@@ -195,10 +204,15 @@ def denials(path):
 
 
 def gh(args, d):
-    """The output of gh, or None with the command and the message."""
+    """The output of gh, or None with the command and the message. gh is
+    found on PATH through shutil.which, as a shell finds it - on Windows with
+    the extensions of PATHEXT, so that gh.exe and a gh.cmd are found alike,
+    where subprocess alone would find gh.exe and nothing else - and the name
+    itself goes through where PATH holds none, so that the error names it."""
     shown = "gh " + " ".join(args)
+    exe = shutil.which("gh") or "gh"
     try:
-        r = subprocess.run(["gh"] + args, cwd=d, capture_output=True, text=True,
+        r = subprocess.run([exe] + args, cwd=d, capture_output=True, text=True,
                            timeout=SECONDS)
     except OSError as e:
         return None, shown, str(e)
@@ -300,30 +314,45 @@ def question(d):
 
 # ------------------------------------------------------------- the self-test
 
-STAND_IN = r'''#!/bin/sh
-# the stand-in for gh of the self-test of devloop-auto-mode-question: answers
-# the issue list and the blocking relation of one issue from scripted files
-# under $DEVLOOP_QUESTION_SCRIPT, logs every call, and marks a call no answer
-# was scripted for
-S="$DEVLOOP_QUESTION_SCRIPT"
-echo "$*" >> "$S/log"
-case "$*" in
-  "issue list "*) a="$S/issues" ;;
-  "api repos/{owner}/{repo}/issues/"*"/dependencies/blocking") n=$(printf '%s' "$2" | sed 's#.*/issues/\([0-9]*\)/.*#\1#'); a="$S/blocking.$n" ;;
-  *) a="$S/other" ;;
-esac
-[ -e "$a.rc" ] || { echo "stand-in for gh: no answer scripted for: gh $*" >&2; : > "$S/unscripted"; exit 1; }
-cat "$a.out"; cat "$a.err" >&2
-exit "$(cat "$a.rc")"
+# The stand-in for gh of the self-test: a Python program, which the launcher
+# the system runs off PATH hands every argument - gh, a line of sh, on macOS
+# and Linux; gh.cmd, a line of cmd, on Windows, where the lookup of the
+# program finds it through PATHEXT as it finds gh.exe. It answers the issue
+# list and the blocking relation of one issue from scripted files under
+# $DEVLOOP_QUESTION_SCRIPT, logs every call, and marks a call no answer was
+# scripted for.
+STAND_IN = r'''import os
+import re
+import sys
+S = os.environ["DEVLOOP_QUESTION_SCRIPT"]
+args = " ".join(sys.argv[1:])
+with open(os.path.join(S, "log"), "a", encoding="utf-8") as f:
+    f.write(args + "\n")
+m = re.match(r"api repos/\{owner\}/\{repo\}/issues/([0-9]+)/dependencies/blocking$", args)
+if args.startswith("issue list "):
+    a = os.path.join(S, "issues")
+elif m:
+    a = os.path.join(S, "blocking." + m.group(1))
+else:
+    a = os.path.join(S, "other")
+if not os.path.exists(a + ".rc"):
+    sys.stderr.write("stand-in for gh: no answer scripted for: gh %s\n" % args)
+    open(os.path.join(S, "unscripted"), "w").close()
+    sys.exit(1)
+sys.stdout.write(open(a + ".out", encoding="utf-8").read())
+sys.stderr.write(open(a + ".err", encoding="utf-8").read())
+sys.exit(int(open(a + ".rc", encoding="utf-8").read().strip()))
 '''
+LAUNCHER_SH = '#!/bin/sh\nexec "%s" "%s" "$@"\n'
+LAUNCHER_CMD = '@"%s" "%%~dp0gh-stand-in.py" %%*\r\n'
+
+
+def same(a, b):
+    """Whether two paths name one place, as the system reads them."""
+    return os.path.normcase(os.path.realpath(a)) == os.path.normcase(os.path.realpath(b))
 
 
 def selftest():
-    if os.name == "nt":
-        print("devloop-auto-mode-question: the self-test does not run on "
-              "Windows, where a process started from Python does not find a "
-              "shell script as gh", file=sys.stderr)
-        return 2
     me = os.path.realpath(__file__)
     # the real path, since /var is a link to /private/var on macOS
     T = os.path.realpath(tempfile.mkdtemp(prefix="devloop-auto-mode-question."))
@@ -335,10 +364,18 @@ def selftest():
         os.makedirs(os.path.join(T, "s"))
         os.makedirs(os.path.join(T, "p"))
         os.makedirs(os.path.join(T, "nogit"))
-        gh_path = os.path.join(T, "bin", "gh")
-        with open(gh_path, "w", encoding="utf-8") as f:
+        stand_in = os.path.join(T, "bin", "gh-stand-in.py")
+        with open(stand_in, "w", encoding="utf-8") as f:
             f.write(STAND_IN)
-        os.chmod(gh_path, os.stat(gh_path).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        if os.name == "nt":
+            gh_path = os.path.join(T, "bin", "gh.cmd")
+            with open(gh_path, "w", encoding="utf-8", newline="") as f:
+                f.write(LAUNCHER_CMD % sys.executable)
+        else:
+            gh_path = os.path.join(T, "bin", "gh")
+            with open(gh_path, "w", encoding="utf-8") as f:
+                f.write(LAUNCHER_SH % (sys.executable, stand_in))
+            os.chmod(gh_path, os.stat(gh_path).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
         subprocess.run(["git", "init", "-q", os.path.join(T, "p")], check=True)
         env = dict(os.environ)
         for k in ("GH_TOKEN", "GITHUB_TOKEN", "GH_ENTERPRISE_TOKEN",
@@ -349,7 +386,7 @@ def selftest():
         env["CLAUDE_CONFIG_DIR"] = os.path.join(T, "config")
         env["DEVLOOP_QUESTION_SCRIPT"] = os.path.join(T, "s")
         found = shutil.which("gh", path=env["PATH"])
-        if found != gh_path:
+        if found is None or not same(found, gh_path):
             print("FAIL the stand-in for gh is not the gh the path finds: %s" % found)
             return 1
         S = os.path.join(T, "s")
@@ -413,6 +450,21 @@ def selftest():
                 return False
             return True
 
+        def recorded(name, got, way):
+            """exit 0 and the line recorded in <the record>: <way>, the path
+            read as the system reads it, since git prints it with the
+            slashes of its own on Windows"""
+            rc, out = got
+            n[0] += 1
+            for line in out.split("\n"):
+                if rc == 0 and line.startswith("recorded in ") and line.endswith(": " + way):
+                    if same(line[len("recorded in "):-len(": " + way)], denials_file):
+                        print("ok   %s" % name)
+                        return True
+            print("FAIL %s: exit %d, no line recorded in %s: %s" % (name, rc, denials_file, way))
+            print("    " + "\n    ".join(out.split("\n")))
+            return False
+
         def rule_stands():
             r = subprocess.run([sys.executable, RULE, "write"], capture_output=True,
                                text=True, env=env)
@@ -435,9 +487,8 @@ def selftest():
                      "devloop-auto-mode-question: record expects WAY and ID, then at most one directory")
         # record
         fresh()
-        ok &= expect("record: the line written under .git, exit 0",
-                     run("record", "brew install", "toolu_1", stdin=lit + "\n"), 0,
-                     "recorded in %s: brew install" % denials_file)
+        ok &= recorded("record: the line written under .git, exit 0",
+                       run("record", "brew install", "toolu_1", stdin=lit + "\n"), "brew install")
         with open(denials_file, encoding="utf-8") as f:
             text = f.read()
         parts = text.rstrip("\n").split("\t")
@@ -447,9 +498,8 @@ def selftest():
         else:
             ok = False
             print("FAIL record: the line reads %r" % text)
-        ok &= expect("record of a second refusal appends a line",
-                     run("record", "playwright install", "toolu_2", stdin=lit2 + "\n"), 0,
-                     "recorded in %s: playwright install" % denials_file)
+        ok &= recorded("record of a second refusal appends a line",
+                       run("record", "playwright install", "toolu_2", stdin=lit2 + "\n"), "playwright install")
         with open(denials_file, encoding="utf-8") as f:
             n[0] += 1
             if len(f.read().rstrip("\n").split("\n")) == 2:
@@ -457,9 +507,8 @@ def selftest():
             else:
                 ok = False
                 print("FAIL record: not two lines")
-        ok &= expect("record with a way carrying a tab and a line break: flattened to spaces",
-                     run("record", "brew\tinstall\nx", "tool u", stdin=lit + "\n"), 0,
-                     "recorded in %s: brew install x" % denials_file)
+        ok &= recorded("record with a way carrying a tab and a line break: flattened to spaces",
+                       run("record", "brew\tinstall\nx", "tool u", stdin=lit + "\n"), "brew install x")
         ok &= expect("record of a literal that is no JSON string: not recorded, exit 2",
                      run("record", "brew install", "toolu_3", stdin='a "quote\n'), 2,
                      "not recorded: the command on stdin is no JSON string literal")

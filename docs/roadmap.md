@@ -35154,6 +35154,121 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Case E2: the hooks step of the job, run on this machine: the three self-tests passed, 165, 36 and 38 cases; 18 handlers started, every one exit 0, the install guard among them under PermissionDenied on ls.
   Case Q: the self-test of bin/devloop-auto-mode-question, 38 cases, every one as its head says; the runs of its outcomes are the cases of the self-test, recorded on the rows of the outcomes the order asked for.
 
+  **Addendum of the same day: the question program and its way from the
+  hook run in the job on every system, Windows included.** The third order
+  of 22 October 2026, on `task/unattended-start-conditions`, version
+  0.156.0 as before, in two commits after `ae071c3`: the code, the
+  workflow and the rows of the table for its things, with the conventions
+  and this addendum but for its bench, the seventh commit of the branch;
+  the bench with its runs, the eighth. The report stands on this machine as
+  `~/devloop-report-2026-10-22-question-on-every-system.md`, in German, and
+  is not in the repository. Every line number of a file below is as at the
+  seventh commit unless `ae071c3` is named beside it.
+
+  What was missing, the three things the order named. (a) The job `hooks
+  on every system` left the self-test of `bin/devloop-auto-mode-question`
+  out on `windows-latest`, line 307 of the workflow at `ae071c3`, since its
+  stand-in for `gh` was a shell script, which a process started from Python
+  does not find there: Windows appends `.exe` to a bare name and runs
+  nothing else off it; main asks for the job on all four systems,
+  "Registering a skill" in the conventions. (b) The program starts `gh`,
+  `git` and `bin/devloop-auto-mode-rule`, and is started by the install
+  guard under `PermissionDenied` and by the run at a start with `--auto`;
+  none of these starts had run under Windows. (c) The job fed every hook a
+  harmless input, so no counted refusal ever reached `record` there, and
+  `PermissionDenied` ignores a hook's exit code and output — the hooks
+  reference of Claude Code, the table on exit code 2 per event: "Exit code
+  and stderr are ignored because the denial already occurred" — so a fault
+  on the way from the hook to the program would have recorded nothing,
+  shown nothing, and the question would never have come.
+
+  What the seventh commit built, and the way chosen. The program, lines
+  206 to 216: `gh` is found on `PATH` through `shutil.which` and run by the
+  path found, line 213, with the bare name where `PATH` holds none, so that
+  the error for a missing `gh` stays the one it was. On Windows `which`
+  reads `PATHEXT`, so `gh.exe` and a `gh.cmd` on `PATH` are found alike, as
+  `cmd` and PowerShell find them, where `subprocess` with a bare name finds
+  `gh.exe` and nothing else; on macOS and Linux it is the lookup of the
+  shell, the first executable `gh` on `PATH`. That is the one lookup in
+  operation and in the self-test: nothing of the self-test tells the
+  program where `gh` is, no switch and no variable, and the stand-in comes
+  first on `PATH` as before, the self-test holding `which` to it at line
+  389. The stand-in, lines 317 to 347: a Python program, `gh-stand-in.py`,
+  run by the interpreter running the self-test, behind the launcher the
+  system runs off `PATH` — `gh`, one line of sh with `exec`, on macOS and
+  Linux; `gh.cmd`, one line of cmd handing `%*` on, on Windows, lines 370
+  to 378 — answering as the shell script did: the issue list and the
+  blocking relation of one issue from scripted files, every call logged, a
+  call no case scripted marked. Taken against, each with its reason: a
+  `gh.exe` for Windows, which needs a compiler on the runner or a launcher
+  out of pip's own files, neither a thing a self-test may rest on; a copy
+  of `python.exe` as `gh.exe`, which reads its first argument as a script
+  to run; and a `.cmd` beside the old lookup, which Windows would not have
+  found. The paths the self-test compares are read as the system reads
+  them, `same` at lines 350 to 352: git prints the common directory with
+  its own slashes on Windows, and the temporary directory may carry a short
+  name there, so "recorded in <path>" is held against the record's path
+  through `realpath` and `normcase`, `recorded` at lines 453 to 465, and the
+  refusal on `os.name == "nt"` is gone. 38 cases as before. The other
+  starts: `git` is run by its bare name, which Windows finds as `git.exe`,
+  and `--path-format=absolute` is git 2.31 or later, the runners carrying
+  2.56; the rule program is run with `sys.executable`, as before; the guard
+  starts the program through its shebang, `/usr/bin/env python3`, under
+  the bash of Git for Windows, which looks `python3` up on `PATH`, and the
+  run starts it the same way through the shell. Whether that start finds
+  `python3` on `windows-latest` is what the new check shows first; the
+  checkout step prints since this commit what `command -v python3` finds,
+  line 310, so that a red check there names its cause.
+
+  The workflow. The self-test runs on every system, line 323, no `case` on
+  `uname` before it. The install guard under `PermissionDenied` is fed a
+  second input beside `ls`, lines 344 to 352: the form measured on 22
+  October 2026 under Claude Code 2.1.305, every key of it — `cwd`,
+  `effort`, `hook_event_name`, `permission_mode`, `prompt_id`, `reason`,
+  `session_id`, `tool_input` with `command` and `description`,
+  `tool_name`, `tool_use_id`, `transcript_path` — with `pipx install
+  devloop-probe-does-not-exist` and the classifier's verdict as `reason`;
+  the inputs of a pair of event and matcher may be a list since this
+  commit, line 368, every handler of the pair started once per input, 19
+  handlers now. After the handlers the step reads
+  `.git/devloop-auto-mode-denials` of its throwaway project, lines 383 to
+  389: exactly one line of four tab-separated fields, the way `pipx
+  install`, the id `toolu_hooksdenied` and the command; found, the line is
+  printed and the step goes on; otherwise the step is red with what the
+  file holds, or nothing. A carriage return in the file is read over there,
+  since the program writes the line of the system. The comment of the job,
+  lines 256 to 271, and the name of the step, line 314, say so; the
+  conventions say it under "Registering a skill" and in the paragraph on
+  the question after a refusal.
+
+  The table, in the seventh commit: the workflow's thing on the self-test
+  run on three systems renamed and re-anchored on the line that runs it on
+  four, the program's self-test thing renamed without its exit 2 on
+  Windows, each with its old name in its note; two things for the record of
+  the counted refusal, found and missing; the notes of the three things of
+  the job on the green, the red and the checkout step; not-a-thing rows on
+  the stand-in's lines and on the lines of `recorded`, two on the old
+  stand-in's lines out; the eleven runs of `ae071c3` on the program's
+  things out, the lookup under them changed, and back in the eighth commit
+  from the bench below, as the tool's check against a run recorded too
+  early asks.
+
+  What this machine shows and what only the job shows. Here: the
+  self-test, 38 cases; the step of the job extracted and run, 19 handlers
+  and the record's line; the tool. Only the job: the self-test under
+  Windows through `gh.cmd`, the guard's start of the program through `env
+  python3` there, and the record's line on each of the four systems; the
+  pull request's run is the first, and this entry does not record it. On
+  (f) of the order: the self-test runs `bin/devloop-auto-mode-rule read`
+  and `write` for real, with `sys.executable` and `CLAUDE_CONFIG_DIR` under
+  the test's own directory, lines 468 to 475, in the cases on the rule
+  standing, missing and unreadable; so the self-test under Windows walks
+  that program's `read` in its three states and `write` on a missing file,
+  which nothing did before, while the rule program has no self-test of its
+  own and its other outcomes — a link, a refused write, a file that is no
+  JSON on `write` — stay measured on this Mac alone.
+
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
