@@ -16,7 +16,28 @@ cd "$PROJECT_DIR" 2>/dev/null || exit 0
 # separator, a substitution or a shell's -c is a command of its own. What
 # the reader cannot take apart goes through, since the shell runs nothing of
 # it either.
+#
+# A second duty, since 22 October 2026, the roadmap entry of that date on the
+# question after a refusal of auto mode: this file stands in hooks/hooks.json
+# under PermissionDenied for Bash as well, the event Claude Code fires when
+# auto mode denies a tool call. There it reads the command with the one
+# reading below, the same code and no copy of it, and records the refusal
+# through bin/devloop-auto-mode-question where it counts: the command is an
+# install this guard would have held against the record, by one of the ways
+# the rule for the classifier names - brew install, go install, cargo
+# install, uv tool install, pipx install, playwright install, cypress
+# install, puppeteer browsers install, the verb install itself and no other -
+# nothing on the command stays the user's under every answer, and the
+# reason names a verdict of the classifier: a denial without one starts with
+# "Auto mode could not evaluate this action" or reads "Classifier
+# unavailable", the hooks reference of Claude Code read that day. At every
+# other command, outside a devloop project and at a denial without a
+# verdict it is silent, and it never asks for a retry; the record is read
+# at the next start with --auto, where the person is there to be asked.
+# Nothing of the record is read here and nothing blocks: the denial has
+# happened, and exit code and output are ignored at that event.
 INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
+EVENT=$(printf '%s\n' "$INPUT" | sed -n 's/^event: //p' | head -1)
 TOOL=$(printf '%s\n' "$INPUT" | sed -n 's/^tool: //p' | head -1)
 [ "$TOOL" = "Bash" ] || exit 0
 
@@ -228,6 +249,11 @@ $ID$US$1"; BEYOND=yes; }
 destfile() { DESTS="$DESTS
 $1"; FACTS="$FACTS
 $ID$US${1%/*}"; BEYOND=yes; }
+# way WAY: a way the rule for the classifier names, taken by this command,
+# for the second duty under PermissionDenied since 22 October 2026; the
+# command-line tools are read off ITEMS there, the browsers at their place
+WAYS=""
+way() { WAYS="$WAYS;$1"; }
 BINDIR='^(/usr/local/(bin|sbin)|/usr/(bin|sbin)|/opt/|(~|\$HOME|\$\{HOME\})/(\.local/bin|bin|go/bin)|\$\(go env GOPATH\)/bin|\$GOBIN|\$GOPATH/bin)'
 # priv_if I OPTION...: the program at word I is of the first kind where one
 # of the options stands among its words before the judged word, or among all
@@ -690,7 +716,7 @@ py$US$ID$US${W[$F]}" ;;
           # --path behind install, the last one winning as yargs takes it; -- ends the reading
           PP=""; k=$BK
           while k=$((k + 1)); [ "$k" -lt "$N" ]; do case "${W[$k]}" in --) break ;; --path=*) PP="${W[$k]#--path=}" ;; --path) [ $((k + 1)) -lt "$N" ] && PP="${W[$((k + 1))]}"; k=$((k + 1)) ;; esac; done
-          if [ -n "$PP" ]; then X=$(inside "$PP" "$ID"); [ -n "$X" ] || { X=$(expand "$PP"); case "$X" in /*) dest "$X" ;; *) UNREAD="$UNREAD; @puppeteer/browsers install (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; esac; }; fi
+          if [ -n "$PP" ]; then X=$(inside "$PP" "$ID"); [ -n "$X" ] || { X=$(expand "$PP"); case "$X" in /*) dest "$X" ;; *) UNREAD="$UNREAD; @puppeteer/browsers install (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; esac; way "puppeteer browsers install"; }; fi
         fi ;;
     esac
     # Where the download lands: the vendor's default for the system this
@@ -713,6 +739,7 @@ py$US$ID$US${W[$F]}" ;;
           [ -n "$M" ] || { [ "$OS" = Linux ] && X=$(moved XDG_CACHE_HOME) && [ -n "$X" ] && { M="$X"; [ "$X" = INSIDE ] || [ "$X" = UNREAD ] || M="$X/Cypress"; }; } ;;
         puppeteer) M=$(moved PUPPETEER_CACHE_DIR) ;;
       esac
+      [ "$M" = INSIDE ] || case "$BROWSER" in playwright) way "playwright install" ;; cypress) way "cypress install" ;; puppeteer) way "puppeteer browsers install" ;; esac
       case "$M" in
         INSIDE) : ;; # inside the project: opens nothing and brings nothing outside
         UNREAD) UNREAD="$UNREAD; $BROWSER (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;;
@@ -802,6 +829,34 @@ while IFS="$US" read -r KIND PID T; do
   PIPBEYOND="$PIPBEYOND
 $KIND$US$PID$US$T"
 done <<< "${PIPS:-}"
+
+# The second duty, under PermissionDenied: the ways of the rule this command
+# took, the command-line tools off the routes read above with the verb
+# install alone, the browsers as marked at their reading; then the record,
+# through bin/devloop-auto-mode-question, which owns its path and its line.
+if [ "$EVENT" = PermissionDenied ]; then
+  [ "${BEYOND:-no}" = yes ] || exit 0 # no install at all: silent, as at every other command
+  while IFS="$US" read -r R EXTRA VARS IID; do
+    [ -n "$R" ] || continue
+    L=""
+    while IFS= read -r L2; do case "$L2" in "$IID$US"*) L="$L2" ;; esac; done <<< "$CMDS"
+    [ -n "$L" ] || continue
+    load "$L"
+    [ "$F" -ge 0 ] || continue
+    case "$R" in
+      brew|go|cargo|pipx) j=$((F + 1)); [ "$j" -lt "$N" ] && [ "${W[$j]}" = install ] && way "$R install" ;;
+      'uv tool') j=$((F + 2)); [ "$j" -lt "$N" ] && [ "${W[$j]}" = install ] && way "uv tool install" ;;
+    esac
+  done <<< "$ITEMS"
+  [ -n "$WAYS" ] || exit 0
+  if [ "${SUDO:-no}" = "yes" ] || [ -n "${PRIV:-}" ] || [ "${PIPED:-no}" = "yes" ] || [ "${BRAND:-no}" = "yes" ] || [ "${SYSPKG:-no}" = "yes" ]; then exit 0; fi
+  REASON=$(printf '%s\n' "$INPUT" | sed -n 's/^reason: //p' | head -1)
+  case "$REASON" in "Auto mode could not evaluate this action"*|"Classifier unavailable") exit 0 ;; esac
+  WAYS=$(printf '%s' "${WAYS#;}" | tr ';' '\n' | awk '!seen[$0]++' | tr '\n' ';'); WAYS="${WAYS%;}"
+  RAWCMD=$(printf '%s\n' "$INPUT" | sed -n 's/^command: //p' | head -1)
+  printf '%s\n' "$RAWCMD" | "$HERE/../bin/devloop-auto-mode-question" record "$WAYS" "$TUID" "$PROJECT_DIR" >/dev/null 2>&1
+  exit 0
+fi
 [ "${BEYOND:-no}" = "yes" ] || exit 0
 
 # Only now is the record read: this hook runs on every Bash call, and a command

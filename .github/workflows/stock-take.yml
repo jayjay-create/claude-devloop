@@ -295,7 +295,7 @@ jobs:
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: the self-tests of the reader and of the arming program, and every handler of hooks.json once with a harmless input of its event
+      - name: the self-tests of the reader, of the arming program and of the question program, and every handler of hooks.json once with a harmless input of its event
         run: |
           set -u
           ROOT=$(pwd)
@@ -303,6 +303,8 @@ jobs:
           "$ROOT/bin/devloop-command-reader" --self-test || red=1
           "$ROOT/bin/devloop-arm" --self-test || red=1
           PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
+          # the self-test of bin/devloop-auto-mode-question, since 22 October 2026, beside the arming program's: its stand-in for gh is a shell script, which a process started from Python finds on macOS and Linux and not on Windows, so it runs on the three other systems
+          case "$(uname -s)" in MINGW*|MSYS*|CYGWIN*) echo "the self-test of bin/devloop-auto-mode-question is not run on Windows" ;; *) "$PY" "$ROOT/bin/devloop-auto-mode-question" --self-test || red=1 ;; esac
           T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-hooks.XXXXXX")
           P="$T/project"
           mkdir -p "$P/docs/agents"
@@ -326,6 +328,7 @@ jobs:
               ("PreToolUse", "Bash"): dict(base, hook_event_name="PreToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}),
               ("PreToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PreToolUse", tool_name="Write", tool_input={"file_path": p + "/README.md", "content": "# project\n"}),
               ("PermissionRequest", ""): dict(base, hook_event_name="PermissionRequest", tool_name="Bash", tool_input={"command": "ls"}),
+              ("PermissionDenied", "Bash"): dict(base, hook_event_name="PermissionDenied", permission_mode="auto", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, reason="[Test]"),
               ("SessionStart", ""): dict(base, hook_event_name="SessionStart", source="startup"),
               ("PostToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PostToolUse", tool_name="Edit", tool_input={"file_path": p + "/README.md", "old_string": "a", "new_string": "b"}, tool_response={"filePath": p + "/README.md"}),
               ("PostToolUse", ""): dict(base, hook_event_name="PostToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, tool_response={"stdout": "", "stderr": "", "interrupted": False}),

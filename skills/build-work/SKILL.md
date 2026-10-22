@@ -161,7 +161,10 @@ one rule and not as eight:
   the one way with three attempts; the call did not finish inside its ten
   minutes. For the task it goes as the second bullet says, with what stands
   at the destination path in the issue, and for a check class through
-  `setup-checks`, which writes the cell `skipped (state)`. Everything else
+  `setup-checks`, which writes the cell `skipped (state)` — and, since 22
+  October 2026, where the way is a refusal of auto mode by one of the ways
+  the rule for its classifier names, an issue beside the cell, recorded as
+  a blocker of no task, as the rule inserted in step 3 says. Everything else
   the run installs, as with the user there.
 - **A class `setup-checks` cannot set up** — `secrets` whose tool cannot be
   installed, and a guard fired on text where the editing tool does not
@@ -790,7 +793,11 @@ have by then:
   runtime is missing cannot be read off a branch. A state that has ended goes
   the third way above, to `setup-checks` for that class, on this branch. It
   has to have ended and not merely aged: an entry point that is a stub ends
-  nothing.
+  nothing. A state that is the refusal of auto mode on an install by one of
+  the ways the rule for its classifier names has ended where the rule
+  stands in the person's settings now,
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read` ending with 0,
+  since 22 October 2026.
 - **Every cell reading `skipped (user)` whose reason says something about
   the project that can be checked** — only two packages, no network code. A
   reason with nothing in it to check is not read. Where such a reason no
@@ -1511,16 +1518,25 @@ refusal, said with what would help. When it returns, the tree stands on the
 main branch as freshly fetched: on a yes read all seven again and go on to
 the mark; on a no build this task with them there, as without the flag.
 And where the five hold and this section was reached directly, since 22
-October 2026: read whether the rule for the classifier stands,
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read`, and where it ends
-with 1 — the rule does not stand and the person has not declined it — call
-`setup-checks` for its step 8 alone as well, which puts that one question
-and changes nothing of the repository; where it ends with 0 or 3, nothing
-is asked, and where it ends with 2, step 8 says so. The rule is no
+October 2026: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
+once, with the shell. Where it ends with 0 — the rule for the classifier
+does not stand in their settings, or they cannot be read for it, and an
+open issue of this project carries an install auto mode refused in a run
+without them — call `setup-checks` for its step 8 alone, for that one
+question in its form for a start with `--auto`, which changes nothing of
+the repository and, on the yes, enters the rule and closes the issues it
+named; where it ends with 1, nothing is asked; where it ends with 2, say
+that the query did not answer, with the command and the message it prints,
+as "When a command does not answer" says, and ask nothing. The rule is no
 condition of the mode and no start condition: on either answer go on to
 the mark, and where auto mode then refuses an install, that is a refusal
-under "A guard's block, with nobody there" above. Cluster 11 of the roadmap
-entry of 19 October 2026, decided on 22 October 2026.
+under "A guard's block, with nobody there" above, which for an install by
+one of the ways the rule names leaves the issue that brings this question
+back. A task an issue held is free once the issue is closed, and step 2
+takes it as any free task; a check class an issue concerned goes to
+`setup-checks` from step 4 of the next task, the state of its cell having
+ended with the rule. Decided on 22 October 2026, the roadmap entry of that
+date on the question after a refusal.
 Where this section was reached from planning, nobody is there to ask: refuse,
 say which of the five is missing and that typing `--auto` where a piece of
 work starts sets it up, and the mark goes, as at every stop with a reason

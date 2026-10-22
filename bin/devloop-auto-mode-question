@@ -1,0 +1,638 @@
+#!/usr/bin/env python3
+"""devloop-auto-mode-question: whether the question on the rule for the
+classifier of auto mode is put at a start with --auto, and the record of the
+refusals that bring it.
+
+Since 22 October 2026, the roadmap entry of that date on the question after a
+refusal of auto mode. The question of text 4 of the roadmap entry of 9 October
+2026 - may devloop enter the rule for the classifier into the person's
+settings - is put at a first setup after the yes to the unattended mode, in
+setup-checks step 8, and otherwise only at a start with --auto, with the
+person there, where two things hold together: the rule does not stand in
+their settings, or the settings cannot be read for it, and the project
+carries an open issue for an install that auto mode refused in a run without
+them. Nothing is stored on a no: while such an issue is open the question
+comes at every start with --auto, and once the issue is closed it ends with
+no further step. A refusal counts where auto mode refused, with a verdict of
+its classifier, a command the install guard reads as an install by one of
+the ways the rule names - brew install, go install, cargo install, uv tool
+install, pipx install, playwright install, cypress install, puppeteer
+browsers install - and nothing on the command stays the person's under every
+answer; hooks/pre-tool-use-install-guard.sh decides that at the event
+PermissionDenied with its own reading and records it through this program.
+The rule can stand in the person's settings alone: the page "Configure auto
+mode" of Claude Code, read on 22 October 2026, says the classifier does not
+read autoMode from a project's .claude/settings.json or settings.local.json.
+
+Usage
+    devloop-auto-mode-question [DIR]
+        decides the question. Exit 0 where it is to be put, with the lines
+        below; 1 where it is not; 2 where it could not be decided - gh did not
+        answer, printed no JSON, or the rule program could not be run - with
+        the command and the message, so that the run says so, as "When a
+        command does not answer" asks, and concludes nothing.
+    devloop-auto-mode-question record WAY ID [DIR]   < the command
+        records a refusal, from the install guard at PermissionDenied and
+        from nowhere else: WAY the way of the rule the command took, ID the
+        tool call's id, the command on stdin as the JSON string literal
+        bin/devloop-command-reader prints on its command: line, one line.
+        Exit 0 where the line stands afterwards, 2 where it could not be
+        written, with the reason.
+    devloop-auto-mode-question --self-test
+
+DIR is the project directory; without it CLAUDE_PROJECT_DIR, and without that
+the current directory, as bin/devloop-install-record takes it.
+
+Where the record stands. One file, devloop-auto-mode-denials, in the git
+directory the project's worktrees share - git rev-parse --git-common-dir,
+.git of the project in the ordinary case - so that it stands inside the
+project, never in its tree and never in a commit, and nobody has to know of
+it or delete it: a line that no open issue matches does nothing, and the
+question ends with the issue. One line per refusal: the time in UTC, the
+way, the call's id and the command as the JSON carried it, separated by
+tabs. The path and the form of the line live here and nowhere else.
+
+What decides the question. First the rule, bin/devloop-auto-mode-rule read
+beside this program, run with the interpreter running this one: exit 0, the
+rule stands, ends it with 1, and gh is not called. Then the record: no git
+directory, no file or no line ends it with 1, and gh is not called. Then the
+open issues of the project labelled raised-here and needs-human, read with
+gh issue list, and each recorded command held against the title and the body
+of each issue: an issue that carries the command as the tool ran it,
+verbatim, is one the question names - the skills have every such issue carry
+the command as it ran, so the match is mechanical and the run's judgement
+decides nothing here; an issue that carries it otherwise is not found, and
+the question is not put, which is the side "In doubt, a run with nobody
+there is not blocked" in docs/skill-conventions.md reads. For each issue
+found, its kind: it holds a task where an open issue is blocked by it, read
+with gh api repos/{owner}/{repo}/issues/N/dependencies/blocking, the
+relation the readiness query of build-work reads from the other side, and
+it concerns a check class otherwise, since such an issue is recorded as a
+blocker of no task. gh is called in DIR, as the skills call it, each call
+with 60 seconds.
+
+On exit 0, one line per key, in this order:
+    question: yes
+    read: 1|2             the exit of bin/devloop-auto-mode-rule read
+    rule: <its line>
+    issue: <number>
+    kind: task|class
+    title: <title>
+    way: <the way of the rule the command took>
+    command: <the command as it ran, a line break printed as one space>
+the five lines of an issue repeated per issue, in the order of their numbers,
+each issue once. On exit 1 the first line reads question: no, the second
+read: 0|1|2, the third rule: <the line of read>, and a fourth says why where
+the rule did not end it: denials: none recorded, or issues: none ... carries
+a recorded command. On exit 2 the first line reads question: not decided,
+then command: <the command that did not answer> and message: <what came
+back>. record prints one line, recorded in <path>: <way>, or not recorded:
+<reason>.
+
+It needs python3, git and gh, and nothing else. The self-test runs every
+outcome against a stand-in for gh that answers from scripted files, as the
+self-test of bin/devloop-arm does: the stand-in comes first on the path, the
+configuration of gh points at an empty directory, no token stands in the
+environment, and nothing of it reaches GitHub; the settings of this machine
+are not touched, CLAUDE_CONFIG_DIR pointing under the test's own directory.
+The stand-in is a shell script, which a process started from Python finds
+on macOS and Linux and not on Windows, so the self-test refuses there with
+exit 2 and the workflow does not run it on that system; the program itself
+runs there, gh being found as gh.exe.
+"""
+
+import datetime
+import json
+import os
+import shutil
+import stat
+import subprocess
+import sys
+import tempfile
+
+HERE = os.path.dirname(os.path.realpath(__file__))
+RULE = os.path.join(HERE, "devloop-auto-mode-rule")
+FILE = "devloop-auto-mode-denials"
+LABELS = ["raised-here", "needs-human"]
+SECONDS = 60
+
+
+def usage(msg):
+    print("devloop-auto-mode-question: %s" % msg, file=sys.stderr)
+    return 2
+
+
+def project_dir(given):
+    return given or os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd()
+
+
+def common_dir(d):
+    """The git directory the project's worktrees share, absolute, or None
+    with the reason."""
+    try:
+        r = subprocess.run(["git", "-C", d, "rev-parse", "--path-format=absolute",
+                            "--git-common-dir"], capture_output=True, text=True)
+    except OSError as e:
+        return None, "git could not be run: %s" % e
+    if r.returncode != 0:
+        return None, (r.stderr.strip() or r.stdout.strip() or
+                      "git rev-parse ended with %d" % r.returncode)
+    return r.stdout.strip(), None
+
+
+def one_line(s):
+    return " ".join(s.replace("\r\n", "\n").replace("\r", "\n").split("\n"))
+
+
+def flat(s):
+    """A field of the record on one line: every tab and line break a space."""
+    return " ".join(s.split())
+
+
+def record(way, call_id, d):
+    literal = sys.stdin.read()
+    literal = literal.split("\n", 1)[0].rstrip("\r")
+    try:
+        json.loads('"' + literal + '"')
+    except ValueError:
+        print("not recorded: the command on stdin is no JSON string literal")
+        return 2
+    cd, err = common_dir(d)
+    if cd is None:
+        print("not recorded: %s is no git repository: %s" % (d, err))
+        return 2
+    path = os.path.join(cd, FILE)
+    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    line = "%s\t%s\t%s\t%s\n" % (now, flat(way), flat(call_id), literal)
+    try:
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(line)
+    except OSError as e:
+        print("not recorded: %s" % e)
+        return 2
+    print("recorded in %s: %s" % (path, flat(way)))
+    return 0
+
+
+def denials(path):
+    """The recorded refusals: (time, way, id, command), in order; a line not
+    in the form is read over."""
+    out = []
+    if not os.path.exists(path):
+        return out
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            parts = line.rstrip("\n").split("\t", 3)
+            if len(parts) != 4:
+                continue
+            try:
+                cmd = json.loads('"' + parts[3] + '"')
+            except ValueError:
+                continue
+            if cmd:
+                out.append((parts[0], parts[1], parts[2], cmd))
+    return out
+
+
+def gh(args, d):
+    """The output of gh, or None with the command and the message."""
+    shown = "gh " + " ".join(args)
+    try:
+        r = subprocess.run(["gh"] + args, cwd=d, capture_output=True, text=True,
+                           timeout=SECONDS)
+    except OSError as e:
+        return None, shown, str(e)
+    except subprocess.TimeoutExpired:
+        return None, shown, "no answer within %d seconds" % SECONDS
+    if r.returncode != 0:
+        return None, shown, (r.stderr.strip() or r.stdout.strip() or
+                             "exit %d with nothing printed" % r.returncode)
+    return r.stdout, shown, None
+
+
+def not_decided(command, message):
+    print("question: not decided")
+    print("command: %s" % one_line(command))
+    print("message: %s" % one_line(message))
+    return 2
+
+
+def question(d):
+    try:
+        r = subprocess.run([sys.executable, RULE, "read"], capture_output=True,
+                           text=True)
+    except OSError as e:
+        return not_decided("%s read" % RULE, str(e))
+    rule_line = one_line(r.stdout.strip() or r.stderr.strip())
+    if r.returncode == 0:
+        print("question: no")
+        print("read: 0")
+        print("rule: %s" % rule_line)
+        return 1
+    if r.returncode not in (1, 2):
+        return not_decided("%s read" % RULE,
+                           "ended with %d: %s" % (r.returncode, rule_line))
+    head = ["read: %d" % r.returncode, "rule: %s" % rule_line]
+
+    def no(why):
+        print("question: no")
+        for h in head:
+            print(h)
+        print(why)
+        return 1
+
+    cd, err = common_dir(d)
+    if cd is None:
+        return no("denials: none can stand, %s is no git repository: %s"
+                  % (d, one_line(err)))
+    recorded = denials(os.path.join(cd, FILE))
+    if not recorded:
+        return no("denials: none recorded")
+    out, shown, err = gh(["issue", "list", "--state", "open",
+                          "--label", LABELS[0], "--label", LABELS[1],
+                          "--limit", "100", "--json", "number,title,body"], d)
+    if out is None:
+        return not_decided(shown, err)
+    try:
+        issues = json.loads(out)
+        if not isinstance(issues, list):
+            raise ValueError("not a list")
+    except ValueError as e:
+        return not_decided(shown, "printed no JSON list of issues: %s" % e)
+    found = []
+    for issue in sorted((i for i in issues if isinstance(i, dict)),
+                        key=lambda i: i.get("number") or 0):
+        number = issue.get("number")
+        if not isinstance(number, int):
+            continue
+        text = (issue.get("title") or "") + "\n" + (issue.get("body") or "")
+        for _, way, _, cmd in recorded:
+            if cmd in text:
+                found.append((number, issue.get("title") or "", way, cmd))
+                break
+    if not found:
+        return no("issues: none of the %d open issues labelled %s and %s "
+                  "carries a recorded command" % (len(issues), LABELS[0], LABELS[1]))
+    lines = []
+    for number, title, way, cmd in found:
+        out, shown, err = gh(["api", "repos/{owner}/{repo}/issues/%d/dependencies/blocking"
+                              % number], d)
+        if out is None:
+            return not_decided(shown, err)
+        try:
+            blocking = json.loads(out)
+            if not isinstance(blocking, list):
+                raise ValueError("not a list")
+        except ValueError as e:
+            return not_decided(shown, "printed no JSON list of issues: %s" % e)
+        kind = "task" if any(isinstance(b, dict) and b.get("state") == "open"
+                             for b in blocking) else "class"
+        lines += ["issue: %d" % number, "kind: %s" % kind,
+                  "title: %s" % one_line(title), "way: %s" % way,
+                  "command: %s" % one_line(cmd)]
+    print("question: yes")
+    for h in head:
+        print(h)
+    for line in lines:
+        print(line)
+    return 0
+
+
+# ------------------------------------------------------------- the self-test
+
+STAND_IN = r'''#!/bin/sh
+# the stand-in for gh of the self-test of devloop-auto-mode-question: answers
+# the issue list and the blocking relation of one issue from scripted files
+# under $DEVLOOP_QUESTION_SCRIPT, logs every call, and marks a call no answer
+# was scripted for
+S="$DEVLOOP_QUESTION_SCRIPT"
+echo "$*" >> "$S/log"
+case "$*" in
+  "issue list "*) a="$S/issues" ;;
+  "api repos/{owner}/{repo}/issues/"*"/dependencies/blocking") n=$(printf '%s' "$2" | sed 's#.*/issues/\([0-9]*\)/.*#\1#'); a="$S/blocking.$n" ;;
+  *) a="$S/other" ;;
+esac
+[ -e "$a.rc" ] || { echo "stand-in for gh: no answer scripted for: gh $*" >&2; : > "$S/unscripted"; exit 1; }
+cat "$a.out"; cat "$a.err" >&2
+exit "$(cat "$a.rc")"
+'''
+
+
+def selftest():
+    if os.name == "nt":
+        print("devloop-auto-mode-question: the self-test does not run on "
+              "Windows, where a process started from Python does not find a "
+              "shell script as gh", file=sys.stderr)
+        return 2
+    me = os.path.realpath(__file__)
+    # the real path, since /var is a link to /private/var on macOS
+    T = os.path.realpath(tempfile.mkdtemp(prefix="devloop-auto-mode-question."))
+    n = [0]
+    try:
+        os.makedirs(os.path.join(T, "bin"))
+        os.makedirs(os.path.join(T, "gh-config"))
+        os.makedirs(os.path.join(T, "config"))
+        os.makedirs(os.path.join(T, "s"))
+        os.makedirs(os.path.join(T, "p"))
+        os.makedirs(os.path.join(T, "nogit"))
+        gh_path = os.path.join(T, "bin", "gh")
+        with open(gh_path, "w", encoding="utf-8") as f:
+            f.write(STAND_IN)
+        os.chmod(gh_path, os.stat(gh_path).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        subprocess.run(["git", "init", "-q", os.path.join(T, "p")], check=True)
+        env = dict(os.environ)
+        for k in ("GH_TOKEN", "GITHUB_TOKEN", "GH_ENTERPRISE_TOKEN",
+                  "GITHUB_ENTERPRISE_TOKEN", "GH_HOST", "CLAUDE_PROJECT_DIR"):
+            env.pop(k, None)
+        env["PATH"] = os.path.join(T, "bin") + os.pathsep + env.get("PATH", "")
+        env["GH_CONFIG_DIR"] = os.path.join(T, "gh-config")
+        env["CLAUDE_CONFIG_DIR"] = os.path.join(T, "config")
+        env["DEVLOOP_QUESTION_SCRIPT"] = os.path.join(T, "s")
+        found = shutil.which("gh", path=env["PATH"])
+        if found != gh_path:
+            print("FAIL the stand-in for gh is not the gh the path finds: %s" % found)
+            return 1
+        S = os.path.join(T, "s")
+        settings = os.path.join(T, "config", "settings.json")
+        denials_file = os.path.join(T, "p", ".git", FILE)
+
+        def fresh():
+            for name in os.listdir(S):
+                os.unlink(os.path.join(S, name))
+            open(os.path.join(S, "log"), "w").close()
+            if os.path.exists(settings):
+                os.unlink(settings)
+            if os.path.exists(denials_file):
+                os.unlink(denials_file)
+
+        def ans(kind, rc, out, err=""):
+            for suffix, content in ((".rc", "%d\n" % rc), (".out", out), (".err", err)):
+                with open(os.path.join(S, kind + suffix), "w", encoding="utf-8") as f:
+                    f.write(content)
+
+        def issues(*items):
+            ans("issues", 0, json.dumps([{"number": num, "title": title, "body": body}
+                                         for num, title, body in items]))
+
+        def blocking(num, *states):
+            ans("blocking.%d" % num, 0, json.dumps(
+                [{"number": 900 + i, "state": s} for i, s in enumerate(states)]))
+
+        def run(*args, stdin=""):
+            r = subprocess.run([sys.executable, me] + list(args), cwd=os.path.join(T, "p"),
+                               input=stdin, capture_output=True, text=True, env=env)
+            return r.returncode, r.stdout + r.stderr
+
+        def calls():
+            with open(os.path.join(S, "log"), encoding="utf-8") as f:
+                return [l.strip() for l in f if l.strip()]
+
+        def expect(name, got, want_rc, *want_lines):
+            rc, out = got
+            n[0] += 1
+            lines = out.split("\n")
+            if rc != want_rc:
+                print("FAIL %s: exit %d, expected %d" % (name, rc, want_rc))
+                print("    " + "\n    ".join(lines))
+                return False
+            for w in want_lines:
+                if w not in lines:
+                    print("FAIL %s: no line %r" % (name, w))
+                    print("    " + "\n    ".join(lines))
+                    return False
+            if os.path.exists(os.path.join(S, "unscripted")):
+                print("FAIL %s: the stand-in was called for something no case scripted" % name)
+                print("    " + "\n    ".join(lines))
+                return False
+            print("ok   %s" % name)
+            return True
+
+        def absent(name, got, s):
+            if s in got[1]:
+                print("FAIL %s: %r stands there and should not" % (name, s))
+                return False
+            return True
+
+        def rule_stands():
+            r = subprocess.run([sys.executable, RULE, "write"], capture_output=True,
+                               text=True, env=env)
+            assert r.returncode == 0, r.stdout + r.stderr
+
+        def rule_unreadable():
+            with open(settings, "w", encoding="utf-8") as f:
+                f.write("{ not json\n")
+
+        ok = True
+        lit = "brew install gitleaks"
+        lit2 = "npx playwright install chromium"
+        # the arguments
+        ok &= expect("an argument it does not know: exit 2", run("--nope"), 2,
+                     "devloop-auto-mode-question: expected a project directory, "
+                     "record WAY ID [DIR] with the command on stdin, or --self-test, got --nope")
+        ok &= expect("two directories: exit 2", run("a", "b"), 2,
+                     "devloop-auto-mode-question: expected at most one directory, got 2")
+        ok &= expect("record with one argument: exit 2", run("record", "brew install"), 2,
+                     "devloop-auto-mode-question: record expects WAY and ID, then at most one directory")
+        # record
+        fresh()
+        ok &= expect("record: the line written under .git, exit 0",
+                     run("record", "brew install", "toolu_1", stdin=lit + "\n"), 0,
+                     "recorded in %s: brew install" % denials_file)
+        with open(denials_file, encoding="utf-8") as f:
+            text = f.read()
+        parts = text.rstrip("\n").split("\t")
+        n[0] += 1
+        if len(parts) == 4 and parts[1] == "brew install" and parts[2] == "toolu_1" and parts[3] == lit and parts[0].endswith("Z"):
+            print("ok   record: four fields, the time in UTC, the way, the id, the literal")
+        else:
+            ok = False
+            print("FAIL record: the line reads %r" % text)
+        ok &= expect("record of a second refusal appends a line",
+                     run("record", "playwright install", "toolu_2", stdin=lit2 + "\n"), 0,
+                     "recorded in %s: playwright install" % denials_file)
+        with open(denials_file, encoding="utf-8") as f:
+            n[0] += 1
+            if len(f.read().rstrip("\n").split("\n")) == 2:
+                print("ok   record: two lines stand")
+            else:
+                ok = False
+                print("FAIL record: not two lines")
+        ok &= expect("record with a way carrying a tab and a line break: flattened to spaces",
+                     run("record", "brew\tinstall\nx", "tool u", stdin=lit + "\n"), 0,
+                     "recorded in %s: brew install x" % denials_file)
+        ok &= expect("record of a literal that is no JSON string: not recorded, exit 2",
+                     run("record", "brew install", "toolu_3", stdin='a "quote\n'), 2,
+                     "not recorded: the command on stdin is no JSON string literal")
+        ok &= expect("record outside a git repository: not recorded, exit 2",
+                     run("record", "brew install", "toolu_3", os.path.join(T, "nogit"), stdin=lit + "\n"), 2)
+        n[0] += 1
+        if "not recorded: %s is no git repository" % os.path.join(T, "nogit") in run("record", "brew install", "t", os.path.join(T, "nogit"), stdin=lit + "\n")[1]:
+            print("ok   record outside a git repository names the directory")
+        else:
+            ok = False
+            print("FAIL record outside a git repository does not name the directory")
+        # the question: the rule stands
+        fresh(); rule_stands()
+        ok &= expect("the rule stands: no question, gh not called, exit 1", run(), 1,
+                     "question: no", "read: 0")
+        n[0] += 1
+        if calls() == []:
+            print("ok   the rule stands: gh not called")
+        else:
+            ok = False
+            print("FAIL the rule stands: gh called: %r" % calls())
+        # the rule missing, nothing recorded
+        fresh()
+        ok &= expect("the rule missing and no refusal recorded: no question, exit 1", run(), 1,
+                     "question: no", "read: 1", "denials: none recorded")
+        n[0] += 1
+        if calls() == []:
+            print("ok   nothing recorded: gh not called")
+        else:
+            ok = False
+            print("FAIL nothing recorded: gh called: %r" % calls())
+        # recorded, no open issue carrying it
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues((5, "Something else", "no install here"))
+        ok &= expect("a refusal recorded and no open issue carrying the command: no question, exit 1", run(), 1,
+                     "question: no", "read: 1",
+                     "issues: none of the 1 open issues labelled raised-here and needs-human carries a recorded command")
+        # recorded, an issue holding a task
+        issues((12, "Install gitleaks for task #7", "Auto mode refused:\n\n    brew install gitleaks\n\nat ~/bin nothing stands."))
+        blocking(12, "open")
+        open(os.path.join(S, "log"), "w").close()
+        ok &= expect("the rule missing and an open issue holding a task: question, kind task, exit 0", run(), 0,
+                     "question: yes", "read: 1", "issue: 12", "kind: task",
+                     "title: Install gitleaks for task #7", "way: brew install", "command: brew install gitleaks")
+        n[0] += 1
+        if calls() == ["issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
+                       "api repos/{owner}/{repo}/issues/12/dependencies/blocking"]:
+            print("ok   the issue list read once and the blocking relation of the one issue")
+        else:
+            ok = False
+            print("FAIL the calls were %r" % calls())
+        # an issue concerning a check class
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues((15, "The class secrets: auto mode refused the install", "`brew install gitleaks`"))
+        blocking(15)
+        ok &= expect("the rule missing and an open issue concerning a check class: question, kind class", run(), 0,
+                     "question: yes", "issue: 15", "kind: class", "way: brew install")
+        # the blocked task closed: no open issue is blocked, kind class
+        blocking(15, "closed")
+        ok &= expect("an issue whose blocked task is closed: kind class", run(), 0, "issue: 15", "kind: class")
+        # both kinds open
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n"); run("record", "playwright install", "toolu_2", stdin=lit2 + "\n")
+        issues((15, "The class", "`brew install gitleaks`"), (12, "The task", "npx playwright install chromium\n"), (3, "Other", "nothing"))
+        blocking(12, "closed", "open"); blocking(15)
+        got = run()
+        ok &= expect("both kinds open: question naming both, in the order of their numbers", got, 0,
+                     "question: yes", "issue: 12", "kind: task", "way: playwright install",
+                     "command: npx playwright install chromium", "issue: 15", "kind: class")
+        n[0] += 1
+        if got[1].index("issue: 12") < got[1].index("issue: 15"):
+            print("ok   both kinds open: the lower number first")
+        else:
+            ok = False
+            print("FAIL both kinds open: the order is wrong")
+        # the same command in two issues: both named, each once
+        issues((15, "The class", "`brew install gitleaks`"), (16, "Again", "brew install gitleaks"))
+        blocking(15); blocking(16)
+        got = run()
+        ok &= expect("one command carried by two open issues: both named", got, 0, "issue: 15", "issue: 16")
+        n[0] += 1
+        if got[1].count("issue: 15") == 1:
+            print("ok   one command carried by two open issues: each once")
+        else:
+            ok = False
+            print("FAIL an issue named twice")
+        # read ends with 2
+        fresh(); rule_unreadable(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues((15, "The class", "brew install gitleaks")); blocking(15)
+        ok &= expect("the settings unreadable, read 2, and an open issue: question, read: 2", run(), 0,
+                     "question: yes", "read: 2", "issue: 15")
+        # the issue closed
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues()
+        ok &= expect("the issue closed, the list empty: no question, exit 1", run(), 1,
+                     "question: no", "issues: none of the 0 open issues labelled raised-here and needs-human carries a recorded command")
+        # after a no, the issue still open: the question again, nothing written
+        issues((15, "The class", "brew install gitleaks")); blocking(15)
+        before = open(denials_file, encoding="utf-8").read()
+        ok &= expect("after a no the issue still open: the question again", run(), 0, "question: yes", "issue: 15")
+        ok &= expect("and again", run(), 0, "question: yes", "issue: 15")
+        n[0] += 1
+        if open(denials_file, encoding="utf-8").read() == before and not os.path.exists(settings):
+            print("ok   the question writes nothing: the record and the settings as before")
+        else:
+            ok = False
+            print("FAIL the question wrote something")
+        # a command carried in the title alone
+        issues((15, "brew install gitleaks refused", "")); blocking(15)
+        ok &= expect("the command in the title alone: found", run(), 0, "issue: 15")
+        # a command carried otherwise: not found
+        issues((15, "The class", "brew  install gitleaks"))
+        ok &= expect("the command carried otherwise, two blanks: not found, no question", run(), 1, "question: no")
+        # a multi-line command
+        fresh(); run("record", "cargo install", "toolu_9", stdin="cargo install \\\\\\n  ripgrep\n")
+        issues((20, "Task", "    cargo install \\\n  ripgrep\n")); blocking(20, "open")
+        ok &= expect("a command over two lines: matched verbatim, printed on one line", run(), 0,
+                     "issue: 20", "command: cargo install \\   ripgrep")
+        # a line of the record not in the form
+        fresh()
+        with open(denials_file, "w", encoding="utf-8") as f:
+            f.write("garbage\n")
+        issues((15, "The class", "brew install gitleaks"))
+        ok &= expect("a record whose lines are not in the form: as none recorded", run(), 1, "denials: none recorded")
+        # gh does not answer
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        ans("issues", 1, "", "HTTP 502: Bad Gateway (https://api.github.com/graphql)")
+        ok &= expect("gh issue list fails: not decided, the command and the message, exit 2", run(), 2,
+                     "question: not decided",
+                     "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
+                     "message: HTTP 502: Bad Gateway (https://api.github.com/graphql)")
+        ans("issues", 0, "not json")
+        ok &= expect("gh prints no JSON: not decided", run(), 2, "question: not decided")
+        issues((15, "The class", "brew install gitleaks"))
+        ans("blocking.15", 1, "", "HTTP 404: Not Found")
+        ok &= expect("the blocking relation does not answer: not decided", run(), 2,
+                     "question: not decided", "command: gh api repos/{owner}/{repo}/issues/15/dependencies/blocking",
+                     "message: HTTP 404: Not Found")
+        # a project that is no git repository
+        ok &= expect("a directory that is no git repository: no question", run(os.path.join(T, "nogit")), 1,
+                     "question: no")
+        # CLAUDE_PROJECT_DIR
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues((15, "The class", "brew install gitleaks")); blocking(15)
+        env2 = dict(env); env2["CLAUDE_PROJECT_DIR"] = os.path.join(T, "p")
+        r = subprocess.run([sys.executable, me], cwd=T, capture_output=True, text=True, env=env2)
+        ok &= expect("the project from CLAUDE_PROJECT_DIR where no directory is given", (r.returncode, r.stdout + r.stderr), 0, "issue: 15")
+        if ok:
+            print("SELF-TEST PASSED: %d cases" % n[0])
+            return 0
+        print("SELF-TEST FAILED")
+        return 1
+    finally:
+        shutil.rmtree(T, ignore_errors=True)
+
+
+def main(argv):
+    args = argv[1:]
+    if args == ["--self-test"]:
+        return selftest()
+    if args and args[0] == "record":
+        rest = args[1:]
+        if len(rest) < 2 or len(rest) > 3:
+            return usage("record expects WAY and ID, then at most one directory")
+        return record(rest[0], rest[1], project_dir(rest[2] if len(rest) == 3 else ""))
+    dirs = [a for a in args if not a.startswith("-")]
+    bad = [a for a in args if a.startswith("-")]
+    if bad:
+        return usage("expected a project directory, record WAY ID [DIR] with the "
+                     "command on stdin, or --self-test, got %s" % bad[0])
+    if len(dirs) > 1:
+        return usage("expected at most one directory, got %d" % len(dirs))
+    return question(project_dir(dirs[0] if dirs else ""))
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

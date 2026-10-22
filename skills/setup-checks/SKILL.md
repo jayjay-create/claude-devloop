@@ -94,7 +94,13 @@ that called. Everything else below applies unchanged.
   nobody there, there is no one to ask: the class goes `skipped (state)`, the
   state being what this machine lacks and the block names, and the report
   names it; since 9 October 2026 the same holds for the three other ways an
-  install does not go through, which the rule inserted in step 4 names.
+  install does not go through, which the rule inserted in step 4 names;
+  and where that way is the refusal of auto mode on a command by one of
+  the ways the rule for its classifier names, since 22 October 2026, an
+  issue stands beside the cell as that rule says, for every class, carrying
+  the command, the message and what is in the way, labelled `raised-here`
+  and `needs-human` and recorded as a blocker of no task, so that the
+  question on the rule meets the person at their next start with `--auto`.
   `secrets` is the exception it always is — it is
   never `skipped` on a run's own judgement, so there the task ends instead,
   and since 9 October 2026 not the run: an issue carrying the command, the
@@ -939,21 +945,15 @@ since 17 October 2026 — the yes of the question below says whether a
 protection is added. Where a side did not answer,
 say the binding could not be determined rather than reporting the gate either
 way. Then the three records, as the paragraph above reads them. Where the
-mode is set up by all five, read whether the rule for the classifier of auto
-mode stands in their settings, `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule
-read`, the program the question on it below is put with: where it ends with
-1, put that question, alone, and nothing else of this step, and then say
-that the mode is set up and skip the rest; where it ends with 0, the rule
-standing, or 3, the person having declined it once, say that the mode is set
-up and skip the rest; where it ends with 2, say the sentence that paragraph
-gives for a settings file that cannot be read, and the same. Since 22
-October 2026, cluster 11 of the roadmap entry of 19 October 2026, decided on
-22 October 2026: until then this step was skipped whole where the five hold,
-so that a project whose mode was set up before the question existed met it
-on no path, and the two places that send a run alone with the mode set up
-read the same program and reach this step for that one question. The rule
-is no condition of the mode: without it the run starts as before, and an
-install auto mode then refuses goes the way a refusal goes today. A
+mode is set up by all five, say that it is and skip the rest of this step —
+unless `build-work` on its direct route or `plan-work` at the end of Stage
+1 called this step for the question on the rule for the classifier of auto
+mode alone, since 22 October 2026, where
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question` ended with 0 there:
+then put that one question, in its form for a start with `--auto` below,
+and nothing else of this step. The rule is no condition of the mode:
+without it the run starts, and a refusal of auto mode on an install by one
+of the ways the rule names leaves the issue that brings the question. A
 gate that is there and binding is not enough for that, as it was until 5
 October 2026: with a record that does not say yes, or with auto-merge off,
 the question below is put all the same.
@@ -1101,15 +1101,28 @@ where a piece of work starts sets the mode up then stands in the no's own
 description already.
 
 **On a yes — their answer, or the flag where the gate stands — one question
-more, directly after it and before the two permissions, and, since 22
-October 2026, alone where the mode is set up by all five and the program
-below ends with 1: whether devloop may
+more, directly after it and before the two permissions: whether devloop may
 enter a rule into their `~/.claude/settings.json`**, so that auto mode does
 not block installs in devloop projects by itself. The rule is the one of
 decision 1 of the roadmap entry of 9 October 2026, an entry of the list
 `autoMode.allow`, which the classifier of auto mode reads as an exception
-to its own rules. In the same form as the question above, alone in its
-call:
+to its own rules, and it can stand in their settings alone: the page
+"Configure auto mode" of Claude Code says the classifier reads no
+`autoMode` from a project's `.claude/settings.json` or
+`settings.local.json`. Which form the question takes is decided first,
+since 22 October 2026, by
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`, run once, with the
+shell: it ends with 1 where the rule stands already, `read: 0` on its
+second line, and then the question is not put, or where no open issue of
+this project carries an install auto mode refused in a run without them,
+and then the question is put in the form of the setup below; it ends with
+0 where the rule does not stand, or the settings cannot be read for it,
+and such an issue is open, and then the question is put in the form for a
+start with `--auto`, the paragraph after the next; it ends with 2 where it
+could not decide — `gh` did not answer — and then say so with the command
+and the message it prints, as "When a command does not answer" says, and
+put the question in the form of the setup, which rests on nothing `gh`
+answers. The form of the setup, as the question above, alone in its call:
 
 - **In the header: a name for the subject, the rule**, as telling as it can
   be, of twelve characters at most.
@@ -1120,23 +1133,60 @@ call:
   installations only in projects set up with devloop.
 - **In the no, label and line**: auto mode can then refuse an installation;
   without them the run then writes an issue with the reason and goes on with
-  the next task.
+  the next task; and at the next start with `--auto` they are asked once
+  more, since 22 October 2026.
+
+**The form for a start with `--auto`, since 22 October 2026**, put where
+the program ends with 0 — here, after the yes to the mode, and alone where
+`build-work` on its direct route or `plan-work` at the end of Stage 1
+called this step for it, the places where the person is there and a run is
+about to go alone. The program's lines name every issue it found: the
+number, whether it holds a task or concerns a check class, the way of the
+rule the command took, and the command. Alone in its call, in the same
+form:
+
+- **In the header**: the name for the subject, the rule, as above.
+- **In the question field, before the question line**: that auto mode, in
+  a run without them, refused that install, the command as the program
+  prints it, with its issue's number; with several, each install with its
+  issue.
+- **In the question line**: the question above, unchanged.
+- **In the yes, label and line**: devloop enters the rule, closes the issue
+  and takes the task up again where the issue holds a task, sets the check
+  up again where it concerns a check class, both where issues of both kinds
+  are open; and the rule allows installations only in projects set up with
+  devloop. With several of a kind, the issues, the tasks, the checks.
+- **In the no, label and line**: the issue stays open until they have made
+  the install themselves and closed the issue, and until then they are
+  asked again at every start with `--auto`; with several, the issues.
+
+The wording approved on 22 October 2026 stands in the roadmap entry of that
+date on the question after a refusal; this skill says what is said, not the
+words. On the yes, `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write`
+enters the rule, as the next paragraph says, and where it ends with 0 the
+run closes every issue the program named, `gh issue close` without a
+comment, since no wording for one is approved. A task an issue held is free
+then and is taken as any free task, by step 2 of `build-work`, which passes
+over a task only while a blocker of it is open. A check class an issue
+concerned keeps its cell `skipped (state)` until a build reads the table
+before a release: the state that cell names, the refusal of auto mode on
+that install, has ended with the rule standing, and the class goes to this
+skill on that task's branch, the third way of step 4 of `build-work`. The
+rule holds in the running session already: the settings page of Claude
+Code, "When edits take effect", says Claude Code watches its settings files
+and reloads them when they change. Where `write` ends with 2, say the text
+approved for the refused entry, text 4, and the issues stay open. On the no
+nothing is written and the issues stay open: the question comes again at
+every start with `--auto` while one of them is open, and ends without a
+further step once they are closed. Nothing is stored on a no, in either
+form: a stored no was built on 22 October 2026 and taken out the same day,
+since whoever changed their mind would have had to know of a file nothing
+in devloop shows; the roadmap entry carries the three other ways weighed.
 
 It is not put where the rule stands in the file already, word for word under
 `autoMode.allow`: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read`
-says so with exit 0 and writes nothing. Nor where the person declined it
-once, since 22 October 2026: the same program ends with 3 then, naming the
-day of the no and the file that holds it, and the question is not put again
-while that file stands. On the no,
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule decline` records it, in a
-small file of devloop's own, `devloop-auto-mode-rule-declined`, in the
-directory of the settings file — under `CLAUDE_CONFIG_DIR` where that is
-set, `~/.claude` otherwise — and not in the project, since the rule stands
-in their personal settings and not in the repository; the file carries the
-date and nothing else, and the settings file is not touched by it. Where the
-program could not write the no, exit 2, say so with its message in the next
-message that ends a turn with text, and nothing else changes: the question
-comes back the next time. On the yes,
+says so with exit 0 and writes nothing, and the program above reads it
+first. On the yes,
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write` enters it, and
 nothing else does: the rule word for word as one entry of `autoMode.allow`,
 the list created with `"$defaults"` before the rule where the file or the
@@ -1153,8 +1203,7 @@ where auto mode refuses an installation, the run writes an issue with the
 reason and goes on with the next task. The wording approved on 8 October
 2026 stands in the roadmap entry of 9 October 2026 as text 4, the rule in
 English among it; this skill says what is said, not the words, and the
-program carries the rule. Without the yes the file is never touched — the no
-is recorded in the file of its own above and nowhere in the settings — and a
+program carries the rule. Without the yes the file is never touched, and a
 no here changes nothing of what follows.
 
 **Then the two permissions, before anything is set up, each put a second
