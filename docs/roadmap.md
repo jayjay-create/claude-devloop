@@ -34606,6 +34606,250 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   on shape (b) and on the README line came at the check of the branch, the
   paragraphs above.
 
+- **Conditions 6 and 7 at the mark, the rule question put, short titles.**
+  22 October 2026, version 0.156.0. On `task/unattended-start-conditions`,
+  off `4fe6374`, in three commits: `bin/`, `hooks/`, `skills/`, `shared/`
+  and `.github/` with the version, `45a7a49`; this entry, the rows of the
+  table and `docs/skill-conventions.md`; the runs of the bench, with the
+  paragraph on the bench at the end of this entry. The report stands on
+  this machine as `~/devloop-report-unattended-start-conditions.md`, in
+  English, and is not in the repository. Every line number of a file is as
+  at `4fe6374` unless a commit is named beside it. No session of Claude Code
+  was started for this entry; the hooks and programs ran by hand, fed the
+  JSON a tool call gives them, and the step of the workflow ran on the tree
+  with its commands. The words the tool reads a line of this file into its
+  search set by stand in this entry in its head and on the one status line
+  below that records a defect, and on no other line. `README.md` does not
+  change; `output-styles/` does not change; `scripts/devloop-stock-take`
+  does not change. This entry is the first whose head follows the rule
+  under (d): the date and the version stand in this first paragraph and not
+  in the head.
+
+  **What holds, and where it was decided.** (a) Decided on 20 October 2026,
+  lines 33072 to 33077, cluster 22 of the entry of 19 October 2026 on the
+  checked list of milestone 3, lines 31825 to 31845: the guard on the mark,
+  `hooks/pre-tool-use-mark-guard.sh`, reads start conditions 6 and 7 of
+  `build-work` when the mark is written, the same state of the main branch
+  as the text, and blocks only where the text refuses. (b) Decided on 22
+  October 2026, cluster 11, lines 31636 to 31655: the question on the rule
+  for the classifier of auto mode, text 4 of the entry of 9 October 2026,
+  lines 14452 to 14470, is put wherever the person is there and the mode is
+  set up or is about to send a run alone, where it was put after the yes to
+  the mode in `setup-checks` step 8 alone and nowhere once the five things
+  of `shared/mode-set-up.md` held; a no is stored in the configuration
+  directory of Claude Code and not in the project; the rule is no condition
+  of the mode. (c) From the statement of 19 October 2026 at line 30078 and
+  the should of status line 30085, the open decision taken as a question of
+  theirs, with the question of `setup-checks` step 3 on a tool the run may
+  not install, lines 485 to 553 of that skill, approved on 21 October 2026:
+  a check class that needs a tool outside the project under a record saying
+  no or never written goes from the build to `setup-checks` for that class,
+  whose step 3 puts the question; the build hands no command over for it
+  and takes no decline. (d) Decided on 22 October 2026: every title says
+  what changed in substance and nothing else, in at most 72 characters,
+  without a date, a version number, a part of a milestone, "the person" or
+  "as decided", written as the owner's own; a new entry that records a
+  decision says "Decided on" and not "Decided by the person on"; old entries
+  and titles stay; the job `stock-take` holds it on the title of the pull
+  request and on the heads of new entries; the nineteen checks stay
+  nineteen.
+
+  **(a) The guard on the mark, `45a7a49`.** `bin/devloop-install-record`
+  takes the option `--dependency`, lines 34 to 50 and 73 to 94 at that
+  commit: the same code reads the section `## Dependency permission`, the
+  keys `dependency-tools` and `dependency-answered`, prints `ref`, `tools`
+  and `answered` and no place and no route line, and every cause names that
+  section; an option it does not know, or more than one directory, ends
+  with exit 2 through the one line that ends so. The seven lines that
+  resolve the default branch are untouched, which the check of the three
+  copies under "Before a handover, run these" shows with its `1`. The hook,
+  lines 168 to 202 at `45a7a49`: where the write of the mark comes in auto
+  mode, it reads condition 6 through the reader without the option and
+  condition 7 with it, collects every one that does not say yes, and passes
+  where none fails, with the statement beside it where the command called
+  `bin/devloop-permission-mode`, as before; where one fails it blocks with
+  exit 2 and a message on stderr that names each failing condition with its
+  cause joined behind "because" — a record saying no with the ref and the
+  date it was answered, or the reader's cause where the record cannot be
+  read, no file, no section, no line, another value, a branch never fetched
+  — says that the mark is not written another way, that the run with nobody
+  there does not start, and what the run does: with the user there, tell
+  them so with the sentence the skill gives for start conditions 6 and 7, in
+  the next message that ends a turn with text, and carry on with them; with
+  nobody there, stop with the reason named, as the skill says for a stop
+  with a reason. The sentence for 6 and 7 is the one `build-work` names in
+  the paragraph after the list of the seven conditions, lines 1495 to 1505,
+  the one step 8 of `setup-checks` puts before its second questions,
+  approved on 6 October 2026, lines 29760 to 29763. A deletion or a read of
+  the mark passes as before, line 142, and a project without `docs/agents`
+  passes as before, line 121; outside auto the block of 9 October 2026
+  stands as it stood, before any record is read. Where the mark is
+  written, read for the cross-check: `plan-work` line 481, at the end of
+  Stage 1, and `build-work` line 1517, on the direct route, the two insert
+  sites of `shared/mark-command.md`; the planning route into the build
+  writes no mark, line 1505, and the cut writes none, `cut-into-tasks` line
+  61 reading it and 177 deleting it. The person is there at both writes.
+  `shared/mode-set-up.md` lines 21 to 29 at `45a7a49` say to the three
+  skills that read the five things that the guard reads the last two at
+  the write, and that the rule for the classifier is none of the five;
+  `build-work` lines 1563 to 1573 and `plan-work` lines 502 to 516 at that
+  commit say at the mark what the run does on the block.
+
+  **(b) The rule question, `45a7a49`.** `bin/devloop-auto-mode-rule`
+  `read` ends with 3 where the rule does not stand and the person declined
+  it once, naming the day and the file, lines 262 to 266; `decline` records
+  the no, lines 214 to 227 and 236 to 241: the file
+  `devloop-auto-mode-rule-declined` in the directory of the settings file,
+  `CLAUDE_CONFIG_DIR` where that is set and `~/.claude` otherwise, one line
+  `declined: YYYY-MM-DD`, written through a temporary file and moved over,
+  the same way the settings file is written, the two sharing one function
+  since this commit, lines 173 to 199; the settings file is not touched by
+  it, and `read` writes nothing, as before. The existence of the file is
+  the no, whatever it holds: a file that cannot be opened still counts, and
+  the date is read for the message alone, lines 119 to 131. `setup-checks`
+  step 8, lines 941 to 957 at that commit: where the mode is set up by all
+  five, the step reads the rule and puts the question alone where `read`
+  ends with 1, then says the mode is set up and skips the rest; where it
+  ends with 0 or 3 it says so and skips the rest; where 2, the sentence of
+  text 4 for a settings file that cannot be read. The question itself,
+  lines 1102 to 1157 at that commit: put directly after the yes to the mode
+  as before, and alone where the five hold; not put where the rule stands,
+  exit 0, nor where the person declined it once, exit 3; the no recorded by
+  `decline`, a refused record said with the program's message, the question
+  coming back the next time. `build-work` under "Unattended mode", lines
+  1513 to 1523 at that commit: where the five hold and the section was
+  reached directly, the run reads the rule and calls `setup-checks` for its
+  step 8 alone where `read` ends with 1, which puts that one question and
+  changes nothing of the repository; the mark on either answer. `plan-work`
+  at the end of Stage 1, lines 488 to 500 at that commit: the same, before
+  the mark, on either of the first two answers or on `--auto`, where the
+  mode is set up and step 8 was not called this session; where it was, it
+  put the question there. So the question is put on one path once: at a
+  first setup after the yes to the mode; on the direct route and at the end
+  of a sharpening through step 8, once; never on the planning route into
+  the build, where nobody is there; and after a no never again while the
+  file stands. The rule is no condition of the mode and no start condition,
+  said in `shared/mode-set-up.md` and in both callers: without it the run
+  starts, and an install the classifier then refuses goes the way a refusal
+  goes, "A guard's block, with nobody there". How the person gets rid of a
+  stored no has two ways, weighed in the report and not decided here:
+  deleting the file, which needs nothing built and is what the program's
+  header says, or a command of the program that removes it; the sentence
+  that would tell the person the file's name belongs to the no's line of
+  text 4 or to the README, both wordings theirs, so nothing that depends on
+  it is built. With nobody there nothing is asked and nothing stored, as
+  "In doubt, a run with nobody there is not blocked" asks.
+
+  **(c) A check class under a no, `45a7a49`.** `build-work` step 3 under
+  "If they decline, the run acts on it", lines 589 to 600 at that commit:
+  a check class that needs a tool outside the project under a record saying
+  no or never written is not handed over there and no decline is taken;
+  the main run calls `setup-checks` for that one class, on the task's
+  branch, whose step 3 puts the question — that they install it themselves,
+  or that the check is switched off — and records the answer, the class
+  `skipped (user)` on the second, filled on the first once the tool stands
+  at its path. Point 7, lines 529 to 532 at that commit, says that what it
+  hands over is the tool of the task. `setup-checks` lines 49 to 53 at that
+  commit name that build as the second of the four things that call the
+  skill for a single class, and step 3, lines 503 to 507, puts its question
+  on the single-class route as well, on the build's branch, the branch
+  being the caller's as line 560 says and step 4 writing the line for a
+  tool the person installed on the caller's branch, lines 613 to 621. Until
+  this commit the bullet "A check class" said that the class is recorded
+  `skipped (user)` with the decline's reason, lines 585 to 586, two texts
+  for one decision beside step 3's question of 21 October 2026. For a tool
+  of the task nothing changes.
+
+  **(d) Titles, `45a7a49`.** The rule stands in `docs/skill-conventions.md`
+  under "A title says what changed, and nothing else", after the rule that
+  the README carries no date. The job `stock-take` in
+  `.github/workflows/stock-take.yml` gets a last step, lines 150 to 215 at
+  that commit, and the trigger the type `edited` beside the three default
+  types, line 41: the title of the pull request comes out of the event into
+  the environment variable `PR_TITLE` of the step and never into the text
+  of the script; python3 reads it and `git diff origin/main...HEAD --
+  docs/roadmap.md` for the heads the branch adds, every added line starting
+  with `- **`, read in the file from that line to the closing `**`, the
+  lines joined with one space and the text between the markers measured;
+  each is red where it is longer than 72 characters, or carries a date as
+  the README step reads one, a version number as three numbers joined by
+  dots, or the words "the person" with a word boundary on both sides, case
+  not mattering; every find is printed with the text, a passing title with
+  the word passes, and the step ends with 1 where anything was red. Old
+  heads are not in the diff and are not read. A title changed on an open
+  pull request fires `edited`, which fires on a change of the body or the
+  base too, so every such edit runs the whole workflow again, five jobs on
+  the same merge ref, the concurrency group cancelling a run in progress
+  for the same pull request; the two other ways were weighed in the report:
+  a job-level condition on the changed field would let a body edit skip the
+  job, and a skipped job reports success to the branch protection over a
+  red run before it; leaving `edited` out leaves a title changed without a
+  push unread, against the decision. The pattern for a version number hits
+  a tool's version in a title too, `gh 2.96.0` say; the narrower form that
+  reads the plugin's own number alone would pass it from 1.0.0 on; the
+  wider one is built and the question stands in the report. Measured on
+  the tree at `45a7a49` with the step's script: a title of 65 characters
+  passes, one of 95 is red with its count, "Build milestone 3, part 4, as
+  decided on 21 October 2026" is red with the date, "Raise the version to
+  0.156.0 and nothing else" with the version, "Record what the person
+  decided about titles" with the words, "Run the hooks under Alpine 3.22 as
+  well" passes; the heads of new entries on this branch are read at the
+  bench below. The head of this entry has 68 characters between its
+  markers and carries none of the three, and the title of its pull request
+  is the first line of its first commit, 65 characters. The nineteen checks
+  under "Before a handover, run these" are nineteen as before: the step is
+  the platform's, as the two README steps are.
+
+  **The README, not changed.** `README.md` line 280 says that devloop
+  touches the global configuration in one place, `~/.claude/settings.json`,
+  and only after asking. Since this version a no to the rule is stored in
+  a second file in that directory, on a no, so the sentence is no longer
+  true; a new wording of the README needs the person, and the proposal
+  stands in the report: that devloop touches two files in that directory,
+  the settings file only after a yes, to enter the one rule, and a small
+  file of its own that records a no to that question, so that it is not
+  asked again, which the person deletes to be asked again.
+  Recorded, not built: `README.md` line 280 says that devloop touches the global configuration in one place, `~/.claude/settings.json`, and only after a yes, where since 0.156.0 a no to the rule is recorded in `devloop-auto-mode-rule-declined` beside it — should: the README says, in a wording of the person's, that devloop keeps their no to the rule in a small file of its own beside the settings file, and how the question comes back.
+
+  **The two defects built, and what a run must still show.** Line 15579,
+  row 3910 of the table, a project whose mode was set up before 0.134.0
+  meeting the rule question on no path: built by (b), its evidence on the
+  line of `setup-checks` step 8 that reads the rule where the five hold;
+  a run is owed, forceable with the person there in a project whose mode
+  is set up, at a sharpening or at `--auto` typed before a build. Line
+  30168, row 6394, the build reading none of the seven conditions again at
+  its start: built by (a) as far as conditions 6 and 7 go on the direct
+  route, where the hook reads both at the write of the mark whatever the
+  run read before, its evidence on the hook's block line; what a run must
+  still show, under the decision on cluster 22, is the reading of the other
+  five at the start of the build on both routes and of 6 and 7 on the
+  planning route, where the mark stands already and no write meets the
+  hook, which depends on the model and goes into the closing run. The
+  should of neither changes.
+
+  **Records of the second commit.** In `docs/stock-take.tsv`: the evidence
+  of row 3910 moved onto `skills/setup-checks/SKILL.md` and of row 6394
+  onto `hooks/pre-tool-use-mark-guard.sh`, each note saying so; the pass
+  under auto of the hook, row 3312, re-anchored on the pass that follows
+  the reading, keeping its name, since runs hang on it, its note saying
+  what holds now; the step 8 thing of the mode set up by all five, row 363,
+  re-anchored on the sentence that reads the rule, keeping its name for the
+  same reason; the reader's thing on more than one argument, row 2301, and
+  its thing on a missing `install-tools` line, row 2311, re-anchored on the
+  lines that carry them now; the rule program's things on the arguments,
+  row 3471, and on the no, row 3447, re-anchored; four not-a-thing rows
+  re-anchored; new things for the hook's block on a record saying no and
+  on a record that cannot be read, for the reader's `--dependency`, for
+  the rule program's exit 3, `decline` in its three outcomes and the
+  reading of the date, for the workflow's step green and red and its
+  `edited` trigger, for the single-class question of `setup-checks` step
+  3, for step 8's exit 3 and refused no, for the new paragraphs of
+  `build-work` and `plan-work` on the rule and on the mark; one defect for
+  the README's sentence above; not-a-thing rows on the lines that are part
+  of them. The runs of the straight paths of the three units that insert
+  `shared/mode-set-up.md`, and of that file, stop counting with this
+  change, as every run on a changed unit does.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

@@ -1498,6 +1498,33 @@ project, `docs/agents/`, `~/.claude/settings.json` or `.claude/` say, is no
 find. The red line of the first step says since the same day that the file
 must carry no date and what it carries.
 
+**A title says what changed, and nothing else.** The title of a pull
+request, the first line of a commit message and the head of a new entry in
+`docs/roadmap.md` say in plain words what changed in substance: at most 72
+characters, no date, no version number, no "milestone 3, part 4", no "the
+person", no "as decided", written as the owner of the repository writes a
+title of their own. Where a new entry records a decision, it says "Decided
+on <date>" and not "Decided by the person on <date>"; the date and the
+version stand in the body of the entry, in its first lines, where the head
+carried them until 22 October 2026. Old entries and old titles stay as they
+stand. Decided on 22 October 2026, the roadmap entry of that date on the
+start conditions at the mark. A step of the job `stock-take` in
+`.github/workflows/stock-take.yml`, the check `main` requires, holds it:
+red where the title of the pull request, or the head of an entry the branch
+adds to `docs/roadmap.md` — a line starting with `- **` that the diff
+against `origin/main` lists as added, read to its closing `**`, the text
+between the markers measured — is longer than 72 characters or carries a
+date in a form like `20 October 2026`, `October 2026` or `2026-10-20`, a
+version number, three numbers joined by dots, or the words "the person",
+every find printed; the title comes out of the event through an environment
+variable and never stands in the step's own text. The event fires with the
+type `edited` too, so that a title changed on an open pull request is read
+before it can be merged, at the cost of one run of the workflow per edit of
+the title, the body or the base. A commit's first line is not held by the
+workflow: a squash merge takes the title of the pull request, so the one
+title that lands is the one read. The check is not one of the nineteen
+under "Before a handover, run these".
+
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
 `docs/roadmap.md` against the logs of the runs they record and found each on
@@ -2064,7 +2091,14 @@ text documenting an install pass, and `sh -c "brew install x"` and `bash
 stays, for a word that is run and still only looks like an install.
 
 **The install guard reads a record, since 28 September 2026, and passes only
-what the record names.** The record is a section of `docs/agents/environment.md`
+what the record names.** Since 22 October 2026 the guard on the mark reads
+the same record through the same program when the mark of a run with nobody
+there is written in auto mode, and the record on check tools in the
+dependency file beside it, `bin/devloop-install-record --dependency`, the
+one reading of the section `## Dependency permission`: start conditions 6
+and 7 of `build-work`, blocked at the write where either does not say yes,
+exactly where the text refuses, and nowhere else; `shared/mode-set-up.md`
+says so to the three skills that read the five things. The record is a section of `docs/agents/environment.md`
 under the heading `## Install permission`, a key and a value per line in the
 shape `checks.md` uses for a value a script reads — `grep` on the start of the
 line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
