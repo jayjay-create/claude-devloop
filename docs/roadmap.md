@@ -34850,6 +34850,47 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `shared/mode-set-up.md`, and of that file, stop counting with this
   change, as every run on a changed unit does.
 
+  **The bench, 22 October 2026, from 07:35:53 to 07:37:41 UTC and case C13 at
+  07:50:42 UTC, against the hooks and programs of `d58bbdc`, which the third
+  commit does not change, last changed at `45a7a49`**, in `$WORK`, a
+  throwaway directory outside the repository: a throwaway project with a bare
+  origin whose HEAD is main and `docs/agents/` on main, the records written
+  on main before each case, committed with a plain `git commit` under the
+  identity git config gives, pushed to the bare origin and fetched; the hook
+  fed the JSON a tool call gives it, `permission_mode`, `tool_name` and
+  `tool_input` among it, with `CLAUDE_PROJECT_DIR` on the project, and the
+  rule program with `CLAUDE_CONFIG_DIR` on a directory under `$WORK`, so that
+  this machine's settings were not touched. The mark command is the one of
+  `shared/mark-command.md`, the tool `Bash`. Each case below names what
+  decided and the exit code; the report carries the lines as printed.
+  Case A1: the mark command under auto with install-tools yes and dependency-tools yes: no output, exit 0; case A1b: the same write by the editing tool, exit 0.
+  Case A2: the mark command under default with both yes: text C naming default and manual mode on, exit 2, as before.
+  Case A3: the mark command under auto with install-tools no: the block naming condition 6, because the install record says no (install-tools: no on origin/main as last fetched, answered 2026-10-20), exit 2.
+  Case A4: rm -f of the mark under auto with install-tools no: no output, exit 0; case A4b: cat of the mark, exit 0.
+  Case A5: the mark command under auto with dependency-tools no: the block naming condition 7, because the record on check tools in the dependency file says no (dependency-tools: no on origin/main as last fetched, answered 2026-10-20), exit 2; case A5b: the same write by the editing tool, exit 2.
+  Case A6: the mark command under auto with no section Install permission: the block naming condition 6, because docs/agents/environment.md on origin/main has no section "## Install permission", so the question was never answered, exit 2.
+  Case A7: the mark command under auto with both no: the block naming condition 6 and condition 7, each with its cause, joined with a semicolon, exit 2.
+  Case A8: no section Dependency permission: the block naming condition 7, because the file has no section "## Dependency permission", so the question was never answered, exit 2. Case A9: the section without its line: condition 7, because the section on origin/main has no dependency-tools line, exit 2. Case A10: dependency-tools maybe: condition 7, because dependency-tools reads "maybe" on origin/main, where yes and no are the only values, exit 2.
+  Case A11: the mark command under auto in a directory without docs/agents: no output, exit 0, the pass of a project not set up, as before.
+  Case B1: the reader with --dependency on dependency-tools yes: ref origin/main, tools yes, answered 2026-10-20, no place and no route line, exit 0; case B2: on no, tools no, exit 0.
+  Case B3: --dependency with no section: the cause naming the section, exit 1; case B4: the section without its line: the cause "has no dependency-tools line", exit 1; case B5: dependency-tools maybe: the cause with the value, exit 1.
+  Case B6: the install form unchanged: ref, tools yes, place /usr/local/bin, route brew, answered, exit 0; case B9: the install form with no section: the cause naming "## Install permission", exit 1.
+  Case B7: an option the reader does not know: "unknown option --foo; the one option is --dependency" on stderr, exit 2; case B8: two directories: "expected at most one directory argument, the project directory, got 2", exit 2.
+  Case C1: read with no settings file and no stored no: "the file does not exist", exit 1; case C3: a settings file without autoMode: "the file holds no autoMode", exit 1.
+  Case C2: read with the rule standing in autoMode.allow: "the rule stands in", exit 0.
+  Case C4: decline with no stored no: "the no is recorded in", the file devloop-auto-mode-rule-declined carrying "declined: 2026-10-22", mode 0600, exit 0.
+  Case C5: read with the rule missing and the no stored: the reason, "the question was declined on 2026-10-22, recorded in" the file, "and is not put again", exit 3.
+  Case C6: decline with the no standing: "the no stands in ... already, declined on 2026-10-22; nothing changed", exit 0.
+  Case C7: settings.json before and after cases C3 to C6, by cksum: unchanged, the settings file untouched without a yes.
+  Case C8: an empty directory in the place of the stored no: read answers as with a no, "declined on a day the file does not say", exit 3, the existence of the path being the no.
+  Case C9: decline with the configuration directory a file: "the no was not written: [Errno 17] File exists", exit 2.
+  Case C10: write, the list autoMode.allow created with "$defaults" before the rule, exit 0, then read exit 0; the keys of the file in their order, theme then autoMode. Case C11: an argument the program does not know: the message naming read, write or decline on stderr, exit 2.
+  Case C13: write with settings.json a link into a directory that does not exist, under a second configuration directory: "not written: the write was refused: the link ... points to ..., whose directory does not exist, and this program makes none there", exit 2, nothing made; the case run after the three others because the refactoring of the write into one function moved the two lines that are part of this outcome, so that its run of 10 October 2026 no longer counts.
+  Case D1: the title step's script, extracted from the workflow at `d58bbdc`, on a throwaway repository with two new heads on a branch over its origin's main, one head of 56 characters and one of 139 with a date, a version number and "the person": the first passes, the second red with all four finds, two heads read, exit 1, the title passing beside them.
+  Case D2 to D5 and D7, on the tree of this repository at `d58bbdc` against origin/main: a title of 95 characters red with its count, one with "21 October 2026" red with the date, one with "0.156.0" red with the version, one with "the person" red with the words, each exit 1; "Run the hooks under Alpine 3.22 as well" passes, exit 0.
+  Case D6: the same on the tree with the title "Read start conditions 6 and 7 at the mark, store a no to the rule": the title passes, the head of the new entry at line 34609 passes, one head read, exit 0. These are runs of the script on this machine and not the platform's runs of the step, so no run is recorded on the workflow's things; the platform's run comes with the pull request.
+  Case E: the hooks step of the job hooks on every system, extracted from the workflow and run on this machine from 07:36:27 to 07:36:42 UTC, its own throwaway project committed with git -c as the step does: the reader's self-test and that of bin/devloop-arm passed, 36 cases of the latter; 17 handlers started, every one exit 0, the mark guard among them on ls and on a Write of README.md.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
