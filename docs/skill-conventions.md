@@ -2364,6 +2364,47 @@ well `nix run`, `nix shell` and `nix env shell` are read as `uvx` is, by
 name alone, defect 11 of the roadmap entry on the first closing run of
 milestone 3.
 
+**A refusal of auto mode on an install is recorded by the install guard,
+since 22 October 2026, and asked about at the next start with `--auto`.**
+The guard stands in `hooks/hooks.json` under `PermissionDenied` for `Bash`
+as well, the event Claude Code fires when auto mode denies a tool call,
+and reads the command there with its one reading and no copy of it: where
+the command is an install by one of the ways the rule for the classifier
+names — brew install, go install, cargo install, uv tool install, pipx
+install, playwright install, cypress install, puppeteer browsers install,
+the verb `install` itself — nothing on it stays the person's under every
+answer, and the field `reason` names a verdict of the classifier, it
+records the refusal through `bin/devloop-auto-mode-question record`, which
+owns the record: one file, `devloop-auto-mode-denials`, in the git
+directory the project's worktrees share, never in the tree and never in a
+commit, one line per refusal with the time, the way, the call's id and the
+command as the JSON carried it. The guard is silent at every other
+command, outside a devloop project and at a denial without a verdict, and
+asks for no retry; the reader prints the two fields it needs, `reason:`
+and `command:`, the latter the string literal as the JSON carries it. The
+question is decided by the same program and not by the run: at a start
+with `--auto`, with the person there, `build-work` on its direct route,
+`plan-work` at the end of Stage 1 and `setup-checks` step 8 after the yes
+to the mode run it once, and it ends with 0 where the rule does not stand
+in the person's settings, or they cannot be read for it, and an open
+issue labelled `raised-here` and `needs-human` carries a recorded command
+verbatim in its title or body — the match is mechanical, the skills having
+every such issue carry the command as it ran — naming each such issue,
+whether it holds a task, an open issue being blocked by it, or concerns a
+check class, and the command; with 1 nothing is asked, and with 2 `gh`
+did not answer and the run says so and concludes nothing. Nothing is
+stored on a no: the question comes at every such start while an issue is
+open and ends when it is closed, and nobody has to know of the record or
+delete it. The rule can stand in the person's settings alone, the page
+"Configure auto mode" of Claude Code saying the classifier reads no
+`autoMode` from a project's `.claude/settings.json` or
+`settings.local.json`, so a no cannot be stored per project either. The
+job `hooks on every system` runs the guard once under `PermissionDenied`
+with a harmless input and the program's self-test, against a stand-in for
+`gh`, on every system but Windows, where a process started from Python
+finds no shell script as `gh`. Decided on 22 October 2026, the roadmap
+entry of that date on the question after a refusal.
+
 **What an install did is written by a hook, since 21 October 2026**, cluster
 18 of milestone 3 as the person decided it on 20 and 21 October 2026, the
 roadmap entry of 21 October 2026 on milestone 3, part 4. After every Bash
