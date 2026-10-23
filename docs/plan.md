@@ -431,7 +431,7 @@ install question and the question on check tools in the packages answered yes,
 a missing check tool installed by the run after the setup has landed, the mode
 declined, nothing planned and nothing built. The entry carries the stock of the
 machine, the open risk that the rule does not name `npm install -g`, and every
-open defect of the list with the run that meets it.
+open defect of the list with what it still needs and the run where it needs one.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
