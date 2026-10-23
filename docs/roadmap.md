@@ -36297,6 +36297,261 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   entry. The figures of the tool and the checks before and after the change
   stand in the report.
 
+- **The rule for auto mode names the guard's routes; audit defects built.**
+  23 October 2026, version 0.157.0. On `task/catch-up-audit-2026-10-23`,
+  off `ba2d06b`, in three commits: `d2e0898` the code with the version and
+  the rows of the things it changes, then this entry with `README.md`, the
+  conventions, the plan and the rows they need, then the runs. The order is
+  the one after the audit of the same day, the entry at line 35558, whose
+  eight defects outside `docs/`, lines 36129 to 36214, are D1 to D8 here in
+  their order, and whose report carries the questions Q1 to Q3. The report
+  of this order stands on this machine as `~/devloop-catch-up-2026-10-23.md`,
+  in German, and is not in the repository. A line of a file is given as it
+  stands at the tip of the branch unless a commit is named; the code's
+  lines hold at `d2e0898` as well. Beyond the `git fetch` of the order the
+  npm registry was read for `@puppeteer/browsers`, `puppeteer` and the
+  probe package of the measurement, the first two were installed into a
+  throwaway directory with `--ignore-scripts`, two sessions of `claude -p`
+  ran for the measurement, and the step of the job ran in containers of
+  `alpine:3.22` and `ubuntu:24.04`; GitHub was neither read nor changed.
+
+  **Decided on 23 October 2026.** (a) Q1, the figures in `README.md`: line
+  8 reads "It covers the main path." where it read "Twelve skills covering
+  the main path.", and line 272 "Short files under `docs/agents/`:" where it
+  read "Five short files under `docs/agents/`:", the rest of each as it
+  was; the finding on line 8 is closed as corrected in the document. The
+  reason: a figure on something the repository holds stands in one place,
+  "A count lives in one place" in `docs/skill-conventions.md`, and the
+  README names no file of devloop's own. (b) Q2 and D8, the rule for auto
+  mode: it allows every way the install guard reads as an install and no
+  other, in this wording, approved, which replaces the rule of text 4 of
+  the entry of 9 October 2026, lines 14452 to 14470:
+  "Installing or updating a tool or a browser for tests that the current
+  task needs is allowed in a repository set up with devloop, by these
+  commands: brew install, go install, npm install -g, pnpm add -g, yarn
+  global add, bun add -g, cargo install, gem install, pipx install, uv tool
+  install and pip install, and playwright install, cypress install or
+  puppeteer browsers install for a browser. A devloop hook reads the
+  project's install permission and where each such command installs before
+  it runs, and blocks it where the person has not said yes or where it
+  installs to a place the permission does not name."
+  Where the old rule stands word for word under `autoMode.allow`, the rule
+  counts as not entered, and devloop asks anew with the question of text 4
+  unchanged, since the new one allows more; on the yes `write` puts the new
+  rule in the old one's place, without a second beside it, and on the no the
+  old one stays. The question after a refusal counts a refusal on every way
+  the new rule names. The ways of the rule, the ways the guard reads as an
+  install and the ways the question counts stay equal by machine, a way
+  added in one place and missing in another turning a self-test red; the
+  system packages, `apt`, `port` and the others, are none of them and stay
+  the person's under every answer. (c) The answer to the objection raised
+  before the build, the same day: a way is exactly one of the eleven routes
+  whose place the guard asks on the machine, the names a record can carry
+  under `install-route` — brew, go, npm, pnpm, yarn, bun, cargo, gem, pipx,
+  uv and pip — or one of the three browser installers, playwright install,
+  cypress install and puppeteer browsers install; one self-test holds the
+  three sets equal, the ways in the wording of the rule, the routes and
+  browser installers in the guard's source and the ways the guard records
+  under `PermissionDenied`; a refusal is counted in the spelling of the
+  rule, and for pip `pip install`, `pip3 install`, `python -m pip install`
+  and `uv pip install` count. The guard reads more forms as an install than
+  the rule names: another verb of the same tools, `brew upgrade`, `npm i
+  -g` or `cargo binstall` say, `gh extension install`, `deno install -g`,
+  `dotnet tool install -g`, `pkgx` and `pkgm`, `make install`, a copy into
+  a bin directory, and the forms that fetch a tool and run it, `uvx` or
+  `pnpm dlx` say; none of them is a way of the rule, and auto mode judges
+  them by itself. The README changes after all, in this wording, approved:
+  in the paragraph that opens with "It touches your global configuration
+  in one place", from "so that auto mode does not block by itself" to "on
+  the Auto mode tab." inclusive:
+  "so that auto mode does not block by itself the installs that rule names,
+  each of which a devloop hook already guards; the rule's own text says
+  which they are. If you say no, it asks again only once auto mode has
+  refused such an install, at your next start with `--auto`, names that
+  install, and stops asking when its issue is closed. The rule allows
+  installs in projects set up with devloop and nothing else, and without
+  your yes the file is not touched. You can read and remove it in Claude
+  Code under `/permissions`, on the Auto mode tab."
+  The opening of the paragraph up to "it may enter one rule under
+  `autoMode.allow`," and the rest from "It does not decide" stay. The
+  reason: the guard reads more forms as an install than the rule names, and
+  a README that listed the ways or said every install the hook guards would
+  turn wrong at every change. So D8 is corrected in the document and
+  closed, and the should that (b) gave it, that the rule allows every way
+  the guard reads as an install so that the README's sentence holds, falls;
+  the sentence of (a) that the order changes nothing else of the README,
+  and that of (b) that the README's sentence stays, hold no longer. (d) Q3,
+  the identity in devloop's own tests: its own self-tests and the step
+  hooks on every system may commit in their own throwaway repositories with
+  their fixed identity that is made up, `hooks@example.invalid`, `t@t` and
+  the variables in the self-test of the stock-take tool, never with a real
+  address; for every commit an order makes itself the rule holds
+  unchanged. The reason: the rule keeps the person's address out of the
+  repository and prevents commits under a wrong name, and a repository the
+  test removes itself and that never reaches GitHub touches neither, while
+  the runners carry no identity. The audit's entry kept it under "Looked at
+  and not a defect"; the conventions say it as a rule now. (e) D1 to D7
+  are built, each with the should the audit's entry gives it, D1 after the
+  measurement below.
+
+  **The measurements, before the build.** First the rule, on this Mac under
+  Claude Code 2.1.309, at 11:18:39 to 11:18:56 UTC and 11:19:03 to 11:19:18
+  UTC, one attempt each: `claude -p --permission-mode auto --settings FILE
+  --max-turns 4` in a throwaway directory with `git init` and no
+  `docs/agents/`, so that the install guard of the installed plugin left at
+  its first test; FILE carried a `PermissionDenied` hook with the matcher
+  `Bash` appending its input as one line to a file under `$WORK`, and in
+  the second case `autoMode.allow` with `"$defaults"` and the new wording.
+  The prompt, word for word: "This repository is set up with devloop, and
+  the current task needs the tool devloop-probe-does-not-exist. Run exactly
+  this shell command, once, and nothing else: npm install -g
+  devloop-probe-does-not-exist". The package does not exist, `npm view`
+  answering E404 before the first case. In both cases the command ran and
+  failed with npm's E404, the hook did not fire, and no `reason` was
+  written. So the measurement shows nothing about the rule: the first case
+  let the command through already, which can come of an allow rule in the
+  person's settings that applies before auto mode, and those settings were
+  not read. The rule was built all the same, as the order said for that
+  outcome. Then D1: `npm view @puppeteer/browsers version
+  dependencies.yargs` answered 3.2.6 and `^18.0.0`, `npm view puppeteer
+  version dependencies` 25.16.0 with `@puppeteer/browsers` 3.2.6, and `npm
+  ls yargs` after the install yargs 18.2.0. The vendor's `cli.js` of
+  `puppeteer` and `main-cli.js` of `@puppeteer/browsers` ran under node
+  25.9.0 with a loader hook that replaced the `install()` which `CLI.js`
+  imports by one printing what it is handed: `puppeteer browsers install
+  chrome --path /srv/a` handed `/srv/a`, `--path=/srv/a` the same, `--path
+  /srv/a --path /srv/b` and the two attached the list `["/srv/a","/srv/b"]`,
+  `./rel` itself, and without `--path` the cache directory; `@puppeteer/
+  browsers install` the same, its default the current directory. The real
+  install, with two `--path` and a base URL that answers nothing, ended with
+  "TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type
+  string. Received an instance of Array", exit 1, and made neither
+  directory nor the cache. So yargs 18.2.0 reads a `--path` that no option
+  defines as yargs 17.7.3 did, and the guard reads it on that form.
+
+  **What is built, at `d2e0898`.** The rule, `bin/devloop-auto-mode-rule`:
+  the new wording, lines 102 to 112; the earlier one, lines 115 to 122,
+  read as no rule at line 170 with the reason at line 226, and replaced in
+  its place on `write`, lines 243 to 248, a further copy of it further down
+  the list removed; the head, lines 2 to 91, says both. Its self-test, D5,
+  lines 317 to 562, makes every outcome of `read` and `write` once under a
+  `CLAUDE_CONFIG_DIR` of its own, the arguments, the five reasons of `read`,
+  the four of a file that cannot be read and a directory in its place, the
+  list created, appended to and standing, the earlier wording replaced,
+  once and twice, a refused write, the mode of the file kept where the
+  system keeps one, no temporary file left, a hard link, and three symbolic
+  links where the system makes one, with a line saying so where it does
+  not; then the ways, lines 512 to 555, below. The install guard,
+  `hooks/pre-tool-use-install-guard.sh`: its head, lines 20 to 46; `item`
+  takes the verb, lines 234 to 251, and `spelling`, lines 284 to 301,
+  marks the way of the rule in its spelling, every route's call handing its
+  verb, lines 428, 550 to 553, 561, 564, 584, 590, 647, 654, 656, 670, 671
+  and 675; pip in its four forms at line 884; the reading under
+  `PermissionDenied`, lines 889 to 908, no longer reads the routes a second
+  time, and D4, line 902, leaves a denial whose reason is missing, empty or
+  blank uncounted. D1, lines 719 to 733, 743 and 760 to 775: `--path` read
+  on `puppeteer browsers install` as on `@puppeteer/browsers install`,
+  through `onpath`, lines 272 to 283, every `--path` of either form held
+  for itself, the cache directory read only where none stands.
+  `bin/devloop-auto-mode-question`: its head, lines 16 to 27 on the ways and
+  58 to 62 on the job as the record's other reader, D3; its self-test reads
+  the earlier wording off the rule program's source and asks the question
+  with it standing, lines 607 to 622. `bin/devloop-install-record` lines 15
+  to 21, D2: the causes on the section name it, the one on the key's value
+  the key, the others are those of the install record. The job,
+  `.github/workflows/stock-take.yml` lines 271 to 279 and 328 to 333, D6:
+  every file under `bin/` that takes `--self-test`, a python program with
+  the interpreter the step finds, any other by its first line. Section C of
+  the header of `scripts/devloop-stock-take`, lines 399 to 418, D7: a status
+  line that records something built and no defect is part of the thing it
+  records, runs or no runs, since an entry is appended and its lines blame
+  to its own commit, a correction in place undercounting and never
+  overcounting; the four rows the audit named are rows of that form, their
+  notes saying so. `skills/setup-checks/SKILL.md` lines 1106 to 1109 and
+  1188 to 1215 and `shared/install-not-through.md` lines 15 to 23 describe
+  the new wording; and with this entry `README.md` lines 8, 272 and 280 to
+  290, `docs/skill-conventions.md` lines 2375 to 2388, 2425 to 2448, 2751 to
+  2762 and 3199 to 3217, and `docs/plan.md` lines 421 to 423, 436 to 438,
+  468 to 471 and 959 to 960. For the closing runs of the entry at line
+  35286: in run 2a the question on the rule comes at the setup, since the
+  old wording stands on the person's Mac, and is answered yes; the open
+  risk named at line 35405, that `npm install -g` is not under the rule,
+  ends with the new wording.
+
+  **The ways, held by machine.** The self-test of `bin/devloop-auto-mode-rule`
+  reads the ways off the wording of the rule, the commands between "by these
+  commands:" and "for a browser.", the tools before ", and"; the routes off
+  the code lines of the guard, each `place NAME`, and the browser
+  installers, each `BROWSER=NAME`; and the ways it records a refusal by,
+  each `way "WAY"`. It holds the first words of the tools to the routes and
+  those of the browser installers to the browsers, and the fourteen ways to
+  the ways written in the guard; then it runs the guard under
+  `PermissionDenied` with a verdict, in a throwaway project, once per way
+  and for pip in four forms, and reads the way recorded. On four copies of
+  `bin/` and `hooks/` at `d2e0898` it went red each time: a route `deno`
+  added to the guard, the way of pip taken out of it, `gem install` taken
+  out of the rule, and a way `brew upgrade` written into `spelling`.
+
+  **The benches, at `d2e0898`, on this Mac**, every case fed to the guard as
+  Claude Code sends it, in a throwaway project with `docs/agents/`, a
+  record on `origin/main` saying yes with the place `~/.cache/puppeteer`
+  and the route `npm`, the verdict "The server-side auto mode classifier
+  judged this action dangerous (it gave no explanation)" where a reason is
+  named; the same cases against `ba2d06b` where a difference is named.
+  Case U1, 12:06:14 UTC, PermissionDenied, npx puppeteer browsers install chrome --path /srv/browsers: recorded as puppeteer browsers install.
+  Case U2, PermissionDenied, npx puppeteer browsers install chrome --path ./browsers: silent, inside the project.
+  Case U3, PermissionDenied, npm install -g devloop-probe with no reason, with an empty one and with blanks: silent, nothing recorded.
+  Case U4, PermissionDenied, brew install devloop-probe with no reason, an empty one and blanks: silent, where ba2d06b recorded it all three times.
+  Case U5, PermissionDenied, brew install devloop-probe with the verdict: recorded as brew install.
+  Case U6, PermissionDenied, npm install -g devloop-probe with the reason [Test]: recorded as npm install -g, where ba2d06b recorded nothing for npm.
+  Case U7, PermissionDenied, npm install --global devloop-probe: recorded as npm install -g.
+  Case U8, PermissionDenied, npm i -g, brew upgrade, pnpm global add and yarn add -g of devloop-probe: silent, another spelling than the rule's.
+  Case U9, PermissionDenied, python3 -m pip install --user devloop-probe: recorded as pip install, where ba2d06b recorded nothing.
+  Case U10, PermissionDenied, sudo npm install -g devloop-probe: silent, sudo stays the person's.
+  Case U11, PermissionDenied, gh extension install owner/gh-probe and uvx devloop-probe: silent, no way of the rule.
+  Case U12, PermissionDenied, brew install a && npm install -g b: recorded as brew install;npm install -g, where ba2d06b recorded brew install alone.
+  Case V1, 12:06:15 UTC, PreToolUse, npx puppeteer browsers install chrome --path /srv/browsers: blocked, it lands in /srv/browsers, where ba2d06b let it pass.
+  Case V2, PreToolUse, npx puppeteer browsers install chrome --path /srv/a --path /srv/b: blocked naming /srv/a /srv/b, where ba2d06b let it pass.
+  Case V3, PreToolUse, npx puppeteer browsers install chrome --path=/srv/a: blocked naming /srv/a.
+  Case V4, PreToolUse, npx puppeteer browsers install chrome with --path ./browsers, with none, and with --path ~/.cache/puppeteer: each passes, exit 0.
+  Case V5, PreToolUse, npx puppeteer browsers install chrome --path '$X/b': blocked, where it lands cannot be read here.
+  Case V6, PreToolUse, npx @puppeteer/browsers install chrome@stable --path /srv/a --path /srv/b: blocked naming /srv/a /srv/b, where ba2d06b named /srv/b alone.
+  Case V7, PreToolUse, npx @puppeteer/browsers install chrome@stable --path /srv/a: blocked naming /srv/a.
+  Case V8, PreToolUse, npm install -g devloop-probe under the route npm: passes, exit 0; pnpm add -g devloop-probe: blocked naming ~/Library/pnpm.
+  Case V9, PreToolUse, the help and --install-deps of both puppeteer forms: the help passes, --install-deps blocked as system packages, as at ba2d06b.
+  Case W1: the self-test of bin/devloop-auto-mode-rule at d2e0898, 12:06:17 to 12:06:20 UTC, 73 cases passed, exit 0.
+  Case W2: the same self-test on the four copies named above, 12:06:38 to 12:06:50 UTC, exit 1 each, one, six, five and one case red.
+  Case W3: the self-test of bin/devloop-auto-mode-question at d2e0898, 12:06:20 to 12:06:23 UTC, 39 cases passed, the earlier wording among them.
+  Case W4: bin/devloop-install-record --dependency at d2e0898, 12:06:23 UTC: the cause on the section names it, those on the directory and the repository do not.
+  Case W5: the step hooks on every system run here at d2e0898, 12:06:50 to 12:07:14 UTC, eight self-tests passed, 19 handlers started, the counted refusal recorded, exit 0.
+  Case W6: the self-test of scripts/devloop-stock-take at d2e0898, 12:09:23 to 12:09:26 UTC, 124 cases passed, 95 of 95 messages asserted.
+  The same step ran green in `alpine:3.22` and in `ubuntu:24.04` before the
+  commit, from a copy of the working tree; Windows was not run here and
+  shows in the job alone.
+
+  **Rows of the table.** In the first commit, with the code: the rows on
+  the lines the code moved, re-anchored, two of a line that went removed;
+  the evidence of the defect sited at line 13635 on the line that reads
+  every `--path` and that of the defect sited at line 20448 on the line of
+  `brew` with its verb; the
+  thing of the job's step for the question program renamed, no run on it,
+  to the step running every self-test under `bin/`; the notes of the
+  things whose outcome grew, the read of the rule, its arguments, the yes
+  in `setup-checks`, the record under `PermissionDenied` and its silence
+  where no way is taken; D1 to D7 with their evidence on the line of the
+  fix; four new things, the rule's write over the earlier wording, its
+  self-test green, its self-test red on the ways, and the guard's silence
+  at a denial without a reason; and the part-of rows of the new lines. With
+  this entry: the finding of 2 October 2026 on line 8 of the README
+  replaced by a defect sited on the first closing line below, D8 and the
+  defect closed at line 35039, whose proof the new paragraph took away,
+  closed again on the lines below, and the head of this entry as part of the
+  first. The runs, in the third commit, each on its thing's own row with
+  the case above as its anchor.
+
+  README.md line 8, the finding of 2 October 2026 on the figures of skills and files: Closed, corrected in the document: `README.md` carries "It covers the main path.".
+  D8, README.md saying the rule covers the installs a devloop hook guards: Closed, corrected in the document: `README.md` carries "the installs that rule names".
+  Line 35039, README.md on the question after a no, its proof gone with the paragraph: Closed, corrected in the document: `README.md` carries "only once auto mode has refused such an install, at your next start with".
 
 
 ## Decisions taken against
