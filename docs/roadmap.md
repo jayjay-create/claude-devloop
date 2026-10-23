@@ -36301,7 +36301,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   23 October 2026, version 0.157.0. On `task/catch-up-audit-2026-10-23`,
   off `ba2d06b`, in three commits: `d2e0898` the code with the version and
   the rows of the things it changes, then this entry with `README.md`, the
-  conventions, the plan and the rows they need, then the runs. The order is
+  conventions, the plan and the rows they need, then the runs; and in two
+  more of the same day, `8b5add8` the workflow, then the addendum at the
+  end of this entry, two self-tests left out under Windows. The order is
   the one after the audit of the same day, the entry at line 35558, whose
   eight defects outside `docs/`, lines 36129 to 36214, are D1 to D8 here in
   their order, and whose report carries the questions Q1 to Q3. The report
@@ -36459,8 +36461,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   with it standing, lines 607 to 622. `bin/devloop-install-record` lines 15
   to 21, D2: the causes on the section name it, the one on the key's value
   the key, the others are those of the install record. The job,
-  `.github/workflows/stock-take.yml` lines 271 to 279 and 328 to 333, D6:
-  every file under `bin/` that takes `--self-test`, a python program with
+  `.github/workflows/stock-take.yml` lines 271 to 279 and 328 to 333 at
+  `d2e0898`, D6: every file under `bin/` that takes `--self-test`, a python program with
   the interpreter the step finds, any other by its first line. Section C of
   the header of `scripts/devloop-stock-take`, lines 399 to 418, D7: a status
   line that records something built and no defect is part of the thing it
@@ -36552,6 +36554,84 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   README.md line 8, the finding of 2 October 2026 on the figures of skills and files: Closed, corrected in the document: `README.md` carries "It covers the main path.".
   D8, README.md saying the rule covers the installs a devloop hook guards: Closed, corrected in the document: `README.md` carries "the installs that rule names".
   Line 35039, README.md on the question after a no, its proof gone with the paragraph: Closed, corrected in the document: `README.md` carries "only once auto mode has refused such an install, at your next start with".
+
+  **Addendum of the same day: the self-tests of `bin/devloop-bounded` and
+  `bin/devloop-setup-state` left out under Windows, a defect of milestone
+  12.** The order after pull request #200, on
+  `task/catch-up-audit-2026-10-23`, version 0.157.0 as before, in two
+  commits after `0451cf2`: the workflow with the rows of the table it needs,
+  `8b5add8`, then this addendum with the row of its defect and the notes it
+  changes. No thing lost its counting run through the change, the lines of
+  the things that carry runs standing as they stood, so no third commit
+  records runs. Every line of a file below is as it stands at the tip of the
+  branch. What the job printed on pull request #200 is as the order gives
+  it; this order read nothing on GitHub and changed nothing there.
+
+  What happened. On pull request #200 the job hooks on every system ran into
+  its bound of fifteen minutes on windows-latest and was stopped. Its log:
+  the self-test of `bin/devloop-auto-mode-rule` passed, 72 cases, one fewer
+  than case W1 on this Mac, which fits the case on the file's mode bits that
+  the self-test leaves out under Windows, its line 461. Then the self-test
+  of `bin/devloop-bounded` began; its last line is "ok input through: cat
+  prints what it was fed" at 12:34:12 UTC, and nothing came after it until
+  the job was stopped at 12:47:39 UTC. Its next case is "does not end: ended
+  with what it started", the call `run 1 sh -c 'sleep 7331 & sleep 7333'` at
+  line 81 of `bin/devloop-bounded`. The program ends the command and its
+  children through `kill_tree`, line 38, which finds the children with
+  `pgrep -P`. `bin/devloop-setup-state` ends processes through a `kill_tree`
+  of its own the same way, line 73; its self-test comes after in the job and
+  was not reached under Windows, and neither were the self-tests of
+  `bin/devloop-command-reader`, `bin/devloop-install-note` and
+  `bin/devloop-missing-tool`, the handlers and the record of the counted
+  refusal, which run there on the next run.
+
+  What is decided. Milestone 3 ends on the person's Mac: `docs/plan.md` says
+  "every other system and every other surface is milestone 12, directly
+  after this one", lines 304 to 305, and "a defect this plan assigns to
+  another milestone counts there", lines 377 to 378. A defect that stands
+  under Windows alone belongs to milestone 12, then, and is not built on
+  this branch. (a) The job leaves out the self-tests of
+  `bin/devloop-bounded` and `bin/devloop-setup-state` under Windows, and
+  says so: the step prints for each a line that it is left out and why,
+  lines 349 and 350 of `.github/workflows/stock-take.yml`, read off
+  `RUNNER_OS`, which the platform sets to Windows on that runner, line 348;
+  the comment above the job says it with the defect below, lines 280 to 294,
+  and so do the comment in the step, line 345, and its name, line 338. For
+  `bin/devloop-bounded` the reason is the hang seen; for
+  `bin/devloop-setup-state` the same ending through `kill_tree` with
+  `pgrep`, left out before it is seen to hang. On ubuntu-latest,
+  macos-latest and alpine both run as before, and every other self-test
+  under `bin/` runs on all four systems. (b) The defect below, assigned to
+  milestone 12. (c) The step that shows what the checkout holds prints
+  whether `pgrep` is on `PATH` and where, line 334, so that the next run
+  under Windows shows the cause. (d) D6 above stays built for every
+  self-test under `bin/` but these two under Windows; the defect below
+  carries the gap, and the row of D6 says so in its note.
+
+  What this machine shows. The two steps, extracted from the workflow at
+  `8b5add8`, ran here as scripts under `bash -eo pipefail`, as the platform
+  runs a step of `shell: bash`: the checkout step at 13:14:05 UTC printed
+  "pgrep: /usr/bin/pgrep", exit 0; the step of the self-tests with
+  `RUNNER_OS` macOS from 13:14:05 to 13:14:29 UTC passed eight self-tests,
+  19 handlers started and the counted refusal recorded, exit 0; with
+  `RUNNER_OS` set to Windows from 13:14:29 to 13:14:49 UTC it printed the
+  two lines in place of those two self-tests, passed the other six, 19
+  handlers and the record, exit 0. These are runs of the script on this
+  machine and not the platform's runs of the step, so no run is recorded on
+  the two new things; the platform's run comes with the pull request.
+  Whether Git Bash on windows-latest carries `pgrep`, and why the program
+  does not end what the command started there, only that run shows.
+
+  The table, in `8b5add8`: two things of the job, the self-test of each
+  program left out under Windows, anchored on the line that prints it, and
+  the line of `case` that decides both as part of the first; the notes of
+  the thing on the step running every self-test, whose name in the table
+  keeps "windows-latest" since a run hangs on it, and of the thing on the
+  checkout step, which prints `pgrep` now. In this addendum's commit: the
+  defect below, its site and its evidence this status line, nothing built,
+  and the note of D6.
+
+  Recorded, not built: under Windows with Git Bash `bin/devloop-bounded` does not end a command that does not end together with what it started, its self-test standing at "does not end" in the job, and `bin/devloop-setup-state` ends the same way and is untested there; the cause is not measured — should: in milestone 12 both end a command and everything it started at the bound under Windows with Git Bash as well, and their self-tests run in the job hooks on every system on windows-latest.
 
 
 ## Decisions taken against
