@@ -408,6 +408,26 @@ the guard, cluster 16 of the checked list, does not belong to this milestone,
 which ends on one machine so that it has one variable, and leaves the list
 this milestone stands on; which milestone takes it up the person decides
 after milestone 3.
+Decided on 22 and 23 October 2026, the roadmap entry of 23 October 2026 on the
+arrangement of the five closing runs: five runs on the person's Mac in the
+terminal, all in one new project, arranged before the run as the closing runs
+of October were, and every command devloop hands over the person runs. Run 1
+with the person and a no to installing: `gitleaks` uninstalled first, a public
+repository with a README and no code, a small TypeScript command line whose two
+tasks call for `htmlq` and for Playwright in WebKit expressly, the credentials
+check switched off where its tool is missing, the mode declined. Run 2a through
+the planning under `--auto`: the second asking answered yes, the check tools in
+the packages too, the documentation getting diagrams through `mmdc` installed
+globally from npm, then everything without the person. Run 2b the direct route
+under `--auto`, with a small idea that needs no tool. Run 3a the question for
+the rule after a counted refusal of `brew install yq`, fed to the install guard
+by hand, with an issue carrying the command and the rule removed, answered no
+at one start and yes at the next. Run 3b the refresh putting the install
+question anew after the section was removed and the marker set back. The entry
+carries the stock of the machine, the open risk that the rule does not name
+`npm install -g`, and every open defect of the list with the run that meets it;
+one, line 7923 of the roadmap, a first setup with a yes and a tool missing, no
+run of the five meets.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October

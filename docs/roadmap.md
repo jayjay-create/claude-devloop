@@ -35283,6 +35283,248 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Case E3: the hooks step of the job at 296f69b, run on this machine from 19:37:02 to 19:37:18 UTC: the three self-tests passed, 165, 36 and 38 cases; 19 handlers started, every one exit 0, the install guard twice under PermissionDenied, on ls and on the counted refusal; the record of the throwaway project read afterwards, one line, the way pipx install, the id toolu_hooksdenied and the command, printed, exit 0. A run of the script on this Mac and not the platform's run of the step, so no run is recorded on the workflow's things; the platform's run comes with the pull request, and on windows-latest it is the first.
   Case R: the step's check of the record alone, its seven lines extracted and run on this Mac against a file under $WORK: no file, red, "holds: nothing"; one line with a carriage return at its end, found and printed; two lines, red with both printed; the way brew install in the line, red with the line printed. Lines run on this Mac, recorded on no thing.
 
+- **Five closing runs of milestone 3 arranged, each open defect mapped.** 23
+  October 2026, version 0.156.0 stays. On `task/closing-run-arrangement`, off
+  `f0eaae7`, in one commit: this entry, one paragraph in `docs/plan.md` and one
+  row of the table. The report of this order was given in the session that wrote
+  it and is not in the repository. Every line number of a file is as at
+  `f0eaae7`; a line of this file as at `f0eaae7`, which below line 31380 is its
+  number at `0776389` too, since every change to this file between the two
+  commits either replaced a line by one line or appended after line 31377, read
+  off `git diff 0776389 f0eaae7 -- docs/roadmap.md`. No session of Claude Code
+  was started for this entry and nothing ran on a bench; no file under
+  `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or
+  `.github/` changes, and `README.md` does not change. The words the tool reads
+  a line of this file into its search set by stand in this entry in its head and
+  on no other line; this entry records no defect and closes none. This entry
+  carries the arrangement as the person decided it; where the list below finds a
+  point the arrangement does not reach, it says so and the arrangement stands.
+
+    **Decided on 22 and 23 October 2026.** Milestone 3 is reached when no defect
+  is left that concerns it, `docs/plan.md`, the paragraph "Decided on 19 October
+  2026, the roadmap entry of that date on the two runs of that day". The runs
+  for it the person arranged before the run, as the closing runs of October were
+  arranged, `docs/plan.md`, the paragraph "Decided on 10 October 2026, the
+  roadmap entry of that day on the arrangement of the closing runs". Arranged
+  are five runs on the person's Mac, in the terminal, all in one new project.
+  Commands that devloop hands over the person runs, so that the run reads their
+  result itself.
+
+    Run 1, with the person, installing under a no. Before it: `brew uninstall
+  gitleaks`, so that the check on checked-in credentials meets a missing tool; a
+  new public repository on GitHub with a README and no code — the README so that
+  a main branch exists, public because without GitHub Pro the protection of the
+  main branch is offered there alone. Then `/devloop:start-work`. The install
+  question is answered no; the person says whether it fits the choice widget
+  without scrolling. To be built is a small TypeScript command line with two
+  tasks that call for their tool expressly: an npm script that reads data out of
+  an HTML file with `htmlq`, and an end-to-end test with Playwright in WebKit.
+  At the setup of the checks after the first merge with code, `gitleaks`
+  missing: „Prüfung abschalten“. The offer of the run without the person: no.
+
+    Run 2a, the way through the planning. Claude Code in auto mode,
+  `/devloop:start-work --auto`. At the setup of the run without the person: the
+  second install question answered yes, the person saying whether it fits the
+  choice widget; the question on check tools in the project's packages answered
+  yes. The check on credentials that was switched off is set up under the yes.
+  At the sharpening: the documentation gets diagrams, generated with the
+  globally installed `mmdc`, the command line of Mermaid from npm. After that
+  everything runs without the person.
+
+    Run 2b, the direct way. `/devloop:start-work` without a flag, with a small
+  second idea that needs no new tool, another switch of the command line say; at
+  the end of the sharpening: plan without the person and show the plan before
+  the build. Then `/devloop:start-work --auto`, which goes straight into the
+  build.
+
+    Run 3a, the question for the rule after a refusal. `/devloop:start-work`
+  without a flag, with an idea that needs `yq`: an npm script reads a setting
+  out of a YAML file with `yq`; at the end: plan without the person and show the
+  plan before the build. In the terminal: the install guard is fed the input of
+  a refusal under `PermissionDenied` measured on 22 October 2026, for `brew
+  install yq`, and writes the line of the refusal itself; an issue with exactly
+  this command, the labels `raised-here` and `needs-human`, recorded as a
+  blocker of the `yq` task; the rule for auto mode is removed in Claude Code
+  under `/permissions`, tab Auto mode. Then `/devloop:start-work --auto`: the
+  question must come and name `brew install yq` with the issue; the answer no,
+  nothing is written, the task stays where it is. Once more `/devloop:start-work
+  --auto`: the question must come again; the answer yes, the rule stands again,
+  the issue is closed, the run builds the task and installs `yq` itself. There
+  it shows whether the rule entered holds in the same session: "Settings files
+  and precedence", section "When edits take effect", says that Claude Code
+  reloads changed settings files; measured it is not.
+
+    Run 3b, the asking anew at the refresh. In the terminal, through a pull
+  request onto the project's main branch: the section `## Install permission` is
+  removed from `docs/agents/environment.md`, and the marker line `<!-- devloop:
+  … -->` in `docs/agents/issue-tracker.md` is set to 0.155.0. The marker is
+  needed because `start-work` refreshes only on an older marker,
+  `skills/start-work/SKILL.md` lines 45 to 48. Then `/devloop:start-work`; the
+  refresh must put the install question anew; the answer yes.
+
+    Not in the runs: cluster 20, which does not hold the milestone up by the
+  decision of 20 October 2026; cluster 16, which is no longer part of the
+  milestone; the benches for hooks and programs, which run anew after the runs
+  under the version then current; and what is bookkeeping in the table alone.
+
+    **What stands on the person's Mac on 22 October 2026**, read with `command
+  -v` and `ls ~/Library/Caches/ms-playwright`: there are `gitleaks`,
+  `osv-scanner`, `dasel`, `re2c`, `re2js`, `jq`, `node`, `npm`, `pnpm`, `bun`,
+  `cargo`, `go`, `python3`, `pipx` and `uv`; missing are `semgrep`,
+  `trufflehog`, `htmlq` and `yq`; for Playwright, Chromium (builds 1229, 1243
+  and 1248), the headless shell and Firefox 1555 are downloaded, WebKit is not;
+  the rule for auto mode stands, `bin/devloop-auto-mode-rule read` with exit 0.
+  Whether `mmdc` and the Chrome of Puppeteer are missing is checked before run
+  2a.
+
+    **Open risk.** The rule of text 4 of the entry of 9 October 2026 names brew,
+  go, cargo, uv tool, pipx and the browser installers, not `npm install -g`.
+  Where auto mode refuses the install of `mmdc`, the part of cluster 19 that
+  asks for an install through a route of the stack, line 8155, stays without a
+  run; that is then a finding.
+
+    **The list of the defects that concern the milestone and are not closed**,
+  read before the comparison with the arrangement, off
+  `scripts/devloop-stock-take` at `f0eaae7` and off the clusters of the entry of
+  19 October 2026 on the checked list, line 31380, with the changes under "The
+  list of the clusters after the answers" in the entry of 20 October 2026, line
+  32312, and with what the entries of parts 1 to 5 built and closed, lines
+  32873, 33283, 33759, 34080 and 34609. For each point: its state in the tool,
+  and what it still needs — a run, where it turns on what the model does; a
+  bench, where it is a hook's or a program's; nothing, or bookkeeping in the
+  table alone — and, for every point that needs a run, which of the five runs
+  meets it. Every state below is the tool's at `f0eaae7`, exit 0, no broken
+  record, 40 defects closed, none of 4488 lines of the search set uncovered. The
+  clusters are named by their numbers of 19 October 2026.
+
+    A run, twelve points met by one of the five and one by none. Line 9655,
+  cluster 2, the rule that a question about how this workflow runs carries no
+  recommendation: built and never walked, its evidence the rule in
+  `shared/how-to-ask.md`; a run, forceable at every setup; run 1, the setup's
+  questions 2 and 3, and 5 where its condition holds. Line 7034, cluster 4, step
+  4 of `setup-project` not skipped where there is no code: built and never
+  walked; a run; run 1, the setup of a repository with a README and no code.
+  Line 5295, cluster 7, what a check class becomes under a no on its tool,
+  skipped with that reason: built and never walked, its evidence in
+  `skills/setup-checks/SKILL.md`; a run; run 1, step 3 with `gitleaks` missing
+  and „Prüfung abschalten“. Line 30085, cluster 21, the decision on such a class
+  taken as a question of the person's before the offer of the mode, no class
+  left `empty`: built and never walked, its evidence the question of step 3; a
+  run, forceable at every setup with a no; run 1, the same question. Line 1538,
+  cluster 19, a command handed over backed before the handover and its success
+  read off the path: built and never walked, its evidence
+  `shared/backed-command.md`; a run under a no on a project whose task needs a
+  tool not on the machine; run 1, `brew install htmlq` and the download of
+  WebKit handed over in the build. Line 19003, cluster 19, the command handed
+  over carrying the change into the project directory: built and never walked,
+  its evidence `shared/skill-name.md`; a run with a browser handed over; run 1,
+  the download of WebKit. Line 8155, cluster 19, the pass under a yes read off
+  the answer of a route the record names: built and never walked, its evidence
+  `skills/build-work/SKILL.md`; a run with a yes on a project whose stack
+  installs through a route; run 2a, `mmdc` through npm, the route of the
+  TypeScript stack, under the open risk above. Line 5986, cluster 18, the report
+  of an install saying what the package manager did beside the package: built
+  and never walked, its evidence `skills/build-work/SKILL.md` line 507, the
+  report half alone since 20 October 2026; a run in which the run installs; run
+  2a, `mmdc`, and run 3a, `yq`. Line 15579, cluster 11, a project whose mode is
+  set up meeting the question for the rule: built and never walked, its evidence
+  the form of `setup-checks` step 8 for a start with `--auto`; a run with the
+  person there, in a project whose mode is set up and which carries an issue for
+  a counted refusal; run 3a, both starts with `--auto`. Line 30168, cluster 22,
+  the build reading the start conditions again at its start: walked for the
+  hook's half, conditions 6 and 7 at the write of the mark, by the bench of 22
+  October 2026; what a run must still show is the reading of the other five at
+  the start of the build on both routes and of 6 and 7 on the planning route;
+  run 2a, the planning route, and run 2b, the direct route. Line 33135, cluster
+  5, finding 9 of the tool as a defect, the refresh putting the install question
+  where no record stands on the main branch: built and never walked, its
+  evidence `skills/setup-project/SKILL.md`; a run; run 3b. Line 33153, cluster
+  18, finding 19 of the tool as a defect, the line under the no naming the
+  exception of a package that downloads something when it is installed: built
+  and never walked, its evidence `shared/install-question.md`; a run in which
+  the question is put; run 1 at the first asking, run 2a at the second, run 3b
+  at the refresh. Line 7923, cluster 4, nothing installed before step 8 of
+  `setup-project` has landed the record, at a first setup with a yes and a tool
+  missing: built and never walked, its evidence `skills/setup-project/SKILL.md`;
+  a run, a first setup with a yes and a tool of the stack missing, as the
+  decision of 20 October 2026 on cluster 4 put it into the closing run; met by
+  none of the five: run 1 answers no at the first asking and sets up a project
+  without a stack, the yes of run 2a is the second asking in `setup-checks` step
+  8, after the record has landed, and the yes of run 3b is a refresh, which
+  installs nothing. The arrangement stands as decided; this is the one point of
+  the list no run meets.
+
+    A bench, two points, each after the runs under the version then current.
+  Line 1317, cluster 12, the install guard's block message with its ways out:
+  built and never walked, the two runs on its row, of 29 September and 16
+  October 2026, rows 2421 and 6756 of the table, not counting under RUNS THAT DO
+  NOT COUNT since the message line, `hooks/pre-tool-use-install-guard.sh` line
+  1130, was last changed at `b52be40` on 21 October 2026; the bench of 21
+  October 2026 put every block through the message as it stands and entered no
+  run on this row. Line 13635, cluster 14, `--path` of `@puppeteer/browsers
+  install` read: built and never walked, the two runs of 21 October 2026 on its
+  row, rows 6901 and 6902 of the table, not counting since its evidence, line
+  719 of the guard, was last changed at `f0eaae7` on 22 October 2026.
+
+    Does not hold the milestone up, six points of cluster 20, each built and
+  never walked, each turning on what the model does and not to be forced, by the
+  person's reason of 18 October 2026 and the answer to question 3 of 20 October
+  2026: lines 1307, 18977, 29213, 5232, 12527 and 11463. They stay built and
+  never walked until a run meets one, and no run of the five is arranged to.
+
+    Nothing, or bookkeeping in the table alone, five points. Lines 33172 and
+  27503, cluster 17, finding 11 of the tool as a defect and the bullet of
+  `setup-project` for nobody there at a blocked install: built and never walked,
+  a text about a case the unattended mode reaches on no way, so that no run can
+  meet them. Lines 7298 and 18896, cluster 24: built and never walked, nothing
+  to repair and nothing to walk, the one read off the files and the other's
+  paragraph removed at `49bd995`; a closing would be a table order's. Line
+  18832, cluster 24: recorded and not built, a convention answers it,
+  `docs/skill-conventions.md`, which by the answer to question 4 of 20 October
+  2026 stays recorded.
+
+    Walked, thirty-one points, nothing owed; the runs meet some of them again
+  under 0.156.0 or the version then current. Lines 7048, 7325, 7667 and 10356,
+  cluster 1, the install question in the widget, by the runs of 16 and 19
+  October 2026 entered on 20 October 2026. Lines 26220 and 17627, cluster 6, the
+  second asking and where the owed text lands. Line 11275, cluster 7, step 3
+  under a no. Line 7787, cluster 8, the record under a no, by the bench of 20
+  October 2026. Lines 655, 660, 1174, 4968, 6105, 13932, 13955, 13971, 13993,
+  14009, 14052, 14066, 1270 and 1294, cluster 12, by the benches of 12 and 16
+  October 2026. Lines 6588 and 25184, cluster 13, the block message and its
+  causes, and line 14032, cluster 15, npm's forms, by the bench of 21 October
+  2026 of part 3. Lines 7705 and 30120, cluster 18, the missing tool read by the
+  check hooks and the fact written by the hook on `PostToolUse`, by the bench of
+  21 October 2026 of part 4. Lines 7741 and 5214, cluster 24, by the runs of 16
+  and 19 October 2026. Lines 33491 and 33977, the two lines at session start
+  recorded by parts 2 and 3 and built by parts 3 and 4, by their benches.
+
+    Gone from the list, named so that the count closes: the defects closed by
+  the entries of 20, 21 and 22 October 2026 — lines 7837 and 33094 of cluster 1,
+  6266 of cluster 3, 33141 of cluster 5, 7967 of cluster 9, 6442 of cluster 13,
+  27167 of cluster 17, 34353 of part 4 and the README line of the entry of 22
+  October 2026 among them, with the twenty-two of 20 October 2026 — and the
+  points the answers of 20 October 2026 took out, line 11496 and cluster 16's
+  line 14121 among them.
+
+    **Whether the milestone is reached.** No. The runs are arranged and not
+  made; thirteen points wait for a run, one of them for a run no arrangement of
+  the five holds, two for a bench after the runs.
+
+    **Records.** In `docs/stock-take.tsv`, by the head of
+  `scripts/devloop-stock-take`: one not-a-thing row for the head of this entry,
+  with the reason that the entry names no defect; nothing else. No run is
+  recorded, and no row for the paragraph in `docs/plan.md`, which stands in no
+  search set of the tool.
+
+    **The tool, run for this entry.** `scripts/devloop-stock-take` ran on
+  `f0eaae7` with exit 0 — no broken record, 15 findings, 40 closed defects, none
+  of 4488 lines of the search set uncovered, 2178 things, 689 of them walked —
+  and on the tree of the commit with the figures the report names; its self-test
+  on that tree passed. The nineteen checks under "Before a handover, run these"
+  did not run for this entry, the order of 23 October 2026 asking for the tool
+  and its self-test alone and nothing of a skill changing.
+
 
 ## Decisions taken against
 
