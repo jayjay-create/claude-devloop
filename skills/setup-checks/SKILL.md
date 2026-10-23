@@ -1104,7 +1104,9 @@ description already.
 more, directly after it and before the two permissions: whether devloop may
 enter a rule into their `~/.claude/settings.json`**, so that auto mode does
 not block installs in devloop projects by itself. The rule is the one of
-decision 1 of the roadmap entry of 9 October 2026, an entry of the list
+decision 1 of the roadmap entry of 9 October 2026, in the wording decided on
+23 October 2026, which names the eleven routes whose place the install guard
+asks and the three browser installers, an entry of the list
 `autoMode.allow`, which the classifier of auto mode reads as an exception
 to its own rules, and it can stand in their settings alone: the page
 "Configure auto mode" of Claude Code says the classifier reads no
@@ -1186,12 +1188,16 @@ in devloop shows; the roadmap entry carries the three other ways weighed.
 It is not put where the rule stands in the file already, word for word under
 `autoMode.allow`: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read`
 says so with exit 0 and writes nothing, and the program above reads it
-first. On the yes,
+first. Where the earlier wording stands there instead, text 4 of the roadmap
+entry of 9 October 2026, the rule counts as not standing, since 23 October
+2026, the new one allowing more: `read` ends with 1, and the question is put
+as where no rule stands. On the yes,
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write` enters it, and
 nothing else does: the rule word for word as one entry of `autoMode.allow`,
 the list created with `"$defaults"` before the rule where the file or the
-list is missing, the rule appended where a list stands, nothing changed
-where it stands already, every other key and value of the file kept in its
+list is missing, the rule appended where a list stands, the rule in the
+earlier wording's place where that stands, without a second entry beside
+it, nothing changed where it stands already, every other key and value of the file kept in its
 order, written over a temporary file so that no half file is ever left; the
 file is `settings.json` under `CLAUDE_CONFIG_DIR` where that is set, as the
 settings page of Claude Code says. Where the program writes nothing — the
@@ -1202,8 +1208,10 @@ with that message; that the run without them goes all the same; and that
 where auto mode refuses an installation, the run writes an issue with the
 reason and goes on with the next task. The wording approved on 8 October
 2026 stands in the roadmap entry of 9 October 2026 as text 4, the rule in
-English among it; this skill says what is said, not the words, and the
-program carries the rule. Without the yes the file is never touched, and a
+English among it, and the rule's wording of 23 October 2026 in the roadmap
+entry of that date on the catch-up after the audit; on a no the earlier
+wording stays where it stands; this skill says what is said, not the words,
+and the program carries the rule. Without the yes the file is never touched, and a
 no here changes nothing of what follows.
 
 **Then the two permissions, before anything is set up, each put a second

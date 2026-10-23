@@ -396,15 +396,26 @@ from anything else in the note by "; ", and the tool rejects any other:
 - template - it is part of a template or an example the run writes or shows
 - no defect - an entry head under "Known gaps" whose entry names no defect
 
-A status line of docs/roadmap.md is never recorded as "part of" a thing whose
-runs are to count: every line recorded as part of a thing is a line the thing
-stands on, and a line of the roadmap is changed by every later entry, so that
-the thing's runs stop counting with the next entry. The entry of 9 October
-2026 on the behaviour with nobody there met it, its status line on the hook
-for permission prompts recorded as part of that hook's deny, and moved the
-record onto the registration in hooks.json. A status line is covered by the
-defect whose site it is, or by "part of" a thing whose runs are not kept, a
-defect say.
+A status line of docs/roadmap.md is covered by the defect whose site it is,
+and a status line that records something built and no defect - "Built: a
+hook for permission prompts" say - by "part of" the thing it records, runs or
+no runs, since 23 October 2026. Every line recorded as part of a thing is a
+line the thing stands on, and an entry is appended and stays as it was
+written, so such a line blames to the commit of its own entry; a correction
+in place, as an audit makes one, changes it, and the thing's runs then count
+again from the first version that carries the correction: an undercount,
+which section D allows, never an overcount. Until that day this section said
+a status line was never recorded as part of a thing whose runs are to count,
+since a line of the roadmap was changed by every later entry, and named a
+defect as the thing whose runs are not kept; the entry of 9 October 2026 on
+the behaviour with nobody there moved its status line on the hook for
+permission prompts from that hook's deny onto the registration in
+hooks.json for that reason. Since 20 October 2026 defects carry runs of
+benches, and the audit of 23 October 2026 found four rows standing against
+the old rule, the status lines on the install guard's pass built in
+4bad07e, on the hook for permission prompts, on the rule for the classifier
+and on the guard on the identity of a commit, each part of a thing with
+runs; they are rows of this form.
 
 D. HOW STATES ARE COMPUTED
 

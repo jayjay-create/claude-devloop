@@ -24,13 +24,21 @@ cd "$PROJECT_DIR" 2>/dev/null || exit 0
 # reading below, the same code and no copy of it, and records the refusal
 # through bin/devloop-auto-mode-question where it counts: the command is an
 # install this guard would have held against the record, by one of the ways
-# the rule for the classifier names - brew install, go install, cargo
-# install, uv tool install, pipx install, playwright install, cypress
-# install, puppeteer browsers install, the verb install itself and no other -
+# the rule for the classifier names, in the spelling the rule writes -
+# since 23 October 2026, the roadmap entry of that date, the eleven routes
+# whose place this guard asks on the machine and the three browser
+# installers: brew install, go install, npm install -g, pnpm add -g, yarn
+# global add, bun add -g, cargo install, gem install, pipx install, uv tool
+# install and pip install, the last for every form read below as pip, and
+# playwright install, cypress install and puppeteer browsers install; until
+# that day the five tools and three browsers of the rule's earlier wording;
+# another verb on the same route, brew upgrade or npm i -g say, is none -
 # nothing on the command stays the user's under every answer, and the
 # reason names a verdict of the classifier: a denial without one starts with
 # "Auto mode could not evaluate this action" or reads "Classifier
-# unavailable", the hooks reference of Claude Code read that day. At every
+# unavailable", the hooks reference of Claude Code read that day, and a
+# denial whose input carries no reason, or an empty one, names none either,
+# since 23 October 2026. At every
 # other command, outside a devloop project and at a denial without a
 # verdict it is silent, and it never asks for a retry; the record is read
 # at the next start with --auto, where the person is there to be asked.
@@ -223,9 +231,11 @@ EXPORTS=""
 ACT=""
 ACTID=0
 PRIV=""
-# item ROUTE EXTRA: a route that fires, unless a variable before the command
-# that the vendor documents, or a path written on the line, moves its place
-# inside the project, where it opens nothing under any answer
+# item ROUTE EXTRA VERB: a route that fires, unless a variable before the
+# command that the vendor documents, or a path written on the line, moves its
+# place inside the project, where it opens nothing under any answer; VERB the
+# verb the command takes the route with, for the way of the rule, since 23
+# October 2026
 item() {
   local v p
   case "$1" in
@@ -237,6 +247,7 @@ item() {
   case "$2" in root=?*|prefix=?*) p=$(inside "${2#*=}" "$ID"); [ -n "$p" ] && return ;; esac
   ITEMS="$ITEMS
 $1$US$2$US$(printf '%s' "$VARS" | tr '\n' "$RS")$US$ID"; BEYOND=yes
+  spelling "$1" "${3:-}"
 }
 # dest PATH: a destination written in the command or documented by the
 # vendor; kept with the command's id as a fact for the note, since 21
@@ -250,10 +261,44 @@ destfile() { DESTS="$DESTS
 $1"; FACTS="$FACTS
 $ID$US${1%/*}"; BEYOND=yes; }
 # way WAY: a way the rule for the classifier names, taken by this command,
-# for the second duty under PermissionDenied since 22 October 2026; the
-# command-line tools are read off ITEMS there, the browsers at their place
+# for the second duty under PermissionDenied since 22 October 2026; marked
+# where it is read, the command-line tools through spelling, the browsers at
+# their place, pip with the pip forms below, since 23 October 2026, and until
+# then the tools off ITEMS under that event. The self-test of
+# bin/devloop-auto-mode-rule holds every way written here, every route whose
+# place is asked below and every browser read below to the ways of the rule.
 WAYS=""
 way() { WAYS="$WAYS;$1"; }
+# onpath PATH: a --path of puppeteer browsers install or of
+# @puppeteer/browsers install, since 21 and 23 October 2026: inside the
+# project it opens nothing; outside it is the destination, and one this guard
+# cannot read blocks; either way outside is the way of the rule
+onpath() {
+  local X L
+  X=$(inside "$1" "$ID"); [ -n "$X" ] && return
+  X=$(expand "$1")
+  case "$BR" in puppeteer) L="puppeteer browsers install" ;; *) L="@puppeteer/browsers install" ;; esac
+  case "$X" in /*) dest "$X" ;; *) UNREAD="$UNREAD; $L (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; esac
+  way "puppeteer browsers install"
+}
+# spelling ROUTE VERB: the way of the rule where the command takes the route
+# in the spelling the rule writes - the verb it names, the global options of
+# npm, pnpm and bun read as the route reads them, the route firing on none
+# without one - and nothing on another verb of the same route
+spelling() {
+  case "$1:$2" in
+    brew:install) way "brew install" ;;
+    go:install) way "go install" ;;
+    npm:install) way "npm install -g" ;;
+    pnpm:add) way "pnpm add -g" ;;
+    'yarn:global add') way "yarn global add" ;;
+    bun:add) way "bun add -g" ;;
+    cargo:install) way "cargo install" ;;
+    gem:install) way "gem install" ;;
+    pipx:install) way "pipx install" ;;
+    'uv tool:install') way "uv tool install" ;;
+  esac
+}
 BINDIR='^(/usr/local/(bin|sbin)|/usr/(bin|sbin)|/opt/|(~|\$HOME|\$\{HOME\})/(\.local/bin|bin|go/bin)|\$\(go env GOPATH\)/bin|\$GOBIN|\$GOPATH/bin)'
 # priv_if I OPTION...: the program at word I is of the first kind where one
 # of the options stands among its words before the judged word, or among all
@@ -380,7 +425,7 @@ ${W[$j]}" ;; esac; done ;;
       # reinstall on this machine, "Upgrade outdated, unpinned packages" and
       # "Uninstall and then reinstall a formula or cask"
       case "$V1" in
-        install|reinstall|upgrade|add|use|tap) item brew "" ;;
+        install|reinstall|upgrade|add|use|tap) item brew "" "$V1" ;;
         exec|x) RUN="$RUN brew-exec"; BEYOND=yes ;;
         bundle)
           # brew bundle with no subcommand, with install or upgrade, or with
@@ -502,10 +547,10 @@ ${W[$j]}" ;; esac; done ;;
         install|update|add|use|tap)
           # update since 13 October 2026, "Update installed gems to the latest
           # version", with the same options as install, gem help update here
-          if has -i --install-dir --build-root; then item gem installdir
-          elif [ -n "$(value -n --bindir)" ]; then item gem "bindir=$(value -n --bindir)"
-          elif has --user-install; then item gem user
-          else item gem ""; fi ;;
+          if has -i --install-dir --build-root; then item gem installdir "$V1"
+          elif [ -n "$(value -n --bindir)" ]; then item gem "bindir=$(value -n --bindir)" "$V1"
+          elif has --user-install; then item gem user "$V1"
+          else item gem "" "$V1"; fi ;;
         exec) RUN="$RUN gem-exec"; BEYOND=yes ;;
       esac ;;
     cargo)
@@ -513,10 +558,10 @@ ${W[$j]}" ;; esac; done ;;
       # options, and install-update of cargo-update, which updates through
       # cargo install, since 13 October 2026, each landing where cargo
       # install lands
-      case "$V1" in install|binstall|install-update|use|tap) item cargo "root=$(value --root)" ;; esac ;;
+      case "$V1" in install|binstall|install-update|use|tap) item cargo "root=$(value --root)" "$V1" ;; esac ;;
     go)
       case "$V1" in
-        install|add|use|tap) item go "" ;;
+        install|add|use|tap) item go "" "$V1" ;;
         run)
           # go run whose package carries a version suffix: the options
           # before the package read over, with the value of the build flags
@@ -536,13 +581,13 @@ ${W[$j]}" ;; esac; done ;;
       # upgrade, upgrade-all, reinstall, reinstall-all and install-all since 13
       # October 2026, each placing the entry points again, pipx --help here
       case "$V1" in
-        install|install-all|upgrade|upgrade-all|reinstall|reinstall-all|add|use|tap) if has --global; then item pipx global; else item pipx ""; fi ;;
+        install|install-all|upgrade|upgrade-all|reinstall|reinstall-all|add|use|tap) if has --global; then item pipx global "$V1"; else item pipx "" "$V1"; fi ;;
         run) RUN="$RUN pipx-run"; BEYOND=yes ;;
       esac ;;
     uvx) RUN="$RUN uvx"; BEYOND=yes ;;
     uv)
       case "$V1" in
-        tool) case "$V2" in install|upgrade) item "uv tool" "" ;; run) RUN="$RUN uvx"; BEYOND=yes ;; esac ;;
+        tool) case "$V2" in install|upgrade) item "uv tool" "" "$V2" ;; run) RUN="$RUN uvx"; BEYOND=yes ;; esac ;;
         run)
           # uv run with --with, -w, --with-editable or --with-requirements
           # among uv's own options before the command, never behind it: the
@@ -599,16 +644,16 @@ uvpip$US$ID$US" ;;
       # update with its aliases since 13 October 2026, "If the -g flag is
       # specified, this command will update globally installed packages",
       # npm help update on this machine, npm 11.12.1
-      case "$VERB" in install|i|add|in|ins|inst|insta|instal|isnt|isnta|isntal|isntall|update|u|up|upgrade|udpate) [ "$GLOB" = yes ] && item npm "prefix=$PFX" ;; esac ;;
+      case "$VERB" in install|i|add|in|ins|inst|insta|instal|isnt|isnta|isntal|isntall|update|u|up|upgrade|udpate) [ "$GLOB" = yes ] && item npm "prefix=$PFX" "$VERB" ;; esac ;;
     pnpm|pn)
       case "$V1" in
         install|i|add|update|up|upgrade)
           # update, up and upgrade with -g since 13 October 2026, "Update
           # global packages", pnpm.io/cli/update
           if has -g --global; then
-            if [ "$NAME" = pn ]; then RUN="$RUN pn-global"; BEYOND=yes; else item pnpm ""; fi
+            if [ "$NAME" = pn ]; then RUN="$RUN pn-global"; BEYOND=yes; else item pnpm "" "$V1"; fi
           fi ;;
-        global) case "$V2" in add|install|update|upgrade) item pnpm "" ;; esac ;;
+        global) case "$V2" in add|install|update|upgrade) item pnpm "" "global $V2" ;; esac ;;
         dlx|create) RUN="$RUN pnpm-dlx"; BEYOND=yes ;;
         *)
           # options before dlx or create: --package, --allow-build and -C or
@@ -622,12 +667,12 @@ uvpip$US$ID$US" ;;
     pnpx|pnx) RUN="$RUN pnpm-dlx"; BEYOND=yes ;;
     yarn)
       case "$V1" in
-        global) case "$V2" in add|install|upgrade) item yarn "prefix=$(value --prefix)" ;; esac ;;
-        install|i|add) has -g --global && item yarn "prefix=$(value --prefix)" ;;
+        global) case "$V2" in add|install|upgrade) item yarn "prefix=$(value --prefix)" "global $V2" ;; esac ;;
+        install|i|add) has -g --global && item yarn "prefix=$(value --prefix)" "$V1" ;;
         dlx|create) RUN="$RUN yarn-dlx"; BEYOND=yes ;;
       esac ;;
     bun)
-      case "$V1" in install|i|add|update|up) has -g --global && item bun "" ;; esac ;;
+      case "$V1" in install|i|add|update|up) has -g --global && item bun "" "$V1" ;; esac ;;
     cp|mv|install|ln)
       j=$F
       while j=$((j + 1)); [ "$j" -lt "$N" ]; do printf '%s' "${W[$j]}" | grep -qE "$BINDIR" && { WRITES=yes; destfile "${W[$j]}"; }; done ;;
@@ -677,9 +722,15 @@ py$US$ID$US${W[$F]}" ;;
   # of the record, one this guard cannot read blocks; without --path the
   # download lands in the current directory, the vendor's default, and is
   # not read. puppeteer browsers install, the puppeteer package's own form,
-  # defines no --path - its CLI is built with allowCachePathOverride false,
-  # packages/puppeteer/src/node/cli.ts - and lands in the cache directory
-  # read below.
+  # is read for --path the same way since 23 October 2026, and lands in the
+  # cache directory read below only without one: its CLI is built with
+  # allowCachePathOverride false, which leaves the option undefined and
+  # still hands it to the install, measured that day under yargs 18.2.0,
+  # which @puppeteer/browsers 3.2.6 brings - until then this guard read none
+  # there. Several --path reach the install as a list, under which it ended
+  # with a TypeError before it made any directory, measured the same day;
+  # every one of them is held, so that a version taking one of them finds
+  # it read, where until that day the last alone was read.
   BV=""; BA=""; BR=""; BK=0
   j=$F
   while [ "$j" -lt "$N" ]; do
@@ -689,7 +740,7 @@ py$US$ID$US${W[$F]}" ;;
     case "$b" in
       playwright|playwright.ps1) case "${W[$((j + 1))]:-}" in install|install-deps) BR=playwright; BV="${W[$((j + 1))]}"; k=$((j + 1)); while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break ;; esac ;;
       cypress) [ "${W[$((j + 1))]:-}" = install ] && { BR=cypress; BV=install; k=$((j + 1)); while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break; } ;;
-      puppeteer) [ "${W[$((j + 1))]:-}" = browsers ] && [ "${W[$((j + 2))]:-}" = install ] && { BR=puppeteer; BV=install; k=$((j + 2)); while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break; } ;;
+      puppeteer) [ "${W[$((j + 1))]:-}" = browsers ] && [ "${W[$((j + 2))]:-}" = install ] && { BR=puppeteer; BV=install; BK=$((j + 2)); k=$BK; while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break; } ;;
       browsers) [ "${w%/*}" = "@puppeteer" ] && [ "${W[$((j + 1))]:-}" = install ] && { BR=puppeteer-pkg; BV=install; BK=$((j + 1)); k=$BK; while k=$((k + 1)); [ "$k" -lt "$N" ]; do BA="$BA ${W[$k]}"; done; break; } ;;
     esac
     j=$((j + 1))
@@ -706,17 +757,21 @@ py$US$ID$US${W[$F]}" ;;
         printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])(--dry-run|--help|-h)([[:space:]]|$)' || { BEYOND=yes; SYSPKG=yes; } ;;
       cypress:install)
         printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])(--help|-h)([[:space:]]|$)' || BROWSER=cypress ;;
-      puppeteer:install)
+      puppeteer:install|puppeteer-pkg:install)
         if ! printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--help([[:space:]]|$)'; then
-          if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)'; then SYSPKG=yes; BEYOND=yes; else BROWSER=puppeteer; fi
-        fi ;;
-      puppeteer-pkg:install)
-        if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)' && ! printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--help([[:space:]]|$)'; then BEYOND=yes; SYSPKG=yes
-        elif ! printf '%s' "$BA" | grep -qE -e '(^|[[:space:]])--help([[:space:]]|$)'; then
-          # --path behind install, the last one winning as yargs takes it; -- ends the reading
-          PP=""; k=$BK
-          while k=$((k + 1)); [ "$k" -lt "$N" ]; do case "${W[$k]}" in --) break ;; --path=*) PP="${W[$k]#--path=}" ;; --path) [ $((k + 1)) -lt "$N" ] && PP="${W[$((k + 1))]}"; k=$((k + 1)) ;; esac; done
-          if [ -n "$PP" ]; then X=$(inside "$PP" "$ID"); [ -n "$X" ] || { X=$(expand "$PP"); case "$X" in /*) dest "$X" ;; *) UNREAD="$UNREAD; @puppeteer/browsers install (where it puts things is not read off this machine by this guard)"; BEYOND=yes ;; esac; way "puppeteer browsers install"; }; fi
+          if printf '%s' "$BA" | grep -qE -- '(^|[[:space:]])--install-deps([[:space:]]|$)'; then SYSPKG=yes; BEYOND=yes
+          else
+            # every --path behind install, each held for itself; -- ends the reading
+            PP=0; k=$BK
+            while k=$((k + 1)); [ "$k" -lt "$N" ]; do
+              case "${W[$k]}" in
+                --) break ;;
+                --path=*) PP=$((PP + 1)); onpath "${W[$k]#--path=}" ;;
+                --path) [ $((k + 1)) -lt "$N" ] && { PP=$((PP + 1)); onpath "${W[$((k + 1))]}"; }; k=$((k + 1)) ;;
+              esac
+            done
+            [ "$BR" = puppeteer ] && [ "$PP" -eq 0 ] && BROWSER=puppeteer
+          fi
         fi ;;
     esac
     # Where the download lands: the vendor's default for the system this
@@ -826,31 +881,25 @@ while IFS="$US" read -r KIND PID T; do
   esac
   [ -n "$LOCAL" ] && continue
   BEYOND=yes
+  way "pip install"
   PIPBEYOND="$PIPBEYOND
 $KIND$US$PID$US$T"
 done <<< "${PIPS:-}"
 
 # The second duty, under PermissionDenied: the ways of the rule this command
-# took, the command-line tools off the routes read above with the verb
-# install alone, the browsers as marked at their reading; then the record,
-# through bin/devloop-auto-mode-question, which owns its path and its line.
+# took, each marked where it was read above - the routes in the spelling of
+# the rule, pip in its forms, the browsers at their place - since 23 October
+# 2026, until then the command-line tools read here off the routes with the
+# verb install alone; then the record, through
+# bin/devloop-auto-mode-question, which owns its path and its line. A
+# reason that is missing, empty or blank names no verdict, since 23 October
+# 2026; until then such a denial was recorded.
 if [ "$EVENT" = PermissionDenied ]; then
   [ "${BEYOND:-no}" = yes ] || exit 0 # no install at all: silent, as at every other command
-  while IFS="$US" read -r R EXTRA VARS IID; do
-    [ -n "$R" ] || continue
-    L=""
-    while IFS= read -r L2; do case "$L2" in "$IID$US"*) L="$L2" ;; esac; done <<< "$CMDS"
-    [ -n "$L" ] || continue
-    load "$L"
-    [ "$F" -ge 0 ] || continue
-    case "$R" in
-      brew|go|cargo|pipx) j=$((F + 1)); [ "$j" -lt "$N" ] && [ "${W[$j]}" = install ] && way "$R install" ;;
-      'uv tool') j=$((F + 2)); [ "$j" -lt "$N" ] && [ "${W[$j]}" = install ] && way "uv tool install" ;;
-    esac
-  done <<< "$ITEMS"
   [ -n "$WAYS" ] || exit 0
   if [ "${SUDO:-no}" = "yes" ] || [ -n "${PRIV:-}" ] || [ "${PIPED:-no}" = "yes" ] || [ "${BRAND:-no}" = "yes" ] || [ "${SYSPKG:-no}" = "yes" ]; then exit 0; fi
   REASON=$(printf '%s\n' "$INPUT" | sed -n 's/^reason: //p' | head -1)
+  [ -n "$(printf '%s' "$REASON" | tr -d '[:space:]')" ] || exit 0
   case "$REASON" in "Auto mode could not evaluate this action"*|"Classifier unavailable") exit 0 ;; esac
   WAYS=$(printf '%s' "${WAYS#;}" | tr ';' '\n' | awk '!seen[$0]++' | tr '\n' ';'); WAYS="${WAYS%;}"
   RAWCMD=$(printf '%s\n' "$INPUT" | sed -n 's/^command: //p' | head -1)

@@ -14,10 +14,12 @@ another package manager, not a copy by hand. For a check class in
 off, as at a block, and `build-work` reads before the release whether the
 state still stands; and since 22 October 2026, where the way is the refusal
 of the classifier of auto mode on a command the install guard reads as an
-install by one of the ways the rule for the classifier names — brew
-install, go install, cargo install, uv tool install, pipx install,
-playwright install, cypress install, puppeteer browsers install, the guard
-recording such a refusal at the event PermissionDenied through
+install by one of the ways the rule for the classifier names, in its
+spelling — since 23 October 2026 brew install, go install, npm install -g,
+pnpm add -g, yarn global add, bun add -g, cargo install, gem install, pipx
+install, uv tool install, pip install, playwright install, cypress install,
+puppeteer browsers install, until then five tools and three browsers, the
+guard recording such a refusal at the event PermissionDenied through
 `bin/devloop-auto-mode-question` — the run writes an issue beside the cell,
 for every class, carrying the command as it ran, the message and what
 stands in the way, labelled `raised-here` and `needs-human` and recorded as
