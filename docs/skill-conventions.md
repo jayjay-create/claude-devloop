@@ -2375,10 +2375,17 @@ The guard stands in `hooks/hooks.json` under `PermissionDenied` for `Bash`
 as well, the event Claude Code fires when auto mode denies a tool call,
 and reads the command there with its one reading and no copy of it: where
 the command is an install by one of the ways the rule for the classifier
-names — brew install, go install, cargo install, uv tool install, pipx
-install, playwright install, cypress install, puppeteer browsers install,
-the verb `install` itself — nothing on it stays the person's under every
-answer, and the field `reason` names a verdict of the classifier, it
+names, in the spelling the rule writes — since 23 October 2026 the eleven
+routes whose place the guard asks on the machine, the names a record can
+carry under `install-route`, and the three browser installers: brew
+install, go install, npm install -g, pnpm add -g, yarn global add, bun add
+-g, cargo install, gem install, pipx install, uv tool install, pip install
+in every form the guard reads as pip, playwright install, cypress install,
+puppeteer browsers install; until that day the five tools and three
+browsers of the rule's earlier wording, the verb `install` itself — nothing
+on it stays the person's under every answer, and the field `reason` names
+a verdict of the classifier, which a missing, empty or blank `reason` does
+not since that day either, it
 records the refusal through `bin/devloop-auto-mode-question record`, which
 owns the record: one file, `devloop-auto-mode-denials`, in the git
 directory the project's worktrees share, never in the tree and never in a
@@ -2414,6 +2421,31 @@ systems, the program finding `gh` on `PATH` as a shell finds it, through
 `gh.exe` is. Decided on 22 October 2026, the roadmap entry of that date on
 the question after a refusal and its addendum of the same day on every
 system.
+
+**The ways of the rule, the routes of the guard and the ways it records are
+one set, held by a self-test, since 23 October 2026.** The rule for the
+classifier names its ways in its own wording, in `bin/devloop-auto-mode-rule`,
+in the spelling it writes: the eleven routes whose place the install guard
+asks on the machine — `place` in its source, the names a record can carry
+under `install-route` — and the three browser installers it reads a download
+of. The self-test of that program reads the ways off the wording of the
+rule, the routes and the browser installers off the code lines of the guard,
+and the ways the guard records a refusal by off the same lines, and then
+runs the guard under `PermissionDenied` once per way, in a throwaway
+project, and reads the way it recorded; a way added in one of the three
+places and missing in another makes it red, and the job `hooks on every
+system` runs it on its four systems. Where the earlier wording of the rule,
+text 4 of the roadmap entry of 9 October 2026, stands word for word under
+`autoMode.allow`, the rule counts as not standing, since the new one allows
+more, so that the question comes again; on its yes `write` puts the rule in
+the earlier wording's place, without a second entry beside it, and on its
+no the earlier wording stays. The system packages, the version managers and
+the other forms the guard reads as an install — another verb of the same
+routes, `gh extension install`, `deno install -g`, `dotnet tool install
+-g`, `pkgx` and `pkgm`, `make install`, a copy into a bin directory, and the
+forms that fetch a tool and run it, `uvx` or `pnpm dlx` say — are no ways of
+the rule, and auto mode judges them by itself. Decided on 23 October 2026,
+the roadmap entry of that date on the catch-up after the audit.
 
 **What an install did is written by a hook, since 21 October 2026**, cluster
 18 of milestone 3 as the person decided it on 20 and 21 October 2026, the
@@ -2716,8 +2748,18 @@ this.#cachePath`, lines 643 and 667, whether or not the option is defined,
 no `.strict(` standing in the file, and yargs 17.7.3 puts a `--path` that no
 option defines into `args.path` and a repeated one into a list, measured
 that day with the copy in the cache of `npx`; the package asks for yargs 18,
-not measured. The guard reads no `--path` on that form, a defect the roadmap
-entry of 23 October 2026 on the audit records. What a
+not measured. Until then the guard read no `--path` on that form, a defect
+the roadmap entry of 23 October 2026 on the audit records. Measured the same
+day under yargs 18.2.0, the one `@puppeteer/browsers` 3.2.6 brings, with
+`puppeteer` 25.16.0 and the vendor's `install()` replaced by one that prints
+what it is handed: a `--path` on `puppeteer browsers install` reaches the
+install as its directory, attached with `=` or as the next word, and several
+reach it as a list, under which the real install ends with a `TypeError`
+before it makes any directory. So since the second roadmap entry of that
+date the guard reads `--path` on that form as on `@puppeteer/browsers
+install`, the cache directory read only where none stands, and holds every
+`--path` of either form against the record, where until then it read the
+last one on `@puppeteer/browsers install` alone. What a
 false positive cost, after that decision and until 12
 October 2026: `PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` put the
 browsers inside `node_modules` and passed under a yes with the eleven
@@ -3153,6 +3195,26 @@ the step of `.github/workflows/stock-take.yml` holds every handler under
 entry also says why the commit is refused
 rather than the write, and why no target in the project's own check chain
 was built beside it.
+
+**A commit carries the identity git config gives, and devloop's own tests
+are the one exception, since 23 October 2026.** No commit sets an identity of
+its own — no `git -c` or `--config-env` on a key of the identity, no
+`--author`, no `GIT_AUTHOR_` or `GIT_COMMITTER_` variable — so that the
+person's address stays out of the repository and no commit goes under a
+wrong name; in a project set up with devloop the guard on the identity of a
+commit holds it, since 9 October 2026. devloop's own self-tests and the step "hooks on every
+system" of `.github/workflows/stock-take.yml` commit in throwaway
+repositories of their own with a fixed identity that is made up, and may:
+`hooks` and `hooks@example.invalid` in the step, `t` and `t@t` in the
+self-tests of `bin/devloop-bounded` and `bin/devloop-setup-state`, the
+`GIT_AUTHOR_` and `GIT_COMMITTER_` variables in the self-test of
+`scripts/devloop-stock-take`; never a real address. A repository that the
+test removes itself and that never reaches GitHub touches neither half of
+the rule, and the runners carry no identity, so that the fixed one is what
+lets the step commit there at all. Every commit an order makes itself, in a
+throwaway repository too, keeps the rule unchanged. Decided on 23 October
+2026; the audit of that day had recorded it under "Looked at and not a
+defect", and until then each order forbade it on its own.
 
 **A hook cannot force wording.** `SessionStart` stdout arrives as context. There
 is an `initialUserMessage` field for seeding a turn, and an open Anthropic bug

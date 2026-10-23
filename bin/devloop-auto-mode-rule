@@ -2,15 +2,32 @@
 """devloop-auto-mode-rule: the rule for the classifier of auto mode, read or
 entered in the user's settings file.
 
-The rule is text 4 of the roadmap entry of 9 October 2026, in English, word for
-word, one entry of the list autoMode.allow in the settings file of the user:
-~/.claude/settings.json, or settings.json under CLAUDE_CONFIG_DIR where that is
-set - the settings page of Claude Code, "Configuration directories", read on 9
-October 2026: "To keep the home-directory files somewhere else, set
-CLAUDE_CONFIG_DIR; Claude Code then stores your settings, session history, and
-plugins there instead." The page "Configure auto mode", read the same day, gives
-autoMode.allow as an array of prose descriptions read as natural-language rules,
-with the literal string "$defaults" keeping the built-in rules beside them.
+The rule is the wording decided on 23 October 2026, the roadmap entry of that
+date, in English, word for word, one entry of the list autoMode.allow in the
+settings file of the user: ~/.claude/settings.json, or settings.json under
+CLAUDE_CONFIG_DIR where that is set - the settings page of Claude Code,
+"Configuration directories", read on 9 October 2026: "To keep the
+home-directory files somewhere else, set CLAUDE_CONFIG_DIR; Claude Code then
+stores your settings, session history, and plugins there instead." The page
+"Configure auto mode", read the same day, gives autoMode.allow as an array of
+prose descriptions read as natural-language rules, with the literal string
+"$defaults" keeping the built-in rules beside them. Until 23 October 2026 the
+rule was text 4 of the roadmap entry of 9 October 2026, which named five
+command-line tools and three browser installers; that wording stands below as
+the earlier one. Where it stands word for word under autoMode.allow, the rule
+counts as not standing, since the new one allows more, and write replaces it
+in its place, without a second entry beside it.
+
+The ways of the rule are the commands its list names: the eleven routes whose
+place the install guard, hooks/pre-tool-use-install-guard.sh, asks on the
+machine, the names a record can carry under install-route, and the three
+browser installers, each in the spelling the rule writes; decided on 23
+October 2026. The self-test holds three sets equal - the ways in the wording
+of the rule, the routes and browser installers in the source of the guard,
+and the ways the guard records under PermissionDenied when it runs - so that
+a way added in one place and missing in another makes it red. The other forms
+the guard reads as an install are no ways of the rule, and auto mode judges
+them by itself.
 
 Usage
     bin/devloop-auto-mode-rule read     says whether the rule stands; writes
@@ -25,10 +42,17 @@ Usage
                                         since 22 October 2026 - and never
                                         without it. Exit 0 where it stands
                                         afterwards, 2 where nothing was written
+    bin/devloop-auto-mode-rule --self-test
+                                        every outcome of read and write once,
+                                        under a CLAUDE_CONFIG_DIR of its own,
+                                        and the ways held equal; since 23
+                                        October 2026
 
 What write does. Where the file or the list is missing, the list is created,
 with "$defaults" before the rule; where a list stands, the rule is appended to
-it, without "$defaults"; where the rule stands already, nothing changes. Every
+it, without "$defaults"; where the earlier wording stands in it, the rule
+takes its place, and a second copy of the earlier wording further down the
+list goes; where the rule stands already, nothing changes. Every
 other key and value of the file stays as it was, in the order it had; the file
 is written through a temporary file in the directory of the file itself and
 moved over the old one, so that no half file is ever left. Where settings.json
@@ -52,30 +76,53 @@ autoMode.allow is not a list, nothing is written and the reason is printed,
 exit 2; the same where the write itself is refused. Both ways print one line on
 stdout and exit as above.
 
-It needs python3 and nothing else. On a Mac, python3 comes with the Command
+It needs python3 and nothing else; the self-test needs git and bash as well,
+for the guard it runs. On a Mac, python3 comes with the Command
 Line Tools that bring git, so a machine this plugin runs on has it, and the
 stock-take tool and the check under "Before you change anything, run this" in
 docs/skill-conventions.md rest on it already; jq is not on a Mac by default.
 Measured on 9 October 2026 with HOME in a throwaway directory, the roadmap
 entry of that day, and on 10 October 2026 through links, its addendum of that
-day.
+day. The self-test, since 23 October 2026, runs every outcome on every system
+the job hooks on every system in .github/workflows/stock-take.yml runs on; a
+symbolic link where the system lets it make one, and a line saying so where
+it does not; until that day four of the outcomes ran there inside the
+self-test of bin/devloop-auto-mode-question and the rest on this Mac alone.
 """
 
 import json
 import os
+import re
 import shutil
+import stat
+import subprocess
 import sys
 import tempfile
 
 RULE = (
+    "Installing or updating a tool or a browser for tests that the current "
+    "task needs is allowed in a repository set up with devloop, by these "
+    "commands: brew install, go install, npm install -g, pnpm add -g, yarn "
+    "global add, bun add -g, cargo install, gem install, pipx install, uv tool "
+    "install and pip install, and playwright install, cypress install or "
+    "puppeteer browsers install for a browser. A devloop hook reads the "
+    "project's install permission and where each such command installs before "
+    "it runs, and blocks it where the person has not said yes or where it "
+    "installs to a place the permission does not name."
+)
+# The earlier wordings, each of which counts as no rule and is replaced by
+# write: text 4 of the roadmap entry of 9 October 2026, until 23 October 2026.
+EARLIER = (
     "Installing a tool that the current task needs is allowed in a repository "
     "set up with devloop: a command-line tool with brew install, go install, "
     "cargo install, uv tool install or pipx install, and a browser for tests "
     "with playwright install, cypress install or puppeteer browsers install. "
     "A devloop hook reads the project's install permission before every such "
-    "command and blocks it where the person has not said yes."
+    "command and blocks it where the person has not said yes.",
 )
 DEFAULTS = "$defaults"
+HERE = os.path.dirname(os.path.realpath(__file__))
+GUARD = os.path.join(HERE, "..", "hooks", "pre-tool-use-install-guard.sh")
 
 
 def settings_path():
@@ -95,9 +142,9 @@ def no_duplicate_keys(pairs):
 
 def load(path):
     """Returns (data, state): data the parsed file or None where it is missing;
-    state one of "missing", "no autoMode", "no allow", "standing", "absent".
-    Raises ValueError with the reason where the file cannot be read for the
-    rule."""
+    state one of "missing", "no autoMode", "no allow", "standing", "earlier",
+    "absent". Raises ValueError with the reason where the file cannot be read
+    for the rule."""
     if not os.path.exists(path):
         return None, "missing"
     with open(path, encoding="utf-8") as f:
@@ -120,6 +167,8 @@ def load(path):
         raise ValueError("autoMode.allow in %s is not a list" % path)
     if RULE in allow:
         return data, "standing"
+    if any(e in allow for e in EARLIER):
+        return data, "earlier"
     return data, "absent"
 
 
@@ -151,9 +200,11 @@ def write_file(path, data, existed):
 
 
 def main(argv):
+    if argv[1:] == ["--self-test"]:
+        return selftest()
     if len(argv) != 2 or argv[1] not in ("read", "write"):
-        print("devloop-auto-mode-rule: expected one argument, read or write",
-              file=sys.stderr)
+        print("devloop-auto-mode-rule: expected one argument, read, write or "
+              "--self-test", file=sys.stderr)
         return 2
     path = settings_path()
     try:
@@ -172,6 +223,8 @@ def main(argv):
             "missing": "the file does not exist",
             "no autoMode": "the file holds no autoMode",
             "no allow": "autoMode holds no allow list",
+            "earlier": "the list autoMode.allow carries an earlier wording of "
+                       "it, which allows less",
             "absent": "the list autoMode.allow does not carry it",
         }[state]
         print("the rule does not stand in %s: %s" % (path, why))
@@ -187,6 +240,12 @@ def main(argv):
     elif state == "no allow":
         data["autoMode"]["allow"] = [DEFAULTS, RULE]
         how = 'the list autoMode.allow created, with "$defaults" before the rule'
+    elif state == "earlier":
+        allow = data["autoMode"]["allow"]
+        first = min(i for i, e in enumerate(allow) if e in EARLIER)
+        allow[first] = RULE
+        allow[first + 1:] = [e for e in allow[first + 1:] if e not in EARLIER]
+        how = "the earlier wording replaced in its place in the list autoMode.allow"
     else:
         data["autoMode"]["allow"].append(RULE)
         how = "appended to the list autoMode.allow"
@@ -197,6 +256,310 @@ def main(argv):
         return 2
     print("the rule is entered in %s: %s" % (path, how))
     return 0
+
+
+# ------------------------------------------------------------- the ways
+
+def rule_ways(rule=RULE):
+    """The ways the rule names, as (tools, browsers): the commands of its list
+    between "by these commands: " and " for a browser.", the command-line
+    tools before ", and ", the browser installers behind it."""
+    m = re.search(r"by these commands: (.*) for a browser\.", rule)
+    if m is None:
+        return [], []
+    tools, _, browsers = m.group(1).partition(", and ")
+    return re.split(r", | and ", tools), re.split(r", | or ", browsers)
+
+
+def guard_source(path=GUARD):
+    """The code lines of the guard: every line whose first character other
+    than a blank is not #."""
+    with open(path, encoding="utf-8") as f:
+        return [l for l in f.read().split("\n") if not l.lstrip().startswith("#")]
+
+
+def guard_ways(lines):
+    """What the source of the guard reads, as (routes, browsers, counted): the
+    routes whose place it asks on the machine, place NAME; the browser
+    installers it reads a download of, BROWSER=NAME; and the ways it records
+    a refusal by, way "WAY"."""
+    text = "\n".join(lines)
+    return (sorted(set(re.findall(r'\bplace ([a-z]+) "', text))),
+            sorted(set(re.findall(r'\bBROWSER=([a-z]+)\b', text))),
+            sorted(set(re.findall(r'\bway "([^"$]+)"', text))))
+
+
+# A command per way, the spelling the rule writes, and the three further forms
+# the guard reads as pip; each is fed to the guard under PermissionDenied.
+WAY_COMMANDS = (
+    ("brew install", "brew install devloop-probe"),
+    ("go install", "go install example.com/devloop-probe@latest"),
+    ("npm install -g", "npm install -g devloop-probe"),
+    ("pnpm add -g", "pnpm add -g devloop-probe"),
+    ("yarn global add", "yarn global add devloop-probe"),
+    ("bun add -g", "bun add -g devloop-probe"),
+    ("cargo install", "cargo install devloop-probe"),
+    ("gem install", "gem install devloop-probe"),
+    ("pipx install", "pipx install devloop-probe"),
+    ("uv tool install", "uv tool install devloop-probe"),
+    ("pip install", "pip install devloop-probe"),
+    ("pip install", "pip3 install devloop-probe"),
+    ("pip install", "python3 -m pip install devloop-probe"),
+    ("pip install", "uv pip install devloop-probe"),
+    ("playwright install", "npx playwright install chromium"),
+    ("cypress install", "npx cypress install"),
+    ("puppeteer browsers install", "npx puppeteer browsers install chrome"),
+)
+
+
+# ------------------------------------------------------------- the self-test
+
+def selftest():
+    me = os.path.realpath(__file__)
+    # the real path, since /var is a link to /private/var on macOS
+    T = os.path.realpath(tempfile.mkdtemp(prefix="devloop-auto-mode-rule."))
+    n = [0]
+    try:
+        config = os.path.join(T, "config")
+        settings = os.path.join(config, "settings.json")
+        env = dict(os.environ)
+        env["CLAUDE_CONFIG_DIR"] = config
+
+        def fresh(content=None):
+            for p in (settings, os.path.join(T, "elsewhere")):
+                if os.path.islink(p) or os.path.isfile(p):
+                    os.unlink(p)
+                elif os.path.isdir(p):
+                    shutil.rmtree(p)
+            os.makedirs(config, exist_ok=True)
+            if content is not None:
+                with open(settings, "w", encoding="utf-8") as f:
+                    f.write(content if isinstance(content, str) else json.dumps(content, indent=2))
+
+        def run(*args, config_dir=None):
+            e = dict(env)
+            if config_dir is not None:
+                e["CLAUDE_CONFIG_DIR"] = config_dir
+            r = subprocess.run([sys.executable, me] + list(args), cwd=T,
+                               capture_output=True, text=True, env=e)
+            return r.returncode, r.stdout + r.stderr
+
+        def check(name, cond, shown=""):
+            n[0] += 1
+            if cond:
+                print("ok   %s" % name)
+                return True
+            print("FAIL %s" % name)
+            if shown:
+                print("    " + "\n    ".join(shown.split("\n")))
+            return False
+
+        def expect(name, got, want_rc, *want):
+            rc, out = got
+            n[0] += 1
+            if rc != want_rc:
+                print("FAIL %s: exit %d, expected %d" % (name, rc, want_rc))
+                print("    " + "\n    ".join(out.split("\n")))
+                return False
+            for w in want:
+                if w not in out:
+                    print("FAIL %s: %r is not printed" % (name, w))
+                    print("    " + "\n    ".join(out.split("\n")))
+                    return False
+            print("ok   %s" % name)
+            return True
+
+        def content(p=settings):
+            with open(p, encoding="utf-8") as f:
+                return f.read()
+
+        def parsed(p=settings):
+            return json.loads(content(p))
+
+        ok = True
+        old = EARLIER[0]
+        # the arguments
+        ok &= expect("no argument: exit 2", run(), 2, "expected one argument, read, write or --self-test")
+        ok &= expect("an argument it does not know: exit 2", run("delete"), 2, "expected one argument")
+        ok &= expect("two arguments: exit 2", run("read", "write"), 2, "expected one argument")
+        # read, each answer
+        fresh()
+        ok &= expect("read, no file: exit 1, the file does not exist", run("read"), 1,
+                     "the rule does not stand in %s: the file does not exist" % settings)
+        fresh({"theme": "dark"})
+        ok &= expect("read, no autoMode: exit 1", run("read"), 1, "the file holds no autoMode")
+        fresh({"autoMode": {"deny": []}})
+        ok &= expect("read, no allow list: exit 1", run("read"), 1, "autoMode holds no allow list")
+        fresh({"autoMode": {"allow": [DEFAULTS, "something else"]}})
+        ok &= expect("read, a list without the rule: exit 1", run("read"), 1,
+                     "the list autoMode.allow does not carry it")
+        fresh({"autoMode": {"allow": [DEFAULTS, old]}})
+        ok &= expect("read, the earlier wording standing: exit 1, it allows less", run("read"), 1,
+                     "the list autoMode.allow carries an earlier wording of it, which allows less")
+        fresh({"autoMode": {"allow": [DEFAULTS, RULE]}})
+        ok &= expect("read, the rule standing: exit 0", run("read"), 0, "the rule stands in %s" % settings)
+        fresh({"autoMode": {"allow": [old, RULE]}})
+        ok &= expect("read, the rule and the earlier wording both standing: exit 0", run("read"), 0, "the rule stands in")
+        fresh("{ not json\n")
+        ok &= expect("read, no JSON: exit 2", run("read"), 2, "the settings file cannot be read for the rule:", "is not valid JSON")
+        fresh('{"a": 1, "a": 2}\n')
+        ok &= expect("read, a key twice: exit 2", run("read"), 2, "the key 'a' stands twice in one object")
+        fresh("[]\n")
+        ok &= expect("read, no object at the top: exit 2", run("read"), 2, "does not hold an object at its top")
+        fresh({"autoMode": "on"})
+        ok &= expect("read, autoMode no object: exit 2", run("read"), 2, "autoMode in %s is not an object" % settings)
+        fresh({"autoMode": {"allow": "x"}})
+        ok &= expect("read, allow no list: exit 2", run("read"), 2, "autoMode.allow in %s is not a list" % settings)
+        fresh()
+        os.makedirs(settings)
+        ok &= expect("read, settings.json a directory: exit 2", run("read"), 2, "the settings file cannot be read for the rule:")
+        # write, each answer
+        fresh()
+        ok &= expect("write, no file: the list created, exit 0", run("write"), 0,
+                     'the rule is entered in %s: the list autoMode.allow created, with "$defaults" before the rule' % settings)
+        ok &= check("write, no file: the file holds the list and nothing else",
+                    parsed() == {"autoMode": {"allow": [DEFAULTS, RULE]}}, content())
+        fresh('{\n  "theme": "dark",\n  "env": {"A": "1"}\n}\n')
+        ok &= expect("write, no autoMode: the list created", run("write"), 0, "the list autoMode.allow created")
+        ok &= check("write, no autoMode: every other key kept, in its order",
+                    list(parsed().items()) == [("theme", "dark"), ("env", {"A": "1"}), ("autoMode", {"allow": [DEFAULTS, RULE]})], content())
+        fresh({"autoMode": {"deny": ["x"]}})
+        ok &= expect("write, no allow list: the list created", run("write"), 0, "the list autoMode.allow created")
+        ok &= check("write, no allow list: deny kept", parsed() == {"autoMode": {"deny": ["x"], "allow": [DEFAULTS, RULE]}}, content())
+        fresh({"autoMode": {"allow": ["mine"]}})
+        ok &= expect("write, a list standing: appended, exit 0", run("write"), 0, "appended to the list autoMode.allow")
+        ok &= check("write, a list standing: no $defaults added", parsed()["autoMode"]["allow"] == ["mine", RULE], content())
+        fresh({"theme": "dark", "autoMode": {"allow": [DEFAULTS, old, "mine"]}})
+        ok &= expect("write, the earlier wording standing: replaced in its place, exit 0", run("write"), 0,
+                     "the earlier wording replaced in its place in the list autoMode.allow")
+        ok &= check("write, the earlier wording standing: the rule at its place, no second beside it",
+                    parsed() == {"theme": "dark", "autoMode": {"allow": [DEFAULTS, RULE, "mine"]}}, content())
+        fresh({"autoMode": {"allow": ["mine", old, "other", old]}})
+        run("write")
+        ok &= check("write, the earlier wording twice: the first replaced, the second gone",
+                    parsed()["autoMode"]["allow"] == ["mine", RULE, "other"], content())
+        ok &= expect("read after the replacement: exit 0", run("read"), 0, "the rule stands in")
+        fresh({"autoMode": {"allow": [DEFAULTS, RULE]}})
+        before = content()
+        ok &= expect("write, the rule standing: nothing changed, exit 0", run("write"), 0, "already; nothing changed")
+        ok &= check("write, the rule standing: the file byte for byte as before", content() == before)
+        for name, text, want in (("no JSON", "{ not json\n", "is not valid JSON"),
+                                 ("a key twice", '{"a": 1, "a": 2}\n', "stands twice"),
+                                 ("autoMode no object", '{"autoMode": 1}\n', "is not an object"),
+                                 ("allow no list", '{"autoMode": {"allow": {}}}\n', "is not a list")):
+            fresh(text)
+            ok &= expect("write, %s: not written, exit 2" % name, run("write"), 2, "not written: ", want)
+            ok &= check("write, %s: the file as before" % name, content() == text)
+        # the write refused: the configuration directory lies under a file
+        blocker = os.path.join(T, "a-file")
+        with open(blocker, "w", encoding="utf-8") as f:
+            f.write("x\n")
+        ok &= expect("write, the directory cannot be made: the write refused, exit 2",
+                     run("write", config_dir=os.path.join(blocker, "config")), 2, "not written: the write was refused:")
+        ok &= check("write refused: nothing made", os.path.isfile(blocker) and content(blocker) == "x\n")
+        # the permissions of the file kept
+        if os.name == "nt":
+            print("skip the permissions of the file: Windows keeps no mode bits for this program to keep")
+        else:
+            fresh({"theme": "dark"})
+            os.chmod(settings, 0o600)
+            run("write")
+            ok &= check("write: the file keeps its permissions, 600",
+                        stat.S_IMODE(os.stat(settings).st_mode) == 0o600, oct(os.stat(settings).st_mode))
+        ok &= check("write: no temporary file left beside the file",
+                    not [x for x in os.listdir(config) if x.startswith(".settings.json.")], " ".join(os.listdir(config)))
+        # a hard link: the other name keeps the old content
+        fresh({"theme": "dark"})
+        other = os.path.join(T, "other-name.json")
+        if os.path.exists(other):
+            os.unlink(other)
+        try:
+            os.link(settings, other)
+        except (OSError, AttributeError) as e:
+            print("skip a hard link: this system makes none here: %s" % e)
+        else:
+            run("write")
+            ok &= check("write through a hard link: the other name keeps the old content",
+                        json.loads(content(other)) == {"theme": "dark"} and parsed()["autoMode"]["allow"] == [DEFAULTS, RULE])
+        # symbolic links, where the system makes one
+        fresh()
+        elsewhere = os.path.join(T, "elsewhere")
+        os.makedirs(elsewhere)
+        target = os.path.join(elsewhere, "settings.json")
+        try:
+            os.symlink(target, settings)
+        except (OSError, NotImplementedError, AttributeError) as e:
+            print("skip symbolic links: this system makes none here: %s" % e)
+        else:
+            with open(target, "w", encoding="utf-8") as f:
+                json.dump({"theme": "dark"}, f)
+            ok &= expect("write through a link: exit 0", run("write"), 0, "the list autoMode.allow created")
+            ok &= check("write through a link: the link stays and the file it points to is written",
+                        os.path.islink(settings) and json.loads(content(target))["autoMode"]["allow"] == [DEFAULTS, RULE])
+            ok &= expect("read through a link: exit 0", run("read"), 0, "the rule stands in")
+            os.unlink(target)
+            ok &= expect("write through a link to a missing file: the file made there, exit 0", run("write"), 0,
+                         "the list autoMode.allow created")
+            ok &= check("a link to a missing file: the link stays and the file stands where it points",
+                        os.path.islink(settings) and os.path.isfile(target))
+            os.unlink(settings)
+            shutil.rmtree(elsewhere)
+            os.symlink(target, settings)
+            ok &= expect("write through a link into a missing directory: not written, exit 2", run("write"), 2,
+                         "not written: the write was refused:", "whose directory does not exist")
+            ok &= check("a link into a missing directory: no directory made", not os.path.exists(elsewhere))
+            os.unlink(settings)
+        # the ways: the rule, the guard's source, the guard's record
+        tools, browsers = rule_ways()
+        routes, readers, counted = guard_ways(guard_source())
+        ok &= check("the rule names fourteen ways, eleven tools and three browser installers: %s; %s"
+                    % (", ".join(tools), ", ".join(browsers)), len(tools) == 11 and len(browsers) == 3)
+        ok &= check("the routes the guard asks the place of are the tools of the rule: %s" % " ".join(routes),
+                    routes == sorted(w.split()[0] for w in tools))
+        ok &= check("the browser installers the guard reads are those of the rule: %s" % " ".join(readers),
+                    readers == sorted(w.split()[0] for w in browsers))
+        ok &= check("the ways the guard records a refusal by are the ways of the rule",
+                    counted == sorted(tools + browsers), "guard: %r\nrule:  %r" % (counted, sorted(tools + browsers)))
+        ok &= check("every way of the rule has a command below", sorted(set(w for w, _ in WAY_COMMANDS)) == sorted(tools + browsers))
+        bash = shutil.which("bash")
+        if bash is None:
+            ok &= check("bash found on PATH, to run the install guard", False)
+        else:
+            def posix(p):
+                return p.replace("\\", "/")
+            p = os.path.join(T, "project")
+            os.makedirs(os.path.join(p, "docs", "agents"))
+            subprocess.run(["git", "init", "-q", p], check=True)
+            record_file = os.path.join(p, ".git", "devloop-auto-mode-denials")
+            genv = dict(env)
+            genv["CLAUDE_PROJECT_DIR"] = posix(p)
+            recorded = set()
+            for i, (way, command) in enumerate(WAY_COMMANDS):
+                if os.path.exists(record_file):
+                    os.unlink(record_file)
+                denial = {"session_id": "s1", "cwd": posix(p), "hook_event_name": "PermissionDenied",
+                          "permission_mode": "auto", "tool_name": "Bash", "tool_use_id": "toolu_way%d" % i,
+                          "tool_input": {"command": command, "description": "install"},
+                          "reason": "The server-side auto mode classifier judged this action dangerous (it gave no explanation)"}
+                r = subprocess.run([bash, posix(GUARD)], cwd=p, input=json.dumps(denial),
+                                   capture_output=True, text=True, env=genv)
+                lines = []
+                if os.path.exists(record_file):
+                    with open(record_file, encoding="utf-8") as f:
+                        lines = [l.rstrip("\r\n").split("\t") for l in f if l.strip()]
+                good = r.returncode == 0 and len(lines) == 1 and len(lines[0]) == 4 and lines[0][1] == way and lines[0][3] == command
+                if good:
+                    recorded.add(way)
+                ok &= check("the guard records a refusal of %s as the way %s" % (command, way), good,
+                            "exit %d, %s holds %r\n%s" % (r.returncode, record_file, lines, r.stdout + r.stderr))
+            ok &= check("the ways the guard records are the ways of the rule", sorted(recorded) == sorted(tools + browsers))
+        if ok:
+            print("SELF-TEST PASSED: %d cases" % n[0])
+            return 0
+        print("SELF-TEST FAILED")
+        return 1
+    finally:
+        shutil.rmtree(T, ignore_errors=True)
 
 
 if __name__ == "__main__":

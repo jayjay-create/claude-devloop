@@ -15,11 +15,16 @@ them. Nothing is stored on a no: while such an issue is open the question
 comes at every start with --auto, and once the issue is closed it ends with
 no further step. A refusal counts where auto mode refused, with a verdict of
 its classifier, a command the install guard reads as an install by one of
-the ways the rule names - brew install, go install, cargo install, uv tool
-install, pipx install, playwright install, cypress install, puppeteer
-browsers install - and nothing on the command stays the person's under every
-answer; hooks/pre-tool-use-install-guard.sh decides that at the event
-PermissionDenied with its own reading and records it through this program.
+the ways the rule names, in the spelling the rule writes - since 23 October
+2026 brew install, go install, npm install -g, pnpm add -g, yarn global add,
+bun add -g, cargo install, gem install, pipx install, uv tool install, pip
+install in every form the guard reads as pip, playwright install, cypress
+install, puppeteer browsers install, until that day the five tools and three
+browsers of the rule's earlier wording - and nothing on the command stays
+the person's under every answer; a denial whose input carries no reason, or
+an empty one, names no verdict; hooks/pre-tool-use-install-guard.sh decides
+that at the event PermissionDenied with its own reading and records it
+through this program.
 The rule can stand in the person's settings alone: the page "Configure auto
 mode" of Claude Code, read on 22 October 2026, says the classifier does not
 read autoMode from a project's .claude/settings.json or settings.local.json.
@@ -50,7 +55,11 @@ project, never in its tree and never in a commit, and nobody has to know of
 it or delete it: a line that no open issue matches does nothing, and the
 question ends with the issue. One line per refusal: the time in UTC, the
 way, the call's id and the command as the JSON carried it, separated by
-tabs. The path and the form of the line live here and nowhere else.
+tabs. The path and the form of the line live here, and they have one other
+reader: the job hooks on every system in .github/workflows/stock-take.yml
+reads the record of its throwaway project and holds the line to its form,
+since 22 October 2026; until 23 October 2026 this head said they lived here
+and nowhere else.
 
 What decides the question. First the rule, bin/devloop-auto-mode-rule read
 beside this program, run with the interpreter running this one: exit 0, the
@@ -110,6 +119,7 @@ that addendum the stand-in was a shell script, which a process started from
 Python does not find on Windows, and the self-test refused there with exit 2.
 """
 
+import ast
 import datetime
 import json
 import os
@@ -594,6 +604,22 @@ def selftest():
         else:
             ok = False
             print("FAIL an issue named twice")
+        # the earlier wording of the rule standing, since 23 October 2026: read
+        # ends with 1, so that the question comes again, here after a refusal
+        # by a way the earlier wording did not name; the wording read off the
+        # rule program's source, which nothing here imports
+        with open(RULE, encoding="utf-8") as f:
+            earlier = [ast.literal_eval(node.value) for node in ast.parse(f.read()).body
+                       if isinstance(node, ast.Assign) and any(getattr(t, "id", "") == "EARLIER" for t in node.targets)][0]
+        fresh()
+        with open(settings, "w", encoding="utf-8") as f:
+            json.dump({"autoMode": {"allow": ["$defaults", earlier[0]]}}, f)
+        run("record", "npm install -g", "toolu_5", stdin="npm install -g gitleaks\n")
+        issues((17, "The class", "npm install -g gitleaks")); blocking(17)
+        ok &= expect("the earlier wording of the rule standing: read 1, the question, the way npm install -g", run(), 0,
+                     "question: yes", "read: 1",
+                     "rule: the rule does not stand in %s: the list autoMode.allow carries an earlier wording of it, which allows less" % settings,
+                     "issue: 17", "way: npm install -g", "command: npm install -g gitleaks")
         # read ends with 2
         fresh(); rule_unreadable(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
         issues((15, "The class", "brew install gitleaks")); blocking(15)

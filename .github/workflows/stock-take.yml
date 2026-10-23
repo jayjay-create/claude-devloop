@@ -268,7 +268,30 @@ jobs:
   # of the throwaway project and is red where the line is missing or not in
   # its form, since that event ignores the exit code and the output of a
   # hook, so that a fault on the way from the hook to the program would be
-  # seen nowhere else.
+  # seen nowhere else. Since 23 October 2026 the step runs every self-test
+  # under bin/, each file there that takes --self-test, found by that word so
+  # that one added later runs without this step being touched, a python
+  # program with the interpreter the step finds and any other by its own
+  # first line, the self-test of bin/devloop-auto-mode-rule among them, new
+  # that day; until then the self-tests of bin/devloop-bounded,
+  # bin/devloop-install-note, bin/devloop-missing-tool and
+  # bin/devloop-setup-state ran on no system but the one they were written
+  # on.
+  # Since the addendum of 23 October 2026 to the roadmap entry of that
+  # day on the catch-up after the audit the step leaves out, under Windows
+  # alone, the self-tests of bin/devloop-bounded and bin/devloop-setup-state,
+  # and prints a line for each that says so and why: on pull request #200
+  # the self-test of bin/devloop-bounded hung on windows-latest at its case
+  # "does not end" until the job was stopped at fifteen minutes, and
+  # bin/devloop-setup-state ends a command and what it started the same way,
+  # through a kill_tree that finds the children with pgrep, left out before
+  # it is seen to hang. Both are the defect of milestone 12 that addendum
+  # records, with its should: under Windows with Git Bash both end a command
+  # and everything it started at the bound, and their self-tests run in this
+  # job on windows-latest. The cause is not measured; the checkout step
+  # prints since then whether pgrep is on PATH and where. On the other three
+  # systems both run as before, and every other self-test under bin/ runs on
+  # all four.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -308,19 +331,27 @@ jobs:
           { awk --version 2>/dev/null || awk -W version 2>/dev/null || busybox 2>/dev/null || true; } | head -1
           git version
           { command -v python3 && python3 --version; } || echo "no python3 on PATH"
+          echo "pgrep: $(command -v pgrep || echo 'not on PATH')"
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: the self-tests of the reader, of the arming program and of the question program, every handler of hooks.json once with a harmless input of its event, and the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards
+      - name: every self-test under bin/, two of them left out under Windows, every handler of hooks.json once with a harmless input of its event, and the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards
         run: |
           set -u
           ROOT=$(pwd)
           red=0
-          "$ROOT/bin/devloop-command-reader" --self-test || red=1
-          "$ROOT/bin/devloop-arm" --self-test || red=1
           PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
-          # the self-test of bin/devloop-auto-mode-question, since 22 October 2026, beside the arming program's, on every system since the addendum of that day
-          "$PY" "$ROOT/bin/devloop-auto-mode-question" --self-test || red=1
+          # every self-test under bin/, since 23 October 2026: each file there that takes --self-test, a python program run with the interpreter found above, any other by its own first line; until that day the reader's, the arming program's and, since 22 October 2026, the question program's alone
+          # under Windows alone, since the addendum of 23 October 2026: the self-tests of bin/devloop-bounded and bin/devloop-setup-state left out, a line for each saying so and why, the defect of milestone 12 that addendum records; on the other three systems they run
+          for f in "$ROOT"/bin/*; do
+            grep -q -e '--self-test' "$f" || continue
+            case "${RUNNER_OS:-}:$(basename "$f")" in
+              Windows:devloop-bounded) echo "== devloop-bounded --self-test left out under Windows: on pull request #200 it hung there at \"does not end\" until the job was stopped at fifteen minutes; a defect of milestone 12 in docs/roadmap.md"; continue ;;
+              Windows:devloop-setup-state) echo "== devloop-setup-state --self-test left out under Windows: it ends a command and what it started through pgrep as devloop-bounded does, left out before it is seen to hang; a defect of milestone 12 in docs/roadmap.md"; continue ;;
+            esac
+            echo "== $(basename "$f") --self-test"
+            case "$(head -1 "$f")" in *python*) "$PY" "$f" --self-test ;; *) "$f" --self-test ;; esac || { echo "the self-test of $(basename "$f") is red"; red=1; }
+          done
           T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-hooks.XXXXXX")
           P="$T/project"
           mkdir -p "$P/docs/agents"

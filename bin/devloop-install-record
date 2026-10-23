@@ -14,7 +14,11 @@
 # through this program when the mark is written, so that the hook and the
 # install guard read one record one way. Under --dependency the keys are
 # dependency-tools and dependency-answered, there are no place and no route
-# lines, and every cause names that section.
+# lines, and the causes on the section name it - the section missing, or
+# its key line missing - and the cause on the key's value names the key,
+# dependency-tools; the causes on the directory, the repository, the default
+# branch, its ref and the file are those of the install record, word for
+# word. Until 23 October 2026 this head said every cause named the section.
 #
 # On exit 0, one key per line:
 #   ref: origin/<default>

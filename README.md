@@ -5,7 +5,7 @@ application or tool that runs on this machine: started by the run, its answer
 read, its look recorded, and handed to you with one action. Today it gets as
 far as merged, reviewed code.
 
-Twelve skills covering the main path. The side paths — triaging incoming
+It covers the main path. The side paths — triaging incoming
 reports and finding refactor candidates — are not built yet. Read "What is
 missing" before you rely on it.
 
@@ -269,7 +269,7 @@ the run carries on with the next one.
 
 ## What it writes into your project
 
-Five short files under `docs/agents/`: where issues live, how to check this
+Short files under `docs/agents/`: where issues live, how to check this
 project, its coding rules, how to run it locally, and where its glossary and
 decision records are. Plus canonical targets in your task runner, so a skill can
 say "lint" and be right in any project. And, where a run without you met a
@@ -280,11 +280,13 @@ repository and both yours to keep or drop.
 It touches your global configuration in one place, `~/.claude/settings.json`,
 and only after asking you: where you let it work without you, it asks whether
 it may enter one rule under `autoMode.allow`, so that auto mode does not block
-by itself the installs a devloop hook already guards. If you say no, it asks
-again only once auto mode has actually refused an install, names that install,
-and stops asking when its issue is closed. The rule allows installs in projects
-set up with devloop and nothing else, and without your yes the file is not
-touched. You can see and remove it in Claude Code under `/permissions`, on the
+by itself the installs that rule names, each of which a devloop hook already
+guards; the rule's own text says which they are. If you say no, it asks again
+only once auto mode has refused such an install, at your next start with
+`--auto`, names that install, and stops asking when its issue is closed. The
+rule allows installs in projects set up with devloop and nothing else, and
+without your yes the file is not touched. You can read and remove it in
+Claude Code under `/permissions`, on the
 Auto mode tab. It does not decide how you like to be spoken to, with one
 exception it makes itself: devloop brings its own output style and forces it,
 so while devloop is enabled the output style you chose does not apply, in

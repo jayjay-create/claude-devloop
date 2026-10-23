@@ -418,6 +418,9 @@ small TypeScript command line whose two tasks call for `htmlq` and for
 Playwright in WebKit expressly, the credentials check switched off where its
 tool is missing, the mode declined. Run 2a through the planning under `--auto`:
 the second asking answered yes, the check tools in the packages too, the
+question on the rule for auto mode put there as well and answered yes, since
+the earlier wording of the rule stands on the person's Mac and counts as none
+since 23 October 2026, the
 documentation getting diagrams through `mmdc` installed globally from npm, then
 everything without the person. Run 2b the direct route under `--auto`, with a
 small idea that needs no tool. Run 3a the question for the rule after a counted
@@ -430,7 +433,9 @@ first, a public repository with a README, a TypeScript function and a test, the
 install question and the question on check tools in the packages answered yes,
 a missing check tool installed by the run after the setup has landed, the mode
 declined, nothing planned and nothing built. The entry carries the stock of the
-machine, the open risk that the rule does not name `npm install -g`, and every
+machine, the open risk that the rule does not name `npm install -g`, which the
+rule's wording of 23 October 2026 ends, the roadmap entry of that date on the
+catch-up after the audit, and every
 open defect of the list with what it still needs and the run where it needs one.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
@@ -460,7 +465,10 @@ organization on the plan Free: HTTP 403, "Upgrade to GitHub Pro or make this
 repository public". With them, the same day and version, decision 10: after
 the yes, devloop asks whether it may enter the rule for the classifier of
 auto mode into `~/.claude/settings.json`, text 4 of that entry, and
-`bin/devloop-auto-mode-rule` enters it on the yes. The third is built on 9
+`bin/devloop-auto-mode-rule` enters it on the yes; since 23 October 2026 in a
+wording that names the eleven routes whose place the install guard asks and
+the three browser installers, the earlier wording counting as no rule, the
+roadmap entry of that date on the catch-up after the audit. The third is built on 9
 October 2026, version 0.133.0: start
 condition 4 of the mode, which until then said that the kinds of command
 the run needs are approved for the project, which no run could read in the
@@ -948,7 +956,8 @@ that answers it, or says that none does.
   guard out of the way, and the roadmap entry of that date says what that
   does and does not license. Since 9 October 2026 the rule for an install is
   the one `setup-checks` step 8 enters under `autoMode.allow` after a yes,
-  text 4 of the roadmap entry of that day, decision 10; in the second closing
+  text 4 of the roadmap entry of that day, decision 10, in the wording of 23
+  October 2026 since that day; in the second closing
   run of 11 October 2026 it stood and the two installs with nobody there met
   no refusal of the classifier, the roadmap entry of that date on the second
   closing run, and whether they passed because of it is not measured.
