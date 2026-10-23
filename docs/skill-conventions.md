@@ -2212,7 +2212,7 @@ no, and, under a yes, a place the record does not name. Since 21 October 2026
 every cause is one whole clause without a label and a colon of its own, and
 the message joins it behind "does not open it, because", in the wordings the
 person approved that day, the roadmap entry of that date on milestone 3,
-part 3: until then seven causes of `bin/devloop-install-record` opened with
+part 3: until then five causes of `bin/devloop-install-record` opened with
 a label and a colon of their own — `no record:`, `unknown value:` — behind
 the message's own colon, and the fallback for a reader that gave no cause
 quoted what the reader printed, the shell's error with its paths among it,
@@ -2709,7 +2709,15 @@ default unread. `puppeteer browsers install`, the `puppeteer` package's own
 form, defines no `--path`: its CLI is built with `allowCachePathOverride:
 false` (`packages/puppeteer/src/node/cli.ts` and `#definePathParameter` in
 `packages/browsers/src/CLI.ts`, read at `6fde1bd` on 21 October 2026), and
-its download lands in the cache directory the guard reads already. What a
+its download lands in the cache directory the guard reads already. That
+last half does not hold as read on 23 October 2026: `#install` in
+`packages/browsers/src/CLI.ts` at `6fde1bd` takes `args.path ??
+this.#cachePath`, lines 643 and 667, whether or not the option is defined,
+no `.strict(` standing in the file, and yargs 17.7.3 puts a `--path` that no
+option defines into `args.path` and a repeated one into a list, measured
+that day with the copy in the cache of `npx`; the package asks for yargs 18,
+not measured. The guard reads no `--path` on that form, a defect the roadmap
+entry of 23 October 2026 on the audit records. What a
 false positive cost, after that decision and until 12
 October 2026: `PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install` put the
 browsers inside `node_modules` and passed under a yes with the eleven

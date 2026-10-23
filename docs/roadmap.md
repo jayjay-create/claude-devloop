@@ -32957,7 +32957,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   line 26220, is met where nothing the decision needs stands only before the
   call; the instruction in `output-styles/devloop.md` line 38 stays as it is.
   Record 496 of project z carried "Jetzt die Install-Erlaubnis, zum zweiten
-  Mal." and nothing the decision needs, lines 29806 to 29820; under the new
+  Mal." and nothing the decision needs, lines 29807 to 29820; under the new
   should record 497 held.
   Cluster 8. Under `install-tools: no` the stored answer carries no
   `install-place` and no `install-route` line, and the line at session start
@@ -33028,11 +33028,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lines 458 to 461 and 469 to 471).
   Cluster 14. `--path` of `@puppeteer/browsers install` is read as the person
   decided on 12 October 2026 in point 4 for the variables before the command
-  (lines 19645 to 19650): inside the project through, outside held against
+  (lines 19644 to 19651): inside the project through, outside held against
   the stored answer, under a no blocked. A later order.
   Cluster 15. What npm reads as a global install the guard reads as one, by
-  the should of finding 6 of the entry of 9 October 2026, lines 14027 to
-  14029. Measured on 20 October 2026 in a Linux workspace: `npm prefix --gl`
+  the should of finding 6 of the entry of 9 October 2026, lines 14028 to
+  14030. Measured on 20 October 2026 in a Linux workspace: `npm prefix --gl`
   and `npm prefix --g` name the global directory in npm 10.9.4 and in npm
   12.2.0 (through npx, under Node 22.22.0 with a warning on the Node
   version); npm 12.2.0 rejects `--glob`, `--glo` and `--globa` as an unknown
@@ -33150,7 +33150,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   names this entry for the wording of 20 October 2026; the skill says what is
   said, not the words. Nothing changes in `skills/setup-checks/SKILL.md`,
   whose step 8 inserts the same text at line 1071.
-  Built: the no of the install question says at both askings that some packages of the project download something themselves when they are installed and that the no does not stop it, `shared/install-question.md` lines 16 to 18 at `d1250d1`; its should since this entry, in place of finding 19's: the line under the no says that installing a package of the project can download something on the side, a browser say, and that the no does not stop that, and the guard stays as it is; the old should of finding 19, quoted: "under a no nothing lands outside the project without the person, a browser that the installation of a package downloads included".
+  Built: the no of the install question says at both askings that some packages of the project download something themselves when they are installed and that the no does not stop it, `shared/install-question.md` lines 16 to 20 at `d1250d1`; its should since this entry, in place of finding 19's: the line under the no says that installing a package of the project can download something on the side, a browser say, and that the no does not stop that, and the guard stays as it is; the old should of finding 19, quoted: "under a no nothing lands outside the project without the person, a browser that the installation of a package downloads included".
   Line 5986, the question's half: its should since this entry is the report
   half alone — what a package manager did beside the package stands in the
   report of the install, `skills/build-work/SKILL.md` line 507 and
@@ -33161,7 +33161,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   back". `docs/plan.md` line 244 names the cost among the question's points
   of 19 September 2026 and lines 503 to 507 record the cut of 30 September
   2026 to the four points that carry the decision, so nothing there changes.
-  (e) Cluster 17. `skills/setup-project/SKILL.md` lines 49 to 53 at
+  (e) Cluster 17. `skills/setup-project/SKILL.md` lines 49 to 56 at
   `d1250d1` say that the case with nobody there cannot arise here, the run
   without the person reaching the skill on no way and a setup never running
   without the person, and that until 20 October 2026 the bullet said the
@@ -33169,7 +33169,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   following the bullets directly. The defect of line 27503 reads built since
   this entry, its evidence on line 49, its should met by its second way, the
   text for the run with nobody there gone.
-  Built: the bullet of `setup-project` for a blocked install says the case with nobody there cannot arise here, `skills/setup-project/SKILL.md` lines 49 to 53 at `d1250d1`; its should as finding 11 had it, met by its second way: "the bullet names the case with them there alone, or says the case cannot arise here, as setup-checks does under With nobody there for its third route".
+  Built: the bullet of `setup-project` for a blocked install says the case with nobody there cannot arise here, `skills/setup-project/SKILL.md` lines 49 to 54 at `d1250d1`; its should as finding 11 had it, met by its second way: "the bullet names the case with them there alone, or says the case cannot arise here, as setup-checks does under With nobody there for its third route".
   Line 27167, the insert of `shared/backed-command.md` in `setup-project` whose only use went with the install handed over, its should the insert going or a line that hands a command over using it: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "devloop-text backed-command".
   The closing names no commit, since the commit of this branch does not
   resolve on `main` after the squash merge, section D of the tool's header;
@@ -33419,7 +33419,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   README.md | grep -o -E '[0-9]{1,2} +(January|…|December) +[0-9]{4}'`,
   printed eight dates at `f82aeae` — 17 October 2026 (line 91), 16 October
   2026 (158), 13 October 2026 (231), 9 October 2026 (234), 29 September 2026
-  (321 to 322, over the line break), 14 October 2026 (324 and 329), 9 October
+  (322 to 323, over the line break), 14 October 2026 (324 and 329), 9 October
   2026 (381) — and the version pair stood at line 315; `grep -n -E
   '[0-9]{4}-[0-9]{2}-[0-9]{2}' README.md` printed nothing, and `grep -n -i -E
   'until that day|the same day|was raised|entry of [0-9]'` found lines 93,
@@ -33433,13 +33433,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   or in the tracker where the run goes alone." (89 to 92); lines 158 to 159,
   "Since 16 October 2026 a run without you is not stopped by what is yours on
   the main branch either" — "A run without you is not stopped by what is
-  yours on the main branch either" (156 to 157); lines 230 to 231, "and so
+  yours on the main branch either" (156 to 157); lines 230 to 232, "and so
   does, since 13 October 2026, every program that runs the command as an
   administrator" — "and so does every program that runs the command as an
   administrator" (228 to 230, line 230 keeping whole the text "administrator
   or as another user — `doas`, `su`, `run0`, `pkexec` and the", the proof of
   the closing of line 23691 at line 32538, which the tool holds on every run);
-  line 234, "Since 9 October 2026 two more" — "Two more" (236); line 242, "And
+  lines 234 to 235, "Since 9 October 2026 two more" — "Two more" (236 to 237); line 242, "And
   since the same day a guard" — "And a guard" (244); line 315, "That is how
   0.80.0 was raised to 0.81.0, without uninstalling." — "That works without
   uninstalling." (317); lines 319 to 329, the paragraph on the merge gate
@@ -33454,7 +33454,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   pr merge` is refused while one is pending or red. The entry in
   `docs/roadmap.md` on the merge gate carries the setting and the merge
   sequence; the fourth and fifth addenda of the roadmap entry on the command
-  reader carry the command for the five." (321 to 330); line 381, "and since 9
+  reader carry the command for the five." (321 to 330); lines 381 to 382, "and since 9
   October 2026 the hook on permission prompts" — "and the hook on permission
   prompts" (382). No content was added; "today" at lines 5, 112, 188 and 377
   states the state of today and stays. Two defects of the README sit on these
@@ -33633,7 +33633,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lines 8 to 10, the sentence "It has been exercised on throwaway projects
   across five stacks — Python, TypeScript, Kotlin, Go and Rust — once with
   nobody watching." gone; (c) line 54, "planned in `docs/plan.md`, not built."
-  — "planned, not built."; (d) lines 113 to 114, "is where `docs/plan.md`
+  — "planned, not built."; (d) line 114, "is where `docs/plan.md`
   takes the set next." — "is planned, not built."; (e) line 233, ", which
   `docs/skill-conventions.md` lists" gone; (f) lines 236 to 238, ", and states
   the permission mode beside a call of `bin/devloop-permission-mode`, which is
@@ -33745,7 +33745,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   saying so; the finding on the README's count of skills re-anchored on line
   8 as it stands; the two run rows on defect E; nothing else. No record
   anchored on a line the fifth commit changed or removed stays broken: the
-  rows whose evidence stood on README lines 8, 294, 321 and 371 at `f82aeae`
+  rows whose evidence stood on README lines 8, 294, 325 and 371 at `f82aeae`
   are among the closed, and the finding on line 8 is re-anchored. The tool,
   its self-test, the nineteen checks and the step's command ran on the tree
   of the fifth commit, the report naming every figure that changed against
@@ -33827,7 +33827,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `.claude/`, is no find. Decided on 20 October 2026 and carried out here as
   well: cluster 14, lines 33029 to 33032, `--path` read as point 4 of the
   decisions of 12 October 2026 reads the variables before the command, lines
-  19645 to 19650; cluster 15, lines 33033 to 33052, the forms npm reads as a
+  19644 to 19651; cluster 15, lines 33033 to 33052, the forms npm reads as a
   global install read as one, measured again before the build. The first
   point of cluster 13, the route that does not answer, is left on purpose by
   the decision of 20 October 2026, lines 32979 to 32984, and stays.
@@ -33875,7 +33875,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **What the first commit built, `1810ab5`.** `bin/devloop-install-record`: the
   seven causes at lines 30, 42, 45, 46, 47, 53 and 54 (at `1810ab5` lines
   32, 44, 47, 48, 49, 55 and 56) in the wordings above, the
-  header saying at lines 17 to 19 that a cause is one clause so that the guard
+  header saying at lines 17 to 19 of `1810ab5` that a cause is one clause so that the guard
   can join it behind "because"; the program's output on exit 0 and the
   resolution of the default branch unchanged, the check holding the three
   copies together printing `1` as before. `hooks/pre-tool-use-install-guard.sh`:
@@ -33885,7 +33885,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   line 1012, the rest of the message word for word; the npm forms, lines 517
   to 518, now lines 525 to 526, the fifteen forms read as global and the comment
   above them naming the seven not read and the measurement; `--path`, read in
-  the arm `puppeteer-pkg:install`, lines 637 to 638, now lines 652 to 658: where
+  the arm `puppeteer-pkg:install`, lines 637 to 638, now lines 651 to 658: where
   `--install-deps` stands without `--help` the block for system packages as
   before, otherwise, where no `--help` stands, the words behind `install` read
   for `--path=<place>` and `--path <place>`, the last one winning as yargs
@@ -33896,8 +33896,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   another variable, a relative path where the command does not run inside the
   project, a `..` segment — not read, "where it lands cannot be read here;
   @puppeteer/browsers install (where it puts things is not read off this
-  machine by this guard)"; the index of `install` kept at line 631 for that;
-  the comment at lines 612 to 620 saying so and that `puppeteer browsers install`
+  machine by this guard)"; the index of `install` kept at line 631 of `1810ab5` for that;
+  the comment at lines 612 to 620 of `1810ab5` saying so and that `puppeteer browsers install`
   defines no `--path`; without `--path` the command is read as before, the
   vendor's default, the current directory, unread. `hooks/session-start.sh`:
   line 83, now 82, "handed to the person"; the comment's sentence "Until 20
@@ -33906,8 +33906,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the code does and the earlier reading standing in `docs/skill-conventions.md`
   under "The install guard reads a record" and in the entry of 20 October
   2026. `.github/workflows/stock-take.yml`: the red line of the step on a
-  date, line 128, now 130; the second step at lines 143 to 146, last in the job
-  `stock-take`, with its comment at lines 132 to 142: the file read as one
+  date, line 128, now 130; the second step at lines 143 to 146 of `1810ab5`, last in the job
+  `stock-take`, with its comment at lines 132 to 142 there: the file read as one
   line with `tr '\r\n' '  '`, `grep -o -E` over it with the pattern
   `docs/(plan\.md|roadmap\.md|skill-conventions\.md|stock-take\.tsv)|(^|[^A-Za-z0-9_./~-])(bin|scripts|shared|hooks|skills|\.github|\.claude-plugin)/[A-Za-z0-9_./-]*`,
   a path counting only after a character that is no part of a path, so that
@@ -33928,10 +33928,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   names, and the sentence on the handover from wherever the person is; in
   the sentence on the npm forms, lines 2260 to 2266, the abbreviations read
   since this day and the seven not read, with the measurement; the paragraph
-  on `--path`, lines 2529 to 2538, saying what holds now and until when the
+  on `--path`, lines 2529 to 2539, saying what holds now and until when the
   old reading held, with the vendor's lines; under "`README.md` carries no
   date", the second step, and the sentence "and eight shorter places pointing
-  at a document or naming a file", line 1493, dropped: it counted the sentence
+  at a document or naming a file", lines 1493 to 1494, dropped: it counted the sentence
   on the tests and the sentence on the session-start hook, which neither
   point at a document nor name a file, and by "A count lives in one place",
   line 1446, the paragraph names the entry that names each place and counts
@@ -34151,7 +34151,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   second time. (d) Cluster 21: with the person there, where the saved answer
   says no or none stands and a class would need a tool outside the project,
   `setup-checks` puts the decision at once as a question, in step 3, where it
-  handed the command over until then, lines 484 to 499, and so before the
+  handed the command over until then, lines 485 to 495, and so before the
   offer of the unattended mode in step 8. Approved in this wording, which the
   run says in the person's language, `gitleaks` for the class `secrets` the
   example: "Für die Prüfung auf versehentlich eingecheckte Zugangsdaten fehlt
@@ -34269,14 +34269,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `hooks/session-start.sh` line 50 of that commit: "not read, because ".
   `skills/setup-checks/SKILL.md` step 3: the question with its fields,
   header, question field and two answers, what follows each, and that a class
-  is never left `empty` for it, lines 485 to 536 of that commit; step 1's
+  is never left `empty` for it, lines 495 to 535 of that commit; step 1's
   bullet on `secrets` names the question; "A guard's block is not a decline"
   names it; step 4 says the hook writes the standing fact, lines 589 to 599;
   step 8's two reasons read "an install they declined, did not make or did
   not run". `skills/build-work/SKILL.md` step 3 point 7 says the hook writes
   the standing fact, lines 499 to 507 of that commit, point 8 that this step
   writes no line for an install the run made and puts the hook's line where
-  the hook could not, lines 556 to 568, and the pull request paragraph names
+  the hook could not, lines 557 to 568, and the pull request paragraph names
   the hook. `.github/workflows/stock-take.yml`: the inputs for the two new
   pairs of event and matcher with a `tool_use_id`, lines 263 to 264 of that
   commit, so that the job "hooks on every system" runs the new hook once on
@@ -34350,7 +34350,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   which keeps what step 3 said until this day of a command not run. The
   README is not changed: the proposal below needs the person.
 
-  **Recorded, not built: `README.md` lines 213 to 215 list what the hooks do without being asked — the checks for a changed file, every blocking check at the end of a turn, the guards — and say nothing of the line `hooks/post-tool-use-install-fact.sh` writes into the file on running the project after an install the record let through, so that the list is incomplete since this day — should: the README names it, after "every blocking check" on line 215, in a wording the person approves; proposed: "; after a tool the run installed outside the project under your record has gone in, a line in the file on running the project saying what was installed and where".**
+  **Recorded, not built: `README.md` lines 213 to 260 list what the hooks do without being asked — the checks for a changed file, every blocking check at the end of a turn, the guards — and say nothing of the line `hooks/post-tool-use-install-fact.sh` writes into the file on running the project after an install the record let through, so that the list is incomplete since this day — should: the README names it, after "every blocking check" on line 214, in a wording the person approves; proposed: "; after a tool the run installed outside the project under your record has gone in, a line in the file on running the project saying what was installed and where".**
   Found at the counter-check of this order; `grep -n 'without being asked'
   README.md` prints line 213 and the paragraph names no such line.
 
@@ -34662,7 +34662,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   rule is no condition of the mode. (c) From the statement of 19 October 2026 at line 30078 and
   the should of status line 30085, the open decision taken as a question of
   theirs, with the question of `setup-checks` step 3 on a tool the run may
-  not install, lines 485 to 553 of that skill, approved on 21 October 2026:
+  not install, lines 495 to 552 of that skill, approved on 21 October 2026:
   a check class that needs a tool outside the project under a record saying
   no or never written goes from the build to `setup-checks` for that class,
   whose step 3 puts the question; the build hands no command over for it
@@ -34699,16 +34699,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the next message that ends a turn with text, and carry on with them; with
   nobody there, stop with the reason named, as the skill says for a stop
   with a reason. The sentence for 6 and 7 is the one `build-work` names in
-  the paragraph after the list of the seven conditions, lines 1495 to 1505,
+  the paragraph after the list of the seven conditions, lines 1502 to 1513,
   the one step 8 of `setup-checks` puts before its second questions,
-  approved on 6 October 2026, lines 29760 to 29763. A deletion or a read of
+  approved on 6 October 2026, lines 10972 to 10977. A deletion or a read of
   the mark passes as before, line 142, and a project without `docs/agents`
   passes as before, line 121; outside auto the block of 9 October 2026
   stands as it stood, before any record is read. Where the mark is
-  written, read for the cross-check: `plan-work` line 481, at the end of
-  Stage 1, and `build-work` line 1517, on the direct route, the two insert
+  written, read for the cross-check: `plan-work` lines 262 and 488, at the end of
+  Stage 1, and `build-work` line 1541, on the direct route, the two insert
   sites of `shared/mark-command.md`; the planning route into the build
-  writes no mark, line 1505, and the cut writes none, `cut-into-tasks` line
+  writes no mark, lines 1519 to 1520, and the cut writes none, `cut-into-tasks` line
   61 reading it and 177 deleting it. The person is there at both writes.
   `shared/mode-set-up.md` lines 21 to 29 at `45a7a49` say to the three
   skills that read the five things that the guard reads the last two at
@@ -34850,7 +34850,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   events, so that the refusal is read with the one reading and no second
   copy of it, which a hook of its own could not have had — a hook reads its
   input through the reader once, and the reading of the command is the
-  guard's 550 lines. The duty, lines 20 to 38 and 837 to 857 at that
+  guard's 550 lines. The duty, lines 20 to 38 and 837 to 859 at that
   commit: where the event is `PermissionDenied`, read off the reader's
   `event:` line, the guard runs its reading as at `PreToolUse`, and then,
   instead of the record and the block, decides the ways of the rule the
@@ -34872,7 +34872,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   id and the project directory, exit 0. Outside a devloop project the
   guard leaves at `docs/agents`, line 7, as before, and at another tool
   than Bash at line 21. The reader, `bin/devloop-command-reader`, prints
-  two fields more since this commit, lines 33 to 44 of its head: `reason:`
+  two fields more since this commit, lines 33 to 45 of its head: `reason:`
   where the JSON carries it, a line break in it a space, and `command:`,
   the string literal of `tool_input.command` between its quotes with its
   escapes intact, one line, taken at the decoding, lines 2104 and 2134,
@@ -34928,7 +34928,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   with `--auto` too, since they send a run alone with the person there,
   which the report names as a reading of the order. On the planning route
   into the build nobody is there, and nothing is asked and nothing written.
-  `shared/mode-set-up.md` lines 29 to 33 say to the three skills that read
+  `shared/mode-set-up.md` lines 26 to 33 say to the three skills that read
   the five things that the rule is none of them and how a refusal brings
   the question. `bin/devloop-auto-mode-rule` is the program of `4fe6374`
   again, byte for byte but for its usage note on `write`, lines 21 to 28
@@ -34980,7 +34980,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   at its path. Point 7, lines 529 to 532 at that commit, says that what it
   hands over is the tool of the task. `setup-checks` lines 49 to 53 at that
   commit name that build as the second of the four things that call the
-  skill for a single class, and step 3, lines 503 to 507, puts its question
+  skill for a single class, and step 3, lines 503 to 507 at that commit, puts its question
   on the single-class route as well, on the build's branch, the branch
   being the caller's as line 560 says and step 4 writing the line for a
   tool the person installed on the caller's branch, lines 613 to 621. Until
@@ -34992,7 +34992,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **(d) Titles, `45a7a49`.** The rule stands in `docs/skill-conventions.md`
   under "A title says what changed, and nothing else", after the rule that
   the README carries no date. The job `stock-take` in
-  `.github/workflows/stock-take.yml` gets a last step, lines 150 to 215 at
+  `.github/workflows/stock-take.yml` gets a last step, lines 154 to 216 at
   that commit, and the trigger the type `edited` beside the three default
   types, line 41: the title of the pull request comes out of the event into
   the environment variable `PR_TITLE` of the step and never into the text
@@ -35208,7 +35208,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   them, `same` at lines 350 to 352: git prints the common directory with
   its own slashes on Windows, and the temporary directory may carry a short
   name there, so "recorded in <path>" is held against the record's path
-  through `realpath` and `normcase`, `recorded` at lines 453 to 465, and the
+  through `realpath` and `normcase`, `recorded` at lines 453 to 466, and the
   refusal on `os.name == "nt"` is gone. 38 cases as before. The other
   starts: `git` is run by its bare name, which Windows finds as `git.exe`,
   and `--path-format=absolute` is git 2.31 or later, the runners carrying
@@ -35293,7 +35293,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the repository. Every line number of a file is as at `f0eaae7`; a line of this
   file as at `f0eaae7`, which below line 31380 is its number at `0776389` too,
   since every change to this file between the two commits either replaced a line
-  by one line or appended after line 31377, read off `git diff 0776389 f0eaae7
+  by one line or appended after line 31379, read off `git diff 0776389 f0eaae7
   -- docs/roadmap.md`. No session of Claude Code was started for this entry and
   nothing ran on a bench; no file under `skills/`, `shared/`, `hooks/`, `bin/`,
   `scripts/`, `output-styles/` or `.github/` changes, and `README.md` does not
@@ -35449,7 +35449,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   installs through a route; run 2a, `mmdc` through npm, the route of the
   TypeScript stack, under the open risk above. Line 5986, cluster 18, the report
   of an install saying what the package manager did beside the package: built
-  and never walked, its evidence `skills/build-work/SKILL.md` line 507, the
+  and never walked, its evidence `skills/build-work/SKILL.md` line 515, the
   report half alone since 20 October 2026; a run in which the run installs; run
   2a, `mmdc`, and run 3a, `yq`. Line 15579, cluster 11, a project whose mode is
   set up meeting the question for the rule: built and never walked, its evidence
@@ -35554,6 +35554,749 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   self-test passed on each tree. The nineteen checks under "Before a handover,
   run these" did not run for this entry, the two orders of 23 October 2026
   asking for the tool and its self-test alone and nothing of a skill changing.
+
+- **Six entries held against the code: lines corrected, defects recorded.**
+  23 October 2026, version 0.156.0. On `task/audit-2026-10-23`, off `a6c3403`,
+  in one commit: this entry, the corrections in place, the mends in
+  `docs/plan.md` and `docs/skill-conventions.md`, and the rows of the table.
+  Nothing under `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`,
+  `output-styles/` or `.github/` changes, and `README.md` does not, so the
+  version stays and `.claude-plugin/plugin.json` is untouched. The report
+  stands on this machine as `~/devloop-audit-2026-10-23.md`, in German, and is
+  not in the repository. Every line number of a file in this entry holds at
+  `a6c3403` unless it says otherwise; no line of this file moved, the
+  corrections staying on their physical lines and this entry standing after
+  the last; `docs/plan.md` keeps its lines, and `docs/skill-conventions.md`
+  gains eight lines after line 2711. No session of Claude Code was started;
+  eight subagents of the session read the entries. Beyond the `git fetch` of
+  the order, GitHub was read for three files of the vendor of Puppeteer at
+  `6fde1bd`, through `raw.githubusercontent.com`, and the date of that commit,
+  through the API, and nothing was changed there. The words the stock-take
+  tool reads a line of this file into its search set by stand in this entry in
+  its head and on the seventy-two lines that record a defect, and on no other
+  line.
+
+  **What was read, and how.** On 23 October 2026 on a branch cut from
+  `origin/main` at `a6c3403`, the working tree clean, the installed copy at
+  0.156.0 equal to the tree in all six directories, the check under "Before
+  you change anything, run this" printing nothing. Read whole by the session:
+  `README.md`, the header of `scripts/devloop-stock-take`, lines 1 to 655,
+  `git diff b8db2c9 a6c3403 -- docs/skill-conventions.md docs/plan.md`, the
+  sections of `docs/plan.md` on milestone 3 those diffs touch, and the audit
+  of 20 October 2026, lines 32594 to 32872, as the form. The six entries from
+  line 32873 to line 35556, those of pull requests #193 to #198, 205941
+  characters, were read by eight subagents of the session, one entry each and
+  the entries at 34080 and 34609 in two halves at 34357 and 34992, each with
+  its squash commit's diff against its parent, every line number at the commit
+  it names read with `git show`, the expanded text of a skill at a commit
+  produced by `scripts/devloop-expand` out of that commit's tree; every
+  finding they returned was read again by the session at the place before it
+  counted, and those that did not count are named below. The branches of parts
+  2 to 4 were read as their remote-tracking branches, each head's tree equal
+  to its squash commit's; the commits of the other three were read off the
+  reflog, the squash messages and the objects the repository still holds. The
+  table through the tool at `a6c3403`: exit 0, nothing broken, 15 findings, 40
+  closed defects, no unit without a straight path, none of 4489 lines
+  uncovered, 261 lines that can carry no unique anchor, no status word broken
+  over a line break; the self-test 124 cases, 95 of 95 messages asserted; the
+  nineteen checks under "Before a handover, run these" in a clean shell with
+  `/usr/bin/grep`, their output as the conventions describe it. The commands
+  and what they printed stand in the report.
+
+  **The entries against the code.** Every statement of the six entries about
+  what a skill, a shared text, a hook, a program, the output style, the tool
+  or the workflow does was held against the files at `a6c3403`, and where it
+  no longer holds there, against the entry's own commit; what the entries say
+  of one another, of `docs/plan.md`, of `README.md` and of the conventions;
+  `docs/plan.md`, `README.md` and the conventions against the code and against
+  the decisions of the six entries; the table against the rule of the tool.
+  What the entries built stands as they say, at their commits, with the
+  exceptions below: the install question at a refresh, the stored answer under
+  a no and the line at session start, the guard's message joined behind
+  "because", `--path` on `@puppeteer/browsers install`, the npm forms, the
+  README steps of the workflow, the install-fact hook and the reading of a
+  missing tool, the guard on the mark reading conditions 6 and 7, the question
+  after a refusal, the step on titles, and the arrangement of the six closing
+  runs with every open defect of the list mapped and in the state the tool
+  gives it. `README.md` carries no date and names no file or document of
+  devloop's own, both steps of the workflow green on it; what it says against
+  the code is put to the person, below. Nothing of a skill or a shared text
+  says anything the code contradicts; the defects outside `docs/` stand in
+  programs, hooks and the workflow.
+
+  **Mended in the documents.** Each mended place carries a defect thing sited
+  on its status line here, with the mended line as its evidence, which for a
+  document reads recorded and not built.
+
+  - `docs/plan.md` under milestone 3, line 434: the entry on the six closing
+    runs carries "every open defect of the list with the run that meets it".
+    That entry gives for every point what it still needs, and a run for
+    thirteen of them, two waiting for a bench after the runs, lines 35538 to
+    35540. Mended on that physical line: "with what it still needs and the run
+    where it needs one"; the note of the table's row on that entry's head said
+    the same and says now what the line says.
+
+    Recorded, not built: the plan says the entry on the six closing runs carries every open defect with what it still needs and the run where it needs one.
+
+  - `docs/skill-conventions.md` under "The install guard reads a record", line
+    2215: "until then seven causes of `bin/devloop-install-record` opened with
+    a label and a colon of their own". At `a090677` five causes of the reader
+    did, lines 42, 45, 47, 53 and 54; lines 30 and 46 carried none, and the
+    other two of the seven the defect of line 6588 names, lines 6588 to 6590,
+    are the guard's fallback, "the record could not be read", which the same
+    sentence names after them. Mended on that physical line: five.
+
+    Recorded, not built: the conventions say five causes of the install record's reader opened with a label of their own until 21 October 2026, two more being the guard's fallback.
+
+  - `docs/skill-conventions.md` lines 2708 to 2711: `puppeteer browsers
+    install` defines no `--path`, "and its download lands in the cache
+    directory the guard reads already". The second half does not hold as read
+    today, the finding on the entry at line 33759 below. Mended with eight
+    lines after line 2711, which say so and name the defect below; the first
+    half stands.
+
+    Recorded, not built: the conventions say a --path on puppeteer browsers install reaches the vendor's install under yargs 17.7.3, where they said it moves nothing.
+
+  **Line numbers of dated entries, corrected in place.** As the audits of 12,
+  14, 18 and 20 October 2026 did; nothing else in a dated entry is changed,
+  and what a dated entry says wrongly otherwise this entry says, below. Each
+  carries a defect thing sited on its status line here and evidenced on the
+  corrected line. Three lines among them carry an anchor of the table, 33153,
+  33172 and 34353, the anchors untouched and no run on their things.
+
+  - The entry at line 32873, line 32960, named "lines 29806 to 29820" for
+    record 496 of project z, the walk of defect 14 of the entry of 19 October
+    2026; 29806 is blank and the walk stands at 29807 to 29820, as the same
+    entry has it at lines 32899 and 33191. Corrected.
+
+    Recorded, not built: the entry on part 1 names lines 29807 to 29820 for the walk of defect 14 at its line 32960.
+
+  - The same entry, line 33031, named point 4 of the decisions of 12 October
+    2026 "(lines 19645 to 19650)"; the point stands at 19644 to 19651, its
+    number on 19644 and its last words on 19651. Corrected.
+
+    Recorded, not built: the entry on part 1 names lines 19644 to 19651 for point 4 of the decisions of 12 October 2026.
+
+  - The same entry, lines 33034 to 33035, named "lines 14027 to 14029" for the
+    should of finding 6 of the entry of 9 October 2026; 14027 is blank and
+    "What should hold" stands at 14028 to 14030. Corrected.
+
+    Recorded, not built: the entry on part 1 names lines 14028 to 14030 for the should of finding 6 of 9 October 2026.
+
+  - The same entry, its status line 33153, named `shared/install-question.md`
+    lines 16 to 18 at `d1250d1` for the no saying at both askings that some
+    packages download something themselves; the first asking says it at 16 to
+    18, the second, "the same exception", on 20. Corrected: 16 to 20.
+
+    Recorded, not built: the status line on the exception under a no names lines 16 to 20 of install-question.md at d1250d1, both askings.
+
+  - The same entry, line 33164, (e), named `skills/setup-project/SKILL.md`
+    lines 49 to 53 at `d1250d1` for the bullet saying the case with nobody
+    there cannot arise and that until 20 October 2026 the bullet said the
+    command becomes an issue; the first runs from 49 to 54 and the second
+    stands at 55 to 56. Corrected: 49 to 56.
+
+    Recorded, not built: (e) of the entry on part 1 names lines 49 to 56 of setup-project at d1250d1 for the bullet and its earlier reading.
+
+  - Its status line, line 33172, named the same lines 49 to 53 for the
+    sentence that the case cannot arise here, which runs to 54. Corrected.
+
+    Recorded, not built: the status line on the setup-project bullet names lines 49 to 54 at d1250d1 for the case that cannot arise.
+
+  - The entry at line 33283, line 33422, gave 29 September 2026 in `README.md`
+    at `f82aeae` as "(321 to 322, over the line break)"; the date stands at
+    322 to 323, 321 carrying none. Corrected.
+
+    Recorded, not built: the entry on part 2 gives README lines 322 to 323 at f82aeae for the date broken over a line.
+
+  - The same entry, line 33436, named lines 230 to 231 for "and so does, since
+    13 October 2026, every program that runs the command as an administrator";
+    "administrator" stands on 232. Corrected: 230 to 232.
+
+    Recorded, not built: the entry on part 2 names README lines 230 to 232 at f82aeae for the sentence on administrators.
+
+  - The same entry, line 33442, named line 234 for "Since 9 October 2026 two
+    more" and 236 for "Two more"; the words run over 234 to 235 at `f82aeae`
+    and over 236 to 237 at `a4c2b99`. Corrected.
+
+    Recorded, not built: the entry on part 2 names README lines 234 to 235 and 236 to 237 for the words on two more guards.
+
+  - The same entry, line 33457, named line 381 for "and since 9 October 2026
+    the hook on permission prompts", which runs over 381 to 382. Corrected.
+
+    Recorded, not built: the entry on part 2 names README lines 381 to 382 at f82aeae for the words on the hook on permission prompts.
+
+  - The same entry, line 33636, (d), named lines 113 to 114 for "is where
+    `docs/plan.md` takes the set next.", which stands on 114 alone, 113
+    unchanged by the fifth commit. Corrected.
+
+    Recorded, not built: (d) of the entry on part 2 names README line 114 at f82aeae for the words on where the plan takes the set.
+
+  - The same entry, line 33748, named README lines 8, 294, 321 and 371 at
+    `f82aeae` for the rows whose evidence the fifth commit removed; at
+    `f82aeae` the evidence of the row of line 23708 stood on 325, and 321
+    carried none, 321 being that line's place at `744e5c0`. Corrected: 325.
+
+    Recorded, not built: the entry on part 2 names README lines 8, 294, 325 and 371 at f82aeae for the evidence the fifth commit removed.
+
+  - The entry at line 33759, line 33830, named point 4 of the decisions of 12
+    October 2026 at lines 19645 to 19650, as the entry at line 32873 did.
+    Corrected as there: 19644 to 19651.
+
+    Recorded, not built: the entry on part 3 names lines 19644 to 19651 for point 4 of the decisions of 12 October 2026.
+
+  - The same entry gives every line number at `a090677` unless a commit stands
+    beside it, line 33777, and names at lines 33878, 33899, 33900, 33909 and
+    33910 lines of the reader, the guard and the workflow that hold at
+    `1810ab5` and not at `a090677`: the reader's header at 17 to 19, the index
+    of `install` at 631, the guard's comment at 612 to 620, the README step at
+    143 to 146 and its comment at 132 to 142. Corrected: `1810ab5` named
+    beside each, "there" beside the last.
+
+    Recorded, not built: the entry on part 3 names 1810ab5 beside five line numbers of its new code that hold there and not at a090677.
+
+  - The same entry, line 33888, gave the arm `puppeteer-pkg:install` as "now
+    lines 652 to 658"; at `1810ab5` its label stands on 651. Corrected: 651 to
+    658.
+
+    Recorded, not built: the entry on part 3 names lines 651 to 658 at 1810ab5 for the arm that reads --path.
+
+  - The same entry, line 33931, named the conventions' paragraph on `--path`
+    as lines 2529 to 2538 at `a090677`; it ends on 2539, "addendum.", which
+    the second commit replaced with it. Corrected.
+
+    Recorded, not built: the entry on part 3 names lines 2529 to 2539 of the conventions at a090677 for the paragraph on --path.
+
+  - The same entry, line 33934, named line 1493 for the dropped words "and
+    eight shorter places pointing at a document or naming a file", which run
+    over 1493 to 1494; the same change dropped the three sections named before
+    them, lines 1491 to 1493 at `a090677`, on working on devloop, on what
+    hooks can and cannot do and on rules learned from this workflow's own
+    bugs, which the entry does not say. The number corrected; the three
+    sections said here.
+
+    Recorded, not built: the entry on part 3 names lines 1493 to 1494 for the eight places dropped from the conventions, the three sections before them dropped too.
+
+  - The entry at line 34080, line 34154, (d), named `setup-checks` lines 484
+    to 499 at `b52be40` for step 3 handing the command over until then; the
+    handover runs from 485 to 495, 484 closing the sentence before it and 496
+    to 499 being the sentence on the packages. Corrected: 485 to 495.
+
+    Recorded, not built: (d) of the entry on part 4 names setup-checks lines 485 to 495 at b52be40 for the command step 3 handed over.
+
+  - The same entry, line 34272, named lines 485 to 536 of `6ef979b` for the
+    question of step 3; it begins on 495, "Where the record says no", and "a
+    class is never left `empty` for it" ends on 535, 485 to 494 belonging to
+    what goes before. Corrected: 495 to 535.
+
+    Recorded, not built: the entry on part 4 names setup-checks lines 495 to 535 at 6ef979b for the question of step 3.
+
+  - The same entry, line 34279, named `build-work` lines 556 to 568 of
+    `6ef979b` for point 8; 556 is blank and the paragraph begins on 557.
+    Corrected.
+
+    Recorded, not built: the entry on part 4 names build-work lines 557 to 568 at 6ef979b for point 8.
+
+  - The same entry, its status line 34353, named `README.md` lines 213 to 215
+    at `b52be40` for the list of what the hooks do, the guards among it, and
+    "every blocking check" on line 215; the list runs from 213 to 260 and
+    "every blocking check" stands on 214, where the approved sentence went in.
+    Corrected, and the note of its row in the table with it.
+
+    Recorded, not built: the README defect of the entry on part 4 names lines 213 to 260 at b52be40 and every blocking check on line 214.
+
+  - The entry at line 34609, line 34665, named `setup-checks` lines 485 to 553
+    at `4fe6374` for the question of step 3 on a tool the run may not install;
+    it runs from 495 to 552, 485 standing mid-sentence before it and 553
+    blank. Corrected.
+
+    Recorded, not built: the entry on conditions 6 and 7 names setup-checks lines 495 to 552 at 4fe6374 for the question of step 3.
+
+  - The same entry, line 34702, named `build-work` lines 1495 to 1505 for the
+    sentence on conditions 6 and 7 in the paragraph after the list; it runs
+    from 1502 to 1513. Corrected.
+
+    Recorded, not built: the entry on conditions 6 and 7 names build-work lines 1502 to 1513 at 4fe6374 for the sentence on 6 and 7.
+
+  - The same entry, line 34704, named lines 29760 to 29763 of this file for
+    the sentence step 8 puts before its second questions, approved on 6
+    October 2026; those lines quote records 497 and 508 of the run of 19
+    October 2026, and the approved wording stands in the entry of 5 October
+    2026 at lines 10972 to 10977. Corrected.
+
+    Recorded, not built: the entry on conditions 6 and 7 names lines 10972 to 10977 for the step 8 sentence approved on 6 October 2026.
+
+  - The same entry, lines 34708 to 34711, named `plan-work` line 481 and
+    `build-work` line 1517 as the two insert sites of
+    `shared/mark-command.md`, and line 1505 for the planning route that writes
+    no mark; at `4fe6374` `plan-work` inserts it at 262 and writes the mark at
+    the end of Stage 1 on 488, `build-work` inserts it at 1541, and the
+    planning route stands at 1519 to 1520, 481, 1517 and 1505 carrying other
+    sentences. Corrected.
+
+    Recorded, not built: the entry on conditions 6 and 7 names plan-work lines 262 and 488, build-work line 1541 and lines 1519 to 1520 for the mark.
+
+  - The same entry, line 34853, named the guard's duty under
+    `PermissionDenied` at lines 837 to 857 of `4811956`; its block ends on
+    859, the exit on 858. Corrected.
+
+    Recorded, not built: the entry on conditions 6 and 7 names the guard's lines 837 to 859 at 4811956 for its duty under PermissionDenied.
+
+  - The same entry, line 34875, named lines 33 to 44 of the reader's head for
+    its two new fields; the comment ends on 45. Corrected.
+
+    Recorded, not built: the entry on conditions 6 and 7 names lines 33 to 45 of the reader's head at 4811956 for its two fields.
+
+  - The same entry, line 34931, named `shared/mode-set-up.md` lines 29 to 33
+    at `4811956` for the rule being none of the five and for how a refusal
+    brings the question; the first stands at 26 to 28. Corrected: 26 to 33.
+
+    Recorded, not built: the entry on conditions 6 and 7 names mode-set-up.md lines 26 to 33 at 4811956 for the rule and the refusal.
+
+  - The same entry, line 34983, named `setup-checks` step 3 at lines 503 to
+    507 with no commit beside them, which by its rule are lines of `4fe6374`;
+    the text stands there at `45a7a49`, the commit the sentence names before,
+    and at `4fe6374` those lines carry the form of the widget. Corrected: "at
+    that commit".
+
+    Recorded, not built: the entry on conditions 6 and 7 names step 3 lines 503 to 507 at 45a7a49 for the question on the single-class route.
+
+  - The same entry, line 34995, (d), named the workflow's last step at lines
+    150 to 215 at `45a7a49`; 150 is the run line of the README step before it,
+    and the step runs from its comment on 154 to the closing `PY` on 216.
+    Corrected.
+
+    Recorded, not built: (d) of the entry on conditions 6 and 7 names the workflow's lines 154 to 216 at 45a7a49 for the step on titles.
+
+  - The same entry, line 35211, named `recorded` at lines 453 to 465 of the
+    question program; it ends on 466, `return False`. Corrected.
+
+    Recorded, not built: the addendum of the entry on conditions 6 and 7 names lines 453 to 466 for the function recorded.
+
+  - The entry at line 35286, line 35296, said that every change to this file
+    between `0776389` and `f0eaae7` replaced a line by a line or appended
+    after line 31377; `git diff -U0 0776389 f0eaae7 -- docs/roadmap.md` gives
+    the hunk `-31379,0`, after the blank line 31379. Corrected.
+
+    Recorded, not built: the entry on the six closing runs says this file was appended after line 31379 between 0776389 and f0eaae7.
+
+  - The same entry, line 35452, named `skills/build-work/SKILL.md` line 507
+    for the evidence of line 5986, its line numbers at `f0eaae7`; the evidence
+    stands there on 515, 507 being its place until `b52be40`. Corrected.
+
+    Recorded, not built: the entry on the six closing runs names build-work line 515 at f0eaae7 for the evidence of line 5986.
+
+  **Said wrongly in dated entries, said right here.** Each carries a defect
+  thing sited and evidenced on its status line.
+
+  - The entry at line 32873, (a), lines 33081 to 33087, says that
+    `skills/setup-project/SKILL.md` lines 277 to 284 at `d1250d1` carry the
+    reason that what needs weighing stands alone, "as
+    `shared/three-questions.md` says of a round in its first sentence"; at
+    `d1250d1` those lines give "the ceiling on questions in a round", and the
+    reason the entry quotes came with the correction at the check before the
+    merge, `40bc494`, at `f82aeae` lines 285 to 292, as the entry's own
+    paragraph on the correction says at lines 33208 to 33216.
+
+    Recorded, not built: setup-project gives the reason of the call alone by the first sentence of three-questions.md since the correction, f82aeae lines 285 to 292.
+
+  - The same entry, lines 33259 to 33260, names among its records "two things
+    of kind skill branch for the refresh"; `git diff b8db2c9 f82aeae --
+    docs/stock-take.tsv` adds three, the third, a record whose value the
+    program cannot read, with the correction.
+
+    Recorded, not built: the records of the entry on part 1 add three skill branches for the refresh, the third for a record the program cannot read.
+
+  - The entry at line 33283, line 33296, says the branch went "in three
+    commits"; it has five, `a4c2b99`, `e23adee`, `48dc853`, `744e5c0` and
+    `494bef3`, the same sentence naming the last two as a fourth and a fifth.
+    As three entries of 19 October 2026 did, line 32786.
+
+    Recorded, not built: the entry on part 2 went in five commits, where its first paragraph says three.
+
+  - The same entry, lines 33305 to 33306, says the fifth commit put "a rule
+    and a reason" into the conventions; `git diff 744e5c0 494bef3 --
+    docs/skill-conventions.md` shows two rules, that a step whose precondition
+    is missing stops there and that the README is written for those who use
+    devloop, and the reason under "Registering a skill", as the entry's
+    paragraph at lines 33664 to 33676 names them.
+
+    Recorded, not built: the fifth commit of part 2 put two rules and a reason into the conventions.
+
+  - The same entry, lines 33653 to 33664, lists the hits of the second search
+    over `README.md` decided hit by hit and ends "Nothing else"; `git show
+    a090677:README.md | grep -n -i entry` prints line 274, "a stash entry",
+    under "What it writes into your project", the project's own, which the
+    list does not name.
+
+    Recorded, not built: the second search of part 2 over the README also hit a stash entry at line 274, a thing of the project.
+
+  - The entry at line 33759, lines 33868 to 33870, says that a `--path`
+    written on `puppeteer browsers install` "is not read by yargs and moves
+    nothing", and lines 33891 to 33892 that of several `--path` on
+    `@puppeteer/browsers install` the last one wins "as yargs takes it". The
+    vendor's `packages/browsers/src/CLI.ts` at `6fde1bd`, read today, takes
+    `args.path ?? this.#cachePath` at lines 643 and 667 whether the option is
+    defined or not and holds no `.strict(`; yargs 17.7.3, the copy in the
+    cache of `npx` on this machine, put `--path /srv/browsers` into
+    `args.path` where no option defines it and `--path=/a --path /b` into the
+    list `["/a","/b"]`, measured today under `$WORK` with a script of its own;
+    the package asks for yargs `^18.0.0`, line 87 of its `package.json`, not
+    measured. The conventions are mended above; the guard's defect stands
+    below.
+
+    Recorded, not built: under yargs 17.7.3 a --path on puppeteer browsers install reaches the vendor's install, and several --path come as a list, not the last one.
+
+  - The same entry, line 33949, says that the conventions, the plan, the
+    README "and the table name no label"; at `a090677` two anchors of the
+    table carried one, `cause: no default branch:` and `cause: no record:`,
+    rows 2305 and 2310 there, which the entry's second commit re-anchored.
+
+    Recorded, not built: two anchors of the table carried a label of the reader's causes until part 3 re-anchored them.
+
+  - The same entry, lines 33949 to 33950, says "five dated lines of this file
+    quote `no record: …`"; `git show a090677:docs/roadmap.md | grep -n 'no
+    record:'` prints six, 6571, 13269, 13702, 13868, 25676 and 33581.
+
+    Recorded, not built: six dated lines of this file quoted no record: when part 3 changed the reader's causes.
+
+  - The same entry, lines 33955 to 33957, says "the template under a yes
+    carrying the eleven places since the record was introduced"; the template
+    of 28 September 2026 carried six, `git show
+    8fbaeee:skills/setup-project/SKILL.md | grep -c install-place:` printing
+    6, and it carries eleven since 8 October 2026, version 0.131.0, `git log
+    -S'ms-playwright'` naming `2460bb7`.
+
+    Recorded, not built: the template of the install record carried six places from 28 September 2026 and eleven since 8 October 2026.
+
+  - The entry at line 34080, lines 34222 to 34223, says "`FACTS` at line 193,
+    filled by `item` with the command's id as a fourth field"; at `6ef979b`
+    `item`, lines 208 to 219, fills `ITEMS` with the id as its fourth field,
+    and `FACTS` is filled by `dest` and `destfile`, lines 224 and 229, by
+    `place`, line 859, and at `gem --bindir`, line 947.
+
+    Recorded, not built: item fills ITEMS with the command's id, and FACTS is filled by dest, destfile and place.
+
+  - The same entry, lines 34247 to 34249, says "three cases and four `absent`
+    lines"; `git diff b52be40 6ef979b -- bin/devloop-command-reader` adds five
+    `absent` lines beside the three cases.
+
+    Recorded, not built: part 4 added five absent lines to the reader's self-test beside three cases.
+
+  - The same entry, lines 34282 to 34284, says the job "runs the new hook once
+    on each system"; the hook stands in two groups, `PostToolUse` and
+    `PostToolUseFailure` with the matcher `Bash`, and the job starts every
+    handler of every group, so it runs twice on each system, once under each
+    event; the `tool_use_id` stands in the base every input shares, line 254
+    at `6ef979b`.
+
+    Recorded, not built: the job runs the install-fact hook twice on each system, once under each of its two events.
+
+  - The same entry, lines 34302 to 34303, says at its counter-check "the
+    table's row of the first cause re-anchored"; at `b52be40` the rows of all
+    three causes the entry rewords anchored on their wording, and all three
+    were re-anchored, as the entry's paragraph on its records says, line
+    34366.
+
+    Recorded, not built: the rows of all three causes of the setup-state program anchored on their wording before part 4.
+
+  - The same entry, lines 34486 to 34498, names the runs of the bench thing by
+    thing, and lines 34503 to 34504 say the third commit carries "the run rows
+    above and nothing else"; that commit enters 44 runs on 37 things, and
+    eight of them stand on things the paragraph does not name: the guard's
+    blocks on a record saying no and on one that cannot be read, the first two
+    attempts of `hooks/stop-checks.sh`, the failing file of
+    `hooks/post-tool-use-checks.sh`, the self-test of
+    `bin/devloop-setup-state`, the reader's `tool_use_id` and its self-test,
+    and the registration of the install-fact hook.
+
+    Recorded, not built: the bench of part 4 entered runs on eight things more than its paragraph on the runs names.
+
+  - The same entry, lines 34596 to 34598, says one thing each for the new
+    paragraph of `setup-checks` step 4 and of `build-work` point 8, "sited and
+    evidenced on its head", and not-a-thing rows on the lines that are part of
+    them; the `build-work` thing is evidenced on the line on not writing a
+    second time, line 584 of that skill today, and of the four not-a-thing
+    rows three are part of the step 4 thing and one of the renamed step 3
+    thing.
+
+    Recorded, not built: the build-work thing of the fourth commit of part 4 is evidenced on its line on not writing twice, not on its head.
+
+  - The entry at line 34609, line 34611, says "in six commits, two orders of
+    the same day"; the squash commit lists eight, the seventh and eighth of
+    the third order, the addendum, which the entry names at lines 35158 to
+    35163.
+
+    Recorded, not built: the entry on conditions 6 and 7 went in eight commits of three orders, where its first paragraph says six of two.
+
+  - The same entry, lines 34633 to 34635, says the words of the search set
+    stand "on the two status lines below that record a defect and close one";
+    one stands, the closing line 35039, the fifth commit having replaced the
+    line that recorded the defect.
+
+    Recorded, not built: one status line of the entry on conditions 6 and 7 holds a word of the search set besides its head.
+
+  - The same entry, lines 34682 to 34683, says that under `--dependency`
+    "every cause names that section"; the causes on the section do, lines 73
+    and 79 of `bin/devloop-install-record`, and the one on the value names the
+    key, 80, while those on the directory, the repository, the default branch,
+    the ref and the file, 55, 56, 68, 71 and 72, are the same for both
+    readings and name none. The program's head says the same at line 17, a
+    defect below.
+
+    Recorded, not built: under --dependency the reader's causes on the section name it, and its five causes on the repository name no section.
+
+  - The same entry, lines 34776 to 34778, says that the measured form is read
+    for a verdict "and nothing counts in doubt"; the guard at line 854 leaves
+    out the two forms without a verdict alone and records every other denial,
+    one whose input carries no `reason` among them, the reader then printing
+    no `reason:` line. A defect below.
+
+    Recorded, not built: the install guard counts a denial whose input carries no reason as a refusal of the classifier.
+
+  - The same entry, lines 34793 to 34794, says "the path and the form of the
+    line live in this program and nowhere else"; since `296f69b`, the seventh
+    commit of the same branch, the job `hooks on every system` reads the file
+    by its path and holds its line to its form,
+    `.github/workflows/stock-take.yml` lines 384 to 385, which the addendum
+    describes at lines 35233 to 35239 without taking the sentence back. The
+    program's head says the same at line 53, a defect below.
+
+    Recorded, not built: the record's path and the form of its line live in the question program and in the job hooks on every system.
+
+  - The same entry, lines 34840 to 34842, says the self-test holds `gh`
+    failing on the list, printing no JSON and failing on the relation "each
+    not decided with the command and the message"; the case on no JSON, line
+    643 of the program, holds `question: not decided` alone.
+
+    Recorded, not built: the self-test of the question program holds the case on no JSON as not decided, without command and message.
+
+  - The same entry, lines 35026 to 35027, says "The head of this entry has 68
+    characters between its markers"; it has 71 since the fifth commit changed
+    it, the sentence standing from `d58bbdc`, when the head had 68.
+
+    Recorded, not built: the head of the entry on conditions 6 and 7 has 71 characters between its markers.
+
+  - The same entry, lines 35027 to 35028, says "the title of its pull request
+    is the first line of its first commit, 65 characters"; the title that
+    landed, the first line of the squash commit `f0eaae7` without its number,
+    has 69, "Read conditions 6 and 7 at the mark, ask for the rule after a
+    refusal".
+
+    Recorded, not built: the title that landed for the entry on conditions 6 and 7 has 69 characters, not the first line of the first commit.
+
+  - The same entry, lines 35077 to 35078, names among "the rule program's
+    rows" put back at `4811956` one "on the no"; that row is a thing of
+    `setup-checks` step 8, the rule question answered no, the rule program
+    having had no row on a no at `4fe6374`.
+
+    Recorded, not built: the row on the no put back at 4811956 is a thing of setup-checks step 8, not of the rule program.
+
+  - The same entry, lines 35267 to 35269, names "a link, a refused write, a
+    file that is no JSON on `write`" as the rule program's outcomes measured
+    on this Mac alone; of its eight things the question program's self-test
+    walks four, the rule standing, read where it does not stand for the reason
+    that the file is missing, read on a file that is no JSON, and the list
+    created on a missing file, and the other four stay on this Mac alone, the
+    rule appended, standing already, the write refused and the arguments, with
+    three reasons of read, no autoMode, no allow list and not in the list. A
+    defect below.
+
+    Recorded, not built: four of the rule program's eight outcomes and three reasons of its read run on no system but this Mac.
+
+  - The entry at line 35286, lines 35416 to 35417, names "the entries of parts
+    1 to 5" at lines 32873 to 34609; the fifth, at 34609, is the entry on
+    conditions 6 and 7, and part 5 names in this file and in `docs/plan.md`
+    the fifth part of milestone 3, the run without the person.
+
+    Recorded, not built: the entry on the six closing runs read the entries of parts 1 to 4 and the one on conditions 6 and 7.
+
+  - The same entry, lines 35428 to 35429, names for line 9655 "run 1, the
+    setup's questions 2 and 3, and 5 where its condition holds"; question 2 is
+    put only where auto-merge is off and a gate stands on the main branch
+    already, `setup-project` lines 314 to 317, which a new repository with a
+    README does not have, so it is conditional as 5 is.
+
+    Recorded, not built: run 1 meets question 3 of the setup, and questions 2 and 5 only where their conditions hold.
+
+  - The same entry, lines 35535 to 35536, names cluster 16's line 14121 among
+    "the points the answers of 20 October 2026 took out"; the answers at line
+    32312 keep cluster 16, and line 14121 left the list by the decision
+    recorded in the entry on part 1, line 32986.
+
+    Recorded, not built: line 14121 left the list of milestone 3 by the decision the entry on part 1 records, line 32986.
+
+  **Wrong outside `docs/`, recorded for the order after this one.** Each
+  carries a defect thing sited and evidenced on its status line, the line
+  saying what should hold; nothing of it is built here.
+
+  - `hooks/pre-tool-use-install-guard.sh` reads no `--path` on `puppeteer
+    browsers install`, the arm at lines 709 to 712, its comment at lines 679
+    to 682 saying that form defines none, and reads the last of several
+    `--path` on `@puppeteer/browsers install`, line 716 saying yargs takes the
+    last. By the finding on the entry at line 33759 above, `npx puppeteer
+    browsers install chrome --path /srv/browsers` passes under a yes whose
+    places name the default, while the download lands at a place the record
+    does not name, and several `--path` reach the vendor as a list. Measured
+    under yargs 17.7.3; the vendor's yargs 18 not measured.
+
+    Recorded, not built: the install guard reads no --path on puppeteer browsers install, which yargs 17.7.3 hands to the vendor's install — should: the vendor's yargs 18 measured, and where it reads such a --path, the guard reads it on that form as on @puppeteer/browsers install, several --path held as the vendor takes them, the comments with it.
+
+  - `bin/devloop-install-record` line 17 says that under `--dependency` "every
+    cause names that section"; five of its causes, on the directory, the
+    repository, the default branch, the ref and the file, name none, the
+    finding on the entry at line 34609 above.
+
+    Recorded, not built: the head of the install record's reader says every cause under --dependency names the section, where five name none — should: it says that the causes on the section name it.
+
+  - `bin/devloop-auto-mode-question` line 53 says "The path and the form of
+    the line live here and nowhere else."; the job `hooks on every system`
+    reads the path and holds the line to its form,
+    `.github/workflows/stock-take.yml` lines 384 to 385, since `296f69b`.
+
+    Recorded, not built: the head of the question program says the record's path and line form live there alone, where the job reads both — should: the head names the job hooks on every system as their one other reader.
+
+  - `hooks/pre-tool-use-install-guard.sh` line 854 leaves out a denial under
+    `PermissionDenied` only where its reason is one of the two forms without a
+    verdict; a denial with no `reason` in its input, or an empty one, is
+    recorded through `bin/devloop-auto-mode-question record` as a refusal,
+    where the conventions say the guard records it where the field names a
+    verdict of the classifier.
+
+    Recorded, not built: the install guard records a denial whose input carries no reason as a refusal of the classifier — should: a denial without a reason, or with an empty one, is not counted, as one without a verdict is not.
+
+  - `bin/devloop-auto-mode-rule` carries no `--self-test`; the job `hooks on
+    every system` runs it only inside the question program's self-test, four
+    of its outcomes, and the rest, a link, a link to a missing file and into a
+    missing directory, a refused write, a file that is no JSON on `write`, a
+    key twice, the list appended or standing already, the arguments and three
+    reasons of `read`, ran on this Mac alone, the finding on the entry at line
+    34609 above. It is the program that writes the person's own settings file.
+
+    Recorded, not built: bin/devloop-auto-mode-rule has no self-test of its own, so that four of its outcomes and three reasons run on this Mac alone — should: a self-test of its own produces each outcome once under a throwaway CLAUDE_CONFIG_DIR, a link where the system makes one and a line saying so where it does not, and the job hooks on every system runs it on its four systems.
+
+  - `.github/workflows/stock-take.yml` runs the self-tests of the reader, of
+    `bin/devloop-arm` and of `bin/devloop-auto-mode-question`, lines 319 to
+    323, on its four systems; `bin/devloop-bounded`,
+    `bin/devloop-install-note`, `bin/devloop-missing-tool` and
+    `bin/devloop-setup-state` carry one each, and no job runs it, so what they
+    show stands for this Mac alone, where the person decided on 14 October
+    2026 that devloop runs on every system.
+
+    Recorded, not built: the job hooks on every system runs three of the seven self-tests under bin, four on no system — should: the job runs every self-test under bin on its four systems.
+
+  - Section C of the header of `scripts/devloop-stock-take` says a status line
+    of this file is never recorded as part of a thing whose runs are to count,
+    and is covered by its defect or by part of a thing whose runs are not
+    kept, "a defect say". Four rows of the table stand against it: the status
+    lines 13639, 14689, 15534 and 15581 as part of the guard's pass on a
+    fetch-and-run form, five runs, of the registration in `hooks/hooks.json`,
+    one, of the answer yes in `setup-checks` step 8, three, and of that
+    registration again, rows 3195, 3288, 3527 and 3528. Since 20 October 2026
+    defects carry runs of benches, so the example the header gives carries
+    runs too, and the tool does not check the rule. Its reason, that a line of
+    this file is changed by every later entry, does not hold for an entry that
+    appends: the four lines blame to the commits of their own entries. The
+    rows stay as they are, no record form under the rule fitting them.
+
+    Recorded, not built: four status lines of this file stand as part of a thing that carries runs, against section C of the tool's header, which the tool does not check — should: the tool rejects such a record, or the header names where such a line goes and why, and the four rows go there.
+
+  - `README.md` lines 282 to 285: devloop asks whether it may enter one rule
+    "so that auto mode does not block by itself the installs a devloop hook
+    already guards", and after a no "it asks again only once auto mode has
+    actually refused an install". The rule, `bin/devloop-auto-mode-rule`,
+    names brew, go, cargo, uv tool and pipx installs and the three browser
+    installers, and the guard counts a refusal by those ways alone, lines 742
+    and 847 to 848; `npm install -g`, the risk the entry at line 35286 names,
+    and the other routes the guard reads are neither. A question to the
+    person, in the report; the README is not changed.
+
+    Recorded, not built: README.md says the rule for auto mode covers the installs a devloop hook guards and the question returns after any refused install, where it covers five tools and three browser installers — should: the README says which installs the rule covers, in a wording the person approves.
+
+  **Looked at and not a defect: the identity in the step "hooks on every
+  system".** `.github/workflows/stock-take.yml` line 331 commits the throwaway
+  project of the step with `git -c user.name=hooks -c
+  user.email=hooks@example.invalid`, and run on this machine it sets an
+  identity other than the one git config gives. Setting it only where git
+  config gives none would follow the rule of the orders for a run here and let
+  the step run here as it stands, where three runs of 22 October 2026 ran it
+  with the `-c`, line 35279. Against it: the runners carry no identity, so the
+  `-c` is what lets the step commit at all and the step would take the same
+  branch there every time; the address is no one's, the commit goes to a bare
+  repository inside the step's own temporary directory and is removed with it,
+  and nothing of it reaches GitHub; a run here under a configured identity
+  would put the person's address into a throwaway commit for no gain; and the
+  same fixed identity stands in the self-tests of `bin/devloop-bounded` and
+  `bin/devloop-setup-state`, `t` and `t@t` through `git -c`, and of
+  `scripts/devloop-stock-take`, through the `GIT_AUTHOR_` and `GIT_COMMITTER_`
+  variables, the last of which every order runs before its commit. Whether the
+  rule of the orders on the identity reaches the throwaway repositories of
+  devloop's own tests is put to the person in the report; nothing is recorded.
+
+  **Rows of the table, and what stands outside the documents.** Brought to the
+  tool's rule: the notes of the two things renamed in the seventh commit of
+  the entry at line 34609, the workflow's run of the question program's
+  self-test and that self-test itself, named their new names after "the old
+  name:", the header's section C asking for the old one, and name it now.
+  Corrected: the eleven runs of case Q2, rows 7265 to 7275, carried the time
+  and the commit of case Q, 18:32:34 to 18:32:48 UTC and `4811956`, and carry
+  those of Q2, 19:34:48 to 19:34:51 UTC and `296f69b`, line 35282; the two
+  runs on the reader's new fields, rows 7251 and 7252, stood on the line of
+  case Q, which names the question program alone, and stand on the line that
+  names the reader's self-test, 35140; the notes of the rows of lines 7837 and
+  33135 kept the reason and the answer of the first commit of the entry at
+  line 32873, which its correction replaced, and say the corrected ones; the
+  note of the README defect of line 34353 carries the corrected numbers; the
+  note of the head of the entry at line 35286 says what `docs/plan.md` says
+  now; the finding on `README.md` line 8, whose should asked the README to
+  name the place the count lives or the command reading it, which the rule of
+  21 October 2026 that the README names no file of devloop's own forbids,
+  carries a should within that rule and the old one quoted, its wording the
+  person's, the question in the report. Left as they are: the four rows of the
+  defect on section C above. Each note changed says until when it read
+  otherwise. Wrong outside `docs/` and `README.md`: the eight defects above,
+  the README's one among them.
+
+  **Not counted, from the subagents' returns.** On the entry at line 32873:
+  that "How to ask" follows the bullets directly, line 33169, the bullets
+  ending in the paragraph that tells the two cases apart; that the `grep` on
+  `hand` does not print line 195, line 33180, the line named as one looked at
+  and not as a hit; that the notes quote the old should, line 33262, which
+  they do by naming the entry that quotes it; that (c) does not name the
+  conventions' line 951, the passage claiming no completeness. On the entry at
+  33283: that the guard reads the place lines before the no, lines 33330,
+  33385 and 33520, the guard putting them into a variable and holding no
+  command against them there; that a run's anchor stands on the line naming
+  its case rather than on its output, line 33737, the line recording the run
+  as the tool asks. On the entry at 34080: that the head gives the third
+  commit the paragraph on the bench, line 34097, read as a reference to it, as
+  line 34503 has it; the ranges 589 to 599 and 499 to 507, lines 34274 and
+  34277, each within the one sentence that says it, and line 1006, line 34341,
+  the `else` of that pass; the enumeration of the records of part 4, lines
+  34357 to 34374, which claims no completeness. On the entry at 34609: the
+  first head under the rule, line 34637; the job holding the rule, line 34674,
+  which (d) says exactly at line 35003; no hook reading a command off the
+  reader's line, line 34881, the guard handing the literal on undecoded;
+  ranges ending on a blank line, lines 34824 and 34934, and the stand-in's
+  lines named beside `bin/devloop-arm`, line 34825; cases C1 to C13, lines
+  35091 and 35125, C12 standing nowhere and the range naming every case there
+  is; the date as the README step reads one, line 35003; the 19 handlers, line
+  35233, as the step itself prints them; the enumerations of the records,
+  lines 35069 to 35095 and 35244 to 35254; two blank lines in a row, line
+  35271, a matter of form.
+
+  **Records.** Seventy-two defect things, one per disagreement above, each
+  sited on its status line: the three mended in the documents evidenced on the
+  mended line, in `docs/plan.md` for one and in `docs/skill-conventions.md`
+  for two; the thirty-three corrections evidenced on a corrected line of their
+  entry; the twenty-eight said right and the eight outside `docs/` on their
+  status line. The head of this entry as part of the first. The rows of the
+  table named above changed, no row renamed and no finding added or removed,
+  so the tool's finding count stays; no thing lost a run, since no corrected
+  or mended line carries a record with runs. No run is recorded for this
+  entry. The figures of the tool and the checks before and after the change
+  stand in the report.
+
 
 
 ## Decisions taken against
