@@ -35283,22 +35283,25 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Case E3: the hooks step of the job at 296f69b, run on this machine from 19:37:02 to 19:37:18 UTC: the three self-tests passed, 165, 36 and 38 cases; 19 handlers started, every one exit 0, the install guard twice under PermissionDenied, on ls and on the counted refusal; the record of the throwaway project read afterwards, one line, the way pipx install, the id toolu_hooksdenied and the command, printed, exit 0. A run of the script on this Mac and not the platform's run of the step, so no run is recorded on the workflow's things; the platform's run comes with the pull request, and on windows-latest it is the first.
   Case R: the step's check of the record alone, its seven lines extracted and run on this Mac against a file under $WORK: no file, red, "holds: nothing"; one line with a carriage return at its end, found and printed; two lines, red with both printed; the way brew install in the line, red with the line printed. Lines run on this Mac, recorded on no thing.
 
-- **Five closing runs of milestone 3 arranged, each open defect mapped.** 23
+- **Six closing runs of milestone 3 arranged, each open defect mapped.** 23
   October 2026, version 0.156.0 stays. On `task/closing-run-arrangement`, off
-  `f0eaae7`, in one commit: this entry, one paragraph in `docs/plan.md` and one
-  row of the table. The report of this order was given in the session that wrote
-  it and is not in the repository. Every line number of a file is as at
-  `f0eaae7`; a line of this file as at `f0eaae7`, which below line 31380 is its
-  number at `0776389` too, since every change to this file between the two
-  commits either replaced a line by one line or appended after line 31377, read
-  off `git diff 0776389 f0eaae7 -- docs/roadmap.md`. No session of Claude Code
-  was started for this entry and nothing ran on a bench; no file under
-  `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or
-  `.github/` changes, and `README.md` does not change. The words the tool reads
-  a line of this file into its search set by stand in this entry in its head and
-  on no other line; this entry records no defect and closes none. This entry
-  carries the arrangement as the person decided it; where the list below finds a
-  point the arrangement does not reach, it says so and the arrangement stands.
+  `f0eaae7`, in two commits: this entry, one paragraph in `docs/plan.md` and one
+  row of the table, `e886c36`; then, the same day, run 4 added to the entry, the
+  paragraph and the row, after the person decided it for line 7923, which the
+  first commit had named as the one point of the list no run meets. The reports
+  of the two orders were given in the sessions that wrote them and are not in
+  the repository. Every line number of a file is as at `f0eaae7`; a line of this
+  file as at `f0eaae7`, which below line 31380 is its number at `0776389` too,
+  since every change to this file between the two commits either replaced a line
+  by one line or appended after line 31377, read off `git diff 0776389 f0eaae7
+  -- docs/roadmap.md`. No session of Claude Code was started for this entry and
+  nothing ran on a bench; no file under `skills/`, `shared/`, `hooks/`, `bin/`,
+  `scripts/`, `output-styles/` or `.github/` changes, and `README.md` does not
+  change. The words the tool reads a line of this file into its search set by
+  stand in this entry in its head and on no other line; this entry records no
+  defect and closes none. This entry carries the arrangement as the person
+  decided it; where the list below found a point the arrangement did not reach,
+  it said so and the arrangement stood, until the person decided run 4 for it.
 
     **Decided on 22 and 23 October 2026.** Milestone 3 is reached when no defect
   is left that concerns it, `docs/plan.md`, the paragraph "Decided on 19 October
@@ -35306,9 +35309,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   for it the person arranged before the run, as the closing runs of October were
   arranged, `docs/plan.md`, the paragraph "Decided on 10 October 2026, the
   roadmap entry of that day on the arrangement of the closing runs". Arranged
-  are five runs on the person's Mac, in the terminal, all in one new project.
-  Commands that devloop hands over the person runs, so that the run reads their
-  result itself.
+  are six runs on the person's Mac, in the terminal: runs 1 to 3b in one new
+  project, run 4, a first setup, in a second new project. Commands that devloop
+  hands over the person runs, so that the run reads their result itself.
 
     Run 1, with the person, installing under a no. Before it: `brew uninstall
   gitleaks`, so that the check on checked-in credentials meets a missing tool; a
@@ -35362,6 +35365,28 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `skills/start-work/SKILL.md` lines 45 to 48. Then `/devloop:start-work`; the
   refresh must put the install question anew; the answer yes.
 
+    Run 4, a first setup with a yes, decided on 23 October 2026 for line 7923,
+  after the first commit of this entry. Before it: `brew uninstall gitleaks`, so
+  that after the landing of the setup a check tool is missing. The check on
+  credentials is never switched off on the run's own judgement,
+  `skills/setup-checks/SKILL.md`, "`secrets` is never skipped on a run's own
+  judgement", and `gitleaks` is the tool the approved wording for that check
+  names as its example. The install is not certain all the same: where the run
+  picks a tool that comes into the project as a package, there is no install
+  outside the project, and run 4 then shows only that nothing is installed
+  before the landing. A new public repository on GitHub with a README and code:
+  a TypeScript function and a test, committed and pushed before the setup, as
+  the paragraph "Decided on 10 October 2026, the roadmap entry of that day on
+  the arrangement of the closing runs" in `docs/plan.md` has it. Then
+  `/devloop:start-work`. The install question is answered yes, and the question
+  on check tools in the project's packages yes as well. After the landing of the
+  setup devloop sets the checks up and installs a missing check tool under the
+  yes itself. The offer of the run without the person: no. Where devloop then
+  asks what is to be built, the person stops, with no planning and no build. It
+  shows: before the setup has landed on the main branch nothing is installed,
+  and the first install of the project comes after it and runs through the
+  guard.
+
     Not in the runs: cluster 20, which does not hold the milestone up by the
   decision of 20 October 2026; cluster 16, which is no longer part of the
   milestone; the benches for hooks and programs, which run anew after the runs
@@ -35392,13 +35417,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   32873, 33283, 33759, 34080 and 34609. For each point: its state in the tool,
   and what it still needs — a run, where it turns on what the model does; a
   bench, where it is a hook's or a program's; nothing, or bookkeeping in the
-  table alone — and, for every point that needs a run, which of the five runs
+  table alone — and, for every point that needs a run, which of the six runs
   meets it. Every state below is the tool's at `f0eaae7`, exit 0, no broken
   record, 40 defects closed, none of 4488 lines of the search set uncovered. The
   clusters are named by their numbers of 19 October 2026.
 
-    A run, twelve points met by one of the five and one by none. Line 9655,
-  cluster 2, the rule that a question about how this workflow runs carries no
+    A run, thirteen points, each met by one of the six. Line 9655, cluster 2,
+  the rule that a question about how this workflow runs carries no
   recommendation: built and never walked, its evidence the rule in
   `shared/how-to-ask.md`; a run, forceable at every setup; run 1, the setup's
   questions 2 and 3, and 5 where its condition holds. Line 7034, cluster 4, step
@@ -35446,13 +35471,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   at the refresh. Line 7923, cluster 4, nothing installed before step 8 of
   `setup-project` has landed the record, at a first setup with a yes and a tool
   missing: built and never walked, its evidence `skills/setup-project/SKILL.md`;
-  a run, a first setup with a yes and a tool of the stack missing, as the
-  decision of 20 October 2026 on cluster 4 put it into the closing run; met by
-  none of the five: run 1 answers no at the first asking and sets up a project
-  without a stack, the yes of run 2a is the second asking in `setup-checks` step
-  8, after the record has landed, and the yes of run 3b is a refresh, which
-  installs nothing. The arrangement stands as decided; this is the one point of
-  the list no run meets.
+  a run, a first setup with a yes and a tool missing, as the decision of 20
+  October 2026 on cluster 4 put it into the closing run; run 4, which came for
+  it: run 1 answers no at the first asking and sets up a project without a
+  stack, the yes of run 2a is the second asking in `setup-checks` step 8, after
+  the record has landed, and the yes of run 3b is a refresh, which installs
+  nothing, so that runs 1 to 3b meet it on no way. The repair of 1 October 2026,
+  version 0.122.0, took the install out of the setup, question 3 having left for
+  `setup-checks`, and no run has shown it since, the row's note says; it turns
+  on what the model does and can be forced, so by the decision of 18 October
+  2026 it asks a run.
 
     A bench, two points, each after the runs under the version then current.
   Line 1317, cluster 12, the install guard's block message with its ways out:
@@ -35470,7 +35498,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   never walked, each turning on what the model does and not to be forced, by the
   person's reason of 18 October 2026 and the answer to question 3 of 20 October
   2026: lines 1307, 18977, 29213, 5232, 12527 and 11463. They stay built and
-  never walked until a run meets one, and no run of the five is arranged to.
+  never walked until a run meets one, and no run of the six is arranged to.
 
     Nothing, or bookkeeping in the table alone, five points. Lines 33172 and
   27503, cluster 17, finding 11 of the tool as a defect and the bullet of
@@ -35508,22 +35536,24 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   line 14121 among them.
 
     **Whether the milestone is reached.** No. The runs are arranged and not
-  made; thirteen points wait for a run, one of them for a run no arrangement of
-  the five holds, two for a bench after the runs.
+  made; thirteen points wait for a run, each for one of the six, two for a bench
+  after the runs.
 
     **Records.** In `docs/stock-take.tsv`, by the head of
   `scripts/devloop-stock-take`: one not-a-thing row for the head of this entry,
-  with the reason that the entry names no defect; nothing else. No run is
+  with the reason that the entry names no defect, its anchor and its note
+  following the head as the second commit changed it; nothing else. No run is
   recorded, and no row for the paragraph in `docs/plan.md`, which stands in no
   search set of the tool.
 
     **The tool, run for this entry.** `scripts/devloop-stock-take` ran on
   `f0eaae7` with exit 0 — no broken record, 15 findings, 40 closed defects, none
   of 4488 lines of the search set uncovered, 2178 things, 689 of them walked —
-  and on the tree of the commit with the figures the report names; its self-test
-  on that tree passed. The nineteen checks under "Before a handover, run these"
-  did not run for this entry, the order of 23 October 2026 asking for the tool
-  and its self-test alone and nothing of a skill changing.
+  and on the tree of each of the two commits with the figures the reports name,
+  the one line of this file more in the search set being this entry's head; its
+  self-test passed on each tree. The nineteen checks under "Before a handover,
+  run these" did not run for this entry, the two orders of 23 October 2026
+  asking for the tool and its self-test alone and nothing of a skill changing.
 
 
 ## Decisions taken against
