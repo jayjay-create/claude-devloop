@@ -563,28 +563,39 @@ The subagent:
 
    **An install this run made under the record is written there by the hook,
    not by this step**, since 21 October 2026: `post-tool-use-install-fact.sh`
-   puts the line under `Installed outside the project` — the command as its
-   words ran and the folder it installed into, which whoever clones this
-   project will have to run — from what the guard read, the moment the
-   install went through, and a line that stands there already is not written
-   twice; this step writes no line for it and rewrites none, since a command
-   shortened, reordered or retyped on the way into the file is wrong there for
-   every later reader. Until that day this step wrote the backed command of
-   point 7 itself. Where the hook says it could not write — the tree on the
-   main branch, or the file missing — its message carries the line, and this
-   step puts it there as it stands.
+   puts the line under `Installed outside the project` — the install command
+   as whoever clones this project will have to run it, without the
+   redirections of the call since 24 October 2026, and the folder it
+   installed into — from what the guard read, the moment the install went
+   through, and a line that stands there already is not written twice; this
+   step writes no line for it and rewrites none, since a command shortened,
+   reordered or retyped on the way into the file is wrong there for every
+   later reader. Until that day this step wrote the backed command of point 7
+   itself. Where the hook says it did not write, its message says why:
+   where the install did not stand alone in its call, so that the call's
+   exit was not its own, since 24 October 2026, read whether the tool stands
+   in the folder the message names, and where it does, write the line with
+   the call of `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note` the message
+   gives; where the tree stood on the main branch or the file was missing,
+   the message carries the line, and this step puts it there as it stands,
+   through the same program once the branch or the file stands.
 
    **A command the person typed themselves that is an install outside the
    project** — the one point 7 handed over under a record saying no or never
    written, or the one `setup-checks` step 3 put to them as a question, run
    in their own terminal, which the hook does not see — has its line here
    all the same, under the same heading `Installed outside the project` and
-   in the form the hook writes: one list item, the command as it was handed
-   over in backticks, the words `installed into` and the folder the tool was
-   read at, and not a second time where that line stands there already; for
-   a check class `setup-checks` step 4 writes it, on this branch. The
-   person's decision of 21 October 2026, the roadmap entry of that date on
-   milestone 3, part 4.
+   in the form the hook writes, written by the program the hook writes it
+   with: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note put` with the folder
+   the tool was read at and the install command alone, in single quotes,
+   without the change into the project's directory the handover put before
+   it, in the same step in which the path is read after the person's word,
+   for a browser download as for a tool, since 24 October 2026; the program
+   writes the line in its form, not a second time where it stands already
+   and not on the main branch. For a check class `setup-checks` step 4
+   writes it, on this branch. The person's decision of 21 October 2026, the
+   roadmap entry of that date on milestone 3, part 4, and defect 4 of the
+   roadmap entry of 24 October 2026 on the six closing runs.
 
 **If they decline, the run acts on it.** Which outcome depends on what the tool
 was for:

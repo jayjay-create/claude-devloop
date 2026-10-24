@@ -1,44 +1,90 @@
 #!/bin/bash
 # Carries what an install the guard let through under a yes will have done,
 # from hooks/pre-tool-use-install-guard.sh, which reads the command and where
-# it lands at PreToolUse, to hooks/post-tool-use-install-fact.sh, which writes
-# it into docs/agents/environment.md at PostToolUse once the call succeeded,
-# since 21 October 2026: a note under the system's temporary directory, keyed
-# by the session and the tool call, so that the hook reads no command and
-# resolves no place itself, the guard's reading being the one reading. The
-# path of the note and the form of the line live here and nowhere else.
+# it lands at PreToolUse, to hooks/post-tool-use-install-fact.sh, which reads
+# it back once the call has run, since 21 October 2026: a note under the
+# system's temporary directory, keyed by the session and the tool call, so
+# that the hook reads no command and resolves no place itself, the guard's
+# reading being the one reading. And it writes the line of an install into
+# docs/agents/environment.md, since 24 October 2026, defect 4 of the roadmap
+# entry of that day on the six closing runs: the hook calls it for an
+# install it saw go through, and the run for a command the person ran on a
+# handover, which no hook sees, so that one program holds where the line
+# goes and how it reads. The path of the note and the form of the line live
+# here and nowhere else.
 # See docs/skill-conventions.md, "What an install did is written by a hook".
 #
 # Usage: devloop-install-note write SESSION TOOL_USE_ID   < the facts
 #        devloop-install-note take SESSION TOOL_USE_ID
 #        devloop-install-note drop SESSION TOOL_USE_ID
+#        devloop-install-note put FOLDER COMMAND
 #        devloop-install-note --self-test
-# The facts on stdin, for write: one per line - the folder the install lands
-# in, the unit separator, byte 31, and the command as its words ran. The two
-# ids are kept to letters, digits, dot, hyphen and underscore; the note is
-# $TMPDIR/devloop-install-note-SESSION-TOOL_USE_ID, under /tmp where TMPDIR is
-# unset.
+# The facts on stdin, for write: one per line, its fields separated by the
+# unit separator, byte 31 - the folder the install lands in; the command as
+# its words ran, without its redirections; and since 24 October 2026, the
+# person's decision of that day on point 8, "alone" where the install stood
+# alone in its call, the one command at the top level of the call and none
+# reading its output, or "not alone"; and the redirections that sent its
+# output away, as written, empty where none. A fact without the third field
+# counts as not alone. The two ids are kept to letters, digits, dot, hyphen
+# and underscore; the note is $TMPDIR/devloop-install-note-SESSION-TOOL_USE_ID,
+# under /tmp where TMPDIR is unset.
 #
 # write: exit 0 with the note written, a note of the same key replaced; exit 0
 #   with nothing written where an id is empty after the keeping, or stdin
 #   carries no line with a folder and a command.
-# take: exit 0 and one line per fact in the form the section of
-#   docs/agents/environment.md carries, "- `COMMAND` installed into FOLDER",
-#   the note removed; exit 1 and nothing printed where no note stands for the
-#   key, or an id is empty.
+# take: exit 0 and one line per fact, its four fields as above separated by
+#   the unit separator, the third "not alone" wherever it is not "alone", the
+#   note removed; exit 1 and nothing printed where no note stands for the key,
+#   or an id is empty. Until 24 October 2026 it printed each fact as its line.
 # drop: exit 0, the note removed where it stands.
-# Exit 2 with one line on stderr: an action it does not know, or not exactly
-# the two ids behind the action.
+# put: the line of one install written into docs/agents/environment.md of the
+#   working tree the current directory lies in, under the heading
+#   "## Installed outside the project" - one list item, the command in
+#   backticks, the words "installed into" and the folder, a home directory at
+#   the folder's opening written as ~, a slash at its end left out, no date:
+#   "- `brew install gitleaks` installed into /opt/homebrew/bin". The heading
+#   is added at the end of the file where it does not stand yet, after a
+#   blank line; the line goes at the end of its section, after the section's
+#   last line that is not blank and before the next heading; a line that
+#   stands in the file whole already is not written again. Exit 0 and one
+#   line, "written: <the line>" or "stands already: <the line>". Exit 1 and
+#   one line on stderr starting "Not written:", the line in it, where the
+#   tree stands on the default branch - read off bin/devloop-setup-state's
+#   ref line, which resolves it as the branch guard does - where nothing of a
+#   run may change, or where docs/agents/environment.md is missing in the
+#   working tree. Until 24 October 2026 the fact hook wrote the line itself.
+# Exit 2 with one line on stderr: an action it does not know, not exactly the
+# two ids behind write, take or drop, or not a folder and a command behind put.
 # --self-test runs every outcome under a temporary directory of its own as
 # TMPDIR, prints one line per case and exits 1 at the first that does not
-# come out as this head says.
+# come out as this head says; since 24 October 2026 it also feeds the install
+# guard and the fact hook, in a throwaway project whose record on a local bare
+# origin says yes, a call for each form of the line and each of the three
+# cases of the person's decision of that day on point 8, and reads the
+# section after each, and feeds the guard, under a record saying no, the call
+# of put a run types with an install command in it.
 set -u
 US=$(printf '\037')
+HERE=$(cd "$(dirname "$0")" && pwd)
+FILE="docs/agents/environment.md"
+HEADING='## Installed outside the project'
 keep() { printf '%s' "$1" | tr -cd 'A-Za-z0-9._-'; }
 note_path() { printf '%s/devloop-install-note-%s-%s' "${TMPDIR:-/tmp}" "$1" "$2"; }
+# folder PATH: the folder as the line carries it, a home directory at its
+# opening written as ~ and a slash at its end left out
+folder() {
+  local d="$1"
+  if [ -n "${HOME:-}" ] && [ "$HOME" != "/" ]; then
+    case "$d" in "$HOME"|"$HOME"/*) d="~${d#"$HOME"}" ;; esac
+  fi
+  case "$d" in '$HOME'|'$HOME'/*) d="~${d#\$HOME}" ;; '${HOME}'|'${HOME}'/*) d="~${d#\$\{HOME\}}" ;; esac
+  case "$d" in ?*/) d="${d%/}" ;; esac
+  printf '%s' "$d"
+}
 
 selftest() {
-  local me T out rc n=0
+  local me T out rc n=0 P Q G H S L
   me=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
   T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-install-note.XXXXXX") || exit 1
   trap 'rm -rf "$T"' EXIT
@@ -54,11 +100,43 @@ selftest() {
   }
   absent() { local s="$1"; printf '%s\n' "$out" | grep -qF -- "$s" && { echo "FAIL $2: '$s' stands there and should not"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }; }
   count() { local want="$1" name="$2" got; got=$(ls "$T" | grep -c '^devloop-install-note-'); [ "$got" -eq "$want" ] || { echo "FAIL $name: $got notes stand under TMPDIR, expected $want"; exit 1; }; }
+  # file NAME FILE: the file reads as stdin says, byte for byte
+  file() { local want; want=$(cat); [ "$(cat "$2")" = "$want" ] || { echo "FAIL $1: $2 reads otherwise"; sed 's/^/    /' "$2"; exit 1; }; }
+  # project DIR ANSWER: a throwaway project with docs/agents/environment.md on
+  # main, pushed to a local bare origin whose HEAD is main; for ANSWER yes the
+  # record names the place DIR/tools, for no it says no; the tree on main
+  project() {
+    mkdir -p "$1/p/docs/agents" "$1/tools" || exit 1
+    if [ "$2" = yes ]; then
+      printf '# Environment\n\n## Install permission\n\ninstall-tools: yes\ninstall-place: %s\ninstall-answered: 2026-10-24\n' "$1/tools" > "$1/p/$FILE"
+    else
+      printf '# Environment\n\n## Install permission\n\ninstall-tools: no\ninstall-answered: 2026-10-24\n' > "$1/p/$FILE"
+    fi
+    ( cd "$1/p" && git init -q && { git checkout -q -b main 2>/dev/null || true; } && git add -A \
+      && git -c user.name=install-note -c user.email=install-note@example.invalid commit -q -m init \
+      && git init -q --bare "$1/origin.git" && git remote add origin "$1/origin.git" \
+      && git push -q origin main && git remote set-head origin main ) || { echo "FAIL the throwaway project in $1 could not be built"; exit 1; }
+  }
+  # hook EVENT COMMAND ID: the guard fed the PreToolUse input of a Bash call
+  # with that command, then, where it let the call through, the fact hook fed
+  # EVENT with the same session and tool call; out holds what the hook printed
+  hook() {
+    S=$(printf '{"session_id":"s9","cwd":"%s","tool_name":"Bash","tool_use_id":"%s","tool_input":{"command":"%s"}' "$P" "$3" "$(printf '%s' "$2" | sed 's/\\/\\\\/g; s/"/\\"/g')")
+    out=$(cd "$P" && printf '%s,"hook_event_name":"PreToolUse","permission_mode":"auto"}' "$S" | CLAUDE_PROJECT_DIR="$P" bash "$G/hooks/pre-tool-use-install-guard.sh" 2>&1); rc=$?
+    [ "$rc" -eq 0 ] || { echo "FAIL the guard blocked $2 under a yes: exit $rc"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }
+    if [ "$1" = PostToolUse ]; then
+      out=$(cd "$P" && printf '%s,"hook_event_name":"PostToolUse","tool_response":{"stdout":"","stderr":"","interrupted":false}}' "$S" | CLAUDE_PROJECT_DIR="$P" bash "$G/hooks/post-tool-use-install-fact.sh" 2>&1); rc=$?
+    else
+      out=$(cd "$P" && printf '%s,"hook_event_name":"PostToolUseFailure","error":"Exit code 1","is_interrupt":false}' "$S" | CLAUDE_PROJECT_DIR="$P" bash "$G/hooks/post-tool-use-install-fact.sh" 2>&1); rc=$?
+    fi
+  }
 
-  run;                                   expect "no action: exit 2" 2 "expected write, take, drop or --self-test"
-  run nope s1 t1;                        expect "an action it does not know: exit 2" 2 "expected write, take, drop or --self-test, got nope"
+  run;                                   expect "no action: exit 2" 2 "expected write, take, drop, put or --self-test"
+  run nope s1 t1;                        expect "an action it does not know: exit 2" 2 "expected write, take, drop, put or --self-test, got nope"
   run write s1;                          expect "write with one id: exit 2" 2 "expects the session and the tool call's id, got 1"
   run take s1 t1 x;                      expect "take with three arguments: exit 2" 2 "expects the session and the tool call's id, got 3"
+  run put /opt/homebrew/bin;             expect "put with one argument: exit 2" 2 "put expects the folder and the command, got 1"
+  run put "" "brew install gitleaks";    expect "put with an empty folder: exit 2" 2 "put expects the folder and the command, one of them empty"
   runin "/opt/homebrew/bin${US}brew install gitleaks" write "" t1
   expect "write with an empty session: nothing written, exit 0" 0; count 0 "write with an empty session: nothing written, exit 0"
   runin "/opt/homebrew/bin${US}brew install gitleaks" write "/@ /" "t1"
@@ -69,18 +147,126 @@ selftest() {
   run take s1 t1;                        expect "take where no note stands: exit 1, nothing printed" 1; [ -z "$out" ] || { echo "FAIL take where no note stands printed something"; exit 1; }
   run take "" t1;                        expect "take with an empty session: exit 1" 1
   run drop s1 t1;                        expect "drop where no note stands: exit 0" 0
-  runin "/opt/homebrew/bin${US}brew install gitleaks
-~/go/bin${US}go install golang.org/x/vuln/cmd/govulncheck@latest" write "s 1/x" "toolu_01A.b-c"
+  runin "/opt/homebrew/bin${US}brew install gitleaks${US}alone${US}>/dev/null 2>&1
+~/go/bin${US}go install golang.org/x/vuln/cmd/govulncheck@latest${US}not alone${US}" write "s 1/x" "toolu_01A.b-c"
   expect "write with two facts, the ids kept to their letters: exit 0, one note" 0; count 1 "write with two facts, the ids kept to their letters: exit 0, one note"
   [ -f "$T/devloop-install-note-s1x-toolu_01A.b-c" ] || { echo "FAIL the note does not stand at the key with the ids kept"; ls "$T"; exit 1; }
   run take "s 1/x" "toolu_01A.b-c"
-  expect "take: the two lines in the form of the section, the note removed" 0 '- `brew install gitleaks` installed into /opt/homebrew/bin' '- `go install golang.org/x/vuln/cmd/govulncheck@latest` installed into ~/go/bin'
-  count 0 "take: the two lines in the form of the section, the note removed"
+  expect "take: each fact with its four fields, the note removed" 0 "/opt/homebrew/bin${US}brew install gitleaks${US}alone${US}>/dev/null 2>&1" "~/go/bin${US}go install golang.org/x/vuln/cmd/govulncheck@latest${US}not alone${US}"
+  count 0 "take: each fact with its four fields, the note removed"
   run take s1x toolu_01A.b-c;            expect "take a second time: exit 1" 1
+  runin "/opt/homebrew/bin${US}brew install gitleaks" write s4 t4; run take s4 t4
+  expect "take of a fact without the third field: not alone" 0 "/opt/homebrew/bin${US}brew install gitleaks${US}not alone${US}"
   runin "/a${US}one" write s2 t2; runin "/b${US}two" write s2 t2
-  run take s2 t2;                        expect "a second write of the same key replaces the note" 0 '- `two` installed into /b'; absent '- `one` installed into /a' "a second write of the same key replaces the note"
+  run take s2 t2;                        expect "a second write of the same key replaces the note" 0 "/b${US}two"; absent "/a${US}one" "a second write of the same key replaces the note"
   runin "/c${US}three" write s3 t3; run drop s3 t3; expect "drop removes the note: exit 0" 0; count 0 "drop removes the note: exit 0"
   run take s3 t3;                        expect "take after drop: exit 1" 1
+
+  # put, in a throwaway project of its own
+  project "$T/put" yes; P="$T/put/p"
+  out=$(cd "$P" && "$me" put /opt/homebrew/bin "brew install gitleaks" 2>&1); rc=$?
+  expect "put on the default branch: exit 1, not written, the line in the message" 1 "Not written: the line for $FILE is not written while the tree stands on the default branch main, where nothing of a run may change" "as it stands here: - \`brew install gitleaks\` installed into /opt/homebrew/bin"
+  ( cd "$P" && git checkout -q -b work && git rm -q "$FILE" ) || exit 1
+  out=$(cd "$P" && "$me" put /opt/homebrew/bin "brew install gitleaks" 2>&1); rc=$?
+  expect "put where the file is missing: exit 1, not written, the line in the message" 1 "Not written: $FILE is missing in the working tree, so the line has no file to stand in" "as it stands here: - \`brew install gitleaks\` installed into /opt/homebrew/bin"
+  mkdir -p "$P/docs/agents" && printf '# Environment\n\nRun make.' > "$P/$FILE"
+  out=$(cd "$P/docs" && "$me" put /opt/homebrew/bin/ "brew install gitleaks" 2>&1); rc=$?
+  expect "put from a directory below the top: the heading added after a blank line, the slash at the end left out" 0 "written: - \`brew install gitleaks\` installed into /opt/homebrew/bin"
+  file "put from a directory below the top: the heading added after a blank line, the slash at the end left out" "$P/$FILE" <<'EOF'
+# Environment
+
+Run make.
+
+## Installed outside the project
+
+- `brew install gitleaks` installed into /opt/homebrew/bin
+EOF
+  out=$(cd "$P" && "$me" put /opt/homebrew/bin "brew install gitleaks" 2>&1); rc=$?
+  expect "put of a line that stands already: not written again" 0 "stands already: - \`brew install gitleaks\` installed into /opt/homebrew/bin"
+  printf '\n## Services\n\nNone.\n' >> "$P/$FILE"
+  out=$(cd "$P" && HOME="$T/home" "$me" put "$T/home/Library/Caches/ms-playwright" "npx playwright install webkit" 2>&1); rc=$?
+  expect "put of a folder under the home directory: written as ~, at the end of its section before the next heading" 0 "written: - \`npx playwright install webkit\` installed into ~/Library/Caches/ms-playwright"
+  out=$(cd "$P" && "$me" put '~/go/bin' "go install golang.org/x/vuln/cmd/govulncheck@latest" 2>&1); rc=$?
+  expect "put of a folder given as ~: kept as given" 0 "written: - \`go install golang.org/x/vuln/cmd/govulncheck@latest\` installed into ~/go/bin"
+  file "put: three lines in their section, the next heading after them" "$P/$FILE" <<'EOF'
+# Environment
+
+Run make.
+
+## Installed outside the project
+
+- `brew install gitleaks` installed into /opt/homebrew/bin
+- `npx playwright install webkit` installed into ~/Library/Caches/ms-playwright
+- `go install golang.org/x/vuln/cmd/govulncheck@latest` installed into ~/go/bin
+
+## Services
+
+None.
+EOF
+  n=$((n+1)); echo "ok   put: three lines in their section, the next heading after them"
+
+  # the guard and the fact hook, under a record saying yes; each case a call
+  # of its own, read through the section afterwards
+  G=$(cd "$(dirname "$me")/.." && pwd)
+  mkdir -p "$T/home" && export HOME="$T/home"
+  project "$T/yes" yes; P="$T/yes/p"; L="$T/yes/tools"
+  out=$(cd "$P" && git checkout -q -b work 2>&1) || { echo "FAIL no branch in the throwaway project"; exit 1; }
+  hook PostToolUse "npm install -g --prefix $L alpha" t10
+  expect "an install alone, its output seen: the line, as today" 0 "[InstallFact] written into $FILE under \\\"$HEADING\\\", on this branch, by the hook and not by you: - \`npm install -g --prefix $L alpha\` installed into $L/bin"
+  absent "sent away" "an install alone, its output seen: the line, as today"
+  hook PostToolUse "npm install -g --prefix $L beta 2>&1" t11
+  expect "an install alone, 2>&1 behind it: the line without the redirection, its output seen" 0 "by the hook and not by you: - \`npm install -g --prefix $L beta\` installed into $L/bin"
+  absent "sent away" "an install alone, 2>&1 behind it: the line without the redirection, its output seen"
+  hook PostToolUse "npm install -g --prefix $L gamma >/dev/null 2>&1" t12
+  expect "an install alone, its output sent away: the line, and the context names the redirection" 0 "by the hook and not by you: - \`npm install -g --prefix $L gamma\` installed into $L/bin. The output of this install was sent away (>/dev/null 2>&1), so what the package manager did besides is not known from it: say so in the report."
+  hook PostToolUse "npm install -g --prefix $L delta &> $T/install.log" t13
+  expect "an install alone, &> into a file: the line without it, the redirection named" 0 "installed into $L/bin. The output of this install was sent away (&>$T/install.log)"
+  hook PostToolUse "npm install -g --prefix $L epsilon 2>/dev/null" t14
+  expect "an install alone, its error output sent away: the redirection named" 0 "installed into $L/bin. The output of this install was sent away (2>/dev/null)"
+  hook PostToolUse "npm install -g --prefix $L zeta 2>&1 | tail -5; ls $L/bin" t15
+  expect "an install not alone, a pipe behind it and a command after it: no line, the context to read and write" 0 "[InstallFact] not written: \`npm install -g --prefix $L zeta\` was not the last command of its call, or another command read its output, so the call's exit is not the install's and this hook cannot tell whether it went through. Read whether the tool stands in $L/bin; where it does, write its line with " "/bin/devloop-install-note put '$L/bin' 'npm install -g --prefix $L zeta'. Say in the report that the output of the install was not read whole, and run the next install alone in its call." '"hookEventName":"PostToolUse"'
+  hook PostToolUse "cd $P && npm install -g --prefix $L eta" t16
+  expect "an install with a command before it: not alone, since the reader does not tell ; && and || apart" 0 "[InstallFact] not written: \`npm install -g --prefix $L eta\`"
+  hook PostToolUseFailure "npm install -g --prefix $L theta | tail -3" t17
+  expect "an install not alone in a call that failed: the same context under PostToolUseFailure" 0 "[InstallFact] not written: \`npm install -g --prefix $L theta\`" '"hookEventName":"PostToolUseFailure"'
+  hook PostToolUseFailure "npm install -g --prefix $L iota" t18
+  expect "an install alone in a call that failed: nothing written, nothing said" 0; [ -z "$out" ] || { echo "FAIL an install alone in a call that failed printed something"; printf '%s\n' "$out"; exit 1; }
+  count 0 "the notes taken by the hook, none left"
+  file "the section after the calls: one line per install that stood alone and went through, none for the others" "$P/$FILE" <<EOF
+# Environment
+
+## Install permission
+
+install-tools: yes
+install-place: $L
+install-answered: 2026-10-24
+
+## Installed outside the project
+
+- \`npm install -g --prefix $L alpha\` installed into $L/bin
+- \`npm install -g --prefix $L beta\` installed into $L/bin
+- \`npm install -g --prefix $L gamma\` installed into $L/bin
+- \`npm install -g --prefix $L delta\` installed into $L/bin
+- \`npm install -g --prefix $L epsilon\` installed into $L/bin
+EOF
+  n=$((n+1)); echo "ok   the section after the calls: one line per install that stood alone and went through, none for the others"
+  ( cd "$P" && git checkout -q -- . && git checkout -q main ) || exit 1
+  hook PostToolUse "npm install -g --prefix $L kappa >/dev/null" t19
+  expect "an install alone on the default branch: exit 2, not written, the line in the message, the redirection named" 2 "Not written: the install went through, and the line for $FILE is not written while the tree stands on the default branch main" "as it stands here: - \`npm install -g --prefix $L kappa\` installed into $L/bin. The output of this install was sent away (>/dev/null)"
+
+  # the call of put a run types, an install command in it, under a record
+  # saying no: the guard lets it through and leaves no note, where it blocks
+  # the install itself
+  project "$T/no" no; P="$T/no/p"
+  S=$(printf '{"session_id":"s9","cwd":"%s","tool_name":"Bash","tool_use_id":"t20","hook_event_name":"PreToolUse","permission_mode":"auto","tool_input":{"command":"brew install gitleaks"}}' "$P")
+  out=$(cd "$P" && printf '%s' "$S" | CLAUDE_PROJECT_DIR="$P" bash "$G/hooks/pre-tool-use-install-guard.sh" 2>&1); rc=$?
+  expect "the install itself under a record saying no: blocked" 2 "the record says no"
+  for H in "by its path|$G/bin/devloop-install-note put /opt/homebrew/bin 'brew install gitleaks'" "by a path under ~|~/.claude/plugins/cache/x/devloop/0.0.0/bin/devloop-install-note put '~/Library/Caches/ms-playwright' 'npx playwright install webkit'"; do
+    S=$(printf '{"session_id":"s9","cwd":"%s","tool_name":"Bash","tool_use_id":"t21","hook_event_name":"PreToolUse","permission_mode":"auto","tool_input":{"command":"%s"}}' "$P" "$(printf '%s' "${H#*|}" | sed 's/\\/\\\\/g; s/"/\\"/g')")
+    out=$(cd "$P" && printf '%s' "$S" | CLAUDE_PROJECT_DIR="$P" bash "$G/hooks/pre-tool-use-install-guard.sh" 2>&1); rc=$?
+    expect "the call of put ${H%%|*}, an install command in it, under a record saying no: let through, no note" 0
+    count 0 "the call of put ${H%%|*}, an install command in it, under a record saying no: let through, no note"
+  done
   echo "SELF-TEST PASSED: $n cases"
   exit 0
 }
@@ -88,9 +274,56 @@ selftest() {
 ACTION="${1:-}"
 case "$ACTION" in
   --self-test) selftest ;;
-  write|take|drop) ;;
-  *) echo "devloop-install-note: expected write, take, drop or --self-test, got ${ACTION:-nothing}" >&2; exit 2 ;;
+  write|take|drop|put) ;;
+  *) echo "devloop-install-note: expected write, take, drop, put or --self-test, got ${ACTION:-nothing}" >&2; exit 2 ;;
 esac
+if [ "$ACTION" = put ]; then
+  [ $# -eq 3 ] || { echo "devloop-install-note: put expects the folder and the command, got $(($# - 1))" >&2; exit 2; }
+  [ -n "$2" ] && [ -n "$3" ] || { echo "devloop-install-note: put expects the folder and the command, one of them empty" >&2; exit 2; }
+  LINE="- \`$3\` installed into $(folder "$2")"
+  TOP=$(git rev-parse --show-toplevel 2>/dev/null) || TOP=$PWD
+  cd "$TOP" 2>/dev/null || { echo "Not written: the working tree $TOP cannot be entered. Put the line there, under \"$HEADING\", as it stands here: $LINE" >&2; exit 1; }
+  # The default branch, read off bin/devloop-setup-state's ref line, which
+  # resolves it as the branch guard does; on that branch nothing is written,
+  # since nothing of a run may change there.
+  DEFAULT=$("$HERE/devloop-setup-state" "$TOP" 2>/dev/null | sed -n 's/^ref: origin\///p' | head -1)
+  BRANCH=$(git branch --show-current 2>/dev/null)
+  if [ -n "$DEFAULT" ] && [ "$BRANCH" = "$DEFAULT" ]; then
+    echo "Not written: the line for $FILE is not written while the tree stands on the default branch $BRANCH, where nothing of a run may change. Cut the branch of this work and put it there, under \"$HEADING\", as it stands here: $LINE" >&2
+    exit 1
+  fi
+  if [ ! -f "$FILE" ]; then
+    echo "Not written: $FILE is missing in the working tree, so the line has no file to stand in. Put it there once the file stands, under \"$HEADING\", as it stands here: $LINE" >&2
+    exit 1
+  fi
+  if grep -qxF -- "$LINE" "$FILE"; then echo "stands already: $LINE"; exit 0; fi
+  # The heading where it does not stand yet: at the end of the file, a blank
+  # line before it, the file's last line given its newline where it has none.
+  if ! grep -qxF "$HEADING" "$FILE"; then
+    if [ -s "$FILE" ]; then
+      [ "$(tail -c 1 "$FILE" | wc -l | tr -d ' ')" -eq 1 ] || printf '\n' >> "$FILE"
+      [ -z "$(tail -n 1 "$FILE")" ] || printf '\n' >> "$FILE"
+    fi
+    printf '%s\n' "$HEADING" >> "$FILE"
+  fi
+  # The line at the end of the section, after its last line that is not
+  # blank, and before the next heading where one follows.
+  awk -v h="$HEADING" -v l="$LINE" '
+    { lines[NR] = $0 }
+    END {
+      s = 0
+      for (i = 1; i <= NR; i++) if (lines[i] == h) { s = i; break }
+      e = NR
+      for (i = s + 1; i <= NR; i++) if (lines[i] ~ /^## /) { e = i - 1; break }
+      while (e > s && lines[e] == "") e--
+      for (i = 1; i <= e; i++) print lines[i]
+      if (e == s) print ""
+      print l
+      for (i = e + 1; i <= NR; i++) print lines[i]
+    }' "$FILE" > "$FILE.devloop-tmp" && mv "$FILE.devloop-tmp" "$FILE"
+  echo "written: $LINE"
+  exit 0
+fi
 [ $# -eq 3 ] || { echo "devloop-install-note: $ACTION expects the session and the tool call's id, got $(($# - 1))" >&2; exit 2; }
 SID=$(keep "$2"); TUID=$(keep "$3")
 case "$ACTION" in
@@ -104,8 +337,10 @@ case "$ACTION" in
     [ -n "$SID" ] && [ -n "$TUID" ] || exit 1
     P=$(note_path "$SID" "$TUID")
     [ -f "$P" ] || exit 1
-    while IFS="$US" read -r D C; do
-      [ -n "$D" ] && [ -n "$C" ] && printf '%s\n' "- \`$C\` installed into $D"
+    while IFS="$US" read -r D C A R; do
+      [ -n "$D" ] && [ -n "$C" ] || continue
+      [ "$A" = "alone" ] || A="not alone"
+      printf '%s\n' "$D$US$C$US$A$US$R"
     done < "$P"
     rm -f "$P"
     exit 0 ;;

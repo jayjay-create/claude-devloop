@@ -15,6 +15,12 @@ none of these files is written there: the two land through a branch, and a
 body file lies outside the repository. Not a rule for every change: where
 the shell is the right instrument, it stays, and which of the two a change
 wants is not decided in advance — the rule is about these files, whose
-content is what the guards read. Since 16 October 2026 one text, point 26 of
+content is what the guards read. One line of `environment.md` goes another
+way since 24 October 2026, the line of an install under `Installed outside
+the project`: `bin/devloop-install-note put` writes it, for the hook and for
+the run alike, its command an argument in single quotes, which the guards
+read as a word of that call and not as a command, by "A hook reads its input
+through one program" in `docs/skill-conventions.md`, so that one program
+holds the form of that line. Since 16 October 2026 one text, point 26 of
 part B of the roadmap entry of 12 October 2026, where until then
 `build-work` named `environment.md` alone and the check setup nothing.

@@ -92,10 +92,31 @@ parent_of() {
     case "$L" in "$1$US"*) IFS="$US" read -r _ P2 _ <<< "$L"; printf '%s' "$P2"; return ;; esac
   done <<< "$CMDS"
 }
+# redir WORD: where the word is a redirection's operator as the reader prints
+# it - >, >>, >|, <, <>, >&, <&, &>, &>>, <<, <<- or <<<, with or without
+# the digits of a descriptor before it - the operator without them; nothing
+# otherwise; since 24 October 2026
+redir() {
+  local o="$1"
+  while :; do case "$o" in [0-9]*) o="${o#?}" ;; *) break ;; esac; done
+  case "$o" in '>'|'>>'|'>|'|'<'|'<>'|'>&'|'<&'|'&>'|'&>>'|'<<'|'<<-'|'<<<') printf '%s' "$o" ;; esac
+}
+# quoted WORD: the word as the shell takes it back, put in single quotes
+# where the shell would take it apart or read it otherwise
+quoted() {
+  case "$1" in
+    ''|*[!A-Za-z0-9_@%+=:,./~-]*) printf "'%s'" "$(printf '%s' "$1" | sed "s/'/'\\\\''/g")" ;;
+    *) printf '%s' "$1" ;;
+  esac
+}
 # words_of ID: the command with that id as its words ran, joined by blanks,
 # a word the shell would take apart or read otherwise put in single quotes,
-# a redirection's operator left as it stands; for the line the fact hook
-# writes, since 21 October 2026
+# and every redirection left out with its target - an operator redir knows
+# and the word behind it - so that the line the fact hook writes carries the
+# install command as whoever clones the project runs it; for that line since
+# 21 October 2026, the redirections left out since 24 October 2026, defect 1
+# of the roadmap entry of that day on the six closing runs, where until then
+# an operator stood as it was and its target as a word, "2>& 1"
 words_of() {
   local L W2 i out w
   while IFS= read -r L; do
@@ -105,13 +126,61 @@ words_of() {
     out=""; i=0
     while [ "$i" -lt $((${#W2[@]} - 1)) ]; do
       w="${W2[$i]}"
-      case "$w" in
-        [0-9]'>'*|[0-9]'<'*|'>'*|'<'*|'&>'*) ;;
-        ''|*[!A-Za-z0-9_@%+=:,./~-]*) w="'$(printf '%s' "$w" | sed "s/'/'\\\\''/g")'" ;;
-      esac
-      out="$out${out:+ }$w"; i=$((i + 1))
+      [ -n "$(redir "$w")" ] && { i=$((i + 2)); continue; }
+      out="$out${out:+ }$(quoted "$w")"; i=$((i + 1))
     done
     printf '%s' "$out"; return
+  done <<< "$CMDS"
+}
+# alone_of ID: "alone" where the command with that id stood alone in its
+# call - the one command at the top level of the call, parent 0, and no
+# command reading its output - and "not alone" otherwise, since 24 October
+# 2026. The reader prints the commands of a list in their order and nothing
+# of what joins them, ;, && and || alike, so a command before or after which
+# another stands at the top level counts as not alone, the call's exit not
+# being certain to be its own; a redirection on a group or a subshell is a
+# line of its own at the top level, and counts as such a command. A command
+# sent to the background with & or negated with ! the reader prints as it
+# prints the command alone, and this cannot see.
+alone_of() {
+  local L id par pipe top=0 mine=no fed=no
+  while IFS= read -r L; do
+    IFS="$US" read -r id par _ pipe _ <<< "$L"
+    if [ "$par" = 0 ]; then top=$((top + 1)); [ "$id" = "$1" ] && mine=yes; fi
+    [ "$pipe" = "$1" ] && fed=yes
+  done <<< "$CMDS"
+  if [ "$mine" = yes ] && [ "$top" -eq 1 ] && [ "$fed" = no ]; then printf 'alone'; else printf 'not alone'; fi
+}
+# away_of ID: the redirections of the command with that id that send its
+# output or its error output away, into a file or /dev/null, each written as
+# its operator and target ran, joined by blanks, every redirection of
+# descriptor 1 or 2 among them once one does - ">/dev/null 2>&1" - and
+# nothing where none does: a copy of the one onto the other, 2>&1, sends
+# nothing away, a copy onto another descriptor or a closed one counts as
+# away; since 24 October 2026
+away_of() {
+  local L W2 i w o d t fds all="" gone=no
+  while IFS= read -r L; do
+    case "$L" in "$1$US"*) ;; *) continue ;; esac
+    IFS="$US" read -r _ _ _ _ _ WORDS2 <<< "$L"
+    IFS="$US" read -ra W2 <<< "${WORDS2}${US}x"
+    i=0
+    while [ "$i" -lt $((${#W2[@]} - 1)) ]; do
+      w="${W2[$i]}"; o=$(redir "$w")
+      [ -n "$o" ] || { i=$((i + 1)); continue; }
+      d="${w%"$o"}"; t="${W2[$((i + 1))]}"; i=$((i + 2))
+      case "$o" in
+        '&>'|'&>>') fds="1 2" ;;
+        '>&') case "$t" in ''|*[!0-9-]*) fds="${d:-1 2}" ;; *) fds="${d:-1}" ;; esac ;;
+        '>'|'>>'|'>|') fds="${d:-1}" ;;
+        *) fds="${d:-0}" ;;
+      esac
+      case " $fds " in *' 1 '*|*' 2 '*) ;; *) continue ;; esac
+      all="$all${all:+ }$w$(quoted "$t")"
+      case "$o:$t" in '>&:1'|'>&:2'|'<&:1'|'<&:2') ;; *) gone=yes ;; esac
+    done
+    [ "$gone" = yes ] && printf '%s' "$all"
+    return
   done <<< "$CMDS"
 }
 # expand PATH: a ~ or $HOME opening replaced by the home directory; the result
@@ -1125,9 +1194,13 @@ $D" ;;
     # since 21 October 2026 - per install the folder it lands in, the
     # route's answer on this machine or the path written in the command, a
     # Go bin directory named by go env asked as the WRITES case asks it, a
-    # home directory written as ~, and the command as its words ran -
-    # handed to bin/devloop-install-note at the one pass under a yes below;
-    # a fetch-and-run form names no folder and leaves no fact
+    # home directory written as ~, and the command as its words ran without
+    # its redirections - and since 24 October 2026 whether the install stood
+    # alone in its call and the redirections that sent its output away, the
+    # person's decision of that day on point 8, for the fact hook to tell
+    # where the call's exit is the install's; handed to
+    # bin/devloop-install-note at the one pass under a yes below; a
+    # fetch-and-run form names no folder and leaves no fact
     note() {
       local I D C
       while IFS="$US" read -r I D; do
@@ -1140,7 +1213,7 @@ $D" ;;
           "$HOME"/*|"$HOME") D="~${D#"$HOME"}" ;;
         esac
         C=$(words_of "$I")
-        [ -n "$C" ] && printf '%s%s%s\n' "$D" "$US" "$C"
+        [ -n "$C" ] && printf '%s\n' "$D$US$C$US$(alone_of "$I")$US$(away_of "$I")"
       done <<< "$(printf '%s\n' "$FACTS" | grep -v '^$' | sort -t "$US" -k1,1n)"
     }
     UNNAMED=""

@@ -610,30 +610,42 @@ once the tool stands at the path the installer writes to, never where
 stands at that path, and what the package manager did besides — it updates
 itself, fetches what it needs for that and cleans up unasked — in the pull
 request body that lands the class, step 7's or the build's where this skill was
-called for one class; the standing fact — the command as its words ran and
-the folder it installed into — is written into `environment.md` under
-`Installed outside the project` by the hook `post-tool-use-install-fact.sh`
-the moment the install went through, since 21 October 2026, from what the
-guard read when it let the command through, and this run writes no second
-line for it; until that day this sentence had the run write it, and the run
-of 19 October 2026 in project z did not, defect 6 of the roadmap entry of
-that date. Where the hook says it could not write — the tree on the main
-branch, or the file missing — its message carries the line, and the run puts
-it there as it stands.
+called for one class; the standing fact — the install command as whoever
+clones the project runs it, without the redirections of the call since 24
+October 2026, and the folder it installed into — is written into
+`environment.md` under `Installed outside the project` by the hook
+`post-tool-use-install-fact.sh` the moment the install went through, since
+21 October 2026, from what the guard read when it let the command through,
+and this run writes no second line for it; until that day this sentence had
+the run write it, and the run of 19 October 2026 in project z did not,
+defect 6 of the roadmap entry of that date. Where the hook says it did not
+write, its message says why: where the install did not stand alone in its
+call, so that the call's exit was not its own, since 24 October 2026, the
+run reads whether the tool stands in the folder the message names, and where
+it does, writes the line with the call of
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note` the message gives; where the
+tree stood on the main branch or the file was missing, the message carries
+the line, and the run puts it there as it stands, through the same program
+once the branch or the file stands.
 
 **A tool the person installed themselves, on the first answer of the
 question step 3 puts, the hook does not see**: the command ran in their
-terminal and in no call of this run. Its line is this step's to write, with
-the editing tool, under the same heading `Installed outside the project` of
-`environment.md` and in the form the hook writes — one list item, the
-command as it was handed over in backticks, the words `installed into` and
-the folder step 3 read the tool at — and not a second time where that line
-stands there already; on the branch this step writes on, the one cut after
-their word at a first setup and on the route from the step after a merge,
-the caller's where this skill was called for one class, since step 3 stands
-before the cut and writes nothing. The person's decision of 21 October
+terminal and in no call of this run. Its line is this step's to write,
+under the same heading `Installed outside the project` of `environment.md`
+and in the form the hook writes, by the program the hook writes it with,
+since 24 October 2026: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note put`
+with the folder step 3 read the tool at and the install command alone, in
+single quotes, without the change into the project's directory the question
+put before it, for a browser download as for a tool; the program writes the
+line in its form and not a second time where it stands already; until that
+day the run wrote it with the editing tool. On the branch this step writes
+on, the one cut after their word at a first setup and on the route from the
+step after a merge, the caller's where this skill was called for one class,
+since step 3 stands before the cut and writes nothing, and the program
+writes nothing on the main branch. The person's decision of 21 October
 2026, the roadmap entry of that date on milestone 3, part 4, which carries
-the two ways weighed.
+the two ways weighed, and defect 4 of the roadmap entry of 24 October 2026
+on the six closing runs.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
