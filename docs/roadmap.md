@@ -36633,6 +36633,1030 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   Recorded, not built: under Windows with Git Bash `bin/devloop-bounded` does not end a command that does not end together with what it started, its self-test standing at "does not end" in the job, and `bin/devloop-setup-state` ends the same way and is untested there; the cause is not measured — should: in milestone 12 both end a command and everything it started at the bound under Windows with Git Bash as well, and their self-tests run in the job hooks on every system on windows-latest.
 
+- **Six closing runs read off their logs, each on the defects it met.**
+  24 October 2026, version 0.157.0 stays. On `task/closing-runs-evaluation`,
+  off `6edeef1`, in two commits: this entry, one dated sentence in
+  `docs/plan.md` under milestone 3, two points under "Decisions taken
+  against" and the rows of the table; and an addendum of the same day,
+  which held three places against the logs and corrected this entry in
+  place before it reached `main`: defects 34 and 35, the header of the mode
+  question of run 1 under defect 22, and the paragraph on what the texts do
+  not decide. Nothing is built: no file under
+  `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or
+  `.github/` changes, and `README.md` does not change. The report of this
+  order stands on this machine as
+  `~/devloop-report-2026-10-24-closing-runs.md`, in English, and is not in
+  the repository. Read were the six session logs of the runs the entry at
+  line 35286 arranged, as changed at lines 36477 to 36481, five in the log
+  directory of `devloop-test-aa` and one in that of `devloop-test-ab`, and
+  the logs of their subagents where a finding needed one; each session went
+  to an agent of its own, runs 1 and 2a in two halves by record, and every
+  finding below was checked at its record before it was written. Every line
+  number of a file is as at `6edeef1`; a line of a skill is the text the
+  runs loaded, `scripts/devloop-expand` of the skill at `6edeef1`, and is
+  marked "expanded"; a record is the line of its session log, "#N", and a
+  record of a subagent's log names the agent. Every skill the logs load
+  comes from `~/.claude/plugins/cache/jayjay-create/devloop/0.157.0/`, under
+  Claude Code 2.1.309, every assistant record by `claude-sonnet-5-5`. The
+  logs carry their times in UTC, and each run's date is the day its log
+  opens in that timezone: 23 October 2026 for all six, runs 3b and 4 opening
+  at 22:17 and 22:29 UTC, after midnight on the person's Mac. What the runs
+  wrote and said is quoted as written, in German. The words the stock-take
+  tool reads a line of this file into its search set by stand in this entry
+  in its head and on the lines that record a defect, and on no other line.
+
+  **Which log is which run**, read off each log's content: `bf561652` 15:27
+  to 19:00 UTC, the idea of the command line with `htmlq` and WebKit, run 1;
+  `83758454` 19:02 to 20:38, `--auto` and the idea of the documentation with
+  `mmdc`, run 2a; `ece7bb50` 20:38 to 21:18, the idea of `--sort` and at #363
+  `--auto`, run 2b; `b17a5016` 21:19 to 22:10, the idea with `yq`, at #398
+  `/permissions` and at #401 and #478 the two starts with `--auto`, run 3a;
+  `ebfa655b` 22:17 to 22:27, the refresh, run 3b; `c1430dac` 22:29 to 22:43
+  in `devloop-test-ab`, the idea of `multiply`, run 4.
+
+  **A reminder of Claude Code stands in every log.** "The user hasn't heard
+  from you in a while — say in a few words what you're doing, then continue."
+  stands as an attachment of the harness eleven times in run 1, ten in 2a,
+  three in 2b, four in 3a, two in 3b and three in 4, and every announcement
+  before a question below follows one directly: run 1 #237 before #241, run
+  2a #114 before #118 and #760 before #766, run 4 #490 before #494.
+
+  **What stands in no log, the person's statement of 23 and 24 October
+  2026.** What the person did in the terminal and said in the chat beside
+  the runs stands in none of their logs and is given here as theirs. Before
+  run 1, the output of the block as the person showed it: `main` at
+  `6edeef1`, 0.157.0 installed, the comparison under "Before you change
+  anything, run this" printing nothing, `brew uninstall gitleaks` removing
+  `/opt/homebrew/Cellar/gitleaks/8.30.1`, `htmlq` missing, no WebKit under
+  `~/Library/Caches/ms-playwright`, and `gh repo create devloop-test-aa
+  --public --add-readme --clone` creating `jayjay-create/devloop-test-aa`,
+  branch `main`, one commit `21e5889` "Initial commit", `.git` and
+  `README.md` in the folder. In run 1, asked whether the install question
+  with all its answers up to "Chat about this" fit on the screen without
+  scrolling: „ja hat alles gepasst auf den Bildschirm.“ The person ran every
+  merge command handed over unchanged in the terminal, for #1, #8, #9, #10,
+  #11 and #13 of `devloop-test-aa`, and ran the two commands handed over,
+  `cd ~/devloop-test-aa && npx playwright install webkit` and `brew install
+  htmlq`, without showing their output. On the choice of the design: „sollte
+  eigentlich der Entwurf nicht ohne den Nutzer entschieden werden?“; on the
+  question at a missing `gitleaks`: „Warum bietet er eigentlich nicht an es
+  für den Nutzer zu installieren?“; on the question of the run without
+  them: „das ist etwas eigenartig aufgebaut. zuerst müsste die frage kommen
+  und dann die Erklärung“; on the last message of the run, after being told
+  that it names neither the folder nor the repository: „ich will ja nicht
+  nur wissen wo es liegt sondern auch wie ich es aufrufen kann. das ist doch
+  das was ein Nutzer machen will. das neu gebaute ausprobieren“.
+
+  Between runs 1 and 2a, decided by the person: the three open issues #6,
+  #7 and #12 of `devloop-test-aa`, each labelled `raised-here` and
+  `needs-human`, closed in the terminal as "not planned", so that run 2a,
+  which builds alone, meets what it is arranged for and does not take them
+  up alone; for the same reason #24 and #26 before run 3a and #31 and #32
+  before run 3b. The check before run 2a, shown: `main` at `6edeef1`, the
+  installed copy equal to `main`, `bin/devloop-auto-mode-rule read` with
+  exit 1, `mmdc` missing, no Chrome under `~/.cache/puppeteer`, `gitleaks`
+  missing, the tree clean on `main`. Run 2a began in a new session with
+  `/devloop:start-work --auto`; the person ran the merge commands handed over
+  for #15 and #16 unchanged. On the second install question: „ja passte
+  alles drauf.“ On the header of the question of the run without them,
+  „Ohne mich“ in run 1 and „Ohne dich“ in run 2a: „"ohne dich" macht auch
+  mehr sinn, weil man als Nutzer ja angesprochen wird.“ Before run 2b a
+  block of checks ran and the person started Claude Code from the same
+  terminal; its output was not shown, so what it checked stands nowhere. Run
+  2b began in a new session with `/devloop:start-work`, and after the halt
+  of the planning `/devloop:start-work --auto` followed in the same session.
+  On the question how the work should run after the planning: „ich hätte
+  gerne dass dieser Satz nicht mehr da steht bei 1. und 2. "Das Design wird
+  gegen die aufgeschriebene Liste gewählt, nicht nach deinem Geschmack. " das
+  ist nebensächlich“.
+
+  Before run 3a, shown: `main` at `6edeef1`, the installed copy equal to
+  `main`, `bin/devloop-auto-mode-rule read` with exit 0, `yq` missing, the
+  tree clean, no file `.claude/unattended.local`, no open pull request. Run
+  3a began in a new session with `/devloop:start-work` and stopped after the
+  planning. Then, in a second terminal, all of it shown: the install guard
+  of the installed 0.157.0, `hooks/pre-tool-use-install-guard.sh`, with
+  `CLAUDE_PROJECT_DIR` on the project, was given on stdin the input of the
+  measurement of 22 October 2026, lines 34718 to 34747 of this file, for
+  `brew install yq`: `hook_event_name` `PermissionDenied`, `permission_mode`
+  `auto`, `reason` "The server-side auto mode classifier judged this action
+  dangerous (it gave no explanation)", `tool_input.command` `brew install
+  yq`, `tool_use_id` `toolu_closing3a`. It wrote into
+  `.git/devloop-auto-mode-denials` of the project, which held no line before,
+  the line `2026-10-23T21:37:11Z`, `brew install`, `toolu_closing3a`, `brew
+  install yq`, separated by tabs. The person created with `gh` the issue #30
+  "Install yq for task #29", labelled `raised-here` and `needs-human`, its
+  body naming the command, the classifier's message and that `yq` does not
+  stand on this machine and task #29 needs it, and entered #29 as blocked by
+  #30 with the mutation `addBlockedBy`; `gh api
+  repos/jayjay-create/devloop-test-aa/issues/30/dependencies/blocking` named
+  #29. Then the person removed devloop's rule in the run's session under
+  `/permissions`, tab Auto mode; in the terminal `bin/devloop-auto-mode-rule
+  read` gave exit 1 and `bin/devloop-auto-mode-question` printed „question:
+  yes“, „read: 1“, „issue: 30“, „kind: task“, „title: Install yq for task
+  #29“, „way: brew install“, „command: brew install yq“. Then
+  `/devloop:start-work --auto` in the same session, the answer to the
+  question on the rule no; afterwards in the terminal: `read` exit 1, #30
+  open, #30 blocking #29, no file `.claude/unattended.local`, the tree
+  clean. Then `/devloop:start-work --auto` once more in the same session,
+  the answer yes.
+
+  Before run 3b, shown: the tree clean on `main` at the merge of #33,
+  `read` with exit 0, #30 closed, `yq` missing, no open pull request. The
+  person opened pull request #34 from the branch `remove-install-record`, one
+  commit "Remove the install record and set the setup marker back" under the
+  identity of `git config`, which took the section `## Install permission`
+  out of `docs/agents/environment.md` and set the marker in
+  `docs/agents/issue-tracker.md` to 0.155.0, armed it with `gh pr merge
+  --squash --auto --delete-branch`; the required check `check` ran green in
+  4 minutes 18 seconds, it was merged, and `origin/main` carried no such
+  section and the marker 0.155.0. Run 3b began in a new session with
+  `/devloop:start-work`; its last question, what is to be built, the person
+  did not answer.
+
+  Before run 4, shown: `main` at `6edeef1`, the installed copy equal to
+  `main`, `brew uninstall gitleaks` removing 8.30.1, `gitleaks` missing,
+  `gh repo create devloop-test-ab --public --add-readme --clone` creating
+  `jayjay-create/devloop-test-ab` with `8b0aa35` "Initial commit". The first
+  block stopped after the clone, at a check on the output of `npm test` that
+  Node 25 prints in another form; a second block committed the files the
+  person wrote, `package.json`, `src/add.ts` and `test/add.test.ts`, a
+  function `add` and its test, as `8542d9f` "Add a function and its test",
+  `npm test` ending with exit 0, pushed. The arrangement has the person stop
+  where devloop asks what is to be built; in a project not set up that
+  question comes before the setup, `skills/start-work/SKILL.md` lines 100
+  to 104, so the person gave the idea „Eine Funktion multiply(a, b) neben add
+  in src/, mit einem Test wie für add.“ and stopped at the first question of
+  the planning, the one on the assumptions, with Esc and `/exit`. Before the
+  merge of #1, in the terminal, `command -v gitleaks` found nothing; then #1
+  was merged with the command handed over, and #2 and #3 the same way.
+
+  **Decided on 23 October 2026**, by the person in the chat beside the runs.
+  (a) No permission for a single tool under a no: the question on a missing
+  tool under a no keeps its two answers. At the question on `gitleaks` of run
+  1, #1546, the person asked „Warum bietet er eigentlich nicht an es für den
+  Nutzer zu installieren?“; told that the guard reads, for an install, the
+  one answer of the project off the main branch,
+  `hooks/pre-tool-use-install-guard.sh` line 928, and that a permission for a
+  single tool stands nowhere, and offered to have that put to them as a
+  question after the runs, they answered „nein, passt“. No should changes;
+  the point stands under "Decisions taken against" with this reason, and in
+  the note of the row of line 30085, whose evidence is that question. (b)
+  The text in the question field stands before the question line, as until
+  now. On the mode question of run 1, #1808, the person said „das ist etwas
+  eigenartig aufgebaut. zuerst müsste die frage kommen und dann die
+  Erklärung“; told of the rule, `docs/skill-conventions.md` line 742 and
+  `output-styles/devloop.md` lines 17 to 20, and of their approval of this
+  question's wording on 17 and 19 October 2026, and offered to put the order
+  as a decision of its own after the runs, they answered „nein passt.“ No
+  should changes; the question line at the start of the question field
+  stands under "Decisions taken against", and the decision in the note of
+  the row of the output style's branch on a question asked through the
+  widget. (c) In the question of `plan-work` on how the work runs after the
+  planning, the sentence on the design leaves the descriptions of the first
+  two answers, and keeping the machine awake stays; the person's statement
+  at run 2b, quoted above. It changes `skills/plan-work/SKILL.md` lines 425
+  to 428, which read "Say what the first two cost for this piece of work, in
+  the description of each of the two, beside what it means: the design gets
+  chosen against the written list and not against their taste, and the
+  machine has to stay awake for as long as the run works.", and the wording
+  approved on 19 October 2026 under defect 14 of the entry of that date,
+  lines 30283 to 30289, which read for „Volle Flexibilität“ „Alles wird ohne
+  dich gebaut, du liest das Ergebnis danach. Den Entwurf wählt devloop anhand
+  der Liste oben, nicht nach deinem Geschmack. Der Rechner muss wach
+  bleiben.“ and for „Plan ohne dich“ „Der Plan entsteht ohne dich und hält
+  an, sobald du ihn lesen kannst; danach geht es weiter wie bei der ersten
+  Antwort. Auch hier wählt devloop den Entwurf anhand der Liste, und der
+  Rechner muss wach bleiben.“ The new should stands with defect c below and
+  in the note of the row of line 30294. (d) The last message of a run says
+  where what was built lies and how it is tried, with a command that runs as
+  it stands and what one sees then; the person's statement at the last
+  message of run 1, quoted above. Milestone 11 names it as its aim already,
+  `docs/plan.md` lines 914 to 922, "the handover message with the one
+  action"; defect d below, assigned to milestone 11, with the last message
+  of run 1 that shows it.
+
+  **Decided on 24 October 2026.** The wording of (c), approved, for
+  „Volle Flexibilität“: „Alles wird ohne dich gebaut, du liest das Ergebnis
+  danach. Der Rechner muss wach bleiben.“, and for „Plan ohne dich“: „Der
+  Plan entsteht ohne dich und hält an, sobald du ihn lesen kannst; danach
+  geht es weiter wie bei der ersten Antwort. Der Rechner muss wach
+  bleiben.“ (e) The rule "A title says what changed, and nothing else",
+  `docs/skill-conventions.md` line 1506, holds for the titles devloop writes
+  in a user's project as well, the titles of pull requests and the first
+  lines of commits: in plain words what changes in substance, as the owner
+  of the repository writes them, no "the person", no version, no date. The
+  occasion: the pull requests #10 "Record that work without the person is
+  not set up" and #15 "Record the answers for work without the person" of
+  `devloop-test-aa`; #35 of run 3b, "Refresh the setup to 0.157.0 and record
+  the install permission", carries a version. Searched first, whether a
+  text says so for the user's project: `grep -rn -i -E '\btitle' skills/
+  shared/`, `grep -rn -i -E 'commit message|first line of (a|the)
+  commit|commit title|subject line' skills/ shared/`, `grep -rn -E 'gh pr
+  create|--title' skills/*/SKILL.md shared/*.md`, `grep -n -i -E "owner of
+  the repository|user'?s project.*title" docs/skill-conventions.md`, and
+  over this file `A title says what changed` and titles in the projects: no
+  text of `skills/` or `shared/` says how a title in the user's project is
+  written, the one hit on titles of commits and pull requests being the
+  conventions' rule for this repository, line 1506, and the decision (d) of
+  the entry of 22 October 2026, line 34669, which the job `stock-take` holds
+  on this repository's pull requests. So defect e below.
+
+  **The thirteen points that waited for a run**, the list of the entry at
+  line 35286 under "A run, thirteen points", each with the runs that met its
+  case, the records and whether it held; eight held, three held in part, two
+  did not hold. A run that met a case stands on the defect's row in
+  `docs/stock-take.tsv`, under the anchor of the paragraph that names it.
+
+  **Point 1, line 9655, no recommendation on a question about how this
+  workflow runs.** Met in all six runs and held in all six: the install
+  question at run 1 #91, run 3b #64 and run 4 #84; the packages question and
+  the questions per tool at run 1 #1511, #1523, #1529 and #1875 and run 4
+  #222; the question on `gitleaks` at run 1 #1546; the mode question at run
+  1 #1808, run 2a #249 and run 4 #396; the rule at run 2a #255 and run 3a
+  #455 and #503; the second install and packages questions at run 2a #271
+  and #276; the course of the work at run 2b #182 and run 3a #178. None
+  carries a recommendation; the questions on the product carry one, as they
+  may.
+
+  **Point 2, line 7034, step 4 of `setup-project` not skipped without
+  code.** Run 1, held: in the project with a README and no code the install
+  question came at #91, question 1 was not put for the one remote, question
+  2 not for want of a gate, question 4 skipped as one that needs code, #117
+  writing "Nothing runs yet: the project has no code."
+
+  **Point 3, line 5295, a class under a no on its tool becomes skipped with
+  that reason.** Run 1, held: „Prüfung ausschalten“ at #1547, and #1730
+  writes the row `secrets | - | - | - | - | - | skipped (user): gitleaks is
+  not installed and the user chose the check off`, which stands so on `main`
+  after #9, #11 and #13 of `devloop-test-aa`.
+
+  **Point 4, line 30085, the decision on that class a question before the
+  offer of the mode, no class left empty.** Run 1, held: the question on
+  `gitleaks` at #1546, 18:02 UTC, the mode offered at #1808, 18:11, and
+  `grep -cE` over `checks.md` counting no `empty` at #1787.
+
+  **Point 5, line 1538, a command handed over backed, its success read off
+  the path.** Run 1, held in part. `brew install htmlq` held: `brew info
+  htmlq` read at #2291, the message #2296 naming the backing, „Die Formel
+  gibt es, geprüft mit `brew info htmlq` (Version 0.4.0, Quelle
+  `github.com/mgdm/htmlq`)“, and after „Ist durch.“ the path read at #2303,
+  `ls "$(brew --prefix)/bin/htmlq"`, before the build at #2334. The download
+  of WebKit did not hold: before handing it over the run read only `npm view
+  @playwright/test version` and `npx --no-install playwright --version`,
+  #1887 to #1899, no installation line of the vendor; #1918 hands `cd
+  ~/devloop-test-aa && npx playwright install webkit` over naming no
+  backing, against `build-work` expanded 1197, "Say which of the two it
+  hangs on", and #1905 puts the same command into a comment on the task. The
+  success was read off the path, `ls ~/Library/Caches/ms-playwright | grep
+  -i webkit` at #1925, answering `webkit-2370`.
+
+  **Point 6, line 19003, a command handed over carries the change into the
+  project.** Run 1, held: #1918 hands over `cd ~/devloop-test-aa && npx
+  playwright install webkit`.
+
+  **Point 7, line 8155, the pass under a yes read off the answer of a route
+  the record names.** Run 2a, held: the build subagent
+  `agent-a97471a2ad00f397f` ran `npm install -g @mermaid-js/mermaid-cli` at
+  its #96 under the record of `fb296c7`, `install-route: npm` among eleven
+  places; the guard let it through silently, the place being
+  `$(npm prefix -g)/bin` by its lines 1010 to 1016, and the same call read
+  `ls -l "$(npm prefix -g)/bin/mmdc"`, #97 answering that
+  `/opt/homebrew/bin/mmdc` links into
+  `../lib/node_modules/@mermaid-js/mermaid-cli/src/cli.js`.
+  No refusal of the classifier: the open risk of line 35405 did not come
+  about. The install of `gitleaks` in runs 2a and 4 passed on a place the
+  record names, `/opt`, and meets this case on no way.
+
+  **Point 8, line 5986, the report of an install says what the package
+  manager did beside the package.** Met in runs 2a and 4, and held in
+  neither. Run 2a, `gitleaks`: #366 ran `brew install gitleaks 2>&1 | tail
+  -5`, whose output #368 shows the caveat „zsh completions have been
+  installed to: /opt/homebrew/share/zsh/site-functions“; the pull request
+  #16 at #498 and the message #518 name the command and the folder and none
+  of it, and what the cut `tail` dropped was never read. Run 2a, `mmdc`: the
+  report of the build subagent at #815, the pull request #19 at #1363 and
+  the last message #1717 say "npm reported 25 packages looking for funding
+  and nothing else" and „`mmdc` lädt beim ersten Rendern einen
+  Headless-Browser nach `~/.cache/puppeteer`“; the install itself downloaded
+  Chrome and the headless shell into `~/.cache/puppeteer`, read on 24
+  October 2026 off the birth times of those folders on the person's Mac,
+  19:31:52 to 19:32:25 UTC, inside the install call, 19:31:35 to 19:32:27,
+  and before the first rendering at 19:32:30, so the report names a download
+  on first use nobody read and misses the one the install made. Run 4: #242
+  ran `brew install gitleaks 2>&1 | tail -5`; the pull request #2 at #351
+  says "(brew also fetched its own index and cleaned up unasked)", which the
+  cut output never showed, and the caveat at #244 stands nowhere. `build-work`
+  expanded 1150 to 1157 and `setup-checks` expanded 1271 ask for the command
+  as it ran, what came back, what stands at the path and what the package
+  manager did besides. Run 3a installed nothing, new defect 2 below, and so
+  did not meet the case.
+
+  **Point 9, line 15579, a project whose mode is set up meets the question
+  on the rule.** Run 3a, held in part. At the first start with `--auto`,
+  #401, `build-work` ran `bin/devloop-auto-mode-question` inside its reads at
+  #432, #435 printing "question: yes", "issue: 30", "way: brew install",
+  "command: brew install yq", exit 0, called `setup-checks` for step 8 alone
+  at #442, and the question at #455 named `brew install yq` with the issue;
+  on the no at #456 nothing was written, #462 reading #30 open and #29 with
+  one open blocker. At the second start, #478, the question came again at
+  #503, the yes at #504, the rule went in at #513, #514 "the rule is entered
+  in ~/.claude/settings.json: appended to the list autoMode.allow", exit 0,
+  #518 closed #30, and #519 read #29 with no open blocker; the task was then
+  built. Not as the text has it: the second start called `setup-checks` not
+  at all, and both questions named the issue by its title and not its
+  number, new defect 3 below.
+
+  **Point 10, line 30168, the build reads the start conditions again at its
+  start.** Met in runs 2a, 2b and 3a, and held in none. Run 2a, the planning
+  route: at the start of the build, #781 and #784, conditions 2, 4, 5, 6 and
+  7 were read, the three records off `origin/main` among them; condition 1
+  was read only at the end, #1710, and condition 3 only in the cut's query,
+  #759, never in `build-work`. Run 2b, the direct route: after the skill
+  loaded, the one command #399 read the permission mode, fetched and wrote
+  the mark, conditions 6 and 7 read only by the guard on the mark at that
+  write; 1, 2, 3 and 5 were not read, the first read of a blocker coming
+  after the first merge, #699, and `bin/devloop-auto-mode-question` did not
+  run on that route. Run 3a: at the first start #432 and #435 read 2 on the
+  classic side alone, 4, 5, 6 and 7, not 1 and not the rulesets; at the
+  second start none of the seven was read before the question #503 or the
+  mark #526, only the issue's state, `which yq` and the program at #495.
+  `build-work` expanded 2452 to 2460: "Refuse to start unless all seven
+  hold … they are read again here".
+
+  **Point 11, line 33135, the refresh puts the install question where no
+  record stands.** Run 3b, held: #58 printed the cause "docs/agents/
+  environment.md on origin/main has no section "## Install permission"", the
+  question came at #64, the yes at #65, the branch was cut after it, #90
+  wrote the record with eleven places and `install-route: npm`, and pull
+  request #35 was read `MERGED` at #140; nothing else was asked. The route
+  was not asked, new defect 8 below. The question field said nothing of why
+  the question came, new defect 34 below; the point holds all the same, its
+  should being where the question is put and where it is not.
+
+  **Point 12, line 33153, the no names a package that downloads something
+  itself.** Held at the first asking of run 1, #91, at the second asking of
+  run 2a, #271, and at the refresh of run 3b, #64, each with „Pakete deines
+  Projekts, die bei ihrer Installation selbst etwas laden (z. B. einen
+  Test-Browser), stoppt das Nein nicht“ or its like. In part at the first
+  asking of run 4, #84: „Außerhalb des Projekts wird nichts installiert; du
+  bekommst den Befehl und entscheidest selbst. Pakete deines Projekts, die
+  beim Install selbst etwas laden, bleiben davon unberührt.“, the missing
+  tool and the browser of `setup-project` expanded 1010 to 1014 left out,
+  and "unberührt" saying the packages are untouched by the no where the text
+  says the no does not stop them.
+
+  **Point 13, line 7923, nothing installed before step 8 has landed the
+  record, at a first setup with a yes and a tool missing.** Run 4, held: no
+  install of any kind from #35 to #191, the setup's pull request #1 read
+  merged at #184, 22:31:48 UTC, and the first install, `brew install
+  gitleaks` at #242, 22:34:09, by `setup-checks` after the landing, through
+  the guard's silent pass on the place `/opt` the record names, its path read
+  at #244.
+
+  **Not met: the two points for a bench and six points of cluster 20.**
+  Lines 1317 and 13635 wait for the bench the entry at line 35286 names
+  under "A bench, two points". Of cluster 20 no run met lines 1307, 18977,
+  29213, 5232, 12527 or 11463: no guard blocked anything, no install failed,
+  no route into `setup-checks` with nobody there met a missing tool, and no
+  record went missing before a second asking.
+
+  **Other defects of the table whose case a run met**, each on its row as
+  the points are.
+
+  **Lines 7048, 7325, 7667 and 10356, the install question in the widget.**
+  Met at run 1 #91, run 2a #271, run 3b #64 and run 4 #84, and held at each:
+  the question alone in its call, nothing before it, at most twelve lines of
+  the fourteen counted by the rule of the output style, about tools and
+  browsers that land outside the project and not about tools for check
+  classes, and no word on runtimes.
+
+  **Lines 26220 and 17627, what the mode question and a second question
+  need stands in their fields.** The mode question at run 1 #1808, run 2a
+  #249 and run 4 #396 and the line before the second install and packages
+  questions at run 2a #271 and #276 stood in the question fields, nothing
+  before the calls but at one place: #270 of run 2a, „Jetzt die beiden
+  Erlaubnisse. Zuerst das Installieren außerhalb des Projekts.“, as text
+  before the call of #271, where `setup-checks` expanded 2108 says "Nothing
+  stands before the call". So 17627 held in runs 1, 2a and 4, and 26220 held
+  in runs 1 and 4 and did not hold in run 2a.
+
+  **Line 26092, the classes the two yes open, each with its tool, in one
+  line.** Run 2a, did not hold: #330, the message that ends the turn after
+  the answers, names „die Typprüfung und die Suche nach versehentlich
+  eingecheckten Zugangsdaten“ and no tool, where `setup-checks` expanded 2185
+  to 2187 says "That list, each class with the tool it takes, is said to the
+  person in one line".
+
+  **Line 26006, the merge handover says nothing of what comes after the
+  merge.** Held at run 1 #180, #1460, #2270 and #2632 and run 4 #170, #367
+  and #444. Did not hold in run 2a: #330 says before the command „Das hast
+  du eben getan, sie kommt als Nächstes.“ and „Danach öffne ich die Klassen
+  wieder, die wegen deiner früheren Neins aus waren“, and #518 after it
+  „Danach warte ich, bis die Prüfung auf GitHub einmal grün gelaufen ist, und
+  schütze erst dann den Hauptzweig.“, against `shared/merge-handover.md`
+  lines 1 to 5 and 34 to 38; #330 also says „Ich habe deine drei Antworten
+  (ohne dich arbeiten, Regel eintragen, installieren und Pakete eintragen) in
+  einen Pull Request geschrieben“, where the rule had gone into the person's
+  settings at #265 and not into the pull request.
+
+  **Line 17816, a round over the commits that fix the review's findings.**
+  Did not hold in runs 1 and 2a: run 1 #1427, „Die letzten beiden Commits
+  haben keine weitere Prüfrunde mehr bekommen“, #2246 for three commits and
+  #2607 for one; run 2a, the pull request #20 at #1666, "The last rewording
+  … was not read by a further round". `build-work` expanded 1706 to 1708:
+  "a round over exactly those commits, after every round, before the pull
+  request is opened".
+
+  **Lines 1270 and 1294, a body goes through a file the editing tool
+  writes.** Did not hold in run 1: #1905 `gh issue comment 4 … --body "…"`
+  and #298 a body file written with a heredoc before `--body-file`.
+
+  **Line 7787, the record and the line at session start under a no.** Held:
+  run 1 #117 wrote `install-tools: no` and the date alone, and run 2a began
+  at #5 with "[InstallRecord] tools: no | places: none | routes: none |
+  answered: 2026-10-23".
+
+  **Line 33491, the line at session start without a record.** Held in run
+  3b, #5: "every install outside the repository is blocked and handed to the
+  person until a record has landed on the default branch".
+
+  **Line 30120, the install fact written by the hook.** Held in run 2a, #369
+  for `gitleaks` and #98 of `agent-a97471a2ad00f397f` for `mmdc`, and in run
+  4, #245; the three lines landed on `main`, with `d5664f7` and `cfaee8c` in
+  `devloop-test-aa` and with #2 in `devloop-test-ab`. Their form is new
+  defect 1 below.
+
+  **Line 7741, a setup reaches `setup-checks`.** Held in run 1, after the
+  first merge with code, #1474 counting nine classes `empty` and #1489
+  calling the skill, and in run 4, #199 and #200 after the setup landed.
+
+  **Line 5214, an install under a yes with nobody there.** Held in run 2a:
+  the main run handed the install of `mmdc` to the build subagent at #799 and
+  that agent ran it at its #96, nobody there.
+
+  **Line 14772, a command moved to the background is neither waited for nor
+  started again.** Run 2a, did not hold: in the build subagent
+  `agent-aa65e9e44bb52bd8c` a call moved to the background at its #37, was
+  stopped with `TaskStop` at #48 and run again in parts at #50.
+
+  **Line 30294, defect 14 of the entry of 19 October 2026, the two answers
+  that send the run alone foretelling a failure.** Held in runs 2b, #182, and
+  3a, #178: neither „trifft kein Entwurf, hält der Lauf an“ nor „Gleiche
+  Kosten“ stands in any description, and both name the design and the
+  machine awake as costs.
+
+  **Line 24430, owed text that reaches no message.** Did not hold: "Say
+  roughly how many rounds you expect", `plan-work` expanded 936, said in no
+  round of runs 2a, 2b, 3a and 4, where run 1 said it at #262, „ich rechne
+  mit ca. 2 Runden“; in run 1 the close of the setup, `setup-project`
+  expanded 1795 to 1812, reached no message, the run going from „Pull
+  Request ist gemergt“ at #190 to the planning at #210 and the next text at
+  #328 carrying none of it; and the spec's number, `plan-work` expanded 1459,
+  and the split as a numbered list, `cut-into-tasks` expanded 513 to 516,
+  stood only in #521, text inside the turn, and in #597, „Ich habe die
+  Spezifikation in drei Aufgaben zerlegt und baue gerade die erste“.
+
+  **Met again and still recorded, so no run stands on their rows**, a run on
+  a defect recorded and not built being a broken record of the tool, line
+  3497 of `scripts/devloop-stock-take`: line 24502, the loose `raised-here`
+  issues at a closed spec, left open at the end of run 2b, #1040 and #1053,
+  and of run 3a, #1228 and #1235, each run adding `needs-human` and ending,
+  and in run 1 put to the person at #2660, „Sag mir, welches du zuerst
+  angehen willst und wie.“, where `build-work` expanded 1004 says "Do not ask
+  which"; line 24486, findings neither fixed nor filed, in run 2a the pull
+  request #19 at #1363 under "Not fixed, with reasons" and #20 at #1666, in
+  run 2b #25 at #645 under "not filed" and #27 at #996; line 30240, the form
+  of the last message, three groups in run 3a #1235, a group of what was set
+  up in run 2a #1717 and the review's results in run 2b #1053; line 30189,
+  the main run filling a check class itself, run 1 #1966 to #1971 for the
+  end-to-end class; line 26163, question 4 of `setup-project` not put where
+  there is code, run 4 #112, „Nothing has to run: the project is a
+  TypeScript library with tests“; and line 26818, an English note between
+  two tool calls, run 1 #157, „Commit, push, PR, arm.“
+
+  **New defects**, each found at its records, the text that asks otherwise
+  named, and searched for first in this file and in the table by several
+  patterns, the searches in the report; a defect that stood already is
+  named above with its line. By the dated sentences of `docs/plan.md` under
+  milestone 3, lines 371 to 390, defects 1 to 9 and 34 concern milestone 3,
+  being defects of the question, the record, the places in the skills or the
+  run that installs without the person. Defect d is milestone 11's. For every
+  other one the plan names no milestone, and which milestone takes it up the
+  person decides after milestone 3, as the sentence of 19 October 2026 at
+  lines 380 to 390 has it for a defect of the run without the person that
+  does not concern installing.
+
+  **1. The install fact carries the redirection of the call that ran it.**
+  The line the hook writes under "Installed outside the project" read
+  "`brew install gitleaks 2>& 1` installed into /opt/homebrew/bin" at #369
+  of run 2a and #245 of run 4, and "`npm install -g @mermaid-js/mermaid-cli
+  2>& 1` installed into /opt/homebrew/bin" at #98 of `agent-a97471a2ad00f397f`
+  in run 2a; all three landed on `main`. The calls were `brew install
+  gitleaks 2>&1 | tail -5; ls …` and `npm install -g … 2>&1 | tail -20; ls
+  …`: the guard's `words_of`, lines 95 to 98, leaves "a redirection's
+  operator … as it stands" and the reader parts `2>&1` into two words, so
+  the line carries a split redirection whoever clones the project does not
+  type, where the hook's head, lines 9 to 10, says "the command as it ran"
+  and `build-work` expanded 1310 to 1313 says the line is the command "which
+  whoever clones this project will have to run". A hook's, so a bench
+  shows it; milestone 3, the fact at the place that outlives the session,
+  `docs/plan.md` lines 271 to 277.
+  Recorded, not built: the install fact written by hooks/post-tool-use-install-fact.sh carries the split redirection 2>& 1 of the call that ran the install, runs 2a and 4 — should: the line carries the install command as whoever clones the project runs it, without the redirections, pipes and further commands of the call, and a bench shows it with a call like those of the runs.
+
+  **2. Run 3a built the task that needs `yq` under a yes without installing
+  it.** After the yes to the rule, #504, the run closed #30 "Install yq for
+  task #29" at #518 and took the task up, but installed nothing: the comment
+  of Stage 2, #222, had written "the install record allows only the route
+  npm, and yq (Mike Farah) is not an npm package. A build run cannot install
+  it", where the record on `main`, read at `143b372`, names `install-place:
+  /opt` among eleven places beside `install-route: npm`, and `brew install`
+  lands in `/opt/homebrew/bin`; the prompt of the build, #546, said "Install:
+  you need no installs. Do not install anything (yq is NOT available on this
+  machine and you must not install it; stubs are the plan)". The task was
+  built against stand-ins for `yq` and `npm`, which replaced the point
+  settled with the person in round 1, #115, that the tests are skipped where
+  `yq` is missing, and stood beside their answer of round 2, #139, „Nein, wie
+  bei htmlq (empfohlen)“, `yq` not installed in the platform's checks and
+  the tests skipped there; pull request #33 merged with `yq` never run, and
+  its body, #1177, and the last message, #1235, say „der Build kann yq nicht
+  installieren“. `build-work` expanded 1134 to 1137: "Under a yes, run the
+  backed command yourself, with the user there and with nobody there,
+  without asking again". So the rule entered at #513 met no install in the
+  same session, and whether it holds there stays unshown. Milestone 3, the
+  run that installs without the person.
+  Recorded, not built: run 3a built and merged the task needing yq under install-tools yes without installing yq, the planning having read the record as allowing the route npm alone and the build being told not to install — should: under a yes the run reads the record as the guard reads it, places and routes, installs the tool a task needs, backed, and builds against it, and a point settled with the person is not replaced by a stand-in without them.
+
+  **3. The question on the rule at the second start of run 3a came without
+  `setup-checks`, and both named the issue by its title.** At #478 the run
+  read the issue, `which yq` and the program at #495 and put the question at
+  #503 itself, no skill loaded, where `build-work` expanded 2588 to 2589
+  says "call `setup-checks` for its step 8 alone, for that one question in
+  its form for a start with `--auto`". The form, `setup-checks` expanded
+  2029 to 2031, asks for "the command as the program prints it, with its
+  issue's number", the wording approved on 22 October 2026, line 34940,
+  „(Issue #<Nummer>)“; #455 and #503 read „(Issue „Install yq for task
+  #29“, hält die Aufgabe „npm run links:config sorts the links according to
+  links.config.yaml“)“, never `#30`, and #503 adds „yq steht noch nicht auf
+  dieser Maschine, das Issue ist noch offen.“, which neither text has.
+  Milestone 3, the question after a refusal it took up on 22 October 2026.
+  Recorded, not built: the question on the rule at the second start with --auto of run 3a was put without calling setup-checks, and both askings named the issue by its title and added the held task and a line of their own — should: every start with --auto that meets the question calls setup-checks for its step 8 alone, and the question names the command with its issue's number as approved on 22 October 2026.
+
+  **4. The download of WebKit the person ran under the no got no line under
+  "Installed outside the project".** Run 1 handed it over at #1918, the
+  person ran it, and the run read `webkit-2370` at #1925; `environment.md`
+  on `main` after #11 and #13 says of it only "The WebKit browser is needed
+  once per machine: `npx playwright install webkit` (a download; the person
+  runs it)", while the line of `brew install htmlq`, written at #2324, stands
+  there with "(htmlq 0.4.0, run by the person)" beyond the form. `build-work`
+  expanded 1322 to 1331: a command the person typed themselves that is an
+  install outside the project "has its line here all the same … in the form
+  the hook writes: one list item, the command as it was handed over in
+  backticks, the words `installed into` and the folder the tool was read at".
+  Milestone 3, the fact at the place that outlives the session.
+  Recorded, not built: run 1 wrote no line under Installed outside the project for the WebKit download the person ran under the no, and wrote the line for htmlq with a remark beyond the hook's form — should: every install outside the project the person ran on a command handed over has its line there in the form the hook writes, the command as handed over and the folder it was read at.
+
+  **5. The decline of `htmlq` was said as a skipped test and a task left
+  open.** #2296 of run 1: „Du kannst auch ablehnen: Dann baue ich das Skript
+  und seinen Test, der Test lässt sich aber ohne `htmlq` nicht ausführen und
+  bleibt ungeprüft. Er wird dann übersprungen, und die Aufgabe bliebe
+  offen.“ `build-work` expanded 1349 to 1353: "The branch stays where it is,
+  and the missing install becomes an issue of its own carrying the exact
+  command, labelled `raised-here` and `needs-human`, recorded as a blocker of
+  the task". The person did not decline; where a no leads was said wrong.
+  Milestone 3, the places in the skills under a no.
+  Recorded, not built: run 1 said at the hand-over of brew install htmlq that a decline builds the script with its test skipped and leaves the task open — should: the hand-over says where a no leads as build-work step 3 point 7 has it, an issue carrying the command that blocks the task.
+
+  **6. The question on `gitleaks` said that the run installs nothing, and
+  the command stood without backticks.** #1546 of run 1: „Außerhalb des
+  Projekts installiert der Lauf nichts. Du kannst es selbst installieren,
+  mit diesem Befehl (…):“, and the command on a line of its own, without
+  backticks. `setup-checks` expanded 1058 to 1062: "that outside the project
+  the run may install nothing; that they can install it themselves, with the
+  command in backticks"; approved on 21 October 2026, lines 34157 to 34159,
+  „außerhalb des Projekts darf ich nichts installieren. Du kannst es selbst
+  installieren: `brew install gitleaks`.“ The field said neither that the no
+  is the person's own answer; the person's question at it stands under (a)
+  above. Milestone 3, cluster 21.
+  Recorded, not built: the question on gitleaks of run 1 said that the run installs nothing outside the project where the text says it may install nothing, and gave the command without backticks — should: the field says that under their no the run may install nothing outside the project and gives the command in backticks, as approved on 21 October 2026.
+
+  **7. `mmdc` was installed under the yes unbacked.** The main run of 2a
+  wrote into the build prompt, #799, "Install the Mermaid CLI as the vendor
+  documents (mermaid-cli README): `npm install -g @mermaid-js/mermaid-cli`";
+  no record of the session reads that README, runs `npm view` on the package
+  or fetches a page, and pull request #19 says at #1363 "the vendor's line
+  from the mermaid-cli README". `build-work` expanded 1134, "run the backed
+  command yourself", and 1193 to 1197: the vendor's own line "quoted from
+  where it was read", or the path resolving, "Say which of the two it hangs
+  on". Milestone 3, the run that installs without the person.
+  Recorded, not built: run 2a installed mmdc under the yes with a command it called the vendor's line without having read it, and the pull request says it was read — should: a command the run runs under a yes is backed as one handed over is, the vendor's line quoted from where it was read or the path resolving, and the report names which.
+
+  **8. The route `npm` went into the record unasked.** Run 3b wrote
+  `install-route: npm` at #90 off `package.json` and the lockfile, #70, and
+  run 4 wrote it at #112, at its setup; neither asked `npm` where it puts
+  things, no `npm prefix -g` standing in either log.
+  `shared/install-record.md` lines 51 to 55, inserted in `setup-project`:
+  "ask each route where it puts things, as the guard does, and write its
+  line either way … a route of the stack that does not answer on this
+  machine is named in the body of the pull request that lands the record".
+  Milestone 3, the record.
+  Recorded, not built: runs 3b and 4 wrote install-route npm into the record without asking npm where it puts things — should: the run that writes the record asks each route of the stack where it puts things and names one that does not answer in the body of the pull request, as shared/install-record.md says.
+
+  **9. The planning settled who installs a missing tool.** Run 1, #262: „htmlq
+  ist auf diesem Rechner nicht installiert. Du installierst es selbst (z. B.
+  mit brew install htmlq), weil der Lauf nichts außerhalb des Projekts
+  installiert.“, answered „Stimmt so“, and the spec at #504 under Out of
+  scope "Installing htmlq: the user does it."; run 2a, #127: „mmdc ist auf
+  dieser Maschine nicht installiert; die Installation machst du selbst.“, the
+  person correcting it at #140, „Wer mmdc installiert, legt nicht die
+  Spezifikation fest, sondern die Erlaubnis zum Installieren, die für dieses
+  Projekt gilt, wenn gebaut wird.“ `plan-work` expanded 962 to 968 lets the
+  run settle what follows from what they said and what the project's rules
+  settle, and who installs is the record's at the moment of the build,
+  `build-work` expanded 1134 to 1137 and 1171 to 1172. Milestone 3, the
+  places in the skills.
+  Recorded, not built: the planning of runs 1 and 2a settled in a round's assumptions that the person installs a missing tool, and run 1 wrote it into the spec — should: the spec leaves who installs a tool to the install record read at the build, and an assumption of a round names no one to install it.
+
+  **10. A question announced before its call, after the reminder of Claude
+  Code.** Run 1 #241, run 2a #118 and run 4 #494: „Ich lege gerade das
+  Planungs-Issue an und stelle dir danach die Fragen zur Idee.“ or its like,
+  each followed by the call of the first question of the interview, #262,
+  #127 and #514; run 2a #766, „Ich habe den Plan in zwei Aufgaben zerlegt
+  und gestartet, jetzt beginnt der Bau.“, before `build-work` with nobody
+  there. Each came directly after the harness's reminder named above, #237,
+  #114, #490 and #760. `plan-work` expanded 709 to 711, "Not in an
+  announcement before it", the output style, "Nothing stands as text before
+  the call that shows the widget", and `cut-into-tasks` expanded 543 to 544,
+  "run `build-work`, and say nothing of it".
+  Recorded, not built: runs 1, 2a and 4 announced the first question of the interview in text before its call, and run 2a the build after the cut, each directly after the reminder of Claude Code to say in a few words what it is doing — should: nothing stands as text before the call that shows the widget and nothing is said of the cut, under that reminder as well, the way to hold it against the reminder being decided before it is built.
+
+  **11. Questions beyond the bound of the widget.** Counted by the rule of
+  the output style, 76 characters a line in the field, 73 under an answer,
+  every paragraph a new line: run 3a #115, the assumptions of round 1, 17
+  lines of 14, and #157, the hard core with its question, 26 of 14; run 2b
+  #137, the hard core, 15 of 14; and the headers „Explizit sort“ of run 3a
+  #138 and „Projektpakete“ of run 1 #1511, thirteen characters of twelve.
+  `plan-work` expanded 1010 to 1012, where the assumptions do not fit, "the
+  whole round is put as text", and 1055 to 1060, the hard core not cut to
+  fit and put as text.
+  Recorded, not built: runs 2b and 3a put questions through the widget beyond its bound of fourteen lines, and runs 1 and 3a headers of thirteen characters — should: a question whose text does not fit the bound is asked as text at the end of the turn, and a header has at most twelve characters.
+
+  **12. Decisions about the idea taken by the run.** Run 1 #328: „Die Form
+  des Aufrufs habe ich festgelegt, sie ist nicht von dir.“, and the spec at
+  #504 under "Decisions the run took without an answer" adds the usage line
+  and its exit code, the hint at a missing `htmlq` and the unwritable page;
+  run 3a #115 and #138 settled as assumptions that the script reads the file
+  from the project root whatever folder npm is called from and that a
+  failing `yq` ends the script, decisions about the idea; run 4 #514 settled
+  „Plain a * b, keine Prüfung der Eingaben (NaN, Infinity wie in JS)“.
+  `plan-work` expanded 962 to 968: "every decision about the idea is a
+  question to them with your recommendation … Where you cannot tell whether
+  a point is settled so, it is a question."
+  Recorded, not built: runs 1, 3a and 4 took decisions about the idea themselves in the interview, as a settled point or in the spec, where the interview puts every decision about the idea to the person — should: a decision about the idea is a question with a recommendation, and only what has a right answer to look up, follows from what they said, is this workflow's convention or a rule of the project is settled by the run.
+
+  **13. The hard core asked in the mixed form.** Run 1 #328, „Ist die Idee
+  so richtig verstanden, oder fehlt noch etwas? Ein „ja“ reicht, bei „fehlt
+  noch etwas“ sag mir, was.“, and run 2a #207, „Ist die Idee so verstanden,
+  oder fehlt noch etwas? Antworte mit „ja, so stimmt es“ oder sag, was
+  fehlt.“ `plan-work` expanded 718 to 721: "'Does this fit, or shall I
+  change something?' cannot be answered with yes … Ask one or the other."
+  Recorded, not built: runs 1 and 2a asked whether the hard core is understood in the mixed form of a yes-or-no and an alternative question — should: the question on the hard core is one or the other, with the two answers the text gives it.
+
+  **14. The verdicts of the checking agents restated.** Run 1: the checkers
+  of drafts A, C and D found a break of the install no in `@playwright/test`,
+  the download of WebKit and `tsx`; #490 says „Die Prüf-Agenten sahen darin
+  einen Verstoß bei Playwright und WebKit. Beides gehört aber zum Projekt
+  und ist der vorgesehene Weg.“, and the comment of Stage 3, #503, "all
+  project-local", where WebKit lands under `~/Library/Caches/ms-playwright`.
+  Run 2b: the checker of draft A, #309, „S2, mit Einschränkung“, the sort by
+  UTF-16 code units and not by code points; the comment #315, "Verdicts on
+  A: stories — none carried wrongly … the recommended draft passed every
+  item". `plan-work` expanded 1334 to 1336, "A draft that fails an item is
+  recorded as failing it; no agent decides what follows from that", 1364 to
+  1365 and 1373 to 1374, the stop where the recommended draft failed an
+  item.
+  Recorded, not built: runs 1 and 2b restated a checking agent's failed item as no failure, in the message before the design question and in the comment of Stage 3 — should: every verdict stands as the checking agent returned it, and with nobody there a recommended draft that failed an item stops the run.
+
+  **15. Drafting and checking agents not told where the mark stands.** Run
+  1 #356 to #359 and #419 to #422, run 2b #209 to #211: the prompts carry the
+  rule on a refusal and not where the mark stands that says the mode.
+  `plan-work` expanded 1311 to 1313: "Every agent this stage starts is
+  handed two things more …: where the mark stands".
+  Recorded, not built: the drafting agents of runs 1 and 2b and the checking agents of run 1 were not handed where the mark stands — should: every agent of Stage 3 is handed where the mark stands and what a refusal is.
+
+  **16. No comparison in prose.** Run 1 #490 sets the four drafts with their
+  pros and cons side by side and recommends, and run 2a's comment #704 gives
+  reasons for the draft taken alone; neither compares them on the three
+  axes. `plan-work` expanded 1349 to 1351: "compare them in prose — on how
+  much behaviour each hides behind how small an interface, on how localised
+  a future change would be, and on where each puts the seams".
+  Recorded, not built: runs 1 and 2a compared the drafts in no prose on the three axes of Stage 3 — should: the drafts are compared in prose on how much each hides behind how small an interface, how localised a later change is and where each puts the seams.
+
+  **17. The halts said what stands in the tracker alone.** Run 2b, #359:
+  „Ich habe das kleinste von drei Designs genommen. Es hat alle Stories
+  getragen …“ and the sort by UTF-16 as a point of its own, decisions taken
+  alone; run 3a, #393: „Der Plan ist fertig und gelesen“, read by nobody,
+  and a try-it of a script not yet built. `plan-work` expanded 1369 to 1372,
+  "the comment of this stage below says which draft was taken … no message
+  does", and 670 to 677, a decision taken where nobody is there "stands only
+  where it is recorded".
+  Recorded, not built: the halts after the planning of runs 2b and 3a said the design taken and a decision taken alone, called the plan read by nobody read, and handed over a try-it of something not built — should: the halt says what the cut created and how it goes on, and the design and the decisions taken alone stand in the spec and its comment only.
+
+  **18. The setup's pull request armed and waited for inside the answer.**
+  Run 3b, #139: a loop of twenty `gh pr view` fifteen seconds apart, two
+  minutes 38 seconds, until `MERGED`. `setup-project` expanded 1626 to
+  1630: "This step does not wait inside its answer … there is a person here".
+  The text says nothing of the armed case with the person there; the
+  neighbour is defect 17 of the entry of 19 October 2026, line 30341, at
+  `setup-checks`.
+  Recorded, not built: run 3b waited inside its answer for the armed pull request of the refresh to merge, where step 8 of setup-project does not wait with a person there — should: with the setup's pull request armed and a person there, the step ends its turn saying what the pull request waits for, and reads the merge off the platform when they come back.
+
+  **19. Classes skipped against step 1 of `setup-checks`.** Run 1 #1730:
+  `end-to-end` `skipped (state): no end-to-end test yet, it is the open task
+  The written page is verified in WebKit`, with a command line standing;
+  run 4 #313: `dependencies` `skipped (state): no third-party packages in
+  production, only dev tools`, after #243 had added six third-party
+  packages and a lockfile and #214 had told the person the class comes back
+  „sobald welche dazukommen“. `setup-checks` expanded 762 to 764, "Not yet
+  built is not skipped", and 747, "dependencies — applies as soon as the
+  project has third-party packages".
+  Recorded, not built: run 1 skipped the end-to-end class for a test not yet built, and run 4 the dependencies class while the project carried third-party packages it had just added — should: a class that applies is filled or put to the person, and not skipped for work not yet built.
+
+  **20. A line under "What these checks do not cover" for a class just
+  filled.** Run 2a #445 and #446 wrote lines for the types and secrets
+  classes it had filled. `setup-checks` expanded 1526: "a class you just
+  filled has no line there at all".
+  Recorded, not built: run 2a wrote lines under What these checks do not cover for the two classes it had just filled — should: a class just filled has no line there.
+
+  **21. The questions on the project's packages.** Run 1: #1511 names the
+  file, „in seiner package.json“, under the header „Projektpakete“; #1523 asks
+  for the compiler and the type definitions in one call under „Typenprüfung“;
+  #1529 stands under „Biome“; #1875 asks under „Playwright“ whether
+  `@playwright/test`, which the task itself needs, may enter the packages.
+  `setup-checks` expanded 938 to 942, "It names no file", the header of
+  twelve characters at most, and 956 to 959, "each alone in its call", "In
+  the header: the same name"; 928 to 931, "what a task enters for the thing
+  it builds is that task's work".
+  Recorded, not built: run 1 put the questions on the project's packages naming the file, two tools in one call, under headers of their own and once for a package the task itself needs — should: the questions take the form setup-checks step 3 gives them, and what a task enters for what it builds is not asked under this permission.
+
+  **22. The mode question and the record of its no carried sentences of
+  their own, and run 1 a header of its own.** Run 1 #1808: the yes „… Bei
+  jeder Idee fragt devloop neu.“, the no „Alles bleibt, wie es ist: Jede
+  Aufgabe kommt zu dir zur Freigabe.“, and the header „Ohne mich“, where
+  the wording approved on 17 October 2026 has „Ohne dich“, line 26647,
+  which run 2a carried at #249, the person's statement on the two being
+  quoted above; #1845 opens „Alles bleibt mit dir: Jede Aufgabe kommt zu
+  dir zur Freigabe.“; run 4 #444, „Auf GitHub wird nichts eingerichtet.“
+  `setup-checks` expanded 1928 and 1940, "no sentence of its own", and
+  1978, "Nothing more is said on the no"; the wording approved on 17 October
+  2026, lines 26647 to 26669. The neighbour is line 26200.
+  Recorded, not built: runs 1 and 4 added sentences of their own to the mode question and to the handover after its no, and run 1 put the question under the header „Ohne mich“ — should: the mode question carries the wording approved on 17 October 2026, its header „Ohne dich“ included, and nothing more is said on the no.
+
+  **23. The count of the lenses and their results said.** Run 1 #641
+  „Fünf Prüfer laufen parallel“, #848, #1077, #1333, and #1087 „ohne neue
+  Funde“, #1214, #1346; run 2a #862 „Die fünf Prüf-Agents laufen“, #1029,
+  #1163, #1255, #1455. `review-changes` expanded 433, "say neither number",
+  and 448, "The report is said to nobody".
+  Recorded, not built: runs 1 and 2a said how many lenses ran and what single lenses found between the rounds — should: neither number is said, and the report reaches the person only at the close of the step that owns the gate.
+
+  **24. A lens left out, and one left out in other words.** Run 1, the
+  fifth round, #1316 to #1319, four lenses and no security lens over a diff
+  of temporary paths and `rm` in a `finally`; run 2a, pull request #20 at
+  #1666, the lenses not run written as "the diff contains no code that takes
+  input from outside, … opens or builds a file path". `review-changes`
+  expanded 368 to 369, "if the diff contains it, the lens runs", and 390 to
+  396, "the trigger's own words, negated, item by item … not a narrowing".
+  Recorded, not built: run 1 ran no security lens over a diff with file paths, and run 2a recorded lenses not run in words of its own — should: every lens whose trigger the diff contains runs, and one that does not run is recorded in its trigger's own words, negated.
+
+  **25. A rule written into `standards.md` without its exits computed.**
+  Run 2a #989 and run 2b #863 and #945 wrote rules; run 2a ran only `git
+  log -1 -S'sanitizeForStderr' origin/main -- docs/agents/standards.md` at
+  #929, and neither run ran `git rev-list --count`, the citation query or
+  `git log -p origin/main -- docs/agents/standards.md`. `build-work`
+  expanded 1612 to 1625 and 1641 to 1643.
+  Recorded, not built: runs 2a and 2b wrote rules into docs/agents/standards.md without computing the exits or reading what the file has lost — should: before a rule is written the three exits are computed and git log -p of the file is held against it.
+
+  **26. Exit codes read empty and reported.** Run 2a #437 and #438 printed
+  `exit ` empty after `make`, `${PIPESTATUS[0]}` being empty in the zsh of
+  the call, and the pull request #16 at #498 says "exit 1" for both red
+  proofs, a code nobody read and not the one `make` returns; run 2b #409 and
+  #410 the same for `make check`. `setup-checks` expanded 1474 to 1478,
+  "Read the output before writing `filled`".
+  Recorded, not built: runs 2a and 2b read exit codes that the shell of the call left empty, and run 2a reported a code in the pull request it never read — should: an exit code is read in the shell the call runs in and only a code read is reported.
+
+  **27. The refusal of a safety check worked around in the build.** Run 3a,
+  `agent-aa1151c09e3ff4d9d`, a review subagent: #54, "Permission for this
+  command was denied by a built-in Claude Code safety check" for `rm -f
+  $T/*`; #61 ran the same experiment with literal paths and went through,
+  #62; no issue, the task not put down, the pull request #33 at #1177 saying
+  "The task itself was not put down over it." `build-work` expanded 444 to
+  449, "no second attempt, no other way to the same result", and 472 to 476,
+  the subagent raising the issue and stopping with the task. The neighbour
+  is line 26183, a refusal in planning.
+  Recorded, not built: in run 3a a review subagent ran a command refused by a safety check of Claude Code again in another form, and the build went on without an issue — should: a refused command is tried no second time and no other way, and the refusal raises the issue that blocks the task.
+
+  **28. The gate without the diff.** Run 1 #1427 shows no diff and no stat
+  and carries „Alles ist klein und getestet, du kannst jedes davon kippen.“
+  and „Das passiert nach dem ersten Merge, der Code landet.“ `build-work`
+  expanded 1728, "Show the diff and the findings", and 1753 to 1755, "no
+  verdict on the work, no announcement of what comes after".
+  Recorded, not built: the gate of run 1 on its first task showed no diff and carried a verdict and an announcement — should: the gate shows the diff and the findings and nothing travels with it.
+
+  **29. A guarded condition checked by reading.** Run 2b, pull request #25
+  at #645: a condition "checked by reasoning in the review …, not by running
+  the break." `build-work` expanded 1386 to 1389: "Break the condition,
+  watch the check go red, put it back. That is the whole proof".
+  Recorded, not built: run 2b recorded a guarded condition as checked by reasoning — should: every guarded condition is broken, its check seen red and the code put back.
+
+  **30. The break reset the run's own fixes.** Run 1 #768 broke a condition
+  and put it back with `git checkout -q -- src`, which reset fixes not yet
+  committed; #805, „Beim Testen habe ich versehentlich meine eigenen
+  Codeänderungen zurückgesetzt“. `build-work` expanded 1409 to 1411: put the
+  code back "and verify the restoration with `git diff`".
+  Recorded, not built: run 1 put a broken condition back with git checkout, which reset its own uncommitted fixes — should: the restoration puts back the break alone and is verified with git diff.
+
+  **31. The list of tasks and the one taken said.** Run 1 #1918 lists the
+  three tasks with „jetzt dran“ and „danach“. `build-work` expanded 1001 to
+  1003: "Neither the list nor which you took and why is said".
+  Recorded, not built: run 1 said the list of tasks and which it took next — should: neither is said.
+
+  **32. The refresh did not write the templates anew.** Run 3b changed the
+  marker alone, #89, and the pull request says "content unchanged", #111,
+  where `issue-tracker.md` carries a shortened form of the block "What those
+  two return" of the template of 0.157.0. `setup-project` expanded 690:
+  "Rewrite the first kind from the current templates".
+  Recorded, not built: the refresh of run 3b raised the marker of issue-tracker.md and wrote nothing of it anew from the template — should: the refresh writes devloop's part of each file anew from the current template.
+
+  **33. The queries the texts name run shortened or not at all.** Run 3b
+  #166 and run 4 #480 ran the in-flight query without its counts, `by:` and
+  `closes:`; run 3a ran none at either start with `--auto`, #413 to #419 and
+  #489 to #495; run 2a read what is ready with `gh issue list` at #1398 and
+  not with the readiness query. `start-work` expanded 190 to 192 and
+  `plan-work` expanded 523, the query "from `docs/agents/issue-tracker.md`",
+  whole.
+  Recorded, not built: runs 2a, 3a, 3b and 4 ran the in-flight and readiness queries shortened, not at all, or replaced by a list of issues — should: the queries run as docs/agents/issue-tracker.md carries them, whole.
+
+  **34. The install question of the refresh did not say why it came.** Run
+  3b put it at #64 with no text of its own anywhere before it in the log,
+  the question field reading only „Darf der Lauf ab jetzt Tools und Browser
+  für Tests installieren, die außerhalb des Projekts auf diesem Rechner
+  landen? Die Antwort gilt für dieses Projekt.“: neither that the setup is
+  being refreshed nor that no answer stands for this project on the main
+  branch, which the call at #58 had just read off the program. The line at
+  session start, #5, names the missing record, but it reaches the run as
+  context and not the person, `docs/skill-conventions.md` line 3219. The
+  first asking of run 1, #91, opened „Das Projekt wird eingerichtet, bevor
+  deine Idee begonnen wird.“, and the second of run 2a, #271, „Arbeit ohne
+  dich braucht dein Ja zum Installieren von Werkzeugen außerhalb des
+  Projekts. Du hast dazu Nein gesagt.“ `output-styles/devloop.md` lines 21
+  to 22, "Why the question comes now stands there too, in the question field
+  or in that message", the same in `docs/skill-conventions.md` lines 875 to
+  876, and `setup-project` expanded 534 to 539, `shared/how-to-ask.md` lines
+  75 to 80, "why it comes up now in the question field before the question
+  line". The text gives the run no reason to say there: `setup-project`
+  expanded 645 to 646 puts the question "as a first setup puts it, with the
+  person there and in the same form", and expanded 731 to 732 says of the
+  opening that carries the reason at a first setup "A refresh carries
+  neither", a sentence of 17 October 2026, before the refresh came to put
+  the question on 20 October 2026. Point 11 above holds all the same.
+  Milestone 3, the question.
+  Recorded, not built: the install question of the refresh of run 3b said nothing in its question field of why it came, neither that the setup is refreshed nor that no answer stands for this project on the main branch — should: at a refresh the question field of the install question says before the question line why it comes now, that no answer stands for this project on the main branch, in a wording the person approves, and setup-project says so where its opening says that a refresh carries neither sentence.
+
+  **35. The tests of `npm run links` are skipped on the platform, and the
+  required check is green without them.** Run 1 built the tests of the
+  script so that they are skipped where `htmlq` is missing, and said at the
+  gate of its last task, #2607, under „Bewusst offen gelassen“: „Die
+  htmlq-Tests werden ohne htmlq mit einer Meldung übersprungen. Dann kann
+  `make check` grün sein, ohne das Skript je gelaufen zu sehen.“ Run 2a
+  wrote `.github/workflows/checks.yml` at #466 with the WebKit browser and
+  `gitleaks` and without `htmlq`, as the file stands at `db992bf` of
+  `devloop-test-aa`, lines 19 to 25, and pull request #16 names those two
+  alone; the class `unit`, whose target runs `npm test`, stands in
+  `checks.md` as blocking and filled. The platform's runs of `check` on
+  `main`, read on 24 October 2026, skipped 7 of 26 tests with „htmlq is not
+  on the PATH“ at `d5664f7`, 7 of 42 at `a8d6c19`, 10 of 51 at `143b372`
+  and 10 of 72 at `443d23c` and at `db992bf`, and each was green. Run 2b,
+  whose pull request #27 added three of those tests, filed it at #1012 as
+  issue #26 „The platform skips the htmlq tests of npm run links“, its body
+  saying that the workflow belongs to the check setup, "so this is for that
+  step to build and not for a task"; the person closed it before run 3a.
+  Run 3a settled in the assumptions of round 1, #115, „Die Tests des neuen
+  Skripts werden übersprungen, wo yq fehlt (wie bei htmlq)“, asked at #138
+  under „CI und yq“ whether `yq` is to be installed on GitHub, recommending
+  „Nein, wie bei htmlq“ with the cost „in der CI ist das Skript
+  ungetestet“, answered so at #139, and the spec #28 has under Out of scope
+  "Installing yq in the GitHub CI"; the task was then built against
+  stand-ins, defect 2. `setup-checks` expanded 2390 to 2393: the workflow
+  "installs before it checks: first the project's own dependencies, then
+  every tool a blocking check needs that exists only outside a project",
+  expanded 2223 to 2226 the same at the gate, and expanded 1437 to 1442
+  where a class becomes blocking; `shared/verdict-target.md` lines 4 to 5,
+  inserted at expanded 1449 to 1450, "A target that always passes is worse
+  than no target at all."; and `plan-work` expanded 1442 to 1450 leaves the
+  check setup to `setup-checks`, the planning raising no issue for a class.
+  The reason expanded 1437 to 1442 give, that without the line the class
+  "would go red on a tool that is not there", is the case of a test that
+  fails without its tool; a test built to be skipped goes green there
+  instead, and its check is one that always passes on the machine that
+  gates the merge. Which step enters the line where a task brings in such a
+  tool after the workflow stands the texts do not name. The neighbour is
+  defect 11 of the entry of 19 October 2026, line 30196, a class filled as
+  not blocking for a tool missing on the platform's machine; here the class
+  blocks and its tests are skipped. The plan names no milestone: the
+  machine is the platform's and not the one milestone 3's permission is
+  about.
+  Recorded, not built: the check on GitHub that run 2a set up installs no htmlq, so the tests of npm run links that run 1 built to be skipped where htmlq is missing are skipped there and the required check is green without them, run 2b filed it as an issue and run 3a's planning settled with the person that yq is not installed there either — should: the workflow file carries the installation line of every tool outside the project that a blocking check needs to run its tests, one whose tests are skipped where it is missing included, so that no blocking check passes on the platform by skipping, the line being the check setup's and not settled in a planning, and which step enters it where a task brings in such a tool after the workflow stands is decided before it is built.
+
+  **c. The sentence on the design in the course question**, decided as (c)
+  above. Runs 2b #182 and 3a #178 carry it in both descriptions, as
+  `plan-work` lines 425 to 428 ask.
+  Recorded, not built: the descriptions of the first two answers of the question of plan-work on how the work runs after the planning carry the sentence on the design chosen against the written list, which the person decided on 23 October 2026 to drop — should: the two descriptions read as approved on 24 October 2026, quoted under (c), the machine kept awake and no word on the design, and plan-work lines 425 to 428 say so.
+
+  **d. The last message says where what was built lies and how it is
+  tried**, decided as (d) above. Run 1 #2660 says what was built and how
+  it is called, `npm run links -- seite.html [ausgabe.html]`, with no folder
+  named, no change into it and file names to fill in, and no word on what
+  one sees; so do run 2a #1717, `npm run diagram` with no folder, run 2b
+  #1053, no command, and run 3a #1235, `cd ~/devloop-test-aa && npm run
+  links:config -- test/sample.html`, which fails where `yq` is missing.
+  Milestone 11.
+  Recorded, not built: the last message of run 1 named neither the folder of what was built nor a command that runs as it stands to try it, nor what one sees then — should: in milestone 11, the last message of a run says where what was built lies and how it is tried, with a command that runs as it stands and what one sees then.
+
+  **e. Titles in the user's project**, decided as (e) above. Run 1 #1837,
+  pull request #10 "Record that work without the person is not set up",
+  run 2a #320, #15 "Record the answers for work without the person", and
+  run 3b #119, #35 "Refresh the setup to 0.157.0 and record the install
+  permission".
+  Recorded, not built: no text of devloop says how it titles a pull request or a commit in a user's project, and runs 1, 2a and 3b wrote titles naming the person or a version — should: the rule that a title says what changed and nothing else holds for every title devloop writes in a user's project, the title of a pull request and the first line of a commit, in plain words what changes, naming neither the person nor a version nor a date.
+
+  **Looked at and not recorded as a defect.** Notes between two tool calls
+  that say what comes next, „Mark steht. Basis prüfen: Checks auf main.“ say,
+  where a text asks to say nothing of a step: the output style keeps "a note
+  to yourself between tool calls that no skill asked for" as it is, and the
+  ones that stood before a question are defect 10. After the no to the rule
+  at the first start of run 3a the run ended at #469 without writing the
+  mark, where `build-work` expanded 2594 to 2595 goes on to the mark on
+  either answer: the task was held by #30 and the third start condition
+  would have refused, so the end is the same. The poll of `gh pr checks` at
+  20 seconds where the text has 60, in runs 2b and 3a, decides nothing. The
+  number of a pull request given to `bin/devloop-arm` in the same command as
+  `gh pr create` in run 4, #161 and #359, was right both times. Whether
+  WebKit was the tool of the task or of the end-to-end class in run 1 the
+  texts do not decide; the issue #26 of run 2b, which this paragraph said
+  until the addendum the texts do not decide either, is part of defect 35,
+  the workflow being the check setup's by `setup-checks` expanded 2390 to
+  2393. `git add -A` in run 1 #1012 stands under a rule of step 6 that may
+  not bind a commit of the review. The person's question at the design of
+  run 1, „sollte eigentlich der Entwurf nicht ohne den Nutzer entschieden
+  werden?“, changes no should: with the person there `plan-work` asks which
+  design, expanded 1355 to 1358, and the run did.
+
+  **What is open after the runs**, for milestone 3. Of the thirteen points,
+  five have not held at every place a run met them: point 5, line 1538, for
+  a browser handed over; point 8, line 5986, the report of an install; point
+  9, line 15579, through defect 3; point 10, line 30168, the start
+  conditions at the build's start; and point 12, line 33153, at the first
+  asking of run 4. Each stands built and did not hold in these runs; what
+  closes it, a change of its text or a run in which it holds, is open, and
+  5986 and 30168 turn on what the model does. The two
+  points for a bench, lines 1317 and 13635, still need it, under the
+  version then current. New are defects 1 to 9 and 34 above, which concern
+  the milestone: 1 a hook's, so a bench; 2 to 9 and 34 a run's. The six
+  points of cluster 20 stay built and never walked and do not hold the
+  milestone up.
+  Whether the milestone is reached this entry does not decide: the benches
+  of the entry at line 35286 come after the runs.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the thirty-eight defects above as things,
+  each sited and with its evidence on its own status line, recorded and not
+  built, the rows of defects 34 and 35 the addendum's; the head of this
+  entry as part of defect 1; seventy run records under version 0.157.0 with
+  the source log, each on the row of the defect whose case the run met, its
+  run anchor the paragraph above that records it, its note the records and
+  whether the case held; the notes of three rows changed by the decisions
+  above, line 30085, line 30294 and the output style's branch on a question
+  asked through the widget; and the row of defect 22 renamed with its
+  status line by the addendum, no run on it, its note naming the old name
+  and the new should. No run
+  stands on a row recorded and not built, and no line of this entry is
+  part of a defect that carries a run, since such a line blames to this
+  branch and would keep the run from counting.
+
+  **The tool, run for this entry.** `scripts/devloop-stock-take` ran on the
+  tree of each of its two commits in a clean bash with exit 0: no broken
+  record, 14 findings, 42 closed defects, and at the addendum none of 4669
+  lines of the search set uncovered, where 4630 stood at `6edeef1` and 4667
+  at the first commit, the thirty-nine more being the head of this entry
+  and its status lines, two of them the addendum's; 2296 things, 712 of
+  them walked; the defects walked going from 76 to 93, those built and
+  never walked from 241 to 224 and those recorded and not built from 313 to
+  351, 349 at the first commit; no run of this entry among the runs that
+  do not count. Its self-test passed, 124
+  cases. The nineteen checks under "Before a handover, run these" printed
+  what they printed at `6edeef1`, nothing under `skills/` or `shared/`
+  changing.
+
 
 ## Decisions taken against
 
@@ -36782,6 +37806,30 @@ of them if the reason stops holding — the reason is the point, not the verdict
   that ends the turn, the entry of 17 October 2026. Reopen if text the
   person has to read in the middle of a turn comes back as a need, a long
   run with nobody there reporting as it goes, say.
+- **A permission for a single tool under a no.** The question on a tool
+  missing under a record saying no would offer a third answer beside the
+  person installing it and the check switched off: that the run installs
+  this one tool. Asked for by the person at the question on `gitleaks` in
+  the first closing run of 23 October 2026, and rejected by them the same
+  day, „nein, passt“, once told that the install guard reads for an
+  install the one answer of the project off the main branch,
+  `hooks/pre-tool-use-install-guard.sh` line 928, and that a permission
+  for a single tool stands nowhere: it would need a second kind of record
+  and a guard reading it, beside an answer the project gives once. The
+  roadmap entry of 24 October 2026 on the six closing runs, decision (a).
+  Reopen if a no to installing keeps meeting single tools the person would
+  let in.
+- **The question line at the start of the question field.** The text a
+  decision needs would follow the question line instead of standing before
+  it, as the person found the mode question of the first closing run of 23
+  October 2026 „etwas eigenartig aufgebaut. zuerst müsste die frage kommen
+  und dann die Erklärung“. Rejected by them the same day, „nein passt.“,
+  once told of the rule that the question field carries prose with the
+  question line at its end, `docs/skill-conventions.md` line 742 and
+  `output-styles/devloop.md` lines 17 to 20, and of their own approval of
+  that question's wording on 17 and 19 October 2026. The roadmap entry of
+  24 October 2026 on the six closing runs, decision (b). Reopen if a person
+  reading the widget misses what is asked because the question comes last.
 
 ## Names that were rejected
 
