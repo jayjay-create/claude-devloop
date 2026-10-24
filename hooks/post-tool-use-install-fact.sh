@@ -7,27 +7,48 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # 21 October 2026: after every Bash call that
 # hooks/pre-tool-use-install-guard.sh let through under a record saying yes
 # as an install outside the project, and that succeeded, one line per install
-# under the heading below - the command as it ran and the folder it installed
-# into, no date - and a line that stands there already is not written a
-# second time. The guard reads the command and where it lands at PreToolUse
-# and leaves the facts through bin/devloop-install-note, keyed by the session
-# and the tool call; this hook reads no command and resolves no place itself,
-# so that there is one reading, the guard's, and the form of the line lives
-# in that program. Registered under PostToolUse and under PostToolUseFailure,
-# both with the matcher Bash: PostToolUse fires only after a call that
-# succeeded - measured on 21 October 2026 under Claude Code 2.1.305, a
-# command that exits other than 0 reaches PostToolUseFailure with "Exit code
-# N" - so the fact is written there, and on PostToolUseFailure the note is
-# dropped; a call whose tool_response says interrupted writes nothing either.
-# The input is read through bin/devloop-command-reader, which decodes the
-# JSON, since 12 October 2026; every hook reads it so, and a check in
-# .github/workflows/stock-take.yml holds them to that. Where the line cannot
-# be written - the tree on the default branch, which the branch guard holds
-# unchanged for the editing tool by design, or docs/agents/environment.md
-# missing in the working tree - the hook says so with exit 2, which on
+# under the heading "## Installed outside the project" - the install command
+# as whoever clones the project runs it, without the redirections of the
+# call, and the folder it installed into, no date - and a line that stands
+# there already is not written a second time. The guard reads the command
+# and where it lands at PreToolUse and leaves the facts through
+# bin/devloop-install-note, keyed by the session and the tool call; this hook
+# reads no command and resolves no place itself, so that there is one
+# reading, the guard's, and since 24 October 2026 it writes the line through
+# that program too, which holds where the line goes and how it reads, and
+# which the run calls for an install the person ran on a handover, defect 4
+# of the roadmap entry of that day on the six closing runs. Registered under
+# PostToolUse and under PostToolUseFailure, both with the matcher Bash:
+# PostToolUse fires only after a call that succeeded - measured on 21
+# October 2026 under Claude Code 2.1.305, a command that exits other than 0
+# reaches PostToolUseFailure with "Exit code N" - and a call whose
+# tool_response says interrupted writes nothing.
+# Since 24 October 2026, the person's decision of that day on point 8, the
+# call's exit counts as the install's only where the install stood alone in
+# its call, the one command at the top level and none reading its output,
+# which the guard notes: there the line is written as before, and where the
+# install sent its output away, into a file or /dev/null, the context says so
+# with the redirection. Where it did not stand alone - behind | tail, before
+# ; echo ok, before || true, each of which gives the call exit 0 whether the
+# install went through or not, measured that day in bash and in zsh - no
+# line is written: the context, under either event, tells the run to read
+# the folder and write the line through the program, and an install alone
+# in a call that failed is dropped without a word. Since the order of that
+# day on the rest of part A the context says there that the install did not
+# stand alone, where it said it was not the last command, untrue of one
+# standing last behind another, and names what cut its output, the pipe the
+# guard noted, or sent it away, the redirection; and where the line of an
+# install alone stood already and its output was sent away, the context
+# says that alone, as it does behind a refusal. The input is read through
+# bin/devloop-command-reader, which decodes the JSON, since 12 October 2026;
+# every hook reads it so, and a check in .github/workflows/stock-take.yml
+# holds them to that. Where the line cannot be written - the tree on the
+# default branch, which the branch guard holds unchanged for the editing
+# tool by design, or docs/agents/environment.md missing in the working tree -
+# the program refuses, and the hook says so with exit 2, which on
 # PostToolUse shows stderr to the run while the tool has already run, and
-# carries the lines, so that the run can put them where they belong; it
-# blocks nothing. Where it wrote, it hands the run the lines as context.
+# carries the line, so that the run can put it where it belongs; it blocks
+# nothing. Where it wrote, it hands the run the line as context.
 INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
 EVENT=$(printf '%s\n' "$INPUT" | sed -n 's/^event: //p' | head -1)
 TOOL=$(printf '%s\n' "$INPUT" | sed -n 's/^tool: //p' | head -1)
@@ -35,69 +56,69 @@ TOOL=$(printf '%s\n' "$INPUT" | sed -n 's/^tool: //p' | head -1)
 SID=$(printf '%s\n' "$INPUT" | sed -n 's/^session_id: //p' | head -1)
 TUID=$(printf '%s\n' "$INPUT" | sed -n 's/^tool_use_id: //p' | head -1)
 [ -n "$SID" ] && [ -n "$TUID" ] || exit 0
+NOTE="$HERE/../bin/devloop-install-note"
 case "$EVENT" in
-  PostToolUse) ;;
-  *) "$HERE/../bin/devloop-install-note" drop "$SID" "$TUID"; exit 0 ;;
+  PostToolUse|PostToolUseFailure) ;;
+  *) "$NOTE" drop "$SID" "$TUID"; exit 0 ;;
 esac
 INTERRUPTED=$(printf '%s\n' "$INPUT" | sed -n 's/^interrupted: //p' | head -1)
-if [ "$INTERRUPTED" = "true" ]; then "$HERE/../bin/devloop-install-note" drop "$SID" "$TUID"; exit 0; fi
-LINES=$("$HERE/../bin/devloop-install-note" take "$SID" "$TUID") || exit 0
-[ -n "$LINES" ] || exit 0
+if [ "$INTERRUPTED" = "true" ]; then "$NOTE" drop "$SID" "$TUID"; exit 0; fi
+FACTS=$("$NOTE" take "$SID" "$TUID") || exit 0
+[ -n "$FACTS" ] || exit 0
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0
 [ -d "docs/agents" ] || exit 0
 FILE="docs/agents/environment.md"
 HEADING='## Installed outside the project'
-ONE_LINE=$(printf '%s\n' "$LINES" | tr '\n' ' ' | sed 's/ $//')
-
-# The default branch, read off bin/devloop-setup-state's ref line, which
-# resolves it as the branch guard does; where the program cannot read it the
-# guard blocked before this and no note stands. On that branch nothing is
-# written, since nothing of a run may change there.
-DEFAULT=$("$HERE/../bin/devloop-setup-state" "$PROJECT_DIR" 2>/dev/null | sed -n 's/^ref: origin\///p' | head -1)
-BRANCH=$(git branch --show-current 2>/dev/null)
-if [ -n "$DEFAULT" ] && [ "$BRANCH" = "$DEFAULT" ]; then
-  echo "Not written: the install went through, and its line for $FILE is not written while the tree stands on the default branch $BRANCH, where nothing of a run may change. Cut the branch of this work and put it there, under \"$HEADING\", as it stands here: $ONE_LINE" >&2
-  exit 2
+US=$(printf '\037')
+NL=$'\n'
+# The program as the run types it to write a line, a home directory written
+# as ~, each argument in single quotes.
+CALL="$(cd "$HERE/../bin" && pwd)/devloop-install-note"
+if [ -n "${HOME:-}" ] && [ "$HOME" != "/" ]; then
+  case "$CALL" in "$HOME"/*) CALL="~${CALL#"$HOME"}" ;; esac
 fi
-if [ ! -f "$FILE" ]; then
-  echo "Not written: the install went through, and $FILE is missing in the working tree, so its line has no file to stand in. Put it there once the file stands, under \"$HEADING\", as it stands here: $ONE_LINE" >&2
-  exit 2
-fi
+q() { printf "'%s'" "$(printf '%s' "$1" | sed "s/'/'\\\\''/g")"; }
+json() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g' | awk '{ gsub(/\t/, "\\t"); printf "%s%s", (NR > 1 ? "\\n" : ""), $0 }'; }
 
-# The heading where it does not stand yet: at the end of the file, a blank
-# line before it, the file's last line given its newline where it has none.
-if ! grep -qxF "$HEADING" "$FILE"; then
-  if [ -s "$FILE" ]; then
-    [ "$(tail -c 1 "$FILE" | wc -l | tr -d ' ')" -eq 1 ] || printf '\n' >> "$FILE"
-    [ -z "$(tail -n 1 "$FILE")" ] || printf '\n' >> "$FILE"
+WRITTEN=""; AWAY=""; CTX=""; ERR=""
+while IFS="$US" read -r D C A R PIPE; do
+  [ -n "$D" ] && [ -n "$C" ] || continue
+  if [ "$A" != "alone" ]; then
+    # the wording of the order of 24 October 2026 on the rest of part A, in
+    # place of the one approved earlier that day, untrue of an install that
+    # stood last behind another command
+    CTX="$CTX${CTX:+$NL}[InstallFact] not written: \`$C\` did not stand alone in its call, so the call's exit may not be the install's, and this hook cannot tell whether it went through. Read whether the tool stands in $D; where it does, write its line with $CALL put $(q "$D") $(q "$C"). Run the next install alone in its call."
+    # behind it what cut the output or sent it away, the pipe where both did
+    if [ -n "$PIPE" ]; then
+      CTX="$CTX The output of this install was cut by \`$PIPE\`, so what the package manager did besides is not known from it: say so in the report."
+    elif [ -n "$R" ]; then
+      CTX="$CTX The output of this install was sent away ($R), so what the package manager did besides is not known from it: say so in the report."
+    fi
+    continue
   fi
-  printf '%s\n' "$HEADING" >> "$FILE"
+  [ "$EVENT" = "PostToolUse" ] || continue
+  [ -n "$R" ] && AWAY="$R"
+  OUT=$("$NOTE" put "$D" "$C" 2>&1)
+  if [ $? -ne 0 ]; then
+    ERR="$ERR${ERR:+$NL}Not written: the install went through, and ${OUT#Not written: }"
+  else
+    case "$OUT" in "written: "*) WRITTEN="$WRITTEN${WRITTEN:+ }${OUT#written: }" ;; esac
+  fi
+done <<< "$FACTS"
+# the wording approved on 24 October 2026, behind the line written or the
+# line not written, where the install alone sent its output away
+SENT=""
+[ -n "$AWAY" ] && SENT=". The output of this install was sent away ($AWAY), so what the package manager did besides is not known from it: say so in the report."
+if [ -n "$ERR" ]; then
+  printf '%s\n' "$ERR$SENT${CTX:+$NL$CTX}" >&2
+  exit 2
 fi
-# Each line at the end of the section, after its last line that is not
-# blank, and before the next heading where one follows; a line that stands
-# in the file already, whole, is not written again.
-WRITTEN=""
-while IFS= read -r L; do
-  [ -n "$L" ] || continue
-  grep -qxF -- "$L" "$FILE" && continue
-  awk -v h="$HEADING" -v l="$L" '
-    { lines[NR] = $0 }
-    END {
-      s = 0
-      for (i = 1; i <= NR; i++) if (lines[i] == h) { s = i; break }
-      e = NR
-      for (i = s + 1; i <= NR; i++) if (lines[i] ~ /^## /) { e = i - 1; break }
-      while (e > s && lines[e] == "") e--
-      for (i = 1; i <= e; i++) print lines[i]
-      if (e == s) print ""
-      print l
-      for (i = e + 1; i <= NR; i++) print lines[i]
-    }' "$FILE" > "$FILE.devloop-tmp" && mv "$FILE.devloop-tmp" "$FILE"
-  WRITTEN="$WRITTEN${WRITTEN:+ }$L"
-done <<< "$LINES"
-[ -n "$WRITTEN" ] || exit 0
-CTX="[InstallFact] written into $FILE under \"$HEADING\", on this branch, by the hook and not by you: $WRITTEN"
-printf '{"hookSpecificOutput":{"hookEventName":"PostToolUse","additionalContext":"%s"}}\n' "$(printf '%s' "$CTX" | sed 's/\\/\\\\/g; s/"/\\"/g')"
+[ -n "$WRITTEN" ] && CTX="[InstallFact] written into $FILE under \"$HEADING\", on this branch, by the hook and not by you: $WRITTEN$SENT${CTX:+$NL$CTX}"
+# where the line stood already, the second sentence of e alone, as behind a
+# refusal; since the order of 24 October 2026 on the rest of part A
+[ -z "$WRITTEN" ] && [ -n "$SENT" ] && CTX="${SENT#. }${CTX:+$NL$CTX}"
+[ -n "$CTX" ] || exit 0
+printf '{"hookSpecificOutput":{"hookEventName":"%s","additionalContext":"%s"}}\n' "$EVENT" "$(json "$CTX")"
 exit 0

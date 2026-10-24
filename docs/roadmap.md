@@ -37657,6 +37657,505 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   what they printed at `6edeef1`, nothing under `skills/` or `shared/`
   changing.
 
+- **Install lines by one program, written where the install stood alone.**
+  24 October 2026, version 0.158.0. On `task/milestone-3-install-fact`, off
+  `1ef533e`, in four commits by two orders of that day: the code with the
+  version, the texts that name it and the rows of the things it changes,
+  then this entry with the sentence in `docs/plan.md`, the points under
+  "Decisions taken against" and the rows they need; and by the second
+  order, on the rest of part A, the code of context f and its rows, then
+  what it adds to this entry, to that sentence and to those points. It
+  records what was decided on 24 October 2026 on every point that holds
+  milestone 3 open after the six closing runs, the entry at line 36636,
+  and carries part A of their build, how an install is recorded, by hooks
+  and programs: defect 1, point 8 with the defect recorded below, and
+  defect 4 of that entry; and, by the second order, two more decisions of
+  that day, (8) and (9) below, and the rest of part A. A line of a file is
+  given as it stands at `1ef533e` and a line of a skill as
+  `scripts/devloop-expand` prints it there, marked expanded, unless the
+  tip of this branch is named; between `1ef533e` and the tip only the
+  files this entry names changed. Beyond the `git fetch` of each order the
+  hooks reference of Claude Code was fetched as markdown once by each;
+  GitHub was neither read nor changed, and nothing was run against the
+  settings of this machine.
+
+  **Decided on 24 October 2026**, on the open points of the entry at line
+  36636, "What is open after the runs", line 37614.
+  (1) Defects 7 and 2, the install rule and the build subagent. The build
+  subagent gets the install rule by text alone: `build-work` step 3 hands
+  it point 7 as a further rule, beside the four it reads nowhere else,
+  expanded 1073 to 1093, of which point 7, expanded 1127 to 1160, is none,
+  with the record read off the main branch as the guard reads it; the main
+  run writes no instruction of its own on installing into the prompt, where
+  run 2a wrote "Install the Mermaid CLI as the vendor documents" and run 3a
+  "Do not install anything", the paragraphs of defects 7 and 2, lines 37243
+  and 37167; and the lists of what the report of an install names,
+  expanded 1150 to 1152 and 1786 to 1789 and `setup-checks` expanded 1271
+  to 1273, name what the command is backed by as well. No hook on
+  `SubagentStart`, decided against below. The reason: the subagent never
+  got the rule, and the planning has no text on the record, `plan-work`
+  naming it only among the conditions of the mode, expanded 1205 to 1206;
+  such a hook would give the rule to every subagent, every reviewer too,
+  and could contradict what the main run writes into the prompt. Part B.
+  (2) Point 8, line 5986: text and hook, the hook widened. The install
+  guard notes for each install whether it stood alone in its call — the
+  last command at the top level of the call, and no command reading its
+  output — and whether its output was sent away, its standard or its error
+  output into a file or to `/dev/null`. The fact hook: alone and its output
+  seen, as before; alone and its output sent away, the line and context e
+  below; not alone, no line, and context f below. The reason: where the
+  call's exit is not the install's, the hook cannot know whether it went
+  through, and a wrong line in a file every clone reads shows only when
+  somebody needs the command. Part A, below.
+  (3) Point 9, line 15579, with defect 3: the question on the rule for auto
+  mode names the issue by its number, as approved on 22 October 2026,
+  lines 34937 to 34943; `setup-checks` says so for this question as an
+  exception to `shared/refer-by-name.md`, and that file names the
+  exception. The reason: the reason of the rule, `shared/refer-by-name.md`
+  line 4, "A wall of `#42, #43, #44` is illegible; names read at a glance",
+  does not meet this question: the command before the number says what it
+  is about, and a title names the problem, `shared/body-through-file.md`
+  line 37, inserted in `build-work` at expanded 847, "A title names the
+  problem; it does not quote the command", so the same refused install
+  again. Part C.
+  (4) Defects 6 and 3: no hook on `AskUserQuestion`, decided against below.
+  The reason: it would hold only the form of the same questions, the
+  backticks and the number, not what they say, and for an install command
+  in prose it would need a second list beside the install guard's.
+  (5) Point 10, line 30168: a program, `bin/devloop-start-conditions`,
+  reads conditions 1, 2, 3 with the range of the tasks, 5, 6 and 7 and
+  prints one line for each; `build-work` and `plan-work` call it where
+  they read the conditions themselves today, `build-work` expanded 2454 to
+  2531 and `plan-work` expanded 1193 to 1211; and the guard on the mark,
+  `hooks/pre-tool-use-mark-guard.sh`, calls it when the mark is written
+  and blocks where 1, 2, 5, 6 or 7 does not hold or is not established, in
+  place of its block on 6 and 7 at line 196, every query to GitHub bounded,
+  since a hook that runs into its time limit does not block, the hooks
+  reference on `PreToolUse`: "a timed-out `command`, `http`, or `mcp_tool`
+  hook doesn't block the tool call". The mark is not written anew at the
+  start of a build after a planning. The reason: the closing runs read the
+  conditions whole in none of the three runs that met them, which the
+  result of 20 October 2026, lines 33072 to 33077, had left to the model,
+  "Whether the run reads the other conditions again at the start of the
+  build depends on the model and goes into the closing run"; and the mark
+  is written only with the person there, line 34712, so a block never
+  meets a run without them. Part D.
+  (6) Defect 8: the duty, when the record is written, to ask every route
+  where it puts things and to name one that does not answer in the pull
+  request goes; the route lines stay, read off what the project declares.
+  The reason: the asking changes nothing in the record,
+  `shared/install-record.md` lines 51 to 52, "write its line either way,
+  since the guard asks again at the moment of every command", and yields
+  one sentence in the pull request; the guard asks at every install and
+  names a route that does not answer, with its cause, in its block,
+  `hooks/pre-tool-use-install-guard.sh` line 1015, "npm (npm prefix -g did
+  not answer)". Part C.
+  (7) "Describe what must be said; never dictate wording",
+  `docs/skill-conventions.md` lines 694 to 697, stays, and no approved
+  wording goes into a skill as an example, decided against below. What
+  counts is the statement, as decided on 19 October 2026, lines 30930 to
+  30941: point 12, line 33153, at run 4 and defect 6 at run 1 held in
+  their statement, and neither holds milestone 3 open any more. Defect 6
+  stays as a defect without a milestone and takes up what deviated beyond
+  the statement: „installiert nichts“ for „darf nichts installieren“ and
+  the command without backticks at run 1, and at run 4 the browser left
+  out as the example in the line under the no of the install question,
+  the paragraph on point 12, lines 36997 to 37007. Its should no longer
+  says "under their no", since the same question comes where no record
+  was ever written, `setup-checks` expanded 1039 to 1040, "Where the record
+  says no, or was never written".
+  Recorded, not built: the question on gitleaks of run 1 said that the run installs nothing outside the project and gave the command without backticks, and run 4 left out the browser as the example in the line under the no of the install question, where both held in their statement — should: the field says that outside the project the run may install nothing and gives the command in backticks, as approved on 21 October 2026, and the line under the no names the browser as its example, as approved on 20 October 2026; no milestone.
+  (8) and (9) were decided the same day, at the order on the rest of part
+  A. (8) The defect of `&` and `!` that part A found, below: without a
+  milestone, nothing built, `bin/devloop-command-reader` staying as it is,
+  and a rebuild of the reader decided against below. The reason: no run
+  wrote these forms, and the fix would change the program through which
+  every hook reads a command, shortly before the pass that is to close the
+  milestone.
+  (9) The open points sorted by whether a user notices them. A small matter
+  no longer holds milestone 3 open; what of it is built already or costs a
+  few lines of text is built all the same, in its part, and needs neither a
+  run nor a bench for the milestone. Small matters, each with its reason:
+  defect 1, since the command in the list does the same with the
+  redirection and only looked untidy; defect 4, since that WebKit is loaded
+  once per machine stood in `docs/agents/environment.md` as a sentence
+  elsewhere, so the fact was there; the new defect recorded below, since the
+  command in the list holds then too and only "installed into" is wrong,
+  and where the tool is missing, what needs it fails, which shows; the
+  defect of `&` and `!`, for the same reason, and no run wrote those forms;
+  the defect of context f that part A found, since only the run reads that
+  context, and at worst a pull request says the output was not read whole
+  where it was; point 5, line 1538, since the person sees the command
+  before running it, a browser download comes from the project's own
+  Playwright with no package name that could be wrong, and where a name
+  counts, at `htmlq`, the backing held; point 9, line 15579, with defect 3,
+  since the question came both times, was answered and the rule written,
+  and what deviated was only the issue's title in place of its number and a
+  line added that held; defect 8, since it touched one sentence of the pull
+  request alone, and the duty is gone, (6) above; lines 1317 and 13635 of
+  "A bench, two points", line 35485, since 1317 went through the bench of 21
+  October 2026 without being entered as a run, so only the bookkeeping is
+  open, and 13635 concerns a rare option of a browser download that no run
+  used. What holds milestone 3 open, each with its reason: defect 2, since
+  code was merged that never ran against the real tool despite the person's
+  yes; defect 9, since the person was told who installs, against their
+  permission at the build, the cause of defect 2; defect 5, since the person
+  decides on a wrong account of where their no leads; defect 7, since a tool
+  was installed on the person's machine with a command nobody checked, and
+  the pull request says it was checked; point 8, line 5986, since the person
+  does not learn what landed on their machine beside the tool; defect 34, a
+  question without its reason; point 10, line 30168, since a run without the
+  person could merge what no check let through. The bench and the pass
+  below name only these as conditions of the milestone, and what stands
+  there for a small matter as no longer required.
+
+  **What follows from the rules without a decision**, one sentence each
+  with its way and its part. Defect 1: `words_of`,
+  `hooks/pre-tool-use-install-guard.sh` lines 95 to 116, leaves out every
+  redirection with its target; part A, below. Defect 4: one program holds
+  the form and the writing of the line, the hook and the run call it,
+  where the hook wrote it itself at lines 47 to 102 of
+  `hooks/post-tool-use-install-fact.sh`; part A, below. Point 5:
+  `shared/backed-command.md`, lines 1 to 5 and 20 to 27, names for every
+  kind of command its backing — for a browser download the vendor's dry
+  run with `--dry-run` or its installation line, for a formula `brew info`,
+  for an npm package `npm view`, for a Go module `go list -m` as today —,
+  for an install the run makes itself under a yes as well, and the
+  handover and the report say what the command is backed by; the dry run
+  is run once on this Mac before the build and its output read; part B,
+  wording a. Point 8, the half in the text: an install runs alone in its
+  call, without a pipe and without a redirection of its output, and the
+  report names what the whole output shows and nothing assumed, at
+  `build-work` expanded 1150 and `setup-checks` expanded 1271; part B.
+  Defect 2: `plan-work` judges no install; a tool a task needs is not
+  replaced by a stand-in; under a yes it is installed, and where the guard
+  blocks it, the block goes its way, `build-work` step 3; part B. Defect 9:
+  `plan-work`, after expanded 962 to 968, names a tool outside the project
+  that the work needs and does not settle who installs it, neither as an
+  assumption nor with the person; the spec names it under the decisions on
+  the implementation and puts no install under "Out of scope", expanded
+  1439; part B, wording b. Defect 5: the sentence of the handover,
+  `build-work` expanded 1180 to 1185, says where a no leads, the issue of
+  expanded 1351 to 1356; part B, wording c. Defect 34: `setup-project`
+  carries at a refresh the reason before the question line of the install
+  question, expanded 643 to 648, and the sentence "A refresh carries
+  neither", expanded 731 to 732, names this exception; part C, wording d.
+  Point 9 with defect 3: every start with `--auto` that meets the question
+  calls `setup-checks` for its step 8, `build-work` expanded 2588 to 2589
+  and `plan-work` expanded 1238 to 1240, also where `setup-checks` was
+  loaded in the session already, and the question carries no line the run
+  adds itself; part C.
+
+  **Recorded without a decision.** A new defect of milestone 3, by the
+  decision of 19 October 2026, lines 31404 to 31408, since the line in
+  `docs/agents/environment.md` is the place that outlives the session:
+  `hooks/post-tool-use-install-fact.sh` wrote its line after the exit of
+  the whole call, lines 38 to 41, so that an install that fails where the
+  call's exit is not its own — behind `| tail`, before `; echo ok`, before
+  `|| true` — got "installed into". Measured on 24 October 2026 on the
+  person's Mac, `false 2>&1 | tail -5`, `false; echo ok`, `false || true`
+  and `false 2>&1 | tail -5; ls / >/dev/null` each give the exit 0 under
+  `/bin/bash`, GNU bash 3.2.57, and under `/bin/zsh`, zsh 5.9. Part A
+  builds it, below; its evidence stands on the line of the fix.
+  Recorded, not built: hooks/post-tool-use-install-fact.sh wrote the line of an install after the exit of the whole call, so that an install failing behind a pipe, before a command after it or before || true got installed into — should: where the call's exit is not the install's, the hook writes no line and tells the run to read the folder and write the line through the program.
+  After the build of all four parts, under the version of the last, to a
+  bench: the three cases of decision (2), for point 8, the decision on it;
+  no longer required since decision (9), lines 1317 and 13635 of "A bench,
+  two points", line 35485, defect 1 with calls like those of the runs, and
+  the program of defect 4. What held milestone 3 open after decisions (1)
+  to (7): points 5, 8, 9 with defect 3, and 10; defects 1, 2, 4, 5, 7, 8, 9
+  and 34 and the new defect. What holds it open since decision (9): points
+  8 and 10 and defects 2, 5, 7, 9 and 34; the others, and the two defects
+  part A found, are small matters that no longer hold it open, the defect
+  of `&` and `!` without a milestone by decision (8), and the defect the
+  rest of part A found, below, is not sorted yet. They are built in four
+  parts, each a branch of its own that raises the version once, each merged
+  before the next is cut: A, how an install is recorded, defect 1, point 8
+  with the new defect, and defect 4, this branch; B, the install rules in
+  the text, point 5, defect 7, the text of point 8, defects 2, 9 and 5; C,
+  the questions, defect 34, point 9 with defect 3, and defect 8; D, the
+  start conditions, point 10. Then one pass with runs and benches on what
+  holds the milestone open, before it is decided whether the milestone is
+  reached; for a small matter neither a run nor a bench is required there
+  any more, decision (9).
+
+  **The wordings approved on 24 October 2026.** German, said by the run in
+  the person's language, held to their statement: (a) how the run backs a
+  browser download it hands over: „Geprüft mit
+  `npx playwright install --dry-run webkit`: Playwright lädt WebKit 26.6
+  nach `~/Library/Caches/ms-playwright/webkit-2359`, dazu FFmpeg.“,
+  version and folder from what the dry run prints; where the vendor's line
+  backs it:
+  „Geprüft an der Installationszeile auf playwright.dev/docs/browsers.“
+  (b) The assumption of a round of the planning on a tool that is missing:
+  „Für die Aufgabe wird `htmlq` gebraucht, und es fehlt auf diesem Rechner.
+  Ob ich es beim Bauen installiere oder du den Befehl dafür bekommst,
+  entscheidet deine Erlaubnis zum Installieren, die dann für dieses
+  Projekt gilt.“ (c) Where a no leads, where the run hands over the install
+  command for a task: „Lehnst du ab, lege ich ein Issue mit dem Befehl an,
+  das diese Aufgabe blockiert, und mache mit der nächsten Aufgabe weiter,
+  sofern eine bereit ist. Hast du die Installation selbst erledigt und das
+  Issue geschlossen, geht es mit dieser Aufgabe weiter.“ (d) Before the
+  question line of the install question at a refresh of the setup: „Ich
+  frische die Einrichtung dieses Projekts auf. Auf dem Hauptzweig ist noch
+  keine Antwort auf diese Frage festgehalten.“
+  English, carried word for word by a hook or a program: (e) the context of
+  the fact hook where the install stood alone and its output was sent away:
+  "[InstallFact] written into docs/agents/environment.md under "## Installed
+  outside the project", on this branch, by the hook and not by you: <the
+  line>. The output of this install was sent away (<the redirection>), so
+  what the package manager did besides is not known from it: say so in the
+  report." (f) The context of the fact hook where the install did not stand
+  alone: "[InstallFact] not written: `<command>` was not the last command
+  of its call, or another command read its output, so the call's exit is
+  not the install's and this hook cannot tell whether it went through.
+  Read whether the tool stands in <folder>; where it does, write its line
+  with <the program's call>. Say in the report that the output of the
+  install was not read whole, and run the next install alone in its call."
+  Replaced by the order of 24 October 2026 on the rest of part A, since of
+  an install standing last with a command before it at the top level it
+  says that it was not the last command of its call and that its output
+  was not read whole, the defect part A found below; the wording of that
+  order stands in its place: "[InstallFact] not written: `<command>` did
+  not stand alone in its call, so the call's exit may not be the install's,
+  and this hook cannot tell whether it went through. Read whether the tool
+  stands in <folder>; where it does, write its line with <the program's
+  call>. Run the next install alone in its call." Behind it, only where a
+  pipe read the output of the install: "The output of this install was cut
+  by `<the pipe>`, so what the package manager did besides is not known
+  from it: say so in the report."; only where a redirection sent it away
+  and no pipe read it, the second sentence of e; where both did, the
+  sentence on the pipe alone.
+  (g) The lines of `bin/devloop-start-conditions`: "condition <N> holds",
+  "condition <N> does not hold, because <cause>", "condition <N> is not
+  established, because <the query> did not answer: <message>", "condition
+  3 is read only with the range of tasks, once they exist", "condition 4
+  is read by the hook beside bin/devloop-permission-mode". (h) The block of
+  the guard on the mark, in place of today's for conditions 6 and 7,
+  `hooks/pre-tool-use-mark-guard.sh` line 196: "Blocked by devloop: the
+  mark for a run with nobody there is written only where start conditions
+  1, 2, 5, 6 and 7 of the skill hold, read by bin/devloop-start-conditions
+  off the main branch as last fetched and off GitHub, and <failures>. Do
+  not write the mark another way. The run with nobody there does not
+  start: with the user there, tell them which condition failed and why, as
+  the skill says, in the next message with which you end your turn with
+  text, and carry on with them; with nobody there, stop with the reason
+  named, as the skill says for a stop with a reason."
+
+  **Part A, built on this branch**, lines at its tip. (a) Defect 1:
+  `words_of`, `hooks/pre-tool-use-install-guard.sh` lines 112 to 134,
+  leaves out every redirection together with its target, line 129, an
+  operator of the reader's list with or without the digits of a
+  descriptor before it, read by `redir`, lines 95 to 103, the list being
+  that of `bin/devloop-command-reader`, its head lines 84 to 87; a word the
+  shell would take apart is quoted by `quoted`, lines 104 to 111, as
+  before. So `brew install gitleaks 2>&1 | tail -5; ls …` leaves the line
+  `brew install gitleaks`, where it left `brew install gitleaks 2>& 1`,
+  reproduced at `1ef533e` with a throwaway project before the change; the
+  pipe and the commands beside it never reached the line. The comment of
+  the function, the heads of the fact hook and of
+  `bin/devloop-install-note` and `docs/skill-conventions.md` under "What an
+  install did is written by a hook" say so.
+  (b) Point 8 with the new defect, as decided in (2): the note carries for
+  each install, beside the folder and the command, `alone` or `not alone`
+  and the redirections that sent its output away, `note`, guard line 1236,
+  read off the reader's output alone. `alone_of`, lines 135 to 153: alone
+  is the one command at the top level of the call, parent 0, which no
+  command reads through a pipe, its id in no line's pipe field. The reader
+  does not tell `;`, `&&` and `||` apart: fed `a; brew install x`, `a &&
+  brew install x` and `a || brew install x` it prints the same two lines,
+  `a` and the install, each at the top level, so a command before the
+  install at the top level makes it not alone as one after it does, since
+  `a || brew install x` exits 0 where `a` succeeds and the install never
+  ran; a redirection on a group or a subshell stands as a line of its own
+  at the top level, `2|0|list|0|0|>|/dev/null` for `{ brew install x; }
+  >/dev/null`, and counts so too. `away_of`, lines 154 to 185: every
+  redirection of descriptor 1 or 2 once one of them sends that output into
+  a file or `/dev/null`, a copy of the one onto the other, `2>&1`, sending
+  nothing away. The fact hook, `hooks/post-tool-use-install-fact.sh`: an
+  install alone, under `PostToolUse`, gets its line through the program,
+  line 103, and where it sent its output away, context e, line 113; one not
+  alone gets no line and context f, lines 88 to 100, under `PostToolUse`
+  and under `PostToolUseFailure` alike; one alone in a call that failed is
+  passed over without a word, line 101. The hooks reference, read as
+  markdown off its own page on 24 October 2026 under Claude Code 2.1.310,
+  says under "PostToolUseFailure decision control" that those hooks "can
+  provide context to Claude after a tool failure", `additionalContext` a
+  "String added to Claude's context alongside the error", so f stands
+  there too. Where the program refuses — the tree on the default branch,
+  the file missing — the hook says so with exit 2 as before, the line in
+  its message, the redirection of e and the text of f behind it where they
+  apply; what those two messages say stays as it was.
+  (c) Defect 4: the writing of the line — refused on the default branch and
+  where the file is missing, the heading added, the line placed in its
+  section, not written twice — moved from the hook, lines 47 to 102 at
+  `1ef533e`, into `bin/devloop-install-note put FOLDER COMMAND`, lines 296
+  to 342, the program that held the form of the line, "The path of the
+  note and the form of the line live here and nowhere else", lines 8 to 9
+  at `1ef533e`; a home directory at the folder's opening is written as `~`.
+  `take` prints the facts as noted where it printed the lines. The hook
+  calls `put`, and the run calls it for an install the person ran on a
+  handover: `build-work` step 3 point 8, `skills/build-work/SKILL.md` lines
+  564 to 598, and the paragraph of `setup-checks` step 4,
+  `skills/setup-checks/SKILL.md` lines 609 to 648, say that the run writes
+  that line through the program with the install command alone, without
+  the change into the project's directory before it, for a browser
+  download as for a tool, in `build-work` in the step that reads the path
+  after the person's word and in `setup-checks` in step 4 after the cut, as
+  decided on 21 October 2026, lines 34530 to 34547, the program writing
+  nothing on the default branch. Way A of that day, the run writing the
+  line itself, stays. `shared/editing-tool.md`, which has `environment.md`
+  written with the editing tool and never from the shell, names this one
+  line as going through the program, its command a quoted argument the
+  guards read as a word. The call as a run types it passes every guard on
+  `Bash`: fed in a throwaway project whose record says no,
+  `<plugin>/bin/devloop-install-note put /opt/homebrew/bin 'brew install
+  gitleaks'` and the same with a path under `~` and `npx playwright install
+  webkit` passed the six guards of `hooks/hooks.json` on `PreToolUse` for
+  `Bash` with exit 0, the install guard leaving no note, where `brew
+  install gitleaks` alone was blocked by the install guard with exit 2.
+  (d) `docs/skill-conventions.md`, "What an install did is written by a
+  hook", says what changed. (e) The version went from 0.157.0 to 0.158.0,
+  "Registering a skill". (f) The self-test of `bin/devloop-install-note`
+  grew from 18 cases to 42: each form of the line — a call with `2>&1`,
+  with `>/dev/null 2>&1`, with `&>` into a file, with `2>/dev/null`, a
+  folder under the home directory written as `~` — and each of the three
+  cases of decision (2), run through the guard and the fact hook in a
+  throwaway project on a local bare origin, the section read after them,
+  and the call of `put` fed to the guard under a no. Not built by the first
+  order: what the reader does not print. Fed `brew install x &` and `! brew
+  install x`, it prints the line it prints for `brew install x`, so the
+  guard notes such an install as alone, and the hook writes its line on the
+  call's exit 0 whether the install went through or not; and context f said
+  "was not the last command of its call" and that the output "was not read
+  whole" of an install that stood last with its output seen, a command
+  before it at the top level. Both concerned the milestone by the decision
+  of 19 October 2026, the line being the place that outlives the session
+  and the report the run's; the first has no milestone by decision (8)
+  above, the second is built by the order on the rest of part A, below,
+  and neither holds the milestone open, decision (9).
+  Recorded, not built: an install sent to the background with & or negated with ! reads as alone, since bin/devloop-command-reader prints neither, and its line is written on the call's exit — should: such an install counts as not alone, the reader saying what it cannot tell; no milestone.
+  Recorded, not built: context f of hooks/post-tool-use-install-fact.sh says an install was not the last command of its call and its output not read whole, where it stood last with a command before it at the top level and its output seen — should: the context says of such a call only what holds of it, in a wording the person approves.
+  **The rest of part A, built on this branch by the order of 24 October
+  2026 on it**, on objections 1, 2 and 6 of the report on part A, lines at
+  the tip. (a) Context f, `hooks/post-tool-use-install-fact.sh` line 92, in
+  the wording of that order, (f) above, in place of the one approved; behind
+  it the sentence on the pipe, lines 94 to 95, where a pipe read the
+  output, and where none did and a redirection sent it away, the second
+  sentence of e, lines 96 to 97. The pipe comes from the guard, which reads
+  it off the reader's output as it reads the rest: `pipe_of`,
+  `hooks/pre-tool-use-install-guard.sh` lines 186 to 204, writes "| " and
+  the command whose pipe field is the install's id, then each command
+  reading that one's output, "| grep -v warn | tail -5", into a fifth field
+  of the note, `note`, line 1236; the reader prints `|` and `|&` alike, so
+  both are written `|`. `bin/devloop-install-note` carries the field, its
+  head lines 22 to 34 and 39 to 43, and `take` prints it, lines 356 to 359. The defect of
+  context f that part A found is so built, its evidence on line 92. (b)
+  Where the line of an install alone stood in the file already and its
+  output was sent away, the hook gives the second sentence of e alone, line
+  121, as it did behind a refusal, objection 6 of that report; until then it
+  said nothing there. (c) The hooks reference, fetched again as markdown off
+  its own page the same day under Claude Code 2.1.310, says nothing on
+  whether `PostToolUse` fires for a Bash call with `run_in_background`
+  before the command ends: the input of the Bash tool names the field,
+  "Whether to run the command in background", and `PostToolUse` "Runs
+  immediately after a tool completes successfully"; what it says of a
+  background launch returning at once it says of the Agent tool, and for
+  the Bash case it points to the tools reference, which the order did not
+  read. The reader prints no line for the field, measured with an input
+  carrying it. Left as an open question in the report of that order,
+  nothing built, the reader not changed. (d) Found by the build: a
+  redirection on a group or a subshell, `{ brew install x; } >/dev/null`,
+  the reader prints as a line of its own at the top level, as it prints
+  `brew install x; >/dev/null`, so the guard counts the install not alone
+  and cannot name the redirection, and the hook gives f without the
+  sentence on it. f holds there, saying nothing of the output; what is lost
+  is the sentence that has the report say the output was not seen.
+  Concerns milestone 3 by the decision of 19 October 2026, the report being
+  the run's; the fix needs the reader changed, which that order ruled out,
+  and whether it holds the milestone open the person has not decided.
+  Recorded, not built: a redirection on a group or a subshell that sent an install's output away goes unnamed in the context of hooks/post-tool-use-install-fact.sh, since bin/devloop-command-reader prints it as a command of its own — should: the context names that redirection as it names one on the install's own words.
+  (e) `docs/skill-conventions.md`, "What an install did is written by a
+  hook", from line 2450, says what changed, the redirection on a group
+  among the reader's limits. (f) The version stays 0.158.0, the branch
+  having raised it once. (g) The self-test of `bin/devloop-install-note`
+  grew from 42 cases to 46: `take` with five fields, the pipe the last;
+  context f with the sentence on a pipe of one command and of two, with the
+  sentence on a redirection, and without a sentence behind a command before
+  the install, each case reading the end of the context; and an install
+  alone whose line stands already, once with its output sent away, the
+  second sentence of e alone, and once with its output seen, nothing said.
+  With the fact hook as it stood before that order the cases of f fail at
+  the first of them, and with the new hook beside the guard as it stood
+  before, at the sentence on the pipe.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the things of the fact hook whose outcome
+  moved into the program, re-sited on the hook's lines that call it and
+  their evidence on the program's lines, keeping their names, since runs
+  hang on them; their notes say what holds now; new things for the
+  program's `put`, for the contexts e and f, for the note's two new fields
+  and for the hook's drop at another event; defect 1 and the defect at line
+  30120 with their evidence on the lines of the fix; defect 4 on the line
+  of `build-work` that has the run call the program; the new defect sited
+  on its line above with its evidence on the fix; defect 6 renamed, no run
+  on it, sited on its line above, its old status line part of it; the two
+  defects found by the build, recorded and not built; and the part-of rows
+  of the new lines and of this entry's head, part of the new defect. No
+  run is recorded: the runs and the bench come after the four parts. By
+  the order on the rest of part A: the thing of context f renamed, no run
+  on it, its note naming the old name, its evidence on the new wording; the
+  thing of the guard's note renamed for the pipe, no run on it, its part-of
+  rows following; the evidence of `take` on its line of five fields, its
+  name kept, a run hanging on it; three new things of the hook, the
+  sentence on the pipe, the sentence on the redirection behind f and the
+  second sentence of e alone; the note of the hook's silent pass saying
+  what holds now; the twelve new lines of the self-test and its two
+  renamed ones part of it; the defect of context f with its evidence on the
+  line of f; the defect of `&` and `!` without a milestone in its note, its
+  status line saying so; the notes of the nine other small matters of
+  decision (9) saying that they no longer hold the milestone open; and the
+  defect of the rest of part A, (d) above, sited and with its evidence on
+  its status line. Again no run is recorded.
+
+  **The tool, run for this entry.** `scripts/devloop-stock-take` ran on the
+  tree of each of the two commits in a clean bash with exit 0: no broken
+  record, 14 findings, 42 closed defects, and none of 4751 lines of the
+  search set uncovered at the first commit and none of 4756 at the second,
+  where 4669 stood at `1ef533e`; 362 things recorded and not built at
+  `1ef533e`, 360 at the first commit, defects 1 and 4 built, and 362 at the
+  second, the two defects the build found recorded and the new defect
+  built; 712 things walked at `1ef533e` and 698 now, the fourteen that no
+  longer count each standing on a line this branch changed — eleven things
+  of the fact hook and the program whose runs of 21 October 2026 are older
+  than their lines, the defect at line 30120, and the straight paths of
+  `shared/editing-tool.md` and of the unit of `build-work` that inserts it —
+  an undercount, as section D of the head allows. Its self-test passed, 124
+  cases. Every self-test under `bin/` and every handler of
+  `hooks/hooks.json`, as the step "hooks on every system" of
+  `.github/workflows/stock-take.yml` runs them, passed on the person's Mac
+  in a clean bash, the self-test of `bin/devloop-install-note` with 42
+  cases, the nineteen handlers each with exit 0 and the counted refusal
+  recorded; ubuntu, Windows with Git Bash and Alpine were not run here. The
+  nineteen checks under "Before a handover, run these" printed what they
+  printed at `1ef533e`, the lines of `build-work` and `setup-checks` they
+  name moved by eleven and by twelve. By the order on the rest of part A
+  the tool ran on the tree of each of its two commits in a clean bash with
+  exit 0: no broken record, 14 findings, 42 closed defects, and none of
+  4770 lines of the search set uncovered at the first commit and none of
+  4771 at the second, the fifteen more being two branches of the hook,
+  twelve lines of the self-test and the status line of the defect of (d);
+  361 things recorded and not built at the first commit, the defect of
+  context f built, and 362 at the second, the defect of (d) recorded; 698
+  walked at both, as before. Every self-test under `bin/` and every
+  handler of `hooks/hooks.json`, as the step "hooks on every system" runs
+  them, passed again on the person's Mac in a clean bash, the self-test of
+  `bin/devloop-install-note` with 46 cases, the nineteen handlers each with
+  exit 0 and the counted refusal recorded; ubuntu, Windows with Git Bash
+  and Alpine were not run here. The nineteen checks under "Before a
+  handover, run these" printed at the tip what they printed before that
+  order, nothing under `skills/` or `shared/` changing.
+
 
 ## Decisions taken against
 
@@ -37830,6 +38329,55 @@ of them if the reason stops holding — the reason is the point, not the verdict
   that question's wording on 17 and 19 October 2026. The roadmap entry of
   24 October 2026 on the six closing runs, decision (b). Reopen if a person
   reading the widget misses what is asked because the question comes last.
+- **A hook on `SubagentStart` that gives every subagent the install rule.**
+  A hook beside `hooks/session-start.sh` would hand every subagent of a set
+  up project the install record as the session start prints it and the
+  rule of `build-work` step 3 point 7 as its context, since a build
+  subagent of run 2a and one of run 3a installed or left out a tool on what
+  the main run wrote into their prompt, defects 7 and 2 of the roadmap
+  entry of 24 October 2026 on the six closing runs. Rejected on 24 October
+  2026, in the roadmap entry of that date on how an install is recorded,
+  decision (1): the subagent never got the rule because `build-work` step 3
+  hands it none, and the text gives it there; such a hook would give the
+  rule to every subagent, every reviewer too, and can contradict what the
+  main run writes into the prompt. Reopen if a build subagent handed point
+  7 by the text still installs or leaves out a tool against the record.
+- **A hook on `AskUserQuestion` holding the form of the install questions.**
+  A `PreToolUse` hook on the choice widget would deny a question that
+  names an install command outside backticks, or a command auto mode
+  refused without its issue's number, defects 6 and 3 of the roadmap entry
+  of 24 October 2026 on the six closing runs. Rejected on 24
+  October 2026, in the roadmap entry of that date on how an install is
+  recorded, decision (4): it would hold only the form of the same
+  questions, the backticks and the number, not what they say, and for an
+  install command in prose it would need a second list of commands beside
+  the install guard's. Reopen if the form alone keeps failing in runs where
+  the statement holds.
+- **An approved wording as an example in a skill.** The wordings the
+  person approves would stand in the skill that has them said, as the text
+  a run copies, since at run 4 the line under the no of the install
+  question and at run 1 the question on `gitleaks` left out what their
+  approved wordings carry, point 12 and defect 6 of the roadmap entry of
+  24 October 2026 on the six closing runs. Rejected on 24 October 2026, in
+  the roadmap entry of that date on how an install is recorded, decision
+  (7): "Describe what must be said; never dictate wording",
+  `docs/skill-conventions.md`, stays, and what counts is the statement, as
+  decided on 19 October 2026; both runs held in their statement, and
+  devloop speaks the person's language, so a fixed German text would be
+  wrong for anyone else. Reopen if runs under a complete text keep
+  dropping what the statement needs.
+- **A command reader that marks a command sent to the background or
+  negated.** `bin/devloop-command-reader` would print that a command stands
+  behind `&` or `!`, so that the install guard counts such an install as not
+  alone and the fact hook writes no line on the call's exit, the defect of
+  `&` and `!` that part A found, in the roadmap entry of 24 October 2026 on
+  how an install is recorded. Rejected on 24 October 2026, in that entry,
+  decision (8): no run wrote these forms, and the fix would change the
+  program through which every hook reads a command, shortly before the pass
+  that is to close milestone 3; the reader stays as it is, and the defect
+  stays recorded, without a milestone. Reopen if a run writes one of these
+  forms, or once that pass is made — a condition derived from the reason,
+  the decision naming none.
 
 ## Names that were rejected
 

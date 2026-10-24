@@ -2454,37 +2454,85 @@ call that the install guard let through under a record saying yes as an
 install outside the project, and that succeeded,
 `hooks/post-tool-use-install-fact.sh`, on `PostToolUse` with the matcher
 `Bash`, writes one line per install into `docs/agents/environment.md` on the
-branch, under the heading `## Installed outside the project`: the command as
-its words ran, in backticks, and the folder it installed into — `` - `brew
-install gitleaks` installed into /opt/homebrew/bin `` — no date, and a line
-that stands there already is not written a second time. The guard is the one
+branch, under the heading `## Installed outside the project`: the install
+command as whoever clones the project runs it, in backticks, and the folder
+it installed into — `` - `brew install gitleaks` installed into
+/opt/homebrew/bin `` — no date, and a line that stands there already is not
+written a second time. The command is the words of the simple command that
+fired with every redirection left out together with its target, since 24
+October 2026, defect 1 of the roadmap entry of that day on the six closing
+runs, where until then an operator stood as it was and its target as a
+word, so that a call `brew install gitleaks 2>&1 | tail -5` wrote `brew
+install gitleaks 2>& 1`; its pipe and the commands beside it never reached
+the line. The guard is the one
 reader: at its pass under a yes it hands the facts it read — the route's
-answer on this machine or the path written in the command, and the words of
-the simple command that fired — to `bin/devloop-install-note`, keyed by the
+answer on this machine or the path written in the command, the words of
+the simple command that fired, and since 24 October 2026 whether that
+command stood alone in its call, the redirections that sent its output
+away and the pipe that read it — to `bin/devloop-install-note`, keyed by the
 session and the tool call, and the hook takes them back through the same
-program, which alone holds the path of the note and the form of the line; the
+program and writes the line through it too, `put`, since the same day,
+the program alone holding the path of the note and the form and the place
+of the line; the
 hook reads no command and resolves no place, so that two readings cannot
 drift, and `bin/devloop-command-reader` prints `tool_use_id` and
 `interrupted` for it. `PostToolUse` fires only after a call that succeeded,
 measured on 21 October 2026 under Claude Code 2.1.305: a command that exits
-other than 0 reaches `PostToolUseFailure`, where the hook, registered there
-too, drops the note. A fetch-and-run form leaves no fact, since the guard
-reads no folder for it and the line carries one. Where the hook cannot write
-— the tree on the default branch, which the branch guard holds unchanged for
-the editing tool by design, or the file missing in the tree — it says so with
-exit 2, the line in its message, and the run puts it there as it stands;
+other than 0 reaches `PostToolUseFailure`, where the hook is registered
+too. Since 24 October 2026, the person's decision of that day on point 8 of
+milestone 3, the call's exit counts as the install's only where the install
+stood alone in its call: the one command at the top level of the call, and
+no command reading its output. The reader prints the commands of a list in
+their order and nothing of what joins them, `;`, `&&` and `||` alike, so an
+install with any other command beside it at the top level counts as not
+alone; a command sent to the background with `&` or negated with `!` the
+reader does not mark, and the guard cannot see it; a redirection on a group
+or a subshell, `{ brew install x; } >/dev/null`, it prints as a line of its
+own, as it prints `brew install x; >/dev/null`, so the guard counts the
+install not alone and cannot name the redirection. Alone and its output
+seen, the line is written as before; alone and its output sent away into a
+file or `/dev/null`, the line is written and the context names the
+redirection, so that the report says what the package manager did besides
+is not known; not alone, behind `| tail`, before `; echo ok` or before `||
+true`, each of which gives the call the exit 0 in bash and in zsh whether
+the install went through or not, measured that day, no line is written,
+and the context, under either event, tells the run to read the folder and
+write the line with the program's call, the hooks reference saying of
+`PostToolUseFailure` that its `additionalContext` is "added to Claude's
+context alongside the error"; an install alone in a call that failed is
+dropped without a word. Since the order of that day on the rest of part A
+the context of an install not alone says that it did not stand alone,
+where it said that it was not the last command of its call, untrue of an
+install standing last behind another, and names behind it what cut the
+output, the pipe, or where no pipe read it what sent it away, the
+redirection, each with the sentence that the report says what the package
+manager did besides is not known; and where the line of an install alone
+stood already and its output was sent away, the context is that sentence
+on the redirection alone, as it stands behind a refusal. A fetch-and-run
+form leaves no fact, since the guard reads no folder for it and the line
+carries one. Where the line cannot be
+written — the tree on the default branch, which the branch guard holds
+unchanged for the editing tool by design, or the file missing in the tree —
+the program refuses, the hook says so with exit 2, the line in its message,
+and the run puts it there as it stands, through the same program;
 `build-work` step 3 points 7 and 8 and `setup-checks` step 4 say that the
 hook writes the line and the run no second one, where until that day the run
 wrote it, which the run of 19 October 2026 in project z did not, defect 6 of
 the roadmap entry of that date. An install the person makes by their own
-hand, after the question `setup-checks` step 3 puts under a no, the hook does
-not see: that line the run writes itself, `setup-checks` step 4 for a check
-class and `build-work` step 3 point 8 for a command the person typed on the
-build's handover, under the same heading and in the same form — the command
-as it was handed over and the folder the run read the tool at — and not
-where it stands already, the person's decision of 21 October 2026 at the
-check of the branch before the merge, the roadmap entry of that date on
-milestone 3, part 4, which carries the two ways weighed. The two hooks that
+hand, after the question `setup-checks` step 3 puts under a no or on a
+build's handover, the hook does not see: that line the run writes itself,
+`setup-checks` step 4 for a check class and `build-work` step 3 point 8 for
+a command the person typed on the build's handover, under the same heading
+and in the same form — the install command and the folder the run read the
+tool at — and not where it stands already, the person's decision of 21
+October 2026 at the check of the branch before the merge, the roadmap entry
+of that date on milestone 3, part 4, which carries the two ways weighed;
+since 24 October 2026 through `bin/devloop-install-note put`, with the
+install command alone, without the change into the project's directory the
+handover put before it, for a browser download as for a tool, defect 4 of
+the roadmap entry of that day on the six closing runs, where until then the
+run wrote the line with the editing tool and wrote it once as prose and
+once with a remark beyond the form. The two hooks that
 run the check chain, `hooks/stop-checks.sh` and
 `hooks/post-tool-use-checks.sh`, read a red through
 `bin/devloop-missing-tool` since the same day: where a shell names the word
