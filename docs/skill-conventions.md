@@ -206,7 +206,12 @@ setup state at their start; `shared/set-aside-back.md`, how such a change
 comes back with the person there, inserted beside it in those four and
 beside `shared/fetch-three-times.md` in `build-work` and `setup-checks`; and
 `shared/editing-tool.md`, which files are written with the editing tool and
-never from the shell, inserted into `build-work` and `setup-checks` step 8.
+never from the shell, inserted into `build-work` and `setup-checks` step 8;
+and `shared/install-alone.md`, 24 October 2026, inserted into `build-work`
+step 3 and `setup-checks` step 4 after the backed command, how an install the
+run makes itself stands in its call and how its report knows what the
+package manager did, which "What an install did is written by a hook" below
+places.
 
 ## Numbered steps where order matters
 
@@ -677,6 +682,19 @@ it hangs on** — "checked" names neither. Measured on 6 September 2026 in
 stood; the organisation's name is not the module path, which is
 `github.com/zricethezav/gitleaks/v8`, and it failed first in the workflow on the
 main branch after the pull request carrying it had merged.
+
+**The same backing holds for an install the run makes itself under a yes**,
+and each kind has its form of it, since 24 October 2026, point 5 and defect 7
+of the roadmap entry of that date on the six closing runs, in
+`shared/backed-command.md`: `go list -m` for a Go module, `brew info` for a
+formula, `npm view` for an npm package, and for a browser for tests the
+vendor's installation line or, for Playwright, its dry run with `--dry-run`,
+which prints the version of each browser and the folder it lands in and
+downloads nothing. The handover and the report of an install say what the
+command is backed by. Until that day the text gave one example, Go's, and
+a run backed a browser download by the version of the package, which says
+nothing of the download, and another installed under a yes with a line it
+called the vendor's and had not read.
 
 **Backed before it is handed over covers every channel it travels on**, not the
 one that was measured — the message, and any issue that carries the command
@@ -2510,7 +2528,14 @@ manager did besides is not known; and where the line of an install alone
 stood already and its output was sent away, the context is that sentence
 on the redirection alone, as it stands behind a refusal. A fetch-and-run
 form leaves no fact, since the guard reads no folder for it and the line
-carries one. Where the line cannot be
+carries one. The half of that decision in the text came with part B of the
+milestone the same day, `shared/install-alone.md` in `build-work` step 3
+and `setup-checks` step 4: an install the run makes itself stands alone in
+its call, the change into the project's directory a call of its own before
+it, without a pipe, without a redirection that sends its output away and
+not with `run_in_background`, and its report says what the whole output
+shows and what came into the folders for browsers, nothing assumed; the
+contexts above are for a call that did not keep to it. Where the line cannot be
 written — the tree on the default branch, which the branch guard holds
 unchanged for the editing tool by design, or the file missing in the tree —
 the program refuses, the hook says so with exit 2, the line in its message,

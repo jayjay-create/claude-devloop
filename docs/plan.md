@@ -459,12 +459,17 @@ small matters that no longer hold it open, built all the same where they
 are built or cost a few lines of text, without a run or a bench for the
 milestone; the other defect its build found, an install behind `&` or
 `!`, has no milestone, decision (8); and a defect the rest of part A
-found, a redirection on a group that the context does not name, the
-person has not sorted yet. They are built in four parts, each a branch of
-its own that raises the version once and is merged before the next is cut
-— how an install is recorded, the install rules in the text, the
-questions, the start conditions, the first of them built in that entry —
-followed by one pass with runs and benches on what holds the milestone
+found, a redirection on a group that the context does not name, has none
+either since part B, by decisions (8) and (9), the roadmap entry of 24
+October 2026 on the install rules reaching the build subagent, which
+records a defect of its own that the person has not sorted yet: the
+account the skills give of a call that reaches its limit, which Claude
+Code moves to the background and does not end. They are built in four
+parts, each a branch of its own that raises the version once and is
+merged before the next is cut — how an install is recorded, the install
+rules in the text, the questions, the start conditions, the first two of
+them built, the first in that entry and the second in the entry on part B
+— followed by one pass with runs and benches on what holds the milestone
 open, before it is decided whether the milestone is reached.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command

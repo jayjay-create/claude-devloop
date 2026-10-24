@@ -430,7 +430,7 @@ blocker in the tracker and let the readiness query do its work.
 
 Hand the task to a subagent with a fresh context: the task issue, the spec it
 belongs to, the paths of the control documents, where the mark stands that
-says which mode this run is in — not this conversation — and four rules it
+says which mode this run is in — not this conversation — and five rules it
 reads nowhere else, since it reads this file nowhere. Two since 9 October
 2026: what a refusal is and what follows one with nobody there, under "A
 guard's block, with nobody there" above, the issue raised by the subagent
@@ -448,7 +448,18 @@ run's and not its own, a build subagent of the second closing run of
 milestone 3 having changed three targets in the Makefile where the rule
 reached it nowhere; and that a file whose content is text about commands is
 written with the editing tool, the rule above "Step 1", for
-`environment.md`, the workflow file and a body file alike.
+`environment.md`, the workflow file and a body file alike. One since 24
+October 2026, decision (1) of the roadmap entry of that date on how an
+install is recorded: point 7 below as it reads, with the texts between it
+and point 8, and the install record as
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record` prints it, run by this
+run, which reads it off the main branch as last fetched as the guard reads
+it; beside point 7 this run writes nothing of its own on whether the
+subagent installs or what. Run 2a's prompt said "Install the Mermaid CLI as
+the vendor documents" and run 3a's "Do not install anything", defects 7 and
+2 of the roadmap entry of 24 October 2026 on the six closing runs; until
+that day point 7 was none of the rules, and the subagent that installed
+never read it.
 
 The subagent:
 
@@ -496,7 +507,15 @@ The subagent:
    where every place it lands is one the record names or the answer of a route
    it names, and blocks it otherwise, and with nobody there the four ways an
    install does not go through, inserted after the fetch-and-run rule below,
-   say what follows a block and the three other ways.
+   say what follows a block and the three other ways. A tool the task needs
+   is not replaced by a stand-in because the run takes itself not to be
+   allowed to install it, since 24 October 2026, defect 2 of the roadmap
+   entry of that date on the six closing runs: under a yes it is installed,
+   backed, and the task is built against the real tool; where the guard
+   blocks it, the block goes its way; and a point the person settled in the
+   planning is not replaced by a stand-in without them. Run 3a built the
+   task needing `yq` against stand-ins under a yes and merged it with `yq`
+   never run.
    Read the result off the path the installer writes to, never off
    `command -v`, and report it in two places, because they are two duties: the
    standing fact about running this project — the command as it ran and the
@@ -505,8 +524,9 @@ The subagent:
    `post-tool-use-install-fact.sh` once the install went through, since 21
    October 2026, on this same branch, from what the guard read when it let
    the command through, and this run writes no second line for it, which
-   point 8 says; and the report of this run — the command as it ran, what came
-   back, what stands at that path, and what the package manager did besides —
+   point 8 says; and the report of this run — the command as it ran, what it
+   is backed by, what came back, what stands at that path, and what the
+   package manager did besides —
    goes into the pull request body beside the `Guarded conditions` list, which
    is what outlives the session; with the user there, the main run says it in
    one line as well, at the next message that ends a turn with text, its
@@ -536,10 +556,18 @@ The subagent:
    Report what it installs, what it
    unblocks, and the exact command, as it runs from wherever they are, with
    the change into the project's directory before it where it needs one, by
-   "A command handed over runs as it stands" in `docs/skill-conventions.md`
-   — and both ways it can go, in the same
+   "A command handed over runs as it stands" in `docs/skill-conventions.md`,
+   and what it is backed by — and both ways it can go, in the same
    breath: the build picks up once the tool is where that command puts it, and
-   **a decline is an answer too, not a wall**. A message that says only "let me know once it is
+   **a decline is an answer too, not a wall**: on a no the install becomes an
+   issue carrying the command that blocks this task, as "The task itself"
+   below says, and the run goes on with the next task that is ready, where
+   one is, and with this one once they have run the command and closed that
+   issue, since 24 October 2026, defect 5 of the roadmap entry of that date
+   on the six closing runs, where run 1 said a decline would leave the test
+   skipped and the task open; the wording approved that day stands in the
+   roadmap entry of that date on how an install is recorded, (c), and this
+   skill says what is said, not the words. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
    With nobody there the record says yes, since the mode does not start
    under a no or with no record — start condition 6 under "Unattended mode" —
@@ -549,6 +577,8 @@ The subagent:
    task can need that the task itself cannot do without the record's yes.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-alone`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text fetch-and-run`
 
@@ -922,9 +952,10 @@ suite and no review has met one of the two preconditions, not both.
 **The pull request body carries the `Guarded conditions` list from step 3**, one
 line per condition, and beside it, where the build installed a tool under the
 install record, the install report point 7 asks for: the command as it ran,
-what came back, what stands at the path the installer writes to, and what the
-package manager did besides; and, where `setup-checks` filled a class on this
-branch, the red proof it handed up for that class, with its own install
+what it is backed by, what came back, what stands at the path the installer
+writes to, and what the package manager did besides; and, where
+`setup-checks` filled a class on this branch, the red proof it handed up for
+that class, with its own install
 report. That is the trip that outlives the session; the
 one to the review has already happened, and the standing fact about running
 the project went into `environment.md` by the hook point 7 names, or by point

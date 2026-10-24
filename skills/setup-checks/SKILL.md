@@ -606,8 +606,9 @@ above says what follows a block, the rule inserted after the backed command
 below what follows the three other ways an install does not go through with
 nobody there. The class counts as filled only
 once the tool stands at the path the installer writes to, never where
-`command -v` finds one. Report the command as it ran, what came back, what
-stands at that path, and what the package manager did besides — it updates
+`command -v` finds one. Report the command as it ran, what it is backed by,
+what came back, what stands at that path, and what the package manager did
+besides, by the text on an install standing alone below — it updates
 itself, fetches what it needs for that and cleans up unasked — in the pull
 request body that lands the class, step 7's or the build's where this skill was
 called for one class; the standing fact — the install command as whoever
@@ -648,6 +649,8 @@ the two ways weighed, and defect 4 of the roadmap entry of 24 October 2026
 on the six closing runs.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-alone`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-not-through`
 

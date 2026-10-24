@@ -38156,6 +38156,202 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   handover, run these" printed at the tip what they printed before that
   order, nothing under `skills/` or `shared/` changing.
 
+- **Install rules reach the build subagent, backed by kind, run alone.**
+  24 October 2026, version 0.159.0. On `task/milestone-3-install-rules`,
+  off `8958afe`, in two commits: the texts with the version and the rows of
+  the things they change, then this entry with the sentence in
+  `docs/plan.md` and the rows they need. It carries part B of the build the
+  entry at line 37660 records, the install rules in the text: point 5,
+  defect 7, the half of point 8 in the text, and defects 2, 9 and 5 of the
+  entry at line 36636, as decisions (1), (2) and (9) there and "What follows
+  from the rules without a decision" there have them; and it sorts two
+  points part A left open. A line of a file is given as it stands at
+  `8958afe` and a line of a skill as `scripts/devloop-expand` prints it
+  there, marked expanded, unless the tip of this branch is named. Beyond
+  the `git fetch`, the tools reference of Claude Code was fetched as
+  markdown once; GitHub was neither read nor changed, nothing was run
+  against the settings of this machine, and in `devloop-test-aa` one dry
+  run was made, its tree the same before and after.
+
+  **Part B, on this branch**, lines at the tip of its first commit.
+  (a) Defect 7, decision (1): `build-work` step 3 hands the build subagent
+  five rules it reads nowhere else, `skills/build-work/SKILL.md` line 433,
+  where it handed four; the fifth, lines 451 to 462, is point 7 as it
+  reads, with the texts between it and point 8, and the install record as
+  `bin/devloop-install-record` prints it, run by the main run, which reads
+  it off the main branch as last fetched as the guard reads it; beside
+  point 7 the main run writes nothing of its own on whether the subagent
+  installs or what. The lists of what the report of an install names name
+  what the command is backed by: `skills/build-work/SKILL.md` lines 527 to
+  529 and 955, `skills/setup-checks/SKILL.md` line 609.
+  (b) Point 5: `shared/backed-command.md` holds the backing before the run
+  runs a command itself under a yes as well, lines 1 to 3, and gives each
+  kind its form, lines 16 to 35 — `go list -m`, `brew info <formula>`,
+  `npm view <package> version`, and for a browser for tests the vendor's
+  installation line or, for Playwright, its dry run — and the handover and
+  the report of the run's own install say what the command is backed by,
+  the wording approved as (a) of the entry at line 37660 named and not
+  written out; lines 48 to 50, where a dry run backed the command, the
+  folder it printed is the one read. The dry run was run once before the
+  build, in `devloop-test-aa`, with `git status` empty before and after:
+  `npx --no-install playwright install --dry-run webkit`, exit 0, printed
+  `WebKit 27.2 (playwright webkit v2370)`, `Install location:
+  ~/Library/Caches/ms-playwright/webkit-2370`, and `FFmpeg (playwright
+  ffmpeg v1013)` with its own location, Playwright 1.64.1; it prints the
+  version and the place, so the text names it. It printed the same where
+  `webkit-2370` stood already, so it does not say whether the browser is
+  there; the reading of (c) before and after does. The handover of
+  `build-work` point 7 names what the command is backed by, line 560.
+  (c) Point 8, the half in the text, decision (2): a new shared text,
+  `shared/install-alone.md`, inserted after the backed command into
+  `build-work` step 3, `skills/build-work/SKILL.md` line 581, and into
+  `setup-checks` step 4, `skills/setup-checks/SKILL.md` line 653, since it
+  is one rule in the same words for the two skills that run an install
+  themselves: the install stands alone in its call, no other command
+  before or after it and no change into the project's directory in it, that
+  change a call of its own before it where one is needed, no pipe, no
+  redirection of its standard or error output into a file or to
+  `/dev/null`, `2>&1` being none, and not with `run_in_background`, lines 1
+  to 13; its output read to its end, the file the result names where it
+  did not come back whole, and the report saying what it shows and nothing
+  assumed, the folders for browsers of `shared/backed-command.md` read
+  before and after and what came into them named, lines 15 to 25.
+  (d) Defect 2: point 7 says that a tool the task needs is not replaced by
+  a stand-in because the run takes itself not to be allowed to install it,
+  that under a yes it is installed, backed, and the task built against it,
+  that where the guard blocks it the block goes its way, and that a point
+  the person settled is not replaced by a stand-in without them,
+  `skills/build-work/SKILL.md` lines 510 to 518, inside point 7, so that
+  the subagent gets it with the fifth rule; `plan-work` judging no install
+  is (e).
+  (e) Defect 9: `plan-work` names a tool outside the project that the work
+  needs and does not settle who installs it, neither as an assumption of a
+  round nor with the person, since the record read at the build decides
+  it; the assumption says that the work needs it and that it is missing,
+  and that the permission to install decides then, wording (b) named; no
+  stage judges an install, the comment of Stage 2 and the spec named,
+  `skills/plan-work/SKILL.md` lines 309 to 328; the spec names the tool
+  under Implementation decisions as needed, lines 701 to 702, and puts no
+  install under Out of scope, lines 706 to 707. The paragraph stands after
+  the insert line of `shared/three-questions.md`, line 307, and not inside
+  that file after expanded 962, since the file stands in `untangle-idea`
+  as well, which plans no build.
+  (f) Defect 5: the handover says where a no leads, an issue carrying the
+  command that blocks the task, as "The task itself" has it, the run going
+  on with the next ready task, and this task going on once the command has
+  run and the issue is closed, wording (c) named,
+  `skills/build-work/SKILL.md` lines 562 to 570.
+  (g) `docs/skill-conventions.md`: "What is shared today" names
+  `shared/install-alone.md`, lines 210 to 214; under "A command handed over
+  is backed", the backing of the run's own install and the form of each
+  kind, lines 686 to 697; under "What an install did is written by a hook",
+  the half of point 8 in the text, lines 2531 to 2538.
+  (h) The version went from 0.158.0 to 0.159.0, "Registering a skill".
+
+  **One half of the order not built.** The order said of an install that
+  moves to the background by itself that the run reads its output to the
+  end before it reports. Decision 2 of the entry of 9 October 2026, lines
+  14184 to 14196, holds that what does not finish inside its call, "because
+  it is moved to the background or ended, is neither started a second time
+  nor waited for", and rejected "waiting for the message";
+  `shared/command-does-not-answer.md` lines 51 to 54 carry it. So
+  `shared/install-alone.md` lines 9 to 11 say that such an install did not
+  finish, as "When a command does not answer" says. Whether a moved install
+  is to be waited for is a change of that decision, the person's, and it
+  would hold for the check chain under the same rule.
+
+  **The tools reference on a call in the background.** Read as markdown off
+  `code.claude.com/docs/en/tools-reference.md` on 24 October 2026 under
+  Claude Code 2.1.310, the lines of that copy. A command started with
+  `run_in_background` runs "as a background task" while Claude goes on
+  "working while it runs", line 183; a foreground command that reaches its
+  timeout is moved to the background, line 215, and "the result reports it
+  explicitly: `Command did not complete within its 120s timeout and was
+  moved to the background`", with the task ID and the path of its output
+  file, line 221. So the call has its result while the command runs on;
+  whether `PostToolUse` fires at that result or at the command's end, the
+  page does not say, and it names no hook event for either case; the
+  hooks reference, read for part A, does not say it either, (c) of the
+  rest of part A in the entry at line 37660. It stands so, as not said:
+  no defect is recorded for the line in `docs/agents/environment.md`,
+  nothing is built for it but the sentence of (c) that an install does not
+  run with `run_in_background`, and `bin/devloop-command-reader` stays as it
+  is.
+
+  **A defect this part found, in the same reference.** Line 215: "When a
+  foreground command reaches its timeout without finishing, Claude Code
+  moves it to the background instead of stopping it, unless the command
+  starts with `sleep`." `shared/command-does-not-answer.md` lines 45 to 48,
+  inserted at `build-work` expanded 159 to 162, says that "A call with a
+  limit of its own that reaches it is ended", and `docs/skill-conventions.md`
+  lines 1818 to 1822 and 1829 to 1832 say the same and give it as the
+  reason a moved check chain cannot run on beside the next task's; the
+  measurement of 9 October 2026 they rest on, lines 14996 to 15001, ran
+  `sleep 12; echo done`, the one form the page excepts. Measured in this
+  order's session on 24 October 2026 under 2.1.310: `python3 -c 'import
+  time; time.sleep(8); print("done")'` with the Bash tool's `timeout` of
+  3000 milliseconds came back as "Command did not complete within its 3s
+  timeout and was moved to the background", and its output file read after
+  its end held `done` and the exit 0. What the skills do with such a call
+  holds, neither waited for nor started again; what they say the harness
+  does, and the reason the conventions draw from it, do not. Which
+  milestone it concerns the person has not decided.
+  Recorded, not built: shared/command-does-not-answer.md and the conventions say a call with a limit of its own is ended at that limit, where Claude Code moves it to the background unless it starts with sleep, the measurement of 9 October 2026 having run sleep 12 — should: the text says that such a call is moved to the background and runs on there, and the rules that rest on its end are read again against that.
+
+  **The defect of the redirection on a group, sorted.** The defect at line
+  38077, a redirection on a group or a subshell that the context of the
+  fact hook does not name, is a small matter by the measure of decision (9)
+  of the entry at line 37660 — a user does not notice it, and what is
+  missing is a sentence to the run — and goes as the defect of `&` and `!`
+  by decision (8) there: without a milestone, nothing built,
+  `bin/devloop-command-reader` staying as it is. This follows from (8) and
+  (9), by the order of this part; `docs/plan.md` no longer names it as not
+  sorted.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`. By the first commit: defects 2, 5, 7 and 9
+  of the entry at line 36636 with their evidence on the lines of the fix —
+  point 7's sentence on the stand-in, the handover's sentence on the no,
+  the line of `shared/backed-command.md` that holds the backing for the
+  run's own install, and the head of the paragraph of `plan-work` — their
+  notes saying what was built and that a run comes after the four parts;
+  the evidence of point 5, line 1538, moved onto the paragraph on the form
+  of each kind, and that of point 8, line 5986, onto the paragraph of
+  `shared/install-alone.md` on the report, their names kept, since runs
+  hang on both, their notes saying what holds now; new things for the
+  straight path of `shared/install-alone.md` and its five branches, for
+  four branches of `shared/backed-command.md`, two of `plan-work` and one of
+  `build-work`, with the part-of and rationale rows of the lines beside
+  them; and two anchors moved with their lines, the evidence of the thing
+  of `shared/backed-command.md` on the backing and the site and evidence of
+  the thing of step 6 of `build-work` on a class's install report. By the
+  second commit: the defect this part found, sited on its status line with
+  its evidence there; the head of this entry part of it; and the defect at
+  line 38077 with its evidence on the line of this entry that sorts it,
+  its note saying it has no milestone. No run is recorded: the runs and the
+  bench come after the four parts.
+
+  **The tool, run for this entry.** `scripts/devloop-stock-take` ran on the
+  tree of each of the two commits in a clean bash with `/usr/bin/grep`,
+  exit 0: no broken record, 14 findings, 42 closed defects, and none of
+  4794 lines of the search set uncovered at the first commit and none of
+  4796 at the second, where 4771 stood at `8958afe`; 362 things recorded
+  and not built at `8958afe`, 358 at the first commit, defects 2, 5, 7 and
+  9 built, and 359 at the second, the defect this part found recorded; 698
+  things walked at `8958afe` and 693 at both commits, the five that no
+  longer count each standing on a line this branch changed — the defects
+  of lines 1538 and 5986, points 5 and 8 of the six runs, the straight path
+  of `shared/backed-command.md` and its branch on the backing, and the
+  straight path of Stage 4 of `plan-work` — an undercount, as section D of
+  the head allows. Its self-test passed, 124 cases. No program under
+  `bin/` and no hook changed, so no other self-test was due. The nineteen
+  checks under "Before a handover, run these" printed at both commits what
+  they printed at `8958afe`, but for the line numbers of `build-work`,
+  `plan-work` and `setup-checks` the new text moved; the check over copies
+  had printed `skills/build-work/SKILL.md` once, a line of the new
+  `shared/install-alone.md` standing inside a line of `build-work`, and
+  that line was reworded before the first commit.
+
 
 ## Decisions taken against
 
