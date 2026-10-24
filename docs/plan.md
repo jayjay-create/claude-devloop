@@ -446,6 +446,19 @@ conditions at the start of the build; the runs found ten new defects that
 concern the milestone, the tenth found by the addendum of the same day to
 that entry; whether it is reached that entry does not decide, the
 two benches of the arrangement coming after the runs.
+On 24 October 2026 the person decided on every point the runs left open,
+the roadmap entry of that date on how an install is recorded, which
+carries the decisions and the wordings approved with them: what holds the
+milestone open since then are points 5, 8, 9 with defect 3, and 10 and
+defects 1, 2, 4, 5, 7, 8, 9 and 34 of the entry on the six runs, the
+defect of the install line written on the exit of the whole call that the
+new entry records, and two defects its build found, which no part takes up
+yet; they are built in four parts, each a branch of its own that raises
+the version once and is merged before the next is cut — how an install is
+recorded, the install rules in the text, the questions, the start
+conditions, the first of them built in that entry — followed by one pass
+with runs and benches, before it is decided whether the milestone is
+reached.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
