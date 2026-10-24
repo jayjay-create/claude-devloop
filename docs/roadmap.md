@@ -36635,9 +36635,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
 - **Six closing runs read off their logs, each on the defects it met.**
   24 October 2026, version 0.157.0 stays. On `task/closing-runs-evaluation`,
-  off `6edeef1`, in one commit: this entry, one dated sentence in
+  off `6edeef1`, in two commits: this entry, one dated sentence in
   `docs/plan.md` under milestone 3, two points under "Decisions taken
-  against" and the rows of the table. Nothing is built: no file under
+  against" and the rows of the table; and an addendum of the same day,
+  which held three places against the logs and corrected this entry in
+  place before it reached `main`: defects 34 and 35, the header of the mode
+  question of run 1 under defect 22, and the paragraph on what the texts do
+  not decide. Nothing is built: no file under
   `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or
   `.github/` changes, and `README.md` does not change. The report of this
   order stands on this machine as
@@ -36986,7 +36990,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   question came at #64, the yes at #65, the branch was cut after it, #90
   wrote the record with eleven places and `install-route: npm`, and pull
   request #35 was read `MERGED` at #140; nothing else was asked. The route
-  was not asked, new defect 8 below.
+  was not asked, new defect 8 below. The question field said nothing of why
+  the question came, new defect 34 below; the point holds all the same, its
+  should being where the question is put and where it is not.
 
   **Point 12, line 33153, the no names a package that downloads something
   itself.** Held at the first asking of run 1, #91, at the second asking of
@@ -37133,9 +37139,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   named, and searched for first in this file and in the table by several
   patterns, the searches in the report; a defect that stood already is
   named above with its line. By the dated sentences of `docs/plan.md` under
-  milestone 3, lines 371 to 390, defects 1 to 9 concern milestone 3, being
-  defects of the question, the record, the places in the skills or the run
-  that installs without the person. Defect d is milestone 11's. For every
+  milestone 3, lines 371 to 390, defects 1 to 9 and 34 concern milestone 3,
+  being defects of the question, the record, the places in the skills or the
+  run that installs without the person. Defect d is milestone 11's. For every
   other one the plan names no milestone, and which milestone takes it up the
   person decides after milestone 3, as the sentence of 19 October 2026 at
   lines 380 to 390 has it for a defect of the run without the person that
@@ -37394,14 +37400,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built: run 1 put the questions on the project's packages naming the file, two tools in one call, under headers of their own and once for a package the task itself needs — should: the questions take the form setup-checks step 3 gives them, and what a task enters for what it builds is not asked under this permission.
 
   **22. The mode question and the record of its no carried sentences of
-  their own.** Run 1 #1808: the yes „… Bei jeder Idee fragt devloop neu.“,
-  the no „Alles bleibt, wie es ist: Jede Aufgabe kommt zu dir zur
-  Freigabe.“; #1845 opens „Alles bleibt mit dir: Jede Aufgabe kommt zu dir
-  zur Freigabe.“; run 4 #444, „Auf GitHub wird nichts eingerichtet.“
+  their own, and run 1 a header of its own.** Run 1 #1808: the yes „… Bei
+  jeder Idee fragt devloop neu.“, the no „Alles bleibt, wie es ist: Jede
+  Aufgabe kommt zu dir zur Freigabe.“, and the header „Ohne mich“, where
+  the wording approved on 17 October 2026 has „Ohne dich“, line 26647,
+  which run 2a carried at #249, the person's statement on the two being
+  quoted above; #1845 opens „Alles bleibt mit dir: Jede Aufgabe kommt zu
+  dir zur Freigabe.“; run 4 #444, „Auf GitHub wird nichts eingerichtet.“
   `setup-checks` expanded 1928 and 1940, "no sentence of its own", and
   1978, "Nothing more is said on the no"; the wording approved on 17 October
-  2026, lines 26662 to 26669. The neighbour is line 26200.
-  Recorded, not built: runs 1 and 4 added sentences of their own to the mode question and to the handover after its no — should: the mode question carries the wording approved on 17 October 2026 and nothing more is said on the no.
+  2026, lines 26647 to 26669. The neighbour is line 26200.
+  Recorded, not built: runs 1 and 4 added sentences of their own to the mode question and to the handover after its no, and run 1 put the question under the header „Ohne mich“ — should: the mode question carries the wording approved on 17 October 2026, its header „Ohne dich“ included, and nothing more is said on the no.
 
   **23. The count of the lenses and their results said.** Run 1 #641
   „Fünf Prüfer laufen parallel“, #848, #1077, #1333, and #1087 „ohne neue
@@ -37487,6 +37496,77 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   whole.
   Recorded, not built: runs 2a, 3a, 3b and 4 ran the in-flight and readiness queries shortened, not at all, or replaced by a list of issues — should: the queries run as docs/agents/issue-tracker.md carries them, whole.
 
+  **34. The install question of the refresh did not say why it came.** Run
+  3b put it at #64 with no text of its own anywhere before it in the log,
+  the question field reading only „Darf der Lauf ab jetzt Tools und Browser
+  für Tests installieren, die außerhalb des Projekts auf diesem Rechner
+  landen? Die Antwort gilt für dieses Projekt.“: neither that the setup is
+  being refreshed nor that no answer stands for this project on the main
+  branch, which the call at #58 had just read off the program. The line at
+  session start, #5, names the missing record, but it reaches the run as
+  context and not the person, `docs/skill-conventions.md` line 3219. The
+  first asking of run 1, #91, opened „Das Projekt wird eingerichtet, bevor
+  deine Idee begonnen wird.“, and the second of run 2a, #271, „Arbeit ohne
+  dich braucht dein Ja zum Installieren von Werkzeugen außerhalb des
+  Projekts. Du hast dazu Nein gesagt.“ `output-styles/devloop.md` lines 21
+  to 22, "Why the question comes now stands there too, in the question field
+  or in that message", the same in `docs/skill-conventions.md` lines 875 to
+  876, and `setup-project` expanded 534 to 539, `shared/how-to-ask.md` lines
+  75 to 80, "why it comes up now in the question field before the question
+  line". The text gives the run no reason to say there: `setup-project`
+  expanded 645 to 646 puts the question "as a first setup puts it, with the
+  person there and in the same form", and expanded 731 to 732 says of the
+  opening that carries the reason at a first setup "A refresh carries
+  neither", a sentence of 17 October 2026, before the refresh came to put
+  the question on 20 October 2026. Point 11 above holds all the same.
+  Milestone 3, the question.
+  Recorded, not built: the install question of the refresh of run 3b said nothing in its question field of why it came, neither that the setup is refreshed nor that no answer stands for this project on the main branch — should: at a refresh the question field of the install question says before the question line why it comes now, that no answer stands for this project on the main branch, in a wording the person approves, and setup-project says so where its opening says that a refresh carries neither sentence.
+
+  **35. The tests of `npm run links` are skipped on the platform, and the
+  required check is green without them.** Run 1 built the tests of the
+  script so that they are skipped where `htmlq` is missing, and said at the
+  gate of its last task, #2607, under „Bewusst offen gelassen“: „Die
+  htmlq-Tests werden ohne htmlq mit einer Meldung übersprungen. Dann kann
+  `make check` grün sein, ohne das Skript je gelaufen zu sehen.“ Run 2a
+  wrote `.github/workflows/checks.yml` at #466 with the WebKit browser and
+  `gitleaks` and without `htmlq`, as the file stands at `db992bf` of
+  `devloop-test-aa`, lines 19 to 25, and pull request #16 names those two
+  alone; the class `unit`, whose target runs `npm test`, stands in
+  `checks.md` as blocking and filled. The platform's runs of `check` on
+  `main`, read on 24 October 2026, skipped 7 of 26 tests with „htmlq is not
+  on the PATH“ at `d5664f7`, 7 of 42 at `a8d6c19`, 10 of 51 at `143b372`
+  and 10 of 72 at `443d23c` and at `db992bf`, and each was green. Run 2b,
+  whose pull request #27 added three of those tests, filed it at #1012 as
+  issue #26 „The platform skips the htmlq tests of npm run links“, its body
+  saying that the workflow belongs to the check setup, "so this is for that
+  step to build and not for a task"; the person closed it before run 3a.
+  Run 3a settled in the assumptions of round 1, #115, „Die Tests des neuen
+  Skripts werden übersprungen, wo yq fehlt (wie bei htmlq)“, asked at #138
+  under „CI und yq“ whether `yq` is to be installed on GitHub, recommending
+  „Nein, wie bei htmlq“ with the cost „in der CI ist das Skript
+  ungetestet“, answered so at #139, and the spec #28 has under Out of scope
+  "Installing yq in the GitHub CI"; the task was then built against
+  stand-ins, defect 2. `setup-checks` expanded 2390 to 2393: the workflow
+  "installs before it checks: first the project's own dependencies, then
+  every tool a blocking check needs that exists only outside a project",
+  expanded 2223 to 2226 the same at the gate, and expanded 1437 to 1442
+  where a class becomes blocking; `shared/verdict-target.md` lines 4 to 5,
+  inserted at expanded 1449 to 1450, "A target that always passes is worse
+  than no target at all."; and `plan-work` expanded 1442 to 1450 leaves the
+  check setup to `setup-checks`, the planning raising no issue for a class.
+  The reason expanded 1437 to 1442 give, that without the line the class
+  "would go red on a tool that is not there", is the case of a test that
+  fails without its tool; a test built to be skipped goes green there
+  instead, and its check is one that always passes on the machine that
+  gates the merge. Which step enters the line where a task brings in such a
+  tool after the workflow stands the texts do not name. The neighbour is
+  defect 11 of the entry of 19 October 2026, line 30196, a class filled as
+  not blocking for a tool missing on the platform's machine; here the class
+  blocks and its tests are skipped. The plan names no milestone: the
+  machine is the platform's and not the one milestone 3's permission is
+  about.
+  Recorded, not built: the check on GitHub that run 2a set up installs no htmlq, so the tests of npm run links that run 1 built to be skipped where htmlq is missing are skipped there and the required check is green without them, run 2b filed it as an issue and run 3a's planning settled with the person that yq is not installed there either — should: the workflow file carries the installation line of every tool outside the project that a blocking check needs to run its tests, one whose tests are skipped where it is missing included, so that no blocking check passes on the platform by skipping, the line being the check setup's and not settled in a planning, and which step enters it where a task brings in such a tool after the workflow stands is decided before it is built.
+
   **c. The sentence on the design in the course question**, decided as (c)
   above. Runs 2b #182 and 3a #178 carry it in both descriptions, as
   `plan-work` lines 425 to 428 ask.
@@ -37520,10 +37600,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   would have refused, so the end is the same. The poll of `gh pr checks` at
   20 seconds where the text has 60, in runs 2b and 3a, decides nothing. The
   number of a pull request given to `bin/devloop-arm` in the same command as
-  `gh pr create` in run 4, #161 and #359, was right both times. Whether the
-  issue #26 of run 2b belonged to the check setup, and whether WebKit was
-  the tool of the task or of the end-to-end class in run 1, the texts do not
-  decide; `git add -A` in run 1 #1012 stands under a rule of step 6 that may
+  `gh pr create` in run 4, #161 and #359, was right both times. Whether
+  WebKit was the tool of the task or of the end-to-end class in run 1 the
+  texts do not decide; the issue #26 of run 2b, which this paragraph said
+  until the addendum the texts do not decide either, is part of defect 35,
+  the workflow being the check setup's by `setup-checks` expanded 2390 to
+  2393. `git add -A` in run 1 #1012 stands under a rule of step 6 that may
   not bind a commit of the review. The person's question at the design of
   run 1, „sollte eigentlich der Entwurf nicht ohne den Nutzer entschieden
   werden?“, changes no should: with the person there `plan-work` asks which
@@ -37538,33 +37620,39 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   closes it, a change of its text or a run in which it holds, is open, and
   5986 and 30168 turn on what the model does. The two
   points for a bench, lines 1317 and 13635, still need it, under the
-  version then current. New are defects 1 to 9 above, which concern the
-  milestone: 1 a hook's, so a bench; 2 to 9 a run's. The six points of
-  cluster 20 stay built and never walked and do not hold the milestone up.
+  version then current. New are defects 1 to 9 and 34 above, which concern
+  the milestone: 1 a hook's, so a bench; 2 to 9 and 34 a run's. The six
+  points of cluster 20 stay built and never walked and do not hold the
+  milestone up.
   Whether the milestone is reached this entry does not decide: the benches
   of the entry at line 35286 come after the runs.
 
   **Records.** In `docs/stock-take.tsv`, by section C of the head of
-  `scripts/devloop-stock-take`: the thirty-six defects above as things, each
-  sited and with its evidence on its own status line, recorded and not
-  built; the head of this entry as part of defect 1; seventy run records
-  under version 0.157.0 with the source log, each on the row of the defect
-  whose case the run met, its run anchor the paragraph above that records
-  it, its note the records and whether the case held; and the notes of
-  three rows changed by the decisions above, line 30085, line 30294 and the
-  output style's branch on a question asked through the widget. No run
+  `scripts/devloop-stock-take`: the thirty-eight defects above as things,
+  each sited and with its evidence on its own status line, recorded and not
+  built, the rows of defects 34 and 35 the addendum's; the head of this
+  entry as part of defect 1; seventy run records under version 0.157.0 with
+  the source log, each on the row of the defect whose case the run met, its
+  run anchor the paragraph above that records it, its note the records and
+  whether the case held; the notes of three rows changed by the decisions
+  above, line 30085, line 30294 and the output style's branch on a question
+  asked through the widget; and the row of defect 22 renamed with its
+  status line by the addendum, no run on it, its note naming the old name
+  and the new should. No run
   stands on a row recorded and not built, and no line of this entry is
   part of a defect that carries a run, since such a line blames to this
   branch and would keep the run from counting.
 
   **The tool, run for this entry.** `scripts/devloop-stock-take` ran on the
-  tree of this commit in a clean bash with exit 0: no broken record, 14
-  findings, 42 closed defects, none of 4667 lines of the search set
-  uncovered, where 4630 stood at `6edeef1`, the thirty-seven more being the
-  head of this entry and its status lines; 2294 things, 712 of them walked;
-  the defects walked going from 76 to 93, those built and never walked from
-  241 to 224 and those recorded and not built from 313 to 349; no run of
-  this entry among the runs that do not count. Its self-test passed, 124
+  tree of each of its two commits in a clean bash with exit 0: no broken
+  record, 14 findings, 42 closed defects, and at the addendum none of 4669
+  lines of the search set uncovered, where 4630 stood at `6edeef1` and 4667
+  at the first commit, the thirty-nine more being the head of this entry
+  and its status lines, two of them the addendum's; 2296 things, 712 of
+  them walked; the defects walked going from 76 to 93, those built and
+  never walked from 241 to 224 and those recorded and not built from 313 to
+  351, 349 at the first commit; no run of this entry among the runs that
+  do not count. Its self-test passed, 124
   cases. The nineteen checks under "Before a handover, run these" printed
   what they printed at `6edeef1`, nothing under `skills/` or `shared/`
   changing.

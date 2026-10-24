@@ -442,8 +442,9 @@ The six closing runs were made on 23 October 2026 in `devloop-test-aa` and
 roadmap entry of that date on the six closing runs: of the thirteen points
 that waited for a run, eight held where a run met them, three held in part
 and two did not hold, the report of an install and the reading of the start
-conditions at the start of the build; the runs found nine new defects that
-concern the milestone; whether it is reached that entry does not decide, the
+conditions at the start of the build; the runs found ten new defects that
+concern the milestone, the tenth found by the addendum of the same day to
+that entry; whether it is reached that entry does not decide, the
 two benches of the arrangement coming after the runs.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
