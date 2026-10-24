@@ -306,6 +306,27 @@ rounds a frontier takes and not when the stage ends.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text three-questions`
 
+**A tool outside the project that the work needs is named, and who installs
+it is not settled here**, since 24 October 2026, defects 9 and 2 of the
+roadmap entry of that date on the six closing runs: not as an assumption of
+a round and not with them, since the install record read at the build
+decides it, `build-work` step 3 point 7, and the record can change between
+the planning and the build. Where such a tool is missing on this machine,
+the assumptions of the round say that the work needs it and that it is
+missing, and that whether the run installs it at the build or they get the
+command for it is decided by their permission to install as it stands for
+this project then. No stage of this skill judges an install: not the comment
+of Stage 2, where run 3a wrote that the record allowed the route npm alone
+and a build could not install `yq`, the record naming `/opt` among its
+places, and not the spec, whose sections below say where such a tool
+stands. Run 1 told the person they install `htmlq` themselves because the
+run installs nothing outside the project, and wrote it into the spec under
+Out of scope; in run 2a the person corrected the same, that the permission
+to install that holds when the work is built decides who installs, not the
+spec. The wording approved on 24 October 2026 stands in the roadmap entry of
+that date on how an install is recorded, (b); this skill says what is said,
+not the words.
+
 Two things are not the user's job:
 
 - **Facts.** Anything in the repository, the docs, or on the web you look up
@@ -677,11 +698,13 @@ No new questions. Write down what was decided, in these sections:
   here.
 - **Implementation decisions** — the design that was chosen, the modules built or
   changed, their interfaces, schema changes, contracts. Taken from Stage 3, not
-  invented here.
+  invented here. A tool outside the project that the work needs stands here
+  as needed, and who installs it does not, since 24 October 2026.
 - **Test decisions** — the placed seams and what gets checked at each.
 - **Out of scope** — what someone might reasonably expect and will not get,
   starting from the hard core of Stage 1 and adding what the design and the
-  seams put out of reach.
+  seams put out of reach. Never the install of a tool the work needs, which
+  the install record decides at the build, since 24 October 2026.
 - **Missing checks** — every class in `checks.md` this work would need and that is
   not `filled`, each with where it stands: for `skipped (state)` the state that
   keeps it off; for `skipped (user)` that the user switched it off, and why;
