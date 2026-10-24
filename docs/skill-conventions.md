@@ -606,7 +606,13 @@ since 20 October 2026, `setup-project` under "Refreshing an existing setup";
 and a second time in `setup-checks` step 8 where the record does not say
 yes, since 5 October 2026. A question whose answer stands is not put again
 there, whatever it says: re-asking is how a working project gets talked into
-changing its mind. The check setup needs nothing for this rule: it puts its
+changing its mind. Put at a refresh, its question field says why it comes
+now, since 24 October 2026: that the setup is being refreshed and that no
+answer to it stands for the project on the main branch. A first setup's
+first question carries why the questions come, a refresh carries no such
+opening, and run 3b put the question there without a word of why, defect 34
+of the roadmap entry of that date on the six closing runs. The check setup
+needs nothing for this rule: it puts its
 question on the project's packages where no record stands and the person is
 there, in step 3, and both permissions a second time in step 8 where their
 record does not say yes; where the answer on work without them is missing,
@@ -640,6 +646,18 @@ use it. A number is an index into a tracker they are not looking at: `#9, #10`
 after a week away says nothing, and a list of numbers says nothing several times
 over. The id and the link do not vanish — they ride inside the name, they never
 stand in for it.
+
+**One question names an issue by its number, since 24 October 2026**: the
+question on the rule for auto mode at a start with `--auto`, which names
+each install auto mode refused with its issue's number, as approved on 22
+October 2026. The reason of this rule does not meet it: the command before
+the number says what the question is about, and the issue's title names the
+problem, the same refused install again. `shared/refer-by-name.md` names
+the exception and step 8 of `setup-checks` gives the reason; decided by the
+person that day, decision (3) of the roadmap entry of that date on how an
+install is recorded, after run 3a named the issue by its title at both of
+its starts, defect 3 of the roadmap entry of that date on the six closing
+runs.
 
 ## End by offering, not by naming
 

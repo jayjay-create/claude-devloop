@@ -1565,8 +1565,10 @@ once, with the shell. Where it ends with 0 — the rule for the classifier
 does not stand in their settings, or they cannot be read for it, and an
 open issue of this project carries an install auto mode refused in a run
 without them — call `setup-checks` for its step 8 alone, for that one
-question in its form for a start with `--auto`, which changes nothing of
-the repository and, on the yes, enters the rule and closes the issues it
+question in its form for a start with `--auto`, at every start that meets
+it, also where `setup-checks` was loaded in this session already, since 24
+October 2026; that step changes nothing of the repository and, on the yes,
+enters the rule and closes the issues the program
 named; where it ends with 1, nothing is asked; where it ends with 2, say
 that the query did not answer, with the command and the message it prints,
 as "When a command does not answer" says, and ask nothing. The rule is no
@@ -1578,7 +1580,10 @@ back. A task an issue held is free once the issue is closed, and step 2
 takes it as any free task; a check class an issue concerned goes to
 `setup-checks` from step 4 of the next task, the state of its cell having
 ended with the rule. Decided on 22 October 2026, the roadmap entry of that
-date on the question after a refusal.
+date on the question after a refusal. Run 3a put the question at its second
+start without that call, out of what the session held of the step, and
+added a line of its own, defect 3 of the roadmap entry of 24 October 2026
+on the six closing runs.
 Where this section was reached from planning, nobody is there to ask: refuse,
 say which of the five is missing and that typing `--auto` where a piece of
 work starts sets it up, and the mark goes, as at every stop with a reason

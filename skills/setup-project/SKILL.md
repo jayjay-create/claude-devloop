@@ -91,7 +91,15 @@ guard reads it, through `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record`
 after the fetch above. Where that program answers that no record stands —
 `environment.md` carries no section `## Install permission`, or the file is
 not there — question 3 of step 4 is put as a first setup puts it, with the
-person there and in the same form, and the answer is written into
+person there and in the same form, and with its reason, since 24 October
+2026: in its question field, before the question line, why it comes now,
+that the setup of this project is being refreshed and that no answer to this
+question stands for it on the main branch, which the program has just said.
+Run 3b put it without a word of why, defect 34 of the roadmap entry of 24
+October 2026 on the six closing runs; "How to ask" above wants the reason
+there. The wording approved on 24 October 2026 stands in the roadmap entry
+of that date on how an install is recorded, (d); this skill says what is
+said, not the words. The answer is written into
 `environment.md` under `## Install permission` as step 6 writes it, the
 routes of the stack read by this run as there; where the record stands,
 whatever it says, nothing is asked. A question whose answer is stored is put
@@ -177,7 +185,10 @@ Nothing else of what it does is said there: not that it takes a few minutes,
 and not that it asks along the way, which changes no answer. The wordings
 approved on 17 October 2026 stand in the roadmap entry of that day on the
 reports of what was done; this skill says what is said, not the words. A
-refresh carries neither: it says what changed where it lands. Until 17
+refresh carries neither: it says what changed where it lands. The one
+exception, since 24 October 2026: where a refresh puts the install question,
+that question carries its own reason, as "Refreshing an existing setup"
+above says. Until 17
 October 2026 this step said before any tool call, in one or two sentences,
 that the repository is set up, that it takes a few minutes and that the run
 asks along the way.

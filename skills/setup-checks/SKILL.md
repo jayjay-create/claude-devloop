@@ -1165,8 +1165,11 @@ form:
 - **In the header**: the name for the subject, the rule, as above.
 - **In the question field, before the question line**: that auto mode, in
   a run without them, refused that install, the command as the program
-  prints it, with its issue's number; with several, each install with its
-  issue.
+  prints it, with its issue's number and not its title, though the program
+  prints the title too; with several, each install with its issue's number.
+  Nothing else stands there, no line of the run's own: not the task the
+  issue holds, and not whether the tool is on the machine yet or the issue
+  still open.
 - **In the question line**: the question above, unchanged.
 - **In the yes, label and line**: devloop enters the rule, closes the issue
   and takes the task up again where the issue holds a task, sets the check
@@ -1179,7 +1182,17 @@ form:
 
 The wording approved on 22 October 2026 stands in the roadmap entry of that
 date on the question after a refusal; this skill says what is said, not the
-words. On the yes, `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write`
+words. The issue's number in place of its title is an exception to
+`shared/refer-by-name.md`, for this question alone, since 24 October 2026,
+decided by the person that day, the roadmap entry of that date on how an
+install is recorded, (3): the reason of that rule, that a wall of numbers
+is illegible where names read at a glance, does not meet this question,
+since the command before the number says what it is about, and the issue's
+title names the problem, the same refused install again. Run 3a named the
+issue by its title at both starts, with the task it held, and added a line
+of its own at the second, defect 3 of the roadmap entry of 24 October 2026
+on the six closing runs. On the yes,
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write`
 enters the rule, as the next paragraph says, and where it ends with 0 the
 run closes every issue the program named, `gh issue close` without a
 comment, since no wording for one is approved. A task an issue held is free
