@@ -25,18 +25,22 @@
 # person's decision of that day on point 8, "alone" where the install stood
 # alone in its call, the one command at the top level of the call and none
 # reading its output, or "not alone"; and the redirections that sent its
-# output away, as written, empty where none. A fact without the third field
-# counts as not alone. The two ids are kept to letters, digits, dot, hyphen
-# and underscore; the note is $TMPDIR/devloop-install-note-SESSION-TOOL_USE_ID,
-# under /tmp where TMPDIR is unset.
+# output away, as written, empty where none; and since the order of that day
+# on the rest of part A the pipe that read its output, "| " and each command
+# reading it as its words ran, "| tail -5", empty where none. A fact without
+# the third field counts as not alone. The two ids are kept to letters,
+# digits, dot, hyphen and underscore; the note is
+# $TMPDIR/devloop-install-note-SESSION-TOOL_USE_ID, under /tmp where TMPDIR
+# is unset.
 #
 # write: exit 0 with the note written, a note of the same key replaced; exit 0
 #   with nothing written where an id is empty after the keeping, or stdin
 #   carries no line with a folder and a command.
-# take: exit 0 and one line per fact, its four fields as above separated by
+# take: exit 0 and one line per fact, its five fields as above separated by
 #   the unit separator, the third "not alone" wherever it is not "alone", the
 #   note removed; exit 1 and nothing printed where no note stands for the key,
-#   or an id is empty. Until 24 October 2026 it printed each fact as its line.
+#   or an id is empty. Until 24 October 2026 it printed each fact as its line,
+#   and four fields until the order of that day on the rest of part A.
 # drop: exit 0, the note removed where it stands.
 # put: the line of one install written into docs/agents/environment.md of the
 #   working tree the current directory lies in, under the heading
@@ -148,12 +152,12 @@ selftest() {
   run take "" t1;                        expect "take with an empty session: exit 1" 1
   run drop s1 t1;                        expect "drop where no note stands: exit 0" 0
   runin "/opt/homebrew/bin${US}brew install gitleaks${US}alone${US}>/dev/null 2>&1
-~/go/bin${US}go install golang.org/x/vuln/cmd/govulncheck@latest${US}not alone${US}" write "s 1/x" "toolu_01A.b-c"
+~/go/bin${US}go install golang.org/x/vuln/cmd/govulncheck@latest${US}not alone${US}${US}| tail -5" write "s 1/x" "toolu_01A.b-c"
   expect "write with two facts, the ids kept to their letters: exit 0, one note" 0; count 1 "write with two facts, the ids kept to their letters: exit 0, one note"
   [ -f "$T/devloop-install-note-s1x-toolu_01A.b-c" ] || { echo "FAIL the note does not stand at the key with the ids kept"; ls "$T"; exit 1; }
   run take "s 1/x" "toolu_01A.b-c"
-  expect "take: each fact with its four fields, the note removed" 0 "/opt/homebrew/bin${US}brew install gitleaks${US}alone${US}>/dev/null 2>&1" "~/go/bin${US}go install golang.org/x/vuln/cmd/govulncheck@latest${US}not alone${US}"
-  count 0 "take: each fact with its four fields, the note removed"
+  expect "take: each fact with its five fields, the pipe the last, the note removed" 0 "/opt/homebrew/bin${US}brew install gitleaks${US}alone${US}>/dev/null 2>&1${US}" "~/go/bin${US}go install golang.org/x/vuln/cmd/govulncheck@latest${US}not alone${US}${US}| tail -5"
+  count 0 "take: each fact with its five fields, the pipe the last, the note removed"
   run take s1x toolu_01A.b-c;            expect "take a second time: exit 1" 1
   runin "/opt/homebrew/bin${US}brew install gitleaks" write s4 t4; run take s4 t4
   expect "take of a fact without the third field: not alone" 0 "/opt/homebrew/bin${US}brew install gitleaks${US}not alone${US}"
@@ -224,13 +228,25 @@ EOF
   hook PostToolUse "npm install -g --prefix $L epsilon 2>/dev/null" t14
   expect "an install alone, its error output sent away: the redirection named" 0 "installed into $L/bin. The output of this install was sent away (2>/dev/null)"
   hook PostToolUse "npm install -g --prefix $L zeta 2>&1 | tail -5; ls $L/bin" t15
-  expect "an install not alone, a pipe behind it and a command after it: no line, the context to read and write" 0 "[InstallFact] not written: \`npm install -g --prefix $L zeta\` was not the last command of its call, or another command read its output, so the call's exit is not the install's and this hook cannot tell whether it went through. Read whether the tool stands in $L/bin; where it does, write its line with " "/bin/devloop-install-note put '$L/bin' 'npm install -g --prefix $L zeta'. Say in the report that the output of the install was not read whole, and run the next install alone in its call." '"hookEventName":"PostToolUse"'
+  expect "an install not alone, a pipe behind it and a command after it: no line, context f and the sentence on the pipe" 0 "[InstallFact] not written: \`npm install -g --prefix $L zeta\` did not stand alone in its call, so the call's exit may not be the install's, and this hook cannot tell whether it went through. Read whether the tool stands in $L/bin; where it does, write its line with " "/bin/devloop-install-note put '$L/bin' 'npm install -g --prefix $L zeta'. Run the next install alone in its call. The output of this install was cut by \`| tail -5\`, so what the package manager did besides is not known from it: say so in the report.\"}}" '"hookEventName":"PostToolUse"'
+  absent "sent away" "an install not alone, a pipe behind it and a command after it: no line, context f and the sentence on the pipe"
   hook PostToolUse "cd $P && npm install -g --prefix $L eta" t16
-  expect "an install with a command before it: not alone, since the reader does not tell ; && and || apart" 0 "[InstallFact] not written: \`npm install -g --prefix $L eta\`"
+  expect "an install with a command before it: not alone, since the reader does not tell ; && and || apart, context f without a sentence on the output" 0 "[InstallFact] not written: \`npm install -g --prefix $L eta\` did not stand alone in its call, so the call's exit may not be the install's" "/bin/devloop-install-note put '$L/bin' 'npm install -g --prefix $L eta'. Run the next install alone in its call.\"}}"
+  absent "The output of this install" "an install with a command before it: not alone, since the reader does not tell ; && and || apart, context f without a sentence on the output"
+  hook PostToolUse "cd $P && npm install -g --prefix $L lambda >/dev/null 2>&1" t30
+  expect "an install not alone, its output sent away and no pipe reading it: context f and the second sentence of e" 0 "'npm install -g --prefix $L lambda'. Run the next install alone in its call. The output of this install was sent away (>/dev/null 2>&1), so what the package manager did besides is not known from it: say so in the report.\"}}"
+  absent "cut by" "an install not alone, its output sent away and no pipe reading it: context f and the second sentence of e"
+  hook PostToolUse "npm install -g --prefix $L mu 2>/dev/null | grep -v warn | tail -2" t31
+  expect "an install not alone, its error output sent away and a pipe of two reading the rest: the sentence on the whole pipe alone" 0 "'npm install -g --prefix $L mu'. Run the next install alone in its call. The output of this install was cut by \`| grep -v warn | tail -2\`, so what the package manager did besides is not known from it: say so in the report.\"}}"
+  absent "sent away" "an install not alone, its error output sent away and a pipe of two reading the rest: the sentence on the whole pipe alone"
   hook PostToolUseFailure "npm install -g --prefix $L theta | tail -3" t17
-  expect "an install not alone in a call that failed: the same context under PostToolUseFailure" 0 "[InstallFact] not written: \`npm install -g --prefix $L theta\`" '"hookEventName":"PostToolUseFailure"'
+  expect "an install not alone in a call that failed: the same context under PostToolUseFailure" 0 "[InstallFact] not written: \`npm install -g --prefix $L theta\` did not stand alone in its call" "Run the next install alone in its call. The output of this install was cut by \`| tail -3\`" '"hookEventName":"PostToolUseFailure"'
   hook PostToolUseFailure "npm install -g --prefix $L iota" t18
   expect "an install alone in a call that failed: nothing written, nothing said" 0; [ -z "$out" ] || { echo "FAIL an install alone in a call that failed printed something"; printf '%s\n' "$out"; exit 1; }
+  hook PostToolUse "npm install -g --prefix $L gamma >/dev/null" t32
+  expect "an install alone whose line stands already, its output sent away: the second sentence of e alone" 0 '{"hookSpecificOutput":{"hookEventName":"PostToolUse","additionalContext":"The output of this install was sent away (>/dev/null), so what the package manager did besides is not known from it: say so in the report."}}'
+  hook PostToolUse "npm install -g --prefix $L alpha" t33
+  expect "an install alone whose line stands already, its output seen: nothing said" 0; [ -z "$out" ] || { echo "FAIL an install alone whose line stands already printed something"; printf '%s\n' "$out"; exit 1; }
   count 0 "the notes taken by the hook, none left"
   file "the section after the calls: one line per install that stood alone and went through, none for the others" "$P/$FILE" <<EOF
 # Environment
@@ -337,10 +353,10 @@ case "$ACTION" in
     [ -n "$SID" ] && [ -n "$TUID" ] || exit 1
     P=$(note_path "$SID" "$TUID")
     [ -f "$P" ] || exit 1
-    while IFS="$US" read -r D C A R; do
+    while IFS="$US" read -r D C A R X; do
       [ -n "$D" ] && [ -n "$C" ] || continue
       [ "$A" = "alone" ] || A="not alone"
-      printf '%s\n' "$D$US$C$US$A$US$R"
+      printf '%s\n' "$D$US$C$US$A$US$R$US$X"
     done < "$P"
     rm -f "$P"
     exit 0 ;;

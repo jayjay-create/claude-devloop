@@ -183,6 +183,25 @@ away_of() {
     return
   done <<< "$CMDS"
 }
+# pipe_of ID: the pipe that reads the output of the command with that id,
+# "| " and the command reading it as words_of writes it, then each command
+# reading that one's output the same way - "| grep -v warn | tail -5" - and
+# nothing where no command reads it; the reader prints | and |& alike, so
+# both are written |; since 24 October 2026, the order of that day on the
+# rest of part A, for the sentence behind context f on what cut the output
+pipe_of() {
+  local L id pipe cur="$1" next out=""
+  while :; do
+    next=""
+    while IFS= read -r L; do
+      IFS="$US" read -r id _ _ pipe _ <<< "$L"
+      [ "$pipe" = "$cur" ] && { next="$id"; break; }
+    done <<< "$CMDS"
+    [ -n "$next" ] || break
+    out="$out${out:+ }| $(words_of "$next")"; cur="$next"
+  done
+  printf '%s' "$out"
+}
 # expand PATH: a ~ or $HOME opening replaced by the home directory; the result
 # is printed, and nothing where another variable stands in it
 expand() {
@@ -1198,7 +1217,8 @@ $D" ;;
     # its redirections - and since 24 October 2026 whether the install stood
     # alone in its call and the redirections that sent its output away, the
     # person's decision of that day on point 8, for the fact hook to tell
-    # where the call's exit is the install's; handed to
+    # where the call's exit is the install's, and since the order of that
+    # day on the rest of part A the pipe that read its output; handed to
     # bin/devloop-install-note at the one pass under a yes below; a
     # fetch-and-run form names no folder and leaves no fact
     note() {
@@ -1213,7 +1233,7 @@ $D" ;;
           "$HOME"/*|"$HOME") D="~${D#"$HOME"}" ;;
         esac
         C=$(words_of "$I")
-        [ -n "$C" ] && printf '%s\n' "$D$US$C$US$(alone_of "$I")$US$(away_of "$I")"
+        [ -n "$C" ] && printf '%s\n' "$D$US$C$US$(alone_of "$I")$US$(away_of "$I")$US$(pipe_of "$I")"
       done <<< "$(printf '%s\n' "$FACTS" | grep -v '^$' | sort -t "$US" -k1,1n)"
     }
     UNNAMED=""

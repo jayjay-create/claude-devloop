@@ -33,7 +33,13 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # install went through or not, measured that day in bash and in zsh - no
 # line is written: the context, under either event, tells the run to read
 # the folder and write the line through the program, and an install alone
-# in a call that failed is dropped without a word. The input is read through
+# in a call that failed is dropped without a word. Since the order of that
+# day on the rest of part A the context says there that the install did not
+# stand alone, where it said it was not the last command, untrue of one
+# standing last behind another, and names what cut its output, the pipe the
+# guard noted, or sent it away, the redirection; and where the line of an
+# install alone stood already and its output was sent away, the context
+# says that alone, as it does behind a refusal. The input is read through
 # bin/devloop-command-reader, which decodes the JSON, since 12 October 2026;
 # every hook reads it so, and a check in .github/workflows/stock-take.yml
 # holds them to that. Where the line cannot be written - the tree on the
@@ -77,11 +83,19 @@ q() { printf "'%s'" "$(printf '%s' "$1" | sed "s/'/'\\\\''/g")"; }
 json() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g' | awk '{ gsub(/\t/, "\\t"); printf "%s%s", (NR > 1 ? "\\n" : ""), $0 }'; }
 
 WRITTEN=""; AWAY=""; CTX=""; ERR=""
-while IFS="$US" read -r D C A R; do
+while IFS="$US" read -r D C A R PIPE; do
   [ -n "$D" ] && [ -n "$C" ] || continue
   if [ "$A" != "alone" ]; then
-    # the wording approved on 24 October 2026
-    CTX="$CTX${CTX:+$NL}[InstallFact] not written: \`$C\` was not the last command of its call, or another command read its output, so the call's exit is not the install's and this hook cannot tell whether it went through. Read whether the tool stands in $D; where it does, write its line with $CALL put $(q "$D") $(q "$C"). Say in the report that the output of the install was not read whole, and run the next install alone in its call."
+    # the wording of the order of 24 October 2026 on the rest of part A, in
+    # place of the one approved earlier that day, untrue of an install that
+    # stood last behind another command
+    CTX="$CTX${CTX:+$NL}[InstallFact] not written: \`$C\` did not stand alone in its call, so the call's exit may not be the install's, and this hook cannot tell whether it went through. Read whether the tool stands in $D; where it does, write its line with $CALL put $(q "$D") $(q "$C"). Run the next install alone in its call."
+    # behind it what cut the output or sent it away, the pipe where both did
+    if [ -n "$PIPE" ]; then
+      CTX="$CTX The output of this install was cut by \`$PIPE\`, so what the package manager did besides is not known from it: say so in the report."
+    elif [ -n "$R" ]; then
+      CTX="$CTX The output of this install was sent away ($R), so what the package manager did besides is not known from it: say so in the report."
+    fi
     continue
   fi
   [ "$EVENT" = "PostToolUse" ] || continue
@@ -102,6 +116,9 @@ if [ -n "$ERR" ]; then
   exit 2
 fi
 [ -n "$WRITTEN" ] && CTX="[InstallFact] written into $FILE under \"$HEADING\", on this branch, by the hook and not by you: $WRITTEN$SENT${CTX:+$NL$CTX}"
+# where the line stood already, the second sentence of e alone, as behind a
+# refusal; since the order of 24 October 2026 on the rest of part A
+[ -z "$WRITTEN" ] && [ -n "$SENT" ] && CTX="${SENT#. }${CTX:+$NL$CTX}"
 [ -n "$CTX" ] || exit 0
 printf '{"hookSpecificOutput":{"hookEventName":"%s","additionalContext":"%s"}}\n' "$EVENT" "$(json "$CTX")"
 exit 0

@@ -2468,8 +2468,8 @@ the line. The guard is the one
 reader: at its pass under a yes it hands the facts it read — the route's
 answer on this machine or the path written in the command, the words of
 the simple command that fired, and since 24 October 2026 whether that
-command stood alone in its call and the redirections that sent its output
-away — to `bin/devloop-install-note`, keyed by the
+command stood alone in its call, the redirections that sent its output
+away and the pipe that read it — to `bin/devloop-install-note`, keyed by the
 session and the tool call, and the hook takes them back through the same
 program and writes the line through it too, `put`, since the same day,
 the program alone holding the path of the note and the form and the place
@@ -2486,7 +2486,10 @@ no command reading its output. The reader prints the commands of a list in
 their order and nothing of what joins them, `;`, `&&` and `||` alike, so an
 install with any other command beside it at the top level counts as not
 alone; a command sent to the background with `&` or negated with `!` the
-reader does not mark, and the guard cannot see it. Alone and its output
+reader does not mark, and the guard cannot see it; a redirection on a group
+or a subshell, `{ brew install x; } >/dev/null`, it prints as a line of its
+own, as it prints `brew install x; >/dev/null`, so the guard counts the
+install not alone and cannot name the redirection. Alone and its output
 seen, the line is written as before; alone and its output sent away into a
 file or `/dev/null`, the line is written and the context names the
 redirection, so that the report says what the package manager did besides
@@ -2497,8 +2500,17 @@ and the context, under either event, tells the run to read the folder and
 write the line with the program's call, the hooks reference saying of
 `PostToolUseFailure` that its `additionalContext` is "added to Claude's
 context alongside the error"; an install alone in a call that failed is
-dropped without a word. A fetch-and-run form leaves no fact, since the guard
-reads no folder for it and the line carries one. Where the line cannot be
+dropped without a word. Since the order of that day on the rest of part A
+the context of an install not alone says that it did not stand alone,
+where it said that it was not the last command of its call, untrue of an
+install standing last behind another, and names behind it what cut the
+output, the pipe, or where no pipe read it what sent it away, the
+redirection, each with the sentence that the report says what the package
+manager did besides is not known; and where the line of an install alone
+stood already and its output was sent away, the context is that sentence
+on the redirection alone, as it stands behind a refusal. A fetch-and-run
+form leaves no fact, since the guard reads no folder for it and the line
+carries one. Where the line cannot be
 written — the tree on the default branch, which the branch guard holds
 unchanged for the editing tool by design, or the file missing in the tree —
 the program refuses, the hook says so with exit 2, the line in its message,
