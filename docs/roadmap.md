@@ -38495,6 +38495,180 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   printed at `e9deec2`, but for the line numbers of `build-work`,
   `plan-work`, `setup-checks` and `setup-project` the new text moved.
 
+- **Start conditions read by one program, the mark blocked on five of them.**
+  25 October 2026, version 0.161.0. On `task/milestone-3-start-conditions`,
+  off `a339940`, in two commits: the code with the version, the texts that
+  name it and the rows of the things it changes, `3d82ab1`; then this entry
+  with the sentence in `docs/plan.md` and the rows they need. It carries
+  part D of the build the entry at line 37660 records, the start conditions
+  of a run with nobody there: point 10 of the entry at line 36636, the
+  defect at line 30168, as decision (5) of the entry at line 37660 has it,
+  with the wordings (g) and (h) approved with it. A line of a file is given
+  as it stands at `3d82ab1` and a line of a skill as `scripts/devloop-expand`
+  prints it there, marked expanded, unless `a339940` is named. Beyond the
+  `git fetch` the hooks reference of Claude Code was fetched as markdown
+  once, under Claude Code 2.1.310; GitHub was neither read nor changed, the
+  program running outside its self-test only against a throwaway
+  repository whose origin is a local one; nothing was run against the
+  settings of this machine, and no test project was touched.
+
+  **Part D, on this branch.** (a) `bin/devloop-start-conditions`, new.
+  Called with the issue numbers of the tasks in range, or without them, it
+  reads conditions 1, 2, 3 with the range, 5, 6 and 7 as `build-work`
+  describes them under "Unattended mode", expanded 2578 to 2646, and prints
+  one line for each in wording (g), the lines for condition 3 without a
+  range and for condition 4 among them, its head lines 1 to 85. It fetches
+  nothing: the main branch is read as last fetched, resolved by the seven
+  lines `bin/devloop-setup-state` resolves it with, lines 354 to 360, which
+  the check under "Before a handover, run these" holds together over four
+  files since then. Condition 1, lines 364 to 402: `docs/agents/checks.md`
+  off that branch, its rows found as `bin/devloop-check-table` finds them,
+  a class `empty` failing it and a status in none of the four forms named
+  by that program as the cause. Conditions 2 and 5, lines 404 to 469 and
+  499 to 519: `gh api repos/{owner}/{repo}` for `.allow_auto_merge` and
+  `.permissions.admin`, the classic protection, the rules of the branch and
+  `rulesets/<id>` for `current_user_can_bypass` of each ruleset that
+  requires a check, both sides asked. Condition 3, lines 471 to 495: per
+  task the field `blockedBy` of the issue, as the readiness query of
+  `skills/setup-project/SKILL.md` line 664 asks it, an open blocker outside
+  the range failing it. Conditions 6 and 7, lines 521 to 543: through
+  `bin/devloop-install-record`, in the words the guard used. Every query
+  runs under `bin/devloop-bounded` with ten seconds, and none starts once
+  fewer than ten of ninety-five seconds are left, lines 309 to 344, as
+  `bin/devloop-arm` bounds its calls; a query that does not answer, and a
+  `gh` not on the path or not logged in, gives "is not established". Exit
+  0 where every condition read holds, 1 otherwise, 2 on an argument that is
+  no issue number. Its self-test, 34 cases, answers `gh` by a stand-in
+  after the one of `bin/devloop-arm` and reaches no GitHub; the job runs it
+  with every self-test under `bin/`.
+  (b) `build-work` reads the conditions at the start of the build on both
+  routes by one call of the program with the range — the open tasks under
+  the spec the run builds, as the readiness query of step 2 lists them, a
+  definition the skills did not have —, condition 4 as before and none of
+  the six beside the call; the description of each condition stays,
+  expanded 2562 to 2576, `skills/build-work/SKILL.md` lines 1475 to 1489;
+  after step 8 of `setup-checks` with a yes the seven are read again by the
+  same call, lines 1576 to 1578. `plan-work` reads the five beside the mode
+  before the question on the mode by one call without a range, expanded
+  1237 to 1249, lines 487 to 499. `shared/mode-set-up.md` lines 21 to 31
+  says what the guard reads now.
+  (c) The guard on the mark, `hooks/pre-tool-use-mark-guard.sh`: where the
+  mark is written in auto mode it calls the program without a range, lines
+  175 to 191, and blocks where 1, 2, 5, 6 or 7 does not hold or is not
+  established, wording (h) word for word at line 193, `<failures>` the
+  program's lines of those that fail joined by "; ", and a condition the
+  program printed no line for named so, since every failure to read is a
+  block where a hook reads the person's permission. That replaces its block
+  on 6 and 7 at line 196 and its own reading of the two records at lines
+  169 to 192 at `a339940`, so that there is one reading, the program's; its
+  blocks on condition 4, its pass on a deletion or a read of the mark and
+  in a project without `docs/agents` stand as they stood. The mark is not
+  written anew at the start of a build after a planning. Both skills say
+  at their write of the mark what the run does on the block, `build-work`
+  lines 1644 to 1656 and `plan-work` lines 553 to 564.
+  (d) `docs/skill-conventions.md`: under "The install guard reads a
+  record", lines 2144 to 2159; the copies of the default branch, lines 2213
+  to 2215; under the tool classes, lines 3238 to 3241; where the mark is
+  introduced, lines 3400 to 3402; the check on the copies, lines 3800 to
+  3810; and the job under "Registering a skill", lines 1270 to 1273.
+  (e) The step "hooks on every system" of
+  `.github/workflows/stock-take.yml`: its inputs `ls` and a Write of
+  `README.md` never reached the new path, the guard passing both before it
+  reads anything, so the step feeds the guard a write of the mark in auto
+  mode after the handlers, lines 441 to 455, with a stand-in for `gh` first
+  on the path that refuses every call at once, so that the job reaches no
+  GitHub whatever `gh` the system carries and no query waits on its bound;
+  red unless the guard ends with 2 and its block opens with (h) and names
+  conditions 1, 2, 5, 6 and 7, the block printed on every system; the
+  comment, lines 295 to 314, and the step's name, line 358, say so. Under
+  Windows the step shows the block as on the other systems, since nothing
+  waits on a bound there; what it does not show there is the bound: a `gh`
+  that did not answer would be ended under Windows by the `kill_tree` of
+  `bin/devloop-bounded`, which hung at its case "does not end", the defect
+  of milestone 12 the addendum of 23 October 2026 records, so that the
+  guard would run into its 600 seconds and block without its reason. That
+  block stays open under Windows with that defect, its row saying so. The
+  exception of lines 369 to 370 does not take in the new self-test, none of
+  whose cases waits on a bound; whether it runs there the job on the pull
+  request shows.
+  (f) The version went from 0.160.0 to 0.161.0, "Registering a skill".
+
+  **The hooks reference on the limit, and a reason of decision (5)
+  corrected.** Fetched as markdown off the vendor's page on 25 October
+  2026: a command hook's `timeout` defaults to 600 seconds, "Defaults: 600
+  for `command`, `http`, and `mcp_tool`", lowered only on events other than
+  `PreToolUse`, and `hooks/hooks.json` sets none; the `Bash` tool's
+  `timeout` defaults to `120000` milliseconds. Decision (5) gives as its
+  reason for bounding that "a timed-out `command`, `http`, or `mcp_tool`
+  hook doesn't block the tool call", lines 37733 to 37735; the reference
+  goes on, "except for hooks whose failure blocks the action", and the
+  guard carries `"onFailure": "block"` under both matchers,
+  `hooks/hooks.json` lines 7 and 13, as the conventions hold every handler
+  under `PreToolUse` to since 13 October 2026. So a guard that ran into its
+  limit would block and not pass, after up to ten minutes and with Claude
+  Code's message in place of (h). The bound is built all the same, for that
+  reason: so that the block comes inside the call, naming which condition
+  failed and why, and so that the program a skill calls ends inside the
+  120 seconds of a call. The decision stands as decided.
+
+  **Three readings of the text**, none of them a decision of the person.
+  Condition 2: "Where a side did not answer, this condition is not
+  established", expanded 2594 to 2595, is read as holding where a side
+  answered with a gate that binds, not established where none binds and a
+  side did not answer, and failing where both answered and none binds;
+  read word for word it would refuse every account without admin rights on
+  a repository whose gate is a ruleset, since the classic query needs
+  admin. A gate is a required check, in classic protection or in a
+  ruleset's `required_status_checks` rule, as `bin/devloop-arm` reads the
+  gate. And a `checks.md` whose table holds no row fails condition 1.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`. By the first commit: thirty outcomes of the
+  program and forty-six rows part of them; two outcomes of the guard, 1, 2
+  or 5 failing and a condition without a line; its two outcomes on 6 and 7
+  of 22 October 2026, runs hanging on them, kept by name, re-sited and
+  their notes saying what holds now, the two rows of the lines gone taken
+  out, and the note of its pass under auto; the branches of the mark's
+  block in `build-work` and `plan-work`, no run on them, renamed for 1, 2,
+  5, 6 and 7, their notes naming the old names; the rows of the lines moved
+  in both skills and in `shared/mode-set-up.md` re-anchored, five added;
+  the note of the six read before asking in `plan-work`; one outcome of the
+  workflow and three rows part of it, and the note of its green outcome;
+  the check on the copies of the default branch re-anchored; the defect at
+  line 30168 with its evidence on the new paragraph of `build-work`, its
+  note saying that a run and a bench are owed; the defect of milestone 12
+  on `bin/devloop-bounded` under Windows, its note naming the guard's
+  block. By the second commit: the head of this entry, no defect. No run is
+  recorded.
+
+  **The tool, run for this entry.** `scripts/devloop-stock-take` in a clean
+  bash with `/usr/bin/grep`, exit 0 at `a339940` and at both commits: no
+  broken record, 14 findings, 42 closed defects; none of 4802 lines of the
+  search set uncovered at `a339940`, none of 4874 at the first commit and
+  none of 4875 at the second; 356 things recorded and not built at
+  all three; 687 things walked at `a339940` and 682 at both commits, the
+  five that no longer count each standing on a line this branch changed —
+  the defect at line 30168, walked through the guard's block until then,
+  the green form of the check on the copies of the default branch, the two
+  blocks of the guard on 6 and 7 and the six read before asking in
+  `plan-work` — an undercount, as section D of the head allows; 2329
+  things at `a339940` and 2362 at both commits, the 33 new ones. The
+  program's self-test passed, 34 cases; the step "hooks on every system",
+  run as a script on this Mac, ended with 0 and printed the guard's block,
+  and with the guard of `a339940` in its place the new check went red. The
+  nineteen checks under "Before a handover, run these" printed at the first
+  commit what they printed at `a339940`, but for the line numbers the new
+  text moved in `build-work` and `plan-work` and for the check on the
+  copies of the default branch, which reads four files since then.
+
+  **What comes next.** All four parts are built. Next comes the one pass
+  with runs and benches on what holds milestone 3 open, points 8 and 10 and
+  defects 2, 5, 7, 9 and 34 of the entry at line 36636 — for point 10 the
+  call of the program in a run, at the start of the build on both routes,
+  and the guard on the mark on a bench, fed the write of the mark under
+  each condition broken —, before it is decided whether the milestone is
+  reached.
+
 
 ## Decisions taken against
 

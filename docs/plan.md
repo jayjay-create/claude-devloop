@@ -472,10 +472,13 @@ October 2026, the milestone that takes it up decided by the person after
 milestone 3. They are built in four parts, each a branch of its own that
 raises the version once and is merged before the next is cut — how an
 install is recorded, the install rules in the text, the questions, the
-start conditions, the first three of them built, the first in that entry,
-the second in the entry on part B and the third in the entry on the
-questions — followed by one pass with runs and benches on what holds the
-milestone open, before it is decided whether the milestone is reached.
+start conditions, and all four are built, the first in that entry, the
+second in the entry on part B, the third in the entry on the questions and
+the fourth in the roadmap entry of 25 October 2026 on the start conditions
+read by one program. Next comes the one pass with runs and benches on what
+holds the milestone open, points 8 and 10 and defects 2, 5, 7, 9 and 34 —
+for point 10 the call of the program in a run and the guard on the mark on
+a bench — before it is decided whether the milestone is reached.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
