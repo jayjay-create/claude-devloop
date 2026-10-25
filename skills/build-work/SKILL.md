@@ -1490,23 +1490,32 @@ each line is about, and what the run says where one does not hold:
 
 1. No class in `checks.md` is `empty`. Every one is `filled`, or `skipped` in
    one of its two forms. `empty` means undecided, and an undecided check
-   approves nothing.
+   approves nothing. Nor does a table that holds no row, or a main branch
+   that carries no `checks.md`: on either this condition does not hold.
 2. A failing gate genuinely blocks a merge on the remote — not the model's
    judgement that it looks fine, and not a rule the account running this can
-   step over. This runs as whoever the tooling is authenticated with; on a
-   repository the user owns, that is an admin. Each kind of gate says whether it
-   binds in its own place: classic protection in `enforce_admins.enabled`
-   together with `.permissions.admin`, a ruleset in `gh api
-   repos/OWNER/REPO/rulesets/RULESET_ID -q .current_user_can_bypass`, with
-   `RULESET_ID` taken off the rules `rules/branches/main` returned. `never`
-   binds; anything else does not, `pull_requests_only` included, since that is a
-   bypass at the merge itself. Reading only the classic field reports a ruleset
-   gate as absent, because that endpoint 404s where the gate is a ruleset. Ask
-   both sides — a gate binds if either binds — and refuse on a gate that would
-   not apply here: an unattended run has nothing else standing between a red
-   suite and the main branch. Where a side did not answer, this condition is not
-   established; say so rather than reading the silence as a yes or a no. This is
-   also what makes the run able to merge at all: see 5.
+   step over. A gate is a required status check: `required_status_checks` in
+   classic protection, or a ruleset's rule of that type; a protection that
+   requires no check is no gate. This runs as whoever the tooling is
+   authenticated with; on a repository the user owns, that is an admin. Each
+   kind of gate says whether it binds in its own place: classic protection in
+   `enforce_admins.enabled` together with `.permissions.admin`, a ruleset in
+   `gh api repos/OWNER/REPO/rulesets/RULESET_ID -q .current_user_can_bypass`,
+   with `RULESET_ID` taken off the rules `rules/branches/main` returned.
+   `never` binds; anything else does not, `pull_requests_only` included, since
+   that is a bypass at the merge itself. Reading only the classic field
+   reports a ruleset gate as absent, because that endpoint 404s where the gate
+   is a ruleset. Ask both sides — a gate binds if either binds — and refuse on
+   a gate that would not apply here: an unattended run has nothing else
+   standing between a red suite and the main branch. So this condition holds
+   where a side answered with a gate that binds, whatever the other did; it
+   does not hold where none binds and every query that could show one answered.
+   Where no answer showed a gate that binds and a query that could show one
+   did not answer — a side's own, the query of a ruleset its rules named, or
+   for a classic gate without `enforce_admins` the repository's query for
+   `.permissions.admin` — this condition is not established; say so rather
+   than reading the silence as a yes or a no. This is also what makes the run
+   able to merge at all: see 5.
 3. No task in range is blocked by anything outside the range.
 4. Claude Code runs in auto mode. Read it by running
    `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` once, with the shell:
@@ -1535,12 +1544,16 @@ each line is about, and what the run says where one does not hold:
    there: `gh api repos/OWNER/REPO/branches/main/protection` is blind to rulesets
    and needs admin, so only a body reading "Branch not protected" means none, and
    `gh api repos/OWNER/REPO/rules/branches/main` is blind to classic protection.
-   A gate found by either is a gate. Where neither query answered, the rights are
-   missing and this condition is not established — say so rather than reading the
-   silence as a yes or a no. Without a gate there is nothing to arm: the platform
-   has no gate to hold the pull request, performing the merge is not the agent's
-   to do, and nobody is present to do it by hand — the run would build a task
-   and then sit on a pull request forever.
+   A gate found by either is a gate, a required check as in 2. Where one of
+   the two is known to be missing, auto-merge off or no gate on either side,
+   this condition does not hold, whatever did not answer.
+   Otherwise, where no gate was found and either query did not answer, or the
+   query for `.allow_auto_merge` did not, this condition is not established —
+   say so rather than reading the silence as a yes or a no. Without a gate
+   there is nothing to arm: the platform has no gate to hold the pull request,
+   performing the merge is not the agent's to do, and nobody is present to do
+   it by hand — the run would build a task and then sit on a pull request
+   forever.
 
    This refusal is about the run being able to finish, not about trusting it.
    Say which of the two is missing and what would change it — the setup of

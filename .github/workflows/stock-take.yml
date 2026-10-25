@@ -312,6 +312,13 @@ jobs:
   # case "does not end", the defect of milestone 12 named above, so that the
   # guard would run into its 600 seconds and, under onFailure "block", block
   # without its reason; that block stays open there with that defect.
+  # Since the same day, after the job went red on all four systems on pull
+  # request #205, the step reads every exit code behind ||: GitHub runs it
+  # as bash --noprofile --norc -eo pipefail, the command shell: bash stands
+  # for, and under -e the form OUT=$(...); RC=$? ended it at the guard's 2
+  # before RC was set, and would have ended it at any handler not ending
+  # with 0 before its output was printed; run as a script with bash alone,
+  # without -e, the step had ended with 0.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -358,6 +365,7 @@ jobs:
       - name: every self-test under bin/, two of them left out under Windows, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, and the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in
         run: |
           set -u
+          # every exit code the step reads stands behind ||, RC=0; OUT=$(...) || RC=$?, since 25 October 2026: GitHub runs the step as bash --noprofile --norc -eo pipefail {0}, the command of shell: bash in the workflow syntax under jobs.<job_id>.steps[*].shell, and under -e OUT=$(...); RC=$? ends it at any exit but 0 before RC is set, as it ended the step on pull request #205 at the 2 of the guard on the mark
           ROOT=$(pwd)
           red=0
           PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
@@ -425,7 +433,7 @@ jobs:
           while IFS=$'\t' read -r EVENT MATCHER CMD INPUT; do
             [ -n "$CMD" ] || continue
             HOOK="${CMD/\$\{CLAUDE_PLUGIN_ROOT\}/$ROOT}"
-            OUT=$(cd "$P" && printf '%s' "$INPUT" | "$HOOK" 2>&1); RC=$?
+            RC=0; OUT=$(cd "$P" && printf '%s' "$INPUT" | "$HOOK" 2>&1) || RC=$?
             n=$((n + 1))
             echo "$EVENT $MATCHER $(basename "$HOOK"): exit $RC"
             [ "$RC" -eq 0 ] || { printf '%s\n' "$OUT" | sed 's/^/    /'; red=1; }
@@ -443,7 +451,7 @@ jobs:
           printf '#!/bin/sh\necho "stand-in for gh in the step hooks on every system: GitHub is not reached here" >&2\nexit 1\n' > "$T/gh/gh"
           chmod +x "$T/gh/gh"
           MARK=$("$PY" -c 'import json, sys; p = sys.argv[1]; print(json.dumps({"session_id": "s1", "cwd": p, "permission_mode": "auto", "tool_use_id": "toolu_hooksmark", "hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"command": "mkdir -p .claude && { git rev-parse origin/main; echo build; echo \"$DEVLOOP_SESSION_ID\"; } > .claude/unattended.local", "description": "write the mark"}}))' "$P")
-          OUT=$(cd "$P" && printf '%s' "$MARK" | PATH="$T/gh:$PATH" "$ROOT/hooks/pre-tool-use-mark-guard.sh" 2>&1); RC=$?
+          RC=0; OUT=$(cd "$P" && printf '%s' "$MARK" | PATH="$T/gh:$PATH" "$ROOT/hooks/pre-tool-use-mark-guard.sh" 2>&1) || RC=$?
           echo "PreToolUse Bash pre-tool-use-mark-guard.sh, a write of the mark in auto mode: exit $RC"
           printf '%s\n' "$OUT" | sed 's/^/    /'
           want="Blocked by devloop: the mark for a run with nobody there is written only where start conditions 1, 2, 5, 6 and 7 of the skill hold, read by bin/devloop-start-conditions off the main branch as last fetched and off GitHub, and "
