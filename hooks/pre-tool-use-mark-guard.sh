@@ -29,29 +29,36 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 #
 # The second duty's other half, since 22 October 2026, cluster 22 of the
 # roadmap entry of 19 October 2026 on the checked list of milestone 3: a
-# write of the mark in auto mode goes through only where start conditions 6
-# and 7 of build-work hold - the install record and the record on check
-# tools in the dependency file both say yes on the default branch as last
-# fetched, the state the text reads and the mark command's git rev-parse
-# origin/main names. Both are read through bin/devloop-install-record, the
-# install guard's reader, the second with --dependency, so that the hook and
-# the guard read one record one way. The hook blocks exactly where the text
-# refuses: a record saying no, a section or a line missing, another value
-# than yes or no, and a record that cannot be read off that branch - "every
-# failure to read is a block" where a hook reads the person's permission,
-# docs/skill-conventions.md under "In doubt, a run with nobody there is not
-# blocked". It blocks nowhere else: a deletion or a read of the mark passes
-# as before, a project not set up passes, and outside auto the block above
-# stands as it stood, before the records are read. The block names which of
-# the two does not say yes and why, joined behind "because" as the install
-# guard joins its cause, that the mark is not written another way, and that
-# the run without the person does not start: with the person there the run
-# tells them so with the sentence build-work gives for conditions 6 and 7,
-# the one step 8 of setup-checks puts before its second questions, and
-# carries on with them; with nobody there it stops with the reason named,
-# as build-work says for a stop with a reason. Decided on 20 October 2026,
-# docs/roadmap.md at the decision on cluster 22.
-
+# write of the mark in auto mode goes through only where start conditions of
+# build-work hold. Until 25 October 2026 they were 6 and 7, read here through
+# bin/devloop-install-record; since that day, decision (5) of the roadmap
+# entry of 24 October 2026 on install lines written by one program, they are
+# 1, 2, 5, 6 and 7, read through bin/devloop-start-conditions, called
+# without the range, so that the hook, build-work and plan-work read them
+# one way: 1, 6 and 7 off the default branch as last fetched, the state the
+# text reads and the mark command's git rev-parse origin/main names, 6 and 7
+# through the install record's reader as before, and 2 and 5 off GitHub, every
+# query bounded so that the program ends inside the 120 seconds of a call,
+# far inside this hook's limit of 600 seconds - with onFailure "block" in
+# hooks/hooks.json a hook that ran into it would block too, the hooks
+# reference under "Timeouts", but with no reason given. The hook blocks
+# exactly where the text refuses: a condition that does not hold, and one
+# that is not established, a query that did not answer or a record that
+# cannot be read off that branch - "every failure to read is a block" where
+# a hook reads the person's permission, docs/skill-conventions.md under "In
+# doubt, a run with nobody there is not blocked", and the mark is written
+# only with the person there. A condition the program printed no line for
+# blocks as well, named so. It blocks nowhere else: a deletion or a read of
+# the mark passes as before, a project not set up passes, and outside auto
+# the block above stands as it stood, before anything is read. Condition 3
+# needs the range and the tasks, which do not exist where the mark is
+# written, and condition 4 is the mode this hook reads itself. The block
+# names the program's lines of the conditions that fail, joined by "; ", that
+# the mark is not written another way, and that the run without the person
+# does not start: with the person there the run tells them which condition
+# failed and why, as build-work says, and carries on with them; with nobody
+# there it stops with the reason named, as build-work says for a stop with a
+# reason. The wording is (h) of that entry.
 INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
 MODE=$(printf '%s\n' "$INPUT" | sed -n 's/^permission_mode: //p' | head -1)
 # The label the status bar shows for each value: the page "Choose a permission
@@ -167,33 +174,23 @@ esac
 [ "$WRITES" = yes ] || pass
 FAILS=""
 if [ "$MODE" = auto ]; then
-  # Start conditions 6 and 7, read as the text reads them, off the default
-  # branch as last fetched, each through the one reader; the failing ones
-  # are collected, so that one block names every one that does not say yes.
-  for C in 6 7; do
-    if [ "$C" = 6 ]; then
-      RECORD=$("$HERE/../bin/devloop-install-record" "$PROJECT_DIR" 2>&1); RC=$?
-      WHAT="the install record says no (install-tools: no"
-    else
-      RECORD=$("$HERE/../bin/devloop-install-record" --dependency "$PROJECT_DIR" 2>&1); RC=$?
-      WHAT="the record on check tools in the dependency file says no (dependency-tools: no"
-    fi
-    if [ "$RC" -ne 0 ]; then
-      CAUSE=$(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1)
-      [ -n "$CAUSE" ] || CAUSE="the record could not be read, and its reader gave no cause"
-      FAILS="${FAILS:+$FAILS; }condition $C does not hold, because $CAUSE"
-    else
-      TOOLS=$(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p' | head -1)
-      REF=$(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p' | head -1)
-      ANSWERED=$(printf '%s\n' "$RECORD" | sed -n 's/^answered: //p' | head -1)
-      [ "$TOOLS" = yes ] || FAILS="${FAILS:+$FAILS; }condition $C does not hold, because $WHAT on $REF as last fetched, answered ${ANSWERED:-none})"
-    fi
+  # Start conditions 1, 2, 5, 6 and 7, read by the one program without the
+  # range; every one that does not hold or is not established is collected,
+  # so that one block names them all.
+  LINES=$("$HERE/../bin/devloop-start-conditions" 2>&1)
+  for C in 1 2 5 6 7; do
+    LINE=$(printf '%s\n' "$LINES" | grep -m1 "^condition $C ")
+    case "$LINE" in
+      "condition $C holds") ;;
+      '') FAILS="${FAILS:+$FAILS; }bin/devloop-start-conditions printed no line for condition $C" ;;
+      *) FAILS="${FAILS:+$FAILS; }$LINE" ;;
+    esac
   done
   [ -n "$FAILS" ] || pass
 fi
 
 if [ -n "$FAILS" ]; then
-  echo "Blocked by devloop: the mark for a run with nobody there is written only where start conditions 6 and 7 of the skill hold, the install record and the record on check tools in the dependency file both saying yes on the main branch as last fetched, and $FAILS. Do not write the mark another way. The run with nobody there does not start: with the user there, tell them so with the sentence the skill gives for start conditions 6 and 7, in the next message with which you end your turn with text, and carry on with them; with nobody there, stop with the reason named, as the skill says for a stop with a reason." >&2
+  echo "Blocked by devloop: the mark for a run with nobody there is written only where start conditions 1, 2, 5, 6 and 7 of the skill hold, read by bin/devloop-start-conditions off the main branch as last fetched and off GitHub, and $FAILS. Do not write the mark another way. The run with nobody there does not start: with the user there, tell them which condition failed and why, as the skill says, in the next message with which you end your turn with text, and carry on with them; with nobody there, stop with the reason named, as the skill says for a stop with a reason." >&2
 elif [ -n "$MODE" ]; then
   echo "Blocked by devloop: the mark for a run with nobody there is written only in auto mode, and this session is in $MODE, shown in the status bar as $LABEL. Do not write the mark another way. The run with nobody there does not start: tell the user so with the sentence the skill gives for start condition 4, in the next message with which you end your turn with text, and carry on with them." >&2
 else

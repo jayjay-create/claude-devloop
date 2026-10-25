@@ -1,0 +1,544 @@
+#!/bin/bash
+# Reads the start conditions of the mode with nobody there that a program can
+# read - conditions 1, 2, 3, 5, 6 and 7 of build-work under "Unattended
+# mode" - and prints one line for each, and one for condition 4, which only a
+# hook's input carries. Since 25 October 2026, decision (5) of the roadmap
+# entry of 24 October 2026 on install lines written by one program: the
+# closing runs read the conditions whole in none of the three runs that met
+# them, which the decision of 20 October 2026 had left to the model. So one
+# call reads them: build-work calls it at the start of the build with the
+# range, plan-work before the question on the mode without it, and the guard
+# on the mark, hooks/pre-tool-use-mark-guard.sh, calls it without the range
+# when the mark is written in auto mode and blocks the write where 1, 2, 5, 6
+# or 7 does not hold or is not established.
+#
+# Usage: devloop-start-conditions [NUMBER ...]
+#   in the project's directory: CLAUDE_PROJECT_DIR, and without it the
+#   current directory. Each NUMBER is the issue number of a task in the
+#   range, given once the tasks exist; without one, condition 3 is not read.
+#        devloop-start-conditions --self-test
+#
+# It fetches nothing. The main branch is read as last fetched,
+# refs/remotes/origin/<default>, the default branch resolved exactly as
+# bin/devloop-setup-state resolves it; GitHub is read through gh.
+# One line per condition, 1 to 7 in order, in the wording (g) of that entry:
+#   condition <N> holds
+#   condition <N> does not hold, because <cause>
+#   condition <N> is not established, because <the query> did not answer: <message>
+#   condition 3 is read only with the range of tasks, once they exist
+#   condition 4 is read by the hook beside bin/devloop-permission-mode
+# What each reads:
+#   1  docs/agents/checks.md on the main branch, its rows found as
+#      bin/devloop-check-table finds them, the class the first cell and the
+#      status the seventh. It does not hold where a class is empty, where a
+#      status carries none of the four forms - bin/devloop-check-table
+#      names those - where the table holds no row, and where the file, the
+#      repository or the branch cannot be read.
+#   2  gh api repos/{owner}/{repo} for .permissions.admin, the classic
+#      protection, branches/<default>/protection, for enforce_admins.enabled
+#      and its required checks, the rules of the branch,
+#      rules/branches/<default>, for the rulesets with a
+#      required_status_checks rule, and rulesets/<id> of each for
+#      current_user_can_bypass. A gate is a required check. The classic gate
+#      binds where enforce_admins.enabled is true or the account is no admin,
+#      a ruleset where current_user_can_bypass reads never, and anything
+#      else does not. It holds where a side binds; it is not established
+#      where none binds and a query of a side did not answer; it does not
+#      hold where both answered and none binds, no gate at all among that.
+#      A body reading "Branch not protected" is the classic side's answer
+#      that there is none; any other refusal of that query is no answer.
+#   3  for each task of the range, gh api graphql on the field blockedBy of
+#      the issue, as the readiness query of setup-project reads it. It does
+#      not hold where an open issue outside the range blocks a task in it.
+#   5  .allow_auto_merge of gh api repos/{owner}/{repo} and the two gate
+#      queries of 2: it holds where auto-merge is on and either query finds a
+#      gate; it does not hold where auto-merge is off or both answered and
+#      neither found one; it is not established otherwise, where a query it
+#      needed did not answer.
+#   6, 7  bin/devloop-install-record, without and with --dependency, read as
+#      the guard on the mark read the two until 25 October 2026: it does not
+#      hold where the record does not say yes, with the reader's cause where
+#      it gave one.
+# Every call to gh runs under bin/devloop-bounded with ten seconds, and none
+# starts once fewer than ten of the program's ninety-five seconds are left,
+# so that the program ends inside the 120 seconds of a Bash call and inside
+# the 600 seconds of a command hook, the hooks reference under "Common
+# fields". A call that is not started for that answers as one that did not
+# answer, "no time left within the 95 seconds of this call"; a gh not on the
+# path - the exit code 127 of the shell - answers "gh is not on PATH", and
+# one not logged in with what it prints. A query that does not answer leaves
+# its condition not established, never holding.
+# Exit 0: every condition read holds, the lines of 3 without a range and of 4
+# aside. 1: one or more does not hold or is not established. 2 with one line
+# on stderr: an argument that is no issue number above zero; --self-test
+# alone is the one exception.
+# --self-test produces every form of the lines and every exit code once
+# without GitHub: a stand-in for gh, which the self-test alone puts first on
+# the path, answers each case from the case's script and logs every call, as
+# bin/devloop-arm's does, and DEVLOOP_START_CONDITIONS_CLOCK stands in for the
+# clock in the self-test alone, a file holding the seconds the stand-in's
+# answers add to. It builds a throwaway repository whose main branch as
+# last fetched carries each case's table and records, commits in it under a
+# fixed invented identity, prints one line per case, names every case that
+# does not come out as this head says with what the program printed, and
+# exits 1 at its end where any was red. It needs bash and no GNU tool;
+# .github/workflows/stock-take.yml runs it with every self-test under bin/.
+set -u
+me=devloop-start-conditions
+
+usage() { echo "$me: $1" >&2; exit 2; }
+
+selftest() {
+  local self T P out rc n=0 f=0 RED=0 LASTRED= ROWS ENV
+  self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-start-conditions-selftest.XXXXXX") || exit 1
+  trap 'rm -rf "$T"' EXIT
+  # in the shell's own form, so that it can stand on the path: a drive letter's colon would split it
+  T=$(cd "$T" && pwd)
+  P=$T/project
+  mkdir "$T/bin" "$T/w" "$T/gh-config"
+  # The stand-in for gh. It answers call N of each kind from the case's
+  # script, $T/s/KIND.N, or from $T/s/KIND.d where N has none; it logs the
+  # kind of every call in order, adds the answer's seconds to the clock, and
+  # marks a call no answer was scripted for, which makes the case red.
+  cat > "$T/bin/gh" <<'GH'
+#!/bin/sh
+S=$(cd "$(dirname "$0")/.." && pwd)/s
+k=other
+case "$*" in
+  "api repos/{owner}/{repo} "*) k=repo ;;
+  "api repos/{owner}/{repo}/branches/"*/protection*) k=protection ;;
+  "api repos/{owner}/{repo}/rules/branches/"*) k=rules ;;
+  "api repos/{owner}/{repo}/rulesets/"*) k=ruleset ;;
+  "api graphql "*) k=issue ;;
+esac
+i=$(( $(cat "$S/$k.n" 2>/dev/null || echo 0) + 1 ))
+echo "$i" > "$S/$k.n"
+echo "$k" >> "$S/log"
+a=$S/$k.$i
+[ -e "$a.rc" ] || a=$S/$k.d
+[ -e "$a.rc" ] || { echo "stand-in for gh: no answer scripted for call $i of $k: gh $*" >&2; : > "$S/unscripted"; exit 1; }
+echo $(( $(cat "$DEVLOOP_START_CONDITIONS_CLOCK") + $(cat "$a.t") )) > "$DEVLOOP_START_CONDITIONS_CLOCK"
+cat "$a.out"; cat "$a.err" >&2
+exit "$(cat "$a.rc")"
+GH
+  chmod +x "$T/bin/gh"
+  # Nothing of the self-test reaches GitHub: the stand-in comes first on the
+  # path, with an empty configuration of gh and no token in the environment.
+  [ "$(PATH="$T/bin:$PATH" command -v gh)" = "$T/bin/gh" ] || { echo "FAIL the stand-in for gh is not the gh the path finds"; exit 1; }
+
+  git_q() { git -c user.name=devloop-selftest -c user.email=selftest@example.invalid -c commit.gpgsign=false "$@"; }
+  git_q init -q "$P" && git -C "$P" symbolic-ref HEAD refs/heads/main
+  # main_is ROWS ENV: a commit of the throwaway project carrying, under
+  # docs/agents/, checks.md with ROWS under its header and environment.md
+  # holding ENV - no file where either is -, and origin/main and origin/HEAD
+  # set to that commit, as a fetch would leave them
+  main_is() {
+    rm -rf "$P/docs"; mkdir -p "$P/docs/agents"
+    [ "$1" = - ] || printf '| Class | Tool | Target | Per file | Whole | Blocking | Status |\n|---|---|---|---|---|---|---|\n%s' "$1" > "$P/docs/agents/checks.md"
+    [ "$2" = - ] || printf '%s\n' "$2" > "$P/docs/agents/environment.md"
+    echo "$n" > "$P/count"
+    git_q -C "$P" add -A && git_q -C "$P" commit -q -m "commit $n" || { echo "FAIL the throwaway project could not be committed to"; exit 1; }
+    git -C "$P" update-ref refs/remotes/origin/main HEAD
+    git -C "$P" symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
+  }
+  ROWS='| unit | x | x | x | x | yes | filled |
+| lint | x | x | x | x | yes | skipped (user): not wanted here |
+| types | x | x | x | x | no | skipped (state): no type checker for this language |
+'
+  ENV='## Install permission
+install-tools: yes
+install-answered: 2026-10-25
+
+## Dependency permission
+dependency-tools: yes
+dependency-answered: 2026-10-25'
+
+  # fresh: a new script - auto-merge on and an admin, classic protection with
+  # the required check checks and enforce_admins on, no ruleset, the clock at 0
+  fresh() { rm -rf "$T/s"; mkdir "$T/s"; echo 0 > "$T/clock"; : > "$T/s/log"; ans repo d 0 'true true'; ans protection d 0 "$(printf 'true\nchecks')"; ans rules d 0 ''; }
+  # ans KIND N RC OUT [ERR [SECONDS]]: the answer to call N of KIND, d for every call N has none
+  ans() { printf '%s\n' "$3" > "$T/s/$1.$2.rc"; : > "$T/s/$1.$2.out"; : > "$T/s/$1.$2.err"; [ -z "$4" ] || printf '%s\n' "$4" > "$T/s/$1.$2.out"; [ -z "${5:-}" ] || printf '%s\n' "$5" > "$T/s/$1.$2.err"; printf '%s\n' "${6:-0}" > "$T/s/$1.$2.t"; }
+  # run [ARGUMENT...]: the program, once, in the throwaway project, against the stand-in
+  run() { rundir "$P" "$@"; }
+  rundir() { local d=$1; shift; ( cd "$d" && unset GH_TOKEN GITHUB_TOKEN GH_ENTERPRISE_TOKEN GITHUB_ENTERPRISE_TOKEN GH_HOST && PATH="$T/bin:$PATH" GH_CONFIG_DIR="$T/gh-config" GIT_CEILING_DIRECTORIES="$T" CLAUDE_PROJECT_DIR="$d" DEVLOOP_START_CONDITIONS_CLOCK="$T/clock" "$self" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
+  # fail NAME WHAT: the case NAME is red for WHAT; the program's output is printed once per red case, and every red case is named
+  fail() { echo "FAIL $1: $2"; [ "$LASTRED" = "$1" ] || { printf '%s\n' "$out" | sed 's/^/    /'; LASTRED=$1; f=$((f + 1)); }; RED=1; }
+  # calls NAME KIND...: the stand-in was called for these kinds, in this order, and for nothing else
+  calls() { local name=$1 got; shift; got=$(tr '\n' ' ' < "$T/s/log" | sed 's/ $//'); [ "$got" = "$*" ] || fail "$name" "calls '$got', expected '$*'"; }
+  # expect NAME CODE LINE...: the last run ended with CODE, printed every LINE whole and made no call its script did not answer
+  expect() {
+    local name=$1 want=$2 s; shift 2; n=$((n + 1))
+    [ "$rc" -eq "$want" ] || fail "$name" "ended with $rc, expected $want"
+    for s in "$@"; do printf '%s\n' "$out" | grep -qFx -- "$s" || fail "$name" "no line '$s'"; done
+    [ ! -e "$T/s/unscripted" ] || fail "$name" "a call no answer was scripted for"
+    [ "$LASTRED" = "$name" ] || echo "ok   $name"
+  }
+  # lines NAME COUNT: the last run printed COUNT lines on stdout
+  lines() { [ "$(grep -c . < "$T/stdout")" -eq "$2" ] || fail "$1" "$(grep -c . < "$T/stdout") lines on stdout, expected $2"; }
+  H1="condition 1 holds"; H2="condition 2 holds"; H3="condition 3 holds"; H5="condition 5 holds"; H6="condition 6 holds"; H7="condition 7 holds"
+  L3="condition 3 is read only with the range of tasks, once they exist"
+  L4="condition 4 is read by the hook beside bin/devloop-permission-mode"
+
+  # the arguments
+  fresh; main_is "$ROWS" "$ENV"; run x
+  calls "an argument that is no number: 2, one line on stderr"
+  lines "an argument that is no number: 2, one line on stderr" 0
+  expect "an argument that is no number: 2, one line on stderr" 2 "devloop-start-conditions: expected the issue numbers of the tasks in range, each a whole number above zero, got 'x'"
+  fresh; run 12 '#13'
+  calls "an issue number written with #: 2"
+  expect "an issue number written with #: 2" 2 "devloop-start-conditions: expected the issue numbers of the tasks in range, each a whole number above zero, got '#13'"
+  fresh; run 0
+  expect "an issue number of zero: 2" 2 "devloop-start-conditions: expected the issue numbers of the tasks in range, each a whole number above zero, got '0'"
+  fresh; run --self-test 12
+  calls "--self-test beside a number: not the self-test, 2"
+  expect "--self-test beside a number: not the self-test, 2" 2 "devloop-start-conditions: expected the issue numbers of the tasks in range, each a whole number above zero, got '--self-test'"
+
+  # every condition holds
+  fresh; ans issue 1 0 '11 CLOSED'; ans issue 2 0 "$(printf '12 OPEN\n10 CLOSED')"; run 12 13
+  calls "all hold with the range, a blocker closed and one open inside the range: 0" repo protection rules issue issue
+  lines "all hold with the range, a blocker closed and one open inside the range: 0" 7
+  expect "all hold with the range, a blocker closed and one open inside the range: 0" 0 "$H1" "$H2" "$H3" "$L4" "$H5" "$H6" "$H7"
+  fresh; run
+  calls "all hold without the range: 3 not read, 0" repo protection rules
+  lines "all hold without the range: 3 not read, 0" 7
+  expect "all hold without the range: 3 not read, 0" 0 "$H1" "$H2" "$L3" "$L4" "$H5" "$H6" "$H7"
+
+  # condition 1, off the main branch as last fetched
+  fresh; main_is "$ROWS| e2e | x | x | x | x | yes | empty |
+| docs | x | x | x | x | no | Filled |
+| style | x | x | x | x | no | empty |
+" "$ENV"; run
+  expect "condition 1: two classes empty and a status in none of the four forms" 1 "condition 1 does not hold, because the classes e2e, style are empty on origin/main and the status of docs reads \"Filled\" on origin/main, none of the four forms a status takes" "$H2" "$H5"
+  fresh; main_is "$ROWS| e2e | x | x | x | x | yes | empty |
+" "$ENV"; run
+  expect "condition 1: one class empty" 1 "condition 1 does not hold, because the class e2e is empty on origin/main"
+  fresh; main_is - "$ENV"; printf '| unit | x | x | x | x | yes | empty |\n' > "$P/docs/agents/checks.md"; run
+  expect "condition 1: no checks.md on the main branch, whatever the working tree holds" 1 "condition 1 does not hold, because there is no docs/agents/checks.md on origin/main as last fetched" "$H6"
+  fresh; main_is '' "$ENV"; run
+  expect "condition 1: a table without a row" 1 "condition 1 does not hold, because docs/agents/checks.md on origin/main holds no row of the table"
+  fresh; main_is "$ROWS" "$ENV"; git -C "$P" symbolic-ref --delete refs/remotes/origin/HEAD; git -C "$P" update-ref -d refs/remotes/origin/main; run
+  calls "the main branch never fetched: 1, 6 and 7 do not hold, GitHub read all the same" repo protection rules
+  expect "the main branch never fetched: 1, 6 and 7 do not hold, GitHub read all the same" 1 "condition 1 does not hold, because the default branch main has not been fetched, so refs/remotes/origin/main cannot be read" "$H2" "$H5" "condition 6 does not hold, because the default branch main has not been fetched, so refs/remotes/origin/main cannot be read" "condition 7 does not hold, because the default branch main has not been fetched, so refs/remotes/origin/main cannot be read"
+  fresh; rundir "$T/w" 12
+  calls "not a git repository: nothing holds, gh not called"
+  lines "not a git repository: nothing holds, gh not called" 7
+  expect "not a git repository: nothing holds, gh not called" 1 "condition 1 does not hold, because this is not a git repository, so there is no default branch to read the conditions off" "condition 2 does not hold, because this is not a git repository, so there is no default branch to read the conditions off" "condition 3 does not hold, because this is not a git repository, so there is no default branch to read the conditions off" "$L4" "condition 5 does not hold, because this is not a git repository, so there is no default branch to read the conditions off" "condition 6 does not hold, because this is not a git repository, so there is no default branch to read the record off"
+  main_is "$ROWS" "$ENV"
+
+  # condition 2, both sides
+  fresh; ans protection d 0 "$(printf 'false\nchecks')"; run
+  calls "condition 2: classic, enforce_admins off, the account an admin: does not bind" repo protection rules
+  expect "condition 2: classic, enforce_admins off, the account an admin: does not bind" 1 "condition 2 does not hold, because the classic protection of main requires checks but has enforce_admins off, and this account is an admin, who can merge past it" "$H5"
+  fresh; ans repo d 0 'true false'; ans protection d 0 "$(printf 'false\nchecks')"; run
+  expect "condition 2: classic, enforce_admins off, the account no admin: binds" 0 "$H2" "$H5"
+  fresh; ans protection d 1 '' 'gh: Branch not protected (HTTP 404)'; ans rules d 0 '7 checks'; ans ruleset d 0 never; run
+  calls "condition 2: no classic protection, a ruleset whose bypass reads never: binds" repo protection rules ruleset
+  expect "condition 2: no classic protection, a ruleset whose bypass reads never: binds" 0 "$H2" "$H5"
+  fresh; ans protection d 1 '' 'gh: Branch not protected (HTTP 404)'; ans rules d 0 "$(printf '7 checks\n9 lint\n7 unit')"; ans ruleset 1 0 always; ans ruleset 2 0 pull_requests_only; run
+  calls "condition 2: two rulesets, one read once though it carries two rules, neither reading never: does not bind" repo protection rules ruleset ruleset
+  expect "condition 2: two rulesets, one read once though it carries two rules, neither reading never: does not bind" 1 "condition 2 does not hold, because ruleset 7 requires a check but reads current_user_can_bypass always, and ruleset 9 requires a check but reads current_user_can_bypass pull_requests_only" "$H5"
+  fresh; ans protection d 1 '' 'gh: Branch not protected (HTTP 404)'; run
+  expect "no gate at all: 2 and 5 do not hold" 1 "condition 2 does not hold, because no gate stands on main: its classic protection reads \"Branch not protected\" and no ruleset requires a check" "condition 5 does not hold, because no gate stands on main for it to wait on: its classic protection reads \"Branch not protected\" and no ruleset requires a check"
+  fresh; ans protection d 0 true; run
+  expect "a classic protection requiring no check is no gate" 1 "condition 2 does not hold, because no gate stands on main: its classic protection requires no check and no ruleset requires a check" "condition 5 does not hold, because no gate stands on main for it to wait on: its classic protection requires no check and no ruleset requires a check"
+  fresh; ans protection d 1 '' 'HTTP 403: Must have admin rights to Repository. (https://api.github.com/repos/o/r/branches/main/protection)'; ans rules d 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/repos/o/r/rules/branches/main)'; run
+  expect "neither gate query answers: 2 and 5 not established" 1 "condition 2 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: HTTP 403: Must have admin rights to Repository. (https://api.github.com/repos/o/r/branches/main/protection)" "condition 5 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: HTTP 403: Must have admin rights to Repository. (https://api.github.com/repos/o/r/branches/main/protection)"
+  fresh; ans repo d 0 'true false'; ans protection d 1 '' 'HTTP 403: Must have admin rights to Repository. (https://api.github.com/repos/o/r/branches/main/protection)'; ans rules d 0 '7 checks'; ans ruleset d 0 never; run
+  expect "the classic side silent, a ruleset binding: 2 and 5 hold" 0 "$H2" "$H5"
+  fresh; ans protection d 1 '' 'gh: Branch not protected (HTTP 404)'; ans rules d 0 '7 checks'; ans ruleset d 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/repos/o/r/rulesets/7)'; run
+  expect "the ruleset not read: 2 not established, 5 holds" 1 "condition 2 is not established, because gh api repos/{owner}/{repo}/rulesets/7 did not answer: HTTP 502: Bad Gateway (https://api.github.com/repos/o/r/rulesets/7)" "$H5"
+
+  # condition 5
+  fresh; ans repo d 0 'false true'; run
+  expect "condition 5: auto-merge off" 1 "$H2" "condition 5 does not hold, because auto-merge is off, allow_auto_merge reading false"
+  fresh; ans repo d 0 'false true'; ans protection d 1 '' 'gh: Branch not protected (HTTP 404)'; run
+  expect "condition 5: auto-merge off and no gate, both said" 1 "condition 5 does not hold, because auto-merge is off, allow_auto_merge reading false, and no gate stands on main for it to wait on: its classic protection reads \"Branch not protected\" and no ruleset requires a check"
+  fresh; ans repo d 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/repos/o/r)'; run
+  expect "the repository's query does not answer: 5 not established, 2 holds on enforce_admins" 1 "$H2" "condition 5 is not established, because gh api repos/{owner}/{repo} did not answer: HTTP 502: Bad Gateway (https://api.github.com/repos/o/r)"
+  fresh; ans repo d 1 '' 'HTTP 502: Bad Gateway (https://api.github.com/repos/o/r)'; ans protection d 0 "$(printf 'false\nchecks')"; run
+  expect "the repository's query does not answer and the classic gate binds only by the account: 2 not established" 1 "condition 2 is not established, because gh api repos/{owner}/{repo} did not answer: HTTP 502: Bad Gateway (https://api.github.com/repos/o/r)"
+
+  # condition 3, with the range
+  fresh; ans issue 1 0 '' ; ans issue 2 0 "$(printf '9 OPEN\n12 OPEN\n8 CLOSED')"; ans issue 3 0 '9 OPEN'; run 12 13 14
+  calls "condition 3: open blockers outside the range" repo protection rules issue issue issue
+  expect "condition 3: open blockers outside the range" 1 "condition 3 does not hold, because an open issue outside the range blocks a task in it: #9 blocks #13, #9 blocks #14"
+  fresh; ans issue 1 0 '' ; ans issue 2 1 '' 'GraphQL: Could not resolve to an Issue with the number of 13. (repository.issue)'; run 12 13
+  expect "condition 3: a task's query does not answer" 1 "condition 3 is not established, because gh api graphql, blockedBy of #13, did not answer: GraphQL: Could not resolve to an Issue with the number of 13. (repository.issue)"
+
+  # gh itself, and the bound
+  fresh; ans repo d 127 '' 'devloop-bounded: line 106: gh: command not found'; ans protection d 127 '' 'devloop-bounded: line 106: gh: command not found'; ans rules d 127 '' 'devloop-bounded: line 106: gh: command not found'; ans issue d 127 '' 'devloop-bounded: line 106: gh: command not found'; run 12
+  expect "gh not on the path: 2, 3 and 5 not established" 1 "condition 2 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: gh is not on PATH" "condition 3 is not established, because gh api graphql, blockedBy of #12, did not answer: gh is not on PATH" "condition 5 is not established, because gh api repos/{owner}/{repo} did not answer: gh is not on PATH" "$H1" "$H6" "$H7"
+  fresh; for k in repo protection rules; do ans "$k" d 4 '' 'To get started with GitHub CLI, please run:  gh auth login'; done; run
+  expect "gh not logged in: 2 and 5 not established with what it prints" 1 "condition 2 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: To get started with GitHub CLI, please run:  gh auth login" "condition 5 is not established, because gh api repos/{owner}/{repo} did not answer: To get started with GitHub CLI, please run:  gh auth login"
+  fresh; ans protection d 124 '' 'no answer within 10 seconds: gh api repos/{owner}/{repo}/branches/main/protection -q x' 10; ans rules d 124 '' 'no answer within 10 seconds: gh api repos/{owner}/{repo}/rules/branches/main -q x' 10; run
+  expect "the gate queries end at their bound: not established" 1 "condition 2 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: no answer within 10 seconds: gh api repos/{owner}/{repo}/branches/main/protection -q x"
+  fresh; ans repo d 0 'true true' '' 80; ans protection d 0 "$(printf 'true\nchecks')" '' 6; ans issue d 0 ''; run 12 13
+  calls "the ninety-five seconds run out: a call not started answers as one that did not" repo protection
+  expect "the ninety-five seconds run out: a call not started answers as one that did not" 1 "$H2" "condition 3 is not established, because gh api graphql, blockedBy of #12, did not answer: no time left within the 95 seconds of this call" "$H5"
+  fresh; ans repo d 0 'true true' '' 86; run
+  calls "the ninety-five seconds run out before the gate queries: 2 and 5 not established" repo
+  expect "the ninety-five seconds run out before the gate queries: 2 and 5 not established" 1 "condition 2 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: no time left within the 95 seconds of this call" "condition 5 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: no time left within the 95 seconds of this call"
+
+  # conditions 6 and 7, through the install record's reader
+  fresh; main_is "$ROWS" '## Install permission
+install-tools: no
+install-answered: 2026-10-01'; run
+  expect "conditions 6 and 7: a no, and a section missing" 1 "$H1" "condition 6 does not hold, because the install record says no (install-tools: no on origin/main as last fetched, answered 2026-10-01)" "condition 7 does not hold, because docs/agents/environment.md on origin/main has no section \"## Dependency permission\", so the question was never answered"
+  fresh; main_is "$ROWS" '## Install permission
+install-tools: yes
+
+## Dependency permission
+dependency-tools: no'; run
+  expect "condition 7 says no, without a date" 1 "$H6" "condition 7 does not hold, because the record on check tools in the dependency file says no (dependency-tools: no on origin/main as last fetched, answered none)"
+
+  [ "$RED" -ne 0 ] || { echo "SELF-TEST PASSED: $n cases"; exit 0; }
+  echo "SELF-TEST FAILED: $f of $n cases red"
+  exit 1
+}
+[ $# -eq 1 ] && [ "$1" = --self-test ] && selftest
+
+for a in "$@"; do
+  case $a in
+    ''|*[!0-9]*|0*) usage "expected the issue numbers of the tasks in range, each a whole number above zero, got '$a'" ;;
+  esac
+done
+
+HERE=$(cd "$(dirname "$0")" && pwd)
+BOUNDED=$HERE/devloop-bounded
+LIMIT=95
+STEP=10
+T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-start-conditions.XXXXXX") || usage "mktemp -d failed"
+trap 'rm -rf "$T"' EXIT
+RANGE=" $* "
+BAD=0
+
+# line N TEXT: the line of condition N; anything but holds makes the exit 1
+line() { echo "condition $1 $2"; [ "$2" = holds ] || BAD=1; }
+trim() { local s="$1"; s="${s#"${s%%[![:space:]]*}"}"; s="${s%"${s##*[![:space:]]}"}"; printf '%s' "$s"; }
+# and_join PART...: the parts joined by ", " and the last by " and "
+and_join() { local r=$1; shift; while [ $# -gt 1 ]; do r="$r, $1"; shift; done; [ $# -eq 0 ] || r="$r and $1"; printf '%s' "$r"; }
+
+# The clock: bash's SECONDS, or, where DEVLOOP_START_CONDITIONS_CLOCK names a
+# file, the seconds in it - the self-test's clock, which its stand-in for gh
+# adds to.
+tick() { if [ -n "${DEVLOOP_START_CONDITIONS_CLOCK:-}" ]; then read -r NOW <"$DEVLOOP_START_CONDITIONS_CLOCK"; else NOW=$SECONDS; fi; }
+
+# ghb QUERY ARGUMENT ...: gh under bin/devloop-bounded; its output in OUT, its
+# exit code in RC, and in FAIL the clause for a line that it did not answer,
+# QUERY naming it. Where the call could run past the program's limit it is
+# not started and answers as a call that did not.
+ghb() {
+  local q=$1 err; shift
+  tick
+  if [ $((NOW + STEP)) -gt "$LIMIT" ]; then
+    OUT=; ERR=; RC=124; FAIL="$q did not answer: no time left within the $LIMIT seconds of this call"
+    return
+  fi
+  "$BOUNDED" "$STEP" gh "$@" >"$T/out" 2>"$T/err" </dev/null
+  RC=$?
+  OUT=$(cat "$T/out"); err=$(tr '\n' ' ' <"$T/err" | sed 's/ *$//')
+  [ "$RC" -ne 127 ] || err="gh is not on PATH"
+  ERR=$err
+  FAIL="$q did not answer: ${err:-gh ended with $RC and printed nothing on stderr}"
+}
+
+PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
+SETUP=
+cd "$PROJECT_DIR" 2>/dev/null || SETUP="the project directory $PROJECT_DIR cannot be entered"
+[ -n "$SETUP" ] || git rev-parse --git-dir >/dev/null 2>&1 || SETUP="this is not a git repository, so there is no default branch to read the conditions off"
+
+# The default branch, resolved exactly as bin/devloop-setup-state,
+# bin/devloop-install-record and hooks/pre-tool-use-branch-guard.sh resolve
+# it; a check under "Before a handover, run these" holds the copies together.
+DEFAULT=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+DEFAULT="${DEFAULT#origin/}"
+if [ -z "$DEFAULT" ]; then
+  for c in main master; do
+    if git show-ref --verify --quiet "refs/heads/$c"; then DEFAULT="$c"; break; fi
+  done
+fi
+[ -n "$SETUP" ] || [ -n "$DEFAULT" ] || SETUP="there is no default branch, since origin/HEAD names none and neither main nor master exists"
+REF="refs/remotes/origin/$DEFAULT"
+
+# Condition 1: the table off the main branch, its rows found as
+# bin/devloop-check-table finds them; that program names a status in none of
+# the four forms, and an empty one is read here, since empty is one of them.
+if [ -n "$SETUP" ]; then
+  line 1 "does not hold, because $SETUP"
+elif ! git rev-parse --verify --quiet "$REF" >/dev/null 2>&1; then
+  line 1 "does not hold, because the default branch $DEFAULT has not been fetched, so $REF cannot be read"
+elif ! git show "$REF:docs/agents/checks.md" >"$T/checks.md" 2>/dev/null; then
+  line 1 "does not hold, because there is no docs/agents/checks.md on origin/$DEFAULT as last fetched"
+else
+  ROWS=0; EMPTY=()
+  while IFS='|' read -r _ class _ _ _ _ _ status _; do
+    ROWS=$((ROWS + 1))
+    [ "$(trim "$status")" = empty ] && EMPTY+=("$(trim "$class")")
+  done < <(grep '^|' "$T/checks.md" | grep -v '^|[[:space:]]*-' | tail -n +2)
+  PARTS=()
+  if [ "${#EMPTY[@]}" -eq 1 ]; then
+    PARTS+=("the class ${EMPTY[0]} is empty on origin/$DEFAULT")
+  elif [ "${#EMPTY[@]}" -gt 1 ]; then
+    PARTS+=("the classes $(printf '%s, ' "${EMPTY[@]}" | sed 's/, $//') are empty on origin/$DEFAULT")
+  fi
+  FORMS=$("$HERE/devloop-check-table" "$T/checks.md" 2>&1); FRC=$?
+  if [ "$FRC" -eq 1 ]; then
+    while IFS= read -r l; do
+      [ -n "$l" ] && PARTS+=("the status of ${l%%: *} reads \"${l#*: }\" on origin/$DEFAULT, none of the four forms a status takes")
+    done <<EOF
+$FORMS
+EOF
+  elif [ "$FRC" -ne 0 ]; then
+    PARTS+=("bin/devloop-check-table could not read the table: $FORMS")
+  fi
+  if [ "$ROWS" -eq 0 ]; then
+    line 1 "does not hold, because docs/agents/checks.md on origin/$DEFAULT holds no row of the table"
+  elif [ "${#PARTS[@]}" -gt 0 ]; then
+    line 1 "does not hold, because $(and_join "${PARTS[@]}")"
+  else
+    line 1 holds
+  fi
+fi
+
+# The queries of conditions 2 and 5, asked once for both: the repository, the
+# classic protection, the rules of the branch and each ruleset that requires
+# a check. Each side keeps whether it answered: CL and RS are yes, none or
+# silent.
+if [ -z "$SETUP" ]; then
+  Q_REPO='gh api repos/{owner}/{repo}'
+  ghb "$Q_REPO" api 'repos/{owner}/{repo}' -q '"\(.allow_auto_merge) \(.permissions.admin)"'
+  if [ "$RC" -eq 0 ]; then REPO=yes; read -r AUTO ADMIN <<<"$OUT"; else REPO=silent; REPO_FAIL=$FAIL; fi
+
+  Q_CL="gh api repos/{owner}/{repo}/branches/$DEFAULT/protection"
+  ghb "$Q_CL" api "repos/{owner}/{repo}/branches/$DEFAULT/protection" -q '(.enforce_admins.enabled // false), ([.required_status_checks.contexts[]?, .required_status_checks.checks[]?.context] | unique | .[])'
+  CL_CHECKS=; ENFORCE=
+  if [ "$RC" -eq 0 ]; then
+    ENFORCE=$(printf '%s\n' "$OUT" | head -1); CL_CHECKS=$(printf '%s\n' "$OUT" | sed 1d | sed '/^$/d' | tr '\n' ',' | sed 's/,$//; s/,/, /g')
+    if [ -n "$CL_CHECKS" ]; then CL=yes; CL_SAID=; else CL=none; CL_SAID="its classic protection requires no check"; fi
+  else
+    case $ERR in
+      *"Branch not protected"*) CL=none; CL_SAID="its classic protection reads \"Branch not protected\"" ;;
+      *) CL=silent; CL_FAIL=$FAIL ;;
+    esac
+  fi
+
+  Q_RS="gh api repos/{owner}/{repo}/rules/branches/$DEFAULT"
+  ghb "$Q_RS" api "repos/{owner}/{repo}/rules/branches/$DEFAULT" -q '.[] | select(.type == "required_status_checks") | "\(.ruleset_id) \([.parameters.required_status_checks[].context] | join(", "))"'
+  IDS=
+  if [ "$RC" -eq 0 ]; then
+    IDS=$(printf '%s\n' "$OUT" | sed '/^$/d' | while read -r id _; do echo "$id"; done | awk '!seen[$0]++')
+    if [ -n "$IDS" ]; then RS=yes; else RS=none; fi
+  else
+    RS=silent; RS_FAIL=$FAIL
+  fi
+fi
+
+# Condition 2: a side binds, or it is not established where a side that
+# could bind did not answer, or it does not hold.
+if [ -n "$SETUP" ]; then
+  line 2 "does not hold, because $SETUP"
+else
+  BINDS=no; U2=; W2=()
+  case $CL in
+    silent) U2=$CL_FAIL ;;
+    yes)
+      if [ "$ENFORCE" = true ]; then BINDS=yes
+      elif [ "$REPO" = silent ]; then U2=$REPO_FAIL
+      elif [ "$ADMIN" != true ]; then BINDS=yes
+      else W2+=("the classic protection of $DEFAULT requires $CL_CHECKS but has enforce_admins off, and this account is an admin, who can merge past it")
+      fi ;;
+  esac
+  case $RS in
+    silent) U2=${U2:-$RS_FAIL} ;;
+    yes)
+      for id in $IDS; do
+        ghb "gh api repos/{owner}/{repo}/rulesets/$id" api "repos/{owner}/{repo}/rulesets/$id" -q '.current_user_can_bypass'
+        if [ "$RC" -ne 0 ]; then U2=${U2:-$FAIL}
+        elif [ "$OUT" = never ]; then BINDS=yes
+        else W2+=("ruleset $id requires a check but reads current_user_can_bypass ${OUT:-nothing}")
+        fi
+      done ;;
+  esac
+  if [ "$BINDS" = yes ]; then line 2 holds
+  elif [ -n "$U2" ]; then line 2 "is not established, because $U2"
+  elif [ "${#W2[@]}" -gt 0 ]; then
+    W=$(printf '%s, and ' "${W2[@]}"); line 2 "does not hold, because ${W%, and }"
+  else line 2 "does not hold, because no gate stands on $DEFAULT: $CL_SAID and no ruleset requires a check"
+  fi
+fi
+
+# Condition 3, with the range alone: each task's blockers, as the readiness
+# query of setup-project reads them, an open one outside the range failing it.
+BLOCKED='query($owner:String!,$name:String!,$number:Int!){repository(owner:$owner,name:$name){issue(number:$number){blockedBy(first:100){nodes{number state}}}}}'
+if [ $# -eq 0 ]; then
+  echo "condition 3 is read only with the range of tasks, once they exist"
+elif [ -n "$SETUP" ]; then
+  line 3 "does not hold, because $SETUP"
+else
+  U3=; W3=()
+  for t in "$@"; do
+    ghb "gh api graphql, blockedBy of #$t," api graphql -F owner='{owner}' -F name='{repo}' -F number="$t" -f query="$BLOCKED" -q '.data.repository.issue.blockedBy.nodes[] | "\(.number) \(.state)"'
+    if [ "$RC" -ne 0 ]; then U3=${U3:-$FAIL}; continue; fi
+    while read -r b state; do
+      [ -n "$b" ] && [ "$state" = OPEN ] || continue
+      case $RANGE in *" $b "*) ;; *) W3+=("#$b blocks #$t") ;; esac
+    done <<EOF
+$OUT
+EOF
+  done
+  if [ "${#W3[@]}" -gt 0 ]; then
+    line 3 "does not hold, because an open issue outside the range blocks a task in it: $(printf '%s, ' "${W3[@]}" | sed 's/, $//')"
+  elif [ -n "$U3" ]; then line 3 "is not established, because $U3"
+  else line 3 holds
+  fi
+fi
+
+echo "condition 4 is read by the hook beside bin/devloop-permission-mode"
+
+# Condition 5: auto-merge on and a gate for it to wait on, a gate found by
+# either query; what is known to be missing is said before what did not
+# answer.
+if [ -n "$SETUP" ]; then
+  line 5 "does not hold, because $SETUP"
+else
+  M5=(); U5=
+  if [ "$REPO" = silent ]; then U5=$REPO_FAIL
+  elif [ "$AUTO" != true ]; then M5+=("auto-merge is off, allow_auto_merge reading $AUTO")
+  fi
+  if [ "$CL" = yes ] || [ "$RS" = yes ]; then :
+  elif [ "$CL" = none ] && [ "$RS" = none ]; then M5+=("no gate stands on $DEFAULT for it to wait on: $CL_SAID and no ruleset requires a check")
+  elif [ "$CL" = silent ]; then U5=${U5:-$CL_FAIL}
+  else U5=${U5:-$RS_FAIL}
+  fi
+  if [ "${#M5[@]}" -gt 0 ]; then
+    W=$(printf '%s, and ' "${M5[@]}"); line 5 "does not hold, because ${W%, and }"
+  elif [ -n "$U5" ]; then line 5 "is not established, because $U5"
+  else line 5 holds
+  fi
+fi
+
+# Conditions 6 and 7, through the install record's reader, the second with
+# --dependency, read as hooks/pre-tool-use-mark-guard.sh read them until 25
+# October 2026, with its words.
+for C in 6 7; do
+  if [ "$C" = 6 ]; then
+    RECORD=$("$HERE/devloop-install-record" "$PROJECT_DIR" 2>&1); RC=$?
+    WHAT="the install record says no (install-tools: no"
+  else
+    RECORD=$("$HERE/devloop-install-record" --dependency "$PROJECT_DIR" 2>&1); RC=$?
+    WHAT="the record on check tools in the dependency file says no (dependency-tools: no"
+  fi
+  if [ "$RC" -ne 0 ]; then
+    CAUSE=$(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1)
+    line "$C" "does not hold, because ${CAUSE:-the record could not be read, and its reader gave no cause}"
+  else
+    TOOLS=$(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p' | head -1)
+    RREF=$(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p' | head -1)
+    ANSWERED=$(printf '%s\n' "$RECORD" | sed -n 's/^answered: //p' | head -1)
+    if [ "$TOOLS" = yes ]; then line "$C" holds
+    else line "$C" "does not hold, because $WHAT on $RREF as last fetched, answered ${ANSWERED:-none})"
+    fi
+  fi
+done
+exit "$BAD"

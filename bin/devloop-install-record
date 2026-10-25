@@ -11,8 +11,10 @@
 # may add check tools to the project's packages - start condition 7 of the
 # mode with nobody there, where the install record is condition 6. The guard
 # on the mark, hooks/pre-tool-use-mark-guard.sh, reads both conditions
-# through this program when the mark is written, so that the hook and the
-# install guard read one record one way. Under --dependency the keys are
+# through this program when the mark is written - since 25 October 2026 by
+# way of bin/devloop-start-conditions, which the skills read the start
+# conditions with too - so that the hook and the install guard read one
+# record one way. Under --dependency the keys are
 # dependency-tools and dependency-answered, there are no place and no route
 # lines, and the causes on the section name it - the section missing, or
 # its key line missing - and the cause on the key's value names the key,
@@ -60,8 +62,9 @@ cd "$PROJECT_DIR" 2>/dev/null || { echo "cause: the project directory $PROJECT_D
 git rev-parse --git-dir >/dev/null 2>&1 || { echo "cause: this is not a git repository, so there is no default branch to read the record off"; exit 1; }
 
 # The default branch, resolved exactly as hooks/pre-tool-use-branch-guard.sh
-# resolves it; a check under "Before a handover, run these" holds the three
-# copies together, bin/devloop-setup-state's among them.
+# resolves it; a check under "Before a handover, run these" holds the
+# copies together, bin/devloop-setup-state's and
+# bin/devloop-start-conditions' among them.
 DEFAULT=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
 DEFAULT="${DEFAULT#origin/}"
 if [ -z "$DEFAULT" ]; then

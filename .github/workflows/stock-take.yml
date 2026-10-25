@@ -292,6 +292,33 @@ jobs:
   # prints since then whether pgrep is on PATH and where. On the other three
   # systems both run as before, and every other self-test under bin/ runs on
   # all four.
+  # Since 25 October 2026, part D of milestone 3, the guard on the mark reads
+  # start conditions 1, 2, 5, 6 and 7 through bin/devloop-start-conditions at
+  # a write of the mark in auto mode, 2 and 5 off GitHub through gh, every
+  # query under bin/devloop-bounded. The harmless inputs above never reach
+  # that path - ls and a Write of README.md write no mark - so the step feeds
+  # the guard a second input of its own after the handlers: the mark command
+  # of shared/mark-command.md in auto mode, in the throwaway project, with a
+  # stand-in for gh first on PATH that answers every call at once with a
+  # refusal, so that the job reaches no GitHub whatever gh the system carries
+  # and logged in or not, and no query waits on its bound. The step is red
+  # unless the guard ends with 2 and its block names condition 1, whose
+  # checks.md the throwaway main branch does not carry, 2 and 5 as not
+  # established with the stand-in's message, and 6 and 7, whose records it
+  # does not carry either; the block is printed on every system. The
+  # program's self-test runs in the loop above with the others. Under
+  # Windows the bound itself is not shown: a gh that did not answer would be
+  # ended there by the kill_tree of bin/devloop-bounded, which hung at its
+  # case "does not end", the defect of milestone 12 named above, so that the
+  # guard would run into its 600 seconds and, under onFailure "block", block
+  # without its reason; that block stays open there with that defect.
+  # Since the same day, after the job went red on all four systems on pull
+  # request #205, the step reads every exit code behind ||: GitHub runs it
+  # as bash --noprofile --norc -eo pipefail, the command shell: bash stands
+  # for, and under -e the form OUT=$(...); RC=$? ended it at the guard's 2
+  # before RC was set, and would have ended it at any handler not ending
+  # with 0 before its output was printed; run as a script with bash alone,
+  # without -e, the step had ended with 0.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -335,9 +362,10 @@ jobs:
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: every self-test under bin/, two of them left out under Windows, every handler of hooks.json once with a harmless input of its event, and the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards
+      - name: every self-test under bin/, two of them left out under Windows, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, and the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in
         run: |
           set -u
+          # every exit code the step reads stands behind ||, RC=0; OUT=$(...) || RC=$?, since 25 October 2026: GitHub runs the step as bash --noprofile --norc -eo pipefail {0}, the command of shell: bash in the workflow syntax under jobs.<job_id>.steps[*].shell, and under -e OUT=$(...); RC=$? ends it at any exit but 0 before RC is set, as it ended the step on pull request #205 at the 2 of the guard on the mark
           ROOT=$(pwd)
           red=0
           PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
@@ -405,7 +433,7 @@ jobs:
           while IFS=$'\t' read -r EVENT MATCHER CMD INPUT; do
             [ -n "$CMD" ] || continue
             HOOK="${CMD/\$\{CLAUDE_PLUGIN_ROOT\}/$ROOT}"
-            OUT=$(cd "$P" && printf '%s' "$INPUT" | "$HOOK" 2>&1); RC=$?
+            RC=0; OUT=$(cd "$P" && printf '%s' "$INPUT" | "$HOOK" 2>&1) || RC=$?
             n=$((n + 1))
             echo "$EVENT $MATCHER $(basename "$HOOK"): exit $RC"
             [ "$RC" -eq 0 ] || { printf '%s\n' "$OUT" | sed 's/^/    /'; red=1; }
@@ -418,5 +446,19 @@ jobs:
           else
             echo "the counted refusal under PermissionDenied is not recorded in its form; $REC holds: $( [ -f "$REC" ] && tr -d '\r' < "$REC" || echo nothing )"; red=1
           fi
+          # the guard on the mark at a write of the mark in auto mode, since 25 October 2026: start conditions 1, 2, 5, 6 and 7 read through bin/devloop-start-conditions, gh a stand-in that refuses every call at once, so that nothing reaches GitHub and no query waits on its bound
+          mkdir "$T/gh"
+          printf '#!/bin/sh\necho "stand-in for gh in the step hooks on every system: GitHub is not reached here" >&2\nexit 1\n' > "$T/gh/gh"
+          chmod +x "$T/gh/gh"
+          MARK=$("$PY" -c 'import json, sys; p = sys.argv[1]; print(json.dumps({"session_id": "s1", "cwd": p, "permission_mode": "auto", "tool_use_id": "toolu_hooksmark", "hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"command": "mkdir -p .claude && { git rev-parse origin/main; echo build; echo \"$DEVLOOP_SESSION_ID\"; } > .claude/unattended.local", "description": "write the mark"}}))' "$P")
+          RC=0; OUT=$(cd "$P" && printf '%s' "$MARK" | PATH="$T/gh:$PATH" "$ROOT/hooks/pre-tool-use-mark-guard.sh" 2>&1) || RC=$?
+          echo "PreToolUse Bash pre-tool-use-mark-guard.sh, a write of the mark in auto mode: exit $RC"
+          printf '%s\n' "$OUT" | sed 's/^/    /'
+          want="Blocked by devloop: the mark for a run with nobody there is written only where start conditions 1, 2, 5, 6 and 7 of the skill hold, read by bin/devloop-start-conditions off the main branch as last fetched and off GitHub, and "
+          case "$OUT" in "$want"*) ok=yes ;; *) ok=no ;; esac
+          for s in "condition 1 does not hold, because there is no docs/agents/checks.md on origin/main as last fetched" "condition 2 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: stand-in for gh" "condition 5 is not established, because gh api repos/{owner}/{repo} did not answer: stand-in for gh" "condition 6 does not hold, because there is no docs/agents/environment.md on origin/main as last fetched" "condition 7 does not hold, because there is no docs/agents/environment.md on origin/main as last fetched"; do
+            case "$OUT" in *"$s"*) ;; *) ok=no; echo "    the block does not carry: $s" ;; esac
+          done
+          [ "$RC" -eq 2 ] && [ "$ok" = yes ] || { echo "the guard on the mark did not block the write of the mark as its message says"; red=1; }
           rm -rf "$T"
           exit "$red"

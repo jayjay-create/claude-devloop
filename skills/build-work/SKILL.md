@@ -1470,27 +1470,52 @@ what they read — a gate, a setting, a class, a record — can change between
 the question
 and the build. The third is read here only, because it needs the tasks to exist.
 A refusal on the planning route also ends with the mark that route wrote going,
-as at every stop with a reason, since the run ends here:
+as at every stop with a reason, since the run ends here.
+
+**Read them by one call, on both routes**, since 25 October 2026: run
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions` once, with the shell,
+with the issue numbers of the tasks in range as its arguments — the open
+tasks under the spec this run builds, as step 2's readiness query lists
+them — and read condition 4 as its item below says. The program reads 1, 2,
+3, 5, 6 and 7 as the list describes them, off the main branch as last
+fetched and off GitHub, fetching nothing, and prints one line for each:
+that it holds; that it does not hold, and the cause; or that it is not
+established, the query that did not answer and its message, which is a
+condition that does not hold, said as not established and never read as a
+yes or a no. For 4 it prints that the hook reads it. Read none of the six
+yourself beside that call. Decision (5) of the roadmap entry of 24 October
+2026 on install lines written by one program: three closing runs met these
+conditions, and none read all seven at the build's start. The seven, what
+each line is about, and what the run says where one does not hold:
 
 1. No class in `checks.md` is `empty`. Every one is `filled`, or `skipped` in
    one of its two forms. `empty` means undecided, and an undecided check
-   approves nothing.
+   approves nothing. Nor does a table that holds no row, or a main branch
+   that carries no `checks.md`: on either this condition does not hold.
 2. A failing gate genuinely blocks a merge on the remote — not the model's
    judgement that it looks fine, and not a rule the account running this can
-   step over. This runs as whoever the tooling is authenticated with; on a
-   repository the user owns, that is an admin. Each kind of gate says whether it
-   binds in its own place: classic protection in `enforce_admins.enabled`
-   together with `.permissions.admin`, a ruleset in `gh api
-   repos/OWNER/REPO/rulesets/RULESET_ID -q .current_user_can_bypass`, with
-   `RULESET_ID` taken off the rules `rules/branches/main` returned. `never`
-   binds; anything else does not, `pull_requests_only` included, since that is a
-   bypass at the merge itself. Reading only the classic field reports a ruleset
-   gate as absent, because that endpoint 404s where the gate is a ruleset. Ask
-   both sides — a gate binds if either binds — and refuse on a gate that would
-   not apply here: an unattended run has nothing else standing between a red
-   suite and the main branch. Where a side did not answer, this condition is not
-   established; say so rather than reading the silence as a yes or a no. This is
-   also what makes the run able to merge at all: see 5.
+   step over. A gate is a required status check: `required_status_checks` in
+   classic protection, or a ruleset's rule of that type; a protection that
+   requires no check is no gate. This runs as whoever the tooling is
+   authenticated with; on a repository the user owns, that is an admin. Each
+   kind of gate says whether it binds in its own place: classic protection in
+   `enforce_admins.enabled` together with `.permissions.admin`, a ruleset in
+   `gh api repos/OWNER/REPO/rulesets/RULESET_ID -q .current_user_can_bypass`,
+   with `RULESET_ID` taken off the rules `rules/branches/main` returned.
+   `never` binds; anything else does not, `pull_requests_only` included, since
+   that is a bypass at the merge itself. Reading only the classic field
+   reports a ruleset gate as absent, because that endpoint 404s where the gate
+   is a ruleset. Ask both sides — a gate binds if either binds — and refuse on
+   a gate that would not apply here: an unattended run has nothing else
+   standing between a red suite and the main branch. So this condition holds
+   where a side answered with a gate that binds, whatever the other did; it
+   does not hold where none binds and every query that could show one answered.
+   Where no answer showed a gate that binds and a query that could show one
+   did not answer — a side's own, the query of a ruleset its rules named, or
+   for a classic gate without `enforce_admins` the repository's query for
+   `.permissions.admin` — this condition is not established; say so rather
+   than reading the silence as a yes or a no. This is also what makes the run
+   able to merge at all: see 5.
 3. No task in range is blocked by anything outside the range.
 4. Claude Code runs in auto mode. Read it by running
    `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` once, with the shell:
@@ -1519,12 +1544,16 @@ as at every stop with a reason, since the run ends here:
    there: `gh api repos/OWNER/REPO/branches/main/protection` is blind to rulesets
    and needs admin, so only a body reading "Branch not protected" means none, and
    `gh api repos/OWNER/REPO/rules/branches/main` is blind to classic protection.
-   A gate found by either is a gate. Where neither query answered, the rights are
-   missing and this condition is not established — say so rather than reading the
-   silence as a yes or a no. Without a gate there is nothing to arm: the platform
-   has no gate to hold the pull request, performing the merge is not the agent's
-   to do, and nobody is present to do it by hand — the run would build a task
-   and then sit on a pull request forever.
+   A gate found by either is a gate, a required check as in 2. Where one of
+   the two is known to be missing, auto-merge off or no gate on either side,
+   this condition does not hold, whatever did not answer.
+   Otherwise, where no gate was found and either query did not answer, or the
+   query for `.allow_auto_merge` did not, this condition is not established —
+   say so rather than reading the silence as a yes or a no. Without a gate
+   there is nothing to arm: the platform has no gate to hold the pull request,
+   performing the merge is not the agent's to do, and nobody is present to do
+   it by hand — the run would build a task and then sit on a pull request
+   forever.
 
    This refusal is about the run being able to finish, not about trusting it.
    Say which of the two is missing and what would change it — the setup of
@@ -1557,8 +1586,9 @@ workflow file and the protection without the permissions and without a
 record, is gone. Step 8 is not reached while a class is `empty`, condition 1,
 and does not set a protection while a pull request is open: either stays a
 refusal, said with what would help. When it returns, the tree stands on the
-main branch as freshly fetched: on a yes read all seven again and go on to
-the mark; on a no build this task with them there, as without the flag.
+main branch as freshly fetched: on a yes read all seven again, by the same
+call, and go on to the mark; on a no build this task with them there, as
+without the flag.
 And where the five hold and this section was reached directly, since 22
 October 2026: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
 once, with the shell. Where it ends with 0 — the rule for the classifier
@@ -1625,15 +1655,18 @@ entry of that date, since nothing is fast-forwarded here and only the fetch
 can fail — the run without them does not begin, and no mark is written. On
 a fetch that answered, the mark, which the hook on the mark lets through in auto mode
 alone, the mode condition 4 has read by now, and blocks in every other; and
-since 22 October 2026 only where conditions 6 and 7 hold, which the hook
-reads at the write through the install record's reader off the main branch
-as last fetched, the state this list reads: where either does not say yes,
-the hook blocks the write and names which and why, and the run does not
-write the mark another way — with the person there, say the sentence this
-section gives for conditions 6 and 7 above and carry on with them, as the
-block says; with nobody there, a stop with the reason named, under "A
-guard's block, with nobody there". Cluster 22 of the roadmap entry of 19
-October 2026, the decision of 20 October 2026 on it:
+since 25 October 2026 only where conditions 1, 2, 5, 6 and 7 hold, which the
+hook reads at the write by calling `bin/devloop-start-conditions` without a
+range, the reading this section made at its start — from 22 October 2026
+until then conditions 6 and 7 alone, through the install record's reader:
+where one does not hold or is not established, the hook blocks the write and
+names which and why, the program's lines, and the run does not write the
+mark another way — with the person there, say which condition failed and
+why, as this section says for it above, for 6 and 7 the sentence it gives
+there, and carry on with them, as the block says; with nobody there, a stop
+with the reason named, under "A guard's block, with nobody there". Cluster
+22 of the roadmap entry of 19 October 2026, the decision of 20 October 2026
+on it, and decision (5) of the roadmap entry of 24 October 2026:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 

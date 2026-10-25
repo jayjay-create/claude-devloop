@@ -19,10 +19,14 @@ permission`. A section that is not there, a line that is missing and a value
 that is neither `yes` nor `no` are none of them a yes. For these three the
 record on the main branch is the state itself and not an account of it:
 nothing on the platform says what the user allowed. The guard on the mark,
-`hooks/pre-tool-use-mark-guard.sh`, reads the last two of the five through
+`hooks/pre-tool-use-mark-guard.sh`, reads the last four of the five and
+start condition 1 when the mark is written, through
+`bin/devloop-start-conditions` without a range, the program the skills read
+the start conditions with, which reads the two records through
 `bin/devloop-install-record`, the install guard's reader, the second with
-`--dependency`, when the mark is written, and blocks the write where either
-does not say yes, exactly where this text refuses, since 22 October 2026;
+`--dependency`; it blocks the write where one of them does not hold or is
+not established, exactly where this text refuses, since 25 October 2026,
+and from 22 October 2026 until then where either record did not say yes;
 a deletion or a read of the mark passes as before. The rule for the
 classifier of auto mode in the person's settings is none of the five and
 no start condition: without it the run starts, and auto mode can then
