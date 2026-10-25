@@ -1470,7 +1470,23 @@ what they read — a gate, a setting, a class, a record — can change between
 the question
 and the build. The third is read here only, because it needs the tasks to exist.
 A refusal on the planning route also ends with the mark that route wrote going,
-as at every stop with a reason, since the run ends here:
+as at every stop with a reason, since the run ends here.
+
+**Read them by one call, on both routes**, since 25 October 2026: run
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions` once, with the shell,
+with the issue numbers of the tasks in range as its arguments — the open
+tasks under the spec this run builds, as step 2's readiness query lists
+them — and read condition 4 as its item below says. The program reads 1, 2,
+3, 5, 6 and 7 as the list describes them, off the main branch as last
+fetched and off GitHub, fetching nothing, and prints one line for each:
+that it holds; that it does not hold, and the cause; or that it is not
+established, the query that did not answer and its message, which is a
+condition that does not hold, said as not established and never read as a
+yes or a no. For 4 it prints that the hook reads it. Read none of the six
+yourself beside that call. Decision (5) of the roadmap entry of 24 October
+2026 on install lines written by one program: three closing runs met these
+conditions, and none read all seven at the build's start. The seven, what
+each line is about, and what the run says where one does not hold:
 
 1. No class in `checks.md` is `empty`. Every one is `filled`, or `skipped` in
    one of its two forms. `empty` means undecided, and an undecided check
@@ -1557,8 +1573,9 @@ workflow file and the protection without the permissions and without a
 record, is gone. Step 8 is not reached while a class is `empty`, condition 1,
 and does not set a protection while a pull request is open: either stays a
 refusal, said with what would help. When it returns, the tree stands on the
-main branch as freshly fetched: on a yes read all seven again and go on to
-the mark; on a no build this task with them there, as without the flag.
+main branch as freshly fetched: on a yes read all seven again, by the same
+call, and go on to the mark; on a no build this task with them there, as
+without the flag.
 And where the five hold and this section was reached directly, since 22
 October 2026: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
 once, with the shell. Where it ends with 0 — the rule for the classifier
@@ -1625,15 +1642,18 @@ entry of that date, since nothing is fast-forwarded here and only the fetch
 can fail — the run without them does not begin, and no mark is written. On
 a fetch that answered, the mark, which the hook on the mark lets through in auto mode
 alone, the mode condition 4 has read by now, and blocks in every other; and
-since 22 October 2026 only where conditions 6 and 7 hold, which the hook
-reads at the write through the install record's reader off the main branch
-as last fetched, the state this list reads: where either does not say yes,
-the hook blocks the write and names which and why, and the run does not
-write the mark another way — with the person there, say the sentence this
-section gives for conditions 6 and 7 above and carry on with them, as the
-block says; with nobody there, a stop with the reason named, under "A
-guard's block, with nobody there". Cluster 22 of the roadmap entry of 19
-October 2026, the decision of 20 October 2026 on it:
+since 25 October 2026 only where conditions 1, 2, 5, 6 and 7 hold, which the
+hook reads at the write by calling `bin/devloop-start-conditions` without a
+range, the reading this section made at its start — from 22 October 2026
+until then conditions 6 and 7 alone, through the install record's reader:
+where one does not hold or is not established, the hook blocks the write and
+names which and why, the program's lines, and the run does not write the
+mark another way — with the person there, say which condition failed and
+why, as this section says for it above, for 6 and 7 the sentence it gives
+there, and carry on with them, as the block says; with nobody there, a stop
+with the reason named, under "A guard's block, with nobody there". Cluster
+22 of the roadmap entry of 19 October 2026, the decision of 20 October 2026
+on it, and decision (5) of the roadmap entry of 24 October 2026:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 

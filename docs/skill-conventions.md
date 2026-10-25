@@ -1267,7 +1267,10 @@ self-tests of the reader, of `bin/devloop-arm` and of
 `bin/devloop-auto-mode-question` and every hook once on each system, and
 since the addendum of 22 October 2026 to the roadmap entry of that day on
 the question after a refusal feeds the install guard a counted refusal under
-`PermissionDenied` as well and is red where its record is missing — the
+`PermissionDenied` as well and is red where its record is missing, and since
+25 October 2026 feeds the guard on the mark a write of the mark in auto mode,
+`gh` a stand-in that refuses every call at once, and is red unless the guard
+blocks it naming conditions 1, 2, 5, 6 and 7 — the
 fourth and fifth addenda of the entry on the command reader carry the
 command, and the audit of 14 October 2026 read the setting off the
 platform.
@@ -2138,8 +2141,23 @@ there is written in auto mode, and the record on check tools in the
 dependency file beside it, `bin/devloop-install-record --dependency`, the
 one reading of the section `## Dependency permission`: start conditions 6
 and 7 of `build-work`, blocked at the write where either does not say yes,
-exactly where the text refuses, and nowhere else; `shared/mode-set-up.md`
-says so to the three skills that read the five things. The record is a section of `docs/agents/environment.md`
+exactly where the text refuses, and nowhere else. Since 25 October 2026,
+decision (5) of the roadmap entry of 24 October 2026 on install lines
+written by one program, it reads them through `bin/devloop-start-conditions`,
+called without a range, which reads both records through this program and
+start conditions 1, 2 and 5 beside them — the table off the main branch as
+last fetched, the gate, its binding and auto-merge off GitHub, every query
+bounded so that the program ends inside the 120 seconds of a call — and the
+guard blocks the write where one of the five does not hold or is not
+established, its block carrying the program's lines of those that fail;
+`build-work` reads the conditions at the start of the build on both routes
+through one call of the same program, with the range of its tasks for
+condition 3, and `plan-work` before the question on the mode without it,
+condition 4 apart in both, which only a hook's input carries. Until then
+the guard read nothing of 1, 2 and 5, and three closing runs read the
+conditions whole at the build's start in none of the three runs that met
+them. `shared/mode-set-up.md` says so to the three skills that read the
+five things. The record is a section of `docs/agents/environment.md`
 under the heading `## Install permission`, a key and a value per line in the
 shape `checks.md` uses for a value a script reads — `grep` on the start of the
 line, spelled exactly, ASCII only: `install-tools: yes` or `install-tools: no`;
@@ -2193,7 +2211,8 @@ cannot change it in the turn that installs, and a change to it counts once it
 has landed there and been fetched; the default branch is resolved exactly as
 `hooks/pre-tool-use-branch-guard.sh` resolves it, and a check under "Before a
 handover, run these" holds the copies together — three since 3 October 2026,
-`bin/devloop-setup-state` resolving it the same way — since two guards that
+`bin/devloop-setup-state` resolving it the same way, and four since 25
+October 2026, `bin/devloop-start-conditions` among them — since two guards that
 disagree about which branch is the main one are worse than one. It reads the
 record only after the command has been found to reach outside the repository,
 because `hooks/hooks.json` runs it on every Bash call. One program does the
@@ -3216,6 +3235,10 @@ record is a condition the unattended mode starts on, the sixth, and a yes on
 check tools in the dependency file the seventh: `build-work` numbers them
 under "Unattended mode", and a run that would stop at the first tool it may
 not install, or leave off a check the work made necessary, does not start.
+Since 25 October 2026 six of the seven, 4 apart, are read through one call
+of `bin/devloop-start-conditions`, and the guard on the mark reads 1, 2, 5,
+6 and 7 through it at the write; **The install guard reads a record** above
+says how.
 
 **The `checks.md` parsers are shell scripts.** Backticks and apostrophes in a
 table cell used to break them. Backticks are stripped, in both parsers, in every
@@ -3375,7 +3398,8 @@ carries the mode as a word from the start of the session. Since 9 October 2026
 two hooks read it: `hooks/permission-request-unattended.sh` answers no to every
 permission prompt while the mark stands, unless its third line names another session,
 and `hooks/pre-tool-use-mark-guard.sh` blocks the mark being written in any
-mode but auto; `stop-checks.sh` still does not read it, and whether it should
+mode but auto, and in auto since 25 October 2026 where start condition 1,
+2, 5, 6 or 7 does not hold or is not established; `stop-checks.sh` still does not read it, and whether it should
 is recorded as open in `docs/roadmap.md`. The sentence above therefore still
 holds for that hook, and the
 skills' half of it — every skill on such a path says what the message means —
@@ -3773,15 +3797,17 @@ merging is not", indented as in the shared file — `1` again:
 
     grep -cFx -f shared/arming-command.md docs/skill-conventions.md
 
-The default branch is resolved in `bin/devloop-install-record` and in
-`bin/devloop-setup-state` exactly as `hooks/pre-tool-use-branch-guard.sh`
+The default branch is resolved in `bin/devloop-install-record`, in
+`bin/devloop-setup-state` and, since 25 October 2026, in
+`bin/devloop-start-conditions` exactly as `hooks/pre-tool-use-branch-guard.sh`
 resolves it, from `origin/HEAD` and then `main` or `master`: two guards that
 disagree about which branch is the main one are worse than one, the install
-guard reads its record off that branch, and the setup state is read off it.
+guard reads its record off that branch, the setup state is read off it, and
+so are the start conditions of the mode with nobody there.
 The seven lines from `DEFAULT=$(git symbolic-ref` to the `fi` that closes the
-fallback are checksummed in all three files — one line means they agree:
+fallback are checksummed in all four files — one line means they agree:
 
-    for f in bin/devloop-install-record bin/devloop-setup-state hooks/pre-tool-use-branch-guard.sh; do sed -n '/^DEFAULT=\$(git symbolic-ref/,/^fi$/p' "$f" | cksum; done | sort -u | wc -l
+    for f in bin/devloop-install-record bin/devloop-setup-state bin/devloop-start-conditions hooks/pre-tool-use-branch-guard.sh; do sed -n '/^DEFAULT=\$(git symbolic-ref/,/^fi$/p' "$f" | cksum; done | sort -u | wc -l
 
 The sentence naming the four forms a status takes is, in both table guards,
 the one in `shared/status-forms.md`. A hook cannot insert text, so each

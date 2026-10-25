@@ -484,8 +484,20 @@ to wait on; and the two records say yes, on installing and on the dependency
 file. For the gate and auto-merge, read the state; do not read
 `environment.md`'s account of it — the repository says whether it still
 holds. The two records are the exception: there the file on the main branch
-is the state itself, and it is read as the paragraph above reads it. Where
-the mode is not set up, the paragraph above has said what is said, and
+is the state itself, and it is read as the paragraph above reads it. Read
+the five beside the mode by one call, since 25 October 2026: run
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions` once, with the shell
+and without an argument, since no task exists yet. It reads them as that
+list describes them, off the main branch as last fetched and off GitHub,
+fetching nothing, and prints one line for each: that it holds; that it does
+not hold, and the cause; or that it is not established, the query that did
+not answer and its message, which is a condition that does not hold, said
+as not established and never read as a yes or a no. For 3 it prints that
+it is read only with the range, and for 4 that the hook reads it; read 4
+as said above. Read none of the five yourself beside that call. Decision
+(5) of the roadmap entry of 24 October 2026 on install lines written by
+one program. Where the mode is not set up, the paragraph above has said
+what is said, and
 nothing is added here. Where it is set up and a class is `empty`, the two
 answers that send the run alone fall away and the question is not asked;
 say which one failed and what helps there, and carry on with them. Where it
@@ -538,15 +550,18 @@ second line for the first answer and for the flag, `plan` for the second, the
 third line, this session's identifier, the same in both — and say nothing of
 it, since 17 October 2026. The hook on the mark lets the command through in
 auto mode alone, the mode condition 4 has read by now, and blocks it in every
-other; and since 22 October 2026 only where conditions 6 and 7 hold, the two
-records read at the write through the install record's reader off the main
-branch as last fetched, as the paragraph above reads them: where either does
-not say yes the hook blocks the write and names which and why, the run does
-not write the mark another way, and since the person is here, say the
-sentence `build-work` gives for conditions 6 and 7, the one step 8 of
-`setup-checks` puts before its second questions, and carry on with them.
-Cluster 22 of the roadmap entry of 19 October 2026, the decision of 20
-October 2026 on it.
+other; and since 25 October 2026 only where conditions 1, 2, 5, 6 and 7
+hold, which the hook reads at the write by calling
+`bin/devloop-start-conditions` without a range, the reading made before the
+question — from 22 October 2026 until then conditions 6 and 7 alone,
+through the install record's reader: where one does not hold or is not
+established the hook blocks the write and names which and why, the
+program's lines, the run does not write the mark another way, and since the
+person is here, say which condition failed and why, as `build-work` says
+for it, for 6 and 7 the sentence it gives, the one step 8 of `setup-checks`
+puts before its second questions, and carry on with them. Cluster 22 of the
+roadmap entry of 19 October 2026, the decision of 20 October 2026 on it,
+and decision (5) of the roadmap entry of 24 October 2026.
 
 Post the hard core as a comment on the planning issue before moving on — the
 settled answers went there after every round — and the answer to the last
