@@ -38621,6 +38621,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   admin. A gate is a required check, in classic protection or in a
   ruleset's `required_status_checks` rule, as `bin/devloop-arm` reads the
   gate. And a `checks.md` whose table holds no row fails condition 1.
+  Since `c95b02c` all three stand in the text of `build-work` under
+  "Unattended mode", with two more of the same kind; the paragraph before
+  the last says where.
 
   **Records.** In `docs/stock-take.tsv`, by section C of the head of
   `scripts/devloop-stock-take`. By the first commit: thirty outcomes of the
@@ -38660,6 +38663,71 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   commit what they printed at `a339940`, but for the line numbers the new
   text moved in `build-work` and `plan-work` and for the check on the
   copies of the default branch, which reads four files since then.
+
+  **After pull request #205: the step under `-e`, and the readings in the
+  text.** The job of the pull request, run 40197844677, went red in `hooks
+  on every system` on all four systems, each log ending after the line on
+  the counted refusal with "Process completed with exit code 2". GitHub
+  runs a step under `shell: bash` as `bash --noprofile --norc -eo pipefail
+  {0}`, the workflow syntax under `jobs.<job_id>.steps[*].shell`, read as
+  markdown off the vendor's docs on 25 October 2026, and the job's log
+  prints `shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}`;
+  under `-e`, `OUT=$(…); RC=$?` ends the step where the command in the
+  substitution ends otherwise than 0, before `RC` is set. Measured on this
+  Mac: `bash -eo pipefail -c 'X=$(exit 2); echo after'` ends with 2 and
+  prints nothing; the step's `run:` block at `1ff3cf3`, taken out of the
+  file and run so in a clean environment, ended with 2 after the line on
+  the counted refusal, and without `-e` with 0, the kind of run the
+  paragraph on the tool above names. Its line 446 ended it, the guard's
+  block an exit 2 as wanted; its line 428 ends it at any handler not ending
+  with 0 before that handler's output is printed, as it did on this Mac
+  with a handler ending with 3 put in the place of `hooks/session-start.sh`.
+  In `c95b02c` both read `RC=0; OUT=$(…) || RC=$?`, lines 436 and 454, the
+  comment at line 368 and the job's head, lines 315 to 321, saying why.
+  Searched for every other place that would end the step at an expected
+  exit: `grep -n '\$?' .github/workflows/stock-take.yml` finds the two
+  lines alone; every other command of the step that can end otherwise than
+  0, read line by line, stands in an `if`, a `case`, a `while` condition or
+  before `||`; and the step run with a trap on `ERR` in place of `-e`,
+  which bash fires where `-e` would end it, fired at line 446 alone at
+  `1ff3cf3` and nowhere at `c95b02c`. The step at `c95b02c`, run as GitHub
+  runs it: exit 0, nine self-tests passed, 19 handlers started, the counted
+  refusal recorded, the guard ending with 2 and its block in wording (h);
+  with the guard of `a339940` in its place, exit 1 and "the guard on the
+  mark did not block the write of the mark as its message says"; with the
+  handler ending with 3, its line and its output printed and exit 1. The
+  program's self-test took 8.0 seconds on this Mac, its longest case 0.44
+  seconds, and none of its 34 cases waits on a bound of
+  `bin/devloop-bounded`: the stand-in answers every call at once, and the
+  three cases on the bound put seconds on its clock file, so that the
+  bound itself is shown by the self-test of `bin/devloop-bounded` alone,
+  which the job leaves out under Windows. `build-work` says the three
+  readings in its text since `c95b02c`, under "Unattended mode", expanded
+  2580 to 2581, 2584 to 2586, 2597 to 2605 and 2634 to 2639: a table
+  without a row fails condition 1; a gate is a required status check;
+  condition 2 holds where a side answered with a gate that binds, is not
+  established where no answer showed one and a query that could show one
+  did not answer — a side's own, the query of a ruleset its rules named,
+  or for a classic gate without `enforce_admins` the repository's query for
+  `.permissions.admin` — and does not hold otherwise. It says two more of
+  the same kind, readings too and none a decision of the person: a main
+  branch that carries no `checks.md` fails condition 1; and condition 5,
+  whose text named only both gate queries silent, does not hold on what is
+  known to be missing, auto-merge off or no gate on either side, whatever
+  did not answer, and is not established where no gate was found and a
+  gate query did not answer, or the query for `.allow_auto_merge` did not,
+  as the program reads it. Records, in `c95b02c`: the things on "not
+  established" in conditions 2 and 5 renamed, no run on them, their notes
+  naming the old names; a thing added for the table without a row; the
+  anchors of the rewrapped lines moved and five rows added, part of the
+  refusals of 2 and 5; the notes of the job's things on the step green, on
+  a handler red and on the guard's block. The tool with this paragraph,
+  in a clean bash with `/usr/bin/grep`: exit 0, no broken record, none of
+  4880 lines of the search set uncovered, 356 things recorded and not
+  built, 682 walked. The nineteen checks under "Before a handover, run
+  these" printed what they printed at `1ff3cf3`, but for the line numbers
+  in `build-work`, moved by thirteen. Whether the job is green on the four
+  systems the pull request shows.
 
   **What comes next.** All four parts are built. Next comes the one pass
   with runs and benches on what holds milestone 3 open, points 8 and 10 and
