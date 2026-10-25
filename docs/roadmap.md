@@ -38352,6 +38352,149 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `shared/install-alone.md` standing inside a line of `build-work`, and
   that line was reworded before the first commit.
 
+- **Questions say why they come and give the issue's number, routes unasked.**
+  24 October 2026, version 0.160.0. On `task/milestone-3-questions`, off
+  `e9deec2`, in two commits: the texts with the version and the rows of the
+  things they change, then this entry with the sentence in `docs/plan.md`
+  and the rows they need. It carries part C of the build the entry at line
+  37660 records, the questions: defect 34, point 9 with defect 3, and
+  defect 8 of the entry at line 36636, as decisions (3), (6) and (9) there
+  and "What follows from the rules without a decision" there have them; and
+  it sorts the defect part B found, line 38299. A line of a file is given as
+  it stands at `e9deec2` and a line of a skill as `scripts/devloop-expand`
+  prints it there, marked expanded, unless the tip of this branch is named.
+  Beyond the `git fetch`, nothing was read off the web; GitHub was neither
+  read nor changed, nothing was run against the settings of this machine,
+  and no test project was touched.
+
+  **Part C, on this branch**, lines at the tip of its first commit.
+  (a) Defect 34: at a refresh where no record stands, question 3 of step 4
+  is put as a first setup puts it and with its reason, in its question
+  field before the question line: that the setup of this project is being
+  refreshed and that no answer to this question stands for it on the main
+  branch, which `bin/devloop-install-record` has just said; wording (d) of
+  the entry at line 37660 named and not written out, `setup-project`
+  expanded 646 to 654, `skills/setup-project/SKILL.md` lines 94 to 102. The
+  sentence of step 0, "A refresh carries neither", names this as its one
+  exception, expanded 740 to 743, lines 188 to 191. The rule behind it,
+  `output-styles/devloop.md` lines 21 to 22 and `setup-project` expanded
+  536 to 538 at `e9deec2`, did not change.
+  (b) Point 9 with defect 3, decision (3): the form of `setup-checks` step 8
+  for a start with `--auto` names each refused install with its issue's
+  number and not its title, though the program prints the title too, and
+  nothing else stands in the question field, no line of the run's own — not
+  the task the issue holds, not whether the tool is on the machine yet or
+  the issue still open —, expanded 2092 to 2098,
+  `skills/setup-checks/SKILL.md` lines 1166 to 1172; the number is an
+  exception to `shared/refer-by-name.md` for this question alone, with the
+  reason of (3), expanded 2111 to 2120, lines 1185 to 1194, and the wording
+  of 22 October 2026 is named and not written out, as before.
+  `shared/refer-by-name.md` names the exception in one sentence, lines 6 to
+  9. `build-work` calls `setup-checks` for its step 8 alone at every start
+  that meets the question, also where `setup-checks` was loaded in this
+  session already, expanded 2686 to 2691, `skills/build-work/SKILL.md`
+  lines 1567 to 1572, run 3a named at expanded 2702 to 2705; and `plan-work`
+  the same, expanded 1262 to 1265, `skills/plan-work/SKILL.md` lines 516 to
+  519. A small matter by decision (9), built without a run and without a
+  bench for the milestone.
+  (c) Defect 8, decision (6): `shared/install-record.md` lines 50 to 59 no
+  longer has the run ask each route where it puts things and name one that
+  does not answer in the pull request; the reading stays the run's own and
+  is not put to the user, the route lines read off what the project
+  declares and the lockfiles beside it, lines 46 to 50, as before, and the
+  guard asks at every command and names a route that does not answer in its
+  block. A small matter by decision (9), built without a run and without a
+  bench for the milestone.
+  (d) `docs/skill-conventions.md`: under "Only ask where there is something
+  to decide", that the question put at a refresh says why it comes, lines
+  609 to 615; under "Refer to work by its name", the one question that
+  names an issue by its number and why, lines 650 to 661. No line there
+  described the asking of the routes, so nothing changed for (c).
+  (e) The version went from 0.159.0 to 0.160.0, "Registering a skill".
+
+  **A reading of the order.** `plan-work` put the question on the rule
+  before the mark only "where the mode is set up and `setup-checks` was not
+  called for its step 8 this session", expanded 1252 to 1254 at `e9deec2`,
+  and "Where step 8 was called this session, above, it put the question
+  there, and it is not put twice", expanded 1267 to 1268. At a second start
+  with `--auto` in the same session, step 8 having run at the first, these
+  passed the question over, against "also where `setup-checks` was loaded in
+  the session already" of "What follows from the rules without a decision",
+  lines 37845 to 37846. The words were the reading of the build of 22
+  October 2026, lines 34924 to 34930, not a decision of the person; both
+  read "at this start" since this order, expanded 1257 and 1272 to 1273 at
+  the tip, so the question is put once within a start and at every start
+  that meets it.
+
+  **The defect part B found, sorted.** The defect at line 38299: a call that
+  reaches its limit is moved to the background by Claude Code and runs on
+  there instead of being ended. Sorted by the measure of decision (9) of the
+  entry at line 37660 and by the decision of 19 October 2026, lines 31404
+  to 31408. For an install it is a small matter: the run says that the
+  install did not go through, the issue carries the command, and where the
+  install finishes in the background the tool stands there all the same,
+  which the person sees when they close the issue. For the check chain,
+  which can run on beside the check chain of the next task with nobody
+  there, it does not concern installing, and so, by the decision of 19
+  October 2026, not milestone 3; which milestone takes it up the person
+  decides after milestone 3. So put to the person on 24 October 2026; they
+  did not sort it otherwise. Named as a way for later, neither tested nor
+  decided: installs and the check chain run under `bin/devloop-bounded` with
+  a limit just below the call's, so that devloop ends them itself and
+  nothing runs on in the background. It holds milestone 3 open in neither
+  half; nothing is built for it in this part, and its text stands as it was.
+  Seen again in this order's session: `scripts/devloop-stock-take`, run in
+  the foreground under the Bash tool's limit of 120 seconds, came back as
+  moved to the background and ran there to its end, exit 0.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`. By the first commit: defects 34, 3 and 8 of
+  the entry at line 36636 with their evidence on the lines of the fix — the
+  line of `setup-project` on the reason, the line of `setup-checks` on the
+  number, the line of `shared/install-record.md` that says the run does not
+  ask — their notes saying what was built, defect 8's should since decision
+  (6) among it, and that defect 34 has a run to come after the four parts;
+  the note of point 9, line 15579, saying what holds now, its evidence line
+  unchanged and its run of 23 October 2026 standing; the thing of
+  `shared/install-record.md` on a route that answers, runs hanging on it,
+  its name kept and re-sited on the line that says the reading is the run's
+  own, its note saying what holds now; the thing on a route that does not
+  answer, no run on it, and the two part-of rows of the lines gone, taken
+  out of the table with the branch they stood for; the thing of step 0 of
+  `setup-project` on a refresh re-anchored on its line, its note naming the
+  exception; the thing of `plan-work` on the question before the mark
+  renamed for "at this start", no run on it, its note naming the old name,
+  its part-of rows and the note of the call of `setup-checks` following;
+  the notes of the refresh's install question, of the form for a start
+  with `--auto`, of the call in `build-work` and of the straight path of
+  `shared/refer-by-name.md` saying what holds now; and six rows for the new
+  lines, four part of the things they belong to and two rationale, the
+  reason of (3). By the second commit: the defect part B found with its
+  evidence on the line of this entry that sorts it, its note saying so; and
+  the head of this entry part of it. No run is recorded: the runs and the
+  bench come after the four parts.
+
+  **The tool, run for this entry.** `scripts/devloop-stock-take` ran on the
+  tree of each of the two commits in a clean bash with `/usr/bin/grep`,
+  exit 0: no broken record, 14 findings, 42 closed defects, and none of
+  4801 lines of the search set uncovered at the first commit and none of
+  4802 at the second, where 4796 stood at `e9deec2`; 359 things recorded
+  and not built at `e9deec2` and 356 at both commits, defects 34, 3 and 8
+  built and the defect part B found staying as it was; 693 things walked at
+  `e9deec2` and 687 at both commits, the six that no longer count each
+  standing on a line this branch changed — the straight path of
+  `shared/refer-by-name.md` and those of the three units that insert it,
+  step 2 of `build-work`, "After creating" of `cut-into-tasks` and step 2
+  of `start-work`, the straight path of step 0 of `setup-project`, and the
+  thing of `shared/install-record.md` on a route that answers — an
+  undercount, as section D of the head allows; 2330 things at `e9deec2`
+  and 2329 at both commits, the thing on a route that does not answer
+  taken out. Its self-test passed, 124 cases. No program under `bin/`
+  and no hook changed, so no other self-test was due. The nineteen checks
+  under "Before a handover, run these" printed at both commits what they
+  printed at `e9deec2`, but for the line numbers of `build-work`,
+  `plan-work`, `setup-checks` and `setup-project` the new text moved.
+
 
 ## Decisions taken against
 

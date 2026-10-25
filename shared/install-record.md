@@ -47,12 +47,16 @@ until the five are added with the person there. The `install-route` lines are th
 project's stack has, read by the run that writes the record off what the
 project declares and the lockfiles beside it, one line per route and none for
 a route the stack does not have, the two above standing as an example; with
-no stack, none. The reading is the run's own work and is not put to the user:
-ask each route where it puts things, as the guard does, and write its line
-either way, since the guard asks again at the moment of every command; a
-route of the stack that does not answer on this machine is named in the body
-of the pull request that lands the record, so that the fact is known before
-the first install meets it as a block. Each is a name from the eleven the
+no stack, none. The reading is the run's own work and is not put to the user,
+and the run does not ask a route where it puts things, since 24 October 2026:
+the guard asks at the moment of every command and names a route that does
+not answer, with its cause, in its block, so the asking changed nothing in
+the record. Until that day the run asked each route as the guard does and
+named one that did not answer in the body of the pull request that lands
+the record; runs 3b and 4 wrote `install-route: npm` without asking, defect
+8 of the roadmap entry of 24 October 2026 on the six closing runs, and the
+person took the duty out the same day, the roadmap entry of that date on
+how an install is recorded, (6). Each is a name from the eleven the
 guard resolves, `brew`, `go`, `npm`, `pnpm`, `yarn`, `bun`, `cargo`, `gem`,
 `pipx`, `uv`, `pip`. A route named here opens the directory that route
 answers on the machine the run is on, read at the moment of the command and
