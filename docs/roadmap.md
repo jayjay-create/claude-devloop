@@ -38737,6 +38737,229 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   each condition broken —, before it is decided whether the milestone is
   reached.
 
+- **Mark guard and fact hook benched, the three closing runs planned.**
+  25 October 2026, version 0.161.0 stays. On
+  `task/milestone-3-pass-benches`, off `b74c86f`, in one commit: this
+  entry, the sentence in `docs/plan.md` and the rows of the table. Nothing
+  is built: no file under `skills/`, `shared/`, `hooks/`, `bin/`,
+  `scripts/`, `output-styles/` or `.github/` changes. It carries the
+  benches of the one pass on what holds milestone 3 open, as the entry at
+  line 38498 names them at its end — the half of point 8 the fact hook
+  carries, decision (2) of the entry at line 37660, and the half of point
+  10 the guard on the mark carries, decision (5) —, the state of the start
+  conditions in `devloop-test-aa`, and the three runs of the pass as
+  decided on 25 October 2026. A line of a file is given as it stands at
+  `b74c86f`, a skill's `SKILL.md` read as a file and not expanded. Every
+  bench ran the installed copy,
+  `~/.claude/plugins/cache/jayjay-create/devloop/0.161.0`, which the
+  comparison under "Before you change anything, run this" found equal to
+  `b74c86f` in all six directories, on the person's Mac, in throwaway
+  projects under a directory made with `mktemp -d` outside the repository,
+  each hook fed on stdin the input Claude Code hands it; a bench counts as
+  the decision of 18 October 2026 in `docs/plan.md` has it, a hook giving
+  the same command the same answer in a run as on the bench. Beyond the
+  `git fetch`, GitHub was read by a clone of `devloop-test-aa` and by the
+  queries `bin/devloop-start-conditions` makes in it; nothing was changed
+  there or in `~/devloop-test-aa`, no install ran, no session log was
+  read, and nothing was run against the settings of this machine.
+
+  **The state of the start conditions in the test project.** In a clone
+  of `devloop-test-aa`, `origin/main` at `db992bf`, the program run without
+  a range with the real `gh`, in 2.6 seconds, printed that conditions 1,
+  2, 5, 6 and 7 hold, the line that condition 3 is read only with the
+  range and the line that the hook reads condition 4, and exited 0. Run a
+  second time behind a wrapper that logs the arguments of `gh` and hands
+  them on, it made three queries, the repository, the classic protection
+  and the rules of `main`, which named no ruleset requiring a check; the
+  classic gate binds. Nothing is missing for runs 2 and 3 today.
+  Conditions 6 and 7 hold on `install-tools: yes`, answered 2026-10-24,
+  and `dependency-tools: yes`; run 1 below removes the first record, and
+  condition 6 holds again only after the second asking of run 2. On the
+  Mac `command -v` found `htmlq`, `mmdc` and `gitleaks` in
+  `/opt/homebrew/bin` and no `yq`, and `~/.cache/puppeteer` stands.
+  Case S1, bin/devloop-start-conditions in a clone of devloop-test-aa without a range, the real gh: 1, 2, 5, 6 and 7 hold, exit 0.
+
+  **The guard on the mark, decision (5) and wording (h).**
+  `hooks/pre-tool-use-mark-guard.sh` fed the `PreToolUse` input of a
+  `Bash` call that writes the mark with the command of
+  `shared/mark-command.md`: case M1 in the clone above with the real `gh`,
+  every other case in a throwaway project whose `origin/main` carries that
+  clone's `checks.md` and `environment.md`, changed per case, with a
+  stand-in for `gh` first on the path, after the one of the program's
+  self-test, which answers each query from the case and logs it, the
+  configuration of `gh` empty and its tokens unset, so that no case but M1
+  reached GitHub. Where a case does not change them, the stand-in answers
+  auto-merge on, the account an admin, a classic protection requiring the
+  check `checks` with `enforce_admins` on, and no ruleset. Every block was
+  held against (h), lines 37933 to 37943, the parts before and after
+  `<failures>` compared word for word by a script, and every block names
+  the condition broken in its case and no other.
+  Case M1, auto mode, all five hold, the clone and the real gh: exit 0, nothing printed, the write let through.
+  Case M2, auto mode, the class integration empty on origin/main: exit 2, (h) with "condition 1 does not hold, because the class integration is empty on origin/main".
+  Case M3, auto mode, a classic protection with enforce_admins off, the account an admin: exit 2, (h) with the line of condition 2 naming that gate.
+  Case M4, auto mode, allow_auto_merge false: exit 2, (h) with "condition 5 does not hold, because auto-merge is off, allow_auto_merge reading false".
+  Case M5, auto mode, install-tools: no on origin/main: exit 2, (h) with the line of condition 6, its ref and the date 2026-10-24.
+  Case M6, auto mode, dependency-tools: no on origin/main: exit 2, (h) with the line of condition 7, its ref and the date 2026-10-23.
+  Case M7, auto mode, the stand-in sleeping 30 seconds on the repository's query: after 10 seconds exit 2, (h) with "condition 5 is not established, because gh api repos/{owner}/{repo} did not answer: no answer within 10 seconds".
+  Case M8, the modes default and acceptEdits and an input without permission_mode, install-tools: no: exit 2 each, the block on condition 4 as at a339940, the program not called.
+  Case M9, rm -f .claude/unattended.local and cat .claude/unattended.local in auto mode, the deletion in default mode: exit 0 each, nothing printed, nothing called.
+  The seventh case shows on this Mac what the program's self-test does
+  not, none of its cases waiting on a bound: `bin/devloop-bounded` ended
+  the query at ten seconds, and the guard ended inside its 600 with its
+  reason. The blocks outside auto mode read word for word as in
+  `git show a339940:hooks/pre-tool-use-mark-guard.sh`.
+
+  **The fact hook with the install guard, decision (2) and contexts (e)
+  and (f).** A throwaway project whose `origin/main` carries the five files
+  under `docs/agents/` of `devloop-test-aa`, its record saying yes with
+  the eleven places from `/usr/local/bin` to `~/.cache/puppeteer` and the
+  route `npm`, the tree on a task branch; per case
+  `hooks/pre-tool-use-install-guard.sh` fed the `PreToolUse` input of the
+  call and `hooks/post-tool-use-install-fact.sh` the `PostToolUse` or
+  `PostToolUseFailure` input of the same call, the same `session_id` and
+  `tool_use_id`, auto mode, `TMPDIR` inside the throwaway directory so
+  that the note between the two stands there, `environment.md` checked out
+  again before each case. No install ran; the guard asked `brew --prefix`
+  and `npm prefix -g` itself, as at every install. Every context was held
+  word for word against (e) and against (f) in the wording of the order on
+  the rest of part A, lines 37902 to 37928, by a script.
+  Case F1, brew install gitleaks alone: the guard passes and notes it, the hook writes "- `brew install gitleaks` installed into /opt/homebrew/bin" and says so, with no sentence on the output.
+  Case F2, brew install gitleaks >/dev/null 2>&1: the same line written, and behind it the second sentence of (e) naming >/dev/null 2>&1.
+  Case F3, brew install gitleaks 2>&1 | tail -5; ls "$(brew --prefix)/bin/gitleaks" under PostToolUse: no line, (f) with /opt/homebrew/bin and the call of bin/devloop-install-note put, and the sentence on the pipe naming | tail -5.
+  Case F4, the call of F3 under PostToolUseFailure with Exit code 1: the same context word for word, no line.
+  Case F5, a cd into a directory of the throwaway one and && npm install -g @mermaid-js/mermaid-cli: the guard passes on the route npm, no line, (f) with nothing behind it.
+  Case F6, the call of context (f) of F5, devloop-install-note put '/opt/homebrew/bin' 'npm install -g @mermaid-js/mermaid-cli', under a record saying no: the six guards on Bash exit 0, the call writes the line on the task branch, the fact hook silent.
+  The command stands in each context without its redirection, defect 1 of
+  the entry at line 36636 as part A repaired it; F3 and F4 are the call of
+  runs 2a and 4 with a command behind it, where part A found the line
+  written on the exit of the whole call; and F5 is an install standing
+  last behind another command, which context f called not the last of its
+  call until the order on the rest of part A.
+
+  **Written outside the throwaway directory.** In F5 the guard's query
+  `npm prefix -g`, line 1103 of the guard, made npm write its debug log,
+  one file under `~/.npm/_logs`, as npm does at every command unless
+  `logs-max` is 0; F6 ran with `npm_config_logs_max=0` and wrote none.
+  The same holds in every session: each npm install the guard reads
+  leaves one such log, npm keeping the newest ten by default. Nothing
+  else of the benches wrote outside that directory.
+
+  **Decided on 25 October 2026: the three runs of the pass.** All three on
+  the person's Mac, in the terminal, in `~/devloop-test-aa`; every command
+  devloop hands over the person runs, so that the run reads its result
+  itself. Three points of the arrangement as first put changed the same
+  day, each against the text named with it.
+  Run 1, with the person, under a no; defects 34, 9 and 5. Before it, in
+  the terminal and through a pull request onto the project's main branch,
+  the section `## Install permission` is removed from
+  `docs/agents/environment.md`. The marker in
+  `docs/agents/issue-tracker.md` reads 0.157.0, older than the installed
+  version, so that `start-work` refreshes the setup in any case,
+  `skills/start-work/SKILL.md` lines 45 to 48. Then `/devloop:start-work`:
+  at the refresh the install question carries its reason before the
+  question line, wording (d); the answer no. An idea with two tasks, one
+  with an npm script that reads a setting from a YAML file with `yq`,
+  which is missing on the Mac, the other needing no new tool: the planning
+  names `yq` as needed and settles nobody to install it, wording (b).
+  Under the no the mode is not set up, the install record saying yes being
+  one of its five things, `shared/mode-set-up.md` lines 1 to 6, so the
+  planning puts no question on the mode and says one line in its place,
+  that work without the person is not set up here and that `--auto` sets
+  it up, `skills/plan-work/SKILL.md` lines 400 to 409; were the question
+  put all the same, the answer is no, and that is a finding. As first put,
+  the run's offer of the mode was to be declined. At the build, the
+  handover of `brew install yq`, backed, with the sentence on where a no
+  leads, wording (c); the person declines; an issue carrying the command,
+  labelled `raised-here` and `needs-human`, recorded as a blocker of the
+  task; the other task is built. Once run 1 is read, the person closes
+  that issue, the task and the spec as not planned, so that run 2 starts
+  with nothing in flight, since with a spec in flight `start-work` asks
+  no question, line 199; not in the arrangement as first put.
+  Run 2, through the planning with `--auto`, under a yes; defects 2 and 7,
+  point 8, and point 10 on the route through the planning. Before it, in
+  the terminal: `brew uninstall htmlq`, `npm uninstall -g
+  @mermaid-js/mermaid-cli` and `~/.cache/puppeteer` deleted; the state
+  read above lacks nothing else. Then `/devloop:start-work --auto`: the
+  second install question is answered yes. An idea whose tasks need
+  `htmlq` from Homebrew and `mmdc` from npm, whose install loads a browser
+  into `~/.cache/puppeteer`; after the first round everything runs without
+  the person. To be read: at the start of the build
+  `bin/devloop-start-conditions` is called with the range; the main run's
+  prompt to the build subagent carries no instruction of its own on
+  installing; the subagent installs both tools, each alone in its call,
+  and names what backs each; no stand-in; the report names what the whole
+  output of each install shows and what came into the places for
+  browsers. `docs/agents/environment.md` names both tools as installed in
+  older forms, the line of `htmlq` with a remark and that of `mmdc` with
+  `2>& 1`; the hook writes the new form beside each, a line being skipped
+  only where it stands whole, and whether the planning reads those lines
+  or the machine is part of what the run shows for defect 9.
+  Run 3, the direct route; point 10 on that route. `/devloop:start-work`
+  without the flag, a small idea that needs no new tool and cuts into at
+  least two tasks; at the end of the first round, the answer that plans
+  without the person and shows the plan before the build. Then the person
+  opens an issue outside the plan and records it as a blocker of the
+  plan's second task. Then `/devloop:start-work --auto`, which goes
+  straight into the build: `bin/devloop-start-conditions` is called with
+  the range, condition 3 does not hold, naming the pair, and the run
+  refuses with that reason. Afterwards the person closes that issue. As
+  first put, auto-merge was to be switched off after the planning and on
+  again after the run, condition 5 failing; on the direct route that is
+  no refusal, "Where the mode is not set up, the direct route sets it up
+  rather than refusing", `skills/build-work/SKILL.md` lines 1574 to 1588,
+  which calls `setup-checks` for its step 8, and that step puts the
+  question on the mode with auto-merge off as well,
+  `skills/setup-checks/SKILL.md` lines 971 to 974, and on a yes switches
+  it on itself, lines 1429 to 1433. Condition 3 is the one condition that
+  only the build's call with the range reads, neither the guard on the
+  mark nor the planning, and nothing step 8 can put right.
+  Then the three runs are read off their logs, and it is decided whether
+  the milestone is reached.
+
+  **What the benches do not show.** The other halves: of point 8 the
+  text, an install alone in its call and a report naming what the whole
+  output shows, step 3 of `build-work` and `shared/install-alone.md`; of
+  point 10 the call of the program at the start of the build on both
+  routes; and defects 2, 5, 7, 9 and 34, which turn on what the model
+  does. The three runs are for them.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the benches as runs of 25 October 2026
+  under 0.161.0, source entry, each on its case line above. S1 on the
+  program's outcomes of every condition holding; M1 to M9 on the guard's
+  outcomes they walk — the pass under auto, the write of the mark read off
+  a command, the block on 1, 2 or 5, the block on 6 or 7, the two blocks
+  outside auto mode, the pass of a read or a deletion — and on the
+  program's outcomes of 1, 2, 5, 6 and 7 not holding and of 5 not
+  established, M7 also on the bound of `bin/devloop-bounded`; F1 to F6 on
+  the install guard's two passes and its note, on
+  `bin/devloop-install-note` writing, taking and putting, on the fact
+  hook's line, its contexts e and f and the sentence on the pipe, its
+  silent pass without a note, and on the silent passes of the six guards
+  on `Bash`; and on three defects of part A whose evidence stands in those
+  hooks: the redirection carried into the line, defect 1 of the entry at
+  line 36636, by F2 and F3; the line written on the exit of the whole
+  call, by F3; context f on an install standing last behind another
+  command, by F5. No bench run goes on the defects of points 8 and 10,
+  lines 5986 and 30168: their evidence stands on the text,
+  `shared/install-alone.md` and "Read them by one call, on both routes" in
+  `build-work`, which no bench walks, and a run counts on a thing by every
+  line it stands on; they wait for the runs. The head of this entry as no
+  defect.
+
+  **The tool, run for this entry.** `scripts/devloop-stock-take` in a
+  clean bash with `/usr/bin/grep`, at `b74c86f` and at the tree with this
+  paragraph: exit 0, no broken record, 14 findings, 42 closed defects and
+  356 things recorded and not built at both; none of 4880 lines of the
+  search set uncovered at `b74c86f` and none of 4881 at the tree, the head
+  of this entry the line added; 682 things walked at `b74c86f` and 709 at
+  the tree, 2363 things at both, no thing added. The 53 runs stand on 40
+  things, every run counting, and 27 of those things are walked by them
+  for the first time. The nineteen checks under "Before a handover, run
+  these" printed at the tree what they printed at `b74c86f`, run in a
+  worktree of it outside the repository; none of the files they read
+  changed.
+
 
 ## Decisions taken against
 
