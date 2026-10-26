@@ -479,6 +479,23 @@ read by one program. Next comes the one pass with runs and benches on what
 holds the milestone open, points 8 and 10 and defects 2, 5, 7, 9 and 34 —
 for point 10 the call of the program in a run and the guard on the mark on
 a bench — before it is decided whether the milestone is reached.
+The benches of that pass were made on 25 October 2026, the roadmap entry of
+that date on the guard on the mark and the fact hook benched: the guard on
+the mark, decision (5), and the fact hook with the install guard, decision
+(2), went as decided in every case, and the start conditions read in
+`devloop-test-aa` lack nothing for the runs. Decided on 25 October 2026,
+in that entry, the three runs of the pass, all on the person's Mac in the
+terminal in `devloop-test-aa`: run 1 with the person under a no, after the
+install record is removed, the refresh putting the install question with
+its reason, a task needing `yq` handed over and declined into an issue,
+defects 34, 9 and 5; run 2 through the planning with `--auto` under a yes,
+`htmlq` and `mmdc` uninstalled first and installed by the build subagent,
+defects 2 and 7, point 8 and point 10 on that route; run 3 the direct
+route, an issue outside the plan blocking its second task, so that the
+build's call with the range finds condition 3 not holding and refuses,
+point 10 on that route. Then the three runs are read off their logs, and
+it is decided whether the milestone is reached; what holds it open until
+then stays as named above.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
