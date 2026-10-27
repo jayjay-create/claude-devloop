@@ -12,7 +12,9 @@ Text a skill of devloop owes the person reaches them in one of two places: in
 the question, or in the message with which your turn ends. Where a skill
 tells you to say, state, report, present, name, confirm, announce or explain
 something to them, to give them something to read, or to put a line in your
-own message, that text goes to one of these two places, in their language.
+own message, that text goes to one of these two places, in their language. A
+technical term their language uses as it stands is not translated: „User
+Stories“, „Pull Request“ and „Issue“ stay as they are in German.
 
 **What they need for a decision stands in the question.** Asked through the
 choice widget, AskUserQuestion, it stands in the question field, the question

@@ -405,17 +405,21 @@ the platform — nothing, and nothing about the other conditions either.
 Otherwise, where a class in `checks.md` is `empty`, nothing. Otherwise,
 where the record is a yes with something fallen away since, auto-merge
 switched off on the platform, say, one line: that work without them is not
-set up in this project, and that typing `--auto` where a piece of work
-starts sets it up. It does not list what is missing: the flag asks what has
-to be asked and sets up the rest. Where no record stands — a setup broken
-off before the question among it — nothing. Since 17 October 2026, the
+set up in this project, and that typing `/devloop:start-work --auto` where a
+piece of work starts sets it up, the input named as they type it in Claude
+Code and never the flag alone, since 27 October 2026, defect 2 of the roadmap
+entry of that date on the three closing runs. It does not list what is
+missing: the flag asks what has to be asked and sets up the rest. Where no
+record stands — a setup broken off before the question among it — nothing. Since 17 October 2026, the
 roadmap entry of that date on the reports of what was done: a class `empty`
 had a line in two forms until then, by whether the repository had code, and
 no record had the line of a yes fallen away, which spoke of an option they
 never took up. The wording approved on 5 and 6 October 2026 stands in the
-roadmap entry of 5 October 2026, the line for a yes fallen away among it,
-the forms for a class `empty` and for no record not said since 17 October
-2026; this skill says what is said, not the words. Where `--auto` was typed
+roadmap entry of 5 October 2026, the line for a yes fallen away among it, in
+the form approved on 27 October 2026 since that day, the roadmap entry of
+that date on the three visible texts, the forms for a class `empty` and for
+no record not said since 17 October 2026; this skill says what is said, not
+the words. Where `--auto` was typed
 this session and the idea stands, the run does not stop at that: the person
 who typed it is here, so call `setup-checks` for its step 8 alone, which puts
 what has to be asked — the permissions a second time, where their record does
@@ -444,14 +448,17 @@ so each is said by that and not by what the run does at each stage:
   later.
 
 Say what the first two cost for this piece of work, in the description of
-each of the two, beside what it means: the design gets chosen
-against the written list and not against their taste, and the machine has to
-stay awake for as long as the run works. That the run stops where no draft
-carries the stories is not said there, since 19 October 2026: it foretold a
-failure nobody knows will come, the person's statement of that day, and the
-wording approved that day stands in the roadmap entry of 19 October 2026
-under defect 14, this skill saying what is said, not the words; the stop
-itself stands in Stage 3 as it stands. The descriptions have carried the costs
+each of the two, beside what it means: the machine has to stay awake for as
+long as the run works. That the design gets chosen against the written list
+and not against their taste is not said there, since 27 October 2026, by the
+person's decision of 23 October 2026, and the wording approved on 24 October
+2026 stands in the roadmap entry of that date on the six closing runs under
+decision (c), in place of the one of 19 October 2026, this skill saying what
+is said, not the words; the choice itself stands in Stage 3 as it stands.
+That the run stops where no draft carries the stories is not said there
+either, since 19 October 2026: it foretold a failure nobody knows will come,
+the person's statement of that day; the stop itself stands in Stage 3 as it
+stands. The descriptions have carried the costs
 since 17 October 2026; until then the place was not
 named, and on 16 October 2026 the costs stood neither before the widget nor
 in its lines. Do not repeat what the mode costs the repository — the
@@ -506,11 +513,14 @@ is set up and condition 4 fails — the mode is not `auto`, `dontAsk` and
 the result or the statement that the input carried no `permission_mode` —
 the question is not asked either, and where `--auto` was typed this session
 the flag does not send the run alone: say the sentence the roadmap entry of
-9 October 2026 records for this skill — that the run without them does not
-start; that Claude Code has to run in auto mode, the mode set now named as
-the status bar shows it; how to switch, Shift+Tab in the terminal, and then
-to type `--auto`; and that without the flag the planning goes on with them —
-and carry on with them. Where the mode could not be read, "When a command
+9 October 2026 records for this skill, in the form approved on 27 October
+2026 since that day, the roadmap entry of that date on the three visible
+texts — that the run without them does not start; that Claude Code has to
+run in auto mode, the mode set now named as the status bar shows it; how to
+switch, Shift+Tab in the terminal, and then to type `/devloop:start-work
+--auto`, the input named as they type it in Claude Code and never the flag
+alone; and that without the flag the planning goes on with them — and carry
+on with them. Where the mode could not be read, "When a command
 does not answer" holds and no wording of its own. This skill says what is
 said, not the words. The build reads
 all seven again when it

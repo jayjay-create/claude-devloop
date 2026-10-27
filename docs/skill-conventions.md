@@ -84,6 +84,20 @@ nothing of the kind, `gh auth login` say, is given bare. Decided on 12
 October 2026, point 18 of part B of the roadmap entry of that date, with the
 example `cd ~/devloop-test-w && npx playwright install chromium`.
 
+**An input typed into Claude Code is named whole as well.** Where a text to
+the person says how it goes on, it names what they type as they type it,
+`/devloop:start-work --auto` for the run without them and
+`/devloop:start-work` for the run with them, and never the flag alone: the
+last message of a planning on 27 October 2026 read „allein mit `--auto`“,
+and nothing before it had named the command. The rule stands here, beside
+the one on a command handed over, because it is that rule for the other
+place the person types into: a line copied whole into a terminal and a line
+typed whole into Claude Code, with nothing assumed of them in either. A
+sentence that says what happens without the flag, „Ohne `--auto` …“, names
+no input and stays. Decided on 27 October 2026, defect 2 of the roadmap
+entry of that date on the three closing runs, built the same day, the
+roadmap entry of that date on the three visible texts.
+
 **A file is named by its path where the work is about the file.**
 
 Measured on 18 September 2026, three times in a directory with nothing in it: a
