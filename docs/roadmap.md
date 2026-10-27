@@ -39142,7 +39142,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   fragen.“, the no „Nichts außerhalb des Projekts; fehlt etwas, bekommst du
   den Befehl. Ausnahme: Pakete, die beim Install selbst etwas laden.“; the
   answer #71 „Nein, nichts installieren“. That says what wording (d) says,
-  lines 37896 to 37898. #96 set the markers to 0.161.0 and appended
+  lines 37898 to 37901. #96 set the markers to 0.161.0 and appended
   `install-tools: no`, #114 opened #37, #123 armed it, #132 read `MERGED
   2026-10-26T16:36:29Z`, #144 read the record off `origin/main`, `tools:
   no`, and #158 told the person what changed. `setup-project` expanded 646
@@ -39214,7 +39214,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   an issue carrying the command recorded as a blocker of the task, the wrong
   account of 23 October 2026 not repeated. Not held: the handover gave the
   no no way of its own — nothing of the first sentence of wording (c), lines
-  37893 to 37896, that a decline leaves an issue with the command blocking
+  37894 to 37898, that a decline leaves an issue with the command blocking
   the task and the run goes on with the next ready task —, the issue having
   been opened before the question, and the yes hangs on their word, „Sag
   Bescheid“, the path read after it; `build-work` expanded 1180 to 1197. The
@@ -39523,8 +39523,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   missing on this machine, the assumptions of the round say that the work
   needs it and that it is missing, and that whether the run installs it at
   the build or they get the command for it is decided by their permission to
-  install as it stands for this project then", wording (b), lines 37888 to
-  37892. Defect 9 of the entry at line 36636 holds in its should, nobody
+  install as it stands for this project then", wording (b), lines 37890 to
+  37894. Defect 9 of the entry at line 36636 holds in its should, nobody
   being settled to install; this is the half of its text that was not met.
   Searched: `grep -n -i 'installed outside the project; the script
   tests\|without reading the
@@ -39869,6 +39869,279 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   asserted. No program under `bin/` and no hook changed. The nineteen checks
   under "Before a handover, run these" printed at the tree, in a clean bash,
   what they printed at `d49921f`, line for line.
+
+- **Terms untranslated, the start command named whole, the design line gone.**
+  27 October 2026, version 0.162.0. On `task/visible-texts-terms-and-command`,
+  off `8669e5c`, in two commits: the text, and this entry with the rows of
+  the table and the three lines corrected below. Three defects on visible text, built together in one order
+  after the decision on milestone 3, none of them part of a milestone,
+  decision (a) of the entry at line 38963, lines 39094 to 39103: defect 1 of
+  that entry, line 39476, a technical term translated; defect 2, line 39501,
+  the flag named without its command; and defect c of the entry at line
+  36636, line 37573, the sentence on the design in the descriptions of the
+  course question. Their shoulds do not change; the status lines of the two
+  entries stay as they stand. A line of `docs/roadmap.md` is given as it
+  stands at `8669e5c`, which is unchanged above this entry but for the three
+  lines corrected below; a line of every other file as it stands at the tip
+  of this branch, where `docs/skill-conventions.md` carries fourteen lines
+  more from line 87 on, and the skills carry the lines said with each place.
+  The wordings approved that day and the proposals stand under "Decided on
+  27 October 2026" below. `README.md` does not change: its line 130 names
+  the command whole already. `docs/plan.md` does not change: it names none
+  of the three defects, its paragraph on the three runs of the pass counting
+  them among "eleven new defects" without a name, and its "## Open" section
+  holds what is not decided, which a defect built is not; a defect without a
+  milestone has no place there, by how the plan leads the one at its line
+  461, "has no milestone, decision (8)", inside the milestone's own story.
+
+  **Defect 1, the term.** The should: a technical term the person's
+  language uses as it stands is not translated, said where the text says
+  that what the person reads goes to them in their language. It is built at
+  `output-styles/devloop.md` lines 15 to 17, the sentence "in their
+  language" going on: "A technical term their language uses as it stands is
+  not translated: „User Stories“, „Pull Request“ and „Issue“ stay as they
+  are in German."; and in the language block, which states the same rule,
+  "Answer in the language the user writes in", at the top and the bottom of
+  every skill at load: `shared/language-opening.md` lines 12 to 14 and
+  `shared/closing.md` lines 16 to 18, the sentence with its measurement,
+  "measured on 26 October 2026, one run headed the user stories
+  „Geschichten“". Where else the rule stands, `grep -rn -i "in their
+  language\|their language\|the person's language" skills shared
+  output-styles docs/skill-conventions.md`, eighteen hits, each read: the
+  style's line 15 and the block's two files, changed; thirteen places that
+  say of one question or one message that it is put "in their language" or
+  "in the user's language" — `plan-work` 377, `setup-project` 170, 412 and 444,
+  `start-work` 79, `setup-checks` 273, 516 and 1010, `shared/merge-handover.md`
+  3, `shared/fetch-three-times.md` 69, `shared/three-questions.md` 27,
+  `shared/set-aside-back.md` 17, `shared/set-aside-at-start.md` 4, and
+  `skills/build-prototype/LOGIC.md` 5, which speaks of a prototype speaking
+  a reader's language — apply the rule to one place each and state it
+  nowhere, so they do not change; and `docs/skill-conventions.md` 985 (971
+  at `8669e5c`), on what the output-style hook has the run say, which does
+  not change either. Cross-check against the case that found it: run 1
+  #267 headed the hard core „Geschichten:“ in the question field of „Ist die
+  Idee so richtig verstanden?“; a run reading `plan-work` through
+  `scripts/devloop-expand`, where the block stands at expanded lines 29 to
+  31 and the style in every session, heads it „User Stories:“, as run 2 #155
+  did and run 3 #142 nearly, with „Stories“. The other files that reach the
+  same place: all twelve skills, through the block they insert, and nothing
+  else, since the hard core is written in `plan-work` alone, Stage 1.
+
+  **Defect 2, the command.** The should: where a text of the person says
+  how it goes on, it names the input as they type it in Claude Code,
+  `/devloop:start-work --auto` for the run without them and
+  `/devloop:start-work` for the run with them, in the skills and in the
+  approved wordings alike. The seven places the entry at line 38963 named,
+  lines 39480 to 39487, each read before and after, the line at `8669e5c`
+  first and the lines at the tip of this branch after it:
+  `skills/cut-into-tasks/SKILL.md` 171, the halt before the first build,
+  "with them there, or alone where they type `--auto` then", now 171 to 176,
+  the input named as they type it, both commands; `skills/plan-work/SKILL.md`
+  408, "typing `--auto` where a piece of work starts sets it up", now 408 to
+  411, and its lines 417 to 422, which say since when the form of 27 October
+  2026 holds for the line of a yes fallen away; `plan-work` 512, "and then to
+  type `--auto`", now 515 to 523; `skills/build-work/SKILL.md` 1534, the same
+  words for text 2, now 1531 to 1539, and 1618, the refusal from planning,
+  "that typing `--auto` where a piece of work starts sets it up", now 1621 to
+  1625; `skills/setup-checks/SKILL.md` 1414, "they can set the mode up by
+  typing `--auto`", now 1419 to 1423, and 1114, "that typing `--auto` where a
+  piece of work starts sets the mode up then stands in the no's own
+  description already", now 1118 to 1121. Searched for more with `grep -rn
+  -- '--auto' skills shared output-styles README.md hooks bin
+  docs/skill-conventions.md`, 69 hits, each read for whether it tells the
+  person how it goes on: two more do. `setup-checks` 1078, "everything stays
+  as it is; `--auto` sets it up later", the statement of the description of
+  „Nein, alles mit mir“ that line 1114 only points at, now 1077 to 1080,
+  built with the fifth wording below; the fields of that question measured
+  again, wrapped by a script at 76 characters in the question field and 73
+  under an answer, the no's description of 88 characters taking two lines
+  where the one of 17 October 2026, 68 characters, took one, thirteen lines
+  of the fields where line 26670 measured twelve, inside the fourteen
+  `output-styles/devloop.md` lines 42 to 45 allow, so it fits, and
+  `setup-checks` lines 1082 to 1088 say so. `build-work` 1626, "that
+  `--auto` sets it up", the refusal for conditions 6 and 7, whose approved
+  wording of 6 October 2026, lines 11063 to 11071, still holds and names the
+  flag alone: not built, by the rule of the order that a wording still
+  holding is not changed but proposed, the proposal below; lines 1632 to
+  1635 say that the wording names the flag alone and that a form naming the
+  command whole stands proposed. Every other hit describes — "a start with
+  `--auto`", "where `--auto` was typed", `gh pr merge --auto` — and tells
+  nobody anything. `README.md` line 130 and `skills/start-work/SKILL.md`
+  line 339 name the command whole. "A command handed over runs as it
+  stands, from wherever the person is", `docs/skill-conventions.md` line
+  73, speaks of a line copied into a terminal; a paragraph beside it, lines
+  87 to 99, "An input typed into Claude Code is named whole as well", says
+  the rule for the other place the person types into, why it stands there,
+  and that a sentence saying what happens without the flag, „Ohne `--auto`
+  …“, names no input and stays. It stands beside that rule and not inside
+  it, since the rule's examples, `--repo` and `cd`, are about what a shell
+  needs and an input to Claude Code needs none of them; and not under "A
+  command the person is told to type is given as it is typed only where the
+  run cannot do the thing itself", line 68, which the should meets rather
+  than widens: `start-work` is locked against being run by a skill, and the
+  flag is the one thing that sets the mode on the route from a cut.
+  Cross-check against the case that found it: run 3 #360, the last message
+  of the planning, „Das geht mit dir dabei oder allein mit `--auto`.“, after
+  the halt of `cut-into-tasks`; a run reading that halt through
+  `scripts/devloop-expand`, expanded lines 557 to 562, says „Das geht mit
+  dir dabei, mit `/devloop:start-work`, oder allein mit `/devloop:start-work
+  --auto`.“ The other files that reach the same situation, the person told
+  how it goes on without them: the four skills changed, each at the lines
+  named, and no shared text, `grep -rn -- '--auto' shared` finding three
+  lines that describe a start with the flag and tell nobody to type it.
+
+  **Decided on 27 October 2026.** The five wordings the person approved,
+  each naming the command whole where it named the flag alone, the old
+  quoted from the entry that approved it; the skills say what is said, not
+  the words, so the wordings stand here. (1) The line at the end of Stage 1
+  of `plan-work` for a yes with something fallen away since, approved on 5
+  October 2026, lines 11002 to 11003, old „Der Lauf ohne dich ist in diesem
+  Projekt nicht eingerichtet. Mit `--auto` kannst du ihn einrichten.“, new:
+  „Der Lauf ohne dich ist in diesem Projekt nicht eingerichtet. Mit
+  `/devloop:start-work --auto` kannst du ihn einrichten.“ (2) What
+  `setup-checks` step 8 says after a red from the code on the platform,
+  approved on 5 October 2026, lines 11004 to 11006, old „Sobald die
+  Prüfungen auf GitHub durchlaufen, kannst du den Lauf ohne dich mit
+  `--auto` einrichten.“, new: „Sobald die Prüfungen auf GitHub durchlaufen,
+  kannst du den Lauf ohne dich mit `/devloop:start-work --auto`
+  einrichten.“ (3) Text 2 in `build-work`, the refusal at start condition
+  4, approved on 8 October 2026 and changed on 9 October 2026, lines 14882
+  to 14887, old „Der Lauf ohne dich startet nicht. Dafür muss Claude Code im
+  Auto-Modus laufen, gerade ist „<Modus, wie Claude Code ihn anzeigt>“
+  eingestellt. Stell den Auto-Modus ein, im Terminal mit Umschalt+Tab, und
+  tippe dann `--auto`. Ohne `--auto` baue ich die geplanten Aufgaben mit
+  dir.“, new: „Der Lauf ohne dich startet nicht. Dafür muss Claude Code im
+  Auto-Modus laufen, gerade ist „<Modus, wie Claude Code ihn anzeigt>“
+  eingestellt. Stell den Auto-Modus ein, im Terminal mit Umschalt+Tab, und
+  gib dann `/devloop:start-work --auto` ein. Ohne `--auto` baue ich die
+  geplanten Aufgaben mit dir.“ (4) The text for `plan-work` before the
+  question, approved on 9 October 2026, lines 14889 to 14893, old „Der Lauf
+  ohne dich startet nicht. Dafür muss Claude Code im Auto-Modus laufen,
+  gerade ist „<Modus, wie Claude Code ihn anzeigt>“ eingestellt. Stell den
+  Auto-Modus ein, im Terminal mit Umschalt+Tab, und tippe dann `--auto`.
+  Ohne `--auto` plane ich mit dir weiter.“, new: „Der Lauf ohne dich startet
+  nicht. Dafür muss Claude Code im Auto-Modus laufen, gerade ist „<Modus,
+  wie Claude Code ihn anzeigt>“ eingestellt. Stell den Auto-Modus ein, im
+  Terminal mit Umschalt+Tab, und gib dann `/devloop:start-work --auto` ein.
+  Ohne `--auto` plane ich mit dir weiter.“ In (3) and (4) „Ohne `--auto` …“
+  stays: it says what happens otherwise and asks for no input. (5) The
+  description of „Nein, alles mit mir“ in the mode question of
+  `setup-checks` step 8, approved on 17 October 2026, lines 26668 to 26669,
+  old „Alles bleibt wie jetzt. Mit `--auto` kannst du es später
+  einrichten.“, new: „Alles bleibt wie jetzt. Mit `/devloop:start-work
+  --auto` kannst du es später einrichten.“ The mode in (3) and (4) is
+  filled as line 14893 says. Wordings that name the flag alone, searched
+  with `grep -n '\`--auto\`' docs/roadmap.md` and every German line read for
+  whether a later entry replaced it, and not among the five: the two
+  refusals of `build-work` for conditions 7 and 6, approved on 6 October
+  2026, lines 11063 to 11071, which hold, `build-work` lines 1639 to 1640
+  naming them; proposed, not approved, in the same form: „Der Lauf ohne dich
+  startet nicht. Dafür brauche ich dein Ja, Prüfwerkzeuge selbst zu den
+  Paketen des Projekts hinzuzufügen. Mit `/devloop:start-work --auto` kannst
+  du ihn einrichten. Ohne `--auto` baue ich die geplanten Aufgaben mit dir
+  und frage dich bei jedem Prüfwerkzeug, ob ich es hinzufügen darf.“ and
+  „Der Lauf ohne dich startet nicht. Dafür brauche ich dein Ja zum
+  Installieren von Werkzeugen außerhalb des Projekts. Mit
+  `/devloop:start-work --auto` kannst du ihn einrichten. Ohne `--auto` baue
+  ich die geplanten Aufgaben mit dir und gebe dir jede Installation als
+  Befehl, den du selbst ausführst.“, „Dazu hast du Nein gesagt.“ following
+  the second sentence as before; and the two lines of the rule question
+  under „Nein, nicht eintragen“, approved on 22 October 2026, lines 34954
+  to 34959, which hold and name the flag as the occasion of the next
+  question rather than as an input the person is told to type, so that
+  whether the should reaches them is the person's call; proposed in the same
+  form: „Dann bleibt das Issue offen, bis du die Installation selbst
+  erledigt und das Issue geschlossen hast. Bis dahin frage ich bei jedem
+  Start mit `/devloop:start-work --auto` wieder.“ and „Beim nächsten Start
+  mit `/devloop:start-work --auto` frage ich dich dann noch einmal.“ Three
+  more name the flag alone and are replaced already, so nothing is
+  proposed: the sentence after a no in step 8, lines 10982 to 10983, gone
+  since 17 October 2026, `setup-checks` line 1118; text 2 of 8 October 2026,
+  lines 14437 to 14441, replaced on 9 October 2026, line 14883; and the no's
+  description of 9 October 2026, lines 14491 to 14493, replaced on 17
+  October 2026, line 26668.
+
+  **Defect c, the design line.** The should: the two descriptions read as
+  approved on 24 October 2026, quoted under (c) of the entry at line 36636,
+  lines 36839 to 36843, the machine kept awake and no word on the design,
+  and `plan-work` says so where its lines 425 to 428 said the costs, lines
+  446 to 449 at `8669e5c`. It is built at `skills/plan-work/SKILL.md` lines 450
+  to 461: the cost said in each description is the machine staying awake;
+  that the design gets chosen against the written list is not said there,
+  since 27 October 2026, by the person's decision of 23 October 2026, the
+  wording standing in the entry of 24 October 2026 under decision (c) in
+  place of the one of 19 October 2026; the choice itself stands in Stage 3
+  as it stands. Cross-check against the case that found it: run 3 #164
+  carried in both descriptions the sentence on the design, as runs 2b #182
+  and 3a #178 of 23 October 2026 had; a run reading the question through
+  `scripts/devloop-expand`, expanded lines 1203 to 1214, writes under „Volle
+  Flexibilität“ „Alles wird ohne dich gebaut, du liest das Ergebnis danach.
+  Der Rechner muss wach bleiben.“ and under „Plan ohne dich“ „Der Plan
+  entsteht ohne dich und hält an, sobald du ihn lesen kannst; danach geht
+  es weiter wie bei der ersten Antwort. Der Rechner muss wach bleiben.“
+  The other files that reach the same place: none; the sentence stood in
+  `plan-work` alone, `grep -rn 'written list\|their taste' skills shared
+  output-styles` finding its one line before the change and none after.
+
+  **Three line ranges corrected in place** in the entry at line 38963,
+  which cites wordings (b), (c) and (d) of the entry at line 37660: line
+  39145 read "lines 37896 to 37898" for (d) and reads "lines 37898 to
+  37901"; line 39217 read "37893 to 37896" for (c) and reads "37894 to
+  37898"; lines 39526 to 39527 read "lines 37888 to 37892" for (b) and read
+  "lines 37890 to 37894". Each number checked at the text: (b) opens at
+  37890 with "(b) The assumption of a round" and ends at 37894 with
+  "Projekt gilt.“", where (c) opens, which ends at 37898 with "geht es mit
+  dieser Aufgabe weiter.“", where (d) opens and ends at 37901. By "A dated
+  entry is corrected in place where a line number in it is wrong, as the
+  audits do, and nowhere else", `docs/skill-conventions.md` lines 1607 to
+  1609.
+
+  **The table.** The three defects' rows carry their evidence on the line
+  that carries the repair — defect 1 on `output-styles/devloop.md` line 16,
+  defect 2 on `cut-into-tasks` line 173, the halt run 3's message followed,
+  defect c on `plan-work` line 451 — and in their notes that they are built
+  on 27 October 2026 under version 0.162.0 by this entry; the row of defect
+  14 of 19 October 2026, whose should the decision of 24 October 2026
+  changed into defect c, says in its note that the changed should is built
+  here, its evidence on the same line as defect c's. Seven rows re-anchored
+  after the change, each to the line that carries what its anchor carried:
+  the evidence of the thing on the mode not set up in `plan-work`, of the
+  refusal from planning in `build-work` and of the no in `setup-checks`
+  step 8, and the four part-of records on the lines of the costs and of
+  the no. This entry's head as not-a-thing, naming no defect of its own.
+  No run is recorded: none was made. The tool at the tip of this branch,
+  against its output at `8669e5c` kept outside the repository: exit 0 at
+  both, no broken record, 14 findings and 42 closed defects at both; none
+  of 4896 lines of the search set uncovered at the tree against none of
+  4893, the three more being this entry's head, `plan-work` line 459 with
+  "either" and `setup-checks` line 1085 with "where", the first recorded as
+  no defect, the second as part of the mode question's thing and the third
+  as rationale, with `build-work` line 1622, where the "where" of the old
+  line 1618 now stands, recorded as part of the refusal's thing; 2374
+  things at both; 364 recorded and not built against 367, the three
+  defects; 1241 built and never walked against 1225, sixteen more: the
+  three defects, defect 14 of 19 October 2026, whose evidence line changed,
+  and twelve things walked until now whose lines changed on this branch,
+  the straight paths of the output style, of `shared/language-opening.md`
+  and `shared/closing.md`, and of the nine units of the skills that insert
+  the block, which brings the block's lines into their range — `build-work`
+  / Build the open tasks, `cut-into-tasks` / Cut a spec into tasks,
+  `plan-work` / Plan a piece of work and / Close, `review-changes` / Review
+  a change, `setup-checks` / Step 9 — Close, `setup-project` / Set up a
+  project and / Step 9 — Close, `start-work` / How to talk while doing all
+  this —, so that 703 things are walked against 716; their runs stay in
+  the table and stand under "RUNS THAT DO NOT COUNT", 661 lines against
+  642, nineteen more, each made under a version before this branch's; 24
+  undetermined at both; 3109 not-a-thing records against 3105, the four of
+  this entry; 289 lines that can carry no unique anchor at both.
+
+  The self-test passed at the tree, 124 cases, 95 of 95 messages asserted,
+  as at `8669e5c`. No program under `bin/` or `scripts/`, no hook and no
+  workflow changed. The nineteen checks under "Before a handover, run
+  these" printed at the tree, in a clean bash with `/usr/bin/grep`, what
+  they printed at `8669e5c`, line for line, but for the line numbers of the
+  five lines check 16 and the one line check 19 print from `build-work`,
+  `plan-work` and `setup-checks`, moved by the lines added above them.
 
 
 ## Decisions taken against
