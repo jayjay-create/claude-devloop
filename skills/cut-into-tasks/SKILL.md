@@ -166,7 +166,15 @@ says which.
   to read the third against — finds the mark this run wrote, and opens the run.
 - **Alone, `plan`**: this is the halt before the first build, and the run ends
   here. Say what is in the tracker to read: the spec by its title, how many
-  tasks, which one is ready first and what it unblocks. Say that nothing is
+  tasks, which one is ready first and what it unblocks. Where the spec names
+  a tool outside the project whose line, printed by `bin/devloop-tool-state`,
+  says not found or not read, say that the work needs it and what the line
+  says, and that whether the build installs it or they get the command for
+  it is decided by their permission to install as it stands then — what the
+  assumptions of a round of `plan-work` say of a missing tool, said here
+  since 27 October 2026, new defect 4 of the roadmap entry of that date on
+  the three closing runs, because this halt is where they next read on this
+  route; `plan-work` says what is said, not the words. Say that nothing is
   built, and how it goes on: the next session opens with this spec and its ready
   tasks and takes the first — with them there, or alone where they type `--auto`
   then, which is the only thing that sets the mode on that route; the input is

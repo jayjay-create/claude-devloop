@@ -1,0 +1,529 @@
+#!/bin/bash
+# Reads, for each tool a piece of work needs outside the project, whether it
+# stands on this machine, and prints one line per tool and one on the
+# install record, since 27 October 2026, decision (3) of the roadmap entry
+# of that date on this program: the planning of two closing runs of 26
+# October 2026 said nothing of a tool that was missing, and one wrote that a
+# tool was installed without having read the machine, new defect 4 of the
+# roadmap entry of 27 October 2026 on the three closing runs. So a program
+# reads the machine, and a run says of a tool only what this program
+# printed. At the tip of the branch that brings it, plan-work calls it: once
+# in a round of Stage 1 before anything is said of a tool, and again where a
+# tool becomes known after the round. The call of build-work before the
+# start of the build subagent, and its read at the next start for an open
+# issue that blocks a task on a missing install, come with the part on the
+# build, and the forms --build and --installed below carry them.
+#
+# Usage: devloop-tool-state --planning TOOL ...
+#        devloop-tool-state --build TOOL ...
+#        devloop-tool-state --installed COMMAND TOOL
+#        devloop-tool-state --self-test
+#   in the project's directory: CLAUDE_PROJECT_DIR, and without it the
+#   current directory; a browser is read against the project's test tool
+#   there, and the record off the project's main branch as last fetched.
+#
+# A TOOL is one of two things, as build-work step 3 point 7 has them. A
+# command that lands outside the repository, named as it is called - yq,
+# mmdc - read on the search path with command -v: the search path answers
+# whether a tool stands there for use. Or a browser for tests, named
+# VENDOR:NAME - playwright:webkit, playwright:chromium, playwright:firefox,
+# puppeteer:chrome, puppeteer:firefox, puppeteer:chrome-headless-shell,
+# cypress:binary, the one thing Cypress downloads - read in the folder the
+# vendor names for this system under "Whether it worked is read off the
+# result" in shared/backed-command.md, or in the folder a setting of the
+# vendor names where one is set. A browser counts as found only in the
+# version the project's test tool needs: for Playwright its dry run names
+# the version and the folder of that version, npx --no-install playwright
+# install --dry-run NAME, run in the project, which honours
+# PLAYWRIGHT_BROWSERS_PATH itself; for Cypress the version is the one of
+# node_modules/cypress in the project and the folder <cache>/<version>,
+# the cache CYPRESS_CACHE_FOLDER where it is set; for Puppeteer node, run
+# in the project, asks puppeteer-core for the build of the browser and
+# @puppeteer/browsers for its folder under the cache, PUPPETEER_CACHE_DIR
+# where it is set. The vendors' configuration files are not read. Where
+# the project has no test tool yet to say which version it needs, and on
+# a system for which the shared text names no folder - Windows among them -
+# with no setting of the vendor set, the line says neither found nor not
+# found but not read, with the cause: a run says of the browser what the
+# line says, nothing is handed over and no issue is raised on a thing
+# nobody read, "In doubt, a run with nobody there is not blocked" in
+# docs/skill-conventions.md, and under a yes the vendor's own install
+# leaves a browser that stands already as it stands.
+#
+# One line per TOOL, in the order given, each ending with the day it was
+# read, so that the line can stand in a spec as it is:
+#   TOOL: found at PATH (on YYYY-MM-DD)
+#   TOOL: not found on the search path (on YYYY-MM-DD)
+#   VENDOR:NAME: found at FOLDER, VERSION as the project's Vendor needs it (on YYYY-MM-DD)
+#   VENDOR:NAME: not found: nothing stands at FOLDER, the folder of VERSION as the project's Vendor needs it (on YYYY-MM-DD)
+#   VENDOR:NAME: not read, because CAUSE (on YYYY-MM-DD)
+# A path under the home directory is written with ~, as
+# bin/devloop-install-note writes a folder: the planning writes the line
+# into the spec, and the spec stands on GitHub.
+# Then one line on the install record, "record: ...". Under --planning the
+# record is not read: the line says that whether the run installs a tool
+# that is missing at the build or the person gets the command for it is
+# decided by the record as it stands at the build, build-work step 3 point
+# 7, and that the planning settles nothing of it - the answer of today is
+# not printed, since the record can change before the build and the
+# planning may not write who installs, plan-work Stage 1. Under --build the
+# record is read through bin/devloop-install-record off the main branch as
+# last fetched, as the install guard reads it, so that no second copy of
+# the resolution of the default branch comes into being:
+#   record: tools yes on origin/DEFAULT, answered DATE: a tool that is missing is installed by this run at the build, backed, with 600000 milliseconds on the call, build-work step 3 point 7
+#   record: tools no on origin/DEFAULT, answered DATE: a tool that is missing is handed to the person as a backed command with both ways before anything is built against a stand-in, build-work step 3 point 7
+#   record: none, because CAUSE: as under no, a tool that is missing is handed to the person as a backed command with both ways before anything is built against a stand-in, build-work step 3 point 7
+#
+# Under --installed, whether COMMAND, an install handed to the person, has
+# installed TOOL: not on the search path, where an older copy from
+# elsewhere looks like a success, but in the folder the installer writes
+# to, read off the installer itself, "Whether it worked is read off the
+# result" in shared/backed-command.md - $(brew --prefix)/bin for brew;
+# $(npm prefix -g)/bin for npm with -g or --global, the prefix itself on
+# Windows, where npm puts its commands; $(go env GOBIN), or $(go env
+# GOPATH)/bin where GOBIN is empty, for go; pnpm bin -g; yarn global bin;
+# bun pm bin -g; pipx environment --value PIPX_BIN_DIR; uv tool dir --bin;
+# the EXECUTABLE DIRECTORY of gem environment; and for cargo, which has no
+# query, $CARGO_INSTALL_ROOT/bin, $CARGO_HOME/bin or ~/.cargo/bin as cargo
+# documents them. The installer is the first word of COMMAND after any
+# VAR=value; a browser TOOL is read as above, the folder being the
+# vendor's, whatever COMMAND says. The tool stands where TOOL, or on
+# Windows TOOL.exe, TOOL.cmd or TOOL.bat, exists in the folder. One line,
+# and no record line:
+#   TOOL: found at FOLDER/TOOL, the folder INSTALLER writes to, read off QUERY (on YYYY-MM-DD)
+#   TOOL: not found at FOLDER/TOOL, the folder INSTALLER writes to, read off QUERY; a copy elsewhere on the search path does not count (on YYYY-MM-DD)
+#   TOOL: not read, because CAUSE (on YYYY-MM-DD)
+#
+# Every query of a vendor or an installer runs under bin/devloop-bounded
+# with sixty seconds, so that the program ends inside the 120 seconds of a
+# Bash call; a query that does not answer leaves its line not read, with
+# the query and its message, never found; one not on the path answers "is
+# not on PATH". The program fetches nothing and asks GitHub nothing; the
+# default branch it does not resolve itself.
+# Exit 0: every TOOL found. 1: one or more not found or not read; the
+# record line never changes the exit. 2 with one line on stderr: no form
+# first or one it does not know, no TOOL, a TOOL that is neither a bare
+# word nor VENDOR:NAME of one of the three vendors, --installed without
+# exactly a COMMAND and a TOOL, an empty COMMAND, or a project directory
+# that cannot be entered; --self-test alone is the one exception.
+# --self-test produces every form of the lines and every exit code once,
+# independent of the search path and of the folders of the machine it runs
+# on: stand-ins for brew, npm, pnpm, yarn, bun, go, pipx, uv, gem, npx and
+# node, which the self-test alone puts first on the path, answer from the
+# case's script and log every call; a home directory of its own holds the
+# folders; DEVLOOP_TOOL_STATE_SYSTEM stands in for uname -s in the
+# self-test alone; and a throwaway repository whose main branch as last
+# fetched carries each case's record, committed under a fixed invented
+# identity, stands in for the project. It prints one line per case, names
+# every case that does not come out as this head says with what the
+# program printed, and exits 1 at its end where any was red. It needs bash
+# and no GNU tool; .github/workflows/stock-take.yml runs it with every
+# self-test under bin/ on four systems.
+set -u
+me=devloop-tool-state
+
+usage() { echo "$me: $1" >&2; exit 2; }
+
+selftest() {
+  local self T P out rc n=0 f=0 RED=0 LASTRED= DAY SYS=Darwin WITH= s
+  self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+  T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-tool-state-selftest.XXXXXX") || exit 1
+  trap 'rm -rf "$T"' EXIT
+  # in the shell's own form, so that it can stand on the path: a drive letter's colon would split it
+  T=$(cd "$T" && pwd)
+  P=$T/project
+  DAY=$(date +%Y-%m-%d)
+  mkdir -p "$T/bin" "$T/home/bin" "$T/w" "$P/docs/agents" "$T/s"
+  # The stand-ins. Each answers call N of its name from the case's script,
+  # $T/s/NAME.N, or from $T/s/NAME.d where N has none; it logs every call
+  # in order and marks a call no answer was scripted for, which makes the
+  # case red; as bin/devloop-start-conditions' stand-in for gh does.
+  for s in brew npm pnpm yarn bun go pipx uv gem npx node; do
+    cat > "$T/bin/$s" <<'IN'
+#!/bin/sh
+S=$(cd "$(dirname "$0")/.." && pwd)/s
+n=$(basename "$0")
+i=$(( $(cat "$S/$n.n" 2>/dev/null || echo 0) + 1 ))
+echo "$i" > "$S/$n.n"
+echo "$n $*" >> "$S/log"
+a=$S/$n.$i
+[ -e "$a.rc" ] || a=$S/$n.d
+[ -e "$a.rc" ] || { echo "stand-in for $n: no answer scripted for call $i: $n $*" >&2; : > "$S/unscripted"; exit 1; }
+cat "$a.out"; cat "$a.err" >&2
+exit "$(cat "$a.rc")"
+IN
+    chmod +x "$T/bin/$s"
+  done
+  # the tool that stands on the search path of every case: an executable file under the self-test's home
+  : > "$T/home/bin/devloop-selftest-present"; chmod +x "$T/home/bin/devloop-selftest-present"
+  [ "$(PATH="$T/bin:$PATH" command -v npx)" = "$T/bin/npx" ] || { echo "FAIL the stand-in for npx is not the npx the path finds"; exit 1; }
+
+  git_q() { git -c user.name=devloop-selftest -c user.email=selftest@example.invalid -c commit.gpgsign=false "$@"; }
+  git_q init -q "$P" && git -C "$P" symbolic-ref HEAD refs/heads/main
+  # record ENV: a commit of the throwaway project carrying docs/agents/environment.md holding ENV - no file where ENV is - - and origin/main and origin/HEAD set to that commit, as a fetch would leave them
+  record() {
+    rm -f "$P/docs/agents/environment.md"
+    [ "$1" = - ] || printf '%s\n' "$1" > "$P/docs/agents/environment.md"
+    echo "$n" > "$P/count"
+    git_q -C "$P" add -A && git_q -C "$P" commit -q -m "commit $n" || { echo "FAIL the throwaway project could not be committed to"; exit 1; }
+    git -C "$P" update-ref refs/remotes/origin/main HEAD
+    git -C "$P" symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
+  }
+  YES='## Install permission
+install-tools: yes
+install-place: /opt/homebrew/bin
+install-answered: 2026-10-25'
+  NO='## Install permission
+install-tools: no
+install-answered: 2026-10-26'
+  # fresh: a new script, every stand-in without an answer, the log empty, the folders of the home directory as they were made
+  fresh() { rm -rf "$T/s" "$T/home/Library" "$T/home/.cache" "$T/home/cyp" "$T/home/pup" "$T/home/hb" "$T/home/npm" "$T/home/go" "$T/home/cg" "$T/home/.cargo" "$T/home/x"; mkdir "$T/s"; : > "$T/s/log"; SYS=Darwin; WITH=; }
+  # ans NAME N RC OUT [ERR]: the answer to call N of NAME, d for every call N has none
+  ans() { printf '%s\n' "$3" > "$T/s/$1.$2.rc"; : > "$T/s/$1.$2.out"; : > "$T/s/$1.$2.err"; [ -z "$4" ] || printf '%s\n' "$4" > "$T/s/$1.$2.out"; [ -z "${5:-}" ] || printf '%s\n' "$5" > "$T/s/$1.$2.err"; }
+  # folder PATH [FILE]: the folder made, with FILE in it where one is named
+  folder() { mkdir -p "$1"; [ -z "${2:-}" ] || : > "$1/$2"; }
+  # run [ARGUMENT...]: the program, once, in the throwaway project, against the stand-ins, with the home directory of the self-test, SYS for uname -s and the variables of WITH
+  run() { rundir "$P" "$@"; }
+  rundir() { local d=$1; shift; ( cd "$d" && unset CYPRESS_CACHE_FOLDER PUPPETEER_CACHE_DIR CARGO_HOME CARGO_INSTALL_ROOT PLAYWRIGHT_BROWSERS_PATH && PATH="$T/bin:$T/home/bin:$PATH" HOME="$T/home" CLAUDE_PROJECT_DIR="$d" DEVLOOP_TOOL_STATE_SYSTEM="$SYS" GIT_CEILING_DIRECTORIES="$T" env ${WITH:+$WITH} "$self" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
+  # fail NAME WHAT: the case NAME is red for WHAT; the program's output is printed once per red case, and every red case is named
+  fail() { echo "FAIL $1: $2"; [ "$LASTRED" = "$1" ] || { printf '%s\n' "$out" | sed 's/^/    /'; LASTRED=$1; f=$((f + 1)); }; RED=1; }
+  # calls NAME LINE...: the stand-ins were called with these lines, in this order, and with nothing else
+  calls() { local name=$1 got; shift; got=$(cat "$T/s/log"); [ "$got" = "$(printf '%s\n' "$@")" ] || fail "$name" "calls '$(printf '%s' "$got" | tr '\n' ';')', expected '$(printf '%s;' "$@")'"; }
+  # expect NAME CODE LINE...: the last run ended with CODE, printed every LINE whole and made no call its script did not answer
+  expect() {
+    local name=$1 want=$2 s; shift 2; n=$((n + 1))
+    [ "$rc" -eq "$want" ] || fail "$name" "ended with $rc, expected $want"
+    for s in "$@"; do printf '%s\n' "$out" | grep -qFx -- "$s" || fail "$name" "no line '$s'"; done
+    [ ! -e "$T/s/unscripted" ] || fail "$name" "a call no answer was scripted for"
+    [ "$LASTRED" = "$name" ] || echo "ok   $name"
+  }
+  # lines NAME COUNT: the last run printed COUNT lines on stdout
+  lines() { [ "$(grep -c . < "$T/stdout")" -eq "$2" ] || fail "$1" "$(grep -c . < "$T/stdout") lines on stdout, expected $2"; }
+  PRESENT="devloop-selftest-present: found at ~/bin/devloop-selftest-present (on $DAY)"
+  ABSENT="devloop-selftest-absent: not found on the search path (on $DAY)"
+  PLAN="record: not read here; whether the run installs a tool that is missing at the build or the person gets the command for it is decided by the install record as it stands at the build, build-work step 3 point 7, and the planning settles nothing of it"
+  WAY="a tool that is missing is handed to the person as a backed command with both ways before anything is built against a stand-in, build-work step 3 point 7"
+  DRY="WebKit 27.2 (playwright webkit v9999)
+  Install location:    $T/home/Library/Caches/ms-playwright/webkit-9999
+  Download url:        https://example.invalid/webkit-9999.zip
+
+FFmpeg (playwright ffmpeg v1013)
+  Install location:    $T/home/Library/Caches/ms-playwright/ffmpeg-1013"
+  EXE="$T/home/.cache/puppeteer/chrome/mac_arm-156.0.1/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+
+  # the arguments: exit 2 with one line on stderr
+  fresh; run
+  lines "no form first: 2" 0
+  expect "no form first: 2" 2 "devloop-tool-state: expected --planning, --build or --installed first, got nothing"
+  fresh; run --plan x
+  expect "a form it does not know: 2" 2 "devloop-tool-state: expected --planning, --build or --installed first, got '--plan'"
+  fresh; run --self-test --planning x
+  expect "--self-test beside a form: not the self-test, 2" 2 "devloop-tool-state: expected --planning, --build or --installed first, got '--self-test'"
+  fresh; run --planning
+  expect "--planning without a tool: 2" 2 "devloop-tool-state: expected at least one TOOL after --planning"
+  fresh; run --installed 'brew install yq'
+  expect "--installed with one argument: 2" 2 "devloop-tool-state: expected exactly a COMMAND and a TOOL after --installed, got 1 arguments"
+  fresh; run --installed '' yq
+  expect "--installed with an empty command: 2" 2 "devloop-tool-state: the COMMAND of --installed is empty"
+  fresh; run --planning devloop-selftest-present 'a b'
+  lines "a tool that is no bare word: 2, nothing read before" 0
+  expect "a tool that is no bare word: 2, nothing read before" 2 "devloop-tool-state: a TOOL is a bare word as it is called - letters, digits, dot, hyphen, plus and underscore - or VENDOR:NAME for a browser, got 'a b'"
+  fresh; run --build -x
+  expect "a tool starting with a hyphen: 2" 2 "devloop-tool-state: a TOOL is a bare word as it is called - letters, digits, dot, hyphen, plus and underscore - or VENDOR:NAME for a browser, got '-x'"
+  fresh; run --planning chrome:webkit
+  expect "a browser of a vendor it does not know: 2" 2 "devloop-tool-state: a browser is named VENDOR:NAME with playwright, puppeteer or cypress as the vendor, and cypress:binary for Cypress, got 'chrome:webkit'"
+  fresh; run --planning cypress:app
+  expect "cypress with a name other than binary: 2" 2 "devloop-tool-state: a browser is named VENDOR:NAME with playwright, puppeteer or cypress as the vendor, and cypress:binary for Cypress, got 'cypress:app'"
+  fresh; run --planning 'playwright:'
+  expect "a browser without a name: 2" 2 "devloop-tool-state: a browser is named VENDOR:NAME with playwright, puppeteer or cypress as the vendor, and cypress:binary for Cypress, got 'playwright:'"
+  fresh; ( cd "$T" && CLAUDE_PROJECT_DIR="$T/nowhere" HOME="$T/home" "$self" --planning devloop-selftest-present ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr")
+  expect "a project directory that cannot be entered: 2" 2 "devloop-tool-state: the project directory $T/nowhere cannot be entered"
+
+  # --planning: the search path, the record not read, no git needed
+  fresh; rundir "$T/w" --planning devloop-selftest-present devloop-selftest-absent
+  lines "--planning: one found, one not, the record not read, outside any repository: 1" 3
+  calls "--planning: one found, one not, the record not read, outside any repository: 1"
+  expect "--planning: one found, one not, the record not read, outside any repository: 1" 1 "$PRESENT" "$ABSENT" "$PLAN"
+  fresh; rundir "$T/w" --planning devloop-selftest-present
+  lines "--planning: every tool found: 0" 2
+  expect "--planning: every tool found: 0" 0 "$PRESENT" "$PLAN"
+
+  # --build: the record through bin/devloop-install-record
+  fresh; record "$YES"; run --build devloop-selftest-present
+  lines "--build under a yes: the consequence of point 7, 0" 2
+  expect "--build under a yes: the consequence of point 7, 0" 0 "$PRESENT" "record: tools yes on origin/main, answered 2026-10-25: a tool that is missing is installed by this run at the build, backed, with 600000 milliseconds on the call, build-work step 3 point 7"
+  fresh; record "$NO"; run --build devloop-selftest-absent devloop-selftest-present
+  lines "--build under a no: the handover with both ways, 1 on the tool" 3
+  expect "--build under a no: the handover with both ways, 1 on the tool" 1 "$ABSENT" "$PRESENT" "record: tools no on origin/main, answered 2026-10-26: $WAY"
+  fresh; record -; run --build devloop-selftest-present
+  expect "--build with no record: the reader's cause, as under no, the exit by the tools alone" 0 "$PRESENT" "record: none, because there is no docs/agents/environment.md on origin/main as last fetched: as under no, $WAY"
+  fresh; rundir "$T/w" --build devloop-selftest-present
+  expect "--build outside any repository: the reader's cause" 0 "record: none, because this is not a git repository, so there is no default branch to read the record off: as under no, $WAY"
+  record "$YES"
+
+  # a browser of Playwright: the dry run names the version and the folder
+  fresh; ans npx d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit
+  calls "playwright: the folder of the dry run stands, found" "npx --no-install playwright install --dry-run webkit"
+  expect "playwright: the folder of the dry run stands, found" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
+  fresh; ans npx d 0 "$DRY"; run --planning playwright:webkit
+  expect "playwright: the folder absent, not found" 1 "playwright:webkit: not found: nothing stands at ~/Library/Caches/ms-playwright/webkit-9999, the folder of WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
+  fresh; ans npx d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999"; run --planning playwright:webkit
+  expect "playwright: the folder empty, not found" 1 "playwright:webkit: not found: nothing stands at ~/Library/Caches/ms-playwright/webkit-9999, the folder of WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
+  fresh; ans npx d 1 '' 'npm error could not determine executable to run'; run --planning playwright:chromium
+  expect "playwright: the project has no Playwright, the dry run does not answer, not read" 1 "playwright:chromium: not read, because the project's Playwright did not say which version of chromium it needs: npx --no-install playwright install --dry-run chromium did not answer: npm error could not determine executable to run (on $DAY)"
+  fresh; ans npx d 127 '' 'devloop-bounded: line 106: npx: command not found'; run --planning playwright:webkit
+  expect "playwright: npx not on the path, not read" 1 "playwright:webkit: not read, because the project's Playwright did not say which version of webkit it needs: npx --no-install playwright install --dry-run webkit did not answer: npx is not on PATH (on $DAY)"
+  fresh; ans npx d 0 'Nothing to install'; run --planning playwright:webkit
+  expect "playwright: the dry run prints no install location, not read" 1 "playwright:webkit: not read, because the dry run printed no install location: Nothing to install (on $DAY)"
+
+  # a browser of Cypress: the version of the project's package, the folder of the setting or of this system
+  fresh; mkdir -p "$P/node_modules/cypress"; printf '{\n  "name": "cypress",\n  "version": "13.6.0"\n}\n' > "$P/node_modules/cypress/package.json"
+  folder "$T/home/cyp/13.6.0" Cypress; WITH="CYPRESS_CACHE_FOLDER=$T/home/cyp/"; run --planning cypress:binary
+  expect "cypress: the folder of the setting, found" 0 "cypress:binary: found at ~/cyp/13.6.0, Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
+  fresh; run --planning cypress:binary
+  expect "cypress: the folder of this system on macOS, absent, not found" 1 "cypress:binary: not found: nothing stands at ~/Library/Caches/Cypress/13.6.0, the folder of Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
+  fresh; SYS=Linux; folder "$T/home/.cache/Cypress/13.6.0" Cypress; run --planning cypress:binary
+  expect "cypress: the folder of this system on Linux, found" 0 "cypress:binary: found at ~/.cache/Cypress/13.6.0, Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-20348; run --planning cypress:binary
+  expect "cypress: no folder for this system and no setting, not read" 1 "cypress:binary: not read, because shared/backed-command.md names no folder for Cypress on this system (MINGW64_NT-10.0-20348) and CYPRESS_CACHE_FOLDER is not set (on $DAY)"
+  rm -rf "$P/node_modules"
+  fresh; run --planning cypress:binary
+  expect "cypress: the project has no Cypress package, not read" 1 "cypress:binary: not read, because the project has no Cypress package to say which version it needs, no version in node_modules/cypress/package.json (on $DAY)"
+
+  # a browser of Puppeteer: node asks the project's Puppeteer for the build and its folder
+  fresh; ans node d 0 "$(printf '156.0.1\n%s' "$EXE")"; folder "$(dirname "$EXE")" "$(basename "$EXE")"; run --planning puppeteer:chrome
+  expect "puppeteer: the build's executable stands, found" 0 "puppeteer:chrome: found at ~/.cache/puppeteer/chrome/mac_arm-156.0.1, chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+  fresh; ans node d 0 "$(printf '156.0.1\n%s' "$EXE")"; run --planning puppeteer:chrome
+  expect "puppeteer: the executable absent, not found" 1 "puppeteer:chrome: not found: nothing stands at ~/.cache/puppeteer/chrome/mac_arm-156.0.1, the folder of chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+  fresh; ans node d 0 "$(printf '156.0.1\n%s/pup/chrome/mac_arm-156.0.1/chrome' "$T/home")"; folder "$T/home/pup/chrome/mac_arm-156.0.1" chrome; WITH="PUPPETEER_CACHE_DIR=$T/home/pup"; run --planning puppeteer:chrome
+  expect "puppeteer: the folder of the setting, found" 0 "puppeteer:chrome: found at ~/pup/chrome/mac_arm-156.0.1, chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+  fresh; ans node d 1 '' "$(printf 'node:internal/modules/cjs/loader:1228\n  throw err;\n  ^\n\nError: Cannot find module '"'"'puppeteer-core/internal/revisions.js'"'"'\nRequire stack:\n- [eval]')"; run --planning puppeteer:chrome
+  expect "puppeteer: the project has no Puppeteer, node does not answer, not read" 1 "puppeteer:chrome: not read, because the project's Puppeteer did not say which build of chrome it needs: node, asked for the build of chrome and its folder under ~/.cache/puppeteer, did not answer: Error: Cannot find module 'puppeteer-core/internal/revisions.js' (on $DAY)"
+  fresh; ans node d 0 "$(printf '\n')"; run --planning puppeteer:firefox
+  expect "puppeteer: no build for the browser, not read" 1 "puppeteer:firefox: not read, because the project's Puppeteer names no build of firefox, PUPPETEER_REVISIONS having no entry for it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-20348; run --planning puppeteer:chrome
+  calls "puppeteer: no folder for this system and no setting, not read, node not asked"
+  expect "puppeteer: no folder for this system and no setting, not read, node not asked" 1 "puppeteer:chrome: not read, because shared/backed-command.md names no folder for Puppeteer on this system (MINGW64_NT-10.0-20348) and PUPPETEER_CACHE_DIR is not set (on $DAY)"
+
+  # --installed: the folder the installer writes to, read off the installer
+  fresh; ans brew d 0 "$T/home/hb"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed 'brew install devloop-selftest-present' devloop-selftest-present
+  lines "installed by brew: found in the folder of brew --prefix, no record line, 0" 1
+  calls "installed by brew: found in the folder of brew --prefix, no record line, 0" "brew --prefix"
+  expect "installed by brew: found in the folder of brew --prefix, no record line, 0" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)"
+  fresh; ans brew d 0 "$T/home/hb"; folder "$T/home/hb/bin"; run --installed 'brew install devloop-selftest-present' devloop-selftest-present
+  expect "installed by brew: not in the folder of brew, though on the search path: not found, 1" 1 "devloop-selftest-present: not found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix; a copy elsewhere on the search path does not count (on $DAY)"
+  fresh; ans brew d 1 '' 'Error: Homebrew is not installed'; run --installed 'brew install yq' yq
+  expect "brew --prefix does not answer: not read" 1 "yq: not read, because brew --prefix did not answer: Error: Homebrew is not installed (on $DAY)"
+  fresh; ans brew d 0 ''; run --installed 'brew install yq' yq
+  expect "brew --prefix prints nothing: not read" 1 "yq: not read, because brew --prefix printed no folder (on $DAY)"
+  fresh; ans brew d 3 ''; run --installed 'brew install yq' yq
+  expect "brew --prefix ends otherwise than 0 and prints nothing: the code it ended with" 1 "yq: not read, because brew --prefix did not answer: ended with 3 (on $DAY)"
+  fresh; ans npx d 1 "Error: unknown browser: safari"; run --planning playwright:safari
+  expect "the dry run answers on stdout alone: that line" 1 "playwright:safari: not read, because the project's Playwright did not say which version of safari it needs: npx --no-install playwright install --dry-run safari did not answer: Error: unknown browser: safari (on $DAY)"
+  fresh; ans brew d 0 "$T/home/hb"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed 'HOMEBREW_NO_AUTO_UPDATE=1 brew install devloop-selftest-present' devloop-selftest-present
+  calls "a VAR=value before the installer is passed over" "brew --prefix"
+  expect "a VAR=value before the installer is passed over" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)"
+  fresh; ans npm d 0 "$T/home/npm"; folder "$T/home/npm/bin" devloop-selftest-present; run --installed 'npm install -g @example/devloop-selftest-present' devloop-selftest-present
+  calls "installed by npm with -g: the folder of npm prefix -g" "npm prefix -g"
+  expect "installed by npm with -g: the folder of npm prefix -g" 0 "devloop-selftest-present: found at ~/npm/bin/devloop-selftest-present, the folder npm writes to, read off npm prefix -g (on $DAY)"
+  fresh; run --installed 'npm install @example/devloop-selftest-present' devloop-selftest-present
+  calls "npm without -g: inside a project, not read, npm not asked"
+  expect "npm without -g: inside a project, not read, npm not asked" 1 "devloop-selftest-present: not read, because npm without -g or --global installs inside a project, which is no tool outside it (on $DAY)"
+  fresh; SYS=MINGW64_NT-10.0-20348; ans npm d 0 "$T/home/npm"; folder "$T/home/npm" devloop-selftest-present.cmd; run --installed 'npm install --global devloop-selftest-present' devloop-selftest-present
+  expect "installed by npm on Windows: the prefix itself, the command as TOOL.cmd" 0 "devloop-selftest-present: found at ~/npm/devloop-selftest-present.cmd, the folder npm writes to, read off npm prefix -g (on $DAY)"
+  fresh; ans go 1 0 "$T/home/go/bin"; folder "$T/home/go/bin" devloop-selftest-present; run --installed 'go install example.invalid/x/cmd/devloop-selftest-present@latest' devloop-selftest-present
+  calls "installed by go: GOBIN set" "go env GOBIN"
+  expect "installed by go: GOBIN set" 0 "devloop-selftest-present: found at ~/go/bin/devloop-selftest-present, the folder go writes to, read off go env GOBIN (on $DAY)"
+  fresh; ans go 1 0 ''; ans go 2 0 "$T/home/go:$T/home/x"; folder "$T/home/go/bin"; run --installed 'go install example.invalid/x@latest' devloop-selftest-present
+  calls "installed by go: GOBIN empty, the first GOPATH" "go env GOBIN" "go env GOPATH"
+  expect "installed by go: GOBIN empty, the first GOPATH" 1 "devloop-selftest-present: not found at ~/go/bin/devloop-selftest-present, the folder go writes to, read off go env GOPATH, GOBIN being empty; a copy elsewhere on the search path does not count (on $DAY)"
+  fresh; ans pnpm d 0 "$(printf 'some notice\n%s/x' "$T/home")"; folder "$T/home/x" devloop-selftest-present; run --installed 'pnpm add -g devloop-selftest-present' devloop-selftest-present
+  expect "installed by pnpm: the last line of pnpm bin -g" 0 "devloop-selftest-present: found at ~/x/devloop-selftest-present, the folder pnpm writes to, read off pnpm bin -g (on $DAY)"
+  fresh; ans yarn d 0 "$(printf 'yarn global v1.22\n%s/x\nDone in 0.1s.' "$T/home")"; folder "$T/home/x" devloop-selftest-present; run --installed 'yarn global add devloop-selftest-present' devloop-selftest-present
+  expect "installed by yarn: the line of yarn global bin that is a path" 0 "devloop-selftest-present: found at ~/x/devloop-selftest-present, the folder yarn writes to, read off yarn global bin (on $DAY)"
+  fresh; ans bun d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed 'bun install -g devloop-selftest-present' devloop-selftest-present
+  expect "installed by bun: bun pm bin -g" 0 "devloop-selftest-present: found at ~/x/devloop-selftest-present, the folder bun writes to, read off bun pm bin -g (on $DAY)"
+  fresh; ans pipx d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed 'pipx install devloop-selftest-present' devloop-selftest-present
+  calls "installed by pipx: pipx environment" "pipx environment --value PIPX_BIN_DIR"
+  expect "installed by pipx: pipx environment" 0 "devloop-selftest-present: found at ~/x/devloop-selftest-present, the folder pipx writes to, read off pipx environment --value PIPX_BIN_DIR (on $DAY)"
+  fresh; ans uv d 0 "$T/home/x"; folder "$T/home/x" devloop-selftest-present; run --installed 'uv tool install devloop-selftest-present' devloop-selftest-present
+  expect "installed by uv: uv tool dir --bin" 0 "devloop-selftest-present: found at ~/x/devloop-selftest-present, the folder uv writes to, read off uv tool dir --bin (on $DAY)"
+  fresh; ans gem d 0 "$(printf 'RubyGems Environment:\n  - RUBYGEMS VERSION: 3.5\n  - EXECUTABLE DIRECTORY: %s/x\n  - GEM PATHS:' "$T/home")"; folder "$T/home/x" devloop-selftest-present; run --installed 'gem install devloop-selftest-present' devloop-selftest-present
+  expect "installed by gem: the EXECUTABLE DIRECTORY of gem environment" 0 "devloop-selftest-present: found at ~/x/devloop-selftest-present, the folder gem writes to, read off the EXECUTABLE DIRECTORY of gem environment (on $DAY)"
+  fresh; ans gem d 0 'RubyGems Environment:'; run --installed 'gem install yq' yq
+  expect "gem environment without the directory: not read" 1 "yq: not read, because the EXECUTABLE DIRECTORY of gem environment printed no folder (on $DAY)"
+  fresh; folder "$T/home/cg/bin" devloop-selftest-present; WITH="CARGO_HOME=$T/home/cg"; run --installed 'cargo install devloop-selftest-present' devloop-selftest-present
+  calls "installed by cargo: CARGO_HOME, no query"
+  expect "installed by cargo: CARGO_HOME, no query" 0 "devloop-selftest-present: found at ~/cg/bin/devloop-selftest-present, the folder cargo writes to, read off CARGO_INSTALL_ROOT, CARGO_HOME or ~/.cargo as cargo documents them, cargo having no query for it (on $DAY)"
+  fresh; run --installed 'cargo install devloop-selftest-present' devloop-selftest-present
+  expect "installed by cargo: nothing set, ~/.cargo/bin" 1 "devloop-selftest-present: not found at ~/.cargo/bin/devloop-selftest-present, the folder cargo writes to, read off CARGO_INSTALL_ROOT, CARGO_HOME or ~/.cargo as cargo documents them, cargo having no query for it; a copy elsewhere on the search path does not count (on $DAY)"
+  fresh; run --installed 'curl -fsSL https://example.invalid/install.sh | sh' devloop-selftest-present
+  expect "an installer this program does not read: not read" 1 "devloop-selftest-present: not read, because this program reads the folder of brew, npm, pnpm, yarn, bun, go, pipx, uv, gem and cargo off the installer, and 'curl' is none of them (on $DAY)"
+  fresh; ans npx d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --installed 'npx playwright install webkit' playwright:webkit
+  lines "--installed with a browser: read as the browser, whatever the command, no record line" 1
+  expect "--installed with a browser: read as the browser, whatever the command, no record line" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
+
+  [ "$RED" -ne 0 ] || { echo "SELF-TEST PASSED: $n cases"; exit 0; }
+  echo "SELF-TEST FAILED: $f of $n cases red"
+  exit 1
+}
+[ $# -eq 1 ] && [ "$1" = --self-test ] && selftest
+
+HERE=$(cd "$(dirname "$0")" && pwd)
+BOUNDED=$HERE/devloop-bounded
+BOUND=60
+DAY=$(date +%Y-%m-%d)
+SYSTEM=${DEVLOOP_TOOL_STATE_SYSTEM:-$(uname -s)}
+WIN=""
+case $SYSTEM in MINGW*|MSYS*|CYGWIN*|Windows*) WIN=yes ;; esac
+PUPPETEER_JS='const r=require("puppeteer-core/internal/revisions.js").PUPPETEER_REVISIONS;const b=require("@puppeteer/browsers");const id=r[process.argv[1]]||"";console.log(id);console.log(id&&b.computeExecutablePath({browser:process.argv[1],buildId:id,cacheDir:process.argv[2]}));'
+WAY="a tool that is missing is handed to the person as a backed command with both ways before anything is built against a stand-in, build-work step 3 point 7"
+
+FORM=${1:-}
+[ -n "$FORM" ] || usage "expected --planning, --build or --installed first, got nothing"
+shift
+case $FORM in
+  --planning|--build) [ $# -ge 1 ] || usage "expected at least one TOOL after $FORM" ;;
+  --installed) [ $# -eq 2 ] || usage "expected exactly a COMMAND and a TOOL after --installed, got $# arguments" ;;
+  *) usage "expected --planning, --build or --installed first, got '$FORM'" ;;
+esac
+# check_tool TOOL: a bare word as it is called, or VENDOR:NAME of one of the three vendors; anything else ends the program before a line is printed
+check_tool() {
+  case $1 in
+    playwright:[A-Za-z0-9]*|puppeteer:[A-Za-z0-9]*|cypress:binary) ;;
+    *:*) usage "a browser is named VENDOR:NAME with playwright, puppeteer or cypress as the vendor, and cypress:binary for Cypress, got '$1'" ;;
+    ''|-*|*[!A-Za-z0-9._+-]*) usage "a TOOL is a bare word as it is called - letters, digits, dot, hyphen, plus and underscore - or VENDOR:NAME for a browser, got '$1'" ;;
+  esac
+}
+[ "$FORM" != --installed ] || [ -n "$1" ] || usage "the COMMAND of --installed is empty"
+[ "$FORM" != --installed ] || check_tool "$2"
+[ "$FORM" = --installed ] || for t in "$@"; do check_tool "$t"; done
+
+PROJECT_DIR=${CLAUDE_PROJECT_DIR:-$PWD}
+cd "$PROJECT_DIR" 2>/dev/null || usage "the project directory $PROJECT_DIR cannot be entered"
+T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-tool-state.XXXXXX") || usage "mktemp -d failed"
+trap 'rm -rf "$T"' EXIT
+BAD=0
+
+# say LINE: a line of a tool, with the day it was read; bad: the exit becomes 1
+say() { echo "$1 (on $DAY)"; }
+bad() { BAD=1; }
+# tilde PATH: a home directory at the opening written as ~, as bin/devloop-install-note writes a folder
+tilde() { local p=$1; case $p in "$HOME"|"$HOME"/*) p="~${p#"$HOME"}" ;; esac; printf '%s' "$p"; }
+# cap WORD: the word with its first letter in capitals, the vendor's name as it is written
+cap() { printf '%s%s' "$(printf '%s' "${1%"${1#?}"}" | tr '[:lower:]' '[:upper:]')" "${1#?}"; }
+# flat: the input on one line
+flat() { tr '\n' ' ' | sed 's/   */ /g; s/ *$//'; }
+# ask LABEL COMMAND...: the query under the bound; OUT its output, RC its exit code and FAIL the clause of a line that it did not answer, empty where it answered: its first line on stderr that is no stack frame, else its output, else the code it ended with
+ask() {
+  local label=$1 err; shift
+  OUT=$("$BOUNDED" "$BOUND" "$@" 2>"$T/err"); RC=$?
+  err=$(grep -v -e '^ ' -e '^$' -e '^node:' -e '^Require stack' "$T/err" | head -n 1)
+  FAIL=""
+  case $RC in
+    0) ;;
+    127) FAIL="$label did not answer: $1 is not on PATH" ;;
+    *) FAIL="$label did not answer: ${err:-${OUT:-ended with $RC}}" ;;
+  esac
+}
+# stands_at FOLDER TOOL: the path of the tool in the folder, TOOL.exe, TOOL.cmd and TOOL.bat on Windows counting as well; nothing where none stands
+stands_at() { local x; for x in "" ${WIN:+.exe .cmd .bat}; do [ -e "$1/$2$x" ] && { printf '%s' "$1/$2$x"; return; }; done; }
+# cache SETTING_NAME DARWIN_FOLDER LINUX_FOLDER VENDOR: CACHE the vendor's cache folder, the setting where it is set, else the folder shared/backed-command.md names for this system; empty, with CAUSE set, where neither names one
+cache() {
+  local set; eval "set=\${$1:-}"
+  CACHE=""; CAUSE=""
+  [ -z "$set" ] || { CACHE=${set%/}; return; }
+  case $SYSTEM in
+    Darwin) CACHE=$HOME/$2 ;;
+    Linux) CACHE=$HOME/$3 ;;
+    *) CAUSE="shared/backed-command.md names no folder for $4 on this system ($SYSTEM) and $1 is not set" ;;
+  esac
+}
+
+# tool_line TOOL: the line of a command on the search path
+tool_line() {
+  local p
+  p=$(command -v -- "$1" 2>/dev/null)
+  [ -n "$p" ] && [ "${p#/}" != "$p" ] && { say "$1: found at $(tilde "$p")"; return; }
+  say "$1: not found on the search path"; bad
+}
+# browser_line VENDOR NAME: the line of a browser for tests, found only in the version the project's test tool needs
+browser_line() {
+  local vendor=$1 name=$2 arg="$1:$2" folder="" version="" probe="" id="" exe="" rel
+  CAUSE=""
+  case $vendor in
+    playwright)
+      ask "npx --no-install playwright install --dry-run $name" npx --no-install playwright install --dry-run "$name"
+      [ -z "$FAIL" ] || CAUSE="the project's Playwright did not say which version of $name it needs: $FAIL"
+      [ -n "$CAUSE" ] || { version=$(printf '%s\n' "$OUT" | grep -m1 .); folder=$(printf '%s\n' "$OUT" | sed -n 's/^ *Install location: *//p' | head -n 1); folder=${folder%/}; probe=$folder; }
+      [ -n "$CAUSE" ] || [ -n "$folder" ] || CAUSE="the dry run printed no install location: $(printf '%s\n' "$OUT" | flat)" ;;
+    cypress)
+      version=$(sed -n 's/^ *"version": *"\([^"]*\)".*/\1/p' node_modules/cypress/package.json 2>/dev/null | head -n 1)
+      [ -n "$version" ] || CAUSE="the project has no Cypress package to say which version it needs, no version in node_modules/cypress/package.json"
+      [ -n "$CAUSE" ] || cache CYPRESS_CACHE_FOLDER Library/Caches/Cypress .cache/Cypress Cypress
+      [ -n "$CAUSE" ] || { folder=$CACHE/$version; probe=$folder; version="Cypress $version"; } ;;
+    puppeteer)
+      cache PUPPETEER_CACHE_DIR .cache/puppeteer .cache/puppeteer Puppeteer
+      [ -n "$CAUSE" ] || ask "node, asked for the build of $name and its folder under $(tilde "$CACHE")," node -e "$PUPPETEER_JS" "$name" "$CACHE"
+      [ -n "$CAUSE" ] || [ -z "$FAIL" ] || CAUSE="the project's Puppeteer did not say which build of $name it needs: $FAIL"
+      [ -n "$CAUSE" ] || { id=$(printf '%s\n' "$OUT" | sed -n 1p); exe=$(printf '%s\n' "$OUT" | sed -n 2p); }
+      [ -n "$CAUSE" ] || [ -n "$id" ] || CAUSE="the project's Puppeteer names no build of $name, PUPPETEER_REVISIONS having no entry for it"
+      [ -n "$CAUSE" ] || { rel=${exe#"$CACHE"/}; folder=$CACHE/$(printf '%s' "$rel" | cut -d/ -f1-2); probe=$exe; version="$name $id"; } ;;
+  esac
+  [ -z "$CAUSE" ] || { say "$arg: not read, because $CAUSE"; bad; return; }
+  [ -e "$probe" ] && [ -n "$(ls -A "$probe" 2>/dev/null)" ] && { say "$arg: found at $(tilde "$folder"), $version as the project's $(cap "$vendor") needs it"; return; }
+  say "$arg: not found: nothing stands at $(tilde "$folder"), the folder of $version as the project's $(cap "$vendor") needs it"; bad
+}
+# read_tool TOOL: the line of a tool, a browser where the name carries a colon
+read_tool() { case $1 in *:*) browser_line "${1%%:*}" "${1#*:}" ;; *) tool_line "$1" ;; esac; }
+# has_flag FLAG... -- WORD...: whether one of the flags stands among the words
+has_flag() { local f w; f=" "; while [ "$1" != -- ]; do f="$f$1 "; shift; done; shift; for w in "$@"; do case $f in *" $w "*) return 0 ;; esac; done; return 1; }
+# installed_line COMMAND TOOL: the line of --installed, the folder read off the installer named by the command's first word after any VAR=value
+installed_line() {
+  local tool=$2 installer="" dir="" q="" p w
+  CAUSE=""; FAIL=""
+  # shellcheck disable=SC2086
+  set -- $1
+  for w in "$@"; do case $w in *=*) continue ;; esac; installer=$w; break; done
+  case $installer in
+    brew) ask "brew --prefix" brew --prefix; dir=$OUT/bin; q="brew --prefix" ;;
+    npm) has_flag -g --global -- "$@" && { ask "npm prefix -g" npm prefix -g; dir=$OUT/bin; [ -z "$WIN" ] || dir=$OUT; q="npm prefix -g"; } || CAUSE="npm without -g or --global installs inside a project, which is no tool outside it" ;;
+    pnpm) ask "pnpm bin -g" pnpm bin -g; dir=$(printf '%s\n' "$OUT" | grep '/' | tail -n 1); q="pnpm bin -g" ;;
+    yarn) ask "yarn global bin" yarn global bin; dir=$(printf '%s\n' "$OUT" | grep '/' | tail -n 1); q="yarn global bin" ;;
+    bun) ask "bun pm bin -g" bun pm bin -g; dir=$(printf '%s\n' "$OUT" | grep '/' | tail -n 1); q="bun pm bin -g" ;;
+    go) ask "go env GOBIN" go env GOBIN; dir=$OUT; q="go env GOBIN"; [ -n "$FAIL" ] || [ -n "$dir" ] || { ask "go env GOPATH" go env GOPATH; dir=${OUT%%:*}/bin; q="go env GOPATH, GOBIN being empty"; } ;;
+    pipx) ask "pipx environment --value PIPX_BIN_DIR" pipx environment --value PIPX_BIN_DIR; dir=$OUT; q="pipx environment --value PIPX_BIN_DIR" ;;
+    uv) ask "uv tool dir --bin" uv tool dir --bin; dir=$OUT; q="uv tool dir --bin" ;;
+    gem) ask "gem environment" gem environment; dir=$(printf '%s\n' "$OUT" | sed -n 's/.*EXECUTABLE DIRECTORY: *//p' | head -n 1); q="the EXECUTABLE DIRECTORY of gem environment" ;;
+    cargo) dir=${CARGO_INSTALL_ROOT:-${CARGO_HOME:-$HOME/.cargo}}/bin; q="CARGO_INSTALL_ROOT, CARGO_HOME or ~/.cargo as cargo documents them, cargo having no query for it" ;;
+    *) CAUSE="this program reads the folder of brew, npm, pnpm, yarn, bun, go, pipx, uv, gem and cargo off the installer, and '$installer' is none of them" ;;
+  esac
+  [ -n "$CAUSE" ] || [ -z "$FAIL" ] || CAUSE=$FAIL
+  [ -n "$CAUSE" ] || [ -n "${dir%/bin}" ] || CAUSE="$q printed no folder"
+  [ -z "$CAUSE" ] || { say "$tool: not read, because $CAUSE"; bad; return; }
+  dir=${dir%/}
+  p=$(stands_at "$dir" "$tool")
+  [ -n "$p" ] && { say "$tool: found at $(tilde "$p"), the folder $installer writes to, read off $q"; return; }
+  say "$tool: not found at $(tilde "$dir/$tool"), the folder $installer writes to, read off $q; a copy elsewhere on the search path does not count"; bad
+}
+# record_line: the line on the install record under --build, read through bin/devloop-install-record
+record_line() {
+  local rec rc tools ref date cause
+  rec=$("$HERE/devloop-install-record" "$PROJECT_DIR" 2>&1); rc=$?
+  tools=$(printf '%s\n' "$rec" | sed -n 's/^tools: //p' | head -n 1)
+  ref=$(printf '%s\n' "$rec" | sed -n 's/^ref: //p' | head -n 1)
+  date=$(printf '%s\n' "$rec" | sed -n 's/^answered: //p' | head -n 1)
+  cause=$(printf '%s\n' "$rec" | sed -n 's/^cause: //p' | head -n 1)
+  case "$rc:$tools" in
+    0:yes) echo "record: tools yes on $ref, answered $date: a tool that is missing is installed by this run at the build, backed, with 600000 milliseconds on the call, build-work step 3 point 7" ;;
+    0:*) echo "record: tools no on $ref, answered $date: $WAY" ;;
+    *) echo "record: none, because ${cause:-the reader answered nothing}: as under no, $WAY" ;;
+  esac
+}
+
+case $FORM in
+  --installed) case $2 in *:*) read_tool "$2" ;; *) installed_line "$1" "$2" ;; esac ;;
+  --planning) for t in "$@"; do read_tool "$t"; done; echo "record: not read here; whether the run installs a tool that is missing at the build or the person gets the command for it is decided by the install record as it stands at the build, build-work step 3 point 7, and the planning settles nothing of it" ;;
+  --build) for t in "$@"; do read_tool "$t"; done; record_line ;;
+esac
+exit "$BAD"

@@ -311,11 +311,40 @@ it is not settled here**, since 24 October 2026, defects 9 and 2 of the
 roadmap entry of that date on the six closing runs: not as an assumption of
 a round and not with them, since the install record read at the build
 decides it, `build-work` step 3 point 7, and the record can change between
-the planning and the build. Where such a tool is missing on this machine,
+the planning and the build. Whether such a tool stands on this machine is
+read, never assumed, since 27 October 2026, new defect 4 of the roadmap
+entry of that date on the three closing runs, where one planning wrote that
+`yq` was installed without a record that read the machine and carried that
+into the build, and the rounds of two plannings said nothing of the tools
+that were missing: before anything is said of a tool outside the project
+anywhere — in the assumptions of a round, a comment on the planning issue,
+a brief to an agent, the spec or a message — run
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --planning` once, with the
+shell, with every such tool named so far, each as it is called on the
+command line and a browser for tests as `VENDOR:NAME`, as the program's
+head says, and say of a tool only what the program printed: found, with
+the path; not found on the search path; or, for a browser, not read, with
+the cause. It reads this machine and nothing else, and says of the record
+only that the build decides. Where such a tool is missing on this machine,
 the assumptions of the round say that the work needs it and that it is
 missing, and that whether the run installs it at the build or they get the
 command for it is decided by their permission to install as it stands for
-this project then. No stage of this skill judges an install: not the comment
+this project then. Where the line says not read, the assumptions say that
+too, in the program's words, and that the same permission decides. Where a
+tool becomes known only after the round — in a draft, in the comparison or
+in the spec, as in run 2 of 26 October 2026, whose planning read `htmlq`
+and `mmdc` missing and wrote it into a comment alone — run the program
+then, and say what the assumptions of a round say of a missing tool at the
+place where they next read: with them there, in the message that ends the
+turn that found it, before the design question where that is the next;
+after the answer "The plan without them", in the halt before the first
+build, which `cut-into-tasks` says beside the spec since 27 October 2026;
+after "Full flexibility", in the last message of the run, which names what
+the build installed under their yes, `build-work` step 3 point 7, since the
+mode without them starts under a yes alone, so that there they read the
+install and not the question who installs. The comment of the stage that
+found it carries the program's line as well. No stage of this skill judges
+an install: not the comment
 of Stage 2, where run 3a wrote that the record allowed the route npm alone
 and a build could not install `yq`, the record naming `/opt` among its
 places, and not the spec, whose sections below say where such a tool
@@ -408,10 +437,15 @@ switched off on the platform, say, one line: that work without them is not
 set up in this project, and that typing `/devloop:start-work --auto` where a
 piece of work starts sets it up, the input named as they type it in Claude
 Code and never the flag alone, since 27 October 2026, defect 2 of the roadmap
-entry of that date on the three closing runs. It does not list what is
-missing: the flag asks what has to be asked and sets up the rest. Where no
-record stands — a setup broken off before the question among it — nothing. Since 17 October 2026, the
-roadmap entry of that date on the reports of what was done: a class `empty`
+entry of that date on the three closing runs. The line reaches them in the
+next message that ends a turn with text, and not in a comment on the
+planning issue alone, since 27 October 2026, new defect 5 of that entry:
+run 1 of 26 October 2026 wrote it into the English comment of Stage 1 and
+2 and said it to the person nowhere. It does not list what is missing: the
+flag asks what has to be asked and sets up the rest. Where no record stands
+— a setup broken off before the question among it — nothing. Since 17
+October 2026, the roadmap entry of that date on the reports of what was
+done: a class `empty`
 had a line in two forms until then, by whether the repository had code, and
 no record had the line of a yes fallen away, which spoke of an option they
 never took up. The wording approved on 5 and 6 October 2026 stands in the
@@ -730,7 +764,10 @@ No new questions. Write down what was decided, in these sections:
 - **Implementation decisions** — the design that was chosen, the modules built or
   changed, their interfaces, schema changes, contracts. Taken from Stage 3, not
   invented here. A tool outside the project that the work needs stands here
-  as needed, and who installs it does not, since 24 October 2026.
+  as needed, since 24 October 2026, and with it, since 27 October 2026, the
+  line `bin/devloop-tool-state` printed for it, as printed, which carries the
+  day it was read, and not the program's line on the record; who installs it
+  does not stand here, since 24 October 2026.
 - **Test decisions** — the placed seams and what gets checked at each.
 - **Out of scope** — what someone might reasonably expect and will not get,
   starting from the hard core of Stage 1 and adding what the design and the
