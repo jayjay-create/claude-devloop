@@ -40172,6 +40172,395 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the third commit they print, and the self-test prints, what they printed
   after the second, line for line.
 
+- **Tool state read by one program, the planning saying only what it read.**
+  27 October 2026, version 0.163.0. On `task/tool-state-and-planning-read`,
+  off `89932f8`, in two commits: the program with the version, the texts
+  that name it and the rows of the things it changes; then this entry with
+  the sentence in `docs/plan.md`, the point reopened under "## Decisions
+  taken against" and the rows they need. Part 1 of the rebuild of milestone
+  3, decision (7) below: `bin/devloop-tool-state`, new; the text of
+  `plan-work` for new defect 4 of the entry at line 38963, status line
+  39535; the clause of new defect 5 of that entry, status line 39548; a
+  paragraph in `docs/skill-conventions.md`; and the decisions of 27 October
+  2026 on milestone 3, recorded below. The defects of that entry are named
+  as it numbers them. A line of a file is given as it stands at the tip of
+  this branch, a line of `docs/roadmap.md` as it stands at `89932f8`, which
+  this entry leaves unchanged above it but for the point at line 40348.
+  Beyond the `git fetch`, GitHub was neither read nor changed; nothing was
+  installed outside the project: the program ran against throwaway
+  repositories in a directory outside the repository, one of them holding
+  Playwright in its own `node_modules`, and read the packages of the global
+  mermaid-cli for Puppeteer without changing them; no test project was
+  touched, no session log read, nothing run against the settings of this
+  machine.
+
+  **(a) `bin/devloop-tool-state`, new**, decision (3). Nothing under `bin/`
+  read whether a tool stands: `grep -rn 'command -v' bin hooks` finds the
+  stand-in checks of two self-tests and the install guard's read for `deno
+  upgrade`, line 623, and the guard resolves the folders of its routes for
+  its own block, lines 1096 to 1103, inside the hook, callable by nothing.
+  Three forms, its head lines 1 to 121: `--planning TOOL ...`, which
+  `plan-work` calls; `--build TOOL ...`, the call before the start of the
+  build subagent; and `--installed COMMAND TOOL`, the read at the next
+  start for an open issue that blocks a task on a missing install and the
+  build's read after the person's word; the last two wait for the part on
+  the build, decision (7), and the head says so. A TOOL is a command named
+  as it is called, `yq`, read on the search path with `command -v`, or a
+  browser for tests named `VENDOR:NAME` — `playwright:webkit`,
+  `puppeteer:chrome`, `cypress:binary`, the one thing Cypress downloads —
+  read in the folder the vendor names for this system under "Whether it
+  worked is read off the result" in `shared/backed-command.md` or in the
+  folder its setting names, and found only in the version the project's
+  test tool needs: Playwright's dry run, run in the project, names the
+  version and the folder, lines 16 to 26 of the shared text; for Cypress
+  the version is the project's `node_modules/cypress` and the folder
+  `<cache>/<version>`; for Puppeteer node, run in the project, asks
+  `puppeteer-core` for the build and `@puppeteer/browsers` for its folder
+  under the cache. One line per TOOL, head lines 53 to 62, each ending with
+  the day it was read, `(on 2026-10-27)`, so that the spec carries the day
+  as printed: `TOOL: found at PATH`, `TOOL: not found on the search path`,
+  `VENDOR:NAME: found at FOLDER, VERSION as the project's Vendor needs it`,
+  `VENDOR:NAME: not found: nothing stands at FOLDER, the folder of VERSION
+  ...`, and `VENDOR:NAME: not read, because CAUSE` — where the project has
+  no test tool yet to say which version it needs, where the shared text
+  names no folder for this system, Windows among them, and no setting is
+  set, where the dry run printed no install location, or where Puppeteer
+  names no build. Not read says neither found nor not found: the program
+  reads and does not judge, a run says of the browser what the line says
+  and hands nothing over and raises nothing on a thing nobody read, "In
+  doubt, a run with nobody there is not blocked", and under a yes the
+  vendor's own installer leaves a browser that stands already as it
+  stands. A path under the home directory is written with `~`, as
+  `bin/devloop-install-note` writes a folder. Then the record line, head
+  lines 63 to 75: under `--planning` the record is not read and the line
+  says that whether the run installs a tool that is missing at the build or
+  the person gets the command for it is decided by the record as it stands
+  at the build, `build-work` step 3 point 7, and that the planning settles
+  nothing of it — the answer of today is not printed, since the planning
+  may not write who installs, `plan-work` lines 309 to 313; under `--build`
+  the record is read through `bin/devloop-install-record`, so that no
+  second copy of the resolution of the default branch comes into being,
+  and the line carries the answer, the ref and the date with the
+  consequence of point 7, "a tool that is missing is installed by this run
+  at the build, backed, with 600000 milliseconds on the call" under a yes,
+  "a tool that is missing is handed to the person as a backed command with
+  both ways before anything is built against a stand-in" under a no, and
+  under no record the reader's cause, "as under no". Under `--installed`,
+  head lines 77 to 99, whether COMMAND installed TOOL is read in the folder
+  the installer writes to, off the installer itself and never on the search
+  path, where an older copy from elsewhere looks like a success: `brew
+  --prefix`, `npm prefix -g` with `-g` or `--global`, `go env GOBIN` or
+  `GOPATH`, `pnpm bin -g`, `yarn global bin`, `bun pm bin -g`, `pipx
+  environment --value PIPX_BIN_DIR`, `uv tool dir --bin`, the `EXECUTABLE
+  DIRECTORY` of `gem environment`, and cargo's documented variables, cargo
+  having no query — the queries the install guard resolves the same routes
+  with; the installer is the first word of COMMAND after any `VAR=value`,
+  read by the program and not named by the run, so that the run cannot
+  name a folder the installer did not; `pip` is not read, its folder
+  depending on `--user` and the interpreter, and the line says so; a
+  browser TOOL is read as the browser, the folder being the vendor's. Every
+  query runs under `bin/devloop-bounded` with sixty seconds. Exit 0 where
+  every TOOL is found, 1 where one is not found or not read, the record
+  line never changing it, 2 with one line on stderr for the arguments, head
+  lines 103 to 108. The lines of the report of 27 October 2026 on the ways,
+  F.4 and J, W5, are taken where they carry — `found at`, `not found on the
+  search path`, the three record lines of `--build` in substance — and
+  changed where they do not: the day at the end of each tool line, since
+  the spec carries it; "handed to the person as a backed command with both
+  ways before anything is built against a stand-in", since the should of
+  new defect 7 names the stand-in; and the line of `--planning`, which W5
+  did not have, since the planning may not name the answer.
+  The self-test, lines 127 to 368: 58 cases, every form of every line and
+  every exit code, against stand-ins for brew, npm, pnpm, yarn, bun, go,
+  pipx, uv, gem, npx and node that answer from the case's script and log
+  every call, a home directory of its own, `DEVLOOP_TOOL_STATE_SYSTEM` for
+  `uname -s`, and a throwaway repository committed under the fixed invented
+  identity; `SELF-TEST PASSED: 58 cases` in the shell and in a clean bash.
+  The job "hooks on every system", `.github/workflows/stock-take.yml`
+  lines 374 to 382, runs every file under `bin/` that carries `--self-test`
+  by its own first line and leaves out under Windows the two it names, so
+  it finds this one without a change; whether the self-test passes under
+  Git Bash and under Alpine is not checked here, the job showing it on the
+  pull request: the program uses `mktemp -d`, `grep -m1`, `ls -A`, `cut`,
+  `sed -n Np`, `tail -n 1` and `head -n 1`, POSIX and busybox forms, and
+  no GNU tool; a Windows path from `npm prefix -g` is read in no form but
+  the self-test's, with a Unix path under
+  `DEVLOOP_TOOL_STATE_SYSTEM=MINGW64_NT-10.0-20348`.
+  Run on this Mac, in throwaway repositories with `origin/main` and
+  `origin/HEAD` set as a fetch leaves them, each line as printed:
+  `--build yq htmlq` under a record yes: „yq: not found on the search path
+  (on 2026-10-27)“, „htmlq: found at /opt/homebrew/bin/htmlq (on
+  2026-10-27)“, „record: tools yes on origin/main, answered 2026-10-26: a
+  tool that is missing is installed by this run at the build, backed, with
+  600000 milliseconds on the call, build-work step 3 point 7“, exit 1;
+  under a no the same two lines and „record: tools no on origin/main,
+  answered 2026-10-26: a tool that is missing is handed to the person as a
+  backed command with both ways before anything is built against a
+  stand-in, build-work step 3 point 7“; under no record „record: none,
+  because there is no docs/agents/environment.md on origin/main as last
+  fetched: as under no, a tool that is missing is handed to the person as
+  a backed command with both ways before anything is built against a
+  stand-in, build-work step 3 point 7“. `--planning yq htmlq
+  cypress:binary` under the no: the two lines, „cypress:binary: not read,
+  because the project has no Cypress package to say which version it
+  needs, no version in node_modules/cypress/package.json (on 2026-10-27)“
+  and „record: not read here; whether the run installs a tool that is
+  missing at the build or the person gets the command for it is decided
+  by the install record as it stands at the build, build-work step 3
+  point 7, and the planning settles nothing of it“, exit 1. `--installed
+  'brew install htmlq' htmlq`: „htmlq: found at /opt/homebrew/bin/htmlq,
+  the folder brew writes to, read off brew --prefix (on 2026-10-27)“, exit
+  0; `--installed 'brew install yq' yq`: „yq: not found at
+  /opt/homebrew/bin/yq, the folder brew writes to, read off brew --prefix;
+  a copy elsewhere on the search path does not count (on 2026-10-27)“,
+  exit 1; `--installed 'npm install -g @mermaid-js/mermaid-cli' mmdc`:
+  „mmdc: found at /opt/homebrew/bin/mmdc, the folder npm writes to, read
+  off npm prefix -g (on 2026-10-27)“, exit 0; `--installed 'pipx install
+  yq' yq`: „yq: not found at ~/.local/bin/yq, the folder pipx writes to,
+  read off pipx environment --value PIPX_BIN_DIR; a copy elsewhere on the
+  search path does not count (on 2026-10-27)“, exit 1. In the repository
+  holding Playwright, `--planning playwright:webkit playwright:chromium
+  playwright:firefox cypress:binary puppeteer:chrome`: „playwright:webkit:
+  found at ~/Library/Caches/ms-playwright/webkit-2370, WebKit 27.2
+  (playwright webkit v2370) as the project's Playwright needs it (on
+  2026-10-27)“, „playwright:chromium: found at
+  ~/Library/Caches/ms-playwright/chromium-1248, Chrome for Testing
+  156.0.8078.4 (playwright chromium v1248) as the project's Playwright
+  needs it (on 2026-10-27)“, „playwright:firefox: found at
+  ~/Library/Caches/ms-playwright/firefox-1555, Firefox 157.0 (playwright
+  firefox v1555) as the project's Playwright needs it (on 2026-10-27)“,
+  the Cypress line as above, „puppeteer:chrome: not read, because the
+  project's Puppeteer did not say which build of chrome it needs: node,
+  asked for the build of chrome and its folder under ~/.cache/puppeteer,
+  did not answer: Error: Cannot find module
+  'puppeteer-core/internal/revisions.js' (on 2026-10-27)“, exit 1, the
+  three dry runs taking 1.4 seconds together; against the packages of the
+  global mermaid-cli, read only, `--planning puppeteer:chrome
+  puppeteer:firefox puppeteer:chrome-headless-shell`: „puppeteer:chrome:
+  found at ~/.cache/puppeteer/chrome/mac_arm-156.0.8078.47, chrome
+  156.0.8078.47 as the project's Puppeteer needs it (on 2026-10-27)“,
+  „puppeteer:firefox: not found: nothing stands at
+  ~/.cache/puppeteer/firefox/mac_arm-stable_158.0.1, the folder of firefox
+  stable_158.0.1 as the project's Puppeteer needs it (on 2026-10-27)“, the
+  headless shell found, exit 1; `--installed 'npx playwright install
+  webkit' playwright:webkit`: the webkit line, no record line, exit 0.
+  Every form but the Windows forms and the two Cypress forms with a
+  version came out against a real vendor; those came out in the self-test
+  alone, since installing Cypress's package downloads its binary outside
+  the project unless told not to.
+  `docs/skill-conventions.md` lines 744 to 766, under "A command handed
+  over is backed, and its result is read": what the program reads, and why
+  the search path answers whether a tool stands there for use and the
+  installer's folder whether a command installed.
+
+  **(b) New defect 4, status line 39535.** Its should: where a tool the
+  work needs is missing on this machine, the assumptions of the round say
+  that it is needed and missing and that the permission to install decides
+  who installs, as `plan-work` says, and the planning says of a tool only
+  what it read off the machine; the records lines 39515 to 39534. It is
+  built in `skills/plan-work/SKILL.md` lines 314 to 347, inside the paragraph of 24
+  October 2026 at lines 309 to 357: before anything is said of a tool
+  outside the project anywhere — the assumptions of a round, a comment on
+  the planning issue, a brief to an agent, the spec or a message — the
+  planning runs `bin/devloop-tool-state --planning` once, with the shell,
+  with every such tool named so far, and says of a tool only what it
+  printed; where the line says not found, the assumptions of the round say
+  wording (b) of 24 October 2026, lines 37890 to 37894, which stays as
+  approved, decision (6); where it says not read, the assumptions say that,
+  in the program's words, and that the same permission decides; where a
+  tool becomes known only after the round, the program is run then and the
+  statement said where the person next reads — with them there, in the
+  message that ends the turn that found it, before the design question
+  where that is the next, as the verdicts of a checker stand; after the
+  answer "The plan without them", in the halt before the first build,
+  `skills/cut-into-tasks/SKILL.md` lines 169 to 177, which says it beside
+  the spec since this entry; after "Full flexibility", in the last message
+  of the run, which names what the build installed under their yes,
+  `build-work` step 3 point 7 since 17 October 2026, the mode without them
+  starting under a yes alone, so that there the person reads the install
+  and not the question who installs, and nothing more is built there; the
+  comment of the stage that found it carries the line. The spec carries
+  under Implementation decisions, for each such tool, the line as printed,
+  which names the day, and not the record line, lines 767 to 770 of
+  `plan-work`. Cross-check against the cases: run 1 #230, the round naming
+  no tool where `yq` was needed, becomes, for a run reading `plan-work`
+  through `scripts/devloop-expand`, expanded lines 1031 to 1064, a call of
+  the program before the round with `yq` and the line „yq: not found on
+  the search path (on 2026-10-26)“, so that the assumptions of the round
+  say wording (b), „Für die Aufgabe wird `yq` gebraucht, und es fehlt auf
+  diesem Rechner. …“; #275, „yq and htmlq are installed outside the
+  project“, can no longer be written, the comment carrying the program's
+  line; #772, the brief to the build subagent carrying the claim, is the
+  build's, part 2, and the spec it reads carries „yq: not found on the
+  search path (on 2026-10-26)“ under Implementation decisions, so the
+  claim has no source. Run 2 #133, the round naming neither `htmlq` nor
+  `mmdc`, goes as #230; #282 and #276, the read at Stage 2 and the comment
+  alone, are the case of a tool known after the round: the program run
+  then, the comment carrying its lines, and since run 2 went through the
+  planning with `--auto` under a yes, the person reads the installs in the
+  last message, which #1349 named, „htmlq 0.4.0 über brew install htmlq“
+  and „mmdc über npm install -g @mermaid-js/mermaid-cli“. The other files
+  that reach the same situation, a run saying whether a tool outside the
+  project stands on this machine, `grep -rn -i 'outside the project\|outside
+  the repository' skills shared | grep -i tool`: `plan-work` 309 and 732 at
+  `89932f8`, changed; `setup-checks` 50, 434 to 488 and 525, a check
+  class's tool, which the run names missing for a class in its step 3 and
+  reads after the person's word at the place the command writes to, and
+  which `build-work` hands to `setup-checks` since 22 October 2026 — not
+  changed, the decisions of 27 October 2026 naming no check class;
+  `build-work` 496, 634 and 1628, point 7 and the refusals, part 2;
+  `shared/install-question.md` 15, the description of the no, which states
+  nothing of a tool. The wording for a browser not read is not approved and
+  the skill says what is said; a proposal stands in the report of this
+  order.
+
+  **(c) New defect 5, status line 39548.** Its should: where the record is
+  a yes with something fallen away since, the one line of `plan-work`
+  reaches the person in the message that ends the turn. It is built in
+  `skills/plan-work/SKILL.md` lines 440 to 444: the line reaches them in
+  the next message that ends a turn with text, and not in a comment on the
+  planning issue alone; its wording is (1) of the entry at line 39873,
+  lines 40003 to 40008, „Der Lauf ohne dich ist in diesem Projekt nicht
+  eingerichtet. Mit `/devloop:start-work --auto` kannst du ihn
+  einrichten.“, and stays; the paragraph rewrapped, its line 413 at
+  `89932f8` having been 105 characters. Cross-check: run 1 #244, condition
+  6 not holding, and #275, the line in the English comment alone, become,
+  for a run reading the changed text, expanded lines 1193 to 1197, the
+  German line in the next message that ends a turn with text — not in the
+  turn that ends on the widget of the round, #230, whose field carries what
+  bears on that decision, but in the first message after it that ends with
+  text, the output style's rule — and the comment may carry it beside. The
+  other files: `grep -rn 'fallen away' skills shared` finds `plan-work`
+  alone; `build-work` lines 1531 to 1539, text 2, and `setup-checks` lines
+  1419 to 1423 say their lines to the person already and do not change.
+
+  **Decided on 27 October 2026**, by the person, on milestone 3 after the
+  three closing runs, recorded here and in `docs/plan.md` under milestone
+  3; where a decision carries a should this part does not build, the part
+  that builds it is named, and a status line stands below where the should
+  is new. (1) Milestone 3 is not reached. Rebuilt are new defects 4, 6 and
+  7 of the entry at line 38963, status lines 39535, 39567 and 39585, and
+  the rest of defect 5 of the entry at line 36636, status line 37228; then
+  a run with the person under a no follows. The small matters of the entry
+  at line 38963, new defects 3, 5, 9 and 10, and condition 4 on the route
+  through the planning come along where they stand at a place a part
+  changes: defect 5 in this part, condition 4 in the part on the build; 3,
+  9 and 10 stand at no such place and wait. For new defects 8 and 11 the
+  person decides the milestone after milestone 3. (2) New defect 6: a hook
+  on `SubagentStart` for every subagent. It carries the `[InstallRecord]`
+  line as `hooks/session-start.sh` prints it and a short rule that outranks
+  the prompt on installing: a tool outside the repository is installed
+  under a yes alone; under a no or without a record nothing is installed
+  and no stand-in is built, the subagent reporting the tool and the
+  command. The fifth rule of step 3 stays. Before it, a bench measures
+  whether `additionalContext` of a plugin hook on `SubagentStart` reaches
+  the subagent, `docs/skill-conventions.md` lines 3347 to 3350 at
+  `89932f8`. The point "A hook on `SubagentStart` that gives every subagent
+  the install rule" under "## Decisions taken against", line 40348, is
+  reopened on new ground: its condition is not met word for word, since
+  the build subagents of run 1 did not get point 7 at all, #446 and #772,
+  and its premise has fallen, since the text alone did not reach the
+  subagents of run 1; the point says so since this entry. The build
+  subagent as an agent type of the plugin is not built now; new defect 8
+  needs a mechanism of its own after milestone 3. It is built in the part
+  on the build; its should, new, stands as a status line below. (3) New defects 4
+  and 7: the program `bin/devloop-tool-state`, called in the round and
+  before the start of the build subagent; the first built here, (a) and
+  (b), the second in the part on the build, on the row of new defect 7.
+  (4) What follows from the rules without a decision: the text in
+  `plan-work` for defect 4, (b); for defect 7 the handover before the start
+  of the subagent, and the question whether it lands waits for the tool;
+  for the rest of defect 5, that the issue comes into being on the no alone
+  and one signal holds per state — before a no the person's word that the
+  command ran, after a no the tool that devloop reads at the next start,
+  (5) — objection O2 of the report of 27 October 2026 on the ways; for
+  condition 4, that `bin/devloop-start-conditions` and
+  `bin/devloop-permission-mode` stand in one call. All of these but (b) in
+  the part on the build. (5) The handover under a no, approved, five
+  paragraphs, said by the run in the person's language: „Die Aufgabe
+  „<Titel der Aufgabe>“ braucht `yq`, und es fehlt auf diesem Rechner. Weil
+  deine Antwort zum Installieren für dieses Projekt Nein ist, installiere
+  ich es nicht selbst. Der Befehl dafür:“ — „`brew install yq`“ —
+  „Geprüft mit `brew info yq`: Homebrew bietet yq 4.54.1 an, es landet in
+  `/opt/homebrew/bin`.“ — „Führst du ihn aus, sag mir Bescheid, sobald er
+  durchgelaufen ist. Dann prüfe ich, dass `yq` dort steht, und baue die
+  Aufgabe. Lehnst du ab, lege ich ein Issue mit dem Befehl an, das diese
+  Aufgabe blockiert, und mache mit der nächsten Aufgabe weiter, sofern eine
+  bereit ist. Installierst du es später doch, merke ich das beim nächsten
+  Start, schließe das Issue und baue die Aufgabe.“ — „Führst du den Befehl
+  aus oder lehnst du ab?“ With it the behaviour: at the next start devloop
+  reads, for an open issue that blocks a task on a missing install, with
+  `bin/devloop-tool-state --installed`, whether the issue's command has
+  installed since; where the tool stands, devloop closes the issue itself
+  and builds the task. That replaces the second sentence of wording (c) of
+  24 October 2026, lines 37894 to 37898, „Hast du die Installation selbst
+  erledigt und das Issue geschlossen, geht es mit dieser Aufgabe weiter.“,
+  and the should behind it in `build-work` step 3 point 7, lines 564 to
+  566 at `89932f8`, "and the run goes on with the next task that is ready,
+  where one is, and with this one once they have run the command and
+  closed that issue", and under "The task itself", lines 649 to 650, "the
+  readiness query passes over a task with an open blocker by itself, and
+  closing that issue once the command has run frees it again". It is
+  built in the part on the build; its should, new, stands as a status line
+  below.
+  (6) Wording (b) of 24 October 2026 stays as approved. (7) The order: part
+  0, the three defects on visible text, built in the entry at line 39873;
+  part 1, this entry; part 2, `build-work` with the hook and its bench, the
+  handover and the waiting of the question from (4), the closing of the
+  issue from (5), and condition 4 in one call; then the run under a no.
+  Why the two status lines: section A of the head of
+  `scripts/devloop-stock-take` takes every defect an entry names, and
+  section D moves a defect's evidence onto the line that carries its
+  repair; a should decided and not yet built that stands on no row would be
+  built in the part on the build with no row to move, so the two shoulds
+  that are new — the hook of (2) and the closing of the issue of (5) — get
+  a row each, while the shoulds of (3) and (4) stand on the rows of new
+  defect 7, of defect 5 of 24 October 2026 and of point 10 already.
+  Recorded, not built: no hook hands a subagent the install record and the rule on installing, the build subagents of run 1 having got neither point 7 nor the record from the prompt — should: a hook on SubagentStart gives every subagent the [InstallRecord] line as hooks/session-start.sh prints it and a short rule that outranks the prompt, a tool outside the repository installed under a yes alone and under a no or no record neither installed nor replaced by a stand-in, the subagent reporting the tool and the command, after a bench of whether additionalContext of a plugin hook on SubagentStart reaches the subagent; the part on the build.
+  Recorded, not built: build-work step 3 point 7 and The task itself say a declined install's task goes on once the person has run the command and closed the issue themselves — should: at the next start devloop reads, for an open issue that blocks a task on a missing install, with bin/devloop-tool-state --installed whether the issue's command has installed, and where the tool stands closes the issue itself and builds the task, the handover of 27 October 2026 saying so; the part on the build.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`. By the first commit: seventeen outcomes of
+  the program, kind program outcome, and thirty-one rows part of them, the
+  34 lines of its search set covered; new defects 4 and 5 of the entry at
+  line 38963 with their evidence on the lines of `plan-work` that carry
+  the repair, lines 322 and 441, their notes saying built under 0.163.0 by
+  this entry and that a run is owed; six branches of `plan-work` Stage 1,
+  the read, the not-read case, the tool known after the round and its
+  three places, with one rationale row and two rows part of them, and the
+  line of Stage 4 part of its straight path; one branch of
+  `cut-into-tasks` under "After creating", the halt's sentence, with one
+  rationale row; three rows re-anchored after the rewraps, the branch of
+  wording (b), whose note says the read stands before it since this entry,
+  the branch of no record in the mode's paragraph and its row part of. By
+  the second commit: the two status lines above as defects, recorded and
+  not built, their notes naming the part on the build; the head of this
+  entry as part of new defect 4. No run is recorded: none was made.
+
+  **The tool, run for this entry.** `scripts/devloop-stock-take` in a clean
+  bash with `/usr/bin/grep`, exit 0 at `89932f8`, at the first commit and at
+  the tree with this entry and its rows: no broken record, 14 findings, 42
+  closed defects; none of 4896 lines of the search set uncovered at
+  `89932f8`, none of 4940 at the first commit, the 34 lines of the program
+  and ten of `plan-work` and `cut-into-tasks` the more, and none of 4943
+  at the tree, the head of this entry and its two status lines the more;
+  364 things recorded and not built at `89932f8`, 362 at the first commit,
+  new defects 4 and 5 built, and 364 at the tree, the two status lines;
+  1241 things built and never walked at `89932f8` and 1267 at both commits,
+  the seventeen outcomes of the program, the six branches of `plan-work`,
+  the one of `cut-into-tasks` and the two defects; 703 things walked, 24
+  undetermined and 42 closed at all three; 2374 things at `89932f8` and
+  2400 at both commits; 3109 not-a-thing records at `89932f8`, 3145 at the
+  first commit and 3146 at the tree; the runs that did not count before do
+  not count now, 660 lines under that heading at all three. The self-test
+  passed, 124 cases, 95 of 95 messages asserted; the self-test of
+  `bin/devloop-tool-state` passed, 58 cases, in a clean bash; no hook and
+  no other program changed. The nineteen checks under "Before a handover,
+  run these" printed at both commits, in a clean bash, what they printed
+  at `89932f8` line for line, but for the three lines check 16 prints from
+  `plan-work`, moved from 347, 431 and 707 to 376, 465 and 741 by the lines
+  added above them; checks 5 and 7 exit 1 and print nothing, as before.
+
 
 ## Decisions taken against
 
@@ -40358,6 +40747,21 @@ of them if the reason stops holding — the reason is the point, not the verdict
   rule to every subagent, every reviewer too, and can contradict what the
   main run writes into the prompt. Reopen if a build subagent handed point
   7 by the text still installs or leaves out a tool against the record.
+  Reopened on 27 October 2026, on new ground, decision (2) of the roadmap
+  entry of that date on the tool state read by one program: the condition
+  is not met word for word, since the build subagents of run 1 of 26
+  October 2026 did not get point 7 at all, their prompts carrying "Do not
+  install anything" and a false claim about the machine, #446 and #772,
+  new defect 6 of the roadmap entry of 27 October 2026 on the three
+  closing runs; and the premise has fallen, since the text alone did not
+  reach those subagents. A hook on `SubagentStart` carrying the
+  `[InstallRecord]` line as `hooks/session-start.sh` prints it and a short
+  rule that outranks the prompt on installing — a tool outside the
+  repository installed under a yes alone, under a no or no record neither
+  installed nor replaced by a stand-in, the subagent reporting the tool
+  and the command — is built in the part on the build, after a bench of
+  whether `additionalContext` of a plugin hook on `SubagentStart` reaches
+  the subagent; the fifth rule of step 3 stays beside it.
 - **A hook on `AskUserQuestion` holding the form of the install questions.**
   A `PreToolUse` hook on the choice widget would deny a question that
   names an install command outside backticks, or a command auto mode
