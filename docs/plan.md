@@ -498,15 +498,20 @@ it is decided whether the milestone is reached; what holds it open until
 then stays as named above.
 The three runs of the pass were made on 26 and 27 October 2026 in
 `devloop-test-aa` and read off their session logs on 27 October 2026, the
-roadmap entry of that date on the three closing runs: defects 2, 7 and 34
-held where a run met them, defect 9 held in its should, defect 5 held in
-part, point 8 held in both installs of run 2, and point 10 held on the direct
-route and in part on the route through the planning, where condition 4 was
-not read again at the start of the build; the runs found ten new defects,
-seven of which concern the milestone, four of them small matters by the
-measure of decision (9) if the person so decides, and met twelve defects of
-the entry on the six runs again; whether the milestone is reached that entry
-does not decide, the person does.
+roadmap entry of that date on the three closing runs: defect 34 held where
+run 1 met it; defects 2 and 7 held in their should where run 2 met them,
+the real tool and the backing under a yes, while the fifth rule of step 3 of
+`build-work`, named as built with them, did not hold in run 1 and was not met
+in run 2, which built without a subagent; defect 9 held in its should,
+nobody settled to install, and not in its paragraph on a missing tool;
+defect 5 held in part; point 8 held in both installs of run 2; point 10 held
+on the direct route and in part on the route through the planning, where
+condition 4 was not read again at the start of the build; the runs found
+eleven new defects, seven of which concern the milestone, four of them small
+matters by the measure of decision (9) if the person so decides, one on the
+Stop hook while the subagent builds without a milestone yet, and met twelve
+defects of the entry on the six runs again; whether the milestone is reached
+that entry does not decide, the person does.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
