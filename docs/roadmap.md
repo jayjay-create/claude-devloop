@@ -38960,6 +38960,764 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   worktree of it outside the repository; none of the files they read
   changed.
 
+- **Three closing runs of the pass read off their logs, each on what it met.**
+  27 October 2026, version 0.161.0 stays. On `task/milestone-3-pass-runs`,
+  off `d49921f`, in one commit: this entry, one dated sentence and one point
+  under "## Open" in `docs/plan.md`, and the rows of the table. Nothing is
+  built: no file under `skills/`, `shared/`, `hooks/`, `bin/`, `scripts/`,
+  `output-styles/` or `.github/` changes. It reads the three runs of the
+  pass that the entry at line 38740 decided on 25 October 2026, lines 38847
+  to 38917, off their session logs, and enters each run on the row of every
+  defect whose case it met, by section C of the head of
+  `scripts/devloop-stock-take`. The runs ran on 26 and 27 October 2026 on
+  the person's Mac, in the terminal, in `~/devloop-test-aa`, under the
+  installed 0.161.0, which the comparison under "Before you change anything,
+  run this" found equal to `d49921f` in all six directories on 27 October
+  2026, as it had found it equal to `b74c86f` on 25 October 2026. A line of
+  a file is given as it stands at `d49921f`, a skill's `SKILL.md` as a file
+  and, where marked expanded, as `scripts/devloop-expand` prints it there. A
+  record is a line of a session's `.jsonl` file, counted from 1. Each log
+  was read by a subagent of its own, which returned findings with record and
+  quoted text, and every record this entry cites was read again at the
+  source; the two build subagent logs of run 1 were read for the install and
+  the stand-in, the agent logs of run 2 were searched for install commands
+  and hook blocks and none was read whole, since none of them built. Beyond
+  the `git fetch`, GitHub was read with `gh`, the issues and pull requests
+  of `devloop-test-aa`; nothing was changed there or in `~/devloop-test-aa`,
+  no install ran, and nothing was run against the settings of this machine.
+
+  **Which log is which run**, read off each log's content, under
+  `~/.claude/projects/` in the directory of the test project, the three
+  sessions changed on or after 26 October 2026, UTC: `193e71e4`, first
+  record 16:32:33Z, last 18:22:24Z on 26 October 2026, 2,958,487 characters,
+  two build subagent logs of 1,709,477 characters and the logs of ten
+  workflows, `/devloop:start-work` at #11, `links.config.yaml` in 87
+  records, `--count` in 177, `yq` in 113: run 1. `1cd22b53`, 18:27:19Z to
+  19:56:35Z on 26 October 2026, 3,593,069 characters, 27 agent logs of
+  8,391,864 characters, `/devloop:start-work --auto` at #7, `docs/links.png`
+  in 90 records, `area` in 223, `htmlq` in 87, `mmdc` in 112: run 2; its
+  record 1366 is a continuation after a compaction at 19:56:34Z, after the
+  run's last text at #1349. `7d9bbd1f`, 06:06:10Z to 07:15:26Z on 27 October
+  2026, 1,625,087 characters, six agent logs of 1,918,217 characters,
+  `/devloop:start-work` at #8 and `/devloop:start-work --auto` at #364,
+  `--reverse` in 99 records: run 3. The dates below are the days the logs
+  open, in UTC, their own timezone. Claude Code's reminder "The user hasn't
+  heard from you in a while" stands in every log, five times in run 1, seven
+  in run 2, once in run 3.
+
+  **What stands in no log, the person's statement of 26 and 27 October
+  2026.** What the person did in the terminal and said in the chat beside
+  the runs stands in no session log; it comes in here as their statement,
+  quoted where they are quoted. Before the runs, on devloop: pull request
+  #206 merged, `main` at `d49921f`, the version 0.161.0 unchanged, #206
+  changing files under `docs/` alone; installed was 0.161.0, the copy the
+  comparison under "Before you change anything, run this" found equal to
+  `b74c86f` in all six directories on 25 October 2026, lines 38753 to
+  38756, and equal to `d49921f` on 27 October 2026, this order. Before run
+  1, shown in the terminal: `main` of `devloop-test-aa` at `db992bf`, the
+  tree clean, no open issue and no open pull request, no file
+  `.claude/unattended.local`, `yq` missing, `git config user.email` a
+  noreply address of GitHub. A branch `run-1-remove-install-permission`
+  with one commit "Remove the install permission before the first closing
+  run" took the 17 lines of the section `## Install permission` out of
+  `docs/agents/environment.md`; the marker 0.157.0 stayed there and in
+  `docs/agents/issue-tracker.md`. Pull request #36, the required check
+  green, squash-merged as `76721f8`; `origin/main` carried no such section
+  after it. Run 1 began in a new session in `~/devloop-test-aa` with
+  `/devloop:start-work`.
+  In run 1, in the chat beside the run: on the line „🤖 Generated with
+  [Claude Code](https://claude.com/claude-code)“ in the text of the pull
+  request of the refresh, #37: „kann man zusätzlich oder anstatt "🤖
+  Generated with [Claude Code](https://claude.com/claude-code)" auch
+  schreiben dass es von devloop kommt?“ The person was told that the line
+  comes from Claude Code, governed by its setting `attribution.pr`, that
+  devloop writes no such line — `grep -rn -i "generated
+  with\|attribution\|co-authored" skills shared hooks bin output-styles`
+  without a match — and that there are two ways, the setting or a line of
+  devloop's own; nothing is decided, (c) below. On the announcement
+  „vermutlich zwei Runden“ the person asked whether such estimates come
+  true; they were given `skills/plan-work/SKILL.md` line 287, "Say roughly
+  how many rounds you expect."; no should changes. On the summary before
+  the question „Ist die Idee so richtig verstanden?“, whose heading read
+  „Geschichten“: „übrigens muss es user stories oder stories heißen - das
+  ist ja ein fest stehender begriff und nicht "Geschichten"!“, (a) below.
+  At the question of Claude Code „Run a dynamic workflow?“ on the drafts
+  the person chose „Yes, run it“. To the question „Soll das landen?“ on the
+  task with `out` the person answered after a decision in the chat, (b)
+  below; the answer and the decline that followed stand in the log.
+  After run 1, shown in the terminal: #46 „yq must be installed to check
+  the out task against the real tool“ with the labels `needs-human` and
+  `raised-here`, `brew install yq` once in its text, one comment; `gh api
+  repos/{owner}/{repo}/issues/40/dependencies/blocked_by` named #46; no
+  open pull request; the branch `task-40-config-out` not on GitHub; on
+  `origin/main` under "Installed outside the project" no line for `yq`, and
+  `install-tools: no`. Then the person closed the seven open issues #38,
+  #40, #41, #42, #44, #45 and #46 as not planned, so that run 2 begins with
+  nothing in flight, and deleted the local branch `task-40-config-out` with
+  `git branch -D`; its commits were never pushed. After that no local
+  branch stood but `main`.
+  Before run 2, shown: the tree clean on `main`; `brew uninstall htmlq`
+  removed `/opt/homebrew/Cellar/htmlq/0.4.0` (8 files, 2.3MB); `npm
+  uninstall -g @mermaid-js/mermaid-cli` reported "removed 195 packages";
+  `~/.cache/puppeteer` deleted; `htmlq` and `mmdc` missing, `gitleaks`
+  standing, `yq` missing; nothing open; no mark. Run 2 began in a new
+  session with `/devloop:start-work --auto`.
+  Before run 3: a block checked the tree, the mark and the open pull
+  requests, closed the one open issue run 2 had opened with the label
+  `needs-human`, #51, as not planned, and checked that `htmlq` and `mmdc`
+  stand; the person said it ended with FERTIG and did not show its output.
+  Run 3 began in a new session with `/devloop:start-work`. To the question
+  how the work goes on from here: „"Das Design wird gegen die geschriebene
+  Liste gewählt, nicht nach deinem Geschmack" -> diesen Zusatz wollte ich
+  doch weg haben“; they were told that they decided that on 23 October 2026
+  and approved the wording on 24 October 2026, recorded as defect c of the
+  entry at line 36636, lines 37570 to 37573, recorded and not built; (a)
+  below. To the last message of the planning, „Das geht mit dir dabei oder
+  allein mit --auto.“: „wenn man eigentlich "/devloop:start-work --auto"
+  schreiben müsste, muss das auch da stehen. der Nutzer weiß das ja nicht
+  wenn da einfach nur "allein mit --auto." steht“, (a) below.
+  After the halt of the planning of run 3, shown in the terminal: #56 is
+  the task „The --reverse option reverses the printed and written links“.
+  The person opened #57 „Settle the option name before the reverse option
+  is built“, without a label, with the text „Opened outside the plan of the
+  spec #54, to block its second task.“, and recorded with the mutation
+  `addBlockedBy`, `issueId` of #56 and `blockingIssueId` of #57, #56 as
+  blocked by #57; the REST query `dependencies/blocked_by` named #57 for
+  #56 and nothing for #55; no open pull request; no mark. Then
+  `/devloop:start-work --auto` in the same session. Afterwards the person
+  closed #54, #55, #56 and #57 as not planned; the tree clean on `main`, no
+  mark, no open pull request.
+
+  **Decided on 27 October 2026.** (a) Three defects on visible text are
+  built together in one order after the decision on milestone 3; none is
+  part of milestone 3, and no other milestone takes them up: defect c of the
+  entry at line 36636, lines 37570 to 37573, the sentence on the design in
+  the descriptions of the course question, whose assignment changes with
+  this — its row read "the person decides after milestone 3 which milestone
+  takes it up, docs/plan.md naming none", and reads now that it is built in
+  that order without a milestone —, and defects 1 and 2 below, the technical
+  term translated and the flag named without its command. Its should does
+  not change. (b) On 26 October 2026, to run 1: to the question „Soll das
+  landen?“ on the task with `out`, #1035, built against a stand-in for `yq`
+  and put with no handover of `brew install yq` before it, the person
+  answered with a sentence that names the fact alone, #1045, „Nein. Diese
+  Aufgabe braucht yq, und yq fehlt auf diesem Rechner. Gebaut und geprüft
+  ist sie nur gegen Stubs.“, so that what the handover says and what follows
+  a no are measured; the handover came after this hint, #1076. How run 1
+  counts on the defects is decided below by section C of the head of
+  `scripts/devloop-stock-take`: a run enters a defect's row once its log has
+  been read for whether it met exactly the defect's case, so run 1 enters
+  the row of defect 5, whose case is the handover, met at #1076, and not the
+  row of defect 2, whose case is a yes. (c) Open since 26 October 2026: the
+  person's question of run 1, whether the text of a pull request can say
+  that it comes from devloop, beside or instead of Claude Code's line „🤖
+  Generated with [Claude Code](https://claude.com/claude-code)“, which
+  Claude Code's setting `attribution.pr` governs and no text of devloop
+  writes or names, `grep -rn -i "generated with\|attribution\|co-authored"
+  skills shared hooks bin output-styles` without a match. The person decides
+  it after milestone 3. It is no defect, since no text of devloop asks for
+  anything there; it stands under "## Open" in `docs/plan.md`, because that
+  section holds what is not decided, each point naming the milestone that
+  answers it or that none does, and this question is of that kind, with
+  none.
+
+  **Run 1, `193e71e4`, 26 October 2026, with the person, under a no: defects
+  34, 9 and 5; the case of defect 2 not met.** #4 at session start:
+  „[InstallRecord] none: docs/agents/environment.md on origin/main has no
+  section "## Install permission", so the question was never answered“. #39
+  the setup state, every marker 0.157.0; #50 `setup-project`; #62
+  `bin/devloop-install-record`, „no section“, exit 1; no text to the person
+  before the refresh, the first text at #130 after the pull request was
+  armed.
+  Defect 34, line 37523, met at #70 and held in its statement: the install
+  question, header „Installation“, carries before its question line „Das
+  Setup dieses Projekts wird gerade aufgefrischt, und auf dem Hauptbranch
+  steht noch keine Antwort auf diese Frage.“, then „Darf der Lauf ab jetzt
+  Tools und Browser für Tests installieren, die außerhalb des Projekts auf
+  diesem Rechner landen? Die Antwort gilt für dieses Projekt.“, the yes „Der
+  Lauf installiert solche Tools und Browser selbst, ohne nochmal zu
+  fragen.“, the no „Nichts außerhalb des Projekts; fehlt etwas, bekommst du
+  den Befehl. Ausnahme: Pakete, die beim Install selbst etwas laden.“; the
+  answer #71 „Nein, nichts installieren“. That says what wording (d) says,
+  lines 37896 to 37898. #96 set the markers to 0.161.0 and appended
+  `install-tools: no`, #114 opened #37, #123 armed it, #132 read `MERGED
+  2026-10-26T16:36:29Z`, #144 read the record off `origin/main`, `tools:
+  no`, and #158 told the person what changed. `setup-project` expanded 646
+  to 654 is what the run did.
+  Defect 9, line 37278, met and held in its should, wording (b) not said.
+  The work needs `yq`, which reads `out` as it reads `sort`, and `yq` is
+  missing on the Mac. The round, #230, „Diese Punkte lege ich fest, sie
+  gelten für alle Fragen dieser Runde“, five points on `--count` and `out`,
+  names no tool; the hard core, #267, „das Skript liest es mit yq“; the
+  comment of Stage 1 and 2, #275, „yq and htmlq are installed outside the
+  project; the script tests use stubs.“, which no record of the planning
+  read off the machine — `command -v yq` ran first at #1051, after the
+  person's no, and `brew info yq` answered „Not installed“ —; the spec,
+  #364, under Implementation decisions „yq (Mike Farah's) is needed as
+  before, only when `links.config.yaml` exists.“ and no install under Out of
+  scope. Nobody was settled to install, neither in the round nor in the
+  spec: the should holds. What `skills/plan-work/SKILL.md` lines 309 to 328
+  ask beyond it, that the assumptions of the round say the work needs the
+  tool, that it is missing and that the permission to install decides who
+  installs, wording (b), was not said, and the planning took the tool for
+  present: defect 4 below.
+  The mode: the record of the answer says yes and the install record no, so
+  #243 `bin/devloop-start-conditions` without a range printed at #244
+  „condition 6 does not hold, because the install record says no
+  (install-tools: no on origin/main as last fetched, answered 2026-10-26)“,
+  exit 1; no question on the mode was put, as the arrangement expected, and
+  no mark written. The one line `skills/plan-work/SKILL.md` lines 405 to 409
+  give for a yes with something fallen away since, that work without them is
+  not set up in this project and that typing `--auto` sets it up, reached
+  the person nowhere: it stands in the English comment #275 alone, „How the
+  work runs from here: not asked, the mode without them is not set up in
+  this project (condition 6, the install record says no).“ Defect 5 below.
+  Defect 5, line 37228, met at #1076 and held in part. The build: #422
+  `build-work`, #438 the base `0 0`, #439 `make check` green; with the
+  person there, no call of `bin/devloop-start-conditions` and no mark,
+  right. The prompts to the build subagents, #446 for #39 and #772 for #40,
+  carry „Do not install anything. htmlq may be real on PATH; yq not needed
+  here.“ and „Do not install anything (yq and htmlq are already on this
+  machine; tests use stubs).“, neither point 7 with the texts between it and
+  point 8 nor the output of `bin/devloop-install-record`: defect 6 below.
+  The subagent built #40 against a stub `yq`, #788, „the stub yq answers per
+  expression and records every call“; the reviewers wrote at #811 and #821
+  „The real `yq` is not installed on this machine“; and the run put the
+  landing question at #1035 with no handover before it: „Die zweite Aufgabe
+  ... ist gebaut und geprüft. ... `make check` ist grün ... Das Landen läuft
+  wie eben: Bei Ja eröffne ich den Pull Request und schalte Auto-Merge
+  scharf. ... Soll das landen?“ After the person's #1045 the run read the
+  machine, #1051 and #1052, wrote the body of #46, #1058, opened it at #1069
+  with `raised-here` and `needs-human` and recorded it as a blocker of #40
+  with `addBlockedBy`, #1070 „40 OPEN blockers open: 1“, and handed the
+  command over at #1076: „Du hast recht, und ich hätte das vor der Frage
+  sagen müssen. `yq` ist auf diesem Rechner nicht installiert (`brew info
+  yq` meldet „Not installed“). ... Die Installation muss von dir kommen,
+  weil deine Antwort auf die Installationsfrage „Nein“ war. Dieses Kommando
+  kannst du aus jedem Terminal kopieren: brew install yq. Belegt durch `brew
+  info yq` (heute gelesen): Formel `yq`, stable 4.54.1, als Bottle
+  verfügbar. Es landet in `/opt/homebrew/bin`. ... Ich habe das als Issue
+  „yq must be installed to check the out task against the real tool“
+  angelegt. Es ist als Blocker der Aufgabe eingetragen, die Aufgabe gilt
+  damit nicht als bereit. Sag Bescheid, sobald `yq` installiert ist. Dann
+  prüfe ich zuerst, dass es am erwarteten Pfad steht. ... Passt alles,
+  eröffne ich den Pull Request.“ The decline, #1080, „Nein, ich installiere
+  yq nicht.“; #1087 the comment on #46, that the person declined, the task
+  stays blocked, the branch is kept and nothing is merged; #1098 the tree
+  back on `main`; #1108 the last message, the merged task, the open one, the
+  four issues of the review and three ways on the task with `out`. Held: the
+  command backed in the form of point 5, `brew info yq`, the folder named,
+  an issue carrying the command recorded as a blocker of the task, the wrong
+  account of 23 October 2026 not repeated. Not held: the handover gave the
+  no no way of its own — nothing of the first sentence of wording (c), lines
+  37893 to 37896, that a decline leaves an issue with the command blocking
+  the task and the run goes on with the next ready task —, the issue having
+  been opened before the question, and the yes hangs on their word, „Sag
+  Bescheid“, the path read after it; `build-work` expanded 1180 to 1197. The
+  handover came only after the person's hint, the task built against a
+  stand-in and offered for landing first: defect 7 below. Defect 2, line
+  37188, has its case under a yes and was not met.
+  The branch `task-40-config-out` carries 93a1f5b, 23b90cc and 6c2ece4 of
+  the subagent and 9d7c67d of the main run, #1006, pushed in no record; the
+  pushes of the log are #96, #143, #734 and #764. Task #39: the gate at #712
+  as text, „Soll das landen?“ after the findings and „Bei Ja ... Bei Nein
+  bleibt der Branch stehen“, #716 „ja“, #734 the push and #43, #742 armed,
+  #757 `MERGED 2026-10-26T17:35:26Z`, #783 „`--count` ist gelandet“.
+
+  **Run 2, `1cd22b53`, 26 October 2026, through the planning with `--auto`,
+  under a yes: defects 2 and 7, point 8, point 10 on that route.** #5 at
+  session start „[InstallRecord] tools: no | places: none | routes: none |
+  answered: 2026-10-26“. #7 `/devloop:start-work --auto`; #35 the setup
+  state, every marker 0.161.0. The planning: #133 the round, four
+  assumptions on `area` and `links.png` and two questions, #155 the hard
+  core, „User Stories: ...“, answered „Ja, richtig so“ at #156. #161
+  `bin/devloop-start-conditions; bin/devloop-permission-mode`, the guard on
+  the mark stating auto beside it, #164 „condition 6 does not hold, because
+  the install record says no (...)“; #171 `setup-checks` for its step 8
+  alone; #184 `bin/devloop-auto-mode-question`, „question: no“, „rule: the
+  rule stands in ~/.claude/settings.json“, exit 1; #192 the second asking,
+  header „Installieren“, „Arbeit ohne dich braucht dein Ja zum Installieren
+  von Tools außerhalb des Projekts. Du hast dazu Nein gesagt.“ before „Darf
+  devloop ab jetzt Tools und Browser für Tests, die außerhalb des Projekts
+  auf diesem Rechner landen, selbst installieren (gilt für dieses
+  Projekt)?“, the yes „Ab jetzt installiert devloop solche Tools und Browser
+  selbst, ohne nochmal zu fragen.“, the no „Nichts außerhalb des Projekts;
+  ein Paket deines Projekts, das beim Installieren selbst etwas lädt (z. B.
+  ein Test-Browser), bleibt davon unberührt. Arbeit ohne dich ist dann nicht
+  möglich, alles läuft mit dir.“; #193 „Ja, selbst installieren“. #210 the
+  record, `install-tools: yes`, eleven places, `install-route: npm`; #225
+  the commit, the push and #48; #238 armed; #248 `MERGED
+  2026-10-26T18:41:09Z`; #254 the fast-forward and
+  `bin/devloop-start-conditions` again, #255 all of 1, 2, 5, 6 and 7
+  holding; #268 the mark, `build`, no block. Three drafts, #294 to #296,
+  three checkers, #378 to #380, the spec #47, the cut into #49 and #50.
+  Defect 9, line 37278, met and held in its should, wording (b) not said.
+  The work needs `htmlq` and `mmdc`, both missing. The round, #133, names no
+  tool and no install; the comment of Stage 2, #276, „htmlq and mmdc are not
+  installed on this machine, so those script tests skip or use stubs.“, the
+  machine read at #282 with `command -v htmlq`; the spec, #458,
+  „docs/links.png is a new committed file, generated once with the real
+  mmdc.“, „No new CLI options, no new dependencies“, no install under Out of
+  scope. Nobody was settled to install. The assumptions of the round said
+  nothing of the missing tools and of the permission deciding: defect 4
+  below.
+  **No build subagent.** #523 `build-work`; from #537 to #1343 the main run
+  built both tasks and ran both installs itself; its 27 agents are the three
+  drafts, the three checkers and 21 reviewers, none of which built or
+  installed. So of what the arrangement listed for this run, lines 38886 to
+  38896, the prompt to the build subagent and the subagent's installs met no
+  case; what they were to show was shown by the main run, which reads
+  `build-work` itself. Defect 8 below.
+  Point 10 on the route through the planning, line 30168, met at #537 and
+  held in part: at the start of the build one call,
+  `bin/devloop-start-conditions 49 50`, with the fetch, the base and the
+  mark behind it, #538 „condition 1 holds / condition 2 holds / condition 3
+  holds / condition 4 is read by the hook beside bin/devloop-permission-mode
+  / condition 5 holds / condition 6 holds / condition 7 holds“, the base `0
+  0`, the mark's commit the same as `origin/main`. Condition 4 was not read
+  again at the build: `bin/devloop-permission-mode` ran at #161 in the
+  planning and nowhere after, where `skills/build-work/SKILL.md` lines 1475
+  to 1485 say "and read condition 4 as its item below says" of the start of
+  the build; the six by the program held, the seventh was not read.
+  Defect 2, line 37188, met and held: under the yes the run read the record
+  as the guard reads it, #552 `bin/devloop-install-record`, #553 `tools:
+  yes`, the eleven places and `route: npm`, installed both tools and built
+  the tasks against the real ones, the script tests of `links.sh` against
+  the real `htmlq`, pull request #52, and the PNG „generated once with the
+  real mmdc“, #881 and #888, `docs/links.png: PNG image data, 744 x 61`; the
+  stub `mmdc` and the stub `mv` of the tests are the seams the spec placed,
+  not a stand-in for a tool, and no point settled with the person was
+  replaced.
+  Defect 7, line 37252, met and held: #564 `brew info htmlq 2>&1 | head -8`,
+  #565 „==> htmlq: stable 0.4.0 (bottled), HEAD ... Not installed“; #797
+  `npm view @mermaid-js/mermaid-cli version`, #798 „12.0.0“; #52 „(backed by
+  `brew info htmlq`: formula htmlq stable 0.4.0)“ and #53 „(backed by `npm
+  view @mermaid-js/mermaid-cli version`: 12.0.0)“ name which — the form of
+  each kind in `shared/backed-command.md` lines 16 to 35.
+  Point 8, line 5986, met twice and held: #569 `brew install htmlq`, 600000
+  milliseconds on the call, alone, and #570 its whole output, Homebrew
+  auto-updating, a portable Ruby poured, „Updated 2 taps (homebrew/core and
+  homebrew/cask)“, new formulae and casks, „You have 38 outdated formulae
+  installed.“, „/opt/homebrew/Cellar/htmlq/0.4.0: 8 files, 2.3MB“; #809 `npm
+  install -g @mermaid-js/mermaid-cli`, 600000 milliseconds, alone, #810
+  „added 195 packages in 40s / 25 packages are looking for funding“. The
+  reports: #52 „Homebrew also auto-updated itself, fetched a portable Ruby,
+  updated two taps (homebrew/core and homebrew/cask) and printed lists of
+  new formulae and casks; no browser download.“; #53 „It added 195 packages
+  ... During the install it also downloaded Chrome into `~/.cache/puppeteer`
+  (`chrome` and `chrome-headless-shell`, which did not exist before). The
+  output showed only the added packages and a funding hint.“; the last
+  message #1349 „htmlq 0.4.0 über brew install htmlq; Homebrew hat sich
+  dabei selbst aktualisiert.“ and „mmdc über npm install -g
+  @mermaid-js/mermaid-cli; dabei kam Chrome in ~/.cache/puppeteer.“ Nothing
+  is said that the output does not show, and the download the install made
+  is named, where run 2a of 23 October 2026 had named one on first use. The
+  folders for browsers: `~/.cache/puppeteer` read before, #798 „No such file
+  or directory“, and after, #818 „chrome / chrome-headless-shell“, the mmdc
+  install; around the htmlq install nothing, and
+  `~/Library/Caches/ms-playwright` and `~/Library/Caches/Cypress` never:
+  defect 9 below.
+  The install line. `brew install htmlq` ran while the tree stood on `main`,
+  before the task's branch: the fact hook, #571, „Not written: the install
+  went through, and the line for docs/agents/environment.md is not written
+  while the tree stands on the default branch main, where nothing of a run
+  may change. Cut the branch of this work and put it there ... - `brew
+  install htmlq` installed into /opt/homebrew/bin“; #578 cut
+  `task-49-area-links` and wrote the line through `bin/devloop-install-note
+  put /opt/homebrew/bin 'brew install htmlq'`, #585 „written“. For `mmdc`
+  the branch stood, #804, and the hook wrote the line, #811, „[InstallFact]
+  written into docs/agents/environment.md ... - `npm install -g
+  @mermaid-js/mermaid-cli` installed into /opt/homebrew/bin“. Both lines
+  stand beside the older forms, `environment.md` at `f0f913e` and `e29c448`,
+  the new form written where the line did not stand whole, as the
+  arrangement expected; #52 calls the first „the standing fact the install
+  hook wrote“, which the run wrote: defect 10 below. Issue #51, the security
+  reviewer's findings on hrefs reaching the terminal and the page
+  unfiltered, #733, filed at #754 with `raised-here`, `needs-human` added at
+  #797, „Decision to make“, named in #1349 under „Von dir zu entscheiden“.
+  #1342 closed #47 and removed the mark; #1349 the last message; the
+  compaction at #1365 came after it and changed nothing.
+
+  **Run 3, `7d9bbd1f`, 27 October 2026, point 10 on the direct route: met,
+  held.** The planning with the person, #8 to #360: #132 three questions
+  in one call, #142 the hard core, #155 one call reading the three records
+  off `origin/main`, `bin/devloop-start-conditions` without a range and
+  `bin/devloop-permission-mode`, #158 conditions 1, 2, 5, 6 and 7 holding,
+  3 read only with the range, 4 by the hook, which stated auto; #164 the
+  question on how the work goes on, answered „Plan ohne dich, vor dem Bauen
+  ansehen“ at #165; #173 `bin/devloop-auto-mode-question`, exit 1, the
+  rule standing; #179 the fetch three times under `bin/devloop-bounded`
+  and the mark with `plan`, #181; three drafts, one checking round, the
+  spec #54, the cut into #55 and #56, #354 the mark removed; #360 the last
+  message, „Die Planung ist fertig, gebaut ist noch nichts. Der Lauf hat
+  wie gewünscht vor dem Bauen angehalten.“, the spec, the design, the two
+  tasks by title and number, and „Als Nächstes baut der nächste Start
+  zuerst „The written page title carries the number of links“. Das geht
+  mit dir dabei oder allein mit `--auto`.“ Then, after the person's #57 and
+  the blocker, #364 `/devloop:start-work --auto` in the same session: #376
+  the setup state fetched, #381 the in-flight query with the spec and two
+  open tasks, so no question, line 199 of `skills/start-work/SKILL.md`;
+  #384 read #57; #394 the readiness query, #56 with one open blocker; #397
+  `build-work` with `--auto`; #408 the one call `bin/devloop-start-conditions
+  55 56; bin/devloop-permission-mode; ls .claude/`, the hook stating auto
+  beside it, #411: „condition 3 does not hold, because an open issue
+  outside the range blocks a task in it: #57 blocks #56“, the other five
+  holding, 4 by the hook, `ls` printing nothing; #416, the last text of
+  the turn and the session: „Der Lauf ohne dich startet nicht. Bedingung 3
+  gilt nicht: Der offene Issue „Settle the option name before the reverse
+  option is built“ (#57) blockt die Aufgabe „The --reverse option reverses
+  the printed and written links“ (#56) und liegt außerhalb des
+  Spec-Bereichs. ... Sechs der sieben Bedingungen gelten, die Markierung
+  wurde nicht geschrieben und gebaut ist nichts.“, then what would help.
+  No write of the mark after #364, no `setup-checks`, no second reading of
+  a condition beside the call. `build-work` expanded 2562 to 2572, "Read
+  them by one call, on both routes", and 2549 to 2550, "Refuse to start
+  unless all seven hold, and say which failed", are what the run did.
+  Run 3 enters the row of line 30168 for the direct route.
+  Run 3 met the case of defect c of the entry at line 36636, lines 37570
+  to 37573, at #164: both descriptions carry the sentence on the design,
+  „Das Design wird gegen die geschriebene Liste gewählt, nicht nach deinem
+  Geschmack“ and „Das Design wird gegen die Liste gewählt, nicht nach
+  deinem Geschmack“, as `skills/plan-work/SKILL.md` lines 446 to 448, lines
+  425 to 428 at `6edeef1`, still ask; not held, nothing being built for it;
+  run 3 enters its row. The agents of its planning: three drafts at #207 to
+  #209 and one checking round of three at #261 to #263, six calls of the
+  Agent tool and none of the Workflow tool; the run states no token number;
+  Claude Code's notifications carry 35,194, 34,937 and 34,998 tokens for the
+  drafts, #246, #248 and #250, and 40,263, 53,247 and 43,026 for the checks,
+  #293, #295 and #294. The last message's „allein mit `--auto`“, #360, is
+  the occasion of defect 2 below, and the read of `install-tools` and
+  `dependency-tools` beside the program's call at #155 that of defect 3
+  below.
+
+  **Met again and still recorded, so no run stands on their rows**, a run on
+  a defect recorded and not built being a broken record of the tool, section
+  D of its head; each with the record and whether it held. Defect c, line
+  37573: run 3 #164, both descriptions carry the sentence on the design, not
+  held, see run 3. Defect 10, line 37291, the question announced before its
+  call after the reminder: run 1 #229 „Jetzt kommen die ersten Fragen an
+  dich, vermutlich zwei Runden.“ after the reminder #218 and before #230,
+  run 2 #119 „Ich lege jetzt das Planungs-Issue an, danach kommen die ersten
+  Fragen an dich.“ after #114 and before #133, neither held; run 3 said
+  nothing after its reminder #118 before #132, held. Defect 11, line 37302,
+  questions beyond the bound of the widget, counted at 76 characters a line
+  in the field and 73 under an answer: run 1 #267, the hard core, 17 lines
+  of 14, run 3 #132, the round, 15 of 14, and #142, the hard core, 18 of 14,
+  not held; run 2 #133, #155 and #192 within it, held. Defect 13, line
+  37323, the hard core in the mixed form: run 1 #267, run 2 #155 and run 3
+  #142 each „Ist die Idee so richtig verstanden?“ with two answers, held.
+  Defect 14, line 37338, a checker's verdict restated: run 1 #354 gives the
+  break the checker found in „Klein“ as a break, held. Defect 16, line
+  37353, the comparison in prose on the three axes: run 1 #354 compares in
+  prose on size and on how localised a change is and not on the seams, held
+  in part. Defect 17, line 37363, the halt saying what stands in the tracker
+  alone: run 3 #360 „Design: Die kleinste Variante ohne neue Exports. Die
+  beiden anderen Entwürfe haben nichts verletzt ...“, the design taken said
+  in the halt, not held. Defect 23, line 37420, the count of the lenses
+  said: run 1 #488 „Fünf Prüfer lesen die Änderung parallel“ and #712 „vier
+  Runden, fünf Blickwinkel je Runde“, run 2 #698 „Vier Reviewer laufen
+  (Standards, Spec, Testqualität, Security)“ and #959, #1059, #1159, #1237,
+  not held. Defect 24, line 37429, a lens not run recorded in words of its
+  own: run 1, pull request #43, „three lenses on the one-line last commit“
+  and no word in the triggers' words for the two not run, not held; run 2,
+  #52 and #53, „Lenses not run, trigger by trigger: data migration (trigger
+  "any schema or stored-format change"): the diff contains no schema and no
+  stored-format change“, held. Defect 28, line 37463, the gate without the
+  diff: run 1 #712 and #1035 show no diff, a prose list „Was sich ändert“ in
+  its place, not held. Defect 31, line 37481, the list of tasks and the one
+  taken said: run 1 #783 „Als Nächstes wird die zweite Aufgabe gebaut: `out`
+  in `links.config.yaml`“, run 2 #522 „Zwei Tasks sind angelegt, beide frei
+  und ohne Blocker. Mark sagt `build`, also geht es direkt in den Build.“,
+  not held. Defect d, line 37583, milestone 11: run 1 #1108 „Lokal
+  nachziehen: Nach dem gemergten Pull Request ist nichts zu tun. `--count`
+  braucht nichts Neues.“, run 2 #1349, neither a folder nor a command that
+  runs as it stands to try what was built, not held. Defect 15, line 37346:
+  run 1's brief #291 „Mode: a person is present (no unattended mark)“, run
+  2's #294 to #296 „mark at ~/devloop-test-aa/.claude/unattended.local“, run
+  3's #207 to #209 „mark .claude/unattended.local says plan“, held.
+
+  **New defects**, each found at its records, the text that asks otherwise
+  named, its milestone by the dated sentences under milestone 3 in
+  `docs/plan.md`, and where it is a small matter by the measure of decision
+  (9) of the entry at line 37660, line 37775, said so with the reason, the
+  person deciding. Before each was recorded, the roadmap was searched for
+  the same defect with the patterns named; each came back without a match.
+
+  **1. A technical term translated: „Geschichten“ for user stories.** Run 1
+  #267, the hard core before „Ist die Idee so richtig verstanden?“, under
+  the heading „Geschichten:“; run 2 #155 wrote „User Stories:“ and run 3
+  #142 „Stories“. `output-styles/devloop.md` line 15 says only that the text
+  goes to the person „in their language“, and no text of `skills/`,
+  `shared/` or the conventions says how a term the person's language uses as
+  it stands is written, `grep -rn -i 'translat\|in their language\|term of
+  art' skills shared output-styles docs/skill-conventions.md`, the hits
+  being the language block and the word for „recommended“. Searched in the
+  roadmap: `grep -n -i 'Geschichten\|User Stor\|Fachbegriff\|technical
+  term\|not translated\|untranslated\|eingedeutsch\|term of art'`, hits only
+  on „user stories“ in English prose. The person's statement of 26 October
+  2026 above and decision (a): no milestone, built after the decision on
+  milestone 3.
+  Recorded, not built: run 1 headed the hard core of the user stories „Geschichten“ where the person's language uses the term as it stands — should: a technical term the person's language uses as it stands is not translated, „User Stories“, „Pull Request“ and „Issue“ staying as they are in German, said where the text says that what the person reads goes to them in their language; no milestone, built after the decision on milestone 3.
+  **2. The person is told to type `--auto` without the command.** Run 3
+  #360, the last message of the planning: „Das geht mit dir dabei oder
+  allein mit `--auto`.“, where the person types `/devloop:start-work
+  --auto`. The places that say it so, at `d49921f`, `grep -rn -i "typ[a-z]*
+  \`--auto\`" skills shared`: `skills/cut-into-tasks/SKILL.md` line 171, the
+  halt before the first build, which this message followed;
+  `skills/plan-work/SKILL.md` lines 408 and 512;
+  `skills/build-work/SKILL.md` lines 1534 and 1618;
+  `skills/setup-checks/SKILL.md` line 1414, and its line 1114, which points
+  at the description of the no of the mode question in step 8, line 26668 of
+  this file, „Mit `--auto` kannst du es später einrichten“;
+  `skills/build-work/SKILL.md` line 1580, „the person who typed `--auto` is
+  there“, describes and tells nobody anything. The approved wordings that
+  name the flag alone: text 2 of 9 October 2026, lines 14440, 14886 and
+  14892, „tippe dann `--auto`“, and the line of 5 October 2026 for a yes
+  fallen away. `README.md` line 130 and `skills/start-work/SKILL.md` line
+  339 name the command whole. "A command handed over runs as it stands, from
+  wherever the person is", `docs/skill-conventions.md` line 73, speaks of a
+  command copied into a terminal, not of what is typed into Claude Code; it
+  needs a sentence for this, or a rule beside it, which the order that
+  builds this decides. Searched in the roadmap: `grep -n -i 'allein mit
+  `--auto`\|the command whole\|names the command\|without the command\|full
+  command'`, no hit on this. The person's statement of 27 October 2026 above
+  and decision (a): no milestone, built after the decision on milestone 3.
+  Recorded, not built: the last message of the planning of run 3 said „allein mit `--auto`“, and the texts of cut-into-tasks, plan-work, build-work and setup-checks tell the person to type `--auto` without the command — should: where a text of the person says how it goes on, it names the input as they type it in Claude Code, `/devloop:start-work --auto` for the run without them and `/devloop:start-work` for the run with them, in the skills and in the approved wordings alike; no milestone, built after the decision on milestone 3.
+  **3. The planning read two records beside the program's call.** Run 3
+  #155, one call: `git show origin/main:docs/agents/environment.md | grep -n
+  -i "unattended-mode\|install-tools\|dependency-tools"` before
+  `bin/devloop-start-conditions` and `bin/devloop-permission-mode`, the
+  lines of conditions 6 and 7 read by the run itself beside the program that
+  reads them. `skills/plan-work/SKILL.md` line 497, expanded 1247: "Read
+  none of the five yourself beside that call." The record of the mode, which
+  the program does not read, is read rightly. Searched: `grep -n -i 'beside
+  that call\|beside the call\|read .* yourself beside'`, hits only the texts
+  quoted. Milestone 3, decision (5) of the entry at line 37660; a small
+  matter by the measure of decision (9): the program's lines decided, the
+  extra read changed nothing, and a user does not notice it.
+  Recorded, not built: the planning of run 3 read install-tools and dependency-tools off origin/main itself beside its call of bin/devloop-start-conditions — should: the five beside the mode are read by the one call of the program and by nothing else, the record of the mode alone being read beside it; milestone 3, a small matter by decision (9) if the person so decides.
+  **4. The assumptions of the round said nothing of a missing tool, and run
+  1's planning took it for present.** Run 1 #230 names no tool where the
+  work needs `yq`, missing on the Mac; #275 wrote „yq and htmlq are
+  installed outside the project“ without a record that read the machine, and
+  #772 carried the claim into the build, „yq and htmlq are already on this
+  machine“; run 2 #133 names neither `htmlq` nor `mmdc`, both missing, which
+  the planning knew from #282 and wrote at #276 into the comment alone. The
+  text, `skills/plan-work/SKILL.md` lines 309 to 328: "Where such a tool is
+  missing on this machine, the assumptions of the round say that the work
+  needs it and that it is missing, and that whether the run installs it at
+  the build or they get the command for it is decided by their permission to
+  install as it stands for this project then", wording (b), lines 37888 to
+  37892. Defect 9 of the entry at line 36636 holds in its should, nobody
+  being settled to install; this is the half of its text that was not met.
+  Searched: `grep -n -i 'installed outside the project; the script
+  tests\|without reading the
+  machine\|asserted.*installed\|claimed.*installed'`, no hit. Milestone 3,
+  the places in the skills, as defect 9; not a small matter in run 1, where
+  the claim reached the build and the task was built against a stand-in on
+  it; the person decides.
+  Recorded, not built: the rounds of runs 1 and 2 said nothing of the tool the work needs and that it is missing, run 1's planning wrote that yq is installed without reading the machine and carried it into the build — should: where a tool the work needs is missing on this machine, the assumptions of the round say that it is needed and missing and that the permission to install decides who installs, as plan-work says, and the planning says of a tool only what it read off the machine; milestone 3.
+  **5. The line that work without them is not set up was not said.** Run 1:
+  the record of the mode says yes, the install record no, #244 „condition 6
+  does not hold“; the one line `skills/plan-work/SKILL.md` lines 405 to 409
+  give for that case, "that work without them is not set up in this project,
+  and that typing `--auto` where a piece of work starts sets it up", the
+  wording of 5 October 2026, stands in the comment #275 in English and in no
+  text to the person. Searched: `grep -n -i 'fallen away'` and `'one
+  line.*not set up\|said in the issue comment'`, the hits being the texts
+  and the entries that built the line. Milestone 3, the line turning on the
+  install record's no; a small matter by the measure of decision (9): the
+  person learns it at the second asking when they type `--auto`, as run 2
+  shows, and the planning went on with them as the text says.
+  Recorded, not built: the planning of run 1 said to the person nothing of the mode not being set up and of `--auto` setting it up, where the record of the mode said yes and the install record no, the line standing in an issue comment alone — should: where the record is a yes with something fallen away since, the one line of plan-work reaches the person in the message that ends the turn; milestone 3, a small matter by decision (9) if the person so decides.
+  **6. The prompts to the build subagents carried an instruction of the main
+  run's own on installing and not point 7.** Run 1 #446, „Do not install
+  anything. htmlq may be real on PATH; yq not needed here.“, and #772, „Do
+  not install anything (yq and htmlq are already on this machine; tests use
+  stubs).“, a false claim; neither carries point 7 with the texts between it
+  and point 8 nor the output of `bin/devloop-install-record`.
+  `skills/build-work/SKILL.md` lines 431 to 462, the fifth rule since 24
+  October 2026, decision (1) of the entry at line 37660: "point 7 below as
+  it reads, with the texts between it and point 8, and the install record as
+  bin/devloop-install-record prints it, run by this run ...; beside point 7
+  this run writes nothing of its own on whether the subagent installs or
+  what. Run 2a's prompt said 'Install the Mermaid CLI as the vendor
+  documents' and run 3a's 'Do not install anything'". Searched: `grep -n -i
+  'writes nothing of its own\|instruction of its own on installing\|Do not
+  install anything'`, the hits being the decision and the paragraphs of
+  defects 2 and 7, whose case is a yes. Milestone 3, decision (1); not a
+  small matter: the subagent got a wrong fact about the machine from the
+  prompt, and the rule was written against exactly this.
+  Recorded, not built: the prompts of run 1 to its two build subagents said „Do not install anything“, one of them that yq is on the machine, and handed neither point 7 with the texts between it and point 8 nor the printed install record — should: the main run hands the build subagent point 7 as it reads, the texts between it and point 8 and the record as bin/devloop-install-record prints it, and writes nothing of its own on installing into the prompt, under a no as under a yes; milestone 3.
+  **7. Under the no the task needing `yq` was built against a stand-in and
+  offered for landing before the install was handed over.** Run 1: the
+  subagent built #40 against a stub `yq`, #788; the reviewers wrote at #811
+  and #821 that `yq` is not installed; #1035 put „Soll das landen?“; the
+  handover of `brew install yq` came at #1076, after the person's #1045, and
+  the run said „ich hätte das vor der Frage sagen müssen“. `build-work`
+  expanded 1127 to 1197, point 7: under a no the install stays the user's to
+  run, "Report what it installs, what it unblocks, and the exact command ...
+  and both ways it can go, in the same breath", and "A tool the task needs
+  is not replaced by a stand-in because the run takes itself not to be
+  allowed to install it"; the handover is the task's first step where the
+  tool is missing, not a step after the gate. Searched: `grep -n -i 'before
+  the handover\|handover came\|only after the person\|built against a
+  stand-in'`, the hits being audits and the paragraph of defect 2, whose
+  case is a yes. Milestone 3, the places in the skills under a no, beside
+  defects 2 and 5; not a small matter: the person was asked to land what
+  never ran against the tool.
+  Recorded, not built: run 1 built the task needing yq against a stand-in under the no, put the landing question and handed brew install yq over only after the person said the tool is missing — should: under a no, where a task needs a tool that is missing, the run hands the backed command over with both ways before building against a stand-in, and a task is not offered for landing before the tool it needs stands there or the person has declined it; milestone 3.
+  **8. Run 2 built both tasks in the main run, without a build subagent.**
+  #523 `build-work`, then #537 to #1343 in the main log: the branches cut,
+  the tests written, the installs run, the pull requests opened by the main
+  run; the 27 agents drafted, checked and reviewed.
+  `skills/build-work/SKILL.md` line 431, step 3: "Hand the task to a
+  subagent with a fresh context: the task issue, the spec it belongs to, the
+  paths of the control documents, where the mark stands ... and five rules
+  it reads nowhere else". Searched: `grep -n -i 'built the task itself\|no
+  build subagent\|without a subagent\|main run built\|Hand the task to a
+  subagent'`, no hit. No dated sentence of milestone 3 names it; it bears on
+  the milestone in one way: decision (1) of the entry at line 37660 hands
+  the install rules to the build subagent, and this run shows nothing of
+  that half, the main run having read `build-work` itself. Which milestone
+  takes it up the person decides.
+  Recorded, not built: run 2 built both tasks and ran both installs in the main run and handed no task to a build subagent — should: each task is handed to a build subagent with a fresh context, as step 3 of build-work says, and the main run builds none itself; the milestone the person decides after milestone 3.
+  **9. The folders for browsers were not read around each install.** Run 2
+  read `~/.cache/puppeteer` before, #798, and after, #818, the install of
+  `mmdc` and named what came into it; around `brew install htmlq` it read no
+  folder, and `~/Library/Caches/ms-playwright` and
+  `~/Library/Caches/Cypress` in no record. `shared/install-alone.md` lines
+  20 to 25: "Before the install and after it, the run reads the folders for
+  browsers that 'Whether it worked is read off the result' names for this
+  system, and the one a vendor's setting names where one is set, and the
+  report names what came into them". Searched: `grep -n -i 'folders for
+  browsers\|read the folders\|browser folders'`, the hits being the texts
+  that built the rule. Milestone 3, point 8; a small matter by the measure
+  of decision (9): the download the install made was named, read off the one
+  folder it lands in, and a formula of Homebrew downloads no browser.
+  Recorded, not built: run 2 read the folders for browsers only around the npm install and only ~/.cache/puppeteer, none around brew install htmlq — should: before and after every install the run reads the three folders named for this system and the one a vendor's setting names, and the report names what came into them; milestone 3, a small matter by decision (9) if the person so decides.
+  **10. An install on the default branch before the task's branch, and the
+  pull request says the hook wrote the line.** Run 2 #569 ran `brew install
+  htmlq` with the tree on `main`; the fact hook refused the line, #571, the
+  run cut the branch and wrote it through `bin/devloop-install-note put`,
+  #578, and #52 says of that line „the standing fact the install hook wrote
+  when htmlq was installed for this task“. `skills/build-work/SKILL.md`
+  lines 433 to 436 and 451 to 462: the subagent cuts a branch from the main
+  branch first, and the install of point 7 is a step of the task's build, on
+  that branch, where the hook writes the line; a report says what happened,
+  "What the report says ... is what the whole output shows, and nothing
+  assumed", `shared/install-alone.md` line 15. Searched: `grep -n -i 'on the
+  default branch main, where nothing\|installed on main\|refused the line'`,
+  hits only the measurement of the hook's refusal, lines 34439 and 34444.
+  Milestone 3, part A's mechanism; a small matter by the measure of decision
+  (9): the line stands in the same form, written by the program the hook
+  calls, and only the pull request's sentence is wrong.
+  Recorded, not built: run 2 ran brew install htmlq on main before cutting the task's branch, so the fact hook wrote no line and the run wrote it through the program, and the pull request says the hook wrote it — should: an install of a task runs on the task's branch, after the cut, so that the hook writes the line, and the report says who wrote it; milestone 3, a small matter by decision (9) if the person so decides.
+
+  **Looked at and not recorded as a defect.** Run 1 #354, the design
+  question as text, last in its message, with one recommendation, as
+  `plan-work` Stage 3 asks since 17 October 2026; the landing questions #712
+  and #1035 as text, where the field does not hold their text; the three
+  questions of a round in one call, #230, #133 and #132, which
+  `shared/three-questions.md` allows, with „(Empfohlen)“ in a label as it
+  asks; `gh` commands of the runs without `--repo`, none of them handed
+  over; #57 named by number in run 3's #416 after its title in the same
+  message; the Stop hook's „Checks are failing (attempt 1 of 3)“ in run 1,
+  #882, while the subagent edited the one working copy, answered with a text
+  to the person at #886; the main run of run 1 editing and committing on the
+  task branches itself, #659 and #1006; run 2 starting the reviewers of #50
+  and the later rounds by the Agent tool after `review-changes` had been
+  loaded at #667 for #49, no text asking for a second load; the backing of
+  `mmdc` in one call with a label edit, #797; the install record read in one
+  call with `ls` and `PATH`, #552; the workflow of run 1 that failed and was
+  resumed after a patch of its script, #291 to #316, Claude Code's
+  orchestration; the compaction of run 2 after its last text; #416 of run 3
+  counting „Sechs der sieben Bedingungen“ where the program printed five
+  holding and the hook the sixth.
+
+  **Agents and tokens, as the logs carry them**, an account for the person
+  and no defect; the runs said none of these numbers to the person. Run 1:
+  the drafts and their checks by the Workflow tool, #291, which failed with
+  "pipeline[0] failed: undefined is not an object" after 3 agents and
+  127,810 tokens, and #316, resumed after a patch of its script, 6 agents
+  and 114,394 tokens; the review of #39 in four rounds by the Workflow tool,
+  #483, #554, #618 and #667, 5 agents and 216,182 tokens, 5 and 183,649, 5
+  and 180,034, 3 and 99,108; the review of #40, #799, #901, #938 and #1015,
+  5 and 228,156, 5 and 193,018, 4 and 147,504, 3 and 101,097; two build
+  subagents, #446 and #772, whose three reports each carry 72,738, 78,321
+  and 82,904 and 72,813, 85,388 and 93,471 tokens; the cost state at #1112,
+  10.36 dollars. Run 2: 27 calls of the Agent tool and none of the Workflow
+  tool; the drafts 38,680, 38,262 and 40,787 tokens, #333, #361 and #363,
+  the checkers 38,693, 41,008 and 37,924; the review of #49, one round of
+  four, 35,624, 37,650, 39,661 and 43,688; the review of #50 in four rounds,
+  five, five, four and three lenses, 39,834, 40,340, 38,035, 45,219 and
+  42,737, then 35,023, 36,936, 37,049, 42,887 and 41,519, then 33,678,
+  36,140, 36,166 and 37,330, then 33,399, 38,093 and 35,259; the cost state
+  7.69 dollars. Run 3: six calls of the Agent tool, three drafts, 35,194,
+  34,937 and 34,998 tokens, #246, #248 and #250, one checking round, 40,263,
+  53,247 and 43,026, #293, #295 and #294; no build.
+
+  **What is open after the runs, for milestone 3**, each of the seven things
+  that hold it open, `docs/plan.md` lines 478 to 481, and each new defect
+  that concerns it, with whether it held and what it still needs; whether
+  the milestone is reached the person decides. Point 8, line 5986: held in
+  both installs of run 2, the report naming what the whole output shows and
+  the download the install made; needs nothing from a run; defect 9 above,
+  the folders, is a small matter if so decided. Point 10, line 30168: held
+  on the direct route, run 3; held in part on the route through the
+  planning, run 2, condition 4 not read again at the build; needs the
+  person's decision whether that holds the milestone open, and where it
+  does, a run on that route reading all seven or the text made plainer.
+  Defect 2: held in run 2 under the yes; needs nothing from a run, the half
+  of decision (1) in the subagent's prompt unshown, defect 8 above. Defect
+  5: held in part in run 1, the no without a way of its own and the issue
+  before the question; needs the person's decision and, where it holds the
+  milestone open, a run with the person under a no where the handover says
+  both ways in the same breath, or the text re-read against #1076. Defect 7:
+  held in run 2. Defect 9: held in its should in runs 1 and 2; defect 4
+  above, wording (b), is the half not met, and not a small matter in run 1.
+  Defect 34: held in run 1. Of the new defects, 4, 6 and 7 concern the
+  milestone and are no small matters by the reasons given; 3, 5, 9 and 10
+  concern it and are small matters if the person so decides; 1 and 2 have no
+  milestone by decision (a); 8 the person sorts.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: nine runs, source log, under 0.161.0, each
+  on the row of a built defect whose case it met, dated by the day its log
+  opens, each anchored on its line below:
+  run 1 on defect 34, line 37523, met at #70 and held in its statement;
+  run 1 on defect 9, line 37278, met at #230 to #364 and held in its should;
+  run 1 on defect 5, line 37228, met at #1076 and held in part;
+  run 2 on defect 9, line 37278, met at #133 and #276 and held in its should;
+  run 2 on defect 2, line 37188, met at #552 to #888 and held;
+  run 2 on defect 7, line 37252, met at #564 and #797 and held;
+  run 2 on point 8, the defect of line 5986, met at #569 and #809 and held;
+  run 2 on point 10, the defect of line 30168, met at #537 and held in part;
+  run 3 on point 10, the defect of line 30168, met at #408 and held.
+  The notes of those seven rows say what each run showed. The ten new
+  defects, each sited and evidenced on its status line above, with the
+  milestone or the decision in its note; the note of defect c's row says
+  decision (a); the head of this entry as part of defect 1. No run goes on a
+  defect recorded and not built.
+
+  **The tool, run for this entry.** `scripts/devloop-stock-take` in a clean
+  bash with `/usr/bin/grep`, at `d49921f` and at the tree with this entry
+  and the rows: exit 0 at both, no broken record, 14 findings, 42 closed
+  defects; none of 4881 lines of the search set uncovered at `d49921f` and
+  none of 4892 at the tree, the eleven more being the head of this entry and
+  the ten status lines of its defects; 356 things recorded and not built at
+  `d49921f` and 366 at the tree, the ten new defects; 709 things walked at
+  `d49921f` and 716 at the tree, the seven defects the nine runs stand on,
+  defects 2, 5, 7, 9 and 34 walked for the first time; 2363 things at
+  `d49921f` and 2373 at the tree. Every new run counts, the version 0.161.0
+  containing the last change to every line of its thing, and the runs that
+  did not count before do not count now, 642 lines under that heading at
+  both. The self-test passed, 124 cases, 95 of 95 messages asserted. No
+  program under `bin/` and no hook changed, so no other self-test was due.
+  The nineteen checks under "Before a handover, run these" printed at the
+  tree, in a clean bash, what they printed at `d49921f`, line for line; none
+  of the files they read changed.
+
 
 ## Decisions taken against
 

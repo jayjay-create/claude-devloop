@@ -496,6 +496,17 @@ build's call with the range finds condition 3 not holding and refuses,
 point 10 on that route. Then the three runs are read off their logs, and
 it is decided whether the milestone is reached; what holds it open until
 then stays as named above.
+The three runs of the pass were made on 26 and 27 October 2026 in
+`devloop-test-aa` and read off their session logs on 27 October 2026, the
+roadmap entry of that date on the three closing runs: defects 2, 7 and 34
+held where a run met them, defect 9 held in its should, defect 5 held in
+part, point 8 held in both installs of run 2, and point 10 held on the direct
+route and in part on the route through the planning, where condition 4 was
+not read again at the start of the build; the runs found ten new defects,
+seven of which concern the milestone, four of them small matters by the
+measure of decision (9) if the person so decides, and met twelve defects of
+the entry on the six runs again; whether the milestone is reached that entry
+does not decide, the person does.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
@@ -1006,6 +1017,12 @@ that answers it, or says that none does.
   or a state that did not exist when the file was written. Two answers: the
   run stops and asks, or it decides by what is recorded and reports it. Not
   decided now; milestone 7 names both and builds neither until it is.
+- Whether the text of a pull request devloop opens in a user's project can say
+  that it comes from devloop, beside or instead of the line Claude Code adds
+  from its setting `attribution.pr`; asked by the person on 26 October 2026
+  in the first closing run of the milestone 3 pass, the roadmap entry of 27
+  October 2026 on the three closing runs; decided by the person after
+  milestone 3, and no milestone names it.
 - Whether a process started in the background survives across turns in a
   devloop run (milestone 4).
 - Whether the classifier lets a start command through unattended (milestone
