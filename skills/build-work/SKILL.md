@@ -1620,24 +1620,24 @@ on the six closing runs.
 Where this section was reached from planning, nobody is there to ask: refuse,
 say which of the five is missing and that typing `/devloop:start-work --auto`
 where a piece of work starts sets it up, the input named as they type it in
-Claude Code and never the flag alone, since 27 October 2026, defect 2 of the
-roadmap entry of that date on the three closing runs, and the mark goes, as
-at every stop with a reason
-under "A guard's block, with nobody there". For conditions 6 and 7 the
-refusal says, for the person who comes back: that the run without them does
-not start; that it needs their yes — to installing tools outside the
-project, for 6, or to adding check tools to the project's packages itself,
+Claude Code and never the flag alone, since 27 October 2026, defect 2
+of the roadmap entry of that date on the three closing runs, and the
+mark goes, as at every stop with a reason under "A guard's block, with
+nobody there". For conditions 6 and 7 the refusal says, for the person
+who comes back: that the run without them does not start; that it
+needs their yes — to installing tools outside the project, for 6, or
+to adding check tools to the project's packages itself,
 for 7 — in the sentence step 8 of `setup-checks` puts before its second
 questions; where the record says no, that they said no to it, as there;
-that `--auto` sets it up, in the words of the wording of 6 October 2026,
-which names the flag alone and for which a form naming the command whole
-stands proposed, not approved, in the roadmap entry of 27 October 2026 on
-the three visible texts; and what happens without the flag — the run builds
-the planned tasks with them and, under 6, hands them every installation as a
-command they run themselves, by step 3 point 7, or, under 7, asks them at
-every check tool whether it may add it, by step 3 of `setup-checks`. The
-wording approved on 6 October 2026 stands in the roadmap entry of 5 October
-2026; this skill says what is said, not the words. Conditions 1 and 3 are
+that `/devloop:start-work --auto` sets it up, the input named as they type
+it in Claude Code and never the flag alone; and what happens without the
+flag — the run builds the planned tasks with them and, under 6, hands them
+every installation as a command they run themselves, by step 3 point 7, or,
+under 7, asks them at every check tool whether it may add it, by step 3 of
+`setup-checks`. The wording approved on 27 October 2026 stands in the
+roadmap entry of that date on the three visible texts, in place of the one
+of 6 October 2026 in the entry of 5 October 2026; this skill says what is
+said, not the words. Conditions 1 and 3 are
 nothing that step can put right: say what would help there, as before.
 Condition 4 is nothing it can put right either: there the run says text 2,
 as the list says, and where the mode could not be read, what "When a command

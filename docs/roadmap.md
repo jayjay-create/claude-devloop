@@ -39872,8 +39872,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
 - **Terms untranslated, the start command named whole, the design line gone.**
   27 October 2026, version 0.162.0. On `task/visible-texts-terms-and-command`,
-  off `8669e5c`, in two commits: the text, and this entry with the rows of
-  the table and the three lines corrected below. Three defects on visible text, built together in one order
+  off `8669e5c`, in three commits: the text; this entry with the rows of the
+  table and the three lines corrected below; and, the same day, the refusal of
+  `build-work` for conditions 6 and 7 in the wording approved after the first
+  two commits, (6) below, with this entry's record of it. Three defects on
+  visible text, built together in one order
   after the decision on milestone 3, none of them part of a milestone,
   decision (a) of the entry at line 38963, lines 39094 to 39103: defect 1 of
   that entry, line 39476, a technical term translated; defect 2, line 39501,
@@ -39885,7 +39888,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lines corrected below; a line of every other file as it stands at the tip
   of this branch, where `docs/skill-conventions.md` carries fourteen lines
   more from line 87 on, and the skills carry the lines said with each place.
-  The wordings approved that day and the proposals stand under "Decided on
+  The wordings approved that day, the sixth after the first two commits, and
+  the decision on the two lines of the rule question stand under "Decided on
   27 October 2026" below. `README.md` does not change: its line 130 names
   the command whole already. `docs/plan.md` does not change: it names none
   of the three defects, its paragraph on the three runs of the pass counting
@@ -39958,13 +39962,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   where the one of 17 October 2026, 68 characters, took one, thirteen lines
   of the fields where line 26670 measured twelve, inside the fourteen
   `output-styles/devloop.md` lines 42 to 45 allow, so it fits, and
-  `setup-checks` lines 1082 to 1088 say so. `build-work` 1626, "that
-  `--auto` sets it up", the refusal for conditions 6 and 7, whose approved
-  wording of 6 October 2026, lines 11063 to 11071, still holds and names the
-  flag alone: not built, by the rule of the order that a wording still
-  holding is not changed but proposed, the proposal below; lines 1632 to
-  1635 say that the wording names the flag alone and that a form naming the
-  command whole stands proposed. Every other hit describes — "a start with
+  `setup-checks` lines 1082 to 1088 say so. `build-work` 1626, "that `--auto`
+  sets it up", the refusal for conditions 6 and 7, whose approved wording of 6
+  October 2026, lines 11063 to 11071, named the flag alone: left as it stood
+  in the first commit, by the rule of the order that a wording still holding
+  is not changed but proposed, and built in the third commit, the same day,
+  after the person approved the form naming the command whole, (6) below;
+  lines 1632 to 1633 name the input whole, lines 1637 to 1639 say that the
+  wording of that day stands in place of the one of 6 October 2026. Every
+  other hit describes — "a start with
   `--auto`", "where `--auto` was typed", `gh pr merge --auto` — and tells
   nobody anything. `README.md` line 130 and `skills/start-work/SKILL.md`
   line 339 name the command whole. "A command handed over runs as it
@@ -39990,10 +39996,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   named, and no shared text, `grep -rn -- '--auto' shared` finding three
   lines that describe a start with the flag and tell nobody to type it.
 
-  **Decided on 27 October 2026.** The five wordings the person approved,
-  each naming the command whole where it named the flag alone, the old
-  quoted from the entry that approved it; the skills say what is said, not
-  the words, so the wordings stand here. (1) The line at the end of Stage 1
+  **Decided on 27 October 2026.** The six wordings the person approved, five
+  in the order and the sixth after its first two commits, each naming the
+  command whole where it named the flag alone, the old quoted from the entry
+  that approved it; the skills say what is said, not the words, so the
+  wordings stand here. (1) The line at the end of Stage 1
   of `plan-work` for a yes with something fallen away since, approved on 5
   October 2026, lines 11002 to 11003, old „Der Lauf ohne dich ist in diesem
   Projekt nicht eingerichtet. Mit `--auto` kannst du ihn einrichten.“, new:
@@ -40029,36 +40036,46 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `setup-checks` step 8, approved on 17 October 2026, lines 26668 to 26669,
   old „Alles bleibt wie jetzt. Mit `--auto` kannst du es später
   einrichten.“, new: „Alles bleibt wie jetzt. Mit `/devloop:start-work
-  --auto` kannst du es später einrichten.“ The mode in (3) and (4) is
-  filled as line 14893 says. Wordings that name the flag alone, searched
-  with `grep -n '\`--auto\`' docs/roadmap.md` and every German line read for
-  whether a later entry replaced it, and not among the five: the two
-  refusals of `build-work` for conditions 7 and 6, approved on 6 October
-  2026, lines 11063 to 11071, which hold, `build-work` lines 1639 to 1640
-  naming them; proposed, not approved, in the same form: „Der Lauf ohne dich
+  --auto` kannst du es später einrichten.“ (6) The two refusals of
+  `build-work` on the way from planning, for conditions 7 and 6, approved on 6
+  October 2026, lines 11063 to 11071, and approved in the form naming the
+  command whole on 27 October 2026, after the first two commits of this
+  branch, so that they stand here in place of the proposal the second commit
+  recorded; `build-work` lines 1632 to 1639 say so. For 7, old „Der Lauf ohne
+  dich startet nicht. Dafür brauche ich dein Ja, Prüfwerkzeuge selbst zu den
+  Paketen des Projekts hinzuzufügen. Mit `--auto` kannst du ihn einrichten.
+  Ohne `--auto` baue ich die geplanten Aufgaben mit dir und frage dich bei
+  jedem Prüfwerkzeug, ob ich es hinzufügen darf.“, new: „Der Lauf ohne dich
   startet nicht. Dafür brauche ich dein Ja, Prüfwerkzeuge selbst zu den
   Paketen des Projekts hinzuzufügen. Mit `/devloop:start-work --auto` kannst
-  du ihn einrichten. Ohne `--auto` baue ich die geplanten Aufgaben mit dir
-  und frage dich bei jedem Prüfwerkzeug, ob ich es hinzufügen darf.“ and
+  du ihn einrichten. Ohne `--auto` baue ich die geplanten Aufgaben mit dir und
+  frage dich bei jedem Prüfwerkzeug, ob ich es hinzufügen darf.“ For 6, old
   „Der Lauf ohne dich startet nicht. Dafür brauche ich dein Ja zum
-  Installieren von Werkzeugen außerhalb des Projekts. Mit
-  `/devloop:start-work --auto` kannst du ihn einrichten. Ohne `--auto` baue
-  ich die geplanten Aufgaben mit dir und gebe dir jede Installation als
-  Befehl, den du selbst ausführst.“, „Dazu hast du Nein gesagt.“ following
-  the second sentence as before; and the two lines of the rule question
-  under „Nein, nicht eintragen“, approved on 22 October 2026, lines 34954
-  to 34959, which hold and name the flag as the occasion of the next
-  question rather than as an input the person is told to type, so that
-  whether the should reaches them is the person's call; proposed in the same
-  form: „Dann bleibt das Issue offen, bis du die Installation selbst
-  erledigt und das Issue geschlossen hast. Bis dahin frage ich bei jedem
-  Start mit `/devloop:start-work --auto` wieder.“ and „Beim nächsten Start
-  mit `/devloop:start-work --auto` frage ich dich dann noch einmal.“ Three
-  more name the flag alone and are replaced already, so nothing is
-  proposed: the sentence after a no in step 8, lines 10982 to 10983, gone
-  since 17 October 2026, `setup-checks` line 1118; text 2 of 8 October 2026,
-  lines 14437 to 14441, replaced on 9 October 2026, line 14883; and the no's
-  description of 9 October 2026, lines 14491 to 14493, replaced on 17
+  Installieren von Werkzeugen außerhalb des Projekts. Mit `--auto` kannst du
+  ihn einrichten. Ohne `--auto` baue ich die geplanten Aufgaben mit dir und
+  gebe dir jede Installation als Befehl, den du selbst ausführst.“, new: „Der
+  Lauf ohne dich startet nicht. Dafür brauche ich dein Ja zum Installieren von
+  Werkzeugen außerhalb des Projekts. Mit `/devloop:start-work --auto` kannst
+  du ihn einrichten. Ohne `--auto` baue ich die geplanten Aufgaben mit dir und
+  gebe dir jede Installation als Befehl, den du selbst ausführst.“ Where the
+  record says no, „Dazu hast du Nein gesagt.“ follows the second sentence, as
+  before. In (6) too „Ohne `--auto` …“ stays, as in (3) and (4). The mode in
+  (3) and (4) is filled as line 14893 says. Wordings that name the flag alone,
+  searched with `grep -n '\`--auto\`' docs/roadmap.md` and every German line
+  read for whether a later entry replaced it, and not among the six: the two
+  lines of the rule question under „Nein, nicht eintragen“, approved on 22
+  October 2026, lines 34954 to 34959, which hold and name the flag as the
+  occasion of the next question rather than as an input the person is told to
+  type. They stay as they stand on this branch: the person decided on 27
+  October 2026 that devloop closes an open issue that blocks a task for a
+  missing installation itself, at the next start, once the tool stands on the
+  machine, instead of the person closing it; that is built in a later part,
+  and whether and how it changes these two lines, the command among it, is put
+  to the person with that part. Three more name the flag alone and are
+  replaced already: the sentence after a no in step 8, lines 10982 to 10983,
+  gone since 17 October 2026, `setup-checks` line 1118; text 2 of 8 October
+  2026, lines 14437 to 14441, replaced on 9 October 2026, line 14883; and the
+  no's description of 9 October 2026, lines 14491 to 14493, replaced on 17
   October 2026, line 26668.
 
   **Defect c, the design line.** The should: the two descriptions read as
@@ -40133,7 +40150,17 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the table and stand under "RUNS THAT DO NOT COUNT", 661 lines against
   642, nineteen more, each made under a version before this branch's; 24
   undetermined at both; 3109 not-a-thing records against 3105, the four of
-  this entry; 289 lines that can carry no unique anchor at both.
+  this entry; 289 lines that can carry no unique anchor at both. The third
+  commit, the refusal for conditions 6 and 7, changes none of these numbers:
+  the lines it changes in `build-work`, 1623 to 1629 and 1632 to 1640, carry
+  no record, and the records on lines 1622, 1630, 1631 and 1641 stand as they
+  stood; the thing of that refusal, "refused from planning on condition 6 or
+  7", carries no run, and its row says in its note that the wording of 27
+  October 2026 names the command whole, wording (6), in place of the one of 6
+  October 2026, its evidence staying on line 1631, the sentence on their no.
+  The tool at the tree after that commit prints the same lists and the same
+  numbers as after the second, the line of one finding moved by the lines this
+  entry gained.
 
   The self-test passed at the tree, 124 cases, 95 of 95 messages asserted,
   as at `8669e5c`. No program under `bin/` or `scripts/`, no hook and no
@@ -40141,7 +40168,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   these" printed at the tree, in a clean bash with `/usr/bin/grep`, what
   they printed at `8669e5c`, line for line, but for the line numbers of the
   five lines check 16 and the one line check 19 print from `build-work`,
-  `plan-work` and `setup-checks`, moved by the lines added above them.
+  `plan-work` and `setup-checks`, moved by the lines added above them; after
+  the third commit they print, and the self-test prints, what they printed
+  after the second, line for line.
 
 
 ## Decisions taken against
