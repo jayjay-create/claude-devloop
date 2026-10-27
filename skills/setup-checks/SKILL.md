@@ -1074,14 +1074,18 @@ on the cost, since they bear on it.
 - **In the no, label and description: where a no leads.** The label: that
   everything runs with them, in which lies that every task comes to them for
   approval; no sentence of its own for it, for the same reason. The
-  description: everything stays
-  as it is; `--auto` sets it up later.
+  description: everything stays as it is; `/devloop:start-work --auto` sets
+  it up later, the input named as they type it in Claude Code and never the
+  flag alone, since 27 October 2026, the wording of that day in the roadmap
+  entry of that date on the three visible texts.
 
 At 80 columns, on macOS and with a private repository, these fields fill
-twelve lines, inside the bound the output style of devloop sets, measured on
-19 October 2026 with the approved wording wrapped at 76 and 73 characters,
+thirteen lines, inside the bound the output style of devloop sets, measured
+on 27 October 2026 with the approved wording wrapped at 76 and 73
+characters, the no's description of that day taking two lines where the
+one of 17 October 2026 took one; twelve lines measured on 19 October 2026,
 the awake line of that day among it, which takes the three lines the line
-of 17 October 2026 took; measured the same twelve on 17 October 2026.
+of 17 October 2026 took, and the same twelve on 17 October 2026.
 The wording approved on 17 October 2026 stands in the roadmap entry of that
 date as the new text 6, in place of text 6 of the roadmap entry of 9 October
 2026, and the awake line as approved on 19 October 2026 in the roadmap entry
@@ -1111,9 +1115,10 @@ same, since it is what says what setting one up costs.
 
 **On a no, nothing is set up**, on the platform or anywhere else, and every
 piece of work runs with them. The record below says so, with the reason.
-Nothing more is said on the no, since 17 October 2026: that typing `--auto`
-where a piece of work starts sets the mode up then stands in the no's own
-description already.
+Nothing more is said on the no, since 17 October 2026: that typing
+`/devloop:start-work --auto` where a piece of work starts sets the mode up
+then stands in the no's own description already, the input named whole
+there since 27 October 2026.
 
 **On a yes — their answer, or the flag where the gate stands — one question
 more, directly after it and before the two permissions: whether devloop may
@@ -1411,7 +1416,10 @@ and nothing is installed under records not yet fetched.
    it and wait again, as step 5 does not take a red that did not come from
    the code. Only a red from the code itself is the answer, and it is no
    answer of theirs: say what failed, and that once the checks pass on
-   GitHub they can set the mode up by typing `--auto`. The record of the
+   GitHub they can set the mode up by typing `/devloop:start-work --auto`,
+   the input named as they type it in Claude Code and never the flag alone,
+   since 27 October 2026, the wording of that day in the roadmap entry of
+   that date on the three visible texts. The record of the
    answer then says that the mode is not set up, with that red as its
    reason: the yes has landed by now, so the change goes through a pull
    request of its own, as after a refused protection. The workflow file

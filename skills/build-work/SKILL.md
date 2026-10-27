@@ -1528,12 +1528,15 @@ each line is about, and what the run says where one does not hold:
    answer in a person's place, and so does a mode that could not be read: no
    statement beside the result, or the statement that the input carried no
    `permission_mode`. Allow rules are not read. Where it fails, say so with
-   the sentence the roadmap entry of 9 October 2026 records as text 2 — that
-   the run without them does not start; that Claude Code has to run in auto
-   mode, the mode set now named as the status bar shows it; how to switch,
-   Shift+Tab in the terminal, and then to type `--auto`; and that without
-   the flag the planned tasks are built with them — on the direct route and
-   after a planning alike, this skill saying what is said and not the words.
+   the sentence the roadmap entry of 9 October 2026 records as text 2, in the
+   form approved on 27 October 2026 since that day, the roadmap entry of that
+   date on the three visible texts — that the run without them does not
+   start; that Claude Code has to run in auto mode, the mode set now named as
+   the status bar shows it; how to switch, Shift+Tab in the terminal, and
+   then to type `/devloop:start-work --auto`, the input named as they type it
+   in Claude Code and never the flag alone; and that without the flag the
+   planned tasks are built with them — on the direct route and after a
+   planning alike, this skill saying what is said and not the words.
    Where the mode could not be read, "When a command does not answer" holds
    and no wording of its own: the command, and the message or the missing
    statement in its place.
@@ -1615,15 +1618,21 @@ start without that call, out of what the session held of the step, and
 added a line of its own, defect 3 of the roadmap entry of 24 October 2026
 on the six closing runs.
 Where this section was reached from planning, nobody is there to ask: refuse,
-say which of the five is missing and that typing `--auto` where a piece of
-work starts sets it up, and the mark goes, as at every stop with a reason
+say which of the five is missing and that typing `/devloop:start-work --auto`
+where a piece of work starts sets it up, the input named as they type it in
+Claude Code and never the flag alone, since 27 October 2026, defect 2 of the
+roadmap entry of that date on the three closing runs, and the mark goes, as
+at every stop with a reason
 under "A guard's block, with nobody there". For conditions 6 and 7 the
 refusal says, for the person who comes back: that the run without them does
 not start; that it needs their yes — to installing tools outside the
 project, for 6, or to adding check tools to the project's packages itself,
 for 7 — in the sentence step 8 of `setup-checks` puts before its second
 questions; where the record says no, that they said no to it, as there;
-that `--auto` sets it up; and what happens without the flag — the run builds
+that `--auto` sets it up, in the words of the wording of 6 October 2026,
+which names the flag alone and for which a form naming the command whole
+stands proposed, not approved, in the roadmap entry of 27 October 2026 on
+the three visible texts; and what happens without the flag — the run builds
 the planned tasks with them and, under 6, hands them every installation as a
 command they run themselves, by step 3 point 7, or, under 7, asks them at
 every check tool whether it may add it, by step 3 of `setup-checks`. The
