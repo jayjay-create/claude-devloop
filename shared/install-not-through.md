@@ -6,7 +6,10 @@ installer ran and ended with an error; the call did not finish inside its
 ten minutes and was ended at its limit, as "When a command does not answer"
 says. For a tool the task needs: an issue carrying
 the command as it ran, the message that came back and what stands at the
-destination path, labelled `raised-here` and `needs-human`, recorded as a
+destination path, and since 28 October 2026 the two lines every issue for a
+missing install carries, `install-tool` and `install-command`, so that the
+next start reads whether the tool stands, labelled `raised-here` and
+`needs-human`, recorded as a
 blocker of the task; the task is put down, and step 2 of `build-work` takes
 the next. There is no other way to the same tool — not another route, not
 another package manager, not a copy by hand. For a check class in
@@ -22,8 +25,9 @@ puppeteer browsers install, until then five tools and three browsers, the
 guard recording such a refusal at the event PermissionDenied through
 `bin/devloop-auto-mode-question` — the run writes an issue beside the cell,
 for every class, carrying the command as it ran, the message and what
-stands in the way, labelled `raised-here` and `needs-human` and recorded as
-a blocker of no task, and goes on: that issue brings the question on the
+stands in the way, and since 28 October 2026 the two lines of
+`install-tool` and `install-command`, labelled `raised-here` and
+`needs-human` and recorded as a blocker of no task, and goes on: that issue brings the question on the
 rule to the person at their next start with `--auto`, where it is closed on
 their yes, the roadmap entry of 22 October 2026 on the question after a
 refusal. `secrets` is the exception "A guard's block is not a

@@ -84,7 +84,10 @@ other way to the same result.
   with a reason — it is a standstill in the middle of a task that still looks
   like it is running. What that rules out is waiting on a person; a state on the
   platform is waited for, and step 6 says how. Raise an issue carrying the
-  command, the message and the reading,
+  command, the message and the reading — and, where the command was an
+  install of a tool the task needs, the two lines of the form in step 3,
+  `install-tool` and `install-command`, so that the next start reads whether
+  the tool stands, since 28 October 2026 —
   label it `raised-here` and `needs-human`, and record it as a blocker of the
   task. Then put the task down and go back to step 2: the readiness query passes
   over a blocked task by itself, so the run carries on with the rest instead of
@@ -325,6 +328,8 @@ prediction — it belongs in the diagnosis, not instead of it.
 
 ## Step 2 — Pick the next task
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issues-read`
+
 Run the readiness query from `docs/agents/issue-tracker.md`. Ready means: open,
 zero open blockers, **and no open pull request already closing it**.
 
@@ -461,6 +466,37 @@ the vendor documents" and run 3a's "Do not install anything", defects 7 and
 that day point 7 was none of the rules, and the subagent that installed
 never read it.
 
+**Before the subagent starts, read the tools the task needs**, since 28
+October 2026, new defect 7 of the roadmap entry of 27 October 2026 on the
+three closing runs and decisions (3) and (4) of the roadmap entry of that
+date on the tool state read by one program: run
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --build` once, with the
+shell, with every tool outside the project the task needs — those the spec
+names under Implementation decisions, each with the line the planning's
+call printed, since 27 October 2026, and where the spec or the task names a
+tool without such a line, that tool as it is called, a browser for tests as
+`VENDOR:NAME` — and go by its lines, which the prompt to the subagent
+carries beside the record. Under a record saying yes, the subagent installs
+what is missing, as point 7 says. Under a no, or with no record, a tool
+that is missing makes the handover of point 7 the first step of the task:
+in the message that ends this turn, before any subagent starts, with both
+ways; nothing is built against a stand-in in the meantime, and no subagent
+starts for this task until the tool stands or the person has declined. Run
+1 of 26 October 2026 built the task needing `yq` against a stand-in under
+the no, put the landing question and handed `brew install yq` over only
+after the person said the tool was missing. A browser whose line says not
+read because the project gets its test tool with this task — no package of
+the vendor in the project yet to say which version it needs — is read once
+the package stands in the project: the subagent runs the same call then, in
+the project, after adding the package and before anything that needs the
+browser, and goes by the line as the rule at its start says, installing the
+browser under a yes, and under a no or no record reporting the browser, the
+backed download command and that it is missing and stopping with the task;
+the main run then hands over as point 7 says, with the person there — with
+nobody there the record says yes, start condition 6. The planning said of
+such a browser only that it could not be read yet, the wording of 28
+October 2026.
+
 The subagent:
 
 1. Cuts a branch from the current main branch.
@@ -516,8 +552,57 @@ The subagent:
    planning is not replaced by a stand-in without them. Run 3a built the
    task needing `yq` against stand-ins under a yes and merged it with `yq`
    never run.
-   Read the result off the path the installer writes to, never off
-   `command -v`, and report it in two places, because they are two duties: the
+   Read the result, after their word, with
+   `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the command
+   as it was handed over and the tool, since 28 October 2026: its first line
+   reads the folder the installer writes to, never `command -v` alone, as
+   "Whether it worked is read off the result" below says, and its second
+   whether the tool stands on the search path, where the build and the
+   checks call it — `go install` puts a tool into `~/go/bin`, which often
+   stands on no search path. Where the first line says found and the second
+   not found, say so, at the next message that ends a turn with text, and
+   say how they put the folder on their search path, step by step, by
+   "Where a text to the person says they have to do something at the
+   computer, it says how" in `docs/skill-conventions.md`, since the
+   addendum of 28 October 2026: that the command installed the tool into
+   the folder, both as the first line names them; that the folder is not in
+   their `PATH`, the term untranslated as the output style says of a
+   technical term; and that the build therefore does not find the tool.
+   Then the steps, numbered, in the order they can take them, since the
+   terminal takes their typing only once Claude Code is ended: they end
+   Claude Code, `/exit`; they put the folder into their `PATH` in the
+   terminal, with the line that appends the export to the file their shell
+   reads when a terminal opens it; they load that file anew, `source` with
+   the file; they start Claude Code again in the project, `cd <directory>
+   && claude`, the directory written as "A command handed over runs as it
+   stands" writes it; they type `/devloop:start-work` there; and that the
+   run then finds the tool and builds the task. The shell is read off
+   `$SHELL` and the system off `uname -s`, with the shell, beside the call
+   of `--installed`: for zsh the file is `~/.zshrc`; for bash it is the
+   file bash reads on that system when a terminal opens it, `~/.bash_profile`
+   on macOS, where the terminal opens a login shell, and `~/.bashrc` on
+   Linux, where it opens an interactive shell; the export line names the
+   folder as the first line names it, with `~` written `$HOME` inside the
+   single quotes so that the file carries the variable and not the path —
+   `echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc` — and the load is
+   `source ~/.zshrc`. For a shell the run has no sure form for — another
+   shell, or bash on a system other than those two, Windows with Git Bash
+   among them, where the `PATH` Claude Code runs under is Windows' own and
+   no bash file sets it — the step says that the folder has to go into
+   their `PATH` and names no command, and the other steps stand as above,
+   by the rule in `docs/skill-conventions.md`. The wording approved on 28
+   October 2026 stands in the roadmap entry of that date on the hook on
+   SubagentStart, (4), and this skill says what is said, not the words. In
+   the session the last step opens, the tool stands on the search path
+   Claude Code took over from that terminal, and the build reaches it with
+   no issue between: step 2 reads the issues, none of which holds this
+   task, since the issue is written on a no alone, "The task itself" below;
+   the readiness query lists the task, open, with no blocker and no pull
+   request, no subagent having started for it; and the read before the
+   subagent starts, above, finds the tool on the search path. Where the
+   first line says not found, the command did not do what it was handed over
+   for, whatever came back: say so with the line and hand over again. Report
+   the install in two places, because they are two duties: the
    standing fact about running this project — the command as it ran and the
    folder it installed into — is written into `environment.md` under the
    heading `Installed outside the project` by the hook
@@ -553,21 +638,43 @@ The subagent:
    needs is not handed over here, since 22 October 2026, and goes to
    `setup-checks` for that class, under "If they decline, the run acts on
    it" below, whose step 3 puts the question.
-   Report what it installs, what it
-   unblocks, and the exact command, as it runs from wherever they are, with
+   The handover is the main run's, since only it reaches the person, and
+   the subagent's part is its report, since 28 October 2026: where the
+   subagent meets a tool that is missing under a no or no record, it names
+   the tool, the backed command and that it is missing in its report and
+   stops with the task, installing nothing and building nothing against a
+   stand-in, as the rule every subagent gets at its start says,
+   `hooks/subagent-start-install.sh`; the main run then hands over, in one
+   message, the one that ends the turn, with the question last. It says:
+   what the task needs and that it is missing on this machine; that their
+   answer to installing for this project is no, so the run does not install
+   it itself; the exact command, as it runs from wherever they are, with
    the change into the project's directory before it where it needs one, by
    "A command handed over runs as it stands" in `docs/skill-conventions.md`,
-   and what it is backed by — and both ways it can go, in the same
-   breath: the build picks up once the tool is where that command puts it, and
+   and what it is backed by, with the version and the folder it lands in —
+   and both ways it can go, in the same breath. The way of the yes: they run
+   it and say so once it is through, and the build picks up once the tool is
+   where that command puts it and the search path finds it, read after their
+   word by the next paragraph. The way of the no, which comes second and
    **a decline is an answer too, not a wall**: on a no the install becomes an
    issue carrying the command that blocks this task, as "The task itself"
-   below says, and the run goes on with the next task that is ready, where
-   one is, and with this one once they have run the command and closed that
-   issue, since 24 October 2026, defect 5 of the roadmap entry of that date
-   on the six closing runs, where run 1 said a decline would leave the test
-   skipped and the task open; the wording approved that day stands in the
-   roadmap entry of that date on how an install is recorded, (c), and this
-   skill says what is said, not the words. A message that says only "let me know once it is
+   below says, written on the no and never before the answer; the run goes
+   on with the next task that is ready, where one is, and with this one once
+   the tool stands on this machine at a later start, which devloop reads
+   itself and closes the issue on, as "The task itself" says. Before a no
+   their word that the command ran releases the run, after a no the tool
+   read at the next start: one signal per state, and the issue and the
+   message name the same one. Then the question, last: whether they run the
+   command or decline. Since 24 October 2026, defect 5 of the roadmap entry
+   of that date on the six closing runs, where run 1 said a decline would
+   leave the test skipped and the task open; and since 28 October 2026 in
+   this order, the issue on the no alone and one signal per state, the rest
+   of that defect: run 1 of 26 October 2026 opened the issue before the
+   answer, offered no no, and named one signal in the issue and another in
+   the message. The wording approved on 27 October 2026 stands in the
+   roadmap entry of that date on the tool state read by one program, (5),
+   in place of (c) of 24 October 2026, and this skill says what is said,
+   not the words. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
    With nobody there the record says yes, since the mode does not start
    under a no or with no record — start condition 6 under "Unattended mode" —
@@ -643,13 +750,21 @@ was for:
   statement of 19 October 2026 and the should of defect 4 of the roadmap
   entry of that date, the open decision taken as a question of theirs.
 - **The task itself.** The branch stays where it is, and the missing install
-  becomes an issue of its own carrying the exact command, labelled `raised-here`
-  and `needs-human`, recorded as a blocker of the task. Nothing else is needed to
-  keep this step from picking the same task straight back up: the readiness query
-  passes over a task with an open blocker by itself, and closing that issue once
-  the command has run frees it again. All of it is said together at the next
-  message that ends a turn with text, since 17 October 2026; go back to step 2
-  rather than stopping.
+  becomes an issue of its own carrying the exact command and the two lines
+  of the form below, labelled `raised-here` and `needs-human`, recorded as a
+  blocker of the task — written on their no, since 28 October 2026, and
+  never before the answer, which run 1 of 26 October 2026 did. Nothing else
+  is needed to keep this step from picking the same task straight back up:
+  the readiness query passes over a task with an open blocker by itself. The
+  issue does not ask them to close it: at the next start devloop reads
+  whether the tool stands on this machine, by `bin/devloop-install-issues`
+  as the text at the start of step 2 says, closes the issue itself where it
+  does, and the task is free again; until 28 October 2026 closing it once
+  the command had run was theirs. All of it is said together at the next
+  message that ends a turn with text, since 17 October 2026; go back to step
+  2 rather than stopping.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issue`
 
 Refactoring is not part of this loop. It belongs to the review.
 
@@ -922,6 +1037,18 @@ neither. And nothing travels with it: no verdict on the work, no announcement of
 what comes after, no pull request opened first. A question that arrives after
 the outcome has already been named is not a gate, and this is the only one there
 is.
+
+**Not while a tool the task needs is missing.** A task is not offered for
+landing while a tool it needs is missing on this machine and the person has
+not declined it, since 28 October 2026, new defect 7 of the roadmap entry of
+27 October 2026 on the three closing runs: where the subagent's report, or
+a finding of the review, says that the real tool did not run — a stand-in,
+a stub, a test skipped for the tool — the question is not put, and the
+handover of step 3 point 7 stands in its place, last in the message that
+ends the turn, with both ways; on their yes the build goes on from there
+with the real tool, on their no the issue and the next task. Run 1 of 26
+October 2026 put „Soll das landen?“ on a task built against a stand-in for
+`yq`, with the reviewers' finding that `yq` was not installed beside it.
 
 **This is the gate.** It is the one place in the loop where a human decides
 whether work lands, and it is the reason the loop is trustworthy. Reaching step 6
@@ -1476,13 +1603,20 @@ as at every stop with a reason, since the run ends here.
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions` once, with the shell,
 with the issue numbers of the tasks in range as its arguments — the open
 tasks under the spec this run builds, as step 2's readiness query lists
-them — and read condition 4 as its item below says. The program reads 1, 2,
+them — and, since 28 October 2026, `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode`
+behind it in the same call, so that the one call reads all seven. The
+program reads 1, 2,
 3, 5, 6 and 7 as the list describes them, off the main branch as last
 fetched and off GitHub, fetching nothing, and prints one line for each:
 that it holds; that it does not hold, and the cause; or that it is not
 established, the query that did not answer and its message, which is a
 condition that does not hold, said as not established and never read as a
-yes or a no. For 4 it prints that the hook reads it. Read none of the six
+yes or a no. For 4 it prints that the hook reads it, and the hook on this
+call puts the mode beside the result, as the item of 4 below says: the
+plannings of runs 2 and 3 of 26 October 2026 made this one call, and the
+build of run 2 read condition 4 not again, point 10 on the route through
+the planning, decision (4) of the roadmap entry of 27 October 2026 on the
+tool state read by one program. Read none of the six
 yourself beside that call. Decision (5) of the roadmap entry of 24 October
 2026 on install lines written by one program: three closing runs met these
 conditions, and none read all seven at the build's start. The seven, what
@@ -1518,7 +1652,9 @@ each line is about, and what the run says where one does not hold:
    able to merge at all: see 5.
 3. No task in range is blocked by anything outside the range.
 4. Claude Code runs in auto mode. Read it by running
-   `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` once, with the shell:
+   `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` once, with the shell,
+   in the one call with `bin/devloop-start-conditions` above since 28
+   October 2026:
    the program prints one line, and the hook on that call puts the mode
    beside its result, the value and the label the status bar shows for it —
    the field `permission_mode` of a hook's input is the one place the mode
@@ -1593,7 +1729,11 @@ main branch as freshly fetched: on a yes read all seven again, by the same
 call, and go on to the mark; on a no build this task with them there, as
 without the flag.
 And where the five hold and this section was reached directly, since 22
-October 2026: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
+October 2026: first, since 28 October 2026,
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues` once, with the shell,
+by the text at the start of step 2, so that the question below names no
+install whose tool stands on this machine by now and a task it held is
+free; then run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
 once, with the shell. Where it ends with 0 — the rule for the classifier
 does not stand in their settings, or they cannot be read for it, and an
 open issue of this project carries an install auto mode refused in a run

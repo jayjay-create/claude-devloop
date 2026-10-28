@@ -1,5 +1,5 @@
 {
-  "description": "Session status with the session's identifier, the check suite, guards on the main branch, on merging, on the check table, on installing outside the repository, on the mark of a run with nobody there and on a command that sets the identity of a commit itself, the permission mode stated beside bin/devloop-permission-mode, and a no to every permission prompt while that mark stands, the note on PostToolUse and PostToolUseFailure that the output style of devloop does not apply in this session, and the line in docs/agents/environment.md on what an install the record let through did, written on PostToolUse of a Bash call that succeeded, and the record of an install auto mode refused by one of the ways the rule for its classifier names, written by the install guard on PermissionDenied of a Bash call for the question at the next start with --auto",
+  "description": "Session status with the session's identifier, the install record and a rule on installing given to every subagent at its start, the check suite, guards on the main branch, on merging, on the check table, on installing outside the repository, on the mark of a run with nobody there and on a command that sets the identity of a commit itself, the permission mode stated beside bin/devloop-permission-mode, and a no to every permission prompt while that mark stands, the note on PostToolUse and PostToolUseFailure that the output style of devloop does not apply in this session, and the line in docs/agents/environment.md on what an install the record let through did, written on PostToolUse of a Bash call that succeeded, and the record of an install auto mode refused by one of the ways the rule for its classifier names, written by the install guard on PermissionDenied of a Bash call for the question at the next start with --auto",
   "hooks": {
     "PreToolUse": [
       { "matcher": "Edit|Write|MultiEdit",
@@ -22,6 +22,9 @@
     ],
     "SessionStart": [
       { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh" } ] }
+    ],
+    "SubagentStart": [
+      { "hooks": [ { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/subagent-start-install.sh" } ] }
     ],
     "PostToolUse": [
       { "matcher": "Edit|Write|MultiEdit",

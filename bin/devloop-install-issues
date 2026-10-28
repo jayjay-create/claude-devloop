@@ -1,0 +1,503 @@
+#!/usr/bin/env python3
+"""devloop-install-issues: the open issues that hold a task or concern a
+check class on an install that was missing, read at the start of a run for
+whether the tool stands on this machine now, and closed by devloop where it
+does.
+
+Since 28 October 2026, decision (5) of the roadmap entry of 27 October 2026
+on the tool state read by one program, built in the roadmap entry of 28
+October 2026 on the hook on SubagentStart. A handover under a no that the
+person declines leaves an issue carrying the command, which blocks the task;
+until that day the task went on only once they had run the command and
+closed the issue themselves, build-work step 3 point 7 and "The task
+itself", and the issues a refusal of auto mode leaves, and the one
+setup-checks writes at secrets with nobody there, asked the same of them.
+The person's wording of 27 October 2026 says instead: "Installierst du es
+spaeter doch, merke ich das beim naechsten Start, schliesse das Issue und
+baue die Aufgabe." So at the next start devloop reads, for every such issue,
+whether the tool stands on this machine now, and closes the issue itself
+where it does, with a comment naming the line it read; a task the issue
+held is free again, which the readiness query of build-work then finds, and
+a check class the issue concerned goes to setup-checks from the next task,
+as build-work says for the issues after a refusal of auto mode. Read is
+whether the tool stands for use - on the search path for a command, as
+bin/devloop-tool-state --build reads it, in the vendor's folder for a
+browser for tests - and not whether the handed-over command installed: the
+person may have installed by another way, and a tool the search path finds
+is one the work can use, "A command handed over is backed, and its result
+is read" in docs/skill-conventions.md. The decision as recorded named
+--installed; the entry of 28 October 2026 says why the search path is read.
+
+Usage
+    devloop-install-issues [DIR]
+    devloop-install-issues --self-test
+
+DIR is the project directory; without it CLAUDE_PROJECT_DIR, and without
+that the current directory, as bin/devloop-install-record takes it. The
+skills run it at every start, before the first thing that reads an open
+issue: the readiness query of build-work step 2, and the question on the
+rule for the classifier of auto mode in build-work and in plan-work.
+
+Which issues. The open issues of the project labelled raised-here and
+needs-human, read with gh issue list, whose body carries the two lines every
+issue devloop writes for a missing install carries, shared/install-issue.md,
+each at the start of a line of its own:
+    install-tool: TOOL
+    install-command: COMMAND
+TOOL as bin/devloop-tool-state names it - a command as it is called, yq, or
+a browser for tests as VENDOR:NAME, playwright:webkit - and COMMAND the
+install command as it was handed over, alone, without the change into the
+project's directory. An issue without both lines is no issue of this kind
+and is passed over; the first line of each name counts where there are
+several; the value is read without the spaces around it and without a
+carriage return. The kind of each issue: it holds a task where an open
+issue is blocked by it, read with gh api
+repos/{owner}/{repo}/issues/N/dependencies/blocking, the relation the
+readiness query reads from the other side, as bin/devloop-auto-mode-question
+reads it; it concerns a check class otherwise. gh is found on PATH through
+shutil.which, as that program finds it, and called in DIR, each call with 60
+seconds.
+
+What is read. For each issue, bin/devloop-tool-state --build TOOL, the
+program beside this one run with bash in DIR, whose first line is the
+tool's: found, not found, or not read. Found: the issue is closed with gh
+issue close N --comment, the comment naming the line:
+    devloop closed this issue at the start of a session, the tool standing on this machine now: <the line>
+Not found, or not read: nothing is done, and the issue stays open with the
+task it holds. A TOOL the program refuses - not a bare word and not
+VENDOR:NAME of one of its vendors, which the program alone judges, so that
+this one carries no second reading of the form - is read as not read, with
+the program's message, and the issue stays: what devloop cannot read it
+does not close.
+
+Output, one group per issue in the order of the numbers, each line one key:
+    issue: N
+    kind: task|class
+    title: <the title>
+    tool: <the line of bin/devloop-tool-state, or not read, because ...>
+    command: COMMAND
+    closed: yes|no
+and, where no open issue carries the two lines, one line:
+    issues: none of the N open issues labelled raised-here and needs-human carries the lines install-tool and install-command
+Exit 0 where every such issue was read, closed or not. Exit 2 where a query
+did not answer - gh issue list, the read of the blocking relation, the tool
+state program, or the closing - with the groups read until then, then
+    issues: not decided
+    command: <the command that did not answer>
+    message: <what came back>
+so that the run says so, as "When a command does not answer" asks, and
+concludes nothing of the issues not read; an issue closed before that stays
+closed, which the comment on it says. Exit 2 with one line on stderr on an
+argument it does not know.
+
+It needs python3, bash, git and gh, and nothing else. The self-test runs
+every outcome against a stand-in for gh that answers from scripted files, as
+the self-test of bin/devloop-auto-mode-question does - the stand-in first on
+the path, a launcher of sh on macOS and Linux and of cmd on Windows, the
+configuration of gh pointing at an empty directory, no token in the
+environment - and against the real bin/devloop-tool-state beside this
+program, with a tool that stands on the self-test's own path and one that
+does not, and a browser in a project without its package, which the program
+cannot read; nothing of it reaches GitHub, and the settings of this machine
+are not touched.
+"""
+
+import json
+import os
+import shutil
+import stat
+import subprocess
+import sys
+import tempfile
+
+HERE = os.path.dirname(os.path.realpath(__file__))
+TOOL_STATE = os.path.join(HERE, "devloop-tool-state")
+LABELS = ["raised-here", "needs-human"]
+SECONDS = 60
+
+
+def usage(msg):
+    print("devloop-install-issues: %s" % msg, file=sys.stderr)
+    return 2
+
+
+def project_dir(given):
+    return given or os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd()
+
+
+def one_line(s):
+    return " ".join(s.replace("\r\n", "\n").replace("\r", "\n").split("\n"))
+
+
+def run(args, d, env=None):
+    """The output of a command, or None with the command shown and the
+    message. The first word is found on PATH through shutil.which, as a
+    shell finds it, and goes through as it is where PATH holds none."""
+    shown = " ".join(args)
+    exe = shutil.which(args[0]) or args[0]
+    try:
+        r = subprocess.run([exe] + args[1:], cwd=d, capture_output=True, text=True,
+                           timeout=SECONDS, env=env)
+    except OSError as e:
+        return None, shown, str(e), None
+    except subprocess.TimeoutExpired:
+        return None, shown, "no answer within %d seconds" % SECONDS, None
+    if r.returncode != 0:
+        return None, shown, (r.stderr.strip() or r.stdout.strip() or
+                             "exit %d with nothing printed" % r.returncode), r
+    return r.stdout, shown, None, r
+
+
+def field(body, name):
+    """The value of the first line of the body that starts with name and a
+    colon, without the spaces around it; None where there is none."""
+    for line in body.replace("\r\n", "\n").replace("\r", "\n").split("\n"):
+        if line.startswith(name + ":"):
+            return line[len(name) + 1:].strip()
+    return None
+
+
+def not_decided(command, message):
+    print("issues: not decided")
+    print("command: %s" % one_line(command))
+    print("message: %s" % one_line(message))
+    return 2
+
+
+def tool_line(tool, d):
+    """The first line of bin/devloop-tool-state --build TOOL, and whether
+    it says found; (line, found, failure) with failure the command and the
+    message where the program did not answer."""
+    env = dict(os.environ)
+    env["CLAUDE_PROJECT_DIR"] = d
+    out, shown, err, r = run(["bash", TOOL_STATE, "--build", tool], d, env)
+    shown = "bin/devloop-tool-state --build %s" % tool
+    if r is None:
+        return None, False, (shown, err)
+    if r.returncode == 2:
+        return "not read, because bin/devloop-tool-state refused the tool: %s" % one_line(r.stderr.strip() or err or ""), False, None
+    if r.returncode not in (0, 1):
+        return None, False, (shown, err or "ended with %d" % r.returncode)
+    first = (r.stdout.split("\n") or [""])[0].strip()
+    if not first.startswith(tool + ": "):
+        return None, False, (shown, "printed no line for %s: %s" % (tool, one_line(r.stdout.strip() or r.stderr.strip())))
+    return first, first.startswith(tool + ": found at "), None
+
+
+def read(d):
+    out, shown, err, _ = run(["gh", "issue", "list", "--state", "open",
+                              "--label", LABELS[0], "--label", LABELS[1],
+                              "--limit", "100", "--json", "number,title,body"], d)
+    if out is None:
+        return not_decided(shown, err)
+    try:
+        issues = json.loads(out)
+        if not isinstance(issues, list):
+            raise ValueError("not a list")
+    except ValueError as e:
+        return not_decided(shown, "printed no JSON list of issues: %s" % e)
+    found = []
+    for issue in sorted((i for i in issues if isinstance(i, dict)),
+                        key=lambda i: i.get("number") if isinstance(i.get("number"), int) else 0):
+        number = issue.get("number")
+        if not isinstance(number, int):
+            continue
+        body = issue.get("body") or ""
+        tool = field(body, "install-tool")
+        command = field(body, "install-command")
+        if not tool or not command:
+            continue
+        found.append((number, issue.get("title") or "", tool, command))
+    if not found:
+        print("issues: none of the %d open issues labelled %s and %s carries the lines "
+              "install-tool and install-command" % (len(issues), LABELS[0], LABELS[1]))
+        return 0
+    for number, title, tool, command in found:
+        out, shown, err, _ = run(["gh", "api", "repos/{owner}/{repo}/issues/%d/dependencies/blocking" % number], d)
+        if out is None:
+            return not_decided(shown, err)
+        try:
+            blocking = json.loads(out)
+            if not isinstance(blocking, list):
+                raise ValueError("not a list")
+        except ValueError as e:
+            return not_decided(shown, "printed no JSON list of issues: %s" % e)
+        kind = "task" if any(isinstance(b, dict) and b.get("state") == "open"
+                             for b in blocking) else "class"
+        line, stands, failure = tool_line(tool, d)
+        if failure is not None:
+            return not_decided(*failure)
+        print("issue: %d" % number)
+        print("kind: %s" % kind)
+        print("title: %s" % one_line(title))
+        print("tool: %s" % line)
+        print("command: %s" % one_line(command))
+        if not stands:
+            print("closed: no")
+            continue
+        comment = ("devloop closed this issue at the start of a session, the tool standing "
+                   "on this machine now: %s" % line)
+        out, shown, err, _ = run(["gh", "issue", "close", str(number), "--comment", comment], d)
+        if out is None:
+            print("closed: no")
+            return not_decided(shown, err)
+        print("closed: yes")
+    return 0
+
+
+# ------------------------------------------------------------- the self-test
+
+# The stand-in for gh: a Python program behind the launcher the system runs
+# off PATH, as in the self-test of bin/devloop-auto-mode-question. It answers
+# the issue list, the blocking relation of one issue and the closing of one
+# issue from scripted files under $DEVLOOP_ISSUES_SCRIPT, logs every call,
+# and marks a call no answer was scripted for.
+STAND_IN = r'''import os
+import re
+import sys
+S = os.environ["DEVLOOP_ISSUES_SCRIPT"]
+args = " ".join(sys.argv[1:])
+with open(os.path.join(S, "log"), "a", encoding="utf-8") as f:
+    f.write(args + "\n")
+m = re.match(r"api repos/\{owner\}/\{repo\}/issues/([0-9]+)/dependencies/blocking$", args)
+c = re.match(r"issue close ([0-9]+) --comment ", args)
+if args.startswith("issue list "):
+    a = os.path.join(S, "issues")
+elif m:
+    a = os.path.join(S, "blocking." + m.group(1))
+elif c:
+    a = os.path.join(S, "close." + c.group(1))
+else:
+    a = os.path.join(S, "other")
+if not os.path.exists(a + ".rc"):
+    sys.stderr.write("stand-in for gh: no answer scripted for: gh %s\n" % args)
+    open(os.path.join(S, "unscripted"), "w").close()
+    sys.exit(1)
+sys.stdout.write(open(a + ".out", encoding="utf-8").read())
+sys.stderr.write(open(a + ".err", encoding="utf-8").read())
+sys.exit(int(open(a + ".rc", encoding="utf-8").read().strip()))
+'''
+LAUNCHER_SH = '#!/bin/sh\nexec "%s" "%s" "$@"\n'
+LAUNCHER_CMD = '@"%s" "%%~dp0gh-stand-in.py" %%*\r\n'
+
+
+def same(a, b):
+    return os.path.normcase(os.path.realpath(a)) == os.path.normcase(os.path.realpath(b))
+
+
+def selftest():
+    me = os.path.realpath(__file__)
+    T = os.path.realpath(tempfile.mkdtemp(prefix="devloop-install-issues."))
+    n = [0]
+    red = [0]
+    try:
+        for sub in ("bin", "gh-config", "config", "s", "p", "home", os.path.join("home", "bin")):
+            os.makedirs(os.path.join(T, sub))
+        stand_in = os.path.join(T, "bin", "gh-stand-in.py")
+        with open(stand_in, "w", encoding="utf-8") as f:
+            f.write(STAND_IN)
+        if os.name == "nt":
+            gh_path = os.path.join(T, "bin", "gh.cmd")
+            with open(gh_path, "w", encoding="utf-8", newline="") as f:
+                f.write(LAUNCHER_CMD % sys.executable)
+        else:
+            gh_path = os.path.join(T, "bin", "gh")
+            with open(gh_path, "w", encoding="utf-8") as f:
+                f.write(LAUNCHER_SH % (sys.executable, stand_in))
+            os.chmod(gh_path, os.stat(gh_path).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        # the tool that stands on the self-test's own path, and no other
+        present = os.path.join(T, "home", "bin", "devloop-selftest-present")
+        open(present, "w").close()
+        os.chmod(present, os.stat(present).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        subprocess.run(["git", "init", "-q", os.path.join(T, "p")], check=True)
+        env = dict(os.environ)
+        for k in ("GH_TOKEN", "GITHUB_TOKEN", "GH_ENTERPRISE_TOKEN",
+                  "GITHUB_ENTERPRISE_TOKEN", "GH_HOST", "CLAUDE_PROJECT_DIR"):
+            env.pop(k, None)
+        env["PATH"] = os.path.join(T, "bin") + os.pathsep + os.path.join(T, "home", "bin") + os.pathsep + env.get("PATH", "")
+        env["GH_CONFIG_DIR"] = os.path.join(T, "gh-config")
+        env["CLAUDE_CONFIG_DIR"] = os.path.join(T, "config")
+        env["DEVLOOP_ISSUES_SCRIPT"] = os.path.join(T, "s")
+        env["HOME"] = os.path.join(T, "home")
+        found = shutil.which("gh", path=env["PATH"])
+        if found is None or not same(found, gh_path):
+            print("FAIL the stand-in for gh is not the gh the path finds: %s" % found)
+            return 1
+        S = os.path.join(T, "s")
+
+        def fresh():
+            for name in os.listdir(S):
+                os.unlink(os.path.join(S, name))
+            open(os.path.join(S, "log"), "w").close()
+
+        def ans(kind, rc, out, err=""):
+            for suffix, content in ((".rc", "%d\n" % rc), (".out", out), (".err", err)):
+                with open(os.path.join(S, kind + suffix), "w", encoding="utf-8") as f:
+                    f.write(content)
+
+        def issues(*items):
+            ans("issues", 0, json.dumps([{"number": num, "title": title, "body": body}
+                                         for num, title, body in items]))
+
+        def blocking(num, *states):
+            ans("blocking.%d" % num, 0, json.dumps(
+                [{"number": 900 + i, "state": s} for i, s in enumerate(states)]))
+
+        def close(num, rc=0, err=""):
+            ans("close.%d" % num, rc, "", err)
+
+        def go(*args):
+            r = subprocess.run([sys.executable, me] + list(args), cwd=os.path.join(T, "p"),
+                               capture_output=True, text=True, env=env)
+            return r.returncode, r.stdout + r.stderr
+
+        def calls():
+            with open(os.path.join(S, "log"), encoding="utf-8") as f:
+                return [l.rstrip("\n") for l in f if l.strip()]
+
+        def expect(name, got, want_rc, *want_lines, absent=()):
+            rc, out = got
+            n[0] += 1
+            lines = out.split("\n")
+            ok = True
+            if rc != want_rc:
+                print("FAIL %s: exit %d, expected %d" % (name, rc, want_rc))
+                ok = False
+            for w in want_lines:
+                if ok and w not in lines:
+                    print("FAIL %s: no line %r" % (name, w))
+                    ok = False
+            for w in absent:
+                if ok and w in lines:
+                    print("FAIL %s: the line %r stands there and should not" % (name, w))
+                    ok = False
+            if ok and os.path.exists(os.path.join(S, "unscripted")):
+                print("FAIL %s: the stand-in was called for something no case scripted" % name)
+                ok = False
+            if not ok:
+                print("    " + "\n    ".join(lines))
+                red[0] += 1
+                return False
+            print("ok   %s" % name)
+            return True
+
+        def called(name, *want):
+            n[0] += 1
+            got = calls()
+            if got != list(want):
+                print("FAIL %s: calls %r, expected %r" % (name, got, list(want)))
+                red[0] += 1
+                return False
+            print("ok   %s" % name)
+            return True
+
+        body_present = "The tool is missing.\n\ninstall-tool: devloop-selftest-present\ninstall-command: brew install devloop-selftest-present\n"
+        body_absent = "install-tool: devloop-selftest-absent\r\ninstall-command:   brew install devloop-selftest-absent  \r\n"
+        comment = "devloop closed this issue at the start of a session, the tool standing on this machine now: "
+        present_line = "devloop-selftest-present: found at ~/bin/devloop-selftest-present (on %s)" % __import__("datetime").date.today().isoformat()
+
+        # the arguments
+        fresh()
+        expect("an option it does not know: 2, one line on stderr", go("--x"), 2,
+               "devloop-install-issues: unknown option --x; the one option is --self-test")
+        fresh()
+        expect("two directories: 2", go("a", "b"), 2,
+               "devloop-install-issues: expected at most one directory argument, the project directory, got 2")
+
+        # the listing
+        fresh(); ans("issues", 1, "", "gh: Not logged in")
+        expect("gh issue list does not answer: not decided, 2", go(), 2,
+               "issues: not decided",
+               "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
+               "message: gh: Not logged in")
+        fresh(); ans("issues", 0, "not json")
+        expect("gh issue list prints no JSON list: not decided, 2", go(), 2, "issues: not decided")
+        fresh(); issues()
+        expect("no open issue: none carries the lines, 0", go(), 0,
+               "issues: none of the 0 open issues labelled raised-here and needs-human carries the lines install-tool and install-command")
+        fresh(); issues((3, "A finding", "no lines here"), (4, "Install yq", "install-tool: yq\nno command line"))
+        expect("issues without both lines: passed over, 0", go(), 0,
+               "issues: none of the 2 open issues labelled raised-here and needs-human carries the lines install-tool and install-command")
+        called("issues without both lines: the blocking relation of none read",
+               "issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body")
+
+        # the tool standing: closed with the comment
+        fresh(); issues((7, "Install devloop-selftest-present for task #5", body_present)); blocking(7, "open"); close(7)
+        expect("the tool stands on the search path: closed, the task's issue, 0", go(), 0,
+               "issue: 7", "kind: task", "title: Install devloop-selftest-present for task #5",
+               "tool: " + present_line, "command: brew install devloop-selftest-present", "closed: yes")
+        called("the tool stands: the listing, the blocking relation, the closing with the comment naming the line",
+               "issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
+               "api repos/{owner}/{repo}/issues/7/dependencies/blocking",
+               "issue close 7 --comment " + comment + present_line)
+        # the tool not standing: nothing done
+        fresh(); issues((8, "Install devloop-selftest-absent", body_absent)); blocking(8)
+        expect("the tool does not stand: not closed, the class's issue, the values trimmed, 0", go(), 0,
+               "issue: 8", "kind: class",
+               "tool: devloop-selftest-absent: not found on the search path (on %s)" % present_line[-11:-1],
+               "command: brew install devloop-selftest-absent", "closed: no")
+        called("the tool does not stand: no closing called",
+               "issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
+               "api repos/{owner}/{repo}/issues/8/dependencies/blocking")
+        # a browser the program cannot read: not closed
+        fresh(); issues((9, "Download WebKit", "install-tool: playwright:webkit\ninstall-command: npx playwright install webkit\n")); blocking(9, "closed", "open")
+        expect("a browser not read: not closed, the cause, 0", go(), 0,
+               "issue: 9", "kind: task",
+               "tool: playwright:webkit: not read, because the project has no Playwright package to say which version of webkit it needs, no node_modules/.bin/playwright (on %s)" % present_line[-11:-1],
+               "closed: no")
+        # a tool in no form the program reads
+        fresh(); issues((10, "Install", "install-tool: a b\ninstall-command: x\n")); blocking(10)
+        expect("a tool in no form the program reads: not read with its message, not closed, 0", go(), 0,
+               "issue: 10", "tool: not read, because bin/devloop-tool-state refused the tool: devloop-tool-state: a TOOL is a bare word as it is called - letters, digits, dot, hyphen, plus and underscore - or VENDOR:NAME for a browser, got 'a b'",
+               "closed: no")
+        fresh(); issues((11, "Install", "install-tool: chrome:webkit\ninstall-command: x\n")); blocking(11)
+        expect("a browser of a vendor the program refuses: not read with its message, not closed, 0", go(), 0,
+               "issue: 11", "tool: not read, because bin/devloop-tool-state refused the tool: devloop-tool-state: a browser is named VENDOR:NAME with playwright, puppeteer or cypress as the vendor, and cypress:binary for Cypress, got 'chrome:webkit'",
+               "closed: no")
+        # several, in the order of the numbers, one closed and one not
+        fresh(); issues((20, "Second", body_absent), (12, "First", body_present)); blocking(12, "open"); blocking(20, "open"); close(12)
+        got = go()
+        expect("several issues: in the order of the numbers, one closed, one not, 0", got, 0,
+               "issue: 12", "closed: yes", "issue: 20", "closed: no")
+        n[0] += 1
+        out_lines = got[1].split("\n")
+        if out_lines.index("issue: 12") < out_lines.index("issue: 20"):
+            print("ok   several issues: the lower number first")
+        else:
+            print("FAIL several issues: the lower number first"); red[0] += 1
+        # queries that do not answer
+        fresh(); issues((13, "T", body_present)); ans("blocking.13", 1, "", "gh: HTTP 404")
+        expect("the blocking relation does not answer: not decided, 2", go(), 2,
+               "issues: not decided", "command: gh api repos/{owner}/{repo}/issues/13/dependencies/blocking", "message: gh: HTTP 404")
+        fresh(); issues((14, "T", body_present)); blocking(14, "open"); close(14, 1, "gh: HTTP 403")
+        expect("the closing does not answer: the group with closed: no, then not decided, 2", go(), 2,
+               "issue: 14", "closed: no", "issues: not decided", "command: gh issue close 14 --comment " + comment + present_line, "message: gh: HTTP 403")
+        fresh(); issues((15, "First", body_present), (16, "Second", body_present)); blocking(15, "open"); close(15); ans("blocking.16", 1, "", "gh: HTTP 500")
+        expect("a query fails after an issue was closed: that issue's group stands, then not decided, 2", go(), 2,
+               "issue: 15", "closed: yes", "issues: not decided", "message: gh: HTTP 500", absent=("issue: 16",))
+    finally:
+        shutil.rmtree(T, ignore_errors=True)
+    if red[0]:
+        print("SELF-TEST FAILED: %d of %d cases red" % (red[0], n[0]))
+        return 1
+    print("SELF-TEST PASSED: %d cases" % n[0])
+    return 0
+
+
+def main(argv):
+    if argv == ["--self-test"]:
+        return selftest()
+    given = None
+    dirs = 0
+    for a in argv:
+        if a.startswith("-"):
+            return usage("unknown option %s; the one option is --self-test" % a)
+        dirs += 1
+        given = a
+    if dirs > 1:
+        return usage("expected at most one directory argument, the project directory, got %d" % dirs)
+    return read(project_dir(given))
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
