@@ -36,26 +36,62 @@
 # Exit 2 on an option it does not know or on more than one directory. The one
 # directory argument is the project directory; without it, CLAUDE_PROJECT_DIR,
 # and without that the current directory.
+#
+# With --line, since 28 October 2026, the one line the two hooks give the run
+# as context - hooks/session-start.sh at the start of every session and
+# hooks/subagent-start-install.sh at the start of every subagent - formed off
+# this program's own reading above, so that the line has one source and
+# neither hook carries a copy of it; the roadmap entry of 28 October 2026 on
+# the hook on SubagentStart. One line, exit 0 in both forms:
+#   [InstallRecord] tools: yes|no | places: <the places, or none> | routes: <the routes, or none> | answered: <the date> | read off origin/<default> as last fetched, not off the working tree
+#   [InstallRecord] none: <the cause> | every install outside the repository is blocked and handed to the person until a record has landed on the default branch
+# Under a no the places and the routes read none, whatever the record
+# carries, since 20 October 2026: they do nothing under a no, the guard
+# blocking on install-tools: no before it reads a place; a record written
+# under a no since that day carries none (shared/install-record.md), and an
+# older one that carries them is not amended. --line beside --dependency is
+# refused with 2: the dependency record has no line of its own.
 set -u
+SELF=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
 HEADING='## Install permission'
 KEY='install-tools'
 ANSWERED_KEY='install-answered'
 DIRS=0
 PROJECT_DIR=""
 BAD=""
+LINE=no
 for a in "$@"; do
   case "$a" in
     --dependency) HEADING='## Dependency permission'; KEY='dependency-tools'; ANSWERED_KEY='dependency-answered' ;;
-    -*) BAD="unknown option $a; the one option is --dependency" ;;
+    --line) LINE=yes ;;
+    -*) BAD="unknown option $a; the options are --dependency and --line" ;;
     *) DIRS=$((DIRS + 1)); PROJECT_DIR="$a" ;;
   esac
 done
 [ "$DIRS" -le 1 ] || BAD="expected at most one directory argument, the project directory, got $DIRS"
+[ "$LINE" = no ] || [ "$KEY" = install-tools ] || BAD="--line forms the line of the install record alone and does not go with --dependency"
 if [ -n "$BAD" ]; then
   echo "devloop-install-record: $BAD" >&2
   exit 2
 fi
 PROJECT_DIR="${PROJECT_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}}"
+
+# The line of the hooks, formed off this program's own reading: the record
+# read as above, then one line as the head says. Until 28 October 2026 the
+# session-start hook formed it itself, lines 75 to 84 of that hook at f183050.
+if [ "$LINE" = yes ]; then
+  RECORD=$("$SELF" "$PROJECT_DIR" 2>&1)
+  if [ $? -eq 0 ]; then
+    TOOLS=$(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p' | head -1)
+    PLACES=$(printf '%s\n' "$RECORD" | sed -n 's/^place: //p' | tr '\n' ' ' | sed 's/ $//')
+    ROUTES=$(printf '%s\n' "$RECORD" | sed -n 's/^route: //p' | tr '\n' ' ' | sed 's/ $//')
+    if [ "$TOOLS" = "no" ]; then PLACES=""; ROUTES=""; fi
+    echo "[InstallRecord] tools: $TOOLS | places: ${PLACES:-none} | routes: ${ROUTES:-none} | answered: $(printf '%s\n' "$RECORD" | sed -n 's/^answered: //p') | read off $(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p') as last fetched, not off the working tree"
+  else
+    echo "[InstallRecord] none: $(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1) | every install outside the repository is blocked and handed to the person until a record has landed on the default branch"
+  fi
+  exit 0
+fi
 FILE='docs/agents/environment.md'
 
 cd "$PROJECT_DIR" 2>/dev/null || { echo "cause: the project directory $PROJECT_DIR cannot be entered"; exit 1; }

@@ -105,11 +105,20 @@
 # documents them. The installer is the first word of COMMAND after any
 # VAR=value; a browser TOOL is read as above, the folder being the
 # vendor's, whatever COMMAND says. The tool stands where TOOL, or on
-# Windows TOOL.exe, TOOL.cmd or TOOL.bat, exists in the folder. One line,
-# and no record line:
+# Windows TOOL.exe, TOOL.cmd or TOOL.bat, exists in the folder. The folder
+# line first, and no record line:
 #   TOOL: found at FOLDER/TOOL, the folder INSTALLER writes to, read off QUERY (on YYYY-MM-DD)
 #   TOOL: not found at FOLDER/TOOL, the folder INSTALLER writes to, read off QUERY; a copy elsewhere on the search path does not count (on YYYY-MM-DD)
 #   TOOL: not read, because CAUSE (on YYYY-MM-DD)
+# then, for a command and since 28 October 2026, a second line, the
+# search-path line as --build prints it, found at PATH or not found on the
+# search path: the build and the checks call a tool through the search path,
+# and go install puts a tool into ~/go/bin, which often stands on no search
+# path, so that a command can have installed and the build still not find
+# the tool; the run says so where the first line says found and the second
+# not found, build-work step 3 point 7, the roadmap entry of 28 October 2026
+# on the hook on SubagentStart. For a browser the one line stays: the
+# vendor's folder is where the test tool looks.
 #
 # Every query of a vendor or an installer runs under bin/devloop-bounded
 # with sixty seconds, so that the program ends inside the 120 seconds of a
@@ -117,8 +126,9 @@
 # the query and its message, never found; one not on the path answers "is
 # not on PATH". The program fetches nothing and asks GitHub nothing; the
 # default branch it does not resolve itself.
-# Exit 0: every TOOL found. 1: one or more not found or not read; the
-# record line never changes the exit. 2 with one line on stderr: no form
+# Exit 0: every TOOL found, under --installed in the folder and on the
+# search path both. 1: one or more not found or not read; the record line
+# never changes the exit. 2 with one line on stderr: no form
 # first or one it does not know, no TOOL, a TOOL that is neither a bare
 # word nor VENDOR:NAME of one of the three vendors, --installed without
 # exactly a COMMAND and a TOOL, an empty COMMAND, or a project directory
@@ -347,11 +357,17 @@ FFmpeg (playwright ffmpeg v1013)
 
   # --installed: the folder the installer writes to, read off the installer
   fresh; ans brew d 0 "$T/home/hb"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed 'brew install devloop-selftest-present' devloop-selftest-present
-  lines "installed by brew: found in the folder of brew --prefix, no record line, 0" 1
-  calls "installed by brew: found in the folder of brew --prefix, no record line, 0" "brew --prefix"
-  expect "installed by brew: found in the folder of brew --prefix, no record line, 0" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)"
+  lines "installed by brew: found in the folder of brew --prefix, then the search-path line, no record line, 0" 2
+  calls "installed by brew: found in the folder of brew --prefix, then the search-path line, no record line, 0" "brew --prefix"
+  expect "installed by brew: found in the folder of brew --prefix, then the search-path line, no record line, 0" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)" "$PRESENT"
+  [ "$(sed -n 2p "$T/stdout")" = "$PRESENT" ] || fail "installed by brew: found in the folder of brew --prefix, then the search-path line, no record line, 0" "the search-path line is not the second"
   fresh; ans brew d 0 "$T/home/hb"; folder "$T/home/hb/bin"; run --installed 'brew install devloop-selftest-present' devloop-selftest-present
-  expect "installed by brew: not in the folder of brew, though on the search path: not found, 1" 1 "devloop-selftest-present: not found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix; a copy elsewhere on the search path does not count (on $DAY)"
+  lines "installed by brew: not in the folder of brew, though on the search path: not found, the search-path line found, 1" 2
+  expect "installed by brew: not in the folder of brew, though on the search path: not found, the search-path line found, 1" 1 "devloop-selftest-present: not found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix; a copy elsewhere on the search path does not count (on $DAY)" "$PRESENT"
+  # installed and not on the search path: the folder line found, the second line not found, exit 1
+  fresh; ans go 1 0 "$T/home/go/bin"; folder "$T/home/go/bin" devloop-selftest-absent; run --installed 'go install example.invalid/x/cmd/devloop-selftest-absent@latest' devloop-selftest-absent
+  lines "installed by go into a folder the search path does not reach: found in the folder, not found on the search path, 1" 2
+  expect "installed by go into a folder the search path does not reach: found in the folder, not found on the search path, 1" 1 "devloop-selftest-absent: found at ~/go/bin/devloop-selftest-absent, the folder go writes to, read off go env GOBIN (on $DAY)" "$ABSENT"
   fresh; ans brew d 1 '' 'Error: Homebrew is not installed'; run --installed 'brew install yq' yq
   expect "brew --prefix does not answer: not read" 1 "yq: not read, because brew --prefix did not answer: Error: Homebrew is not installed (on $DAY)"
   fresh; ans brew d 0 ''; run --installed 'brew install yq' yq
@@ -400,8 +416,8 @@ FFmpeg (playwright ffmpeg v1013)
   fresh; run --installed 'curl -fsSL https://example.invalid/install.sh | sh' devloop-selftest-present
   expect "an installer this program does not read: not read" 1 "devloop-selftest-present: not read, because this program reads the folder of brew, npm, pnpm, yarn, bun, go, pipx, uv, gem and cargo off the installer, and 'curl' is none of them (on $DAY)"
   fresh; pw; ans project-playwright d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --installed 'npx playwright install webkit' playwright:webkit
-  lines "--installed with a browser: read as the browser, whatever the command, no record line" 1
-  expect "--installed with a browser: read as the browser, whatever the command, no record line" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
+  lines "--installed with a browser: read as the browser, whatever the command, no record line, one line" 1
+  expect "--installed with a browser: read as the browser, whatever the command, no record line, one line" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
 
   [ "$RED" -ne 0 ] || { echo "SELF-TEST PASSED: $n cases"; exit 0; }
   echo "SELF-TEST FAILED: $f of $n cases red"
@@ -551,6 +567,8 @@ installed_line() {
   [ -n "$p" ] && { say "$tool: found at $(tilde "$p"), the folder $installer writes to, read off $q"; return; }
   say "$tool: not found at $(tilde "$dir/$tool"), the folder $installer writes to, read off $q; a copy elsewhere on the search path does not count"; bad
 }
+# installed_lines COMMAND TOOL: the folder line, then the search-path line, since 28 October 2026
+installed_lines() { installed_line "$1" "$2"; tool_line "$2"; }
 # record_line: the line on the install record under --build, read through bin/devloop-install-record
 record_line() {
   local rec rc tools ref date cause
@@ -567,7 +585,7 @@ record_line() {
 }
 
 case $FORM in
-  --installed) case $2 in *:*) read_tool "$2" ;; *) installed_line "$1" "$2" ;; esac ;;
+  --installed) case $2 in *:*) read_tool "$2" ;; *) installed_lines "$1" "$2" ;; esac ;;
   --planning) for t in "$@"; do read_tool "$t"; done; echo "record: not read here; whether the run installs a tool that is missing at the build or the person gets the command for it is decided by the install record as it stands at the build, build-work step 3 point 7, and the planning settles nothing of it" ;;
   --build) for t in "$@"; do read_tool "$t"; done; record_line ;;
 esac

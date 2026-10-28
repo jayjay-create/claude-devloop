@@ -117,12 +117,17 @@ that called. Everything else below applies unchanged.
   carries and not the only cause; that this check is never switched off by
   the run on its own, which is why the run writes an issue with the reason
   and goes on with the other tasks; that the issue carries the command with
-  which they install it themselves; and that running it and closing the
-  issue frees the task again. Until 9 October 2026 the run that called
-  ended here and deleted the mark; the deletion list in `build-work` says
-  so no longer. The wording approved on 8 October 2026 stands in the
-  roadmap entry of 9 October 2026 as text 1; this skill says what is said,
-  not the words.
+  which they install it themselves; and that where they run it, devloop
+  notices it at the next start, closes the issue, sets the check up and goes
+  on with the task, since 28 October 2026 — the issue carrying the two lines
+  of the form below, which that start reads; until then that running it and
+  closing the issue frees the task again. Until 9 October 2026 the run that
+  called ended here and deleted the mark; the deletion list in `build-work`
+  says so no longer. The wording approved on 8 October 2026 stands in the
+  roadmap entry of 9 October 2026 as text 1, its two last sentences since 28
+  October 2026 in the wording of that day, the roadmap entry of 28 October
+  2026 on the hook on SubagentStart; this skill says what is said, not the
+  words.
 - **The command is not an install and the guard matched on text.** Then nothing
   is blocking the class, and `skipped` would be an entry that is not true: a
   class standing as skipped while nothing hinders it, which the next reader takes
@@ -135,6 +140,8 @@ that called. Everything else below applies unchanged.
 
 Neither case is a reason to write the class differently from what it is. What
 tells them apart is what the command would have done, not what the guard matched.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issue`
 
 **The guard on the table is neither of these, and this skill is the one its
 message names.** Two hooks hold the `Status` column to its four forms: one
@@ -1155,8 +1162,11 @@ answers. The form of the setup, as the question above, alone in its call:
   installations only in projects set up with devloop.
 - **In the no, label and line**: auto mode can then refuse an installation;
   without them the run then writes an issue with the reason and goes on with
-  the next task; and at the next start with `--auto` they are asked once
-  more, since 22 October 2026.
+  the next task; and at the next start with `/devloop:start-work --auto`,
+  the input named as they type it in Claude Code and never the flag alone,
+  they are asked once more, since 22 October 2026, the input whole since 28
+  October 2026, the wording of that day in the roadmap entry of 28 October
+  2026 on the hook on SubagentStart.
 
 **The form for a start with `--auto`, since 22 October 2026**, put where
 the program ends with 0 — here, after the yes to the mode, and alone where
@@ -1181,9 +1191,15 @@ form:
   up again where it concerns a check class, both where issues of both kinds
   are open; and the rule allows installations only in projects set up with
   devloop. With several of a kind, the issues, the tasks, the checks.
-- **In the no, label and line**: the issue stays open until they have made
-  the install themselves and closed the issue, and until then they are
-  asked again at every start with `--auto`; with several, the issues.
+- **In the no, label and line**: the issue stays open; where they run the
+  command themselves, devloop notices it at the next start, closes the issue
+  and takes the task up again, or sets the check up again, or both, by the
+  kinds open as the yes above has them; and until then they are asked again
+  at every start with `/devloop:start-work --auto`, the input named as they
+  type it; with several, the issues, the tasks, the checks. Since 28 October
+  2026, the wording of that day in the roadmap entry of 28 October 2026 on
+  the hook on SubagentStart, in place of the line of 22 October 2026, which
+  had them close the issue themselves.
 
 The wording approved on 22 October 2026 stands in the roadmap entry of that
 date on the question after a refusal; this skill says what is said, not the

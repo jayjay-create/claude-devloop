@@ -527,7 +527,8 @@ stays at the build. The other six can be read now: no class in `checks.md` is
 account — both queries, since each is blind to one kind of protection, and the
 binding read per kind, as that list spells out; Claude Code runs in auto
 mode, read by running `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode`
-once with the shell and reading the mode the hook on that call puts beside
+in the one call with `bin/devloop-start-conditions` below, since 28 October
+2026, and reading the mode the hook on that call puts beside
 its result, as condition 4 of that list says; the repository can merge without a person,
 auto-merge on (`gh api repos/OWNER/REPO -q .allow_auto_merge`) and a gate for it
 to wait on; and the two records say yes, on installing and on the dependency
@@ -535,16 +536,21 @@ file. For the gate and auto-merge, read the state; do not read
 `environment.md`'s account of it — the repository says whether it still
 holds. The two records are the exception: there the file on the main branch
 is the state itself, and it is read as the paragraph above reads it. Read
-the five beside the mode by one call, since 25 October 2026: run
+the five beside the mode by one call, since 25 October 2026, and the mode
+in the same call since 28 October 2026: run
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions` once, with the shell
-and without an argument, since no task exists yet. It reads them as that
+and without an argument, since no task exists yet, and
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` behind it in that
+call, so that the build's call before its first task is the same one with
+the range, decision (4) of the roadmap entry of 27 October 2026 on the tool
+state read by one program. It reads them as that
 list describes them, off the main branch as last fetched and off GitHub,
 fetching nothing, and prints one line for each: that it holds; that it does
 not hold, and the cause; or that it is not established, the query that did
 not answer and its message, which is a condition that does not hold, said
 as not established and never read as a yes or a no. For 3 it prints that
-it is read only with the range, and for 4 that the hook reads it; read 4
-as said above. Read none of the five yourself beside that call. Decision
+it is read only with the range, and for 4 that the hook reads it, which it
+does on this call, as said above. Read none of the five yourself beside that call. Decision
 (5) of the roadmap entry of 24 October 2026 on install lines written by
 one program. Where the mode is not set up, the paragraph above has said
 what is said, and
@@ -571,10 +577,12 @@ starts, for two reasons written there: on the route that starts from a finished
 spec the build is reached without this question, and the state read here can
 change between now and then.
 
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issues-read`
+
 **Before the mark, on either of the first two answers or on `--auto`, the
 question on the rule for the classifier of auto mode, where the mode is set
 up and `setup-checks` was not called for its step 8 at this start**, since
-22 October 2026: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
+22 October 2026, and since 28 October 2026 after the read above: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
 once, with the shell, and where it ends with 0 — the rule does not stand in
 their settings, or they cannot be read for it, and an open issue of this
 project carries an install auto mode refused in a run without them — call

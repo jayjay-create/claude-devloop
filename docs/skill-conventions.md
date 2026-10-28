@@ -770,9 +770,18 @@ the vendor to name the version, or the folder for this system is not
 known, the line says not read, and a run says that it could not be read
 and why, in the person's language, and hands nothing over on a thing
 nobody read. The planning
-calls it before it says anything of a tool, `plan-work` Stage 1; the call at
-the build and the read at the next start for an issue that blocks a task on
-a missing install come with the part on the build.
+calls it before it says anything of a tool, `plan-work` Stage 1; the build
+calls it with `--build` before the build subagent starts, `build-work` step
+3, and after the person's word on a handed-over command with `--installed`,
+which since 28 October 2026 prints the folder line and then the search-path
+line, since a command can have installed into a folder the search path does
+not reach; and at every start `bin/devloop-install-issues` reads, for every
+open issue that holds a task or concerns a check class on a missing install,
+whether the tool stands on this machine now, with `--build`, and closes the
+issue itself where it does — the search path and not the installer's folder,
+since the person may have installed by another way, and the first question
+is the one that frees the task; since 28 October 2026, the roadmap entry of
+that date on the hook on SubagentStart.
 
 ## Describe what must be said; never dictate wording
 
@@ -3378,9 +3387,19 @@ throwaway repository too, keeps the rule unchanged. Decided on 23 October
 defect", and until then each order forbade it on its own.
 
 **A hook cannot force wording.** `SessionStart` stdout arrives as context. There
-is an `initialUserMessage` field for seeding a turn, and an open Anthropic bug
-(#16538) where `hookSpecificOutput.additionalContext` from a *plugin* hook does
-not reach Claude while the same hook in user settings does. Plain stdout works.
+is an `initialUserMessage` field for seeding a turn, and an Anthropic bug
+(#16538), closed unfixed on 11 May 2026, where `hookSpecificOutput.additionalContext`
+from a *plugin* hook does not reach Claude while the same hook in user settings
+does. Plain stdout works. Measured on 28 October 2026 under Claude Code
+2.1.312 on a Mac, for `SubagentStart`, which the bug's thread does not name:
+`additionalContext` of `hooks/subagent-start-install.sh`, loaded as a plugin
+with `--plugin-dir`, reached the subagent, which quoted both of its lines
+whole, the install record's with a place nobody could guess and the rule's,
+and the same session without the registration got none of it; the roadmap
+entry of that date on the hook on SubagentStart has the bench. So since that
+day every subagent gets the install record and the rule on installing as
+context at its start, from that hook, beside the fifth rule of `build-work`
+step 3, which hands point 7 in the prompt.
 
 **A hook cannot see consent.** It gets the command and the branch, never the
 conversation, so "the user just said yes" and "the agent decided this itself"

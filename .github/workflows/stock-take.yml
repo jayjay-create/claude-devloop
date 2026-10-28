@@ -235,6 +235,8 @@ jobs:
   # harmless - the
   # command ls for the tool Bash, a Write and an Edit of the project's README
   # on a branch cut from main, a permission request for ls, a session start,
+  # since 28 October 2026 the start of a subagent of the type Explore in the
+  # form the vendor's hooks reference shows,
   # a stop, since 15 October 2026 the result of ls and a failed ls for
   # the handler under PostToolUse and PostToolUseFailure without a matcher,
   # which reads nothing where the input names no transcript, and since 21
@@ -410,6 +412,7 @@ jobs:
               ("PermissionRequest", ""): dict(base, hook_event_name="PermissionRequest", tool_name="Bash", tool_input={"command": "ls"}),
               ("PermissionDenied", "Bash"): [dict(base, hook_event_name="PermissionDenied", permission_mode="auto", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, reason="[Test]"), denied],
               ("SessionStart", ""): dict(base, hook_event_name="SessionStart", source="startup"),
+              ("SubagentStart", ""): dict(base, hook_event_name="SubagentStart", agent_id="agent-hooks1", agent_type="Explore"),
               ("PostToolUse", "Edit|Write|MultiEdit"): dict(base, hook_event_name="PostToolUse", tool_name="Edit", tool_input={"file_path": p + "/README.md", "old_string": "a", "new_string": "b"}, tool_response={"filePath": p + "/README.md"}),
               ("PostToolUse", ""): dict(base, hook_event_name="PostToolUse", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, tool_response={"stdout": "", "stderr": "", "interrupted": False}),
               ("PostToolUseFailure", ""): dict(base, hook_event_name="PostToolUseFailure", tool_name="Bash", tool_input={"command": "ls", "description": "list"}, error="Exit code 1", is_interrupt=False),
