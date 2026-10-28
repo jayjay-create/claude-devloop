@@ -37,7 +37,7 @@ terminal:
 1. Install `gh` as [cli.github.com](https://cli.github.com) describes for your system.
 2. Sign it in: `gh auth login --web --git-protocol https`, then follow the instructions in the terminal and in the browser.
 3. Set your name: `git config --global user.name "Your Name"`
-4. Set your email address: `git config --global user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"` — this is the address GitHub gives you so that your own stays private. To use your own instead, put it in place of everything inside the outer quotes. If your GitHub account was created before 18 July 2017, GitHub gives it this address only once you switch its email privacy off and on again; see [GitHub's email addresses reference](https://docs.github.com/en/account-and-profile/reference/email-addresses-reference).
+4. Set your email address: `git config --global user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"` — this is the address GitHub gives you so that your own stays private. To use your own instead, put it in place of everything inside the outer quotes. Older GitHub accounts can have this address without the number at the front; [GitHub's email addresses reference](https://docs.github.com/en/account-and-profile/reference/email-addresses-reference) says which accounts, and how to get the one with the number.
 
 Every commit devloop makes carries that name and address, and the push puts
 them on GitHub, where they stay. Where none is set, git takes them from your

@@ -41826,11 +41826,24 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Built in `hooks/pre-tool-use-identity-guard.sh` line 192, the head
   naming the approval lines 45 to 50; printed by the hook in a throwaway
   project this day and held against the approved sentence word for word,
-  equal. `README.md`, step 4 in line 40, ends since this day on the
-  sentence approved in these words: "If your GitHub account was created
-  before 18 July 2017, GitHub gives it this address only once you switch
-  its email privacy off and on again; see [GitHub's email addresses
-  reference](https://docs.github.com/en/account-and-profile/reference/email-addresses-reference)."
+  equal. `README.md`, step 4 in line 40, ends since this day on a
+  sentence the person approved in these words, after the push of the
+  commit that carried the first: "Older GitHub accounts can have this
+  address without the number at the front; [GitHub's email addresses
+  reference](https://docs.github.com/en/account-and-profile/reference/email-addresses-reference)
+  says which accounts, and how to get the one with the number." The
+  first, approved the same day and built in the commit before, read "If
+  your GitHub account was created before 18 July 2017, GitHub gives it
+  this address only once you switch its email privacy off and on again;
+  see [GitHub's email addresses reference](https://docs.github.com/en/account-and-profile/reference/email-addresses-reference)."
+  and went red at the step "README.md carries no date" of the job
+  `stock-take` on pull request #211, which printed `18 July 2017`: the
+  README carries no date, the person's decision of 20 October 2026,
+  `docs/skill-conventions.md` under that head, and the step holds it; so
+  the sentence names no day, and which accounts have the older form and
+  how they get the one with the number is said by GitHub's page and not
+  described after it in the README, by the addition (a) of the rules
+  above. The sentence of text 7 keeps its day: the rule is the README's.
   (e) A correction: `docs/skill-conventions.md` line 140 and
   `shared/skill-name.md` lines 53 to 54 at `392bfd0` named "an install
   through a package manager" as the example of a command that asks
