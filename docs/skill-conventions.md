@@ -741,6 +741,39 @@ there by something else, which is exactly why the broken line above looked like 
 success on the user's own machine. Reading the result is not distrust of the
 user — they answered the question they were asked, and it was the wrong question.
 
+**Whether a tool stands on this machine is read by one program,
+`bin/devloop-tool-state`**, since 27 October 2026, decision (3) of the
+roadmap entry of that date on the program: two plannings of 26 October 2026
+said nothing of a tool that was missing, and one wrote that a tool was
+installed without having read the machine. It prints one line per tool and
+one on the install record, and a run says of a tool only what it printed.
+Two questions, two places, and the program keeps them apart. Whether a tool
+stands there for use is read on the search path, `command -v`: the run and
+the project's checks call a tool by its name through the path, so a tool
+the path finds is one the work can use, wherever it came from, and one it
+does not find is missing for the work whatever a folder holds. Whether a
+command installed is read in the folder the installer writes to, off the
+installer itself — `brew --prefix`, `npm prefix -g`, `go env` — as the
+paragraph above says and as the program's form `--installed` does, since on
+the search path an older copy from elsewhere answers the first question and
+looks like an answer to the second. A browser for tests is read in the
+vendor's folder, in the version the project's test tool needs, which
+Playwright's dry run names, and only a package in the project's own
+`node_modules` says which, since 28 October 2026: measured that day on
+Linux, `npx --no-install` answered for a project without Playwright from
+a global package on the search path, and node resolves a module from the
+directories above the project, `NODE_PATH` and its global folders as
+well, so the program runs the project's `node_modules/.bin/playwright`
+and asks node only where the project holds Puppeteer, refusing a module
+resolved outside its `node_modules`; where the project has no package of
+the vendor to name the version, or the folder for this system is not
+known, the line says not read, and a run says that it could not be read
+and why, in the person's language, and hands nothing over on a thing
+nobody read. The planning
+calls it before it says anything of a tool, `plan-work` Stage 1; the call at
+the build and the read at the next start for an issue that blocks a task on
+a missing install come with the part on the build.
+
 ## Describe what must be said; never dictate wording
 
 A model performs a task; it does not transcribe. Asking for a fixed paragraph

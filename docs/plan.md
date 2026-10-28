@@ -512,6 +512,21 @@ matters by the measure of decision (9) if the person so decides, one on the
 Stop hook while the subagent builds without a milestone yet, and met twelve
 defects of the entry on the six runs again; whether the milestone is reached
 that entry does not decide, the person does.
+On 27 October 2026 the person decided on the three runs, the roadmap entry
+of that date on the tool state read by one program: the milestone is not
+reached; what holds it open since then are new defects 4, 6 and 7 of the
+entry on the three closing runs and the rest of defect 5 of the entry on
+the six runs, rebuilt in three parts before a run with the person under a
+no — part 0, the three defects on visible text, built the same day; part
+1, the program `bin/devloop-tool-state`, the planning saying of a tool
+only what it read and the clause that the line on the mode not set up
+reaches the person, built in that entry; part 2, `build-work` with a hook
+on `SubagentStart` that hands every subagent the install record and the
+rule, the handover before anything is built against a stand-in, the
+closing of a blocking issue at the next start once the tool stands, and
+condition 4 read in one call with the start conditions; the small matters
+3, 9 and 10 wait, and the milestones of new defects 8 and 11 the person
+decides after milestone 3.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
