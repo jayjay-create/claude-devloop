@@ -20,6 +20,15 @@ a browser, whichever way it got there — and closes the issue itself where it
 does, with a comment naming the line it read; a task the issue held is free
 again, and a check class it concerned goes to `setup-checks`. So the issue
 tells the person what is missing and the command, and does not tell them to
-close it: devloop does, and what devloop cannot read it does not close.
+close it: devloop does, and what devloop cannot read it does not close. It
+tells them where they type the command, by "Where the person types a
+command devloop hands them" in `docs/skill-conventions.md`, since 28 October
+2026 — in Claude Code with `!` in front where it asks nothing, else in a
+second terminal window that is not the one Claude Code runs in, where it
+asks something, with what it asks named — and that they type
+`/devloop:start-work` after it; the line `install-command:` stays the bare
+command, since the program
+reads it. Where the command installs into a folder the search path does not
+reach, the next start says so with the steps, the text on that read.
 Until that day the issue stayed until they had run the command and closed
 it themselves.

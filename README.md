@@ -29,13 +29,20 @@ Three properties hold everywhere:
     /plugin marketplace add jayjay-create/claude-devloop
     /plugin install devloop@jayjay-create
 
-You need git with your name and email address set, a GitHub account, and `gh`
-signed in. Every commit devloop makes carries that name and address, and the
-push puts them on GitHub, where they stay. Where none is set, git takes them
-from your machine — on a Mac your user name and the computer's name — or refuses
-to commit. To keep your address private, use the `noreply` address GitHub offers
-in your email settings. Set both with `git config --global user.name` and
-`git config --global user.email`. The workflow keeps its state in issues and
+You need a GitHub account, the GitHub CLI `gh` signed in to it, and git with
+your name and email address set. If any of it is missing when you start,
+devloop says so and gives you the steps. To set it up beforehand, in your
+terminal:
+
+1. Install `gh` as [cli.github.com](https://cli.github.com) describes for your system.
+2. Sign it in: `gh auth login --web --git-protocol https`, then follow the instructions in the terminal and in the browser.
+3. Set your name: `git config --global user.name "Your Name"`
+4. Set your email address: `git config --global user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"` — this is the address GitHub gives you so that your own stays private. To use your own instead, put it in place of everything inside the outer quotes. Older GitHub accounts can have this address without the number at the front; [GitHub's email addresses reference](https://docs.github.com/en/account-and-profile/reference/email-addresses-reference) says which accounts, and how to get the one with the number.
+
+Every commit devloop makes carries that name and address, and the push puts
+them on GitHub, where they stay. Where none is set, git takes them from your
+machine — on a Mac your user name and the computer's name — or refuses to
+commit. The workflow keeps its state in issues and
 their blocking relationships, so a tracker is not optional — the setup stops
 without one and says so. A repository is not needed up front; it offers to
 create one.

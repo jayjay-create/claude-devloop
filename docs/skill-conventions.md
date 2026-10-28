@@ -71,8 +71,8 @@ run could call the stage itself, it asks in ordinary words and hands over no
 command.
 
 **A command handed over runs as it stands, from wherever the person is.** No
-knowledge of commands in a terminal is assumed of them: the line is copied
-whole into whatever terminal is open, so it carries everything it needs. A
+knowledge of commands in a terminal is assumed of them: the line is given
+whole, so it carries everything it needs, wherever it is typed. A
 `gh` command carries the repository, `--repo OWNER/REPO`, since `gh` resolves
 it from the directory it runs in. A command that needs the project's
 directory — an install into the project's packages, a browser download a
@@ -80,9 +80,13 @@ dependency of the project makes, a check command — carries the change into
 it before it, `cd <directory> && <command>`, the directory written as their
 shell takes it: `~` for their home directory, and the rest in double quotes
 where it carries a space, `cd ~/"my project" && …`. A command that needs
-nothing of the kind, `gh auth login` say, is given bare. Decided on 12
+nothing of the kind is given bare. Decided on 12
 October 2026, point 18 of part B of the roadmap entry of that date, with the
-example `cd ~/devloop-test-w && npx playwright install chromium`.
+example `cd ~/devloop-test-w && npx playwright install chromium`; its
+sentence that the line is copied whole into whatever terminal is open, and
+its example of `gh auth login` given bare, are replaced since 28 October
+2026 by the rule after the next, on where the person types a command, which
+keeps what a command carries under either of its forms.
 
 **An input typed into Claude Code is named whole as well.** Where a text to
 the person says how it goes on, it names what they type as they type it,
@@ -91,8 +95,9 @@ the person says how it goes on, it names what they type as they type it,
 last message of a planning on 27 October 2026 read „allein mit `--auto`“,
 and nothing before it had named the command. The rule stands here, beside
 the one on a command handed over, because it is that rule for the other
-place the person types into: a line copied whole into a terminal and a line
-typed whole into Claude Code, with nothing assumed of them in either. A
+thing the person types: a command handed over, given whole and with where
+it is typed, and an input into Claude Code, named whole, with nothing
+assumed of them in either. A
 sentence that says what happens without the flag, „Ohne `--auto` …“, names
 no input and stays. Decided on 27 October 2026, defect 2 of the roadmap
 entry of that date on the three closing runs, built the same day, the
@@ -106,10 +111,19 @@ is typed, and the steps stand in the order in which they can take them — a
 command in the terminal after Claude Code is ended where it has to be,
 the start of Claude Code after that, the input into Claude Code last. As
 far as the steps are fixed and the run knows them: where the run does not
-know a step for the case for certain — the command that puts a folder on
-the search path in a shell it has no sure form for, say — it says for that
-step what is needed, names no command it does not know, and names the
-other steps. What the run can do itself it does, by the rule above, and
+know a step's command for the case for certain — the command that puts a
+folder on the search path in a shell it has no sure form for, say — it
+reads it first at the maker, in the guide of the program or of the shell,
+with its tools for the web, and gives it as it stands there, with the
+source; a command the guide itself warns against it does not give. Only
+where that yields no command — the run cannot read the page, or the page
+does not name the system — it says for that step what is needed, names no
+command it does not know, and names the other steps. Decided by the person
+on 28 October 2026, at their question why devloop refers to
+`cli.github.com` for `gh` instead of reading the command there itself;
+until then the step named no command wherever the run had no sure form,
+the roadmap entry of 28 October 2026 on the handover steps, its decisions
+after the push. What the run can do itself it does, by the rule above, and
 hands over no step for it. The person's rule of 28 October 2026: „alles
 was der Nutzer an befehlen oder schritten tun muss am computer sollte
 beschrieben sein bzw. in gesagt werde wie er vorzugehen hat, solange die
@@ -121,7 +135,64 @@ on the hook on SubagentStart, (4). The rule stands here, after the two on a
 command handed over and on an input typed into Claude Code, because it is
 those two over a sequence: each step is given as they say, whole and as
 typed, and the sequence in the order the person can take it, with nothing
-assumed of them between the steps.
+assumed of them between the steps. Its addition, given by the person the
+same day: what another program itself guides — the questions of `gh auth
+login`, the sign-in in the browser — devloop does not describe after it;
+it says that the person follows that program's instructions. The reason:
+a description of another's flow stops being true as soon as its maker
+changes it. Built on 28 October 2026 in the roadmap entry of that date on
+the handover steps, where the wordings stand.
+
+**Where the person types a command devloop hands them while Claude Code
+runs, the text says, and which of two forms holds follows from what the
+command does.** Decided by the person on 28 October 2026. Form A, a
+command that asks nothing — `brew install`, `git config`, the merge: it
+is typed in Claude Code with `!` in front, the text
+says so and gives the line with the `!`, `! brew install yq`. Claude Code
+runs it and puts the command and its output into the conversation, and the
+run answers that output: the person says nothing, the output in the
+conversation is the signal the run goes on from, and what the run then
+reads — the folder the installer writes to and the search path, the pull
+request's state — it reads as before, never off the output alone. Form B,
+a command that asks something — a sign-in, a password for `sudo`: it is
+typed in a second terminal window, the text says expressly that it is not
+the window in which Claude Code runs, names what the command asks, and
+asks them to say here once it is through; their word is the signal, and
+what the run reads after it, it reads as before. Where the run does not
+know for certain whether a command asks, B holds. A command that does not
+end by itself — a server a prototype needs — would hold Claude Code under
+A and goes to the second window as B, the reason named being that it runs
+until they end it. Under either form the command carries everything it
+needs, `--repo OWNER/REPO` and `cd <directory> &&`, by the rule on a
+command handed over, since the vendor's page says nothing of the folder a
+`!` command runs in. That page, `code.claude.com/docs/en/interactive-mode`,
+section "Shell mode with `!` prefix", read on 28 October 2026: shell mode
+"Adds the command and its output to the conversation context", and
+"Claude responds to the command output automatically once it lands in the
+transcript"; the table of inputs has for `!` "Run a command directly, add
+its output to the session, and have Claude respond to it"; whether a
+command that asks something goes there, the page does not say. Measured
+on 28 October 2026 on the person's Mac, Claude Code 2.1.312, in
+`devloop-test-aa` with devloop 0.164.0: `! git -c
+user.email=probe@example.invalid status` ran and showed git's state, a
+command `hooks/pre-tool-use-identity-guard.sh` blocks when the run calls
+it; so the hooks of devloop do not fire on a `!` command, and Claude
+answered the output by itself. A hook that is to see a command of the
+person sees it under A as little as in their own terminal. Two limits,
+recorded in the roadmap entry of 28 October 2026 on the handover steps and
+not built: with `respondToBashCommands` set to `false` in `settings.json`
+the run does not answer by itself under A, the same page; and in the
+graphical chat panel the extension for VS Code opens with, `!` is not
+there — the page `code.claude.com/docs/en/vs-code`, table "VS Code
+extension vs. Claude Code CLI", row "`!` Bash shortcut", "Yes" for the
+CLI and "No" for the extension — while with the setting "Use Terminal" of
+the extension, section "Switch to terminal mode" of that page, and with
+`claude` in the built-in terminal of VS Code the CLI's surface runs, and
+the person works one of these two ways; milestone 12. The wordings the
+person approved for the handovers stand in that roadmap entry; a skill
+says what is said, not the words. Until that day the rule on a command
+handed over read that the line is copied whole into whatever terminal is
+open, point 18 of part B of 12 October 2026, whose rest stands.
 
 **A file is named by its path where the work is about the file.**
 

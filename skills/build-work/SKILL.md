@@ -552,7 +552,10 @@ The subagent:
    planning is not replaced by a stand-in without them. Run 3a built the
    task needing `yq` against stand-ins under a yes and merged it with `yq`
    never run.
-   Read the result, after their word, with
+   Read the result, after the signal of the handover's form — under form A
+   the command's output in the conversation, under form B their word, by
+   "Where the person types a command devloop hands them" in
+   `docs/skill-conventions.md`, since 28 October 2026 — with
    `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the command
    as it was handed over and the tool, since 28 October 2026: its first line
    reads the folder the installer writes to, never `command -v` alone, as
@@ -586,11 +589,19 @@ The subagent:
    single quotes so that the file carries the variable and not the path —
    `echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc` — and the load is
    `source ~/.zshrc`. For a shell the run has no sure form for — another
-   shell, or bash on a system other than those two, Windows with Git Bash
-   among them, where the `PATH` Claude Code runs under is Windows' own and
-   no bash file sets it — the step says that the folder has to go into
-   their `PATH` and names no command, and the other steps stand as above,
-   by the rule in `docs/skill-conventions.md`. The wording approved on 28
+   shell, fish say, or bash on a system other than those two, Windows with
+   Git Bash among them, where the `PATH` Claude Code runs under is Windows'
+   own and no bash file sets it — the run reads the command first in the
+   maker's guide, the shell's or the system's, with its tools for the web,
+   and gives it as it stands there, with the source, by the addition of 28
+   October 2026 to the rule in `docs/skill-conventions.md`: for fish the
+   page of fish on `fish_add_path`, which adds a folder once and keeps it;
+   a command the guide itself warns against it does not give. Only where
+   that yields no command — the page cannot be read, or it names neither
+   the shell nor the system — the step says that the folder has to go into
+   their `PATH` and names no command, and the other steps stand as above;
+   until that decision the step named no command wherever the run had no
+   sure form. The wording approved on 28
    October 2026 stands in the roadmap entry of that date on the hook on
    SubagentStart, (4), and this skill says what is said, not the words. In
    the session the last step opens, the tool stands on the search path
@@ -652,28 +663,37 @@ The subagent:
    the change into the project's directory before it where it needs one, by
    "A command handed over runs as it stands" in `docs/skill-conventions.md`,
    and what it is backed by, with the version and the folder it lands in —
-   and both ways it can go, in the same breath. The way of the yes: they run
-   it and say so once it is through, and the build picks up once the tool is
-   where that command puts it and the search path finds it, read after their
-   word by the next paragraph. The way of the no, which comes second and
+   and both ways it can go, in the same breath. The way of the yes: where
+   they type it, by "Where the person types a command devloop hands them" in
+   `docs/skill-conventions.md` — in Claude Code with `!` in front where the
+   command asks nothing, form A, the line given with the `!`; in a second
+   terminal window, not the one Claude Code runs in, where it asks something,
+   a password for `sudo` say, form B, the text naming what it asks and
+   asking them to say here once it is through; in doubt B —, and the build
+   picks up once the tool is where that command puts it and the search path
+   finds it, read by the paragraph on reading the result above after the
+   form's signal, the command's output in the conversation under A and
+   their word under B. The way of the no, which comes second and
    **a decline is an answer too, not a wall**: on a no the install becomes an
    issue carrying the command that blocks this task, as "The task itself"
    below says, written on the no and never before the answer; the run goes
    on with the next task that is ready, where one is, and with this one once
    the tool stands on this machine at a later start, which devloop reads
    itself and closes the issue on, as "The task itself" says. Before a no
-   their word that the command ran releases the run, after a no the tool
-   read at the next start: one signal per state, and the issue and the
-   message name the same one. Then the question, last: whether they run the
-   command or decline. Since 24 October 2026, defect 5 of the roadmap entry
+   the form's signal releases the run — the output under A, their word
+   under B —, after a no the tool read at the next start: one signal per
+   state, and the issue and the message name the same one. Then the
+   question, last: whether they type the command, under A, or run it, under
+   B, or decline. Since 24 October 2026, defect 5 of the roadmap entry
    of that date on the six closing runs, where run 1 said a decline would
    leave the test skipped and the task open; and since 28 October 2026 in
    this order, the issue on the no alone and one signal per state, the rest
    of that defect: run 1 of 26 October 2026 opened the issue before the
    answer, offered no no, and named one signal in the issue and another in
-   the message. The wording approved on 27 October 2026 stands in the
-   roadmap entry of that date on the tool state read by one program, (5),
-   in place of (c) of 24 October 2026, and this skill says what is said,
+   the message. The wording approved on 28 October 2026 stands in the
+   roadmap entry of that date on the handover steps, (1), in both forms, in
+   place of (5) of 27 October 2026, which had them run the command and say
+   so, and this skill says what is said,
    not the words. A message that says only "let me know once it is
    through" leaves no way to say no, which is how it came out the first time.
    With nobody there the record says yes, since the mode does not start
@@ -719,14 +739,15 @@ The subagent:
 
    **A command the person typed themselves that is an install outside the
    project** — the one point 7 handed over under a record saying no or never
-   written, or the one `setup-checks` step 3 put to them as a question, run
-   in their own terminal, which the hook does not see — has its line here
+   written, or the one `setup-checks` step 3 put to them as a question,
+   typed in Claude Code with `!` in front or run in a second terminal
+   window, which the hook does not see either way — has its line here
    all the same, under the same heading `Installed outside the project` and
    in the form the hook writes, written by the program the hook writes it
    with: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note put` with the folder
    the tool was read at and the install command alone, in single quotes,
    without the change into the project's directory the handover put before
-   it, in the same step in which the path is read after the person's word,
+   it, in the same step in which the path is read after the form's signal,
    for a browser download as for a tool, since 24 October 2026; the program
    writes the line in its form, not a second time where it stands already
    and not on the main branch. For a check class `setup-checks` step 4

@@ -39,9 +39,21 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # commit; git am, cherry-pick, rebase and the other commands that carry an
 # author over from a patch or a commit; a key held in a variable alone. The
 # message is the one approved on 9 October 2026, its last sentence the one
-# approved on 10 October 2026 - git takes an identity from the machine or
-# refuses - word for word in docs/roadmap.md under the entry of 9 October
-# 2026 and its addendum of 10 October 2026, <what was read> filled with the
+# approved on 28 October 2026 - the two commands typed in Claude Code with !
+# in front, NAME theirs to fill in and ADDRESS the noreply address of their
+# account, built from gh api user, their own allowed instead, the commit
+# made again once git config gives both - and, approved the same day after
+# the branch was pushed, where created_at of that call lies before 18 July
+# 2017, the note after the second command that GitHub gives an account that
+# old the address only once its email privacy is switched off and on again,
+# with GitHub's email addresses reference, read first and given in its own
+# words where it says otherwise by then; the hooks of devloop do not fire
+# on a command typed with !, measured that day, so this guard does not block
+# the two there, where it blocks them when the run calls them - in place of
+# the sentence approved on 10 October 2026, git taking an identity from the
+# machine or refusing - word for word in docs/roadmap.md under the entry of
+# 9 October 2026, its addendum of 10 October 2026 and the entry of 28
+# October 2026 on the handover steps, <what was read> filled with the
 # form read, without its value. Every block leaves through the two lines at
 # the end, so that the message stands once, with what was read filled in,
 # and the block's record in docs/stock-take.tsv stands on the one exit line.
@@ -177,5 +189,5 @@ done <<< "$INPUT"
 
 [ -n "$READ" ] || exit 0
 
-echo "Blocked by devloop: this command sets the identity of a commit itself — $READ — instead of using the one git config gives. Commit with that identity, and do not set another one another way: not with git -c, --author, the variables GIT_AUTHOR_…, GIT_COMMITTER_…, EMAIL or GIT_CONFIG_…, and not with git config user.name or user.email. Not with an address from your session's context either: what stands in a commit becomes public with the push. Where git config gives no identity, git takes one from the machine or refuses to commit; then hand the user the two commands git config --global user.name and git config --global user.email, to run with values of their own choosing." >&2
+echo "Blocked by devloop: this command sets the identity of a commit itself — $READ — instead of using the one git config gives. Commit with that identity, and do not set another one another way: not with git -c, --author, the variables GIT_AUTHOR_…, GIT_COMMITTER_…, EMAIL or GIT_CONFIG_…, and not with git config user.name or user.email. Not with an address from your session's context either: what stands in a commit becomes public with the push. Where git config gives no identity, git takes one from the machine or refuses to commit; then hand the user the two commands to type here in Claude Code, each with ! in front: ! git config --global user.name \"NAME\", with NAME theirs to fill in, and ! git config --global user.email \"ADDRESS\", with ADDRESS the noreply address GitHub gives their account, built from gh api user as ID+LOGIN@users.noreply.github.com, and the note that they may put their own address there instead; where created_at of that same call lies before 18 July 2017, say after the second command that GitHub gives an account that old this address only once its email privacy is switched off and on again, as GitHub's email addresses reference says, https://docs.github.com/en/account-and-profile/reference/email-addresses-reference, giving that link, which you read first and whose own words you give where they now say otherwise; commit again once git config gives both." >&2
 exit 2

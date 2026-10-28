@@ -77,9 +77,15 @@ resolved without looking. Naming a file on a branch the user is not on is not
 handing it over — that is three git commands they did not ask to learn.
 
 Give them **one action**. For a single HTML file, the exact command that opens it
-in a browser, checkout included, as one line they can paste. For anything that
-needs a process, the one command that starts it and the address to visit. Say how
-to get back afterwards. If getting to it honestly takes more than one paste, say
+in a browser, checkout included, as one line, typed in Claude Code with `!`
+in front — form A of "Where the person types a command devloop hands them"
+in `docs/skill-conventions.md`, since 28 October 2026, the command asking
+nothing and ending by itself. For anything that needs a process, the one
+command that starts it and the address to visit, typed in a second terminal
+window, not the one Claude Code runs in — form B, the text saying so and
+that the command runs until they end it, since a command that does not end
+by itself would hold Claude Code under A — and how they end it. Say how
+to get back afterwards. If getting to it honestly takes more than one line, say
 that too, rather than leaving them to work it out.
 
 ## Make the variants actually differ
