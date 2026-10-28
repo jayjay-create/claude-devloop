@@ -527,6 +527,16 @@ closing of a blocking issue at the next start once the tool stands, and
 condition 4 read in one call with the start conditions; the small matters
 3, 9 and 10 wait, and the milestones of new defects 8 and 11 the person
 decides after milestone 3.
+On 28 October 2026 part 2 was built, the roadmap entry of that date on the
+hook on `SubagentStart`: every subagent gets the install record and a rule
+on installing as context at its start, after a bench on this Mac showed
+that the context reaches it; the build reads the tools a task needs before
+the subagent starts and under a no hands over first, with both ways in one
+message and the issue on the no alone; a task is not offered for landing
+while its tool is missing and not declined; at every start devloop reads
+whether the tool of a blocking issue stands on this machine and closes the
+issue itself where it does; and condition 4 is read in the one call with the
+start conditions. Next comes the run with the person under a no.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October

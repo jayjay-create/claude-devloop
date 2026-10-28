@@ -40742,6 +40742,378 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   nothing, as before.
 
 
+- **Every subagent gets the install record, the build reads its tools first.**
+  28 October 2026, version 0.164.0. On `task/build-tool-state-and-subagent-hook`,
+  off `f183050`, in two commits: the hook, the programs, the texts and the
+  rows of the things they change, with the version; then this entry with the
+  sentence in `docs/plan.md`, the point under "## Decisions taken against"
+  and the rows it needs. Part 2 of the rebuild of milestone 3, decision (7)
+  of the entry at line 40175: the hook on `SubagentStart` of decision (2),
+  status line 40534; the handover before the start of the build subagent
+  and the waiting of the question whether it lands, new defect 7 of the
+  entry at line 38963, status line 39585, decisions (3) and (4); the two
+  ways of the handover, the rest of defect 5 of the entry at line 36636,
+  status line 37228, decisions (4) and (5); the closing of a blocking
+  issue at the next start, status line 40535; condition 4 in one call,
+  decision (4); and the three wordings the person approved on 28 October
+  2026, below. A line of a file is given as it stands at the tip of this
+  branch, a line of `docs/roadmap.md` as it stands at `f183050`, which this
+  entry leaves unchanged above it but for the point at line 40917. Beyond
+  `git fetch` and two sessions of Claude Code in a throwaway project under
+  a directory outside the repository, GitHub was neither read nor changed;
+  nothing was installed anywhere; no test project was touched, no session
+  log read, nothing run against the settings of this machine; the bench's
+  sessions loaded this branch's copy of the plugin with `--plugin-dir`, so
+  that the installed 0.163.0 stayed as it was.
+
+  **The bench, first.** The vendor's hooks reference,
+  `code.claude.com/docs/en/hooks.md`, read on 28 October 2026, section
+  "SubagentStart": it "runs when Claude spawns a subagent with the Agent
+  tool, when Claude resumes a subagent, and each time an in-process agent
+  team teammate handles a new message", with matchers on the agent type;
+  its input carries `agent_id` and `agent_type` beside the common fields,
+  the example `{"session_id": "abc123", "transcript_path": "...",
+  "cwd": "...", "hook_event_name": "SubagentStart", "agent_id":
+  "agent-abc123", "agent_type": "Explore"}`; "SubagentStart hooks can't
+  block subagent creation, but they can inject context into the subagent",
+  `additionalContext` being a "string added to the subagent's context at
+  the start of its conversation, before its first prompt", returned under
+  `hookSpecificOutput` with the event's name; the exit-code table says it
+  cannot block and shows stderr to the user only, an exit 2 rendered "in
+  the subagent's own transcript, not in the parent conversation". Bug
+  #16538 at `anthropics/claude-code`, "Plugin SessionStart hooks don't
+  surface hookSpecificOutput.additionalContext to Claude", was closed as
+  not planned on 11 May 2026 by the repository's bot for inactivity, never
+  fixed by a named release; its thread names SessionStart, UserPromptSubmit,
+  PreToolUse and PreCompact and versions 2.1.39 to 2.1.86, and `SubagentStart`
+  not at all. The bench, on this Mac under Claude Code 2.1.312: a throwaway
+  project set up with devloop — the five files under `docs/agents/` on
+  `main`, pushed to a bare origin beside it, `origin/HEAD` set, the install
+  record a yes with the place `~/qv7m-k2p9x-bench-only/bin`, which stands
+  in no file of devloop — and two copies of this branch's working tree,
+  one as it is and one with the `SubagentStart` block taken out of
+  `hooks/hooks.json`; each loaded with `claude -p ... --plugin-dir COPY
+  --max-turns 8 --output-format text`, which by the loading reference
+  replaces the installed plugin of the same name for that session. The
+  main run was told to do nothing but start one subagent with the Agent
+  tool, `general-purpose`, with a prompt asking it to quote verbatim every
+  line of a reminder a hook added at its start that begins with
+  `[InstallRecord]` or `devloop:`, else to answer NONE, and to answer with
+  the subagent's reply alone; the answer was read off the session's
+  stdout. What shows the hook and not the main run: the rule's line stands
+  only in the hook, which the main run was told to read no file for, and
+  the control session shows what the main run writes into the prompt on
+  its own. With the hook the subagent quoted both lines whole,
+  „[InstallRecord] tools: yes | places: /usr/local/bin
+  ~/qv7m-k2p9x-bench-only/bin | routes: brew | answered: 2026-10-28 | read
+  off origin/main as last fetched, not off the working tree“ and the rule
+  as the hook prints it, and said the first stood behind the prefix
+  „SubagentStart hook additional context: “; without the hook, NONE. So
+  the context reaches the subagent on this version, and the hook stays;
+  `docs/skill-conventions.md` lines 3389 to 3402, at "A hook cannot force
+  wording", say so since this entry.
+
+  **(a) The hook**, `hooks/subagent-start-install.sh`, lines 1 to 51,
+  registered in `hooks/hooks.json` lines 26 to 28 under `SubagentStart`
+  without a matcher, the description on line 2 naming it. It reads its
+  input through the one line, line 36; where the project directory cannot
+  be entered, is no git repository, or the setup state reads neither set
+  up nor set up in part — the reading of `hooks/session-start.sh` in one
+  line, line 44 — it prints nothing; else it prints, as
+  `additionalContext`, the `[InstallRecord]` line and a rule of four
+  sentences, lines 46 to 50: that the rule outranks the prompt on
+  installing; that a tool outside the repository the task needs is
+  installed only where the record says yes, by the subagent, backed, alone
+  in its call, with 600000 milliseconds on the call, as `build-work` step 3
+  point 7 says; that under no or none it is neither installed nor replaced
+  by a stand-in or a stub, the subagent naming the tool, the backed command
+  and that it is missing in its report and stopping with the task; and that
+  a check class's tool is not the subagent's to install under either
+  answer, named in the report. The text of W4 in the report of 27 October
+  2026 on the ways is taken, with three changes: "the prompt above" became
+  "the prompt", since the vendor inserts the context before the first
+  prompt; "backed by the vendor's line or the path resolving" became
+  "backed, alone in its call", the two words `shared/install-alone.md` and
+  the order of this part name; and "either way" became "under either
+  answer". Exit 0 on every path after the reader, 1 where the reader does
+  not answer, as every hook; the order's "ends always with 0" cannot hold
+  word for word beside the reader's line, and that exit changes nothing
+  for the subagent, the vendor's table says. The record line comes from one
+  source for both hooks: `bin/devloop-install-record --line`, head lines 40
+  to 53, body lines 79 to 94, forms the one line `hooks/session-start.sh`
+  formed itself until this day, and that hook prints it through the program
+  since this entry, line 78, the three forms named on lines 73 to 77; the
+  hook on the subagent calls the same line, line 46. The step "hooks on
+  every system" of `.github/workflows/stock-take.yml` feeds the hook the
+  start of a subagent of the type `Explore` in the vendor's form, line 415,
+  the comment at lines 238 to 239; run locally on 28 October 2026, all
+  twenty handlers answered 0, the step green. The fifth rule of step 3,
+  `build-work` lines 456 to 467, stays. The point at line 40917 says since
+  this entry that the hook is built.
+
+  **(b) Before the start of the build subagent**, `build-work` lines 469
+  to 498, before "The subagent:" on line 500: the main run runs
+  `bin/devloop-tool-state --build` once with every tool outside the project
+  the task needs — those the spec names under Implementation decisions with
+  the program's line, `plan-work` lines 781 to 787, else as named — and
+  goes by its lines, which the prompt carries beside the record: under a
+  yes the subagent installs what is missing by point 7; under a no or no
+  record the handover of point 7 is the first step of the task, in the
+  message that ends the turn, before any subagent starts, and nothing is
+  built against a stand-in in the meantime. A browser whose line says not
+  read because the project gets its test tool with this task is read by
+  the subagent once the package stands in the project, the same call run
+  in the project after adding the package and before anything that needs
+  the browser; it goes by the line as the rule at its start says,
+  installing under a yes, and under a no or no record reporting the
+  browser, the backed download command and that it is missing and stopping
+  with the task, on which the main run hands over; with nobody there the
+  record says yes, condition 6. Point 7, lines 606 to 640, splits the duty
+  as it lies: the subagent reports, the main run hands over. Step 5, lines
+  1006 to 1016: a task is not offered for landing while a tool it needs is
+  missing on this machine and not declined; where the subagent's report or
+  a finding of the review says the real tool did not run, the question is
+  not put and the handover stands in its place, last in the message that
+  ends the turn.
+
+  **(c) The handover and its two ways**, point 7 lines 606 to 640 and "The
+  task itself" lines 717 to 730: one message, the one that ends the turn,
+  with the question last; it says what the task needs and that it is
+  missing, that their answer to installing for this project is no, the
+  exact command as it runs from wherever they are and what backs it, with
+  the version and the folder it lands in, and both ways in the same
+  breath — the yes way first: they run it and say so, the build picks up
+  once the tool is where the command puts it and the search path finds it,
+  read after their word by (e); the no way after it: an issue carrying the
+  command that blocks the task, written on the no and never before the
+  answer, the next task that is ready, and this one once the tool stands
+  on this machine at a later start, which devloop reads itself, (d); before
+  a no their word releases the run, after a no the tool read at the next
+  start, one signal per state, the issue and the message naming the same
+  one; then the question whether they run the command or decline. The
+  wording (5) of the entry at line 40175 stands; the skill says what is
+  said. Run 1 of 26 October 2026 opened the issue before the answer, offered
+  no no and named two signals, #1045 and #1076.
+
+  **(d) At the next start**, the closing of a blocking issue by devloop:
+  `bin/devloop-install-issues`, new, lines 1 to 503, its head lines 1 to
+  103. It reads the open issues labelled `raised-here` and `needs-human`
+  with `gh issue list`, takes those whose body carries the two lines of (f),
+  `install-tool` and `install-command`, reads each issue's kind as
+  `bin/devloop-auto-mode-question` reads it — a task where an open issue is
+  blocked by it, a class otherwise — and for each runs
+  `bin/devloop-tool-state --build TOOL`, beside it with bash: where the
+  line says found, it closes the issue with `gh issue close N --comment`,
+  the comment „devloop closed this issue at the start of a session, the
+  tool standing on this machine now: <the line>“, in English as the
+  tracker is written, lines 238 to 244; where it says not found or not
+  read, or the program refuses the tool, nothing, the issue staying: what
+  devloop cannot read it does not close. One group of six lines per issue,
+  `issues: none ...` where none carries the lines, exit 0; exit 2 with the
+  command and the message where `gh` or the tool state program did not
+  answer, the groups read until then printed, an issue closed before that
+  staying closed. The self-test, lines 248 to 486, nineteen cases against a
+  stand-in for `gh` as that program's self-test has it and the real
+  `bin/devloop-tool-state`, `SELF-TEST PASSED: 19 cases`; the job runs it
+  on four systems with every self-test under `bin/`. Where in a start:
+  before the first thing of the start that reads an open issue, the
+  readiness query or the question on the rule for the classifier, whichever
+  comes first, so that the question names no install whose tool stands by
+  now and the readiness query finds the task free — the text
+  `shared/install-issues-read.md`, lines 1 to 27, inserted into `build-work`
+  at the start of step 2, line 331, and into `plan-work` before the
+  question on the rule at the end of Stage 1, line 580, and named in
+  `build-work`'s unattended mode before that question on the direct route,
+  lines 1697 to 1701; with the person there one line says which issue was
+  closed and what that frees or sets up again, with nobody there it stands
+  in the last message; a class an issue concerned goes to `setup-checks`
+  from step 4 of the next task, as `build-work` lines 1717 to 1720 say for
+  the issues after a refusal of auto mode, which this read covers as well,
+  and the issue of text 1 of `setup-checks`, lines 119 to 130; a build that
+  followed a planning in the same session runs it again at step 2, an issue
+  closed not being found again. Why the search path and not `--installed`:
+  decision (5) of the entry at line 40175, lines 40506 to 40510, and the
+  status line 40535 name `bin/devloop-tool-state --installed`, which reads
+  the folder the handed-over command's installer writes to; the person's
+  approved wording of that day says „Installierst du es später doch, merke
+  ich das beim nächsten Start, schließe das Issue und baue die Aufgabe“ and
+  names no installer, the person may install by another way, and
+  `docs/skill-conventions.md` lines 744 to 784 keep the two questions
+  apart, the search path answering whether a tool stands there for use,
+  which is what frees the task. So the recorded sentence narrowed the
+  person's decision, and what is built reads the search path for a command
+  and the vendor's folder for a browser, as `--build` reads them; the head
+  of `bin/devloop-tool-state`, lines 11 to 15 and 94 to 131, says what
+  `--installed` is for since this entry.
+
+  **(e) After „sag mir Bescheid“**, `build-work` lines 555 to 570: the run
+  reads with `bin/devloop-tool-state --installed`, the command as handed
+  over and the tool, which since this entry prints two lines for a command,
+  the folder line read off the installer as `shared/backed-command.md`
+  lines 37 to 55 demand and then the search-path line as `--build` prints
+  it, `bin/devloop-tool-state` head lines 113 to 121, body lines 570 to
+  571 and 588, the self-test holding the second line and a tool installed
+  by `go` into a folder the search path does not reach, 63 cases; `go
+  install` puts a tool into `~/go/bin`, which often stands on no search
+  path. Where the first line says found and the second not found, the run
+  says that the command installed, where the tool stands, that the search
+  path does not reach it and that the build cannot use it until it does;
+  the skill says what is said, and the wording is proposed below for
+  approval. Where the first says not found, the command did not do what it
+  was handed over for, and the run says so with the line and hands over
+  again.
+
+  **(f) The form of the issue**, `shared/install-issue.md`, lines 1 to 25,
+  inserted into `build-work` after "The task itself", line 732, and into
+  `setup-checks` after "A guard's block is not a decline", line 144: every
+  issue devloop writes for a tool missing on this machine carries
+  `install-tool: TOOL`, the tool as `bin/devloop-tool-state` names it, and
+  `install-command: COMMAND`, the command alone as handed over, each at the
+  start of a line of its own; the places that write one, found with `grep
+  -rn 'carrying the exact command\|carrying the command\|issue carrying'
+  skills/*/SKILL.md shared/*.md`: `build-work` point 7 and "The task
+  itself", lines 717 to 732, and "A guard's block, with nobody there",
+  lines 86 to 91, where the refused command was an install;
+  `shared/install-not-through.md`, lines 7 to 13 for the task's tool and
+  lines 26 to 30 for the issue after a refusal of auto mode; `setup-checks`
+  text 1 at `secrets`, lines 119 to 130 with the insert on line 144. The
+  hits of that search that are no such issue — the turn-end hook's, a
+  chain that did not finish, a refusal on no install — carry no lines. An
+  issue says nowhere that the person is to close it; the tracker is
+  written in English, `shared/project-language.md`, and no wording of an
+  issue is approved: the skills say what the issue carries, and the two
+  lines and the comment of (d) are the program's and the form's English,
+  carried word for word.
+
+  **(g) Condition 4 in one call**, `build-work` lines 1567 to 1588 and the
+  item of 4 at lines 1619 to 1622, `plan-work` lines 528 to 553:
+  `bin/devloop-start-conditions` and `bin/devloop-permission-mode` stand in
+  one call, the second behind the first, so that the one call reads all
+  seven and the hook on the mark puts the mode beside the result, as the
+  plannings of runs 2 and 3 of 26 October 2026 did, #161, #155 and #408,
+  and the build of run 2 did not again, #537, point 10 on the route through
+  the planning, line 30168, decision (4) of the entry at line 40175.
+
+  **(h) The three wordings of 28 October 2026** stand under "Decided on 28
+  October 2026" below, built in `setup-checks` lines 1194 to 1202, 1164 to
+  1169 and 119 to 130. The fields of the two questions against the bound
+  of `output-styles/devloop.md` lines 44 to 48, measured as `setup-checks`
+  lines 1089 to 1097 measure the question on the mode, at 76 characters in
+  the question field and 73 under an answer: the question at a start with
+  `--auto` with one issue holding a task fills eleven lines, the question
+  field four, the yes three, the new no four, where the old no took three;
+  with one issue concerning a class eleven as well; with two issues of both
+  kinds twelve, the question field five, the yes three, the no four —
+  inside the fourteen; text 4 at the setup, whose no gains the five
+  characters of the command's name, keeps its lines, the question field
+  three and the no three.
+
+  **Cross-check against the cases**, each read for a run that reads the
+  changed text through `scripts/devloop-expand`. Run 1 #446 and #772, the
+  prompts „Do not install anything“ and the claim that `yq` is on the
+  machine: the subagent now starts with the record line and the rule as
+  context, from the hook, and the prompt carries the program's lines, so
+  that the claim has no source and the rule outranks the sentence. #788,
+  the stub `yq`: before the subagent starts the main run has read „yq: not
+  found on the search path“ under the no and handed over; no subagent
+  starts for the task until the tool stands or the person declines, and
+  the rule in the subagent's context forbids the stand-in besides. #811
+  and #821, the reviewers' finding that `yq` is not installed, and #1035,
+  „Soll das landen?“: step 5 puts no landing question on such a finding and
+  puts the handover in its place. #1045 and #1076, the handover after the
+  person's hint, and the issue before the answer: the handover comes before
+  the build, with the yes way and then the no way in one message, the issue
+  on the no alone, one signal per state. Run 2 #537, the build's start
+  without condition 4: the one call reads all seven on both routes. Every
+  mechanism on every path, read at the code: a task and a check class apart
+  — the task's tool through `build-work` point 7 and (b) to (e), a class's
+  through `setup-checks` step 3 and text 1, both issues with the two lines
+  and both read at the next start by (d), the class going to `setup-checks`
+  afterwards; with the person there the handover and the one line on an
+  issue closed, with nobody there the record says yes so that nothing is
+  handed over, the four ways of `shared/install-not-through.md` leave an
+  issue with the two lines, and the next start with `--auto` reads them
+  before the question on the rule; through the planning the one call of
+  (g) with the range at the build, the read of (d) at the end of Stage 1
+  and again at step 2, and on the direct route the read of (d) before the
+  question on the rule and the one call with the range; under a yes the
+  subagent installs by point 7, under a no the handover, under no record
+  the handover as under a no, the record line saying so in all three. On
+  macOS, Linux, Windows with Git Bash and Alpine: the hook and the `--line`
+  of the record program use `sed`, `tr` and `head` as the session-start
+  hook did, `bin/devloop-install-issues` finds `gh` and `bash` through
+  `shutil.which` as `bin/devloop-auto-mode-question` finds `gh`, its
+  stand-in a launcher of `cmd` on Windows, and the job runs its self-test
+  on all four; whether `bash` is found from Python under Git Bash the job
+  shows, not this entry, which measured on this Mac alone. Other files that
+  reach the same situations, `grep -rn 'closed that issue\|closing that
+  issue\|closed the issue\|close the issue' skills shared hooks bin
+  README.md` and `grep -rn 'carrying the command' skills shared`: every hit
+  changed stands above; `README.md` line 286, "stops asking when its issue
+  is closed", holds with devloop closing it as with the person, and nothing
+  in `README.md` became wrong, so it is unchanged; `shared/how-to-ask.md`
+  and `shared/install-question.md` say nothing of an issue.
+
+  **Decided on 28 October 2026**, by the person, three wordings; the skills
+  say what is said, and these are the words. (1) The line under „Nein,
+  nicht eintragen“ of the question at a start with `--auto`, approved on 22
+  October 2026, lines 34954 to 34957, until this day: „Dann bleibt das
+  Issue offen, bis du die Installation selbst erledigt und das Issue
+  geschlossen hast. Bis dahin frage ich bei jedem Start mit `--auto`
+  wieder.“ Since this day, where the issue holds a task: „Dann bleibt das
+  Issue offen. Führst du den Befehl selbst aus, merke ich das beim nächsten
+  Start, schließe das Issue und nehme die Aufgabe wieder auf. Bis dahin
+  frage ich bei jedem Start mit `/devloop:start-work --auto` wieder.“ Where
+  it concerns a check class the second sentence ends „… schließe das Issue
+  und richte die Prüfung wieder ein.“; with several „die Issues“, and where
+  both kinds are open as the line under „Ja, eintragen“ has it, lines 34944
+  to 34953. Built in `setup-checks` lines 1194 to 1202. (2) The last
+  sentence of the line under „Nein, nicht eintragen“ of text 4 at the
+  setup, since 22 October 2026, lines 34957 to 34959, until this day: „Beim
+  nächsten Start mit `--auto` frage ich dich dann noch einmal.“ Since this
+  day: „Beim nächsten Start mit `/devloop:start-work --auto` frage ich dich
+  dann noch einmal.“; the rest of the line stays. Built in `setup-checks`
+  lines 1164 to 1169. (3) The two last sentences of text 1, the halt at
+  `secrets` without the person, approved on 8 October 2026, lines 14872 to
+  14880, until this day: „Im Issue steht der Befehl, mit dem du das selbst
+  installierst. Führ ihn aus und schließ das Issue, dann ist die Aufgabe
+  wieder frei.“ Since this day: „Im Issue steht der Befehl, mit dem du das
+  selbst installierst. Führst du ihn aus, merke ich das beim nächsten
+  Start, schließe das Issue, richte die Prüfung ein und mache mit der
+  Aufgabe weiter.“; the rest stays. Built in `setup-checks` lines 119 to
+  130. Other texts that had the person close an issue, `grep -n 'Issue
+  geschlossen\|schließ das Issue\|Issue schließ' docs/roadmap.md` and the
+  English search above: in this file the records of the wordings replaced
+  here, lines 14429, 14877, 34956 and 37898, and the quotation at line
+  40512, which stay as records; in the skills none since this entry.
+
+  **Proposed for approval**, not built as words, the skill saying what is
+  said: what the run says after their word where the command installed and
+  the search path does not reach the tool, (e): „Der Befehl hat `yq` nach
+  `~/go/bin` installiert, aber dieser Ordner steht nicht auf deinem
+  Suchpfad, darum findet der Bau `yq` nicht. Nimm `~/go/bin` in deinen
+  Suchpfad auf und sag mir Bescheid; dann prüfe ich noch einmal und baue
+  die Aufgabe.“ — the tool and the folder as the program's lines name them.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the five defects of this part with their
+  evidence on the line that carries the repair, the version 0.164.0 and a
+  run pending in the note — the hook of status line 40534 and new defect 6
+  on the hook's `printf`, the closing of status line 40535 on the `gh
+  issue close` call of `bin/devloop-install-issues`, new defect 7 on the
+  paragraph before "The subagent:", the rest of defect 5 of 24 October 2026
+  on the handover's line, and point 10 at line 30168, whose row carries
+  condition 4 on the route through the planning, on the one-call line; the
+  three outcomes of `hooks/session-start.sh` on the record line re-anchored
+  onto the call and the comment above it, their runs kept, and the rows of
+  two defects whose evidence stood in that hook moved onto the program's
+  lines; the things of the new hook, its registration, the forms `--line`
+  and the second line of `--installed`, the outcomes of
+  `bin/devloop-install-issues`, the two shared texts and the branches of
+  the changed skills; the thing of the form for a start with `--auto`
+  renamed, no run hanging on it. In `docs/plan.md` one dated sentence under
+  milestone 3. The tool: exit 0, no broken record, no uncovered line.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
@@ -40941,7 +41313,11 @@ of them if the reason stops holding — the reason is the point, not the verdict
   installed nor replaced by a stand-in, the subagent reporting the tool
   and the command — is built in the part on the build, after a bench of
   whether `additionalContext` of a plugin hook on `SubagentStart` reaches
-  the subagent; the fifth rule of step 3 stays beside it.
+  the subagent; the fifth rule of step 3 stays beside it. Built on 28
+  October 2026, version 0.164.0, the roadmap entry of that date on the hook
+  on SubagentStart: `hooks/subagent-start-install.sh`, registered under
+  `SubagentStart` without a matcher, after the bench of that day showed on
+  this Mac under Claude Code 2.1.312 that its context reaches the subagent.
 - **A hook on `AskUserQuestion` holding the form of the install questions.**
   A `PreToolUse` hook on the choice widget would deny a question that
   names an install command outside backticks, or a command auto mode
