@@ -42,12 +42,15 @@ put the folder on their search path, step by step, the five steps as
 `build-work` step 3 point 7 has them for the tool of a task — `/exit`, the
 export line into the file of their shell, the `source` of it, `cd
 <directory> && claude`, `/devloop:start-work` — the shell and the system
-read as that point reads them, a step without a command where the run has
-no sure form; and that the run then finds the tool, closes the issue and
-builds the task — or, where the issue concerned a check class, sets the
-check up; the wording approved on 28 October 2026 for a task stands in the
-roadmap entry of that date on the handover steps, (11), and for a class no
-wording is approved, the skill saying what is said. The issue is not
+read as that point reads them, the command of a step the run has no sure
+form for read first in the maker's guide as that point says since the
+decision of 28 October 2026 after the push, and a step without a command
+only where that yields none; and that the run then finds the tool, closes
+the issue and builds the task — or, where the issue concerned a check
+class, sets the check up; the wording approved on 28 October 2026 stands
+in the roadmap entry of that date on the handover steps, (11) for a task
+and, among the decisions of that day after the push, for a check class,
+and the skill says what is said, not the words. The issue is not
 closed by that: the next start reads the search path again, after the
 steps. Where it ends with 2, say that the query did not answer, with the
 command and the message it prints, as "When a command does not answer" says,

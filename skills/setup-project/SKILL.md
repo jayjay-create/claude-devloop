@@ -246,12 +246,49 @@ which field.
   and that the run then sets the project up. After their word read `gh auth
   status` again: where it says signed in, go on with this step; where not,
   say so and hand the same steps over again. Where `gh` is not installed at
-  all, say that too, and that they install it as `cli.github.com` describes
-  for their system, before the steps; no wording is approved for that case,
-  this skill saying what is said. The wording approved on 28 October 2026
-  for the sign-in stands in the roadmap entry of that date on the handover
-  steps, (3), and this skill says what is said, not the words; until that
-  day this step named `gh auth login` and stopped.
+  all, since the decision of 28 October 2026 after the push: read the
+  system, `uname -s` and under Linux `/etc/os-release`; read GitHub's own
+  guide for it with the tools for the web, `cli.github.com` and under Linux
+  the page it links for Linux, `github.com/cli/cli/blob/trunk/docs/install_linux.md`;
+  and hand the command over as it stands there, by "Where the person types
+  a command devloop hands them" in `docs/skill-conventions.md` — on a Mac
+  with Homebrew `brew install gh`, form A, typed here with `!`, backed as
+  "A command that fetches something from outside is backed" says, `brew
+  info gh` naming the version and the folder; under Debian or Ubuntu the
+  block of that page, which runs `sudo` and so asks for their password,
+  form B, in a second terminal window, given whole and as it stands, with
+  its source, that it is GitHub's guide for that system; for another
+  system the page names, the same with that system's name. Say: that for
+  the work with GitHub devloop needs the program `gh` of GitHub and that on
+  this machine it is not installed yet; where they type it; the command;
+  the backing or the source; and that the run then reads that `gh` is
+  there and says how they sign in — under A once the output stands in the
+  conversation, under B once they say here that it has run. Only where the
+  page cannot be read, where it does not name their system, or where its
+  guide needs a program this machine lacks — Homebrew on a Mac —, say that
+  they install it as `cli.github.com` describes for their system and say
+  here once that is done, and that the run then says how they sign in; a
+  command the guide itself warns against is not given, the addition to the
+  step-by-step rule in `docs/skill-conventions.md`. After the signal read
+  with `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the
+  command as handed over and `gh`, both its lines: for `brew` the first
+  reads the folder of `brew --prefix`; for the block of the Linux page the
+  first says not read, its first word being no installer the program reads
+  a folder off, and the second line, the search path, decides, `apt`
+  putting `gh` where every search path reaches. Where the second line says
+  found, go on to `gh auth status` and, where it is not signed in, the
+  steps of the sign-in above; where not, say so with the line and hand
+  over again. No install record opens this: the step runs at a first setup
+  alone, where `docs/agents/environment.md` is not on the main branch and
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record` answers that none
+  stands, so the command is the person's, as under a no; a refresh, above,
+  does not run this step, and `sudo` stays theirs under every answer. The
+  wordings approved on 28 October 2026 for the sign-in, (3), and for `gh`
+  not installed, among the decisions of that day after the push, stand in
+  the roadmap entry of that date on the handover steps, and this skill says
+  what is said, not the words; until that day this step named `gh auth
+  login` and stopped, and until the decision after the push it referred to
+  `cli.github.com` without a command.
 - Is there code? Count source files outside config and docs
 - Existing control documents: `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, `docs/adr/`, `README.md`
 - Task runner: `Makefile`, `justfile`, `Taskfile.yml`, `scripts` in `package.json`

@@ -41,8 +41,13 @@ rule of that day in `docs/skill-conventions.md`: a command, an input into
 Claude Code, ending Claude Code and starting it again, a change to a file
 of their configuration — each step one command or one input, as it is
 typed, in the order they can take them; a step the run has no sure command
-for says what is needed and names no command it does not know; what the
-run can do itself it does, and hands over no step for it. What another
+for it reads first in the maker's guide, the program's or the shell's, with
+its tools for the web, and gives as it stands there with the source, giving
+none the guide itself warns against, since the decision of 28 October 2026
+after the push; only where that yields no command — the page cannot be
+read, or it does not name the system — the step says what is needed and
+names no command; what the run can do itself it does, and hands over no
+step for it. What another
 program itself guides — the questions of `gh auth login`, the sign-in in
 the browser — is not described after it: the text says that they follow
 that program's instructions, since a description of another's flow stops
@@ -50,8 +55,8 @@ being true as soon as its maker changes it.
 
 **Where the person types a command devloop hands them while Claude Code
 runs, the text says, in one of two forms**, decided by the person on 28
-October 2026. A command that asks nothing — an install through a package
-manager, `git config`, the merge — is typed in Claude Code with `!` in
+October 2026. A command that asks nothing — `brew install`, `git config`,
+the merge — is typed in Claude Code with `!` in
 front, form A: the text says so and gives the line with the `!`, `! brew
 install yq`; Claude Code puts the command and its output into the
 conversation and the run answers that output, so the person says nothing,

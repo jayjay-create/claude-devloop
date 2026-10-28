@@ -125,10 +125,14 @@ that called. Everything else below applies unchanged.
   task — the issue carrying the two lines of the form below, which that
   start reads —; and that the command stands in the issue as well, since 28
   October 2026, the wording of that day on the handover steps, (8). Where
-  the command asks something, `sudo apt install` say, form B holds, the
-  second terminal window, not the one Claude Code runs in, what it asks,
-  and `/devloop:start-work` after it; no wording is approved for that case,
-  and this skill says what is said. The wording of the entry of that date
+  the command asks something, `sudo apt install` say, form B holds, in
+  three steps: a second terminal window opened, not the one Claude Code
+  runs in, with what the command asks as the reason — a password —; the
+  command typed there; `/devloop:start-work` typed here in Claude Code;
+  then the same close, the issue closed, the check set up, the task gone
+  on with, the command in the issue as well; the wording stands in that
+  entry among the decisions of 28 October 2026 after the push, and this
+  skill says what is said, not the words. The wording of the entry of that date
   on the hook on SubagentStart had them run the command and devloop notice
   it at the next start; until then that running it and
   closing the issue frees the task again. Until 9 October 2026 the run that
@@ -579,12 +583,15 @@ the term untranslated; that the check therefore does not find the tool;
 then the five steps of that point — `/exit`, the export line into the file
 of their shell, the `source` of it, `cd <directory> && claude`,
 `/devloop:start-work` — the shell and the system read as that point reads
-them, a step without a command where the run has no sure form; and that
-the run then finds the tool and sets the check up. The class stays as it
+them, the command of a step the run has no sure form for read first in the
+maker's guide as that point says since the decision of 28 October 2026
+after the push, and a step without a command only where that yields none;
+and that the run then finds the tool and sets the check up. The class stays as it
 stands until then, and the start those steps lead to reaches this step
 again for it through step 4 of the next task, where the tool, now on the
 search path, takes it into step 4 of this skill. The wording approved on 28
-October 2026 for the first answer, (7), and for the folder outside the
+October 2026 for the first answer, (7), form A, and form B among the
+decisions of that day after the push, and for the folder outside the
 search path, (10), stand in the roadmap entry of that date on the handover
 steps; this skill says what is said, not the words; until that day the
 folder alone was read, and a tool in `~/go/bin` was set up and the chain
@@ -1249,8 +1256,18 @@ form:
   the command and devloop notice it at the next start, and of the line of
   22 October 2026 before it, which had them close the issue themselves.
   Where a command asks something, `sudo apt install` say, the line says
-  form B, the second terminal window and what it asks; no wording is
-  approved for that, this skill saying what is said.
+  form B: that the issue stays open; that the command, named, asks — a
+  password — and is therefore typed in a second terminal window, not the
+  one Claude Code runs in; that `/devloop:start-work` typed here afterwards
+  closes the issue and takes the task up again, or sets the check up
+  again, or both; and the asking again at every start, as above; the
+  wording stands in that entry among the decisions of 28 October 2026
+  after the push. Measured against `output-styles/devloop.md` as the yes
+  above: with one issue the no line six lines, fourteen of fourteen, at
+  the bound; with two issues whose commands ask it is seven, fifteen, so
+  the question does not fit the widget and is asked as text at the end of
+  the turn, with its text before it in the same message, as the style
+  says.
 
 The wording approved on 22 October 2026 stands in the roadmap entry of that
 date on the question after a refusal; this skill says what is said, not the

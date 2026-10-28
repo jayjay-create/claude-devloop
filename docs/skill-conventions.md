@@ -111,10 +111,19 @@ is typed, and the steps stand in the order in which they can take them — a
 command in the terminal after Claude Code is ended where it has to be,
 the start of Claude Code after that, the input into Claude Code last. As
 far as the steps are fixed and the run knows them: where the run does not
-know a step for the case for certain — the command that puts a folder on
-the search path in a shell it has no sure form for, say — it says for that
-step what is needed, names no command it does not know, and names the
-other steps. What the run can do itself it does, by the rule above, and
+know a step's command for the case for certain — the command that puts a
+folder on the search path in a shell it has no sure form for, say — it
+reads it first at the maker, in the guide of the program or of the shell,
+with its tools for the web, and gives it as it stands there, with the
+source; a command the guide itself warns against it does not give. Only
+where that yields no command — the run cannot read the page, or the page
+does not name the system — it says for that step what is needed, names no
+command it does not know, and names the other steps. Decided by the person
+on 28 October 2026, at their question why devloop refers to
+`cli.github.com` for `gh` instead of reading the command there itself;
+until then the step named no command wherever the run had no sure form,
+the roadmap entry of 28 October 2026 on the handover steps, its decisions
+after the push. What the run can do itself it does, by the rule above, and
 hands over no step for it. The person's rule of 28 October 2026: „alles
 was der Nutzer an befehlen oder schritten tun muss am computer sollte
 beschrieben sein bzw. in gesagt werde wie er vorzugehen hat, solange die
@@ -137,8 +146,8 @@ the handover steps, where the wordings stand.
 **Where the person types a command devloop hands them while Claude Code
 runs, the text says, and which of two forms holds follows from what the
 command does.** Decided by the person on 28 October 2026. Form A, a
-command that asks nothing — an install through a package manager, `git
-config`, the merge: it is typed in Claude Code with `!` in front, the text
+command that asks nothing — `brew install`, `git config`, the merge: it
+is typed in Claude Code with `!` in front, the text
 says so and gives the line with the `!`, `! brew install yq`. Claude Code
 runs it and puts the command and its output into the conversation, and the
 run answers that output: the person says nothing, the output in the

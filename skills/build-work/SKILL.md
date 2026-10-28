@@ -589,11 +589,19 @@ The subagent:
    single quotes so that the file carries the variable and not the path —
    `echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc` — and the load is
    `source ~/.zshrc`. For a shell the run has no sure form for — another
-   shell, or bash on a system other than those two, Windows with Git Bash
-   among them, where the `PATH` Claude Code runs under is Windows' own and
-   no bash file sets it — the step says that the folder has to go into
-   their `PATH` and names no command, and the other steps stand as above,
-   by the rule in `docs/skill-conventions.md`. The wording approved on 28
+   shell, fish say, or bash on a system other than those two, Windows with
+   Git Bash among them, where the `PATH` Claude Code runs under is Windows'
+   own and no bash file sets it — the run reads the command first in the
+   maker's guide, the shell's or the system's, with its tools for the web,
+   and gives it as it stands there, with the source, by the addition of 28
+   October 2026 to the rule in `docs/skill-conventions.md`: for fish the
+   page of fish on `fish_add_path`, which adds a folder once and keeps it;
+   a command the guide itself warns against it does not give. Only where
+   that yields no command — the page cannot be read, or it names neither
+   the shell nor the system — the step says that the folder has to go into
+   their `PATH` and names no command, and the other steps stand as above;
+   until that decision the step named no command wherever the run had no
+   sure form. The wording approved on 28
    October 2026 stands in the roadmap entry of that date on the hook on
    SubagentStart, (4), and this skill says what is said, not the words. In
    the session the last step opens, the tool stands on the search path
