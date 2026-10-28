@@ -758,9 +758,18 @@ paragraph above says and as the program's form `--installed` does, since on
 the search path an older copy from elsewhere answers the first question and
 looks like an answer to the second. A browser for tests is read in the
 vendor's folder, in the version the project's test tool needs, which
-Playwright's dry run names; where the project has no test tool yet to name
-it, or the folder for this system is not known, the line says not read, and
-a run says that and hands nothing over on a thing nobody read. The planning
+Playwright's dry run names, and only a package in the project's own
+`node_modules` says which, since 28 October 2026: measured that day on
+Linux, `npx --no-install` answered for a project without Playwright from
+a global package on the search path, and node resolves a module from the
+directories above the project, `NODE_PATH` and its global folders as
+well, so the program runs the project's `node_modules/.bin/playwright`
+and asks node only where the project holds Puppeteer, refusing a module
+resolved outside its `node_modules`; where the project has no package of
+the vendor to name the version, or the folder for this system is not
+known, the line says not read, and a run says that it could not be read
+and why, in the person's language, and hands nothing over on a thing
+nobody read. The planning
 calls it before it says anything of a tool, `plan-work` Stage 1; the call at
 the build and the read at the next start for an issue that blocks a task on
 a missing install come with the part on the build.

@@ -168,10 +168,13 @@ says which.
   here. Say what is in the tracker to read: the spec by its title, how many
   tasks, which one is ready first and what it unblocks. Where the spec names
   a tool outside the project whose line, printed by `bin/devloop-tool-state`,
-  says not found or not read, say that the work needs it and what the line
-  says, and that whether the build installs it or they get the command for
+  says not found or not read, say that the work needs it and, where the
+  line says not found, that it is missing on this machine, or, where it
+  says not read, that whether it stands cannot be read now and why, the
+  cause in their language and not in the program's words, since 28 October
+  2026, and that whether the build installs it or they get the command for
   it is decided by their permission to install as it stands then — what the
-  assumptions of a round of `plan-work` say of a missing tool, said here
+  assumptions of a round of `plan-work` say of such a tool, said here
   since 27 October 2026, new defect 4 of the roadmap entry of that date on
   the three closing runs, because this halt is where they next read on this
   route; `plan-work` says what is said, not the words. Say that nothing is

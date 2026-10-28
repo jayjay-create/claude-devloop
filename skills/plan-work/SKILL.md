@@ -322,19 +322,27 @@ a brief to an agent, the spec or a message — run
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --planning` once, with the
 shell, with every such tool named so far, each as it is called on the
 command line and a browser for tests as `VENDOR:NAME`, as the program's
-head says, and say of a tool only what the program printed: found, with
-the path; not found on the search path; or, for a browser, not read, with
-the cause. It reads this machine and nothing else, and says of the record
-only that the build decides. Where such a tool is missing on this machine,
-the assumptions of the round say that the work needs it and that it is
-missing, and that whether the run installs it at the build or they get the
-command for it is decided by their permission to install as it stands for
-this project then. Where the line says not read, the assumptions say that
-too, in the program's words, and that the same permission decides. Where a
+head says, and say of a tool only what the program printed: a command
+found, with the path, or not found on the search path; a browser found in
+the version the project's test tool needs, not found there, or not read,
+with the cause. It reads this machine and nothing else, and says of the
+record only that the build decides. Where the line says not found — a
+command not on the search path, or a browser that does not stand in the
+version the project's test tool needs, missing on this machine as the
+command is, since 28 October 2026, the paragraph of that date in the
+roadmap entry of 27 October 2026 on the program — the assumptions of the
+round say that the work needs it and that it is missing, and that whether
+the run installs it at the build or they get the command for it is decided
+by their permission to install as it stands for this project then. Where
+the line says not read, the assumptions say that the work needs the
+browser, that whether it stands on this machine in the version needed
+cannot be read now and why — the cause the line names, said in their
+language and not in the program's words, since 28 October 2026 — and that
+the same permission decides. Where a
 tool becomes known only after the round — in a draft, in the comparison or
 in the spec, as in run 2 of 26 October 2026, whose planning read `htmlq`
 and `mmdc` missing and wrote it into a comment alone — run the program
-then, and say what the assumptions of a round say of a missing tool at the
+then, and say what the assumptions of a round say of such a tool at the
 place where they next read: with them there, in the message that ends the
 turn that found it, before the design question where that is the next;
 after the answer "The plan without them", in the halt before the first
@@ -353,8 +361,9 @@ run installs nothing outside the project, and wrote it into the spec under
 Out of scope; in run 2a the person corrected the same, that the permission
 to install that holds when the work is built decides who installs, not the
 spec. The wording approved on 24 October 2026 stands in the roadmap entry of
-that date on how an install is recorded, (b); this skill says what is said,
-not the words.
+that date on how an install is recorded, (b), and the one for a browser
+not read, approved on 28 October 2026, in the roadmap entry of 27 October
+2026 on the program; this skill says what is said, not the words.
 
 Two things are not the user's job:
 

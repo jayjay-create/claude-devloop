@@ -32,22 +32,39 @@
 # vendor names for this system under "Whether it worked is read off the
 # result" in shared/backed-command.md, or in the folder a setting of the
 # vendor names where one is set. A browser counts as found only in the
-# version the project's test tool needs: for Playwright its dry run names
-# the version and the folder of that version, npx --no-install playwright
-# install --dry-run NAME, run in the project, which honours
+# version the project's test tool needs, and only a package in the
+# project's own node_modules says which, since 28 October 2026: for
+# Playwright its dry run names the version and the folder of that version,
+# node_modules/.bin/playwright install --dry-run NAME, the project's own
+# command run in the project - on Windows under Git Bash the shell script
+# npm, pnpm and yarn write beside the .cmd - which honours
 # PLAYWRIGHT_BROWSERS_PATH itself; for Cypress the version is the one of
 # node_modules/cypress in the project and the folder <cache>/<version>,
-# the cache CYPRESS_CACHE_FOLDER where it is set; for Puppeteer node, run
-# in the project, asks puppeteer-core for the build of the browser and
-# @puppeteer/browsers for its folder under the cache, PUPPETEER_CACHE_DIR
-# where it is set. The vendors' configuration files are not read. Where
-# the project has no test tool yet to say which version it needs, and on
-# a system for which the shared text names no folder - Windows among them -
-# with no setting of the vendor set, the line says neither found nor not
-# found but not read, with the cause: a run says of the browser what the
-# line says, nothing is handed over and no issue is raised on a thing
-# nobody read, "In doubt, a run with nobody there is not blocked" in
-# docs/skill-conventions.md, and under a yes the vendor's own install
+# the cache CYPRESS_CACHE_FOLDER where it is set; for Puppeteer, where
+# node_modules/puppeteer-core or node_modules/puppeteer stands in the
+# project, node, run in the project and told to resolve from it, asks
+# puppeteer-core for the build of the browser and @puppeteer/browsers for
+# its folder under the cache, PUPPETEER_CACHE_DIR where it is set, and
+# refuses a module whose real path lies outside the project's
+# node_modules. Measured on 28 October 2026 on Linux, in a directory
+# without node_modules and with a global Playwright on the search path,
+# npx --no-install playwright install --dry-run webkit answered for the
+# project with the global package's version, and node resolves a module
+# from the directories above the project, from NODE_PATH and from its
+# global folders as well; so a package elsewhere on this machine answers
+# for nothing here. A Playwright installed with pip into a virtual
+# environment, or a package in a sub-directory of the project, is not
+# read, the line naming the path looked at. The vendors' configuration
+# files are not read. Where the project has no package of the vendor to
+# say which version it needs, and on a system for which the shared text
+# names no folder - Windows among them - with no setting of the vendor
+# set, the line says neither found nor not found but not read, with the
+# cause: a run says of the browser that it could not be read and why, in
+# the person's language and not in the program's words - the wording
+# approved on 28 October 2026 stands in the roadmap entry of 27 October
+# 2026 on this program - nothing is handed over and no issue is raised on
+# a thing nobody read, "In doubt, a run with nobody there is not blocked"
+# in docs/skill-conventions.md, and under a yes the vendor's own install
 # leaves a browser that stands already as it stands.
 #
 # One line per TOOL, in the order given, each ending with the day it was
@@ -108,13 +125,16 @@
 # that cannot be entered; --self-test alone is the one exception.
 # --self-test produces every form of the lines and every exit code once,
 # independent of the search path and of the folders of the machine it runs
-# on: stand-ins for brew, npm, pnpm, yarn, bun, go, pipx, uv, gem, npx and
-# node, which the self-test alone puts first on the path, answer from the
-# case's script and log every call; a home directory of its own holds the
-# folders; DEVLOOP_TOOL_STATE_SYSTEM stands in for uname -s in the
-# self-test alone; and a throwaway repository whose main branch as last
-# fetched carries each case's record, committed under a fixed invented
-# identity, stands in for the project. It prints one line per case, names
+# on: stand-ins for brew, npm, pnpm, yarn, bun, go, pipx, uv, gem, node
+# and, as a global package would put them there, npx, playwright and
+# cypress, which the self-test alone puts first on the path, answer from
+# the case's script and log every call, and the project's own
+# node_modules/.bin/playwright is the same stand-in where a case gives the
+# project a Playwright; a home directory of its own holds the folders;
+# DEVLOOP_TOOL_STATE_SYSTEM stands in for uname -s in the self-test alone;
+# and a throwaway repository whose main branch as last fetched carries
+# each case's record, committed under a fixed invented identity, stands in
+# for the project. It prints one line per case, names
 # every case that does not come out as this head says with what the
 # program printed, and exits 1 at its end where any was red. It needs bash
 # and no GNU tool; .github/workflows/stock-take.yml runs it with every
@@ -134,15 +154,19 @@ selftest() {
   P=$T/project
   DAY=$(date +%Y-%m-%d)
   mkdir -p "$T/bin" "$T/home/bin" "$T/w" "$P/docs/agents" "$T/s"
-  # The stand-ins. Each answers call N of its name from the case's script,
-  # $T/s/NAME.N, or from $T/s/NAME.d where N has none; it logs every call
-  # in order and marks a call no answer was scripted for, which makes the
-  # case red; as bin/devloop-start-conditions' stand-in for gh does.
-  for s in brew npm pnpm yarn bun go pipx uv gem npx node; do
-    cat > "$T/bin/$s" <<'IN'
+  # The stand-ins. Each answers call N of its label from the case's script,
+  # $T/s/LABEL.N, or from $T/s/LABEL.d where N has none; it logs every call
+  # in order under its label and marks a call no answer was scripted for,
+  # which makes the case red; as bin/devloop-start-conditions' stand-in for
+  # gh does. On the path stand the installers, node, and - as a global
+  # package would put them there, since 28 October 2026 - npx, playwright
+  # and cypress, which no case may see asked; the project's own
+  # node_modules/.bin/playwright is the same stand-in under the label
+  # project-playwright, put there by pw below.
+  cat > "$T/standin.sh" <<'IN'
 #!/bin/sh
-S=$(cd "$(dirname "$0")/.." && pwd)/s
-n=$(basename "$0")
+S=__S__
+n=__N__
 i=$(( $(cat "$S/$n.n" 2>/dev/null || echo 0) + 1 ))
 echo "$i" > "$S/$n.n"
 echo "$n $*" >> "$S/log"
@@ -152,8 +176,9 @@ a=$S/$n.$i
 cat "$a.out"; cat "$a.err" >&2
 exit "$(cat "$a.rc")"
 IN
-    chmod +x "$T/bin/$s"
-  done
+  # standin PATH LABEL: the stand-in at PATH, answering and logging under LABEL
+  standin() { sed "s|__S__|$T/s|; s|__N__|$2|" "$T/standin.sh" > "$1"; chmod +x "$1"; }
+  for s in brew npm pnpm yarn bun go pipx uv gem npx node playwright cypress; do standin "$T/bin/$s" "$s"; done
   # the tool that stands on the search path of every case: an executable file under the self-test's home
   : > "$T/home/bin/devloop-selftest-present"; chmod +x "$T/home/bin/devloop-selftest-present"
   [ "$(PATH="$T/bin:$PATH" command -v npx)" = "$T/bin/npx" ] || { echo "FAIL the stand-in for npx is not the npx the path finds"; exit 1; }
@@ -177,14 +202,20 @@ install-answered: 2026-10-25'
 install-tools: no
 install-answered: 2026-10-26'
   # fresh: a new script, every stand-in without an answer, the log empty, the folders of the home directory as they were made
-  fresh() { rm -rf "$T/s" "$T/home/Library" "$T/home/.cache" "$T/home/cyp" "$T/home/pup" "$T/home/hb" "$T/home/npm" "$T/home/go" "$T/home/cg" "$T/home/.cargo" "$T/home/x"; mkdir "$T/s"; : > "$T/s/log"; SYS=Darwin; WITH=; }
+  fresh() { rm -rf "$T/s" "$T/home/Library" "$T/home/.cache" "$T/home/cyp" "$T/home/pup" "$T/home/hb" "$T/home/npm" "$T/home/go" "$T/home/cg" "$T/home/.cargo" "$T/home/x" "$P/node_modules" "$T/node_modules"; mkdir "$T/s"; : > "$T/s/log"; SYS=Darwin; WITH=; }
+  # pw: the project gets a Playwright, the stand-in standing as node_modules/.bin/playwright and answering under the label project-playwright
+  pw() { mkdir -p "$P/node_modules/.bin"; standin "$P/node_modules/.bin/playwright" project-playwright; }
+  # pkg NAME [VERSION]: the project gets the package NAME in its node_modules, with VERSION in its package.json
+  pkg() { mkdir -p "$P/node_modules/$1"; printf '{\n  "name": "%s",\n  "version": "%s"\n}\n' "$1" "${2:-0.0.0}" > "$P/node_modules/$1/package.json"; }
+  # outside NAME: the package NAME in the directory above the project, where node would resolve it from and the program may not
+  outside() { mkdir -p "$T/node_modules/$1"; printf '{\n  "name": "%s",\n  "version": "1.0.0"\n}\n' "$1" > "$T/node_modules/$1/package.json"; }
   # ans NAME N RC OUT [ERR]: the answer to call N of NAME, d for every call N has none
   ans() { printf '%s\n' "$3" > "$T/s/$1.$2.rc"; : > "$T/s/$1.$2.out"; : > "$T/s/$1.$2.err"; [ -z "$4" ] || printf '%s\n' "$4" > "$T/s/$1.$2.out"; [ -z "${5:-}" ] || printf '%s\n' "$5" > "$T/s/$1.$2.err"; }
   # folder PATH [FILE]: the folder made, with FILE in it where one is named
   folder() { mkdir -p "$1"; [ -z "${2:-}" ] || : > "$1/$2"; }
   # run [ARGUMENT...]: the program, once, in the throwaway project, against the stand-ins, with the home directory of the self-test, SYS for uname -s and the variables of WITH
   run() { rundir "$P" "$@"; }
-  rundir() { local d=$1; shift; ( cd "$d" && unset CYPRESS_CACHE_FOLDER PUPPETEER_CACHE_DIR CARGO_HOME CARGO_INSTALL_ROOT PLAYWRIGHT_BROWSERS_PATH && PATH="$T/bin:$T/home/bin:$PATH" HOME="$T/home" CLAUDE_PROJECT_DIR="$d" DEVLOOP_TOOL_STATE_SYSTEM="$SYS" GIT_CEILING_DIRECTORIES="$T" env ${WITH:+$WITH} "$self" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
+  rundir() { local d=$1; shift; ( cd "$d" && unset CYPRESS_CACHE_FOLDER PUPPETEER_CACHE_DIR CARGO_HOME CARGO_INSTALL_ROOT PLAYWRIGHT_BROWSERS_PATH NODE_PATH && PATH="$T/bin:$T/home/bin:$PATH" HOME="$T/home" CLAUDE_PROJECT_DIR="$d" DEVLOOP_TOOL_STATE_SYSTEM="$SYS" GIT_CEILING_DIRECTORIES="$T" env ${WITH:+$WITH} "$self" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
   # fail NAME WHAT: the case NAME is red for WHAT; the program's output is printed once per red case, and every red case is named
   fail() { echo "FAIL $1: $2"; [ "$LASTRED" = "$1" ] || { printf '%s\n' "$out" | sed 's/^/    /'; LASTRED=$1; f=$((f + 1)); }; RED=1; }
   # calls NAME LINE...: the stand-ins were called with these lines, in this order, and with nothing else
@@ -261,49 +292,58 @@ FFmpeg (playwright ffmpeg v1013)
   expect "--build outside any repository: the reader's cause" 0 "record: none, because this is not a git repository, so there is no default branch to read the record off: as under no, $WAY"
   record "$YES"
 
-  # a browser of Playwright: the dry run names the version and the folder
-  fresh; ans npx d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit
-  calls "playwright: the folder of the dry run stands, found" "npx --no-install playwright install --dry-run webkit"
+  # a browser of Playwright: the project's own command names the version and the folder; a package outside the project answers for nothing
+  fresh; pw; ans project-playwright d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit
+  calls "playwright: the folder of the dry run stands, found" "project-playwright install --dry-run webkit"
   expect "playwright: the folder of the dry run stands, found" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
-  fresh; ans npx d 0 "$DRY"; run --planning playwright:webkit
+  fresh; pw; ans project-playwright d 0 "$DRY"; run --planning playwright:webkit
   expect "playwright: the folder absent, not found" 1 "playwright:webkit: not found: nothing stands at ~/Library/Caches/ms-playwright/webkit-9999, the folder of WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
-  fresh; ans npx d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999"; run --planning playwright:webkit
+  fresh; pw; ans project-playwright d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999"; run --planning playwright:webkit
   expect "playwright: the folder empty, not found" 1 "playwright:webkit: not found: nothing stands at ~/Library/Caches/ms-playwright/webkit-9999, the folder of WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
-  fresh; ans npx d 1 '' 'npm error could not determine executable to run'; run --planning playwright:chromium
-  expect "playwright: the project has no Playwright, the dry run does not answer, not read" 1 "playwright:chromium: not read, because the project's Playwright did not say which version of chromium it needs: npx --no-install playwright install --dry-run chromium did not answer: npm error could not determine executable to run (on $DAY)"
-  fresh; ans npx d 127 '' 'devloop-bounded: line 106: npx: command not found'; run --planning playwright:webkit
-  expect "playwright: npx not on the path, not read" 1 "playwright:webkit: not read, because the project's Playwright did not say which version of webkit it needs: npx --no-install playwright install --dry-run webkit did not answer: npx is not on PATH (on $DAY)"
-  fresh; ans npx d 0 'Nothing to install'; run --planning playwright:webkit
+  fresh; ans npx d 0 "$DRY"; ans playwright d 0 "$DRY"; run --planning playwright:chromium
+  calls "playwright: no package in the project, a global one on the path that would answer: not read, nothing asked"
+  expect "playwright: no package in the project, a global one on the path that would answer: not read, nothing asked" 1 "playwright:chromium: not read, because the project has no Playwright package to say which version of chromium it needs, no node_modules/.bin/playwright (on $DAY)"
+  fresh; pw; ans project-playwright d 1 '' 'Error: browserType.launch: Executable does not exist'; run --planning playwright:chromium
+  expect "playwright: the project's command does not answer, not read" 1 "playwright:chromium: not read, because the project's Playwright did not say which version of chromium it needs: node_modules/.bin/playwright install --dry-run chromium did not answer: Error: browserType.launch: Executable does not exist (on $DAY)"
+  fresh; pw; ans project-playwright d 127 '' 'env: node: No such file or directory'; run --planning playwright:webkit
+  expect "playwright: the project's command finds no node, not read with its message" 1 "playwright:webkit: not read, because the project's Playwright did not say which version of webkit it needs: node_modules/.bin/playwright install --dry-run webkit did not answer: env: node: No such file or directory (on $DAY)"
+  fresh; pw; ans project-playwright d 127 ''; run --planning playwright:webkit
+  expect "playwright: the project's command ends with 127 and says nothing, not read with the code" 1 "playwright:webkit: not read, because the project's Playwright did not say which version of webkit it needs: node_modules/.bin/playwright install --dry-run webkit did not answer: ended with 127 (on $DAY)"
+  fresh; pw; ans project-playwright d 0 'Nothing to install'; run --planning playwright:webkit
   expect "playwright: the dry run prints no install location, not read" 1 "playwright:webkit: not read, because the dry run printed no install location: Nothing to install (on $DAY)"
 
   # a browser of Cypress: the version of the project's package, the folder of the setting or of this system
-  fresh; mkdir -p "$P/node_modules/cypress"; printf '{\n  "name": "cypress",\n  "version": "13.6.0"\n}\n' > "$P/node_modules/cypress/package.json"
-  folder "$T/home/cyp/13.6.0" Cypress; WITH="CYPRESS_CACHE_FOLDER=$T/home/cyp/"; run --planning cypress:binary
+  fresh; pkg cypress 13.6.0; folder "$T/home/cyp/13.6.0" Cypress; WITH="CYPRESS_CACHE_FOLDER=$T/home/cyp/"; run --planning cypress:binary
   expect "cypress: the folder of the setting, found" 0 "cypress:binary: found at ~/cyp/13.6.0, Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
-  fresh; run --planning cypress:binary
+  fresh; pkg cypress 13.6.0; run --planning cypress:binary
   expect "cypress: the folder of this system on macOS, absent, not found" 1 "cypress:binary: not found: nothing stands at ~/Library/Caches/Cypress/13.6.0, the folder of Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
-  fresh; SYS=Linux; folder "$T/home/.cache/Cypress/13.6.0" Cypress; run --planning cypress:binary
+  fresh; pkg cypress 13.6.0; SYS=Linux; folder "$T/home/.cache/Cypress/13.6.0" Cypress; run --planning cypress:binary
   expect "cypress: the folder of this system on Linux, found" 0 "cypress:binary: found at ~/.cache/Cypress/13.6.0, Cypress 13.6.0 as the project's Cypress needs it (on $DAY)"
-  fresh; SYS=MINGW64_NT-10.0-20348; run --planning cypress:binary
+  fresh; pkg cypress 13.6.0; SYS=MINGW64_NT-10.0-20348; run --planning cypress:binary
   expect "cypress: no folder for this system and no setting, not read" 1 "cypress:binary: not read, because shared/backed-command.md names no folder for Cypress on this system (MINGW64_NT-10.0-20348) and CYPRESS_CACHE_FOLDER is not set (on $DAY)"
-  rm -rf "$P/node_modules"
-  fresh; run --planning cypress:binary
-  expect "cypress: the project has no Cypress package, not read" 1 "cypress:binary: not read, because the project has no Cypress package to say which version it needs, no version in node_modules/cypress/package.json (on $DAY)"
+  fresh; outside cypress; ans cypress d 0 '13.6.0'; run --planning cypress:binary
+  calls "cypress: no package in the project, one above it and one on the path: not read, nothing asked"
+  expect "cypress: no package in the project, one above it and one on the path: not read, nothing asked" 1 "cypress:binary: not read, because the project has no Cypress package to say which version it needs, no version in node_modules/cypress/package.json (on $DAY)"
 
-  # a browser of Puppeteer: node asks the project's Puppeteer for the build and its folder
-  fresh; ans node d 0 "$(printf '156.0.1\n%s' "$EXE")"; folder "$(dirname "$EXE")" "$(basename "$EXE")"; run --planning puppeteer:chrome
+  # a browser of Puppeteer: node, told to resolve from the project, asks the project's Puppeteer for the build and its folder
+  fresh; pkg puppeteer-core; ans node d 0 "$(printf '156.0.1\n%s' "$EXE")"; folder "$(dirname "$EXE")" "$(basename "$EXE")"; run --planning puppeteer:chrome
   expect "puppeteer: the build's executable stands, found" 0 "puppeteer:chrome: found at ~/.cache/puppeteer/chrome/mac_arm-156.0.1, chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
-  fresh; ans node d 0 "$(printf '156.0.1\n%s' "$EXE")"; run --planning puppeteer:chrome
-  expect "puppeteer: the executable absent, not found" 1 "puppeteer:chrome: not found: nothing stands at ~/.cache/puppeteer/chrome/mac_arm-156.0.1, the folder of chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
-  fresh; ans node d 0 "$(printf '156.0.1\n%s/pup/chrome/mac_arm-156.0.1/chrome' "$T/home")"; folder "$T/home/pup/chrome/mac_arm-156.0.1" chrome; WITH="PUPPETEER_CACHE_DIR=$T/home/pup"; run --planning puppeteer:chrome
+  fresh; pkg puppeteer; ans node d 0 "$(printf '156.0.1\n%s' "$EXE")"; run --planning puppeteer:chrome
+  expect "puppeteer: the package puppeteer in the project, the executable absent, not found" 1 "puppeteer:chrome: not found: nothing stands at ~/.cache/puppeteer/chrome/mac_arm-156.0.1, the folder of chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
+  fresh; pkg puppeteer-core; ans node d 0 "$(printf '156.0.1\n%s/pup/chrome/mac_arm-156.0.1/chrome' "$T/home")"; folder "$T/home/pup/chrome/mac_arm-156.0.1" chrome; WITH="PUPPETEER_CACHE_DIR=$T/home/pup"; run --planning puppeteer:chrome
   expect "puppeteer: the folder of the setting, found" 0 "puppeteer:chrome: found at ~/pup/chrome/mac_arm-156.0.1, chrome 156.0.1 as the project's Puppeteer needs it (on $DAY)"
-  fresh; ans node d 1 '' "$(printf 'node:internal/modules/cjs/loader:1228\n  throw err;\n  ^\n\nError: Cannot find module '"'"'puppeteer-core/internal/revisions.js'"'"'\nRequire stack:\n- [eval]')"; run --planning puppeteer:chrome
-  expect "puppeteer: the project has no Puppeteer, node does not answer, not read" 1 "puppeteer:chrome: not read, because the project's Puppeteer did not say which build of chrome it needs: node, asked for the build of chrome and its folder under ~/.cache/puppeteer, did not answer: Error: Cannot find module 'puppeteer-core/internal/revisions.js' (on $DAY)"
-  fresh; ans node d 0 "$(printf '\n')"; run --planning puppeteer:firefox
+  fresh; pkg puppeteer-core; ans node d 1 '' "$(printf 'node:internal/modules/cjs/loader:1228\n  throw err;\n  ^\n\nError: Cannot find module '"'"'puppeteer-core/internal/revisions.js'"'"'\nRequire stack:\n- [eval]')"; run --planning puppeteer:chrome
+  expect "puppeteer: node does not answer, not read" 1 "puppeteer:chrome: not read, because the project's Puppeteer did not say which build of chrome it needs: node, asked for the build of chrome and its folder under ~/.cache/puppeteer, did not answer: Error: Cannot find module 'puppeteer-core/internal/revisions.js' (on $DAY)"
+  fresh; pkg puppeteer-core; ans node d 3 '' "puppeteer-core/internal/revisions.js resolved outside the project's node_modules, at ~/x/node_modules/puppeteer-core/internal/revisions.js"; run --planning puppeteer:chrome
+  expect "puppeteer: node refuses a module outside the project's node_modules, not read" 1 "puppeteer:chrome: not read, because the project's Puppeteer did not say which build of chrome it needs: node, asked for the build of chrome and its folder under ~/.cache/puppeteer, did not answer: puppeteer-core/internal/revisions.js resolved outside the project's node_modules, at ~/x/node_modules/puppeteer-core/internal/revisions.js (on $DAY)"
+  fresh; pkg puppeteer-core; ans node d 0 "$(printf '\n')"; run --planning puppeteer:firefox
   expect "puppeteer: no build for the browser, not read" 1 "puppeteer:firefox: not read, because the project's Puppeteer names no build of firefox, PUPPETEER_REVISIONS having no entry for it (on $DAY)"
-  fresh; SYS=MINGW64_NT-10.0-20348; run --planning puppeteer:chrome
+  fresh; pkg puppeteer-core; SYS=MINGW64_NT-10.0-20348; run --planning puppeteer:chrome
   calls "puppeteer: no folder for this system and no setting, not read, node not asked"
   expect "puppeteer: no folder for this system and no setting, not read, node not asked" 1 "puppeteer:chrome: not read, because shared/backed-command.md names no folder for Puppeteer on this system (MINGW64_NT-10.0-20348) and PUPPETEER_CACHE_DIR is not set (on $DAY)"
+  fresh; outside puppeteer-core; folder "$T/home/x/node_modules/puppeteer-core" package.json; WITH="NODE_PATH=$T/home/x/node_modules"; ans node d 0 "$(printf '156.0.1\n%s' "$EXE")"; run --planning puppeteer:chrome
+  calls "puppeteer: no package in the project, one above it and one on NODE_PATH that would answer: not read, node not asked"
+  expect "puppeteer: no package in the project, one above it and one on NODE_PATH that would answer: not read, node not asked" 1 "puppeteer:chrome: not read, because the project has no Puppeteer package to say which build of chrome it needs, neither node_modules/puppeteer-core nor node_modules/puppeteer (on $DAY)"
 
   # --installed: the folder the installer writes to, read off the installer
   fresh; ans brew d 0 "$T/home/hb"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed 'brew install devloop-selftest-present' devloop-selftest-present
@@ -318,8 +358,8 @@ FFmpeg (playwright ffmpeg v1013)
   expect "brew --prefix prints nothing: not read" 1 "yq: not read, because brew --prefix printed no folder (on $DAY)"
   fresh; ans brew d 3 ''; run --installed 'brew install yq' yq
   expect "brew --prefix ends otherwise than 0 and prints nothing: the code it ended with" 1 "yq: not read, because brew --prefix did not answer: ended with 3 (on $DAY)"
-  fresh; ans npx d 1 "Error: unknown browser: safari"; run --planning playwright:safari
-  expect "the dry run answers on stdout alone: that line" 1 "playwright:safari: not read, because the project's Playwright did not say which version of safari it needs: npx --no-install playwright install --dry-run safari did not answer: Error: unknown browser: safari (on $DAY)"
+  fresh; pw; ans project-playwright d 1 "Error: unknown browser: safari"; run --planning playwright:safari
+  expect "the dry run answers on stdout alone: that line" 1 "playwright:safari: not read, because the project's Playwright did not say which version of safari it needs: node_modules/.bin/playwright install --dry-run safari did not answer: Error: unknown browser: safari (on $DAY)"
   fresh; ans brew d 0 "$T/home/hb"; folder "$T/home/hb/bin" devloop-selftest-present; run --installed 'HOMEBREW_NO_AUTO_UPDATE=1 brew install devloop-selftest-present' devloop-selftest-present
   calls "a VAR=value before the installer is passed over" "brew --prefix"
   expect "a VAR=value before the installer is passed over" 0 "devloop-selftest-present: found at ~/hb/bin/devloop-selftest-present, the folder brew writes to, read off brew --prefix (on $DAY)"
@@ -359,7 +399,7 @@ FFmpeg (playwright ffmpeg v1013)
   expect "installed by cargo: nothing set, ~/.cargo/bin" 1 "devloop-selftest-present: not found at ~/.cargo/bin/devloop-selftest-present, the folder cargo writes to, read off CARGO_INSTALL_ROOT, CARGO_HOME or ~/.cargo as cargo documents them, cargo having no query for it; a copy elsewhere on the search path does not count (on $DAY)"
   fresh; run --installed 'curl -fsSL https://example.invalid/install.sh | sh' devloop-selftest-present
   expect "an installer this program does not read: not read" 1 "devloop-selftest-present: not read, because this program reads the folder of brew, npm, pnpm, yarn, bun, go, pipx, uv, gem and cargo off the installer, and 'curl' is none of them (on $DAY)"
-  fresh; ans npx d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --installed 'npx playwright install webkit' playwright:webkit
+  fresh; pw; ans project-playwright d 0 "$DRY"; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --installed 'npx playwright install webkit' playwright:webkit
   lines "--installed with a browser: read as the browser, whatever the command, no record line" 1
   expect "--installed with a browser: read as the browser, whatever the command, no record line" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
 
@@ -376,7 +416,8 @@ DAY=$(date +%Y-%m-%d)
 SYSTEM=${DEVLOOP_TOOL_STATE_SYSTEM:-$(uname -s)}
 WIN=""
 case $SYSTEM in MINGW*|MSYS*|CYGWIN*|Windows*) WIN=yes ;; esac
-PUPPETEER_JS='const r=require("puppeteer-core/internal/revisions.js").PUPPETEER_REVISIONS;const b=require("@puppeteer/browsers");const id=r[process.argv[1]]||"";console.log(id);console.log(id&&b.computeExecutablePath({browser:process.argv[1],buildId:id,cacheDir:process.argv[2]}));'
+# node resolves from the project and from nothing else that answers: the lookup starts at the project's puppeteer where one stands in its node_modules, else at the project, and a module whose real path lies outside the project's node_modules is refused with exit 3, since 28 October 2026
+PUPPETEER_JS='const fs=require("fs"),path=require("path");const name=process.argv[1],cache=process.argv[2],proj=fs.realpathSync(process.argv[3]);const inside=path.join(proj,"node_modules")+path.sep;const within=p=>fs.realpathSync(p).startsWith(inside);const home=process.env.HOME;const show=p=>home&&p.startsWith(home+path.sep)?"~"+p.slice(home.length):p;const from=[proj];try{const d=path.dirname(require.resolve("puppeteer/package.json",{paths:[proj]}));if(within(d))from.unshift(d)}catch(e){}const need=id=>{const p=require.resolve(id,{paths:from});if(!within(p)){process.stderr.write(id+" resolved outside the project'"'"'s node_modules, at "+show(p)+"\n");process.exit(3)}return require(p)};const r=need("puppeteer-core/internal/revisions.js").PUPPETEER_REVISIONS;const b=need("@puppeteer/browsers");const id=r[name]||"";console.log(id);console.log(id&&b.computeExecutablePath({browser:name,buildId:id,cacheDir:cache}));'
 WAY="a tool that is missing is handed to the person as a backed command with both ways before anything is built against a stand-in, build-work step 3 point 7"
 
 FORM=${1:-}
@@ -422,7 +463,7 @@ ask() {
   FAIL=""
   case $RC in
     0) ;;
-    127) FAIL="$label did not answer: $1 is not on PATH" ;;
+    127) [ "${1##*/}" = "$1" ] && FAIL="$label did not answer: $1 is not on PATH" || FAIL="$label did not answer: ${err:-ended with 127}" ;;
     *) FAIL="$label did not answer: ${err:-${OUT:-ended with $RC}}" ;;
   esac
 }
@@ -450,11 +491,13 @@ tool_line() {
 # browser_line VENDOR NAME: the line of a browser for tests, found only in the version the project's test tool needs
 browser_line() {
   local vendor=$1 name=$2 arg="$1:$2" folder="" version="" probe="" id="" exe="" rel
-  CAUSE=""
+  CAUSE=""; FAIL=""
   case $vendor in
     playwright)
-      ask "npx --no-install playwright install --dry-run $name" npx --no-install playwright install --dry-run "$name"
-      [ -z "$FAIL" ] || CAUSE="the project's Playwright did not say which version of $name it needs: $FAIL"
+      # the project's own command and never npx, which falls back to a package outside the project, since 28 October 2026
+      [ -e node_modules/.bin/playwright ] || CAUSE="the project has no Playwright package to say which version of $name it needs, no node_modules/.bin/playwright"
+      [ -n "$CAUSE" ] || ask "node_modules/.bin/playwright install --dry-run $name" node_modules/.bin/playwright install --dry-run "$name"
+      [ -n "$CAUSE" ] || [ -z "$FAIL" ] || CAUSE="the project's Playwright did not say which version of $name it needs: $FAIL"
       [ -n "$CAUSE" ] || { version=$(printf '%s\n' "$OUT" | grep -m1 .); folder=$(printf '%s\n' "$OUT" | sed -n 's/^ *Install location: *//p' | head -n 1); folder=${folder%/}; probe=$folder; }
       [ -n "$CAUSE" ] || [ -n "$folder" ] || CAUSE="the dry run printed no install location: $(printf '%s\n' "$OUT" | flat)" ;;
     cypress)
@@ -463,8 +506,10 @@ browser_line() {
       [ -n "$CAUSE" ] || cache CYPRESS_CACHE_FOLDER Library/Caches/Cypress .cache/Cypress Cypress
       [ -n "$CAUSE" ] || { folder=$CACHE/$version; probe=$folder; version="Cypress $version"; } ;;
     puppeteer)
-      cache PUPPETEER_CACHE_DIR .cache/puppeteer .cache/puppeteer Puppeteer
-      [ -n "$CAUSE" ] || ask "node, asked for the build of $name and its folder under $(tilde "$CACHE")," node -e "$PUPPETEER_JS" "$name" "$CACHE"
+      # only where the project holds the package: node would resolve a module from the directories above the project, NODE_PATH and its global folders as well, since 28 October 2026
+      [ -e node_modules/puppeteer-core/package.json ] || [ -e node_modules/puppeteer/package.json ] || CAUSE="the project has no Puppeteer package to say which build of $name it needs, neither node_modules/puppeteer-core nor node_modules/puppeteer"
+      [ -n "$CAUSE" ] || cache PUPPETEER_CACHE_DIR .cache/puppeteer .cache/puppeteer Puppeteer
+      [ -n "$CAUSE" ] || ask "node, asked for the build of $name and its folder under $(tilde "$CACHE")," node -e "$PUPPETEER_JS" "$name" "$CACHE" "$PWD"
       [ -n "$CAUSE" ] || [ -z "$FAIL" ] || CAUSE="the project's Puppeteer did not say which build of $name it needs: $FAIL"
       [ -n "$CAUSE" ] || { id=$(printf '%s\n' "$OUT" | sed -n 1p); exe=$(printf '%s\n' "$OUT" | sed -n 2p); }
       [ -n "$CAUSE" ] || [ -n "$id" ] || CAUSE="the project's Puppeteer names no build of $name, PUPPETEER_REVISIONS having no entry for it"

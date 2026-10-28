@@ -40174,12 +40174,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
 - **Tool state read by one program, the planning saying only what it read.**
   27 October 2026, version 0.163.0. On `task/tool-state-and-planning-read`,
-  off `89932f8`, in two commits: the program with the version, the texts
+  off `89932f8`, in three commits: the program with the version, the texts
   that name it and the rows of the things it changes; then this entry with
   the sentence in `docs/plan.md`, the point reopened under "## Decisions
-  taken against" and the rows they need. Part 1 of the rebuild of milestone
-  3, decision (7) below: `bin/devloop-tool-state`, new; the text of
-  `plan-work` for new defect 4 of the entry at line 38963, status line
+  taken against" and the rows they need; then, on 28 October 2026, the
+  addendum at the end of this entry with its rows. Part 1 of the rebuild of
+  milestone 3, decision (7) below: `bin/devloop-tool-state`, new; the text
+  of `plan-work` for new defect 4 of the entry at line 38963, status line
   39535; the clause of new defect 5 of that entry, status line 39548; a
   paragraph in `docs/skill-conventions.md`; and the decisions of 27 October
   2026 on milestone 3, recorded below. The defects of that entry are named
@@ -40199,7 +40200,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   stand-in checks of two self-tests and the install guard's read for `deno
   upgrade`, line 623, and the guard resolves the folders of its routes for
   its own block, lines 1096 to 1103, inside the hook, callable by nothing.
-  Three forms, its head lines 1 to 121: `--planning TOOL ...`, which
+  Three forms, its head lines 1 to 141: `--planning TOOL ...`, which
   `plan-work` calls; `--build TOOL ...`, the call before the start of the
   build subagent; and `--installed COMMAND TOOL`, the read at the next
   start for an open issue that blocks a task on a missing install and the
@@ -40211,28 +40212,34 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   read in the folder the vendor names for this system under "Whether it
   worked is read off the result" in `shared/backed-command.md` or in the
   folder its setting names, and found only in the version the project's
-  test tool needs: Playwright's dry run, run in the project, names the
-  version and the folder, lines 16 to 26 of the shared text; for Cypress
-  the version is the project's `node_modules/cypress` and the folder
-  `<cache>/<version>`; for Puppeteer node, run in the project, asks
-  `puppeteer-core` for the build and `@puppeteer/browsers` for its folder
-  under the cache. One line per TOOL, head lines 53 to 62, each ending with
+  test tool needs: Playwright's dry run, the project's own
+  `node_modules/.bin/playwright` run in the project since 28 October 2026,
+  names the version and the folder, lines 16 to 26 of the shared text; for
+  Cypress the version is the project's `node_modules/cypress` and the
+  folder `<cache>/<version>`; for Puppeteer node, run in the project and
+  since that day told to resolve from the project's `node_modules` alone,
+  asks `puppeteer-core` for the build and `@puppeteer/browsers` for its
+  folder under the cache; only a package in the project's own
+  `node_modules` answers, since that day, the addendum below saying why.
+  One line per TOOL, head lines 70 to 79, each ending with
   the day it was read, `(on 2026-10-27)`, so that the spec carries the day
   as printed: `TOOL: found at PATH`, `TOOL: not found on the search path`,
   `VENDOR:NAME: found at FOLDER, VERSION as the project's Vendor needs it`,
   `VENDOR:NAME: not found: nothing stands at FOLDER, the folder of VERSION
   ...`, and `VENDOR:NAME: not read, because CAUSE` — where the project has
-  no test tool yet to say which version it needs, where the shared text
+  no package of the vendor to say which version it needs, where the shared
+  text
   names no folder for this system, Windows among them, and no setting is
   set, where the dry run printed no install location, or where Puppeteer
   names no build. Not read says neither found nor not found: the program
-  reads and does not judge, a run says of the browser what the line says
-  and hands nothing over and raises nothing on a thing nobody read, "In
-  doubt, a run with nobody there is not blocked", and under a yes the
-  vendor's own installer leaves a browser that stands already as it
-  stands. A path under the home directory is written with `~`, as
+  reads and does not judge, a run says of the browser that it could not
+  be read and why, in the person's language — the wording of 28 October
+  2026 below — and hands nothing over and raises nothing on a thing
+  nobody read, "In doubt, a run with nobody there is not blocked", and
+  under a yes the vendor's own installer leaves a browser that stands
+  already as it stands. A path under the home directory is written with `~`, as
   `bin/devloop-install-note` writes a folder. Then the record line, head
-  lines 63 to 75: under `--planning` the record is not read and the line
+  lines 80 to 93: under `--planning` the record is not read and the line
   says that whether the run installs a tool that is missing at the build or
   the person gets the command for it is decided by the record as it stands
   at the build, `build-work` step 3 point 7, and that the planning settles
@@ -40246,7 +40253,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   "a tool that is missing is handed to the person as a backed command with
   both ways before anything is built against a stand-in" under a no, and
   under no record the reader's cause, "as under no". Under `--installed`,
-  head lines 77 to 99, whether COMMAND installed TOOL is read in the folder
+  head lines 94 to 113, whether COMMAND installed TOOL is read in the folder
   the installer writes to, off the installer itself and never on the search
   path, where an older copy from elsewhere looks like a success: `brew
   --prefix`, `npm prefix -g` with `-g` or `--global`, `go env GOBIN` or
@@ -40262,7 +40269,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   query runs under `bin/devloop-bounded` with sixty seconds. Exit 0 where
   every TOOL is found, 1 where one is not found or not read, the record
   line never changing it, 2 with one line on stderr for the arguments, head
-  lines 103 to 108. The lines of the report of 27 October 2026 on the ways,
+  lines 120 to 125. The lines of the report of 27 October 2026 on the ways,
   F.4 and J, W5, are taken where they carry — `found at`, `not found on the
   search path`, the three record lines of `--build` in substance — and
   changed where they do not: the day at the end of each tool line, since
@@ -40270,12 +40277,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   ways before anything is built against a stand-in", since the should of
   new defect 7 names the stand-in; and the line of `--planning`, which W5
   did not have, since the planning may not name the answer.
-  The self-test, lines 127 to 368: 58 cases, every form of every line and
-  every exit code, against stand-ins for brew, npm, pnpm, yarn, bun, go,
-  pipx, uv, gem, npx and node that answer from the case's script and log
-  every call, a home directory of its own, `DEVLOOP_TOOL_STATE_SYSTEM` for
-  `uname -s`, and a throwaway repository committed under the fixed invented
-  identity; `SELF-TEST PASSED: 58 cases` in the shell and in a clean bash.
+  The self-test, lines 147 to 409: 62 cases since the addendum of 28
+  October 2026, 58 on 27 October 2026, every form of every line and every
+  exit code, against stand-ins for brew, npm, pnpm, yarn, bun, go, pipx,
+  uv, gem, node and, as a global package would put them there, npx,
+  playwright and cypress, that answer from the case's script and log every
+  call, the project's own `node_modules/.bin/playwright` the same stand-in,
+  a home directory of its own, `DEVLOOP_TOOL_STATE_SYSTEM` for `uname -s`,
+  and a throwaway repository committed under the fixed invented identity;
+  `SELF-TEST PASSED: 62 cases` in the shell and in a clean bash, 58 before
+  the addendum.
   The job "hooks on every system", `.github/workflows/stock-take.yml`
   lines 374 to 382, runs every file under `bin/` that carries `--self-test`
   by its own first line and leaves out under Windows the two it names, so
@@ -40348,7 +40359,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   version came out against a real vendor; those came out in the self-test
   alone, since installing Cypress's package downloads its binary outside
   the project unless told not to.
-  `docs/skill-conventions.md` lines 744 to 766, under "A command handed
+  `docs/skill-conventions.md` lines 744 to 775, under "A command handed
   over is backed, and its result is read": what the program reads, and why
   the search path answers whether a tool stands there for use and the
   installer's folder whether a command installed.
@@ -40358,22 +40369,27 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   that it is needed and missing and that the permission to install decides
   who installs, as `plan-work` says, and the planning says of a tool only
   what it read off the machine; the records lines 39515 to 39534. It is
-  built in `skills/plan-work/SKILL.md` lines 314 to 347, inside the paragraph of 24
-  October 2026 at lines 309 to 357: before anything is said of a tool
+  built in `skills/plan-work/SKILL.md` lines 314 to 355, inside the
+  paragraph of 24 October 2026 at lines 309 to 366: before anything is
+  said of a tool
   outside the project anywhere — the assumptions of a round, a comment on
   the planning issue, a brief to an agent, the spec or a message — the
   planning runs `bin/devloop-tool-state --planning` once, with the shell,
   with every such tool named so far, and says of a tool only what it
-  printed; where the line says not found, the assumptions of the round say
-  wording (b) of 24 October 2026, lines 37890 to 37894, which stays as
-  approved, decision (6); where it says not read, the assumptions say that,
-  in the program's words, and that the same permission decides; where a
+  printed; where the line says not found — a browser that does not stand
+  in the version the project's test tool needs among them since 28
+  October 2026 — the assumptions of the round say wording (b) of 24
+  October 2026, lines 37890 to 37894, which stays as approved, decision
+  (6); where it says not read, the assumptions say that the work needs
+  the browser, that whether it stands cannot be read now and why, in the
+  person's language, the wording of 28 October 2026 below, and that the
+  same permission decides — until that day in the program's words; where a
   tool becomes known only after the round, the program is run then and the
   statement said where the person next reads — with them there, in the
   message that ends the turn that found it, before the design question
   where that is the next, as the verdicts of a checker stand; after the
   answer "The plan without them", in the halt before the first build,
-  `skills/cut-into-tasks/SKILL.md` lines 169 to 177, which says it beside
+  `skills/cut-into-tasks/SKILL.md` lines 169 to 180, which says it beside
   the spec since this entry; after "Full flexibility", in the last message
   of the run, which names what the build installed under their yes,
   `build-work` step 3 point 7 since 17 October 2026, the mode without them
@@ -40381,10 +40397,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and not the question who installs, and nothing more is built there; the
   comment of the stage that found it carries the line. The spec carries
   under Implementation decisions, for each such tool, the line as printed,
-  which names the day, and not the record line, lines 767 to 770 of
+  which names the day, and not the record line, lines 776 to 779 of
   `plan-work`. Cross-check against the cases: run 1 #230, the round naming
   no tool where `yq` was needed, becomes, for a run reading `plan-work`
-  through `scripts/devloop-expand`, expanded lines 1031 to 1064, a call of
+  through `scripts/devloop-expand`, expanded lines 1031 to 1072, a call of
   the program before the round with `yq` and the line „yq: not found on
   the search path (on 2026-10-26)“, so that the assumptions of the round
   say wording (b), „Für die Aufgabe wird `yq` gebraucht, und es fehlt auf
@@ -40410,14 +40426,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   changed, the decisions of 27 October 2026 naming no check class;
   `build-work` 496, 634 and 1628, point 7 and the refusals, part 2;
   `shared/install-question.md` 15, the description of the no, which states
-  nothing of a tool. The wording for a browser not read is not approved and
-  the skill says what is said; a proposal stands in the report of this
-  order.
+  nothing of a tool. The wording for a browser not read is approved since
+  28 October 2026, below, the skill saying what is said.
 
   **(c) New defect 5, status line 39548.** Its should: where the record is
   a yes with something fallen away since, the one line of `plan-work`
   reaches the person in the message that ends the turn. It is built in
-  `skills/plan-work/SKILL.md` lines 440 to 444: the line reaches them in
+  `skills/plan-work/SKILL.md` lines 449 to 453: the line reaches them in
   the next message that ends a turn with text, and not in a comment on the
   planning issue alone; its wording is (1) of the entry at line 39873,
   lines 40003 to 40008, „Der Lauf ohne dich ist in diesem Projekt nicht
@@ -40425,7 +40440,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   einrichten.“, and stays; the paragraph rewrapped, its line 413 at
   `89932f8` having been 105 characters. Cross-check: run 1 #244, condition
   6 not holding, and #275, the line in the English comment alone, become,
-  for a run reading the changed text, expanded lines 1193 to 1197, the
+  for a run reading the changed text, expanded lines 1202 to 1206, the
   German line in the next message that ends a turn with text — not in the
   turn that ends on the widget of the round, #230, whose field carries what
   bears on that decision, but in the first message after it that ends with
@@ -40463,8 +40478,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   subagents of run 1; the point says so since this entry. The build
   subagent as an agent type of the plugin is not built now; new defect 8
   needs a mechanism of its own after milestone 3. It is built in the part
-  on the build; its should, new, stands as a status line below. (3) New defects 4
-  and 7: the program `bin/devloop-tool-state`, called in the round and
+  on the build; its should, new, stands as a status line below. (3) New
+  defects 4 and 7: the program `bin/devloop-tool-state`, called in the round and
   before the start of the build subagent; the first built here, (a) and
   (b), the second in the part on the build, on the row of new defect 7.
   (4) What follows from the rules without a decision: the text in
@@ -40487,10 +40502,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Aufgabe. Lehnst du ab, lege ich ein Issue mit dem Befehl an, das diese
   Aufgabe blockiert, und mache mit der nächsten Aufgabe weiter, sofern eine
   bereit ist. Installierst du es später doch, merke ich das beim nächsten
-  Start, schließe das Issue und baue die Aufgabe.“ — „Führst du den Befehl
-  aus oder lehnst du ab?“ With it the behaviour: at the next start devloop
-  reads, for an open issue that blocks a task on a missing install, with
-  `bin/devloop-tool-state --installed`, whether the issue's command has
+  Start, schließe das Issue und baue die Aufgabe.“ — „Führst du den
+  Befehl aus oder lehnst du ab?“ With it the behaviour: at the next start
+  devloop reads, for an open issue that blocks a task on a missing install,
+  with `bin/devloop-tool-state --installed`, whether the issue's command has
   installed since; where the tool stands, devloop closes the issue itself
   and builds the task. That replaces the second sentence of wording (c) of
   24 October 2026, lines 37894 to 37898, „Hast du die Installation selbst
@@ -40518,6 +40533,29 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   defect 7, of defect 5 of 24 October 2026 and of point 10 already.
   Recorded, not built: no hook hands a subagent the install record and the rule on installing, the build subagents of run 1 having got neither point 7 nor the record from the prompt — should: a hook on SubagentStart gives every subagent the [InstallRecord] line as hooks/session-start.sh prints it and a short rule that outranks the prompt, a tool outside the repository installed under a yes alone and under a no or no record neither installed nor replaced by a stand-in, the subagent reporting the tool and the command, after a bench of whether additionalContext of a plugin hook on SubagentStart reaches the subagent; the part on the build.
   Recorded, not built: build-work step 3 point 7 and The task itself say a declined install's task goes on once the person has run the command and closed the issue themselves — should: at the next start devloop reads, for an open issue that blocks a task on a missing install, with bin/devloop-tool-state --installed whether the issue's command has installed, and where the tool stands closes the issue itself and builds the task, the handover of 27 October 2026 saying so; the part on the build.
+
+  **Decided on 28 October 2026**, by the person: the wording of the
+  assumption of a round where the line of a browser says not read, said at
+  the place where wording (b) of 24 October 2026 stands for a tool that is
+  missing and at the same later places as (b), approved in these words:
+  „Für die Aufgabe wird der Browser WebKit für Playwright gebraucht. Ob er
+  auf diesem Rechner in der passenden Version steht, kann ich jetzt nicht
+  lesen: Playwright ist noch nicht im Projekt, und erst Playwright sagt,
+  welche Version es braucht. Ob ich ihn beim Bauen installiere oder du den
+  Befehl dafür bekommst, entscheidet deine Erlaubnis zum Installieren, die
+  dann für dieses Projekt gilt.“ The part after the colon names the cause
+  the line names and changes with it — under Windows with Cypress, for
+  example: „Für Windows kenne ich den Ordner nicht, in den Cypress seine
+  Programme lädt.“ — and the last sentence is that of wording (b), „ihn“
+  for „es“, the browser being masculine. It takes the place of the
+  proposal in the report of the order of 27 October 2026, section 4, which
+  was not approved and read: „Für die Aufgabe wird ein Browser für
+  Playwright gebraucht; ob er in der Version, die das Projekt braucht, auf
+  diesem Rechner steht, lässt sich erst lesen, wenn Playwright im Projekt
+  steht. Ob ich ihn beim Bauen installiere oder du den Befehl dafür
+  bekommst, entscheidet deine Erlaubnis zum Installieren, die dann für
+  dieses Projekt gilt.“ `plan-work` Stage 1 and the halt of
+  `cut-into-tasks` say what is said, not the words, as for (b).
 
   **Records.** In `docs/stock-take.tsv`, by section C of the head of
   `scripts/devloop-stock-take`. By the first commit: seventeen outcomes of
@@ -40560,6 +40598,148 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   at `89932f8` line for line, but for the three lines check 16 prints from
   `plan-work`, moved from 347, 431 and 707 to 376, 465 and 741 by the lines
   added above them; checks 5 and 7 exit 1 and print nothing, as before.
+
+  **Addendum of 28 October 2026**, a third commit on the branch after the
+  push and the pull request #209, the version 0.163.0 staying: three
+  weaknesses a review of the code found, and the wording above. (a) A
+  package outside the project answered for the project. Measured on 28
+  October 2026 on a Linux machine, in an empty directory without
+  `node_modules` and with a global Playwright on the search path,
+  `--planning playwright:webkit` printed „playwright:webkit: not found:
+  nothing stands at <folder>/webkit-2359, the folder of WebKit 26.6
+  (playwright webkit v2359) as the project's Playwright needs it“: the
+  project had no Playwright, and the global package answered, because `npx
+  --no-install`, which the program ran, falls back to a package outside
+  the project; the self-test assumed that `npx` does not answer without
+  Playwright in the project. Puppeteer had the same gap: node resolves
+  `require` from the directories above the project, from `NODE_PATH` and
+  from its global folders as well. Cypress had not, its version being read
+  in the project's `node_modules/cypress/package.json`. What is built: for
+  each of the three vendors only a package in the project's own
+  `node_modules` answers, and where none stands the line says not read
+  with that cause, head lines 34 to 69. For Playwright the program runs the
+  project's `node_modules/.bin/playwright install --dry-run NAME`, lines
+  496 to 502, the command npm, pnpm and yarn link there — on Windows under
+  Git Bash the shell script they write beside the `.cmd`, not checked here —
+  and never `npx`; the cause where it is absent: „the project has no
+  Playwright package to say which version of webkit it needs, no
+  node_modules/.bin/playwright“. For Puppeteer node is asked only where
+  `node_modules/puppeteer-core/package.json` or
+  `node_modules/puppeteer/package.json` stands in the project, lines 508
+  to 514, and the script node runs, line 420, resolves from the project's
+  own `puppeteer` where one stands in its `node_modules` and else from the
+  project, and refuses with exit 3 a module whose real path lies outside
+  the project's `node_modules`, so that a parent directory, `NODE_PATH`,
+  node's global folders and a linked package answer for nothing; the
+  causes: „the project has no Puppeteer package to say which build of
+  chrome it needs, neither node_modules/puppeteer-core nor
+  node_modules/puppeteer“ and, from node,
+  „puppeteer-core/internal/revisions.js resolved outside the project's
+  node_modules, at <path>“. A query that ends with 127 names its message
+  where it printed one, line 466, the shim's „env: node: No such file or
+  directory“ among them. A
+  Playwright installed with pip into a virtual environment, or a package
+  in a sub-directory of the project, is not read, the line naming the
+  path looked at. The self-test, 62 cases: one per vendor with a package
+  outside the project that would answer and none in the project — a
+  global `playwright` and `npx` on the path, lines 303 to 305; a Cypress
+  package above the project and a `cypress` on the path, lines 324 to
+  326; a `puppeteer-core` above the project and one on `NODE_PATH`, lines
+  344 to 346 — each not read with nothing asked; the project's own
+  `node_modules/.bin/playwright` as the stand-in under the label
+  `project-playwright`; the exit 3 of the script as a case, lines 337 to
+  338; the 127 of the shim with and without a message as two, lines 308
+  to 311. (b) `plan-work` line 333 at `aeb5579` had the assumptions say a
+  line not read „in the program's words“, an English sentence to a person
+  reading in their language; now the skill says what is said — that the
+  browser is needed, that whether it stands in the version needed cannot
+  be read now and why, the cause in their language — and the wording
+  stands above, lines 336 to 341 and 364 to 366 of `plan-work`; the halt
+  of `cut-into-tasks`, lines 169 to 180, says the same for a line not
+  found and not read in place of „what the line says“; the head of the
+  program, lines 62 to 67, and `docs/skill-conventions.md` lines 764 to
+  766 say it too. (c) `plan-work` lines 325 to 326 at `aeb5579` listed
+  what the planning says of a tool without the browser that does not
+  stand in the version the project's test tool needs; lines 325 to 336
+  name it now, and for it the assumptions say wording (b), as for a
+  command not on the search path. (d) Lines 40361, 40466 and 40490 of
+  this entry at `aeb5579` were longer than 80 characters without being
+  status lines; rewrapped.
+  Cross-check on this Mac, in throwaway repositories in a directory
+  outside the repository, each line as printed: without Playwright,
+  Cypress or Puppeteer in the project, `--planning playwright:webkit
+  cypress:binary puppeteer:chrome` printed „playwright:webkit: not read,
+  because the project has no Playwright package to say which version of
+  webkit it needs, no node_modules/.bin/playwright (on 2026-10-28)“,
+  „cypress:binary: not read, because the project has no Cypress package
+  to say which version it needs, no version in
+  node_modules/cypress/package.json (on 2026-10-28)“, „puppeteer:chrome:
+  not read, because the project has no Puppeteer package to say which
+  build of chrome it needs, neither node_modules/puppeteer-core nor
+  node_modules/puppeteer (on 2026-10-28)“ and the record line of
+  `--planning`, exit 1; the same three lines, nothing asked, with another
+  repository's `node_modules/.bin`, holding Playwright, first on the
+  search path and the `node_modules` of the global mermaid-cli, which
+  holds `puppeteer-core`, on `NODE_PATH`. With Playwright 1.64.1 in the
+  project by `npm install playwright`: „playwright:webkit: found at
+  ~/Library/Caches/ms-playwright/webkit-2370, WebKit 27.2 (playwright
+  webkit v2370) as the project's Playwright needs it (on 2026-10-28)“,
+  chromium-1248 and firefox-1555 found as on 27 October 2026, Cypress and
+  Puppeteer not read as above, exit 1, the three dry runs in a second.
+  With `puppeteer-core` 25.16.0 and `@puppeteer/browsers` in the project
+  by npm: „puppeteer:chrome: found at
+  ~/.cache/puppeteer/chrome/mac_arm-156.0.8078.47, chrome 156.0.8078.47
+  as the project's Puppeteer needs it (on 2026-10-28)“ and firefox not
+  found, exit 1; with `puppeteer` 25.16.0 by pnpm, no browser downloaded,
+  `puppeteer-core` not at the top of `node_modules` but under `.pnpm`,
+  the same chrome line, exit 0, the lookup from the project's `puppeteer`.
+  With an empty `puppeteer` package in the project and the global
+  mermaid-cli's `node_modules` on `NODE_PATH`: „puppeteer:chrome: not
+  read, because the project's Puppeteer did not say which build of chrome
+  it needs: node, asked for the build of chrome and its folder under
+  ~/.cache/puppeteer, did not answer: puppeteer-core/internal/revisions.js
+  resolved outside the project's node_modules, at …“ with the file under
+  `/opt/homebrew/lib/node_modules/@mermaid-js/mermaid-cli`, exit 1, the
+  guard refusing what `NODE_PATH` found; without `NODE_PATH` „did not
+  answer: Error: Cannot find module 'puppeteer-core/internal/revisions.js'“,
+  exit 1. `--installed 'npx playwright install webkit' playwright:webkit`:
+  the webkit line in the repository with Playwright, exit 0, and the
+  not-read line without, exit 1. A run reading the changed `plan-work`
+  through `scripts/devloop-expand`, expanded lines 1039 to 1058, whose
+  task brings Playwright into the project and needs WebKit, runs the
+  program before the round, reads „playwright:webkit: not read, because
+  the project has no Playwright package to say which version of webkit it
+  needs, no node_modules/.bin/playwright (on 2026-10-28)“, and the
+  assumptions of the round say the wording of 28 October 2026 above, the
+  part after the colon that Playwright is not in the project yet and that
+  Playwright alone says which version it needs; the spec carries the line
+  as printed, and the halt of `cut-into-tasks` says the same where the
+  plan is read without them.
+  Records, by section C of the head of `scripts/devloop-stock-take`: three
+  defects of this addendum, (a), (b) and (c), each with its site on the line
+  above that names it and its evidence on the line that carries the repair —
+  the guard on `node_modules/.bin/playwright` in the program, the clause of
+  `plan-work` on the cause in their language, and its clause on the browser
+  not standing in its version; the not-read outcome of the program renamed for
+  its causes, the script node runs part of it; the branch of `plan-work` on a
+  line not read renamed, re-anchored and its note carrying the wording
+  approved; the branch of wording (b), the row part of the read and the branch
+  of a tool known after the round re-anchored after the rewrap; the branch of
+  `cut-into-tasks` on a line not found renamed and one on a line not read new,
+  two rows part of them; no run, none was made. The tool, run for this
+  addendum in a clean bash with `/usr/bin/grep`: exit 0, no broken record,
+  none of 4946 lines of the search set uncovered, three more than at `aeb5579`
+  — the script node runs and two lines of `cut-into-tasks` — with four lines
+  of `plan-work` in place of the four they replaced; 364 things recorded and
+  not built as before; 1271 built and never walked, the four things new; 703
+  walked, 24 undetermined, 42 closed and 14 findings as before; 2404 things
+  and 3149 not-a-thing records, four and three more; 660 lines of runs that do
+  not count as before. The self-test of the tool passed, 124 cases, 95 of 95
+  messages; the self-test of `bin/devloop-tool-state` passed, 62 cases, in a
+  clean bash. The nineteen checks printed what they printed at `aeb5579` but
+  for check 16's three `plan-work` lines, moved from 376, 465 and 741 to 385,
+  474 and 750 by the lines added above them; checks 5 and 7 exit 1 and print
+  nothing, as before.
 
 
 ## Decisions taken against
