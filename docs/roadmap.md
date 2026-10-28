@@ -40744,10 +40744,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
 - **Every subagent gets the install record, the build reads its tools first.**
   28 October 2026, version 0.164.0. On `task/build-tool-state-and-subagent-hook`,
-  off `f183050`, in two commits: the hook, the programs, the texts and the
+  off `f183050`, in three commits: the hook, the programs, the texts and the
   rows of the things they change, with the version; then this entry with the
   sentence in `docs/plan.md`, the point under "## Decisions taken against"
-  and the rows it needs. Part 2 of the rebuild of milestone 3, decision (7)
+  and the rows it needs; then the addendum of this day, below, with two
+  wordings approved after the second commit, the rule of the person they
+  rest on and the rows. Part 2 of the rebuild of milestone 3, decision (7)
   of the entry at line 40175: the hook on `SubagentStart` of decision (2),
   status line 40534; the handover before the start of the build subagent
   and the waiting of the question whether it lands, new defect 7 of the
@@ -40810,7 +40812,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   as the hook prints it, and said the first stood behind the prefix
   „SubagentStart hook additional context: “; without the hook, NONE. So
   the context reaches the subagent on this version, and the hook stays;
-  `docs/skill-conventions.md` lines 3389 to 3402, at "A hook cannot force
+  `docs/skill-conventions.md` lines 3414 to 3427, at "A hook cannot force
   wording", say so since this entry.
 
   **(a) The hook**, `hooks/subagent-start-install.sh`, lines 1 to 51,
@@ -40868,7 +40870,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   installing under a yes, and under a no or no record reporting the
   browser, the backed download command and that it is missing and stopping
   with the task, on which the main run hands over; with nobody there the
-  record says yes, condition 6. Point 7, lines 606 to 640, splits the duty
+  record says yes, condition 6. Point 7, lines 641 to 675, splits the duty
   as it lies: the subagent reports, the main run hands over. Step 5, lines
   1006 to 1016: a task is not offered for landing while a tool it needs is
   missing on this machine and not declined; where the subagent's report or
@@ -40876,8 +40878,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   not put and the handover stands in its place, last in the message that
   ends the turn.
 
-  **(c) The handover and its two ways**, point 7 lines 606 to 640 and "The
-  task itself" lines 717 to 730: one message, the one that ends the turn,
+  **(c) The handover and its two ways**, point 7 lines 641 to 675 and "The
+  task itself" lines 752 to 765: one message, the one that ends the turn,
   with the question last; it says what the task needs and that it is
   missing, that their answer to installing for this project is no, the
   exact command as it runs from wherever they are and what backs it, with
@@ -40920,14 +40922,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   readiness query or the question on the rule for the classifier, whichever
   comes first, so that the question names no install whose tool stands by
   now and the readiness query finds the task free — the text
-  `shared/install-issues-read.md`, lines 1 to 27, inserted into `build-work`
+  `shared/install-issues-read.md`, lines 1 to 33, inserted into `build-work`
   at the start of step 2, line 331, and into `plan-work` before the
   question on the rule at the end of Stage 1, line 580, and named in
   `build-work`'s unattended mode before that question on the direct route,
-  lines 1697 to 1701; with the person there one line says which issue was
+  lines 1732 to 1736; with the person there one line says which issue was
   closed and what that frees or sets up again, with nobody there it stands
   in the last message; a class an issue concerned goes to `setup-checks`
-  from step 4 of the next task, as `build-work` lines 1717 to 1720 say for
+  from step 4 of the next task, as `build-work` lines 1752 to 1755 say for
   the issues after a refusal of auto mode, which this read covers as well,
   and the issue of text 1 of `setup-checks`, lines 119 to 130; a build that
   followed a planning in the same session runs it again at step 2, an issue
@@ -40938,7 +40940,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   approved wording of that day says „Installierst du es später doch, merke
   ich das beim nächsten Start, schließe das Issue und baue die Aufgabe“ and
   names no installer, the person may install by another way, and
-  `docs/skill-conventions.md` lines 744 to 784 keep the two questions
+  `docs/skill-conventions.md` lines 769 to 809 keep the two questions
   apart, the search path answering whether a tool stands there for use,
   which is what frees the task. So the recorded sentence narrowed the
   person's decision, and what is built reads the search path for a command
@@ -40946,7 +40948,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of `bin/devloop-tool-state`, lines 11 to 15 and 94 to 131, says what
   `--installed` is for since this entry.
 
-  **(e) After „sag mir Bescheid“**, `build-work` lines 555 to 570: the run
+  **(e) After „sag mir Bescheid“**, `build-work` lines 555 to 604: the run
   reads with `bin/devloop-tool-state --installed`, the command as handed
   over and the tool, which since this entry prints two lines for a command,
   the folder line read off the installer as `shared/backed-command.md`
@@ -40958,13 +40960,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   path. Where the first line says found and the second not found, the run
   says that the command installed, where the tool stands, that the search
   path does not reach it and that the build cannot use it until it does;
-  the skill says what is said, and the wording is proposed below for
-  approval. Where the first says not found, the command did not do what it
-  was handed over for, and the run says so with the line and hands over
-  again.
+  the skill says what is said, and since the addendum of this day it says
+  the steps that put the folder on the search path as well, lines 563 to
+  602, wording (4) below, approved in place of the one the second commit
+  had proposed. Where the first says not found, the command did not do
+  what it was handed over for, and the run says so with the line and hands
+  over again.
 
   **(f) The form of the issue**, `shared/install-issue.md`, lines 1 to 25,
-  inserted into `build-work` after "The task itself", line 732, and into
+  inserted into `build-work` after "The task itself", line 767, and into
   `setup-checks` after "A guard's block is not a decline", line 144: every
   issue devloop writes for a tool missing on this machine carries
   `install-tool: TOOL`, the tool as `bin/devloop-tool-state` names it, and
@@ -40972,7 +40976,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   start of a line of its own; the places that write one, found with `grep
   -rn 'carrying the exact command\|carrying the command\|issue carrying'
   skills/*/SKILL.md shared/*.md`: `build-work` point 7 and "The task
-  itself", lines 717 to 732, and "A guard's block, with nobody there",
+  itself", lines 752 to 767, and "A guard's block, with nobody there",
   lines 86 to 91, where the refused command was an install;
   `shared/install-not-through.md`, lines 7 to 13 for the task's tool and
   lines 26 to 30 for the issue after a refusal of auto mode; `setup-checks`
@@ -40985,8 +40989,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lines and the comment of (d) are the program's and the form's English,
   carried word for word.
 
-  **(g) Condition 4 in one call**, `build-work` lines 1567 to 1588 and the
-  item of 4 at lines 1619 to 1622, `plan-work` lines 528 to 553:
+  **(g) Condition 4 in one call**, `build-work` lines 1602 to 1623 and the
+  item of 4 at lines 1654 to 1657, `plan-work` lines 528 to 553:
   `bin/devloop-start-conditions` and `bin/devloop-permission-mode` stand in
   one call, the second behind the first, so that the one call reads all
   seven and the hook on the mark puts the mode beside the result, as the
@@ -41085,15 +41089,114 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   geschlossen\|schließ das Issue\|Issue schließ' docs/roadmap.md` and the
   English search above: in this file the records of the wordings replaced
   here, lines 14429, 14877, 34956 and 37898, and the quotation at line
-  40512, which stay as records; in the skills none since this entry.
+  40512, which stay as records; in the skills none since this entry. Two
+  more, approved on 28 October 2026 after the second commit of this branch
+  and built in its third, the addendum of this day. (4) What the run says
+  after their word where the command installed and the search path does
+  not reach the tool, (e) above. The second commit had proposed „Der Befehl
+  hat `yq` nach `~/go/bin` installiert, aber dieser Ordner steht nicht auf
+  deinem Suchpfad, darum findet der Bau `yq` nicht. Nimm `~/go/bin` in
+  deinen Suchpfad auf und sag mir Bescheid; dann prüfe ich noch einmal und
+  baue die Aufgabe.“; that was not approved and is replaced, because it
+  says what is to be done and not how, against the rule the person gave
+  that day: „alles was der Nutzer an befehlen oder schritten tun muss am
+  computer sollte beschrieben sein bzw. in gesagt werde wie er vorzugehen
+  hat, solange die Schritte dazu klar sind und das LLM weiß.“ — the rule
+  stands in `docs/skill-conventions.md` lines 101 to 124 since this
+  addendum, after the two it rests on, the command handed over whole and
+  the input into Claude Code named whole. Approved in its place, for the
+  shell zsh: „Der Befehl hat `yq` nach `~/go/bin` installiert, aber dieser
+  Ordner steht nicht in deinem `PATH`, darum findet der Bau `yq` nicht. So
+  nimmst du ihn auf:“, then the steps, numbered: „1. Beende Claude Code:
+  `/exit`“, „2. Trag den Ordner im Terminal in deinen `PATH` ein: `echo
+  'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc`“, „3. Lade die Datei neu:
+  `source ~/.zshrc`“, „4. Starte Claude Code wieder im Projekt: `cd
+  ~/mein-projekt && claude`“, „5. Gib dort `/devloop:start-work` ein.“, then
+  „Dann finde ich `yq` und baue die Aufgabe.“ The steps stand in this order
+  because the person can type in the terminal only once Claude Code is
+  ended. What the run puts in: the tool and the folder from the lines of
+  `bin/devloop-tool-state --installed`, `~` of the folder written `$HOME`
+  inside the single quotes; the file and the commands of steps 2 and 3 for
+  the shell, read off `$SHELL`, and the system, read off `uname -s` — for
+  zsh `~/.zshrc`; for bash the file bash reads on that system when a
+  terminal opens it, `~/.bash_profile` on macOS, where the terminal opens a
+  login shell, and `~/.bashrc` on Linux, where it opens an interactive
+  shell —; the project's directory as "A command handed over runs as it
+  stands" writes it. Where the shell is none the run knows the commands of
+  steps 2 and 3 for — another shell, or bash on another system, Windows
+  with Git Bash among them, where the `PATH` Claude Code runs under is
+  Windows' own —, the step says that the folder has to go into the `PATH`,
+  without a command, and steps 1, 4 and 5 stand as above, by the rule.
+  `PATH` stays untranslated, `output-styles/devloop.md` lines 15 to 17.
+  Built in `build-work` lines 563 to 602, the skill saying what is said and
+  not the words; read at the code that the start of step 5 finds the tool
+  with no issue between, lines 595 to 602: the issue is written on a no
+  alone, "The task itself", so none holds the task; the readiness query
+  lists it, open, without a blocker and without a pull request, no
+  subagent having started for it; the read before the subagent starts
+  finds the tool on the search path Claude Code took over from the
+  terminal of step 4. (5) The line where devloop closed an issue itself at
+  a start, `shared/install-issues-read.md` lines 19 to 27, where the issue
+  blocked a task: „`yq` steht jetzt auf diesem Rechner. Darum habe ich das
+  Issue „yq installieren“ geschlossen, und die Aufgabe „Konfiguration mit
+  yq lesen“ ist wieder frei.“; where it concerned a check class the
+  sentence ends „…, und die Prüfung richte ich wieder ein.“ Issue and task
+  by their title, `shared/refer-by-name.md`; with the person in the next
+  message that ends a turn with text, with nobody there in the last
+  message, as that text said already; one such line per issue closed.
 
-  **Proposed for approval**, not built as words, the skill saying what is
-  said: what the run says after their word where the command installed and
-  the search path does not reach the tool, (e): „Der Befehl hat `yq` nach
-  `~/go/bin` installiert, aber dieser Ordner steht nicht auf deinem
-  Suchpfad, darum findet der Bau `yq` nicht. Nimm `~/go/bin` in deinen
-  Suchpfad auf und sag mir Bescheid; dann prüfe ich noch einmal und baue
-  die Aufgabe.“ — the tool and the folder as the program's lines name them.
+  **The addendum of 28 October 2026**, the third commit of this branch,
+  built after the person had said the rule above and approved (4) and (5).
+  The rule stands in `docs/skill-conventions.md` lines 101 to 124, after
+  the paragraph on the input typed into Claude Code and so after the one
+  on the command handed over whole, with the person's sentence, the
+  wording it was said of and the five steps that replaced it: it is those
+  two rules over a sequence, each step given as they say, whole and as
+  typed, the sequence in the order the person can take it; what the run
+  can do itself it does, by the rule before them, and hands over no step
+  for it. It stands in the conventions alone, as the rule on the input
+  typed into Claude Code does, and not a second time in
+  `shared/skill-name.md`, where the two it rests on stand for every run;
+  whether it should is open. The place of (4) in `build-work`, lines 563
+  to 602, says the steps and what the run reads them from, the thing of
+  the second commit renamed on its row, the old name in its note, and two
+  things beside it, bash's file by the system and a shell the run has no
+  sure form for; (5) in `shared/install-issues-read.md`, lines 19 to 27,
+  on the row that was there. The lines this entry cites after `build-work`
+  570, in `shared/install-issues-read.md` and in `docs/skill-conventions.md`
+  are moved to the tip of the third commit, as the head of this entry
+  promises. Then the search the order asked for, over `skills/`, `shared/`,
+  `hooks/`, `bin/`, `output-styles/`, `README.md` and the approved German
+  wordings of this file that hold today, for every text of devloop that
+  tells the person to do something at the computer without saying how:
+  twelve searches with `grep`, each named with what it returned in the
+  report `~/devloop-report-2026-10-28-build-part.md` under "Addendum",
+  A5. Six places stand against the rule, each a finding in
+  `docs/stock-take.tsv` with its should and a proposal in that report for
+  the person's approval, nothing of it built here and no approved wording
+  or skill passage describing one changed: `setup-project` lines 231 to
+  235, `gh auth login` named alone, without where it is typed, what it
+  asks and how the setup goes on; `README.md` lines 31 to 38, the two
+  `git config` commands without the value each takes and the sign-in
+  without its command; `hooks/pre-tool-use-identity-guard.sh` line 180,
+  the same two commands handed over bare by the message; `setup-checks`
+  lines 541 to 545, where a class's tool is read in the installer's folder
+  alone after their word, so that a tool in `~/go/bin` is set up and the
+  chain cannot call it, with no word to the person; `shared/install-issue.md`
+  lines 21 to 25 with `build-work` lines 752 to 765, where an issue on a no
+  carries the command alone and the next start, reading the search path,
+  leaves the issue open with no word on the folder — which touches the
+  narrowing of the read at the next start above; and
+  `hooks/pre-tool-use-install-guard.sh` line 1272, whose message says the
+  path the command writes to is what decides, where the build since this
+  branch waits for the search path too, found beside the search. Read and
+  compliant: the `/clear` handover of `untangle-idea`, text 2 on auto
+  mode, the merge handover, the three texts of `shared/fetch-three-times.md`
+  as approved on 19 October 2026, the command to paste of the turn-end
+  hook, the README's install and update, the question on the mode with
+  `caffeinate` on macOS; the earlier wordings on `git stash` and a branch
+  of their own are replaced by questions since 19 October 2026. The
+  records of this addendum stand under "Records" below.
 
   **Records.** In `docs/stock-take.tsv`, by section C of the head of
   `scripts/devloop-stock-take`: the five defects of this part with their
@@ -41112,7 +41215,16 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `bin/devloop-install-issues`, the two shared texts and the branches of
   the changed skills; the thing of the form for a start with `--auto`
   renamed, no run hanging on it. In `docs/plan.md` one dated sentence under
-  milestone 3. The tool: exit 0, no broken record, no uncovered line.
+  milestone 3. The tool: exit 0, no broken record, no uncovered line. The
+  addendum: the thing of (e) renamed with its two "part of" rows
+  re-anchored and the thing of the not-found line re-anchored, both on the
+  rewritten lines of `build-work` 563 to 602; two things new there, bash's
+  file by the system and a shell the run has no sure form for, with their
+  rows and one rationale row for the reading at the code; the row of the
+  one-line thing of `shared/install-issues-read.md` with its new line as
+  part of it; the "Built in" line of (4) as part of the renamed thing; six
+  findings, each on the line it names, with its should. The tool after it:
+  exit 0, no broken record, no uncovered line.
 
 ## Decisions taken against
 

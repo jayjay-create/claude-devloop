@@ -98,6 +98,31 @@ no input and stays. Decided on 27 October 2026, defect 2 of the roadmap
 entry of that date on the three closing runs, built the same day, the
 roadmap entry of that date on the three visible texts.
 
+**Where a text to the person says they have to do something at the
+computer, it says how, step by step.** A command in the terminal, an input
+into Claude Code, ending Claude Code and starting it again, a change to a
+file of their configuration: each step is one command or one input, as it
+is typed, and the steps stand in the order in which they can take them — a
+command in the terminal after Claude Code is ended where it has to be,
+the start of Claude Code after that, the input into Claude Code last. As
+far as the steps are fixed and the run knows them: where the run does not
+know a step for the case for certain — the command that puts a folder on
+the search path in a shell it has no sure form for, say — it says for that
+step what is needed, names no command it does not know, and names the
+other steps. What the run can do itself it does, by the rule above, and
+hands over no step for it. The person's rule of 28 October 2026: „alles
+was der Nutzer an befehlen oder schritten tun muss am computer sollte
+beschrieben sein bzw. in gesagt werde wie er vorzugehen hat, solange die
+Schritte dazu klar sind und das LLM weiß.“ — said of a proposed wording
+that read „Nimm `~/go/bin` in deinen Suchpfad auf“, which says what is to
+be done and not how; the wording built in its place, five steps from
+`/exit` to `/devloop:start-work`, stands in the roadmap entry of that date
+on the hook on SubagentStart, (4). The rule stands here, after the two on a
+command handed over and on an input typed into Claude Code, because it is
+those two over a sequence: each step is given as they say, whole and as
+typed, and the sequence in the order the person can take it, with nothing
+assumed of them between the steps.
+
 **A file is named by its path where the work is about the file.**
 
 Measured on 18 September 2026, three times in a directory with nothing in it: a

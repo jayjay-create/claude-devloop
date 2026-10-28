@@ -560,11 +560,46 @@ The subagent:
    whether the tool stands on the search path, where the build and the
    checks call it — `go install` puts a tool into `~/go/bin`, which often
    stands on no search path. Where the first line says found and the second
-   not found, say so, at the next message that ends a turn with text: that
-   the command installed, where the tool stands, that the search path does
-   not reach it, and that the build cannot use it until it does; what is
-   said stands in the roadmap entry of 28 October 2026 on the hook on
-   SubagentStart, and this skill says what is said, not the words. Where the
+   not found, say so, at the next message that ends a turn with text, and
+   say how they put the folder on their search path, step by step, by
+   "Where a text to the person says they have to do something at the
+   computer, it says how" in `docs/skill-conventions.md`, since the
+   addendum of 28 October 2026: that the command installed the tool into
+   the folder, both as the first line names them; that the folder is not in
+   their `PATH`, the term untranslated as the output style says of a
+   technical term; and that the build therefore does not find the tool.
+   Then the steps, numbered, in the order they can take them, since the
+   terminal takes their typing only once Claude Code is ended: they end
+   Claude Code, `/exit`; they put the folder into their `PATH` in the
+   terminal, with the line that appends the export to the file their shell
+   reads when a terminal opens it; they load that file anew, `source` with
+   the file; they start Claude Code again in the project, `cd <directory>
+   && claude`, the directory written as "A command handed over runs as it
+   stands" writes it; they type `/devloop:start-work` there; and that the
+   run then finds the tool and builds the task. The shell is read off
+   `$SHELL` and the system off `uname -s`, with the shell, beside the call
+   of `--installed`: for zsh the file is `~/.zshrc`; for bash it is the
+   file bash reads on that system when a terminal opens it, `~/.bash_profile`
+   on macOS, where the terminal opens a login shell, and `~/.bashrc` on
+   Linux, where it opens an interactive shell; the export line names the
+   folder as the first line names it, with `~` written `$HOME` inside the
+   single quotes so that the file carries the variable and not the path —
+   `echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.zshrc` — and the load is
+   `source ~/.zshrc`. For a shell the run has no sure form for — another
+   shell, or bash on a system other than those two, Windows with Git Bash
+   among them, where the `PATH` Claude Code runs under is Windows' own and
+   no bash file sets it — the step says that the folder has to go into
+   their `PATH` and names no command, and the other steps stand as above,
+   by the rule in `docs/skill-conventions.md`. The wording approved on 28
+   October 2026 stands in the roadmap entry of that date on the hook on
+   SubagentStart, (4), and this skill says what is said, not the words. In
+   the session the last step opens, the tool stands on the search path
+   Claude Code took over from that terminal, and the build reaches it with
+   no issue between: step 2 reads the issues, none of which holds this
+   task, since the issue is written on a no alone, "The task itself" below;
+   the readiness query lists the task, open, with no blocker and no pull
+   request, no subagent having started for it; and the read before the
+   subagent starts, above, finds the tool on the search path. Where the
    first line says not found, the command did not do what it was handed over
    for, whatever came back: say so with the line and hand over again. Report
    the install in two places, because they are two duties: the

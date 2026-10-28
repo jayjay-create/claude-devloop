@@ -16,9 +16,15 @@ held a task frees the task, which the readiness query then lists, and
 nothing more is done for it here; an issue closed that concerned a check
 class sends the class to `setup-checks` from step 4 of the next task, as the
 issues after a refusal of auto mode go, the state of its cell having ended
-with the tool. With the person there, say in one line, at the next message
-that ends a turn with text, which issue was closed and what that frees or
-sets up again; with nobody there it stands in the last message among what
+with the tool. With the person there, say it in one line, at the next
+message that ends a turn with text: that the tool, named, stands on this
+machine now; that the issue, named by its title as "Refer to everything in
+the tracker by its name" says, was therefore closed; and that the task,
+named by its title, is free again — or, where the issue concerned a check
+class, that the check is set up again — one such line per issue closed; the
+wording approved on 28 October 2026 stands in the roadmap entry of that
+date on the hook on SubagentStart, (5), and the skill says what is said,
+not the words. With nobody there it stands in the last message among what
 was done. Where it ends with 2, say that the query did not answer, with the
 command and the message it prints, as "When a command does not answer" says,
 and go on: an issue not read stays open, and the readiness query passes over
