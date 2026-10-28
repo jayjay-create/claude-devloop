@@ -41566,8 +41566,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   class, the skill says what is said by rule (b) and the pattern of (1)
   form B, and the German versions stand in the report of this day for
   approval, recorded here and not approved.
-  Recorded, not built: for (6) to (10) the person approved form A alone and for (11) the case of a task alone, so a command that asks something at those places, sudo apt install say, and a check class's issue whose tool stands in a folder outside the PATH have no approved wording — should: the German versions in the report of 28 October 2026 on the handover steps, built by rule (b) and the pattern of (1) form B, put to the person; until then the skills say what is said.
-  Recorded, not built: the address of (4) and of the README's step 4 is the ID form, which GitHub gives an account made after 18 July 2017 and an older one only once Keep my email address private is selected again, the reference read on 28 October 2026 — should: the run reads the address GitHub holds for the account where the API gives it, else builds the ID form and says that an account made before 18 July 2017 with the setting enabled before that day gets the ID form by selecting the setting again; the wording unchanged until the person decides.
+  Built: for (6) to (10) the person approved form A alone and for (11) the case of a task alone, so a command that asks something at those places and a check class's issue in a folder outside the PATH had no approved wording — the four wordings of (a) of the decisions after the push, in setup-checks and shared/install-issues-read.md; the merge keeps form A alone, its command asking nothing.
+  Built: the address of (4) and of the README's step 4 is the ID form, which GitHub gives an account made after 18 July 2017 and an older one only once Keep my email address private is selected again — the run reads created_at at the same call of gh api user and says, for an account older than that day, the sentence of (d) of the decisions after the push after step 2; the last sentence of text 7 and the README's step 4 say it since that day.
 
   **Built besides, without a wording of their own, by the rules.** The
   message of the install guard, `hooks/pre-tool-use-install-guard.sh` line
@@ -41634,6 +41634,213 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Built: an issue on a no carried the command alone and the next start left it open with no word on the folder, finding D5 — bin/devloop-install-issues reads the folder beside the search path and prints folder:, and the run says wording (11) with the steps.
   Built: the install guard's message said the path the command writes to is what decides, finding D6 — the message says the folder decides whether the command installed and the search path whether the build can use it, and where they type the command.
 
+  **Decided on 28 October 2026, after the branch was pushed**, by the
+  person, in an order of that day: the four versions this entry had
+  recorded for approval, a wording for `gh` not installed, an addition to
+  their rule on a text that says they have to do something at the
+  computer, the last sentence of text 7 once more, a sentence of the
+  README, and a correction; built on this branch in two commits more, the
+  version staying 0.165.0, raised once per branch. The skills say what is
+  said, not the words; the examples — `yq`, `gitleaks`, titles, versions
+  — the run fills with what it reads. Lines of a file as at the tip of
+  this branch after those commits; beyond the vendors' pages named, GitHub
+  was neither read nor changed, nothing installed, no session log read,
+  `gh api user` not called. (a) Form B where the command asks something,
+  here a password for `sudo`, at three places, and the class case of
+  (11); until this day the versions of the report of this branch,
+  recorded on the status line below and not approved. (1) After „Selbst
+  installieren“ for a check class's tool, beside (7): „Der Befehl fragt
+  nach deinem Passwort, darum gib ihn in einem zweiten Terminalfenster
+  ein, nicht in dem, in dem Claude Code läuft:“ — „`sudo apt install
+  gitleaks`“ — „Sag mir hier Bescheid, sobald er durchgelaufen ist. Dann
+  prüfe ich, dass `gitleaks` da ist, und richte die Prüfung ein.“ The
+  report's version, approved as it stood. Built in `setup-checks` lines
+  556 to 564 since the first commit of this branch, the record of the
+  approval lines 593 to 594. (2) Text 1, the halt at `secrets` without
+  the person, its last sentences, the beginning as in (8): „So
+  installierst du das Werkzeug selbst:“ — „1. Öffne ein zweites
+  Terminalfenster, nicht das, in dem Claude Code läuft, denn der Befehl
+  fragt nach deinem Passwort.“ — „2. Gib dort ein: `sudo apt install
+  gitleaks`“ — „3. Gib hier in Claude Code `/devloop:start-work` ein.“ —
+  „Dann schließe ich das Issue, richte die Prüfung ein und mache mit der
+  Aufgabe weiter. Der Befehl steht auch im Issue.“ The report had the
+  reason as a sentence of its own in step 1, „Der Befehl fragt nach
+  deinem Passwort, und das geht nur dort.“; approved with the reason
+  inside the step. Built in `setup-checks` lines 128 to 135. (3) The line
+  under „Nein, nicht eintragen“ of the question after a refusal of auto
+  mode, beside (9): „Dann bleibt das Issue offen. Der Befehl `sudo apt
+  install yq` fragt nach deinem Passwort, darum gib ihn in einem zweiten
+  Terminalfenster ein, nicht in dem, in dem Claude Code läuft. Gibst du
+  danach hier `/devloop:start-work` ein, schließe ich das Issue und nehme
+  die Aufgabe wieder auf. Bis dahin frage ich bei jedem Start mit
+  `/devloop:start-work --auto` wieder.“ For a check class „richte die
+  Prüfung wieder ein“, with several issues as under (9). The report's
+  version had the window before the reason; approved in this order.
+  Measured against `output-styles/devloop.md` lines 44 to 48 as (9) was,
+  the question line a paragraph of its own: with one issue, a task or a
+  class, the question field five lines, the yes three, the no six,
+  fourteen of fourteen, at the bound, and the question fits the widget;
+  with two issues whose commands ask, the no seven, fifteen, and it does
+  not fit: it is then asked as text at the end of the turn, with its text
+  before it in the same message, as the style says, and the skill says so
+  for this case. Built in `setup-checks` lines 1258 to 1270. (4) At the
+  next start the tool of an issue for a check class lies in a folder
+  outside the `PATH`, the class case of (11), which is no form B, its
+  five steps being inputs that ask nothing: „Der Befehl aus dem Issue
+  „gitleaks installieren“ hat `gitleaks` nach `~/go/bin` installiert,
+  aber dieser Ordner steht nicht in deinem `PATH`, darum finde ich
+  `gitleaks` nicht, und das Issue bleibt offen. So nimmst du ihn auf:“,
+  steps 1 to 5 as in (4) of the entry at line 40745, then „Dann finde ich
+  `gitleaks`, schließe das Issue und richte die Prüfung ein.“ Built in
+  `shared/install-issues-read.md` lines 45 to 53. For the merge there is
+  no form B: `gh pr merge <number> --squash --repo OWNER/REPO` asks
+  nothing, the person approved form A alone, having run it in the closing
+  runs, and the manual says nothing of a prompt under `--squash`; what the
+  report of this branch proposed for a merge command that asks is not
+  built, and (6) stands as it is. (b) `gh` not installed at the setup,
+  `setup-project` step 1, until this day without a wording: the step said
+  that they install it as `cli.github.com` describes for their system and
+  named no command. Since this day the run reads the system — `uname -s`,
+  under Linux `/etc/os-release` —, reads GitHub's guide for it with its
+  tools for the web — `cli.github.com`, under Linux the page it links,
+  `github.com/cli/cli/blob/trunk/docs/install_linux.md` — and gives the
+  command as it stands there, in form A or B by rule (b). On a Mac with
+  Homebrew, A: „Für die Arbeit mit GitHub braucht devloop das Programm
+  `gh` von GitHub, und auf diesem Rechner ist es noch nicht installiert.
+  Gib den Befehl dafür hier in Claude Code ein, mit `!` davor:“ —
+  „`! brew install gh`“ — „Geprüft mit `brew info gh`: Homebrew bietet gh
+  2.96.0 an, es landet in `/opt/homebrew/bin`.“ — „Sobald er
+  durchgelaufen ist, prüfe ich, dass `gh` da ist, und sage dir, wie du
+  dich bei GitHub anmeldest.“ Under Linux with Debian or Ubuntu, where
+  GitHub's guide is a block of commands under `sudo`, B: „Für die Arbeit
+  mit GitHub braucht devloop das Programm `gh` von GitHub, und auf diesem
+  Rechner ist es noch nicht installiert. Der Befehl dafür fragt nach
+  deinem Passwort, darum gib ihn in einem zweiten Terminalfenster ein,
+  nicht in dem, in dem Claude Code läuft:“ — the block of the page, whole
+  and as it stands there — „Geprüft an cli.github.com: Das ist die
+  Anleitung von GitHub für Debian und Ubuntu.“ — „Sag mir hier Bescheid,
+  sobald er durchgelaufen ist. Dann prüfe ich, dass `gh` da ist, und sage
+  dir, wie du dich bei GitHub anmeldest.“ For another system the page
+  names, the same with that system's name. Only where the run cannot read
+  the page, where it does not name their system, or where its guide needs
+  a program the machine lacks — Homebrew on a Mac —: „Für die Arbeit mit
+  GitHub braucht devloop das Programm `gh` von GitHub, und auf diesem
+  Rechner ist es noch nicht installiert. Installiere es, wie
+  cli.github.com es für dein System beschreibt, und sag mir hier
+  Bescheid, sobald das erledigt ist. Dann sage ich dir, wie du dich bei
+  GitHub anmeldest.“ Read afterwards with `bin/devloop-tool-state
+  --installed`, the command and `gh`, both lines, as after every install
+  the person runs; where `gh` stands, the sign-in follows, (3). Read at
+  the code, `bin/devloop-tool-state` lines 543 to 571: the installer is
+  the command's first word after any `VAR=value`, and the folder is read
+  off brew, npm, pnpm, yarn, bun, go, pipx, uv, gem and cargo; for the
+  block of GitHub's Linux page the first word is `(type`, for `sudo apt
+  install gh -y` it is `sudo`, and the first line says not read, naming
+  that word as none of them, the second line, the search path, standing
+  all the same, exit 1 — run this day in a throwaway project with the
+  block as read off the page; so under Linux the second line decides,
+  `apt` putting `gh` into `/usr/bin`, which every search path reaches;
+  where it says found, `gh auth status` and the sign-in; where not, the
+  run says so with the line and hands over again; the program refuses
+  with 2 an empty command or an argument count other than two alone,
+  neither of which arises here. The install record, read at the code:
+  this step runs at a first setup alone, `setup-project` lines 84 to 86
+  and 109 to 115 — a project with every file on the main branch does not
+  run the steps, one with every file missing is a first setup —, so
+  `docs/agents/environment.md` is not on the main branch and
+  `bin/devloop-install-record` answers that none stands; the command is
+  the person's, as under a no, and under Linux `sudo` would stay theirs
+  under a yes as well, `hooks/pre-tool-use-install-guard.sh` line 1018.
+  Read on 28 October 2026: `cli.github.com` offers 2.103.3 and lists
+  "macOS — Homebrew" with `brew install gh`, "Linux — apt (Debian,
+  Ubuntu)", "Linux — dnf (Fedora, RHEL)" and "Linux — zypper (openSUSE,
+  SUSE)" each linking the Linux page, "Windows — WinGet" without a
+  command on the page, and the downloads; the Linux page's section
+  "Debian" names Debian, Raspberry Pi and Ubuntu Linux, and its block "To
+  install:" begins `(type -p wget >/dev/null || (sudo apt update && sudo
+  apt install wget -y)) \` and ends `&& sudo apt install gh -y`; its
+  section "Alpine Linux" gives `apk add github-cli`; its section "Snap"
+  says "our team suggests never installing gh as a snap", a command the
+  guide warns against, which the addition under (c) says the run does not
+  give. The version 2.96.0 of the wording is the example; the run fills
+  in what `brew info gh` says. Built in `setup-project` lines 248 to 291.
+  (c) The addition to the rule on a text that says they have to do
+  something at the computer, decided by the person at their question of
+  this day why devloop refers to `cli.github.com` for `gh` instead of
+  reading the command there itself: where the run does not know a command
+  for certain, it reads it first at the maker — in the guide of the
+  program or of the shell, with its tools for the web — and gives it as it
+  stands there, with the source; a command the guide itself warns against
+  it does not give. Only where that yields no command — the run cannot
+  read the page, or the page does not name the system — it says what is
+  needed and names no command. It replaces the part of (4) of the entry at
+  line 40745, lines 41125 to 41128, by which the step for a shell without
+  a sure form says only that the folder has to go into the `PATH`, without
+  a command; that holds since this day only where the reading yields no
+  command. Built in `docs/skill-conventions.md` lines 113 to 126, in the
+  short form in `shared/skill-name.md` lines 43 to 50, and at the three
+  places that named no command for this reason: `build-work` lines 591 to
+  604, for fish the page of fish on `fish_add_path`, read this day —
+  "fish_add_path is a simple way to add more directories to fish's PATH",
+  used "once, interactively, and the paths will stay in future because of
+  universal variables" —; `setup-checks` lines 586 to 589;
+  `shared/install-issues-read.md` lines 45 to 48. The search for further
+  places, its patterns and every hit in the report of this day: none
+  besides, and one place that names no command off macOS by the decision
+  of 9 October 2026 — what keeps a machine awake, `setup-checks` lines
+  1104 to 1106 and `docs/skill-conventions.md` line 1944, text 6 of the
+  entry of that date, milestone 12 —, a cost named in a question field and
+  no step handed over; not changed, the person to say whether the addition
+  reaches it. (d) Older accounts at GitHub, recorded above and not built
+  until this day. The run reads at the same call of `gh api user`, beside
+  the number and the login, `created_at`; where it lies before 18 July
+  2017 it says, after step 2 of (4), having read the reference and in its
+  own words where it says otherwise by then: „Dein GitHub-Konto ist älter
+  als der 18. Juli 2017. Dann vergibt GitHub dir diese Adresse erst, wenn
+  du dort den Schutz deiner E-Mail-Adresse einmal aus- und wieder
+  einschaltest. So steht es bei GitHub:
+  https://docs.github.com/en/account-and-profile/reference/email-addresses-reference“.
+  The reference, read this day, gives the older form to an account made
+  before that day that "enabled Keep my email address private before that
+  date"; an older account that enabled it after that day has the ID form
+  already, and the sentence tells it to switch the setting all the same,
+  since `gh api user` does not say when the setting was enabled — one
+  step too many for that account, and the needed step for the other. How
+  the setting is switched at GitHub devloop does not describe, by the
+  addition (a) of the rules above. The last sentence of text 7, approved
+  by the person this day word for word, in place of the sentence above:
+  "Where git config gives no identity, git takes one from the machine or
+  refuses to commit; then hand the user the two commands to type here in
+  Claude Code, each with ! in front: ! git config --global user.name
+  "NAME", with NAME theirs to fill in, and ! git config --global
+  user.email "ADDRESS", with ADDRESS the noreply address GitHub gives
+  their account, built from gh api user as
+  ID+LOGIN@users.noreply.github.com, and the note that they may put their
+  own address there instead; where created_at of that same call lies
+  before 18 July 2017, say after the second command that GitHub gives an
+  account that old this address only once its email privacy is switched
+  off and on again, as GitHub's email addresses reference says,
+  https://docs.github.com/en/account-and-profile/reference/email-addresses-reference,
+  giving that link, which you read first and whose own words you give
+  where they now say otherwise; commit again once git config gives both."
+  Built in `hooks/pre-tool-use-identity-guard.sh` line 192, the head
+  naming the approval lines 45 to 50; printed by the hook in a throwaway
+  project this day and held against the approved sentence word for word,
+  equal. `README.md`, step 4 in line 40, ends since this day on the
+  sentence approved in these words: "If your GitHub account was created
+  before 18 July 2017, GitHub gives it this address only once you switch
+  its email privacy off and on again; see [GitHub's email addresses
+  reference](https://docs.github.com/en/account-and-profile/reference/email-addresses-reference)."
+  (e) A correction: `docs/skill-conventions.md` line 140 and
+  `shared/skill-name.md` lines 53 to 54 at `392bfd0` named "an install
+  through a package manager" as the example of a command that asks
+  nothing; `sudo apt install` is an install through a package manager and
+  asks for the password. The example is `brew install` at both places
+  since this day, conventions line 149 and skill-name lines 58 to 59. The
+  two status lines of this entry on the versions for approval and on the
+  older accounts are Built lines since this day, each defect's evidence
+  the line of its repair.
+
   **Records.** In `docs/stock-take.tsv`, by section C of the head of
   `scripts/devloop-stock-take`: the six findings D1 to D6 replaced by a
   defect thing each, its site the Built line above and its evidence the
@@ -41651,7 +41858,18 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   line re-anchored or recorded as part of the thing it belongs to; five
   defects of this entry on their Recorded, not built lines. In `docs/plan.md`
   one dated sentence under milestone 3, lines 540 to 552. The tool
-  before the commit: exit 0, no broken record, no uncovered line.
+  before the commit: exit 0, no broken record, no uncovered line. After
+  the push, the rows of the decisions above: the two defects' sites on
+  their Built lines and their evidence on a line of the repair; the things
+  renamed where no run hangs on them, the shell without a sure form in
+  `build-work` and `gh` not installed in `setup-project`, each with the
+  old name in its note; new things for the three steps of text 1 where
+  the command asks, the no line in form B and the question as text, the
+  three cases that fall back to `cli.github.com`, both lines of
+  `--installed` read for `gh` and the first setup without a record; the
+  notes of the rule's things and of the identity guard's block; the lines
+  of the paragraph. The tool before that commit: exit 0, no broken
+  record, no uncovered line.
 
 ## Decisions taken against
 
