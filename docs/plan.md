@@ -537,6 +537,19 @@ while its tool is missing and not declined; at every start devloop reads
 whether the tool of a blocking issue stands on this machine and closes the
 issue itself where it does; and condition 4 is read in the one call with the
 start conditions. Next comes the run with the person under a no.
+On 28 October 2026 the handovers the run with the person under a no meets
+were built to two rules of that day, the roadmap entry of that date on the
+handover steps: a text that hands a command over says where the person
+types it, in Claude Code with `!` in front where it asks nothing, the
+command's output in the conversation then being the signal, and in a second
+terminal window where it asks something, their word being the signal; and
+what another program itself guides is not described after it. The handover
+under a no, the refused sign-in, the sign-in at the setup, the identity of
+a commit, the merge, a check class's tool and the issue after a refusal of
+auto mode say so in the person's wordings of that day, the README its
+steps, and the folder a command installs into is read beside the search
+path at the next start and after a class's tool; the run with the person
+under a no is still to come.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October

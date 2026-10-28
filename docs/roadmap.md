@@ -41225,6 +41225,433 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   part of it; the "Built in" line of (4) as part of the renamed thing; six
   findings, each on the line it names, with its should. The tool after it:
   exit 0, no broken record, no uncovered line.
+- **Handovers say where the command is typed, sign-in and identity in steps.**
+  28 October 2026, version 0.165.0. On `task/handover-steps-and-places`,
+  off `origin/main` at `9332a70`, in two commits: the rules, the texts,
+  the hook messages, the program and the README with the version; then
+  this entry, the sentence in `docs/plan.md` and the rows, the tool green
+  at the tip and red between the two, where the rows of the first commit's
+  changes stand in the second. Two rules the person decided
+  on 28 October 2026, the wordings they approved for them, and the six
+  findings D1 to D6 of the addendum of the entry at line 40745, lines 41133
+  to 41162 at `9332a70`, each built or recorded below. A line of a file is
+  given as it stands at the tip of this branch, a line of `docs/roadmap.md`
+  as it stands at `9332a70`. Beyond `git fetch` and the vendors' pages read,
+  GitHub was neither read nor changed; nothing was installed anywhere; no
+  test project was touched, no session log read, nothing run against the
+  settings of this machine; `gh api user` was not called.
+
+  **The rules.** (a) The person's rule of 28 October 2026 on a text that
+  says they have to do something at the computer, `docs/skill-conventions.md`
+  lines 106 to 135, has an addition the person gave the same day:
+  what another program itself guides — the questions of `gh auth login`,
+  the sign-in in the browser — devloop does not describe after it; it says
+  that the person follows that program's instructions. The reason: a
+  description of another's flow stops being true as soon as its maker
+  changes it. Lines 129 to 135. (b) Where the person types a
+  command devloop hands them while Claude Code runs, decided by the person
+  on 28 October 2026, lines 137 to 186: a command that asks nothing is
+  typed in Claude Code with `!` in front, form A; a command that asks
+  something — a sign-in, a password for `sudo` — in a second terminal
+  window, form B, the text saying expressly that it is not the window in
+  which Claude Code runs and naming what the command asks; where the run
+  does not know for certain whether a command asks, B; a command that does
+  not end by itself — a server a prototype needs — would hold Claude Code
+  under A and goes to the second window as B, the reason named being that
+  it runs until they end it. Under A the person says nothing: Claude Code
+  puts the command and its output into the conversation, and the run
+  answers that output; under B they say here. The vendor's page,
+  `code.claude.com/docs/en/interactive-mode`, section "Shell mode with `!`
+  prefix", read on 28 October 2026 off the page's markdown: shell mode
+  "Adds the command and its output to the conversation context", and
+  "Claude responds to the command output automatically once it lands in
+  the transcript"; in the table of inputs the row for `!` reads "Run a
+  command directly, add its output to the session, and have Claude respond
+  to it". Whether a command that asks something goes there, and in which
+  folder a `!` command runs, the page does not say; so a command under A as
+  under B carries everything it needs, `--repo OWNER/REPO` and `cd
+  <directory> &&`. The same section lists "Supports the same `Ctrl+B`
+  backgrounding for long-running commands", a fact beside the rule and not
+  built on: a key the person would have to know, against the rule on a
+  command handed over. Measured on 28 October 2026 on the person's Mac,
+  Claude Code 2.1.312, in `devloop-test-aa` with devloop 0.164.0: `! git -c
+  user.email=probe@example.invalid status` ran and showed the state of git;
+  as a Bash call of the run the guard on the identity of a commit would
+  have blocked it, `hooks/pre-tool-use-identity-guard.sh` from line 114. So
+  the hooks of devloop do not fire on a `!` command, and Claude answered the
+  output by itself. From that: a hook that is to see a command of the
+  person sees it under A as little as in their own terminal; the three
+  texts that said the hook does not see an install made in their own
+  terminal — `build-work` lines 735 to 736, `setup-checks` step 3 and
+  step 4 — say both forms now. Both rules stand in `docs/skill-conventions.md`
+  beside the person's rule and in `shared/skill-name.md`, lines 38 to
+  49 and 51 to 75, which every skill inserts, since the
+  conventions are read by whoever builds and the runs read the shared text;
+  the step-by-step rule stands in `shared/skill-name.md` as well since this
+  entry, in short form, which the addendum of 28 October 2026 had left
+  open, lines 41123 to 41127 at `9332a70`, because the addition (a) is an
+  addition to it and a run reading the addition without its rule would read
+  it without its base. What they replace: the paragraph "A command handed
+  over runs as it stands, from wherever the person is", point 18 of part B
+  of the entry of 12 October 2026, line 18994, said "the line is copied
+  whole into whatever terminal is open" and gave `gh auth login` bare as
+  its example; since this entry it says the line is given whole, wherever
+  it is typed, and that where it is typed stands in rule (b), `docs/skill-conventions.md`
+  lines 73 to 89 and `shared/skill-name.md` lines 23 to 36; the
+  rest of point 18 — `--repo`, `cd <directory> &&`, `~` and the double
+  quotes — stands. The sentence of the paragraph after it, "a line copied
+  whole into a terminal and a line typed whole into Claude Code", reads
+  since this entry "a command handed over, given whole and with where it is
+  typed, and an input into Claude Code, named whole", line 98. The bold
+  head "A command handed over runs as it stands" stays, because
+  `shared/fetch-and-run.md` line 18, `diagnose-bug` line 275, `build-work`,
+  `setup-checks` and the conventions refer to it. None of the nineteen
+  checks holds the paragraph of the conventions against the one of
+  `shared/skill-name.md`; check 5 holds every line of a shared file of
+  forty characters or more against the skills, which went red twice on
+  this branch where a line quoting rule (b)'s head stood whole inside a
+  skill's reference to it, and was met by rewrapping the shared lines.
+
+  **Two limits of rule (b), recorded and not built.** First, the same
+  page: "To add the output to context without a response instead, set
+  `respondToBashCommands` to `false` in `settings.json`" — with that
+  setting the run does not answer by itself under A, and the signal of A
+  does not come. Second, `code.claude.com/docs/en/vs-code`, table "VS Code
+  extension vs. Claude Code CLI", row "`!` Bash shortcut": "Yes" for the
+  CLI and "No" for the extension; that holds for the graphical chat panel
+  the extension opens with — "By default, the extension opens a graphical
+  chat panel", section "Switch to terminal mode" of that page. With the
+  setting "Use Terminal" of the extension, that section, and with `claude`
+  in the built-in terminal of VS Code the CLI's surface runs, and the
+  person works one of these two ways. With it the steps for the `PATH`,
+  (4) of the entry at line 40745, are written for `claude` in a terminal:
+  under "Use Terminal" Claude Code starts again through the extension, not
+  with `cd … && claude`, and whether it then sees the new `PATH` is not
+  read. Both belong to milestone 12, `docs/plan.md` "12. Every operating
+  system, every surface" — Decision 3 of the entry of 9 October 2026, line
+  14198, by which milestone 3 closes on the person's Mac in the terminal —
+  and to Question 4 at line 14145, which reads "VS Code runs a part of the
+  commands and skills" and whether the skills of devloop are in the subset.
+  Recorded, not built: with respondToBashCommands set to false in settings.json the run does not answer the output of a command typed with ! by itself, so the signal of form A does not come — should: read for milestone 12 whether the setting stands, and under it say so and take form B, or hand the setting over; the vendor's page on the interactive mode, section Shell mode with ! prefix, read on 28 October 2026.
+  Recorded, not built: in the graphical chat panel the extension for VS Code opens with, the ! shortcut is not there, the vendor's table VS Code extension vs. Claude Code CLI reading No for the extension — should: read for milestone 12 which surface the session runs on, and in the chat panel hand every command over as form B, or say that devloop runs in the terminal; with Use Terminal and with claude in the built-in terminal the CLI's surface runs, which is how the person works.
+  Recorded, not built: the five steps for the PATH of (4) of the entry at line 40745 are written for claude started in a terminal, where under Use Terminal of the extension for VS Code Claude Code starts again through the extension and whether it then sees the new PATH is not read — should: read for milestone 12 how Claude Code is started again under Use Terminal and what PATH it then runs under, and say the steps for that surface.
+
+  **Decided on 28 October 2026**, by the person, eleven wordings and the
+  last sentence of text 7; the skills say what is said, not the words, and
+  these are the words, each with the old where there was one. The examples
+  — `yq`, `gitleaks`, titles, numbers — the run fills with what it reads.
+  (1) The handover under a no, until this day (5) of the entry at line
+  40175, lines 40494 to 40503: „Die Aufgabe „<Titel der Aufgabe>“ braucht
+  `yq`, und es fehlt auf diesem Rechner. Weil deine Antwort zum Installieren
+  für dieses Projekt Nein ist, installiere ich es nicht selbst. Der Befehl
+  dafür:“ — „`brew install yq`“ — the backing — „Führst du ihn aus, sag mir
+  Bescheid, sobald er durchgelaufen ist. Dann prüfe ich, dass `yq` dort
+  steht, und baue die Aufgabe. Lehnst du ab, lege ich ein Issue mit dem
+  Befehl an, das diese Aufgabe blockiert, und mache mit der nächsten Aufgabe
+  weiter, sofern eine bereit ist. Installierst du es später doch, merke ich
+  das beim nächsten Start, schließe das Issue und baue die Aufgabe.“ —
+  „Führst du den Befehl aus oder lehnst du ab?“ Since this day, form A:
+  „Die Aufgabe „<Titel der Aufgabe>“ braucht `yq`, und es fehlt auf diesem
+  Rechner. Weil deine Antwort zum Installieren für dieses Projekt Nein ist,
+  installiere ich es nicht selbst. Gib den Befehl dafür hier in Claude Code
+  ein, mit `!` davor:“ — „`! brew install yq`“ — „Geprüft mit `brew info
+  yq`: Homebrew bietet yq 4.54.1 an, es landet in `/opt/homebrew/bin`.“ —
+  „Sobald er durchgelaufen ist, prüfe ich, dass `yq` dort steht, und baue
+  die Aufgabe. Lehnst du ab, lege ich ein Issue mit dem Befehl an, das diese
+  Aufgabe blockiert, und mache mit der nächsten Aufgabe weiter, sofern eine
+  bereit ist. Installierst du es später doch, schließe ich beim nächsten
+  Start das Issue und baue die Aufgabe.“ — „Gibst du den Befehl ein oder
+  lehnst du ab?“ Form B, for a command that asks something, here a
+  password: „… installiere ich es nicht selbst. Der Befehl fragt nach deinem
+  Passwort, darum gib ihn in einem zweiten Terminalfenster ein, nicht in
+  dem, in dem Claude Code läuft:“, the command, the backing as above, „Sag
+  mir hier Bescheid, sobald er durchgelaufen ist. Dann prüfe ich, dass …
+  dort steht, und baue die Aufgabe.“, the rest as in A, the question
+  „Führst du den Befehl aus oder lehnst du ab?“; what the command asks the
+  run names with its reason. Under A the command's output in the
+  conversation is what lets the run go on, under B the person's word: the
+  one signal per state that `build-work` demands stays one. Built in
+  `build-work` lines 658 to 679, the reading after the signal lines
+  555 to 560. (2) GitHub refuses the sign-in, until this day the
+  wording approved on 12 October 2026, point 19 of part B of the entry of
+  that date, lines 19268 to 19270 — the order of this branch dated it 19
+  October 2026, which the file does not bear out —: „GitHub hat die
+  Anmeldung abgelehnt. Gib das im Terminal ein und folge den Anweisungen im
+  Browser:“, `gh auth login`, „Sag Bescheid, sobald das erledigt ist.“
+  Since this day: „GitHub hat die Anmeldung abgelehnt. So meldest du dich
+  neu an:“ — „1. Öffne ein zweites Terminalfenster, nicht das, in dem
+  Claude Code läuft. Die Anmeldung stellt dir Fragen, und die gehen nur
+  dort.“ — „2. Gib dort ein: `gh auth login --web --git-protocol https`“ —
+  „3. Folge den Anweisungen im Terminal und im Browser.“ — „4. Sag mir hier
+  Bescheid, sobald das erledigt ist.“ `--git-protocol https` so that `gh`
+  does not ask for the protocol, `--web` so that it takes the way through
+  the browser; the manual, `cli.github.com/manual/gh_auth_login`, read on
+  28 October 2026: "The git protocol to use for git operations on this host
+  can be set with --git-protocol, or during the interactive prompting." and
+  "The default authentication mode is a web-based browser flow." Built in
+  `shared/fetch-three-times.md` lines 65 to 83, the record of the
+  wordings line 147. (3) `gh` not signed in at the setup, finding D1, no
+  wording until this day — `setup-project` named `gh auth login` and
+  stopped: „Für die Arbeit mit GitHub braucht devloop dein GitHub-Konto, und
+  auf diesem Rechner ist es noch nicht angemeldet. Hast du noch kein Konto,
+  legst du es zuerst auf github.com an. So meldest du dich an:“, steps 1 to
+  3 as in (2), then „4. Sag mir hier Bescheid, sobald das erledigt ist. Dann
+  richte ich das Projekt ein.“ After their word the run reads `gh auth
+  status` again; where it says signed in it sets up, else it says so and
+  hands over again. Built in `setup-project` lines 234 to 254. (4) git
+  has no name and no address for commits, finding D3, no wording until this
+  day: „Für die Commits braucht git deinen Namen und eine E-Mail-Adresse,
+  und auf diesem Rechner ist beides noch nicht eingetragen. Beides steht in
+  jedem Commit und ist nach dem Push auf GitHub öffentlich. So trägst du es
+  ein, hier in Claude Code, jeweils mit `!` davor:“ — „1. `! git config
+  --global user.name "Dein Name"`“ — „2. `! git config --global user.email
+  "12345678+deinname@users.noreply.github.com"`“ — „Die Adresse in Schritt 2
+  vergibt GitHub dir dafür, damit deine eigene nicht öffentlich wird. Willst
+  du lieber deine eigene, setz sie dort ein. Danach committe ich mit diesem
+  Namen und dieser Adresse.“ The address the run builds from `gh api user`,
+  the number and the login of the account; „Dein Name“ stays a placeholder,
+  and the run says that the person fills it. The form, GitHub's reference
+  `docs.github.com/en/account-and-profile/reference/email-addresses-reference`,
+  read on 28 October 2026: "If you created your account after July 18, 2017,
+  your noreply email address is an ID number and your username in the form
+  of ID+USERNAME@users.noreply.github.com." and "If you created your
+  account prior to July 18, 2017, and enabled Keep my email address private
+  before that date, your noreply email address is
+  USERNAME@users.noreply.github.com." and "To get an ID-based noreply email
+  address, select (or deselect and reselect) Keep my email address private
+  in your email settings." For (4) and (5) that means: an account made
+  before 18 July 2017 with the setting enabled before that day has the
+  older form, and the ID form the run builds is then not the address
+  GitHub holds for it; GitHub makes the ID form available to such an
+  account by the step the page names. Recorded, not built, the wording
+  unchanged; what should hold, below. The last sentence of text 7, the
+  message of the identity guard, approved on 9 October 2026 and its last
+  sentence on 10 October 2026, lines 15638 to 15659 and 16004 to 16021,
+  until this day: "Where git config gives no identity, git takes one from
+  the machine or refuses to commit; then hand the user the two commands git
+  config --global user.name and git config --global user.email, to run with
+  values of their own choosing." Since this day, word for word: "Where git
+  config gives no identity, git takes one from the machine or refuses to
+  commit; then hand the user the two commands to type here in Claude Code,
+  each with ! in front: ! git config --global user.name "NAME", with NAME
+  theirs to fill in, and ! git config --global user.email "ADDRESS", with
+  ADDRESS the noreply address GitHub gives their account, built from gh api
+  user as ID+LOGIN@users.noreply.github.com, and the note that they may put
+  their own address there instead; commit again once git config gives
+  both." Built in `hooks/pre-tool-use-identity-guard.sh` line 187, the
+  head naming the approvals lines 42 to 52; the two commands the
+  guard would block when the run ran them, and the person types them with
+  `!`, where it does not fire, rule (b). (5) `README.md`, finding D2, the
+  paragraph under "Install", until this day text 8 of 10 October 2026 from
+  "You need git with your name and email address set" to "`git config
+  --global user.email`.", with "To keep your address private, use the
+  `noreply` address GitHub offers in your email settings." between; the
+  rest of the paragraph from "The workflow keeps its state in issues"
+  stays. Since this day, in English: "You need a GitHub account, the GitHub
+  CLI `gh` signed in to it, and git with your name and email address set.
+  If any of it is missing when you start, devloop says so and gives you the
+  steps. To set it up beforehand, in your terminal:" — "1. Install `gh` as
+  cli.github.com describes for your system." — "2. Sign it in: `gh auth
+  login --web --git-protocol https`, then follow the instructions in the
+  terminal and in the browser." — "3. Set your name: `git config --global
+  user.name "Your Name"`" — "4. Set your email address: `git config --global
+  user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"`
+  — this is the address GitHub gives you so that your own stays private. To
+  use your own instead, put it in place of everything inside the outer
+  quotes." — "Every commit devloop makes carries that name and address, and
+  the push puts them on GitHub, where they stay. Where none is set, git
+  takes them from your machine — on a Mac your user name and the computer's
+  name — or refuses to commit." The steps run in a terminal before Claude
+  Code runs, so without `!`. The quoting of step 4, checked in a zsh and in
+  a bash with `-f` and `--noprofile --norc`, a stand-in for `gh` under
+  `$WORK` applying the expression after `--jq` with `jq -r` to
+  `{"id":12345678,"login":"deinname"}` and `printf '%s\n'` in place of `git
+  config --global user.email`, no git configuration written: both printed
+  `12345678+deinname@users.noreply.github.com`. That `gh` prints a string
+  from `--jq` without quotes, the manual `cli.github.com/manual/gh_help_formatting`,
+  read the same day, example "$ gh pr list --json author --jq
+  '.[].author.login'" printing "monalisa", "codercat" and "cli-maintainer"
+  bare. Built in `README.md` lines 32 to 45. (6) The merge where
+  GitHub cannot merge itself, until this day the wording of 12 October
+  2026, point 11, lines 19241 to 19249, its middle sentence for the first
+  case since 19 October 2026 under defect 15, line 30301: „Der Pull Request
+  „Set up devloop: control documents, task runner, labels“ ist offen.
+  GitHub kann ihn nicht selbst mergen, weil es noch keine Pflichtprüfung
+  gibt, auf die es warten könnte. Eine Pflichtprüfung richtet devloop nur
+  ein, wenn du ihm erlaubst, ohne dich zu arbeiten. Merge ihn mit:“, `gh pr
+  merge 1 --squash --repo jayjay-create/devloop-test-w`, „Sag mir Bescheid,
+  sobald er drin ist. Bis dahin passiert hier nichts.“ Since this day: „Der
+  Pull Request „Set up devloop: control documents, task runner, labels“ ist
+  offen. GitHub kann ihn nicht selbst mergen, weil es noch keine
+  Pflichtprüfung gibt, auf die es warten könnte. Eine Pflichtprüfung richtet
+  devloop nur ein, wenn du ihm erlaubst, ohne dich zu arbeiten. Merge ihn
+  hier in Claude Code, mit `!` davor:“ — „`! gh pr merge 1 --squash --repo
+  jayjay-create/devloop-test-w`“ — „Sobald er drin ist, geht es weiter. Bis
+  dahin passiert hier nichts.“ The two other cases of the middle sentence
+  stay as approved. What lets the run go on is the command's output in the
+  conversation, and whether it landed it reads as before off `gh pr view`.
+  The manual `cli.github.com/manual/gh_pr_merge`, read the same day, says
+  nothing of a prompt under `--squash`; the person approved form A, having
+  run the command in the closing runs. Built in `shared/merge-handover.md`
+  lines 21 to 38 and 45 to 57, the command line 33; the
+  guard's message, `hooks/pre-tool-use-merge-guard.sh` lines 49 and
+  50, which said "say the stage picks up as soon as they say it has
+  landed - nothing moves here until they say so", follows (6), its head
+  lines 39 to 42. (7) After „Selbst installieren“ for a check
+  class's tool, the question itself as approved on 21 October 2026; what
+  follows the first answer, no wording until this day: „Gib den Befehl hier
+  in Claude Code ein, mit `!` davor:“ — „`! brew install gitleaks`“ —
+  „Sobald er durchgelaufen ist, prüfe ich, dass `gitleaks` da ist, und
+  richte die Prüfung ein.“ Read afterwards with `bin/devloop-tool-state
+  --installed`, both lines, the class set up where the second says found,
+  (10). Built in `setup-checks` lines 552 to 595. (8) Text 1, the halt
+  at `secrets` without the person, approved on 8 October 2026, its two last
+  sentences since (3) of the entry at line 40745, lines 41082 to 41087: „Im
+  Issue steht der Befehl, mit dem du das selbst installierst. Führst du ihn
+  aus, merke ich das beim nächsten Start, schließe das Issue, richte die
+  Prüfung ein und mache mit der Aufgabe weiter.“ Since this day: „So
+  installierst du das Werkzeug selbst, hier in Claude Code:“ — „1. `! brew
+  install gitleaks`“ — „2. `/devloop:start-work`“ — „Dann schließe ich das
+  Issue, richte die Prüfung ein und mache mit der Aufgabe weiter. Der Befehl
+  steht auch im Issue.“ The rest of text 1 stays. Built in `setup-checks`
+  lines 119 to 134, the record line 139. (9) The line under „Nein,
+  nicht eintragen“ of the question after a refusal of auto mode, (1) of the
+  entry at line 40745, lines 41065 to 41074, until this day: „Dann bleibt
+  das Issue offen. Führst du den Befehl selbst aus, merke ich das beim
+  nächsten Start, schließe das Issue und nehme die Aufgabe wieder auf. Bis
+  dahin frage ich bei jedem Start mit `/devloop:start-work --auto` wieder.“
+  Since this day: „Dann bleibt das Issue offen. Gibst du hier selbst `! brew
+  install yq` ein und danach `/devloop:start-work`, schließe ich das Issue
+  und nehme die Aufgabe wieder auf. Bis dahin frage ich bei jedem Start mit
+  `/devloop:start-work --auto` wieder.“ Where it concerns a check class: „…
+  schließe ich das Issue und richte die Prüfung wieder ein. …“; with
+  several issues every command named, „die Issues“, and both kinds as in
+  the line under „Ja, eintragen“. Measured against `output-styles/devloop.md`
+  lines 44 to 48, at 76 characters in the question field and 73 under an
+  answer, wrapped at words: with one issue holding a task the question
+  field five lines, the yes three, the no four, twelve of fourteen; with
+  one issue concerning a class twelve as well; with two issues of both
+  kinds the no five lines, thirteen of fourteen; the question fits the
+  widget in all three. Built in `setup-checks` lines 1237 to 1253. (10)
+  A check class's tool in a folder outside the `PATH`, finding D4, no
+  wording until this day — the folder alone was read, and a tool in
+  `~/go/bin` was set up while the chain could not call it: „Der Befehl hat
+  `gitleaks` nach `~/go/bin` installiert, aber dieser Ordner steht nicht in
+  deinem `PATH`, darum findet die Prüfung `gitleaks` nicht. So nimmst du ihn
+  auf:“, steps 1 to 5 as in (4) of the entry at line 40745, with the same
+  reading of the shell and the system, then „Dann finde ich `gitleaks` und
+  richte die Prüfung ein.“ Built in `setup-checks` lines 573 to 587,
+  with (7). (11) At the next start the tool of an issue lies in a folder
+  outside the `PATH`, finding D5, no wording until this day — the issue
+  stayed open and the person was told nothing: `bin/devloop-install-issues`
+  reads then, beside `--build`, with `bin/devloop-tool-state --installed`
+  the folder of the issue's command, `install-command` and `install-tool`,
+  and where the command installed there and the search path does not reach
+  the tool it prints a line of its own, `folder:`, and the run says: „Der
+  Befehl aus dem Issue „yq installieren“ hat `yq` nach `~/go/bin`
+  installiert, aber dieser Ordner steht nicht in deinem `PATH`, darum finde
+  ich `yq` nicht, und das Issue bleibt offen. So nimmst du ihn auf:“, steps
+  1 to 5 as in (4) of the entry at line 40745, then „Dann finde ich `yq`,
+  schließe das Issue und baue die Aufgabe.“ Built in `bin/devloop-install-issues`,
+  the folder read lines 212 to 233, its call lines 281 to 289, the
+  head lines 30 to 46 and 95 to 103, the self-test's stand-in for
+  `go` lines 368 to 377 and its cases lines 516 to 534, `SELF-TEST
+  PASSED: 23 cases` on this Mac, line 578; and in `shared/install-issues-read.md`
+  lines 14 to 21 and 35 to 52. The person's sentence of 27
+  October 2026 with „merke ich das“ stays in that text's lines 5 to 7 and
+  in the program's head as the record of that day, and beside it stands
+  what holds since this day, (1). For (6) to (10) the person approved form
+  A alone, for (11) the case of a task alone: where the command asks
+  something — `sudo apt install …` under Linux — or (11) concerns a check
+  class, the skill says what is said by rule (b) and the pattern of (1)
+  form B, and the German versions stand in the report of this day for
+  approval, recorded here and not approved.
+  Recorded, not built: for (6) to (10) the person approved form A alone and for (11) the case of a task alone, so a command that asks something at those places, sudo apt install say, and a check class's issue whose tool stands in a folder outside the PATH have no approved wording — should: the German versions in the report of 28 October 2026 on the handover steps, built by rule (b) and the pattern of (1) form B, put to the person; until then the skills say what is said.
+  Recorded, not built: the address of (4) and of the README's step 4 is the ID form, which GitHub gives an account made after 18 July 2017 and an older one only once Keep my email address private is selected again, the reference read on 28 October 2026 — should: the run reads the address GitHub holds for the account where the API gives it, else builds the ID form and says that an account made before 18 July 2017 with the setting enabled before that day gets the ID form by selecting the setting again; the wording unchanged until the person decides.
+
+  **Built besides, without a wording of their own, by the rules.** The
+  message of the install guard, `hooks/pre-tool-use-install-guard.sh` line
+  1272, finding D6: it said that the path the command writes to is what
+  decides and their word when to look; it says since this entry where they
+  type the command, A or B, what releases the run, and that the folder says
+  whether the command installed and the search path whether the build can
+  use it, with the steps of `build-work` step 3 point 7 where the second
+  says no. `diagnose-bug` lines 275 to 289, where a command went "into
+  their own terminal": the command with where they type it, A where it asks
+  nothing and ends by itself, else B, and the script that asks in the
+  second window. `hooks/stop-checks.sh` line 61, the same handover of the
+  turn-end hook. `build-prototype` lines 79 to 89: the line that opens
+  a file in a browser typed with `!`, A, and the command that starts a
+  process in a second window, B, since it runs until they end it, with how
+  they end it. `shared/install-issue.md` lines 24 to 32: the issue
+  says where the command is typed and `/devloop:start-work` after it, the
+  line `install-command:` staying the bare command, since the program reads
+  it. The search over `skills/`, `shared/`, `hooks/`, `bin/`,
+  `output-styles/` and `README.md` for every place that hands a command
+  over or waits for the person's word after one, its patterns and every
+  hit, stands in the report; the hits not changed: `build-work` line 80, a
+  decision and no command; line 273, no command; `setup-checks` step 3's
+  second way, which refers to the rule; the `caffeinate` line, a terminal
+  of their own named by the approved wording of 19 October 2026; the mode
+  switch with Shift+Tab, an input into Claude Code; `untangle-idea`'s
+  `/clear`; the README's update command, in a terminal before Claude Code
+  runs by its own words.
+
+  **Cross-check**, each wording read as a run reads it, through
+  `scripts/devloop-expand`, the rule (b) standing in every one of the
+  twelve expanded skills once: (1) `build-work` says under a no, before any
+  subagent starts, the task's need, the no, the command with `!` and the
+  backing, the yes way and the no way, the question whether they type it or
+  decline, under A; under B the second window, what the command asks, the
+  word asked for; run 1 of 26 October 2026, #1045 and #1076 as the entry at
+  line 38963 quotes them, handed the command over for the terminal after
+  the hint and asked for their word — under this text the handover comes
+  before the build, with `!` and without a word asked. (2) the four skills
+  that insert `shared/fetch-three-times.md` say the four steps. (3)
+  `setup-project` says the account and the four steps and reads `gh auth
+  status` again. (4) the guard's sentence, printed by the hook in a
+  throwaway project, read word for word. (5) the README. (6) the three
+  skills that insert `shared/merge-handover.md` hand the merge over with
+  `!`. (7), (8), (9), (10) `setup-checks`. (11) `build-work` and `plan-work`,
+  which insert `shared/install-issues-read.md`. Every mechanism on every
+  path at the code: with the person there the handovers say A or B, with
+  nobody there no command is handed over — the record says yes, start
+  condition 6, and the issue of `secrets` says the two steps for their
+  return; under a yes the run installs and nothing of this is said, under
+  a no and with no record the handover of (1); the folder read of (11)
+  runs at every start with the person and without, the steps said at the
+  next message or in the last; on macOS, Linux, Windows with Git Bash and
+  Alpine the program's stand-in for `go` is an sh script, since
+  `bin/devloop-tool-state` calls `go` from bash, and the job runs the
+  self-test on all four; the five steps for the `PATH` hold for zsh and for
+  bash on macOS and Linux and name no command elsewhere, as (4) of the
+  entry at line 40745 has them; form A holds where the CLI's surface runs,
+  the limits above.
+  Built: the step for gh not signed in named gh auth login alone, finding D1 of the addendum of 28 October 2026 — the steps of wording (3) in setup-project, a second window, the command, the program's instructions, their word, gh auth status read again.
+  Built: README.md gave the two git config commands without their values and the sign-in without its command, finding D2 — the five numbered steps of wording (5) in README.md.
+  Built: the identity guard's message handed the two git config commands over bare, finding D3 — the last sentence of text 7 as approved on 28 October 2026, the two commands with ! in front, NAME and ADDRESS.
+  Built: after their word setup-checks read a class's tool in the installer's folder alone, finding D4 — both lines of bin/devloop-tool-state --installed read, the class set up where the search path reaches the tool, else the steps of wording (10).
+  Built: an issue on a no carried the command alone and the next start left it open with no word on the folder, finding D5 — bin/devloop-install-issues reads the folder beside the search path and prints folder:, and the run says wording (11) with the steps.
+  Built: the install guard's message said the path the command writes to is what decides, finding D6 — the message says the folder decides whether the command installed and the search path whether the build can use it, and where they type the command.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the six findings D1 to D6 replaced by a
+  defect thing each, its site the Built line above and its evidence the
+  line of the repair, the version 0.165.0 and a run pending in the note,
+  so that FINDINGS reads 14; the things of the two rules in
+  `shared/skill-name.md`, the rewritten paragraph re-anchored; the things
+  renamed where their name no longer said what they say and no run hung on
+  them — the sign-in case of `shared/fetch-three-times.md`, the `gh` case
+  of `setup-project`, the question after a refusal in `setup-checks`, the
+  line of `build-prototype` —, each with the old name in its note; new
+  things for the folder line of `bin/devloop-install-issues`, the two
+  texts of `shared/install-issues-read.md` on it, the folder found and the
+  search path not in `setup-checks` step 3, the second read of `gh auth
+  status` and `gh` not installed in `setup-project`; every other changed
+  line re-anchored or recorded as part of the thing it belongs to; five
+  defects of this entry on their Recorded, not built lines. In `docs/plan.md`
+  one dated sentence under milestone 3, lines 540 to 552. The tool
+  before the commit: exit 0, no broken record, no uncovered line.
 
 ## Decisions taken against
 
