@@ -26,7 +26,24 @@ browser for tests - and not whether the handed-over command installed: the
 person may have installed by another way, and a tool the search path finds
 is one the work can use, "A command handed over is backed, and its result
 is read" in docs/skill-conventions.md. The decision as recorded named
---installed; the entry of 28 October 2026 says why the search path is read.
+--installed; the entry of 28 October 2026 on the hook on SubagentStart says
+why the search path is read. Beside it, since the entry of 28 October 2026
+on the handover steps, where the search path does not reach a command's
+tool, the folder the issue's command installs into is read with
+bin/devloop-tool-state --installed, the command and the tool of the issue:
+go install puts a tool into ~/go/bin, which often stands on no search path,
+and the person then has installed as the issue asked and gets told nothing
+of why the issue stays open. Where that folder line says found, this
+program prints it as a line of its own, and the run says that the command
+installed the tool into the folder, that the folder is not in their PATH,
+that the issue therefore stays open, and the steps that put the folder on
+their search path, shared/install-issues-read.md, the wording (11) of that
+entry. The issue stays open in that case: the search path alone says
+whether the work can use the tool. The person's sentence of 27 October
+2026 above stands as the record of that day; since 28 October 2026 the
+handover says instead that where they install the tool later, devloop
+closes the issue at the next start and builds the task, wording (1) of the
+entry on the handover steps.
 
 Usage
     devloop-install-issues [DIR]
@@ -75,13 +92,20 @@ Output, one group per issue in the order of the numbers, each line one key:
     kind: task|class
     title: <the title>
     tool: <the line of bin/devloop-tool-state, or not read, because ...>
+    folder: <the first line of bin/devloop-tool-state --installed COMMAND TOOL, where it says found>
     command: COMMAND
     closed: yes|no
-and, where no open issue carries the two lines, one line:
+The folder line stands only where the tool line says not found on the
+search path and the folder line of --installed says found at: the command
+installed and the search path does not reach the tool. Where --installed
+says not found or not read, or refuses the command's installer, no folder
+line stands, there being nothing to tell. Six lines per group, seven with
+the folder line. And, where no open issue carries the two lines, one line:
     issues: none of the N open issues labelled raised-here and needs-human carries the lines install-tool and install-command
 Exit 0 where every such issue was read, closed or not. Exit 2 where a query
 did not answer - gh issue list, the read of the blocking relation, the tool
-state program, or the closing - with the groups read until then, then
+state program under --build or --installed, or the closing - with the
+groups read until then, then
     issues: not decided
     command: <the command that did not answer>
     message: <what came back>
@@ -97,9 +121,10 @@ the path, a launcher of sh on macOS and Linux and of cmd on Windows, the
 configuration of gh pointing at an empty directory, no token in the
 environment - and against the real bin/devloop-tool-state beside this
 program, with a tool that stands on the self-test's own path and one that
-does not, and a browser in a project without its package, which the program
-cannot read; nothing of it reaches GitHub, and the settings of this machine
-are not touched.
+does not, one installed by a stand-in for go into a folder the search path
+does not reach, and a browser in a project without its package, which the
+program cannot read; nothing of it reaches GitHub, and the settings of this
+machine are not touched.
 """
 
 import json
@@ -184,6 +209,30 @@ def tool_line(tool, d):
     return first, first.startswith(tool + ": found at "), None
 
 
+def folder_line(tool, command, d):
+    """The first line of bin/devloop-tool-state --installed COMMAND TOOL,
+    the folder the command's installer writes to, read where the search
+    path does not reach the tool, since the entry of 28 October 2026 on the
+    handover steps: (line, failure), the line only where it says found at,
+    None where it says not found or not read or the program refuses the
+    command or the tool, and failure the command and the message where the
+    program did not answer."""
+    env = dict(os.environ)
+    env["CLAUDE_PROJECT_DIR"] = d
+    out, shown, err, rr = run(["bash", TOOL_STATE, "--installed", command, tool], d, env)
+    shown = "bin/devloop-tool-state --installed '%s' %s" % (command, tool)
+    if rr is None:  # the folder read: the program did not answer
+        return None, (shown, err)
+    if rr.returncode == 2:  # the folder read: the command's installer or the tool refused, nothing to tell
+        return None, None
+    if rr.returncode not in (0, 1):  # the folder read: ended otherwise than the program ends
+        return None, (shown, err or "ended with %d" % rr.returncode)
+    folder = (rr.stdout.split("\n") or [""])[0].strip()
+    if folder.startswith(tool + ": found at "):  # the folder read: the command installed there
+        return folder, None
+    return None, None
+
+
 def read(d):
     out, shown, err, _ = run(["gh", "issue", "list", "--state", "open",
                               "--label", LABELS[0], "--label", LABELS[1],
@@ -227,10 +276,17 @@ def read(d):
         line, stands, failure = tool_line(tool, d)
         if failure is not None:
             return not_decided(*failure)
+        folder = None
+        if not stands and line.startswith(tool + ": not found on the search path"):
+            folder, failure = folder_line(tool, command, d)
+            if failure:  # the folder read did not answer
+                return not_decided(*failure)
         print("issue: %d" % number)
         print("kind: %s" % kind)
         print("title: %s" % one_line(title))
         print("tool: %s" % line)
+        if folder is not None:
+            print("folder: %s" % folder)
         print("command: %s" % one_line(command))
         if not stands:
             print("closed: no")
@@ -309,6 +365,16 @@ def selftest():
         present = os.path.join(T, "home", "bin", "devloop-selftest-present")
         open(present, "w").close()
         os.chmod(present, os.stat(present).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        # the stand-in for go, answering go env GOBIN with a folder the search path does not reach, and the tool standing in that folder: an sh script, since bin/devloop-tool-state calls go from bash, on Windows under Git Bash as on the others
+        go_bin = os.path.join(T, "home", "go", "bin")
+        os.makedirs(go_bin)
+        infolder = os.path.join(go_bin, "devloop-selftest-infolder")
+        open(infolder, "w").close()
+        os.chmod(infolder, os.stat(infolder).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        go_path = os.path.join(T, "bin", "go")
+        with open(go_path, "w", encoding="utf-8") as f:
+            f.write("#!/bin/sh\nprintf '%s\\n' '%s'\n" % ("%s", go_bin.replace("\\", "/")))
+        os.chmod(go_path, os.stat(go_path).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
         subprocess.run(["git", "init", "-q", os.path.join(T, "p")], check=True)
         env = dict(os.environ)
         for k in ("GH_TOKEN", "GITHUB_TOKEN", "GH_ENTERPRISE_TOKEN",
@@ -346,10 +412,16 @@ def selftest():
         def close(num, rc=0, err=""):
             ans("close.%d" % num, rc, "", err)
 
+        last = {"out": ""}
+
         def go(*args):
             r = subprocess.run([sys.executable, me] + list(args), cwd=os.path.join(T, "p"),
                                capture_output=True, text=True, env=env)
-            return r.returncode, r.stdout + r.stderr
+            last["out"] = r.stdout + r.stderr
+            return r.returncode, last["out"]
+
+        def got_out(_):
+            return last["out"].split("\n")
 
         def calls():
             with open(os.path.join(S, "log"), encoding="utf-8") as f:
@@ -439,6 +511,29 @@ def selftest():
         called("the tool does not stand: no closing called",
                "issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
                "api repos/{owner}/{repo}/issues/8/dependencies/blocking")
+        n[0] += 1
+        if any(l.startswith("folder:") for l in got_out(go)):
+            print("FAIL the tool does not stand and brew's folder is not read: a folder line stands there and should not"); red[0] += 1
+        else:
+            print("ok   the tool does not stand and brew's folder is not read: no folder line")
+        # the tool installed by go into a folder the search path does not reach: not closed, the folder line
+        fresh(); issues((17, "Install devloop-selftest-infolder for task #6", "install-tool: devloop-selftest-infolder\ninstall-command: go install example.invalid/x/cmd/devloop-selftest-infolder@latest\n")); blocking(17, "open")
+        expect("the command installed into a folder the search path does not reach: not closed, the folder line, 0", go(), 0,
+               "issue: 17", "kind: task",
+               "tool: devloop-selftest-infolder: not found on the search path (on %s)" % present_line[-11:-1],
+               "command: go install example.invalid/x/cmd/devloop-selftest-infolder@latest", "closed: no")
+        # the folder line read by its head and its tail: the folder stands between them as bash writes it on this system, ~/go/bin where the home directory is read as such
+        n[0] += 1
+        head = "folder: devloop-selftest-infolder: found at "
+        tail = "go/bin/devloop-selftest-infolder, the folder go writes to, read off go env GOBIN (on %s)" % present_line[-11:-1]
+        if any(l.startswith(head) and l.endswith(tail) for l in got_out(go)):
+            print("ok   the folder line names the folder go writes to, read off go env GOBIN")
+        else:
+            print("FAIL the folder line names the folder go writes to, read off go env GOBIN: no line from %r to %r" % (head, tail)); red[0] += 1
+            print("    " + "\n    ".join(got_out(go)))
+        called("the folder read: no closing called",
+               "issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
+               "api repos/{owner}/{repo}/issues/17/dependencies/blocking")
         # a browser the program cannot read: not closed
         fresh(); issues((9, "Download WebKit", "install-tool: playwright:webkit\ninstall-command: npx playwright install webkit\n")); blocking(9, "closed", "open")
         expect("a browser not read: not closed, the cause, 0", go(), 0,

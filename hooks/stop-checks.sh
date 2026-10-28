@@ -58,7 +58,7 @@ if [ "$COUNT" -eq "$MAX" ]; then
   echo "Still failing after $MAX attempts. Stop trying. Do not run another variation of what already failed.
 
 Hand this to the human in a form they can act on in one step. Pick whichever fits:
-  - a command they can paste into their own terminal, and what to look for in the output
+  - a command, as it runs from wherever they are, with where they type it: in Claude Code with ! in front where it asks nothing and ends by itself, else in a second terminal window, not the one Claude Code runs in, with what it asks named - and what to look for in the output
   - a small script that gathers the versions, paths and environment this needs, ready to run
   - a smaller case that reproduces the failure away from the rest of the project
   - a named question only they can answer, with what each answer would change

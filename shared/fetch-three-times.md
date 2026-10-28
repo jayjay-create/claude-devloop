@@ -63,8 +63,24 @@ and that nothing happens until then — "Nothing resumes on its own" in
 `docs/skill-conventions.md`. GitHub not reached in three attempts: that it
 was not reached in three attempts, and that they check their connection and
 say when it stands again. The sign-in refused: that GitHub refused the
-sign-in, that they type `gh auth login` in the terminal and follow the
-instructions in the browser, and say when that is done. The two others are
+sign-in, and how they sign in anew, step by step, since 28 October 2026,
+form B of "Where the person types a command devloop hands them" in
+`docs/skill-conventions.md`, since the sign-in asks: that they open
+a second terminal window, not the one Claude Code runs in, because the
+sign-in puts questions to them, and those go only there; that they type
+there `gh auth login --web --git-protocol https` — `--git-protocol https`
+so that `gh` does not ask for the protocol and `--web` so that it takes
+the way through the browser, the manual `cli.github.com/manual/gh_auth_login`
+read on 28 October 2026 saying "The git protocol to use for git operations
+on this host can be set with --git-protocol, or during the interactive
+prompting." and "The default authentication mode is a web-based browser
+flow."; that they follow the instructions in the terminal and in the
+browser, which this text does not describe after the program, by the
+person's rule of 28 October 2026 in `docs/skill-conventions.md`; and that
+they say here once that is done. The wording approved on 28 October 2026
+stands in the roadmap entry of that date on the handover steps, (2), in
+place of the one of 12 October 2026, which named `gh auth login` bare for
+the terminal. The two others are
 their own work, and the run asks instead of handing a command over: a choice
 through the harness's choice widget, in their language, alone in its call,
 every point in a field of its own and no recommendation, and it acts on the
@@ -127,7 +143,9 @@ The German wording of the three openings, approved on 6 October 2026,
 stands in the roadmap entry of 5 October 2026 under "The approved wording";
 the wordings of the two questions and of the two cases only they can clear,
 approved on 12 October 2026, stand in the roadmap entry of that date under
-"The approved wordings", point 19 of part B, which replaced the examples
+"The approved wordings", point 19 of part B — the refused sign-in since 28
+October 2026 in the roadmap entry of that date on the handover steps, (2)
+—, which replaced the examples
 that handed `git stash`, `git stash pop`, `git branch` and `git reset
 --keep` to the person; the wordings of what the run says with nobody there,
 approved on 16 October 2026, stand in the roadmap entry of that date; a

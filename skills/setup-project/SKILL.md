@@ -231,8 +231,27 @@ which field.
 - Whether `gh` is installed and signed in (`gh auth status`). Where it is not,
   no amount of setting up gets around it: a tracker account is a prerequisite, the
   sign-in needs the user's own browser, and creating an account is a web signup.
-  Name `gh auth login` and stop — say what it is for, and that everything else
-  waits on it.
+  Stop, and say how they sign in, step by step, since 28 October 2026, by the
+  person's rule of that day in `docs/skill-conventions.md`, last in the
+  message that ends the turn: that for the work with GitHub devloop needs
+  their GitHub account, and that on this machine it is not signed in yet;
+  that where they have no account yet, they create it first on github.com;
+  then the steps of the refused sign-in as the text on the fetch tried
+  three times has them, form B of "Where the person types a command devloop
+  hands them", since the sign-in asks — a second terminal window, not the
+  one Claude Code runs in, because the sign-in's questions go only there;
+  `gh auth login --web --git-protocol https` typed there; the instructions
+  in the terminal and in the browser followed, which this text does not
+  describe after the program —; and that they say here once that is done,
+  and that the run then sets the project up. After their word read `gh auth
+  status` again: where it says signed in, go on with this step; where not,
+  say so and hand the same steps over again. Where `gh` is not installed at
+  all, say that too, and that they install it as `cli.github.com` describes
+  for their system, before the steps; no wording is approved for that case,
+  this skill saying what is said. The wording approved on 28 October 2026
+  for the sign-in stands in the roadmap entry of that date on the handover
+  steps, (3), and this skill says what is said, not the words; until that
+  day this step named `gh auth login` and stopped.
 - Is there code? Count source files outside config and docs
 - Existing control documents: `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, `docs/adr/`, `README.md`
 - Task runner: `Makefile`, `justfile`, `Taskfile.yml`, `scripts` in `package.json`

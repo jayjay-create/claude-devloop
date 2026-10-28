@@ -21,8 +21,8 @@ run could call the stage itself, it asks in ordinary words and hands over no
 command.
 
 **A command handed over runs as it stands, from wherever the person is.** No
-knowledge of commands in a terminal is assumed of them: the line is copied
-whole into whatever terminal is open, so it carries everything it needs. A
+knowledge of commands in a terminal is assumed of them: the line is given
+whole, so it carries everything it needs, wherever it is typed. A
 `gh` command carries the repository, `--repo OWNER/REPO`, since `gh` resolves
 it from the directory it runs in. A command that needs the project's
 directory — an install into the project's packages, a browser download a
@@ -30,9 +30,49 @@ dependency of the project makes, a check command — carries the change into
 it before it, `cd <directory> && <command>`, the directory written as their
 shell takes it: `~` for their home directory, and the rest in double quotes
 where it carries a space, `cd ~/"my project" && …`. A command that needs
-nothing of the kind, `gh auth login` say, is given bare. Decided on 12
+nothing of the kind is given bare. Decided on 12
 October 2026, point 18 of part B of the roadmap entry of that date, with the
-example `cd ~/devloop-test-w && npx playwright install chromium`.
+example `cd ~/devloop-test-w && npx playwright install chromium`; where the
+line is typed stands in the rule after the next, since 28 October 2026.
+
+**Where a text to the person says they have to do something at the
+computer, it says how, step by step**, since 28 October 2026, the person's
+rule of that day in `docs/skill-conventions.md`: a command, an input into
+Claude Code, ending Claude Code and starting it again, a change to a file
+of their configuration — each step one command or one input, as it is
+typed, in the order they can take them; a step the run has no sure command
+for says what is needed and names no command it does not know; what the
+run can do itself it does, and hands over no step for it. What another
+program itself guides — the questions of `gh auth login`, the sign-in in
+the browser — is not described after it: the text says that they follow
+that program's instructions, since a description of another's flow stops
+being true as soon as its maker changes it.
+
+**Where the person types a command devloop hands them while Claude Code
+runs, the text says, in one of two forms**, decided by the person on 28
+October 2026. A command that asks nothing — an install through a package
+manager, `git config`, the merge — is typed in Claude Code with `!` in
+front, form A: the text says so and gives the line with the `!`, `! brew
+install yq`; Claude Code puts the command and its output into the
+conversation and the run answers that output, so the person says nothing,
+the output in the conversation is the signal the run goes on from, and
+what the run then reads — the installer's folder and the search path, the
+pull request's state — it reads as before, never off the output alone. A
+command that asks something — a sign-in, a password for `sudo` — is typed
+in a second terminal window, form B: the text says expressly that it is
+not the window in which Claude Code runs, names what the command asks, and
+asks them to say here once it is through; their word is the signal, and
+what the run reads after it, it reads as before. Where the run does not
+know for certain whether a command asks, B holds. A command that does not
+end by itself — a server a prototype needs — would hold Claude Code under
+A and goes to the second window as B, with the reason that it runs until
+they end it. Under either form the command carries everything it needs,
+`--repo OWNER/REPO` and `cd <directory> &&`, as above. The hooks of devloop
+do not fire on a `!` command, measured on 28 October 2026: a hook that is
+to see a command of the person sees it under A as little as in their own
+terminal. The wordings the person approved stand in the roadmap entry of
+28 October 2026 on the handover steps; a skill says what is said, not the
+words.
 
 **A file is named by its path where the work is about the file.**
 

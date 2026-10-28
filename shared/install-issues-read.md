@@ -11,7 +11,14 @@ missing install, `install-tool` and `install-command`, reads with
 `bin/devloop-tool-state --build` whether the tool stands on this machine
 now, and closes the issue itself where it does, with a comment naming the
 line; where the tool does not stand, or cannot be read, the issue stays, and
-so does what it holds. Read its lines and go by them: an issue closed that
+so does what it holds. Where the search path does not reach a command's
+tool, it reads beside that, since the roadmap entry of 28 October 2026 on
+the handover steps, with `bin/devloop-tool-state --installed`, the issue's
+command and tool, the folder the command's installer writes to, and where
+that line says found it prints it as a line of its own, `folder:`: the
+command installed, `go install` into `~/go/bin` say, and the search path
+does not reach the tool, so the issue stays open and the person has done
+what the issue asked. Read its lines and go by them: an issue closed that
 held a task frees the task, which the readiness query then lists, and
 nothing more is done for it here; an issue closed that concerned a check
 class sends the class to `setup-checks` from step 4 of the next task, as the
@@ -25,7 +32,24 @@ class, that the check is set up again — one such line per issue closed; the
 wording approved on 28 October 2026 stands in the roadmap entry of that
 date on the hook on SubagentStart, (5), and the skill says what is said,
 not the words. With nobody there it stands in the last message among what
-was done. Where it ends with 2, say that the query did not answer, with the
+was done. Where a group carries a `folder:` line, say, with the person
+there at the next message that ends a turn with text and with nobody there
+in the last message: that the command from the issue, named by its title,
+installed the tool into the folder, both as the line names them; that the
+folder is not in their `PATH`, the term untranslated; that the run
+therefore does not find the tool and the issue stays open; then how they
+put the folder on their search path, step by step, the five steps as
+`build-work` step 3 point 7 has them for the tool of a task — `/exit`, the
+export line into the file of their shell, the `source` of it, `cd
+<directory> && claude`, `/devloop:start-work` — the shell and the system
+read as that point reads them, a step without a command where the run has
+no sure form; and that the run then finds the tool, closes the issue and
+builds the task — or, where the issue concerned a check class, sets the
+check up; the wording approved on 28 October 2026 for a task stands in the
+roadmap entry of that date on the handover steps, (11), and for a class no
+wording is approved, the skill saying what is said. The issue is not
+closed by that: the next start reads the search path again, after the
+steps. Where it ends with 2, say that the query did not answer, with the
 command and the message it prints, as "When a command does not answer" says,
 and go on: an issue not read stays open, and the readiness query passes over
 the task it holds. Run again at the start of a build that followed a

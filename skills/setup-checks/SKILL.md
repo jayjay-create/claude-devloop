@@ -116,18 +116,29 @@ that called. Everything else below applies unchanged.
   nobody there" below says; the runtime is the example the approved wording
   carries and not the only cause; that this check is never switched off by
   the run on its own, which is why the run writes an issue with the reason
-  and goes on with the other tasks; that the issue carries the command with
-  which they install it themselves; and that where they run it, devloop
-  notices it at the next start, closes the issue, sets the check up and goes
-  on with the task, since 28 October 2026 — the issue carrying the two lines
-  of the form below, which that start reads; until then that running it and
+  and goes on with the other tasks; how they install the tool themselves,
+  here in Claude Code, step by step by the person's rule of 28 October 2026
+  in `docs/skill-conventions.md`: the install command typed with `!` in
+  front, form A of "Where the person types a command devloop hands them"
+  there, backed as the issue has it, and then `/devloop:start-work`; that
+  the run then closes the issue, sets the check up and goes on with the
+  task — the issue carrying the two lines of the form below, which that
+  start reads —; and that the command stands in the issue as well, since 28
+  October 2026, the wording of that day on the handover steps, (8). Where
+  the command asks something, `sudo apt install` say, form B holds, the
+  second terminal window, not the one Claude Code runs in, what it asks,
+  and `/devloop:start-work` after it; no wording is approved for that case,
+  and this skill says what is said. The wording of the entry of that date
+  on the hook on SubagentStart had them run the command and devloop notice
+  it at the next start; until then that running it and
   closing the issue frees the task again. Until 9 October 2026 the run that
   called ended here and deleted the mark; the deletion list in `build-work`
   says so no longer. The wording approved on 8 October 2026 stands in the
   roadmap entry of 9 October 2026 as text 1, its two last sentences since 28
   October 2026 in the wording of that day, the roadmap entry of 28 October
-  2026 on the hook on SubagentStart; this skill says what is said, not the
-  words.
+  2026 on the handover steps, (8), which replaced the two of the entry of
+  that date on the hook on SubagentStart; this skill says what is said, not
+  the words.
 - **The command is not an install and the guard matched on text.** Then nothing
   is blocking the class, and `skipped` would be an entry that is not true: a
   class standing as skipped while nothing hinders it, which the next reader takes
@@ -539,17 +550,49 @@ entry of that date on milestone 3, part 4, with `gitleaks` for the class
 - **The second answer, label and line**: the check is switched off.
 
 On the first: hand them the command, backed and as it runs from wherever
-they are, once more as a line of its own to copy, last in the message that
-ends the turn, and wait for their word; then read the place the command
-writes to, never `command -v`, and set the class up in step 4 where the
-tool stands there — the branch is cut after their word, as after the last
-answer — and step 4 writes the line for that install into
-`docs/agents/environment.md`, since the hook that writes the line for an
-install the run made does not see one made in their own terminal, as step 4
-says. Where it does not stand there, put the same question again, with the
+they are, once more as a line of its own, last in the message that ends the
+turn, with where they type it by "Where the person types a command devloop
+hands them" in `docs/skill-conventions.md`, since 28 October 2026 — in
+Claude Code with `!` in front where it asks nothing, form A, the line given
+with the `!` and the text saying so; in a second terminal window, not the
+one Claude Code runs in, where it asks something, `sudo apt install` say,
+form B, the text naming what it asks and asking them to say here once it
+is through; in doubt B —, and that once it has run the run reads that the
+tool is there and sets the check up; wait for the form's signal, the
+command's output in the conversation under A and their word under B; then
+read with `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the
+command as handed over and the tool, both its lines, never `command -v`:
+the first reads the folder the installer writes to, the second whether the
+search path reaches the tool, which is where the chain calls it, `go
+install` putting a tool into `~/go/bin`, which often stands on no search
+path. Set the class up in step 4 where the second line says found — the
+branch is cut after the signal, as after the last answer — and step 4
+writes the line for that install into `docs/agents/environment.md`, since
+the hook that writes the line for an install the run made does not see one
+the person typed, with `!` as little as in a second window, as step 4 says.
+Where the first line says found and the second not found, say so and say
+how they put the folder on their search path, step by step, as `build-work`
+step 3 point 7 says it for the tool of a task, at the next message that
+ends a turn with text: that the command installed the tool into the folder,
+both as the first line names them; that the folder is not in their `PATH`,
+the term untranslated; that the check therefore does not find the tool;
+then the five steps of that point — `/exit`, the export line into the file
+of their shell, the `source` of it, `cd <directory> && claude`,
+`/devloop:start-work` — the shell and the system read as that point reads
+them, a step without a command where the run has no sure form; and that
+the run then finds the tool and sets the check up. The class stays as it
+stands until then, and the start those steps lead to reaches this step
+again for it through step 4 of the next task, where the tool, now on the
+search path, takes it into step 4 of this skill. The wording approved on 28
+October 2026 for the first answer, (7), and for the folder outside the
+search path, (10), stand in the roadmap entry of that date on the handover
+steps; this skill says what is said, not the words; until that day the
+folder alone was read, and a tool in `~/go/bin` was set up and the chain
+could not call it. Where the first line says not found, put the same
+question again, with the
 place that was read and that the tool does not stand there in its question
 field before the question line, and so each time the tool is not there
-after their word, until they choose the check off or the tool stands there:
+after the signal, until they choose the check off or the tool stands there:
 no check goes off but on their choice, which is the second answer, and not
 on a tool not found — the person's decision of 21 October 2026, the roadmap
 entry of that date on milestone 3, part 4; until then this paragraph made
@@ -1191,15 +1234,23 @@ form:
   up again where it concerns a check class, both where issues of both kinds
   are open; and the rule allows installations only in projects set up with
   devloop. With several of a kind, the issues, the tasks, the checks.
-- **In the no, label and line**: the issue stays open; where they run the
-  command themselves, devloop notices it at the next start, closes the issue
-  and takes the task up again, or sets the check up again, or both, by the
-  kinds open as the yes above has them; and until then they are asked again
-  at every start with `/devloop:start-work --auto`, the input named as they
-  type it; with several, the issues, the tasks, the checks. Since 28 October
-  2026, the wording of that day in the roadmap entry of 28 October 2026 on
-  the hook on SubagentStart, in place of the line of 22 October 2026, which
-  had them close the issue themselves.
+- **In the no, label and line**: the issue stays open; where they type the
+  command themselves, here in Claude Code with `!` in front — the command
+  as the program prints it, with the `!`, form A of "Where the person types
+  a command devloop hands them" in `docs/skill-conventions.md`, each command
+  named where several are open — and then `/devloop:start-work`, devloop
+  closes the issue and takes the task up again, or sets the check up again,
+  or both, by the kinds open as the yes above has them; and until then they
+  are asked again at every start with `/devloop:start-work --auto`, the
+  input named as they type it; with several, the issues, the tasks, the
+  checks. Since 28 October 2026, the wording of that day in the roadmap
+  entry of 28 October 2026 on the handover steps, (9), in place of the line
+  of the entry of that date on the hook on SubagentStart, which had them run
+  the command and devloop notice it at the next start, and of the line of
+  22 October 2026 before it, which had them close the issue themselves.
+  Where a command asks something, `sudo apt install` say, the line says
+  form B, the second terminal window and what it asks; no wording is
+  approved for that, this skill saying what is said.
 
 The wording approved on 22 October 2026 stands in the roadmap entry of that
 date on the question after a refusal; this skill says what is said, not the
