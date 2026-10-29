@@ -41884,6 +41884,443 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of the paragraph. The tool before that commit: exit 0, no broken
   record, no uncovered line.
 
+- **Run under a no read off its log, the ! after the no taken up at once.**
+  29 October 2026, version 0.165.0 stays. On
+  `task/run-under-a-no-read-off-its-log`, off `bc69673`, in one commit: this
+  entry, one dated sentence under milestone 3 in `docs/plan.md`, and the rows
+  of the table. Nothing is built: no file under `skills/`, `shared/`,
+  `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/` changes, as
+  #206 and #207 changed files under `docs/` alone and left the version. It
+  reads the run with the person under a no that `docs/plan.md` named as still
+  to come, made on 29 October 2026 in `~/devloop-test-aa` under the installed
+  0.165.0, which the comparison under "Before you change anything, run this"
+  found equal to `bc69673` in all six directories that day, off its session
+  log and the logs of its subagents, and enters it on the row of every defect
+  whose case it met, by section C of the head of `scripts/devloop-stock-take`.
+  Whether milestone 3 is reached this entry does not decide; the person does.
+  A line of a file is given as it stands at `bc69673`, a skill's `SKILL.md`
+  as a file and, where marked expanded, as `scripts/devloop-expand` prints it;
+  a line of `docs/roadmap.md` as it stands at `bc69673`, unchanged above this
+  entry. A record is a line of a session's `.jsonl` file, counted from 1; `#N`
+  is a record of the main log, `<id> #N` one of a subagent log named by the
+  first eight characters of its id. Every record cited was read at the source.
+  Beyond `git fetch`, GitHub was read with `gh`, the issues and pull requests
+  of `devloop-test-aa`; nothing was changed there or in `~/devloop-test-aa`,
+  no install ran, no other session log was opened, nothing was run against
+  the settings of this machine, and the identity under which git commits here
+  was neither set nor read into a file.
+
+  **Which log**, read off the directory of `devloop-test-aa` under
+  `~/.claude/projects/`: of ten session files exactly one changed on 29
+  October 2026, `b29a1c3b`, 1,505 records, 3,959,081 characters, from
+  15:29:20Z (the SessionStart hook, #4) to 18:27:53Z (#1501), the run's last
+  text at #1498, 18:22:41Z; its first prompt `/devloop:start-work` at #12,
+  the local command `/model` before it at #7, "Set model to `Sonnet 5.5`";
+  37 subagent logs in the directory of the session, 15,383,579 characters
+  together, each spawned by an `Agent` call of the main log, whose
+  `toolUseId` the log's meta file names, every one read for its hook
+  attachments, its blocks and refusals, its writes and its install commands.
+  The run ran on `claude-sonnet-5-5` (#15), its lenses on sonnet and, in the
+  last rounds, haiku; the permission mode of the session was `auto`
+  throughout, the person present. Claude Code's reminder "The user hasn't
+  heard from you in a while" stands six times in the log.
+
+  **What stands in no log, the person's statement of 29 October 2026.**
+  Before the run, shown in the terminal: `main` of `devloop-test-aa` at
+  `e29c448`; one `git fetch` failed with „Failed to connect to github.com
+  port 443“; `bin/devloop-install-record` read `tools: yes`, `answered:
+  2026-10-26`; `yq` missing; no `.claude/unattended.local`; a branch
+  `remove-install-record` on GitHub. A block checked a clean tree, no open
+  issue and no open pull request, and took the section `## Install
+  permission` out of `docs/agents/environment.md` through pull request #58
+  „Remove the install permission before the run under a no“, its check green,
+  squash-merged as `8d3b6f3`, after which the program answered „cause:
+  docs/agents/environment.md on origin/main has no section "## Install
+  permission", so the question was never answered“; devloop was updated from
+  0.164.0 to 0.165.0. The plan, decided by the person that day: one idea with
+  two parts that do not depend on each other and both need `yq`; at the first
+  task they decline, at the second they type `! brew install yq` at the
+  handover; at the next start devloop closes the first task's issue itself
+  and builds it; where the planning makes one task of it, the first and the
+  third step hold and the second goes into a further short run. Their inputs,
+  word for word: „Nein“ to the install question; the idea „In
+  links.config.yaml sollen zwei neue Schlüssel möglich sein, die nichts
+  miteinander zu tun haben: exclude, eine Liste von Mustern – Links, deren
+  Ziel auf eines davon passt, lässt das Skript weg; und title, eine
+  Überschrift, die das Skript über die Ausgabe schreibt.“; „Ja, stimmt“, „Glob
+  mit * (empfohlen)“, „Nur auf der Seite (empfohlen)“, „Unterscheiden
+  (empfohlen)“, „Keine Überschrift (empfohlen)“; at „Ist die Idee so
+  verstanden …“, typed: „Ich sehe oben keine User Stories und keine
+  Abgrenzung, nur eine eingeklappte Zeile. Zeig sie mir bitte hier.“; „ja“;
+  „C“; at the handover „Nein, ich lehne ab.“; then `! brew install yq`; „ja“
+  at both „Soll das landen?“. Nothing else; `/devloop:start-work` they did not
+  type after the install, because the build was already running. In the chat
+  beside the run, at „Ist die Idee so verstanden …“, seeing only a line ending
+  on „· summary“: „nein, ich sehe nichts.“ After the run they decided not to
+  make the further short run now: this entry is to show how the way over `!`
+  after the no and the closing of the issue went, and where it shows a gap a
+  short run follows for it. Every input stands in the log where the log can
+  hold it: #66, #158, #190, #194, #221, #234, #404, #489, #505, #1119, #1445.
+
+  **The run.** The setup refresh, #12 to #150: `bin/devloop-setup-state
+  --fetch` at #40, markers 0.161.0; `setup-project` at #50;
+  `bin/devloop-install-record` at #60 with the cause above, exit 1; the
+  install question at #65 through the widget, its field opening „Das Setup
+  dieses Projekts wird gerade aufgefrischt, und auf dem main-Branch steht noch
+  keine Antwort auf diese Frage.“, the answer „Nein“ at #66; the branch
+  `devloop-setup` at #81, markers to 0.165.0 and the section appended; #87
+  the commit with `Co-Authored-By: Claude Sonnet 5.5`; #103 pull request #59;
+  #113 `bin/devloop-arm 59`, „armed: GitHub accepted auto-merge at BLOCKED“;
+  #118 a loop of twenty-four `sleep 15` with `gh pr view`, OPEN after six
+  minutes, #125 the check passed and the state CLEAN, #135 a second loop, #136
+  „MERGED 2026-10-29T15:39:12Z“; #141 fetch, fast-forward to `229c482`, the
+  branch deleted on both sides; #150 „Das Setup ist aufgefrischt … Was
+  möchtest du bauen?“. The planning, #158 to #413: `plan-work` at #163; the
+  sources read at #175 to #178, `scripts/links-config.sh` among them, which
+  calls `yq`; #189 one widget call with the assumptions of the round first and
+  two questions, #193 two more, every recommended answer first with
+  „(empfohlen)“; #213 issue #60 with `being-planned` and the first comment;
+  #219 a thinking block of one sentence, „Ich habe die User Stories …
+  zusammengefasst“, and #220 the widget „Ist die Idee so verstanden, wie die
+  User Stories und die Abgrenzung oben sie fassen?“; #221 the person's typed
+  answer; #231 the hard core as text, seven lines under „User Stories“ and
+  five under „Nicht dabei“, the question last as text; #234 „ja“; #238
+  `bin/devloop-start-conditions`, `bin/devloop-permission-mode` and
+  `bin/devloop-install-issues` in one call, conditions 1, 2, 5 and 7 holding,
+  6 not, „the install record says no“, the mark guard's „the permission mode
+  of this session is auto“ beside it, #239, „issues: none“; #259
+  `bin/devloop-tool-state --planning yq htmlq`, „yq: not found on the search
+  path (on 2026-10-29)“, `htmlq` found, the `--planning` record line, exit 1;
+  #263 to #268 the second comment with the hard core, the code and the two
+  tool lines; #282 to #284 three draft agents and #339 to #341 three check
+  agents, read-only by their prompts; #386 the third comment; #395 the
+  message that ends the turn: the three drafts, „`yq` fehlt auf diesem
+  Rechner, `htmlq` ist da. … Wer es installiert, entscheidet beim Bauen deine
+  Installationsfreigabe. Sie steht für dieses Projekt auf „nein".“, „Arbeit
+  ohne dich ist in diesem Projekt nicht eingerichtet, weil die
+  Installationsfreigabe auf „nein" steht. `/devloop:start-work --auto`,
+  eingetippt in Claude Code, richtet sie ein.“, the recommendation and
+  „Welchen Entwurf nimmst du: A, B oder C?“; #404 „C“; #408 to #413 the spec
+  into #60, the line „yq: not found on the search path (on 2026-10-29)“ under
+  Implementation decisions, the label removed. The cut, #423 to #457: issues
+  #61 and #62 as sub-issues of #60, #62 blocked by #61, both touching the same
+  four files; #456 „Ich starte jetzt mit dem Bauen.“ as a note between tool
+  calls; `build-work` at #457. The handover, #469 to #480: fetch, the base
+  equal, the tree clean, `bin/devloop-install-issues` „none“,
+  `bin/devloop-tool-state --build yq htmlq` with „yq: not found on the search
+  path (on 2026-10-29)“, `htmlq` found and „record: tools no on origin/main,
+  answered 2026-10-29: a tool that is missing is handed to the person as a
+  backed command with both ways before anything is built against a stand-in“,
+  exit 1; #470 `make check` green on the base; #477 `brew info yq`; #480 the
+  message that ends the turn, no subagent started: the task by its title
+  needs `yq`, missing, „Deine Antwort zum Installieren steht für dieses
+  Projekt auf „nein". Deshalb installiere ich es nicht selbst und baue auch
+  nicht gegen einen Ersatz.“, the command `! brew install yq` in a block,
+  „belegt durch `brew info yq` (stable 4.54.1, installiert nach
+  `/opt/homebrew/bin`)“, „**Ja:** Tipp ihn in Claude Code mit `!` davor ein.
+  Er fragt nichts. Sobald seine Ausgabe hier im Gespräch steht, lese ich, ob
+  `yq` wirklich in `/opt/homebrew/bin` liegt, und baue den Task mit dem echten
+  Tool.“, „**Nein:** Dann lege ich ein Issue mit dem Befehl an und mache den
+  Task davon abhängig. … Sobald `yq` bei einem späteren Start auf dem Rechner
+  steht, schließt devloop das Issue selbst, und der Task ist wieder frei.“,
+  last „Tippst du den Befehl, oder lehnst du ab?“. The no, #489 to #502: issue
+  #63 „yq is missing for the exclude task“ with `raised-here` and
+  `needs-human`, blocking #61, written on the no, its body with the backing,
+  "type this in Claude Code (it asks nothing): `! brew install yq`", "Then
+  type `/devloop:start-work`. At the next start devloop reads whether `yq`
+  stands on this machine, closes this issue itself and the task is free
+  again", and `install-tool: yq`, `install-command: brew install yq`; #502
+  „Ich habe dein Nein umgesetzt. Gebaut ist nichts.“, the blocker named,
+  nothing free, „1. Tipp in Claude Code `! brew install yq` ein. 2. Tipp
+  danach `/devloop:start-work`. 3. Beim nächsten Start liest devloop, ob `yq`
+  auf dem Rechner liegt, schließt das Issue selbst und baut den ersten
+  Task.“; the turn ended. The `!` after the no, #505 to #532: #505
+  `<bash-input> brew install yq</bash-input>`, #506 its output, Homebrew
+  updating itself and two taps first; the run answered it at #517 with
+  `bin/devloop-tool-state --installed 'brew install yq' yq`, „yq: found at
+  /opt/homebrew/bin/yq, the folder brew writes to, read off brew --prefix (on
+  2026-10-29)“ and the search-path line, exit 0, and with
+  `bin/devloop-install-issues`, which closed #63, „closed: yes“, with the
+  comment „devloop closed this issue at the start of a session, the tool
+  standing on this machine now: yq: found at /opt/homebrew/bin/yq (on
+  2026-10-29)“, 16:08:47Z on GitHub; #523 the build subagent for #61; #532
+  „`yq` steht jetzt unter `/opt/homebrew/bin/yq`. Das Issue „yq is missing for
+  the exclude task" ist geschlossen, und der Task ist wieder frei. Ein Agent
+  baut ihn gerade mit dem echten `yq`.“ The build and review of #61, #540 to
+  #1115: `ada2acff`, 437 records, its #2 and #3 the SubagentStart hook's
+  context, „[InstallRecord] tools: no | places: none | routes: none |
+  answered: 2026-10-29 | read off origin/main as last fetched, not off the
+  working tree“ and the rule of four sentences, its #203
+  `bin/devloop-install-note put /opt/homebrew/bin 'brew install yq'`, its #130
+  a block of `hooks/post-tool-use-checks.sh`; `review-changes` at #552, five
+  lenses at #568 to #572, the data-migration lens left out with its reason at
+  #585; #655 to #685 the age of every rule of `standards.md` on `origin/main`
+  and the `raised-here` issues citing them; #691 seven points to the builder,
+  five rules to drop, aged 21, 18, 17, 14 and 11 landed pull requests, one to
+  add; #714 issues #64, #65 and #66; rounds 2 and 3 with five lenses each at
+  #742 and #860, round 4 with three at #964; #1017 and #1018 the main run
+  edited two test files itself, #1050 its commit `e7ac94c` with a mutation
+  proof of its own; round 5 with three lenses on haiku at #1056; #1115 the
+  message that ends the turn, what holds, the findings, the five rules, the
+  `yq` line in `environment.md` („Du hast es selbst getippt. Dabei hat
+  Homebrew sich selbst und zwei Taps aktualisiert.“), last „Soll das landen?“
+  with both ways. The landing of #61, #1119 to #1201: pull request #67 at
+  #1134, its body with the Guarded conditions, "Installed outside the
+  project" and the standards paragraph; armed at #1146; two loops with `sleep
+  10` at #1151 and #1164, OPEN; #1179 `sleep 60; gh pr view …`, blocked by
+  Claude Code at #1180, „Blocked: sleep 60 followed by: gh pr view … To wait
+  for a condition, use Monitor with an until-loop … Do not chain shorter
+  sleeps to work around this block.“; #1182 the query without the sleep,
+  „MERGED 2026-10-29T17:19:14Z“; #1187 nothing of the block; #1188 to #1201
+  fast-forward to `455d4e2`, the branch deleted, #61 CLOSED,
+  `bin/devloop-install-issues` „none“, #62 with no blocker, `--build` both
+  found, the base green. The build, review and landing of #62, #1206 to
+  #1498: `ac4d47c8`, 351 records; its #160 a refusal of a built-in safety
+  check of Claude Code, an `rm` inside a shell function of an experiment; its
+  #174 „PreToolUse:Bash hook error:
+  [${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use-table-guard.sh]: failed; blocking
+  because onFailure is "block" / devloop-command-reader: a \u escape in the
+  JSON is not four hex digits“; its #221 „Blocked: sleep 60 followed by: cat
+  …“; five blocks of `hooks/post-tool-use-checks.sh`; five lenses at #1243 to
+  #1247; #1341 issue #68 and a comment on #66; #1347, #1358 and #1369 the
+  Stop hook, „Checks are failing (attempt 1 of 3)“ twice and „(attempt 2 of
+  3)“ while the builder's proof stood in the tree, each answered with a text
+  to the person; round 2 with three lenses on haiku at #1388; #1435 the
+  message that ends the turn, the two refusals named, last „Soll das
+  landen?“; #1461 pull request #69, armed; #1468 `Monitor` with an until
+  loop; #1481 „MERGED 2026-10-29T18:21:54Z“, fast-forward to `4119a1d`; #1493
+  #60 closed as completed; #1498 the last message, the four open issues by
+  subject, „Auf deiner Seite ist nichts zu tun“, the builder's temp directory
+  named.
+
+  **(a) What holds milestone 3 open since 27 October 2026.** New defect 4 of
+  the entry at line 38963, line 39515: held in part. `plan-work` expanded
+  1095 to 1135: before anything is said of a tool outside the project
+  anywhere, the assumptions of a round among it, the program runs once with
+  every such tool named so far, the planning says of a tool only what it
+  printed and of the record only that the build decides. #175 to #177 read
+  the script that calls `yq`; the round's assumptions at #189 named no tool;
+  #259 read the program after the round; the comment and the spec carry the
+  line; #395 said it before the design question — and named today's answer.
+  New defect 6, line 39549: the hook held, all 37 subagents starting with the
+  record line and the rule, `hooks/subagent-start-install.sh` lines 46 to 50;
+  the prompt held in part: the fifth rule of step 3, `build-work` expanded
+  1233 to 1242, hands point 7 as it reads and the record as the program
+  prints it and writes nothing of the run's own on installing, and #523 step
+  7 and #1206 step 8 carry the tool lines, which the read before the subagent
+  asks for, and then the run's own „The install record for this project says
+  NO: you install NOTHING outside the repository; if anything else is
+  missing, name it and the command in your report and stop.“ New defect 7,
+  line 39568: held, `build-work` expanded 1245 to 1262, the read at #469, the
+  handover at #480 before any subagent, no stand-in, the subagent at #523
+  after the tool stood, the landing question at #1115 after the real `yq`
+  ran. The rest of defect 5 of the entry at line 36636, line 37219: held in
+  part. `build-work` expanded 1428 to 1472: both ways in the same breath, the
+  issue on the no and never before, "Before a no the form's signal releases
+  the run — the output under A, their word under B —, after a no the tool
+  read at the next start: one signal per state, and the issue and the message
+  name the same one", and "The task itself", expanded 1704 to 1716, the
+  closing at the next start by `bin/devloop-install-issues`. #480 said both
+  ways and the no way as the text has it, #497 wrote the issue on the no with
+  the two lines and where the command is typed, #502 named the next start as
+  the one signal; then the run took the other state's signal: it answered the
+  output of #505 at #517, ran the program of the next start inside step 3,
+  which wrote a comment naming a start that did not happen,
+  `bin/devloop-install-issues` line 294, and built. The second step of the
+  person's plan was not reached, the cut having made #62 depend on #61, and
+  the third, the closing at the next start, was never walked: the program ran
+  at a start three times, #238, #469 and #1194, and found nothing to close;
+  the one time it closed an issue it ran inside a step.
+
+  **(b) The Built lines this run reached**, each against what the run said.
+  Entry at line 39873: defect 1, the term, met at #220 and #231, „User
+  Stories“, held; defect 2, the command whole, met at #395, held; defect c
+  not met, the course question not put. Entry at line 40175: (a) the program
+  met at #259, #469, #517 and #1194, every line as its head has it, held; (b)
+  new defect 4 as under (a); (c) new defect 5, line 39548, met at #395 and
+  held in part — the line said in substance, but not in the next message that
+  ended a turn with text after the read at #238, which was #295, and with what
+  is missing named, „weil die Installationsfreigabe auf „nein" steht“, where
+  `plan-work` expanded 1269 says "It does not list what is missing". Entry at
+  line 40745: (a) the hook, held; (b) the read before the subagent and no
+  landing while the tool is missing, held; (c) the handover and its two
+  ways, held in substance; (d) the closing at the next start, not met as a
+  start and met inside step 3 at #517, the one line of wording (5) said at
+  #532 with the issue by its title and the task not, where
+  `shared/install-issues-read.md` lines 26 to 30 name both, held in part;
+  (e) after the signal `--installed` with both lines, met at #517 and #518,
+  held; (f) the two lines of the issue, met at #497, held; (g) condition 4 in
+  one call, met at #238 and #239, held; (h) and wording (4), not met. Entry
+  at line 41228: (1) the handover under a no, form A, met at #480 and held in
+  substance, every element of the approved wording there and the words
+  not — „Task“ for „Aufgabe“ throughout, „lese ich, ob `yq` wirklich in
+  `/opt/homebrew/bin` liegt“ for „prüfe ich, dass `yq` dort steht“, „Tippst du
+  den Befehl, oder lehnst du ab?“ for „Gibst du den Befehl ein oder lehnst du
+  ab?“, three sentences more at the top and one on the second task's
+  dependence — the skill saying what is said and the run reading no roadmap;
+  (2) to (5), (6), (7) to (10) and (11) not met; D5, the folder read beside
+  the search path, met at #517 on its found branch, held; rule (b), where a
+  command is typed, met at #480, #502 and in #63, held; D6 not met.
+
+  **(c) Defects met again**, each on the row of its thing. The hard core
+  shown in no message, line 25960, its should built on 17 October 2026,
+  `plan-work` expanded 1177 to 1208: met at #219 and #220, the hard core in a
+  thinking block of one sentence and in no field and no message, the widget
+  pointing „oben“, the person seeing „nur eine eingeklappte Zeile“; not held;
+  at #231, after their no, what the text says for a hard core of fifteen
+  lines against the bound of fourteen, as written in the message with the
+  question last as text, held there. Claude Code's rule on a wait, line
+  30379: met at #1179 to #1187 exactly as recorded, and in `a4b2cd45` #62 and
+  #63 and `ac4d47c8` #220 and #221, neither report naming it; not held. The
+  Stop hook while the subagent builds, line 39827: met at #1347, #1358 and
+  #1369, `hooks/stop-checks.sh` line 72, the main run answering each with a
+  text; not held. New defect 8, line 39600, the main run building: met in
+  part at #997 to #1050, the last fix of #61 edited, checked and committed by
+  the main run with the subagent there to resume, as #691, #832 and #939 had
+  resumed it. Defect 34 of 24 October 2026, line 37523: met at #65, held.
+  Defect 9, line 37278: met at #189 to #395, held, nobody settled to install.
+  The first half of defect 5, line 37228: met at #480, held. Point (c) of the
+  entry at line 38963, no defect and open: every commit with `Co-Authored-By:
+  Claude Sonnet 5.5`, #87 and #1050 and the prompts #523 and #1206 telling the
+  subagents to end theirs with it, from Claude Code's own instruction at #26;
+  #59 and #67 with Claude Code's „🤖 Generated with“ line and #69 without.
+
+  **New defects**, by effect, each a thing of the table on its line below.
+  **1. The `!` after the no taken up at once.** #505 to #532 as under (a).
+  Against `build-work` expanded 1466 and 1710, decision (4) of the entry at
+  line 40175 — one signal per state, objection O2 of the report of 27 October
+  2026 — and the comment of `bin/devloop-install-issues` line 294. Two
+  readings, the person's to choose: the decided rule stands, and on the
+  output of an install typed with `!` after a no the run says one line, that
+  the tool stands, read with `--installed`, and that `/devloop:start-work`
+  closes the issue and builds the task, building nothing before that start;
+  or the output of such an install is a signal in this session too, the run
+  reads `--installed`, closes the issue itself and says so, and the program's
+  comment names no start. Recorded under the first, the rule decided.
+  Recorded, not built: after the person's no the run answered their ! brew install yq in the same session, read the tool with --installed, ran bin/devloop-install-issues inside step 3, which closed the issue with a comment naming a start that did not happen, and built, so that the next start never walked — should: one signal per state as decided on 27 and 28 October 2026, the run answering an install typed with ! after a no with one line, that the tool stands and that /devloop:start-work closes the issue and builds the task, and building nothing before that start, unless the person decides that such an output is a signal in the session too, the comment then naming no start; milestone 3.
+  **2. The reader refuses every `$'\xHH'`.** `ac4d47c8` #172 to #174: a
+  harmless experiment of the build subagent with `grep -c $'\x1b'` blocked
+  by the table guard under `onFailure: block`, `hooks/hooks.json` line 11,
+  the reader having ended with exit 2. `bin/devloop-command-reader` line
+  2297 hands the two hex digits of a `\x` escape in an ANSI-C string to
+  `hex`, line 2060, which takes four and ends with the message written for
+  JSON; measured at `bc69673`, `echo $'\x1b'` and `echo $'\x41'` refused,
+  `echo $'\n'` and `printf '\x1b'` read; no case of the self-test carries
+  `$'\x`. Thirteen hooks read through the reader, six of them PreToolUse
+  guards that block under `onFailure: block`. The table guard's own rule, a
+  `git commit` with a cell in no allowed form, had nothing to do with it. The
+  builder reported it, #1231, and #1435 said it to the person.
+  Recorded, not built: bin/devloop-command-reader line 2297 hands the two hex digits of a \x escape in an ANSI-C string to hex, which takes four, so every command carrying $'\xHH' ends the reader with exit 2 and the message meant for JSON, and the six PreToolUse guards block the call, the table guard blocking an experiment of the build subagent at ac4d47c8 #174 — should: \xHH decoded with its one or two digits as bash reads it, a case in the self-test, and a text the reader cannot take apart printed as parsed no with the reason, the outcome its head names, not an exit that blocks; milestone 3.
+  **3. A review lens wrote into the project and ended processes.**
+  `a74cb87c`, the failure lens of round 1, prompt #572 "Read-only: edit/write
+  nothing": its #43 `cd` into a temp directory failed, „not a directory“, and
+  the command went on in `~/devloop-test-aa`, writing the project's
+  `links.config.yaml` with 60,000 patterns; its #52 "My misdirected command
+  overwrote the repo's tracked file"; its #53 `git checkout --
+  links.config.yaml`; its #61 `pkill -f links-config.sh`, which ends every
+  process on the machine whose command line carries the name. The main run
+  knew, #691, #746 and #1247, and said nothing of it to the person, #1115
+  and #1498. `review-changes` says what a lens reads and that a guard is
+  answered, expanded 315, and nowhere where a lens runs an experiment or what
+  a lens that changed the tree says.
+  Recorded, not built: the failure lens of round 1 overwrote links.config.yaml in the project after a failed cd, restored it with git checkout and ended every process matching links-config.sh with pkill, and the main run said nothing of it to the person — should: a lens runs nothing with the project as working directory that could write there, its experiments in a copy under mktemp -d, says in its report where it wrote into the project all the same, which the main run says to the person at the next message that ends a turn with text, and ends no process it did not start; milestone 3.
+
+  **(d) Every block and every refusal.** Claude Code's rule on a wait: #1180
+  on `sleep 60; gh pr view 67 …`, `a4b2cd45` #63 on `sleep 100; cat …`,
+  `ac4d47c8` #221 on `sleep 60; cat … git status --short ps aux …`, each
+  "Blocked: sleep … followed by: … use Monitor with an until-loop"; by the
+  rule's own text yes, devloop having no rule on it, the defect of line
+  30379. A built-in safety check of Claude Code: `ac4d47c8` #160, an
+  experiment with `rm -f out.html` inside a shell function after `cd $T`,
+  "could not check the script for dangerous removals"; its own file, refused
+  on shape, reported at #1435 and in #69. Claude Code on a malformed call:
+  `ada2acff` #117 "No such tool available: bash", #364 `Monitor` without its
+  schema. devloop: `ac4d47c8` #174 the table guard as under new defect 2, the
+  command none the guard's rule names; `hooks/post-tool-use-checks.sh` line
+  53, "The file you just changed fails its checks", on the format of a test
+  file after an `Edit`, `ada2acff` #130 and `ac4d47c8` #79, #99, #101, #103
+  and #329, each a filled target red on the file, so each a block the rule
+  names; `hooks/stop-checks.sh` line 72 at #1347, #1358 and #1369, the chain
+  red from the subagent's proof, the defect of line 39827. No PreToolUse
+  guard blocked anything in the main run; the mark guard put the mode beside
+  #238; nothing stands under PermissionDenied in any log; the SessionStart
+  hook at #4 and the SubagentStart hook in every agent log passed with their
+  context.
+
+  **(e) What the run left.** Outside the project: `yq` 4.54.1 at
+  `/opt/homebrew/bin/yq`, installed by the person's `!`, Homebrew updated
+  itself and two taps in the same call; twenty-nine directories made with
+  `mktemp -d` under the system's temp folder and not removed, two by the main
+  run for body files, #88 and #204, and twenty-seven by the lenses and the
+  builders, counted off their `Bash` calls, `ada2acff` removing its two, the
+  one named at #1498 among them; a file `/tmp/dl_issues.json` written by the
+  main run at #678 outside its scratchpad and removed at #684; the files of
+  the session's scratchpad; whatever `pkill` ended. In the project: `main` at
+  `4119a1d` after #59, #67 and #69, the tree clean, no branch but `main`
+  locally and on GitHub but `main` and the person's `remove-install-record`;
+  `links.config.yaml` written and restored by the lens, `sort: false` as
+  before; `docs/agents/` at markers 0.165.0 with the section `## Install
+  permission`, `install-tools: no`, `brew install yq` under "Installed outside
+  the project" and the two keys described; `standards.md` five rules fewer and
+  one more; an empty directory `.claude/` with a modification time of 18:43,
+  after the run's last message, written by nothing in the log. On GitHub:
+  #60, #61 and #62 closed as completed, #63 closed by devloop with its
+  comment, #64, #65, #66 and #68 open with `raised-here`; #59, #67 and #69
+  merged.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the three new defects on their lines above,
+  kind defect, their evidence the same line, the version 0.165.0 in the note;
+  the head of this entry as part of the first; and the runs of this day,
+  source log, under 0.165.0, dated by the day the log opens, each on the row
+  of the thing whose case it met and anchored on its line below, the defect
+  rows by the line of their status; the three defects met again that are
+  recorded and not built, lines 30379, 39827 and 39600, carry no run, since
+  a run enters the row of a built defect alone, section C of that head:
+  run on new defect 4, line 39535, met at #177 to #395 and held in part;
+  run on new defect 6, line 39567, met at #523 and #1206, the hook held, the prompt not;
+  run on new defect 7, line 39585, met at #469 to #523 and held;
+  run on defect 5 of the six runs, line 37228, met at #480 to #532, held in part;
+  run on new defect 5, line 39548, met at #395 and held in part;
+  run on defect 34, line 37523, met at #65 and held;
+  run on defect 9, line 37278, met at #395 and held;
+  run on the hard core in no message, line 25960, met at #220 and not held, #231 held;
+  run on the status line 40534, the hook, met at #2 of every agent log and held;
+  run on the status line 40535, the closing, met at #517 inside a step, in part;
+  run of the SubagentStart hook's context, met at #2 of every agent log, pass;
+  run of bin/devloop-install-issues closing an issue, met at #517 inside step 3;
+  run of bin/devloop-install-issues finding none, met at #238, #469 and #1194;
+  run of bin/devloop-tool-state not found, met at #259 and #469;
+  run of bin/devloop-tool-state found on the search path, met at #259 and #1194;
+  run of bin/devloop-tool-state the --planning record line, met at #259;
+  run of bin/devloop-tool-state the --build record line under no, met at #469;
+  run of bin/devloop-tool-state --installed found in the folder, met at #517;
+  run of bin/devloop-tool-state --installed with both lines, met at #517;
+  run of bin/devloop-tool-state exit 1, met at #259 and #469;
+  run of bin/devloop-tool-state exit 0, met at #517 and #1194;
+  run of hooks/post-tool-use-checks.sh blocking, met at ada2acff #130 and five times in ac4d47c8;
+  run of hooks/stop-checks.sh blocking the first two attempts, met at #1347 to #1369;
+  run of hooks/pre-tool-use-table-guard.sh with the reader failing, met at ac4d47c8 #174;
+  run of hooks/pre-tool-use-mark-guard.sh stating the mode, met at #239;
+  run of bin/devloop-arm armed at BLOCKED, met at #114, #1147 and #1463;
+  run of bin/devloop-start-conditions condition 6 not holding, met at #241;
+  run of bin/devloop-install-record with no section, met at #61;
+  run of bin/devloop-setup-state marker lines, met at #41 and #177;
+  run of hooks/session-start.sh printing none with the cause, met at #4;
+  run of setup-project refreshing every file, met at #81 to #142 and held;
+  run of cut-into-tasks starting the first task with them, met at #456 and held;
+  run of build-work step 4 second round on what changed, met at #742 to #1058 and held;
+  run of plan-work the confirmation question alone in its call, met at #220, not held;
+  run of plan-work the hard core not fitting the widget, met at #231 and held;
+  run of build-work install declined for the task itself, met at #497 to #502 and held;
+  run of build-work the build picking up once the tool is at the path, met at #517 after a no;
+  run of plan-work the one line on the mode not set up, met at #395 and held in part;
+  run of build-work handing the command over both ways, met at #480 and held;
+  run of build-work tools read before the subagent starts, met at #469 to #523 and held;
+  run of shared/rule-not-written-down.md taking a rule out by its age, met at #691 and held;
+  run of build-work step 5 the landing question after the tool stood, met at #1115 and held.
+  The tool before the commit: exit 0, no broken record, no uncovered line.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

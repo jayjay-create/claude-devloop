@@ -550,6 +550,16 @@ auto mode say so in the person's wordings of that day, the README its
 steps, and the folder a command installs into is read beside the search
 path at the next start and after a class's tool; the run with the person
 under a no is still to come.
+On 29 October 2026 the run with the person under a no was made in the test
+project and read off its log, the roadmap entry of that date on the run under
+a no: the handover came before any build, the issue was written on the no
+alone with its two lines, and the person's `! brew install yq` after the no
+was taken up in the same session, the run closing the issue inside step 3
+with a comment naming a start that did not happen, so that the closing at
+the next start was never walked; three new defects, the reader on `$'\xHH'`
+and a lens writing into the project among them, and eight defects met again,
+three of them not held; whether the milestone is reached that entry does not
+decide, the person does.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
