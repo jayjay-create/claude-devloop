@@ -42321,6 +42321,291 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   run of build-work step 5 the landing question after the tool stood, met at #1115 and held.
   The tool before the commit: exit 0, no broken record, no uncovered line.
 
+- **The ! after a no taken up in the session, point 7 read by the subagent.**
+  30 October 2026, version 0.166.0. On `task/install-part-3`, off
+  `origin/main` at `886f72f`, in two commits: the code, the texts, the hook,
+  the rows of the things they change and the version, `c681f46`; then this
+  entry, the sentence in `docs/plan.md` and the rows it needs. Part 3 of the
+  rebuild of milestone 3, after parts 1 and 2 of the entries at lines 40175
+  and 40745: the five points the person decided on 30 October 2026 on the
+  entry at line 41887 — the `!` after a no, (a); the rest of new defects 4
+  and 5 of the entry at line 38963, (b); the rest of its new defect 6, (c);
+  the reader on `$'\xHH'`, (d); and what does not belong to the install,
+  (e). A line of a file is given as it stands at the tip of this branch, a
+  line of `docs/roadmap.md` as it stands at `886f72f`. Beyond `git fetch`,
+  GitHub was neither read nor changed; the manual of bash was fetched and
+  nothing else; nothing was installed anywhere; no test project was
+  touched, no session log read, nothing run against the settings of this
+  machine; the identity under which git commits here was neither set nor
+  read into a file.
+
+  **Decided on 30 October 2026**, by the person. (1) Of the two readings of
+  new defect 1 of the entry at line 41887, line 42200, the second: the
+  output of an install typed with `!` after a no is a signal in this
+  session too; the run reads `--installed`, closes the issue itself and
+  says so, and the program's comment names no start. The reason: who
+  installs with `!` after a no has changed their mind, and making them type
+  `/devloop:start-work` on top gains them nothing; it fits form A of the
+  rule of 28 October 2026, whose signal is the command's output; and the
+  rule of 27 and 28 October 2026, one signal per state — decision (4) of
+  the entry at line 40175, objection O2 of the report of 27 October 2026 on
+  the ways — stood against the issue and the message naming different
+  signals, which they do not: the message names both ways, this session's
+  and the next start's, and the issue names the one a later session takes,
+  which stands in the message too. Under form B the same on their word
+  after the command ran in the second window. A tool installed another way
+  is read at the next start, as before. (2) The two wordings below. (3)
+  Milestone 3 is not reached. Part 3 builds (a) to (d); after it a short
+  run shows the closing at the next start and the way over `!` after a no;
+  then the person decides. (4) The build subagent gets point 7 of
+  `build-work` step 3 no more through a copy in the prompt and reads it
+  itself, the rest of new defect 6 of the entry at line 38963, line 39549:
+  a rule devloop itself has to keep is weaker than a mechanism, and point 7
+  whole in every prompt cost each subagent of a run about 4,000 words. (5)
+  What does not belong to the install is not built here: new defect 3 of
+  the entry at line 41887, line 42226, a lens that wrote into the project
+  and ended processes; the summary that arrived collapsed before „Ist die
+  Idee so verstanden?“, line 25960; Claude Code's block of `sleep`, of
+  which devloop says nothing, line 30379; the Stop hook at the end of every
+  turn beside the building subagent, line 39827; and the main run building
+  the last fix itself, line 39600. They go to the list for the milestones
+  after milestone 3, whose order the person sets.
+
+  **The wordings approved on 30 October 2026.** The skills say what is
+  said, not the words; the run puts in what it reads — `yq`, the titles,
+  the commands are examples. (1) The last sentence of the handover under a
+  no, until this day (1) of the entry at line 41228, lines 41363 to 41364:
+  „Installierst du es später doch, schließe ich beim nächsten Start das
+  Issue und baue die Aufgabe.“ Since this day, form A: „Gibst du den Befehl
+  später doch hier mit `!` ein, schließe ich das Issue sofort und baue die
+  Aufgabe. Installierst du es auf anderem Weg, etwa in einem anderen
+  Fenster, geschieht das beim nächsten Start.“ Form B: „Führst du den
+  Befehl später doch aus und sagst mir hier Bescheid, schließe ich das
+  Issue sofort und baue die Aufgabe. Sonst geschieht das beim nächsten
+  Start.“ The rest of the handover stays as (1) of the entry at line 41228
+  has it. Said by `shared/install-tool.md` lines 162 to 195, point 7 of
+  `build-work` step 3. (2) The message after the no, until this day without
+  an approved wording; the run of 29 October 2026 said at #502 „Ich habe
+  dein Nein umgesetzt. Gebaut ist nichts.“ and three steps, the entry at
+  line 41887. Since this day: „Gebaut habe ich nichts. Ich habe das Issue
+  „yq is missing for the exclude task“ angelegt. Solange es offen ist, baue
+  ich die Aufgabe „Links matching exclude patterns from links.config.yaml
+  are left out“ nicht. Eine andere Aufgabe ist nicht frei.“ — where another
+  task is free the last sentence is „Ich mache mit der Aufgabe „…“
+  weiter.“ — then: „Willst du `yq` doch installieren, gib hier ein: `! brew
+  install yq`. Dann schließe ich das Issue und baue die Aufgabe.
+  Installierst du es auf anderem Weg, schließe ich es beim nächsten Start
+  mit `/devloop:start-work`.“ Where the command asks something, in place of
+  „gib hier ein“: „führ den Befehl in einem zweiten Terminalfenster aus,
+  nicht in dem, in dem Claude Code läuft, und sag mir hier Bescheid“. Said
+  by `build-work` lines 624 to 647, "The task itself".
+
+  **(a) The `!` after a no, taken up in the session.** Said by
+  `shared/install-tool.md` lines 84 to 98: after a no, where they type the
+  command here with `!` in this session or say under form B that they ran
+  it, both lines of `bin/devloop-tool-state --installed` are read as before
+  a no; both found, the run closes the issue itself with
+  `bin/devloop-install-issues --after-install` and builds the task by step
+  2; the first found and the second not, the five steps of (4) of the entry
+  at line 40745, the issue staying; the first not found, said with the
+  line, the issue staying, the command handed over again; installed another
+  way, nothing seen here, the next start as before. Lines 162 to 181, the
+  no way of the handover: at once in this session on the signal of the
+  form, else at a later start, the reason of decision (1) with it.
+  `build-work` lines 624 to 647, "The task itself": the read, the program,
+  back to step 2, nothing built before the program has closed the issue,
+  and what the message after the no says, wording (2).
+  `shared/install-issue.md` lines 21 to 29: the issue's text unchanged,
+  naming the way a later session takes, and why that contradicts nothing.
+  `shared/install-issues-read.md` lines 60 to 71: when the program runs with
+  `--after-install` and what the run does with its lines. The program,
+  `bin/devloop-install-issues`: the option at line 50 of its head and lines
+  613 to 617 of `main`, the comment at lines 310 to 311 — "devloop closed
+  this issue after an install typed in the session, the tool standing on
+  this machine now: <the line>" with the option, "at the start of a
+  session" without it, text for the tracker with no approved wording — and
+  the case at lines 521 to 528 of the self-test, 25 cases, 23 before. The
+  places the program is called, searched with `grep -rn
+  'devloop-install-issues' skills/ shared/`: `build-work` line 331 and
+  `plan-work` line 580 insert the text of the start; `build-work` line 1615
+  the route with nobody there, where no `!` is typed; line 781 "The task
+  itself" above. Setup-checks hands a check class's tool over in its own
+  step 3 and closes no issue by it; untouched.
+
+  **(b) The rest of new defects 4 and 5 of the entry at line 38963.**
+  `plan-work` lines 328 to 346: a tool the code read for a round names is
+  known before the round, so the program runs before the round and its
+  line stands in the round's assumptions; and of the record the planning
+  says only that the build decides, even where another program printed
+  today's answer, as `bin/devloop-start-conditions` does for condition 6 —
+  the run of 29 October 2026 read the script with `yq` at #175 to #177,
+  named no tool at #189 and said „Sie steht für dieses Projekt auf „nein“.“
+  at #395. Lines 471 to 480: the one line on the mode stands in the next
+  message that ends a turn with text after the read of the conditions, the
+  one the mode question would have stood in, and gives no reason — #395
+  said it at the design question, four turns after #238, with „weil die
+  Installationsfreigabe auf „nein“ steht“. No mechanism holds either: under
+  `--planning` the program prints no answer already, and which tools the
+  code the planning reads needs, when the program is run, and what the
+  planning says in a message, no program and no hook sees; a hook sees no
+  message of the run. What the program gives is the one line a planning has
+  to say of a tool. The texts say so at the places.
+
+  **(c) Point 7 read by the subagent itself.** A text under `shared/` may
+  carry no insert line: `bin/devloop-text` prints the file with the
+  variable replaced and follows nothing, lines 2 to 30, and its head says
+  at lines 4 to 6 that whether Claude Code substitutes anything in an
+  inserted text is not measured; `scripts/devloop-expand` replaces the
+  insert lines of the file it is given and reads the printed text for
+  none. So point 7 is one shared text and the four under it stay four
+  insert lines. Built: `shared/install-tool.md`, new, the 173 lines 532 to
+  704 of `skills/build-work/SKILL.md` at `886f72f` moved whole, its first
+  line "7. Installs a tool that lands outside the repository"; `build-work`
+  line 544 the insert line, the four after it as before; the expanded skill
+  differs from the one at `886f72f` in one line, where
+  `${CLAUDE_PLUGIN_ROOT}` stands as the plugin's directory, as in every
+  inserted text. The fifth rule of step 3, `build-work` lines 456 to 479:
+  the prompt carries the lines of `bin/devloop-tool-state --build`, the
+  record line among them, and nothing of the run's own on installing;
+  point 7 and the four texts reach the subagent through the hook's rule;
+  the separate call of `bin/devloop-install-record` for the prompt goes
+  with point 7, the record standing in the `--build` lines and in the
+  hook's line both. `hooks/subagent-start-install.sh` line 57 resolves the
+  plugin's directory, line 58 the rule, which names `for n in install-tool
+  backed-command install-alone fetch-and-run install-not-through; do
+  "<the plugin's directory>/bin/devloop-text" "$n"; done` as the command
+  the subagent runs before it installs anything, and that under no or none
+  it needs none of the texts; lines 31 to 44 the reason.
+  `docs/skill-conventions.md` lines 3496 to 3500 say so under "A hook
+  cannot force wording". In the table the twelve things of point 7 are
+  renamed from `build-work / Step 3 — Build it / …` to
+  `shared/install-tool.md / whole file / …`, the old name in each note,
+  their runs with them, which count no more since the lines moved, section
+  D of the head of `scripts/devloop-stock-take`, as the text that moved
+  into `shared/` on 18 September 2026 counted for no earlier run.
+
+  **(d) The reader on `$'…'`.** Read before the build: the GNU Bash
+  Reference Manual, Edition 5.3, last updated 18 May 2025, for bash 5.3,
+  section 3.1.2.4 "ANSI-C Quoting", `gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html`,
+  fetched on 30 October 2026: `\a` alert, `\b` backspace, `\e` and `\E` an
+  escape character, `\f` form feed, `\n` newline, `\r` carriage return,
+  `\t` horizontal tab, `\v` vertical tab, `\\` backslash, `\'` single
+  quote, `\"` double quote, `\?` question mark, `\nnn` the eight-bit
+  character whose value is the octal value nnn, one to three octal digits,
+  `\xHH` the eight-bit character whose value is the hexadecimal value HH,
+  one or two hex digits, `\uHHHH` the Unicode character whose value is
+  HHHH, one to four hex digits, `\UHHHHHHHH` the same with one to eight,
+  `\cx` a control-x character; "The expanded result is single-quoted, as
+  if the dollar sign had not been present." Measured beside it with
+  `/bin/bash` 3.2.57, the one bash on this Mac: a backslash before any
+  other character stays with it, `\c` where nothing follows is the one
+  backslash, `\c?` is byte 0x1f, a NUL ends the text between the quotes and
+  the word goes on behind them; and that bash keeps `\u` with fewer than
+  four digits and `\U` as written, which the manual decodes — the reader
+  follows the manual, which reads a word as more than that bash runs, never
+  as less, so that a guard blocks where it need not and never passes what
+  that bash would run as an install. Built: `bin/devloop-command-reader`
+  lines 2304 to 2306, `digits`, `hexval` and `octval`, and `read_ansi`,
+  lines 2331 to 2363 with its comment from line 2307; a `\u` or `\U` above
+  10FFFF names no Unicode character, and the reader ends with exit 2 and
+  the escape named, line 2348 — a command bash runs, so not `parsed: no`,
+  which stays what the head says at lines 48 to 52, for a command the shell
+  itself refuses; the head names this exit at lines 414 to 418. The
+  self-test, lines 555 to 567, thirteen cases, every form of the list, the
+  unknown escape kept, the NUL, `$'\x62rew' install ripgrep` and
+  `$'\142r\x65w' install ripgrep` read as `brew install ripgrep`, the
+  word the install guard judges, `\U110000` with exit 2, an unclosed `$'`
+  as `parsed: no`: 178 cases, 165 before. Until this day line 2297 handed
+  the digits of `\x` to `hex`, line 2058, which takes the four of a JSON
+  `\u`, and dropped the backslash before any other character.
+
+  **(e)** Not built, decision (5).
+
+  The status lines: the two defects of the entry at line 41887, lines 42200
+  and 42213, are built, their evidence on the lines named under (a) and
+  (d) and their sites on their status lines, section D of the head of
+  `scripts/devloop-stock-take`; so is the rest of new defects 4, 5 and 6 of
+  the entry at line 38963, lines 39535, 39548 and 39567, their evidence
+  moved from the lines of 28 October 2026 onto the lines under (b) and
+  (c). Line 42226 stays as it is.
+
+  **The counter-check**, each point and wording read in the expanded
+  text, `scripts/devloop-expand`, at the place where a run meets it.
+  Wording (1): the run under a no says the handover of (1) of the entry at
+  line 41228 with the last sentence of this day, in the form of the
+  command; the text says what is said. Wording (2): on the no, the issue is
+  written with its two lines, and the message that ends the turn says the
+  four sentences and the two ways, the title of the issue and of the task
+  put in, the next task where one is free. (a) against #489 to #532 of the
+  run of 29 October 2026: at #497 the issue as before; at #502 wording (2)
+  in place of „Ich habe dein Nein umgesetzt“ and the three steps; at #505
+  the person's `! brew install yq` and at #506 its output, the signal of
+  form A; at #517 the run reads both lines of `--installed`, as it did,
+  and then runs `bin/devloop-install-issues --after-install`, whose comment
+  reads "devloop closed this issue after an install typed in the session,
+  the tool standing on this machine now: yq: found at /opt/homebrew/bin/yq
+  (on 2026-10-29)" in place of "at the start of a session"; it goes back to
+  step 2, whose readiness query lists #61 free, and the subagent of #523
+  starts; #532 says what it said, the tool standing, the issue closed, the
+  task being built. Where the folder line had said found and the search
+  path line not found, the run would have said the five steps and the
+  issue stayed; where the folder line had said not found, the line and the
+  handover again. (b) against #175 to #395: the program at #259 would have
+  run before the round of #189, the round's assumptions would have carried
+  „yq: not found on the search path“ and who installs as the record at the
+  build decides, #295 would have carried the one line on the mode without
+  „weil …“, and #395 nothing of the record's answer. (c) against #523 and
+  #1206: the prompt carries the two tool lines and the record line of
+  `--build` as #523 and #1206 did, and no longer point 7 nor "The install
+  record for this project says NO: you install NOTHING outside the
+  repository"; the subagent's #2 and #3 carry the record line and the rule
+  with the command. The hook run on this Mac in a throwaway repository
+  with one commit on `main`, a bare origin and `docs/agents/` present, the
+  input of the workflow's step: exit 0, the JSON line with the record line
+  and the rule; the command taken out of the rule and run there printed 331
+  lines, 4,111 words, byte-identical to the five files with the variable
+  replaced, the five first lines at 1, 174, 230, 255 and 281. (d) every
+  guard under PreToolUse with `echo $'\x41'`: exit 0 all six; the install
+  guard of the tree at `886f72f` on the same: exit 1, "a \u escape in the
+  JSON is not four hex digits", the block of #174. Each guard with a
+  command it blocks, spelled with `$'\xHH'`: `$'\x62rew' install ripgrep`
+  blocked by the install guard with no record, `$'\x67h' pr merge 5` by
+  the merge guard, `$'\x67it' -c user.email=… status` by the identity
+  guard, the write of the mark with `$'\x6dkdir'` in auto mode by the
+  mark guard, `$'\x67it' commit -m x` by the table guard over a status
+  `maybe` and on `main` by the branch guard, each exit 2 with its
+  message; `echo $'\U110000'` exit 1 with the reader's message naming the
+  escape, which `onFailure: block` turns into a block.
+
+  The paths. With nobody there the record says yes, start condition 6, so
+  no handover and no `!`: (a) is the path with the person alone. Under a
+  yes the subagent installs and reads the five texts through the command
+  on every system where its bash finds the plugin's directory, which the
+  hook resolves with `pwd` — under Git Bash a path of the form `/c/…`,
+  which the subagent's bash takes. Under a no or no record, forms A and B,
+  the read of (a) and the program with `--after-install`, which is python
+  and reads `gh` through `shutil.which` as before, on every system. The
+  reader's self-test runs on ubuntu-latest, macos-latest, windows-latest
+  and Alpine in the workflow's second job on the pull request; here on
+  this Mac alone. What holds on one path alone: the `!` on the person's
+  Mac with Claude Code answering the output by itself, measured on 28
+  October 2026; with `respondToBashCommands` off the run answers no
+  output, the limit the entry at line 41228 records.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the straight path of `shared/install-tool.md`;
+  the twelve things and their runs renamed as under (c), 97 fields
+  re-anchored, and five records re-anchored where the text changed;
+  eighteen things new, on the lines under (a) to (d); forty not-a-things
+  on the lines beside them and on the thirteen cases; the five records of
+  the reader's old lines out; the evidence of the five defects moved; the
+  head of this entry no defect, and the lines
+  of this entry that name a state covered beside it. The tool at the tip
+  of the first commit: exit 0, no broken record, no uncovered line of
+  5189; the states, quoted off its counts: Recorded, not built 365 from
+  367, Walked 705 from 717, Built, never walked 1345 from 1313,
+  Undetermined 24 and Closed 42 as before.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

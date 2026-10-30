@@ -28,11 +28,20 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # or no record neither installed nor replaced by a stand-in, the subagent
 # naming the tool, the backed command and that it is missing in its report
 # and stopping with the task; a check class's tool never the subagent's to
-# install. The fifth rule of step 3, which hands point 7 in the prompt,
-# stays beside it. Exit 0 on every path after the reader; 1 where the reader
-# does not answer, which that event shows in the subagent's transcript and
-# nowhere else. What the bench of 28 October 2026 measured stands in
-# docs/skill-conventions.md at "A hook cannot force wording".
+# install. Since 30 October 2026, decided by the person that day, the rest of
+# new defect 6 of that entry: the prompt hands point 7 no more. Point 7
+# stands in shared/install-tool.md, inserted into build-work at its place,
+# and this rule names the command that prints it with the four texts under
+# it - backed-command, install-alone, fetch-and-run, install-not-through -
+# through bin/devloop-text, with the plugin's path, which this hook knows and
+# a prompt does not; the subagent reads them before it installs anything,
+# and under no or none it installs nothing and needs none of them. A rule
+# devloop itself has to keep is weaker than a mechanism, and point 7 whole in
+# every prompt cost each subagent of a run about 4,000 words. Exit 0 on every
+# path after the reader; 1 where the reader does not answer, which that
+# event shows in the subagent's transcript and nowhere else. What the bench
+# of 28 October 2026 measured stands in docs/skill-conventions.md at "A hook
+# cannot force wording".
 INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0
@@ -44,7 +53,9 @@ RC=$?
 [ -d docs/agents ] || { [ "$RC" -eq 0 ] && printf '%s\n' "$STATE" | grep -q '^present: '; } || exit 0
 
 LINE=$("$HERE/../bin/devloop-install-record" --line "$PROJECT_DIR" 2>&1)
-RULE="devloop: this rule outranks the prompt on installing. A tool outside the repository that this task needs is installed only where that record says yes, by you, backed, alone in its call, with 600000 milliseconds on the call, as build-work step 3 point 7 says; under no or none it is not installed and not replaced by a stand-in or a stub: name the tool, the backed command and that it is missing in your report, and stop with the task. A check class's tool is not yours to install under either answer; name it in the report."
+# the plugin's directory, resolved here: the subagent's prompt knows no path of the plugin
+ROOT=$(cd "$HERE/.." && pwd)
+RULE="devloop: this rule outranks the prompt on installing. A tool outside the repository that this task needs is installed only where that record says yes, by you, backed, alone in its call, with 600000 milliseconds on the call, as build-work step 3 point 7 says, which you read before you install anything, with the four texts under it, by running: for n in install-tool backed-command install-alone fetch-and-run install-not-through; do \"$ROOT/bin/devloop-text\" \"\$n\"; done; under no or none it is not installed and not replaced by a stand-in or a stub, and you need none of those texts: name the tool, the backed command and that it is missing in your report, and stop with the task. A check class's tool is not yours to install under either answer; name it in the report."
 # the two lines as one JSON string: backslash and double quote escaped, the line break written as \n
 ESC=$(printf '%s\n%s\n' "$LINE" "$RULE" | sed 's/\\/\\\\/g; s/"/\\"/g' | awk 'NR > 1 { printf "\\n" } { printf "%s", $0 }')
 printf '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":"%s"}}\n' "$ESC"

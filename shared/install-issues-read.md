@@ -57,4 +57,15 @@ command and the message it prints, as "When a command does not answer" says,
 and go on: an issue not read stays open, and the readiness query passes over
 the task it holds. Run again at the start of a build that followed a
 planning in the same session: an issue closed is not found again, and the
-second read costs nothing but the listing.
+second read costs nothing but the listing. And run with `--after-install`,
+since 30 October 2026, where the person, after their no to the handover of
+a task's tool, typed the command here with `!` in the same session or said
+under form B that they ran it, after the read of both lines with
+`--installed` that `build-work` step 3 point 7 asks for: the program closes
+the issue where the search path finds the tool now, with a comment naming
+an install typed in the session and no start, prints the `folder:` line
+where the command installed and the search path does not reach the tool,
+and the run goes by its lines as at a start — the task freed goes to step 2
+of `build-work`, and the five steps where a folder line stands; the
+person's decision of that day, the roadmap entry of 30 October 2026 on the
+install.

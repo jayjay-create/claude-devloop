@@ -560,6 +560,22 @@ the next start was never walked; three new defects, the reader on `$'\xHH'`
 and a lens writing into the project among them, and eight defects met again,
 three of them not held; whether the milestone is reached that entry does not
 decide, the person does.
+On 30 October 2026 part 3 of the rebuild was built, the roadmap entry of
+that date on the install: the person chose the second reading of the first
+new defect of 29 October 2026, so that the command typed with `!` after a no
+in the same session, or their word under form B, has the run read both lines,
+close the issue itself with a comment naming the install typed in the
+session, and build the task; point 7 of step 3 of the build stands in a
+shared text the build subagent reads through the command the SubagentStart
+hook's rule names, the prompt carrying the tool-state lines alone; the
+planning runs the tool-state program before a round where the code read
+names a tool, names today's answer nowhere and says the one line on the
+mode in the next message after the read, without a reason; and the reader
+decodes every escape of `$'…'` as the bash manual lists them. Milestone 3 is
+not reached: a short run of the closing at the next start and of the way
+over `!` after a no follows, and then the person decides. The five points
+of that entry that do not belong to the install go to the list for the
+milestones after milestone 3, whose order the person sets.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
