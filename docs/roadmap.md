@@ -43284,10 +43284,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   one directory made outside the repository with `mktemp -d`, written
   `$WORK` here, each loading a copy of this branch at `78cdf5c`, or of
   `77e9a4a` for a control, with `--plugin-dir`, so that the installed
-  0.166.0 stayed as it was; the seven sessions of the first bench
-  installed `yamllint` into a place under `$WORK` and nowhere else, and
-  the five of the second reached `gh` through a stand-in that answers
-  off a file; no test project was touched, no session log but those of
+  0.166.0 stayed as it was; of the seven sessions of the first bench
+  five installed `yamllint` into the session's place under `$WORK`, the
+  control into a venv inside its project under `$WORK`, one nothing, and
+  none anywhere else, and the five of the second reached `gh` through a
+  stand-in that answers off a file; no test project was touched, no session log but those of
   these sessions and their subagents was read, nothing was run against
   the settings of this machine, and the identity under which git commits
   here was neither set nor read into a file.
