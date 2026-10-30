@@ -576,6 +576,17 @@ not reached: a short run of the closing at the next start and of the way
 over `!` after a no follows, and then the person decides. The five points
 of that entry that do not belong to the install go to the list for the
 milestones after milestone 3, whose order the person sets.
+On 30 October 2026 the short run was read off its two session logs and the
+logs of their subagents, the roadmap entry of that date on the short run:
+the `!` after a no was taken up in the session as decided, the issue closed
+by the program with its comment and the task built; the closing at the
+next start came from the program with its comment, after the run had tried
+to close the issue by hand in start-work and Claude Code's classifier had
+refused it; the merge was handed over twice for an armed pull request
+GitHub merged within ten seconds; the prompt to the build subagent carried
+the run's own words on installing; four new defects, recorded and not
+built, one of them on the install path. Whether milestone 3 is reached that
+entry does not decide; the person does.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
