@@ -42606,6 +42606,666 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   367, Walked 705 from 717, Built, never walked 1345 from 1313,
   Undetermined 24 and Closed 42 as before.
 
+- **Short run read off its two logs, the ! after a no and the next start.**
+  30 October 2026, version 0.166.0 stays. On
+  `task/short-run-read-off-its-log`, off `origin/main` at `be6c223`, in one
+  commit: this entry, one dated sentence under milestone 3 in `docs/plan.md`,
+  and the rows of the table. Nothing is built: no file under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, as #206, #207 and #212 changed files under `docs/` alone and left
+  the version. It reads the short run with the person under a no that the
+  entry at line 42324 and `docs/plan.md` named as next, made on 30 October
+  2026 in `~/devloop-test-aa` under the installed 0.166.0, which the
+  comparison under "Before you change anything, run this" found equal to
+  `be6c223` in all six directories before the first change here, off its
+  two session logs and the logs of their subagents, and enters it on the row
+  of every thing whose case it met, by section C of the head of
+  `scripts/devloop-stock-take`. Whether milestone 3 is reached this entry
+  does not decide; the person does. A line of a skill is given as
+  `scripts/devloop-expand` prints it at `be6c223`, a line of a shared text,
+  a hook or a program as the file has it; a line of `docs/roadmap.md` as it
+  stands at `be6c223`, unchanged above this entry. A record is a line of a
+  session's `.jsonl` file, counted from 1; `#N` is a record of the main log
+  of the first session, `s2 #N` one of the second, `<id> #N` one of a
+  subagent log named by the first eight characters of its id. Every record
+  cited was read at the source. Beyond `git fetch`, GitHub was read with
+  `gh`, the issues and pull requests of `devloop-test-aa`; nothing was
+  changed there or in `~/devloop-test-aa`, no install ran, no other session
+  log was opened, nothing was run against the settings of this machine, and
+  the identity under which git commits here was neither set nor read into a
+  file.
+
+  **Which logs**, read off the directory of `devloop-test-aa` under
+  `~/.claude/projects/` with a script over every session file there, the
+  day each opens and its first prompt: of eleven session files exactly two
+  open on 30 October 2026. The first, `d2d98967`, 1,097 records, from
+  10:13:23Z (#4) to 12:13:23Z (#1093), its first prompt
+  `/devloop:start-work` at #12 after the local command `/model` at #7, "Set
+  model to `Sonnet 5.5`"; 18 subagent logs in its directory. The second,
+  `161abacc`, 431 records, from 12:14:01Z (s2 #6) to 12:37:54Z (s2 #420),
+  its first prompt `/devloop:start-work` at s2 #8; 9 subagent logs. Each
+  subagent log was matched to the `Agent` call of its main log by the
+  `toolUseId` its meta file names; all 27 are `general-purpose` and
+  finished. Both runs and every subagent ran on `claude-sonnet-5-5`; the
+  permission mode was `auto` throughout, the person present.
+
+  **What stands in no log, the person's statement of 30 October 2026.**
+  Before the run, shown in the terminal: devloop 0.166.0 installed and equal
+  to `main` at `be6c223`; in `devloop-test-aa` `main` at `4119a1d`, the tree
+  clean, no open pull request, no `.claude/unattended.local`,
+  `bin/devloop-install-record` reading `tools: no` on origin/main; the open
+  issues #64, #65, #66 and #68 of the run of 29 October 2026 closed as not
+  planned (on GitHub at 10:11:45Z to 10:11:50Z); `brew uninstall yq`
+  removing yq 4.54.1 and `npm uninstall -g @mermaid-js/mermaid-cli` removing
+  195 packages, neither tool on the search path after, `~/.cache/puppeteer`
+  left. The plan, decided by the person: one idea with two parts that do
+  not depend on each other, one needing `yq` through
+  `scripts/links-config.sh`, the other `mmdc` through `scripts/diagram.sh`;
+  both handovers declined; then the command for one tool typed in the same
+  session with `!`; then Claude Code ended, the other installed in the
+  terminal, Claude Code started again. Their inputs, word for word: session
+  1, started with `cd ~/devloop-test-aa && claude`: `/devloop:start-work`;
+  `! gh pr merge 70 --squash --repo jayjay-create/devloop-test-aa`; the idea
+  „Zwei Dinge, die nichts miteinander zu tun haben: In links.config.yaml
+  soll ein Schlüssel limit möglich sein – npm run links:config gibt dann
+  höchstens so viele Links aus. Und npm run diagram soll zusätzlich
+  docs/links.pdf schreiben.“; in both rounds the first answer to every
+  question; „ja“ to the question whether the idea is understood so; „C“;
+  „Nein, ich lehne ab.“ at the handover for `yq`; „Nein, ich lehne ab.“ at
+  the handover for `mmdc`; `! brew install yq`; „ja“ to „Soll das landen?“;
+  `! gh pr merge 77 --squash --repo jayjay-create/devloop-test-aa`; `/exit`.
+  In the terminal: `npm install -g @mermaid-js/mermaid-cli && hash -r &&
+  command -v mmdc`, then `claude`. Session 2: `/devloop:start-work`; „ja“
+  to „Soll das landen?“; „weiter“; „Lass sie liegen.“ Nothing else. Every
+  input stands in the log where a log can hold it: #12, #149, #176, #233,
+  #259, #290, #433, #522, #546, #563, #1015, #1069; s2 #8, #324, #381, #416.
+
+  **The first session.** The setup refresh, #12 to #171: the SessionStart
+  hook at #34, `[ProjectStatus] branch: main | uncommitted changes: 0 |
+  devloop: set up` and `[InstallRecord] tools: no | places: none | routes:
+  none | answered: 2026-10-29`; `bin/devloop-setup-state --fetch` at #41,
+  markers 0.165.0; `setup-project` at #52; `bin/devloop-install-record` at
+  #63, `tools: no`; #84 the branch `devloop-setup`, the markers to 0.166.0
+  and nothing else; #91 the one line; #92 the commit with `Co-Authored-By:
+  Claude Sonnet 5.5`; #108 pull request #70; #114 `bin/devloop-arm 70`,
+  „armed: GitHub accepted auto-merge at BLOCKED“; #119 a loop of twenty
+  `gh pr view` reads with `sleep 15`, 10:14:26 to 10:19:41, OPEN; #126 the
+  check SUCCESS, CLEAN, OPEN; #140 `sleep 20` and one read, OPEN; #146 the
+  merge handed over with `! gh pr merge 70 --squash --repo
+  jayjay-create/devloop-test-aa`, „Der Check ist grün, und Auto-Merge war
+  angenommen, aber GitHub hat ihn auch nach über fünf Minuten nicht
+  gemerged.“ GitHub merged at 10:20:21Z, nine seconds later, the check
+  having completed at 10:15:27Z; #149 the person's command, #150 its output
+  „Pull request … was already merged“; #155 the run read `MERGED
+  2026-10-30T10:20:21Z`, fast-forwarded to `4317d8a`, deleted the branch;
+  #171 „Was möchtest du bauen?“. The planning, #176 to #457: `plan-work` at
+  #179; #197 to #213 the code read, `scripts/links-config.sh`, which calls
+  `yq`, and `scripts/diagram.sh`, which calls `mmdc`, among it; #225
+  `bin/devloop-tool-state --planning mmdc yq htmlq` before the first round,
+  #226 „mmdc: not found on the search path (on 2026-10-30)“, „yq: not found
+  on the search path (on 2026-10-30)“, `htmlq` found, the `--planning`
+  record line, exit 1; #232 one widget call with four questions, the
+  assumptions first: „Gebraucht werden mmdc und yq; beide stehen heute nicht
+  im Suchpfad. Ob der Lauf sie beim Bauen installiert oder du den Befehl
+  bekommst, entscheidet deine Installationsfreigabe dann.“, every
+  recommended answer first with „(Empfohlen)“; #252 issue #71 with
+  `being-planned`; #258 three questions; #270 the second comment and, in
+  the same call, `bin/devloop-install-issues` („none“),
+  `bin/devloop-start-conditions` (1, 2, 5 and 7 holding, „condition 6 does
+  not hold, because the install record says no“) and
+  `bin/devloop-permission-mode`, the mark guard stating the mode beside it
+  at #276; #280 the message that ends the turn, opening „Eine Zeile vorab:
+  Arbeit ohne dich ist in diesem Projekt nicht eingerichtet;
+  `/devloop:start-work --auto` richtet sie ein. Deshalb frage ich nicht,
+  wie es weiterläuft, sondern plane mit dir.“, then the hard core as text,
+  six user stories under „User Stories“ and two lines under „Nicht dabei“,
+  the question last as text with its two answers; #290 „ja“; #308 to #310
+  the hard core and the code into #71; #326 to #328 three draft agents and
+  #375 to #377 three check agents, read-only by their prompts; #429 the
+  message with the three drafts, each verdict, the recommendation C, the
+  question last; #433 „C“; #439 to #453 the spec into #71, E3 and C2
+  recorded as taken knowingly, the label removed; #457 „Jetzt schneide ich
+  ihn in Aufgaben.“; `cut-into-tasks` at #458; #483 issues #72 and #73 as
+  sub-issues of #71, no blocker between them. The build's start and the two
+  handovers, #489 to #560: `build-work` at #489; #501 fetch, the base equal,
+  `bin/devloop-install-issues` „none“, `bin/devloop-tool-state --build yq
+  mmdc`, both not found on the search path and „record: tools no on
+  origin/main, answered 2026-10-29: a tool that is missing is handed to the
+  person as a backed command with both ways before anything is built
+  against a stand-in“; #502 `make check` green on the base; #509 `brew info
+  yq`; #513 the message that ends the turn, no subagent started: the task
+  by its title needs `yq`, missing on this machine, „Deine Antwort zum
+  Installieren steht für dieses Projekt auf „nein", also installiere ich es
+  nicht selbst.“, `! brew install yq` in a block, „belegt mit `brew info yq`
+  (yq 4.54.1, Homebrew-Bottle, landet in `/opt/homebrew/bin`)“, „Tipp ihn
+  hier in Claude Code mit dem `!`. Sobald die Ausgabe im Gespräch steht,
+  prüfe ich, ob `yq` dort liegt und im Suchpfad gefunden wird, und baue die
+  Aufgabe mit dem echten Tool.“, „Du kannst auch ablehnen. Dann lege ich
+  ein Issue mit genau diesem Befehl an, das die Aufgabe blockiert. Ich
+  mache mit der anderen Aufgabe weiter … Hast du `yq` später auf anderem
+  Weg installiert, merke ich das beim nächsten Start mit
+  `/devloop:start-work`, schließe das Issue und baue die Aufgabe.“, last
+  „Tippst du den Befehl, oder lehnst du ab?“; #522 „Nein, ich lehne ab.“;
+  #527 and #532 issue #74 „yq is missing, so the limit task cannot be
+  built“ with `raised-here` and `needs-human`, blocking #72, written on the
+  no, its body with the backing, „typed in Claude Code with `!` in front“,
+  the line, „After it, type `/devloop:start-work` in Claude Code. At the
+  next start devloop reads whether `yq` stands on this machine, closes this
+  issue itself and builds the task“, `install-tool: yq` and
+  `install-command: brew install yq`; #537 the message after the no: „Ich
+  habe dein Nein umgesetzt. Gebaut ist noch nichts.“, the issue by its
+  title holding the task by its title with the command, „Hast du `yq`
+  später installiert, lies ich das beim nächsten Start ein, schließe das
+  Issue und baue die Aufgabe. Willst du es schon in dieser Sitzung tun,
+  tipp `! brew install yq` hier. Dann prüfe ich und mache direkt weiter.“,
+  the next task free by its title and its handover for `mmdc`, backed by
+  `npm view @mermaid-js/mermaid-cli version` (12.0.0, `/opt/homebrew/bin`,
+  a browser into `~/.cache/puppeteer`), the `!` line, the no way „Dann lege
+  ich wie eben ein Issue an, und es ist nichts mehr baubar, bis eines der
+  beiden Tools steht.“, the question last; #546 „Nein, ich lehne ab.“;
+  #549 and #553 issue #75 „mmdc is missing, so the PDF task cannot be
+  built“ in the same form, blocking #73; #560 the message after the second
+  no: nothing built, both issues by title holding both tasks by title with
+  their commands, both `!` lines to type here, „Sobald die Ausgabe im
+  Gespräch steht, prüfe ich, ob das Tool im Suchpfad liegt, schließe das
+  Issue und baue die Aufgabe“, „Hast du ein Tool auf anderem Weg
+  installiert, lies ich das beim nächsten Start mit `/devloop:start-work`
+  ein und schließe das Issue selbst.“, no question. The `!` after the no,
+  #563 to #601: #563 `<bash-input> brew install yq</bash-input>`, #564 its
+  output, the bottle poured, `/opt/homebrew/Cellar/yq/4.54.1: 10 files,
+  13.7MB`, zsh completions installed to
+  `/opt/homebrew/share/zsh/site-functions`; #575 `bin/devloop-tool-state
+  --installed 'brew install yq' yq`, #576 „yq: found at /opt/homebrew/bin/yq,
+  the folder brew writes to, read off brew --prefix (on 2026-10-30)“ and
+  „yq: found at /opt/homebrew/bin/yq (on 2026-10-30)“, exit 0; #580
+  `bin/devloop-install-issues --after-install`, #581 issue 74 „closed:
+  yes“, issue 75 „closed: no“, the comment on GitHub at 11:16:58Z „devloop
+  closed this issue after an install typed in the session, the tool
+  standing on this machine now: yq: found at /opt/homebrew/bin/yq (on
+  2026-10-30)“; in the same call `bin/devloop-install-note` with no action,
+  „expected write, take, drop, put or --self-test, got nothing“; #586 the
+  first forty lines of that program read, `git switch -c task-72-limit`,
+  `bin/devloop-install-note put /opt/homebrew/bin 'brew install yq'`,
+  „stands already“; no readiness query; #598 the build subagent `a2aa2086`
+  for #72, its prompt's point 8 „Install nothing outside the project. The
+  install record says `no`. The tool state read just now: `yq: found at
+  /opt/homebrew/bin/yq (on 2026-10-30)`; record: tools no on origin/main,
+  answered 2026-10-29. yq is installed, so you can try the feature by hand
+  against the real yq … If another tool you need is missing, name it … and
+  stop with the task — build nothing against a stand-in.“; #601 „`yq`
+  steht jetzt unter `/opt/homebrew/bin` und wird im Suchpfad gefunden. Das
+  Issue „yq is missing, so the limit task cannot be built" habe ich
+  geschlossen, und die Aufgabe „links:config prints at most the number of
+  links given by limit" ist wieder frei. Ihr Build läuft gerade im
+  Hintergrund. Die Aufgabe „npm run diagram also writes docs/links.pdf"
+  bleibt blockiert, bis `mmdc` steht.“ The build and review of #72, #618
+  to #1011: `a2aa2086`, 241 records, its #2 and #3 the SubagentStart hook's
+  context, the record line and the rule naming `for n in install-tool
+  backed-command install-alone fetch-and-run install-not-through; do
+  "…/bin/devloop-text" "$n"; done`; seven commits; its #171 `sleep 60; …
+  cat … | tail -30; ps aux …` blocked by Claude Code at its #172; its #182
+  and #196 `pkill -f "links-config.sh"; pkill -f "node --test
+  test/links-config"` after a mutation run of its own hung, the script
+  restored from a backup in the scratchpad; its report, #618, naming the
+  hang and the kill. `review-changes` at #631, five lenses at #645 to #649,
+  their prompts „Read-only: change nothing“; #694 the ages of the rules of
+  `standards.md`, thirteen landed pull requests for each of the two old
+  ones and no `raised-here` issue citing them; #741 to #745 three test
+  files edited by the main run itself, #762 `hooks/post-tool-use-checks.sh`
+  blocking the last edit on the format class, #766 `make fmt-write`; #781,
+  #782 and #797 `docs/links.md` and `environment.md` edited by the main
+  run, #805 `standards.md` written by it, two rules out and one in; #822 to
+  #847 the main run's own proofs; #862 issue #76 „Minor leftovers from the
+  review of the limit task“ with `raised-here`, `make check` green; #868
+  two commits by the main run; #880 to #882 a second round with three
+  lenses; #935 and #936 two edits more, #945 a commit; #956 to #958 a third
+  round; #1011 the message that ends the turn: what holds, the findings,
+  the two rules taken out with „Sag Bescheid, dann stelle ich sie wieder
+  her“, nothing of the hang or the kill, last „Soll das landen?“ with both
+  ways. The builder was never resumed. The landing of #72, #1015 to #1091:
+  #1015 „ja“; #1020 the body, the Guarded conditions, the review, „The run
+  installed nothing. `yq` was installed by the person (`brew install yq`,
+  into `/opt/homebrew/bin`, 4.54.1, backed by `brew info yq`); the line for
+  it already stands under 'Installed outside the project'“; #1030 pull
+  request #77; #1036 armed at BLOCKED; #1042 `bin/devloop-bounded 100 gh pr
+  checks 77 --watch --interval 15`, the check pass after 55 seconds, then
+  one read, „OPEN - CLEAN“; #1047 `sleep 45; gh pr view 77 …` blocked by
+  Claude Code at #1048; #1060 one read, OPEN, CLEAN, armed; #1066 the merge
+  handed over, „Der Check auf GitHub ist grün, und Auto-Merge ist scharf
+  geschaltet, aber GitHub hat ihn noch nicht gemerged. … Genauso hing es
+  vorhin beim Pull Request „Refresh the setup to 0.166.0", den du dann von
+  Hand gemerged hast. Gemergt wird nicht von mir. Das übernimmst du hier in
+  Claude Code:“ and `! gh pr merge 77 --squash --repo
+  jayjay-create/devloop-test-aa`; GitHub merged at 12:09:28Z, eight
+  seconds later, the check having completed at 12:08:48Z; #1069 the
+  person's command, #1070 „already merged“; #1074 `MERGED
+  2026-10-30T12:09:28Z`, fast-forward to `1b0efc2`, the branch deleted;
+  #1086 `bin/devloop-install-issues`, issue 75 „mmdc: not found on the
+  search path“, „closed: no“; #1091 the last message: merged, the limit
+  usable, #73 waiting on #75, the `!` line for `mmdc` handed over again,
+  nothing of #76.
+
+  **The second session.** The start, s2 #8 to #86: the SessionStart hook at
+  s2 #30 with the same two lines; s2 #37 `setup-state --fetch`, markers
+  0.166.0; s2 #51 the tracker query, #71 with one of two tasks open, #73,
+  #75 with `needs-human` and `raised-here`, #76; s2 #55 the readiness
+  query, „73 … open blockers: 1“, and `gh issue view 75`, the body read; s2
+  #64 `command -v mmdc` by the run itself, `/opt/homebrew/bin/mmdc`; s2 #71
+  between tool calls „`mmdc` ist jetzt installiert. Ich schließe das
+  blockierende Issue und baue danach den Task …“; s2 #72 `gh issue close
+  75 --repo jayjay-create/devloop-test-aa --comment "mmdc is now on this
+  machine (/opt/homebrew/bin/mmdc), so the blocker is gone." && gh issue
+  view 73 …` and, in the same message, s2 #73 the `Skill` call for
+  `build-work`; s2 #74 Claude Code's answer to s2 #72: „Permission for
+  this action was denied by the Claude Code auto mode classifier. Reason:
+  [External System Writes]. …“; s2 #76 `build-work` loaded; s2 #85
+  `bin/devloop-install-issues`, s2 #86 „issue: 75 … tool: mmdc: found at
+  /opt/homebrew/bin/mmdc (on 2026-10-30) … closed: yes“, the comment on
+  GitHub at 12:14:57Z „devloop closed this issue at the start of a session,
+  the tool standing on this machine now: mmdc: found at
+  /opt/homebrew/bin/mmdc (on 2026-10-30)“; the project's
+  `.git/devloop-auto-mode-denials` carrying one line of 23 October 2026
+  and none of this day. The build of #73, s2 #89 to #321: s2 #89 fetch, the
+  base equal; s2 #92 `make check` green; s2 #93 the readiness query, #73
+  free; s2 #103 `bin/devloop-tool-state --build mmdc`, „mmdc: found at
+  /opt/homebrew/bin/mmdc (on 2026-10-30)“ and the record line, no mark; s2
+  #107 the subagent `aaf2940c`, its prompt „Tool state (read just now):
+  `mmdc: found at /opt/homebrew/bin/mmdc`. Install record: `install-tools:
+  no` — you install nothing. … If anything else is missing, name it in
+  your report and stop; no stand-ins.“; s2 #111 the message that ends the
+  turn: the build running, „`mmdc` ist installiert. Das Issue … habe ich
+  deshalb geschlossen.“, „Mein erster Versuch, es per `gh issue close` zu
+  schließen, hat der Auto-Mode-Classifier abgelehnt (Grund: „External
+  System Writes"). Das Issue wurde dann über das devloop-eigene Programm
+  für Install-Issues geschlossen, das der Ablauf an dieser Stelle
+  vorsieht.“, the base green. `aaf2940c`, 199 records, three hand-backs:
+  its #87 the first commit with `--pdfFit`, its #99 `npm run diagram`
+  failing with „error: unknown option '--pdfFit'“, its #109 „STOPPED: … I
+  need a decision from you before I go on“ with option A, drop `--pdfFit`,
+  among others; s2 #127 the main run read `mmdc -h`, mmdc 12.0.0 with
+  `--pdf-paper-format` „instead of fitting the diagram“; s2 #145
+  `SendMessage` to the builder, „Decision: option A. Drop --pdfFit …“; s2
+  #149 to the person, „Ich habe entschieden, `--pdfFit` wegzulassen. …
+  Die Abweichung von Issue 73 und Spec 71 halte ich im Pull-Request-Text
+  fest.“; the builder's #138 the real `npm run diagram`, `docs/links.pdf`
+  of one page, 570 by 58 points; `review-changes` at s2 #169, five lenses
+  at s2 #196; s2 #247 the findings handed to the builder, resumed, its
+  hand-back at s2 #252; s2 #271 a second round with three lenses; s2 #294
+  `mktemp -d` and s2 #305 the body of issue #78 „Minor leftovers from the
+  review of the PDF diagram task“; s2 #321 the message that ends the turn,
+  the deviation under its own heading, last „Soll das landen?“. The landing
+  and the end, s2 #324 to #419: s2 #324 „ja“; s2 #328 the push and `mktemp
+  -d`; s2 #336 the body with „Deviation from issue 73 and spec 71“ and
+  „Install report: nothing was installed in this task; the real `mmdc`
+  12.0.0 … was already on the machine“; s2 #341 the „🤖 Generated with“
+  line edited into the body by the run; s2 #351 pull request #79; s2 #355
+  armed at BLOCKED; s2 #359 and #363 `sleep 45; gh pr view 79 …` blocked by
+  Claude Code twice, the identical command sent again after the first
+  block (s2 #360, #364); s2 #365 one read, BLOCKED, OPEN; s2 #369 `gh pr
+  checks 79`, pending; s2 #378 the message that ends the turn: the pull
+  request open and armed, „GitHub wartet auf den erforderlichen Check
+  `check`, der gerade läuft. Sobald er grün ist, mergt GitHub den Pull
+  Request von selbst. Ein Merge von mir ist nicht nötig. Sag mir Bescheid,
+  wenn du weitermachen willst.“; GitHub merged at 12:31:19Z, the check
+  having completed at 12:30:31Z; s2 #381 „weiter“; s2 #384 `MERGED
+  2026-10-30T12:31:19Z`; s2 #388 fast-forward to `c970986`, the branch
+  deleted; s2 #405 `gh issue close 71 --comment "Both tasks are merged;
+  closing the spec."`; s2 #409 the query, #76 and #78 open with
+  `raised-here`; s2 #413 the last message: merged, the spec complete, the
+  two loose issues by title, „Soll ich sie als Nächstes bauen, oder lässt
+  du sie erst mal liegen?“; s2 #416 „lass sie liegen“; s2 #419 „Alles klar,
+  ich lasse beide Issues liegen. … Es ist nichts mehr in Arbeit, kein
+  offener Pull Request und keine offene Spec.“
+
+  **(a) The two ways the entry at line 42324 assigns to this run.** The `!`
+  after a no in the same session, held: `shared/install-tool.md` lines 84
+  to 98, `build-work` expanded 1414 to 1428, and "The task itself",
+  expanded 1755 to 1783; #563 and #564 the command and its output, #575 and
+  #576 both lines of `--installed` found, #580 and #581 the program with
+  `--after-install` closing #74 with the comment of
+  `bin/devloop-install-issues` line 311 naming an install typed in the
+  session, #586 the branch, #598 the subagent, #601 the one message, as
+  decision (1) of the entry at line 42324 has it. Beside it: no readiness
+  query between the closing and the subagent, where "The task itself" goes
+  back to step 2, expanded 1773 to 1775; and the run called
+  `bin/devloop-install-note` with no action and read forty lines of its
+  source before `put`, #580 and #586, where expanded 1729 names `put` with
+  its two arguments. The closing at the next start, held by the program
+  after a deviation Claude Code stopped: `shared/install-issues-read.md`
+  lines 1 to 13, expanded 1040 to 1052 of `build-work`, the program once
+  before the first thing of this start that reads an open issue. In the
+  second session the tracker query at s2 #51 and the readiness query at s2
+  #55 ran first, in `start-work`, which does not carry that text; the run
+  read the issue's body, s2 #55 and #61, read `mmdc` with `command -v`
+  itself, s2 #64, where `plan-work` expanded 1105 and the set say a tool is
+  read through the program alone, and sent `gh issue close 75` with a
+  comment of its own, s2 #72, beside the call that loaded `build-work`;
+  Claude Code's classifier refused it, s2 #74; then, in `build-work`, s2
+  #85 `bin/devloop-install-issues` closed #75 with the comment of line 311
+  naming the start of a session, s2 #93 the readiness query listed #73
+  free, s2 #103 `--build` found the tool, s2 #111 said the closing and the
+  refusal to the person. The outcome is the texts' outcome, by the program
+  and with its comment, and it came about because Claude Code refused the
+  closing by hand: new defect 1 below.
+
+  **(b) What holds milestone 3 open since 27 October 2026.** New defect 4
+  of the entry at line 38963, line 39535: held. `plan-work` expanded 1095
+  to 1135: #197 to #213 read the two scripts, #225 ran the program before
+  the round, #232 the round's assumptions carried both lines and that the
+  install record decides at the build, and the record's answer was named
+  nowhere in the planning, #232, #280 and #429, only at the build, #513,
+  where it is read. New defect 6, line 39567: the hook held, the prompt
+  not. `hooks/subagent-start-install.sh` line 58: every one of the 27
+  subagent logs carries at its #2 and #3 the record line and the rule
+  naming the command that prints the five texts. The fifth rule of step 3,
+  `build-work` expanded 1245 to 1262: the lines of `--build`, the record
+  line among them, "and beside them nothing of this run's own on whether
+  the subagent installs or what — no point 7, no 'do not install', no claim
+  about the machine", 1250 to 1251; #598 "Install nothing outside the
+  project. The install record says `no`. … yq is installed … build nothing
+  against a stand-in", s2 #107 "you install nothing. … no stand-ins": both
+  prompts carry a tool line and the record, and the run's own beside them.
+  #598 carries the search-path line of `--installed` from #576 and `--build`
+  did not run again before that subagent; the read named for this way is
+  the `--installed` read, `shared/install-tool.md` lines 84 to 90, so that
+  is noted and not held against the run. New defect 7, line 39585: held.
+  `build-work` expanded 1268 to 1290: #501 and #503 the read, #513 the
+  handover before any subagent, no stand-in, #537 the second handover, the
+  subagent at #598 after the tool stood at #576, the landing question at
+  #1011 after the real `yq` ran, the builder's #618 "By hand with the real
+  yq". The rest of defect 5 of the entry at line 36636, lines 37219 and
+  37228: held in part. The handover says where a no leads,
+  `shared/install-tool.md` lines 149 to 181, expanded 1479 to 1511: #513
+  named the issue with the command, the next task and the later start;
+  not said there that the command typed here with `!` after the no closes
+  the issue at once, lines 162 to 167, the first new sentence of wording
+  (1) of the entry at line 42324, which reached them at #537 after the no;
+  the `mmdc` handover at #537 said of the no "Dann lege ich wie eben ein
+  Issue an, und es ist nichts mehr baubar, bis eines der beiden Tools
+  steht." and neither later way, both said at #560 after the no. The issue
+  written on the no and never before, #532 after #522 and #553 after #546:
+  held. The two defects of the entry at line 41887: line 42200, the `!`
+  after a no, built by the entry at line 42324, met at #563 to #601 and
+  held as under (a); line 42213, the reader on `$'\xHH'`, not met, no
+  command of either main log or of the 27 subagent logs carrying `$'`,
+  counted mechanically.
+
+  **(c) The lines marked built of the entries at lines 41228 and 42324
+  that this run reached**, each against what the run said, measured by the
+  statement and not the words, decision (7) of 24 October 2026 at lines
+  42824 to 42836, on the person's decision of 19 October 2026. Entry at
+  line 41228: (1) the handover under a no, form A, met at #513 and #537,
+  held in substance for the task by its title, the tool missing, the no,
+  not installed by the run, the `!` line, the backing with version and
+  folder, the read after the output, the issue on a no, the next task, the
+  question last — "Aufgabe" throughout, "Tipp ihn hier in Claude Code mit
+  dem `!`" for "Gib den Befehl dafür hier in Claude Code ein, mit `!`
+  davor", three sentences of the run's own before it — and the two last
+  sentences of the wording of 30 October 2026 not said at the handover, as
+  under (b). (6) the merge handover, met at #146 and #1066 in a case the
+  shared text does not name, an armed pull request GitHub was still to
+  merge: not held, new defect 2. (2) to (5) and (7) to (11) not met. Rule
+  (b), where a command is typed, met at #146, #513, #537, #560, #1066 and
+  #1091 and in the bodies of #74 and #75, "hier in Claude Code mit `!`"
+  everywhere: held. D5, the folder read beside the search path, met at #576
+  on its found branch: held. D1 to D4 and D6 not met. Entry at line 42324:
+  wording (1) as above; wording (2), the message after the no, met at #537
+  and #560, held in substance — nothing built, the issue by its title, the
+  task by its title not built while it is open, the next task by its title
+  at #537 and that none is at #560, the `!` line to type here on which the
+  run closes the issue and builds, an install made another way read at the
+  next start with `/devloop:start-work` — "Ich habe dein Nein umgesetzt"
+  opening both; (a) held as above; (b) `plan-work` expanded 1105 to 1115,
+  the program before the round, met at #225 and #232 and held, and 1283 to
+  1290, the one line on the mode in the next message that ends a turn with
+  text after the read, without a reason, met at #274 and #280 and held, the
+  line standing first in that message with no cause named and a second
+  sentence after it, "Deshalb frage ich nicht, wie es weiterläuft, sondern
+  plane mit dir.", that gives none either; (c) the hook's rule met at #2
+  and #3 of every subagent log and held, the fifth rule's prompt not held,
+  as under (b); (d) not met.
+
+  **(d) Defects met again**, each on the row of its thing where the thing
+  is built, and on no row where it is recorded and not built, section C of
+  the head of `scripts/devloop-stock-take`. Line 30379, Claude Code's rule
+  on a wait, of which devloop says nothing: met at #1048 on `sleep 45; gh
+  pr view 77 …`, at s2 #360 and #364 on `sleep 45; gh pr view 79 …`, the
+  identical command sent a second time after the first block, and at
+  `a2aa2086` #172 on `sleep 60; …`; not held, as before. Line 39600, the
+  main run building: the review's fixes of #72 edited at #741 to #745,
+  #781, #782, #797, #805, #935 and #936, proven at #822 to #847 and
+  committed at #868 and #945 by the main run, the builder `a2aa2086`
+  finished and resumable by `SendMessage`, as the second session resumed
+  its builder at s2 #145 and #247; met in full, not held; no line of step
+  4, "Fix now" at expanded 1996, names who fixes, and the defect's should
+  does, "the main run builds none itself". Line 42226, a lens ending
+  processes and the main run silent: here a builder, `a2aa2086` #182 and
+  #196, `pkill -f` by name, every process on the machine whose command line
+  carries the text, after a mutation run of its own hung, named in its
+  report at #618 and said to the person nowhere, #1011; the lens half held:
+  none of the 25 read-only agents, eleven lenses, three drafts and three
+  checks of the first session and eight lenses of the second, wrote into
+  the tree or ran `mktemp`, `pkill` or an install, counted mechanically
+  over their tool calls. Line 39827, the Stop hook beside the subagent: not
+  met, no „Checks are failing“ in either main log. Line 25960, the hard
+  core in no message: met at #280 and held, the hard core as text in the
+  message and the question last as text, `plan-work` expanded 1214. Line
+  37523, defect 34, the install question at a refresh: not met, the record
+  standing, no question put, #63 to #84. Line 37278, defect 9: met at #232
+  to #453 and held, nobody settled to install. Point (c) of the entry at
+  line 38963, no defect and open: every commit with `Co-Authored-By:
+  Claude Sonnet 5.5`, #92, #868, #945 and the builders' commits, the ten
+  of #77 and the eight of #79, from Claude Code's attribution reminder at
+  #33; #70 and #79 with the „🤖 Generated with“ line, the latter edited in
+  by the run at s2 #341, #77 without. Two rules of built things met and
+  not held, on their rows: step 2 of `build-work` on loose issues, expanded
+  1162 to 1185, clause 3 with the spec closed, "take it … which and why is
+  not said", where s2 #413 put the two loose issues to the person as a
+  question, the case step 7 at expanded 2931 to 2934 records as measured
+  on 9 September 2026, and clause 2 with the spec open, the waiting issue
+  said with its clause at the next message that ends a turn with text,
+  where #76, filed at #862 and named at #1011, stands nowhere in #1091 —
+  the person's plan ended the run after the two tasks, the rule stands as
+  written, and the decision on it is theirs; and step 6 attended, expanded
+  2659 to 2663, "check once whether it landed — do not poll in a loop. If
+  it has not, say what it is still waiting on and offer the next step",
+  where the first session read twenty times in a loop at #119 and handed
+  the merge over at #146 and #1066, and the second said at s2 #378 what it
+  waits on and offered the next step, held.
+
+  **New defects**, by effect, each a thing of the table on its line below.
+  **1. The install issue closed by hand at the next start, stopped by
+  Claude Code.** s2 #64 `command -v mmdc`, s2 #72 `gh issue close 75 …
+  --comment "mmdc is now on this machine …"`, in `start-work`, before
+  `build-work` and before `bin/devloop-install-issues` at s2 #85; Claude
+  Code's classifier refused s2 #72; the program then did what the texts
+  say, with its comment. Against `shared/install-issues-read.md` lines 1 to
+  13, the program once before the first thing of a start that reads an open
+  issue, inserted into `build-work` and `plan-work` and not into
+  `start-work`, whose in-flight report reads the tracker, s2 #51, and the
+  readiness query, s2 #55, and says nothing of an issue of the install
+  form, so that the run acted on the issue's body. Searched: `grep -n
+  'install-issues\|devloop-install' skills/start-work/SKILL.md` expanded,
+  no hit. Milestone 3: the closing at the next start is one of the two ways
+  this run was to show.
+  Recorded, not built: at the next start the main run read the tool itself with command -v and sent gh issue close for the install issue with a comment of its own, in start-work before the program, and only Claude Code's classifier refusing it left the closing to bin/devloop-install-issues — should: an install issue is closed by bin/devloop-install-issues alone and a tool read by bin/devloop-tool-state alone, and start-work says, where its in-flight report meets an open issue carrying install-tool and install-command, that the build's start reads and closes it with the program and nothing is closed in start-work; milestone 3.
+  **2. The merge handed over for an armed pull request, twice, with a false
+  word on who merged.** #146 after a loop of twenty reads, 10:14:26 to
+  10:19:41, and one more at #140, the check green since 10:15:27Z, CLEAN,
+  armed: the `! gh pr merge 70 …` line with „Auto-Merge war angenommen,
+  aber GitHub hat ihn auch nach über fünf Minuten nicht gemerged“; GitHub
+  merged at 10:20:21Z, nine seconds after the handover and four minutes 54
+  seconds after the check. #1066 after `gh pr checks --watch` at #1042, the
+  pass at 55 seconds, and one read at #1060, 32 seconds after the check:
+  „Genauso hing es vorhin beim Pull Request „Refresh the setup to 0.166.0",
+  den du dann von Hand gemerged hast“ — GitHub had merged #70 before the
+  person's command, whose output read „already merged“, #150, and the run
+  had read `MERGED 2026-10-30T10:20:21Z` itself at #162; GitHub merged #77
+  at 12:09:28Z, eight seconds after the handover. Both handovers named
+  auto-merge, which `shared/merge-handover.md` lines 9 to 15 keep out of
+  the sentence. The shared text names three cases, lines 9 to 21, no gate,
+  a gate with auto-merge off, a gate with auto-merge on and the pull
+  request past it; an armed pull request not yet merged is none of them,
+  and step 6 attended says what is said then, expanded 2659 to 2663, with
+  "The checks going green is not the merge. GitHub merges after them … Read
+  the platform, and read it again across the next few minutes", 2702 to
+  2706. Searched: `grep -n -i 'poll in a loop\|handed the merge over
+  while\|armed.*handed over' docs/roadmap.md`, the attended rule quoted at
+  line 2341 and line 28069 on the wait, no defect. Not the install path;
+  whether milestone 3, the person decides.
+  Recorded, not built: with the person there the run read an armed pull request twenty times in a loop and then handed the merge over with the ! line and a sentence naming auto-merge, twice, GitHub merging within ten seconds of each handover and before the person's command, and the second handover said the person had merged the first pull request by hand where GitHub had — should: with the person there the run reads once after arming and, where not merged, says what it waits on and offers the next step, as the second session did; the merge handover is given in its three cases alone and never for an armed pull request; and who merged is read off the platform, never off the person's command.
+  **3. The prompt to the build subagent carries the run's own on
+  installing.** As under (b): #598 and s2 #107 against `build-work`
+  expanded 1245 to 1262, the rule built on 30 October 2026 and not held in
+  its first run. No mechanism holds the prompt's content; the hook's rule
+  outranks it, and neither subagent installed anything. Milestone 3, the
+  rest of new defect 6 of the entry at line 38963.
+  Recorded, not built: the prompts to both build subagents said install nothing, the install record says no, you install nothing, no stand-ins and that yq is installed, beside a tool line and the record line, where the fifth rule of step 3 has the program's lines and nothing of the run's own on installing — should: the prompt carries the lines of bin/devloop-tool-state --build and nothing of the run's own on installing, as the rule says, or the person decides that the hook's rule, which every subagent gets and which outranks the prompt, makes the prompt's words a small matter; milestone 3.
+  **4. A decision the spec did not take, taken by the main run alone.** The
+  builder `aaf2940c` stopped on `mmdc` 12.0.0 refusing `--pdfFit`, its #99
+  and #109, „I need a decision from you“; the main run read `mmdc -h`, s2
+  #127, chose option A, s2 #145, and told the person afterwards, s2 #149,
+  „Ich habe entschieden, `--pdfFit` wegzulassen“; their yes came at the
+  landing question, s2 #324, after s2 #321 named the deviation. Against
+  `build-work` expanded 808 to 816: "a task that turns out to need a
+  decision the spec did not take is a task that is not buildable as cut.
+  The issue carries the question and the options … labelled `raised-here`
+  and `needs-human`, recorded as a blocker; the task is put down; step 2
+  takes the next", the eighth case, a choice the task rests on that the
+  spec did not make, the spec's decision 3 having named the flag. Searched:
+  `grep -n -i 'not buildable\|decision the spec did not take'` over the
+  expanded skills, the hits at `build-work` 760, 810 and 1954. Not the
+  install path.
+  Recorded, not built: the main run decided alone to drop --pdfFit where mmdc 12.0.0 refuses it, told the person afterwards and let the build go on, where step 3 says a task that turns out to need a decision the spec did not take is not buildable as cut and gets an issue with the question and the options — should: the run raises that issue and puts the task down, as the text says, or the text says that with the person there the question is put to them before the build goes on.
+
+  **(e) Every block and every refusal.** devloop:
+  `hooks/post-tool-use-checks.sh` line 53 at #762, on the main run's edit of
+  `test/links-config-script.test.ts`, the format class red on the file, a
+  block the rule names, the file reformatted at #766; no PreToolUse guard
+  blocked anything in either main log or in any subagent log, no „hook
+  blocking error“ and no „Blocked by devloop“ standing in the 27 subagent
+  logs; the mark guard stated the mode beside #274 at #276; the
+  SessionStart hook passed with its two lines at #34 and s2 #30, the
+  SubagentStart hook in every subagent log at its #2 and #3. Claude Code's
+  rule on a wait: #1048, s2 #360, s2 #364 and `a2aa2086` #172, each
+  „Blocked: sleep … followed by: … use Monitor with an until-loop“, by the
+  rule's own text yes, devloop having no rule on it, line 30379. Claude
+  Code's auto mode classifier: s2 #74 on `gh issue close 75 … --comment
+  "…" && gh issue view 73 …`, „Permission for this action was denied by the
+  Claude Code auto mode classifier. Reason: [External System Writes]“ — a
+  command no text has the run send, new defect 1; devloop's rule for the
+  classifier names installs alone, `bin/devloop-auto-mode-rule` lines 21
+  to 29, and the install guard under PermissionDenied is silent for a
+  command that is no install, `hooks/pre-tool-use-install-guard.sh` line
+  986, the project's `.git/devloop-auto-mode-denials` carrying no line of
+  this day. Nothing else: the exit-1 results of `a6b58c80` #20 and
+  `a7b65cfb` #28, `ls` and `which` on names that are not there, of
+  `aaf2940c` #29, the shell on `=====71`, and `gh pr checks` ending with 8
+  at s2 #370, pending, are no refusals.
+
+  **(f) What the run left.** Outside the project: `yq` 4.54.1 at
+  `/opt/homebrew/bin/yq`, installed by the person's `!` at #563, Homebrew
+  pouring the bottle and installing zsh completions into
+  `/opt/homebrew/share/zsh/site-functions`; `mmdc` 12.0.0 at
+  `/opt/homebrew/bin/mmdc`, installed by the person in the terminal between
+  the sessions, which stands in no log, `~/.cache/puppeteer` holding
+  `chrome` and `chrome-headless-shell` now, what that install added there
+  in no log either; four directories made with `mktemp -d` by the main
+  runs and not removed, every one still standing when this entry was
+  written: #92 for the body of #70, one file, #242 for the issue and
+  pull-request bodies of the first session, sixteen files, s2 #294 for the
+  body of #78, one file, s2 #328 for the body of #79, one file; no
+  `mktemp` in any subagent; the builders' files in the sessions'
+  scratchpads, a backup of `links-config.sh` and four Python edit scripts;
+  whatever `pkill` ended at `a2aa2086` #182 and #196. In the project:
+  `main` at `c970986` after #70, #77 and #79, the tree clean, no branch but
+  `main` locally, on GitHub `main` and the person's `remove-install-record`
+  and `run-remove-install-permission`; `docs/agents/` at markers 0.166.0,
+  `environment.md` with „`brew install yq` installed into /opt/homebrew/bin“
+  standing since 29 October 2026, #587 „stands already“, `standards.md`
+  with two rules, one new and two old taken out; `docs/links.pdf`
+  committed; `links.config.yaml` with `sort: false` as before; the empty
+  `.claude/` directory of 29 October 2026 unchanged. On GitHub: #71, #72
+  and #73 closed as completed, #71 by the run at s2 #405 with „Both tasks
+  are merged; closing the spec.“; #74 closed by the program with the
+  in-session comment; #75 closed by the program with the start comment;
+  #76 and #78 open with `raised-here`; #70, #77 and #79 merged by squash,
+  auto-merge enabled on each by the account at BLOCKED.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the four new defects on their lines above,
+  kind defect, their evidence the same line, the version 0.166.0 in the
+  note; the head of this entry as part of the first; and the runs of this
+  day, source log, under 0.166.0, dated by the day the logs open, each on
+  the row of the thing whose case it met and anchored on its line below,
+  the defect rows by the line of their status; the four defects met again
+  that are recorded and not built, lines 30379, 39600, 39827 and 42226,
+  carry no run, since a run enters the row of a built defect alone:
+  run on new defect 4, line 39535, met at #225 to #232 and held;
+  run on new defect 5, line 39548, met at #274 to #280 and held;
+  run on new defect 6, line 39567, met at #598 and s2 #107, the hook held and the prompt not;
+  run on new defect 7, line 39585, met at #501 to #598 and held;
+  run on defect 5 of the six runs, line 37228, met at #513 and #537 and held in part;
+  run on defect 9, line 37278, met at #232 to #453 and held;
+  run on the hard core in no message, line 25960, met at #280 and held;
+  run on the status line 40534, the hook, met at #2 and #3 of all 27 agent logs and held;
+  run on the status line 40535, the closing at the next start, met at s2 #85 and held;
+  run on the defect of line 42200, the ! after a no, met at #563 to #601 and held;
+  run of the SubagentStart hook's context, met at #2 and #3 of all 27 agent logs, pass;
+  run of bin/devloop-install-issues closing an issue, met at #581 and s2 #86;
+  run of bin/devloop-install-issues the comment, met at #581 after an install typed in the session and at s2 #86 at the start of a session;
+  run of bin/devloop-install-issues finding none, met at #270 and #501;
+  run of bin/devloop-install-issues the tool not found, closed no, met at #581 for issue 75 and at #1086;
+  run of bin/devloop-install-issues kind task, met at #581, #1086 and s2 #86;
+  run of bin/devloop-tool-state not found, met at #226 and #503;
+  run of bin/devloop-tool-state found on the search path, met at #226, #576 and s2 #104;
+  run of bin/devloop-tool-state the --planning record line, met at #226;
+  run of bin/devloop-tool-state the --build record line under no, met at #503 and s2 #104;
+  run of bin/devloop-tool-state --installed found in the folder, met at #576;
+  run of bin/devloop-tool-state --installed with both lines, met at #576;
+  run of bin/devloop-tool-state exit 1, met at #226 and #503;
+  run of bin/devloop-tool-state exit 0, met at #576 and s2 #104;
+  run of bin/devloop-install-note put standing already, met at #587;
+  run of bin/devloop-bounded ending before the bound, met at #501 and #1043;
+  run of hooks/post-tool-use-checks.sh blocking, met at #762 on the main run's edit;
+  run of hooks/pre-tool-use-mark-guard.sh stating the mode, met at #276;
+  run of bin/devloop-arm armed at BLOCKED, met at #115, #1037 and s2 #356;
+  run of bin/devloop-start-conditions condition 6 not holding, met at #274;
+  run of bin/devloop-setup-state marker lines, met at #42, #192 and s2 #38;
+  run of hooks/session-start.sh the record line under a no, met at #34 and s2 #30;
+  run of setup-project refreshing every file, met at #84 to #167 and held;
+  run of cut-into-tasks starting the first task with them, met at #483 to #513 and held;
+  run of build-work step 2 several ready, met at #503 to #513 and held;
+  run of build-work step 2 none ready, met at #560 and held;
+  run of build-work step 2 loose issue clause 2, met at #1091 and not held;
+  run of build-work step 2 loose issue clause 3, met at s2 #413 and not held;
+  run of build-work tools read before the subagent starts, met at #501 to #598 and s2 #103 to #107 and held;
+  run of build-work the prompt to the subagent, met at #598 and s2 #107 and not held;
+  run of build-work install declined for the task itself, met at #527 to #560 and held;
+  run of build-work handing the command over both ways, met at #513 and #537 and held;
+  run of shared/install-tool.md the no way of the handover, met at #513 and #537 and held in part;
+  run of shared/install-tool.md after a no and the !, met at #563 to #601 and held;
+  run of shared/install-tool.md installed another way, met at s2 #85 and held;
+  run of shared/install-issue.md the command typed with ! after the no, met at #581 and held;
+  run of shared/install-issues-read.md run with --after-install, met at #581 and held;
+  run of shared/install-issues-read.md the program before the first read, met at s2 #51 to #85 and not held;
+  run of shared/install-issues-read.md an issue closed said in one line, met at s2 #86 and #111 and held;
+  run of build-work step 4 finding fix now, met at #693 to #945 and s2 #247 to #252, by the main run in the first session;
+  run of build-work step 4 second round on what changed, met at #880 to #983 and s2 #271 to #285 and held;
+  run of review-changes a lens's trigger in the diff, met at #645 to #649 and s2 #196;
+  run of shared/rule-not-written-down.md taking a rule out by its age, met at #694 to #805 and held;
+  run of plan-work a tool known before the round, met at #225 to #232 and held;
+  run of plan-work the one line on the mode without a reason, met at #280 and held;
+  run of plan-work the hard core not fitting the widget, met at #280 and held;
+  run of plan-work the design asked in a message of its own, met at #429 and held;
+  run of plan-work a draft that failed an item chosen, met at #433 to #453 and held;
+  run of build-work step 5 a required check exists, met at #1011 and s2 #321 and held;
+  run of build-work step 6 BLOCKED arm, met at #115, #1037 and s2 #356;
+  run of build-work step 6 attended check once, met at #119 to #146 and #1042 to #1066 and not held, at s2 #365 to #378 held;
+  run of shared/merge-handover.md straight path, met at #146 and #1066 and not held;
+  run of build-work step 7 query again, met at #1086 to #1091 and s2 #409 to #413 and held.
+  The tool before the commit: exit 0, no broken record, no uncovered line.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
