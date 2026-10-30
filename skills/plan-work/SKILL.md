@@ -325,8 +325,25 @@ command line and a browser for tests as `VENDOR:NAME`, as the program's
 head says, and say of a tool only what the program printed: a command
 found, with the path, or not found on the search path; a browser found in
 the version the project's test tool needs, not found there, or not read,
-with the cause. It reads this machine and nothing else, and says of the
-record only that the build decides. Where the line says not found — a
+with the cause. A tool the code read for a round names — a script of the
+project that calls `yq`, say — is known before that round, so the program
+runs before the round and the round's assumptions carry its line as the
+next sentences say; since 30 October 2026, the rest of new defect 4 of the
+roadmap entry of 27 October 2026 on the three closing runs, decided by the
+person that day: the run of 29 October 2026 read such a script at its
+records #175 to #177, named no tool in its round and ran the program only
+after it. It reads this machine and nothing else, and says of the
+record only that the build decides — even where another program printed
+today's answer, as `${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions`,
+run for the question on the mode below, does in its line on condition 6:
+the answer can change before the build, and the run of 29 October 2026
+said „Sie steht für dieses Projekt auf „nein“.“ before the design
+question, the rest of that defect. No mechanism holds either half: under
+`--planning` the program prints no answer, and which tools the code the
+planning reads needs, when the program is run and what the planning says
+of the record, no program and no hook sees; what the program gives is the
+one line a planning has to say of a tool, and the record's line it does
+not give. Where the line says not found — a
 command not on the search path, or a browser that does not stand in the
 version the project's test tool needs, missing on this machine as the
 command is, since 28 October 2026, the paragraph of that date in the
@@ -451,7 +468,16 @@ next message that ends a turn with text, and not in a comment on the
 planning issue alone, since 27 October 2026, new defect 5 of that entry:
 run 1 of 26 October 2026 wrote it into the English comment of Stage 1 and
 2 and said it to the person nowhere. It does not list what is missing: the
-flag asks what has to be asked and sets up the rest. Where no record stands
+flag asks what has to be asked and sets up the rest. The next such message
+is the one after the read of the conditions, the one the question on the
+mode would have stood in, not a later one, and the line gives no reason,
+since 30 October 2026, the rest of that defect, decided by the person that
+day: the run of 29 October 2026 said it at the design question, four turns
+after the read, with „weil die Installationsfreigabe auf „nein“ steht“. No
+mechanism holds the moment or the words: a hook sees no message of the
+run, and the one program behind the line,
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions`, names what does not
+hold, which is what the line leaves out. Where no record stands
 — a setup broken off before the question among it — nothing. Since 17
 October 2026, the roadmap entry of that date on the reports of what was
 done: a class `empty`

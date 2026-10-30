@@ -3494,8 +3494,10 @@ whole, the install record's with a place nobody could guess and the rule's,
 and the same session without the registration got none of it; the roadmap
 entry of that date on the hook on SubagentStart has the bench. So since that
 day every subagent gets the install record and the rule on installing as
-context at its start, from that hook, beside the fifth rule of `build-work`
-step 3, which hands point 7 in the prompt.
+context at its start, from that hook; since 30 October 2026 the rule names
+the command that prints point 7 of `build-work` step 3, `shared/install-tool.md`,
+with the four texts under it, and the fifth rule of `build-work` step 3
+hands point 7 in the prompt no more, by the person's decision of that day.
 
 **A hook cannot see consent.** It gets the command and the branch, never the
 conversation, so "the user just said yes" and "the agent decided this itself"

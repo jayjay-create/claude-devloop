@@ -18,7 +18,15 @@ with `bin/devloop-tool-state --build` whether the tool stands on this
 machine now — on the search path for a command, in the vendor's folder for
 a browser, whichever way it got there — and closes the issue itself where it
 does, with a comment naming the line it read; a task the issue held is free
-again, and a check class it concerned goes to `setup-checks`. So the issue
+again, and a check class it concerned goes to `setup-checks`. And since 30
+October 2026, after their no to the handover of a task's tool, where they
+type the command here with `!` in the same session or say under form B that
+they ran it, the run closes the issue the same way at once, the program run
+with `--after-install`, `build-work` step 3 point 7 and "The task itself";
+the issue's text stays as it stands here, naming the way a later session
+takes, while the message after the no names both ways, decided by the
+person that day: the two do not contradict, since the way the issue names
+stands in the message too. So the issue
 tells the person what is missing and the command, and does not tell them to
 close it: devloop does, and what devloop cannot read it does not close. It
 tells them where they type the command, by "Where the person types a

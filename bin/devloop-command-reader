@@ -411,7 +411,10 @@
 # RunAsTI, MinSudo, elevate, wsudox and win-sudo, each of which is judged
 # itself and of the first kind.
 # Exit 2 with one line on stderr: nothing on stdin, or input that is not a
-# JSON object. --self-test produces every outcome above once and every form
+# JSON object; and, since 30 October 2026, a \u or \U escape in a $'...'
+# of the command whose value lies above 10FFFF and so names no Unicode
+# character, the escape named - a command bash runs, which no guard may
+# pass unread, so not a parsed: no. --self-test produces every outcome above once and every form
 # the text is taken apart in, prints one line per case, names every case
 # that does not come out as this head says with what it printed, and exits 1
 # at its end where any was red - since the fifth addendum of 14 October 2026;
@@ -548,6 +551,20 @@ c'
   lines "a quoted text is one word and no command" 1
   runc "git commit -m 'it''s' -m \"\"";     expect "two quoted parts of one word, and an empty word stays a field" 0 "1|0|list|0|1|git|commit|-m|its|-m|"
   runc "echo \$'a\\tb' \$\"c\"";            expect "\$'…' with its escapes undone and \$\"…\"" 0 "1|0|list|0|1|echo|a	b|c"
+  # the escapes of $'…' as the manual of bash lists them under "ANSI-C Quoting", since 30 October 2026, new defect 2 of the roadmap entry of 29 October 2026 on the run under a no: until then \x went to the four-digit hex of the JSON and every $'\xHH' ended the reader with exit 2
+  runc "echo \$'\\x1b'";                    expect "\$'\\x1b': the byte, not exit 2" 0 "1|0|list|0|1|echo|$(printf '\033')"
+  runc "echo \$'\\x41\\x4\\x414\\xg'";      expect "\$'\\x': one or two hex digits, a third stays, none keeps the escape" 0 "1|0|list|0|1|echo|A$(printf '\004')A4\\xg"
+  runc "echo \$'\\101\\7\\1234\\501'";      expect "\$'\\nnn': one to three octal digits, a fourth stays, the low eight bits" 0 "1|0|list|0|1|echo|A$(printf '\007')S4A"
+  runc "echo \$'\\u41\\u0041\\u00411\\u00e9'"; expect "\$'\\u': one to four hex digits, the character in UTF-8" 0 "1|0|list|0|1|echo|AAA1é"
+  runc "echo \$'\\U41\\U0001F600\\U0001F6000'"; expect "\$'\\U': one to eight hex digits, the character in UTF-8" 0 "1|0|list|0|1|echo|A😀😀0"
+  runc "echo \$'\\a\\b\\e\\E\\f\\t\\v\\\\\\'\\\"\\?'"; expect "\$'…': the one-letter escapes and the four quoted characters" 0 "1|0|list|0|1|echo|$(printf '\a\b\033\033\f\t\v')\\'\"?"
+  runc "echo \$'\\ca\\cA\\c[\\c?'";         expect "\$'\\cx': the control character of x, \\c? the byte 0x1f, printed as a space like the separator" 0 "1|0|list|0|1|echo|$(printf '\001\001\033') "
+  runc "echo \$'\\z\\xg\\u\\U\\c'x";         expect "\$'…': a backslash before any other character stays with it, \\c at the end the backslash" 0 "1|0|list|0|1|echo|\\z\\xg\\u\\U\\x"
+  runc "echo \$'ab\\x00cd'ef";             expect "\$'…': a NUL ends the text between the quotes, the word goes on behind them" 0 "1|0|list|0|1|echo|abef"
+  runc "\$'\\x62rew' install ripgrep";     expect "\$'\\x62rew': the first word read as brew, for the install guard" 0 "1|0|list|0|1|brew|install|ripgrep"
+  runc "\$'\\142\\u0072\\x65w' install ripgrep"; expect "octal, \\u and \\x together spelling brew" 0 "1|0|list|0|1|brew|install|ripgrep"
+  runc "echo \$'\\U110000'";               expect "\$'\\U' above 10FFFF: no Unicode character, exit 2 naming the escape" 2 "$me: a \\U escape in the command names no Unicode character: \\U110000"
+  runc "echo \$'\\u0041";                  expect "\$'…' with escapes and no closing quote: parsed no" 0 "parsed: no: a single quote is not closed"
   runc 'echo "a\$b \" \\ \x"';              expect "in double quotes a backslash escapes \$ \" and itself and nothing else" 0 "1|0|list|0|1|echo|a\$b \" \\ \\x"
   runc 'echo \$HOME "$HOME/x" ${HOME}/y';   expect "a variable stays as written: \\\$HOME is literal, \$HOME and \${HOME} stay" 0 "1|0|list|0|1|echo|\$HOME|\$HOME/x|\${HOME}/y"
   runc 'arr=(a b) && echo ${arr[0]}';       expect "an array assignment is one word" 0 "1|0|list|0|0|arr=(a b)" "2|0|list|0|1|echo|\${arr[0]}"
@@ -2283,22 +2300,63 @@ function read_dq(mode,   w, c, c2, q) {
   if (mode != "body") perr("a double quote is not closed")
   return w
 }
-# $Q...Q, P standing after the opening quote, Q the single quote
-function read_ansi(   w, c, c2) {
-  w = ""
+# the digits of an escape at P: up to max characters out of set, P moved past them
+function digits(set, max,   d) { d = ""; while (length(d) < max && P <= N && index(set, substr(S, P, 1)) > 0) { d = d substr(S, P, 1); P++ } return d }
+function hexval(h,   i, v) { v = 0; for (i = 1; i <= length(h); i++) v = v * 16 + index("0123456789abcdef", tolower(substr(h, i, 1))) - 1; return v }
+function octval(h,   i, v) { v = 0; for (i = 1; i <= length(h); i++) v = v * 8 + index("01234567", substr(h, i, 1)) - 1; return v }
+# $Q...Q, P standing after the opening quote, Q the single quote: the escapes
+# as the manual of bash lists them under "ANSI-C Quoting", Edition 5.3 - \a
+# \b \e \E \f \n \r \t \v \\ \' \" \?, \nnn with one to three octal digits,
+# \xHH with one or two hex digits, \uHHHH with one to four and \UHHHHHHHH
+# with one to eight, the Unicode character, and \cx the control character -
+# since 30 October 2026; until then \x went to hex(), which takes the four
+# digits of a JSON \u, so that every $'\xHH' ended the reader with exit 2 and
+# the message meant for the JSON, and the six guards under PreToolUse blocked
+# the call, new defect 2 of the roadmap entry of 29 October 2026 on the run
+# under a no. An octal or \x value is the byte itself, a \u or \U value the
+# character in UTF-8, as bash writes them; a \u or \U above 10FFFF names no
+# Unicode character, and the reader ends with exit 2 naming the escape, so
+# that the guards block a command bash would run: such a command is not one
+# the shell refuses, so it is no parsed: no. A backslash before any other
+# character stays as written, with the backslash, and \x, \u or \U with no
+# digit behind it as well, measured with bash 3.2.57 on macOS on 30 October
+# 2026 - $'\z' is backslash and z, $'\xg' backslash, x and g - as is \c
+# where nothing follows it, which that bash reads as the one backslash. A
+# NUL, from \0, \x00, \u0000 or \c@, ends the text of the $'...' as a C
+# string ends: what follows it up to the closing quote is read over, and the
+# word goes on behind the quote, measured the same day, $'ab\x00cd'ef being
+# abef. \cx is the character of x, upper-cased, with its five low bits, \c?
+# byte 0x1f, as that bash reads it. The ORD table, filled once at the first
+# use, gives the value of a byte.
+function read_ansi(   w, c, c2, d, v, nul, i) {
+  w = ""; nul = 0
+  if (!(1 in ORD)) for (i = 1; i < 256; i++) ORD[sprintf("%c", i)] = i
   while (P <= N) {
     c = ch()
     if (c == Q) { P++; return w }
     if (c == "\\") {
       c2 = substr(S, P + 1, 1); P += 2
-      if (c2 == "n") w = w "\n"; else if (c2 == "t") w = w "\t"; else if (c2 == "r") w = w "\r"
-      else if (c2 == "a") w = w "\a"; else if (c2 == "b") w = w "\b"; else if (c2 == "f") w = w "\f"; else if (c2 == "v") w = w "\v"
-      else if (c2 == "e" || c2 == "E") w = w sprintf("%c", 27)
-      else if (c2 == "x" && substr(S, P, 2) ~ /^[0-9a-fA-F][0-9a-fA-F]$/) { w = w utf8(hex(substr(S, P, 2))); P += 2 }
-      else w = w c2
+      v = -1
+      if (c2 == "n") v = 10; else if (c2 == "t") v = 9; else if (c2 == "r") v = 13
+      else if (c2 == "a") v = 7; else if (c2 == "b") v = 8; else if (c2 == "f") v = 12; else if (c2 == "v") v = 11
+      else if (c2 == "e" || c2 == "E") v = 27
+      else if (c2 == "\\" || c2 == Q || c2 == "\"" || c2 == "?") { if (!nul) w = w c2; continue }
+      else if (index("01234567", c2) > 0 && c2 != "") { P--; d = digits("01234567", 3); v = octval(d) % 256 }
+      else if (c2 == "x" && P <= N && index("0123456789abcdefABCDEF", substr(S, P, 1)) > 0) { d = digits("0123456789abcdefABCDEF", 2); v = hexval(d) }
+      else if ((c2 == "u" || c2 == "U") && P <= N && index("0123456789abcdefABCDEF", substr(S, P, 1)) > 0) {
+        d = digits("0123456789abcdefABCDEF", (c2 == "u") ? 4 : 8); v = hexval(d)
+        if (v > 1114111) err("a \\" c2 " escape in the command names no Unicode character: \\" c2 d)
+        if (v > 0) { if (!nul) w = w utf8(v); continue }
+      }
+      else if (c2 == "c" && P <= N && substr(S, P, 1) != Q) { v = ORD[toupper(substr(S, P, 1))] % 32; P++ }
+      else if (c2 == "c") { if (!nul) w = w "\\"; continue }
+      if (v < 0) { if (!nul) w = w "\\" c2; continue }
+      if (v == 0) { nul = 1; continue }
+      if (!nul) w = w sprintf("%c", v)
       continue
     }
-    w = w c; P++
+    if (!nul) w = w c
+    P++
   }
   perr("a single quote is not closed"); return w
 }
