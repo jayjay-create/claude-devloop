@@ -587,6 +587,19 @@ GitHub merged within ten seconds; the prompt to the build subagent carried
 the run's own words on installing; four new defects, recorded and not
 built, one of them on the install path. Whether milestone 3 is reached that
 entry does not decide; the person does.
+On 30 October 2026 part 4 of the rebuild was built, the roadmap entry of
+that date on the start reading the install issues: `start-work` runs the
+program of the read at a start before its in-flight query, the first thing
+of that start that reads an open issue, and closes no issue and reads no
+tool itself; a bench of six sessions showed the rule of the SubagentStart
+hook winning over a contradicting sentence in the prompt, the subagent
+reading point 7 through the rule's command and installing as it says, the
+one install that did not go through refused by Claude Code's classifier
+and taken as the texts say; a bench of four sessions showed the program
+running before the query and the issue closed by it alone, where a copy of
+the day before read the issue and the tool itself first; the handover's
+sentence on a later `!` is a small matter by decision (9) of 24 October
+2026. Milestone 3 is not reached; the person decides.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
