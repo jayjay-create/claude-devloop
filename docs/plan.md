@@ -140,8 +140,9 @@ The things: the twelve skills down to their branches, `shared/`, since 15
 October 2026 `output-styles/`, `hooks/`,
 `bin/`, `scripts/` and the workflow under `.github/` down to their outcomes,
 the tool itself included; the
-nineteen checks under "Before a handover, run these", seventeen until 28
-September 2026 and eighteen until 5 October 2026, and the check under
+twenty checks under "Before a handover, run these", seventeen until 28
+September 2026, eighteen until 5 October 2026 and nineteen until 31 October
+2026, and the check under
 "Before you change anything, run this", both outcomes of each; the twenty
 names under "Named, not built as skills", eleven as things of their own and
 nine as a note on the thing that does their work, the two side paths under

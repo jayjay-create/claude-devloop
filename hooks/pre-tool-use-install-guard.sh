@@ -1096,11 +1096,12 @@ $2"; fi
         brew) P=$(absolute "$(brew --prefix 2>/dev/null)"); if [ -n "$P" ]; then place brew "$P/bin"; else UNREAD="$UNREAD; brew (brew --prefix did not answer)"; fi ;;
         go) envs GOBIN GOPATH; P=$(gobin); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; go (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place go "$P"; else UNREAD="$UNREAD; go (go env did not answer)"; fi ;;
         npm)
+          # npm prefix -g is asked with npm_config_logs_max=0, since 31 October 2026: npm writes a debug log under ~/.npm/_logs at every command unless logs-max is 0, measured on 25 October 2026 (F5 and F6 of the roadmap entry of that date on the benches) and again on 31 October 2026, and a guard that only reads writes nothing outside the project
           PFX="${EXTRA#prefix=}"
           if [ -n "$PFX" ]; then X=$(inside "$PFX" "$ID") ; [ -n "$X" ] || { X=$(expand "$PFX"); if [ -n "$X" ]; then place npm "$X/bin"; else UNREAD="$UNREAD; npm (where it puts things is not read off this machine by this guard)"; fi; }
           else
             envs npm_config_prefix NPM_CONFIG_PREFIX
-            P=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} npm prefix -g 2>/dev/null)"); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; npm (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place npm "$P/bin"; else UNREAD="$UNREAD; npm (npm prefix -g did not answer)"; fi
+            P=$(absolute "$(env npm_config_logs_max=0 ${ENVS[@]+"${ENVS[@]}"} npm prefix -g 2>/dev/null)"); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; npm (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place npm "$P/bin"; else UNREAD="$UNREAD; npm (npm prefix -g did not answer)"; fi
           fi ;;
         pnpm) envs PNPM_HOME; P=$(absolute "$(env ${ENVS[@]+"${ENVS[@]}"} pnpm bin -g 2>/dev/null | tail -1)"); if [ -n "$ENVFAIL" ]; then UNREAD="$UNREAD; pnpm (where it puts things is not read off this machine by this guard)"; elif [ -n "$P" ]; then place pnpm "$P"; else UNREAD="$UNREAD; pnpm (pnpm bin -g did not answer)"; fi ;;
         yarn)

@@ -1719,8 +1719,9 @@ type `edited` too, so that a title changed on an open pull request is read
 before it can be merged, at the cost of one run of the workflow per edit of
 the title, the body or the base. A commit's first line is not held by the
 workflow: a squash merge takes the title of the pull request, so the one
-title that lands is the one read. The check is not one of the nineteen
-under "Before a handover, run these".
+title that lands is the one read. The check is not one of the twenty
+under "Before a handover, run these", though the twentieth, since 31 October
+2026, runs it here with the workflow's other steps.
 
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
@@ -3781,7 +3782,7 @@ red answer has to be acted on, and only the diff says what differs.
 
 ## Before a handover, run these
 
-Nineteen checks that catch what a conversation loses. Each one has found a
+Twenty checks that catch what a conversation loses. Each one has found a
 real gap, or guards a mechanism that fails without a sound when nobody runs it.
 Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
@@ -3810,7 +3811,7 @@ September 2026 such a run
 was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.
 
-**Nineteen checks, nineteen command blocks.** Count them, or this number
+**Twenty checks, twenty command blocks.** Count them, or this number
 drifts again. It drifted once already, and quietly: on 7 September 2026 one
 check was split into three blocks, one of them unreachable, so the checks went
 from eleven to twelve while this sentence stayed at eleven — and the change
@@ -3824,7 +3825,9 @@ at load took their place. It reads eighteen against eighteen since 28 September
 2026, when the check holding the install record's reader to the branch guard's
 resolution of the default branch came in. It reads nineteen against nineteen
 since 5 October 2026, when the check holding the two table guards' copy of the
-four status forms to the shared file came in.
+four status forms to the shared file came in. It reads twenty against twenty
+since 31 October 2026, when the run of the workflow's steps on this machine
+came in.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -3980,6 +3983,29 @@ carries a copy in its message, and this looks for the shared file's one line
 standing whole in each hook — `1` twice means both carry it unchanged:
 
     for f in hooks/post-tool-use-table-guard.sh hooks/pre-tool-use-table-guard.sh; do grep -cFx -f shared/status-forms.md "$f"; done
+
+The steps of the workflow run here as GitHub runs them, since 31 October
+2026. `scripts/devloop-run-workflow` reads `.github/workflows/stock-take.yml`
+and runs every `run:` block of its two jobs with the shell the file gives the
+step — `bash -e {0}` where the step and its job name none, `bash --noprofile
+--norc -eo pipefail {0}` under `shell: bash`, the commands of GitHub's page on
+the workflow syntax, quoted in the program's head with the sentences on
+`set -e` and `pipefail` — with `PR_TITLE` the head of the new entry the branch
+adds to `docs/roadmap.md`, and `GITHUB_WORKSPACE`, `RUNNER_OS` and
+`RUNNER_TEMP` as the runner sets them; it leaves out the two steps that
+describe the runner, "what the checkout holds" and the Alpine step, a step
+with `uses:` and no `run:`, and runs a step under an `if:` not at all and
+says so, red. So the tool, its self-test, the hooks step with every self-test
+under `bin/` and every handler, the two README steps and the title step run
+here before the pull request shows them, on this one system, a job with a
+matrix once; a step added to the file runs without a change to the program.
+It ends with 0 where every step did, and its last line opens with `green:`,
+the count of the steps run and of those not run by design behind it; a red
+step, a step it could not run, or a job stopped at its `timeout-minutes` end
+it with 1 and a last line opening with `red:` that names them. It takes a
+few minutes, the stock-take and the self-tests among the steps:
+
+    scripts/devloop-run-workflow .github/workflows/stock-take.yml
 
 **A change to one skill is a question about all of them.** How that is done is
 not written here — it is the third rule under "A field is not an answer to a
