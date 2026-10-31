@@ -1414,9 +1414,10 @@ September 2026, so `gh pr merge` is refused while it is pending or red; the
 entry of that date in `docs/roadmap.md` on the merge gate carries the setting
 and the merge sequence. Since 14 October 2026 four checks more are required,
 `hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
-and `(alpine)`, the second job of the same workflow, which runs the
-self-tests of the reader, of `bin/devloop-arm` and of
-`bin/devloop-auto-mode-question` and every hook once on each system, and
+and `(alpine)`, the second job of the same workflow, which runs every
+self-test under `bin/` since 23 October 2026, until then those of the reader,
+of `bin/devloop-arm` and of `bin/devloop-auto-mode-question`, and every hook
+once on each system, and
 since the addendum of 22 October 2026 to the roadmap entry of that day on
 the question after a refusal feeds the install guard a counted refusal under
 `PermissionDenied` as well and is red where its record is missing, and since
@@ -1718,8 +1719,9 @@ type `edited` too, so that a title changed on an open pull request is read
 before it can be merged, at the cost of one run of the workflow per edit of
 the title, the body or the base. A commit's first line is not held by the
 workflow: a squash merge takes the title of the pull request, so the one
-title that lands is the one read. The check is not one of the nineteen
-under "Before a handover, run these".
+title that lands is the one read. The check is not one of the twenty
+under "Before a handover, run these", though the twentieth, since 31 October
+2026, runs it here with the workflow's other steps.
 
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
@@ -3780,7 +3782,7 @@ red answer has to be acted on, and only the diff says what differs.
 
 ## Before a handover, run these
 
-Nineteen checks that catch what a conversation loses. Each one has found a
+Twenty checks that catch what a conversation loses. Each one has found a
 real gap, or guards a mechanism that fails without a sound when nobody runs it.
 Every one of them has to run on the machine it is needed on: `head -n -1` is a
 GNU extension and does nothing on macOS but print an error, which is how a check
@@ -3809,7 +3811,7 @@ September 2026 such a run
 was held against the commit date of the check's line instead, which a squash
 merge re-dates, so that no run made before a merge survived it.
 
-**Nineteen checks, nineteen command blocks.** Count them, or this number
+**Twenty checks, twenty command blocks.** Count them, or this number
 drifts again. It drifted once already, and quietly: on 7 September 2026 one
 check was split into three blocks, one of them unreachable, so the checks went
 from eleven to twelve while this sentence stayed at eleven — and the change
@@ -3823,7 +3825,9 @@ at load took their place. It reads eighteen against eighteen since 28 September
 2026, when the check holding the install record's reader to the branch guard's
 resolution of the default branch came in. It reads nineteen against nineteen
 since 5 October 2026, when the check holding the two table guards' copy of the
-four status forms to the shared file came in.
+four status forms to the shared file came in. It reads twenty against twenty
+since 31 October 2026, when the run of the workflow's steps on this machine
+came in.
 
 Every skill on disk is registered, and every registered skill exists:
 
@@ -3980,6 +3984,29 @@ standing whole in each hook — `1` twice means both carry it unchanged:
 
     for f in hooks/post-tool-use-table-guard.sh hooks/pre-tool-use-table-guard.sh; do grep -cFx -f shared/status-forms.md "$f"; done
 
+The steps of the workflow run here as GitHub runs them, since 31 October
+2026. `scripts/devloop-run-workflow` reads `.github/workflows/stock-take.yml`
+and runs every `run:` block of its two jobs with the shell the file gives the
+step — `bash -e {0}` where the step and its job name none, `bash --noprofile
+--norc -eo pipefail {0}` under `shell: bash`, the commands of GitHub's page on
+the workflow syntax, quoted in the program's head with the sentences on
+`set -e` and `pipefail` — with `PR_TITLE` the head of the new entry the branch
+adds to `docs/roadmap.md`, and `GITHUB_WORKSPACE`, `RUNNER_OS` and
+`RUNNER_TEMP` as the runner sets them; it leaves out the two steps that
+describe the runner, "what the checkout holds" and the Alpine step, a step
+with `uses:` and no `run:`, and runs a step under an `if:` not at all and
+says so, red. So the tool, its self-test, the hooks step with every self-test
+under `bin/` and every handler, the two README steps and the title step run
+here before the pull request shows them, on this one system, a job with a
+matrix once; a step added to the file runs without a change to the program.
+It ends with 0 where every step did, and its last line opens with `green:`,
+the count of the steps run and of those not run by design behind it; a red
+step, a step it could not run, or a job stopped at its `timeout-minutes` end
+it with 1 and a last line opening with `red:` that names them. It takes a
+few minutes, the stock-take and the self-tests among the steps:
+
+    scripts/devloop-run-workflow .github/workflows/stock-take.yml
+
 **A change to one skill is a question about all of them.** How that is done is
 not written here — it is the third rule under "A field is not an answer to a
 question it was not asked", widened on 13 September 2026 to hold for any change
@@ -4035,8 +4062,11 @@ resuming on it is not by itself the defect. **What their word may not be is the
 evidence that the act succeeded.** Where the act has an outcome the run can read,
 the word releases it and the outcome decides; where what is being waited for is a
 decision of theirs, there is no outcome to read, the word is the thing itself,
-and resuming on it is the only possible form rather than a defect. Today's six
-lines fall out like this — six lines over six sites; nine over eight until 16
+and resuming on it is the only possible form rather than a defect. Today's seven
+lines fall out like this — seven lines over six sites since 28 October 2026,
+when `setup-checks` step 3 came to say, beside its handover, what the run
+reads once a form A command has run, and matches on two lines; six over six
+from 16 to 28 October 2026, nine over eight until 16
 October 2026, when the three merge handovers became the one text of
 `shared/merge-handover.md`, which this check reads once, in the shared file,
 for the three skills that insert it, and until then `setup-checks` matched on
@@ -4069,7 +4099,9 @@ where the main branch cannot be fetched or fast-forwarded:
   standing there putting the same question again, until the check is chosen
   off or the tool stands there, since the check of the branch of 21 October
   2026; until then the text of that day left the class `skipped (user)` on
-  a tool not standing there. And so is the fifth, the one
+  a tool not standing there, and since 28 October 2026 on a second line of
+  the same step, the sentence on what the run reads once a form A command
+  has run. And so is the fifth, the one
   line `shared/fetch-three-times.md` carries into the four skills that fetch
   before a cut, a task's base, after a merge, at the mark or before a
   rebase: the person clears what stood in the way — the connection or the

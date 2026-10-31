@@ -1,0 +1,749 @@
+#!/usr/bin/env python3
+"""devloop-run-workflow: the run: blocks of the steps of a workflow file, run
+here as GitHub runs them, on the one system this is started on.
+
+Usage
+    scripts/devloop-run-workflow [WORKFLOW]          every job and step of the
+                                                     file, by default
+                                                     .github/workflows/stock-take.yml,
+                                                     each run: block with the
+                                                     shell the file gives it
+    scripts/devloop-run-workflow --list [WORKFLOW]   the plan alone: every step
+                                                     with the command its shell
+                                                     makes of it and whether it
+                                                     runs here; nothing is run
+    scripts/devloop-run-workflow --self-test         every outcome once, in a
+                                                     throwaway directory outside
+                                                     the repository
+
+Exit 0 where every step that runs here ended with 0 and no step was left
+unrun but by design; 1 where a step ended otherwise than 0, was stopped at the
+job's timeout, or could not be run here; 2 where the file cannot be read as a
+workflow or the repository cannot be found. The last line says which: it opens
+with "green:" or with "red:".
+
+What runs, and what does not. Every step with a run: block, in the order of the
+file, job by job, except three kinds, each said in the output: a step with
+uses: and no run: (an action of the platform, nothing to run here); a step
+whose name is one of the two the order of 31 October 2026 left out, "what the
+checkout holds", which prints the runner's own tools and checkout, and "what
+the container needs, under Alpine alone", which installs bash, git and python3
+into the Alpine container with apk; and a step carrying an if: field, since
+this program evaluates no expression of the platform - such a step is not run
+and counts as red, so that a step added under a condition shows up here until
+this program learns its condition, the way the workflow's own hooks step goes
+red on an event it has no input for. A job with a strategy.matrix runs on
+GitHub once per entry of the matrix; here it runs once, on this system, and
+the output says so.
+
+The shell, from the file and from GitHub's docs. For every step the shell is
+the step's own shell: field, else the job's defaults.run.shell, else the
+workflow's defaults.run.shell, else none. GitHub's page "Workflow syntax for
+GitHub Actions" (docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax,
+read on 31 October 2026) says under jobs.<job_id>.steps[*].shell: "You can
+override the default shell settings in the runner's operating system and the
+job's default using the shell keyword", and gives for each shell the command
+run internally - with no shell given, on Linux and macOS, bash -e {0}, "The
+default shell on non-Windows platforms. Note that this runs a different
+command to when bash is specified explicitly. If bash is not found in the
+path, this is treated as sh."; for bash, bash --noprofile --norc -eo pipefail
+{0}, "The default shell on non-Windows platforms with a fallback to sh. When
+specifying a bash shell on Windows, the bash shell included with Git for
+Windows is used."; for sh, sh -e {0}, "The fallback behavior for non-Windows
+platforms if no shell is provided and bash is not found in the path."; for
+pwsh, pwsh -command ". '{0}'", "This is the default shell used on Windows";
+for python, python {0}. Under "Exit codes and error action preference": "By
+default, fail-fast behavior is enforced using set -e for both sh and bash",
+and "When shell: bash is specified, -o pipefail is also applied to enforce
+early exit from pipelines." Under jobs.<job_id>.defaults.run: "Use
+jobs.<job_id>.defaults.run to provide default shell and working-directory to
+all run steps in the job", and under defaults.run, "a default setting defined
+in a job will override a default setting that has the same name defined in a
+workflow". So a run: block of the job stock-take, which sets no shell, ends
+at the first command that fails and not at a failing command inside a
+pipeline, and one of the job hooks on every system, whose defaults.run.shell
+is bash, ends at either, the difference pull request #205 met on 25 October
+2026. {0} is the path of a file holding the block: GitHub writes the block
+into a temporary file and runs the command on it; here the file lies in a
+directory mktemp makes outside the repository, removed at the end. A shell
+this program does not run - cmd, powershell, or one it does not know - makes
+the step red with a line saying so; a custom shell, a command carrying {0}, is
+run as written.
+
+The environment. A step gets the environment this program was started in,
+and on top of it the env: maps of the workflow, the job and the step, the
+step's winning, with ${{ github.event.pull_request.title }} replaced by the
+head of the new entry the branch adds to docs/roadmap.md - the first line
+git diff origin/main...HEAD -- docs/roadmap.md adds that starts with "- **",
+read in the file to its closing "**", its lines joined with one space, the
+text between the markers, as the workflow's step on titles reads a head -
+and empty where the diff adds none, said in the output; any other
+${{ ... }} in an env: value or in a run: block leaves the step unrun and red,
+since nothing here stands in for the event. Three variables the runner sets
+and the steps read are set here too: GITHUB_WORKSPACE, the root of this
+repository, which is also every step's working directory unless a
+working-directory names another below it; RUNNER_OS, Linux, macOS or Windows
+for this system, as GitHub spells them; RUNNER_TEMP, the throwaway directory
+above. A job's timeout-minutes stops a step that runs past it, red, as
+GitHub stops the job.
+
+The file is read by this program's own reader of the YAML the workflows of
+this repository are written in: mappings and sequences by indentation, a
+sequence item opening a mapping on its own line, literal and folded block
+scalars with their chomping, quoted and plain scalars, flow sequences in
+brackets, comments outside block scalars; nothing else is needed for
+.github/workflows/stock-take.yml, and a form it does not read ends with 2
+and the line. It needs python3 and git and nothing else, and no GNU tool. The
+steps it runs need what they need on GitHub, python3 and git, and the self-test
+needs bash and sh on PATH.
+
+The self-test writes a workflow of its own and a throwaway repository with a
+new entry head on a branch, runs this program over it, and reads the outcomes:
+the default shell without pipefail against shell: bash with it on the same
+block, set -e ending a block at the first failing command, a step's own shell
+over the job's default, PR_TITLE out of the event, a block with a heredoc and
+blank lines, the three kinds of step not run, a shell this program cannot
+run, a job stopped at its timeout, a matrix job run once, --list running
+nothing, exit 1 and 0 on a red and a green file, exit 2 on a file that is no
+workflow; and that the real workflow file reads and carries the two names left
+out, so that the exclusion stays live. Nothing of it reaches GitHub.
+"""
+
+import os
+import re
+import shlex
+import shutil
+import subprocess
+import sys
+import tempfile
+
+EXCLUDED = ("what the checkout holds", "what the container needs, under Alpine alone")
+DEFAULT_WORKFLOW = ".github/workflows/stock-take.yml"
+# the commands of the docs, {0} the file; "none" the row for a step without a shell on Linux and macOS
+SHELLS = {
+    "none": "bash -e {0}",
+    "bash": "bash --noprofile --norc -eo pipefail {0}",
+    "sh": "sh -e {0}",
+    "pwsh": "pwsh -command \". '{0}'\"",
+    "python": "python {0}",
+}
+NOT_RUN_HERE = ("cmd", "powershell")
+EXTENSION = {"pwsh": ".ps1", "powershell": ".ps1", "python": ".py", "cmd": ".cmd"}
+TITLE_EXPR = re.compile(r"\$\{\{\s*github\.event\.pull_request\.title\s*\}\}")
+ANY_EXPR = re.compile(r"\$\{\{.*?\}\}")
+
+
+class YamlError(Exception):
+    pass
+
+
+# ---------------------------------------------------------------- the reader
+
+def read_yaml(text):
+    """The subset of YAML the workflows here are written in, as nested dicts,
+    lists and scalars."""
+    lines = text.split("\n")
+    pos = [0]
+
+    def indent_of(s):
+        return len(s) - len(s.lstrip(" "))
+
+    def skip_blank(i):
+        while i < len(lines) and (lines[i].strip() == "" or lines[i].lstrip().startswith("#")):
+            i += 1
+        return i
+
+    def scalar(raw, lineno):
+        s = raw.strip()
+        if s.startswith('"'):
+            m = re.match(r'"((?:[^"\\]|\\.)*)"\s*(#.*)?$', s)
+            if not m:
+                raise YamlError("line %d: a double-quoted scalar does not close" % lineno)
+            return bytes(m.group(1), "utf-8").decode("unicode_escape")
+        if s.startswith("'"):
+            m = re.match(r"'((?:[^']|'')*)'\s*(#.*)?$", s)
+            if not m:
+                raise YamlError("line %d: a single-quoted scalar does not close" % lineno)
+            return m.group(1).replace("''", "'")
+        cut = re.search(r"\s#", s)
+        if cut:
+            s = s[:cut.start()].rstrip()
+        if s.startswith("[") and s.endswith("]"):
+            inner = s[1:-1].strip()
+            return [scalar(x, lineno) for x in inner.split(",")] if inner else []
+        if s in ("true", "True"):
+            return True
+        if s in ("false", "False"):
+            return False
+        if s in ("null", "~", ""):
+            return None
+        if re.match(r"^-?[0-9]+$", s):
+            return int(s)
+        if re.match(r"^-?[0-9]+\.[0-9]+$", s):
+            return float(s)
+        return s
+
+    def block_scalar(header, key_indent, i):
+        """A | or > block after a key: the lines indented deeper than the key,
+        blank lines among them, to the first non-blank line that is not."""
+        m = re.match(r"^([|>])([+-]?)\s*(#.*)?$", header.strip())
+        if not m:
+            raise YamlError("line %d: a block scalar header this reader does not know: %s" % (i, header.strip()))
+        style, chomp = m.group(1), m.group(2)
+        body = []
+        block_indent = None
+        j = i
+        while j < len(lines):
+            raw = lines[j]
+            if raw.strip() == "":
+                body.append("")
+                j += 1
+                continue
+            ind = indent_of(raw)
+            if ind <= key_indent:
+                break
+            if block_indent is None:
+                block_indent = ind
+            if ind < block_indent:
+                raise YamlError("line %d: a line of a block scalar less indented than its first line" % (j + 1))
+            body.append(raw[block_indent:])
+            j += 1
+        while body and body[-1] == "":
+            body.pop()
+        if style == "|":
+            text = "\n".join(body)
+        else:
+            out, para = [], []
+            for l in body:
+                if l == "":
+                    out.append(" ".join(para))
+                    para = []
+                else:
+                    para.append(l)
+            out.append(" ".join(para))
+            text = "\n".join(out)
+        if chomp == "-":
+            return text, j
+        if chomp == "+":
+            return text + "\n" * (1 + (len(lines[i:j]) - len(body) if False else 1)), j
+        return text + "\n", j
+
+    def parse_block(i, indent):
+        i = skip_blank(i)
+        if i >= len(lines):
+            return None, i
+        if lines[i].lstrip().startswith("- ") or lines[i].strip() == "-":
+            return parse_seq(i, indent_of(lines[i]))
+        return parse_map(i, indent_of(lines[i]))
+
+    def parse_map(i, indent, first=None):
+        d = {}
+        while True:
+            i = skip_blank(i)
+            if i >= len(lines):
+                break
+            raw = lines[i]
+            ind = indent_of(raw)
+            if ind < indent:
+                break
+            if ind > indent:
+                raise YamlError("line %d: unexpected indentation" % (i + 1))
+            if raw.lstrip().startswith("- "):
+                break
+            m = re.match(r"^\s*([A-Za-z0-9_.\-]+):(?:\s+(.*))?$", raw)
+            if not m:
+                raise YamlError("line %d: not a key of a mapping: %s" % (i + 1, raw.strip()))
+            key, rest = m.group(1), (m.group(2) or "")
+            if rest.strip().startswith("|") or rest.strip().startswith(">"):
+                val, i = block_scalar(rest, ind, i + 1)
+            elif rest.strip() == "" or rest.strip().startswith("#"):
+                nxt = skip_blank(i + 1)
+                if nxt < len(lines) and indent_of(lines[nxt]) > ind:
+                    val, i = parse_block(nxt, indent_of(lines[nxt]))
+                elif nxt < len(lines) and indent_of(lines[nxt]) == ind and lines[nxt].lstrip().startswith("- "):
+                    val, i = parse_seq(nxt, ind)
+                else:
+                    val, i = None, i + 1
+            else:
+                val, i = scalar(rest, i + 1), i + 1
+            if key in d:
+                raise YamlError("line %d: the key %s stands twice in one mapping" % (i, key))
+            d[key] = val
+        return d, i
+
+    def parse_seq(i, indent):
+        items = []
+        while True:
+            i = skip_blank(i)
+            if i >= len(lines):
+                break
+            raw = lines[i]
+            ind = indent_of(raw)
+            if ind != indent or not (raw.lstrip().startswith("- ") or raw.strip() == "-"):
+                if ind > indent:
+                    raise YamlError("line %d: unexpected indentation in a sequence" % (i + 1))
+                break
+            rest = raw.lstrip()[1:].lstrip()
+            if rest == "" or rest.startswith("#"):
+                val, i = parse_block(i + 1, 0)
+                items.append(val)
+                continue
+            if re.match(r"^[A-Za-z0-9_.\-]+:(\s|$)", rest):
+                item_indent = ind + (len(raw.lstrip()) - len(rest))
+                # the first key stands on the item's line: parse the mapping as if the line were indented at item_indent
+                lines[i] = " " * item_indent + rest
+                val, i = parse_map(i, item_indent)
+                items.append(val)
+                continue
+            items.append(scalar(rest, i + 1))
+            i += 1
+        return items, i
+
+    value, i = parse_block(0, 0)
+    i = skip_blank(i)
+    if i < len(lines):
+        raise YamlError("line %d: text after the document this reader could not place: %s" % (i + 1, lines[i].strip()))
+    return value
+
+
+# ---------------------------------------------------------------- the plan
+
+def this_system():
+    s = sys.platform
+    if s.startswith("win") or s == "cygwin" or s == "msys":
+        return "Windows"
+    if s == "darwin":
+        return "macOS"
+    return "Linux"
+
+
+def shell_for(step, job, wf):
+    for scope in (step, (job.get("defaults") or {}).get("run") or {}, (wf.get("defaults") or {}).get("run") or {}):
+        if isinstance(scope, dict) and scope.get("shell"):
+            return str(scope["shell"]), "the step" if scope is step else ("the job's defaults.run.shell" if scope is ((job.get("defaults") or {}).get("run") or {}) else "the workflow's defaults.run.shell")
+    return None, "none given"
+
+
+def command_for(shell, system):
+    """The command GitHub's table gives, with {0}, and a reason where none runs here."""
+    if shell is None:
+        if system == "Windows":
+            return None, "no shell given, and the default on Windows is pwsh, which this program does not run"
+        if shutil.which("bash"):
+            return SHELLS["none"], None
+        return SHELLS["sh"], None
+    if shell in NOT_RUN_HERE:
+        return None, "the shell %s is not run here" % shell
+    if shell in SHELLS:
+        return SHELLS[shell], None
+    if "{0}" in shell:
+        return shell, None
+    return None, "a shell this program does not know: %s" % shell
+
+
+def working_dir(step, job, wf, root):
+    d = None
+    for scope in ((wf.get("defaults") or {}).get("run") or {}, (job.get("defaults") or {}).get("run") or {}, step):
+        if isinstance(scope, dict) and scope.get("working-directory"):
+            d = str(scope["working-directory"])
+    return os.path.join(root, d) if d else root
+
+
+def env_maps(step, job, wf):
+    env = {}
+    for scope in (wf, job, step):
+        m = scope.get("env") if isinstance(scope, dict) else None
+        if isinstance(m, dict):
+            for k, v in m.items():
+                env[str(k)] = "" if v is None else str(v)
+    return env
+
+
+def plan(wf, system):
+    """One record per step: job id, step, name, shell, command or the reason it does not run."""
+    jobs = wf.get("jobs")
+    if not isinstance(jobs, dict) or not jobs:
+        raise YamlError("the file has no jobs")
+    out = []
+    for job_id, job in jobs.items():
+        if not isinstance(job, dict) or not isinstance(job.get("steps"), list):
+            raise YamlError("the job %s has no steps" % job_id)
+        matrix = ((job.get("strategy") or {}).get("matrix") or {}) if isinstance(job.get("strategy"), dict) else {}
+        n_matrix = len(matrix.get("include") or []) if isinstance(matrix, dict) else 0
+        timeout = job.get("timeout-minutes")
+        for k, step in enumerate(job["steps"]):
+            if not isinstance(step, dict):
+                raise YamlError("step %d of the job %s is not a mapping" % (k + 1, job_id))
+            name = str(step.get("name") or ("uses: " + str(step["uses"]) if step.get("uses") else (str(step.get("run") or "").strip().split("\n")[0] or "step %d" % (k + 1))))
+            rec = {"job": job_id, "name": name, "matrix": n_matrix, "timeout": timeout, "run": step.get("run"), "step": step, "job_obj": job}
+            if step.get("run") is None:
+                rec["skip"] = "no run: block (uses: %s)" % step.get("uses") if step.get("uses") else "no run: block"
+            elif name in EXCLUDED:
+                rec["skip"] = "left out by the order of 31 October 2026"
+            elif "if" in step:
+                rec["red"] = "carries an if: field, %s, which this program does not evaluate" % step["if"]
+            else:
+                shell, source = shell_for(step, job, wf)
+                cmd, why = command_for(shell, system)
+                rec["shell"], rec["source"], rec["command"] = shell, source, cmd
+                if why:
+                    rec["red"] = why
+            out.append(rec)
+    return out
+
+
+# ---------------------------------------------------------------- the run
+
+def entry_head(root):
+    """The head of the new entry the branch adds to docs/roadmap.md, as the
+    workflow's step on titles reads one; None where the diff adds none."""
+    diff = subprocess.run(["git", "diff", "origin/main...HEAD", "--", "docs/roadmap.md"], cwd=root, capture_output=True, text=True)
+    if diff.returncode != 0:
+        return None, "git diff origin/main...HEAD did not answer: %s" % diff.stderr.strip()
+    added = [l[1:] for l in diff.stdout.splitlines() if l.startswith("+- **")]
+    if not added:
+        return None, None
+    try:
+        lines = open(os.path.join(root, "docs/roadmap.md"), encoding="utf-8").read().split("\n")
+    except OSError as e:
+        return None, "docs/roadmap.md cannot be read: %s" % e
+    for i, line in enumerate(lines):
+        if line.startswith("- **") and line in added:
+            text = line[4:]
+            j = i
+            while "**" not in text and j + 1 < len(lines):
+                j += 1
+                text += " " + lines[j].strip()
+            return text.split("**", 1)[0], None
+    return None, "the added head is not in the file"
+
+
+def run_step(rec, root, tmp, base_env, title):
+    """Runs one step; returns (exit code or None, output, note)."""
+    step, job, wf_env = rec["step"], rec["job_obj"], rec["wf_env"]
+    env = dict(base_env)
+    for k, v in env_maps(step, job, {"env": wf_env}).items():
+        if TITLE_EXPR.search(v):
+            v = TITLE_EXPR.sub(title or "", v)
+        if ANY_EXPR.search(v):
+            return None, "", "env %s carries an expression this program does not resolve: %s" % (k, v)
+        env[k] = v
+    text = str(rec["run"])
+    if ANY_EXPR.search(text):
+        return None, "", "the run: block carries an expression this program does not resolve: %s" % ANY_EXPR.search(text).group(0)
+    ext = EXTENSION.get(rec["shell"] or "", "")
+    fd, path = tempfile.mkstemp(prefix="step.", suffix=ext, dir=tmp)
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        f.write(text if text.endswith("\n") else text + "\n")
+    argv = [a.replace("{0}", path) for a in shlex.split(rec["command"])]
+    cwd = working_dir(step, job, {"defaults": rec["wf_defaults"]}, root)
+    timeout = rec["timeout"]
+    try:
+        p = subprocess.run(argv, cwd=cwd, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=float(timeout) * 60 if timeout else None)
+    except subprocess.TimeoutExpired as e:
+        out = e.stdout.decode("utf-8", "replace") if e.stdout else ""
+        return None, out, "stopped at the job's timeout of %s minutes, as GitHub stops the job" % timeout
+    except OSError as e:
+        return None, "", "the shell could not be started: %s" % e
+    return p.returncode, p.stdout.decode("utf-8", "replace"), None
+
+
+def main(argv):
+    listing = False
+    args = list(argv[1:])
+    if args and args[0] == "--self-test":
+        return selftest()
+    if args and args[0] == "--list":
+        listing = True
+        args = args[1:]
+    if len(args) > 1:
+        sys.stderr.write("usage: devloop-run-workflow [--list] [WORKFLOW] | --self-test\n")
+        return 2
+    here = os.path.dirname(os.path.abspath(__file__))
+    root = os.environ.get("DEVLOOP_RUN_WORKFLOW_ROOT") or os.path.dirname(here)
+    path = args[0] if args else os.path.join(root, DEFAULT_WORKFLOW)
+    if not os.path.isabs(path):
+        path = os.path.abspath(path)
+    try:
+        text = open(path, encoding="utf-8").read()
+    except OSError as e:
+        sys.stderr.write("the workflow file cannot be read: %s\n" % e)
+        return 2
+    try:
+        wf = read_yaml(text)
+        if not isinstance(wf, dict):
+            raise YamlError("the file is no mapping at the top")
+        steps = plan(wf, this_system())
+    except YamlError as e:
+        sys.stderr.write("not read as a workflow: %s\n" % e)
+        return 2
+    system = this_system()
+    print("devloop-run-workflow: %s, run here on %s (%s); a job with a matrix runs once here" % (os.path.relpath(path, root) if path.startswith(root) else path, system, " ".join(os.uname()[:3]) if hasattr(os, "uname") else sys.platform))
+    title, why = entry_head(root)
+    if why:
+        print("PR_TITLE: not read: %s" % why)
+    elif title is None:
+        print("PR_TITLE: empty, git diff origin/main...HEAD adds no entry head to docs/roadmap.md")
+    else:
+        print("PR_TITLE: %s" % title)
+    for rec in steps:
+        rec["wf_env"] = wf.get("env") if isinstance(wf.get("env"), dict) else {}
+        rec["wf_defaults"] = wf.get("defaults") if isinstance(wf.get("defaults"), dict) else {}
+    if listing:
+        for rec in steps:
+            what = rec.get("skip") and "not run: " + rec["skip"] or rec.get("red") and "red: " + rec["red"] or "runs as %s (%s)" % (rec["command"], rec["source"])
+            print("%s / %s: %s%s" % (rec["job"], rec["name"], what, "; a matrix of %d, run once here" % rec["matrix"] if rec["matrix"] else ""))
+        print("listed, nothing run")
+        return 0
+    tmp = tempfile.mkdtemp(prefix="devloop-run-workflow.")
+    base_env = dict(os.environ)
+    base_env.update({"GITHUB_WORKSPACE": root, "RUNNER_OS": system, "RUNNER_TEMP": tmp})
+    green, red, skipped = 0, [], {}
+    last_job = None
+    try:
+        for rec in steps:
+            if rec["job"] != last_job:
+                last_job = rec["job"]
+                if rec["matrix"]:
+                    print("== job %s: a matrix of %d systems on GitHub; here once, on %s" % (rec["job"], rec["matrix"], system))
+            if rec.get("skip"):
+                print("== %s / %s: not run, %s" % (rec["job"], rec["name"], rec["skip"]))
+                skipped[rec["skip"]] = skipped.get(rec["skip"], 0) + 1
+                continue
+            if rec.get("red"):
+                print("== %s / %s: not run, %s" % (rec["job"], rec["name"], rec["red"]))
+                red.append("%s / %s: %s" % (rec["job"], rec["name"], rec["red"]))
+                continue
+            print("== %s / %s, as %s (%s)" % (rec["job"], rec["name"], rec["command"], rec["source"]))
+            sys.stdout.flush()
+            rc, out, note = run_step(rec, root, tmp, base_env, title)
+            if out:
+                sys.stdout.write(out if out.endswith("\n") else out + "\n")
+            if note:
+                print("-- not finished: %s" % note)
+                red.append("%s / %s: %s" % (rec["job"], rec["name"], note))
+            elif rc != 0:
+                print("-- exit %d" % rc)
+                red.append("%s / %s: exit %d" % (rec["job"], rec["name"], rc))
+            else:
+                print("-- exit 0")
+                green += 1
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    by_design = "; ".join("%s: %d" % (k, v) for k, v in skipped.items()) or "none"
+    if red:
+        print("red: %d of %d steps run did not end with 0 or did not run here (%s); not run by design: %s" % (len(red), len(red) + green, "; ".join(red), by_design))
+        return 1
+    print("green: %d steps run, every one ended with 0; not run by design: %s" % (green, by_design))
+    return 0
+
+
+# ---------------------------------------------------------------- self-test
+
+TEST_WORKFLOW = """# a workflow for the self-test of devloop-run-workflow
+name: self-test
+
+on:
+  pull_request:
+    branches: [main]
+
+env:
+  FROM_WORKFLOW: wf
+
+jobs:
+  plain:
+    name: plain
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: what the checkout holds
+        run: |
+          echo "never run here"
+          exit 7
+
+      - name: green
+        run: echo green-ran
+
+      # a comment between steps
+      - name: a pipe without pipefail
+        run: false | true
+
+      - name: set -e stops the block
+        run: |
+          false
+          echo after-false
+
+      - name: a sh step
+        shell: sh
+        run: echo sh-ran
+
+      - name: the title out of the event
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          FROM_STEP: st
+        run: |
+          printf 'title=%s\\n' "$PR_TITLE"
+          printf 'wf=%s step=%s\\n' "$FROM_WORKFLOW" "$FROM_STEP"
+          printf 'os=%s ws=%s\\n' "$RUNNER_OS" "${GITHUB_WORKSPACE##*/}"
+
+      - name: a heredoc with blank lines and a hash
+        run: |
+          python3 - <<'PY'
+          x = 1
+
+          # not a comment of the workflow
+          print("heredoc", x + 1)
+          PY
+
+      - name: under a condition
+        if: matrix.system == 'alpine'
+        run: echo conditional
+
+      - name: what the container needs, under Alpine alone
+        if: matrix.system == 'alpine'
+        shell: sh
+        run: exit 9
+
+  with-bash:
+    name: with bash
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - system: one
+            runner: ubuntu-latest
+          - system: two
+            runner: macos-latest
+    timeout-minutes: TIMEOUT
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: a pipe with pipefail
+        run: false | true
+
+      - name: the step's shell over the job's
+        shell: sh
+        run: echo step-shell
+
+      - name: a shell this program does not know
+        shell: fish
+        run: echo fish
+
+      - name: an expression in the block
+        run: echo ${{ matrix.system }}
+
+      - name: past the timeout
+        run: sleep 30
+"""
+
+
+def selftest():
+    import json
+    ok = [True]
+    n = [0]
+
+    def case(name, cond, detail=""):
+        n[0] += 1
+        if cond:
+            print("ok   " + name)
+        else:
+            ok[0] = False
+            print("FAIL " + name + (": " + detail if detail else ""))
+
+    T = tempfile.mkdtemp(prefix="devloop-run-workflow-selftest.")
+    try:
+        # the reader
+        y = read_yaml("a: 1\nb:\n  - x: 'q''q'\n    y: \"t\\n\"\n  - plain text # c\nc: |\n  l1\n\n  l2\nd: >-\n  f1\n  f2\n\n  f3\ne: [p, q]\nf: true\n")
+        case("the reader: ints, quotes, a sequence of mappings, literal and folded blocks, a flow sequence, a boolean",
+             y == {"a": 1, "b": [{"x": "q'q", "y": "t\n"}, "plain text"], "c": "l1\n\nl2\n", "d": "f1 f2\nf3", "e": ["p", "q"], "f": True}, json.dumps(y))
+        for bad, word in (("a: |x\n  l\n", "block scalar header"), ("a:\n  b: 1\n c: 2\n", "indentation"), ("a: 1\na: 2\n", "twice")):
+            try:
+                read_yaml(bad)
+                case("the reader refuses: " + word, False, "read without an error")
+            except YamlError as e:
+                case("the reader refuses: " + word, word in str(e), str(e))
+        case("the shell table: none, bash, sh, custom, unknown, cmd",
+             command_for(None, "Linux")[0] == "bash -e {0}" and command_for("bash", "Linux")[0] == SHELLS["bash"] and command_for("sh", "macOS")[0] == "sh -e {0}"
+             and command_for("zsh -e {0}", "Linux")[0] == "zsh -e {0}" and command_for("fish", "Linux")[0] is None and command_for("cmd", "Windows")[0] is None
+             and command_for(None, "Windows")[0] is None)
+        # a throwaway repository with origin/main and a branch that adds an entry head
+        repo = os.path.join(T, "repo")
+        os.makedirs(os.path.join(repo, "docs"))
+        git = ["git", "-c", "user.name=devloop-selftest", "-c", "user.email=selftest@example.invalid"]
+        subprocess.run(["git", "init", "-q", "-b", "main", repo], check=True)
+        open(os.path.join(repo, "docs/roadmap.md"), "w").write("# r\n\n## Known gaps\n\n- **An old head.** text\n")
+        subprocess.run(git + ["-C", repo, "add", "."], check=True)
+        subprocess.run(git + ["-C", repo, "commit", "-q", "-m", "init"], check=True)
+        subprocess.run(["git", "-C", repo, "update-ref", "refs/remotes/origin/main", "main"], check=True)
+        subprocess.run(["git", "-C", repo, "checkout", "-q", "-b", "work"], check=True)
+        open(os.path.join(repo, "docs/roadmap.md"), "a").write("- **A new head that\n  wraps.** more text\n")
+        subprocess.run(git + ["-C", repo, "add", "."], check=True)
+        subprocess.run(git + ["-C", repo, "commit", "-q", "-m", "entry"], check=True)
+        case("the entry head: read to its closing ** across a line break", entry_head(repo) == ("A new head that wraps.", None), repr(entry_head(repo)))
+        wf = os.path.join(T, "wf.yml")
+        open(wf, "w").write(TEST_WORKFLOW.replace("TIMEOUT", "0.02"))
+        me = os.path.abspath(__file__)
+        env = dict(os.environ, DEVLOOP_RUN_WORKFLOW_ROOT=repo)
+        p = subprocess.run([sys.executable, me, wf], env=env, capture_output=True, text=True, timeout=120)
+        out = p.stdout
+        case("a red file ends with 1 and a last line opening with red:", p.returncode == 1 and out.rstrip().split("\n")[-1].startswith("red: "), out[-400:])
+        case("PR_TITLE out of the event: the new head, printed first and reaching the step", "PR_TITLE: A new head that wraps." in out and "title=A new head that wraps." in out, out[:600])
+        case("the workflow's env and the step's env reach the step, with RUNNER_OS and GITHUB_WORKSPACE", "wf=wf step=st" in out and ("os=%s ws=repo" % this_system()) in out, out)
+        case("a step without a shell runs as bash -e {0}", "/ green, as bash -e {0} (none given)" in out and "green-ran" in out, out)
+        case("without pipefail a failing pipe passes", "plain / a pipe without pipefail, as bash -e {0}" in out and out.split("plain / a pipe without pipefail")[1].split("== ")[0].strip().endswith("-- exit 0"), out)
+        case("set -e ends the block at the first failing command", "after-false" not in out and "plain / set -e stops the block" in out and out.split("plain / set -e stops the block")[1].split("== ")[0].strip().endswith("-- exit 1"), out)
+        case("a sh step runs as sh -e {0}", "/ a sh step, as sh -e {0} (the step)" in out and "sh-ran" in out, out)
+        case("a heredoc with blank lines and a hash line reaches the shell whole", "heredoc 2" in out, out)
+        case("uses: without run: not run", "uses: actions/checkout@v7: not run, no run: block (uses: actions/checkout@v7)" in out, out)
+        case("the two names of the order left out, before and with an if:", "what the checkout holds: not run, left out by the order" in out and "under Alpine alone: not run, left out by the order" in out and "never run here" not in out, out)
+        case("a step under an if: not run and red", "under a condition: not run, carries an if: field, matrix.system == 'alpine'" in out and "under a condition: carries an if:" in out.rstrip().split("\n")[-1], out)
+        case("a matrix job said to run once here", "== job with-bash: a matrix of 2 systems on GitHub; here once" in out, out)
+        case("the job's defaults.run.shell: with pipefail the same pipe fails", "with-bash / a pipe with pipefail, as bash --noprofile --norc -eo pipefail {0} (the job's defaults.run.shell)" in out and out.split("with-bash / a pipe with pipefail")[1].split("== ")[0].strip().endswith("-- exit 1"), out)
+        case("the step's shell over the job's default", "/ the step's shell over the job's, as sh -e {0} (the step)" in out and "step-shell" in out, out)
+        case("a shell this program does not know: red, said", "a shell this program does not know: fish" in out, out)
+        case("an expression in the block: not run, red", "the run: block carries an expression this program does not resolve: ${{ matrix.system }}" in out, out)
+        case("a step past the job's timeout: stopped, red", "stopped at the job's timeout of 0.02 minutes" in out, out)
+        last = out.rstrip().split("\n")[-1]
+        case("the last line counts the red steps and those not run by design", last.startswith("red: 6 of 12 steps run did not end with 0 or did not run here (") and "not run by design: no run: block (uses: actions/checkout@v7): 1; left out by the order of 31 October 2026: 2" in last, last)
+        p = subprocess.run([sys.executable, me, "--list", wf], env=env, capture_output=True, text=True, timeout=60)
+        case("--list prints the plan and runs nothing", p.returncode == 0 and p.stdout.rstrip().endswith("listed, nothing run") and "green-ran" not in p.stdout and "plain / green: runs as bash -e {0} (none given)" in p.stdout, p.stdout[-300:])
+        green_wf = os.path.join(T, "green.yml")
+        open(green_wf, "w").write("jobs:\n  g:\n    runs-on: ubuntu-latest\n    steps:\n      - name: one\n        run: echo one\n      - name: two\n        shell: bash\n        run: |\n          echo two\n")
+        p = subprocess.run([sys.executable, me, green_wf], env=env, capture_output=True, text=True, timeout=60)
+        case("a green file: exit 0, the last line green: 2 steps run", p.returncode == 0 and p.stdout.rstrip().split("\n")[-1] == "green: 2 steps run, every one ended with 0; not run by design: none", p.stdout[-300:])
+        open(os.path.join(T, "none.yml"), "w").write("name: x\n")
+        p = subprocess.run([sys.executable, me, os.path.join(T, "none.yml")], env=env, capture_output=True, text=True, timeout=60)
+        case("a file without jobs: exit 2, not read as a workflow", p.returncode == 2 and "not read as a workflow: the file has no jobs" in p.stderr, p.stderr)
+        p = subprocess.run([sys.executable, me, os.path.join(T, "missing.yml")], env=env, capture_output=True, text=True, timeout=60)
+        case("a missing file: exit 2", p.returncode == 2 and "cannot be read" in p.stderr, p.stderr)
+        p = subprocess.run([sys.executable, me, "a", "b"], env=env, capture_output=True, text=True, timeout=60)
+        case("two arguments: usage, exit 2", p.returncode == 2 and p.stderr.startswith("usage:"), p.stderr)
+        # the real workflow reads, and the exclusion stays live
+        real = os.path.join(os.path.dirname(os.path.dirname(me)), DEFAULT_WORKFLOW)
+        try:
+            real_wf = read_yaml(open(real, encoding="utf-8").read())
+            steps = plan(real_wf, this_system())
+            names = [r["name"] for r in steps]
+            case("the real workflow reads: jobs stock-take and hooks-on-every-system, every step with a name or uses", list(real_wf["jobs"]) == ["stock-take", "hooks-on-every-system"] and all(names), repr(names))
+            case("the two names the order left out stand in the real workflow", all(any(nm == e for nm in names) for e in EXCLUDED), repr(names))
+            case("in the real workflow the job stock-take runs as bash -e {0} and hooks on every system as bash with pipefail",
+                 all(r.get("command") == "bash -e {0}" for r in steps if r["job"] == "stock-take" and r.get("command")) and all(r.get("command") == SHELLS["bash"] for r in steps if r["job"] == "hooks-on-every-system" and r.get("command")), repr([(r["job"], r.get("command")) for r in steps]))
+            case("the real workflow's title step carries the event's title in its env", any(TITLE_EXPR.search(str(((r["step"].get("env") or {}).get("PR_TITLE") or ""))) for r in steps), "")
+        except (OSError, YamlError) as e:
+            case("the real workflow reads", False, str(e))
+    finally:
+        shutil.rmtree(T, ignore_errors=True)
+    if ok[0]:
+        print("SELF-TEST PASSED: %d cases" % n[0])
+        return 0
+    print("SELF-TEST FAILED")
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

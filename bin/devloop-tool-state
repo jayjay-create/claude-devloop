@@ -150,6 +150,11 @@
 # and no GNU tool; .github/workflows/stock-take.yml runs it with every
 # self-test under bin/ on four systems.
 set -u
+# npm prefix -g is asked with npm_config_logs_max=0, since 31 October 2026, as
+# the install guard asks it: npm writes a debug log under ~/.npm/_logs at every
+# command unless logs-max is 0, and a program that only reads writes nothing
+# outside the project; the variable reaches npm alone
+export npm_config_logs_max=0
 me=devloop-tool-state
 
 usage() { echo "$me: $1" >&2; exit 2; }
