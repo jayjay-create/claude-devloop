@@ -557,9 +557,9 @@ alone with its two lines, and the person's `! brew install yq` after the no
 was taken up in the same session, the run closing the issue inside step 3
 with a comment naming a start that did not happen, so that the closing at
 the next start was never walked; three new defects, the reader on `$'\xHH'`
-and a lens writing into the project among them, and eight defects met again,
-three of them not held; whether the milestone is reached that entry does not
-decide, the person does.
+and a lens writing into the project among them, seven defects and one open
+point met again, three of the defects not held; whether the milestone is
+reached that entry does not decide, the person does.
 On 30 October 2026 part 3 of the rebuild was built, the roadmap entry of
 that date on the install: the person chose the second reading of the first
 new defect of 29 October 2026, so that the command typed with `!` after a no
@@ -585,7 +585,7 @@ to close the issue by hand in start-work and Claude Code's classifier had
 refused it; the merge was handed over twice for an armed pull request
 GitHub merged within ten seconds; the prompt to the build subagent carried
 the run's own words on installing; four new defects, recorded and not
-built, one of them on the install path. Whether milestone 3 is reached that
+built, two of them of milestone 3. Whether milestone 3 is reached that
 entry does not decide; the person does.
 On 30 October 2026 part 4 of the rebuild was built, the roadmap entry of
 that date on the start reading the install issues: `start-work` runs the

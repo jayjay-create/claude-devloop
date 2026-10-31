@@ -1414,9 +1414,10 @@ September 2026, so `gh pr merge` is refused while it is pending or red; the
 entry of that date in `docs/roadmap.md` on the merge gate carries the setting
 and the merge sequence. Since 14 October 2026 four checks more are required,
 `hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
-and `(alpine)`, the second job of the same workflow, which runs the
-self-tests of the reader, of `bin/devloop-arm` and of
-`bin/devloop-auto-mode-question` and every hook once on each system, and
+and `(alpine)`, the second job of the same workflow, which runs every
+self-test under `bin/` since 23 October 2026, until then those of the reader,
+of `bin/devloop-arm` and of `bin/devloop-auto-mode-question`, and every hook
+once on each system, and
 since the addendum of 22 October 2026 to the roadmap entry of that day on
 the question after a refusal feeds the install guard a counted refusal under
 `PermissionDenied` as well and is red where its record is missing, and since
@@ -4035,8 +4036,11 @@ resuming on it is not by itself the defect. **What their word may not be is the
 evidence that the act succeeded.** Where the act has an outcome the run can read,
 the word releases it and the outcome decides; where what is being waited for is a
 decision of theirs, there is no outcome to read, the word is the thing itself,
-and resuming on it is the only possible form rather than a defect. Today's six
-lines fall out like this — six lines over six sites; nine over eight until 16
+and resuming on it is the only possible form rather than a defect. Today's seven
+lines fall out like this — seven lines over six sites since 28 October 2026,
+when `setup-checks` step 3 came to say, beside its handover, what the run
+reads once a form A command has run, and matches on two lines; six over six
+from 16 to 28 October 2026, nine over eight until 16
 October 2026, when the three merge handovers became the one text of
 `shared/merge-handover.md`, which this check reads once, in the shared file,
 for the three skills that insert it, and until then `setup-checks` matched on
@@ -4069,7 +4073,9 @@ where the main branch cannot be fetched or fast-forwarded:
   standing there putting the same question again, until the check is chosen
   off or the tool stands there, since the check of the branch of 21 October
   2026; until then the text of that day left the class `skipped (user)` on
-  a tool not standing there. And so is the fifth, the one
+  a tool not standing there, and since 28 October 2026 on a second line of
+  the same step, the sentence on what the run reads once a form A command
+  has run. And so is the fifth, the one
   line `shared/fetch-three-times.md` carries into the four skills that fetch
   before a cut, a task's base, after a merge, at the mark or before a
   rebase: the person clears what stood in the way — the connection or the

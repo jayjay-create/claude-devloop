@@ -36472,7 +36472,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   notes saying so. `skills/setup-checks/SKILL.md` lines 1106 to 1109 and
   1188 to 1215 and `shared/install-not-through.md` lines 15 to 23 describe
   the new wording; and with this entry `README.md` lines 8, 272 and 280 to
-  290, `docs/skill-conventions.md` lines 2375 to 2388, 2425 to 2448, 2751 to
+  290, `docs/skill-conventions.md` lines 2378 to 2388, 2425 to 2448, 2751 to
   2762 and 3199 to 3217, and `docs/plan.md` lines 421 to 423, 436 to 438,
   468 to 471 and 959 to 960. For the closing runs of the entry at line
   35286: in run 2a the question on the rule comes at the setup, since the
@@ -36737,7 +36737,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   planning. Then, in a second terminal, all of it shown: the install guard
   of the installed 0.157.0, `hooks/pre-tool-use-install-guard.sh`, with
   `CLAUDE_PROJECT_DIR` on the project, was given on stdin the input of the
-  measurement of 22 October 2026, lines 34718 to 34747 of this file, for
+  measurement of 22 October 2026, lines 34719 to 34747 of this file, for
   `brew install yq`: `hook_event_name` `PermissionDenied`, `permission_mode`
   `auto`, `reason` "The server-side auto mode classifier judged this action
   dangerous (it gave no explanation)", `tool_input.command` `brew install
@@ -37110,7 +37110,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   roughly how many rounds you expect", `plan-work` expanded 936, said in no
   round of runs 2a, 2b, 3a and 4, where run 1 said it at #262, „ich rechne
   mit ca. 2 Runden“; in run 1 the close of the setup, `setup-project`
-  expanded 1795 to 1812, reached no message, the run going from „Pull
+  expanded 1795 to 1815, reached no message, the run going from „Pull
   Request ist gemergt“ at #190 to the planning at #210 and the next text at
   #328 carrying none of it; and the spec's number, `plan-work` expanded 1459,
   and the split as a numbered list, `cut-into-tasks` expanded 513 to 516,
@@ -37193,7 +37193,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   #503 itself, no skill loaded, where `build-work` expanded 2588 to 2589
   says "call `setup-checks` for its step 8 alone, for that one question in
   its form for a start with `--auto`". The form, `setup-checks` expanded
-  2029 to 2031, asks for "the command as the program prints it, with its
+  2029 to 2032, asks for "the command as the program prints it, with its
   issue's number", the wording approved on 22 October 2026, line 34940,
   „(Issue #<Nummer>)“; #455 and #503 read „(Issue „Install yq for task
   #29“, hält die Aufgabe „npm run links:config sorts the links according to
@@ -37231,7 +37231,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the command stood without backticks.** #1546 of run 1: „Außerhalb des
   Projekts installiert der Lauf nichts. Du kannst es selbst installieren,
   mit diesem Befehl (…):“, and the command on a line of its own, without
-  backticks. `setup-checks` expanded 1058 to 1062: "that outside the project
+  backticks. `setup-checks` expanded 1059 to 1062: "that outside the project
   the run may install nothing; that they can install it themselves, with the
   command in backticks"; approved on 21 October 2026, lines 34157 to 34159,
   „außerhalb des Projekts darf ich nichts installieren. Du kannst es selbst
@@ -37560,7 +37560,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   instead, and its check is one that always passes on the machine that
   gates the merge. Which step enters the line where a task brings in such a
   tool after the workflow stands the texts do not name. The neighbour is
-  defect 11 of the entry of 19 October 2026, line 30196, a class filled as
+  defect 11 of the entry of 19 October 2026, line 30197, a class filled as
   not blocking for a tool missing on the platform's machine; here the class
   blocks and its tests are skipped. The plan names no milestone: the
   machine is the platform's and not the one milestone 3's permission is
@@ -37684,7 +37684,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   (1) Defects 7 and 2, the install rule and the build subagent. The build
   subagent gets the install rule by text alone: `build-work` step 3 hands
   it point 7 as a further rule, beside the four it reads nowhere else,
-  expanded 1073 to 1093, of which point 7, expanded 1127 to 1160, is none,
+  expanded 1073 to 1093, of which point 7, expanded 1127 to 1191, is none,
   with the record read off the main branch as the guard reads it; the main
   run writes no instruction of its own on installing into the prompt, where
   run 2a wrote "Install the Mermaid CLI as the vendor documents" and run 3a
@@ -37726,7 +37726,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   reads conditions 1, 2, 3 with the range of the tasks, 5, 6 and 7 and
   prints one line for each; `build-work` and `plan-work` call it where
   they read the conditions themselves today, `build-work` expanded 2454 to
-  2531 and `plan-work` expanded 1193 to 1211; and the guard on the mark,
+  2532 and `plan-work` expanded 1193 to 1211; and the guard on the mark,
   `hooks/pre-tool-use-mark-guard.sh`, calls it when the mark is written
   and blocks where 1, 2, 5, 6 or 7 does not hold or is not established, in
   place of its block on 6 and 7 at line 196, every query to GitHub bounded,
@@ -38191,7 +38191,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   installation line or, for Playwright, its dry run — and the handover and
   the report of the run's own install say what the command is backed by,
   the wording approved as (a) of the entry at line 37660 named and not
-  written out; lines 48 to 50, where a dry run backed the command, the
+  written out; lines 49 to 50, where a dry run backed the command, the
   folder it printed is the one read. The dry run was run once before the
   build, in `devloop-test-aa`, with `git status` empty before and after:
   `npx --no-install playwright install --dry-run webkit`, exit 0, printed
@@ -38378,7 +38378,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   sentence of step 0, "A refresh carries neither", names this as its one
   exception, expanded 740 to 743, lines 188 to 191. The rule behind it,
   `output-styles/devloop.md` lines 21 to 22 and `setup-project` expanded
-  536 to 538 at `e9deec2`, did not change.
+  536 to 539 at `e9deec2`, did not change.
   (b) Point 9 with defect 3, decision (3): the form of `setup-checks` step 8
   for a start with `--auto` names each refused install with its issue's
   number and not its title, though the program prints the title too, and
@@ -38408,7 +38408,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   (d) `docs/skill-conventions.md`: under "Only ask where there is something
   to decide", that the question put at a refresh says why it comes, lines
   609 to 615; under "Refer to work by its name", the one question that
-  names an issue by its number and why, lines 650 to 661. No line there
+  names an issue by its number and why, lines 650 to 660. No line there
   described the asking of the routes, so nothing changed for (c).
   (e) The version went from 0.159.0 to 0.160.0, "Registering a skill".
 
@@ -38550,11 +38550,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   after step 8 of `setup-checks` with a yes the seven are read again by the
   same call, lines 1576 to 1578. `plan-work` reads the five beside the mode
   before the question on the mode by one call without a range, expanded
-  1237 to 1249, lines 487 to 499. `shared/mode-set-up.md` lines 21 to 31
+  1237 to 1249, lines 487 to 499. `shared/mode-set-up.md` lines 21 to 30
   says what the guard reads now.
   (c) The guard on the mark, `hooks/pre-tool-use-mark-guard.sh`: where the
   mark is written in auto mode it calls the program without a range, lines
-  175 to 191, and blocks where 1, 2, 5, 6 or 7 does not hold or is not
+  175 to 190, and blocks where 1, 2, 5, 6 or 7 does not hold or is not
   established, wording (h) word for word at line 193, `<failures>` the
   program's lines of those that fail joined by "; ", and a condition the
   program printed no line for named so, since every failure to read is a
@@ -38910,7 +38910,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   which calls `setup-checks` for its step 8, and that step puts the
   question on the mode with auto-merge off as well,
   `skills/setup-checks/SKILL.md` lines 971 to 974, and on a yes switches
-  it on itself, lines 1429 to 1433. Condition 3 is the one condition that
+  it on itself, lines 1429 to 1432. Condition 3 is the one condition that
   only the build's call with the range reads, neither the guard on the
   mark nor the planning, and nothing step 8 can put right.
   Then the three runs are read off their logs, and it is decided whether
@@ -39217,7 +39217,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   37894 to 37898, that a decline leaves an issue with the command blocking
   the task and the run goes on with the next ready task —, the issue having
   been opened before the question, and the yes hangs on their word, „Sag
-  Bescheid“, the path read after it; `build-work` expanded 1180 to 1197. The
+  Bescheid“, the path read after it; `build-work` expanded 1207 to 1222. The
   handover came only after the person's hint, the task built against a
   stand-in and offered for landing first: defect 7 below. Defect 2, line
   37188, has its case under a yes and was not met.
@@ -39387,7 +39387,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   wurde nicht geschrieben und gebaut ist nichts.“, then what would help.
   No write of the mark after #364, no `setup-checks`, no second reading of
   a condition beside the call. `build-work` expanded 2562 to 2572, "Read
-  them by one call, on both routes", and 2549 to 2550, "Refuse to start
+  them by one call, on both routes", and 2550 to 2552, "Refuse to start
   unless all seven hold, and say which failed", are what the run did.
   Run 3 enters the row of line 30168 for the direct route.
   Run 3 met the case of defect c of the entry at line 36636, lines 37570 to
@@ -39447,7 +39447,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   not held. Defect d, line 37583, milestone 11: run 1 #1108 „Lokal
   nachziehen: Nach dem gemergten Pull Request ist nichts zu tun. `--count`
   braucht nichts Neues.“, run 2 #1349, neither a folder nor a command that
-  runs as it stands to try what was built, not held. Defect 15, line 37346:
+  runs as it stands to try what was built, not held. Defect 15, line 37345:
   run 1's brief #291 „Mode: a person is present (no unattended mark)“, run
   2's #294 to #296 „mark at ~/devloop-test-aa/.claude/unattended.local“, run
   3's #207 to #209 „mark .claude/unattended.local says plan“, held.
@@ -39571,7 +39571,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and #821 that `yq` is not installed; #1035 put „Soll das landen?“; the
   handover of `brew install yq` came at #1076, after the person's #1045, and
   the run said „ich hätte das vor der Frage sagen müssen“. `build-work`
-  expanded 1127 to 1197, point 7: under a no the install stays the user's to
+  expanded 1147 to 1387, point 7: under a no the install stays the user's to
   run, "Report what it installs, what it unblocks, and the exact command ...
   and both ways it can go, in the same breath", and "A tool the task needs
   is not replaced by a stand-in because the run takes itself not to be
@@ -39618,7 +39618,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   run cut the branch and wrote it through `bin/devloop-install-note put`,
   #578, and #52 says of that line „the standing fact the install hook wrote
   when htmlq was installed for this task“. `skills/build-work/SKILL.md`
-  lines 433 to 436 and 451 to 462: the subagent cuts a branch from the main
+  lines 433 to 436, 451 to 462 and 466: the subagent cuts a branch from the main
   branch first, and the install of point 7 is a step of the task's build, on
   that branch, where the hook writes the line; a report says what happened,
   "What the report says ... is what the whole output shows, and nothing
@@ -39772,7 +39772,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   unsorted“ and „no config file: yq is never called and nothing is
   appended“, 98 passed. The hook counted the attempt, „Checks are failing
   (attempt 1 of 3). Fix this before reporting done.“, writing
-  `.claude/check-attempts.local`, line 60 of the hook, exit 2; the message
+  `.claude/check-attempts.local`, line 51 of the hook, exit 2; the message
   reached the main run at #882, 17:52:19Z, as „Stop hook feedback“, the
   `stop_hook_summary` #883 carrying it as its one error. The main run
   answered at #886 with a text to the person: „Das ist kein Fehler von mir.
@@ -39960,8 +39960,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   again, wrapped by a script at 76 characters in the question field and 73
   under an answer, the no's description of 88 characters taking two lines
   where the one of 17 October 2026, 68 characters, took one, thirteen lines
-  of the fields where line 26670 measured twelve, inside the fourteen
-  `output-styles/devloop.md` lines 42 to 45 allow, so it fits, and
+  of the fields where line 26673 measured twelve, inside the fourteen
+  `output-styles/devloop.md` lines 44 to 47 allow, so it fits, and
   `setup-checks` lines 1082 to 1088 say so. `build-work` 1626, "that `--auto`
   sets it up", the refusal for conditions 6 and 7, whose approved wording of 6
   October 2026, lines 11063 to 11071, named the flag alone: left as it stood
@@ -40080,7 +40080,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **Defect c, the design line.** The should: the two descriptions read as
   approved on 24 October 2026, quoted under (c) of the entry at line 36636,
-  lines 36839 to 36843, the machine kept awake and no word on the design,
+  lines 36839 to 36844, the machine kept awake and no word on the design,
   and `plan-work` says so where its lines 425 to 428 said the costs, lines
   446 to 449 at `8669e5c`. It is built at `skills/plan-work/SKILL.md` lines 450
   to 461: the cost said in each description is the machine staying awake;
@@ -40199,7 +40199,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   read whether a tool stands: `grep -rn 'command -v' bin hooks` finds the
   stand-in checks of two self-tests and the install guard's read for `deno
   upgrade`, line 623, and the guard resolves the folders of its routes for
-  its own block, lines 1096 to 1103, inside the hook, callable by nothing.
+  its own block, lines 1095 to 1153, inside the hook, callable by nothing.
   Three forms, its head lines 1 to 141: `--planning TOOL ...`, which
   `plan-work` calls; `--build TOOL ...`, the call before the start of the
   build subagent; and `--installed COMMAND TOOL`, the read at the next
@@ -40513,7 +40513,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and the should behind it in `build-work` step 3 point 7, lines 564 to
   566 at `89932f8`, "and the run goes on with the next task that is ready,
   where one is, and with this one once they have run the command and
-  closed that issue", and under "The task itself", lines 649 to 650, "the
+  closed that issue", and under "The task itself", lines 648 to 650, "the
   readiness query passes over a task with an open blocker by itself, and
   closing that issue once the command has run frees it again". It is
   built in the part on the build; its should, new, stands as a status line
@@ -40562,7 +40562,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the program, kind program outcome, and thirty-one rows part of them, the
   34 lines of its search set covered; new defects 4 and 5 of the entry at
   line 38963 with their evidence on the lines of `plan-work` that carry
-  the repair, lines 322 and 441, their notes saying built under 0.163.0 by
+  the repair, lines 322 and 450, their notes saying built under 0.163.0 by
   this entry and that a run is owed; six branches of `plan-work` Stage 1,
   the read, the not-read case, the tool known after the round and its
   three places, with one rationale row and two rows part of them, and the
@@ -40657,8 +40657,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   stands above, lines 336 to 341 and 364 to 366 of `plan-work`; the halt
   of `cut-into-tasks`, lines 169 to 180, says the same for a line not
   found and not read in place of „what the line says“; the head of the
-  program, lines 62 to 67, and `docs/skill-conventions.md` lines 764 to
-  766 say it too. (c) `plan-work` lines 325 to 326 at `aeb5579` listed
+  program, lines 62 to 67, and `docs/skill-conventions.md` lines 768 to
+  772 say it too. (c) `plan-work` lines 325 to 326 at `aeb5579` listed
   what the planning says of a tool without the browser that does not
   stand in the version the project's test tool needs; lines 325 to 336
   name it now, and for it the assumptions say wording (b), as for a
@@ -40870,15 +40870,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   installing under a yes, and under a no or no record reporting the
   browser, the backed download command and that it is missing and stopping
   with the task, on which the main run hands over; with nobody there the
-  record says yes, condition 6. Point 7, lines 641 to 675, splits the duty
+  record says yes, condition 6. Point 7, lines 641 to 677, splits the duty
   as it lies: the subagent reports, the main run hands over. Step 5, lines
-  1006 to 1016: a task is not offered for landing while a tool it needs is
+  1041 to 1051: a task is not offered for landing while a tool it needs is
   missing on this machine and not declined; where the subagent's report or
   a finding of the review says the real tool did not run, the question is
   not put and the handover stands in its place, last in the message that
   ends the turn.
 
-  **(c) The handover and its two ways**, point 7 lines 641 to 675 and "The
+  **(c) The handover and its two ways**, point 7 lines 641 to 677 and "The
   task itself" lines 752 to 765: one message, the one that ends the turn,
   with the question last; it says what the task needs and that it is
   missing, that their answer to installing for this project is no, the
@@ -40914,7 +40914,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `issues: none ...` where none carries the lines, exit 0; exit 2 with the
   command and the message where `gh` or the tool state program did not
   answer, the groups read until then printed, an issue closed before that
-  staying closed. The self-test, lines 248 to 486, nineteen cases against a
+  staying closed. The self-test, lines 248 to 484, nineteen cases against a
   stand-in for `gh` as that program's self-test has it and the real
   `bin/devloop-tool-state`, `SELF-TEST PASSED: 19 cases`; the job runs it
   on four systems with every self-test under `bin/`. Where in a start:
@@ -40952,7 +40952,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   reads with `bin/devloop-tool-state --installed`, the command as handed
   over and the tool, which since this entry prints two lines for a command,
   the folder line read off the installer as `shared/backed-command.md`
-  lines 37 to 55 demand and then the search-path line as `--build` prints
+  lines 37 to 56 demand and then the search-path line as `--build` prints
   it, `bin/devloop-tool-state` head lines 113 to 121, body lines 570 to
   571 and 588, the self-test holding the second line and a tool installed
   by `go` into a folder the search path does not reach, 63 cases; `go
@@ -41176,7 +41176,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the person's approval, nothing of it built here and no approved wording
   or skill passage describing one changed: `setup-project` lines 231 to
   235, `gh auth login` named alone, without where it is typed, what it
-  asks and how the setup goes on; `README.md` lines 31 to 38, the two
+  asks and how the setup goes on; `README.md` lines 32 to 38, the two
   `git config` commands without the value each takes and the sign-in
   without its command; `hooks/pre-tool-use-identity-guard.sh` line 180,
   the same two commands handed over bare by the message; `setup-checks`
@@ -41233,9 +41233,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   at the tip and red between the two, where the rows of the first commit's
   changes stand in the second. Two rules the person decided
   on 28 October 2026, the wordings they approved for them, and the six
-  findings D1 to D6 of the addendum of the entry at line 40745, lines 41133
-  to 41162 at `9332a70`, each built or recorded below. A line of a file is
-  given as it stands at the tip of this branch, a line of `docs/roadmap.md`
+  findings D1 to D6 of the addendum of the entry at line 40745, lines 41174
+  to 41192 at `9332a70`, each built or recorded below. A line of a file is
+  given as it stands at `392bfd0`, the tip then, a line of `docs/roadmap.md`
   as it stands at `9332a70`. Beyond `git fetch` and the vendors' pages read,
   GitHub was neither read nor changed; nothing was installed anywhere; no
   test project was touched, no session log read, nothing run against the
@@ -41277,7 +41277,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Claude Code 2.1.312, in `devloop-test-aa` with devloop 0.164.0: `! git -c
   user.email=probe@example.invalid status` ran and showed the state of git;
   as a Bash call of the run the guard on the identity of a commit would
-  have blocked it, `hooks/pre-tool-use-identity-guard.sh` from line 114. So
+  have blocked it, `hooks/pre-tool-use-identity-guard.sh` from line 121. So
   the hooks of devloop do not fire on a `!` command, and Claude answered the
   output by itself. From that: a hook that is to see a command of the
   person sees it under A as little as in their own terminal; the three
@@ -41289,7 +41289,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   conventions are read by whoever builds and the runs read the shared text;
   the step-by-step rule stands in `shared/skill-name.md` as well since this
   entry, in short form, which the addendum of 28 October 2026 had left
-  open, lines 41123 to 41127 at `9332a70`, because the addition (a) is an
+  open, lines 41157 to 41160 at `9332a70`, because the addition (a) is an
   addition to it and a run reading the addition without its rule would read
   it without its base. What they replace: the paragraph "A command handed
   over runs as it stands, from wherever the person is", point 18 of part B
@@ -41341,7 +41341,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   these are the words, each with the old where there was one. The examples
   — `yq`, `gitleaks`, titles, numbers — the run fills with what it reads.
   (1) The handover under a no, until this day (5) of the entry at line
-  40175, lines 40494 to 40503: „Die Aufgabe „<Titel der Aufgabe>“ braucht
+  40175, lines 40494 to 40506: „Die Aufgabe „<Titel der Aufgabe>“ braucht
   `yq`, und es fehlt auf diesem Rechner. Weil deine Antwort zum Installieren
   für dieses Projekt Nein ist, installiere ich es nicht selbst. Der Befehl
   dafür:“ — „`brew install yq`“ — the backing — „Führst du ihn aus, sag mir
@@ -41426,7 +41426,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   account by the step the page names. Recorded, not built, the wording
   unchanged; what should hold, below. The last sentence of text 7, the
   message of the identity guard, approved on 9 October 2026 and its last
-  sentence on 10 October 2026, lines 15638 to 15659 and 16004 to 16021,
+  sentence on 10 October 2026, lines 15638 to 15654 and 16004 to 16019,
   until this day: "Where git config gives no identity, git takes one from
   the machine or refuses to commit; then hand the user the two commands git
   config --global user.name and git config --global user.email, to run with
@@ -41555,7 +41555,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   schließe das Issue und baue die Aufgabe.“ Built in `bin/devloop-install-issues`,
   the folder read lines 212 to 233, its call lines 281 to 289, the
   head lines 30 to 46 and 95 to 103, the self-test's stand-in for
-  `go` lines 368 to 377 and its cases lines 516 to 534, `SELF-TEST
+  `go` lines 368 to 377 and its cases lines 514 to 536, `SELF-TEST
   PASSED: 23 cases` on this Mac, line 578; and in `shared/install-issues-read.md`
   lines 14 to 21 and 35 to 52. The person's sentence of 27
   October 2026 with „merke ich das“ stays in that text's lines 5 to 7 and
@@ -41774,7 +41774,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   it does not give. Only where that yields no command — the run cannot
   read the page, or the page does not name the system — it says what is
   needed and names no command. It replaces the part of (4) of the entry at
-  line 40745, lines 41125 to 41128, by which the step for a shell without
+  line 40745, lines 41125 to 41129, by which the step for a shell without
   a sure form says only that the folder has to go into the `PATH`, without
   a command; that holds since this day only where the reading yields no
   command. Built in `docs/skill-conventions.md` lines 113 to 126, in the
@@ -42119,7 +42119,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   issue on the no and never before, "Before a no the form's signal releases
   the run — the output under A, their word under B —, after a no the tool
   read at the next start: one signal per state, and the issue and the message
-  name the same one", and "The task itself", expanded 1704 to 1716, the
+  name the same one", and "The task itself", expanded 1703 to 1716, the
   closing at the next start by `bin/devloop-install-issues`. #480 said both
   ways and the no way as the text has it, #497 wrote the issue on the no with
   the two lines and where the command is typed, #502 named the next start as
@@ -42164,7 +42164,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **(c) Defects met again**, each on the row of its thing. The hard core
   shown in no message, line 25960, its should built on 17 October 2026,
-  `plan-work` expanded 1177 to 1208: met at #219 and #220, the hard core in a
+  `plan-work` expanded 1177 to 1209: met at #219 and #220, the hard core in a
   thinking block of one sentence and in no field and no message, the widget
   pointing „oben“, the person seeing „nur eine eingeklappte Zeile“; not held;
   at #231, after their no, what the text says for a hard core of fifteen
@@ -42374,7 +42374,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **The wordings approved on 30 October 2026.** The skills say what is
   said, not the words; the run puts in what it reads — `yq`, the titles,
   the commands are examples. (1) The last sentence of the handover under a
-  no, until this day (1) of the entry at line 41228, lines 41363 to 41364:
+  no, until this day (1) of the entry at line 41228, lines 41362 to 41363:
   „Installierst du es später doch, schließe ich beim nächsten Start das
   Issue und baue die Aufgabe.“ Since this day, form A: „Gibst du den Befehl
   später doch hier mit `!` ein, schließe ich das Issue sofort und baue die
@@ -42427,8 +42427,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the case at lines 521 to 528 of the self-test, 25 cases, 23 before. The
   places the program is called, searched with `grep -rn
   'devloop-install-issues' skills/ shared/`: `build-work` line 331 and
-  `plan-work` line 580 insert the text of the start; `build-work` line 1615
-  the route with nobody there, where no `!` is typed; line 781 "The task
+  `plan-work` line 606 insert the text of the start; `build-work` line 1615
+  the route with nobody there, where no `!` is typed; line 621 "The task
   itself" above. Setup-checks hands a check class's tool over in its own
   step 3 and closes no issue by it; untouched.
 
@@ -42506,11 +42506,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   as less, so that a guard blocks where it need not and never passes what
   that bash would run as an install. Built: `bin/devloop-command-reader`
   lines 2304 to 2306, `digits`, `hexval` and `octval`, and `read_ansi`,
-  lines 2331 to 2363 with its comment from line 2307; a `\u` or `\U` above
+  lines 2331 to 2362 with its comment from line 2307; a `\u` or `\U` above
   10FFFF names no Unicode character, and the reader ends with exit 2 and
   the escape named, line 2348 — a command bash runs, so not `parsed: no`,
   which stays what the head says at lines 48 to 52, for a command the shell
-  itself refuses; the head names this exit at lines 414 to 418. The
+  itself refuses; the head names this exit at lines 413 to 417. The
   self-test, lines 555 to 567, thirteen cases, every form of the list, the
   unknown escape kept, the NUL, `$'\x62rew' install ripgrep` and
   `$'\142r\x65w' install ripgrep` read as `brew install ripgrep`, the
@@ -42927,12 +42927,12 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   session, #586 the branch, #598 the subagent, #601 the one message, as
   decision (1) of the entry at line 42324 has it. Beside it: no readiness
   query between the closing and the subagent, where "The task itself" goes
-  back to step 2, expanded 1773 to 1775; and the run called
+  back to step 2, expanded 1772 to 1774; and the run called
   `bin/devloop-install-note` with no action and read forty lines of its
   source before `put`, #580 and #586, where expanded 1729 names `put` with
   its two arguments. The closing at the next start, held by the program
   after a deviation Claude Code stopped: `shared/install-issues-read.md`
-  lines 1 to 13, expanded 1040 to 1052 of `build-work`, the program once
+  lines 1 to 14, expanded 1040 to 1053 of `build-work`, the program once
   before the first thing of this start that reads an open issue. In the
   second session the tracker query at s2 #51 and the readiness query at s2
   #55 ran first, in `start-work`, which does not carry that text; the run
@@ -42961,7 +42961,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `build-work` expanded 1245 to 1262: the lines of `--build`, the record
   line among them, "and beside them nothing of this run's own on whether
   the subagent installs or what — no point 7, no 'do not install', no claim
-  about the machine", 1250 to 1251; #598 "Install nothing outside the
+  about the machine", 1249 to 1251; #598 "Install nothing outside the
   project. The install record says `no`. … yq is installed … build nothing
   against a stand-in", s2 #107 "you install nothing. … no stand-ins": both
   prompts carry a tool line and the record, and the run's own beside them.
@@ -43061,7 +43061,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   not held, on their rows: step 2 of `build-work` on loose issues, expanded
   1162 to 1185, clause 3 with the spec closed, "take it … which and why is
   not said", where s2 #413 put the two loose issues to the person as a
-  question, the case step 7 at expanded 2931 to 2934 records as measured
+  question, the case step 7 at expanded 2932 to 2934 records as measured
   on 9 September 2026, and clause 2 with the spec open, the waiting issue
   said with its clause at the next message that ends a turn with text,
   where #76, filed at #862 and named at #1011, stands nowhere in #1091 —
@@ -43080,7 +43080,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `build-work` and before `bin/devloop-install-issues` at s2 #85; Claude
   Code's classifier refused s2 #72; the program then did what the texts
   say, with its comment. Against `shared/install-issues-read.md` lines 1 to
-  13, the program once before the first thing of a start that reads an open
+  14, the program once before the first thing of a start that reads an open
   issue, inserted into `build-work` and `plan-work` and not into
   `start-work`, whose in-flight report reads the tracker, s2 #51, and the
   readiness query, s2 #55, and says nothing of an issue of the install
@@ -43109,7 +43109,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and step 6 attended says what is said then, expanded 2659 to 2663, with
   "The checks going green is not the merge. GitHub merges after them … Read
   the platform, and read it again across the next few minutes", 2702 to
-  2706. Searched: `grep -n -i 'poll in a loop\|handed the merge over
+  2705. Searched: `grep -n -i 'poll in a loop\|handed the merge over
   while\|armed.*handed over' docs/roadmap.md`, the attended rule quoted at
   line 2341 and line 28069 on the wait, no defect. Not the install path;
   whether milestone 3, the person decides.
@@ -43127,7 +43127,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   #127, chose option A, s2 #145, and told the person afterwards, s2 #149,
   „Ich habe entschieden, `--pdfFit` wegzulassen“; their yes came at the
   landing question, s2 #324, after s2 #321 named the deviation. Against
-  `build-work` expanded 808 to 816: "a task that turns out to need a
+  `build-work` expanded 806 to 816: "a task that turns out to need a
   decision the spec did not take is a task that is not buildable as cut.
   The issue carries the question and the options … labelled `raised-here`
   and `needs-human`, recorded as a blocker; the task is put down; step 2
@@ -43155,7 +43155,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Claude Code auto mode classifier. Reason: [External System Writes]“ — a
   command no text has the run send, new defect 1; devloop's rule for the
   classifier names installs alone, `bin/devloop-auto-mode-rule` lines 21
-  to 29, and the install guard under PermissionDenied is silent for a
+  to 30, and the install guard under PermissionDenied is silent for a
   command that is no install, `hooks/pre-tool-use-install-guard.sh` line
   986, the project's `.git/devloop-auto-mode-denials` carrying no line of
   this day. Nothing else: the exit-1 results of `a6b58c80` #20 and
@@ -43331,7 +43331,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   closed by the program before this step sees it and the task it held is
   free; with the case of the short run and that the same text held in
   `build-work` in both of its sessions. Line 136 the insert of
-  `install-issues-read`; line 138 "Then run the in-flight query", the
+  `install-issues-read`; lines 138 to 139 "Then run the in-flight query", the
   rest of the paragraph as it was. Lines 147 to 154: an open issue the
   query lists that carries `install-tool` and `install-command` is one
   the program read and left open — the tool not standing, the search path
