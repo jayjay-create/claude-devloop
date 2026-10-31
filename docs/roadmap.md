@@ -44562,6 +44562,157 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the undercount section D allows; the self-test 124 cases, 95 of 95 messages
   asserted.
 
+- **Binding side decides in the setup skills, run-workflow tested on GitHub.**
+  31 October 2026, version 0.169.0. On `task/follow-up-after-milestone-3`,
+  off `origin/main` at `8053282`, in two commits: the builds with the
+  version, the correction below and the rows of the things they change;
+  then this entry with the sentence in `docs/plan.md` and its rows. The
+  report stands on this machine as `~/devloop-report-2026-10-31-follow-up.md`,
+  in English, and is not in the repository. Every line number of a file in
+  this entry holds at the tip of this branch unless it says otherwise; a
+  line of this file holds at `8053282`, the correction standing on its
+  physical line and this entry standing after the last. The order of this
+  day asked for two builds out of the entry at 43585, a correction in it
+  and a decision; the builds and the correction are here, and the decision
+  is not recorded, by the order's own rule, below.
+
+  **Built: the two setup skills read the gate's binding as `build-work` and
+  `bin/devloop-start-conditions` read it.** The defect of status line 44351,
+  which names step 7 of `setup-project` where the place stands in step 4,
+  question 2, the bullet on putting the two sides together; step 7 is the
+  pointer block in CLAUDE.md. Before, at `8053282`: `setup-project` 443 to
+  449 read a side that did not answer as the third outcome, the binding not
+  determinable, whatever the other side showed, and `setup-checks` 1017 to
+  1019 said to say so. After: `setup-project` 443 to 459 and `setup-checks`
+  1017 to 1030 say what `build-work` 1526 to 1534 says and the program's
+  lines 437 to 468 read — the gate binds where a side answered with a gate
+  that binds, whatever the other did, a ruleset that binds with the classic
+  query unanswered among it; it does not bind where none binds and every
+  query that could show one answered; the binding could not be determined
+  only where no answer showed a gate that binds and a query that could show
+  one did not answer, a side's own, the query of a ruleset its rules named,
+  or for a classic gate without `enforce_admins` the query for
+  `.permissions.admin` — each with the date and what stood before; the
+  sentences on not saying and not writing the third outcome stand unchanged.
+  What each skill does with the result afterwards, read against the guard
+  on the mark, `hooks/pre-tool-use-mark-guard.sh` 176 to 189, which blocks
+  a write of the mark on every line of conditions 1, 2, 5, 6 and 7 that is
+  not `holds`: `setup-checks` step 8 reads the five things of
+  `shared/mode-set-up.md`, says the mode is set up and skips the step where
+  all five hold (1030 to 1031), else puts the question, the first sentence
+  of its yes gone where the gate is there and binding (1177 to 1181), and
+  on a yes does none of the three of the gate order where the gate was
+  there and binding (1531 to 1535), auto-merge alone; otherwise the gate
+  order sets the protection with `enforce_admins`, which needs admin.
+  `setup-project` step 4 puts the auto-merge question only where a gate
+  stands and auto-merge is off (477 to 479), says nothing of a gate that
+  does not bind and neither says nor writes the third outcome (457 to 459);
+  its step 8 reads the gate again off the arming program's `gate:` lines
+  for the merge handover. Neither skill sets the mode up without the
+  person: `setup-checks` step 8 does, with them there or through `--auto`.
+  The cross-check, against the three readings at 38615 to 38626 and 38705
+  to 38719 and the case of the status line, an account without admin
+  rights, the gate a ruleset reading `never`, the classic query answering
+  403: the program and the guard find condition 2 holding and let the mark
+  through; `setup-checks` before found the binding not determinable, the
+  mode not set up by all five, and on a yes went to set a protection that
+  needs admin, refused, the record then saying no with the refusal as its
+  reason; after, it finds the gate binding, and with the other four holding
+  says the mode is set up. `setup-project` before left undecided whether a
+  gate stands for its auto-merge question; after, the gate stands and binds.
+  The second reading, none binds and every query answered, and the third,
+  no answer showed a binding gate and a query that could show one did not
+  answer, read the same before and after, the third now naming the three
+  queries. The table of the cases stands in the report.
+  Built: both setup skills say the reading build-work and the program give condition 2, a side that binds deciding, since 31 October 2026.
+
+  **Built: the self-test of `scripts/devloop-run-workflow` runs on GitHub.**
+  Before, nothing ran it there: the job `stock-take` ran the tool and its
+  self-test, lines 77 to 81 at `8053282`, and the step from line 367 of the
+  job `hooks on every system` every self-test under `bin/`. After, that step
+  runs it after its loop over `bin/`, lines 401 to 407, through the
+  interpreter the step found, red where it is red, on ubuntu-latest,
+  macos-latest and alpine, the job in which it can run on most systems;
+  under Windows it is left out and a line says so and why: the program runs
+  no step without a shell there, the default shell of GitHub's Windows
+  runners being pwsh, which it does not run, and its self-test asserts the
+  command `bash -e {0}` for such a step and for the job `stock-take`, so it
+  would be red there by construction and not for a fault, the job
+  `stock-take` running on ubuntu-latest alone. The job's comment, 327 to
+  339, the head comment, 30 to 33, `docs/skill-conventions.md` under
+  "Registering a skill", 1419 to 1424, and its paragraph on the twentieth
+  check, 4003 to 4004, say so. Measured here: the self-test green on this
+  Mac, 33 cases; the block run as a script with `RUNNER_OS` set to Windows
+  printed the line; the platform's run comes with the pull request.
+  Built: the job hooks on every system runs the self-test of scripts/devloop-run-workflow on three of its four systems since 31 October 2026.
+
+  **Measured, and the decision on the pipx log not recorded.** The order of
+  this day proposed a decision (6), counting on from (4) and (5) of the
+  entry at 43585: the defect of status line 44361, `pipx environment
+  --value PIPX_BIN_DIR` writing a log file at every call, not built, the
+  query staying, a small matter by decision (9) of 24 October 2026, line
+  37775, with the reason that the guard must know where pipx installs on
+  this machine and reads that off the installer rather than assuming it,
+  that the file lies in pipx's own log folder, and that pipx keeps at most
+  ten by its documentation, `PIPX_MAX_LOGS`, default 10. The order bound
+  the recording to a measurement: twelve calls under a fresh `HOME`, then
+  the files in the log folder, and no recording where more than ten stand.
+  The documentation, pipx.pypa.io/stable/reference/environment-variables.html,
+  read on 31 October 2026, says of `PIPX_MAX_LOGS`: "Number of command logs
+  to keep in the log directory, counting the current command's; pip and uv
+  error logs share a separate limit of the same size. `0` acts like `1`.
+  pipx keeps the logs of commands still running. Default: `10`." Measured
+  with pipx 1.17.6 under a fresh `HOME`: twelve calls, each exit 0, left
+  eleven files in `Library/Logs/pipx`, ten old beside the current; two
+  calls more left eleven each. pipx's `_setup_log_file` deletes the oldest
+  so that `PIPX_MAX_LOGS` remain and then writes the current command's log
+  beside them, where the documentation counts the current one in. So the
+  decision is not recorded, the status line 44361 and its should stand, the
+  row of the thing carries the measurement, and the person decides; the
+  folder does not grow past eleven.
+
+  **Line numbers of dated entries, corrected in place.** As the audits do,
+  by the paragraph of `docs/skill-conventions.md` on a should a later
+  decision changes: one correction on one physical line, the line count of
+  this file unchanged above this entry, the line carrying no anchor of the
+  table. The defect thing is sited on its status line here and evidenced on
+  the corrected line; the evidence is `skills/setup-checks/SKILL.md` at
+  `628d166` and at `8053282`, numbered.
+
+  - Line 44338: `lines 1013 to 1015` → `lines 1017 to 1019`; the sentence
+    "Where a side did not answer, say the binding could not be determined
+    rather than reporting the gate either way" stands on 1017 to 1019 of
+    `skills/setup-checks/SKILL.md` at `628d166` as at `8053282`, 1013 to
+    1015 being the sentences on the bypass at the merge and on the classic
+    field. Corrected.
+
+    Recorded, not built: the entry on the audit after milestone 3 names setup-checks lines 1017 to 1019 for the sentence on a side that did not answer.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the defect of 44351 evidenced on the line of
+  `setup-checks` that carries the reading, the place in `setup-project` in
+  its note; the two things on the third outcome renamed, no run on them,
+  their notes naming the old names; a thing for the binding side in
+  `setup-checks`, where none stood, and the new lines of both skills part
+  of the things they belong to; two outcomes of the hooks step for the
+  self-test of `scripts/devloop-run-workflow`, on three systems and left
+  out under Windows, with the `if` line part of the second; the defect of
+  44361 with the measurement and the unrecorded decision in its note; the
+  defect of the correction above; the head of this entry and its two built
+  lines as part of the things they record. No run is recorded for this
+  entry. The figures of the tool and the checks before and after stand in
+  the report. The tool before the commit, in a clean bash with
+  `/usr/bin/grep`: exit 0, no broken record, 14 findings, 42 closed
+  defects, no unit without a straight path, none of 5431 lines of the
+  search set uncovered, 5420 at `8053282`, the eleven added being the new
+  lines of the two skills and the workflow holding a search word and the
+  six lines of this entry holding a status word; 458 things recorded and
+  not built, 458 before, the defect of 44351 built and the defect of the
+  correction in its place; 1338 built and never walked, 1334 before, that
+  defect, the binding side in `setup-checks` and the two outcomes of the
+  hooks step; 738 walked, as before; the self-test 124 cases, 95 of 95
+  messages asserted.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
