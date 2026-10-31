@@ -440,13 +440,23 @@ once the record this step writes has landed.
      together.** Classic protection and rulesets "work alongside each other, and
      all applicable rules are enforced", so a gate binds here if either side
      binds, and only both sides coming back bypassable means this account walks
-     through. Where a side did not answer — `protection` needing admin and
-     returning anything but "Branch not protected", or a ruleset reply that does
-     not come back — that is a third outcome and not a quiet no: the
-     binding could not be determined, rather than a claimed gate or one
-     ruled out. It is not said, since 17 October 2026, and not written into
-     `environment.md`, since 18 October 2026, where until then it went with
-     the query that failed.
+     through. So the gate binds here where a side answered with a gate that
+     binds, whatever the other did — a ruleset that binds with the classic
+     query unanswered, the case of an account without admin rights — and it
+     does not bind where none binds and every query that could show one
+     answered: the reading `build-work` gives start condition 2 under
+     "Unattended mode" and `bin/devloop-start-conditions` reads, since 31
+     October 2026; until then a side that did not answer was the third
+     outcome below whatever the other side showed. Where no answer showed a
+     gate that binds and a query that could show one did not answer —
+     `protection` needing admin and returning anything but "Branch not
+     protected", a ruleset reply that does not come back, the query of a
+     ruleset its rules named, or for a classic gate without `enforce_admins`
+     the query for `.permissions.admin` — that is a third outcome and not a
+     quiet no: the binding could not be determined, rather than a claimed
+     gate or one ruled out. It is not said, since 17 October 2026, and not
+     written into `environment.md`, since 18 October 2026, where until then
+     it went with the query that failed.
 
    Whether a plan allows protection on a private repository has changed before
    and will again, so do not carry a table of it: those two queries answer it

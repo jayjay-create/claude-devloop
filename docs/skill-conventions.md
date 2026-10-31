@@ -1416,7 +1416,11 @@ and the merge sequence. Since 14 October 2026 four checks more are required,
 `hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
 and `(alpine)`, the second job of the same workflow, which runs every
 self-test under `bin/` since 23 October 2026, until then those of the reader,
-of `bin/devloop-arm` and of `bin/devloop-auto-mode-question`, and every hook
+of `bin/devloop-arm` and of `bin/devloop-auto-mode-question`, since 31
+October 2026 the self-test of `scripts/devloop-run-workflow` as well, on
+ubuntu-latest, macos-latest and alpine and not under Windows, where the
+program runs no step without a shell and its self-test would be red by
+construction, the workflow's comment saying so, and every hook
 once on each system, and
 since the addendum of 22 October 2026 to the roadmap entry of that day on
 the question after a refusal feeds the install guard a counted refusal under
@@ -3996,7 +4000,8 @@ adds to `docs/roadmap.md`, and `GITHUB_WORKSPACE`, `RUNNER_OS` and
 describe the runner, "what the checkout holds" and the Alpine step, a step
 with `uses:` and no `run:`, and runs a step under an `if:` not at all and
 says so, red. So the tool, its self-test, the hooks step with every self-test
-under `bin/` and every handler, the two README steps and the title step run
+under `bin/`, since 31 October 2026 the self-test of this program among
+them, and every handler, the two README steps and the title step run
 here before the pull request shows them, on this one system, a job with a
 matrix once; a step added to the file runs without a change to the program.
 It ends with 0 where every step did, and its last line opens with `green:`,

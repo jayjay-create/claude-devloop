@@ -27,7 +27,10 @@
 # system, Git for Windows' default core.autocrlf=true notwithstanding. Since
 # the addendum of 17 October 2026 to the roadmap entry of that day on arming
 # past the gate the job runs the self-test of bin/devloop-arm beside the
-# reader's, and is red where it is. Since 22 October 2026 the job stock-take
+# reader's, and is red where it is; since 23 October 2026 every self-test
+# under bin/, and since 31 October 2026 the self-test of
+# scripts/devloop-run-workflow on three of its four systems, the job's
+# comment saying which and why. Since 22 October 2026 the job stock-take
 # reads the title of the pull request and the head of every entry the branch
 # adds to docs/roadmap.md against the rule on titles, the last step of the
 # job, and the event fires with the type edited as well, so that a title
@@ -321,6 +324,19 @@ jobs:
   # before RC was set, and would have ended it at any handler not ending
   # with 0 before its output was printed; run as a script with bash alone,
   # without -e, the step had ended with 0.
+  # Since 31 October 2026 the step runs the self-test of
+  # scripts/devloop-run-workflow after every self-test under bin/, on
+  # ubuntu-latest, macos-latest and alpine, red where it is red; under
+  # Windows it is left out, a line printed that says so and why: the
+  # program runs no step without a shell there, the default shell of
+  # GitHub's Windows runners being pwsh, which it does not run, and its
+  # self-test asserts for such a step and for the job stock-take the
+  # command bash -e {0}, so that under Windows it would be red by
+  # construction and not for a fault; no defect stands behind that, the job
+  # stock-take running on ubuntu-latest alone. Until that day the self-test
+  # ran on no system of GitHub, the job stock-take running the tool's and
+  # this step those under bin/; the roadmap entry of 31 October 2026 on the
+  # follow-up after milestone 3.
   hooks-on-every-system:
     name: hooks on every system (${{ matrix.system }})
     strategy:
@@ -382,6 +398,13 @@ jobs:
             echo "== $(basename "$f") --self-test"
             case "$(head -1 "$f")" in *python*) "$PY" "$f" --self-test ;; *) "$f" --self-test ;; esac || { echo "the self-test of $(basename "$f") is red"; red=1; }
           done
+          # the self-test of scripts/devloop-run-workflow, since 31 October 2026: after every self-test under bin/, on ubuntu-latest, macos-latest and alpine, red where it is red; left out under Windows, a line saying so and why: the program runs no step without a shell there, the default shell of GitHub's Windows runners being pwsh, which it does not run, and its self-test asserts for such a step and for the job stock-take the command bash -e {0}, so that under Windows it would be red by construction and not for a fault
+          if [ "${RUNNER_OS:-}" = Windows ]; then
+            echo "== devloop-run-workflow --self-test left out under Windows: the program runs no step without a shell there, the default being pwsh, and its self-test asserts the command bash -e {0} for such a step and for the job stock-take, so it would be red there by construction; the job stock-take runs on ubuntu-latest alone"
+          else
+            echo "== devloop-run-workflow --self-test"
+            "$PY" "$ROOT"/scripts/devloop-run-workflow --self-test || { echo "the self-test of devloop-run-workflow is red"; red=1; }
+          fi
           T=$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/devloop-hooks.XXXXXX")
           P="$T/project"
           mkdir -p "$P/docs/agents"

@@ -1014,7 +1014,18 @@ reports a ruleset gate as missing, because that endpoint 404s where the gate is 
 ruleset. A gate binds if either side binds. Protection this account can step over
 is not a gate: count it as missing, not as present, and say nothing of it,
 since 17 October 2026 — the yes of the question below says whether a
-protection is added. Where a side did not answer,
+protection is added. So the gate binds where a side answered with a gate
+that binds, whatever the other did — a ruleset that binds with the classic
+query unanswered, the case of an account without admin rights — and it does
+not bind where none binds and every query that could show one answered: the
+reading `build-work` gives start condition 2 under "Unattended mode" and
+`bin/devloop-start-conditions` reads, through which the guard on the mark
+reads it, since 31 October 2026; until then a side that did not answer was
+the third outcome whatever the other side showed, and this step found the
+mode not set up where the program finds condition 2 holding. Where no
+answer showed a gate that binds and a query that could show one did not
+answer — a side's own, the query of a ruleset its rules named, or for a
+classic gate without `enforce_admins` the query for `.permissions.admin` —
 say the binding could not be determined rather than reporting the gate either
 way. Then the three records, as the paragraph above reads them. Where the
 mode is set up by all five, say that it is and skip the rest of this step —

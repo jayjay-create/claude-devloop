@@ -44335,7 +44335,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   thing sited and evidenced on its status line, the line saying what should
   hold; nothing of it is built here.
 
-  - `skills/setup-checks/SKILL.md` lines 1013 to 1015, "Where a side did not
+  - `skills/setup-checks/SKILL.md` lines 1017 to 1019, "Where a side did not
     answer, say the binding could not be determined rather than reporting the
     gate either way", and `skills/setup-project/SKILL.md` lines 440 to 447,
     "Where a side did not answer … that is a third outcome and not a quiet no:
