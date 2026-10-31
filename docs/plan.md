@@ -601,6 +601,22 @@ running before the query and the issue closed by it alone, where a copy of
 the day before read the issue and the tool itself first; the handover's
 sentence on a later `!` is a small matter by decision (9) of 24 October
 2026. Milestone 3 is not reached; the person decides.
+On 31 October 2026 the person decided that the milestone is reached, decision
+(5) of the roadmap entry of that date on the audit after milestone 3: what
+held it open since 27 October 2026 — new defects 4, 6 and 7 of the entry on
+the three closing runs and the rest of defect 5 of the entry on the six runs —
+held in the short run of 30 October 2026 or is a small matter by decisions (3)
+of 30 October 2026 and (4) of 31 October 2026, the run's own words on
+installing in the prompt to the build subagent among the small matters; every
+new defect on the way of the install since then is built and measured; the
+way under a yes the bench of 30 October 2026 measures with the mechanism of
+today, and a whole run under a yes in place of the bench was not chosen;
+milestone 12 ends with one run per system, the cases of this milestone
+included, and there they run again. The points the entries of 29 and 30
+October 2026 name as not belonging to the install, with defects 8 and 11 of
+the entry on the three closing runs and its small matters 3, 9 and 10, stand
+as the list for the milestones after milestone 3 under "## Open" below, their
+order the person's.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
@@ -1117,6 +1133,23 @@ that answers it, or says that none does.
   in the first closing run of the milestone 3 pass, the roadmap entry of 27
   October 2026 on the three closing runs; decided by the person after
   milestone 3, and no milestone names it.
+- **The list for the milestones after milestone 3**, whose order the person
+  sets, since 31 October 2026, the roadmap entry of that date on the audit
+  after milestone 3, which names each point with its status line in
+  `docs/roadmap.md` or with the lines of the entry that name it: the merge
+  handed over for an armed pull request, with the wrong sentence on who merged
+  the first (status line 43116); the decision on `--pdfFit` taken without the
+  person (43139); a lens or a builder writing into the project or ending
+  processes with `pkill` (42226); the summary that arrived collapsed before
+  „Ist die Idee so verstanden?“, the hard core in no message (25960); Claude
+  Code's block of `sleep`, of which devloop says nothing (30379); the question
+  on the loose issues where step 2 of `build-work` has a rule (the entry on
+  the short run, lines 43061 to 43069); the repeated reading in step 6 with
+  the person there (the same entry, lines 43069 to 43072); defect 8 (39600)
+  and defect 11 (39827) of the entry on the three closing runs, and its small
+  matters 3, 9 and 10 (39514, 39614 and 39631); and the question on
+  `attribution.pr` above. No milestone names them until the person orders the
+  list.
 - Whether a process started in the background survives across turns in a
   devloop run (milestone 4).
 - Whether the classifier lets a start command through unattended (milestone
