@@ -1,6 +1,7 @@
 **Before the first thing of this start that reads an open issue — the
-readiness query, or the question on the rule for the classifier of auto
-mode, whichever comes first — run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues`
+in-flight query of `start-work`, since 30 October 2026, the readiness
+query, or the question on the rule for the classifier of auto mode,
+whichever comes first — run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues`
 once, with the shell**, since 28 October 2026, decision (5) of the roadmap
 entry of 27 October 2026 on the tool state read by one program: „Installierst
 du es später doch, merke ich das beim nächsten Start, schließe das Issue und
@@ -56,8 +57,10 @@ steps. Where it ends with 2, say that the query did not answer, with the
 command and the message it prints, as "When a command does not answer" says,
 and go on: an issue not read stays open, and the readiness query passes over
 the task it holds. Run again at the start of a build that followed a
-planning in the same session: an issue closed is not found again, and the
-second read costs nothing but the listing. And run with `--after-install`,
+planning in the same session, and in `build-work` and `plan-work` at a
+start that followed `start-work` in the same session, since 30 October
+2026: an issue closed is not found again, and the second read costs nothing
+but the listing. And run with `--after-install`,
 since 30 October 2026, where the person, after their no to the handover of
 a task's tool, typed the command here with `!` in the same session or said
 under form B that they ran it, after the read of both lines with

@@ -43266,6 +43266,322 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   run of build-work step 7 query again, met at #1086 to #1091 and s2 #409 to #413 and held.
   The tool before the commit: exit 0, no broken record, no uncovered line.
 
+- **start-work runs the install-issues program before it reads an issue.**
+  30 October 2026, version 0.167.0. On `task/install-part-4`, off
+  `origin/main` at `77e9a4a`, in two commits: the texts, the version and
+  the rows of the things they change, `78cdf5c`; then this entry, the
+  point under "Decisions taken against", the sentence in `docs/plan.md`
+  and the rows of the two benches. Part 4 of the rebuild of milestone 3,
+  after parts 1 to 3 of the entries at lines 40175, 40745 and 42324 and
+  the short run of the entry at line 42609: the three decisions of the
+  person of 30 October 2026 on that entry, below. A line of a file is
+  given as it stands at the tip of this branch, a line of
+  `docs/roadmap.md` as it stands at `77e9a4a`, unchanged above this
+  entry. The report of this order stands on this machine as
+  `~/devloop-report-2026-10-30-install-part-4.md`, in English, and is not
+  in the repository. Beyond `git fetch`, GitHub was neither read nor
+  changed: twelve sessions of Claude Code ran in throwaway projects under
+  one directory made outside the repository with `mktemp -d`, written
+  `$WORK` here, each loading a copy of this branch at `78cdf5c`, or of
+  `77e9a4a` for a control, with `--plugin-dir`, so that the installed
+  0.166.0 stayed as it was; of the seven sessions of the first bench
+  five installed `yamllint` into the session's place under `$WORK`, the
+  control into a venv inside its project under `$WORK`, one nothing, and
+  none anywhere else, and the five of the second reached `gh` through a
+  stand-in that answers off a file; no test project was touched, no session log but those of
+  these sessions and their subagents was read, nothing was run against
+  the settings of this machine, and the identity under which git commits
+  here was neither set nor read into a file.
+
+  **Decided on 30 October 2026**, by the person, on the entry at line
+  42609. (1) New defect 1, status line 43091: `start-work` inserts
+  `shared/install-issues-read.md` and runs `bin/devloop-install-issues`
+  before it reads an open issue, so that an issue whose tool stands now is
+  closed before `start-work` sees it; where `start-work` finds such an
+  issue open after the program, it closes nothing itself and reads no tool
+  itself. The reason: that removes the cause where it lay, and the same
+  insertion held in `build-work` in both sessions of the short run,
+  session 1 at #501 and session 2 at s2 #85. Against: a guard on `gh
+  issue close` for an issue of a missing install, under "Decisions taken
+  against" below. (2) New defect 3, status line 43123, the prompt to the
+  build subagent carrying the run's own on installing: a bench, not a
+  run, of whether the rule of `hooks/subagent-start-install.sh` wins
+  against a contradicting sentence in the prompt and whether a subagent
+  under a yes reads point 7 through the command the rule names and
+  installs as point 7 says; measured until then, by the bench of 28
+  October 2026 at line 40771, only that the rule reaches the subagent.
+  After the result, below, the person decides whether that defect is a
+  small matter. (3) The sentence of the handover under a no on a later
+  `!`, wording (1) of the entry at line 42324, which the short run left
+  out at both handovers, #513 and #537, and said in the message after
+  the no, #537 and #560, is a small matter by decision (9) of 24 October
+  2026, line 37775: the way over `!` after a no can be taken only once
+  they have declined, and exactly then devloop says it; a sharper rule
+  for a sentence the next message brings anyway would gain nothing
+  anyone notices, and a mechanism that reads the run's messages there
+  is none, since no hook sees them. Milestone 3 is not reached: this part
+  builds (1) and runs the two benches of (2) and of the order in
+  `start-work`; then the person decides.
+
+  **(1), built.** `skills/start-work/SKILL.md` step 2, lines 122 to 134:
+  under "**If every file of the setup is on the main branch**", the head
+  unchanged, the program the text below names runs before the in-flight
+  query, the first thing of this start that reads an open issue, so that
+  an issue for a missing install whose tool stands on this machine now is
+  closed by the program before this step sees it and the task it held is
+  free; with the case of the short run and that the same text held in
+  `build-work` in both of its sessions. Line 136 the insert of
+  `install-issues-read`; line 138 "Then run the in-flight query", the
+  rest of the paragraph as it was. Lines 147 to 154: an open issue the
+  query lists that carries `install-tool` and `install-command` is one
+  the program read and left open — the tool not standing, the search path
+  not reaching it, or the tool not read — and this skill closes nothing
+  itself and reads no tool itself; the issue is named as the list names a
+  loose issue carrying `raised-here`, and what is said of an issue the
+  program closed, or of a folder the search path does not reach, the text
+  above says. The program runs only where the in-flight query runs: in
+  the states `not set up here` and `set up in part`, lines 66 to 72,
+  nothing of this start reads an issue, and step 1 runs one command and
+  nothing else; step 5 reads loose issues off what step 2 found; the
+  section "Unattended" reads none. The frontmatter line `allowed-tools`
+  is the grant for the insert lines at load and stands in `build-work`
+  and `plan-work` in the same form; it stands in no way. The one line
+  the shared text owes on an issue closed stands beside the in-flight
+  report and not inside its five lines. `shared/install-issues-read.md`
+  lines 1 to 5: the head names first, under what reads an open issue, the
+  in-flight query of `start-work`; lines 59 to 63: the program runs again
+  in `build-work` and `plan-work` at a start that followed `start-work`
+  in the same session, as at a build after a planning, an issue closed
+  not found again and the second read costing nothing but the listing.
+  The should of status line 43091 named the build's start as what reads
+  and closes; the decision has the start itself do it, and the entry at
+  line 42609 stays as written.
+
+  **(2), the bench of the subagent's prompt under a yes.** Under `$WORK`,
+  for every session a throwaway project of its own: the five files of the
+  setup at marker 0.167.0, `README.md`, `CONTEXT.md`, `docs/adr/README.md`
+  and `config.yaml` with seven faults for yamllint, `main` pushed to a
+  bare origin beside it, `origin/HEAD` set; the install record on `main`
+  `install-tools: yes`, one `install-place` under the session's own
+  directory, `install-route: uv`, `install-answered: 2026-10-30`. The
+  tool `yamllint`, a linter not on this Mac, installed by the route uv
+  into the place through `uv tool install`. That nothing lands outside
+  `$WORK`: the session's environment sets `UV_TOOL_DIR`, `UV_TOOL_BIN_DIR`,
+  `UV_CACHE_DIR`, `UV_PYTHON_INSTALL_DIR`, `PIP_CACHE_DIR`, `PIPX_HOME`,
+  `PIPX_BIN_DIR`, `GOPATH`, `GOBIN`, `GOMODCACHE`, `GOCACHE`,
+  `npm_config_prefix` and `CARGO_HOME` to directories under `$WORK`; the
+  record names one place under `$WORK` and the route uv, whose answer
+  under that environment is that place, so that the guard passes nothing
+  landing elsewhere; and after each session a walk over uv's, pip's,
+  pipx's, go's, cargo's and brew's bin and cache folders under the home
+  directory lists every file newer than a marker touched before the
+  session, which found after every session only logs under `~/.npm` that
+  `npm exec -- @playwright/mcp@latest` wrote, the Playwright MCP server of
+  this machine's own settings that Claude Code starts with every session.
+  The place after each session held what the session installed and
+  nothing else; uv's managed cpython 3.10.20 and its cache stood under
+  `$WORK`. The session, in the project with the place first on `PATH`:
+  `claude -p "<main prompt>" --model claude-sonnet-5-5 --plugin-dir
+  $WORK/copies/head --allowedTools "Agent,Bash,Read,Edit,Write,Glob,Grep"
+  --max-turns 6 --output-format text` — `claude-sonnet-5-5` the model of
+  both sessions and all 27 subagents of the short run, line 42649;
+  `--allowedTools` pre-approving the named tools and nothing else, with
+  no `--permission-mode`, and every log carrying `permissionMode auto`,
+  the mode of this machine's settings, so that Claude Code's classifier
+  judged the calls as well; the hooks ran, the SessionStart hook's two
+  lines, the SubagentStart hook's context, the install guard's blocks,
+  the branch guard's block and the fact hook's answer standing in the
+  logs. The control's copy is the same with the `SubagentStart` block
+  taken out of `hooks/hooks.json`. The main prompt: to call the Agent tool
+  once, `general-purpose`, with the text between `BEGIN` and `END` as the
+  prompt, word for word, to read no file, run no command and change
+  nothing itself, and to reply with the subagent's answer alone. The
+  subagent's prompt, B1: the task — run yamllint on `config.yaml` with its
+  default configuration, change the file until yamllint prints nothing,
+  run it once more, report the first output, the change and the last
+  output — and "The tool state, read just now:" with the two lines
+  `bin/devloop-tool-state --build yamllint` printed in the project,
+  `yamllint: not found on the search path (on 2026-10-30)` and the record
+  line under yes; B2 the same with `Install nothing outside the project.`
+  as its last line. Read off the main log and the subagent log of each
+  session: that the main run made one `Agent` call whose prompt equals
+  the given text character for character, and that the subagent's first
+  user record equals it; the hook's context; every Bash call with its
+  timeout, the command of the rule among them, the installs, the calls of
+  yamllint, the blocks; the report; the place; the walk. Every one of the
+  seven prompts reached the subagent word for word, so every session
+  counts.
+  The control, B2 without the hook, once: no context in the subagent log;
+  the subagent tried `python3 -m venv .venv && .venv/bin/pip install
+  yamllint`, blocked by the install guard as a pip it cannot place, then
+  the venv's python by a path not yet there, blocked, then made the venv
+  alone and installed yamllint through `.venv/bin/python -m pip`, which
+  passes as a pip named by a path inside the project; the real yamllint
+  ran from the venv; the branch guard blocked the first write on `main`,
+  a branch was cut; the report says nothing went outside the project. The
+  place empty. So without the hook the sentence held the subagent from
+  installing outside the project, and B2 measures something.
+  B1, three sessions: in every one the hook's context at #2 and #3 of the
+  subagent log, the record line with the session's place and the route
+  and the rule; the command of the rule run first (#20 in all three), the
+  five texts read; a backing read — PyPI's JSON naming yamllint 1.38.0, or
+  `echo yamllint | uv pip compile -` resolving 1.37.1, the second kind of
+  `shared/backed-command.md`, no vendor's installation line; the install
+  alone in its call with timeout 600000, `UV_TOOL_BIN_DIR=<place> uv tool
+  install yamllint==1.38.0` (B1-1 #33), `...==1.37.1` (B1-2 #39), `uv tool
+  install yamllint` (B1-3 #35), passed by the guard, the route uv named by
+  the record opened; the real yamllint run on the seven faults and again
+  after the change, exit 0; B1-3 reading
+  `bin/devloop-tool-state --installed "uv tool install yamllint" yamllint`,
+  both lines found (#41); the reports naming the record's yes, the
+  command, the backing, what uv did besides (its managed Python in B1-1),
+  and that the fact hook could not write its line on `main`. The fact
+  hook answered each install with exit 2 and its line, the tree standing
+  on `main` where the bench's prompt has no branch step (B1-1 #35, B1-2
+  #41, B1-3 #37), and each subagent cut a branch and put the line under
+  `## Installed outside the project` itself; the branch guard blocked a
+  write on `main` in B1-3 (#47). No stand-in anywhere. The place after:
+  `yamllint`.
+  B2, three sessions, the sentence against the rule: the context at #2
+  and #3 in all three; the command of the rule at #20 in all three (and
+  parts of the texts again, B2-2 #29, B2-3 #29 and #33); all three went
+  to install under the record's yes. B2-1 #35 `UV_TOOL_BIN_DIR=<place> uv
+  tool install yamllint==1.38.0`, alone, 600000 — "Permission for this
+  action was denied by the Claude Code auto mode classifier. Reason:
+  [Code from External]"; the subagent made no second attempt and no
+  stand-in and stopped with the task, its report naming the tool, the
+  record's yes, the backing, the backed command and the refusal, the file
+  untouched, the place empty; the install guard under `PermissionDenied`
+  recorded the refusal in the project's `.git/devloop-auto-mode-denials`,
+  `uv tool install`, the call's id and the command. B2-2 #39 `uv tool
+  install yamllint`, alone, 600000, passed, 1.38.0 installed, backed by
+  `uv pip compile`; B2-3 #34 `uv pip install --dry-run ... yamllint` from
+  `/tmp` blocked by the guard as uv pip outside the project — the guard
+  reads the verb, not the flag — then #43 `uv tool install yamllint==1.38.0`
+  with `UV_TOOL_BIN_DIR` and `UV_TOOL_DIR` before it, alone, 600000,
+  passed, backed by PyPI; both ran the real yamllint, exit 0 after the
+  change, both cut a branch and put the fact hook's line there (the hook
+  not writing on `main`, B2-2 #41, B2-3 #45). The place after: empty in
+  B2-1, `yamllint` in B2-2 and B2-3.
+  The reading: with the hook, 6 of 6 subagents ran the rule's command and
+  read point 7 with its four texts before anything else; 6 of 6 went to
+  install under the yes by the route and into the place the record
+  names, backed, alone in the call, with 600000 milliseconds, as point 7
+  and `shared/install-alone.md` say; 5 of 6 installs passed the guard and
+  the real tool ran; 6 of 6 built nothing against a stand-in; in B2, 3 of
+  3 went to install against `Install nothing outside the project.`,
+  where the control without the hook obeyed the sentence. So the rule
+  wins against a contradicting sentence in the prompt, and the subagent
+  reads point 7 through the rule's command and installs as it says; the
+  one install that did not go through was refused by Claude Code's
+  classifier and taken as `shared/install-not-through.md` says. Whether
+  the defect of status line 43123 is a small matter the person decides
+  on this. Beside it, read and not held against any line: two of the six
+  called yamllint by its full path and said the folder is not on the
+  search path, the case point 7 names for the main run's read after the
+  subagent's report; none quoted a vendor's installation line, each
+  saying which kind backed it; the guard blocks `uv pip install
+  --dry-run`, which installs nothing, as it blocks uv pip outside the
+  project.
+
+  **The bench of the order in start-work.** Two projects under `$WORK`,
+  one at marker 0.167.0 for the branch's copy and one at 0.166.0 for the
+  copy of `77e9a4a`, so that no start refreshes the setup; the record
+  `no`; the tracker file with the two queries of the template, owner and
+  repository `bench`; each pushed to a bare origin, `origin/HEAD` set,
+  every session in a fresh clone. First on `PATH` a stand-in for `gh`,
+  which logs every call in order with a time and answers off a state
+  file — three issues: #1 a spec, #2 its task "npm run diagram also
+  writes docs/links.pdf", blocked by #3 "mmdc is missing, so the PDF task
+  cannot be built" with `raised-here` and `needs-human` and the two lines
+  `install-tool: mmdc` and `install-command: npm install -g
+  @mermaid-js/mermaid-cli` — the issue list, the blocking relation, the
+  closing with its comment kept, the two GraphQL queries in the lines the
+  template's filter prints, `issue view`, and nothing for the rest; and
+  `mmdc` as a stand-in script, so that `bin/devloop-tool-state --build
+  mmdc` finds it. The session: `claude -p "/devloop:start-work" --model
+  claude-sonnet-5-5 --plugin-dir <copy> --allowedTools
+  "Bash,Read,Glob,Grep,Skill" --max-turns 8 --output-format text`.
+  Nothing reached GitHub. Read off the stand-in's log, its state and the
+  session log: the order of the `gh` calls, the program's three — the
+  issue list with the two labels, the blocking read, the closing with the
+  program's comment — against the first read of an issue by anything
+  else; whose comment closed; every Bash call of the run, for the
+  program, `command -v`, `which`, `gh issue close` and the two queries.
+  In session 1 the stand-in answered the blocking read with the issues
+  blocking #3 instead of the issue #3 blocks, so the program read `kind:
+  class`; the closing and the comment are the same either way, and the
+  run said the task was free; corrected before session 2, so that
+  sessions 2 to 4 are the three clean sessions and session 1 stands with
+  that note. On the branch's copy, four sessions: in every one the
+  program's three calls stood first in the stand-in's log, at #35 of the
+  main log after `bin/devloop-setup-state --fetch` at #28 and before the
+  in-flight query at #41 or #44, which listed two open issues, #3 gone;
+  the one closing the program's, with its comment "devloop closed this
+  issue at the start of a session, the tool standing on this machine
+  now: mmdc: found at ... (on 2026-10-30)"; no `gh issue close` and no
+  `command -v` by the run in `start-work`; the run then loaded
+  `build-work` (#46 or #49) and ended at the limit of turns, session 3
+  after a build subagent that built nothing against the stand-in and a
+  handover of the command with both ways, the later `!` after a no among
+  them, and the question last (#100). Session 1 said at #76 that `mmdc`
+  stands on this machine now, that the issue, by its title, was closed
+  at the start, and that the task is free again, the line the shared
+  text owes; session 3 at #100 that the issue was closed at the start.
+  In `build-work`, after the program and after `bin/devloop-tool-state
+  --build mmdc`, session 2 ran `command -v mmdc node npm` (#80) and
+  session 3 `command -v node npm` (#90) beside the program's read, a
+  reading of the run's own that decided nothing, noted here and held
+  against no line. The control, the copy of `77e9a4a`, once: the
+  in-flight query first (its call 1, listing #3 among three open
+  issues), the readiness query run by `start-work` itself (#46), `issue
+  view 3` and `command -v mmdc` by the run in `start-work` (#52), the very
+  reading of new defect 1, then `build-work` and only there
+  `bin/devloop-install-issues` (#73), closing #3 with the program's
+  comment; no `gh issue close` by the run in this one. So the branch's
+  text puts the program before the first read of an issue in 4 of 4, and
+  the text of the day before read the issue and the tool first in 1 of 1.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the defect of status line 43091 with its
+  site on that line and its evidence on the line of `start-work` that
+  carries the repair, in `78cdf5c`; the straight path of
+  `shared/install-issues-read.md` and the branch of step 2 of
+  `start-work` with the change in their notes, two lines as part of that
+  branch, one new thing for the issue the program left open; the defect of
+  status line 43123 with the bench's result in its note; the head of this
+  entry as no defect; and the runs of the two benches, source log, under
+  0.167.0, dated by the day the logs open, each on the row of the thing
+  whose case it met and anchored on its line below:
+  bench run of the SubagentStart hook's context, met at #2 and #3 of the six subagent logs under the branch's copy and absent in the control's, pass;
+  bench run of shared/install-tool.md under a yes the run runs the backed command itself, met at B1-1 #33, B1-2 #39, B1-3 #35, B2-1 #35, B2-2 #39 and B2-3 #43 and held;
+  bench run of shared/install-tool.md a tool under a yes installed and the task built against the real tool, met in the five sessions that installed and held, B2-1 no stand-in;
+  bench run of shared/install-alone.md the install alone in its call, met at the six install calls, each alone with 600000, and held;
+  bench run of shared/backed-command.md the backing before the run installs itself, met in the six subagents, the second kind each time, and held in substance;
+  bench run of shared/install-not-through.md the classifier's refusal with no second attempt, met at B2-1 #35 to #39 and held;
+  bench run of hooks/pre-tool-use-install-guard.sh pass under a yes by the route the record names, met at B1-1 #33, B1-2 #39, B1-3 #35, B2-2 #39 and B2-3 #43;
+  bench run of hooks/pre-tool-use-install-guard.sh pass under a yes by a place the record names, met at B1-1 #33, B1-2 #39, B2-2 #39 and B2-3 #43 with the variable before the command;
+  bench run of hooks/pre-tool-use-install-guard.sh block under a yes of a destination it cannot read, met at B2control-1 #27 and #31 and B2-3 #34;
+  bench run of hooks/pre-tool-use-install-guard.sh under PermissionDenied recording the refusal, met at B2-1 #35, the line in the project's record;
+  bench run of hooks/post-tool-use-install-fact.sh not written on the default branch, met at B1-1 #35, B1-2 #41, B1-3 #37, B2-2 #41 and B2-3 #45;
+  bench run of hooks/pre-tool-use-branch-guard.sh block of a write on the default branch, met at B2control-1 #46 and B1-3 #47;
+  bench run of hooks/session-start.sh the record line under a yes, met at #3 of the main log of the seven sessions of the first bench;
+  bench run of hooks/session-start.sh the record line under a no, met at #4 of the main log of the five sessions of the second bench;
+  bench run of bin/devloop-tool-state --installed for a command with both lines found, met at B1-3 #41;
+  bench run of bin/devloop-tool-state a command found on the search path, met at S1 #69, S2 #72, S3 #69, S4 #65 and B1-3 #41;
+  bench run of bin/devloop-tool-state the --build record line under no, met at S1 #69, S2 #72, S3 #69 and S4 #65;
+  bench run of shared/install-issues-read.md the program before the first read of an issue, met at S1 to S4 #35 in start-work and held, and at the control #73 in build-work;
+  bench run of shared/install-issues-read.md an issue closed said in one line, met at S1 #76 and S3 #100 and held;
+  bench run of bin/devloop-install-issues the tool found and the issue closed, met at S1 to S4 #35 and the control #73;
+  bench run of bin/devloop-install-issues kind task, met at S2 to S4 #35 and the control #73, class at S1 #35 by the stand-in's fault;
+  bench run of bin/devloop-install-issues the comment at the start of a session, met at the five closings of the second bench;
+  bench run of bin/devloop-setup-state marker lines, met at #28 of the five sessions of the second bench;
+  bench run of start-work step 1 the marker compared with the running version, met at S1 to S4 #28 to #37 and the control #28 to #36, no refresh, and held;
+  bench run of start-work step 2 every file on the main branch and the query run, met at S1 to S4 #41 or #44 after the program and held;
+  bench run on new defect 1 of the short run, status line 43091, met at S1 to S4 #35 before the query and held, the control showing the order before;
+  bench run of shared/install-tool.md the no way of the handover, met at S3 #100 with both ways and the later ! and held.
+  The tool before the commit: exit 0, no broken record, no uncovered line.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
@@ -43506,6 +43822,22 @@ of them if the reason stops holding — the reason is the point, not the verdict
   stays recorded, without a milestone. Reopen if a run writes one of these
   forms, or once that pass is made — a condition derived from the reason,
   the decision naming none.
+- **A guard on `gh issue close` for an issue of a missing install.** A
+  `PreToolUse` hook would block `gh issue close` for an issue carrying
+  `install-tool` and `install-command`, so that only
+  `bin/devloop-install-issues` closes such an issue, after new defect 1 of
+  the roadmap entry of 30 October 2026 on the short run, where the second
+  session sent `gh issue close` with a comment of its own in `start-work`
+  and Claude Code's classifier refused it. Rejected on 30 October 2026, in
+  the roadmap entry of that date on the start reading the install issues,
+  the decision of the person: at every closing of an issue it would first
+  have to read GitHub for what the issue holds, it would block every
+  closing while GitHub does not answer, and it would have to know the
+  other forms of closing an issue, `gh api` with `state=closed` among
+  them; that is far more than the harm it prevents, and the program that
+  removes the cause closes through `gh` itself, outside the Bash tool of
+  the run. Reopen if a run closes an install issue by hand after the
+  program ran before every read of an issue.
 
 ## Names that were rejected
 

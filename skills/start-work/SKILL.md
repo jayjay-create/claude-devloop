@@ -120,7 +120,22 @@ introduction without an idea as it stands there; this skill says what is
 said, not the words.
 
 **If every file of the setup is on the main branch** — no `missing:` line in
-step 1's answer — skip the introduction. Run the
+step 1's answer — skip the introduction, and run the program the text below
+names before the in-flight query, since 30 October 2026, decided by the
+person that day, the roadmap entry of that date on the start reading the
+install issues: the query is the first thing of this start that reads an
+open issue, so an issue for a missing install whose tool stands on this
+machine now is closed by the program before this step sees it, and the
+task it held is free. In the second session of the short run of 30 October
+2026 this step read such an issue, read the tool itself with `command -v`
+and sent `gh issue close` with a comment of its own, which Claude Code's
+classifier refused, new defect 1 of the roadmap entry of that date on the
+short run; the same text held in `build-work` in both sessions of that run,
+and the cause is removed where it lay.
+
+!`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issues-read`
+
+Then run the
 in-flight query from `docs/agents/issue-tracker.md` and say what it found, in at
 most five lines, where a question of this step follows it — whether to land
 a pull request, or the open question — or where the stage it leads to asks
@@ -129,7 +144,14 @@ turn comes only once a task is built, or the run goes alone, nothing of it is
 said, since 17 October 2026: the room to name a different piece would reach
 them once that piece is built. **Name the work; do not number it.** Someone
 back after a week remembers what they were building, not that it was issue
-nine.
+nine. An open issue the query lists that carries the two lines of an issue
+for a missing install, `install-tool` and `install-command`, is one the
+program read and left open — the tool not standing on this machine, the
+search path not reaching it, or the tool not read — and this skill closes
+nothing itself and reads no tool itself, since 30 October 2026: the issue
+is named as the list below names a loose issue carrying `raised-here`, and
+what is said of an issue the program closed, or of a folder the search path
+does not reach, the text above says, at the place it names.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
 
