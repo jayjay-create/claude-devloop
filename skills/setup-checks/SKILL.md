@@ -121,12 +121,12 @@ that called. Everything else below applies unchanged.
   the issue, sets the check up and goes on with the task — the issue
   carrying the two lines of the form below, which that start reads —; and
   that the command stands in the issue as well. Where the command asks
-  something, `sudo apt install` say, form B holds, in three steps: a second
-  terminal window opened, not the one Claude Code runs in, with what the
-  command asks as the reason — a password —; the command typed there;
-  `/devloop:start-work` typed here in Claude Code; then the same close, the
-  issue closed, the check set up, the task gone on with, the command in the
-  issue as well.
+  something, `sudo apt install` say, and in doubt, form B holds, in three steps:
+  a second terminal window opened, not the one Claude Code runs in, with what
+  the command asks as the reason — a password —, in doubt what it may ask; the
+  command typed there; `/devloop:start-work` typed here in Claude Code; then the
+  same close, the issue closed, the check set up, the task gone on with, the
+  command in the issue as well.
 - **The command is not an install and the guard matched on text.** Then nothing
   is blocking the class, and `skipped` would be an entry that is not true: a
   class standing as skipped while nothing hinders it, which the next reader takes
@@ -505,11 +505,11 @@ turn, with where they type it by "Where the person types a command devloop
 hands them" above — in Claude Code with `!` in front where it asks nothing,
 form A, the line given with the `!` and the text saying so; in a second
 terminal window, not the one Claude Code runs in, where it asks something,
-`sudo apt install` say, form B, the text naming what it asks and asking them
-to say here once it is through; in doubt B —, and that once it has run the
-run reads that the tool is there and sets the check up; wait for the form's
-signal, the command's output in the conversation under A and their word
-under B; then
+`sudo apt install` say, form B, the text naming what it asks and asking them to
+say here once it is through; in doubt B, with what it may ask —, and that
+once it has run the run reads that the tool is there and sets the check up;
+wait for the form's signal, the command's output in the conversation under A
+and their word under B; then
 read with `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the
 command as handed over and the tool, both its lines, never `command -v`:
 the first reads the folder the installer writes to, the second whether the
@@ -1128,16 +1128,17 @@ form:
   task up again, or sets the check up again, or both, by the kinds open as the
   yes above has them; and until then they are asked again at every start with
   `/devloop:start-work --auto`, the input named as they type it; with several,
-  the issues, the tasks, the checks. Where a command asks something, `sudo apt
-  install` say, the line says form B: that the issue stays open; that the
-  command, named, asks — a password — and is therefore typed in a second
-  terminal window, not the one Claude Code runs in; that `/devloop:start-work`
-  typed here afterwards closes the issue and takes the task up again, or sets
-  the check up again, or both; and the asking again at every start, as above.
-  With one issue the fields stand at the bound of `output-styles/devloop.md`;
-  with two issues whose commands ask they pass it, so the question does not fit
-  the widget and is asked as text at the end of the turn, with its text before
-  it in the same message, as the style says.
+  the issues, the tasks, the checks. Where a command asks something,
+  `sudo apt install` say, and in doubt, the line says form B: that the issue
+  stays open; that the command, named, asks — a password —, in doubt what it may
+  ask, and is therefore typed in a second terminal window, not the one Claude
+  Code runs in; that `/devloop:start-work` typed here afterwards closes the
+  issue and takes the task up again, or sets the check up again, or both; and
+  the asking again at every start, as above. With one issue the fields stand at
+  the bound of `output-styles/devloop.md`; with two issues whose commands ask
+  they pass it, so the question does not fit the widget and is asked as text at
+  the end of the turn, with its text before it in the same message, as the style
+  says.
 
 The issue's number in place of its title is an exception to
 `shared/refer-by-name.md`, for this question alone: the reason of that

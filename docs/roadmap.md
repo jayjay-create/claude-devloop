@@ -45168,6 +45168,49 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   lost their counting run there already. The twenty checks: nineteen print
   what they printed after the second commit, check 16 its green line.
 
+  **Decided after the review, by the person on 1 November 2026, and a fourth
+  commit.** On the four places listed above for the person, and one more.
+  (2) The template of `issue-tracker.md` stays without its five
+  measurements, which stand in `docs/rationale.md` under
+  `skills/setup-project/SKILL.md`; a setup and a refresh write the file
+  without them. (3) No row for `docs/rationale.md` in the table of
+  `record-lessons`: a lesson is a failure, not the reason of a rule built,
+  and the table changes in part 2 anyway, where the open defects get their
+  file. (4) The sentence stays: where a rule of a loaded text is written or
+  changed, its point in `docs/rationale.md` is written or changed with it.
+  (1) In doubt B at the three places that said B only where a command asks:
+  `setup-checks`, "Step 3", the handover of a refused install, and "Step 8",
+  the no line; `diagnose-bug`, "Step 6", a command for a diagnosis; as
+  `shared/install-tool.md` and `setup-checks`, "Step 3", the install after a
+  yes, had it already. And in doubt the text names what the command may ask,
+  since every approved wording of form B gives „fragt nach deinem Passwort“
+  as the reason, which in doubt claims what the run does not know: in doubt
+  „kann etwas von dir abfragen, etwa dein Passwort“ in its place, said so at
+  the five places, in `shared/skill-name.md`, and in
+  `docs/skill-conventions.md` under "Where the person types a command
+  devloop hands them while Claude Code runs"; approved with the example of
+  the no in doubt: „Dann bleibt das Issue offen. Der Befehl
+  `curl -fsSL https://example.com/install.sh | sh` kann etwas von dir
+  abfragen, etwa dein Passwort, darum gib ihn in einem zweiten
+  Terminalfenster ein, nicht in dem, in dem Claude Code läuft. Gibst du
+  danach hier `/devloop:start-work` ein, schließe ich das Issue und nehme
+  die Aufgabe wieder auf. Bis dahin frage ich bei jedem Start mit
+  `/devloop:start-work --auto` wieder.“ The four points of
+  `docs/rationale.md` that quote a wording of form B, and the one on the two
+  forms under `shared/skill-name.md`, carry it. (5) The 32 inner
+  contradictions in the loaded texts that the report of this order,
+  `~/devloop-report-2026-11-01-history-out.md`, names in its sections 8 to
+  20, each standing at `8afb558` and untouched by this branch, are recorded
+  as defects with their should in part 2, in the file of the open defects,
+  and not here. In `docs/stock-take.tsv` seven records re-anchored onto the
+  lines that changed. The tool after it: exit 0, broken records 0, uncovered
+  lines 0 of 5357, units without a straight path 0, findings 14, closed
+  defects 42; walked 619, built and never walked 1459, recorded and not
+  built 461, undetermined 24, as before. The twenty checks: seventeen print
+  what they printed after the second commit; checks 17 and 18 the same
+  number of lines in the same files, line numbers and breaks aside; check 16
+  its green line.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

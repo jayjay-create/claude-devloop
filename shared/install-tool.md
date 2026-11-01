@@ -135,10 +135,10 @@
    front where the command asks nothing, form A, the line given with the `!`; in
    a second terminal window, not the one Claude Code runs in, where it asks
    something, a password for `sudo` say, form B, the text naming what it asks
-   and asking them to say here once it is through; in doubt B —, and the build
-   picks up once the tool is where that command puts it and the search path
-   finds it, read by the paragraph on reading the result above after the
-   form's signal, the command's output in the conversation under A and
+   and asking them to say here once it is through; in doubt B, with what it may
+   ask —, and the build picks up once the tool is where that command puts it and
+   the search path finds it, read by the paragraph on reading the result above
+   after the form's signal, the command's output in the conversation under A and
    their word under B. The way of the no, which comes second and
    **a decline is an answer too, not a wall**: on a no the install becomes an
    issue carrying the command that blocks this task, as "The task itself"

@@ -159,11 +159,12 @@ typed in a second terminal window, the text says expressly that it is not
 the window in which Claude Code runs, names what the command asks, and
 asks them to say here once it is through; their word is the signal, and
 what the run reads after it, it reads as before. Where the run does not
-know for certain whether a command asks, B holds. A command that does not
-end by itself — a server a prototype needs — would hold Claude Code under
-A and goes to the second window as B, the reason named being that it runs
-until they end it. Under either form the command carries everything it
-needs, `--repo OWNER/REPO` and `cd <directory> &&`, by the rule on a
+know for certain whether a command asks, B holds, and the text names what
+it may ask, decided by the person on 1 November 2026. A command that does
+not end by itself — a server a prototype needs — would hold Claude Code
+under A and goes to the second window as B, the reason named being that it
+runs until they end it. Under either form the command carries everything
+it needs, `--repo OWNER/REPO` and `cd <directory> &&`, by the rule on a
 command handed over, since the vendor's page says nothing of the folder a
 `!` command runs in. That page, `code.claude.com/docs/en/interactive-mode`,
 section "Shell mode with `!` prefix", read on 28 October 2026: shell mode

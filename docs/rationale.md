@@ -740,7 +740,11 @@ loaded text no longer carries stands here at its rule.
   Claude Code läuft, denn der Befehl fragt nach deinem Passwort.“ — „2. Gib dort
   ein: `sudo apt install gitleaks`“ — „3. Gib hier in Claude Code
   `/devloop:start-work` ein.“ — „Dann schließe ich das Issue, richte die Prüfung
-  ein und mache mit der Aufgabe weiter. Der Befehl steht auch im Issue.“
+  ein und mache mit der Aufgabe weiter. Der Befehl steht auch im Issue.“ In
+  doubt whether the command asks, „kann etwas von dir abfragen, etwa dein
+  Passwort“ stands in place of „fragt nach deinem Passwort“, decided by the
+  person on 1 November 2026, entry "The loaded texts lose their history, reasons
+  move to docs/rationale.md."
 ### With nobody there
 
 - **A refusal of anything else here ends the task, the safety check of Claude
@@ -967,7 +971,10 @@ loaded text no longer carries stands here at its rule.
   installiert, aber dieser Ordner steht nicht in deinem `PATH`, darum findet die
   Prüfung `gitleaks` nicht. So nimmst du ihn auf:“, the five steps as under
   `shared/install-tool.md`, then „Dann finde ich `gitleaks` und richte die
-  Prüfung ein.“
+  Prüfung ein.“ In doubt whether the command asks, „kann etwas von dir abfragen,
+  etwa dein Passwort“ stands in place of „fragt nach deinem Passwort“, decided
+  by the person on 1 November 2026, entry "The loaded texts lose their history,
+  reasons move to docs/rationale.md."
 ### Step 4 — Put each class in place: its tool, its target, its findings in stages
 
 - **The hook writes the install line from the guard's reading, without the
@@ -1324,7 +1331,17 @@ loaded text no longer carries stands here at its rule.
   darum gib ihn in einem zweiten Terminalfenster ein, nicht in dem, in dem
   Claude Code läuft. Gibst du danach hier `/devloop:start-work` ein, schließe
   ich das Issue und nehme die Aufgabe wieder auf. Bis dahin frage ich bei jedem
-  Start mit `/devloop:start-work --auto` wieder.“
+  Start mit `/devloop:start-work --auto` wieder.“ In doubt whether the command
+  asks, „kann etwas von dir abfragen, etwa dein Passwort“ stands in place of
+  „fragt nach deinem Passwort“, decided by the person on 1 November 2026, entry
+  "The loaded texts lose their history, reasons move to docs/rationale.md."
+  Approved the same day as the example of the no in doubt: „Dann bleibt das
+  Issue offen. Der Befehl `curl -fsSL https://example.com/install.sh | sh` kann
+  etwas von dir abfragen, etwa dein Passwort, darum gib ihn in einem zweiten
+  Terminalfenster ein, nicht in dem, in dem Claude Code läuft. Gibst du danach
+  hier `/devloop:start-work` ein, schließe ich das Issue und nehme die Aufgabe
+  wieder auf. Bis dahin frage ich bei jedem Start mit
+  `/devloop:start-work --auto` wieder.“
 - **At its second asking the line naming the permission and the earlier no
   stands in the question field; after the two yes the classes they open are said
   in one line with their tools; a class off for an install goes into the
@@ -3718,7 +3735,10 @@ Nothing in this file stood as history; its rules carry their own reasons.
   with the last sentence „Führst du den Befehl später doch aus und sagst mir
   hier Bescheid, schließe ich das Issue sofort und baue die Aufgabe. Sonst
   geschieht das beim nächsten Start.“, the question „Führst du den Befehl aus
-  oder lehnst du ab?“
+  oder lehnst du ab?“ In doubt whether the command asks, „kann etwas von dir
+  abfragen, etwa dein Passwort“ stands in place of „fragt nach deinem Passwort“,
+  decided by the person on 1 November 2026, entry "The loaded texts lose their
+  history, reasons move to docs/rationale.md."
 
 ## `shared/language-opening.md`
 
@@ -4177,7 +4197,12 @@ Nothing in this file stood as history; its rules carry their own reasons.
   user.email=probe@example.invalid status` ran and showed git's state, a command
   the identity guard blocks when the run calls it, and Claude answered the
   output by itself. The approved handover in both forms is quoted under
-  `shared/install-tool.md`.
+  `shared/install-tool.md`. In doubt the text names what the command may ask: a
+  reason saying that it asks would claim what the run does not know. The
+  wordings of form B then carry „kann etwas von dir abfragen, etwa dein
+  Passwort“ in place of „fragt nach deinem Passwort“, decided by the person on 1
+  November 2026, entry "The loaded texts lose their history, reasons move to
+  docs/rationale.md."
 
 ## `shared/status-forms.md`
 

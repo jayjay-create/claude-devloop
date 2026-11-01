@@ -60,12 +60,12 @@ password for `sudo` — is typed in a second terminal window, form B: the text
 says expressly that it is not the window in which Claude Code runs, names what
 the command asks, and asks them to say here once it is through; their word is
 the signal, and what the run reads after it, it reads as before. Where the run
-does not know for certain whether a command asks, B holds. A command that does
-not end by itself — a server a prototype needs — would hold Claude Code under A
-and goes to the second window as B, with the reason that it runs until they end
-it. Under either form the command carries everything it needs, `--repo
-OWNER/REPO` and `cd <directory> &&`, as above. The hooks of devloop do not fire
-on a `!` command: a hook that is to see a command of the person sees it under A
-as little as in their own terminal.
+does not know for certain whether a command asks, B holds, the text naming what
+it may ask. A command that does not end by itself — a server a prototype needs —
+would hold Claude Code under A and goes to the second window as B, with the
+reason that it runs until they end it. Under either form the command carries
+everything it needs, `--repo OWNER/REPO` and `cd <directory> &&`, as above. The
+hooks of devloop do not fire on a `!` command: a hook that is to see a command
+of the person sees it under A as little as in their own terminal.
 
 **A file is named by its path where the work is about the file.**
