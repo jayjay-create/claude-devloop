@@ -48,17 +48,16 @@ creating, attaching and ordering issues in this project.
 This stage asks nothing that the test above lets through: the split follows from
 the spec and from the rules below, and "Before you create anything" says so. So
 the order a planning run follows at an unanswered question — under the section
-of the same name in `plan-work` — is needed here for one thing alone, since 9
-October 2026: a refusal — a guard's block, the no of the classifier of auto
-mode, the no of the hook on permission prompts, since 18 October 2026 the
-refusal of a safety check built into Claude Code — goes through it, with the
-thing the refused command would have settled as the question, tried no
-second time and reached no other way, and the refusal is named where that
-order records the step, the command as it ran and the message with it. What
-this stage does fork
-on is the mode, in one place, at the end: "After creating" says what happens on
-each answer the user gave at the end of the sharpening, or on `--auto`, and reads
-the mode off the mark that answer wrote.
+of the same name in `plan-work` — is needed here for one thing alone: a refusal
+— a guard's block, the no of the classifier of auto mode, the no of the hook on
+permission prompts, the refusal of a safety check built into Claude Code — goes
+through it, with the thing the refused command would have settled as the
+question, tried no second time and reached no other way, and the refusal is
+named where that order records the step, the command as it ran and the message
+with it. What this stage does fork on is the mode, in one place, at the end:
+"After creating" says what happens on each answer the user gave at the end of
+the sharpening, or on `--auto`, and reads the mode off the mark that answer
+wrote.
 
 ## What a task is
 
@@ -138,11 +137,9 @@ them. Asking hands them a decision they have nothing to decide it with.
 With them there, the split, as a numbered list — title, one line each, and
 which tasks wait for which — is said at the next message that ends a turn
 with text, as what was created, and not before it is created; with nobody
-there it stands in the tracker alone. No room to stop it is offered, since
-17 October 2026: the next message that ends a turn comes only once the
-issues exist and, with them there, once the first task is built, when
-re-cutting costs real effort. Until then it was presented before the
-creating, said in a way they could stop.
+there it stands in the tracker alone. No room to stop it is offered: the next
+message that ends a turn comes only once the issues exist and, with them there,
+once the first task is built, when re-cutting costs real effort.
 
 ## After creating
 
@@ -155,15 +152,15 @@ issue too), and which one is ready first.
 Then what happens depends on how this piece of work was told to run, and the mark
 says which.
 
-- **With them**, start on the first task, and say nothing of it before, since
-  17 October 2026: one task at a time, each with tests, each reviewed before it
-  lands, and they see the result before anything is merged, at the gate. Do not
-  ask permission first — nothing lands without the gate at the end of the
-  build, and that gate is where the decision actually sits.
-- **Alone, `build`**: run `build-work`, and say nothing of it, since 17
-  October 2026. Its section on the
-  unattended mode reads the seven preconditions — all seven, this time with tasks
-  to read the third against — finds the mark this run wrote, and opens the run.
+- **With them**, start on the first task, and say nothing of it before: one task
+  at a time, each with tests, each reviewed before it lands, and they see the
+  result before anything is merged, at the gate. Do not ask permission first —
+  nothing lands without the gate at the end of the build, and that gate is where
+  the decision actually sits.
+- **Alone, `build`**: run `build-work`, and say nothing of it. Its section on
+  the unattended mode reads the seven preconditions — all seven, this time with
+  tasks to read the third against — finds the mark this run wrote, and opens the
+  run.
 - **Alone, `plan`**: this is the halt before the first build, and the run ends
   here. Say what is in the tracker to read: the spec by its title, how many
   tasks, which one is ready first and what it unblocks. Where the spec names
@@ -171,23 +168,19 @@ says which.
   says not found or not read, say that the work needs it and, where the
   line says not found, that it is missing on this machine, or, where it
   says not read, that whether it stands cannot be read now and why, the
-  cause in their language and not in the program's words, since 28 October
-  2026, and that whether the build installs it or they get the command for
-  it is decided by their permission to install as it stands then — what the
-  assumptions of a round of `plan-work` say of such a tool, said here
-  since 27 October 2026, new defect 4 of the roadmap entry of that date on
-  the three closing runs, because this halt is where they next read on this
-  route; `plan-work` says what is said, not the words. Say that nothing is
-  built, and how it goes on: the next session opens with this spec and its ready
-  tasks and takes the first — with them there, or alone where they type `--auto`
-  then, which is the only thing that sets the mode on that route; the input is
-  named as they type it in Claude Code, `/devloop:start-work --auto` for the run
-  without them and `/devloop:start-work` for the run with them, never the flag
-  alone, since 27 October 2026, defect 2 of the roadmap entry of that date on
-  the three closing runs. Then the
+  cause in their language and not in the program's words, and that whether the
+  build installs it or they get the command for it is decided by their
+  permission to install as it stands then — what the assumptions of a round of
+  `plan-work` say of such a tool, said here because this halt is where they next
+  read on this route. Say that nothing is built, and how it goes on: the next
+  session opens with this spec and its ready tasks and takes the first — with
+  them there, or alone where they type `--auto` then, which is the only thing
+  that sets the mode on that route; the input is named as they type it in Claude
+  Code, `/devloop:start-work --auto` for the run without them and
+  `/devloop:start-work` for the run with them, never the flag alone. Then the
   mark goes, and the run stops; this is one of the exits the mark has to be
-  cleared at, and nothing was set aside at a fetch on the way here, since
-  the cut fetches nothing:
+  cleared at, and nothing was set aside at a fetch on the way here, since the
+  cut fetches nothing:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 

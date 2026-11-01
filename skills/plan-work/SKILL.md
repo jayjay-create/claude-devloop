@@ -38,10 +38,10 @@ working tree.
 Where its answer carries a `missing:` line, this project is not set up on the
 main branch — never set up, or written and not landed, which the working tree
 cannot tell apart. **Run `setup-project`, and say nothing before it. Do not
-ask.** Why its questions come now stands in its first question, as its step
-0 says, since 17 October 2026. There is nothing to decide: without a tracker
-there is nowhere to put a spec, so the only other answer is to abandon what
-the user just asked for. Do not improvise around it either.
+ask.** Why its questions come now stands in its first question, as its
+step 0 says. There is nothing to decide: without a tracker there is nowhere
+to put a spec, so the only other answer is to abandon what the user just
+asked for. Do not improvise around it either.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text project-language`
 
@@ -62,17 +62,13 @@ the user just asked for. Do not improvise around it either.
 **Run the in-flight query from `docs/agents/issue-tracker.md` — the whole
 command, both halves.** Not only the label query below. An open pull request is
 work that is already built and has not landed, and it is the one thing a fresh
-plan must never be written on top of. Measured on 31 August 2026 in a test
-project, twice in a row: a run asked only for open issues, reported that nothing
-was open, and opened a planning issue for work whose finished pull request was
-sitting open against the very issue it duplicated.
+plan must never be written on top of.
 
 **And a query that did not answer is not "nothing is in flight".** An empty
-result is an answer, and the planning goes on on it without a word, since 17
-October 2026; a command that was refused or errored
-is not, and reporting it as an empty tracker is the same duplicate-planning
-failure by another route. Name the command and the message that came back
-instead, and do not open a planning issue on it.
+result is an answer, and the planning goes on on it without a word; a command
+that was refused or errored is not, and reporting it as an empty tracker is
+the same duplicate-planning failure by another route. Name the command and the
+message that came back instead, and do not open a planning issue on it.
 
 Read it off the query's own columns, never off a branch name — a branch named
 after a task is a string this workflow writes, and a pull request from anywhere
@@ -91,7 +87,7 @@ else carries whatever its author chose.
   is what makes it one.
 - **`mine: false`** — somebody else opened it. Carry on; it is not this work
   and not yours to land. It is named on the planning issue, as a comment once
-  the issue stands, and not said, since 17 October 2026.
+  the issue stands, and not said.
 
 ## The planning issue
 
@@ -127,8 +123,8 @@ Then, still before Stage 1, ask the tracker for open issues labelled
 `being-planned`. This is the second half of the stock-take and not the whole of
 it — the label sits on a planning issue, so an empty answer says only that no
 plan was left half-written, and says nothing whatever about work that is already
-built. Reporting "nothing open" off this query alone is how the run above came
-to duplicate an issue.
+built. Reporting "nothing open" off this query alone is how work that is
+already built gets planned a second time.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
 
@@ -138,10 +134,9 @@ to duplicate an issue.
 - **Several** — list their titles and ask which one, or whether this is new.
 
 If it is the same work, read the issue and its comments and continue at the
-stage after the one last finished, saying nothing of which, since 17 October
-2026. Do not repeat a finished stage. Stage 2's
-report is a summary, so re-read any code you need to act on rather than trusting
-the summary to be complete.
+stage after the one last finished, saying nothing of which. Do not repeat a
+finished stage. Stage 2's report is a summary, so re-read any code you need to
+act on rather than trusting the summary to be complete.
 
 **A plan picked up past Stage 1 is asked how it should run before it goes on** —
 the question Stage 1 closes with, under the same conditions, unless `--auto` was
@@ -153,10 +148,10 @@ describes — belongs to a run that broke off, since planning is one session and
 nothing else writes one there. Delete it with a shell command and ask; that
 you did stands in the question field, before the question line, as part of
 why the question comes now — the run that wrote the mark was going on
-without them and broke off — and not as text before the call, since 17
-October 2026. This is the one place a mark not this run's is deleted rather than
-refused: somebody is here to answer, and the build stage says why the same find
-at the start of a build is a refusal instead.
+without them and broke off — and not as text before the call. This is the one
+place a mark not this run's is deleted rather than refused: somebody is here
+to answer, and the build stage says why the same find at the start of a build
+is a refusal instead.
 
 ## How to ask
 
@@ -217,22 +212,20 @@ asks the question with somebody there.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-deletion`
 
-**A refusal before the build goes through the same order, since 9 October
-2026**: a guard's block, the no of the classifier of auto mode, the no of
-the hook on permission prompts, which answers every prompt of this session
-while the mark stands, `hooks/permission-request-unattended.sh`, or, since
-18 October 2026, the refusal of a safety check built into Claude Code,
-defect 12 of the roadmap entry of 16 October 2026 on the runs of that day;
-and since the same day a refusal a subagent of this skill names in its report,
-a drafting or a checking agent of Stage 3 say, as one of the run's own. None
-of them is tried again or reached another way. The thing the refused command
-would have settled is the question, and the step the order stops at records
-the refusal where it records the question — the command as it ran and the
-message that came back, in the spec beside the decision, on the issue that
-carries the cut part, or in the spec as undecided; where the whole of the
-work hangs on it, the stop above, with the refusal named. In the build the
-same refusal becomes an issue against the task, "A guard's block, with
-nobody there" in `build-work`; here there is no task yet to put down.
+**A refusal before the build goes through the same order**: a guard's block,
+the no of the classifier of auto mode, the no of the hook on permission
+prompts, which answers every prompt of this session while the mark stands,
+`hooks/permission-request-unattended.sh`, or the refusal of a safety check
+built into Claude Code; and a refusal a subagent of this skill names in its
+report, a drafting or a checking agent of Stage 3 say, as one of the run's
+own. None of them is tried again or reached another way. The thing the
+refused command would have settled is the question, and the step the order
+stops at records the refusal where it records the question — the command as
+it ran and the message that came back, in the spec beside the decision, on
+the issue that carries the cut part, or in the spec as undecided; where the
+whole of the work hangs on it, the stop above, with the refusal named. In the
+build the same refusal becomes an issue against the task, "A guard's block,
+with nobody there" in `build-work`; here there is no task yet to put down.
 
 **Two places in Stage 3 are questions of this kind, and are answered here so the
 stage does not have to.** A decision record whose ground no longer holds: alone,
@@ -253,11 +246,10 @@ that moment and the branch guard blocks the editing tool there on purpose.
 First the fetch, three attempts, by the command under "When the main branch
 cannot be fetched or fast-forwarded" above; where the third fails too, stop
 as that section says, opening with that the run cannot read just now where
-the main branch stands on GitHub and that for that nothing is begun here —
-the wording approved on 12 October 2026, point 19 of part B of the roadmap
-entry of that date, since nothing is fast-forwarded here and only the fetch
-can fail — the run without them does not begin, and no mark is written. On
-a fetch that answered, the mark:
+the main branch stands on GitHub and that for that nothing is begun here,
+since nothing is fast-forwarded here and only the fetch can fail — the run
+without them does not begin, and no mark is written. On a fetch that
+answered, the mark:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
@@ -265,11 +257,11 @@ A mark carrying another run's commit: `build-work` says what that means at the
 start of a build. It is deleted wherever the unattended part ends — the halt
 before the first build, a stop with a reason, the user's word to stop, the
 finish of a build — by the one text that stands at the stop above and at the
-endings of the cut and the build, since 16 October 2026, and a session that
-simply ends cannot delete it, which is
-what the rule under "Picking up an interrupted plan" is for. It carries no
-limit and enforces nothing; it answers the one question a run cannot re-derive
-later, which is why it may be a file where a count may not.
+endings of the cut and the build, and a session that simply ends cannot
+delete it, which is what the rule under "Picking up an interrupted plan" is
+for. It carries no limit and enforces nothing; it answers the one question a
+run cannot re-derive later, which is why it may be a file where a count may
+not.
 
 ## Stage 1 — Sharpen the idea
 
@@ -282,15 +274,12 @@ what the rule on this interview below leaves to you, put it as the question
 on the assumptions of the round that rule describes, first in the call and
 ahead of the round's questions, and then ask every decision that is left —
 numbered, each with your recommended answer so a single word can settle it,
-through the widget on the answer as that rule says, since 19 October 2026 —
-at most three in a round, and the rest of the frontier before anything the
-answers unlock. Say roughly how many rounds you expect. Then wait. The
-answers open the next round. After every round, post the settled answers as
-a comment on the planning issue, so that a session which ends inside this
-stage leaves the issue with what was settled and not empty — since 16
-October 2026, point 20 of part B of the roadmap entry of 12 October 2026;
-until then they went once, after the question at the end of this stage, and
-a pick-up found the issue empty on 30 September 2026.
+through the widget on the answer as that rule says — at most three in a
+round, and the rest of the frontier before anything the answers unlock. Say
+roughly how many rounds you expect. Then wait. The answers open the next
+round. After every round, post the settled answers as a comment on the
+planning issue, so that a session which ends inside this stage leaves the
+issue with what was settled and not empty.
 Done when the frontier is empty — no question is answerable now, every
 branch of the tree visited, nothing left silently assumed, the way the
 interview of `untangle-idea` ends — the hard core of the user stories and of
@@ -298,89 +287,58 @@ what is out of scope is written down, and no question is left whose answer
 somebody has to see something to give. Those three are what "the idea stands"
 means everywhere in this file, and the run acts on it only once the user
 has confirmed, at the question below, that a shared understanding is
-reached. Since 16 October 2026, point 20: until then the first condition
-read "nothing important is open", which is the run's own interpretation
-where the empty frontier is a state of the tree that anybody holding the
-tree can check; the cap of three questions in a round changes how many
-rounds a frontier takes and not when the stage ends.
+reached. The empty frontier is a state of the tree that anybody holding the
+tree can check, not the run's own reading; the cap of three questions in a
+round changes how many rounds a frontier takes and not when the stage ends.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text three-questions`
 
-**A tool outside the project that the work needs is named, and who installs
-it is not settled here**, since 24 October 2026, defects 9 and 2 of the
-roadmap entry of that date on the six closing runs: not as an assumption of
-a round and not with them, since the install record read at the build
-decides it, `build-work` step 3 point 7, and the record can change between
-the planning and the build. Whether such a tool stands on this machine is
-read, never assumed, since 27 October 2026, new defect 4 of the roadmap
-entry of that date on the three closing runs, where one planning wrote that
-`yq` was installed without a record that read the machine and carried that
-into the build, and the rounds of two plannings said nothing of the tools
-that were missing: before anything is said of a tool outside the project
-anywhere — in the assumptions of a round, a comment on the planning issue,
-a brief to an agent, the spec or a message — run
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --planning` once, with the
-shell, with every such tool named so far, each as it is called on the
-command line and a browser for tests as `VENDOR:NAME`, as the program's
-head says, and say of a tool only what the program printed: a command
-found, with the path, or not found on the search path; a browser found in
-the version the project's test tool needs, not found there, or not read,
-with the cause. A tool the code read for a round names — a script of the
-project that calls `yq`, say — is known before that round, so the program
-runs before the round and the round's assumptions carry its line as the
-next sentences say; since 30 October 2026, the rest of new defect 4 of the
-roadmap entry of 27 October 2026 on the three closing runs, decided by the
-person that day: the run of 29 October 2026 read such a script at its
-records #175 to #177, named no tool in its round and ran the program only
-after it. It reads this machine and nothing else, and says of the
-record only that the build decides — even where another program printed
-today's answer, as `${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions`,
-run for the question on the mode below, does in its line on condition 6:
-the answer can change before the build, and the run of 29 October 2026
-said „Sie steht für dieses Projekt auf „nein“.“ before the design
-question, the rest of that defect. No mechanism holds either half: under
-`--planning` the program prints no answer, and which tools the code the
-planning reads needs, when the program is run and what the planning says
-of the record, no program and no hook sees; what the program gives is the
-one line a planning has to say of a tool, and the record's line it does
-not give. Where the line says not found — a
-command not on the search path, or a browser that does not stand in the
-version the project's test tool needs, missing on this machine as the
-command is, since 28 October 2026, the paragraph of that date in the
-roadmap entry of 27 October 2026 on the program — the assumptions of the
-round say that the work needs it and that it is missing, and that whether
-the run installs it at the build or they get the command for it is decided
-by their permission to install as it stands for this project then. Where
-the line says not read, the assumptions say that the work needs the
-browser, that whether it stands on this machine in the version needed
-cannot be read now and why — the cause the line names, said in their
-language and not in the program's words, since 28 October 2026 — and that
-the same permission decides. Where a
-tool becomes known only after the round — in a draft, in the comparison or
-in the spec, as in run 2 of 26 October 2026, whose planning read `htmlq`
-and `mmdc` missing and wrote it into a comment alone — run the program
-then, and say what the assumptions of a round say of such a tool at the
-place where they next read: with them there, in the message that ends the
-turn that found it, before the design question where that is the next;
-after the answer "The plan without them", in the halt before the first
-build, which `cut-into-tasks` says beside the spec since 27 October 2026;
-after "Full flexibility", in the last message of the run, which names what
-the build installed under their yes, `build-work` step 3 point 7, since the
-mode without them starts under a yes alone, so that there they read the
-install and not the question who installs. The comment of the stage that
-found it carries the program's line as well. No stage of this skill judges
-an install: not the comment
-of Stage 2, where run 3a wrote that the record allowed the route npm alone
-and a build could not install `yq`, the record naming `/opt` among its
-places, and not the spec, whose sections below say where such a tool
-stands. Run 1 told the person they install `htmlq` themselves because the
-run installs nothing outside the project, and wrote it into the spec under
-Out of scope; in run 2a the person corrected the same, that the permission
-to install that holds when the work is built decides who installs, not the
-spec. The wording approved on 24 October 2026 stands in the roadmap entry of
-that date on how an install is recorded, (b), and the one for a browser
-not read, approved on 28 October 2026, in the roadmap entry of 27 October
-2026 on the program; this skill says what is said, not the words.
+**A tool outside the project that the work needs is named, and who installs it
+is not settled here**: not as an assumption of a round and not with them, since
+the install record read at the build decides it, `build-work` step 3 point 7,
+and the record can change between the planning and the build. Whether such a
+tool stands on this machine is read, never assumed: before anything is said of a
+tool outside the project anywhere — in the assumptions of a round, a comment on
+the planning issue, a brief to an agent, the spec or a message — run
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --planning` once, with the shell,
+with every such tool named so far, each as it is called on the command line and
+a browser for tests as `VENDOR:NAME`, as the program's head says, and say of a
+tool only what the program printed: a command found, with the path, or not found
+on the search path; a browser found in the version the project's test tool
+needs, not found there, or not read, with the cause. A tool the code read for a
+round names — a script of the project that calls `yq`, say — is known before
+that round, so the program runs before the round and the round's assumptions
+carry its line as the next sentences say. It reads this machine and nothing
+else, and says of the record only that the build decides — even where another
+program printed today's answer, as
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions`, run for the question on
+the mode below, does in its line on condition 6: the answer can change before
+the build. No mechanism holds either half: under `--planning` the program prints
+no answer, and which tools the code the planning reads needs, when the program
+is run and what the planning says of the record, no program and no hook sees;
+what the program gives is the one line a planning has to say of a tool, and the
+record's line it does not give. Where the line says not found — a command not on
+the search path, or a browser that does not stand in the version the project's
+test tool needs, missing on this machine as the command is — the assumptions of
+the round say that the work needs it and that it is missing, and that whether
+the run installs it at the build or they get the command for it is decided by
+their permission to install as it stands for this project then. Where the line
+says not read, the assumptions say that the work needs the browser, that whether
+it stands on this machine in the version needed cannot be read now and why — the
+cause the line names, said in their language and not in the program's words —
+and that the same permission decides. Where a tool becomes known only after the
+round — in a draft, in the comparison or in the spec — run the program then, and
+say what the assumptions of a round say of such a tool at the place where they
+next read: with them there, in the message that ends the turn that found it,
+before the design question where that is the next; after the answer "The plan
+without them", in the halt before the first build, which `cut-into-tasks` says
+beside the spec; after "Full flexibility", in the last message of the run, which
+names what the build installed under their yes, `build-work` step 3 point 7,
+since the mode without them starts under a yes alone, so that there they read
+the install and not the question who installs. The comment of the stage that
+found it carries the program's line as well. No stage of this skill judges an
+install: not the comment of Stage 2, and not the spec, whose sections below say
+where such a tool stands.
 
 Two things are not the user's job:
 
@@ -422,9 +380,7 @@ question field, before the question line, where the hard core and the
 question fit the harness's choice widget together by the bound the output
 style of devloop sets; where they do not, the hard core is not cut to fit —
 it stands as written in the message that ends the turn, and the question
-stands last in that message, as text, with the same two answers. Since 17
-October 2026; until then the hard core was to stand in the message before
-the widget, and on 16 October 2026 it stood in no message at all.
+stands last in that message, as text, with the same two answers.
 
 **Then ask whether the idea is understood, in a call that carries this
 question and no other**, with the hard core shown in it and before the
@@ -437,13 +393,8 @@ In the question line:
 whether the idea is understood so, as the hard core puts it. In the yes,
 label and line: yes, it is right so, and the run plans on on that ground.
 In the no, label and line: no, something is still missing, and the run asks
-on until it is right. On the no the frontier is not empty: ask what is
-missing, and the answer opens the next round. Only on the yes does the idea
-stand. Since 16 October 2026, point 20 of part B of the roadmap entry of 12
-October 2026, with the source it names, the interview of `untangle-idea`:
-"Do not act on it until the user confirms you have reached a shared
-understanding." The wording approved on 16 October 2026 stands in the
-roadmap entry of that date; this skill says what is said, not the words.
+on until it is right. On the no the frontier is not empty: ask what is missing,
+and the answer opens the next round. Only on the yes does the idea stand.
 
 **Then ask once, in a widget call that carries this question and no other, how
 this piece of work should run from here** — but only where the unattended
@@ -453,56 +404,38 @@ and only where the idea stands by the three conditions above.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mode-set-up`
 
 Where the mode is not set up, the question has one possible answer and is not
-asked. Without the flag the run carries on with them, and what it says about
-the mode is read in this order. Where the record of the answer says `no` —
-their no, a protection the platform refused, or checks that do not pass on
-the platform — nothing, and nothing about the other conditions either.
-Otherwise, where a class in `checks.md` is `empty`, nothing. Otherwise,
-where the record is a yes with something fallen away since, auto-merge
-switched off on the platform, say, one line: that work without them is not
-set up in this project, and that typing `/devloop:start-work --auto` where a
-piece of work starts sets it up, the input named as they type it in Claude
-Code and never the flag alone, since 27 October 2026, defect 2 of the roadmap
-entry of that date on the three closing runs. The line reaches them in the
-next message that ends a turn with text, and not in a comment on the
-planning issue alone, since 27 October 2026, new defect 5 of that entry:
-run 1 of 26 October 2026 wrote it into the English comment of Stage 1 and
-2 and said it to the person nowhere. It does not list what is missing: the
-flag asks what has to be asked and sets up the rest. The next such message
-is the one after the read of the conditions, the one the question on the
-mode would have stood in, not a later one, and the line gives no reason,
-since 30 October 2026, the rest of that defect, decided by the person that
-day: the run of 29 October 2026 said it at the design question, four turns
-after the read, with „weil die Installationsfreigabe auf „nein“ steht“. No
-mechanism holds the moment or the words: a hook sees no message of the
-run, and the one program behind the line,
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions`, names what does not
-hold, which is what the line leaves out. Where no record stands
-— a setup broken off before the question among it — nothing. Since 17
-October 2026, the roadmap entry of that date on the reports of what was
-done: a class `empty`
-had a line in two forms until then, by whether the repository had code, and
-no record had the line of a yes fallen away, which spoke of an option they
-never took up. The wording approved on 5 and 6 October 2026 stands in the
-roadmap entry of 5 October 2026, the line for a yes fallen away among it, in
-the form approved on 27 October 2026 since that day, the roadmap entry of
-that date on the three visible texts, the forms for a class `empty` and for
-no record not said since 17 October 2026; this skill says what is said, not
-the words. Where `--auto` was typed
-this session and the idea stands, the run does not stop at that: the person
-who typed it is here, so call `setup-checks` for its step 8 alone, which puts
-what has to be asked — the permissions a second time, where their record does
-not say yes, and since 9 October 2026 the question on the rule for the
-classifier of auto mode, where it does not stand in their settings — and sets
-up what the answers allow. It is not reached while a class in `checks.md` is
-`empty`, and sets no protection while a pull request is open; either is said,
-with what would help, and the run carries on with them. When it returns, the
-tree stands on the main branch as freshly fetched: on a yes the conditions
-below are read again and the run goes alone; on a no it carries on with them.
-Where the mode is set up and `--auto` was typed this session, the question is not
-asked either: the flag is its answer, and that the run goes on alone from
-here is not said, since 17 October 2026. So the flag and an answer can never
-disagree — where one exists, the other was never given.
+asked. Without the flag the run carries on with them, and what it says about the
+mode is read in this order. Where the record of the answer says `no` — their no,
+a protection the platform refused, or checks that do not pass on the platform —
+nothing, and nothing about the other conditions either. Otherwise, where a class
+in `checks.md` is `empty`, nothing. Otherwise, where the record is a yes with
+something fallen away since, auto-merge switched off on the platform, say, one
+line: that work without them is not set up in this project, and that typing
+`/devloop:start-work --auto` where a piece of work starts sets it up, the input
+named as they type it in Claude Code and never the flag alone. The line reaches
+them in the next message that ends a turn with text, and not in a comment on the
+planning issue alone. It does not list what is missing: the flag asks what has
+to be asked and sets up the rest. The next such message is the one after the
+read of the conditions, the one the question on the mode would have stood in,
+not a later one, and the line gives no reason. No mechanism holds the moment or
+the words: a hook sees no message of the run, and the one program behind the
+line, `${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions`, names what does not
+hold, which is what the line leaves out. Where no record stands — a setup broken
+off before the question among it — nothing: a line there would speak of an
+option they never took up. Where `--auto` was typed this session and the idea
+stands, the run does not stop at that: the person who typed it is here, so call
+`setup-checks` for its step 8 alone, which puts what has to be asked — the
+permissions a second time, where their record does not say yes, and the question
+on the rule for the classifier of auto mode, where it does not stand in their
+settings — and sets up what the answers allow. It is not reached while a class
+in `checks.md` is `empty`, and sets no protection while a pull request is open;
+either is said, with what would help, and the run carries on with them. When it
+returns, the tree stands on the main branch as freshly fetched: on a yes the
+conditions below are read again and the run goes alone; on a no it carries on
+with them. Where the mode is set up and `--auto` was typed this session, the
+question is not asked either: the flag is its answer, and that the run goes on
+alone from here is not said. So the flag and an answer can never disagree —
+where one exists, the other was never given.
 
 Three answers. What tells them apart is where the user is needed and where not,
 so each is said by that and not by what the run does at each stage:
@@ -516,21 +449,13 @@ so each is said by that and not by what the run does at each stage:
   exactly as it goes now. Nothing is lost by this and nothing has to be set up
   later.
 
-Say what the first two cost for this piece of work, in the description of
-each of the two, beside what it means: the machine has to stay awake for as
-long as the run works. That the design gets chosen against the written list
-and not against their taste is not said there, since 27 October 2026, by the
-person's decision of 23 October 2026, and the wording approved on 24 October
-2026 stands in the roadmap entry of that date on the six closing runs under
-decision (c), in place of the one of 19 October 2026, this skill saying what
-is said, not the words; the choice itself stands in Stage 3 as it stands.
-That the run stops where no draft carries the stories is not said there
-either, since 19 October 2026: it foretold a failure nobody knows will come,
-the person's statement of that day; the stop itself stands in Stage 3 as it
-stands. The descriptions have carried the costs
-since 17 October 2026; until then the place was not
-named, and on 16 October 2026 the costs stood neither before the widget nor
-in its lines. Do not repeat what the mode costs the repository — the
+Say what the first two cost for this piece of work, in the description of each
+of the two, beside what it means: the machine has to stay awake for as long as
+the run works. That the design gets chosen against the written list and not
+against their taste is not said there; the choice itself stands in Stage 3 as it
+stands. That the run stops where no draft carries the stories is not said there
+either: it foretells a failure nobody knows will come; the stop itself stands in
+Stage 3 as it stands. Do not repeat what the mode costs the repository — the
 workflow file, the protected branch, the minutes — that was said and agreed when
 the mode was set up. Recommend none of the three: which one fits is a question
 of their time and of how much they want to see, and the run cannot weigh that
@@ -551,104 +476,81 @@ in range blocked by anything outside it — cannot be read before a cut exists a
 stays at the build. The other six can be read now: no class in `checks.md` is
 `empty`; a failing gate genuinely blocks a merge on the remote and binds this
 account — both queries, since each is blind to one kind of protection, and the
-binding read per kind, as that list spells out; Claude Code runs in auto
-mode, read by running `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode`
-in the one call with `bin/devloop-start-conditions` below, since 28 October
-2026, and reading the mode the hook on that call puts beside
-its result, as condition 4 of that list says; the repository can merge without a person,
-auto-merge on (`gh api repos/OWNER/REPO -q .allow_auto_merge`) and a gate for it
-to wait on; and the two records say yes, on installing and on the dependency
-file. For the gate and auto-merge, read the state; do not read
-`environment.md`'s account of it — the repository says whether it still
-holds. The two records are the exception: there the file on the main branch
-is the state itself, and it is read as the paragraph above reads it. Read
-the five beside the mode by one call, since 25 October 2026, and the mode
-in the same call since 28 October 2026: run
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions` once, with the shell
-and without an argument, since no task exists yet, and
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` behind it in that
-call, so that the build's call before its first task is the same one with
-the range, decision (4) of the roadmap entry of 27 October 2026 on the tool
-state read by one program. It reads them as that
-list describes them, off the main branch as last fetched and off GitHub,
-fetching nothing, and prints one line for each: that it holds; that it does
-not hold, and the cause; or that it is not established, the query that did
-not answer and its message, which is a condition that does not hold, said
-as not established and never read as a yes or a no. For 3 it prints that
-it is read only with the range, and for 4 that the hook reads it, which it
-does on this call, as said above. Read none of the five yourself beside that call. Decision
-(5) of the roadmap entry of 24 October 2026 on install lines written by
-one program. Where the mode is not set up, the paragraph above has said
-what is said, and
-nothing is added here. Where it is set up and a class is `empty`, the two
-answers that send the run alone fall away and the question is not asked;
-say which one failed and what helps there, and carry on with them. Where it
-is set up and condition 4 fails — the mode is not `auto`, `dontAsk` and
-`bypassPermissions` included, or it could not be read, no statement beside
-the result or the statement that the input carried no `permission_mode` —
-the question is not asked either, and where `--auto` was typed this session
-the flag does not send the run alone: say the sentence the roadmap entry of
-9 October 2026 records for this skill, in the form approved on 27 October
-2026 since that day, the roadmap entry of that date on the three visible
-texts — that the run without them does not start; that Claude Code has to
-run in auto mode, the mode set now named as the status bar shows it; how to
-switch, Shift+Tab in the terminal, and then to type `/devloop:start-work
---auto`, the input named as they type it in Claude Code and never the flag
-alone; and that without the flag the planning goes on with them — and carry
-on with them. Where the mode could not be read, "When a command
-does not answer" holds and no wording of its own. This skill says what is
-said, not the words. The build reads
-all seven again when it
-starts, for two reasons written there: on the route that starts from a finished
-spec the build is reached without this question, and the state read here can
-change between now and then.
+binding read per kind, as that list spells out; Claude Code runs in auto mode,
+read by running `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` in the one
+call with `bin/devloop-start-conditions` below, and reading the mode the hook on
+that call puts beside its result, as condition 4 of that list says; the
+repository can merge without a person, auto-merge on (`gh api repos/OWNER/REPO
+-q .allow_auto_merge`) and a gate for it to wait on; and the two records say
+yes, on installing and on the dependency file. For the gate and auto-merge, read
+the state; do not read `environment.md`'s account of it — the repository says
+whether it still holds. The two records are the exception: there the file on the
+main branch is the state itself, and it is read as the paragraph above reads it.
+Read the five beside the mode, and the mode itself, by one call: run
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions` once, with the shell and
+without an argument, since no task exists yet, and
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` behind it in that call, so
+that the build's call before its first task is the same one with the range. It
+reads them as that list describes them, off the main branch as last fetched and
+off GitHub, fetching nothing, and prints one line for each: that it holds; that
+it does not hold, and the cause; or that it is not established, the query that
+did not answer and its message, which is a condition that does not hold, said as
+not established and never read as a yes or a no. For 3 it prints that it is read
+only with the range, and for 4 that the hook reads it, which it does on this
+call, as said above. Read none of the five yourself beside that call. Where the
+mode is not set up, the paragraph above has said what is said, and nothing is
+added here. Where it is set up and a class is `empty`, the two answers that send
+the run alone fall away and the question is not asked; say which one failed and
+what helps there, and carry on with them. Where it is set up and condition 4
+fails — the mode is not `auto`, `dontAsk` and `bypassPermissions` included, or
+it could not be read, no statement beside the result or the statement that the
+input carried no `permission_mode` — the question is not asked either, and where
+`--auto` was typed this session the flag does not send the run alone: say that
+the run without them does not start; that Claude Code has to run in auto mode,
+the mode set now named as the status bar shows it; how to switch, Shift+Tab in
+the terminal, and then to type `/devloop:start-work --auto`, the input named as
+they type it in Claude Code and never the flag alone; and that without the flag
+the planning goes on with them — and carry on with them. Where the mode could
+not be read, "When a command does not answer" holds and no wording of its own.
+The build reads all seven again when it starts, for two reasons written there:
+on the route that starts from a finished spec the build is reached without this
+question, and the state read here can change between now and then.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issues-read`
 
 **Before the mark, on either of the first two answers or on `--auto`, the
 question on the rule for the classifier of auto mode, where the mode is set
-up and `setup-checks` was not called for its step 8 at this start**, since
-22 October 2026, and since 28 October 2026 after the read above: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
+up and `setup-checks` was not called for its step 8 at this start**, after
+the read above: run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
 once, with the shell, and where it ends with 0 — the rule does not stand in
 their settings, or they cannot be read for it, and an open issue of this
 project carries an install auto mode refused in a run without them — call
 `setup-checks` for its step 8 alone, for that one question in its form for
 a start with `--auto`, also where `setup-checks` was loaded in this session
-already, at an earlier start, since 24 October 2026; that step changes
-nothing of the repository and, on the
-yes, enters the rule and closes the issues it named; where it ends with 1,
-nothing is asked; where it ends with 2, say that the query did not answer,
-with the command and the message it prints, as "When a command does not
-answer" says, and ask nothing. The rule is no condition of the mode and no
-start condition: on either answer the run goes on as the answer or the
-flag said, and the build takes a task the issue held as any free task, and
-a check class it concerned from its step 4. Where step 8 was called at
+already, at an earlier start; that step changes nothing of the repository
+and, on the yes, enters the rule and closes the issues it named; where it
+ends with 1, nothing is asked; where it ends with 2, say that the query did
+not answer, with the command and the message it prints, as "When a command
+does not answer" says, and ask nothing. The rule is no condition of the mode
+and no start condition: on either answer the run goes on as the answer or
+the flag said, and the build takes a task the issue held as any free task,
+and a check class it concerned from its step 4. Where step 8 was called at
 this start, above, it put the question there, and it is not put twice.
-Decided on 22 October 2026, the roadmap entry of that date on the question
-after a refusal. Until 24 October 2026 both conditions read "this session",
-which would pass the question over at a second start in the same session;
-run 3a put it at its second start, in `build-work`, without calling
-`setup-checks`, defect 3 of the roadmap entry of that date on the six
-closing runs.
 
 **On either of the first two answers, or on `--auto`, write the mark** — the
 command and what it is for are under "With nobody there" above, `build` on its
 second line for the first answer and for the flag, `plan` for the second, the
 third line, this session's identifier, the same in both — and say nothing of
-it, since 17 October 2026. The hook on the mark lets the command through in
-auto mode alone, the mode condition 4 has read by now, and blocks it in every
-other; and since 25 October 2026 only where conditions 1, 2, 5, 6 and 7
-hold, which the hook reads at the write by calling
-`bin/devloop-start-conditions` without a range, the reading made before the
-question — from 22 October 2026 until then conditions 6 and 7 alone,
-through the install record's reader: where one does not hold or is not
-established the hook blocks the write and names which and why, the
-program's lines, the run does not write the mark another way, and since the
-person is here, say which condition failed and why, as `build-work` says
-for it, for 6 and 7 the sentence it gives, the one step 8 of `setup-checks`
-puts before its second questions, and carry on with them. Cluster 22 of the
-roadmap entry of 19 October 2026, the decision of 20 October 2026 on it,
-and decision (5) of the roadmap entry of 24 October 2026.
+it. The hook on the mark lets the command through in auto mode alone, the
+mode condition 4 has read by now, and blocks it in every other; and only
+where conditions 1, 2, 5, 6 and 7 hold, which the hook reads at the write by
+calling `bin/devloop-start-conditions` without a range, the reading made
+before the question: where one does not hold or is not established the hook
+blocks the write and names which and why, the program's lines, the run does
+not write the mark another way, and since the person is here, say which
+condition failed and why, as `build-work` says for it, for 6 and 7 the
+sentence it gives, the one step 8 of `setup-checks` puts before its second
+questions, and carry on with them.
 
 Post the hard core as a comment on the planning issue before moving on — the
 settled answers went there after every round — and the answer to the last
@@ -665,14 +567,13 @@ around them look like. Verify at the code itself — a summary of a summary
 occasionally inverts what the code does.
 
 Skip this stage if there is no code yet; that it was skipped is the
-comment this stage posts on the planning issue, and is not said, since 17
-October 2026.
+comment this stage posts on the planning issue, and is not said.
 
 Write what you found in at most fifteen lines. This is input to the next stage,
 not a deliverable.
 
 Post it as a comment on the planning issue, and nowhere else: it is not said
-in the conversation, since 17 October 2026.
+in the conversation.
 
 ## Stage 3 — Draft designs
 
@@ -681,7 +582,7 @@ any design has to carry and what is out of scope — together with what Stage 2
 found a design has to respect, what it depends on, and a rough sketch so the
 constraints are concrete. This is one list, not a second one: what Stage 1
 settled is not restated in other words here. It is not given to them to read
-while the drafting runs, since 17 October 2026.
+while the drafting runs.
 
 Then draft **three or four designs in parallel, each under a different
 constraint**:
@@ -702,11 +603,8 @@ prompts or the refusal of a safety check built into Claude Code is reached no
 other way, is tried no second time where the mark says the run is alone, and
 is named in the agent's report with the check, the command as it ran, the
 message that came back and whether a second attempt went through. That holds
-for each drafting and each checking agent and for each rerun, since the
-addendum of 18 October 2026 to the roadmap entry of that day on where step 8
-of `setup-checks` puts the tool of a class off for an install not run; the
-build subagent is handed the same for the same reason, decision 1 of the
-roadmap entry of 9 October 2026.
+for each drafting and each checking agent and for each rerun; the build subagent
+is handed the same for the same reason.
 
 **Then check every draft, each by an agent of its own, as a question of fact.**
 One agent per draft, given that draft, the hard core from Stage 1 and what Stage
@@ -723,14 +621,12 @@ that. **If a checking agent fails to return, rerun it; where the rerun does not
 return either, state that the draft is unchecked** — with the user there
 among the verdicts before the design question, alone in the comment of this
 stage — and never present a draft as having passed a check that
-did not run. A rerun that returned is not said, since 17 October 2026.
-A refusal a checking agent names in its report is said beside the verdict on
-its draft, since 18 October 2026, defect 12 of the roadmap entry of 16
-October 2026 on the runs of that day — which check refused, the command as
-it ran and the message that came back — with the user there among the
-verdicts before the design question, alone in the comment of this stage and
-by the order for a refusal before the build under "With nobody there"; what
-it kept from running is a check that did not run.
+did not run. A rerun that returned is not said. A refusal a checking agent
+names in its report is said beside the verdict on its draft — which check
+refused, the command as it ran and the message that came back — with the
+user there among the verdicts before the design question, alone in the
+comment of this stage and by the order for a refusal before the build under
+"With nobody there"; what it kept from running is a check that did not run.
 
 Present them one after another, then compare them in prose — on how much behaviour
 each hides behind how small an interface, on how localised a future change would
@@ -741,9 +637,9 @@ be, and on where each puts the seams.
 **With the user there, ask which design, as text, last in the message that
 ends the turn, and put nothing else beside it or after it.** Before it in
 that message stand what it needs — the drafts, the comparison, the verdicts
-and the recommendation above — and what else this turn owes them, since 17
-October 2026. Beside it and after it: not the seams, not the next stage, not
-a second question of any kind. This is
+and the recommendation above — and what else this turn owes them. Beside it
+and after it: not the seams, not the next stage, not a second question of
+any kind. This is
 the largest decision in the plan, and anything travelling beside it gets waved
 through with it — a run that proposes the seams in the same breath has not asked
 the design question, it has answered it. The reply also has to be answerable by
@@ -754,28 +650,28 @@ knowingly given up. **Write nothing until they have answered.**
 
 **Alone, the recommendation is taken where it passed every item**, and the
 comment of this stage below says which draft was taken and that it carried
-every story, built nothing excluded and broke no constraint; no message does,
-since 17 October 2026. Where the
-recommended draft failed an item, or no draft passed, the run stops — "With
-nobody there" says why that is a stop and not a second-best pick.
+every story, built nothing excluded and broke no constraint; no message
+does. Where the recommended draft failed an item, or no draft passed, the run
+stops — "With nobody there" says why that is a stop and not a second-best
+pick.
 
 If a drafting agent fails, rerun it; where the rerun fails too, state that the
 comparison is one design short, as the paragraph on a checking agent says
 where. Never compare silently around a missing draft. A rerun that returned
-is not said, since 17 October 2026.
+is not said.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text restate`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text seam-and-condition`
 
 **The seams come next, in the comment of this stage and then in the spec's
-Test decisions, and not in the conversation, since 17 October 2026** — the
-places where this work will be checked. Prefer seams that already exist to new
-ones, and use the highest one that still catches what matters. **Each is
-placed, not assumed**: name the path and the symbol where it stands, or, where
-the chosen design creates it, the line of the interface above that does; that
-is what the cut and the build read. They cannot be settled earlier because they
-follow from the design.
+Test decisions, and not in the conversation** — the places where this work
+will be checked. Prefer seams that already exist to new ones, and use the
+highest one that still catches what matters. **Each is placed, not
+assumed**: name the path and the symbol where it stands, or, where the
+chosen design creates it, the line of the interface above that does; that
+is what the cut and the build read. They cannot be settled earlier because
+they follow from the design.
 
 **The ground under the decision records** this design leans on: each record
 carries a line saying what would make it invalid. Check those lines. If one no
@@ -789,10 +685,7 @@ Post the chosen design, the reasoning for it, and the placed seams as a comment
 on the planning issue — **and the drafts that were not chosen, with every
 verdict**, each draft at least as its interface and its trade-offs. A comment
 holding only the winner leaves the verdicts pointing at nothing, and alone that
-comment is the only thing anyone can check the choice against afterwards. Read
-on 14 September 2026 on the tracker of a test project: two specs whose Stage 3
-comments held the chosen design alone, one of them under a spec body saying the
-rejected alternatives were recorded there.
+comment is the only thing anyone can check the choice against afterwards.
 
 ## Stage 4 — Write the spec
 
@@ -807,15 +700,14 @@ No new questions. Write down what was decided, in these sections:
 - **Implementation decisions** — the design that was chosen, the modules built or
   changed, their interfaces, schema changes, contracts. Taken from Stage 3, not
   invented here. A tool outside the project that the work needs stands here
-  as needed, since 24 October 2026, and with it, since 27 October 2026, the
-  line `bin/devloop-tool-state` printed for it, as printed, which carries the
-  day it was read, and not the program's line on the record; who installs it
-  does not stand here, since 24 October 2026.
+  as needed, and with it the line `bin/devloop-tool-state` printed for it, as
+  printed, which carries the day it was read, and not the program's line on
+  the record; who installs it does not stand here.
 - **Test decisions** — the placed seams and what gets checked at each.
 - **Out of scope** — what someone might reasonably expect and will not get,
   starting from the hard core of Stage 1 and adding what the design and the
   seams put out of reach. Never the install of a tool the work needs, which
-  the install record decides at the build, since 24 October 2026.
+  the install record decides at the build.
 - **Missing checks** — every class in `checks.md` this work would need and that is
   not `filled`, each with where it stands: for `skipped (state)` the state that
   keeps it off; for `skipped (user)` that the user switched it off, and why;
@@ -835,11 +727,11 @@ in `docs/agents/issue-tracker.md`.
 
 Report the spec's issue number and one line on what it covers.
 
-Then cut it into tasks — run `cut-into-tasks` — and say nothing of it before,
-since 17 October 2026: what the cut created reaches them where it is said.
-Do not ask permission first. The decision here is the
-split itself, and it follows from the spec rather than from anything only they
-know — so it gets presented and created, not put to them as a question.
+Then cut it into tasks — run `cut-into-tasks` — and say nothing of it before:
+what the cut created reaches them where it is said. Do not ask permission
+first. The decision here is the split itself, and it follows from the spec
+rather than from anything only they know — so it gets presented and created,
+not put to them as a question.
 
 ---
 

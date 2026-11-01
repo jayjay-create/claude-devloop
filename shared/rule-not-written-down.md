@@ -5,42 +5,38 @@ check setup, read whether the rule it breaks is already written: in
 the task's own issue, which is the case named above. Where one of them carries
 it, nothing is added to them — the documents are not what failed — and that it
 was written already is said only where a breach files an issue, by the block
-on a written rule broken all the same below, since 17 October 2026. Where none
-does, and a sentence can be written that names a situation this project's code
-will meet again and what is done in it, write it as one rule into
-`docs/agents/standards.md`, in the same change as the fix, so that the next
-review reads a breach of a written rule rather than judging it again. Two
-sentences fail that test and are not written: the fix restated — this file,
-this function, this line — which holds for nothing but this diff; and a
-sentence naming no situation of this project — handle every error, no dead
-code — which the standards lens reads for without being told. What is written
-is a sentence a later diff can be held against and answered yes or no, and it
-occupies one line of the file, however long: the exits below ask git and the
-tracker about a rule by its text, and a sentence broken over two lines is
-found by neither. A reason the rule needs stands on that line after it; the
-story of how it was found does not, it is in the change that carried the fix. A
-finding filed because it would revisit a decision writes no rule either: the
-sentence would settle at the close the question the issue was filed to keep
+on a written rule broken all the same below. Where none does, and a sentence can
+be written that names a situation this project's code will meet again and what
+is done in it, write it as one rule into `docs/agents/standards.md`, in the same
+change as the fix, so that the next review reads a breach of a written rule
+rather than judging it again. Two sentences fail that test and are not written:
+the fix restated — this file, this function, this line — which holds for nothing
+but this diff; and a sentence naming no situation of this project — handle every
+error, no dead code — which the standards lens reads for without being told.
+What is written is a sentence a later diff can be held against and answered yes
+or no, and it occupies one line of the file, however long: the exits below ask
+git and the tracker about a rule by its text, and a sentence broken over two
+lines is found by neither. A reason the rule needs stands on that line after it;
+the story of how it was found does not, it is in the change that carried the
+fix. A finding filed because it would revisit a decision writes no rule either:
+the sentence would settle at the close the question the issue was filed to keep
 open. Nor does one handed to the check setup: its object is the check table,
 which that skill writes under rules of its own.
 
 **Unattended this does not fall away.** With nobody there it is the only way a
 rule ever reaches the file, and the judgement that a finding is too small to be
-worth a rule is made by the run that produced it. Measured on 26 September 2026
-across the six bench projects: every standards file carried only the sentence
-written when it was created, and in `devloop-test-o` that sentence said the
-repository had no code, 36 landed pull requests in.
+worth a rule is made by the run that produced it.
 
 **Writing into that file is also reading the whole of it.** Every rule there is
 read again on every review, so before adding, take out a rule a command now
 enforces, a rule about code that no longer exists, and a rule that has stood on
 the main branch for more than ten landed pull requests without an issue filed
 for a breach of it, and say what came out, which one and by which exit; where
-nothing did, nothing is said, since 17 October 2026. Where the file still
-carries the line written at setup saying no rules have been recorded yet, that
-line goes with the first rule written. The file keeps the language it is
-already written in, whatever language the user writes in: the lens that reads
-it is handed the file and not this conversation.
+nothing did, nothing is said. Where the file still carries the line written at
+setup saying no rules have been recorded yet, that line goes with the first rule
+written. The file keeps the language it is already written in, whatever language
+the user writes in: the lens that reads it is handed the file and not this
+conversation.
 
 **The third exit is computed, never judged, on `origin/main` after a fetch.**
 The age: the commit that introduced the rule's line,
@@ -53,9 +49,9 @@ on `origin/main` has no age and stays. The citation: the query in
 carries a given line, run with the rule's line; a rule any of them carries
 stays until the command exists. Where `issue-tracker.md` does not carry that
 query, nothing comes out by this exit, and the missing query is said the way a
-missing command is. Ten is set on 27 September 2026 and is not measured: a
-file that only grows costs every review, and a rule dropped too early comes
-back the next time the defect appears and files its check then.
+missing command is. Ten is set and is not measured: a file that only grows costs
+every review, and a rule dropped too early comes back the next time the defect
+appears and files its check then.
 
 **Where `docs/agents/standards.md` does not exist, nothing is written and
 nothing is created.** Say that the project has not been set up, and leave the
@@ -85,4 +81,4 @@ None of this goes into the report of the lenses, which stops at the last lens.
 It is said per finding where the findings reach the person — at the close of
 the task with them, and with nobody there in the pull request that carries the
 rule, an issue filed standing among what the next run takes up — and not as
-the split is made, since 17 October 2026.
+the split is made.

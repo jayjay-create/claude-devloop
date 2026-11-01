@@ -60,18 +60,15 @@ third case of a shape this skill already carries twice — the turn-end hook in
 step 3, and a refused arming in step 6. It gets the turn-end hook's answer, an
 issue raised and the next task taken; a refused arming ends the run instead.
 
-**Since 9 October 2026 a refusal is any of three things, since 18 October
-2026 any of four, and the four go the same way here**: a guard's block; the
-refusal of the classifier of auto mode, the second model that reads every
-command there, whose no comes with its own message in the tool's result; the
-no of the hook on permission prompts,
+**A refusal is any of four things, and the four go the same way here**: a
+guard's block; the refusal of the classifier of auto mode, the second model
+that reads every command there, whose no comes with its own message in the
+tool's result; the no of the hook on permission prompts,
 `hooks/permission-request-unattended.sh`, which answers every prompt of this
-session while the mark stands, with the message the roadmap entry of 9
-October 2026 records as text 5; and the refusal of a safety check built into
-Claude Code, whose message says that such a check denied the command and not
-the user, defect 12 of the roadmap entry of 16 October 2026 on the runs of
-that day. None of the four is this run's to overturn: no second attempt, no
-other way to the same result.
+session while the mark stands, with a message of its own; and the refusal
+of a safety check built into Claude Code, whose message says that such a
+check denied the command and not the user. None of the four is this run's
+to overturn: no second attempt, no other way to the same result.
 
 - **With the user there**, the message is the answer. Hand the block over in the
   form the message asks for: the command as it ran, the message that came back,
@@ -87,25 +84,23 @@ other way to the same result.
   command, the message and the reading — and, where the command was an
   install of a tool the task needs, the two lines of the form in step 3,
   `install-tool` and `install-command`, so that the next start reads whether
-  the tool stands, since 28 October 2026 —
-  label it `raised-here` and `needs-human`, and record it as a blocker of the
-  task. Then put the task down and go back to step 2: the readiness query passes
-  over a blocked task by itself, so the run carries on with the rest instead of
-  standing on one. This holds while a task is in hand, from step 3 to the
-  proof of its merge in step 6.
+  the tool stands — label it `raised-here` and `needs-human`, and record it
+  as a blocker of the task. Then put the task down and go back to step 2: the
+  readiness query passes over a blocked task by itself, so the run carries on
+  with the rest instead of standing on one. This holds while a task is in
+  hand, from step 3 to the proof of its merge in step 6.
 
 **Which of the two happened** is said with nobody there in the last message,
 the issue raised among what is theirs to decide or do; with the user there
-the handover above says it already, since 17 October 2026.
+the handover above says it already.
 
 **Where the refusal meets the build subagent, or any other subagent of the
-build**, the subagent raises the issue and records it as the blocker, as
-text 5 tells it, stops with the task, and names the issue and the refusal in
-its report; the main run raises no second issue and takes the next task in
-step 2. The subagent reads this rule in what step 3 hands it, since it reads
-this file nowhere. Since the addendum of 9 October 2026 a check chain that
-does not finish inside its call in the subagent goes the same way, step 3
-point 6 says how.
+build**, the subagent raises the issue and records it as the blocker, stops
+with the task, and names the issue and the refusal in its report; the main
+run raises no second issue and takes the next task in step 2. The subagent
+reads this rule in what step 3 hands it, since it reads this file nowhere.
+A check chain that does not finish inside its call in the subagent goes the
+same way, step 3 point 6 says how.
 
 **Where no task is in hand there is nothing to put down**: in step 1, after a
 merge is proven in step 6, at the queries of step 2 and step 7, and at the
@@ -139,61 +134,57 @@ one rule and not as eight:
 - **Which task next** — step 2. Not a question in either mode; the rule there
   decides it and says why the same rule serves both.
 - **A refusal** — a guard's block, the classifier's no, the no of the hook on
-  permission prompts, since 18 October 2026 the refusal of a safety check
-  built into Claude Code — the section above "How to ask". With a task in
-  hand, an issue carrying the command, the message and the reading, labelled
-  `raised-here` and `needs-human`, recorded as a blocker of the task; the
-  task is put down and step 2 takes the next; met by a subagent, the
-  subagent raises it. With no task in hand, a stop with the reason named and
-  the mark deleted. Not the guard on the check table: its refusal goes
-  to `setup-checks` for the row, and the commit is made again, as that
-  section says.
+  permission prompts, the refusal of a safety check built into Claude Code —
+  the section above "How to ask". With a task in hand, an issue carrying the
+  command, the message and the reading, labelled `raised-here` and
+  `needs-human`, recorded as a blocker of the task; the task is put down and
+  step 2 takes the next; met by a subagent, the subagent raises it. With no
+  task in hand, a stop with the reason named and the mark deleted. Not the
+  guard on the check table: its refusal goes to `setup-checks` for the row,
+  and the commit is made again, as that section says.
 - **The turn-end hook handing the problem over** — step 3, its last section.
   The same shape: an issue saying the task is not buildable as cut, the task put
   down, the next one taken.
 - **An install that does not go through** — step 3 point 7. With nobody there
   the record says yes: the mode does not start under a no or with no record,
   start condition 6 below. Four ways are left, and the rule inserted there
-  since 9 October 2026 gives them one end: the guard blocks, on what a yes
-  does not open — a runtime, a place the record does not name, a route that
-  does not answer, and since 8 October 2026 a branded browser Playwright
-  would install at the system's own location and the system packages
-  `install-deps`, `--with-deps` or `--install-deps` would install; the
-  classifier of auto mode refuses, or since 18 October 2026 a safety check
-  built into Claude Code does; the installer ran and ended with an error,
-  the one way with three attempts; the call did not finish inside its ten
-  minutes. For the task it goes as the second bullet says, with what stands
-  at the destination path in the issue, and for a check class through
-  `setup-checks`, which writes the cell `skipped (state)` — and, since 22
-  October 2026, where the way is a refusal of auto mode by one of the ways
-  the rule for its classifier names, an issue beside the cell, recorded as
-  a blocker of no task, as the rule inserted in step 3 says. Everything else
-  the run installs, as with the user there.
+  gives them one end: the guard blocks, on what a yes does not open — a
+  runtime, a place the record does not name, a route that does not answer, and
+  a branded browser Playwright would install at the system's own location and
+  the system packages `install-deps`, `--with-deps` or `--install-deps` would
+  install; the classifier of auto mode refuses, or a safety check built into
+  Claude Code does; the installer ran and ended with an error, the one way
+  with three attempts; the call did not finish inside its ten minutes. For
+  the task it goes as the second bullet says, with what stands at the
+  destination path in the issue, and for a check class through
+  `setup-checks`, which writes the cell `skipped (state)` — and, where the
+  way is a refusal of auto mode by one of the ways the rule for its
+  classifier names, an issue beside the cell, recorded as a blocker of no
+  task, as the rule inserted in step 3 says. Everything else the run
+  installs, as with the user there.
 - **A class `setup-checks` cannot set up** — `secrets` whose tool cannot be
   installed, and a guard fired on text where the editing tool does not
-  reach. Since 9 October 2026 the task ends there and not the run: the
-  issue, the task put down, the next taken, as "A guard's block is not a
-  decline" in that skill says; the class stays as it stands. Until that day
-  the run ended and deleted the mark.
+  reach. The task ends there and not the run: the issue, the task put down,
+  the next taken, as "A guard's block is not a decline" in that skill says;
+  the class stays as it stands.
 - **A check chain that does not finish inside its call** — step 1, step 3
-  point 6, and every run of a target in `setup-checks` step 4 and 5. Since
-  the addendum of 9 October 2026 the task ends and not the run where a task
-  is in hand: an issue carrying the command, the message, the path of the
-  output file where one is named, and that the call did not finish inside
-  its ten minutes, labelled `raised-here` and `needs-human`, recorded as a
-  blocker; the task put down; step 2 takes the next; nothing closed from it,
-  no second start; met by the build subagent, the subagent raises it, as at
-  a refusal. In step 1 no task is in hand, and the run stops with the reason
-  named and the mark goes: without the answer the state of `main` is not
-  known, and no task begins on an unknown base.
+  point 6, and every run of a target in `setup-checks` step 4 and 5. The task
+  ends and not the run where a task is in hand: an issue carrying the
+  command, the message, the path of the output file where one is named, and
+  that the call did not finish inside its ten minutes, labelled `raised-here`
+  and `needs-human`, recorded as a blocker; the task put down; step 2 takes
+  the next; nothing closed from it, no second start; met by the build
+  subagent, the subagent raises it, as at a refusal. In step 1 no task is in
+  hand, and the run stops with the reason named and the mark goes: without
+  the answer the state of `main` is not known, and no task begins on an
+  unknown base.
 - **A changed file or commits of their own in the way of the main branch** —
-  step 1, and step 6 after a merge. Since 16 October 2026 the run does with
-  nobody there what it asks about with them there, as "When the main branch
-  cannot be fetched or fast-forwarded" says: the change set aside under the
-  name devloop knows it by and brought back where the mark goes, their
-  commits onto a branch of their own and the main branch to GitHub's state,
-  the last message naming both. The connection and the sign-in stay theirs,
-  and there the run stops.
+  step 1, and step 6 after a merge. The run does with nobody there what it
+  asks about with them there, as "When the main branch cannot be fetched or
+  fast-forwarded" says: the change set aside under the name devloop knows it
+  by and brought back where the mark goes, their commits onto a branch of
+  their own and the main branch to GitHub's state, the last message naming
+  both. The connection and the sign-in stay theirs, and there the run stops.
 
 **A question about the work itself that comes up inside a task and passes the
 test** — a choice the task rests on that the spec did not make — is the eighth
@@ -202,10 +193,7 @@ order of taking the less committing option. A task is cut from a spec, and a
 task that turns out to need a decision the spec did not take is a task that is
 not buildable as cut. The issue carries the question and the options as far as
 they are seen, labelled `raised-here` and `needs-human`, recorded as a blocker;
-the task is put down; step 2 takes the next. Measured on 13 September 2026 in a
-test project, with the user there: a run laid out two ways to build a task and
-waited. The test under "How to ask" already said that was not a question, since
-both ways were cheap to redo; this eighth case is for the one that is not.
+the task is put down; step 2 takes the next.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark`
 
@@ -227,13 +215,11 @@ changed it itself.
 
 **A statement about the repository or the platform rests on a command from this
 turn.** Not on how it was at the start, not on how it usually is. Where you have
-no such command, look, without announcing it, since 17 October 2026.
+no such command, look, without announcing it.
 
 **Before telling the user something is missing, search for it.** A negative is
-the most expensive claim there is, because it sets them to work: a run reported
-that no CI posted a required status and offered to build one, while the workflow
-sat on the main branch and had gone green an hour earlier. Absence is a finding
-like any other, and it needs the command that came back empty.
+the most expensive claim there is, because it sets them to work. Absence is a
+finding like any other, and it needs the command that came back empty.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text seam-and-condition`
 
@@ -259,26 +245,24 @@ branch. If the local branch has commits of its own — git says it is ahead
 of the remote where the remote has nothing new, and that the two have
 diverged where it has — a task cut from it would land on a base the remote
 does not have, as one cut from a stale main lands on the wrong base. Where
-the two have diverged, that is the case
-"Commits of their own on the main branch" under "When the main branch cannot
-be fetched or fast-forwarded" above, since 16 October 2026: ask as there,
-and on their yes put the commits on a branch of their own, bring the main
-branch to GitHub's state and go on; on their no, stop as there. Where the
-local branch is ahead alone, the remote having nothing new, say what
-would clear it and let the user decide: the local branch has commits the
-remote does not, and reconciling them is their call, not
+the two have diverged, that is the case "Commits of their own on the main
+branch" under "When the main branch cannot be fetched or fast-forwarded"
+above: ask as there, and on their yes put the commits on a branch of their
+own, bring the main branch to GitHub's state and go on; on their no, stop
+as there. Where the local branch is ahead alone, the remote having nothing
+new, say what would clear it and let the user decide: the local branch has
+commits the remote does not, and reconciling them is their call, not
 something to resolve by force — the question approved for the other case
 presupposes new commits on GitHub, so it is not put here. Nothing is lost
-meanwhile; the tasks are in the
-tracker and this picks up as soon as they say the branches agree. With
-nobody there both go the one way, since 16 October 2026, as that section
-says of the diverged case: their commits onto `my-commits`, or that name
-with a number on the end where it stands already, the main branch to
+meanwhile; the tasks are in the tracker and this picks up as soon as they
+say the branches agree. With nobody there both go the one way, as that
+section says of the diverged case: their commits onto `my-commits`, or that
+name with a number on the end where it stands already, the main branch to
 GitHub's state with `git reset --keep origin/main`, and the run goes on,
 its last message naming the branch and offering to open a pull request for
 the commits — the ahead-alone case too, which fast-forwards as `Already up
 to date.` and would otherwise cut the task from a base GitHub does not
-have, measured on 16 October 2026 with git 2.50.1. A changed file in the
+have. A changed file in the
 way of the fast-forward goes as that section says as well: asked about with
 them there, set aside without asking with nobody there and brought back
 where the mark goes. Where the
@@ -348,22 +332,20 @@ reports `open pull requests:` per task for exactly this. Say which pull request
 it is and that it is waiting to land, and take the next task — or, where it was
 the only one, say the spec is waiting on that merge rather than on a build.
 
-Read that off each pull request's own `state`, never off the argument that looks
-like it answers: `closedByPullRequestsReferences` defaults to
-`includeClosedPrs: false`, and merged pull requests come back all the same —
-measured on 31 August 2026 in `devloop-test-l`, where three long-closed tasks
-returned pull requests 7, 11 and 13, every one of them `MERGED`. The query in
-`issue-tracker.md` filters on `state == "OPEN"`; a hand-written one that trusts
-the argument name counts every task ever built as still in flight and stops the
-build dead.
+Read that off each pull request's own `state`, never off the argument that
+looks like it answers: `closedByPullRequestsReferences` defaults to
+`includeClosedPrs: false`, and merged pull requests come back all the same.
+The query in `issue-tracker.md` filters on `state == "OPEN"`; a hand-written
+one that trusts the argument name counts every task ever built as still in
+flight and stops the build dead.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
 
 - **Exactly one ready** — build it.
 - **Several ready** — take the one that unblocks the most other tasks, and on
   a tie the lowest issue number, and never start more than one. Neither the
-  list nor which you took and why is said, since 17 October 2026: the room to
-  name a different one would reach them only once it is built, at its gate.
+  list nor which you took and why is said: the room to name a different one
+  would reach them only once it is built, at its gate.
   **Do not ask which.** That
   rule is the same one this step has always used when nobody is there to ask,
   and a rule good enough for an unattended run is good enough for a watched one
@@ -374,8 +356,7 @@ build dead.
 
 **A loose issue is not one of these.** The readiness query returns the tasks
 under a spec; an issue filed on its own — by a review, by a check, by the user —
-sits outside that ordering and has broken this step three times, answered three
-different ways. It is not a question either. The order is:
+sits outside that ordering. It is not a question either. The order is:
 
 1. **Anything that leaves built work wrong goes first.** A red check suite, or
    behaviour already merged that does the wrong thing. Building the next feature
@@ -389,44 +370,38 @@ different ways. It is not a question either. The order is:
    spec waits for that task specifically: it is cheapest where its ground is
    being opened anyway, and say that too.
 3. **With the spec closed, take it** — the same rule as several ready tasks,
-   and as there, which and why is not said, since 17 October 2026.
+   and as there, which and why is not said.
 
-**The announcement names the clause, per issue.** Where loose issues are in play,
-say for each one that waits which of the three above it falls under and what
-follows from that, at the next message that ends a turn with text; for one
-taken now nothing is said, since 17 October 2026, as for a task taken among
-several. Not that it is next, not that it is minor, not that it can wait: a word
-reached for at the moment of deciding reads like a criterion and is not one, and
-nobody can disagree with it because nobody can tell where it came from. An
-announcement that orders loose issues and names no clause is incomplete on its
-face, which is the point of asking for the clause rather than for the decision.
+**The announcement names the clause, per issue.** Where loose issues are in
+play, say for each one that waits which of the three above it falls under and
+what follows from that, at the next message that ends a turn with text; for
+one taken now nothing is said, as for a task taken among several. Not that it
+is next, not that it is minor, not that it can wait: a word reached for at the
+moment of deciding reads like a criterion and is not one, and nobody can
+disagree with it because nobody can tell where it came from. An announcement
+that orders loose issues and names no clause is incomplete on its face, which
+is the point of asking for the clause rather than for the decision.
 
 **And blocking is not the criterion here.** Zero open blockers is what the
 readiness query asks of a task under a spec, and it is the first thing this step
 says to run, so it is the criterion nearest to hand when the ordering has to be
 said out loud. Clause 1 asks something else entirely: whether leaving this
-undone leaves work that has already landed doing the wrong thing. Measured on 9
-September 2026: four loose issues, every one of them `raised-here`, announced as
-"in order by issue number, since none blocks another" and built that way. One of
-the four was a shipped flag that silently skipped a rule file in a worktree —
-clause 1, and it carried the highest number, so it was built last. The other
-three were hardenings with nothing wrong in service, which is clause 3.
+undone leaves work that has already landed doing the wrong thing.
 
 **Except an issue from outside**, which is a suggestion and not an instruction:
-report it and leave it — with nobody there leave it and say nothing of it,
-since 17 October 2026. **`raised-here` is what tells them apart** — this
-workflow sets it on every finding it files, so an issue without it came from
-somewhere else — all but the one it files without it on purpose, since 16
-October 2026: the issue of a change set aside at a fetch whose bring-back met
-a change from GitHub, labelled `needs-human` alone, its title naming the file
-and that their change meets a change from GitHub, by the text on the mark's
-deletion. That one is not from outside, and it is left as well, with them
-there as without, and nothing is said of it: it is theirs to decide, the last
-message of the run that filed it named it, and the next start asks about the
-change; until 19 October 2026 this paragraph read it as from outside. Do not
-infer it from anything else: the author is the account
-the tooling runs as either way, and an unlabelled, unassigned issue looks
-identical whichever it is. If they say to take it anyway, take it.
+report it and leave it — with nobody there leave it and say nothing of it.
+**`raised-here` is what tells them apart** — this workflow sets it on every
+finding it files, so an issue without it came from somewhere else — all but
+the one it files without it on purpose: the issue of a change set aside at a
+fetch whose bring-back met a change from GitHub, labelled `needs-human`
+alone, its title naming the file and that their change meets a change from
+GitHub, by the text on the mark's deletion. That one is not from outside,
+and it is left as well, with them there as without, and nothing is said of
+it: it is theirs to decide, the last message of the run that filed it named
+it, and the next start asks about the change. Do not infer it from anything
+else: the author is the account the tooling runs as either way, and an
+unlabelled, unassigned issue looks identical whichever it is. If they say to
+take it anyway, take it.
 
 **And an issue that would block an open task is not loose at all** — record the
 blocker in the tracker and let the readiness query do its work.
@@ -436,78 +411,54 @@ blocker in the tracker and let the readiness query do its work.
 Hand the task to a subagent with a fresh context: the task issue, the spec it
 belongs to, the paths of the control documents, where the mark stands that
 says which mode this run is in — not this conversation — and five rules it
-reads nowhere else, since it reads this file nowhere. Two since 9 October
-2026: what a refusal is and what follows one with nobody there, under "A
-guard's block, with nobody there" above, the issue raised by the subagent
-itself; and what a command that does not finish inside its call is, under
-"When a command does not answer" above, with the ten minutes every install
-and every run of the check chain is called with, and, since the addendum of
-that day, that a chain which does not finish ends the task as a refusal
-does, the issue raised by the subagent as well. Two since 16 October 2026,
-points 22 and 26 of part B of the roadmap entry of 12 October 2026: that
-the check targets belong to the check setup, the rule inserted below the
-list of this step — the subagent changes no check target itself, not in the
-table and not in the Makefile or whatever runs the targets, and names a
-needed change in its report, the call to `setup-checks` being the main
-run's and not its own, a build subagent of the second closing run of
-milestone 3 having changed three targets in the Makefile where the rule
-reached it nowhere; and that a file whose content is text about commands is
-written with the editing tool, the rule above "Step 1", for
-`environment.md`, the workflow file and a body file alike. One since 24
-October 2026, decision (1) of the roadmap entry of that date on how an
-install is recorded, and in this form since 30 October 2026, the rest of
-new defect 6 of the roadmap entry of 27 October 2026 on the three closing
-runs, decided by the person on 30 October 2026: the lines of
+reads nowhere else, since it reads this file nowhere: what a refusal is and
+what follows one with nobody there, under "A guard's block, with nobody
+there" above, the issue raised by the subagent itself; what a command that
+does not finish inside its call is, under "When a command does not answer"
+above, with the ten minutes every install and every run of the check chain
+is called with, and that a chain which does not finish ends the task as a
+refusal does, the issue raised by the subagent as well; that the check
+targets belong to the check setup, the rule inserted below the list of this
+step — the subagent changes no check target itself, not in the table and
+not in the Makefile or whatever runs the targets, and names a needed change
+in its report, the call to `setup-checks` being the main run's and not its
+own; that a file whose content is text about commands is written with the
+editing tool, the rule above "Step 1", for `environment.md`, the workflow
+file and a body file alike; and the lines of
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --build` as the paragraph
-below has them, the record line among them, and beside them nothing of
-this run's own on whether the subagent installs or what — no point 7, no
-"do not install", no claim about the machine. Point 7 and the four texts
-under it reach the subagent through the rule every subagent gets at its
-start from `hooks/subagent-start-install.sh`, with the install record's
-line: the rule names the command that prints the five texts, with the
-plugin's path, and the subagent reads them before it installs anything;
-under a no or no record it installs nothing and needs none of them. Until
-that day point 7 stood in the prompt as it reads, with the texts between
-it and point 8 and the record as
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record` prints it; the person's
-reason for the change: a rule devloop itself has to keep is weaker than a
-mechanism, and point 7 whole in every prompt cost each subagent of a run
-about 4,000 words. Run 2a's prompt said "Install the Mermaid CLI as
-the vendor documents" and run 3a's "Do not install anything", defects 7 and
-2 of the roadmap entry of 24 October 2026 on the six closing runs; until
-24 October 2026 point 7 was none of the rules, and the subagent that
-installed never read it.
+below has them, the record line among them, and beside them nothing of this
+run's own on whether the subagent installs or what — no point 7, no "do not
+install", no claim about the machine. Point 7 and the four texts under it
+reach the subagent through the rule every subagent gets at its start from
+`hooks/subagent-start-install.sh`, with the install record's line: the rule
+names the command that prints the five texts, with the plugin's path, and
+the subagent reads them before it installs anything; under a no or no
+record it installs nothing and needs none of them. A rule devloop itself
+has to keep is weaker than a mechanism.
 
-**Before the subagent starts, read the tools the task needs**, since 28
-October 2026, new defect 7 of the roadmap entry of 27 October 2026 on the
-three closing runs and decisions (3) and (4) of the roadmap entry of that
-date on the tool state read by one program: run
+**Before the subagent starts, read the tools the task needs**: run
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --build` once, with the
 shell, with every tool outside the project the task needs — those the spec
 names under Implementation decisions, each with the line the planning's
-call printed, since 27 October 2026, and where the spec or the task names a
-tool without such a line, that tool as it is called, a browser for tests as
-`VENDOR:NAME` — and go by its lines, which the prompt to the subagent
-carries beside the record. Under a record saying yes, the subagent installs
-what is missing, as point 7 says. Under a no, or with no record, a tool
-that is missing makes the handover of point 7 the first step of the task:
-in the message that ends this turn, before any subagent starts, with both
-ways; nothing is built against a stand-in in the meantime, and no subagent
-starts for this task until the tool stands or the person has declined. Run
-1 of 26 October 2026 built the task needing `yq` against a stand-in under
-the no, put the landing question and handed `brew install yq` over only
-after the person said the tool was missing. A browser whose line says not
-read because the project gets its test tool with this task — no package of
-the vendor in the project yet to say which version it needs — is read once
-the package stands in the project: the subagent runs the same call then, in
-the project, after adding the package and before anything that needs the
-browser, and goes by the line as the rule at its start says, installing the
-browser under a yes, and under a no or no record reporting the browser, the
-backed download command and that it is missing and stopping with the task;
-the main run then hands over as point 7 says, with the person there — with
-nobody there the record says yes, start condition 6. The planning said of
-such a browser only that it could not be read yet, the wording of 28
-October 2026.
+call printed, and where the spec or the task names a tool without such a
+line, that tool as it is called, a browser for tests as `VENDOR:NAME` — and
+go by its lines, which the prompt to the subagent carries beside the
+record. Under a record saying yes, the subagent installs what is missing,
+as point 7 says. Under a no, or with no record, a tool that is missing
+makes the handover of point 7 the first step of the task: in the message
+that ends this turn, before any subagent starts, with both ways; nothing is
+built against a stand-in in the meantime, and no subagent starts for this
+task until the tool stands or the person has declined. A browser whose line
+says not read because the project gets its test tool with this task — no
+package of the vendor in the project yet to say which version it needs — is
+read once the package stands in the project: the subagent runs the same
+call then, in the project, after adding the package and before anything
+that needs the browser, and goes by the line as the rule at its start says,
+installing the browser under a yes, and under a no or no record reporting
+the browser, the backed download command and that it is missing and
+stopping with the task; the main run then hands over as point 7 says, with
+the person there — with nobody there the record says yes, start condition 6.
+The planning has said of such a browser only that it could not be read yet.
 
 The subagent:
 
@@ -534,13 +485,12 @@ The subagent:
    says. A report a later gate rejects is not a report. A chain that does
    not finish inside its call is not answered: the subagent reports the
    command, the message and the path of the output file where one is named,
-   closes nothing from it and starts it no second time; with nobody there,
-   since the addendum of 9 October 2026, it ends the task as at a refusal,
-   the paragraph on the build subagent under "A guard's block, with nobody
-   there" above: an issue carrying those three and that the call did not
-   finish inside its ten minutes, labelled `raised-here` and `needs-human`,
-   recorded as a blocker of the task; the task put down; the main run takes
-   the next in step 2.
+   closes nothing from it and starts it no second time; with nobody there it
+   ends the task as at a refusal, the paragraph on the build subagent under
+   "A guard's block, with nobody there" above: an issue carrying those three
+   and that the call did not finish inside its ten minutes, labelled
+   `raised-here` and `needs-human`, recorded as a blocker of the task; the
+   task put down; the main run takes the next in step 2.
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-tool`
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
@@ -559,22 +509,20 @@ The subagent:
    what to pull; it is only worth reading if something writes it.
 
    **An install this run made under the record is written there by the hook,
-   not by this step**, since 21 October 2026: `post-tool-use-install-fact.sh`
-   puts the line under `Installed outside the project` — the install command
-   as whoever clones this project will have to run it, without the
-   redirections of the call since 24 October 2026, and the folder it
-   installed into — from what the guard read, the moment the install went
-   through, and a line that stands there already is not written twice; this
-   step writes no line for it and rewrites none, since a command shortened,
-   reordered or retyped on the way into the file is wrong there for every
-   later reader. Until that day this step wrote the backed command of point 7
-   itself. Where the hook says it did not write, its message says why:
-   where the install did not stand alone in its call, so that the call's
-   exit was not its own, since 24 October 2026, read whether the tool stands
-   in the folder the message names, and where it does, write the line with
-   the call of `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note` the message
-   gives; where the tree stood on the main branch or the file was missing,
-   the message carries the line, and this step puts it there as it stands,
+   not by this step**: `post-tool-use-install-fact.sh` puts the line under
+   `Installed outside the project` — the install command as whoever clones
+   this project will have to run it, without the redirections of the call,
+   and the folder it installed into — from what the guard read, the moment
+   the install went through, and a line that stands there already is not
+   written twice; this step writes no line for it and rewrites none, since a
+   command shortened, reordered or retyped on the way into the file is wrong
+   there for every later reader. Where the hook says it did not write, its
+   message says why: where the install did not stand alone in its call, so
+   that the call's exit was not its own, read whether the tool stands in the
+   folder the message names, and where it does, write the line with the call
+   of `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note` the message gives;
+   where the tree stood on the main branch or the file was missing, the
+   message carries the line, and this step puts it there as it stands,
    through the same program once the branch or the file stands.
 
    **A command the person typed themselves that is an install outside the
@@ -588,63 +536,49 @@ The subagent:
    the tool was read at and the install command alone, in single quotes,
    without the change into the project's directory the handover put before
    it, in the same step in which the path is read after the form's signal,
-   for a browser download as for a tool, since 24 October 2026; the program
-   writes the line in its form, not a second time where it stands already
-   and not on the main branch. For a check class `setup-checks` step 4
-   writes it, on this branch. The person's decision of 21 October 2026, the
-   roadmap entry of that date on milestone 3, part 4, and defect 4 of the
-   roadmap entry of 24 October 2026 on the six closing runs.
+   for a browser download as for a tool; the program writes the line in its
+   form, not a second time where it stands already and not on the main
+   branch. For a check class `setup-checks` step 4 writes it, on this branch.
 
 **If they decline, the run acts on it.** Which outcome depends on what the tool
 was for:
 
-- **A check class.** Not handed over here, and no decline taken here, since
-  22 October 2026: where a check class needs a tool outside the project and
-  the record says no or was never written, call `setup-checks` for that one
-  class, on this branch, whose step 3 puts the decision to them as a question
-  — that they install it themselves, or that the check is switched off — and
-  records the answer, the class `skipped (user)` with that reason on the
-  second, the tool read at its path and the class filled on the first. The
-  build carries on with what the class became. Until that day this bullet
-  took the decline of the command point 7 hands over and sent the class to
-  `setup-checks` as declined, two texts for one decision; the person's
-  statement of 19 October 2026 and the should of defect 4 of the roadmap
-  entry of that date, the open decision taken as a question of theirs.
+- **A check class.** Not handed over here, and no decline taken here: where
+  a check class needs a tool outside the project and the record says no or
+  was never written, call `setup-checks` for that one class, on this branch,
+  whose step 3 puts the decision to them as a question — that they install
+  it themselves, or that the check is switched off — and records the answer,
+  the class `skipped (user)` with that reason on the second, the tool read
+  at its path and the class filled on the first. The build carries on with
+  what the class became; the decision has one text, that question.
 - **The task itself.** The branch stays where it is, and the missing install
   becomes an issue of its own carrying the exact command and the two lines
   of the form below, labelled `raised-here` and `needs-human`, recorded as a
-  blocker of the task — written on their no, since 28 October 2026, and
-  never before the answer, which run 1 of 26 October 2026 did. Nothing else
-  is needed to keep this step from picking the same task straight back up:
-  the readiness query passes over a task with an open blocker by itself. The
-  issue does not ask them to close it: at the next start devloop reads
-  whether the tool stands on this machine, by `bin/devloop-install-issues`
-  as the text at the start of step 2 says, closes the issue itself where it
-  does, and the task is free again; until 28 October 2026 closing it once
-  the command had run was theirs. And in this session, since 30 October
-  2026, decided by the person that day: where they type the command here
-  with `!` after the no — or, under form B, say that they ran it in the
-  second window — the run reads both lines with `--installed` as point 7
-  says, runs `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues
-  --after-install`, which closes the issue with a comment naming an install
-  typed in the session and no start, and goes back to step 2, whose
-  readiness query lists the task free; nothing is built before the program
-  has closed the issue, and where its lines say the issue stays — a folder
-  line, the tool not found — the run says so as the text at the start of
-  step 2 has it for a start. All of it is said together at the next
-  message that ends a turn with text, since 17 October 2026: that nothing
-  was built; the issue by its title; that the task, by its title, is not
-  built while the issue is open; the next task by its title where one is
+  blocker of the task — written on their no, and never before the answer.
+  Nothing else is needed to keep this step from picking the same task
+  straight back up: the readiness query passes over a task with an open
+  blocker by itself. The issue does not ask them to close it: at the next
+  start devloop reads whether the tool stands on this machine, by
+  `bin/devloop-install-issues` as the text at the start of step 2 says,
+  closes the issue itself where it does, and the task is free again. And in
+  this session: where they type the command here with `!` after the no — or,
+  under form B, say that they ran it in the second window — the run reads
+  both lines with `--installed` as point 7 says, runs
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues --after-install`, which
+  closes the issue with a comment naming an install typed in the session and
+  no start, and goes back to step 2, whose readiness query lists the task
+  free; nothing is built before the program has closed the issue, and where
+  its lines say the issue stays — a folder line, the tool not found — the
+  run says so as the text at the start of step 2 has it for a start. All of
+  it is said together at the next message that ends a turn with text: that
+  nothing was built; the issue by its title; that the task, by its title, is
+  not built while the issue is open; the next task by its title where one is
   free, else that none is; and both ways — the line with the `!` to type
   here, on which the run closes the issue and builds the task, and that an
   install made another way is read at the next start with
   `/devloop:start-work`, the input named as they type it; under form B the
-  second window instead of the `!`, with their word here. The wording
-  approved on 30 October 2026 stands in the roadmap entry of that date on
-  the install, (2); until that day the message had no approved wording, and
-  the run of 29 October 2026 said „Ich habe dein Nein umgesetzt“ with three
-  steps that named the next start as the one way. Go back to step
-  2 rather than stopping.
+  second window instead of the `!`, with their word here. Go back to step 2
+  rather than stopping.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issue`
 
@@ -657,8 +591,7 @@ names is the main run's: where the subagent's report names a check target
 that needs a change — a target to add, a command to change, a row the table
 should say differently — the main run calls `setup-checks` for that class on
 the task's branch, before step 4 reads the diff, so that the review reads
-what the check setup committed there with the rest. Since 16 October 2026,
-point 22 of part B of the roadmap entry of 12 October 2026.
+what the check setup committed there with the rest.
 
 ### Proving a check guards its condition
 
@@ -694,10 +627,9 @@ Five shapes come up, and they cost different amounts:
   `skipped` class one level up. What guards it then is step 4's spec lens and the
   person answering step 5, and unattended there is no person: an unchecked
   condition is one the unattended gate cannot see, so it is named as that and
-  never filled in with a check that cannot fail. **This is the missing exit that
-  produced the defect** — a step that expects a check, a condition that will not
-  take one, and the only check writable being one that passes whatever the code
-  does.
+  never filled in with a check that cannot fail. **Without this exit** a step
+  that expects a check meets a condition that will not take one, and the only
+  check writable is one that passes whatever the code does.
 - **The task names no condition.** The cut owes every task one, so a task without
   one is a defect in the cut, and the build does not invent conditions in order
   to have something to prove. Say the task carries no condition and that nothing
@@ -718,8 +650,7 @@ with the build's report, because step 4's spec lens reads it against the task's
 conditions and there is no pull request yet at that point. Then step 6 writes it
 into the pull request body under the heading `Guarded conditions`, which is where
 it outlives the session — unattended that body is the only record of the proof
-there is, and the review that caught this the first time was read by a person who
-happened to be there.
+there is.
 
 **What it costs.** One break, one narrow run and one restore, for every condition
 a task names. A condition whose check is written here costs the reading only; a
@@ -763,27 +694,22 @@ differently depending on who is present — which the run reads off the mark.
 
 **Which of the two happened**: with nobody there the last message names the
 issue, among what is theirs to decide or do, and with the user there the
-hook's handover has said it, since 17 October 2026. A task that came back as
-an issue rather than as a merge is the single most likely outcome this mode
-has, and it is named at the offer for that reason.
+hook's handover has said it. A task that came back as an issue rather than
+as a merge is the single most likely outcome this mode has, and it is named
+at the offer for that reason.
 
 ## Step 4 — Review it
 
 Run `devloop:review-changes` on the diff — the review of this plugin, named
-with its prefix as the harness lists it, since 16 October 2026: the harness
-lists the review skill Claude Code ships beside it, and that one carries the
-word this step's heading uses, so a run loaded it first twice, on 13 and 14
-September 2026, the entry of 14 September 2026 in `docs/roadmap.md` on the
-first planning run alone. The skill Claude Code ships is not the one meant
-here.
+with its prefix as the harness lists it: the harness lists the review skill
+Claude Code ships beside it, and that one carries the word this step's
+heading uses. The skill Claude Code ships is not the one meant here.
 
 **Unattended this step never falls away, and how small the diff is is not a
 reason.** With nobody at the gate, this is the only reading the change gets
 before it lands on the main branch, and the judgement that it is too small to
 need one is made by whoever wrote it — which is precisely the judgement a review
-exists to check. Measured on 9 September 2026: a run read its own change, called
-a full review disproportionate for a comment-only diff, and landed it with no
-review at all. A comment-only diff is not outside the review either — the
+exists to check. A comment-only diff is not outside the review either — the
 standards lens is told in as many words to look for comments that restate the
 code instead of explaining it, so that is the diff where that lens has the most
 to do. And the exemption could not be granted from here in any case: "this is
@@ -812,10 +738,9 @@ silently.** A condition the issue names, a test decision it records: where the
 finding is that one of those is missing or unmet, **the destination does not
 change** — the fix is usually obvious and the first way out takes it — but it is
 named as a finding against the task's own terms at the close in step 5, and
-not where the findings are split, since 17 October 2026. This is a duty to say
-so, not a second route to the issue tracker. On pull request 27 a byte-for-byte
-regression test the task's own Test Decisions had asked for was missing; it
-went through among the mechanical ones and reached the close as nothing at all.
+not where the findings are split. This is a duty to say so, not a second route
+to the issue tracker: fixed among the rest, such a finding reaches the close as
+nothing at all.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-not-in-conversation`
 
@@ -834,8 +759,7 @@ have by then:
   nothing. A state that is the refusal of auto mode on an install by one of
   the ways the rule for its classifier names has ended where the rule
   stands in the person's settings now,
-  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read` ending with 0,
-  since 22 October 2026.
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read` ending with 0.
 - **Every cell reading `skipped (user)` whose reason says something about
   the project that can be checked** — only two packages, no network code. A
   reason with nothing in it to check is not read. Where such a reason no
@@ -857,8 +781,7 @@ have by then:
 
   On a yes `setup-checks` fills the class on this branch. On a no the row
   stays `skipped (user)`, and `setup-checks` writes its reason so that it is
-  not asked again. The wording approved on 5 October 2026 stands in the
-  roadmap entry of that date.
+  not asked again.
 
 Where the review and this reading find the same cell, that is one call of
 `setup-checks` and not two. Every call opens a second round of this step over
@@ -872,12 +795,7 @@ This is not rare: a red check at the turn-end gate is answered by writing more
 code, and so is a "no, revise" at the gate itself — and so are the fixes of
 this step's own findings: what is changed after the report of the review
 agents gets a round over exactly those commits, after every round, before
-the pull request is opened. Since 16 October 2026, point 21 of part B of the
-roadmap entry of 12 October 2026; until then a fix made inside this step
-counted as covered by it, "the boundary is the step, not the change", whose
-only reason was that sentence, and both closing runs of milestone 3 opened
-their pull requests on fixes no lens had read, defect h of the entry of 11
-October 2026 on the second run. What `setup-checks` commits when this step
+the pull request is opened. What `setup-checks` commits when this step
 calls it gets the round the same way: a check target changed there would
 otherwise land unread.
 
@@ -888,7 +806,7 @@ cheap; the code that lands unread when it is skipped is not.
 
 A second round follows the same three ways out, and it looks only at what is new.
 If it surfaces nothing beyond what the first round already named, carry on
-rather than starting again, and say nothing of it, since 17 October 2026.
+rather than starting again, and say nothing of it.
 
 ## Step 5 — Hand it to the user
 
@@ -908,9 +826,8 @@ without it — that is a fact about how the build went, and "what was fixed" is 
 list long enough to hide it. **Then ask one closed question, as text, last in
 the message that ends the turn:** whether this should land. Before it in that
 message stand what it needs, the diff and the findings above, and what else
-this turn owes them; beside it and after it nothing — since 17 October 2026;
-until then it was asked in its own message. Say what each
-answer means — yes lands it, no keeps the branch and takes revisions. Say how a
+this turn owes them; beside it and after it nothing. Say what each answer
+means — yes lands it, no keeps the branch and takes revisions. Say how a
 yes lands it **here**, read off this repository rather than assumed: the platform
 merges it once a required check goes green, or, where no check is required,
 nothing on the platform looks at it at all and this answer is the whole gate. Not
@@ -922,15 +839,12 @@ is.
 
 **Not while a tool the task needs is missing.** A task is not offered for
 landing while a tool it needs is missing on this machine and the person has
-not declined it, since 28 October 2026, new defect 7 of the roadmap entry of
-27 October 2026 on the three closing runs: where the subagent's report, or
-a finding of the review, says that the real tool did not run — a stand-in,
-a stub, a test skipped for the tool — the question is not put, and the
-handover of step 3 point 7 stands in its place, last in the message that
-ends the turn, with both ways; on their yes the build goes on from there
-with the real tool, on their no the issue and the next task. Run 1 of 26
-October 2026 put „Soll das landen?“ on a task built against a stand-in for
-`yq`, with the reviewers' finding that `yq` was not installed beside it.
+not declined it: where the subagent's report, or a finding of the review,
+says that the real tool did not run — a stand-in, a stub, a test skipped
+for the tool — the question is not put, and the handover of step 3 point 7
+stands in its place, last in the message that ends the turn, with both
+ways; on their yes the build goes on from there with the real tool, on
+their no the issue and the next task.
 
 **This is the gate.** It is the one place in the loop where a human decides
 whether work lands, and it is the reason the loop is trustworthy. Reaching step 6
@@ -941,11 +855,10 @@ question the build exists to earn.
 In unattended mode the check suite is this gate instead — the gate is replaced,
 never removed. **What is not replaced is the line above.** With nobody at the
 gate to tell, a finding against something the task's own issue asked for goes
-into the pull request body, in the same words, and not into the last message,
-since 17 October 2026. A check suite can stand in for the decision; it cannot
-stand in for somebody being told, and a fact with no reader is the one thing an
-unattended run drops most cheaply, so the body that outlives the session
-carries it.
+into the pull request body, in the same words, and not into the last message.
+A check suite can stand in for the decision; it cannot stand in for somebody
+being told, and a fact with no reader is the one thing an unattended run drops
+most cheaply, so the body that outlives the session carries it.
 
 ## Step 6 — Merge it
 
@@ -977,10 +890,7 @@ readiness query above uses it to know the task is built, and the entry point and
 the planning stage use it to say which work an open pull request belongs to. A
 branch named `task-N-…` is not that link — it is a string this workflow happens
 to write, and nothing outside it does. Without the keyword the task looks
-unbuilt and the pull request looks unattached, both silently. Measured on 31
-August 2026 in `devloop-test-l`: task 4 was built and merged through this
-workflow and carries no reference at all, in either direction, because nothing
-here had ever said to write one.
+unbuilt and the pull request looks unattached, both silently.
 
 **A pull request that is already armed is not armed again.** This step is entered
 on one whenever a previous run's wait ran out — the arming is a state on the
@@ -997,26 +907,15 @@ command that cannot merge:
 The platform merges, not the agent. Arming and merging are two different
 mutations, and only the first is yours.
 
-**The program reads the state and arms in one call, since 17 October 2026.**
-A reading in one call and the arming in the next leave room for the state to
-move between them: on 16 October 2026 a run without the person read `BLOCKED`
-for #16 of `devloop-test-x` in one call and armed in the next, 25 seconds
-later, the required check having gone green in between in 13 seconds, and
-GitHub refused — defect 5 of the roadmap entry on the runs of that day; the
-sentence asking for both in the same breath had been kept at #12 and not at
-#16. It prints every reading and what GitHub answered, and its last line says
-how it ended: `armed:`, `refused:`, `past its gate:`, `no required check:`,
+**The program reads the state and arms in one call.** A reading in one call
+and the arming in the next leave room for the state to move between them. It
+prints every reading and what GitHub answered, and its last line says how it
+ended: `armed:`, `refused:`, `past its gate:`, `no required check:`,
 `not started:`, `behind:` or `no answer:`, which the paragraphs below read.
-**It fetches the id first and passes it with `-f`, not `-F`.** Measured on 13
-September 2026 in `devloop-test-o`: the one-line form with the substitution
-inside `-F id=$(…)` came back with `unexpected end of JSON input`, and the
-two-step form with the id read first went through. `gh api --help` (gh
-2.96.0, read the same day) gives the reason: `-F` adds "a typed parameter",
+**It fetches the id first and passes it with `-f`, not `-F`.** A substitution
+inside `-F id=$(…)` does not go through: `-F` adds "a typed parameter",
 reading the value from a file where it starts with `@`, while `-f` adds "a
-string parameter" and passes what it was given. The same call stands in
-`shared/arming-command.md`, inserted into the three skills that arm, and in
-`hooks/pre-tool-use-merge-guard.sh` and `docs/skill-conventions.md` — and a
-change to one of those three is a change to all three.
+string parameter" and passes what it was given.
 
 `gh pr merge --auto` is not a substitute and looks like one. The tool drops that
 flag whenever the pull request is already mergeable — including where checks
@@ -1061,23 +960,19 @@ are neither a yes nor a no:
   the branch onto the base, force-push it, and call the program again: it
   reads `BLOCKED` and arming is accepted. That rebase is not the merge this stage
   must not perform — it moves the base under this branch and lands nothing
-  anywhere — and it is no reason to hand the merge over. Measured on 30 August
-  2026 on a pull request seven days old: `UNKNOWN` on the first reading, `BEHIND`
-  on the second. A rebase adds no commits, so step 4 does not run again over it;
-  the required check does run again over the new base and can come back red,
-  which is answered the way any red check is. A second `BEHIND` means the base is
-  moving faster than the check finishes — say that and hand the merge over rather
-  than going round again.
+  anywhere — and it is no reason to hand the merge over. A rebase adds no
+  commits, so step 4 does not run again over it; the required check does run
+  again over the new base and can come back red, which is answered the way any
+  red check is. A second `BEHIND` means the base is moving faster than the check
+  finishes — say that and hand the merge over rather than going round again.
 
 **A mergeable value on a freshly pushed branch is the required check not having
-started, not a pull request past its gate.** Measured on 25 August 2026: directly
-after the push `mergeStateStatus` read `CLEAN`, and five seconds later `BLOCKED`.
-The value cannot tell the two apart; the branch can. The program asks whether
-the required check has run on this head commit, off the commit's
-`statusCheckRollup`. One query answers it for both kinds of gate.
-`StatusCheckRollupContext` is a union of `CheckRun` and `StatusContext` — read
-off GitHub's live GraphQL schema on 31 August 2026 — so the rollup sees
-Actions check runs and the older commit statuses alike, where
+started, not a pull request past its gate.** The value cannot tell the two
+apart; the branch can. The program asks whether the required check has run on
+this head commit, off the commit's `statusCheckRollup`. One query answers it
+for both kinds of gate.
+`StatusCheckRollupContext` is a union of `CheckRun` and `StatusContext`, so the
+rollup sees Actions check runs and the older commit statuses alike, where
 `repos/OWNER/REPO/commits/SHA/check-runs` sees only the first. A `CheckRun`
 carries `name` and `status`; a `StatusContext` carries `context` and `state`.
 
@@ -1085,24 +980,20 @@ The required names come out of the two gate queries below, which the program
 runs on the pull request's base branch once a call and prints on its `gate:`
 lines: classic protection carries them in `required_status_checks.contexts`, a
 ruleset in `parameters.required_status_checks[].context` on its
-`required_status_checks` rule. Measured on 31 August 2026 in `devloop-test-l`:
-protection returned `contexts: ["checks"]`, and the rollup on pull request 14
-carried one `CheckRun` named `checks`. The program matches each required name
-against the rollup:
+`required_status_checks` rule. The program matches each required name against
+the rollup:
 
 - **No entry for it, or an entry whose `status` is not `COMPLETED`** — the other
-  five are `REQUESTED`, `QUEUED`, `IN_PROGRESS`, `WAITING` and `PENDING`, read
-  off the same schema the same day — or a `StatusContext` whose `state` is
-  `PENDING` or `EXPECTED`. The check has not run yet. **This is not a refusal
-  case and nothing here has gone wrong.** The program reads on, once a second,
-  and arms on the `BLOCKED` it moves to.
+  five are `REQUESTED`, `QUEUED`, `IN_PROGRESS`, `WAITING` and `PENDING` — or a
+  `StatusContext` whose `state` is `PENDING` or `EXPECTED`. The check has not
+  run yet. **This is not a refusal case and nothing here has gone wrong.** The
+  program reads on, once a second, and arms on the `BLOCKED` it moves to.
 - **Every required name `COMPLETED`**, or its status context in `SUCCESS`,
   `FAILURE` or `ERROR` — the pull request really is past its gate, and that is
   the third refusal case below where auto-merge is on and the first where it
-  is off, as the cases below have it since 18 October 2026, met without a
-  refusal, since the program arms
-  on no mergeable value. It ends with `past its gate:`, a `required:` line for
-  each required check, a `rerun:` line for each run on GitHub Actions that
+  is off, as the cases below have it, met without a refusal, since the program
+  arms on no mergeable value. It ends with `past its gate:`, a `required:` line
+  for each required check, a `rerun:` line for each run on GitHub Actions that
   carries one and a `foreign:` line for each that none carries, read off each
   check run's own link to its workflow run in the same query, and arms nothing.
   Where GitHub refuses at `BLOCKED` because the check went green in between,
@@ -1123,9 +1014,9 @@ call stays under the 100 seconds the wait on the checks below gives a call,
 for the reason given there. Where it ends with `not started:`, call it once
 more; a second `not started:` is the two minutes run out. Where that line says
 the required checks are not known, a gate query not having answered, the
-rights did not allow finding out, as below. The measured window was five
-seconds, so two minutes is generous against the only measurement there is and
-short enough not to hold the session. If it runs out with the required check
+rights did not allow finding out, as below. The window between a push and the
+check registering is a matter of seconds, so two minutes is generous and short
+enough not to hold the session. If it runs out with the required check
 still not registered on this branch, that is what gets said: the gate is
 there, no check has appeared in two minutes, and this run does not know why.
 Hand the merge over with that named. Do not fall back on "a gate this pull
@@ -1151,28 +1042,25 @@ things. The program arms on no mergeable value, so two of them come as its own
 answer rather than as GitHub's: `no required check:` where both gate queries
 answered and name none, and `past its gate:`; the first comes as `refused:`,
 and as `past its gate:` where a gate stands and auto-merge is off, the
-program reading no setting, since 18 October 2026.
+program reading no setting.
 `gh api repos/OWNER/REPO -q .allow_auto_merge` answers the first and no
 more: it says whether auto-merge is permitted on the repository, not whether
-there is a gate to wait on at this moment. Measured on 30 August 2026, it read
-true in a repository with a required check and in one without alike, so a run
-that tells the other two apart by that field is reading a field that cannot
-answer the question. None of the three is a fault, and none stops the stage:
+there is a gate to wait on at this moment, so a run that tells the other two
+apart by that field is reading a field that cannot answer the question. None
+of the three is a fault, and none stops the stage:
 
 - **Auto-merge switched off at the repository** — `allow_auto_merge` is false
   where a gate stands, whether the program ended on `refused:` or on
   `past its gate:`, as the handover below has it. A setting, not something a
-  build step changes, and since 16 October 2026 not something this step asks
-  them to change: at a first setup it stays off wherever no gate stood, the
-  setup asking about it only where one does, and the check setup's step 8
-  switches it on where it sets a gate up. The handover below names the case.
+  build step changes, and not something this step asks them to change: at a
+  first setup it stays off wherever no gate stood, the setup asking about it
+  only where one does, and the check setup's step 8 switches it on where it
+  sets a gate up. The handover below names the case.
 - **No gate at all** — no required check, no required review, so the pull request
   is already mergeable and there is no platform gate here. That is this case
   whatever `allow_auto_merge` reads, since the program arms on no mergeable
   value: it answers `no required check:`, and the handover below names this
-  case and no other, since 18 October 2026, after defect 4 of the roadmap entry
-  of 16 October 2026 on the runs of that day; until then a clause of its own
-  was said here, that what lands the change is the answer at the end of step 5.
+  case and no other.
 - **A gate this pull request is already past** — there is a required check, it
   has gone green, nothing is outstanding any more, and auto-merge is on. The
   refusal reads the same as the one above and means the opposite. Saying "no
@@ -1184,7 +1072,7 @@ prints both. The state: `mergeStateStatus` as it read it last — a mergeable
 status with a gate present and auto-merge on is the third case. The gate: no
 single query sees every kind of gate, so it asks both. The first case takes
 the gate too: where the program printed no `gate:` line, as at a refusal with
-`BLOCKED` read after it, ask both here, since 18 October 2026.
+`BLOCKED` read after it, ask both here.
 
 - `gh api repos/OWNER/REPO/branches/main/protection` sees classic branch
   protection. It does not see a gate set through a ruleset, and it needs admin on
@@ -1193,8 +1081,7 @@ the gate too: where the program printed no `gate:` line, as at a refusal with
   message — a rights refusal above all — means this query did not answer.
 - `gh api repos/OWNER/REPO/rules/branches/main` sees rulesets, at repository and
   organisation level, and needs no special rights. It does not see classic
-  protection: measured on 30 August 2026, a repository with classic protection
-  and the required check `checks` returned an empty list here.
+  protection.
 
 A gate found by either one is a gate. Only both coming back negative — a body
 that really says "Branch not protected", and an empty ruleset list — means there
@@ -1207,66 +1094,53 @@ same text the two setup skills hand a merge over with:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text merge-handover`
 
-What went wrong in the past was the framing and the timing — a run
-stopping mid-task, over a change nobody asked for, as though it had hit an error.
+What it guards against is the framing and the timing — a run stopping
+mid-task, over a change nobody asked for, as though it had hit an error.
 
 In unattended mode there is nobody to hand it to. A refusal by GitHub to arm,
-in the first case, is a stop with
-the reason named, the mark going with it as at every such stop, and so is
-`past its gate:` where `allow_auto_merge`, read before anything is restarted,
-is false: that is the first case, since 18 October 2026. So is `no required
-check:`, the second case, which comes as the program's own answer and not as
-a refusal by GitHub, since 19 October 2026; until then no line said what
-follows it with nobody there. **The third
-is not, at first**, since 17 October 2026, by the person's decision of that
-day: a run without them does not end because a check was quick. At `past its
-gate:` with a `rerun:` line, restart once every run its `rerun:` lines name,
-whatever `foreign:` lines stand beside them, since the addendum of that day
-— `gh run rerun <id>`, one call each, without `--failed` and without `--job`,
-so that the whole run goes again and none of it stands on its old result —
-and call the program again, which arms on the `BLOCKED` the restart brings,
-a foreign check already through staying through;
-GitHub merges once the check is green again, never this run. Measured by the
-person on 17 October 2026 on #16 of `devloop-test-x`: `CLEAN` before, one run
-on the head commit, `BLOCKED` one second after `gh run rerun` with an empty
-rollup, armed in the same pass two seconds after it, merged 42 seconds after
-it. Only the runs that carry a required check are restarted, and a pull
-request once. A restart after which GitHub merges is said nowhere — not in
-the conversation, not in the last message, not in the pull request: it
-changes nothing of what they get. Where the program ends with `past its gate:`
-again after the restart, before GitHub accepted the arming, or with no
-`rerun:` line — every required check from a service outside GitHub Actions,
-which nothing here can restart — it is a stop
-with the reason named: the first group of the last message says that at that
-pull request, by its number, the check had already run through before GitHub
+in the first case, is a stop with the reason named, the mark going with it as
+at every such stop, and so is `past its gate:` where `allow_auto_merge`, read
+before anything is restarted, is false: that is the first case. So is
+`no required check:`, the second case, which comes as the program's own
+answer and not as a refusal by GitHub. **The third is not, at first**: a run
+without them does not end because a check was quick. At `past its gate:`
+with a `rerun:` line, restart once every run its `rerun:` lines name,
+whatever `foreign:` lines stand beside them — `gh run rerun <id>`, one call
+each, without `--failed` and without `--job`, so that the whole run goes
+again and none of it stands on its old result — and call the program again,
+which arms on the `BLOCKED` the restart brings, a foreign check already
+through staying through; GitHub merges once the check is green again, never
+this run. Only the runs that carry a required check are restarted, and a
+pull request once. A restart after which GitHub merges is said nowhere — not
+in the conversation, not in the last message, not in the pull request: it
+changes nothing of what they get. Where the program ends with
+`past its gate:` again after the restart, before GitHub accepted the arming,
+or with no `rerun:` line — every required check from a service outside
+GitHub Actions, which nothing here can restart — it is a stop with the
+reason named: the first group of the last message says that at that pull
+request, by its number, the check had already run through before GitHub
 could accept auto-merge — even after a restart, or coming from a foreign
 service devloop cannot restart — and that devloop never merges itself, so
 the run stops here; the merge goes into the second group, handed to them,
-without the handover's sentence on why GitHub does not merge it itself,
-since the addendum of 17 October 2026: the first group has said it already.
-The wordings approved that day stand in the roadmap entry of that date on
-arming past the gate; a skill says what is said, not the words. A restart
-that does not answer, or answers with an error message, goes as "When a
-command does not answer" above says. A refusal in the sense of
-"A guard's block, with nobody there" above — a guard's block, the
-classifier's no, the no of the hook on permission prompts, since 18 October
-2026 the refusal of a safety check built into Claude Code — of the arming or
-of the restart is not that: the
-task is in hand until its merge is proven, so it goes as that section says,
-the issue, the task put down, the next taken; whether the classifier lets
+without the handover's sentence on why GitHub does not merge it itself: the
+first group has said it already. A restart that does not answer, or answers with
+an error message, goes as "When a command does not answer" above says. A refusal
+in the sense of "A guard's block, with nobody there" above — a guard's block,
+the classifier's no, the no of the hook on permission prompts, the refusal of a
+safety check built into Claude Code — of the arming or of the restart is not
+that: the task is in hand until its merge is proven, so it goes as that section
+says, the issue, the task put down, the next taken; whether the classifier lets
 `gh run rerun` through with nobody there is not measured. Start condition 5
-rules the first two out at the start alone, where it reads auto-merge and
-the gate, so that auto-merge switched off or a gate taken away since is met
-here as above; until 19 October 2026 this sentence called them unreachable.
-It cannot
-touch the third, which is a state of one pull request and not a property of the
-repository, and it is not reported as a missing gate. A `behind:`
-is worked through there like anywhere else, since the rebase needs
+rules the first two out at the start alone, where it reads auto-merge and the
+gate, so that auto-merge switched off or a gate taken away since is met here as
+above. It cannot touch the third, which is a state of one pull request and not a
+property of the repository, and it is not reported as a missing gate. A
+`behind:` is worked through there like anywhere else, since the rebase needs
 nobody, and so is the two-minute wait on a check that has not started; a second
-`behind:`, a wait that runs out, a value the enumeration cannot place and a
-`no answer:` are all stops with the reason named — the
-last of them with the command and the message that came back in place of a
-value, since there is nobody here to hand it to.
+`behind:`, a wait that runs out, a value the enumeration cannot place and a `no
+answer:` are all stops with the reason named — the last of them with the command
+and the message that came back in place of a value, since there is nobody here
+to hand it to.
 
 **Then the wait, and this is where attended and unattended part company.**
 
@@ -1278,12 +1152,7 @@ rule where a person is waiting with you, and it is the only place it holds.
 
 **Unattended, the wait happens in this answer or it does not happen at all.**
 Nothing wakes a run: the answer that ends here ends the run, whatever it promised
-about reporting back. Measured on 11 and 13 September 2026 in `devloop-test-o`,
-four times — pull requests 50, 54, 55 and 57 were armed, read once, and each time
-the run said it would report back once the merge had landed and ended its answer;
-the platform merged all four between forty-five seconds and two minutes later,
-and the run stood still until the user wrote a word. So block on the checks
-instead, which needs nobody:
+about reporting back. So block on the checks instead, which needs nobody:
 
     ${CLAUDE_PLUGIN_ROOT}/bin/devloop-bounded 100 gh pr checks <number> --watch --interval 60
 
@@ -1298,25 +1167,20 @@ floor is for. Those cells hold seconds and single minutes, so the thirty minutes
 is the ordinary answer and the sum is what can raise it, never lower it.
 
 **Nothing in the shell holds that bound, so the run does.** `gh pr checks` has no
-timeout of its own (`gh pr checks --help`, gh 2.96.0, read 13 September 2026),
-and `timeout` is not on a stock macOS — `command -v timeout` came back empty on
-this machine the same day, the same trap as `head -n -1` being a GNU extension.
-That is what `bin/devloop-bounded` is for, since 7 October 2026: the call above
-runs under it with 100 seconds, under the 120 seconds Claude Code gives one Bash
-call where nothing sets it, because the changelog of Claude Code says that a
-call reaching that limit is not ended but moved to the background and runs on,
-which nothing here has measured, and a repeat would then start a second one
-beside it — "Environment constraints, measured" in
-`docs/skill-conventions.md`. A call that ends with exit 124 and the program's
-line, `no answer within 100 seconds:` and the command, means the checks are still
-running: repeat it while time is left on the bound, and keep the count of time
-spent yourself. No two calls run beside each other, because each comes back
-under the harness's limit.
+timeout of its own, and `timeout` is not on a stock macOS, the same trap as
+`head -n -1` being a GNU extension. That is what `bin/devloop-bounded` is for:
+the call above runs under it with 100 seconds, under the 120 seconds Claude
+Code gives one Bash call where nothing sets it, because by Claude Code's
+changelog a call reaching that limit is not ended but moved to the background
+and runs on, and a repeat would then start a second one beside it. A call that
+ends with exit 124 and the program's line, `no answer within 100 seconds:` and
+the command, means the checks are still running: repeat it while time is left
+on the bound, and keep the count of time spent yourself. No two calls run
+beside each other, because each comes back under the harness's limit.
 
-**The checks going green is not the merge.** GitHub merges after them, and the
-four pull requests above took between forty-five seconds and two minutes over it.
-Read the platform, and read it again across the next few minutes rather than
-once:
+**The checks going green is not the merge.** GitHub merges after them, which
+can take minutes. Read the platform, and read it again across the next few
+minutes rather than once:
 
     gh pr view <number> --json state,mergedAt,mergeStateStatus
 
@@ -1325,14 +1189,13 @@ depends on it — the fast-forward, the branch deletion, the issue check, step 7
 query — and none of it may run on a green check alone.
 
 **A wait that runs out is a finding, not a failure.** Say what it was waiting on
-and which check was still outstanding, and not how long it waited, since 17
-October 2026. The pull request stays
-open and stays armed: arming is a state on the platform and does not expire with
-this answer, so it lands by itself when the check finishes and there is nothing
-to arm a second time. Do not call the task failed and do not call the pull
-request stuck. Then go to step 7 and query. The unlanded pull request keeps its
-own task out of the readiness answer, which is what that step already says to
-report.
+and which check was still outstanding, and not how long it waited. The pull
+request stays open and stays armed: arming is a state on the platform and does
+not expire with this answer, so it lands by itself when the check finishes and
+there is nothing to arm a second time. Do not call the task failed and do not
+call the pull request stuck. Then go to step 7 and query. The unlanded pull
+request keeps its own task out of the readiness answer, which is what that
+step already says to report.
 
 **This is not the two-minute wait above.** That one runs before arming, waits for
 a required check to register, and running out there is a stop with the reason
@@ -1346,8 +1209,7 @@ stop.** Resolve it, rebuild, and let step 4 run again on what changed — that r
 is written there and it is the one that holds; do not answer this with a second
 review rule here. Then wait again. The pull request stays open and the arming
 stands through all of it. **There is no cap on the rounds.** Rework after a
-review finding has none either, and in the run of 11 to 13 September 2026 the
-third round on task 48 was still turning up real findings.
+review finding has none either.
 
 **What ends it is standstill, not a number of tries.** That is the distinction
 `hooks/stop-checks.sh` makes locally: its count rises only while the failure
@@ -1391,39 +1253,31 @@ Once it has landed:
   lost, and that only the local main branch cannot be brought to that
   state; nothing below is built on it, and with nobody there the mark
   goes with that stop, as at every stop with a reason. What is in the way
-  goes as that
-  section says since 16 October 2026 — a changed file set aside and brought
-  back on their yes, commits of their own put on a branch of their own on
-  their yes, and with nobody there both without asking, the change brought
-  back where the mark goes and the branch named in the last message; the
-  connection and the sign-in theirs to clear. Do not force
-  it.
+  goes as that section says — a changed file set aside and brought back on
+  their yes, commits of their own put on a branch of their own on their
+  yes, and with nobody there both without asking, the change brought back
+  where the mark goes and the branch named in the last message; the
+  connection and the sign-in theirs to clear. Do not force it.
 - Delete the merged branch locally and, by the rule below the list, on the
   remote.
 - Confirm the task issue closed, and **close it by hand where the platform did
   not**. `gh pr view <number> --json closingIssuesReferences` says which issues
   the pull request claimed, so the check is over that list rather than over
-  memory. Each one checked stands as the tracker shows it, and is not named,
-  since 17 October 2026. **The closing keyword is the
-  right link and is not a guarantee.** Measured on 13 September 2026 in
-  `devloop-test-o` over five merges: four issues closed within seconds — 47 by
-  pull request 50, 48 by 53, 49 by 54, 52 by 57 — and one did not. Pull request
-  55 merged at 09:21:34 carrying a correct `Closes #51`; issue 51 was still open
-  four minutes later and was closed by hand at 09:25:57. An issue left open over
-  work that has landed reads to every later query as work not done, step 2's
-  readiness query among them, so this is checked after every merge and not only
-  when something looks wrong.
+  memory. Each one checked stands as the tracker shows it, and is not named.
+  **The closing keyword is the right link and is not a guarantee.** An issue
+  left open over work that has landed reads to every later query as work not
+  done, step 2's readiness query among them, so this is checked after every
+  merge and not only when something looks wrong.
 - If every task under a spec is now closed, close the spec and say you did. Do
   not ask: every task under it is done, so there is no second sensible answer,
   and reopening an issue is one click if it turns out there was one.
 - Read `docs/agents/checks.md` for a class still `empty` where the
-  repository now has
-  code. That is what a setup without code leaves — all nine `empty`, the suite
-  not built — and the first merge that lands code is where it stops being
-  true. Call `setup-checks`, whole and not for one class, saying nothing before
-  it: that the work is merged and not every check is decided yet, so that
-  comes first, stands at the start of the message that puts the question of
-  its step 2, as that step says, since 17 October 2026. It cuts
+  repository now has code. That is what a setup without code leaves — all
+  nine `empty`, the suite not built — and the first merge that lands code is
+  where it stops being true. Call `setup-checks`, whole and not for one
+  class, saying nothing before it: that the work is merged and not every
+  check is decided yet, so that comes first, stands at the start of the
+  message that puts the question of its step 2, as that step says. It cuts
   its own branch from the main branch this step just fast-forwarded, puts its
   questions, lands the suite through its own step 7 and comes back to step 7
   here. This never meets nobody: the mode refuses to start while a class is
@@ -1446,14 +1300,9 @@ is why this step exists at all.
 
 **Step 2 then decides, and this step decides nothing.** What to do with one ready
 task, with several, with none, and with a loose issue lying beside them is
-written there once and read from there. This step used to answer those cases in
-three words of its own, and two of the three contradicted step 2 — "ask" where
-step 2 says **Do not ask which**, "stop" where step 2 says **Do not stop without
-saying what comes next**. Measured on 9 September 2026: with the spec closed and
-four loose issues open, a run stopped here and put two ways to the user instead
-of naming the one it was taking. A second statement of a decision is not a
-summary of it. It is the version that gets followed, because it is the one being
-read at the moment of deciding.
+written there once and read from there. A second statement of a decision is not
+a summary of it. It is the version that gets followed, because it is the one
+being read at the moment of deciding.
 
 A pull request that has not landed keeps its own task out of that answer, which
 is the point rather than a gap: the task is built, and the query is what stops
@@ -1481,28 +1330,22 @@ and the build. The third is read here only, because it needs the tasks to exist.
 A refusal on the planning route also ends with the mark that route wrote going,
 as at every stop with a reason, since the run ends here.
 
-**Read them by one call, on both routes**, since 25 October 2026: run
+**Read them by one call, on both routes**: run
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions` once, with the shell,
 with the issue numbers of the tasks in range as its arguments — the open
 tasks under the spec this run builds, as step 2's readiness query lists
-them — and, since 28 October 2026, `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode`
-behind it in the same call, so that the one call reads all seven. The
-program reads 1, 2,
+them — and `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` behind it in
+the same call, so that the one call reads all seven. The program reads 1, 2,
 3, 5, 6 and 7 as the list describes them, off the main branch as last
 fetched and off GitHub, fetching nothing, and prints one line for each:
 that it holds; that it does not hold, and the cause; or that it is not
 established, the query that did not answer and its message, which is a
 condition that does not hold, said as not established and never read as a
 yes or a no. For 4 it prints that the hook reads it, and the hook on this
-call puts the mode beside the result, as the item of 4 below says: the
-plannings of runs 2 and 3 of 26 October 2026 made this one call, and the
-build of run 2 read condition 4 not again, point 10 on the route through
-the planning, decision (4) of the roadmap entry of 27 October 2026 on the
-tool state read by one program. Read none of the six
-yourself beside that call. Decision (5) of the roadmap entry of 24 October
-2026 on install lines written by one program: three closing runs met these
-conditions, and none read all seven at the build's start. The seven, what
-each line is about, and what the run says where one does not hold:
+call puts the mode beside the result, as the item of 4 below says. Read
+none of the six yourself beside that call: read separately, not all seven
+get read at the build's start. The seven, what each line is about, and what
+the run says where one does not hold:
 
 1. No class in `checks.md` is `empty`. Every one is `filled`, or `skipped` in
    one of its two forms. `empty` means undecided, and an undecided check
@@ -1535,8 +1378,7 @@ each line is about, and what the run says where one does not hold:
 3. No task in range is blocked by anything outside the range.
 4. Claude Code runs in auto mode. Read it by running
    `${CLAUDE_PLUGIN_ROOT}/bin/devloop-permission-mode` once, with the shell,
-   in the one call with `bin/devloop-start-conditions` above since 28
-   October 2026:
+   in the one call with `bin/devloop-start-conditions` above:
    the program prints one line, and the hook on that call puts the mode
    beside its result, the value and the label the status bar shows for it —
    the field `permission_mode` of a hook's input is the one place the mode
@@ -1545,19 +1387,16 @@ each line is about, and what the run says where one does not hold:
    nobody there the classifier and the hook on permission prompts are what
    answer in a person's place, and so does a mode that could not be read: no
    statement beside the result, or the statement that the input carried no
-   `permission_mode`. Allow rules are not read. Where it fails, say so with
-   the sentence the roadmap entry of 9 October 2026 records as text 2, in the
-   form approved on 27 October 2026 since that day, the roadmap entry of that
-   date on the three visible texts — that the run without them does not
-   start; that Claude Code has to run in auto mode, the mode set now named as
-   the status bar shows it; how to switch, Shift+Tab in the terminal, and
-   then to type `/devloop:start-work --auto`, the input named as they type it
-   in Claude Code and never the flag alone; and that without the flag the
-   planned tasks are built with them — on the direct route and after a
-   planning alike, this skill saying what is said and not the words.
-   Where the mode could not be read, "When a command does not answer" holds
-   and no wording of its own: the command, and the message or the missing
-   statement in its place.
+   `permission_mode`. Allow rules are not read. Where it fails, say so — that
+   the run without them does not start; that Claude Code has to run in auto
+   mode, the mode set now named as the status bar shows it; how to switch,
+   Shift+Tab in the terminal, and then to type `/devloop:start-work --auto`, the
+   input named as they type it in Claude Code and never the flag alone; and that
+   without the flag the planned tasks are built with them — on the direct route
+   and after a planning alike, this skill saying what is said and not the words.
+   Where the mode could not be read, "When a command does not answer" holds and
+   no wording of its own: the command, and the message or the missing statement
+   in its place.
 5. The repository can actually merge without a person. Two things have to hold,
    both read off GitHub and not off `environment.md`: auto-merge is enabled
    (`gh api repos/OWNER/REPO -q .allow_auto_merge`), and a gate exists for it to
@@ -1600,70 +1439,55 @@ refusing.**
 Where one of those five does not hold and this section was reached directly,
 the person who typed `--auto` is there. Call `setup-checks` for its step 8
 alone: it puts what has to be asked — the permissions a second time, where
-their record does not say yes, and since 9 October 2026 the question on the
-rule for the classifier of auto mode, where it does not stand in their
-settings — and sets up what the answers allow, the gate with them. The shorter offer that stood here until 5 October 2026, of the
-workflow file and the protection without the permissions and without a
-record, is gone. Step 8 is not reached while a class is `empty`, condition 1,
-and does not set a protection while a pull request is open: either stays a
-refusal, said with what would help. When it returns, the tree stands on the
-main branch as freshly fetched: on a yes read all seven again, by the same
-call, and go on to the mark; on a no build this task with them there, as
-without the flag.
-And where the five hold and this section was reached directly, since 22
-October 2026: first, since 28 October 2026,
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues` once, with the shell,
-by the text at the start of step 2, so that the question below names no
-install whose tool stands on this machine by now and a task it held is
+their record does not say yes, and the question on the rule for the classifier
+of auto mode, where it does not stand in their settings — and sets up what the
+answers allow, the gate with them. Step 8 is not reached while a class is
+`empty`, condition 1, and does not set a protection while a pull request is
+open: either stays a refusal, said with what would help. When it returns, the
+tree stands on the main branch as freshly fetched: on a yes read all seven
+again, by the same call, and go on to the mark; on a no build this task with
+them there, as without the flag. And where the five hold and this section was
+reached directly: first `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-issues` once,
+with the shell, by the text at the start of step 2, so that the question below
+names no install whose tool stands on this machine by now and a task it held is
 free; then run `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
 once, with the shell. Where it ends with 0 — the rule for the classifier
 does not stand in their settings, or they cannot be read for it, and an
 open issue of this project carries an install auto mode refused in a run
 without them — call `setup-checks` for its step 8 alone, for that one
 question in its form for a start with `--auto`, at every start that meets
-it, also where `setup-checks` was loaded in this session already, since 24
-October 2026; that step changes nothing of the repository and, on the yes,
-enters the rule and closes the issues the program
-named; where it ends with 1, nothing is asked; where it ends with 2, say
-that the query did not answer, with the command and the message it prints,
-as "When a command does not answer" says, and ask nothing. The rule is no
-condition of the mode and no start condition: on either answer go on to
+it, also where `setup-checks` was loaded in this session already, rather than
+putting the question out of what the session holds of that step; that step
+changes nothing of the repository and, on the yes, enters the rule and closes
+the issues the program named; where it ends with 1, nothing is asked; where it
+ends with 2, say that the query did not answer, with the command and the message
+it prints, as "When a command does not answer" says, and ask nothing. The rule
+is no condition of the mode and no start condition: on either answer go on to
 the mark, and where auto mode then refuses an install, that is a refusal
 under "A guard's block, with nobody there" above, which for an install by
 one of the ways the rule names leaves the issue that brings this question
 back. A task an issue held is free once the issue is closed, and step 2
 takes it as any free task; a check class an issue concerned goes to
 `setup-checks` from step 4 of the next task, the state of its cell having
-ended with the rule. Decided on 22 October 2026, the roadmap entry of that
-date on the question after a refusal. Run 3a put the question at its second
-start without that call, out of what the session held of the step, and
-added a line of its own, defect 3 of the roadmap entry of 24 October 2026
-on the six closing runs.
-Where this section was reached from planning, nobody is there to ask: refuse,
-say which of the five is missing and that typing `/devloop:start-work --auto`
-where a piece of work starts sets it up, the input named as they type it in
-Claude Code and never the flag alone, since 27 October 2026, defect 2
-of the roadmap entry of that date on the three closing runs, and the
-mark goes, as at every stop with a reason under "A guard's block, with
-nobody there". For conditions 6 and 7 the refusal says, for the person
-who comes back: that the run without them does not start; that it
-needs their yes — to installing tools outside the project, for 6, or
-to adding check tools to the project's packages itself,
-for 7 — in the sentence step 8 of `setup-checks` puts before its second
+ended with the rule. Where this section was reached from planning, nobody is
+there to ask: refuse, say which of the five is missing and that typing
+`/devloop:start-work --auto` where a piece of work starts sets it up, the input
+named as they type it in Claude Code and never the flag alone, and the mark
+goes, as at every stop with a reason under "A guard's block, with nobody there".
+For conditions 6 and 7 the refusal says, for the person who comes back: that the
+run without them does not start; that it needs their yes — to installing tools
+outside the project, for 6, or to adding check tools to the project's packages
+itself, for 7 — in the sentence step 8 of `setup-checks` puts before its second
 questions; where the record says no, that they said no to it, as there;
 that `/devloop:start-work --auto` sets it up, the input named as they type
 it in Claude Code and never the flag alone; and what happens without the
 flag — the run builds the planned tasks with them and, under 6, hands them
-every installation as a command they run themselves, by step 3 point 7, or,
+every installation as a command they run themselves, by point 7 of step 3, or,
 under 7, asks them at every check tool whether it may add it, by step 3 of
-`setup-checks`. The wording approved on 27 October 2026 stands in the
-roadmap entry of that date on the three visible texts, in place of the one
-of 6 October 2026 in the entry of 5 October 2026; this skill says what is
-said, not the words. Conditions 1 and 3 are
-nothing that step can put right: say what would help there, as before.
-Condition 4 is nothing it can put right either: there the run says text 2,
-as the list says, and where the mode could not be read, what "When a command
-does not answer" says.
+`setup-checks`. Conditions 1 and 3 are nothing that step can put right: say what
+would help there, as before. Condition 4 is nothing it can put right either:
+there the run says what the list gives under 4, and where the mode could not be
+read, what "When a command does not answer" says.
 
 **Then the mark.** Where this run came through planning, `.claude/unattended.local`
 stands with the commit this run wrote and `build` on its second line; carry on.
@@ -1680,71 +1504,58 @@ with a shell command, since the tree stands on the main branch. First the
 fetch, three attempts, by the command under "When the main branch cannot be
 fetched or fast-forwarded" above; where the third fails too, stop as that
 section says, opening with that the run cannot read just now where the main
-branch stands on GitHub and that for that nothing is begun here — the
-wording approved on 12 October 2026, point 19 of part B of the roadmap
-entry of that date, since nothing is fast-forwarded here and only the fetch
-can fail — the run without them does not begin, and no mark is written. On
-a fetch that answered, the mark, which the hook on the mark lets through in auto mode
-alone, the mode condition 4 has read by now, and blocks in every other; and
-since 25 October 2026 only where conditions 1, 2, 5, 6 and 7 hold, which the
-hook reads at the write by calling `bin/devloop-start-conditions` without a
-range, the reading this section made at its start — from 22 October 2026
-until then conditions 6 and 7 alone, through the install record's reader:
-where one does not hold or is not established, the hook blocks the write and
-names which and why, the program's lines, and the run does not write the
-mark another way — with the person there, say which condition failed and
-why, as this section says for it above, for 6 and 7 the sentence it gives
-there, and carry on with them, as the block says; with nobody there, a stop
-with the reason named, under "A guard's block, with nobody there". Cluster
-22 of the roadmap entry of 19 October 2026, the decision of 20 October 2026
-on it, and decision (5) of the roadmap entry of 24 October 2026:
+branch stands on GitHub and that for that nothing is begun here — since
+nothing is fast-forwarded here and only the fetch can fail — the run without
+them does not begin, and no mark is written. On a fetch that answered, the
+mark, which the hook on the mark lets through in auto mode alone, the mode
+condition 4 has read by now, and blocks in every other; and only where
+conditions 1, 2, 5, 6 and 7 hold, which the hook reads at the write by
+calling `bin/devloop-start-conditions` without a range, the reading this
+section made at its start: where one does not hold or is not established,
+the hook blocks the write and names which and why, the program's lines, and
+the run does not write the mark another way — with the person there, say
+which condition failed and why, as this section says for it above, for 6
+and 7 the sentence it gives there, and carry on with them, as the block
+says; with nobody there, a stop with the reason named, under "A guard's
+block, with nobody there". The command:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mark-command`
 
 **And where the mark is deleted**, so that creation and deletion stand in one
-place, and since 16 October 2026 how, in one shared text, which stands at
-the rule for every stop with a reason under "A guard's block, with nobody
-there", at the standstill in step 6 and at the finishing sentence of this
-section, and in the planning stage and the cut at their endings, and brings
-back what the run set aside at a fetch: at the finishing sentence at the end
-of this section; at the standstill
-after three rounds in step 6, and at a refused arming there that ends the run;
-at the second `BEHIND`, the wait that runs out, the value the enumeration
-cannot place and the read that came back with no value, the stops of step
-6; at a refusal above, where the run came through planning and wrote a mark that a
-refusal here ends; at a stop on a refusal with no task in hand, under "A
-guard's block, with nobody there"; at a stop on a check chain that did not
-finish inside its call in step 1, where no task is in hand — in step 3 the
-task ends instead, since the addendum of 9 October 2026; at a fetch that
-fails on its third attempt or a fast-forward that fails on what only they
-can clear, in step 1 and in step 6, as "When the main branch cannot be
-fetched or fast-forwarded" says; on the user's word
-to stop; at the halt before the first
-build, which the cut does before this section is ever reached; and at the
-stops of the planning stage under its "With nobody there", which end the
-run before any build: where the whole of the work hangs on a question and
-no option is less committing, where a refusal before the build leaves the
-whole of the work hanging on it, and where the design choice in its Stage 3
-leaves nothing standing or takes away the recommended draft — the ending
-the roadmap entry of 3 and 4 October 2026 asks for in its defect 3, where a
-named pair of items that cannot both hold takes the whole of the work and
-nothing is left to cut out, has its place here too, and is built in that
-stage as the stop at the design choice today and not yet as the second
-drafting round that names the pair. Not at a halt
-of `setup-checks` called with nobody there on the branch of a task: since 9
-October 2026 the task ends there and the run goes on. Each of those
-sites says so where it stands. A session that simply ends deletes nothing; the
-planning stage's pick-up rule and the refusal above are what meet the mark it
-leaves.
+place, and how, in one shared text, which stands at the rule for every stop
+with a reason under "A guard's block, with nobody there", at the standstill
+in step 6 and at the finishing sentence of this section, and in the planning
+stage and the cut at their endings, and brings back what the run set aside
+at a fetch: at the finishing sentence at the end of this section; at the
+standstill after three rounds in step 6, and at a refused arming there that
+ends the run; at the second `BEHIND`, the wait that runs out, the value the
+enumeration cannot place and the read that came back with no value, the
+stops of step 6; at a refusal above, where the run came through planning and
+wrote a mark that a refusal here ends; at a stop on a refusal with no task
+in hand, under "A guard's block, with nobody there"; at a stop on a check
+chain that did not finish inside its call in step 1, where no task is in
+hand — in step 3 the task ends instead; at a fetch that fails on its third
+attempt or a fast-forward that fails on what only they can clear, in step 1
+and in step 6, as "When the main branch cannot be fetched or fast-forwarded"
+says; on the user's word to stop; at the halt before the first build, which
+the cut does before this section is ever reached; and at the stops of the
+planning stage under its "With nobody there", which end the run before any
+build: where the whole of the work hangs on a question and no option is less
+committing, where a refusal before the build leaves the whole of the work
+hanging on it, and where the design choice in its Stage 3 leaves nothing
+standing or takes away the recommended draft. Not at a halt of
+`setup-checks` called with nobody there on the branch of a task: the task
+ends there and the run goes on. Each of those sites says so where it stands.
+A session that simply ends deletes nothing; the planning stage's pick-up
+rule and the refusal above are what meet the mark it leaves.
 
 Then settle what this run turns on: the scope, what happens to the loose issues
 already open, the sentence that will mean it has finished, and the main-branch
 commit it starts from — the same commit the mark carries. None of it is said as
-the run opens, since 17 October 2026: the message that opens the run ends no
-turn, and the room to object it gave would reach them only at the run's end;
-what of it they need — what was merged, what is open — stands in the last
-message, by the paragraph on it below. Until then it was said in the message
-that opened the run and kept in the conversation.
+the run opens: the message that opens the run ends no turn, and the room to
+object it gave would reach them only at the run's end; what of it they need —
+what was merged, what is open — stands in the last message, by the paragraph
+on it below.
 
 **The loose issues belong in that scope, not in whatever the run meets
 later.** Run the in-flight query before settling anything, take the ones
@@ -1754,22 +1565,18 @@ for the spec to close. An issue from outside is left, the same as
 everywhere else. Do not build the scope out of the readiness query alone: that
 query returns the tasks under a spec, step 2 says in so many words that a loose
 issue is not one of them, and a scope taken from it is a scope with the loose
-work already missing from it. Measured on 9 September 2026: a run announced its
-scope as the last open task under one spec, never mentioned the three loose
-issues standing open beside it, closed the spec, reported that nothing was left
-and halted.
+work already missing from it.
 
 **None of it goes into a file — not the scope, not the sentence, not a count.**
 No hook watches for an unattended run, so a file of that kind is read only by
-the run that wrote it, which is bookkeeping in the coat of a safeguard. Measured
-on 6 and 7 September 2026: a run kept exactly that file across three tasks and
-raised its own limit in the same write, and nothing anywhere noticed. **The mark
-is the one file this mode writes, and it is not that kind**: it bounds nothing
-and enforces nothing, it answers a question the run cannot re-derive later —
-which mode it is in, and how far it may go — and it is read at every fork by
-parts of the run that did not write it in the same breath: the build after the
-planning, the subagent inside the build, the next session that finds it. What a
-run may not be is the reader of its own limit; the mark carries no limit.
+the run that wrote it, which is bookkeeping in the coat of a safeguard. **The
+mark is the one file this mode writes, and it is not that kind**: it bounds
+nothing and enforces nothing, it answers a question the run cannot re-derive
+later — which mode it is in, and how far it may go — and it is read at every
+fork by parts of the run that did not write it in the same breath: the build
+after the planning, the subagent inside the build, the next session that
+finds it. What a run may not be is the reader of its own limit; the mark
+carries no limit.
 
 **There is no ceiling on how many tasks this run may finish.** What ends it is
 that step 2 has nothing left to take, and that is **two** conditions, both of
@@ -1778,11 +1585,7 @@ that clause 1 or clause 3 would take now.
 
 **Do not phrase the finish in the readiness query's terms alone.** "Nothing
 ready" is that query's answer, and step 2 says the query does not see loose
-issues — so a run that finishes on it finishes on a question it never asked. That
-is not a hypothetical: the sentence here used to read that the run works until
-nothing in scope is ready any more and that this was the only finish, and on 9
-September 2026 a run read it, closed its spec, and halted with three loose issues
-lying open.
+issues — so a run that finishes on it finishes on a question it never asked.
 
 **Open loose issues are not by themselves a reason to keep going.** While a spec
 is open, clause 2 is what holds, and a loose issue waiting on it is the ordinary
@@ -1812,11 +1615,10 @@ branch and neither sees what the other is building. Same constraint that already
 allows only one build task at a time, not a second one. The mark is what makes
 it checkable: a second run finds the first one's and does not start.
 
-**A `.claude/autorun.local.md` lying about is stale, not an instruction.** An
-earlier version of this stage wrote one, and it carries a standing instruction to
-keep taking tasks. Nothing writes it now and nothing ever read it. Delete it,
-and take the scope from this conversation; that it was deleted is not said,
-since 17 October 2026: the last message has no place for it.
+**A `.claude/autorun.local.md` lying about is stale, not an instruction.** It
+carries a standing instruction to keep taking tasks, and nothing writes or
+reads it. Delete it, and take the scope from this conversation; that it was
+deleted is not said: the last message has no place for it.
 
 Emit the finishing sentence only when it is completely and unambiguously true —
 never to get out of the loop. Then the mark goes:
@@ -1827,25 +1629,21 @@ never to get out of the loop. Then the mark goes:
 `skipped (user)` row whose reason step 4 found no longer holding was left as
 it stood, since nobody was there to ask. Name each such row where the run
 ends — at the finishing sentence, or at whichever stop ended it — with its
-reason and what holds now, and not in every pull request. And since 16
-October 2026, as the text above says: each change of theirs the run set
-aside at a fetch and still set aside, with the issue that shows both lines,
-and the branch their commits went onto, with the offer of a pull request for
-them.
+reason and what holds now, and not in every pull request. And, as the text
+above says: each change of theirs the run set aside at a fetch and still set
+aside, with the issue that shows both lines, and the branch their commits
+went onto, with the offer of a pull request for them.
 
 The last message is written as the text on the mark's deletion above says,
-in two groups and nothing outside them, since 17 October 2026; the rows of
-the paragraph above go into the second. Since the addendum of that day to
-the roadmap entry of that date on the reports of what was done the
-description stands in that text, inserted at every end of the run with
-nobody there, and until then it stood in this paragraph alone, read by none
-of the ends in `plan-work` and `cut-into-tasks`.
+in two groups and nothing outside them; the rows of the paragraph above go
+into the second. The description stands in that text, inserted at every end
+of the run with nobody there.
 
 A message from them stops the run, and the mark goes on it as above too.
-Neither how to read the diffs nor how to stop the run is said, since 17
-October 2026: the last message has no group for reading the git log, and at
-its end nothing is left to stop. If the session itself is gone, the mark it
-left is met by the rules above.
+Neither how to read the diffs nor how to stop the run is said: the last
+message has no group for reading the git log, and at its end nothing is left
+to stop. If the session itself is gone, the mark it left is met by the rules
+above.
 
 ---
 

@@ -41,11 +41,6 @@ arranged: two reviewers carrying five lenses between them ran two lenses, and a
 run reporting five has said something untrue about its own work. This is the word
 everything downstream counts — one section per lens in the report, the promise at
 setup that every angle the change touches gets read, the record of how many ran.
-Measured on 9 September 2026: over two tasks, five applicable lenses were carried
-by two reviewers, one reading security together with failure behaviour, the other
-standards with spec and test quality. The run said so plainly; it was not hiding
-anything. What it had was four sentences telling it to start one reviewer per
-lens and none telling it what the word counts.
 
 ## When a command does not answer
 
@@ -55,8 +50,8 @@ lens and none telling it what the word counts.
 
 Establish exactly what is under review — the diff between the branch and the main
 branch, at the current commit. Which commits it covers the pull request of the
-gate names, and it is not said here, since 17 October 2026. Everything below
-looks at that, not at the working tree, and not at whatever changed since.
+gate names, and it is not said here. Everything below looks at that, not at the
+working tree, and not at whatever changed since.
 
 **How small it is decides nothing here.** A one-line diff gets the lenses its
 content triggers, and the two that always run always run. `build-work` step 4
@@ -87,14 +82,14 @@ not met, behaviour that contradicts a stated decision, work nobody asked for,
 tests at seams the spec did not place, and tests that would pass whatever the
 code did.
 
-**Read the task's conditions one by one against the `Guarded conditions` list the
-build hands up** — the condition, what was broken, which target ran, what came
-back. On a pull request that already exists, the same list is in its body. A condition with no entry is a finding, and so is an entry whose red
-came from somewhere other than the broken condition: an import error, a missing
-fixture, a command refused before it ran. A missing list is itself the finding,
-not a reason to skip this. This lens is where a check standing beside its
-condition was caught the last time, by a reviewer breaking the code by hand; the
-list is what makes that reading cheap instead of lucky.
+**Read the task's conditions one by one against the `Guarded conditions` list
+the build hands up** — the condition, what was broken, which target ran, what
+came back. On a pull request that already exists, the same list is in its body.
+A condition with no entry is a finding, and so is an entry whose red came from
+somewhere other than the broken condition: an import error, a missing fixture, a
+command refused before it ran. A missing list is itself the finding, not a
+reason to skip this. This lens is where a check standing beside its condition is
+caught; the list is what makes that reading cheap instead of lucky.
 
 ## The lenses that run when they apply
 
@@ -106,22 +101,22 @@ the task description — if the diff contains it, the lens runs.
 **Unattended, a stated reason buys no exception, and the form of what may be said
 instead is fixed.** Where the trigger is in the diff, the lens runs. Where it is
 not, the one thing that may be written about the lens that did not run, where
-the findings go and not in the conversation, since 17 October 2026, is **the
-trigger's own words, negated, item by item** — "the diff contains no schema and
-no stored-format change" against a trigger reading "any schema or stored-format
-change". Not a paraphrase of it, not a narrowing of it, and not what its absence
-means. Anyone holding the diff can then check that sentence against the diff and
-against the trigger printed above it. That is the point of the form: unattended
-nobody reads it at the time, so it has to survive being read later by somebody
-who was not there.
+the findings go and not in the conversation, is **the trigger's own words,
+negated, item by item** — "the diff contains no schema and no stored-format
+change" against a trigger reading "any schema or stored-format change". Not a
+paraphrase of it, not a narrowing of it, and not what its absence means. Anyone
+holding the diff can then check that sentence against the diff and against the
+trigger printed above it. That is the point of the form: unattended nobody reads
+it at the time, so it has to survive being read later by somebody who was not
+there.
 
-**A judgement is what this rules out first, and it is the easy half to see.**
-Measured on 9 September 2026: a lens left out because there was "no new input,
-path or network surface". "Surface" appears in no trigger, three of that trigger's
-items — credential, permission, database — go unmentioned, and what a change means
-for whoever might attack it is not a fact about the diff at all. Attended, a
-judgement like that at least reaches somebody who can contradict it; unattended
-nothing separates a lens correctly ruled out from one talked out of the way.
+**A judgement is what this rules out first, and it is the easy half to see.** A
+lens left out because there was "no new input, path or network surface" is one:
+"surface" appears in no trigger, three of that trigger's items — credential,
+permission, database — go unmentioned, and what a change means for whoever might
+attack it is not a fact about the diff at all. Attended, a judgement like that
+at least reaches somebody who can contradict it; unattended nothing separates a
+lens correctly ruled out from one talked out of the way.
 
 **The harder half is a fact that answers a different question.** "The diff adds
 no new error handling" is a fact, it is about the diff's content, and anybody can
@@ -130,11 +125,6 @@ error handling, fallback value, or default return". A diff that changes an
 existing default return makes that sentence true while the lens still applies. So
 the form is the trigger's words rather than merely a fact: a true fact about the
 diff is no answer to a question it was not asked.
-
-Measured on 6 and 7 September 2026: two tasks went through three lenses instead
-of five, security and failure behaviour left out with a reason given for each,
-while a file path arriving from outside and a default return stood in those very
-diffs.
 
 - **Security** — any input from outside, credential, permission, file path, or
   anything reaching a network or a database.
@@ -149,24 +139,19 @@ A reviewer that sees the other lenses starts prioritising across them.
 
 **Start one reviewer for every lens that applies, and say neither number.**
 Done right the two are the same number and say nothing; a reviewer that did not
-start or did not return is the failure, and the paragraph below says it. Since
-17 October 2026; until then both numbers stood in one sentence as the reviewers
-started, "five lenses, five reviewers", so that "five lenses, two reviewers"
-showed at a glance, after a single number had hidden a missing reviewer over
-two tasks.
+start or did not return is the failure, and the paragraph below says it.
 
 If a reviewer fails to return, rerun it; where the rerun does not return
 either, state which lens did not run. Never present a comparison that is
-quietly one lens short. A rerun that returned is not said, since 17 October
-2026.
+quietly one lens short. A rerun that returned is not said.
 
 ## The report, said to nobody
 
-The report is said to nobody, since 17 October 2026: the findings reach the
-person at the close of the step that owns the gate, as that step presents
-them, and stay where "What happens to a finding" below sends them. The report
-is what the split is made from. One section per lens, in the order above. Under
-each: the findings, worst first, and the single worst one named.
+The report is said to nobody: the findings reach the person at the close of the
+step that owns the gate, as that step presents them, and stay where "What
+happens to a finding" below sends them. The report is what the split is made
+from. One section per lens, in the order above. Under each: the findings, worst
+first, and the single worst one named.
 
 **Then stop, and stop means all three of these.** No sentence after the last
 lens. No verdict over the whole thing — no cross-lens ranking, no "looks good
@@ -190,8 +175,7 @@ absence. It goes no further than the report.
   Fixing means **removing or replacing** — never rewriting a line that carries
   behaviour. Deleting a dead credential is a fix; tidying the URL next to it
   while you are there is a change, and it belongs in a finding no matter how
-  small it looks. That exact slip happened here: removing a hardcoded key also
-  rewrote the query string beside it, and broke it.
+  small it looks.
 - **File it as an issue** if fixing it would revisit a design decision, change an
   interface, or exceed the task. Say what you filed and why, and **label it
   `raised-here`** — it came out of this work, not from outside, and nothing else
@@ -206,13 +190,11 @@ silently.** A condition the issue names, a test decision it records: where the
 finding is that one of those is missing or unmet, **the destination does not
 change** — the fix is usually obvious and the first half sends it there — but it
 is named as a finding against the task's own terms at the caller's close,
-where the findings reach the person, and not as the split is made, since 17
-October 2026; **it does not go into the
-report above**, which still stops at the last lens and says nothing after it.
-This is a duty to say so, not a second route to the
-issue tracker. On pull request 27 a byte-for-byte regression test the task's own
-Test Decisions had asked for was missing; it went through among the mechanical
-ones and reached the close as nothing at all.
+where the findings reach the person, and not as the split is made; **it does not
+go into the report above**, which still stops at the last lens and says nothing
+after it. This is a duty to say so, not a second route to the issue tracker:
+fixed silently, such a finding goes through among the mechanical ones and
+reaches the close as nothing at all.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text finding-not-in-conversation`
 
