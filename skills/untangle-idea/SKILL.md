@@ -85,12 +85,12 @@ working tree.
 Where its answer carries a `missing:` line, this project is not set up on the
 main branch — never set up, or written and not landed, which the working tree
 cannot tell apart. **Run `setup-project`, and say nothing before it. Do not
-ask.** Why its questions come now stands in its first question, as its step
-0 says, since 17 October 2026. There is nothing to decide:
-without a tracker there is nowhere to put a map or a ticket, so the only other
-answer is to abandon what the user just asked for. Do not improvise around it
-either — there is no local-markdown fallback here — a tracker with no queryable blocking relationship
-stops the setup, so by the time you are reading this the tracker has one.
+ask.** Why its questions come now stands in its first question, as its step 0
+says. There is nothing to decide: without a tracker there is nowhere to put a
+map or a ticket, so the only other answer is to abandon what the user just asked
+for. Do not improvise around it either — there is no local-markdown fallback
+here — a tracker with no queryable blocking relationship stops the setup, so by
+the time you are reading this the tracker has one.
 
 ### The map body
 
@@ -171,12 +171,10 @@ recommended answer, so a single word can settle it:
 
     Recommendation: <your answer, and why>
 
-Never name a bare term the user may not know. Someone who has never heard of this
-workflow must be able to answer. Why a question comes up now has reached them
-with the round — the tree, the frontier and how many rounds — and is not said
-again in each question; where it has not, it is said with the question. Since
-16 October 2026, point 25 of part B of the roadmap entry of 12 October 2026;
-until then the template carried it as a fourth part of every question.
+Never name a bare term the user may not know. Someone who has never heard of
+this workflow must be able to answer. Why a question comes up now has reached
+them with the round — the tree, the frontier and how many rounds — and is not
+said again in each question; where it has not, it is said with the question.
 
 **Facts are your job, never the user's.** Anything in the repository, the docs, or
 on the web, you look up yourself. When a frontier question needs a fact from the
@@ -428,16 +426,15 @@ User invokes with a loose idea.
 
    **Tell each one it must not change branches.** They run at the same time in
    one working directory and share its git state, so a checkout by one lands
-   under the other's feet — which has already happened, leaving one agent's file
-   committed on the other's branch. Each writes only its own file and commits
-   only that path.
+   under the other's feet. Each writes only its own file and commits only that
+   path.
 
-   If it happens anyway, leave it, and say nothing of it, since 17 October
-   2026: the ticket's context pointer names the branch its findings stand on.
-   **Do not rewrite history to tidy it** — no `rm` on another branch, no
-   cherry-picking a commit out from under it. A stray file in a throwaway
-   research branch costs nothing; quietly reshaping branches to hide a mistake
-   costs the ability to trust what the branches say.
+   If it happens anyway, leave it, and say nothing of it: the ticket's context
+   pointer names the branch its findings stand on. **Do not rewrite history to
+   tidy it** — no `rm` on another branch, no cherry-picking a commit out from
+   under it. A stray file in a throwaway research branch costs nothing; quietly
+   reshaping branches to hide a mistake costs the ability to trust what the
+   branches say.
 6. **Stop here.** Charting is one session's work and it hand-resolves nothing;
    this step is where the session ends. Say what the map holds and which tickets
    are free. Then say how to start the first one, in these two steps and nothing
@@ -488,8 +485,7 @@ reached and there is nothing more to decide before someone builds. Say that the
 questions are settled, gist what the map decided, and carry straight on into
 planning and building the work. Do not ask permission for that: the map exists
 because they wanted the thing built, and it is now out of the way. No room to
-say stop is offered, since 17 October 2026: it would reach them only once the
-planning has begun.
+say stop is offered: it would reach them only once the planning has begun.
 
 ---
 

@@ -48,9 +48,9 @@ it — and skip steps 7 and 8, since a landing and the offer of the mode belong
 to a suite completed with the person there, not to the middle of a task.
 Four things call it that way. A build whose task created the target. A build
 that met a check class whose tool lands outside the project under an install
-record saying no or never written, since 22 October 2026: the build hands no
-command over for it and takes no decline, and the question of step 3 on a
-tool the run may not install is put here, on the build's branch. Step 4 of a build: for a
+record saying no or never written: the build hands no command over for it
+and takes no decline, and the question of step 3 on a tool the run may not
+install is put here, on the build's branch. Step 4 of a build: for a
 finding of the review about the table, for a state that has ended, or for
 what the user answered there about a class they had switched off — for the
 class it names, for the class whose row it concerns where it names none, and
@@ -90,68 +90,51 @@ that called. Everything else below applies unchanged.
   was built for. With the user there this is the question step 3 puts where
   the tool is missing under a no — they install it themselves, or the check
   goes off — and the check off makes the class `skipped (user)` with that
-  reason. With
-  nobody there, there is no one to ask: the class goes `skipped (state)`, the
-  state being what this machine lacks and the block names, and the report
-  names it; since 9 October 2026 the same holds for the three other ways an
-  install does not go through, which the rule inserted in step 4 names;
+  reason. With nobody there, there is no one to ask: the class goes
+  `skipped (state)`, the state being what this machine lacks and the block
+  names, and the report names it; the same holds for the three other ways
+  an install does not go through, which the rule inserted in step 4 names;
   and where that way is the refusal of auto mode on a command by one of
-  the ways the rule for its classifier names, since 22 October 2026, an
-  issue stands beside the cell as that rule says, for every class, carrying
-  the command, the message and what is in the way, labelled `raised-here`
-  and `needs-human` and recorded as a blocker of no task, so that the
-  question on the rule meets the person at their next start with `--auto`.
-  `secrets` is the exception it always is — it is
-  never `skipped` on a run's own judgement, so there the task ends instead,
-  and since 9 October 2026 not the run: an issue carrying the command, the
-  message and what is in the way, labelled `raised-here` and `needs-human`,
-  recorded as a blocker of the task whose branch this is; the task is put
-  down and the caller takes the next; the class stays as it stands. The run
-  says, for the person who comes back: that the check for credentials
-  committed by accident cannot be set up without them; in plain words what
-  is in the way — for instance a runtime the tool would need, Java say,
-  which the run never installs, the rule step 3 below and `build-work` step
-  3 point 7 carry, or an install through a route or to a place the record
-  does not name, which the guard blocks under a yes as well, as "With
-  nobody there" below says; the runtime is the example the approved wording
-  carries and not the only cause; that this check is never switched off by
-  the run on its own, which is why the run writes an issue with the reason
-  and goes on with the other tasks; how they install the tool themselves,
-  here in Claude Code, step by step by the person's rule of 28 October 2026
-  in `docs/skill-conventions.md`: the install command typed with `!` in
-  front, form A of "Where the person types a command devloop hands them"
-  there, backed as the issue has it, and then `/devloop:start-work`; that
-  the run then closes the issue, sets the check up and goes on with the
-  task — the issue carrying the two lines of the form below, which that
-  start reads —; and that the command stands in the issue as well, since 28
-  October 2026, the wording of that day on the handover steps, (8). Where
-  the command asks something, `sudo apt install` say, form B holds, in
-  three steps: a second terminal window opened, not the one Claude Code
-  runs in, with what the command asks as the reason — a password —; the
-  command typed there; `/devloop:start-work` typed here in Claude Code;
-  then the same close, the issue closed, the check set up, the task gone
-  on with, the command in the issue as well; the wording stands in that
-  entry among the decisions of 28 October 2026 after the push, and this
-  skill says what is said, not the words. The wording of the entry of that date
-  on the hook on SubagentStart had them run the command and devloop notice
-  it at the next start; until then that running it and
-  closing the issue frees the task again. Until 9 October 2026 the run that
-  called ended here and deleted the mark; the deletion list in `build-work`
-  says so no longer. The wording approved on 8 October 2026 stands in the
-  roadmap entry of 9 October 2026 as text 1, its two last sentences since 28
-  October 2026 in the wording of that day, the roadmap entry of 28 October
-  2026 on the handover steps, (8), which replaced the two of the entry of
-  that date on the hook on SubagentStart; this skill says what is said, not
-  the words.
+  the ways the rule for its classifier names, an issue stands beside the
+  cell as that rule says, for every class, carrying the command, the
+  message and what is in the way, labelled `raised-here` and `needs-human`
+  and recorded as a blocker of no task, so that the question on the rule
+  meets the person at their next start with `--auto`. `secrets` is the
+  exception it always is — it is never `skipped` on a run's own judgement,
+  so there the task ends instead, and not the run: an issue carrying the
+  command, the message and what is in the way, labelled `raised-here` and
+  `needs-human`, recorded as a blocker of the task whose branch this is;
+  the task is put down and the caller takes the next; the class stays as it
+  stands. The run says, for the person who comes back: that the check for
+  credentials committed by accident cannot be set up without them; in plain
+  words what is in the way — for instance a runtime the tool would need,
+  Java say, which the run never installs, the rule step 3 below and
+  `build-work` step 3 point 7 carry, or an install through a route or to a
+  place the record does not name, which the guard blocks under a yes as
+  well, as "With nobody there" below says; the runtime is an example and
+  not the only cause; that this check is never switched off by the run on
+  its own, which is why the run writes an issue with the reason and goes on
+  with the other tasks; how they install the tool themselves, here in Claude
+  Code, step by step: the install command typed with `!` in front, form A
+  of "Where the person types a command devloop hands them" above, backed as
+  the issue has it, and then `/devloop:start-work`; that the run then closes
+  the issue, sets the check up and goes on with the task — the issue
+  carrying the two lines of the form below, which that start reads —; and
+  that the command stands in the issue as well. Where the command asks
+  something, `sudo apt install` say, form B holds, in three steps: a second
+  terminal window opened, not the one Claude Code runs in, with what the
+  command asks as the reason — a password —; the command typed there;
+  `/devloop:start-work` typed here in Claude Code; then the same close, the
+  issue closed, the check set up, the task gone on with, the command in the
+  issue as well.
 - **The command is not an install and the guard matched on text.** Then nothing
   is blocking the class, and `skipped` would be an entry that is not true: a
   class standing as skipped while nothing hinders it, which the next reader takes
   for a decision somebody made. Do not skip it. Put the text through the editing
   tool rather than through the shell, and where that does not reach, stop with
-  the reason named — with nobody there, since 9 October 2026, the task ends
-  as at `secrets` above and not the run: the issue carrying the command, the
-  message and what is in the way, the task put down, the next taken, the
-  class as it stands.
+  the reason named — with nobody there the task ends as at `secrets` above
+  and not the run: the issue carrying the command, the message and what is
+  in the way, the task put down, the next taken, the class as it stands.
 
 Neither case is a reason to write the class differently from what it is. What
 tells them apart is what the command would have done, not what the guard matched.
@@ -182,32 +165,28 @@ nobody to say it has landed. Both records say yes there, since the mode does
 not start otherwise: a tool the class needs is entered in the dependency file
 or installed by the run, and step 3 asks nothing. Three things are left that
 would have been a question. An install that does not go through, on any of
-the four ways the rule in step 4 names since 9 October 2026 — the guard
-blocks it under a yes, a runtime, a place the record does not name, and
-since 8 October 2026 a branded browser at the system's own location or the
-system packages a browser's `install-deps`, `--with-deps` or
-`--install-deps` would install; the classifier of auto mode or, since 18
-October 2026, a safety check built into Claude Code refuses it; the
-installer ran and ended with an error, after its three attempts; the call
-did not finish inside its ten minutes: "A guard's block is not a decline"
-above answers all four, the class going `skipped (state)` with what this
-machine lacks, and `secrets` ending the task. A refusal of anything else
-here — a guard's block on a command that is no install, the classifier's
-no, the refusal of a safety check built into Claude Code since 18 October
-2026, the no of the hook on permission prompts while the mark stands — ends
-the task as "A guard's block, with nobody there" in `build-work` says, since
-this skill is reached with nobody there on a task's branch alone. A row in
-no allowed form whose text does not say whose decision it
-was: it becomes `skipped (user)`, named in the pull request. And a row that
-reads `skipped (user)`: it is never changed without them, whatever the caller
-found. The less committing option is the one that changes
-nothing of theirs. That "Ask anyway where filling it changes their project"
-in step 2 meets nobody to ask no longer arises: until 5 October 2026 a reason
-that had expired was read again after a merge, with nobody there as well, and
-a fill that needed their say stayed open as an issue; a state is read before
-the task is released now, on the task's branch, and the two records have
-answered what a fill may add. Step 8's offer of the mode is never reached
-with nobody there:
+the four ways the rule in step 4 names — the guard blocks it under a yes, a
+runtime, a place the record does not name, and a branded browser at the
+system's own location or the system packages a browser's `install-deps`,
+`--with-deps` or `--install-deps` would install; the classifier of auto
+mode or a safety check built into Claude Code refuses it; the installer ran
+and ended with an error, after its three attempts; the call did not finish
+inside its ten minutes: "A guard's block is not a decline" above answers
+all four, the class going `skipped (state)` with what this machine lacks,
+and `secrets` ending the task. A refusal of anything else here — a guard's
+block on a command that is no install, the classifier's no, the refusal of
+a safety check built into Claude Code, the no of the hook on permission
+prompts while the mark stands — ends the task as "A guard's block, with
+nobody there" in `build-work` says, since this skill is reached with nobody
+there on a task's branch alone. A row in no allowed form whose text does
+not say whose decision it was: it becomes `skipped (user)`, named in the
+pull request. And a row that reads `skipped (user)`: it is never changed
+without them, whatever the caller found. The less committing option is the
+one that changes nothing of theirs. That "Ask anyway where filling it
+changes their project" in step 2 meets nobody to ask does not arise: a
+state is read before the task is released, on the task's branch, and the
+two records have answered what a fill may add. Step 8's offer of the mode
+is never reached with nobody there:
 it stands in a first setup, with them present, and after a merge only where a
 person is, and `--auto` is typed by somebody who is there. The third route,
 the step after a merge finding classes `empty`
@@ -261,13 +240,10 @@ settled.
   form. Where the tool it needs is missing and the install record says no or
   was never written, with the person there, that decision is the question
   step 3 puts at once — install it themselves, or the check off — and the
-  class is never left `empty` for it, since 21 October 2026: the run of 19
-  October 2026 in project z handed the command over, left the class `empty`
-  across a merge and said the mode's loss in a subordinate clause, defect 4
-  of the roadmap entry of that date, and the person decided that the open
-  decision is taken before the offer of the mode is made or dropped. With
-  nobody there the task ends instead, and not the run, as "A
-  guard's block is not a decline" above says, since 9 October 2026.
+  class is never left `empty` for it: the open decision is taken before the
+  offer of the mode is made or dropped. With nobody there the task ends
+  instead, and not the run, as "A guard's block is not a decline" above
+  says.
 
 A state that will end is still a state: no third-party packages yet, no
 entry point yet. It goes in as `skipped (state)` with that state named, and
@@ -279,9 +255,9 @@ branch.
 
 **A row whose status carries none of the four forms is decided again, and
 its old text is read as a hint and no more.** The guard on the table sends
-every such row here — a table written before 5 October 2026 carries
-`skipped: <reason>`, a row written by hand a word that does not exist — and
-what the row becomes is one of four:
+every such row here — a table in an older form carries `skipped: <reason>`, a
+row written by hand a word that does not exist — and what the row becomes is one
+of four:
 
 - **Meant as `filled`** — `Filled`, or `filled` in backticks: prove the
   target red as step 5 does, then `filled`.
@@ -304,9 +280,7 @@ what the row becomes is one of four:
   as a judgement of the run, by the paragraph above: `skipped (state)` with
   the state where the class would find nothing here, and filled otherwise.
   With nobody there it becomes `skipped (user):` with the text as it stood,
-  and the pull request names the row and says so. The wording approved on 6
-  October 2026 stands in the roadmap entry of 5 October 2026; this skill
-  says what is said, not the words.
+  and the pull request names the row and says so.
 
 **The cell is machine-read.** One line, plain ASCII, no `|` — the parsers split
 the row on it by position. Where the reason needs more than a phrase, the phrase
@@ -324,35 +298,29 @@ were committed by accident" does.
 
 Ask which to do now: all of them, or some first and the rest after them. The
 question is put as text, last in the message that ends the turn, the
-proposal above standing before it in that message, since 17 October 2026:
-one line per class with what it catches, its cost and its tool, and the
-reasons of the ones that do not apply, are what the answer is given on, and
-they do not fit the harness's choice widget by the bound of the output
-style of devloop. Where this skill was called whole for the classes still
-`empty` — from `build-work` step 6 after a merge, or from step 4 of the entry
-point at a start — that message opens with why the question comes now: after a
-merge, that the work is merged but not every check is decided yet, so that
-comes first; at a start, that the project is set up but not every check is
+proposal above standing before it in that message: one line per class with
+what it catches, its cost and its tool, and the reasons of the ones that do
+not apply, are what the answer is given on, and they do not fit the
+harness's choice widget by the bound of the output style of devloop. Where
+this skill was called whole for the classes still `empty` — from
+`build-work` step 6 after a merge, or from step 4 of the entry point at a
+start — that message opens with why the question comes now: after a merge,
+that the work is merged but not every check is decided yet, so that comes
+first; at a start, that the project is set up but not every check is
 decided yet, so that comes first. Where no question is put here, it stands
-in the message with which this skill's turn ends, before the merge handover.
-Since 17 October 2026, where until then the caller said it before calling;
-the wording for a start was approved on 6 October 2026 and stands in the
-roadmap entry of 5 October 2026, the one after a merge on 17 October 2026 in
-the roadmap entry of that day on the reports of what was done; this skill
-says what is said, not the words. "None"
-is not among the answers, and neither is a class left for later without a
-reason. `empty` means nobody decided, and every step that asks whether the
-suite is complete reads that word as undecided — the mode's first
-precondition, the `check` target, the close of this skill, the step after a
-merge, and since 6 October 2026 the start of a session — so an answer that
-leaves rows `empty` is asked again at each of them,
-which is the asking again the paragraph below names. A class they do not want
-in this project is a decision: it goes into the cell as `skipped (user):` with
-their reason, and no run changes that row without them. It is not read again
-after a merge, as it was until 5 October 2026: `build-work` reads it before a
-task is released, and only where the reason says something about the project
-that can be checked; where that no longer holds it asks them, and with nobody
-there the row stays. That
+in the message with which this skill's turn ends, before the merge
+handover. "None" is not among the answers, and neither is a class left for
+later without a reason. `empty` means nobody decided, and every step that
+asks whether the suite is complete reads that word as undecided — the
+mode's first precondition, the `check` target, the close of this skill, the
+step after a merge, and the start of a session — so an answer that leaves
+rows `empty` is asked again at each of them, which is the asking again the
+paragraph below names. A class they do not want in this project is a
+decision: it goes into the cell as `skipped (user):` with their reason, and
+no run changes that row without them. It is not read again after a merge:
+`build-work` reads it before a task is released, and only where the reason
+says something about the project that can be checked; where that no longer
+holds it asks them, and with nobody there the row stays. That
 question belongs to a first setup, where what this project's check suite will
 be is genuinely theirs to settle. Missing tools are asked about separately,
 below, because installing one changes their machine and filling a class does
@@ -382,8 +350,7 @@ target in the task runner are not. When both kinds come up in one round, ask
 about the ones that cost them something, and the ones that cost them nothing
 stand in the pull request of step 7, beside the red proof of each class it
 switches on, and are not said — never side by side with the questions as
-though they were the same kind of thing. Since 17 October 2026; until then
-they were stated in the conversation.
+though they were the same kind of thing.
 
 ## Step 3 — Prefer tools that live inside the project
 
@@ -398,12 +365,9 @@ this skill, the branch is cut once they are answered, and the record of an
 answer, the manifest line, the
 install and the targets are step 4's, on that branch.
 
-No paragraph here names the check commands as something to grant since 16
-October 2026: at the moment one read it one could decide nothing, and later
-it was forgotten; the decision falls in Claude Code's own prompt, which
-offers to allow a command permanently, and in auto mode no prompt comes.
-Point 8 of part B of the roadmap entry of 12 October 2026, with the note
-that stood at the start of `setup-project` until the same day.
+This step does not name the check commands to the person as something to
+grant: the decision falls in Claude Code's own prompt, which offers to allow
+a command permanently, and in auto mode no prompt comes.
 
 **A check tool is entered in the project's dependency file by this run only
 where the record on it says yes.** The dependency file is whatever this
@@ -459,20 +423,15 @@ The command of the second way installs the tool outside the project — on a
 route of the record, `brew install prettier` or `npm install -g prettier`
 say — and is handed over after the no in the message that ends the turn —
 where another question of this step follows through the widget, in the next
-message that ends a turn with text, never before that call, since 17
-October 2026 —
-backed and as it runs from wherever they are, by "A command handed over runs
-as it stands" in `docs/skill-conventions.md`. It is never the line that
-enters the tool into the project's packages, `npm install --save-dev
-prettier`: that is what the no just declined, and a no to a tool in the
-packages is not a request for the same line by their hand. A tool with no
-way outside the project — a package of type definitions, `@types/node` say,
-which only the project's packages can carry — takes the third way: the
-check stays off, no command is handed over, and the no's line says so and
-promises none. The first closing run of milestone 3 handed over `npm install
---save-dev` for the three tools declined that way and promised a command
-for `@types/node`, defect 3 of the roadmap entry of 11 October 2026 on that
-run.
+message that ends a turn with text, never before that call — backed and as
+it runs from wherever they are, by "A command handed over runs as it stands"
+above. It is never the line that enters the tool into the project's
+packages, `npm install --save-dev prettier`: that is what the no just
+declined, and a no to a tool in the packages is not a request for the same
+line by their hand. A tool with no way outside the project — a package of
+type definitions, `@types/node` say, which only the project's packages can
+carry — takes the third way: the check stays off, no command is handed
+over, and the no's line says so and promises none.
 
 **Where the tool has no way outside the project and another tool is left for
 the same check, the question has three answers**, since a tool other than
@@ -493,23 +452,17 @@ declined. In every other case the question keeps its two answers.
 The line that the run installs a tool outside the project comes only where
 the run may install that tool itself: where the install record says yes, and
 the install brings no compiler, no runtime and no system packages along —
-`brew install pmd` brings `openjdk` with it, read off the formula on 6
-October 2026, and a browser for tests with `--with-deps`, `install-deps` or
-`--install-deps` brings the system's own packages — since a runtime and those
-packages stay the user's under every answer, by the paragraph below. Where
-it would bring one, the line is the one that gives them the command. Until
-16 October 2026 this sentence named the compiler and the runtime alone,
-recorded on 8 October 2026, built as point 15 of part B of the roadmap
-entry of 12 October 2026.
+`brew install pmd` brings `openjdk` with it, and a browser for tests with
+`--with-deps`, `install-deps` or `--install-deps` brings the system's own
+packages — since a runtime and those packages stay the user's under every
+answer, by the paragraph below. Where it would bring one, the line is the
+one that gives them the command.
 
-After a no the run goes the way that line named, by the paragraph below. The
-wording approved on 5 October 2026 for both questions, as amended on 6
-October 2026, stands in the roadmap entry of 5 October 2026; this skill says
-what is said, not the words.
+After a no the run goes the way that line named, by the paragraph below.
 
-**A tool that lands outside the repository — or, since 8 October 2026, a
-browser for tests that Playwright, Cypress or Puppeteer downloads into the
-vendor's cache — is installed by this run only where
+**A tool that lands outside the repository — or a browser for tests that
+Playwright, Cypress or Puppeteer downloads into the vendor's cache — is
+installed by this run only where
 the install record says yes**, read where the guard reads it: the section
 `## Install permission` of `docs/agents/environment.md` on the default branch
 as last fetched, which the session-start line printed — or, in the session
@@ -523,23 +476,17 @@ channels — that Playwright installs at the system's own location over the one
 already there, the system packages `install-deps`, `--with-deps` or
 `--install-deps` install, and anything landing outside the places the record
 names and the directories its routes answer stay the user's under
-every answer. Where the record says no, or was
-never written, the run installs nothing, which is what the no of the install
-question said: with the person there the decision on the class is put at
-once, here, as a question, before the offer of the unattended mode in step
-8 and never left open across a handover or a merge, since 21 October 2026,
-and since 22 October 2026 on the single-class route from a build as well,
-on the build's branch, where a check class needs such a tool in a build:
-`build-work` step 3 hands no command over for a check class's tool and
-takes no decline for it, under "If they decline, the run acts on it" there,
-the person's decision of 19 October 2026 after the run of that day in
-project z, which handed the command over and left the class `empty` across
-a merge, defect 4 of the roadmap entry of that date. A choice through the
-harness's choice widget, in the user's language, alone in its call, every
-point in a field of its own, and no recommendation, as every question of
-this step; the wording approved on 21 October 2026 stands in the roadmap
-entry of that date on milestone 3, part 4, with `gitleaks` for the class
-`secrets` as its example, and this skill says what is said, not the words:
+every answer. Where the record says no, or was never written, the run
+installs nothing, which is what the no of the install question said: with
+the person there the decision on the class is put at once, here, as a
+question, before the offer of the unattended mode in step 8 and never left
+open across a handover or a merge, and on the single-class route from a
+build as well, on the build's branch, where a check class needs such a tool
+in a build: `build-work` step 3 hands no command over for a check class's
+tool and takes no decline for it, under "If they decline, the run acts on
+it" there. A choice through the harness's choice widget, in the user's
+language, alone in its call, every point in a field of its own, and no
+recommendation, as every question of this step:
 
 - **In the header: a name for the subject**, the check, of twelve characters
   at most.
@@ -548,22 +495,21 @@ entry of that date on milestone 3, part 4, with `gitleaks` for the class
   nothing; that they can install it themselves, with the command in
   backticks, backed and as it runs from wherever they are — the change into
   the project's directory before it where it needs one, by "A command handed
-  over runs as it stands" in `docs/skill-conventions.md`; and the question
-  line, how it is to go on.
+  over runs as it stands" above; and the question line, how it is to go on.
 - **The first answer, label and line**: they install it themselves.
 - **The second answer, label and line**: the check is switched off.
 
 On the first: hand them the command, backed and as it runs from wherever
 they are, once more as a line of its own, last in the message that ends the
 turn, with where they type it by "Where the person types a command devloop
-hands them" in `docs/skill-conventions.md`, since 28 October 2026 — in
-Claude Code with `!` in front where it asks nothing, form A, the line given
-with the `!` and the text saying so; in a second terminal window, not the
-one Claude Code runs in, where it asks something, `sudo apt install` say,
-form B, the text naming what it asks and asking them to say here once it
-is through; in doubt B —, and that once it has run the run reads that the
-tool is there and sets the check up; wait for the form's signal, the
-command's output in the conversation under A and their word under B; then
+hands them" above — in Claude Code with `!` in front where it asks nothing,
+form A, the line given with the `!` and the text saying so; in a second
+terminal window, not the one Claude Code runs in, where it asks something,
+`sudo apt install` say, form B, the text naming what it asks and asking them
+to say here once it is through; in doubt B —, and that once it has run the
+run reads that the tool is there and sets the check up; wait for the form's
+signal, the command's output in the conversation under A and their word
+under B; then
 read with `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the
 command as handed over and the tool, both its lines, never `command -v`:
 the first reads the folder the installer writes to, the second whether the
@@ -584,37 +530,23 @@ then the five steps of that point — `/exit`, the export line into the file
 of their shell, the `source` of it, `cd <directory> && claude`,
 `/devloop:start-work` — the shell and the system read as that point reads
 them, the command of a step the run has no sure form for read first in the
-maker's guide as that point says since the decision of 28 October 2026
-after the push, and a step without a command only where that yields none;
-and that the run then finds the tool and sets the check up. The class stays as it
-stands until then, and the start those steps lead to reaches this step
-again for it through step 4 of the next task, where the tool, now on the
-search path, takes it into step 4 of this skill. The wording approved on 28
-October 2026 for the first answer, (7), form A, and form B among the
-decisions of that day after the push, and for the folder outside the
-search path, (10), stand in the roadmap entry of that date on the handover
-steps; this skill says what is said, not the words; until that day the
-folder alone was read, and a tool in `~/go/bin` was set up and the chain
-could not call it. Where the first line says not found, put the same
-question again, with the
-place that was read and that the tool does not stand there in its question
-field before the question line, and so each time the tool is not there
-after the signal, until they choose the check off or the tool stands there:
-no check goes off but on their choice, which is the second answer, and not
-on a tool not found — the person's decision of 21 October 2026, the roadmap
-entry of that date on milestone 3, part 4; until then this paragraph made
-the class `skipped (user)` the first time the tool was not there, against
-the rule of step 1 that only the user switches `secrets` off and against
-the approved wording, whose second answer alone switches a check off. On the
-second the class becomes `skipped (user):` with that reason, naming the tool
-and that the person did not install it — whether or
+maker's guide as that point says, and a step without a command only where
+that yields none; and that the run then finds the tool and sets the check
+up. The class stays as it stands until then, and the start those steps lead
+to reaches this step again for it through step 4 of the next task, where
+the tool, now on the search path, takes it into step 4 of this skill. Where
+the first line says not found, put the same question again, with the place
+that was read and that the tool does not stand there in its question field
+before the question line, and so each time the tool is not there after the
+signal, until they choose the check off or the tool stands there: no check
+goes off but on their choice, which is the second answer, and not on a tool
+not found. On the second the class becomes `skipped (user):` with that
+reason, naming the tool and that the person did not install it — whether or
 not another tool would be left for the class; another tool is not put to
 them after the check was switched off. This holds for every class whose
 tool is missing under a no, `secrets` included, which step 1 says is never
 skipped on the run's own judgement and is decided here by theirs, and a
-class is never left `empty` for it. Until 21 October 2026 the command was
-handed over here with both ways said and the class decided by whether it
-was run. And so does a class whose only way
+class is never left `empty` for it. And so does a class whose only way
 was into the packages and they said no to
 that — the class becomes `skipped (user):` with that reason, naming the tool
 and what was declined, or both tools where the question offered another and
@@ -669,18 +601,15 @@ besides, by the text on an install standing alone below — it updates
 itself, fetches what it needs for that and cleans up unasked — in the pull
 request body that lands the class, step 7's or the build's where this skill was
 called for one class; the standing fact — the install command as whoever
-clones the project runs it, without the redirections of the call since 24
-October 2026, and the folder it installed into — is written into
-`environment.md` under `Installed outside the project` by the hook
-`post-tool-use-install-fact.sh` the moment the install went through, since
-21 October 2026, from what the guard read when it let the command through,
-and this run writes no second line for it; until that day this sentence had
-the run write it, and the run of 19 October 2026 in project z did not,
-defect 6 of the roadmap entry of that date. Where the hook says it did not
-write, its message says why: where the install did not stand alone in its
-call, so that the call's exit was not its own, since 24 October 2026, the
-run reads whether the tool stands in the folder the message names, and where
-it does, writes the line with the call of
+clones the project runs it, without the redirections of the call, and the
+folder it installed into — is written into `environment.md` under
+`Installed outside the project` by the hook `post-tool-use-install-fact.sh`
+the moment the install went through, from what the guard read when it let
+the command through, and this run writes no second line for it. Where the
+hook says it did not write, its message says why: where the install did not
+stand alone in its call, so that the call's exit was not its own, the run
+reads whether the tool stands in the folder the message names, and where it
+does, writes the line with the call of
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note` the message gives; where the
 tree stood on the main branch or the file was missing, the message carries
 the line, and the run puts it there as it stands, through the same program
@@ -690,20 +619,16 @@ once the branch or the file stands.
 question step 3 puts, the hook does not see**: the command ran in their
 terminal and in no call of this run. Its line is this step's to write,
 under the same heading `Installed outside the project` of `environment.md`
-and in the form the hook writes, by the program the hook writes it with,
-since 24 October 2026: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note put`
-with the folder step 3 read the tool at and the install command alone, in
-single quotes, without the change into the project's directory the question
-put before it, for a browser download as for a tool; the program writes the
-line in its form and not a second time where it stands already; until that
-day the run wrote it with the editing tool. On the branch this step writes
+and in the form the hook writes, by the program the hook writes it with:
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-note put` with the folder step 3
+read the tool at and the install command alone, in single quotes, without
+the change into the project's directory the question put before it, for a
+browser download as for a tool; the program writes the line in its form and
+not a second time where it stands already. On the branch this step writes
 on, the one cut after their word at a first setup and on the route from the
 step after a merge, the caller's where this skill was called for one class,
 since step 3 stands before the cut and writes nothing, and the program
-writes nothing on the main branch. The person's decision of 21 October
-2026, the roadmap entry of that date on milestone 3, part 4, which carries
-the two ways weighed, and defect 4 of the roadmap entry of 24 October 2026
-on the six closing runs.
+writes nothing on the main branch.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text backed-command`
 
@@ -730,13 +655,13 @@ findings at once, and fixing them in one commit makes the change unreviewable.
 
 For each class, every run of a target here and in step 5 with ten minutes on
 the call, 600000 milliseconds, as "When a command does not answer" says — a
-run that does not finish inside it is not answered, and with nobody there,
-since the addendum of 9 October 2026, the task ends and not the run: an
-issue carrying the command, the message, the path of the output file where
-the message names one, and that the call did not finish inside its ten
-minutes, labelled `raised-here` and `needs-human`, recorded as a blocker of
-the task whose branch this is; the task put down, the caller takes the next;
-nothing closed from it, no second start; the class as it stands:
+run that does not finish inside it is not answered, and with nobody there
+the task ends and not the run: an issue carrying the command, the message,
+the path of the output file where the message names one, and that the call
+did not finish inside its ten minutes, labelled `raised-here` and
+`needs-human`, recorded as a blocker of the task whose branch this is; the
+task put down, the caller takes the next; nothing closed from it, no second
+start; the class as it stands:
 
 1. Turn it on and see how many findings there are.
 2. Fix what the tool can fix by itself, as its own commit.
@@ -766,14 +691,11 @@ the index is one commit away from the history the class exists to keep it
 out of. So: a new file the tree does not track, the value in it, the target
 run, the file deleted — and then the index read: `git status --short` prints
 nothing for it and `git ls-files --stage` does not name it, an intent-to-add
-entry included, which is what a `git reset` that failed without saying so
-left behind in `devloop-test-v` on 4 October 2026, defect 7 of the roadmap
-entry of 3 and 4 October 2026 on the two runs, built as point 16 of part B
-of the roadmap entry of 12 October 2026. Where the target scans the history
-alone, so that a file in the tree cannot turn it red, read whether the tool
-has a mode over the tree, and that it scans the history alone stands in the
-proof line of the pull request below and is not said, since 17 October
-2026; the break goes into no commit either way.
+entry included, which a `git reset` that fails without saying so leaves
+behind. Where the target scans the history alone, so that a file in the
+tree cannot turn it red, read whether the tool has a mode over the tree, and
+that it scans the history alone stands in the proof line of the pull request
+below and is not said; the break goes into no commit either way.
 
 A target that needs an argument fails loudly when it is missing, rather than
 quietly doing something else.
@@ -810,8 +732,8 @@ means the class cannot work that way.
 
 Spelled exactly, with nothing else in the cell: the two guards on the table
 name a cell in any other form — `Filled`, `filled` in backticks, the
-`skipped: <reason>` this workflow wrote until 5 October 2026 — and no commit
-goes through while one stands.
+`skipped: <reason>` of an older table — and no commit goes through while one
+stands.
 
 - `Status` becomes `filled` only after you ran the target and saw it fail on
   purpose. `skipped (state):` where you have judged that the class finds
@@ -849,8 +771,8 @@ anything else happens — at a first setup and on the route from the step after
 a merge alike, where the tree stood on the main branch and this skill cut its
 own branch, as the opening says. Everything from here on reads `checks.md` from the main
 branch: the next task cuts its branch from there and would find no check suite
-at all. Leaving it unmerged has worked so far only because a run improvised the
-merge on its own, which is not something to build on.
+at all. Leaving it unmerged would rest on a run improvising the merge on its
+own, which is not something to build on.
 
 **Never merge yourself.** Open a pull request — its body carrying the red
 proof of step 5 for every class it switches on, and step 4's report where a
@@ -873,17 +795,16 @@ cannot merge:
 pull request is already mergeable and merges on the spot.
 
 The program reads `mergeStateStatus` once a second and arms in the pass that
-reads `BLOCKED`, the state GitHub arms on, since 17 October 2026 — it moves
-within seconds of the push, and a reading in one call with the arming in the
-next left room for it to move, defect 5 of the roadmap entry of 16 October
-2026 on the runs of that day; its last line says how it ended. `CLEAN`,
-`HAS_HOOKS` and `UNSTABLE` mean nothing is outstanding and arming is refused —
+reads `BLOCKED`, the state GitHub arms on — it moves within seconds of the
+push, and a reading in one call with the arming in the next leaves room for
+it to move; its last line says how it ended. `CLEAN`, `HAS_HOOKS` and
+`UNSTABLE` mean nothing is outstanding and arming is refused —
 but they cannot say whether that is because everything ran or because nothing
 has started, and a branch pushed a moment ago is in the second. The program
 arms on none of them and asks the branch: the head commit's
 `statusCheckRollup` sees Actions check runs and older commit statuses alike,
 since `StatusCheckRollupContext` is a union of `CheckRun` and `StatusContext`
-(GitHub's live GraphQL schema, 31 August 2026), where `commits/SHA/check-runs`
+(GitHub's live GraphQL schema), where `commits/SHA/check-runs`
 sees only the first. The required names come from the two gate queries below —
 `required_status_checks.contexts` for classic protection,
 `parameters.required_status_checks[].context` for a ruleset — which it runs
@@ -908,8 +829,7 @@ state of the main branch before it can be merged and that this is not possible
 just now, nothing armed and no merge handed over; then rebase onto the base
 and force-push, which lands nothing anywhere and is not the merge this step
 may not perform, and call the program again, whose next reading is `BLOCKED`
-with arming accepted. Measured on 30 August 2026 on a pull request seven days
-old: `UNKNOWN` first, `BEHIND` on the second reading.
+with arming accepted.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text empty-read`
 
@@ -925,23 +845,20 @@ cannot be placed, and do not turn it into one of the three cases below.
 If arming is refused there are three cases. Two come as the program's own
 answer, since it arms on no mergeable value — `no required check:` and `past
 its gate:` — and the first as GitHub's, `refused:`, or as `past its gate:`
-where a gate stands and auto-merge is off, the program reading no setting,
-since 18 October 2026. `gh api repos/OWNER/REPO -q .allow_auto_merge` answers
+where a gate stands and auto-merge is off, the program reading no setting.
+`gh api repos/OWNER/REPO -q .allow_auto_merge` answers
 only the first: auto-merge switched off on the repository, the field false; or
 no gate for it to wait on at all; or a gate this pull request is already past,
 auto-merge on — the required check green, nothing outstanding, so
 GitHub will not arm what it would merge on the spot. The field cannot tell the
-last two apart; measured on 30 August 2026, it read true in a repository with a
-required check and in one without alike. At a first setup the field
-ordinarily reads false since 16 October 2026: the setup asks about
-auto-merge only where a gate stands already, so a repository without one
-arrives here with it off, and step 8 switches it on where it sets a gate
-up; nothing here asks them to. That is the first case only where a gate
-stands, as the handover has it: where none does, the program answers
-`no required check:` at a mergeable value, and the case is the second,
-whatever the field reads, since 18 October 2026, after defect 4 of the
-roadmap entry of 16 October 2026 on the runs of that day; until then this
-paragraph called the first the ordinary case at a first setup.
+last two apart: it reads true in a repository with a required check and in
+one without alike. At a first setup the field ordinarily reads false: the
+setup asks about auto-merge only where a gate stands already, so a
+repository without one arrives here with it off, and step 8 switches it on
+where it sets a gate up; nothing here asks them to. That is the first case
+only where a gate stands, as the handover has it: where none does, the
+program answers `no required check:` at a mergeable value, and the case is
+the second, whatever the field reads.
 The state comes from `mergeStateStatus`, as the program read it last.
 Whether a gate exists takes both `gh api repos/OWNER/REPO/branches/main/protection`
 (classic protection; blind to rulesets, needs admin, and a 404 means none only
@@ -950,7 +867,7 @@ repos/OWNER/REPO/rules/branches/main` (rulesets; no special rights, blind to
 classic protection). The program asks both and prints them on its `gate:`
 lines where it reads a mergeable value; where it printed none — at `BLOCKED`,
 at a value it cannot place, at a refusal with `BLOCKED` read after it — ask
-both here, since 18 October 2026. A gate found by either is a gate; where
+both here. A gate found by either is a gate; where
 neither query answered, say the rights did not allow finding out rather than
 naming a case.
 Then the handover, and do not go on to the next step on top of an unmerged
@@ -980,11 +897,7 @@ a merge alike, once no class is `empty`.** The proven merge is what it
 waited for, and nothing else decides it: not auto-merge being off, not the
 main branch having no gate, not a record that does not say yes, since those
 are what step 8 sets up or asks about; and not what the handover said,
-since the handover says nothing of what comes after the merge. The first
-closing run of milestone 3 went from the proven merge of this step to
-planning, its handover having said before the merge that the mode stays off
-and that `--auto` sets it up later, defect 1 of the roadmap entry of 11
-October 2026 on that run.
+since the handover says nothing of what comes after the merge.
 
 ## Step 8 — Offer the unattended mode
 
@@ -1012,34 +925,31 @@ returned — `never` binds, anything else does not, `pull_requests_only` include
 since that is a bypass at the merge itself. Reading only the classic field
 reports a ruleset gate as missing, because that endpoint 404s where the gate is a
 ruleset. A gate binds if either side binds. Protection this account can step over
-is not a gate: count it as missing, not as present, and say nothing of it,
-since 17 October 2026 — the yes of the question below says whether a
-protection is added. So the gate binds where a side answered with a gate
-that binds, whatever the other did — a ruleset that binds with the classic
-query unanswered, the case of an account without admin rights — and it does
-not bind where none binds and every query that could show one answered: the
-reading `build-work` gives start condition 2 under "Unattended mode" and
-`bin/devloop-start-conditions` reads, through which the guard on the mark
-reads it, since 31 October 2026; until then a side that did not answer was
-the third outcome whatever the other side showed, and this step found the
-mode not set up where the program finds condition 2 holding. Where no
-answer showed a gate that binds and a query that could show one did not
+is not a gate: count it as missing, not as present, and say nothing of it —
+the yes of the question below says whether a protection is added. So the
+gate binds where a side answered with a gate that binds, whatever the other
+did — a ruleset that binds with the classic query unanswered, the case of an
+account without admin rights — and it does not bind where none binds and
+every query that could show one answered: the reading `build-work` gives
+start condition 2 under "Unattended mode" and `bin/devloop-start-conditions`
+reads, through which the guard on the mark reads it, so that this step never
+finds the mode not set up where the program finds condition 2 holding. Where
+no answer showed a gate that binds and a query that could show one did not
 answer — a side's own, the query of a ruleset its rules named, or for a
 classic gate without `enforce_admins` the query for `.permissions.admin` —
 say the binding could not be determined rather than reporting the gate either
 way. Then the three records, as the paragraph above reads them. Where the
 mode is set up by all five, say that it is and skip the rest of this step —
-unless `build-work` on its direct route or `plan-work` at the end of Stage
-1 called this step for the question on the rule for the classifier of auto
-mode alone, since 22 October 2026, where
-`${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question` ended with 0 there:
-then put that one question, in its form for a start with `--auto` below,
-and nothing else of this step. The rule is no condition of the mode:
-without it the run starts, and a refusal of auto mode on an install by one
-of the ways the rule names leaves the issue that brings the question. A
-gate that is there and binding is not enough for that, as it was until 5
-October 2026: with a record that does not say yes, or with auto-merge off,
-the question below is put all the same.
+unless `build-work` on its direct route or `plan-work` at the end of
+Stage 1 called this step for the question on the rule for the classifier of
+auto mode alone, where `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`
+ended with 0 there: then put that one question, in its form for a start
+with `--auto` below, and nothing else of this step. The rule is no
+condition of the mode: without it the run starts, and a refusal of auto
+mode on an install by one of the ways the rule names leaves the issue that
+brings the question. A gate that is there and binding is not enough for
+that: with a record that does not say yes, or with auto-merge off, the
+question below is put all the same.
 
 **Refuse to build a gate when no `filled` class is `Blocking: yes`,** and say
 why. A required check that runs nothing green-lights everything, so an unattended
@@ -1059,20 +969,13 @@ protection of the main branch for this repository; the two things that
 change it — making the repository public, or keeping it private on the plan
 GitHub names, GitHub Pro where `gh api repos/OWNER/REPO -q .owner.type`
 answers `User` and GitHub Team where it answers `Organization`; and that
-everything goes on with them as before. The wording approved on 8 October
-2026 stands in the roadmap entry of 9 October 2026 as text 3; this skill
-says what is said, not the words. Then step 9, as after a no, except that
-nothing is written: nothing is set up, no branch is cut and no section goes
-into `docs/agents/environment.md`; where `--auto` brought the run here, back
-to the place that called, which goes on with them. Every other answer —
-another status, another body, no answer — is a command that did not answer,
-as "When a command does not answer" says: name the command and the message,
-close nothing, and the question is not put. Measured on 8 and 9 October 2026
-with gh 2.96.0 on the two probe repositories the roadmap entry of 9 October
-2026 names: `[]`, exit 0, on a private repository of a personal account; the
-403 with that body, exit 1, on a private repository of an organization on
-the plan Free, whose auto-merge a PATCH left `false` with exit 0, which is
-why the gate order below reads auto-merge back.
+everything goes on with them as before. Then step 9, as after a no, except
+that nothing is written: nothing is set up, no branch is cut and no section
+goes into `docs/agents/environment.md`; where `--auto` brought the run
+here, back to the place that called, which goes on with them. Every other
+answer — another status, another body, no answer — is a command that did
+not answer, as "When a command does not answer" says: name the command and
+the message, close nothing, and the question is not put.
 
 **The question, in the form of the other questions of this skill**: a choice
 through the harness's choice widget, in the user's language, alone in its
@@ -1081,24 +984,20 @@ pattern `shared/install-question.md` sets out. What it decides: whether work
 in this project may run alone at all — a permission for this repository,
 which each piece of work is asked separately whether to use, at the end of
 its sharpening, `--auto` being that answer given up front. Nothing stands
-before the call: what no field carries is not said. Since 17 October 2026;
-until then five parts stood before the window in the run's own message, and
-in both runs of 16 October 2026 they landed in a collapsed note.
+before the call: what no field carries is not said, since text there can
+land in a collapsed note.
 
 **Read before the question whether the repository is public**: `gh repo view
 OWNER/REPO --json visibility -q .visibility`, a field `gh repo view --json`
 offers beside `isPrivate`, in the manual of gh 2.89.0 and in `gh repo view
---help` of gh 2.96.0. Measured on 17 October 2026 with
-gh 2.96.0: `PUBLIC` on a public repository and `PRIVATE` on a private one,
-exit 0, and exit 1 with the GraphQL message on a name that resolves to no
-repository. Where the answer is not `public`, in capitals or not, or where
-no answer came, the question field carries the line on the cost below: on a
-public repository the check runs on GitHub's standard machines free of
-charge, on a private one it counts against the free minutes of the account,
-GitHub Docs, "About billing for GitHub Actions", read on 17 October 2026.
-Where no answer came, `shared/command-does-not-answer.md` holds beside it,
-and the command and the message stand in the question field under the line
-on the cost, since they bear on it.
+--help` of gh 2.96.0. Where the answer is not `public`, in capitals or not,
+or where no answer came, the question field carries the line on the cost
+below: on a public repository the check runs on GitHub's standard machines
+free of charge, on a private one it counts against the free minutes of the
+account, GitHub Docs, "About billing for GitHub Actions". Where no answer
+came, `shared/command-does-not-answer.md` holds beside it, and the command
+and the message stand in the question field under the line on the cost,
+since they bear on it.
 
 - **In the header: a name for the subject**, as telling as it can be, of
   twelve characters at most — that it is about work without them.
@@ -1113,66 +1012,42 @@ on the cost, since they bear on it.
     works. On macOS alone, where `uname -s` answers `Darwin`, the same line
     goes on: under which conditions `caffeinate` keeps it awake, as long as
     it runs in a terminal of their own and the laptop stays open, and not
-    what does not suffice, since 19 October 2026, the person's statement of
-    that day being that the line said what does not suffice instead of
-    naming the conditions; until then that a closed laptop it does not keep
-    awake. The backing stays: `caffeinate(8)` on that machine, read on 7
-    September 2026, holds an assertion against idle sleep for as long as the
-    process runs, and a closed lid is a different route into sleep. On every
-    other system, and where `uname -s` does not answer, the first sentence
-    alone and no command, backed or not: the commands for Linux and Windows
-    come with milestone 12 of `docs/plan.md`. It is said here and not made a
-    second question of: it is something they do outside the run, and a
-    second question beside the real one blurs the real one.
+    what does not suffice. The backing: `caffeinate(8)` on that machine
+    holds an assertion against idle sleep for as long as the process runs,
+    and a closed lid is a different route into sleep. On every other
+    system, and where `uname -s` does not answer, the first sentence alone
+    and no command, backed or not. It is said here and not made a second
+    question of: it is something they do outside the run, and a second
+    question beside the real one blurs the real one.
   - The question line: whether devloop may work in this project without
     them.
 - **In the yes, label and description: what a yes means.** The label: that
   they allow work without them, in which lies that devloop asks at every idea
   anew whether it is carried out without them, as the paragraph on what the
-  question decides says above; no sentence of its own says so, since the
-  person struck such sentences on 17 October 2026 and gave the point to the
-  label, the roadmap entry of that date under what came out of text 6. The
-  description: that devloop sets
-  a check up on GitHub and protects the main branch, against their own
-  direct pushes too; and that a run then works as long as this window is
-  open. Where the protection stands already and binds, the first of the two
-  sentences goes. What the two labels say stands here since 19 October 2026,
-  the run of that day having written a bare yes and a bare no, the walk of
-  defect 13 in the roadmap entry of that date.
+  question decides says above; no sentence of its own says so, the label
+  carrying the point. The description: that devloop sets a check up on
+  GitHub and protects the main branch, against their own direct pushes too;
+  and that a run then works as long as this window is open. Where the
+  protection stands already and binds, the first of the two sentences goes.
 - **In the no, label and description: where a no leads.** The label: that
   everything runs with them, in which lies that every task comes to them for
   approval; no sentence of its own for it, for the same reason. The
   description: everything stays as it is; `/devloop:start-work --auto` sets
   it up later, the input named as they type it in Claude Code and never the
-  flag alone, since 27 October 2026, the wording of that day in the roadmap
-  entry of that date on the three visible texts.
+  flag alone.
 
 At 80 columns, on macOS and with a private repository, these fields fill
-thirteen lines, inside the bound the output style of devloop sets, measured
-on 27 October 2026 with the approved wording wrapped at 76 and 73
-characters, the no's description of that day taking two lines where the
-one of 17 October 2026 took one; twelve lines measured on 19 October 2026,
-the awake line of that day among it, which takes the three lines the line
-of 17 October 2026 took, and the same twelve on 17 October 2026.
-The wording approved on 17 October 2026 stands in the roadmap entry of that
-date as the new text 6, in place of text 6 of the roadmap entry of 9 October
-2026, and the awake line as approved on 19 October 2026 in the roadmap entry
-of that date under defect 13, in place of the sentence of 17 October
-2026; this skill says what is said, not the words. What went from text 6
-and from the five parts on that day — the steps of a task, the issue for a
+thirteen lines, inside the bound the output style of devloop sets. Not
+said, in a field or before the call: the steps of a task, the issue for a
 task that does not go green, a failed merge ending the run, that the run
 does not start again by itself, that the review costs more without them,
-that the run stands still until they write, and how `caffeinate` is ended —
-stands in that entry with the reason for each.
-
-What the paragraphs that stood here until 9 October 2026 said before the
-question and its fields do not — that the run takes up the issues it
-raised against itself, that there is no ceiling on the number of tasks, that
-the result reads as the diff from the starting commit, how the run ends and
-how a standstill is seen, and a word against a yes on a first project — is
-not said here any more; the behaviour stands where it is decided,
-`build-work` under "Unattended mode" and step 6, and `plan-work` at the end
-of Stage 1, and nothing of it has changed.
+that the run stands still until they write, and how `caffeinate` is ended;
+nor that the run takes up the issues it raised against itself, that there
+is no ceiling on the number of tasks, that the result reads as the diff
+from the starting commit, how the run ends and how a standstill is seen, or
+a word against a yes on a first project. That behaviour stands where it is
+decided, `build-work` under "Unattended mode" and step 6, and `plan-work`
+at the end of Stage 1.
 
 **Two things change what is put.** Where the gate is already there and
 binding and the mode is not set up, the question is put all the same, with
@@ -1183,24 +1058,20 @@ same, since it is what says what setting one up costs.
 
 **On a no, nothing is set up**, on the platform or anywhere else, and every
 piece of work runs with them. The record below says so, with the reason.
-Nothing more is said on the no, since 17 October 2026: that typing
-`/devloop:start-work --auto` where a piece of work starts sets the mode up
-then stands in the no's own description already, the input named whole
-there since 27 October 2026.
+Nothing more is said on the no: that typing `/devloop:start-work --auto`
+where a piece of work starts sets the mode up then stands in the no's own
+description already.
 
 **On a yes — their answer, or the flag where the gate stands — one question
 more, directly after it and before the two permissions: whether devloop may
 enter a rule into their `~/.claude/settings.json`**, so that auto mode does
-not block installs in devloop projects by itself. The rule is the one of
-decision 1 of the roadmap entry of 9 October 2026, in the wording decided on
-23 October 2026, which names the eleven routes whose place the install guard
-asks and the three browser installers, an entry of the list
-`autoMode.allow`, which the classifier of auto mode reads as an exception
-to its own rules, and it can stand in their settings alone: the page
-"Configure auto mode" of Claude Code says the classifier reads no
-`autoMode` from a project's `.claude/settings.json` or
-`settings.local.json`. Which form the question takes is decided first,
-since 22 October 2026, by
+not block installs in devloop projects by itself. The rule names the eleven
+routes whose place the install guard asks and the three browser installers;
+it is an entry of the list `autoMode.allow`, which the classifier of auto
+mode reads as an exception to its own rules, and it can stand in their
+settings alone: the page "Configure auto mode" of Claude Code says the
+classifier reads no `autoMode` from a project's `.claude/settings.json` or
+`settings.local.json`. Which form the question takes is decided first, by
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-question`, run once, with the
 shell: it ends with 1 where the rule stands already, `read: 0` on its
 second line, and then the question is not put, or where no open issue of
@@ -1225,11 +1096,9 @@ answers. The form of the setup, as the question above, alone in its call:
   without them the run then writes an issue with the reason and goes on with
   the next task; and at the next start with `/devloop:start-work --auto`,
   the input named as they type it in Claude Code and never the flag alone,
-  they are asked once more, since 22 October 2026, the input whole since 28
-  October 2026, the wording of that day in the roadmap entry of 28 October
-  2026 on the hook on SubagentStart.
+  they are asked once more.
 
-**The form for a start with `--auto`, since 22 October 2026**, put where
+**The form for a start with `--auto`**, put where
 the program ends with 0 — here, after the yes to the mode, and alone where
 `build-work` on its direct route or `plan-work` at the end of Stage 1
 called this step for it, the places where the person is there and a run is
@@ -1253,45 +1122,29 @@ form:
   are open; and the rule allows installations only in projects set up with
   devloop. With several of a kind, the issues, the tasks, the checks.
 - **In the no, label and line**: the issue stays open; where they type the
-  command themselves, here in Claude Code with `!` in front — the command
-  as the program prints it, with the `!`, form A of "Where the person types
-  a command devloop hands them" in `docs/skill-conventions.md`, each command
-  named where several are open — and then `/devloop:start-work`, devloop
-  closes the issue and takes the task up again, or sets the check up again,
-  or both, by the kinds open as the yes above has them; and until then they
-  are asked again at every start with `/devloop:start-work --auto`, the
-  input named as they type it; with several, the issues, the tasks, the
-  checks. Since 28 October 2026, the wording of that day in the roadmap
-  entry of 28 October 2026 on the handover steps, (9), in place of the line
-  of the entry of that date on the hook on SubagentStart, which had them run
-  the command and devloop notice it at the next start, and of the line of
-  22 October 2026 before it, which had them close the issue themselves.
-  Where a command asks something, `sudo apt install` say, the line says
-  form B: that the issue stays open; that the command, named, asks — a
-  password — and is therefore typed in a second terminal window, not the
-  one Claude Code runs in; that `/devloop:start-work` typed here afterwards
-  closes the issue and takes the task up again, or sets the check up
-  again, or both; and the asking again at every start, as above; the
-  wording stands in that entry among the decisions of 28 October 2026
-  after the push. Measured against `output-styles/devloop.md` as the yes
-  above: with one issue the no line six lines, fourteen of fourteen, at
-  the bound; with two issues whose commands ask it is seven, fifteen, so
-  the question does not fit the widget and is asked as text at the end of
-  the turn, with its text before it in the same message, as the style
-  says.
+  command themselves, here in Claude Code with `!` in front — the command as the
+  program prints it, with the `!`, form A, each command named where several are
+  open — and then `/devloop:start-work`, devloop closes the issue and takes the
+  task up again, or sets the check up again, or both, by the kinds open as the
+  yes above has them; and until then they are asked again at every start with
+  `/devloop:start-work --auto`, the input named as they type it; with several,
+  the issues, the tasks, the checks. Where a command asks something, `sudo apt
+  install` say, the line says form B: that the issue stays open; that the
+  command, named, asks — a password — and is therefore typed in a second
+  terminal window, not the one Claude Code runs in; that `/devloop:start-work`
+  typed here afterwards closes the issue and takes the task up again, or sets
+  the check up again, or both; and the asking again at every start, as above.
+  With one issue the fields stand at the bound of `output-styles/devloop.md`;
+  with two issues whose commands ask they pass it, so the question does not fit
+  the widget and is asked as text at the end of the turn, with its text before
+  it in the same message, as the style says.
 
-The wording approved on 22 October 2026 stands in the roadmap entry of that
-date on the question after a refusal; this skill says what is said, not the
-words. The issue's number in place of its title is an exception to
-`shared/refer-by-name.md`, for this question alone, since 24 October 2026,
-decided by the person that day, the roadmap entry of that date on how an
-install is recorded, (3): the reason of that rule, that a wall of numbers
-is illegible where names read at a glance, does not meet this question,
-since the command before the number says what it is about, and the issue's
-title names the problem, the same refused install again. Run 3a named the
-issue by its title at both starts, with the task it held, and added a line
-of its own at the second, defect 3 of the roadmap entry of 24 October 2026
-on the six closing runs. On the yes,
+The issue's number in place of its title is an exception to
+`shared/refer-by-name.md`, for this question alone: the reason of that
+rule, that a wall of numbers is illegible where names read at a glance,
+does not meet this question, since the command before the number says what
+it is about, and the issue's title names the problem, the same refused
+install again. On the yes,
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write`
 enters the rule, as the next paragraph says, and where it ends with 0 the
 run closes every issue the program named, `gh issue close` without a
@@ -1304,22 +1157,20 @@ that install, has ended with the rule standing, and the class goes to this
 skill on that task's branch, the third way of step 4 of `build-work`. The
 rule holds in the running session already: the settings page of Claude
 Code, "When edits take effect", says Claude Code watches its settings files
-and reloads them when they change. Where `write` ends with 2, say the text
-approved for the refused entry, text 4, and the issues stay open. On the no
-nothing is written and the issues stay open: the question comes again at
-every start with `--auto` while one of them is open, and ends without a
-further step once they are closed. Nothing is stored on a no, in either
-form: a stored no was built on 22 October 2026 and taken out the same day,
-since whoever changed their mind would have had to know of a file nothing
-in devloop shows; the roadmap entry carries the three other ways weighed.
+and reloads them when they change. Where `write` ends with 2, say what the
+next paragraph has the run say where the program writes nothing, and the
+issues stay open. On the no nothing is written and the issues stay open:
+the question comes again at every start with `--auto` while one of them is
+open, and ends without a further step once they are closed. Nothing is
+stored on a no, in either form: whoever changed their mind would have to
+know of a file nothing in devloop shows.
 
 It is not put where the rule stands in the file already, word for word under
 `autoMode.allow`: `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule read`
 says so with exit 0 and writes nothing, and the program above reads it
-first. Where the earlier wording stands there instead, text 4 of the roadmap
-entry of 9 October 2026, the rule counts as not standing, since 23 October
-2026, the new one allowing more: `read` ends with 1, and the question is put
-as where no rule stands. On the yes,
+first. Where an earlier wording of the rule stands there instead, the rule
+counts as not standing, the new one allowing more: `read` ends with 1, and
+the question is put as where no rule stands. On the yes,
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-auto-mode-rule write` enters it, and
 nothing else does: the rule word for word as one entry of `autoMode.allow`,
 the list created with `"$defaults"` before the rule where the file or the
@@ -1334,13 +1185,9 @@ file is not valid JSON, a key stands twice, `autoMode` is not an object,
 the reason with exit 2, and the run says that it could not enter the rule,
 with that message; that the run without them goes all the same; and that
 where auto mode refuses an installation, the run writes an issue with the
-reason and goes on with the next task. The wording approved on 8 October
-2026 stands in the roadmap entry of 9 October 2026 as text 4, the rule in
-English among it, and the rule's wording of 23 October 2026 in the roadmap
-entry of that date on the catch-up after the audit; on a no the earlier
-wording stays where it stands; this skill says what is said, not the words,
-and the program carries the rule. Without the yes the file is never touched, and a
-no here changes nothing of what follows.
+reason and goes on with the next task. The program carries the rule; on a
+no an earlier wording stays where it stands. Without the yes the file is
+never touched, and a no here changes nothing of what follows.
 
 **Then the two permissions, before anything is set up, each put a second
 time where its record does not say yes.** The mode cannot run under a
@@ -1355,9 +1202,7 @@ project's packages itself. Where the record says no, a second sentence
 follows in the same field, that they said no to it; where no record stands
 on the main branch — the pull request carrying the answer never landed, say
 — the line is the first sentence alone. Nothing stands before the call.
-Since 17 October 2026; until then the line stood as prose before the widget,
-and in the runs of 16 October 2026 it landed in a collapsed note or came
-without the no. `shared/install-question.md` says of the question line that
+`shared/install-question.md` says of the question line that
 nothing else stands there: this line stands above it, in the question field,
 and the question line stays as it is.
 The question itself is put as it was the first time, alone in its call, with
@@ -1384,11 +1229,9 @@ tool installed outside the project that a yes to the dependency file now
 lets into the packages is one point 2 enters. That list, each class with
 the tool it takes, is said to the person in one line at the next message
 that ends a turn with text, its details standing in the pull request that
-carries them, since 17 October 2026, defect 8 of the roadmap entry of 16
-October 2026 on the runs of that day; until then in one line of the run's
-own message before the first pull request. It decides how many pull
-requests there are. Then, in this order, and none of it skipped for the
-records having to land first — that is what point 1 is for:
+carries them. It decides how many pull requests there are. Then, in this
+order, and none of it skipped for the records having to land first — that
+is what point 1 is for:
 
 1. **The records that changed land first** — the two permissions and the
    answer about the mode — through a pull request, and are fetched before
@@ -1414,28 +1257,15 @@ records having to land first — that is what point 1 is for:
    install record changed — is filled, by steps 4 to 6 for those classes, its
    red proof into the pull request that carries it as step 5 says. That
    changes rows the user switched off, and not without them: they are here
-   and have just said yes. A class off for an install has been filled this
-   way since 18 October 2026, defect 9 of the roadmap entry of 16 October
-   2026 on the runs of that day; until then it was filled where the install
-   record said yes now, whatever the record on the packages said, and biome
-   went outside the project under both yes and was entered nowhere.
+   and have just said yes.
 4. **Only then the gate**, by the order further down, and only where every
    answer is now yes; the workflow file carries the installation line of
    every tool a blocking class now needs outside a project, as that order
    says.
 
-The second closing run of milestone 3 went from the yes to the dependency
-file to the records and their pull request, entered no tool and filled no
-class, `checks.md` keeping format, lint, types and secrets as `skipped
-(user)` with the first run's reasons, and set the gate up over three filled
-classes; then it landed the workflow file in a pull request of its own, two
-merges by the person's hand where one was owed, since nothing had been
-installed between: defects b and i of the roadmap entry of 11 October 2026
-on that run.
-
-**The install record, where this step changes it.** Until 5 October 2026
-only `setup-project` wrote it; this step writes it as well, and only with
-the user there, which is what holds a record that opens a guard:
+**The install record, where this step changes it.** This step writes it as
+`setup-project` does, and only with the user there, which is what holds a
+record that opens a guard:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-record`
 
@@ -1459,28 +1289,26 @@ platform, the workflow on the main branch red from the code, which are no
 answer of theirs. Under a yes there is no reason line. `unattended-answered` is the date. Each of the
 three records is written only where its answer changed or no record stood:
 a no over a no leaves the file alone, and no pull request is opened for a
-date. Where the file still carries the answer as a sentence, the way this
-step wrote it until 5 October 2026, that sentence goes with the first
-writing of the section. What is recorded is that the mode is set up in this
+date. Where the file still carries the answer as a sentence rather than as
+this section, that sentence goes with the first writing of the section.
+What is recorded is that the mode is set up in this
 repository, or that it is not — a permission, which the question at the end of
 each sharpening presupposes and reads. It is not an answer for any piece of
 work, and no stage reads it as one.
 
 That section and the workflow file below are written with the editing tool,
 by the rule the build carries for every file whose content is text about
-commands, which stands here since 16 October 2026 because the main run of
-the second closing run of milestone 3 wrote `environment.md` from the shell
-twice in this step, where no rule named the editing tool:
+commands:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text editing-tool`
 
 **What this step writes lands through a branch of its own**,
 `devloop-unattended`, the third of the fixed names under "Cut the branch"
 above. After this step's last question and before its first write: cut the
-branch by the cases there, which since 6 October 2026 fetch, switch to the
-main branch and fast-forward it before a fresh cut — step 7 has done so
-where it ran before this step, and reached alone through `--auto` this
-step stands wherever the run stood when the flag was typed. As few pull
+branch by the cases there, which fetch, switch to the main branch and
+fast-forward it before a fresh cut — step 7 has done so where it ran before
+this step, and reached alone through `--auto` this step stands wherever the
+run stood when the flag was typed. As few pull
 requests as point 1 above allows, one or two, each landed the way step 7
 lands one: armed where a gate stands, and handed to them to merge where none
 does yet, since they are here, in the text step 7 hands a merge over with.
@@ -1512,21 +1340,18 @@ and nothing is installed under records not yet fetched.
    the code. Only a red from the code itself is the answer, and it is no
    answer of theirs: say what failed, and that once the checks pass on
    GitHub they can set the mode up by typing `/devloop:start-work --auto`,
-   the input named as they type it in Claude Code and never the flag alone,
-   since 27 October 2026, the wording of that day in the roadmap entry of
-   that date on the three visible texts. The record of the
-   answer then says that the mode is not set up, with that red as its
-   reason: the yes has landed by now, so the change goes through a pull
-   request of its own, as after a refused protection. The workflow file
-   stays, since `--auto` needs it once the code is green.
+   the input named as they type it in Claude Code and never the flag alone.
+   The record of the answer then says that the mode is not set up, with
+   that red as its reason: the yes has landed by now, so the change goes
+   through a pull request of its own, as after a refused protection. The
+   workflow file stays, since `--auto` needs it once the code is green.
 3. Only then auto-merge, and the protection after it. Switch auto-merge on
    where it is off and read it back, `gh api repos/OWNER/REPO -q
-   .allow_auto_merge`: a PATCH on it answered `false` with exit 0 on 8
-   October 2026 in an organization on the plan Free, so the answer of the
-   PATCH is not the state. Where it reads `false`, no protection is set, and
-   it goes on as at a refused protection below, that reading as the reason.
-   Where it reads `true`, set the protection, requiring that check, with
-   `enforce_admins` on.
+   .allow_auto_merge`: a PATCH on it can answer `false` with exit 0, so the
+   answer of the PATCH is not the state. Where it reads `false`, no
+   protection is set, and it goes on as at a refused protection below, that
+   reading as the reason. Where it reads `true`, set the protection,
+   requiring that check, with `enforce_admins` on.
 
 Where the gate was there and binding already, none of the three is done:
 auto-merge is switched on where it is off, before the pull request above is

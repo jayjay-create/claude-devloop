@@ -1003,11 +1003,11 @@ an open defect this rule does not answer. It does not cover a project's control
 documents; the exit under "A project's rules are written at the review's
 close" is the same principle for `standards.md`, with the evidence on what a
 line costs that the agent reads and does not need. And it does not cover this
-file, the header of `scripts/devloop-stock-take`, the dated entries or the
-table: a record is as long as what it records, written once and read by
-somebody who went to look, and the case is what holds a rule up, by the
-opening of this file. A rule that covered everything written anywhere would be
-applied to nothing.
+file, the header of `scripts/devloop-stock-take`, the dated entries, the points
+of `docs/rationale.md` or the table: a record is as long as what it records,
+written once and read by somebody who went to look, and the case is what holds a
+rule up, by the opening of this file. A rule that covered everything written
+anywhere would be applied to nothing.
 
 **What it does not replace.** Every duty this file puts on a text — where a no
 leads, the backing of a command, the cause of a block, what a question states
@@ -1665,39 +1665,71 @@ said "built the next day", which then pointed nowhere. Every word stayed
 correct; only what they referred to moved. Write the date.
 
 **`README.md` carries no date.** It says the state of today; how the set got
-there stands in the commits and in `docs/roadmap.md`. Decided by the person
-on 20 October 2026, the roadmap entry of that date on milestone 3, part 2,
-which names the eight dates and the version pair the README carried until
-then, each before and after. A sentence that said since when something holds,
-or how it stood before, says in the README what holds; a reference to a dated
-entry of the roadmap names the entry without its date; the state alone, and
-no new content with it. The rule above holds as before for the documents that
-measure and record — this file, `docs/roadmap.md`, `docs/plan.md`, the skills
-and the shared texts — and the README is not among them. A step of the job
-`stock-take` in `.github/workflows/stock-take.yml`, the check `main` requires,
-holds it: red where `README.md` carries a date in a form like `20 October
-2026`, `October 2026` or `2026-10-20`, one broken over a line break included,
-the file read as one line for that, and every date found printed; so a date
-can enter the README on a branch and cannot land. And it is written for
-those who use devloop, and says nothing of how devloop is built: no reference
-to devloop's own documents — `docs/plan.md`, `docs/roadmap.md`, this file,
-`docs/stock-take.tsv` — no file of devloop named as a mechanism, under `bin/`,
-`scripts/`, `shared/`, `hooks/`, `skills/`, `.github/` or `.claude-plugin/`,
-no history of its tests and no section on the work on devloop; what a user
-needs is said by what it does. `skills/record-lessons/SKILL.md` says the same
-under its table of where a lesson goes — "It is written for people who
-install the plugin, not for whoever builds it, so a lesson about building
-belongs under `docs/`" — and that sentence is the one this rule rests on.
-Decided by the person on 21 October 2026, the same roadmap entry, which names
-each place the README carried until then, before and after. A second step of
-the same job holds this half since 21 October 2026, the roadmap entry of that
-date on milestone 3, part 3: red where `README.md` names one of the four
-documents above or a path into `bin/`, `scripts/`, `shared/`, `hooks/`,
-`skills/`, `.github/` or `.claude-plugin/`, the file read as one line as for
-the dates and every find printed; what the README says of the user's
-project, `docs/agents/`, `~/.claude/settings.json` or `.claude/` say, is no
-find. The red line of the first step says since the same day that the file
-must carry no date and what it carries.
+there stands in the commits and in `docs/roadmap.md`. Decided by the person on
+20 October 2026, the roadmap entry of that date on milestone 3, part 2, which
+names the eight dates and the version pair the README carried until then, each
+before and after. A sentence that said since when something holds, or how it
+stood before, says in the README what holds; a reference to a dated entry of the
+roadmap names the entry without its date; the state alone, and no new content
+with it. The rule above holds as before for the documents that measure and
+record — this file, `docs/roadmap.md` and `docs/plan.md` — and neither the
+README nor the texts devloop loads into a session are among them: what holds for
+those stands under "The texts devloop loads carry no date and no history" below.
+A step of the job `stock-take` in `.github/workflows/stock-take.yml`, the check
+`main` requires, holds it: red where `README.md` carries a date in a form like
+`20 October 2026`, `October 2026` or `2026-10-20`, one broken over a line break
+included, the file read as one line for that, and every date found printed; so a
+date can enter the README on a branch and cannot land. And it is written for
+those who use devloop, and says nothing of how devloop is built: no reference to
+devloop's own documents — `docs/plan.md`, `docs/roadmap.md`, this file,
+`docs/stock-take.tsv`, `docs/rationale.md` — no file of devloop named as a
+mechanism, under `bin/`, `scripts/`, `shared/`, `hooks/`, `skills/`, `.github/`
+or `.claude-plugin/`, no history of its tests and no section on the work on
+devloop; what a user needs is said by what it does.
+`skills/record-lessons/SKILL.md` says the same under its table of where a lesson
+goes — "It is written for people who install the plugin, not for whoever builds
+it, so a lesson about building belongs under `docs/`" — and that sentence is the
+one this rule rests on. Decided by the person on 21 October 2026, the same
+roadmap entry, which names each place the README carried until then, before and
+after. A second step of the same job holds this half since 21 October 2026, the
+roadmap entry of that date on milestone 3, part 3: red where `README.md` names
+one of the documents above — `docs/rationale.md` among them since 1 November
+2026 — or a path into `bin/`, `scripts/`, `shared/`, `hooks/`, `skills/`,
+`.github/` or `.claude-plugin/`, the file read as one line as for the dates and
+every find printed; what the README says of the user's project, `docs/agents/`,
+`~/.claude/settings.json` or `.claude/` say, is no find. The red line of the
+first step says since the same day that the file must carry no date and what it
+carries.
+
+**The texts devloop loads carry no date and no history.** Every file under
+`skills/`, `shared/` and `output-styles/` is read into a session, and a run
+takes what stands there for an instruction: a sentence on since when a rule
+holds, how it stood before, which run broke it or which entry of the roadmap
+decided it tells the run nothing it does, and is read at every load. So these
+files carry the rule and at most a short reason that says what the rule
+prevents, and nothing else of its story: no date, no "since" or "until then", no
+reference to an entry of `docs/roadmap.md`, no case with its run or its
+measurement, no earlier or quoted old wording, and no reference to
+`docs/roadmap.md`, this file, `docs/plan.md`, `docs/stock-take.tsv` or
+`scripts/devloop-stock-take` that is neither a rule nor a reason. What a run
+needs in order to act stays — where it writes, which file it reads, the table of
+`record-lessons` that says where a lesson goes. The reason and the case of a
+rule, with the head of the roadmap entry that carries the case, and the wordings
+the person approved for texts a user sees, word for word in the language they
+were approved in, stand in `docs/rationale.md`, ordered by the loaded file and
+its headings, the state of today without history; where a rule of a loaded text
+is written or changed, its point there is written or changed with it. The
+history stands in the commits and in `docs/roadmap.md`. Decided on 1 November
+2026, the roadmap entry of that date on the history in the loaded texts; until
+then the rule above, to write the date, held for the skills and the shared texts
+too. A step of the job `stock-take` in `.github/workflows/stock-take.yml`, the
+check `main` requires, holds the dates: red where a file under those three
+directories carries a date in a form the step on `README.md` reads, one broken
+over a line break included, every find printed with the file and the line it
+starts on. History written without a date — "until then", an entry named by its
+subject, a run described — it does not see; that half is held by reading, under
+the third rule of "A field is not an answer to a question it was not asked" for
+every change.
 
 **A title says what changed, and nothing else.** The title of a pull
 request, the first line of a commit message and the head of a new entry in
@@ -4001,14 +4033,15 @@ describe the runner, "what the checkout holds" and the Alpine step, a step
 with `uses:` and no `run:`, and runs a step under an `if:` not at all and
 says so, red. So the tool, its self-test, the hooks step with every self-test
 under `bin/`, since 31 October 2026 the self-test of this program among
-them, and every handler, the two README steps and the title step run
-here before the pull request shows them, on this one system, a job with a
-matrix once; a step added to the file runs without a change to the program.
-It ends with 0 where every step did, and its last line opens with `green:`,
-the count of the steps run and of those not run by design behind it; a red
-step, a step it could not run, or a job stopped at its `timeout-minutes` end
-it with 1 and a last line opening with `red:` that names them. It takes a
-few minutes, the stock-take and the self-tests among the steps:
+them, and every handler, the two README steps, since 1 November 2026 the step on
+the dates of the loaded texts, and the title step run here before the pull
+request shows them, on this one system, a job with a matrix once; a step added
+to the file runs without a change to the program. It ends with 0 where every
+step did, and its last line opens with `green:`, the count of the steps run and
+of those not run by design behind it; a red step, a step it could not run, or a
+job stopped at its `timeout-minutes` end it with 1 and a last line opening with
+`red:` that names them. It takes a few minutes, the stock-take and the
+self-tests among the steps:
 
     scripts/devloop-run-workflow .github/workflows/stock-take.yml
 
@@ -4166,15 +4199,20 @@ decision being made a second time or a place that quotes or qualifies it:
 
     grep -rn 'Several: ask\|None: stop\|One ready task: continue\|nothing in scope is ready any more\|nothing ready is left in scope' skills/*/SKILL.md shared/*.md
 
-It prints one line since 9 October 2026, version 0.134.0, and it is sound:
-`build-work` quotes the old finish inside the paragraph that replaced it, which
-would read as a defect on the wording alone, which is the reason this check
-reports rather than judges. Until that day it printed a second, `setup-checks`
-carrying the phrase with the loose-issue clause appended to it, in the
-explanation of the closing sentence that step 8 gave the person before its
-question; that explanation went with text 6 of the roadmap entry of 9 October
-2026, and the line went with it — read as the question this section asks of
-a disappearing line, and answered: the decision is stated once, in
+It prints nothing since 1 November 2026. From 9 October 2026, version 0.134.0,
+it printed one line, and it was sound: `build-work` quoted the old finish inside
+the paragraph that replaced it, which would read as a defect on the wording
+alone, which is the reason this check reports rather than judges; that quote was
+an old wording in a loaded text, and it went to `docs/rationale.md` with the
+rest of the history of the loaded texts, under "The texts devloop loads carry no
+date and no history" above — read as the question this section asks of a
+disappearing line, and answered: the phrasings stay, so that a second statement
+of the finish in those words still prints. Until 9 October 2026 it printed a
+second, `setup-checks` carrying the phrase with the loose-issue clause appended
+to it, in the explanation of the closing sentence that step 8 gave the person
+before its question; that explanation went with text 6 of the roadmap entry of 9
+October 2026, and the line went with it — read as the question this section asks
+of a disappearing line, and answered: the decision is stated once, in
 `build-work`, and step 8 states it no more.
 
 **The check that used to close this section is not here any more.** "The

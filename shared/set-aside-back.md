@@ -2,31 +2,22 @@
 the entry being the one a `set-aside:` line of
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-setup-state` names for the file, the
 program run without `--fetch` immediately before the pop, where this follows
-the question at a start as well, since 19 October 2026: an earlier pop or drop
-renumbers the entries under it, so a line read before it can name another
-entry, the person's own among them — and one line to them says that the
-change is back, at the next message that ends a turn with text, since 17
-October 2026.
-Measured on 6 October 2026 with git 2.50.1: the pop merges the change
-back where the
-fast-forward changed another line of the file; where it changed the same
-line, the pop reports a conflict in the file, keeps the stash, exit 1, and
-leaves both versions in the file between conflict markers, theirs under
-`Stashed changes` and GitHub's under `Updated upstream`, measured again on 16
-October 2026. Then ask which line is to hold — a choice through the
-harness's choice widget, in their language, alone in its call, every point
-in a field of its own and no recommendation, both lines, theirs and
-GitHub's, in its question field before the question line and nothing said
-before the call, since 17 October 2026; the change stays set aside until
-they answer. On the answer the file is
-written with the line they chose — through the shell where the tree stands
-on the main branch, where the branch guard blocks the editing tool on purpose
-— the file is taken out of the index the conflicted pop put it in, `git
-restore --staged -- <file>`, so that their change stands as it stood,
-uncommitted, and the stash is dropped, `git stash drop <entry>`, with the
-entry a `set-aside:` line names for the file when the program is run again
-just before it; measured on
-16 October 2026, `git status --short` then reads ` M` for the file and the
-stash list is empty. The wording of the question approved on 12 October 2026
-stands in the roadmap entry of that date under "The approved wordings",
-point 19 of part B; a skill says what is said, not the words.
+the question at a start as well: an earlier pop or drop renumbers the entries
+under it, so a line read before it can name another entry, the person's own
+among them — and one line to them says that the change is back, at the next
+message that ends a turn with text. The pop merges the change back where the
+fast-forward changed another line of the file; where it changed the same line,
+the pop reports a conflict in the file, keeps the stash, exit 1, and leaves both
+versions in the file between conflict markers, theirs under `Stashed changes`
+and GitHub's under `Updated upstream`. Then ask which line is to hold — a choice
+through the harness's choice widget, in their language, alone in its call, every
+point in a field of its own and no recommendation, both lines, theirs and
+GitHub's, in its question field before the question line and nothing said before
+the call; the change stays set aside until they answer. On the answer the file
+is written with the line they chose — through the shell where the tree stands on
+the main branch, where the branch guard blocks the editing tool on purpose — the
+file is taken out of the index the conflicted pop put it in, `git restore
+--staged -- <file>`, so that their change stands as it stood, uncommitted, and
+the stash is dropped, `git stash drop <entry>`, with the entry a `set-aside:`
+line names for the file when the program is run again just before it; `git
+status --short` then reads ` M` for the file and the stash list is empty.

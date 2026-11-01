@@ -18,16 +18,7 @@ happened at, and where there is none, in that work's issue, and not in the
 last message — there only where a second attempt is made at all, since the
 refusals named under "With nobody there to tell" below go as the skill's
 own section for that case says. A check the person controls is not got
-around in silence. Decided by the person on 17 October 2026, after the
-build of the roadmap entry of that date on the reports of what was done,
-which had dropped the line; the example the person saw stands in that
-entry, and a skill says what is said, not the words. Until that entry the
-first refusal was reported beside the answer, whatever had refused it,
-after a measurement on 31 August
-2026: a command refused by the runtime's permission check, whose message
-asks in so many words for a pause and an explanation of what the permission is
-for, repeated without a word, answered the second time, and named in no report
-until a question about something else turned it up.
+around in silence.
 
 **Nothing is concluded from an answer that did not come.** Where the output
 would have decided something — the state of a pull request, whether a gate
@@ -40,33 +31,29 @@ they can act on: the permission is theirs to grant and the command theirs to
 run.
 
 **A command that does not finish inside its call is not answered, and is not
-started a second time.** Since 9 October 2026 every install and every run of
-the check chain is called with ten minutes, 600000 milliseconds, the most
-Claude Code gives one foreground call. A call with a limit of its own that
-reaches it is ended — measured on 9 October 2026 under Claude Code 2.1.295:
-exit code 143, the message `Command timed out after 5s` in the result,
-nothing of it running on and no output file named. A call without a limit of
-its own the vendor's changelog says is moved to the background, where it runs
-on; that is not measured, and since that day no install and no run of the
-chain is called without one. Either way it did not finish: it is neither
-waited for nor started again, and it is reported with the command as it ran,
-the message that came back, and the path of its output file where the
-message names one. An install that did not finish did not go through, and
-goes as the four ways in `build-work` step 3 and `setup-checks` step 4 say. A
-check chain that did not finish is not answered: nothing is closed from it,
-and with nobody there, since the addendum of 9 October 2026, the task ends
-and not the run where a task is in hand — in `build-work` step 3 and at
-every run of a target in `setup-checks` — an issue carrying the command, the
-message, the path of the output file where the message names one, and that
-the call did not finish inside its ten minutes, labelled `raised-here` and
-`needs-human`, recorded as a blocker of the task; the task put down; step 2
-of `build-work` takes the next; a check class stays as it stands. In
-`build-work` step 1 no task is in hand, and the run stops there with the
-reason named and deletes the mark: without the answer the state of the main
-branch is not known, and no task begins on a base that could not be read.
-The second attempt of the first block is not for this case, decision 2 of
-the roadmap entry of 9 October 2026: a call that did not finish is started
-no second time.
+started a second time.** Every install and every run of the check chain is
+called with ten minutes, 600000 milliseconds, the most Claude Code gives one
+foreground call. A call with a limit of its own that reaches it is ended: exit
+code 143 and the message `Command timed out after` its limit in the result,
+nothing of it running on and no output file named. A call without a limit of its
+own the vendor's changelog says is moved to the background, where it runs on;
+that is not measured, and no install and no run of the chain is called without
+one. Either way it did not finish: it is neither waited for nor started again,
+and it is reported with the command as it ran, the message that came back, and
+the path of its output file where the message names one. An install that did not
+finish did not go through, and goes as the four ways in `build-work` step 3 and
+`setup-checks` step 4 say. A check chain that did not finish is not answered:
+nothing is closed from it, and with nobody there the task ends and not the run
+where a task is in hand — in `build-work` step 3 and at every run of a target in
+`setup-checks` — an issue carrying the command, the message, the path of the
+output file where the message names one, and that the call did not finish inside
+its ten minutes, labelled `raised-here` and `needs-human`, recorded as a blocker
+of the task; the task put down; step 2 of `build-work` takes the next; a check
+class stays as it stands. In `build-work` step 1 no task is in hand, and the run
+stops there with the reason named and deletes the mark: without the answer the
+state of the main branch is not known, and no task begins on a base that could
+not be read. The second attempt of the first block is not for this case: a call
+that did not finish is started no second time.
 
 **An empty answer is not silence.** A command that ran and returned nothing has
 answered — no match, no open issue, an empty list, a clean working tree — and
@@ -107,34 +94,29 @@ on past it either: the block goes into the issue the section on a guard's
 block names, and where filing that issue is itself the blocked act, the task
 is put down with the block in the run's final report. A block stepped around
 leaves a run looking clean over an act nobody agreed to, which is the whole
-reason this is written down; the second closing run of milestone 3 stepped
-around two blocks of three on 11 October 2026, the files rewritten without
-the word and the issue renamed, and both read as clean.
+reason this is written down.
 
 **With nobody there to tell, the report is still written.** An unattended run
 has no one to explain a refusal or a silence to, so the command and the
-message go into its own report. Since 9 October 2026 four cases part there.
+message go into its own report. Four cases part there.
 A refusal — a guard's block, the no of the classifier of auto mode, the no of
 the hook on permission prompts, which answers every prompt while the mark
-stands, and since 18 October 2026 the refusal of a safety check built into
-Claude Code — goes as the skill's own section for the case with nobody there
-says: in a build with a task in hand, an issue and the next task; before the
-build, through the planning stage's order for a question nobody is there to
-answer. An install that does not go through goes as the four ways in
-`build-work` step 3 and `setup-checks` step 4 say. A check chain or a check
-target that does not finish inside its call goes as the block above says:
-the task's end where a task is in hand, the run's stop in `build-work`
-step 1. Every other command that does not answer stops the run there, rather
-than carrying on past a step that did not run.
+stands, and the refusal of a safety check built into Claude Code — goes as the
+skill's own section for the case with nobody there says: in a build with a task
+in hand, an issue and the next task; before the build, through the planning
+stage's order for a question nobody is there to answer. An install that does not
+go through goes as the four ways in `build-work` step 3 and `setup-checks` step
+4 say. A check chain or a check target that does not finish inside its call goes
+as the block above says: the task's end where a task is in hand, the run's stop
+in `build-work` step 1. Every other command that does not answer stops the run
+there, rather than carrying on past a step that did not run.
 
 **The same holds for every tool call, every skill this run calls and every
 background agent.** A tool that failed, a skill that is not installed, an agent
 that did not come back: say so, name what failed and the message that came
 back, and do not carry on as if it had returned, nor substitute something else
 without saying that the first one did not answer.
-A refusal a subagent names in its report is one of the run's own, since 18
-October 2026, defect 12 of the roadmap entry of 16 October 2026 on the runs
-of that day: the main run says it and records it as the blocks above say of
-a refusal of its own, with the person there and with nobody there, and
-where the skill's own section has the subagent raise the issue, as a build
-does, it raises no second one.
+A refusal a subagent names in its report is one of the run's own: the main run
+says it and records it as the blocks above say of a refusal of its own, with the
+person there and with nobody there, and where the skill's own section has the
+subagent raise the issue, as a build does, it raises no second one.

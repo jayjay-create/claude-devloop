@@ -46,16 +46,15 @@ If no `missing:` line stands in the answer, every file of the setup is on the
 main branch: compare the `marker:` line of `docs/agents/issue-tracker.md` with
 the running version. Older means these files were written from templates this
 workflow has since changed. Run `setup-project` to bring them up to date,
-and say nothing before it, since 17 October 2026: the refresh says what
-changed where it lands. **Do not ask.** The refresh
-touches nothing the project decided for itself, so a no protects nothing — and
-the question costs a second decision in the same reply, which is how a bare
-"yes" stops being an answer to either one. When `setup-project` returns,
-**carry on with step 2 as if nothing had happened** — the refresh is an errand,
-not the answer to why they are here. Reporting what is in flight is the thing
-they came for, and it is exactly what gets dropped when a detour ends and the
-run picks up wherever it left off. A marker reading `none` predates the marker;
-treat it as older.
+and say nothing before it: the refresh says what changed where it lands. **Do
+not ask.** The refresh touches nothing the project decided for itself, so a no
+protects nothing — and the question costs a second decision in the same reply,
+which is how a bare "yes" stops being an answer to either one. When
+`setup-project` returns, **carry on with step 2 as if nothing had happened** —
+the refresh is an errand, not the answer to why they are here. Reporting what is
+in flight is the thing they came for, and it is exactly what gets dropped when a
+detour ends and the run picks up wherever it left off. A marker reading `none`
+predates the marker; treat it as older.
 
 If a `missing:` line stands there — one file or all five — the setup has not
 landed on the main branch: step 2 says what that means for the introduction,
@@ -104,53 +103,35 @@ the turn. Nothing else in this reply: no repository findings,
 no offer to set anything up. Where it did — they said what they want built
 in the message that brought this up, beside the command or in place of a
 question — there is no introduction and no sentence on the idea as
-understood: ask nothing and go on to step 3 in the same reply. That the
-project is set up before their idea is begun stands in the first question
-the setup puts, as step 0 of `setup-project` says, here and where they name
-their idea in answer to the question above. Since 17 October 2026, the
-roadmap entry of that date on the reports of what was done; from 16 October
-2026 a sentence with the idea as understood and that the setup comes first
-stood in place of the question, and until then this line asked in both
-cases, which a run with the idea in hand cannot follow; the first closing
-run of milestone 3 answered that by writing no introduction at all, defect 5
-of the roadmap entry of 11 October 2026 on that run, built as point 7 of
-part B of the roadmap entry of 12 October 2026. The wording approved on 12
-October 2026 stands in that entry under "The approved wordings", the
-introduction without an idea as it stands there; this skill says what is
-said, not the words.
+understood: ask nothing and go on to step 3 in the same reply, because a run
+with the idea in hand cannot follow a question on what to build. That the
+project is set up before their idea is begun stands in the first question the
+setup puts, as step 0 of `setup-project` says, here and where they name their
+idea in answer to the question above.
 
 **If every file of the setup is on the main branch** — no `missing:` line in
 step 1's answer — skip the introduction, and run the program the text below
-names before the in-flight query, since 30 October 2026, decided by the
-person that day, the roadmap entry of that date on the start reading the
-install issues: the query is the first thing of this start that reads an
-open issue, so an issue for a missing install whose tool stands on this
-machine now is closed by the program before this step sees it, and the
-task it held is free. In the second session of the short run of 30 October
-2026 this step read such an issue, read the tool itself with `command -v`
-and sent `gh issue close` with a comment of its own, which Claude Code's
-classifier refused, new defect 1 of the roadmap entry of that date on the
-short run; the same text held in `build-work` in both sessions of that run,
-and the cause is removed where it lay.
+names before the in-flight query: the query is the first thing of this start
+that reads an open issue, so an issue for a missing install whose tool stands on
+this machine now is closed by the program before this step sees it, and the task
+it held is free.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issues-read`
 
-Then run the
-in-flight query from `docs/agents/issue-tracker.md` and say what it found, in at
-most five lines, where a question of this step follows it — whether to land
-a pull request, or the open question — or where the stage it leads to asks
-them something before anything is built; where the next message that ends a
+Then run the in-flight query from `docs/agents/issue-tracker.md` and say what it
+found, in at most five lines, where a question of this step follows it — whether
+to land a pull request, or the open question — or where the stage it leads to
+asks them something before anything is built; where the next message that ends a
 turn comes only once a task is built, or the run goes alone, nothing of it is
-said, since 17 October 2026: the room to name a different piece would reach
-them once that piece is built. **Name the work; do not number it.** Someone
-back after a week remembers what they were building, not that it was issue
-nine. An open issue the query lists that carries the two lines of an issue
-for a missing install, `install-tool` and `install-command`, is one the
-program read and left open — the tool not standing on this machine, the
-search path not reaching it, or the tool not read — and this skill closes
-nothing itself and reads no tool itself, since 30 October 2026: the issue
-is named as the list below names a loose issue carrying `raised-here`, and
-what is said of an issue the program closed, or of a folder the search path
+said: the room to name a different piece would reach them once that piece is
+built. **Name the work; do not number it.** Someone back after a week remembers
+what they were building, not that it was issue nine. An open issue the query
+lists that carries the two lines of an issue for a missing install,
+`install-tool` and `install-command`, is one the program read and left open —
+the tool not standing on this machine, the search path not reaching it, or the
+tool not read — and this skill closes nothing itself and reads no tool itself:
+the issue is named as the list below names a loose issue carrying `raised-here`,
+and what is said of an issue the program closed, or of a folder the search path
 does not reach, the text above says, at the place it names.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
@@ -172,18 +153,16 @@ does not reach, the text above says, at the place it names.
     disagree. Say so. The pull request is the part that has not landed, and a
     closed issue is not evidence that it did.
   - **`draft: true`** — built and not offered yet. It is neither waiting on a
-    merge nor finished, and it is not named, since 17 October 2026.
-  - **`mine: false`** — somebody else opened it. Leave it, and do not name it,
-    since 17 October 2026: do not take it up, do not offer to land it, do not
-    count it as the work in flight.
+    merge nor finished, and it is not named.
+  - **`mine: false`** — somebody else opened it. Leave it, and do not name it:
+    do not take it up, do not offer to land it, do not count it as the work in
+    flight.
   - **`closes: -`** — it names no issue, so it does not say which work it
-    belongs to, and it is not named, since 17 October 2026. Do not read its
-    branch name as the answer: a branch named after a task is a string this
-    workflow writes, and a pull request from anywhere else carries whatever
-    its author chose.
+    belongs to, and it is not named. Do not read its branch name as the answer:
+    a branch named after a task is a string this workflow writes, and a pull
+    request from anywhere else carries whatever its author chose.
   - **Several at once** — name the ones of yours waiting to land. Past three or
-    four, name the newest, and not how many others there are, since 17
-    October 2026.
+    four, name the newest, and not how many others there are.
   - **None** — say nothing about pull requests at all and carry on down this
     list. Silence is the report here; a line saying there are none spends one of
     five on nothing.
@@ -196,11 +175,10 @@ does not reach, the text above says, at the place it names.
   taken up, while the rest arrived from outside as suggestions and are not
   named beside work in flight, all but the issue devloop files without the
   label for a change set aside whose bring-back met a change from GitHub,
-  labelled `needs-human` alone, which is not from outside, as this read it
-  until 19 October 2026, and is not named here either: the question on a
-  change still set aside and the last message of the run that filed it are
-  where they meet it. Past three or four, name the newest, and not how many
-  others there are, since 17 October 2026.
+  labelled `needs-human` alone, which is not from outside and is not named here
+  either: the question on a change still set aside and the last message of the
+  run that filed it are where they meet it. Past three or four, name the newest,
+  and not how many others there are.
 
 **If nothing is in flight**, ask the same open question: what would they like to
 build? Nothing in flight now means both halves of the query empty — no open
@@ -212,24 +190,24 @@ something new leaves it sitting there for another week. Say it is waiting and
 offer to land it. On a yes, that is `build-work` at step 6 and nothing before
 it — their yes here is the gate, rather than an inference about what some
 earlier session did before opening it. On a no it stays open and nothing is
-lost, because the state is in the tracker and in git; that is not said, since
-17 October 2026. Take the next thing on the list, saying which as the
-paragraph below says. **A draft is not this case** — it was never
-offered, so there is nothing to land, and it is left where it is.
-**Neither is one that reads `mine: false`** — that is somebody else's to land.
+lost, because the state is in the tracker and in git; that is not said. Take the
+next thing on the list, saying which as the paragraph below says. **A draft is
+not this case** — it was never offered, so there is nothing to land, and it is
+left where it is. **Neither is one that reads `mine: false`** — that is somebody
+else's to land.
 
 **If a map or a spec is in flight, do not ask a question at all.** Name the free
 tickets or tasks by title, say which one comes next and what it unblocks, in one
 line, and start it — said where the stage it leads to asks them something
 before anything is built, so that they can name a different one there; where
 the next message that ends a turn comes only once it is built, a task of a
-spec going to the build, or the run goes alone, start it and say nothing of
-it, since 17 October 2026: the room to name a different one would reach them
-once it is built. "Eleven open decisions" is a number, not a handhold: the user
-cannot act on a count. And do not ask whether to carry on — typing the command in
-a project with work already in flight is the answer to that, the way saying what
-you want built is the answer everywhere else. Asking again treats what they just
-did as if it had not happened.
+spec going to the build, or the run goes alone, start it and say nothing of it:
+the room to name a different one would reach them once it is built. "Eleven open
+decisions" is a number, not a handhold: the user cannot act on a count. And do
+not ask whether to carry on — typing the command in a project with work already
+in flight is the answer to that, the way saying what you want built is the
+answer everywhere else. Asking again treats what they just did as if it had not
+happened.
 
 Reporting is not proposing, and the difference is which of the two cases you are
 in. Proposing is intrusive when it tells the user what to want; it is help when
@@ -284,34 +262,25 @@ If step 1 found a file of the setup missing on the main branch — one or all
 five — run `setup-project` now, then continue. Do not ask the user to run it:
 it reads the same answer and takes a first setup or a refresh from there.
 
-If every file was there and a row of `docs/agents/checks.md` reads `empty`
-while the repository has code — count source files outside config and docs,
-as the setup does — run `setup-checks`, and continue, saying nothing before
-it: that the project is set up and not every check is decided yet, so that
-comes first, stands at the start of the message that puts the question of
-its step 2, as that step says, since 17 October 2026, and not as text of
-this step. Do not ask: an undecided check approves
-nothing, and the offer of the unattended mode in that skill's step 8 is
-reached only once no class is `empty`. Four ways lead here, and this step
-reads the state and not the way to it, so that any other way gets the same
-answer — a setup that
-landed before its check setup ran; a session that ended after a merge
+If every file was there and a row of `docs/agents/checks.md` reads `empty` while
+the repository has code — count source files outside config and docs, as the
+setup does — run `setup-checks`, and continue, saying nothing before it: that
+the project is set up and not every check is decided yet, so that comes first,
+stands at the start of the message that puts the question of its step 2, as that
+step says, and not as text of this step. Do not ask: an undecided check approves
+nothing, and the offer of the unattended mode in that skill's step 8 is reached
+only once no class is `empty`. Four ways lead here, and this step reads the
+state and not the way to it, so that any other way gets the same answer — a
+setup that landed before its check setup ran; a session that ended after a merge
 before `build-work` step 6 read the table, which is where a project set up
 without code gets its suite once the first merge lands code, and where the
-classes a first work left `empty` are filled, after every merge; a
-check setup in which the person chose some classes first, in
-`setup-checks` step 2, and whose session ended before its step 9 took up
-the rest; and a project set up without code whose code came without a
-merge of `build-work` — written and pushed by the person themselves, or
-merged in a pull request of their own — for which step 6 never runs, so
-that this step is the one place that reads it — and all four get the same
-answer, since none leaves anything
-to decide. Until 6 October 2026 this read no row `filled`, so a table with
-rows `filled` beside the `empty` ones waited for the next merge; from the
-second addendum of that day to the third, the way without a merge of
-`build-work` was not among the ways named. The
-wording approved on 6 October 2026 stands in the roadmap entry of 5
-October 2026; this skill says what is said, not the words.
+classes a first work left `empty` are filled, after every merge; a check setup
+in which the person chose some classes first, in `setup-checks` step 2, and
+whose session ended before its step 9 took up the rest; and a project set up
+without code whose code came without a merge of `build-work` — written and
+pushed by the person themselves, or merged in a pull request of their own — for
+which step 6 never runs, so that this step is the one place that reads it — and
+all four get the same answer, since none leaves anything to decide.
 
 ## Step 5 — Build it
 
@@ -330,11 +299,9 @@ skill load and a correction the user watches happen:
   work this project already raised against itself, and it goes to `build-work`,
   which is where the ordering of loose issues is written. **Not to `plan-work`.**
   An issue that already says what is wrong does not need a spec written around
-  it, and sending it there stands a fresh candidate beside it as an equal choice
-  — measured on 9 September 2026, that is exactly the pair a run put to the user
-  instead of naming the issue it was taking. Loose issues from outside are
-  left, the way step 2 leaves them, and so is the issue of a change set aside
-  that step 2 does not name.
+  it, and sending it there stands a fresh candidate beside it as an equal
+  choice. Loose issues from outside are left, the way step 2 leaves them, and so
+  is the issue of a change set aside that step 2 does not name.
 - **Anything else, including a fresh idea** — `plan-work` from the start. It
   carries through to the tasks and into the build.
 
@@ -345,10 +312,9 @@ a stage puts at a boundary — how the work runs on from the end of the sharpeni
 
 **`--auto` travels with that choice.** Where it was typed, it is the word the
 stage reads, and the section at the end of this file says what it means;
-that the run goes on alone is not said here, since 17 October 2026: they
-typed the flag, and the run going alone is their own choice. The stage then
-writes the mark that carries it further, so the word need not survive past
-that point.
+that the run goes on alone is not said here: they typed the flag, and the run
+going alone is their own choice. The stage then writes the mark that carries it
+further, so the word need not survive past that point.
 
 ## How to talk while doing all this
 

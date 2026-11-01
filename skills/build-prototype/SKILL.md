@@ -44,13 +44,12 @@ A question that has to be seen — the UI branch — cannot be settled alone, si
 its answer is what somebody sees. The planning stage checks before it goes alone
 that none is open; where one comes up anyway, this skill is not the answer: say
 so, and the question goes back to the caller's order for a question with nobody
-there. Do not build variants nobody will look at. A refusal with nobody there
-— a guard's block, the no of the classifier of auto mode, the no of the hook
-on permission prompts, since 18 October 2026 the refusal of a safety check
-built into Claude Code — is tried no second time and reached no other way
-here either, since 9 October 2026: say so, and it goes back to the same
-order of the caller, where the refusal is named with the command as it ran
-and the message that came back.
+there. Do not build variants nobody will look at. A refusal with nobody there —
+a guard's block, the no of the classifier of auto mode, the no of the hook on
+permission prompts, the refusal of a safety check built into Claude Code — is
+tried no second time and reached no other way here either: say so, and it goes
+back to the same order of the caller, where the refusal is named with the
+command as it ran and the message that came back.
 
 ## Pick a branch
 
@@ -76,17 +75,15 @@ A prototype nobody opens settles nothing, and the ticket it belongs to cannot be
 resolved without looking. Naming a file on a branch the user is not on is not
 handing it over — that is three git commands they did not ask to learn.
 
-Give them **one action**. For a single HTML file, the exact command that opens it
-in a browser, checkout included, as one line, typed in Claude Code with `!`
-in front — form A of "Where the person types a command devloop hands them"
-in `docs/skill-conventions.md`, since 28 October 2026, the command asking
-nothing and ending by itself. For anything that needs a process, the one
-command that starts it and the address to visit, typed in a second terminal
-window, not the one Claude Code runs in — form B, the text saying so and
-that the command runs until they end it, since a command that does not end
-by itself would hold Claude Code under A — and how they end it. Say how
-to get back afterwards. If getting to it honestly takes more than one line, say
-that too, rather than leaving them to work it out.
+Give them **one action**. For a single HTML file, the exact command that opens
+it in a browser, checkout included, as one line, typed in Claude Code with `!`
+in front — form A, the command asking nothing and ending by itself. For anything
+that needs a process, the one command that starts it and the address to visit,
+typed in a second terminal window, not the one Claude Code runs in — form B, the
+text saying so and that the command runs until they end it, since a command that
+does not end by itself would hold Claude Code under A — and how they end it. Say
+how to get back afterwards. If getting to it honestly takes more than one line,
+say that too, rather than leaving them to work it out.
 
 ## Make the variants actually differ
 

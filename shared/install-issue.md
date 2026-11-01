@@ -1,13 +1,9 @@
 **An issue for a tool that is missing carries two lines the next start
-reads**, since 28 October 2026, decision (5) of the roadmap entry of 27
-October 2026 on the tool state read by one program, built in the roadmap
-entry of 28 October 2026 on the hook on SubagentStart. Wherever this run
-writes an issue because a tool outside the project is missing on this
-machine — a handover the person declined, an install that did not go
-through with nobody there, a check class's tool under a no, `secrets` with
-nobody there, an install auto mode refused — its body carries, each at the
-start of a line of its own and exactly so, beside what the issue says
-otherwise:
+reads**. Wherever this run writes an issue because a tool outside the project is
+missing on this machine — a handover the person declined, an install that did
+not go through with nobody there, a check class's tool under a no, `secrets`
+with nobody there, an install auto mode refused — its body carries, each at the
+start of a line of its own and exactly so, beside what the issue says otherwise:
 
     install-tool: <the tool as `bin/devloop-tool-state` names it: a command as it is called, `yq`, or a browser for tests as `VENDOR:NAME`, `playwright:webkit`>
     install-command: <the install command alone, as it was handed over, without the change into the project's directory before it>
@@ -18,25 +14,19 @@ with `bin/devloop-tool-state --build` whether the tool stands on this
 machine now — on the search path for a command, in the vendor's folder for
 a browser, whichever way it got there — and closes the issue itself where it
 does, with a comment naming the line it read; a task the issue held is free
-again, and a check class it concerned goes to `setup-checks`. And since 30
-October 2026, after their no to the handover of a task's tool, where they
-type the command here with `!` in the same session or say under form B that
-they ran it, the run closes the issue the same way at once, the program run
-with `--after-install`, `build-work` step 3 point 7 and "The task itself";
-the issue's text stays as it stands here, naming the way a later session
-takes, while the message after the no names both ways, decided by the
-person that day: the two do not contradict, since the way the issue names
-stands in the message too. So the issue
-tells the person what is missing and the command, and does not tell them to
-close it: devloop does, and what devloop cannot read it does not close. It
-tells them where they type the command, by "Where the person types a
-command devloop hands them" in `docs/skill-conventions.md`, since 28 October
-2026 — in Claude Code with `!` in front where it asks nothing, else in a
-second terminal window that is not the one Claude Code runs in, where it
-asks something, with what it asks named — and that they type
-`/devloop:start-work` after it; the line `install-command:` stays the bare
-command, since the program
-reads it. Where the command installs into a folder the search path does not
-reach, the next start says so with the steps, the text on that read.
-Until that day the issue stayed until they had run the command and closed
-it themselves.
+again, and a check class it concerned goes to `setup-checks`. And after their no
+to the handover of a task's tool, where they type the command here with `!` in
+the same session or say under form B that they ran it, the run closes the issue
+the same way at once, the program run with `--after-install`, `build-work` step
+3 point 7 and "The task itself"; the issue's text stays as it stands here,
+naming the way a later session takes, while the message after the no names both
+ways: the two do not contradict, since the way the issue names stands in the
+message too. So the issue tells the person what is missing and the command, and
+does not tell them to close it: devloop does, and what devloop cannot read it
+does not close. It tells them where they type the command — in Claude Code with
+`!` in front where it asks nothing, else in a second terminal window that is not
+the one Claude Code runs in, where it asks something, with what it asks named —
+and that they type `/devloop:start-work` after it; the line `install-command:`
+stays the bare command, since the program reads it. Where the command installs
+into a folder the search path does not reach, the next start says so with the
+steps, the text on that read.

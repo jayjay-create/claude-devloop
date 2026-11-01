@@ -45,15 +45,11 @@ from the close.
   No step of this setup needs one — nothing is installed here, the check setup
   being where a tool is installed under the record — so the command is one
   this run reached for on its own. With the user there, carry on without it
-  and hand nothing over, since 17 October 2026: the record has not landed yet,
-  and once it has, the check setup decides. The case with nobody there cannot
-  arise here, since 20 October 2026: the run without the person reaches this
-  skill on no way — it starts in `build-work` and at the end of Stage 1 of
-  `plan-work`, and nothing on its paths calls this skill, as the stock-take
-  of devloop computes — and a setup never runs without the person, as
-  `docs/plan.md` says of the record under milestone 3.
-  Until that day this bullet said the command becomes an issue labelled
-  `needs-human` and the run stops, a case no path reaches.
+  and hand nothing over: the record has not landed yet, and once it has, the
+  check setup decides. The case with nobody there cannot arise here: the run
+  without the person reaches this skill on no way — it starts in `build-work`
+  and at the end of Stage 1 of `plan-work`, and nothing on its paths calls this
+  skill — and a setup never runs without the person.
 - **The command is not an install and the guard matched on text.** Then nothing
   needs a human decision, and raising one would put a question to somebody that
   has no answer to give. Do not raise it. Put the text through the editing tool
@@ -85,50 +81,41 @@ Where no `missing:` line stands in the answer, every file is
 on the main branch and this is not a first setup. Do not run the steps below:
 they ask questions that were answered once already, and re-asking them is how
 a working project gets talked into changing its mind. One question of step 4
-is put all the same, since 20 October 2026, decided by the person that day:
-the one whose stored answer is missing on the main branch, read where the
-guard reads it, through `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record`
-after the fetch above. Where that program answers that no record stands —
-`environment.md` carries no section `## Install permission`, or the file is
-not there — question 3 of step 4 is put as a first setup puts it, with the
-person there and in the same form, and with its reason, since 24 October
-2026: in its question field, before the question line, why it comes now,
+is put all the same: the one whose stored answer is missing on the main branch,
+read where the guard reads it, through
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record` after the fetch above. Where
+that program answers that no record stands — `environment.md` carries no section
+`## Install permission`, or the file is not there — question 3 of step 4 is put
+as a first setup puts it, with the person there and in the same form, and with
+its reason: in its question field, before the question line, why it comes now,
 that the setup of this project is being refreshed and that no answer to this
-question stands for it on the main branch, which the program has just said.
-Run 3b put it without a word of why, defect 34 of the roadmap entry of 24
-October 2026 on the six closing runs; "How to ask" above wants the reason
-there. The wording approved on 24 October 2026 stands in the roadmap entry
-of that date on how an install is recorded, (d); this skill says what is
-said, not the words. The answer is written into
-`environment.md` under `## Install permission` as step 6 writes it, the
-routes of the stack read by this run as there; where the record stands,
-whatever it says, nothing is asked. A question whose answer is stored is put
-where the answer is needed, wherever the stored answer is missing, the rule
-in `docs/skill-conventions.md` under "Only ask where there is something to
-decide"; the check setup puts the question a second time where the record
-does not say yes, by its own text. Where every file is
-missing, this is a first setup, whatever the tree holds, and the steps below
-run; a branch `devloop-setup` an earlier run left with something written on it
-is met at the cut, which says what happens with it. Where some file is present
-and some missing, this is a refresh all the same, and a file missing there is
-written from its template in step 6 the way a first setup writes it; the two
-or three lines below name it.
+question stands for it on the main branch, which the program has just said; "How
+to ask" above wants the reason there. The answer is written into
+`environment.md` under `## Install permission` as step 6 writes it, the routes
+of the stack read by this run as there; where the record stands, whatever it
+says, nothing is asked. A question whose answer is stored is put where the
+answer is needed, wherever the stored answer is missing; the check setup puts
+the question a second time where the record does not say yes, by its own text.
+Where every file is missing, this is a first setup, whatever the tree holds, and
+the steps below run; a branch `devloop-setup` an earlier run left with something
+written on it is met at the cut, which says what happens with it. Where some
+file is present and some missing, this is a refresh all the same, and a file
+missing there is written from its template in step 6 the way a first setup
+writes it; the two or three lines below name it.
 
 Where that program answers that it cannot read the value — the section
 stands and `install-tools` is neither yes nor no — the record stands as
 well, so nothing is asked and nothing is written over it; the refresh says
 that the record cannot be read, with the program's cause, and says it where
-nothing changed too, since 20 October 2026: the guard blocks every install
-on such a record, and a finding is said whatever else is, as "How to ask"
-says of reporting.
+nothing changed too: the guard blocks every install on such a record, and a
+finding is said whatever else is, as "How to ask" says of reporting.
 
 Cut the branch after the last question and before the first write, under the
 same name and rule as a first setup — the step below that stands between the
 two. A refresh that asks nothing cuts it first, as the first thing done after
 the state is read above; one that puts the install question cuts it once the
-answer is in, since 20 October 2026. Skipping the steps below skips
-where that rule is written, which is how the first refresh ran straight into
-the main-branch guard.
+answer is in. Skipping the steps below skips where that rule is written, and a
+refresh that does not cut runs into the main-branch guard.
 
 The files hold two kinds of content, and only one of them is yours:
 
@@ -153,17 +140,16 @@ thing outside those files is this workflow's too: the two paths under `.claude/`
 that Step 5 keeps out of the repository. Check `.gitignore` covers both, since a
 project set up before one of them existed has only the other. If nothing
 changed, say that and stop where the person typed the refresh; reached from
-the entry point, say nothing and go back to it, since 17 October 2026. Then land
-it the way Step 8 describes.
+the entry point, say nothing and go back to it. Then land it the way Step 8
+describes.
 
 ## Step 0 — Get on with it, and put what is about to happen into the first question
 
 What is about to happen is said in the first question this setup puts, and
-nothing is said before it, since 17 October 2026, the roadmap entry of that
-date on the reports of what was done: text before a tool call can land in a
-collapsed note, and why the questions come now is part of what the first
-question needs, as "How to ask" above says. Someone seeing this for the first
-time meets it where they answer, not above six commands they watch run.
+nothing is said before it: text before a tool call can land in a collapsed note,
+and why the questions come now is part of what the first question needs, as "How
+to ask" above says. Someone seeing this for the first time meets it where they
+answer, not above six commands they watch run.
 
 If you cannot tell what language the user speaks — they have typed nothing but the
 command — ask that first, in English, as a single question. Everything after runs
@@ -182,16 +168,10 @@ carries it — the one on what is wrong below, or one of step 4. Where this
 setup puts no question, it stands in the message with which its turn ends,
 before the merge handover.
 Nothing else of what it does is said there: not that it takes a few minutes,
-and not that it asks along the way, which changes no answer. The wordings
-approved on 17 October 2026 stand in the roadmap entry of that day on the
-reports of what was done; this skill says what is said, not the words. A
-refresh carries neither: it says what changed where it lands. The one
-exception, since 24 October 2026: where a refresh puts the install question,
-that question carries its own reason, as "Refreshing an existing setup"
-above says. Until 17
-October 2026 this step said before any tool call, in one or two sentences,
-that the repository is set up, that it takes a few minutes and that the run
-asks along the way.
+and not that it asks along the way, which changes no answer. A refresh carries
+neither: it says what changed where it lands. The one exception: where a refresh
+puts the install question, that question carries its own reason, as "Refreshing
+an existing setup" above says.
 
 **Do not introduce the workflow itself, and name no stages.** Whoever arrives
 here either typed the command or said what they wanted built, and in the
@@ -209,15 +189,10 @@ Stop only where something is genuinely undecided and you would otherwise guess:
 this is not a git repository, there is no remote, or the working directory does
 not look like the project they meant. Then say what is wrong and ask about that.
 
-No note on permissions stands here since 16 October 2026, and none in the
-check setup where it writes the check commands: the passage that stood here
-under "Permissions, before the first command" said what to do at a
-confirmation prompt before any could come, at a moment when nothing can be
-decided, and was forgotten by the time one came; the decision falls in
-Claude Code's own prompt, which offers to allow a command permanently, and
-in auto mode, the starting mode of the terminal since Claude Code 2.1.283,
-no prompt comes at all. Point 8 of part B of the roadmap entry of 12 October
-2026, which names the shoulds it replaces.
+Say nothing ahead of time about what to do at a confirmation prompt: before any
+can come nothing can be decided, and by the time one comes what was said is
+forgotten; the decision falls in Claude Code's own prompt, which offers to allow
+a command permanently, and in auto mode no prompt comes at all.
 
 Where a question does have options, what the person reads is the widget's
 fields — the question line, and a label and a line for each answer — and not a
@@ -231,64 +206,52 @@ which field.
 - Whether `gh` is installed and signed in (`gh auth status`). Where it is not,
   no amount of setting up gets around it: a tracker account is a prerequisite, the
   sign-in needs the user's own browser, and creating an account is a web signup.
-  Stop, and say how they sign in, step by step, since 28 October 2026, by the
-  person's rule of that day in `docs/skill-conventions.md`, last in the
-  message that ends the turn: that for the work with GitHub devloop needs
-  their GitHub account, and that on this machine it is not signed in yet;
-  that where they have no account yet, they create it first on github.com;
-  then the steps of the refused sign-in as the text on the fetch tried
-  three times has them, form B of "Where the person types a command devloop
-  hands them", since the sign-in asks — a second terminal window, not the
-  one Claude Code runs in, because the sign-in's questions go only there;
-  `gh auth login --web --git-protocol https` typed there; the instructions
-  in the terminal and in the browser followed, which this text does not
-  describe after the program —; and that they say here once that is done,
-  and that the run then sets the project up. After their word read `gh auth
-  status` again: where it says signed in, go on with this step; where not,
-  say so and hand the same steps over again. Where `gh` is not installed at
-  all, since the decision of 28 October 2026 after the push: read the
-  system, `uname -s` and under Linux `/etc/os-release`; read GitHub's own
-  guide for it with the tools for the web, `cli.github.com` and under Linux
-  the page it links for Linux, `github.com/cli/cli/blob/trunk/docs/install_linux.md`;
-  and hand the command over as it stands there, by "Where the person types
-  a command devloop hands them" in `docs/skill-conventions.md` — on a Mac
-  with Homebrew `brew install gh`, form A, typed here with `!`, backed as
-  "A command that fetches something from outside is backed" says, `brew
-  info gh` naming the version and the folder; under Debian or Ubuntu the
-  block of that page, which runs `sudo` and so asks for their password,
-  form B, in a second terminal window, given whole and as it stands, with
-  its source, that it is GitHub's guide for that system; for another
-  system the page names, the same with that system's name. Say: that for
-  the work with GitHub devloop needs the program `gh` of GitHub and that on
-  this machine it is not installed yet; where they type it; the command;
-  the backing or the source; and that the run then reads that `gh` is
-  there and says how they sign in — under A once the output stands in the
-  conversation, under B once they say here that it has run. Only where the
-  page cannot be read, where it does not name their system, or where its
-  guide needs a program this machine lacks — Homebrew on a Mac —, say that
-  they install it as `cli.github.com` describes for their system and say
-  here once that is done, and that the run then says how they sign in; a
-  command the guide itself warns against is not given, the addition to the
-  step-by-step rule in `docs/skill-conventions.md`. After the signal read
-  with `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the
-  command as handed over and `gh`, both its lines: for `brew` the first
-  reads the folder of `brew --prefix`; for the block of the Linux page the
-  first says not read, its first word being no installer the program reads
-  a folder off, and the second line, the search path, decides, `apt`
-  putting `gh` where every search path reaches. Where the second line says
-  found, go on to `gh auth status` and, where it is not signed in, the
-  steps of the sign-in above; where not, say so with the line and hand
-  over again. No install record opens this: the step runs at a first setup
-  alone, where `docs/agents/environment.md` is not on the main branch and
-  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record` answers that none
-  stands, so the command is the person's, as under a no; a refresh, above,
-  does not run this step, and `sudo` stays theirs under every answer. The
-  wordings approved on 28 October 2026 for the sign-in, (3), and for `gh`
-  not installed, among the decisions of that day after the push, stand in
-  the roadmap entry of that date on the handover steps, and this skill says
-  what is said, not the words; until that day this step named `gh auth
-  login` and stopped, and until the decision after the push it referred to
-  `cli.github.com` without a command.
+  Stop, and say how they sign in, step by step, last in the message that ends
+  the turn: that for the work with GitHub devloop needs their GitHub account,
+  and that on this machine it is not signed in yet; that where they have no
+  account yet, they create it first on github.com; then the steps of the refused
+  sign-in as the text on the fetch tried three times has them, form B of "Where
+  the person types a command devloop hands them", since the sign-in asks — a
+  second terminal window, not the one Claude Code runs in, because the sign-in's
+  questions go only there; `gh auth login --web --git-protocol https` typed
+  there; the instructions in the terminal and in the browser followed, which
+  this text does not describe after the program —; and that they say here once
+  that is done, and that the run then sets the project up. After their word read
+  `gh auth status` again: where it says signed in, go on with this step; where
+  not, say so and hand the same steps over again. Where `gh` is not installed at
+  all: read the system, `uname -s` and under Linux `/etc/os-release`; read
+  GitHub's own guide for it with the tools for the web, `cli.github.com` and
+  under Linux the page it links for Linux,
+  `github.com/cli/cli/blob/trunk/docs/install_linux.md`; and hand the command
+  over as it stands there, by "Where the person types a command devloop hands
+  them" — on a Mac with Homebrew `brew install gh`, form A, typed here with `!`,
+  backed as "A command that fetches something from outside is backed" says,
+  `brew info gh` naming the version and the folder; under Debian or Ubuntu the
+  block of that page, which runs `sudo` and so asks for their password, form B,
+  in a second terminal window, given whole and as it stands, with its source,
+  that it is GitHub's guide for that system; for another system the page names,
+  the same with that system's name. Say: that for the work with GitHub devloop
+  needs the program `gh` of GitHub and that on this machine it is not installed
+  yet; where they type it; the command; the backing or the source; and that the
+  run then reads that `gh` is there and says how they sign in — under A once the
+  output stands in the conversation, under B once they say here that it has run.
+  Only where the page cannot be read, where it does not name their system, or
+  where its guide needs a program this machine lacks — Homebrew on a Mac —, say
+  that they install it as `cli.github.com` describes for their system and say
+  here once that is done, and that the run then says how they sign in; a command
+  the guide itself warns against is not given. After the signal read with
+  `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --installed`, the command as
+  handed over and `gh`, both its lines: for `brew` the first reads the folder of
+  `brew --prefix`; for the block of the Linux page the first says not read, its
+  first word being no installer the program reads a folder off, and the second
+  line, the search path, decides, `apt` putting `gh` where every search path
+  reaches. Where the second line says found, go on to `gh auth status` and,
+  where it is not signed in, the steps of the sign-in above; where not, say so
+  with the line and hand over again. No install record opens this: the step runs
+  at a first setup alone, where `docs/agents/environment.md` is not on the main
+  branch and `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record` answers that
+  none stands, so the command is the person's, as under a no; a refresh, above,
+  does not run this step, and `sudo` stays theirs under every answer.
 - Is there code? Count source files outside config and docs
 - Existing control documents: `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, `docs/adr/`, `README.md`
 - Task runner: `Makefile`, `justfile`, `Taskfile.yml`, `scripts` in `package.json`
@@ -296,18 +259,13 @@ which field.
 - Existing checks: config for formatting, linting, types; test directories; `.github/workflows/`
 - How the project runs locally: `docker-compose.yml`, `.env.example`, README
 
-Not the labels of the tracker: nothing reads them since 16 October 2026,
-when the question about labels of overlapping meaning went, point 9 of part
-B of the roadmap entry of 12 October 2026 — this workflow creates its seven
-in step 6 in every setup and reads only its own.
+Not the labels of the tracker: nothing reads them — this workflow creates its
+seven in step 6 in every setup and reads only its own.
 
 ## Step 2 — Nothing of what you found is said
 
-Nothing of what step 1 found is said, since 17 October 2026: it decides
-nothing and is no result, and what a question of step 4 turns on stands in
-that question's fields. Until then it was reported in ten lines at most,
-with what was not found, and since 16 October 2026 with nothing on labels,
-which decide nothing either.
+Nothing of what step 1 found is said: it decides nothing and is no result, and
+what a question of step 4 turns on stands in that question's fields.
 
 ## Step 3 — The empty case
 
@@ -326,42 +284,28 @@ project meets finds an answer and not the absence of one.
 ## Step 4 — Questions
 
 Only these, each only under its condition. No question of this step carries a
-recommendation, since 20 October 2026, decided by the person that day: none
-decides about the product being built — question 1 decides where this
-workflow keeps its work, question 4 asks a fact only they know, question 5
-how their repository is ordered, and questions 2 and 3 decide how this
-workflow runs, whether it merges by itself and whether the run installs — and a
-recommendation stands only on a question about the product, "How to ask"
-above. Until that day questions 1, 4 and 5 led with one so that a single
-word could answer. One form for a choice, and the
-form is where its content goes: the choice goes through the harness's choice
-widget, and everything that carries the decision stands in the widget's own
-fields — the question field with the question line at its end, a header, and
-for each answer a label and a line, its description — within the bound the
-output style of devloop sets, since what does not fit arrives cut, as the
-roadmap entry of 30 September 2026 on the question's first asking measured
-and the roadmap entry of 17 October 2026 measured again for the question
-field. Nothing stands in the run's message before the widget, since 17
-October 2026: a paragraph above the options does not get read, the points
-of question 3 that stood only in prose arrived in none of three runs, and
-text before the call can land in a collapsed note, as owed text did in every
-measured run. Questions 1, 2 and 5 are such
-choices, and several of them may share one widget call; how a shared call
-shows at 80 columns is not measured, the roadmap entry of 17 October 2026
-says so. Question 3 is one
-too, and it names the field of each of its points; its call carries this
-question and no other, since what needs weighing stands alone so that it is
-not waved through beside other questions, as `shared/three-questions.md`
-says of a round in its first sentence; until 20 October 2026 the reason stood
-here that two decisions put in one submit come back as one answer, which
-does not hold for the widget: Claude Code 2.1.304 returns every chosen
-answer with its question, and only a typed answer holds for the whole call,
-the roadmap entry of that date. Question 4 is open and
-has no options, so it is put as text, last in the message that ends the
-turn, with what it needs before it. Nothing here
-asks about check classes or the tools that fill them: that mapping, and
-whether a missing tool gets installed, is the check setup's own question, put
-once the record this step writes has landed.
+recommendation: none decides about the product being built — question 1 decides
+where this workflow keeps its work, question 4 asks a fact only they know,
+question 5 how their repository is ordered, and questions 2 and 3 decide how
+this workflow runs, whether it merges by itself and whether the run installs —
+and a recommendation stands only on a question about the product, "How to ask"
+above. One form for a choice, and the form is where its content goes: the choice
+goes through the harness's choice widget, and everything that carries the
+decision stands in the widget's own fields — the question field with the
+question line at its end, a header, and for each answer a label and a line, its
+description — within the bound the output style of devloop sets, since what does
+not fit arrives cut. Nothing stands in the run's message before the widget: a
+paragraph above the options does not get read, and text before the call can land
+in a collapsed note. Questions 1, 2 and 5 are such choices, and several of them
+may share one widget call. Question 3 is one too, and it names the field of each
+of its points; its call carries this question and no other, since what needs
+weighing stands alone so that it is not waved through beside other questions, as
+`shared/three-questions.md` says of a round in its first sentence. Question 4 is
+open and has no options, so it is put as text, last in the message that ends the
+turn, with what it needs before it. Nothing here asks about check classes or the
+tools that fill them: that mapping, and whether a missing tool gets installed,
+is the check setup's own question, put once the record this step writes has
+landed.
 
 1. **Issue tracker** — only if there is no remote, or several candidates.
    With exactly one remote: take it and move on, saying nothing of it.
@@ -385,8 +329,7 @@ once the record this step writes has landed.
    below. The gate is read in every project, before this condition is
    decided, and read again in step 8, off the two queries the program asks
    and prints at a mergeable value or, where it asks neither, asked there;
-   nothing of it goes into `environment.md`, since 18 October 2026, step 6
-   saying why.
+   nothing of it goes into `environment.md`, step 6 saying why.
 
    **That setting alone is not the gate, and reporting only that setting is how
    a run comes to a halt in the middle of a task.** Auto-merge can only be
@@ -422,20 +365,14 @@ once the record this step writes has landed.
        `pull_requests_only` least of all: in GitHub's words that actor "can then
        choose to bypass any branch protections and merge that pull request",
        which is the step this gate exists to hold. The value decides it and
-       is named nowhere, since 18 October 2026; until then it went into
-       `environment.md`.
-       Do not reach for `bypass_actors` instead — measured on 31 August 2026 it
-       read `null` on a ruleset that answered everything else, and a run reading
-       it would take that for nobody. The list at `repos/OWNER/REPO/rulesets`
-       does not carry the field at all; only the single-ruleset reply does.
+       is named nowhere. Do not reach for `bypass_actors` instead — it can read
+       `null` on a ruleset that answers everything else, and a run reading it
+       would take that for nobody. The list at `repos/OWNER/REPO/rulesets` does
+       not carry the field at all; only the single-ruleset reply does.
 
-     Neither ruleset reading needs admin, where the classic endpoint does.
-     Measured on 31 August 2026 on `github/docs`, a repository this account has
-     no admin on: `rules/branches/main` returned rules from two rulesets, one
-     `Repository`- and one `Organization`-sourced, and both single-ruleset
-     replies carried `current_user_can_bypass: never`. GitHub says the same in
-     prose — "Anyone with read access to a repository can view its active
-     rulesets."
+     Neither ruleset reading needs admin, where the classic endpoint does: in
+     GitHub's words, "Anyone with read access to a repository can view its
+     active rulesets."
    - **Put the two sides together the way the existence question is put
      together.** Classic protection and rulesets "work alongside each other, and
      all applicable rules are enforced", so a gate binds here if either side
@@ -445,18 +382,14 @@ once the record this step writes has landed.
      query unanswered, the case of an account without admin rights — and it
      does not bind where none binds and every query that could show one
      answered: the reading `build-work` gives start condition 2 under
-     "Unattended mode" and `bin/devloop-start-conditions` reads, since 31
-     October 2026; until then a side that did not answer was the third
-     outcome below whatever the other side showed. Where no answer showed a
-     gate that binds and a query that could show one did not answer —
+     "Unattended mode" and `bin/devloop-start-conditions` reads. Where no answer
+     showed a gate that binds and a query that could show one did not answer —
      `protection` needing admin and returning anything but "Branch not
-     protected", a ruleset reply that does not come back, the query of a
-     ruleset its rules named, or for a classic gate without `enforce_admins`
-     the query for `.permissions.admin` — that is a third outcome and not a
-     quiet no: the binding could not be determined, rather than a claimed
-     gate or one ruled out. It is not said, since 17 October 2026, and not
-     written into `environment.md`, since 18 October 2026, where until then
-     it went with the query that failed.
+     protected", a ruleset reply that does not come back, the query of a ruleset
+     its rules named, or for a classic gate without `enforce_admins` the query
+     for `.permissions.admin` — that is a third outcome and not a quiet no: the
+     binding could not be determined, rather than a claimed gate or one ruled
+     out. It is not said, and not written into `environment.md`.
 
    Whether a plan allows protection on a private repository has changed before
    and will again, so do not carry a table of it: those two queries answer it
@@ -468,11 +401,7 @@ once the record this step writes has landed.
    whatever they answered, the second of the three cases of step 8; and
    whether it is switched on is decided where a gate is set up, in step 8 of
    the check setup, by the question on work without them, whose yes switches
-   auto-merge on itself and sets the required check up. Until 16 October 2026
-   the question was put wherever auto-merge was off, with a line that a yes
-   still leaves the first merges to be made by hand; point 10 of part B of
-   the roadmap entry of 12 October 2026, revised on 16 October 2026 by the
-   roadmap entry of that date.
+   auto-merge on itself and sets the required check up.
 
    Where a gate stands and auto-merge is off, a choice through the widget: in
    the user's language, every point in a field of its own, no recommendation,
@@ -491,33 +420,22 @@ once the record this step writes has landed.
 
    On the yes, `gh api -X PATCH repos/OWNER/REPO -F allow_auto_merge=true`,
    read back with the query above: the answer of the PATCH is not the state,
-   measured on 8 October 2026 in step 8 of the check setup, where a PATCH
-   answered `false` with exit 0; `-F` sends a typed value where `-f` sends a
-   string, `gh api --help` of gh 2.96.0, read on 16 October 2026, and the
-   second closing run of milestone 3 read `true` back after `-F` on 11
-   October 2026. The wording approved on 16 October 2026 stands in the
-   roadmap entry of that date; this skill says what is said, not the words.
+   since a PATCH can answer `false` with exit 0; `-F` sends a typed value where
+   `-f` sends a string.
 
    Of what was found, step 8 says the one sentence of the merge handover
    that fits the case, read again there off the program's `gate:` lines, or
-   off both queries asked there where it printed none, and nothing more,
-   since 17 October 2026; none of it goes into a file, since 18 October
-   2026, step 6 saying why. Never
-   withhold anything over it and never make it a condition — the user decides
-   what their repository is for, and this step's job is that they decide it
-   knowing what holds.
+   off both queries asked there where it printed none, and nothing more; none of
+   it goes into a file, step 6 saying why. Never withhold anything over it and
+   never make it a condition — the user decides what their repository is for,
+   and this step's job is that they decide it knowing what holds.
 3. **Install permission** — always. A choice, put through the widget in the
-   user's language, this question alone in its call. Two forms stood before
-   this one — a message of its
-   own, then prose above a widget carrying the answers — and the roadmap
-   entries of 30 September 2026 record that the question met neither in three
-   runs: it came as one tab of a form beside another question each time, and
-   the points that stood only in prose did not reach the person. This is the
-   first asking. Where the unattended mode is set up later and this answer
-   does not say yes, the check setup puts the question a second time, in its
-   step 8, with the other line under the no. The answer goes into
-   `environment.md` in step 6, as the section the guard reads; nothing is
-   installed on it here. What the question covers, and nothing else:
+   user's language, this question alone in its call. This is the first asking.
+   Where the unattended mode is set up later and this answer does not say yes,
+   the check setup puts the question a second time, in its step 8, with the
+   other line under the no. The answer goes into `environment.md` in step 6, as
+   the section the guard reads; nothing is installed on it here. What the
+   question covers, and nothing else:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-question`
 
@@ -525,8 +443,7 @@ once the record this step writes has landed.
    all from `docker-compose.yml` or the README. Which processes, in what order,
    on what ports. What the run read in the code — the compose file, the
    README, the scripts — stands before the question in the message that puts
-   it, as what was found and not as a recommended answer, since 20 October
-   2026.
+   it, as what was found and not as a recommended answer.
 5. **Where glossary and decision records live** — only if something already lives
    elsewhere. Otherwise `CONTEXT.md` at the root and `docs/adr/`. Decide it
    here and create nothing yet: this is the last question of the setup, the
@@ -546,13 +463,12 @@ This workflow keeps two files of local state under `.claude/`:
 `check-attempts.local`, written and read by the turn-end hook, which is the only
 hook that reads a file of its own; and `unattended.local`, the mark an unattended
 run writes for itself where it steps out of the flow and reads at every place it
-forks on the mode, and which the hook on permission prompts reads since 9
-October 2026, holding the session its third line names against the
-prompt's. Neither belongs in the repository. Make sure `.gitignore`
-covers both — add the paths if it does not, create the file if there is none —
-and do it here, where it is known, rather than leaving a later step to notice. A
-refresh does the same, since a project set up before the second file existed has
-only the first.
+forks on the mode, and which the hook on permission prompts reads, holding the
+session its third line names against the prompt's. Neither belongs in the
+repository. Make sure `.gitignore` covers both — add the paths if it does not,
+create the file if there is none — and do it here, where it is known, rather
+than leaving a later step to notice. A refresh does the same, since a project
+set up before the second file existed has only the first.
 
 
 If there is no task runner, create a `Makefile`. If there is one with
@@ -588,12 +504,9 @@ Write the running version there, read from
 `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`, at a first setup and at a
 refresh alike. `bin/devloop-setup-state` reads it off the main branch and
 prints it on a `marker:` line, `none` for a file without one, and the entry
-point compares it with the running version at its step 1 to decide a refresh. Until 16
-October 2026 this paragraph stood under "Refreshing an existing setup", whose
-steps a refresh does not run, and no step of a first setup wrote the line, so
-a project set up fresh read `none` at its next start and was refreshed for
-it: recorded on 3 October 2026, built as point 13 of part B of the roadmap
-entry of 12 October 2026.
+point compares it with the running version at its step 1 to decide a refresh, so
+that a project set up fresh is not refreshed at its next start for a marker it
+lacks.
 
 ### `checks.md`
 
@@ -682,27 +595,17 @@ name that exists. A label that only exists in this document is not a label.
 That seven labels were created in the tracker, with which the state of the
 work is marked, with one named as the example — `needs-human`, for when they
 have to decide — is said in one sentence in the message with which the
-setup's turn ends, before the merge handover, since 17 October 2026, defect 2
-of the roadmap entry of 16 October 2026 on the runs of that day; until then
-in one sentence of the run's own message. Until 16 October 2026 step 4
-asked, where the tracker had labels of
-overlapping meaning, whether to map onto them or add these beside them, a
-question about this workflow's own convention; it went as point 9 of part B
-of the roadmap entry of 12 October 2026, whose approved wording for the
-sentence stands under "The approved wordings" there; this skill says what is
-said, not the words.
+setup's turn ends, before the merge handover.
 
 `raised-here` exists because nothing else in an issue can carry that fact. The
 author is the account the tooling runs as, which is the user's either way, so it
 cannot tell one from the other — and how a loose issue gets treated turns
 entirely on which it is. Anything without the label is from outside, and that is
 then a reading rather than a guess — all but the one issue devloop files
-without it on purpose, since 16 October 2026: the issue of a change set aside
-at a fetch whose bring-back met a change from GitHub, labelled `needs-human`
-alone so that no build takes it up as work, by the text on the mark's
-deletion. That one is not from outside, and it is left all the same; until
-19 October 2026 this paragraph read every issue without the label as from
-outside.
+without it on purpose: the issue of a change set aside at a fetch whose
+bring-back met a change from GitHub, labelled `needs-human` alone so that no
+build takes it up as work, by the text on the mark's deletion. That one is not
+from outside, and it is left all the same.
 
 For GitHub, write these in verbatim, with OWNER and REPO filled in. Later steps
 read them from here; do not leave the reader to guess the API.
@@ -745,34 +648,27 @@ read them from here; do not leave the reader to guess the API.
     What those two return, beside what each value is read for:
 
     - `issues` returns issues and never pull requests. Its nodes are of type
-      `Issue`, and `PullRequest` is a different type — GitHub's live GraphQL
-      schema, read 31 August 2026 — so no filter and no state makes a pull
-      request appear there. The REST endpoint `repos/OWNER/REPO/issues` does mix
-      the two, measured the same day on `cli/cli` where six of ten open entries
-      carried a `pull_request` key, which is where the expectation that one
-      query covers both comes from.
+      `Issue`, and `PullRequest` is a different type, so no filter and no state
+      makes a pull request appear there. The REST endpoint
+      `repos/OWNER/REPO/issues` does mix the two, which is where the expectation
+      that one query covers both comes from.
     - `states:OPEN` on `pullRequests` is read for "not landed yet", and that is
-      what it says. **A draft is inside it**: measured on `cli/cli` on 31 August
-      2026, 64 open pull requests of which 25 read `isDraft: true`, and a
-      draft's own `state` reads `OPEN`. Draft is a separate field, not a state.
+      what it says. **A draft is inside it**: a draft's own `state` reads
+      `OPEN`. Draft is a separate field, not a state.
     - `viewerDidAuthor` says whether the account this runs as opened the pull
-      request, which is what "is this ours" asks. Measured the same day: true on
-      a pull request this account opened, false on one from `cli/cli`. It does
-      not say whether the branch sits on a fork — that is `isCrossRepository`.
+      request, which is what "is this ours" asks. It does not say whether the
+      branch sits on a fork — that is `isCrossRepository`.
     - `closingIssuesReferences` says which issues this pull request would close
       on merging, each with its own `state`, and it is read for "which work is
       this". It is filled from a closing keyword in the body or the commits and
-      is empty without one: measured on `cli/cli`, pull requests 10783 and 11388
-      returned nothing, and 11388's title carries a bare "#326" that is text and
-      not a link. Empty means the pull request names no work, not that it has
-      none — and a branch name is not this field.
+      is empty without one; a bare `#N` in a title is text and not a link. Empty
+      means the pull request names no work, not that it has none — and a branch
+      name is not this field.
     - `closedByPullRequestsReferences` is the same relationship read from the
       issue, and it is read for "is this task already built". Its
       `includeClosedPrs` argument defaults to false, which does **not** mean
-      only open ones come back: measured on 31 August 2026 in `devloop-test-l`,
-      the tasks under spec 2 returned pull requests 7, 11 and 13, every one of
-      them `MERGED`. Filter on each node's own `state`; never on the argument
-      name.
+      only open ones come back: merged ones come back as well. Filter on each
+      node's own `state`; never on the argument name.
 
     Ask which `raised-here` issues carry a given line of `standards.md`. The
     close of a review asks this of every rule there before it takes one out,
@@ -819,16 +715,13 @@ Processes, order, ports, which terminal window stays occupied. What to pull afte
 which kind of change: new dependency, schema change, new setting, server code,
 frontend only. Which runs cost money and which path is free.
 
-This file carries no section on what checks a merge, and who, since 18
-October 2026, decided by the person that day, where from 22 August 2026 it
-carried one, from step 4, question 2. No part of devloop read it; the
-protection is read off the platform — by
-`bin/devloop-arm` on its `gate:` lines, by start condition 5 of
-`build-work`, by `plan-work` reading the conditions of the unattended mode;
-a protection written down goes stale at its next change, in step 8 of the
-check setup at the latest; and what the person needs in a case the merge
-handover tells them. A section an earlier setup wrote stays as it stands,
-and a refresh leaves it: nothing reads it.
+This file carries no section on what checks a merge, and who. No part of devloop
+reads it; the protection is read off the platform — by `bin/devloop-arm` on its
+`gate:` lines, by start condition 5 of `build-work`, by `plan-work` reading the
+conditions of the unattended mode; a protection written down goes stale at its
+next change, in step 8 of the check setup at the latest; and what the person
+needs in a case the merge handover tells them. A section an earlier setup wrote
+stays as it stands, and a refresh leaves it: nothing reads it.
 
 Also the answer to question 3 of step 4:
 
@@ -846,8 +739,7 @@ work may run in this repository with nobody there. The check setup puts both
 questions and writes both sections, in the same shape, and it rewrites the
 answer of the install record where the question is put a second time. A
 refresh leaves all three sections as they stand; where the install record
-is missing on the main branch, it writes it from the answer it asked for,
-since 20 October 2026.
+is missing on the main branch, it writes it from the answer it asked for.
 
 ## Step 7 — Pointer block in CLAUDE.md
 
@@ -897,67 +789,58 @@ under this step's own name, and a branch a squash merge left standing keeps
 a commit of its own, so that the cut would switch back to it; and the install
 guard reads the
 record off the main branch as last fetched — a merge proven at the platform is
-not yet fetched, and measured on 28 September 2026 a yes landed on `origin` and
-not yet fetched blocked, then passed after the fetch. If a check gate blocks
-the merge, say so and stop here; do not offer the next step on top of unmerged
-setup. **This step does not wait inside its
-answer**: nothing reaches it unattended — that mode refuses to start while any
-class in `checks.md` is `empty`, and this setup is what makes a `checks.md`
-possible at all — so there is a person here, and the waiting form in `build-work`
-step 6 is written for the case where there is not.
+not yet fetched. If a check gate blocks the merge, say so and stop here; do not
+offer the next step on top of unmerged setup. **This step does not wait inside
+its answer**: nothing reaches it unattended — that mode refuses to start while
+any class in `checks.md` is `empty`, and this setup is what makes a `checks.md`
+possible at all — so there is a person here, and the waiting form in
+`build-work` step 6 is written for the case where there is not.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text branch-deletion`
 
 Arming can also be refused, and for three different reasons. Auto-merge may be
 switched off on the repository — `gh api repos/OWNER/REPO -q .allow_auto_merge`
-returns false, and that is the only one this field answers; measured on 30 August
-2026 it read true in a repository with a required check and in one without alike;
-since 16 October 2026 that is the ordinary state at a first setup, question 2
-of step 4 being put only where a gate stands already, and the check setup's
-step 8 switches it on where it sets a gate up, so nothing here asks them to.
-That is this case only where a gate stands, as the handover has it: where
-none does, the program answers `no required check:` at a mergeable value, and
-the case is the second, whatever the field reads, since 18 October 2026, after
-defect 4 of the roadmap entry of 16 October 2026 on the runs of that day.
-Or there may be no gate for it to wait on at all. Or there is a gate,
-auto-merge is on and this pull request is already past it: the required check
-has gone green, nothing is outstanding, and GitHub will not arm what it would
-merge on the spot. The
-program reads `mergeStateStatus` once a second and arms in the pass that reads
-`BLOCKED`, the state that accepts it, since 17 October 2026, after a reading in
-one call and the arming in the next had left room for it to move, defect 5 of
-the roadmap entry of 16 October 2026 on the runs of that day; its last line
-says how it ended. `CLEAN`, `HAS_HOOKS` and `UNSTABLE` mean nothing is
-outstanding — which is either everything having run or nothing having started,
-and a freshly pushed branch is the second — and the program arms on none of
-them. The head commit's `statusCheckRollup`, which it reads, separates them:
-it sees Actions check runs and older commit statuses alike, since
-`StatusCheckRollupContext` is a union of `CheckRun` and `StatusContext`
-(GitHub's live GraphQL schema, 31 August 2026). The required names come from
-the same two gate queries — `required_status_checks.contexts` for classic
-protection, `parameters.required_status_checks[].context` for a ruleset —
-which it runs itself and prints on its `gate:` lines. A required name with no
-entry, an entry whose `status` is not `COMPLETED`, or a status context still
-`PENDING` or `EXPECTED`, means the check has not run yet: not a refusal case,
-so it reads on, sixty seconds a call, and arms on the `BLOCKED` it moves to;
-where it ends with `not started:`, call it once more, two minutes in all. Only
-every required check `COMPLETED` makes this a pull request past its gate,
-`past its gate:`; two minutes run out is not taken for a gate already passed.
-`UNKNOWN` is a missing answer rather than a state: GitHub computes
-mergeability when it is asked for, so the program reads again a few seconds
-later and uses that second value; a second `UNKNOWN` is not read a third time
-but goes to the rollup. `BEHIND` means the branch is behind the base and the
-required check ran against a state that is not what would be merged, and the
-program ends with `behind:` — fetch, three attempts, by the command under
-"When the main branch cannot be fetched or fast-forwarded" above, and where
-the third fails too, stop as that section says, opening with that the pull
-request has to be brought up to the latest state of the main branch before it
-can be merged and that this is not possible just now, nothing armed and no
-merge handed over; then rebase onto the base and force-push, which lands
-nothing anywhere and is not the merge this step may not perform, and call the
-program again, whose next reading is `BLOCKED` with arming accepted. Measured
-on 30 August 2026 on a pull request seven days old: `UNKNOWN` first, `BEHIND`
-on the second reading.
+returns false, and that is the only one this field answers: it reads true in a
+repository with a required check and in one without alike. That is the ordinary
+state at a first setup, question 2 of step 4 being put only where a gate stands
+already, and the check setup's step 8 switches it on where it sets a gate up, so
+nothing here asks them to. That is this case only where a gate stands, as the
+handover has it: where none does, the program answers `no required check:` at a
+mergeable value, and the case is the second, whatever the field reads. Or there
+may be no gate for it to wait on at all. Or there is a gate, auto-merge is on
+and this pull request is already past it: the required check has gone green,
+nothing is outstanding, and GitHub will not arm what it would merge on the spot.
+The program reads `mergeStateStatus` once a second and arms in the pass that
+reads `BLOCKED`, the state that accepts it, since a reading in one call and the
+arming in the next leave room for it to move; its last line says how it ended.
+`CLEAN`, `HAS_HOOKS` and `UNSTABLE` mean nothing is outstanding — which is
+either everything having run or nothing having started, and a freshly pushed
+branch is the second — and the program arms on none of them. The head commit's
+`statusCheckRollup`, which it reads, separates them: it sees Actions check runs
+and older commit statuses alike, since `StatusCheckRollupContext` is a union of
+`CheckRun` and `StatusContext`. The required names come from the same two gate
+queries — `required_status_checks.contexts` for classic protection,
+`parameters.required_status_checks[].context` for a ruleset — which it runs
+itself and prints on its `gate:` lines. A required name with no entry, an entry
+whose `status` is not `COMPLETED`, or a status context still `PENDING` or
+`EXPECTED`, means the check has not run yet: not a refusal case, so it reads on,
+sixty seconds a call, and arms on the `BLOCKED` it moves to; where it ends with
+`not started:`, call it once more, two minutes in all. Only every required check
+`COMPLETED` makes this a pull request past its gate, `past its gate:`; two
+minutes run out is not taken for a gate already passed. `UNKNOWN` is a missing
+answer rather than a state: GitHub computes mergeability when it is asked for,
+so the program reads again a few seconds later and uses that second value; a
+second `UNKNOWN` is not read a third time but goes to the rollup. `BEHIND` means
+the branch is behind the base and the required check ran against a state that is
+not what would be merged, and the program ends with `behind:` — fetch, three
+attempts, by the command under "When the main branch cannot be fetched
+or fast-forwarded" above, and where the third fails too, stop as that section
+says, opening with that the pull request has to be brought up to the latest
+state of the main branch before it can be merged and that this is not possible
+just now, nothing armed and no merge handed over; then rebase onto the base and
+force-push, which lands nothing anywhere and is not the merge this step may not
+perform, and call the program again, whose next reading is `BLOCKED` with arming
+accepted.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text empty-read`
 
@@ -971,17 +854,16 @@ on a `cannot be placed:` line and arms all the same; name it as it read and
 say it cannot be placed, rather than turning it into one of the three cases,
 two of which are the program's own answer, since it arms on no mergeable value
 — `no required check:` and `past its gate:` — and the first GitHub's,
-`refused:`, or, where a gate stands and auto-merge is off, `past its gate:`
-as well, since 18 October 2026. Then read whether a gate exists off the two
-queries of step 4, `branches/main/protection`, where a 404 means
-none only with "Branch not protected" in the body, and `rules/branches/main`,
-which is blind to classic protection: off the program's `gate:` lines where
-it read a mergeable value and printed them, and asked here where it printed
-none, not off the reading of step 4, since 18 October 2026. A gate found by
-either is a gate. Where neither query answered, say the rights did not allow
-finding out rather than naming a case.
-None of the three is something this step changes. Then the handover, the same
-text the build step and the check setup hand a merge over with:
+`refused:`, or, where a gate stands and auto-merge is off, `past its gate:` as
+well. Then read whether a gate exists off the two queries of step 4,
+`branches/main/protection`, where a 404 means none only with "Branch not
+protected" in the body, and `rules/branches/main`, which is blind to classic
+protection: off the program's `gate:` lines where it read a mergeable value and
+printed them, and asked here where it printed none, not off the reading of
+step 4. A gate found by either is a gate. Where neither query answered, say the
+rights did not allow finding out rather than naming a case. None of the three is
+something this step changes. Then the handover, the same text the build step and
+the check setup hand a merge over with:
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text merge-handover`
 

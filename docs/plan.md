@@ -3,8 +3,10 @@
 Written on 19 September 2026. This is the plan and not a measurement record:
 what was measured stands in `docs/roadmap.md` under `## Known gaps`, with a
 date on every run, the facts of the stock-take stand in `docs/stock-take.tsv`,
-and what holds as a rule stands in `docs/skill-conventions.md`. This file says
-where the set is going, in which order, and what "done" means at each step.
+what holds as a rule stands in `docs/skill-conventions.md`, and the reasons and
+cases of the rules in the texts devloop loads, with the wordings approved for
+what a user sees, stand in `docs/rationale.md`. This file says where the set is
+going, in which order, and what "done" means at each step.
 It changes as milestones land: a landed milestone keeps its text and gets a
 line saying when it landed and in which pull request; where its text quotes
 wording the work has since replaced, the quote says so where it stands; and

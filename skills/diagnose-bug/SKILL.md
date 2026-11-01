@@ -272,16 +272,13 @@ another variation of what already failed.
 
 Hand it over in one of these forms, whichever fits:
 
-- A command, as it runs from wherever they are — the change into the
-  project's directory before it, by "A command handed over runs as it
-  stands" in `docs/skill-conventions.md` — with where they type it, by
-  "Where the person types a command devloop hands them" there, since 28
-  October 2026: in Claude Code with `!` in front where it asks nothing and
-  ends by itself, form A, its output then standing in the conversation; in
-  a second terminal window, not the one Claude Code runs in, where it asks
-  something or does not end by itself, form B, the text naming which and
-  asking them to say here what it showed — and what to look for in the
-  output.
+- A command, as it runs from wherever they are — the change into the project's
+  directory before it — with where they type it: in Claude Code with `!` in
+  front where it asks nothing and ends by itself, form A, its output then
+  standing in the conversation; in a second terminal window, not the one Claude
+  Code runs in, where it asks something or does not end by itself, form B, the
+  text naming which and asking them to say here what it showed — and what to
+  look for in the output.
 - A small script that collects the versions, paths and environment this needs,
   ready to run, handed over the same way.
 - A script that walks them through the steps only a person can do — clicking,

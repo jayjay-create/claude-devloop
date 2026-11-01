@@ -25,13 +25,10 @@ start condition 1 when the mark is written, through
 the start conditions with, which reads the two records through
 `bin/devloop-install-record`, the install guard's reader, the second with
 `--dependency`; it blocks the write where one of them does not hold or is
-not established, exactly where this text refuses, since 25 October 2026,
-and from 22 October 2026 until then where either record did not say yes;
-a deletion or a read of the mark passes as before. The rule for the
-classifier of auto mode in the person's settings is none of the five and
-no start condition: without it the run starts, and auto mode can then
-refuse an install, which the run treats as the refusal it is; where the
-install went by one of the ways the rule names, the refusal leaves an
-issue, and the question on the rule meets the person at their next start
-with `--auto`, `bin/devloop-auto-mode-question` deciding it off that issue,
-since 22 October 2026.
+not established, exactly where this text refuses; a deletion or a read of the
+mark passes. The rule for the classifier of auto mode in the person's settings
+is none of the five and no start condition: without it the run starts, and auto
+mode can then refuse an install, which the run treats as the refusal it is;
+where the install went by one of the ways the rule names, the refusal leaves an
+issue, and the question on the rule meets the person at their next start with
+`--auto`, `bin/devloop-auto-mode-question` deciding it off that issue.

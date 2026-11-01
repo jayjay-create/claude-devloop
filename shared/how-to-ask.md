@@ -14,9 +14,7 @@ or it is not a question:
   repository's settings, their project's dependencies or how they want to be
   worked with, and carries no recommendation there, whatever the command
   behind it touches; a recommendation stands only on a question about the
-  product being built, as every question of the interview carries one. Since
-  20 October 2026, decided by the person that day, the roadmap entry of that
-  date on milestone 3, part 1.
+  product being built, as every question of the interview carries one.
 - **Being wrong is expensive.** Measured by what it would cost to put right, not
   by the size of the change, and not only today. What a later task can redo is
   cheap, and taste that a later task can redo is cheap too. What later work will
@@ -44,9 +42,8 @@ said only where it reaches them before the work it shapes is done. Where the
 next message that ends a turn comes only after that work — in a build, in the
 cut into tasks, in planning once the design is chosen — and wherever nobody is
 there, the decision stands only where it is recorded, in the spec or in the
-issue or pull request of the work at hand, and is not said, since 17 October
-2026: room to overturn it would reach them when overturning it costs the work,
-the roadmap entry of that date on the reports of what was done.
+issue or pull request of the work at hand, and is not said: room to overturn it
+would reach them when overturning it costs the work.
 
 **Reporting is not asking.** A blocked step, a contradiction in the spec, a
 finding, something the platform cannot do — those get said whatever this test
@@ -78,14 +75,10 @@ what it costs, and why it comes up now. What has reached them already is not
 said again in the question, and what has not is said where they meet the
 question: put through the choice widget, in its fields, why it comes up now
 in the question field before the question line; put as text, in the message
-that puts it, before the question. Not in an announcement before it, since
-17 October 2026, the roadmap entry of that date: text before the call that
-shows the widget can land in a collapsed note, as owed text did in every
-measured run. From 16 October 2026, point 25
-of part B of the roadmap entry of 12 October 2026, a stage's opening that
-said a few questions come with it stood for why the next one comes now. Never name a
-bare term the user may not know — someone who has never heard of this workflow
-must be able to answer. Never ask which skill to use.
+that puts it, before the question. Not in an announcement before it: text before
+the call that shows the widget can land in a collapsed note. Never name a bare
+term the user may not know — someone who has never heard of this workflow must
+be able to answer. Never ask which skill to use.
 
 **A question has to be answerable by what it offers.** "Does this fit, or shall
 I change something?" cannot be answered with yes: an alternative question and a
