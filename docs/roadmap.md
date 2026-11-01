@@ -44810,6 +44810,73 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   one added that defect; 1338 built and never walked and 738 walked, as
   before.
 
+- **Question timeout answers recorded as a defect, auto memory turned off.**
+  1 November 2026, version 0.169.0, which stays: nothing in the six
+  directories the check under "Before you change anything, run this" in
+  `docs/skill-conventions.md` compares changes. On
+  `task/question-timeout-auto-memory`, off `origin/main` at `136bac3`, in
+  one commit: this entry with its rows in `docs/stock-take.tsv`, and one
+  line in `.claude/settings.json`. Written in the chat with the person and
+  committed by them in their terminal; no session of Claude Code was
+  started and no session log was read. Every line number of a file in this
+  entry holds at `136bac3`.
+
+  **An answer sent by the question timeout.** Claude Code's page "All
+  settings", read with the web tool on 1 November 2026, under
+  `askUserQuestionTimeout`: "Let an unanswered AskUserQuestion dialog
+  auto-continue after a period of idle time, submitting whatever options
+  you had already selected"; scope "User or managed", one of "60s", "5m",
+  "10m" or "never", the default "never", the row "Question auto-continue
+  timeout" in `/config`. The reference of the Agent SDK for Python, read
+  the same day, on the output of the tool AskUserQuestion: `afkTimeoutMs`,
+  "Set when the dialog auto-resolved after this many milliseconds of user
+  inactivity; absent when the user answered". devloop takes every answer of
+  the widget for the person's: `grep -rn -i -E
+  'afkTimeout|askUserQuestionTimeout|auto-continue|auto-resolved' .` over
+  this repository prints nothing. Where a person has set the timeout and
+  steps away from a question whose answer is written down — the install
+  question of `setup-project` step 4, whose record `docs/plan.md` lines 254
+  to 256 has written only with the person present, or the question of
+  `setup-checks` step 8 on the mode with nobody there — Claude Code sends
+  what was marked, and the run writes it down as their decision. Not read:
+  what Claude Code sends where nothing was marked, which neither page says,
+  and whether a hook after the call receives the field. No run has met the
+  case; on this Mac the setting is not set, read on 1 November 2026 by a
+  command that printed that key alone. Which milestone takes it up the
+  person decides.
+
+  Recorded, not built: devloop takes an answer that Claude Code sent by itself when the time askUserQuestionTimeout sets ran out for the person's answer, no text, hook or program of devloop reading the field afkTimeoutMs that marks such an answer — should: an answer carrying afkTimeoutMs counts as not given, nothing of it is written down as the person's decision, and the run treats the question as one left unanswered.
+
+  **Auto memory off in this repository.** `.claude/settings.json` carries
+  `"autoMemoryEnabled": false` since this entry. Claude Code's page "All
+  settings", under `autoMemoryEnabled`, read with the web tool on 1
+  November 2026: "When false, Claude doesn't read from or write to the auto
+  memory directory", scope "Any file". Its page "How Claude Code works":
+  "The first 200 lines or 25KB of MEMORY.md, whichever comes first, load at
+  the start of each session"; MEMORY.md is the index of the directory
+  `~/.claude/projects/<project>/memory/`, by the page "How Claude remembers
+  your project". An order to Claude Code here runs in a session of its own
+  and is written to stand for itself, so a note an earlier session left for
+  itself is a second source beside the order; and a rule in a run's own
+  memory closed a route the skills allow once, `docs/skill-conventions.md`
+  lines 2031 to 2035. The 116 notes the directory held for this repository
+  on the person's Mac were deleted on 1 November 2026, before this commit.
+
+  **Tidied up outside the repository, 1 November 2026.** Decision 16 of the
+  entry on the open findings on the install guard, line 14409: the
+  organization `jay-hey` and the repositories
+  `jayjay-create/devloop-probe-protection` and
+  `jay-hey/devloop-probe-protection` deleted. The person's branch
+  `remove-install-record` in `devloop-test-aa`, line 44317, deleted after a
+  check that its pull request #34 was merged at the branch's head. A server
+  of a bench, `bench/server.py`, started on 16 October 2026 in a temporary
+  directory and listening on a port of `127.0.0.1` since, ended.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the defect, sited and evidenced on its
+  status line above, and the head of this entry as part of it. No run is
+  recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
