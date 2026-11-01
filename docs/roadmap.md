@@ -44906,6 +44906,240 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   on its status line above, and the head of this entry as part of the
   first. No run is recorded.
 
+- **The loaded texts lose their history, reasons move to docs/rationale.md.**
+
+  1 November 2026, version 0.170.0, raised from 0.169.0 once. On
+  `task/history-out-of-loaded-texts`, off `origin/main` at `8afb558`, in two
+  commits: the texts under `skills/`, `shared/` and `output-styles/`, the
+  new `docs/rationale.md`, `docs/skill-conventions.md`, `docs/plan.md`,
+  `.github/workflows/stock-take.yml` and the version; then this entry with
+  its rows in `docs/stock-take.tsv`. Written by Claude Code from the
+  person's order of that day, part 1 of the separation of `docs/roadmap.md`;
+  no session log was read. Line numbers of `docs/roadmap.md` hold at
+  `8afb558`, which this entry only appends to; a place in a loaded text is
+  named by its file and its heading.
+
+  **Decided on 1 November 2026** by the person, on the defect that the three
+  tasks of the roadmap are not separated, its status line at line 32271. (a)
+  Three places: the roadmap a dated report that is only appended to; the
+  open defects in a file of their own; the valid reasons and the approved
+  wordings in a file of their own, ordered by the loaded files and their
+  headings, without history. The loaded texts carry the rule and at most a
+  short reason: no date, no reference to the roadmap, no old wording and no
+  case. (b) Three parts in this order: part 1 this entry; part 2 the file of
+  the open defects, read by `scripts/devloop-stock-take`; part 3 the archive
+  of the roadmap. (c) A thing whose counting run is lost because its lines
+  change stays built and never walked until milestone 12 runs; this order
+  records no run, by "A measurement nothing depends on never becomes a
+  condition for the next step" in `docs/skill-conventions.md`, lines 1766 to
+  1770 at `8afb558`. The defect stays as it stands until part 3; its note in
+  `docs/stock-take.tsv` carries (a) to (c).
+
+  **What changed.** A place is a hunk of `git diff -U0 origin/main -- FILE`,
+  so that neighbours rewrapped together count once. In `skills/`:
+  `build-work` 94, `setup-checks` 60, `setup-project` 36, `plan-work` 35,
+  `start-work` 15, `review-changes` 10, `cut-into-tasks` 5, `untangle-idea`
+  4, `build-prototype/SKILL.md` 2, `diagnose-bug` 1; `research`,
+  `record-lessons`, `build-prototype/LOGIC.md` and `build-prototype/UI.md`
+  unchanged, the table of `record-lessons` under "When this repository is
+  the workflow" staying as the indication of where a run writes. In
+  `shared/`, 31 of 44 files: `install-tool.md` 10, `cut-branch.md` 7,
+  `command-does-not-answer.md` 6, `fetch-three-times.md` 6,
+  `mark-deletion.md` 6, `install-issues-read.md` 5,
+  `rule-not-written-down.md` 5, `skill-name.md` 5, `backed-command.md` 4,
+  `body-through-file.md` 4, `install-question.md` 4, `install-record.md` 4,
+  `closing.md` 3, `how-to-ask.md` 3, `language-opening.md` 3,
+  `set-aside-at-start.md` 3, `three-questions.md` 3, `branch-deletion.md` 2,
+  `editing-tool.md` 2, `install-alone.md` 2, `install-issue.md` 2,
+  `merge-handover.md` 2, and 1 each in `checks-owner.md`, `criterion.md`,
+  `fetch-and-run.md`, `fetch-failed.md`, `install-not-through.md`,
+  `mark.md`, `mode-set-up.md`, `refer-by-name.md` and `set-aside-back.md`.
+  `output-styles/devloop.md` 1. Over the three directories 42 files, 2095
+  lines in and 3085 out. What went: every date and every "since" or "until"
+  with one, every reference to the roadmap, to `docs/skill-conventions.md`,
+  to `docs/plan.md` and to the stock-take, every case, every measurement
+  given as history and every old wording; and with every reference to an
+  approved wording the sentence beside it that a skill says what is said and
+  not the words, since without the reference it stands against nothing. Each
+  changed paragraph rewrapped at its file's width, no wrapped line opening
+  with a number and a period, every phrase the checks 17, 18 and 20 search
+  for kept on one line; the notice paragraph identical in all twelve skills,
+  its checksum 1375902553 587 as before; every skill expands.
+
+  `docs/rationale.md`, new, in English: an opening paragraph, then `##
+  <path>` per loaded file in the order of `.claude-plugin/plugin.json`, each
+  `SKILL.md` before its other files, then `shared/` and `output-styles/`;
+  under it `### <heading>` as the file writes it, and per rule a point: the
+  rule, its reason, its case with the head of its roadmap entry, the
+  approved wording verbatim in its language with the head of its entry. 59
+  files, 291 points, every quoted German wording found verbatim in the
+  roadmap; a file without history says that its rules carry their own
+  reasons.
+
+  `docs/skill-conventions.md` 4: the paragraph under "README.md carries no
+  date" names `docs/rationale.md` among devloop's own documents and says the
+  texts devloop loads are not among the documents that carry dates; a new
+  paragraph, "The texts devloop loads carry no date and no history", with
+  the rule, what stays, where the reasons and cases go and the step that
+  reads it; the descriptions of check 16 and check 20; the length rule's
+  list of records that are no loaded text takes the points of
+  `docs/rationale.md`. `docs/plan.md` 1: its opening names
+  `docs/rationale.md`. `.github/workflows/stock-take.yml` 3: the pattern and
+  the comment of the step "README.md names no file or document of devloop's
+  own" take `docs/rationale.md`; a new step, "skills/, shared/ and
+  output-styles/ carry no date", red on a date of the forms "D Month YYYY",
+  "Month YYYY" and "YYYY-MM-DD", read across a line break, with file and
+  line of each; green with one line. `.claude-plugin/plugin.json` 1: 0.169.0
+  to 0.170.0.
+
+  **The new step, measured.** `scripts/devloop-run-workflow
+  .github/workflows/stock-take.yml` on a copy of the branch in a throwaway
+  directory, `shared/criterion.md` given "since 1" at the end of line 8 and
+  "November 2026." on the line after: the step printed "skills/, shared/ and
+  output-styles/ must carry no date, and they carry:" and
+  "shared/criterion.md:8: 1 November 2026", exit 1. On the branch: the same
+  command in the clean bash, with the entry and the table of this branch in
+  the working tree, printed "skills/, shared/ and output-styles/ carry no
+  date" for the step, exit 0, and "green: 8 steps run, every one ended with
+  0" as its last line, where at `8afb558` it ran seven; the step on the
+  README stayed green with `docs/rationale.md` in its pattern.
+
+  **Where a rule stayed without its history, or a reason came in.** A rule
+  that a sentence of history alone carried, kept as a rule:
+  `build-prototype`, "With nobody there", the refusal going back to the
+  caller's order; `untangle-idea`, "Chart the map", a checkout under another
+  agent left and not said, and "When the map is done", no room to say stop
+  offered; `setup-project`, "Step 0", nothing said ahead of time about what
+  to do at a confirmation prompt, where the only wording was that no note on
+  permissions stands there; `setup-checks`, "Step 3", the check commands not
+  named to the person as something to grant, and "Step 8", the list of what
+  the mode question does not say, an earlier wording of the rule for the
+  classifier counting as not standing, an answer still written as a sentence
+  going with the first writing of the section, and the bound with one issue
+  and with two; `shared/install-record.md`, a record under a no that carries
+  places and routes keeping them, and a record with the six places and not
+  the five not amended; `shared/install-not-through.md`, the list of the
+  counted install ways; `shared/set-aside-back.md`, what the pop does on
+  another line and on the same one; `shared/skill-name.md`, the hooks of
+  devloop not firing on a `!` command; `shared/mode-set-up.md`, a deletion
+  or a read of the mark passing; `shared/mark-deletion.md`, a pop
+  renumbering the entries under it, in place of two measurements;
+  `shared/fetch-three-times.md`, an attempt followed by one that answers not
+  said, and `my-commits` the same in every language;
+  `shared/merge-handover.md`, devloop setting a required check up only where
+  they allow work without them; `shared/cut-branch.md`, the cut made from
+  the main branch as the remote holds it;
+  `shared/command-does-not-answer.md`, the ten minutes, the four cases, the
+  safety check among the refusals and a subagent's refusal being the run's
+  own, with exit code 143 and its message kept as what a run sees;
+  `shared/backed-command.md`, the backing before the run's own install under
+  a yes, and an organisation's name being no module path;
+  `shared/body-through-file.md`, a quoted string and a title being a word of
+  their command; `shared/criterion.md`, at the close and not as the split is
+  made; `shared/editing-tool.md`, the install line through
+  `bin/devloop-install-note put`; `shared/how-to-ask.md`, a decision that
+  reaches them only after the work not said. A short reason written where a
+  sentence of history carried it: `start-work`, "Step 2", a run with the
+  idea in hand cannot follow a question on what to build; `plan-work`,
+  "Picking up an interrupted plan", work already built gets planned a second
+  time, and "Stage 1", not the run's own reading, and a line there would
+  speak of an option they never took up; `review-changes`, "What happens to
+  a finding", such a finding reaching the close as nothing at all, and "The
+  lenses that run when they apply", the example of a judgement without its
+  measurement; `setup-project`, "Refreshing an existing setup", a refresh
+  that does not cut running into the main-branch guard, "Step 4", why not
+  `bypass_actors` and why a PATCH is read back, "Step 6", a project set up
+  fresh not refreshed for a marker it lacks, and "Step 8",
+  `allow_auto_merge` reading true with a required check and without, and
+  room to move between a reading and the arming; `setup-checks`, "Step 7", a
+  merge resting on a run improvising it, and "Step 8", text before the call
+  landing in a collapsed note, a PATCH answering false with exit 0, and the
+  step never finding the mode not set up where the program finds condition 2
+  holding; `shared/install-issues-read.md`, devloop and not the person
+  closing an issue whose tool stands now; `shared/install-question.md`, the
+  guard holding a download against the record, and why the exception for a
+  browser a package downloads is said; `shared/install-alone.md`, an install
+  downloading a browser inside its own call. No rule was brought in from a
+  document: every reference that stood for a rule pointed at one a loaded
+  text states, `shared/skill-name.md` inserted for forms A and B among them,
+  and went.
+
+  **Listed for the person, not built.** (1) `setup-checks`, "Step 8", the no
+  line of the question in its form for a start with `--auto`, what an answer
+  says: it reads "Where a command asks something, `sudo apt install` say,
+  the line says form B"; proposed: "Where a command asks something, `sudo
+  apt install` say, or where the run does not know for certain whether it
+  asks, the line says form B". (2) `setup-project`, "`issue-tracker.md`":
+  the template the run writes into a project's
+  `docs/agents/issue-tracker.md` lost its five measurements of 31 August
+  2026 with the rest, so a setup writes the file without them; that is no
+  question, answer, handover or closing, and it was changed. (3)
+  `record-lessons`, the table under "When this repository is the workflow",
+  has no row for `docs/rationale.md`; a row would change where a run writes
+  a lesson, and none was added. (4) One sentence of the new paragraph in
+  `docs/skill-conventions.md` reads the decision rather than repeating it:
+  where a rule of a loaded text is written or changed, its point in
+  `docs/rationale.md` is written or changed with it.
+
+  **Things that lost their counting run.** By section D of the head of
+  `scripts/devloop-stock-take`, read off its section "STATES, by file and
+  kind" at `8afb558` and on the branch: 119 things walked before are built
+  and never walked now, by kind 69 skill branches, 32 shared texts and 18
+  defects; by source `setup-checks` 14, `setup-project` 14, `plan-work` 12,
+  `build-work` 9, `review-changes` 7, `cut-into-tasks` 5, `start-work` 5, 35
+  things of 22 files under `shared/` and 18 defects of this file. Their
+  lines changed on this branch, so a run made before it no longer counts for
+  them; no thing gained a counting run. By (c) they stay so until milestone
+  12 runs.
+
+  **The stock-take and the checks, before at `8afb558` and after on the
+  branch.** The tool, `PYTHONDONTWRITEBYTECODE=1
+  scripts/devloop-stock-take`, before and after: exit 0 and 0; broken
+  records 0 and 0, 1028 at the most, once the texts had changed and before
+  the table followed them; uncovered lines of the search set 0 of 5435 and 0
+  of 5357, 488 at the most; units without a straight path 0 and 0, 1 at the
+  most; findings 14 and 14, 13 while one was broken; closed defects 42 and
+  42; not-a-thing records 3475 and 3461; lines of the set that can carry no
+  unique anchor 326 and 328; walked 738 and 619, built and never walked 1338
+  and 1459, the 119 above and the two outcomes of the new step; recorded and
+  not built 461 and 461; undetermined 24 and 24. Its self-test: 124 cases
+  passed, as before. The twenty checks under "Before a handover, run these",
+  their commands as they stood at `8afb558`, in a bash started by `env -i`
+  with `--noprofile --norc` and `/usr/bin/grep`, after the first commit of
+  this branch: fifteen print what they printed before, check 9 the checksum
+  of the notice paragraph among them; checks 17 and 18 the same number of
+  lines in the same files, line numbers and breaks aside; check 20 nothing,
+  where it printed the old wording of the finish in `build-work`, which went
+  with its case to `docs/rationale.md`, as `docs/skill-conventions.md` now
+  says of that check; check 16 the green line above. Check 5 printed three
+  skills once on the way, a rewrapped line of `build-work`, `plan-work` and
+  `setup-project` holding a line of a shared text word for word; those
+  paragraphs and one of `shared/command-does-not-answer.md` were broken
+  anew, the lines as they stand at `8afb558` kept wherever they fit, and it
+  prints nothing again, as before.
+
+  **Records.** In `docs/stock-take.tsv`, by section C and E of the head of
+  `scripts/devloop-stock-take`: the head of this entry, with the reason no
+  defect. Re-anchored where the words of an anchor moved or changed: 286
+  things, the site of 208 and the evidence of 277, each whose words changed
+  read on its new line, and the evidence of two defects set by hand onto the
+  line where their fix stands now; 270 not-a-thing records and one finding.
+  Removed, each covering nothing any more, its text having left its file:
+  132 not-a-thing records, 63 part of a thing, 64 rationale, 3 quoted and 2
+  template. Written for the lines of the search set that came uncovered, by
+  the paragraph or branch each continues: 116 not-a-thing records, 101 part
+  of a thing, 14 rationale and 1 template. Renamed, no run on any of them:
+  the two outcomes of the step "README.md names no file or document of
+  devloop's own", from four documents to five, and the thing of
+  `shared/install-record.md` on a record under a no, whose date left its
+  text. Kept with its four runs, its note saying what holds now: the thing
+  of the same file on a record of six places. Written for the new step: its
+  two outcomes, green and red, and a not-a-thing for its loop. The note of
+  the defect on keeping runtimes out of the install question quotes its old
+  evidence anchor once, the text the closing line of the defect of 14
+  October 2026 names as corrected; the note of the defect on the three tasks
+  of the roadmap carries (a) to (c). No run is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
