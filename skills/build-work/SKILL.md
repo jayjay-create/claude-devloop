@@ -1034,8 +1034,7 @@ mutation cannot merge, so the attempt costs nothing — and its `armed:` or
 `refused:` line names the value beside what came back. Name it as it read and
 say the stage cannot place it. What must not happen is that value being read
 as one of the three refusal cases below: an unplaceable state is not evidence
-about the repository, and picking a case off it is the same failure those
-three were split apart to fix.
+about the repository, and picking a case off it names a cause nobody read.
 
 Arming can be refused for three different reasons, and they mean different
 things. The program arms on no mergeable value, so two of them come as its own
@@ -1086,8 +1085,8 @@ the gate too: where the program printed no `gate:` line, as at a refusal with
 A gate found by either one is a gate. Only both coming back negative — a body
 that really says "Branch not protected", and an empty ruleset list — means there
 is none. Where neither query answered because the rights were missing, say that:
-the run does not know which case this is, and naming one anyway is the failure
-this replaced.
+the run does not know which case this is, and naming one anyway claims what
+nobody read.
 
 In all three the merge itself is still not yours to perform. The handover, the
 same text the two setup skills hand a merge over with:
@@ -1393,7 +1392,7 @@ the run says where one does not hold:
    Shift+Tab in the terminal, and then to type `/devloop:start-work --auto`, the
    input named as they type it in Claude Code and never the flag alone; and that
    without the flag the planned tasks are built with them — on the direct route
-   and after a planning alike, this skill saying what is said and not the words.
+   and after a planning alike.
    Where the mode could not be read, "When a command does not answer" holds and
    no wording of its own: the command, and the message or the missing statement
    in its place.

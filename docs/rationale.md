@@ -82,8 +82,9 @@ loaded text no longer carries stands here at its rule.
   install issue, read the tool itself with `command -v` and sent `gh issue
   close` with a comment of its own, which Claude Code's classifier refused, new
   defect 1 of entry "Short run read off its two logs, the ! after a no and the
-  next start."; decision (1) of entry "start-work runs the install-issues
-  program before it reads an issue.".
+  next start."; the same text held in `build-work` in both sessions of that run,
+  so that the cause is removed where it lay, decision (1) of entry "start-work
+  runs the install-issues program before it reads an issue.".
 - **Nothing of the in-flight report is said where the next turn ends only after
   a build or where the run goes alone, and with a map or spec in flight the next
   piece is started without a word there.** The room to name a different piece
@@ -312,7 +313,9 @@ loaded text no longer carries stands here at its rule.
   Fragen, und die gehen nur dort.“ — „2. Gib dort ein: `gh auth login --web
   --git-protocol https`“ — „3. Folge den Anweisungen im Terminal und im
   Browser.“ — „4. Sag mir hier Bescheid, sobald das erledigt ist. Dann richte
-  ich das Projekt ein.“
+  ich das Projekt ein.“ See docs/skill-conventions.md under "Every skill carries
+  these two", the paragraph "Where a text to the person says they have to do
+  something at the computer, it says how, step by step".
 - **`gh` not installed: the run reads GitHub's guide for the system and hands
   the command over as it stands there.** A command the run does not know for
   certain is read at the maker, not guessed and not left out. Decided on 28
@@ -336,7 +339,11 @@ loaded text no longer carries stands here at its rule.
   GitHub braucht devloop das Programm `gh` von GitHub, und auf diesem Rechner
   ist es noch nicht installiert. Installiere es, wie cli.github.com es für dein
   System beschreibt, und sag mir hier Bescheid, sobald das erledigt ist. Dann
-  sage ich dir, wie du dich bei GitHub anmeldest.“
+  sage ich dir, wie du dich bei GitHub anmeldest.“ See docs/skill-conventions.md
+  under "Every skill carries these two", the paragraph "Where the person types a
+  command devloop hands them while Claude Code runs", and, for a command the
+  guide itself warns against, the paragraph "Where a text to the person says
+  they have to do something at the computer, it says how, step by step".
 - **The setup does not read the tracker's labels.** This workflow creates its
   seven in every setup and reads only its own; the question about labels of
   overlapping meaning went as point 9 of entry "The decisions of 12 October
@@ -419,21 +426,21 @@ loaded text no longer carries stands here at its rule.
   unattended half of the no out of the question as rules on the run; 3 October
   2026, version 0.126.0.". The earlier reason, that two decisions in one submit
   come back as one answer, does not hold: Claude Code 2.1.304 returns every
-  chosen answer with its question, cluster 1 of entry "Milestone 3, part 1, the
-  install question, built as the person decided on 20 October 2026: the refresh
-  of `setup-project` puts the install question where no record stands on the
-  main branch and writes the record; no question of its step 4 carries a
-  recommendation, the rule standing in `shared/how-to-ask.md`; the call of the
-  install question stays alone, without a mechanism, for the reason that what
-  needs weighing goes alone; the no of the install question names the exception
-  of a package that downloads something when it is installed, in the wording
-  approved that day; the bullet of `setup-project` for a blocked install with
-  nobody there says the case cannot arise, and the insert of
-  `shared/backed-command.md` goes; the person's decisions of that day on the
-  clusters of the checked list recorded with what follows from the rules; four
-  findings of the tool brought in as defects, three of them built and one
-  closed, four defects closed as left on purpose and one as lapsed; 20 October
-  2026, version 0.152.0.".
+  chosen answer with its question, and only a typed answer holds for the whole
+  call, cluster 1 of entry "Milestone 3, part 1, the install question, built as
+  the person decided on 20 October 2026: the refresh of `setup-project` puts the
+  install question where no record stands on the main branch and writes the
+  record; no question of its step 4 carries a recommendation, the rule standing
+  in `shared/how-to-ask.md`; the call of the install question stays alone,
+  without a mechanism, for the reason that what needs weighing goes alone; the
+  no of the install question names the exception of a package that downloads
+  something when it is installed, in the wording approved that day; the bullet
+  of `setup-project` for a blocked install with nobody there says the case
+  cannot arise, and the insert of `shared/backed-command.md` goes; the person's
+  decisions of that day on the clusters of the checked list recorded with what
+  follows from the rules; four findings of the tool brought in as defects, three
+  of them built and one closed, four defects closed as left on purpose and one
+  as lapsed; 20 October 2026, version 0.152.0.".
 - **A ruleset's binding is read off `current_user_can_bypass`, never
   `bypass_actors`, and the value is named nowhere; neither ruleset reading needs
   admin.** `bypass_actors` can read `null` and would be taken for nobody; a
@@ -556,31 +563,32 @@ loaded text no longer carries stands here at its rule.
   and done by the run; 16 October 2026, version 0.140.0.".
 ### `issue-tracker.md`
 
-- **The seven labels are named in one sentence in the message that ends the
-  setup's turn, before the merge handover.** Something created that the person
-  did not initiate is said, at the end of the turn. Case: the sentence was said
-  in neither run of 16 October 2026, defect 2 of entry "The two runs of 16
-  October 2026 in `devloop-test-x` and `devloop-test-y` under the installed
-  0.141.0, read off their session logs and the projects, the bench for defects d
-  and 11 and for the install guard of defect c, and where milestone 3 stands
-  after part A of the entry of 12 October 2026: defects 1, 3, b, c and i held, a
-  did not hold at four places, d and 11 held on the bench and met no run;
-  fifteen new defects, nine met again; the milestone has not landed; 16 October
-  2026, the version stays 0.141.0."; entry "Where each text devloop owes the
-  person stays, goes into a pull request, an issue or a file, or drops, built
-  after the decisions of the person of 17 October 2026: the introduction of
-  `start-work`, the sentences that say why a question comes now in the wording
-  approved that day, the last message of the run with nobody there in two
-  groups, and the lines of the skills, the inserted texts and two hooks brought
-  in line with the output style; 17 October 2026, version 0.143.0.". Approved
-  wording, point 9 of entry "The decisions of 12 October 2026: milestone 3 has
-  not landed with the two closing runs and no run with Go follows; twenty-seven
-  things to build before the next run, on the install guard, at the setup and at
-  planning and building; three things decided and not built now; the person's
-  wordings, word for word; who changed the check targets in the second closing
-  run; 12 October 2026, the version stays 0.135.0.": „Im Tracker habe ich sieben
-  Labels angelegt, mit denen der Stand der Arbeit markiert wird, zum Beispiel
-  `needs-human`, wenn du entscheiden musst."
+- **That seven labels were created, with `needs-human` named as the example, is
+  said in one sentence in the message that ends the setup's turn, before the
+  merge handover.** Something created that the person did not initiate is said,
+  at the end of the turn. Case: the sentence was said in neither run of 16
+  October 2026, defect 2 of entry "The two runs of 16 October 2026 in
+  `devloop-test-x` and `devloop-test-y` under the installed 0.141.0, read off
+  their session logs and the projects, the bench for defects d and 11 and for
+  the install guard of defect c, and where milestone 3 stands after part A of
+  the entry of 12 October 2026: defects 1, 3, b, c and i held, a did not hold at
+  four places, d and 11 held on the bench and met no run; fifteen new defects,
+  nine met again; the milestone has not landed; 16 October 2026, the version
+  stays 0.141.0."; entry "Where each text devloop owes the person stays, goes
+  into a pull request, an issue or a file, or drops, built after the decisions
+  of the person of 17 October 2026: the introduction of `start-work`, the
+  sentences that say why a question comes now in the wording approved that day,
+  the last message of the run with nobody there in two groups, and the lines of
+  the skills, the inserted texts and two hooks brought in line with the output
+  style; 17 October 2026, version 0.143.0.". Approved wording, point 9 of entry
+  "The decisions of 12 October 2026: milestone 3 has not landed with the two
+  closing runs and no run with Go follows; twenty-seven things to build before
+  the next run, on the install guard, at the setup and at planning and building;
+  three things decided and not built now; the person's wordings, word for word;
+  who changed the check targets in the second closing run; 12 October 2026, the
+  version stays 0.135.0.": „Im Tracker habe ich sieben Labels angelegt, mit
+  denen der Stand der Arbeit markiert wird, zum Beispiel `needs-human`, wenn du
+  entscheiden musst."
 - **The issue of a conflicted bring-back carries no `raised-here` and is not
   from outside.** It is labelled `needs-human` alone so that no build takes it
   up as work. Found by the audit of 18 October 2026, entry "The consistency
@@ -744,7 +752,11 @@ loaded text no longer carries stands here at its rule.
   doubt whether the command asks, „kann etwas von dir abfragen, etwa dein
   Passwort“ stands in place of „fragt nach deinem Passwort“, decided by the
   person on 1 November 2026, entry "The loaded texts lose their history, reasons
-  move to docs/rationale.md."
+  move to docs/rationale.md." See docs/skill-conventions.md under "Every skill
+  carries these two", the paragraph "Where the person types a command devloop
+  hands them while Claude Code runs", form A, and the paragraph "Where a text to
+  the person says they have to do something at the computer, it says how, step
+  by step".
 ### With nobody there
 
 - **A refusal of anything else here ends the task, the safety check of Claude
@@ -800,29 +812,30 @@ loaded text no longer carries stands here at its rule.
 
 - **The choice of the classes is put as text, with the proposal before it in the
   same message; called whole for classes still `empty`, the message opens with
-  why it comes now, and the caller says nothing before calling.** A text a
-  decision needs that does not fit the widget is not cut to fit, and why a
-  question comes now stands where it is put. Decisions (3) and (5) of entry
-  "Where the text devloop owes the person stands, decided by the person on 17
-  October 2026, and every question put to it: what a decision needs in the
-  question, everything else in the message that ends the turn, nothing between
-  two tool calls; the mode question of `setup-checks` step 8 in the wording
-  approved that day, in its fields and with nothing before it; 17 October 2026,
-  version 0.142.0.". Approved wordings: at a start, entry "The status of a check
-  class takes four forms and a guard holds the table to them, the unattended
-  mode starts on two permissions more and is set up in `setup-checks` step 8 or
-  through `--auto`, a state is read before a task is released, and a review
-  finding about the table goes a third way; 5 October 2026, version 0.129.0.":
-  „Das Projekt ist eingerichtet, aber noch nicht alle Prüfungen sind
-  entschieden. Das kommt zuerst.“; after a merge, entry "Where each text devloop
-  owes the person stays, goes into a pull request, an issue or a file, or drops,
-  built after the decisions of the person of 17 October 2026: the introduction
-  of `start-work`, the sentences that say why a question comes now in the
-  wording approved that day, the last message of the run with nobody there in
-  two groups, and the lines of the skills, the inserted texts and two hooks
-  brought in line with the output style; 17 October 2026, version 0.143.0.":
-  „Die Arbeit ist gemergt, aber noch nicht alle Prüfungen sind entschieden. Das
-  kommt zuerst.“
+  why it comes now.** A text a decision needs that does not fit the widget is
+  not cut to fit, and why a question comes now stands where it is put. Decisions
+  (3) and (5) of entry "Where the text devloop owes the person stands, decided
+  by the person on 17 October 2026, and every question put to it: what a
+  decision needs in the question, everything else in the message that ends the
+  turn, nothing between two tool calls; the mode question of `setup-checks` step
+  8 in the wording approved that day, in its fields and with nothing before it;
+  17 October 2026, version 0.142.0.". Approved wordings: at a start, entry "The
+  status of a check class takes four forms and a guard holds the table to them,
+  the unattended mode starts on two permissions more and is set up in
+  `setup-checks` step 8 or through `--auto`, a state is read before a task is
+  released, and a review finding about the table goes a third way; 5 October
+  2026, version 0.129.0.": „Das Projekt ist eingerichtet, aber noch nicht alle
+  Prüfungen sind entschieden. Das kommt zuerst.“; after a merge, entry "Where
+  each text devloop owes the person stays, goes into a pull request, an issue or
+  a file, or drops, built after the decisions of the person of 17 October 2026:
+  the introduction of `start-work`, the sentences that say why a question comes
+  now in the wording approved that day, the last message of the run with nobody
+  there in two groups, and the lines of the skills, the inserted texts and two
+  hooks brought in line with the output style; 17 October 2026, version
+  0.143.0.": „Die Arbeit ist gemergt, aber noch nicht alle Prüfungen sind
+  entschieden. Das kommt zuerst.“ That the caller says nothing before calling is
+  the callers' rule, under `skills/start-work/SKILL.md` and
+  `skills/build-work/SKILL.md`.
 - **A row left `empty` is asked about again at the start of a session; a
   `skipped (user)` row is read before a task's release and never after a
   merge.** The start catches a session that ended after a merge before the table
@@ -870,7 +883,9 @@ loaded text no longer carries stands here at its rule.
   `devloop-test-w` under a record saying no, read off its session log and the
   project, with the decisions of that day on the arrangement of the closing
   runs: eleven defects, four met again, one open question; 11 October 2026, the
-  version stays 0.135.0.".
+  version stays 0.135.0.". See docs/skill-conventions.md under "Every skill
+  carries these two", the paragraph "A command handed over runs as it stands,
+  from wherever the person is".
 - **The run installs nothing that brings a compiler, a runtime or system
   packages along, under any answer.** A runtime and system packages stay the
   user's under every answer. Case: `brew install pmd` brings `openjdk`, read off
@@ -974,7 +989,11 @@ loaded text no longer carries stands here at its rule.
   Prüfung ein.“ In doubt whether the command asks, „kann etwas von dir abfragen,
   etwa dein Passwort“ stands in place of „fragt nach deinem Passwort“, decided
   by the person on 1 November 2026, entry "The loaded texts lose their history,
-  reasons move to docs/rationale.md."
+  reasons move to docs/rationale.md." See docs/skill-conventions.md under "Every
+  skill carries these two", the paragraph "A command handed over runs as it
+  stands, from wherever the person is". See docs/skill-conventions.md under
+  "Every skill carries these two", the paragraph "Where the person types a
+  command devloop hands them while Claude Code runs".
 ### Step 4 — Put each class in place: its tool, its target, its findings in stages
 
 - **The hook writes the install line from the guard's reading, without the
@@ -1066,8 +1085,22 @@ loaded text no longer carries stands here at its rule.
   gate stands already; the merge handover and the branch deletion as shared
   texts; a changed file and commits of their own at a failed fetch asked about
   and done by the run; 16 October 2026, version 0.140.0.".
+### Step 6 — Record it
+
+- **"What these checks do not cover" is rewritten from the table just written,
+  not added to.** Lines from an earlier pass describe an earlier table. Case: a
+  repository that had no code still said so after four classes had been filled,
+  `206a501`, "Hold one voice, and say where this ends up (#86)".
 ### Step 7 — Land the check suite on the main branch
 
+- **The check suite lands on the main branch before anything else happens.**
+  Everything after it reads `checks.md` from the main branch, the next task cuts
+  its branch from there, and a suite left unmerged would rest on a run
+  improvising the merge on its own. Case: before the step existed, runs
+  improvised the merge, and the offer of the unattended mode wanted the workflow
+  file green on the main branch while the targets it would run stood on the
+  unmerged branch, `8f2f09f`, "Land the check suite before offering the
+  unattended mode (#77)".
 - **The arming program reads the state and arms in one call, in the pass that
   reads `BLOCKED`; a required check not yet started is read off the rollup;
   `UNKNOWN` is read once more and `BEHIND` answered by a rebase.** The state
@@ -1189,21 +1222,12 @@ loaded text no longer carries stands here at its rule.
   check runs on GitHub's standard machines free of charge, on a private one it
   counts against the account's free minutes, GitHub Docs, "About billing for
   GitHub Actions", read on 17 October 2026; `gh repo view --json visibility`
-  measured that day with gh 2.96.0. The awake line names the conditions under
-  which `caffeinate` keeps a Mac awake: `caffeinate(8)` holds an assertion
-  against idle sleep for as long as the process runs, and a closed lid is
-  another route into sleep, read on 7 September 2026, entry "The unattended mode
-  needs a machine that stays awake, and nobody was told, and that was measured
-  on 6 and 7 September 2026."; on other systems no command is backed yet, see
-  docs/plan.md under "12. Every operating system, every surface (build)". The
-  labels carry what a yes and a no mean, the person having struck sentences of
-  their own for it, entry "Where the text devloop owes the person stands,
-  decided by the person on 17 October 2026, and every question put to it: what a
-  decision needs in the question, everything else in the message that ends the
-  turn, nothing between two tool calls; the mode question of `setup-checks` step
-  8 in the wording approved that day, in its fields and with nothing before it;
-  17 October 2026, version 0.142.0."; the run of 19 October 2026 wrote a bare
-  yes and no, defect 13 of entry "The two runs of 19 October 2026 in
+  measured that day with gh 2.96.0: `PUBLIC` on a public repository and
+  `PRIVATE` on a private one, exit 0, and exit 1 with the GraphQL message on a
+  name that resolves to no repository. The awake line names the conditions under
+  which `caffeinate` keeps a Mac awake, and not what does not suffice, the
+  person's statement of 19 October 2026 being that it said what does not suffice
+  instead of naming the conditions, entry "The two runs of 19 October 2026 in
   `devloop-test-z` and `devloop-test-y` under the installed 0.148.0, read off
   their session logs and the projects, and where milestone 3 stands under the
   criterion the person decided that day, in place of the one of 12 October 2026:
@@ -1216,58 +1240,84 @@ loaded text no longer carries stands here at its rule.
   `devloop-test-y` four went as their case says and two were decided without the
   question; nineteen new defects, three of them the person's wordings of that
   day, one with a should the person has still to decide; 19 October 2026, the
-  version stays 0.148.0.". Left out, each with its reason in entry "Where the
-  text devloop owes the person stands, decided by the person on 17 October 2026,
-  and every question put to it: what a decision needs in the question,
-  everything else in the message that ends the turn, nothing between two tool
-  calls; the mode question of `setup-checks` step 8 in the wording approved that
-  day, in its fields and with nothing before it; 17 October 2026, version
-  0.142.0.": the steps of a task, the issue for a task that does not go green, a
-  failed merge ending the run, that the run does not start again by itself, that
-  the review costs more without them, that the run stands still until they
-  write, how `caffeinate` is ended; and, by decision of entry "The open findings
-  on the install guard, eight, measured on this machine; four questions never
-  examined; the decisions for the next orders of milestone 3 and the texts the
-  person approved, word for word; three corrections; 9 October 2026, version
-  0.132.0." built in entry "Step 8 of `setup-checks`: a reading before the
-  question, the question field by field, the rule for auto mode after its yes; a
-  guard on the identity of a commit; milestone 12 in the plan; the findings of 9
-  October 2026; 9 October 2026, version 0.134.0.", that the run takes up its own
-  issues, that there is no ceiling on tasks, that the result reads as the diff
-  from the starting commit, how the run ends and how a standstill is seen, a
-  word against a yes on a first project. Approved wording, text 6 of entry
+  version stays 0.148.0.": `caffeinate(8)` holds an assertion against idle sleep
+  for as long as the process runs, and a closed lid is another route into sleep,
+  read on 7 September 2026, entry "The unattended mode needs a machine that
+  stays awake, and nobody was told, and that was measured on 6 and 7 September
+  2026."; on other systems no command is backed yet, see docs/plan.md under "12.
+  Every operating system, every surface (build)". The labels carry what a yes
+  and a no mean, the person having struck sentences of their own for it, entry
   "Where the text devloop owes the person stands, decided by the person on 17
   October 2026, and every question put to it: what a decision needs in the
   question, everything else in the message that ends the turn, nothing between
   two tool calls; the mode question of `setup-checks` step 8 in the wording
   approved that day, in its fields and with nothing before it; 17 October 2026,
-  version 0.142.0.": header „Ohne dich“; „Ohne dich baut devloop die geplanten
-  Aufgaben nacheinander; GitHub mergt jede, sobald die Prüfungen grün sind. Das
-  Ergebnis siehst du erst am Ende.“ — „Die Prüfungen verbrauchen Minuten aus
-  deinem Kontingent auf GitHub.“ — „Solange devloop arbeitet, muss der Rechner
-  wach bleiben.“; the question line „Darf devloop in diesem Projekt ohne dich
-  arbeiten?“; yes, label „Ja, ohne mich erlauben“, description „devloop richtet
-  auf GitHub eine Prüfung ein und schützt den Hauptzweig, auch gegen deine
-  eigenen direkten Pushes. Ein Lauf arbeitet dann, solange dieses Fenster offen
-  ist.“, the first sentence gone where the protection stands and binds; no,
-  label „Nein, alles mit mir“. The macOS line, defect 13 of entry "The two runs
-  of 19 October 2026 in `devloop-test-z` and `devloop-test-y` under the
-  installed 0.148.0, read off their session logs and the projects, and where
-  milestone 3 stands under the criterion the person decided that day, in place
-  of the one of 12 October 2026: every defect that concerns the milestone listed
-  in three groups, and the milestone not reached; defects 1, 3, b, c and i held,
-  defect a held at every place under one reading and not under another, 13 held
-  but for one point, 14 held at one place and not at the other, 5 and 9 of the
-  entry of 16 October 2026 held, 4, 10 and 11 of it did not, 12 met no run, the
-  defect of 15 October 2026 on the loose issues met again; of the six rows of
-  the check table of `devloop-test-y` four went as their case says and two were
-  decided without the question; nineteen new defects, three of them the person's
-  wordings of that day, one with a should the person has still to decide; 19
-  October 2026, the version stays 0.148.0.": „Auf dem Mac hält ihn `caffeinate`
-  wach, solange es in einem eigenen Terminal läuft und der Laptop aufgeklappt
-  bleibt.“ The no's description, (5) of entry "Terms untranslated, the start
-  command named whole, the design line gone.": „Alles bleibt wie jetzt. Mit
-  `/devloop:start-work --auto` kannst du es später einrichten.“
+  version 0.142.0."; the run of 19 October 2026 wrote a bare yes and no, defect
+  13 of entry "The two runs of 19 October 2026 in `devloop-test-z` and
+  `devloop-test-y` under the installed 0.148.0, read off their session logs and
+  the projects, and where milestone 3 stands under the criterion the person
+  decided that day, in place of the one of 12 October 2026: every defect that
+  concerns the milestone listed in three groups, and the milestone not reached;
+  defects 1, 3, b, c and i held, defect a held at every place under one reading
+  and not under another, 13 held but for one point, 14 held at one place and not
+  at the other, 5 and 9 of the entry of 16 October 2026 held, 4, 10 and 11 of it
+  did not, 12 met no run, the defect of 15 October 2026 on the loose issues met
+  again; of the six rows of the check table of `devloop-test-y` four went as
+  their case says and two were decided without the question; nineteen new
+  defects, three of them the person's wordings of that day, one with a should
+  the person has still to decide; 19 October 2026, the version stays 0.148.0.".
+  Left out, each with its reason in entry "Where the text devloop owes the
+  person stands, decided by the person on 17 October 2026, and every question
+  put to it: what a decision needs in the question, everything else in the
+  message that ends the turn, nothing between two tool calls; the mode question
+  of `setup-checks` step 8 in the wording approved that day, in its fields and
+  with nothing before it; 17 October 2026, version 0.142.0.": the steps of a
+  task, the issue for a task that does not go green, a failed merge ending the
+  run, that the run does not start again by itself, that the review costs more
+  without them, that the run stands still until they write, how `caffeinate` is
+  ended; and, by decision of entry "The open findings on the install guard,
+  eight, measured on this machine; four questions never examined; the decisions
+  for the next orders of milestone 3 and the texts the person approved, word for
+  word; three corrections; 9 October 2026, version 0.132.0." built in entry
+  "Step 8 of `setup-checks`: a reading before the question, the question field
+  by field, the rule for auto mode after its yes; a guard on the identity of a
+  commit; milestone 12 in the plan; the findings of 9 October 2026; 9 October
+  2026, version 0.134.0.", that the run takes up its own issues, that there is
+  no ceiling on tasks, that the result reads as the diff from the starting
+  commit, how the run ends and how a standstill is seen, a word against a yes on
+  a first project. Approved wording, text 6 of entry "Where the text devloop
+  owes the person stands, decided by the person on 17 October 2026, and every
+  question put to it: what a decision needs in the question, everything else in
+  the message that ends the turn, nothing between two tool calls; the mode
+  question of `setup-checks` step 8 in the wording approved that day, in its
+  fields and with nothing before it; 17 October 2026, version 0.142.0.": header
+  „Ohne dich“; „Ohne dich baut devloop die geplanten Aufgaben nacheinander;
+  GitHub mergt jede, sobald die Prüfungen grün sind. Das Ergebnis siehst du erst
+  am Ende.“ — „Die Prüfungen verbrauchen Minuten aus deinem Kontingent auf
+  GitHub.“ — „Solange devloop arbeitet, muss der Rechner wach bleiben.“; the
+  question line „Darf devloop in diesem Projekt ohne dich arbeiten?“; yes, label
+  „Ja, ohne mich erlauben“, description „devloop richtet auf GitHub eine Prüfung
+  ein und schützt den Hauptzweig, auch gegen deine eigenen direkten Pushes. Ein
+  Lauf arbeitet dann, solange dieses Fenster offen ist.“, the first sentence
+  gone where the protection stands and binds; no, label „Nein, alles mit mir“.
+  The macOS line, defect 13 of entry "The two runs of 19 October 2026 in
+  `devloop-test-z` and `devloop-test-y` under the installed 0.148.0, read off
+  their session logs and the projects, and where milestone 3 stands under the
+  criterion the person decided that day, in place of the one of 12 October 2026:
+  every defect that concerns the milestone listed in three groups, and the
+  milestone not reached; defects 1, 3, b, c and i held, defect a held at every
+  place under one reading and not under another, 13 held but for one point, 14
+  held at one place and not at the other, 5 and 9 of the entry of 16 October
+  2026 held, 4, 10 and 11 of it did not, 12 met no run, the defect of 15 October
+  2026 on the loose issues met again; of the six rows of the check table of
+  `devloop-test-y` four went as their case says and two were decided without the
+  question; nineteen new defects, three of them the person's wordings of that
+  day, one with a should the person has still to decide; 19 October 2026, the
+  version stays 0.148.0.": „Auf dem Mac hält ihn `caffeinate` wach, solange es
+  in einem eigenen Terminal läuft und der Laptop aufgeklappt bleibt.“ The no's
+  description, (5) of entry "Terms untranslated, the start command named whole,
+  the design line gone.": „Alles bleibt wie jetzt. Mit `/devloop:start-work
+  --auto` kannst du es später einrichten.“
 - **devloop enters one rule under `autoMode.allow` in the person's settings,
   naming every way the install guard reads as an install; an earlier wording
   counts as not standing, is replaced in place on a yes and stays on a no.**
@@ -1297,21 +1347,24 @@ loaded text no longer carries stands here at its rule.
   geht trotzdem. Lehnt der Auto-Modus eine Installation ab, schreibt der Lauf
   ein Issue mit dem Grund und macht mit der nächsten Aufgabe weiter.“
 - **At a start with `--auto` the question names each refused install with its
-  issue's number; on the no the issue stays open, nothing is stored, and the
-  line says where they type the command themselves.** The command before the
-  number says what it is about; whoever changed their mind would have to know of
-  a file nothing in devloop shows. Cases: run 3a named the issue by its title at
-  both starts, defect 3 of entry "Six closing runs read off their logs, each on
-  the defects it met.", decided as (3) of entry "Install lines by one program,
-  written where the install stood alone."; a stored no was built and taken out
-  the same day, the three other ways weighed in entry "Conditions 6 and 7 at the
-  mark, the rule asked after a refusal, titles.". With two refused installs
-  whose commands ask, the fields pass the fourteen lines, measured against the
-  output style on 28 October 2026, entry "Handovers say where the command is
-  typed, sign-in and identity in steps.". Approved wording, entry "Conditions 6
-  and 7 at the mark, the rule asked after a refusal, titles.": „Der Auto-Modus
-  hat in einem Lauf ohne dich `<Befehl>` abgelehnt (Issue #<Nummer>). Darf ich
-  in deiner Datei `~/.claude/settings.json` eine Regel eintragen, damit der
+  issue's number and nothing else; on the no the issue stays open, nothing is
+  stored, and the line says where they type the command themselves.** The
+  command before the number says what it is about; whoever changed their mind
+  would have to know of a file nothing in devloop shows. Cases: run 3a named the
+  issue by its title at both starts, with the task it held, and added a line of
+  its own at the second, defect 3 of entry "Six closing runs read off their
+  logs, each on the defects it met.", decided as (3) of entry "Install lines by
+  one program, written where the install stood alone."; a stored no was built
+  and taken out the same day, the three other ways weighed in entry "Conditions
+  6 and 7 at the mark, the rule asked after a refusal, titles.". Measured
+  against the output style on 28 October 2026, with the yes above: with one
+  issue the no line takes six lines and the fields fourteen of fourteen, at the
+  bound; with two issues whose commands ask the no line takes seven and the
+  fields fifteen, past it, entry "Handovers say where the command is typed,
+  sign-in and identity in steps.". Approved wording, entry "Conditions 6 and 7
+  at the mark, the rule asked after a refusal, titles.": „Der Auto-Modus hat in
+  einem Lauf ohne dich `<Befehl>` abgelehnt (Issue #<Nummer>). Darf ich in
+  deiner Datei `~/.claude/settings.json` eine Regel eintragen, damit der
   Auto-Modus Installationen in devloop-Projekten nicht von sich aus blockiert?“;
   yes „Ja, eintragen“ with, where the issue holds a task, „Ich trage die Regel
   ein, schließe das Issue und nehme die Aufgabe wieder auf. Die Regel erlaubt
@@ -1340,8 +1393,11 @@ loaded text no longer carries stands here at its rule.
   etwas von dir abfragen, etwa dein Passwort, darum gib ihn in einem zweiten
   Terminalfenster ein, nicht in dem, in dem Claude Code läuft. Gibst du danach
   hier `/devloop:start-work` ein, schließe ich das Issue und nehme die Aufgabe
-  wieder auf. Bis dahin frage ich bei jedem Start mit
-  `/devloop:start-work --auto` wieder.“
+  wieder auf. Bis dahin frage ich bei jedem Start mit `/devloop:start-work
+  --auto` wieder.“ See docs/skill-conventions.md under "Every skill carries
+  these two", the paragraph "Where the person types a command devloop hands them
+  while Claude Code runs", form A, and for a command that asks, or in doubt,
+  form B.
 - **At its second asking the line naming the permission and the earlier no
   stands in the question field; after the two yes the classes they open are said
   in one line with their tools; a class off for an install goes into the
@@ -1434,11 +1490,15 @@ loaded text no longer carries stands here at its rule.
   before a tool call can land in a collapsed note, and why the questions come is
   part of what the first question needs. Decided as B7 of entry "Where each text
   devloop owes the person stays, goes into a pull request, an issue or a file,
-  or drops, built after the decisions of the person of 17 October 2026: …",
-  which names these lines as UI-2. Approved wording, in that entry under "The
-  wordings approved on 17 October 2026, B7 and B5", for the first question at a
-  setup that begins with an idea in hand: „Bevor ich mit deiner Idee anfange,
-  richte ich das Projekt ein.“
+  or drops, built after the decisions of the person of 17 October 2026: the
+  introduction of `start-work`, the sentences that say why a question comes now
+  in the wording approved that day, the last message of the run with nobody
+  there in two groups, and the lines of the skills, the inserted texts and two
+  hooks brought in line with the output style; 17 October 2026, version
+  0.143.0.", which names these lines as UI-2. Approved wording, in that entry
+  under "The wordings approved on 17 October 2026, B7 and B5", for the first
+  question at a setup that begins with an idea in hand: „Bevor ich mit deiner
+  Idee anfange, richte ich das Projekt ein.“
 ### The interview
 
 - **Why a question comes up now reaches the person with the round — the tree,
@@ -1452,8 +1512,17 @@ loaded text no longer carries stands here at its rule.
   September 2026, the message and the question; 30 September 2026, version
   0.119.0."; brought in line as point 25 of entry "The decisions of 12 October
   2026: milestone 3 has not landed with the two closing runs and no run with Go
-  follows; …", built in entry "Part B of the decisions of 12 October 2026 at
-  planning and building, points 20 to 26, built; …". See
+  follows; twenty-seven things to build before the next run, on the install
+  guard, at the setup and at planning and building; three things decided and not
+  built now; the person's wordings, word for word; who changed the check targets
+  in the second closing run; 12 October 2026, the version stays 0.135.0.", built
+  in entry "Part B of the decisions of 12 October 2026 at planning and building,
+  points 20 to 26, built; the run with nobody there at a changed file in the way
+  of the main branch and at commits of its own on it, decided by the person on
+  16 October 2026 and built — the change set aside under a name devloop knows
+  and brought back where the mark goes, the commits onto a branch of their own,
+  the question at the next start; the branch's name revised to `my-commits`;
+  four shared texts; 16 October 2026, version 0.141.0.". See
   docs/skill-conventions.md under "Every question carries its own reason".
 ### Chart the map
 
@@ -1471,7 +1540,11 @@ loaded text no longer carries stands here at its rule.
   and reshaping branches costs the ability to trust what they say. "Say nothing
   of it" decided as UI-16 of entry "Where each text devloop owes the person
   stays, goes into a pull request, an issue or a file, or drops, built after the
-  decisions of the person of 17 October 2026: …", under B1, that a text stays
+  decisions of the person of 17 October 2026: the introduction of `start-work`,
+  the sentences that say why a question comes now in the wording approved that
+  day, the last message of the run with nobody there in two groups, and the
+  lines of the skills, the inserted texts and two hooks brought in line with the
+  output style; 17 October 2026, version 0.143.0.", under B1, that a text stays
   only where one of six features holds.
 ### When the map is done
 
@@ -1479,9 +1552,17 @@ loaded text no longer carries stands here at its rule.
   and offers no room to say stop.** That room would reach the person only once
   the planning has begun. Decided at UI-19 in entry "Where the text devloop owes
   the person stands, decided by the person on 17 October 2026, and every
-  question put to it: …" and built as B3 of entry "Where each text devloop owes
-  the person stays, goes into a pull request, an issue or a file, or drops,
-  built after the decisions of the person of 17 October 2026: …".
+  question put to it: what a decision needs in the question, everything else in
+  the message that ends the turn, nothing between two tool calls; the mode
+  question of `setup-checks` step 8 in the wording approved that day, in its
+  fields and with nothing before it; 17 October 2026, version 0.142.0." and
+  built as B3 of entry "Where each text devloop owes the person stays, goes into
+  a pull request, an issue or a file, or drops, built after the decisions of the
+  person of 17 October 2026: the introduction of `start-work`, the sentences
+  that say why a question comes now in the wording approved that day, the last
+  message of the run with nobody there in two groups, and the lines of the
+  skills, the inserted texts and two hooks brought in line with the output
+  style; 17 October 2026, version 0.143.0.".
 
 ## `skills/research/SKILL.md`
 
@@ -1502,15 +1583,25 @@ Nothing in this file stood as history; its rules carry their own reasons.
   an install that does not go through, the two halts of `setup-checks`, a hook
   for permission prompts, and start condition 4 off the permission mode; 9
   October 2026, version 0.133.0.", after decision 1 of entry "The open findings
-  on the install guard, eight, measured on this machine; …" that a refusal of
-  the classifier goes as a guard's block goes. Case for the fourth kind: on 16
-  October 2026 Claude Code's own safety check denied a planning subagent's
-  command `rm -rf * .git*` in project 1, and the refusal reached neither the
-  record nor the person, defect 12 of entry "The two runs of 16 October 2026 in
-  `devloop-test-x` and `devloop-test-y` under the installed 0.141.0, …"; built
-  in entry "Where step 8 of `setup-checks` puts the tool of a class off for an
-  install not run, and the refusal of a safety check built into Claude Code
-  among the refusals devloop names, …".
+  on the install guard, eight, measured on this machine; four questions never
+  examined; the decisions for the next orders of milestone 3 and the texts the
+  person approved, word for word; three corrections; 9 October 2026, version
+  0.132.0." that a refusal of the classifier goes as a guard's block goes. Case
+  for the fourth kind: on 16 October 2026 Claude Code's own safety check denied
+  a planning subagent's command `rm -rf * .git*` in project 1, and the refusal
+  reached neither the record nor the person, defect 12 of entry "The two runs of
+  16 October 2026 in `devloop-test-x` and `devloop-test-y` under the installed
+  0.141.0, read off their session logs and the projects, the bench for defects d
+  and 11 and for the install guard of defect c, and where milestone 3 stands
+  after part A of the entry of 12 October 2026: defects 1, 3, b, c and i held, a
+  did not hold at four places, d and 11 held on the bench and met no run;
+  fifteen new defects, nine met again; the milestone has not landed; 16 October
+  2026, the version stays 0.141.0."; built in entry "Where step 8 of
+  `setup-checks` puts the tool of a class off for an install not run, and the
+  refusal of a safety check built into Claude Code among the refusals devloop
+  names, a refusal a subagent names in its report the main run's own; defects 9
+  and 12 of the entry of 16 October 2026 on the runs of that day; 18 October
+  2026, version 0.147.0.".
 ### Hand it over so it gets looked at
 
 - **The prototype is handed over as one action: a single HTML file opened by one
@@ -1558,12 +1649,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   issue, entry "The stock-take could not see a pull request at all, and that was
   measured on 31 August 2026.".
 - **Nothing is said where nothing changes for the person — the empty in-flight
-  answer, someone else's pull request, which stage a pick-up continues at, a
-  skipped Stage 2, Stage 2's report, the list of Stage 3 while the drafting
-  runs, a rerun that returned, the seams, the draft taken alone, the mark
-  written, the call of the cut.** A text stays in the conversation only where
-  the person has to decide or do something, something failed or is blocked and
-  that changes what they get, the run decided for them and leaves room to
+  answer, someone else's pull request.** A text stays in the conversation only
+  where the person has to decide or do something, something failed or is blocked
+  and that changes what they get, the run decided for them and leaves room to
   object, something was created, changed or deleted they did not initiate, or it
   is the result; otherwise it goes into the pull request, the issue or the file
   at that place, or drops. B1 of entry "Where each text devloop owes the person
@@ -1573,7 +1661,11 @@ Nothing in this file stood as history; its rules carry their own reasons.
   day, the last message of the run with nobody there in two groups, and the
   lines of the skills, the inserted texts and two hooks brought in line with the
   output style; 17 October 2026, version 0.143.0.", built in this skill as the
-  PW places listed there.
+  PW places listed there. The same rule stands at the places below, each under
+  its heading: which stage a pick-up continues at, the mark written, a skipped
+  Stage 2 and Stage 2's report, the list of Stage 3 while the drafting runs, a
+  rerun that returned, the seams, the draft taken alone, and the call of the
+  cut.
 ### Picking up an interrupted plan
 
 - **What the pick-up deleted is said in the question field, as part of why the
@@ -1585,6 +1677,8 @@ Nothing in this file stood as history; its rules carry their own reasons.
   calls; the mode question of `setup-checks` step 8 in the wording approved that
   day, in its fields and with nothing before it; 17 October 2026, version
   0.142.0.".
+- **Which stage a pick-up continues at is not said.** Its reason and its entry
+  stand under "Before anything: what is already built" above.
 ### With nobody there
 
 - **A refusal before the build goes through the order for a question nobody can
@@ -1686,13 +1780,15 @@ Nothing in this file stood as history; its rules carry their own reasons.
 - **The planning settles no install: who installs is the install record's at the
   build.** The record can change between the planning and the build. Cases from
   the closing runs of 23 October 2026: run 1 told the person they install
-  `htmlq` themselves and wrote it under Out of scope; in run 2a the person
-  corrected the same, „Wer mmdc installiert, legt nicht die Spezifikation fest,
-  sondern die Erlaubnis zum Installieren, die für dieses Projekt gilt, wenn
-  gebaut wird.“; the comment of Stage 2 of run 3a judged the record; defects 9
-  and 2 of entry "Six closing runs read off their logs, each on the defects it
-  met."; built in entry "Install lines by one program, written where the install
-  stood alone.".
+  `htmlq` themselves, because the run installs nothing outside the project, and
+  wrote it under Out of scope; in run 2a the person corrected the same, „Wer
+  mmdc installiert, legt nicht die Spezifikation fest, sondern die Erlaubnis zum
+  Installieren, die für dieses Projekt gilt, wenn gebaut wird.“; the comment of
+  Stage 2 of run 3a judged the record, writing that it allowed the route npm
+  alone and that a build could not install `yq`, while the record named `/opt`
+  among its places; defects 9 and 2 of entry "Six closing runs read off their
+  logs, each on the defects it met."; built in entry "Install lines by one
+  program, written where the install stood alone.".
 - **Whether a tool outside the project stands on this machine is read with
   `bin/devloop-tool-state --planning`, never assumed, before the round where the
   code already names it, and said where they next read where it becomes known
@@ -1901,6 +1997,13 @@ Nothing in this file stood as history; its rules carry their own reasons.
   decision (5) of entry "Install lines by one program, written where the install
   stood alone." in entry "Start conditions read by one program, the mark blocked
   on five of them.".
+- **The mark written is not said.** Its reason and its entry stand under "Before
+  anything: what is already built" above.
+### Stage 2 — Read the code
+
+- **A skipped Stage 2 and Stage 2's report are not said; each stands in the
+  comment the stage posts on the planning issue.** Their reason and their entry
+  stand under "Before anything: what is already built" above.
 ### Stage 3 — Draft designs
 
 - **Every agent of Stage 3 is handed where the mark stands, what a refusal is
@@ -1940,6 +2043,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   the rejected alternatives were recorded there, entry "Planning is fenced out
   of the unattended mode by one sentence, and three places already decide the
   other way, read on 11 September 2026.".
+- **The list of Stage 3 while the drafting runs, a rerun that returned, the
+  seams and the draft taken alone are not said.** Their reason and their entry
+  stand under "Before anything: what is already built" above.
 ### Stage 4 — Write the spec
 
 - **The spec names a tool outside the project under Implementation decisions
@@ -1952,6 +2058,12 @@ Nothing in this file stood as history; its rules carry their own reasons.
   program, the planning saying only what it read."; run 1 of 23 October 2026
   wrote "Installing htmlq: the user does it." under Out of scope, entry "Six
   closing runs read off their logs, each on the defects it met.".
+
+### Close
+
+- **The call of the cut is not said before it; what the cut created reaches them
+  where it is said.** Its reason and its entry stand under "Before anything:
+  what is already built" above.
 
 ## `skills/cut-into-tasks/SKILL.md`
 
@@ -2033,18 +2145,26 @@ Nothing in this file stood as history; its rules carry their own reasons.
   out. Case: on 16 October 2026 a safety check built into Claude Code denied a
   planning subagent's `rm -rf` in a test project. The subagent went on without
   that test run, and no issue and no comment recorded the refusal. Entry "The
-  two runs of 16 October 2026 in `devloop-test-x` and `devloop-test-y` …".
-  Approved wording (the hook's message, approved on 8 October 2026 and changed
-  on 9 October 2026): "Refused by devloop: this is a run with nobody there
-  (.claude/unattended.local stands), so no one can answer this permission
-  prompt. Do not try it again or reach the same result another way. In the
-  build, raise an issue carrying this tool call and this refusal, label it
-  raised-here and needs-human, record it as a blocker of the task, then put the
-  task down and take the next one, as "A guard's block, with nobody there" in
-  build-work says. Before the build, go on as plan-work says for a question
-  nobody is there to answer, and name this refusal where that order records it."
-  Entry "The behaviour with nobody there: a refusal, a command that does not
-  finish inside its call, …".
+  two runs of 16 October 2026 in `devloop-test-x` and `devloop-test-y` under the
+  installed 0.141.0, read off their session logs and the projects, the bench for
+  defects d and 11 and for the install guard of defect c, and where milestone 3
+  stands after part A of the entry of 12 October 2026: defects 1, 3, b, c and i
+  held, a did not hold at four places, d and 11 held on the bench and met no
+  run; fifteen new defects, nine met again; the milestone has not landed; 16
+  October 2026, the version stays 0.141.0.". Approved wording (the hook's
+  message, approved on 8 October 2026 and changed on 9 October 2026): "Refused
+  by devloop: this is a run with nobody there (.claude/unattended.local stands),
+  so no one can answer this permission prompt. Do not try it again or reach the
+  same result another way. In the build, raise an issue carrying this tool call
+  and this refusal, label it raised-here and needs-human, record it as a blocker
+  of the task, then put the task down and take the next one, as "A guard's
+  block, with nobody there" in build-work says. Before the build, go on as
+  plan-work says for a question nobody is there to answer, and name this refusal
+  where that order records it." Entry "The behaviour with nobody there: a
+  refusal, a command that does not finish inside its call, an install that does
+  not go through, the two halts of `setup-checks`, a hook for permission
+  prompts, and start condition 4 off the permission mode; 9 October 2026,
+  version 0.133.0.".
 - **The issue for a refused install carries the lines `install-tool` and
   `install-command`.** The next start reads off them whether the tool stands,
   and closes the issue itself.
@@ -2147,8 +2267,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   `raised-here` issues were announced "in order by issue number, since none
   blocks another" and built that way. The one that met clause 1, a shipped flag
   that silently skipped a rule file in a worktree, had the highest number and
-  was built last. Entry "The loose-issue rule was written by appending, and the
-  sentences it competes with were left standing."
+  was built last; the other three were hardenings with nothing wrong in service,
+  which is clause 3. Entry "The loose-issue rule was written by appending, and
+  the sentences it competes with were left standing."
 - **The issue devloop files for a conflicted bring-back carries `needs-human`
   alone, is not from outside, and is left unmentioned.** It is the person's to
   decide, and a later build would take a loose `raised-here` issue up as work
@@ -2165,14 +2286,23 @@ Nothing in this file stood as history; its rules carry their own reasons.
   second closing run of milestone 3, on 11 October 2026 in `devloop-test-w`, a
   build subagent put `npm run build:matchers` into three Makefile targets
   itself, because the rule reached it nowhere. Entry "The decisions of 12
-  October 2026: milestone 3 has not landed with the two closing runs …". See
-  docs/plan.md under "### 3. Informed permission to install (build)".
+  October 2026: milestone 3 has not landed with the two closing runs and no run
+  with Go follows; twenty-seven things to build before the next run, on the
+  install guard, at the setup and at planning and building; three things decided
+  and not built now; the person's wordings, word for word; who changed the check
+  targets in the second closing run; 12 October 2026, the version stays
+  0.135.0.". See docs/plan.md under "### 3. Informed permission to install
+  (build)".
 - **A file whose content is text about commands is written with the editing
   tool, and the build subagent gets that rule.** Case: on 11 October 2026, in
   the second closing run, two build subagents wrote the workflow file and
   `environment.md` from the shell, and the install guard blocked both on the
   text (`sudo make install`, `--with-deps`). Entry "The second closing run of
-  milestone 3, made on 11 October 2026 in `devloop-test-w` …".
+  milestone 3, made on 11 October 2026 in `devloop-test-w` under a record saying
+  yes, set up through `--auto`, read off its session log and the project, with
+  the runs of both closing runs on the things of the table and the context the
+  two runs used: nine defects, two met again, the open question met again; 11
+  October 2026, the version stays 0.135.0.".
 - **The prompt to the build subagent carries the tool-state lines and the record
   line and nothing of the main run's own on installing; point 7 reaches the
   subagent through the hook at its start.** A rule devloop itself has to keep is
@@ -2223,7 +2353,19 @@ Nothing in this file stood as history; its rules carry their own reasons.
   over, left `secrets` `empty` across a merge, and needed a third pull request
   for the decision. The person's statement was that a user overreads the clause,
   so the decision is taken before the offer of the mode. Entry "The two runs of
-  19 October 2026 in `devloop-test-z` and `devloop-test-y` …".
+  19 October 2026 in `devloop-test-z` and `devloop-test-y` under the installed
+  0.148.0, read off their session logs and the projects, and where milestone 3
+  stands under the criterion the person decided that day, in place of the one of
+  12 October 2026: every defect that concerns the milestone listed in three
+  groups, and the milestone not reached; defects 1, 3, b, c and i held, defect a
+  held at every place under one reading and not under another, 13 held but for
+  one point, 14 held at one place and not at the other, 5 and 9 of the entry of
+  16 October 2026 held, 4, 10 and 11 of it did not, 12 met no run, the defect of
+  15 October 2026 on the loose issues met again; of the six rows of the check
+  table of `devloop-test-y` four went as their case says and two were decided
+  without the question; nineteen new defects, three of them the person's
+  wordings of that day, one with a should the person has still to decide; 19
+  October 2026, the version stays 0.148.0.".
 - **On a no, the issue for the missing tool is written then and never before.
   The next start closes it itself where the tool stands, and a command typed
   here with `!` after the no closes it at once.** One signal holds per state.
@@ -2241,11 +2383,11 @@ Nothing in this file stood as history; its rules carry their own reasons.
   last sentence is „Ich mache mit der Aufgabe „…“ weiter.“ — then: „Willst du
   `yq` doch installieren, gib hier ein: `! brew install yq`. Dann schließe ich
   das Issue und baue die Aufgabe. Installierst du es auf anderem Weg, schließe
-  ich es beim nächsten Start mit `/devloop:start-work`.“ Where the command asks
-  something, in place of „gib hier ein“: „führ den Befehl in einem zweiten
-  Terminalfenster aus, nicht in dem, in dem Claude Code läuft, und sag mir hier
-  Bescheid“. Entry "The ! after a no taken up in the session, point 7 read by
-  the subagent."
+  ich es beim nächsten Start mit `/devloop:start-work`.“ Under form B, where the
+  command asks something or the run does not know for certain whether it asks,
+  in place of „gib hier ein“: „führ den Befehl in einem zweiten Terminalfenster
+  aus, nicht in dem, in dem Claude Code läuft, und sag mir hier Bescheid“. Entry
+  "The ! after a no taken up in the session, point 7 read by the subagent."
 ### Proving a check guards its condition
 
 - **A condition that cannot be captured as a check is named as that, in the task
@@ -2276,13 +2418,14 @@ Nothing in this file stood as history; its rules carry their own reasons.
   loaded `code-review:code-review` first, before the review of task 47 on 13
   September 2026 and before that of task 62 on 14 September 2026. Entry "The
   first planning run alone, measured on 14 September 2026 in `devloop-test-o` —
-  …".
+  the first run on 0.100.0, six findings, and two places where the wording is
+  the user's to settle before anything is built.".
 - **Unattended, the review never falls away, whatever the size of the diff.**
   The judgement that a diff is too small to need a review is made by whoever
   wrote it. Case: on 9 September 2026 a run called a full five-lens review
   disproportionate for a comment-only diff and landed it with no review. Entry
   "Three findings against the review step, measured on 9 September 2026 across
-  …".
+  two unattended runs.".
 - **A finding against the task's own terms is named at the close, not where the
   findings are split.** Fixed among the rest, it reaches the close as nothing at
   all. Case: on 6 and 7 September 2026, on pull request 27, a byte-for-byte
@@ -2302,14 +2445,21 @@ Nothing in this file stood as history; its rules carry their own reasons.
   first answer, label "Ja, einschalten", line "Ich richte die Prüfung jetzt
   ein."; second answer, label "Nein, aus lassen", line "Sie bleibt aus, und ich
   frage nicht noch einmal." Entry "The status of a check class takes four forms
-  and a guard holds the table to them, …".
+  and a guard holds the table to them, the unattended mode starts on two
+  permissions more and is set up in `setup-checks` step 8 or through `--auto`, a
+  state is read before a task is released, and a review finding about the table
+  goes a third way; 5 October 2026, version 0.129.0.".
 - **What is changed after the review agents reported gets a round over exactly
   those commits, after every round, before the pull request is opened.** Code
   written after the reviewers looked would otherwise ride in unreviewed. Case:
   on 11 October 2026 both closing runs of milestone 3 opened their pull requests
   on fixes no lens had read (defect h). Entry "The second closing run of
-  milestone 3, made on 11 October 2026 in `devloop-test-w` …". See docs/plan.md
-  under "### 3. Informed permission to install (build)".
+  milestone 3, made on 11 October 2026 in `devloop-test-w` under a record saying
+  yes, set up through `--auto`, read off its session log and the project, with
+  the runs of both closing runs on the things of the table and the context the
+  two runs used: nine defects, two met again, the open question met again; 11
+  October 2026, the version stays 0.135.0.". See docs/plan.md under "### 3.
+  Informed permission to install (build)".
 - **A second round that surfaces nothing new is not mentioned.** A text stays in
   the conversation only where the person has to decide or do something, or where
   something changes what they get.
@@ -2497,6 +2647,13 @@ Nothing in this file stood as history; its rules carry their own reasons.
   which two checks under "Before a handover, run these" hold to the shared file;
   a change to one of the three is a change to all three.
 
+- **An unplaceable state, or queries that did not answer for want of rights,
+  name no refusal case and no gate.** Neither is evidence about the repository.
+  Case: the skill once knew two reasons an arming is refused, so that a gate the
+  run lacked the rights to read could be reported as nothing to wait on; three
+  reasons told apart, `8cb9dc3`, "Tell three refusal reasons apart when arming
+  (#93)", and the gate read from both sides, `cf66dde`, "Read whether a gate
+  binds from both sides (#94)".
 ### Step 7 — Back to step 2
 
 - **Step 7 decides nothing; step 2 decides what is next.** A second statement of
@@ -2523,7 +2680,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   behaviour with nobody there: a refusal, a command that does not finish inside
   its call, an install that does not go through, the two halts of
   `setup-checks`, a hook for permission prompts, and start condition 4 off the
-  permission mode; 9 October 2026, version 0.133.0." (lines 14876–14881), with
+  permission mode; 9 October 2026, version 0.133.0." (lines 14882–14887), with
   the command named whole.
 - **Where condition 6 or 7 fails, the refusal says that the run does not start,
   the yes it needs, a no on record, the command that sets it up, and what
@@ -2595,11 +2752,15 @@ Nothing in this file stood as history; its rules carry their own reasons.
   paragraphs "A command handed over runs as it stands" and "Where the person
   types a command devloop hands them while Claude Code runs". The first decided
   as point 18 of entry "The decisions of 12 October 2026: milestone 3 has not
-  landed with the two closing runs and no run with Go follows; …", the person's
-  reason that everything has to be there for copying; the second on 28 October
-  2026, entry "Handovers say where the command is typed, sign-in and identity in
-  steps.", which brought this place in line where the command went "into their
-  own terminal".
+  landed with the two closing runs and no run with Go follows; twenty-seven
+  things to build before the next run, on the install guard, at the setup and at
+  planning and building; three things decided and not built now; the person's
+  wordings, word for word; who changed the check targets in the second closing
+  run; 12 October 2026, the version stays 0.135.0.", the person's reason that
+  everything has to be there for copying; the second on 28 October 2026, entry
+  "Handovers say where the command is typed, sign-in and identity in steps.",
+  which brought this place in line where the command went "into their own
+  terminal".
 
 ## `skills/review-changes/SKILL.md`
 
@@ -2609,10 +2770,11 @@ Nothing in this file stood as history; its rules carry their own reasons.
   A report counting five lenses where two reviewers carried them says something
   untrue about the run's own work. Case: measured on 9 September 2026 over two
   tasks of an unattended run, five applicable lenses were carried by two
-  reviewers, the skill having four sentences telling it to start one reviewer
-  per lens and none saying what the word counts, finding A of entry "Three
-  findings against the review step, measured on 9 September 2026 across two
-  unattended runs.".
+  reviewers, one reading security together with failure behaviour, the other
+  standards with spec and test quality, the run saying so plainly, the skill
+  having four sentences telling it to start one reviewer per lens and none
+  saying what the word counts, finding A of entry "Three findings against the
+  review step, measured on 9 September 2026 across two unattended runs.".
 ### Pin the target
 
 - **Which commits the review covers is not said; the pull request of the gate
@@ -2644,10 +2806,11 @@ Nothing in this file stood as history; its rules carry their own reasons.
   there was "no new input, path or network surface", finding B of entry "Three
   findings against the review step, measured on 9 September 2026 across two
   unattended runs."; measured on 6 and 7 September 2026, two tasks through three
-  lenses instead of five while a file path from outside and a default return
-  stood in those diffs, entry "The unattended run narrowed the review from five
-  lenses to three, measured on 6 and 7 September 2026.". Where it is written:
-  RC-3 of entry "Where each text devloop owes the person stays, goes into a pull
+  lenses instead of five, security and failure behaviour left out with a reason
+  given for each, while a file path from outside and a default return stood in
+  those diffs, entry "The unattended run narrowed the review from five lenses to
+  three, measured on 6 and 7 September 2026.". Where it is written: RC-3 of
+  entry "Where each text devloop owes the person stays, goes into a pull
   request, an issue or a file, or drops, built after the decisions of the person
   of 17 October 2026: the introduction of `start-work`, the sentences that say
   why a question comes now in the wording approved that day, the last message of
@@ -2659,16 +2822,16 @@ Nothing in this file stood as history; its rules carry their own reasons.
 - **One reviewer is started per applicable lens, and neither number is said; a
   rerun that returned is not said.** Done right the two numbers are the same and
   say nothing; the failure is a reviewer that did not start or return, and that
-  is said. Case: on 9 September 2026 a single number hid a missing reviewer over
-  two tasks, finding A of entry "Three findings against the review step,
-  measured on 9 September 2026 across two unattended runs."; RC-4 and RC-5 of
-  entry "Where each text devloop owes the person stays, goes into a pull
-  request, an issue or a file, or drops, built after the decisions of the person
-  of 17 October 2026: the introduction of `start-work`, the sentences that say
-  why a question comes now in the wording approved that day, the last message of
-  the run with nobody there in two groups, and the lines of the skills, the
-  inserted texts and two hooks brought in line with the output style; 17 October
-  2026, version 0.143.0.".
+  is said. Case: on 9 September 2026 five applicable lenses over two tasks were
+  carried by two reviewers, finding A of entry "Three findings against the
+  review step, measured on 9 September 2026 across two unattended runs."; RC-4
+  and RC-5 of entry "Where each text devloop owes the person stays, goes into a
+  pull request, an issue or a file, or drops, built after the decisions of the
+  person of 17 October 2026: the introduction of `start-work`, the sentences
+  that say why a question comes now in the wording approved that day, the last
+  message of the run with nobody there in two groups, and the lines of the
+  skills, the inserted texts and two hooks brought in line with the output
+  style; 17 October 2026, version 0.143.0.".
 ### The report, said to nobody
 
 - **The review's report is said to nobody.** The findings reach the person once,
@@ -2726,10 +2889,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   September 2026 in `devloop-test-o`.". The run itself under a yes: run 2a of 23
   October 2026 installed `mmdc` with a line it called the vendor's and had not
   read, and its pull request said it had, defect 7 of entry "Six closing runs
-  read off their logs, each on the defects it met."; decided as point 5 there
-  and in entry "Install lines by one program, written where the install stood
-  alone.", built in entry "Install rules reach the build subagent, backed by
-  kind, run alone.".
+  read off their logs, each on the defects it met."; decided as point 5 of entry
+  "Install lines by one program, written where the install stood alone.", built
+  in entry "Install rules reach the build subagent, backed by kind, run alone.".
 - **Each kind has its form of the backing; for Playwright its own dry run, which
   downloads nothing and prints the version of each browser and the folder it
   lands in; the version of the package that downloads backs nothing of the
@@ -2819,12 +2981,14 @@ Nothing in this file stood as history; its rules carry their own reasons.
   and the project, with the runs of both closing runs on the things of the table
   and the context the two runs used: nine defects, two met again, the open
   question met again; 11 October 2026, the version stays 0.135.0.". That a title
-  is a word of its command: entry "The command reader: every hook reads its
-  input through one program that decodes the JSON and takes the command apart as
-  the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026,
-  `nix run`, `nix shell` and `nix env shell`, and the browser and route
-  variables before the command; every handler under PreToolUse and
-  PermissionRequest blocks the action where the hook fails; two rules in the
+  is a word of its command, docs/skill-conventions.md under "Environment
+  constraints, measured", the paragraph "A hook reads its input through one
+  program, and the command as the shell runs it": entry "The command reader:
+  every hook reads its input through one program that decodes the JSON and takes
+  the command apart as the shell runs it; the install guard reads findings 1 to
+  8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the
+  browser and route variables before the command; every handler under PreToolUse
+  and PermissionRequest blocks the action where the hook fails; two rules in the
   conventions; a block reported and not reworded; two findings recorded, not
   built; 12 October 2026, version 0.137.0.".
 
@@ -3091,7 +3255,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   env shell`, and the browser and route variables before the command; every
   handler under PreToolUse and PermissionRequest blocks the action where the
   hook fails; two rules in the conventions; a block reported and not reworded;
-  two findings recorded, not built; 12 October 2026, version 0.137.0.".
+  two findings recorded, not built; 12 October 2026, version 0.137.0.". See
+  docs/skill-conventions.md under "Every skill carries these two", the paragraph
+  "A command handed over runs as it stands, from wherever the person is".
 
 ## `shared/fetch-failed.md`
 
@@ -3114,34 +3280,36 @@ Nothing in this file stood as history; its rules carry their own reasons.
   that answers is not said.** A fetch that fails says only that the remote could
   not be reached just now, which may be transient, and without the repetition
   one short outage stops a run with nobody there until somebody is back; the
-  bound keeps the three under the 120 seconds of one Bash call, past which a
-  command moves to the background and a repeated fetch would start a second one
-  beside it. GitHub's own checkout action tries every fetch up to three times
-  with a pause of ten to twenty seconds — `actions/checkout`,
-  `src/retry-helper.ts` lines 3–5 and 25–43, used by its fetch in
-  `src/git-command-manager.ts` lines 277–318, read on 6 October 2026 at
-  `f548e57` — entry "The status of a check class takes four forms and a guard
-  holds the table to them, the unattended mode starts on two permissions more
-  and is set up in `setup-checks` step 8 or through `--auto`, a state is read
-  before a task is released, and a review finding about the table goes a third
-  way; 5 October 2026, version 0.129.0.". Measured on 7 October 2026 with git
-  2.50.1: against a remote that is not there, three times `fatal: Could not read
-  from remote repository.`, exit 128, twenty seconds; against a server on this
-  machine that accepts the connection and never answers, three times `no answer
-  within 30 seconds: git fetch -q origin`, exit 124, 110 seconds in one call,
-  entry "The consistency audit of 7 October 2026 before the handover, ordered on
-  6 October 2026, read against the entry beside it: the entry of 5 October 2026
-  with its eight addenda held against itself, its records and the code at
-  `03c78af`, three statements of it corrected in place, five notes of the table
-  corrected, four findings, and the five things the order settled, three built
-  and two recorded; 7 October 2026, version 0.130.0.". That an attempt followed
-  by one that answers is not said: SH-42 of entry "Where each text devloop owes
-  the person stays, goes into a pull request, an issue or a file, or drops,
-  built after the decisions of the person of 17 October 2026: the introduction
-  of `start-work`, the sentences that say why a question comes now in the
-  wording approved that day, the last message of the run with nobody there in
-  two groups, and the lines of the skills, the inserted texts and two hooks
-  brought in line with the output style; 17 October 2026, version 0.143.0.". See
+  bound keeps the three under the 120 seconds of one Bash call, past which, by
+  the changelog of Claude Code and not measured here, a command moves to the
+  background, and a repeated fetch would start a second one beside it. GitHub's
+  own checkout action tries every fetch up to three times with a pause of ten to
+  twenty seconds — `actions/checkout`, `src/retry-helper.ts` lines 3–5 and
+  25–43, used by its fetch in `src/git-command-manager.ts` lines 277–318, read
+  on 6 October 2026 at `f548e57` — entry "The status of a check class takes four
+  forms and a guard holds the table to them, the unattended mode starts on two
+  permissions more and is set up in `setup-checks` step 8 or through `--auto`, a
+  state is read before a task is released, and a review finding about the table
+  goes a third way; 5 October 2026, version 0.129.0.". Measured on 7 October
+  2026 with git 2.50.1: against a remote that is not there, three times `fatal:
+  Could not read from remote repository.`, exit 128, twenty seconds, where the
+  attempts unbounded and fifteen seconds apart, measured the same way on 6
+  October 2026, took thirty; against a server on this machine that accepts the
+  connection and never answers, three times `no answer within 30 seconds: git
+  fetch -q origin`, exit 124, 110 seconds in one call, entry "The consistency
+  audit of 7 October 2026 before the handover, ordered on 6 October 2026, read
+  against the entry beside it: the entry of 5 October 2026 with its eight
+  addenda held against itself, its records and the code at `03c78af`, three
+  statements of it corrected in place, five notes of the table corrected, four
+  findings, and the five things the order settled, three built and two recorded;
+  7 October 2026, version 0.130.0.". That an attempt followed by one that
+  answers is not said: SH-42 of entry "Where each text devloop owes the person
+  stays, goes into a pull request, an issue or a file, or drops, built after the
+  decisions of the person of 17 October 2026: the introduction of `start-work`,
+  the sentences that say why a question comes now in the wording approved that
+  day, the last message of the run with nobody there in two groups, and the
+  lines of the skills, the inserted texts and two hooks brought in line with the
+  output style; 17 October 2026, version 0.143.0.". See
   docs/skill-conventions.md under "Environment constraints, measured".
 - **A permission or safety check that refused the call carrying the three, where
   the call went through when made again, gets one line.** A check the person
@@ -3193,7 +3361,11 @@ Nothing in this file stood as history; its rules carry their own reasons.
   --git-protocol, or during the interactive prompting." and "The default
   authentication mode is a web-based browser flow." Entry "Handovers say where
   the command is typed, sign-in and identity in steps.", (2); the approved
-  wording is quoted under `shared/skill-name.md`.
+  wording is quoted under `shared/skill-name.md`. See docs/skill-conventions.md
+  under "Every skill carries these two", the paragraph "Where the person types a
+  command devloop hands them while Claude Code runs", form B, and the paragraph
+  "Where a text to the person says they have to do something at the computer, it
+  says how, step by step".
 - **A changed file in the way, and commits of their own on the main branch while
   GitHub has new ones, are their own work: the run asks, and with nobody there
   it sets the file aside and puts the commits on a branch of their own without
@@ -3706,46 +3878,50 @@ Nothing in this file stood as history; its rules carry their own reasons.
   session, point 7 read by the subagent.".
 - **The handover gives both ways in one message, the yes first, the no second,
   the question last; the issue is written on the no alone.** A message that says
-  only "let me know once it is through" leaves no way to say no. Cases: in run 1
-  of 23 October 2026 the handover said a decline would leave the test skipped
-  and the task open, defect 5 of entry "Six closing runs read off their logs,
-  each on the defects it met."; in run 1 of 26 October 2026 the run opened the
-  issue before the answer, offered no no, and named one signal in the issue and
-  another in the message, entry "Three closing runs of the pass read off their
-  logs, each on what it met.". Approved wording, form A, entry "Handovers say
-  where the command is typed, sign-in and identity in steps.": „Die Aufgabe
-  „<Titel der Aufgabe>“ braucht `yq`, und es fehlt auf diesem Rechner. Weil
-  deine Antwort zum Installieren für dieses Projekt Nein ist, installiere ich es
-  nicht selbst. Gib den Befehl dafür hier in Claude Code ein, mit `!` davor:“ —
-  „`! brew install yq`“ — „Geprüft mit `brew info yq`: Homebrew bietet yq 4.54.1
-  an, es landet in `/opt/homebrew/bin`.“ — „Sobald er durchgelaufen ist, prüfe
-  ich, dass `yq` dort steht, und baue die Aufgabe. Lehnst du ab, lege ich ein
-  Issue mit dem Befehl an, das diese Aufgabe blockiert, und mache mit der
-  nächsten Aufgabe weiter, sofern eine bereit ist.“, then the last sentence as
-  entry "The ! after a no taken up in the session, point 7 read by the
-  subagent." words it: „Gibst du den Befehl später doch hier mit `!` ein,
-  schließe ich das Issue sofort und baue die Aufgabe. Installierst du es auf
-  anderem Weg, etwa in einem anderen Fenster, geschieht das beim nächsten
-  Start.“ — „Gibst du den Befehl ein oder lehnst du ab?“ Form B, for a command
-  that asks something, here a password: „… installiere ich es nicht selbst. Der
-  Befehl fragt nach deinem Passwort, darum gib ihn in einem zweiten
-  Terminalfenster ein, nicht in dem, in dem Claude Code läuft:“, the command,
-  the backing as above, „Sag mir hier Bescheid, sobald er durchgelaufen ist.
-  Dann prüfe ich, dass … dort steht, und baue die Aufgabe.“, the rest as in A
-  with the last sentence „Führst du den Befehl später doch aus und sagst mir
+  only "let me know once it is through" leaves no way to say no. Cases: the
+  install guard's message once offered only that, so that declining looked like
+  no answer at all, `ae89724`, "Give a declined install somewhere to land
+  (#81)"; in run 1 of 23 October 2026 the handover said a decline would leave
+  the test skipped and the task open, defect 5 of entry "Six closing runs read
+  off their logs, each on the defects it met."; in run 1 of 26 October 2026 the
+  run opened the issue before the answer, offered no no, and named one signal in
+  the issue and another in the message, entry "Three closing runs of the pass
+  read off their logs, each on what it met.". Approved wording, form A, entry
+  "Handovers say where the command is typed, sign-in and identity in steps.":
+  „Die Aufgabe „<Titel der Aufgabe>“ braucht `yq`, und es fehlt auf diesem
+  Rechner. Weil deine Antwort zum Installieren für dieses Projekt Nein ist,
+  installiere ich es nicht selbst. Gib den Befehl dafür hier in Claude Code ein,
+  mit `!` davor:“ — „`! brew install yq`“ — „Geprüft mit `brew info yq`:
+  Homebrew bietet yq 4.54.1 an, es landet in `/opt/homebrew/bin`.“ — „Sobald er
+  durchgelaufen ist, prüfe ich, dass `yq` dort steht, und baue die Aufgabe.
+  Lehnst du ab, lege ich ein Issue mit dem Befehl an, das diese Aufgabe
+  blockiert, und mache mit der nächsten Aufgabe weiter, sofern eine bereit
+  ist.“, then the last sentence as entry "The ! after a no taken up in the
+  session, point 7 read by the subagent." words it: „Gibst du den Befehl später
+  doch hier mit `!` ein, schließe ich das Issue sofort und baue die Aufgabe.
+  Installierst du es auf anderem Weg, etwa in einem anderen Fenster, geschieht
+  das beim nächsten Start.“ — „Gibst du den Befehl ein oder lehnst du ab?“ Form
+  B, for a command that asks something, here a password: „… installiere ich es
+  nicht selbst. Der Befehl fragt nach deinem Passwort, darum gib ihn in einem
+  zweiten Terminalfenster ein, nicht in dem, in dem Claude Code läuft:“, the
+  command, the backing as above, „Sag mir hier Bescheid, sobald er durchgelaufen
+  ist. Dann prüfe ich, dass … dort steht, und baue die Aufgabe.“, the rest as in
+  A with the last sentence „Führst du den Befehl später doch aus und sagst mir
   hier Bescheid, schließe ich das Issue sofort und baue die Aufgabe. Sonst
   geschieht das beim nächsten Start.“, the question „Führst du den Befehl aus
   oder lehnst du ab?“ In doubt whether the command asks, „kann etwas von dir
   abfragen, etwa dein Passwort“ stands in place of „fragt nach deinem Passwort“,
   decided by the person on 1 November 2026, entry "The loaded texts lose their
-  history, reasons move to docs/rationale.md."
+  history, reasons move to docs/rationale.md." See docs/skill-conventions.md
+  under "Every skill carries these two", the paragraph "A command handed over
+  runs as it stands, from wherever the person is".
 
 ## `shared/language-opening.md`
 
-- **The same block as `shared/closing.md` from its sixth sentence on: one
-  language for the whole turn, a technical term untranslated, one person
-  addressed in the singular and the familiar form.** Its reasons and cases stand
-  under `shared/closing.md`.
+- **The same block as `shared/closing.md` without its two sentences on why the
+  block stands twice: one language for the whole turn, a technical term
+  untranslated, one person addressed in the singular and the familiar form.**
+  Its reasons and cases stand under `shared/closing.md`.
 
 ## `shared/mark-command.md`
 
@@ -3874,12 +4050,14 @@ Nothing in this file stood as history; its rules carry their own reasons.
   two tool calls; the mode question of `setup-checks` step 8 in the wording
   approved that day, in its fields and with nothing before it; 17 October 2026,
   version 0.142.0.". Case for the second half: in the first closing run of
-  milestone 3, 11 October 2026, the run went from the proven merge to planning,
-  past step 8 of `setup-checks` it owed, defect 1 of entry "The first closing
-  run of milestone 3, made on 11 October 2026 in `devloop-test-w` under a record
-  saying no, read off its session log and the project, with the decisions of
-  that day on the arrangement of the closing runs: eleven defects, four met
-  again, one open question; 11 October 2026, the version stays 0.135.0.".
+  milestone 3, 11 October 2026, the handover before the merge said that the
+  unattended mode stays off and that `--auto` sets it up later, and the run went
+  from the proven merge to planning, past step 8 of `setup-checks` it owed,
+  defect 1 of entry "The first closing run of milestone 3, made on 11 October
+  2026 in `devloop-test-w` under a record saying no, read off its session log
+  and the project, with the decisions of that day on the arrangement of the
+  closing runs: eleven defects, four met again, one open question; 11 October
+  2026, the version stays 0.135.0.".
 - **Why GitHub does not merge it itself is said in the words that fit the case,
   naming neither auto-merge nor any term of GitHub's a user need not know.** A
   user hears of auto-merge there for the first time and does not understand it.
@@ -4309,7 +4487,15 @@ Nothing in this file stood as history; its rules carry their own reasons.
   no text block in five runs of five without a hook, six of six with an
   observing hook and one of one with a judge, entry "Where the text devloop owes
   the person stands, decided by the person on 17 October 2026, and every
-  question put to it: …"; the style's sentence written as B11 of entry "Where
-  each text devloop owes the person stays, goes into a pull request, an issue or
-  a file, or drops, built after the decisions of the person of 17 October 2026:
-  …", which said then that owed text did so in every measured run.
+  question put to it: what a decision needs in the question, everything else in
+  the message that ends the turn, nothing between two tool calls; the mode
+  question of `setup-checks` step 8 in the wording approved that day, in its
+  fields and with nothing before it; 17 October 2026, version 0.142.0."; the
+  style's sentence written as B11 of entry "Where each text devloop owes the
+  person stays, goes into a pull request, an issue or a file, or drops, built
+  after the decisions of the person of 17 October 2026: the introduction of
+  `start-work`, the sentences that say why a question comes now in the wording
+  approved that day, the last message of the run with nobody there in two
+  groups, and the lines of the skills, the inserted texts and two hooks brought
+  in line with the output style; 17 October 2026, version 0.143.0.", which said
+  then that owed text did so in every measured run.

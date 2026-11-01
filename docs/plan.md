@@ -243,6 +243,9 @@ Done on 19 September 2026, pull request #128.
 
 ### 3. Informed permission to install (build)
 
+Done on 31 October 2026, pull request #216, by decision (5) of the roadmap
+entry of that date on the audit after milestone 3.
+
 Five parts. **The question**, at setup, with the person present: what kinds of
 thing may land on the machine — tools for check classes, a driver for an
 interface, and whether a runtime is one of them — where they may land, which
@@ -1163,6 +1166,12 @@ that answers it, or says that none does.
   matters 3, 9 and 10 (39514, 39614 and 39631); and the question on
   `attribution.pr` above. No milestone names them until the person orders the
   list.
+- What devloop does with an answer Claude Code sends by itself once the time
+  `askUserQuestionTimeout` sets has run out, the field `afkTimeoutMs` marking
+  it, where today devloop takes it for the person's answer; recorded on 1
+  November 2026, status line 44850 of the roadmap entry of that date on the
+  question timeout, which leaves to the person which milestone takes it up;
+  no milestone names it.
 - Whether a process started in the background survives across turns in a
   devloop run (milestone 4).
 - Whether the classifier lets a start command through unattended (milestone

@@ -750,8 +750,7 @@ stands.
 - `Duration` from the run you just did, roughly.
 - Rewrite "What these checks do not cover" from the table you have just written,
   rather than adding to what is there. Lines from an earlier pass describe an
-  earlier table: a repository that had no code still said so after four classes
-  had been filled. Every line in that section has to be true of the table as it
+  earlier table. Every line in that section has to be true of the table as it
   now stands, and a class you just filled has no line there at all.
 
 `check` is `setup-project`'s target and this skill's to keep true: it runs the

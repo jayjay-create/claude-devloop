@@ -39571,7 +39571,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   and #821 that `yq` is not installed; #1035 put „Soll das landen?“; the
   handover of `brew install yq` came at #1076, after the person's #1045, and
   the run said „ich hätte das vor der Frage sagen müssen“. `build-work`
-  expanded 1147 to 1387, point 7: under a no the install stays the user's to
+  expanded 1147 to 1386, point 7: under a no the install stays the user's to
   run, "Report what it installs, what it unblocks, and the exact command ...
   and both ways it can go, in the same breath", and "A tool the task needs
   is not replaced by a stand-in because the run takes itself not to be
@@ -43596,8 +43596,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Every line number of a file in this entry holds at `628d166` unless it says
   otherwise; a line of this file holds at `628d166` as well, no line having
   moved, the corrections standing on their physical lines and this entry
-  standing after the last; `docs/skill-conventions.md` gains lines after 1417,
-  1722, 4007 and 4039 to 4078 and `docs/plan.md` after 602 and 1113, as at
+  standing after the last; `docs/skill-conventions.md` gains lines after 1419,
+  1722, 3826, 3982, 4039 and 4072 and `docs/plan.md` after 144, 602 and 1118, as at
   `628d166`. No session of Claude Code was started; twenty subagents of the
   session read the entries and the rows of the table. Beyond `git fetch`,
   GitHub was read for `devloop-test-aa` through `gh api` — its branches, refs,
@@ -43656,8 +43656,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the handovers' forms, the run under a no, point 7 in
   `shared/install-tool.md` read through the hook's rule and the reader's
   escapes, the short run, and `start-work` running the install-issues program
-  before its query. The three decisions of 30 October 2026 stand at 43287 to
-  43316 and decision (9) of 24 October 2026 at 37775; the status lines 42200,
+  before its query. The three decisions of 30 October 2026 stand at 43296 to
+  43324 and decision (9) of 24 October 2026 at 37775; the status lines 42200,
   42213, 42226, 43091, 43116, 43123, 43139, 39600, 39827, 39514, 39614 and
   39631 say what this entry cites them for. `README.md` carries no date and
   names no file of devloop's own, both steps of the workflow green on it; the
@@ -43685,8 +43685,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `c681f46`; against lines 532 to 704 of `skills/build-work/SKILL.md` at
   `886f72f` `diff` prints three hunks, `84c84,98`, `150,154c164,181` and
   `165c192,194`. The expanded `build-work` at `886f72f` against `c681f46`, the
-  plugin's path replaced by one word in both, differs in 121 lines, at 1099,
-  1234 to 1262, 1242, 1335 and 1391 to 1428 of the newer; `be6c223` equals
+  plugin's path replaced by one word in both, differs in 121 lines, at 1099 to 1110,
+  1245 to 1262, 1265 to 1266, 1358, 1414 to 1428, 1494 to 1511, 1522 to 1524, 1766 to 1788 and 1811 to 1819 of the newer; `be6c223` equals
   `c681f46` in the expansion. `gh api
   repos/jayjay-create/devloop-test-aa/branches` lists `main` and
   `remove-install-record`, `…/branches/run-remove-install-permission` answers
@@ -43710,7 +43710,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     of `bin/devloop-arm` and of `bin/devloop-auto-mode-question`". Since
     `6edeef1`, 23 October 2026, the step runs every self-test under `bin/`,
     found by the word `--self-test`, `.github/workflows/stock-take.yml` lines
-    374 to 382. Mended on those lines: "runs every self-test under `bin/`
+    374 to 384. Mended on those lines: "runs every self-test under `bin/`
     since 23 October 2026, until then those of the reader, of
     `bin/devloop-arm` and of `bin/devloop-auto-mode-question`"; the row of the
     defect of 14 October 2026 whose evidence stood on that line re-anchored to
@@ -43719,7 +43719,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     Recorded, not built: the conventions say under Registering a skill that the job hooks on every system runs every self-test under bin since 23 October 2026.
 
   - `docs/skill-conventions.md` under "Before a handover, run these", lines
-    4039 to 4040: "Today's six lines fall out like this — six lines over six
+    4038 to 4039: "Today's six lines fall out like this — six lines over six
     sites". Check 17 prints seven lines over six sites since `bc69673`, 28
     October 2026, `skills/setup-checks/SKILL.md:564` "once it has run" having
     come with the form A wording of step 3, `git log -S'once it has run the
@@ -43857,11 +43857,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
     Recorded, not built: the entry on the three closing runs names line 37345 for defect 15 of the six closing runs.
 
-  - Line 39574: `expanded 1127 to 1197` → `expanded 1147 to 1387`; point 7 of
-    `build-work` expanded at `d49921f` runs from 1147 to 1387; 1127 is item 4.
+  - Line 39574: `expanded 1127 to 1197` → `expanded 1147 to 1386`; point 7 of
+    `build-work` expanded at `d49921f` runs from 1147 to 1386; 1127 is item 4.
     Corrected.
 
-    Recorded, not built: the entry on the three closing runs names build-work expanded 1147 to 1387 at d49921f for point 7.
+    Recorded, not built: the entry on the three closing runs names build-work expanded 1147 to 1386 at d49921f for point 7.
 
   - Line 39621: `lines 433 to 436 and 451 to 462` → `lines 433 to 436, 451 to
     462 and 466`; the branch cut, "1. Cuts a branch from the current main
@@ -44283,7 +44283,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
     Recorded, not built: shared/install-tool.md has 202 lines, the moved text changed in three hunks, and the expanded build-work differs from 886f72f in 121 lines.
 
-  - The same entry, line 42566 says the rule's command "printed 331 lines,
+  - The same entry, lines 42565 to 42567 says the rule's command "printed 331 lines,
     4,111 words, byte-identical to the five files with the variable replaced,
     the five first lines at 1, 174, 230, 255 and 281"; `wc -l -w` prints 360
     and 4480 in trees of `c681f46`, `be6c223`, `77e9a4a` and `628d166`, under
@@ -44337,7 +44337,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   - `skills/setup-checks/SKILL.md` lines 1017 to 1019, "Where a side did not
     answer, say the binding could not be determined rather than reporting the
-    gate either way", and `skills/setup-project/SKILL.md` lines 440 to 447,
+    gate either way", and `skills/setup-project/SKILL.md` lines 443 to 447,
     "Where a side did not answer … that is a third outcome and not a quiet no:
     the binding could not be determined, rather than a claimed gate or one
     ruled out", keep the word-for-word reading of condition 2 without the
@@ -44346,7 +44346,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
     without admin rights on a repository whose gate is a ruleset, step 8 of
     `setup-checks` finds the mode not set up where the program and the guard
     on the mark find condition 2 holding, the case the entry at 38498 names at
-    38615 to 38619.
+    38615 to 38621.
 
     Recorded, not built: the two setup skills say the gate's binding could not be determined where a side did not answer, without the exception for a side that binds — should: setup-checks step 8 and setup-project step 7 say the reading build-work says, one side binding deciding, and could not be determined only where none binds and a side did not answer.
 
@@ -44883,7 +44883,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   7339' still runs" at 13:53:09 UTC, then "the self-test of devloop-bounded
   is red"; every other self-test, the twenty handlers, the counted refusal
   and the guard on the mark passed there, and the step ended with exit 1
-  through `exit "$red"`, `.github/workflows/stock-take.yml` line 500. The
+  through `exit "$red"`, `.github/workflows/stock-take.yml` line 490. The
   four other checks were green. Not a change of this branch, which touches
   no file under `bin/` and nothing that step reads. The case runs `sh -c
   'exit 3'` under a bound of 7339 seconds and, once the program is back,
