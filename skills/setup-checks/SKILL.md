@@ -1041,13 +1041,13 @@ thirteen lines, inside the bound the output style of devloop sets. Not
 said, in a field or before the call: the steps of a task, the issue for a
 task that does not go green, a failed merge ending the run, that the run
 does not start again by itself, that the review costs more without them,
-that the run stands still until they write, and how `caffeinate` is ended;
-nor that the run takes up the issues it raised against itself, that there
-is no ceiling on the number of tasks, that the result reads as the diff
-from the starting commit, how the run ends and how a standstill is seen, or
-a word against a yes on a first project. That behaviour stands where it is
-decided, `build-work` under "Unattended mode" and step 6, and `plan-work`
-at the end of Stage 1.
+that the run stands still until they write, and how `caffeinate` is ended.
+Nor is it said that the run takes up the issues it raised against itself,
+that there is no ceiling on the number of tasks, that the result reads as
+the diff from the starting commit, how the run ends and how a standstill is
+seen, or a word against a yes on a first project; that behaviour stands
+where it is decided, `build-work` under "Unattended mode" and step 6, and
+`plan-work` at the end of Stage 1.
 
 **Two things change what is put.** Where the gate is already there and
 binding and the mode is not set up, the question is put all the same, with

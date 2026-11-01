@@ -801,15 +801,16 @@ possible at all — so there is a person here, and the waiting form in
 Arming can also be refused, and for three different reasons. Auto-merge may be
 switched off on the repository — `gh api repos/OWNER/REPO -q .allow_auto_merge`
 returns false, and that is the only one this field answers: it reads true in a
-repository with a required check and in one without alike. That is the ordinary
-state at a first setup, question 2 of step 4 being put only where a gate stands
-already, and the check setup's step 8 switches it on where it sets a gate up, so
-nothing here asks them to. That is this case only where a gate stands, as the
-handover has it: where none does, the program answers `no required check:` at a
-mergeable value, and the case is the second, whatever the field reads. Or there
-may be no gate for it to wait on at all. Or there is a gate, auto-merge is on
-and this pull request is already past it: the required check has gone green,
-nothing is outstanding, and GitHub will not arm what it would merge on the spot.
+repository with a required check and in one without alike. Switched off is the
+ordinary state at a first setup, question 2 of step 4 being put only where a
+gate stands already, and the check setup's step 8 switches it on where it sets a
+gate up, so nothing here asks them to. Switched off, it is this case only where
+a gate stands, as the handover has it: where none does, the program answers
+`no required check:` at a mergeable value, and the case is the second, whatever
+the field reads. Or there may be no gate for it to wait on at all. Or there is
+a gate, auto-merge is on and this pull request is already past it: the
+required check has gone green, nothing is outstanding, and GitHub will not arm
+what it would merge on the spot.
 The program reads `mergeStateStatus` once a second and arms in the pass that
 reads `BLOCKED`, the state that accepts it, since a reading in one call and the
 arming in the next leave room for it to move; its last line says how it ended.

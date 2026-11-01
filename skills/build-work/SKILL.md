@@ -411,20 +411,20 @@ blocker in the tracker and let the readiness query do its work.
 Hand the task to a subagent with a fresh context: the task issue, the spec it
 belongs to, the paths of the control documents, where the mark stands that
 says which mode this run is in — not this conversation — and five rules it
-reads nowhere else, since it reads this file nowhere. What a refusal is and
+reads nowhere else, since it reads this file nowhere: what a refusal is and
 what follows one with nobody there, under "A guard's block, with nobody
-there" above, the issue raised by the subagent itself. What a command that
+there" above, the issue raised by the subagent itself; what a command that
 does not finish inside its call is, under "When a command does not answer"
 above, with the ten minutes every install and every run of the check chain
 is called with, and that a chain which does not finish ends the task as a
-refusal does, the issue raised by the subagent as well. That the check
+refusal does, the issue raised by the subagent as well; that the check
 targets belong to the check setup, the rule inserted below the list of this
 step — the subagent changes no check target itself, not in the table and
 not in the Makefile or whatever runs the targets, and names a needed change
 in its report, the call to `setup-checks` being the main run's and not its
-own. That a file whose content is text about commands is written with the
+own; that a file whose content is text about commands is written with the
 editing tool, the rule above "Step 1", for `environment.md`, the workflow
-file and a body file alike. And the lines of
+file and a body file alike; and the lines of
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-tool-state --build` as the paragraph
 below has them, the record line among them, and beside them nothing of this
 run's own on whether the subagent installs or what — no point 7, no "do not
@@ -1343,8 +1343,8 @@ established, the query that did not answer and its message, which is a
 condition that does not hold, said as not established and never read as a
 yes or a no. For 4 it prints that the hook reads it, and the hook on this
 call puts the mode beside the result, as the item of 4 below says. Read
-none of the six yourself beside that call: read one by one, some are left
-unread at the build's start. The seven, what each line is about, and what
+none of the six yourself beside that call: read separately, not all seven
+get read at the build's start. The seven, what each line is about, and what
 the run says where one does not hold:
 
 1. No class in `checks.md` is `empty`. Every one is `filled`, or `skipped` in

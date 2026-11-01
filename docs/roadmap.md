@@ -45140,6 +45140,34 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   October 2026 names as corrected; the note of the defect on the three tasks
   of the roadmap carries (a) to (c). No run is recorded.
 
+  **After the review, a third commit.** The first two read against `8afb558`
+  before the merge, by five reviewers over the loaded files and
+  `docs/rationale.md`: no rule lost, no text the person reads changed beyond
+  (2) above. Corrected: `setup-checks`, "Step 8", the sentence on where the
+  behaviour stands decided read as covering both lists of what is not said,
+  where it covers the second alone, now two sentences; `setup-project`,
+  "Step 8", "That is the ordinary state" pointed at the field reading true,
+  where it means auto-merge switched off, now said so; `build-work`, "Step
+  3", the five rules stood as sentences without a verb, now one list after a
+  colon; `build-work`, "Unattended mode", the short reason for reading the
+  six in the program's one call reworded so that it reads as one;
+  `shared/command-does-not-answer.md`, the message and its limit put in one
+  phrase. In `docs/rationale.md` three working notes left from the writing
+  went, and three points came in that the first commit lacked: under
+  `build-work`, "Step 6", the restart past the gate with the measurement of
+  17 October 2026 and its two approved wordings, and the issues checked
+  closed after a merge with the case of 13 September 2026; under "Unattended
+  mode", the refusals for conditions 6 and 7 in the wording approved on 27
+  October 2026; 294 points now, every quoted German wording found verbatim
+  in the roadmap. In `docs/stock-take.tsv` seven records re-anchored onto
+  the lines that changed and one not-a-thing written for a line that came
+  uncovered. The tool after it: exit 0, broken records 0, uncovered lines 0
+  of 5357, units without a straight path 0, findings 14, closed defects 42;
+  walked 619, built and never walked 1459, recorded and not built 461,
+  undetermined 24, as after the second commit, the lines changed here having
+  lost their counting run there already. The twenty checks: nineteen print
+  what they printed after the second commit, check 16 its green line.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

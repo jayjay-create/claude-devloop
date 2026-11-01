@@ -34,7 +34,7 @@ run.
 started a second time.** Every install and every run of the check chain is
 called with ten minutes, 600000 milliseconds, the most Claude Code gives one
 foreground call. A call with a limit of its own that reaches it is ended: exit
-code 143 and the message `Command timed out after` its limit in the result,
+code 143, in the result `Command timed out after` followed by the limit,
 nothing of it running on and no output file named. A call without a limit of its
 own the vendor's changelog says is moved to the background, where it runs on;
 that is not measured, and no install and no run of the chain is called without

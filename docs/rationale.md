@@ -2399,6 +2399,28 @@ Nothing in this file stood as history; its rules carry their own reasons.
 - **The merge handover is not framed as something gone wrong.** A run that stops
   mid-task, over a change nobody asked for, as though it had hit an error,
   frames the handover wrongly.
+- **With nobody there, `past its gate:` with a `rerun:` line is no stop at
+  first: every run its `rerun:` lines name is restarted once, whole, and the
+  program called again.** A run without the person does not end because a check
+  was quick, and a run restarted whole stands on none of its old result. Case:
+  measured by the person on 17 October 2026 on #16 of `devloop-test-x`: `CLEAN`
+  before, one run on the head commit, `BLOCKED` one second after `gh run rerun`
+  with an empty rollup, armed in the same pass two seconds after it, merged 42
+  seconds after it. Approved wordings for the stop where it does not go
+  through, in the first group of the last message: „Bei Pull Request #<Nummer>
+  war die Prüfung schon durchgelaufen, bevor GitHub das automatische Mergen
+  annehmen konnte, auch nach einem Neustart. devloop mergt nie selbst, deshalb
+  hört der Lauf hier auf.“, and where the required check comes from a foreign
+  service: „Bei Pull Request #<Nummer> war die Prüfung schon durchgelaufen,
+  bevor GitHub das automatische Mergen annehmen konnte, und sie kommt von einem
+  fremden Dienst, den devloop nicht neu starten kann. devloop mergt nie selbst,
+  deshalb hört der Lauf hier auf.“, entry "Arming past the gate, built after the decisions of the person of 17
+  October 2026: the reading of a pull request's state and the arming in one
+  call, by a program of the plugin, and with nobody there one restart of the
+  runs that carry a required check where that check was through before GitHub
+  could accept the arming; defect 5 of the entry of 16 October 2026 on the runs
+  of that day with it; 17 October 2026, version 0.144.0." (lines
+  27387–27412).
 - **Unattended, the wait on the checks happens inside the answer.** Nothing
   wakes a run, so an answer that ends on a promise to report back ends the run.
   Case: on 11 and 13 September 2026 in `devloop-test-o`, pull requests 50, 54,
@@ -2429,6 +2451,17 @@ Nothing in this file stood as history; its rules carry their own reasons.
   findings. No entry records this in so many words; the nearest is "The same
   failure picture came out of the review three times and was fixed three times
   separately, measured across 11 to 13 September 2026 in `devloop-test-o`."
+- **After every merge the issues the pull request claimed are checked closed,
+  and closed by hand where the platform did not.** The closing keyword is the
+  right link and not a guarantee, and an issue left open over landed work reads
+  to every later query as work not done. Case: on 13 September 2026 in
+  `devloop-test-o`, over five merges, four issues closed within seconds — 47 by
+  pull request 50, 48 by 53, 49 by 54, 52 by 57 — and one did not: pull request
+  55 merged at 09:21:34 carrying a correct `Closes #51`, issue 51 was still open
+  four minutes later and was closed by hand at 09:25:57, entry "A run stopped
+  four times after arming auto-merge, each time on a sentence it wrote itself,
+  and every file that does say what follows arming says something that cannot
+  wait."
 - **After a merge that lands code with a class still `empty`, `setup-checks` is
   called whole, and why it comes now stands at the start of the message that
   puts its step 2 question.** Why a question comes now stands with the question
@@ -2446,6 +2479,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   copies in `hooks/pre-tool-use-merge-guard.sh` and `docs/skill-conventions.md`,
   which two checks under "Before a handover, run these" hold to the shared file;
   a change to one of the three is a change to all three.
+
 ### Step 7 — Back to step 2
 
 - **Step 7 decides nothing; step 2 decides what is next.** A second statement of
@@ -2456,6 +2490,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   three words of its own, two of them the opposite of step 2's, entry "The
   loose-issue rule was written by appending, and the sentences it competes with
   were left standing."
+
 ### Unattended mode
 
 - **Where condition 4 fails, the refusal says that the run does not start, the
@@ -2473,17 +2508,28 @@ Nothing in this file stood as history; its rules carry their own reasons.
   `setup-checks`, a hook for permission prompts, and start condition 4 off the
   permission mode; 9 October 2026, version 0.133.0." (lines 14876–14881), with
   the command named whole.
+- **Where condition 6 or 7 fails, the refusal says that the run does not start,
+  the yes it needs, a no on record, the command that sets it up, and what
+  happens without the flag.** It is read by the person who comes back, with
+  nobody left to ask. Approved wordings: for 7 „Der Lauf ohne dich startet
+  nicht. Dafür brauche ich dein Ja, Prüfwerkzeuge selbst zu den Paketen des
+  Projekts hinzuzufügen. Mit `/devloop:start-work --auto` kannst du ihn
+  einrichten. Ohne `--auto` baue ich die geplanten Aufgaben mit dir und frage
+  dich bei jedem Prüfwerkzeug, ob ich es hinzufügen darf.“; for 6 „Der Lauf ohne
+  dich startet nicht. Dafür brauche ich dein Ja zum Installieren von Werkzeugen
+  außerhalb des Projekts. Mit `/devloop:start-work --auto` kannst du ihn
+  einrichten. Ohne `--auto` baue ich die geplanten Aufgaben mit dir und gebe dir
+  jede Installation als Befehl, den du selbst ausführst.“; where the record says
+  no, „Dazu hast du Nein gesagt.“ follows the second sentence, entry "Terms
+  untranslated, the start command named whole, the design line gone." (lines
+  40048–40062).
 - **On the direct route, a mode not set up goes to `setup-checks` step 8
   alone.** Step 8 puts the permissions and records the answers, whereas an offer
   of the workflow file and the protection alone would set the mode up without
-  the permissions and without a record. - The question on the rule: none here.
-  It is `setup-checks` step 8's rule, the other agent's.
+  the permissions and without a record.
 - **Where the mark is deleted is listed in one place, and how it is deleted
   stands in one shared text inserted at every end.** A text written once and
-  inserted at every end leaves no end that took one wording and not the other. -
-  The step 3 chain and the `setup-checks` halts: none here. Their reasons belong
-  under "With nobody there" and step 3 point 6, which are in the other agent's
-  range.
+  inserted at every end leaves no end that took one wording and not the other.
 - **The scope of a run without them is settled and not said as the run opens.**
   The opening message ends no turn, so the room to object it gives would reach
   the person only at the run's end; what they need stands in the last message.
@@ -2512,8 +2558,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
 - **The last message is described once, in the text on the mark's deletion that
   every end of the run with nobody there inserts.** A description in
   `build-work` alone would be read by none of the ends in `plan-work` and
-  `cut-into-tasks`, which do not load it. - The approved headings „Ergebnis“ and
-  „Für dich zu tun“: none here. They belong to `shared/mark-deletion.md`.
+  `cut-into-tasks`, which do not load it.
 - **Neither how to read the diffs nor how to stop the run is said.** The last
   message has no group for reading the git log, and at its end nothing is left
   to stop.
