@@ -44335,7 +44335,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   thing sited and evidenced on its status line, the line saying what should
   hold; nothing of it is built here.
 
-  - `skills/setup-checks/SKILL.md` lines 1013 to 1015, "Where a side did not
+  - `skills/setup-checks/SKILL.md` lines 1017 to 1019, "Where a side did not
     answer, say the binding could not be determined rather than reporting the
     gate either way", and `skills/setup-project/SKILL.md` lines 440 to 447,
     "Where a side did not answer … that is a third outcome and not a quiet no:
@@ -44561,6 +44561,254 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   line 1104, which 5a changed, so that its runs count again from 0.168.0 on,
   the undercount section D allows; the self-test 124 cases, 95 of 95 messages
   asserted.
+
+- **Binding side decides in the setup skills, run-workflow tested on GitHub.**
+  31 October 2026, version 0.169.0. On `task/follow-up-after-milestone-3`,
+  off `origin/main` at `8053282`, in four commits: the builds with the
+  version, the correction below and the rows of the things they change;
+  then this entry with the sentence in `docs/plan.md` and its rows; then,
+  on 1 November 2026, decision (6) below, with the note of its row and the
+  sentence in `docs/plan.md` said anew; then, on 1 November 2026 as well,
+  the halt of the platform's run of this pull request on macos-latest,
+  below, with its row. The
+  report stands on this machine as `~/devloop-report-2026-10-31-follow-up.md`,
+  in English, and is not in the repository. Every line number of a file in
+  this entry holds at the tip of this branch unless it says otherwise; a
+  line of this file holds at `8053282`, the correction standing on its
+  physical line and this entry standing after the last. The order of this
+  day asked for two builds out of the entry at 43585, a correction in it
+  and a decision; the builds and the correction are here, and the decision,
+  which that order's own rule held back at the measured eleven, came on 1
+  November 2026, below.
+
+  **Built: the two setup skills read the gate's binding as `build-work` and
+  `bin/devloop-start-conditions` read it.** The defect of status line 44351,
+  which names step 7 of `setup-project` where the place stands in step 4,
+  question 2, the bullet on putting the two sides together; step 7 is the
+  pointer block in CLAUDE.md. Before, at `8053282`: `setup-project` 443 to
+  449 read a side that did not answer as the third outcome, the binding not
+  determinable, whatever the other side showed, and `setup-checks` 1017 to
+  1019 said to say so. After: `setup-project` 443 to 459 and `setup-checks`
+  1017 to 1030 say what `build-work` 1526 to 1534 says and the program's
+  lines 437 to 468 read — the gate binds where a side answered with a gate
+  that binds, whatever the other did, a ruleset that binds with the classic
+  query unanswered among it; it does not bind where none binds and every
+  query that could show one answered; the binding could not be determined
+  only where no answer showed a gate that binds and a query that could show
+  one did not answer, a side's own, the query of a ruleset its rules named,
+  or for a classic gate without `enforce_admins` the query for
+  `.permissions.admin` — each with the date and what stood before; the
+  sentences on not saying and not writing the third outcome stand unchanged.
+  What each skill does with the result afterwards, read against the guard
+  on the mark, `hooks/pre-tool-use-mark-guard.sh` 176 to 189, which blocks
+  a write of the mark on every line of conditions 1, 2, 5, 6 and 7 that is
+  not `holds`: `setup-checks` step 8 reads the five things of
+  `shared/mode-set-up.md`, says the mode is set up and skips the step where
+  all five hold (1030 to 1031), else puts the question, the first sentence
+  of its yes gone where the gate is there and binding (1177 to 1181), and
+  on a yes does none of the three of the gate order where the gate was
+  there and binding (1531 to 1535), auto-merge alone; otherwise the gate
+  order sets the protection with `enforce_admins`, which needs admin.
+  `setup-project` step 4 puts the auto-merge question only where a gate
+  stands and auto-merge is off (477 to 479), says nothing of a gate that
+  does not bind and neither says nor writes the third outcome (457 to 459);
+  its step 8 reads the gate again off the arming program's `gate:` lines
+  for the merge handover. Neither skill sets the mode up without the
+  person: `setup-checks` step 8 does, with them there or through `--auto`.
+  The cross-check, against the three readings at 38615 to 38626 and 38705
+  to 38719 and the case of the status line, an account without admin
+  rights, the gate a ruleset reading `never`, the classic query answering
+  403: the program and the guard find condition 2 holding and let the mark
+  through; `setup-checks` before found the binding not determinable, the
+  mode not set up by all five, and on a yes went to set a protection that
+  needs admin, refused, the record then saying no with the refusal as its
+  reason; after, it finds the gate binding, and with the other four holding
+  says the mode is set up. `setup-project` before left undecided whether a
+  gate stands for its auto-merge question; after, the gate stands and binds.
+  The second reading, none binds and every query answered, and the third,
+  no answer showed a binding gate and a query that could show one did not
+  answer, read the same before and after, the third now naming the three
+  queries. The table of the cases stands in the report.
+  Built: both setup skills say the reading build-work and the program give condition 2, a side that binds deciding, since 31 October 2026.
+
+  **Built: the self-test of `scripts/devloop-run-workflow` runs on GitHub.**
+  Before, nothing ran it there: the job `stock-take` ran the tool and its
+  self-test, lines 77 to 81 at `8053282`, and the step from line 367 of the
+  job `hooks on every system` every self-test under `bin/`. After, that step
+  runs it after its loop over `bin/`, lines 401 to 407, through the
+  interpreter the step found, red where it is red, on ubuntu-latest,
+  macos-latest and alpine, the job in which it can run on most systems;
+  under Windows it is left out and a line says so and why: the program runs
+  no step without a shell there, the default shell of GitHub's Windows
+  runners being pwsh, which it does not run, and its self-test asserts the
+  command `bash -e {0}` for such a step and for the job `stock-take`, so it
+  would be red there by construction and not for a fault, the job
+  `stock-take` running on ubuntu-latest alone. The job's comment, 327 to
+  339, the head comment, 30 to 33, `docs/skill-conventions.md` under
+  "Registering a skill", 1419 to 1424, and its paragraph on the twentieth
+  check, 4003 to 4004, say so. Measured here: the self-test green on this
+  Mac, 33 cases; the block run as a script with `RUNNER_OS` set to Windows
+  printed the line; the platform's run comes with the pull request.
+  Built: the job hooks on every system runs the self-test of scripts/devloop-run-workflow on three of its four systems since 31 October 2026.
+
+  **Decided on 1 November 2026**, by the person, counting on from (4) and
+  (5) of the entry at 43585. (6) The defect of status line 44361, `pipx
+  environment --value PIPX_BIN_DIR` writing a log file at every call of the
+  guard and of `bin/devloop-tool-state`, is not built; the query stays, and
+  the defect is a small matter by decision (9) of 24 October 2026, line
+  37775. The reason: the guard must know where pipx on this machine really
+  installs, to block or to let through rightly, and devloop reads that
+  place for every installer off the installer itself rather than assuming
+  it; the file lies in the log folder pipx keeps for itself and bounds
+  itself — measured on this branch, eleven files after twelve calls and no
+  more after that, 403 bytes each; with npm a switch turns the log off
+  without changing the query, with pipx none does. The person had first
+  built on the ten of the documentation; the order of 31 October 2026
+  bound the recording to a measurement, twelve calls under a fresh `HOME`
+  and no recording where more than ten files stand, so that the decision
+  was held back that day, and they decided on 1 November 2026 with the
+  measured eleven. The should of the status line, "a query that writes
+  nothing, or the folder read off PIPX_BIN_DIR and pipx's documented
+  default without a call, the person deciding which", is decided so:
+  neither, the query as it stands; the status line and its should stand
+  as written, the note of the thing's row carries the decision. The
+  measurement of 31 October 2026, as it stood here that day. The
+  documentation, pipx.pypa.io/stable/reference/environment-variables.html,
+  read on 31 October 2026, says of `PIPX_MAX_LOGS`: "Number of command logs
+  to keep in the log directory, counting the current command's; pip and uv
+  error logs share a separate limit of the same size. `0` acts like `1`.
+  pipx keeps the logs of commands still running. Default: `10`." Measured
+  with pipx 1.17.6 under a fresh `HOME`: twelve calls, each exit 0, left
+  eleven files in `Library/Logs/pipx`, ten old beside the current; two
+  calls more left eleven each. pipx's `_setup_log_file` deletes the oldest
+  so that `PIPX_MAX_LOGS` remain and then writes the current command's log
+  beside them, where the documentation counts the current one in; the
+  folder does not grow past eleven.
+
+  **Line numbers of dated entries, corrected in place.** As the audits do,
+  by the paragraph of `docs/skill-conventions.md` on a should a later
+  decision changes: one correction on one physical line, the line count of
+  this file unchanged above this entry, the line carrying no anchor of the
+  table. The defect thing is sited on its status line here and evidenced on
+  the corrected line; the evidence is `skills/setup-checks/SKILL.md` at
+  `628d166` and at `8053282`, numbered.
+
+  - Line 44338: `lines 1013 to 1015` → `lines 1017 to 1019`; the sentence
+    "Where a side did not answer, say the binding could not be determined
+    rather than reporting the gate either way" stands on 1017 to 1019 of
+    `skills/setup-checks/SKILL.md` at `628d166` as at `8053282`, 1013 to
+    1015 being the sentences on the bypass at the merge and on the classic
+    field. Corrected.
+
+    Recorded, not built: the entry on the audit after milestone 3 names setup-checks lines 1017 to 1019 for the sentence on a side that did not answer.
+
+  **The platform's run of the checks of this pull request, 1 November 2026:
+  the job `hooks on every system` stopped at fifteen minutes on
+  macos-latest, the self-test of `bin/devloop-bounded` standing past its
+  case "does not end".** Run 41284271866 on pull request #217, job
+  124782277813, its log read on 1 November 2026 with `gh run view --job
+  124782277813 --log`, changing nothing. The step at line 383 of
+  `.github/workflows/stock-take.yml` began the self-test of
+  `bin/devloop-bounded` at 07:19:06 UTC, printed the ok lines of its first
+  ten cases and at 07:19:07 UTC "ok   does not end: ended with what it
+  started, the line, exit 124", and after that nothing until "##[error]The
+  operation was canceled." at 07:33:54 UTC, the job's limit,
+  `timeout-minutes: 15` at line 357; the platform's clean-up at the end of
+  the job printed "Cleaning up orphan processes" and "Terminate orphan
+  process: pid (8060) (sleep)". The job's three other systems,
+  ubuntu-latest, alpine and windows-latest, were green, and so was the job
+  `stock-take`; the check main requires was red on that halt alone. Not a
+  change of this branch: `git diff 8053282 HEAD` touches neither
+  `bin/devloop-bounded` nor the loop of the step that runs every self-test
+  under `bin/`, lines 392 to 400; the lines the branch adds to the step,
+  401 to 407, stand after that loop and had not run. Not seen before on
+  macOS: the self-test has run in this job on macos-latest since pull
+  request #200 of 23 October 2026, and in all 24 runs of the job there
+  before this one, from run 39954085168 of 23 October 2026 to run
+  41200694984 of 31 October 2026, each read off its log with `gh` on 1
+  November 2026, it printed its twelve cases ok, the case "does not end"
+  and the case of the fetch over a transport that never answers among
+  them, and "SELF-TEST PASSED: 12 cases" within three seconds.
+
+  Which step after line 80 of `bin/devloop-bounded` can hang: line 88, the
+  fetch over a transport that never answers, `out=$(cd "$T/repo" &&
+  GIT_SSH_COMMAND='sh -c "sleep 7337" --' "$self" 1 git fetch -q origin
+  2>&1)`: a command substitution returns only once every process holding
+  its pipe has closed it, as the comment at lines 36 and 37 of the program
+  says of a child left alive. Read off the log against the program: the
+  last line printed is the ok of line 82, the case "does not end"; the
+  lines between it and 88 — `absent` at 83, `within` at 84 and `gone` at
+  85, a grep over a variable, a comparison of two numbers and one `pgrep`,
+  and at 87 `git init` with `git remote add` on a folder under the
+  temporary one — print nothing where they hold and FAIL with exit 1 where
+  they do not, and no FAIL stands in the log; the ok of line 89, the fetch
+  case, never came; and the one orphan the platform ended was a `sleep`,
+  where the sleeps of the self-test that outlive their bound are 7331 and
+  7333 of the case "does not end", which line 85 found gone, and 7337 of
+  the transport, so the one left was the transport's, which `kill_tree`
+  had not reached. Why it was not reached on that runner is not measured.
+  What the program's own lines allow: `kill_tree`, line 38, lists a
+  process's children with `pgrep -P` and ends them before it ends the
+  process, so a transport git starts between that listing and the kill of
+  git is never listed; at a bound of one second that is a window, read off
+  the code and not measured. Nothing is built here.
+
+  A new defect, not the one of 23 October 2026 on a further system. By
+  section A of the head of `scripts/devloop-stock-take` one defect is one
+  thing wherever it is named, and by section D a defect is closed where its
+  should holds. The defect of status line 36634 is that under Windows with
+  Git Bash the program does not end a command that does not end together
+  with what it started, its should Windows with Git Bash and the job on
+  windows-latest; the log of that halt, job 120415450158 of pull request
+  #200, ends with "ok   input through: cat prints what it was fed" at
+  12:34:12 UTC and the cancel at 12:47:39 UTC, the self-test standing
+  inside the case "does not end", as the entry reads it at 36577. Here
+  that case passed, with what the command started found gone, and the
+  self-test stood in the case after it, on macOS, the system the program is
+  written for; that should built would leave this halt as it is, so by
+  section D it does not close it, and one row for both would carry two
+  shoulds. The order of this day read the two as the same halt at the same
+  place; read against each other, the two logs put the Windows self-test
+  inside the case "does not end" and the macOS one past it. Its own status
+  line below and its own row in the table; the row of the Windows defect
+  stays as it is. Milestone 12, every operating system, as the Windows
+  defect.
+
+  Recorded, not built: on macos-latest the self-test of `bin/devloop-bounded` hung on 1 November 2026 in its case of a fetch over a transport that never answers, after the case "does not end" had passed, a `sleep` of the transport left alive holding the self-test's pipe until the job hooks on every system was stopped at fifteen minutes, once in 25 runs of the job on that system, the cause not measured — should: in milestone 12 the self-test of `bin/devloop-bounded` ends on every system within its bound.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`: the defect of 44351 evidenced on the line of
+  `setup-checks` that carries the reading, the place in `setup-project` in
+  its note; the two things on the third outcome renamed, no run on them,
+  their notes naming the old names; a thing for the binding side in
+  `setup-checks`, where none stood, and the new lines of both skills part
+  of the things they belong to; two outcomes of the hooks step for the
+  self-test of `scripts/devloop-run-workflow`, on three systems and left
+  out under Windows, with the `if` line part of the second; the defect of
+  44361 with the measurement and, since 1 November 2026, decision (6) in
+  its note; the
+  defect of the correction above; the head of this entry and its two built
+  lines as part of the things they record. No run is recorded for this
+  entry. The figures of the tool and the checks before and after stand in
+  the report. The tool before the commit, in a clean bash with
+  `/usr/bin/grep`: exit 0, no broken record, 14 findings, 42 closed
+  defects, no unit without a straight path, none of 5431 lines of the
+  search set uncovered, 5420 at `8053282`, the eleven added being the new
+  lines of the two skills and the workflow holding a search word and the
+  six lines of this entry holding a status word; 458 things recorded and
+  not built, 458 before, the defect of 44351 built and the defect of the
+  correction in its place; 1338 built and never walked, 1334 before, that
+  defect, the binding side in `setup-checks` and the two outcomes of the
+  hooks step; 738 walked, as before; the self-test 124 cases, 95 of 95
+  messages asserted. The fourth commit, 1 November 2026: the row of the
+  defect of the halt on macos-latest, sited and evidenced on its status
+  line above, nothing else of the table touched. The tool, run once that
+  day with the paragraph, its status line and its row in place, the same
+  way: exit 0, no broken record, 14 findings, 42 closed defects, no unit
+  without a straight path, none of 5432 lines of the search set uncovered,
+  the one added that status line; 459 things recorded and not built, the
+  one added that defect; 1338 built and never walked and 738 walked, as
+  before.
 
 ## Decisions taken against
 

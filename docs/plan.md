@@ -617,6 +617,17 @@ October 2026 name as not belonging to the install, with defects 8 and 11 of
 the entry on the three closing runs and its small matters 3, 9 and 10, stand
 as the list for the milestones after milestone 3 under "## Open" below, their
 order the person's.
+On 31 October 2026 the two setup skills came to read the gate's binding as
+`build-work` and `bin/devloop-start-conditions` read it, one side binding
+deciding, the defect of status line 44351 of the roadmap entry of that date
+on the audit built; the self-test of `scripts/devloop-run-workflow` runs on
+GitHub since that day, in the job hooks on every system on three of its four
+systems; and the pipx query of the install guard and of
+`bin/devloop-tool-state` stays as it is, by decision (6) of 1 November 2026,
+the defect a small matter by decision (9) of 24 October 2026: pipx bounds
+its own log folder, eleven files after twelve calls and no more, measured
+on 31 October 2026, when the decision was held back at more than ten; the
+roadmap entry of 31 October 2026 on the follow-up after milestone 3.
 Since 8 October 2026 both runs go through the drivers half as well. Under the
 no, a task needs a browser for tests, and the run hands the download command
 over without trying it, as under the no for a tool above; until 11 October
