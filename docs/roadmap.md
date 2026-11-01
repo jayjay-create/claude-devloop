@@ -44815,8 +44815,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   directories the check under "Before you change anything, run this" in
   `docs/skill-conventions.md` compares changes. On
   `task/question-timeout-auto-memory`, off `origin/main` at `136bac3`, in
-  one commit: this entry with its rows in `docs/stock-take.tsv`, and one
-  line in `.claude/settings.json`. Written in the chat with the person and
+  two commits: this entry with its rows in `docs/stock-take.tsv`, and one
+  line in `.claude/settings.json`; then, the same day, the red of the
+  platform's run of this pull request on alpine, below, with its row, and
+  the records paragraph said anew. Written in the chat with the person and
   committed by them in their terminal; no session of Claude Code was
   started and no session log was read. Every line number of a file in this
   entry holds at `136bac3`.
@@ -44872,10 +44874,37 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of a bench, `bench/server.py`, started on 16 October 2026 in a temporary
   directory and listening on a port of `127.0.0.1` since, ended.
 
+  **The platform's run of the checks of this pull request, 1 November
+  2026: the job `hooks on every system` red on alpine, the self-test of
+  `bin/devloop-bounded` failing its case "ends in time with 3".** Run
+  41313385410 on pull request #218, its failed log read on 1 November 2026
+  with `gh run view 41313385410 --log-failed`, changing nothing: "FAIL ends
+  in time with 3: nothing of the bound runs on: a process matching 'sleep
+  7339' still runs" at 13:53:09 UTC, then "the self-test of devloop-bounded
+  is red"; every other self-test, the twenty handlers, the counted refusal
+  and the guard on the mark passed there, and the step ended with exit 1
+  through `exit "$red"`, `.github/workflows/stock-take.yml` line 500. The
+  four other checks were green. Not a change of this branch, which touches
+  no file under `bin/` and nothing that step reads. The case runs `sh -c
+  'exit 3'` under a bound of 7339 seconds and, once the program is back,
+  asks `pgrep -f` for the watchdog's `sleep 7339`, `bin/devloop-bounded`
+  lines 72 to 76. What the program's lines allow, read off the code and not
+  measured: the program ends the watchdog with `kill` and waits for it,
+  line 121, while the watchdog's trap ends its `sleep` with `kill` and does
+  not wait for it, line 111, so that the sleep can still stand when `pgrep`
+  asks; and a signal that reaches the watchdog after it started its `sleep`
+  and before `s=$!` leaves `s` empty, so that the trap ends nothing and the
+  sleep runs out its bound. The case before it, "ends in time with 0",
+  passed in the same run. Seen once; how often the step ran on alpine
+  before without it is not read here. Milestone 12, every operating
+  system, as the two defects of the same self-test on Windows and on macOS.
+
+  Recorded, not built: on alpine the self-test of `bin/devloop-bounded` failed on 1 November 2026 in its case "ends in time with 3", the watchdog's `sleep 7339` still found by `pgrep` after the program had returned, once, the cause not measured — should: in milestone 12, on every system, nothing the bound started runs on once `bin/devloop-bounded` has returned, and its self-test finds it so.
+
   **Records.** In `docs/stock-take.tsv`, by section C of the head of
-  `scripts/devloop-stock-take`: the defect, sited and evidenced on its
-  status line above, and the head of this entry as part of it. No run is
-  recorded.
+  `scripts/devloop-stock-take`: the two defects, each sited and evidenced
+  on its status line above, and the head of this entry as part of the
+  first. No run is recorded.
 
 ## Decisions taken against
 
