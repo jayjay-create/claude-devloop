@@ -44564,11 +44564,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
 - **Binding side decides in the setup skills, run-workflow tested on GitHub.**
   31 October 2026, version 0.169.0. On `task/follow-up-after-milestone-3`,
-  off `origin/main` at `8053282`, in three commits: the builds with the
+  off `origin/main` at `8053282`, in four commits: the builds with the
   version, the correction below and the rows of the things they change;
   then this entry with the sentence in `docs/plan.md` and its rows; then,
   on 1 November 2026, decision (6) below, with the note of its row and the
-  sentence in `docs/plan.md` said anew. The
+  sentence in `docs/plan.md` said anew; then, on 1 November 2026 as well,
+  the halt of the platform's run of this pull request on macos-latest,
+  below, with its row. The
   report stands on this machine as `~/devloop-report-2026-10-31-follow-up.md`,
   in English, and is not in the repository. Every line number of a file in
   this entry holds at the tip of this branch unless it says otherwise; a
@@ -44700,6 +44702,80 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
     Recorded, not built: the entry on the audit after milestone 3 names setup-checks lines 1017 to 1019 for the sentence on a side that did not answer.
 
+  **The platform's run of the checks of this pull request, 1 November 2026:
+  the job `hooks on every system` stopped at fifteen minutes on
+  macos-latest, the self-test of `bin/devloop-bounded` standing past its
+  case "does not end".** Run 41284271866 on pull request #217, job
+  124782277813, its log read on 1 November 2026 with `gh run view --job
+  124782277813 --log`, changing nothing. The step at line 383 of
+  `.github/workflows/stock-take.yml` began the self-test of
+  `bin/devloop-bounded` at 07:19:06 UTC, printed the ok lines of its first
+  ten cases and at 07:19:07 UTC "ok   does not end: ended with what it
+  started, the line, exit 124", and after that nothing until "##[error]The
+  operation was canceled." at 07:33:54 UTC, the job's limit,
+  `timeout-minutes: 15` at line 357; the platform's clean-up at the end of
+  the job printed "Cleaning up orphan processes" and "Terminate orphan
+  process: pid (8060) (sleep)". The job's three other systems,
+  ubuntu-latest, alpine and windows-latest, were green, and so was the job
+  `stock-take`; the check main requires was red on that halt alone. Not a
+  change of this branch: `git diff 8053282 HEAD` touches neither
+  `bin/devloop-bounded` nor the loop of the step that runs every self-test
+  under `bin/`, lines 392 to 400; the lines the branch adds to the step,
+  401 to 407, stand after that loop and had not run. Not seen before on
+  macOS: the self-test has run in this job on macos-latest since pull
+  request #200 of 23 October 2026, and in all 24 runs of the job there
+  before this one, from run 39954085168 of 23 October 2026 to run
+  41200694984 of 31 October 2026, each read off its log with `gh` on 1
+  November 2026, it printed its twelve cases ok, the case "does not end"
+  and the case of the fetch over a transport that never answers among
+  them, and "SELF-TEST PASSED: 12 cases" within three seconds.
+
+  Which step after line 80 of `bin/devloop-bounded` can hang: line 88, the
+  fetch over a transport that never answers, `out=$(cd "$T/repo" &&
+  GIT_SSH_COMMAND='sh -c "sleep 7337" --' "$self" 1 git fetch -q origin
+  2>&1)`: a command substitution returns only once every process holding
+  its pipe has closed it, as the comment at lines 36 and 37 of the program
+  says of a child left alive. Read off the log against the program: the
+  last line printed is the ok of line 82, the case "does not end"; the
+  lines between it and 88 — `absent` at 83, `within` at 84 and `gone` at
+  85, a grep over a variable, a comparison of two numbers and one `pgrep`,
+  and at 87 `git init` with `git remote add` on a folder under the
+  temporary one — print nothing where they hold and FAIL with exit 1 where
+  they do not, and no FAIL stands in the log; the ok of line 89, the fetch
+  case, never came; and the one orphan the platform ended was a `sleep`,
+  where the sleeps of the self-test that outlive their bound are 7331 and
+  7333 of the case "does not end", which line 85 found gone, and 7337 of
+  the transport, so the one left was the transport's, which `kill_tree`
+  had not reached. Why it was not reached on that runner is not measured.
+  What the program's own lines allow: `kill_tree`, line 38, lists a
+  process's children with `pgrep -P` and ends them before it ends the
+  process, so a transport git starts between that listing and the kill of
+  git is never listed; at a bound of one second that is a window, read off
+  the code and not measured. Nothing is built here.
+
+  A new defect, not the one of 23 October 2026 on a further system. By
+  section A of the head of `scripts/devloop-stock-take` one defect is one
+  thing wherever it is named, and by section D a defect is closed where its
+  should holds. The defect of status line 36634 is that under Windows with
+  Git Bash the program does not end a command that does not end together
+  with what it started, its should Windows with Git Bash and the job on
+  windows-latest; the log of that halt, job 120415450158 of pull request
+  #200, ends with "ok   input through: cat prints what it was fed" at
+  12:34:12 UTC and the cancel at 12:47:39 UTC, the self-test standing
+  inside the case "does not end", as the entry reads it at 36577. Here
+  that case passed, with what the command started found gone, and the
+  self-test stood in the case after it, on macOS, the system the program is
+  written for; that should built would leave this halt as it is, so by
+  section D it does not close it, and one row for both would carry two
+  shoulds. The order of this day read the two as the same halt at the same
+  place; read against each other, the two logs put the Windows self-test
+  inside the case "does not end" and the macOS one past it. Its own status
+  line below and its own row in the table; the row of the Windows defect
+  stays as it is. Milestone 12, every operating system, as the Windows
+  defect.
+
+  Recorded, not built: on macos-latest the self-test of `bin/devloop-bounded` hung on 1 November 2026 in its case of a fetch over a transport that never answers, after the case "does not end" had passed, a `sleep` of the transport left alive holding the self-test's pipe until the job hooks on every system was stopped at fifteen minutes, once in 25 runs of the job on that system, the cause not measured — should: in milestone 12 the self-test of `bin/devloop-bounded` ends on every system within its bound.
+
   **Records.** In `docs/stock-take.tsv`, by section C of the head of
   `scripts/devloop-stock-take`: the defect of 44351 evidenced on the line of
   `setup-checks` that carries the reading, the place in `setup-project` in
@@ -44724,7 +44800,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   correction in its place; 1338 built and never walked, 1334 before, that
   defect, the binding side in `setup-checks` and the two outcomes of the
   hooks step; 738 walked, as before; the self-test 124 cases, 95 of 95
-  messages asserted.
+  messages asserted. The fourth commit, 1 November 2026: the row of the
+  defect of the halt on macos-latest, sited and evidenced on its status
+  line above, nothing else of the table touched. The tool, run once that
+  day with the paragraph, its status line and its row in place, the same
+  way: exit 0, no broken record, 14 findings, 42 closed defects, no unit
+  without a straight path, none of 5432 lines of the search set uncovered,
+  the one added that status line; 459 things recorded and not built, the
+  one added that defect; 1338 built and never walked and 738 walked, as
+  before.
 
 ## Decisions taken against
 
