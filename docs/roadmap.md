@@ -44564,17 +44564,20 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
 - **Binding side decides in the setup skills, run-workflow tested on GitHub.**
   31 October 2026, version 0.169.0. On `task/follow-up-after-milestone-3`,
-  off `origin/main` at `8053282`, in two commits: the builds with the
+  off `origin/main` at `8053282`, in three commits: the builds with the
   version, the correction below and the rows of the things they change;
-  then this entry with the sentence in `docs/plan.md` and its rows. The
+  then this entry with the sentence in `docs/plan.md` and its rows; then,
+  on 1 November 2026, decision (6) below, with the note of its row and the
+  sentence in `docs/plan.md` said anew. The
   report stands on this machine as `~/devloop-report-2026-10-31-follow-up.md`,
   in English, and is not in the repository. Every line number of a file in
   this entry holds at the tip of this branch unless it says otherwise; a
   line of this file holds at `8053282`, the correction standing on its
   physical line and this entry standing after the last. The order of this
   day asked for two builds out of the entry at 43585, a correction in it
-  and a decision; the builds and the correction are here, and the decision
-  is not recorded, by the order's own rule, below.
+  and a decision; the builds and the correction are here, and the decision,
+  which that order's own rule held back at the measured eleven, came on 1
+  November 2026, below.
 
   **Built: the two setup skills read the gate's binding as `build-work` and
   `bin/devloop-start-conditions` read it.** The defect of status line 44351,
@@ -44646,18 +44649,29 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   printed the line; the platform's run comes with the pull request.
   Built: the job hooks on every system runs the self-test of scripts/devloop-run-workflow on three of its four systems since 31 October 2026.
 
-  **Measured, and the decision on the pipx log not recorded.** The order of
-  this day proposed a decision (6), counting on from (4) and (5) of the
-  entry at 43585: the defect of status line 44361, `pipx environment
-  --value PIPX_BIN_DIR` writing a log file at every call, not built, the
-  query staying, a small matter by decision (9) of 24 October 2026, line
-  37775, with the reason that the guard must know where pipx installs on
-  this machine and reads that off the installer rather than assuming it,
-  that the file lies in pipx's own log folder, and that pipx keeps at most
-  ten by its documentation, `PIPX_MAX_LOGS`, default 10. The order bound
-  the recording to a measurement: twelve calls under a fresh `HOME`, then
-  the files in the log folder, and no recording where more than ten stand.
-  The documentation, pipx.pypa.io/stable/reference/environment-variables.html,
+  **Decided on 1 November 2026**, by the person, counting on from (4) and
+  (5) of the entry at 43585. (6) The defect of status line 44361, `pipx
+  environment --value PIPX_BIN_DIR` writing a log file at every call of the
+  guard and of `bin/devloop-tool-state`, is not built; the query stays, and
+  the defect is a small matter by decision (9) of 24 October 2026, line
+  37775. The reason: the guard must know where pipx on this machine really
+  installs, to block or to let through rightly, and devloop reads that
+  place for every installer off the installer itself rather than assuming
+  it; the file lies in the log folder pipx keeps for itself and bounds
+  itself — measured on this branch, eleven files after twelve calls and no
+  more after that, 403 bytes each; with npm a switch turns the log off
+  without changing the query, with pipx none does. The person had first
+  built on the ten of the documentation; the order of 31 October 2026
+  bound the recording to a measurement, twelve calls under a fresh `HOME`
+  and no recording where more than ten files stand, so that the decision
+  was held back that day, and they decided on 1 November 2026 with the
+  measured eleven. The should of the status line, "a query that writes
+  nothing, or the folder read off PIPX_BIN_DIR and pipx's documented
+  default without a call, the person deciding which", is decided so:
+  neither, the query as it stands; the status line and its should stand
+  as written, the note of the thing's row carries the decision. The
+  measurement of 31 October 2026, as it stood here that day. The
+  documentation, pipx.pypa.io/stable/reference/environment-variables.html,
   read on 31 October 2026, says of `PIPX_MAX_LOGS`: "Number of command logs
   to keep in the log directory, counting the current command's; pip and uv
   error logs share a separate limit of the same size. `0` acts like `1`.
@@ -44666,9 +44680,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   eleven files in `Library/Logs/pipx`, ten old beside the current; two
   calls more left eleven each. pipx's `_setup_log_file` deletes the oldest
   so that `PIPX_MAX_LOGS` remain and then writes the current command's log
-  beside them, where the documentation counts the current one in. So the
-  decision is not recorded, the status line 44361 and its should stand, the
-  row of the thing carries the measurement, and the person decides; the
+  beside them, where the documentation counts the current one in; the
   folder does not grow past eleven.
 
   **Line numbers of dated entries, corrected in place.** As the audits do,
@@ -44697,7 +44709,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of the things they belong to; two outcomes of the hooks step for the
   self-test of `scripts/devloop-run-workflow`, on three systems and left
   out under Windows, with the `if` line part of the second; the defect of
-  44361 with the measurement and the unrecorded decision in its note; the
+  44361 with the measurement and, since 1 November 2026, decision (6) in
+  its note; the
   defect of the correction above; the head of this entry and its two built
   lines as part of the things they record. No run is recorded for this
   entry. The figures of the tool and the checks before and after stand in
