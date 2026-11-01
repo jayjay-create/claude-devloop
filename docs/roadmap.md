@@ -45213,11 +45213,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
 - **Four entries held, rationale points completed, two questions open.**
   1 November 2026, version 0.171.0, raised from 0.170.0 once. On
-  `task/audit-2026-11-01`, off `origin/main` at `f665141`, in two commits:
+  `task/audit-2026-11-01`, off `origin/main` at `f665141`, in three commits:
   the corrections in place, the mends in `docs/rationale.md`, `docs/plan.md`
   and `docs/skill-conventions.md`, the notes of the table, the four
   sentences of the loaded texts with the version and the rows of the things
-  they change; then this entry with its rows. The report stands on this
+  they change; then this entry with its rows; then one more place of the entry at 44909 said right here, with its row. The report stands on this
   machine as `~/devloop-audit-2026-11-01.md`, in English, and is not in the
   repository. Every line number of a file in this entry holds at `f665141`
   unless it says otherwise; a line of this file holds at `f665141` as well,
@@ -45527,6 +45527,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
     Recorded, not built: five points of docs/rationale.md quote a wording of form B with the password, four of them carrying the wording for the case of doubt.
 
+  - The same entry, lines 45178 to 45180 places "the handover of a refused
+    install" of `setup-checks`, which decision (1) gives form B in doubt,
+    under "Step 3"; it stands under "A guard's block is not a decline",
+    lines 85 to 151, at line 124, and the place under "Step 3" is the one at
+    509, which carried "in doubt B" before, line 564 at `8afb558`.
+
+    Recorded, not built: the handover of a refused install that decision (1) of 1 November 2026 gives form B in doubt stands in setup-checks under A guard's block is not a decline, not under Step 3.
+
   - The same entry, lines 44958 to 44961 says that with every reference to
     an approved wording "the sentence beside it that a skill says what is
     said and not the words" went; in `build-work`, "Unattended mode", item
@@ -45827,11 +45835,11 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   before and after: exit 0 and 0; broken records 0 and 0, 3 at the most,
   once the texts and the corrections had changed lines the table anchors on
   and before the table followed them; uncovered lines of the search set 0 of
-  5357 and 0 of 5412, 2 at the most; units without a straight path 0 and 0;
+  5357 and 0 of 5413, 2 at the most; units without a straight path 0 and 0;
   findings 14 and 14; closed defects 42 and 42; not-a-thing records 3462 and
   3463; lines of the set that can carry no unique anchor 328 and 328; walked
   619 and 619, built and never walked 1459 and 1462, recorded and not built
-  461 and 512, undetermined 24 and 24, the 54 defects of this entry making
+  461 and 513, undetermined 24 and 24, the 55 defects of this entry making
   the difference, three of them reading built. Its self-test: 124 cases, 95
   messages read off its source, as before. The twenty checks under "Before a
   handover, run these", their commands as they stand at `f665141`, in the
@@ -45845,7 +45853,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
   **Records.** In `docs/stock-take.tsv`, by sections C and E of the head of
   `scripts/devloop-stock-take`: a defect thing for each status line of this
-  entry, 54, sited there and evidenced as each paragraph above says; the
+  entry, 55, sited there and evidenced as each paragraph above says; the
   head of this entry as part of the first. No run is recorded.
 
 ## Decisions taken against
