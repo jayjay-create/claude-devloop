@@ -45885,12 +45885,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 - **The defects move to docs/defects.md, read by the stock-take tool.**
 
   2 November 2026, version 0.172.0, raised from 0.171.0 once. On
-  `task/defects-file`, off `origin/main` at `c1949fe`, in three commits:
+  `task/defects-file`, off `origin/main` at `c1949fe`, in four commits:
   `scripts/devloop-stock-take` with the version; then `docs/defects.md`,
   `docs/skill-conventions.md`, `docs/plan.md`, `docs/rationale.md`,
   `skills/record-lessons/SKILL.md`, `.github/workflows/stock-take.yml`, this
   entry and `docs/stock-take.tsv`; then the runs of the tool's self-test under
-  0.172.0, measured on the second commit. Written by Claude Code from the
+  0.172.0, measured on the second commit; then two figures of this entry
+  corrected, the count of closed defects after the move and the count of the
+  lines that left the search set, which its first writing had wrong, and the
+  word "three" of this sentence. Written by Claude Code from the
   person's order of that day, the first order of part 2 of the separation of
   `docs/roadmap.md`, after part 1 of 1 November 2026; no session log was read.
   Line numbers of `docs/roadmap.md` hold at `c1949fe`, which this entry only
@@ -46151,13 +46154,15 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   **The stock-take and the checks, before at `c1949fe` and after on the
   branch.** The tool, `PYTHONDONTWRITEBYTECODE=1 scripts/devloop-stock-take`,
   before and after: exit 0 and 0; broken records 0 and 0; uncovered lines of
-  the search set 0 of 5415 and 0 of 4408, the 1047 heads and status lines of
-  "Known gaps" that could carry an anchor having left the set; units without a
-  straight path 0 and 0; findings 14 and none listed, every one a block;
-  closed defects 42 and 42; not-a-thing records 3465 and 3289; defects 907 as
-  things and 921 as blocks, by state Undetermined 8 and 8, Recorded, not built
-  500 and 514, Built, never walked 275 and 272, Walked 82 and 83, Closed 42
-  and 42; the things that are no defect by state as before, except those named
+  the search set 0 of 5415 and 0 of 4408, the 1040 heads and status lines of
+  "Known gaps" that could carry an anchor having left the set and 33 lines of
+  the tool's new code having come in; units without a straight path 0 and 0;
+  findings 14 and none listed, every one a block; closed defects 42 and 44,
+  the two closed as lapsed above among the 44; not-a-thing records 3465 and
+  3289; defects 907 as things and 921 as blocks, by state Undetermined 8 and
+  8, Recorded, not built 500 and 514, Built, never walked 275 and 272, Walked
+  82 and 83, Closed 42 and 44; the things that are no defect by state as
+  before, except those named
   above. Its self-test: 134 cases passed. The twenty checks under "Before a
   handover, run these", in a bash started by `env -i` with `--noprofile
   --norc` and `/usr/bin/grep`: nineteen print what they printed at `c1949fe`,
