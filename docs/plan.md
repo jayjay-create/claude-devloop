@@ -98,6 +98,25 @@ finding that would have passed unsupervised gets written down": where it can
 happen again and cannot be prevented, that is the answer and it gets written
 down as one.
 
+Decided on 2 November 2026 by the person, the roadmap entry of that date on
+the blocks held against the branch point: a milestone counts as reached only
+when no block in its section of `docs/defects.md` is open or carries "not
+stated", and no open block stands outside the section of a milestone not yet
+reached. Open means neither walked nor closed nor marked with the form
+"Built, never walked, cannot be forced: decided in FILE at TEXT", which names
+a defect whose case cannot be brought about, as this file says under "Five
+sentences" of the first sentence and under milestone 3 of the defects that
+depend on what the model does. The tool checks this when a branch adds the
+line "Done on …" to a milestone here; that form and that check are built by
+the order that sorts the defects into the milestones, not before. And the
+blocks are not checked against the code all at once, as decision (7) of the
+roadmap entry on the defects file foresaw, but each by the order that works
+on its milestone, before it builds: the order checks the blocks of its
+section against the code first, since that check stands before the build in
+any case, and done for every defect now it would be done twice and be stale
+by the build. A reference here names a file and a section, never a line, as
+the opening of this file says.
+
 ## Twelve milestones, in this order
 
 Each carries its kind, what it covers, what ends it, why it stands where it

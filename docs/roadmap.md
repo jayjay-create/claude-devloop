@@ -46174,6 +46174,807 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   committed branch after the third, where it reads the head of this entry for
   the title step.
 
+- **Blocks held to the branch point; findings out, contradictions in.**
+
+  2 November 2026, version 0.173.0, raised from 0.172.0 once. On
+  `task/defects-guard`, off `origin/main` at `606cdab`, in three commits:
+  `scripts/devloop-stock-take` with the version; then `docs/defects.md`,
+  `docs/skill-conventions.md`, `docs/plan.md`, this entry and
+  `docs/stock-take.tsv`; then the runs of the tool's self-test under 0.173.0,
+  measured on the second commit. Written by Claude Code from the person's
+  order of that day, the second order of part 2 of the separation of
+  `docs/roadmap.md`, after the entry at line 45885; no session log was read.
+  Line numbers of `docs/roadmap.md` hold at `606cdab`, which this entry only
+  appends to, and so do those of `docs/defects.md` where this entry gives one.
+
+  **Decided on 2 November 2026** by the person, after decisions (1) to (7) of
+  the entry at line 45885. (8) The blocks are not all checked against the code
+  now, as (7) foresaw, but each by the order that works on its milestone,
+  before it builds: that check stands before the build in any case, and
+  brought forward now it would be done twice for every defect and be stale by
+  the build. What part 2 still does after that is this order; the proposals
+  for the milestones come from the order that prepares the sorting of the
+  defects into milestones, after part 3, the archive of the roadmap. (9) No
+  block vanishes in silence: the tool is red where a branch, against the
+  commit it forked from, removes a block, renames it or changes its Should
+  without a line it adds to `docs/roadmap.md` naming that in a fixed form, and
+  where such a line names what the branch did not do. (10) A milestone counts
+  as reached only when no block in its section of `docs/defects.md` is open or
+  carries "not stated" and no open block stands outside the section of a
+  milestone not yet reached; open means neither Walked nor Closed nor carrying
+  the form "Built, never walked, cannot be forced: decided in FILE at "TEXT"",
+  which names a defect whose case cannot be brought about, `docs/plan.md`
+  under "Five sentences" and under milestone 3. The tool checks this when a
+  branch adds the line "Done on …" to a milestone in `docs/plan.md`; that form
+  and that check are built by the order that sorts the defects into the
+  milestones, not by this one.
+
+  **What changed.** `scripts/devloop-stock-take`: it holds the blocks of
+  `docs/defects.md` at `git merge-base HEAD origin/main` against the working
+  tree, by title and Should, and reads the lines that `git diff` of
+  `docs/roadmap.md` against that commit adds, in three fixed forms, one
+  physical line each, the title whole after the prefix to the end of the line,
+  the two titles of a renaming separated by " / ", which no title carries,
+  none opening with "- **": `Block removed: TITLE`, `Block renamed: OLD TITLE
+  / NEW TITLE`, `Should changed: TITLE`. Red, as a broken record, where a
+  block that stood at the branch point is gone, renamed or carries another
+  Should without its line, and where a line names a title that stands in the
+  tree still, that stood at the branch point in no block, a new title that
+  stands nowhere or stood there already, or a Should that is the branch
+  point's; the report shows the counts and each change under BLOCKS HELD
+  AGAINST THE BRANCH POINT. Without `origin/main`, or without a commit HEAD
+  and `origin/main` share, it says in one line that the blocks are not held
+  against a branch point; where `docs/defects.md` does not stand at the branch
+  point, that there is nothing to compare; a branch behind main, whose main
+  gained a block after the branch point, is held against the branch point, so
+  that block is no removal. Its self-test runs 146 cases, 134 before, twelve
+  new, each red once and green once: a block removed, renamed and a Should
+  changed, each with and without its line; a removal line for a block that
+  stands or never stood; a renaming line without the separator, with an old
+  title standing or never stood, a new one standing nowhere or already; a
+  Should line for a title absent, new or unchanged; a title with quotes,
+  backticks and a colon; a branch behind main; no origin/main; no shared
+  commit; the defects file not at the branch point; the report. Every one of
+  the 128 messages the tool rejects, refuses or answers with is asserted by a
+  case, 116 of 116 before. The header describes the tool as it is now, section
+  F and the limits among it. `.claude-plugin/plugin.json`: 0.172.0 to 0.173.0.
+
+  `docs/skill-conventions.md`: the paragraph "A defect is a block in
+  docs/defects.md; the roadmap reports it" carries (9) with the three forms.
+  `docs/plan.md`: under "Five sentences", after the paragraph on the fifth, a
+  dated paragraph with (10), that its form and its check come with the sorting
+  into the milestones, and (8), naming files and sections and no line.
+  Searched by the third rule under "A field is not an answer to a question it
+  was not asked" over `skills/`, `hooks/`, `docs/`, `README.md`, `shared/`,
+  `bin/`, `scripts/` and `.github/` for every place that describes (7) as the
+  check orders to come or builds on it, with the patterns "group by group",
+  "further orders", "checked against the code", "sort the blocks", "sorted
+  into", "an order sorts", "propose a milestone", "in two stages" and "Not yet
+  sorted": no place outside the dated entries describes the checking; the
+  places that speak of the sorting — the opening of `docs/plan.md` and its
+  milestone 1, the paragraph of the conventions named above, the head of the
+  tool and its report line on the blocks not yet sorted, and the introduction
+  of `docs/defects.md` — describe the mark of the transition, which (8) leaves
+  as it is, and stay. The dated entries stay as they stand.
+
+  **Taken out of `docs/defects.md` by decision (6)**, 268 blocks, each a
+  finding in `docs/roadmap.md`, `docs/plan.md`, `docs/skill-conventions.md` or
+  `docs/rationale.md` that the branch of the entry it stood in corrected in
+  place, put right in its own entry or mended, as a line of that entry says;
+  the block's row in `docs/stock-take.tsv` at `c1949fe`, whose name's third
+  part is its title, gave its place in this file. Searched over every block
+  with the patterns the report of this order names, the thirteen audit entries
+  read section by section, nothing left out; no run hangs on any of them, none
+  is one of the 14 findings of the table. Not taken out, as a finding in
+  `README.md`, in the table, in the code or in doubt: the seven of the entry
+  at line 1637, which says only that two were left standing rather than
+  corrected; the blocks at lines 2364, 3020, 3028, 6861 and 7165 of
+  `docs/defects.md` at `606cdab`, whose finding stood in the table as well;
+  2404 and 2428, `README.md` and a note of the table; 5469, 6805 and 7173,
+  which read as findings in a program's self-test or head; 6845, a finding in
+  `setup-checks` step 4, which carries the third contradiction of section 18
+  below; and 621 and 949, whose right statement a later commit wrote,
+  `b368285`. The twenty findings of the audit of 4 October 2026 stay, each
+  with a should and nothing corrected. Below, grouped by the entry each stood
+  in, with the line of this file at `606cdab` that says the branch did the
+  thing, and the fixed line for each:
+
+  From the entry at line 1897, "Five false statements in these two documents,
+  and that was measured on 9", 4 blocks; the line of docs/roadmap.md that says
+  the branch of that entry did the thing stands beside each, as the line
+  number at `606cdab`:
+  Line 1900, "Corrected where they sat; listed here because what they have in
+  common is worth", for these 4 blocks:
+  Block removed: the branch guard's Built description overstated what was built, three cases holding on the default branch only
+  Block removed: the entry on the split with no criterion read Recorded, not built after a later entry had built it
+  Block removed: two bench figures for devloop-test-o went stale in two days
+  Block removed: the tally of audit rounds was written in relative time and missed the largest round on the day it happened
+
+  From the entry at line 5745, "The control documents audited against the
+  tree, and mended, on 26 September", 8 blocks; the line of docs/roadmap.md
+  that says the branch of that entry did the thing stands beside each, as the
+  line number at `606cdab`:
+  Line 5750, "command; the report stands outside the repository. Fourteen of
+  them are mended", for these 8 blocks:
+  Block removed: the plan names as sections thirteen conventions that are bold heads inside a section
+  Block removed: the plan counts twenty-two names under the named table where the table holds twenty rows
+  Block removed: the plan counts thirteen named things where the tool counts eleven
+  Block removed: the plan counts four side paths under "What is missing" where README.md names two
+  Block removed: the plan reads the Pocock defects, mechanisms and remaining points as twelve rows where the table holds ten
+  Block removed: the plan says nothing of a finding recorded after the close of milestone 1 while the tool lists three
+  Block removed: the plan says five milestones build on the boundary of milestone 4 and names none
+  Block removed: the first table of the roadmap wrote the state of record-lessons rather than computing it
+
+  From the entry at line 8034, "The consistency audit before the handover, run
+  on 30 September 2026", 6 blocks; the line of docs/roadmap.md that says the
+  branch of that entry did the thing stands beside each, as the line number at
+  `606cdab`:
+  Line 8051, "stale, three worded so they mislead. Each is mended where it
+  stood, in that", for these 6 blocks:
+  Block removed: the ruling on named install commands said the question names the kind of place, which it stopped doing at 0.119.0
+  Block removed: the entry on five stacks named what is on the machine as of August and said a project in those stacks cannot exercise an install
+  Block removed: the tally of check-docs-consistency rounds stopped at 9 September 2026, the round of sixteen on 26 September missing
+  Block removed: the conventions said shared text is of two kinds, shared/rule-not-written-down.md being neither
+  Block removed: milestone 3 said the four skill places run the install under a yes, where two do
+  Block removed: the entry on devloop's own repository said the plugin's hooks stay inert here and named nothing that guards work on the plugin
+
+  From the entry at line 12301, "The consistency audit of 7 October 2026
+  before the handover, ordered on", 2 blocks; the line of docs/roadmap.md that
+  says the branch of that entry did the thing stands beside each, as the line
+  number at `606cdab`:
+  Line 12794, "**Corrected in place, and why.** Finding 20 of the audit of 4
+  October", for these 2 blocks:
+  Block removed: the records paragraph of the entry of 5 October 2026 did not say that the five runs of the install question stopped counting at 9a6f33a
+  Block removed: the first addendum of 6 October 2026 read -C in both guards and named the decision of 6 September 2026 nowhere
+
+  From the entry at line 18359, "The consistency audit of 12 October 2026
+  before the handover, read against", 9 blocks; the line of docs/roadmap.md
+  that says the branch of that entry did the thing stands beside each, as the
+  line number at `606cdab`:
+  Line 18447, "mode but auto — and `hooks/stop-checks.sh` still does not.
+  Mended in the", for this block:
+  Block removed: the conventions said the hooks still do not read the mark, where two hooks read it since 9 October 2026
+  Line 18456, "716 to 718. Corrected in place.", for this block:
+  Block removed: defect h of the entry on the second closing run named build-work line 719, a blank line, for a sentence at lines 716 to 718
+  Line 18464, "had half right, "line 20, to line 32". Corrected in place, and
+  the note.", for this block:
+  Block removed: defect d of the entry on the second closing run named lines 23 to 32 and line 23 of body-through-file.md, a file of 29 lines whose title rule stands at lines 20 to 29
+  Line 18472, "Corrected in place.", for this block:
+  Block removed: the observation of the entry on the second closing run named start-work line 247, the opening of step 5, for the --auto sentence at line 274
+  Line 18481, "105 to 114. Corrected in place.", for this block:
+  Block removed: the observation of the entry on the second closing run named review-changes lines 125 to 131, a paragraph on a fact answering a different question, for the rule on the lens left out at lines 105 to 114
+  Line 18492, "docs/skill-conventions.md` printed nothing at `704cd1d`.
+  Mended.", for this block:
+  Block removed: What is shared today in the conventions did not name shared/install-not-through.md of 9 October 2026
+  Line 18499, "made on 11 October 2026. Mended with a dated sentence on what
+  the guard met", for this block:
+  Block removed: the measurement paragraph of the conventions said the two runs of milestone 3 were not measured after they were made on 11 October 2026
+  Line 18508, "October 2026 added nothing to it. Mended with those two rounds
+  and this", for this block:
+  Block removed: the tally of rounds of check-docs-consistency stopped at 30 September 2026, the audits of 4 and 7 October 2026 adding nothing
+  Line 18519, "nobody there met no refusal of the classifier. Mended with a
+  dated", for this block:
+  Block removed: the open item of the plan on the allow rule for an install knew nothing of the rule of 9 October 2026 and the run under it
+
+  From the entry at line 19556, "The command reader: every hook reads its
+  input through one program that", 1 block; the line of docs/roadmap.md that
+  says the branch of that entry did the thing stands beside each, as the line
+  number at `606cdab`:
+  Line 23179, "otherwise. The sentence is corrected in place above, at the
+  lines that", for this block:
+  Block removed: the third addendum said that every answer of the walks of 14 October 2026 came out as foreseen, where its report says the first probe of pueue add and the first probe of the second batch came out otherwise
+
+  From the entry at line 23550, "The consistency audit of 14 October 2026
+  before the handover, read against", 5 blocks; the line of docs/roadmap.md
+  that says the branch of that entry did the thing stands beside each, as the
+  line number at `606cdab`:
+  Line 23657, "closing brace at 1082, and 1083 opens `parse_command`.
+  Corrected in place.", for this block:
+  Block removed: the first addendum of 13 October 2026 named lines 1063 to 1087 of the reader for compound_end, which ends at 1082
+  Line 23665, "lines before `judge`. Corrected in place.", for this block:
+  Block removed: the first addendum of 13 October 2026 named lines 1150 to 1192 of the reader for parse_simple, which runs from 1158 to 1187
+  Line 23673, "Corrected in place at both places.", for this block:
+  Block removed: the first addendum of 13 October 2026 named lines 59 to 96 of the workflow for its step, which ends at 95, the file's last line
+  Line 23707, "", for this block:
+  Block removed: the conventions said under Registering a skill that the branch protection requires the one check stock-take, where five are required since 14 October 2026
+  Line 23720, "among them — so a reader sent to the three would not find them.
+  Mended:", for this block:
+  Block removed: the conventions sent the reader of a program's source to the three addenda of 13 October 2026, where the two of 14 October 2026 read vendors as well
+
+  From the entry at line 28846, "The consistency audit of 18 October 2026
+  before the handover, read against", 18 blocks; the line of docs/roadmap.md
+  that says the branch of that entry did the thing stands beside each, as the
+  line number at `606cdab`:
+  Line 28912, "1 found, `skills/setup-project/SKILL.md` lines 209 to 215.
+  Mended with a", for this block:
+  Block removed: the plan said what the project declares is reported at setup in step 2 of setup-project, which says nothing of what step 1 found since 17 October 2026
+  Line 28922, "line 116 says four since 9 October 2026, `c819499`. Mended:
+  four.", for this block:
+  Block removed: the conventions said three cases part there where a command does not answer with nobody there to tell, and named four
+  Line 28933, "kind of 22 August 2026 can come back there. Mended with a dated
+  paragraph", for this block:
+  Block removed: the conventions said a question with one sensible answer is not asked, where the interview that sharpens an idea asks every decision since 18 October 2026
+  Line 28942, "that command does is not announced in the reply". Mended with
+  the date,", for this block:
+  Block removed: the conventions said the reply says what a command the user typed does, which shared/skill-name.md says is not announced since 17 October 2026
+  Line 28950, "2026: "look, without announcing it". Mended with the date.",
+  for this block:
+  Block removed: the conventions said a run without a command for a statement says it is going to look, which build-work says it does without announcing since 17 October 2026
+  Line 28959, "addendum of the entry at line 28008. Mended with a dated
+  sentence.", for this block:
+  Block removed: the conventions read a mergeable status with a gate present as past its gate whatever auto-merge reads, where it is the first case with auto-merge off since 18 October 2026
+  Line 28968, "Mended with a dated sentence.", for this block:
+  Block removed: the conventions on bin/devloop-setup-state named no set-aside line, which it prints since 16 October 2026
+  Line 28977, "`setup-checks`, beside `shared/mark-deletion.md` nowhere.
+  Mended.", for this block:
+  Block removed: the conventions said shared/set-aside-back.md is inserted beside the two, where it stands beside set-aside-at-start in four skills and beside fetch-three-times in two
+  Line 29001, "addendum's own "547 to 550 at the tip" naming another text.
+  Corrected.", for this block:
+  Block removed: the entry on defects 9 and 12 named lines of plan-work at the tip as they stood before its addendum
+  Line 29015, "from 427 to 451 there. Corrected, eight places.", for this
+  block:
+  Block removed: the entry of 17 October 2026 on where each owed text stays named eight line ranges that do not hold at its tip
+  Line 29025, "a stop". Corrected.", for this block:
+  Block removed: the entry on the two runs of 16 October 2026 named expanded lines of build-work for the stop past the gate that define the case
+  Line 29030, "**Said wrongly in dated entries, said right here.** Each
+  carries a defect", for these 7 blocks:
+  Block removed: five entries of 15 and 16 October 2026 name one commit fewer than their branches have, the correction at the check before the merge
+  Block removed: the entry on the output style names six rows of the table re-anchored where five were and one changed its note
+  Block removed: the entry on part B at the setup miscounts the rows gone with the section, the inserts of the branch deletion, the hooks that hand a command over and the walked runs
+  Block removed: the entry on planning and building says five things that do not hold at its own commits
+  Block removed: nine line ranges written into the entry on the two runs of 16 October 2026 on 17 October 2026 hold at 6793c5c and not at 7e35090
+  Block removed: the revised should on the loose issues names the lines of e687f51 for a text of 6793c5c, and its record names the entry of 11 October 2026 for it
+  Block removed: the entry on the merge handover says the search-set words stand in its head alone and names decision 1 for B1 of 17 October 2026
+
+  From the entry at line 32594, "The consistency audit of 20 October 2026
+  before the handover, read against", 17 blocks; the line of docs/roadmap.md
+  that says the branch of that entry did the thing stands beside each, as the
+  line number at `606cdab`:
+  Line 32685, "fifth. Mended with a dated paragraph after line 128, seven
+  lines, the one", for this block:
+  Block removed: the plan said the tool computes one of four states where it computes five since 20 October 2026
+  Line 32699, "itself, which is the failure the bullet itself describes.
+  Mended on that", for this block:
+  Block removed: the tally of rounds of check-docs-consistency ended at 12 October 2026 where the audits of 14 and 18 October 2026 followed
+  Line 32714, "26667 to 26669. Corrected: 26645 to 26669.", for this block:
+  Block removed: the entry on the two runs of 19 October 2026 named lines 26641 to 26666 for the approved text 6, which begins at 26645 and ends at 26669
+  Line 32722, "sentence stands at 1417 to 1419. Corrected.", for this block:
+  Block removed: the entry on the two runs of 19 October 2026 named expanded 1413 to 1417 of setup-checks for the failing check target at 1417 to 1419
+  Line 32729, "build, the one real question here", which stands at 2193.
+  Corrected: 2190", for this block:
+  Block removed: defect 19 of the two runs of 19 October 2026 named expanded 2190 to 2192 and 2180 to 2192 of setup-checks for the one real question at 2193
+  Line 32739, "since. Corrected: both given.", for this block:
+  Block removed: the entry on the questions of a round named the insert line of plan-work once, 305 at a9fb3f7, where its first commit moved it to 307
+  Line 32746, "entry's clusters 11 and 22 have it. Corrected.", for this
+  block:
+  Block removed: the checked list of milestone 3 named docs/plan.md lines 255 to 261 for the fifth part, which begins on 256
+  Line 32753, "heading stands on 69, 68 blank. Corrected.", for this block:
+  Block removed: the checked list of milestone 3 named lines 68 to 121 of setup-project for the refresh section, whose heading stands on 69
+  Line 32762, "the plan's lines not applied here. Corrected.", for this block:
+  Block removed: the checked list of milestone 3 named docs/plan.md lines 573 to 576 of milestone 12 as milestone 4 on how a project is run
+  Line 32770, "on a shallow clone in it. Corrected.", for this block:
+  Block removed: the entry on the answers and the closed state named section D of the tool's header as ending at 446 and 493 where it ends at 459 and 506
+  Line 32778, "inner numbers hold. Corrected: 212 to 399.", for this block:
+  Block removed: the entry on the answers and the closed state named section C of the tool's header as lines 251 to 311 where it runs from 212 to 399
+  Line 32783, "**Said wrongly in dated entries, said right here.** Each
+  carries a defect", for these 6 blocks:
+  Block removed: three entries of 19 October 2026 name one commit fewer than their branches have, the correction of the entry
+  Block removed: the entry on the two runs of 19 October 2026 said every run row carries the source log where twenty carry entry
+  Block removed: the entry on the two runs of 19 October 2026 named eight rows whose notes gained a should where nine did
+  Block removed: cluster 7 of the checked list named cluster 22 for defect 4 of the two runs of 19 October 2026, which stands in cluster 21
+  Block removed: cluster 2 of the checked list put setup-checks lines 255 and 385 under step 8, which stand under steps 1 and 3
+  Block removed: the entry on the answers said five of the six things cluster 24 keeps carry runs where three do
+
+  From the entry at line 35558, "Six entries held against the code: lines
+  corrected, defects recorded", 63 blocks; the line of docs/roadmap.md that
+  says the branch of that entry did the thing stands beside each, as the line
+  number at `606cdab`:
+  Line 35635, "35540. Mended on that physical line: "with what it still needs
+  and the run", for this block:
+  Block removed: the plan said the entry on the six closing runs carries every open defect with the run that meets it, where thirteen points need a run and the rest a bench or nothing
+  Line 35647, "sentence names after them. Mended on that physical line:
+  five.", for this block:
+  Block removed: the conventions said seven causes of the install record's reader opened with a label of their own, where five did and two were the guard's fallback
+  Line 35654, "today, the finding on the entry at line 33759 below. Mended
+  with eight", for this block:
+  Block removed: the conventions said a --path written on puppeteer browsers install moves nothing, where the vendor's install takes it under yargs 17.7.3
+  Line 35670, "entry has it at lines 32899 and 33191. Corrected.", for this
+  block:
+  Block removed: the entry on part 1 named lines 29806 to 29820 for the walk of defect 14, whose first line is blank
+  Line 35676, "number on 19644 and its last words on 19651. Corrected.", for
+  this block:
+  Block removed: the entry on part 1 named lines 19645 to 19650 for point 4 of 12 October 2026, which runs from 19644 to 19651
+  Line 35682, ""What should hold" stands at 14028 to 14030. Corrected.", for
+  this block:
+  Block removed: the entry on part 1 named lines 14027 to 14029 for the should of finding 6 of 9 October 2026, whose first line is blank
+  Line 35689, "18, the second, "the same exception", on 20. Corrected: 16 to
+  20.", for this block:
+  Block removed: the entry on part 1 named lines 16 to 18 of install-question.md at d1250d1 for the exception at both askings, the second standing on 20
+  Line 35697, "stands at 55 to 56. Corrected: 49 to 56.", for this block:
+  Block removed: the entry on part 1 named lines 49 to 53 of setup-project at d1250d1 for the bullet and its earlier reading, which run to 56
+  Line 35702, "sentence that the case cannot arise here, which runs to 54.
+  Corrected.", for this block:
+  Block removed: the status line on the setup-project bullet named lines 49 to 53 at d1250d1 for a sentence that runs to 54
+  Line 35708, "322 to 323, 321 carrying none. Corrected.", for this block:
+  Block removed: the entry on part 2 named README lines 321 to 322 at f82aeae for a date standing at 322 to 323
+  Line 35714, ""administrator" stands on 232. Corrected: 230 to 232.", for
+  this block:
+  Block removed: the entry on part 2 named README lines 230 to 231 for a sentence on administrators whose last word stands on 232
+  Line 35720, "and over 236 to 237 at `a4c2b99`. Corrected.", for this block:
+  Block removed: the entry on part 2 named single README lines for the words on two more guards, which run over two lines each
+  Line 35725, "the hook on permission prompts", which runs over 381 to 382.
+  Corrected.", for this block:
+  Block removed: the entry on part 2 named README line 381 for words on the hook on permission prompts, which run to 382
+  Line 35731, "unchanged by the fifth commit. Corrected.", for this block:
+  Block removed: the entry on part 2 named README lines 113 to 114 for words standing on 114 alone
+  Line 35738, "carried none, 321 being that line's place at `744e5c0`.
+  Corrected: 325.", for this block:
+  Block removed: the entry on part 2 named README line 321 at f82aeae for evidence that stood on 325 there
+  Line 35744, "Corrected as there: 19644 to 19651.", for this block:
+  Block removed: the entry on part 3 named lines 19645 to 19650 for point 4 of 12 October 2026, which runs from 19644 to 19651
+  Line 35753, "143 to 146 and its comment at 132 to 142. Corrected: `1810ab5`
+  named", for this block:
+  Block removed: the entry on part 3 gave five line numbers of its new code without the commit they hold at, its own rule reading them at a090677
+  Line 35759, "lines 652 to 658"; at `1810ab5` its label stands on 651.
+  Corrected: 651 to", for this block:
+  Block removed: the entry on part 3 named lines 652 to 658 for the arm that reads --path, whose label stands on 651
+  Line 35766, "the second commit replaced with it. Corrected.", for this
+  block:
+  Block removed: the entry on part 3 named lines 2529 to 2538 of the conventions for a paragraph on --path that ends on 2539
+  Line 35775, "bugs, which the entry does not say. The number corrected; the
+  three", for this block:
+  Block removed: the entry on part 3 named line 1493 for words dropped from the conventions over two lines, and not the three sections dropped with them
+  Line 35783, "to 499 being the sentence on the packages. Corrected: 485 to
+  495.", for this block:
+  Block removed: the entry on part 4 named setup-checks lines 484 to 499 at b52be40 for a handover that runs from 485 to 495
+  Line 35790, "what goes before. Corrected: 495 to 535.", for this block:
+  Block removed: the entry on part 4 named setup-checks lines 485 to 536 at 6ef979b for a question that runs from 495 to 535
+  Line 35796, "Corrected.", for this block:
+  Block removed: the entry on part 4 named build-work lines 556 to 568 at 6ef979b for point 8, whose first line is blank
+  Line 35804, "Corrected, and the note of its row in the table with it.", for
+  this block:
+  Block removed: the README defect of the entry on part 4 named lines 213 to 215 and line 215, where the list runs to 260 and the words stand on 214
+  Line 35811, "blank. Corrected.", for this block:
+  Block removed: the entry on conditions 6 and 7 named setup-checks lines 485 to 553 for a question that runs from 495 to 552
+  Line 35817, "from 1502 to 1513. Corrected.", for this block:
+  Block removed: the entry on conditions 6 and 7 named build-work lines 1495 to 1505 for the sentence on 6 and 7, which runs from 1502 to 1513
+  Line 35825, "2026 at lines 10972 to 10977. Corrected.", for this block:
+  Block removed: the entry on conditions 6 and 7 named lines 29760 to 29763 for the sentence approved on 6 October 2026, which quote a run and not the approval
+  Line 35835, "sentences. Corrected.", for this block:
+  Block removed: the entry on conditions 6 and 7 named three lines of plan-work and build-work for the places of the mark that carry other sentences
+  Line 35841, "859, the exit on 858. Corrected.", for this block:
+  Block removed: the entry on conditions 6 and 7 named the guard's lines 837 to 857 for its duty under PermissionDenied, which ends on 859
+  Line 35846, "its two new fields; the comment ends on 45. Corrected.", for
+  this block:
+  Block removed: the entry on conditions 6 and 7 named lines 33 to 44 of the reader's head for a comment that ends on 45
+  Line 35852, "brings the question; the first stands at 26 to 28. Corrected:
+  26 to 33.", for this block:
+  Block removed: the entry on conditions 6 and 7 named lines 29 to 33 of mode-set-up.md for the rule being none of the five, which stands at 26 to 28
+  Line 35859, "and at `4fe6374` those lines carry the form of the widget.
+  Corrected: "at", for this block:
+  Block removed: the entry on conditions 6 and 7 named step 3 lines 503 to 507 without a commit, which hold at 45a7a49 and not at its default 4fe6374
+  Line 35867, "Corrected.", for this block:
+  Block removed: the entry on conditions 6 and 7 named the workflow's lines 150 to 215 for the step on titles, which runs from 154 to 216
+  Line 35872, "question program; it ends on 466, `return False`. Corrected.",
+  for this block:
+  Block removed: the entry on conditions 6 and 7 named lines 453 to 465 for the function recorded, which ends on 466
+  Line 35879, "the hunk `-31379,0`, after the blank line 31379. Corrected.",
+  for this block:
+  Block removed: the entry on the six closing runs said this file was appended after line 31377, where git diff gives the hunk after 31379
+  Line 35885, "stands there on 515, 507 being its place until `b52be40`.
+  Corrected.", for this block:
+  Block removed: the entry on the six closing runs named build-work line 507 at f0eaae7 for the evidence of line 5986, which stands there on 515
+  Line 35889, "**Said wrongly in dated entries, said right here.** Each
+  carries a defect", for these 27 blocks:
+  Block removed: the entry on part 1 said lines 277 to 284 of setup-project at d1250d1 carry the reason that what needs weighing stands alone, where they gave the ceiling there
+  Block removed: the records of the entry on part 1 named two skill branches for the refresh, where three came in
+  Block removed: the entry on part 2 said its branch went in three commits, where it has five
+  Block removed: the entry on part 2 said its fifth commit put a rule and a reason into the conventions, where it put two rules and a reason
+  Block removed: the entry on part 2 said every hit of its second search over the README was decided and nothing else stood, where a stash entry went unnamed
+  Block removed: the entry on part 3 said a --path on puppeteer browsers install is not read and that of several --path the last one wins, where yargs 17.7.3 reads it and makes several a list
+  Block removed: the entry on part 3 said the table names no label of the reader's causes, where two of its anchors carried one
+  Block removed: the entry on part 3 said five dated lines quote no record:, where six do
+  Block removed: the entry on part 3 said the template under a yes carried eleven places since the record was introduced, where it carried six until 8 October 2026
+  Block removed: the entry on part 4 said item fills FACTS with the command's id, where it fills ITEMS
+  Block removed: the entry on part 4 said its first commit added four absent lines to the reader's self-test, where it added five
+  Block removed: the entry on part 4 said the job runs the install-fact hook once on each system, where it runs it once under each of its two events
+  Block removed: the entry on part 4 said the table's row of the first cause of the setup-state program was re-anchored, where the rows of all three were
+  Block removed: the entry on part 4 named the runs of its bench thing by thing and left out eight of them, its third commit carrying the run rows above and nothing else
+  Block removed: the entry on part 4 said both new skill branches of its fourth commit are evidenced on their heads, where the build-work one is evidenced on a later line
+  Block removed: the entry on conditions 6 and 7 said its branch went in six commits of two orders, where it went in eight of three
+  Block removed: the entry on conditions 6 and 7 said two of its status lines hold words of the search set, where one does
+  Block removed: the entry on conditions 6 and 7 said every cause of the reader under --dependency names the section, where five name none
+  Block removed: the entry on conditions 6 and 7 said nothing counts in doubt at a denial, where a denial without a reason field counts
+  Block removed: the entry on conditions 6 and 7 said the record's path and line form live in the question program alone, where the job reads both since its seventh commit
+  Block removed: the entry on conditions 6 and 7 said its head has 68 characters, where it has 71
+  Block removed: the entry on conditions 6 and 7 said the title of its pull request is the first line of its first commit with 65 characters, where the title that landed has 69
+  Block removed: the entry on conditions 6 and 7 counted a row on the no among the rule program's rows put back, where it is a thing of setup-checks step 8
+  Block removed: the entry on conditions 6 and 7 named three outcomes of the rule program as measured on this Mac alone, where four and three reasons are
+  Block removed: the entry on the six closing runs named the entries of parts 1 to 5, where the fifth is the entry on conditions 6 and 7
+  Block removed: the entry on the six closing runs said run 1 meets questions 2 and 3 of the setup, where question 2 is put only where a gate stands already
+  Block removed: the entry on the six closing runs said the answers of 20 October 2026 took line 14121 out, where the decision the entry on part 1 records did
+
+  From the entry at line 43585, "Sixteen entries held, milestone 3 reached,
+  the workflow steps run here", 86 blocks; the line of docs/roadmap.md that
+  says the branch of that entry did the thing stands beside each, as the line
+  number at `606cdab`:
+  Line 43713, "374 to 384. Mended on those lines: "runs every self-test under
+  `bin/`", for this block:
+  Block removed: the conventions say under Registering a skill that the job hooks on every system runs every self-test under bin since 23 October 2026
+  Line 43727, "at `ba2d06b` and at `a6c3403`. Mended on those lines: seven
+  over six since", for this block:
+  Block removed: the conventions say that check 17 prints seven lines over six sites since 28 October 2026, setup-checks step 3 matching on two
+  Line 43737, "three of the defects not held, and never says eight. Mended on
+  that line", for this block:
+  Block removed: the plan says the run under a no met seven defects and one open point again, three of the defects not held
+  Line 43747, "defects 2 and 4 off it, 43114 and 43137 to 43138. Mended on
+  that line:", for this block:
+  Block removed: the plan says two of the short run's four new defects are of milestone 3
+  Line 43765, "paragraph begins on 2372. Corrected.", for this block:
+  Block removed: the entry on the catch-up after the audit names the conventions' lines 2378 to 2388 at 6edeef1 for the refusal paragraph
+  Line 43770, "blank; the paragraph with the hook's input begins on 34719.
+  Corrected.", for this block:
+  Block removed: the entry on the six closing runs names lines 34719 to 34747 for the measurement of 22 October 2026
+  Line 43776, "mid-sentence. Corrected.", for this block:
+  Block removed: the entry on the six closing runs names setup-project expanded 1795 to 1815 at 6edeef1 for the close of the setup
+  Line 43781, "of `setup-checks` expanded at `6edeef1`. Corrected.", for this
+  block:
+  Block removed: the entry on the six closing runs names setup-checks expanded 2029 to 2032 for the form of the rule question
+  Line 43787, "1059. Corrected.", for this block:
+  Block removed: the entry on the six closing runs names setup-checks expanded 1059 to 1062 for the question on a missing tool
+  Line 43792, "defect 11 of 19 October 2026 stands on 30197. Corrected.", for
+  this block:
+  Block removed: the entry on the six closing runs names line 30197 for defect 11 of 19 October 2026
+  Line 43798, "beginning on 1302; 1160 is mid-item. Corrected.", for this
+  block:
+  Block removed: the entry on install lines by one program names build-work expanded 1127 to 1191 at 1ef533e for point 7
+  Line 43803, "`1ef533e` ends on 2532. Corrected.", for this block:
+  Block removed: the entry on install lines by one program names build-work expanded 2454 to 2532 for the seven conditions
+  Line 43809, "sentence before. Corrected.", for this block:
+  Block removed: the entry on the install rules names backed-command.md lines 49 to 50 at e9deec2 for the folder a dry run printed
+  Line 43815, "`e9deec2`. Corrected.", for this block:
+  Block removed: the entry on the questions names setup-project expanded 536 to 539 at e9deec2 for the rule behind defect 34
+  Line 43820, "660 of the conventions at `a339940`; 661 is blank. Corrected.",
+  for this block:
+  Block removed: the entry on the questions names the conventions' lines 650 to 660 at a339940 for the one question naming a number
+  Line 43826, "sentence on the rule. Corrected.", for this block:
+  Block removed: the entry on the start conditions names mode-set-up.md lines 21 to 30 at 3d82ab1 for what the guard reads
+  Line 43832, "Corrected.", for this block:
+  Block removed: the entry on the start conditions names the mark guard's lines 175 to 190 at 3d82ab1 for the call without a range
+  Line 43838, "Corrected.", for this block:
+  Block removed: the entry on the benches names setup-checks lines 1429 to 1432 at b74c86f for switching auto-merge on
+  Line 43846, "37838. Corrected.", for this block:
+  Block removed: the entry on the three closing runs names build-work expanded 1207 to 1222 at d49921f for the handover under a no
+  Line 43851, "start" opens 2550 and the sentence ends on 2552. Corrected.",
+  for this block:
+  Block removed: the entry on the three closing runs names build-work expanded 2550 to 2552 for the refusal to start
+  Line 43856, "the entry at 36636 is 37345; 37346 is blank. Corrected.", for
+  this block:
+  Block removed: the entry on the three closing runs names line 37345 for defect 15 of the six closing runs
+  Line 43862, "Corrected.", for this block:
+  Block removed: the entry on the three closing runs names build-work expanded 1147 to 1386 at d49921f for point 7
+  Line 43869, "other two ranges carry the five rules. Corrected.", for this
+  block:
+  Block removed: the entry on the three closing runs names build-work line 466 at d49921f for the subagent's branch cut
+  Line 43876, "Corrected.", for this block:
+  Block removed: the entry on the three closing runs names line 51 of the Stop hook at d49921f for the write of the attempt file
+  Line 43882, "Corrected.", for this block:
+  Block removed: the entry on the visible texts names line 26673 for the measurement of twelve lines
+  Line 43889, "`8669e5c`, the style having gained two lines. Corrected.", for
+  this block:
+  Block removed: the entry on the visible texts names output-styles/devloop.md lines 44 to 47 at 89932f8 for the bound of the widget
+  Line 43894, "under (c) of the entry at 36636 closes on 36844. Corrected.",
+  for this block:
+  Block removed: the entry on the visible texts names lines 36839 to 36844 for the wording quoted under (c)
+  Line 43900, "`89932f8`; 1096 to 1103 covers brew, go and half of npm.
+  Corrected.", for this block:
+  Block removed: the entry on the tool state names the guard's lines 1095 to 1153 at 89932f8 for the routes' folders
+  Line 43906, "Corrected.", for this block:
+  Block removed: the entry on the tool state names build-work lines 648 to 650 at 89932f8 for the readiness query passing over a task
+  Line 43913, "Corrected.", for this block:
+  Block removed: the entry on the tool state names plan-work lines 322 and 450 at f183050 for the evidence of defects 4 and 5
+  Line 43920, "resolution. Corrected.", for this block:
+  Block removed: the entry on the tool state names the conventions' lines 768 to 772 at f183050 for the browser not read
+  Line 43926, "at `9332a70`. Corrected.", for this block:
+  Block removed: the entry on the SubagentStart hook names build-work lines 641 to 677 at 9332a70 for point 7's handover
+  Line 43933, "lines above it; 1006 to 1016 at `858d976`. Corrected.", for
+  this block:
+  Block removed: the entry on the SubagentStart hook names build-work lines 1041 to 1051 at 9332a70 for a task not offered while its tool is missing
+  Line 43939, "486 are blank. Corrected.", for this block:
+  Block removed: the entry on the SubagentStart hook names lines 248 to 484 of bin/devloop-install-issues at 9332a70 for its self-test
+  Line 43944, "-v` ends on 56 of `shared/backed-command.md` at `9332a70`.
+  Corrected.", for this block:
+  Block removed: the entry on the SubagentStart hook names backed-command.md lines 37 to 56 at 9332a70 for reading the result
+  Line 43949, "`9332a70` is blank; the paragraph begins on 32. Corrected.",
+  for this block:
+  Block removed: the addendum of the entry on the SubagentStart hook names README lines 32 to 38 at 9332a70 for the two git config commands
+  Line 43955, "hold the end of (4), (5) and the addendum's opening.
+  Corrected.", for this block:
+  Block removed: the entry on the handover steps names lines 41174 to 41192 for the six findings D1 to D6
+  Line 43967, "head, as the audit of 23 October 2026 named `1810ab5`.
+  Corrected.", for this block:
+  Block removed: the entry on the handover steps gives the lines of its first part at 392bfd0 and those of its second part at the tip bc69673
+  Line 43974, "0.164.0 the measurement ran against. Corrected.", for this
+  block:
+  Block removed: the entry on the handover steps names line 121 of the identity guard at 392bfd0 for the block on git -c user.email
+  Line 43980, "shell steps of (4). Corrected.", for this block:
+  Block removed: the entry on the handover steps names lines 41157 to 41160 for the question the addendum of 28 October 2026 left open
+  Line 43986, "closing on it. Corrected.", for this block:
+  Block removed: the entry on the handover steps names lines 40494 to 40506 for wording (5) of the entry on the tool state
+  Line 43993, "after them open other paragraphs. Corrected.", for this block:
+  Block removed: the entry on the handover steps names lines 15638 to 15654 and 16004 to 16019 for text 7 and its last sentence
+  Line 44000, "the last `called` of the second. Corrected.", for this block:
+  Block removed: the entry on the handover steps names lines 514 to 536 of bin/devloop-install-issues for the cases of the folder read
+  Line 44005, "command" stands on 41129. Corrected.", for this block:
+  Block removed: the entry on the handover steps names lines 41125 to 41129 for the step without a command in (4)
+  Line 44010, "itself" opens 1703 of `build-work` expanded at `bc69673`.
+  Corrected.", for this block:
+  Block removed: the entry on the run under a no names build-work expanded 1703 to 1716 at bc69673 for The task itself
+  Line 44015, "ends on 1209 of `plan-work` expanded at `bc69673`. Corrected.",
+  for this block:
+  Block removed: the entry on the run under a no names plan-work expanded 1177 to 1209 at bc69673 for the should of the hard core
+  Line 44020, "„Installierst du es später doch …“ stands on 41362 to 41363.
+  Corrected.", for this block:
+  Block removed: the entry on the install in the session names lines 41362 to 41363 for the sentence on a later install
+  Line 44026, "at `be6c223`; 580 at `886f72f`. Corrected.", for this block:
+  Block removed: the entry on the install in the session names plan-work line 606 at be6c223 for the insert of the text of the start
+  Line 44032, "`886f72f`. Corrected.", for this block:
+  Block removed: the entry on the install in the session names build-work line 621 at be6c223 for the program named in The task itself
+  Line 44038, "function. Corrected.", for this block:
+  Block removed: the entry on the install in the session names the reader's lines 2331 to 2362 for read_ansi
+  Line 44043, "exit stands on 413 to 417 of the reader's head at `be6c223`.
+  Corrected.", for this block:
+  Block removed: the entry on the install in the session names the reader's lines 413 to 417 for the exit on an escape above 10FFFF
+  Line 44048, "stand on 1772 to 1774 of `build-work` expanded at `be6c223`.
+  Corrected.", for this block:
+  Block removed: the entry on the short run names build-work expanded 1772 to 1774 at be6c223 for going back to step 2
+  Line 44055, "Corrected.", for this block:
+  Block removed: the entry on the short run names install-issues-read.md lines 1 to 14 and build-work expanded 1040 to 1053 for the program before the first read
+  Line 44060, "of `build-work` expanded at `be6c223`. Corrected.", for this
+  block:
+  Block removed: the entry on the short run names build-work expanded 1249 to 1251 for the prompt's lines on installing
+  Line 44066, "`be6c223`. Corrected.", for this block:
+  Block removed: the entry on the short run names build-work expanded 2932 to 2934 for the case measured on 9 September 2026
+  Line 44071, "blank; the words end on 2705. Corrected.", for this block:
+  Block removed: the entry on the short run names build-work expanded 2702 to 2705 for the checks going green
+  Line 44077, "its words on 807 to 813. Corrected.", for this block:
+  Block removed: the entry on the short run names build-work expanded 806 to 816 for the eighth case
+  Line 44083, "blank. Corrected.", for this block:
+  Block removed: the entry on the short run names lines 21 to 30 of bin/devloop-auto-mode-rule for the ways of the rule
+  Line 44088, "to 139 of `skills/start-work/SKILL.md` at `628d166`.
+  Corrected.", for this block:
+  Block removed: the entry on the install issues read at the start names start-work lines 138 to 139 for the in-flight query
+  Line 44092, "**Said wrongly in dated entries, said right here.** Each
+  carries a defect", for these 27 blocks:
+  Block removed: the self-test of bin/devloop-auto-mode-rule has five cases of a file that cannot be read, not four, and one of a directory in its place
+  Block removed: the addendum of the entry on the six closing runs changed seven places of that entry, the plan's sentence and three rows, not three places
+  Block removed: the checks printed the same at d49921f although one reads docs/roadmap.md, which the entry's 223 lines changed
+  Block removed: the grep of new defect 6 hits defect 2's paragraph, decision (1) and the entry on the install rules, and no line of defect 7
+  Block removed: the grep of new defect 7 hits six audit entries and six other entries, and no line of defect 2's paragraph
+  Block removed: the grep of new defect 3 hits lines 31498 and 38548 of this file beside the texts quoted
+  Block removed: the grep of new defect 10 prints nothing, its phrase broken over lines 34445 and 34446
+  Block removed: the Stop-hook search of the addendum prints 47 lines, the places named among them, none of the others carrying the case
+  Block removed: the lines of hooks/stop-checks.sh were last changed by 4fe6374 on 22 October 2026, and the runs on it count all the same
+  Block removed: the language grep of the entry on the visible texts prints sixteen lines, five of its thirteen places matched by another pattern
+  Block removed: the grep for the written list prints two lines of plan-work after the change, the sentence that says it is not said there
+  Block removed: the entry on the visible texts re-anchored nine rows, six things and three part-of records
+  Block removed: the grep for command -v prints eight lines at 89932f8, the guard's read of the interpreter on line 1182 among them
+  Block removed: the grep for a tool outside the project prints seventeen lines at 89932f8, three of them not in the entry's list
+  Block removed: two lines of the entry on the tool state were longer than 80 characters at aeb5579, the third longer than 80 bytes
+  Block removed: the rule of the SubagentStart hook at 9332a70 is three sentences
+  Block removed: the no of text 4 gains twenty characters and a fourth line at 73, the fields staying inside fourteen
+  Block removed: the decisions after the push of the entry on the handover steps went in three commits more
+  Block removed: the rule that a run on a defect not built is a broken record stands in section D of the tool's head, not in section C
+  Block removed: the records of the entry on the run under a no add a second not-a-thing row, on the heading of (b)
+  Block removed: shared/install-tool.md has 202 lines, the moved text changed in three hunks, and the expanded build-work differs from 886f72f in 121 lines
+  Block removed: the command of the SubagentStart rule prints 360 lines and 4480 words since c681f46, the five first lines at 1, 203, 259, 284 and 310
+  Block removed: the reader's case of octal, \u and \x together is spelled with \u0072 for the r
+  Block removed: merge-handover.md keeps auto-merge out of the sentence in the no-gate case alone, and the short run's gate stood
+  Block removed: the grep for a task not buildable hits four lines of build-work expanded, 811 among them
+  Block removed: the branch run-remove-install-permission does not stand on GitHub, merged as #58 on 29 October 2026 and deleted by the block that merged it
+  Block removed: the entry on the install issues read at the start went in three commits, the third rewriting five of its lines
+
+  From the entry at line 45214, "Four entries held, rationale points
+  completed, two questions answered", 49 blocks; the line of docs/roadmap.md
+  that says the branch of that entry did the thing stands beside each, as the
+  line number at `606cdab`:
+  Line 45308, "calling such a blank boundary wrong at 37346. Corrected; the
+  defect of", for this block:
+  Block removed: the entry on the three closing runs and the audit after milestone 3 name build-work expanded 1147 to 1386 at d49921f for point 7
+  Line 45319, "Corrected.", for this block:
+  Block removed: the audit after milestone 3 says the conventions gain lines after 1419, 1722, 3826, 3982, 4039 and 4072 and the plan after 144, 602 and 1118
+  Line 45325, "being the bench of that entry. Corrected.", for this block:
+  Block removed: the audit after milestone 3 places the three decisions of 30 October 2026 at lines 43296 to 43324
+  Line 45336, "Corrected.", for this block:
+  Block removed: the audit after milestone 3 places the nine hunks of the expanded build-work at c681f46 against 886f72f where diff prints them
+  Line 45341, "under `bin/` at `628d166` runs each on 383 and closes on 384.
+  Corrected.", for this block:
+  Block removed: the audit after milestone 3 names stock-take.yml lines 374 to 384 at 628d166 for the loop over every self-test under bin
+  Line 45347, "stands on 4039. Corrected.", for this block:
+  Block removed: the audit after milestone 3 names conventions lines 4038 to 4039 at 628d166 for the sentence of six lines over six sites
+  Line 45353, "of its row likewise. Corrected.", for this block:
+  Block removed: the audit after milestone 3 names lines 42565 to 42567 for the 331 lines of the rule's command
+  Line 45360, "it. Corrected.", for this block:
+  Block removed: the audit after milestone 3 names setup-project lines 443 to 447 at 628d166 for the sentence on a side that did not answer
+  Line 45366, "ruleset, runs over 38619 to 38621. Corrected.", for this block:
+  Block removed: the audit after milestone 3 names lines 38615 to 38621 for the case of an account without admin rights on a ruleset
+  Line 45372, "lines; 521 at `f665141`. Corrected.", for this block:
+  Block removed: the entry on the question timeout names stock-take.yml line 490 at 136bac3 for exit "$red"
+  Line 45376, "**Said wrongly in dated entries, said right here.** Each
+  carries a defect", for these 20 blocks:
+  Block removed: the corrections in place of the audit after milestone 3 stand on 59 physical lines, not 58
+  Block removed: build-work expanded 1180 to 1197 at d49921f lies in point 7, and line 37838 of the entry at 37660 gives 1180 to 1185
+  Block removed: the paragraph on what fits the widget runs from line 44 to 52 of the output style at 89932f8, the bound and its count on 44 to 48
+  Block removed: three commits after 392bfd0 moved the lines of seven files the entry at 41238 cites, not eight
+  Block removed: of the two lines 42935 and 43083 only 42935 carries the expanded range, 43083 changing 13 to 14 alone
+  Block removed: two new backticked words came into the roadmap at d49921f, each too far from every name for the check of names to print it
+  Block removed: the grep of new defect 7 hits six audit entries and five other entries, 28008 twice
+  Block removed: git grep for command -v over bin and hooks prints seven lines at 89932f8, not eight
+  Block removed: the first of the four items of the SubagentStart rule is its first sentence, the others clauses of its second and third
+  Block removed: the entry at 42609 leaves to the person whether defect 2 of the short run is of milestone 3
+  Block removed: the mend of the sentence on check 17 reads built, its evidence standing under Before a handover, run these
+  Block removed: the self-test of bin/devloop-tool-state has 63 cases since the entry at 40745, not 62
+  Block removed: the reading of the gate's binding in setup-project stands in its step 4, not step 7
+  Block removed: the numbers the audit after milestone 3 gives for what 5a built hold at 8053282, not at 628d166 as its opening says
+  Block removed: pipx writes its log only where the guard reads the pipx route or the tool-state program reads an install by pipx
+  Block removed: setup-checks lines 1013 to 1015 at 628d166 carry the end of the classic field's sentence and the binding of a gate, not the bypass at the merge
+  Block removed: five points of docs/rationale.md quote a wording of form B with the password, four of them carrying the wording for the case of doubt
+  Block removed: build-work says no more that it says what is said and not the words where its reference to an approved wording went
+  Block removed: thirteen references to docs/skill-conventions.md that left the loaded texts stand in docs/rationale.md at their rules
+  Block removed: the handover of a refused install that decision (1) of 1 November 2026 gives form B in doubt stands in setup-checks under A guard's block is not a decline, not under Step 3
+  Line 45554, "**Mended in `docs/rationale.md`.** Each carries a defect thing
+  sited on", for these 15 blocks:
+  Block removed: the rule that nothing is said where nothing changes stands in docs/rationale.md under each heading of plan-work that carries it
+  Block removed: the cases of review-changes in docs/rationale.md say what finding A and the narrowed review of 6 and 7 September 2026 record
+  Block removed: the cases of run 1 and run 3a on who installs say in docs/rationale.md what each run wrote
+  Block removed: docs/rationale.md says that one sentence names seven labels created and needs-human as the example
+  Block removed: docs/rationale.md gives the reason the install-issues program runs first in start-work, the cause removed where it lay
+  Block removed: docs/rationale.md carries that only a typed answer holds for the whole call of the widget
+  Block removed: the references to docs/skill-conventions.md the loaded texts lost stand in docs/rationale.md at the points of their rules
+  Block removed: every head of an entry docs/rationale.md cites stands there whole, each found once as a head in docs/roadmap.md
+  Block removed: docs/rationale.md gives the unbounded attempts of 6 October 2026 and the move to the background as the changelog's, not measured
+  Block removed: docs/rationale.md names point 5 of the entry on the install lines by one program as the decision on the backing under a yes
+  Block removed: docs/rationale.md gives the silence before calling setup-checks as the callers' rule
+  Block removed: docs/rationale.md gives the case of a run improvising the merge for landing the check suite first
+  Block removed: docs/rationale.md carries the awake line's reason, the answers of gh repo view, the bound with one issue and two, and run 3a whole
+  Block removed: docs/rationale.md gives the opening block as the closing block without its two sentences on why it stands twice
+  Block removed: docs/rationale.md carries the first decline case of the install handover and the handover of the first closing run of milestone 3
+  Line 45677, "three mended.", for this block:
+  Block removed: docs/rationale.md gives form B with the case of doubt, text 2 at lines 14882 to 14887, and the three hardenings for build-work
+  Line 45698, "**Mended in `docs/plan.md` and `docs/skill-conventions.md`.**
+  The same", for these 3 blocks:
+  Block removed: the plan names under Open the answer the question timeout sends, no milestone taking it up
+  Block removed: the plan says milestone 3 was done on 31 October 2026 in pull request #216
+  Block removed: the conventions say the job hooks on every system leaves out two self-tests under Windows
+
+  **The 32 inner contradictions of the loaded texts**, which lines 45200 to
+  45205 assign to part 2, read at the places at `606cdab`: every one still
+  stands, none is resolved, none has lost its object. Three are a block
+  already — the first of section 8, at `docs/defects.md` line 1628 at
+  `606cdab`, "build-prototype takes whichever branch matches the code with
+  nobody there where its own section takes the logic branch"; the first of
+  section 16, at line 1548, "a missing remote is a stop in step 0 and an offer
+  in step 4 question 1"; the third of section 18, at line 6845, "setup-checks
+  step 4 names the terminal alone for an install the person made, where step 3
+  and build-work say both forms" — and get no second. The other 29 stand as
+  blocks under `## Without a milestone`, Found the entry at line 44909, Fix
+  none, Recorded, not built; Wrong names the two places with file and heading,
+  a shared text without headings by its paragraph; Should says the person
+  decides which holds, with both places, except the one on the exit code at
+  the bound, where `bin/devloop-bounded` and `shared/fetch-three-times.md`
+  decide for 124. Counted from the report's sections 8 to 20: 37 tensions
+  named, the four of section 11 gone with that branch, the fourth of section 8
+  read by section 13 as none; 32. Each new block with the section of the
+  report it comes from:
+
+  - Section 8 of the report: `build-prototype LOGIC.md hands the file over by sending or opening it where SKILL.md gives one action`
+  - Section 8 of the report: `diagnose-bug opens with three routes in and names a fourth further down`
+  - Section 9 of the report: `body-through-file.md says a heredoc puts the text where the guard reads it and that a quoted string is a word to the guards`
+  - Section 9 of the report: `editing-tool.md says the guards read text put through the shell and that a quoted argument is a word to them`
+  - Section 10 of the report: `install-tool.md says no issue holds the task since the issue is written on a no alone, while the way after a no runs the same steps with the issue open`
+  - Section 10 of the report: `install-record.md says the five browser places are added with the person there and no text names a run that adds them`
+  - Section 12 of the report: `mode-set-up.md says the mark guard blocks exactly where the text refuses while the text refuses on five things and the guard reads four of them and start condition 1`
+  - Section 14 of the report: `cut-branch.md deletes the branch once they have said it landed where merge-handover.md reads the landing off the platform and never off their word`
+  - Section 14 of the report: `branch-deletion.md gives exit 128 for the program's line at the bound where fetch-three-times.md gives exit 124`
+  - Section 15 of the report: `start-work says something in flight means no question and offers to land an open pull request`
+  - Section 15 of the report: `start-work says not to ask at all with a map or a spec in flight and in the same case to rank, recommend and offer`
+  - Section 15 of the report: `start-work asks what to build only after the introduction, so a setup in part with no idea reaches step 3 unasked`
+  - Section 15 of the report: `cut-into-tasks says the split with its count is said once the first task is built and that the number of tasks is stated after creating`
+  - Section 15 of the report: `review-changes asks for the record of how many lenses ran and says to say neither number`
+  - Section 15 of the report: `review-changes says to say what was filed and why where the report is said to nobody`
+  - Section 16 of the report: `setup-project asks the language first in English where step 4 says never to ask about the user's language`
+  - Section 16 of the report: `setup-project gives the record not having landed yet as the reason for handing nothing over, which does not hold at a refresh whose record stands`
+  - Section 16 of the report: `setup-project step 1 names the head of backed-command.md as a rule above, and the skill does not insert that text`
+  - Section 16 of the report: `setup-project points at three-questions.md and the text on the mark's deletion, neither of which it inserts`
+  - Section 17 of the report: `plan-work says of the install record only that the build decides and names today's record for conditions 6 and 7 at a blocked mark`
+  - Section 17 of the report: `plan-work says under --planning the program does not give the record's line and that the spec carries not the program's line on the record`
+  - Section 17 of the report: `plan-work says to run the four stages in one session where you can and that planning is one session`
+  - Section 18 of the report: `setup-checks hands the command over after a no to a tool in the packages as text and puts the question for the same class at once with the command in its field`
+  - Section 18 of the report: `setup-checks skips step 7 for the four single-class callers at its opening and for a single class from a build at step 7`
+  - Section 18 of the report: `setup-checks calls the questions of step 3 the last questions of the skill where step 8 asks more`
+  - Section 18 of the report: `setup-checks gives them the command where an install under a yes brings a runtime and says nothing of how that class is then decided`
+  - Section 19 of the report: `setup-checks step 8 puts the question where the five things do not all hold and puts none where GitHub offers no protection`
+  - Section 19 of the report: `setup-checks step 8 writes nothing where GitHub offers no protection before the question and writes a record saying no where the protection is refused when it is set`
+  - Section 19 of the report: `setup-checks counts the fields of the mode question at thirteen lines, which assumes the visibility answered and says nothing of the field with the command and the message in it`
+
+  **Decision (9) on this branch.** The 268 fixed lines above are what the tool
+  reads for the blocks that left: on this branch after the second commit it
+  prints under BLOCKS HELD AGAINST THE BRANCH POINT the branch point
+  `606cdab`, blocks removed 268, renamed 0, Should changed 0, added 29, lines
+  of the fixed forms added to `docs/roadmap.md` 268, and no broken record.
+  Measured red as well, in a copy of the tree outside the repository with the
+  four lines of the blocks of the entry at line 1897 taken out of this entry:
+  BROKEN RECORDS 4, each "against the branch point: the block '…' stood in
+  docs/defects.md at 606cdab, the branch point, and stands in the working tree
+  no more, and no line added to docs/roadmap.md since says 'Block removed:
+  <title>' or 'Block renamed: <title> / <new title>'", the four titles named,
+  lines of the fixed forms 264, exit 2.
+
+  **Things that lost their counting run, and the things this order changes.**
+  By section D of the head of `scripts/devloop-stock-take`, read off "STATES,
+  by file and kind" at `606cdab` and on the branch: one thing walked before is
+  built and never walked now, the outcome of the tool's own `--self-test`,
+  since the line of `message_templates` that names the lists it reads is part
+  of it and this order changed that line; by this order's rule for the
+  outcomes of the tool it carries, with the nineteen new outcomes, a run of
+  the self-test of this day under 0.173.0, recorded in the third commit. No
+  other thing changed its state: of the 1766 things that are no defect at
+  `606cdab`, every one stands on the branch in the state it stood in, and the
+  nineteen new ones are built and never walked until the third commit. No
+  defect changed its state: the 268 blocks that left and the 29 that came are
+  the whole difference, 921 to 682, by state Undetermined 8 and 8, Recorded,
+  not built 514 and 282, Built, never walked 272 and 270, Walked 83 and 83,
+  Closed 44 and 39, the two built and never walked and the five closed among
+  the blocks taken out. Nothing else this order changes has a run to lose:
+  `docs/skill-conventions.md`, `docs/plan.md` and `docs/defects.md` carry no
+  thing of their own, and the anchors on them stand where they stood.
+
+  **The stock-take and the checks, before at `606cdab` and after on the
+  branch.** The tool, `PYTHONDONTWRITEBYTECODE=1 scripts/devloop-stock-take`,
+  before and after: exit 0 and 0; broken records 0 and 0; uncovered lines of
+  the search set 0 of 4408 and 0 of 4432, the lines of the new code having
+  come in; units without a straight path 0 and 0; closed defects 44 and 39,
+  five of the blocks taken out having been closed; not-a-thing records 3289
+  and 3301; lines of the set that can carry no unique anchor 334 and 338, the
+  two `if p.returncode != 0:` lines and the two `elif t not in at_base:` lines
+  of the new code among them; blocks 921 and 682, by state Undetermined 8 and
+  8, Recorded, not built 514 and 282, Built, never walked 272 and 270, Walked
+  83 and 83, Closed 44 and 39; by section after: ## Without a milestone 29
+  (Recorded, not built 29); ## Not yet sorted 653 (Undetermined 8, Recorded,
+  not built 253, Built, never walked 270, Walked 83, Closed 39). The things
+  that are no defect, by state before and after: Undetermined 16 and 16,
+  Recorded, not built 11 and 11, Built, never walked 1189 and 1209, Walked 550
+  and 549, the difference the nineteen new outcomes of the tool and the
+  outcome of its self-test, which lost its counting run to this order, built
+  and never walked until the third commit records their runs. Under BLOCKS
+  HELD AGAINST THE BRANCH POINT: branch point 606cdab: blocks removed 268,
+  renamed 0, Should changed 0, added 29; lines of the fixed forms added to
+  docs/roadmap.md: 268. Its self-test: SELF-TEST PASSED: 146 cases; of the 128
+  messages this tool rejects, refuses or answers with, read off its own
+  source, 128 are asserted by a case and 0 by none; the lines of the report
+  are not in that count. The twenty checks under "Before a handover, run
+  these", in a bash started with `--noprofile --norc` and `/usr/bin/grep`
+  first on the path: every one prints on the working tree with every change in
+  it what it printed at `606cdab`, line for line and with the same exit code,
+  check 16, `scripts/devloop-run-workflow .github/workflows/stock-take.yml`,
+  its green line, eight steps run, on the working tree before the commits,
+  where its title step sees no new head yet; on the committed branch it is run
+  after the third commit, where it reads the head of this entry.
+
+  **Records.** In `docs/stock-take.tsv`: one not-a-thing record re-anchored,
+  the line of `message_templates` that names the lists whose messages it
+  reads, `guard_errors` among them now; nineteen things of the tool for its
+  new outcomes, kind program outcome, each sited on the condition that decides
+  it or, where that line stands in the file more than once and carries no
+  anchor, on its message, evidenced on the message or on the line that prints
+  the report, and benched on its case of the self-test; twelve not-a-thing
+  records, part of them, for the other lines of the set the new code brought
+  in. The runs, in the third commit, twenty: one on each of the nineteen
+  things and one on the outcome of the self-test itself, which lost its
+  counting run to this order; the self-test of this day under 0.173.0,
+  recorded in the third commit, every case red once and green once. No run is
+  recorded on a defect.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
