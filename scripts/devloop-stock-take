@@ -42,8 +42,11 @@ uncovered, or a unit has no straight path. 2: a record is broken, an anchor
 does not stand where its record says, a run under the version this branch
 introduces was recorded before a later commit of the branch changed a line of
 its thing, a block of docs/defects.md is rejected or names a state the tool
-does not compute, a defect's closing names a proof that does not hold, or the
-repository is one the tool refuses (a shallow clone).
+does not compute, a defect's closing names a proof that does not hold, a
+block that stood in docs/defects.md at the branch point is gone, renamed or
+carries another Should with no line of the fixed form added to
+docs/roadmap.md, or such a line names what the branch did not do (section F),
+or the repository is one the tool refuses (a shallow clone).
 
 It needs python3 and git and nothing else, and no GNU tool: it runs on macOS.
 
@@ -659,6 +662,37 @@ it. The blocks under "## Not yet sorted" and the blocks with "not stated"
 are listed, each under a heading of its own, and turn nothing red. The
 output shows the defects by section, the states counted per section.
 
+No block vanishes in silence, since 2 November 2026, decided by the person
+on that day, the roadmap entry of that date on the guard over the blocks.
+The tool holds the blocks of docs/defects.md at the commit this branch
+forked from, git merge-base HEAD origin/main, against the working tree. A
+title standing there and not here is a block removed or renamed; a title
+standing in both with another Should is a Should changed. Each such change
+is named by one physical line the branch adds to docs/roadmap.md, read off
+git diff of that file against the branch point, in one of three fixed
+forms, the title written whole after the prefix to the end of the line,
+whatever it carries - quotes, backticks, a colon -, the two titles of a
+renaming separated by " / ", which no title carries:
+
+    Block removed: TITLE
+    Block renamed: OLD TITLE / NEW TITLE
+    Should changed: TITLE
+
+None of them opens with "- **", the opening of an entry's head, which the
+step of the workflow on titles and the reading of Found take for a head.
+The tool is red where a change has no such line, and where a line names
+what the branch did not do: a title that stands in the working tree still
+or stood at the branch point in no block, a new title that stands nowhere
+or stood there already, a Should that is the branch point's. A block the
+branch adds needs no line. Without origin/main, or without a commit HEAD
+and origin/main share, the tool says in one line that the blocks are not
+held against a branch point, and is not red for it; where docs/defects.md
+does not stand at the branch point, that there is nothing to compare. On
+main after a squash merge HEAD is the branch point, and nothing differs.
+A branch behind main, whose main gained a block after the branch point,
+is held against the branch point and not against main's tip, so that
+block is no removal.
+
 LIMITS
 
 - It proves that an anchor stands where a record says, not that it supports
@@ -727,6 +761,14 @@ LIMITS
   introduced on this branch; section C says what it does not see - a row
   re-anchored after the change, a run recorded in the one commit with the
   change, and main after the squash - and why the run's date is not read.
+- The blocks are held against the branch point by title and Should alone,
+  and against origin/main as last fetched: a block removed and written
+  again with the same title and Should is no change, a Should changed and
+  changed back none, a block that moved between sections or lost another
+  field none; a renaming named as a removal and an addition passes where a
+  line names the removal; and a line of the fixed form that the branch
+  added to the roadmap and took out again is not read, since the diff
+  against the branch point does not carry it.
 """
 
 import ast
@@ -777,6 +819,12 @@ FIX_UNDETERMINED = "not determined"
 NOT_STATED_MARK = "not stated"
 NOT_YET_SORTED = "## Not yet sorted"
 WITHOUT_MILESTONE = "## Without a milestone"
+# the fixed forms of section F, one physical line each, read off the lines a
+# branch adds to docs/roadmap.md; the title stands whole after the prefix
+BLOCK_REMOVED = "Block removed: "
+BLOCK_RENAMED = "Block renamed: "
+SHOULD_CHANGED = "Should changed: "
+RENAME_SEP = " / "
 
 PROSE_WORDS = re.compile(
     r"\b(if|where|when|whenever|wherever|unless|otherwise|either|else|before)\b",
@@ -1361,6 +1409,157 @@ def read_defects(files, rel=DEFECTS):
     return blocks, sections, errors
 
 
+class _Text:
+    """A file given as text, read where Files would be read."""
+
+    def __init__(self, text):
+        self.text = text
+
+    def get(self, rel):
+        return (self.text, self.text.split("\n"))
+
+
+def hold_blocks_to_branch_point(root, defects_rel, blocks, res):
+    """Section F, the guard over the blocks: every block of the defects file
+    at git merge-base HEAD origin/main against the working tree, and every
+    change named by one line of the fixed forms the branch added to
+    docs/roadmap.md. Fills res.guard and res.guard_errors."""
+    if resolve(root, "origin/main") is None:
+        res.guard = {"note": "origin/main is not here, so the blocks are not "
+                             "held against a branch point"}
+        return
+    p = subprocess.run(["git", "-C", root, "merge-base", "HEAD",
+                        "origin/main"], capture_output=True, text=True)
+    if p.returncode != 0:
+        res.guard = {"note": "HEAD and origin/main share no commit, so the "
+                             "blocks are not held against a branch point"}
+        return
+    base = p.stdout.strip()
+    p = subprocess.run(["git", "-C", root, "show",
+                        "%s:%s" % (base, defects_rel)],
+                       capture_output=True, text=True)
+    if p.returncode != 0:
+        res.guard = {"base": base,
+                     "note": "%s does not stand at %s, the branch point, so "
+                             "there is nothing to hold the blocks against"
+                             % (defects_rel, base[:7])}
+        return
+    base_blocks, _, _ = read_defects(_Text(p.stdout), defects_rel)
+    at_base, in_tree = {}, {}
+    for blk in base_blocks:
+        at_base.setdefault(blk.title, blk.value("Should"))
+    for blk in blocks:
+        in_tree.setdefault(blk.title, blk.value("Should"))
+    removed = [t for t in at_base if t not in in_tree]
+    added = [t for t in in_tree if t not in at_base]
+    changed = [t for t in at_base if t in in_tree and at_base[t] != in_tree[t]]
+    diff = git(root, "diff", base, "--", ROADMAP, check=False)
+    said_removed, said_renamed, said_changed, n = [], [], [], 0
+    for line in diff.split("\n"):
+        if not line.startswith("+") or line.startswith("+++"):
+            continue
+        s = line[1:].strip()
+        if s.startswith(BLOCK_REMOVED):
+            said_removed.append(s[len(BLOCK_REMOVED):].strip())
+        elif s.startswith(BLOCK_RENAMED):
+            rest = s[len(BLOCK_RENAMED):]
+            if RENAME_SEP not in rest:
+                res.guard_errors.append("a line added to %s says '%s%s' "
+                                        "without ' / ' between the old title "
+                                        "and the new"
+                                        % (ROADMAP, BLOCK_RENAMED, rest.strip()))
+                continue
+            old, new = rest.split(RENAME_SEP, 1)
+            said_renamed.append((old.strip(), new.strip()))
+        elif s.startswith(SHOULD_CHANGED):
+            said_changed.append(s[len(SHOULD_CHANGED):].strip())
+        else:
+            continue
+        n += 1
+    accounted = set(said_removed) | {old for old, _ in said_renamed}
+    for t in removed:
+        if t not in accounted:
+            res.guard_errors.append("the block %r stood in %s at %s, the "
+                                    "branch point, and stands in the working "
+                                    "tree no more, and no line added to %s "
+                                    "since says '%s<title>' or '%s<title> / "
+                                    "<new title>'" % (t, defects_rel, base[:7],
+                                                      ROADMAP, BLOCK_REMOVED,
+                                                      BLOCK_RENAMED))
+    for t in said_removed:
+        if t in in_tree:
+            res.guard_errors.append("a line added to %s says '%s%s', and that "
+                                    "block stands in the working tree still"
+                                    % (ROADMAP, BLOCK_REMOVED, t))
+        elif t not in at_base:
+            res.guard_errors.append("a line added to %s says '%s%s', and no "
+                                    "block of that title stood in %s at %s, "
+                                    "the branch point"
+                                    % (ROADMAP, BLOCK_REMOVED, t, defects_rel,
+                                       base[:7]))
+    renamed = []
+    for old, new in said_renamed:
+        ok = True
+        if old in in_tree:
+            res.guard_errors.append("a line added to %s says '%s%s / %s', and "
+                                    "the block %r stands in the working tree "
+                                    "still"
+                                    % (ROADMAP, BLOCK_RENAMED, old, new, old))
+            ok = False
+        elif old not in at_base:
+            res.guard_errors.append("a line added to %s says '%s%s / %s', and "
+                                    "no block titled %r stood in %s at %s, "
+                                    "the branch point"
+                                    % (ROADMAP, BLOCK_RENAMED, old, new, old,
+                                       defects_rel, base[:7]))
+            ok = False
+        if new not in in_tree:
+            res.guard_errors.append("a line added to %s says '%s%s / %s', and "
+                                    "no block titled %r stands in the working "
+                                    "tree" % (ROADMAP, BLOCK_RENAMED, old, new,
+                                              new))
+            ok = False
+        elif new in at_base:
+            res.guard_errors.append("a line added to %s says '%s%s / %s', and "
+                                    "a block titled %r stood in %s at %s, the "
+                                    "branch point, already"
+                                    % (ROADMAP, BLOCK_RENAMED, old, new, new,
+                                       defects_rel, base[:7]))
+            ok = False
+        if ok:
+            renamed.append((old, new))
+    for t in changed:
+        if t not in said_changed:
+            res.guard_errors.append("the Should of the block %r is not the "
+                                    "one it carried in %s at %s, the branch "
+                                    "point, and no line added to %s since "
+                                    "says '%s<title>'"
+                                    % (t, defects_rel, base[:7], ROADMAP,
+                                       SHOULD_CHANGED))
+    for t in said_changed:
+        if t not in in_tree:
+            res.guard_errors.append("a line added to %s says '%s%s', and no "
+                                    "block of that title stands in the "
+                                    "working tree"
+                                    % (ROADMAP, SHOULD_CHANGED, t))
+        elif t not in at_base:
+            res.guard_errors.append("a line added to %s says '%s%s', and no "
+                                    "block of that title stood in %s at %s, "
+                                    "the branch point" % (ROADMAP, SHOULD_CHANGED,
+                                                          t, defects_rel,
+                                                          base[:7]))
+        elif t not in changed:
+            res.guard_errors.append("a line added to %s says '%s%s', and its "
+                                    "Should is the one it carried at %s, the "
+                                    "branch point" % (ROADMAP, SHOULD_CHANGED, t,
+                                                      base[:7]))
+    old_titles = {old for old, _ in renamed}
+    res.guard = {"base": base, "renamed": renamed, "changed": changed,
+                 "removed": [t for t in removed if t not in old_titles],
+                 "added": [t for t in added if t not in {new for _, new in renamed}],
+                 "lines": n}
+
+
 PAIRS = (("file", "anchor"), ("evidence_file", "evidence_anchor"),
          ("run_file", "run_anchor"), ("trigger_file", "trigger_anchor"),
          ("bench_file", "bench_anchor"), ("cost_file", "cost_anchor"))
@@ -1458,6 +1657,8 @@ class Result:
         self.defects = []           # dicts, one per block of docs/defects.md
         self.defect_errors = []     # (line of docs/defects.md, message)
         self.sections = []          # (line, heading) of docs/defects.md
+        self.guard = None           # the blocks held against the branch point, section F
+        self.guard_errors = []      # strings: a change without its line, a line without its change
         self.runs = []              # dicts
         self.unanchorable = []      # (file, lineno, text)
         self.unanchorable_units = []  # (file, lineno, heading)
@@ -1473,7 +1674,7 @@ class Result:
 
     def broken_count(self):
         return len(self.table_errors) + len(self.broken) \
-            + len(self.defect_errors)
+            + len(self.defect_errors) + len(self.guard_errors)
 
 
 TALLY_KEYS = ("things", "straight paths", "branches", "other kinds", "calls",
@@ -2048,6 +2249,10 @@ def analyse(root, table=None, only=None, defects=None):
     block_by_title = {}
     for blk in blocks:
         block_by_title.setdefault(blk.title, blk)
+    # the blocks against the branch point, section F: a block removed,
+    # renamed or given another Should is named by a line of the fixed form
+    # the branch adds to docs/roadmap.md, or the tool is red
+    hold_blocks_to_branch_point(root, defects_rel, blocks, res)
     # notes of things: the forms
     named = named_skills(files)
     roots = []    # things carrying ROOT
@@ -2478,6 +2683,8 @@ def render(res):
         out.append("  line %d: %s" % (lineno, e))
     for lineno, e in res.defect_errors:
         out.append("  %s:%d: %s" % (DEFECTS, lineno, e))
+    for e in res.guard_errors:
+        out.append("  against the branch point: " + e)
     out.append("")
     out.append("ROOTS OF THE UNATTENDED MODE (things carrying %r): %d"
                % (ROOT, len(res.roots)))
@@ -2538,6 +2745,24 @@ def render(res):
                "filled it): %d" % (NOT_STATED_MARK, len(unstated)))
     for d in unstated:
         out.append("  " + d["name"])
+    out.append("")
+    out.append("BLOCKS HELD AGAINST THE BRANCH POINT (git merge-base HEAD "
+               "origin/main; a change needs its line in %s)" % ROADMAP)
+    g = res.guard or {}
+    if g.get("note"):
+        out.append("  " + g["note"])
+    elif g:
+        out.append("  branch point %s: blocks removed %d, renamed %d, Should "
+                   "changed %d, added %d; lines of the fixed forms added to "
+                   "%s: %d" % (g["base"][:7], len(g["removed"]),
+                               len(g["renamed"]), len(g["changed"]),
+                               len(g["added"]), ROADMAP, g["lines"]))
+        for t in g["removed"]:
+            out.append("    removed         " + t)
+        for old, new in g["renamed"]:
+            out.append("    renamed         %s%s%s" % (old, RENAME_SEP, new))
+        for t in g["changed"]:
+            out.append("    Should changed  " + t)
     out.append("")
     out.append("RUNS THAT DO NOT COUNT")
     n = 0
@@ -2618,7 +2843,8 @@ def exit_code(res):
 def message_templates(path):
     """(shape, line, template) for every message this tool can produce, read
     off its own source: the strings handed to rec.errors.append,
-    res.broken.append, res.table_errors.append and errors.append, assigned to
+    res.broken.append, res.table_errors.append, res.guard_errors.append and
+    errors.append, assigned to
     a run's reason or info or to res.refused, printed to stderr, or raised as
     RuntimeError. The self-test's own printing is left out. A string inside a
     dict that a message picks its ending from is a fragment, matched inside a
@@ -2658,7 +2884,8 @@ def message_templates(path):
                 owner = node.func.value
                 name = owner.attr if isinstance(owner, ast.Attribute) \
                     else getattr(owner, "id", "")
-                if name in ("errors", "broken", "table_errors"):
+                if name in ("errors", "broken", "table_errors",
+                            "guard_errors"):
                     for a in node.args:
                         found += strings(a)
             elif isinstance(node, ast.Assign):
@@ -2713,6 +2940,7 @@ def selftest():
         out += res.table_errors
         out += [e for _, e in res.broken]
         out += [e for _, e in res.defect_errors]
+        out += res.guard_errors
         for r in res.runs:
             out += [r[k] for k in ("reason", "info") if r[k]]
         return out
@@ -3686,6 +3914,92 @@ def selftest():
                 "A run naming a commit.", commit=eta_head[:7])]) + "\n")
         res_norigin = collect(analyse(norigin, os.path.join(norigin, "docs",
                                                             "stock-take.tsv")))
+        # the blocks against the branch point, section F: a repository whose
+        # origin/main is its first commit, a branch cut there, and the
+        # defects file changed in the working tree with and without the
+        # lines of the fixed forms in its roadmap
+        guard = os.path.join(tmp, "guard")
+        os.makedirs(guard)
+        run_git(guard, "init", "-q", "-b", "main")
+        write(guard, ".claude-plugin/plugin.json", plugin("0.1.0"))
+        write(guard, "skills/eta/SKILL.md", "# Eta\n")
+        G_HEAD = "A head for the blocks held against the branch point."
+        g_roadmap = "# Roadmap\n\n## Known gaps\n\n- **%s**\n" % G_HEAD
+        write(guard, "docs/roadmap.md", g_roadmap)
+        GB_STAYS = "a block that stays as it stood"
+        GB_GONE = "a block the branch removes"
+        GB_GONE_TOO = "a second block the branch removes"
+        GB_OLD = "a block the branch renames"
+        GB_NEW = "the same block under its new title"
+        GB_SHOULD = "a block whose Should the branch changes"
+        GB_QUOTED = ('a block titled with "quotes", `backticks` and a colon: '
+                     "the fixed form carries it whole")
+        GB_MAIN = "a block main gained after the branch point"
+
+        def gblock(title, should="s"):
+            return block(title, G_HEAD, FIX_NONE, "Recorded, not built",
+                         should=should)
+        g_base = ["# Defects\n\n## Not yet sorted\n\n",
+                  gblock(GB_STAYS), gblock(GB_GONE), gblock(GB_GONE_TOO),
+                  gblock(GB_OLD), gblock(GB_SHOULD), gblock(GB_QUOTED)]
+        write(guard, "docs/defects.md", "".join(g_base))
+        g_table = os.path.join(guard, "docs", "stock-take.tsv")
+        write(guard, "docs/stock-take.tsv", "\n".join([
+            "\t".join(COLUMNS),
+            thing("eta / Eta / straight path", "skills/eta/SKILL.md", "# Eta",
+                  note=ROOT)]) + "\n")
+        run_git(guard, "add", "-A")
+        run_git(guard, "commit", "-q", "-m", "g1", date="2026-02-01T12:00:00+0100")
+        g1 = run_git(guard, "rev-parse", "HEAD")
+        run_git(guard, "update-ref", "refs/remotes/origin/main", g1)
+        run_git(guard, "checkout", "-q", "-b", "task")
+
+        def guard_state(blocks_text, added_lines):
+            write(guard, "docs/defects.md", blocks_text)
+            write(guard, "docs/roadmap.md", g_roadmap + "".join(
+                "  " + l + "\n" for l in added_lines))
+            return collect(analyse(guard, g_table))
+        # red: two blocks and the quoted one gone, one renamed and the Should
+        # of one changed, no line for any of them; lines naming what the
+        # branch did not do, in every way
+        res_g_red = guard_state(
+            "".join(["# Defects\n\n## Not yet sorted\n\n", gblock(GB_STAYS),
+                     gblock(GB_NEW), gblock(GB_SHOULD, should="another should")]),
+            [BLOCK_REMOVED + GB_STAYS,
+             BLOCK_REMOVED + "a title that stood in no block",
+             BLOCK_RENAMED + "a line without the separator",
+             BLOCK_RENAMED + GB_STAYS + RENAME_SEP + "a title standing nowhere",
+             BLOCK_RENAMED + "a title that stood in no block" + RENAME_SEP + GB_NEW,
+             BLOCK_RENAMED + GB_GONE_TOO + RENAME_SEP + GB_STAYS,
+             SHOULD_CHANGED + "a title that stands in no block",
+             SHOULD_CHANGED + GB_NEW,
+             SHOULD_CHANGED + GB_STAYS])
+        # green: the same changes, each with its line; the second removed
+        # block stands again
+        res_g_green = guard_state(
+            "".join(["# Defects\n\n## Not yet sorted\n\n", gblock(GB_STAYS),
+                     gblock(GB_GONE_TOO), gblock(GB_NEW),
+                     gblock(GB_SHOULD, should="another should")]),
+            [BLOCK_REMOVED + GB_GONE,
+             BLOCK_RENAMED + GB_OLD + RENAME_SEP + GB_NEW,
+             SHOULD_CHANGED + GB_SHOULD,
+             BLOCK_REMOVED + GB_QUOTED])
+        # a branch behind main: main gains a block after the branch point,
+        # the branch stands as it was cut
+        run_git(guard, "checkout", "-q", "--", ".")
+        run_git(guard, "checkout", "-q", "main")
+        write(guard, "docs/defects.md", "".join(g_base + [gblock(GB_MAIN)]))
+        run_git(guard, "add", "-A")
+        run_git(guard, "commit", "-q", "-m", "g2", date="2026-02-02T12:00:00+0100")
+        g2 = run_git(guard, "rev-parse", "HEAD")
+        run_git(guard, "update-ref", "refs/remotes/origin/main", g2)
+        run_git(guard, "checkout", "-q", "task")
+        res_g_behind = collect(analyse(guard, g_table))
+        # a branch sharing no commit with origin/main: an orphan
+        run_git(guard, "checkout", "-q", "--orphan", "lonely")
+        run_git(guard, "commit", "-q", "-m", "g3", date="2026-02-03T12:00:00+0100")
+        res_g_lonely = collect(analyse(guard, g_table))
+        run_git(guard, "checkout", "-q", "task")
         # --only without a path, which answers before touching any repository
         only_err = io.StringIO()
         with contextlib.redirect_stderr(only_err):
@@ -4389,6 +4703,131 @@ def selftest():
              and "DEFECTS of docs/defects.md, by section" in render(res_clean)
              and "  ## Not yet sorted: 1 (Recorded, not built 1)\n"
              in render(res_clean))
+        # the blocks against the branch point, section F
+        g_green = res_g_green.guard
+
+        def gerr(res, sub):
+            return has(res, sub)
+        no_line = ("the branch point, and stands in the working tree no more, "
+                   "and no line added to docs/roadmap.md since says 'Block "
+                   "removed: <title>' or 'Block renamed: <title> / <new title>'")
+        case("a block of the branch point gone from the working tree without "
+             "its line: red, exit 2; with its line: green",
+             gerr(res_g_red, "the block %r stood in docs/defects.md at %s, %s"
+                  % (GB_GONE, g1[:7], no_line))
+             and exit_code(res_g_red) == 2 and res_g_red.broken_count() > 0,
+             not res_g_green.guard_errors and g_green["removed"] == [GB_GONE, GB_QUOTED]
+             and exit_code(res_g_green) == 0)
+        case("a block renamed without its line: red; with the line naming the "
+             "old and the new title: green",
+             gerr(res_g_red, "the block %r stood in docs/defects.md at %s, %s"
+                  % (GB_OLD, g1[:7], no_line)),
+             g_green["renamed"] == [(GB_OLD, GB_NEW)] and GB_NEW not in g_green["added"]
+             and not any(GB_OLD in e for e in res_g_green.guard_errors))
+        case("a Should changed without its line: red; with its line: green",
+             gerr(res_g_red, "the Should of the block %r is not the one it "
+                  "carried in docs/defects.md at %s, the branch point, and no "
+                  "line added to docs/roadmap.md since says 'Should changed: "
+                  "<title>'" % (GB_SHOULD, g1[:7])),
+             g_green["changed"] == [GB_SHOULD]
+             and not any(GB_SHOULD in e for e in res_g_green.guard_errors))
+        case("a removal line for a block that stands still, or that stood at "
+             "the branch point in no block: red; green otherwise",
+             gerr(res_g_red, "a line added to docs/roadmap.md says 'Block "
+                  "removed: %s', and that block stands in the working tree "
+                  "still" % GB_STAYS)
+             and gerr(res_g_red, "a line added to docs/roadmap.md says 'Block "
+                      "removed: a title that stood in no block', and no block "
+                      "of that title stood in docs/defects.md at %s, the "
+                      "branch point" % g1[:7]),
+             g_green["lines"] == 4
+             and not any(GB_STAYS in e for e in res_g_green.guard_errors))
+        case("a renaming line without the separator, with an old title that "
+             "stands still or never stood, or a new one that stands nowhere "
+             "or stood already: red; green otherwise",
+             gerr(res_g_red, "a line added to docs/roadmap.md says 'Block "
+                  "renamed: a line without the separator' without ' / ' "
+                  "between the old title and the new")
+             and gerr(res_g_red, "a line added to docs/roadmap.md says 'Block "
+                      "renamed: %s / a title standing nowhere', and the block "
+                      "%r stands in the working tree still" % (GB_STAYS, GB_STAYS))
+             and gerr(res_g_red, "a line added to docs/roadmap.md says 'Block "
+                      "renamed: %s / a title standing nowhere', and no block "
+                      "titled 'a title standing nowhere' stands in the working "
+                      "tree" % GB_STAYS)
+             and gerr(res_g_red, "a line added to docs/roadmap.md says 'Block "
+                      "renamed: a title that stood in no block / %s', and no "
+                      "block titled 'a title that stood in no block' stood in "
+                      "docs/defects.md at %s, the branch point" % (GB_NEW, g1[:7]))
+             and gerr(res_g_red, "a line added to docs/roadmap.md says 'Block "
+                      "renamed: %s / %s', and a block titled %r stood in "
+                      "docs/defects.md at %s, the branch point, already"
+                      % (GB_GONE_TOO, GB_STAYS, GB_STAYS, g1[:7])),
+             len(res_g_green.guard_errors) == 0 and len(g_green["renamed"]) == 1)
+        case("a Should line for a title that stands in no block, in none at "
+             "the branch point, or whose Should is the branch point's: red; "
+             "green otherwise",
+             gerr(res_g_red, "a line added to docs/roadmap.md says 'Should "
+                  "changed: a title that stands in no block', and no block of "
+                  "that title stands in the working tree")
+             and gerr(res_g_red, "a line added to docs/roadmap.md says 'Should "
+                      "changed: %s', and no block of that title stood in "
+                      "docs/defects.md at %s, the branch point" % (GB_NEW, g1[:7]))
+             and gerr(res_g_red, "a line added to docs/roadmap.md says 'Should "
+                      "changed: %s', and its Should is the one it carried at "
+                      "%s, the branch point" % (GB_STAYS, g1[:7])),
+             not any("Should changed" in e for e in res_g_green.guard_errors))
+        case("a title with quotes, backticks and a colon: red without its "
+             "line, green with the fixed form carrying it whole",
+             gerr(res_g_red, "the block %r stood in docs/defects.md at %s, %s"
+                  % (GB_QUOTED, g1[:7], no_line)),
+             GB_QUOTED in g_green["removed"]
+             and not any(GB_QUOTED in e for e in res_g_green.guard_errors))
+        case("a branch behind main, whose main gained a block after the branch "
+             "point: the block is no removal, nothing red",
+             gerr(res_g_red, "the branch point, and stands in the working tree "
+                  "no more"),
+             not res_g_behind.guard_errors
+             and res_g_behind.guard["removed"] == []
+             and res_g_behind.guard["base"] == g1
+             and GB_MAIN not in res_g_behind.guard["added"])
+        case("no origin/main: the blocks are not held against a branch point, "
+             "said in one line and not red",
+             res_norigin.guard == {"note": "origin/main is not here, so the "
+                                   "blocks are not held against a branch point"}
+             and "  origin/main is not here, so the blocks are not held "
+                 "against a branch point\n" in render(res_norigin),
+             "note" not in g_green and g_green["base"] == g1)
+        case("no commit shared by HEAD and origin/main: the blocks are not held "
+             "against a branch point, said in one line and not red",
+             res_g_lonely.guard == {"note": "HEAD and origin/main share no "
+                                    "commit, so the blocks are not held "
+                                    "against a branch point"}
+             and not res_g_lonely.guard_errors
+             and "  HEAD and origin/main share no commit, so the blocks are "
+                 "not held against a branch point\n" in render(res_g_lonely),
+             "note" not in g_green)
+        case("the defects file not at the branch point: nothing to hold the "
+             "blocks against, said in one line and not red",
+             res.guard == {"base": c3, "note": "docs/defects.md does not stand "
+                           "at %s, the branch point, so there is nothing to "
+                           "hold the blocks against" % c3[:7]}
+             and not res.guard_errors,
+             "note" not in g_green)
+        case("the report: the blocks held against the branch point, the "
+             "counts and each change named",
+             "BLOCKS HELD AGAINST THE BRANCH POINT (git merge-base HEAD "
+             "origin/main; a change needs its line in docs/roadmap.md)\n"
+             "  branch point %s: blocks removed 2, renamed 1, Should changed 1, "
+             "added 0; lines of the fixed forms added to docs/roadmap.md: 4\n"
+             "    removed         %s\n    removed         %s\n"
+             "    renamed         %s / %s\n    Should changed  %s\n"
+             % (g1[:7], GB_GONE, GB_QUOTED, GB_OLD, GB_NEW, GB_SHOULD)
+             in render(res_g_green)
+             and "  against the branch point: the block %r stood" % GB_GONE
+             in render(res_g_red),
+             "BLOCKS HELD AGAINST THE BRANCH POINT" in render(res_norigin)
+             and "    removed" not in render(res_g_behind))
     # every message the tool can produce, against what the cases asserted
     templates = message_templates(os.path.abspath(__file__))
     without = []
