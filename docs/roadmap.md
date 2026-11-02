@@ -45885,7 +45885,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 - **The defects move to docs/defects.md, read by the stock-take tool.**
 
   2 November 2026, version 0.172.0, raised from 0.171.0 once. On
-  `task/defects-file`, off `origin/main` at `c1949fe`, in four commits:
+  `task/defects-file`, off `origin/main` at `c1949fe`, in five commits:
   `scripts/devloop-stock-take` with the version; then `docs/defects.md`,
   `docs/skill-conventions.md`, `docs/plan.md`, `docs/rationale.md`,
   `skills/record-lessons/SKILL.md`, `.github/workflows/stock-take.yml`, this
@@ -45893,7 +45893,9 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   0.172.0, measured on the second commit; then two figures of this entry
   corrected, the count of closed defects after the move and the count of the
   lines that left the search set, which its first writing had wrong, and the
-  word "three" of this sentence. Written by Claude Code from the
+  word "three" of this sentence; then, after the review of the branch, the
+  number of closings that moved with their proof, below, and two sentences
+  of `docs/plan.md` on where the blocks stand. Written by Claude Code from the
   person's order of that day, the first order of part 2 of the separation of
   `docs/roadmap.md`, after part 1 of 1 November 2026; no session log was read.
   Line numbers of `docs/roadmap.md` hold at `c1949fe`, which this entry only
@@ -45972,7 +45974,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   evidence line. Nothing a row carried is lost: a finding's place stands in
   its Note.
 
-  Two closings had to move with the proof. The defect "the defect on the rule
+  One closing had to move with its proof. The defect "the defect on the rule
   keeping runtimes out of the install question read recorded and not built
   while the question says nothing of runtimes since 5 October 2026" was closed
   as corrected in the document with the corrected sentence in

@@ -3,7 +3,8 @@
 Written on 19 September 2026. This is the plan and not a measurement record:
 what was measured stands in `docs/roadmap.md` under `## Known gaps`, with a
 date on every run, the defects stand in `docs/defects.md`, each as one block
-under its milestone, the facts of the stock-take stand in `docs/stock-take.tsv`,
+under its milestone or, until an order sorts it, under `## Not yet sorted`,
+the facts of the stock-take stand in `docs/stock-take.tsv`,
 what holds as a rule stands in `docs/skill-conventions.md`, and the reasons and
 cases of the rules in the texts devloop loads, with the wordings approved for
 what a user sees, stand in `docs/rationale.md`. This file says where the set is
@@ -140,7 +141,8 @@ in no list of open things — the roadmap entry of that date on the person's
 answers, and section D of the tool's header.
 Since 2 November 2026 the defects stand in `docs/defects.md`, each as one
 block the tool reads, under the milestone that takes it or under "Without a
-milestone": the state of a defect is computed off the block's `Fix` and
+milestone", and under "Not yet sorted" until an order sorts it: the state of
+a defect is computed off the block's `Fix` and
 compared with what the block says, a run on a defect names the block's title
 and is held against the `Fix` line alone, a closing stands in the block's
 `Status` with its proof, and the table holds the things, the runs and the
