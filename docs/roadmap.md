@@ -46177,16 +46177,20 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 - **Blocks held to the branch point; findings out, contradictions in.**
 
   2 November 2026, version 0.173.0, raised from 0.172.0 once. On
-  `task/defects-guard`, off `origin/main` at `606cdab`, in six commits, the
-  last three the addendum of the same day at the end of this entry:
+  `task/defects-guard`, off `origin/main` at `606cdab`, in seven commits, the
+  fourth to the sixth the addendum of the same day at the end of this entry:
   `scripts/devloop-stock-take` with the version; then `docs/defects.md`,
   `docs/skill-conventions.md`, `docs/plan.md`, this entry and
   `docs/stock-take.tsv`; then the runs of the tool's self-test under 0.173.0,
-  measured on the second commit. Written by Claude Code from the person's
-  order of that day, the second order of part 2 of the separation of
-  `docs/roadmap.md`, after the entry at line 45885; no session log was read.
-  Line numbers of `docs/roadmap.md` hold at `606cdab`, which this entry only
-  appends to, and so do those of `docs/defects.md` where this entry gives one.
+  measured on the second commit; the seventh, after the review of the branch,
+  corrects this entry: the count of its commits, here and in the addendum,
+  the counts of the things that are no defect after the third commit, and
+  what the addendum says of its runs on the branch. Written by Claude Code
+  from the person's order of that day, the second order of part 2 of the
+  separation of `docs/roadmap.md`, after the entry at line 45885; no session
+  log was read. Line numbers of `docs/roadmap.md` hold at `606cdab`, which
+  this entry only appends to, and so do those of `docs/defects.md` where this
+  entry gives one.
 
   **Decided on 2 November 2026** by the person, after decisions (1) to (7) of
   the entry at line 45885. (8) The blocks are not all checked against the code
@@ -46948,7 +46952,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Recorded, not built 11 and 11, Built, never walked 1189 and 1209, Walked 550
   and 549, the difference the nineteen new outcomes of the tool and the
   outcome of its self-test, which lost its counting run to this order, built
-  and never walked until the third commit records their runs. Under BLOCKS
+  and never walked until the third commit records their runs; after it, Built,
+  never walked 1189 and Walked 569. Under BLOCKS
   HELD AGAINST THE BRANCH POINT: branch point 606cdab: blocks removed 268,
   renamed 0, Should changed 0, added 29; lines of the fixed forms added to
   docs/roadmap.md: 268. Its self-test: SELF-TEST PASSED: 146 cases; of the 128
@@ -47016,7 +47021,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   this entry changes. `docs/skill-conventions.md`, the paragraph on the
   defects file, says that a renaming with another Should needs both lines and
   that such a line for a renamed block whose Should stayed is red. The first
-  paragraph of this entry counts six commits now.
+  paragraph of this entry counts the three commits of the addendum now.
 
   **What the addendum did to the records.** In `docs/stock-take.tsv`: three
   things of the tool for the new outcomes, kind program outcome, sited on the
@@ -47036,9 +47041,10 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   of this day under 0.173.0 on the second commit of the addendum, 148 cases,
   every one red once and green once; no run on a defect, and the twenty runs
   of the order's third commit stand as they were recorded. On the branch the
-  three runs count no more than those twenty, the version having come in
-  before the code; after the squash merge the one commit introduces both and
-  they count.
+  three runs do not count, where those twenty do: the version came in at
+  `c8b2219`, before the code the three things stand on, which the first
+  commit of the addendum brought; after the squash merge the one commit
+  introduces both and they count.
 
   Runs of the addendum: the self-test of this day under 0.173.0, its third commit.
 
