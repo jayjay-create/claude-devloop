@@ -61,6 +61,240 @@ block that no order has yet sorted into a milestone, and the value
 `not stated` stands in a `Wrong` or `Should` that no text of the roadmap
 filled when the blocks were written. The tool lists both without going red.
 
+## Without a milestone
+
+### build-prototype LOGIC.md hands the file over by sending or opening it where SKILL.md gives one action
+- Wrong: `skills/build-prototype/LOGIC.md` under "4. Hand it over" says "Send them the file, or open it for them", and `skills/build-prototype/SKILL.md` under "Hand it over so it gets looked at" says to give them one action, the exact command that opens it
+- Should: the person decides which holds: the handover of LOGIC.md under "4. Hand it over", or the one action of SKILL.md under "Hand it over so it gets looked at"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 8 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### diagnose-bug opens with three routes in and names a fourth further down
+- Wrong: `skills/diagnose-bug/SKILL.md` under "When this runs" opens "Nobody asks for this. It starts when a check goes red in one of three classes", and the same section says further down "A fourth route arrives when a person can look at the thing running and say it behaves wrongly"
+- Should: the person decides which holds: the opening sentence with its three routes, or the paragraph on the fourth route, both under "When this runs"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 8 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### body-through-file.md says a heredoc puts the text where the guard reads it and that a quoted string is a word to the guards
+- Wrong: `shared/body-through-file.md` says in its paragraph "The file itself is written with the editing tool" that a heredoc, an `echo` or a `cat` puts the same text through the shell, where the guard reads it, and in its first paragraph that to the guards a quoted string is a word of its command and no command
+- Should: the person decides which holds: the reason given for the editing tool in "The file itself is written with the editing tool", or the sentence of the first paragraph on a quoted string
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 9 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### editing-tool.md says the guards read text put through the shell and that a quoted argument is a word to them
+- Wrong: `shared/editing-tool.md` says in its first paragraph that a heredoc, `echo`, `printf` or `tee` puts the text through the shell, where the guards read it, so that a line quoting an install is blocked, and in its last paragraph that the install line goes through `bin/devloop-install-note put` with its command an argument in single quotes, which the guards read as a word of that call and not as a command
+- Should: the person decides which holds: the reason of the first paragraph, or the reading of the last paragraph
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 9 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### install-tool.md says no issue holds the task since the issue is written on a no alone, while the way after a no runs the same steps with the issue open
+- Wrong: `shared/install-tool.md` says in the paragraph on the steps for the PATH that step 2 reads the issues, "none of which holds this task, since the issue is written on a no alone", and the paragraph after it sends the run after a no through the same steps with the issue still open, which the read at the start of step 2 closes first
+- Should: the person decides which holds: the reason given in the PATH paragraph, or the way after a no in the paragraph that follows it, where the read at the start of step 2 closes the issue
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 10 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### install-record.md says the five browser places are added with the person there and no text names a run that adds them
+- Wrong: `shared/install-record.md` says in the paragraph on the places that a record with the six places and not the five is not amended and that the guard blocks a browser download "until the five are added with the person there", and no text of a skill names a run that adds them to an existing record saying yes
+- Should: the person decides which holds: the sentence of install-record.md on the five added with the person there, or a run of a skill that adds them, which no text names
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 10 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### mode-set-up.md says the mark guard blocks exactly where the text refuses while the text refuses on five things and the guard reads four of them and start condition 1
+- Wrong: `shared/mode-set-up.md` opens with five things the run with nobody there refuses on, the record of the mode among them, and says in the paragraph on the guard that `hooks/pre-tool-use-mark-guard.sh` reads the last four of the five and start condition 1 and blocks "exactly where this text refuses"
+- Should: the person decides which holds: the five things of the opening with the record among them, or "exactly where this text refuses" in the paragraph on the guard, which reads start conditions 1, 2, 5, 6 and 7 and not the record
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 12 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### cut-branch.md deletes the branch once they have said it landed where merge-handover.md reads the landing off the platform and never off their word
+- Wrong: `shared/cut-branch.md` says in its paragraph on the setup that lands by the person's hand that the run deletes the branch "only once they have said it landed", and `shared/merge-handover.md` says in its last paragraph that the command's output in the conversation is what releases the run and that whether the merge landed is read off the platform and never off their word
+- Should: the person decides which holds: the deletion on their word in cut-branch.md, or the reading off the platform in merge-handover.md
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 14 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### branch-deletion.md gives exit 128 for the program's line at the bound where fetch-three-times.md gives exit 124
+- Wrong: `shared/branch-deletion.md` says in its paragraph on the query of the remote "A query that does not answer, exit 128 with git's message or the program's line at the bound", and `shared/fetch-three-times.md` says in its paragraph on the bound that the program's line comes with exit 124, the code `bin/devloop-bounded` gives at its bound
+- Should: branch-deletion.md says exit 124 for the program's line at the bound, as fetch-three-times.md and the head of `bin/devloop-bounded` have it, and exit 128 for git's own message
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 14 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### start-work says something in flight means no question and offers to land an open pull request
+- Wrong: `skills/start-work/SKILL.md` under "Step 2" says "Something in flight means no question, and a stop" for the in-flight report, and the same step says of an open pull request of theirs waiting to land "offer to land it", a yes taking the run to `build-work` step 6
+- Should: the person decides which holds: "Something in flight means no question", or the offer to land the open pull request, both under "Step 2"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### start-work says not to ask at all with a map or a spec in flight and in the same case to rank, recommend and offer
+- Wrong: `skills/start-work/SKILL.md` under "Step 2" says "If a map or a spec is in flight, do not ask a question at all", and the same paragraph names an exception for an open issue in the same case: "rank it, recommend one, offer to pick it up"
+- Should: the person decides which holds: no question at all with a map or a spec in flight, or the exception that ranks, recommends and offers, both under "Step 2"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### start-work asks what to build only after the introduction, so a setup in part with no idea reaches step 3 unasked
+- Wrong: `skills/start-work/SKILL.md` under "Step 2" says that at `set up in part` the introduction is skipped and the run carries on with step 3, and the same step puts the question what they would like to build only after the introduction, so that with the setup in part and no idea in hand nothing asks what to build
+- Should: the person decides which holds: the route at `set up in part` that skips the introduction and goes to step 3, or the question what to build that comes after the introduction alone, both under "Step 2"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### cut-into-tasks says the split with its count is said once the first task is built and that the number of tasks is stated after creating
+- Wrong: `skills/cut-into-tasks/SKILL.md` under "Before you create anything" says that with them there the split is said at the next message that ends a turn with text, which comes only once the issues exist and the first task is built, and under "After creating" says to state the number of tasks and which one is ready first
+- Should: the person decides which holds: the one message after the first task is built under "Before you create anything", or the statement of the number under "After creating"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### review-changes asks for the record of how many lenses ran and says to say neither number
+- Wrong: `skills/review-changes/SKILL.md` says in its opening under "Review a change" that every angle the change touches gets read, "the record of how many ran", and under "Run them" says "Start one reviewer for every lens that applies, and say neither number"
+- Should: the person decides which holds: the record of how many ran under "Review a change", or saying neither number under "Run them"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### review-changes says to say what was filed and why where the report is said to nobody
+- Wrong: `skills/review-changes/SKILL.md` under "What happens to a finding" says of a finding filed as an issue "Say what you filed and why", and under "The report, said to nobody" says the report is said to nobody, the findings reaching the person at the close of the step that owns the gate
+- Should: the person decides which holds: saying what was filed under "What happens to a finding", or the report said to nobody under "The report, said to nobody"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-project asks the language first in English where step 4 says never to ask about the user's language
+- Wrong: `skills/setup-project/SKILL.md` under "Step 0" says that where the user's language cannot be told the run asks that first, in English, as a single question, and under "Step 4 — Questions" says "Never ask about the user's preferred language or tone here"
+- Should: the person decides which holds: the language question of "Step 0", or the rule of "Step 4 — Questions" against asking about the language
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 16 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-project gives the record not having landed yet as the reason for handing nothing over, which does not hold at a refresh whose record stands
+- Wrong: `skills/setup-project/SKILL.md` under "A guard's block is not a decline" says to carry on without the command and hand nothing over because "the record has not landed yet, and once it has, the check setup decides", and under "Refreshing an existing setup" the skill runs where a record stands on the main branch already
+- Should: the person decides which holds: the reason under "A guard's block is not a decline", or the refresh under "Refreshing an existing setup", where the record has landed
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 16 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-project step 1 names the head of backed-command.md as a rule above, and the skill does not insert that text
+- Wrong: `skills/setup-project/SKILL.md` under "Step 1 — Explore, change nothing" says a command is backed "as 'A command that fetches something from outside is backed' says", the head of `shared/backed-command.md`, and the insert lines of the skill bring no `shared/backed-command.md` in
+- Should: the person decides which holds: the reference under "Step 1 — Explore, change nothing", or the insert lines of the skill, which carry no backed-command text
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 16 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-project points at three-questions.md and the text on the mark's deletion, neither of which it inserts
+- Wrong: `skills/setup-project/SKILL.md` under "Step 4 — Questions" grounds the single question on what `shared/three-questions.md` says of a round, and under "`issue-tracker.md`" says a thing is taken up as work "by the text on the mark's deletion", and the insert lines of the skill bring neither text in
+- Should: the person decides which holds: the two references under "Step 4 — Questions" and "`issue-tracker.md`", or the insert lines of the skill, which carry neither text
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 16 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### plan-work says of the install record only that the build decides and names today's record for conditions 6 and 7 at a blocked mark
+- Wrong: `skills/plan-work/SKILL.md` under "Stage 1 — Sharpen the idea" says the planning "says of the record only that the build decides", and the same stage says of a mark the guard blocks on conditions 6 and 7 that the run tells them which condition failed and why, naming the record as it stands today
+- Should: the person decides which holds: the planning saying of the record only that the build decides, or the sentence on conditions 6 and 7 at a blocked mark, both under "Stage 1 — Sharpen the idea"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 17 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### plan-work says under --planning the program does not give the record's line and that the spec carries not the program's line on the record
+- Wrong: `skills/plan-work/SKILL.md` under "Stage 1 — Sharpen the idea" says that under `--planning` the program prints no answer and "the record's line it does not give", and under "Stage 4 — Write the spec" says the tool line stands in the spec as printed "and not the program's line on the record", a line the program prints
+- Should: the person decides which holds: "the record's line it does not give" under "Stage 1 — Sharpen the idea", or "not the program's line on the record" under "Stage 4 — Write the spec"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 17 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### plan-work says to run the four stages in one session where you can and that planning is one session
+- Wrong: `skills/plan-work/SKILL.md` says in its opening under "Plan a piece of work" "Run them in one session where you can", and under "Picking up an interrupted plan" says a stage that stands otherwise belongs to a run that broke off, "since planning is one session"
+- Should: the person decides which holds: "where you can" in the opening under "Plan a piece of work", or "planning is one session" under "Picking up an interrupted plan"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 17 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-checks hands the command over after a no to a tool in the packages as text and puts the question for the same class at once with the command in its field
+- Wrong: `skills/setup-checks/SKILL.md` under "Step 3 — Prefer tools that live inside the project" says the command of the second way is handed over after the no in the message that ends the turn, as text, and the same step puts the question on a tool the run may not install at once, with the command in its question field and handed over once more on the first answer
+- Should: the person decides which holds: the handover as text after the no, or the question at once with the command in its field, both under "Step 3 — Prefer tools that live inside the project"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 18 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-checks skips step 7 for the four single-class callers at its opening and for a single class from a build at step 7
+- Wrong: `skills/setup-checks/SKILL.md` says in its opening under "Build out the check suite" that for a single class, from any of the four things that call it that way, the run skips steps 7 and 8, and under "Step 7 — Land the check suite on the main branch" says "Skip this whole step when this skill was called for a single class from a build"
+- Should: the person decides which holds: the four callers of the opening under "Build out the check suite", or "from a build" under "Step 7 — Land the check suite on the main branch"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 18 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-checks calls the questions of step 3 the last questions of the skill where step 8 asks more
+- Wrong: `skills/setup-checks/SKILL.md` under "Step 3 — Prefer tools that live inside the project" says "its questions are the last questions of this skill, the branch is cut once they are answered", and under "Step 8 — Offer the unattended mode" the skill puts the question on the mode
+- Should: the person decides which holds: "the last questions of this skill" under "Step 3 — Prefer tools that live inside the project", or the question under "Step 8 — Offer the unattended mode"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 18 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-checks gives them the command where an install under a yes brings a runtime and says nothing of how that class is then decided
+- Wrong: `skills/setup-checks/SKILL.md` under "Step 3 — Prefer tools that live inside the project" says that where the install would bring a compiler, a runtime or system packages "the line is the one that gives them the command" under a record saying yes, and the three ways the no line names and the paragraph "After a no the run goes the way that line named" say nothing of how the class is decided in that case
+- Should: the person decides which holds: the line that gives them the command where the install brings a runtime, or the three ways of the no and the paragraph after them, which do not cover it, all under "Step 3 — Prefer tools that live inside the project"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 18 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-checks step 8 puts the question where the five things do not all hold and puts none where GitHub offers no protection
+- Wrong: `skills/setup-checks/SKILL.md` under "Step 8 — Offer the unattended mode" says in its paragraph on when the offer is made that where the five things do not all hold "the question is put, with auto-merge off and no gate on the main branch as much as with them", and in its paragraph on the reading of the rules that on HTTP 403 "no question is put" and nothing is set up
+- Should: the person decides which holds: the question put where the five things do not all hold, or no question where GitHub offers no protection, both under "Step 8 — Offer the unattended mode"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-checks step 8 writes nothing where GitHub offers no protection before the question and writes a record saying no where the protection is refused when it is set
+- Wrong: `skills/setup-checks/SKILL.md` under "Step 8 — Offer the unattended mode" says that where GitHub offers no protection at the reading before the question "nothing is written", and in its paragraph on the record says `unattended-mode` is `no` with the reason "that the platform refused the protection" where it is refused when it is set
+- Should: the person decides which holds: nothing written where the protection is not offered, or the record saying no with its reason where it is refused, both under "Step 8 — Offer the unattended mode"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
+### setup-checks counts the fields of the mode question at thirteen lines, which assumes the visibility answered and says nothing of the field with the command and the message in it
+- Wrong: `skills/setup-checks/SKILL.md` under "Step 8 — Offer the unattended mode" says "At 80 columns, on macOS and with a private repository, these fields fill thirteen lines, inside the bound", and its paragraph on reading whether the repository is public says that where no answer came the command and the message stand in the question field under the line on the cost, which the count does not carry
+- Should: the person decides which holds: the count of thirteen lines, or the field with the command and the message where the visibility did not answer, both under "Step 8 — Offer the unattended mode"
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+
 ## Not yet sorted
 
 ### a rule in the run's own memory closes the arming route the skills allow
@@ -805,37 +1039,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Recorded, not built
 - Note: both readers filter on state before the label, a coincidence holding the mark honest. What is wrong is plan-work's wording, which knows one way out of a plan
-
-### the branch guard's Built description overstated what was built, three cases holding on the default branch only
-- Wrong: not stated
-- Should: not stated
-- Found: Five false statements in these two documents, and that was measured on 9 September 2026.
-- Fix: none
-- Status: Recorded, not built
-- Note: corrected with the measurement, the fourth case added, the hook's comment corrected too
-
-### the entry on the split with no criterion read Recorded, not built after a later entry had built it
-- Wrong: not stated
-- Should: not stated
-- Found: Five false statements in these two documents, and that was measured on 9 September 2026.
-- Fix: none
-- Status: Recorded, not built
-- Note: an entry answered by a later entry does not update itself
-
-### two bench figures for devloop-test-o went stale in two days
-- Wrong: not stated
-- Should: not stated
-- Found: Five false statements in these two documents, and that was measured on 9 September 2026.
-- Fix: none
-- Status: Recorded, not built
-- Note: now dated
-
-### the tally of audit rounds was written in relative time and missed the largest round on the day it happened
-- Wrong: not stated
-- Should: not stated
-- Found: Five false statements in these two documents, and that was measured on 9 September 2026.
-- Fix: none
-- Status: Recorded, not built
 
 ### planning was fenced out of the unattended mode by one sentence in start-work and one in README while three sites decided the other way
 - Wrong: not stated
@@ -2009,62 +2212,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Recorded, not built
 - Note: a finding of the table until 2 November 2026, at `scripts/devloop-stock-take` "rng[(rel, sline)] = "site""; the commit that wrote its row, 834b8d5, opened the entry under Found
 
-### the plan names as sections thirteen conventions that are bold heads inside a section
-- Wrong: it now says sections or bold heads.
-- Should: not stated
-- Found: The control documents audited against the tree, and mended, on 26 September 2026.
-- Fix: `docs/plan.md` "stands, and the conventions it meets. "Conventions" names sections or bold"
-- Status: Recorded, not built
-- Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns docs/plan.md at "Conventions" names sections
-
-### the plan counts twenty-two names under the named table where the table holds twenty rows
-- Wrong: it now says twenty, and why.
-- Should: not stated
-- Found: The control documents audited against the tree, and mended, on 26 September 2026.
-- Fix: `docs/plan.md` "both outcomes of each; the twenty"
-- Status: Recorded, not built
-- Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns docs/plan.md at the twenty-two names
-
-### the plan counts thirteen named things where the tool counts eleven
-- Wrong: it now says eleven.
-- Should: not stated
-- Found: The control documents audited against the tree, and mended, on 26 September 2026.
-- Fix: `docs/plan.md` "names under "Named, not built as skills", eleven as things of their own and"
-- Status: Recorded, not built
-- Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns docs/plan.md at thirteen as things of their own
-
-### the plan counts four side paths under "What is missing" where README.md names two
-- Wrong: it now says two, among the eleven.
-- Should: not stated
-- Found: The control documents audited against the tree, and mended, on 26 September 2026.
-- Fix: none
-- Status: Closed, corrected in the document: `docs/plan.md` carries "nine as a note on the thing that does their work, the two side paths under".
-- Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns docs/plan.md at the four side paths; closed 21 October 2026, corrected in the document, the plan saying two since 26 September 2026, the roadmap entry of 20 October 2026 on milestone 3, part 2, its fifth commit
-
-### the plan reads the Pocock defects, mechanisms and remaining points as twelve rows where the table holds ten
-- Wrong: it now says where those rows stand.
-- Should: not stated
-- Found: The control documents audited against the tree, and mended, on 26 September 2026.
-- Fix: `docs/plan.md` "set among them, the grilling mechanism standing as part of the defect an"
-- Status: Recorded, not built
-- Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns docs/plan.md at the three defects and seven mechanisms
-
-### the plan says nothing of a finding recorded after the close of milestone 1 while the tool lists three
-- Wrong: one sentence says such a finding stands in the table until an order moves it, and that the count is read off the output.
-- Should: not stated
-- Found: The control documents audited against the tree, and mended, on 26 September 2026.
-- Fix: `docs/plan.md` "stood in the table as a finding until an order moved it, and the tool listed"
-- Status: Recorded, not built
-- Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns docs/plan.md at no finding left in the table
-
-### the plan says five milestones build on the boundary of milestone 4 and names none
-- Wrong: it now names 7, 8 and 11, and says why each.
-- Should: not stated
-- Found: The control documents audited against the tree, and mended, on 26 September 2026.
-- Fix: `docs/plan.md` "Why here: milestones 7, 8 and 11 build on that boundary, the first two naming"
-- Status: Recorded, not built
-- Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns docs/plan.md at five milestones build on that boundary
-
 ### README.md says the roadmap tells when each side path is reached where it says so for one and gives the reason of the other
 - Wrong: it now says that, and "decided" where it said "planned".
 - Should: not stated
@@ -2072,14 +2219,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Closed, lapsed: `README.md` no longer carries "why the first has no trigger yet".
 - Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns README.md under "What is missing"; closed 21 October 2026, lapsed, the sentence leaving the README with the roadmap entry of 20 October 2026 on milestone 3, part 2, its fifth commit
-
-### the first table of the roadmap wrote the state of record-lessons rather than computing it
-- Wrong: the note is gone, and a sentence under the table says where the state is read.
-- Should: not stated
-- Found: The control documents audited against the tree, and mended, on 26 September 2026.
-- Fix: none
-- Status: Recorded, not built
-- Note: finding of the audit of 25 September 2026, mended 26 September 2026, concerns docs/roadmap.md under "Built and exercised"
 
 ### the header quotes "Never assert state" with a hyphen where the heading carries a dash
 - Wrong: the dash, as the heading has it.
@@ -2385,14 +2524,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Built, never walked
 - Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns skills/build-work/SKILL.md at where every place it lands is one the record names and at anything landing outside the places the record names, and skills/setup-checks/SKILL.md at the same two sentences; pull request #141 touched neither
 
-### the ruling on named install commands said the question names the kind of place, which it stopped doing at 0.119.0
-- Wrong: the ruling says the record carries the list, and what the question said from 28 to 30 September 2026 and says since.
-- Should: not stated
-- Found: The consistency audit before the handover, run on 30 September 2026 against `f4f4dc9`, the tree at 0.120.1, and its fourteen disagreements mended the same day, version 0.121.0.
-- Fix: none
-- Status: Closed, corrected in the document: `docs/skill-conventions.md` carries "question, which named the kind of place a yes opens from 28 to 30 September".
-- Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns docs/skill-conventions.md under A named install command may enter the verb list at the question names the kind of place; closed 20 October 2026 as corrected in the document, the evidence on the closing line of the roadmap entry of 20 October 2026 on the person's answers and the closed state
-
 ### the tool's header, Registering a skill and Working on devloop itself said nothing of the workflow and the required check main has stood behind since 29 September 2026
 - Wrong: the header names the workflow and the required check since 30 September 2026, and the conventions and the README say the same under their headings.
 - Should: not stated
@@ -2409,22 +2540,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Closed, lapsed: `README.md` no longer carries "It has been exercised on throwaway".
 - Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns README.md at six throwaway projects, docs/plan.md milestone 4 at none of the six benches, docs/roadmap.md under Throwaway projects that exist at the other four, the only one of the six and the only project; no number replaces the number, gh repo list answering eleven on 30 September 2026; closed 21 October 2026, lapsed, the sentence leaving the README with the roadmap entry of 20 October 2026 on milestone 3, part 2, its fifth commit
 
-### the entry on five stacks named what is on the machine as of August and said a project in those stacks cannot exercise an install
-- Wrong: the paragraph carries the reading of this day and how a decline is produced on this machine.
-- Should: not stated
-- Found: The consistency audit before the handover, run on 30 September 2026 against `f4f4dc9`, the tree at 0.120.1, and its fourteen disagreements mended the same day, version 0.121.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns docs/roadmap.md under Five stacks have been exercised at What is on the machine; command -v on 30 September 2026, gosec and govulncheck under ~/go/bin, java the system's stub
-
-### the tally of check-docs-consistency rounds stopped at 9 September 2026, the round of sixteen on 26 September missing
-- Wrong: the tally names both rounds and says why the stock-take is not one.
-- Should: not stated
-- Found: The consistency audit before the handover, run on 30 September 2026 against `f4f4dc9`, the tree at 0.120.1, and its fourteen disagreements mended the same day, version 0.121.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns docs/roadmap.md under Where these would attach at check-docs-consistency; decided that the stock-take's findings are not a round
-
 ### the note of the widget defect said the question had been put once, before that build, where it has been put twice since
 - Wrong: the note says three times, once before and twice after, with the benches, and its evidence is this line, the table being where the mend stands.
 - Should: not stated
@@ -2432,30 +2547,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Recorded, not built
 - Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns docs/stock-take.tsv at the note of the widget defect; the mend stands in the table, so the evidence is this line
-
-### the conventions said shared text is of two kinds, shared/rule-not-written-down.md being neither
-- Wrong: the section names three kinds, the third a rule written once for the skills that share its situation.
-- Should: not stated
-- Found: The consistency audit before the handover, run on 30 September 2026 against `f4f4dc9`, the tree at 0.120.1, and its fourteen disagreements mended the same day, version 0.121.0.
-- Fix: `docs/skill-conventions.md` "**What is shared today** is of three kinds"
-- Status: Recorded, not built
-- Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns docs/skill-conventions.md under Text shared between skills at What is shared today is of two kinds
-
-### milestone 3 said the four skill places run the install under a yes, where two do
-- Wrong: the sentence names the two and says what the other two do.
-- Should: not stated
-- Found: The consistency audit before the handover, run on 30 September 2026 against `f4f4dc9`, the tree at 0.120.1, and its fourteen disagreements mended the same day, version 0.121.0.
-- Fix: none
-- Status: Closed, corrected in the document: `docs/plan.md` carries "reader, and, of the four skill places, the two that run the install under a".
-- Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns docs/plan.md milestone 3 at the four skill places running the install under a yes; closed 20 October 2026 as corrected in the document, the evidence on the closing line of the roadmap entry of 20 October 2026 on the person's answers and the closed state
-
-### the entry on devloop's own repository said the plugin's hooks stay inert here and named nothing that guards work on the plugin
-- Wrong: the entry says what guards it, the version guard in `.claude/settings.json` after every edit and the required check on main, since 29 September 2026.
-- Should: not stated
-- Found: The consistency audit before the handover, run on 30 September 2026 against `f4f4dc9`, the tree at 0.120.1, and its fourteen disagreements mended the same day, version 0.121.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: finding of the audit of 30 September 2026, mended 30 September 2026, concerns docs/roadmap.md at devloop's own repository is not set up with devloop
 
 ### setup-project step 0 said the setup takes two or three questions, where it puts three to seven with code
 - Wrong: the step says a few questions, since 30 September 2026.
@@ -3001,22 +3092,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Recorded, not built
 - Note: a finding of the table until 2 November 2026, at `bin/devloop-setup-state` "# Runs a command with a watchdog that kills it after $1 seconds"; the commit that wrote its row, 89fb52e, opened the entry under Found
 
-### the records paragraph of the entry of 5 October 2026 did not say that the five runs of the install question stopped counting at 9a6f33a
-- Wrong: not stated
-- Should: not stated
-- Found: The consistency audit of 7 October 2026 before the handover, ordered on 6 October 2026, read against the entry beside it: the entry of 5 October 2026 with its eight addenda held against itself, its records and the code at `03c78af`, three statements of it corrected in place, five notes of the table corrected, four findings, and the five things the order settled, three built and two recorded; 7 October 2026, version 0.130.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: finding of the consistency audit of 7 October 2026, the first; repaired 7 October 2026, version 0.130.0, by the addendum of that day
-
-### the first addendum of 6 October 2026 read -C in both guards and named the decision of 6 September 2026 nowhere
-- Wrong: not stated
-- Should: not stated
-- Found: The consistency audit of 7 October 2026 before the handover, ordered on 6 October 2026, read against the entry beside it: the entry of 5 October 2026 with its eight addenda held against itself, its records and the code at `03c78af`, three statements of it corrected in place, five notes of the table corrected, four findings, and the five things the order settled, three built and two recorded; 7 October 2026, version 0.130.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: finding of the consistency audit of 7 October 2026, the second; repaired 7 October 2026, version 0.130.0, by the addendum of that day; the evidence of the thing of the point of 6 September 2026 on the hook line the same day
-
 ### the defect on the cost list and the description was answered since 5 October 2026 while its evidence stood on the status line and the entry did not name it
 - Wrong: not stated
 - Should: not stated
@@ -3393,78 +3468,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Walked
 - Note: found 11 October 2026 by the order recording the second closing run of milestone 3, in the session log of that run in devloop-test-w, records 195 to 253, pull request #13 at record 195 with the reason at record 200, #14 at record 242, both merged by the person, and #15 at record 283 armed; nothing installed in step 8; beyond the order of this day; concerns skills/setup-checks/SKILL.md at they land in one pull request with the rest of this step; otherwise in, line 945, and at step stands wherever the run stood when the flag was typed. As few pull, line 1002, to line 1005; should: the records and the workflow file land in one pull request where nothing is installed under the records; built 16 October 2026, version 0.140.0, defect i of the second closing run of part B of the roadmap entry of 12 October 2026, the roadmap entry of 16 October 2026
 
-### the conventions said the hooks still do not read the mark, where two hooks read it since 9 October 2026
-- Wrong: the conventions name the two hooks that read the mark since 9 October 2026, and the turn-end hook as the one that does not.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: `docs/skill-conventions.md` "two hooks read it: `hooks/permission-request-unattended.sh` answers no to every"
-- Status: Recorded, not built
-- Note: found 12 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md under A hook that says hand this to a person at The hooks still do not read it; mended 12 October 2026 in the conventions, which name the two hooks of 9 October 2026 and the turn-end hook as the one that does not read it
-
-### defect h of the entry on the second closing run named build-work line 719, a blank line, for a sentence at lines 716 to 718
-- Wrong: defect h of the entry on the second closing run names lines 716 to 718 of `build-work`.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 12 October 2026 by the consistency audit of that day, skills/build-work/SKILL.md line 719 blank at 704cd1d and the sentence at lines 716 to 718; corrected in place 12 October 2026 in the entry of 11 October 2026 on the second closing run, defect h
-
-### defect d of the entry on the second closing run named lines 23 to 32 and line 23 of body-through-file.md, a file of 29 lines whose title rule stands at lines 20 to 29
-- Wrong: defect d of the entry on the second closing run names lines 20 to 29 of `shared/body-through-file.md`, and its note the same.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 12 October 2026 by the consistency audit of that day, shared/body-through-file.md having 29 lines at 704cd1d and the title rule standing at lines 20 to 29; corrected in place 12 October 2026 in the entry of 11 October 2026 on the second closing run, defect d, and in the note of that defect's thing
-
-### the observation of the entry on the second closing run named start-work line 247, the opening of step 5, for the --auto sentence at line 274
-- Wrong: the `--auto` observation of the entry on the second closing run names line 274 of `start-work`.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 12 October 2026 by the consistency audit of that day, skills/start-work/SKILL.md line 247 opening step 5 and the sentence that --auto travels with the choice standing at line 274; corrected in place 12 October 2026 in the entry of 11 October 2026 on the second closing run under Observed
-
-### the observation of the entry on the second closing run named review-changes lines 125 to 131, a paragraph on a fact answering a different question, for the rule on the lens left out at lines 105 to 114
-- Wrong: the lens observation of the entry on the second closing run names lines 105 to 114 of `review-changes`.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 12 October 2026 by the consistency audit of that day, skills/review-changes/SKILL.md lines 125 to 131 carrying the paragraph on a fact that answers a different question and the rule on the lens left out, the trigger negated item by item so that it survives being read later, standing at lines 105 to 114; corrected in place 12 October 2026 in the entry of 11 October 2026 on the second closing run under Observed
-
-### What is shared today in the conventions did not name shared/install-not-through.md of 9 October 2026
-- Wrong: the list of what is shared names `shared/install-not-through.md` with its date and its two places.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: `docs/skill-conventions.md` "`shared/install-not-through.md`, 9 October 2026, inserted into `build-work`"
-- Status: Recorded, not built
-- Note: found 12 October 2026 by the consistency audit of that day, grep -n install-not-through docs/skill-conventions.md printing nothing at 704cd1d; mended 12 October 2026 under What is shared today, the third kind naming the file with its date and its two places
-
-### the measurement paragraph of the conventions said the two runs of milestone 3 were not measured after they were made on 11 October 2026
-- Wrong: the measurement paragraph says the two runs of milestone 3 were made and what the guard passed and blocked in them.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: `docs/skill-conventions.md` "The two runs of milestone 3 were made on 11 October 2026 in `devloop-test-w`,"
-- Status: Recorded, not built
-- Note: found 12 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md under The install guard reads a record at the end of the measurement paragraph of 8 October 2026; mended 12 October 2026 with a dated sentence on the two closing runs of 11 October 2026 and what the guard passed and blocked in them
-
-### the tally of rounds of check-docs-consistency stopped at 30 September 2026, the audits of 4 and 7 October 2026 adding nothing
-- Wrong: the tally of rounds names the rounds of 4, 7 and 12 October 2026.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 12 October 2026 by the consistency audit of that day; concerns docs/roadmap.md under Where these would attach at the tally of rounds; mended 12 October 2026 with the rounds of 4, 7 and 12 October 2026
-
-### the open item of the plan on the allow rule for an install knew nothing of the rule of 9 October 2026 and the run under it
-- Wrong: the plan's open item on the allow rule names the rule of 9 October 2026 and the run of 11 October 2026 under it.
-- Should: not stated
-- Found: The consistency audit of 12 October 2026 before the handover, read against the nine entries since the audit of 7 October 2026 and the code at `704cd1d`: fourteen disagreements, ten mended in the documents and four recorded; the two lists of what the closing runs still measure answered item by item; a status word broken over a line break; two changes to this machine; 12 October 2026, the version stays 0.135.0.
-- Fix: none
-- Status: Closed, corrected in the document: `docs/plan.md` carries "does and does not license. Since 9 October 2026 the rule for an install is".
-- Note: found 12 October 2026 by the consistency audit of that day; concerns docs/plan.md under Open at the item on the allow rule; mended 12 October 2026 with a dated sentence on the rule of 9 October 2026 and the second closing run of 11 October 2026 under it; closed 20 October 2026 as corrected in the document, the evidence on the closing line of the roadmap entry of 20 October 2026 on the person's answers and the closed state
-
 ### the table held no thing for the two defects the entry of 9 October 2026 on step 8 names as findings of its reports
 - Wrong: the two defects the entry of 9 October 2026 on step 8 names as report findings stand in the table.
 - Should: not stated
@@ -3754,14 +3757,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Walked
 - Note: found 14 October 2026 in the order of that day, finding 4 of the fourth addendum of 14 October 2026 to the roadmap entry on the command reader, built 14 October 2026 in 1d295f2 by the person's decision of that day, each point at its place in the reader; where the system decides, the system decides; the typed text, which this build had read as a doubt, is read as shell text again since the fifth addendum of 14 October 2026 to the roadmap entry on the command reader, the person's decision of that day, and the evidence moved off the stuff line onto rr's
 
-### the third addendum said that every answer of the walks of 14 October 2026 came out as foreseen, where its report says the first probe of pueue add and the first probe of the second batch came out otherwise
-- Wrong: not stated
-- Should: not stated
-- Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 14 October 2026 in the order of that day, finding 5 of the fourth addendum of 14 October 2026 to the roadmap entry on the command reader; the sentence corrected in place the same day, in the second commit of that addendum
-
 ### the reader's self-test depended on the system it ran on and stopped at the first red case: red under Windows with Git Bash, where four cases expected the reading of macOS and Linux, and the hooks never started after it
 - Wrong: not stated
 - Should: not stated
@@ -3778,30 +3773,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Walked
 - Note: found 14 October 2026 in the order of that day, finding 2 of the fifth addendum of 14 October 2026 to the roadmap entry on the command reader, the person's decision of that day; built 14 October 2026 in ef1b470: the three branches of 84f1aab back, ends_line back, the line's end taken off the text with line_end_off
 
-### the first addendum of 13 October 2026 named lines 1063 to 1087 of the reader for compound_end, which ends at 1082
-- Wrong: for `compound_end` the first addendum of 13 October 2026 names lines 1063 to 1082 of the reader.
-- Should: not stated
-- Found: The consistency audit of 14 October 2026 before the handover, read against the three entries since the audit of 12 October 2026, the five addenda of the third among them, and the code at `a03a720`: fifteen disagreements, seven mended in the documents, two rows of the table brought to the tool's rule and six recorded; the nine points of the order answered, two of them measured on the tool; the platform's run of pull request #171 read; 14 October 2026, the version stays 0.137.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 14 October 2026 by the consistency audit of that day; concerns docs/roadmap.md, the first addendum of 13 October 2026 to the entry on the command reader, finding 1, at lines 1063 to 1087 at a03a720 line 20368; compound_end runs from 1063 to its closing brace at 1082 at 6a62e4d and 1083 opens parse_command; should: the addendum names 1063 to 1082; corrected in place 14 October 2026
-
-### the first addendum of 13 October 2026 named lines 1150 to 1192 of the reader for parse_simple, which runs from 1158 to 1187
-- Wrong: for `parse_simple` the first addendum of 13 October 2026 names lines 1158 to 1187 of the reader.
-- Should: not stated
-- Found: The consistency audit of 14 October 2026 before the handover, read against the three entries since the audit of 12 October 2026, the five addenda of the third among them, and the code at `a03a720`: fifteen disagreements, seven mended in the documents, two rows of the table brought to the tool's rule and six recorded; the nine points of the order answered, two of them measured on the tool; the platform's run of pull request #171 read; 14 October 2026, the version stays 0.137.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 14 October 2026 by the consistency audit of that day; concerns docs/roadmap.md, the first addendum of 13 October 2026, What is built, at parse_simple, lines 1150 to 1192 at a03a720 line 20848; the function runs from 1158 to 1187 at 6a62e4d, 1150 to 1157 being the end of parse_command and 1188 to 1192 comment lines; should: the addendum names 1158 to 1187; corrected in place 14 October 2026
-
-### the first addendum of 13 October 2026 named lines 59 to 96 of the workflow for its step, which ends at 95, the file's last line
-- Wrong: for the workflow's step the first addendum of 13 October 2026 names lines 59 to 95, at both places.
-- Should: not stated
-- Found: The consistency audit of 14 October 2026 before the handover, read against the three entries since the audit of 12 October 2026, the five addenda of the third among them, and the code at `a03a720`: fifteen disagreements, seven mended in the documents, two rows of the table brought to the tool's rule and six recorded; the nine points of the order answered, two of them measured on the tool; the platform's run of pull request #171 read; 14 October 2026, the version stays 0.137.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 14 October 2026 by the consistency audit of that day; concerns docs/roadmap.md, the first addendum of 13 October 2026, finding 7 and What is built, at lines 59 to 96 at a03a720 lines 20477 and 20887; the workflow has 95 lines at 6a62e4d and the step ends on exit $red at 95; should: the addendum names 59 to 95 at both places; corrected in place 14 October 2026
-
 ### README.md named sudo, the piped installer, the branded browser and the system packages as what stays with the person whatever the record says, and not the programs that run a command as an administrator or as another user
 - Wrong: README.md names the programs that run a command as an administrator or as another user among what stays with the person whatever the record says.
 - Should: not stated
@@ -3817,22 +3788,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Closed, lapsed: `README.md` no longer carries "the branch protection on main requires that check".
 - Note: found 14 October 2026 by the consistency audit of that day; concerns README.md under Working on devloop itself at the branch protection on main requires that check; read off the platform 14 October 2026 with gh api repos/jayjay-create/claude-devloop/branches/main/protection, five contexts, strict true, enforce_admins true; mended 14 October 2026; should since 20 October 2026, the roadmap entry of that date on milestone 3, part 2: README says five checks are required, without a date, the README carrying none; the old should, quoted: README says five checks are required since 14 October 2026; built 20 October 2026, version 0.153.0; closed 21 October 2026, lapsed, the paragraph on the merge gate leaving the README with the roadmap entry of 20 October 2026 on milestone 3, part 2, its fifth commit
-
-### the conventions said under Registering a skill that the branch protection requires the one check stock-take, where five are required since 14 October 2026
-- Wrong: the conventions say under "Registering a skill" that the protection requires five checks since 14 October 2026.
-- Should: not stated
-- Found: The consistency audit of 14 October 2026 before the handover, read against the three entries since the audit of 12 October 2026, the five addenda of the third among them, and the code at `a03a720`: fifteen disagreements, seven mended in the documents, two rows of the table brought to the tool's rule and six recorded; the nine points of the order answered, two of them measured on the tool; the platform's run of pull request #171 read; 14 October 2026, the version stays 0.137.0.
-- Fix: `docs/skill-conventions.md` "and `(alpine)`, the second job of the same workflow, which runs every"
-- Status: Recorded, not built
-- Note: found 14 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md under Registering a skill at branch protection on main requires that check, for admins too, since 29; the same reading off the platform; should: the conventions say five checks are required since 14 October 2026; mended 14 October 2026; the evidence re-anchored on 22 October 2026, the line shortened by the addendum of that day on the question program on every system; its evidence line mended on 31 October 2026, the audit of that day: the job runs every self-test under bin/ since 23 October 2026, where the line named three
-
-### the conventions sent the reader of a program's source to the three addenda of 13 October 2026, where the two of 14 October 2026 read vendors as well
-- Wrong: the conventions send the reader of a program's source to the five addenda of 13 and 14 October 2026.
-- Should: not stated
-- Found: The consistency audit of 14 October 2026 before the handover, read against the three entries since the audit of 12 October 2026, the five addenda of the third among them, and the code at `a03a720`: fifteen disagreements, seven mended in the documents, two rows of the table brought to the tool's rule and six recorded; the nine points of the order answered, two of them measured on the tool; the platform's run of pull request #171 read; 14 October 2026, the version stays 0.137.0.
-- Fix: `docs/skill-conventions.md` "13 and 14 October 2026; a reading made from a summary and not from the source is"
-- Status: Recorded, not built
-- Note: found 14 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md under A hook reads its input through one program at its three addenda of; the fourth and fifth addenda of 14 October 2026 read s6-applyuidgid, rr, gdb, man-db, GNU parallel, systemd-run, onchange, when-changed, pdm, the script of util-linux and busybox awk off their vendors; should: the conventions send to the five addenda of 13 and 14 October 2026; mended 14 October 2026; bin/devloop-command-reader line 75 says the same and stands recorded
 
 ### the defect on the rule keeping runtimes out of the install question read recorded and not built while the question says nothing of runtimes since 5 October 2026
 - Wrong: the defect on the rule keeping runtimes out of the install question carries its evidence on the line of shared/install-question.md saying nothing of it is said since 5 October 2026.
@@ -4418,70 +4373,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Built, never walked
 - Note: found 18 October 2026 by the order building defects 9 and 12 of the roadmap entry of 16 October 2026 on the runs of that day, reading plan-work lines 529 to 530 and 223 to 224 and build-work lines 413 to 419 at d373314; concerns skills/plan-work/SKILL.md Stage 3 — Draft designs, the agents that draft and check; should: a refusal an agent of plan-work meets is tried no second time with nobody there, reached no other way, and named in its report with the check, the command as it ran and the message; built 18 October 2026, version 0.147.0, the addendum of that day to the roadmap entry of that date on where step 8 puts the tool of a class off for an install not run, decided by the person the same day: every agent of Stage 3, drafting, checking or a rerun, handed where the mark stands and what a refusal is and what follows one, the evidence on the head of that paragraph
 
-### the plan said what the project declares is reported at setup in step 2 of setup-project, which says nothing of what step 1 found since 17 October 2026
-- Wrong: the plan says what the project declares stood in the report of step 2 until 17 October 2026 and in the fields of the question since.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: `docs/plan.md` "of `setup-project`, until 17 October 2026, and since that day step 2 says"
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/plan.md under Where the set ends at what the project declares is reported at setup, lines 57 to 58 at 786b71f; skills/setup-project/SKILL.md step 2, lines 209 to 215, says nothing of what step 1 found since 17 October 2026; should: the plan says so with the date; mended 18 October 2026
-
-### the conventions said three cases part there where a command does not answer with nobody there to tell, and named four
-- Wrong: the conventions count four cases where a command with nobody there to tell does not answer.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Closed, corrected in the document: `docs/skill-conventions.md` carries "9 October 2026 four cases part there, as `shared/command-does-not-answer.md`".
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md line 476 at 786b71f; shared/command-does-not-answer.md line 116 says four cases since 9 October 2026, c819499, and both list the same four; should: four; mended 18 October 2026; closed 20 October 2026 as corrected in the document, the evidence on the closing line of the roadmap entry of 20 October 2026 on the person's answers and the closed state
-
-### the conventions said a question with one sensible answer is not asked, where the interview that sharpens an idea asks every decision since 18 October 2026
-- Wrong: the conventions name the interview that sharpens an idea as the place a question with one sensible answer is asked all the same.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: `docs/skill-conventions.md` "**Not in the interview that sharpens an idea, since 18 October 2026.** There"
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md under Only ask where there is something to decide, lines 557 to 562 at 786b71f; shared/three-questions.md lines 7 to 17 and the roadmap entry of 18 October 2026 on what the interview asks; should: the convention names the interview as the place it does not hold; mended 18 October 2026
-
-### the conventions said the reply says what a command the user typed does, which shared/skill-name.md says is not announced since 17 October 2026
-- Wrong: the conventions say what a typed command does is not announced in the reply since 17 October 2026.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: `docs/skill-conventions.md` "command does is not announced in the reply, since 17 October 2026, the"
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md lines 51 to 52 at 786b71f; shared/skill-name.md lines 12 to 14; should: the conventions say what the shared text says, with the date; mended 18 October 2026
-
-### the conventions said a run without a command for a statement says it is going to look, which build-work says it does without announcing since 17 October 2026
-- Wrong: the conventions say a run without a command for a statement looks without announcing it since 17 October 2026.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: `docs/skill-conventions.md` "no such command, look, without announcing it, since 17 October 2026, as"
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md under Never assert state, line 351 at 786b71f; skills/build-work/SKILL.md line 224; should: the conventions say so with the date; mended 18 October 2026
-
-### the conventions read a mergeable status with a gate present as past its gate whatever auto-merge reads, where it is the first case with auto-merge off since 18 October 2026
-- Wrong: the conventions say past its gate with auto-merge off is the first case since 18 October 2026.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: `docs/skill-conventions.md` "repository without one. Since 18 October 2026 it is the third case only with"
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md lines 2674 to 2676 at 786b71f; skills/build-work/SKILL.md lines 1075 to 1076 and 1107 to 1109, the second addendum of the roadmap entry of 18 October 2026 on the merge handover; should: the conventions say so with the date; mended 18 October 2026
-
-### the conventions on bin/devloop-setup-state named no set-aside line, which it prints since 16 October 2026
-- Wrong: the conventions name the set-aside line of the setup state's program since 16 October 2026.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: `docs/skill-conventions.md` "they are not read. Since 16 October 2026 it prints as well a `set-aside:`"
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md lines 2300 to 2305 at 786b71f; bin/devloop-setup-state lines 29 to 35 and 215; should: the conventions name the line; mended 18 October 2026
-
-### the conventions said shared/set-aside-back.md is inserted beside the two, where it stands beside set-aside-at-start in four skills and beside fetch-three-times in two
-- Wrong: the conventions say where the bring-back with the person there is inserted, beside which text in which skills.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: `docs/skill-conventions.md` "comes back with the person there, inserted beside it in those four and"
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/skill-conventions.md line 203 at 786b71f; the insert lines of the twelve skills; should: the conventions say where it stands; mended 18 October 2026
-
 ### README.md said the cut is presented and can be renamed before it is created, which cut-into-tasks says is created first and said after since 17 October 2026
 - Wrong: README.md says the cut is created without asking and seen once it is, since 17 October 2026.
 - Should: README says so, without a date, the README carrying none
@@ -4489,86 +4380,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Closed, corrected in the document: `README.md` carries "and you see it as what was created, at the next point where the run waits".
 - Note: found 18 October 2026 by the consistency audit of that day; concerns README.md under The steps, lines 89 to 91 at 786b71f; skills/cut-into-tasks/SKILL.md lines 138 to 141; mended 18 October 2026; should since 20 October 2026, the roadmap entry of that date on milestone 3, part 2: README says so, without a date, the README carrying none; the old should, quoted: README says so with the date; built 20 October 2026, version 0.153.0; closed 21 October 2026, corrected in the document, the README saying so without a date, the roadmap entry of 20 October 2026 on milestone 3, part 2, its fifth commit
-
-### the entry on defects 9 and 12 named lines of plan-work at the tip as they stood before its addendum
-- Wrong: the entry on defects 9 and 12 names lines 562 to 568 and expanded 1218 to 1260 of plan-work at the tip.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 28588 and 28614 to 28615, which named 547 to 553 and expanded 1203 to 1245 at the tip, holding at c4249b5; at 63e3d09 562 to 568 and expanded 1218 to 1260; should: the tip lines; corrected in place 18 October 2026
-
-### the entry of 17 October 2026 on where each owed text stays named eight line ranges that do not hold at its tip
-- Wrong: the entry of 17 October 2026 on where each owed text stays names eight line ranges as they stand at its tip.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 26986 to 26996, 27114, 27246 and 27262 of the entry beginning at 26919, its lines given at the tip, 5002a1e with the tree of 6793c5c; five held at b24542a before the in-place revisions of ebb4d6d moved them, one named 1044 for an anchor on 1045, one 425 to 449 for 427 to 451, one 14246 to 14259 for 14247 to 14260; should: the tip lines; corrected in place 18 October 2026
-
-### the entry on the two runs of 16 October 2026 named expanded lines of build-work for the stop past the gate that define the case
-- Wrong: the entry on the two runs of 16 October 2026 names expanded 1841 to 1843 of build-work for the stop past the gate.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 26029, which named expanded 1770 to 1774 of build-work at 7e35090, the third case, where the stop stands at 1841 to 1843; should: 1841 to 1843; corrected in place 18 October 2026
-
-### five entries of 15 and 16 October 2026 name one commit fewer than their branches have, the correction at the check before the merge
-- Wrong: five entries of 15 and 16 October 2026 name one commit fewer than their branches have, the correction at the check.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 24240, 24734, 24933, 25216 and 25494 to 25499; the branches carry 318d155 and 772808b, four commits ending 5221336, 99473da and 4c00311, and three ending 735e25d; should: each names its commits; said right in the entry of the audit, the dated lines as they stand
-
-### the entry on the output style names six rows of the table re-anchored where five were and one changed its note
-- Wrong: the entry on the output style re-anchored five rows of the table, not six, a sixth changing its note alone.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 24917 to 24918; git diff 919c9de 9b40c07 of the table changes nine rows, three the defects of the thinking part, five an anchor, one only the note of the registration in hooks.json; should: five; said right in the entry of the audit
-
-### the entry on part B at the setup miscounts the rows gone with the section, the inserts of the branch deletion, the hooks that hand a command over and the walked runs
-- Wrong: the entry on part B at the setup counts fourteen rows gone, three inserts, three hooks and 113 runs on 24 things.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 24988, 25024, 25057 and 25061 at 49bd995: fourteen not-a-thing rows left, not twelve, three inserts and a fourth place naming it, not four, three hooks with the merge guard, not two, 113 runs on 24 things; should: those counts; said right in the entry of the audit
-
-### the entry on planning and building says five things that do not hold at its own commits
-- Wrong: the entry on planning and building, five statements that do not hold at its own commits, said right here.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 25271 to 25276, 25334, 25335 and 25456: build-work line 134 of 49bd995 not replaced, three lines with as at every stop with a reason, 36 lines of mark-deletion, two start skills fetching three times, plans on on at 7e35090 and not 49bd995; should: as there; said right in the entry of the audit
-
-### nine line ranges written into the entry on the two runs of 16 October 2026 on 17 October 2026 hold at 6793c5c and not at 7e35090
-- Wrong: nine line ranges written into the entry on the two runs on 17 October 2026 hold at 6793c5c and not at 7e35090.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 25894, 25896, 25911, 26096 and 26146 to 26152, written by 6793c5c into shoulds revised in place, against line 25504, every line number at 7e35090; should: the commit named with them; said right in the entry of the audit, a number alone not able to say it
-
-### the revised should on the loose issues names the lines of e687f51 for a text of 6793c5c, and its record names the entry of 11 October 2026 for it
-- Wrong: the revised should on the loose issues stands in the entry on the thinking part, its text at lines 376 to 379 of 6793c5c.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 24504 to 24508 of the entry on the thinking part and 27129 to 27134 of the entry of 17 October 2026 on where each owed text stays; the text stood at build-work 376 to 379 at 6793c5c; should: the lines with their commit and the right entry; said right in the entry of the audit
-
-### the entry on the merge handover says the search-set words stand in its head alone and names decision 1 for B1 of 17 October 2026
-- Wrong: the entry on the merge handover carries two status lines beside its head, and B1 of 17 October 2026 at lines 26625 to 26627.
-- Should: not stated
-- Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 18 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 28021 to 28023, the status lines 28343 and 28352 of its second addendum, and 28166 to 28168 for lines 26625 to 26627; should: as there; said right in the entry of the audit
 
 ### the step 6 thing on auto-merge off with nobody there was named unreachable by start condition 5, which reads it at the start alone
 - Wrong: the step 6 thing on auto-merge off with nobody there is renamed, start condition 5 reading it at the start alone.
@@ -4842,142 +4653,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Recorded, not built
 - Note: found 19 October 2026 by the order checking the list of the defects that concern milestone 3 point by point; decided by the person on 19 October 2026 to be taken up after milestone 3, how being theirs to decide when the subject comes up; the counts of that day stand in the entry with their commands; decided by the person on 1 November 2026, (a): three places, the roadmap a dated report that is only appended to, the open defects in a file of their own, the valid reasons and the approved wordings in a file of their own ordered by the loaded files and their headings, without history, and the loaded texts carrying the rule and at most a short reason, no date, no reference to the roadmap, no old wording and no case; (b): three parts in this order, part 1 the history out of the loaded texts and docs/rationale.md written, part 2 the file of the open defects that the stock-take reads, part 3 the roadmap archived; (c): a thing whose counting run is lost by the change of its lines stays built, never walked until milestone 12 runs, and the order of part 1 records no run; part 1 built 1 November 2026, version 0.170.0, the roadmap entry of that day; the defect stays recorded and not built until part 3
 
-### the plan said the tool computes one of four states where it computes five since 20 October 2026
-- Wrong: the plan says the tool computes a fifth state since 20 October 2026, for a defect closed on a line of the roadmap.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: `docs/plan.md` "Since 20 October 2026 the tool computes a fifth state, closed: the thing is a"
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/plan.md milestone 1, line 119 at 8458e47; mended with a dated paragraph after line 128
-
-### the tally of rounds of check-docs-consistency ended at 12 October 2026 where the audits of 14 and 18 October 2026 followed
-- Wrong: the tally of rounds of check-docs-consistency names the rounds of 14, 18 and 20 October 2026.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 134, the bullet on check-docs-consistency under Where these would attach; mended on that line with the rounds of 14, 18 and 20 October 2026
-
-### the entry on the two runs of 19 October 2026 named lines 26641 to 26666 for the approved text 6, which begins at 26645 and ends at 26669
-- Wrong: the two runs of 19 October 2026 name lines 26645 to 26669 for the approved text 6.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 29778 at 8458e47, corrected in place
-
-### the entry on the two runs of 19 October 2026 named expanded 1413 to 1417 of setup-checks for the failing check target at 1417 to 1419
-- Wrong: the two runs of 19 October 2026 name expanded 1417 to 1419 of setup-checks for the failing check target.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 30064 at 8458e47, corrected in place; the expansion of setup-checks at 3f810fd
-
-### defect 19 of the two runs of 19 October 2026 named expanded 2190 to 2192 and 2180 to 2192 of setup-checks for the one real question at 2193
-- Wrong: defect 19 of the two runs of 19 October 2026 names expanded 2193 of setup-checks for the one real question.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 30387 and 30406 at 8458e47, both corrected in place; the expansion of setup-checks at 3f810fd
-
-### the entry on the questions of a round named the insert line of plan-work once, 305 at a9fb3f7, where its first commit moved it to 307
-- Wrong: the entry on the questions of a round names the insert line of plan-work at a9fb3f7 and at e7befca.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 31222 at 8458e47, corrected in place under the entry's own rule at lines 31130 to 31131
-
-### the checked list of milestone 3 named docs/plan.md lines 255 to 261 for the fifth part, which begins on 256
-- Wrong: the checked list names docs/plan.md lines 256 to 261 for the fifth part of milestone 3.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 31406 at 8458e47, corrected in place; docs/plan.md at 0776389
-
-### the checked list of milestone 3 named lines 68 to 121 of setup-project for the refresh section, whose heading stands on 69
-- Wrong: the checked list names lines 69 to 121 of setup-project for the refresh section.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 31550 at 8458e47, corrected in place; skills/setup-project/SKILL.md at 0776389
-
-### the checked list of milestone 3 named docs/plan.md lines 573 to 576 of milestone 12 as milestone 4 on how a project is run
-- Wrong: the checked list names docs/plan.md lines 583 to 585 of milestone 4 for how a project is run.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 32128 at 8458e47, corrected in place; docs/plan.md at 0776389, milestone 4 at 581 to 612
-
-### the entry on the answers and the closed state named section D of the tool's header as ending at 446 and 493 where it ends at 459 and 506
-- Wrong: the answers entry names section D as lines 400 to 459 at f4cdd74 and 409 to 506 after the change.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 32382 at 8458e47, corrected in place; scripts/devloop-stock-take section D at f4cdd74 and 8458e47
-
-### the entry on the answers and the closed state named section C of the tool's header as lines 251 to 311 where it runs from 212 to 399
-- Wrong: the answers entry names section C as lines 212 to 399 at f4cdd74.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md line 32413 at 8458e47, corrected in place; scripts/devloop-stock-take section C at f4cdd74
-
-### three entries of 19 October 2026 name one commit fewer than their branches have, the correction of the entry
-- Wrong: three entries of 19 October 2026 name one commit fewer than their branches have, the correction of the entry.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 29532 to 29534, 30918 to 30919 and 31127 to 31128 at 8458e47; the branches task/runs-19-october-2026, task/wordings-19-october-2026 and task/questions-of-a-round-19-october-2026 have three commits each
-
-### the entry on the two runs of 19 October 2026 said every run row carries the source log where twenty carry entry
-- Wrong: twenty of the 317 run rows of the entry on the two runs of 19 October 2026 carry the source entry, the checks and the tool.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 30892 to 30893 at 8458e47; the 317 run rows bcc08b2 added, 297 of source log and 20 of source entry
-
-### the entry on the two runs of 19 October 2026 named eight rows whose notes gained a should where nine did
-- Wrong: nine rows of the table gained a should on 19 October 2026, the settled line of the shared round text the ninth.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 30888 to 30892 at 8458e47; git diff 3f810fd bcc08b2 -- docs/stock-take.tsv changes nine rows
-
-### cluster 7 of the checked list named cluster 22 for defect 4 of the two runs of 19 October 2026, which stands in cluster 21
-- Wrong: cluster 7 of the checked list depends on cluster 21, where defect 4 of the two runs of 19 October 2026 stands.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 31585 to 31590 at 8458e47; cluster 21 at 31806 to 31823 holds line 30085 and says cluster 7 depends on it
-
-### cluster 2 of the checked list put setup-checks lines 255 and 385 under step 8, which stand under steps 1 and 3
-- Wrong: setup-checks gives no recommendation at lines 255, 385 and 900 of 0776389, under steps 1, 3 and 8.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 31515 to 31516 at 8458e47; skills/setup-checks/SKILL.md at 0776389, line 255 under step 1, 385 under step 3, 900 under step 8
-
-### the entry on the answers said five of the six things cluster 24 keeps carry runs where three do
-- Wrong: three of the six things cluster 24 keeps carry runs on their rows, 7741, 5214 and 7048.
-- Should: not stated
-- Found: The consistency audit of 20 October 2026 before the handover, read against the five entries since the catch-up of 19 October 2026 and the code at `8458e47`: seventeen disagreements, all in the documents — two mended in the documents, nine line numbers of dated entries corrected in place at ten lines, six said right here; no row of the table off the tool's rule, nothing wrong outside `docs/`; no question to the person; 20 October 2026, the version stays 0.151.0.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 20 October 2026 by the consistency audit of that day; concerns docs/roadmap.md lines 32449 to 32451 at 8458e47; run rows on the things of lines 7741, 5214 and 7048 and none on 7298, 18896 and 18832
-
 ### README.md says the question that writes the install record is put at setup, where since 20 October 2026 it is put at a refresh as well
 - Wrong: `README.md` line 234 says that the question that writes the install record is put at setup, where since 20 October 2026 it is put at a refresh as well where no record stands on the main branch
 - Should: the sentence says both places, in a wording the person approves, `README.md` being in no commit of this order. (d) Finding 19 and cluster 18. `shared/install-question.md` lines 13 to 26 at `d1250d1` say the content of the two lines under the no: at the first asking that the run installs nothing outside the project, that where a tool or a browser is missing they get the command and decide, and the exception that some packages of their project download something themselves when they are installed, a browser for tests say, which the no does not stop; at the second asking the same without the command and with work without them not possible; the paragraph on the approved wordings, lines 45 to 51, names this entry for the wording of 20 October 2026; the skill says what is said, not the words. Nothing changes in `skills/setup-checks/SKILL.md`, whose step 8 inserts the same text at line 1071. Built: the no of the install question says at both askings that some packages of the project download something themselves when they are installed and that the no does not stop it, `shared/install-question.md` lines 16 to 20 at `d1250d1`; its should since this entry, in place of finding 19's: the line under the no says that installing a package of the project can download something on the side, a browser say, and that the no does not stop that, and the guard stays as it is; the old should of finding 19, quoted: "under a no nothing lands outside the project without the person, a browser that the installation of a package downloads included". Line 5986, the question's half: its should since this entry is the report half alone — what a package manager did beside the package stands in the report of the install, `skills/build-work/SKILL.md` line 507 and `skills/setup-checks/SKILL.md` line 545 — and the defect reads built with its evidence on line 507; the old should, quoted: "it has to be said where the question is put, as part of what the tool kind costs — the milestone's 'what each kind costs' — and it has to stand in the report of what came back". `docs/plan.md` line 244 names the cost among the question's points of 19 September 2026 and lines 503 to 507 record the cut of 30 September 2026 to the four points that carry the decision, so nothing there changes. (e) Cluster 17. `skills/setup-project/SKILL.md` lines 49 to 56 at `d1250d1` say that the case with nobody there cannot arise here, the run without the person reaching the skill on no way and a setup never running without the person, and that until 20 October 2026 the bullet said the command becomes an issue; the insert at line 63 goes, "How to ask" following the bullets directly. The defect of line 27503 reads built since this entry, its evidence on line 49, its should met by its second way, the text for the run with nobody there gone. Built: the bullet of `setup-project` for a blocked install says the case with nobody there cannot arise here, `skills/setup-project/SKILL.md` lines 49 to 54 at `d1250d1`; its should as finding 11 had it, met by its second way: "the bullet names the case with them there alone, or says the case cannot arise here, as setup-checks does under With nobody there for its third route". Line 27167, the insert of `shared/backed-command.md` in `setup-project` whose only use went with the install handed over, its should the insert going or a line that hands a command over using it: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "devloop-text backed-command". The closing names no commit, since the commit of this branch does not resolve on `main` after the squash merge, section D of the tool's header; the text stood in the file since `d713819` of 18 September 2026, `git log -S`. No line of the skill hands a command that fetches something over, read with `grep -n -i 'hand' skills/setup-project/SKILL.md`: `gh auth login` at line 195 fetches nothing, the merge handover is its own text, and the refresh question hands nothing over since nothing is installed in the setup. (f) Cluster 3, line 6266: Closed, left on purpose: decided in `docs/roadmap.md` at "The question does not say that a bare pip opens nothing under a yes.". Cluster 6, line 26220: its should since this entry is that what the second question needs stands in its fields, in the wording approved on 17 October 2026, and that nothing the decision needs stands only before the call, `output-styles/devloop.md` line 38 carrying the instruction; the old should, quoted: "what the mode question needs stands in its fields, in the wording approved on 17 October 2026, and the line before each second question in its question field, naming their no where the record says no, nothing as text before either call"; the walk of 19 October 2026 at records 496 and 497 of project z, lines 29807 to 29820, enters the defect's row as a run under 0.148.0 with this file as its source, by the rule of the answer to question 5, since that entry read the records for exactly this case; the run counts, the site line last changed at `89fb29a` of 16 October 2026 and the evidence line at `b24542a` of 17 October 2026, both before `3f810fd`, which introduced 0.148.0. Cluster 13, line 6442: Closed, left on purpose: decided in `docs/roadmap.md` at "not its output on stderr, on purpose". (g) `docs/plan.md` carries after its paragraph on the decision of 20 October 2026 under milestone 3, line 394, the dated sentence that the examination of the sandbox leaves the list the milestone stands on, with the decision of cluster 16. (h) Everything else above is recorded only.
@@ -5018,512 +4693,8 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Closed, corrected in the document: `README.md` carries "only once auto mode has refused such an install, at your next start with".
 - Note: found 22 October 2026 by the order on the conditions at the mark, named in the entry of that day; concerns README.md line 280 at 4fe6374; a new wording of the README needs the person, the proposal in the report and the entry; should: the README says, in a wording of the person's, that devloop keeps their no to the rule in a small file of its own beside the settings file, and how the question comes back; closed 22 October 2026, version 0.156.0, the roadmap entry of that date on the conditions at the mark and the question after a refusal: the stored no went the same day, so the sentence is true again, and the paragraph says since this version when the question comes back and where the rule can be seen and removed, in the words the person gave; closed again 23 October 2026 on a line of the roadmap entry of 23 October 2026 on the catch-up after the audit of that day, the text its proof named until then, again only once auto mode has actually refused an install, gone with the paragraph approved that day
 
-### the plan said the entry on the six closing runs carries every open defect with the run that meets it, where thirteen points need a run and the rest a bench or nothing
-- Wrong: the plan says the entry on the six closing runs carries every open defect with what it still needs and the run where it needs one.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: `docs/plan.md` "with what it still needs and the run where it needs one"
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; mended in docs/plan.md the same day, the evidence on the mended line
-
-### the conventions said seven causes of the install record's reader opened with a label of their own, where five did and two were the guard's fallback
-- Wrong: the conventions say five causes of the install record's reader opened with a label of their own until 21 October 2026, two more being the guard's fallback.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: `docs/skill-conventions.md` "until then five causes of `bin/devloop-install-record`"
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; mended in docs/skill-conventions.md the same day, the evidence on the mended line
-
-### the conventions said a --path written on puppeteer browsers install moves nothing, where the vendor's install takes it under yargs 17.7.3
-- Wrong: the conventions say a --path on puppeteer browsers install reaches the vendor's install under yargs 17.7.3, where they said it moves nothing.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: `docs/skill-conventions.md` "last half does not hold as read on 23 October 2026"
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; mended in docs/skill-conventions.md the same day, the evidence on the mended line
-
-### the entry on part 1 named lines 29806 to 29820 for the walk of defect 14, whose first line is blank
-- Wrong: the entry on part 1 names lines 29807 to 29820 for the walk of defect 14 at its line 32960.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 1 named lines 19645 to 19650 for point 4 of 12 October 2026, which runs from 19644 to 19651
-- Wrong: the entry on part 1 names lines 19644 to 19651 for point 4 of the decisions of 12 October 2026.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 1 named lines 14027 to 14029 for the should of finding 6 of 9 October 2026, whose first line is blank
-- Wrong: the entry on part 1 names lines 14028 to 14030 for the should of finding 6 of 9 October 2026.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 1 named lines 16 to 18 of install-question.md at d1250d1 for the exception at both askings, the second standing on 20
-- Wrong: the status line on the exception under a no names lines 16 to 20 of install-question.md at d1250d1, both askings.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 1 named lines 49 to 53 of setup-project at d1250d1 for the bullet and its earlier reading, which run to 56
-- Wrong: (e) of the entry on part 1 names lines 49 to 56 of setup-project at d1250d1 for the bullet and its earlier reading.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the status line on the setup-project bullet named lines 49 to 53 at d1250d1 for a sentence that runs to 54
-- Wrong: the status line on the setup-project bullet names lines 49 to 54 at d1250d1 for the case that cannot arise.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 2 named README lines 321 to 322 at f82aeae for a date standing at 322 to 323
-- Wrong: the entry on part 2 gives README lines 322 to 323 at f82aeae for the date broken over a line.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 2 named README lines 230 to 231 for a sentence on administrators whose last word stands on 232
-- Wrong: the entry on part 2 names README lines 230 to 232 at f82aeae for the sentence on administrators.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 2 named single README lines for the words on two more guards, which run over two lines each
-- Wrong: the entry on part 2 names README lines 234 to 235 and 236 to 237 for the words on two more guards.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 2 named README line 381 for words on the hook on permission prompts, which run to 382
-- Wrong: the entry on part 2 names README lines 381 to 382 at f82aeae for the words on the hook on permission prompts.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 2 named README lines 113 to 114 for words standing on 114 alone
-- Wrong: (d) of the entry on part 2 names README line 114 at f82aeae for the words on where the plan takes the set.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 2 named README line 321 at f82aeae for evidence that stood on 325 there
-- Wrong: the entry on part 2 names README lines 8, 294, 325 and 371 at f82aeae for the evidence the fifth commit removed.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 3 named lines 19645 to 19650 for point 4 of 12 October 2026, which runs from 19644 to 19651
-- Wrong: the entry on part 3 names lines 19644 to 19651 for point 4 of the decisions of 12 October 2026.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 3 gave five line numbers of its new code without the commit they hold at, its own rule reading them at a090677
-- Wrong: the entry on part 3 names 1810ab5 beside five line numbers of its new code that hold there and not at a090677.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 3 named lines 652 to 658 for the arm that reads --path, whose label stands on 651
-- Wrong: the entry on part 3 names lines 651 to 658 at 1810ab5 for the arm that reads --path.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 3 named lines 2529 to 2538 of the conventions for a paragraph on --path that ends on 2539
-- Wrong: the entry on part 3 names lines 2529 to 2539 of the conventions at a090677 for the paragraph on --path.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 3 named line 1493 for words dropped from the conventions over two lines, and not the three sections dropped with them
-- Wrong: the entry on part 3 names lines 1493 to 1494 for the eight places dropped from the conventions, the three sections before them dropped too.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 4 named setup-checks lines 484 to 499 at b52be40 for a handover that runs from 485 to 495
-- Wrong: (d) of the entry on part 4 names setup-checks lines 485 to 495 at b52be40 for the command step 3 handed over.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 4 named setup-checks lines 485 to 536 at 6ef979b for a question that runs from 495 to 535
-- Wrong: the entry on part 4 names setup-checks lines 495 to 535 at 6ef979b for the question of step 3.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 4 named build-work lines 556 to 568 at 6ef979b for point 8, whose first line is blank
-- Wrong: the entry on part 4 names build-work lines 557 to 568 at 6ef979b for point 8.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the README defect of the entry on part 4 named lines 213 to 215 and line 215, where the list runs to 260 and the words stand on 214
-- Wrong: the README defect of the entry on part 4 names lines 213 to 260 at b52be40 and every blocking check on line 214.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named setup-checks lines 485 to 553 for a question that runs from 495 to 552
-- Wrong: the entry on conditions 6 and 7 names setup-checks lines 495 to 552 at 4fe6374 for the question of step 3.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named build-work lines 1495 to 1505 for the sentence on 6 and 7, which runs from 1502 to 1513
-- Wrong: the entry on conditions 6 and 7 names build-work lines 1502 to 1513 at 4fe6374 for the sentence on 6 and 7.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named lines 29760 to 29763 for the sentence approved on 6 October 2026, which quote a run and not the approval
-- Wrong: the entry on conditions 6 and 7 names lines 10972 to 10977 for the step 8 sentence approved on 6 October 2026.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named three lines of plan-work and build-work for the places of the mark that carry other sentences
-- Wrong: the entry on conditions 6 and 7 names plan-work lines 262 and 488, build-work line 1541 and lines 1519 to 1520 for the mark.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named the guard's lines 837 to 857 for its duty under PermissionDenied, which ends on 859
-- Wrong: the entry on conditions 6 and 7 names the guard's lines 837 to 859 at 4811956 for its duty under PermissionDenied.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named lines 33 to 44 of the reader's head for a comment that ends on 45
-- Wrong: the entry on conditions 6 and 7 names lines 33 to 45 of the reader's head at 4811956 for its two fields.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named lines 29 to 33 of mode-set-up.md for the rule being none of the five, which stands at 26 to 28
-- Wrong: the entry on conditions 6 and 7 names mode-set-up.md lines 26 to 33 at 4811956 for the rule and the refusal.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named step 3 lines 503 to 507 without a commit, which hold at 45a7a49 and not at its default 4fe6374
-- Wrong: the entry on conditions 6 and 7 names step 3 lines 503 to 507 at 45a7a49 for the question on the single-class route.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named the workflow's lines 150 to 215 for the step on titles, which runs from 154 to 216
-- Wrong: (d) of the entry on conditions 6 and 7 names the workflow's lines 154 to 216 at 45a7a49 for the step on titles.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on conditions 6 and 7 named lines 453 to 465 for the function recorded, which ends on 466
-- Wrong: the addendum of the entry on conditions 6 and 7 names lines 453 to 466 for the function recorded.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on the six closing runs said this file was appended after line 31377, where git diff gives the hunk after 31379
-- Wrong: the entry on the six closing runs says this file was appended after line 31379 between 0776389 and f0eaae7.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on the six closing runs named build-work line 507 at f0eaae7 for the evidence of line 5986, which stands there on 515
-- Wrong: the entry on the six closing runs names build-work line 515 at f0eaae7 for the evidence of line 5986.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; corrected in place the same day, the evidence on the corrected line
-
-### the entry on part 1 said lines 277 to 284 of setup-project at d1250d1 carry the reason that what needs weighing stands alone, where they gave the ceiling there
-- Wrong: setup-project gives the reason of the call alone by the first sentence of three-questions.md since the correction, f82aeae lines 285 to 292.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the records of the entry on part 1 named two skill branches for the refresh, where three came in
-- Wrong: the records of the entry on part 1 add three skill branches for the refresh, the third for a record the program cannot read.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 2 said its branch went in three commits, where it has five
-- Wrong: the entry on part 2 went in five commits, where its first paragraph says three.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 2 said its fifth commit put a rule and a reason into the conventions, where it put two rules and a reason
-- Wrong: the fifth commit of part 2 put two rules and a reason into the conventions.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 2 said every hit of its second search over the README was decided and nothing else stood, where a stash entry went unnamed
-- Wrong: the second search of part 2 over the README also hit a stash entry at line 274, a thing of the project.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 3 said a --path on puppeteer browsers install is not read and that of several --path the last one wins, where yargs 17.7.3 reads it and makes several a list
-- Wrong: under yargs 17.7.3 a --path on puppeteer browsers install reaches the vendor's install, and several --path come as a list, not the last one.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 3 said the table names no label of the reader's causes, where two of its anchors carried one
-- Wrong: two anchors of the table carried a label of the reader's causes until part 3 re-anchored them.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 3 said five dated lines quote no record:, where six do
-- Wrong: six dated lines of this file quoted no record: when part 3 changed the reader's causes.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 3 said the template under a yes carried eleven places since the record was introduced, where it carried six until 8 October 2026
-- Wrong: the template of the install record carried six places from 28 September 2026 and eleven since 8 October 2026.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 4 said item fills FACTS with the command's id, where it fills ITEMS
-- Wrong: item fills ITEMS with the command's id, and FACTS is filled by dest, destfile and place.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 4 said its first commit added four absent lines to the reader's self-test, where it added five
-- Wrong: part 4 added five absent lines to the reader's self-test beside three cases.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 4 said the job runs the install-fact hook once on each system, where it runs it once under each of its two events
-- Wrong: the job runs the install-fact hook twice on each system, once under each of its two events.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 4 said the table's row of the first cause of the setup-state program was re-anchored, where the rows of all three were
-- Wrong: the rows of all three causes of the setup-state program anchored on their wording before part 4.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 4 named the runs of its bench thing by thing and left out eight of them, its third commit carrying the run rows above and nothing else
-- Wrong: the bench of part 4 entered runs on eight things more than its paragraph on the runs names.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on part 4 said both new skill branches of its fourth commit are evidenced on their heads, where the build-work one is evidenced on a later line
-- Wrong: the build-work thing of the fourth commit of part 4 is evidenced on its line on not writing twice, not on its head.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 said its branch went in six commits of two orders, where it went in eight of three
-- Wrong: the entry on conditions 6 and 7 went in eight commits of three orders, where its first paragraph says six of two.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 said two of its status lines hold words of the search set, where one does
-- Wrong: one status line of the entry on conditions 6 and 7 holds a word of the search set besides its head.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 said every cause of the reader under --dependency names the section, where five name none
-- Wrong: under --dependency the reader's causes on the section name it, and its five causes on the repository name no section.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 said nothing counts in doubt at a denial, where a denial without a reason field counts
-- Wrong: the install guard counts a denial whose input carries no reason as a refusal of the classifier.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 said the record's path and line form live in the question program alone, where the job reads both since its seventh commit
-- Wrong: the record's path and the form of its line live in the question program and in the job hooks on every system.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
 ### the entry on conditions 6 and 7 said the self-test holds each failure of gh with the command and the message, where the case on no JSON holds neither
 - Wrong: the self-test of the question program holds the case on no JSON as not decided, without command and message.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 said its head has 68 characters, where it has 71
-- Wrong: the head of the entry on conditions 6 and 7 has 71 characters between its markers.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 said the title of its pull request is the first line of its first commit with 65 characters, where the title that landed has 69
-- Wrong: the title that landed for the entry on conditions 6 and 7 has 69 characters, not the first line of the first commit.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 counted a row on the no among the rule program's rows put back, where it is a thing of setup-checks step 8
-- Wrong: the row on the no put back at 4811956 is a thing of setup-checks step 8, not of the rule program.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on conditions 6 and 7 named three outcomes of the rule program as measured on this Mac alone, where four and three reasons are
-- Wrong: four of the rule program's eight outcomes and three reasons of its read run on no system but this Mac.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on the six closing runs named the entries of parts 1 to 5, where the fifth is the entry on conditions 6 and 7
-- Wrong: the entry on the six closing runs read the entries of parts 1 to 4 and the one on conditions 6 and 7.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on the six closing runs said run 1 meets questions 2 and 3 of the setup, where question 2 is put only where a gate stands already
-- Wrong: run 1 meets question 3 of the setup, and questions 2 and 5 only where their conditions hold.
-- Should: not stated
-- Found: Six entries held against the code: lines corrected, defects recorded.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
-
-### the entry on the six closing runs said the answers of 20 October 2026 took line 14121 out, where the decision the entry on part 1 records did
-- Wrong: line 14121 left the list of milestone 3 by the decision the entry on part 1 records, line 32986.
 - Should: not stated
 - Found: Six entries held against the code: lines corrected, defects recorded.
 - Fix: none
@@ -6226,582 +5397,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Recorded, not built
 - Note: found 30 October 2026 by the order reading the short run with the person under a no of that day off its two session logs and the logs of their subagents, the roadmap entry of that date on the short run, the records in its paragraph; concerns skills/build-work/SKILL.md step 3, the eighth case under how to ask, a task that turns out to need a decision the spec did not take; the records aaf2940c #99 and #109 and s2 #127, #145, #149, #321 and #324 of the second session's main log; should: the run raises that issue and puts the task down, as the text says, or the text says that with the person there the question is put to them before the build goes on; not the install path; version 0.166.0
 
-### the conventions say under Registering a skill that the job hooks on every system runs every self-test under bin since 23 October 2026
-- Wrong: the conventions say under Registering a skill that the job hooks on every system runs every self-test under bin since 23 October 2026.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: `docs/skill-conventions.md` "and `(alpine)`, the second job of the same workflow, which runs every"
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; mended in the document on the evidence line, recorded and not built, as a document reads; version 0.168.0
-
-### the conventions say that check 17 prints seven lines over six sites since 28 October 2026, setup-checks step 3 matching on two
-- Wrong: the conventions say that check 17 prints seven lines over six sites since 28 October 2026, setup-checks step 3 matching on two.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: `docs/skill-conventions.md` "lines fall out like this — seven lines over six sites since 28 October 2026,"
-- Status: Built, never walked
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; mended in the document on the evidence line, which reads built, the evidence line standing under Before a handover, run these, where until 1 November 2026 this note said recorded and not built, as a document reads; version 0.168.0
-
-### the plan says the run under a no met seven defects and one open point again, three of the defects not held
-- Wrong: the plan says the run under a no met seven defects and one open point again, three of the defects not held.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: `docs/plan.md` "and a lens writing into the project among them, seven defects and one open"
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; mended in the document on the evidence line, recorded and not built, as a document reads; version 0.168.0
-
-### the plan says two of the short run's four new defects are of milestone 3
-- Wrong: the plan says two of the short run's four new defects are of milestone 3.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: `docs/plan.md` "built, two of them of milestone 3. Whether milestone 3 is reached that"
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; mended in the document on the evidence line, recorded and not built, as a document reads; version 0.168.0
-
-### the entry on the catch-up after the audit names the conventions' lines 2378 to 2388 at 6edeef1 for the refusal paragraph
-- Wrong: the entry on the catch-up after the audit names the conventions' lines 2378 to 2388 at 6edeef1 for the refusal paragraph.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 36475, `lines 2378 to 2388` for `lines 2375 to 2388`; version 0.168.0
-
-### the entry on the six closing runs names lines 34719 to 34747 for the measurement of 22 October 2026
-- Wrong: the entry on the six closing runs names lines 34719 to 34747 for the measurement of 22 October 2026.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 36740, `lines 34719 to 34747` for `lines 34718 to 34747`; version 0.168.0
-
-### the entry on the six closing runs names setup-project expanded 1795 to 1815 at 6edeef1 for the close of the setup
-- Wrong: the entry on the six closing runs names setup-project expanded 1795 to 1815 at 6edeef1 for the close of the setup.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 37113, `expanded 1795 to 1815` for `expanded 1795 to 1812`; version 0.168.0
-
-### the entry on the six closing runs names setup-checks expanded 2029 to 2032 for the form of the rule question
-- Wrong: the entry on the six closing runs names setup-checks expanded 2029 to 2032 for the form of the rule question.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 37196, `2029 to 2032` for `2029 to 2031`; version 0.168.0
-
-### the entry on the six closing runs names setup-checks expanded 1059 to 1062 for the question on a missing tool
-- Wrong: the entry on the six closing runs names setup-checks expanded 1059 to 1062 for the question on a missing tool.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 37234, `expanded 1059 to 1062` for `expanded 1058 to 1062`; version 0.168.0
-
-### the entry on the six closing runs names line 30197 for defect 11 of 19 October 2026
-- Wrong: the entry on the six closing runs names line 30197 for defect 11 of 19 October 2026.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 37563, `line 30197` for `line 30196`; version 0.168.0
-
-### the entry on install lines by one program names build-work expanded 1127 to 1191 at 1ef533e for point 7
-- Wrong: the entry on install lines by one program names build-work expanded 1127 to 1191 at 1ef533e for point 7.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 37687, `expanded 1127 to 1191` for `expanded 1127 to 1160`; version 0.168.0
-
-### the entry on install lines by one program names build-work expanded 2454 to 2532 for the seven conditions
-- Wrong: the entry on install lines by one program names build-work expanded 2454 to 2532 for the seven conditions.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 37729, `2532` for `2531`; version 0.168.0
-
-### the entry on the install rules names backed-command.md lines 49 to 50 at e9deec2 for the folder a dry run printed
-- Wrong: the entry on the install rules names backed-command.md lines 49 to 50 at e9deec2 for the folder a dry run printed.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 38194, `lines 49 to 50` for `lines 48 to 50`; version 0.168.0
-
-### the entry on the questions names setup-project expanded 536 to 539 at e9deec2 for the rule behind defect 34
-- Wrong: the entry on the questions names setup-project expanded 536 to 539 at e9deec2 for the rule behind defect 34.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 38381, `536 to 539` for `536 to 538`; version 0.168.0
-
-### the entry on the questions names the conventions' lines 650 to 660 at a339940 for the one question naming a number
-- Wrong: the entry on the questions names the conventions' lines 650 to 660 at a339940 for the one question naming a number.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 38411, `lines 650 to 660` for `lines 650 to 661`; version 0.168.0
-
-### the entry on the start conditions names mode-set-up.md lines 21 to 30 at 3d82ab1 for what the guard reads
-- Wrong: the entry on the start conditions names mode-set-up.md lines 21 to 30 at 3d82ab1 for what the guard reads.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 38553, `lines 21 to 30` for `lines 21 to 31`; version 0.168.0
-
-### the entry on the start conditions names the mark guard's lines 175 to 190 at 3d82ab1 for the call without a range
-- Wrong: the entry on the start conditions names the mark guard's lines 175 to 190 at 3d82ab1 for the call without a range.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 38557, `175 to 190` for `175 to 191`; version 0.168.0
-
-### the entry on the benches names setup-checks lines 1429 to 1432 at b74c86f for switching auto-merge on
-- Wrong: the entry on the benches names setup-checks lines 1429 to 1432 at b74c86f for switching auto-merge on.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 38913, `lines 1429 to 1432` for `lines 1429 to 1433`; version 0.168.0
-
-### the entry on the three closing runs names build-work expanded 1207 to 1222 at d49921f for the handover under a no
-- Wrong: the entry on the three closing runs names build-work expanded 1207 to 1222 at d49921f for the handover under a no.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 39220, `expanded 1207 to 1222` for `expanded 1180 to 1197`; version 0.168.0
-
-### the entry on the three closing runs names build-work expanded 2550 to 2552 for the refusal to start
-- Wrong: the entry on the three closing runs names build-work expanded 2550 to 2552 for the refusal to start.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 39390, `2550 to 2552` for `2549 to 2550`; version 0.168.0
-
-### the entry on the three closing runs names line 37345 for defect 15 of the six closing runs
-- Wrong: the entry on the three closing runs names line 37345 for defect 15 of the six closing runs.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 39450, `line 37345` for `line 37346`; version 0.168.0
-
-### the entry on the three closing runs names build-work expanded 1147 to 1386 at d49921f for point 7
-- Wrong: the entry on the three closing runs names build-work expanded 1147 to 1386 at d49921f for point 7.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 39574, `expanded 1147 to 1387` for `expanded 1127 to 1197`; version 0.168.0; renamed 1 November 2026 from 'docs/roadmap.md / Known gaps / the entry on the three closing runs names build-work expanded 1147 to 1387 at d49921f for point 7', the consistency audit of that day correcting the range in place, 1387 being blank and point 7 ending on 1386; no run on it
-
-### the entry on the three closing runs names build-work line 466 at d49921f for the subagent's branch cut
-- Wrong: the entry on the three closing runs names build-work line 466 at d49921f for the subagent's branch cut.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 39621, `lines 433 to 436, 451 to 462 and 466` for `lines 433 to 436 and 451 to 462`; version 0.168.0
-
-### the entry on the three closing runs names line 51 of the Stop hook at d49921f for the write of the attempt file
-- Wrong: the entry on the three closing runs names line 51 of the Stop hook at d49921f for the write of the attempt file.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 39775, `line 51 of the hook` for `line 60 of the hook`; version 0.168.0
-
-### the entry on the visible texts names line 26673 for the measurement of twelve lines
-- Wrong: the entry on the visible texts names line 26673 for the measurement of twelve lines.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 39963, `line 26673 measured twelve` for `line 26670 measured twelve`; version 0.168.0
-
-### the entry on the visible texts names output-styles/devloop.md lines 44 to 47 at 89932f8 for the bound of the widget
-- Wrong: the entry on the visible texts names output-styles/devloop.md lines 44 to 47 at 89932f8 for the bound of the widget.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 39964, `lines 44 to 47 allow` for `lines 42 to 45 allow`; version 0.168.0
-
-### the entry on the visible texts names lines 36839 to 36844 for the wording quoted under (c)
-- Wrong: the entry on the visible texts names lines 36839 to 36844 for the wording quoted under (c).
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40083, `lines 36839 to 36844` for `lines 36839 to 36843`; version 0.168.0
-
-### the entry on the tool state names the guard's lines 1095 to 1153 at 89932f8 for the routes' folders
-- Wrong: the entry on the tool state names the guard's lines 1095 to 1153 at 89932f8 for the routes' folders.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40202, `lines 1095 to 1153` for `lines 1096 to 1103`; version 0.168.0
-
-### the entry on the tool state names build-work lines 648 to 650 at 89932f8 for the readiness query passing over a task
-- Wrong: the entry on the tool state names build-work lines 648 to 650 at 89932f8 for the readiness query passing over a task.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40516, `lines 648 to 650` for `lines 649 to 650`; version 0.168.0
-
-### the entry on the tool state names plan-work lines 322 and 450 at f183050 for the evidence of defects 4 and 5
-- Wrong: the entry on the tool state names plan-work lines 322 and 450 at f183050 for the evidence of defects 4 and 5.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40565, `lines 322 and 450` for `lines 322 and 441`; version 0.168.0
-
-### the entry on the tool state names the conventions' lines 768 to 772 at f183050 for the browser not read
-- Wrong: the entry on the tool state names the conventions' lines 768 to 772 at f183050 for the browser not read.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40660 to 40661, `lines 768 to 772` for `lines 764 to 766`; version 0.168.0
-
-### the entry on the SubagentStart hook names build-work lines 641 to 677 at 9332a70 for point 7's handover
-- Wrong: the entry on the SubagentStart hook names build-work lines 641 to 677 at 9332a70 for point 7's handover.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40873 and 40881, `lines 641 to 677` for `lines 641 to 675`; version 0.168.0
-
-### the entry on the SubagentStart hook names build-work lines 1041 to 1051 at 9332a70 for a task not offered while its tool is missing
-- Wrong: the entry on the SubagentStart hook names build-work lines 1041 to 1051 at 9332a70 for a task not offered while its tool is missing.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40875, `1041 to 1051` for `1006 to 1016`; version 0.168.0
-
-### the entry on the SubagentStart hook names lines 248 to 484 of bin/devloop-install-issues at 9332a70 for its self-test
-- Wrong: the entry on the SubagentStart hook names lines 248 to 484 of bin/devloop-install-issues at 9332a70 for its self-test.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40917, `lines 248 to 484` for `lines 248 to 486`; version 0.168.0
-
-### the entry on the SubagentStart hook names backed-command.md lines 37 to 56 at 9332a70 for reading the result
-- Wrong: the entry on the SubagentStart hook names backed-command.md lines 37 to 56 at 9332a70 for reading the result.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 40955, `lines 37 to 56` for `lines 37 to 55`; version 0.168.0
-
-### the addendum of the entry on the SubagentStart hook names README lines 32 to 38 at 9332a70 for the two git config commands
-- Wrong: the addendum of the entry on the SubagentStart hook names README lines 32 to 38 at 9332a70 for the two git config commands.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41179, `lines 32 to 38` for `lines 31 to 38`; version 0.168.0
-
-### the entry on the handover steps names lines 41174 to 41192 for the six findings D1 to D6
-- Wrong: the entry on the handover steps names lines 41174 to 41192 for the six findings D1 to D6.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41236 to 41237, `lines 41174 to 41192` for `lines 41133 to 41162`; version 0.168.0
-
-### the entry on the handover steps gives the lines of its first part at 392bfd0 and those of its second part at the tip bc69673
-- Wrong: the entry on the handover steps gives the lines of its first part at 392bfd0 and those of its second part at the tip bc69673.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41238, `at `392bfd0`, the tip then` for `at the tip of this branch`; version 0.168.0
-
-### the entry on the handover steps names line 121 of the identity guard at 392bfd0 for the block on git -c user.email
-- Wrong: the entry on the handover steps names line 121 of the identity guard at 392bfd0 for the block on git -c user.email.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41280, `from line 121` for `from line 114`; version 0.168.0
-
-### the entry on the handover steps names lines 41157 to 41160 for the question the addendum of 28 October 2026 left open
-- Wrong: the entry on the handover steps names lines 41157 to 41160 for the question the addendum of 28 October 2026 left open.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41292, `lines 41157 to 41160` for `lines 41123 to 41127`; version 0.168.0
-
-### the entry on the handover steps names lines 40494 to 40506 for wording (5) of the entry on the tool state
-- Wrong: the entry on the handover steps names lines 40494 to 40506 for wording (5) of the entry on the tool state.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41344, `lines 40494 to 40506` for `lines 40494 to 40503`; version 0.168.0
-
-### the entry on the handover steps names lines 15638 to 15654 and 16004 to 16019 for text 7 and its last sentence
-- Wrong: the entry on the handover steps names lines 15638 to 15654 and 16004 to 16019 for text 7 and its last sentence.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41429, `lines 15638 to 15654 and 16004 to 16019` for `lines 15638 to 15659 and 16004 to 16021`; version 0.168.0
-
-### the entry on the handover steps names lines 514 to 536 of bin/devloop-install-issues for the cases of the folder read
-- Wrong: the entry on the handover steps names lines 514 to 536 of bin/devloop-install-issues for the cases of the folder read.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41558, `lines 514 to 536` for `lines 516 to 534`; version 0.168.0
-
-### the entry on the handover steps names lines 41125 to 41129 for the step without a command in (4)
-- Wrong: the entry on the handover steps names lines 41125 to 41129 for the step without a command in (4).
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 41777, `lines 41125 to 41129` for `lines 41125 to 41128`; version 0.168.0
-
-### the entry on the run under a no names build-work expanded 1703 to 1716 at bc69673 for The task itself
-- Wrong: the entry on the run under a no names build-work expanded 1703 to 1716 at bc69673 for The task itself.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42122, `expanded 1703 to 1716` for `expanded 1704 to 1716`; version 0.168.0
-
-### the entry on the run under a no names plan-work expanded 1177 to 1209 at bc69673 for the should of the hard core
-- Wrong: the entry on the run under a no names plan-work expanded 1177 to 1209 at bc69673 for the should of the hard core.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42167, `expanded 1177 to 1209` for `expanded 1177 to 1208`; version 0.168.0
-
-### the entry on the install in the session names lines 41362 to 41363 for the sentence on a later install
-- Wrong: the entry on the install in the session names lines 41362 to 41363 for the sentence on a later install.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42377, `lines 41362 to 41363` for `lines 41363 to 41364`; version 0.168.0
-
-### the entry on the install in the session names plan-work line 606 at be6c223 for the insert of the text of the start
-- Wrong: the entry on the install in the session names plan-work line 606 at be6c223 for the insert of the text of the start.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42430, ``plan-work` line 606` for ``plan-work` line 580`; version 0.168.0
-
-### the entry on the install in the session names build-work line 621 at be6c223 for the program named in The task itself
-- Wrong: the entry on the install in the session names build-work line 621 at be6c223 for the program named in The task itself.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42431, `line 621` for `line 781`; version 0.168.0
-
-### the entry on the install in the session names the reader's lines 2331 to 2362 for read_ansi
-- Wrong: the entry on the install in the session names the reader's lines 2331 to 2362 for read_ansi.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42509, `lines 2331 to 2362` for `lines 2331 to 2363`; version 0.168.0
-
-### the entry on the install in the session names the reader's lines 413 to 417 for the exit on an escape above 10FFFF
-- Wrong: the entry on the install in the session names the reader's lines 413 to 417 for the exit on an escape above 10FFFF.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42513, `lines 413 to 417` for `lines 414 to 418`; version 0.168.0
-
-### the entry on the short run names build-work expanded 1772 to 1774 at be6c223 for going back to step 2
-- Wrong: the entry on the short run names build-work expanded 1772 to 1774 at be6c223 for going back to step 2.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42930, `expanded 1772 to 1774` for `expanded 1773 to 1775`; version 0.168.0
-
-### the entry on the short run names install-issues-read.md lines 1 to 14 and build-work expanded 1040 to 1053 for the program before the first read
-- Wrong: the entry on the short run names install-issues-read.md lines 1 to 14 and build-work expanded 1040 to 1053 for the program before the first read.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42935 and 43083, `lines 1 to 14, expanded 1040 to 1053` for `lines 1 to 13, expanded 1040 to 1052`; version 0.168.0
-
-### the entry on the short run names build-work expanded 1249 to 1251 for the prompt's lines on installing
-- Wrong: the entry on the short run names build-work expanded 1249 to 1251 for the prompt's lines on installing.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 42964, `1249 to 1251` for `1250 to 1251`; version 0.168.0
-
-### the entry on the short run names build-work expanded 2932 to 2934 for the case measured on 9 September 2026
-- Wrong: the entry on the short run names build-work expanded 2932 to 2934 for the case measured on 9 September 2026.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 43064, `expanded 2932 to 2934` for `expanded 2931 to 2934`; version 0.168.0
-
-### the entry on the short run names build-work expanded 2702 to 2705 for the checks going green
-- Wrong: the entry on the short run names build-work expanded 2702 to 2705 for the checks going green.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 43112, `2705` for `2706`; version 0.168.0
-
-### the entry on the short run names build-work expanded 806 to 816 for the eighth case
-- Wrong: the entry on the short run names build-work expanded 806 to 816 for the eighth case.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 43130, `expanded 806 to 816` for `expanded 808 to 816`; version 0.168.0
-
-### the entry on the short run names lines 21 to 30 of bin/devloop-auto-mode-rule for the ways of the rule
-- Wrong: the entry on the short run names lines 21 to 30 of bin/devloop-auto-mode-rule for the ways of the rule.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 43158, `lines 21 to 30` for `lines 21 to 29`; version 0.168.0
-
-### the entry on the install issues read at the start names start-work lines 138 to 139 for the in-flight query
-- Wrong: the entry on the install issues read at the start names start-work lines 138 to 139 for the in-flight query.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; a line number of a dated entry corrected in place, line 43334, `lines 138 to 139` for `line 138`; version 0.168.0
-
-### the self-test of bin/devloop-auto-mode-rule has five cases of a file that cannot be read, not four, and one of a directory in its place
-- Wrong: the self-test of bin/devloop-auto-mode-rule has five cases of a file that cannot be read, not four, and one of a directory in its place.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 36300, lines 36440 to 36441, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the addendum of the entry on the six closing runs changed seven places of that entry, the plan's sentence and three rows, not three places
-- Wrong: the addendum of the entry on the six closing runs changed seven places of that entry, the plan's sentence and three rows, not three places.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 36636, lines 36640 to 36644, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the checks printed the same at d49921f although one reads docs/roadmap.md, which the entry's 223 lines changed
-- Wrong: the checks printed the same at d49921f although one reads docs/roadmap.md, which the entry's 223 lines changed.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 38740, lines 38958 to 38961, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the grep of new defect 6 hits defect 2's paragraph, decision (1) and the entry on the install rules, and no line of defect 7
-- Wrong: the grep of new defect 6 hits defect 2's paragraph, decision (1) and the entry on the install rules, and no line of defect 7.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 38963, lines 39561 to 39564, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the grep of new defect 7 hits six audit entries and six other entries, and no line of defect 2's paragraph
-- Wrong: the grep of new defect 7 hits six audit entries and six other entries, and no line of defect 2's paragraph.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 38963, lines 39579 to 39582, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the grep of new defect 3 hits lines 31498 and 38548 of this file beside the texts quoted
-- Wrong: the grep of new defect 3 hits lines 31498 and 38548 of this file beside the texts quoted.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 38963, lines 39509 to 39511, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the grep of new defect 10 prints nothing, its phrase broken over lines 34445 and 34446
-- Wrong: the grep of new defect 10 prints nothing, its phrase broken over lines 34445 and 34446.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 38963, lines 39625 to 39627, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the Stop-hook search of the addendum prints 47 lines, the places named among them, none of the others carrying the case
-- Wrong: the Stop-hook search of the addendum prints 47 lines, the places named among them, none of the others carrying the case.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 38963, lines 39802 to 39811, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the lines of hooks/stop-checks.sh were last changed by 4fe6374 on 22 October 2026, and the runs on it count all the same
-- Wrong: the lines of hooks/stop-checks.sh were last changed by 4fe6374 on 22 October 2026, and the runs on it count all the same.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 38963, lines 39865 to 39866, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the language grep of the entry on the visible texts prints sixteen lines, five of its thirteen places matched by another pattern
-- Wrong: the language grep of the entry on the visible texts prints sixteen lines, five of its thirteen places matched by another pattern.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 39873, lines 39912 to 39925, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the grep for the written list prints two lines of plan-work after the change, the sentence that says it is not said there
-- Wrong: the grep for the written list prints two lines of plan-work after the change, the sentence that says it is not said there.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 39873, lines 40099 to 40101, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the entry on the visible texts re-anchored nine rows, six things and three part-of records
-- Wrong: the entry on the visible texts re-anchored nine rows, six things and three part-of records.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 39873, lines 40123 to 40128, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the grep for command -v prints eight lines at 89932f8, the guard's read of the interpreter on line 1182 among them
-- Wrong: the grep for command -v prints eight lines at 89932f8, the guard's read of the interpreter on line 1182 among them.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 40175, lines 40199 to 40202, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
 ### bin/devloop-tool-state says of pip that it is none of the ten installers it reads, and nothing of --user or the interpreter
 - Wrong: bin/devloop-tool-state says of pip that it is none of the ten installers it reads, and nothing of --user or the interpreter.
 - Should: not stated
@@ -6809,38 +5404,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Recorded, not built
 - Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 40175, lines 40266 to 40267, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the grep for a tool outside the project prints seventeen lines at 89932f8, three of them not in the entry's list
-- Wrong: the grep for a tool outside the project prints seventeen lines at 89932f8, three of them not in the entry's list.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 40175, lines 40420 to 40429, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### two lines of the entry on the tool state were longer than 80 characters at aeb5579, the third longer than 80 bytes
-- Wrong: two lines of the entry on the tool state were longer than 80 characters at aeb5579, the third longer than 80 bytes.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 40175, lines 40665 to 40667, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the rule of the SubagentStart hook at 9332a70 is three sentences
-- Wrong: the rule of the SubagentStart hook at 9332a70 is three sentences.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 40745, lines 40825 to 40826, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the no of text 4 gains twenty characters and a fourth line at 73, the fields staying inside fourteen
-- Wrong: the no of text 4 gains twenty characters and a fourth line at 73, the fields staying inside fourteen.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 40745, lines 41011 to 41013, said right in the entry of 31 October 2026 on its status line; version 0.168.0
 
 ### setup-checks step 4 names the terminal alone for an install the person made, where step 3 and build-work say both forms
 - Wrong: setup-checks step 4 names the terminal alone for an install the person made, where step 3 and build-work say both forms.
@@ -6850,14 +5413,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Recorded, not built
 - Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 41228, lines 41283 to 41286, said right in the entry of 31 October 2026 on its status line; version 0.168.0
 
-### the decisions after the push of the entry on the handover steps went in three commits more
-- Wrong: the decisions after the push of the entry on the handover steps went in three commits more.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 41228, line 41642, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
 ### the three defect rows of the entry on the run under a no carry the version 0.165.0 in their notes since 31 October 2026
 - Wrong: the three defect rows of the entry on the run under a no carry the version 0.165.0 in their notes since 31 October 2026.
 - Should: not stated
@@ -6865,78 +5420,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Recorded, not built
 - Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 41887, line 42273, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the rule that a run on a defect not built is a broken record stands in section D of the tool's head, not in section C
-- Wrong: the rule that a run on a defect not built is a broken record stands in section D of the tool's head, not in section C.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 41887, lines 42278 to 42279, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the records of the entry on the run under a no add a second not-a-thing row, on the heading of (b)
-- Wrong: the records of the entry on the run under a no add a second not-a-thing row, on the heading of (b).
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 41887, lines 42271 to 42279, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### shared/install-tool.md has 202 lines, the moved text changed in three hunks, and the expanded build-work differs from 886f72f in 121 lines
-- Wrong: shared/install-tool.md has 202 lines, the moved text changed in three hunks, and the expanded build-work differs from 886f72f in 121 lines.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 42324, lines 42461 to 42465, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the command of the SubagentStart rule prints 360 lines and 4480 words since c681f46, the five first lines at 1, 203, 259, 284 and 310
-- Wrong: the command of the SubagentStart rule prints 360 lines and 4480 words since c681f46, the five first lines at 1, 203, 259, 284 and 310.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 42324, lines 42565 to 42567, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the reader's case of octal, \u and \x together is spelled with \u0072 for the r
-- Wrong: the reader's case of octal, \u and \x together is spelled with \u0072 for the r.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 42324, lines 42515 to 42516, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### merge-handover.md keeps auto-merge out of the sentence in the no-gate case alone, and the short run's gate stood
-- Wrong: merge-handover.md keeps auto-merge out of the sentence in the no-gate case alone, and the short run's gate stood.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 42609, lines 43104 to 43106, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the grep for a task not buildable hits four lines of build-work expanded, 811 among them
-- Wrong: the grep for a task not buildable hits four lines of build-work expanded, 811 among them.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 42609, lines 43135 to 43137, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the branch run-remove-install-permission does not stand on GitHub, merged as #58 on 29 October 2026 and deleted by the block that merged it
-- Wrong: the branch run-remove-install-permission does not stand on GitHub, merged as #58 on 29 October 2026 and deleted by the block that merged it.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 42609, lines 43182 to 43183, said right in the entry of 31 October 2026 on its status line; version 0.168.0
-
-### the entry on the install issues read at the start went in three commits, the third rewriting five of its lines
-- Wrong: the entry on the install issues read at the start went in three commits, the third rewriting five of its lines.
-- Should: not stated
-- Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; said wrongly in a dated entry, the entry at line 43269, lines 43270 to 43274, said right in the entry of 31 October 2026 on its status line; version 0.168.0
 
 ### the two setup skills say the gate's binding could not be determined where a side did not answer, without the exception for a side that binds
 - Wrong: the two setup skills say the gate's binding could not be determined where a side did not answer, without the exception for a side that binds
@@ -6986,182 +5469,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Status: Recorded, not built
 - Note: found 1 November 2026 by the platform's run of the checks of pull request #218, run 41313385410, the job hooks on every system red on alpine, FAIL ends in time with 3: nothing of the bound runs on, a process matching sleep 7339 still running at 13:53:09 UTC, every other part of the step green; seen once; read off the code and not measured: the watchdog's trap ends its sleep without waiting for it, and a signal between the start of the sleep and s=$! leaves the sleep running; assigned to milestone 12; the cause not measured, nothing built; version 0.169.0; the roadmap entry of 1 November 2026 on the question timeout and the auto memory
 
-### the entry on the three closing runs and the audit after milestone 3 name build-work expanded 1147 to 1386 at d49921f for point 7
-- Wrong: the entry on the three closing runs and the audit after milestone 3 name build-work expanded 1147 to 1386 at d49921f for point 7.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the audit after milestone 3 says the conventions gain lines after 1419, 1722, 3826, 3982, 4039 and 4072 and the plan after 144, 602 and 1118
-- Wrong: the audit after milestone 3 says the conventions gain lines after 1419, 1722, 3826, 3982, 4039 and 4072 and the plan after 144, 602 and 1118.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the audit after milestone 3 places the three decisions of 30 October 2026 at lines 43296 to 43324
-- Wrong: the audit after milestone 3 places the three decisions of 30 October 2026 at lines 43296 to 43324.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the audit after milestone 3 places the nine hunks of the expanded build-work at c681f46 against 886f72f where diff prints them
-- Wrong: the audit after milestone 3 places the nine hunks of the expanded build-work at c681f46 against 886f72f where diff prints them.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the audit after milestone 3 names stock-take.yml lines 374 to 384 at 628d166 for the loop over every self-test under bin
-- Wrong: the audit after milestone 3 names stock-take.yml lines 374 to 384 at 628d166 for the loop over every self-test under bin.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the audit after milestone 3 names conventions lines 4038 to 4039 at 628d166 for the sentence of six lines over six sites
-- Wrong: the audit after milestone 3 names conventions lines 4038 to 4039 at 628d166 for the sentence of six lines over six sites.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the audit after milestone 3 names lines 42565 to 42567 for the 331 lines of the rule's command
-- Wrong: the audit after milestone 3 names lines 42565 to 42567 for the 331 lines of the rule's command.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the audit after milestone 3 names setup-project lines 443 to 447 at 628d166 for the sentence on a side that did not answer
-- Wrong: the audit after milestone 3 names setup-project lines 443 to 447 at 628d166 for the sentence on a side that did not answer.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the audit after milestone 3 names lines 38615 to 38621 for the case of an account without admin rights on a ruleset
-- Wrong: the audit after milestone 3 names lines 38615 to 38621 for the case of an account without admin rights on a ruleset.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the entry on the question timeout names stock-take.yml line 490 at 136bac3 for exit "$red"
-- Wrong: the entry on the question timeout names stock-take.yml line 490 at 136bac3 for exit "$red".
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; corrected in place on the evidence line
-
-### the corrections in place of the audit after milestone 3 stand on 59 physical lines, not 58
-- Wrong: the corrections in place of the audit after milestone 3 stand on 59 physical lines, not 58.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### build-work expanded 1180 to 1197 at d49921f lies in point 7, and line 37838 of the entry at 37660 gives 1180 to 1185
-- Wrong: build-work expanded 1180 to 1197 at d49921f lies in point 7, and line 37838 of the entry at 37660 gives 1180 to 1185.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### the paragraph on what fits the widget runs from line 44 to 52 of the output style at 89932f8, the bound and its count on 44 to 48
-- Wrong: the paragraph on what fits the widget runs from line 44 to 52 of the output style at 89932f8, the bound and its count on 44 to 48.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### three commits after 392bfd0 moved the lines of seven files the entry at 41238 cites, not eight
-- Wrong: three commits after 392bfd0 moved the lines of seven files the entry at 41238 cites, not eight.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### of the two lines 42935 and 43083 only 42935 carries the expanded range, 43083 changing 13 to 14 alone
-- Wrong: of the two lines 42935 and 43083 only 42935 carries the expanded range, 43083 changing 13 to 14 alone.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### two new backticked words came into the roadmap at d49921f, each too far from every name for the check of names to print it
-- Wrong: two new backticked words came into the roadmap at d49921f, each too far from every name for the check of names to print it.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### the grep of new defect 7 hits six audit entries and five other entries, 28008 twice
-- Wrong: the grep of new defect 7 hits six audit entries and five other entries, 28008 twice.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### git grep for command -v over bin and hooks prints seven lines at 89932f8, not eight
-- Wrong: git grep for command -v over bin and hooks prints seven lines at 89932f8, not eight.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### the first of the four items of the SubagentStart rule is its first sentence, the others clauses of its second and third
-- Wrong: the first of the four items of the SubagentStart rule is its first sentence, the others clauses of its second and third.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### the entry at 42609 leaves to the person whether defect 2 of the short run is of milestone 3
-- Wrong: the entry at 42609 leaves to the person whether defect 2 of the short run is of milestone 3.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### the mend of the sentence on check 17 reads built, its evidence standing under Before a handover, run these
-- Wrong: the mend of the sentence on check 17 reads built, its evidence standing under Before a handover, run these.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### the self-test of bin/devloop-tool-state has 63 cases since the entry at 40745, not 62
-- Wrong: the self-test of bin/devloop-tool-state has 63 cases since the entry at 40745, not 62.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
 ### not every note the audit after milestone 3 changed says until when it read otherwise
 - Wrong: not every note the audit after milestone 3 changed says until when it read otherwise.
 - Should: not stated
@@ -7177,214 +5484,6 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Recorded, not built
 - Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### the reading of the gate's binding in setup-project stands in its step 4, not step 7
-- Wrong: the reading of the gate's binding in setup-project stands in its step 4, not step 7.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### the numbers the audit after milestone 3 gives for what 5a built hold at 8053282, not at 628d166 as its opening says
-- Wrong: the numbers the audit after milestone 3 gives for what 5a built hold at 8053282, not at 628d166 as its opening says.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### pipx writes its log only where the guard reads the pipx route or the tool-state program reads an install by pipx
-- Wrong: pipx writes its log only where the guard reads the pipx route or the tool-state program reads an install by pipx.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### setup-checks lines 1013 to 1015 at 628d166 carry the end of the classic field's sentence and the binding of a gate, not the bypass at the merge
-- Wrong: setup-checks lines 1013 to 1015 at 628d166 carry the end of the classic field's sentence and the binding of a gate, not the bypass at the merge.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### five points of docs/rationale.md quote a wording of form B with the password, four of them carrying the wording for the case of doubt
-- Wrong: five points of docs/rationale.md quote a wording of form B with the password, four of them carrying the wording for the case of doubt.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
-
-### build-work says no more that it says what is said and not the words where its reference to an approved wording went
-- Wrong: build-work says no more that it says what is said and not the words where its reference to an approved wording went.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `skills/build-work/SKILL.md` "Where the mode could not be read, "When a command does not answer" holds and"
-- Status: Built, never walked
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry; mended on the evidence line
-
-### thirteen references to docs/skill-conventions.md that left the loaded texts stand in docs/rationale.md at their rules
-- Wrong: thirteen references to docs/skill-conventions.md that left the loaded texts stand in docs/rationale.md at their rules.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "these two", the paragraph "Where a text to the person says they have to do"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry; mended on the evidence line
-
-### the rule that nothing is said where nothing changes stands in docs/rationale.md under each heading of plan-work that carries it
-- Wrong: the rule that nothing is said where nothing changes stands in docs/rationale.md under each heading of plan-work that carries it.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "- **Which stage a pick-up continues at is not said.** Its reason and its entry"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### the cases of review-changes in docs/rationale.md say what finding A and the narrowed review of 6 and 7 September 2026 record
-- Wrong: the cases of review-changes in docs/rationale.md say what finding A and the narrowed review of 6 and 7 September 2026 record.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "is said. Case: on 9 September 2026 five applicable lenses over two tasks were"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### the cases of run 1 and run 3a on who installs say in docs/rationale.md what each run wrote
-- Wrong: the cases of run 1 and run 3a on who installs say in docs/rationale.md what each run wrote.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "Stage 2 of run 3a judged the record, writing that it allowed the route npm"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md says that one sentence names seven labels created and needs-human as the example
-- Wrong: docs/rationale.md says that one sentence names seven labels created and needs-human as the example.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "- **That seven labels were created, with `needs-human` named as the example, is"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md gives the reason the install-issues program runs first in start-work, the cause removed where it lay
-- Wrong: docs/rationale.md gives the reason the install-issues program runs first in start-work, the cause removed where it lay.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "so that the cause is removed where it lay, decision (1) of entry "start-work"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md carries that only a typed answer holds for the whole call of the widget
-- Wrong: docs/rationale.md carries that only a typed answer holds for the whole call of the widget.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "chosen answer with its question, and only a typed answer holds for the whole"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### the references to docs/skill-conventions.md the loaded texts lost stand in docs/rationale.md at the points of their rules
-- Wrong: the references to docs/skill-conventions.md the loaded texts lost stand in docs/rationale.md at the points of their rules.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "carries these two", the paragraph "A command handed over runs as it stands,"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### every head of an entry docs/rationale.md cites stands there whole, each found once as a head in docs/roadmap.md
-- Wrong: every head of an entry docs/rationale.md cites stands there whole, each found once as a head in docs/roadmap.md.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "planning and building, points 20 to 26, built; the run with nobody there at a"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md gives the unbounded attempts of 6 October 2026 and the move to the background as the changelog's, not measured
-- Wrong: docs/rationale.md gives the unbounded attempts of 6 October 2026 and the move to the background as the changelog's, not measured.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "the changelog of Claude Code and not measured here, a command moves to the"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md names point 5 of the entry on the install lines by one program as the decision on the backing under a yes
-- Wrong: docs/rationale.md names point 5 of the entry on the install lines by one program as the decision on the backing under a yes.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "read off their logs, each on the defects it met."; decided as point 5 of entry"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md gives the silence before calling setup-checks as the callers' rule
-- Wrong: docs/rationale.md gives the silence before calling setup-checks as the callers' rule.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "entschieden. Das kommt zuerst.“ That the caller says nothing before calling is"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md gives the case of a run improvising the merge for landing the check suite first
-- Wrong: docs/rationale.md gives the case of a run improvising the merge for landing the check suite first.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "improvising the merge on its own. Case: before the step existed, runs"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md carries the awake line's reason, the answers of gh repo view, the bound with one issue and two, and run 3a whole
-- Wrong: docs/rationale.md carries the awake line's reason, the answers of gh repo view, the bound with one issue and two, and run 3a whole.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "issue the no line takes six lines and the fields fourteen of fourteen, at the"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md gives form B with the case of doubt, text 2 at lines 14882 to 14887, and the three hardenings for build-work
-- Wrong: docs/rationale.md gives form B with the case of doubt, text 2 at lines 14882 to 14887, and the three hardenings for build-work.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "permission mode; 9 October 2026, version 0.133.0." (lines 14882–14887), with"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md gives the opening block as the closing block without its two sentences on why it stands twice
-- Wrong: docs/rationale.md gives the opening block as the closing block without its two sentences on why it stands twice.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "- **The same block as `shared/closing.md` without its two sentences on why the"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### docs/rationale.md carries the first decline case of the install handover and the handover of the first closing run of milestone 3
-- Wrong: docs/rationale.md carries the first decline case of the install handover and the handover of the first closing run of milestone 3.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/rationale.md` "no answer at all, `ae89724`, "Give a declined install somewhere to land"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### the plan names under Open the answer the question timeout sends, no milestone taking it up
-- Wrong: the plan names under Open the answer the question timeout sends, no milestone taking it up.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/plan.md` "`askUserQuestionTimeout` sets has run out, the field `afkTimeoutMs` marking"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### the plan says milestone 3 was done on 31 October 2026 in pull request #216
-- Wrong: the plan says milestone 3 was done on 31 October 2026 in pull request #216.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/plan.md` "Done on 31 October 2026, pull request #216, by decision (5) of the roadmap"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
-
-### the conventions say the job hooks on every system leaves out two self-tests under Windows
-- Wrong: the conventions say the job hooks on every system leaves out two self-tests under Windows.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: `docs/skill-conventions.md` "self-test under `bin/` since 23 October 2026, under Windows without those of"
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; mended in the document on the evidence line, recorded and not built, as a document reads
 
 ### setup-checks step 6 keeps the rule on what the checks do not cover without its case
 - Wrong: setup-checks step 6 keeps the rule on what the checks do not cover without its case.
@@ -7417,11 +5516,3 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: `skills/build-work/SKILL.md` "with what the command asks, in doubt what"
 - Status: Built, never walked
 - Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; asked of the person in the entry, not built; the should as its status line says; built 2 November 2026, version 0.171.0, the wording approved by the person that day, the paragraph of that day in the same entry, in skills/build-work/SKILL.md step 3, the message after a no under form B, where the evidence now stands
-
-### the handover of a refused install that decision (1) of 1 November 2026 gives form B in doubt stands in setup-checks under A guard's block is not a decline, not under Step 3
-- Wrong: the handover of a refused install that decision (1) of 1 November 2026 gives form B in doubt stands in setup-checks under A guard's block is not a decline, not under Step 3.
-- Should: not stated
-- Found: Four entries held, rationale points completed, two questions answered.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
