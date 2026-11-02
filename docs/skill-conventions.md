@@ -1829,7 +1829,12 @@ written whole after the prefix to the end of the line, whatever it carries,
 the two titles of a renaming separated by " / ", which no title carries:
 `Block removed: TITLE`, `Block renamed: OLD TITLE / NEW TITLE`,
 `Should changed: TITLE`. None of them opens with `- **`, which opens the
-head of an entry. A block the branch adds needs no line; a block main gained
+head of an entry. A renaming whose new title carries another `Should` than
+the old title carried at the branch point needs both lines, the renaming's
+and `Should changed: NEW TITLE`, and such a line for a renamed block whose
+`Should` stayed is red, since 2 November 2026, the addendum of that day to
+that entry, before which the renaming line alone passed such a block. A
+block the branch adds needs no line; a block main gained
 after the branch point is no removal, the comparison going against the
 branch point and not against main's tip; without `origin/main` the tool
 says in one line that it holds the blocks against no branch point.

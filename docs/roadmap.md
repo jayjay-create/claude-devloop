@@ -46177,7 +46177,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 - **Blocks held to the branch point; findings out, contradictions in.**
 
   2 November 2026, version 0.173.0, raised from 0.172.0 once. On
-  `task/defects-guard`, off `origin/main` at `606cdab`, in three commits:
+  `task/defects-guard`, off `origin/main` at `606cdab`, in six commits, the
+  last three the addendum of the same day at the end of this entry:
   `scripts/devloop-stock-take` with the version; then `docs/defects.md`,
   `docs/skill-conventions.md`, `docs/plan.md`, this entry and
   `docs/stock-take.tsv`; then the runs of the tool's self-test under 0.173.0,
@@ -46375,7 +46376,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Block removed: the first addendum of 13 October 2026 named lines 1150 to 1192 of the reader for parse_simple, which runs from 1158 to 1187
   Line 23673, "Corrected in place at both places.", for this block:
   Block removed: the first addendum of 13 October 2026 named lines 59 to 96 of the workflow for its step, which ends at 95, the file's last line
-  Line 23707, "", for this block:
+  Line 23703, "fourth and fifth addenda carried the command, and the owner ran
+  it. Mended", for this block:
   Block removed: the conventions said under Registering a skill that the branch protection requires the one check stock-take, where five are required since 14 October 2026
   Line 23720, "among them — so a reader sent to the three would not find them.
   Mended:", for this block:
@@ -46974,6 +46976,102 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   counting run to this order; the self-test of this day under 0.173.0,
   recorded in the third commit, every case red once and green once. No run is
   recorded on a defect.
+
+  **Addendum of 2 November 2026**, the same day, from the person's second
+  order of that day on this branch, three commits more on it, the version
+  0.173.0 kept; written by Claude Code, no session log read. Two faults of the
+  order above. (a) Decision (9) says the tool is red where a branch renames a
+  block or changes its Should without a line naming that;
+  `hold_blocks_to_branch_point` compared the Should only of blocks whose title
+  stayed. Measured on a copy of `b0ef491` outside the repository, the tool
+  loaded as a module: the block "a rule in the run's own memory closes the
+  arming route the skills allow" renamed to "renamed title for the test", its
+  Should changed from "not stated", and the one line `Block renamed: <old
+  title> / renamed title for the test` added to this file: no error, and
+  "changed" empty. Built: for every renaming named by its line the Should the
+  old title carried at the branch point is held against the Should the new
+  title carries in the working tree; where they differ the block counts as
+  Should changed under its new title, needs the line `Should changed: NEW
+  TITLE` beside the renaming's, and is red without it; such a line for a
+  renamed block whose Should stayed is red. The header, section F, says it.
+  The self-test runs 148 cases, two new, each red once and green once: a block
+  renamed with its Should changed, the renaming line alone and with both
+  lines; a block renamed with its Should kept, with a Should line and without
+  one. 130 of 130 messages are asserted by a case, two new. On the copy, the
+  tool changed, the five cases of the order's counter-check come out as it
+  says: renamed with another Should and the renaming line alone, red; with
+  both lines, green; renamed with the Should kept and both lines, red; the
+  title kept with another Should and its line, green; a block removed with its
+  line, green; and before the change the second and third were red with the
+  wrong message, that no block of the new title stood at the branch point. (b)
+  The line of this entry for the block "the conventions said under Registering
+  a skill that the branch protection requires the one check stock-take, where
+  five are required since 14 October 2026" named line 23707 of this file as
+  the line that records the mend, and quoted it as ""; line 23707 is empty.
+  Corrected in place to line 23703, "fourth and fifth addenda carried the
+  command, and the owner ran it. Mended", the line of the entry at line 23550
+  where the sentence on the mend begins, the mend standing in
+  `docs/skill-conventions.md` under "Registering a skill": "Since 14 October
+  2026 four checks more are required". The block stays out, and no count of
+  this entry changes. `docs/skill-conventions.md`, the paragraph on the
+  defects file, says that a renaming with another Should needs both lines and
+  that such a line for a renamed block whose Should stayed is red. The first
+  paragraph of this entry counts six commits now.
+
+  **What the addendum did to the records.** In `docs/stock-take.tsv`: three
+  things of the tool for the new outcomes, kind program outcome, sited on the
+  condition that decides each, evidenced on the line that counts the change or
+  on its message, benched on its case of the self-test; one not-a-thing
+  record, part of the third, for the gate of a Should line on a renamed block.
+  The lines of the new code are covered; none of them can carry no anchor.
+  After the first commit of the addendum the tool, run on that commit in a
+  copy outside the repository, reported no broken record: no run of the
+  order's third commit was recorded too early, since the lines those runs'
+  things stand on are lines the addendum did not change, the new code standing
+  beside them; the four new lines were uncovered until the second commit, and
+  the line that gates a Should line on a renamed block was written to compare
+  the two Shoulds itself, since `if t not in changed:` is a substring of the
+  line above it and could carry no anchor. The runs, in the third commit of
+  the addendum: three, one on each of the three new things, from the self-test
+  of this day under 0.173.0 on the second commit of the addendum, 148 cases,
+  every one red once and green once; no run on a defect, and the twenty runs
+  of the order's third commit stand as they were recorded. On the branch the
+  three runs count no more than those twenty, the version having come in
+  before the code; after the squash merge the one commit introduces both and
+  they count.
+
+  Runs of the addendum: the self-test of this day under 0.173.0, its third commit.
+
+  **The stock-take, before at `b0ef491` and after on the working tree with
+  every change of the addendum's second commit in it.**
+  `PYTHONDONTWRITEBYTECODE=1 scripts/devloop-stock-take`, before and after:
+  exit 0 and 0; broken records 0 and 0; uncovered lines of the search set 0 of
+  4432 and 0 of 4436, the four new lines having come in; lines of the set that
+  can carry no unique anchor 338 and 338; units without a straight path 0 and
+  0; not-a-thing records 3301 and 3302; closed defects 39 and 39; blocks 682
+  and 682, by state Undetermined 8 and 8, Recorded, not built 282 and 282,
+  Built, never walked 270 and 270, Walked 83 and 83, Closed 39 and 39, by
+  section after as before: ## Without a milestone 29, ## Not yet sorted 653.
+  The things that are no defect, by state before and after: Undetermined 16
+  and 16, Recorded, not built 11 and 11, Built, never walked 1189 and 1192,
+  Walked 569 and 569, the difference the three new outcomes, built and never
+  walked; the twenty things of the order's third commit are walked before and
+  after, their runs counting on the branch, since `c8b2219`, which introduced
+  0.173.0, holds the last change to every line they stand on. No other thing
+  and no block changed its state. Under BLOCKS HELD AGAINST THE BRANCH POINT,
+  before and after: branch point 606cdab: blocks removed 268, renamed 0,
+  Should changed 0, added 29; lines of the fixed forms added to
+  docs/roadmap.md: 268. The self-test after: SELF-TEST PASSED: 148 cases; of
+  the 130 messages this tool rejects, refuses or answers with, read off its
+  own source, 130 are asserted by a case and 0 by none; the lines of the
+  report are not in that count. The nineteen checks under "Before a handover,
+  run these" that run in seconds, in a bash started with `--noprofile --norc`
+  and `/usr/bin/grep` first on the path, print on the working tree with every
+  change of the second commit in it what they printed at `b0ef491`, line for
+  line and with the same exit codes; check 16, `scripts/devloop-run-workflow
+  .github/workflows/stock-take.yml`, is run on the committed branch after the
+  third commit of the addendum, where its title step reads the head of this
+  entry.
 
 ## Decisions taken against
 
