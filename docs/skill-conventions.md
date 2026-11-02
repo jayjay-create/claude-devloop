@@ -1416,8 +1416,9 @@ entry of that date in `docs/roadmap.md` on the merge gate carries the setting
 and the merge sequence. Since 14 October 2026 four checks more are required,
 `hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
 and `(alpine)`, the second job of the same workflow, which runs every
-self-test under `bin/` since 23 October 2026, until then those of the reader,
-of `bin/devloop-arm` and of `bin/devloop-auto-mode-question`, since 31
+self-test under `bin/` since 23 October 2026, under Windows without those of
+`bin/devloop-bounded` and `bin/devloop-setup-state`, until then those of the
+reader, of `bin/devloop-arm` and of `bin/devloop-auto-mode-question`, since 31
 October 2026 the self-test of `scripts/devloop-run-workflow` as well, on
 ubuntu-latest, macos-latest and alpine and not under Windows, where the
 program runs no step without a shell and its self-test would be red by
