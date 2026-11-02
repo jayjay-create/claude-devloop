@@ -1005,7 +1005,8 @@ documents; the exit under "A project's rules are written at the review's
 close" is the same principle for `standards.md`, with the evidence on what a
 line costs that the agent reads and does not need. And it does not cover this
 file, the header of `scripts/devloop-stock-take`, the dated entries, the points
-of `docs/rationale.md` or the table: a record is as long as what it records,
+of `docs/rationale.md`, the blocks of `docs/defects.md` or the table: a record
+is as long as what it records,
 written once and read by somebody who went to look, and the case is what holds a
 rule up, by the opening of this file. A rule that covered everything written
 anywhere would be applied to nothing.
@@ -1684,7 +1685,8 @@ included, the file read as one line for that, and every date found printed; so a
 date can enter the README on a branch and cannot land. And it is written for
 those who use devloop, and says nothing of how devloop is built: no reference to
 devloop's own documents — `docs/plan.md`, `docs/roadmap.md`, this file,
-`docs/stock-take.tsv`, `docs/rationale.md` — no file of devloop named as a
+`docs/stock-take.tsv`, `docs/rationale.md`, `docs/defects.md` — no file of
+devloop named as a
 mechanism, under `bin/`, `scripts/`, `shared/`, `hooks/`, `skills/`, `.github/`
 or `.claude-plugin/`, no history of its tests and no section on the work on
 devloop; what a user needs is said by what it does.
@@ -1696,7 +1698,8 @@ roadmap entry, which names each place the README carried until then, before and
 after. A second step of the same job holds this half since 21 October 2026, the
 roadmap entry of that date on milestone 3, part 3: red where `README.md` names
 one of the documents above — `docs/rationale.md` among them since 1 November
-2026 — or a path into `bin/`, `scripts/`, `shared/`, `hooks/`, `skills/`,
+2026 and `docs/defects.md` since 2 November 2026 — or a path into `bin/`,
+`scripts/`, `shared/`, `hooks/`, `skills/`,
 `.github/` or `.claude-plugin/`, the file read as one line as for the dates and
 every find printed; what the README says of the user's project, `docs/agents/`,
 `~/.claude/settings.json` or `.claude/` say, is no find. The red line of the
@@ -1712,8 +1715,9 @@ files carry the rule and at most a short reason that says what the rule
 prevents, and nothing else of its story: no date, no "since" or "until then", no
 reference to an entry of `docs/roadmap.md`, no case with its run or its
 measurement, no earlier or quoted old wording, and no reference to
-`docs/roadmap.md`, this file, `docs/plan.md`, `docs/stock-take.tsv` or
-`scripts/devloop-stock-take` that is neither a rule nor a reason. What a run
+`docs/roadmap.md`, this file, `docs/plan.md`, `docs/stock-take.tsv`,
+`docs/defects.md` or `scripts/devloop-stock-take` that is neither a rule nor a
+reason. What a run
 needs in order to act stays — where it writes, which file it reads, the table of
 `record-lessons` that says where a lesson goes. The reason and the case of a
 rule, with the head of the roadmap entry that carries the case, and the wordings
@@ -1771,11 +1775,58 @@ the log's own timezone and written out; a date set down from recollection, or
 from the paragraph the entry was written under, is the neighbour's date and
 not the run's.
 
-**A should a later decision changes is written where the decision is.** Where
-a later decision changes the should of a thing, the new should stands in the
-entry that decides it, with the old one quoted there, and in the note of the
-thing's row in `docs/stock-take.tsv`; the should in the dated entry, and its
-status line, stay as they stand. Written on 19 October 2026 after the
+**A defect is a block in `docs/defects.md`; the roadmap reports it.** Every
+defect of this set, open or closed, stands in `docs/defects.md` as one block:
+a heading `### <title>` and one field per physical line under it — `- Wrong:`,
+`- Should:`, `- Found:` with the head of the roadmap entry that found it,
+whole, `- Fix:` with the line where the repair stands as `` `FILE` "TEXT" ``
+in the anchor form of the tool's header, or `none` where nothing is built, or
+`not determined` where nobody has read whether anything is, `- Status:` with
+the state in the words `scripts/devloop-stock-take` prints or the closing in
+one of the three forms of its section D, and, where there is something to
+say, `- Note:`, `- Trigger:`, `- Bench:` and `- Cost:`. The title is unique
+in the file and carries no " / ". The blocks stand under `## Milestone
+<number>` for every milestone of `docs/plan.md` that takes defects and under
+`## Without a milestone`; a closed defect stays under its milestone. The
+roadmap is a report: a new entry writes no status line for a defect, and a
+defect the entry finds the same branch writes as a block. A run on a defect
+stands in `docs/stock-take.tsv` as before, naming the defect by its title,
+which does not change with the section, and pointing at the line of the
+roadmap that reports the run. The tool reads the blocks, computes every state
+by its section D — "Never assert state — query it" above — and goes red where
+a block names another state, where a field is missing or wrapped, where a
+title stands twice, where `Fix` does not stand exactly once or points at
+`docs/roadmap.md` or `docs/defects.md`, where `Found` names no head whole
+and exactly once, where a milestone is none of the plan's, where `Status`
+is in none of the forms, where a closing's proof does not hold, or where a
+line belongs to no introduction, heading or block. A run on a defect counts
+when the version it ran contains the last change to the `Fix` line, and to
+no other line: so a block moves between sections without a run being lost,
+and a should a later decision changes touches no run. A finding in a document
+— `docs/roadmap.md`, `docs/plan.md`, this file, `docs/rationale.md` — that
+the same branch corrects, puts right in its own entry or mends gets no block,
+since such a finding would read as not built where nothing is left to do: the
+entry names it with its place, the wrong text and the right one. A finding in
+the code, the skills, the shared texts, the hooks, the programs or the
+workflow gets a block in every case. Two marks of the transition stand in the
+file: the section `## Not yet sorted` holds the blocks no order has sorted
+into a milestone, and `not stated` stands in a `Wrong` or `Should` that no
+text of the roadmap filled when the blocks were written on 2 November 2026;
+the tool lists both and does not go red. Decided on 2 November 2026, the
+roadmap entry of that date on the defects file. Until then a defect was a row
+of the table, sited on a line of the roadmap and evidenced on the line of its
+repair or on a status line of the roadmap saying nothing is built, and a
+finding of the reading was a row of the table until an order moved it into
+an entry.
+
+**A should a later decision changes is written where the decision is, and in
+the block.** Where a later decision changes the should of a defect, the new
+should stands in the entry that decides it, with the old one quoted there,
+and under `Should` in the defect's block in `docs/defects.md`; the should in
+the dated entry, and its status line, stay as they stand. Until 2 November
+2026 the new should went into the note of the thing's row in
+`docs/stock-take.tsv` instead, and on that day the blocks took every should a
+note carried in that form. Written on 19 October 2026 after the
 consistency audit of 18 October 2026: on 17 October 2026 `b24542a` revised
 the shoulds of seven defects on the status lines of dated entries in place
 and `6793c5c` nine, each quoting the earlier should in its own entry, and
@@ -1871,8 +1922,9 @@ hands the subagent the paths of the control documents and never tells it to
 read the rules; `review-changes` is told to read the file first and makes it
 the source of the standards lens. So a rule takes effect through the next
 review, which reads a breach of a written rule instead of judging the same
-thing again. Whether the build should read it is open, under "Known gaps" in
-`docs/roadmap.md`.
+thing again. Whether the build should read it is open, a defect in
+`docs/defects.md` found by the entry under "Known gaps" in `docs/roadmap.md`
+on the four places that disagree.
 
 **`record-lessons` stays locked.** Lifted, its description would sit in every
 session's context for the sake of one call, and the listing of skills has a

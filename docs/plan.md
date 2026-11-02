@@ -2,7 +2,9 @@
 
 Written on 19 September 2026. This is the plan and not a measurement record:
 what was measured stands in `docs/roadmap.md` under `## Known gaps`, with a
-date on every run, the facts of the stock-take stand in `docs/stock-take.tsv`,
+date on every run, the defects stand in `docs/defects.md`, each as one block
+under its milestone or, until an order sorts it, under `## Not yet sorted`,
+the facts of the stock-take stand in `docs/stock-take.tsv`,
 what holds as a rule stands in `docs/skill-conventions.md`, and the reasons and
 cases of the rules in the texts devloop loads, with the wordings approved for
 what a user sees, stand in `docs/rationale.md`. This file says where the set is
@@ -137,6 +139,18 @@ proof that reason asks for, which the tool confirms on every run and rejects
 as a broken record where it fails; closed defects are counted apart and stand
 in no list of open things — the roadmap entry of that date on the person's
 answers, and section D of the tool's header.
+Since 2 November 2026 the defects stand in `docs/defects.md`, each as one
+block the tool reads, under the milestone that takes it or under "Without a
+milestone", and under "Not yet sorted" until an order sorts it: the state of
+a defect is computed off the block's `Fix` and
+compared with what the block says, a run on a defect names the block's title
+and is held against the `Fix` line alone, a closing stands in the block's
+`Status` with its proof, and the table holds the things, the runs and the
+lines judged not to be a thing, no defect and no finding among its rows; the
+roadmap entry of that date on the defects file. Where this section speaks of
+defects as rows of the table, of findings in the table and of the lines of
+"Known gaps" in the search set, it quotes how the milestone stood when it
+landed.
 
 The things: the twelve skills down to their branches, `shared/`, since 15
 October 2026 `output-styles/`, `hooks/`,
@@ -167,13 +181,15 @@ shell file under `hooks/`, `bin/` and `scripts/` every line that calls, at the
 place of a command, a function of the file that ends the program; under
 `.github/workflows/` every line that decides what a workflow runs and when;
 every command block under the two check headings; every entry head and status
-line under "Known gaps"; every row under "Named, not built as skills". A
+line under "Known gaps", until 2 November 2026; every row under "Named, not
+built as skills". A
 comment line of a hook, a program or a workflow and a docstring line of a
 python program stand in no search set. A line of it that no record covers is
 reported, so a line nobody read is seen rather than missed, and a line that
 can carry no anchor is listed rather than dropped; a status word under "Known
 gaps" broken over a line break is listed under a heading of its own and turns
-the tool red. The calls, the comment lines and the broken status word since 12
+the tool red, until 2 November 2026, since when the tool reads no line of
+"Known gaps". The calls, the comment lines and the broken status word since 12
 October 2026, the roadmap entry of that day on the four changes to the tool;
 the rules stand in the tool's header, section E.
 
@@ -182,8 +198,9 @@ path, no uncovered line of the search set and no finding left in the table,
 so that a third person can check any line without having been there: the
 tool proves that every anchor stands where its record says, and every state
 is recomputed from the files as they are. A finding recorded since the close
-stands in the table as a finding until an order moves it, and the tool lists
-it on every run; how many stand today is read off that output.
+stood in the table as a finding until an order moved it, and the tool listed
+it on every run, until 2 November 2026; since then a finding is a block of
+`docs/defects.md` like every other defect.
 
 Why here: the roadmap records that an entry answered by a later entry does not
 notice, and that "Recorded, not built" has stood on things already built. A
