@@ -1361,43 +1361,45 @@ loaded text no longer carries stands here at its rule.
   issue the no line takes six lines and the fields fourteen of fourteen, at the
   bound; with two issues whose commands ask the no line takes seven and the
   fields fifteen, past it, entry "Handovers say where the command is typed,
-  sign-in and identity in steps.". Approved wording, entry "Conditions 6 and 7
-  at the mark, the rule asked after a refusal, titles.": „Der Auto-Modus hat in
-  einem Lauf ohne dich `<Befehl>` abgelehnt (Issue #<Nummer>). Darf ich in
-  deiner Datei `~/.claude/settings.json` eine Regel eintragen, damit der
-  Auto-Modus Installationen in devloop-Projekten nicht von sich aus blockiert?“;
-  yes „Ja, eintragen“ with, where the issue holds a task, „Ich trage die Regel
-  ein, schließe das Issue und nehme die Aufgabe wieder auf. Die Regel erlaubt
-  nur Installationen in Projekten, die mit devloop eingerichtet sind.“, for a
-  check class „Ich trage die Regel ein, schließe das Issue und richte die
-  Prüfung wieder ein. Die Regel erlaubt nur Installationen in Projekten, die mit
-  devloop eingerichtet sind.“, for both „Ich trage die Regel ein, schließe die
-  Issues, nehme die Aufgabe wieder auf und richte die Prüfung wieder ein. Die
-  Regel erlaubt nur Installationen in Projekten, die mit devloop eingerichtet
-  sind.“; no „Nein, nicht eintragen“ with, (9) of entry "Handovers say where the
-  command is typed, sign-in and identity in steps.", „Dann bleibt das Issue
-  offen. Gibst du hier selbst `! brew install yq` ein und danach
-  `/devloop:start-work`, schließe ich das Issue und nehme die Aufgabe wieder
+  sign-in and identity in steps."; two issues in form B whose commands may ask
+  pass it as well, the reason in doubt being the longer, entry "Four entries
+  held, rationale points completed, two questions answered.". Approved wording,
+  entry "Conditions 6 and 7 at the mark, the rule asked after a refusal,
+  titles.": „Der Auto-Modus hat in einem Lauf ohne dich `<Befehl>` abgelehnt
+  (Issue #<Nummer>). Darf ich in deiner Datei `~/.claude/settings.json` eine
+  Regel eintragen, damit der Auto-Modus Installationen in devloop-Projekten
+  nicht von sich aus blockiert?“; yes „Ja, eintragen“ with, where the issue
+  holds a task, „Ich trage die Regel ein, schließe das Issue und nehme die
+  Aufgabe wieder auf. Die Regel erlaubt nur Installationen in Projekten, die mit
+  devloop eingerichtet sind.“, for a check class „Ich trage die Regel ein,
+  schließe das Issue und richte die Prüfung wieder ein. Die Regel erlaubt nur
+  Installationen in Projekten, die mit devloop eingerichtet sind.“, for both
+  „Ich trage die Regel ein, schließe die Issues, nehme die Aufgabe wieder auf
+  und richte die Prüfung wieder ein. Die Regel erlaubt nur Installationen in
+  Projekten, die mit devloop eingerichtet sind.“; no „Nein, nicht eintragen“
+  with, (9) of entry "Handovers say where the command is typed, sign-in and
+  identity in steps.", „Dann bleibt das Issue offen. Gibst du hier selbst
+  `! brew install yq` ein und danach `/devloop:start-work`, schließe ich das
+  Issue und nehme die Aufgabe wieder auf. Bis dahin frage ich bei jedem Start
+  mit `/devloop:start-work --auto` wieder.“, and where the command asks, (3)
+  after the push there: „Dann bleibt das Issue offen. Der Befehl
+  `sudo apt install yq` fragt nach deinem Passwort, darum gib ihn in einem
+  zweiten Terminalfenster ein, nicht in dem, in dem Claude Code läuft. Gibst du
+  danach hier `/devloop:start-work` ein, schließe ich das Issue und nehme die
+  Aufgabe wieder auf. Bis dahin frage ich bei jedem Start mit
+  `/devloop:start-work --auto` wieder.“ In doubt whether the command asks, „kann
+  etwas von dir abfragen, etwa dein Passwort“ stands in place of „fragt nach
+  deinem Passwort“, decided by the person on 1 November 2026, entry "The loaded
+  texts lose their history, reasons move to docs/rationale.md." Approved the
+  same day as the example of the no in doubt: „Dann bleibt das Issue offen. Der
+  Befehl `curl -fsSL https://example.com/install.sh | sh` kann etwas von dir
+  abfragen, etwa dein Passwort, darum gib ihn in einem zweiten Terminalfenster
+  ein, nicht in dem, in dem Claude Code läuft. Gibst du danach hier
+  `/devloop:start-work` ein, schließe ich das Issue und nehme die Aufgabe wieder
   auf. Bis dahin frage ich bei jedem Start mit `/devloop:start-work --auto`
-  wieder.“, and where the command asks, (3) after the push there: „Dann bleibt
-  das Issue offen. Der Befehl `sudo apt install yq` fragt nach deinem Passwort,
-  darum gib ihn in einem zweiten Terminalfenster ein, nicht in dem, in dem
-  Claude Code läuft. Gibst du danach hier `/devloop:start-work` ein, schließe
-  ich das Issue und nehme die Aufgabe wieder auf. Bis dahin frage ich bei jedem
-  Start mit `/devloop:start-work --auto` wieder.“ In doubt whether the command
-  asks, „kann etwas von dir abfragen, etwa dein Passwort“ stands in place of
-  „fragt nach deinem Passwort“, decided by the person on 1 November 2026, entry
-  "The loaded texts lose their history, reasons move to docs/rationale.md."
-  Approved the same day as the example of the no in doubt: „Dann bleibt das
-  Issue offen. Der Befehl `curl -fsSL https://example.com/install.sh | sh` kann
-  etwas von dir abfragen, etwa dein Passwort, darum gib ihn in einem zweiten
-  Terminalfenster ein, nicht in dem, in dem Claude Code läuft. Gibst du danach
-  hier `/devloop:start-work` ein, schließe ich das Issue und nehme die Aufgabe
-  wieder auf. Bis dahin frage ich bei jedem Start mit `/devloop:start-work
-  --auto` wieder.“ See docs/skill-conventions.md under "Every skill carries
-  these two", the paragraph "Where the person types a command devloop hands them
-  while Claude Code runs", form A, and for a command that asks, or in doubt,
-  form B.
+  wieder.“ See docs/skill-conventions.md under "Every skill carries these two",
+  the paragraph "Where the person types a command devloop hands them while
+  Claude Code runs", form A, and for a command that asks, or in doubt, form B.
 - **At its second asking the line naming the permission and the earlier no
   stands in the question field; after the two yes the classes they open are said
   in one line with their tools; a class off for an install goes into the
@@ -2383,11 +2385,15 @@ Nothing in this file stood as history; its rules carry their own reasons.
   last sentence is „Ich mache mit der Aufgabe „…“ weiter.“ — then: „Willst du
   `yq` doch installieren, gib hier ein: `! brew install yq`. Dann schließe ich
   das Issue und baue die Aufgabe. Installierst du es auf anderem Weg, schließe
-  ich es beim nächsten Start mit `/devloop:start-work`.“ Under form B, where the
-  command asks something or the run does not know for certain whether it asks,
-  in place of „gib hier ein“: „führ den Befehl in einem zweiten Terminalfenster
-  aus, nicht in dem, in dem Claude Code läuft, und sag mir hier Bescheid“. Entry
-  "The ! after a no taken up in the session, point 7 read by the subagent."
+  ich es beim nächsten Start mit `/devloop:start-work`.“, entry "The ! after a
+  no taken up in the session, point 7 read by the subagent." Under form B, where
+  the command asks something or the run does not know for certain whether it
+  asks, the sentence with „gib hier ein“ reads „Willst du `yq` doch
+  installieren: Der Befehl `sudo apt install yq` fragt nach deinem Passwort,
+  darum gib ihn in einem zweiten Terminalfenster ein, nicht in dem, in dem
+  Claude Code läuft, und sag mir hier Bescheid.“, in doubt with „kann etwas von
+  dir abfragen, etwa dein Passwort“ in place of „fragt nach deinem Passwort“,
+  entry "Four entries held, rationale points completed, two questions answered."
 ### Proving a check guards its condition
 
 - **A condition that cannot be captured as a check is named as that, in the task

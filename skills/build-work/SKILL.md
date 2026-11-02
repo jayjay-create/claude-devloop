@@ -577,8 +577,8 @@ was for:
   here, on which the run closes the issue and builds the task, and that an
   install made another way is read at the next start with
   `/devloop:start-work`, the input named as they type it; under form B the
-  second window instead of the `!`, with their word here. Go back to step 2
-  rather than stopping.
+  second window instead of the `!`, with what the command asks, in doubt what
+  it may ask, and their word here. Go back to step 2 rather than stopping.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text install-issue`
 

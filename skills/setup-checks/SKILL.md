@@ -1134,10 +1134,10 @@ form:
   Code runs in; that `/devloop:start-work` typed here afterwards closes the
   issue and takes the task up again, or sets the check up again, or both; and
   the asking again at every start, as above. With one issue the fields stand at
-  the bound of `output-styles/devloop.md`; with two issues whose commands ask
-  they pass it, so the question does not fit the widget and is asked as text at
-  the end of the turn, with its text before it in the same message, as the style
-  says.
+  the bound of `output-styles/devloop.md`; with two issues in form B, whose
+  commands ask or may ask, they pass it, so the question does not fit the widget
+  and is asked as text at the end of the turn, with its text before it in the
+  same message, as the style says.
 
 The issue's number in place of its title is an exception to
 `shared/refer-by-name.md`, for this question alone: the reason of that

@@ -45211,13 +45211,13 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   number of lines in the same files, line numbers and breaks aside; check 16
   its green line.
 
-- **Four entries held, rationale points completed, two questions open.**
+- **Four entries held, rationale points completed, two questions answered.**
   1 November 2026, version 0.171.0, raised from 0.170.0 once. On
-  `task/audit-2026-11-01`, off `origin/main` at `f665141`, in three commits:
+  `task/audit-2026-11-01`, off `origin/main` at `f665141`, in four commits:
   the corrections in place, the mends in `docs/rationale.md`, `docs/plan.md`
   and `docs/skill-conventions.md`, the notes of the table, the four
   sentences of the loaded texts with the version and the rows of the things
-  they change; then this entry with its rows; then one more place of the entry at 44909 said right here, with its row. The report stands on this
+  they change; then this entry with its rows; then one more place of the entry at 44909 said right here, with its row; then the two questions built after the answer, with their rows. The report stands on this
   machine as `~/devloop-audit-2026-11-01.md`, in English, and is not in the
   repository. Every line number of a file in this entry holds at `f665141`
   unless it says otherwise; a line of this file holds at `f665141` as well,
@@ -45855,6 +45855,32 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   `scripts/devloop-stock-take`: a defect thing for each status line of this
   entry, 55, sited there and evidenced as each paragraph above says; the
   head of this entry as part of the first. No run is recorded.
+
+  **Answered by the person on 2 November 2026, and a fourth commit.** The
+  second question: the wording of form B after a no in `build-work` names
+  what the command asks, approved: „Willst du `yq` doch installieren: Der
+  Befehl `sudo apt install yq` fragt nach deinem Passwort, darum gib ihn in
+  einem zweiten Terminalfenster ein, nicht in dem, in dem Claude Code läuft,
+  und sag mir hier Bescheid. Dann schließe ich das Issue und baue die
+  Aufgabe. Installierst du es auf anderem Weg, schließe ich es beim nächsten
+  Start mit `/devloop:start-work`.“, in doubt with „kann etwas von dir
+  abfragen, etwa dein Passwort“ in place of „fragt nach deinem Passwort“, as
+  decision (1) of the entry at 44909 has it for every wording of form B. The
+  first question was not put to the person, since its answer follows from
+  that decision and from the paragraph of `output-styles/devloop.md` on what
+  fits the widget: two issues in form B, whose commands ask or may ask, pass
+  the bound and are asked as text. Both stand in `skills/setup-checks/SKILL.md`,
+  "Step 8 — Offer the unattended mode", and `skills/build-work/SKILL.md`,
+  "Step 3 — Build it", and in the points of `docs/rationale.md` under both;
+  the version stays 0.171.0, raised once on this branch.
+  The tool after it: exit 0, broken records 0, uncovered lines 0 of 5415,
+  units without a straight path 0, findings 14, closed defects 42; walked
+  619, built and never walked 1464, recorded and not built 511, undetermined
+  24, the two defects of the questions reading built now. The twenty checks:
+  nineteen print what they printed after the third commit; check 16 its
+  green line.
+  Built: setup-checks step 8 sends two issues in form B, whose commands ask or may ask, to text.
+  Built: the wording of form B after a no in build-work names what the command asks, in doubt what it may ask.
 
 ## Decisions taken against
 
