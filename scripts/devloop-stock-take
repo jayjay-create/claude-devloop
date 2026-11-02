@@ -667,31 +667,35 @@ on that day, the roadmap entry of that date on the guard over the blocks.
 The tool holds the blocks of docs/defects.md at the commit this branch
 forked from, git merge-base HEAD origin/main, against the working tree. A
 title standing there and not here is a block removed or renamed; a title
-standing in both with another Should is a Should changed. Each such change
-is named by one physical line the branch adds to docs/roadmap.md, read off
-git diff of that file against the branch point, in one of three fixed
-forms, the title written whole after the prefix to the end of the line,
-whatever it carries - quotes, backticks, a colon -, the two titles of a
-renaming separated by " / ", which no title carries:
+standing in both with another Should is a Should changed; and a renamed
+block whose new title carries in the working tree another Should than its
+old title carried at the branch point is a Should changed as well, named
+under its new title, since 2 November 2026, the addendum of that day to the
+entry on the guard, before which the line of the renaming alone passed such
+a block. Each such change is named by one physical line the branch adds to
+docs/roadmap.md, read off git diff of that file against the branch point, in
+one of three fixed forms, the title written whole after the prefix to the
+end of the line, whatever it carries - quotes, backticks, a colon -, the two
+titles of a renaming separated by " / ", which no title carries:
 
     Block removed: TITLE
     Block renamed: OLD TITLE / NEW TITLE
     Should changed: TITLE
 
 None of them opens with "- **", the opening of an entry's head, which the
-step of the workflow on titles and the reading of Found take for a head.
-The tool is red where a change has no such line, and where a line names
-what the branch did not do: a title that stands in the working tree still
-or stood at the branch point in no block, a new title that stands nowhere
-or stood there already, a Should that is the branch point's. A block the
-branch adds needs no line. Without origin/main, or without a commit HEAD
-and origin/main share, the tool says in one line that the blocks are not
-held against a branch point, and is not red for it; where docs/defects.md
-does not stand at the branch point, that there is nothing to compare. On
-main after a squash merge HEAD is the branch point, and nothing differs.
-A branch behind main, whose main gained a block after the branch point,
-is held against the branch point and not against main's tip, so that
-block is no removal.
+step of the workflow on titles and the reading of Found take for a head. The
+tool is red where a change has no such line, and where a line names what the
+branch did not do: a title that stands in the working tree still or stood at
+the branch point in no block, a new title that stands nowhere or stood there
+already, a Should that is the branch point's, under the same title or, for a
+renamed block, under its old title. A block the branch adds needs no line.
+Without origin/main, or without a commit HEAD and origin/main share, the
+tool says in one line that the blocks are not held against a branch point,
+and is not red for it; where docs/defects.md does not stand at the branch
+point, that there is nothing to compare. On main after a squash merge HEAD
+is the branch point, and nothing differs. A branch behind main, whose main
+gained a block after the branch point, is held against the branch point and
+not against main's tip, so that block is no removal.
 
 LIMITS
 
@@ -1536,12 +1540,35 @@ def hold_blocks_to_branch_point(root, defects_rel, blocks, res):
                                     "says '%s<title>'"
                                     % (t, defects_rel, base[:7], ROADMAP,
                                        SHOULD_CHANGED))
+    # a renaming carries its Should across, since 2 November 2026, the
+    # addendum of that day: the Should the old title had at the branch point
+    # against the one the new title has in the working tree
+    renamed_from = {new: old for old, new in renamed}
+    for old, new in renamed:
+        if at_base[old] != in_tree[new]:
+            changed.append(new)
+            if new not in said_changed:
+                res.guard_errors.append("the Should of the block %r, renamed "
+                                        "from %r, is not the one that block "
+                                        "carried in %s at %s, the branch "
+                                        "point, and no line added to %s since "
+                                        "says '%s<new title>'"
+                                        % (new, old, defects_rel, base[:7],
+                                           ROADMAP, SHOULD_CHANGED))
     for t in said_changed:
         if t not in in_tree:
             res.guard_errors.append("a line added to %s says '%s%s', and no "
                                     "block of that title stands in the "
                                     "working tree"
                                     % (ROADMAP, SHOULD_CHANGED, t))
+        elif t in renamed_from:
+            if in_tree[t] == at_base[renamed_from[t]]:
+                res.guard_errors.append("a line added to %s says '%s%s', and "
+                                        "its Should is the one the block "
+                                        "carried at %s, the branch point, "
+                                        "under its old title %r"
+                                        % (ROADMAP, SHOULD_CHANGED, t,
+                                           base[:7], renamed_from[t]))
         elif t not in at_base:
             res.guard_errors.append("a line added to %s says '%s%s', and no "
                                     "block of that title stood in %s at %s, "
@@ -3932,6 +3959,10 @@ def selftest():
         GB_OLD = "a block the branch renames"
         GB_NEW = "the same block under its new title"
         GB_SHOULD = "a block whose Should the branch changes"
+        GB_OLD_CH = "a block the branch renames and whose Should it changes"
+        GB_NEW_CH = "the same block under its new title and with another Should"
+        GB_OLD_KEPT = "a block the branch renames, its Should kept"
+        GB_NEW_KEPT = "the same block under its new title, its Should kept"
         GB_QUOTED = ('a block titled with "quotes", `backticks` and a colon: '
                      "the fixed form carries it whole")
         GB_MAIN = "a block main gained after the branch point"
@@ -3941,7 +3972,8 @@ def selftest():
                          should=should)
         g_base = ["# Defects\n\n## Not yet sorted\n\n",
                   gblock(GB_STAYS), gblock(GB_GONE), gblock(GB_GONE_TOO),
-                  gblock(GB_OLD), gblock(GB_SHOULD), gblock(GB_QUOTED)]
+                  gblock(GB_OLD), gblock(GB_SHOULD), gblock(GB_QUOTED),
+                  gblock(GB_OLD_CH), gblock(GB_OLD_KEPT)]
         write(guard, "docs/defects.md", "".join(g_base))
         g_table = os.path.join(guard, "docs", "stock-take.tsv")
         write(guard, "docs/stock-take.tsv", "\n".join([
@@ -3961,10 +3993,14 @@ def selftest():
             return collect(analyse(guard, g_table))
         # red: two blocks and the quoted one gone, one renamed and the Should
         # of one changed, no line for any of them; lines naming what the
-        # branch did not do, in every way
+        # branch did not do, in every way; a block renamed with its Should
+        # changed and the renaming line alone, and one renamed with its
+        # Should kept and a Should line all the same
         res_g_red = guard_state(
             "".join(["# Defects\n\n## Not yet sorted\n\n", gblock(GB_STAYS),
-                     gblock(GB_NEW), gblock(GB_SHOULD, should="another should")]),
+                     gblock(GB_NEW), gblock(GB_SHOULD, should="another should"),
+                     gblock(GB_NEW_CH, should="another should"),
+                     gblock(GB_NEW_KEPT)]),
             [BLOCK_REMOVED + GB_STAYS,
              BLOCK_REMOVED + "a title that stood in no block",
              BLOCK_RENAMED + "a line without the separator",
@@ -3973,17 +4009,26 @@ def selftest():
              BLOCK_RENAMED + GB_GONE_TOO + RENAME_SEP + GB_STAYS,
              SHOULD_CHANGED + "a title that stands in no block",
              SHOULD_CHANGED + GB_NEW,
-             SHOULD_CHANGED + GB_STAYS])
+             SHOULD_CHANGED + GB_STAYS,
+             BLOCK_RENAMED + GB_OLD_CH + RENAME_SEP + GB_NEW_CH,
+             BLOCK_RENAMED + GB_OLD_KEPT + RENAME_SEP + GB_NEW_KEPT,
+             SHOULD_CHANGED + GB_NEW_KEPT])
         # green: the same changes, each with its line; the second removed
-        # block stands again
+        # block stands again; the block renamed with its Should changed has
+        # both lines, the one renamed with its Should kept the renaming line
         res_g_green = guard_state(
             "".join(["# Defects\n\n## Not yet sorted\n\n", gblock(GB_STAYS),
                      gblock(GB_GONE_TOO), gblock(GB_NEW),
-                     gblock(GB_SHOULD, should="another should")]),
+                     gblock(GB_SHOULD, should="another should"),
+                     gblock(GB_NEW_CH, should="another should"),
+                     gblock(GB_NEW_KEPT)]),
             [BLOCK_REMOVED + GB_GONE,
              BLOCK_RENAMED + GB_OLD + RENAME_SEP + GB_NEW,
              SHOULD_CHANGED + GB_SHOULD,
-             BLOCK_REMOVED + GB_QUOTED])
+             BLOCK_REMOVED + GB_QUOTED,
+             BLOCK_RENAMED + GB_OLD_CH + RENAME_SEP + GB_NEW_CH,
+             SHOULD_CHANGED + GB_NEW_CH,
+             BLOCK_RENAMED + GB_OLD_KEPT + RENAME_SEP + GB_NEW_KEPT])
         # a branch behind main: main gains a block after the branch point,
         # the branch stands as it was cut
         run_git(guard, "checkout", "-q", "--", ".")
@@ -4722,14 +4767,14 @@ def selftest():
              "old and the new title: green",
              gerr(res_g_red, "the block %r stood in docs/defects.md at %s, %s"
                   % (GB_OLD, g1[:7], no_line)),
-             g_green["renamed"] == [(GB_OLD, GB_NEW)] and GB_NEW not in g_green["added"]
+             g_green["renamed"][0] == (GB_OLD, GB_NEW) and GB_NEW not in g_green["added"]
              and not any(GB_OLD in e for e in res_g_green.guard_errors))
         case("a Should changed without its line: red; with its line: green",
              gerr(res_g_red, "the Should of the block %r is not the one it "
                   "carried in docs/defects.md at %s, the branch point, and no "
                   "line added to docs/roadmap.md since says 'Should changed: "
                   "<title>'" % (GB_SHOULD, g1[:7])),
-             g_green["changed"] == [GB_SHOULD]
+             g_green["changed"][0] == GB_SHOULD
              and not any(GB_SHOULD in e for e in res_g_green.guard_errors))
         case("a removal line for a block that stands still, or that stood at "
              "the branch point in no block: red; green otherwise",
@@ -4740,7 +4785,7 @@ def selftest():
                       "removed: a title that stood in no block', and no block "
                       "of that title stood in docs/defects.md at %s, the "
                       "branch point" % g1[:7]),
-             g_green["lines"] == 4
+             g_green["lines"] == 7
              and not any(GB_STAYS in e for e in res_g_green.guard_errors))
         case("a renaming line without the separator, with an old title that "
              "stands still or never stood, or a new one that stands nowhere "
@@ -4763,7 +4808,7 @@ def selftest():
                       "renamed: %s / %s', and a block titled %r stood in "
                       "docs/defects.md at %s, the branch point, already"
                       % (GB_GONE_TOO, GB_STAYS, GB_STAYS, g1[:7])),
-             len(res_g_green.guard_errors) == 0 and len(g_green["renamed"]) == 1)
+             len(res_g_green.guard_errors) == 0 and len(g_green["renamed"]) == 3)
         case("a Should line for a title that stands in no block, in none at "
              "the branch point, or whose Should is the branch point's: red; "
              "green otherwise",
@@ -4777,6 +4822,25 @@ def selftest():
                       "changed: %s', and its Should is the one it carried at "
                       "%s, the branch point" % (GB_STAYS, g1[:7])),
              not any("Should changed" in e for e in res_g_green.guard_errors))
+        case("a block renamed with its Should changed, the renaming line alone: "
+             "red; with the line 'Should changed: <new title>' beside it: green",
+             gerr(res_g_red, "the Should of the block %r, renamed from %r, is not "
+                  "the one that block carried in docs/defects.md at %s, the "
+                  "branch point, and no line added to docs/roadmap.md since "
+                  "says 'Should changed: <new title>'"
+                  % (GB_NEW_CH, GB_OLD_CH, g1[:7])),
+             (GB_OLD_CH, GB_NEW_CH) in g_green["renamed"]
+             and GB_NEW_CH in g_green["changed"]
+             and not any(GB_NEW_CH in e for e in res_g_green.guard_errors))
+        case("a block renamed with its Should kept and a line 'Should changed: "
+             "<new title>' all the same: red; the renaming line alone: green",
+             gerr(res_g_red, "a line added to docs/roadmap.md says 'Should "
+                  "changed: %s', and its Should is the one the block carried "
+                  "at %s, the branch point, under its old title %r"
+                  % (GB_NEW_KEPT, g1[:7], GB_OLD_KEPT)),
+             (GB_OLD_KEPT, GB_NEW_KEPT) in g_green["renamed"]
+             and GB_NEW_KEPT not in g_green["changed"]
+             and not any(GB_NEW_KEPT in e for e in res_g_green.guard_errors))
         case("a title with quotes, backticks and a colon: red without its "
              "line, green with the fixed form carrying it whole",
              gerr(res_g_red, "the block %r stood in docs/defects.md at %s, %s"
@@ -4818,11 +4882,14 @@ def selftest():
              "counts and each change named",
              "BLOCKS HELD AGAINST THE BRANCH POINT (git merge-base HEAD "
              "origin/main; a change needs its line in docs/roadmap.md)\n"
-             "  branch point %s: blocks removed 2, renamed 1, Should changed 1, "
-             "added 0; lines of the fixed forms added to docs/roadmap.md: 4\n"
+             "  branch point %s: blocks removed 2, renamed 3, Should changed 2, "
+             "added 0; lines of the fixed forms added to docs/roadmap.md: 7\n"
              "    removed         %s\n    removed         %s\n"
-             "    renamed         %s / %s\n    Should changed  %s\n"
-             % (g1[:7], GB_GONE, GB_QUOTED, GB_OLD, GB_NEW, GB_SHOULD)
+             "    renamed         %s / %s\n    renamed         %s / %s\n"
+             "    renamed         %s / %s\n"
+             "    Should changed  %s\n    Should changed  %s\n"
+             % (g1[:7], GB_GONE, GB_QUOTED, GB_OLD, GB_NEW, GB_OLD_CH, GB_NEW_CH,
+                GB_OLD_KEPT, GB_NEW_KEPT, GB_SHOULD, GB_NEW_CH)
              in render(res_g_green)
              and "  against the branch point: the block %r stood" % GB_GONE
              in render(res_g_red),
