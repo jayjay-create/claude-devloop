@@ -45882,6 +45882,291 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Built: setup-checks step 8 sends two issues in form B, whose commands ask or may ask, to text.
   Built: the wording of form B after a no in build-work names what the command asks, in doubt what it may ask.
 
+- **The defects move to docs/defects.md, read by the stock-take tool.**
+
+  2 November 2026, version 0.172.0, raised from 0.171.0 once. On
+  `task/defects-file`, off `origin/main` at `c1949fe`, in three commits:
+  `scripts/devloop-stock-take` with the version; then `docs/defects.md`,
+  `docs/skill-conventions.md`, `docs/plan.md`, `docs/rationale.md`,
+  `skills/record-lessons/SKILL.md`, `.github/workflows/stock-take.yml`, this
+  entry and `docs/stock-take.tsv`; then the runs of the tool's self-test under
+  0.172.0, measured on the second commit. Written by Claude Code from the
+  person's order of that day, the first order of part 2 of the separation of
+  `docs/roadmap.md`, after part 1 of 1 November 2026; no session log was read.
+  Line numbers of `docs/roadmap.md` hold at `c1949fe`, which this entry only
+  appends to.
+
+  **Decided on 2 November 2026** by the person, on part 2 of the decision of 1
+  November 2026 on the defect that the three tasks of the roadmap are not
+  separated, its status line at line 32271 of this file. (1) The file is
+  `docs/defects.md`, in English like every document under `docs/`, ordered by
+  milestones: `## Milestone <number>` for every milestone that takes defects,
+  and `## Without a milestone`; a defect stands under the milestone that takes
+  it. (2) The file holds every defect, open and closed, each with its state;
+  with that the wording of (a) of 1 November 2026, which spoke of the open
+  defects, reads: the defects, open and closed, in a file of their own. A
+  closed defect stays under its milestone. The roadmap is a report only: a new
+  entry writes no status line for a defect; a defect it finds the same branch
+  writes as a block in `docs/defects.md`. Runs stay in `docs/stock-take.tsv`
+  and point at the line of the roadmap that reports the run. (3) The tool
+  computes the state of every defect as before, by section D of its header,
+  and holds it against the state the block names; where the two differ, the
+  tool is red — "Never assert state — query it" in
+  `docs/skill-conventions.md`. (4) A run on a defect counts when its version
+  contains the last change to the line the repair stands on; the lines of the
+  block and the lines of the roadmap count nothing. Until this day the line
+  the defect was named on and the lines recorded as part of it counted as
+  well. Reasons: the blocks come into being with this order and must move
+  between sections without a run being lost; and a later changed should
+  touches no run today either, since it goes into the entry that decides it
+  and into the note of the row while the status line stays. (5) The name under
+  which the runs of a defect name it does not depend on the section its block
+  stands in. (6) A finding in a document — `docs/roadmap.md`, `docs/plan.md`,
+  `docs/skill-conventions.md`, `docs/rationale.md` — that the same branch
+  corrects, puts right in its own entry or mends gets no block; the entry of
+  the branch names it with its place, the wrong text and the right one, since
+  such a finding reads as not built today although nothing is left to do, the
+  status line at line 45311 on the figure corrected in place at line 39574 an
+  example. A finding in the code, the skills, the shared texts, the hooks, the
+  programs or the workflow gets a block in every case. (7) Part 2 goes in two
+  stages. This order moves mechanically: every defect and every finding of the
+  table becomes a block with the text it has today, none checked against the
+  code, nothing left out. Further orders check the blocks group by group
+  against the code, write the missing texts, take the findings under (6) out,
+  sort the blocks into the sections, take in the 32 contradictions that lines
+  45200 to 45205 of this file assign to part 2, and propose a milestone for
+  every defect without one in their report; the milestone the person decides.
+
+  **What changed.** `docs/defects.md`, new: an introduction that says what the
+  file is, how a block looks, which states there are, how the sections are
+  named and what the two marks of the transition mean; then `## Not yet
+  sorted` with 921 blocks, 907 for the defects of the table at `c1949fe` and
+  14 for its findings, in the order of their rows. A block is a heading `###
+  <title>` and one field per physical line: `- Wrong:`, `- Should:`, `-
+  Found:`, `- Fix:`, `- Status:`, and `- Note:`, `- Trigger:`, `- Bench:`, `-
+  Cost:` where the row carried them. The title is the third part of the row's
+  name; a finding's title says what is wrong. Wrong and Should: where the
+  row's line of the roadmap began with a status word, the text after it up to
+  " — should: " and the text after that, the paragraph read across line breaks
+  up to the next blank line, list item or head — 594 lines; where the row's
+  note carried a should a later decision set, in the forms "should revised
+  <date> by …:", "should changed <date> by …:", "should since …:" and "the
+  should changed by the person on <date>, …, defect <n>:", that should, 20
+  blocks (rows 1484, 1486, 2249, 2462, 2583, 3143, 3596, 3604, 5199, 5282,
+  5569, 5570, 5572, 5576, 5578, 5581, 5582, 6293, 6346 and 7493 of the table
+  at `c1949fe`); `not stated` where a part is missing or the line opened no
+  such paragraph, 44 lines that are a head, 269 that are neither, 112 of those
+  carrying a status word mid-line, and 389 status paragraphs without " —
+  should: ", so that 699 blocks carry `not stated` in Wrong or Should. Found:
+  the head of the entry, the last `- **` on or above the row's line, read to
+  its closing `**` across line breaks, 502 of the 907 heads wrapping over more
+  than one line; for a finding the head the commit that wrote its row opened.
+  Fix: the evidence as `` `FILE` "TEXT" `` for 416 rows; `none` for 441 rows
+  whose evidence was a line of the roadmap saying nothing is built, for the 42
+  closed defects, whose closing stands in Status, and for the 14 findings;
+  `not determined` for the 8 rows whose evidence was empty. Status: the state
+  the tool printed at `c1949fe`, or the closing form read off the row's
+  evidence line. Nothing a row carried is lost: a finding's place stands in
+  its Note.
+
+  Two closings had to move with the proof. The defect "the defect on the rule
+  keeping runtimes out of the install question read recorded and not built
+  while the question says nothing of runtimes since 5 October 2026" was closed
+  as corrected in the document with the corrected sentence in
+  `docs/stock-take.tsv`, in the note of a defect's row; that note is a Note of
+  a block now, so its Status names `docs/defects.md`, and the tool leaves the
+  lines of that file that quote a text in a closing form out of the count, as
+  it leaves the closing lines of the roadmap out. No other proof moved.
+
+  `scripts/devloop-stock-take`: it reads `docs/defects.md` as the place of the
+  defects; the type finding and the kind defect leave the table, and a row of
+  either is rejected; the reason `no defect` leaves the list. It rejects a
+  block missing a required field, a title standing twice or carrying " / " or
+  being a thing's name, a field over a line break, a line that is no field, a
+  field twice, a Fix in none of its forms or pointing at `docs/roadmap.md` or
+  `docs/defects.md` or not found exactly once or under a directory it
+  classifies nowhere, a Trigger, Bench or Cost that is no anchor, a Found
+  naming no head of the roadmap whole and exactly once, a heading `##
+  Milestone <number>` whose number is none under "## Twelve milestones, in
+  this order" in `docs/plan.md`, a heading of the second level in none of the
+  three forms, a Status in none of the forms, a closing whose proof does not
+  hold, a non-empty line belonging to no introduction, heading or block, and a
+  block whose Status names another state than it computes. It computes the
+  state of a block by section D off its Fix — `none` reads "Recorded, not
+  built", `not determined` "Undetermined", an anchor by the place of the line
+  — and off the closing in its Status, holds a run on a defect against the Fix
+  line alone, and lists the blocks under `## Not yet sorted` and the blocks
+  with `not stated` without going red; its output shows the defects by
+  section, the states counted per section. Of what it read from
+  `docs/roadmap.md`: the heads under "Known gaps" stay, read now for Found
+  across line breaks; the table under "Named, not built as skills" stays; the
+  closing lines quoting a proof's text stay, read over the whole file; the
+  anchors of runs, triggers, benches and costs stay as every anchor does.
+  Gone: the heads and status lines under "Known gaps" as lines of the search
+  set, which served only the coverage of defects — the 43 status lines
+  recorded as part of a thing that is no defect keep their records and stay
+  lines of their things; the check on a status word broken over a line break,
+  which asked whether a status line escaped that set; and the reading of a
+  closing on the evidence line of a defect's row, since the closing stands in
+  the block. The header describes the tool as it is now, a section F on the
+  defects among it. Its self-test runs 134 cases, 124 before: the seven cases
+  on the broken status word and the case on a finding without its should part
+  struck, with the reason in the code; every case on a defect in the roadmap
+  moved onto a block; sixteen cases new, each red once and green once, so that
+  every one of the 116 messages the tool rejects, refuses or answers with is
+  asserted by a case, 95 of 95 before.
+
+  `docs/stock-take.tsv`: 8654 rows at `c1949fe`, 7567 after the second commit
+  and 7589 after the third. Removed: the 907 rows of kind defect and the 14
+  rows of type finding, each a block now; 200 not-a-thing rows on
+  `docs/roadmap.md` under "Known gaps", 161 part of a defect, 28 no defect, 6
+  quoted and 5 rationale; the three things of the tool whose outcome goes — a
+  status word broken over a line break listed and exit 1, a finding without
+  its should part rejected, a finding listed under FINDINGS — with their three
+  runs; nine not-a-thing rows on lines of the tool that are gone, the reading
+  of the roadmap's status lines, of the findings and of a closing on an
+  evidence line among them. Renamed: the 228 runs on defects, each naming its
+  defect by the title of its block. Kept: the 43 not-a-thing rows on status
+  lines of the roadmap that are part of a thing which is no defect, so that no
+  such thing changes its state. Re-anchored, each a record of the tool whose
+  line changed: the outcome exit 1, onto `if res.uncovered or
+  res.no_straight_path:`; the rejection of a reason not on the list, its bench
+  onto the renamed case; the rejection of a run on a name no thing carries,
+  which says since this day that no defect carries the name as its title
+  either, its name kept for its run; the rejection of a run on a rejected
+  thing, its case renamed; the state Closed, read off the block's closing now,
+  its name kept for its two runs; the rejection of a closing in none of the
+  three forms, which reads the Status of a block now, its name kept for its
+  run; the report's list of closed defects; and six not-a-thing records on
+  lines of the same meaning. Written: sixteen things of the tool for its new
+  outcomes, kind program outcome, each sited on the condition that decides it,
+  evidenced on its message and benched on its case of the self-test — the
+  defects file unreadable; a heading in none of the three forms; a line under
+  a heading that opens no block, a line that is no field line, a field twice;
+  a title standing twice, carrying the separator of thing names or being a
+  thing's name; a required field missing; a Milestone section the plan does
+  not number; a Found naming no head whole and exactly once; a Fix in none of
+  its forms or pointing at the roadmap or the defects file; a Fix, Trigger,
+  Bench or Cost not found exactly once or a Fix under a directory the tool
+  classifies nowhere; a run on a rejected defect; the state of a defect
+  computed off its Fix; a block naming another state than the tool computes;
+  the report by section; Trigger, Bench and Cost read as anchors; a run held
+  against the Fix line alone; a proof quoted by a closing line left out of the
+  count — and 33 not-a-thing records, part of them, for the other lines of the
+  set these outcomes brought in. Eight blocks whose Fix line this order
+  changed or removed: "a run keyed to a rejected thing is dropped from the
+  output while its anchor still covers its line", Fix onto the message as it
+  reads now; "the plan says nothing of a finding recorded after the close of
+  milestone 1 while the tool lists three", Fix onto the sentence of
+  `docs/plan.md` as it reads now, in the past tense; "the header quotes
+  \"Never assert state\" with a hyphen where the heading carries a dash", Fix
+  onto the opening of the header as it reads now; "the header counts three
+  defects and seven mechanisms against nine rows in that stretch of the Pocock
+  entry", Fix onto the sentence of section A as it reads now; "two entries of
+  17 October 2026 revised shoulds on status lines of dated entries in place,
+  which the conventions say are never edited", Fix onto the heading of the
+  rewritten paragraph of `docs/skill-conventions.md`; "four status lines of
+  this file stand as part of a thing that carries runs, against section C of
+  the tool's header, which names no target free of runs since 20 October 2026
+  and which the tool does not check", Fix onto the sentence of section C as it
+  reads now; and two whose object went with this order, closed as lapsed with
+  the text that left the tool: "the tool's header names order 9 as the order
+  that moves the findings into the roadmap", since no order moves a finding
+  into the roadmap any more, and "a status word of docs/roadmap.md broken over
+  a line break is read by the tool as none and nothing reports it", since the
+  tool reads no status word of the roadmap any more.
+
+  `docs/skill-conventions.md`: a new paragraph, "A defect is a block in
+  docs/defects.md; the roadmap reports it", with the form, (2), (4), (6) and
+  the two marks of the transition; the paragraph "A should a later decision
+  changes is written where the decision is, and in the block" rewritten, so
+  that the new should goes under Should in the block and the deciding entry
+  quotes the old one; `docs/defects.md` named among devloop's own documents
+  under "README.md carries no date", in the step that reads the README and in
+  the list under "The texts devloop loads carry no date and no history", and
+  among the records the length rule does not cover; the open question on
+  whether the build subagent reads the project's rules points at its defect.
+  `docs/plan.md`: the opening names `docs/defects.md` as where the defects
+  stand; milestone 1, landed, keeps its text and says where it quotes how the
+  defects, the findings and the lines of "Known gaps" stood at its landing.
+  `skills/record-lessons/SKILL.md`: the row "Something missing or known to be
+  broken" of the table under "When this repository is the workflow" points at
+  a block in `docs/defects.md` in its form; `docs/rationale.md` carries its
+  point under that file and heading. `.github/workflows/stock-take.yml`: the
+  step "README.md names no file or document of devloop's own" reads
+  `docs/defects.md` among the documents. `.claude-plugin/plugin.json`: 0.171.0
+  to 0.172.0. Searched by the third rule under "A field is not an answer to a
+  question it was not asked" over `skills/`, `hooks/`, `docs/`, `README.md`,
+  `shared/`, `bin/`, `scripts/` and `.github/` with the patterns "Known gaps",
+  "status line", "Statuszeile", "docs/stock-take.tsv", "docs/rationale.md",
+  "finding" and "defect"; the places read and left as they are, with the
+  reason: `scripts/devloop-run-workflow`, which reads the heads of new entries
+  for the title step and writes a roadmap with "Known gaps" in its self-test,
+  a reading that stays; `hooks/pre-tool-use-identity-guard.sh`, whose comment
+  names the table's record of a thing, no defect; the comments under `bin/`,
+  `hooks/` and in the workflow that name a defect of an entry by its number,
+  history that stays; `skills/start-work/SKILL.md` and `docs/rationale.md` on
+  the status line of the session start, another thing; the hits on "finding"
+  and "defect" in the skills, the shared texts and `README.md`, which speak of
+  a user's project; and the references in `docs/skill-conventions.md` and
+  `docs/plan.md` to entries under "Known gaps" and to status lines by their
+  number, which name the report and hold.
+
+  **Defects whose state changes with the move**, each because its runs are
+  held against the Fix line alone now: "allow_auto_merge could not tell two of
+  the three refusal cases at arming apart", Built, never walked to Walked, its
+  two runs of 31 August and 6 September 2026 under 0.88.0 failing until now on
+  line 566 of this file, its site, changed on 7 September 2026 at `b8a7015`,
+  while the Fix line, `skills/build-work/SKILL.md` at "`gh api
+  repos/OWNER/REPO/rules/branches/main` sees rulesets", last changed at
+  `8cb9dc3`, before 0.88.0; and "a run promised to report back and nothing
+  could wake it", Built, never walked to Walked, its run of 13 September 2026
+  under 0.99.0 failing until now on line 1630 of this file, part of it,
+  changed on 16 September 2026 at `b368285`, while the Fix line,
+  `skills/build-work/SKILL.md` at "Nothing wakes a run: the answer that ends
+  here ends the run", last changed at `b90874b`, the commit of 0.99.0. No
+  other run on a defect failed on a line of the roadmap: of the 91 runs on
+  defects that did not count at `c1949fe`, 85 fail on the Fix line itself and
+  3 carry no version. One defect loses its counting run, since this order
+  changes its Fix line: "four status lines of this file stand as part of a
+  thing that carries runs, against section C of the tool's header, which names
+  no target free of runs since 20 October 2026 and which the tool does not
+  check", Walked to Built, never walked, its Fix the rewritten sentence of
+  section C of the tool's header; by decision (c) of 1 November 2026 it stays
+  so until milestone 12 runs.
+
+  **Things that lost their counting run**, by decision (c) of 1 November 2026
+  built and never walked until milestone 12 runs: six program outcomes of
+  `scripts/devloop-stock-take`, each sited on a line this order changed — exit
+  1 on an uncovered line or a unit without a straight path; a run on a name no
+  thing carries rejected; a run on a rejected thing rejected with it; the
+  state Closed; a closing in none of the three forms rejected; the report's
+  list of closed defects — and, by this order's own rule for the outcomes of
+  the tool, each of them and each of the sixteen new outcomes carries a run of
+  the self-test of this day under 0.172.0, recorded in the third commit. No
+  thing of another file lost a run: the states of the 1753 things that are no
+  defect, read off "STATES, by file and kind" at `c1949fe` and on the branch,
+  agree except for those six.
+
+  **The stock-take and the checks, before at `c1949fe` and after on the
+  branch.** The tool, `PYTHONDONTWRITEBYTECODE=1 scripts/devloop-stock-take`,
+  before and after: exit 0 and 0; broken records 0 and 0; uncovered lines of
+  the search set 0 of 5415 and 0 of 4408, the 1047 heads and status lines of
+  "Known gaps" that could carry an anchor having left the set; units without a
+  straight path 0 and 0; findings 14 and none listed, every one a block;
+  closed defects 42 and 42; not-a-thing records 3465 and 3289; defects 907 as
+  things and 921 as blocks, by state Undetermined 8 and 8, Recorded, not built
+  500 and 514, Built, never walked 275 and 272, Walked 82 and 83, Closed 42
+  and 42; the things that are no defect by state as before, except those named
+  above. Its self-test: 134 cases passed. The twenty checks under "Before a
+  handover, run these", in a bash started by `env -i` with `--noprofile
+  --norc` and `/usr/bin/grep`: nineteen print what they printed at `c1949fe`,
+  read before the commits on the working tree with every change in it; check
+  16, `scripts/devloop-run-workflow .github/workflows/stock-take.yml`, printed
+  its green line on the working tree before the commits and again on the
+  committed branch after the third, where it reads the head of this entry for
+  the title step.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

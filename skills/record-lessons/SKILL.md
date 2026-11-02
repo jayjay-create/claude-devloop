@@ -80,7 +80,7 @@ Write the lesson where whoever builds the workflow would read it:
 | The failure was | Where it goes |
 |---|---|
 | A rule about how a skill must be written, or a property of the environment somebody measured | `docs/skill-conventions.md` |
-| Something missing or known to be broken | the "Known gaps" section of `docs/roadmap.md` |
+| Something missing or known to be broken | a block in `docs/defects.md`, under its milestone or under "Without a milestone": a heading `### <title>` and one field per line, `- Wrong:`, `- Should:`, `- Found:` with the head of the roadmap entry that found it, `- Fix:` with the place of the repair or `none`, `- Status:` |
 | A name that should not be proposed again | the "Names that were rejected" section of `docs/roadmap.md` |
 | Something a user of the plugin needs to know | `README.md` |
 

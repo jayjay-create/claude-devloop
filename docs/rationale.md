@@ -2874,7 +2874,16 @@ Nothing in this file stood as history; its rules carry their own reasons.
 
 ## `skills/record-lessons/SKILL.md`
 
-Nothing in this file stood as history; its rules carry their own reasons.
+### When this repository is the workflow
+
+- A lesson about something missing or known to be broken goes into
+  `docs/defects.md` as a block, under its milestone or under "Without a
+  milestone", in the block's form. Reason: the defects of devloop stand in one
+  file the stock-take tool reads, and a lesson written into `docs/roadmap.md`
+  would stand where the tool no longer looks. Case: the roadmap had three
+  tasks at once, the list of the defects, the log of the runs and the place of
+  the reasons, and the defects left it for a file of their own; the roadmap
+  entry "The defects move to docs/defects.md, read by the stock-take tool."
 
 ## `shared/arming-command.md`
 
