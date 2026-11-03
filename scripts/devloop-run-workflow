@@ -105,8 +105,13 @@ over the job's default, PR_TITLE out of the event, a block with a heredoc and
 blank lines, the three kinds of step not run, a shell this program cannot
 run, a job stopped at its timeout, a matrix job run once, --list running
 nothing, exit 1 and 0 on a red and a green file, exit 2 on a file that is no
-workflow; and that the real workflow file reads and carries the two names left
-out, so that the exclusion stays live. Nothing of it reaches GitHub.
+workflow; the first line naming the system and its release, sysname and
+release of os.uname(), or sys.platform where os.uname is missing, and no node
+name, held against the text the self-test builds from the same two fields,
+which it does not print where it is red, only the count of words in the
+parenthesis and the count expected; and that the real workflow file reads and
+carries the two names left out, so that the exclusion stays live. Nothing of
+it reaches GitHub.
 """
 
 import os
@@ -478,7 +483,7 @@ def main(argv):
         sys.stderr.write("not read as a workflow: %s\n" % e)
         return 2
     system = this_system()
-    print("devloop-run-workflow: %s, run here on %s (%s); a job with a matrix runs once here" % (os.path.relpath(path, root) if path.startswith(root) else path, system, " ".join(os.uname()[:3]) if hasattr(os, "uname") else sys.platform))
+    print("devloop-run-workflow: %s, run here on %s (%s); a job with a matrix runs once here" % (os.path.relpath(path, root) if path.startswith(root) else path, system, "%s %s" % (os.uname().sysname, os.uname().release) if hasattr(os, "uname") else sys.platform))
     title, why = entry_head(root)
     if why:
         print("PR_TITLE: not read: %s" % why)
@@ -692,6 +697,13 @@ def selftest():
         p = subprocess.run([sys.executable, me, wf], env=env, capture_output=True, text=True, timeout=120)
         out = p.stdout
         case("a red file ends with 1 and a last line opening with red:", p.returncode == 1 and out.rstrip().split("\n")[-1].startswith("red: "), out[-400:])
+        # the first line: the parenthesis holds sysname and release, or sys.platform, and no node name; where red, the line is not printed, only the counts of words
+        first = out.split("\n")[0]
+        paren = " ".join([os.uname().sysname, os.uname().release]) if hasattr(os, "uname") else sys.platform
+        words = len(" ".join(re.findall(r" \((.*)\); a job with a matrix runs once here$", first)).split())
+        case("the first line names the system and its release, or sys.platform, and no node name",
+             first == "devloop-run-workflow: %s, run here on %s (%s); a job with a matrix runs once here" % (wf, this_system(), paren),
+             "the parenthesis carries %d words, %d expected" % (words, len(paren.split())))
         case("PR_TITLE out of the event: the new head, printed first and reaching the step", "PR_TITLE: A new head that wraps." in out and "title=A new head that wraps." in out, out[:600])
         case("the workflow's env and the step's env reach the step, with RUNNER_OS and GITHUB_WORKSPACE", "wf=wf step=st" in out and ("os=%s ws=repo" % this_system()) in out, out)
         case("a step without a shell runs as bash -e {0}", "/ green, as bash -e {0} (none given)" in out and "green-ran" in out, out)

@@ -116,11 +116,16 @@ A. WHAT GOES IN
   docs/defects.md, with Fix none, since 2 November 2026; until then it was a
   row of the table of type finding, which an order moved into a dated entry
   and replaced by a defect thing. A finding in a document - docs/roadmap.md,
-  docs/plan.md, docs/skill-conventions.md, docs/rationale.md - that the same
-  branch corrects, puts right in its own entry or mends gets no block; the
-  entry names it with its place, the wrong text and the right one. A finding
-  in the code, the skills, the shared texts, the hooks, the programs or the
-  workflow gets a block in every case.
+  docs/plan.md, docs/skill-conventions.md, docs/rationale.md -, in a line of
+  docs/stock-take.tsv or in a field of a block of docs/defects.md that the
+  same branch corrects, puts right in its own entry or mends gets no block,
+  since such a finding would read as not built where nothing is left to do;
+  the entry names it with its place, the wrong text and the right one. The
+  line of the table and the field of a block since 3 November 2026, decided
+  by the person on that day, the roadmap entry of that date on the follow-up
+  to the audit, for the same reason. A finding in the code, the skills, the
+  shared texts, the hooks, the programs or the workflow gets a block in
+  every case.
 
 B. WHAT A BRANCH IS, AND WHAT A UNIT IS
 
