@@ -47391,6 +47391,167 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   for this entry, and no other row changes. In `docs/defects.md`: one block,
   above, one brought back, and the 39 fields mended.
 
+- **Node name out of the first line, no-JSON case completed, rule widened.**
+
+  3 November 2026, version 0.174.0, raised from 0.173.0: two programs change,
+  `scripts/devloop-run-workflow` and `bin/devloop-auto-mode-question`, and
+  the head of `scripts/devloop-stock-take`; nothing under `skills/`,
+  `shared/`, `hooks/`, `output-styles/` or `.github/` changes, and
+  `README.md` does not. On `task/audit-follow-up`, off `origin/main` at
+  `9cad40f`, in three commits: the code with the version, the two programs,
+  the head of the tool and `.claude-plugin/plugin.json`; then
+  `docs/skill-conventions.md`, the two blocks of `docs/defects.md`, this
+  entry and the records in `docs/stock-take.tsv`; then the runs, measured at
+  the second commit, with the figures of the tool after them and the Status
+  of the two blocks, which the runs change. The report stands on this
+  machine as `~/devloop-report-2026-11-03-audit-follow-up.md`, in English,
+  and is not in the repository. Every line number of a file in this entry
+  holds at `9cad40f` unless it says otherwise. No session of Claude Code was
+  started, no session log was read, nothing was installed, GitHub was not
+  read beyond `git fetch`, and the identity under which git commits here was
+  neither set nor read.
+
+  **Decided on 3 November 2026 by the person**, on the four questions of the
+  audit entry of that day, the entry above and its report: (1) the three
+  dated entries that quote `uname -a` whole, lines 13255, 13835 and 19999,
+  stay as they stand, and the cause is repaired, the first line of
+  `scripts/devloop-run-workflow`; (2) the closing at `docs/defects.md` line
+  3805 stays as it stands: its proof is the corrected text as it read when
+  it was corrected, and the Note at line 2821 says why it stands there; (3)
+  the block at `docs/defects.md` line 4704, "the entry on conditions 6 and 7
+  said the self-test holds each failure of gh with the command and the
+  message, where the case on no JSON holds neither", stays, gets a Should and
+  is built; (4) the rule that a finding the same branch corrects gets no
+  block holds for a line of `docs/stock-take.tsv` and for a field of a block
+  of `docs/defects.md` as it holds for the four documents, for the reason it
+  gives, that such a finding would read as not built where nothing is left
+  to do.
+
+  **Built, (1).** `scripts/devloop-run-workflow` line 481, 486 now: the
+  parenthesis of the first line carries `os.uname().sysname` and
+  `os.uname().release`, the system and its release, and no node name; where
+  `os.uname` is missing, `sys.platform`, as before, so that the line holds
+  under Windows too. A new case of the self-test, after "a red file ends
+  with 1 and a last line opening with red:", holds the first line whole
+  against the text it builds itself from the same two fields, or from
+  `sys.platform`, so that any further word in the parenthesis makes it red;
+  it reads no node name, and where it is red it prints not the line but the
+  count of words the parenthesis carries and the count it expects. The
+  self-test passes 34 cases, 33 until this entry; over a copy of the program
+  carrying the old line it is red with "the parenthesis carries 3 words, 2
+  expected" and prints the line nowhere. The block "scripts/devloop-run-workflow
+  prints the machine's node name in its first line" keeps its Should and
+  carries the changed line as its Fix.
+
+  **Built, (3).** `bin/devloop-auto-mode-question` line 669, 675 now: the
+  case "gh prints no JSON" holds, as the cases at lines 664 to 667 and 672
+  to 674 do, the line `command:` with the issue list command and the line
+  `message:` with what the program prints at line 285 through `not_decided`,
+  lines 237 to 241, "printed no JSON list of issues: " and what `json.loads`
+  says of the stand-in's text. That tail is the interpreter's wording, so the
+  self-test reads it off the interpreter running it, `json.loads("not json")`
+  in a `try` four lines above the case, and `expect` compares the whole line;
+  the program under test runs with `sys.executable`, the same interpreter,
+  and the hooks step of `.github/workflows/stock-take.yml` runs both with the
+  `$PY` it finds, so the case comes out alike on ubuntu-latest, macos-latest,
+  windows-latest and alpine. Measured here under Python 3.9.6 and 3.14.7: 39
+  cases pass under each, the case among them. The block keeps its title,
+  gets the Should "the case on no JSON in the self-test of
+  bin/devloop-auto-mode-question holds the command and the message, as the
+  cases beside it do" in place of "not stated", and carries the changed line
+  of the case as its Fix; the line the guard over the blocks asks for:
+  Should changed: the entry on conditions 6 and 7 said the self-test holds each failure of gh with the command and the message, where the case on no JSON holds neither
+
+  **Built, (4).** The rule stands at two places, and at both it names beside
+  the four documents a line of `docs/stock-take.tsv` and a field of a block
+  of `docs/defects.md`, with the reason it gives, dated with this day and
+  this entry: `docs/skill-conventions.md` lines 1805 to 1811, the paragraph
+  "A defect is a block in docs/defects.md; the roadmap reports it", and the
+  head of `scripts/devloop-stock-take`, lines 118 to 123, section A. The
+  search for every further place, as the third rule under "A field is not an
+  answer to a question it was not asked" asks: `grep -rn -i` over `docs/`,
+  `skills/`, `shared/`, `README.md`, `bin/`, `scripts/` and `.github/` with
+  `gets no block`, `no block`, `gets a block`, `finding in a document`, `same
+  branch corrects`, `puts right in its own entry`, `in its own entry or
+  mends`, `without a block` and `a block in every case`; then `finding`
+  beside `block` or `defect` over `skills/`, `shared/`, `README.md`,
+  `docs/plan.md`, `docs/rationale.md`, `.github/` and `hooks/`; then
+  `defects.md` over `skills/`, `shared/`, `README.md`, `.github/`, `hooks/`
+  and `bin/`. Looked at and left: lines 45929 to 45936 of this file, decision
+  (6) of the entry of 2 November 2026, and line 47153 of the entry above,
+  dated entries; `docs/plan.md` line 221, which says a finding is a block
+  like every other defect and not which findings get none;
+  `skills/record-lessons/SKILL.md` line 36 and its table at line 83, which say
+  what a lesson is and where it goes; lines 113 to 117 of the tool's head,
+  the sentence the changed one qualifies, in the same bullet. Every other
+  hit of `no block` is a guard's block, a blocking issue or the tool's own
+  messages on its guard over the blocks, "a title that stood in no block".
+
+  **The version.** `.claude-plugin/plugin.json` 0.173.0 → 0.174.0, once.
+
+  **Records.** In `docs/stock-take.tsv`: one not-a-thing record on the `if`
+  line of the new case of the self-test of `scripts/devloop-run-workflow`,
+  anchored `paren = " ".join([os.uname().sysname, os.uname().release])`, part
+  of the self-test's thing, the one line the change adds to the search set
+  that can carry an anchor; the note of that thing says 34 cases since this
+  entry, 33 until then; the note of the thing "the system: Linux, macOS or
+  Windows as GitHub spells them, printed in the first line", which the print
+  line is part of, says what the parenthesis carries since this entry. The
+  `except` line the no-JSON case adds to the self-test of the question
+  program stands three times in that file, lines 284, 310 and 672 now, can
+  carry no unique anchor and leaves the set, as its two siblings do, listed
+  by the tool under "LINES OF THE SEARCH SET THAT CAN CARRY NO UNIQUE
+  ANCHOR", 339 now, 338 before; no record can stand on it. No row is removed
+  and no anchor moves: the one anchor on a changed line, the not-a-thing
+  record on the print line, still stands once on it. In `docs/defects.md`:
+  the two blocks, above, each with its Fix and the state the tool computes.
+
+  **Runs, under 0.174.0, measured at the second commit, recorded in the
+  third.** One run on each of the two blocks, from the self-test whose case
+  passes through the block's Fix line, each run in a bash started with
+  `--noprofile --norc` and `/usr/bin/grep` first on the path, `python3`
+  resolving to Python 3.9.6: `scripts/devloop-run-workflow --self-test`,
+  SELF-TEST PASSED: 34 cases, the case on the first line among them, a run
+  on the block "scripts/devloop-run-workflow prints the machine's node name
+  in its first line"; `bin/devloop-auto-mode-question --self-test`,
+  SELF-TEST PASSED: 39 cases, the case on no JSON among them, a run on the
+  block "the entry on conditions 6 and 7 said the self-test holds each
+  failure of gh with the command and the message, where the case on no JSON
+  holds neither". No thing arises, the new lines of the self-tests being
+  part of the self-tests' things, and no thing loses its counting run,
+  below; so no further run.
+
+  **Things that lost their counting run.** By section D of the head of
+  `scripts/devloop-stock-take`, read off "STATES, by file and kind" at
+  `9cad40f` and after the first commit: none. "STATES, by file and
+  kind" at `9cad40f` and after the first commit are the same line for line
+  with the evidence line numbers stripped, `diff` over the two printing
+  nothing, 1788 things that are no defect, Undetermined 16, Recorded, not
+  built 11, Built, never walked 1189, Walked 572, before and after. The thing
+  the print line is part of and the self-test of
+  `scripts/devloop-run-workflow` were Built, never walked and stay so; the
+  self-test of `bin/devloop-auto-mode-question` stays Walked, since the
+  `except` line stands in no record and its lines did not change.
+
+  **The stock-take and the checks, before at `9cad40f` and after on the
+  committed branch.** The tool,
+  `PYTHONDONTWRITEBYTECODE=1 scripts/devloop-stock-take`, before and on the
+  tree of the second commit: exit 0 and 0; broken records 0 and 0;
+  uncovered lines of the search set 0 of 4436 and 0 of 4437; units without a
+  straight path 0 and 0; lines of the set that can carry no unique anchor
+  338 and 339; not-a-thing records 3302 and 3303; closed defects 39 and 39;
+  blocks 684 and 684, by state Undetermined 8 and 8, Recorded, not built 283
+  and 281, Built, never walked 271 and 273, Walked 83 and 83, Closed 39 and
+  39; by section after: ## Without a milestone: 30 (Recorded, not built 29,
+  Built, never walked 1); ## Not yet sorted: 654 (Undetermined 8, Recorded,
+  not built 252, Built, never walked 272, Walked 83, Closed 39). The things
+  that are no defect, by state before and after: Undetermined 16 and 16,
+  Recorded, not built 11 and 11, Built, never walked 1189 and 1189, Walked
+  572 and 572. Under BLOCKS HELD AGAINST THE BRANCH POINT after: branch
+  point 9cad40f: blocks removed 0, renamed 0, Should changed 1, added 0;
+  lines of the fixed forms added to docs/roadmap.md: 1; no broken record.
+  AFTER_THIRD_PLACEHOLDER
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

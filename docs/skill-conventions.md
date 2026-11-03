@@ -1803,10 +1803,14 @@ line belongs to no introduction, heading or block. A run on a defect counts
 when the version it ran contains the last change to the `Fix` line, and to
 no other line: so a block moves between sections without a run being lost,
 and a should a later decision changes touches no run. A finding in a document
-— `docs/roadmap.md`, `docs/plan.md`, this file, `docs/rationale.md` — that
-the same branch corrects, puts right in its own entry or mends gets no block,
-since such a finding would read as not built where nothing is left to do: the
-entry names it with its place, the wrong text and the right one. A finding in
+— `docs/roadmap.md`, `docs/plan.md`, this file, `docs/rationale.md` —, in a
+line of `docs/stock-take.tsv` or in a field of a block of `docs/defects.md`
+that the same branch corrects, puts right in its own entry or mends gets no
+block, since such a finding would read as not built where nothing is left to
+do: the entry names it with its place, the wrong text and the right one. The
+line of the table and the field of a block since 3 November 2026, decided by
+the person on that day, the roadmap entry of that date on the follow-up to
+the audit, for the same reason. A finding in
 the code, the skills, the shared texts, the hooks, the programs or the
 workflow gets a block in every case. Two marks of the transition stand in the
 file: the section `## Not yet sorted` holds the blocks no order has sorted
