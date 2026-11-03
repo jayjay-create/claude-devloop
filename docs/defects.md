@@ -300,7 +300,7 @@ filled when the blocks were written. The tool lists both without going red.
 - Should: the first line names the system and its release, `os.uname().sysname` and `os.uname().release`, and no node name
 - Found: Three entries held, 39 fields of blocks mended, two blocks added.
 - Fix: `scripts/devloop-run-workflow` "% (os.uname().sysname, os.uname().release) if hasattr(os,"
-- Status: Built, never walked
+- Status: Walked
 - Note: found 3 November 2026 by the consistency audit of that day, read off the first line of the check's output; three dated entries of docs/roadmap.md quote `uname -a` whole and carry the same word, and stay as they stand, question Q1 of the audit's report
 
 ## Not yet sorted
@@ -4706,7 +4706,7 @@ filled when the blocks were written. The tool lists both without going red.
 - Should: the case on no JSON in the self-test of bin/devloop-auto-mode-question holds the command and the message, as the cases beside it do
 - Found: Six entries held against the code: lines corrected, defects recorded.
 - Fix: `bin/devloop-auto-mode-question` "gh prints no JSON: not decided, the command and the message"
-- Status: Built, never walked
+- Status: Walked
 - Note: found 23 October 2026 by the consistency audit of that date; said right on its status line in the entry of that date, the dated entry left as it stands
 
 ### the install guard reads no --path on puppeteer browsers install, where yargs 17.7.3 hands one to the vendor's install

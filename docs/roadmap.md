@@ -47550,7 +47550,22 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   572 and 572. Under BLOCKS HELD AGAINST THE BRANCH POINT after: branch
   point 9cad40f: blocks removed 0, renamed 0, Should changed 1, added 0;
   lines of the fixed forms added to docs/roadmap.md: 1; no broken record.
-  AFTER_THIRD_PLACEHOLDER
+  After the third commit, the runs in the
+  table and the two blocks reading Walked off them, the tool: exit 0;
+  broken records 0; uncovered lines 0 of 4437; blocks 684, by state
+  Undetermined 8, Recorded, not built 281, Built, never walked 271, Walked
+  85, Closed 39; ## Without a milestone: 30 (Recorded, not built 29, Walked 1); ## Not yet sorted: 654 (Undetermined 8, Recorded, not built 252, Built, never walked 271, Walked 84, Closed 39); the things
+  that are no defect as above; under BLOCKS HELD AGAINST THE BRANCH POINT:
+  blocks removed 0, renamed 0, Should changed 1, added 0; lines of the fixed forms added to docs/roadmap.md: 1; no broken record; the two runs
+  count, none of them under RUNS THAT DO NOT COUNT, each block Walked off its Fix. The nineteen checks
+  under "Before a handover, run these" that run in seconds, in a bash started
+  with `--noprofile --norc` and `/usr/bin/grep` first on the path, print on
+  the committed branch what they printed at `9cad40f`, line for line and
+  with the same exit codes, checks 5, 7 and 20 ending with 1 while printing nothing, as their sections call green, before and after alike; check 16,
+  `scripts/devloop-run-workflow .github/workflows/stock-take.yml`, ends with
+  0 and the line "green: 8 steps run, every one ended with 0; not run by design: no run: block (uses: actions/checkout@v7): 2; left out by the order of 31 October 2026: 3", before and after, the self-tests of the two programs passing 34 and 39 cases in its hooks step, its first line differing from the one at `9cad40f` in the
+  parenthesis alone, which carries two words now, the system and its
+  release, and its title step reading the head of this entry.
 
 ## Decisions taken against
 
