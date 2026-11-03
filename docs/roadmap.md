@@ -47398,12 +47398,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   the head of `scripts/devloop-stock-take`; nothing under `skills/`,
   `shared/`, `hooks/`, `output-styles/` or `.github/` changes, and
   `README.md` does not. On `task/audit-follow-up`, off `origin/main` at
-  `9cad40f`, in three commits: the code with the version, the two programs,
+  `9cad40f`, in four commits: the code with the version, the two programs,
   the head of the tool and `.claude-plugin/plugin.json`; then
   `docs/skill-conventions.md`, the two blocks of `docs/defects.md`, this
   entry and the records in `docs/stock-take.tsv`; then the runs, measured at
   the second commit, with the figures of the tool after them and the Status
-  of the two blocks, which the runs change. The report stands on this
+  of the two blocks, which the runs change; then, after the review of the
+  branch, the line of the case on no JSON below, 674 and not 675, and this
+  sentence. The report stands on this
   machine as `~/devloop-report-2026-11-03-audit-follow-up.md`, in English,
   and is not in the repository. Every line number of a file in this entry
   holds at `9cad40f` unless it says otherwise. No session of Claude Code was
@@ -47443,7 +47445,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   prints the machine's node name in its first line" keeps its Should and
   carries the changed line as its Fix.
 
-  **Built, (3).** `bin/devloop-auto-mode-question` line 669, 675 now: the
+  **Built, (3).** `bin/devloop-auto-mode-question` line 669, 674 now: the
   case "gh prints no JSON" holds, as the cases at lines 664 to 667 and 672
   to 674 do, the line `command:` with the issue list command and the line
   `message:` with what the program prints at line 285 through `not_decided`,
