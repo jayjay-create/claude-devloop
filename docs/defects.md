@@ -296,9 +296,9 @@ filled when the blocks were written. The tool lists both without going red.
 - Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
 
 ### scripts/devloop-run-workflow prints the machine's node name in its first line
-- Wrong: `scripts/devloop-run-workflow` opens its output with `" ".join(os.uname()[:3])`, sysname, nodename and release, so that the first line of the sixteenth check under "Before a handover, run these" carries the machine's name, which stands in no entry of this file by the rule of the audits and would be copied there with the line
+- Wrong: `scripts/devloop-run-workflow` opens its output with `" ".join(os.uname()[:3])`, sysname, nodename and release, so that the first line of the sixteenth check under "Before a handover, run these" carries the machine's name, which the rule of the audits keeps out of every entry of docs/roadmap.md and which would be copied there with the line
 - Should: the first line names the system and its release, `os.uname().sysname` and `os.uname().release`, and no node name
-- Found: Three entries held, 39 fields of blocks mended, one block added.
+- Found: Three entries held, 39 fields of blocks mended, two blocks added.
 - Fix: none
 - Status: Recorded, not built
 - Note: found 3 November 2026 by the consistency audit of that day, read off the first line of the check's output; three dated entries of docs/roadmap.md quote `uname -a` whole and carry the same word, and stay as they stand, question Q1 of the audit's report
@@ -5492,6 +5492,14 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: none
 - Status: Recorded, not built
 - Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry, said right on its status line here
+
+### build-work says no more that it says what is said and not the words where its reference to an approved wording went
+- Wrong: build-work says no more that it says what is said and not the words where its reference to an approved wording went.
+- Should: not stated
+- Found: Four entries held, rationale points completed, two questions answered.
+- Fix: `skills/build-work/SKILL.md` "Where the mode could not be read, "When a command does not answer" holds and"
+- Status: Built, never walked
+- Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; said wrongly in a dated entry; mended on the evidence line
 
 ### setup-checks step 6 keeps the rule on what the checks do not cover without its case
 - Wrong: setup-checks step 6 keeps the rule on what the checks do not cover without its case.

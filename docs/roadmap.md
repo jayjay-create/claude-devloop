@@ -47079,16 +47079,22 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   third commit of the addendum, where its title step reads the head of this
   entry.
 
-- **Three entries held, 39 fields of blocks mended, one block added.**
+- **Three entries held, 39 fields of blocks mended, two blocks added.**
 
   3 November 2026, version 0.173.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md` does not. On `task/audit-2026-11-03`, off
-  `origin/main` at `b545927`, in two commits: the corrections in place, the
+  `origin/main` at `b545927`, in three commits: the corrections in place, the
   mends in `docs/roadmap.md` outside the dated entries, in `docs/plan.md`, in
   `docs/rationale.md`, in 39 fields of blocks of `docs/defects.md` and in two
-  rows of `docs/stock-take.tsv`; then this entry with its block. The report stands on this machine as
-  `~/devloop-audit-2026-11-03.md`, in English, and is not in the repository.
+  rows of `docs/stock-take.tsv`; then this entry with its block; then, after
+  the review of the branch, one block brought back, below, the head of this
+  entry and the Found of its block saying two blocks added, this sentence,
+  and the Wrong of that block and the sentence below on it, both of which
+  said the machine's name stands in no entry where three dated entries carry
+  it, and the figures after the third commit. The report stands on this
+  machine as `~/devloop-audit-2026-11-03.md`, in English, and is not in the
+  repository.
   Every line number of a file in this entry holds at `b545927` unless it says
   otherwise; a line of this file holds at `b545927` as well, no line having
   moved, the corrections standing on their physical lines and this entry
@@ -47139,12 +47145,18 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   "Line M" stands and says the thing was done, every finding lies in one of the
   four documents of decision (6), and the right text stands at `b545927`. For
   three, all of the group of the entry at 45214, (c) does not hold and the rest
-  does, so each stays out and the line that shows the right thing is named:
-  "build-work says no more that it says what is said and not the words where
-  its reference to an approved wording went", at `606cdab` Fix on
-  `skills/build-work/SKILL.md` and Built, never walked, a change to a skill —
-  the sentence is gone from `build-work`, "Unattended mode", item 4, and lines
-  45538 to 45542 say so; "the mend of the sentence on check 17 reads built, its
+  does. One is a finding in a skill: "build-work says no more that it says
+  what is said and not the words where its reference to an approved wording
+  went", at `606cdab` Fix on `skills/build-work/SKILL.md` and Built, never
+  walked — the entry at 45214 took the sentence out of `build-work`,
+  "Unattended mode", item 4, and lines 45538 to 45542 say so. Decision (6)
+  gives a finding in the skills a block in every case, in its second
+  sentence, as the paragraph of `docs/skill-conventions.md` at line 1778 has
+  it; the order of this day kept the block out against that sentence, and
+  after the review of the branch it stands again under `## Not yet sorted` as
+  it stood at `606cdab`, reading Built, never walked off its Fix. The other
+  two stay out, and the line that shows the right thing is named for each:
+  "the mend of the sentence on check 17 reads built, its
   evidence standing under Before a handover, run these" and "the self-test of
   bin/devloop-tool-state has 63 cases since the entry at 40745, not 62", each a
   wrong statement of the entry at 43585 and a wrong note of a row of the table,
@@ -47310,8 +47322,8 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   Without a milestone` with the head of this entry as Found and Fix none:
   `scripts/devloop-run-workflow` opens its output with `" ".join(os.uname()[:3])`,
   whose second word is the machine's node name — the one line of the sixteenth
-  check the audits do not quote, and a word that stands in no entry by the
-  rule of the orders. Three dated entries of this file quote `uname -a` whole
+  check the audits do not quote, and a word the rule of the orders keeps out
+  of every entry. Three dated entries of this file quote `uname -a` whole
   and carry it; they stay as they stand, and the report asks the person about
   them.
 
@@ -47362,7 +47374,14 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   change in it what they printed at `b545927`, line for line and with the same
   exit codes; check 16, `scripts/devloop-run-workflow
   .github/workflows/stock-take.yml`, is run on the committed branch after the
-  second commit, where its title step reads the head of this entry.
+  second commit, where its title step reads the head of this entry. After the
+  third commit, the tool on it: exit 0; broken records 0; uncovered lines 0 of
+  4436; blocks 684, Built, never walked 271 among them; ## Not yet sorted: 654
+  (Undetermined 8, Recorded, not built 253, Built, never walked 271, Walked
+  83, Closed 39), the block brought back reading Built, never walked off its
+  Fix as at `606cdab`; under BLOCKS HELD AGAINST THE BRANCH POINT: blocks
+  removed 0, renamed 0, Should changed 26, added 2; lines of the fixed forms
+  added to docs/roadmap.md: 26; the things that are no defect as above.
 
   **Records.** In `docs/stock-take.tsv`: two rows of things of the tool gain
   the bench their notes name, the rejection of a line under a heading that
@@ -47370,7 +47389,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   field, a field twice" and the rejection of a run on a rejected defect on its
   case "a run on a defect that is recorded and not built"; no run is recorded
   for this entry, and no other row changes. In `docs/defects.md`: one block,
-  above, and the 39 fields mended.
+  above, one brought back, and the 39 fields mended.
 
 ## Decisions taken against
 
