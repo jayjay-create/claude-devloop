@@ -666,7 +666,15 @@ def selftest():
                      "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
                      "message: HTTP 502: Bad Gateway (https://api.github.com/graphql)")
         ans("issues", 0, "not json")
-        ok &= expect("gh prints no JSON: not decided", run(), 2, "question: not decided")
+        # the message is what json.loads says of the stand-in's text, read off this interpreter, since its wording is the interpreter's and the case is to come out alike on every system
+        try:
+            json.loads("not json")
+        except ValueError as e:
+            no_json = str(e)
+        ok &= expect("gh prints no JSON: not decided, the command and the message", run(), 2,
+                     "question: not decided",
+                     "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
+                     "message: printed no JSON list of issues: %s" % no_json)
         issues((15, "The class", "brew install gitleaks"))
         ans("blocking.15", 1, "", "HTTP 404: Not Found")
         ok &= expect("the blocking relation does not answer: not decided", run(), 2,
