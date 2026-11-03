@@ -3,7 +3,7 @@
 Written on 19 September 2026. This is the plan and not a measurement record:
 what was measured stands in `docs/roadmap.md` under `## Known gaps`, with a
 date on every run, the defects stand in `docs/defects.md`, each as one block
-under its milestone or, until an order sorts it, under `## Not yet sorted`,
+under its milestone, under `## Without a milestone` or, until an order sorts it, under `## Not yet sorted`,
 the facts of the stock-take stand in `docs/stock-take.tsv`,
 what holds as a rule stands in `docs/skill-conventions.md`, and the reasons and
 cases of the rules in the texts devloop loads, with the wordings approved for

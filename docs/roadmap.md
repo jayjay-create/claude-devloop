@@ -30,9 +30,9 @@ where the body would come from if one is ever needed — mostly a file to copy f
 mattpocock/skills and adjust, which is minutes of work, not days.
 
 **This is a supply of names, not a backlog.** Nothing here is missing: the
-pre-handover check that holds locked skills against their callers prints one
-line since 13 September 2026 (`b90874b`) — `start-work`, named in `build-work`
-step 6 as the place that sends an armed pull request there, not run — and
+pre-handover check that holds locked skills against their callers prints two
+lines since 31 October 2026 (`628d166`), one from 13 September 2026 (`b90874b`) until then — `start-work`, named in `build-work`
+step 6 as the place that sends an armed pull request there and in `shared/install-issues-read.md` as the place of the in-flight query and as the start a build or a planning followed, not run — and
 nothing else, so no built skill reaches for anything on this list. A name leaves
 it when something needs to call it on its own, which is exactly how `research`
 and `build-prototype` got built, or when it is decided against: `which-skill`
@@ -131,7 +131,7 @@ the ones with a plausible answer:
   against the entry beside it as well; twelve on 7 October 2026, against
   0.129.0, three statements corrected, five notes and four findings; fourteen
   on 12 October 2026, against 0.135.0, read against the nine entries since the
-  round before; fifteen on 14 October 2026, against 0.137.0, read against the three entries since the round before; thirty-three on 18 October 2026, against 0.147.0, read against the eleven entries since the catch-up of 14 October 2026; seventeen on 20 October 2026, against 0.151.0, read against the five entries since the catch-up of 19 October 2026. The findings the stock-take recorded at its close on 23
+  round before; fifteen on 14 October 2026, against 0.137.0, read against the three entries since the round before; thirty-three on 18 October 2026, against 0.147.0, read against the eleven entries since the catch-up of 14 October 2026; seventeen on 20 October 2026, against 0.151.0, read against the five entries since the catch-up of 19 October 2026; seventy-two on 23 October 2026, against 0.156.0, read against the six entries since the round before; ninety-one on 31 October 2026, against 0.167.0, read against the sixteen entries since the round before; fifty-five on 1 November 2026, against 0.170.0, read against the four entries since the round before; twenty-three on 3 November 2026, against 0.173.0, read against the three entries since the round before. The findings the stock-take recorded at its close on 23
   September 2026 are not a round of this check: they were read against the
   tool's states over the whole set and stand in the table with a count the
   tool prints, and a second copy of that count here is what this bullet warns
@@ -45448,7 +45448,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   - The same entry, line 43746 says the entry at 42609 "keeps defects 2 and
     4 off" milestone 3; defect 2 says at 43114 to 43115 "whether milestone
     3, the person decides", and only defect 4 is said to be off the install
-    path alone. The mend on `docs/plan.md` line 588, two of the four of
+    path alone. The mend on `docs/plan.md` line 591, two of the four of
     milestone 3, holds.
 
     Recorded, not built: the entry at 42609 leaves to the person whether defect 2 of the short run is of milestone 3.
@@ -45527,7 +45527,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
     Recorded, not built: five points of docs/rationale.md quote a wording of form B with the password, four of them carrying the wording for the case of doubt.
 
-  - The same entry, lines 45178 to 45180 places "the handover of a refused
+  - The same entry, lines 45181 to 45182 places "the handover of a refused
     install" of `setup-checks`, which decision (1) gives form B in doubt,
     under "Step 3"; it stands under "A guard's block is not a decline",
     lines 85 to 151, at line 124, and the place under "Step 3" is the one at
@@ -47078,6 +47078,318 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   .github/workflows/stock-take.yml`, is run on the committed branch after the
   third commit of the addendum, where its title step reads the head of this
   entry.
+
+- **Three entries held, 39 fields of blocks mended, two blocks added.**
+
+  3 November 2026, version 0.173.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/audit-2026-11-03`, off
+  `origin/main` at `b545927`, in three commits: the corrections in place, the
+  mends in `docs/roadmap.md` outside the dated entries, in `docs/plan.md`, in
+  `docs/rationale.md`, in 39 fields of blocks of `docs/defects.md` and in two
+  rows of `docs/stock-take.tsv`; then this entry with its block; then, after
+  the review of the branch, one block brought back, below, the head of this
+  entry and the Found of its block saying two blocks added, this sentence,
+  and the Wrong of that block and the sentence below on it, both of which
+  said the machine's name stands in no entry where three dated entries carry
+  it, and the figures after the third commit. The report stands on this
+  machine as `~/devloop-audit-2026-11-03.md`, in English, and is not in the
+  repository.
+  Every line number of a file in this entry holds at `b545927` unless it says
+  otherwise; a line of this file holds at `b545927` as well, no line having
+  moved, the corrections standing on their physical lines and this entry
+  standing after the last. No session of Claude Code was started; nine
+  subagents of the session read the entries at 45214, 45885 and 46177, the
+  268 lines of the fixed form of the entry at 46177, the 29 blocks under
+  `## Without a milestone`, `docs/rationale.md` and the rows the three
+  branches added to `docs/stock-take.tsv`, each delivering findings with file,
+  line and quoted text, each read again at the place before it counted.
+  Beyond `git fetch`, GitHub was read through `gh pr view` and `gh api
+  repos/jayjay-create/claude-devloop/…`, and nothing was changed there;
+  nothing was installed; no session log was read; the identity under which
+  git commits here was neither set nor read.
+
+  **What was read, and how.** Whole, with the text in front of the session:
+  `README.md`; `docs/plan.md`; the head of `scripts/devloop-stock-take`, how
+  it reads the blocks and holds them to the branch point and how it computes
+  a block's state; `.github/workflows/stock-take.yml`; the introduction of
+  `docs/defects.md` and its section `## Without a milestone`; the opening of
+  this file, the entry at 45214 in its first paragraph and its heads, the
+  entries at 45885 and 46177 whole but for the 268 lines of the fixed form,
+  and "## Decisions taken against" to the end; the two paragraphs of
+  `docs/skill-conventions.md` on the blocks and on a changed should and its
+  two check sections; `git diff f665141 b545927` over `docs/plan.md`,
+  `docs/skill-conventions.md`, `.github/` and `skills/`. Established first:
+  this file at `606cdab` equals the working tree in lines 1 to 46176, and at
+  `c1949fe` in lines 1 to 45884, so that every line number the two entries
+  give can be read here. #220, #221 and #222 were merged with the five checks
+  main requires green, read off the platform, the merge commits `c1949fe`,
+  `606cdab` and `b545927`.
+
+  **The three entries against the code.** The entry at 45214: its four
+  commits, its version raise, the sixteen corrections in place on sixteen
+  physical lines, read in both directions against `git diff f665141 c1949fe`,
+  its mends and its changes to the loaded texts hold, 80 statements of 94;
+  two line numbers and three statements do not, corrected and said right
+  below. The entry at 45885: 37 statements of 48 hold, the 921 blocks and
+  their fields, the counts of `not stated`, the rows removed, renamed and
+  re-anchored, the states before and after among them; five do not — three
+  figures, said right below, and two ways the move went wrong in the fields
+  of blocks, mended below. The entry at 46177:
+  its account of the guard over the blocks matches `hold_blocks_to_branch_point`
+  of the tool; seven commits of its branch, as it says; the self-test at
+  `b545927` passes 148 cases with 130 of 130 messages asserted; the figures of
+  its last paragraph are the tool's at `b545927`. Of its 268 lines of the fixed
+  form, (a) to (d) of the order hold for 265: every title stood once in
+  `docs/defects.md` at `606cdab` with the head of its group as Found, every
+  "Line M" stands and says the thing was done, every finding lies in one of the
+  four documents of decision (6), and the right text stands at `b545927`. For
+  three, all of the group of the entry at 45214, (c) does not hold and the rest
+  does. One is a finding in a skill: "build-work says no more that it says
+  what is said and not the words where its reference to an approved wording
+  went", at `606cdab` Fix on `skills/build-work/SKILL.md` and Built, never
+  walked — the entry at 45214 took the sentence out of `build-work`,
+  "Unattended mode", item 4, and lines 45538 to 45542 say so. Decision (6)
+  gives a finding in the skills a block in every case, in its second
+  sentence, as the paragraph of `docs/skill-conventions.md` at line 1778 has
+  it; the order of this day kept the block out against that sentence, and
+  after the review of the branch it stands again under `## Not yet sorted` as
+  it stood at `606cdab`, reading Built, never walked off its Fix. The other
+  two stay out, and the line that shows the right thing is named for each:
+  "the mend of the sentence on check 17 reads built, its
+  evidence standing under Before a handover, run these" and "the self-test of
+  bin/devloop-tool-state has 63 cases since the entry at 40745, not 62", each a
+  wrong statement of the entry at 43585 and a wrong note of a row of the table,
+  outside the four documents — lines 45456 to 45461 and 45465 to 45470 say
+  the right thing, the note of the row of `bin/devloop-tool-state`'s self-test
+  says 63, and `grep -c '^\s*expect ' bin/devloop-tool-state` prints 63. The
+  paragraph of that entry on the 32 contradictions holds in every figure: 37
+  named in sections 8 to 20 of the report of 1 November 2026, the four of
+  section 11 gone, the fourth of section 8 read as none, three blocks already,
+  29 new; the 29 titles are the 29 blocks of the section. Every one of the 58
+  places those blocks name says what the Wrong attributes to it; four Wrong
+  fields sited or quoted imprecisely, mended below.
+
+  **Line numbers of dated entries, corrected in place.** As the audits do, on
+  the physical line:
+  - Line 45530, in the entry at 45214: `lines 45178 to 45180` → `lines 45181
+    to 45182`; 45178 to 45180 carry points (3) and (4) of the entry at 44909,
+    and 45181 to 45182 "(1) In doubt B at the three places that said B only
+    where a command asks: `setup-checks`, "Step 3", the handover of a refused
+    install". Corrected.
+  - Line 45451, in the entry at 45214: `docs/plan.md` line 588 → line 591;
+    the entry's line numbers hold at `f665141`, where "two of them of
+    milestone 3" stands on 591, 588 being the number the entry at 43585 gave at
+    `628d166`. Corrected.
+
+  **Said wrongly in dated entries, said right here.** The dated entry stays as
+  it stands:
+  - The entry at 43585, lines 44052 to 44055, gives one old → new pair for
+    lines 42935 and 43083, "`lines 1 to 13, expanded 1040 to 1052` → `lines 1
+    to 14, expanded 1040 to 1053`"; at `628d166` line 43083 read "13, the
+    program once before the first thing of a start that reads an open" and
+    carried no expanded range, so the correction there was `13` → `14` alone.
+    Both lines carry the right numbers at `b545927`.
+  - The entry at 45214, lines 45817 to 45818, says "Each mended note says
+    until when it read otherwise"; of the 23 notes its first commit changed,
+    the eighteen that said "the same entry" and now name the entry's line say
+    nothing of until when, and three do, those on the self-test of
+    `bin/devloop-tool-state`, on check 17 and on the self-test of
+    `scripts/devloop-run-workflow`.
+  - The same entry, lines 45604 to 45607, says "85 distinct heads cited, each
+    found once as a head"; at `c1949fe` `docs/rationale.md` cites 76 distinct
+    heads in the form `entry "…"`, 420 citations, each found once as a head of
+    this file, and 78 heads stand in it whole; at `b545927` 77 and 79.
+  - The same entry, line 45856, says "a defect thing for each status line of
+    this entry, 55", and lines 45232 to 45234 that the search words stand in
+    its head and on the lines that record a defect and on no other line; its
+    fourth commit added two lines opening with "Built:" for the two questions
+    built, 45883 and 45884, so that 57 lines open with a status word, 55 of
+    them with a defect thing and two covered by a not-a-thing record.
+  - The entry at 45885, lines 46011 to 46013 and 46034 to 46036, says 43
+    not-a-thing rows stand on status lines of this file; 34 do, and nine stand
+    on rows of the table under "Named, not built as skills", 43 in all.
+  - The same entry, lines 46017 to 46022, says the self-test went from 124 to
+    134 cases with eight struck and sixteen new, which makes 132; by the case
+    names the self-test prints, thirteen left — the eight struck and five
+    reworded — and 23 came, 18 of them new; the two totals hold.
+  - The same entry, lines 46046 to 46049, says each of the sixteen new things
+    of the tool is benched on its case of the self-test; two carried no bench,
+    the rejection of a line under a heading that opens no block and the
+    rejection of a run on a rejected defect; both benched now, below.
+
+  **Mended in this file outside the dated entries**, under "Named, not built
+  as skills", which the audit of 20 October 2026 mended in place the same way:
+  - Lines 33 to 35 said the pre-handover check that holds locked skills
+    against their callers "prints one line since 13 September 2026
+    (`b90874b`)" and "nothing else"; it prints two since 31 October 2026,
+    `628d166`, when `shared/install-issues-read.md` came to name `start-work`
+    as the place of the in-flight query and as the start a build or a planning
+    followed, `git show COMMIT:shared/install-issues-read.md | grep -c
+    '`start-work`'` printing 0 at `bc69673` and 2 at `628d166`. Now so, on
+    those lines.
+  - Line 134, the tally of the rounds of `check-docs-consistency`, ended at
+    "seventeen on 20 October 2026" and lacked the three rounds since: the
+    entry at 35558, seventy-two, "one per disagreement above" at 36288; the
+    entry at 43585, ninety-one, the status lines of its four paragraphs,
+    4 + 55 + 30 + 2; the entry at 45214, fifty-five, its lines opening with
+    "Recorded, not built:", the two opening with "Built:" being the two
+    questions answered. Now so, with this round, on that physical line.
+
+  **Mended in `docs/plan.md`.** Line 6 said a block stands "under its
+  milestone or, until an order sorts it, under `## Not yet sorted`", and the
+  29 blocks under `## Without a milestone` stand under neither; now "under its
+  milestone, under `## Without a milestone` or, until an order sorts it, under
+  `## Not yet sorted`", as milestone 1 of the plan has it.
+
+  **Mended in `docs/rationale.md`.** Lines 2879 to 2881, the one point of the
+  file whose rule did not stand in bold, the point of `record-lessons` under
+  "When this repository is the workflow"; now `- **…**` like the other 302,
+  on the same three lines. Every point the diff since `f665141` touches and
+  every point under the three skills it changes, 139, holds against its loaded
+  text, and the 120 German wordings among them stand in this file word for
+  word, each inside the entry its point names.
+
+  **Mended in fields of blocks of `docs/defects.md`**, by the order of this
+  day, which extends to this file and to the table the rule of the paragraph
+  of the conventions on the blocks, there named for `docs/roadmap.md`,
+  `docs/plan.md`, `docs/skill-conventions.md` and `docs/rationale.md`. Four
+  Wrong fields of blocks under `## Without a milestone`, found on 1 November
+  2026, no Should among them:
+  - "start-work says something in flight means no question and offers to land
+    an open pull request": the Wrong quoted "Something in flight means no
+    question, and a stop"; `skills/start-work/SKILL.md`, "Step 2", says
+    "Nothing in flight means a question and a stop. Something in flight means
+    no question, so there is nothing to wait for". Now the second sentence,
+    whole.
+  - "start-work says not to ask at all with a map or a spec in flight and in
+    the same case to rank, recommend and offer": the Wrong placed the
+    exception in "the same paragraph"; it stands in a bullet two paragraphs
+    further down the same step. Now "a bullet further down in the same step".
+  - "editing-tool.md says the guards read text put through the shell and that
+    a quoted argument is a word to them": the Wrong sited by "first paragraph"
+    and "last paragraph"; `shared/editing-tool.md` is one paragraph of 19
+    lines. Now by sentence.
+  - "install-tool.md says no issue holds the task since the issue is written
+    on a no alone, while the way after a no runs the same steps with the issue
+    open": the Wrong sited by "the paragraph on the steps for the PATH" and
+    "the paragraph after it"; `shared/install-tool.md` has no paragraph
+    break. Now by sentence.
+  Thirty-six fields of blocks under `## Not yet sorted` ran into the paragraph
+  after theirs: the move of 2 November 2026 read a status paragraph "up to the
+  next blank line, list item or head", and where the next status paragraph or
+  a bold paragraph head followed without a blank line, the field took it too,
+  a Should of 14,432 characters the longest; 23 Should and 13 Wrong fields,
+  found by the two patterns of a status word opening a sentence and of a bold
+  head, each now cut where its paragraph ends, before the next status word or
+  bold head. Three blocks carried the should the entry of 17 October 2026
+  quotes as the earlier one, taken off the note's "should revised …, earlier:"
+  where the revised should stands on the status line after " — should: ":
+  "the introduction of start-work step 2 reached no message of project 1 on 16
+  October 2026, …", "the sentence that seven labels were created in the tracker
+  was said in neither run of 16 October 2026" and "the line naming the classes
+  the two yes open, …"; each Should now the status line's, lines 25889, 25907
+  and 26092. The 26 blocks whose Should changed, one line each as the tool
+  reads them:
+  Should changed: no line of setup-checks step 8 orders the section of environment.md on what checks a merge to be rewritten once the protection stands
+  Should changed: setup-project and setup-checks say the program asks and prints the two gate queries, where a call that reads no mergeable value asks neither
+  Should changed: README.md says the question that writes the install record is put at setup, where since 20 October 2026 it is put at a refresh as well
+  Should changed: an install sent to the background with & or negated with ! reads as alone, since bin/devloop-command-reader prints neither, and its line is written on the call's exit
+  Should changed: context f of hooks/post-tool-use-install-fact.sh says an install was not the last command of its call and its output not read whole, where it stood last with a command before it at the top level and its output seen
+  Should changed: run 1 headed the hard core of the user stories Geschichten where the person's language uses the term as it stands
+  Should changed: the last message of the planning of run 3 said allein mit --auto, and the texts of cut-into-tasks, plan-work, build-work and setup-checks tell the person to type --auto without the command
+  Should changed: the planning of run 3 read install-tools and dependency-tools off origin/main itself beside its call of bin/devloop-start-conditions
+  Should changed: the rounds of runs 1 and 2 said nothing of the tool the work needs and that it is missing, run 1's planning wrote that yq is installed without reading the machine and carried it into the build
+  Should changed: the planning of run 1 said to the person nothing of the mode not being set up and of --auto setting it up, where the record of the mode said yes and the install record no
+  Should changed: the prompts of run 1 to its two build subagents said Do not install anything, one of them that yq is on the machine, and handed neither point 7 nor the printed install record
+  Should changed: run 1 built the task needing yq against a stand-in under the no, put the landing question and handed brew install yq over only after the person said the tool is missing
+  Should changed: run 2 built both tasks and ran both installs in the main run and handed no task to a build subagent
+  Should changed: run 2 read the folders for browsers only around the npm install and only ~/.cache/puppeteer, none around brew install htmlq
+  Should changed: the Stop hook of run 1 ran the chain at the end of the main run's turn while the build subagent renamed in the working copy, counted the red of the half-done rename as attempt 1, and the main run answered it with a text to the person
+  Should changed: no hook hands a subagent the install record and the rule on installing, the build subagents of run 1 having got neither point 7 nor the record from the prompt
+  Should changed: with respondToBashCommands set to false the run does not answer the output of a command typed with ! by itself, so the signal of form A does not come
+  Should changed: in the graphical chat panel the extension for VS Code opens with, the ! shortcut is not there, so form A has no place there
+  Should changed: after the person's no the run answered their ! brew install yq in the same session, read the tool with --installed, ran bin/devloop-install-issues inside step 3, which closed the issue with a comment naming a start that did not happen, and built, so that the next start never walked
+  Should changed: bin/devloop-command-reader line 2297 hands the two hex digits of a \x escape in an ANSI-C string to hex, which takes four, so every command carrying $'\xHH' ends the reader with exit 2 and the message meant for JSON, and the six PreToolUse guards block the call, the table guard blocking an experiment of the build subagent at ac4d47c8 #174
+  Should changed: at the next start the main run read the tool itself with command -v and sent gh issue close for the install issue with a comment of its own, in start-work before the program, and only Claude Code's classifier refusing it left the closing to bin/devloop-install-issues
+  Should changed: with the person there the run read an armed pull request twenty times in a loop and then handed the merge over with the ! line and a sentence naming auto-merge, twice, GitHub merging within ten seconds of each handover and before the person's command, and the second handover said the person had merged the first pull request by hand where GitHub had
+  Should changed: the prompts to both build subagents said install nothing, the install record says no, you install nothing, no stand-ins and that yq is installed, beside a tool line and the record line, where the fifth rule of step 3 has the program's lines and nothing of the run's own on installing
+  Should changed: the introduction of start-work step 2 reached no message of project 1 on 16 October 2026, the four points, the fixed line and the idea as understood standing in a progress update alone
+  Should changed: the sentence that seven labels were created in the tracker was said in neither run of 16 October 2026
+  Should changed: the line naming the classes the two yes open, each with its tool, stood in a progress update and in the handover tail and in no message of its own
+
+  **Recorded as a block, not built.** One finding in a program, under `##
+  Without a milestone` with the head of this entry as Found and Fix none:
+  `scripts/devloop-run-workflow` opens its output with `" ".join(os.uname()[:3])`,
+  whose second word is the machine's node name — the one line of the sixteenth
+  check the audits do not quote, and a word the rule of the orders keeps out
+  of every entry. Three dated entries of this file quote `uname -a` whole
+  and carry it; they stay as they stand, and the report asks the person about
+  them.
+
+  **Decided and not changed.** The closing at `docs/defects.md` line 3797,
+  "Closed, corrected in the document: `docs/defects.md` carries "2026 nothing
+  of it is said. And the first no does not say that work without"", resolves
+  to the Note of the block "the rule keeping runtimes out of the install
+  question was delivered as an assurance a fifth time in five runs, and a
+  rewording is spent", which quotes the text as what the row's evidence read
+  until 1 November 2026, kept so that the closing resolves; the repair itself
+  stands, that block reading Built, never walked off its Fix on
+  `shared/install-question.md`; which proof the closing should carry the
+  report asks the person. The block "the entry on conditions 6 and 7 said the
+  self-test holds each failure of gh with the command and the message, where
+  the case on no JSON holds neither" is the 28th bullet under line 35889,
+  whose 27 others left by decision (6); the entry at 46177, line 46279, kept
+  it as a finding in a program's self-test; the report asks the person which
+  reading holds. `skills/record-lessons/SKILL.md` line 83 compresses the form
+  of a block and names the file, whose introduction gives the form whole; not
+  a defect. The references of `docs/plan.md` to defects by their status
+  lines, 43116 to 44850, name the entries that recorded them and hold, as the
+  entry at 45885 read them.
+
+  **Things that lost their counting run.** By section D of the head of
+  `scripts/devloop-stock-take`, read off "STATES, by file and kind" at
+  `b545927` and on the branch: none. No anchor of the table and no field of a
+  block stands on a line this entry's branch changed, measured with a script
+  over every anchor pair of `docs/stock-take.tsv` and every anchor field of
+  `docs/defects.md` against the changed lines before the change, and the
+  states of the 1788 things that are no defect and of the 683 blocks after
+  the block above stand as before, the new block Recorded, not built.
+
+  **The stock-take and the checks, before at `b545927` and after on the
+  committed branch.** The tool, `PYTHONDONTWRITEBYTECODE=1 scripts/devloop-stock-take`, before and
+  on the working tree with every change in it: exit 0 and 0; broken records 0
+  and 0; uncovered lines of the search set 0 of 4436 and 0 of 4436; units without a
+  straight path 0 and 0; lines of the set that can carry no unique anchor
+  338 and 338; not-a-thing records 3302 and 3302; closed defects 39 and 39; blocks
+  682 and 683, by state Undetermined 8 and 8, Recorded, not built 282 and 283, Built, never walked 270 and 270,
+  Walked 83 and 83, Closed 39 and 39; by section after: ## Without a milestone: 30 (Recorded, not built 30);
+  ## Not yet sorted: 653 (Undetermined 8, Recorded, not built 253, Built, never walked 270, Walked 83, Closed 39). The things that are no defect, by state before and after: Undetermined 16 and 16,
+  Recorded, not built 11 and 11, Built, never walked 1189 and 1189, Walked 572 and 572, the states unchanged, no
+  thing having lost or gained a run. Under BLOCKS HELD AGAINST THE BRANCH
+  POINT after: branch point b545927: blocks removed 0, renamed 0, Should changed 26, added 1; lines of the fixed forms added to docs/roadmap.md: 26;
+  no broken record. The nineteen checks under "Before a handover, run these"
+  that run in seconds, in a bash started with `--noprofile --norc` and
+  `/usr/bin/grep` first on the path, print on the working tree with every
+  change in it what they printed at `b545927`, line for line and with the same
+  exit codes; check 16, `scripts/devloop-run-workflow
+  .github/workflows/stock-take.yml`, is run on the committed branch after the
+  second commit, where its title step reads the head of this entry. After the
+  third commit, the tool on it: exit 0; broken records 0; uncovered lines 0 of
+  4436; blocks 684, Built, never walked 271 among them; ## Not yet sorted: 654
+  (Undetermined 8, Recorded, not built 253, Built, never walked 271, Walked
+  83, Closed 39), the block brought back reading Built, never walked off its
+  Fix as at `606cdab`; under BLOCKS HELD AGAINST THE BRANCH POINT: blocks
+  removed 0, renamed 0, Should changed 26, added 2; lines of the fixed forms
+  added to docs/roadmap.md: 26; the things that are no defect as above.
+
+  **Records.** In `docs/stock-take.tsv`: two rows of things of the tool gain
+  the bench their notes name, the rejection of a line under a heading that
+  opens no block on its case "a field over a line break, a line that is no
+  field, a field twice" and the rejection of a run on a rejected defect on its
+  case "a run on a defect that is recorded and not built"; no run is recorded
+  for this entry, and no other row changes. In `docs/defects.md`: one block,
+  above, one brought back, and the 39 fields mended.
 
 ## Decisions taken against
 
