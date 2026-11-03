@@ -30,9 +30,9 @@ where the body would come from if one is ever needed — mostly a file to copy f
 mattpocock/skills and adjust, which is minutes of work, not days.
 
 **This is a supply of names, not a backlog.** Nothing here is missing: the
-pre-handover check that holds locked skills against their callers prints one
-line since 13 September 2026 (`b90874b`) — `start-work`, named in `build-work`
-step 6 as the place that sends an armed pull request there, not run — and
+pre-handover check that holds locked skills against their callers prints two
+lines since 31 October 2026 (`628d166`), one from 13 September 2026 (`b90874b`) until then — `start-work`, named in `build-work`
+step 6 as the place that sends an armed pull request there and in `shared/install-issues-read.md` as the place of the in-flight query and as the start a build or a planning followed, not run — and
 nothing else, so no built skill reaches for anything on this list. A name leaves
 it when something needs to call it on its own, which is exactly how `research`
 and `build-prototype` got built, or when it is decided against: `which-skill`
@@ -131,7 +131,7 @@ the ones with a plausible answer:
   against the entry beside it as well; twelve on 7 October 2026, against
   0.129.0, three statements corrected, five notes and four findings; fourteen
   on 12 October 2026, against 0.135.0, read against the nine entries since the
-  round before; fifteen on 14 October 2026, against 0.137.0, read against the three entries since the round before; thirty-three on 18 October 2026, against 0.147.0, read against the eleven entries since the catch-up of 14 October 2026; seventeen on 20 October 2026, against 0.151.0, read against the five entries since the catch-up of 19 October 2026. The findings the stock-take recorded at its close on 23
+  round before; fifteen on 14 October 2026, against 0.137.0, read against the three entries since the round before; thirty-three on 18 October 2026, against 0.147.0, read against the eleven entries since the catch-up of 14 October 2026; seventeen on 20 October 2026, against 0.151.0, read against the five entries since the catch-up of 19 October 2026; seventy-two on 23 October 2026, against 0.156.0, read against the six entries since the round before; ninety-one on 31 October 2026, against 0.167.0, read against the sixteen entries since the round before; fifty-five on 1 November 2026, against 0.170.0, read against the four entries since the round before; twenty-three on 3 November 2026, against 0.173.0, read against the three entries since the round before. The findings the stock-take recorded at its close on 23
   September 2026 are not a round of this check: they were read against the
   tool's states over the whole set and stand in the table with a count the
   tool prints, and a second copy of that count here is what this bullet warns
@@ -45448,7 +45448,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
   - The same entry, line 43746 says the entry at 42609 "keeps defects 2 and
     4 off" milestone 3; defect 2 says at 43114 to 43115 "whether milestone
     3, the person decides", and only defect 4 is said to be off the install
-    path alone. The mend on `docs/plan.md` line 588, two of the four of
+    path alone. The mend on `docs/plan.md` line 591, two of the four of
     milestone 3, holds.
 
     Recorded, not built: the entry at 42609 leaves to the person whether defect 2 of the short run is of milestone 3.
@@ -45527,7 +45527,7 @@ nothing arrives to be triaged, and it gets a trigger when there are (decided on
 
     Recorded, not built: five points of docs/rationale.md quote a wording of form B with the password, four of them carrying the wording for the case of doubt.
 
-  - The same entry, lines 45178 to 45180 places "the handover of a refused
+  - The same entry, lines 45181 to 45182 places "the handover of a refused
     install" of `setup-checks`, which decision (1) gives form B in doubt,
     under "Step 3"; it stands under "A guard's block is not a decline",
     lines 85 to 151, at line 124, and the place under "Step 3" is the one at

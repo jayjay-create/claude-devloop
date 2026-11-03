@@ -2876,9 +2876,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
 
 ### When this repository is the workflow
 
-- A lesson about something missing or known to be broken goes into
+- **A lesson about something missing or known to be broken goes into
   `docs/defects.md` as a block, under its milestone or under "Without a
-  milestone", in the block's form. Reason: the defects of devloop stand in one
+  milestone", in the block's form.** Reason: the defects of devloop stand in one
   file the stock-take tool reads, and a lesson written into `docs/roadmap.md`
   would stand where the tool no longer looks. Case: the roadmap had three
   tasks at once, the list of the defects, the log of the runs and the place of
