@@ -5534,3 +5534,19 @@ filled when the blocks were written. The tool lists both without going red.
 - Fix: `skills/build-work/SKILL.md` "with what the command asks, in doubt what"
 - Status: Built, never walked
 - Note: found 1 November 2026 by the consistency audit of that day, the roadmap entry of that date on the four entries held; asked of the person in the entry, not built; the should as its status line says; built 2 November 2026, version 0.171.0, the wording approved by the person that day, the paragraph of that day in the same entry, in skills/build-work/SKILL.md step 3, the message after a no under form B, where the evidence now stands
+
+### a thing Walked on the branch that was not Walked at the branch point and has no run the branch adds goes unseen before the merge
+- Wrong: on the branch of the entry "The dated entries of the roadmap move to an archive file." the outcome `hooks/pre-tool-use-identity-guard.sh / whole file / block: text 7 on stderr with what was read filled in, exit 2, through no function` stood Walked after the second commit without a run the branch added, because the branch took the line docs/roadmap.md:41826 of d026802 out of its range, the record on the status line that had held its three runs of 10 and 12 October 2026 back from a text 7 the hook no longer prints; nothing in `scripts/devloop-stock-take` names such a change before the merge, and the fourth commit of that branch found it by reading the figures
+- Should: the tool names every thing and every block of docs/defects.md that is Walked on the branch, was not Walked at the branch point and has no run the branch adds, so that such a change is read before the merge
+- Found: Three entries held, eleven places mended, two blocks added.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 4 November 2026 by the consistency audit of that day, from the last paragraph of the entry of 4 November 2026 on the archive; concerns scripts/devloop-stock-take, whose check against a run recorded too early, section C of its head, holds a run to the lines of its thing and no thing to its state at the branch point; the guard over the blocks and the archives, section F, holds titles, Shoulds and files and no state
+
+### the head of scripts/devloop-stock-take names docs/roadmap.md for the entry of 29 September 2026 on the merge gate, which stands in the archive
+- Wrong: `scripts/devloop-stock-take` line 66 says "docs/roadmap.md, the entry of 29 September 2026 on the merge gate, has both halves", where that entry stands in docs/roadmap-archive-1.md since 4 November 2026 and the rule "An archive of the roadmap never changes" in docs/skill-conventions.md has an explicit docs/roadmap.md that means an archived entry name the archive; .github/workflows/stock-take.yml line 5 and docs/skill-conventions.md line 1416 name the archive for the same entry
+- Should: the line names docs/roadmap-archive-1.md for that entry
+- Found: Three entries held, eleven places mended, two blocks added.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 4 November 2026 by the consistency audit of that day, by grep -n 'docs/roadmap.md' over hooks/, bin/, scripts/ and .github/ against the archive rule; a comment in a program, left as it stands since the order of that day changes nothing outside docs/
