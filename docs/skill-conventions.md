@@ -207,7 +207,7 @@ and again at the very bottom from `shared/closing.md`; the line on skill names
 is inserted directly under the opening block from `shared/skill-name.md`, in
 one wording since 18 September 2026, where it stood in three before; the
 wording above is the third of that day, written for the situation measured
-under `## Known gaps` in `docs/roadmap.md`, its sentence on a name the user
+under `## Known gaps` in `docs/roadmap-archive-1.md`, its sentence on a name the user
 typed as it stands since 17 October 2026. The next section describes how.
 
 ## Text shared between skills
@@ -226,14 +226,14 @@ plugin: it takes one name made of lower-case letters, digits and hyphens,
 prints `shared/<name>.md` found relative to its own location, and exits 2 on
 any other name and on a missing file, which aborts the load out loud rather
 than leaving a rule out quietly. The measurement this rests on is under
-"Environment constraints, measured", and with its runs in `docs/roadmap.md`
-under `## Known gaps`, the entry of 17 September 2026.
+"Environment constraints, measured", and with its runs in
+`docs/roadmap-archive-1.md` under `## Known gaps`, the entry of 17 September 2026.
 
 **The program replaces `${CLAUDE_PLUGIN_ROOT}` in what it prints**, since 7
 October 2026, by the plugin's directory, the one above its own `bin/`. Claude
 Code substitutes that variable in a skill's own text, read on 3 October 2026
 off `code.claude.com/docs/en/skills.md` and recorded in the entry of that day
-in `docs/roadmap.md`; whether it does so in what an insert line printed is
+in `docs/roadmap-archive-1.md`; whether it does so in what an insert line printed is
 not measured, and need not be. A shared text that names a program of the
 plugin — `shared/fetch-three-times.md` names `bin/devloop-bounded` — writes
 `${CLAUDE_PLUGIN_ROOT}/bin/<program>` as a skill would, and the path reaches
@@ -573,7 +573,7 @@ the call of the three that a check refused and that went through when made
 again gets the line above;
 `shared/fetch-three-times.md`, inserted into the four skills that fetch so,
 says why, with GitHub's own checkout action as the measure, and the entry of 5
-October 2026 in `docs/roadmap.md` has the reading under its third addendum.
+October 2026 in `docs/roadmap-archive-1.md` has the reading under its third addendum.
 Measured on 31 August 2026 in a test project: a
 command was refused by the runtime's permission check — not the platform, and the
 message asks in so many words for a pause and an explanation to the user of what
@@ -898,7 +898,7 @@ person at all: ten of its thirteen points were prose above two option lines,
 and prose above the widget does not arrive — the widget's own question field
 carries prose, and nothing in this set used it for that before 17 October
 2026. Both cuts are recorded in
-`docs/roadmap.md` under `## Known gaps`: the entry of 29 September 2026 on the
+`docs/roadmap-archive-1.md` under `## Known gaps`: the entry of 29 September 2026 on the
 message's cut, the entry of 30 September 2026 on the question's; this is the
 rule drawn from them.
 
@@ -998,7 +998,7 @@ them and does not go and look: what a hook or a program prints into a session,
 and what a run says or writes for a person. Those cannot point elsewhere, which
 is what makes their length the reader's problem. It does not cover the skills
 and the shared text: a run reads those at load, and they can point — the
-branch test under the entry of 14 September 2026 in `docs/roadmap.md` is the
+branch test under the entry of 14 September 2026 in `docs/roadmap-archive-1.md` is the
 remedy for a document too long, and the sprawl of `build-work` stands there as
 an open defect this rule does not answer. It does not cover a project's control
 documents; the exit under "A project's rules are written at the review's
@@ -1407,13 +1407,13 @@ goes up once per branch, not once per order: a squash merge lands only the
 number the branch ends on, and every run recorded under an earlier one names a
 version main never carried. `scripts/devloop-version-guard`, registered in
 `.claude/settings.json` of this repository, blocks the second raise and names
-the three numbers; the entry of 29 September 2026 in `docs/roadmap.md` has
+the three numbers; the entry of 29 September 2026 in `docs/roadmap-archive-1.md` has
 the case that taught it. And a pull request into main lands only once the
 check `stock-take` is green: `.github/workflows/stock-take.yml` runs
 `scripts/devloop-stock-take` and its self-test on the merged state, and the
 branch protection on main requires that check, for admins too, since 29
 September 2026, so `gh pr merge` is refused while it is pending or red; the
-entry of that date in `docs/roadmap.md` on the merge gate carries the setting
+entry of that date in `docs/roadmap-archive-1.md` on the merge gate carries the setting
 and the merge sequence. Since 14 October 2026 four checks more are required,
 `hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
 and `(alpine)`, the second job of the same workflow, which runs every
@@ -1675,7 +1675,7 @@ before and after. A sentence that said since when something holds, or how it
 stood before, says in the README what holds; a reference to a dated entry of the
 roadmap names the entry without its date; the state alone, and no new content
 with it. The rule above holds as before for the documents that measure and
-record — this file, `docs/roadmap.md` and `docs/plan.md` — and neither the
+record — this file, `docs/roadmap.md` with its archives and `docs/plan.md` — and neither the
 README nor the texts devloop loads into a session are among them: what holds for
 those stands under "The texts devloop loads carry no date and no history" below.
 A step of the job `stock-take` in `.github/workflows/stock-take.yml`, the check
@@ -1684,7 +1684,8 @@ A step of the job `stock-take` in `.github/workflows/stock-take.yml`, the check
 included, the file read as one line for that, and every date found printed; so a
 date can enter the README on a branch and cannot land. And it is written for
 those who use devloop, and says nothing of how devloop is built: no reference to
-devloop's own documents — `docs/plan.md`, `docs/roadmap.md`, this file,
+devloop's own documents — `docs/plan.md`, `docs/roadmap.md` and its archives
+`docs/roadmap-archive-<n>.md`, this file,
 `docs/stock-take.tsv`, `docs/rationale.md`, `docs/defects.md` — no file of
 devloop named as a
 mechanism, under `bin/`, `scripts/`, `shared/`, `hooks/`, `skills/`, `.github/`
@@ -1698,7 +1699,8 @@ roadmap entry, which names each place the README carried until then, before and
 after. A second step of the same job holds this half since 21 October 2026, the
 roadmap entry of that date on milestone 3, part 3: red where `README.md` names
 one of the documents above — `docs/rationale.md` among them since 1 November
-2026 and `docs/defects.md` since 2 November 2026 — or a path into `bin/`,
+2026, `docs/defects.md` since 2 November 2026 and the archives
+`docs/roadmap-archive-<n>.md` since 4 November 2026 — or a path into `bin/`,
 `scripts/`, `shared/`, `hooks/`, `skills/`,
 `.github/` or `.claude-plugin/`, the file read as one line as for the dates and
 every find printed; what the README says of the user's project, `docs/agents/`,
@@ -1715,7 +1717,7 @@ files carry the rule and at most a short reason that says what the rule
 prevents, and nothing else of its story: no date, no "since" or "until then", no
 reference to an entry of `docs/roadmap.md`, no case with its run or its
 measurement, no earlier or quoted old wording, and no reference to
-`docs/roadmap.md`, this file, `docs/plan.md`, `docs/stock-take.tsv`,
+`docs/roadmap.md` or an archive of it, this file, `docs/plan.md`, `docs/stock-take.tsv`,
 `docs/defects.md` or `scripts/devloop-stock-take` that is neither a rule nor a
 reason. What a run
 needs in order to act stays — where it writes, which file it reads, the table of
@@ -1767,7 +1769,7 @@ under "Before a handover, run these", though the twentieth, since 31 October
 
 **A run's date is copied from the session log of that run, not from memory.**
 The stock-take of 23 September 2026 held two dated measurements in
-`docs/roadmap.md` against the logs of the runs they record and found each on
+`docs/roadmap-archive-1.md` against the logs of the runs they record and found each on
 the wrong day: one run dated the day after its log begins, one the day before.
 The measurements stand as written, since a dated record is never edited; what
 is built is the rule. A run's date is the day its session log opens, read in
@@ -1791,19 +1793,21 @@ in the file and carries no " / ". The blocks stand under `## Milestone
 roadmap is a report: a new entry writes no status line for a defect, and a
 defect the entry finds the same branch writes as a block. A run on a defect
 stands in `docs/stock-take.tsv` as before, naming the defect by its title,
-which does not change with the section, and pointing at the line of the
-roadmap that reports the run. The tool reads the blocks, computes every state
+which does not change with the section, and pointing at the line of
+`docs/roadmap.md`, or of the archive `docs/roadmap-archive-<n>.md` that holds
+the entry, that reports the run. The tool reads the blocks, computes every state
 by its section D — "Never assert state — query it" above — and goes red where
 a block names another state, where a field is missing or wrapped, where a
 title stands twice, where `Fix` does not stand exactly once or points at
-`docs/roadmap.md` or `docs/defects.md`, where `Found` names no head whole
-and exactly once, where a milestone is none of the plan's, where `Status`
+`docs/roadmap.md`, an archive of it or `docs/defects.md`, where `Found` names
+no head whole and exactly once over the roadmap and its archives, where a milestone is none of the plan's, where `Status`
 is in none of the forms, where a closing's proof does not hold, or where a
 line belongs to no introduction, heading or block. A run on a defect counts
 when the version it ran contains the last change to the `Fix` line, and to
 no other line: so a block moves between sections without a run being lost,
 and a should a later decision changes touches no run. A finding in a document
-— `docs/roadmap.md`, `docs/plan.md`, this file, `docs/rationale.md` —, in a
+— `docs/roadmap.md`, an archive of it, `docs/plan.md`, this file,
+`docs/rationale.md` —, in a
 line of `docs/stock-take.tsv` or in a field of a block of `docs/defects.md`
 that the same branch corrects, puts right in its own entry or mends gets no
 block, since such a finding would read as not built where nothing is left to
@@ -1843,6 +1847,45 @@ after the branch point is no removal, the comparison going against the
 branch point and not against main's tip; without `origin/main` the tool
 says in one line that it holds the blocks against no branch point.
 
+**An archive of the roadmap never changes.** The roadmap is the dated report
+in `docs/roadmap.md` and its archives, `docs/roadmap-archive-<n>.md`. Decided
+on 4 November 2026, the roadmap entry of that date on the archive, part 3 of
+the decision of 1 November 2026 on the three tasks of the roadmap. (11) Every
+dated entry under `## Known gaps` that stood in `docs/roadmap.md` at `d026802`
+went into the archive, unchanged and at once; the four sections without a
+date — "Built and exercised", "Named, not built as skills" with "Where these
+would attach", "Decisions taken against" and "Names that were rejected" —
+stay in `docs/roadmap.md`. Since parts 1 and 2 the defects stand with their
+should in `docs/defects.md` and the reasons and the approved wordings in
+`docs/rationale.md`; only the should of a block with `not stated` stands in
+the entry its `Found` names, and it stays readable there, in the archive. Not
+chosen: moving only the entries no open block names in its `Found`, a measure
+that follows the state of the defects and not whether an entry still carries
+anything, and that asks for a new move after every milestone. (12) The archive
+is a file of the repository, `docs/roadmap-archive-1.md`: `docs/roadmap.md` of
+`d026802` byte for byte, every line at its number, the four sections included;
+a later archive is made the same way, as `docs/roadmap-archive-2.md`, with line
+numbers of its own. Not chosen: the archive as the state of a commit alone,
+read with `git show`, since every look into it would then go through git. (13)
+An archive never changes: `scripts/devloop-stock-take` is red where a branch
+changes, renames or removes an archive that stands at the commit it forked
+from, and where an archive the branch adds is not `docs/roadmap.md` at that
+commit byte for byte under the next free number. A wrong line number in an
+archived entry is said right by the entry of the branch that finds it; the
+correction in place below holds for `docs/roadmap.md` alone. Not chosen:
+correcting line numbers in the archive as well, since the tool cannot tell a
+line number from a measured value. The tool reads an archive for the heads a
+block's `Found` names, exactly one over `docs/roadmap.md` and the archives
+together, for the lines a run, a `Trigger`, a `Bench`, a `Cost` or a closing
+points at, and for the proofs of closings, the closing lines that quote the
+text left out as for `docs/roadmap.md`; a `Fix` points at no archive; the
+table "Named, not built as skills" of an archive is read nowhere, and no line
+of an archive is in the search set. A reference that names a line of the
+roadmap names the file the line stands in; a reference to an entry by its
+date, its subject or its head, without a file name and without a line, stays
+as it is. `README.md` names no archive, as it names none of devloop's
+documents, and the texts devloop loads refer to none.
+
 **A should a later decision changes is written where the decision is, and in
 the block.** Where a later decision changes the should of a defect, the new
 should stands in the entry that decides it, with the old one quoted there,
@@ -1858,8 +1901,10 @@ three of that audit's findings went back to the revisions — line numbers
 the revisions moved in an entry below them, ranges written into an entry
 that hold at another commit than the entry's, and a revised should given to
 an entry that carries none. Those sixteen revisions stay as they stand. A
-dated entry is corrected in place where a line number in it is wrong, as the
-audits do, and nowhere else.
+dated entry of `docs/roadmap.md` is corrected in place where a line number in
+it is wrong, as the audits do, and nowhere else; an archived entry is not,
+since 4 November 2026: the entry of the branch that finds the wrong number says
+what is right.
 
 **A figure taken from a command is copied out of that command's output.** One
 sentence gave three numbers as the result of a named `grep`, and re-running that
@@ -1947,7 +1992,7 @@ read the rules; `review-changes` is told to read the file first and makes it
 the source of the standards lens. So a rule takes effect through the next
 review, which reads a breach of a written rule instead of judging the same
 thing again. Whether the build should read it is open, a defect in
-`docs/defects.md` found by the entry under "Known gaps" in `docs/roadmap.md`
+`docs/defects.md` found by the entry under "Known gaps" in `docs/roadmap-archive-1.md`
 on the four places that disagree.
 
 **`record-lessons` stays locked.** Lifted, its description would sit in every
@@ -2913,7 +2958,7 @@ September 2026, since the squash merge of pull request #141 landed only
 30 September 2026 under 0.120.0, two attended runs of the setup, one under
 each answer, in `devloop-test-s` and `devloop-test-t`: the question and the
 record walked, the guard against a landed record not, the entry of that date
-in `docs/roadmap.md` saying why.
+in `docs/roadmap-archive-1.md` saying why.
 Measured on 8 October 2026 against the committed guard, `6d5e826`, version
 0.131.0, started as a program through its own first line under `/bin/bash`
 3.2.57 on macOS, fed its JSON directly with a scratch project outside the
@@ -3028,7 +3073,7 @@ directory in the tree, `set up in part` with the files by name; nothing there
 and no directory, `not set up here`. Where the branch cannot be read, the
 cause stands in place of the files and the directory alone decides. One
 thing stands recorded and not built, in the entry of 3 October 2026 in
-`docs/roadmap.md`: a setup written and not landed, once the next run finds
+`docs/roadmap-archive-1.md`: a setup written and not landed, once the next run finds
 nothing on the branch, is `shared/cut-branch.md`'s third case, which
 switches to the branch and describes nothing further. The other thing that
 entry recorded — nothing in `setup-project` ordered a first setup to write
@@ -3041,7 +3086,7 @@ a refresh alike, point 13 of part B of the roadmap entry of 12 October 2026.
 **A named install command may enter the verb list, under two conditions, and
 only together with its destination.** Ruled on 28 September 2026, for how
 milestone 3 of `docs/plan.md` is built. The dated entry of 19 September 2026
-in `docs/roadmap.md` measured `npx playwright install` passing this guard and
+in `docs/roadmap-archive-1.md` measured `npx playwright install` passing this guard and
 filed it under the entry on a wrapper that downloads on first use, which
 refuses to catch the wrapper because that would mean guessing what a build
 command does. That refusal stands, and the entry stays as written: it holds
@@ -3498,7 +3543,7 @@ granted in the project rather than in the tool's settings — the record in
 `environment.md` that **The install guard reads a record** above describes —
 and it opens the guard's pass, not the harness's: whether the classifier lets
 the same command through is its own question, measured once on 28 September
-2026 and recorded in `docs/roadmap.md`. Since 5 October 2026 a yes in that
+2026 and recorded in `docs/roadmap-archive-1.md`. Since 5 October 2026 a yes in that
 record is a condition the unattended mode starts on, the sixth, and a yes on
 check tools in the dependency file the seventh: `build-work` numbers them
 under "Unattended mode", and a run that would stop at the first tool it may
@@ -3521,7 +3566,7 @@ and `skipped (user): <the user's reason>` — spelled exactly, ASCII only.
 Until 5 October 2026 a skip had one shape, `skipped: <reason>`, for a state
 the project grows out of and for a decision of the user's alike, so nothing
 could tell a reason a run may act on from one it may not; the entry of 4
-October 2026 in `docs/roadmap.md` on the two runs has the case, a run
+October 2026 in `docs/roadmap-archive-1.md` on the two runs has the case, a run
 rewriting a reason and taking away with it what the reading after a merge
 looked for.
 
@@ -3570,7 +3615,7 @@ before its `*` as written, so that `Bash(git commit*)` would not have started
 them for a command with an option in between; read off
 `code.claude.com/docs/en/hooks.md` and `code.claude.com/docs/en/permissions.md`
 on 6 October 2026, and measured with the hooks fed their JSON, the entry of 5
-October 2026 in `docs/roadmap.md` carrying the runs under its addendum of 6
+October 2026 in `docs/roadmap-archive-1.md` carrying the runs under its addendum of 6
 October; since 13 October 2026 both start on every Bash call, as above, and
 the step of `.github/workflows/stock-take.yml` holds every handler under
 `PreToolUse` to carrying no `if` field. The
@@ -3688,11 +3733,11 @@ now rests on a file rather than on memory.
 **A shared file read into a skill with `cat` is never inserted at load, and a
 program bundled in the plugin with its rule in `allowed-tools` is.** Measured
 on 17 September 2026 on Claude Code 2.1.274 with a throwaway plugin; the runs,
-the probe and the vendor pages are in `docs/roadmap.md` under `## Known gaps`,
+the probe and the vendor pages are in `docs/roadmap-archive-1.md` under `## Known gaps`,
 the entry of that date on text inserted into a skill at load. The form
 measured is a line in the skill of the shape `` !`command` ``, which runs
 before the model sees the skill and whose output replaces the line — not the
-`!` a user types into the session, which `docs/roadmap.md` records separately
+`!` a user types into the session, which `docs/roadmap-archive-1.md` records separately
 as a channel no hook sees. With
 `` !`cat ${CLAUDE_PLUGIN_ROOT}/shared/marker.md` `` and the matching
 `allowed-tools: Bash(cat ${CLAUDE_PLUGIN_ROOT}/shared/*)`, the load aborted
@@ -3769,7 +3814,7 @@ and the skill holding the destination could not be reached by the loop that
 had something to hand it. The run of 14 September 2026 found the standards
 file of the same project empty after two dozen pull requests, for the same
 reason: the one writer is the skill nothing calls. Both stand in
-`docs/roadmap.md`, and the entry there on the comparison with Pocock's set
+`docs/roadmap-archive-1.md`, and the entry there on the comparison with Pocock's set
 says the rest: `record-lessons` has never run. The lock stays, and since 26
 September 2026 its price is met rather than paid: the one rule of this skill
 that a build loop has something to hand — a rule the project holds that nobody
@@ -3783,7 +3828,7 @@ has a budget, so one more entry can push another out.
 `record-lessons` stays the typed command for what a
 person notices, and the shared block names no skill, because the check under
 "Before a handover, run these" prints a locked skill named in backticks by
-another file. The entry of 14 September 2026 in `docs/roadmap.md` records the
+another file. The entry of 14 September 2026 in `docs/roadmap-archive-1.md` records the
 build.
 
 Everything else is model-invocable, because the chain reaches it from
@@ -3958,7 +4003,10 @@ behind or a plural, so it stays near the name it was meant to be. This prints
 every backticked word of lowercase letters, digits and hyphens that is no
 directory under `skills/`, stands in no row of the table "Named, not built as
 skills", and lies within an edit distance of two of one of those names, beside
-the name it resembles. Silence is green. A name invented out of nothing it does not catch, and no form of it
+the name it resembles. Silence is green. It reads `docs/roadmap.md` alone and
+no archive of it, `docs/roadmap-archive-<n>.md`: a hit in an archive could
+never be mended, since an archive never changes, and the check would be red
+from the day the archive was made. A name invented out of nothing it does not catch, and no form of it
 could: the roadmap quotes flags, labels, tools, check classes and another
 project's skill names, 138 words that are no name on 24 September 2026, the
 nearest of them four edits from any, and the check that printed all of them,

@@ -1,7 +1,8 @@
 # The plan
 
 Written on 19 September 2026. This is the plan and not a measurement record:
-what was measured stands in `docs/roadmap.md` under `## Known gaps`, with a
+what was measured stands in `docs/roadmap.md` and its archives,
+`docs/roadmap-archive-<n>.md`, under `## Known gaps`, with a
 date on every run, the defects stand in `docs/defects.md`, each as one block
 under its milestone, under `## Without a milestone` or, until an order sorts it, under `## Not yet sorted`,
 the facts of the stock-take stand in `docs/stock-take.tsv`,
@@ -438,7 +439,7 @@ through the benches of 12 and 16 October 2026, which count as walked by them;
 for the benches owed after the builds of its clusters 8, 10, 13, 14, 15, 18
 and 22, hooks and programs, for which a bench suffices; and for the seven
 built points of its cluster 20 that cannot be forced, lines 1307, 18977,
-29213, 5232, 12527, 11463 and 27167 of the roadmap, which do not hold the
+29213, 5232, 12527, 11463 and 27167 of `docs/roadmap-archive-1.md`, which do not hold the
 milestone up; and the clusters of the entry of 19 October 2026 with the
 changes the entry of 20 October 2026 records — three uncertain points kept, 33
 taken out, 22 defects closed, clusters 10, 23 and 25 emptied — are the list
@@ -470,7 +471,7 @@ refusal of `brew install yq`, fed to the install guard by hand, with an issue
 carrying the command and the rule removed, answered no at one start and yes at
 the next. Run 3b the refresh putting the install question anew after the
 section was removed and the marker set back. Run 4 a first setup with a yes,
-decided on 23 October 2026 for line 7923 of the roadmap: `gitleaks` uninstalled
+decided on 23 October 2026 for line 7923 of `docs/roadmap-archive-1.md`: `gitleaks` uninstalled
 first, a public repository with a README, a TypeScript function and a test, the
 install question and the question on check tools in the packages answered yes,
 a missing check tool installed by the run after the setup has landed, the mode
@@ -660,7 +661,7 @@ as the list for the milestones after milestone 3 under "## Open" below, their
 order the person's.
 On 31 October 2026 the two setup skills came to read the gate's binding as
 `build-work` and `bin/devloop-start-conditions` read it, one side binding
-deciding, the defect of status line 44351 of the roadmap entry of that date
+deciding, the defect of status line 44351 of `docs/roadmap-archive-1.md`, the roadmap entry of that date
 on the audit built; the self-test of `scripts/devloop-run-workflow` runs on
 GitHub since that day, in the job hooks on every system on three of its four
 systems; and the pipx query of the install guard and of
@@ -704,7 +705,7 @@ roadmap entry of that date on the catch-up after the audit. The third is built o
 October 2026, version 0.133.0: start
 condition 4 of the mode, which until then said that the kinds of command
 the run needs are approved for the project, which no run could read in the
-tree — the entry of 11 September 2026 in `docs/roadmap.md` on planning
+tree — the entry of 11 September 2026 in `docs/roadmap-archive-1.md` on planning
 being fenced out of the unattended mode records that under "Precondition 4
 cannot be read" — says now that Claude Code runs in auto mode, read off the
 permission mode every hook receives, `permission_mode`, a field of every
@@ -959,7 +960,7 @@ locked against being called, was built on 26 September 2026 at the close of
 the review — `shared/rule-not-written-down.md`, inserted in `review-changes`
 and `build-work`, without a counter, since nothing survives a task that a
 later run could count against; the entry of 14 September 2026 in
-`docs/roadmap.md` records it, and the tool reads it as built and not walked
+`docs/roadmap-archive-1.md` records it, and the tool reads it as built and not walked
 until a bench produces a finding at the close. Per item: built, and its
 situation produced once on a bench, or the roadmap says why it cannot be
 produced — a lens falling over was spontaneous, six of twenty, and there only
@@ -1188,7 +1189,7 @@ that answers it, or says that none does.
 - **The list for the milestones after milestone 3**, whose order the person
   sets, since 31 October 2026, the roadmap entry of that date on the audit
   after milestone 3, which names each point with its status line in
-  `docs/roadmap.md` or with the lines of the entry that name it: the merge
+  `docs/roadmap-archive-1.md` or with the lines of the entry that name it: the merge
   handed over for an armed pull request, with the wrong sentence on who merged
   the first (status line 43116); the decision on `--pdfFit` taken without the
   person (43139); a lens or a builder writing into the project or ending
@@ -1205,7 +1206,7 @@ that answers it, or says that none does.
 - What devloop does with an answer Claude Code sends by itself once the time
   `askUserQuestionTimeout` sets has run out, the field `afkTimeoutMs` marking
   it, where today devloop takes it for the person's answer; recorded on 1
-  November 2026, status line 44850 of the roadmap entry of that date on the
+  November 2026, status line 44850 of `docs/roadmap-archive-1.md`, the roadmap entry of that date on the
   question timeout, which leaves to the person which milestone takes it up;
   no milestone names it.
 - Whether a process started in the background survives across turns in a
