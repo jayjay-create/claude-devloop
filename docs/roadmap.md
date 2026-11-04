@@ -714,10 +714,12 @@ and for the proofs of closings.
   4 November 2026, version 0.175.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md` does not. On `task/audit-2026-11-04`, off
-  `origin/main` at `b73c029`, in two commits: the mends in
+  `origin/main` at `b73c029`, in three commits: the mends in
   `docs/rationale.md`, in fields of four blocks of `docs/defects.md` and in
-  five rows of `docs/stock-take.tsv`; then this entry with its two blocks.
-  Written by Claude Code from the person's order of this day, the
+  five rows of `docs/stock-take.tsv`; then this entry with its two blocks;
+  then, after the check of the branch before the merge, the paragraph on
+  the outcomes of the identity guard that name text 7, below. The first two
+  were written by Claude Code from the person's order of this day, the
   consistency audit after part 3 of the separation of this file; no session
   log was read; nothing was installed; GitHub was not read beyond `git
   fetch`; the identity under which git commits here was neither set nor
@@ -884,17 +886,34 @@ and for the proofs of closings.
     so a block and not a mend, since this order changes nothing outside
     `docs/`.
 
-  **The outcome of the identity guard on text 7.** Its thing, row 2931,
-  has its site `exit 2` on line 193 of the hook and its evidence `this
-  command sets the identity of a commit itself` on line 192; `thing_range`
-  of the tool, from line 2226, takes for a branch its site line, its
-  evidence line and every line recorded as part of it: 192 and 193, no
-  part-of record standing since the entry above. Text 7 stands on line 192,
-  in the range. Its three runs, rows 2994, 2996 and 3918, under 0.134.0 and
-  0.137.0, count no longer: line 192 last changed at `bc69673` on 29
-  October 2026, after both versions, and the tool lists each under RUNS
-  THAT DO NOT COUNT naming that line. By section D none may count, and
-  none does; nothing to correct, and no second way to weigh.
+  **The outcomes of the identity guard that name text 7.** Eight things of
+  the table carry "text 7" in their names (`awk -F'\t' '$1=="thing" && $2
+  ~ /^hooks\/pre-tool-use-identity-guard.sh/ && $2 ~ /text 7/'
+  docs/stock-take.tsv | wc -l` gives 8), rows 2922 to 2928 and 2931; the
+  first writing of this paragraph read row 2931 alone. Rows 2922 to 2928
+  block on a form read and name what is filled into text 7, "text 7 with
+  EMAIL", "text 7 with the form read" and the like; each stands on the
+  lines that read its form and set what is filled in, lines 118, 119, 120,
+  131 to 134 with 141, 144 with 147, 152 with 169, 175, 181 and 182, and
+  183 of the hook, every one last changed at `a03a720` on 14 October 2026,
+  which introduced 0.137.0, or at `1458419` before it (`git blame
+  hooks/pre-tool-use-identity-guard.sh`); the message itself is the record
+  of the one exit line, as the hook says at lines 57 to 59, "the block's
+  record in docs/stock-take.tsv stands on the one exit line". Their runs
+  of 12 October 2026 under 0.137.0 count, and those of 10 October 2026
+  under 0.134.0 do not, as section D of the tool's header has it; the
+  change of 29 October 2026 lies on no line of theirs, and nothing is to
+  correct. Row 2931, the message, has its site `exit 2` on line 193 of the
+  hook and its evidence `this command sets the identity of a commit
+  itself` on line 192; `thing_range` of the tool, from line 2226, takes
+  for a branch its site line, its evidence line and every line recorded as
+  part of it: 192 and 193, no part-of record standing since the entry
+  above. Text 7 stands on line 192, in the range. Its three runs, rows
+  2994, 2996 and 3918, under 0.134.0 and 0.137.0, count no longer: line
+  192 last changed at `bc69673` on 29 October 2026, after both versions,
+  and the tool lists each under RUNS THAT DO NOT COUNT naming that line.
+  By section D none may count, and none does; nothing to correct, and no
+  second way to weigh.
 
   **The block "four status lines of this file stand as part of a thing that
   carries runs, …", a question.** Its Should: "the tool rejects such a
