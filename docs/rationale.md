@@ -8,8 +8,9 @@ works on devloop and loaded into no session: the loaded texts carry the rule and
 at most a short reason, and what holds the rule up stands here. It says why the
 rules hold today and on which cases they stand, and not how they came to read as
 they do: the dated record of runs, measurements and decisions stands in
-`docs/roadmap.md`, and each case and each wording here names the head of the
-entry there that carries it, by which the entry is found. The files follow in
+`docs/roadmap.md` and its archives, `docs/roadmap-archive-<n>.md`, and each
+case and each wording here names the head of the entry there that carries it,
+by which the entry is found. The files follow in
 the order of `.claude-plugin/plugin.json`, each skill's `SKILL.md` before its
 other files, then `shared/`, then `output-styles/`; inside a file the points
 follow its headings as the file writes them, and a file with no heading of its
@@ -2646,7 +2647,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   why a question comes now in the wording approved that day, the last message of
   the run with nobody there in two groups, and the lines of the skills, the
   inserted texts and two hooks brought in line with the output style; 17 October
-  2026, version 0.143.0." (lines 26972–26974).
+  2026, version 0.143.0." (`docs/roadmap-archive-1.md` lines 26972–26974).
 - **The arming call is one, and its copies stand outside the skills.** It stands
   in `shared/arming-command.md`, inserted into the three skills that arm, and as
   copies in `hooks/pre-tool-use-merge-guard.sh` and `docs/skill-conventions.md`,
@@ -2682,11 +2683,12 @@ Nothing in this file stood as history; its rules carry their own reasons.
   den Auto-Modus ein, im Terminal mit Umschalt+Tab, und gib dann
   `/devloop:start-work --auto` ein. Ohne `--auto` baue ich die geplanten
   Aufgaben mit dir.“, entry "Terms untranslated, the start command named whole,
-  the design line gone." (lines 40020–40024). This is text 2 of entry "The
+  the design line gone." (`docs/roadmap-archive-1.md` lines 40020–40024). This is text 2 of entry "The
   behaviour with nobody there: a refusal, a command that does not finish inside
   its call, an install that does not go through, the two halts of
   `setup-checks`, a hook for permission prompts, and start condition 4 off the
-  permission mode; 9 October 2026, version 0.133.0." (lines 14882–14887), with
+  permission mode; 9 October 2026, version 0.133.0." (`docs/roadmap-archive-1.md`
+  lines 14882–14887), with
   the command named whole.
 - **Where condition 6 or 7 fails, the refusal says that the run does not start,
   the yes it needs, a no on record, the command that sets it up, and what

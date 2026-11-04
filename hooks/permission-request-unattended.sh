@@ -19,7 +19,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # through bin/devloop-command-reader, which decodes the JSON, since 12
 # October 2026; every hook reads it so, and a check in
 # .github/workflows/stock-take.yml holds them to that. The message is
-# approved text 5 of 9 October 2026, word for word, in docs/roadmap.md.
+# approved text 5 of 9 October 2026, word for word, in docs/roadmap-archive-1.md.
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 cd "$PROJECT_DIR" 2>/dev/null || exit 0

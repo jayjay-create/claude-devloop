@@ -51,7 +51,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # on a command typed with !, measured that day, so this guard does not block
 # the two there, where it blocks them when the run calls them - in place of
 # the sentence approved on 10 October 2026, git taking an identity from the
-# machine or refusing - word for word in docs/roadmap.md under the entry of
+# machine or refusing - word for word in docs/roadmap-archive-1.md under the entry of
 # 9 October 2026, its addendum of 10 October 2026 and the entry of 28
 # October 2026 on the handover steps, <what was read> filled with the
 # form read, without its value. Every block leaves through the two lines at

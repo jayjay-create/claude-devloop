@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """devloop-stock-take: the stock-take of milestone 1 in docs/plan.md.
 
-Reads docs/stock-take.tsv and docs/defects.md, checks every anchor in them,
-computes the state of every thing and of every defect from the records, the
-blocks and the git history, and lists every line of the search set that no
-record covers. It stores nothing: the table and the blocks hold facts only,
+Reads docs/stock-take.tsv and docs/defects.md, and docs/roadmap.md with its
+archives docs/roadmap-archive-<n>.md for the heads, the run lines and the
+proofs; checks every anchor in them, computes the state of every thing and
+of every defect from the records, the blocks and the git history, and lists
+every line of the search set that no record covers. It stores nothing: the table and the blocks hold facts only,
 and every state is computed on every run, because a stored state is an
 asserted state ("Never assert state — query it", docs/skill-conventions.md);
 a block of docs/defects.md names its state, and the tool holds that against
@@ -45,8 +46,11 @@ its thing, a block of docs/defects.md is rejected or names a state the tool
 does not compute, a defect's closing names a proof that does not hold, a
 block that stood in docs/defects.md at the branch point is gone, renamed or
 carries another Should with no line of the fixed form added to
-docs/roadmap.md, or such a line names what the branch did not do (section F),
-or the repository is one the tool refuses (a shallow clone).
+docs/roadmap.md, or such a line names what the branch did not do, an archive
+of the roadmap that stood at the branch point is changed, renamed or removed,
+or an archive the branch adds is not docs/roadmap.md at the branch point byte
+for byte under the next free number (section F), or the repository is one the
+tool refuses (a shallow clone).
 
 It needs python3 and git and nothing else, and no GNU tool: it runs on macOS.
 
@@ -266,8 +270,10 @@ replaced, section F:
 - run, keyed to a thing by its name or to a defect by its title: date
   (YYYY-MM-DD), the version it ran or the commit it ran, source (entry: the
   roadmap entry names it; log: read from the session log of that run; none:
-  not recorded), run_file + run_anchor (the roadmap line that records the
-  run). A run that stands on the row of a
+  not recorded), run_file + run_anchor (the line that records the run, in
+  docs/roadmap.md or in the archive docs/roadmap-archive-<n>.md that holds
+  the entry: the roadmap is the dated report in docs/roadmap.md and its
+  archives, section F). A run that stands on the row of a
   shared text or a branch counts for no defect by itself, since the rule of
   section D may undercount and never overcount: a run enters a defect's row
   once the session log of that run has been read for whether it met exactly
@@ -404,15 +410,23 @@ Until 2 November 2026 a fifth reason, no defect, marked an entry head under
 the status lines that day, section E.
 
 A status line of docs/roadmap.md that records something built and no defect
-- "Built: a hook for permission prompts" say - is recorded as "part of" the
+- "Built: a hook for permission prompts" say - was recorded as "part of" the
 thing it records, runs or no runs, since 23 October 2026, and such a record
-stays although the line is in no search set since 2 November 2026: every
-line recorded as part of a thing is a line the thing stands on, and taking
-the record out would change what the thing's runs are held against. An
-entry is appended and stays as it was written, so such a line blames to the
-commit of its own entry; a correction in place, as an audit makes one,
-changes it, and the thing's runs then count again from the first version
-that carries the correction: an undercount, which section D allows, never an
+stayed when the line left the search set on 2 November 2026, since taking it
+out changes what the thing's runs are held against. On 4 November 2026 the
+entries that carry such lines moved to docs/roadmap-archive-1.md, every line
+of which git blame attributes to the commit that created the file, so that a
+record re-pointed there would have held every run of its thing to the day of
+the archive: the 34 records of that form went instead, decided in the order
+of that day, the roadmap entry of that date on the archive, which names each
+and what it did to the state of its thing: none changed, the one whose runs
+failed on such a line alone held now by its evidence. Since that day a line
+of docs/roadmap.md or of an archive counts for no run, as it counts for no
+defect since 2 November 2026; no line of an archive is in any search set.
+Until 4 November 2026 such a line blamed to the commit of its own entry,
+appended and left as written, or to a correction in place, as an audit makes
+one, after which the thing's runs counted again from the first version that
+carries the correction: an undercount, which section D allows, never an
 overcount. Until 23 October 2026 this section said a status line was never
 recorded as part of a thing whose runs are to count, since a line of the
 roadmap was changed by every later entry, and named a defect as the thing
@@ -482,9 +496,10 @@ is its evidence, and off the closing its Status carries.
   on the two check headings above says. Left on purpose: the repository says,
   with a reason, that it is not built; the proof is the line that decides it,
   file and text, read as an anchor found exactly once. Where the file of the
-  proof is docs/roadmap.md or docs/defects.md, the lines that carry a closing
-  form quoting the text - the closing line of the entry that closed the
-  defect, the Status of its block - are left out of the count. A Status that
+  proof is docs/roadmap.md, an archive docs/roadmap-archive-<n>.md of it or
+  docs/defects.md, the lines that carry a closing form quoting the text - the
+  closing line of the entry that closed the defect, the Status of its block -
+  are left out of the count. A Status that
   opens with Closed and carries none of the three forms, or a proof the tool
   cannot confirm, rejects the block as broken, the message naming what
   failed, and the defect is not closed; a command standing in the text of
@@ -589,7 +604,14 @@ E. THE SEARCH SET, FOR COVERAGE
 - In docs/roadmap.md under "Known gaps": no line, since 2 November 2026,
   when the defects left the roadmap for docs/defects.md and the roadmap
   became a report the tool reads for the heads a block's Found names, for
-  the lines a run's record points at and for the proofs of closings. Until
+  the lines a run's record points at and for the proofs of closings. Since
+  4 November 2026 the dated report is docs/roadmap.md and its archives
+  docs/roadmap-archive-<n>.md, section F: the entries up to that day stand
+  in docs/roadmap-archive-1.md, byte for byte the roadmap of d026802, and
+  the tool reads an archive for the same three things and for nothing else;
+  no line of an archive is in the set, and its table under "Named, not
+  built as skills" is read nowhere, neither for the names of the note form
+  nor for the set - the item below reads docs/roadmap.md alone. Until
   then every entry head (a line starting with "- **") and every line holding
   "Recorded, not built", "Built", "Half built" or "Should hold", or the word
   "Closed", the word of a closing line under D since 20 October 2026, stood
@@ -640,12 +662,15 @@ of things are made of it, and a run names a thing by its name or a defect
 by its title, the two never alike - and does not change with the section.
 Wrong and Should carry the text; "not stated", the second mark of the
 transition, stands where no text of the roadmap filled them when the blocks
-were written. Found carries the head of the entry of docs/roadmap.md that
-found the defect, whole - the text between "- **" and its closing "**", read
-across line breaks with its whitespace collapsed - and naming exactly one
-head under "Known gaps". Fix carries the place of the repair as `FILE`
-"TEXT", an anchor by the rules of section C, found exactly once and never in
-docs/roadmap.md or docs/defects.md, where no repair stands; or "none", where
+were written. Found carries the head of the entry of docs/roadmap.md, or of
+an archive docs/roadmap-archive-<n>.md of it, that found the defect, whole -
+the text between "- **" and its closing "**", read across line breaks with
+its whitespace collapsed - and naming exactly one head under "Known gaps"
+over the roadmap and its archives together: a head standing in two of these
+files is not exactly one, and the message names the files. Fix carries the
+place of the repair as `FILE` "TEXT", an anchor by the rules of section C,
+found exactly once and never in docs/roadmap.md, an archive of it or
+docs/defects.md, where no repair stands; or "none", where
 nothing is built; or "not determined", where nobody has read whether anything
 is. Status carries the state in the words of section D, or the closing in
 one of its three forms. Trigger, Bench and Cost carry anchors, the roadmap
@@ -655,8 +680,8 @@ The tool rejects, as a broken record with the line of docs/defects.md: a
 block missing a required field; a title standing twice, or carrying " / ",
 or being a thing's name; a field over a line break, or a line that is no
 field, or a field twice; a Fix in none of its forms, pointing at
-docs/roadmap.md or docs/defects.md, not found exactly once, or under a
-directory section D classifies nowhere; a Trigger, Bench or Cost that is no
+docs/roadmap.md, an archive of it or docs/defects.md, not found exactly
+once, or under a directory section D classifies nowhere; a Trigger, Bench or Cost that is no
 anchor; a Found naming no head whole and exactly once; a section "##
 Milestone <number>" whose number the plan does not carry, or a heading of
 the second level in none of the three forms; a Status in none of the forms;
@@ -701,6 +726,39 @@ point, that there is nothing to compare. On main after a squash merge HEAD
 is the branch point, and nothing differs. A branch behind main, whose main
 gained a block after the branch point, is held against the branch point and
 not against main's tip, so that block is no removal.
+
+An archive of the roadmap never changes, since 4 November 2026, decided by
+the person on that day, the roadmap entry of that date on the archive. The
+roadmap is the dated report in docs/roadmap.md and its archives
+docs/roadmap-archive-<n>.md; an archive is docs/roadmap.md as it stood at
+the branch point of the order that archived it, byte for byte, every line
+at its number, the four undated sections included, and a later order
+archives the roadmap again under the next number: docs/roadmap-archive-1.md
+is the roadmap of d026802, the entries up to the order of 4 November 2026.
+The tool reads an archive for three things and nothing else: the heads a
+Found names, the lines a run's record, a Trigger, a Bench, a Cost or a
+closing points at, and the proofs of closings, the closing lines that quote
+the text left out of the count as for docs/roadmap.md. A Fix points at no
+archive, as at no roadmap, since no repair stands there; the table under
+"Named, not built as skills" of an archive is read nowhere; and no line of
+an archive is in a search set. The tool holds the archives against git
+merge-base HEAD origin/main as it holds the blocks: an archive that stood at
+the branch point and is changed, renamed or removed in the working tree is
+red with its name; an archive the branch adds is red unless it is
+docs/roadmap.md as it stood at the branch point byte for byte - compared as
+git's blob of each, read with git hash-object, so that a checkout which
+converts line endings is no change - and carries the next free number, the
+highest number at the branch point plus one, so that a second new archive
+on one branch is red as well; where no docs/roadmap.md stood at the branch
+point, nothing could be archived, and a new archive is red. Without
+origin/main, or without a commit HEAD and origin/main share, the tool says
+in one line that the archives are not held against a branch point, and is
+not red for it; on main after a squash merge HEAD is the branch point and
+nothing differs. The report shows the result under a heading of its own. A
+wrong line number in an archived entry is not corrected there: the entry of
+the branch that finds it says what is right, and the correction in place
+that docs/skill-conventions.md allows a dated entry holds for docs/roadmap.md
+alone.
 
 LIMITS
 
@@ -778,6 +836,11 @@ LIMITS
   line names the removal; and a line of the fixed form that the branch
   added to the roadmap and took out again is not read, since the diff
   against the branch point does not carry it.
+- The archives are held against origin/main as last fetched, by git's blob
+  of each file, and by name: an archive renamed is a removal and an addition,
+  both red; an archive at the branch point that a branch changes and changes
+  back is no change; and that an archive's text is the roadmap of the day it
+  names, beyond the branch that added it, is read by nobody after the merge.
 """
 
 import ast
@@ -818,6 +881,11 @@ NAMED_HEADING = "## Named, not built as skills"
 KNOWN_GAPS = "## Known gaps"
 DEFECTS = "docs/defects.md"
 ROADMAP = "docs/roadmap.md"
+# an archive of the roadmap, docs/roadmap.md as it stood at the branch point
+# of the order that archived it, byte for byte, never changed: read for the
+# heads a Found names, the lines a record points at and the proofs of
+# closings, and for nothing else (section F)
+ARCHIVE = re.compile(r"^docs/roadmap-archive-(\d+)\.md$")
 PLAN = "docs/plan.md"
 MILESTONES_HEADING = "## Twelve milestones, in this order"
 BLOCK_FIELDS = ("Wrong", "Should", "Found", "Fix", "Status", "Note", "Trigger",
@@ -905,6 +973,39 @@ def resolve(root, ref):
     p = subprocess.run(["git", "-C", root, "rev-parse", "-q", "--verify",
                         ref + "^{commit}"], capture_output=True, text=True)
     return p.stdout.strip() if p.returncode == 0 else None
+
+
+def blob_at(root, commit, rel):
+    """The id of the blob the file has at the commit, or None where the
+    file does not stand there."""
+    return git(root, "rev-parse", "-q", "--verify", "%s:%s" % (commit, rel),
+               check=False).strip() or None
+
+
+def blob_of(root, rel):
+    """The id git would store for the file as it stands in the working
+    tree, its clean filter applied, so that a checkout which converts line
+    endings is no change; None where the file cannot be read."""
+    return git(root, "hash-object", "--", rel, check=False).strip() or None
+
+
+def is_archive(rel):
+    return ARCHIVE.match(rel) is not None
+
+
+def archive_files(root):
+    """The archives of the roadmap in the working tree, (number, path) by
+    number."""
+    out = []
+    try:
+        names = os.listdir(os.path.join(root, "docs"))
+    except OSError:
+        return out
+    for fn in names:
+        m = ARCHIVE.match("docs/" + fn)
+        if m and os.path.isfile(os.path.join(root, "docs", fn)):
+            out.append((int(m.group(1)), "docs/" + fn))
+    return sorted(out)
 
 
 class Git:
@@ -1102,7 +1203,8 @@ def find_anchor(files, rel, anchor, skip=()):
     """(status, lineno). status: ok, missing, multiple, no-file, too-long,
     too-short, whitespace. For multiple, the lines it stands on in place of
     the line. The lines numbered in skip are left out of the count: the
-    closing lines of docs/roadmap.md, which quote the text they name."""
+    closing lines of docs/roadmap.md, of its archives and of
+    docs/defects.md, which quote the text they name."""
     if anchor != anchor.strip():
         return "whitespace", None
     if len(anchor) > 80:
@@ -1152,9 +1254,9 @@ def closing_of(line):
 
 
 def closing_lines(files, rel, text):
-    """The lines of docs/roadmap.md or docs/defects.md that carry a closing
-    form naming this text: they quote it, and a count over that file leaves
-    them out."""
+    """The lines of docs/roadmap.md, of an archive of it or of
+    docs/defects.md that carry a closing form naming this text: they quote
+    it, and a count over that file leaves them out."""
     got = files.get(rel)
     if got is None:
         return set()
@@ -1169,15 +1271,16 @@ def closing_lines(files, rel, text):
 def check_closing(root, files, rec, closing):
     """The proof of a closing, read with the tool's own means for anchors
     and with git; every failure goes to the record's errors. Over
-    docs/roadmap.md and docs/defects.md the closing lines that quote the
-    text are left out of the count, since the entry that closed the defect
-    carries the proof beside the decision it names, and the block carries
-    it in its Status."""
+    docs/roadmap.md, its archives and docs/defects.md the closing lines
+    that quote the text are left out of the count, since the entry that
+    closed the defect carries the proof beside the decision it names, and
+    the block carries it in its Status."""
     reason, rel, text, commit = closing
     inside = not rel.startswith("/") and ".." not in rel.split("/")
     found, at = find_anchor(files, rel, text,
                             closing_lines(files, rel, text)
-                            if rel in (ROADMAP, DEFECTS) else ()) \
+                            if rel in (ROADMAP, DEFECTS) or is_archive(rel)
+                            else ()) \
         if inside else ("no-file", None)
     if reason == "lapsed":
         if len(text) < 20:
@@ -1238,28 +1341,36 @@ def check_closing(root, files, rec, closing):
         }[found]))
 
 
-def roadmap_heads(files):
-    """head text -> how often it stands, for every entry head under "Known
-    gaps" in docs/roadmap.md, a line starting with "- **" read to its closing
-    "**" across line breaks, its whitespace collapsed to single spaces."""
-    got = files.get(ROADMAP)
-    if got is None:
-        return {}
-    lines = got[1]
+def head_files(root):
+    """docs/roadmap.md and its archives, the files the heads are read in."""
+    return [ROADMAP] + [rel for _, rel in archive_files(root)]
+
+
+def roadmap_heads(files, root):
+    """head text -> {file: how often it stands there}, for every entry head
+    under "Known gaps" in docs/roadmap.md and in every archive of it, a line
+    starting with "- **" read to its closing "**" across line breaks, its
+    whitespace collapsed to single spaces."""
     out = {}
-    inside = False
-    for i, l in enumerate(lines, 1):
-        if l.startswith("## "):
-            inside = l.rstrip() == KNOWN_GAPS
+    for rel in head_files(root):
+        got = files.get(rel)
+        if got is None:
             continue
-        if inside and ENTRY_HEAD.match(l):
-            text = l[4:]
-            j = i
-            while "**" not in text and j < len(lines):
-                text += " " + lines[j]
-                j += 1
-            head = " ".join(text.split("**", 1)[0].split())
-            out[head] = out.get(head, 0) + 1
+        lines = got[1]
+        inside = False
+        for i, l in enumerate(lines, 1):
+            if l.startswith("## "):
+                inside = l.rstrip() == KNOWN_GAPS
+                continue
+            if inside and ENTRY_HEAD.match(l):
+                text = l[4:]
+                j = i
+                while "**" not in text and j < len(lines):
+                    text += " " + lines[j]
+                    j += 1
+                head = " ".join(text.split("**", 1)[0].split())
+                per = out.setdefault(head, {})
+                per[rel] = per.get(rel, 0) + 1
     return out
 
 
@@ -1592,6 +1703,68 @@ def hold_blocks_to_branch_point(root, defects_rel, blocks, res):
                  "lines": n}
 
 
+def hold_archives_to_branch_point(root, res):
+    """Section F, the archives of the roadmap against git merge-base HEAD
+    origin/main: every archive that stood there is in the working tree as
+    it stood, by git's blob, and every archive the branch adds is
+    docs/roadmap.md at the branch point, by its blob, under the next free
+    number. Fills res.archives and res.archive_errors."""
+    origin = resolve(root, "origin/main")
+    if origin is None:
+        res.archives = {"note": "origin/main is not here, so the archives "
+                                "of the roadmap are not held against a "
+                                "branch point"}
+        return
+    # git merge-base prints nothing and ends with 1 where the two share no
+    # commit
+    base = git(root, "merge-base", "HEAD", "origin/main", check=False).strip()
+    if not base:
+        res.archives = {"note": "HEAD and origin/main share no commit, so "
+                                "the archives of the roadmap are not held "
+                                "against a branch point"}
+        return
+    listed = git(root, "ls-tree", "-r", "--name-only", base, "--", "docs",
+                 check=False).split("\n")
+    at_base = {rel: int(ARCHIVE.match(rel).group(1)) for rel in listed
+               if ARCHIVE.match(rel)}
+    held, added = [], []
+    for rel in sorted(at_base, key=at_base.get):
+        if not os.path.isfile(os.path.join(root, rel)):
+            res.archive_errors.append("the archive %s stood at %s, the branch "
+                                      "point, and stands in the working tree "
+                                      "no more: an archive is neither renamed "
+                                      "nor removed" % (rel, base[:7]))
+        elif blob_of(root, rel) != blob_at(root, base, rel):
+            res.archive_errors.append("the archive %s is not what stood at "
+                                      "%s, the branch point: an archive never "
+                                      "changes" % (rel, base[:7]))
+        else:
+            held.append(rel)
+    nxt = max(at_base.values(), default=0) + 1
+    roadmap_blob = blob_at(root, base, ROADMAP)
+    for n, rel in archive_files(root):
+        if rel in at_base:
+            continue
+        before = len(res.archive_errors)
+        if n != nxt:
+            res.archive_errors.append("the archive %s is new on this branch "
+                                      "and carries the number %d, where the "
+                                      "next free number after %s, the branch "
+                                      "point, is %d" % (rel, n, base[:7], nxt))
+        if roadmap_blob is None:
+            res.archive_errors.append("the archive %s is new on this branch, "
+                                      "and no %s stood at %s, the branch "
+                                      "point, for it to be a copy of"
+                                      % (rel, ROADMAP, base[:7]))
+        elif blob_of(root, rel) != roadmap_blob:
+            res.archive_errors.append("the archive %s is new on this branch "
+                                      "and is not %s as it stood at %s, the "
+                                      "branch point" % (rel, ROADMAP, base[:7]))
+        if len(res.archive_errors) == before:
+            added.append(rel)
+    res.archives = {"base": base, "held": held, "added": added}
+
+
 PAIRS = (("file", "anchor"), ("evidence_file", "evidence_anchor"),
          ("run_file", "run_anchor"), ("trigger_file", "trigger_anchor"),
          ("bench_file", "bench_anchor"), ("cost_file", "cost_anchor"))
@@ -1691,6 +1864,8 @@ class Result:
         self.sections = []          # (line, heading) of docs/defects.md
         self.guard = None           # the blocks held against the branch point, section F
         self.guard_errors = []      # strings: a change without its line, a line without its change
+        self.archives = None        # the archives of the roadmap held against the branch point, section F
+        self.archive_errors = []    # strings: an archive changed, renamed, removed or wrongly added
         self.runs = []              # dicts
         self.unanchorable = []      # (file, lineno, text)
         self.unanchorable_units = []  # (file, lineno, heading)
@@ -1706,7 +1881,8 @@ class Result:
 
     def broken_count(self):
         return len(self.table_errors) + len(self.broken) \
-            + len(self.defect_errors) + len(self.guard_errors)
+            + len(self.defect_errors) + len(self.guard_errors) \
+            + len(self.archive_errors)
 
 
 TALLY_KEYS = ("things", "straight paths", "branches", "other kinds", "calls",
@@ -2196,7 +2372,8 @@ def analyse(root, table=None, only=None, defects=None):
     # run on a rejected block is rejected with it
     blocks, res.sections, block_errors = read_defects(files, defects_rel)
     res.defect_errors.extend(block_errors)
-    heads = roadmap_heads(files)
+    heads = roadmap_heads(files, root)
+    read_for_heads = head_files(root)
     milestones = plan_milestones(files)
     seen_title = {}
     for blk in blocks:
@@ -2220,12 +2397,19 @@ def analyse(root, table=None, only=None, defects=None):
                                             MILESTONES_HEADING, PLAN))
         found = blk.value("Found")
         if found is not None:
-            n = heads.get(" ".join(found.split()), 0)
+            per = heads.get(" ".join(found.split()), {})
+            n = sum(per.values())
             if n != 1:
+                # the files named: every file read where the head stands
+                # nowhere, the files it stands in where it stands twice
                 blk.errors.append("Found names %s under %r in %s: %r"
                                   % ("no head" if n == 0
                                      else "a head standing %d times" % n,
-                                     KNOWN_GAPS, ROADMAP, found))
+                                     KNOWN_GAPS,
+                                     " or ".join(read_for_heads) if n == 0
+                                     else " and ".join(
+                                         f for f in read_for_heads if f in per),
+                                     found))
         for field in ("Fix", "Trigger", "Bench", "Cost"):
             v = blk.value(field)
             if v is None:
@@ -2240,7 +2424,8 @@ def analyse(root, table=None, only=None, defects=None):
                                      if field == "Fix" else ""))
                 continue
             frel, text = m.group(1), m.group(2)
-            if field == "Fix" and frel in (ROADMAP, DEFECTS):
+            if field == "Fix" and (frel in (ROADMAP, DEFECTS)
+                                   or is_archive(frel)):
                 blk.errors.append("Fix points at %s, where no repair stands"
                                   % frel)
                 continue
@@ -2285,6 +2470,10 @@ def analyse(root, table=None, only=None, defects=None):
     # renamed or given another Should is named by a line of the fixed form
     # the branch adds to docs/roadmap.md, or the tool is red
     hold_blocks_to_branch_point(root, defects_rel, blocks, res)
+    # the archives of the roadmap against the branch point, section F: one
+    # that stood there and changed, was renamed or removed, or one added
+    # that is not the roadmap of the branch point under the next number
+    hold_archives_to_branch_point(root, res)
     # notes of things: the forms
     named = named_skills(files)
     roots = []    # things carrying ROOT
@@ -2717,6 +2906,8 @@ def render(res):
         out.append("  %s:%d: %s" % (DEFECTS, lineno, e))
     for e in res.guard_errors:
         out.append("  against the branch point: " + e)
+    for e in res.archive_errors:
+        out.append("  archives: " + e)
     out.append("")
     out.append("ROOTS OF THE UNATTENDED MODE (things carrying %r): %d"
                % (ROOT, len(res.roots)))
@@ -2795,6 +2986,20 @@ def render(res):
             out.append("    renamed         %s%s%s" % (old, RENAME_SEP, new))
         for t in g["changed"]:
             out.append("    Should changed  " + t)
+    out.append("")
+    out.append("ARCHIVES OF THE ROADMAP HELD AGAINST THE BRANCH POINT (git "
+               "merge-base HEAD origin/main; an archive never changes)")
+    a = res.archives or {}
+    if a.get("note"):
+        out.append("  " + a["note"])
+    elif a:
+        out.append("  branch point %s: archives standing there %d, added by "
+                   "this branch %d" % (a["base"][:7], len(a["held"]),
+                                       len(a["added"])))
+        for rel in a["held"]:
+            out.append("    held            " + rel)
+        for rel in a["added"]:
+            out.append("    added           " + rel)
     out.append("")
     out.append("RUNS THAT DO NOT COUNT")
     n = 0
@@ -2875,8 +3080,8 @@ def exit_code(res):
 def message_templates(path):
     """(shape, line, template) for every message this tool can produce, read
     off its own source: the strings handed to rec.errors.append,
-    res.broken.append, res.table_errors.append, res.guard_errors.append and
-    errors.append, assigned to
+    res.broken.append, res.table_errors.append, res.guard_errors.append,
+    res.archive_errors.append and errors.append, assigned to
     a run's reason or info or to res.refused, printed to stderr, or raised as
     RuntimeError. The self-test's own printing is left out. A string inside a
     dict that a message picks its ending from is a fragment, matched inside a
@@ -2917,7 +3122,7 @@ def message_templates(path):
                 name = owner.attr if isinstance(owner, ast.Attribute) \
                     else getattr(owner, "id", "")
                 if name in ("errors", "broken", "table_errors",
-                            "guard_errors"):
+                            "guard_errors", "archive_errors"):
                     for a in node.args:
                         found += strings(a)
             elif isinstance(node, ast.Assign):
@@ -2973,6 +3178,7 @@ def selftest():
         out += [e for _, e in res.broken]
         out += [e for _, e in res.defect_errors]
         out += res.guard_errors
+        out += res.archive_errors
         for r in res.runs:
             out += [r[k] for k in ("reason", "info") if r[k]]
         return out
@@ -4050,6 +4256,108 @@ def selftest():
         run_git(guard, "commit", "-q", "-m", "g3", date="2026-02-03T12:00:00+0100")
         res_g_lonely = collect(analyse(guard, g_table))
         run_git(guard, "checkout", "-q", "task")
+        # the archives of the roadmap, section F: a repository whose first
+        # commit has no roadmap, whose second has the roadmap, an archive of
+        # it, the blocks and a run pointing at a line of the archive,
+        # origin/main on the second commit, a branch cut there; then the
+        # working tree with the archive changed, removed, renamed, a second
+        # archive added rightly and wrongly, and the branch point without a
+        # roadmap
+        arch = os.path.join(tmp, "arch")
+        os.makedirs(arch)
+        run_git(arch, "init", "-q", "-b", "main")
+        write(arch, ".claude-plugin/plugin.json", plugin("0.1.0"))
+        write(arch, "skills/eta/SKILL.md", "# Eta\n")
+        run_git(arch, "add", "-A")
+        run_git(arch, "commit", "-q", "-m", "a0", date="2026-03-01T12:00:00+0100")
+        a0 = run_git(arch, "rev-parse", "HEAD")
+        ARCH1, ARCH2, ARCH3 = ("docs/roadmap-archive-%d.md" % i for i in (1, 2, 3))
+        AH_ROADMAP = "A head that stands in the roadmap alone."
+        AH_ARCHIVE = "A head that stands in the archive alone."
+        AH_BOTH = "A head that stands in the roadmap and in the archive."
+        AH_NOWHERE = "A head that stands in neither file."
+        A_DECIDED = "the archived case does not arise, decided for the self-test"
+        A_TWICE = "an archived text that stands twice outside a closing line"
+        A_GONE = "a decision line the archive does not carry"
+        a_roadmap = ("# Roadmap\n\n## Known gaps\n\n- **%s**\n- **%s**\n"
+                     % (AH_ROADMAP, AH_BOTH))
+        a_archive = ("# Roadmap\n\n## Known gaps\n\n- **%s**\n- **%s**\n"
+                     "  Left as it is: %s.\n"
+                     "  Closed, left on purpose: decided in `docs/roadmap.md` "
+                     "at \"%s\".\n  %s.\n  %s.\n"
+                     % (AH_ARCHIVE, AH_BOTH, A_DECIDED, A_DECIDED, A_TWICE,
+                        A_TWICE))
+        AD_ARCHIVE = "a defect found by an archived entry"
+        AD_ROADMAP = "a defect found by an entry of the roadmap"
+        AD_LEFT = "a defect closed as left on purpose, decided in an archived entry"
+        AD_BOTH = "a defect whose Found names a head standing in both files"
+        AD_NOWHERE = "a defect whose Found names a head standing in neither file"
+        AD_FIX = "a defect whose Fix points at an archive"
+        AD_LEFT_TWICE = "closed as left on purpose on a text standing twice in the archive"
+        AD_LEFT_GONE = "closed as left on purpose on a text the archive does not carry"
+        a_green_blocks = "".join([
+            "# Defects\n\n## Not yet sorted\n\n",
+            block(AD_ARCHIVE, AH_ARCHIVE, FIX_NONE, "Recorded, not built",
+                  Trigger='`%s` "Left as it is: %s"' % (ARCH1, A_DECIDED)),
+            block(AD_ROADMAP, AH_ROADMAP, FIX_NONE, "Recorded, not built"),
+            block(AD_LEFT, AH_ARCHIVE, FIX_NONE, left % (ARCH1, A_DECIDED))])
+        a_red_blocks = a_green_blocks + "".join([
+            block(AD_BOTH, AH_BOTH, FIX_NONE, "Recorded, not built"),
+            block(AD_NOWHERE, AH_NOWHERE, FIX_NONE, "Recorded, not built"),
+            block(AD_FIX, AH_ARCHIVE, '`%s` "%s"' % (ARCH1, AH_ARCHIVE),
+                  "Recorded, not built"),
+            block(AD_LEFT_TWICE, AH_ARCHIVE, FIX_NONE, left % (ARCH1, A_TWICE)),
+            block(AD_LEFT_GONE, AH_ARCHIVE, FIX_NONE, left % (ARCH1, A_GONE))])
+        write(arch, "docs/roadmap.md", a_roadmap)
+        write(arch, ARCH1, a_archive)
+        write(arch, "docs/defects.md", a_green_blocks)
+        a_table = os.path.join(arch, "docs", "stock-take.tsv")
+        ETA_SP = "eta / Eta / straight path"
+        write(arch, "docs/stock-take.tsv", "\n".join([
+            "\t".join(COLUMNS),
+            thing(ETA_SP, "skills/eta/SKILL.md", "# Eta", note=ROOT),
+            run(ETA_SP, "2026-03-02", AH_ARCHIVE, version="0.1.0",
+                run_file=ARCH1)]) + "\n")
+        run_git(arch, "add", "-A")
+        run_git(arch, "commit", "-q", "-m", "a1", date="2026-03-02T12:00:00+0100")
+        a1 = run_git(arch, "rev-parse", "HEAD")
+        run_git(arch, "update-ref", "refs/remotes/origin/main", a1)
+        run_git(arch, "checkout", "-q", "-b", "task")
+
+        # a branch that archives the roadmap again writes a new roadmap
+        # without the archived heads, since a head standing in the roadmap
+        # and in the archive is not exactly one
+        a_new_roadmap = ("# Roadmap\n\n## Known gaps\n\n- **A head of the "
+                         "roadmap after the second archive.**\n")
+
+        def arch_state(defects_text=a_green_blocks, archive1=a_archive,
+                       added=None):
+            run_git(arch, "checkout", "-q", "--", ".")
+            for rel in (ARCH2, ARCH3):
+                with contextlib.suppress(OSError):
+                    os.remove(os.path.join(arch, rel))
+            write(arch, "docs/defects.md", defects_text)
+            if archive1 is None:
+                os.remove(os.path.join(arch, ARCH1))
+            else:
+                write(arch, ARCH1, archive1)
+            for rel, text in (added or {}).items():
+                write(arch, rel, text)
+            return collect(analyse(arch, a_table))
+        res_a_green = arch_state()
+        res_a_changed = arch_state(a_red_blocks,
+                                   a_archive + "A line added to the archive.\n")
+        res_a_removed = arch_state(archive1=None)
+        res_a_renamed = arch_state(archive1=None, added={ARCH2: a_archive})
+        res_a_added = arch_state(added={ARCH2: a_roadmap,
+                                        ROADMAP: a_new_roadmap})
+        res_a_number = arch_state(added={ARCH3: a_roadmap,
+                                         ROADMAP: a_new_roadmap})
+        res_a_content = arch_state(added={ARCH2: a_archive,
+                                          ROADMAP: a_new_roadmap})
+        run_git(arch, "update-ref", "refs/remotes/origin/main", a0)
+        res_a_no_roadmap = arch_state()
+        run_git(arch, "update-ref", "refs/remotes/origin/main", a1)
         # --only without a path, which answers before touching any repository
         only_err = io.StringIO()
         with contextlib.redirect_stderr(only_err):
@@ -4900,6 +5208,109 @@ def selftest():
              in render(res_g_red),
              "BLOCKS HELD AGAINST THE BRANCH POINT" in render(res_norigin)
              and "    removed" not in render(res_g_behind))
+        # the archives of the roadmap, section F: what the tool reads in
+        # one, and the archives held against the branch point
+        a_states = {d["name"]: d["state"] for d in res_a_green.defects}
+
+        def aerr(sub):
+            return has(res_a_changed, sub)
+        case("a Found naming a head that stands in an archive of the roadmap "
+             "alone, or in the roadmap alone: green; in both, or in neither: "
+             "red, the files named",
+             aerr("Found names a head standing 2 times under '## Known gaps' "
+                  "in docs/roadmap.md and docs/roadmap-archive-1.md: %r"
+                  % AH_BOTH)
+             and aerr("Found names no head under '## Known gaps' in "
+                      "docs/roadmap.md or docs/roadmap-archive-1.md: %r"
+                      % AH_NOWHERE),
+             a_states.get(AD_ARCHIVE) == "Recorded, not built"
+             and a_states.get(AD_ROADMAP) == "Recorded, not built"
+             and not res_a_green.defect_errors)
+        case("a Fix pointing at an archive of the roadmap",
+             aerr("Fix points at docs/roadmap-archive-1.md, where no repair "
+                  "stands"),
+             states.get(DEF_CHECK) == "Walked")
+        case("a defect closed as left on purpose, decided in an archived "
+             "entry: the decision line found once, the archive's closing line "
+             "that quotes it left out of the count; a text standing twice, or "
+             "not at all, in the archive: red; a run and a Trigger pointing "
+             "at a line of the archive",
+             aerr("closed as left on purpose: %r in docs/roadmap-archive-1.md: "
+                  "found more than once, on lines 9 and 10, so it is not an "
+                  "anchor" % A_TWICE)
+             and aerr("closed as left on purpose: %r in "
+                      "docs/roadmap-archive-1.md: not found" % A_GONE),
+             a_states.get(AD_LEFT) == "Closed"
+             and all(r["counts"] for r in res_a_green.runs)
+             and len(res_a_green.runs) == 1
+             and not res_a_green.broken_count())
+        case("an archive that stood at the branch point, changed, removed or "
+             "renamed: red with its name; unchanged: green",
+             has(res_a_changed, "the archive docs/roadmap-archive-1.md is not "
+                 "what stood at %s, the branch point: an archive never changes"
+                 % a1[:7])
+             and has(res_a_removed, "the archive docs/roadmap-archive-1.md "
+                     "stood at %s, the branch point, and stands in the working "
+                     "tree no more: an archive is neither renamed nor removed"
+                     % a1[:7])
+             and has(res_a_renamed, "the archive docs/roadmap-archive-1.md "
+                     "stood at %s, the branch point, and stands in the working "
+                     "tree no more" % a1[:7])
+             and has(res_a_renamed, "the archive docs/roadmap-archive-2.md is "
+                     "new on this branch and is not docs/roadmap.md as it "
+                     "stood at %s, the branch point" % a1[:7])
+             and exit_code(res_a_changed) == 2 and exit_code(res_a_removed) == 2,
+             not res_a_green.archive_errors
+             and res_a_green.archives == {"base": a1, "held": [ARCH1],
+                                          "added": []}
+             and exit_code(res_a_green) == 0)
+        case("an archive the branch adds, docs/roadmap.md at the branch point "
+             "byte for byte under the next free number: green; another "
+             "number, another content, or no roadmap at the branch point: red",
+             has(res_a_number, "the archive docs/roadmap-archive-3.md is new on "
+                 "this branch and carries the number 3, where the next free "
+                 "number after %s, the branch point, is 2" % a1[:7])
+             and has(res_a_content, "the archive docs/roadmap-archive-2.md is "
+                     "new on this branch and is not docs/roadmap.md as it "
+                     "stood at %s, the branch point" % a1[:7])
+             and has(res_a_no_roadmap, "the archive docs/roadmap-archive-1.md "
+                     "is new on this branch, and no docs/roadmap.md stood at "
+                     "%s, the branch point, for it to be a copy of" % a0[:7])
+             and exit_code(res_a_number) == 2,
+             not res_a_added.archive_errors
+             and res_a_added.archives == {"base": a1, "held": [ARCH1],
+                                          "added": [ARCH2]}
+             and exit_code(res_a_added) == 0)
+        case("no origin/main, or no commit shared with it: the archives are "
+             "not held against a branch point, said in one line and not red",
+             res_norigin.archives == {"note": "origin/main is not here, so the "
+                                      "archives of the roadmap are not held "
+                                      "against a branch point"}
+             and res_g_lonely.archives == {"note": "HEAD and origin/main share "
+                                           "no commit, so the archives of the "
+                                           "roadmap are not held against a "
+                                           "branch point"}
+             and not res_norigin.archive_errors
+             and not res_g_lonely.archive_errors,
+             "note" not in res_a_green.archives
+             and "note" not in res.archives and res.archives["base"] == c3)
+        case("the report: the archives of the roadmap held against the branch "
+             "point, under a heading of their own, the errors under BROKEN "
+             "RECORDS",
+             "ARCHIVES OF THE ROADMAP HELD AGAINST THE BRANCH POINT (git "
+             "merge-base HEAD origin/main; an archive never changes)\n"
+             "  branch point %s: archives standing there 1, added by this "
+             "branch 1\n    held            %s\n    added           %s\n"
+             % (a1[:7], ARCH1, ARCH2) in render(res_a_added)
+             and "  archives: the archive docs/roadmap-archive-1.md is not "
+                 "what stood at" in render(res_a_changed)
+             and "BROKEN RECORDS: %d\n" % res_a_changed.broken_count()
+             in render(res_a_changed),
+             "  origin/main is not here, so the archives of the roadmap are "
+             "not held against a branch point\n" in render(res_norigin)
+             and "    added" not in render(res_a_green)
+             and "  branch point %s: archives standing there 0, added by this "
+                 "branch 0\n" % c3[:7] in render(res))
     # every message the tool can produce, against what the cases asserted
     templates = message_templates(os.path.abspath(__file__))
     without = []
