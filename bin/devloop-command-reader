@@ -92,7 +92,7 @@
 # off the wording of its vendor's source, fetched raw, at the newest release
 # or, for a program that comes with the system, off its manual, with the
 # options that take a value and the options whose value is itself a command,
-# named with its address and its release or commit in docs/roadmap.md under
+# named with its address and its release or commit in docs/roadmap-archive-1.md under
 # the entry on the command reader and its five addenda of 13 and 14 October
 # 2026.
 # The kinds, each for macOS, Linux and
@@ -227,7 +227,7 @@
 # crates.io, RubyGems and pkg.go.dev with the python3 packages of Debian in
 # place of PyPI, and Scoop, Chocolatey, MSYS2, winget and Microsoft Learn for
 # Windows with Git Bash, and those the two passes of its check for
-# completeness found, each read off its vendor as docs/roadmap.md names it
+# completeness found, each read off its vendor as docs/roadmap-archive-1.md names it
 # under that addendum, stand in the tables at the end of the BEGIN block, by
 # kind, three kinds derived by that addendum among them: (1) privileges -
 # addo, AdvancedRun.exe, asroot, autologin, cado, capsh, chpst, compartment,
@@ -396,7 +396,7 @@
 # the two-word forms the same with POST, SKIPN2, EXECOPT2, TEXTOPT2, CHTOPT2
 # and SELFALWAYS2, and a two-word program whose second word is none of its own
 # read by its one-word table where its vendor documents that form. Not in the
-# group, each with its reason in docs/roadmap.md: a name a builtin of the
+# group, each with its reason in docs/roadmap-archive-1.md: a name a builtin of the
 # shell or a program of another meaning carries - bg, foreach, atlas, dms, el,
 # fw, llexec, proxy, rush, sd, s, srt, sx, watcher and wd; a name two or more
 # programs share with different grammars - executor, loop, mp, prun, run,
@@ -926,7 +926,7 @@ BEGIN {
   WANT["tool_input.command"] = 1; WANT["tool_input.file_path"] = 1
   WANT["tool_use_id"] = 1; WANT["tool_response.interrupted"] = 1
   WANT["reason"] = 1
-  # the wrappers read over, one word and two words, each with the options that take a value, read off the vendors as docs/roadmap.md names them under the entry on the command reader and its addenda of 13 October 2026
+  # the wrappers read over, one word and two words, each with the options that take a value, read off the vendors as docs/roadmap-archive-1.md names them under the entry on the command reader and its addenda of 13 October 2026
   ONEWORD = " - timeout time nice nohup stdbuf command builtin noglob nocorrect watch setsid ionice flock xargs sudo doas su run0 pkexec env trap exec caffeinate chrt taskset strace valgrind hyperfine unbuffer chronic script arch xcrun sandbox-exec systemd-run nix-shell runuser setpriv gsudo runas login gosu prlimit numactl setarch linux32 linux64 nocache cpulimit ltrace heaptrack gdb lldb rr uclampset winpty firejail ssh-agent lockf apply msgexec kinit sc_usage dtruss dapptrace dappprof procsystime dtrace leaks sg bpftrace ifne lckdo pee mispipe parallel fd tmux screen dtach abduco nq tsp daemon daemonize entr watchexec nodemon reflex chokidar onchange watchman-make when-changed wgo gow chruby-exec envchain godotenv env-cmd cross-env cross-env-shell dotenv npx "
   TWOWORD = " direnv devbox mise rtx nix asdf rbenv pyenv nodenv goenv jenv plenv phpenv luaenv volta fnm pipenv poetry pdm hatch rye conda mamba micromamba pixi bundle pnpm pn yarn uv composer tox rvm proto dotenvx aws-vault op doppler infisical sops chamber teller railway bun launchctl machinectl ktrace perf zellij pueue cargo npm "
   # the one-word programs read by their tables: VALS the options that take a value, SELF the options under which the program runs no command or runs it elsewhere and is the command itself, SELFALWAYS the programs that are the command itself and hand on only the texts of TEXTOPT (a text for a shell) or CHTOPT (a command split at blanks), DDONLY the programs whose command stands behind -- alone, SKIP1 a word of the program itself before the command, JOIN the programs whose command words joined are a text for a shell
@@ -1032,7 +1032,7 @@ BEGIN {
   TMUXOPTS["new-pane"] = " -B -c -e -F -l -m -p -R -s -S -t -T -x -X -y -Y "; TMUXOPTS["detach-client"] = " -E -s -t "; TMUXOPTS["new-session"] = " -c -e -f -F -n -s -t -x -y "; TMUXOPTS["new-window"] = " -c -e -F -n -t "; TMUXOPTS["split-window"] = " -B -c -e -F -l -m -p -R -s -S -t -T "; TMUXOPTS["respawn-pane"] = " -c -e -t "; TMUXOPTS["respawn-window"] = " -c -e -t "
   TMUXOPTS["pipe-pane"] = " -t "; TMUXOPTS["run-shell"] = " -c -d -s -t "; TMUXOPTS["if-shell"] = " -t "; TMUXOPTS["display-popup"] = " -b -c -d -e -h -s -S -t -T -w -x -y "; TMUXOPTS["send-keys"] = " -c -N -t "
   TMUXSHELL = " new-session new-window split-window new-pane respawn-pane respawn-window display-popup pipe-pane "
-  # the programs the searches of the third addendum of 13 October 2026 found, by kind, each read off its vendor as docs/roadmap.md names it under that addendum
+  # the programs the searches of the third addendum of 13 October 2026 found, by kind, each read off its vendor as docs/roadmap-archive-1.md names it under that addendum
   # kind 1
   VALS["gosu"] = ""; SKIPN["gosu"] = 1
   VALS["su-exec"] = ""; SKIPN["su-exec"] = 1

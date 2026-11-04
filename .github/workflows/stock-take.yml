@@ -2,7 +2,7 @@
 # request into main, run scripts/devloop-stock-take and its self-test against
 # the merged state, and fail the check when either fails. The other half, the
 # check being required on main, is a setting of the repository and not a file
-# in it: docs/roadmap.md, the entry of 29 September 2026 on the merge gate,
+# in it: docs/roadmap-archive-1.md, the entry of 29 September 2026 on the merge gate,
 # carries the command that sets it and the merge sequence that follows.
 #
 # The check appears under the job's name, stock-take. It installs nothing:
@@ -144,7 +144,9 @@ jobs:
       # roadmap entry of that date on milestone 3, part 3. Red where the file
       # names one of devloop's documents - docs/plan.md, docs/roadmap.md,
       # docs/skill-conventions.md, docs/stock-take.tsv, since 1 November
-      # 2026 docs/rationale.md and since 2 November 2026 docs/defects.md - or
+      # 2026 docs/rationale.md, since 2 November 2026 docs/defects.md and
+      # since 4 November 2026 the archives of the roadmap,
+      # docs/roadmap-archive-<n>.md - or
       # a path into bin/, scripts/, shared/,
       # hooks/, skills/, .github/ or .claude-plugin/, the file read as one line
       # as above and every find printed. What the README says of the user's
@@ -153,7 +155,7 @@ jobs:
       # handover, run these" either.
       - name: README.md names no file or document of devloop's own
         run: |
-          NAMES=$(tr '\r\n' '  ' < README.md | grep -o -E 'docs/(plan\.md|roadmap\.md|skill-conventions\.md|stock-take\.tsv|rationale\.md|defects\.md)|(^|[^A-Za-z0-9_./~-])(bin|scripts|shared|hooks|skills|\.github|\.claude-plugin)/[A-Za-z0-9_./-]*') || { echo "README.md names no file or document of devloop's own"; exit 0; }
+          NAMES=$(tr '\r\n' '  ' < README.md | grep -o -E 'docs/(plan\.md|roadmap\.md|roadmap-archive-[0-9]+\.md|skill-conventions\.md|stock-take\.tsv|rationale\.md|defects\.md)|(^|[^A-Za-z0-9_./~-])(bin|scripts|shared|hooks|skills|\.github|\.claude-plugin)/[A-Za-z0-9_./-]*') || { echo "README.md names no file or document of devloop's own"; exit 0; }
           echo "README.md must name no file or document of devloop's own, and it names:"; printf '%s\n' "$NAMES" | sed 's/^[^A-Za-z0-9_.]//'; exit 1
 
       # Since 1 November 2026: the texts devloop loads into a session - every

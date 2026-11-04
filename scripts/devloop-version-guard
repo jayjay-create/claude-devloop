@@ -9,7 +9,7 @@
 # that already raised it. A squash merge lands only the version the branch
 # ends on, and every run recorded under the first points at nothing on main:
 # the nineteen runs of pull request #141 went that way on 29 September 2026
-# (docs/roadmap.md, the entry of that date). Silent in every other state: outside
+# (docs/roadmap-archive-1.md, the entry of that date). Silent in every other state: outside
 # a repository, without origin/main, without the file, on the first raise of
 # a branch, and on a tree that carries the version HEAD carries.
 set -uo pipefail

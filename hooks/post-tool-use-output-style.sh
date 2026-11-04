@@ -12,7 +12,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # the name of the style that went into the requests as <plugin>:<style>, the
 # person's own style under its bare name, and no such attachment stands where
 # no style applies; measured 15 October 2026 under Claude Code 2.1.299 and
-# 2.1.300, docs/roadmap.md, the entry of that date on the output style. The
+# 2.1.300, docs/roadmap-archive-1.md, the entry of that date on the output style. The
 # last attachment is the session's. The input is read through
 # bin/devloop-command-reader, which decodes the JSON, since 12 October 2026;
 # every hook reads it so, and a check in .github/workflows/stock-take.yml

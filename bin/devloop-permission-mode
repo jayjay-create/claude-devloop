@@ -8,7 +8,7 @@
 # what hooks/pre-tool-use-mark-guard.sh answers, which puts the mode beside
 # this result as additionalContext. Where no such statement stands beside the
 # result, the mode could not be read, and the run says so. The text is the one
-# approved on 9 October 2026, in docs/roadmap.md under the entry of that day.
+# approved on 9 October 2026, in docs/roadmap-archive-1.md under the entry of that day.
 # Since 9 October 2026.
 printf '%s\n' "devloop: the hook on this command states the permission mode of this session beside this result; where no such statement stands, the mode could not be read."
 exit 0
