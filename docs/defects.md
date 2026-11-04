@@ -4765,7 +4765,7 @@ filled when the blocks were written. The tool lists both without going red.
 - Found: Six entries held against the code: lines corrected, defects recorded.
 - Fix: `scripts/devloop-stock-take` "thing it records, runs or no runs, since 23 October 2026, and such a record"
 - Status: Built, never walked
-- Note: found 23 October 2026 by the consistency audit of that date; recorded for the order after the audit, nothing built; the should on the status line; built 23 October 2026, version 0.157.0, the roadmap entry of 23 October 2026 on the catch-up after the audit of that day, the evidence moved onto the line of the fix
+- Note: found 23 October 2026 by the consistency audit of that date; recorded for the order after the audit, nothing built; the should on the status line; built 23 October 2026, version 0.157.0, the roadmap entry of 23 October 2026 on the catch-up after the audit of that day, the evidence moved onto the line of the fix; decided 4 November 2026, the roadmap entry of that date on the rejection of a record on a roadmap line: the block stays, its Should met in its second half; its first half, the tool rejecting a not-a-thing record on a line of docs/roadmap.md in no search set or on a line of an archive, is built by the order that builds the block on a thing Walked on the branch without a run the branch adds
 
 ### README.md says the rule for auto mode covers the installs a devloop hook guards and asks again after any refused install, where it names five tools and three browser installers
 - Wrong: README.md says the rule for auto mode covers the installs a devloop hook guards and the question returns after any refused install, where it covers five tools and three browser installers
@@ -5541,7 +5541,7 @@ filled when the blocks were written. The tool lists both without going red.
 - Found: Three entries held, eleven places mended, two blocks added.
 - Fix: none
 - Status: Recorded, not built
-- Note: found 4 November 2026 by the consistency audit of that day, from the last paragraph of the entry of 4 November 2026 on the archive; concerns scripts/devloop-stock-take, whose check against a run recorded too early, section C of its head, holds a run to the lines of its thing and no thing to its state at the branch point; the guard over the blocks and the archives, section F, holds titles, Shoulds and files and no state
+- Note: found 4 November 2026 by the consistency audit of that day, from the last paragraph of the entry of 4 November 2026 on the archive; concerns scripts/devloop-stock-take, whose check against a run recorded too early, section C of its head, holds a run to the lines of its thing and no thing to its state at the branch point; the guard over the blocks and the archives, section F, holds titles, Shoulds and files and no state; decided 4 November 2026, the roadmap entry of that date on the rejection of a record on a roadmap line: the order that builds this block builds with it the first half of the Should of the block on four status lines as part of a thing and mends line 66 of the head of the tool
 
 ### the head of scripts/devloop-stock-take names docs/roadmap.md for the entry of 29 September 2026 on the merge gate, which stands in the archive
 - Wrong: `scripts/devloop-stock-take` line 66 says "docs/roadmap.md, the entry of 29 September 2026 on the merge gate, has both halves", where that entry stands in docs/roadmap-archive-1.md since 4 November 2026 and the rule "An archive of the roadmap never changes" in docs/skill-conventions.md has an explicit docs/roadmap.md that means an archived entry name the archive; .github/workflows/stock-take.yml line 5 and docs/skill-conventions.md line 1416 name the archive for the same entry
@@ -5549,4 +5549,4 @@ filled when the blocks were written. The tool lists both without going red.
 - Found: Three entries held, eleven places mended, two blocks added.
 - Fix: none
 - Status: Recorded, not built
-- Note: found 4 November 2026 by the consistency audit of that day, by grep -n 'docs/roadmap.md' over hooks/, bin/, scripts/ and .github/ against the archive rule; a comment in a program, left as it stands since the order of that day changes nothing outside docs/
+- Note: found 4 November 2026 by the consistency audit of that day, by grep -n 'docs/roadmap.md' over hooks/, bin/, scripts/ and .github/ against the archive rule; a comment in a program, left as it stands since the order of that day changes nothing outside docs/; decided 4 November 2026, the roadmap entry of that date on the rejection of a record on a roadmap line: mended by the order that builds the block on a thing Walked on the branch without a run the branch adds

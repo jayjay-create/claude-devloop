@@ -981,6 +981,50 @@ and for the proofs of closings.
   recorded for this entry. In `docs/defects.md`: the two blocks and the four
   fields above.
 
+- **The rejection of a record on a roadmap line goes with the guard.**
+
+  4 November 2026, version 0.175.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/catch-up-2026-11-04`, off
+  `origin/main` at `211f924`, in one commit: this entry and the notes of
+  three blocks of `docs/defects.md`. The catch-up after the consistency
+  audit of that day, the entry above, on the one question it put to the
+  person; written from the person's decision of that day; no session log was
+  read. Every line number of a file in this entry holds at `211f924`.
+
+  **Decided on 4 November 2026** by the person, on the question of the entry
+  above on the block "four status lines of this file stand as part of a
+  thing that carries runs, against section C of the tool's header, which
+  names no target free of runs since 20 October 2026 and which the tool does
+  not check" (`docs/defects.md` line 4762), whose Should is met in its
+  second half since the entry at line 199 and not in its first. The block
+  stays as it stands. The first half, the tool rejecting a not-a-thing
+  record on a line of `docs/roadmap.md` that is in no search set or on a
+  line of an archive `docs/roadmap-archive-<n>.md`, is built by the order
+  that builds the block "a thing Walked on the branch that was not Walked at
+  the branch point and has no run the branch adds goes unseen before the
+  merge" (line 5538), and the same order mends line 66 of the head of
+  `scripts/devloop-stock-take`, the block "the head of
+  scripts/devloop-stock-take names docs/roadmap.md for the entry of 29
+  September 2026 on the merge gate, which stands in the archive" (line
+  5546): the three stand in the same file and ask for the same kind of case
+  in its self-test, and which milestone takes them the sorting of the
+  defects into the milestones decides. Reason: the missing half allows an
+  undercount only, which section D of the tool's header permits, and built
+  apart it would cost an order of its own. Not chosen: building the
+  rejection now, in an order of its own. Not in question: a rejection of
+  every not-a-thing record off the search set, since the catch-up of 14
+  October 2026 kept such records, a part-of record binding the runs of its
+  thing to its line (`docs/roadmap-archive-1.md` from line 24004); the
+  rejection is of a record on a line of the roadmap, which counts for no run
+  since the entry at line 199, section C of the tool's header.
+
+  **Records.** In `docs/defects.md` the note of each of the three blocks
+  names this decision; no title, Wrong, Should, Found, Fix or Status
+  changes, and no run is recorded. The tool on the branch: exit 0, broken
+  records 0, uncovered lines 0 of 4454, blocks under `## Not yet sorted`
+  656, walked 668, built and never walked 1461, as at `211f924`.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
