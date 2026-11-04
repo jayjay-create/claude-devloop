@@ -2593,8 +2593,8 @@ Nothing in this file stood as history; its rules carry their own reasons.
   call, by a program of the plugin, and with nobody there one restart of the
   runs that carry a required check where that check was through before GitHub
   could accept the arming; defect 5 of the entry of 16 October 2026 on the runs
-  of that day with it; 17 October 2026, version 0.144.0." (lines
-  27387–27412).
+  of that day with it; 17 October 2026, version 0.144.0." (`docs/roadmap-archive-1.md`
+  lines 27387–27412).
 - **Unattended, the wait on the checks happens inside the answer.** Nothing
   wakes a run, so an answer that ends on a promise to report back ends the run.
   Case: on 11 and 13 September 2026 in `devloop-test-o`, pull requests 50, 54,
@@ -2703,8 +2703,8 @@ Nothing in this file stood as history; its rules carry their own reasons.
   einrichten. Ohne `--auto` baue ich die geplanten Aufgaben mit dir und gebe dir
   jede Installation als Befehl, den du selbst ausführst.“; where the record says
   no, „Dazu hast du Nein gesagt.“ follows the second sentence, entry "Terms
-  untranslated, the start command named whole, the design line gone." (lines
-  40048–40062).
+  untranslated, the start command named whole, the design line gone." (`docs/roadmap-archive-1.md`
+  lines 40048–40062).
 - **On the direct route, a mode not set up goes to `setup-checks` step 8
   alone.** Step 8 puts the permissions and records the answers, whereas an offer
   of the workflow file and the protection alone would set the mode up without

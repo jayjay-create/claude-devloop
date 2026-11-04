@@ -709,6 +709,278 @@ and for the proofs of closings.
   1461, hook outcome 39; runs that do not count 945, the three runs of the
   outcome among them; every other count as after the third commit.
 
+- **Three entries held, eleven places mended, two blocks added.**
+
+  4 November 2026, version 0.175.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/audit-2026-11-04`, off
+  `origin/main` at `b73c029`, in three commits: the mends in
+  `docs/rationale.md`, in fields of four blocks of `docs/defects.md` and in
+  five rows of `docs/stock-take.tsv`; then this entry with its two blocks;
+  then, after the check of the branch before the merge, the paragraph on
+  the outcomes of the identity guard that name text 7, below. The first two
+  were written by Claude Code from the person's order of this day, the
+  consistency audit after part 3 of the separation of this file; no session
+  log was read; nothing was installed; GitHub was not read beyond `git
+  fetch`; the identity under which git commits here was neither set nor
+  read. The report stands on this machine as `~/devloop-audit-2026-11-04.md`,
+  in English, and is not in the repository. Every line number of a file in
+  this entry holds at `b73c029` unless it says otherwise; a line of this
+  file holds at `b73c029` as well, this entry standing after the last line
+  of the entry above and no line above it having moved; a line of the
+  archive names `docs/roadmap-archive-1.md`.
+
+  **What was read, and how.** Whole, with the text in front of the session:
+  this file; `docs/roadmap-archive-1.md` lines 47082 to 47571, the two
+  entries of 3 November 2026; `git diff 9cad40f origin/main` over every
+  file but the archive, this file and `docs/stock-take.tsv`, whose diff was
+  read with grep and counts; the head of `scripts/devloop-stock-take`,
+  lines 1 to 870; `docs/skill-conventions.md` lines 1670 to 1908 and 3850 to
+  4347; `docs/defects.md` lines 1 to 60 and 4762 to 4768; `README.md`;
+  441761 bytes by `wc -c` over those ranges, the figure of the order. The
+  branches of #223, #224 and #225 were fetched by their references, three,
+  four and four commits, the tree of each head equal to its squash commit
+  on main, `git diff --stat` empty for each. No subagent was used. The tool
+  ran in a clone under a throwaway directory at `b545927`, `9cad40f`, the
+  first three commits of #224's branch, `d026802` and the second and third
+  commits of #225's branch, the nineteen quick checks beside it from each
+  commit's own text, so that every figure the three entries give could be
+  held against the tool's own output.
+
+  **The three entries against the code, the documents, the table and their
+  commits.** The entry at `docs/roadmap-archive-1.md` line 47082, the audit
+  of 3 November 2026: 44 statements, 41 hold — its three commits and their
+  files, the shipped directories unchanged, the two corrections in place,
+  45530 and 45451, read at `b545927` and `9cad40f`, the 26 blocks whose
+  Should changed and the 36 fields cut, the longest Should of 14,432
+  characters, the four Wrong fields, the two benches, the 28th bullet, the
+  figures before and after, which the tool gives at `b545927` and `9cad40f`
+  line for line, and the nineteen checks printing the same at both. Three
+  do not; the archive stays as it stands, said right here:
+  - its head and its "Records" say 39 fields of blocks mended; its body
+    names 4 + 36 + 3, and `git diff b545927 9cad40f -- docs/defects.md`
+    changes 43 fields of 43 blocks, 26 Should and 17 Wrong. 43.
+  - "lines 45604 to 45607, says '85 distinct heads cited …'": the sentence
+    stands at lines 45625 to 45626 of the archive, in the bullet of lines
+    45622 to 45626; 45604 is blank.
+  - "two lines opening with 'Built:' …, 45883 and 45884": they stand at
+    45882 and 45883; 45884 is blank.
+  The entry at line 47394, the follow-up of 3 November 2026: 38 statements,
+  every one holds — the two programs and the tool's head alone changed, the
+  four commits, the self-test of `scripts/devloop-run-workflow` at 33 cases
+  at `9cad40f` and 34 now and red with "the parenthesis carries 3 words, 2
+  expected" on a copy carrying the old line, the 39 cases of
+  `bin/devloop-auto-mode-question` under Python 3.9.6 and 3.14.7, every
+  line number named, the records, the figures at `9cad40f` and on its
+  second and third commits, and "STATES, by file and kind" the same line
+  for line at `9cad40f` and after its first commit; one slip, no error: the
+  lines 1805 to 1811 and 118 to 123 of its point (4) hold at `d026802` for
+  the text they describe, not at `9cad40f` as its convention says. The entry
+  at line 199 of this file, the archive of 4 November 2026: 61 statements,
+  56 hold — its four commits, the archive byte for byte, lines 1 to 192 and
+  the tail with its two changed lines, the 34 records with their 26 things,
+  triple for triple, the eleven new things, the six Should changed, old
+  and new, the fourteen runs, the fourth commit's blame and the three runs
+  that count no longer, every line number of its (b) to (j) at `d026802`,
+  the seven cases of the self-test and 155 and 135, and the figures at
+  `d026802`, on its second and third commits and after the fourth. Five do
+  not; said right here, the entry standing as written since no line number
+  of it is wrong:
+  - "34 not-a-thing records removed, by (b), … (`git diff f6461fc --
+    docs/stock-take.tsv | grep '^-not-a-thing' | grep -c
+    'docs/roadmap.md'`)": the command prints 35; the 35th, table line 5964
+    at `d026802`, stood on a line of `scripts/devloop-stock-take`, part of
+    the thing "state Closed: a defect whose evidence stands on a closing
+    line of docs/roadmap.md …", which the grep matches by the thing's name;
+    it went with its changed line, and a record on the new line came. 34 by
+    (b), and one of the tool.
+  - "34 removed by (b) and 7 added for lines of the tool": 35 removed and 8
+    added, `grep -c '^+not-a-thing'` over the same diff; 3303 − 35 + 8 =
+    3276.
+  - "every run of the table, since no run points at the four sections":
+    true on the second commit, where it was measured; since the third, the
+    fourteen runs of that commit point at this file, 2559 of 2573.
+  - "the references of (i): … `docs/rationale.md` 4": two citations stayed
+    without the file, lines 2596 to 2597 and 2706 to 2707, mended below; and
+    (i) was not carried through `docs/defects.md` lines 3043, 3431, 3592 and
+    5528, the notes of rows 5914 and 7470 of the table, and line 66 of the
+    tool's head, below.
+  - "measured on the tree of the third commit before the second was made":
+    the third commit's tree exists only after the second; read as before the
+    fourth, the figures hold, the tool at that commit giving them.
+
+  **Mended in `docs/rationale.md`.** Lines 2596 to 2597 and 2706 to 2707,
+  two citations of entries' heads: "(lines 27387–27412)" and "(lines
+  40048–40062)" → "(`docs/roadmap-archive-1.md` lines 27387–27412)" and
+  "(`docs/roadmap-archive-1.md` lines 40048–40062)", as the other three
+  citations with lines in that file have it since the entry above.
+
+  **Mended in fields of blocks of `docs/defects.md`**, by (i) of the entry
+  above, each old text naming an archived line without its file. Line
+  3043, the Should of "at the three places that read BEHIND nothing says
+  what happens where the rebase meets a conflict or the force-push is
+  rejected": `grep -n -i 'rebase'
+  docs/roadmap.md | grep -i 'conflict\|should' printed one line, 12128` →
+  `grep -n -i 'rebase' docs/roadmap-archive-1.md | grep -i 'conflict\|should'
+  printed one line, 12128`, the rest word for word, as the entry above did
+  for the three fetch blocks; the line the guard over the blocks asks for:
+  Should changed: at the three places that read BEHIND nothing says what happens where the rebase meets a conflict or the force-push is rejected
+  Line 3431, the Note of "the rule that environment.md is written with the
+  editing tool names the workflow file nowhere, …": "the ground of the entry
+  of 6 September 2026 at line 1319" → "… at docs/roadmap-archive-1.md line
+  1319". Line 3592, the Note of "text that
+  belongs in the message stood in the thinking part at six further places
+  of the two closing runs …": "… 18266 to 18268 and 17909 to 17929;" → "…
+  18266 to 18268 and 17909 to 17929 of docs/roadmap-archive-1.md;". Line
+  5528, the Note of "setup-checks step 8 sends two issues whose commands
+  ask to text and says nothing of two in doubt, which pass the bound as
+  well": "in the entry at 44909" → "in the entry at
+  docs/roadmap-archive-1.md line 44909".
+
+  **Mended in `docs/stock-take.tsv`.** Five rows, no anchor and no run
+  changed. Row 5914, the note of a run on "the guards were blind to
+  anything after a newline or a quote in a tool call": "lines 20084 to
+  20089" → "lines 20084 to 20089 of docs/roadmap-archive-1.md". Row 7470,
+  the note of "setup-checks / Step 8 — Offer the unattended mode / a side
+  answered with a gate that binds, whatever the other did: the gate
+  binds": "status line 44351 of the roadmap entry of 31 October 2026" →
+  "status line 44351 of docs/roadmap-archive-1.md, the roadmap entry of 31
+  October 2026". Row 1415, the note of "docs/skill-conventions.md / Before
+  a handover, run these / locked skills: the green answer, which the
+  section does not name", said this file says the check prints one line
+  since 13 September 2026, where lines 33 to 36 say two since 31 October
+  2026, mended there by the audit of 3 November 2026 → the note says two
+  lines since 31 October 2026 (`628d166`), one from 13 September 2026
+  (`b90874b`) until then, and that it said one until this day; 21 runs hang
+  on the thing, its name stays. Rows 6018 and 6019, the two outcomes of the
+  workflow step "README.md names no file or document of devloop's own",
+  named "none of its five documents" and "one of its five documents" where
+  the step's pattern names seven forms since the entry above → "none of the
+  documents its pattern names" and "one of the documents its pattern
+  names", renamed as section C of the tool's header has it, no run hanging
+  on either and no other row naming them, each note naming the old name and
+  this day, the note of the green outcome listing `docs/defects.md` since 2
+  November 2026 and the archives since 4 November 2026 beside the five.
+
+  **Recorded as blocks, not built.** Two, under `## Not yet sorted`, each
+  with Fix none and the head of this entry as Found, each read Recorded, not
+  built by the tool:
+  - "a thing Walked on the branch that was not Walked at the branch point
+    and has no run the branch adds goes unseen before the merge": the case
+    of the last paragraph of the entry above, the outcome of
+    `hooks/pre-tool-use-identity-guard.sh` on text 7 that stood Walked after
+    the second commit of that branch because a line left its range, found
+    by reading before the merge; the Should as the order of this day gives
+    it. Looked for first: no block of `docs/defects.md` holds it, by `grep
+    -n -i` with `branch point`, `walked on`, `not walked` and `no run` beside
+    `branch`, and over the titles naming `branch` or `merge`; the nearest,
+    "24 of the 162 runs under 0.137.0 were recorded on the branch before
+    later commits changed lines of their things, …", holds a run to its
+    lines and no thing to its state.
+  - "the head of scripts/devloop-stock-take names docs/roadmap.md for the
+    entry of 29 September 2026 on the merge gate, which stands in the
+    archive": line 66 of the tool, found by `grep -n 'docs/roadmap.md'` over
+    `hooks/`, `bin/`, `scripts/` and `.github/` against (i), where
+    `.github/workflows/stock-take.yml` line 5 and `docs/skill-conventions.md`
+    line 1416 name the archive for the same entry; a comment in a program,
+    so a block and not a mend, since this order changes nothing outside
+    `docs/`.
+
+  **The outcomes of the identity guard that name text 7.** Eight things of
+  the table carry "text 7" in their names (`awk -F'\t' '$1=="thing" && $2
+  ~ /^hooks\/pre-tool-use-identity-guard.sh/ && $2 ~ /text 7/'
+  docs/stock-take.tsv | wc -l` gives 8), rows 2922 to 2928 and 2931; the
+  first writing of this paragraph read row 2931 alone. Rows 2922 to 2928
+  block on a form read and name what is filled into text 7, "text 7 with
+  EMAIL", "text 7 with the form read" and the like; each stands on the
+  lines that read its form and set what is filled in, lines 118, 119, 120,
+  131 to 134 with 141, 144 with 147, 152 with 169, 175, 181 and 182, and
+  183 of the hook, every one last changed at `a03a720` on 14 October 2026,
+  which introduced 0.137.0, or at `1458419` before it (`git blame
+  hooks/pre-tool-use-identity-guard.sh`); the message itself is the record
+  of the one exit line, as the hook says at lines 57 to 59, "the block's
+  record in docs/stock-take.tsv stands on the one exit line". Their runs
+  of 12 October 2026 under 0.137.0 count, and those of 10 October 2026
+  under 0.134.0 do not, as section D of the tool's header has it; the
+  change of 29 October 2026 lies on no line of theirs, and nothing is to
+  correct. Row 2931, the message, has its site `exit 2` on line 193 of the
+  hook and its evidence `this command sets the identity of a commit
+  itself` on line 192; `thing_range` of the tool, from line 2226, takes
+  for a branch its site line, its evidence line and every line recorded as
+  part of it: 192 and 193, no part-of record standing since the entry
+  above. Text 7 stands on line 192, in the range. Its three runs, rows
+  2994, 2996 and 3918, under 0.134.0 and 0.137.0, count no longer: line
+  192 last changed at `bc69673` on 29 October 2026, after both versions,
+  and the tool lists each under RUNS THAT DO NOT COUNT naming that line.
+  By section D none may count, and none does; nothing to correct, and no
+  second way to weigh.
+
+  **The block "four status lines of this file stand as part of a thing that
+  carries runs, …", a question.** Its Should: "the tool rejects such a
+  record, or the header names where such a line goes and why, and the four
+  rows go there." At `b73c029` the header's section C, lines 412 to 432,
+  says that a line of this file or of an archive counts for no run since 4
+  November 2026 and why, and the four rows — on the archive's lines 13639,
+  14689, 15534 and 41826 — are among the 34 records that went with the
+  entry above, table lines 2689, 2765, 2988 and 7142 at `d026802`; the tool
+  rejects no record on a line of this file or of an archive, `find_anchor`
+  reading an archive like any file, so a not-a-thing record there would be
+  accepted and hold its thing's runs to the archive's commit. The second
+  half of the should is met and the first is not; the block reads Built,
+  never walked off its Fix, the header's line 414, which stands. The
+  question: does the block stay as it is, the header saying where such a
+  line goes and the four rows gone, or is the first half to be built, a
+  rejection of a not-a-thing record on a line of this file or of an archive
+  with a case of the self-test? Proposal: it stays, and the next order on
+  the tool adds the rejection as a thing of its own, since a record that
+  holds every run of a thing to the archive's commit is the overcount's
+  mirror, an undercount nobody sees.
+
+  **Questions to the person.** The one above. README.md was held against
+  the programs the two pull requests changed — the question on the rule for
+  auto mode, the mark guard, the hook on permission prompts, the identity
+  guard and the output style — and deviates nowhere, so no question comes
+  from it; `docs/rationale.md` holds against its loaded texts at the two
+  points the diff touches, `setup-checks` lines 305 to 311 with `build-work`
+  lines 1273 to 1279, and `build-work` lines 1389 to 1395.
+
+  **The tool, its self-test and the twenty checks, at `b73c029` and after
+  the second commit.** The tool, `PYTHONDONTWRITEBYTECODE=1
+  scripts/devloop-stock-take`, before and on the committed branch: exit 0
+  and 0; broken records 0 and 0; uncovered lines of the search set 0 of
+  4454 and 0 of 4454; units without a straight path 0 and 0; lines of the
+  set that can carry no unique anchor 339 and 339; not-a-thing records
+  3276 and 3276; closed defects 39 and 39; blocks under `## Not yet sorted`
+  654 and 656; blocks with `not stated` 430 and 430; runs that do not
+  count 945 and 945; things 1799 and 1799, none new and none renamed but
+  the two outcomes above, which keep their rows; by state and kind:
+  undetermined 24 and 24; recorded and not built 291 and 293, the two
+  blocks; built and never walked 1461 and 1461; walked 668 and 668; closed
+  39 and 39. The blocks held against the branch point: `Should changed 1`,
+  the line above, `added 2`; the archives: `archives standing there 1,
+  added by this branch 0`, `docs/roadmap-archive-1.md` held. Its self-test:
+  155 cases and 135 messages, every one asserted, before and after. The
+  twenty checks under "Before a handover, run these", in a bash started by
+  `env -i` with `--noprofile --norc` and `/usr/bin/grep`: the nineteen quick
+  checks print on the committed branch what they printed at `b73c029`, line
+  for line and with the same exit codes, a `diff` of the two outputs silent
+  for each, checks 5, 7 and 20 ending with 1 while printing nothing, as
+  their sections call green; check 16, `scripts/devloop-run-workflow
+  .github/workflows/stock-take.yml`: exit 0 and the line `green: 8 steps
+  run, every one ended with 0; not run by design: no run: block (uses:
+  actions/checkout@v7): 2; left out by the order of 31 October 2026: 3`,
+  before and after, its first line naming the system and its release and
+  no node name, its title step reading no head at `b73c029` and the head of
+  this entry on the branch. In the clone, the figures of the three entries
+  were read off the tool at `b545927`, `9cad40f`, `b16a9f6`, `8d8b35f`,
+  `2f65f59`, `d026802`, `6211192` and `e430396`, each in about five
+  minutes, and the self-test at `d026802`: 148 cases and 130 messages,
+  every one asserted.
+
+  **Records.** In `docs/stock-take.tsv`: the five rows above; no run is
+  recorded for this entry. In `docs/defects.md`: the two blocks and the four
+  fields above.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
