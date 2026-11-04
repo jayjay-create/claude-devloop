@@ -199,7 +199,7 @@ and for the proofs of closings.
 - **The dated entries of the roadmap move to an archive file.**
 
   4 November 2026, version 0.175.0, raised from 0.174.0 once. On
-  `task/roadmap-archive`, off `origin/main` at `d026802`, in three commits:
+  `task/roadmap-archive`, off `origin/main` at `d026802`, in four commits:
   `scripts/devloop-stock-take` with its self-test and its header,
   `.github/workflows/stock-take.yml`, the comments under `hooks/`, `bin/`
   and `scripts/` that named `docs/roadmap.md` for an archived entry, and the
@@ -208,12 +208,16 @@ and for the proofs of closings.
   `docs/skill-conventions.md`, `docs/plan.md` and `docs/rationale.md`; then
   the runs of the tool's self-test under 0.175.0, measured on the second
   commit, for the things of `scripts/devloop-stock-take` that are new on
-  this branch or lost their counting run to it. Written by Claude Code from
-  the person's order of that day, part 3 of the separation of
-  `docs/roadmap.md`, after part 1 of 1 November 2026 and the two orders of
-  part 2 of 2 November 2026; no session log was read. A line number in this
-  entry means this file as it stands after this entry; a line of the archive
-  names the archive.
+  this branch or lost their counting run to it; then, after the check of
+  the branch before the merge, the evidence of one outcome of
+  `hooks/pre-tool-use-identity-guard.sh` in `docs/stock-take.tsv`, the
+  sentence on it in the tool's header and this entry, the last paragraph
+  below. The first three were written by Claude Code from the person's
+  order of that day, part 3 of the separation of `docs/roadmap.md`, after
+  part 1 of 1 November 2026 and the two orders of part 2 of 2 November
+  2026; no session log was read. A line number in this entry means this
+  file as it stands after this entry; a line of the archive names the
+  archive.
 
   **Decided on 4 November 2026** by the person, part 3 of decision (b) of 1
   November 2026 (`docs/roadmap-archive-1.md` lines 44922 to 44936) and the
@@ -360,14 +364,17 @@ and for the proofs of closings.
   roadmap counts for no run, as it counts for no defect since decision (4)
   of 2 November 2026; the tool's header, section C, said until this day that
   such a record stays, and says now since when and why the records went. The
-  things, 26, every one `Built, never walked` at `d026802`; one is `Walked`
-  now, `hooks/pre-tool-use-identity-guard.sh / whole file / block: text 7 on
+  things, 26, every one `Built, never walked` at `d026802` and after the
+  fourth commit. On the second commit one stood `Walked`,
+  `hooks/pre-tool-use-identity-guard.sh / whole file / block: text 7 on
   stderr with what was read filled in, exit 2, through no function`, whose
-  three runs of 10 and 12 October 2026 under 0.134.0 and 0.137.0 failed on
-  the one line `docs/roadmap.md:41826 (part of)`, a status line of the entry
-  of 29 October 2026, written after the runs, the hook's own line being
-  older than both versions; the other 25 stay `Built, never walked`, their
-  runs failing on lines of their own files or carrying no run. The records,
+  three runs of 10 and 12 October 2026 under 0.134.0 and 0.137.0 had failed
+  on the one line `docs/roadmap.md:41826 (part of)`, the status line of the
+  entry of 29 October 2026 that records text 7 built on line 192 of the
+  hook; text 7 changed after both versions, and the fourth commit puts the
+  outcome's evidence onto it, the last paragraph below. The other 25 stay
+  `Built, never walked`, their runs failing on lines of their own files or
+  carrying no run. The records,
   by the line of the table at `d026802`, the line of the archive and the
   thing:
 
@@ -550,7 +557,8 @@ and for the proofs of closings.
   counting run: by kind none of skill branch, shared text, output style,
   hook outcome, hook registration or check command, no defect; by source
   none under `skills/`, `shared/`, `output-styles/`, `hooks/`, `bin/`,
-  `.github/` or `docs/`. One thing gained one, the hook outcome above. The
+  `.github/` or `docs/`. One thing gained one on the second commit, the hook
+  outcome above, and lost it again with the fourth. The
   runs of the third commit, fourteen, one on each of the eleven new things
   and the three above:
   the self-test of this day under 0.175.0, recorded in the third commit, every case red once and green once;
@@ -681,6 +689,25 @@ and for the proofs of closings.
   which stands unchanged in the rewritten paragraph; whether (b) meets its
   should is the person's to read. The report of this order stands on this
   machine as `~/devloop-report-2026-11-04-roadmap-archive.md`.
+
+  **A fourth commit, after the check of the branch before the merge.** The
+  outcome `hooks/pre-tool-use-identity-guard.sh / whole file / block: text 7
+  on stderr with what was read filled in, exit 2, through no function` had
+  its site and its evidence on line 193 of the hook, `exit 2`, last changed
+  on 10 October 2026 at `1458419`; text 7 itself stands on line 192, changed
+  on 29 October 2026 at `bc69673`, after 0.134.0 and 0.137.0, the versions
+  of its three runs (`git blame -L 192,193
+  hooks/pre-tool-use-identity-guard.sh`). The record of (b) on the status
+  line of that day was what kept those runs from counting; with it gone, the
+  second commit counted runs that saw a text 7 the hook no longer prints, an
+  overcount, which section D of the tool's header allows nowhere. The
+  evidence stands on line 192 now, "this command sets the identity of a
+  commit itself", the outcome is `Built, never walked` again, its note says
+  why, and the sentence of the tool's header on the 34 records says that no
+  state changed. The tool after it: exit 0, broken records 0, uncovered
+  lines 0 of 4454; walked 668, hook outcome 133; built and never walked
+  1461, hook outcome 39; runs that do not count 945, the three runs of the
+  outcome among them; every other count as after the third commit.
 
 ## Decisions taken against
 

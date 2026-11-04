@@ -419,8 +419,8 @@ of which git blame attributes to the commit that created the file, so that a
 record re-pointed there would have held every run of its thing to the day of
 the archive: the 34 records of that form went instead, decided in the order
 of that day, the roadmap entry of that date on the archive, which names each
-and what it did to the state of its thing - one thing Walked whose runs had
-failed on such a line alone, the rest as they stood. Since that day a line
+and what it did to the state of its thing: none changed, the one whose runs
+failed on such a line alone held now by its evidence. Since that day a line
 of docs/roadmap.md or of an archive counts for no run, as it counts for no
 defect since 2 November 2026; no line of an archive is in any search set.
 Until 4 November 2026 such a line blamed to the commit of its own entry,
