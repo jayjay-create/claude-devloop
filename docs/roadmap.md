@@ -1756,7 +1756,13 @@ and for the proofs of closings.
   of a deletion or a read, the pass in a project not set up and where the
   directory cannot be entered, the write read off the Bash command and off
   the editing tool, the silent pass of the editing tool on another file not
-  among them, the bench feeding no such write; no run on any block.
+  among them, the bench feeding no such write; no run on any block. 26 runs.
+  At the third commit the tool reads Built, never walked 1471 and Walked 688,
+  the runs walking seven things: the two new outcomes of the guard, its block
+  on a record of condition 6 or 7 saying no and its block on a record of 6 or
+  7 that cannot be read, and the reader's `--unattended`, its `--dependency`
+  and the refusal of the two together; everything else as at the second
+  commit, exit 0, broken records 0, uncovered lines 0 of 4520.
 
 ## Decisions taken against
 
