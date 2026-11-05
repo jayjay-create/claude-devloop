@@ -1801,8 +1801,24 @@ a block names another state, where a field is missing or wrapped, where a
 title stands twice, where `Fix` does not stand exactly once or points at
 `docs/roadmap.md`, an archive of it or `docs/defects.md`, where `Found` names
 no head whole and exactly once over the roadmap and its archives, where a milestone is none of the plan's, where `Status`
-is in none of the forms, where a closing's proof does not hold, or where a
-line belongs to no introduction, heading or block. A run on a defect counts
+is in none of the forms, where a closing's proof does not hold, where the
+form for a built defect whose case cannot be forced stands on a block the
+tool computes another state for or its decision line does not stand once,
+where a milestone a branch declares reached by a Done line in `docs/plan.md`
+has an open block or a `not stated` in its section or an open block stands
+outside the section of a milestone not yet reached, or where a
+line belongs to no introduction, heading or block. The form, since 5
+November 2026, the roadmap entry of that date on the sorting into the
+milestones: `Built, never walked, cannot be forced: decided in `FILE` at
+"TEXT".`, a `Status` the tool takes only where it computes `Built, never
+walked` and `FILE` carries "TEXT" once, read as the proof of a closing left
+on purpose is read; such a block is not open for the rule of `docs/plan.md`
+under "Five sentences", which the tool checks since that day where a branch
+adds the line "Done on" to a milestone, reading the plan at the branch point
+and in the working tree. Since the same day the tool names every thing and
+every block Walked in the working tree, not Walked at the branch point and
+without a run the branch adds to the table, read off a worktree of the branch
+point, so that such a change is read before the merge. A run on a defect counts
 when the version it ran contains the last change to the `Fix` line, and to
 no other line: so a block moves between sections without a run being lost,
 and a should a later decision changes touches no run. A finding in a document
@@ -1816,11 +1832,17 @@ line of the table and the field of a block since 3 November 2026, decided by
 the person on that day, the roadmap entry of that date on the follow-up to
 the audit, for the same reason. A finding in
 the code, the skills, the shared texts, the hooks, the programs or the
-workflow gets a block in every case. Two marks of the transition stand in the
-file: the section `## Not yet sorted` holds the blocks no order has sorted
-into a milestone, and `not stated` stands in a `Wrong` or `Should` that no
-text of the roadmap filled when the blocks were written on 2 November 2026;
-the tool lists both and does not go red. Decided on 2 November 2026, the
+workflow gets a block in every case. Two marks of the transition stood in the
+file: the section `## Not yet sorted` held the blocks no order had sorted
+into a milestone, and stands empty since 5 November 2026, when the order of
+that day sorted every block, the roadmap entry of that date on the sorting
+into the milestones, so that the heading is gone from the file while the
+tool still reads it; and `not stated` stands in a `Wrong` or `Should` that no
+text of the roadmap filled when the blocks were written on 2 November 2026,
+under milestone 3 since 5 November 2026 in six blocks alone, whose entries
+carry no should, the blocks of the other sections until the order of their
+milestone fills it; the tool lists them and does not go red, except where a Done line
+the branch adds names their section. Decided on 2 November 2026, the
 roadmap entry of that date on the defects file. Until then a defect was a row
 of the table, sited on a line of the roadmap and evidenced on the line of its
 repair or on a status line of the roadmap saying nothing is built, and a
@@ -1876,9 +1898,10 @@ correction in place below holds for `docs/roadmap.md` alone. Not chosen:
 correcting line numbers in the archive as well, since the tool cannot tell a
 line number from a measured value. The tool reads an archive for the heads a
 block's `Found` names, exactly one over `docs/roadmap.md` and the archives
-together, for the lines a run, a `Trigger`, a `Bench`, a `Cost` or a closing
-points at, and for the proofs of closings, the closing lines that quote the
-text left out as for `docs/roadmap.md`; a `Fix` points at no archive; the
+together, for the lines a run, a `Trigger`, a `Bench`, a `Cost`, a closing or
+the form for a case that cannot be forced
+points at, and for the proofs of closings and of that form, the lines that
+quote the text left out as for `docs/roadmap.md`; a `Fix` points at no archive; the
 table "Named, not built as skills" of an archive is read nowhere, and no line
 of an archive is in the search set. A reference that names a line of the
 roadmap names the file the line stands in; a reference to an entry by its

@@ -4,7 +4,8 @@ Written on 19 September 2026. This is the plan and not a measurement record:
 what was measured stands in `docs/roadmap.md` and its archives,
 `docs/roadmap-archive-<n>.md`, under `## Known gaps`, with a
 date on every run, the defects stand in `docs/defects.md`, each as one block
-under its milestone, under `## Without a milestone` or, until an order sorts it, under `## Not yet sorted`,
+under its milestone or under `## Without a milestone` — and until 5 November
+2026, until the order of that day sorted it, under `## Not yet sorted` —,
 the facts of the stock-take stand in `docs/stock-take.tsv`,
 what holds as a rule stands in `docs/skill-conventions.md`, and the reasons and
 cases of the rules in the texts devloop loads, with the wordings approved for
@@ -117,15 +118,32 @@ section against the code first, since that check stands before the build in
 any case, and done for every defect now it would be done twice and be stale
 by the build. A reference here names a file and a section, never a line, as
 the opening of this file says.
+Decided on 5 November 2026 by the person, the roadmap entry of that date on
+the sorting into the milestones, which built the form and the check: every
+block under the section of a reached milestone carries no "not stated",
+its Wrong and Should filled from the entry its Found names with that entry's
+words, where the entry carries them, since to every defect belongs its
+should, done or not, and the rule above asks it of a reached milestone,
+decision (4); the form is given block by block by the order of a milestone,
+where no run of that milestone can meet the case, and the blocks for which a
+recorded decision of the person says so already carry it since that day,
+since that a case depends on what the model does does not mean it cannot be
+brought about, decision (10); and the 30 contradictions of the loaded texts
+stay open under "Without a milestone", so that the Done line of milestone
+12 would be red until an order directly after that one mends all 30,
+decision (5).
 
-## Twelve milestones, in this order
+## The milestones, in this order
 
 Each carries its kind, what it covers, what ends it, why it stands where it
 stands, and the conventions it meets. "Conventions" names sections or bold
 heads of `docs/skill-conventions.md` unless another file is named. The list per
 milestone comes from one reading of that file on 19 September 2026, and it is
 what milestone 2 hands each later milestone to re-evaluate under the sentence
-it writes.
+it writes. Twelve milestones until 5 November 2026, when 13, 14 and 15 came
+in by decision (2) of the roadmap entry of that date on the sorting into the
+milestones, in the order 1, 2, 3, 12, 13, 14, 4, 5, 6, 7, 8, 9, 10, 11, 15
+by its decision (3); until that day the heading above carried the count.
 
 ### 1. Stock-take of what is built (measurement)
 
@@ -161,7 +179,8 @@ in no list of open things — the roadmap entry of that date on the person's
 answers, and section D of the tool's header.
 Since 2 November 2026 the defects stand in `docs/defects.md`, each as one
 block the tool reads, under the milestone that takes it or under "Without a
-milestone", and under "Not yet sorted" until an order sorts it: the state of
+milestone", and under "Not yet sorted" until an order sorts it, which the
+order of 5 November 2026 did for every block: the state of
 a defect is computed off the block's `Fix` and
 compared with what the block says, a run on a defect names the block's title
 and is held against the `Fix` line alone, a closing stands in the block's
@@ -859,6 +878,8 @@ stay as they are: `grep -o -i -E 'milestones? [0-9]+'` finds a numbered
 milestone 103 times in `docs/roadmap.md` and 104 times in
 `docs/stock-take.tsv` on 9 October 2026, and none of those is moved for it.
 Decision 3 of the roadmap entry of 9 October 2026, where the evidence stands.
+Milestones 13, 14 and 15 took the next numbers the same way on 5 November
+2026.
 
 Milestone 3 closes on the person's Mac in the terminal. This milestone fixes
 which operating systems and which surfaces of Claude Code count — the
@@ -904,10 +925,138 @@ elsewhere before any later milestone measures there; milestones 4 to 11 are
 built on the Mac and measured on it, and this one widens what they stand on
 rather than waiting for them.
 
+Decided on 5 November 2026 by the person, the roadmap entry of that date on
+the sorting into the milestones: the open blocks of milestone 3's subject,
+the install permission, its record, its question, its guard, the command
+reader and the handover, stand in this milestone's section of
+`docs/defects.md`, since their cases run again here and an open block cannot
+stand under a reached milestone; the 30 contradictions of the loaded texts
+stay under "Without a milestone", open, and an order directly after that one
+mends all 30 before this milestone's run, decision (5), since some of them
+concern the installation, whose cases run here on every system, and most
+follow from earlier decisions and are one line; the four blocks of this
+section for which the person decided on 20 October 2026 that their case
+cannot be forced carry the form of the rule under "Five sentences" and do
+not hold this milestone up, decision (10); and the three small matters of
+the three closing runs of 27 October 2026 — the start conditions read off
+`origin/main` beside the program, the folders for browsers read around every
+install, the install of a task on its branch after the cut — are built here,
+decision (11), by decision (9) of 24 October 2026: what costs a few lines is
+built all the same.
+
 Conventions: "Works with nothing else installed" (gains the systems); "A
 hook cannot see consent"; "Every failure is a block"; "Environment
 constraints, measured" (gains the measurements per system, the machine
 being kept awake among them).
+
+### 13. The build loop with nobody there (build)
+
+Decided on 5 November 2026 by the person, decision (2) of the roadmap entry
+of that date on the sorting into the milestones, which drafted it; 170
+blocks of `docs/defects.md` stand in its section since that day.
+
+Covers: the question at the end of Stage 1 and in `setup-checks` step 8 with
+its fields and the record it writes; the seven start conditions, read by one
+program at the question and at the build; the mark, its guard and its
+deletion; the build step with its subagent, the proof that a check guards
+its condition and the exit codes it reads; the merge — the arming, the two
+gate queries, the three refusal cases, the wait inside one answer, the
+branch deletion, the handover with the person there, and the two open
+measurements under "Open" below, whether `Duration` predicts the platform's
+time and whether the failure signature after arming is stable; a command
+that does not answer, a refusal of the classifier or of a safety check, the
+bound on a call; what the run does with nobody there at a red or diverged
+base, at a failed fast-forward, at a question inside a task, in
+`diagnose-bug` and `build-prototype`, and in its last message; the answer
+Claude Code sends by itself when `askUserQuestionTimeout` runs out, which
+turns a run with the person there into one with nobody there, decision (14)
+of 5 November 2026; and, decision (12) of that day, `build-work` step 2 with
+the person there: once the spec is closed the run offers a loose issue and
+takes it on a yes, where clause 3 of its order, "With the spec closed, take
+it", stays for the run with nobody there, the wording of the offer approved
+by the person before it is built — since with the spec closed, what the
+person asked for is done, and a further issue is new work. The guard on the
+mark reading the mode's record as well, decision (8) of that day, is built by
+the order that mends the contradictions, before this milestone.
+
+Ends with two runs on one fresh project, one through the planning under
+`--auto` and one on the direct route, each meeting the cases the blocks of
+its section name, read off the platform and the session logs; a bench for
+each hook and program of the section; and the tool reporting every block of
+its section walked, closed or carrying the form "Built, never walked, cannot
+be forced". Every block of the section is checked against the code before
+the build, as the rule under "Five sentences" says of every milestone's
+order.
+
+Why here: directly after milestone 12 and before milestone 4, decision (3)
+of 5 November 2026. The runs of milestones 8, 9 and 11 build and merge; on a
+repaired loop with nobody there each of them has one open question, as the
+"Why here" of milestone 11 grounds it, where on the loop of today a defect of
+the merge or of the mode would be a second variable in each. Not chosen: 13
+and 14 directly before 9.
+
+Conventions: "Every failure is a block"; "A hook that says 'hand this to a
+person' assumes there is one"; "A duty to say something needs a place where
+it is said"; "A rule holds only on the path it is written on" (the planning
+route and the direct route both reach the build and the merge); "When a
+command does not answer"; "In doubt, a run with nobody there is not
+blocked"; "Never assert state — query it".
+
+### 14. The setup and the text with the person there (build)
+
+Decided on 5 November 2026 by the person, decision (2) of the roadmap entry
+of that date on the sorting into the milestones, which drafted it; 123
+blocks of `docs/defects.md` stand in its section since that day.
+
+Covers: `setup-project`'s questions and steps from step 0 to step 8 and its
+refresh — which, decision (7) of 5 November 2026, adds to a record under an
+older yes the places this version names for the kinds the yes covers, the
+five browser places among them, without a question, and says so in its pull
+request, since the question names kinds and not places and the case returns
+with every version that adds a place; `setup-checks`' steps 1 to 7 and 9
+with the check table, the red proof and the skipped reasons; the planning
+issue's record and the pick-up of an interrupted plan; the guards other than
+the install guard, the hooks that run checks and their registration in
+`hooks/hooks.json`; the git commands of the shared texts; the output style
+and its hook, the form of a question, the widget's bound and header, the
+language — a technical term the person's language uses as it stands not
+translated, and the input named as the person types it, the two blocks the
+person gave this milestone on 5 November 2026, decision (10), since every
+run in German meets the first —, the skill-name rule; the session start and
+`start-work`'s routes, where, decision (9) of that day, an open issue a person
+wrote and not devloop counts as work: the run names it and offers to take it
+up, on a yes the planning starts from it, on a no the open question what to
+build follows, the wording of the offer approved by the person before it is
+built, since whoever writes an issue in the project works along and wants it
+taken up; the identity of a commit and the titles devloop writes in a user's
+project; and, decision (13) of that day, the line at the end of a pull
+request devloop opens: no fixed line of devloop's, but an option under
+`userConfig` of `.claude-plugin/plugin.json` whose default is a line naming
+devloop, shown in `/config` and appended by every skill that opens a pull
+request where it is not empty, `README.md` saying that the line Claude Code
+appends comes from its setting `attribution.pr` and where devloop's is
+switched off, the wordings approved before the build, which checks the
+lowest version of Claude Code devloop supports against the release that
+substitutes `${user_config.KEY}` in skills — since the user decides in
+`/config` what stands at the end of their pull requests, and a plugin cannot
+preset `attribution.pr`.
+
+Ends with a setup run on a fresh project with the person there through every
+question and the check setup, a refresh of it, and a planning through Stage 1,
+read off the session logs against the output style's rules on where text
+stands; a bench per guard and hook of the section; and the tool reporting
+every block of its section walked, closed or carrying the form.
+
+Why here: after milestone 13 and before milestones 8 and 9, decision (3) of
+5 November 2026. Milestone 8 rewrites both setup skills for the start
+command and the end-to-end shape, and milestone 9 splits every skill over
+the final text, so the setup's text is to be final before either; and what
+the person reads is the first thing a user of devloop meets.
+
+Conventions: "Only ask where there is something to decide"; "Every question
+carries its own reason"; "Every offer says where a no leads"; "Describe what
+must be said; never dictate wording"; "A hook cannot force wording"; "Shared
+words are defined in one place"; "Registering a skill".
 
 ### 4. The road to running, measured (measurement)
 
@@ -1154,15 +1303,59 @@ Ends when the closing sentence is said, the merges are read off the platform,
 the run record stands in the last pull request, and the handover message
 names the action, the address and how to stop it.
 
-Why last: it is the aim, and every earlier milestone ends with a run of its
-own, so that this one has one variable.
+Why here, the last of the runs: it is the aim, and every earlier milestone
+ends with a run of its own, so that this one has one variable. Until 5
+November 2026 this read "Why last"; since that day milestone 15 follows it
+and runs nothing.
 
 Conventions: the machine has to be awake (the person keeps it so, by hand,
 with what `setup-checks` step 8 names); the classifier records in the roadmap's
 entries on the first planning run alone and on the install command of 28
 September 2026.
 
-Beside the twelve, one piece of work is waiting and is not a milestone:
+### 15. The records of the development (text and measurement)
+
+Decided on 5 November 2026 by the person, decision (2) of the roadmap entry
+of that date on the sorting into the milestones, which drafted it; 103
+blocks of `docs/defects.md` stand in its section since that day. Not
+chosen: these blocks under "Without a milestone", each mended or closed
+before the next Done, which would have held milestone 12 up with 103 blocks
+of the records.
+
+Covers: `scripts/devloop-stock-take` and its self-test, which produces 36 of
+its outcomes by no case; its header; its search set and the records of
+`docs/stock-take.tsv`; the checks under "Before you change anything, run
+this" and "Before a handover, run these"; `scripts/devloop-run-workflow`; and
+the statements of `docs/roadmap.md`, `docs/plan.md` and
+`docs/skill-conventions.md` about the set that no branch mended — a date
+wrong against a log, a line reference that drifted, a count gone stale, a
+record standing on a wrong line, the benches of September. The three blocks
+on the tool that the order of 5 November 2026 built with the form and the
+check — the rejection of a not-a-thing record on a roadmap line, the things
+and blocks Walked on a branch without a run the branch adds, the archive
+named in line 66 of the head — stand walked in its section since that day,
+decision (15).
+
+Ends with a run of the self-test under a version in which every outcome has
+its case, recorded on each block; a dated entry listing each document
+statement with what was corrected or why it is left, each block closed as
+corrected in the document or as left on purpose; and the tool reporting
+every block of its section walked or closed.
+
+Why here: last, after milestone 11, decision (3) of 5 November 2026. Nothing
+here gates a user or a run; placing it last brings the records in line once,
+after the texts they describe have stopped moving, as milestone 9 is "last of
+the rebuilds, over the final text" for the skills. An open block in its
+section holds no other milestone's Done, since the rule under "Five
+sentences" asks only that an open block stand in the section of a milestone
+not yet reached.
+
+Conventions: "A count lives in one place"; "A figure taken from a command is
+copied out of that command's output"; "Never assert state — query it"; "A
+run's date is copied from the session log of that run, not from memory"; "An
+archive of the roadmap never changes".
+
+Beside the milestones, one piece of work is waiting and is not a milestone:
 `find-refactor-candidates`, decided on 25 September 2026 to be built, reached
 when every task under a spec has closed; whether it becomes a milestone is not
 decided. The other three of the four side paths that stood open here, named
@@ -1184,8 +1377,14 @@ that answers it, or says that none does.
   that it comes from devloop, beside or instead of the line Claude Code adds
   from its setting `attribution.pr`; asked by the person on 26 October 2026
   in the first closing run of the milestone 3 pass, the roadmap entry of 27
-  October 2026 on the three closing runs; decided by the person after
-  milestone 3, and no milestone names it.
+  October 2026 on the three closing runs. Decided on 5 November 2026 by the
+  person, decision (13) of the roadmap entry of that date on the sorting
+  into the milestones: devloop writes no fixed line; an option under
+  `userConfig` of `.claude-plugin/plugin.json`, its default a line naming
+  devloop, is appended by every skill that opens a pull request where it is
+  not empty, and `README.md` says where Claude Code's line comes from and
+  where devloop's is switched off; milestone 14 takes it, a block of
+  `docs/defects.md` holds it, the wordings approved before the build.
 - **The list for the milestones after milestone 3**, whose order the person
   sets, since 31 October 2026, the roadmap entry of that date on the audit
   after milestone 3, which names each point with its status line in
@@ -1201,14 +1400,27 @@ that answers it, or says that none does.
   the person there (the same entry, lines 43069 to 43072); defect 8 (39600)
   and defect 11 (39827) of the entry on the three closing runs, and its small
   matters 3, 9 and 10 (39514, 39614 and 39631); and the question on
-  `attribution.pr` above. No milestone names them until the person orders the
-  list.
+  `attribution.pr` above. Decided on 5 November 2026 by the person, decisions
+  (11), (12), (13) and (14) of the roadmap entry of that date on the sorting
+  into the milestones, which sorted every block: the merge handed over for an
+  armed pull request, with the repeated reading in step 6, milestone 13; the
+  decision on `--pdfFit`, milestone 13; the lens writing into the project,
+  milestone 5; the collapsed summary before „Ist die Idee so verstanden?“,
+  milestone 6; the block of `sleep`, milestone 13; the question on the loose
+  issues, a new block of milestone 13 on `build-work` step 2 with the person
+  there, decision (12); defects 8 and 11 of the entry on the three closing
+  runs, milestone 13; its small matters 3, 9 and 10, built in milestone 12,
+  decision (11); the question on `attribution.pr`, milestone 14, decision
+  (13).
 - What devloop does with an answer Claude Code sends by itself once the time
   `askUserQuestionTimeout` sets has run out, the field `afkTimeoutMs` marking
   it, where today devloop takes it for the person's answer; recorded on 1
   November 2026, status line 44850 of `docs/roadmap-archive-1.md`, the roadmap entry of that date on the
-  question timeout, which leaves to the person which milestone takes it up;
-  no milestone names it.
+  question timeout, which leaves to the person which milestone takes it up.
+  Decided on 5 November 2026 by the person, decision (14) of the roadmap
+  entry of that date on the sorting into the milestones: milestone 13 takes
+  it up, an answer the harness sends in the person's absence turning a run
+  with the person there into one with nobody there.
 - Whether a process started in the background survives across turns in a
   devloop run (milestone 4).
 - Whether the classifier lets a start command through unattended (milestone
@@ -1248,7 +1460,9 @@ that answers it, or says that none does.
   approximation, and no compacted run (milestone 9).
 - Whether `Duration` in `checks.md` predicts the platform's time, and whether
   the failure signature after arming is stable; the roadmap entry on the run
-  stopping four times after arming names both, and no milestone covers them.
+  stopping four times after arming names both. No milestone covered them
+  until 5 November 2026; since that day milestone 13, which takes the merge
+  and its arming, names them.
 - Whether an idea whose destination is unknown can be produced on demand
   (milestone 6).
 - The cost per branch. Milestone 1 carries a cost only where the roadmap named
