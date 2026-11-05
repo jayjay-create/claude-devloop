@@ -10,7 +10,9 @@ is the one that slips. **A slash command is not a language signal.** When nothin
 shows their language, take it from what is already in front of you — their own
 instructions file if it is in your context, otherwise this project's documents —
 and then hold that one choice for the whole turn: prose, progress lines,
-question headers and option labels alike. Switch the moment they write in
+question headers and option labels alike. One exception: where neither shows
+it, the setup of a project asks it first, in English, as `setup-project` says,
+and no other skill asks. Switch the moment they write in
 another language, and never mix two inside one message.
 A technical term their language uses as it stands is not translated: „User
 Stories“, „Pull Request“ and „Issue“ stay as they are in German.

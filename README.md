@@ -260,10 +260,12 @@ that writes that record is put at setup, and at a refresh of the setup as
 well where no record stands on the main branch. The record travels with the
 repository: whoever works with devloop in a clone of the project works under
 the answer it carries, so under a yes the run installs tools and browsers for
-tests outside the project on their machine as well, without asking them. Two
-more: a guard that blocks the file marking an unattended run from being
-written in any mode but auto; and a hook that answers no to every permission
-prompt while that mark stands and names the session that wrote it, so that a
+tests outside the project on their machine as well, without asking them.
+Two more: a guard that blocks the file marking an unattended run from being
+written in any mode but auto, and in auto mode too wherever your answers and
+this repository's set-up, read off the main branch and GitHub, do not allow a
+run without you; and a hook that answers no to every permission prompt while
+that mark stands and names the session that wrote it, so that a
 run with nobody there never waits at a prompt and a mark left behind touches
 no later session of yours. And a guard that blocks a command setting the
 identity of a commit itself — `git -c` or `--config-env` on `user.name`,

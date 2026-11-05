@@ -68,7 +68,11 @@ branch and no `docs/agents/` in the working tree, so nobody has been here, and
 the introduction below is written. `set up in part`: a setup written and not
 landed, or landed in part — they have been here, so skip the introduction, run
 no in-flight query, since the tracker commands stand in a file that is not on
-the main branch, and carry on with step 3; step 4 lands the setup. `set up`:
+the main branch, and ask what they would like to build, without the
+introduction, where the idea did not come with the command — the question
+ends the turn, as the paragraph on the two things below says, and the
+setup of step 4 follows once the idea stands, as there —; where it came,
+carry on with step 3; step 4 lands the setup. `set up`:
 read as the paragraph after the introduction says. Where step 1 found a file
 missing while the line says `set up`, the line is the older reading and step 1
 wins.
@@ -99,7 +103,8 @@ would paraphrase.
 **Then one of two things, read off whether the idea came with the command.**
 Where it did not — they typed the command and nothing else — ask after the
 introduction what they would like to build, and **stop:** the question ends
-the turn. Nothing else in this reply: no repository findings,
+the turn; at `set up in part`, which has no introduction, the question
+stands alone. Nothing else in this reply: no repository findings,
 no offer to set anything up. Where it did — they said what they want built
 in the message that brought this up, beside the command or in place of a
 question — there is no introduction and no sentence on the idea as

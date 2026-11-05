@@ -457,7 +457,9 @@ the install brings no compiler, no runtime and no system packages along —
 `--with-deps`, `install-deps` or `--install-deps` brings the system's own
 packages — since a runtime and those packages stay the user's under every
 answer, by the paragraph below. Where it would bring one, the line is the
-one that gives them the command.
+one that gives them the command, and the class goes into the question that
+paragraph puts under a no, with the same two answers and all that follows
+them: the field says what the tool brings along and what their yes covers.
 
 After a no the run goes the way that line named, by the paragraph below.
 
@@ -485,18 +487,25 @@ open across a handover or a merge, and on the single-class route from a
 build as well, on the build's branch, where a check class needs such a tool
 in a build: `build-work` step 3 hands no command over for a check class's
 tool and takes no decline for it, under "If they decline, the run acts on
-it" there. A choice through the harness's choice widget, in the user's
-language, alone in its call, every point in a field of its own, and no
-recommendation, as every question of this step:
+it" there. The class whose tool would bring a compiler, a runtime or the
+system's own packages along under a yes, by the paragraph above, is decided
+here too, in the same question with the same two answers and all that
+follows them; and a no, here and in the field below, is the record saying no
+and no record written alike. A choice through the harness's choice widget,
+in the user's language, alone in its call, every point in a field of its
+own, and no recommendation, as every question of this step:
 
 - **In the header: a name for the subject**, the check, of twelve characters
   at most.
 - **In the question field**: that for this check, in ordinary words, the
-  tool is missing, named; that outside the project the run may install
-  nothing; that they can install it themselves, with the command in
-  backticks, backed and as it runs from wherever they are — the change into
-  the project's directory before it where it needs one, by "A command handed
-  over runs as it stands" above; and the question line, how it is to go on.
+  tool is missing, named; under a no, that outside the project the run may
+  install nothing; under a yes, that this tool brings along a compiler, a
+  runtime or the system's own packages, named, and that their yes covers
+  tools and browsers for tests and not these; that they can install it
+  themselves, with the command in backticks, backed and as it runs from
+  wherever they are — the change into the project's directory before it
+  where it needs one, by "A command handed over runs as it stands" above;
+  and the question line, how it is to go on.
 - **The first answer, label and line**: they install it themselves.
 - **The second answer, label and line**: the check is switched off.
 
@@ -974,7 +983,11 @@ answers `User` and GitHub Team where it answers `Organization`; and that
 everything goes on with them as before. Then step 9, as after a no, except
 that nothing is written: nothing is set up, no branch is cut and no section
 goes into `docs/agents/environment.md`; where `--auto` brought the run
-here, back to the place that called, which goes on with them. Every other
+here, back to the place that called, which goes on with them. Nothing is
+written since no answer of theirs was given; the record that says no with
+the reason that the platform refused the protection, in the paragraph on
+the record below, is for the other case, a yes of theirs that has landed
+and a protection refused once it is set. Every other
 answer — another status, another body, no answer — is a command that did
 not answer, as "When a command does not answer" says: name the command and
 the message, close nothing, and the question is not put.
@@ -1291,9 +1304,11 @@ reads the start of a line and not a sentence every run words differently:
 flag with the gate standing, and yes to both permissions; `no` otherwise,
 and then `unattended-reason` says in one line which no it was — to work
 running alone here, to installing, to the dependency file — or that the
-platform refused the protection, or that the checks do not pass on the
-platform, the workflow on the main branch red from the code, which are no
-answer of theirs. Under a yes there is no reason line. `unattended-answered` is the date. Each of the
+platform refused the protection once it was set, after their yes, or that the
+checks do not pass on the platform, the workflow on the main branch red
+from the code, which are no answer of theirs; the reading ahead of the
+question, at which GitHub offers no protection, gives no answer and writes
+no record, as that paragraph says. Under a yes there is no reason line. `unattended-answered` is the date. Each of the
 three records is written only where its answer changed or no record stood:
 a no over a no leaves the file alone, and no pull request is opened for a
 date. Where the file still carries the answer as a sentence rather than as

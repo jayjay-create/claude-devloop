@@ -57,6 +57,23 @@ loaded text no longer carries stands here at its rule.
   two groups, and the lines of the skills, the inserted texts and two hooks
   brought in line with the output style; 17 October 2026, version 0.143.0.":
   with an idea there is no introduction.
+- **At `set up in part` without an idea, the question what they would like to
+  build is asked without the introduction and ends the turn; the setup of step
+  4 follows once the idea stands.** The question hangs on the idea not having
+  come with the command, and not on the introduction, which stays only where
+  nobody has been here; a run that reaches the setup and the planning with no
+  idea in hand has nothing to plan. It follows from the paragraph on the idea
+  not coming with the command, which asks and stops, and from B6 of entry
+  "Where each text devloop owes the person stays, goes into a pull request, an
+  issue or a file, or drops, built after the decisions of the person of 17
+  October 2026: the introduction of `start-work`, the sentences that say why a
+  question comes now in the wording approved that day, the last message of the
+  run with nobody there in two groups, and the lines of the skills, the
+  inserted texts and two hooks brought in line with the output style; 17
+  October 2026, version 0.143.0.", the introduction staying only where no idea
+  came; the case is the block "start-work asks what to build only after the
+  introduction, so a setup in part with no idea reaches step 3 unasked" of
+  `docs/defects.md`, mended in entry "Six contradictions settled, the README says what the mark guard reads.".
 - **When the idea comes with the command there is no introduction, no sentence
   on the idea as understood and no question; that the setup comes first stands
   in the setup's first question.** A run that has the idea cannot follow a line
@@ -369,14 +386,23 @@ loaded text no longer carries stands here at its rule.
   commits of their own at a failed fetch asked about and done by the run; 16
   October 2026, version 0.140.0.", which took out the section "Permissions,
   before the first command".
-- **The user's language is not asked at the setup, not even where they typed
-  nothing but the command; it is taken from what is in front of the run, as the
-  opening block says.** A slash command is no language signal and the opening
-  block, inserted into this skill, says where the language comes from in that
-  case, `shared/language-opening.md`; step 4 says never to ask about the
-  language; the case is the block
-  "setup-project asks the language first in English where step 4 says never to
-  ask about the user's language" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.".
+- **The user's language is taken from what is in front of the run where they
+  typed nothing but the command, and asked only where neither their
+  instructions file nor the project's documents show it: first, as one question
+  in English, asked as text, before anything of the setup begins.** A slash
+  command is no language signal, and the opening block, inserted into this
+  skill, says where the language comes from in that case,
+  `shared/language-opening.md`, and names this one exception; the run never
+  guesses, and the question comes only where it otherwise would have to:
+  whoever answers through the widget's buttons alone writes nothing their
+  language could show in, and a first setup that runs in the wrong language is
+  the first thing a new user meets; the question is text and names no
+  languages, since a widget's answers would have to guess which to offer; step
+  4 asks about neither language nor tone, the one question on the language
+  being step 0's. Decided on 5 November 2026 by the person, entry "Six contradictions settled, the README says what the mark guard reads.";
+  not chosen: never asking. The case is the block "setup-project asks the
+  language first in English where step 4 says never to ask about the user's
+  language" of `docs/defects.md`.
 ### Step 1 — Explore, change nothing
 
 - **`gh` not signed in: the run says how they sign in, step by step, the sign-in
@@ -1006,8 +1032,27 @@ loaded text no longer carries stands here at its rule.
   carries these two", the paragraph "A command handed over runs as it stands,
   from wherever the person is".
 - **The run installs nothing that brings a compiler, a runtime or system
-  packages along, under any answer.** A runtime and system packages stay the
-  user's under every answer. Case: `brew install pmd` brings `openjdk`, read off
+  packages along, under any answer; where under a yes the tool of a class would
+  bring one along, the class goes into the question put under a no, with the
+  same two answers and all that follows them.** A runtime and system packages
+  stay the user's under every answer, and a class is never left open across a
+  handover; the field says under a yes what the tool brings along and what
+  their yes covers, so that they hear why the run does not install it itself,
+  without an assurance the guard does not hold. Decided on 5 November 2026 by
+  the person, entry "Six contradictions settled, the README says what the mark guard reads."; the case is the block "setup-checks
+  gives them the command where an install under a yes brings a runtime and
+  says nothing of how that class is then decided" of `docs/defects.md`.
+  Approved wording of the question field, same entry, word for word: "- **In
+  the question field**: that for this check, in ordinary words, the tool is
+  missing, named; under a no, that outside the project the run may install
+  nothing; under a yes, that this tool brings along a compiler, a runtime or
+  the system's own packages, named, and that their yes covers tools and
+  browsers for tests and not these; that they can install it themselves, with
+  the command in backticks, backed and as it runs from wherever they are — the
+  change into the project's directory before it where it needs one, by "A
+  command handed over runs as it stands" above; and the question line, how it
+  is to go on."; "under a no" there means the record saying no and no record
+  written alike. Case: `brew install pmd` brings `openjdk`, read off
   `formulae.brew.sh/api/formula/pmd.json` on 5 October 2026, entry "The status
   of a check class takes four forms and a guard holds the table to them, the
   unattended mode starts on two permissions more and is set up in `setup-checks`
@@ -1315,7 +1360,14 @@ loaded text no longer carries stands here at its rule.
   dated sentence and the statement being the person's wording of 8 October
   2026, the block "setup-checks step 8 puts the question where the five things
   do not all hold and puts none where GitHub offers no protection" of
-  `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". A 403 also comes
+  `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". At this reading
+  no answer of theirs is given and nothing is written; the record of the
+  answer that says no with the reason that the platform refused the protection
+  is written for a yes of theirs that has landed and a protection refused once
+  it is set, each place naming its case: the block "setup-checks step 8 writes
+  nothing where GitHub offers no protection before the question and writes a
+  record saying no where the protection is refused when it is set" of
+  `docs/defects.md`, mended in entry "Six contradictions settled, the README says what the mark guard reads.". A 403 also comes
   from a GitHub CLI locked out of an organization. Measured on 8 and 9 October
   2026 with gh 2.96.0: `[]` with exit 0 on a private repository of a personal
   account, HTTP 403 "Upgrade to GitHub Pro or make this repository public to
@@ -1832,6 +1884,15 @@ Nothing in this file stood as history; its rules carry their own reasons.
   0.142.0.".
 - **Which stage a pick-up continues at is not said.** Its reason and its entry
   stand under "Before anything: what is already built" above.
+- **A mark found at a pick-up belongs to a run that broke off and is deleted,
+  since the part without them ends on the mark's deletion at every end it has
+  and nothing else writes one there.** The reason holds where the planning
+  goes over sessions, which the opening and this heading allow: the mark goes
+  at a stop of this stage with nobody there, at the halt ahead of the build and
+  at the end of the build, so one that stands was left by a run that ended
+  otherwise. The case is the block "plan-work says to run the four stages in
+  one session where you can and that planning is one session" of
+  `docs/defects.md`, mended in entry "Six contradictions settled, the README says what the mark guard reads.".
 ### With nobody there
 
 - **A refusal before the build goes through the order for a question nobody can
@@ -1957,8 +2018,16 @@ Nothing in this file stood as history; its rules carry their own reasons.
   its log, the ! after the no taken up at once.", decided in entry "The ! after
   a no taken up in the session, point 7 read by the subagent.".
 - **Of the install record the planning says only that the build decides, even
-  where another program printed today's answer.** The answer can change before
-  the build. Under `--planning` `bin/devloop-tool-state` prints a line on the
+  where another program printed today's answer; that holds for the rounds and
+  the spec, up to the mark, and the refusal at a mark the hook blocks on
+  condition 6 or 7 says, in the sentence of `build-work` for conditions 6 and
+  7, also that they said no to it.** The answer can change before the build,
+  which touches nothing of whether a run without them starts now: whoever
+  hears that it does not start hears why. Decided on 5 November 2026 by the
+  person, entry "Six contradictions settled, the README says what the mark guard reads."; not chosen: at the mark too only that
+  it needs their yes; the case is the block "plan-work says of the install
+  record only that the build decides and names today's record for conditions
+  6 and 7 at a blocked mark" of `docs/defects.md`. Under `--planning` `bin/devloop-tool-state` prints a line on the
   record that says the build decides and no answer, decision (3) of the person of
   27 October 2026, entry "Tool state read by one program, the planning saying
   only what it read.", so what the program does not give is the record's answer
@@ -3284,6 +3353,12 @@ Nothing in this file stood as history; its rules carry their own reasons.
   wrote its prose in English and its question in German in the same turn; no
   entry of `docs/roadmap.md` carries it, the commit that wrote the rule does,
   "Hold one voice, and say where this ends up (#86)", `206a501`.
+- **Where neither the instructions file nor the project's documents show the
+  language, the setup of a project asks it, first and in English; no other
+  skill asks.** The run never guesses, and the question comes only where it
+  otherwise would have to. Decided on 5 November 2026 by the person, entry
+  "Six contradictions settled, the README says what the mark guard reads."; the reason and the case stand under
+  `skills/setup-project/SKILL.md`, step 0.
 - **A technical term the person's language uses as it stands is not
   translated.** Case: on 26 October 2026 run 1 of the three closing runs of the
   pass headed the user stories „Geschichten“, entry "Three closing runs of the
