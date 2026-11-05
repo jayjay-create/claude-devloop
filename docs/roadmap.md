@@ -1790,6 +1790,268 @@ and for the proofs of closings.
   the mended lines of the two skills, "offer to take it up" kept on one line,
   where the check on offers under "Before a handover, run these" reads it.
 
+- **Six contradictions settled, the README says what the mark guard reads.**
+
+  5 November 2026, version 0.178.0. On `task/contradictions-decided`, off
+  `origin/main` at `9524bb9`, in two commits: the code with the version —
+  the loaded texts under `skills/` and `shared/`, `README.md` and
+  `docs/rationale.md`; this entry with `docs/defects.md` and
+  `docs/stock-take.tsv`. Nothing under `hooks/`, `bin/`, `scripts/`,
+  `output-styles/` or `.github/` changes, and no run is recorded. Written
+  from the person's decisions of this day and the order that carries them,
+  which stands outside the repository, and from the report of the order on
+  the contradictions mended, outside the repository as well; no session log
+  was read; GitHub was not asked. Every line number of a file in this entry
+  holds at `9524bb9` unless it says otherwise.
+
+  **Decided on 5 November 2026 by the person.** (1) The language at the
+  setup: where the user typed nothing but the command and nothing before the
+  run shows their language — no instructions file of theirs in the context,
+  no document of the project —, `setup-project` asks it as the first, single
+  question, in English, before the setup begins; where something shows the
+  language, it is not asked. Reason: the run never guesses, and the question
+  comes only where it otherwise would have to; the first setup of a new user
+  is not to run in the wrong language, and whoever answers through buttons
+  alone writes nothing their language could show in. Not chosen: never
+  asking. `skills/setup-project/SKILL.md` lines 171 to 173 and 470, and
+  `shared/language-opening.md` lines 5 to 10, which get this one exception.
+  The Should of the block "setup-project asks the language first in English
+  where step 4 says never to ask about the user's language" changes to the
+  decision. The question is asked as text and names no languages, this
+  entry's reading: a widget's answers would have to guess which languages to
+  offer. (2) The install record at a blocked mark: both places of
+  `skills/plan-work/SKILL.md` hold, each in its moment. Line 312, "says of
+  the record only that the build decides", holds for what the planning says
+  in its rounds and in the spec, until the mark is written; the refusal at a
+  mark the hook blocks, lines 556 to 560, says in the approved sentence of
+  `skills/build-work/SKILL.md` lines 1476 to 1485 also that they said no.
+  Reason: whoever hears that the run without them does not start hears why;
+  that the answer can change before the build touches nothing of whether it
+  starts now. Not chosen: at the mark too only "needs their yes". (3) A
+  runtime under a yes in `setup-checks` step 3: where under a yes the tool of
+  a check class brings a compiler, a runtime or the system's own packages
+  along, the class goes into the same question as under a no,
+  `skills/setup-checks/SKILL.md` lines 480 to 503, with the same two answers
+  and all that follows; it is not left open across a handover, as the text
+  says there for the no. The point of the question field, line 494, approved
+  word for word: "- **In the question field**: that for this check, in
+  ordinary words, the tool is missing, named; under a no, that outside the
+  project the run may install nothing; under a yes, that this tool brings
+  along a compiler, a runtime or the system's own packages, named, and that
+  their yes covers tools and browsers for tests and not these; that they can
+  install it themselves, with the command in backticks, backed and as it runs
+  from wherever they are — the change into the project's directory before it
+  where it needs one, by "A command handed over runs as it stands" above; and
+  the question line, how it is to go on." The clause on the change into the
+  directory is the point's of today and stays; "under a no" there means, as
+  line 480, the case that no record is written as well. Reason for the
+  wording under a yes: the user hears why the run does not install the tool
+  itself, what their yes covers, without an assurance the guard does not
+  hold, `shared/install-question.md` lines 28 to 31 and "Runtimes are not a
+  kind the permission may cover" in `docs/skill-conventions.md`. Lines 453 to
+  462 say after it that this case goes into the question. (4) The sentence
+  of `README.md` on the guard on the mark, lines 263 to 265, approved word
+  for word from its start to "; and a hook", the rest of the paragraph as it
+  stood: "Two more: a guard that blocks the file marking an unattended run
+  from being written in any mode but auto, and in auto mode too wherever
+  your answers and this repository's set-up, read off the main branch and
+  GitHub, do not allow a run without you; and a hook that answers no to
+  every permission prompt while". No block held the finding; a new one
+  stands under "## Without a milestone", Found this entry, closed as
+  corrected in the document with the new sentence as its proof.
+
+  **What follows from a decision of the person or a rule**, each with its
+  basis. (5) `start-work` at `set up in part` without an idea, the block
+  "start-work asks what to build only after the introduction, so a setup in
+  part with no idea reaches step 3 unasked": the basis is
+  `skills/start-work/SKILL.md` lines 99 to 103, where the idea did not come
+  with the command the start asks what they would like to build and stops,
+  and B6 of the entry "Where each text devloop owes the person stays, goes
+  into a pull request, an issue or a file, or drops, built after the
+  decisions of the person of 17 October 2026: …", `docs/roadmap-archive-1.md`
+  line 26956, the head at line 26919, the introduction staying only where no
+  idea came and ending the turn; neither names `set up in part`, where the
+  introduction falls away and the question with it, so that the run went
+  over step 3 and step 4 into step 5 and `plan-work` with no idea, lines 66
+  to 72 and 274 on. Built: at `set up in part`, where no idea came, the
+  question without the introduction, as the end of the turn, before the
+  setup, as at `not set up here`; where the idea came, as before; lines 68
+  to 71 and 99 to 103. Played through before the build at the three states
+  of the status line, with and without an idea: `not set up here` without,
+  the introduction and the question; with, no introduction, step 3; `set up
+  in part` without, the question alone, the turn ended, the setup of step 4
+  once the idea stands; with, step 3 and the setup in step 4; `set up`
+  without, the in-flight query and, with nothing in flight, the open
+  question or the offer of an open issue devloop did not write, as before;
+  with, step 3. (6) `plan-work` on one session, the block "plan-work says to
+  run the four stages in one session where you can and that planning is one
+  session": the basis is two rules of the skill, lines 22 to 24 and 136 to
+  140, after which the planning may go over sessions; "where you can" holds,
+  and the reason at line 147 is one that holds across sessions too: the part
+  without them ends on the mark's deletion at every end it has — a stop of
+  this stage, the halt ahead of the build, the end of the build — and
+  nothing else writes one there. Closed as corrected in the document: the
+  reason itself was the error, and a run deletes the mark and asks before
+  and after. (7) `setup-checks` step 8 on the record, the block
+  "setup-checks step 8 writes nothing where GitHub offers no protection
+  before the question and writes a record saying no where the protection is
+  refused when it is set": the two places mean two cases, lines 974 to 976
+  the reading before the question, at which no answer is given, lines 1290
+  to 1296 the case after a yes, where setting the protection fails and a
+  later run would otherwise take for set up a mode that is not; each place
+  names its case now, lines 974 to 977 and 1290 to 1296. Closed as corrected
+  in the document: a run did the same at each moment before and after. (8)
+  The three blocks "start-work says not to ask at all with a map or a spec
+  in flight and in the same case to rank, recommend and offer",
+  "cut-into-tasks says the split with its count is said once the first task
+  is built and that the number of tasks is stated after creating" and
+  "review-changes says to say what was filed and why where the report is
+  said to nobody", closed as corrected in the document by the entry on the
+  contradictions mended, whose report names all three under the line between
+  the first and the third case of its order, the second case of decision (1)
+  of that entry: at each the repair can change what a run does by which of
+  the two places it followed — the start names a ticket and begins it where
+  the bullet asked for an offer; the number of tasks stands in the message
+  after the first task is built where "After creating" asked for it at once;
+  what was filed reaches the person at the close of the step where the
+  sentence asked for it on the spot. By that decision the second case holds:
+  their status is "Built, never walked", their Fix names the line of the
+  repair, and they stand in milestone 14, the first in the group of the
+  session start and the routes of `start-work`, the two others in the group
+  of the text the person reads. (9) The block "mode-set-up.md says the mark
+  guard blocks exactly where the text refuses while the text refuses on five
+  things and the guard reads four of them and start condition 1": its Should
+  ended on "with cases in its self-test"; the guard has no self-test, its
+  cases stand in the step hooks on every system of
+  `.github/workflows/stock-take.yml` and in the measurement of the entry that
+  built it, and the Should names these two. (10) `shared/fetch-three-times.md`
+  line 91, "by the text on the mark's deletion": the text is inserted into
+  `build-work`, `plan-work`, `setup-checks` and `setup-project`, the text on
+  the mark's deletion into `build-work`, `cut-into-tasks` and `plan-work`, so
+  the reference points in two of the four at a text that does not stand
+  there, the finding of the block "setup-project points at three-questions.md
+  and the text on the mark's deletion, neither of which it inserts"; the
+  point says its rule without the reference, as that block was solved, line
+  90 kept as it stood. No block held it; a new one stands under "## Without
+  a milestone", Found this entry, closed as corrected in the document.
+
+  **The blocks**, each with what is built, where it stands and in which
+  state. The language at the setup: `skills/setup-project/SKILL.md` step 0
+  takes the language from the instructions file or the project's documents
+  and asks it where neither shows it, step 4 says the one question on the
+  language is step 0's, `shared/language-opening.md` and `shared/closing.md`
+  carry the exception in the same sentence; Fix the line of the question;
+  Built, never walked, in milestone 14, the group of the setup with the
+  person there, as before. The record at a blocked mark:
+  `skills/plan-work/SKILL.md` Stage 1 scopes its rule to the rounds and the
+  spec up to the mark and names the refusal at the mark as the one place
+  that names today's answer, and the refusal says that they said no; Fix the
+  line of the refusal; Built, never walked, moved into milestone 13, the
+  group of the mode's question and set-up with the start conditions and the
+  mark. A runtime under a yes: `skills/setup-checks/SKILL.md` step 3 says at
+  the line that gives them the command and at the question under a no that
+  the class goes into that question, the field in the approved wording; Fix
+  the line of the field under a yes; Built, never walked, moved into
+  milestone 14, the group of the check setup and the check table. `set up in
+  part` without an idea: Fix the line of the question in step 2; Built, never
+  walked, moved into milestone 14, the group of the session start and the
+  routes of `start-work`. One session: closed as corrected in the document,
+  `skills/plan-work/SKILL.md` carrying "on the mark's deletion at every end
+  it has", under "## Without a milestone". Step 8 on the record: closed as
+  corrected in the document, `skills/setup-checks/SKILL.md` carrying
+  "written since no answer of theirs was given", under "## Without a
+  milestone". The three of (8): Built, never walked, in milestone 14. The
+  block of (9): Built, never walked, in milestone 13, as before. The two new
+  blocks of (4) and (10): closed as corrected in the document under
+  "## Without a milestone".
+
+  **Not built, named.** The same case as (1) meets two other skills that
+  begin with questions through the widget where the user typed nothing but
+  the command: `start-work`, where nothing of devloop's own is in flight and
+  an open issue devloop did not write stands, step 2 offering it through the
+  widget as the first thing; and `setup-checks` typed by the person, whose
+  step 2 puts its question through the widget. Neither asks the language;
+  both meet the case in a project set up, whose documents show it; the
+  report names them, as the order asked, and this entry builds nothing
+  there. One case the play-through of (1) found lies outside the order and
+  gets a block, recorded and not built, Found this entry, in milestone 14,
+  the group of the session start and the routes of `start-work`: at `not
+  set up here`, the command alone in an empty folder and no instructions
+  file, `start-work` step 2 writes the introduction and the question what to
+  build in a language nothing shows, and the question of (1) is never
+  reached on that route, since the answer on the idea shows the language
+  before the setup begins. `docs/plan.md` lines 121 to 147 do not speak of the language at the
+  setup or of the record at a blocked mark, so decisions (1) and (2) stand
+  here alone. `shared/install-question.md` does not change: the field under
+  a yes names one tool and what it brings, and not an assurance over every
+  runtime, which that text keeps out of the install question. The closing
+  run of milestone 14 as `docs/plan.md` describes it reaches neither the cut
+  nor a review, so that the cases of the two blocks of (8) in the group of
+  the text the person reads are met by no run named today; the group of the
+  sorting puts them there, as it put the block on the texts that tell the
+  person to type `--auto` without the command.
+
+  **The Shoulds changed**, 7, each title here in the form the tool reads; the
+  old text of the first read "the language is not asked at the setup: where
+  the user typed nothing but the command it is taken from what is in front
+  of the run, as shared/language-opening.md, inserted into the skill, says
+  for that case, and step 4's rule against asking stands"; of the five that
+  follow "the person decides which holds:" with the two places each block
+  names; of the last, as it reads now up to "so that it blocks exactly where
+  the text refuses," followed by "with cases in its self-test":
+
+  Should changed: setup-project asks the language first in English where step 4 says never to ask about the user's language
+  Should changed: plan-work says of the install record only that the build decides and names today's record for conditions 6 and 7 at a blocked mark
+  Should changed: setup-checks gives them the command where an install under a yes brings a runtime and says nothing of how that class is then decided
+  Should changed: start-work asks what to build only after the introduction, so a setup in part with no idea reaches step 3 unasked
+  Should changed: plan-work says to run the four stages in one session where you can and that planning is one session
+  Should changed: setup-checks step 8 writes nothing where GitHub offers no protection before the question and writes a record saying no where the protection is refused when it is set
+  Should changed: mode-set-up.md says the mark guard blocks exactly where the text refuses while the text refuses on five things and the guard reads four of them and start condition 1
+
+  **What changed in the documents.** `docs/defects.md`: the twelve blocks
+  as above, six moved into the sections of milestones 13 and 14 as built and
+  never walked, two closed as corrected in the document, two with the Should
+  changed and the state kept, two new. `docs/rationale.md`: a point for
+  every rule written or changed — under `skills/setup-project/SKILL.md` step
+  0, `shared/closing.md`, `skills/plan-work/SKILL.md` Stage 1 and the
+  pick-up, `skills/start-work/SKILL.md` step 2, `skills/setup-checks/SKILL.md`
+  step 3 with the approved field word for word and step 8 —, each naming its
+  case and its reason alone. `docs/stock-take.tsv`: five things for the new
+  outcomes — the language asked in `setup-project`, the exception in the two
+  shared blocks, the class into the question under a yes in `setup-checks`,
+  the question at `set up in part` in `start-work` —, the thing of the
+  language taken from what is in front of the run renamed and re-anchored,
+  no run hanging on it, five records re-anchored to lines that moved, and
+  five records of lines inside the new text.
+
+  **The tool.** Before this order, at `9524bb9`: exit 0, broken records 0,
+  uncovered lines 0 of 4520, blocks 689, under "## Without a milestone" 46,
+  closed 65, with "not stated" 382, built whose case cannot be forced 7,
+  not-a-thing records 3332, lines that can carry no unique anchor 344,
+  Undetermined 24, Recorded, not built 260, Built, never walked 1471, Walked
+  688, Closed 65. At the second commit: exit 0, broken records 0, uncovered
+  lines 0 of 4532, blocks 692, under "## Without a milestone" 42, every one
+  of them closed, so that no open block stands there any more, closed 66,
+  with "not stated" 382, built whose case cannot be forced 7, not-a-thing
+  records 3338, lines that can carry no unique anchor 344, Undetermined 24,
+  Recorded, not built 256, Built, never walked 1482, Walked 688, Closed 66;
+  milestones reached 1, 2, 3, none reached on this branch; Walked on this
+  branch without a run the branch adds: 0; blocks held against the branch
+  point: removed 0, renamed 0, Should changed 7, added 3, the seven lines
+  above. The changes against the run before: Closed +1, the two blocks
+  closed as corrected in the document, (6) and (7), and the two new blocks
+  of (4) and (10), less the three of (8), built and never walked again;
+  Recorded, not built -4, the three blocks built, (2), (3) and (5), the two
+  closed, and the new block of `start-work` recorded and not built;
+  Built, never walked +11, the three built, the three of (8) and the five
+  new things; Walked +0, no line of a walked thing changed, line 90 of
+  `shared/fetch-three-times.md` kept as it stood for that; blocks +3, the
+  three new; under "## Without a milestone" -4, six moved into milestones 13
+  and 14 and two new; milestone 13 +1, milestone 14 +6; the search set +12
+  lines, the new text, every one covered; not-a-thing records +6, the lines
+  inside the new text; lines that can carry no unique anchor +0; with "not
+  stated" +0; Undetermined +0. No run is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

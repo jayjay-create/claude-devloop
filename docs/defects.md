@@ -2700,11 +2700,11 @@ their section.
 
 ### mode-set-up.md says the mark guard blocks exactly where the text refuses while the text refuses on five things and the guard reads four of them and start condition 1
 - Wrong: `shared/mode-set-up.md` opens with five things the run with nobody there refuses on, the record of the mode among them, and says in the paragraph on the guard that `hooks/pre-tool-use-mark-guard.sh` reads the last four of the five and start condition 1 and blocks "exactly where this text refuses"
-- Should: hooks/pre-tool-use-mark-guard.sh reads the record of the answer to whether work may run here with nobody there as well, off the main branch as the other two records are read, and blocks the write of the mark where it does not say yes, so that it blocks exactly where the text refuses, with cases in its self-test
+- Should: hooks/pre-tool-use-mark-guard.sh reads the record of the answer to whether work may run here with nobody there as well, off the main branch as the other two records are read, and blocks the write of the mark where it does not say yes, so that it blocks exactly where the text refuses, its cases in the step hooks on every system of .github/workflows/stock-take.yml and in the measurement of the entry that built it, the guard having no self-test
 - Found: The loaded texts lose their history, reasons move to docs/rationale.md.
 - Fix: `hooks/pre-tool-use-mark-guard.sh` "RECORD=$("$HERE/../bin/devloop-install-record" --unattended 2>&1); RRC=$?"
 - Status: Built, never walked
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 12 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.177.0, the roadmap entry of 5 November 2026 on the contradictions mended, decision (8) of the roadmap entry of 5 November 2026 on the sorting into the milestones: the guard reads the record through bin/devloop-install-record --unattended before the conditions and blocks where it does not say yes, its line the first of the block, in the wording approved that day; the guard has no self-test, its cases stand in the step hooks on every system of .github/workflows/stock-take.yml and in the bench of that entry, seven cases; in milestone 13 since that day, the group of the mode's question and set-up with the start conditions and the mark
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 12 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.177.0, the roadmap entry of 5 November 2026 on the contradictions mended, decision (8) of the roadmap entry of 5 November 2026 on the sorting into the milestones: the guard reads the record through bin/devloop-install-record --unattended before the conditions and blocks where it does not say yes, its line the first of the block, in the wording approved that day; the guard has no self-test, its cases stand in the step hooks on every system of .github/workflows/stock-take.yml and in the bench of that entry, seven cases; in milestone 13 since that day, the group of the mode's question and set-up with the start conditions and the mark; Should changed 5 November 2026, the roadmap entry of 5 November 2026 on the six contradictions settled: the guard has no self-test, its cases stand in the step and in the bench
 
 ### setup-checks counts the fields of the mode question at thirteen lines, which assumes the visibility answered and says nothing of the field with the command and the message in it
 - Wrong: `skills/setup-checks/SKILL.md` under "Step 8 — Offer the unattended mode" says "At 80 columns, on macOS and with a private repository, these fields fill thirteen lines, inside the bound", and its paragraph on reading whether the repository is public says that where no answer came the command and the message stand in the question field under the line on the cost, which the count does not carry
@@ -2713,6 +2713,14 @@ their section.
 - Fix: `skills/setup-checks/SKILL.md` "answered, these fields fill thirteen lines, inside the bound the output style"
 - Status: Built, never walked
 - Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.177.0, the roadmap entry of 5 November 2026 on the contradictions mended: the count qualified and the way of the output style named for the other case; in milestone 13 since that day, the group of the mode's question and set-up with the start conditions and the mark
+
+### plan-work says of the install record only that the build decides and names today's record for conditions 6 and 7 at a blocked mark
+- Wrong: `skills/plan-work/SKILL.md` under "Stage 1 — Sharpen the idea" says the planning "says of the record only that the build decides", and the same stage says of a mark the guard blocks on conditions 6 and 7 that the run tells them which condition failed and why, naming the record as it stands today
+- Should: both places hold, each in its moment: the planning says of the record, in its rounds and in the spec, up to the mark, only that the build decides, and the refusal at a mark the hook blocks on condition 6 or 7 says, in the sentence of build-work for conditions 6 and 7, also that they said no to it, since whoever hears that the run without them does not start hears why: decided by the person on 5 November 2026, the roadmap entry of 5 November 2026 on the six contradictions settled
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: `skills/plan-work/SKILL.md` "questions, and with it, where the record says no, that they said no to it,"
+- Status: Built, never walked
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 17 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.178.0, the roadmap entry of 5 November 2026 on the six contradictions settled, decided by the person that day: Stage 1 scopes its rule to the rounds and the spec up to the mark and names the refusal at the blocked mark as the one place that names today's answer; in milestone 13 since that day, the group of the mode's question and set-up with the start conditions and the mark
 
 ## Milestone 14
 
@@ -3712,11 +3720,11 @@ their section.
 
 ### setup-project asks the language first in English where step 4 says never to ask about the user's language
 - Wrong: `skills/setup-project/SKILL.md` under "Step 0" says that where the user's language cannot be told the run asks that first, in English, as a single question, and under "Step 4 — Questions" says "Never ask about the user's preferred language or tone here"
-- Should: the language is not asked at the setup: where the user typed nothing but the command it is taken from what is in front of the run, as shared/language-opening.md, inserted into the skill, says for that case, and step 4's rule against asking stands
+- Should: where the user typed nothing but the command and nothing before the run shows their language — no instructions file of theirs in the context, no document of the project — setup-project asks it as the first, single question, in English, before the setup begins, and where something shows the language it is not asked: decided by the person on 5 November 2026, the roadmap entry of 5 November 2026 on the six contradictions settled; shared/language-opening.md carries this one exception, and step 4's rule against asking stands for everything else
 - Found: The loaded texts lose their history, reasons move to docs/rationale.md.
-- Fix: `skills/setup-project/SKILL.md` "their language is not asked"
+- Fix: `skills/setup-project/SKILL.md` "ask it first, before anything of the setup begins"
 - Status: Built, never walked
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 16 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.177.0, the roadmap entry of 5 November 2026 on the contradictions mended: the paragraph of step 0 that asked the language in English went, replaced by the reading of the opening block, the rule of shared/language-opening.md deciding it; in milestone 14 since that day, the group of the setup with the person there
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 16 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.177.0, the roadmap entry of 5 November 2026 on the contradictions mended: the paragraph of step 0 that asked the language in English went, replaced by the reading of the opening block, the rule of shared/language-opening.md deciding it; in milestone 14 since that day, the group of the setup with the person there; Should changed 5 November 2026 by the decision of the person of that day, the roadmap entry of 5 November 2026 on the six contradictions settled: the question in English comes back for the case that nothing shows the language, the run never guessing and asking only where it otherwise would, the opening block carrying the exception, step 0 saying it; still in milestone 14, the group of the setup with the person there
 
 ### setup-checks hands the command over after a no to a tool in the packages as text and puts the question for the same class at once with the command in its field
 - Wrong: `skills/setup-checks/SKILL.md` under "Step 3 — Prefer tools that live inside the project" says the command of the second way is handed over after the no in the message that ends the turn, as text, and the same step puts the question on a tool the run may not install at once, with the command in its question field and handed over once more on the first answer
@@ -3741,6 +3749,54 @@ their section.
 - Fix: `skills/start-work/SKILL.md` "- **An open issue devloop did not write, with nothing of devloop's own in"
 - Status: Built, never walked
 - Note: found 17 October 2026 by the order building the rule on owed text and the questions, the inventory of that day, its line 726, read again at the lines; concerns skills/start-work/SKILL.md lines 192 to 193 and 210 to 213, skills/setup-checks/SKILL.md lines 226 to 227 and 93 to 98, skills/plan-work/SKILL.md line 631 and shared/refer-by-name.md lines 1 to 6; should: each pair agrees, setup-checks reading as lines 93 to 98 and plan-work naming the spec by its title by the conventions, start-work not decided by that entry; built 5 November 2026, version 0.177.0, the roadmap entry of 5 November 2026 on the contradictions mended, decision (9) of the roadmap entry of 5 November 2026 on the sorting into the milestones, clarified that day: whether devloop wrote the issue is all that counts, an issue an app opened offered like one a person wrote, the fields of the offer approved that day and held in docs/rationale.md; the setup-checks pair held already before this order, the paragraph on secrets with nobody there reading as its bullet does, the task ending and not the run; the plan-work pair mended here, the spec reported by its title with its number inside; in milestone 14 since that day, the group of the session start and the routes of start-work
+
+### setup-checks gives them the command where an install under a yes brings a runtime and says nothing of how that class is then decided
+- Wrong: `skills/setup-checks/SKILL.md` under "Step 3 — Prefer tools that live inside the project" says that where the install would bring a compiler, a runtime or system packages "the line is the one that gives them the command" under a record saying yes, and the three ways the no line names and the paragraph "After a no the run goes the way that line named" say nothing of how the class is decided in that case
+- Should: where under a yes the tool of a check class brings a compiler, a runtime or the system's own packages along, the class goes into the same question as under a no, with the same two answers and all that follows them, never left open across a handover, the question field saying under a yes what the tool brings along, named, and that their yes covers tools and browsers for tests and not these, in the wording the person approved on 5 November 2026, the roadmap entry of 5 November 2026 on the six contradictions settled
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: `skills/setup-checks/SKILL.md` "install nothing; under a yes, that this tool brings along a compiler, a"
+- Status: Built, never walked
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 18 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.178.0, the roadmap entry of 5 November 2026 on the six contradictions settled, decided by the person that day: the paragraph on the line that gives them the command and the paragraph on the question under a no both say that the class goes into the question, the field in the approved wording, a no in it meaning no record written as well; in milestone 14 since that day, the group of the check setup and the check table
+
+### start-work asks what to build only after the introduction, so a setup in part with no idea reaches step 3 unasked
+- Wrong: `skills/start-work/SKILL.md` under "Step 2" says that at `set up in part` the introduction is skipped and the run carries on with step 3, and the same step puts the question what they would like to build only after the introduction, so that with the setup in part and no idea in hand nothing asks what to build
+- Should: at set up in part, where no idea came with the command, the run asks what they would like to build, without the introduction, the question ending the turn, before the setup lands, as at not set up here; where the idea came, as before: skills/start-work/SKILL.md step 2 on the idea not coming with the command, which asks and stops, and B6 of the entry of 17 October 2026 on where each text devloop owes the person stays, the introduction staying only where no idea came, neither naming set up in part
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: `skills/start-work/SKILL.md` "introduction, where the idea did not come with the command — the question"
+- Status: Built, never walked
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.178.0, the roadmap entry of 5 November 2026 on the six contradictions settled, from the two rules the order names as its basis; in milestone 14 since that day, the group of the session start and the routes of start-work
+
+### start-work says not to ask at all with a map or a spec in flight and in the same case to rank, recommend and offer
+- Wrong: `skills/start-work/SKILL.md` under "Step 2" says "If a map or a spec is in flight, do not ask a question at all", and a bullet further down in the same step names an exception for an open issue in the same case: "rank it, recommend one, offer to pick it up"
+- Should: the bullet on a ticket or task of a map or a spec names and starts it with no question and no offer, as the paragraph on a map or a spec in flight says: the decision of the person of 17 October 2026 dropping the room to object at SW-7, built as B3 that day, the bullet the leftover
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: `skills/start-work/SKILL.md` "which comes next and start it, with no question and no offer"
+- Status: Built, never walked
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended; built and never walked since 5 November 2026, the roadmap entry of 5 November 2026 on the six contradictions settled: the repair changes what a run does by which of the two places it followed before, so the line between the first and the second case of the rule of 5 November 2026 is not clear and the second holds, the Fix naming the line of the repair; in milestone 14 since that day, the group of the session start and the routes of start-work
+
+### cut-into-tasks says the split with its count is said once the first task is built and that the number of tasks is stated after creating
+- Wrong: `skills/cut-into-tasks/SKILL.md` under "Before you create anything" says that with them there the split is said at the next message that ends a turn with text, which comes only once the issues exist and the first task is built, and under "After creating" says to state the number of tasks and which one is ready first
+- Should: the number of tasks and which one is ready first stand in the message the paragraph on the split names, with the split, and not at the moment of creating: decision (1) of the person of 17 October 2026, text owed at a moment inside the turn waiting for the message that ends it
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: `skills/cut-into-tasks/SKILL.md` "issue too), and which one is ready first stand in the message the paragraph"
+- Status: Built, never walked
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended; built and never walked since 5 November 2026, the roadmap entry of 5 November 2026 on the six contradictions settled: the repair changes what a run does by which of the two places it followed before, so the line between the first and the second case of the rule of 5 November 2026 is not clear and the second holds, the Fix naming the line of the repair; in milestone 14 since that day, the group of the text the person reads
+
+### review-changes says to say what was filed and why where the report is said to nobody
+- Wrong: `skills/review-changes/SKILL.md` under "What happens to a finding" says of a finding filed as an issue "Say what you filed and why", and under "The report, said to nobody" says the report is said to nobody, the findings reaching the person at the close of the step that owns the gate
+- Should: what was filed and why reaches the person at the close of the step that owns the gate, where that step shows what was filed, and not in review-changes, whose report is said to nobody: decision (1) of the person of 17 October 2026, and the six features of that day, an issue filed being something created on GitHub
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: `skills/review-changes/SKILL.md` "the close of the step that owns the gate, where that step shows what was"
+- Status: Built, never walked
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended; built and never walked since 5 November 2026, the roadmap entry of 5 November 2026 on the six contradictions settled: the repair changes what a run does by which of the two places it followed before, so the line between the first and the second case of the rule of 5 November 2026 is not clear and the second holds, the Fix naming the line of the repair; in milestone 14 since that day, the group of the text the person reads
+
+### start-work writes the introduction and asks what to build in a language nothing shows where the user typed only the command in a project not set up
+- Wrong: `skills/start-work/SKILL.md` under "Step 2" writes the introduction and the question what they would like to build "in their language" at `not set up here`, where the user typed nothing but the command and no instructions file of theirs stands in the context and no document of the project shows a language, so that the run guesses, the case the person decided for `setup-project` on 5 November 2026 by the question in English, which this route never reaches since the answer on the idea shows the language before the setup begins
+- Should: the person decides: the same question, first and in English, where nothing shows the language, in `start-work` before the introduction, or the introduction as it stands
+- Found: Six contradictions settled, the README says what the mark guard reads.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 5 November 2026 by the order on the six contradictions settled, in the play-through of the language at the setup, case (a), the command alone in an empty folder without an instructions file; the two skills that begin with a question through the widget, `start-work` with an open issue devloop did not write and `setup-checks` typed by the person, meet the case only in a project set up, whose documents show the language; in milestone 14 since this day, the group of the session start and the routes of start-work
 
 ## Milestone 5
 
@@ -5308,44 +5364,12 @@ their section.
 - Status: Closed, corrected in the document: `skills/start-work/SKILL.md` carries "yours waiting to land means a question and a stop too, the offer to land it".
 - Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended
 
-### start-work says not to ask at all with a map or a spec in flight and in the same case to rank, recommend and offer
-- Wrong: `skills/start-work/SKILL.md` under "Step 2" says "If a map or a spec is in flight, do not ask a question at all", and a bullet further down in the same step names an exception for an open issue in the same case: "rank it, recommend one, offer to pick it up"
-- Should: the bullet on a ticket or task of a map or a spec names and starts it with no question and no offer, as the paragraph on a map or a spec in flight says: the decision of the person of 17 October 2026 dropping the room to object at SW-7, built as B3 that day, the bullet the leftover
-- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
-- Fix: none
-- Status: Closed, corrected in the document: `skills/start-work/SKILL.md` carries "which comes next and start it, with no question and no offer".
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended
-
-### start-work asks what to build only after the introduction, so a setup in part with no idea reaches step 3 unasked
-- Wrong: `skills/start-work/SKILL.md` under "Step 2" says that at `set up in part` the introduction is skipped and the run carries on with step 3, and the same step puts the question what they would like to build only after the introduction, so that with the setup in part and no idea in hand nothing asks what to build
-- Should: the person decides which holds: the route at `set up in part` that skips the introduction and goes to step 3, or the question what to build that comes after the introduction alone, both under "Step 2"
-- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
-
-### cut-into-tasks says the split with its count is said once the first task is built and that the number of tasks is stated after creating
-- Wrong: `skills/cut-into-tasks/SKILL.md` under "Before you create anything" says that with them there the split is said at the next message that ends a turn with text, which comes only once the issues exist and the first task is built, and under "After creating" says to state the number of tasks and which one is ready first
-- Should: the number of tasks and which one is ready first stand in the message the paragraph on the split names, with the split, and not at the moment of creating: decision (1) of the person of 17 October 2026, text owed at a moment inside the turn waiting for the message that ends it
-- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
-- Fix: none
-- Status: Closed, corrected in the document: `skills/cut-into-tasks/SKILL.md` carries "issue too), and which one is ready first stand in the message the paragraph".
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended
-
 ### review-changes asks for the record of how many lenses ran and says to say neither number
 - Wrong: `skills/review-changes/SKILL.md` says in its opening under "Review a change" that every angle the change touches gets read, "the record of how many ran", and under "Run them" says "Start one reviewer for every lens that applies, and say neither number"
 - Should: the report's one section per lens is the record of how many ran, said to nobody, and no number of lenses is said: the definition under "A lens is one reading of the whole diff" in docs/skill-conventions.md, which counts the lenses in the report's sections, and the six features of the person's decision of 17 October 2026, a number of lenses none of them
 - Found: The loaded texts lose their history, reasons move to docs/rationale.md.
 - Fix: none
 - Status: Closed, corrected in the document: `skills/review-changes/SKILL.md` carries "record of how many ran and is said to nobody".
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended
-
-### review-changes says to say what was filed and why where the report is said to nobody
-- Wrong: `skills/review-changes/SKILL.md` under "What happens to a finding" says of a finding filed as an issue "Say what you filed and why", and under "The report, said to nobody" says the report is said to nobody, the findings reaching the person at the close of the step that owns the gate
-- Should: what was filed and why reaches the person at the close of the step that owns the gate, where that step shows what was filed, and not in review-changes, whose report is said to nobody: decision (1) of the person of 17 October 2026, and the six features of that day, an issue filed being something created on GitHub
-- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
-- Fix: none
-- Status: Closed, corrected in the document: `skills/review-changes/SKILL.md` carries "the close of the step that owns the gate, where that step shows what was".
 - Note: found 1 November 2026 by the order on the history of the loaded texts, section 15 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended
 
 ### setup-project gives the record not having landed yet as the reason for handing nothing over, which does not hold at a refresh whose record stands
@@ -5372,14 +5396,6 @@ their section.
 - Status: Closed, corrected in the document: `skills/setup-project/SKILL.md` carries "weighing stands alone so that it is not waved through beside other".
 - Note: found 1 November 2026 by the order on the history of the loaded texts, section 16 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended
 
-### plan-work says of the install record only that the build decides and names today's record for conditions 6 and 7 at a blocked mark
-- Wrong: `skills/plan-work/SKILL.md` under "Stage 1 — Sharpen the idea" says the planning "says of the record only that the build decides", and the same stage says of a mark the guard blocks on conditions 6 and 7 that the run tells them which condition failed and why, naming the record as it stands today
-- Should: the person decides which holds: the planning saying of the record only that the build decides, or the sentence on conditions 6 and 7 at a blocked mark, both under "Stage 1 — Sharpen the idea"
-- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 17 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
-
 ### plan-work says under --planning the program does not give the record's line and that the spec carries not the program's line on the record
 - Wrong: `skills/plan-work/SKILL.md` under "Stage 1 — Sharpen the idea" says that under `--planning` the program prints no answer and "the record's line it does not give", and under "Stage 4 — Write the spec" says the tool line stands in the spec as printed "and not the program's line on the record", a line the program prints
 - Should: Stage 1 says that the program does not give the record's answer, its line on the record saying that the build decides, as Stage 4 says: decision (3) of the person of 27 October 2026 and the head of bin/devloop-tool-state
@@ -5390,11 +5406,11 @@ their section.
 
 ### plan-work says to run the four stages in one session where you can and that planning is one session
 - Wrong: `skills/plan-work/SKILL.md` says in its opening under "Plan a piece of work" "Run them in one session where you can", and under "Picking up an interrupted plan" says a stage that stands otherwise belongs to a run that broke off, "since planning is one session"
-- Should: the person decides which holds: "where you can" in the opening under "Plan a piece of work", or "planning is one session" under "Picking up an interrupted plan"
+- Should: "where you can" holds, the two rules of the skill under "Plan a piece of work" and "Picking up an interrupted plan" letting the planning go over sessions, and the reason for deleting a mark found at a pick-up is one that holds across sessions: the part without them ends on the mark's deletion at every end it has, and nothing else writes one there
 - Found: The loaded texts lose their history, reasons move to docs/rationale.md.
 - Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 17 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+- Status: Closed, corrected in the document: `skills/plan-work/SKILL.md` carries "on the mark's deletion at every end it has".
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 17 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the reason itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the six contradictions settled
 
 ### setup-checks calls the questions of step 3 the last questions of the skill where step 8 asks more
 - Wrong: `skills/setup-checks/SKILL.md` under "Step 3 — Prefer tools that live inside the project" says "its questions are the last questions of this skill, the branch is cut once they are answered", and under "Step 8 — Offer the unattended mode" the skill puts the question on the mode
@@ -5403,14 +5419,6 @@ their section.
 - Fix: none
 - Status: Closed, corrected in the document: `skills/setup-checks/SKILL.md` carries "last questions before the cut of the branch `devloop-checks`".
 - Note: found 1 November 2026 by the order on the history of the loaded texts, section 18 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended
-
-### setup-checks gives them the command where an install under a yes brings a runtime and says nothing of how that class is then decided
-- Wrong: `skills/setup-checks/SKILL.md` under "Step 3 — Prefer tools that live inside the project" says that where the install would bring a compiler, a runtime or system packages "the line is the one that gives them the command" under a record saying yes, and the three ways the no line names and the paragraph "After a no the run goes the way that line named" say nothing of how the class is decided in that case
-- Should: the person decides which holds: the line that gives them the command where the install brings a runtime, or the three ways of the no and the paragraph after them, which do not cover it, all under "Step 3 — Prefer tools that live inside the project"
-- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 18 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
 
 ### setup-checks step 8 puts the question where the five things do not all hold and puts none where GitHub offers no protection
 - Wrong: `skills/setup-checks/SKILL.md` under "Step 8 — Offer the unattended mode" says in its paragraph on when the offer is made that where the five things do not all hold "the question is put, with auto-merge off and no gate on the main branch as much as with them", and in its paragraph on the reading of the rules that on HTTP 403 "no question is put" and nothing is set up
@@ -5422,11 +5430,11 @@ their section.
 
 ### setup-checks step 8 writes nothing where GitHub offers no protection before the question and writes a record saying no where the protection is refused when it is set
 - Wrong: `skills/setup-checks/SKILL.md` under "Step 8 — Offer the unattended mode" says that where GitHub offers no protection at the reading before the question "nothing is written", and in its paragraph on the record says `unattended-mode` is `no` with the reason "that the platform refused the protection" where it is refused when it is set
-- Should: the person decides which holds: nothing written where the protection is not offered, or the record saying no with its reason where it is refused, both under "Step 8 — Offer the unattended mode"
+- Should: each place names its case: the reading before the question, at which GitHub offers no protection, gives no answer of theirs and writes nothing, and the record saying no with the reason that the platform refused the protection is for a yes of theirs that has landed and a protection refused once it is set, the paragraph on the record naming the reading before the question as the case that writes none
 - Found: The loaded texts lose their history, reasons move to docs/rationale.md.
 - Fix: none
-- Status: Recorded, not built
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing
+- Status: Closed, corrected in the document: `skills/setup-checks/SKILL.md` carries "written since no answer of theirs was given".
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the two sentences naming their cases and a run doing the same before and after, the roadmap entry of 5 November 2026 on the six contradictions settled
 
 ### nothing writes documentation for the people who run the thing and nothing ships it
 - Wrong: not stated
@@ -5619,3 +5627,19 @@ their section.
 - Fix: none
 - Status: Closed, left on purpose: decided in `docs/roadmap-archive-1.md` at "The defect of status line 44361".
 - Note: found 31 October 2026 by the audit after milestone 3, the roadmap entry of that date; wrong outside docs/, the query pipx environment, which writes a log, recorded and not built; found after the decision that milestone 3 is reached, which milestone takes it up the person decides; version 0.168.0; measured 31 October 2026 under a fresh HOME on this Mac with pipx 1.17.6: twelve calls of the query left eleven files in Library/Logs/pipx, ten old beside the current, as pipx's _setup_log_file keeps PIPX_MAX_LOGS files and then writes the current, where the documentation says the count includes the current command's, default 10; a decision to leave the query as it is, a small matter by decision (9) of 24 October 2026, was proposed that day and not recorded, since the order of that day said to halt where more than ten files stand; the should stands; the person decides; the roadmap entry of that date on the follow-up after milestone 3; decided on 1 November 2026 by the person, decision (6) of the roadmap entry of 31 October 2026 on the follow-up after milestone 3: not built, the query stays, the defect a small matter by decision (9) of 24 October 2026, since the guard reads where pipx really installs off pipx itself and pipx bounds its own log folder, eleven files after twelve calls and no more, 403 bytes each, where npm has a switch for its log and pipx none; the should of the status line, a query that writes nothing or the folder read without a call, the person deciding which, decided so, neither; no milestone; no milestone; closed 5 November 2026 as left on purpose at decision (6) of 1 November 2026, the roadmap entry of 31 October 2026 on the follow-up after milestone 3, the roadmap entry of 5 November 2026 on the sorting into the milestones
+
+### README.md said the mark guard blocks in any mode but auto and nothing of the record and the conditions it reads in auto mode
+- Wrong: `README.md` under "The check suite" said of the guard on the mark only that it blocks the file marking an unattended run from being written in any mode but auto, where since the entry on the contradictions mended the guard blocks in auto mode too where the record of the mode does not say yes or start condition 1, 2, 5, 6 or 7 does not hold
+- Should: the sentence says both, in the wording the person approved on 5 November 2026: the guard blocks the write in any mode but auto, and in auto mode too wherever their answers and the repository's set-up, read off the main branch and GitHub, do not allow a run without them
+- Found: Six contradictions settled, the README says what the mark guard reads.
+- Fix: none
+- Status: Closed, corrected in the document: `README.md` carries "and in auto mode too wherever your answers and".
+- Note: found 5 November 2026 by the order on the contradictions mended, which left the guard's new reading out of README.md as a wording of the person's, the roadmap entry of 5 November 2026 on the contradictions mended; closed the same day as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the six contradictions settled
+
+### fetch-three-times.md points at the text on the mark's deletion, which two of the four skills that insert it do not insert
+- Wrong: `shared/fetch-three-times.md` said in its point on a changed file in the way, with nobody there, that the change is brought back "by the text on the mark's deletion", and of the four skills that insert it, build-work, plan-work, setup-checks and setup-project, only the first two insert that text
+- Should: the point says its rule without the reference, what then happens where GitHub changed the same line standing at the mark's deletion in the skills that delete it: "Shared words are defined in one place" in docs/skill-conventions.md, as the block on setup-project and three-questions.md was mended
+- Found: Six contradictions settled, the README says what the mark guard reads.
+- Fix: none
+- Status: Closed, corrected in the document: `shared/fetch-three-times.md` carries "and what then happens where GitHub changed the same line meanwhile stands".
+- Note: found 5 November 2026 by the order on the six contradictions settled, point 6 of its section 4d, the insert lines read with grep -n 'devloop-text mark-deletion' skills/*/SKILL.md; the same finding as the block on setup-project and three-questions.md; closed the same day as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the six contradictions settled
