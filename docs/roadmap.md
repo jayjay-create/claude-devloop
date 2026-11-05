@@ -1389,14 +1389,17 @@ and for the proofs of closings.
 - **Decided contradictions mended, the mark guard reads the mode's record.**
 
   5 November 2026, version 0.177.0. On `task/contradictions-mended`, off
-  `origin/main` at `cb5e5e9`, in three commits: the code with the version —
+  `origin/main` at `cb5e5e9`, in five commits: the code with the version —
   `hooks/pre-tool-use-mark-guard.sh`, `bin/devloop-install-record`,
   `bin/devloop-start-conditions`, `.github/workflows/stock-take.yml`, the
   loaded texts under `skills/` and `shared/`, `README.md`,
   `docs/rationale.md` and the places of `docs/skill-conventions.md` that say
   what the guard reads; this entry with `docs/plan.md`, `docs/defects.md`,
   `docs/skill-conventions.md` and `docs/stock-take.tsv`; the runs of the
-  bench, measured at the first commit and recorded at the second. Written
+  bench, measured at the first commit, whose code the second leaves as it
+  stands, and recorded in the third; two figures of this entry copied from
+  the tool's output in the fourth; and the places mended before the merge in
+  the fifth, named at the end of this entry. Written
   from the person's decisions of this day and the order that carries them,
   which stands outside the repository; no session log was read; GitHub was
   not asked, a stand-in answering for `gh` wherever a case needs it. Every
@@ -1764,6 +1767,28 @@ and for the proofs of closings.
   7 that cannot be read, and the reader's `--unattended`, its `--dependency`
   and the refusal of the two together; everything else as at the second
   commit, exit 0, broken records 0, uncovered lines 0 of 4520.
+
+  **Mended before the merge**, by the check of the branch against the code,
+  in the fifth commit. `skills/start-work/SKILL.md` under "If nothing of
+  devloop's own is in flight": a draft of theirs is nothing of devloop's own
+  in flight, being left and not named, as the list of pull requests has it,
+  and a map, a spec and the tickets and tasks under them are devloop's, as
+  the paragraph on a map or a spec in flight has them; and the open question
+  follows wherever no offer comes, and not only where both halves of the
+  query are empty, which a draft or a pull request of somebody else's leaves
+  untrue. `skills/setup-project/SKILL.md` on the `by:` column, and its point
+  in `docs/rationale.md`: devloop's own issues are told apart by what each
+  is, a finding by `raised-here`, a map by `untangle:map`, a spec by its
+  children, the tickets and tasks under them by their parent, an unfinished
+  planning by `being-planned`, the issue of a change set aside by
+  `needs-human` alone, and not by `raised-here` alone. `docs/rationale.md`:
+  the points this branch wrote or changed said how their texts read until
+  this day and since when they read as they do, which the opening of that
+  file rules out, "not how they came to read as they do"; each names its
+  case and its reason alone now. This entry: five commits, where it said
+  three. Three records of `docs/stock-take.tsv` that are no thing moved onto
+  the mended lines of the two skills, "offer to take it up" kept on one line,
+  where the check on offers under "Before a handover, run these" reads it.
 
 ## Decisions taken against
 

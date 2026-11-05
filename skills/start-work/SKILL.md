@@ -181,15 +181,16 @@ does not reach, the text above says, at the place it names.
   and not how many others there are.
 
 **If nothing of devloop's own is in flight**, one of two things. Nothing of
-devloop's own in flight means no open pull request of yours and no open issue
-devloop wrote — none carrying `raised-here`, none that is a spec or an
-unfinished planning, and the issue of a change set aside, labelled
-`needs-human` alone, counting as devloop's. Where an open issue devloop did
-not write stands among them — one without `raised-here`, whoever or whatever
-opened it, a person or an app, Renovate's dashboard say — offer to take it
-up, as the paragraph on such an issue below says; the question ends the turn.
-Where none does, both halves of the query empty, ask the same open question:
-what would they like to build?
+devloop's own in flight means no open pull request of yours but a draft,
+which is left and not named, and no open issue devloop wrote — none carrying
+`raised-here`, none that is a map or a spec or a ticket or task under one,
+none that is an unfinished planning, and the issue of a change set aside,
+labelled `needs-human` alone, counting as devloop's. Where an open issue
+devloop did not write stands among them — one without `raised-here`, whoever
+or whatever opened it, a person or an app, Renovate's dashboard say —
+offer to take it up, as the paragraph on such an issue below says; the
+question ends the turn. Where none does, ask the same open question: what
+would they like to build?
 
 **If an open pull request of yours is waiting to land, that comes before all of
 it.** It is one command from done and nothing else on the list is, and starting

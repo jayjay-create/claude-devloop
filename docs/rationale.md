@@ -144,9 +144,7 @@ loaded text no longer carries stands here at its rule.
   line which of them. Yes, one answer per issue where there are several: label
   "Take it up"; line: the planning starts from this issue. No: label "Something
   else"; line: the issue stays open as it is, and they say what they would like
-  to build. No recommendation." Until that day the step said of a stray open
-  issue somebody filed to say what is there and stop, and of nothing in flight
-  that it means both halves of the query empty.
+  to build. No recommendation."
 - **An open pull request of theirs waiting to land is offered, and the offer is a
   question and a stop; "something in flight means no question" holds for a map
   or a spec alone.** The merge is theirs to do and to decide, the first two of
@@ -157,8 +155,7 @@ loaded text no longer carries stands here at its rule.
   ends the turn, nothing between two tool calls; the mode question of
   `setup-checks` step 8 in the wording approved that day, in its fields and with
   nothing before it; 17 October 2026, version 0.142.0.", and "End by offering,
-  not by naming" in docs/skill-conventions.md; the sentence said no question for
-  anything in flight until 5 November 2026, the block "start-work says something
+  not by naming" in docs/skill-conventions.md; the case is the block "start-work says something
   in flight means no question and offers to land an open pull request" of
   `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.".
 - **A ticket or task of a map or a spec in flight is named and started, with no
@@ -227,8 +224,7 @@ loaded text no longer carries stands here at its rule.
   branch — landed by this setup, or standing there already at a refresh, which
   asks nothing where a record stands, decided by the person on 20 October 2026
   under "A question whose answer is stored is put where the answer is needed" in
-  docs/skill-conventions.md; the skill gave "the record has not landed yet" as
-  the reason until 5 November 2026, false at a refresh, the block "setup-project
+  docs/skill-conventions.md; the case is the block "setup-project
   gives the record not having landed yet as the reason for handing nothing over,
   which does not hold at a refresh whose record stands" of `docs/defects.md`,
   mended in entry "Decided contradictions mended, the mark guard reads the mode's record." — and the run without
@@ -378,7 +374,7 @@ loaded text no longer carries stands here at its rule.
   opening block says.** A slash command is no language signal and the opening
   block, inserted into this skill, says where the language comes from in that
   case, `shared/language-opening.md`; step 4 says never to ask about the
-  language; step 0 asked it in English until 5 November 2026, the block
+  language; the case is the block
   "setup-project asks the language first in English where step 4 says never to
   ask about the user's language" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.".
 ### Step 1 — Explore, change nothing
@@ -502,10 +498,9 @@ loaded text no longer carries stands here at its rule.
   measured.
 - **The install question stands alone in its call, its points in fields.** What
   needs weighing stands alone so that it is not waved through beside other
-  questions; the skill says so in its own words and names
-  `shared/three-questions.md`, which it does not insert, no more — "Shared
+  questions; the skill says so in its own words and does not name `shared/three-questions.md`, which it does not insert — "Shared
   words are defined in one place", and that text asks a recommendation on every
-  question, against the rule above —, since 5 November 2026, the block
+  question, against the rule above —; the case is the block
   "setup-project points at three-questions.md and the text on the mark's
   deletion, neither of which it inserts" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". Cases: two forms stood before — a message of its own, then prose
   above a widget — and in three runs the question came as one tab of a form
@@ -685,9 +680,7 @@ loaded text no longer carries stands here at its rule.
   entscheiden musst."
 - **The issue of a conflicted bring-back carries no `raised-here` and is not
   from outside.** It is labelled `needs-human` alone so that no build takes it
-  up as work; the skill no longer names the text on the mark's deletion for it,
-  which it does not insert, since 5 November 2026, the same block as the point
-  on the install question alone above. Found by the audit of 18 October 2026, entry "The consistency
+  up as work; the skill does not name the text on the mark's deletion for it, which it does not insert, the case being the same block as the point on the install question alone above. Found by the audit of 18 October 2026, entry "The consistency
   audit of 18 October 2026 before the handover, read against the eleven entries
   since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three
   disagreements, nineteen mended — nine in the documents, three dated entries'
@@ -713,10 +706,10 @@ loaded text no longer carries stands here at its rule.
   references, 11388's title carrying a bare "#326"; the tasks under spec 2 of
   `devloop-test-l` returned pull requests 7, 11 and 13, all `MERGED`; entry "The
   stock-take could not see a pull request at all, and that was measured on 31
-  August 2026.". Since 5 November 2026 the issue half carries `author{login}`,
+  August 2026.". The issue half carries `author{login}`,
   the `by:` column, so that the start can name who opened an issue devloop did
   not write where it offers it; it does not tell devloop's issues from others,
-  since devloop writes as the account this runs as, which `raised-here` does;
+  since devloop writes as the account this runs as: what tells them apart is what each is, a finding by `raised-here`, a map by `untangle:map`, a spec by its children, the tickets and tasks under them by their parent, an unfinished planning by `being-planned`, the issue of a change set aside by `needs-human` alone;
   decision (9) of entry "Defects sorted into milestones, 13 to 15 added, the Done check built.", built in entry "Decided contradictions mended, the mark guard reads the mode's record.".
 ### `environment.md`
 
@@ -977,16 +970,13 @@ loaded text no longer carries stands here at its rule.
   permissions are put a second time in step 8 where their record does not say
   yes, decided by the person on 20 October 2026, "A question whose answer is
   stored is put where the answer is needed" in docs/skill-conventions.md, and
-  step 8 cuts `devloop-unattended` for what it writes; step 3 called its
-  questions the last of the skill until 5 November 2026, from before step 8 had
-  its own cut, the block "setup-checks calls the questions of step 3 the last
+  step 8 cuts `devloop-unattended` for what it writes; the case is the block "setup-checks calls the questions of step 3 the last
   questions of the skill where step 8 asks more" of `docs/defects.md`, mended in
   entry "Decided contradictions mended, the mark guard reads the mode's record.".
 - **After a no to a tool in the packages, the command of the second way installs
   it outside the project and stands in the question that puts the decision on
   the class at once, handed over once more on the first answer; a tool with no
-  way outside gets no command.** The decision on the class is put at once as a
-  question, where the command was handed over until then, decided by the person
+  way outside gets no command.** The decision on the class is put at once as a question, decided by the person
   on 21 October 2026, cluster 21 of entry "Milestone 3, part 4, built as the
   person decided on 20 and 21 October 2026: a hook on `PostToolUse` writes what
   an install the record let through did into `docs/agents/environment.md` under
@@ -1001,8 +991,7 @@ loaded text no longer carries stands here at its rule.
   `setup-checks` step 3 puts the decision on a class whose tool is missing under
   a no as a question at once, install it themselves or the check off, before the
   offer of the mode; four defects built, one found and one question halted; 21
-  October 2026, version 0.155.0."; the paragraph on the command still said it is
-  handed over after the no as text until 5 November 2026, the block
+  October 2026, version 0.155.0."; the case of the paragraph on the command is the block
   "setup-checks hands the command over after a no to a tool in the packages as
   text and puts the question for the same class at once with the command in its
   field" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". A no to a tool in the packages is not a request for the same
@@ -1321,7 +1310,7 @@ loaded text no longer carries stands here at its rule.
   the two ways out and goes on with them; that is read off the answer of
   `rules/branches/<main branch>`, not off its status alone, and it is the one
   exception to the question being put where the five things do not all hold.**
-  The exception stands at the sentence on the five things since 5 November 2026,
+  The exception stands at the sentence on the five things,
   `docs/plan.md` under milestone 3 holding the reading before the question as a
   dated sentence and the statement being the person's wording of 8 October
   2026, the block "setup-checks step 8 puts the question where the five things
@@ -1366,8 +1355,7 @@ loaded text no longer carries stands here at its rule.
   visibility that did not answer stand in the field as well, the fields may pass
   the bound of fourteen, and the question then goes as text, the rule of the
   person of 17 October 2026 under "Where the text devloop owes the person
-  stands" in docs/skill-conventions.md, which the skill says since 5 November
-  2026, the count having stood unqualified until then, the block "setup-checks
+  stands" in docs/skill-conventions.md; the case is the block "setup-checks
   counts the fields of the mode question at thirteen lines, which assumes the
   visibility answered and says nothing of the field with the command and the
   message in it" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". The cost line stands only where the repository
@@ -1781,8 +1769,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   line, the person's rule of 28 October 2026 under "Where the person types a
   command devloop hands them" in docs/skill-conventions.md, applied to the
   skill's own section that day, entry "Handovers say where the command is
-  typed, sign-in and identity in steps."; this file said "Send them the file, or
-  open it for them" until 5 November 2026, which names no action, the block
+  typed, sign-in and identity in steps."; the case is the block
   "build-prototype LOGIC.md hands the file over by sending or opening it where
   SKILL.md gives one action" of `docs/defects.md`, built in entry "Decided contradictions mended, the mark guard reads the mode's record.".
 
@@ -1975,8 +1962,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   record that says the build decides and no answer, decision (3) of the person of
   27 October 2026, entry "Tool state read by one program, the planning saying
   only what it read.", so what the program does not give is the record's answer
-  and not its line, as Stage 1 says since 5 November 2026 and Stage 4 said
-  already, the block "plan-work says under --planning the program does not give
+  and not its line, as Stage 1 and Stage 4 say; the case is the block "plan-work says under --planning the program does not give
   the record's line and that the spec carries not the program's line on the
   record" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". Case: the run of 29 October 2026 said „Sie steht für dieses Projekt
   auf „nein“.“ before the design question, entry "Run under a no read off its
@@ -2247,7 +2233,8 @@ Nothing in this file stood as history; its rules carry their own reasons.
   in the tracker by its name", `shared/refer-by-name.md`; the case is the block
   "three pairs of lines disagree: start-work on a stray open issue, setup-checks
   on secrets with nobody there, plan-work on the issue number of the spec" of
-  `docs/defects.md`, found 17 October 2026; built in entry "Decided contradictions mended, the mark guard reads the mode's record.". Until that day the line read "Report the spec's issue number".
+  `docs/defects.md`, found 17 October 2026; built in entry "Decided
+  contradictions mended, the mark guard reads the mode's record.".
 
 ## `skills/cut-into-tasks/SKILL.md`
 
@@ -2887,12 +2874,11 @@ Nothing in this file stood as history; its rules carry their own reasons.
   write; where it blocks, the run says which failed and why with the person
   there and stops with the reason named without them.** The hook reads the same
   state as the text and refuses only where the text refuses, so that a run which
-  did not read the state again cannot go alone where it fell since the question;
-  the record of the mode since 5 November 2026, decision (8) of entry "Defects
+  did not read the state again cannot go alone where it fell since the question; the record of the mode by decision (8) of entry "Defects
   sorted into milestones, 13 to 15 added, the Done check built.": a block is
   stronger than a rule the run itself keeps, the mark is written with the person
   there, and on the way over `--auto` the record stands on main by then; built
-  in entry "Decided contradictions mended, the mark guard reads the mode's record.". The conditions since 25 October 2026, decision (5) of entry
+  in entry "Decided contradictions mended, the mark guard reads the mode's record.". The conditions by decision (5) of entry
   "Install lines by one program, written where the install stood alone.".
 - **Where condition 6 or 7 fails, the refusal says that the run does not start,
   the yes it needs, a no on record, the command that sets it up, and what
@@ -2995,9 +2981,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   is said.** The record is what the report counts in sections, said to nobody, as
   docs/skill-conventions.md has the definition under "A lens is one reading of
   the whole diff"; a number of lenses is none of the six features under which a
-  text stays in the conversation, decided by the person on 17 October 2026; the
-  definition named "the record of how many ran" beside "say neither number"
-  until 5 November 2026, the block "review-changes asks for the record of how
+  text stays in the conversation, decided by the person on 17 October 2026; the case is the block "review-changes asks for the record of how
   many lenses ran and says to say neither number" of `docs/defects.md`, mended
   in entry "Decided contradictions mended, the mark guard reads the mode's record.".
   A report counting five lenses where two reviewers carried them says something
@@ -3426,8 +3410,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   merge, and `git switch main` alone then cuts from the state before it; that
   setup deletes the branch once the merge is proven at the platform, never on
   the person's word, the rule of 28 October 2026 under "Where the person types
-  a command devloop hands them", and the text said "once they have said it
-  landed" until 5 November 2026, the block "cut-branch.md deletes the branch
+  a command devloop hands them"; the case is the block "cut-branch.md deletes the branch
   once they have said it landed where merge-handover.md reads the landing off
   the platform and never off their word" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". Entry
   "The status of a check class takes four forms and a guard holds the table to
@@ -3464,10 +3447,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
 
 - **A file whose content is text about commands — `environment.md`, the workflow
   file, a body file — is written with the editing tool, not from the shell.**
-  The shell goes past the per-file hooks and gets quoting wrong; that it put the
-  text where the guards read it held until the command reader of 12 October
-  2026, since when a quoted text is a word of its command and no command to
-  them, and the text gave that reason until 5 November 2026, the block
+  The shell goes past the per-file hooks and gets quoting wrong; the guards are not the reason, a quoted text being a word of its command and no command to them, as the command reader takes the command apart as the shell runs it; the case is the block
   "editing-tool.md says the guards read text put through the shell and that a
   quoted argument is a word to them" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". Case: on 11 October 2026 two build subagents of the second closing run
   of milestone 3 were blocked writing the workflow file and `environment.md`
@@ -4014,9 +3994,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   whatever the record carries; under the older yes the guard blocks a browser
   download naming the place until that refresh has landed. The refresh by
   decision (7) of entry "Defects sorted into milestones, 13 to 15 added, the Done
-  check built.", the question naming kinds and not places, built in entry "Decided contradictions mended, the mark guard reads the mode's record."; until that day this point said the older yes is not amended until the five
-  are added with the person there, the ruling of the order of 8 October 2026 and
-  not of the person. Entries "Milestone 3, part 2, the saved answer, built as the
+  check built.", the question naming kinds and not places, built in entry
+  "Decided contradictions mended, the mark guard reads the mode's record.".
+  Entries "Milestone 3, part 2, the saved answer, built as the
   person decided on 20 October 2026: under `install-tools: no` the record
   carries the answer and the date alone and the line at session start says
   `places: none` and `routes: none`, whatever an older record under a no
@@ -4157,9 +4137,7 @@ Nothing in this file stood as history; its rules carry their own reasons.
   issue stands until devloop closes it, at once on the command typed with `!`
   in the session or at the next start by the read before the first thing that
   reads an issue, decisions (5) of 27 October 2026 and (1) of 30 October 2026,
-  so that step 2 of the build finds no issue holding the task on either way,
-  which the paragraph on the search path says since 5 November 2026 for both,
-  the block "install-tool.md says no issue holds the task since the issue is
+  so that step 2 of the build finds no issue holding the task on either way, as the paragraph on the search path says for both; the case is the block "install-tool.md says no issue holds the task since the issue is
   written on a no alone, while the way after a no runs the same steps with the
   issue open" of `docs/defects.md`, mended in entry "Decided contradictions mended, the mark guard reads the mode's record.". A message that says
   only "let me know once it is through" leaves no way to say no. Cases: the

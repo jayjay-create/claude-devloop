@@ -679,8 +679,11 @@ read them from here; do not leave the reader to guess the API.
       it — a person, or an app such as Renovate — and is read for naming them
       where the start offers an open issue devloop did not write. It does not
       say whether devloop wrote the issue: devloop writes as the account this
-      runs as, so its own issues carry `raised-here` and are told apart by
-      that label alone, and `-` stands where the author's account is gone.
+      runs as, so its own issues are told apart by what they are — a finding
+      by `raised-here`, a map by `untangle:map`, a spec by its children, the
+      tickets and tasks under them by their parent, an unfinished planning by
+      `being-planned`, the issue of a change set aside by `needs-human` alone
+      — and `-` stands where the author's account is gone.
     - `closingIssuesReferences` says which issues this pull request would close
       on merging, each with its own `state`, and it is read for "which work is
       this". It is filled from a closing keyword in the body or the commits and
