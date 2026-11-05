@@ -49,8 +49,14 @@ carries another Should with no line of the fixed form added to
 docs/roadmap.md, or such a line names what the branch did not do, an archive
 of the roadmap that stood at the branch point is changed, renamed or removed,
 or an archive the branch adds is not docs/roadmap.md at the branch point byte
-for byte under the next free number (section F), or the repository is one the
-tool refuses (a shallow clone).
+for byte under the next free number (section F), a not-a-thing record stands
+on a line of docs/roadmap.md that is in no search set or on a line of an
+archive (section C), a block carries the form "Built, never walked, cannot be
+forced" where the tool computes another state or where its decision line does
+not stand once (section D), a milestone this branch declares reached in
+docs/plan.md has a block in its section that is open or carries "not stated",
+or an open block stands outside the section of a milestone not yet reached
+(section F), or the repository is one the tool refuses (a shallow clone).
 
 It needs python3 and git and nothing else, and no GNU tool: it runs on macOS.
 
@@ -63,9 +69,9 @@ branch that fills the table. Since 29 September 2026 it also runs, with its
 self-test, on every pull request into main, in .github/workflows/stock-take.yml
 against the merged state, and that run is the check main requires before a
 merge - a setting of the repository, read off the platform and standing in no
-file; docs/roadmap.md, the entry of 29 September 2026 on the merge gate, has
-both halves, and the entry of 30 September 2026 on the audit records the
-first run.
+file; docs/roadmap-archive-1.md, the entry of 29 September 2026 on the merge
+gate, has both halves, and the entry of 30 September 2026 on the audit records
+the first run.
 
 
 A. WHAT GOES IN
@@ -330,7 +336,15 @@ replaced, section F:
   A run whose thing is rejected is rejected with it, with a message naming
   the thing's line, and covers nothing.
 - not-a-thing: file + anchor of a line from the search set judged not to be a
-  branch, and a note that starts with one reason from the list below.
+  branch, and a note that starts with one reason from the list below. Such a
+  record on a line of docs/roadmap.md that is in no search set, or on a line
+  of an archive docs/roadmap-archive-<n>.md, is rejected since 5 November
+  2026, the decision of 4 November 2026 in the roadmap entry of that date on
+  the rejection of a record on a roadmap line: such a line counts for no run
+  and covers nothing, so the record could only hold a thing's runs back, as
+  the 34 records that went on 4 November 2026 had; the rows of the table
+  under "Named, not built as skills" are the one part of the roadmap in a
+  search set, and a record on one of them stands.
 
 Thing names take the form <source> / <unit> / <outcome>, the parts separated
 by " / ". The source: the skill's name where the site is that skill's
@@ -507,6 +521,24 @@ is its evidence, and off the closing its Status carries.
   so a run on it is a broken record as on a thing that is not built. The
   tool counts closed defects apart from every other state and lists them in
   a list of their own, under CLOSED DEFECTS, and in no list of open things.
+- Built, never walked, cannot be forced: no sixth state but a mark on a
+  block in the state Built, never walked, since 5 November 2026, the form
+  docs/plan.md names under "Five sentences" by the decision of 2 November
+  2026. The Status carries it whole on one physical line:
+    Built, never walked, cannot be forced: decided in `FILE` at "TEXT".
+  FILE and TEXT name the line where the person decided that the defect's
+  case cannot be brought about, read as the proof of a closing left on
+  purpose is read: an anchor found exactly once in FILE, the lines of
+  docs/roadmap.md, of an archive and of docs/defects.md that quote the form
+  left out of the count. The tool takes the form only where it computes
+  Built, never walked, and rejects the block where it computes another state
+  or where the decision line does not stand once. A block with the form is
+  not open for the check of a reached milestone, section F; it is listed
+  under a heading of its own, DEFECTS BUILT WHOSE CASE CANNOT BE FORCED, and
+  beside its Fix in the list of its section. The form is given block by
+  block by the order of a milestone, where no run of that milestone can meet
+  the case, decision (10) of 5 November 2026, the roadmap entry of that date
+  on the sorting into the milestones.
 
 A block names its state in its Status, in these words or as a closing, and
 the tool rejects a block whose Status names another state than the one it
@@ -651,11 +683,17 @@ and "- Status: " in every block, "- Note: ", "- Trigger: ", "- Bench: " and
 "- Cost: " where there is something to say. The file opens with an
 introduction, every line before the first heading of the second level, which
 the tool does not read; then the sections, "## Milestone <number>" for every
-milestone under "## Twelve milestones, in this order" in docs/plan.md that
+milestone under "## The milestones, in this order" in docs/plan.md that
 takes defects, read off its headings "### <number>. ", and "## Without a
 milestone"; and, as a mark of the transition, "## Not yet sorted", which
-holds every block no order has sorted into a milestone yet. A closed defect
-stays under its milestone.
+held every block no order had sorted into a milestone and stands empty
+since 5 November 2026, when the order of that day sorted every block, the
+roadmap entry of that date on the sorting; the tool still reads the heading.
+Until 5 November 2026 the plan's heading read "## Twelve milestones, in
+this order", a count at a second place against "A count lives in one place"
+in docs/skill-conventions.md; the tool reads the milestones under either
+heading, so that the plan at a branch point before that day gives its
+milestones and their Done lines. A closed defect stays under its milestone.
 
 The fields. The title is unique in the file, carries no " / " - the names
 of things are made of it, and a run names a thing by its name or a defect
@@ -689,8 +727,49 @@ a closing whose proof does not hold; a non-empty line that belongs to no
 introduction, heading or block; and a block whose Status names another
 state than the tool computes. A run on a rejected block is rejected with
 it. The blocks under "## Not yet sorted" and the blocks with "not stated"
-are listed, each under a heading of its own, and turn nothing red. The
-output shows the defects by section, the states counted per section.
+are listed, each under a heading of its own, and turn nothing red by
+themselves; a "not stated" turns red where a Done line this branch adds
+names its section, below. The output shows the defects by section, the
+states counted per section, the form of section D beside a block's Fix.
+
+A reached milestone is checked, since 5 November 2026, by the rule of
+docs/plan.md under "Five sentences", decided on 2 November 2026: a
+milestone counts as reached only when no block in its section is open or
+carries "not stated", and no open block stands outside the section of a
+milestone not yet reached; open means neither Walked nor Closed nor marked
+with the form of section D. Reached is a milestone whose section under the
+heading of the milestones in docs/plan.md carries a line opening "Done on";
+the tool reads the plan in the working tree and at git merge-base HEAD
+origin/main, and where the working tree carries such a line for a milestone
+the branch point does not, the branch declares that milestone reached and
+the tool holds the blocks against it: red, with the block's line and title,
+for every block of the milestone's section that is open and for every one
+that carries "not stated", and for every open block that stands under the
+section of a reached milestone, under "## Without a milestone" or under
+"## Not yet sorted". A Done line that stood at the branch point already is
+checked by nobody, the milestone having been declared reached before.
+Without origin/main, or without a commit HEAD and origin/main share, the
+tool says in one line that no Done line is held against a branch point.
+The report names the milestones reached and those this branch reaches under
+a heading of its own.
+
+A thing or a block Walked on the branch without a run the branch adds is
+named, since 5 November 2026, the block "a thing Walked on the branch that
+was not Walked at the branch point and has no run the branch adds goes
+unseen before the merge" of docs/defects.md: the tool reads the branch
+point, git merge-base HEAD origin/main, in a worktree of its own with the
+same rules, the table and the blocks as they stood there, and names every
+thing and every block that is Walked in the working tree, was not Walked
+there, or stood there under no record, and has no run among the run records
+git diff against the branch point adds to the table. It is a list under a
+heading of its own, WALKED ON THIS BRANCH WITHOUT A RUN THE BRANCH ADDS,
+not a red: such a change can be right, as it was on 4 November 2026, when a
+status line that had held three runs back left the range of its thing with
+the archive; it is to be read before the merge. Where HEAD is the branch
+point and the working tree is clean, nothing differs and the branch point
+is not read; without origin/main the tool says so in one line. The reading
+of the branch point costs a second analysis, which the version asked once
+per version pays for, section D.
 
 No block vanishes in silence, since 2 November 2026, decided by the person
 on that day, the roadmap entry of that date on the guard over the blocks.
@@ -841,6 +920,17 @@ LIMITS
   both red; an archive at the branch point that a branch changes and changes
   back is no change; and that an archive's text is the roadmap of the day it
   names, beyond the branch that added it, is read by nobody after the merge.
+- The Done check reads a line opening "Done on" under a milestone heading
+  of docs/plan.md and nothing else of the plan's text: a Done line indented,
+  wrapped so that "Done on" opens no line, or standing in a paragraph that
+  does not open with it is no Done line to the tool, and a milestone whose
+  Done line stood at the branch point is checked by nobody.
+- The states against the branch point are compared by name: a thing or a
+  block renamed on the branch reads as not there at the branch point and is
+  named where it is Walked now; a run record the branch changes in any field
+  reads as a run the branch adds; and the branch point is read with the
+  tool of the working tree, not with the tool as it stood there, so a change
+  to the tool itself can move a state at the branch point too.
 """
 
 import ast
@@ -848,6 +938,7 @@ import contextlib
 import io
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -887,7 +978,10 @@ ROADMAP = "docs/roadmap.md"
 # closings, and for nothing else (section F)
 ARCHIVE = re.compile(r"^docs/roadmap-archive-(\d+)\.md$")
 PLAN = "docs/plan.md"
-MILESTONES_HEADING = "## Twelve milestones, in this order"
+MILESTONES_HEADING = "## The milestones, in this order"
+# the heading until 5 November 2026, read so that the plan at a branch point
+# before that day gives its milestones and their Done lines, section F
+MILESTONES_HEADINGS = (MILESTONES_HEADING, "## Twelve milestones, in this order")
 BLOCK_FIELDS = ("Wrong", "Should", "Found", "Fix", "Status", "Note", "Trigger",
                 "Bench", "Cost")
 REQUIRED_FIELDS = ("Wrong", "Should", "Found", "Fix", "Status")
@@ -902,6 +996,17 @@ BLOCK_REMOVED = "Block removed: "
 BLOCK_RENAMED = "Block renamed: "
 SHOULD_CHANGED = "Should changed: "
 RENAME_SEP = " / "
+# the mark of section D on a built defect whose case cannot be brought
+# about, since 5 November 2026: a Status the tool takes only where it
+# computes Built, never walked and the decision line stands once in the file
+# named, the lines that quote the form left out of that count
+FORCED_PREFIX = "Built, never walked, cannot be forced"
+FORCED_FORM = re.compile(
+    r'^Built, never walked, cannot be forced: decided in `([^`]+)` at "([^"]+)"\.$')
+FORCED_QUOTE = re.compile(
+    r'Built, never walked, cannot be forced: decided in `([^`]+)` at "([^"]+)"\.')
+# the line under a milestone of docs/plan.md that says it is reached, section F
+DONE_LINE = re.compile(r"^Done on \d")
 
 PROSE_WORDS = re.compile(
     r"\b(if|where|when|whenever|wherever|unless|otherwise|either|else|before)\b",
@@ -1016,6 +1121,14 @@ class Git:
         self.ancestry = {}
         self.dates = {}
         self.blames = {}
+        self.versions = {}
+
+    def version_commit(self, version):
+        """The commit that introduced the version into plugin.json, asked
+        once per version and not once per run, since 5 November 2026."""
+        if version not in self.versions:
+            self.versions[version] = version_commit(self.root, version)
+        return self.versions[version]
 
     def is_ancestor(self, a, b):
         """True when commit a is an ancestor of commit b, or the same commit."""
@@ -1255,8 +1368,9 @@ def closing_of(line):
 
 def closing_lines(files, rel, text):
     """The lines of docs/roadmap.md, of an archive of it or of
-    docs/defects.md that carry a closing form naming this text: they quote
-    it, and a count over that file leaves them out."""
+    docs/defects.md that carry a closing form, or the form of a defect that
+    cannot be forced, naming this text: they quote it, and a count over
+    that file leaves them out."""
     got = files.get(rel)
     if got is None:
         return set()
@@ -1265,7 +1379,47 @@ def closing_lines(files, rel, text):
         c = closing_of(l)
         if c is not None and c[2] == text:
             out.add(i)
+            continue
+        m = FORCED_QUOTE.search(l)
+        if m and m.group(2) == text:
+            out.add(i)
     return out
+
+
+def proof_anchor(files, rel, text):
+    """find_anchor for the proof of a closing or of the form of a defect
+    that cannot be forced: over docs/roadmap.md, its archives and
+    docs/defects.md the lines that quote the text are left out of the
+    count, and a path leading outside the repository reads as no file."""
+    if rel.startswith("/") or ".." in rel.split("/"):
+        return "no-file", None
+    skip = closing_lines(files, rel, text) \
+        if rel in (ROADMAP, DEFECTS) or is_archive(rel) else ()
+    return find_anchor(files, rel, text, skip)
+
+
+def check_forced(root, files, blk, rel, text):
+    """The decision line of the form "Built, never walked, cannot be
+    forced", read as the proof of a closing left on purpose is read: an
+    anchor found exactly once in the file, the lines that quote the form
+    left out. Returns the line where it stands, or None with the failure in
+    the block's errors."""
+    found, at = proof_anchor(files, rel, text)
+    if found == "ok":
+        return at
+    if found != "multiple":
+        blk.errors.append("cannot be forced: %r in %s: %s" % (text, rel, {
+            "missing": "not " "found",
+            "no-file": "the file cannot be " "read",
+            "too-long": "longer than 80 " "characters",
+            "too-short": "shorter than 20 characters and not a whole " "line",
+            "whitespace": "carries leading or trailing " "whitespace",
+        }[found]))
+    else:
+        blk.errors.append("cannot be forced: %r in %s: found more than once, "
+                          "on %s, so it is not an anchor"
+                          % (text, rel, lines_named(at)))
+    return None
 
 
 def check_closing(root, files, rec, closing):
@@ -1276,12 +1430,7 @@ def check_closing(root, files, rec, closing):
     closed the defect carries the proof beside the decision it names, and
     the block carries it in its Status."""
     reason, rel, text, commit = closing
-    inside = not rel.startswith("/") and ".." not in rel.split("/")
-    found, at = find_anchor(files, rel, text,
-                            closing_lines(files, rel, text)
-                            if rel in (ROADMAP, DEFECTS) or is_archive(rel)
-                            else ()) \
-        if inside else ("no-file", None)
+    found, at = proof_anchor(files, rel, text)
     if reason == "lapsed":
         if len(text) < 20:
             rec.errors.append("closed as lapsed: %r is shorter than 20 "
@@ -1374,21 +1523,53 @@ def roadmap_heads(files, root):
     return out
 
 
-def plan_milestones(files):
-    """The numbers of the milestones under "Twelve milestones, in this
-    order" in docs/plan.md, read off its headings "### <number>. "."""
-    got = files.get(PLAN)
+def plan_milestones(files, got=None):
+    """number -> whether its section carries a line "Done on", for every
+    milestone under the heading of the milestones in docs/plan.md, read off
+    its headings "### <number>. "; got names the file as (text, lines) where
+    it is not the working tree's, the branch point's say."""
     if got is None:
-        return set()
-    out = set()
+        got = files.get(PLAN)
+    if got is None:
+        return {}
+    out = {}
     inside = False
+    current = None
     for l in got[1]:
         if l.startswith("## "):
-            inside = l.rstrip() == MILESTONES_HEADING
+            inside = l.rstrip() in MILESTONES_HEADINGS
+            current = None
             continue
-        m = PLAN_MILESTONE.match(l) if inside else None
+        if not inside:
+            continue
+        m = PLAN_MILESTONE.match(l)
         if m:
-            out.add(m.group(1))
+            current = m.group(1)
+            out[current] = False
+        elif current is not None and DONE_LINE.match(l):
+            out[current] = True
+    return out
+
+
+def roadmap_rows(files):
+    """The line numbers of the rows under "Named, not built as skills" in
+    docs/roadmap.md, header and separator left out: the one part of the
+    roadmap in a search set, section E."""
+    out = []
+    got = files.get(ROADMAP)
+    if got is None:
+        return out
+    lines = got[1]
+    inside = None
+    for i, l in enumerate(lines, 1):
+        if l.startswith("## "):
+            inside = l.rstrip()
+            continue
+        if inside == NAMED_HEADING and TABLE_ROW.match(l):
+            nxt = lines[i] if i < len(lines) else ""
+            if TABLE_SEPARATOR.match(l) or TABLE_SEPARATOR.match(nxt):
+                continue
+            out.append(i)
     return out
 
 
@@ -1474,6 +1655,8 @@ class Block:
         self.anchors = {}          # field -> (file, lineno) where resolved
         self.fix = None            # None, FIX_NONE, FIX_UNDETERMINED or (file, lineno)
         self.closing = None        # the confirmed closing, section D
+        self.forced = None         # (file, lineno) of the decision line, where the
+        #                            Status carries the form "cannot be forced"
 
     def value(self, field):
         got = self.fields.get(field)
@@ -1765,6 +1948,135 @@ def hold_archives_to_branch_point(root, res):
     res.archives = {"base": base, "held": held, "added": added}
 
 
+def branch_point(root):
+    """(base, note): the commit this branch forked from, git merge-base HEAD
+    origin/main, or None with the one line that says why there is none."""
+    if not resolve(root, "origin/main"):
+        return None, "origin/main is not here"
+    base = git(root, "merge-base", "HEAD", "origin/main", check=False).strip()
+    if base == "":
+        return None, "HEAD and origin/main share no commit"
+    return base, None
+
+
+def hold_milestones_reached(root, files, res):
+    """Section F, the check of a reached milestone, since 5 November 2026:
+    where this branch adds the line "Done on" under a milestone of
+    docs/plan.md, no block of that milestone's section is open or carries
+    "not stated", and no open block stands outside the section of a
+    milestone not yet reached; open means neither Walked nor Closed nor
+    marked with the form of section D. Fills res.done and res.done_errors;
+    the states of res.defects are read, so this runs after them."""
+    now = plan_milestones(files)
+    reached = sorted((n for n, done in now.items() if done), key=int)
+    res.done = {"reached": reached, "added": [], "note": None}
+    base, why = branch_point(root)
+    if base is None:
+        res.done["note"] = ("%s, so no Done line is held against a branch "
+                            "point" % why)
+        return
+    res.done["base"] = base
+    shown = git(root, "show", "%s:%s" % (base, PLAN), check=False)
+    before = plan_milestones(files, (shown, shown.split("\n"))) if shown \
+        else {}
+    added = [n for n in reached if not before.get(n)]
+    res.done["added"] = added
+    if not added:
+        return
+
+    def is_open(d):
+        return d["state"] not in ("Walked", "Closed") and d["forced"] is None
+    sections = {"## Milestone %s" % n: n for n in added}
+    for d in sorted(res.defects, key=lambda d: d["rec"].lineno):
+        n = sections.get(d["section"])
+        if n is not None:
+            if is_open(d):
+                res.done_errors.append((d["rec"].lineno, "milestone %s is "
+                                        "reached on this branch, and the "
+                                        "block %r in its section is open: %s"
+                                        % (n, d["name"], d["state"])))
+            if d["not_stated"]:
+                res.done_errors.append((d["rec"].lineno, "milestone %s is "
+                                        "reached on this branch, and the "
+                                        "block %r in its section carries "
+                                        "'not stated'" % (n, d["name"])))
+            continue
+        if not is_open(d):
+            continue
+        m = MILESTONE_SECTION.match(d["section"])
+        if m and m.group(1) in now and not now[m.group(1)]:
+            continue
+        res.done_errors.append((d["rec"].lineno, "milestone %s is reached on "
+                                "this branch, and the open block %r stands "
+                                "under %r, outside the section of a "
+                                "milestone not yet reached"
+                                % (", ".join(added), d["name"], d["section"])))
+
+
+def walked_on_branch(root, res, table_rel, defects_rel, only):
+    """Section F, since 5 November 2026: every thing and every block that
+    is Walked in the working tree, was not Walked at the branch point and
+    has no run this branch adds to the table, so that a change which makes
+    an old run count is read before the merge. The branch point is read in
+    a worktree of its own, with the same tool, and compared by name; a run
+    the branch adds is a run record among the lines git diff adds to the
+    table. Fills res.walked_on_branch."""
+    base, why = branch_point(root)
+    if base is None:
+        res.walked_on_branch = {"note": "%s, so the states are not held "
+                                        "against a branch point" % why}
+        return
+    out = {"base": base, "walked": []}
+    head = resolve(root, "HEAD")
+    if head == base and git(root, "status", "--porcelain",
+                            check=False).strip() == "":
+        out["note"] = ("HEAD is the branch point and the working tree is "
+                       "clean, so nothing differs")
+        res.walked_on_branch = out
+        return
+    if blob_at(root, base, table_rel) is None:
+        out["note"] = "%s does not stand at %s, the branch point" % (
+            table_rel, base[:7])
+        res.walked_on_branch = out
+        return
+    added = set()
+    for line in git(root, "diff", base, "--", table_rel,
+                    check=False).split("\n"):
+        if line[:1] != "+" or line.startswith("+++"):
+            continue
+        fields = line[1:].rstrip("\r").split("\t")
+        if len(fields) == len(COLUMNS) and fields[0] == "run":
+            added.add(fields[1])
+    tmp = tempfile.mkdtemp(prefix="devloop-stock-take-")
+    wt = os.path.join(tmp, "branch-point")
+    try:
+        p = subprocess.run(["git", "-C", root, "worktree", "add", "--detach",
+                            wt, base], capture_output=True, text=True)
+        if p.returncode != 0:
+            out["note"] = ("the branch point could not be read in a "
+                           "worktree: %s" % p.stderr.strip())
+            res.walked_on_branch = out
+            return
+        before = analyse(wt, os.path.join(wt, table_rel), only,
+                         os.path.join(wt, defects_rel), compare=False)
+    finally:
+        subprocess.run(["git", "-C", root, "worktree", "remove", "--force", wt],
+                       capture_output=True, text=True)
+        shutil.rmtree(tmp, ignore_errors=True)
+    if before.refused:
+        out["note"] = "the branch point was refused: %s" % before.refused
+        res.walked_on_branch = out
+        return
+    was = {t["name"]: t["state"] for t in before.things}
+    was.update((d["name"], d["state"]) for d in before.defects)
+    for t in res.things + res.defects:
+        if t["state"] == "Walked" and was.get(t["name"]) != "Walked" \
+                and t["name"] not in added:
+            out["walked"].append((t["name"], t["kind"],
+                                  was.get(t["name"], "not there")))
+    res.walked_on_branch = out
+
+
 PAIRS = (("file", "anchor"), ("evidence_file", "evidence_anchor"),
          ("run_file", "run_anchor"), ("trigger_file", "trigger_anchor"),
          ("bench_file", "bench_anchor"), ("cost_file", "cost_anchor"))
@@ -1866,6 +2178,9 @@ class Result:
         self.guard_errors = []      # strings: a change without its line, a line without its change
         self.archives = None        # the archives of the roadmap held against the branch point, section F
         self.archive_errors = []    # strings: an archive changed, renamed, removed or wrongly added
+        self.done = None            # the milestones of docs/plan.md reached, and those this branch reaches, section F
+        self.done_errors = []       # (line of docs/defects.md, message): a block a Done line this branch adds does not allow
+        self.walked_on_branch = None  # Walked here, not at the branch point, no run added, section F
         self.runs = []              # dicts
         self.unanchorable = []      # (file, lineno, text)
         self.unanchorable_units = []  # (file, lineno, heading)
@@ -1882,7 +2197,7 @@ class Result:
     def broken_count(self):
         return len(self.table_errors) + len(self.broken) \
             + len(self.defect_errors) + len(self.guard_errors) \
-            + len(self.archive_errors)
+            + len(self.archive_errors) + len(self.done_errors)
 
 
 TALLY_KEYS = ("things", "straight paths", "branches", "other kinds", "calls",
@@ -2207,19 +2522,10 @@ def search_set(files, root, only=None):
                     start = None
         if start is not None:
             items.append((rel, start, len(lines), lines[start - 1]))
-    rel = "docs/roadmap.md"
-    if wanted(rel) and files.get(rel) is not None:
-        lines = files.get(rel)[1]
-        inside = None
-        for i, l in enumerate(lines, 1):
-            if l.startswith("## "):
-                inside = l.rstrip()
-                continue
-            if inside == NAMED_HEADING and TABLE_ROW.match(l):
-                nxt = lines[i] if i < len(lines) else ""
-                if TABLE_SEPARATOR.match(l) or TABLE_SEPARATOR.match(nxt):
-                    continue
-                items.append((rel, i, i, l))
+    if wanted(ROADMAP) and files.get(ROADMAP) is not None:
+        lines = files.get(ROADMAP)[1]
+        for i in roadmap_rows(files):
+            items.append((ROADMAP, i, i, lines[i - 1]))
     return items
 
 
@@ -2258,7 +2564,10 @@ def thing_range(files, rec, part_of_lines):
     return rng
 
 
-def analyse(root, table=None, only=None, defects=None):
+def analyse(root, table=None, only=None, defects=None, compare=True):
+    """compare: whether the states are held against the branch point as
+    well, section F; the analysis of the branch point itself runs with
+    False, and so does one that wants no second reading."""
     res = Result()
     if table is None:
         table = os.path.join(root, "docs", "stock-take.tsv")
@@ -2297,6 +2606,25 @@ def analyse(root, table=None, only=None, defects=None):
                     "too-short": "shorter than 20 characters and not a whole line",
                     "whitespace": "carries leading or trailing whitespace",
                 }[status]))
+    # a not-a-thing record on a line of docs/roadmap.md that is in no search
+    # set, or on a line of an archive, is rejected, since 5 November 2026:
+    # such a line counts for no run and is read for no coverage, section C
+    in_set = set(roadmap_rows(files))
+    for rec in records:
+        if rec["type"] != "not-a-thing":
+            continue
+        site = rec.site()
+        if site is None:
+            continue
+        if is_archive(rec["file"]):
+            rec.errors.append("a not-a-thing record on a line of %s, an "
+                              "archive of the roadmap, no line of which is "
+                              "in any search set" % rec["file"])
+        elif rec["file"] == ROADMAP and site[1] not in in_set:
+            rec.errors.append("a not-a-thing record on %s line %d, which is "
+                              "in no search set: a line of the roadmap "
+                              "counts for no run and covers nothing"
+                              % (ROADMAP, site[1]))
     things = [r for r in records if r["type"] == "thing"]
     thing_names = {r["name"] for r in things if r["name"] != ""}
     by_name = {}
@@ -2452,12 +2780,27 @@ def analyse(root, table=None, only=None, defects=None):
                                   "it is not an anchor"
                                   % (field, text, frel, lines_named(lineno)))
         status = blk.value("Status")
-        if status is not None and status not in STATES[:4]:
+        if status is not None and status.startswith(FORCED_PREFIX):
+            # the form of section D for a built defect whose case cannot be
+            # brought about: taken where the decision line stands once, and
+            # held below against the state the tool computes
+            m = FORCED_FORM.match(status)
+            if m is None:
+                blk.errors.append("Status %r opens with %r and is not the "
+                                  "form '%s: decided in `FILE` at \"TEXT\".'"
+                                  % (status, FORCED_PREFIX, FORCED_PREFIX))
+            else:
+                at = check_forced(root, files, blk, m.group(1), m.group(2))
+                if at is not None:
+                    blk.forced = (m.group(1), at)
+        elif status is not None and status not in STATES[:4]:
             closing = closing_of(status)
             if closing is None or not status.startswith("Closed, "):
-                blk.errors.append("Status %r is none of %s and none of the "
-                                  "three closing forms of section D"
-                                  % (status, ", ".join(STATES[:4])))
+                blk.errors.append("Status %r is none of %s, none of the "
+                                  "three closing forms of section D and not "
+                                  "the form '%s'"
+                                  % (status, ", ".join(STATES[:4]),
+                                     FORCED_PREFIX))
             else:
                 n = len(blk.errors)
                 check_closing(root, files, blk, closing)
@@ -2706,7 +3049,7 @@ def analyse(root, table=None, only=None, defects=None):
         d = {"rec": blk, "name": blk.title, "kind": DEFECT,
              "site": (DEFECTS, blk.lineno), "evidence": None, "state": None,
              "runs": [], "range": {}, "section": blk.section,
-             "closing": blk.closing, "block": True,
+             "closing": blk.closing, "block": True, "forced": blk.forced,
              "not_stated": any(blk.value(f) == NOT_STATED_MARK
                                for f in ("Wrong", "Should"))}
         if blk.fix == FIX_NONE:
@@ -2767,7 +3110,7 @@ def analyse(root, table=None, only=None, defects=None):
                 r["reason"] = ("the run's commit %s does not contain the last "
                                "change to %s" % (rec["commit"], where(failing)))
         elif rec["version"] != "":
-            vc = version_commit(root, rec["version"])
+            vc = g.version_commit(rec["version"])
             if vc is None:
                 res.broken.append((rec.lineno, "version %s was never "
                                    "introduced into .claude-plugin/plugin.json "
@@ -2825,7 +3168,7 @@ def analyse(root, table=None, only=None, defects=None):
                                    % (rec["version"], vc[:7], where(failing)))
         else:
             r["reason"] = "the version of the run is not recorded"
-        if failing is not None:
+        if failing is not None and compare:
             _, frel, fn, _ = per_hash[failing]
             c = blame_copy(root, frel, fn)
             if c is not None and c[0] != failing:
@@ -2838,7 +3181,14 @@ def analyse(root, table=None, only=None, defects=None):
         key = (d["state"], DEFECT)
         res.counts[key] = res.counts.get(key, 0) + 1
         said = d["rec"].value("Status")
-        if d["closing"] is None and said != d["state"]:
+        if d["forced"] is not None:
+            if d["state"] != "Built, never walked":
+                res.defect_errors.append((d["rec"].lineno, "the block %r says "
+                                          "%r, and the tool computes %s"
+                                          % (d["name"], FORCED_PREFIX,
+                                             d["state"])))
+                d["forced"] = None
+        elif d["closing"] is None and said != d["state"]:
             res.defect_errors.append((d["rec"].lineno, "the block %r says %r, "
                                       "and the tool computes %s" % (
                                           d["name"], said, d["state"])))
@@ -2887,6 +3237,11 @@ def analyse(root, table=None, only=None, defects=None):
         covered = res.covered_lines.get(rel, set())
         if not any(first <= n <= last for n in covered):
             res.uncovered.append((rel, first, last, text))
+    # a milestone this branch declares reached, held against the blocks,
+    # and the states held against the branch point, section F
+    hold_milestones_reached(root, files, res)
+    if compare:
+        walked_on_branch(root, res, table_rel, defects_rel, only)
     return res
 
 
@@ -2908,6 +3263,8 @@ def render(res):
         out.append("  against the branch point: " + e)
     for e in res.archive_errors:
         out.append("  archives: " + e)
+    for lineno, e in res.done_errors:
+        out.append("  %s:%d: %s" % (DEFECTS, lineno, e))
     out.append("")
     out.append("ROOTS OF THE UNATTENDED MODE (things carrying %r): %d"
                % (ROOT, len(res.roots)))
@@ -2945,6 +3302,8 @@ def render(res):
                 continue
             fix = ("%s:%d" % d["evidence"]) if d["evidence"] \
                 else d["rec"].fix
+            if d["forced"]:
+                fix += "; cannot be forced, decided in %s:%d" % d["forced"]
             out.append("    %-22s %s  (%s)" % (d["state"], d["name"], fix))
     out.append("")
     closed = [d for d in res.defects if d["state"] == "Closed"]
@@ -2968,6 +3327,35 @@ def render(res):
                "filled it): %d" % (NOT_STATED_MARK, len(unstated)))
     for d in unstated:
         out.append("  " + d["name"])
+    out.append("")
+    forced = [d for d in res.defects if d["forced"]]
+    out.append("DEFECTS BUILT WHOSE CASE CANNOT BE FORCED (the form of "
+               "section D, decided by the person; not open): %d" % len(forced))
+    for d in sorted(forced, key=lambda d: d["rec"].lineno):
+        out.append("  %s  (decided in %s:%d)" % ((d["name"],) + d["forced"]))
+    out.append("")
+    out.append("MILESTONES OF %s REACHED (a line \"Done on\" under the "
+               "milestone; one this branch adds is held against the blocks)"
+               % PLAN)
+    m = res.done or {}
+    if m:
+        out.append("  reached: %s" % (", ".join(m["reached"]) or "none"))
+        if m.get("note"):
+            out.append("  " + m["note"])
+        else:
+            out.append("  reached on this branch, against %s: %s"
+                       % (m["base"][:7], ", ".join(m["added"]) or "none"))
+    out.append("")
+    out.append("WALKED ON THIS BRANCH WITHOUT A RUN THE BRANCH ADDS (Walked in "
+               "the working tree, not Walked at the branch point; a change to "
+               "read before the merge)")
+    w = res.walked_on_branch or {}
+    if w.get("note"):
+        out.append("  " + w["note"])
+    elif w:
+        out.append("  against %s: %d" % (w["base"][:7], len(w["walked"])))
+        for name, kind, was in w["walked"]:
+            out.append("  %s  (%s; %s at the branch point)" % (name, kind, was))
     out.append("")
     out.append("BLOCKS HELD AGAINST THE BRANCH POINT (git merge-base HEAD "
                "origin/main; a change needs its line in %s)" % ROADMAP)
@@ -3081,7 +3469,7 @@ def message_templates(path):
     """(shape, line, template) for every message this tool can produce, read
     off its own source: the strings handed to rec.errors.append,
     res.broken.append, res.table_errors.append, res.guard_errors.append,
-    res.archive_errors.append and errors.append, assigned to
+    res.archive_errors.append, res.done_errors.append and errors.append, assigned to
     a run's reason or info or to res.refused, printed to stderr, or raised as
     RuntimeError. The self-test's own printing is left out. A string inside a
     dict that a message picks its ending from is a fragment, matched inside a
@@ -3122,7 +3510,7 @@ def message_templates(path):
                 name = owner.attr if isinstance(owner, ast.Attribute) \
                     else getattr(owner, "id", "")
                 if name in ("errors", "broken", "table_errors",
-                            "guard_errors", "archive_errors"):
+                            "guard_errors", "archive_errors", "done_errors"):
                     for a in node.args:
                         found += strings(a)
             elif isinstance(node, ast.Assign):
@@ -3179,6 +3567,7 @@ def selftest():
         out += [e for _, e in res.defect_errors]
         out += res.guard_errors
         out += res.archive_errors
+        out += [e for _, e in res.done_errors]
         for r in res.runs:
             out += [r[k] for k in ("reason", "info") if r[k]]
         return out
@@ -3341,7 +3730,7 @@ def selftest():
         # the plan's milestones, which the sections of the defects file are
         # held against
         write(root, "docs/plan.md",
-              "# Plan\n\n## Twelve milestones, in this order\n\n"
+              "# Plan\n\n## The milestones, in this order\n\n"
               "### 1. First (build)\n\nText.\n\n### 2. Second (text)\n\n"
               "Text.\n\n## Open\n\n### 9. Not a milestone heading here\n")
         # fixtures for the rules of 12 October 2026: comment lines and
@@ -3552,6 +3941,11 @@ def selftest():
         DEF_NOFORM = CLOSED + "closed in none of the three forms"
         DEF_IN_DEFECTS = "a defect closed as corrected in the defects file"
         DEF_IN_DEFECTS_TWICE = "closed as corrected, the sentence standing twice in the defects file"
+        DEF_FORCED = "a defect built whose case cannot be forced"
+        DEF_FORCED_RECORDED = "a defect recorded and not built with the form of one that cannot be forced"
+        DEF_FORCED_GONE = "a defect with the form of one that cannot be forced, the decision line gone"
+        DEF_FORCED_BAD = "a defect whose Status opens like the form of one that cannot be forced and is not it"
+        DEF_FORCED_TWICE = "a defect with the form of one that cannot be forced, the decision line standing twice"
 
         def thing(name, file, anchor, kind="skill branch", ev=True, **kw):
             d = dict(type="thing", name=name, kind=kind, file=file, anchor=anchor)
@@ -3941,6 +4335,7 @@ def selftest():
         lapsed = 'Closed, lapsed: `%s` no longer carries "%s"%s.'
         corrected = 'Closed, corrected in the document: `%s` carries "%s".'
         left = 'Closed, left on purpose: decided in `%s` at "%s".'
+        forced = 'Built, never walked, cannot be forced: decided in `%s` at "%s".'
         # the defects of the self-test, as blocks of docs/defects.md since 2
         # November 2026: green, one per state, one per closing reason, one
         # under a milestone and one without; red, every way a block is
@@ -4092,6 +4487,28 @@ def selftest():
                   "changed.", FIX_NONE,
                   corrected % (DEFECTS, "the same words twice over"),
                   Note="the same words twice over"),
+            # the form of section D for a built defect whose case cannot be
+            # forced, since 5 November 2026: green on a block the tool
+            # computes Built, never walked, its decision line standing once;
+            # red where the tool computes another state, where the line is
+            # not found, and where the Status opens like the form and is not it
+            block(DEF_FORCED, "A defect answered by a check.",
+                  anchor("skills/zeta/SKILL.md", "# Zeta"),
+                  forced % (R, "the case does not arise, decided here for the "
+                            "self-test")),
+            block(DEF_FORCED_RECORDED, "A defect answered by a check.", FIX_NONE,
+                  forced % (R, "the case does not arise, decided here for the "
+                            "self-test")),
+            block(DEF_FORCED_GONE, "A defect answered by a check.",
+                  anchor("skills/zeta/SKILL.md", "# Zeta"),
+                  forced % (R, "a decision line that is not there")),
+            block(DEF_FORCED_BAD, "A defect answered by a check.",
+                  anchor("skills/zeta/SKILL.md", "# Zeta"),
+                  "Built, never walked, cannot be forced: because the model "
+                  "decides"),
+            block(DEF_FORCED_TWICE, "A defect answered by a check.",
+                  anchor("skills/zeta/SKILL.md", "# Zeta"),
+                  forced % (R, "A head that stands twice.")),
         ])
         write(root, "docs/defects.md", defects_text)
         # a clean defects file, one green block, for the tables over one
@@ -4191,6 +4608,16 @@ def selftest():
             "\t".join(COLUMNS),
             thing("eta / Eta / straight path", "skills/eta/SKILL.md", "# Eta",
                   note=ROOT)]) + "\n")
+        # the plan at the branch point: milestones 1 and 2 not reached,
+        # milestone 3 reached there already
+        g_plan = ("# Plan\n\n## The milestones, in this order\n\n"
+                  "### 1. First (build)\n\nText.\n\n### 2. Second (build)\n\n"
+                  "Text.\n\n### 3. Third (text)\n\nDone on 1 February 2026, "
+                  "pull request #1.\n")
+        # at the branch point under the heading of before 5 November 2026
+        write(guard, "docs/plan.md", g_plan.replace(
+            "## The milestones, in this order",
+            "## Twelve milestones, in this order"))
         run_git(guard, "add", "-A")
         run_git(guard, "commit", "-q", "-m", "g1", date="2026-02-01T12:00:00+0100")
         g1 = run_git(guard, "rev-parse", "HEAD")
@@ -4240,6 +4667,50 @@ def selftest():
              BLOCK_RENAMED + GB_OLD_CH + RENAME_SEP + GB_NEW_CH,
              SHOULD_CHANGED + GB_NEW_CH,
              BLOCK_RENAMED + GB_OLD_KEPT + RENAME_SEP + GB_NEW_KEPT])
+        # a milestone this branch declares reached, section F: the plan of
+        # the working tree gains a Done line under milestone 1; the blocks
+        # of its section open, with not stated, walked, with the form and
+        # closed, one open under milestone 2, one closed under milestone 3
+        # and one open under no milestone
+        GD_OPEN = "a block open under the milestone the branch reaches"
+        GD_NS = "a block walked under that milestone with not stated"
+        GD_FORCED = "a block built under that milestone whose case cannot be forced"
+        GD_CLOSED = "a block closed under that milestone"
+        GD_LATER = "a block open under a milestone not yet reached"
+        GD_THIRD = "a block closed under the milestone reached before"
+        GD_OUTSIDE = "a block open under no milestone"
+        ETA_LINE = anchor("skills/eta/SKILL.md", "# Eta")
+        d_table = os.path.join(guard, "docs", "done.tsv")
+        write(guard, "docs/done.tsv", "\n".join([
+            "\t".join(COLUMNS),
+            thing("eta / Eta / straight path", "skills/eta/SKILL.md", "# Eta",
+                  note=ROOT),
+            run(GD_NS, "2026-02-02", G_HEAD, version="0.1.0")]) + "\n")
+        d_blocks = "".join(["# Defects\n\n## Not yet sorted\n\n"] + [
+            block(t, G_HEAD, FIX_NONE, left % (R, G_HEAD))
+            for t in (GB_STAYS, GB_GONE, GB_GONE_TOO, GB_OLD, GB_SHOULD,
+                      GB_QUOTED, GB_OLD_CH, GB_OLD_KEPT)] + [
+            "## Milestone 1\n\n", gblock(GD_OPEN),
+            block(GD_NS, G_HEAD, ETA_LINE, "Walked", should=NOT_STATED_MARK),
+            block(GD_FORCED, G_HEAD, ETA_LINE, forced % (R, G_HEAD)),
+            block(GD_CLOSED, G_HEAD, FIX_NONE, left % (R, G_HEAD)),
+            "## Milestone 2\n\n", gblock(GD_LATER),
+            "## Milestone 3\n\n",
+            block(GD_THIRD, G_HEAD, FIX_NONE, left % (R, G_HEAD)),
+            "## Without a milestone\n\n", gblock(GD_OUTSIDE)])
+
+        def done_state(plan_text):
+            write(guard, "docs/plan.md", plan_text)
+            write(guard, "docs/defects.md", d_blocks)
+            write(guard, "docs/roadmap.md", g_roadmap)
+            return collect(analyse(guard, d_table))
+        res_d_red = done_state(g_plan.replace(
+            "### 1. First (build)\n\n",
+            "### 1. First (build)\n\nDone on 2 February 2026, pull request #2.\n\n"))
+        res_d_green = done_state(g_plan)
+        gd_open_line = [i for i, l in enumerate(files_of(guard, "docs/defects.md"), 1)
+                        if ("### " + GD_OPEN) in l][0]
+        os.remove(os.path.join(guard, "docs", "done.tsv"))
         # a branch behind main: main gains a block after the branch point,
         # the branch stands as it was cut
         run_git(guard, "checkout", "-q", "--", ".")
@@ -4330,8 +4801,19 @@ def selftest():
         a_new_roadmap = ("# Roadmap\n\n## Known gaps\n\n- **A head of the "
                          "roadmap after the second archive.**\n")
 
+        # a not-a-thing record on a line of the archive, rejected since 5
+        # November 2026; the table stands in the working tree alone
+        a_red_table = os.path.join(arch, "docs", "red.tsv")
+        write(arch, "docs/red.tsv", "\n".join([
+            "\t".join(COLUMNS),
+            thing(ETA_SP, "skills/eta/SKILL.md", "# Eta", note=ROOT),
+            run(ETA_SP, "2026-03-02", AH_ARCHIVE, version="0.1.0",
+                run_file=ARCH1),
+            rec(type="not-a-thing", file=ARCH1,
+                anchor="Left as it is: %s" % A_DECIDED, note="quoted")]) + "\n")
+
         def arch_state(defects_text=a_green_blocks, archive1=a_archive,
-                       added=None):
+                       added=None, table=a_table):
             run_git(arch, "checkout", "-q", "--", ".")
             for rel in (ARCH2, ARCH3):
                 with contextlib.suppress(OSError):
@@ -4343,10 +4825,11 @@ def selftest():
                 write(arch, ARCH1, archive1)
             for rel, text in (added or {}).items():
                 write(arch, rel, text)
-            return collect(analyse(arch, a_table))
+            return collect(analyse(arch, table))
         res_a_green = arch_state()
         res_a_changed = arch_state(a_red_blocks,
-                                   a_archive + "A line added to the archive.\n")
+                                   a_archive + "A line added to the archive.\n",
+                                   table=a_red_table)
         res_a_removed = arch_state(archive1=None)
         res_a_renamed = arch_state(archive1=None, added={ARCH2: a_archive})
         res_a_added = arch_state(added={ARCH2: a_roadmap,
@@ -4358,6 +4841,62 @@ def selftest():
         run_git(arch, "update-ref", "refs/remotes/origin/main", a0)
         res_a_no_roadmap = arch_state()
         run_git(arch, "update-ref", "refs/remotes/origin/main", a1)
+        # the states against the branch point, section F: a repository whose
+        # second commit changes a line in the range of a thing and of a
+        # block after the version's commit, so that their runs under that
+        # version do not count there; origin/main on the second commit, a
+        # branch cut there; then the working tree without the part-of
+        # record and with the block's Fix moved onto an older line, both
+        # Walked now without a run the branch adds, and the same with a run
+        # the branch adds for each
+        walk = os.path.join(tmp, "walk")
+        os.makedirs(walk)
+        run_git(walk, "init", "-q", "-b", "main")
+        write(walk, ".claude-plugin/plugin.json", plugin("0.1.0"))
+        write(walk, "skills/eta/SKILL.md", "# Eta\n")
+        W_HEAD = "A head for the states held against the branch point."
+        W_OLD, W_NEW = "[ -d docs ] || exit 0", "[ -d docs/agents ] || exit 0"
+        WD = "a block whose Fix the branch moves onto an older line"
+        write(walk, "docs/roadmap.md", "# Roadmap\n\n## Known gaps\n\n- **%s**\n"
+              % W_HEAD)
+
+        def w_defects(fix, status):
+            return "# Defects\n\n## Not yet sorted\n\n" + block(WD, W_HEAD, fix,
+                                                               status)
+
+        def w_table(part_of, extra=()):
+            rows = [thing(ETA_SP, "skills/eta/SKILL.md", "# Eta", note=ROOT),
+                    run(ETA_SP, "2026-04-01", W_HEAD, version="0.1.0"),
+                    run(WD, "2026-04-01", W_HEAD, version="0.1.0")]
+            if part_of:
+                rows.append(rec(type="not-a-thing", file="hooks/w.sh",
+                                anchor=part_of, note="part of: " + ETA_SP))
+            return "\n".join(["\t".join(COLUMNS)] + rows + list(extra)) + "\n"
+        write(walk, "hooks/w.sh", "#!/bin/sh\n" + W_OLD + "\n")
+        write(walk, "docs/defects.md",
+              w_defects(anchor("hooks/w.sh", W_OLD), "Built, never walked"))
+        write(walk, "docs/stock-take.tsv", w_table(W_OLD))
+        run_git(walk, "add", "-A")
+        run_git(walk, "commit", "-q", "-m", "w1", date="2026-04-01T12:00:00+0100")
+        write(walk, "hooks/w.sh", "#!/bin/sh\n" + W_NEW + "\n")
+        write(walk, "docs/defects.md",
+              w_defects(anchor("hooks/w.sh", W_NEW), "Built, never walked"))
+        write(walk, "docs/stock-take.tsv", w_table(W_NEW))
+        run_git(walk, "add", "-A")
+        run_git(walk, "commit", "-q", "-m", "w2", date="2026-04-02T12:00:00+0100")
+        w2 = run_git(walk, "rev-parse", "HEAD")
+        run_git(walk, "update-ref", "refs/remotes/origin/main", w2)
+        run_git(walk, "checkout", "-q", "-b", "task")
+        wtab = os.path.join(walk, "docs", "stock-take.tsv")
+        res_w_clean = collect(analyse(walk, wtab))
+        write(walk, "docs/stock-take.tsv", w_table(None))
+        write(walk, "docs/defects.md",
+              w_defects(anchor("skills/eta/SKILL.md", "# Eta"), "Walked"))
+        res_w_red = collect(analyse(walk, wtab))
+        write(walk, "docs/stock-take.tsv", w_table(None, [
+            run(ETA_SP, "2026-04-03", W_HEAD, commit=w2[:7]),
+            run(WD, "2026-04-03", W_HEAD, commit=w2[:7])]))
+        res_w_green = collect(analyse(walk, wtab))
         # --only without a path, which answers before touching any repository
         only_err = io.StringIO()
         with contextlib.redirect_stderr(only_err):
@@ -4935,8 +5474,9 @@ def selftest():
         case("a Status in none of the four states and none of the three "
              "closing forms",
              err("Status 'Half built' is none of Undetermined, Recorded, not "
-                 "built, Built, never walked, Walked and none of the three "
-                 "closing forms of section D")
+                 "built, Built, never walked, Walked, none of the three "
+                 "closing forms of section D and not the form 'Built, never "
+                 "walked, cannot be forced'")
              and err("Status 'Closed, for a reason not on the list: nothing to "
                      "read here.' is none of")
              and states.get(DEF_NOFORM) is None,
@@ -4988,7 +5528,7 @@ def selftest():
                                                    "## Without a milestone"])
         case("a block under a milestone the plan does not number",
              err("stands under '## Milestone 9', and 9 is no milestone under "
-                 "'## Twelve milestones, in this order' in docs/plan.md"),
+                 "'## The milestones, in this order' in docs/plan.md"),
              states.get(DEF_M1) == "Recorded, not built"
              and states.get(DEF_NONE_M) == "Recorded, not built")
         case("a Fix that is none, not determined, an anchor, or in no form",
@@ -5061,6 +5601,110 @@ def selftest():
              and "DEFECTS of docs/defects.md, by section" in render(res_clean)
              and "  ## Not yet sorted: 1 (Recorded, not built 1)\n"
              in render(res_clean))
+        # the form of section D for a built defect whose case cannot be
+        # forced, since 5 November 2026
+        forced_d = [d for d in res.defects if d["name"] == DEF_FORCED]
+        decided_at = rline("the case does not arise, decided here for the self-test")
+        case("the form 'Built, never walked, cannot be forced': taken where the "
+             "tool computes Built, never walked and the decision line stands "
+             "once, listed under its own heading and beside the Fix; red where "
+             "the tool computes another state, where the line is not found and "
+             "where the Status opens like the form and is not it",
+             err("the block %r says %r, and the tool computes Recorded, not "
+                 "built" % (DEF_FORCED_RECORDED, FORCED_PREFIX))
+             and err("cannot be forced: 'a decision line that is not there' in "
+                     "docs/roadmap.md: not found")
+             and err("Status 'Built, never walked, cannot be forced: because the "
+                     "model decides' opens with 'Built, never walked, cannot be "
+                     "forced' and is not the form")
+             and err("cannot be forced: 'A head that stands twice.' in "
+                     "docs/roadmap.md: found more than once, on lines %d and %d, "
+                     "so it is not an anchor" % (rline("A head that stands twice."),
+                                                 rline("A head that stands twice.") + 1))
+             and states.get(DEF_FORCED_RECORDED) == "Recorded, not built"
+             and states.get(DEF_FORCED_GONE) is None
+             and states.get(DEF_FORCED_TWICE) is None,
+             states.get(DEF_FORCED) == "Built, never walked"
+             and not any(DEF_FORCED in e for e in derrors)
+             and len(forced_d) == 1 and forced_d[0]["forced"] == (R, decided_at)
+             and "DEFECTS BUILT WHOSE CASE CANNOT BE FORCED (the form of section "
+                 "D, decided by the person; not open): 1\n  %s  (decided in "
+                 "docs/roadmap.md:%d)\n" % (DEF_FORCED, decided_at) in report
+             and "  %s  (skills/zeta/SKILL.md:1; cannot be forced, decided in "
+                 "docs/roadmap.md:%d)\n" % (DEF_FORCED, decided_at) in report)
+        # a not-a-thing record on a roadmap line in no search set, or on an
+        # archive line, since 5 November 2026
+        case("a not-a-thing record on a line of docs/roadmap.md in no search "
+             "set, or on a line of an archive: rejected; one on a row of the "
+             "table under 'Named, not built as skills': read",
+             err("a not-a-thing record on docs/roadmap.md line %d, which is in "
+                 "no search set: a line of the roadmap counts for no run and "
+                 "covers nothing" % rline("A run of alpha without a version"))
+             and has(res_a_changed, "a not-a-thing record on a line of "
+                     "docs/roadmap-archive-1.md, an archive of the roadmap, no "
+                     "line of which is in any search set"),
+             (R, rline("`implement-ticket`")) in covered
+             and sum(1 for e in errors if "which is in no search set" in e) == 1
+             and not has(res_a_green, "an archive of the roadmap, no line of "
+                         "which is in any search set"))
+        # a milestone this branch declares reached, section F
+        case("a milestone this branch declares reached: red for an open block "
+             "and for 'not stated' in its section and for an open block outside "
+             "the section of a milestone not yet reached; green for a walked, "
+             "a closed and a cannot-be-forced block there, for a block under a "
+             "milestone not yet reached, and where no Done line is added, the "
+             "branch point read under the heading of before 5 November 2026",
+             has(res_d_red, "milestone 1 is reached on this branch, and the "
+                 "block %r in its section is open: Recorded, not built" % GD_OPEN)
+             and has(res_d_red, "milestone 1 is reached on this branch, and the "
+                     "block %r in its section carries 'not stated'" % GD_NS)
+             and has(res_d_red, "milestone 1 is reached on this branch, and the "
+                     "open block %r stands under '## Without a milestone', "
+                     "outside the section of a milestone not yet reached"
+                     % GD_OUTSIDE)
+             and len(res_d_red.done_errors) == 3
+             and not any(t in e for _, e in res_d_red.done_errors
+                         for t in (GD_LATER, GD_FORCED, GD_CLOSED, GD_THIRD))
+             and exit_code(res_d_red) == 2
+             and res_d_red.done == {"reached": ["1", "3"], "added": ["1"],
+                                    "note": None, "base": g1}
+             and "  docs/defects.md:%d: milestone 1 is reached on this branch"
+                 % gd_open_line in render(res_d_red)
+             and "MILESTONES OF docs/plan.md REACHED (a line \"Done on\" under "
+                 "the milestone; one this branch adds is held against the "
+                 "blocks)\n  reached: 1, 3\n  reached on this branch, against "
+                 "%s: 1\n" % g1[:7] in render(res_d_red),
+             not res_d_green.done_errors and exit_code(res_d_green) == 0
+             and res_d_green.done == {"reached": ["3"], "added": [],
+                                      "note": None, "base": g1}
+             and res_norigin.done == {"reached": [], "added": [], "note":
+                                      "origin/main is not here, so no Done line "
+                                      "is held against a branch point"}
+             and "  origin/main is not here, so no Done line is held against a "
+                 "branch point\n" in render(res_norigin))
+        # the states against the branch point, section F
+        case("a thing and a block Walked in the working tree, not Walked at the "
+             "branch point, with no run the branch adds: listed under their own "
+             "heading; with a run the branch adds: not listed; HEAD the branch "
+             "point and the tree clean, or no origin/main: said in one line",
+             res_w_red.walked_on_branch == {
+                 "base": w2, "walked": [(ETA_SP, "skill branch",
+                                         "Built, never walked"),
+                                        (WD, "defect", "Built, never walked")]}
+             and "WALKED ON THIS BRANCH WITHOUT A RUN THE BRANCH ADDS (Walked "
+                 "in the working tree, not Walked at the branch point; a change "
+                 "to read before the merge)\n  against %s: 2\n  %s  (skill "
+                 "branch; Built, never walked at the branch point)\n  %s  "
+                 "(defect; Built, never walked at the branch point)\n"
+                 % (w2[:7], ETA_SP, WD) in render(res_w_red),
+             res_w_green.walked_on_branch == {"base": w2, "walked": []}
+             and res_w_clean.walked_on_branch == {
+                 "base": w2, "walked": [], "note": "HEAD is the branch point "
+                 "and the working tree is clean, so nothing differs"}
+             and res_norigin.walked_on_branch == {
+                 "note": "origin/main is not here, so the states are not held "
+                         "against a branch point"}
+             and "  against %s: 0\n" % w2[:7] in render(res_w_green))
         # the blocks against the branch point, section F
         g_green = res_g_green.guard
 
