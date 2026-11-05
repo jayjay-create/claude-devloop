@@ -1028,11 +1028,12 @@ and for the proofs of closings.
 - **Defects sorted into milestones, 13 to 15 added, the Done check built.**
 
   5 November 2026, version 0.176.0. On `task/sort-into-milestones`, off
-  `origin/main` at `a5891cc`, in three commits: the code of
+  `origin/main` at `a5891cc`, in four commits: the code of
   `scripts/devloop-stock-take` with the version; this entry with
   `docs/plan.md`, `docs/defects.md`, `docs/skill-conventions.md` and
   `docs/stock-take.tsv`; the runs of the self-test, measured at the second
-  commit. Nothing under `skills/`, `shared/`, `hooks/`, `bin/`,
+  commit; three sentences mended before the merge, named at the end of this
+  entry. Nothing under `skills/`, `shared/`, `hooks/`, `bin/`,
   `output-styles/` or `.github/` changes, and `README.md` and
   `docs/rationale.md` do not: no loaded text changes, and no place of
   `docs/rationale.md` is touched by the decisions below. Written from the
@@ -1372,6 +1373,18 @@ and for the proofs of closings.
   every thing of the tool whose run under an earlier version stopped
   counting with this order's change to its lines: 24 runs. No run on
   any other block.
+
+  **Mended before the merge**, by the check of the branch against the code,
+  in the fourth commit. `docs/plan.md` under milestone 13 named the "Why
+  last" of milestone 11, which this order renamed "Why here, the last of
+  the runs", and names its "Why here". The introduction of
+  `docs/defects.md` and `docs/skill-conventions.md` under "A defect is a
+  block in docs/defects.md" said that "not stated" stands in six blocks of
+  milestone 3 alone, where six is its count under milestone 3 and the blocks
+  of the other sections carry it until the order of their milestone fills
+  it; both say so, and the introduction, which said the tool lists them
+  without going red, names the Done line that turns them red as the
+  conventions do.
 
 ## Decisions taken against
 

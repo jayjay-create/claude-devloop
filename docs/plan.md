@@ -991,7 +991,7 @@ order.
 Why here: directly after milestone 12 and before milestone 4, decision (3)
 of 5 November 2026. The runs of milestones 8, 9 and 11 build and merge; on a
 repaired loop with nobody there each of them has one open question, as the
-"Why last" of milestone 11 grounds it, where on the loop of today a defect of
+"Why here" of milestone 11 grounds it, where on the loop of today a defect of
 the merge or of the mode would be a second variable in each. Not chosen: 13
 and 14 directly before 9.
 

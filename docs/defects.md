@@ -77,9 +77,11 @@ date on the sorting into the milestones; the section `## Not yet sorted`,
 which held the blocks no order had sorted, is empty since then and gone from
 this file, while the tool still reads the heading. The value `not stated`
 stands in a `Wrong` or `Should` that no text of the roadmap filled when the
-blocks were written; since that day it stands in six blocks under
-`## Milestone 3` alone, whose entries carry no should. The tool lists them
-without going red.
+blocks were written; under `## Milestone 3` it stands since that day in six
+blocks alone, whose entries carry no should, and the blocks of the other
+sections carry it until the order of their milestone fills it. The tool
+lists them without going red, except where a Done line the branch adds names
+their section.
 
 ## Milestone 3
 
