@@ -1720,7 +1720,7 @@ and for the proofs of closings.
   carry no unique anchor 343, Undetermined 24, Recorded, not built 286,
   Built, never walked 1460, Walked 685, Closed 46. At the second commit: exit
   0, broken records 0, uncovered lines 0 of 4520, blocks 689, under
-  "## Without a milestone" 46, closed 65, with "not stated" 384, under
+  "## Without a milestone" 46, closed 65, with "not stated" 382, under
   milestone 3 none, not-a-thing records 3332, lines that can carry no unique
   anchor 344, Undetermined 24, Recorded, not built 260, Built, never walked
   1478, Walked 681, Closed 65; milestones reached 1, 2, 3, none reached on
@@ -1736,8 +1736,9 @@ and for the proofs of closings.
   `review-changes` filed as an issue, whose sentence changed; and step 7 of
   `setup-checks` skipped for a single class, whose sentence changed — held
   against the runs of the third commit, which re-walk the first two; Walked
-  -4 for the same reason, until the third commit; with "not stated" -6, the
-  six Shoulds of milestone 3; the search set +22 lines, the new text, every
+  -4 for the same reason, until the third commit; with "not stated" -8, the
+  six Shoulds of milestone 3 and the two README.md blocks; the search set
+  +22 lines, the new text, every
   one covered; not-a-thing records +25, the lines inside the new text; lines
   that can carry no unique anchor +1, the `else` of the record's reading in
   the guard, which repeats a line of the hook; Undetermined +0.
