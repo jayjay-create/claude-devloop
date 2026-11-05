@@ -85,8 +85,8 @@ from the main branch as it stands. The cases:
   branch of this name was left by an earlier setup that landed, that nothing
   stood on it beyond what landed, and that it has been removed and cut again.
   This case is read because the setup that lands with the person merging by hand
-  deletes the branch only once they have said it landed, and a session that ends
-  before that leaves it.
+  deletes the branch only once the merge is proven at the platform, never on
+  their word, and a session that ends before that leaves it.
 
 - **The branch exists and something was written on it** — a commit of its
   own, or a working tree that is not clean. Switch to it rather than making a

@@ -22,6 +22,20 @@
 # branch, its ref and the file are those of the install record, word for
 # word. Until 23 October 2026 this head said every cause named the section.
 #
+# With --unattended, since 5 November 2026, decision (8) of the roadmap entry
+# of that date on the sorting into the milestones, the same reading of the
+# section "## Unattended mode" of the same file, the record of the answer to
+# whether work may run in this repository with nobody there, which
+# setup-checks step 8 writes: the keys are unattended-mode and
+# unattended-answered, there are no place and no route lines, the reason
+# line a no carries is not printed, and the causes are formed as under
+# --dependency. The guard on the mark reads it through this program at a
+# write of the mark in auto mode, before the start conditions, and blocks
+# the write where the record does not say yes - a section, a line or a
+# value missing, or a value that is no yes - so that the hook blocks exactly
+# where shared/mode-set-up.md refuses; the record is no start condition, so
+# it is read here and not in bin/devloop-start-conditions.
+#
 # On exit 0, one key per line:
 #   ref: origin/<default>
 #   tools: yes|no
@@ -49,8 +63,9 @@
 # carries, since 20 October 2026: they do nothing under a no, the guard
 # blocking on install-tools: no before it reads a place; a record written
 # under a no since that day carries none (shared/install-record.md), and an
-# older one that carries them is not amended. --line beside --dependency is
-# refused with 2: the dependency record has no line of its own.
+# older one that carries them is not amended. --line beside --dependency or
+# --unattended is refused with 2: neither record has a line of its own, and
+# so is --dependency beside --unattended, one section per call.
 set -u
 SELF=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
 HEADING='## Install permission'
@@ -60,16 +75,19 @@ DIRS=0
 PROJECT_DIR=""
 BAD=""
 LINE=no
+SECTIONS=0
 for a in "$@"; do
   case "$a" in
-    --dependency) HEADING='## Dependency permission'; KEY='dependency-tools'; ANSWERED_KEY='dependency-answered' ;;
+    --dependency) HEADING='## Dependency permission'; KEY='dependency-tools'; ANSWERED_KEY='dependency-answered'; SECTIONS=$((SECTIONS + 1)) ;;
+    --unattended) HEADING='## Unattended mode'; KEY='unattended-mode'; ANSWERED_KEY='unattended-answered'; SECTIONS=$((SECTIONS + 1)) ;;
     --line) LINE=yes ;;
-    -*) BAD="unknown option $a; the options are --dependency and --line" ;;
+    -*) BAD="unknown option $a; the options are --dependency, --unattended and --line" ;;
     *) DIRS=$((DIRS + 1)); PROJECT_DIR="$a" ;;
   esac
 done
 [ "$DIRS" -le 1 ] || BAD="expected at most one directory argument, the project directory, got $DIRS"
-[ "$LINE" = no ] || [ "$KEY" = install-tools ] || BAD="--line forms the line of the install record alone and does not go with --dependency"
+[ "$SECTIONS" -le 1 ] || BAD="--dependency and --unattended each read one section of the record and do not go together"
+[ "$LINE" = no ] || [ "$KEY" = install-tools ] || BAD="--line forms the line of the install record alone and does not go with --dependency or --unattended"
 if [ -n "$BAD" ]; then
   echo "devloop-install-record: $BAD" >&2
   exit 2

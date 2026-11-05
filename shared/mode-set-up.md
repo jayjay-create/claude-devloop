@@ -19,14 +19,18 @@ permission`. A section that is not there, a line that is missing and a value
 that is neither `yes` nor `no` are none of them a yes. For these three the
 record on the main branch is the state itself and not an account of it:
 nothing on the platform says what the user allowed. The guard on the mark,
-`hooks/pre-tool-use-mark-guard.sh`, reads the last four of the five and
-start condition 1 when the mark is written, through
+`hooks/pre-tool-use-mark-guard.sh`, reads all five and start condition 1
+when the mark is written: the record of the mode through
+`bin/devloop-install-record --unattended`, the install guard's reader, off
+the main branch as last fetched, and the four conditions through
 `bin/devloop-start-conditions` without a range, the program the skills read
-the start conditions with, which reads the two records through
-`bin/devloop-install-record`, the install guard's reader, the second with
-`--dependency`; it blocks the write where one of them does not hold or is
-not established, exactly where this text refuses; a deletion or a read of the
-mark passes. The rule for the classifier of auto mode in the person's settings
+the start conditions with, which reads the two other records through the
+same reader, the second with `--dependency`; it blocks the write where the
+record of the mode does not say yes — a section, a line or a value missing
+is no yes — or where one of the conditions does not hold or is not
+established, exactly where this text refuses, the record's line first in its
+block; a deletion or a read of the mark passes. The rule for the classifier
+of auto mode in the person's settings
 is none of the five and no start condition: without it the run starts, and auto
 mode can then refuse an install, which the run treats as the refusal it is;
 where the install went by one of the ways the rule names, the refusal leaves an

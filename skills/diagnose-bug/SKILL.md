@@ -39,9 +39,11 @@ that was walked past, which is the only thing these steps are for.
 
 ## When this runs
 
-Nobody asks for this. It starts when a check goes red in one of three classes:
-**unit**, **integration**, **end-to-end**. Those three report where an
-expectation broke, not what broke it.
+Nobody asks for this by name. It starts on one of four routes: on three of
+them a check goes red in one of three classes, **unit**, **integration**,
+**end-to-end**, and on the fourth a person who can look at the thing running
+says it behaves wrongly. Those three classes report where an expectation
+broke, not what broke it.
 
 The other six name their own cause: format and lint print the rule and the line,
 types prints the line and the mismatch, secrets prints the file and the pattern,

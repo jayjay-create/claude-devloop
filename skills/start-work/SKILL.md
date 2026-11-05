@@ -180,9 +180,17 @@ does not reach, the text above says, at the place it names.
   run that filed it are where they meet it. Past three or four, name the newest,
   and not how many others there are.
 
-**If nothing is in flight**, ask the same open question: what would they like to
-build? Nothing in flight now means both halves of the query empty — no open
-issue and no open pull request.
+**If nothing of devloop's own is in flight**, one of two things. Nothing of
+devloop's own in flight means no open pull request of yours but a draft,
+which is left and not named, and no open issue devloop wrote — none carrying
+`raised-here`, none that is a map or a spec or a ticket or task under one,
+none that is an unfinished planning, and the issue of a change set aside,
+labelled `needs-human` alone, counting as devloop's. Where an open issue
+devloop did not write stands among them — one without `raised-here`, whoever
+or whatever opened it, a person or an app, Renovate's dashboard say —
+offer to take it up, as the paragraph on such an issue below says; the
+question ends the turn. Where none does, ask the same open question: what
+would they like to build?
 
 **If an open pull request of yours is waiting to land, that comes before all of
 it.** It is one command from done and nothing else on the list is, and starting
@@ -213,14 +221,31 @@ Reporting is not proposing, and the difference is which of the two cases you are
 in. Proposing is intrusive when it tells the user what to want; it is help when
 it tells them where they stopped and what comes next.
 
-- **A stray open issue somebody filed.** Say what is there and stop — do not
-  rank it, do not recommend one, do not offer to pick it up. An open issue is
-  somebody's suggestion, not an instruction, and someone coming back after a
-  week needs to see where they stood before they can answer at all.
-- **A ticket or task on something they started themselves.** This is the
-  exception, and it is a real one: rank it, recommend one, offer to pick it up.
-  That is the paragraph above, and none of the three refusals in the case above
-  apply here.
+- **An open issue devloop did not write, with nothing of devloop's own in
+  flight.** Whoever writes an issue in the project works along and wants it
+  taken up, and whether it is taken up is theirs to decide: offer it, as a
+  choice through the harness's choice widget, in their language, alone in its
+  call, every point in a field of its own and no recommendation, nothing said
+  before the call. In the header: a name for the subject, of twelve characters
+  at most. In the question field: the issue by its title and who opened it, by
+  the `by:` column of the query, and the question line, whether to take it up
+  as the next piece of work. With several such issues: the newest three, each
+  by its title and who opened it, and the question line which of them. The
+  yes, one answer per issue where there are several, label and line: take it
+  up, and the planning starts from this issue. The no, label and line:
+  something else, and the issue stays open as it is, and they say what they
+  would like to build. On a yes, step 5 sends it to the planning, which starts
+  from that issue as its paragraph on the planning issue says of an issue
+  someone filed. On a no, the open question what to build follows, as the
+  paragraph on nothing of devloop's own in flight says. An issue an app opened
+  and keeps, Renovate's dashboard say, is offered like one a person wrote, at
+  every start at which nothing of devloop's own is in flight, as long as it
+  stays open: whoever uses the app chose that. Beside work in flight such an
+  issue is not named, as the list above says.
+- **A ticket or task on something they started themselves.** Name them, say
+  which comes next and start it, with no question and no offer: that is the
+  paragraph above on a map or a spec in flight, and the room to name a
+  different one is where that paragraph puts it.
 
 If both halves of the query come back empty, say the tracker is clear and ask the
 question on its own.
@@ -232,10 +257,13 @@ run that reports nothing in flight when it could not look sends the user to
 start work that may already be sitting in a pull request.
 
 **Stop here until they answer — but only where a question was asked.** Nothing
-in flight means a question and a stop. Something in flight means no question,
-so there is nothing to wait for: report where they stopped and which piece you
-are taking where the paragraph on a map or a spec in flight says so, and take
-it.
+of devloop's own in flight means a question and a stop: the offer of an open
+issue devloop did not write, or the open question. An open pull request of
+yours waiting to land means a question and a stop too, the offer to land it
+above. Anything else of devloop's own in flight, a map or a spec, means no
+question, so there is nothing to wait for: report where they stopped and which
+piece you are taking where the paragraph on a map or a spec in flight says so,
+and take it.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text missing-command`
 
@@ -300,8 +328,13 @@ skill load and a correction the user watches happen:
   which is where the ordering of loose issues is written. **Not to `plan-work`.**
   An issue that already says what is wrong does not need a spec written around
   it, and sending it there stands a fresh candidate beside it as an equal
-  choice. Loose issues from outside are left, the way step 2 leaves them, and so
+  choice. Loose issues from outside they did not take up are left, the way
+  step 2 leaves them, and so
   is the issue of a change set aside that step 2 does not name.
+- **An open issue devloop did not write that they said to take up** —
+  `plan-work` from the start, with that issue as the planning issue: its
+  paragraph on the planning issue says what it does with an issue someone
+  filed, and nothing of it is done here.
 - **Anything else, including a fresh idea** — `plan-work` from the start. It
   carries through to the tasks and into the build.
 

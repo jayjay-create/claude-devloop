@@ -39,8 +39,10 @@ Read `docs/agents/checks.md` and `docs/agents/standards.md` first.
 other lens.** The reviewer is inside the definition, not a detail of how one is
 arranged: two reviewers carrying five lenses between them ran two lenses, and a
 run reporting five has said something untrue about its own work. This is the word
-everything downstream counts — one section per lens in the report, the promise at
-setup that every angle the change touches gets read, the record of how many ran.
+everything downstream counts — one section per lens in the report, which is the
+record of how many ran and is said to nobody, and the promise at setup that
+every angle the change touches gets read; no number of lenses is said, "Run
+them" below.
 
 ## When a command does not answer
 
@@ -177,7 +179,9 @@ absence. It goes no further than the report.
   while you are there is a change, and it belongs in a finding no matter how
   small it looks.
 - **File it as an issue** if fixing it would revisit a design decision, change an
-  interface, or exceed the task. Say what you filed and why, and **label it
+  interface, or exceed the task. What you filed and why reaches the person at
+  the close of the step that owns the gate, where that step shows what was
+  filed, and not here, the report being said to nobody; **label it
   `raised-here`** — it came out of this work, not from outside, and nothing else
   in the issue carries that.
 

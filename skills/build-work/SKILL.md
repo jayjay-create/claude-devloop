@@ -1507,13 +1507,18 @@ branch stands on GitHub and that for that nothing is begun here — since
 nothing is fast-forwarded here and only the fetch can fail — the run without
 them does not begin, and no mark is written. On a fetch that answered, the
 mark, which the hook on the mark lets through in auto mode alone, the mode
-condition 4 has read by now, and blocks in every other; and only where
+condition 4 has read by now, and blocks in every other; and only where the
+record of the answer to whether work may run here with nobody there says
+yes, which the hook reads at the write off the main branch as last fetched
+through `bin/devloop-install-record --unattended`, and where
 conditions 1, 2, 5, 6 and 7 hold, which the hook reads at the write by
 calling `bin/devloop-start-conditions` without a range, the reading this
-section made at its start: where one does not hold or is not established,
-the hook blocks the write and names which and why, the program's lines, and
+section made at its start: where the record does not say yes, or one of
+the conditions does not hold or is not established,
+the hook blocks the write and names which and why, the record's line and
+the program's lines, and
 the run does not write the mark another way — with the person there, say
-which condition failed and why, as this section says for it above, for 6
+which of these failed and why, as this section says for it above, for 6
 and 7 the sentence it gives there, and carry on with them, as the block
 says; with nobody there, a stop with the reason named, under "A guard's
 block, with nobody there". The command:

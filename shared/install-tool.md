@@ -64,7 +64,10 @@
    opens, the tool stands on the search path Claude Code took over from that
    terminal, and the build reaches it with
    no issue between: step 2 reads the issues, none of which holds this
-   task, since the issue is written on a no alone, "The task itself" below;
+   task — on the way under a yes none was written, since the issue is written
+   on a no alone, "The task itself" below, and after a no the read before the
+   first thing of the start that reads an issue has closed it, the tool
+   standing on the search path now, "The same read" below;
    the readiness query lists the task, open, with no blocker and no pull
    request, no subagent having started for it; and the read before the
    subagent starts, above, finds the tool on the search path. Where the

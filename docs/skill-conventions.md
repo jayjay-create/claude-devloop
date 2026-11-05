@@ -1430,7 +1430,8 @@ the question after a refusal feeds the install guard a counted refusal under
 `PermissionDenied` as well and is red where its record is missing, and since
 25 October 2026 feeds the guard on the mark a write of the mark in auto mode,
 `gh` a stand-in that refuses every call at once, and is red unless the guard
-blocks it naming conditions 1, 2, 5, 6 and 7 — the
+blocks it naming conditions 1, 2, 5, 6 and 7, since 5 November 2026 the record
+of the answer to whether work may run there with nobody there before them — the
 fourth and fifth addenda of the entry on the command reader carry the
 command, and the audit of 14 October 2026 read the setting off the
 platform.
@@ -1839,8 +1840,9 @@ that day sorted every block, the roadmap entry of that date on the sorting
 into the milestones, so that the heading is gone from the file while the
 tool still reads it; and `not stated` stands in a `Wrong` or `Should` that no
 text of the roadmap filled when the blocks were written on 2 November 2026,
-under milestone 3 since 5 November 2026 in six blocks alone, whose entries
-carry no should, the blocks of the other sections until the order of their
+under milestone 3 in no block since 5 November 2026, when the six whose
+entries carry no should took their Should from the text that says what holds,
+the blocks of the other sections until the order of their
 milestone fills it; the tool lists them and does not go red, except where a Done line
 the branch adds names their section. Decided on 2 November 2026, the
 roadmap entry of that date on the defects file. Until then a defect was a row
@@ -2485,7 +2487,18 @@ start conditions 1, 2 and 5 beside them — the table off the main branch as
 last fetched, the gate, its binding and auto-merge off GitHub, every query
 bounded so that the program ends inside the 120 seconds of a call — and the
 guard blocks the write where one of the five does not hold or is not
-established, its block carrying the program's lines of those that fail;
+established, its block carrying the program's lines of those that fail.
+Since 5 November 2026, decision (8) of the roadmap entry of that date on the
+sorting into the milestones, built by the entry of that date on the
+contradictions, the guard on the mark reads the third record of
+`environment.md` as well, `unattended-mode:` under `## Unattended mode`,
+through `bin/devloop-install-record --unattended`, before the conditions,
+and blocks the write where it does not say yes — the section, the line or
+the value missing, main not fetched, the file not on main, or a value that is
+no yes, which it names —, the record's line the first of its block: the
+record is no start condition, so it is read by the guard and not by
+`bin/devloop-start-conditions`, and the hook blocks exactly where
+`shared/mode-set-up.md` refuses, on all five things;
 `build-work` reads the conditions at the start of the build on both routes
 through one call of the same program, with the range of its tasks for
 condition 3, and `plan-work` before the question on the mode without it,
@@ -3573,7 +3586,9 @@ under "Unattended mode", and a run that would stop at the first tool it may
 not install, or leave off a check the work made necessary, does not start.
 Since 25 October 2026 six of the seven, 4 apart, are read through one call
 of `bin/devloop-start-conditions`, and the guard on the mark reads 1, 2, 5,
-6 and 7 through it at the write; **The install guard reads a record** above
+6 and 7 through it at the write, and since 5 November 2026 the record of the
+mode itself before them, through `bin/devloop-install-record --unattended`;
+**The install guard reads a record** above
 says how.
 
 **The `checks.md` parsers are shell scripts.** Backticks and apostrophes in a
@@ -3747,7 +3762,8 @@ two hooks read it: `hooks/permission-request-unattended.sh` answers no to every
 permission prompt while the mark stands, unless its third line names another session,
 and `hooks/pre-tool-use-mark-guard.sh` blocks the mark being written in any
 mode but auto, and in auto since 25 October 2026 where start condition 1,
-2, 5, 6 or 7 does not hold or is not established; `stop-checks.sh` still does not read it, and whether it should
+2, 5, 6 or 7 does not hold or is not established, and since 5 November 2026
+where the record of the mode on the main branch does not say yes; `stop-checks.sh` still does not read it, and whether it should
 is recorded as open in `docs/roadmap.md`. The sentence above therefore still
 holds for that hook, and the
 skills' half of it — every skill on such a path says what the message means —

@@ -45,7 +45,9 @@ from the close.
   No step of this setup needs one — nothing is installed here, the check setup
   being where a tool is installed under the record — so the command is one
   this run reached for on its own. With the user there, carry on without it
-  and hand nothing over: the record has not landed yet, and once it has, the
+  and hand nothing over: nothing is installed in the setup, and under the
+  record as it stands on the main branch — landed by this setup, or standing
+  there already at a refresh — the
   check setup decides. The case with nobody there cannot arise here: the run
   without the person reaches this skill on no way — it starts in `build-work`
   and at the end of Stage 1 of `plan-work`, and nothing on its paths calls this
@@ -110,6 +112,17 @@ that the record cannot be read, with the program's cause, and says it where
 nothing changed too: the guard blocks every install on such a record, and a
 finding is said whatever else is, as "How to ask" says of reporting.
 
+Where the record says yes and names fewer places than this version writes
+under a yes — the eleven `install-place` lines of the record's template below,
+a record written before the five places for the browsers of tests came in
+carrying the six bin directories alone — the refresh adds the missing
+`install-place` lines to the section, under the ones that stand, without a
+question: the question names kinds, tools and browsers for tests, and not
+places, so the yes covers them, and the case returns with every version that
+adds a place. The answer, the routes and the date stay as they stand. What was
+added is named under what changed, below, and so stands in the pull request
+step 8 opens. A record under a no is not touched.
+
 Cut the branch after the last question and before the first write, under the
 same name and rule as a first setup — the step below that stands between the
 two. A refresh that asks nothing cuts it first, as the first thing done after
@@ -128,14 +141,18 @@ The files hold two kinds of content, and only one of them is yours:
   the two the check setup writes, `## Dependency permission` and
   `## Unattended mode`.
   These were decided here and are never overwritten; a record missing on the
-  main branch is not overwritten by being written, the install record above.
+  main branch is not overwritten by being written, the install record above,
+  and the places this version adds to a record under a yes are added under
+  the ones that stand, nothing of the record overwritten, as the refresh
+  above says.
 
 Rewrite the first kind from the current templates — the marker line that
 step 6 puts above each file's top heading among it, written anew with the
 running version — leave the second untouched,
 and say in two or three lines what actually changed — named, not counted; an
 install record written from the answer asked for above is among what
-changed. One
+changed, and so are the places added to a record under a yes, each named;
+these lines stand in the body of the pull request step 8 opens as well. One
 thing outside those files is this workflow's too: the two paths under `.claude/`
 that Step 5 keeps out of the repository. Check `.gitignore` covers both, since a
 project set up before one of them existed has only the other. If nothing
@@ -151,10 +168,9 @@ and why the questions come now is part of what the first question needs, as "How
 to ask" above says. Someone seeing this for the first time meets it where they
 answer, not above six commands they watch run.
 
-If you cannot tell what language the user speaks — they have typed nothing but the
-command — ask that first, in English, as a single question. Everything after runs
-in their language. That question carries neither sentence below; the next
-question does.
+Where the user has typed nothing but the command, their language is not asked:
+it is taken from what is already in front of you, as the opening of this file
+says, and the first question comes in it.
 
 At a first setup the first question carries one sentence, by how this setup
 began. Where it began with an idea in hand — from the entry point, where the
@@ -225,8 +241,9 @@ which field.
   `github.com/cli/cli/blob/trunk/docs/install_linux.md`; and hand the command
   over as it stands there, by "Where the person types a command devloop hands
   them" — on a Mac with Homebrew `brew install gh`, form A, typed here with `!`,
-  backed as "A command that fetches something from outside is backed" says,
-  `brew info gh` naming the version and the folder; under Debian or Ubuntu the
+  backed before it is handed over by the vendor's own line or the path in the
+  command resolving, `brew info gh` naming the version and the folder; under
+  Debian or Ubuntu the
   block of that page, which runs `sudo` and so asks for their password, form B,
   in a second terminal window, given whole and as it stands, with its source,
   that it is GitHub's guide for that system; for another system the page names,
@@ -299,8 +316,8 @@ paragraph above the options does not get read, and text before the call can land
 in a collapsed note. Questions 1, 2 and 5 are such choices, and several of them
 may share one widget call. Question 3 is one too, and it names the field of each
 of its points; its call carries this question and no other, since what needs
-weighing stands alone so that it is not waved through beside other questions, as
-`shared/three-questions.md` says of a round in its first sentence. Question 4 is
+weighing stands alone so that it is not waved through beside other
+questions. Question 4 is
 open and has no options, so it is put as text, last in the message that ends the
 turn, with what it needs before it. Nothing here asks about check classes or the
 tools that fill them: that mapping, and whether a missing tool gets installed,
@@ -604,7 +621,7 @@ entirely on which it is. Anything without the label is from outside, and that is
 then a reading rather than a guess — all but the one issue devloop files
 without it on purpose: the issue of a change set aside at a fetch whose
 bring-back met a change from GitHub, labelled `needs-human` alone so that no
-build takes it up as work, by the text on the mark's deletion. That one is not
+build takes it up as work. That one is not
 from outside, and it is left all the same.
 
 For GitHub, write these in verbatim, with OWNER and REPO filled in. Later steps
@@ -636,7 +653,7 @@ read them from here; do not leave the reader to guess the API.
     in one command. Two commands would be two things to remember, and the
     second is the one that gets forgotten:
 
-        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issues(states:OPEN,first:50){totalCount nodes{number title parent{number} subIssues(first:50){totalCount nodes{state}} labels(first:10){nodes{name}}}} pullRequests(states:OPEN,first:50){totalCount nodes{number title isDraft viewerDidAuthor author{login} closingIssuesReferences(first:10){nodes{number state}}}}}}' -q '"open: \(.data.repository.issues.totalCount) issues, \(.data.repository.pullRequests.totalCount) pull requests (50 of each shown)", (.data.repository.issues.nodes[] | "issue \(.number) | parent: \(.parent.number // "-") | tasks open/total: \([.subIssues.nodes[] | select(.state=="OPEN")] | length)/\(.subIssues.totalCount) | labels: \([.labels.nodes[].name] | join(",")) | \(.title)"), (.data.repository.pullRequests.nodes[] | "pull request \(.number) | draft: \(.isDraft) | mine: \(.viewerDidAuthor) | by: \(.author.login) | closes: \(if (.closingIssuesReferences.nodes|length)==0 then "-" else ([.closingIssuesReferences.nodes[] | "\(.number) \(.state)"] | join("; ")) end) | \(.title)")'
+        gh api graphql -f query='{repository(owner:"OWNER",name:"REPO"){issues(states:OPEN,first:50){totalCount nodes{number title author{login} parent{number} subIssues(first:50){totalCount nodes{state}} labels(first:10){nodes{name}}}} pullRequests(states:OPEN,first:50){totalCount nodes{number title isDraft viewerDidAuthor author{login} closingIssuesReferences(first:10){nodes{number state}}}}}}' -q '"open: \(.data.repository.issues.totalCount) issues, \(.data.repository.pullRequests.totalCount) pull requests (50 of each shown)", (.data.repository.issues.nodes[] | "issue \(.number) | parent: \(.parent.number // "-") | tasks open/total: \([.subIssues.nodes[] | select(.state=="OPEN")] | length)/\(.subIssues.totalCount) | labels: \([.labels.nodes[].name] | join(",")) | by: \(.author.login // "-") | \(.title)"), (.data.repository.pullRequests.nodes[] | "pull request \(.number) | draft: \(.isDraft) | mine: \(.viewerDidAuthor) | by: \(.author.login) | closes: \(if (.closingIssuesReferences.nodes|length)==0 then "-" else ([.closingIssuesReferences.nodes[] | "\(.number) \(.state)"] | join("; ")) end) | \(.title)")'
 
     A spec is an open issue with children. An unfinished planning carries
     `being-planned`. A loose issue has neither. **An open pull request is work
@@ -658,6 +675,15 @@ read them from here; do not leave the reader to guess the API.
     - `viewerDidAuthor` says whether the account this runs as opened the pull
       request, which is what "is this ours" asks. It does not say whether the
       branch sits on a fork — that is `isCrossRepository`.
+    - `author` on an issue, its `login` in the `by:` column, says who opened
+      it — a person, or an app such as Renovate — and is read for naming them
+      where the start offers an open issue devloop did not write. It does not
+      say whether devloop wrote the issue: devloop writes as the account this
+      runs as, so its own issues are told apart by what they are — a finding
+      by `raised-here`, a map by `untangle:map`, a spec by its children, the
+      tickets and tasks under them by their parent, an unfinished planning by
+      `being-planned`, the issue of a change set aside by `needs-human` alone
+      — and `-` stands where the author's account is gone.
     - `closingIssuesReferences` says which issues this pull request would close
       on merging, each with its own `state`, and it is read for "which work is
       this". It is filled from a closing keyword in the body or the commits and
@@ -738,8 +764,11 @@ project's dependency file, and `## Unattended mode` the answer on whether
 work may run in this repository with nobody there. The check setup puts both
 questions and writes both sections, in the same shape, and it rewrites the
 answer of the install record where the question is put a second time. A
-refresh leaves all three sections as they stand; where the install record
-is missing on the main branch, it writes it from the answer it asked for.
+refresh leaves all three sections as they stand, with two exceptions on the
+install record: where it is missing on the main branch, it writes it from
+the answer it asked for, and where it says yes and names fewer places than
+this version, it adds the missing places, as "Refreshing an existing setup"
+says.
 
 ## Step 7 — Pointer block in CLAUDE.md
 

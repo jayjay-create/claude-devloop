@@ -38,10 +38,12 @@ under a no that carries places and routes keeps them, not amended. The places:
 the six bin directories, and the five where Playwright, Cypress and Puppeteer
 put the browsers they download for tests, the vendor's default on macOS and on
 Linux each, since the guard holds a browser download against the place the
-vendor names for the system it runs on. A record that carries the six and not
-the five is not amended: under its yes the guard blocks a browser download
-naming the place, as it blocks every place a record does not name, until the
-five are added with the person there. The `install-route` lines are the routes
+vendor names for the system it runs on. A record under a yes that carries the
+six and not the five is amended by the refresh of the setup, which adds the
+places this version names for the kinds the yes covers, without a question,
+and says so in its pull request; until that refresh has landed, the guard
+blocks a browser download under such a record naming the place, as it blocks
+every place a record does not name. The `install-route` lines are the routes
 this
 project's stack has, read by the run that writes the record off what the
 project declares and the lockfiles beside it, one line per route and none for

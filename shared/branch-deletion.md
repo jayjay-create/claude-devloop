@@ -10,8 +10,9 @@ deletion there runs only on a line coming back:
 
 prints the branch's line where it stands there, and nothing, exit 0, where it
 does not, so `git push -q origin --delete <branch>` runs after a line and not
-otherwise. A query that does not answer, exit 128 with git's message or the
-program's line at the bound, is a command that did not answer, reported as "When
+otherwise. A query that does not answer, exit 128 with git's message or exit
+124 with the program's line at the bound, is a command that did not answer,
+reported as "When
 a command does not answer" says, and nothing is deleted on it. The local branch
 goes either way, `git branch -D <branch>`, once the tree stands on the main
 branch. Nothing else does any of it: arming auto-merge carries no branch
