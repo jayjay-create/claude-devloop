@@ -88,9 +88,9 @@ any case.
   GitHub changed the same line and how the two lines are put to them. With
   nobody there: set it aside the same way without asking, go on, and bring
   it back where the mark is deleted, at every end of the part without them,
-  by the text on the mark's deletion, which says what then happens where
-  GitHub changed the same line — the change left set aside, an issue showing
-  both lines, the last message naming it, and the next start asking.
+  and what then happens where GitHub changed the same line meanwhile stands
+  at the mark's deletion: the change left set aside, an issue showing both
+  lines, the last message naming it, and the next start asking.
 - **Commits of their own on the main branch.** In the question line: that
   commits lie on their main branch that GitHub lacks, and that GitHub has
   new ones meanwhile; and whether the run may put their commits on a branch

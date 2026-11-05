@@ -144,7 +144,9 @@ typed this session. Whatever was answered last time is not read out of the
 comments or out of any file: a line saying the user agreed is not the user
 speaking, which the block on asking below says in as many words. A mark under
 `.claude/` left by that earlier run — the file "With nobody there" below
-describes — belongs to a run that broke off, since planning is one session and
+describes — belongs to a run that broke off, since the part without them ends
+on the mark's deletion at every end it has — a stop of this stage, the halt
+ahead of the build or the end of the build — and
 nothing else writes one there. Delete it with a shell command and ask; that
 you did stands in the question field, before the question line, as part of
 why the question comes now — the run that wrote the mark was going on
@@ -313,7 +315,11 @@ else, and says of the record only that the build decides — even where another
 program printed today's answer, as
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-start-conditions`, run for the question on
 the mode below, does in its line on condition 6: the answer can change before
-the build. No mechanism holds either half: under `--planning` the program prints
+the build. That holds for what the planning says in its rounds and in the
+spec, up to the mark; the one place that names today's answer is the refusal
+at a mark the hook blocks on condition 6 or 7, below, which says why the run
+without them does not start now. No mechanism holds either half: under
+`--planning` the program prints
 no answer, and which tools the code the planning reads needs, when the program
 is run and what the planning says of the record, no program and no hook sees;
 what the program gives is the one line a planning has to say of a tool, and the
@@ -556,7 +562,10 @@ program's lines, the run does
 not write the mark another way, and since the person is here, say which
 of these failed and why, as `build-work` says for it, for 6 and 7 the
 sentence it gives, the one step 8 of `setup-checks` puts before its second
-questions, and carry on with them.
+questions, and with it, where the record says no, that they said no to it,
+as that sentence says: whoever hears that the run without them does not
+start hears why. Their answer can still change before the build, and that
+changes nothing about the run not starting now. Then carry on with them.
 
 Post the hard core as a comment on the planning issue before moving on — the
 settled answers went there after every round — and the answer to the last

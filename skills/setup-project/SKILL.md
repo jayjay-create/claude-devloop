@@ -168,9 +168,21 @@ and why the questions come now is part of what the first question needs, as "How
 to ask" above says. Someone seeing this for the first time meets it where they
 answer, not above six commands they watch run.
 
-Where the user has typed nothing but the command, their language is not asked:
-it is taken from what is already in front of you, as the opening of this file
-says, and the first question comes in it.
+Where the user has typed nothing but the command, their language is taken from
+what is already in front of you, as the opening of this file says — their own
+instructions file where it is in your context, otherwise this project's
+documents — and the first question comes in it. Where neither shows it — no
+instructions file of theirs in your context, and no document of the project
+in a language — ask it first, before anything of the setup begins: one
+question, alone in the message that ends the turn, in English, asked as text
+and naming no languages, that nothing here shows which language they write
+in and which one to use; the language they answer in, or the one they name,
+holds from then on, and the first question of the setup comes in it. The run
+never guesses, and the question comes only where it would otherwise have to:
+whoever answers through the widget's buttons alone writes nothing their
+language could show in, and a first setup that runs in the wrong language is
+the first thing a new user meets. Where something shows the language, it is
+not asked.
 
 At a first setup the first question carries one sentence, by how this setup
 began. Where it began with an idea in hand — from the entry point, where the
@@ -467,8 +479,9 @@ landed.
    branch is cut once it is answered, and the two places are made in step 6,
    under `domain.md`, on that branch.
 
-Never ask about the user's preferred language or tone here — that belongs to the
-plugin's one-time setup, not to a per-project run.
+Never ask about the user's preferred language or tone here: the one question on
+the language is step 0's, put before the setup begins, and tone is asked
+nowhere.
 
 ## Cut the branch, after the last question and before the first write
 
