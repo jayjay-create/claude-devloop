@@ -9,8 +9,10 @@ worked out at the block, and that is what separates it from the rewording the
 shared block forbids.
 
 **The file itself is written with the editing tool.** A heredoc, an `echo` or a
-`cat` puts the same text through the shell, where the guard reads it, so nothing
-is narrowed at all — the shell carries the `gh` call and nothing else.
+`cat` puts the same text through the shell, where to the guards it is a word of
+its command and no command, as above, and where a backtick, a dollar sign or a
+newline is the shell's to read first, the quoting the file is the channel for —
+the shell carries the `gh` call and nothing else.
 
 **The file lies outside the repository.** It goes into a directory `mktemp
 -d` makes — under the system's temporary directory, on macOS, Linux, Windows

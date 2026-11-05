@@ -334,7 +334,9 @@ jobs:
   # Since 25 October 2026, part D of milestone 3, the guard on the mark reads
   # start conditions 1, 2, 5, 6 and 7 through bin/devloop-start-conditions at
   # a write of the mark in auto mode, 2 and 5 off GitHub through gh, every
-  # query under bin/devloop-bounded. The harmless inputs above never reach
+  # query under bin/devloop-bounded, and since 5 November 2026 the record of
+  # the answer to whether work may run here with nobody there before them,
+  # through bin/devloop-install-record --unattended. The harmless inputs above never reach
   # that path - ls and a Write of README.md write no mark - so the step feeds
   # the guard a second input of its own after the handlers: the mark command
   # of shared/mark-command.md in auto mode, in the throwaway project, with a
@@ -506,7 +508,7 @@ jobs:
           else
             echo "the counted refusal under PermissionDenied is not recorded in its form; $REC holds: $( [ -f "$REC" ] && tr -d '\r' < "$REC" || echo nothing )"; red=1
           fi
-          # the guard on the mark at a write of the mark in auto mode, since 25 October 2026: start conditions 1, 2, 5, 6 and 7 read through bin/devloop-start-conditions, gh a stand-in that refuses every call at once, so that nothing reaches GitHub and no query waits on its bound
+          # the guard on the mark at a write of the mark in auto mode, since 25 October 2026: start conditions 1, 2, 5, 6 and 7 read through bin/devloop-start-conditions, gh a stand-in that refuses every call at once, so that nothing reaches GitHub and no query waits on its bound; since 5 November 2026 the record of the answer to whether work may run here with nobody there read first, through bin/devloop-install-record --unattended, its line the first of the block, the project here carrying no docs/agents/environment.md on origin/main
           mkdir "$T/gh"
           printf '#!/bin/sh\necho "stand-in for gh in the step hooks on every system: GitHub is not reached here" >&2\nexit 1\n' > "$T/gh/gh"
           chmod +x "$T/gh/gh"
@@ -514,7 +516,7 @@ jobs:
           RC=0; OUT=$(cd "$P" && printf '%s' "$MARK" | PATH="$T/gh:$PATH" "$ROOT/hooks/pre-tool-use-mark-guard.sh" 2>&1) || RC=$?
           echo "PreToolUse Bash pre-tool-use-mark-guard.sh, a write of the mark in auto mode: exit $RC"
           printf '%s\n' "$OUT" | sed 's/^/    /'
-          want="Blocked by devloop: the mark for a run with nobody there is written only where start conditions 1, 2, 5, 6 and 7 of the skill hold, read by bin/devloop-start-conditions off the main branch as last fetched and off GitHub, and "
+          want="Blocked by devloop: the mark for a run with nobody there is written only where the record of the answer to whether work may run here with nobody there says yes and start conditions 1, 2, 5, 6 and 7 of the skill hold, read off the main branch as last fetched and off GitHub, and the record of the answer to whether work may run here with nobody there does not say yes, because there is no docs/agents/environment.md on origin/main as last fetched; condition 1 "
           case "$OUT" in "$want"*) ok=yes ;; *) ok=no ;; esac
           for s in "condition 1 does not hold, because there is no docs/agents/checks.md on origin/main as last fetched" "condition 2 is not established, because gh api repos/{owner}/{repo}/branches/main/protection did not answer: stand-in for gh" "condition 5 is not established, because gh api repos/{owner}/{repo} did not answer: stand-in for gh" "condition 6 does not hold, because there is no docs/agents/environment.md on origin/main as last fetched" "condition 7 does not hold, because there is no docs/agents/environment.md on origin/main as last fetched"; do
             case "$OUT" in *"$s"*) ;; *) ok=no; echo "    the block does not carry: $s" ;; esac

@@ -360,8 +360,9 @@ changes the user's machine.
 
 This step decides, per class, which tool and where it lands, and asks where
 that is the user's to allow. It writes nothing and installs nothing: its
-questions are the last questions of
-this skill, the branch is cut once they are answered, and the record of an
+questions are the last questions before the cut of the branch `devloop-checks`,
+which is cut once they are answered — step 8 asks again, on a branch of its
+own — and the record of an
 answer, the manifest line, the
 install and the targets are step 4's, on that branch.
 
@@ -421,11 +422,11 @@ entered there, in the same form, each alone in its call:
 
 The command of the second way installs the tool outside the project — on a
 route of the record, `brew install prettier` or `npm install -g prettier`
-say — and is handed over after the no in the message that ends the turn —
-where another question of this step follows through the widget, in the next
-message that ends a turn with text, never before that call — backed and as
-it runs from wherever they are, by "A command handed over runs as it stands"
-above. It is never the line that enters the tool into the project's
+say — and stands in the question that puts the decision on the class at once,
+below, in its field and in backticks, and is handed over once more as a line
+of its own on the first answer, last in the message that ends the turn,
+backed and as it runs from wherever they are, by "A command handed over runs
+as it stands" above. It is never the line that enters the tool into the project's
 packages, `npm install --save-dev prettier`: that is what the no just
 declined, and a no to a tool in the packages is not a request for the same
 line by their hand. A tool with no way outside the project — a package of
@@ -761,9 +762,9 @@ no class is `empty` any more.
 
 ## Step 7 — Land the check suite on the main branch
 
-Skip this whole step when this skill was called for a single class from a build.
-That branch belongs to the build, and the build lands it with the rest of its
-task.
+Skip this whole step when this skill was called for a single class, from any
+of the four things the opening names. That branch belongs to the caller, and
+the caller lands it with the rest of its work, as the opening says.
 
 Otherwise the branch cut before Step 4 has to reach the main branch now, before
 anything else happens — at a first setup and on the route from the step after
@@ -906,7 +907,9 @@ outcome. That is the one condition, and it holds at every first setup once
 step 7's merge is proven, since the setup fills no class and this skill
 decides every one: the five things below are read, and where they do not
 all hold the question is put, with auto-merge off and no gate on the main
-branch as much as with them.
+branch as much as with them — all but where GitHub offers no protection for
+this repository, read before the question below, where the statement stands
+in its place.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text mode-set-up`
 
@@ -1035,8 +1038,12 @@ since they bear on it.
   it up later, the input named as they type it in Claude Code and never the
   flag alone.
 
-At 80 columns, on macOS and with a private repository, these fields fill
-thirteen lines, inside the bound the output style of devloop sets. Not
+At 80 columns, on macOS and with a private repository whose visibility
+answered, these fields fill thirteen lines, inside the bound the output style
+of devloop sets; where the command and the message of a visibility that did
+not answer stand in the field as well, the fields may pass the bound, and the
+question then goes as text at the end of the turn, as the output style says
+of a question whose text does not fit. Not
 said, in a field or before the call: the steps of a task, the issue for a
 task that does not go green, a failed merge ending the run, that the run
 does not start again by itself, that the review costs more without them,

@@ -29,8 +29,9 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 #
 # The second duty's other half, since 22 October 2026, cluster 22 of the
 # roadmap entry of 19 October 2026 on the checked list of milestone 3: a
-# write of the mark in auto mode goes through only where start conditions of
-# build-work hold. Until 25 October 2026 they were 6 and 7, read here through
+# write of the mark in auto mode goes through only where the repository
+# allows a run with nobody there. Until 25 October 2026 that was start
+# conditions 6 and 7 of build-work, read here through
 # bin/devloop-install-record; since that day, decision (5) of the roadmap
 # entry of 24 October 2026 on install lines written by one program, they are
 # 1, 2, 5, 6 and 7, read through bin/devloop-start-conditions, called
@@ -41,24 +42,43 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # query bounded so that the program ends inside the 120 seconds of a call,
 # far inside this hook's limit of 600 seconds - with onFailure "block" in
 # hooks/hooks.json a hook that ran into it would block too, the hooks
-# reference under "Timeouts", but with no reason given. The hook blocks
-# exactly where the text refuses: a condition that does not hold, and one
-# that is not established, a query that did not answer or a record that
-# cannot be read off that branch - "every failure to read is a block" where
-# a hook reads the person's permission, docs/skill-conventions.md under "In
-# doubt, a run with nobody there is not blocked", and the mark is written
-# only with the person there. A condition the program printed no line for
-# blocks as well, named so. It blocks nowhere else: a deletion or a read of
-# the mark passes as before, a project not set up passes, and outside auto
-# the block above stands as it stood, before anything is read. Condition 3
-# needs the range and the tasks, which do not exist where the mark is
-# written, and condition 4 is the mode this hook reads itself. The block
-# names the program's lines of the conditions that fail, joined by "; ", that
-# the mark is not written another way, and that the run without the person
-# does not start: with the person there the run tells them which condition
-# failed and why, as build-work says, and carries on with them; with nobody
-# there it stops with the reason named, as build-work says for a stop with a
-# reason. The wording is (h) of that entry.
+# reference under "Timeouts", but with no reason given. And since 5 November
+# 2026, decision (8) of the roadmap entry of that date on the sorting into
+# the milestones, built by the roadmap entry of that date on the
+# contradictions of the loaded texts: the record of the answer to whether
+# work may run here with nobody there, unattended-mode: under ## Unattended
+# mode in docs/agents/environment.md, which setup-checks step 8 writes, read
+# as shared/mode-set-up.md says to read it - off the main branch as last
+# fetched, never off the working tree, nothing fetched here - through
+# bin/devloop-install-record --unattended, the reader of the other two
+# records, so that the three records are read one way and the resolution of
+# the default branch stays in the four files the handover check holds
+# together; the record is no start condition, so it is not a line of
+# bin/devloop-start-conditions, which build-work and plan-work read for the
+# conditions alone. The hook blocks exactly where the text refuses: the
+# record not saying yes - a section, a line or a value missing, main not
+# fetched, the file not on main, or a value that is no yes, which it names -
+# a condition that does not hold, and one that is not established, a query
+# that did not answer or a record that cannot be read off that branch -
+# "every failure to read is a block" where a hook reads the person's
+# permission, docs/skill-conventions.md under "In doubt, a run with nobody
+# there is not blocked", and the mark is written only with the person there.
+# A condition the program printed no line for blocks as well, named so. It
+# blocks nowhere else: a deletion or a read of the mark passes as before, a
+# project not set up passes, and outside auto the block above stands as it
+# stood, before anything is read. Condition 3 needs the range and the tasks,
+# which do not exist where the mark is written, and condition 4 is the mode
+# this hook reads itself. The block names, joined by "; ", first the line of
+# the record where it does not say yes, with the reader's cause behind
+# "because", then the program's lines of the conditions that fail; that the
+# mark is not written another way; and that the run without the person does
+# not start: with the person there the run tells them which of these failed
+# and why, as build-work says, and carries on with them; with nobody there
+# it stops with the reason named, as build-work says for a stop with a
+# reason. The wording is the one the person approved on 5 November 2026, in
+# the roadmap entry of that date on the contradictions, in place of (h) of
+# the entry of 24 October 2026, which named the conditions alone; the line
+# of the record was approved with it.
 INPUT=$("$HERE/../bin/devloop-command-reader") || exit 1
 MODE=$(printf '%s\n' "$INPUT" | sed -n 's/^permission_mode: //p' | head -1)
 # The label the status bar shows for each value: the page "Choose a permission
@@ -174,9 +194,23 @@ esac
 [ "$WRITES" = yes ] || pass
 FAILS=""
 if [ "$MODE" = auto ]; then
+  # The record of the answer to whether work may run here with nobody there,
+  # read first through the reader of the records, off the main branch as last
+  # fetched: a yes passes this reading, anything else is the first line of the
+  # block, with the reader's cause, or the value and the ref where it says no.
+  RECORD=$("$HERE/../bin/devloop-install-record" --unattended 2>&1); RRC=$?
+  if [ "$RRC" -ne 0 ]; then
+    CAUSE=$(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1)
+    FAILS="the record of the answer to whether work may run here with nobody there does not say yes, because ${CAUSE:-the record could not be read, and its reader gave no cause}"
+  else
+    RTOOLS=$(printf '%s\n' "$RECORD" | sed -n 's/^tools: //p' | head -1)
+    RREF=$(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p' | head -1)
+    RANSWERED=$(printf '%s\n' "$RECORD" | sed -n 's/^answered: //p' | head -1)
+    [ "$RTOOLS" = yes ] || FAILS="the record of the answer to whether work may run here with nobody there does not say yes, because the record says no (unattended-mode: no on $RREF as last fetched, answered ${RANSWERED:-none})"
+  fi
   # Start conditions 1, 2, 5, 6 and 7, read by the one program without the
   # range; every one that does not hold or is not established is collected,
-  # so that one block names them all.
+  # so that one block names them all, the record's line first.
   LINES=$("$HERE/../bin/devloop-start-conditions" 2>&1)
   for C in 1 2 5 6 7; do
     LINE=$(printf '%s\n' "$LINES" | grep -m1 "^condition $C ")
@@ -190,7 +224,7 @@ if [ "$MODE" = auto ]; then
 fi
 
 if [ -n "$FAILS" ]; then
-  echo "Blocked by devloop: the mark for a run with nobody there is written only where start conditions 1, 2, 5, 6 and 7 of the skill hold, read by bin/devloop-start-conditions off the main branch as last fetched and off GitHub, and $FAILS. Do not write the mark another way. The run with nobody there does not start: with the user there, tell them which condition failed and why, as the skill says, in the next message with which you end your turn with text, and carry on with them; with nobody there, stop with the reason named, as the skill says for a stop with a reason." >&2
+  echo "Blocked by devloop: the mark for a run with nobody there is written only where the record of the answer to whether work may run here with nobody there says yes and start conditions 1, 2, 5, 6 and 7 of the skill hold, read off the main branch as last fetched and off GitHub, and $FAILS. Do not write the mark another way. The run with nobody there does not start: with the user there, tell them which of these failed and why, as the skill says, in the next message with which you end your turn with text, and carry on with them; with nobody there, stop with the reason named, as the skill says for a stop with a reason." >&2
 elif [ -n "$MODE" ]; then
   echo "Blocked by devloop: the mark for a run with nobody there is written only in auto mode, and this session is in $MODE, shown in the status bar as $LABEL. Do not write the mark another way. The run with nobody there does not start: tell the user so with the sentence the skill gives for start condition 4, in the next message with which you end your turn with text, and carry on with them." >&2
 else

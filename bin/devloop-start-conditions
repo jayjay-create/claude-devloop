@@ -10,7 +10,10 @@
 # range, plan-work before the question on the mode without it, and the guard
 # on the mark, hooks/pre-tool-use-mark-guard.sh, calls it without the range
 # when the mark is written in auto mode and blocks the write where 1, 2, 5, 6
-# or 7 does not hold or is not established.
+# or 7 does not hold or is not established; the record of the mode itself,
+# unattended-mode under ## Unattended mode, is no start condition and is read
+# by the guard through bin/devloop-install-record --unattended, since 5
+# November 2026, not here.
 #
 # Usage: devloop-start-conditions [NUMBER ...]
 #   in the project's directory: CLAUDE_PROJECT_DIR, and without it the

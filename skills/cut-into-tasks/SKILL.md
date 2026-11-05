@@ -144,8 +144,11 @@ once the first task is built, when re-cutting costs real effort.
 ## After creating
 
 Query the tracker for what you actually created — do not report from what you
-intended. State the number of **tasks**, not the number of issues (the spec is an
-issue too), and which one is ready first.
+intended. The number of **tasks**, not the number of issues (the spec is an
+issue too), and which one is ready first stand in the message the paragraph
+above names, with the split, and not before it: with them there the one after
+the first task is built, alone on `plan` the halt below, alone on `build` the
+tracker.
 
 !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text refer-by-name`
 

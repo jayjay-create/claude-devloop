@@ -317,7 +317,8 @@ the build. No mechanism holds either half: under `--planning` the program prints
 no answer, and which tools the code the planning reads needs, when the program
 is run and what the planning says of the record, no program and no hook sees;
 what the program gives is the one line a planning has to say of a tool, and the
-record's line it does not give. Where the line says not found — a command not on
+record's answer it does not give: its line on the record says that the build
+decides. Where the line says not found — a command not on
 the search path, or a browser that does not stand in the version the project's
 test tool needs, missing on this machine as the command is — the assumptions of
 the round say that the work needs it and that it is missing, and that whether
@@ -543,12 +544,17 @@ second line for the first answer and for the flag, `plan` for the second, the
 third line, this session's identifier, the same in both — and say nothing of
 it. The hook on the mark lets the command through in auto mode alone, the
 mode condition 4 has read by now, and blocks it in every other; and only
+where the record of the answer to whether work may run here with nobody
+there says yes, which the hook reads at the write off the main branch as
+last fetched through `bin/devloop-install-record --unattended`, and
 where conditions 1, 2, 5, 6 and 7 hold, which the hook reads at the write by
 calling `bin/devloop-start-conditions` without a range, the reading made
-before the question: where one does not hold or is not established the hook
-blocks the write and names which and why, the program's lines, the run does
+before the question: where the record does not say yes, or one of the
+conditions does not hold or is not established, the hook
+blocks the write and names which and why, the record's line and the
+program's lines, the run does
 not write the mark another way, and since the person is here, say which
-condition failed and why, as `build-work` says for it, for 6 and 7 the
+of these failed and why, as `build-work` says for it, for 6 and 7 the
 sentence it gives, the one step 8 of `setup-checks` puts before its second
 questions, and carry on with them.
 
@@ -725,7 +731,8 @@ in `docs/agents/issue-tracker.md`.
 
 ## Close
 
-Report the spec's issue number and one line on what it covers.
+Report the spec by its title, its number riding inside the name as "Refer to
+everything in the tracker by its name" says, and one line on what it covers.
 
 Then cut it into tasks — run `cut-into-tasks` — and say nothing of it before:
 what the cut created reaches them where it is said. Do not ask permission

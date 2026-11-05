@@ -15,9 +15,14 @@ Not to replace your judgement. To remove the need to remember the process.
 
 Three properties hold everywhere:
 
-1. **No question about the process, only about the thing.** "Which of these three
-   designs?" is a fair question. "What do you want to do next?" is a failure. No
-   skill ever asks you for the name of a skill.
+1. **No question about which step comes next, only about the thing and about
+   how you want to be worked with.** "Which of these three designs?" is a fair
+   question. "What do you want to do next?" is a failure. A question about how
+   devloop runs here, such as what it may install or whether work may run
+   without you, is put only where your answer changes your machine, your
+   repository's settings, your project's dependencies or how you are worked
+   with, and it carries no recommendation. No skill ever asks you for the name
+   of a skill.
 2. **The session start tells you where you are.** State lives in files and issues,
    not in your head. Come back after three days and it opens with what is done,
    what is next, and an offer to continue.
@@ -185,9 +190,12 @@ one about the tasks, which do not exist yet, are read where you are asked, so
 the question is not put and then found to have had one answer, and all of them
 are read again where the build starts, since the route straight to a build has
 no question and the state can change in between. Attended runs are
-unaffected either way. There is no cap on how many tasks it gets through: it runs until
-nothing in scope is ready any more, and picks up work that turns up along the way
-where it serves the same goal. What bounds a single task is the turn-end hook,
+unaffected either way.
+There is no cap on how many tasks it gets through: it picks up work that turns
+up along the way where it serves the same goal, and it runs until no task in
+scope is ready any more and no finding it filed as an issue is left that it
+would take now. Its last message names each such issue still waiting, and why.
+What bounds a single task is the turn-end hook,
 which runs the check suite itself and hands the problem over once the same
 classes have failed three turns running.
 
