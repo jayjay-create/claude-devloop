@@ -1840,8 +1840,9 @@ that day sorted every block, the roadmap entry of that date on the sorting
 into the milestones, so that the heading is gone from the file while the
 tool still reads it; and `not stated` stands in a `Wrong` or `Should` that no
 text of the roadmap filled when the blocks were written on 2 November 2026,
-under milestone 3 since 5 November 2026 in six blocks alone, whose entries
-carry no should, the blocks of the other sections until the order of their
+under milestone 3 in no block since 5 November 2026, when the six whose
+entries carry no should took their Should from the text that says what holds,
+the blocks of the other sections until the order of their
 milestone fills it; the tool lists them and does not go red, except where a Done line
 the branch adds names their section. Decided on 2 November 2026, the
 roadmap entry of that date on the defects file. Until then a defect was a row

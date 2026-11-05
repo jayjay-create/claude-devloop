@@ -131,7 +131,19 @@ since that a case depends on what the model does does not mean it cannot be
 brought about, decision (10); and the 30 contradictions of the loaded texts
 stay open under "Without a milestone", so that the Done line of milestone
 12 would be red until an order directly after that one mends all 30,
-decision (5).
+decision (5). Decided on 5 November 2026 by the person, the roadmap entry of
+that date on the contradictions mended: to decision (4), where the entry a
+block's Found names carries no should, the Should comes from the text that
+says what holds — the conventions, a program's head, an archived entry, the
+block's own note —, and where no text names one, the Should says what the
+repair would have been and the status stays; to decision (5), where a block
+of the 30 is mended, it stands afterwards where its state puts it: closed as
+corrected in the document under "Without a milestone" where the sentence
+itself was the error and a run does the same before and after, where it
+stands where it is walked, and in the section of the milestone whose run
+meets its case where it is built and never walked, the entry naming each
+with its milestone and its group; a block whose case no milestone's run can
+meet stays under "Without a milestone" for the person to decide on the form.
 
 ## The milestones, in this order
 
@@ -977,7 +989,9 @@ it", stays for the run with nobody there, the wording of the offer approved
 by the person before it is built — since with the spec closed, what the
 person asked for is done, and a further issue is new work. The guard on the
 mark reading the mode's record as well, decision (8) of that day, is built by
-the order that mends the contradictions, before this milestone.
+the order that mends the contradictions, before this milestone: built on 5
+November 2026, the roadmap entry of that date on the contradictions mended,
+through `bin/devloop-install-record --unattended`.
 
 Ends with two runs on one fresh project, one through the planning under
 `--auto` and one on the direct route, each meeting the cases the blocks of

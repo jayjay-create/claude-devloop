@@ -1386,6 +1386,378 @@ and for the proofs of closings.
   without going red, names the Done line that turns them red as the
   conventions do.
 
+- **Decided contradictions mended, the mark guard reads the mode's record.**
+
+  5 November 2026, version 0.177.0. On `task/contradictions-mended`, off
+  `origin/main` at `cb5e5e9`, in three commits: the code with the version —
+  `hooks/pre-tool-use-mark-guard.sh`, `bin/devloop-install-record`,
+  `bin/devloop-start-conditions`, `.github/workflows/stock-take.yml`, the
+  loaded texts under `skills/` and `shared/`, `README.md`,
+  `docs/rationale.md` and the places of `docs/skill-conventions.md` that say
+  what the guard reads; this entry with `docs/plan.md`, `docs/defects.md`,
+  `docs/skill-conventions.md` and `docs/stock-take.tsv`; the runs of the
+  bench, measured at the first commit and recorded at the second. Written
+  from the person's decisions of this day and the order that carries them,
+  which stands outside the repository; no session log was read; GitHub was
+  not asked, a stand-in answering for `gh` wherever a case needs it. Every
+  line number of a file in this entry holds at `cb5e5e9` unless it says
+  otherwise.
+
+  **Decided on 5 November 2026** by the person. (1) Where a block of the 30
+  contradictions is mended, it stands afterwards where its state puts it:
+  where the sentence itself was the error and a run does the same before and
+  after, it is closed as corrected in the document and stays under
+  "## Without a milestone"; where it is walked, it stays where it stands;
+  where it is built and never walked, it goes into the section of the
+  milestone whose run meets its case, by the groups of the sorting of this
+  day, each named here with its milestone and its group; where no
+  milestone's run can meet its case, it stays under "## Without a milestone"
+  and is put to the person for the form "Built, never walked, cannot be
+  forced"; a block not built stays as it is. Where the line between the
+  first and the third case is not clear, the third holds and this entry names
+  the block. (2) The six blocks under "## Milestone 3" whose Should read
+  "not stated", since the entry their Found names carries none, take their
+  Should from the text that says what holds: `docs/skill-conventions.md`
+  under "The install guard matches the outcome as well as the verb", the head
+  of `bin/devloop-command-reader`, the paragraph "Built: the browsers for
+  tests" of `docs/roadmap-archive-1.md` from line 13018, the note of the block
+  on `~/.claude` as a link; where no text names one, the Should says what the
+  repair would have been and the status "Closed, left on purpose" stays, the
+  two blocks on the wrapper that downloads on first use and on the stderr of a
+  route. Both decisions stand in `docs/plan.md` beside decisions (4) and (5)
+  of the entry on the sorting. (3) Decision (9) of the entry on the sorting,
+  clarified: all that counts is whether devloop wrote the issue; an open issue
+  an app opened gets the offer like one a person wrote, and the person
+  decides; Renovate's dashboard, which stays open, so comes back at every
+  start at which nothing of devloop's own runs, and whoever uses Renovate
+  chose that. The Should of the block "three pairs of lines disagree" reads
+  "an open issue devloop did not write" since this day, where it read "an
+  open issue a person wrote, not one devloop wrote". (4) The wordings below,
+  approved word for word.
+
+  **The block of the guard on the mark**, approved for decision (8), one line
+  in the hook as the earlier one was, the line breaks here those of this
+  entry: "Blocked by devloop: the mark for a run with nobody there is written
+  only where the record of the answer to whether work may run here with
+  nobody there says yes and start conditions 1, 2, 5, 6 and 7 of the skill
+  hold, read off the main branch as last fetched and off GitHub, and
+  <failures>. Do not write the mark another way. The run with nobody there
+  does not start: with the user there, tell them which of these failed and
+  why, as the skill says, in the next message with which you end your turn
+  with text, and carry on with them; with nobody there, stop with the reason
+  named, as the skill says for a stop with a reason." Under `<failures>`,
+  joined by "; ", first the line of the record where it does not say yes,
+  then the lines of the conditions as before. The line of the record,
+  approved with it: "the record of the answer to whether work may run here
+  with nobody there does not say yes, because <cause>", `<cause>` in the form
+  of the causes of `bin/devloop-start-conditions` for conditions 6 and 7.
+
+  **The fields of the offer of `start-work`**, approved for decision (9):
+  "Where: the start, nothing of devloop's own in flight, and an open issue
+  devloop did not write: one without raised-here, and not the issue devloop
+  files for a change set aside, labelled needs-human alone. Header: a name
+  for the subject, at most twelve characters. Question field: the issue by
+  its title and who opened it; the question line, whether to take it up as
+  the next piece of work. With several: the newest three, each by its title
+  and who opened it, the question line which of them. Yes, one answer per
+  issue where there are several: label "Take it up"; line: the planning
+  starts from this issue. No: label "Something else"; line: the issue stays
+  open as it is, and they say what they would like to build. No
+  recommendation." `docs/rationale.md` holds them under
+  `skills/start-work/SKILL.md`, step 2.
+
+  **Two sentences of `README.md`**, approved: property 1, "No question about
+  which step comes next, only about the thing and about how you want to be
+  worked with. "Which of these three designs?" is a fair question. "What do
+  you want to do next?" is a failure. A question about how devloop runs here,
+  such as what it may install or whether work may run without you, is put
+  only where your answer changes your machine, your repository's settings,
+  your project's dependencies or how you are worked with, and it carries no
+  recommendation. No skill ever asks you for the name of a skill."; and the
+  finish of a run with nobody there, "There is no cap on how many tasks it
+  gets through: it picks up work that turns up along the way where it serves
+  the same goal, and it runs until no task in scope is ready any more and no
+  finding it filed as an issue is left that it would take now. Its last
+  message names each such issue still waiting, and why."
+
+  **The guard on the mark, decision (8).** The record `unattended-mode:`
+  under `## Unattended mode` is read through `bin/devloop-install-record
+  --unattended`, a third reading of that program beside `--dependency`, the
+  keys `unattended-mode` and `unattended-answered`, no place and no route
+  line, the reason line of a no not printed, the causes formed as under
+  `--dependency`; `--line` and `--dependency` beside it are refused with 2.
+  Read there and not in `bin/devloop-start-conditions`, since the record is
+  no start condition — `shared/mode-set-up.md` lines 6 to 8 name the last
+  four of the five as conditions 2, 5, 6 and 7 — and a line of that program
+  would have been read by `build-work` and `plan-work` too; and not in the
+  guard itself, which would have been a fifth copy of the resolution of the
+  default branch the handover check holds to four files. The guard reads it
+  first at a write of the mark in auto mode, before the conditions, blocks
+  where it does not say yes, its line the first of the block, and fetches
+  nothing; outside auto mode nothing is read, as before. Its head, lines 30
+  to 85 now, says so; `shared/mode-set-up.md` lines 21 to 33, the step hooks
+  on every system of `.github/workflows/stock-take.yml` lines 509 to 523 with
+  its comment at lines 334 to 340, `skills/build-work/SKILL.md` lines 1509 to
+  1524, `skills/plan-work/SKILL.md` lines 544 to 558, the heads of
+  `bin/devloop-start-conditions` and `bin/devloop-install-record`, four places
+  of `docs/skill-conventions.md` and the points of `docs/rationale.md` under
+  `shared/mode-set-up.md`, `skills/plan-work/SKILL.md` Stage 1 and
+  `skills/build-work/SKILL.md` "Unattended mode" say what the guard reads.
+  `README.md` names the guard without its conditions, as before, a new
+  wording being the person's; the report proposes one. The block "mode-set-up.md says the
+  mark guard blocks exactly where the text refuses" asks for cases in the
+  guard's self-test; the guard has none, its cases stand in the step of the
+  workflow and in the bench below.
+
+  **The bench of the guard**, measured on 5 November 2026 against the
+  committed guard and programs of the first commit, `0920743`, in a throwaway
+  project under a directory `mktemp -d` made, `gh` a stand-in first on the
+  path that answers the repository, the classic protection and the rules so
+  that conditions 2 and 5 hold and logs every call, `docs/agents/checks.md`
+  with two filled rows and `environment.md` with both install records saying
+  yes on `origin/main`, the hook fed its JSON on stdin with
+  `CLAUDE_PROJECT_DIR` on the project, the mark command of
+  `shared/mark-command.md` and a `Write` of `.claude/unattended.local`;
+  twenty-two calls, every one as the order asked, cases 8 to 11 added so
+  that the bench meets the outcomes of the guard whose lines this order
+  moved:
+  Case 1, auto mode, `unattended-mode: yes`, conditions 1, 2, 5, 6 and 7 hold: the write of the mark through, exit 0, nothing printed, three calls of gh, for the Bash command and for the editing tool alike.
+  Case 2, auto mode, `unattended-mode: no`: exit 2, the block above, `<failures>` the record's line alone, "because the record says no (unattended-mode: no on origin/main as last fetched, answered 2026-11-05)", Bash and the editing tool alike; `unattended-mode: maybe`: "because unattended-mode reads "maybe" on origin/main, where yes and no are the only values".
+  Case 3, auto mode, the section missing: "because docs/agents/environment.md on origin/main has no section "## Unattended mode", so the question was never answered"; the line missing: "because the section "## Unattended mode" on origin/main has no unattended-mode line"; the file missing on main: "because there is no docs/agents/environment.md on origin/main as last fetched", the lines of conditions 6 and 7 with the same cause behind it.
+  Case 4, auto mode, `unattended-mode: no` and the class e2e empty on `origin/main`: the record's line first, then "condition 1 does not hold, because the class e2e is empty on origin/main".
+  Case 5, auto mode, main never fetched, no `refs/remotes/origin/main`: "because the default branch main has not been fetched, so refs/remotes/origin/main cannot be read", then the lines of conditions 1, 6 and 7 with that cause, 2 and 5 holding off the stand-in.
+  Case 6, the modes default and acceptEdits and an input without `permission_mode`, no `environment.md` on main: the block for the mode as before, exit 2, no call of gh, the record not read.
+  Case 7, a deletion of the mark in auto mode, a read in default and in auto mode, and the mark command in a project without `docs/agents`: exit 0, nothing printed, no call of gh.
+  Case 8, auto mode, `unattended-mode: yes` and `install-tools: no`: exit 2, `<failures>` the line of condition 6 alone, "condition 6 does not hold, because the install record says no (install-tools: no on origin/main as last fetched, answered 2026-11-05)", the record's line absent since the record says yes.
+  Case 9, a `permission_mode` of weird: the block for the mode naming weird as its own label, exit 2, no call of gh.
+  Case 10, a Bash command calling `bin/devloop-permission-mode`, in auto mode and without `permission_mode`: exit 0 and the statement as additionalContext, "the permission mode of this session is auto, shown in the status bar as auto mode on" and "could not be read: the hook input carried no permission_mode".
+  Case 11, `CLAUDE_PROJECT_DIR` on a directory that does not exist, the mark command in auto mode: exit 0, nothing printed, no call of gh.
+  The reader's refusals, measured directly: `--unattended --line`, "--line forms the line of the install record alone and does not go with --dependency or --unattended"; `--dependency --unattended`, "--dependency and --unattended each read one section of the record and do not go together"; an unknown option, "unknown option --foo; the options are --dependency, --unattended and --line"; two directories, the line of before; each exit 2.
+
+  **The offer of `start-work`, decision (9).** Step 2 says what nothing of
+  devloop's own in flight means — no open pull request of theirs and no open
+  issue devloop wrote, the issue of a change set aside counting as devloop's
+  — and offers an open issue devloop did not write in the fields above, the
+  newest three where there are several, the question ending the turn; on a
+  yes step 5 sends it to `plan-work`, which starts from that issue as its
+  paragraph on the planning issue says of an issue someone filed; on a no the
+  open question follows; the stop rule says which questions this step asks;
+  beside work in flight such an issue is still not named, lines 172 to 181.
+  The in-flight query of `skills/setup-project/SKILL.md` line 639 carries
+  `author{login}` on the issues and the column `by:`, `-` where the author's
+  account is gone, and the list of what the fields return says what it is read
+  for and what it does not tell, lines 678 to 683 now; a project set up
+  before this version is refreshed at its next start, step 1 of `start-work`,
+  which rewrites the query before step 2 runs it. Played through before the
+  build: nothing in flight and one such issue, the offer; four or more, the
+  newest three; a pull request of theirs waiting, its offer first; a draft
+  alone, not named and no work of devloop's, the offer; a spec in flight, no
+  offer; a `raised-here` issue alone, `build-work`; the issue of a change set
+  aside alone, devloop's, the open question; Renovate's dashboard and a yes,
+  the planning starting from it; a query that did not answer, no offer and no
+  claim that the tracker is clear.
+
+  **The refresh adds the places, decision (7).** `skills/setup-project/
+  SKILL.md` under "Refreshing an existing setup": where the record says yes
+  and names fewer places than this version writes under a yes, the refresh
+  adds the missing `install-place` lines under the ones that stand, without
+  a question, the answer, the routes and the date unchanged, and names them
+  under what changed; those lines stand in the body of the pull request step
+  8 opens as well, which the skill said nowhere expressly until this day, the
+  decision asking for it. Lines 130 to 131, 136 to 138 and 740 to 742 name
+  the exception, `shared/install-record.md` lines 41 to 46 name the run.
+
+  **The 30 contradictions**, each with what settles it. Built, 25; not built,
+  5. The five of 4b of the order: diagnose-bug, decision (6), the opening of
+  "When this runs" names four routes, closed as corrected in the document;
+  install-record.md, decision (7), built, milestone 14, the group of the
+  setup with the person there; mode-set-up.md, decision (8), built,
+  milestone 13, the group of the mode's question and set-up with the start
+  conditions and the mark; branch-deletion.md, exit 124 for the program's
+  line and 128 for git's, closed as corrected; the three pairs, decision (9)
+  for `start-work`, built, milestone 14, the group of the session start and
+  the routes of `start-work` — its `setup-checks` pair held at `cb5e5e9`
+  already, `skills/setup-checks/SKILL.md` lines 244 to 245 reading as the
+  bullet at lines 88 to 105 does, the task ending and not the run, where the
+  text of 17 October 2026 said the run stops; its `plan-work` pair mended at
+  line 728, the spec reported by its title with its number inside. The 20 of
+  the 25 that a decision of the person or a rule settles, each with the
+  settlement: build-prototype LOGIC.md, the rule of 28 October 2026 under
+  "Where the person types a command devloop hands them" in
+  `docs/skill-conventions.md`, applied to SKILL.md that day, built, milestone
+  6, the group of planning's end of Stage 1, the one block whose milestone is
+  this entry's reading and not a group of the sorting, since a logic
+  prototype is reached from Stage 1 for a design question and no milestone's
+  run names it; body-through-file.md and editing-tool.md, decision 2 of the
+  person of 12 October 2026 and the rule "A hook reads its input through one
+  program", a quoted text a word to the guards, the reason of the editing
+  tool the quoting and the per-file hooks, both closed as corrected;
+  install-tool.md, decisions (5) of 27 and (1) of 30 October 2026, the issue
+  closed by devloop at once or at the next start, closed as corrected;
+  cut-branch.md, the rule of 28 October 2026, the merge proven at the
+  platform and never on their word, closed as corrected; `start-work`, the
+  offer to land a pull request a question and a stop, the person's decision of
+  17 October 2026 on where owed text stands with "End by offering, not by
+  naming", closed as corrected, this entry's reading of a decision that does
+  not name the pair; `start-work`, the bullet on a ticket or task of a map or
+  a spec, the room to object dropped at SW-7 by the person on 17 October
+  2026, closed as corrected; `cut-into-tasks`, decision (1) of 17 October
+  2026, the number of tasks in the message that names the split, closed as
+  corrected; `review-changes` twice, the definition of a lens in
+  `docs/skill-conventions.md` counting the lenses in the report's sections
+  and decision (1) of 17 October 2026, closed as corrected; `setup-project`
+  step 0, the rule of `shared/language-opening.md` for the case that nothing
+  shows the language, the question in English gone, built, milestone 14, the
+  setup with the person there; `setup-project` "A guard's block is not a
+  decline", the person's decision of 20 October 2026 that a refresh asks
+  nothing where a record stands, the reason corrected, closed as corrected;
+  `setup-project` step 1, "Shared words are defined in one place" with the
+  person's decisions of 20 and 28 October 2026, the backing in the skill's own
+  words, closed as corrected; `setup-project` on three-questions.md and the
+  mark's deletion, the same rule, the references gone, closed as corrected;
+  `plan-work` Stage 1, decision (3) of 27 October 2026 and the head of
+  `bin/devloop-tool-state`, the record's answer and not its line, closed as
+  corrected; `setup-checks` step 3 on the command after a no, the person's
+  decision of 21 October 2026, cluster 21, the command in the question's
+  field, built, milestone 14, the check setup and the check table;
+  `setup-checks` step 7, `shared/checks-owner.md` and "A rule holds only on
+  the path it is written on", the four callers, built, milestone 14, the
+  check setup and the check table; `setup-checks` step 3 on the last
+  questions, the person's decision of 20 October 2026 on the second asking,
+  closed as corrected; `setup-checks` step 8 on the 403, the dated sentence of
+  `docs/plan.md` under milestone 3 and the person's wording of 8 October 2026,
+  the exception named, closed as corrected; `setup-checks` step 8 on the
+  thirteen lines, the rule of 17 October 2026 under "Where the text devloop
+  owes the person stands", the count qualified, built, milestone 13, the
+  mode's question and set-up with the start conditions and the mark, a line
+  between the first and the third case this entry did not find clear. Not
+  built, no decision of the person and no rule settling which place holds,
+  each left as it stands with both ways in the report: `start-work` at `set
+  up in part` without an idea; `plan-work` on the record at a blocked mark,
+  where the decision of 30 October 2026 on what the planning says of the
+  record does not name the block of the mark; `plan-work` on one session;
+  `setup-checks` step 3 on a runtime under a yes, where the command to the
+  person is settled and how the class is then decided is not; `setup-checks`
+  step 8 on the record at a refused protection, where both texts are the
+  order's of 9 October 2026 and the person approved text 3 alone, which says
+  nothing of a record.
+
+  **The Shoulds changed**, 29, each title here in the form the tool reads;
+  of the 20 blocks of the contradictions the old text opened "the person
+  decides which holds:" with the two places the block names; of the three
+  pairs it read "an open issue a person wrote, not one devloop wrote" where
+  it reads "an open issue devloop did not write"; of the two README.md blocks
+  and the six of milestone 3 it read "not stated":
+
+  Should changed: build-prototype LOGIC.md hands the file over by sending or opening it where SKILL.md gives one action
+  Should changed: body-through-file.md says a heredoc puts the text where the guard reads it and that a quoted string is a word to the guards
+  Should changed: editing-tool.md says the guards read text put through the shell and that a quoted argument is a word to them
+  Should changed: install-tool.md says no issue holds the task since the issue is written on a no alone, while the way after a no runs the same steps with the issue open
+  Should changed: cut-branch.md deletes the branch once they have said it landed where merge-handover.md reads the landing off the platform and never off their word
+  Should changed: start-work says something in flight means no question and offers to land an open pull request
+  Should changed: start-work says not to ask at all with a map or a spec in flight and in the same case to rank, recommend and offer
+  Should changed: cut-into-tasks says the split with its count is said once the first task is built and that the number of tasks is stated after creating
+  Should changed: review-changes asks for the record of how many lenses ran and says to say neither number
+  Should changed: review-changes says to say what was filed and why where the report is said to nobody
+  Should changed: setup-project asks the language first in English where step 4 says never to ask about the user's language
+  Should changed: setup-project gives the record not having landed yet as the reason for handing nothing over, which does not hold at a refresh whose record stands
+  Should changed: setup-project step 1 names the head of backed-command.md as a rule above, and the skill does not insert that text
+  Should changed: setup-project points at three-questions.md and the text on the mark's deletion, neither of which it inserts
+  Should changed: plan-work says under --planning the program does not give the record's line and that the spec carries not the program's line on the record
+  Should changed: setup-checks hands the command over after a no to a tool in the packages as text and puts the question for the same class at once with the command in its field
+  Should changed: setup-checks skips step 7 for the four single-class callers at its opening and for a single class from a build at step 7
+  Should changed: setup-checks calls the questions of step 3 the last questions of the skill where step 8 asks more
+  Should changed: setup-checks step 8 puts the question where the five things do not all hold and puts none where GitHub offers no protection
+  Should changed: setup-checks counts the fields of the mode question at thirteen lines, which assumes the visibility answered and says nothing of the field with the command and the message in it
+  Should changed: README.md says no question about the process is asked, and the set puts several
+  Should changed: README.md states the finish of an unattended run in the words build-work names as the cause of a halt
+  Should changed: three pairs of lines disagree: start-work on a stray open issue, setup-checks on secrets with nobody there, plan-work on the issue number of the spec
+  Should changed: the install guard read package-manager verbs only, blind to a build flag aimed at a bin directory, sudo, make install and installer scripts piped from the network
+  Should changed: the guards were blind to anything after a newline or a quote in a tool call
+  Should changed: the install guard does not see a wrapper that downloads on first use
+  Should changed: npx playwright install, a named install command whose download lands outside the repository, passed the guard
+  Should changed: the block for a route that does not answer names the query and not what the query said on stderr
+  Should changed: ~/.claude itself a link to a directory that does not exist: bin/devloop-auto-mode-rule write makes the directory the link points to, the case decided for a linked file alone and not arising in practice
+
+  **The six Shoulds under milestone 3**, decision (2): the two guard blocks
+  from `docs/skill-conventions.md` under "The install guard matches the
+  outcome as well as the verb" and from the head of
+  `bin/devloop-command-reader`; the browsers from the paragraph "Built: the
+  browsers for tests" of `docs/roadmap-archive-1.md`; the link from the
+  block's own note; the wrapper and the stderr of a route with what the
+  repair would have been, left on purpose as before. The introduction of
+  `docs/defects.md` and `docs/skill-conventions.md` under "A defect is a
+  block" say that no block under milestone 3 carries "not stated".
+
+  **A new block under milestone 12**, found this day on the platform's run of
+  the checks of pull request #228 at `d654a4a`: the job hooks on every system
+  on macos-latest red once in the self-test of `bin/devloop-bounded`, in its
+  case "does not end", two lines of the shell reporting its sleeps terminated
+  standing in the output, green on a second run; recorded and not built, Found
+  this entry, the note reading off the code where the two lines come from.
+
+  **What changed in the documents.** `docs/plan.md`: the decisions of this
+  day beside decisions (4) and (5) of the entry on the sorting, and under
+  milestone 13 that the guard reads the record since this day.
+  `docs/defects.md`: the 30 blocks as above, 17 closed as corrected in the
+  document under "## Without a milestone", 8 moved into the sections of
+  milestones 6, 13 and 14 as built and never walked, 5 unchanged; the two
+  README.md blocks closed as corrected; the six Shoulds of milestone 3; the
+  new block; the introduction. `docs/skill-conventions.md`: the four places
+  on what the guard reads in the first commit, the sentence on "not stated"
+  in the second. `docs/rationale.md`: a point for every rule written or
+  changed, the approved fields of the offer word for word, in the first
+  commit. `docs/stock-take.tsv`: six things for the new outcomes of the
+  guard, the reader, the offer's route to the planning and the refresh's
+  places, 27 records re-anchored to the lines that moved, four things renamed
+  where no run hangs on them and two keeping their name for the runs that
+  hang on them, their notes saying what holds, 25 records of lines inside the
+  new text.
+
+  **The tool.** Before this order, at `cb5e5e9`: exit 0, broken records 0,
+  uncovered lines 0 of 4498, blocks 688, under "## Without a milestone" 54,
+  closed 46, with "not stated" 390, not-a-thing records 3307, lines that can
+  carry no unique anchor 343, Undetermined 24, Recorded, not built 286,
+  Built, never walked 1460, Walked 685, Closed 46. At the second commit: exit
+  0, broken records 0, uncovered lines 0 of 4520, blocks 689, under
+  "## Without a milestone" 46, closed 65, with "not stated" 384, under
+  milestone 3 none, not-a-thing records 3332, lines that can carry no unique
+  anchor 344, Undetermined 24, Recorded, not built 260, Built, never walked
+  1478, Walked 681, Closed 65; milestones reached 1, 2, 3, none reached on
+  this branch; Walked on this branch without a run the branch adds: 0. The
+  changes against the run before: Closed +19, the 17 contradictions closed
+  as corrected in the document and the two README.md blocks; Recorded, not
+  built -26, those 19, the 8 blocks built and never walked, and the new block
+  of milestone 12; Built, never walked +18, the 8 blocks, the 6 new things
+  and the 4 things whose runs stopped counting with this order's change to
+  their lines — the reader's `--dependency`, whose case line gained the
+  count of sections; the guard's block under auto where condition 6 or 7
+  does not hold on a record saying no, whose message changed; the finding of
+  `review-changes` filed as an issue, whose sentence changed; and step 7 of
+  `setup-checks` skipped for a single class, whose sentence changed — held
+  against the runs of the third commit, which re-walk the first two; Walked
+  -4 for the same reason, until the third commit; with "not stated" -6, the
+  six Shoulds of milestone 3; the search set +22 lines, the new text, every
+  one covered; not-a-thing records +25, the lines inside the new text; lines
+  that can carry no unique anchor +1, the `else` of the record's reading in
+  the guard, which repeats a line of the hook; Undetermined +0.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`, in the third commit: the runs of the bench
+  above under 0.177.0, measured against the first commit, on the two new
+  things of the guard, on the thing of the reader's `--unattended` and of its
+  refusal, and on every outcome of the guard whose line this order changed
+  and whose case the bench meets, every line of the guard below its head
+  having moved — the block under auto where a condition does not hold, by
+  the program's line, the block where a record of condition 6 or 7 cannot be
+  read and where one says no, the pass under auto, the block in another mode,
+  the two forms of text C, the labels of the modes seen, a value none of the
+  six, the mode stated beside the reader and stated as not readable, the pass
+  of a deletion or a read, the pass in a project not set up and where the
+  directory cannot be entered, the write read off the Bash command and off
+  the editing tool, the silent pass of the editing tool on another file not
+  among them, the bench feeding no such write; no run on any block.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
