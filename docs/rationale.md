@@ -2021,9 +2021,9 @@ Nothing in this file stood as history; its rules carry their own reasons.
   where another program printed today's answer; that holds for the rounds and
   the spec, up to the mark, and the refusal at a mark the hook blocks on
   condition 6 or 7 says, in the sentence of `build-work` for conditions 6 and
-  7, also that they said no to it.** The answer can change before the build,
-  which touches nothing of whether a run without them starts now: whoever
-  hears that it does not start hears why. Decided on 5 November 2026 by the
+  7, also that they said no to it.** Their answer can still change before the
+  build, and that changes nothing about a run without them not starting now:
+  whoever hears that it does not start hears why. Decided on 5 November 2026 by the
   person, entry "Six contradictions settled, the README says what the mark guard reads."; not chosen: at the mark too only that
   it needs their yes; the case is the block "plan-work says of the install
   record only that the build decides and names today's record for conditions

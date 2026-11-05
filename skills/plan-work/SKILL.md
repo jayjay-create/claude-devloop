@@ -564,8 +564,8 @@ of these failed and why, as `build-work` says for it, for 6 and 7 the
 sentence it gives, the one step 8 of `setup-checks` puts before its second
 questions, and with it, where the record says no, that they said no to it,
 as that sentence says: whoever hears that the run without them does not
-start hears why, and that the answer can change before the build touches
-nothing of whether it starts now; then carry on with them.
+start hears why. Their answer can still change before the build, and that
+changes nothing about the run not starting now. Then carry on with them.
 
 Post the hard core as a comment on the planning issue before moving on — the
 settled answers went there after every round — and the answer to the last

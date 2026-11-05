@@ -1793,10 +1793,11 @@ and for the proofs of closings.
 - **Six contradictions settled, the README says what the mark guard reads.**
 
   5 November 2026, version 0.178.0. On `task/contradictions-decided`, off
-  `origin/main` at `9524bb9`, in two commits: the code with the version —
+  `origin/main` at `9524bb9`, in three commits: the code with the version —
   the loaded texts under `skills/` and `shared/`, `README.md` and
   `docs/rationale.md`; this entry with `docs/defects.md` and
-  `docs/stock-take.tsv`. Nothing under `hooks/`, `bin/`, `scripts/`,
+  `docs/stock-take.tsv`; and the place mended before the merge in the
+  third. Nothing under `hooks/`, `bin/`, `scripts/`,
   `output-styles/` or `.github/` changes, and no run is recorded. Written
   from the person's decisions of this day and the order that carries them,
   which stands outside the repository, and from the report of the order on
@@ -2051,6 +2052,16 @@ and for the proofs of closings.
   lines, the new text, every one covered; not-a-thing records +6, the lines
   inside the new text; lines that can carry no unique anchor +0; with "not
   stated" +0; Undetermined +0. No run is recorded.
+
+  **Mended before the merge**, by the check of the branch against the code,
+  in the third commit. `skills/plan-work/SKILL.md` on the refusal at a mark
+  the hook blocks on condition 6 or 7 said "and that the answer can change
+  before the build touches nothing of whether it starts now", which reads at
+  first as if the build touched something; it says that their answer can
+  still change before the build and that this changes nothing about the run
+  not starting now, and the point in `docs/rationale.md` says it in the same
+  words. The anchor of that line in `docs/stock-take.tsv` moves with it. At
+  the third commit the tool gives the counts of the second.
 
 ## Decisions taken against
 
