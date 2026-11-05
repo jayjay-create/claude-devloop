@@ -1025,6 +1025,354 @@ and for the proofs of closings.
   records 0, uncovered lines 0 of 4454, blocks under `## Not yet sorted`
   656, walked 668, built and never walked 1461, as at `211f924`.
 
+- **Defects sorted into milestones, 13 to 15 added, the Done check built.**
+
+  5 November 2026, version 0.176.0. On `task/sort-into-milestones`, off
+  `origin/main` at `a5891cc`, in three commits: the code of
+  `scripts/devloop-stock-take` with the version; this entry with
+  `docs/plan.md`, `docs/defects.md`, `docs/skill-conventions.md` and
+  `docs/stock-take.tsv`; the runs of the self-test, measured at the second
+  commit. Nothing under `skills/`, `shared/`, `hooks/`, `bin/`,
+  `output-styles/` or `.github/` changes, and `README.md` and
+  `docs/rationale.md` do not: no loaded text changes, and no place of
+  `docs/rationale.md` is touched by the decisions below. Written from the
+  person's decisions of this day and from the proposals of 4 November 2026,
+  which stand outside the repository; no session log was read. Every line
+  number of a file in this entry holds at `a5891cc`.
+
+  **Decided on 5 November 2026** by the person, on the proposals of 4
+  November 2026 and their nine questions. (1) The rows of type thing in
+  `docs/stock-take.tsv` keep the name thing. Reason: what a row is, its
+  column kind says; another collective word would say no more. (2) Three
+  new milestones, none of the existing ones widened: 13, the build loop
+  with nobody there; 14, the setup and the text with the person there; 15,
+  the records of the development, as section 5 of the proposals drafted
+  them. Reason: every closing run measures one thing; the run of milestone
+  8 would otherwise measure the setup instead of the road to the running
+  program, and 103 blocks of the records would hold milestone 12 up. Not
+  chosen: milestones 5, 8 and 12 widened and the records under "## Without
+  a milestone". (3) The order: 1, 2, 3, 12, 13, 14, 4, 5, 6, 7, 8, 9, 10,
+  11, 15. Reason: the runs of 8, 9 and 11 build and merge; they then run on
+  a repaired loop with nobody there and each has one open question, as
+  `docs/plan.md` grounds it for milestone 11 under "Why last". Not chosen:
+  13 and 14 directly before 9. (4) Every block under "## Milestone 3"
+  carries no "not stated": Wrong and Should are filled from the entry its
+  Found names. Reason: to every defect belongs its should, done or not, and
+  the rule of `docs/plan.md` under "Five sentences" asks it of a reached
+  milestone. Not chosen: a sentence binding the rule only when the line
+  "Done on" is set; the blocks under "## Without a milestone". (5) The 30
+  contradictions of the loaded texts stay under "## Without a milestone";
+  an order of its own, directly after this one, mends all 30 before the run
+  of milestone 12. Reason: some concern the installation, whose cases run
+  again in milestone 12 on every system; most follow from earlier decisions
+  and are one line. Not chosen: each contradiction in the milestone of its
+  subject. (6) `diagnose-bug`: the fourth route holds; the opening names
+  four routes, the fourth with its condition. Reason: the aim of the plan is
+  a running program the person can look at, `docs/plan.md` under "The aim";
+  that no run met the route so far is no reason to drop it. (7) An older yes
+  without the five places for test browsers: the refresh of the setup adds
+  the places this version names for the kinds the yes covers, without a
+  question, and says so in its pull request. Reason: the question names
+  kinds, not places, `shared/install-question.md` lines 6 to 12; the case
+  returns with every version that adds a place. "not amended" in
+  `docs/roadmap-archive-1.md` line 13047 was a ruling of that order, not of
+  the person. (8) The guard on the mark, `hooks/pre-tool-use-mark-guard.sh`,
+  reads the stored record of the answer to work with nobody there as well
+  and blocks where it does not say yes; built in the order of (5). Reason: a
+  block is stronger than a rule the run itself keeps; the mark is written
+  with the person there, and on the way over `--auto` the record stands on
+  main by then, `skills/build-work/SKILL.md` lines 1445 to 1447. Not chosen:
+  the text corrected alone. (9) `start-work`: an open issue a person wrote,
+  not devloop, counts as work; the run names it and offers to take it up, on
+  a yes the planning starts from it, on a no the open question what to build
+  follows; the wording of the offer is approved by the person before the
+  build. Reason: whoever writes an issue in the project works along and
+  wants it taken up; the offer leaves the decision with the person. Not
+  chosen: naming it alone. (10) The form "Built, never walked, cannot be
+  forced: decided in FILE at TEXT" is given by the order of a milestone
+  block by block: where a run of its milestone meets the case, the block
+  carries no form; only where no run can meet it, the order puts the form to
+  the person. The blocks for which a recorded decision of the person says so
+  already carry it since this order. The blocks `docs/defects.md` lines 5138
+  and 5146 go to milestone 14. Reason: that a case depends on what the model
+  does does not mean it cannot be brought about; every run in German meets
+  the case of line 5138; `docs/plan.md` under milestone 3, the decision of
+  18 October 2026, holds it so already. Not chosen: a general rule for every
+  case that depends on the model. The "no milestone" of the blocks 5138 and
+  5146 of 27 October 2026 is from before the rule of 2 November 2026. (11)
+  The blocks `docs/defects.md` lines 5154, 5202 and 5210 are built, in
+  milestone 12. Reason: decision (9) of 24 October 2026,
+  `docs/roadmap-archive-1.md` lines 37776 to 37778: what costs a few lines
+  "is built all the same". (12) `build-work` step 2, clause 3 ("With the
+  spec closed, take it"): with the person there the run offers a loose
+  issue once the spec is closed and takes it on a yes; without the person
+  clause 3 stays; the wording of the offer is approved before the build. A
+  new block in milestone 13 holds it. Reason: with the spec closed, what the
+  person asked for is done; a further issue is new work, as in (9). The
+  case: `docs/roadmap-archive-1.md` lines 43061 to 43069. (13) devloop
+  writes no fixed line into a pull request. `.claude-plugin/plugin.json`
+  gets under userConfig an option whose default is a line naming devloop; it
+  stands in /config, and every skill that opens a pull request appends its
+  value to the text where it is not empty. `README.md` says that the line
+  Claude Code appends comes from its setting attribution.pr, and where the
+  line of devloop is switched off. The line, the option's title and
+  description and the sentence of the README are approved before the build;
+  the order that builds checks the lowest version of Claude Code devloop
+  supports against the release that substitutes ${user_config.KEY} in
+  skills. A new block in milestone 14 holds it. Reason: the user decides in
+  /config what stands at the end of their pull requests; a plugin cannot
+  preset attribution.pr, only agent and subagentStatusLine take effect in
+  its settings, https://code.claude.com/docs/en/plugins/components, section
+  "Default settings". Not chosen: a line the user cannot switch off; naming
+  devloop nowhere. (14) The sorting of every block follows the table of the
+  proposals, `~/devloop-sort-proposals.tsv` outside the repository, with two
+  changes: lines 5138 and 5146 to milestone 14. The block line 5466 stands
+  in milestone 13. The groups of that table, each with its section, its
+  count and its exceptions, stand below, so that this entry is checked
+  without the table. (15) The three blocks on `scripts/devloop-stock-take`,
+  `docs/defects.md` lines 4762, 5538 and 5546, are built by this order.
+  Reason: it changes the tool in any case, and the reason of the decision of
+  4 November 2026, the entry above, "built apart it would cost an order of
+  its own", holds.
+
+  **The groups of the table, by section**, 686 blocks, every row of the
+  table checked against the section of its group before anything was moved;
+  the nine rows that leave their group are the exceptions named here and no
+  other. Milestone 3, 64: the install permission walked or closed, 63, and
+  line 5394 from the install permission still open. Milestone 12, 90: the
+  install permission still open, 62 less lines 5106, 5122, 5394 and 5442,
+  and every other operating system and surface, 32. Milestone 13, 170: the
+  mode's question and set-up with the start conditions and the mark, 42; the
+  merge, 39; the stops, questions, last message and loose issues of the run
+  with nobody there, 42; commands that do not answer, refusals and the bound,
+  28; the build step and the build subagent, 18; and the new block of (12).
+  Milestone 14, 123: the setup with the person there, 28; the check setup
+  and the check table, 37; the guards other than the install guard, 14; the
+  text the person reads, 27, lines 5138 and 5146 among them by (10);
+  planning's record and pick-up, 3; the session start and the routes of
+  `start-work`, 9; what devloop writes in the user's name, 4; and the new
+  block of (13). Milestone 5, 38: what goes wrong with nobody reading, line
+  5370 among them. Milestone 6, 21: planning's end of Stage 1. Milestone 7,
+  4: the look. Milestone 8, 4: the road to running, 6 less line 406, to
+  "## Without a milestone", and line 5082, to milestone 11. Milestone 9, 9:
+  compaction. Milestone 10, 7: Matt Pocock's mechanisms. Milestone 11, 1:
+  line 5082. Milestone 15, 103: the stock-take tool with its records and the
+  checks, 67, and the documents' statements about the set, 37 less line 413,
+  to "## Without a milestone". Without a milestone, 54: the 30
+  contradictions of the loaded texts; README.md's statements, 19; lines 406,
+  413, 5106, 5122 and 5442. Within a section the blocks keep the order they
+  had; the sections stand in the order of (3), "## Without a milestone"
+  last; "## Not yet sorted" is gone, empty. 688 blocks in all, with the two
+  new ones.
+
+  **Built in the tool**, every behaviour with its case in the self-test, 159
+  cases, 148 messages read off the source and every one asserted by a case.
+  The heading of the plan reads "## The milestones, in this order", without
+  its count, against "A count lives in one place"; the tool reads the new
+  heading, head, code and self-test alike, and `docs/defects.md` names it.
+  The check of a reached milestone: where a branch adds the line "Done on"
+  under a milestone of `docs/plan.md`, read against the plan at git
+  merge-base HEAD origin/main, the tool is red, with the block's line and
+  title, for every block of that section that is open or carries "not
+  stated", and for every open block under the section of a reached
+  milestone, under "## Without a milestone" or under "## Not yet sorted";
+  open means neither Walked nor Closed nor marked with the form; the report
+  names the milestones reached and those the branch reaches under a heading
+  of their own. The form as a Status, `Built, never walked, cannot be
+  forced: decided in `FILE` at "TEXT".`, taken only where the tool computes
+  Built, never walked and FILE carries TEXT exactly once, the lines quoting
+  the form left out as for a closing left on purpose; rejected where the
+  tool computes another state, where the line is not found or found more
+  than once, and where a Status opens like the form and is not it; listed
+  under DEFECTS BUILT WHOSE CASE CANNOT BE FORCED and beside the Fix in the
+  section's list. The first half of block 4762: a not-a-thing record on a
+  line of `docs/roadmap.md` that is in no search set, or on a line of an
+  archive, is rejected, since such a line counts for no run and covers
+  nothing; the rows of the table under "Named, not built as skills" stand.
+  Block 5538: the tool reads the branch point in a worktree of its own with
+  the same rules and names, under WALKED ON THIS BRANCH WITHOUT A RUN THE
+  BRANCH ADDS, every thing and every block Walked in the working tree, not
+  Walked at the branch point and without a run among the run records git
+  diff adds to the table; a list, not a red, since such a change can be
+  right, as it was on 4 November 2026; where HEAD is the branch point and
+  the tree is clean nothing is read. Block 5546: line 66 of the head names
+  `docs/roadmap-archive-1.md` for the entry of 29 September 2026 on the
+  merge gate. And the version of a run is asked of git once per version, not
+  once per run: measured before this order, the tool took 250 seconds for a
+  run on this machine, user 72 and sys 168, nearly all of it in `git log -S`
+  over `.claude-plugin/plugin.json` for 2573 runs under 63 versions; with
+  the cache a run takes 94 seconds, the second analysis of the branch
+  point included, so that the reading of the branch point costs less than
+  what the cache saves.
+
+  **What changed in the documents.** `docs/plan.md`: the heading above; the
+  decisions of this day as dated sentences at the rule under "Five
+  sentences" and under milestone 12; milestones 13 and 14 after 12 and 15
+  after 11, each in the form of the others, with a "Why here" that fits the
+  order of (3); the "Why last" of milestone 11 reads "Why here, the last of
+  the runs"; "Beside the twelve" reads "Beside the milestones"; under
+  "## Open" the question on attribution.pr, the list for the milestones
+  after milestone 3 and the question timeout each carry the dated sentence
+  that says what is decided and which milestone takes each point, and the
+  two measurements of the arming name milestone 13; the opening and
+  milestone 1's text say that the order of this day sorted every block.
+  `docs/defects.md`: the introduction names the form, the check and the
+  sections as they stand, "## Not yet sorted" gone; every block under its
+  section as above; the 46 blocks of milestone 3 that carried "not stated"
+  filled from the entry their Found names, in that entry's words, 85 fields
+  read at their lines of `docs/roadmap-archive-1.md`, and six Shoulds left
+  at "not stated" where the entry carries no should — lines 536, 544, 574,
+  1593, 2313 and 3530 at `a5891cc`, their Wrongs filled; seven closings,
+  each with the proof the tool confirms: lines 406 at `docs/plan.md` under
+  "Where the set ends", 413 at `docs/plan.md` under "Beside the milestones",
+  5106 at decision (8) of 24 October 2026, 5122 at the sorting of the same
+  day, 5442 at decision (6) of 1 November 2026, 5394 at decision (4) of 31
+  October 2026, all five left on purpose, and 5274 corrected in the
+  document, `README.md` carrying the five steps; the form on the seven
+  blocks the person decided cannot be forced, lines 769, 1689, 2977, 3089,
+  3554 and 4450 at the decision of 20 October 2026 and line 4250 at the
+  decision of 18 October 2026, each decision read at its line of the archive
+  first; the Shoulds of (6), (7), (8), (9) and of the blocks that named a
+  milestone against their section changed, each named below with the old
+  text quoted; 56 notes that said the person decides the milestone, or
+  named milestone 3 or none, gained the clause naming their section since
+  this day; the note of block 4338 says that step 1 of `setup-project`
+  hands `brew install gh` over at the line that names the backing, where it
+  said no line of the skill hands such a command over, the closing's proof
+  unchanged; the two new blocks of (12) and (13), Found this entry. Two
+  fields mended, named here and given no block: the Should of block 4834
+  carried, behind "; no milestone.", the text of decisions (8) and (9) of 24
+  October 2026 run on from the status line, which is no should, and reads
+  now to "; milestone 12." alone; the note of block 4338 as above.
+  `docs/skill-conventions.md`, "A defect is a block in docs/defects.md":
+  the form, the check and the comparison with the branch point among what
+  makes the tool red or what it lists, the transition marks in the past
+  tense; "An archive of the roadmap never changes": the form among what the
+  tool reads an archive for. `docs/stock-take.tsv`: 14 things of kind
+  program outcome for the new outcomes, each with its case as bench, 31
+  not-a-thing records for the lines inside them, and four records
+  re-anchored to the lines that moved.
+
+  **The Shoulds changed**, 58, each title here in the form the tool reads,
+  the old text of each quoted below or in the report of this order:
+
+  Should changed: diagnose-bug opens with three routes in and names a fourth further down
+  Should changed: install-record.md says the five browser places are added with the person there and no text names a run that adds them
+  Should changed: mode-set-up.md says the mark guard blocks exactly where the text refuses while the text refuses on five things and the guard reads four of them and start condition 1
+  Should changed: three pairs of lines disagree: start-work on a stray open issue, setup-checks on secrets with nobody there, plan-work on the issue number of the spec
+  Should changed: the question on gitleaks of run 1 said that the run installs nothing and gave the command without backticks, and run 4 left out the browser as the example under the no of the install question, both holding in their statement
+  Should changed: run 1 headed the hard core of the user stories Geschichten where the person's language uses the term as it stands
+  Should changed: the last message of the planning of run 3 said allein mit --auto, and the texts of cut-into-tasks, plan-work, build-work and setup-checks tell the person to type --auto without the command
+  Should changed: the planning of run 3 read install-tools and dependency-tools off origin/main itself beside its call of bin/devloop-start-conditions
+  Should changed: run 2 read the folders for browsers only around the npm install and only ~/.cache/puppeteer, none around brew install htmlq
+  Should changed: run 2 ran brew install htmlq on main before cutting the task's branch, so the fact hook wrote no line and the run wrote it through the program, and the pull request says the hook wrote it
+  Should changed: the planning of run 1 said to the person nothing of the mode not being set up and of --auto setting it up, where the record of the mode said yes and the install record no
+  Should changed: the rounds of runs 1 and 2 said nothing of the tool the work needs and that it is missing, run 1's planning wrote that yq is installed without reading the machine and carried it into the build
+  Should changed: run 1 built the task needing yq against a stand-in under the no, put the landing question and handed brew install yq over only after the person said the tool is missing
+  Should changed: after the person's no the run answered their ! brew install yq in the same session, read the tool with --installed, ran bin/devloop-install-issues inside step 3, which closed the issue with a comment naming a start that did not happen, and built, so that the next start never walked
+  Should changed: bin/devloop-command-reader line 2297 hands the two hex digits of a \x escape in an ANSI-C string to hex, which takes four, so every command carrying $'\xHH' ends the reader with exit 2 and the message meant for JSON, and the six PreToolUse guards block the call, the table guard blocking an experiment of the build subagent at ac4d47c8 #174
+  Should changed: at the next start the main run read the tool itself with command -v and sent gh issue close for the install issue with a comment of its own, in start-work before the program, and only Claude Code's classifier refusing it left the closing to bin/devloop-install-issues
+  Should changed: run 2 built both tasks and ran both installs in the main run and handed no task to a build subagent
+  Should changed: the Stop hook of run 1 ran the chain at the end of the main run's turn while the build subagent renamed in the working copy, counted the red of the half-done rename as attempt 1, and the main run answered it with a text to the person
+  Should changed: the failure lens of round 1 overwrote links.config.yaml in the project after a failed cd, restored it with git checkout and ended every process matching links-config.sh with pkill, and the main run said nothing of it to the person
+
+  Should changed: a redirection behind a compound command belonged to no command the reader printed, so a mark written through a group went unseen outside auto mode and a heredoc behind done was read as commands
+  Should changed: a browser landing inside the project put the command's beyond back to where it stood before the command, taking a sudo on the same command with it
+  Should changed: the reader read as wrappers the two vendors' lists and exec alone, so a program outside them that runs its argument as a command was judged itself and the command behind it went through
+  Should changed: the group of the programs that run a command was put together from single programs and was incomplete, so parallel, tmux, screen, entr, watchexec, nodemon, git rebase -x, bisect run and submodule foreach, fd -x, npm exec -c and uv run passed the hooks on the branch where main stopped them
+  Should changed: mise exec and x were read as an installation against the decision that a command is one only where it names it, and nix develop was judged itself for the same reason
+  Should changed: setpriv was a stop under every answer whatever its options, where only an option that sets another user, a group or the supplementary groups runs the command with other privileges
+  Should changed: hyperfine was read with -S taking a value and every benchmarked command as a text for the shell against v2.0.0, which runs them with no shell, refuses a bare operator and takes -S as an alias of --shell=default
+  Should changed: the options whose value is a command were read as values, hyperfine --prepare, --setup, --cleanup and --conclude, the script behind nodemon --exec and flock -c before the file, and programs already in the group lost a command where an option that takes a value was missing from their table
+  Should changed: the search for the group read the manuals of a few projects and tools found by name, so that programs of every kind outside them, gosu, chpst, tini, retry, foreman, concurrently and pm2 among them, passed the hooks on the branch where main stopped them
+  Should changed: sg ran the command as another group and passed under a yes, read as no stop since the group changed and not the user
+  Should changed: a change of the group or of the supplementary groups alone was a stop under every answer at the install guard, sg and the group options of setpriv, capsh, s6-applyuidgid and nine more
+  Should changed: the reader read a doubt on the blocking side at the 21 points of the third addendum's check, at man -P under man-db, at a text typed into a terminal and at the names ts and dotenv, where the rule says a doubt lets through
+  Should changed: a text typed into a terminal that ends a line came past the guards since 6365a96, tmux send-keys with Enter, screen -X stuff and zellij action write-chars and paste with a line's end not read
+  Should changed: @puppeteer/browsers install with --path to a place outside the project passes under every answer, the guard taking its default
+  Should changed: the install guard reads the first browser download of a line alone, so a help, --dry-run or --list before it passes the download after it
+  Should changed: four patterns of the install guard read across a separator into the next command, blocking make build && npm install
+  Should changed: the install guard reads a make variable before install and not behind it
+  Should changed: the six hooks turn a newline in the command into a space, so two commands on separate lines run together
+  Should changed: npm's other spellings of a global install, -g before install, --location=global, an abbreviated option or an alias of install, pass the install guard
+  Should changed: a variable before the command that moves the destination, GOBIN= or npm_config_prefix=, is not read by the install guard
+  Should changed: eight install routes the install guard does not read, deno, dotnet tool, conda, nix profile, pkgx, gh extension, volta and fnm
+  Should changed: the forms of Nix that fetch a package and run it, nix run and nix shell, are read by the install guard nowhere and named by shared/fetch-and-run.md nowhere
+  Should changed: after the yes to the install record and to the dependency file, step 8 entered no check tool and filled no class that was off for the first no, checks.md after the run holding format, lint, types and secrets as skipped (user) with the first run's reasons
+  Should changed: the rule that environment.md is written with the editing tool names the workflow file nowhere, reached neither build subagent for that file and has no copy in setup-checks step 8, so that the guard blocked two subagents writing the workflow file from the shell and the main run wrote environment.md from the shell twice unblocked
+  Should changed: the guard read where a route lands for brew, go and npm alone and blocked every other route under every answer, so on a stack whose routes were among those a yes opened nothing
+  Should changed: the install question says which places exactly stand written in the record and says nothing of a bare pip, while a route's place is read on the machine at the moment of the command and a bare pip opens nothing
+  Should changed: step 3 of setup-project skipped the whole of step 4 where there is no code, so a project set up empty was never put the install permission and carries no record
+  Should changed: question 4 of setup-project came out wrong twice on 29 September 2026 from two texts, its surroundings pulling it toward a question about tools for check classes
+  Should changed: three things in the options of question 4 arrived in the run's own words, a declined class left open, the class as an issue, the no as a promise to ask, none of the three stated at point 4 where the run writes them
+  Should changed: the repair of point 3 of question 4 made on 30 September 2026 did not hold in either run of that day at 0.120.0, the boundary arriving lifted out of the leak
+  Should changed: the form named for question 4 on 30 September 2026 was met in neither run of that day under 0.120.0, the question arriving as one tab of a form beside auto-merge, and nothing in the repository can read whether it was met
+  Should changed: question 3 of setup-project step 4 says the guard blocks an install during a first setup, while the guard is silent until step 6 has created docs/agents, so the installs of the yes run met no guard established to have seen them
+  Should changed: the session-start line printing the install record arrives in the run's context and not in front of the person, while the conventions and the hook's own comment call it what a second person who cloned the repository meets
+  Should changed: body-through-file names no place for the body file, and both runs wrote it inside .git/
+  Should changed: the install record does not spell what the conventions decided for a fetch into a language's own cache, and a second question under a record saying no asked a permission that counts for nothing
+  Should changed: the install guard blocked a pull request body and a file write for containing the string go install
+  Should changed: the narrowing named the file and not how the file gets written, a heredoc put the text back through the shell
+  Should changed: the half of the form rule that the widget call carries the install question alone had nothing that checks it, the repository reading no widget call
+  Should changed: the head of the reader sends to the three addenda of 13 October 2026 for the sources of the group, where the two of 14 October 2026 read vendors as well
+
+  The 39 lines after the first 19 name the blocks of milestone 3 whose
+  Should read "not stated" at `a5891cc` and carries the entry's words since
+  this order, decision (4): the old Should of each of them is "not stated".
+  The old Shoulds of the first 19: of 76, 108 and 116 "the person decides which holds:" with
+  the two places of each contradiction; of 4298 the same two pairs with
+  "for `start-work` no convention decides and this entry does not decide
+  which"; of 4834 the should with "; no milestone." and the run-on text; of
+  5138 and 5146 "; no milestone, built after the decision on milestone 3.";
+  of 5154, 5202 and 5210 "; milestone 3, a small matter by decision (9) if
+  the person so decides."; of 5170 the same tail, now naming milestone 12
+  and the date of decision (9); of 5162, 5186, 5354, 5362 and 5378
+  "; milestone 3."; of 5194 and 5218 "; the milestone the person decides
+  after milestone 3."; of 5370 "; milestone 3.", now milestone 5.
+
+  **Left open, named.** The blocks `docs/defects.md` lines 2833 and 2841,
+  README.md's two sentences for which the proposals drafted wordings, stay
+  open under "## Without a milestone", since no decision of this day
+  approves a wording and `README.md` does not change in this order: like
+  the 30 contradictions they hold the Done line of milestone 12 until an
+  order closes them. Lines 536, 544, 574, 1593, 2313 and 3530 keep "not
+  stated" in their Should, their entries carrying none.
+
+  **The tool.** Before this order, at `a5891cc`: exit 0, broken records 0,
+  uncovered lines 0 of 4454, blocks under "## Without a milestone" 30 and
+  under "## Not yet sorted" 656, closed 39, with "not stated" 430, not-a-thing
+  records 3276, lines that can carry no unique anchor 339, Undetermined 24,
+  Recorded, not built 293, Built, never walked 1461, Walked 668, Closed 39. At
+  the second commit: exit 0, broken records 0, uncovered lines 0 of 4498,
+  blocks by section as above, "## Not yet sorted" gone, closed 46, with "not
+  stated" 390, built whose case cannot be forced 7, not-a-thing records 3307,
+  lines that can carry no unique anchor 343, Undetermined 24, Recorded, not
+  built 286, Built, never walked 1484, Walked 661, Closed 46; milestones
+  reached 1, 2, 3, none reached on this branch; Walked on this branch without
+  a run the branch adds: 0. The changes against the run before: closed +7, the
+  seven closings of this order; blocks with "not stated" -40, the 46 blocks of
+  milestone 3 filled but six Shoulds; Closed +7 and Recorded, not built -7,
+  the seven closings, the two new blocks and the two blocks of (15) whose Fix
+  points at code now; Built, never walked +23, the 14 new things of the tool,
+  the two blocks of (15) and the things whose runs under an earlier version
+  stopped counting with the change to their lines, held against the runs of
+  the third commit; Walked -7 for the same reason, until the third commit; the
+  search set +44 lines, the new code, every one covered; not-a-thing records
+  +31, the part-of records of the new lines; lines that can carry no unique
+  anchor +4, six new lines of the tool that repeat a line of it, `if base is
+  None:` twice, `if got is None:` twice, `if m:` and `if p.returncode != 0:`,
+  where the two lines `if wanted(rel) and files.get(rel) is not None:` that
+  stood twice are one line now, anchored and covered; Undetermined +0. Runtime
+  94 seconds against 250.
+
+  **Records.** In `docs/stock-take.tsv`, by section C of the head of
+  `scripts/devloop-stock-take`, in the third commit: a run of the self-test
+  of this day under 0.176.0 on every thing the order adds, on the three
+  blocks of (15), whose Fix points at the lines that build them, and on
+  every thing of the tool whose run under an earlier version stopped
+  counting with this order's change to its lines: 24 runs. No run on
+  any other block.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
