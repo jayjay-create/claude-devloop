@@ -5124,7 +5124,7 @@ without going red.
 - Should: the tool rejects such a record, or the header names where such a line goes and why, and the four rows go there.
 - Found: Six entries held against the code: lines corrected, defects recorded.
 - Fix: `scripts/devloop-stock-take` "elif rec["file"] == ROADMAP and site[1] not in in_set:"
-- Status: Built, never walked
+- Status: Walked
 - Note: found 23 October 2026 by the consistency audit of that date; recorded for the order after the audit, nothing built; the should on the status line; built 23 October 2026, version 0.157.0, the roadmap entry of 23 October 2026 on the catch-up after the audit of that day, the evidence moved onto the line of the fix; decided 4 November 2026, the roadmap entry of that date on the rejection of a record on a roadmap line: the block stays, its Should met in its second half; its first half, the tool rejecting a not-a-thing record on a line of docs/roadmap.md in no search set or on a line of an archive, is built by the order that builds the block on a thing Walked on the branch without a run the branch adds; built 5 November 2026, version 0.176.0, the roadmap entry of 5 November 2026 on the sorting into the milestones, decision (15): the tool rejects a not-a-thing record on a line of docs/roadmap.md that is in no search set and on a line of an archive, the first half of the Should, with cases in the self-test; the evidence moved onto the line of the rejection
 
 ### the three defect rows of the entry on the run under a no carry the version 0.165.0 in their notes since 31 October 2026
@@ -5164,7 +5164,7 @@ without going red.
 - Should: the tool names every thing and every block of docs/defects.md that is Walked on the branch, was not Walked at the branch point and has no run the branch adds, so that such a change is read before the merge
 - Found: Three entries held, eleven places mended, two blocks added.
 - Fix: `scripts/devloop-stock-take` "out["walked"].append((t["name"], t["kind"],"
-- Status: Built, never walked
+- Status: Walked
 - Note: found 4 November 2026 by the consistency audit of that day, from the last paragraph of the entry of 4 November 2026 on the archive; concerns scripts/devloop-stock-take, whose check against a run recorded too early, section C of its head, holds a run to the lines of its thing and no thing to its state at the branch point; the guard over the blocks and the archives, section F, holds titles, Shoulds and files and no state; decided 4 November 2026, the roadmap entry of that date on the rejection of a record on a roadmap line: the order that builds this block builds with it the first half of the Should of the block on four status lines as part of a thing and mends line 66 of the head of the tool; built 5 November 2026, version 0.176.0, the roadmap entry of 5 November 2026 on the sorting into the milestones, decision (15): the tool reads the branch point in a worktree of its own and lists every thing and every block Walked in the working tree, not Walked at the branch point and without a run among the run records the branch adds to the table, under WALKED ON THIS BRANCH WITHOUT A RUN THE BRANCH ADDS, a list and no red; the evidence on the line that lists them
 
 ### the head of scripts/devloop-stock-take names docs/roadmap.md for the entry of 29 September 2026 on the merge gate, which stands in the archive
@@ -5172,7 +5172,7 @@ without going red.
 - Should: the line names docs/roadmap-archive-1.md for that entry
 - Found: Three entries held, eleven places mended, two blocks added.
 - Fix: `scripts/devloop-stock-take` "docs/roadmap-archive-1.md, the entry of 29 September 2026 on the merge"
-- Status: Built, never walked
+- Status: Walked
 - Note: found 4 November 2026 by the consistency audit of that day, by grep -n 'docs/roadmap.md' over hooks/, bin/, scripts/ and .github/ against the archive rule; a comment in a program, left as it stands since the order of that day changes nothing outside docs/; decided 4 November 2026, the roadmap entry of that date on the rejection of a record on a roadmap line: mended by the order that builds the block on a thing Walked on the branch without a run the branch adds; mended 5 November 2026, version 0.176.0, the roadmap entry of 5 November 2026 on the sorting into the milestones, decision (15): line 66 of the head names docs/roadmap-archive-1.md; the evidence on that line
 
 ## Without a milestone
