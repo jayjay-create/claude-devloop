@@ -433,7 +433,8 @@ loaded text no longer carries stands here at its rule.
   it does not reach the context of every session on the hook's line; the
   line then reads none, and `start-work` asks the language where nothing
   shows it, so the person meets the question until the record is mended.
-  Decided on 6 November 2026 by the person, entry "No document counts for the language, the record's value a name of one.";
+  Follows the rule of the install record at a refresh, built 6 November 2026,
+  entry "No document counts for the language, the record's value a name of one.";
   not chosen: the refresh treating such a record as missing and writing it
   anew from the answer, against the rule that a record is never overwritten.
   The case is the block "the install record's reader takes any non-empty
@@ -909,8 +910,8 @@ loaded text no longer carries stands here at its rule.
   start of each line, `shared/install-record.md`, and the English name the
   template names; 40 holds every multi-word English name of a language and
   bounds the line; the cause does not quote the value, since the hook's line
-  would carry it into the context otherwise. Decided on 6 November 2026 by
-  the person, entry "No document counts for the language, the record's value a name of one.";
+  would carry it into the context otherwise. Follows from the shape of the
+  records and the template, built 6 November 2026, entry "No document counts for the language, the record's value a name of one.";
   not chosen: any non-empty value, as before. The case is the block "the
   install record's reader takes any non-empty value as the language, so a
   record's value lands verbatim in the context line of every session" of

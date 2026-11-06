@@ -2626,7 +2626,9 @@ and for the proofs of closings.
   of the bench, measured against the committed program and hook of the
   second commit, whose code is the first's, in a throwaway project under a
   temporary directory, GitHub not reached, and recorded in the third with
-  the figures of the tool. Nothing under `scripts/`, `output-styles/` or
+  the figures of the tool, which also corrects a count of this entry and
+  two sentences of `docs/rationale.md` that credited the person with what
+  follows from a rule. Nothing under `scripts/`, `output-styles/` or
   `.github/` and nothing in `README.md` changes. Written from the person's
   decisions of this day and the order that carries them, which stands
   outside the repository, and from the report of the order on the language
@@ -2812,7 +2814,7 @@ and for the proofs of closings.
   language under "The install guard reads a record". `docs/stock-take.tsv`:
   two things for the new outcomes — in the program the refusal of a value
   that is no name, in `setup-project` the refresh meeting such a record —,
-  five records of lines inside the new text, and eleven rows renamed or
+  five records of lines inside the new text, and thirteen rows renamed or
   re-anchored, no run hanging on them but the two of the program's reading
   under `--language`, renamed with it: in each shared block the thing on the
   chain after the instructions file, the one on devloop's documents, now on
@@ -2870,6 +2872,24 @@ and for the proofs of closings.
   of a walked thing stopped counting: the lines the runs stand on — the
   option line of the program and its causes, the hook's lines, "Number is
   a fact" of the shared blocks — were not changed.
+  At the third commit, in a run whose tree carried everything of that
+  commit but these figures: exit 0, broken records 0, uncovered lines 0 of
+  4568, blocks 698, under "## Without a milestone" 41, every one of them
+  closed, Undetermined 24, Recorded, not built 256, Built, never walked
+  1510, Walked 700, Closed 65; milestones reached 1, 2, 3, none reached on
+  this branch; Walked on this branch without a run the branch adds: 0;
+  blocks held against the branch point: removed 0, renamed 0, Should
+  changed 3, added 2, lines of the fixed forms 3; milestone 13 174 blocks,
+  milestone 14 139, milestone 15 104; with "not stated" 382, built whose
+  case cannot be forced 7, not-a-thing records 3358, lines that can carry
+  no unique anchor 349. Against the second commit: Walked +1 and Built,
+  never walked -1, the thing of the program's refusal with the runs of
+  cases V6, V9, V11, V13b and V14; the 23 runs of the bench stand on
+  things that were Walked already otherwise, the renamed reading, the two
+  forms of the line, the two causes, the refusal of `--language` beside
+  `--dependency`, `--line` under a no and five things of the hook. Against
+  `5865430`: Undetermined +0, Recorded, not built +0, Built, never walked
+  +3, Walked +1, Closed +0, blocks +2, milestone 14 +2.
 
 ## Decisions taken against
 
