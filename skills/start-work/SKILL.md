@@ -79,11 +79,10 @@ wins.
 
 Where the idea did not come with the command and nothing shows their
 language — nothing the user has written, no instructions file of theirs in
-your context, no language recorded for this project on the line at the
-session start that opens `[Language]`, and no document of the project the
-person wrote in a language, a document devloop wrote showing none, as the
-opening block says —, ask it first, whatever the status line reads,
-before the introduction: one question, alone in the
+your context, and no language recorded for this project on the line at the
+session start that opens `[Language]`; no document of the project counts,
+whoever wrote it, as the opening block says —, ask it first, whatever the
+status line reads, before the introduction: one question, alone in the
 message that ends the turn, in English, asked as text and naming no
 languages, as step 0 of `setup-project` puts the same question, saying three
 things: that nothing in this folder shows which language they write in,
