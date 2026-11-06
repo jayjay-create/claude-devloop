@@ -30,9 +30,9 @@ where the body would come from if one is ever needed — mostly a file to copy f
 mattpocock/skills and adjust, which is minutes of work, not days.
 
 **This is a supply of names, not a backlog.** Nothing here is missing: the
-pre-handover check that holds locked skills against their callers prints two
-lines since 31 October 2026 (`628d166`), one from 13 September 2026 (`b90874b`) until then — `start-work`, named in `build-work`
-step 6 as the place that sends an armed pull request there and in `shared/install-issues-read.md` as the place of the in-flight query and as the start a build or a planning followed, not run — and
+pre-handover check that holds locked skills against their callers prints five
+lines since 6 November 2026, two from 31 October 2026 (`628d166`) until then and one from 13 September 2026 (`b90874b`) until that day — `start-work`, named in `build-work`
+step 6 as the place that sends an armed pull request there, in `shared/install-issues-read.md` as the place of the in-flight query and as the start a build or a planning followed, and in `skills/setup-project/SKILL.md`, `shared/language-opening.md` and `shared/closing.md` as the place that asks the language first in a project not set up, not run — and
 nothing else, so no built skill reaches for anything on this list. A name leaves
 it when something needs to call it on its own, which is exactly how `research`
 and `build-prototype` got built, or when it is decided against: `which-skill`
@@ -2062,6 +2062,268 @@ and for the proofs of closings.
   not starting now, and the point in `docs/rationale.md` says it in the same
   words. The anchor of that line in `docs/stock-take.tsv` moves with it. At
   the third commit the tool gives the counts of the second.
+
+- **The language asked first where nothing shows it, a named one holds.**
+
+  6 November 2026, version 0.179.0. On `task/language-asked-first`, off
+  `origin/main` at `1c57fee`, in two commits: the code with the version —
+  `skills/start-work/SKILL.md`, `skills/setup-project/SKILL.md`,
+  `shared/language-opening.md`, `shared/closing.md` and `docs/rationale.md`;
+  and this entry with `docs/defects.md` and `docs/stock-take.tsv`. Nothing
+  under `hooks/`, `bin/`, `scripts/`, `output-styles/`, `.github/` or in
+  `README.md` or `docs/plan.md` changes, and no run is recorded. Written
+  from the person's decisions of 5 and 6 November 2026 and the order that
+  carries them, which stands outside the repository, and from the report of
+  the order on the six contradictions settled, outside the repository as
+  well; no session log was read; GitHub was not asked. Every line number of
+  a file in this entry holds at `1c57fee` unless it says otherwise.
+
+  **Decided on 5 and 6 November 2026 by the person.** (1) On 5 November
+  2026, the block "start-work writes the introduction and asks what to build
+  in a language nothing shows where the user typed only the command in a
+  project not set up", `docs/defects.md` line 3793: where nothing shows the
+  language — nothing the user has written, no instructions file of theirs in
+  the context, no document of the project in a language —, `start-work` at
+  `not set up here` asks it first, before the introduction, as the one
+  question in the message that ends the turn, in English, as `setup-project`
+  step 0 does, `skills/setup-project/SKILL.md` lines 174 to 185; the
+  introduction and the question what they would like to build come after
+  it, in the language of the answer. Reason: on the route `README.md` lines
+  67 to 71 describe as the only command, the run never reaches the question
+  of `setup-project`, since the answer on the idea comes before and counts
+  as the language signal; a short answer such as "Webshop" shows no
+  language, and a setup answered through buttons writes nothing afterwards
+  the language could show in. Not chosen: the introduction in English, the
+  user's answer setting the language. The Should of the block changes to
+  the decision. The sentence of `shared/language-opening.md` lines 9 to 11
+  and `shared/closing.md` lines 13 to 15, "One exception: where neither
+  shows it, the setup of a project asks it first, in English, as
+  `setup-project` says, and no other skill asks.", names both places now;
+  `skills/setup-project/SKILL.md` line 482, "the one question on the
+  language is step 0's", read with it, stays: inside that skill it is still
+  the one question, and step 0 says that `start-work` asks the same one
+  before it. (2) The form and the words of the question, for both places.
+  Approved on 5 November 2026: as text, not through the choice widget, and
+  naming no languages, since a widget would have to guess which to offer —
+  the reading of the entry "Six contradictions settled, the README says what
+  the mark guard reads." until then, line 1821, and a decision of the person
+  now. The question says three things: that nothing in this folder shows
+  which language they write in; which one to use; that they can simply
+  answer in it. Decided on 6 November 2026: the skills describe these three
+  things and dictate no wording, by "Describe what must be said; never
+  dictate wording", `docs/skill-conventions.md` line 883, and the decision
+  against it, "An approved wording as an example in a skill." under
+  "Decisions taken against" below; the closing line of the introduction,
+  `skills/start-work/SKILL.md` line 99, stays the one fixed wording. Not
+  chosen: the wording fixed in both skills, since a model paraphrases a
+  fixed paragraph, line 885. The approved wording stands word for word in
+  `docs/rationale.md`, under both skills and the heading of their place:
+  "Nothing in this folder shows which language you write in. Which one
+  should I use? You can simply answer in it." `skills/setup-project/SKILL.md`
+  lines 177 to 179 named two of the three things; the third is added. (3)
+  A named language holds, decided on 5 November 2026 for both places: where
+  the answer names a language, that one holds, whatever language the word
+  naming it stands in; where it names none, the language the answer is
+  written in holds. "German" means German, "Deutsch" means German, "hola,
+  en español por favor" means Spanish, "hola" means Spanish. Reason:
+  `skills/setup-project/SKILL.md` line 179, "the language they answer in,
+  or the one they name", did not say which holds where the two differ, and
+  `shared/language-opening.md` line 1, "Answer in the language the user
+  writes in", would read "German" as English text. Where the user later
+  writes in another language, `shared/language-opening.md` line 11, "Switch
+  the moment they write in another language", holds as before. (4) The
+  block "setup-checks step 8 writes nothing where GitHub offers no
+  protection before the question and writes a record saying no where the
+  protection is refused when it is set", `docs/defects.md` line 5431,
+  decided on 6 November 2026: it is "Built, never walked" and stands in
+  milestone 13, the group of the mode's question and set-up with the start
+  conditions and the mark, lines 1145 to 1146 above. Reason: that a run did
+  the same before and after is not free of doubt; "offers no protection" at
+  the reading before the question and "refused the protection" in the
+  paragraph on the record describe the same event in ordinary words, and a
+  run could write `unattended-mode: no` at the HTTP 403 before the
+  question; in doubt the second case of decision (1) of the entry "Decided
+  contradictions mended, the mark guard reads the mode's record." holds.
+  Not chosen: "Closed, corrected in the document", as until then. Its Fix
+  names the line of its repair, the proof of the closing until then,
+  `skills/setup-checks/SKILL.md` "written since no answer of theirs was
+  given". The case before the question is named in the same group by the
+  block "step 8 read the gate, its binding and auto-merge before asking and
+  learned that the platform refuses the protection only after the
+  question", line 2133, "Built, never walked"; `docs/plan.md` does not
+  change for it.
+
+  **What follows from a decision of the person or a rule**, each with its
+  basis. (5) The play-through of (1) to (3) before the build, the basis the
+  order's rule to play a change through at the situations it meets, with
+  the person and without her: the command alone in an empty folder without
+  an instructions file, with the answers "German", "Deutsch", "hola" and
+  "Webshop"; the command alone with an instructions file in a language;
+  the command alone in a folder with documents in a language, not set up;
+  the command with an idea in a language; the command with an idea that
+  shows none, "Webshop"; `set up in part` and `set up` without an idea
+  where the project's only documents are devloop's own; `setup-project`
+  out of `start-work`; `setup-project` typed alone. The answers "German",
+  "Deutsch" and "hola" and the five situations with a language shown get
+  one answer from (1) to (3) and are built; three situations get none and
+  are not built, named under "Not built, named" below. Without the person
+  none of the places is reached: the mode begins at the end of Stage 1 or
+  on the direct route, `skills/start-work/SKILL.md` lines 367 to 386. (6)
+  The block "plan-work says to run the four stages in one session where
+  you can and that planning is one session", line 5407, stays "Closed,
+  corrected in the document": the basis is that only the reason, "since
+  planning is one session", was wrong, while the instruction of the same
+  paragraph, "Delete it with a shell command and ask", stood at `9524bb9`
+  as it stands at `1c57fee`, `skills/plan-work/SKILL.md` line 148 at
+  `9524bb9`, so that a run did the same before and after; said here since
+  the report of the order of the entry "Six contradictions settled, the
+  README says what the mark guard reads." put the line to the person. (7)
+  The new branches in `start-work` and `setup-project` are "Built, never
+  walked", by section D of the head of `scripts/devloop-stock-take`; the
+  block of (1) is "Built, never walked" and stays in milestone 14, the group
+  of the session start and the routes of `start-work`, lines 1151 to 1152
+  above. Whether the closing run of milestone 14, `docs/plan.md` lines 1057
+  to 1060, meets its case — the command alone in an empty folder, no
+  instructions file in a language in the context — the plan does not say:
+  it names a setup run on a fresh project with the person there through
+  every question, and not whether the run begins with the command alone or
+  whether the person's own instructions file stands in the context, which
+  on the machine of every run so far it does, in German; named under "Not
+  built, named" below, and `docs/plan.md` does not change for it.
+
+  **The blocks**, each with what is built, where it stands and in which
+  state. The language in `start-work`: `skills/start-work/SKILL.md` step 2
+  asks it first at `not set up here` where the idea did not come with the
+  command and nothing shows it, before the introduction, as text and in
+  English, the three things, a named language holding, the introduction and
+  the question in the answer's language in the next turn, and says that
+  the question of `setup-project` is never reached on this route;
+  `skills/setup-project/SKILL.md` step 0 says the three things, that a
+  named language holds and that `start-work` asks the same question before
+  its introduction, an answer to it showing the language;
+  `shared/language-opening.md` and `shared/closing.md` name both skills in
+  the exception and the named language; Fix the line of the question in
+  `start-work`; Built, never walked, in milestone 14, the group of the
+  session start and the routes of `start-work`, as before. Step 8 on the
+  record: nothing built, the Fix the line of the repair of 5 November
+  2026; Built, never walked, moved into milestone 13, the group of the
+  mode's question and set-up with the start conditions and the mark, at the
+  end of that section. One session: as before, "Closed, corrected in the
+  document", under "## Without a milestone". The block of the setup's
+  language, "setup-project asks the language first in English where step 4
+  says never to ask about the user's language", line 3721: its Fix stands,
+  its Should holds as it stands, the three things and the named language
+  being the form of the question the Should names; Built, never walked, in
+  milestone 14, as before.
+
+  **Not built, named.** Three situations of the play-through get no single
+  answer from the decisions and go to the person. (a) The answer "Webshop"
+  to the question on the language: it names no language and is written in
+  none the run could tell, the word standing so in German, English and
+  Dutch; (3) gives no answer, and the run never guesses. Two ways: ask
+  again, saying that the answer showed none — a second turn, and no guess;
+  or hold English until they write in a language that shows, by the
+  switch of `shared/language-opening.md` line 11 — no second question, and
+  a first turn in a language that may be wrong. (b) The command with an
+  idea that shows no language, "Webshop", without an instructions file and
+  without documents: `skills/start-work/SKILL.md` line 111 says "ask
+  nothing and go on to step 3 in the same reply", for the reason that a run
+  with the idea in hand cannot follow a question on what to build, which
+  does not meet a question on the language, while the sentence meets every
+  question; and `setup-project` step 0 asks only where the user typed
+  nothing but the command, line 171. Today the run guesses there. Two ways:
+  `start-work` asks the language first there too, before step 3, where
+  nothing shows it — one question, the reason of line 111 untouched, the
+  sentence changed; or `setup-project` step 0 asks wherever nothing the user
+  has written shows it, the idea included — reached at `not set up here`
+  and `set up in part` alone, where the setup runs, and later than the
+  first reply of `start-work`, which would then be step 3 in a guessed
+  language. (c) `set up in part` and `set up` without an idea where the
+  project's only documents are the five devloop wrote under `docs/agents/`:
+  `shared/project-language.md` has every file the run creates written in
+  English, so "this project's documents", `shared/language-opening.md` line
+  7, show devloop's English and not the person's language, and the question
+  what to build, the open question or the offer of an issue devloop did not
+  write come in English where no instructions file stands in the context;
+  the language of the setup is recorded nowhere. The sentence of the entry
+  "Six contradictions settled, the README says what the mark guard reads."
+  that both skills meet the case "in a project set up, whose documents show
+  it", lines 1985 to 1986, holds for documents the person wrote and not for
+  a project whose documents are devloop's alone. Two ways: a document
+  devloop wrote counts as showing no language, and the question comes first
+  there as at `not set up here` — no record, a question in every session
+  without an instructions file until the person writes a document; or the
+  setup records the language, in `docs/agents/environment.md` say, and the
+  later sessions read it — one more line of the setup, read by every skill
+  that starts a session. (d) Whether the runs "Ends with" of milestone 13
+  names, `docs/plan.md` lines 996 to 1001, meet the case of the block of
+  (4): the sentence names "the cases the blocks of its section name", which
+  takes this block in; but the two runs go on one fresh project through the
+  planning under `--auto` and on the direct route, which needs the mode set
+  up, and the HTTP 403 before the question comes on a private repository
+  under the plan Free, where the mode cannot be set up at all, and the
+  record saying no after a yes needs a protection refused once it is set,
+  which a repository that offers it does not do; a second project on the
+  plan Free, or the form "Built, never walked, cannot be forced" for the
+  half after the yes, is the person's to decide. (e) Whether the closing
+  run of milestone 14 meets the case of the block of (1), (7) above.
+
+  **The Should changed**, 1, the title in the form the tool reads; the old
+  text read "the person decides: the same question, first and in English,
+  where nothing shows the language, in `start-work` before the
+  introduction, or the introduction as it stands":
+
+  Should changed: start-work writes the introduction and asks what to build in a language nothing shows where the user typed only the command in a project not set up
+
+  **What changed in the documents.** `docs/defects.md`: the block of (1)
+  with the Should changed, the Fix and the state, in milestone 14 as
+  before; the block of (4) with the Fix and the state, moved to the end of
+  the section of milestone 13; the block of (6) as it stood.
+  `docs/rationale.md`: a point for every rule written or changed — under
+  `skills/start-work/SKILL.md` step 2 new, with the approved wording word
+  for word, under `skills/setup-project/SKILL.md` step 0 with the approved
+  wording word for word, under `shared/closing.md` —, each naming its case
+  and its reason alone. `docs/stock-take.tsv`: eleven things for the new outcomes — in `start-work`
+  step 2 the language asked first, a named language holding, none named,
+  and something showing it; in `setup-project` step 0 a named language, none
+  named, and the question `start-work` asked before it; in each shared block
+  a named language and none named —, three records of lines inside the new
+  text, and the two things of the exception in the shared blocks renamed,
+  no run hanging on them, their anchors as they stood. The pre-handover
+  check that holds locked skills against their callers prints three lines
+  more, `start-work` named in `skills/setup-project/SKILL.md`,
+  `shared/language-opening.md` and `shared/closing.md` as the place that
+  asks the language first, not run, as the two lines until then name it;
+  the sentence under "Named, not built as skills" above that counted them
+  says five now, the one line with a single right answer this entry mends
+  outside the order.
+
+  **The tool.** Before this order, at `1c57fee`: exit 0, broken records 0,
+  uncovered lines 0 of 4532, blocks 692, under "## Without a milestone" 42,
+  every one of them closed, closed 66, with "not stated" 382, built whose
+  case cannot be forced 7, not-a-thing records 3338, lines that can carry no
+  unique anchor 344, Undetermined 24, Recorded, not built 256, Built, never
+  walked 1482, Walked 688, Closed 66; milestone 13 173 blocks, milestone 14
+  134. At the second commit: exit 0, broken records 0, uncovered lines 0 of
+  4543, blocks 692, under "## Without a milestone" 41, every one of them
+  closed, closed 65, with "not stated" 382, built whose case cannot be
+  forced 7, not-a-thing records 3341, lines that can carry no unique anchor
+  344, Undetermined 24, Recorded, not built 255, Built, never walked 1495,
+  Walked 688, Closed 65; milestones reached 1, 2, 3, none reached on this
+  branch; Walked on this branch without a run the branch adds: 0; blocks
+  held against the branch point: removed 0, renamed 0, Should changed 1,
+  added 0, the line above; milestone 13 174 blocks, milestone 14 134. The
+  changes against the run before: Closed -1, the block of (4) built and
+  never walked again; Recorded, not built -1, the block of (1) built; Built,
+  never walked +13, the two blocks and the eleven new things; Walked +0, no
+  line of a walked thing changed, the lines of the two shared blocks on the
+  singular and the lines of `setup-project` step 0 on the first question
+  kept as they stood for that; blocks +0; under "## Without a milestone"
+  -1, the block of (4) moved into milestone 13; milestone 13 +1, milestone
+  14 +0, one block built there in place of one recorded; the search set +11
+  lines, the new text, every one covered; not-a-thing records +3, the lines
+  inside the new text; lines that can carry no unique anchor +0; with "not
+  stated" +0; Undetermined +0. No run is recorded.
 
 ## Decisions taken against
 
