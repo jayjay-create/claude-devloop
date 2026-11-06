@@ -2548,14 +2548,14 @@ and for the proofs of closings.
   13 and 14 as (5) and (6) say. `docs/rationale.md`: the points named above,
   each with its case and reason alone. `docs/skill-conventions.md`: the
   paragraph under "The install guard reads a record". `docs/stock-take.tsv`:
-  25 things for the new outcomes — in the two shared blocks a document
+  20 things for the new outcomes — in the two shared blocks a document
   devloop wrote showing nothing and the answer asked again; in
   `setup-project` the refresh writing the record and leaving a standing one,
   step 0's answer asked again, and under `environment.md` the section
   written and every later session reading it; in `start-work` the answer
   asked again, the refresh having asked at `set up`, and the idea that shows
   none; in the program the reading, its two causes, the two forms of the line
-  and the refusal; in the hook the line and its none form —, seven records
+  and the refusal; in the hook the line and its none form —, twelve records
   of lines inside the new text, and 15 rows re-anchored or renamed, no run
   hanging on them: in each shared block the things on the instructions file,
   on the exception and on the named and the unnamed language; in
@@ -2588,7 +2588,31 @@ and for the proofs of closings.
   uncovered lines 0 of 4543, blocks 692, under "## Without a milestone" 41,
   every one of them closed, Undetermined 24, Recorded, not built 255, Built,
   never walked 1495, Walked 688, Closed 65; milestone 13 174 blocks,
-  milestone 14 134, milestone 15 103. At the third commit: FIGURES.
+  milestone 14 134, milestone 15 103; with "not stated" 382, built whose
+  case cannot be forced 7, not-a-thing records 3341, lines that can carry
+  no unique anchor 344. At the third commit: exit 0, broken records 0,
+  uncovered lines 0 of 4563, blocks 696, under "## Without a milestone" 41,
+  every one of them closed, closed 65, with "not stated" 382, built whose
+  case cannot be forced 7, not-a-thing records 3353, lines that can carry
+  no unique anchor 349, Undetermined 24, Recorded, not built 256, Built,
+  never walked 1507, Walked 699, Closed 65; milestones reached 1, 2, 3, none
+  reached on this branch; Walked on this branch without a run the branch
+  adds: 0; blocks held against the branch point: removed 0, renamed 0,
+  Should changed 0, added 4; milestone 13 174 blocks, milestone 14 137,
+  milestone 15 104. The changes against the run before: Recorded, not built
+  +1, the block outside the order; Built, never walked +12, the three
+  blocks of (4) and the 20 things less the eleven walked; Walked +11, the
+  eight things of the program and the hook with a run of the bench, and
+  `--line` under a no, the line printed and the refusal of `--line` beside
+  `--dependency`, which the bench met as well; Closed +0; blocks +4; under
+  "## Without a milestone" +0; milestone 13 +0, milestone 14 +3, milestone
+  15 +1; the search set +20 lines, the new text, every one covered;
+  not-a-thing records +12, the records of lines inside the new text; lines
+  that can carry no unique anchor +5, repeated lines of the program — `else`,
+  twice `exit 0`, twice the test on the key —; with "not stated" +0;
+  Undetermined +0. No run of a walked thing stopped counting: the lines the
+  runs stand on were not changed, the hook's install line and the program's
+  shared causes among them.
 
 ## Decisions taken against
 
