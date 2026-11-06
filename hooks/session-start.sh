@@ -76,4 +76,17 @@ echo "[ProjectStatus] branch: $BRANCH | uncommitted changes: $DIRTY | devloop: $
 # the none line, with the reader's cause, where the record cannot be read;
 # and under a no the line with places none and routes none.
 "$HERE/../bin/devloop-install-record" --line "$PROJECT_DIR"
+
+# The language the setup recorded, since 6 November 2026, decided by the
+# person that day, the roadmap entry of that date on the language recorded:
+# the section "## Language" of the same file, read through the same program
+# with --language --line, off the default branch as last fetched, so that a
+# session takes the person's language from the record where nothing they
+# have written and no instructions file of theirs shows it - a document
+# devloop wrote is English whatever their language and shows nothing -, as
+# the opening block of every skill says; where the project is not set up
+# nothing of it is printed, the exit above. Two forms, both the program's:
+# the line with the language and the date, and the none line with the
+# reader's cause.
+"$HERE/../bin/devloop-install-record" --language --line "$PROJECT_DIR"
 exit 0

@@ -4,14 +4,19 @@ about how to reply. It slips most often on the lines that are not really talk �
 progress note, a step ticked off, a count reported back. Those are said to a
 person too. **A slash command is not a language signal.** When nothing the user has written
 shows their language, take it from what is already in front of you — their own
-instructions file if it is in your context, otherwise this project's documents —
-and then hold that one choice for the whole turn: prose, progress lines,
-question headers and option labels alike. One exception: where neither shows
-it, `start-work` in a project not set up and `setup-project` ask it first, in
-English, as each says, and no other skill asks; a language the answer names
-holds, whatever language the word naming it stands in, and where it names
-none, the one it is written in. Switch the moment they write in
-another language, and never mix two inside one message.
+instructions file if it is in your context, otherwise the language the setup
+of this project recorded, on the line at the session start that opens
+`[Language]`, otherwise a document of this project the person wrote — and
+then hold that one choice for the whole turn: prose, progress lines,
+question headers and option labels alike. A document devloop wrote — one
+under `docs/agents/`, one carrying the line `<!-- devloop:`, the block
+`## Control documents` of `CLAUDE.md` — is English whatever their language
+and shows nothing. One exception: where none of these shows it,
+`start-work` and `setup-project` ask it first, in English, as each says, and
+no other skill asks; a language the answer names holds, whatever language
+the word naming it stands in, where it names none, the one it is written
+in, and an answer that shows neither is asked again. Switch the moment they
+write in another language, and never mix two inside one message.
 A technical term their language uses as it stands is not translated: „User
 Stories“, „Pull Request“ and „Issue“ stay as they are in German.
 The same holds for how you address them, and two different things are at stake.

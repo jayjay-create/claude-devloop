@@ -123,10 +123,25 @@ adds a place. The answer, the routes and the date stay as they stand. What was
 added is named under what changed, below, and so stands in the pull request
 step 8 opens. A record under a no is not touched.
 
+Where the program, called with `--language` after the same fetch, answers
+that no record of the language stands — `environment.md` carries no section
+`## Language`, or the file is not there — the refresh writes that section as
+step 6 writes it, from the language this refresh runs in: the one the
+opening block names where something shows it, and otherwise the answer to
+the question step 0 puts, asked here first, in the same form and saying the
+same three things, before anything else of the refresh, since the question
+comes wherever nothing shows the language and no record stands; an answer
+that names no language and is written in none the run can tell is asked
+again. Where the record stands, whatever it says, nothing is asked and
+nothing is written over it: the person's language changes with what they
+write, not with the record. The section written is named under what
+changed, below, and so stands in the pull request step 8 opens.
+
 Cut the branch after the last question and before the first write, under the
 same name and rule as a first setup — the step below that stands between the
 two. A refresh that asks nothing cuts it first, as the first thing done after
-the state is read above; one that puts the install question cuts it once the
+the state is read above; one that puts the install question or the question
+on the language cuts it once the
 answer is in. Skipping the steps below skips where that rule is written, and a
 refresh that does not cut runs into the main-branch guard.
 
@@ -137,21 +152,22 @@ The files hold two kinds of content, and only one of them is yours:
   These come from the templates below and go stale when the workflow changes.
 - **The project's**: the rows of the check table with their real targets and
   statuses, the glossary, the coding rules, the notes on running it locally,
-  and the three records in `environment.md` — `## Install permission`, and
-  the two the check setup writes, `## Dependency permission` and
-  `## Unattended mode`.
+  and the four records in `environment.md` — `## Install permission`,
+  `## Language`, and the two the check setup writes, `## Dependency
+  permission` and `## Unattended mode`.
   These were decided here and are never overwritten; a record missing on the
-  main branch is not overwritten by being written, the install record above,
-  and the places this version adds to a record under a yes are added under
-  the ones that stand, nothing of the record overwritten, as the refresh
-  above says.
+  main branch is not overwritten by being written, the install record and
+  the language above, and the places this version adds to a record under a
+  yes are added under the ones that stand, nothing of the record
+  overwritten, as the refresh above says.
 
 Rewrite the first kind from the current templates — the marker line that
 step 6 puts above each file's top heading among it, written anew with the
 running version — leave the second untouched,
 and say in two or three lines what actually changed — named, not counted; an
 install record written from the answer asked for above is among what
-changed, and so are the places added to a record under a yes, each named;
+changed, and so is a language record written where none stood, and so are
+the places added to a record under a yes, each named;
 these lines stand in the body of the pull request step 8 opens as well. One
 thing outside those files is this workflow's too: the two paths under `.claude/`
 that Step 5 keeps out of the repository. Check `.gitignore` covers both, since a
@@ -170,23 +186,31 @@ answer, not above six commands they watch run.
 
 Where the user has typed nothing but the command, their language is taken from
 what is already in front of you, as the opening of this file says — their own
-instructions file where it is in your context, otherwise this project's
-documents — and the first question comes in it. Where neither shows it — no
-instructions file of theirs in your context, and no document of the project
-in a language — ask it first, before anything of the setup begins: one
+instructions file where it is in your context, otherwise a document of this
+project the person wrote, one devloop wrote showing none — and the first
+question comes in it; at a first setup no record of the language stands.
+Where neither shows it — no instructions file of theirs in your context, and
+no document of the project the person wrote in a language —
+ask it first, before anything of the setup begins: one
 question, alone in the message that ends the turn, in English, asked as text
 and naming no languages, saying three things: that nothing in this folder
 shows which language they write in, which one to use, and that they can
 simply answer in it. A language the answer names holds, whatever language
 the word that names it stands in; where it names none, the language the
 answer is written in holds; and it holds from then on, the first question
-of the setup coming in it. The run
+of the setup coming in it. An answer that names no language and is written
+in none the run can tell — "Webshop" — decides nothing: the same question
+is put again, in the same form, and nothing else is said. The run
 never guesses, and the question comes only where it would otherwise have to:
 whoever answers through the widget's buttons alone writes nothing their
 language could show in, and a first setup that runs in the wrong language is
 the first thing a new user meets. Where something shows the language, it is
-not asked: `start-work` asks the same question where nothing shows it in a
-project not set up, before its introduction, and an answer to it shows it.
+not asked: `start-work` asks the same question where nothing shows it and
+no record of the language stands, before its introduction or before it
+judges the idea, and an answer to it shows it; the refresh puts it where the
+record is missing on the main branch, as "Refreshing an existing setup"
+says. Step 6 writes the language this setup ran in into `environment.md`,
+so that every later session reads it.
 
 At a first setup the first question carries one sentence, by how this setup
 began. Where it began with an idea in hand — from the entry point, where the
@@ -774,6 +798,30 @@ Here that pull request is step 8's. Nothing is installed during this setup —
 no class is filled
 here — so the first install a project meets is the check setup's, after step
 8, with the record in front of the guard.
+
+And the language this setup ran in with the person, as a section of its own
+in the same shape, one key and one value per line, ASCII only: the English
+name of the language — `German`, `Spanish` — and the date; the language is
+the one step 0 took from what they wrote, from their instructions file, from
+a document of theirs, or from their answer to its question:
+
+    ## Language
+
+    language: German
+    language-recorded: YYYY-MM-DD
+
+Every later session takes it from there where nothing the person has written
+and no instructions file of theirs shows the language: the session-start hook
+gives the run its line, `[Language]`, read through
+`${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record --language` off the main
+branch as last fetched and never off the working tree, counting once the
+pull request carrying it has landed there and been fetched back; the opening block
+says where it stands in that order, and a document devloop wrote — this file
+among them — shows nothing. The record is the language of the person who set
+the project up and does not change from session to session: a refresh leaves
+it as it stands and writes it where it is missing on the main branch, as
+"Refreshing an existing setup" says; the person's language changes with what
+they write, never with the record.
 
 Two more sections of this file are not written here. `## Dependency
 permission` holds the answer on whether the run may enter check tools in the

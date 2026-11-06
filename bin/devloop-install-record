@@ -36,6 +36,26 @@
 # where shared/mode-set-up.md refuses; the record is no start condition, so
 # it is read here and not in bin/devloop-start-conditions.
 #
+# With --language, since 6 November 2026, decided by the person that day,
+# the roadmap entry of that date on the language recorded, the same reading
+# of the section "## Language" of the same file: the language the setup of
+# the project ran in with the person, which setup-project step 6 writes at a
+# first setup and its refresh where none stands on the main branch, as the
+# language's English name, ASCII, one line. The keys are language and
+# language-recorded; the value is any non-empty line, since no two values
+# are the only ones; there are no place and no route lines. The causes on
+# the directory, the repository, the default branch, its ref and the file
+# are those of the install record, word for word; the cause on the section
+# says that the setup recorded no language, and the cause on the line that
+# the section carries no language line. On exit 0:
+#   ref: origin/<default>
+#   language: <the value>
+#   recorded: <the date the record carries, or none>
+# The session-start hook prints it with --language --line, below, so that a
+# session takes the person's language from the record where nothing they
+# have written and no instructions file of theirs shows it, the opening
+# block of every skill saying where the record stands in that order.
+#
 # On exit 0, one key per line:
 #   ref: origin/<default>
 #   tools: yes|no
@@ -65,7 +85,14 @@
 # under a no since that day carries none (shared/install-record.md), and an
 # older one that carries them is not amended. --line beside --dependency or
 # --unattended is refused with 2: neither record has a line of its own, and
-# so is --dependency beside --unattended, one section per call.
+# so is --dependency beside --unattended, one section per call. With
+# --language --line, since 6 November 2026, the one line of the session-start
+# hook on the language, formed off this program's own reading under
+# --language, exit 0 in both forms:
+#   [Language] <the value> | recorded: <the date> | the language the setup of this project ran in with the person, read off origin/<default> as last fetched, not off the working tree
+#   [Language] none: <the cause> | no language is recorded for this project
+# --language beside --dependency or --unattended is refused with 2, as the
+# two are beside each other.
 set -u
 SELF=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
 HEADING='## Install permission'
@@ -76,23 +103,40 @@ PROJECT_DIR=""
 BAD=""
 LINE=no
 SECTIONS=0
+LANGUAGE=no
 for a in "$@"; do
   case "$a" in
     --dependency) HEADING='## Dependency permission'; KEY='dependency-tools'; ANSWERED_KEY='dependency-answered'; SECTIONS=$((SECTIONS + 1)) ;;
     --unattended) HEADING='## Unattended mode'; KEY='unattended-mode'; ANSWERED_KEY='unattended-answered'; SECTIONS=$((SECTIONS + 1)) ;;
+    --language) HEADING='## Language'; KEY='language'; ANSWERED_KEY='language-recorded'; LANGUAGE=yes ;;
     --line) LINE=yes ;;
-    -*) BAD="unknown option $a; the options are --dependency, --unattended and --line" ;;
+    -*) BAD="unknown option $a; the options are --dependency, --unattended, --language and --line" ;;
     *) DIRS=$((DIRS + 1)); PROJECT_DIR="$a" ;;
   esac
 done
 [ "$DIRS" -le 1 ] || BAD="expected at most one directory argument, the project directory, got $DIRS"
 [ "$SECTIONS" -le 1 ] || BAD="--dependency and --unattended each read one section of the record and do not go together"
-[ "$LINE" = no ] || [ "$KEY" = install-tools ] || BAD="--line forms the line of the install record alone and does not go with --dependency or --unattended"
+[ "$LANGUAGE" = no ] || [ "$SECTIONS" -eq 0 ] || BAD="--language reads the record of the language alone and goes with neither --dependency nor --unattended"
+[ "$LINE" = no ] || [ "$KEY" = install-tools ] || [ "$KEY" = language ] || BAD="--line forms the line of the install record or of the language record and does not go with --dependency or --unattended"
 if [ -n "$BAD" ]; then
   echo "devloop-install-record: $BAD" >&2
   exit 2
 fi
 PROJECT_DIR="${PROJECT_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}}"
+
+# The line of the session-start hook on the language, since 6 November 2026,
+# formed off this program's own reading under --language, as the install
+# line below is formed off the reading of the install record.
+if [ "$LINE" = yes ] && [ "$KEY" = language ]; then
+  RECORD=$("$SELF" --language "$PROJECT_DIR" 2>&1)
+  RC=$?
+  if [ "$RC" -eq 0 ]; then
+    echo "[Language] $(printf '%s\n' "$RECORD" | sed -n 's/^language: //p' | head -1) | recorded: $(printf '%s\n' "$RECORD" | sed -n 's/^recorded: //p' | head -1) | the language the setup of this project ran in with the person, read off $(printf '%s\n' "$RECORD" | sed -n 's/^ref: //p' | head -1) as last fetched, not off the working tree"
+  else
+    echo "[Language] none: $(printf '%s\n' "$RECORD" | sed -n 's/^cause: //p' | head -1) | no language is recorded for this project"
+  fi
+  exit 0
+fi
 
 # The line of the hooks, formed off this program's own reading: the record
 # read as above, then one line as the head says. Until 28 October 2026 the
@@ -131,10 +175,26 @@ fi
 REF="refs/remotes/origin/$DEFAULT"
 git rev-parse --verify --quiet "$REF" >/dev/null 2>&1 || { echo "cause: the default branch $DEFAULT has not been fetched, so $REF cannot be read"; exit 1; }
 CONTENT=$(git show "$REF:$FILE" 2>/dev/null) || { echo "cause: there is no $FILE on origin/$DEFAULT as last fetched"; exit 1; }
+# The language's section missing: its own cause, since the setup writes the
+# record without a question where something shows the language; the line
+# below, shared with the three records, never fires for it then.
+if [ "$KEY" = language ]; then
+  printf '%s\n' "$CONTENT" | grep -qxF "$HEADING" || { echo "cause: $FILE on origin/$DEFAULT carries no section \"$HEADING\", so the setup recorded no language"; exit 1; }
+fi
 printf '%s\n' "$CONTENT" | grep -qxF "$HEADING" || { echo "cause: $FILE on origin/$DEFAULT has no section \"$HEADING\", so the question was never answered"; exit 1; }
 
 SECTION=$(printf '%s\n' "$CONTENT" | awk -v h="$HEADING" '$0 == h { s = 1; next } s && /^## / { exit } s')
 TOOLS=$(printf '%s\n' "$SECTION" | grep -m1 "^$KEY:" | sed "s/^$KEY:[[:space:]]*//; s/[[:space:]]*\$//")
+# The language: any non-empty value, printed with the date the record
+# carries; the case below, yes and no the only values, is the three records'.
+if [ "$KEY" = language ]; then
+  [ -n "$TOOLS" ] || { echo "cause: the section \"$HEADING\" on origin/$DEFAULT carries no $KEY line"; exit 1; }
+  RECORDED=$(printf '%s\n' "$SECTION" | grep -m1 "^$ANSWERED_KEY:" | sed "s/^$ANSWERED_KEY:[[:space:]]*//; s/[[:space:]]*\$//")
+  printf 'ref: origin/%s\n' "$DEFAULT"
+  echo "language: $TOOLS"
+  echo "recorded: ${RECORDED:-none}"
+  exit 0
+fi
 case "$TOOLS" in
   yes|no) ;;
   '') echo "cause: the section \"$HEADING\" on origin/$DEFAULT has no $KEY line"; exit 1 ;;

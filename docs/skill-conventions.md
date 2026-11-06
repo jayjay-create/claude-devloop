@@ -2576,6 +2576,24 @@ this sentence and the hook's comment called the line what a second person
 who cloned the repository meets, the roadmap entry of that date on milestone
 3, part 2.
 
+**The language the setup ran in is a fourth section of the same file, read
+the same way**, since 6 November 2026, decided by the person that day, the
+roadmap entry of that date on the language recorded: `## Language`, with
+`language:` the English name of the language and `language-recorded:` the
+date, written by `setup-project` step 6 at a first setup and by its refresh
+where none stands on the main branch, read by the same program with
+`--language` off the default branch as last fetched and printed by
+`hooks/session-start.sh` as a line of its own, opening `[Language]`, so that
+a session takes the person's language from the record where nothing they
+have written and no instructions file of theirs shows it, a document devloop
+wrote showing none, since every file devloop writes is English;
+`shared/language-opening.md` says where the record stands in that order, and
+why stands in `docs/rationale.md` under `environment.md`. No guard reads it:
+it is no permission, and the person's language changes with what they
+write, never with the record. Until then the language of a project whose
+only documents were devloop's was read off those documents, in English, at
+every start without an instructions file.
+
 **In doubt, a run with nobody there is not blocked.** The person's principle,
 "In doubt, a run with nobody there is not to be blocked: security matters,
 but not endangering the production run matters a little more", stood as a

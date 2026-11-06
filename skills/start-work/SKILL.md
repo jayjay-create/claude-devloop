@@ -79,8 +79,11 @@ wins.
 
 Where the idea did not come with the command and nothing shows their
 language — nothing the user has written, no instructions file of theirs in
-your context, and no document of the project in a language —, ask it first,
-at `not set up here`, before the introduction: one question, alone in the
+your context, no language recorded for this project on the line at the
+session start that opens `[Language]`, and no document of the project the
+person wrote in a language, a document devloop wrote showing none, as the
+opening block says —, ask it first, whatever the status line reads,
+before the introduction: one question, alone in the
 message that ends the turn, in English, asked as text and naming no
 languages, as step 0 of `setup-project` puts the same question, saying three
 things: that nothing in this folder shows which language they write in,
@@ -92,6 +95,14 @@ that language, in the next turn. Where something shows the language, it is
 not asked, and the opening block says where it is taken from. The run never
 guesses, and on this route the question of `setup-project` is never
 reached: the answer on the idea comes before the setup begins.
+
+An answer that names no language and is written in none the run can tell —
+"Webshop" stands so in German, English and Dutch — decides nothing: the same
+question is put again, in the same form, and nothing else is said; the run
+never guesses. At `set up` the refresh of step 1 puts the same question,
+where the record of the language is missing on the main branch and nothing
+shows the language, and writes the record from the answer; its answer shows
+the language here, so this step does not put the question a second time.
 
 Where the idea did not come with the command, write a short introduction in
 your own words — at most four sentences, not counting the closing line, in
@@ -124,8 +135,12 @@ stands alone. Nothing else in this reply: no repository findings,
 no offer to set anything up. Where it did — they said what they want built
 in the message that brought this up, beside the command or in place of a
 question — there is no introduction and no sentence on the idea as
-understood: ask nothing and go on to step 3 in the same reply, because a run
-with the idea in hand cannot follow a question on what to build. That the
+understood: ask nothing on what to build and go on to step 3 in the same
+reply, because a run with the idea in hand cannot follow a question on what
+to build; where nothing shows the language, the idea included — "Webshop"
+shows none —, the question on the language above comes first all the same,
+alone in the message that ends the turn, and step 3 follows in the next
+turn, in the answer's language. That the
 project is set up before their idea is begun stands in the first question the
 setup puts, as step 0 of `setup-project` says, here and where they name their
 idea in answer to the question above.
