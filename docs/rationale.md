@@ -34,20 +34,35 @@ loaded text no longer carries stands here at its rule.
   in line with the output style; 17 October 2026, version 0.143.0.".
 ### Step 2 — Orient them, if the status line says this project is not set up and the idea did not come with the command
 
-- **At `not set up here`, where the idea did not come with the command and
-  nothing shows the language — nothing the user has written, no instructions
-  file of theirs in the context, no document of the project in a language —,
-  the language is asked first, before the introduction: one question in
-  English, asked as text and naming no languages, alone in the message that
-  ends the turn, saying that nothing in this folder shows which language they
-  write in, which one to use, and that they can simply answer in it; a
-  language the answer names holds, and where it names none, the one it is
-  written in; the introduction and the question what to build come in it.**
+- **Where nothing shows the language — nothing the user has written, no
+  instructions file of theirs in the context, no language recorded for the
+  project on the line at the session start, no document of the project the
+  person wrote in a language, a document devloop wrote showing none —, the
+  language is asked first, whatever the status line reads and whether or not
+  the idea came with the command: one question in English, asked as text and
+  naming no languages, alone in the message that ends the turn, saying that
+  nothing in this folder shows which language they write in, which one to
+  use, and that they can simply answer in it; a language the answer names
+  holds, and where it names none, the one it is written in; an answer that
+  shows neither is asked again, in the same form; the introduction and the
+  question what to build, or step 3 where the idea came with the command,
+  come in it in the next turn.**
   On the route of the one command, the question of `setup-project` step 0 is
   never reached, since the answer on the idea comes before the setup begins
   and counts as the language signal, a short answer such as "Webshop" shows
   none, and a setup answered through buttons writes nothing afterwards the
-  language could show in; the run never guesses. The question is text and
+  language could show in; the run never guesses. An idea that shows no
+  language shows none, so the question comes before step 3 there too, and
+  the reason that a run with the idea in hand cannot follow a question on
+  what to build meets a question on the idea alone. A document devloop wrote
+  is English whatever the person's language, `shared/project-language.md`,
+  so the five under `docs/agents/` show nothing, and the language the setup
+  ran in is recorded in `docs/agents/environment.md` instead and read where
+  the opening block says; at `set up` the refresh of step 1 puts the question
+  where the record is missing, so this step meets no record only at `set up
+  in part` and where a record was taken out by hand. "Webshop" as an answer
+  names no language and stands so in German, English and Dutch, so holding
+  one until they write would be a guess. The question is text and
   names no languages, since a widget would have to guess which to offer; the
   skill describes the three things the question says and dictates no wording,
   "Describe what must be said; never dictate wording" in
@@ -60,12 +75,21 @@ loaded text no longer carries stands here at its rule.
   naming it stands in — "German" and "Deutsch" mean German, "hola, en español
   por favor" and "hola" Spanish —, since a rule to answer in the language the
   user writes in would read "German" as English. Decided on 5 and 6 November
-  2026 by the person, entry "The language asked first where nothing shows it, a named one holds.";
+  2026 by the person, entries "The language asked first where nothing shows it, a named one holds." and "The setup records the language, asked first wherever nothing shows it.";
   not chosen: the introduction in English, the user's answer setting the
-  language; a wording fixed in the skills. The case is the block "start-work
-  writes the introduction and asks what to build in a language nothing shows
-  where the user typed only the command in a project not set up" of
-  `docs/defects.md`.
+  language; a wording fixed in the skills; English held after an answer like
+  "Webshop" until they write in a language that shows; the question of
+  `setup-project` step 0 for an idea that shows none, which would run step 3
+  in a guessed language; devloop's documents counting, or the question in
+  every session where nothing else shows the language. The cases are the
+  blocks "start-work writes the introduction and asks what to build in a
+  language nothing shows where the user typed only the command in a project
+  not set up", "the language the setup ran in is recorded nowhere, so a later
+  session without an instructions file takes it from devloop's English
+  documents", "the answer Webshop to the question on the language names none
+  and is written in none the run can tell, and no text says what follows"
+  and "start-work asks nothing where the idea came with the command and shows
+  no language, so step 3 runs in a guessed language" of `docs/defects.md`.
 - **The introduction covers where it ends up, one promise, nothing to remember,
   and that asking gets an explanation; in the run's own words, and closing on
   the fixed line.** A model paraphrases a fixed paragraph and covers a list of
@@ -375,6 +399,22 @@ loaded text no longer carries stands here at its rule.
   sorted into milestones, 13 to 15 added, the Done check built.", built in entry "Decided contradictions mended, the mark guard reads the mode's record."; the case is the block "install-record.md says the five browser places
   are added with the person there and no text names a run that adds them" of
   `docs/defects.md`, found 1 November 2026.
+- **A refresh writes the record of the language where none stands on the main
+  branch, from the language it runs in, and puts the question on the language
+  first where nothing shows it, in the form step 0 puts it; where the record
+  stands it asks nothing and writes nothing over it.** The language belongs to
+  the person who set the project up and does not change from session to
+  session, and a project set up before the record existed meets the refresh at
+  its next start, the version being newer, so the record comes in there, once;
+  a question whose answer is stored is put where the answer is needed,
+  wherever the stored answer is missing, as the install question at a refresh;
+  the person's language changes with what they write, never with the record.
+  Decided on 6 November 2026 by the person, entry "The setup records the language, asked first wherever nothing shows it.";
+  not chosen: devloop's documents counting as a sign of the language, or the
+  question in every session where nothing else shows it. The case is the block
+  "the language the setup ran in is recorded nowhere, so a later session
+  without an instructions file takes it from devloop's English documents" of
+  `docs/defects.md`.
 - **A refresh reached from the entry point with nothing changed says nothing.**
   There is nothing for the person to decide or do. SP-4 under B1 of entry "Where
   each text devloop owes the person stays, goes into a pull request, an issue or
@@ -420,17 +460,24 @@ loaded text no longer carries stands here at its rule.
   before the first command".
 - **The user's language is taken from what is in front of the run where they
   typed nothing but the command, and asked only where neither their
-  instructions file nor the project's documents show it: first, as one question
+  instructions file nor a document of the project the person wrote shows it,
+  a document devloop wrote showing none: first, as one question
   in English, asked as text and naming no languages, before anything of the
   setup begins, saying that nothing in this folder shows which language they
   write in, which one to use, and that they can simply answer in it; a
   language the answer names holds, and where it names none, the one it is
-  written in.** A slash
+  written in; an answer that shows neither is asked again, in the same
+  form; step 6 writes the language the setup ran in into `environment.md`.** A slash
   command is no language signal, and the opening block, inserted into this
   skill, says where the language comes from in that case,
   `shared/language-opening.md`, and names the exception for the two skills
-  that ask, this one and `start-work` at a project not set up, whose answer
-  shows the language where it asked before this skill was reached; the run
+  that ask, this one and `start-work` where no record of the language stands,
+  whose answer shows the language where it asked before this skill was
+  reached; at a first setup no record stands, every file of the setup being
+  missing on the main branch, and a document devloop wrote is English
+  whatever the person's language, `shared/project-language.md`; "Webshop"
+  as an answer names no language and stands so in German, English and Dutch,
+  so holding one would be a guess; the run
   never guesses, and the question comes only where it otherwise would have to:
   whoever answers through the widget's buttons alone writes nothing their
   language could show in, and a first setup that runs in the wrong language is
@@ -449,9 +496,17 @@ loaded text no longer carries stands here at its rule.
   not chosen: never asking. The three things, the form as text and the named
   language decided on 5 and 6 November 2026 by the person, entry
   "The language asked first where nothing shows it, a named one holds."; not chosen: a
-  wording fixed in the skill. The case is the block "setup-project asks the
+  wording fixed in the skill. The answer asked again, devloop's documents
+  showing none and the record written in step 6 decided on 6 November 2026 by
+  the person, entry "The setup records the language, asked first wherever nothing shows it.";
+  not chosen: English held until they write in a language that shows;
+  devloop's documents counting. The cases are the blocks "setup-project asks the
   language first in English where step 4 says never to ask about the user's
-  language" of `docs/defects.md`.
+  language", "the answer Webshop to the question on the language names none
+  and is written in none the run can tell, and no text says what follows" and
+  "the language the setup ran in is recorded nowhere, so a later session
+  without an instructions file takes it from devloop's English documents" of
+  `docs/defects.md`.
 ### Step 1 — Explore, change nothing
 
 - **`gh` not signed in: the run says how they sign in, step by step, the sign-in
@@ -788,6 +843,33 @@ loaded text no longer carries stands here at its rule.
   decision (9) of entry "Defects sorted into milestones, 13 to 15 added, the Done check built.", built in entry "Decided contradictions mended, the mark guard reads the mode's record.".
 ### `environment.md`
 
+- **The language the setup ran in with the person stands in `environment.md`
+  as a section of its own, `## Language`, in the shape of the three records,
+  the English name of the language under `language:` and the date under
+  `language-recorded:`, written in step 6 at a first setup and by the refresh
+  where none stands on the main branch; every later session takes it from
+  there where nothing the person has written and no instructions file of
+  theirs shows the language, through the line the session-start hook gives
+  the run, read by `bin/devloop-install-record --language` off the main branch
+  as last fetched.** Every file devloop writes in the project is English,
+  `shared/project-language.md`, so in a project whose only documents are the
+  five devloop wrote the documents show devloop's English and not the
+  person's language, and without a record the question what to build, the
+  open question or the offer of an issue came in English where no
+  instructions file stood in the context; the language belongs to the person
+  who set the project up and does not change from session to session, so a
+  question in every session would be the error the question on the language
+  prevents, in another form; the record is read the way the install record
+  is read, through the one program and the hook, so that the run has the
+  language before its first word and no skill reads a file for it, and it is
+  no permission, so no guard reads it. Decided on 6 November 2026 by the
+  person, entry "The setup records the language, asked first wherever nothing shows it.";
+  not chosen: devloop's documents counting as no sign and the question first
+  in every session without an instructions file, until the person writes a
+  document. The case is the block "the language the setup ran in is recorded
+  nowhere, so a later session without an instructions file takes it from
+  devloop's English documents" of `docs/defects.md`, situation (c) under
+  "Not built, named" of entry "The language asked first where nothing shows it, a named one holds.".
 - **`environment.md` carries no section on what checks a merge, and who.** No
   part of devloop read it, and a protection written down goes stale at its next
   change; every place that needs it reads it off the platform. Case: the section
@@ -3402,17 +3484,31 @@ Nothing in this file stood as history; its rules carry their own reasons.
   wrote its prose in English and its question in German in the same turn; no
   entry of `docs/roadmap.md` carries it, the commit that wrote the rule does,
   "Hold one voice, and say where this ends up (#86)", `206a501`.
-- **Where neither the instructions file nor the project's documents show the
-  language, `start-work` at a project not set up and `setup-project` ask it,
-  first and in English; no other skill asks; a language the answer names
-  holds, and where it names none, the one it is written in.** The run never
+- **Where nothing the user has written shows the language, it is taken from
+  their instructions file in the context, otherwise from the language the
+  setup recorded, on the line at the session start that opens `[Language]`,
+  otherwise from a document of the project the person wrote; a document
+  devloop wrote — under `docs/agents/`, carrying `<!-- devloop:`, the block
+  `## Control documents` of `CLAUDE.md` — shows nothing; where none of these
+  shows it, `start-work` and `setup-project` ask it, first and in English; no
+  other skill asks; a language the answer names holds, where it names none,
+  the one it is written in, and an answer that shows neither is asked
+  again.** The run never
   guesses, and the question comes only where it otherwise would have to; a
   named language holds since the rule to answer in the language the user
-  writes in would read "German" as English. Decided on 5 November 2026 by the
-  person for the setup, entry "Six contradictions settled, the README says what the mark guard reads.", and on 5 and 6 November 2026 for `start-work` and the
-  named language, entry "The language asked first where nothing shows it, a named one holds.";
+  writes in would read "German" as English; every file devloop writes is
+  English, `shared/project-language.md`, so devloop's documents show devloop's
+  English and not the person's language, and the language of the person who
+  set the project up, which does not change from session to session, stands
+  in the record instead; the marks of devloop's documents are the ones the
+  setup writes, the marker line of step 6 and the pointer block of step 7.
+  Decided on 5 November 2026 by the
+  person for the setup, entry "Six contradictions settled, the README says what the mark guard reads.", on 5 and 6 November 2026 for `start-work` and the
+  named language, entry "The language asked first where nothing shows it, a named one holds.",
+  and on 6 November 2026 for the record, devloop's documents and the answer
+  asked again, entry "The setup records the language, asked first wherever nothing shows it.";
   the reasons and the cases stand under `skills/setup-project/SKILL.md`, step
-  0, and `skills/start-work/SKILL.md`, step 2.
+  0, its refresh and `environment.md`, and `skills/start-work/SKILL.md`, step 2.
 - **A technical term the person's language uses as it stands is not
   translated.** Case: on 26 October 2026 run 1 of the three closing runs of the
   pass headed the user stories „Geschichten“, entry "Three closing runs of the
