@@ -995,7 +995,15 @@ through `bin/devloop-install-record --unattended`.
 
 Ends with two runs on one fresh project, one through the planning under
 `--auto` and one on the direct route, each meeting the cases the blocks of
-its section name, read off the platform and the session logs; a bench for
+its section name, read off the platform and the session logs; a third run,
+decided on 6 November 2026 by the person, the roadmap entry of that date on
+the language recorded, on a private repository under the plan Free of
+GitHub, where the mode cannot be set up, through `setup-checks` up to its
+step 8, meeting the case of the two blocks of this section on the reading
+before the question — the HTTP 403 whose body says to upgrade or to make the
+repository public, at which no question is put and nothing is written —,
+which the two runs on the fresh project cannot meet, since the mode is set up
+there; a bench for
 each hook and program of the section; and the tool reporting every block of
 its section walked, closed or carrying the form "Built, never walked, cannot
 be forced". Every block of the section is checked against the code before
@@ -1058,7 +1066,18 @@ preset `attribution.pr`.
 Ends with a setup run on a fresh project with the person there through every
 question and the check setup, a refresh of it, and a planning through Stage 1,
 read off the session logs against the output style's rules on where text
-stands; a bench per guard and hook of the section; and the tool reporting
+stands; the setup run, decided on 6 November 2026 by the person, the roadmap
+entry of that date on the language recorded, begins with the command alone in
+an empty folder, in a session in whose context no instructions file of the
+person in a language stands, so that it meets the cases of the blocks of this
+section on the language — asked first where nothing shows it, the answer that
+names no language and is written in none the run can tell asked again, the
+idea that shows none, and the language the setup ran in recorded —, and a
+later session in the same project, in a session without such an instructions
+file as well, takes the language from the record; how the person begins a
+session without their instructions file in the context no text of this
+repository says, so the condition alone stands here; a bench per guard and
+hook of the section; and the tool reporting
 every block of its section walked, closed or carrying the form.
 
 Why here: after milestone 13 and before milestones 8 and 9, decision (3) of

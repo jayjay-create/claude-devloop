@@ -3805,6 +3805,30 @@ their section.
 - Status: Built, never walked
 - Note: found 5 November 2026 by the order on the six contradictions settled, in the play-through of the language at the setup, case (a), the command alone in an empty folder without an instructions file; the two skills that begin with a question through the widget, `start-work` with an open issue devloop did not write and `setup-checks` typed by the person, meet the case only in a project set up, whose documents show the language; in milestone 14 since this day, the group of the session start and the routes of start-work; decided on 5 November 2026 by the person, the form and the named language on 5 and 6 November 2026, and built 6 November 2026 by the order on the language asked first, the roadmap entry of 6 November 2026, the Should changed to the decision; not chosen: the introduction in English, the user's answer setting the language
 
+### the language the setup ran in is recorded nowhere, so a later session without an instructions file takes it from devloop's English documents
+- Wrong: `shared/language-opening.md` took the language, where nothing the user has written and no instructions file of theirs showed it, from "this project's documents", and `shared/project-language.md` has every file devloop writes in English, so at `set up` and `set up in part` without an idea in a project whose only documents are the five devloop wrote under `docs/agents/` the question what to build, the open question and the offer of an issue devloop did not write came in English, the language the setup ran in recorded nowhere
+- Should: the setup writes the language it ran in with the person into a section `## Language` of `docs/agents/environment.md` beside the three records, `language:` the English name and `language-recorded:` the date, in step 6 at a first setup and by the refresh where none stands on the main branch; where nothing the person has written shows the language, a later session takes it from their instructions file in the context, otherwise from the record, read by `bin/devloop-install-record --language` off the main branch as last fetched and given to the run by `hooks/session-start.sh` as the line `[Language]`; a document devloop wrote never counts; in a project without the record where neither an instructions file nor a document the person wrote shows it, the question comes first, as at `not set up here`
+- Found: The language asked first where nothing shows it, a named one holds.
+- Fix: `skills/setup-project/SKILL.md` "language-recorded: YYYY-MM-DD"
+- Status: Built, never walked
+- Note: situation (c) under "Not built, named" of the entry its Found names, found 6 November 2026 by the order on the language asked first; decided on 6 November 2026 by the person, the roadmap entry of 6 November 2026 on the language recorded, the record and not devloop's documents counting as no sign with the question in every session; built by that order in `skills/setup-project/SKILL.md` step 6 and its refresh, `bin/devloop-install-record --language`, `hooks/session-start.sh` and the two shared language blocks; in milestone 14, the group of the session start and the routes of `start-work`, since the closing run of that milestone meets its case in a later session of the set-up project without an instructions file in a language
+
+### the answer Webshop to the question on the language names none and is written in none the run can tell, and no text says what follows
+- Wrong: `skills/start-work/SKILL.md` step 2 and `skills/setup-project/SKILL.md` step 0 said that a language the answer names holds and otherwise the one it is written in, and said nothing of an answer that names none and is written in none the run can tell, "Webshop" standing so in German, English and Dutch, so the run guessed there
+- Should: the same question is put again, in the same form, and nothing else is said; the run never guesses, and holding English until they write in a language that shows would be a guess
+- Found: The language asked first where nothing shows it, a named one holds.
+- Fix: `skills/start-work/SKILL.md` "question is put again, in the same form, and nothing else is said; the run"
+- Status: Built, never walked
+- Note: situation (a) under "Not built, named" of the entry its Found names, found 6 November 2026 by the order on the language asked first in its play-through; decided on 6 November 2026 by the person, the roadmap entry of 6 November 2026 on the language recorded, the basis "The run never guesses" in both skills; built by that order in both skills and in the two shared language blocks; not chosen: English held until they write in a language that shows; in milestone 14, the group of the session start and the routes of `start-work`
+
+### start-work asks nothing where the idea came with the command and shows no language, so step 3 runs in a guessed language
+- Wrong: `skills/start-work/SKILL.md` step 2 said where the idea came with the command "ask nothing and go on to step 3 in the same reply", for the reason that a run with the idea in hand cannot follow a question on what to build, and asked the language first only where the idea did not come with the command, while `setup-project` step 0 asks only where the user typed nothing but the command, so that with an idea showing no language, "Webshop", without an instructions file and without a document the person wrote, step 3 ran in a guessed language
+- Should: `start-work` asks the language first there too, before step 3, alone in the message that ends the turn, in the same form as where the idea did not come, wherever nothing shows the language, the idea included; the sentence asks nothing on what to build, its reason untouched, and step 3 follows in the next turn in the answer's language
+- Found: The language asked first where nothing shows it, a named one holds.
+- Fix: `skills/start-work/SKILL.md` "shows none —, the question on the language above comes first all the same,"
+- Status: Built, never walked
+- Note: situation (b) under "Not built, named" of the entry its Found names, found 6 November 2026 by the order on the language asked first in its play-through; decided on 6 November 2026 by the person, the roadmap entry of 6 November 2026 on the language recorded, the basis decision (1) of the entry its Found names, "where nothing shows the language — nothing the user has written"; not chosen: the question in `setup-project` step 0 wherever nothing the user has written shows it, the idea included, which would run step 3 in a guessed language; in milestone 14, the group of the session start and the routes of `start-work`
+
 ## Milestone 5
 
 ### a finding announced as filed is not always filed and nothing checks that a promised issue exists
@@ -5312,6 +5336,14 @@ their section.
 - Fix: `scripts/devloop-stock-take` "docs/roadmap-archive-1.md, the entry of 29 September 2026 on the merge"
 - Status: Walked
 - Note: found 4 November 2026 by the consistency audit of that day, by grep -n 'docs/roadmap.md' over hooks/, bin/, scripts/ and .github/ against the archive rule; a comment in a program, left as it stands since the order of that day changes nothing outside docs/; decided 4 November 2026, the roadmap entry of that date on the rejection of a record on a roadmap line: mended by the order that builds the block on a thing Walked on the branch without a run the branch adds; mended 5 November 2026, version 0.176.0, the roadmap entry of 5 November 2026 on the sorting into the milestones, decision (15): line 66 of the head names docs/roadmap-archive-1.md; the evidence on that line
+
+### skill-conventions says no reader under bin/ is built for the dependency record while the same file names bin/devloop-install-record --dependency as its one reading
+- Wrong: `docs/skill-conventions.md` says under the rule on the dependency file that the skills read the record "with `git show` off the main branch as last fetched; no reader under `bin/` and no line at the session start are built for it", while "The install guard reads a record" in the same file and the head of `bin/devloop-install-record` name `bin/devloop-install-record --dependency` as the one reading of the section `## Dependency permission`
+- Should: the sentence names the reader, `bin/devloop-install-record --dependency`, through which the guard on the mark reads the record by way of `bin/devloop-start-conditions`, and says that no line at the session start is built for it
+- Found: The setup records the language, asked first wherever nothing shows it.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 6 November 2026 by the order on the language recorded, reading the places that name the records of `environment.md`, outside that order and not built by it; in milestone 15, the group of the documents' statements about the set
 
 ## Without a milestone
 

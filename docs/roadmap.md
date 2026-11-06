@@ -2325,6 +2325,271 @@ and for the proofs of closings.
   inside the new text; lines that can carry no unique anchor +0; with "not
   stated" +0; Undetermined +0. No run is recorded.
 
+- **The setup records the language, asked first wherever nothing shows it.**
+
+  6 November 2026, version 0.180.0. On `task/language-recorded`, off
+  `origin/main` at `8ca843a`, in three commits: the code with the version —
+  `bin/devloop-install-record`, `hooks/session-start.sh`, `hooks/hooks.json`,
+  `skills/start-work/SKILL.md`, `skills/setup-project/SKILL.md`,
+  `shared/language-opening.md`, `shared/closing.md`, `docs/rationale.md` and
+  `docs/skill-conventions.md`; this entry with `docs/plan.md`,
+  `docs/defects.md` and `docs/stock-take.tsv`; and the runs of the bench,
+  measured against the committed program and hook of the second commit,
+  whose code is the first's, in a throwaway project under a temporary
+  directory, GitHub not reached, and recorded in the third with the figures
+  of the tool. Nothing under `scripts/`, `output-styles/` or `.github/` and
+  nothing in `README.md` changes. Written from the person's decision of this
+  day and the order that carries it, which stands outside the repository,
+  and from the report of the order on the language asked first, outside the
+  repository as well; no session log was read; GitHub was not asked. Every
+  line number of a file in this entry holds at `8ca843a` unless it says
+  otherwise.
+
+  **Decided on 6 November 2026 by the person.** (1) The setup records the
+  language: situation (c) under "Not built, named" of the entry "The
+  language asked first where nothing shows it, a named one holds.", lines
+  2240 to 2258 — `set up in part` and `set up` without an idea where the
+  project's only documents are the five devloop wrote under `docs/agents/`,
+  which `shared/project-language.md` lines 2 to 4 has written in English, so
+  that `shared/language-opening.md` line 7 took the language from devloop's
+  English. The setup writes the language it ran in with the person into a
+  section of its own of `docs/agents/environment.md`, beside `## Install
+  permission`, `## Dependency permission` and `## Unattended mode`. Where
+  nothing the person has written shows the language, every later session
+  takes it from their instructions file where it stands in the context,
+  otherwise from this record. A document devloop wrote never counts as a
+  sign of the language. In a project without the record, set up before this
+  order, where neither an instructions file nor a document the person wrote
+  shows the language, the question comes first, as at `not set up here`.
+  Reason: the language belongs to the person who set the project up and does
+  not change from session to session; a question in every session would be
+  the error the question on the language prevents, in another form. Not
+  chosen: devloop's documents counting as no sign and, where nothing else
+  shows the language, the question first in every session. Left to the order
+  and decided here, each with its reason. How the record reaches the
+  session: through `bin/devloop-install-record --language` and a line
+  `hooks/session-start.sh` gives as context, as the install record's line,
+  by "The install guard reads a record", `docs/skill-conventions.md` lines
+  2565 to 2574 — one program reads, the hook prints through it, and the line
+  reaches the run before its first word, which `start-work` step 1, one
+  command and no file read, lines 21 to 26, and every skill typed directly
+  need, where a reading in the loaded texts would stand in twelve skills; the
+  hook on `SubagentStart` gives nothing of it, since a subagent does not
+  speak to the person. Who writes it where it is missing: step 6 of
+  `setup-project` at a first setup, in the template of `environment.md`, and
+  the refresh where none stands on the main branch, read there through the
+  program after its fetch and written in the working tree on `devloop-setup`
+  after the last question and before the first write, as the install record
+  at a refresh, `skills/setup-project/SKILL.md` lines 82 to 100 and 783 to
+  788; the refresh puts the question on the language first where nothing
+  shows it, in the form of step 0, so that a project set up before this order
+  gets the record at its next start, the version being newer and `start-work`
+  step 1 running the refresh before step 2, lines 45 to 57. Its form:
+  `## Language`, `language:` the English name of the language,
+  `language-recorded:` the date, ASCII, the shape of the three records,
+  `shared/install-record.md` lines 1 to 4, the English name since every file
+  devloop writes is English. Its place in the chain of the opening block —
+  what the person has written, their instructions file, the record, a
+  document of the project the person wrote, the question —, the record
+  before a document of theirs since the decision names the instructions file
+  and then the record, and a document in a project can be English by
+  convention. What marks a document devloop wrote, set where the texts give
+  it: a file under `docs/agents/`, the marker line `<!-- devloop:` of step 6,
+  line 535, and the block `## Control documents` of step 7, lines 794 to
+  800; what the texts give no mark for stands under "Not built, named"
+  below.
+
+  **What follows from a decision of the person or a rule**, each with its
+  basis. (2) The answer "Webshop" to the question on the language, situation
+  (a), lines 2220 to 2227: the same question is put again, in the same form,
+  and nothing else is said. Basis: "The run never guesses",
+  `skills/start-work/SKILL.md` lines 92 to 93 and
+  `skills/setup-project/SKILL.md` lines 183 to 184; holding English until
+  they write in a language that shows would be a guess. (3) The command with
+  an idea that shows no language, situation (b), lines 2227 to 2240:
+  `start-work` asks the language first there too, before step 3, where
+  nothing shows it; line 127, "ask nothing and go on to step 3 in the same
+  reply", now asks nothing on what to build, its reason — a run with the
+  idea in hand cannot follow a question on what to build — untouched. Basis:
+  decision (1) of the entry of 6 November 2026, lines 2081 to 2090, "where
+  nothing shows the language — nothing the user has written, …": an idea
+  that shows no language shows none; the other way, the question in step 0
+  of `setup-project`, would run step 3 in a guessed language. (4) One block
+  each for (1), (2) and (3) in `docs/defects.md`, with Wrong, Should, Found
+  the head of the entry of 6 November 2026, Fix the line of the repair,
+  Built, never walked, and a Note; in milestone 14 by the rule of 5 November
+  2026, `docs/plan.md` lines 135 to 147, in the group of the session start
+  and the routes of `start-work`, lines 1153 to 1154 above, since the
+  closing run of that milestone meets their cases, (6) below. (5) Milestone
+  13, `docs/plan.md` lines 996 to 1003, "Ends with": the two runs on the
+  fresh project cannot meet the case of the blocks of lines 2133 and 2724 of
+  `docs/defects.md`, the reading before the question with HTTP 403, since
+  the mode is set up there, and the 403 comes on a private repository under
+  the plan Free of GitHub, where the mode cannot be set up, the report of
+  the order of 6 November 2026, section 6 point 4; "Ends with" names a third
+  run on such a repository, through `setup-checks` up to its step 8. Basis:
+  "each meeting the cases the blocks of its section name" in "Ends with"
+  itself. The second case of the block of line 2724, a record saying no with
+  the reason that the platform refused the protection after a yes of theirs:
+  `skills/setup-checks/SKILL.md` step 8 sets the protection in its third
+  step, lines 1370 to 1376, after auto-merge read back `true`, on a
+  repository that answered `[]` or a list to the rules query before the
+  question, lines 970 to 976; a protection refused once set, "a private
+  repository on a plan that does not allow it is the usual reason", lines
+  1388 to 1390, needs a repository that offers the protection at the reading
+  and refuses it at the write, which none of the person's own repositories
+  does on purpose, the plan not changing between the two and the account
+  holding admin rights; nothing is built for it, the block stays in
+  milestone 13, and the report puts the form of this one case to the person.
+  (6) Milestone 14, lines 1058 to 1062, "Ends with": the closing run meets
+  the case of the block of line 3800 and of the three blocks of (4) only in
+  a session in whose context no instructions file of the person in a
+  language stands, the same report, section 6 point 5; "Ends with" names the
+  setup run as beginning with the command alone in an empty folder in such a
+  session, meeting the four cases, and a later session in the same project,
+  likewise without such a file, taking the language from the record. How
+  the person begins a session without their instructions file in the context
+  no text of the repository says — `docs/roadmap-archive-1.md` lines 15559
+  to 15563 quote the settings page of Claude Code on `CLAUDE_CONFIG_DIR` for
+  "settings, session history, and plugins", not for the instructions file —,
+  so the plan names the condition alone. Basis: the same. (7) The
+  play-through before the build, the order's rule, at every situation it
+  names, stands in the report; the situations with one answer are built, two
+  get none and stand under "Not built, named". Without the person none of
+  the places is reached, the mode beginning at the end of Stage 1 or on the
+  direct route, `skills/start-work/SKILL.md` lines 379 to 412; the hook runs
+  at the start of every session, with `--auto` typed as without, and prints
+  nothing of the language where the project is not set up. On every system
+  the hook and the program run on — macOS, Linux, Windows with Git Bash,
+  Alpine with BusyBox — the new lines use what the file used before, `sed -n
+  's/^key: //p'`, `grep -qxF`, `grep -m1`, `awk -v`, `printf`, `head -1`;
+  the step "hooks on every system" of the workflow runs the hook on all four
+  with a harmless input in a project not set up, where the new line is not
+  reached and the hook ends with 0 as before.
+
+  **The blocks**, each with what is built, where it stands and in which
+  state. The language recorded, block "the language the setup ran in is
+  recorded nowhere, so a later session without an instructions file takes it
+  from devloop's English documents": `skills/setup-project/SKILL.md` writes
+  the section in the template of `environment.md` and at the refresh where
+  none stands on the main branch, asking first where nothing shows the
+  language, and names it under what changed; `bin/devloop-install-record
+  --language` reads it off the default branch as last fetched, `ref:`,
+  `language:` and `recorded:` on exit 0, its own cause where the section is
+  missing or carries no language line, the shared causes before them, and
+  `--language --line` forms the one line `[Language]` with the language and
+  the date, or the none line with the cause; `--language` beside
+  `--dependency` or `--unattended` is refused with 2; `hooks/session-start.sh`
+  prints that line after the install record's, through the same program,
+  where the project is set up or set up in part; `shared/language-opening.md`
+  and `shared/closing.md` put the record after the instructions file and
+  before a document the person wrote, say that a document devloop wrote —
+  under `docs/agents/`, carrying `<!-- devloop:`, the block `## Control
+  documents` of `CLAUDE.md` — shows nothing, and name `start-work` and
+  `setup-project` as the two that ask where none of these shows it;
+  `skills/start-work/SKILL.md` step 2 asks it first whatever the status line
+  reads, the record among what shows it, and says that at `set up` the
+  refresh of step 1 asked already; `hooks/hooks.json` names the line in its
+  description; `docs/skill-conventions.md` says under "The install guard
+  reads a record" that the language is a fourth section read the same way,
+  and `docs/rationale.md` carries the points under `start-work` step 2,
+  `setup-project`'s refresh, step 0 and `environment.md`, and
+  `shared/closing.md`. Fix the line `language-recorded: YYYY-MM-DD` of the
+  template; Built, never walked, in milestone 14, the group of the session
+  start and the routes of `start-work`. The answer that shows none, block
+  "the answer Webshop to the question on the language names none and is
+  written in none the run can tell, and no text says what follows":
+  `skills/start-work/SKILL.md` step 2 and `skills/setup-project/SKILL.md`
+  step 0 put the same question again, in the same form, and the two shared
+  blocks say that an answer showing neither is asked again; Fix the line of
+  the sentence in `start-work`; Built, never walked, in milestone 14, the
+  same group. The idea that shows none, block "start-work asks nothing where
+  the idea came with the command and shows no language, so step 3 runs in a
+  guessed language": `skills/start-work/SKILL.md` step 2 asks nothing on
+  what to build and puts the question on the language first where nothing
+  shows it, the idea included, step 3 following in the next turn in the
+  answer's language; Fix the line of that sentence; Built, never walked, in
+  milestone 14, the same group. The two blocks on step 8, lines 2133 and
+  2724: nothing built, Built, never walked, in milestone 13 as before;
+  `docs/plan.md` names the third run. The block of line 3800: nothing built,
+  its Should holding for its case, `not set up here`, where no document of
+  devloop's exists; Built, never walked, in milestone 14 as before.
+
+  **Not built, named.** (a) A skill the person types directly in a project
+  without the record — `setup-checks` say, set up before this order, no
+  instructions file in the context, the project's documents devloop's alone:
+  nothing shows the language, the record is not there yet, and "no other
+  skill asks", `shared/language-opening.md` line 11, which the decisions of
+  5 and 6 November 2026 left standing; the run would guess, which it never
+  does. Two ways: every skill that begins with a question asks the language
+  first where the record is missing and nothing shows it, as `start-work`
+  does — one question more in the shared block, until the next start of
+  `start-work` has landed the record; or such a skill holds English until the
+  person writes, the record coming with that next start. (b) What marks a
+  document devloop wrote beyond the five, the marker line and the pointer
+  block: decision records under `docs/adr/`, `CONTEXT.md`,
+  `docs/adr/README.md`, tests, configuration and workflow files, notes —
+  `shared/project-language.md` has them written in English and no text gives
+  them a mark, so a run cannot tell them from the person's; a mark, or the
+  rule that only the marked ones are devloop's, is the person's to decide.
+  (c) The second case of the block of line 2724, (5) above, the form "Built,
+  never walked, cannot be forced" for it being the person's. All three are
+  the report's section 6.
+
+  **What changed in the documents.** `docs/defects.md`: the three blocks of
+  (4) at the end of the section of milestone 14, and one block outside the
+  order, found by the reading of the places that name the records, in
+  milestone 15, the group of the documents' statements about the set:
+  `docs/skill-conventions.md` lines 1211 to 1212 say that no reader under
+  `bin/` is built for the dependency record, while lines 2479 to 2481 and the
+  head of `bin/devloop-install-record` name `--dependency` as its one
+  reading; Recorded, not built, Found this entry. No block is removed,
+  renamed or changes its Should. `docs/plan.md`: "Ends with" of milestones
+  13 and 14 as (5) and (6) say. `docs/rationale.md`: the points named above,
+  each with its case and reason alone. `docs/skill-conventions.md`: the
+  paragraph under "The install guard reads a record". `docs/stock-take.tsv`:
+  25 things for the new outcomes — in the two shared blocks a document
+  devloop wrote showing nothing and the answer asked again; in
+  `setup-project` the refresh writing the record and leaving a standing one,
+  step 0's answer asked again, and under `environment.md` the section
+  written and every later session reading it; in `start-work` the answer
+  asked again, the refresh having asked at `set up`, and the idea that shows
+  none; in the program the reading, its two causes, the two forms of the line
+  and the refusal; in the hook the line and its none form —, seven records
+  of lines inside the new text, and 15 rows re-anchored or renamed, no run
+  hanging on them: in each shared block the things on the instructions file,
+  on the exception and on the named and the unnamed language; in
+  `setup-project` step 0 the thing on the language taken from what is in
+  front of the run, the one on neither showing it and the one on `start-work`
+  having asked, with their two records of lines; in `start-work` the thing
+  on the question asked first and the one on something showing the language,
+  renamed. The runs of the bench, in the third commit, each on the row of its
+  thing, as below.
+
+  **The bench**, run against the committed program and hook of the second commit, in a throwaway project under a temporary directory with a bare repository as `origin`, `docs/agents/` with the five files on `origin/main` and fetched, the hook fed a SessionStart input through the reader with `CLAUDE_PROJECT_DIR` on the project; one line per case, each with what came out:
+  Case P1, `--language` with the record `language: German` and `language-recorded: 2026-11-06` on `origin/main`: `ref: origin/main`, `language: German`, `recorded: 2026-11-06`, exit 0.
+  Case P7, `--language --line` with that record: `[Language] German | recorded: 2026-11-06 | the language the setup of this project ran in with the person, read off origin/main as last fetched, not off the working tree`, exit 0.
+  Case P11, `--line` with the install record under a no beside it: the install line as before, `[InstallRecord] tools: no | places: none | routes: none | answered: 2026-11-06 | read off origin/main as last fetched, not off the working tree`, exit 0.
+  Case H1, the hook in that project, set up: three lines, `[ProjectStatus] branch: main | uncommitted changes: 0 | devloop: set up`, the install line, and the `[Language]` line of case P7, exit 0.
+  Case P9, the section with `language: Spanish` and no date line: `recorded: none`, exit 0.
+  Case P3, the section with the date line and no `language:` line: `cause: the section "## Language" on origin/main carries no language line`, exit 1.
+  Case P4, a `language:` line with an empty value: the cause of case P3, exit 1.
+  Case P2, `environment.md` without the section: `cause: docs/agents/environment.md on origin/main carries no section "## Language", so the setup recorded no language`, exit 1.
+  Case P8, `--language --line` without the section: `[Language] none: ` with the cause of case P2 ` | no language is recorded for this project`, exit 0.
+  Case H2, the hook, set up, without the section: the status line, the install line, and the none line of case P8, exit 0.
+  Case P6, `--language --dependency`, and case P10, `--unattended --language`: `devloop-install-record: --language reads the record of the language alone and goes with neither --dependency nor --unattended` on stderr, exit 2.
+  Case P10b, `--line --dependency`: `devloop-install-record: --line forms the line of the install record or of the language record and does not go with --dependency or --unattended` on stderr, exit 2; the same for `--language --line --unattended`.
+  Case P5, every file of the setup taken off `origin/main` and `docs/agents/environment.md` in the working tree alone, `--language`: `cause: there is no docs/agents/environment.md on origin/main as last fetched`, exit 1.
+  Case H4, the hook there, set up in part: the status line with the five files missing, `[InstallRecord] none: there is no docs/agents/environment.md on origin/main as last fetched | every install outside the repository is blocked and handed to the person until a record has landed on the default branch`, and `[Language] none: there is no docs/agents/environment.md on origin/main as last fetched | no language is recorded for this project`, exit 0.
+  Case H3, the hook with `docs/agents/` gone, not set up here: `[ProjectStatus] devloop: not set up here` alone, nothing of the install record and nothing of the language, exit 0.
+  Case P12, the record written into `environment.md` in the working tree with nothing on `origin/main`, `--language`: the cause of case P5, exit 1, the working tree not read.
+
+  **The tool.** Before this order, at `8ca843a`: exit 0, broken records 0,
+  uncovered lines 0 of 4543, blocks 692, under "## Without a milestone" 41,
+  every one of them closed, Undetermined 24, Recorded, not built 255, Built,
+  never walked 1495, Walked 688, Closed 65; milestone 13 174 blocks,
+  milestone 14 134, milestone 15 103. At the third commit: FIGURES.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
