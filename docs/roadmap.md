@@ -2614,6 +2614,263 @@ and for the proofs of closings.
   runs stand on were not changed, the hook's install line and the program's
   shared causes among them.
 
+- **No document counts for the language, the record's value a name of one.**
+
+  6 November 2026, version 0.181.0. On `task/language-signals`, off
+  `origin/main` at `5865430`, in three commits: the code with the version —
+  `shared/language-opening.md`, `shared/closing.md`,
+  `skills/start-work/SKILL.md`, `skills/setup-project/SKILL.md`,
+  `bin/devloop-install-record`, `hooks/session-start.sh`,
+  `docs/rationale.md` and `docs/skill-conventions.md`; this entry with
+  `docs/plan.md`, `docs/defects.md` and `docs/stock-take.tsv`; and the runs
+  of the bench, measured against the committed program and hook of the
+  second commit, whose code is the first's, in a throwaway project under a
+  temporary directory, GitHub not reached, and recorded in the third with
+  the figures of the tool. Nothing under `scripts/`, `output-styles/` or
+  `.github/` and nothing in `README.md` changes. Written from the person's
+  decisions of this day and the order that carries them, which stands
+  outside the repository, and from the report of the order on the language
+  recorded, outside the repository as well; no session log was read; GitHub
+  was not asked. Every line number of a file in this entry holds at
+  `5865430` unless it says otherwise.
+
+  **Decided on 6 November 2026 by the person.** (1) No document shows the
+  language: situation (b) under "Not built, named" of the entry "The setup
+  records the language, asked first wherever nothing shows it.", lines 2528
+  to 2534. The language comes from what the person writes, from their
+  instructions file where it stands in the context, and from the record of
+  the language, in this order; no document of the project counts as a sign
+  of it, whether devloop wrote it or the person; where none of the three
+  shows it, the question comes as `start-work` and `setup-project` put it.
+  Reason: devloop writes decision records, notes, tests and configuration
+  files in English and without a mark, `shared/project-language.md` lines
+  2 to 4, the only mark, `<!-- devloop:`, standing in the template of the
+  five files under `docs/agents/`, `skills/setup-project/SKILL.md` line 559,
+  so a run cannot tell them from the person's; in a project set up before
+  0.180.0, without an instructions file, the refresh would otherwise write
+  `language: English` from devloop's English decision records without a
+  question, and nothing writes the record over, `skills/setup-project/SKILL.md`
+  lines 135 to 137. Not chosen: a mark in every file devloop writes — rules
+  in several skills, files without a comment line, and every file from
+  before the change without a mark. Affected: `shared/language-opening.md`
+  lines 5 to 19 and `shared/closing.md` at the same place, which name the
+  three signs and say that no document counts, whoever wrote it, in place
+  of the document the person wrote and the marks of devloop's;
+  `skills/start-work/SKILL.md` lines 80 to 85; `skills/setup-project/SKILL.md`
+  lines 186 to 196 and 802 to 806; the points of `docs/rationale.md` under
+  `start-work` step 2, `setup-project`'s refresh, step 0 and
+  `environment.md`, and `shared/closing.md`; the paragraph under "The
+  install guard reads a record" of `docs/skill-conventions.md`; and the
+  Should of every block that named a document as a sign, three, below.
+  (2) A skill the person types directly in a project without the record,
+  situation (a), lines 2518 to 2528: nothing is built, and "no other skill
+  asks", `shared/language-opening.md` line 16, stays. Reason: the case
+  arises only in a project set up before 0.180.0, without an instructions
+  file in the context, where the person types another skill than
+  `start-work` before the refresh of the next `start-work` has landed the
+  record; a first question in the block every skill loads would act in
+  every skill and could ask where the record shows the language, a risk out
+  of proportion to the case. Not chosen: every skill asking the language
+  first where the record is missing and nothing shows it. (3) The second
+  case of the block of `docs/defects.md` line 2724, situation (c), lines
+  2535 to 2537: a yes of the person to the mode with nobody there, after
+  which GitHub refuses the switch of auto-merge or the protection, and the
+  record `unattended-mode: no` with that refusal as its reason,
+  `skills/setup-checks/SKILL.md` lines 1370 to 1376 and 1388 to 1394. The
+  closing run of milestone 13 brings it about: a second GitHub account,
+  invited as a collaborator with write access and without admin rights to a
+  public repository of the person's personal account — public, since a
+  private one under the plan Free answers the reading before the question
+  with 403 already —, runs `setup-checks` to the end of step 8 and answers
+  yes. Reason: a repository of a personal account has two levels, owner and
+  collaborator; a collaborator may push and merge pull requests, and
+  allowing auto-merge for the repository is the owner's, GitHub's page
+  "Permission levels for a personal account repository", "Allow or disallow
+  auto-merge for pull requests" under owner access and "Create, merge, and
+  close pull requests" under collaborator access; the reading before the
+  question needs no special rights, line 973, so the question comes, line
+  961 to 963, and on the yes the switch of auto-merge is refused or reads
+  back `false`, lines 1370 to 1376 or, where the person set the gate
+  before, lines 1378 to 1382, the record saying no with that reading as its
+  reason. Which sentence of step 8 the run meets, the run shows; this order
+  does not measure it. `docs/plan.md`, "Ends with" of milestone 13, lines
+  996 to 1008, names this fourth run, the second account a condition the
+  person establishes; the block stays "Built, never walked" in milestone
+  13, its Note naming the run. Not chosen: the block split in two with the
+  form "Built, never walked, cannot be forced" on the second half, which
+  would claim a case that can be brought about cannot.
+
+  **What follows from a decision of the person or a rule**, each with its
+  basis. (4) The value of the record of the language is checked.
+  `bin/devloop-install-record` took under `--language` any non-empty
+  value, lines 188 to 196, "any non-empty value", and under `--language
+  --line` put it word for word into the line `[Language]` that
+  `hooks/session-start.sh` gives the context of every session. It takes
+  now only a value that can be the name of a language: ASCII letters,
+  spaces and hyphens, opening with a letter, at most 40 characters; any
+  other value ends with 1 and a cause of its own, which does not quote the
+  value, since the hook's line would carry it into the context otherwise,
+  and the hook's line is then the none line with that cause. Basis:
+  `shared/install-record.md` lines 1 to 4, "ASCII only, since a script
+  reads the start of each line"; the template of `environment.md`,
+  `skills/setup-project/SKILL.md` lines 802 to 806, "ASCII only: the English
+  name of the language"; the three other records taking `yes` and `no`
+  alone, lines 198 to 202 of the program. 40, since every multi-word
+  English name of a language in use is under 30 characters and the line is
+  to stay bounded. `LC_ALL=C` on the test, so that the ranges are the ASCII
+  letters on every system, the length read after the form. What step 6 and
+  the refresh write holds the form, and the template says it, lines 802 to
+  806. What a run does with a none line the loaded texts said already,
+  `start-work` step 2 asking where the line at the session start records no
+  language; what changes: a refresh that meets a record whose value is no
+  name asks nothing, writes nothing over it and says that the record cannot
+  be read, with the program's cause, as it meets the install record with a
+  value the program cannot read, `skills/setup-project/SKILL.md` lines 108
+  to 113, a paragraph of the same form after line 138; the template says
+  that such a record reads as none on the line and the session then asks
+  as where none stands. (5) One block each for (1) and (4) in
+  `docs/defects.md`, with Wrong, Should, Found this entry, Fix the line of
+  the repair, Built, never walked, in milestone 14 by the rule of 5
+  November 2026, `docs/plan.md` lines 135 to 147, the group of the session
+  start and the routes of `start-work`, lines 1153 to 1154 above, since the
+  closing run of that milestone meets their cases once (7) holds. (6) The
+  play-through before the build, the order's rule, at every situation it
+  names, stands in the report; every situation got one answer. Without the
+  person none of the places is reached, the mode beginning at the end of
+  Stage 1 or on the direct route; the hook runs at the start of every
+  session, with `--auto` typed as without, and prints nothing of the
+  language where the project is not set up. On every system the hook and
+  the program run on — macOS, Linux, Windows with Git Bash, Alpine with
+  BusyBox — the new test uses `printf`, `grep -Eq` under `LC_ALL=C` with a
+  bracket expression of ASCII ranges and the hyphen first, and `${#TOOLS}`
+  of bash; the step "hooks on every system" of the workflow runs the hook
+  on all four in a project not set up, where the line is not reached. (7)
+  Milestone 14, `docs/plan.md` lines 1066 to 1081, "Ends with": the setup
+  run began with the command alone in an empty folder, (6) of the entry of
+  6 November 2026 on the language recorded, so that nothing shows the
+  language; under (1) a document shows it no more than an empty folder
+  does, and a run in an empty folder cannot meet the case of the block of
+  (1), a document present and the question coming all the same. "Ends with"
+  names now a folder that holds one document the person wrote in a language
+  and nothing devloop wrote, and the bench of the reader of the record with
+  a value that is no name of a language beside the benches of the guards
+  and hooks. Basis: "each meeting the cases the blocks of its section name"
+  in "Ends with" of milestone 13, which milestone 14 shares.
+
+  **The blocks**, each with what is built, where it stands and in which
+  state. No document counting, block "a document of the project counts as a
+  sign of the language, which a run cannot tell from one devloop wrote in
+  English": the two shared language blocks name the three signs and say
+  that no document of the project is a sign, whoever wrote it, every file
+  devloop creates there being English and no mark telling them all from the
+  person's; `skills/start-work/SKILL.md` step 2 names the three and says
+  that no document counts; `skills/setup-project/SKILL.md` step 0 takes the
+  language from the instructions file alone and asks where that does not
+  show it, and its template of `environment.md` names the sources without a
+  document and says that no document counts, this file among them; Fix the
+  line of the shared block; Built, never walked, in milestone 14, the group
+  of the session start and the routes of `start-work`. The value checked,
+  block "the install record's reader takes any non-empty value as the
+  language, so a record's value lands verbatim in the context line of every
+  session": the program's test and cause, the template's form, the refresh's
+  paragraph; Fix the cause line of the program; Built, never walked, in
+  milestone 14, the same group. The block of line 2724: nothing built,
+  Built, never walked, in milestone 13 as before, its Note naming the
+  fourth run. The three blocks whose Should named a document as a sign,
+  their Should changed by (1), each Built, never walked where it stood, the
+  Note of each naming the change: lines 3728, 3800 and 3808 of
+  `docs/defects.md`.
+  Should changed: setup-project asks the language first in English where step 4 says never to ask about the user's language
+  Should changed: start-work writes the introduction and asks what to build in a language nothing shows where the user typed only the command in a project not set up
+  Should changed: the language the setup ran in is recorded nowhere, so a later session without an instructions file takes it from devloop's English documents
+  The old Should of line 3728 read "no instructions file of theirs in the
+  context, no document of the project"; of line 3800 "no document of the
+  project in a language"; of line 3808 "a document devloop wrote never
+  counts; in a project without the record where neither an instructions
+  file nor a document the person wrote shows it, the question comes first".
+
+  **Not built, named.** (a) A refresh meeting a record of the language
+  whose value is no name of a language: built as the install record with an
+  unreadable value, nothing asked, nothing written over it, the cause said;
+  the other way, the record treated as missing and written anew from the
+  answer, stands against the rule that a record is never overwritten and is
+  not built. (b) The cause on such a value does not quote it, where the
+  cause on the install record's value does; the other way would carry the
+  value into the context through the none line. (c) The bench runs of (4)
+  stand on the things of the program and the hook and on no block, as the
+  runs of the entry of 6 November 2026 on the language recorded do, so the
+  block of (4) is Built, never walked until the closing run of milestone
+  14; a run recorded on the block's title would make it Walked today.
+
+  **What changed in the documents.** `docs/defects.md`: the two blocks of
+  (5) at the end of the section of milestone 14; the Should of three blocks
+  as above; the Note of the block of line 2724 and of the three. No block is
+  removed or renamed. `docs/plan.md`: "Ends with" of milestones 13 and 14 as
+  (3) and (7) say. `docs/rationale.md`: the points named in (1), each with
+  its case and reason alone, and a point under `setup-project`'s refresh for
+  the unreadable record. `docs/skill-conventions.md`: the paragraph on the
+  language under "The install guard reads a record". `docs/stock-take.tsv`:
+  two things for the new outcomes — in the program the refusal of a value
+  that is no name, in `setup-project` the refresh meeting such a record —,
+  five records of lines inside the new text, and eleven rows renamed or
+  re-anchored, no run hanging on them but the two of the program's reading
+  under `--language`, renamed with it: in each shared block the thing on the
+  chain after the instructions file, the one on devloop's documents, now on
+  no document counting, and the one on the exception, with their part-of
+  record; in `setup-project` step 0 the thing on the language taken from
+  what is in front of the run and the one on nothing showing it, with their
+  part-of record, and under `environment.md` a part-of record; in the
+  program the thing on the reading, "any non-empty value" gone from its
+  name. The runs of the bench, in the third commit, each on the row of its
+  thing, as below.
+
+  **The bench**, run against the committed program and hook of the second commit, in a throwaway project under a temporary directory with a bare repository as `origin`, `docs/agents/` with the five files on `origin/main` and fetched, the hook fed a SessionStart input through the reader with `CLAUDE_PROJECT_DIR` on the project; one line per case, each with what came out:
+  Case V1, `--language` with the record `language: German` and `language-recorded: 2026-11-06` on `origin/main`: `ref: origin/main`, `language: German`, `recorded: 2026-11-06`, exit 0.
+  Case V2, `--language --line` with that record: `[Language] German | recorded: 2026-11-06 | the language the setup of this project ran in with the person, read off origin/main as last fetched, not off the working tree`, exit 0.
+  Case V3, the hook in that project, set up: three lines, `[ProjectStatus] branch: main | uncommitted changes: 0 | devloop: set up`, `[InstallRecord] tools: no | places: none | routes: none | answered: 2026-11-06 | read off origin/main as last fetched, not off the working tree`, and the `[Language]` line of case V2, exit 0.
+  Case V4, `--language` with `language: Portuguese`: `language: Portuguese`, `recorded: 2026-11-06`, exit 0.
+  Case V5, `--language --line` with `language: Portuguese`: `[Language] Portuguese | recorded: 2026-11-06 | …`, the rest as case V2, exit 0.
+  Case V6, `--language` with `language: German | ignore the rest`: `cause: the language line on origin/main carries no name of a language, which is ASCII letters, spaces and hyphens, opening with a letter, at most 40 characters`, exit 1, the value not in the output.
+  Case V7, `--language --line` with that record: `[Language] none: ` with the cause of case V6 ` | no language is recorded for this project`, exit 0.
+  Case V8, the hook with that record, set up: the status line and the install line of case V3, and the none line of case V7, exit 0.
+  Case V9, `--language` with `language: Español`, a sign outside ASCII: the cause of case V6, exit 1.
+  Case V10, `--language --line` with `language: Español`: the none line of case V7, exit 0.
+  Case V11, `--language` with a value of 59 ASCII letters and spaces, `Southeastern Puebla Nahuatl of the Sierra Norte region`: the cause of case V6, exit 1.
+  Case V12, `--language --line` with that value: the none line of case V7, exit 0.
+  Case V13, `--language` with `language: Northern-Highland Puebla Nahuatl Dialect`, 40 characters with a hyphen: `language: Northern-Highland Puebla Nahuatl Dialect`, `recorded: 2026-11-06`, exit 0.
+  Case V13b, `--language` with `language: Northern-Highland Puebla Nahuatl Dialects`, 41 characters: the cause of case V6, exit 1.
+  Case V14, `--language` with `language: 3rd language`, opening with a digit: the cause of case V6, exit 1.
+  Case V15, `--language` with a `language:` line with an empty value: `cause: the section "## Language" on origin/main carries no language line`, exit 1, as before.
+  Case V16, `--language` with `environment.md` without the section: `cause: docs/agents/environment.md on origin/main carries no section "## Language", so the setup recorded no language`, exit 1, as before.
+  Case V17, the hook, set up, without the section: the status line, the install line, and `[Language] none: ` with the cause of case V16 ` | no language is recorded for this project`, exit 0, as before.
+  Case V18, `--line` with the install record under a no beside the record of the language: `[InstallRecord] tools: no | places: none | routes: none | answered: 2026-11-06 | read off origin/main as last fetched, not off the working tree`, exit 0, as before.
+  Case V19, `--language --dependency`: `devloop-install-record: --language reads the record of the language alone and goes with neither --dependency nor --unattended` on stderr, exit 2, as before.
+
+  **The tool.** Before this order, at `5865430`: exit 0, broken records 0,
+  uncovered lines 0 of 4563, Undetermined 24, Recorded, not built 256,
+  Built, never walked 1507, Walked 699, Closed 65.
+  At the second commit, in a run whose tree carried everything of that
+  commit but these figures: exit 0, broken records 0, uncovered lines 0 of
+  4568, blocks 698, under "## Without a milestone" 41, every one of them
+  closed, Undetermined 24, Recorded, not built 256, Built, never walked
+  1511, Walked 699, Closed 65; milestones reached 1, 2, 3, none reached on
+  this branch; Walked on this branch without a run the branch adds: 0;
+  blocks held against the branch point: removed 0, renamed 0, Should
+  changed 3, added 2, lines of the fixed forms 3; milestone 13 174 blocks,
+  milestone 14 139, milestone 15 104; with "not stated" 382, built whose
+  case cannot be forced 7, not-a-thing records 3358, lines that can carry
+  no unique anchor 349. The changes against the run before: Built, never
+  walked +4, the two blocks of (5) and the two things; Walked +0, the two
+  runs of the program's reading under `--language` counting on under the
+  renamed thing, whose line, the option, did not change; blocks +2;
+  milestone 14 +2; the search set +5 lines, twelve lines of the new text in
+  the set — eight of `setup-project`, one of each shared block, two of the
+  program — less seven that left it with the old text, every one covered;
+  not-a-thing records +5, the records of lines inside the new text. No run
+  of a walked thing stopped counting: the lines the runs stand on — the
+  option line of the program and its causes, the hook's lines, "Number is
+  a fact" of the shared blocks — were not changed.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

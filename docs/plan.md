@@ -1003,7 +1003,20 @@ step 8, meeting the case of the two blocks of this section on the reading
 before the question — the HTTP 403 whose body says to upgrade or to make the
 repository public, at which no question is put and nothing is written —,
 which the two runs on the fresh project cannot meet, since the mode is set up
-there; a bench for
+there; a fourth run, decided on 6 November 2026 by the person, the roadmap
+entry of that date on the language signals, on a public repository of the
+person's personal account, by a second GitHub account invited as a
+collaborator with write access and without admin rights — a condition the
+person establishes —, through `setup-checks` up to the end of its step 8 and
+answering yes, meeting the second case of the block of this section on the
+record saying no where the protection is refused once it is set: a
+collaborator may push and merge pull requests, allowing auto-merge for the
+repository is the owner's, and the reading before the question needs no
+special rights, so the question comes, and on the yes the switch of
+auto-merge is refused or reads back false and the record says no with that
+reading as its reason; public, since a private repository under the plan
+Free answers the reading before the question with 403; which sentence of
+step 8 the run meets, the run shows; a bench for
 each hook and program of the section; and the tool reporting every block of
 its section walked, closed or carrying the form "Built, never walked, cannot
 be forced". Every block of the section is checked against the code before
@@ -1068,16 +1081,23 @@ question and the check setup, a refresh of it, and a planning through Stage 1,
 read off the session logs against the output style's rules on where text
 stands; the setup run, decided on 6 November 2026 by the person, the roadmap
 entry of that date on the language recorded, begins with the command alone in
-an empty folder, in a session in whose context no instructions file of the
+a folder that holds one document the person wrote in a language and nothing
+devloop wrote — decided the same day by the person, the roadmap entry of that
+date on the language signals, that no document of the project is a sign of
+the language, so that the run meets the case of the block of this section on
+that beside the four; until that decision the folder was empty —, in a
+session in whose context no instructions file of the
 person in a language stands, so that it meets the cases of the blocks of this
-section on the language — asked first where nothing shows it, the answer that
+section on the language — asked first where nothing shows it, the document
+not counting, the answer that
 names no language and is written in none the run can tell asked again, the
 idea that shows none, and the language the setup ran in recorded —, and a
 later session in the same project, in a session without such an instructions
 file as well, takes the language from the record; how the person begins a
 session without their instructions file in the context no text of this
-repository says, so the condition alone stands here; a bench per guard and
-hook of the section; and the tool reporting
+repository says, so the condition alone stands here; a bench per guard,
+hook and program of the section, the reader of the record of the language
+with a value that is no name of a language among them; and the tool reporting
 every block of its section walked, closed or carrying the form.
 
 Why here: after milestone 13 and before milestones 8 and 9, decision (3) of
