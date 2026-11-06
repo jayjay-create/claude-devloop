@@ -5358,8 +5358,8 @@ their section.
 - Should: the sentence names the reader, `bin/devloop-install-record --dependency`, through which the guard on the mark reads the record by way of `bin/devloop-start-conditions`, and says that no line at the session start is built for it
 - Found: The setup records the language, asked first wherever nothing shows it.
 - Fix: none
-- Status: Recorded, not built
-- Note: found 6 November 2026 by the order on the language recorded, reading the places that name the records of `environment.md`, outside that order and not built by it; in milestone 15, the group of the documents' statements about the set
+- Status: Closed, corrected in the document: `docs/skill-conventions.md` carries "no line at the session start is built for it".
+- Note: found 6 November 2026 by the order on the language recorded, reading the places that name the records of `environment.md`, outside that order and not built by it; in milestone 15, the group of the documents' statements about the set; closed 6 November 2026 by the consistency audit of that day, the roadmap entry of that date on the counts and references of the control documents: the sentence now names the reader and the way the guard reads through it
 
 ## Without a milestone
 
