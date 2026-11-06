@@ -77,6 +77,22 @@ read as the paragraph after the introduction says. Where step 1 found a file
 missing while the line says `set up`, the line is the older reading and step 1
 wins.
 
+Where the idea did not come with the command and nothing shows their
+language — nothing the user has written, no instructions file of theirs in
+your context, and no document of the project in a language —, ask it first,
+at `not set up here`, before the introduction: one question, alone in the
+message that ends the turn, in English, asked as text and naming no
+languages, as step 0 of `setup-project` puts the same question, saying three
+things: that nothing in this folder shows which language they write in,
+which one to use, and that they can simply answer in it. A language the
+answer names holds, whatever language the word that names it stands in;
+where it names none, the language the answer is written in holds. The
+introduction and the question what they would like to build then come in
+that language, in the next turn. Where something shows the language, it is
+not asked, and the opening block says where it is taken from. The run never
+guesses, and on this route the question of `setup-project` is never
+reached: the answer on the idea comes before the setup begins.
+
 Where the idea did not come with the command, write a short introduction in
 your own words — at most four sentences, not counting the closing line, in
 their language — covering these and nothing else:

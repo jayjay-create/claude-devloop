@@ -2721,6 +2721,13 @@ their section.
 - Fix: `skills/plan-work/SKILL.md` "questions, and with it, where the record says no, that they said no to it,"
 - Status: Built, never walked
 - Note: found 1 November 2026 by the order on the history of the loaded texts, section 17 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; built 5 November 2026, version 0.178.0, the roadmap entry of 5 November 2026 on the six contradictions settled, decided by the person that day: Stage 1 scopes its rule to the rounds and the spec up to the mark and names the refusal at the blocked mark as the one place that names today's answer; in milestone 13 since that day, the group of the mode's question and set-up with the start conditions and the mark
+### setup-checks step 8 writes nothing where GitHub offers no protection before the question and writes a record saying no where the protection is refused when it is set
+- Wrong: `skills/setup-checks/SKILL.md` under "Step 8 — Offer the unattended mode" says that where GitHub offers no protection at the reading before the question "nothing is written", and in its paragraph on the record says `unattended-mode` is `no` with the reason "that the platform refused the protection" where it is refused when it is set
+- Should: each place names its case: the reading before the question, at which GitHub offers no protection, gives no answer of theirs and writes nothing, and the record saying no with the reason that the platform refused the protection is for a yes of theirs that has landed and a protection refused once it is set, the paragraph on the record naming the reading before the question as the case that writes none
+- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
+- Fix: `skills/setup-checks/SKILL.md` "written since no answer of theirs was given"
+- Status: Built, never walked
+- Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the two sentences naming their cases and a run doing the same before and after, the roadmap entry of 5 November 2026 on the six contradictions settled; decided on 6 November 2026 by the person, the roadmap entry of 6 November 2026 on the language asked first: built and never walked, since that a run did the same before and after is not free of doubt, "offers no protection" at the reading before the question and "refused the protection" in the paragraph on the record describing the same event in ordinary words, so that a run could write unattended-mode: no at the HTTP 403 before the question; the Fix names the line of the repair, the proof of the closing until then; in milestone 13 since that day, the group of the mode's question and set-up with the start conditions and the mark
 
 ## Milestone 14
 
@@ -3792,11 +3799,11 @@ their section.
 
 ### start-work writes the introduction and asks what to build in a language nothing shows where the user typed only the command in a project not set up
 - Wrong: `skills/start-work/SKILL.md` under "Step 2" writes the introduction and the question what they would like to build "in their language" at `not set up here`, where the user typed nothing but the command and no instructions file of theirs stands in the context and no document of the project shows a language, so that the run guesses, the case the person decided for `setup-project` on 5 November 2026 by the question in English, which this route never reaches since the answer on the idea shows the language before the setup begins
-- Should: the person decides: the same question, first and in English, where nothing shows the language, in `start-work` before the introduction, or the introduction as it stands
+- Should: where nothing shows the language — nothing the user has written, no instructions file of theirs in the context, no document of the project in a language —, start-work at not set up here asks it first, before the introduction, as the one question in the message that ends the turn, in English, as setup-project step 0 puts the same question, as text and naming no languages, saying that nothing in this folder shows which language they write in, which one to use, and that they can simply answer in it; a language the answer names holds, whatever language the word naming it stands in, and where it names none, the one the answer is written in; the introduction and the question what they would like to build come after it in that language
 - Found: Six contradictions settled, the README says what the mark guard reads.
-- Fix: none
-- Status: Recorded, not built
-- Note: found 5 November 2026 by the order on the six contradictions settled, in the play-through of the language at the setup, case (a), the command alone in an empty folder without an instructions file; the two skills that begin with a question through the widget, `start-work` with an open issue devloop did not write and `setup-checks` typed by the person, meet the case only in a project set up, whose documents show the language; in milestone 14 since this day, the group of the session start and the routes of start-work
+- Fix: `skills/start-work/SKILL.md` "before the introduction: one question, alone in the"
+- Status: Built, never walked
+- Note: found 5 November 2026 by the order on the six contradictions settled, in the play-through of the language at the setup, case (a), the command alone in an empty folder without an instructions file; the two skills that begin with a question through the widget, `start-work` with an open issue devloop did not write and `setup-checks` typed by the person, meet the case only in a project set up, whose documents show the language; in milestone 14 since this day, the group of the session start and the routes of start-work; decided on 5 November 2026 by the person, the form and the named language on 5 and 6 November 2026, and built 6 November 2026 by the order on the language asked first, the roadmap entry of 6 November 2026, the Should changed to the decision; not chosen: the introduction in English, the user's answer setting the language
 
 ## Milestone 5
 
@@ -5427,14 +5434,6 @@ their section.
 - Fix: none
 - Status: Closed, corrected in the document: `skills/setup-checks/SKILL.md` carries "all but where GitHub offers no protection for".
 - Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the sentence itself the error and a run doing the same before and after, the roadmap entry of 5 November 2026 on the contradictions mended
-
-### setup-checks step 8 writes nothing where GitHub offers no protection before the question and writes a record saying no where the protection is refused when it is set
-- Wrong: `skills/setup-checks/SKILL.md` under "Step 8 — Offer the unattended mode" says that where GitHub offers no protection at the reading before the question "nothing is written", and in its paragraph on the record says `unattended-mode` is `no` with the reason "that the platform refused the protection" where it is refused when it is set
-- Should: each place names its case: the reading before the question, at which GitHub offers no protection, gives no answer of theirs and writes nothing, and the record saying no with the reason that the platform refused the protection is for a yes of theirs that has landed and a protection refused once it is set, the paragraph on the record naming the reading before the question as the case that writes none
-- Found: The loaded texts lose their history, reasons move to docs/rationale.md.
-- Fix: none
-- Status: Closed, corrected in the document: `skills/setup-checks/SKILL.md` carries "written since no answer of theirs was given".
-- Note: found 1 November 2026 by the order on the history of the loaded texts, section 19 of its report; an inner contradiction of the loaded texts, the two places read again at 606cdab on 2 November 2026 and both standing; closed 5 November 2026 as corrected in the document, the two sentences naming their cases and a run doing the same before and after, the roadmap entry of 5 November 2026 on the six contradictions settled
 
 ### nothing writes documentation for the people who run the thing and nothing ships it
 - Wrong: not stated
