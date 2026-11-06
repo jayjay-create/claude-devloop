@@ -137,6 +137,14 @@ nothing is written over it: the person's language changes with what they
 write, not with the record. The section written is named under what
 changed, below, and so stands in the pull request step 8 opens.
 
+Where that program answers that the value is no name of a language — the
+section stands and `language:` carries something else — the record stands
+as well, so nothing is asked and nothing is written over it; the refresh
+says that the record of the language cannot be read, with the program's
+cause, and says it where nothing changed too, as for the install record
+above; the line at the session start reads none until the record is
+mended, and `start-work` asks the language where nothing shows it.
+
 Cut the branch after the last question and before the first write, under the
 same name and rule as a first setup — the step below that stands between the
 two. A refresh that asks nothing cuts it first, as the first thing done after
@@ -186,11 +194,10 @@ answer, not above six commands they watch run.
 
 Where the user has typed nothing but the command, their language is taken from
 what is already in front of you, as the opening of this file says — their own
-instructions file where it is in your context, otherwise a document of this
-project the person wrote, one devloop wrote showing none — and the first
-question comes in it; at a first setup no record of the language stands.
-Where neither shows it — no instructions file of theirs in your context, and
-no document of the project the person wrote in a language —
+instructions file where it is in your context — and the first question comes
+in it; at a first setup no record of the language stands, and no document of
+this project counts, whoever wrote it. Where that does not show it — no
+instructions file of theirs in your context —
 ask it first, before anything of the setup begins: one
 question, alone in the message that ends the turn, in English, asked as text
 and naming no languages, saying three things: that nothing in this folder
@@ -801,9 +808,11 @@ here — so the first install a project meets is the check setup's, after step
 
 And the language this setup ran in with the person, as a section of its own
 in the same shape, one key and one value per line, ASCII only: the English
-name of the language — `German`, `Spanish` — and the date; the language is
-the one step 0 took from what they wrote, from their instructions file, from
-a document of theirs, or from their answer to its question:
+name of the language — `German`, `Spanish` — in letters, spaces and hyphens,
+a letter first and at most 40 characters, since the program that reads the
+record takes no other value, and the date; the language is the one step 0
+took from what they wrote, from their instructions file, or from their
+answer to its question:
 
     ## Language
 
@@ -816,8 +825,10 @@ gives the run its line, `[Language]`, read through
 `${CLAUDE_PLUGIN_ROOT}/bin/devloop-install-record --language` off the main
 branch as last fetched and never off the working tree, counting once the
 pull request carrying it has landed there and been fetched back; the opening block
-says where it stands in that order, and a document devloop wrote — this file
-among them — shows nothing. The record is the language of the person who set
+says where it stands in that order, and no document of the project counts,
+this file among them. A record whose value is no such name reads as none on
+that line, with the program's cause, and a session then asks as where none
+stands. The record is the language of the person who set
 the project up and does not change from session to session: a refresh leaves
 it as it stands and writes it where it is missing on the main branch, as
 "Refreshing an existing setup" says; the person's language changes with what

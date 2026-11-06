@@ -2585,14 +2585,27 @@ where none stands on the main branch, read by the same program with
 `--language` off the default branch as last fetched and printed by
 `hooks/session-start.sh` as a line of its own, opening `[Language]`, so that
 a session takes the person's language from the record where nothing they
-have written and no instructions file of theirs shows it, a document devloop
-wrote showing none, since every file devloop writes is English;
+have written and no instructions file of theirs shows it; no document of the
+project counts, whoever wrote it, decided by the person on 6 November 2026,
+the roadmap entry of that date on the language signals, since every file
+devloop writes is English and no mark tells them all from the person's, the
+only mark being the line of the five under `docs/agents/`, so that a run
+cannot tell a decision record, a note or a test devloop wrote from one the
+person wrote. The value is a name a language can have — ASCII letters,
+spaces and hyphens, opening with a letter, at most 40 characters — since
+the same day: the program refuses any other value with a cause of its own,
+without quoting it, and the line then reads none with that cause, since the
+line lands in the context of every session and would carry the value in
+otherwise; the setup writes the record in that form.
 `shared/language-opening.md` says where the record stands in that order, and
 why stands in `docs/rationale.md` under `environment.md`. No guard reads it:
 it is no permission, and the person's language changes with what they
-write, never with the record. Until then the language of a project whose
-only documents were devloop's was read off those documents, in English, at
-every start without an instructions file.
+write, never with the record. Until 6 November 2026 the language of a
+project whose only documents were devloop's was read off those documents,
+in English, at every start without an instructions file, and until the same
+day a document the person wrote counted where no record stood, which a run
+could not tell from the decision records and notes devloop writes in
+English.
 
 **In doubt, a run with nobody there is not blocked.** The person's principle,
 "In doubt, a run with nobody there is not to be blocked: security matters,

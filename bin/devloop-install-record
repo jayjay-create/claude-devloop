@@ -42,12 +42,20 @@
 # the project ran in with the person, which setup-project step 6 writes at a
 # first setup and its refresh where none stands on the main branch, as the
 # language's English name, ASCII, one line. The keys are language and
-# language-recorded; the value is any non-empty line, since no two values
-# are the only ones; there are no place and no route lines. The causes on
-# the directory, the repository, the default branch, its ref and the file
-# are those of the install record, word for word; the cause on the section
-# says that the setup recorded no language, and the cause on the line that
-# the section carries no language line. On exit 0:
+# language-recorded; the value is a name a language can have - ASCII
+# letters, spaces and hyphens, opening with a letter, at most 40 characters,
+# since 6 November 2026, the roadmap entry of that date on the language
+# signals: the line below lands in the context of every session, and the
+# record is written by the setup in that form, so any other value is no
+# language and its own cause, not quoted, since the hook's line would carry
+# it into the context otherwise; 40 holds every multi-word English name of
+# a language, the longest in use under 30, and bounds the line -; there are
+# no place and no route lines. The causes on the directory, the repository,
+# the default branch, its ref and the file are those of the install record,
+# word for word; the cause on the section says that the setup recorded no
+# language, the cause on the line that the section carries no language
+# line, and the cause on the value that the line carries no name of a
+# language. On exit 0:
 #   ref: origin/<default>
 #   language: <the value>
 #   recorded: <the date the record carries, or none>
@@ -185,10 +193,18 @@ printf '%s\n' "$CONTENT" | grep -qxF "$HEADING" || { echo "cause: $FILE on origi
 
 SECTION=$(printf '%s\n' "$CONTENT" | awk -v h="$HEADING" '$0 == h { s = 1; next } s && /^## / { exit } s')
 TOOLS=$(printf '%s\n' "$SECTION" | grep -m1 "^$KEY:" | sed "s/^$KEY:[[:space:]]*//; s/[[:space:]]*\$//")
-# The language: any non-empty value, printed with the date the record
-# carries; the case below, yes and no the only values, is the three records'.
+# The language: a value that can be the name of a language - ASCII letters,
+# spaces and hyphens, opening with a letter, at most 40 characters, the head
+# says why -, printed with the date the record carries; any other value is
+# its own cause, the value not quoted. LC_ALL=C, so that the ranges are the
+# ASCII letters on every system; the length is read after the form, so it
+# counts ASCII characters. The case below, yes and no the only values, is
+# the three records'.
 if [ "$KEY" = language ]; then
   [ -n "$TOOLS" ] || { echo "cause: the section \"$HEADING\" on origin/$DEFAULT carries no $KEY line"; exit 1; }
+  if ! printf '%s\n' "$TOOLS" | LC_ALL=C grep -Eq '^[A-Za-z][-A-Za-z ]*$' || [ "${#TOOLS}" -gt 40 ]; then
+    echo "cause: the $KEY line on origin/$DEFAULT carries no name of a language, which is ASCII letters, spaces and hyphens, opening with a letter, at most 40 characters"; exit 1
+  fi
   RECORDED=$(printf '%s\n' "$SECTION" | grep -m1 "^$ANSWERED_KEY:" | sed "s/^$ANSWERED_KEY:[[:space:]]*//; s/[[:space:]]*\$//")
   printf 'ref: origin/%s\n' "$DEFAULT"
   echo "language: $TOOLS"

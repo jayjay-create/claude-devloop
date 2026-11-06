@@ -6,12 +6,11 @@ person too. **A slash command is not a language signal.** When nothing the user 
 shows their language, take it from what is already in front of you — their own
 instructions file if it is in your context, otherwise the language the setup
 of this project recorded, on the line at the session start that opens
-`[Language]`, otherwise a document of this project the person wrote — and
-then hold that one choice for the whole turn: prose, progress lines,
-question headers and option labels alike. A document devloop wrote — one
-under `docs/agents/`, one carrying the line `<!-- devloop:`, the block
-`## Control documents` of `CLAUDE.md` — is English whatever their language
-and shows nothing. One exception: where none of these shows it,
+`[Language]` — and then hold that one choice for the whole turn: prose,
+progress lines, question headers and option labels alike. No document of
+this project is a sign of their language, whoever wrote it: every file
+devloop creates there is English, and no mark tells them all from the
+person's. One exception: where none of these shows it,
 `start-work` and `setup-project` ask it first, in English, as each says, and
 no other skill asks; a language the answer names holds, whatever language
 the word naming it stands in, where it names none, the one it is written
