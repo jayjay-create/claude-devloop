@@ -34,6 +34,38 @@ loaded text no longer carries stands here at its rule.
   in line with the output style; 17 October 2026, version 0.143.0.".
 ### Step 2 — Orient them, if the status line says this project is not set up and the idea did not come with the command
 
+- **At `not set up here`, where the idea did not come with the command and
+  nothing shows the language — nothing the user has written, no instructions
+  file of theirs in the context, no document of the project in a language —,
+  the language is asked first, before the introduction: one question in
+  English, asked as text and naming no languages, alone in the message that
+  ends the turn, saying that nothing in this folder shows which language they
+  write in, which one to use, and that they can simply answer in it; a
+  language the answer names holds, and where it names none, the one it is
+  written in; the introduction and the question what to build come in it.**
+  On the route of the one command, the question of `setup-project` step 0 is
+  never reached, since the answer on the idea comes before the setup begins
+  and counts as the language signal, a short answer such as "Webshop" shows
+  none, and a setup answered through buttons writes nothing afterwards the
+  language could show in; the run never guesses. The question is text and
+  names no languages, since a widget would have to guess which to offer; the
+  skill describes the three things the question says and dictates no wording,
+  "Describe what must be said; never dictate wording" in
+  `docs/skill-conventions.md` and the decision against an approved wording as
+  an example in a skill, entry "An approved wording as an example in a
+  skill." under "Decisions taken against"; the closing line of the
+  introduction stays the one fixed wording. Approved wording: "Nothing in this
+  folder shows which language you write in. Which one should I use? You can
+  simply answer in it." A named language holds whatever language the word
+  naming it stands in — "German" and "Deutsch" mean German, "hola, en español
+  por favor" and "hola" Spanish —, since a rule to answer in the language the
+  user writes in would read "German" as English. Decided on 5 and 6 November
+  2026 by the person, entry "The language asked first where nothing shows it, a named one holds.";
+  not chosen: the introduction in English, the user's answer setting the
+  language; a wording fixed in the skills. The case is the block "start-work
+  writes the introduction and asks what to build in a language nothing shows
+  where the user typed only the command in a project not set up" of
+  `docs/defects.md`.
 - **The introduction covers where it ends up, one promise, nothing to remember,
   and that asking gets an explanation; in the run's own words, and closing on
   the fixed line.** A model paraphrases a fixed paragraph and covers a list of
@@ -389,18 +421,35 @@ loaded text no longer carries stands here at its rule.
 - **The user's language is taken from what is in front of the run where they
   typed nothing but the command, and asked only where neither their
   instructions file nor the project's documents show it: first, as one question
-  in English, asked as text, before anything of the setup begins.** A slash
+  in English, asked as text and naming no languages, before anything of the
+  setup begins, saying that nothing in this folder shows which language they
+  write in, which one to use, and that they can simply answer in it; a
+  language the answer names holds, and where it names none, the one it is
+  written in.** A slash
   command is no language signal, and the opening block, inserted into this
   skill, says where the language comes from in that case,
-  `shared/language-opening.md`, and names this one exception; the run never
-  guesses, and the question comes only where it otherwise would have to:
+  `shared/language-opening.md`, and names the exception for the two skills
+  that ask, this one and `start-work` at a project not set up, whose answer
+  shows the language where it asked before this skill was reached; the run
+  never guesses, and the question comes only where it otherwise would have to:
   whoever answers through the widget's buttons alone writes nothing their
   language could show in, and a first setup that runs in the wrong language is
   the first thing a new user meets; the question is text and names no
-  languages, since a widget's answers would have to guess which to offer; step
+  languages, since a widget's answers would have to guess which to offer; the
+  skill describes the three things the question says and dictates no wording,
+  "Describe what must be said; never dictate wording" in
+  `docs/skill-conventions.md`, and the approved wording stands here: "Nothing
+  in this folder shows which language you write in. Which one should I use?
+  You can simply answer in it." A named language holds whatever language the
+  word naming it stands in — "German" and "Deutsch" mean German, "hola, en
+  español por favor" and "hola" Spanish —, since a rule to answer in the
+  language the user writes in would read "German" as English; step
   4 asks about neither language nor tone, the one question on the language
   being step 0's. Decided on 5 November 2026 by the person, entry "Six contradictions settled, the README says what the mark guard reads.";
-  not chosen: never asking. The case is the block "setup-project asks the
+  not chosen: never asking. The three things, the form as text and the named
+  language decided on 5 and 6 November 2026 by the person, entry
+  "The language asked first where nothing shows it, a named one holds."; not chosen: a
+  wording fixed in the skill. The case is the block "setup-project asks the
   language first in English where step 4 says never to ask about the user's
   language" of `docs/defects.md`.
 ### Step 1 — Explore, change nothing
@@ -3354,11 +3403,16 @@ Nothing in this file stood as history; its rules carry their own reasons.
   entry of `docs/roadmap.md` carries it, the commit that wrote the rule does,
   "Hold one voice, and say where this ends up (#86)", `206a501`.
 - **Where neither the instructions file nor the project's documents show the
-  language, the setup of a project asks it, first and in English; no other
-  skill asks.** The run never guesses, and the question comes only where it
-  otherwise would have to. Decided on 5 November 2026 by the person, entry
-  "Six contradictions settled, the README says what the mark guard reads."; the reason and the case stand under
-  `skills/setup-project/SKILL.md`, step 0.
+  language, `start-work` at a project not set up and `setup-project` ask it,
+  first and in English; no other skill asks; a language the answer names
+  holds, and where it names none, the one it is written in.** The run never
+  guesses, and the question comes only where it otherwise would have to; a
+  named language holds since the rule to answer in the language the user
+  writes in would read "German" as English. Decided on 5 November 2026 by the
+  person for the setup, entry "Six contradictions settled, the README says what the mark guard reads.", and on 5 and 6 November 2026 for `start-work` and the
+  named language, entry "The language asked first where nothing shows it, a named one holds.";
+  the reasons and the cases stand under `skills/setup-project/SKILL.md`, step
+  0, and `skills/start-work/SKILL.md`, step 2.
 - **A technical term the person's language uses as it stands is not
   translated.** Case: on 26 October 2026 run 1 of the three closing runs of the
   pass headed the user stories „Geschichten“, entry "Three closing runs of the

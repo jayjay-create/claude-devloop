@@ -175,14 +175,18 @@ documents — and the first question comes in it. Where neither shows it — no
 instructions file of theirs in your context, and no document of the project
 in a language — ask it first, before anything of the setup begins: one
 question, alone in the message that ends the turn, in English, asked as text
-and naming no languages, that nothing here shows which language they write
-in and which one to use; the language they answer in, or the one they name,
-holds from then on, and the first question of the setup comes in it. The run
+and naming no languages, saying three things: that nothing in this folder
+shows which language they write in, which one to use, and that they can
+simply answer in it. A language the answer names holds, whatever language
+the word that names it stands in; where it names none, the language the
+answer is written in holds; and it holds from then on, the first question
+of the setup coming in it. The run
 never guesses, and the question comes only where it would otherwise have to:
 whoever answers through the widget's buttons alone writes nothing their
 language could show in, and a first setup that runs in the wrong language is
 the first thing a new user meets. Where something shows the language, it is
-not asked.
+not asked: `start-work` asks the same question where nothing shows it in a
+project not set up, before its introduction, and an answer to it shows it.
 
 At a first setup the first question carries one sentence, by how this setup
 began. Where it began with an idea in hand — from the entry point, where the
