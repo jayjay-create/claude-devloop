@@ -2897,9 +2897,11 @@ and for the proofs of closings.
 
   6 November 2026, version 0.181.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/` or `output-styles/` changes. On
-  `task/consistency-audit`, off `origin/main` at `37c61d0`, in one commit:
+  `task/consistency-audit`, off `origin/main` at `37c61d0`, in two commits:
   `docs/plan.md`, `docs/roadmap.md`, `docs/skill-conventions.md`,
-  `docs/defects.md` and this entry. The order: the statements of the control
+  `docs/defects.md` and this entry; and what the person decided and the
+  review of the branch mended before the merge in the second, `README.md`
+  among it. The order: the statements of the control
   documents about the set, read before a handover, the findings with one
   right answer mended and the rest put to the person — the work milestone 15
   of `docs/plan.md` names under "Covers".
@@ -2997,7 +2999,30 @@ and for the proofs of closings.
   0. The self-test: 159 cases, 148 of 148 messages asserted by a case,
   before and after. The twenty checks before a handover and
   `scripts/devloop-run-workflow` print after what they printed on `37c61d0`.
-  No run is recorded. One commit.
+  No run is recorded. Two commits.
+
+  **Decided on 7 November 2026 by the person, and mended before the merge**,
+  in the second commit. `README.md` under "What is missing" said "Tried in
+  projects in Python, TypeScript, Kotlin, Go and Rust, with GitHub Issues as
+  the tracker. Other stacks, other trackers and monorepos are untested." —
+  the history of its tests that the rule on the README rules out, and other
+  trackers called untested where the setup works through `gh` alone, creating
+  its labels with `gh label create`. Approved wording, now: "GitHub Issues is
+  the only tracker it works with. Monorepos and stacks other than Python,
+  TypeScript, Kotlin, Go and Rust are untested." Not chosen: the line struck,
+  which would leave a user without the two limits before an install.
+  `docs/plan.md` said at its opening, and again above the decisions of
+  5 November 2026, that a reference names never a line, while its references
+  into `docs/roadmap-archive-1.md` name lines, set so by the entry of
+  4 November 2026; both places now name a line of an archive as the one
+  exception, since an archive never changes (the head of
+  `scripts/devloop-stock-take`, section F). The note of `docs/stock-take.tsv`
+  on the green answer of the check that holds locked skills against their
+  callers described the sentence under the table of names that this branch
+  rewrote; it describes that sentence as it stands. The sentence of
+  `docs/skill-conventions.md` on the places that speak of tools for check
+  classes, dated 28 September 2026, stays as it reads. At the second commit
+  the tool gives the figures above.
 
 ## Decisions taken against
 

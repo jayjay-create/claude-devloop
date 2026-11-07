@@ -19,7 +19,9 @@ the one exception: what it built was not the shape its text planned, so its
 section was rewritten on 23 September 2026 to describe what stands. A
 reference below names a file and a section, never a line: the line numbers
 this file carried at `929dabe` had drifted by the next pull request, and the
-section names had not.
+section names had not. A line of an archive of the roadmap,
+`docs/roadmap-archive-<n>.md`, is the one exception: an archive never changes,
+so its line numbers do not drift.
 
 ## The aim
 
@@ -116,8 +118,8 @@ roadmap entry on the defects file foresaw, but each by the order that works
 on its milestone, before it builds: the order checks the blocks of its
 section against the code first, since that check stands before the build in
 any case, and done for every defect now it would be done twice and be stale
-by the build. A reference here names a file and a section, never a line, as
-the opening of this file says.
+by the build. A reference here names a file and a section, never a line
+but one of an archive, as the opening of this file says.
 Decided on 5 November 2026 by the person, the roadmap entry of that date on
 the sorting into the milestones, which built the form and the check: every
 block under the section of a reached milestone carries no "not stated",
