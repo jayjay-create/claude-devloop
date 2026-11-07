@@ -1209,8 +1209,10 @@ tasks change the dependency file all the time, and a guard on that file could
 not tell the two apart. So it is a rule on the run, said as a rule where it
 stands, which **A limit the limited party maintains is not a limit** below
 asks of it. The skills read the record with `git show` off the main branch as
-last fetched; no reader under `bin/` and no line at the session start are
-built for it. Under a no the run asks about each tool, and after a no to one
+last fetched, and the guard on the mark through
+`bin/devloop-install-record --dependency`, by way of
+`bin/devloop-start-conditions`; no line at the session start is built for it.
+Under a no the run asks about each tool, and after a no to one
 it installs that tool outside the project where the install record says yes,
 or hands the command over where it does not; the class is switched off, in
 the user's name, where no candidate is left, where the command handed over is
@@ -3384,8 +3386,9 @@ documents outside the repository, and these forms enter without one — not
 because the condition is dropped, but because for them the destination
 decides nothing: a no blocks them whatever it is, a yes passes them whatever
 it is, and the two forms that do install to a place the guard could read,
-`brew exec` and `pn add -g`, pass under a yes with the others and stand under
-"What a yes passes that the question does not mean" above. Defect 8 of the
+`brew exec` and `pn add -g`, pass under a yes with the others and stand with
+the sentence "What a yes passes that the question does not mean" above, in
+this section. Defect 8 of the
 roadmap entry of 4 October 2026, `go run` of a module at a version in a
 `Makefile` target under a record saying no with a second question asked, is
 answered by this ruling otherwise than its should: no line enters the record
@@ -3869,11 +3872,12 @@ context, but only a typed command starts it — no other skill can.
 In this set, two are user-invoked, and what each lock costs is written here,
 because "costs nothing" was written for both and held for one.
 
-`start-work`, the entry point. No skill runs it: `build-work` step 6 names it
-as where an armed pull request goes and does not call it, and the check under
+`start-work`, the entry point. No skill runs it: every line the check under
 "Before a handover, run these" that holds locked skills against their callers
-prints exactly that line and nothing else. Its lock costs nothing, and that is
-read off the check each time, not assumed.
+prints names it at a place that sends a run to it and does not call it —
+`build-work` step 6, which names it as where an armed pull request goes,
+among them. Its lock costs nothing, and that is read off the check each time,
+not assumed.
 
 `record-lessons`. Its lock stood on the same ground — no other skill runs it —
 and the ground did not survive the run of 11 to 13 September 2026 in

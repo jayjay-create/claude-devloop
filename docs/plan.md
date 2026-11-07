@@ -19,7 +19,9 @@ the one exception: what it built was not the shape its text planned, so its
 section was rewritten on 23 September 2026 to describe what stands. A
 reference below names a file and a section, never a line: the line numbers
 this file carried at `929dabe` had drifted by the next pull request, and the
-section names had not.
+section names had not. A line of an archive of the roadmap,
+`docs/roadmap-archive-<n>.md`, is the one exception: an archive never changes,
+so its line numbers do not drift.
 
 ## The aim
 
@@ -116,8 +118,8 @@ roadmap entry on the defects file foresaw, but each by the order that works
 on its milestone, before it builds: the order checks the blocks of its
 section against the code first, since that check stands before the build in
 any case, and done for every defect now it would be done twice and be stale
-by the build. A reference here names a file and a section, never a line, as
-the opening of this file says.
+by the build. A reference here names a file and a section, never a line
+but one of an archive, as the opening of this file says.
 Decided on 5 November 2026 by the person, the roadmap entry of that date on
 the sorting into the milestones, which built the form and the check: every
 block under the section of a reached milestone carries no "not stated",
@@ -965,7 +967,8 @@ being kept awake among them).
 
 Decided on 5 November 2026 by the person, decision (2) of the roadmap entry
 of that date on the sorting into the milestones, which drafted it; 170
-blocks of `docs/defects.md` stand in its section since that day.
+blocks of `docs/defects.md` stood in its section on that day, and what
+stands there today the tool counts on every run.
 
 Covers: the question at the end of Stage 1 and in `setup-checks` step 8 with
 its fields and the record it writes; the seven start conditions, read by one
@@ -1041,7 +1044,8 @@ blocked"; "Never assert state — query it".
 
 Decided on 5 November 2026 by the person, decision (2) of the roadmap entry
 of that date on the sorting into the milestones, which drafted it; 123
-blocks of `docs/defects.md` stand in its section since that day.
+blocks of `docs/defects.md` stood in its section on that day, and what
+stands there today the tool counts on every run.
 
 Covers: `setup-project`'s questions and steps from step 0 to step 8 and its
 refresh — which, decision (7) of 5 November 2026, adds to a record under an
@@ -1370,13 +1374,15 @@ September 2026.
 
 Decided on 5 November 2026 by the person, decision (2) of the roadmap entry
 of that date on the sorting into the milestones, which drafted it; 103
-blocks of `docs/defects.md` stand in its section since that day. Not
+blocks of `docs/defects.md` stood in its section on that day, and what
+stands there today the tool counts on every run. Not
 chosen: these blocks under "Without a milestone", each mended or closed
 before the next Done, which would have held milestone 12 up with 103 blocks
 of the records.
 
-Covers: `scripts/devloop-stock-take` and its self-test, which produces 36 of
-its outcomes by no case; its header; its search set and the records of
+Covers: `scripts/devloop-stock-take` and its self-test, with the blocks of
+its section on outcomes the stock-take found produced by no case, each with
+its case and the run on it owed; its header; its search set and the records of
 `docs/stock-take.tsv`; the checks under "Before you change anything, run
 this" and "Before a handover, run these"; `scripts/devloop-run-workflow`; and
 the statements of `docs/roadmap.md`, `docs/plan.md` and
@@ -1386,7 +1392,8 @@ record standing on a wrong line, the benches of September. The three blocks
 on the tool that the order of 5 November 2026 built with the form and the
 check — the rejection of a not-a-thing record on a roadmap line, the things
 and blocks Walked on a branch without a run the branch adds, the archive
-named in line 66 of the head — stand walked in its section since that day,
+named in the head for the entry of 29 September 2026 on the merge gate —
+stand walked in its section since that day,
 decision (15).
 
 Ends with a run of the self-test under a version in which every outcome has

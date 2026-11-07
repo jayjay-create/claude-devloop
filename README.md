@@ -325,9 +325,8 @@ on.
 - End-to-end testing has one worked-out approach and no second: the compiled
   program run as a subprocess, asserting on output and exit code. Anything
   that stays up — a service, an interface — still has none.
-- Tried in projects in Python, TypeScript, Kotlin, Go and Rust, with GitHub
-  Issues as the tracker. Other stacks, other trackers and monorepos are
-  untested.
+- GitHub Issues is the only tracker it works with. Monorepos and stacks other
+  than Python, TypeScript, Kotlin, Go and Rust are untested.
 
 ## Credit
 

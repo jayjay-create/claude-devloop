@@ -29,11 +29,13 @@ description is a menu entry: verb first, no trigger conditions. The origin says
 where the body would come from if one is ever needed — mostly a file to copy from
 mattpocock/skills and adjust, which is minutes of work, not days.
 
-**This is a supply of names, not a backlog.** Nothing here is missing: the
-pre-handover check that holds locked skills against their callers prints five
-lines since 6 November 2026, two from 31 October 2026 (`628d166`) until then and one from 13 September 2026 (`b90874b`) until that day — `start-work`, named in `build-work`
-step 6 as the place that sends an armed pull request there, in `shared/install-issues-read.md` as the place of the in-flight query and as the start a build or a planning followed, and in `skills/setup-project/SKILL.md`, `shared/language-opening.md` and `shared/closing.md` as the place that asks the language first in a project not set up, not run — and
-nothing else, so no built skill reaches for anything on this list. A name leaves
+**This is a supply of names, not a backlog.** Nothing here is missing: every
+line the pre-handover check that holds locked skills against their callers
+prints names `start-work`, a built skill, at a place that sends a run to it
+and does not call it — `build-work` step 6 for an armed pull request among
+them — and no name of this table; what the check prints is read off the
+check each time and not counted here. So no built skill reaches for anything
+on this list. A name leaves
 it when something needs to call it on its own, which is exactly how `research`
 and `build-prototype` got built, or when it is decided against: `which-skill`
 and `write-handover` left it that way on 25 September 2026 and stand under
@@ -2890,6 +2892,137 @@ and for the proofs of closings.
   `--dependency`, `--line` under a no and five things of the hook. Against
   `5865430`: Undetermined +0, Recorded, not built +0, Built, never walked
   +3, Walked +1, Closed +0, blocks +2, milestone 14 +2.
+
+- **Stale counts and drifted references mended in the control documents.**
+
+  6 November 2026, version 0.181.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/` or `output-styles/` changes. On
+  `task/consistency-audit`, off `origin/main` at `37c61d0`, in two commits:
+  `docs/plan.md`, `docs/roadmap.md`, `docs/skill-conventions.md`,
+  `docs/defects.md` and this entry; and what the person decided and the
+  review of the branch mended before the merge in the second, `README.md`
+  among it. The order: the statements of the control
+  documents about the set, read before a handover, the findings with one
+  right answer mended and the rest put to the person — the work milestone 15
+  of `docs/plan.md` names under "Covers".
+
+  Mended, each with what stood and what stands. (1) `docs/plan.md`, the heads
+  of milestones 13, 14 and 15: "170 blocks of `docs/defects.md` stand in its
+  section since that day", 123 and 103 likewise, where the tool counts 174,
+  139 and 104 today and counted 170, 123 and 103 at `cb5e5e9`, the commit of
+  the sorting → "170 blocks of `docs/defects.md` stood in its section on that
+  day, and what stands there today the tool counts on every run", 123 and
+  103 likewise: a count that ages with every branch that adds or moves a
+  block is not written as today's, for the reason the opening of the plan
+  gives against line numbers. (2) `docs/plan.md`, milestone 15 under
+  "Covers": "its self-test, which produces 36 of its outcomes by no case" →
+  "its self-test, with the blocks of its section on outcomes the stock-take
+  found produced by no case, each with its case and the run on it owed". The
+  36 are the 36 blocks of the section titled "no case of the self-test
+  produces '…'" and the two on exit 1 and exit 2, every one with its case
+  line of the self-test as its Fix, 35 of them built at `1edc955` on 23
+  September 2026 and one at `9b40c07` on 15 October 2026, all Built, never
+  walked; the self-test's last line, 148 messages asserted by a case and 0 by
+  none, counts message templates and not these outcomes, as the LIMITS of
+  the tool's head say, and already the entry of 23 September 2026 carried
+  "73 are asserted by a case and 0 by none" beside the list. (3)
+  `docs/plan.md`, milestone 15: "the archive named in line 66 of the head" →
+  "the archive named in the head for the entry of 29 September 2026 on the
+  merge gate"; the block's Fix text stands in line 72 of
+  `scripts/devloop-stock-take` today, and a line of a file that changes
+  drifts. (4) `docs/roadmap.md` under "Named, not built as skills": "prints
+  five lines since 6 November 2026, two from 31 October 2026 (`628d166`)
+  until then and one from 13 September 2026 (`b90874b`) until that day —
+  `start-work`, named in … — and nothing else" → "every line the
+  pre-handover check that holds locked skills against their callers prints
+  names `start-work`, a built skill, at a place that sends a run to it and
+  does not call it — `build-work` step 6 for an armed pull request among
+  them — and no name of this table; what the check prints is read off the
+  check each time and not counted here". The chain was right, measured by
+  running the check in a worktree at each commit and its parent: 0 lines at
+  `b90874b^`, 1 at `b90874b`, 1 at `628d166^`, 2 at `628d166`, 5 at
+  `37c61d0`; a count in a section without a date went stale on 31 October
+  2026 and on 6 November 2026 and was mended by the entries of 3 and 6
+  November 2026, so the count goes and its history stays in those entries.
+  (5) `docs/skill-conventions.md` under "Who may invoke a skill": "the check
+  under "Before a handover, run these" that holds locked skills against
+  their callers prints exactly that line and nothing else", one line, where
+  it prints five → "every line the check under "Before a handover, run
+  these" that holds locked skills against their callers prints names it at a
+  place that sends a run to it and does not call it — `build-work` step 6,
+  which names it as where an armed pull request goes, among them". (6)
+  `docs/skill-conventions.md`, the rule on the dependency file: "no reader
+  under `bin/` and no line at the session start are built for it" → "and the
+  guard on the mark through `bin/devloop-install-record --dependency`, by way
+  of `bin/devloop-start-conditions`; no line at the session start is built
+  for it", as the head of `bin/devloop-install-record` and "The install guard
+  reads a record" in the same file say, and `hooks/session-start.sh` reads no
+  dependency record; the block "skill-conventions says no reader under bin/
+  is built for the dependency record while the same file names
+  bin/devloop-install-record --dependency as its one reading" of milestone 15
+  is closed, corrected in the document, on the anchor "no line at the
+  session start is built for it". (7) `docs/skill-conventions.md` under
+  "Environment constraints, measured": "stand under "What a yes passes that
+  the question does not mean" above" named a head that does not exist, the
+  text being a sentence of a paragraph without a head in the same section
+  since `433bdc1` → "stand with the sentence "What a yes passes that the
+  question does not mean" above, in this section".
+
+  Read and left. The line numbers of `docs/plan.md` into
+  `docs/roadmap-archive-1.md`, status lines 44351, 43116 and the others,
+  each read and pointing where its sentence says: the archive never changes,
+  the entry of 4 November 2026 on the archive set them so, and whether the
+  plan's sentence "never a line" names that exception is the person's.
+  Every heading of `docs/rationale.md` names a file that exists and a
+  section that file has. Every statement of `docs/skill-conventions.md` on a
+  program under `bin/` or a hook under `hooks/` holds against the head of
+  that program and `hooks/hooks.json`, 78 lines read. Every section named in
+  `docs/plan.md` and `docs/skill-conventions.md` stands, apart from (7); the
+  names that are quoted history or another vendor's page are listed in the
+  report. `README.md` carries no date and names no document of devloop's;
+  one sentence of its "What is missing", "Tried in projects in Python,
+  TypeScript, Kotlin, Go and Rust, with GitHub Issues as the tracker. Other
+  stacks, other trackers and monorepos are untested.", is a history of its
+  tests, which the rule on the README excludes; a user's text, put to the
+  person with its wording and not changed. The note of row 1415 of
+  `docs/stock-take.tsv` describes the roadmap sentence of (4) as it stood
+  until 6 November 2026; the table is not this order's subject and stays.
+
+  The tool, before, on `37c61d0`: broken records 0, uncovered lines 0 of
+  4568; Undetermined 24, Recorded, not built 256, Built, never walked 1510,
+  Walked 700, Closed 65; milestone 15 104 blocks, Recorded, not built 36,
+  Closed 5. After: Undetermined 24, Recorded, not built 255, Built, never
+  walked 1510, Walked 700, Closed 66; milestone 15 104, Recorded, not built
+  35, Closed 6 — the one block closed under (6), every other figure as
+  before; blocks held against the branch point: removed 0, renamed 0, Should
+  changed 0, added 0; Walked on this branch without a run the branch adds:
+  0. The self-test: 159 cases, 148 of 148 messages asserted by a case,
+  before and after. The twenty checks before a handover and
+  `scripts/devloop-run-workflow` print after what they printed on `37c61d0`.
+  No run is recorded. Two commits.
+
+  **Decided on 7 November 2026 by the person, and mended before the merge**,
+  in the second commit. `README.md` under "What is missing" said "Tried in
+  projects in Python, TypeScript, Kotlin, Go and Rust, with GitHub Issues as
+  the tracker. Other stacks, other trackers and monorepos are untested." —
+  the history of its tests that the rule on the README rules out, and other
+  trackers called untested where the setup works through `gh` alone, creating
+  its labels with `gh label create`. Approved wording, now: "GitHub Issues is
+  the only tracker it works with. Monorepos and stacks other than Python,
+  TypeScript, Kotlin, Go and Rust are untested." Not chosen: the line struck,
+  which would leave a user without the two limits before an install.
+  `docs/plan.md` said at its opening, and again above the decisions of
+  5 November 2026, that a reference names never a line, while its references
+  into `docs/roadmap-archive-1.md` name lines, set so by the entry of
+  4 November 2026; both places now name a line of an archive as the one
+  exception, since an archive never changes (the head of
+  `scripts/devloop-stock-take`, section F). The note of `docs/stock-take.tsv`
+  on the green answer of the check that holds locked skills against their
+  callers described the sentence under the table of names that this branch
+  rewrote; it describes that sentence as it stands. The sentence of
+  `docs/skill-conventions.md` on the places that speak of tools for check
+  classes, dated 28 September 2026, stays as it reads. At the second commit
+  the tool gives the figures above.
 
 ## Decisions taken against
 
