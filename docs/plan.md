@@ -895,30 +895,92 @@ Decision 3 of the roadmap entry of 9 October 2026, where the evidence stands.
 Milestones 13, 14 and 15 took the next numbers the same way on 5 November
 2026.
 
-Milestone 3 closes on the person's Mac in the terminal. This milestone fixes
-which operating systems and which surfaces of Claude Code count — the
-terminal, the desktop app, the IDE extensions, the web — and brings the
-hooks, the programs and the guards into a form that runs on each: every
-command guard stands on the tool `Bash` alone in `hooks/hooks.json`, and the
-hooks reference says that a command hook's `shell` field "defaults to
-"bash", or to "powershell" on Windows when Git Bash isn't installed", that a
-shell hook runs under `sh -c` on macOS and Linux and under Git Bash on
-Windows, or under PowerShell where Git Bash is not installed, and, under its
-PowerShell section, that "a hook that matches only `Bash` never fires
-there" — so a guard for PowerShell is part of it. It decides how devloop
-reaches cloud sessions, or that it does not: the skills page, "How injected
-commands run" and "When an injected command fails"; the tools reference,
-"PowerShell tool"; the VS Code page, "VS Code extension vs. Claude Code CLI";
-the JetBrains page, "Installation"; the desktop page, "Install plugins". And
-it brings the commands that keep a machine awake under Linux and under
-Windows, which `setup-checks` step 8 names today for macOS alone,
-`caffeinate`, and for no other system — text 6 of the roadmap entry of 9
-October 2026, part 5: until this milestone the sentence for every system
-stands alone there.
+Milestone 3 closes on the person's Mac in the terminal. This milestone brings
+the hooks, the programs and the guards into a form that runs on each system
+and each surface of Claude Code that counts, decided on 9 November 2026 by
+the three sentences below, and it does not reach cloud sessions, the third of
+them: every command guard stands on the tool `Bash` alone in
+`hooks/hooks.json`, and the hooks reference says that a command hook's
+`shell` field "defaults to "bash", or to "powershell" on Windows when Git
+Bash isn't installed", that a shell hook runs under `sh -c` on macOS and
+Linux and under Git Bash on Windows, or under PowerShell where Git Bash is
+not installed, and, under the PowerShell input of PreToolUse, that "a hook
+that matches only `Bash` never fires there" — a sentence that holds for
+every Windows on which the PowerShell tool is on, which it is with Git Bash
+for claude.ai and Console accounts, the tools reference under "PowerShell
+tool", read in the roadmap entry of 9 November 2026 on the blocks on systems
+and surfaces; until that day this paragraph read it for Windows without Git
+Bash alone — so a guard for PowerShell is part of it. The pages the three
+decisions rest on: the skills page, "How injected commands run" and "When an
+injected command fails"; the tools reference, "PowerShell tool"; the VS Code
+page, "VS Code extension vs. Claude Code CLI"; the JetBrains page,
+"Installation"; the desktop page, "Install plugins"; the projects page,
+"What threads pick up from your repositories" and "Get skills, plugins,
+connectors, and tools into threads"; the plugins page and the hooks
+reference on what a cloud session loads and reads. And it brings the
+commands that keep a machine awake under Linux and under Windows, which
+`setup-checks` step 8 names today for macOS alone, `caffeinate`, and for no
+other system — text 6 of the roadmap entry of 9 October 2026, part 5: until
+this milestone the sentence for every system stands alone there.
 
-Ends with one run per system, the cases of milestone 3 included: the guards
-read, the mark written, the install under a yes, each on that system's
-surface. A first piece stands since 14 October 2026, the fourth addendum of
+Decided on 9 November 2026 by the person, the roadmap entry of that date on
+the install blocks held to the code: the systems that count are macOS, Linux,
+Alpine and Windows with Git Bash; Windows without Git Bash does not count.
+Every skill carries `shell: bash` in its frontmatter, so that without bash it
+does not load, with the vendor's message that names bash as what is missing,
+instead of failing in PowerShell, and `README.md` says that under Windows
+devloop needs Git for Windows. The guard for the PowerShell tool stays part
+of this milestone, since on Windows with Git Bash the tool is on by default
+for claude.ai and Console accounts, the tools reference as the entry of 9
+November 2026 on the blocks on systems and surfaces read it. Reason: on the
+other way every guard would exist twice, for bash and for PowerShell, and
+where one version came to differ from the other the protection would be
+missing on one system without anybody noticing; a plain message that bash is
+missing is better than a devloop that runs without its guards. Not chosen:
+Windows without Git Bash as a fifth system. The person's decision of 14
+October 2026, "devloop runs on every system", `docs/roadmap-archive-1.md`
+lines 22922 to 22923, meant macOS, Linux and Windows under Git Bash, lines
+22999 to 23003.
+Decided on 9 November 2026 by the person, the same entry: the surfaces that
+count are the CLI — in the terminal, in JetBrains, in the extension for VS
+Code with "Use Terminal" and with `claude` in its built-in terminal —, the
+graphical panel of the extension for VS Code and the local sessions of the
+desktop app. In the panel and in the desktop app devloop hands every command
+over in form B, as `shared/install-tool.md` describes it under the way of
+the yes. How devloop reads which surface it runs on is measured first in
+this milestone; where no way is found, the question goes to the person
+before anything builds on it. The closing runs gain a run in the panel and
+one in the desktop app on the person's Mac. Reason: the plugin loads in the
+panel and in the desktop app already, since the terminal, the desktop app
+and the extension read the same settings files, the plugins page as that
+entry read it; the only known gap is one form of the handover, and devloop
+has the other; whoever shuts devloop out there shuts out whoever uses VS
+Code as it opens. Not chosen: the CLI alone.
+Decided on 9 November 2026 by the person, the same entry: devloop does not
+reach cloud sessions, the cloud threads of a project included; `README.md`
+says that devloop runs where Claude Code runs on the person's own computer —
+the terminal, the extension for VS Code, the desktop app — and not in cloud
+sessions. Reason: a cloud session does not load the plugins installed
+locally and does not read `~/.claude/settings.json`, where the rule for the
+run without the person stands, the head of `bin/devloop-auto-mode-rule`; in
+the threads of a project a plugin entered in the project's settings loads,
+but whether its hooks run there the pages do not say; a protection that is
+only partly there and whose missing parts do not show is worse than a plain
+boundary. Not chosen: bringing devloop into the threads of a project through
+the plugins in the project's settings. Where the vendor changes what cloud
+sessions load, the question is put again.
+
+Ends with one run per system in the terminal — macOS, Linux, Alpine and
+Windows with Git Bash —, the cases of milestone 3 included: the guards read,
+the mark written, the install under a yes; on the person's Mac with a run in
+the graphical panel of the extension for VS Code and one in the local
+sessions of the desktop app, the command handed over in form B on each, by
+the second decision above; and with a run on Windows without Git Bash in
+which the skills refuse to load with the vendor's message, by the first,
+since every branch that can be produced on a bench is walked once on
+purpose, the unwanted side included. The machines for the runs under Linux,
+under Windows and under Alpine the person provides before the milestone
+ends. A first piece stands since 14 October 2026, the fourth addendum of
 the roadmap entry on the command reader: the reader runs on the three
 systems, and a workflow job runs its self-test and every hook on
 `ubuntu-latest`, `macos-latest` and `windows-latest`, there under Git Bash,
