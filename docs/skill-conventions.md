@@ -203,10 +203,11 @@ output, the desktop page under "Claude Code settings that behave
 differently in the Code tab". The texts say form A on every surface today,
 and the blocks of milestone 12 in `docs/defects.md` hold them to the
 decision; `docs/plan.md` carries the decisions under milestone 12. The
-wordings the person approved for the handovers stand in that roadmap
-entry; a skill says what is said, not the words. Until that day the rule on a command
-handed over read that the line is copied whole into whatever terminal is
-open, point 18 of part B of 12 October 2026, whose rest stands.
+wordings the person approved for the handovers stand in the roadmap entry
+of 28 October 2026 on the handover steps; a skill says what is said, not
+the words. Until 28 October 2026 the rule on a command handed over read
+that the line is copied whole into whatever terminal is open, point 18 of
+part B of 12 October 2026, whose rest stands.
 
 **A file is named by its path where the work is about the file.**
 

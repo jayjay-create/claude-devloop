@@ -3869,7 +3869,7 @@ and for the proofs of closings.
   follows from the surface as well; its head reads now "… follows from what
   the command does and, since 9 November 2026, from the surface it runs on",
   and after "the person works one of these two ways; milestone 12" it
-  carries the decisions in four sentences, naming `docs/plan.md` and the
+  carries the decisions in two sentences, naming `docs/plan.md` and the
   blocks of milestone 12. `README.md` says nothing of systems, surfaces or
   the cloud; what decisions (1) and (3) ask of it the two blocks of the
   entry above hold, and no sentence of it deviates. `docs/rationale.md`
@@ -3893,7 +3893,15 @@ and for the proofs of closings.
   self-test: 159 cases, 148 of 148 messages asserted by a case, before and
   after. The twenty checks before a handover and `scripts/devloop-run-workflow`
   print after what they printed on `0c3eb24`, the title step reading this
-  head. No run is recorded. One commit.
+  head. No run is recorded. Two commits: the first with all of this; the
+  second from the check at the code before the merge, which corrects the
+  first in two places. In `docs/skill-conventions.md`, after the two new
+  sentences, "The wordings the person approved for the handovers stand in
+  that roadmap entry" and "Until that day the rule on a command handed over
+  read" meant the entry of 28 October 2026 and read, after them, as 9
+  November 2026; they say now "in the roadmap entry of 28 October 2026 on
+  the handover steps" and "Until 28 October 2026". This entry said the
+  place mended carried the decisions in four sentences; they are two.
 
 ## Decisions taken against
 
