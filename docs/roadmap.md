@@ -3024,6 +3024,250 @@ and for the proofs of closings.
   classes, dated 28 September 2026, stays as it reads. At the second commit
   the tool gives the figures above.
 
+- **Blocks on systems and surfaces held to the code, eight Shoulds filled.**
+
+  9 November 2026, version 0.181.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes. On `task/milestone-12-systems-read`, off `origin/main` at
+  `e252c10`: `docs/defects.md`, `docs/roadmap.md` and this entry. The order:
+  34 of the 91 blocks under "## Milestone 12" of `docs/defects.md`, the
+  install permission left to an order of its own, read against the code
+  before milestone 12 builds, as `docs/plan.md` says under "Five sentences"
+  of the order that works on a milestone; every "not stated" in their Wrong
+  and Should filled; and the vendor's pages read raw for what the decision
+  rests on which systems and which surfaces of Claude Code count. No code is
+  built, no run is recorded, no session log was read.
+
+  **The 34 blocks, by their lines at `e252c10`**, read each at the place its
+  Fix names, or searched over `skills/`, `shared/`, `hooks/`, `bin/`,
+  `scripts/` and `.github/` where Fix is none. The five Walked blocks hold:
+  lines 796, 804 and 820, the three on `bin/devloop-command-reader`, stand
+  on its line 918 (the program a here-document on descriptor 3), line 456
+  (`j()` doubling a backslash with `&&`) and line 454 (`fail()` counting
+  on); line 812 on the job `hooks-on-every-system` of
+  `.github/workflows/stock-take.yml`, line 376, four systems in its matrix;
+  line 1044 on its loop over every self-test under `bin/`, line 429. The
+  two Built, never walked, lines 828 and 1012, are comments of the workflow,
+  lines 255 to 271, and carry what their Should asks: both halves of the
+  Alpine step and why the second, and that a handler under a new pair of
+  event and matcher needs its input. The 27 with Fix none are not built: the
+  fourteen places that read a file of the project, lines 844 to 948, carry
+  no handling of a carriage return - `bin/devloop-install-record` line 185
+  reads the record with `git show` and lines 190 and 192 compare the heading
+  with `grep -qxF`, `bin/devloop-setup-state` line 206, `hooks/stop-checks.sh`
+  lines 12, 16 and 48, `hooks/post-tool-use-checks.sh` lines 19 and 23,
+  `bin/devloop-check-table` lines 43 and 44, `hooks/permission-request-unattended.sh`
+  line 30, `hooks/pre-tool-use-install-guard.sh` lines 1076 and 1084, the
+  shared texts and the skill as before -, and `grep -rn -E "tr -d '\\r'|CRLF|carriage"`
+  over the six directories finds none outside two comments; read and not
+  measured, the trimming with `[[:space:]]` in the two check hooks and in
+  `bin/devloop-check-table` would strip a carriage return from a cell, the
+  `grep -o` of the setup state would leave it outside its match, and the
+  runner line of the two check hooks would keep it at the end of the runner;
+  the three awk calls of lines 956, 964 and 972 stand at
+  `hooks/pre-tool-use-table-guard.sh` line 64, `hooks/post-tool-use-table-guard.sh`
+  line 27 and `bin/devloop-install-record` line 194, and the job still does
+  not reach them, `ls` leaving the first guard at its line 56, the Edit of
+  the README the second at its line 20, and no record standing in the
+  throwaway project for the third; `bin/devloop-bounded` lines 38 and 108 to
+  121 know no Windows and keep the window between `sleep "$secs" &` and
+  `s=$!` that the block of line 1300 names and the `sh` reports the block of
+  line 1324 names, so lines 1052, 1292, 1300 and 1324 stand; nothing reads
+  `respondToBashCommands`, the chat panel or Use Terminal, so lines 1220,
+  1228 and 1236 stand, and nothing names the version of Claude Code devloop
+  needs, line 780, nor examines the sandbox, line 731, nor reads the subset
+  of the extension, line 739. No Fix, no Status and no title changed; no
+  block moved. The run that meets each case, and the two whose case no run
+  meets, stand in the report outside the repository, with the decision on
+  the systems and the surfaces put to the person there.
+
+  **The eight "not stated" filled**, each from the entry its Found names,
+  with that entry's words, the lines read in `docs/roadmap-archive-1.md` and
+  each line's entry read off the last head above it. Line 796, Wrong and
+  Should, from the fourth addendum of 14 October 2026, finding 1, lines
+  22937 to 22950: the program as one argument of 204 937 bytes, Linux
+  refusing 131 072 and more, every Bash call blocked under `onFailure:
+  block`; "the reader runs under macOS, under Linux and under Windows with
+  Git Bash, with the awk each system brings, and no limit the command line
+  sets on the size of its program". Line 804, Wrong and Should, from the
+  fifth addendum, finding 3, lines 23378 to 23411: the encoder `j()` and
+  `gsub(/\\/, "\\\\")` under busybox awk, fourteen cases red; "the
+  self-test green under busybox awk, the defect built; the workflow runs the
+  self-test and the hooks under Alpine with busybox awk as well, in a
+  container on `ubuntu-latest`". Line 812, Wrong and Should, from the fourth
+  addendum, finding 2, lines 22989 to 23003: the self-test under
+  `ubuntu-latest` alone and no `.gitattributes`; "devloop runs on every
+  system ... on every pull request into `main` the reader's self-test and
+  every hook of `hooks/hooks.json` run once with a harmless input of its
+  event in a throwaway project under `ubuntu-latest`, `macos-latest` and
+  `windows-latest`, there under Git Bash ... every file a shell or awk reads
+  arrives on every system with the line endings it runs with". Line 820,
+  Wrong and Should, from the fifth addendum, finding 1, lines 23296 to
+  23318: the check red at `6365a96`, four cases expecting the reading of
+  macOS and Linux, the step ending at the red self-test; "the self-test
+  green on every system; every case whose reading depends on the system
+  names it, `runw`, `runm` and `runl`, and where Windows reads otherwise it
+  has a case of its own; every red case reported, not the first alone, and
+  exit 1 where any is red; the job starts the hooks after a red self-test
+  and is red where either is". Line 731, Should, from question 2 of the
+  entry of 9 October 2026, lines 14118 to 14119: "examined whether the
+  sandbox touches installs and the guard, and recorded". Line 739, Should,
+  from question 4, lines 14157 to 14158: "read for the milestone on every
+  operating system and every surface, decision 3". Line 828, Should, from
+  the audit of 14 October 2026, lines 23781 to 23786: "the comment names
+  both halves and why the second, git refusing in a container a repository
+  owned by another user unless the directory is marked safe". Line 1012,
+  Should, from the audit of 18 October 2026, lines 29239 to 29241: "the
+  comment says a handler added under a known event and matcher runs
+  untouched and one under a new pair needs its input". Every old text read
+  "not stated". The Wrong of lines 731 and 739, the status-line texts of
+  their entry, stays as it stands.
+
+  **Read at the vendor on 9 November 2026**, every page raw as Markdown from
+  code.claude.com/docs/en/<page>.md with `curl`, held under the report's
+  working directory and read with `grep` and `sed`, the CHANGELOG from
+  raw.githubusercontent.com/anthropics/claude-code at the tag `v2.1.319`,
+  the highest `git ls-remote --tags` showed. What the decision on the
+  systems and the surfaces rests on, each with its page. The hooks
+  reference, "Command hook fields": the `shell` field "Defaults to "bash", or
+  to "powershell" on Windows when Git Bash isn't installed"; "Shell form
+  ... `sh -c` on macOS and Linux, Git Bash on Windows, or PowerShell when
+  Git Bash isn't installed"; under the PreToolUse input for PowerShell: "On
+  Windows, wherever the PowerShell tool is enabled, Claude treats PowerShell
+  as the primary shell and routes shell commands through it. On Windows
+  without Git Bash, the tool is enabled automatically and Claude Code
+  doesn't register the Bash tool at all. A hook that matches only `Bash`
+  never fires there." The tools reference, "PowerShell tool": "Windows with
+  Git Bash installed: the tool is on by default for claude.ai and Console
+  accounts; set `CLAUDE_CODE_USE_POWERSHELL_TOOL=1` to enable it in Amazon
+  Bedrock, Google Cloud's Agent Platform, and Microsoft Foundry sessions, or
+  `0` to turn it off"; "Linux, macOS, and WSL: the tool is opt-in"; "When
+  the tool is enabled, Claude treats PowerShell as the primary shell. The
+  Bash tool remains available for POSIX scripts when Git Bash is installed."
+  So the sentence `docs/plan.md` reads under milestone 12 for Windows
+  without Git Bash holds for every Windows on which the PowerShell tool is
+  on, which it is with Git Bash for claude.ai and Console accounts; a block
+  below holds it. The setup page, "System requirements": "macOS 13.0+",
+  "Windows 10 1809+ or Windows Server 2019+", "Ubuntu 20.04+", "Debian 10+",
+  "Alpine Linux 3.19+", "Shell: Bash, Zsh, PowerShell, or CMD"; "Alpine
+  Linux and musl-based distributions": "requires `bash` and `curl` for the
+  install command, and `libgcc`, `libstdc++`, and `ripgrep` at runtime.
+  Alpine doesn't include `bash` or `curl` by default", `apk add bash curl
+  libgcc libstdc++ ripgrep`; "Install on native Windows": "Without Git for
+  Windows, Claude Code runs shell commands via the PowerShell tool", "With
+  Git for Windows, Claude Code uses Git Bash for the Bash tool". The skills
+  page, "How injected commands run": "`shell: bash` when bash isn't
+  available: the invocation fails before any command runs. This happens on
+  Windows without Git Bash"; "Any other combination: the commands run
+  through the Bash tool when bash is available. When it isn't, they run
+  through the PowerShell tool"; "When an injected command fails": "A failed
+  command aborts the entire skill invocation, not just its own placeholder.
+  Claude never sees the skill content for that invocation. The abort shows
+  `Shell command failed for pattern "..."`." The VS Code page, "VS Code
+  extension vs. Claude Code CLI": "Commands and skills | All | Subset (type
+  `/` to see available)", "`!` Bash shortcut | Yes | No"; "Switch to
+  terminal mode": "By default, the extension opens a graphical chat panel.
+  If you prefer the CLI-style interface, open the Use Terminal setting and
+  check the box"; "Run CLI in VS Code": "Installing the extension does not
+  put `claude` on your shell PATH. The extension bundles a private copy of
+  the CLI for its chat panel"; under the command menu: "Typing `/skills`
+  also opens this dialog. Each skill row shows its visibility ... except on
+  rows marked **locked**, such as plugin skills", "Select **Hooks** in the
+  Customize section to view the hooks loaded in the session, grouped by
+  event ... Hooks from other sources, such as managed settings or plugins,
+  are read-only"; how Use Terminal starts the CLI and under which PATH, the
+  page does not say. The plugins page: "A plugin you install at user scope
+  in the terminal, the desktop app's local sessions, or the VS Code
+  extension is available in the other two on that computer, because all
+  three read the same settings files". The JetBrains page, "Installation":
+  "The plugin runs the `claude` command in your IDE's integrated terminal
+  and connects to it. It does not bundle its own copy of the CLI". The
+  desktop page, "Install plugins": "You can install plugins from the desktop
+  app without using the terminal", "The plugin browser is not available in
+  cloud sessions, and plugins you install from the desktop app aren't
+  available for cloud sessions. A cloud session also doesn't install plugins
+  that the repository's `.claude/settings.json` declares ... Plugins aren't
+  available in WSL sessions"; "Shared configuration": "Hooks and skills
+  defined in settings apply to both"; the table of settings that behave
+  differently in the Code tab: "`respondToBashCommands` | Claude responds to
+  the output of commands that users run with `!`, whatever the value",
+  "`defaultShell` | commands that users type after `!` run in a shell that
+  the app chooses: their login shell on macOS and Linux, PowerShell on
+  Windows". The cloud environments page, "What carries over from your
+  setup": "Your repo's `.claude/settings.json` hooks and permission rules |
+  Yes, in a session with one repository"; "Your repo's `.claude/skills/`
+  ... | Yes"; "Plugins and marketplaces declared in your repo's
+  `.claude/settings.json` | No"; "Plugins enabled only in your user settings
+  | No"; the plugin install page: "A cloud session, including the browser at
+  claude.ai/code, has no plugin browser and doesn't load the plugins you
+  installed on your own machine or the ones your repository's
+  `.claude/settings.json` turns on". The sandbox page: "The sandbox covers
+  shell commands only. Claude's file tools, MCP servers, and hooks run
+  outside it"; "The sandbox is off by default"; command hooks "run with your
+  full access"; "a command you enter at the `!` shell-mode prompt runs
+  unsandboxed in most sessions"; by default "sandboxed commands can write to
+  the current working directory, the per-user temp directory, and any
+  directories you've added" - so the install guard, a hook, sees a command
+  before the sandbox and unchanged by it, and an install the model runs
+  with the sandbox on may not write where `brew`, `pipx` or `go install`
+  write, which the page answers with the unsandboxed retry; measured
+  nowhere. The interactive mode page, "Shell mode with `!` prefix": "Claude
+  responds to the command output automatically once it lands in the
+  transcript ... set `respondToBashCommands` to `false` in `settings.json`";
+  the settings reference: `respondToBashCommands`, "Default: `true`";
+  `defaultShell`, "Default: "bash", or "powershell" on Windows when Bash
+  isn't available". The CHANGELOG at `v2.1.319`, section `## 2.1.295`:
+  "Added `onFailure: "block"` for command and HTTP hooks: a hook that can't
+  start, times out, or exits with an unexpected code blocks the action
+  instead of letting it through"; the hooks reference, "Block the action
+  when a hook fails": "Requires Claude Code v2.1.295 or later"; the plugin
+  manifest reference knows no field for a lowest version of Claude Code.
+  Whether a hook event fires on one surface and not another, no page says;
+  the pages speak of systems.
+
+  **Two defects found, no block holding them**, written under
+  "## Milestone 12", the group every other operating system and surface,
+  both Recorded, not built: every command guard of `hooks/hooks.json`
+  matches the tool `Bash` alone, while on Windows with Git Bash the
+  PowerShell tool is on by default for claude.ai accounts and takes the
+  shell commands, so that no guard sees them there; and no skill declares
+  `shell: bash` in its frontmatter, so that on Windows without Git Bash the
+  insert lines run through the PowerShell tool and the load fails on the
+  program instead of on the vendor's message that bash is missing. Whether
+  Windows without Git Bash counts is the person's decision of this
+  milestone; the report puts it to them with the surfaces and the cloud.
+
+  The tool, before, on `e252c10`: broken records 0, uncovered lines 0 of
+  4568; Undetermined 24, Recorded, not built 255, Built, never walked 1510,
+  Walked 700, Closed 66; milestone 12 91 blocks, Recorded, not built 37,
+  Built, never walked 49, Walked 5; blocks with "not stated" 382. After:
+  Recorded, not built 257 and milestone 12 93 blocks, Recorded, not built
+  39 - the two new blocks -, "not stated" 374 - the eight filled -, every
+  other figure as before; blocks held against the branch point: removed 0,
+  renamed 0, Should changed 8, added 2; Walked on this branch without a run
+  the branch adds: 0. The self-test: 159 cases, 148 of 148 messages
+  asserted by a case, before and after. The twenty checks before a handover
+  and `scripts/devloop-run-workflow` print after what they printed on
+  `e252c10`. Two commits: the first with all of this; the second from the
+  check at the code before the merge, which corrects two fields of the first
+  new block. Its Wrong said every command guard stood "under `PreToolUse`
+  and `PermissionRequest` with the matcher `Bash` alone", where the one
+  handler under `PermissionRequest` carries no matcher, the guards with the
+  matcher `Bash` stand under `PreToolUse` and the install guard under
+  `PermissionDenied` as well; its Should said "on Windows, with Git Bash or
+  without", where whether Windows without Git Bash counts is the person's
+  decision of this milestone, as the second new block and this entry say.
+  The eight lines of the fixed form:
+
+  Should changed: under Linux the reader did not run, awk refusing its program as one argument of 204 937 bytes, so that every hook blocked every Bash call there
+  Should changed: the sandbox of Claude Code is not examined for whether it touches installs and the install guard
+  Should changed: whether the VS Code extension runs the skills of devloop is not read, the extension running a subset of the commands and skills
+  Should changed: the self-test's encoder of a command into the JSON of a hook doubled no backslash under busybox awk, fourteen cases red under Alpine, which the fourth addendum had recorded as the reader reading a backslash before a newline otherwise
+  Should changed: nothing showed that the reader and the hooks run under macOS and under Windows with Git Bash, the self-test running on ubuntu-latest alone and no .gitattributes fixing the line endings
+  Should changed: the reader's self-test depended on the system it ran on and stopped at the first red case: red under Windows with Git Bash, where four cases expected the reading of macOS and Linux, and the hooks never started after it
+  Should changed: the workflow's comment and the fifth addendum name the installation of the Alpine step and not its marking the checkout a safe directory for git
+  Should changed: the workflow's comment says every handler added later runs without the hooks step being touched, where a new event and matcher needs its input
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is

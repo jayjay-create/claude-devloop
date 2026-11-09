@@ -730,7 +730,7 @@ their section.
 
 ### the sandbox of Claude Code is not examined for whether it touches installs and the install guard
 - Wrong: the sandbox of Claude Code examined for the guard.
-- Should: not stated
+- Should: examined whether the sandbox touches installs and the guard, and recorded.
 - Found: The open findings on the install guard, eight, measured on this machine; four questions never examined; the decisions for the next orders of milestone 3 and the texts the person approved, word for word; three corrections; 9 October 2026, version 0.132.0.
 - Fix: none
 - Status: Recorded, not built
@@ -738,7 +738,7 @@ their section.
 
 ### whether the VS Code extension runs the skills of devloop is not read, the extension running a subset of the commands and skills
 - Wrong: whether VS Code runs the skills of devloop.
-- Should: not stated
+- Should: read for the milestone on every operating system and every surface, decision 3 of the entry of 9 October 2026, whether the skills of devloop are in that subset.
 - Found: The open findings on the install guard, eight, measured on this machine; four questions never examined; the decisions for the next orders of milestone 3 and the texts the person approved, word for word; three corrections; 9 October 2026, version 0.132.0.
 - Fix: none
 - Status: Recorded, not built
@@ -794,32 +794,32 @@ their section.
 - Note: found 13 October 2026 in the review of pull request #171 at the code, finding 4 of the addendum of 13 October 2026 to the roadmap entry on the command reader, built the same day in 6a62e4d; the evidence line carries the verb for the way of the rule since 23 October 2026, the roadmap entry of 23 October 2026 on the catch-up after the audit of that day
 
 ### under Linux the reader did not run, awk refusing its program as one argument of 204 937 bytes, so that every hook blocked every Bash call there
-- Wrong: not stated
-- Should: not stated
+- Wrong: `bin/devloop-command-reader` gave awk its program as one argument of the command line, line 787 up to the closing quote on line 3501, 204 937 bytes at `84f1aab`; Linux refuses a single argument of 131 072 bytes and more, so `bin/devloop-command-reader --self-test` ended with `/usr/bin/awk: Argument list too long` at its first case and the install guard, the merge guard and the branch guard ended with exit 1 for the command `ls`, and since every handler under `PreToolUse` and `PermissionRequest` in `hooks/hooks.json` carries `"onFailure": "block"`, under Linux every Bash call was blocked since the third addendum
+- Should: the reader runs under macOS, under Linux and under Windows with Git Bash, with the awk each system brings, and no limit the command line sets on the size of its program.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
 - Fix: `bin/devloop-command-reader` "-f /dev/fd/3 3<<'AWK'"
 - Status: Walked
 - Note: found 14 October 2026 in the order of that day, finding 1 of the fourth addendum of 14 October 2026 to the roadmap entry on the command reader, built 14 October 2026 in 1d295f2: the program a here-document on file descriptor 3
 
 ### the self-test's encoder of a command into the JSON of a hook doubled no backslash under busybox awk, fourteen cases red under Alpine, which the fourth addendum had recorded as the reader reading a backslash before a newline otherwise
-- Wrong: not stated
-- Should: not stated
+- Wrong: the self-test's own encoder of a command into the JSON of a hook, `j()` on line 418, `gsub(/\\/, "\\\\")`, which busybox awk 1.37.0 runs as one backslash for one where the awk of macOS 20200816 and mawk 1.3.4 keep two, so that the JSON carried `brew install \\nripgrep`, which the reader rightly decodes to a backslash and an `n` and bash rightly reads as the word `nripgrep`; and not one case was red but fourteen, every one with a backslash in its command, which the self-test of `6365a96` could not show since it stopped at the first
+- Should: the self-test green under busybox awk, the defect built; the workflow runs the self-test and the hooks under Alpine with busybox awk as well, in a container on `ubuntu-latest`.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
 - Fix: `bin/devloop-command-reader` "{ gsub(/\\/, "&&"); gsub(/"/"
 - Status: Walked
 - Note: found 14 October 2026 in Docker alpine:3.22 with busybox awk 1.37.0 while measuring finding 1 of the fourth addendum of 14 October 2026 to the roadmap entry on the command reader, recorded there as the reader reading a backslash before a newline otherwise, which the fifth addendum of 14 October 2026 to the roadmap entry on the command reader corrects: the reader read it right, the self-test's encoder j() differed, gsub taking two backslashes of a replacement for one as POSIX says; built 14 October 2026 in ef1b470 with gsub(/\\/, "&&"); the old name: busybox awk of Alpine reads a backslash before a newline inside a word otherwise than the awk of macOS, mawk and gawk, one case of the reader's self-test red there
 
 ### nothing showed that the reader and the hooks run under macOS and under Windows with Git Bash, the self-test running on ubuntu-latest alone and no .gitattributes fixing the line endings
-- Wrong: not stated
-- Should: not stated
+- Wrong: `.github/workflows/stock-take.yml` ran the reader's self-test under `ubuntu-latest` alone, in the step "hooks read through the reader, handlers block on failure and carry no if field, the reader's self-test"; under Windows with Git Bash the reader had never run, section 18 of the third addendum's report; the repository had no `.gitattributes`
+- Should: devloop runs on every system, the person's decision of 14 October 2026; on every pull request into `main` the reader's self-test and every hook of `hooks/hooks.json` run once with a harmless input of its event in a throwaway project under `ubuntu-latest`, `macos-latest` and `windows-latest`, there under Git Bash, the hooks on the tool `Bash` with the command `ls`, and the check is red where a hook answers otherwise than 0; every file a shell or awk reads arrives on every system with the line endings it runs with; the job `stock-take` keeps its name, since `main` requires the check `stock-take`.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
 - Fix: `.github/workflows/stock-take.yml` "hooks-on-every-system:"
 - Status: Walked
 - Note: found 14 October 2026 in the order of that day, finding 2 of the fourth addendum of 14 October 2026 to the roadmap entry on the command reader, built 14 October 2026 in 1d295f2: the job hooks on every system and .gitattributes; windows-latest not run before the push
 
 ### the reader's self-test depended on the system it ran on and stopped at the first red case: red under Windows with Git Bash, where four cases expected the reading of macOS and Linux, and the hooks never started after it
-- Wrong: not stated
-- Should: not stated
+- Wrong: the check "hooks on every system (windows-latest)" of pull request #171 was red at `6365a96`, its log ending `FAIL kind 6, on a change: entr with and without -s, ... no line '11|10|shell|0|1|brew|install|h|app.py'`: under Git Bash the reader does not read the text `nodemon` hands to `cmd.exe`, and the case expected the reading of macOS and Linux; four cases fail and no other, each a text for the platform shell, which is `cmd.exe` on Windows and not read there; and the step of the job ended at the red self-test, `|| exit 1`, so that the hooks never started under Windows
+- Should: the self-test green on every system; every case whose reading depends on the system names it, `runw`, `runm` and `runl`, and where Windows reads otherwise it has a case of its own; every red case reported, not the first alone, and exit 1 where any is red; the job starts the hooks after a red self-test and is red where either is.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
 - Fix: `bin/devloop-command-reader` "fail() { echo "FAIL $1: $2""
 - Status: Walked
@@ -827,7 +827,7 @@ their section.
 
 ### the workflow's comment and the fifth addendum name the installation of the Alpine step and not its marking the checkout a safe directory for git
 - Wrong: the workflow's comment and the fifth addendum name the Alpine step's installation and not its marking the checkout a safe directory for git.
-- Should: not stated
+- Should: the comment names both halves and why the second, git refusing in a container a repository owned by another user unless the directory is marked safe; the addendum stands as written, and the entry says what it does not.
 - Found: The consistency audit of 14 October 2026 before the handover, read against the three entries since the audit of 12 October 2026, the five addenda of the third among them, and the code at `a03a720`: fifteen disagreements, seven mended in the documents, two rows of the table brought to the tool's rule and six recorded; the nine points of the order answered, two of them measured on the tool; the platform's run of pull request #171 read; 14 October 2026, the version stays 0.137.0.
 - Fix: `.github/workflows/stock-take.yml` "since git refuses in a container a repository owned by another user"
 - Status: Built, never walked
@@ -1011,7 +1011,7 @@ their section.
 
 ### the workflow's comment says every handler added later runs without the hooks step being touched, where a new event and matcher needs its input
 - Wrong: the workflow's comment says every handler added later runs without the hooks step being touched.
-- Should: not stated
+- Should: the comment says a handler added under a known event and matcher runs untouched and one under a new pair needs its input.
 - Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
 - Fix: `.github/workflows/stock-take.yml` "# matcher this step has an input for runs without this step being touched;"
 - Status: Built, never walked
@@ -1328,6 +1328,22 @@ their section.
 - Fix: none
 - Status: Recorded, not built
 - Note: found 5 November 2026 on the platform's run of the checks of pull request #228, read off the job's output as the order of that day quotes it, no log of the run kept here; the cause not measured, nothing built; a defect beside the one on the hang of the case of a fetch over a transport that never answers, another case of the same self-test; what the code shows of the two lines, read and not measured: the self-test runs the program with `sh -c 'sleep 7331 & sleep 7333'` under a bound of one second; at the bound the watchdog calls kill_tree on the command's process, which ends the two sleeps first, deepest first, and the sh last; `wait "$pid" 2>/dev/null` in the program keeps the outer bash's own report on the ended command off the output, but the inner sh's reports on its own children go to the sh's stderr, which the program passes through unchanged, and where the sh gets to notice a terminated child before its own SIGTERM reaches it, it prints "Terminated: 15" with the child's process id for each, the format of macOS's /bin/sh; so the two lines are a race between the sh's reaping of its children and its own end, which the case's absent-check "Terminated" catches on the run where the sh wins it, and not on the run where it loses, which fits one red and one green run of the same job
+
+### every command guard matches the tool Bash alone, while on Windows with Git Bash the PowerShell tool is on by default for claude.ai accounts and takes the shell commands
+- Wrong: `hooks/hooks.json` registers every command guard under `PreToolUse` with the matcher `Bash` alone, and the install guard under `PermissionDenied` the same; the vendor's tools reference, read raw on 9 November 2026, says under "PowerShell tool" that on "Windows with Git Bash installed: the tool is on by default for claude.ai and Console accounts" and that "when the tool is enabled, Claude treats PowerShell as the primary shell", and the hooks reference under the PowerShell input of PreToolUse that "a hook that matches only `Bash` never fires there"; so on Windows with Git Bash under a claude.ai account the install guard, the branch guard, the merge guard, the identity guard, the mark guard and the table guard see none of the shell commands the model runs, and `docs/plan.md` names the guard for PowerShell under milestone 12 for Windows without Git Bash alone
+- Should: every shell command the model runs on Windows with Git Bash, and on Windows without Git Bash where that system counts, passes the command guards as a Bash command does on macOS, and what they read of it is measured in milestone 12 on Windows with Git Bash under a claude.ai account.
+- Found: Blocks on systems and surfaces held to the code, eight Shoulds filled.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 9 November 2026 by the order on the 34 blocks of milestone 12 on systems and surfaces, reading the vendor's pages raw: code.claude.com/docs/en/tools-reference.md, "PowerShell tool", "Windows with Git Bash installed: the tool is on by default for claude.ai and Console accounts; set `CLAUDE_CODE_USE_POWERSHELL_TOOL=1` to enable it in Amazon Bedrock, Google Cloud's Agent Platform, and Microsoft Foundry sessions, or `0` to turn it off" and "When the tool is enabled, Claude treats PowerShell as the primary shell. The Bash tool remains available for POSIX scripts when Git Bash is installed"; code.claude.com/docs/en/hooks.md under PreToolUse, PowerShell: "On Windows, wherever the PowerShell tool is enabled, Claude treats PowerShell as the primary shell and routes shell commands through it", "Match `Bash|PowerShell` in hooks that inspect shell commands, so they cover both tools"; the PowerShell tool hands the command in `tool_input.command` with the same fields as Bash, a text for PowerShell, which `bin/devloop-command-reader` reads as bash today; `docs/plan.md` under milestone 12 names the guard for PowerShell where Git Bash is not installed, the hooks reference of 9 October 2026 having said so; nothing built; the group: every other operating system and surface
+
+### no skill declares shell bash in its frontmatter, so on Windows without Git Bash the insert lines run through the PowerShell tool and the load fails on the program instead of on the vendor's message that bash is missing
+- Wrong: every `skills/*/SKILL.md` inserts its shared texts with `` !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text <name>` `` and carries no `shell` key in its frontmatter; the vendor's skills page, read raw on 9 November 2026, says under "How injected commands run" that with `shell: bash` "when bash isn't available: the invocation fails before any command runs. This happens on Windows without Git Bash. Claude Code shows ``Skill <name> requires bash (`shell: bash` in frontmatter) but Git Bash was not found``", and that in "any other combination … when it isn't, they run through the PowerShell tool"; so without Git Bash PowerShell is handed a bash script without an extension and the load aborts with "Shell command failed for pattern" and PowerShell's own error, and the grant `allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)` names a tool that is not registered there
+- Should: on a system without bash a skill of devloop fails to load with the vendor's message that names bash as what is missing, or loads through a program that runs there; measured in milestone 12 on Windows without Git Bash, where that system counts.
+- Found: Blocks on systems and surfaces held to the code, eight Shoulds filled.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 9 November 2026 by the order on the 34 blocks of milestone 12 on systems and surfaces, reading code.claude.com/docs/en/skills.md raw, "How injected commands run" and "When an injected command fails": "A failed command aborts the entire skill invocation, not just its own placeholder. Claude never sees the skill content for that invocation. The abort shows `Shell command failed for pattern "..."`"; `grep -n '^shell:' skills/*/SKILL.md` finds no frontmatter key; `docs/plan.md` under milestone 12 says the hooks and the programs are scripts for bash and names Alpine, which installs bash first; whether Windows without Git Bash counts is the person's decision of this milestone; nothing built; the group: every other operating system and surface
 
 ## Milestone 13
 
