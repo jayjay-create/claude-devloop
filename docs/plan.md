@@ -969,18 +969,45 @@ only partly there and whose missing parts do not show is worse than a plain
 boundary. Not chosen: bringing devloop into the threads of a project through
 the plugins in the project's settings. Where the vendor changes what cloud
 sessions load, the question is put again.
+Decided on 9 November 2026 by the person, after that entry, the roadmap
+entry of that date on the two entries held and the desktop handover: in
+the local sessions of the desktop app under macOS and under Linux devloop
+hands a command over as in the terminal, form A where the command asks
+nothing and form B where it asks; form B for every command holds in the
+desktop app under Windows, where `!` runs in PowerShell, and in the
+graphical panel of the extension for VS Code, where `!` is not there.
+Reason: in the desktop app a command after `!` runs under macOS and Linux
+in the login shell, and Claude answers its output whatever
+`respondToBashCommands` says, the desktop page under "Claude Code settings
+that behave differently in the Code tab", read in the entry on the install
+blocks; where `!` works as in the terminal, devloop uses it so, and the run
+reads the result itself instead of the person's word. Not chosen: form B
+for every command everywhere in the desktop app.
 
 Ends with one run per system in the terminal — macOS, Linux, Alpine and
 Windows with Git Bash —, the cases of milestone 3 included: the guards read,
-the mark written, the install under a yes; on the person's Mac with a run in
-the graphical panel of the extension for VS Code and one in the local
-sessions of the desktop app, the command handed over in form B on each, by
-the second decision above; and with a run on Windows without Git Bash in
-which the skills refuse to load with the vendor's message, by the first,
-since every branch that can be produced on a bench is walked once on
-purpose, the unwanted side included. The machines for the runs under Linux,
-under Windows and under Alpine the person provides before the milestone
-ends. A first piece stands since 14 October 2026, the fourth addendum of
+the mark written, the install under a yes; under a no, since every branch
+that can be produced on a bench is walked once on purpose, the unwanted side
+included, a run on the person's Mac in which a command that asks nothing is
+handed over in form A, a run under Linux with `sudo apt install` in which a
+command that asks is handed over in form B, and the next start after an
+install the person made under a no; on the person's Mac with a run in the
+graphical panel of the extension for VS Code, the command handed over in
+form B, and one in the local sessions of the desktop app, the command handed
+over as in the terminal, form A where it asks nothing, by the second
+decision above and its addition; with a run on Windows without Git Bash in
+which the skills refuse to load with the vendor's message, by the first;
+once each on the person's Mac the cases a test project can produce that no
+run above names: the refresh of `setup-project` without an install record
+on the main branch, a planning with the record of the mode saying yes and
+auto-merge off, a planning in German with a browser the program does not
+read and with one in the wrong version, a start with `--auto` after a
+refused install and one after two refused installs whose commands ask; and
+the inputs the job hooks on every system gives the install guard, a line
+with two destinations of one install and the updates of `brew` and `pipx`.
+The machines for the runs under Linux, under Windows and under Alpine the
+person provides before the milestone ends.
+A first piece stands since 14 October 2026, the fourth addendum of
 the roadmap entry on the command reader: the reader runs on the three
 systems, and a workflow job runs its self-test and every hook on
 `ubuntu-latest`, `macos-latest` and `windows-latest`, there under Git Bash,

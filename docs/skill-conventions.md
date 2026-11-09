@@ -145,7 +145,8 @@ the handover steps, where the wordings stand.
 
 **Where the person types a command devloop hands them while Claude Code
 runs, the text says, and which of two forms holds follows from what the
-command does.** Decided by the person on 28 October 2026. Form A, a
+command does and, since 9 November 2026, from the surface it runs on.**
+Decided by the person on 28 October 2026. Form A, a
 command that asks nothing — `brew install`, `git config`, the merge: it
 is typed in Claude Code with `!` in front, the text
 says so and gives the line with the `!`, `! brew install yq`. Claude Code
@@ -189,9 +190,21 @@ extension vs. Claude Code CLI", row "`!` Bash shortcut", "Yes" for the
 CLI and "No" for the extension — while with the setting "Use Terminal" of
 the extension, section "Switch to terminal mode" of that page, and with
 `claude` in the built-in terminal of VS Code the CLI's surface runs, and
-the person works one of these two ways; milestone 12. The wordings the
-person approved for the handovers stand in that roadmap entry; a skill
-says what is said, not the words. Until that day the rule on a command
+the person works one of these two ways; milestone 12. Decided by the
+person on 9 November 2026, the roadmap entries of that date on the install
+blocks and on the two entries held and the desktop handover: the graphical
+panel of the extension for VS Code and the local sessions of the desktop
+app count as surfaces beside the CLI, and cloud sessions do not; in the
+panel, where `!` is not there, and in the desktop app under Windows, where
+a `!` command runs in PowerShell, form B holds for every command; in the
+desktop app under macOS and Linux both forms hold as in the terminal,
+since a `!` command runs there in the login shell and Claude answers its
+output, the desktop page under "Claude Code settings that behave
+differently in the Code tab". The texts say form A on every surface today,
+and the blocks of milestone 12 in `docs/defects.md` hold them to the
+decision; `docs/plan.md` carries the decisions under milestone 12. The
+wordings the person approved for the handovers stand in that roadmap
+entry; a skill says what is said, not the words. Until that day the rule on a command
 handed over read that the line is copied whole into whatever terminal is
 open, point 18 of part B of 12 October 2026, whose rest stands.
 
