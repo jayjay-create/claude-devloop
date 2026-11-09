@@ -3085,7 +3085,7 @@ and for the proofs of closings.
   with that entry's words, the lines read in `docs/roadmap-archive-1.md` and
   each line's entry read off the last head above it. Line 796, Wrong and
   Should, from the fourth addendum of 14 October 2026, finding 1, lines
-  22937 to 22950: the program as one argument of 204 937 bytes, Linux
+  22936 to 22954: the program as one argument of 204 937 bytes, Linux
   refusing 131 072 and more, every Bash call blocked under `onFailure:
   block`; "the reader runs under macOS, under Linux and under Windows with
   Git Bash, with the awk each system brings, and no limit the command line
@@ -3095,7 +3095,7 @@ and for the proofs of closings.
   self-test green under busybox awk, the defect built; the workflow runs the
   self-test and the hooks under Alpine with busybox awk as well, in a
   container on `ubuntu-latest`". Line 812, Wrong and Should, from the fourth
-  addendum, finding 2, lines 22989 to 23003: the self-test under
+  addendum, finding 2, lines 22993 to 23006: the self-test under
   `ubuntu-latest` alone and no `.gitattributes`; "devloop runs on every
   system ... on every pull request into `main` the reader's self-test and
   every hook of `hooks/hooks.json` run once with a harmless input of its
@@ -3642,6 +3642,266 @@ and for the proofs of closings.
   Should changed: in the graphical chat panel the extension for VS Code opens with, the ! shortcut is not there, so form A has no place there
   Should changed: every command guard matches the tool Bash alone, while on Windows with Git Bash the PowerShell tool is on by default for claude.ai accounts and takes the shell commands
   Should changed: no skill declares shell bash in its frontmatter, so on Windows without Git Bash the insert lines run through the PowerShell tool and the load fails on the program instead of on the vendor's message that bash is missing
+
+- **Two entries held, the desktop handover decided, two blocks closed.**
+
+  9 November 2026, version 0.181.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/audit-2026-11-09`, off
+  `origin/main` at `0c3eb24`, in one commit: `docs/roadmap.md`,
+  `docs/plan.md`, `docs/defects.md`, `docs/skill-conventions.md` and this
+  entry. The order: the consistency audit before the handover, in the form
+  of the audits of 4 and 6 November 2026 — the two entries since the last
+  audit held statement by statement against the code, the documents, the
+  table and their commits; the control documents searched for sentences
+  against the decisions of 9 November 2026; `docs/rationale.md` held against
+  the loaded texts; what has one right answer mended here and the rest put
+  to the person in the report; and the four things the order names carried
+  in. Written by Claude Code from the person's order of this day; no session
+  log was read; nothing was installed; GitHub was read with `gh pr view` for
+  the branch names and commits of the two pull requests and not beyond; the
+  identity under which git commits here was neither set nor read. The report
+  stands on this machine as `~/devloop-audit-2026-11-09.md`, in German, and
+  is not in the repository. Every line number of a file in this entry holds
+  at `0c3eb24` unless it says otherwise; a line of the archive names
+  `docs/roadmap-archive-1.md`, read with the last head above it, `grep -n
+  '^- \*\*'`. The two lines of the fixed form for the block renamed below:
+
+  Block renamed: in the local sessions of the desktop app the texts hand a command that asks nothing over as form A and nothing reads that the session runs there, where the person decided on form B for that surface / in the local sessions of the desktop app under Windows, where ! runs in PowerShell, the texts hand a command that asks nothing over as form A and nothing reads that the session runs there, where form B holds for every command
+  Should changed: in the local sessions of the desktop app under Windows, where ! runs in PowerShell, the texts hand a command that asks nothing over as form A and nothing reads that the session runs there, where form B holds for every command
+
+  **What was read, and how.** Whole, with the text in front of the session:
+  the two entries, lines 3027 to 3645; the audits at lines 714 to 985 and
+  2896 to 3026 as the form; `docs/plan.md` lines 83 to 148 and 888 to 1027;
+  `docs/defects.md` lines 1 to 86; `docs/skill-conventions.md` lines 1783 to
+  1934 and 3924 to 4421; the head of `scripts/devloop-stock-take`, lines 458
+  to 587, 676 to 933 and 955 to 970; `README.md`; `git diff c5a773c 0c3eb24
+  -- docs/plan.md`; every place a statement names, with the lines around it;
+  the headings of `docs/rationale.md` by a script. The branches of #235 and
+  #236 were fetched by their references, two commits and one, the tree of
+  each head equal to its squash commit on main, `git diff --stat` empty for
+  both; their branch names and commits read with `gh pr view`. No subagent
+  was used. The tool ran in a clone under a throwaway directory at
+  `e252c10`, `85dc3bc`, `ded762b`, `c5a773c` and `3d485b2`, `origin/main`
+  set to the branch point for the three commits of the branches, and check 2
+  of "Before a handover, run these" ran at four of them, silent at each. The
+  vendor's pages were fetched raw with `curl` from
+  code.claude.com/docs/en/<page>.md into that directory, the CHANGELOG at
+  `v2.1.319`, and the 68 quotations of the two entries held against them
+  with apostrophes and quotation marks normalised: every one stands on its
+  page, sixteen with markup around the words — bold, a link, backticks —
+  which the entries give as text; the settings reference is the page
+  settings-reference.md, since settings.md is "Settings files and
+  precedence" and carries neither key.
+
+  **The two entries against the code, the documents, the table and their
+  commits.** The entry at line 3027, the blocks on systems and surfaces: 41
+  statements, 38 hold — its two commits and their files, the second
+  correcting the two fields it names with the old texts as quoted, the 34
+  blocks at their lines at `e252c10` and their Fix lines, no Fix, Status,
+  title or section changed, the fourteen places that read a file and the
+  three awk calls at the lines named, `bin/devloop-bounded` lines 38 and
+  111, nothing reading `respondToBashCommands`, the chat panel, Use Terminal
+  or a version of Claude Code, the eight fields filled with the archive's
+  words under the heads named, and the figures before and after, which the
+  tool gives at `e252c10`, `85dc3bc` and `ded762b` line for line, Should
+  changed 8 and added 2 among them. Three do not:
+  - "finding 1, lines 22937 to 22950": the finding's head stands at line
+    22936 and the should quoted, "the reader runs under macOS, under Linux
+    and under Windows with Git Bash, …", at lines 22952 to 22954; corrected
+    in place to 22936 to 22954.
+  - "finding 2, lines 22989 to 23003": lines 22989 to 22992 end finding 1,
+    the measurement in milliseconds, the head of finding 2 stands at 22993
+    and "every file a shell or awk reads arrives on every system with the
+    line endings it runs with" at 23005 to 23006; corrected in place to
+    22993 to 23006.
+  - "`grep -rn -E "tr -d '\\r'|CRLF|carriage"` over the six directories
+    finds none outside two comments": the command as written prints five
+    comment lines in three files, `bin/devloop-command-reader` 2504,
+    `bin/devloop-install-issues` 83 and `.github/workflows/stock-take.yml`
+    130, 172 and 504, and its pattern cannot meet `tr -d '\r'`, the
+    backslash going in the double quotes; a pattern that keeps it adds lines
+    506, 507 and 509 of the workflow, where the job hooks on every system
+    reads the record of the counted refusal with `tr -d '\r'`. The fourteen
+    places read a file of the project and handle no carriage return, as the
+    entry says; the sentence on the command's output does not hold. Said
+    right here, the entry standing as written.
+  The entry at line 3271, the install blocks: 63 statements, 62 hold — its
+  one commit, the 57 blocks at their lines at `c5a773c`, the 47 Fix lines,
+  the ten with Fix none and what the code shows for each, the anchor of the
+  four blocks that cannot be forced at archive line 32366 under the head of
+  32312, the one Fix changed, the three Wrong fields and where the wrong
+  stands, the 29 fields filled under the 21 heads named, the three sentences
+  of `docs/plan.md` as the diff shows them, the decisions' sources at
+  archive lines 22922 to 22923 and 22999 to 23003, `shared/install-tool.md`
+  lines 139 to 141 and `bin/devloop-auto-mode-rule` line 7, the two closings
+  on workflow lines 264 and 269, the three Shoulds changed with their old
+  texts, the three blocks written, and the figures before and after, which
+  the tool gives at `c5a773c` and `3d485b2`, Should changed 32 and added 3.
+  One does not:
+  - "`grep -rn -i -E "vendor's newest|newest release|goes stale|named
+    release"` over the six directories finds the head of
+    `bin/devloop-command-reader` line 92 alone": it finds three lines,
+    `skills/setup-project/SKILL.md` 795 and `skills/build-work/SKILL.md` 212
+    carrying "goes stale" beside it, neither on the subject; the rule and no
+    check, as the entry says. Said right here.
+  One slip, no error: "the one call of `bin/devloop-start-conditions` at
+  line 496" of `skills/plan-work/SKILL.md` — the sentence opens at 496 and
+  the program's name stands at 497.
+
+  **Decided by the person on 9 November 2026**, after the entry above, an
+  addition to its decision (2): in the local sessions of the desktop app
+  under macOS and under Linux devloop hands a command over as in the
+  terminal, form A where the command asks nothing and form B where it asks;
+  form B for every command holds in the desktop app under Windows, where `!`
+  runs in PowerShell, and in the graphical panel of the extension for VS
+  Code, where `!` is not there. Reason: in the desktop app a command after
+  `!` runs under macOS and Linux in the login shell, and Claude answers its
+  output whatever `respondToBashCommands` says — the desktop page, "Claude
+  Code settings that behave differently in the Code tab", read in the entry
+  above; where `!` works as in the terminal, devloop uses it so, and the run
+  reads the result itself instead of the person's word. Not chosen: form B
+  for every command everywhere in the desktop app. Recorded in `docs/plan.md`
+  under milestone 12 as a dated sentence after the three of that day; the
+  sentence on the closing runs there said "the command handed over in form B
+  on each" for the panel and the desktop app and says now form B in the
+  panel and, in the desktop app, as in the terminal, form A where it asks
+  nothing. The block of the desktop app, line 1348, Recorded, not built, no
+  run naming it, is renamed, the two lines above, since its title said the
+  person decided on form B for that surface, and its Should says the
+  addition; its Wrong names every text that hands a command over with `!`,
+  found with `grep -rn` over `skills/` and `shared/`, and its Note keeps the
+  old title. The old Should, quoted: "in the local sessions of the desktop
+  app devloop hands every command over in form B, as `shared/install-tool.md`
+  describes it under the way of the yes, the surface read first by the way
+  milestone 12 measures, and where no way to read it is found the question
+  goes to the person before anything builds on it; decided by the person on
+  9 November 2026, decision 2; measured in milestone 12 in a run in the
+  desktop app on the person's Mac."
+
+  **Two blocks closed as corrected in the document**, lines 683 and 996,
+  "the guard-block bullet of setup-project wrote the case with nobody there,
+  an issue and a report, in a skill the unattended mode does not reach" and
+  "setup-project says what the run does with nobody there at an install the
+  guard blocked, and no way of the unattended mode reaches setup-project by
+  the computed set": both held a sentence of `skills/setup-project/SKILL.md`
+  that described a case the run does not reach there; the sentence is
+  corrected, a run does the same before and after, and the sentence itself
+  was the defect — the case of section D of the tool's head and of the two
+  blocks the entry above closed. Their Status, from Built, never walked:
+  Closed, corrected in the document: `skills/setup-project/SKILL.md` carries
+  "check setup decides. The case with nobody there cannot arise here", the
+  text standing once in the file, line 51.
+
+  **Four Wrong fields said right**, each from the place that says what was
+  wrong; no Should, Fix or title changed. Line 668, the block "build-work
+  step 3 point 7 and setup-checks step 3 described the guard's pass by places
+  alone, …": "both sentences in both skills name the answer of a route the
+  record names, since 30 September 2026", the Built line of the audit of 30
+  September 2026 → the wrong from archive lines 8147 to 8154 under the head
+  of 8034, "`build-work` step 3 point 7 and `setup-checks` step 3 said the
+  guard passes a command only where every place it lands is one the record
+  names, and that anything landing outside the places the record names stays
+  the user's under every answer, while since 29 September 2026 a route the
+  record names opens whatever that route answers on the machine, …, and pull
+  request #141 touched neither skill; a run reading either would hand over a
+  `cargo install` the guard lets through". Line 708, "setup-checks step 3
+  said never install system-wide without asking …": "step 3 of
+  `setup-checks` says under a no and under no record what the no of the
+  install question says, in one form — the finding of 2 October 2026 on step
+  3", the Built line → from the block's own Note, "step 3 of `setup-checks`
+  said that where the record says no or was never written the run never
+  installs system-wide without asking, while the no of the install question,
+  `setup-project` step 4 question 3, says the run hands them the command and
+  they decide, and the guard blocks the run's own install under
+  `install-tools: no` and under no record whatever they answer, so the asking
+  step 3 named had no yes the run could act on — …". Line 724, "the install
+  guard reads the destination of the first make, cargo or gem command of a
+  line alone": "every destination on a line held against the places", the
+  Recorded line → from archive lines 13995 to 13999 under the head of 13812,
+  "of `make`, `cargo` and `gem` the guard read the destination of the first
+  command of its kind on a line alone, `head -1` on the reading of the make
+  variables, line 404, of `--root` behind `cargo`, line 298, and of
+  `--bindir` behind `gem`, line 336 at `2460bb7`, so that a second command of
+  the same kind on the line went to a place the record does not name unseen".
+  And line 684, the Wrong of the first block closed above, which opened with
+  the Built line of the entry of 20 October 2026, "the bullet of
+  `setup-project` for a blocked install says the case with nobody there
+  cannot arise here, …", and carried after it, 2,800 characters in all, that
+  entry's other points, from "Line 27167 of docs/roadmap-archive-1.md, …" to
+  "(h) Everything else above is recorded only.", in this form since
+  `b73c029` → the wrong from archive lines 33164 to 33171 under the head of
+  32873, "until 20 October 2026 the bullet of `setup-project` for a blocked
+  install said what the run does with nobody there, that the command becomes
+  an issue and a report, in a skill the run without the person reaches on no
+  way, …".
+
+  **The closing runs of milestone 12**, `docs/plan.md`: the third of the
+  five sentences asks for runs the sentence on the closing runs did not
+  name. It names now, beside the runs per system and surface: under a no, a
+  run on the person's Mac with a command that asks nothing handed over in
+  form A, a run under Linux with `sudo apt install` handed over in form B,
+  and the next start after an install the person made under a no; once each
+  on the person's Mac the cases a test project can produce that no run
+  named — the refresh of `setup-project` without an install record on the
+  main branch, a planning with the record of the mode saying yes and
+  auto-merge off, a planning in German with a browser the program does not
+  read and with one in the wrong version, a start with `--auto` after a
+  refused install and one after two refused installs whose commands ask;
+  and the inputs the job hooks on every system gives the install guard, a
+  line with two destinations of one install and the updates of `brew` and
+  `pipx`. Sections 8.3 and 8.10 of the report of the entry above name no
+  further case.
+
+  **The control documents against the decisions of 9 November 2026.**
+  Searched with `grep -n -E` for `Windows|Git Bash|PowerShell|Alpine|Linux|
+  macOS|every system|operating system` and for `cloud|desktop|VS Code|
+  extension for|JetBrains|surface|the web|claude\.ai|Cowork|shell mode|
+  Use Terminal|chat panel` and the backticked `!` over `docs/plan.md` (37
+  and 33 lines), `docs/skill-conventions.md` (41 and 16), `docs/rationale.md`
+  (4 and 24), `README.md` (none), the head of the tool (1 and 0) and this
+  file's sections without a date (0 and 3); every line read. One place
+  mended: `docs/skill-conventions.md`, the paragraph "Where the person types
+  a command devloop hands them while Claude Code runs, the text says, and
+  which of two forms holds follows from what the command does" named the
+  panel as a limit not built and said nothing of the desktop app or of which
+  surfaces count, while by decision (2) and the addition above the form
+  follows from the surface as well; its head reads now "… follows from what
+  the command does and, since 9 November 2026, from the surface it runs on",
+  and after "the person works one of these two ways; milestone 12" it
+  carries the decisions in two sentences, naming `docs/plan.md` and the
+  blocks of milestone 12. `README.md` says nothing of systems, surfaces or
+  the cloud; what decisions (1) and (3) ask of it the two blocks of the
+  entry above hold, and no sentence of it deviates. `docs/rationale.md`
+  describes the loaded texts as they stand, form A with `!`, and holds
+  against them: each of its 59 headings of the second level names a file
+  that exists and each of its 68 of the third a section that file has. The
+  texts under `skills/` and `shared/` that hand a command over with `!`,
+  named in the Wrong of the renamed block, say form A on every surface; the
+  block of the panel and the renamed block hold them, and no sentence needs
+  a block of its own; `shared/body-through-file.md` lines 18 to 19 and
+  `bin/devloop-arm` line 68 name the four systems of decision (1).
+
+  The tool, before, on `0c3eb24`: broken records 0, uncovered lines 0 of
+  4568; Undetermined 24, Recorded, not built 259, Built, never walked 1509,
+  Walked 700, Closed 68; milestone 12 96 blocks, Recorded, not built 41,
+  Built, never walked 48, Walked 5, Closed 2; blocks with "not stated" 345.
+  After: Built, never walked 1507 and Closed 70, the two closings; milestone
+  12 Built, never walked 46, Closed 4; every other figure as before; blocks
+  held against the branch point: removed 0, renamed 1, Should changed 1,
+  added 0; Walked on this branch without a run the branch adds: 0. The
+  self-test: 159 cases, 148 of 148 messages asserted by a case, before and
+  after. The twenty checks before a handover and `scripts/devloop-run-workflow`
+  print after what they printed on `0c3eb24`, the title step reading this
+  head. No run is recorded. Two commits: the first with all of this; the
+  second from the check at the code before the merge, which corrects the
+  first in two places. In `docs/skill-conventions.md`, after the two new
+  sentences, "The wordings the person approved for the handovers stand in
+  that roadmap entry" and "Until that day the rule on a command handed over
+  read" meant the entry of 28 October 2026 and read, after them, as 9
+  November 2026; they say now "in the roadmap entry of 28 October 2026 on
+  the handover steps" and "Until 28 October 2026". This entry said the
+  place mended carried the decisions in four sentences; they are two.
 
 ## Decisions taken against
 
