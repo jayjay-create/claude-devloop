@@ -601,64 +601,64 @@ their section.
 ## Milestone 12
 
 ### the normal path of build-work runs through the install guard, a body on the command line and an append to environment.md
-- Wrong: not stated
-- Should: not stated
+- Wrong: the false positive sits on the normal path: `gh issue create --body 'Run: go install …'` exits 2, and so does `echo 'go install …' >> docs/agents/environment.md`, both the normal path, step 3 of `build-work` filing an issue carrying the exact command where an install is declined and point 8 of the same step writing a command the user has to type into `environment.md`; in the decline path filing that issue is itself the blocked act.
+- Should: what ever reaches the guard is narrowed in `build-work` rather than in the hook: a body goes to `gh` through a file with `--body-file` rather than as a string on the command line, and `environment.md` is written with the editing tool rather than appended from the shell; a rule that leads text past a guard names every channel the text takes, not only the channel that was measured.
 - Found: Two guard false positives, and a run that stepped around both, measured on 6 September 2026 in `devloop-test-o`.
 - Fix: `shared/body-through-file.md` "rather than setting it as a string in the command"
 - Status: Built, never walked
 - Note: narrowed in build-work rather than in the hook: the body through a file with --body-file, environment.md through the editing tool. Unattended the way out was the barred act itself
 
 ### the two setup stages did not tell a real install block from a text match, recording a skip that is not true
-- Wrong: not stated
-- Should: not stated
+- Wrong: where the two setup stages met a block, no second reading told the install the class or the step needs from a guard that matched on text, where nothing is blocking anything and recording a skip would be an entry that is not true, a class standing as skipped while nothing hinders it.
+- Should: each stage says which of the two it is, in its own vocabulary, and neither copies the other's: where the command really is the install the class or the step needs, the guard worked and the cost is real, `setup-checks` records the class `skipped` with the block as its reason, except `secrets`, which is never skipped and stops instead, and `setup-project` raises it as `needs-human` and stops; where the guard matched on text, nothing is blocking anything and nothing is skipped.
 - Found: Two guard false positives, and a run that stepped around both, measured on 6 September 2026 in `devloop-test-o`.
 - Fix: `skills/setup-checks/SKILL.md` "The command is not an install and the guard matched on text"
 - Status: Built, never walked, cannot be forced: decided in `docs/roadmap-archive-1.md` at "cannot be forced and do not hold the milestone up".
 - Note: each stage says which of the two it is in its own vocabulary, setup-project under the same heading; marked 5 November 2026 with the form for a built defect whose case cannot be forced, at the decision of 20 October 2026, the roadmap entry of that date on the person's answers to the five questions, decision (10) of the roadmap entry of 5 November 2026 on the sorting into the milestones
 
 ### the install guard's message offers two ways out that assume check classes or tasks, nothing for research, build-prototype and record-lessons
-- Wrong: not stated
-- Should: not stated
+- Wrong: the install guard's message offers two ways out, a check class becomes `skipped` with that reason or the part of the task that needs the tool cannot be built, both assuming the caller has check classes or tasks, which `research`, `build-prototype` and `record-lessons` have neither of, so the message offers them nothing.
+- Should: a message whose ways out apply on every path that can reach it: what a block costs the work in hand gets said whatever that work is.
 - Found: Two guard false positives, and a run that stepped around both, measured on 6 September 2026 in `devloop-test-o`.
 - Fix: `hooks/pre-tool-use-install-guard.sh` "echo "Blocked: this installs outside the repository."
 - Status: Built, never walked
 - Note: fixed in the hook on 29 September 2026, version 0.117.0: the message says that what a decline costs this work gets said, whatever that work is, and the two costs are out of it; until then not fixed in the hook, the shared block saying on the skill side that what a block costs the work in hand gets said whatever that work is; no longer holds milestone 3 open since the person's decision of 24 October 2026, (9) of the roadmap entry of 24 October 2026 on how an install is recorded, which gives the reason; built all the same where it is built or costs a few lines of text, neither a run nor a bench required for the milestone
 
 ### an install command was handed to the user without being backed and its success read off the user's word
-- Wrong: not stated
-- Should: not stated
+- Wrong: the check workflow installed gitleaks from a module path that does not exist, the GitHub organisation name taken for the module path, the line having looked like a success on the user's own machine because an older copy of the tool was already on `PATH`, and the install guard's own message told the run to pick up as soon as the user said the command had run.
+- Should: a command handed to the user that fetches something from outside is backed before it is handed over, the vendor's own installation line or the module resolving, and its success is read off the result, whether the tool is where that command puts it, rather than off the user reporting that it ran.
 - Found: An install command handed to the user without being backed, measured on 6 September 2026 in `devloop-test-o`.
 - Fix: `shared/backed-command.md` "**Each kind has its form of the backing**"
 - Status: Built, never walked
 - Note: at five sites: build-work step 3 points 7 and 8, setup-checks step 3, setup-project under A guard's block is not a decline since 30 September 2026, between question 3 and question 4 of its step 4 before that, and the install guard's message. Whether it worked is read off the path the installer writes to; no longer holds milestone 3 open since the person's decision of 24 October 2026, (9) of the roadmap entry of 24 October 2026 on how an install is recorded, which gives the reason; built all the same where it is built or costs a few lines of text, neither a run nor a bench required for the milestone; widened 24 October 2026, version 0.159.0, the roadmap entry of 24 October 2026 on the install rules reaching the build subagent: each kind has its form of the backing, go list -m, brew info, npm view, and for a browser the vendor's installation line or Playwright's dry run, measured that day, for an install the run makes itself under a yes as well, the handover and the report naming it, the evidence moved onto that paragraph
 
 ### the install in build-work is handed to the user and nothing says what a run with nobody there does
-- Wrong: not stated
-- Should: not stated
+- Wrong: in `build-work` step 3 the install is handed to the user and no line says what a run with nobody there does; the decline paragraph needs a person.
+- Should: a sentence for the unattended case, here or under "With nobody there": with nobody there the record says yes, since the mode does not start under a no or with no record, so nothing is declined, and what the guard blocks under that yes is a block and not a decline.
 - Found: The stock-take of what is built, closed on 23 September 2026.
 - Fix: `shared/install-tool.md` "With nobody there the record says yes, since the mode does not start"
 - Status: Built, never walked
 - Note: finding of the stock-take, concerns skills/build-work/SKILL.md at the install handover; repaired 28 September 2026 with the tools half of milestone 3: a no on record was the decline with nobody there and a record never written a block until 5 October 2026, since when the record says yes with nobody there, the mode not starting otherwise, and what the guard blocks under that yes is a block, version 0.129.0; not exercised; the note said the decline stood until 7 October 2026, corrected by the consistency audit of that day
 
 ### the block message chains two colons into one sentence behind does not open it where the cause opens with a label and a colon of its own, seven causes
-- Wrong: not stated
-- Should: not stated
+- Wrong: the join before the cause is poor in seven: the frame ends in a colon and the cause opens with a label and a colon of its own, so the sentence reads "does not open it: no record: …", two colons in one sentence, and where the reader is missing the fallback quotes the shell's own error with two absolute paths and a line number.
+- Should: every cause the reader names is one whole clause without a label and a colon of its own, the fallback for a reader that gave no cause saying so, and the guard joins the cause with "does not open it, because ", so that every join reads.
 - Found: The install guard's block message cut to the approved wording, on 29 September 2026, version 0.117.0.
 - Fix: `hooks/pre-tool-use-install-guard.sh` "does not open it, because $CAUSE. The install is the user's to run"
 - Status: Built, never walked
 - Note: found 29 September 2026 reading the joined sentence for every cause the guard can produce, on task/install-guard-message: no default branch, the ref cannot be read, no record, unknown value twice and the record could not be read twice open with a label and a colon, and the fallback for a missing reader quotes the shell's error with two absolute paths and a line number; every cause ends clean, none in a full stop, a quotation mark or a colon; the causes stand unchanged, as the order that approved the wording said; built 21 October 2026, version 0.154.0, in the wordings the person approved that day: the seven causes of bin/devloop-install-record one clause each without a label and a colon of their own, the fallback for a reader that gave no cause saying so, and the frame joining the cause behind does not open it, because, the roadmap entry of that date on milestone 3, part 3
 
 ### the install question was put through the harness's choice widget on its first asking and none of its thirteen points arrived whole, nothing in the skill naming the form
-- Wrong: not stated
-- Should: not stated
+- Wrong: on its first asking the install question went through the harness's choice widget, three questions in one multiple-choice form, and held against the thirteen points question 4 required none arrived whole, ten of them prose above the options with no slot and the three with a slot arriving cut to the slot, and nothing in the twelve skills, the shared text or the conventions named the form.
+- Should: the question names its form: the choice goes through the harness's choice widget, and everything that carries the decision stands in the widget's own fields, nothing standing in the run's message before the widget, since 3 October 2026; until then the form of the entry of 30 September 2026, question 4 put in prose in the run's own message and a choice widget that follows carrying its two answers and no other question.
 - Found: The install question put through the harness's choice widget on its first asking, none of its thirteen points arriving whole; the question cut to the four that carry the decision and the form named; 30 September 2026, version 0.119.0.
 - Fix: `skills/setup-project/SKILL.md` "widget, and everything that carries the"
 - Status: Built, never walked
 - Note: found 29 September 2026 in devloop-test-q on the first asking, under 0.118.0, the bench and the day read off the session log on 30 September 2026; repaired the same day, version 0.119.0: the form named in step 4's opening and in question 4, the question cut to the four points that carry the decision, step 0's sentence scoped to a choice two lines carry; the route named with no stack stands as part of this, its source not settled from the files; the form requirement holds only when a run meets it, and the catch is a bench run read off its transcript; put three times: once before this build, in devloop-test-q under 0.118.0 on 29 September 2026, and twice after it, in devloop-test-s and devloop-test-t under 0.120.0 on 30 September 2026, where the form did not hold, the entry of that date; since 3 October 2026, version 0.126.0, the form is the widget's own fields, each point of question 3 in one named field, the prose form having been met by a tab of a form in three runs
 
 ### under install-tools no the record and the session-start line list six places and a route with nothing saying they are closed, so the line reads as though something were open
-- Wrong: not stated
-- Should: not stated
+- Wrong: under `install-tools: no` the record and the session-start line list six places and a route with nothing saying they are closed, so the line reads as though something were open, while they do nothing under a no, since the guard blocks on `install-tools: no` before it reads a place.
+- Should: under a no the record and the line say the places and routes are what a yes would open, or carry none.
 - Found: The two runs milestone 3 ends with, both on 30 September 2026 under 0.120.0 and both attended: the record saying yes in `devloop-test-s`, the record saying no in `devloop-test-t`; what they establish, what they do not, and the findings read off them; 30 September 2026, version 0.120.1.
 - Fix: `bin/devloop-install-record` "if [ "$TOOLS" = "no" ]; then PLACES=""; ROUTES=""; fi"
 - Status: Built, never walked
@@ -666,7 +666,7 @@ their section.
 
 ### build-work step 3 point 7 and setup-checks step 3 described the guard's pass by places alone, the routes of 29 September 2026 missing
 - Wrong: both sentences in both skills name the answer of a route the record names, since 30 September 2026.
-- Should: not stated
+- Should: both sentences in both skills name the answer of a route the record names: the guard passes a command where every place it lands is one the record names or the answer of a route it names.
 - Found: The consistency audit before the handover, run on 30 September 2026 against `f4f4dc9`, the tree at 0.120.1, and its fourteen disagreements mended the same day, version 0.121.0.
 - Fix: `shared/install-tool.md` "where every place it lands is one the record names or the answer of a route"
 - Status: Built, never walked
@@ -682,7 +682,7 @@ their section.
 
 ### the guard-block bullet of setup-project wrote the case with nobody there, an issue and a report, in a skill the unattended mode does not reach
 - Wrong: the bullet of `setup-project` for a blocked install says the case with nobody there cannot arise here, `skills/setup-project/SKILL.md` lines 49 to 54 at `d1250d1`; its should as finding 11 had it, met by its second way: "the bullet names the case with them there alone, or says the case cannot arise here, as setup-checks does under With nobody there for its third route". Line 27167 of docs/roadmap-archive-1.md, as every line number of this field that names no file, the insert of `shared/backed-command.md` in `setup-project` whose only use went with the install handed over, its should the insert going or a line that hands a command over using it: Closed, lapsed: `skills/setup-project/SKILL.md` no longer carries "devloop-text backed-command". The closing names no commit, since the commit of this branch does not resolve on `main` after the squash merge, section D of the tool's header; the text stood in the file since `d713819` of 18 September 2026, `git log -S`. No line of the skill hands a command that fetches something over, read with `grep -n -i 'hand' skills/setup-project/SKILL.md`: `gh auth login` at line 195 fetches nothing, the merge handover is its own text, and the refresh question hands nothing over since nothing is installed in the setup. (f) Cluster 3, line 6266: Closed, left on purpose: decided in `docs/roadmap.md` at "The question does not say that a bare pip opens nothing under a yes.". Cluster 6, line 26220: its should since this entry is that what the second question needs stands in its fields, in the wording approved on 17 October 2026, and that nothing the decision needs stands only before the call, `output-styles/devloop.md` line 38 carrying the instruction; the old should, quoted: "what the mode question needs stands in its fields, in the wording approved on 17 October 2026, and the line before each second question in its question field, naming their no where the record says no, nothing as text before either call"; the walk of 19 October 2026 at records 496 and 497 of project z, lines 29807 to 29820, enters the defect's row as a run under 0.148.0 with this file as its source, by the rule of the answer to question 5, since that entry read the records for exactly this case; the run counts, the site line last changed at `89fb29a` of 16 October 2026 and the evidence line at `b24542a` of 17 October 2026, both before `3f810fd`, which introduced 0.148.0. Cluster 13, line 6442: Closed, left on purpose: decided in `docs/roadmap.md` at "not its output on stderr, on purpose". (g) `docs/plan.md` carries after its paragraph on the decision of 20 October 2026 under milestone 3, line 394, the dated sentence that the examination of the sandbox leaves the list the milestone stands on, with the decision of cluster 16. (h) Everything else above is recorded only.
-- Should: not stated
+- Should: the bullet names the case with them there alone, or says the case cannot arise here, as setup-checks does under With nobody there for its third route.
 - Found: Milestone 3, part 1, the install question, built as the person decided on 20 October 2026: the refresh of `setup-project` puts the install question where no record stands on the main branch and writes the record; no question of its step 4 carries a recommendation, the rule standing in `shared/how-to-ask.md`; the call of the install question stays alone, without a mechanism, for the reason that what needs weighing goes alone; the no of the install question names the exception of a package that downloads something when it is installed, in the wording approved that day; the bullet of `setup-project` for a blocked install with nobody there says the case cannot arise, and the insert of `shared/backed-command.md` goes; the person's decisions of that day on the clusters of the checked list recorded with what follows from the rules; four findings of the tool brought in as defects, three of them built and one closed, four defects closed as left on purpose and one as lapsed; 20 October 2026, version 0.152.0.
 - Fix: `skills/setup-project/SKILL.md` "check setup decides. The case with nobody there cannot"
 - Status: Built, never walked
@@ -690,7 +690,7 @@ their section.
 
 ### the table holds no thing for an install with nobody there under a yes that succeeds, so the open half of milestone 3 was invisible in the tool
 - Wrong: `docs/stock-take.tsv` holds no thing for an install that runs with nobody there under a yes on record and succeeds, the thing for the case without a person carrying only its two blocks and the two things for the yes bundling both halves, so the open half of milestone 3 was invisible in the tool; what should hold is a thing of its own, "the install runs with nobody there under a yes on record and the tool stands at the path", sited on the line of `build-work` step 3 point 7 that says it, and the outcome of `setup-project` that names both halves split the same way, so that a run with the person there walks only its own half.
-- Should: not stated
+- Should: a thing of its own, "the install runs with nobody there under a yes on record and the tool stands at the path", sited on the line of `build-work` step 3 point 7 that says it, and the outcome of `setup-project` that names both halves split the same way, so that a run with the person there walks only its own half.
 - Found: The consistency audit of 4 October 2026, read against the entry beside it: two counts on its fifteen defects, those fifteen corrected there in place, and twenty defects of its own; 4 October 2026, version 0.128.0.
 - Fix: `shared/install-tool.md` "user there and with nobody there, without asking again, with ten minutes"
 - Status: Built, never walked
@@ -698,7 +698,7 @@ their section.
 
 ### the rule keeping runtimes out of the install question was delivered as an assurance a fifth time in five runs, and a rewording is spent
 - Wrong: the rule of `setup-project` step 4 that the leak is said and the assurance on runtimes is not, built on 3 October 2026, was delivered as an assurance again in the yes run of that day, by the account of the order that recorded it, the fifth time in five runs, and the table shows the repair as never walked; what should hold is that no further wording is taken as the repair, and that a mechanism at the question tool holds it or the rule goes, the choice of mechanism open and its first measurement the one the finding on `setup-project` at "question and no other" names.
-- Should: not stated
+- Should: no further wording is taken as the repair, and a mechanism at the question tool holds it or the rule goes, the choice of mechanism open and its first measurement the one the finding on `setup-project` at "question and no other" names.
 - Found: The consistency audit of 4 October 2026, read against the entry beside it: two counts on its fifteen defects, those fifteen corrected there in place, and twenty defects of its own; 4 October 2026, version 0.128.0.
 - Fix: `shared/install-question.md` "nothing of it is said. And the first no"
 - Status: Built, never walked
@@ -706,15 +706,15 @@ their section.
 
 ### setup-checks step 3 said never install system-wide without asking under a no and under no record, an asking with no yes the run could act on, against the no of the install question
 - Wrong: step 3 of `setup-checks` says under a no and under no record what the no of the install question says, in one form — the finding of 2 October 2026 on step 3.
-- Should: not stated
+- Should: step 3 of `setup-checks` says under a no and under no record what the no of the install question says, the command handed over and the class `skipped (user)` on a decline, in one form.
 - Found: The status of a check class takes four forms and a guard holds the table to them, the unattended mode starts on two permissions more and is set up in `setup-checks` step 8 or through `--auto`, a state is read before a task is released, and a review finding about the table goes a third way; 5 October 2026, version 0.129.0.
 - Fix: `skills/setup-checks/SKILL.md` "installs nothing, which is what the no of the install"
 - Status: Built, never walked
 - Note: a finding row until 5 October 2026: step 3 says that where the record says no or was never written the run never installs system-wide without asking, while the no of the install question, setup-project step 4 question 3, says the run hands them the command and they decide, and the guard blocks the run's own install under install-tools: no and under no record whatever they answer, so the asking step 3 names has no yes the run could act on; should: step 3 says under a no and under no record what the question's no says, the command handed over backed with them there and the class skipped on a decline, in one form; recorded 2 October 2026, grep -n 'without asking' docs/roadmap.md finds the line listed as untouched in the entry of 19 September 2026 and the question's own wording in the entries of 28 and 30 September 2026, no entry naming the two forms against each other; repaired 5 October 2026, version 0.129.0: step 3 says that under a no and under no record the run installs nothing and hands the command over backed, and that the class becomes skipped (user) only where the only candidate is left with no way
 
 ### the line of prose before a second question in setup-checks step 8 was approved in one wording ending on their having said no, where the question is put for every record not saying yes
-- Wrong: not stated
-- Should: not stated
+- Wrong: the line of prose before a second question says that they said no, while the question is put for every record that does not say yes, a record that was never written included; the skill says the half about their no only where a record says no, and no wording is approved for the other case.
+- Should: the first sentence names the permission, and "Dazu hast du Nein gesagt." follows only where the record says no; where no record stands on the main branch, the line is the first sentence alone.
 - Found: The status of a check class takes four forms and a guard holds the table to them, the unattended mode starts on two permissions more and is set up in `setup-checks` step 8 or through `--auto`, a state is read before a task is released, and a review finding about the table goes a third way; 5 October 2026, version 0.129.0.
 - Fix: `skills/setup-checks/SKILL.md` "follows in the same field, that they said no to it; where no record stands"
 - Status: Built, never walked, cannot be forced: decided in `docs/roadmap-archive-1.md` at "cannot be forced and do not hold the milestone up".
@@ -722,7 +722,7 @@ their section.
 
 ### the install guard reads the destination of the first make, cargo or gem command of a line alone
 - Wrong: every destination on a line held against the places.
-- Should: not stated
+- Should: every destination written on the line is held against the places.
 - Found: The open findings on the install guard, eight, measured on this machine; four questions never examined; the decisions for the next orders of milestone 3 and the texts the person approved, word for word; three corrections; 9 October 2026, version 0.132.0.
 - Fix: `hooks/pre-tool-use-install-guard.sh` "install|binstall|install-update|use|tap) item cargo "root=$(value --root)""
 - Status: Built, never walked
@@ -761,8 +761,8 @@ their section.
 - Note: found 11 October 2026 by the order recording the second closing run of milestone 3, in the session log of that run in devloop-test-w, records 59 to 65, the search and the question with a recommendation, record 70, the person's answer three hours and eight minutes later, and records 74 to 101, the formula and the manual read and the error conceded; concerns shared/how-to-ask.md at - **There is no right answer to find.** A question about how something works has, line 4, inserted into plan-work under How to ask, line 150; no line of a skill governs how a tool's existence is read, and docs/skill-conventions.md names the shape at A claim about the platform's behaviour holds only with evidence, line 977, and at **A query is scoped to a type, and a stock-take built on it inherits that, line 1074, as rules for whoever writes a skill; should: a question with a right answer to find is looked up before it is asked, and a tool's existence is read off what ships it and not off a search by name
 
 ### a project whose mode was set up before 0.134.0 meets the question on the rule for auto mode on no path, step 8 skipping where all five stand and plan-work asking nothing where the mode is set up and --auto was typed
-- Wrong: not stated
-- Should: not stated
+- Wrong: where the mode is set up by all five, step 8 says so and skips the rest, and `plan-work` asks nothing where the mode is set up and `--auto` was typed, so a project whose mode was set up before this version meets the question on no path.
+- Should: a project whose mode was set up before 0.134.0 is asked the rule question on some path.
 - Found: Step 8 of `setup-checks`: a reading before the question, the question field by field, the rule for auto mode after its yes; a guard on the identity of a commit; milestone 12 in the plan; the findings of 9 October 2026; 9 October 2026, version 0.134.0.
 - Fix: `skills/setup-checks/SKILL.md` "**The form for a start with `--auto`"
 - Status: Built, never walked
@@ -786,8 +786,8 @@ their section.
 - Note: recorded 12 October 2026, point 9 of the order on the command reader; the changelog names the field under 2.1.295 alone, and what an older version does with it is documented nowhere
 
 ### subcommands the vendors document as placing a program were not read: nix-env, nix-shell -p, cargo binstall and the updates of brew, pipx, uv tool, npm and gem
-- Wrong: not stated
-- Should: not stated
+- Wrong: commands that put a program outside the project were not read: `nix-env -i` and `--install`, `nix-shell -p`, `cargo binstall`, and the updates `brew upgrade`, `brew reinstall`, `pipx upgrade`, `uv tool upgrade`, `npm update -g` and `gem update`.
+- Should: every subcommand its vendor documents as placing a program is read as the install of its route; an update puts a new version at the same place, and the record holds for it as for the first install; the subcommands of every route the guard knows read off the vendor's documentation, each named with its source; `nix-shell -p` read as `nix shell` is, a fetch-and-run form opened by any yes.
 - Found: The command reader: every hook reads its input through one program that decodes the JSON and takes the command apart as the shell runs it; the install guard reads findings 1 to 8 of 9 October 2026, `nix run`, `nix shell` and `nix env shell`, and the browser and route variables before the command; every handler under PreToolUse and PermissionRequest blocks the action where the hook fails; two rules in the conventions; a block reported and not reworded; two findings recorded, not built; 12 October 2026, version 0.137.0.
 - Fix: `hooks/pre-tool-use-install-guard.sh` "install|reinstall|upgrade|add|use|tap) item brew "" "$V1" ;;"
 - Status: Built, never walked
@@ -830,12 +830,12 @@ their section.
 - Should: the comment names both halves and why the second, git refusing in a container a repository owned by another user unless the directory is marked safe; the addendum stands as written, and the entry says what it does not.
 - Found: The consistency audit of 14 October 2026 before the handover, read against the three entries since the audit of 12 October 2026, the five addenda of the third among them, and the code at `a03a720`: fifteen disagreements, seven mended in the documents, two rows of the table brought to the tool's rule and six recorded; the nine points of the order answered, two of them measured on the tool; the platform's run of pull request #171 read; 14 October 2026, the version stays 0.137.0.
 - Fix: `.github/workflows/stock-take.yml` "since git refuses in a container a repository owned by another user"
-- Status: Built, never walked
+- Status: Closed, corrected in the document: `.github/workflows/stock-take.yml` carries "since git refuses in a container a repository owned by another user".
 - Note: found 14 October 2026 by the consistency audit of that day; concerns .github/workflows/stock-take.yml lines 112 to 132 and 158 at a03a720 and docs/roadmap-archive-1.md, the fifth addendum of 14 October 2026, lines 23421 to 23423; the step marks the checkout a safe directory for git since 84a0bf6, the branch's last commit, after the addendum; should: the comment names both halves and why the second; outside docs/ for the comment, the addendum standing as written, not built; built 14 October 2026 by the catch-up of that day: the comment names both halves of the Alpine step and why the second; the fifth addendum stands as written, as the audit decided; the site stays on the status line
 
 ### the group of programs the reader reads over goes stale with new tools and options and nothing holds each program's named release against the vendor's newest
 - Wrong: the group of programs the reader reads over goes stale as new tools and options appear, and nothing holds each program's named release against the vendor's newest.
-- Should: not stated
+- Should: a check that holds, per program, the release named in the roadmap against the vendor's newest release, and reads again only the programs for which a newer one has appeared since, on the rule of `docs/skill-conventions.md` under "A hook reads its input through one program" that every reading of a program names the release or commit it was made at, with the command that shows it exists and the vendor's sentence quoted.
 - Found: The catch-up of 14 October 2026 after the consistency audit: the three comments outside `docs/` built as the audit's shoulds say, the 24 runs under 0.137.0 recorded before later commits of their branch changed their things taken out of the table, the 89 not-a-thing records outside the search set kept, the tool rejecting a run under the branch's own version whose row came in before a later commit changed its thing, a second test on the run's date built and taken out again by the person's decision, one defect recorded and not built on the group of programs the reader reads over going stale; four runs on the final code; the version raised to 0.138.0.
 - Fix: none
 - Status: Recorded, not built
@@ -1003,7 +1003,7 @@ their section.
 
 ### shared/install-not-through.md names every failed installer attempt on the model of the fetch text, which names none followed by an answer since 17 October 2026
 - Wrong: the install text names every failed attempt on the model of a fetch text that names none followed by an answer.
-- Should: not stated
+- Should: an attempt that fails and is followed by one that goes through is not said, as at a fetch; where the third fails too, what it says of the attempts, in the issue and for a class in the report, is that the installer ended with an error on all three, the message being the third's, and an earlier attempt's beside it only where it names something in the way the third's does not; the audit's two ways, the install text naming its failed attempts on its own ground or following the fetch text, decided so by the catch-up of 19 October 2026.
 - Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
 - Fix: `shared/install-not-through.md` "that fails and is followed by one that goes through is not said"
 - Status: Built, never walked, cannot be forced: decided in `docs/roadmap-archive-1.md` at "cannot be forced and do not hold the milestone up".
@@ -1014,15 +1014,15 @@ their section.
 - Should: the comment says a handler added under a known event and matcher runs untouched and one under a new pair needs its input.
 - Found: The consistency audit of 18 October 2026 before the handover, read against the eleven entries since the catch-up of 14 October 2026 and the code at `786b71f`: thirty-three disagreements, nineteen mended — nine in the documents, three dated entries' line numbers corrected in place and seven said right here — three rows of the table brought to the tool's rule and eleven recorded; the two points of the order answered; 18 October 2026, the version stays 0.147.0.
 - Fix: `.github/workflows/stock-take.yml` "# matcher this step has an input for runs without this step being touched;"
-- Status: Built, never walked
+- Status: Closed, corrected in the document: `.github/workflows/stock-take.yml` carries "matcher this step has an input for runs without this step being touched;".
 - Note: found 18 October 2026 by the consistency audit of that day; concerns .github/workflows/stock-take.yml lines 127 to 128 against line 231 at 786b71f; should: the comment says a handler under a new event and matcher needs its input; built 19 October 2026, version 0.148.0, by the catch-up of that day: the comment says a handler under a known event and matcher runs untouched and one under a new pair needs its input
 
 ### the rule question of step 8 was put at record 474 before bin/devloop-auto-mode-rule read answered at 485
 - Wrong: the rule question of step 8 was put at record 474 before `bin/devloop-auto-mode-rule read` answered at 485
 - Should: the reading comes first and the question only where it answers exit 1, `setup-checks` expanded 1843 to 1845.
 - Found: The two runs of 19 October 2026 in `devloop-test-z` and `devloop-test-y` under the installed 0.148.0, read off their session logs and the projects, and where milestone 3 stands under the criterion the person decided that day, in place of the one of 12 October 2026: every defect that concerns the milestone listed in three groups, and the milestone not reached; defects 1, 3, b, c and i held, defect a held at every place under one reading and not under another, 13 held but for one point, 14 held at one place and not at the other, 5 and 9 of the entry of 16 October 2026 held, 4, 10 and 11 of it did not, 12 met no run, the defect of 15 October 2026 on the loose issues met again; of the six rows of the check table of `devloop-test-y` four went as their case says and two were decided without the question; nineteen new defects, three of them the person's wordings of that day, one with a should the person has still to decide; 19 October 2026, the version stays 0.148.0.
-- Fix: none
-- Status: Recorded, not built
+- Fix: `skills/setup-checks/SKILL.md` "says so with exit 0 and writes nothing, and the program above reads it"
+- Status: Built, never walked
 - Note: found 19 October 2026 by the order recording the two runs of that day in devloop-test-z and devloop-test-y, read off their session logs, the records named in the entry; concerns skills/setup-checks/SKILL.md lines 988 to 1008; should: the reading comes first and the question only where it answers exit 1, setup-checks expanded 1843 to 1845.
 
 ### gitleaks installed at /opt/homebrew/bin at record 602 of project z stands in no line of environment.md after the run
@@ -1034,8 +1034,8 @@ their section.
 - Note: found 19 October 2026 by the order recording the two runs of that day in devloop-test-z and devloop-test-y, read off their session logs, the records named in the entry; concerns skills/setup-checks/SKILL.md line 548; should: the standing fact is written into environment.md with the install, setup-checks expanded 1185 to 1203.; built 21 October 2026, version 0.155.0: the hook writes the line from the facts the guard left, the roadmap entry of 21 October 2026 on milestone 3, part 4; the should changed by the decisions of 20 and 21 October 2026 from the one quoted, the run writing the standing fact, to a hook writing it; walked by the bench of that day; the write moved on 24 October 2026 into bin/devloop-install-note put, which the hook calls, the evidence on its line there, the roadmap entry of 24 October 2026 on how an install is recorded
 
 ### the session-start line without a record says the blocked install is handed to you, where the line reaches the run and the guard hands it to the person
-- Wrong: not stated
-- Should: not stated
+- Wrong: the line of `hooks/session-start.sh` without a record says that every install outside the repository "is blocked and handed to you", where the line reaches the run and the guard hands a blocked install to the person.
+- Should: the line says handed to the person, in a wording the person approves.
 - Found: Milestone 3, part 2, the saved answer, built as the person decided on 20 October 2026: under `install-tools: no` the record carries the answer and the date alone and the line at session start says `places: none` and `routes: none`, whatever an older record under a no carries; `README.md` says in the wording approved that day that the question is put at setup and at a refresh where no record stands on the main branch and that the record travels with the repository, and `docs/skill-conventions.md` and the comment of `hooks/session-start.sh` say that the line at session start reaches the run and not the person; `README.md` carries no date and says the state of today, eight dates and a version pair gone, the rule in the conventions, and a step of the job `stock-take` is red where it carries one; the hook run on a bench in four cases and the step's command on the tree and on a copy with a date over a line break; 20 October 2026, version 0.153.0.
 - Fix: `bin/devloop-install-record` "echo "[InstallRecord] none: $(printf"
 - Status: Built, never walked
@@ -1170,24 +1170,24 @@ their section.
 - Note: found 27 October 2026 by the order evaluating the three closing runs of the milestone 3 pass of 26 and 27 October 2026, read off their session logs, defect 10 of the roadmap entry of 27 October 2026 on those runs, the records in its paragraph; concerns milestone 3 by the dated sentences of docs/plan.md under it, part A of the build, the line written by a hook; a small matter by the measure of decision (9) of the roadmap entry of 24 October 2026 on how an install is recorded if the person so decides; should: an install of a task runs on the task's branch, after the cut, so that the hook writes the line, and the report says who wrote it; milestone 12 since 5 November 2026, decision (11) of the roadmap entry of 5 November 2026 on the sorting into the milestones
 
 ### a package outside the project answered for the project: npx --no-install fell back to a global Playwright on the search path, and node resolved puppeteer-core from the directories above the project, NODE_PATH and its global folders
-- Wrong: not stated
-- Should: not stated
+- Wrong: a package outside the project answered for the project: in an empty directory without `node_modules` and with a global Playwright on the search path, `--planning playwright:webkit` printed a not-found line for WebKit, because `npx --no-install`, which the program ran, falls back to a package outside the project, the self-test having assumed that `npx` does not answer without Playwright in the project, and node resolves `require` from the directories above the project, from `NODE_PATH` and from its global folders as well.
+- Should: for each of the three vendors only a package in the project's own `node_modules` answers, the program running the project's `node_modules/.bin/playwright install --dry-run NAME` and never `npx`, node asked only where `node_modules/puppeteer-core/package.json` or `node_modules/puppeteer/package.json` stands in the project and refusing a module whose real path lies outside the project's `node_modules`, and where none stands the line says not read with that cause.
 - Found: Tool state read by one program, the planning saying only what it read.
 - Fix: `bin/devloop-tool-state` "[ -e node_modules/.bin/playwright ] || CAUSE="the project has no Playwright"
 - Status: Built, never walked
 - Note: found 28 October 2026 by a review of the code after the push of the branch, measured that day on a Linux machine with a global Playwright, (a) of the addendum of 28 October 2026 of the roadmap entry of 27 October 2026 on the tool state read by one program; the self-test had assumed that npx does not answer without Playwright in the project; built 28 October 2026, version 0.163.0, that addendum: for each of the three vendors only a package in the project's own node_modules answers, the project's node_modules/.bin/playwright run and never npx, node asked only where the project holds puppeteer-core or puppeteer and refusing a module resolved outside the project's node_modules, else the line not read with that cause; one self-test case per vendor with a package outside the project that would answer; a run is owed
 
 ### plan-work had the assumptions of a round say a line not read in the program's words, an English sentence to a person reading in their language
-- Wrong: not stated
-- Should: not stated
+- Wrong: `plan-work` line 333 at `aeb5579` had the assumptions of a round say a line not read "in the program's words", an English sentence to a person reading in their language.
+- Should: the skill says what is said, that the browser is needed, that whether it stands in the version needed cannot be read now and why, the cause in their language, the wording approved on 28 October 2026 standing in the entry, the halt of `cut-into-tasks` saying the same for a line not found and not read, and the head of the program and `docs/skill-conventions.md` saying it too.
 - Found: Tool state read by one program, the planning saying only what it read.
 - Fix: `skills/plan-work/SKILL.md` "language and not in the program's words"
 - Status: Built, never walked
 - Note: found 28 October 2026 by a review of the code after the push of the branch, (b) of the addendum of 28 October 2026 of the roadmap entry of 27 October 2026 on the tool state read by one program; built 28 October 2026, version 0.163.0, that addendum: plan-work and the halt of cut-into-tasks say what is said, that the browser is needed, that whether it stands in the version needed cannot be read now and why, the cause in their language, the wording approved that day standing in the entry; the head of the program and docs/skill-conventions.md say it too; a run is owed
 
 ### plan-work listed what the planning says of a tool without the browser that does not stand in the version the project's test tool needs
-- Wrong: not stated
-- Should: not stated
+- Wrong: `plan-work` lines 325 to 326 at `aeb5579` listed what the planning says of a tool without the browser that does not stand in the version the project's test tool needs.
+- Should: `plan-work` names the browser that does not stand in the version the project's test tool needs among what the planning says of a tool, and for it the assumptions say wording (b) of 24 October 2026, as for a command not on the search path.
 - Found: Tool state read by one program, the planning saying only what it read.
 - Fix: `skills/plan-work/SKILL.md` "test tool needs, missing on this machine as the"
 - Status: Built, never walked
@@ -1195,7 +1195,7 @@ their section.
 
 ### after their word setup-checks read a class's tool in the installer's folder alone, so that a tool in a folder the search path does not reach was set up and the chain could not call it, with no word to the person, D4
 - Wrong: after their word setup-checks read a class's tool in the installer's folder alone, finding D4 — both lines of bin/devloop-tool-state --installed read, the class set up where the search path reaches the tool, else the steps of wording (10).
-- Should: not stated
+- Should: after their word `setup-checks` reads with `bin/devloop-tool-state --installed`, both lines, the class set up where the second says found, and where the first says found and the second not found says wording (10), that the command installed the tool into a folder that does not stand in their `PATH`, which is why the check does not find it, the steps that put it on the search path, then that it finds the tool and sets the check up.
 - Found: Handovers say where the command is typed, sign-in and identity in steps.
 - Fix: `skills/setup-checks/SKILL.md` "Where the first line says found and the second not found, say so and say"
 - Status: Built, never walked
@@ -1203,7 +1203,7 @@ their section.
 
 ### an issue on a no carried the command alone and the next start, reading the search path, left it open with no word on the folder the command installed into, D5
 - Wrong: an issue on a no carried the command alone and the next start left it open with no word on the folder, finding D5 — bin/devloop-install-issues reads the folder beside the search path and prints folder:, and the run says wording (11) with the steps.
-- Should: not stated
+- Should: at the next start `bin/devloop-install-issues` reads, beside `--build`, with `bin/devloop-tool-state --installed` the folder of the issue's command, and where the command installed there and the search path does not reach the tool it prints a line of its own, `folder:`, and the run says wording (11), that the command from the issue installed the tool into a folder not in their `PATH`, which is why it does not find it and the issue stays open, the steps, then that it finds the tool, closes the issue and builds the task.
 - Found: Handovers say where the command is typed, sign-in and identity in steps.
 - Fix: `bin/devloop-install-issues` "if not stands and line.startswith(tool + ": not found on the search path"):"
 - Status: Built, never walked
@@ -1211,7 +1211,7 @@ their section.
 
 ### the install guard's message said the path the command writes to is what decides and the run picks up once the tool stands there, while the build since 28 October 2026 reads the search path as well, D6
 - Wrong: the install guard's message said the path the command writes to is what decides, finding D6 — the message says the folder decides whether the command installed and the search path whether the build can use it, and where they type the command.
-- Should: not stated
+- Should: the install guard's message says where they type the command, A or B, what releases the run, and that the folder says whether the command installed and the search path whether the build can use it, with the steps of `build-work` step 3 point 7 where the second says no.
 - Found: Handovers say where the command is typed, sign-in and identity in steps.
 - Fix: `hooks/pre-tool-use-install-guard.sh` "and say where they type it: in Claude Code with ! in front where it asks"
 - Status: Built, never walked
@@ -1227,7 +1227,7 @@ their section.
 
 ### in the graphical chat panel the extension for VS Code opens with, the ! shortcut is not there, so form A has no place there
 - Wrong: in the graphical chat panel the extension for VS Code opens with, the ! shortcut is not there, the vendor's table VS Code extension vs. Claude Code CLI reading No for the extension
-- Should: read for milestone 12 which surface the session runs on, and in the chat panel hand every command over as form B, or say that devloop runs in the terminal; with Use Terminal and with claude in the built-in terminal the CLI's surface runs, which is how the person works.
+- Should: read for milestone 12 which surface the session runs on, first of all, and in the chat panel hand every command over as form B, as `shared/install-tool.md` describes it under the way of the yes; where no way to read the surface is found, the question goes to the person before anything builds on it; with Use Terminal and with claude in the built-in terminal the CLI's surface runs; decided by the person on 9 November 2026, measured in a run in the panel on the person's Mac.
 - Found: Handovers say where the command is typed, sign-in and identity in steps.
 - Fix: none
 - Status: Recorded, not built
@@ -1243,7 +1243,7 @@ their section.
 
 ### for (6) to (10) the person approved form A alone and for (11) the case of a task alone, so a command that asks something there and a check class's issue in a folder outside the PATH have no approved wording
 - Wrong: for (6) to (10) the person approved form A alone and for (11) the case of a task alone, so a command that asks something at those places and a check class's issue in a folder outside the PATH had no approved wording — the four wordings of (a) of the decisions after the push, in setup-checks and shared/install-issues-read.md; the merge keeps form A alone, its command asking nothing.
-- Should: not stated
+- Should: where the command asks something or (11) concerns a check class, the skill says what is said by rule (b) and the pattern of (1) form B, in the four wordings of (a) of the decisions after the push of 28 October 2026, in `setup-checks` and `shared/install-issues-read.md`; for the merge there is no form B, its command asking nothing, and (6) stands as it is.
 - Found: Handovers say where the command is typed, sign-in and identity in steps.
 - Fix: `skills/setup-checks/SKILL.md` "terminal window opened, not the one Claude Code"
 - Status: Built, never walked
@@ -1275,7 +1275,7 @@ their section.
 
 ### bin/devloop-tool-state says of pip that it is none of the ten installers it reads, and nothing of --user or the interpreter
 - Wrong: bin/devloop-tool-state says of pip that it is none of the ten installers it reads, and nothing of --user or the interpreter.
-- Should: not stated
+- Should: `bin/devloop-tool-state` says of `pip` that it is not read, its folder depending on `--user` and the interpreter, and the line says so, as the entry of 27 October 2026 on the tool state states it.
 - Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
 - Fix: none
 - Status: Recorded, not built
@@ -1283,7 +1283,7 @@ their section.
 
 ### setup-checks step 4 names the terminal alone for an install the person made, where step 3 and build-work say both forms
 - Wrong: setup-checks step 4 names the terminal alone for an install the person made, where step 3 and build-work say both forms.
-- Should: not stated
+- Should: `setup-checks` step 4 says both forms for an install the person made, typed in Claude Code with `!` in front or run in a second terminal window, as step 3 and `build-work` say.
 - Found: Sixteen entries held, milestone 3 reached, the workflow steps run here.
 - Fix: none
 - Status: Recorded, not built
@@ -1331,7 +1331,7 @@ their section.
 
 ### every command guard matches the tool Bash alone, while on Windows with Git Bash the PowerShell tool is on by default for claude.ai accounts and takes the shell commands
 - Wrong: `hooks/hooks.json` registers every command guard under `PreToolUse` with the matcher `Bash` alone, and the install guard under `PermissionDenied` the same; the vendor's tools reference, read raw on 9 November 2026, says under "PowerShell tool" that on "Windows with Git Bash installed: the tool is on by default for claude.ai and Console accounts" and that "when the tool is enabled, Claude treats PowerShell as the primary shell", and the hooks reference under the PowerShell input of PreToolUse that "a hook that matches only `Bash` never fires there"; so on Windows with Git Bash under a claude.ai account the install guard, the branch guard, the merge guard, the identity guard, the mark guard and the table guard see none of the shell commands the model runs, and `docs/plan.md` names the guard for PowerShell under milestone 12 for Windows without Git Bash alone
-- Should: every shell command the model runs on Windows with Git Bash, and on Windows without Git Bash where that system counts, passes the command guards as a Bash command does on macOS, and what they read of it is measured in milestone 12 on Windows with Git Bash under a claude.ai account.
+- Should: every shell command the model runs on Windows with Git Bash passes the command guards as a Bash command does on macOS, and what they read of it is measured in milestone 12 on Windows with Git Bash under a claude.ai account; Windows without Git Bash does not count, decided by the person on 9 November 2026.
 - Found: Blocks on systems and surfaces held to the code, eight Shoulds filled.
 - Fix: none
 - Status: Recorded, not built
@@ -1339,11 +1339,35 @@ their section.
 
 ### no skill declares shell bash in its frontmatter, so on Windows without Git Bash the insert lines run through the PowerShell tool and the load fails on the program instead of on the vendor's message that bash is missing
 - Wrong: every `skills/*/SKILL.md` inserts its shared texts with `` !`${CLAUDE_PLUGIN_ROOT}/bin/devloop-text <name>` `` and carries no `shell` key in its frontmatter; the vendor's skills page, read raw on 9 November 2026, says under "How injected commands run" that with `shell: bash` "when bash isn't available: the invocation fails before any command runs. This happens on Windows without Git Bash. Claude Code shows ``Skill <name> requires bash (`shell: bash` in frontmatter) but Git Bash was not found``", and that in "any other combination … when it isn't, they run through the PowerShell tool"; so without Git Bash PowerShell is handed a bash script without an extension and the load aborts with "Shell command failed for pattern" and PowerShell's own error, and the grant `allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/bin/devloop-text *)` names a tool that is not registered there
-- Should: on a system without bash a skill of devloop fails to load with the vendor's message that names bash as what is missing, or loads through a program that runs there; measured in milestone 12 on Windows without Git Bash, where that system counts.
+- Should: every skill carries `shell: bash` in its frontmatter, so that on a system without bash it does not load, with the vendor's message that names bash as what is missing, and that refusal is walked once in milestone 12 on Windows without Git Bash, the unwanted side included, by the third of the five sentences of `docs/plan.md`; a program that runs there is not chosen, decided by the person on 9 November 2026.
 - Found: Blocks on systems and surfaces held to the code, eight Shoulds filled.
 - Fix: none
 - Status: Recorded, not built
 - Note: found 9 November 2026 by the order on the 34 blocks of milestone 12 on systems and surfaces, reading code.claude.com/docs/en/skills.md raw, "How injected commands run" and "When an injected command fails": "A failed command aborts the entire skill invocation, not just its own placeholder. Claude never sees the skill content for that invocation. The abort shows `Shell command failed for pattern "..."`"; `grep -n '^shell:' skills/*/SKILL.md` finds no frontmatter key; `docs/plan.md` under milestone 12 says the hooks and the programs are scripts for bash and names Alpine, which installs bash first; whether Windows without Git Bash counts is the person's decision of this milestone; nothing built; the group: every other operating system and surface
+
+### in the local sessions of the desktop app the texts hand a command that asks nothing over as form A and nothing reads that the session runs there, where the person decided on form B for that surface
+- Wrong: `shared/install-tool.md` under the way of the yes, `skills/build-work/SKILL.md` step 3, `skills/setup-checks/SKILL.md` steps 3 and 8 and the message of `hooks/pre-tool-use-install-guard.sh` line 1273 hand a command that asks nothing over as form A, typed in Claude Code with `!` in front, on every surface, and nothing under `skills/`, `shared/`, `hooks/` or `bin/` reads whether the session runs in the local sessions of the desktop app, `grep -rn -i desktop skills shared hooks bin` finding nothing at `c5a773c`; the desktop page, read raw on 9 November 2026, says under "Claude Code settings that behave differently in the Code tab" that commands the person types after `!` run in a shell the app chooses, their login shell on macOS and Linux and PowerShell on Windows
+- Should: in the local sessions of the desktop app devloop hands every command over in form B, as `shared/install-tool.md` describes it under the way of the yes, the surface read first by the way milestone 12 measures, and where no way to read it is found the question goes to the person before anything builds on it; decided by the person on 9 November 2026, decision 2; measured in milestone 12 in a run in the desktop app on the person's Mac.
+- Found: Install blocks held to the code, systems and surfaces decided.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 9 November 2026 by the order on the install blocks of milestone 12, from decision 2 of the person of that day on the surfaces, the roadmap entry of that date; the block of the graphical panel of the extension for VS Code holds the same for the panel; nothing built; the group: every other operating system and surface
+
+### README.md says nothing of Windows, where devloop needs Git for Windows so that its skills, hooks and programs run under Git Bash
+- Wrong: `README.md` names no operating system and nothing of Windows or Git Bash, `grep -n -i -E 'windows|git bash|macos|linux' README.md` finding nothing at `c5a773c`, while the hooks and the programs are scripts for bash, every skill is to carry `shell: bash`, and the setup page of the vendor, read raw on 9 November 2026, says under "Install on native Windows" that without Git for Windows Claude Code runs shell commands via the PowerShell tool
+- Should: `README.md` says that under Windows devloop needs Git for Windows, in a wording the person approves before the build; decided by the person on 9 November 2026, decision 1.
+- Found: Install blocks held to the code, systems and surfaces decided.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 9 November 2026 by the order on the install blocks of milestone 12, from decision 1 of the person of that day on the systems, the roadmap entry of that date; the README is not changed by that order, the wording being the person's to approve; nothing built; the group: every other operating system and surface
+
+### README.md says nothing of where devloop runs, where it runs where Claude Code runs on the person's own computer and not in cloud sessions
+- Wrong: `README.md` says nothing of the surfaces devloop runs on and nothing of cloud sessions, `grep -n -i -E 'cloud|desktop|vs code|terminal' README.md` finding the terminal in the install steps alone at `c5a773c`, while a cloud session, including one in the browser at claude.ai/code, does not load the plugins in the local settings and does not read `~/.claude/settings.json`, where the rule for the classifier of auto mode stands, `bin/devloop-auto-mode-rule` line 7, the vendor's pages on plugins and on hooks read raw on 9 November 2026
+- Should: `README.md` says that devloop runs where Claude Code runs on the person's own computer, in the terminal, in the extension for VS Code and in the desktop app, and not in cloud sessions, in a wording the person approves before the build; decided by the person on 9 November 2026, decision 3.
+- Found: Install blocks held to the code, systems and surfaces decided.
+- Fix: none
+- Status: Recorded, not built
+- Note: found 9 November 2026 by the order on the install blocks of milestone 12, from decision 3 of the person of that day on the cloud, the roadmap entry of that date; the README is not changed by that order, the wording being the person's to approve; where the vendor changes what cloud sessions load, the question is put again; nothing built; the group: every other operating system and surface
 
 ## Milestone 13
 

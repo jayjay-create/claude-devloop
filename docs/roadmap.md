@@ -3268,6 +3268,381 @@ and for the proofs of closings.
   Should changed: the workflow's comment and the fifth addendum name the installation of the Alpine step and not its marking the checkout a safe directory for git
   Should changed: the workflow's comment says every handler added later runs without the hooks step being touched, where a new event and matcher needs its input
 
+- **Install blocks held to the code, systems and surfaces decided.**
+
+  9 November 2026, version 0.181.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/milestone-12-install-read`,
+  off `origin/main` at `c5a773c`, in one commit: `docs/defects.md`,
+  `docs/plan.md`, `docs/roadmap.md` and this entry. The order: the 57
+  remaining blocks under "## Milestone 12" of `docs/defects.md`, the install
+  permission, read against the code before milestone 12 builds, as
+  `docs/plan.md` says under "Five sentences" of the order that works on a
+  milestone; every "not stated" in their Wrong and Should filled, 29 blocks;
+  three decisions of the person on the systems, the surfaces and the cloud
+  recorded in `docs/plan.md` under milestone 12 and here, their consequences
+  carried into three blocks and three new ones; two blocks closed whose
+  defect was a corrected comment. No code is built, no run is recorded, no
+  session log was read. Every line number of a file in this entry holds at
+  `c5a773c` unless it says otherwise; a line of `docs/roadmap-archive-1.md`
+  is read with the last head above it, `grep -n '^- \*\*'`.
+
+  **The 57 blocks, by the lines of their headings at `c5a773c`**: 603, 611,
+  619, 627, 635, 643, 651, 659, 667, 675, 683, 691, 699, 707, 715, 723, 747,
+  755, 763, 772, 788, 836, 980, 988, 996, 1004, 1020, 1028, 1036, 1060,
+  1068, 1076, 1084, 1092, 1100, 1108, 1116, 1124, 1132, 1140, 1148, 1156,
+  1164, 1172, 1180, 1188, 1196, 1204, 1212, 1244, 1252, 1260, 1268, 1276,
+  1284, 1308 and 1316, each read at the place its Fix names with the lines
+  around it, or searched over `skills/`, `shared/`, `hooks/`, `bin/`,
+  `scripts/` and `.github/` with several patterns where Fix is none. The 47
+  with a Fix stand once each and carry what their Should asks:
+  `shared/body-through-file.md` line 3 (603) and line 33 (747);
+  `shared/backed-command.md` line 13 (627) and line 2 (1092);
+  `shared/install-tool.md` line 163 (635), line 12 (667), line 9 (691) and
+  line 15 (1060); `shared/install-question.md` line 31 (699);
+  `shared/install-not-through.md` line 30 (1004); `shared/install-record.md`
+  line 52 (1100); `hooks/pre-tool-use-install-guard.sh` line 1273, the block
+  message, for 619, 643, 980 and 1212, line 649 (723) and line 516 (788);
+  `bin/devloop-install-record` line 158 (659) and line 161 (1036);
+  `bin/devloop-install-note` line 339 (1028); `bin/devloop-tool-state` line
+  519 (1172); `bin/devloop-install-issues` line 295 (1204);
+  `bin/devloop-command-reader` line 2345 (1260); `skills/setup-checks/SKILL.md`
+  line 130 (611), 483 (707), 1222 (715), 1120 (763), 455 (772), 1132 (1068),
+  533 (1196), 125 (1244) and 1158 (1308); `skills/setup-project/SKILL.md`
+  line 357 (651), 86 (675), 51 (683 and 996) and 92 (1116);
+  `skills/build-work/SKILL.md` line 535 (1076), 439 (1148), 564 (1252) and
+  580 (1316); `skills/plan-work/SKILL.md` line 298 (1108), 311 (1132), 426
+  (1140), 335 (1180) and 329 (1188); `skills/start-work/SKILL.md` line 149
+  (1268). The four with the form "Built, never walked, cannot be forced",
+  611, 715, 772 and 1004, name a line that stands once,
+  `docs/roadmap-archive-1.md` line 32366, under the head of line 32312, and
+  it still carries their case. Of the ten with Fix none, eight stay as they
+  are, the code showing the Wrong or the repair standing nowhere: 755, no
+  text reads a tool's existence off what ships it, while
+  `skills/plan-work/SKILL.md` lines 298 to 320 have the planning run
+  `bin/devloop-tool-state --planning` before anything is said of a tool, the
+  first half of its Should; 836, `grep -rn -i -E "vendor's newest|newest
+  release|goes stale|named release"` over the six directories finds the head
+  of `bin/devloop-command-reader` line 92 alone, the rule and no check; 988,
+  `shared/editing-tool.md` lines 1 to 4 carry the rule as they did when the
+  run of 16 October 2026 broke it, and no mechanism holds it; 1084,
+  `skills/setup-checks/SKILL.md` lines 501 to 505 and
+  `shared/install-question.md` lines 15 to 18 carry the wordings approved on
+  20 and 21 October 2026 as they stood when the runs of 23 October 2026
+  departed from them; 1124, `skills/plan-work/SKILL.md` lines 492 to 495 say
+  of the two records that "there the file on the main branch is the state
+  itself, and it is read as the paragraph above reads it", beside the one
+  call of `bin/devloop-start-conditions` at line 496, which is the Wrong;
+  1156, `shared/install-alone.md` lines 15 to 19, inserted into `build-work`
+  at line 498, say that before the install and after it the run reads the
+  folders for browsers and the report names what came into them, standing
+  so since `e9deec2` of 24 October 2026, before run 2 of 26 October 2026
+  departed from it; 1164, `skills/build-work/SKILL.md` step 3 says nowhere
+  that an install of a task runs on the task's branch after the cut; 1276,
+  `bin/devloop-tool-state` line 565 names ten installers and no `pip`; 1284,
+  `skills/setup-checks/SKILL.md` lines 628 to 630, "the command ran in their
+  terminal and in no call of this run", the terminal alone. For 988, 1084
+  and 1156 the texts said what the Should asks before the runs that did not
+  hold them, and whether such a text counts as the repair standing, or a
+  run's departure from it needs a mechanism before the block counts as
+  built, is put to the person in the report; the Fix of these three stays
+  none, as the order of 24 October 2026 left it for 1084, decision (7) of
+  the entry on how an install is recorded. One Fix changed, 1020: the
+  repair stands since `f0eaae7` of 22 October 2026, after the run of 19
+  October 2026 that found the defect, `skills/setup-checks/SKILL.md` lines
+  1093 to 1095, "Which form the question takes is decided first, by
+  `bin/devloop-auto-mode-question`, run once", and lines 1189 to 1191,
+  `bin/devloop-auto-mode-rule read` "says so with exit 0 and writes nothing,
+  and the program above reads it first"; Fix from none to
+  `skills/setup-checks/SKILL.md` "says so with exit 0 and writes nothing, and
+  the program above reads it", Status from Recorded, not built to Built,
+  never walked. No title changed, no block moved. Three Wrong fields carry
+  the entry's built or recorded line, the should-state, and not the wrong:
+  667 (`docs/roadmap-archive-1.md` lines 8155 to 8156), 707 (lines 11275 to
+  11277) and 723 (line 14009); the wrong stands at lines 8147 to 8150, in the
+  Note of 707, and at lines 13995 to 13999; they stand as they are, the Wrong
+  of a block with a Fix staying as it stands, and the report names them.
+
+  **The 29 "not stated" filled**, each from the entry its Found names with
+  that entry's words where it carries them, the lines in
+  `docs/roadmap-archive-1.md` and each line's entry read off the last head
+  above it; every old text read "not stated". From the entry of 6 September
+  2026 on the two guard false positives, head line 1169: 603, Wrong lines
+  1270 to 1275 and 1280 to 1282, Should lines 1283 to 1286 and 1299 to 1301;
+  611, Wrong lines 1307 to 1314 as the counter-image of what is built,
+  Should lines 1308 to 1315; 619, Wrong lines 1317 to 1321, Should lines
+  1321 to 1325. 627 from the entry on the unbacked command, head 1538, Wrong
+  lines 1539 to 1545 and 1573 to 1575, Should lines 1546 to 1549. 635 from
+  the stock-take of 23 September 2026, head 5101, Wrong and the half-should
+  "a sentence for the unattended case" lines 5213 to 5217, what the sentence
+  says from `shared/install-tool.md` lines 163 to 166, which the Note names.
+  643 from the entry on the block message, head 6489, Wrong lines 6569 to
+  6576, the entry carrying no should; the Should from the Note, from the
+  entry of 21 October 2026 on milestone 3, part 3, lines 33786 to 33788 under
+  the head 33759, and from line 6568, "so every join … reads". 651 from the
+  entry on the widget, head 7048, Wrong lines 7053 to 7057, 7061 to 7064 and
+  7076 to 7081; its should at lines 7125 to 7128, question 4 put in prose
+  and the widget carrying its two answers alone, was superseded on 3 October
+  2026, version 0.126.0, by the widget's own fields, which the Fix line
+  names, so the Should says today's form and names the entry's as what held
+  until then. 659 from the entry on the two runs of 30 September 2026, head
+  7502, Wrong lines 7783 to 7789, Should lines 7789 to 7791. 667 from the
+  audit of 30 September 2026, head 8034, Should lines 8155 to 8156 with the
+  Fix line's words. 683 from the entry on milestone 3, part 1, head 32873,
+  Should line 33172, finding 11 quoted there. 691 and 699 from the audit of 4
+  October 2026, head 10147, Should lines 10327 to 10331 and 10360 to 10363.
+  707 and 715 from the entry of 5 October 2026 on the four forms, head 10798:
+  707 Should lines 10871 to 10873 and 11275 to 11277; 715 Wrong lines 11326
+  to 11329, Should lines 11450 to 11453. 723 from the entry of 9 October 2026
+  on the open findings, head 13812, Should lines 14006 to 14007. 763 from the
+  entry of 9 October 2026 on step 8, head 15435, Wrong lines 15575 to 15579;
+  the entry carries no should, the Should from the block's Note, "a project
+  whose mode was set up before 0.134.0 is asked the rule question on some
+  path". 788 from the entry on the command reader, head 19556, its addendum
+  of 13 October 2026, Wrong lines 20439 to 20444, Should lines 20444 to 20448
+  and 21086 to 21092. 836 from the catch-up of 14 October 2026, head 23961,
+  Should lines 24102 to 24109, "this file" there being the roadmap. 1004 from
+  the audit of 18 October 2026, head 28846, whose should at lines 29209 to
+  29211 is two ways, decided by the catch-up of 19 October 2026, head 29317,
+  lines 29396 to 29401 and 29407 to 29411, which the Should carries. 1036
+  from the entry on milestone 3, part 2, head 33283, Wrong and Should line
+  33491. 1172, 1180 and 1188 from the entry on the tool state, head 40175,
+  its addendum of 28 October 2026: 1172 Wrong lines 40604 to 40616, Should
+  40617 to 40632; 1180 Wrong 40652 to 40654, Should 40654 to 40661; 1188
+  Wrong 40661 to 40663, Should 40663 to 40665. 1196, 1204, 1212 and 1244
+  from the entry on the handovers, head 41228: 1196 lines 41505 to 41507,
+  41536 to 41543 and 41633; 1204 lines 41546 to 41555 and 41634; 1212 lines
+  41575 to 41579 and 41635; 1244 lines 41563 to 41568, 41648 to 41651 and
+  41695 to 41700. 1276 and 1284 from the audit of 31 October 2026, head
+  43585, which carries no should for either, lines 44200 to 44207 and 44238
+  to 44245: 1276 from the text the audit holds the program against, the
+  entry of 27 October 2026, head 40175, lines 40266 to 40267, "`pip` is not
+  read, its folder depending on `--user` and the interpreter, and the line
+  says so"; 1284 from the entry of 28 October 2026, head 41228, lines 41283
+  to 41286, the three texts saying both forms. The same audit says at lines
+  44372 to 44375 that the sentence of step 4 "is not wrong under form B and
+  says nothing of form A" and "stands", against its own status line at
+  44245; the report puts that to the person.
+
+  **Three sentences of `docs/plan.md` under milestone 12 said right.** Lines
+  898 to 900 said that this milestone "fixes which operating systems and
+  which surfaces of Claude Code count — the terminal, the desktop app, the
+  IDE extensions, the web" and lines 908 to 909 that it "decides how devloop
+  reaches cloud sessions, or that it does not"; they say now what was
+  decided, the three dated sentences below them. Lines 902 to 908 read the
+  hooks reference's sentence "a hook that matches only `Bash` never fires
+  there" for Windows "where Git Bash is not installed" alone; the tools
+  reference, read in the entry above this one, says the PowerShell tool is
+  on by default on Windows with Git Bash for claude.ai and Console accounts,
+  so the paragraph says now that the sentence holds for every Windows on
+  which the tool is on, and names the hooks reference's place, the
+  PowerShell input of PreToolUse, where it said "its PowerShell section".
+  Lines 919 to 921, "Ends with one run per system, the cases of milestone 3
+  included: the guards read, the mark written, the install under a yes, each
+  on that system's surface", name now the four systems, the run in the panel
+  and the run in the desktop app on the person's Mac, the run on Windows
+  without Git Bash in which the skills refuse to load, and that the person
+  provides the machines for Linux, Windows and Alpine before the milestone
+  ends. No block for these: a finding in `docs/plan.md` gets none.
+
+  **Decided by the person on 9 November 2026**, three decisions on what
+  `docs/plan.md` left open under milestone 12, each recorded there as a
+  dated sentence. (1) The systems: macOS, Linux, Alpine and Windows with Git
+  Bash count; Windows without Git Bash does not. Every skill carries `shell:
+  bash` in its frontmatter, so that without bash it does not load, with the
+  vendor's message that names bash as what is missing, instead of failing in
+  PowerShell; `README.md` says that under Windows devloop needs Git for
+  Windows. The guard for the PowerShell tool stays part of milestone 12,
+  since on Windows with Git Bash the tool is on by default for claude.ai and
+  Console accounts, the tools reference under "PowerShell tool" as the entry
+  above this one read it. Reason: on the other way every guard would exist
+  twice, for bash and for PowerShell, and where one version came to differ
+  from the other the protection would be missing on one system without
+  anybody noticing; a plain message that bash is missing is better than a
+  devloop that runs without its guards. Not chosen: Windows without Git Bash
+  as a fifth system. The person's decision of 14 October 2026, "devloop runs
+  on every system", `docs/roadmap-archive-1.md` lines 22922 to 22923, meant
+  macOS, Linux and Windows under Git Bash, lines 22999 to 23003, where the
+  job runs "under `ubuntu-latest`, `macos-latest` and `windows-latest`,
+  there under Git Bash"; the sentence in `docs/plan.md` names both. (2) The
+  surfaces: the CLI counts — in the terminal, in JetBrains, in the extension
+  for VS Code with "Use Terminal" and with `claude` in its built-in terminal
+  —, the graphical panel of the extension for VS Code and the local sessions
+  of the desktop app. In the panel and in the desktop app devloop hands every
+  command over in form B, as `shared/install-tool.md` lines 139 to 141
+  describe it: "in a second terminal window, not the one Claude Code runs
+  in, where it asks something, a password for `sudo` say, form B, the text
+  naming what it asks and asking them to say here once it is through". How
+  devloop reads which surface it runs on is measured first in milestone 12;
+  where no way is found, the question goes to the person before anything
+  builds on it. The closing runs gain a run in the panel and one in the
+  desktop app on the person's Mac. Reason: the plugin loads in the panel and
+  in the desktop app already, since the terminal, the desktop app and the
+  extension read the same settings files, the plugins page as the entry
+  above read it; the only known gap is one form of the handover, the `!`
+  shortcut missing in the panel, and devloop has the other; whoever shuts
+  devloop out there shuts out whoever uses VS Code as it opens. Not chosen:
+  the CLI alone. Read beside it: the desktop page says under "Claude Code
+  settings that behave differently in the Code tab" that commands the person
+  types after `!` run in a shell the app chooses, so the shortcut is there in
+  the desktop app; the decision takes form B there all the same, and the
+  report names it. (3) The cloud: devloop does not reach cloud sessions, the
+  cloud threads of a project included; `README.md` says that devloop runs
+  where Claude Code runs on the person's own computer — the terminal, the
+  extension for VS Code, the desktop app — and not in cloud sessions.
+  Reason: a cloud session does not load the plugins installed locally and
+  does not read `~/.claude/settings.json`, where the rule for the run without
+  the person stands, `bin/devloop-auto-mode-rule` line 7; in the threads of a
+  project a plugin entered in the project's settings loads, but whether its
+  hooks run there the pages do not say; a protection that is only partly
+  there and whose missing parts do not show is worse than a plain boundary.
+  Not chosen: bringing devloop into the threads of a project through the
+  plugins in the project's settings. Where the vendor changes what cloud
+  sessions load, the question is put again. Read raw at the vendor on 9
+  November 2026, every page as Markdown from code.claude.com/docs/en/<page>.md
+  with `curl` into the report's working directory and read there with `grep`
+  and `sed`: the projects page, claude-projects.md, "What threads pick up
+  from your repositories": "Cloud threads load each repository's `CLAUDE.md`
+  instructions but not its skills, `.mcp.json` servers, or
+  `.claude/settings.json`", and in its table "Plugins enabled in
+  `.claude/settings.json` | Not loaded. Add the plugin in **Project settings
+  > Plugins** instead" and "Hooks in `.claude/settings.json` | Not run. To
+  use your hooks, run the thread on your own computer"; "Get skills,
+  plugins, connectors, and tools into threads": "Cloud threads don't have
+  the skills, MCP servers, plugins, and tools installed only on your machine.
+  A thread that Claude runs on your machine through Remote Control uses
+  what's installed there", "Plugins: add them in **Project settings >
+  Plugins**; they load into each new cloud thread. Plugins that a repository
+  declares in its `.claude/settings.json` don't load in cloud threads"; "Run
+  a thread on your own computer": such a thread "Works with the files,
+  tools, MCP servers, and Claude Code settings on that machine, including
+  its hooks and permission rules", so a thread run on the person's own
+  computer is a local session, which the sentence for the README covers.
+  The plugins page, plugins/overview.md, "Understand install scopes": "A
+  plugin you install at user scope in the terminal, the desktop app's local
+  sessions, or the VS Code extension is available in the other two on that
+  computer, because all three read the same settings files" and "A cloud
+  session, including one in the browser at claude.ai/code, doesn't load the
+  plugins in your local settings"; the plugin install page, plugins/install.md,
+  the tab "Cloud session": a cloud session "has no plugin browser and doesn't
+  load the plugins you installed on your own machine or the ones your
+  repository's `.claude/settings.json` turns on". The hooks reference,
+  hooks.md, "Hook locations": "Cloud sessions don't read your local
+  `~/.claude/settings.json`", and in its table "Plugin `hooks/hooks.json` |
+  When plugin is enabled"; its opening says that "Claude Code fires the same
+  hook events wherever it runs: sessions in the terminal, IDE extensions,
+  the Desktop app, and cloud sessions", and no sentence of it says whether a
+  plugin added in a project's settings runs its hooks in the project's
+  threads, where the projects page says the repository's hooks are not run.
+  The cloud environments page, cloud-environments.md, "What carries over
+  from your setup": "Plugins enabled only in your user settings | No |
+  User-scoped `enabledPlugins` lives in `~/.claude/settings.json` on your
+  machine". The skills page, skills.md, "Use skills in Cowork and cloud
+  sessions": cloud sessions "don't read `~/.claude/skills/` on your machine".
+  No page says anything other than the reasons above.
+
+  **Two blocks closed as corrected in the document**, lines 828 and 1012,
+  both comments of `.github/workflows/stock-take.yml` that were wrong and
+  were corrected on 14 and 19 October 2026: the sentence itself was the
+  defect, a run does the same before and after, and no run can meet a
+  comment; the same case as the head of `bin/devloop-command-reader`, the
+  block at `docs/defects.md` line 473. Their Status, from Built, never
+  walked: Closed, corrected in the document: `.github/workflows/stock-take.yml`
+  carries "since git refuses in a container a repository owned by another
+  user", the comment at its line 264; and Closed, corrected in the document:
+  `.github/workflows/stock-take.yml` carries "matcher this step has an input
+  for runs without this step being touched;", the comment at its line 269;
+  each text standing once in the file.
+
+  **Three Shoulds changed by the decisions**, the old text quoted. Line
+  1332, the guards on the PowerShell tool, by decision (1): "every shell
+  command the model runs on Windows with Git Bash, and on Windows without
+  Git Bash where that system counts, passes the command guards as a Bash
+  command does on macOS, and what they read of it is measured in milestone
+  12 on Windows with Git Bash under a claude.ai account" names Windows
+  without Git Bash no more. Line 1340, `shell: bash`, by decision (1): "on a
+  system without bash a skill of devloop fails to load with the vendor's
+  message that names bash as what is missing, or loads through a program
+  that runs there; measured in milestone 12 on Windows without Git Bash,
+  where that system counts" asks now that every skill carry `shell: bash`,
+  that the refusal be walked once on Windows without Git Bash, the unwanted
+  side included, and drops the program that runs there. Line 1228, the
+  panel, by decision (2): "read for milestone 12 which surface the session
+  runs on, and in the chat panel hand every command over as form B, or say
+  that devloop runs in the terminal; with Use Terminal and with claude in the
+  built-in terminal the CLI's surface runs, which is how the person works"
+  asks now form B in the panel and the reading of the surface first, the
+  question to the person where no way is found, and drops the second way.
+  **Three blocks written**, under "## Milestone 12", the group every other
+  operating system and surface, each Recorded, not built, this entry their
+  Found: form B in the local sessions of the desktop app and the reading of
+  that surface, by decision (2); the sentence of `README.md` that devloop
+  needs Git for Windows under Windows, by decision (1); the sentence of
+  `README.md` on where devloop runs and that it does not run in cloud
+  sessions, by decision (3) — the wording of both the person approves before
+  the build, and `README.md` is not changed here.
+
+  **Which run meets each case stands in the report outside the repository**,
+  block by block, against the runs `docs/plan.md` names since this day: the
+  job hooks on every system meets 1036, 1172, 1204 and 1260 through the
+  session-start handler without a record and the self-tests of
+  `bin/devloop-tool-state`, `bin/devloop-install-issues` and
+  `bin/devloop-command-reader` on four systems; the per-system run under a
+  yes meets the blocks of the install under a yes; the blocks of the handover
+  under a no — among them 627, 659, 707, 1076, 1148, 1196, 1244, 1252, 1268,
+  1276, 1284 and 1316 — need a run under a no, which the three cases of the
+  closing runs do not name, and the report puts that to the person; two
+  blocks, 683 and 996, whose case is a guard's block inside `setup-project`
+  that a run reaches only by mistake, stand in the report as candidates for
+  the form "Built, never walked, cannot be forced", the form not set.
+
+  The tool, before, on `c5a773c`: broken records 0, uncovered lines 0 of
+  4568; Undetermined 24, Recorded, not built 257, Built, never walked 1510,
+  Walked 700, Closed 66; milestone 12 93 blocks, Recorded, not built 39,
+  Built, never walked 49, Walked 5; blocks with "not stated" 374. After:
+  Recorded, not built 259, the three new blocks less 1020; Built, never
+  walked 1509, 1020 less the two closed; Closed 68; "not stated" 345, the 29
+  filled; milestone 12 96 blocks, Recorded, not built 41, Built, never walked
+  48, Walked 5, Closed 2; blocks held against the branch point: removed 0,
+  renamed 0, Should changed 32, added 3; Walked on this branch without a run
+  the branch adds: 0; every other figure as before. The self-test: 159 cases
+  before and after. The twenty checks before a handover and
+  `scripts/devloop-run-workflow` print after what they printed on `c5a773c`,
+  the title step reading this head. The 32 lines of the fixed form:
+
+  Should changed: the normal path of build-work runs through the install guard, a body on the command line and an append to environment.md
+  Should changed: the two setup stages did not tell a real install block from a text match, recording a skip that is not true
+  Should changed: the install guard's message offers two ways out that assume check classes or tasks, nothing for research, build-prototype and record-lessons
+  Should changed: an install command was handed to the user without being backed and its success read off the user's word
+  Should changed: the install in build-work is handed to the user and nothing says what a run with nobody there does
+  Should changed: the block message chains two colons into one sentence behind does not open it where the cause opens with a label and a colon of its own, seven causes
+  Should changed: the install question was put through the harness's choice widget on its first asking and none of its thirteen points arrived whole, nothing in the skill naming the form
+  Should changed: under install-tools no the record and the session-start line list six places and a route with nothing saying they are closed, so the line reads as though something were open
+  Should changed: build-work step 3 point 7 and setup-checks step 3 described the guard's pass by places alone, the routes of 29 September 2026 missing
+  Should changed: the guard-block bullet of setup-project wrote the case with nobody there, an issue and a report, in a skill the unattended mode does not reach
+  Should changed: the table holds no thing for an install with nobody there under a yes that succeeds, so the open half of milestone 3 was invisible in the tool
+  Should changed: the rule keeping runtimes out of the install question was delivered as an assurance a fifth time in five runs, and a rewording is spent
+  Should changed: setup-checks step 3 said never install system-wide without asking under a no and under no record, an asking with no yes the run could act on, against the no of the install question
+  Should changed: the line of prose before a second question in setup-checks step 8 was approved in one wording ending on their having said no, where the question is put for every record not saying yes
+  Should changed: the install guard reads the destination of the first make, cargo or gem command of a line alone
+  Should changed: a project whose mode was set up before 0.134.0 meets the question on the rule for auto mode on no path, step 8 skipping where all five stand and plan-work asking nothing where the mode is set up and --auto was typed
+  Should changed: subcommands the vendors document as placing a program were not read: nix-env, nix-shell -p, cargo binstall and the updates of brew, pipx, uv tool, npm and gem
+  Should changed: the group of programs the reader reads over goes stale with new tools and options and nothing holds each program's named release against the vendor's newest
+  Should changed: shared/install-not-through.md names every failed installer attempt on the model of the fetch text, which names none followed by an answer since 17 October 2026
+  Should changed: the session-start line without a record says the blocked install is handed to you, where the line reaches the run and the guard hands it to the person
+  Should changed: a package outside the project answered for the project: npx --no-install fell back to a global Playwright on the search path, and node resolved puppeteer-core from the directories above the project, NODE_PATH and its global folders
+  Should changed: plan-work had the assumptions of a round say a line not read in the program's words, an English sentence to a person reading in their language
+  Should changed: plan-work listed what the planning says of a tool without the browser that does not stand in the version the project's test tool needs
+  Should changed: after their word setup-checks read a class's tool in the installer's folder alone, so that a tool in a folder the search path does not reach was set up and the chain could not call it, with no word to the person, D4
+  Should changed: an issue on a no carried the command alone and the next start, reading the search path, left it open with no word on the folder the command installed into, D5
+  Should changed: the install guard's message said the path the command writes to is what decides and the run picks up once the tool stands there, while the build since 28 October 2026 reads the search path as well, D6
+  Should changed: for (6) to (10) the person approved form A alone and for (11) the case of a task alone, so a command that asks something there and a check class's issue in a folder outside the PATH have no approved wording
+  Should changed: bin/devloop-tool-state says of pip that it is none of the ten installers it reads, and nothing of --user or the interpreter
+  Should changed: setup-checks step 4 names the terminal alone for an install the person made, where step 3 and build-work say both forms
+  Should changed: in the graphical chat panel the extension for VS Code opens with, the ! shortcut is not there, so form A has no place there
+  Should changed: every command guard matches the tool Bash alone, while on Windows with Git Bash the PowerShell tool is on by default for claude.ai accounts and takes the shell commands
+  Should changed: no skill declares shell bash in its frontmatter, so on Windows without Git Bash the insert lines run through the PowerShell tool and the load fails on the program instead of on the vendor's message that bash is missing
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
