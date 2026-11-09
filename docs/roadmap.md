@@ -3248,7 +3248,16 @@ and for the proofs of closings.
   the branch adds: 0. The self-test: 159 cases, 148 of 148 messages
   asserted by a case, before and after. The twenty checks before a handover
   and `scripts/devloop-run-workflow` print after what they printed on
-  `e252c10`. One commit. The eight lines of the fixed form:
+  `e252c10`. Two commits: the first with all of this; the second from the
+  check at the code before the merge, which corrects two fields of the first
+  new block. Its Wrong said every command guard stood "under `PreToolUse`
+  and `PermissionRequest` with the matcher `Bash` alone", where the one
+  handler under `PermissionRequest` carries no matcher, the guards with the
+  matcher `Bash` stand under `PreToolUse` and the install guard under
+  `PermissionDenied` as well; its Should said "on Windows, with Git Bash or
+  without", where whether Windows without Git Bash counts is the person's
+  decision of this milestone, as the second new block and this entry say.
+  The eight lines of the fixed form:
 
   Should changed: under Linux the reader did not run, awk refusing its program as one argument of 204 937 bytes, so that every hook blocked every Bash call there
   Should changed: the sandbox of Claude Code is not examined for whether it touches installs and the install guard
