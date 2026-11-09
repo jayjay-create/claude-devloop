@@ -956,6 +956,16 @@ and the extension read the same settings files, the plugins page as that
 entry read it; the only known gap is one form of the handover, and devloop
 has the other; whoever shuts devloop out there shuts out whoever uses VS
 Code as it opens. Not chosen: the CLI alone.
+Measured on 9 November 2026 by the order on the surface reading, the roadmap
+entry of that date: the way is the environment variable
+`CLAUDE_CODE_ENTRYPOINT`, `claude-vscode` in the graphical panel of the
+extension for VS Code, `claude-desktop` in a local session of the desktop
+app and `cli` in the terminal, in the terminal of VS Code and in the
+extension with "Use Terminal", on every way a text of devloop reaches the
+model, a hook, an insert line, a command run with `Bash`; the variable is
+the vendor's, undocumented, and compared in the program of Claude Code
+2.1.319 and 2.1.321; nothing is built on it yet, and the desktop app under
+Windows is not measured.
 Decided on 9 November 2026 by the person, the same entry: devloop does not
 reach cloud sessions, the cloud threads of a project included; `README.md`
 says that devloop runs where Claude Code runs on the person's own computer —
@@ -995,8 +1005,15 @@ install the person made under a no; on the person's Mac with a run in the
 graphical panel of the extension for VS Code, the command handed over in
 form B, and one in the local sessions of the desktop app, the command handed
 over as in the terminal, form A where it asks nothing, by the second
-decision above and its addition; with a run on Windows without Git Bash in
-which the skills refuse to load with the vendor's message, by the first;
+decision above and its addition; in the virtual machine under Windows with
+Git Bash, the machine of the decision below, one in the local sessions of
+the desktop app, a command that asks nothing handed over in form B, since
+`!` runs in PowerShell there, the block of this milestone on the desktop app
+under Windows, by the third of the five sentences, since that bench can
+produce the case, and where the desktop app runs no local session on that
+machine, the roadmap says why, by the first; with a run on Windows without
+Git Bash in which the skills refuse to load with the vendor's message, by
+the first;
 once each on the person's Mac the cases a test project can produce that no
 run above names: the refresh of `setup-project` without an install record
 on the main branch, a planning with the record of the mode saying yes and
@@ -1007,6 +1024,22 @@ the inputs the job hooks on every system gives the install guard, a line
 with two destinations of one install and the updates of `brew` and `pipx`.
 The machines for the runs under Linux, under Windows and under Alpine the
 person provides before the milestone ends.
+Decided on 9 November 2026 by the person, the roadmap entry of that date on
+the surface reading and the machines: the runs under Linux, under Alpine and
+under Windows, with and without Git Bash, run in virtual machines on the
+person's Mac under Parallels Desktop, in the ARM versions of the systems,
+Windows as Windows 11 Pro. Reason: the hooks and the programs of devloop run
+on both processor architectures, since the job hooks on every system runs
+them on every pull request on `macos-latest`, arm64, and on `ubuntu-latest`
+and `windows-latest`, x64, so the x64 side of the hooks is covered; a
+snapshot gives every closing run the same clean start, the Windows before
+Git for Windows for the run without Git Bash and after it for the run with;
+nobody waits for machines until the milestone ends; and Parallels Desktop is
+the solution Microsoft authorizes for Windows 11 Pro on Apple silicon. Not
+chosen: machines of the person's own with an Intel or AMD processor, bought
+or rented, which would have the processor architecture most users have but
+cost money and time to procure and have no snapshot. What the decision rests
+on, read raw on 9 November 2026, stands in that entry.
 A first piece stands since 14 October 2026, the fourth addendum of
 the roadmap entry on the command reader: the reader runs on the three
 systems, and a workflow job runs its self-test and every hook on
