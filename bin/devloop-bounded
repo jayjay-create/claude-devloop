@@ -55,8 +55,12 @@
 # Windows parent numbers and ends at the process that exited, so a transport
 # that is a shell exec'd into a shell exec'd into a program is beyond it,
 # which is how the self-test hung on windows-latest on 10 November 2026 with
-# the transport sh -c "sleep 7337" --, two shells under git; git's own
-# transports, ssh and git-remote-https, are direct children of git. The
+# the transport sh -c "sleep 7337" --, two shells under git. The limit, in
+# one sentence: under Windows with Git Bash a process that a native program
+# started through a shell exec'd into a second shell is not ended at the
+# bound; the block of milestone 12 on it in docs/defects.md holds that, and
+# nothing is built for it. git's own transports, ssh and git-remote-https,
+# are direct children of git and are ended. The
 # watchdog is a subshell with a sleep: ended, it ends its sleep by the job
 # table and waits for it, so that nothing of the bound runs on once this
 # program has returned; until that day a signal between the start of the
