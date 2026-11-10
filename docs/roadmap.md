@@ -4150,6 +4150,224 @@ and for the proofs of closings.
   under macOS and Linux: the forms of the terminal, where the first said
   form A.
 
+- **The bound ends a process group, its self-tests run under Windows too**
+
+  10 November 2026, version 0.182.0: `bin/devloop-bounded`,
+  `bin/devloop-setup-state` and `.github/workflows/stock-take.yml` change;
+  nothing under `skills/`, `shared/`, `hooks/`, `scripts/` or `output-styles/`
+  changes, and `README.md` does not. On `task/bounded-every-system`, off
+  `origin/main` at `b6970e1`, in three commits: the code with the version;
+  `docs/plan.md`, `docs/defects.md`, `docs/stock-take.tsv` and this entry;
+  and, after the five checks on GitHub were green, the runs at the last
+  commit. The order: the first of the seven orders of milestone 12 in the
+  order the person decided on this day, recorded below and in `docs/plan.md`
+  under milestone 12; the four blocks of `docs/defects.md` on
+  `bin/devloop-bounded` under "## Milestone 12", lines 1052, 1292, 1300 and
+  1324, built, and with them the block at line 2117 under "## Milestone 13",
+  whose should the same change meets. Written by Claude Code from the person's
+  order of this day; no session log was read; nothing was installed outside
+  throwaway directories and throwaway containers; the identity under which git
+  commits here was neither set nor read; no subagent was used. The report
+  stands on this machine as `~/devloop-bounded-every-system.md`, in German,
+  and is not in the repository. Every line number of a file in this entry
+  holds at `b6970e1` unless it says otherwise.
+
+  **The causes, measured where this machine can and read where it cannot.**
+  Windows, the block at line 1052: the log of the job hooks on every system
+  (windows-latest) of run 42775649860, pull request #238, read with `gh run
+  view --log --job 129693425402`, prints in the step "what the checkout holds"
+  `MINGW64_NT-10.0-26100 … 3.6.10-5a1665c8.x86_64`, `GNU bash, version
+  5.3.15(2)-release (x86_64-pc-cygwin)`, `git version 2.56.0.windows.4` and
+  `pgrep: not on PATH`, the deciding line. `bin/devloop-bounded` line 38 found
+  the children of the command with `pgrep -P`; without pgrep the loop was
+  empty and `kill "$1"` ended the command alone, so that in the case "does not
+  end", line 81, the two sleeps of the sh lived on, holding the pipe of
+  `out=$(…)` at line 45 for 7333 seconds, which is the hang of pull request
+  #200. `bin/devloop-setup-state` line 73 the same. How Git Bash ends a native
+  Windows program, read raw in git-for-windows/msys2-runtime at `5a1665c8`,
+  the commit the runner's `uname -a` names, resolved with `gh api` to
+  `5a1665c8a0fb24930e55f1621441dfd98a798c15` of 2026-09-28, `git ls-remote` of
+  this day giving `81d9bd3d1c3680aa611ff2e5d1950787ffc95c6a` as `main`: a
+  Cygwin process that executes a native program stays as the process for it
+  with the flag `PID_NOTCYGWIN`, keeping its pid and pgid,
+  `winsup/cygwin/spawn.cc` lines 610 to 616 and 818 to 823; a signal to it
+  reaches its signal thread through `exec_sendsig`, `winsup/cygwin/sigproc.cc`
+  lines 649 to 664; there every signal but USR1, USR2, CONT, STOP, TSTP, TTIN
+  and TTOU runs `exit_process_tree (ch_spawn, 128 + signo)`, "terminating
+  captive process", `winsup/cygwin/exceptions.cc` lines 1673 to 1692;
+  `exit_process_tree` collects the descendants of the native process from a
+  snapshot of the Windows process table by `th32ParentProcessID`, sends an
+  MSYS2 descendant that leads a process group `kill (cyg_pid, signo)` and ends
+  the native ones deepest first by `ExitProcess` injected for SIGTERM or
+  `TerminateProcess`, `winsup/cygwin/include/cygwin/exit_process.h` lines 231
+  to 258 and 268 to 362; a kill of a negative number runs over every Cygwin
+  process with that pgid, the process for a native program included,
+  `winsup/cygwin/signal.cc` lines 350 to 390; and a signal to a stopped
+  process is dropped, "Don't send signals when stopped",
+  `winsup/cygwin/exceptions.cc` lines 1562 to 1568, which is why the build
+  sends no SIGSTOP. macOS, the blocks at lines 1292 and 1324: 120 runs of the
+  self-test in a row on the person's Mac, each under an outer limit of 60
+  seconds, all green in 2 to 3 seconds each, so that a fault of one in 25
+  would have shown with 99.2 per cent; then three probes under CPU load,
+  twenty busy loops on ten cores, one per race: 2000 runs of `devloop-bounded
+  7339 sh -c 'exit 3'` left nine `sleep 7339` with parent 1, the watchdog's
+  sleep orphaned, the mechanism of the block at line 1300 measured on macOS;
+  200 runs of the case "does not end", the output of each read, printed no
+  "Terminated"; 200 fetches over `sh -c "sleep 7337" --` under a bound of one
+  second left twice a `sleep 7337` with parent 1 after the program had
+  returned with 124, git printing `sh -c "sleep 7337" -- died of signal 15`,
+  the mechanism of the hang of the block at line 1292 measured, which in the
+  self-test holds the pipe of `out=$(…)` until the job is stopped. Alpine, the
+  block at line 1300: a container runtime stands on this Mac, `docker` 29.9.3
+  answering, the image `alpine:3.22` already local, nothing installed on the
+  Mac; 120 runs of the self-test in `alpine:3.22` on this Mac, arm64, bash
+  5.2.37 and git 2.49.1 after `apk add --no-cache bash git` as the job
+  installs them, all green; the three probes under the same load there: 500
+  commands that end at once left sixteen `sleep 7339` with parent 1, the
+  mechanism of the block at line 1300 measured on Alpine too; 50 runs of "does
+  not end" printed no "Terminated"; 50 fetches left nothing. The causes of the
+  three, read off the code as the notes of the blocks read them and not
+  reproduced here: a child born between the listing with pgrep and the kill
+  ran on, holding the output open, line 38, the hang of 1 November 2026; a
+  shell whose child was ended before itself printed "Terminated" for it, lines
+  38 and 111, the red run of 5 November 2026; and a SIGTERM between `sleep
+  "$secs" &` and `s=$!` on line 111 ran the watchdog's trap before the number
+  was noted, bash running a trap between two commands, so that `kill ""`
+  failed and the sleep ran on, the red run on alpine of 1 November 2026, the
+  same line's trap ending its sleep without waiting for it beside it.
+
+  **The counter-check before the build**, what the heads and the shoulds ask
+  of the two programs in each situation and whether the design holds it. (1)
+  The four cases of the self-test the blocks name: "does not end" must end the
+  sh and its two sleeps and print no "Terminated"; the fetch must end git and
+  its transport within the bound and release the pipe; "ends in time with 3"
+  must leave no sleep of the watchdog; all four at every run on every system.
+  The group kill holds the first two, the watchdog's trap over its job table
+  the third. (2) A signal to the program between the start of the watchdog's
+  sleep and the noting of its number: the head said nothing of it; the design
+  has no noted number, the trap reads the job table, which bash fills as the
+  sleep starts, and either runs before the start, with nothing to end, or
+  after it, with the sleep listed. (3) A fetch whose transport is a native
+  Windows program: the head of neither program said anything of Windows;
+  `docs/plan.md` under milestone 12 names Windows with Git Bash as a system
+  that counts; the design relies on the runtime's process for the native
+  program standing in the group and ending its tree, read above and measured
+  first by the job. (4) A command that ends in time and lets a child run on:
+  the head says the program ends with the command at once and that the
+  watchdog and its sleep are ended; of a child of the command it said nothing,
+  and the design changes nothing there: the child runs on, as under GNU
+  timeout, and holds the output open where it inherited it, as before; the
+  head says so now. (5) A command that does not end and has grandchildren: the
+  head says "ended with everything it started"; the group kill reaches every
+  process that stayed in the group, grandchildren included, and the head says
+  now that a process which leaves the group on purpose is beyond the bound, as
+  under GNU timeout.
+
+  **The build.** `bin/devloop-bounded`: the command starts under job control,
+  `set -m` for that one start and the watchdog's, so that bash puts each into
+  a process group of its own named by its number; the bound, `end_group`,
+  sends SIGTERM to the command and then to its whole group, the command first
+  so that a shell among them has the signal before any of its children ends;
+  the watchdog's trap on TERM ends its sleep by `jobs -p` and waits for it
+  before exiting 143; the traps on TERM, INT and HUP end the group, the
+  watchdog, and wait for the watchdog; `kill_tree` and pgrep went. The
+  self-test reads that nothing of the bound runs on off a pipe: every run gets
+  the write end of one on file descriptor 3, which everything the bound starts
+  inherits, a reader `cat` in a process substitution ends when the last holder
+  is gone and leaves a mark, and `released` is red where the mark is not there
+  two seconds after the program returned; `gone` and its `pgrep -f` went, so
+  that the self-test needs bash, sh, sleep, cat and git and no pgrep; the
+  twelve cases stand as they stood. The head says all of it, with the reading
+  of the runtime of Git Bash. `bin/devloop-setup-state`: `bounded` and
+  `kill_tree` went, the fetch runs under `"$HERE/devloop-bounded"`, the
+  program beside it, and the no-answer line reads its exit 124 where it read
+  143; its head says so; its eighteen cases stand.
+  `.github/workflows/stock-take.yml`: the two exceptions under Windows at
+  lines 428 to 432 went with the comment at line 427 and the words "two of
+  them left out under Windows" in the step's name at line 419; the comments at
+  lines 319 to 333 and 350 to 355 say what stood until this day and what
+  stands since. `scripts/devloop-run-workflow --self-test` is green on the
+  changed file, 34 cases. The build, measured the same way: on the person's
+  Mac the self-test three times, 12 cases, green; the three probes under the
+  same load, 2000, 200 and 200 runs, left nothing and printed no "Terminated",
+  every exit as the head says; in alpine:3.22 the self-test three times green,
+  2000 commands that end at once left no sleep, 200 runs of "does not end"
+  printed no "Terminated" with every exit 124, and of 200 fetches none left a
+  transport, a probe that looks a second time one second after a leftover; an
+  earlier run of the probe without the second look had counted three of 200 in
+  which `pgrep` saw a `sleep 7337` at the instant after the return and `ps` a
+  moment later none, a sleep with the signal not yet gone under twofold
+  oversubscription, which the self-test reads off the pipe and does not count.
+  A first draft of the watchdog without `trap '' TERM` before the group kill
+  was red in alpine under load, 16 of 200 fetches and 7 of 200 runs of "does
+  not end" ending with 143 and a transport left: the command's end woke this
+  program, which ended the watchdog before it had ended the rest of the group;
+  the old program carried that `trap '' TERM` at line 111, and the build
+  carries it again.
+
+  **Decided on 10 November 2026** by the person, on the order in which the
+  orders of milestone 12 build, recorded in `docs/plan.md` under milestone 12
+  as a dated paragraph after the decision on the machines: (1)
+  `bin/devloop-bounded` and its self-test, the blocks at lines 1052, 1292,
+  1300 and 1324; (2) the programs that read files under Windows and Alpine,
+  the blocks at lines 844 to 948 on the line endings under Windows and at 956
+  to 972 on awk under Alpine; (3) the guard for the PowerShell tool and
+  `shell: bash` in every skill, the blocks at lines 1332 and 1340; (4) the
+  handover by surface, the blocks at lines 1228, 1348, 1220, 1236 and 1284;
+  (5) the remaining questions of the installation, the blocks at lines 731,
+  755, 836, 988, 1084, 1124, 1156, 1164 and 1276, before them the question to
+  the person whether a text that says what the should asks counts as a repair;
+  (6) the texts users read: the README on Windows, on the places devloop runs
+  and on the version of Claude Code it needs, the blocks at lines 1356, 1364
+  and 780, and the commands that keep a machine awake under Linux and Windows
+  that `docs/plan.md` names under milestone 12, after the person has approved
+  the wordings; (7) the virtual machines and the closing runs, the list in the
+  panel under Linux and Windows for the block at line 739 among them. Reason:
+  the self-test of `bin/devloop-bounded` hung on macos-latest until the job's
+  limit and was red on alpine and macos-latest, so that every later pull
+  request runs through reliably only after (1); (2) GitHub measures, and it
+  needs no decision; the reading of the surface does not go stale while Claude
+  Code sets the variable the same way, measured at 2.1.317, 2.1.319 and
+  2.1.321. Not chosen: the handover by surface first, while the measurement is
+  fresh; it would have brought the first change visible to users earlier, but
+  exposed every pull request until then to the hang of the self-test.
+
+  **The blocks and the table.** The four blocks of milestone 12 and the block
+  at line 2117 carry their Fix on the line of the repair and the state the
+  tool computes, their Should unchanged, their notes saying what was measured
+  and what was read. `docs/stock-take.tsv`: the rows anchored on lines that
+  changed were re-anchored on the lines of the build, their names and notes
+  kept: the thing at line 2574, ended itself by a signal, on the TERM trap,
+  site and evidence; the part-of records at lines 2578, 2579, 2580, 3357,
+  3359, 3361, 3365 and 3367 on the watchdog, the INT and HUP traps, `released`
+  and four of its calls; the record at line 3368, on the second `gone` of the
+  fetch case until now, on the `released` of the case "input through"; the
+  thing at line 1982 of `bin/devloop-setup-state`, the fetch not answering, on
+  `elif [ "$RC" -eq 124 ]`, its note saying so. Three rows went with their
+  lines, each a thing or record of the Windows exceptions: the thing at line
+  6601, "`.github/workflows/stock-take.yml` / whole file / the hooks step
+  under Windows: the self-test of bin/devloop-bounded left out, a line printed
+  that says so and why, the step going on", the part-of record at line 6602 on
+  the `case` line, and the thing at line 6603, the same for
+  `bin/devloop-setup-state`; none carried a run. The runs of three things stop
+  counting under 0.182.0, since that version contains the last change to a
+  line of theirs: the bound firing, with runs of 7 and 11 October and 25
+  October 2026; the self-test passing, with runs of 7 October 2026; and the
+  fetch not answering in `bin/devloop-setup-state`, with the run of 3 October
+  2026; the last commit records a run of each at the final state, in a
+  paragraph added with it, and sets the Status of the five blocks to the state
+  the tool computes then.
+
+  **What GitHub measures first**, since this machine runs macOS and no Windows
+  stands here: that under Git Bash `set -m` puts the command into a group of
+  its own, that the fetch of the self-test ends with its transport and
+  releases the pipe, and that both self-tests are green on windows-latest; and
+  on alpine and macos-latest that the three races stay closed under the
+  runners' load. Until the person has pushed and the five checks have run, no
+  run under Windows or Alpine on the platform counts here as passed.
+
+  The runs at the last commit stand in a paragraph added with that commit.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
