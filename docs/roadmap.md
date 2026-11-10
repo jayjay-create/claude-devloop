@@ -3908,7 +3908,7 @@ and for the proofs of closings.
   9 November 2026, version 0.181.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md` does not. On `task/surface-reading`, off
-  `origin/main` at `ac8cb77`, in one commit: `docs/plan.md`,
+  `origin/main` at `ac8cb77`, in two commits: `docs/plan.md`,
   `docs/defects.md`, `docs/roadmap.md` and this entry. The order: the first
   measurement of milestone 12, how devloop reads which surface of Claude
   Code it runs on, `docs/plan.md` under milestone 12, "How devloop reads
@@ -4050,13 +4050,14 @@ and for the proofs of closings.
   surface reads `CLAUDE_CODE_ENTRYPOINT`, in a hook, in an insert line or
   in a program the run calls with `Bash`, and holds `claude-vscode` for
   form B for every command and `claude-desktop` for the desktop app, where
-  the entry of this day on the two entries held gives form A under macOS
-  and Linux and form B for every command under Windows, the system read
+  the entry of this day on the two entries held gives under macOS and Linux
+  the forms of the terminal, form A where a command asks nothing and form B
+  where it asks, and under Windows form B for every command, the system read
   beside it with `uname -s`; a value outside the three measured is not
-  measured, and what holds there the person decides. Nothing is built on
-  it in this entry. Recorded in `docs/plan.md` under milestone 12 as a
-  dated measurement after the decision on the surfaces, and in the notes of
-  the blocks of milestone 12 at `docs/defects.md` lines 739, 1228 and 1348,
+  measured, and what holds there the person decides. Nothing is built on it
+  in this entry. Recorded in `docs/plan.md` under milestone 12 as a dated
+  measurement after the decision on the surfaces, and in the notes of the
+  blocks of milestone 12 at `docs/defects.md` lines 739, 1228 and 1348,
   their titles, Should, Fix and Status unchanged.
 
   **The desktop app under Windows** this order did not measure. desktop.md
@@ -4142,6 +4143,12 @@ and for the proofs of closings.
   `docs/skill-conventions.md` line 148, the head of the rule on the two
   forms, which names the surface and holds; `docs/rationale.md` nothing.
   No sentence stopped holding.
+
+  Two commits: the first with all of this; the second from the check at the
+  code before the merge, which says right in the paragraph on the result
+  what the entry of this day on the two entries held gives the desktop app
+  under macOS and Linux: the forms of the terminal, where the first said
+  form A.
 
 ## Decisions taken against
 
