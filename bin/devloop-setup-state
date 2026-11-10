@@ -127,9 +127,9 @@ selftest() {
   mv "$T/origin.git" "$T/origin-away.git"
   run --fetch "$T/clone";                expect "the fetch failed, said with git's message, the last fetched state read" 0 "fetch: failed (" "reading origin/main as last fetched" "present: docs/agents/environment.md"
   mv "$T/origin-away.git" "$T/origin.git"
-  # a transport that never answers: the bound fires, said, the last fetched state read
+  # a transport that never answers, tail -f /dev/null as the self-test of bin/devloop-bounded has it: the bound fires, said, the last fetched state read
   git_q -C "$T/clone" remote set-url origin "git@localhost:nowhere/x.git"
-  out=$(GIT_SSH_COMMAND='sh -c "sleep 60" --' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
+  out=$(GIT_SSH_COMMAND='tail -f /dev/null' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
   expect "the fetch not answering within the bound, said, the last fetched state read" 0 "fetch: no answer within 1 seconds, reading origin/main as last fetched" "present: docs/agents/checks.md"
   git_q -C "$T/clone" remote set-url origin "$T/origin.git"
   # a repository the workflow never touched: every file missing, exit 0

@@ -48,21 +48,41 @@
 # and winsup/cygwin/include/cygwin/exit_process.h of
 # git-for-windows/msys2-runtime at 5a1665c8, the runtime of Git for Windows
 # 2.56; SIGSTOP is not sent, since that runtime drops every signal to a
-# stopped process. The watchdog is a subshell with a sleep: ended, it ends
-# its sleep by the job table and waits for it, so that nothing of the bound
-# runs on once this program has returned; until that day a signal between
-# the start of the sleep and the line that noted its process number left
-# the sleep running, the self-test red on alpine on 1 November 2026.
+# stopped process. What that walk does not reach, read in the same sources:
+# a Cygwin process started by a native program keeps no Cygwin parent, so an
+# exec in it waits for the program it exec'd, while an exec in that one
+# exits at once, spawn.cc lines 906 to 908 and 929; the walk follows the
+# Windows parent numbers and ends at the process that exited, so a transport
+# that is a shell exec'd into a shell exec'd into a program is beyond it,
+# which is how the self-test hung on windows-latest on 10 November 2026 with
+# the transport sh -c "sleep 7337" --, two shells under git; git's own
+# transports, ssh and git-remote-https, are direct children of git. The
+# watchdog is a subshell with a sleep: ended, it ends its sleep by the job
+# table and waits for it, so that nothing of the bound runs on once this
+# program has returned; until that day a signal between the start of the
+# sleep and the line that noted its process number left the sleep running,
+# the self-test red on alpine on 1 November 2026. Ended itself, this program
+# ends the command's group by SIGTERM and, where something of it stands two
+# seconds later, by SIGKILL, through a helper that ends with the group, and
+# exits once the command is reaped: Claude Code ends a hook that runs past
+# its limit with SIGTERM to the hook's process group and SIGKILL to that
+# group five seconds later, read in its program at 2.1.321 on this machine,
+# which reaches this program and not the groups of the command and the
+# watchdog; measured on 10 November 2026, a command that ignores SIGTERM
+# survived such an end until this escalation came in.
 #
 # --self-test produces every outcome above once without a network, prints
 # one line per case and exits 1 on the first that does not come out as this
-# header says. It needs bash, sh, sleep, cat and git, and no GNU tool and no
-# pgrep: it runs on macOS, Linux, Alpine and Windows with Git Bash. That
-# nothing of the bound runs on it reads off a pipe: every run gets the write
-# end of one on file descriptor 3, which everything the bound starts
+# header says. It needs bash, sh, sleep, cat, tail and git, and no GNU tool
+# and no pgrep: it runs on macOS, Linux, Alpine and Windows with Git Bash.
+# That nothing of the bound runs on it reads off a pipe: every run gets the
+# write end of one on file descriptor 3, which everything the bound starts
 # inherits, and the case is red where the read end is not released within
 # two seconds of the program's return, the process that holds it named by
-# nothing but the fact.
+# nothing but the fact. Its transport that never answers is tail -f
+# /dev/null, which git runs through one shell, since the command carries a
+# space, and which the shell execs into: one process under git on every
+# system, as ssh is.
 set -u
 me=devloop-bounded
 
@@ -124,9 +144,9 @@ selftest() {
   absent "Terminated" "does not end: ended with what it started, the line, exit 124"
   within "does not end: back at the bound" 3
   released "does not end: what the command started is ended too"
-  # a fetch over a transport that never answers, built as bin/devloop-setup-state builds it
+  # a fetch over a transport that never answers, built as bin/devloop-setup-state builds it: tail -f /dev/null, one process under git
   git_q init -q "$T/repo" && git_q -C "$T/repo" remote add origin "git@localhost:devloop-bounded-selftest-$$/x.git"
-  k=$((k+1)); t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_COMMAND='sh -c "sleep 7337" --' "$self" 1 git fetch -q origin 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
+  k=$((k+1)); t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_COMMAND='tail -f /dev/null' "$self" 1 git fetch -q origin 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
   expect "a fetch over a transport that never answers: the line, exit 124" 124 "no answer within 1 seconds: git fetch -q origin"
   within "a fetch over a transport that never answers: back at the bound" 3
   released "a fetch over a transport that never answers: the transport is ended"
@@ -158,9 +178,13 @@ pid=$!
 ( trap 'kill $(jobs -p) 2>/dev/null; wait; exit 143' TERM; sleep "$secs" & wait; trap '' TERM; end_group "$pid"; exit 99 ) >/dev/null 2>&1 &
 wd=$!
 set +m
-trap 'end_group "$pid"; kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; exit 143' TERM
-trap 'end_group "$pid"; kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; exit 130' INT
-trap 'end_group "$pid"; kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; exit 129' HUP
+# Ended itself: the command's group by SIGTERM, what of it stands two seconds
+# later by SIGKILL through a helper that ends with the group, then the
+# watchdog; the exit code once the command is reaped.
+ended() { end_group "$pid"; ( i=0; while kill -0 -- "-$pid" 2>/dev/null && [ "$i" -lt 20 ]; do sleep 0.1; i=$((i+1)); done; kill -KILL -- "-$pid" 2>/dev/null ) >/dev/null 2>&1 & kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; wait "$pid" 2>/dev/null; exit "$1"; }
+trap 'ended 143' TERM
+trap 'ended 130' INT
+trap 'ended 129' HUP
 # bash reports a job ended by a signal on its stderr, "Terminated: 15"; the
 # redirect on wait keeps that off the output, the command's own stderr is
 # untouched by it.
