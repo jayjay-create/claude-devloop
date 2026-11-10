@@ -44,24 +44,46 @@
 # the command itself was ever ended. Under Git Bash a native Windows program
 # the command starts, git among them, is held by the runtime's own process
 # for it, which stands in the group: SIGTERM to that process ends the native
-# program and everything it started, read in winsup/cygwin/exceptions.cc
-# and winsup/cygwin/include/cygwin/exit_process.h of
+# program and, of what it started, what the runtime's walk over the Windows
+# process table reaches, read in winsup/cygwin/exceptions.cc and
+# winsup/cygwin/include/cygwin/exit_process.h of
 # git-for-windows/msys2-runtime at 5a1665c8, the runtime of Git for Windows
 # 2.56; SIGSTOP is not sent, since that runtime drops every signal to a
-# stopped process. What that walk does not reach, read in the same sources:
-# a Cygwin process started by a native program keeps no Cygwin parent, so an
-# exec in it waits for the program it exec'd, while an exec in that one
-# exits at once, spawn.cc lines 906 to 908 and 929; the walk follows the
-# Windows parent numbers and ends at the process that exited, so a transport
-# that is a shell exec'd into a shell exec'd into a program is beyond it;
-# the self-test hung on windows-latest on 10 November 2026 with the
-# transport sh -c "sleep 7337" --, two shells under git, and what held its
-# pipe there is not read, the paragraph on the self-test below. The limit, in
-# one sentence: under Windows with Git Bash a process that a native program
-# started through a shell exec'd into a second shell is not ended at the
-# bound; the block of milestone 12 on it in docs/defects.md holds that, and
-# nothing is built for it. git's own transports, ssh and git-remote-https,
-# are direct children of git and are ended. The
+# stopped process. What that walk reaches and what it does not, read in the
+# same sources: it lists, by the Windows parent numbers, the processes under
+# the native program that have no Cygwin pid and ends them; a process under a
+# listed one that has a Cygwin pid it sends the signal, that process alone
+# and where it leads its process group, and does not list, exit_process.h
+# lines 313 to 319, so that nothing under it is looked for. A Cygwin process
+# started by a native program has no Cygwin parent and leads a group of its
+# own, pinfo.cc line 99; an exec in it hands its Cygwin pid to the program it
+# exec'd and waits for it, a process without a Cygwin pid to the walk from
+# then on, while an exec in a process with a Cygwin parent exits at once,
+# spawn.cc lines 798 to 812, 906 to 908 and 929. So one shell exec'd into a
+# program is ended, the shell listed and the program sent the signal:
+# measured on windows-latest by run 42876247351 of pull request #239, the
+# self-test's fetch over such a transport back at the bound with its pipe
+# released. Behind a shell exec'd into a second shell nothing is ended: the
+# second shell is sent the signal alone, and what it started as a child and
+# waits for runs on; and where it exec'd into a program instead, it has
+# exited, and the program hangs on a parent number no list holds. The limit,
+# in one sentence: under Windows with Git Bash a process that a native
+# program started through a shell exec'd into a second shell is not ended at
+# the bound; the block of milestone 12 on it in docs/defects.md holds that,
+# and nothing is built for it. By the same lines the walk goes below no
+# process with a Cygwin pid, so that what one shell under a native program
+# starts as a child of its own, without an exec, is not looked for either:
+# read, not measured, and the block says it in its note alone. git's own
+# transports, ssh and git-remote-https, are direct children of git and are
+# ended. Until the change of 10 November 2026 after that run this head said
+# the limit twice and differently: as the sentence above, and as a transport
+# that is a shell exec'd into a shell exec'd into a program, beyond the walk
+# since the walk ends at the process that exited; that names the second of
+# the two cases alone, and the first, the one of the transport the self-test
+# leaves out under Windows, was read on that day. The self-test hung on
+# windows-latest on 10 November 2026 with the transport sh -c "sleep 7337"
+# --, two shells under git, the second exec'ing into the sleep, and what held
+# its pipe there is not read, the paragraph on the self-test below. The
 # watchdog is a subshell with a sleep: ended, it ends its sleep by the job
 # table and waits for it, so that nothing of the bound runs on once this
 # program has returned; until that day a signal between the start of the
@@ -107,10 +129,18 @@
 # waits for its sleep, which git asks with -G first and which stands there:
 # it runs on macOS, Linux and Alpine, where the bound ends the whole group,
 # and is left out under Windows with Git Bash, where git starts it through a
-# shell exec'd into a second shell, with a line that says so and names the
-# block of docs/defects.md on the limit above.
-# Until that change the one transport was tail -f /dev/null, since the third
-# commit of that day, and before it sh -c "sleep 7337" --. GNU tail prints
+# shell exec'd into a second shell and the runtime's walk sends that second
+# shell the signal alone, its sleep not looked for, with a line that says so,
+# names lines 313 to 319 of exit_process.h, on which that hangs, and names
+# the block of docs/defects.md on the limit above. The line names the place
+# in the source since the change of 10 November 2026 after run 42876247351 of
+# pull request #239, green on all five checks, whose job on windows-latest
+# printed the line as it stood and passed with 12 cases, the fetch over the
+# one process back 1.29 seconds after the case before it; the case over
+# several processes that run did not measure there.
+# Until the change after run 42805995483 the one transport was tail -f
+# /dev/null, since the third commit of that day, and before it
+# sh -c "sleep 7337" --. GNU tail prints
 # the header "==> /dev/null <==" once it is given more than one file, which
 # git read as the answer and ended on, "protocol error: bad line length
 # character: ==> ", exit 128, so that both self-tests were red on
@@ -194,10 +224,10 @@ selftest() {
   expect "a fetch over a transport that never answers: the line, exit 124" 124 "no answer within 1 seconds: git fetch -q origin"
   within "a fetch over a transport that never answers: back at the bound" 3
   released "a fetch over a transport that never answers: the transport is ended"
-  # the same over a transport of several processes, a shell that waits for its sleep, on macOS, Linux and Alpine; left out under Windows with Git Bash, where the bound does not end it, with a line that says so and names the block
+  # the same over a transport of several processes, a shell that waits for its sleep, on macOS, Linux and Alpine; left out under Windows with Git Bash, where the bound does not end it, with a line that says so and names the place in the runtime's source on which that hangs and the block
   case "$(uname -s 2>/dev/null)" in
     MINGW*|MSYS*|CYGWIN*)
-      echo "left out under Windows with Git Bash: a fetch over a transport of several processes that never answers, since the bound does not end there a process that git, a native program, started through a shell exec'd into a second shell: docs/defects.md, the block \"under Windows with Git Bash the bound does not end a process that a native program started through a shell exec'd into a second shell, the self-test's fetch case hung so on windows-latest\"" ;;
+      echo "left out under Windows with Git Bash: a fetch over a transport of several processes that never answers, since the bound does not end there a process that git, a native program, started through a shell exec'd into a second shell: the runtime's walk sends that second shell the signal alone and looks for nothing under it, winsup/cygwin/include/cygwin/exit_process.h lines 313 to 319 of git-for-windows/msys2-runtime at 5a1665c8; docs/defects.md, the block \"under Windows with Git Bash the bound does not end a process that a native program started through a shell exec'd into a second shell, the self-test's fetch case hung so on windows-latest\"" ;;
     *)
       k=$((k+1)); t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_COMMAND='sh -c "sleep 7337 & wait" --' "$self" 1 git fetch -q origin 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
       expect "a fetch over a transport of several processes that never answers: the line, exit 124" 124 "no answer within 1 seconds: git fetch -q origin"

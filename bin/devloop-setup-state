@@ -52,10 +52,16 @@
 # program, since 10 November 2026, until then through a copy of its own:
 # DEVLOOP_FETCH_SECONDS, 30 where unset, after which the fetch and everything
 # it started are ended, as that program's head says, and the fetch is said
-# not to have answered; under Windows with Git Bash a transport that git
-# starts through a shell exec'd into a second shell, a GIT_SSH_COMMAND with
-# quotes in it, is not ended at the bound, the limit that program's head
-# states and a block of milestone 12 in docs/defects.md holds. --self-test
+# not to have answered; under Windows with Git Bash a process that git
+# started through a shell exec'd into a second shell, the program of a
+# GIT_SSH_COMMAND that is itself a call of sh -c among them, is not ended at
+# the bound, the limit that program's head states and a block of milestone 12
+# in docs/defects.md holds. Until the change of 10 November 2026 after run
+# 42876247351 of pull request #239 this head named a GIT_SSH_COMMAND with
+# quotes in it as such a transport; git runs a command with a quote or a
+# space through one shell, run-command.c lines 293 to 304 of
+# git-for-windows/git at v2.56.0.windows.4, and one shell exec'd into its
+# program is ended, as that run measured on windows-latest. --self-test
 # builds repositories under a temporary directory outside the project,
 # produces every outcome above once, prints one line per case and exits 1
 # on the first that does not come out as this header says. Its fetch that
@@ -64,9 +70,10 @@
 # #239, where the one transport until then, tail -f /dev/null, was read by
 # git as an answer under GNU coreutils: one process under git on every
 # system, and a shell that waits for its sleep on macOS, Linux and Alpine,
-# that case left out under Windows with Git Bash with a line that says so
-# and names the block; that program's head says why each is as it is. It
-# needs uname beside what the program itself needs.
+# that case left out under Windows with Git Bash with a line that says so and
+# names the block and, since the change after run 42876247351, the place in
+# the runtime's source on which that hangs; that program's head says why each
+# is as it is. It needs uname beside what the program itself needs.
 set -u
 FETCH=no
 SELFTEST=no
@@ -142,10 +149,10 @@ selftest() {
   git_q -C "$T/clone" remote set-url origin "git@localhost:nowhere/x.git"
   out=$(GIT_SSH_VARIANT=simple GIT_SSH_COMMAND='exec sleep 7343 #' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
   expect "the fetch not answering within the bound, said, the last fetched state read" 0 "fetch: no answer within 1 seconds, reading origin/main as last fetched" "present: docs/agents/checks.md"
-  # the same over a transport of several processes, a shell that waits for its sleep, on macOS, Linux and Alpine; left out under Windows with Git Bash, where the bound does not end it, with a line that says so and names the block
+  # the same over a transport of several processes, a shell that waits for its sleep, on macOS, Linux and Alpine; left out under Windows with Git Bash, where the bound does not end it, with a line that says so and names the place in the runtime's source on which that hangs and the block
   case "$(uname -s 2>/dev/null)" in
     MINGW*|MSYS*|CYGWIN*)
-      echo "left out under Windows with Git Bash: the fetch over a transport of several processes not answering within the bound, since the bound does not end there a process that git, a native program, started through a shell exec'd into a second shell: docs/defects.md, the block \"under Windows with Git Bash the bound does not end a process that a native program started through a shell exec'd into a second shell, the self-test's fetch case hung so on windows-latest\"" ;;
+      echo "left out under Windows with Git Bash: the fetch over a transport of several processes not answering within the bound, since the bound does not end there a process that git, a native program, started through a shell exec'd into a second shell: the runtime's walk sends that second shell the signal alone and looks for nothing under it, winsup/cygwin/include/cygwin/exit_process.h lines 313 to 319 of git-for-windows/msys2-runtime at 5a1665c8; docs/defects.md, the block \"under Windows with Git Bash the bound does not end a process that a native program started through a shell exec'd into a second shell, the self-test's fetch case hung so on windows-latest\"" ;;
     *)
       out=$(GIT_SSH_COMMAND='sh -c "sleep 7347 & wait" --' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
       expect "the fetch over a transport of several processes not answering within the bound, said, the last fetched state read" 0 "fetch: no answer within 1 seconds, reading origin/main as last fetched" "present: docs/agents/checks.md" ;;
