@@ -4160,20 +4160,24 @@ and for the proofs of closings.
   `docs/plan.md`, `docs/defects.md`, `docs/stock-take.tsv` and this entry;
   after the job hooks on every system (windows-latest) of pull request #239
   was stopped at fifteen minutes, the code again, the version not raised
-  again; the documents again, this entry corrected in place; and, after the
-  five checks on GitHub were green, the runs at the last commit. The order:
-  the first of the seven orders of milestone 12 in the order the person
-  decided on this day, recorded below and in `docs/plan.md` under milestone
-  12; the four blocks of `docs/defects.md` on `bin/devloop-bounded` under "##
-  Milestone 12", lines 1052, 1292, 1300 and 1324, built, and with them the
-  block at line 2117 under "## Milestone 13", whose should the same change
-  meets. Written by Claude Code from the person's order of this day; no
-  session log was read; nothing was installed outside throwaway directories
-  and throwaway containers; the identity under which git commits here was
-  neither set nor read; no subagent was used. The report stands on this
-  machine as `~/devloop-bounded-every-system.md`, in German, and is not in the
-  repository. Every line number of a file in this entry holds at `b6970e1`
-  unless it says otherwise.
+  again; the documents again, this entry corrected in place; the heads and the
+  documents a third time, for two blocks and a sentence in each head, before
+  the second push; and, after the five checks on GitHub were green, the runs
+  at the last commit. The order: the first of the seven orders of milestone 12
+  in the order the person decided on this day, recorded below and in
+  `docs/plan.md` under milestone 12; the four blocks of `docs/defects.md` on
+  `bin/devloop-bounded` under "## Milestone 12", lines 1052, 1292, 1300 and
+  1324, built, and with them the block at line 2117 under "## Milestone 13",
+  whose should the same change meets. Written by Claude Code from the person's
+  order of this day; no session log was read; nothing was installed outside
+  throwaway directories and throwaway containers; the identity under which git
+  commits here was neither set nor read; no subagent was used. The report
+  stands on this machine as `~/devloop-bounded-every-system.md`, in German,
+  and is not in the repository. Every line number of a file in this entry
+  holds at `b6970e1` unless it says otherwise. From the fourth commit to the
+  sixth this entry carried its last two paragraphs twice, one copy cut into
+  the middle of the paragraph on the blocks and the table, a slip of the
+  correction in place; it carries them once since.
 
   **The causes, measured where this machine can and read where it cannot.**
   Windows, the block at line 1052: the log of the job hooks on every system
@@ -4284,7 +4288,10 @@ and for the proofs of closings.
   starts a helper that ends what of the group stands two seconds later by
   SIGKILL, ends the watchdog and exits once the command is reaped; measured
   the same way, the command that ignores SIGTERM was gone with its sleep
-  before the fifth second.
+  before the fifth second. The race stands as a block of its own under
+  milestone 12 since the order of this day, by the rule that a finding in the
+  code gets a block in every case, found by the code of the second commit and
+  built in the third, its Fix on the helper of `ended`.
 
   **The build.** `bin/devloop-bounded`: the command starts under job control,
   `set -m` for that one start and the watchdog's, so that bash puts each into
@@ -4366,8 +4373,12 @@ and for the proofs of closings.
 
   **The blocks and the table.** The four blocks of milestone 12 and the block
   at line 2117 carry their Fix on the line of the repair and the state the
-  tool computes, their Should unchanged, their notes saying what was measured
-  and what was read. `docs/stock-take.tsv`: the rows anchored on lines that
+  tool computes, their Should unchanged, the block at line 2117 kept so by the
+  person's word of this day, since its should asks for the call of
+  `bin/devloop-bounded` and the call stands; two blocks come under milestone
+  12 with the order of this day, the limit under Git Bash and the race of the
+  sixth situation, as said above; their notes saying what was measured and
+  what was read. `docs/stock-take.tsv`: the rows anchored on lines that
   changed were re-anchored on the lines of the build, their names and notes
   kept: the thing at line 2574, ended itself by a signal, on the TERM trap,
   site and evidence; the part-of records at lines 2578, 2579, 2580, 3357,
@@ -4411,71 +4422,24 @@ and for the proofs of closings.
   Windows parent had exited, `exit_process.h` lines 305 to 322; the sleep held
   the pipe. The case "does not end", sh and two sleeps all Cygwin processes in
   the command's group, passed there in 1.15 seconds, the group kill reaching
-  each directly. What the third commit changes for it stands under the build.
-  Measured next, since this machine runs macOS and no Windows stands here:
-  that under Git Bash the fetch over `tail -f /dev/null`, one shell exec'd
-  into tail under git, ends and releases the pipe, and that both self-tests
-  are green on windows-latest; and on alpine and macos-latest that the races
-  stay closed under the runners' load. No run under Windows on the platform
-  counts here as passed until the person reports the checks green.
-
-  The runs at the last commit stand in a paragraph added with that commit.
-he blocks and the table.** The four blocks of milestone 12 and the block
-  at line 2117 carry their Fix on the line of the repair and the state the
-  tool computes, their Should unchanged, their notes saying what was measured
-  and what was read. `docs/stock-take.tsv`: the rows anchored on lines that
-  changed were re-anchored on the lines of the build, their names and notes
-  kept: the thing at line 2574, ended itself by a signal, on the TERM trap,
-  site and evidence; the part-of records at lines 2578, 2579, 2580, 3357,
-  3359, 3361, 3365 and 3367 on the watchdog, the INT and HUP traps, `released`
-  and four of its calls; the record at line 3368, on the second `gone` of the
-  fetch case until now, on the `released` of the case "input through"; the
-  thing at line 1982 of `bin/devloop-setup-state`, the fetch not answering, on
-  `elif [ "$RC" -eq 124 ]`, its note saying so. Three rows went with their
-  lines, each a thing or record of the Windows exceptions: the thing at line
-  6601, "`.github/workflows/stock-take.yml` / whole file / the hooks step
-  under Windows: the self-test of bin/devloop-bounded left out, a line printed
-  that says so and why, the step going on", the part-of record at line 6602 on
-  the `case` line, and the thing at line 6603, the same for
-  `bin/devloop-setup-state`; none carried a run. The runs of three things stop
-  counting under 0.182.0, since that version contains the last change to a
-  line of theirs: the bound firing, with runs of 7 and 11 October and 25
-  October 2026; the self-test passing, with runs of 7 October 2026; and the
-  fetch not answering in `bin/devloop-setup-state`, with the run of 3 October
-  2026; the last commit records a run of each at the final state, in a
-  paragraph added with it, and sets the Status of the five blocks to the state
-  the tool computes then.
-
-  **What GitHub measured, and measures next.** The checks of pull request
-  #239, run 42786895842, on the second commit: stock-take, ubuntu-latest,
-  macos-latest and alpine green; windows-latest stopped at fifteen minutes,
-  its log, read with `gh run view --log --job 129730286339`, printing the
-  eleven `ok` lines of the self-test of `bin/devloop-bounded` up to "does
-  not end: ended with what it started, the line, exit 124" at 09:01:09 UTC,
-  1.15 seconds after the case before it, and then nothing until "The
-  operation was canceled" at 09:14:15: the case of a fetch over a transport
-  that never answers did not come back. The cause, read in the runtime at
-  `5a1665c8` and not measured here: git ran the transport `sh -c "sleep
-  7337" --` as `sh -c 'sh -c "sleep 7337" -- "$@"'`, two shells under the
-  native git; a Cygwin process started by a native program has no Cygwin
-  parent and waits on its exec for the program it exec'd,
-  `winsup/cygwin/spawn.cc` lines 906 to 908, while a process with a Cygwin
-  parent exits at its exec, line 929, handing its Cygwin pid on; so the
-  second shell was gone when the bound fired, the walk of
-  `exit_process_tree` over the Windows parent numbers found the first shell
-  as a child of git, took it for a native process since its Windows pid
-  belongs to no Cygwin pid any more, and never reached the sleep, whose
-  Windows parent had exited, `exit_process.h` lines 305 to 322; the sleep
-  held the pipe. The case "does not end", sh and two sleeps all Cygwin
-  processes in the command's group, passed there in 1.15 seconds, the group
-  kill reaching each directly. What the third commit changes for it stands
-  under the build. Measured next, since this machine runs macOS and no
-  Windows stands here: that under Git Bash the fetch over `tail -f
-  /dev/null`, one shell exec'd into tail under git, ends and releases the
-  pipe, and that both self-tests are green on windows-latest; and on alpine
-  and macos-latest that the races stay closed under the runners' load. No
-  run under Windows on the platform counts here as passed until the person
-  reports the checks green.
+  each directly. What the third commit changes for it stands under the build;
+  the limit itself, a process behind a chain of two shells under a native
+  program, stands as a block of its own under milestone 12 since the order of
+  this day, Fix none, with nothing built for it, the person deciding later
+  whether a repair is built or the case is left on purpose, and the heads of
+  both programs state it in one sentence. The block at line 1052 keeps its
+  should as it stands, "everything it started", which read as written covers
+  that case too; the two blocks share it so: the block at line 1052 is built
+  for what the group kill and the runtime's walk reach, and the new block
+  holds what they do not; a narrowing of the should at line 1052 to say so,
+  with a line "Should changed", the conventions allow and this entry does not
+  make, both ways standing in the report for the person. Measured next, since
+  this machine runs macOS and no Windows stands here: that under Git Bash the
+  fetch over `tail -f /dev/null`, one shell exec'd into tail under git, ends
+  and releases the pipe, and that both self-tests are green on windows-latest;
+  and on alpine and macos-latest that the races stay closed under the runners'
+  load. No run under Windows on the platform counts here as passed until the
+  person reports the checks green.
 
   The runs at the last commit stand in a paragraph added with that commit.
 
