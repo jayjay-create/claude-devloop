@@ -3903,6 +3903,253 @@ and for the proofs of closings.
   the handover steps" and "Until 28 October 2026". This entry said the
   place mended carried the decisions in four sentences; they are two.
 
+- **Surface reading measured, machines for the closing runs decided.**
+
+  9 November 2026, version 0.181.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/surface-reading`, off
+  `origin/main` at `ac8cb77`, in two commits: `docs/plan.md`,
+  `docs/defects.md`, `docs/roadmap.md` and this entry. The order: the first
+  measurement of milestone 12, how devloop reads which surface of Claude
+  Code it runs on, `docs/plan.md` under milestone 12, "How devloop reads
+  which surface it runs on is measured first in this milestone"; a decision
+  of the person on the machines of the closing runs under Linux, Alpine and
+  Windows, recorded there and here; and the consequence of the third of the
+  five sentences for the closing runs. Written by Claude Code from the
+  person's order of this day; no session log was read; nothing was
+  installed outside a throwaway directory; the identity under which git
+  commits here was neither set nor read; no subagent was used. The report
+  stands on this machine as `~/devloop-surface-reading.md`, in German, and
+  is not in the repository. Every line number of a file in this entry holds
+  at `ac8cb77` unless it says otherwise.
+
+  **What was read, and how.** The vendor's pages raw with `curl` as Markdown
+  from code.claude.com/docs/en/<page>.md into a throwaway directory and read
+  there with `grep`: env-vars.md, vs-code.md, desktop.md, hooks.md,
+  interactive-mode.md, jetbrains.md, settings.md, skills.md, statusline.md,
+  setup.md, cli-reference.md. None of the eleven names
+  `CLAUDE_CODE_ENTRYPOINT`. What they say of the surfaces: hooks.md, "Claude
+  Code fires the same hook events wherever it runs: sessions in the
+  terminal, IDE extensions, the Desktop app, and cloud sessions" and
+  "Handlers run in the current directory with Claude Code's environment";
+  env-vars.md on `CLAUDECODE`, "Set to `1` in subprocesses Claude Code
+  spawns … IDE extensions also set this in their integrated terminals", and
+  on `CLAUDE_CODE_CHILD_SESSION`, "only set by Claude Code itself when it
+  launches a subprocess and not by IDE extensions"; vs-code.md, "The
+  extension bundles its own copy of the CLI … for the chat panel" and, in
+  the table "VS Code extension vs. Claude Code CLI", "Commands and skills |
+  All | Subset (type `/` to see available)" and "`!` Bash shortcut | Yes |
+  No"; desktop.md, "In a local session, the **Code** tab runs its own copy
+  of Claude Code, which has its own version number", and under "Environment
+  variables Desktop sets itself" that Desktop sets `API_TIMEOUT_MS` and
+  `ANTHROPIC_BASE_URL` "among others"; jetbrains.md, "The plugin runs the
+  `claude` command in your IDE's integrated terminal and connects to it. It
+  does not bundle its own copy of the CLI"; skills.md, "Claude Code
+  substitutes `${CLAUDE_SKILL_DIR}` and `${CLAUDE_PROJECT_DIR}` in two
+  places: the skill's markdown content, and Bash rules in the
+  `allowed-tools` frontmatter". The program of Claude Code on this machine,
+  the one `command -v claude` names, read with `grep -a` for the string
+  `CLAUDE_CODE_ENTRYPOINT`: at 2.1.319 and again at 2.1.321, after the
+  program updated itself during the measurement, it compares the variable
+  with `claude-desktop`, `process.env.CLAUDE_CODE_ENTRYPOINT==="claude-desktop"`,
+  and with `claude-vscode`, `new Set(["claude-vscode"])`, sets `cli` where
+  nothing stands, `set("CLAUDE_CODE_ENTRYPOINT",e?"sdk-cli":"cli")`, and
+  carries the list `["cli","remote","github-action","sdk-typescript",
+  "sdk-python","sdk-cli","claude-vscode","local-agent","claude-desktop"]`.
+  The variable is the vendor's and undocumented; where the vendor changes
+  it, this measurement is to be made again.
+
+  **The probe.** A throwaway directory without a git repository, with three
+  ways by which devloop gives the model text, each writing one line into a
+  file of the probe: a hook on SessionStart in the directory's
+  `.claude/settings.json`; a skill under `.claude/skills/` with an insert
+  line, `` !`${CLAUDE_PROJECT_DIR}/probe.sh insert` ``, granted with
+  `allowed-tools: Bash(${CLAUDE_PROJECT_DIR}/probe.sh *)`, as the insert
+  lines of devloop are built, `skills/start-work/SKILL.md` lines 5 and 35
+  with `${CLAUDE_PLUGIN_ROOT}`; and in the same skill the instruction to
+  run the probe's program once with the tool `Bash`. Each line names the
+  date and time with the timezone, the way, `uname -s`, the names of every
+  environment variable, the values for the names beginning with `CLAUDE` and
+  for `TERM_PROGRAM`, `TERM_PROGRAM_VERSION`, `TERMINAL_EMULATOR` and
+  `__CFBundleIdentifier`, a value only where it consists of letters, digits,
+  dot, hyphen and underscore and names no token, else the word "set"; the
+  hook's line names the fields of its input, never their values; and since
+  the counter-check the version the program `CLAUDE_CODE_EXECPATH` names
+  prints with `--version`. The counter-check before the person's sessions,
+  the program run with `Bash` and as the hook runs it with an invented input
+  carrying paths: no value carried `/`, `~` or `@`, no field value of the
+  input stood in the file; the token of `CLAUDE_CODE_MESSAGING_TOKEN` stood
+  there after the first check and is masked since. devloop's hooks ran in
+  the probe, installed for every project: each guard leaves a directory
+  without `docs/agents` at once, `hooks/pre-tool-use-branch-guard.sh` line
+  8, and none blocked a way. The lines carried two identifiers of the
+  person's account, `CLAUDE_CODE_ACCOUNT_UUID` and
+  `CLAUDE_CODE_ORGANIZATION_UUID`, set by the desktop app; the file is
+  deleted with the probe, and the next probe masks `UUID` as it masks a
+  token.
+
+  **Measured on 9 November 2026** on the person's Mac, macOS, `uname -s`
+  Darwin, the person opening the probe on each surface, starting a
+  session, calling the probe's skill, letting the model run the `Bash`
+  call and ending the session, the date and time of every line read off
+  the probe's file: (1) `claude` in the Terminal of macOS, 20:40 +0100,
+  Claude Code 2.1.321: `CLAUDE_CODE_ENTRYPOINT=cli` on the hook, on the
+  insert line and in `Bash`, `TERM_PROGRAM=Apple_Terminal`,
+  `__CFBundleIdentifier=com.apple.Terminal`, 41 variable names. (2) `claude`
+  in the built-in terminal of VS Code 1.135.0, 20:32 +0100, 2.1.321: `cli`
+  on all three ways, `TERM_PROGRAM=vscode`,
+  `__CFBundleIdentifier=com.microsoft.VSCode`, `CLAUDE_CODE_SSE_PORT` set,
+  61 names. (3) the extension for VS Code 2.1.319 with "Use Terminal",
+  started with "Claude Code: Open in Terminal", 21:02 +0100, 2.1.321: `cli`
+  on all three ways, the names of (2) but one, `CLAUDE_CODE_SSE_PORT` set
+  anew; (2) and (3) are one surface to the environment. (4) the graphical
+  panel of the extension, started with "Claude Code: Open in New Tab",
+  21:11 +0100, the extension's own copy 2.1.319:
+  `CLAUDE_CODE_ENTRYPOINT=claude-vscode` on all three ways,
+  `CLAUDE_AGENT_SDK_VERSION=0.3.319`, `TERM_PROGRAM=vscode`,
+  `__CFBundleIdentifier=com.microsoft.VSCode`, 83 names, the hook's input
+  without `model`. (5) a local session of the desktop app 4.23118.0, the
+  Code tab, 21:21 +0100, the app's own copy 2.1.317:
+  `CLAUDE_CODE_ENTRYPOINT=claude-desktop` on all three ways,
+  `CLAUDE_CODE_DESKTOP_APP_VERSION=4.23118.0`,
+  `CLAUDE_AGENT_SDK_VERSION=0.3.317`, `CLAUDE_CODE_HOST_SESSION_ID` beginning
+  with `local_`, no `TERM_PROGRAM`,
+  `__CFBundleIdentifier=com.anthropic.claudefordesktop`, 71 names, the
+  hook's input without `model`. (6) JetBrains: no IDE of JetBrains stands
+  on this Mac, so there was none; jetbrains.md says the plugin runs
+  `claude` in the IDE's terminal, the CLI. On every surface the version was
+  read from the insert line and from `Bash`, through `CLAUDE_CODE_EXECPATH`;
+  the hook does not carry that variable on any surface and read no version,
+  carrying `CLAUDE_ENV_FILE` and `CLAUDE_PROJECT_DIR` instead. The hook's
+  input carried `cwd`, `hook_event_name`, `scratchpad_dir`, `session_id`,
+  `source` and `transcript_path` everywhere, and `model` in the three CLI
+  sessions alone. In the panel the person read the list under `/`: all
+  twelve skills of devloop stand in it — untangle-idea, cut-into-tasks,
+  diagnose-bug, research, setup-checks, setup-project, build-work,
+  build-prototype, review-changes, start-work, plan-work, record-lessons —,
+  the list showing ten at a time, the last three on typing `/devloop:st`
+  and `/devloop:pl`; none was called. That reads what the block at
+  `docs/defects.md` line 739 asks, "whether the skills of devloop are in
+  that subset": they are; whether the block closes on it the person
+  decides, since its Fix is `none` and no closing form of the tool fits a
+  reading.
+
+  **The result.** The reading that separates the panel and the desktop app
+  from the surfaces of the CLI is the value of `CLAUDE_CODE_ENTRYPOINT`:
+  `claude-vscode` in the panel, `claude-desktop` in the desktop app, `cli`
+  on each of the three surfaces of the CLI. It arrives on all three ways,
+  the hook, the insert line and `Bash`, with the same value; no way carries
+  it in part. Beside it, weaker: `CLAUDE_AGENT_SDK_VERSION` stands in the
+  panel and in the desktop app alone; `CLAUDE_CODE_DESKTOP_APP_VERSION` in
+  the desktop app alone; `TERM_PROGRAM` is missing in the desktop app and
+  reads `vscode` in the panel as in the terminal of VS Code;
+  `__CFBundleIdentifier` is macOS's and does not separate the panel from
+  that terminal. The stop rule of `docs/plan.md`, "where no way is found,
+  the question goes to the person before anything builds on it", does not
+  fire. For the build: whatever chooses the form of a handover by the
+  surface reads `CLAUDE_CODE_ENTRYPOINT`, in a hook, in an insert line or
+  in a program the run calls with `Bash`, and holds `claude-vscode` for
+  form B for every command and `claude-desktop` for the desktop app, where
+  the entry of this day on the two entries held gives under macOS and Linux
+  the forms of the terminal, form A where a command asks nothing and form B
+  where it asks, and under Windows form B for every command, the system read
+  beside it with `uname -s`; a value outside the three measured is not
+  measured, and what holds there the person decides. Nothing is built on it
+  in this entry. Recorded in `docs/plan.md` under milestone 12 as a dated
+  measurement after the decision on the surfaces, and in the notes of the
+  blocks of milestone 12 at `docs/defects.md` lines 739, 1228 and 1348,
+  their titles, Should, Fix and Status unchanged.
+
+  **The desktop app under Windows** this order did not measure. desktop.md
+  says "For Windows ARM64, download the ARM64 installer" and, under "Claude
+  Code settings that behave differently in the Code tab", that commands
+  after `!` run in "their login shell on macOS and Linux, PowerShell on
+  Windows"; of `/desktop`, moving a CLI session into the app, it says "This
+  command is available on macOS and x64 Windows"; whether a local session
+  of the Code tab runs on Windows ARM64 the page does not say. Open: the
+  value of `CLAUDE_CODE_ENTRYPOINT` in a local session under Windows, the
+  shell the hooks and the probe run in there, and whether the app on
+  Windows 11 ARM runs local sessions at all, to be measured on the machine
+  of the decision below.
+
+  **Decided on 9 November 2026** by the person, on the machines for the
+  closing runs of milestone 12, which `docs/plan.md` said "the person
+  provides before the milestone ends": the runs under Linux, under Alpine
+  and under Windows, with and without Git Bash, run in virtual machines on
+  the person's Mac under Parallels Desktop, in the ARM versions of the
+  systems, Windows as Windows 11 Pro. Reason: the hooks and the programs of
+  devloop run on both processor architectures, since the job hooks on every
+  system runs them on every pull request on `macos-latest`, arm64, and on
+  `ubuntu-latest` and `windows-latest`, x64, so the x64 side of the hooks
+  is covered; a snapshot gives every closing run the same clean start, the
+  Windows before Git for Windows for the run without Git Bash and after it
+  for the run with; nobody waits for machines until the milestone ends; and
+  Parallels Desktop is the solution Microsoft authorizes for Windows 11 Pro
+  on Apple silicon. Not chosen: machines of the person's own with an Intel
+  or AMD processor, bought or rented: they would have the processor
+  architecture most users have, but cost money and time to procure and have
+  no snapshot. Read raw on 9 November 2026 before writing it, the deciding
+  line of each output: (a) `npm view @anthropic-ai/claude-code
+  optionalDependencies` lists `'@anthropic-ai/claude-code-linux-arm64':
+  '2.1.319'`, `'@anthropic-ai/claude-code-win32-arm64': '2.1.319'` and
+  `'@anthropic-ai/claude-code-linux-arm64-musl': '2.1.319'`, lines 5, 6 and
+  9 of its output; (b) `gh release view --repo git-for-windows/git` lists
+  `title: Git for Windows v2.56.0.windows.4` and the asset
+  `Git-2.56.0.4-arm64.exe`, lines 1 and 12; (c) the page
+  parallels.com/products/desktop/microsoft-authorized-solution-windows-11-arm/
+  says "Parallels Desktop is a Microsoft-authorized solution for running Arm
+  versions of Windows 11 Pro and Windows 11 Enterprise in a virtual
+  environment on supported Apple silicon Macs", and beside it that
+  Microsoft's "current published guidance" names "M1, M2 and M3 Macs"; (d)
+  the page docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job
+  gives in its table of standard runners for public repositories `x64` for
+  `ubuntu-latest` and for `windows-latest` and `arm64` for `macos-latest`,
+  the three systems the job names, `.github/workflows/stock-take.yml` lines
+  377 to 392, and lists `ubuntu-24.04-arm` and `windows-11-arm` as arm64
+  runners beside them; (e) this Mac: `uname -m` arm64, `sysctl -n
+  hw.memsize` 17179869184, `df -g /` 228 blocks of 1 GB with 92 available;
+  no Parallels Desktop is installed yet. Recorded in `docs/plan.md` under
+  milestone 12 as a dated sentence after "The machines for the runs under
+  Linux, under Windows and under Alpine the person provides before the
+  milestone ends."
+
+  **The closing runs of milestone 12**, `docs/plan.md`: the third of the
+  five sentences, lines 90 to 91, "Every branch that can be produced on a
+  bench is walked once on purpose, the unwanted side included", asks with
+  the virtual machine under Windows for a run in a local session of the
+  desktop app under Windows with Git Bash, the case of the block at
+  `docs/defects.md` line 1348, form B for every command since `!` runs in
+  PowerShell there: the bench can produce it since the decision above, the
+  vendor ships the app for Windows ARM64. One right answer, built: the
+  sentence on the closing runs, lines 987 to 1009, names that run after the
+  run in the desktop app on the person's Mac, and where the app runs no
+  local session on that machine, the roadmap says why, by the first of the
+  five sentences; lines 998 to 999 became nine lines. The entry of this day
+  on the two entries held said the block's case is "measured in milestone
+  12 in a run in the desktop app on the person's Mac"; that run measures
+  form A under macOS, and the Windows side of the block measures in the
+  virtual machine.
+
+  **The control documents, searched** with `grep -n -E` for 'machines
+  for|virtual machine|provides before the milestone' and for 'which
+  surface|surface it runs|surface the session' over `docs/plan.md`,
+  `docs/roadmap.md`, `docs/defects.md`, `docs/skill-conventions.md` and
+  `docs/rationale.md`: `docs/plan.md` lines 950 and 1008 to 1009, written
+  to above; `docs/roadmap.md` lines 3038, 3429, 3445, 3476, 3570, 3777 and
+  3870, all in dated entries that report sentences of the plan and the
+  blocks as they stood, true as written; `docs/defects.md` lines 1230, 1234
+  and 1350, the Should and notes of the two blocks, which ask for the
+  reading first and stand, the measurement added to the notes;
+  `docs/skill-conventions.md` line 148, the head of the rule on the two
+  forms, which names the surface and holds; `docs/rationale.md` nothing.
+  No sentence stopped holding.
+
+  Two commits: the first with all of this; the second from the check at the
+  code before the merge, which says right in the paragraph on the result
+  what the entry of this day on the two entries held gives the desktop app
+  under macOS and Linux: the forms of the terminal, where the first said
+  form A.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
