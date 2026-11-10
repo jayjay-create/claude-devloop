@@ -4156,7 +4156,7 @@ and for the proofs of closings.
   `bin/devloop-setup-state` and `.github/workflows/stock-take.yml` change;
   nothing under `skills/`, `shared/`, `hooks/`, `scripts/` or `output-styles/`
   changes, and `README.md` does not. On `task/bounded-every-system`, off
-  `origin/main` at `b6970e1`, in ten commits: the code with the version;
+  `origin/main` at `b6970e1`, in twelve commits: the code with the version;
   `docs/plan.md`, `docs/defects.md`, `docs/stock-take.tsv` and this entry;
   after the job hooks on every system (windows-latest) of pull request #239
   was stopped at fifteen minutes, the code again, the version not raised
@@ -4167,35 +4167,41 @@ and for the proofs of closings.
   three before the second push; after the checks on the seventh commit were
   red on ubuntu-latest and windows-latest in the fetch case of both
   self-tests, the self-tests of the two programs with their heads, the version
-  not raised, and the documents a fifth time; and, after the five checks on
-  GitHub were green, the runs at the last commit. The order: the first of the
-  seven orders of milestone 12 in the order the person decided on this day,
-  recorded below and in `docs/plan.md` under milestone 12; the four blocks of
-  `docs/defects.md` on `bin/devloop-bounded` under "## Milestone 12", lines
-  1052, 1292, 1300 and 1324, built, and with them the block at line 2117 under
-  "## Milestone 13", whose should the same change meets. Written by Claude
-  Code from the person's orders of this day. Through the sixth commit no
-  session log was read. The sitting of the seventh, begun after a restart with
-  the order not before it, read in the log of this day's earlier sitting the
-  opening of each message and the opening of the order, its first two sections
-  and part of the third, and in its own log the heads of the records, until it
-  met the order's sentence that the order reads no session log; it read no
-  further and deleted its extract, and nothing read there stands in the
-  repository. The sitting of the eighth and the ninth, a new one again with
-  the order before it, read no session log. Nothing was installed outside
-  throwaway directories and throwaway containers; the identity under which git
-  commits here was not set and was not read from git's configuration, one `git
-  log` of that same sitting having printed the author's name on the six
-  commits and no address; no subagent was used. The report stands on this
-  machine as `~/devloop-bounded-every-system.md`, in German, and is not in the
+  not raised, and the documents a fifth time; after the checks on the ninth
+  commit were green on all five, the heads of the two programs and the line
+  with which each self-test leaves a case out under Windows, the version not
+  raised, and the documents a sixth time; and, after the five checks on GitHub
+  were green on that state, the runs at the last commit. The order: the first
+  of the seven orders of milestone 12 in the order the person decided on this
+  day, recorded below and in `docs/plan.md` under milestone 12; the four
+  blocks of `docs/defects.md` on `bin/devloop-bounded` under "## Milestone
+  12", lines 1052, 1292, 1300 and 1324, built, and with them the block at line
+  2117 under "## Milestone 13", whose should the same change meets. Written by
+  Claude Code from the person's orders of this day. Through the sixth commit
+  no session log was read. The sitting of the seventh, begun after a restart
+  with the order not before it, read in the log of this day's earlier sitting
+  the opening of each message and the opening of the order, its first two
+  sections and part of the third, and in its own log the heads of the records,
+  until it met the order's sentence that the order reads no session log; it
+  read no further and deleted its extract, and nothing read there stands in
+  the repository. The sitting of the eighth and the ninth, a new one again
+  with the order before it, read no session log, and neither did the sitting
+  of the tenth and the eleventh, a new one again with the order before it.
+  Nothing was installed outside throwaway directories and throwaway
+  containers; the identity under which git commits here was not set and was
+  not read from git's configuration, one `git log` of that same sitting having
+  printed the author's name on the six commits and no address; no subagent was
+  used. The report stands on this machine as
+  `~/devloop-bounded-every-system.md`, in German, and is not in the
   repository. Every line number of a file in this entry holds at `b6970e1`
   unless it says otherwise. From the fourth commit to the sixth this entry
   carried its last two paragraphs twice, one copy cut into the middle of the
   paragraph on the blocks and the table, a slip of the correction in place; it
   carries them once since. At the sixth commit the count of the commits above
   read "five", the count of the fourth left standing, where it was seven; it
-  read eight with the seventh and reads ten with the ninth, which counts the
-  eighth and itself.
+  read eight with the seventh, ten with the ninth, which counted the eighth
+  and itself, and reads twelve with the eleventh, which counts the tenth and
+  itself.
 
   **The causes, measured where this machine can and read where it cannot.**
   Windows, the block at line 1052: the log of the job hooks on every system
@@ -4433,7 +4439,14 @@ and for the proofs of closings.
   The notes of the blocks at lines 1052 and 1292 and of the block on the limit
   under Git Bash say what the eighth commit changed, and the Wrong of the last
   lost its closing words, as the paragraphs on the checks of the seventh
-  commit say.
+  commit say. With the eleventh commit the Wrong of the block on the limit
+  under Git Bash says both cases behind a second shell where it named one, its
+  note and the note of the block at line 1052 say what the run on the ninth
+  commit measured and what was read after it, and the notes of the two things
+  on the line each self-test prints under Windows say that the line names the
+  place in the runtime's source; no row was added, re-anchored or removed, the
+  anchors of those two standing on the opening of the line, which did not
+  change.
 
   **What GitHub measured, and measures next.** The checks of pull request
   #239, run 42786895842, on the second commit: stock-take, ubuntu-latest,
@@ -4621,8 +4634,94 @@ and for the proofs of closings.
   process under git ends at the bound there and releases the pipe, that the
   line is printed and that both self-tests are green; a transport that
   outlived the bound there would hold the pipe and stop the job at fifteen
-  minutes. No run under Windows on the platform counts here as passed until
-  the person reports the checks green.
+  minutes. The run on the ninth commit measured it, the paragraphs on it
+  below. No run under Windows on the platform counts here as passed until the
+  person reports the checks green.
+
+  **The checks on the ninth commit, green on all five.** Run 42876247351 of
+  pull request #239, on the ninth commit: stock-take, alpine, ubuntu-latest,
+  macos-latest and windows-latest green, the last after 7 minutes 34 seconds,
+  the logs read with `gh run view --log --job`, `130040203690` for
+  windows-latest and `130040203521` for ubuntu-latest. On windows-latest the
+  self-test of `bin/devloop-bounded` prints its ok for the case "a fetch over
+  a transport that never answers: the line, exit 124" at 18:34:32 UTC, line
+  439 of the log and 1.29 seconds after the case before it, then the line that
+  leaves the case over several processes out, line 440, and "SELF-TEST PASSED:
+  12 cases", line 441; that of `bin/devloop-setup-state` prints its ok for
+  "the fetch not answering within the bound, said, the last fetched state
+  read" at 18:37:38, line 746, the line that leaves its other case out, line
+  747, and "SELF-TEST PASSED: 18 cases", line 757. On ubuntu-latest both cases
+  of each self-test print their ok, lines 453 and 454 at 18:32:54 and 18:32:55
+  and lines 750 and 751 at 18:33:11 and 18:33:12, with 13 and 19 cases, lines
+  455 and 757, and no case is left out; alpine and macos-latest pass with 13
+  and 19 as well. So that run measured under Git Bash what the paragraphs
+  above left to the platform: the fetch over the one process under git comes
+  back at the bound with exit 124, and the pipe of its output, which the
+  transport holds there through git's stderr, is released. It did not measure
+  the case over several processes there, which was left out, nor whether a
+  process that holds no pipe was left, pgrep not standing on PATH there; and
+  the probe's pipe on file descriptor 3 does not reach a transport under
+  Windows, git handing a child its three standard handles alone.
+
+  The limit under Git Bash was said twice and differently, and the sources
+  were read for which holds. The head of `bin/devloop-bounded` said, since the
+  third commit, "a transport that is a shell exec'd into a shell exec'd into a
+  program is beyond it" and, since the fifth, as the one sentence, "under
+  Windows with Git Bash a process that a native program started through a
+  shell exec'd into a second shell is not ended at the bound"; the Wrong of
+  the block on the limit said the first, and its title, its note, the line of
+  each self-test and the two things of the table the second. The transport the
+  self-tests leave out under Windows, `sh -c "sleep 7337 & wait" --`, is a
+  second shell that starts its sleep as a child and waits for it, which the
+  first sentence does not name. Read for it on this day in
+  git-for-windows/msys2-runtime at `5a1665c8`, fetched with `gh api`, and not
+  measured: the loop of `exit_process_tree`,
+  `winsup/cygwin/include/cygwin/exit_process.h` lines 305 to 322, lists a
+  process under a listed one only where it has no Cygwin pid; one that has a
+  Cygwin pid it sends the signal where it leads its process group, `kill
+  (cyg_pid, signo)` at line 317, and leaves the loop at line 318, before the
+  listing at line 320; `kill` of a positive number reaches that process alone,
+  `winsup/cygwin/signal.cc` lines 327 to 337. The first shell, started by the
+  native git, leads a group of its own, `winsup/cygwin/pinfo.cc` line 99,
+  moves its Cygwin pid to the second shell at its exec and closes its own link
+  from the Windows pid, `winsup/cygwin/spawn.cc` lines 798 to 812, so that
+  `cygwin_winpid_to_pid`, `pinfo.cc` lines 1426 to 1435, answers -1 for it and
+  the walk lists it, and it waits, lines 906 to 908; the second shell, found
+  under it with a Cygwin pid, is sent SIGTERM alone and is not listed, and its
+  sleep is looked for under no process. So the sources hold the second
+  sentence for that transport: the case stays left out under Windows, and its
+  line names lines 313 to 319 since the tenth commit. The first sentence names
+  the other case behind a second shell, one that exec's into the program and
+  exits at that exec, `spawn.cc` line 929, the transport of the hang; since
+  the tenth commit the head says the limit once, with both cases, and since
+  the eleventh the Wrong of the block says both. Had the sources held the
+  first sentence alone for that transport, or left it open, the case would
+  have run under Windows as well and the job would have measured it. Two more
+  things the reading showed. git puts one shell before a command with a quote
+  or a space in it, `run-command.c` lines 293 to 304 of git-for-windows/git at
+  `v2.56.0.windows.4`, so that the words "a GIT_SSH_COMMAND with quotes in
+  it", with which the head of `bin/devloop-setup-state` named such a transport
+  since the fifth commit, were wrong: a second shell comes of a command that
+  is itself a call of a shell, as that head says since the tenth. And by the
+  same lines 313 to 319 the walk goes below no process with a Cygwin pid, so
+  that what one shell under a native program starts as a child of its own,
+  without an exec, is not looked for either: read and not measured, named by
+  neither the title nor the should of the block on the limit, said in the head
+  of `bin/devloop-bounded` and in the note of that block, and whether that
+  block takes it in or a block of its own does the person decides.
+
+  The counter-check before the tenth commit, measured here, the bound itself
+  unchanged and the version 0.182.0: both self-tests on the Mac three times,
+  once more with `GIT_SSH_VARIANT=simple` in the environment and once with a
+  `uname` first on PATH that answers MINGW64_NT-10.0-26100, which prints the
+  line with the place in the source and passes with 12 and 18 cases; in
+  alpine:3.22 with busybox and with GNU coreutils 9.7 three times each and
+  once more with the variable; every run exit 0, each of the others with 13
+  and 19 cases, and nothing left that `pgrep -f '^sleep 73[0-9][0-9]'` finds.
+  Measured first by the platform: that the two lines are printed under Windows
+  as they stand now and that both self-tests pass there with 12 and 18 cases.
+  No run under Windows on the platform at that state counts here as passed
+  until the person reports the checks green.
 
   The runs at the last commit stand in a paragraph added with that commit.
 
