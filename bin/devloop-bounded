@@ -53,9 +53,10 @@
 # exec in it waits for the program it exec'd, while an exec in that one
 # exits at once, spawn.cc lines 906 to 908 and 929; the walk follows the
 # Windows parent numbers and ends at the process that exited, so a transport
-# that is a shell exec'd into a shell exec'd into a program is beyond it,
-# which is how the self-test hung on windows-latest on 10 November 2026 with
-# the transport sh -c "sleep 7337" --, two shells under git. The limit, in
+# that is a shell exec'd into a shell exec'd into a program is beyond it;
+# the self-test hung on windows-latest on 10 November 2026 with the
+# transport sh -c "sleep 7337" --, two shells under git, and what held its
+# pipe there is not read, the paragraph on the self-test below. The limit, in
 # one sentence: under Windows with Git Bash a process that a native program
 # started through a shell exec'd into a second shell is not ended at the
 # bound; the block of milestone 12 on it in docs/defects.md holds that, and
@@ -77,16 +78,55 @@
 #
 # --self-test produces every outcome above once without a network, prints
 # one line per case and exits 1 on the first that does not come out as this
-# header says. It needs bash, sh, sleep, cat, tail and git, and no GNU tool
+# header says. It needs bash, sh, sleep, cat, uname and git, and no GNU tool
 # and no pgrep: it runs on macOS, Linux, Alpine and Windows with Git Bash.
 # That nothing of the bound runs on it reads off a pipe: every run gets the
 # write end of one on file descriptor 3, which everything the bound starts
 # inherits, and the case is red where the read end is not released within
 # two seconds of the program's return, the process that holds it named by
-# nothing but the fact. Its transport that never answers is tail -f
-# /dev/null, which git runs through one shell, since the command carries a
-# space, and which the shell execs into: one process under git on every
-# system, as ssh is.
+# nothing but the fact.
+#
+# The fetch over a transport that never answers checks on every system what
+# the bound promises there, since the change of 10 November 2026 after the
+# run of the checks named below, over two transports that take no argument
+# and print nothing, so that git reads nothing of theirs as an answer on any
+# system. The first is one process under git, exec sleep 7341 #: git runs a
+# command with a space through one shell and appends the host and the
+# command, which the # keeps out of it, and the shell execs into the sleep.
+# It runs under GIT_SSH_VARIANT=simple, so that git starts it once, for the
+# fetch itself, on git's pipes and with git's stderr, as it starts an ssh
+# that does not answer; that case runs on all four systems. Without the
+# variable git asks a transport it does not know by name with -G first, its
+# input and output on /dev/null, and waits for it, connect.c lines 1412 to
+# 1425 of git-for-windows/git at v2.56.0.windows.4, measured on macOS and in
+# alpine:3.22 with GIT_TRACE; and under Windows git hands a child its three
+# standard handles and no other, compat/mingw.c lines 2234 to 2292 and 2355
+# to 2373 there, so that a transport standing in that first call holds
+# nothing this self-test reads and could run on unseen. The second is a
+# transport of several processes, sh -c "sleep 7337 & wait" --, a shell that
+# waits for its sleep, which git asks with -G first and which stands there:
+# it runs on macOS, Linux and Alpine, where the bound ends the whole group,
+# and is left out under Windows with Git Bash, where git starts it through a
+# shell exec'd into a second shell, with a line that says so and names the
+# block of docs/defects.md on the limit above.
+# Until that change the one transport was tail -f /dev/null, since the third
+# commit of that day, and before it sh -c "sleep 7337" --. GNU tail prints
+# the header "==> /dev/null <==" once it is given more than one file, which
+# git read as the answer and ended on, "protocol error: bad line length
+# character: ==> ", exit 128, so that both self-tests were red on
+# ubuntu-latest and windows-latest on 10 November 2026, run 42805995483 of
+# pull request #239; the tail of macOS took the -G for a file and stood in
+# that first call, and the tail of busybox prints no header beside a file it
+# cannot open, both green there. And sh -c "sleep 7337" -- ran as one sleep
+# under git on macOS and in alpine:3.22, each shell exec'ing into what it
+# runs, measured on 10 November 2026, so that it tested no transport of
+# several processes there. That transport stood in the call with -G when the
+# self-test hung on windows-latest, on three handles of NUL by the reading
+# above, so that it held no pipe of the self-test; what did is not read. One
+# reading, not measured: the runtime's walk ends the descendants before git
+# itself, exit_process.h lines 332 to 360, and git, its first call ended,
+# starts the transport again for the fetch, with its stderr, after the walk
+# has listed the processes.
 set -u
 me=devloop-bounded
 
@@ -148,12 +188,22 @@ selftest() {
   absent "Terminated" "does not end: ended with what it started, the line, exit 124"
   within "does not end: back at the bound" 3
   released "does not end: what the command started is ended too"
-  # a fetch over a transport that never answers, built as bin/devloop-setup-state builds it: tail -f /dev/null, one process under git
+  # a fetch over a transport that never answers, built as bin/devloop-setup-state builds it, on every system: exec sleep 7341 #, one process under git, started once, for the fetch itself, under GIT_SSH_VARIANT=simple
   git_q init -q "$T/repo" && git_q -C "$T/repo" remote add origin "git@localhost:devloop-bounded-selftest-$$/x.git"
-  k=$((k+1)); t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_COMMAND='tail -f /dev/null' "$self" 1 git fetch -q origin 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
+  k=$((k+1)); t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_VARIANT=simple GIT_SSH_COMMAND='exec sleep 7341 #' "$self" 1 git fetch -q origin 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
   expect "a fetch over a transport that never answers: the line, exit 124" 124 "no answer within 1 seconds: git fetch -q origin"
   within "a fetch over a transport that never answers: back at the bound" 3
   released "a fetch over a transport that never answers: the transport is ended"
+  # the same over a transport of several processes, a shell that waits for its sleep, on macOS, Linux and Alpine; left out under Windows with Git Bash, where the bound does not end it, with a line that says so and names the block
+  case "$(uname -s 2>/dev/null)" in
+    MINGW*|MSYS*|CYGWIN*)
+      echo "left out under Windows with Git Bash: a fetch over a transport of several processes that never answers, since the bound does not end there a process that git, a native program, started through a shell exec'd into a second shell: docs/defects.md, the block \"under Windows with Git Bash the bound does not end a process that a native program started through a shell exec'd into a second shell, the self-test's fetch case hung so on windows-latest\"" ;;
+    *)
+      k=$((k+1)); t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_COMMAND='sh -c "sleep 7337 & wait" --' "$self" 1 git fetch -q origin 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
+      expect "a fetch over a transport of several processes that never answers: the line, exit 124" 124 "no answer within 1 seconds: git fetch -q origin"
+      within "a fetch over a transport of several processes that never answers: back at the bound" 3
+      released "a fetch over a transport of several processes that never answers: the transport is ended" ;;
+  esac
   echo "SELF-TEST PASSED: $n cases"
   exit 0
 }

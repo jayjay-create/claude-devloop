@@ -58,7 +58,15 @@
 # states and a block of milestone 12 in docs/defects.md holds. --self-test
 # builds repositories under a temporary directory outside the project,
 # produces every outcome above once, prints one line per case and exits 1
-# on the first that does not come out as this header says.
+# on the first that does not come out as this header says. Its fetch that
+# does not answer runs over the two transports of that program's self-test,
+# since the change of 10 November 2026 after run 42805995483 of pull request
+# #239, where the one transport until then, tail -f /dev/null, was read by
+# git as an answer under GNU coreutils: one process under git on every
+# system, and a shell that waits for its sleep on macOS, Linux and Alpine,
+# that case left out under Windows with Git Bash with a line that says so
+# and names the block; that program's head says why each is as it is. It
+# needs uname beside what the program itself needs.
 set -u
 FETCH=no
 SELFTEST=no
@@ -130,10 +138,18 @@ selftest() {
   mv "$T/origin.git" "$T/origin-away.git"
   run --fetch "$T/clone";                expect "the fetch failed, said with git's message, the last fetched state read" 0 "fetch: failed (" "reading origin/main as last fetched" "present: docs/agents/environment.md"
   mv "$T/origin-away.git" "$T/origin.git"
-  # a transport that never answers, tail -f /dev/null as the self-test of bin/devloop-bounded has it: the bound fires, said, the last fetched state read
+  # a transport that never answers, the two of the self-test of bin/devloop-bounded, whose head says why each is as it is: the bound fires, said, the last fetched state read. On every system one process under git, exec sleep 7343 #, started once, for the fetch itself, under GIT_SSH_VARIANT=simple
   git_q -C "$T/clone" remote set-url origin "git@localhost:nowhere/x.git"
-  out=$(GIT_SSH_COMMAND='tail -f /dev/null' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
+  out=$(GIT_SSH_VARIANT=simple GIT_SSH_COMMAND='exec sleep 7343 #' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
   expect "the fetch not answering within the bound, said, the last fetched state read" 0 "fetch: no answer within 1 seconds, reading origin/main as last fetched" "present: docs/agents/checks.md"
+  # the same over a transport of several processes, a shell that waits for its sleep, on macOS, Linux and Alpine; left out under Windows with Git Bash, where the bound does not end it, with a line that says so and names the block
+  case "$(uname -s 2>/dev/null)" in
+    MINGW*|MSYS*|CYGWIN*)
+      echo "left out under Windows with Git Bash: the fetch over a transport of several processes not answering within the bound, since the bound does not end there a process that git, a native program, started through a shell exec'd into a second shell: docs/defects.md, the block \"under Windows with Git Bash the bound does not end a process that a native program started through a shell exec'd into a second shell, the self-test's fetch case hung so on windows-latest\"" ;;
+    *)
+      out=$(GIT_SSH_COMMAND='sh -c "sleep 7347 & wait" --' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
+      expect "the fetch over a transport of several processes not answering within the bound, said, the last fetched state read" 0 "fetch: no answer within 1 seconds, reading origin/main as last fetched" "present: docs/agents/checks.md" ;;
+  esac
   git_q -C "$T/clone" remote set-url origin "$T/origin.git"
   # a repository the workflow never touched: every file missing, exit 0
   git_q init -q --bare -b main "$T/bare2.git" && git_q clone -q "$T/bare2.git" "$T/w2" 2>/dev/null && git_q -C "$T/w2" commit -q --allow-empty -m x && git_q -C "$T/w2" push -q origin main 2>/dev/null
