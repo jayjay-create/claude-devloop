@@ -4156,7 +4156,7 @@ and for the proofs of closings.
   `bin/devloop-setup-state` and `.github/workflows/stock-take.yml` change;
   nothing under `skills/`, `shared/`, `hooks/`, `scripts/` or `output-styles/`
   changes, and `README.md` does not. On `task/bounded-every-system`, off
-  `origin/main` at `b6970e1`, in twelve commits: the code with the version;
+  `origin/main` at `b6970e1`, in fourteen commits: the code with the version;
   `docs/plan.md`, `docs/defects.md`, `docs/stock-take.tsv` and this entry;
   after the job hooks on every system (windows-latest) of pull request #239
   was stopped at fifteen minutes, the code again, the version not raised
@@ -4170,38 +4170,41 @@ and for the proofs of closings.
   not raised, and the documents a fifth time; after the checks on the ninth
   commit were green on all five, the heads of the two programs and the line
   with which each self-test leaves a case out under Windows, the version not
-  raised, and the documents a sixth time; and, after the five checks on GitHub
-  were green on that state, the runs at the last commit. The order: the first
-  of the seven orders of milestone 12 in the order the person decided on this
-  day, recorded below and in `docs/plan.md` under milestone 12; the four
-  blocks of `docs/defects.md` on `bin/devloop-bounded` under "## Milestone
-  12", lines 1052, 1292, 1300 and 1324, built, and with them the block at line
-  2117 under "## Milestone 13", whose should the same change meets. Written by
-  Claude Code from the person's orders of this day. Through the sixth commit
-  no session log was read. The sitting of the seventh, begun after a restart
-  with the order not before it, read in the log of this day's earlier sitting
-  the opening of each message and the opening of the order, its first two
-  sections and part of the third, and in its own log the heads of the records,
-  until it met the order's sentence that the order reads no session log; it
-  read no further and deleted its extract, and nothing read there stands in
-  the repository. The sitting of the eighth and the ninth, a new one again
-  with the order before it, read no session log, and neither did the sitting
-  of the tenth and the eleventh, a new one again with the order before it.
-  Nothing was installed outside throwaway directories and throwaway
-  containers; the identity under which git commits here was not set and was
-  not read from git's configuration, one `git log` of that same sitting having
-  printed the author's name on the six commits and no address; no subagent was
-  used. The report stands on this machine as
-  `~/devloop-bounded-every-system.md`, in German, and is not in the
-  repository. Every line number of a file in this entry holds at `b6970e1`
-  unless it says otherwise. From the fourth commit to the sixth this entry
-  carried its last two paragraphs twice, one copy cut into the middle of the
-  paragraph on the blocks and the table, a slip of the correction in place; it
-  carries them once since. At the sixth commit the count of the commits above
-  read "five", the count of the fourth left standing, where it was seven; it
-  read eight with the seventh, ten with the ninth, which counted the eighth
-  and itself, and reads twelve with the eleventh, which counts the tenth and
-  itself.
+  raised, and the documents a sixth time; after the decision on the limit
+  under Git Bash recorded below, the heads and those two lines once more, the
+  version not raised, and the documents a seventh time; and, after the five
+  checks on GitHub were green on that state, the runs at the last commit. The
+  order: the first of the seven orders of milestone 12 in the order the person
+  decided on this day, recorded below and in `docs/plan.md` under milestone
+  12; the four blocks of `docs/defects.md` on `bin/devloop-bounded` under "##
+  Milestone 12", lines 1052, 1292, 1300 and 1324, built, and with them the
+  block at line 2117 under "## Milestone 13", whose should the same change
+  meets. Written by Claude Code from the person's orders of this day. Through
+  the sixth commit no session log was read. The sitting of the seventh, begun
+  after a restart with the order not before it, read in the log of this day's
+  earlier sitting the opening of each message and the opening of the order,
+  its first two sections and part of the third, and in its own log the heads
+  of the records, until it met the order's sentence that the order reads no
+  session log; it read no further and deleted its extract, and nothing read
+  there stands in the repository. The sitting of the eighth and the ninth, a
+  new one again with the order before it, read no session log, and neither did
+  the sitting of the tenth and the eleventh, a new one again with the order
+  before it, which went on with the twelfth and the thirteenth. Nothing was
+  installed outside throwaway directories and throwaway containers; the
+  identity under which git commits here was not set and was not read from
+  git's configuration, one `git log` of that same sitting having printed the
+  author's name on the six commits and no address; no subagent was used. The
+  report stands on this machine as `~/devloop-bounded-every-system.md`, in
+  German, and is not in the repository. Every line number of a file in this
+  entry holds at `b6970e1` unless it says otherwise. From the fourth commit to
+  the sixth this entry carried its last two paragraphs twice, one copy cut
+  into the middle of the paragraph on the blocks and the table, a slip of the
+  correction in place; it carries them once since. At the sixth commit the
+  count of the commits above read "five", the count of the fourth left
+  standing, where it was seven; it read eight with the seventh, ten with the
+  ninth, which counted the eighth and itself, twelve with the eleventh, which
+  counted the tenth and itself, and reads fourteen with the thirteenth, which
+  counts the twelfth and itself.
 
   **The causes, measured where this machine can and read where it cannot.**
   Windows, the block at line 1052: the log of the job hooks on every system
@@ -4446,7 +4449,11 @@ and for the proofs of closings.
   on the line each self-test prints under Windows say that the line names the
   place in the runtime's source; no row was added, re-anchored or removed, the
   anchors of those two standing on the opening of the line, which did not
-  change.
+  change. With the thirteenth commit the block on the limit carries the title
+  and the Wrong of the decision on the limit below, the should of the block at
+  line 1052 its last clause in the words of that decision, the notes of both
+  say so, and the notes of the same two things say the limit as the block says
+  it; again no row was added, re-anchored or removed.
 
   **What GitHub measured, and measures next.** The checks of pull request
   #239, run 42786895842, on the second commit: stock-take, ubuntu-latest,
@@ -4472,23 +4479,25 @@ and for the proofs of closings.
   The case "does not end", sh and two sleeps all Cygwin processes in the
   command's group, passed there in 1.15 seconds, the group kill reaching each
   directly. What the third commit changes for it stands under the build; the
-  limit itself, a process behind a chain of two shells under a native program,
-  stands as a block of its own under milestone 12 since the order of this day,
-  Fix none, with nothing built for it, the person deciding later whether a
-  repair is built or the case is left on purpose, and the heads of both
-  programs state it in one sentence. The should of the block at line 1052,
-  "everything it started", covered that case too as it was written; the
-  decision in the next paragraph narrows it to what the group kill and the
-  runtime's walk reach, the block at line 1052 being built for that, and the
-  new block alone asks for what they do not reach. To be measured next as the
-  seventh commit stood, since this machine runs macOS and no Windows stands
-  here: that under Git Bash the fetch over `tail -f /dev/null`, one shell
-  exec'd into tail under git, ends and releases the pipe, and that both
-  self-tests are green on windows-latest; and on alpine and macos-latest that
-  the races stay closed under the runners' load. The run on the seventh commit
-  measured the first of these not at all, red before the bound, the paragraphs
-  on it below. No run under Windows on the platform counts here as passed
-  until the person reports the checks green.
+  limit itself, read then as a process behind a chain of two shells under a
+  native program and widened by the decision on the limit below to every
+  process that a process of Git Bash under a native program started and that
+  the runtime's walk does not look for, stands as a block of its own under
+  milestone 12 since the order of this day, Fix none, with nothing built for
+  it, the person deciding later whether a repair is built or the case is left
+  on purpose, and the heads of both programs state it in one sentence. The
+  should of the block at line 1052, "everything it started", covered that case
+  too as it was written; the decision in the next paragraph narrows it to what
+  the group kill and the runtime's walk reach, the block at line 1052 being
+  built for that, and the new block alone asks for what they do not reach. To
+  be measured next as the seventh commit stood, since this machine runs macOS
+  and no Windows stands here: that under Git Bash the fetch over `tail -f
+  /dev/null`, one shell exec'd into tail under git, ends and releases the
+  pipe, and that both self-tests are green on windows-latest; and on alpine
+  and macos-latest that the races stay closed under the runners' load. The run
+  on the seventh commit measured the first of these not at all, red before the
+  bound, the paragraphs on it below. No run under Windows on the platform
+  counts here as passed until the person reports the checks green.
 
   **Decided on 10 November 2026**, after the sixth commit, on the should of
   the block at line 1052, "under Windows with Git Bash bin/devloop-bounded
@@ -4497,14 +4506,14 @@ and for the proofs of closings.
   narrowed to what the ending of the process group and of the process tree
   reaches under Windows with Git Bash, and the case beyond it stays with the
   block this branch adds on it. The old should read "in milestone 12 both end
-  a command and everything it started at the bound under Windows with Git
-  Bash as well, and their self-tests run in the job hooks on every system on
-  windows-latest."; the new one, in the field Should of the block since the
-  seventh commit, reads "in milestone 12 both end a command at the bound
-  under Windows with Git Bash as well, with everything it started that the
-  ending of its process group reaches or that the runtime of Git Bash reaches
-  when it ends the process tree of a native Windows program standing in that
-  group, and their self-tests run in the job hooks on every system on
+  a command and everything it started at the bound under Windows with Git Bash
+  as well, and their self-tests run in the job hooks on every system on
+  windows-latest."; the new one, in the field Should of the block from the
+  seventh commit to the twelfth, reads "in milestone 12 both end a command at
+  the bound under Windows with Git Bash as well, with everything it started
+  that the ending of its process group reaches or that the runtime of Git Bash
+  reaches when it ends the process tree of a native Windows program standing
+  in that group, and their self-tests run in the job hooks on every system on
   windows-latest; a process that runs on after the exec of a second shell
   under a native Windows program is no part of this should, the block of this
   milestone on it asks for it." That process, which a native program started
@@ -4512,17 +4521,18 @@ and for the proofs of closings.
   limit under Git Bash, whose should asks for it unchanged, "in milestone 12
   such a process ends at the bound under Windows with Git Bash as well, as
   everything else the command started does.", its Fix none and nothing built
-  for it. Reason, the person's: a block the tool lists as Walked is to meet
-  its should without the entry being read for it. Not chosen: leaving the
-  should as it stood and explaining in this entry how the two blocks divide
-  it, which the sixth commit had built and this entry said until the seventh.
-  No code changes with the decision and the version stays 0.182.0; no run is
-  touched, a run on a defect counting by the last change to its `Fix` line
-  alone; the note of the block at line 1052 names the change, and the note of
-  the new block, which said that the block of 23 October 2026 "keeps its
-  should, which as written covers this case too, the entry saying how the two
-  share it", says the narrowing in its place. The line of the fixed form, the
-  title as the tool reads it:
+  for it; the decision on the limit below widens that block and changes this
+  last clause once more. Reason, the person's: a block the tool lists as
+  Walked is to meet its should without the entry being read for it. Not
+  chosen: leaving the should as it stood and explaining in this entry how the
+  two blocks divide it, which the sixth commit had built and this entry said
+  until the seventh. No code changes with the decision and the version stays
+  0.182.0; no run is touched, a run on a defect counting by the last change to
+  its `Fix` line alone; the note of the block at line 1052 names the change,
+  and the note of the new block, which said that the block of 23 October 2026
+  "keeps its should, which as written covers this case too, the entry saying
+  how the two share it", says the narrowing in its place. The line of the
+  fixed form, the title as the tool reads it:
 
   Should changed: under Windows with Git Bash bin/devloop-bounded does not end a command that does not end together with what it started, and bin/devloop-setup-state ends the same way, untested there
 
@@ -4705,10 +4715,12 @@ and for the proofs of closings.
   is itself a call of a shell, as that head says since the tenth. And by the
   same lines 313 to 319 the walk goes below no process with a Cygwin pid, so
   that what one shell under a native program starts as a child of its own,
-  without an exec, is not looked for either: read and not measured, named by
-  neither the title nor the should of the block on the limit, said in the head
-  of `bin/devloop-bounded` and in the note of that block, and whether that
-  block takes it in or a block of its own does the person decides.
+  without an exec, is not looked for either: read and not measured, named
+  until the thirteenth commit by neither the title nor the should of the block
+  on the limit, said until then in the head of `bin/devloop-bounded` and in
+  the note of that block alone, and whether that block takes it in or a block
+  of its own does was the person's to decide; the decision stands in the next
+  paragraph but one.
 
   The counter-check before the tenth commit, measured here, the bound itself
   unchanged and the version 0.182.0: both self-tests on the Mac three times,
@@ -4722,6 +4734,95 @@ and for the proofs of closings.
   as they stand now and that both self-tests pass there with 12 and 18 cases.
   No run under Windows on the platform at that state counts here as passed
   until the person reports the checks green.
+
+  **Decided on 10 November 2026**, after the eleventh commit, on the limit
+  under Git Bash, two things, on the reading of the paragraphs above. First,
+  the block on the limit is widened to the whole limit that lines 313 to 319
+  of `exit_process.h` hold: the runtime's walk looks under no process that
+  holds a Cygwin pid, so that a process which a process of Git Bash under a
+  native Windows program started, and which the walk does not look for, is not
+  ended at the bound. The block is renamed with it. Its title read "under
+  Windows with Git Bash the bound does not end a process that a native program
+  started through a shell exec'd into a second shell, the self-test's fetch
+  case hung so on windows-latest" and reads "under Windows with Git Bash the
+  bound does not end a process that a process of Git Bash under a native
+  Windows program started and that the runtime's walk does not look for, the
+  self-test's fetch case hung so on windows-latest". It is a block this branch
+  adds, so that no line of the fixed form stands for the renaming:
+  `scripts/devloop-stock-take` is red on such a line where the old title stood
+  in no block at the branch point, its head at lines 796 to 800. The title
+  carries the words "and that the runtime's walk does not look for" since one
+  thing a process of Git Bash started is ended at the bound, the program that
+  a shell started by the native program exec'd into, the shell listed by the
+  walk and the program sent the signal, which run 42876247351 measured on
+  windows-latest, lines 439 and 746 of its log; without those words the title
+  would say of that program what the run refutes. The Wrong of the block says
+  the one limit and its cases, the shell that starts its program as a child
+  and the shell exec'd into a second shell, and parts what is read from what
+  is measured: measured under Git Bash are that program of a first exec,
+  ended, and the fetch of run 42786895842 that never came back; measured
+  outside Git Bash, under Linux with bash 5.2.21 and dash 0.5.12, outside this
+  machine, is that a shell which waits for its sleep with `-c 'sleep 7399 &
+  wait'` and alone is sent SIGTERM ends while its sleep runs on, and the same
+  was measured on this Mac with bash 3.2.57 and dash and in alpine:3.22 with
+  bash 5.2.37 and the ash of busybox 1.37.0, the shell ended with 143 and the
+  sleep left with parent 1; not measured is that such a sleep runs on under
+  Git Bash. The Should of the block stands word for word, "in milestone 12
+  such a process ends at the bound under Windows with Git Bash as well, as
+  everything else the command started does.", such a process being the one of
+  the new title; its Fix none and its Status stand, and nothing is built for
+  it. Not chosen, of the ways laid before the person: leaving the block as it
+  stood, with the wider reading in its note and in the head of
+  `bin/devloop-bounded` alone, a limit read in the program then standing in no
+  should; a block of its own beside it, two blocks on the same lines of the
+  source; and measuring under Windows first. Second, the last clause of the
+  should of the block at line 1052, "under Windows with Git Bash
+  bin/devloop-bounded does not end a command that does not end together with
+  what it started, and bin/devloop-setup-state ends the same way, untested
+  there", is changed once more, to name that limit. The should read, from the
+  seventh commit to the twelfth, "in milestone 12 both end a command at the
+  bound under Windows with Git Bash as well, with everything it started that
+  the ending of its process group reaches or that the runtime of Git Bash
+  reaches when it ends the process tree of a native Windows program standing
+  in that group, and their self-tests run in the job hooks on every system on
+  windows-latest; a process that runs on after the exec of a second shell
+  under a native Windows program is no part of this should, the block of this
+  milestone on it asks for it."; it reads, in the field Should of the block
+  since the thirteenth commit, "in milestone 12 both end a command at the
+  bound under Windows with Git Bash as well, with everything it started that
+  the ending of its process group reaches or that the runtime of Git Bash
+  reaches when it ends the process tree of a native Windows program standing
+  in that group, and their self-tests run in the job hooks on every system on
+  windows-latest; a process that a process of Git Bash under a native Windows
+  program started, which the runtime's walk does not look for, is no part of
+  this should, the block of this milestone on it asks for it." The line of the
+  fixed form for that block stands above, once, the tool holding a should
+  against the branch point alone. No code of the bound changes with the
+  decision and the version stays 0.182.0; no run is touched, the block on the
+  limit carrying none and a run on the block at line 1052 counting by the last
+  change to its `Fix` line alone.
+
+  The build of the twelfth commit, comments and two printed lines alone: the
+  head of `bin/devloop-bounded` says the limit in the one sentence of the
+  decision, with its cases and the one thing the walk does look for, and says
+  what the sentence was until then; the head of `bin/devloop-setup-state` says
+  the same limit, with two transports that fall under it, read and not
+  measured, the ssh that a `GIT_SSH` which is a shell script calls without an
+  exec, git starting a script through its interpreter, `compat/mingw.c` lines
+  2437 to 2470 of git-for-windows/git at `v2.56.0.windows.4`, and the program
+  of a `GIT_SSH_COMMAND` that is itself a call of `sh -c`; and the line with
+  which each self-test leaves its case over several processes out under
+  Windows says that limit, names lines 313 to 319 and names the block by its
+  new title. The case stays left out there. The counter-check before that
+  commit, measured here: both self-tests on the Mac three times and once with
+  a `uname` first on PATH that answers MINGW64_NT-10.0-26100, which prints the
+  line as it stands now and passes with 12 and 18 cases; in alpine:3.22 with
+  busybox and with GNU coreutils 9.7 three times each; every run exit 0, each
+  of the others with 13 and 19 cases, and nothing left that `pgrep -f '^sleep
+  73[0-9][0-9]'` finds. Measured first by the platform: that the two lines are
+  printed under Windows as they stand now and that both self-tests pass there
+  with 12 and 18 cases. No run under Windows on the platform at that state
+  counts here as passed until the person reports the checks green.
 
   The runs at the last commit stand in a paragraph added with that commit.
 
