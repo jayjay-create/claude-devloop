@@ -5,10 +5,11 @@
 # moved to the background and goes on running there, not ended, and nothing
 # here has measured that; a skill that repeats it would then start a second
 # one beside the first. GNU timeout does this and is not on a stock macOS.
-# bin/devloop-setup-state bounds its own fetch the same way; this is that
-# bounding as a program every call can use. See docs/skill-conventions.md,
-# "Environment constraints, measured", the paragraph on the time limit of a
-# call.
+# bin/devloop-setup-state bounds its fetch through this program since 10
+# November 2026, until then with a copy of its own, and
+# bin/devloop-start-conditions every query to GitHub since 25 October 2026.
+# See docs/skill-conventions.md, "Environment constraints, measured", the
+# paragraph on the time limit of a call.
 #
 # Usage: devloop-bounded SECONDS COMMAND [ARGUMENT ...]
 #        devloop-bounded --self-test
@@ -17,32 +18,70 @@
 # ends before the bound, this program ends with it at once: the watchdog and
 # its sleep are ended too, and nothing of them holds the output open. Where
 # it has not ended after SECONDS, it is ended with everything it started,
-# deepest first, by SIGTERM as GNU timeout does; one line goes to stderr,
+# by SIGTERM as GNU timeout does; one line goes to stderr,
 #   no answer within SECONDS seconds: COMMAND ARGUMENT ...
 # and the exit code is 124, GNU timeout's. Where the command ends in the same
 # instant the bound fires, the bound's answer stands. Ended itself, by
 # SIGTERM, SIGINT or SIGHUP, it ends the command and the watchdog first.
 # Exit 2 with one line on stderr where SECONDS is not a whole number above
 # zero or no command follows it; --self-test alone is the one exception.
+#
+# How the command and everything it started are ended, since 10 November
+# 2026: the command starts in a process group of its own, as under GNU
+# timeout, and the bound ends that group by SIGTERM, the command first and
+# then every process of the group at once, so that a shell among them has
+# the signal before any of its children ends and prints "Terminated" for
+# none of them. A process that leaves the group on purpose, a daemon, is
+# beyond the bound, as under GNU timeout; and the command cannot read a
+# terminal, as under GNU timeout without --foreground. Until that day the
+# children were found with pgrep and ended one by one, deepest first: a
+# child born between the listing and the kill ran on, holding the output
+# open, which is how the job hooks on every system hung on macos-latest on
+# 1 November 2026 in the self-test's case of a fetch over a transport that
+# never answers; a shell whose child was ended before itself printed
+# "Terminated" for it, the self-test red on macos-latest on 5 November 2026;
+# and under Windows with Git Bash, where pgrep is not on PATH, nothing but
+# the command itself was ever ended. Under Git Bash a native Windows program
+# the command starts, git among them, is held by the runtime's own process
+# for it, which stands in the group: SIGTERM to that process ends the native
+# program and everything it started, read in winsup/cygwin/exceptions.cc
+# and winsup/cygwin/include/cygwin/exit_process.h of
+# git-for-windows/msys2-runtime at 5a1665c8, the runtime of Git for Windows
+# 2.56; SIGSTOP is not sent, since that runtime drops every signal to a
+# stopped process. The watchdog is a subshell with a sleep: ended, it ends
+# its sleep by the job table and waits for it, so that nothing of the bound
+# runs on once this program has returned; until that day a signal between
+# the start of the sleep and the line that noted its process number left
+# the sleep running, the self-test red on alpine on 1 November 2026.
+#
 # --self-test produces every outcome above once without a network, prints
 # one line per case and exits 1 on the first that does not come out as this
-# header says. It needs bash, pgrep and sleep and no GNU tool: it runs on
-# macOS.
+# header says. It needs bash, sh, sleep, cat and git, and no GNU tool and no
+# pgrep: it runs on macOS, Linux, Alpine and Windows with Git Bash. That
+# nothing of the bound runs on it reads off a pipe: every run gets the write
+# end of one on file descriptor 3, which everything the bound starts
+# inherits, and the case is red where the read end is not released within
+# two seconds of the program's return, the process that holds it named by
+# nothing but the fact.
 set -u
 me=devloop-bounded
 
 usage() { echo "$me: $1" >&2; exit 2; }
 
-# Ends a process and everything it started, deepest first; git fetch runs its
-# transport as a child, and a child left alive holds the output pipe open.
-kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null; }
+# Ends a process group by SIGTERM: its leader first, so that a shell has the
+# signal before any of its children ends and prints nothing for them, then
+# the whole group at once. The group is named by its leader's number.
+end_group() { kill -TERM -- "$1" 2>/dev/null; kill -TERM -- "-$1" 2>/dev/null; }
 
 selftest() {
-  local self T out rc n=0 t0 t1
+  local self T out rc n=0 k=0 t0 t1
   self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
   T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-bounded.XXXXXX") || exit 1
   trap 'rm -rf "$T"' EXIT
-  run() { t0=$SECONDS; out=$("$self" "$@" 2>&1); rc=$?; t1=$((SECONDS - t0)); }
+  # run: the program with its arguments, output and exit code kept, timed; file descriptor 3 is the probe's pipe: release reads it
+  # to its end and leaves a mark, which released looks for
+  release() { exec >/dev/null 2>&1; cat; : > "$T/released.$k"; }
+  run() { k=$((k+1)); t0=$SECONDS; out=$("$self" "$@" 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0)); }
   fail() { echo "FAIL $1"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }
   # expect NAME EXIT SUBSTRING...: the last run exited EXIT and printed every substring
   expect() {
@@ -53,7 +92,8 @@ selftest() {
   }
   absent() { printf '%s\n' "$out" | grep -qF -- "$1" && fail "$2: '$1' stands there and should not"; }
   within() { [ "$t1" -le "$2" ] || fail "$1: took $t1 seconds, expected at most $2"; }
-  gone() { pgrep -f -- "$1" >/dev/null 2>&1 && fail "$2: a process matching '$1' still runs"; }
+  # released: nothing of the last run holds the probe's pipe two seconds after the program returned
+  released() { local i=0; until [ -e "$T/released.$k" ]; do i=$((i+1)); [ "$i" -le 20 ] || fail "$1: something the bound started still runs two seconds after the program returned, holding the probe's pipe"; sleep 0.1; done; }
   git_q() { git -c user.name=t -c user.email=t@t -c commit.gpgsign=false "$@"; }
 
   run;                  expect "no argument: exit 2" 2 "expected SECONDS and a command, got nothing"
@@ -68,28 +108,28 @@ selftest() {
   expect "ends in time with 0: output through, exit 0" 0 "out" "err"
   absent "no answer" "ends in time with 0: output through, exit 0"
   within "ends in time with 0: back at once, not at the bound" 2
-  gone "sleep 7339" "ends in time with 0: nothing of the bound runs on"
+  released "ends in time with 0: nothing of the bound runs on"
   run 7339 sh -c 'exit 3'
   expect "ends in time with 3: exit 3 through" 3
   absent "no answer" "ends in time with 3: exit 3 through"
   within "ends in time with 3: back at once, not at the bound" 2
-  gone "sleep 7339" "ends in time with 3: nothing of the bound runs on"
-  t0=$SECONDS; out=$(printf 'in\n' | "$self" 7339 cat 2>&1); rc=$?; t1=$((SECONDS - t0))
+  released "ends in time with 3: nothing of the bound runs on"
+  k=$((k+1)); t0=$SECONDS; out=$(printf 'in\n' | "$self" 7339 cat 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
   expect "input through: cat prints what it was fed" 0 "in"
   within "input through: back at once" 2
+  released "input through: nothing of the bound runs on"
   # does not end: ended with what it started, the line, 124
   run 1 sh -c 'sleep 7331 & sleep 7333'
   expect "does not end: ended with what it started, the line, exit 124" 124 "no answer within 1 seconds: sh -c sleep 7331 & sleep 7333"
   absent "Terminated" "does not end: ended with what it started, the line, exit 124"
   within "does not end: back at the bound" 3
-  gone "sleep 733[13]" "does not end: what the command started is ended too"
+  released "does not end: what the command started is ended too"
   # a fetch over a transport that never answers, built as bin/devloop-setup-state builds it
   git_q init -q "$T/repo" && git_q -C "$T/repo" remote add origin "git@localhost:devloop-bounded-selftest-$$/x.git"
-  t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_COMMAND='sh -c "sleep 7337" --' "$self" 1 git fetch -q origin 2>&1); rc=$?; t1=$((SECONDS - t0))
+  k=$((k+1)); t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_COMMAND='sh -c "sleep 7337" --' "$self" 1 git fetch -q origin 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
   expect "a fetch over a transport that never answers: the line, exit 124" 124 "no answer within 1 seconds: git fetch -q origin"
   within "a fetch over a transport that never answers: back at the bound" 3
-  gone "sleep 7337" "a fetch over a transport that never answers: the transport is ended"
-  gone "devloop-bounded-selftest-$$" "a fetch over a transport that never answers: the transport is ended"
+  released "a fetch over a transport that never answers: the transport is ended"
   echo "SELF-TEST PASSED: $n cases"
   exit 0
 }
@@ -103,16 +143,24 @@ esac
 [ $# -ge 2 ] || usage "expected a command after the seconds"
 secs=$1; shift
 
+# Job control for the two starts below and nothing else: under it bash puts
+# a background job into a process group of its own, named by its number.
+set -m
 "$@" <&0 &
 pid=$!
-# The watchdog sleeps the bound out, ends the command's tree and exits 99.
-# Ended while it sleeps, it ends its sleep and exits 143, so that nothing of
-# it runs on; its output goes nowhere, so that it holds no pipe open.
-( s=; trap 'kill "$s" 2>/dev/null; exit 143' TERM; sleep "$secs" & s=$!; wait "$s"; trap '' TERM; kill_tree "$pid"; exit 99 ) >/dev/null 2>&1 &
+# The watchdog sleeps the bound out, ends the command's group and exits 99,
+# deaf to TERM from the end of its sleep on, since the command's end wakes
+# this program, which ends the watchdog, before the watchdog has ended the
+# rest of the group. Ended while it sleeps, it ends its sleep, read off its
+# job table so that no moment is missed, waits for it and exits 143, so
+# that nothing of it runs on; its output goes nowhere, so that it holds no
+# pipe open.
+( trap 'kill $(jobs -p) 2>/dev/null; wait; exit 143' TERM; sleep "$secs" & wait; trap '' TERM; end_group "$pid"; exit 99 ) >/dev/null 2>&1 &
 wd=$!
-trap 'kill_tree "$pid"; kill "$wd" 2>/dev/null; exit 143' TERM
-trap 'kill_tree "$pid"; kill "$wd" 2>/dev/null; exit 130' INT
-trap 'kill_tree "$pid"; kill "$wd" 2>/dev/null; exit 129' HUP
+set +m
+trap 'end_group "$pid"; kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; exit 143' TERM
+trap 'end_group "$pid"; kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; exit 130' INT
+trap 'end_group "$pid"; kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; exit 129' HUP
 # bash reports a job ended by a signal on its stderr, "Terminated: 15"; the
 # redirect on wait keeps that off the output, the command's own stderr is
 # untouched by it.

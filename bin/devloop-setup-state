@@ -48,11 +48,14 @@
 # Exit 2 on an argument it does not know.
 #
 # Every call computes afresh and writes nothing into the project. With
-# --fetch, git fetch is bounded: DEVLOOP_FETCH_SECONDS, 30 where unset, after
-# which the fetch and what it started are killed and the fetch is said not to
-# have answered. --self-test builds repositories under a temporary directory
-# outside the project, produces every outcome above once, prints one line per
-# case and exits 1 on the first that does not come out as this header says.
+# --fetch, git fetch is bounded through bin/devloop-bounded beside this
+# program, since 10 November 2026, until then through a copy of its own:
+# DEVLOOP_FETCH_SECONDS, 30 where unset, after which the fetch and everything
+# it started are ended, as that program's head says, and the fetch is said
+# not to have answered. --self-test builds repositories under a temporary
+# directory outside the project, produces every outcome above once, prints
+# one line per case and exits 1 on the first that does not come out as this
+# header says.
 set -u
 FETCH=no
 SELFTEST=no
@@ -68,20 +71,9 @@ done
 FILES='docs/agents/checks.md docs/agents/issue-tracker.md docs/agents/domain.md docs/agents/standards.md docs/agents/environment.md'
 SECS="${DEVLOOP_FETCH_SECONDS:-30}"
 
-# Kills a process and everything it started, deepest first; git fetch runs its
-# transport as a child, and a child left alive holds the output pipe open.
-kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null; }
-# Runs a command with a watchdog that kills it after $1 seconds; exits 143 then.
-bounded() {
-  local secs="$1" pid wd rc; shift
-  "$@" &
-  pid=$!
-  ( sleep "$secs"; kill_tree "$pid" ) >/dev/null 2>&1 &
-  wd=$!
-  wait "$pid"; rc=$?
-  kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null
-  return "$rc"
-}
+# The bound: bin/devloop-bounded beside this program, which ends the fetch
+# and everything it started at the bound and exits 124 then.
+HERE=$(cd "$(dirname "$0")" && pwd)
 
 selftest() {
   local me T out rc n=0
@@ -183,10 +175,10 @@ REF="refs/remotes/origin/$DEFAULT"
 FETCHLINE="not run, reading origin/$DEFAULT as last fetched"
 FETCHED=""
 if [ "$FETCH" = yes ]; then
-  MSG=$(bounded "$SECS" git fetch --quiet origin "$DEFAULT" 2>&1); RC=$?
+  MSG=$("$HERE/devloop-bounded" "$SECS" git fetch --quiet origin "$DEFAULT" 2>&1); RC=$?
   if [ "$RC" -eq 0 ]; then
     FETCHLINE="done"
-  elif [ "$RC" -eq 143 ]; then
+  elif [ "$RC" -eq 124 ]; then
     FETCHED="the fetch did not answer within $SECS seconds"
     FETCHLINE="no answer within $SECS seconds, reading origin/$DEFAULT as last fetched"
   else
