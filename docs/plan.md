@@ -1040,6 +1040,42 @@ chosen: machines of the person's own with an Intel or AMD processor, bought
 or rented, which would have the processor architecture most users have but
 cost money and time to procure and have no snapshot. What the decision rests
 on, read raw on 9 November 2026, stands in that entry.
+Decided on 10 November 2026 by the person, the roadmap entry of that date
+on the bound on every system: the orders of this milestone build in this
+order. (1) `bin/devloop-bounded` and its self-test, the four blocks of
+`docs/defects.md` on it under this milestone: under Windows with Git Bash,
+the hang on macos-latest, the sleep left on alpine, the case "does not end"
+red once on macos-latest. (2) The programs that read files under Windows
+and under Alpine: the blocks on what is read off the default branch, the
+check table, the mark, the file of check attempts and a cargo configuration,
+not measured with CRLF or on Windows, and the three on awk not reached by
+the check under Alpine. (3) The guard for the PowerShell tool and `shell:
+bash` in the frontmatter of every skill, the two blocks on them. (4) The
+handover by surface: the blocks on the panel of the extension for VS Code,
+on the desktop app under Windows, on `respondToBashCommands`, on the steps
+for the PATH under Use Terminal and on step 4 of `setup-checks` naming the
+terminal alone. (5) The remaining questions of the installation: the blocks
+on the sandbox of Claude Code, on `brew search`, on the group of programs
+the reader reads over, on the workflow file changed with sed, on the
+question on gitleaks, on the planning of run 3 reading the tool records
+itself, on the folders for browsers of run 2, on the install of run 2 on
+main before the cut, and on `bin/devloop-tool-state` and pip; before them
+the question to the person whether a text that says what the should asks
+counts as a repair. (6) The texts users read: the README on Windows, on
+the places where devloop runs and on the version of Claude Code it needs,
+the three blocks on them, and the commands that keep a machine awake under
+Linux and under Windows named above, after the person has approved the
+wordings. (7) The virtual machines and the closing runs, among them the
+list under `/` in the panel under Linux and under Windows for the block on
+whether the extension runs the skills. Reason: the self-test of
+`bin/devloop-bounded` hung on macos-latest until the job's limit and was
+red on alpine and on macos-latest, so that every later pull request runs
+through reliably only after (1); (2) GitHub measures, and it needs no
+decision; the reading of the surface does not go stale while Claude Code
+sets the variable the same way, measured at 2.1.317, 2.1.319 and 2.1.321.
+Not chosen: the handover by surface first, while the measurement is fresh;
+it would have brought the first change visible to users earlier, but
+exposed every pull request until then to the hang of the self-test.
 A first piece stands since 14 October 2026, the fourth addendum of
 the roadmap entry on the command reader: the reader runs on the three
 systems, and a workflow job runs its self-test and every hook on

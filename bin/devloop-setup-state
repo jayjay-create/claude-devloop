@@ -48,11 +48,37 @@
 # Exit 2 on an argument it does not know.
 #
 # Every call computes afresh and writes nothing into the project. With
-# --fetch, git fetch is bounded: DEVLOOP_FETCH_SECONDS, 30 where unset, after
-# which the fetch and what it started are killed and the fetch is said not to
-# have answered. --self-test builds repositories under a temporary directory
-# outside the project, produces every outcome above once, prints one line per
-# case and exits 1 on the first that does not come out as this header says.
+# --fetch, git fetch is bounded through bin/devloop-bounded beside this
+# program, since 10 November 2026, until then through a copy of its own:
+# DEVLOOP_FETCH_SECONDS, 30 where unset, after which the fetch and everything
+# it started are ended, as that program's head says, and the fetch is said
+# not to have answered; under Windows with Git Bash a process that a process
+# of Git Bash under git started and that the runtime's walk does not look for
+# is not ended at the bound, the limit that program's head states and a block
+# of milestone 12 in docs/defects.md holds, in these words since the decision
+# of 10 November 2026 on the limit, until then as a process that git started
+# through a shell exec'd into a second shell. Among such processes, read and
+# not measured: the ssh that a GIT_SSH which is a shell script calls without
+# an exec, git running the script through its interpreter, compat/mingw.c
+# lines 2437 to 2470 of git-for-windows/git at v2.56.0.windows.4, and the
+# program of a GIT_SSH_COMMAND that is itself a call of sh -c. Until the
+# change of that day after run 42876247351 of pull request #239 this head
+# named a GIT_SSH_COMMAND with quotes in it as such a transport; git runs a
+# command with a quote or a space through one shell, run-command.c lines 293
+# to 304 there, and one shell exec'd into its program is ended, as that run
+# measured on windows-latest. --self-test
+# builds repositories under a temporary directory outside the project,
+# produces every outcome above once, prints one line per case and exits 1
+# on the first that does not come out as this header says. Its fetch that
+# does not answer runs over the two transports of that program's self-test,
+# since the change of 10 November 2026 after run 42805995483 of pull request
+# #239, where the one transport until then, tail -f /dev/null, was read by
+# git as an answer under GNU coreutils: one process under git on every
+# system, and a shell that waits for its sleep on macOS, Linux and Alpine,
+# that case left out under Windows with Git Bash with a line that says so and
+# names the block and, since the change after run 42876247351, the place in
+# the runtime's source on which that hangs; that program's head says why each
+# is as it is. It needs uname beside what the program itself needs.
 set -u
 FETCH=no
 SELFTEST=no
@@ -68,20 +94,9 @@ done
 FILES='docs/agents/checks.md docs/agents/issue-tracker.md docs/agents/domain.md docs/agents/standards.md docs/agents/environment.md'
 SECS="${DEVLOOP_FETCH_SECONDS:-30}"
 
-# Kills a process and everything it started, deepest first; git fetch runs its
-# transport as a child, and a child left alive holds the output pipe open.
-kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null; }
-# Runs a command with a watchdog that kills it after $1 seconds; exits 143 then.
-bounded() {
-  local secs="$1" pid wd rc; shift
-  "$@" &
-  pid=$!
-  ( sleep "$secs"; kill_tree "$pid" ) >/dev/null 2>&1 &
-  wd=$!
-  wait "$pid"; rc=$?
-  kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null
-  return "$rc"
-}
+# The bound: bin/devloop-bounded beside this program, which ends the fetch
+# and everything it started at the bound and exits 124 then.
+HERE=$(cd "$(dirname "$0")" && pwd)
 
 selftest() {
   local me T out rc n=0
@@ -135,10 +150,18 @@ selftest() {
   mv "$T/origin.git" "$T/origin-away.git"
   run --fetch "$T/clone";                expect "the fetch failed, said with git's message, the last fetched state read" 0 "fetch: failed (" "reading origin/main as last fetched" "present: docs/agents/environment.md"
   mv "$T/origin-away.git" "$T/origin.git"
-  # a transport that never answers: the bound fires, said, the last fetched state read
+  # a transport that never answers, the two of the self-test of bin/devloop-bounded, whose head says why each is as it is: the bound fires, said, the last fetched state read. On every system one process under git, exec sleep 7343 #, started once, for the fetch itself, under GIT_SSH_VARIANT=simple
   git_q -C "$T/clone" remote set-url origin "git@localhost:nowhere/x.git"
-  out=$(GIT_SSH_COMMAND='sh -c "sleep 60" --' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
+  out=$(GIT_SSH_VARIANT=simple GIT_SSH_COMMAND='exec sleep 7343 #' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
   expect "the fetch not answering within the bound, said, the last fetched state read" 0 "fetch: no answer within 1 seconds, reading origin/main as last fetched" "present: docs/agents/checks.md"
+  # the same over a transport of several processes, a shell that waits for its sleep, on macOS, Linux and Alpine; left out under Windows with Git Bash, where the bound does not end it, with a line that says so and names the place in the runtime's source on which that hangs and the block
+  case "$(uname -s 2>/dev/null)" in
+    MINGW*|MSYS*|CYGWIN*)
+      echo "left out under Windows with Git Bash: the fetch over a transport of several processes not answering within the bound, since the bound does not end there a process that a process of Git Bash under git, a native Windows program, started and that the runtime's walk does not look for: the walk sends the shell that waits for its sleep the signal alone and looks for nothing under it, winsup/cygwin/include/cygwin/exit_process.h lines 313 to 319 of git-for-windows/msys2-runtime at 5a1665c8; docs/defects.md, the block \"under Windows with Git Bash the bound does not end a process that a process of Git Bash under a native Windows program started and that the runtime's walk does not look for, the self-test's fetch case hung so on windows-latest\"" ;;
+    *)
+      out=$(GIT_SSH_COMMAND='sh -c "sleep 7347 & wait" --' DEVLOOP_FETCH_SECONDS=1 "$me" --fetch "$T/clone" 2>&1); rc=$?
+      expect "the fetch over a transport of several processes not answering within the bound, said, the last fetched state read" 0 "fetch: no answer within 1 seconds, reading origin/main as last fetched" "present: docs/agents/checks.md" ;;
+  esac
   git_q -C "$T/clone" remote set-url origin "$T/origin.git"
   # a repository the workflow never touched: every file missing, exit 0
   git_q init -q --bare -b main "$T/bare2.git" && git_q clone -q "$T/bare2.git" "$T/w2" 2>/dev/null && git_q -C "$T/w2" commit -q --allow-empty -m x && git_q -C "$T/w2" push -q origin main 2>/dev/null
@@ -183,10 +206,10 @@ REF="refs/remotes/origin/$DEFAULT"
 FETCHLINE="not run, reading origin/$DEFAULT as last fetched"
 FETCHED=""
 if [ "$FETCH" = yes ]; then
-  MSG=$(bounded "$SECS" git fetch --quiet origin "$DEFAULT" 2>&1); RC=$?
+  MSG=$("$HERE/devloop-bounded" "$SECS" git fetch --quiet origin "$DEFAULT" 2>&1); RC=$?
   if [ "$RC" -eq 0 ]; then
     FETCHLINE="done"
-  elif [ "$RC" -eq 143 ]; then
+  elif [ "$RC" -eq 124 ]; then
     FETCHED="the fetch did not answer within $SECS seconds"
     FETCHLINE="no answer within $SECS seconds, reading origin/$DEFAULT as last fetched"
   else

@@ -316,21 +316,22 @@ jobs:
   # bin/devloop-install-note, bin/devloop-missing-tool and
   # bin/devloop-setup-state ran on no system but the one they were written
   # on.
-  # Since the addendum of 23 October 2026 to the roadmap entry of that
-  # day on the catch-up after the audit the step leaves out, under Windows
-  # alone, the self-tests of bin/devloop-bounded and bin/devloop-setup-state,
-  # and prints a line for each that says so and why: on pull request #200
-  # the self-test of bin/devloop-bounded hung on windows-latest at its case
-  # "does not end" until the job was stopped at fifteen minutes, and
-  # bin/devloop-setup-state ends a command and what it started the same way,
-  # through a kill_tree that finds the children with pgrep, left out before
-  # it is seen to hang. Both are the defect of milestone 12 that addendum
-  # records, with its should: under Windows with Git Bash both end a command
-  # and everything it started at the bound, and their self-tests run in this
-  # job on windows-latest. The cause is not measured; the checkout step
-  # prints since then whether pgrep is on PATH and where. On the other three
-  # systems both run as before, and every other self-test under bin/ runs on
-  # all four.
+  # From the addendum of 23 October 2026 to the roadmap entry of that day
+  # on the catch-up after the audit until 10 November 2026 the step left
+  # out, under Windows alone, the self-tests of bin/devloop-bounded and
+  # bin/devloop-setup-state, with a line for each that said so and why: on
+  # pull request #200 the self-test of bin/devloop-bounded hung on
+  # windows-latest at its case "does not end" until the job was stopped at
+  # fifteen minutes, and bin/devloop-setup-state ended a command and what
+  # it started the same way, through a kill_tree that found the children
+  # with pgrep. Since 10 November 2026, the roadmap entry of that date on
+  # the bound on every system, both run on windows-latest as on the other
+  # three systems: the cause was pgrep, which is not on PATH under Git Bash,
+  # as the checkout step has printed since 23 October 2026, so that nothing
+  # but the command itself was ended and what it started held the
+  # self-test's pipe open; bin/devloop-bounded ends the command's process
+  # group instead and needs no pgrep, and bin/devloop-setup-state bounds its
+  # fetch through it. Every self-test under bin/ runs on all four systems.
   # Since 25 October 2026, part D of milestone 3, the guard on the mark reads
   # start conditions 1, 2, 5, 6 and 7 through bin/devloop-start-conditions at
   # a write of the mark in auto mode, 2 and 5 off GitHub through gh, every
@@ -347,12 +348,13 @@ jobs:
   # checks.md the throwaway main branch does not carry, 2 and 5 as not
   # established with the stand-in's message, and 6 and 7, whose records it
   # does not carry either; the block is printed on every system. The
-  # program's self-test runs in the loop above with the others. Under
-  # Windows the bound itself is not shown: a gh that did not answer would be
-  # ended there by the kill_tree of bin/devloop-bounded, which hung at its
-  # case "does not end", the defect of milestone 12 named above, so that the
-  # guard would run into its 600 seconds and, under onFailure "block", block
-  # without its reason; that block stays open there with that defect.
+  # program's self-test runs in the loop above with the others. Until 10
+  # November 2026 the bound itself was not shown under Windows: a gh that
+  # did not answer would have been ended there by the kill_tree of
+  # bin/devloop-bounded, which hung at its case "does not end", so that the
+  # guard would have run into its 600 seconds and, under onFailure "block",
+  # blocked without its reason; since that day the program ends the
+  # command's process group there as on every other system.
   # Since the same day, after the job went red on all four systems on pull
   # request #205, the step reads every exit code behind ||: GitHub runs it
   # as bash --noprofile --norc -eo pipefail, the command shell: bash stands
@@ -416,7 +418,7 @@ jobs:
           git config --show-origin --get core.autocrlf || echo "core.autocrlf unset"
           git ls-files --eol bin/devloop-command-reader hooks/pre-tool-use-install-guard.sh
 
-      - name: every self-test under bin/, two of them left out under Windows, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, and the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in
+      - name: every self-test under bin/, every handler of hooks.json once with a harmless input of its event, the install guard under PermissionDenied with a counted refusal, whose record must stand afterwards, and the guard on the mark blocking a write of the mark in auto mode, GitHub answered by a stand-in
         run: |
           set -u
           # every exit code the step reads stands behind ||, RC=0; OUT=$(...) || RC=$?, since 25 October 2026: GitHub runs the step as bash --noprofile --norc -eo pipefail {0}, the command of shell: bash in the workflow syntax under jobs.<job_id>.steps[*].shell, and under -e OUT=$(...); RC=$? ends it at any exit but 0 before RC is set, as it ended the step on pull request #205 at the 2 of the guard on the mark
@@ -424,13 +426,9 @@ jobs:
           red=0
           PY=$(command -v python3 || command -v python) || { echo "no python on PATH"; exit 1; }
           # every self-test under bin/, since 23 October 2026: each file there that takes --self-test, a python program run with the interpreter found above, any other by its own first line; until that day the reader's, the arming program's and, since 22 October 2026, the question program's alone
-          # under Windows alone, since the addendum of 23 October 2026: the self-tests of bin/devloop-bounded and bin/devloop-setup-state left out, a line for each saying so and why, the defect of milestone 12 that addendum records; on the other three systems they run
+          # on all four systems since 10 November 2026; from the addendum of 23 October 2026 until then the self-tests of bin/devloop-bounded and bin/devloop-setup-state were left out under Windows, a line for each saying so and why
           for f in "$ROOT"/bin/*; do
             grep -q -e '--self-test' "$f" || continue
-            case "${RUNNER_OS:-}:$(basename "$f")" in
-              Windows:devloop-bounded) echo "== devloop-bounded --self-test left out under Windows: on pull request #200 it hung there at \"does not end\" until the job was stopped at fifteen minutes; a defect of milestone 12 in docs/roadmap.md"; continue ;;
-              Windows:devloop-setup-state) echo "== devloop-setup-state --self-test left out under Windows: it ends a command and what it started through pgrep as devloop-bounded does, left out before it is seen to hang; a defect of milestone 12 in docs/roadmap.md"; continue ;;
-            esac
             echo "== $(basename "$f") --self-test"
             case "$(head -1 "$f")" in *python*) "$PY" "$f" --self-test ;; *) "$f" --self-test ;; esac || { echo "the self-test of $(basename "$f") is red"; red=1; }
           done
