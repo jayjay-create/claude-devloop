@@ -4824,7 +4824,85 @@ and for the proofs of closings.
   with 12 and 18 cases. No run under Windows on the platform at that state
   counts here as passed until the person reports the checks green.
 
-  The runs at the last commit stand in a paragraph added with that commit.
+  **The runs at the last commit**, the fourteenth, which changes no code and
+  is of 11 November 2026: every run below ran the code of the twelfth commit,
+  the thirteenth and the fourteenth changing documents alone, under 0.182.0.
+  The checks of pull request #239 on the thirteenth commit, run 42895836799 of
+  10 November 2026, were green on all five, their logs read with `gh run view
+  --log --job`. On windows-latest, job 130108626271, the self-test of
+  `bin/devloop-bounded` prints its ok for the case "does not end: ended with
+  what it started, the line, exit 124" at 20:31:22 UTC, line 438 of the log,
+  and for the fetch over a transport that never answers 1.22 seconds later,
+  line 439; then the line that leaves the case over several processes out,
+  line 440, character for character the line of that commit, and "SELF-TEST
+  PASSED: 12 cases", line 441. That of `bin/devloop-setup-state` prints its ok
+  for the fetch not answering within the bound at 20:33:52, line 746, the line
+  that leaves its case out, line 747, the line of that commit as well, and
+  "SELF-TEST PASSED: 18 cases", line 757. On ubuntu-latest, alpine and
+  macos-latest the two self-tests pass with 13 and 19 cases, lines 455 and
+  757, 532 and 834, 439 and 741 of their logs, the case "does not end" and
+  both fetches among them, and no case is left out there.
+
+  Measured on the person's Mac at the thirteenth commit, the tree clean, in a
+  bash started with `--noprofile --norc`, on 10 November 2026:
+  `bin/devloop-bounded 1 sh -c 'sleep 7331 & sleep 7333'` at 20:43:50 UTC,
+  exit 124 after one second, "no answer within 1 seconds: sh -c sleep 7331 &
+  sleep 7333" on its stderr, nothing on its output and no sleep left; the
+  self-test of `bin/devloop-bounded` at 20:43:52, "SELF-TEST PASSED: 13
+  cases", exit 0, in four seconds; the self-test of `bin/devloop-setup-state`
+  at 20:43:56, "SELF-TEST PASSED: 19 cases", exit 0, in four seconds, its case
+  "the fetch not answering within the bound, said, the last fetched state
+  read" among them, the fetch bounded through `bin/devloop-bounded` and that
+  program's exit 124 read. The three probes of the causes once more under CPU
+  load, twenty busy loops, begun at 20:44:16 UTC on the Mac and in alpine:3.22
+  there with bash 5.2.37, git 2.49.1 and busybox 1.37.0, the Mac asleep in
+  between, so that the clock says nothing of how long they ran: 2000 commands
+  that end at once with 3 left no `sleep 7339` behind on either; of 200 runs
+  of "does not end" on the Mac and 100 in the container every one ended with
+  124 and the line and none printed "Terminated"; of 200 fetches over a shell
+  that waits for its sleep and 200 over one process under git on the Mac, and
+  100 of each in the container, every one ended with 124 and the line and none
+  left a transport standing a second after the return, two in the container
+  seen at the instant of the return and gone a second later. And the end of a
+  hook as Claude Code brings it about, measured on the Mac on 11 November 2026
+  at 01:25 UTC as the counter-check before the build measured it, a script in
+  a process group of its own, SIGTERM to the group after one second and
+  SIGKILL five seconds later: with `sleep 7349` nothing stood half a second
+  after the SIGTERM; with `bash -c 'trap "" TERM; sleep 7351'` the program,
+  its helper, the command and its sleep stood half a second after it and
+  nothing four and a half seconds after it, before the SIGKILL, which found no
+  group left.
+
+  The rows of these runs stand in `docs/stock-take.tsv` since this commit,
+  thirteen of them, each under 0.182.0: on the four things whose runs stopped
+  counting with this branch, the bound firing, the self-test of each program
+  passing, from this Mac and from the platform, and the fetch not answering in
+  `bin/devloop-setup-state`; on the two things on the line each self-test
+  prints under Windows; and on five blocks, the four of milestone 12 at lines
+  1052, 1292, 1300 and 1324 and the one of milestone 13 at line 2117. What the
+  tool counts of them on this branch follows its rule, the head of
+  `scripts/devloop-stock-take` at lines 548 to 568: a run under a version
+  counts where the commit that introduced the version contains the last change
+  to every line of the thing, and 0.182.0 came with the first commit. So it
+  lists as Walked here the bound firing, the fetch not answering and the five
+  blocks, whose lines the first commit changed last, and the Status of those
+  five blocks reads Walked since this commit, which the tool asks for, a block
+  that names another state than the computed one being a broken record. The
+  self-test of each program passing and the two lines printed under Windows it
+  lists as Built, never walked, the reason beside each run, "version 0.182.0
+  (introduced at 9c606ae) predates the last change to" a line of theirs, of
+  the eighth commit and of the twelfth; after a squash merge one commit
+  carries the version and every one of those lines, so that those runs count
+  on main, which is read off that rule and not measured here. The block on the
+  race of the sixth situation gets no row with this commit, though its run is
+  measured above: its Fix line is of the third commit, so that the tool
+  computes Built, never walked for it on this branch, as a trial with the row
+  showed, and would compute Walked on main after the squash, and a Status
+  names one state; a row beside a Status of Built, never walked would be green
+  here and a broken record on main, and one beside a Status of Walked a broken
+  record here. The block keeps its Status and no row, its note says so, and
+  the row with the Status of Walked is for a later order, on main. The block
+  on the limit under Git Bash carries Fix none and no run.
 
 ## Decisions taken against
 
