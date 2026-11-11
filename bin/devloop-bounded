@@ -18,9 +18,13 @@
 # ends before the bound, this program ends with it at once: the watchdog and
 # its sleep are ended too, and nothing of them holds the output open. Where
 # it has not ended after SECONDS, it is ended with everything it started,
-# by SIGTERM as GNU timeout does; one line goes to stderr,
+# by SIGTERM as GNU timeout does and, where something of it stands one second
+# later, by SIGKILL, as GNU timeout does under -k, so that a command which
+# ignores SIGTERM is ended as well and this program returns at most two
+# seconds after SECONDS; one line goes to stderr,
 #   no answer within SECONDS seconds: COMMAND ARGUMENT ...
-# and the exit code is 124, GNU timeout's. Where the command ends in the same
+# and the exit code is 124, GNU timeout's, after the SIGKILL too, where GNU
+# timeout exits 137. Where the command ends in the same
 # instant the bound fires, the bound's answer stands. Ended itself, by
 # SIGTERM, SIGINT or SIGHUP, it ends the command and the watchdog first.
 # Exit 2 with one line on stderr where SECONDS is not a whole number above
@@ -92,14 +96,60 @@
 # program has returned; until that day a signal between the start of the
 # sleep and the line that noted its process number left the sleep running,
 # the self-test red on alpine on 1 November 2026. Ended itself, this program
-# ends the command's group by SIGTERM and, where something of it stands two
-# seconds later, by SIGKILL, through a helper that ends with the group, and
+# ends the command's group by SIGTERM and, where something of it stands half
+# a second later, by SIGKILL, through a helper that ends with the group, and
 # exits once the command is reaped: Claude Code ends a hook that runs past
 # its limit with SIGTERM to the hook's process group and SIGKILL to that
 # group five seconds later, read in its program at 2.1.321 on this machine,
 # which reaches this program and not the groups of the command and the
 # watchdog; measured on 10 November 2026, a command that ignores SIGTERM
 # survived such an end until this escalation came in.
+#
+# At the bound, since 11 November 2026: the watchdog sends the command's
+# group SIGTERM, looks every tenth of a second whether anything of it still
+# stands, and sends what stands one second after the SIGTERM SIGKILL, which
+# no process can catch or ignore; this program returns once the command is
+# reaped and the watchdog has ended, so that the whole group has been sent
+# SIGKILL by then where anything of it stood. Until that day the watchdog
+# sent SIGTERM alone, as GNU timeout does without -k, and this program waited
+# for the command without a limit: measured on 11 November 2026 at 46030ab on
+# macOS with bash 3.2.57, and under Linux with bash 5.2.21 by the measurement
+# that came with the order of that day, devloop-bounded 1 sh -c 'trap ""
+# TERM; sleep 6' came back after six seconds, with the line and 124, and a
+# command that never ends would not have come back at all, which is what the
+# bound is there to rule out. The one second, and the half second where this
+# program is ended itself, are each timed by a sleep of their own and not by
+# counting the looks: a process start under Git Bash costs many times what it
+# costs elsewhere, and ten looks, each a sleep of a tenth, would run past the
+# second there. That timer is ended and reaped before the watchdog or the
+# helper exits. Half a second where this program is ended itself, two seconds
+# until 11 November 2026, so that a bound inside a bound comes out whole: the
+# inner program, ended by the outer one's SIGTERM, has sent its own command
+# SIGKILL and exited before the outer one, a second after that SIGTERM, sends
+# SIGKILL to its group, which holds the inner program and its helper and not
+# the inner command, a group of its own; with the two seconds the inner
+# command would have outlived both where it ignores SIGTERM. Measured on 11
+# November 2026 on macOS and in alpine:3.22, devloop-bounded 1 devloop-bounded
+# 60 sh -c 'trap "" TERM; sleep 7357 & sleep 7359' back with 124 after 1.64
+# to 1.68 seconds and neither sleep left; under Windows with Git Bash it is
+# not measured and holds as long as the inner program is done within that
+# second.
+# What SIGKILL to the group reaches under Windows with Git Bash, read in the
+# sources named above at 5a1665c8 and measured there by the job hooks on
+# every system first: kill with a negative number sends every process of Git
+# Bash whose group that is the signal, as it does for SIGTERM,
+# winsup/cygwin/signal.cc lines 327 to 337 and 350 to 390; no handler can be
+# set for SIGKILL, lines 41 and 441 to 445 there, and it goes through to a
+# stopped process, where every other signal is dropped, exceptions.cc lines
+# 1556 to 1569; a process of Git Bash exits on it, lines 1626 to 1627 and
+# 1666 to 1667; the runtime's process for a native Windows program runs the
+# walk it runs on SIGTERM, lines 1673 to 1692, and ends the native program
+# and the processes listed under it by TerminateProcess at once, without the
+# call of ExitProcess inside them that SIGTERM tries first, exit_process.h
+# lines 232 to 258, a process of Git Bash under them that leads its group
+# being sent SIGKILL, lines 313 to 319. So SIGKILL reaches there the
+# processes SIGTERM reaches and no other, the limit above standing as it
+# stands, and ends those of them that ignored SIGTERM.
 #
 # --self-test produces every outcome above once without a network, prints
 # one line per case and exits 1 on the first that does not come out as this
@@ -110,6 +160,19 @@
 # inherits, and the case is red where the read end is not released within
 # two seconds of the program's return, the process that holds it named by
 # nothing but the fact.
+# The command that ignores SIGTERM, since 11 November 2026, on all four
+# systems: sh -c 'trap "" TERM; sleep 7353 & sleep 7355', a shell that
+# ignores the signal and two sleeps it starts, which inherit that; the case
+# asks for the line, for 124, for the pipe released, and for the whole call
+# back within 3000 milliseconds, the bound of one second and the two seconds
+# this header allows after it. The time is bash's own, the reserved word time
+# under TIMEFORMAT=%3R, which every bash from 3.2 on carries and which prints
+# the real time to the millisecond: it runs from before the shell forks for
+# the call until the call's output is at its end and the call is reaped, so
+# that it holds the start of this program, before its bound begins to run,
+# and the wait for everything that holds the output; a case that is green has
+# measured less than the two seconds after the bound, never more. The other
+# cases are held to whole seconds, the shell's SECONDS, as before.
 #
 # The fetch over a transport that never answers checks on every system what
 # the bound promises there, since the change of 10 November 2026 after the
@@ -172,8 +235,21 @@ usage() { echo "$me: $1" >&2; exit 2; }
 # the whole group at once. The group is named by its leader's number.
 end_group() { kill -TERM -- "$1" 2>/dev/null; kill -TERM -- "-$1" 2>/dev/null; }
 
+# kill_group_after GROUP DURATION: looks every tenth of a second whether
+# anything of the group stands and sends it SIGKILL once DURATION, what sleep
+# takes, has passed or nothing stands any more, which then reaches nothing.
+# The duration is a sleep of its own, ended by SIGKILL, since it is started
+# where SIGTERM is ignored and inherits that, and reaped before this returns.
+kill_group_after() {
+  local t
+  sleep "$2" & t=$!
+  while kill -0 -- "-$1" 2>/dev/null && kill -0 "$t" 2>/dev/null; do sleep 0.1; done
+  kill -KILL -- "-$1" 2>/dev/null
+  kill -KILL "$t" 2>/dev/null; wait "$t" 2>/dev/null
+}
+
 selftest() {
-  local self T out rc n=0 k=0 t0 t1
+  local self T out rc n=0 k=0 t0 t1 ms
   self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
   T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-bounded.XXXXXX") || exit 1
   trap 'rm -rf "$T"' EXIT
@@ -181,6 +257,8 @@ selftest() {
   # to its end and leaves a mark, which released looks for
   release() { exec >/dev/null 2>&1; cat; : > "$T/released.$k"; }
   run() { k=$((k+1)); t0=$SECONDS; out=$("$self" "$@" 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0)); }
+  # timed: as run, the real time of the whole call in ms, milliseconds, off bash's own time, which writes it as seconds with three decimals to the shell's stderr, here a file whose last line is read
+  timed() { local l TIMEFORMAT=%3R; k=$((k+1)); { time out=$("$self" "$@" 2>&1 3> >(release)); } 2> "$T/time.$k"; rc=$?; ms=; while read -r l; do ms=$l; done < "$T/time.$k"; ms=${ms//[!0-9]/}; ms=$((10#${ms:-999999})); }
   fail() { echo "FAIL $1"; printf '%s\n' "$out" | sed 's/^/    /'; exit 1; }
   # expect NAME EXIT SUBSTRING...: the last run exited EXIT and printed every substring
   expect() {
@@ -223,6 +301,11 @@ selftest() {
   absent "Terminated" "does not end: ended with what it started, the line, exit 124"
   within "does not end: back at the bound" 3
   released "does not end: what the command started is ended too"
+  # does not end and ignores SIGTERM, a shell and the two sleeps it starts: ended by SIGKILL a second after the bound, the line, 124, the whole call back within 3000 milliseconds, the bound of one second and the two seconds the header allows after it
+  timed 1 sh -c 'trap "" TERM; sleep 7353 & sleep 7355'
+  expect "ignores SIGTERM: ended all the same, the line, exit 124" 124 'no answer within 1 seconds: sh -c trap "" TERM; sleep 7353 & sleep 7355'
+  [ "$ms" -le 3000 ] || fail "ignores SIGTERM: back after $ms milliseconds, expected at most 3000, the bound of one second and two more"
+  released "ignores SIGTERM: what the command started is ended too"
   # a fetch over a transport that never answers, built as bin/devloop-setup-state builds it, on every system: exec sleep 7341 #, one process under git, started once, for the fetch itself, under GIT_SSH_VARIANT=simple
   git_q init -q "$T/repo" && git_q -C "$T/repo" remote add origin "git@localhost:devloop-bounded-selftest-$$/x.git"
   k=$((k+1)); t0=$SECONDS; out=$(cd "$T/repo" && GIT_SSH_VARIANT=simple GIT_SSH_COMMAND='exec sleep 7341 #' "$self" 1 git fetch -q origin 2>&1 3> >(release)); rc=$?; t1=$((SECONDS - t0))
@@ -257,20 +340,22 @@ secs=$1; shift
 set -m
 "$@" <&0 &
 pid=$!
-# The watchdog sleeps the bound out, ends the command's group and exits 99,
-# deaf to TERM from the end of its sleep on, since the command's end wakes
-# this program, which ends the watchdog, before the watchdog has ended the
-# rest of the group. Ended while it sleeps, it ends its sleep, read off its
+# The watchdog sleeps the bound out, ends the command's group by SIGTERM,
+# sends what of it stands one second later SIGKILL and exits 99, deaf to
+# TERM from the end of its sleep on, since the command's end wakes this
+# program, which ends the watchdog, before the watchdog has ended the rest
+# of the group; this program waits for it below, so that it returns with the
+# group ended. Ended while it sleeps, it ends its sleep, read off its
 # job table so that no moment is missed, waits for it and exits 143, so
 # that nothing of it runs on; its output goes nowhere, so that it holds no
 # pipe open.
-( trap 'kill $(jobs -p) 2>/dev/null; wait; exit 143' TERM; sleep "$secs" & wait; trap '' TERM; end_group "$pid"; exit 99 ) >/dev/null 2>&1 &
+( trap 'kill $(jobs -p) 2>/dev/null; wait; exit 143' TERM; sleep "$secs" & wait; trap '' TERM; end_group "$pid"; kill_group_after "$pid" 1; exit 99 ) >/dev/null 2>&1 &
 wd=$!
 set +m
-# Ended itself: the command's group by SIGTERM, what of it stands two seconds
-# later by SIGKILL through a helper that ends with the group, then the
+# Ended itself: the command's group by SIGTERM, what of it stands half a
+# second later by SIGKILL through a helper that ends with the group, then the
 # watchdog; the exit code once the command is reaped.
-ended() { end_group "$pid"; ( i=0; while kill -0 -- "-$pid" 2>/dev/null && [ "$i" -lt 20 ]; do sleep 0.1; i=$((i+1)); done; kill -KILL -- "-$pid" 2>/dev/null ) >/dev/null 2>&1 & kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; wait "$pid" 2>/dev/null; exit "$1"; }
+ended() { end_group "$pid"; ( kill_group_after "$pid" 0.5 ) >/dev/null 2>&1 & kill "$wd" 2>/dev/null; wait "$wd" 2>/dev/null; wait "$pid" 2>/dev/null; exit "$1"; }
 trap 'ended 143' TERM
 trap 'ended 130' INT
 trap 'ended 129' HUP

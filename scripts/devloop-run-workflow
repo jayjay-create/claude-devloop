@@ -20,7 +20,10 @@ Exit 0 where every step that runs here ended with 0 and no step was left
 unrun but by design; 1 where a step ended otherwise than 0, was stopped at the
 job's timeout, or could not be run here; 2 where the file cannot be read as a
 workflow or the repository cannot be found. The last line says which: it opens
-with "green:" or with "red:".
+with "green:" or with "red:". Ended itself by SIGINT, SIGTERM or SIGHUP, on
+macOS, Linux and Alpine, it ends the step that runs with everything it
+started and exits with 130, 143 or 129 and no last line, "The end of a step"
+below.
 
 What runs, and what does not. Every step with a run: block, in the order of the
 file, job by job, except three kinds, each said in the output: a step with
@@ -84,8 +87,58 @@ and the steps read are set here too: GITHUB_WORKSPACE, the root of this
 repository, which is also every step's working directory unless a
 working-directory names another below it; RUNNER_OS, Linux, macOS or Windows
 for this system, as GitHub spells them; RUNNER_TEMP, the throwaway directory
-above. A job's timeout-minutes stops a step that runs past it, red, as
-GitHub stops the job.
+above.
+
+The end of a step. A job's timeout-minutes stops a step that runs past it,
+red, as GitHub stops the job, the minutes held against each step and not
+against the job as a whole, and since 11 November 2026 the step is ended with
+everything it started, so that nothing of it runs on once this program has
+returned. On macOS, Linux and Alpine every step starts as the leader of a
+session of its own, and at the timeout this program sends SIGKILL to the
+step's process group at once and then, listing after listing of ps -A -o
+pid,ppid,stat, to every process whose parent, session or process group is a
+process already known as the step's, until a listing shows none of them that
+is not a zombie, five seconds at most, the first listing taken before the
+first signal, since a process one level down in a session of its own hangs on
+the step by its parent alone; then it reads the step's output to its end. That reaches what the step's shell started and waits for, what has lost
+its parent, what stands in a process group of its own, as the command and the
+watchdog of bin/devloop-bounded do under the hooks step, and what was started
+in a session of its own, as this program starts a step one level down in its
+own self-test. It does not reach a process that left the step's session and
+its parent on purpose, a daemon: no listing ties such a process to the step.
+GitHub's runner ends that one too. It ends the step's one process, after
+SIGINT and SIGTERM, ten seconds in all, which this program does not send,
+Runner.Sdk/ProcessInvoker.cs lines 32 to 33, 443 to 465 and 855 to 869 of
+actions/runner at v2.338.2, and at the job's end every process that carries
+the job's RUNNER_TRACKING_ID in its environment, wherever it stands,
+Runner.Worker/JobExtension.cs lines 588 to 603 and 891 to 929, the lines
+"Terminate orphan process" of a job's log. The environment of another process
+is not to be read on every system this program runs on: the ps of macOS 26.6
+printed none under -E for a sleep of the same user, measured on 11 November
+2026; the block of milestone 12 in docs/defects.md on the process that left
+the step's session holds that limit, and nothing is built for it. Where ps
+does not answer, the step's process group alone is ended, and where something
+still stands after the five seconds, or still holds the step's output five
+seconds after that, the line of the step says so behind "as GitHub stops the
+job". Until that day the step ran in this program's own process group and at
+the timeout subprocess.run ended its one process, the shell, by SIGKILL: what
+the shell had started ran on, measured on 11 November 2026 at 46030ab on
+macOS, and under Linux by the measurement that came with the order of that
+day, a sleep 30 with parent 1 standing a second after the self-test had
+passed. A step in a session of its own is reached by no signal sent to this
+program's process group, Ctrl-C at a terminal and the SIGTERM of
+bin/devloop-bounded among them, so that since the same day this program takes
+SIGINT, SIGTERM and SIGHUP in hand: ended by one of them, it ends the step
+that runs the same way, removes its directory and exits with 128 and the
+signal's number; a signal that was ignored when this program started stays
+ignored, as SIGINT is where a shell without job control started it in the
+background, and the step inherits that; ended by SIGKILL it leaves the step
+running. A step that ends
+in time and leaves a process behind is not touched, now as before: GitHub
+ends such a process at the job's end, by the same variable. Under Windows
+none of this is built and a step runs as before: at the timeout its one
+process is ended and nothing it started, and the program then waits for the
+step's output to close.
 
 The file is read by this program's own reader of the YAML the workflows of
 this repository are written in: mappings and sequences by indentation, a
@@ -93,9 +146,10 @@ sequence item opening a mapping on its own line, literal and folded block
 scalars with their chomping, quoted and plain scalars, flow sequences in
 brackets, comments outside block scalars; nothing else is needed for
 .github/workflows/stock-take.yml, and a form it does not read ends with 2
-and the line. It needs python3 and git and nothing else, and no GNU tool. The
+and the line. It needs python3 and git, and ps where a step runs past the
+timeout or the program is ended while a step runs, and no GNU tool. The
 steps it runs need what they need on GitHub, python3 and git, and the self-test
-needs bash and sh on PATH.
+needs bash, sh and, on macOS, Linux and Alpine, pgrep on PATH.
 
 The self-test writes a workflow of its own and a throwaway repository with a
 new entry head on a branch, runs this program over it, and reads the outcomes:
@@ -105,7 +159,18 @@ over the job's default, PR_TITLE out of the event, a block with a heredoc and
 blank lines, the three kinds of step not run, a shell this program cannot
 run, a job stopped at its timeout, a matrix job run once, --list running
 nothing, exit 1 and 0 on a red and a green file, exit 2 on a file that is no
-workflow; the first line naming the system and its release, sysname and
+workflow; on macOS, Linux and Alpine, since 11 November 2026, the step past the
+timeout ended with everything it started, a sleep that has lost its parent,
+one in a process group of its own and the one its shell waits for, sleep 7361,
+7363 and 7365, none of them found by pgrep -f once the program has returned,
+under a pattern bound at the start of the command line, which a zombie, having
+no command line, does not match, the program ended by SIGTERM while a step
+runs, exit 143 and the step's sleeps 7367 and 7369 gone, and a step past the
+timeout that runs this program one level down, the sleep 7371 of that one's
+step gone as well, all three left out under Windows with a line that says so,
+where the step past the timeout is the sleep 30 of before; at its end the
+self-test sends SIGKILL to whatever pgrep still finds of those six sleeps, so
+that a red case leaves none behind; the first line naming the system and its release, sysname and
 release of os.uname(), or sys.platform where os.uname is missing, and no node
 name, held against the text the self-test builds from the same two fields,
 which it does not print where it is red, only the count of words in the
@@ -118,9 +183,11 @@ import os
 import re
 import shlex
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
+import time
 
 EXCLUDED = ("what the checkout holds", "what the container needs, under Alpine alone")
 DEFAULT_WORKFLOW = ".github/workflows/stock-take.yml"
@@ -444,13 +511,120 @@ def run_step(rec, root, tmp, base_env, title):
     cwd = working_dir(step, job, {"defaults": rec["wf_defaults"]}, root)
     timeout = rec["timeout"]
     try:
-        p = subprocess.run(argv, cwd=cwd, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=float(timeout) * 60 if timeout else None)
-    except subprocess.TimeoutExpired as e:
-        out = e.stdout.decode("utf-8", "replace") if e.stdout else ""
-        return None, out, "stopped at the job's timeout of %s minutes, as GitHub stops the job" % timeout
+        rc, raw, stopped, left = run_bounded(argv, cwd, env, float(timeout) * 60 if timeout else None)
     except OSError as e:
         return None, "", "the shell could not be started: %s" % e
-    return p.returncode, p.stdout.decode("utf-8", "replace"), None
+    out = raw.decode("utf-8", "replace") if raw else ""
+    if stopped:
+        return None, out, "stopped at the job's timeout of %s minutes, as GitHub stops the job" % timeout + ("; " + left if left else "")
+    return rc, out, None
+
+
+def listed():
+    """Every process as (pid, parent, state), read off ps -A -o pid,ppid,stat,
+    which the ps of macOS, of procps and of busybox take alike; None where ps
+    is not there or does not answer so."""
+    try:
+        r = subprocess.run(["ps", "-A", "-o", "pid,ppid,stat"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=30)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if r.returncode != 0:
+        return None
+    rows = []
+    for line in r.stdout.decode("ascii", "replace").splitlines():
+        f = line.split()
+        if len(f) >= 2 and f[0].isdigit() and f[1].isdigit():
+            rows.append((int(f[0]), int(f[1]), f[2] if len(f) > 2 else ""))
+    return rows
+
+
+def of_family(pid, family):
+    """Whether the session or the process group of pid is led by a process of
+    the family; False where the process is gone or may not be asked."""
+    try:
+        return os.getsid(pid) in family or os.getpgid(pid) in family
+    except OSError:
+        return False
+
+
+def end_family(root):
+    """Ends a step with everything it started, by SIGKILL: root is the step's
+    shell, started as the leader of a session of its own. Listing after
+    listing, every process whose parent, session or process group is a
+    process already known as the step's, and with the first of them the
+    step's process group at once, until a listing shows none that is not a
+    zombie, five seconds at most. The first listing comes before the first
+    signal: a process started one level down in a session of its own hangs on
+    the step by its parent alone, and is tied to nothing once that parent is
+    gone. Returns None where nothing of the step stands then, else a sentence
+    saying what does."""
+    family = {root}
+    until = time.monotonic() + 5
+    while True:
+        rows = listed()
+        try:
+            os.killpg(root, signal.SIGKILL)
+        except OSError:
+            pass
+        if rows is None:
+            return "ps did not answer with pid, ppid and stat, so that the step's own process group alone was ended"
+        grew = True
+        while grew:
+            grew = False
+            for pid, parent, _ in rows:
+                if pid not in family and (parent in family or of_family(pid, family)):
+                    family.add(pid)
+                    grew = True
+        standing = [pid for pid, _, state in rows if pid in family and not state.startswith("Z")]
+        if not standing:
+            return None
+        if time.monotonic() > until:
+            return "%d processes it started still stood after five seconds of SIGKILL" % len(standing)
+        for pid in standing:
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except OSError:
+                pass
+        time.sleep(0.05)
+
+
+def run_bounded(argv, cwd, env, limit):
+    """Runs the command of a step, both of its streams read as one, limit
+    seconds at most: (exit code, output, False, None) where it ended, and
+    (None, the output so far, True, None or what could not be ended) where
+    it was stopped at the limit. See "The end of a step" in the head."""
+    if os.name != "posix":
+        # Windows: as before 11 November 2026, the one process ended and nothing it started
+        try:
+            p = subprocess.run(argv, cwd=cwd, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=limit)
+        except subprocess.TimeoutExpired as e:
+            return None, e.stdout or b"", True, None
+        return p.returncode, p.stdout, False, None
+    p = subprocess.Popen(argv, cwd=cwd, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, start_new_session=True)
+    try:
+        raw, _ = p.communicate(timeout=limit)
+        return p.returncode, raw, False, None
+    except subprocess.TimeoutExpired:
+        left = end_family(p.pid)
+    except BaseException:
+        # this program is ended itself, by a signal main() turns into an exit or by anything else: the step stands in a session of its own and would run on
+        end_family(p.pid)
+        p.wait()
+        raise
+    p.wait()
+    try:
+        raw, _ = p.communicate(timeout=5)
+    except subprocess.TimeoutExpired as e:
+        raw = e.stdout or b""
+        left = left or "a process it started that this program did not find still holds its output"
+    return None, raw, True, left
+
+
+def ended(signum, frame):
+    """This program ended by SIGINT, SIGTERM or SIGHUP: an exit with 128 and
+    the signal's number, which run_bounded sees on its way out and ends the
+    step that runs with."""
+    raise SystemExit(128 + signum)
 
 
 def main(argv):
@@ -500,6 +674,10 @@ def main(argv):
             print("%s / %s: %s%s" % (rec["job"], rec["name"], what, "; a matrix of %d, run once here" % rec["matrix"] if rec["matrix"] else ""))
         print("listed, nothing run")
         return 0
+    if os.name == "posix":
+        for s in (signal.SIGINT, signal.SIGTERM, signal.SIGHUP):
+            if signal.getsignal(s) != signal.SIG_IGN:
+                signal.signal(s, ended)
     tmp = tempfile.mkdtemp(prefix="devloop-run-workflow.")
     base_env = dict(os.environ)
     base_env.update({"GITHUB_WORKSPACE": root, "RUNNER_OS": system, "RUNNER_TEMP": tmp})
@@ -643,8 +821,11 @@ jobs:
         run: echo ${{ matrix.system }}
 
       - name: past the timeout
-        run: sleep 30
+        run: |
+          STEP_PAST_IT
 """
+# the block of the step past the timeout: an orphan in the step's own process group, a sleep in a group of its own, and the sleep the shell waits for; under Windows the one sleep of before
+PAST_IT = ("( sleep 7361 & )", "set -m", "sleep 7363 &", "set +m", "echo three-started", "sleep 7365") if os.name == "posix" else ("sleep 30",)
 
 
 def selftest():
@@ -660,6 +841,18 @@ def selftest():
             ok[0] = False
             print("FAIL " + name + (": " + detail if detail else ""))
 
+    def found(pattern):
+        """The process numbers pgrep -f finds for a pattern bound at the start
+        of the command line, which a zombie, having none, does not match; None
+        where pgrep is not on PATH or does not answer."""
+        try:
+            r = subprocess.run(["pgrep", "-f", pattern], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=30)
+        except (OSError, subprocess.SubprocessError):
+            return None
+        return [int(x) for x in r.stdout.split()] if r.returncode in (0, 1) else None
+
+    posix = os.name == "posix"
+    sleeps = r"^sleep 73(61|63|65|67|69|71)$"
     T = tempfile.mkdtemp(prefix="devloop-run-workflow-selftest.")
     try:
         # the reader
@@ -691,7 +884,7 @@ def selftest():
         subprocess.run(git + ["-C", repo, "commit", "-q", "-m", "entry"], check=True)
         case("the entry head: read to its closing ** across a line break", entry_head(repo) == ("A new head that wraps.", None), repr(entry_head(repo)))
         wf = os.path.join(T, "wf.yml")
-        open(wf, "w").write(TEST_WORKFLOW.replace("TIMEOUT", "0.02"))
+        open(wf, "w").write(TEST_WORKFLOW.replace("TIMEOUT", "0.02").replace("STEP_PAST_IT", "\n          ".join(PAST_IT)))
         me = os.path.abspath(__file__)
         env = dict(os.environ, DEVLOOP_RUN_WORKFLOW_ROOT=repo)
         p = subprocess.run([sys.executable, me, wf], env=env, capture_output=True, text=True, timeout=120)
@@ -720,6 +913,13 @@ def selftest():
         case("a shell this program does not know: red, said", "a shell this program does not know: fish" in out, out)
         case("an expression in the block: not run, red", "the run: block carries an expression this program does not resolve: ${{ matrix.system }}" in out, out)
         case("a step past the job's timeout: stopped, red", "stopped at the job's timeout of 0.02 minutes" in out, out)
+        if posix:
+            left = found(r"^sleep 73(61|63|65)$")
+            case("a step past the job's timeout: ended with everything it started, a sleep without a parent, one in a process group of its own and the one its shell waits for, none found by pgrep once the program has returned",
+                 "three-started" in out and left == [] and "as GitHub stops the job;" not in out,
+                 "pgrep is not on PATH or did not answer" if left is None else "started: %s; still found: %s" % ("three-started" in out, left))
+        else:
+            print("left out under Windows: that a step past the job's timeout is ended with everything it started, since this program ends there the step's one process and nothing it started, as before; its step past the timeout is a sleep of thirty seconds there")
         last = out.rstrip().split("\n")[-1]
         case("the last line counts the red steps and those not run by design", last.startswith("red: 6 of 12 steps run did not end with 0 or did not run here (") and "not run by design: no run: block (uses: actions/checkout@v7): 1; left out by the order of 31 October 2026: 2" in last, last)
         p = subprocess.run([sys.executable, me, "--list", wf], env=env, capture_output=True, text=True, timeout=60)
@@ -735,6 +935,36 @@ def selftest():
         case("a missing file: exit 2", p.returncode == 2 and "cannot be read" in p.stderr, p.stderr)
         p = subprocess.run([sys.executable, me, "a", "b"], env=env, capture_output=True, text=True, timeout=60)
         case("two arguments: usage, exit 2", p.returncode == 2 and p.stderr.startswith("usage:"), p.stderr)
+        # ended itself while a step runs: the step, in a session of its own, ended with everything it started
+        if posix:
+            term_wf = os.path.join(T, "term.yml")
+            open(term_wf, "w").write("jobs:\n  g:\n    runs-on: ubuntu-latest\n    steps:\n      - name: runs on\n        shell: bash\n        run: |\n          set -m\n          sleep 7367 &\n          set +m\n          sleep 7369\n")
+            q = subprocess.Popen([sys.executable, me, term_wf], env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            until = time.monotonic() + 30
+            while time.monotonic() < until and len(found(r"^sleep 73(67|69)$") or []) < 2:
+                time.sleep(0.1)
+            started = found(r"^sleep 73(67|69)$")
+            q.send_signal(signal.SIGTERM)
+            try:
+                q.communicate(timeout=60)
+            except subprocess.TimeoutExpired:
+                end_family(q.pid)
+                q.communicate()
+            left = found(r"^sleep 73(67|69)$")
+            case("ended by SIGTERM while a step runs: the step ended with everything it started, exit 143",
+                 started is not None and len(started) == 2 and q.returncode == 143 and left == [],
+                 "pgrep is not on PATH or did not answer" if started is None or left is None else "found before: %s; exit %s; still found: %s" % (started, q.returncode, left))
+            # a step past the timeout that runs this program one level down: the step of that one stands in a session of its own and hangs on the outer step by its parent alone
+            inner_wf, nest_wf = os.path.join(T, "inner.yml"), os.path.join(T, "nest.yml")
+            open(inner_wf, "w").write("jobs:\n  g:\n    runs-on: ubuntu-latest\n    steps:\n      - name: one level down\n        shell: bash\n        run: sleep 7371\n")
+            open(nest_wf, "w").write("jobs:\n  g:\n    runs-on: ubuntu-latest\n    timeout-minutes: 0.05\n    steps:\n      - name: this program one level down\n        shell: bash\n        run: |\n          \"$SELFTEST_PY\" \"$SELFTEST_ME\" \"$SELFTEST_INNER\"\n")
+            p = subprocess.run([sys.executable, me, nest_wf], env=dict(env, SELFTEST_PY=sys.executable, SELFTEST_ME=me, SELFTEST_INNER=inner_wf), capture_output=True, text=True, timeout=120)
+            left = found(r"^sleep 7371$")
+            case("a step past the job's timeout that runs this program one level down: the step of that one, in a session of its own, ended too",
+                 p.returncode == 1 and "stopped at the job's timeout of 0.05 minutes" in p.stdout and "g / one level down, as bash" in p.stdout and left == [],
+                 "pgrep is not on PATH or did not answer" if left is None else "exit %s; the step one level down announced: %s; still found: %s" % (p.returncode, "g / one level down, as bash" in p.stdout, left))
+        else:
+            print("left out under Windows: that this program, ended by a signal while a step runs, ends the step, and that a step past the timeout which runs this program one level down is ended with the step of that one, since it starts a step in no session of its own there and takes no signal in hand")
         # the real workflow reads, and the exclusion stays live
         real = os.path.join(os.path.dirname(os.path.dirname(me)), DEFAULT_WORKFLOW)
         try:
@@ -749,6 +979,12 @@ def selftest():
         except (OSError, YamlError) as e:
             case("the real workflow reads", False, str(e))
     finally:
+        # nothing of the self-test's own steps runs on, whatever case was red or raised
+        for pid in (found(sleeps) or []) if posix else []:
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except OSError:
+                pass
         shutil.rmtree(T, ignore_errors=True)
     if ok[0]:
         print("SELF-TEST PASSED: %d cases" % n[0])
