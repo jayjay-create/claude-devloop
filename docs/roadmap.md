@@ -4910,9 +4910,11 @@ and for the proofs of closings.
   `scripts/devloop-run-workflow` change; nothing under `skills/`, `shared/`,
   `hooks/` or `output-styles/` changes, and `.github/workflows/stock-take.yml`
   and `README.md` do not. On `task/kill-at-the-bound`, off `origin/main` at
-  `46030ab`, in commits of their own: the code of both programs with the
-  version, raised once; and the documents, `docs/defects.md`,
-  `docs/stock-take.tsv` and this entry. The order, of this day: two findings
+  `46030ab`, in five commits: the code of both programs with the version,
+  raised once; the documents in three commits, `docs/defects.md`,
+  `docs/stock-take.tsv` and this entry; and, after the five checks on GitHub
+  were green, the runs at the last commit, with two blocks more and this entry
+  corrected in place. The order, of this day: two findings
   measured at `46030ab` outside the person's Mac, under Linux with bash
   5.2.21, dash 0.5.12, GNU coreutils 9.4, git 2.43 and python3, each to get a
   block under "## Milestone 12" of `docs/defects.md` and each to be built.
@@ -4955,7 +4957,25 @@ and for the proofs of closings.
   after 2.061 to 2.068 seconds, 1.06 to 1.13 seconds after the bound; with a
   command that takes SIGTERM, after 1.013 to 1.020 and 1.013 to 1.122
   seconds, the watchdog's look costing up to a tenth where the group needs a
-  moment to go; with `bin/devloop-bounded 1 bin/devloop-bounded 60 sh -c
+  moment to go, which holds where process 1 reaps what lost its parent and,
+  this sentence corrected in place with the last commit of this branch, not in
+  a container whose process 1 does not: there a process of the command that
+  lost its parent and ended on the SIGTERM stands as a zombie in the command's
+  group, `kill -0` to the group finds it, line 246 of `bin/devloop-bounded`,
+  and the watchdog looks out its whole second, so that `bin/devloop-bounded 1
+  sh -c 'sleep 7331 & sleep 7333'` was back after 2.061 seconds in a container
+  of `alpine:3.22` kept by `tail -f /dev/null`, as GitHub keeps the container
+  of a job, where it took 1.014 on the Mac and 1.009 in the same image started
+  with `docker run --init`, and a command of one process 1.009 to 1.013
+  seconds in that container; the logs of the checks show the same on alpine,
+  the self-test's cases in which the bound fires on a command that takes
+  SIGTERM 1.007 to 1.014 seconds after the line before them in run 42983323027
+  of pull request #239, before this branch, and 2.016 to 2.027 seconds in run
+  43017830242 at the fourth commit of this one, 1.056 to 1.117 seconds on
+  ubuntu-latest and macos-latest there; what process 1 the container had in
+  which the 1.013 to 1.122 seconds were measured is not noted, and the
+  paragraphs on the runs at the last commit below have the measurement; with
+  `bin/devloop-bounded 1 bin/devloop-bounded 60 sh -c
   'trap "" TERM; sleep 7357 & sleep 7359'`, 124 after 1.678 to 1.681 and
   after 1.637 to 1.642 seconds and neither sleep left; and a second after all
   of it no sleep of a command and none of the bound found by pgrep. The
@@ -5087,7 +5107,10 @@ and for the proofs of closings.
   bound waiting past it, Fix on the watchdog's line, and what a step had
   started, Fix on the line that ends the step's family. Four with Fix none,
   Recorded, not built: the process that left the step's session, the two
-  programs that bound gh, and Windows. The block on a hook's end has its Fix
+  programs that bound gh, and Windows; a fifth and a sixth came with the last
+  commit, on the bound in a container whose process 1 does not reap and on a
+  line of bash in a command's stderr on macOS, the paragraphs on the runs at
+  the last commit below. The block on a hook's end has its Fix
   on the helper's line, which this change rewrote: the field names the new
   text, and the note says what the old one was and that the helper waits half
   a second where it waited two. The watchdog's line is the Fix line of two
@@ -5098,6 +5121,205 @@ and for the proofs of closings.
   things for what is new, the command that ignores SIGTERM under the bound
   and six outcomes of the step's end, and the lines of both programs that
   entered the search set recorded as part of their things.
+
+  **The runs at the last commit**, the fifth, which changes no code: every run
+  below ran the code of the first commit, `707d228`, the three after it and
+  this one changing documents alone, under 0.183.0, and is of 11 November
+  2026. The checks of pull request #240 on the fourth commit, `c5657cb`, run
+  43017830242, were green on all five, their logs read with `gh run view --log
+  --job`. On windows-latest, job 130513239539, the self-test of
+  `bin/devloop-bounded` prints its ok for the case "does not end: ended with
+  what it started, the line, exit 124" at 12:10:56 UTC, line 438 of the log,
+  and for the case this branch adds, "ignores SIGTERM: ended all the same, the
+  line, exit 124", 2.343 seconds later, line 439: the first measurement of
+  SIGKILL to a process group under Git Bash, a shell of Git Bash that ignores
+  SIGTERM and its two sleeps ended and the probe's pipe released. The 2.343
+  seconds are the most the whole call took at a bound of one second, the end
+  of the case before it and this case's own check lying in them; the self-test
+  prints the time it holds to 3000 milliseconds for a red case alone. Then the
+  fetch over a transport that never answers, line 440, the line that leaves
+  the case over several processes out, line 441, and "SELF-TEST PASSED: 13
+  cases", line 442; `bin/devloop-setup-state` passes there with 18 cases, line
+  756, and the self-test of `scripts/devloop-run-workflow` is left out there,
+  line 891. On ubuntu-latest, macos-latest and alpine the three self-tests
+  pass with 14, 19 and 37 cases, lines 456, 758 and 898, lines 440, 742 and
+  882 and lines 533, 835 and 975 of their logs, the case this branch adds
+  2.027, 2.197 and 2.017 seconds after the line before it, lines 453, 437 and
+  530. No log of the five carries a line "Terminate orphan process" at the end
+  of its job: in run 42983323027, the last of pull request #239, GitHub ended
+  a sleep there on ubuntu-latest, line 935 of that log, and on macos-latest,
+  line 920, and that run carried no such line on alpine either, so that its
+  absence on alpine says nothing.
+
+  Measured on the person's Mac at the fourth commit, the tree clean, in a bash
+  started with `--noprofile --norc`, bash 3.2.57 and Python 3.14.7, from 12:56
+  to 13:15 UTC, a whole call timed by bash's own time. `bin/devloop-bounded 1
+  sh -c 'sleep 7331 & sleep 7333'` at 12:56:35, exit 124 after 1.014 seconds,
+  "no answer within 1 seconds: sh -c sleep 7331 & sleep 7333" on its stderr,
+  nothing on its output and no sleep left. With `sh -c 'trap "" TERM; sleep
+  7357'`, five times from 12:56:39, exit 124 and the line after 2.032 to 2.141
+  seconds, 1.03 to 1.14 seconds after the bound; with the command of the
+  self-test's case, a shell that ignores SIGTERM and two sleeps, after 2.140
+  seconds; with `sh -c 'trap "" TERM; sleep 6'`, the command of the finding,
+  after 2.135 seconds where it took 6.019 at `46030ab`; a bound inside a bound
+  whose inner command ignores SIGTERM, three times, 124 after 1.678 to 1.686
+  seconds and neither sleep left; and a second after all of it no sleep of a
+  command and none of the bound found by pgrep. The self-test of
+  `bin/devloop-bounded` at 12:57:01, "SELF-TEST PASSED: 14 cases", exit 0, in
+  six seconds; that of `bin/devloop-setup-state` at 12:57:08, 19 cases; that
+  of `scripts/devloop-run-workflow` at 12:57:14, "SELF-TEST PASSED: 37 cases",
+  exit 0, in five seconds, and a second after it pgrep found no sleep 30 and
+  no sleep of its steps, where a sleep 30 stood with parent 1 at `46030ab`.
+
+  The end of a step, measured there with workflows of one job and one step. A
+  step that runs `bin/devloop-bounded 7339 sh -c 'sleep 7331 & sleep 7333'`
+  under a timeout of 0.03 minutes, at 12:57:30: the program back with 1 after
+  1.967 seconds, the step's line "-- not finished: stopped at the job's
+  timeout of 0.03 minutes, as GitHub stops the job", the last line opening
+  with "red:" and naming the step with its job, and no sleep found afterwards,
+  the command and the watchdog of the bound standing in groups of their own. A
+  step that runs the program over a workflow whose step never ends, twice:
+  back with 1 after 1.967 and 1.975 seconds, both sleeps of that inner step
+  found 1.2 seconds into the second run and neither found afterwards. The
+  program ended by SIGINT, SIGTERM and SIGHUP while a step runs that holds one
+  sleep in a process group of its own and waits for another, at 12:57:34: both
+  sleeps found before, exit 130, 143 and 129, neither found afterwards;
+  started with SIGINT ignored, in the background of a shell without job
+  control, it stood a second after SIGINT with both sleeps and ended on
+  SIGTERM with 143, neither left. A stand-in for ps first on PATH that ends
+  with 1, at 12:57:56: the step's line reads on behind "as GitHub stops the
+  job" with "ps did not answer with pid, ppid and stat, so that the step's own
+  process group alone was ended", the program back after 7.061 seconds, the
+  sleep of the step's own group gone and the one in a group of its own
+  standing, ended by hand. And a process that left the step's session and its
+  parent and holds the step's output, a sleep 7379 started after a fork, a new
+  session and a second fork, at 12:57:42: the line reads on with "a process it
+  started that this program did not find still holds its output", the program
+  back after 6.969 seconds, that sleep standing with parent 1, ended by hand.
+
+  The end of a hook as Claude Code brings it about, measured there at 13:09:30
+  as the entry of 10 November 2026 on the bound on every system measured it, a
+  script in a process group of its own, SIGTERM to the group after one second
+  and SIGKILL five seconds later: with `sleep 7349` nothing stood a quarter of
+  a second after the SIGTERM; with `bash -c 'trap "" TERM; sleep 7351'` the
+  program, its helper with its two sleeps, the command and its sleep stood a
+  quarter of a second after it and nothing a second after it, four seconds
+  before the SIGKILL, which found no group left. Under CPU load there, twenty
+  busy loops on ten cores, from 13:10:01: 400 commands that end at once with 3
+  left no `sleep 7339` behind; of 40 fetches over one process under git and 40
+  over a shell that waits for its sleep every one ended with 124 and the line,
+  and none left a transport standing at the instant of the return or a second
+  after it; the call of the case this branch adds, 20 times under twenty loops
+  and 12 times under sixty, was back after 2.028 to 2.138 seconds, and the
+  self-test passed eight times under that load.
+
+  The same measurements in a throwaway container of `alpine:3.22` on that Mac,
+  from 13:15:26 UTC, bash 5.2.37, Python 3.12.16, git 2.49.1 and busybox
+  1.37.0, the repository mounted read-only: started with docker run --rm and
+  kept by `tail -f /dev/null` as its process 1, as GitHub keeps the container
+  of a job, line 59 of the log of the job on alpine, and entered with docker
+  exec. Every exit code, every line and every count came out as on the Mac:
+  the command that ignores SIGTERM back after 2.064 to 2.074 seconds, five
+  times, the bound inside a bound after 1.639 to 1.645, the three self-tests
+  with 14, 19 and 37 cases, the step under the bound ended after 1.926 seconds
+  and the one that runs the program after 1.917 and 1.915 with no sleep found,
+  the three signals with 130, 143 and 129, the ps that does not answer after
+  6.879 and the output held after 6.946 seconds, the hook's end with nothing
+  standing before the SIGKILL, the 400 commands and the 80 fetches under
+  twenty busy loops with nothing left, the call of the new case back after
+  2.046 to 2.167 seconds under load and the self-test passing eight times; 374
+  zombies stood in the container at its end, which nothing reaps there.
+
+  One time came out other than this entry had it. In that container
+  `bin/devloop-bounded 1 sh -c 'sleep 7331 & sleep 7333'`, a command that
+  takes SIGTERM, was back with its line and 124 after 2.061 seconds, a second
+  after the bound, where it took 1.014 on the Mac, and a bound inside a bound
+  whose inner command takes SIGTERM after 2.068 seconds, 1.130 on the Mac; `sh
+  -c 'sleep 7357'`, one process, after 1.009 to 1.013 seconds. The cause,
+  measured with a listing 0.3 seconds after the bound: the command's leader
+  ended and reaped by the program, the program and its watchdog standing, and
+  the other sleep, ended, standing as a zombie with parent 1 in the command's
+  group, since `tail` reaps nothing; `kill -0` to a group succeeds while a
+  zombie stands in it, line 246 of `bin/devloop-bounded`, so that the watchdog
+  looks out its whole second and sends SIGKILL to nothing alive. The same
+  image started with `docker run --init`, whose process 1 reaps: 1.009 seconds
+  and no zombie. The logs of the checks show it on alpine and nowhere else:
+  the self-test's three cases in which the bound fires on a command that takes
+  SIGTERM stand 1.007 to 1.014 seconds after the line before them in run
+  42983323027 and 2.016 to 2.027 seconds in run 43017830242, 1.056 to 1.117
+  seconds on ubuntu-latest and macos-latest there, the job green, those cases
+  held to three whole seconds. The should of the block on the bound waiting
+  past it holds there, the call back 1.06 seconds after the bound where two
+  are allowed, and nothing of the command runs on. Decided on this day: the
+  finding gets a block of its own with this commit, Fix none, Recorded, not
+  built, with the should "where the command and everything it started have
+  ended on the SIGTERM, the bound returns without waiting out the second, also
+  in a container whose process 1 does not reap what lost its parent", and the
+  runs are recorded at this commit; nothing is built for it, and the head of
+  `bin/devloop-bounded` stays as it stands, a change there being a change to
+  the code these runs ran. The sentence of this entry on a command that takes
+  SIGTERM is corrected in place with this commit, above.
+
+  Before this commit the twenty checks under "Before a handover, run these"
+  were run with its documents in the tree, the code that of the fourth commit,
+  and the run of the workflow's steps here, the twentieth, was red once, at
+  14:10 UTC, where it had been green at 12:54 on the same code: in the hooks
+  step the self-test of `bin/devloop-tool-state` failed its case "playwright:
+  the project's command finds no node, not read with its message", 1 of 63
+  cases, the message it read being "bin/devloop-bounded: child setpgid (56038
+  to 56038): Operation not permitted" behind the program's path, a line of
+  bash's own in the command's stderr before the command's "env: node: No such
+  file or directory". Measured on the Mac without load after it, bash 3.2.57:
+  of 2000 runs each of `bin/devloop-bounded 60 sh -c 'exit 3'` and of the
+  bound over a script whose interpreter is missing, 1 and 3 carried that line
+  in the command's stderr, every exit code as it should be; of 4000 runs each
+  of two such commands, 0 and 1 with the program of this branch, 0 and 1 with
+  that of `46030ab`, 0 and 0 with that of `b6970e1`, which started the command
+  without job control, and 0 and 0 in a container of `alpine:3.22` with bash
+  5.2.37. So the line comes with the start of the command under `set -m`,
+  lines 340 and 341 of `bin/devloop-bounded`, stands on main since the entry
+  of 10 November 2026 on the bound on every system and is no change of this
+  branch, and the runs above are untouched by it; whether the command stood in
+  a process group of its own in such a run is not measured, no run of 4000
+  that looked having carried the line. It gets a block with this commit by the
+  rule that a finding in a program gets one in every case, Fix none, Recorded,
+  not built, nothing built for it, the code of this branch staying as its runs
+  ran it; its should is worded with the block and put to the person by the
+  report of this day. The same check alone, run again from 14:25 UTC, was
+  green.
+
+  The rows of these runs stand in `docs/stock-take.tsv` since this commit,
+  fifteen of them, each under 0.183.0: on the two things of
+  `bin/devloop-bounded` whose runs stopped counting with this branch, the
+  bound firing and the self-test passing, from here and from the platform; on
+  five of the seven things this branch added, the command that ignores
+  SIGTERM, from here and from the platform, the step past the timeout ended
+  with everything it started, the ps that does not answer, the output held by
+  a process the program did not find, and the program ended by a signal; on
+  one thing of `scripts/devloop-run-workflow` that stood before this branch
+  without a run, a step stopped at the job's timeout-minutes, red and said,
+  decided on this day; and on five blocks of milestone 12, at lines 1292,
+  1300, 1379, 1387 and 1395 of `docs/defects.md`. What the tool counts of them
+  follows its rule, the head of `scripts/devloop-stock-take` at lines 548 to
+  568: a run under a version counts where the commit that introduced the
+  version contains the last change to every line of the thing, and for a block
+  to its Fix line. 0.183.0 came with the first commit, which changed every one
+  of those lines last, so that the tool lists all of them as Walked on this
+  branch, and after a squash merge one commit carries the version and the
+  lines alike. The Status of the five blocks reads Walked since this commit,
+  which the tool asks for, a block that names another state than the computed
+  one being a broken record. The block on a hook's end has its row and its
+  Status here and not on main, where the entry of 10 November 2026 on the
+  bound on every system left them: its Fix line is of this branch's first
+  commit now, and its note says so since this commit. Two of the seven new
+  things get no run and stay Built, never walked: the processes of a step
+  still standing after five seconds of SIGKILL, a case nothing here could
+  bring about, SIGKILL ending every process; and the step past the timeout
+  under Windows, which runs there as before and which nothing here measures.
+  The self-test of `scripts/devloop-run-workflow` gets no row either, though
+  it passed in every run above: its thing names both of its ends, "SELF-TEST
+  PASSED with the count or SELF-TEST FAILED", and no run of this day showed
+  the second.
 
 ## Decisions taken against
 
