@@ -1089,7 +1089,7 @@ Alpine for the step; what it found and did not build stands in six blocks
 of this milestone with Fix none.
 Decided on 12 November 2026 by the person, the roadmap entry of that date
 on the three entries held: before (2) come two orders. First the two blocks
-on `bin/devloop-bounded` from the branch of 11 November 2026: the second the
+on `bin/devloop-bounded` from the branch of 11 November 2026: the extra second the
 bound waits in a container for an ended process of the command's group, and
 the line of bash in the command's stderr. Then the remaining time limits:
 gh in `bin/devloop-auto-mode-question` and in `bin/devloop-install-issues`,
@@ -1099,7 +1099,7 @@ leaves a process behind, the block of 12 November 2026; the block on Windows
 that order puts to the person as a question of its own. After them (2) to
 (7) as decided. Reason: as with (1), every later pull request is to run
 through reliably; the line of bash stood in a command's stderr in 6 of
-20000 runs on the person's Mac and made a self-test red once, the second in
+20000 runs on the person's Mac and made a self-test red once, the extra second in
 the container brings the self-test on alpine nearer its limit, and the
 remaining time limits carry the fault of the two findings of 11 November
 2026, with measurements and readings in the blocks. Not chosen: both orders
