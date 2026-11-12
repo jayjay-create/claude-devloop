@@ -4353,7 +4353,7 @@ and for the proofs of closings.
   starts the helper of SIGKILL after two seconds, ends the watchdog and exits
   once the command is reaped. Both heads say so.
   `.github/workflows/stock-take.yml`: the two exceptions under Windows at
-  lines 428 to 432 went with the comment at line 427 and the words "two of
+  lines 430 to 433 went with the comment at line 427 and the words "two of
   them left out under Windows" in the step's name at line 419; the comments at
   lines 319 to 333 and 350 to 355 say what stood until this day and what
   stands since. `scripts/devloop-run-workflow --self-test` is green on the
@@ -5320,6 +5320,245 @@ and for the proofs of closings.
   it passed in every run above: its thing names both of its ends, "SELF-TEST
   PASSED with the count or SELF-TEST FAILED", and no run of this day showed
   the second.
+
+- **Three entries held, two orders put first, a step's end recorded**
+
+  12 November 2026, version 0.183.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` does not. On `task/audit-2026-11-12`, off
+  `origin/main` at `8f9a973`, in one commit: `docs/roadmap.md`,
+  `docs/plan.md`, `docs/defects.md`, `docs/skill-conventions.md` and this
+  entry. The order: the consistency audit before the handover, in the form
+  of the audits of 4, 6 and 9 November 2026 — the three entries since the
+  last audit held statement by statement against the code, the documents,
+  the table and their commits; the control documents searched for sentences
+  against the decisions since then and against what the three entries
+  built; `docs/rationale.md` held against the loaded texts where one
+  changed; what has one right answer mended here and the rest put to the
+  person in the report; and the three things the order names carried in.
+  Written by Claude Code from the person's order of this day; no session
+  log was read; nothing was installed; GitHub was read with `gh pr view`
+  for pull requests #238, #239 and #240, their branches fetched by their
+  references into a clone under a throwaway directory, and three files of
+  actions/runner fetched with `gh api`, and not beyond; the identity under
+  which git commits here was neither set nor read; no subagent was used.
+  The report stands on this machine as `~/devloop-audit-2026-11-12.md`, in
+  German, and is not in the repository. Every line number of a file in this
+  entry holds at `8f9a973` unless it says otherwise.
+
+  **What was read, and how.** Whole, with the text in front of the session:
+  the three entries, lines 3906 to 5323, and the audit at lines 3646 to 3905
+  as the form; `docs/plan.md` lines 888 to 1123; `docs/defects.md` lines 1
+  to 86; `docs/skill-conventions.md` lines 1759 to 1948, 3938 to 3958 and
+  4030 to 4435; the head of `scripts/devloop-stock-take`, lines 41 to 59,
+  238 to 457, 485 to 513 and 546 to 569; the report of 11 November 2026 on
+  this machine at its places on a step that ends in time; every place a
+  statement names, with the lines around it. The branches of #238, #239 and
+  #240 were fetched by their references, two commits, fourteen and six, the
+  tree of each head equal to its squash commit on main, `git diff --stat`
+  empty for all three. The tool ran in the clone at `b6970e1` and at
+  `46030ab` as well. What an entry measured on a surface, in a container or
+  under load, and what it read in a log of the platform, on a page of the
+  vendor or in the sources of another project, was not measured or read
+  again, the order naming the code, the documents, the table and the
+  commits: samples of it were held against the three reports on this
+  machine, and every sample stands there.
+
+  **The three entries against the code, the documents, the table and their
+  commits.** Held at the commit the entry gives for its lines: what an
+  entry says of its commits and their files, of a line of a file of this
+  repository, of a row of the table or a count of rows, and of the title,
+  the Should, the Fix or the Status of a block, the report naming each; and
+  the counts of cases the three self-tests print at the final state, 14, 19
+  and 37, off the run of the workflow's steps here. Not run again: a
+  self-test at a commit inside a branch. The entry at line 3906, on the
+  surface reading, holds in what was held but for one sentence:
+  - "searched with `grep -n -E` for 'machines for|virtual machine|provides
+    before the milestone' and for 'which surface|surface it runs|surface the
+    session'", lines 4133 to 4135: the two patterns find the lines the entry
+    names but two, line 3777 of this file and line 1350 of
+    `docs/defects.md`, which a third pattern found that the report of that
+    order names and the entry does not, `reads? the surface|way to
+    read|surface is read|surface and the system are read|measured first`.
+    Said right here, the entry standing as written.
+  The entry at line 4153, on the bound on every system, but for two:
+  - "the two exceptions under Windows at lines 428 to 432 went with the
+    comment at line 427": the diff of the workflow takes out lines 430 to
+    433 at `b6970e1`, the `case` on the runner's system, the two lines for
+    Windows and `esac`, lines 428 and 429 standing; corrected in place to
+    430 to 433. The comment at line 427 did not go: it was rewritten and
+    says since that day what stood there until then. Said right here.
+  - "The runs of three things stop counting under 0.182.0", lines 4427 to
+    4432: four by the end of that branch, as the last paragraph of that
+    entry has it, the self-test of `bin/devloop-setup-state` with its run of
+    21 October 2026 the fourth since the eighth commit; and the fetch not
+    answering carried two runs that counted at `b6970e1`, of 3 and of 16
+    October 2026, where the sentence names the first. Read off the tool at
+    `b6970e1` and at `46030ab`. Said right here.
+  The entry at line 4907, on the bound and SIGKILL, but for three, two of a
+  sixth commit the entry does not know and one of an addendum of its report
+  the entry does not carry:
+  - "in five commits", line 4913, and "**The runs at the last commit**, the
+    fifth", line 5125: the branch of #240 has six. The sixth, `baa68e4`,
+    changes one word of `docs/defects.md` and not that entry; the runs
+    stand at the fifth, `8946dff`, which is not the last. Said right here.
+  - "the run of the workflow's steps here, the twentieth", line 5265: the
+    sixth commit made it "the sixteenth check" in the block on the line of
+    bash, `docs/defects.md` line 1444, as the block at line 4658 has it,
+    and the command stands sixteenth of the twenty command blocks of the
+    section. Said right here; the same word in `docs/skill-conventions.md`
+    is mended below.
+  - "A step that ends in time and leaves a process behind is not touched,
+    now as before", lines 5074 to 5078: so where the process holds nothing
+    of the step's output; where it holds it, the step counts as stopped at
+    the job's timeout, the second situation of the block below. Said right
+    there.
+
+  **Decided on 12 November 2026**, on what builds before order (2) of
+  milestone 12, recorded in `docs/plan.md` under milestone 12 as a dated
+  sentence after the decision of 10 November 2026 on the order of the
+  orders: before (2) come two orders. First the two blocks on
+  `bin/devloop-bounded` from the branch of 11 November 2026, the second the
+  bound waits in a container for an ended process of the command's group,
+  line 1435 of `docs/defects.md`, and the line of bash in the command's
+  stderr, line 1443. Then the remaining time limits: gh in
+  `bin/devloop-auto-mode-question` and in `bin/devloop-install-issues`,
+  lines 1411 and 1419, and the three open blocks of
+  `scripts/devloop-run-workflow`, the process that leaves the step's
+  session, line 1403, Windows, line 1427, and the block of this entry; the
+  block on Windows that order puts to the person as a question of its own.
+  After them (2) to (7) as decided. Reason: as with (1), every later pull
+  request is to run through reliably; the line of bash stood in a command's
+  stderr in 6 of 20000 runs on the person's Mac and made a self-test red
+  once, the second in the container brings the self-test on alpine nearer
+  its limit, and the remaining time limits carry the fault of the two
+  findings of 11 November 2026, with measurements and readings in the
+  blocks. Not chosen: both orders at the end of the milestone; the pull
+  requests of (2) to (7) would then run with the self-test that goes red at
+  random. The plan did not name the order of 11 November 2026: a dated
+  sentence before this one says it now, in the same form, with the two
+  shoulds of that entry and what was built.
+
+  **A block on a step that ends in time**, decided on 12 November 2026 and
+  written here with Fix none, Recorded, not built, the last block under "##
+  Milestone 12": "scripts/devloop-run-workflow counts a step that ended in
+  time as stopped at the job's timeout where a process it left holds its
+  output, and leaves a process that holds none running". Its Should, in the
+  words of the decision: "a step that ends in time counts with its own exit
+  code, as GitHub counts it, waiting no more than five seconds for output a
+  process it left still holds, and what it left behind is ended when this
+  program returns, as GitHub ends it at the job's end". Its Wrong says the
+  two situations the report of 11 November 2026 measured, on the person's
+  Mac and in a container of `alpine:3.22`: a step that starts `sleep 7381 >
+  /dev/null 2>&1 &` and ends is green and the sleep stands after the
+  program has returned; the same step with `sleep 7381 &`, the sleep
+  holding the step's output, does not come back with the step's end, the
+  program reading the output to its end, `scripts/devloop-run-workflow`
+  line 605, until the job's timeout fires, the step counted red as stopped
+  there after 3.094 and 3.134 seconds at a timeout of 0.05 minutes and the
+  sleep ended with it. And what GitHub's runner does, read by this audit in
+  actions/runner at `8cfa104`, main on 11 November 2026, and not measured
+  on GitHub: `src/Runner.Sdk/ProcessInvoker.cs` waits five seconds where
+  the step's process has exited and a reader of its output is still open,
+  lines 485 to 505 with the delay at line 494, going on at once where the
+  output closes sooner, lines 523 to 527; then calls `KillProcessTree`,
+  line 495, which under Linux and macOS ends the step's own process alone
+  and only where that has not exited, lines 855 to 869, so that nothing is
+  ended there; counts the exit code of the step's own process, line 377;
+  and what the step left is ended at the job's end, by the variable in its
+  environment, `src/Runner.Worker/JobExtension.cs` lines 891 to 939. The
+  head of the program says at its lines 136 to 138 "A step that ends in
+  time and leaves a process behind is not touched, now as before", which
+  holds in the first situation alone; the sentence stands, this audit
+  changing no code, and the block names it.
+
+  **The control documents against the decisions and against what was
+  built.** Searched with `grep -n -E` for `devloop-bounded|kill_tree|pgrep|
+  \b143\b|\b124\b|SIGTERM|SIGKILL|process group|left out under Windows|
+  run-workflow|timeout-minutes|Nothing of this is built|not built yet|is
+  built yet|measured first|ENTRYPOINT|Parallels|virtual machine|the person
+  provides|bounds? (its|the|every)|a bound|the bound\b|time limit` over
+  `docs/plan.md` (17 lines), `docs/skill-conventions.md` (24) and
+  `README.md` (2, neither on the subject), every line read, and for the
+  names of the two programs, of what they dropped and of the surface
+  reading over `docs/defects.md`, 78 lines in 33 blocks: the title, the Fix
+  and the Status of each read, four blocks whole, lines 1044, 1435, 1443
+  and 2196, and of the four older blocks that name the bound, lines 2180,
+  2204, 2276 and 2740, the Wrong and the Note; the long fields of the
+  blocks the two branches on the bound wrote were not held sentence by
+  sentence. Mended:
+  - `docs/plan.md` line 1092, "Nothing of this is built yet.", the end of
+    the paragraph on the first piece of milestone 12: it held until 10
+    November 2026. The paragraph says now what stands since 10 and 11
+    November 2026, the bound with its process group and SIGKILL, the two
+    self-tests on all four systems and the end of a step past the timeout,
+    and that of the rest nothing is built.
+  - `docs/skill-conventions.md` lines 1436 to 1437, the job hooks on every
+    system running every self-test under `bin/` "under Windows without
+    those of `bin/devloop-bounded` and `bin/devloop-setup-state`": so until
+    10 November 2026, and with them since; the sentence says both.
+  - `docs/skill-conventions.md` lines 2199 to 2202, a command "runs under
+    `bin/devloop-bounded`, which ends it after a fixed number of seconds,
+    with everything it started", the bound "chosen so that the whole call
+    stays under the 120 seconds": it stands, and two sentences after it
+    say the process group, the SIGKILL a second after the SIGTERM, the two
+    seconds with the 116 and the 102 seconds of the entry of 11 November
+    2026, and what the program's head names as beyond the bound.
+  - `docs/skill-conventions.md` line 1784, "though the twentieth, since 31
+    October 2026, runs it here": the sixteenth, as the two blocks say and
+    as the section counts.
+  - `docs/defects.md` line 1050, the Note of the block "the job hooks on
+    every system runs three of the seven self-tests under bin, four on no
+    system", Walked: it ended on "built for every self-test under bin/ but
+    those of bin/devloop-bounded and bin/devloop-setup-state under Windows,
+    the gap carried by the defect of milestone 12 that addendum records"
+    and says after it that since 10 November 2026 those two run there as
+    well; no title, Should, Fix or Status changed.
+  `README.md` says nothing of the bound, of systems or of surfaces, and no
+  sentence of it deviates. No other sentence read stopped holding.
+
+  **`docs/rationale.md` against the loaded texts.** `git diff --stat
+  ac8cb77 8f9a973 -- skills shared output-styles` prints nothing: no text
+  the set loads changed since the last audit, and nothing was held.
+
+  **Green runs on things whose name names both ends, put to the person and
+  not changed.** The entry of 11 November 2026 gave the self-test of
+  `scripts/devloop-run-workflow` no run, its thing naming "SELF-TEST PASSED
+  with the count or SELF-TEST FAILED" and no run having shown the second.
+  The table carries ten runs made the other way, each a green run on a
+  thing that names a red end beside the green: lines 6266 and 6271 of
+  `docs/stock-take.tsv` on the self-tests of `bin/devloop-missing-tool` and
+  `bin/devloop-install-note`, lines 6501 and 6608 on that of
+  `bin/devloop-auto-mode-question`, lines 4605, 4630, 4677 and 6279 on that
+  of `bin/devloop-command-reader`, and lines 4614 and 6607 on two things of
+  the hooks step of the workflow; four of the six things read Walked by
+  them on this day. The head of the tool makes every outcome a thing, "an
+  outcome is what the program produces", line 90, and says its rule "can
+  undercount and must never overcount", line 566, and `docs/plan.md` asks
+  that every branch be walked once "the unwanted side included", line 91:
+  by them a green run counts for no red end. What follows for the ten rows
+  has no one answer, a thing with runs keeping its name, lines 379 to 381
+  of the head, and the green ends having been walked: no row and no thing
+  is changed, and the report lays the ways before the person.
+
+  The tool, before, on `8f9a973`: broken records 0, uncovered lines 0 of
+  4597; Undetermined 24, Recorded, not built 261, Built, never walked 1506,
+  Walked 716, Closed 70; milestone 12 106 blocks, Recorded, not built 44,
+  Built, never walked 46, Walked 12, Closed 4; blocks with "not stated" 345.
+  After: Recorded, not built 262 and milestone 12 107 blocks, Recorded, not
+  built 45, the block written here; every other figure as before; blocks
+  held against the branch point: removed 0, renamed 0, Should changed 0,
+  added 1; Walked on this branch without a run the branch adds: 0. The
+  self-test: 159 cases, 148 of 148 messages asserted by a case, before and
+  after. Nineteen of the twenty checks before a handover print after what
+  they printed on `8f9a973`, line for line, and the sixteenth, the run of
+  the workflow's steps, what it printed there but for the tool's lines
+  above and the time in one record, green before and after, 8 steps run.
+  Its title step reads the head of a new entry off `git diff
+  origin/main...HEAD`, the commits of the branch, and so read none before
+  the one commit of this branch; the head was held to the step's three
+  rules by hand before it, 63 characters and no find, and the report says
+  what the step printed after it. No run is recorded.
 
 ## Decisions taken against
 

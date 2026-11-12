@@ -1076,6 +1076,35 @@ sets the variable the same way, measured at 2.1.317, 2.1.319 and 2.1.321.
 Not chosen: the handover by surface first, while the measurement is fresh;
 it would have brought the first change visible to users earlier, but
 exposed every pull request until then to the hang of the self-test.
+Decided on 11 November 2026 by the person, the roadmap entry of that date
+on the bound and SIGKILL: two findings measured at `46030ab` each get a
+block under this milestone and are built, by an order of their own after
+(1), with these shoulds: the bound returns at most two seconds after its
+seconds with exit 124 and its line, also where the command ignores SIGTERM,
+its process group then sent SIGKILL; and a step of
+`scripts/devloop-run-workflow` that runs past the job's timeout is ended
+with everything it started, as GitHub ends the job, and nothing of it runs
+on once the program has returned. Built on that day, on macOS, Linux and
+Alpine for the step; what it found and did not build stands in six blocks
+of this milestone with Fix none.
+Decided on 12 November 2026 by the person, the roadmap entry of that date
+on the three entries held: before (2) come two orders. First the two blocks
+on `bin/devloop-bounded` from the branch of 11 November 2026: the extra second the
+bound waits in a container for an ended process of the command's group, and
+the line of bash in the command's stderr. Then the remaining time limits:
+gh in `bin/devloop-auto-mode-question` and in `bin/devloop-install-issues`,
+and the three open blocks of `scripts/devloop-run-workflow`, the process
+that leaves the step's session, Windows, and the step that ends in time and
+leaves a process behind, the block of 12 November 2026; the block on Windows
+that order puts to the person as a question of its own. After them (2) to
+(7) as decided. Reason: as with (1), every later pull request is to run
+through reliably; the line of bash stood in a command's stderr in 6 of
+20000 runs on the person's Mac and made a self-test red once, the extra second in
+the container brings the self-test on alpine nearer its limit, and the
+remaining time limits carry the fault of the two findings of 11 November
+2026, with measurements and readings in the blocks. Not chosen: both orders
+at the end of the milestone; the pull requests of (2) to (7) would then run
+with the self-test that goes red at random.
 A first piece stands since 14 October 2026, the fourth addendum of
 the roadmap entry on the command reader: the reader runs on the three
 systems, and a workflow job runs its self-test and every hook on
@@ -1089,7 +1118,20 @@ code.claude.com/docs/en/setup on 14 October 2026, name "Alpine Linux 3.19+"
 among the systems and "Bash, Zsh, PowerShell, or CMD" as the shell, Alpine
 not carrying bash by default - the page's own section on Alpine installs it
 with `apk add bash curl libgcc libstdc++ ripgrep` before Claude Code runs
-there. Nothing of this is built yet.
+there. Until 12 November 2026 this paragraph ended "Nothing of this is built
+yet.", which held until 10 November 2026.
+A second piece stands since 10 and 11 November 2026, order (1) of the
+decision above and the order of 11 November 2026, the roadmap entries of
+those dates on the bound: `bin/devloop-bounded` ends a command at the bound
+with its process group, by SIGKILL a second after the SIGTERM where
+something of it still stands, on macOS, Linux and Alpine and under Windows
+with Git Bash as far as the block of this milestone on the limit of the
+runtime's walk says; its self-test and that of `bin/devloop-setup-state`
+run in the job on all four systems; and `scripts/devloop-run-workflow` ends
+a step past the job's timeout with everything it started on macOS, Linux
+and Alpine. Of the rest nothing is built yet: the orders before (2) of 12
+November 2026 and (2) to (7), `shell: bash` in every skill and the guard for
+PowerShell among them.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
