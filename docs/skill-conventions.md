@@ -1434,7 +1434,9 @@ and the merge sequence. Since 14 October 2026 four checks more are required,
 `hooks on every system (ubuntu-latest)`, `(macos-latest)`, `(windows-latest)`
 and `(alpine)`, the second job of the same workflow, which runs every
 self-test under `bin/` since 23 October 2026, under Windows without those of
-`bin/devloop-bounded` and `bin/devloop-setup-state`, until then those of the
+`bin/devloop-bounded` and `bin/devloop-setup-state` until 10 November 2026
+and with them since, the roadmap entry of that date on the bound on every
+system, until 23 October 2026 those of the
 reader, of `bin/devloop-arm` and of `bin/devloop-auto-mode-question`, since 31
 October 2026 the self-test of `scripts/devloop-run-workflow` as well, on
 ubuntu-latest, macos-latest and alpine and not under Windows, where the
@@ -1781,7 +1783,7 @@ before it can be merged, at the cost of one run of the workflow per edit of
 the title, the body or the base. A commit's first line is not held by the
 workflow: a squash merge takes the title of the pull request, so the one
 title that lands is the one read. The check is not one of the twenty
-under "Before a handover, run these", though the twentieth, since 31 October
+under "Before a handover, run these", though the sixteenth, since 31 October
 2026, runs it here with the workflow's other steps.
 
 **A run's date is copied from the session log of that run, not from memory.**
@@ -2199,7 +2201,16 @@ checks in `build-work` step 6, 100 seconds a call — the command runs under
 `bin/devloop-bounded`, which ends it after a fixed number of seconds, with
 everything it started, and says so in one line with exit 124, as GNU `timeout`
 would, and `timeout` is not on a stock macOS; the bound is chosen so that the
-whole call stays under the 120 seconds. For every other command that may run
+whole call stays under the 120 seconds. Since 10 November 2026 the program
+ends the command with its process group, and since 11 November 2026 by
+SIGKILL a second after the SIGTERM where something of the group still
+stands, back at most two seconds after its seconds, the roadmap entries of
+those dates on the bound: three fetches of thirty with two waits of ten end
+by 116 seconds and the wait on the checks by 102. What the bound does not
+end the program's head says: a process that left the command's group on
+purpose, and under Windows with Git Bash a process the runtime's walk does
+not look for, the block of milestone 12 on it.
+For every other command that may run
 past the limit — a long test suite, an install — this set says since 9
 October 2026, decision 2 of the roadmap entry of that day: every install and
 every run of the check chain is called with ten minutes, 600000
