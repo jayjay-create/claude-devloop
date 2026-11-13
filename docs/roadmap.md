@@ -6221,9 +6221,9 @@ and for the proofs of closings.
   Code from the person's order of this day, which reached the session cut off
   inside its last paragraph, the one on new findings; what stood behind that
   is not known here, and the report says so first. No session log was read.
-  Nothing was installed outside throwaway containers of `alpine:3.22`, which
-  got bash, git and python3 with apk, two of them started with --privileged,
-  every one removed again. Read from outside, fetched raw without a sign-in:
+  Nothing was installed outside throwaway containers of `alpine:3.22`, each
+  started with --privileged, which got bash, git and python3 with apk, every
+  one removed again. Read from outside, fetched raw without a sign-in:
   four files of gregkh/linux at the tag v7.0.14, `fs/proc/root.c`,
   `fs/proc/inode.c`, `fs/proc/base.c` and `kernel/ptrace.c`, the tag looked
   up with git ls-remote; nothing beyond. What ubuntu-latest and Windows with
@@ -6481,6 +6481,121 @@ and for the proofs of closings.
   `bin/devloop-command-reader`, `skills/build-prototype/UI.md` and one line
   of `skills/build-work/SKILL.md` are other words that hold the characters of
   a pattern.
+
+  **The runs at the third commit**, which changes no code: every run below
+  ran the code of the first commit, `6a97d8c`, at the second, `c66d176`, the
+  tree clean, under 0.185.0, on 13 November 2026 from 15:58:09 to 16:03:39
+  UTC, on the person's Mac, macOS 26.6.2 with bash 3.2.57, in a bash started
+  with `--noprofile --norc`, and in two throwaway containers of `alpine:3.22`
+  there, started anew for these runs with --privileged, kernel
+  7.0.14-linuxkit and bash 5.2.37, the one kept by `tail -f /dev/null` as its
+  process 1 and the other started with `docker run --init`, the repository
+  mounted read-only, `/proc` remounted for each value, a whole call timed by
+  bash's own time, five times each unless said otherwise.
+
+  The process the kernel keeps from the shell, the command of the measurement
+  before the build, run by the user that is not root, from 15:58:09 in the
+  container kept by tail: back after 1.433 to 1.445 seconds without hidepid,
+  and under noaccess after 2.074 to 2.103, under invisible after 2.079 to
+  2.104 and under ptraceable after 2.082 to 2.106, with the line and 124; in
+  every one of the twenty runs the process wrote its four tenths and "done",
+  407 to 437 milliseconds after it took the signal, where under the three
+  values it wrote nothing behind the signal at `fa04716`: it has its second.
+  The time the call takes longer under hidepid there is the watchdog waiting
+  for what has ended, the process and the sleep beside it, zombies where
+  nothing reaps: in the container started with --init the same calls were
+  back, from 15:59:59, after 1.443 to 1.560 seconds without hidepid and after
+  1.441 to 1.558, 1.445 to 1.544 and 1.438 to 1.548 under the three values,
+  the process done after 419 to 438 milliseconds in every one. Run by root in
+  the container kept by tail, from 15:59:04: after 1.450 to 1.553 seconds
+  without hidepid and after 2.083 to 2.110, 2.084 to 2.112 and 2.080 to 2.109
+  under the three values, the process done after 411 to 433 milliseconds in
+  every one; root's bound waits for the zombie under hidepid as the user's
+  does, the kernel refusing root nothing there.
+
+  A process that has ended and that nobody reaps, `bin/devloop-bounded 1 sh
+  -c 'sleep 7331 & sleep 7333'`, the first command of the block on the
+  zombie, from 16:00:46 in the container kept by tail, run by the user and by
+  root: without hidepid back after 1.012 to 1.020 and after 1.014 to 1.023
+  seconds, the look reading `/proc` behind a table of mounts that names no
+  hidepid, where the call took 1.012 to 1.015 at 0.184.0; under the three
+  values after 2.072 to 2.121 and after 2.072 to 2.109, the watchdog waiting
+  out its second for the zombie as before 0.184.0, 2.056 to 2.075 then; and
+  in the container started with --init, run by the user, after 1.008 to 1.019
+  seconds without hidepid and under invisible alike; every call with the line
+  and 124. A command that ignores SIGTERM, `sh -c 'trap "" TERM; sleep 7353 &
+  sleep 7355'`, three times each in the container kept by tail from 16:02:10:
+  back after 2.088 to 2.115 seconds without hidepid and after 2.076 to 2.111
+  under invisible, with the line and 124, sent SIGKILL a second after the
+  bound under either look. Afterwards nothing of a command lived in either
+  container, 86 zombies standing in the one kept by tail and none in the
+  other. Not brought about by a run: the process born after the look listed
+  the group, the last clause of the block's Should, the race being none to
+  force.
+
+  The self-test of `bin/devloop-bounded`: on the Mac at 16:02:39, "SELF-TEST
+  PASSED: 19 cases" and exit 0; in the two containers without hidepid from
+  16:02:45 to 16:03:13, run by the user and by root, 19 cases each of the
+  four times; under invisible in the container kept by tail, at 16:02:58 and
+  16:03:02, red in the case of the block of this day, "back after 2098
+  milliseconds, expected at most 1900" for the user and 2082 for root, exit
+  1; and under invisible in the one started with --init 19 cases for both.
+
+  The red end of the self-test, brought about on purpose at 16:03:32 on the
+  Mac, on a copy, as lines 36492 to 36495 and 36525 of
+  `docs/roadmap-archive-1.md` have the red end of another self-test brought
+  about on copies: the program copied to a throwaway directory, the
+  expectation of one case changed there, `expect "ends in time with 3: exit 3
+  through" 3` to 4, and the self-test of the copy run: eight cases ok, then
+  "FAIL ends in time with 3: exit 3 through: exit 3, expected 4", the output
+  of the case under it, indented and empty, and exit 1, the program of the
+  repository passing its 19 cases beside it. So the outcome "a case not
+  coming out as the header says, FAIL with the case and the output, exit 1"
+  is walked once without the program in the repository carrying a fault: the
+  third of the five sentences of `docs/plan.md` holds for every program, the
+  decision of this day there has the second order before (2) bring about the
+  red end of the programs it changes, and this order changes this one.
+
+  The rows of these runs stand in `docs/stock-take.tsv` since this commit,
+  four of them, each under 0.185.0: on the thing this branch added, the look
+  under hidepid; on the bound back without the watchdog's second, whose run
+  of 0.184.0 stopped counting with the line of this branch recorded as part
+  of it; on the block on the look; and on the red end of the self-test, a
+  thing that had no run. 0.185.0 came with the first commit, which is the
+  last change to every line of the program these stand on, so that the tool
+  lists all four as Walked on this branch, and after a squash merge one
+  commit carries the version and the lines alike. The Status of the block on
+  the look reads Walked since this commit, which the tool asks for. No row
+  stands for the self-test passing, whose lines this branch did not change
+  and whose run of 0.184.0 counts on, nor for what a job of the checks on
+  GitHub alone brings about, the self-test on ubuntu-latest and under Windows
+  with Git Bash.
+
+  The tool, before, on `fa04716`: broken records 0, uncovered lines 0 of
+  4610; Undetermined 24, Recorded, not built 262, Built, never walked 1506,
+  Walked 722, Closed 71; milestone 12 110 blocks, Recorded, not built 45,
+  Built, never walked 46, Walked 14, Closed 5; blocks with "not stated" 345.
+  After the first commit: uncovered lines 2 of 4612, the two lines of the
+  function that hold if and case, exit 1, every state as before. After the
+  second commit: uncovered lines 0 of 4612; Recorded, not built 261, the
+  block on the look built, the block on the head closed and one block
+  written; Built, never walked 1509 and Walked 721, the block on the look and
+  the new thing standing without a run and the bound back without the
+  watchdog's second having lost its counting run; Closed 72; milestone 12 111
+  blocks, Recorded, not built 44, Built, never walked 47, Walked 14, Closed
+  6. After this commit: Built, never walked 1505 and Walked 725, the four of
+  the rows above; milestone 12 Built, never walked 46 and Walked 15; every
+  other figure as after the second; blocks held against the branch point:
+  removed 0, renamed 0, Should changed 1, added 1, with one line of the fixed
+  forms; Walked on this branch without a run the branch adds: 0. The
+  self-test of the tool: 159 cases, 148 of 148 messages asserted by a case,
+  before and after. Before this commit, with its documents in the tree,
+  nineteen of the twenty checks before a handover printed what they printed
+  on `fa04716`, line for line, and the sixteenth, the run of the workflow's
+  steps, what it printed there but for the tool's lines, the time in one
+  record and its title step, green before and after, 8 steps run: the
+  self-test of `bin/devloop-bounded` passed in it with 19 cases, and the
+  title step read one new head, this entry's, 63 characters, and passed it.
 
 ## Decisions taken against
 
