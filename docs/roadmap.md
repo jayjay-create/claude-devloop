@@ -6020,9 +6020,12 @@ and for the proofs of closings.
   line alone; the note of the block names the change. What the should asks
   "at every run on every system" the start with the stderr the shell has
   does not meet, measured in 1 of 20000 runs with the seven descriptors
-  held, the block closed below; whether the should is to say so, as the
-  decision of 10 November 2026 narrowed one for a block that reads Walked,
-  lines 4525 to 4526, is put to the person by the report. The line of the
+  held, the block closed below; decided on the report of this day, the
+  should says so, as the decision of 10 November 2026 narrowed one for a
+  block that reads Walked, lines 4525 to 4526: the field Should carries the
+  approved wording narrowed by "where its caller leaves one of the
+  descriptors 3 to 9 free, the start where it holds them all being left on
+  purpose by the block of this milestone on the two starts". The line of the
   fixed form, the title as the tool reads it:
 
   Should changed: on macOS bin/devloop-bounded passed a line of bash on setpgid into the stderr of a command that ended at once, the self-test of bin/devloop-tool-state red once by it in the run of the workflow's steps
@@ -6076,8 +6079,12 @@ and for the proofs of closings.
   set-user-ID or set-group-ID program or is not dumpable, which a SIGKILL
   of that user reaches and which would then lose the second it had before
   0.184.0. That is read in no source and not measured by this audit, the
-  order allowing neither; the question is put to the person by the report
-  with both ways, and the block stands as it stood, Recorded, not built.
+  order allowing neither. Decided on the report of this day: the block is
+  not left on purpose; where `/proc` is mounted with hidepid the look counts
+  as before 0.184.0, by `kill -0` alone, built with the next change to
+  `bin/devloop-bounded`, which reads the kernel's rule at its source,
+  measures it in a container and writes the block's Should; until then the
+  block stands as it stood, Recorded, not built.
 
   **Decided on 13 November 2026**, on the names of the things in
   `docs/stock-take.tsv`: they keep their three parts, source, unit and
@@ -6149,11 +6156,15 @@ and for the proofs of closings.
   f06f34c e2d6374 -- skills shared output-styles` prints nothing: no text
   the set loads changed since the last audit, and nothing was held.
 
-  **A block on a figure of the program's head**, written here with Fix
+  **A block on two places of the program's head**, written here with Fix
   none, Recorded, not built, the last block under "## Milestone 12": "the
   head of bin/devloop-bounded gives the self-test's call under CPU load on
-  macOS as 1017 to 1032 milliseconds, where the build's report and the
-  entry of that day give 1018 to 1032". The head says at its lines 257 to
+  macOS as 1017 to 1032 milliseconds where the build's report and the
+  entry of that day give 1018 to 1032, and calls the change of that day not
+  measured under Windows with Git Bash where the job has measured it". The
+  two sentences on Windows, at lines 181 to 183 and 217 to 218, say the job
+  measures there first; it has, runs 43401195658 and 43405794553, eighteen
+  cases passed. The head says at its lines 257 to
   258 "under CPU load the call took 1017 to 1032 milliseconds on macOS";
   the entry says 1018 to 1032 at line 5698, and the report of the build
   1018 to 1030 under twenty busy loops and 1021 to 1032 under sixty. Its
@@ -6161,7 +6172,8 @@ and for the proofs of closings.
   sentence stands, this audit changing no code. Under milestone 12 with the
   seven blocks the entries of 10, 11 and 13 November 2026 wrote on the
   bound; the groups of the sorting, lines 1146 to 1151, name the bound
-  under milestone 13 as well, which the report puts to the person.
+  under milestone 13 as well; decided on the report of this day: under
+  milestone 12, repaired with the next change to the program.
 
   The tool, before, on `e2d6374`: broken records 0, uncovered lines 0 of
   4610; Undetermined 24, Recorded, not built 262, Built, never walked 1506,
