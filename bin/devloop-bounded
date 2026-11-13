@@ -175,12 +175,54 @@
 # What the look does not reach: where /proc is not there, or names the shell
 # by another number than bash knows it by, as in a namespace of process
 # numbers without a /proc of its own, the look is kill with 0 and the
-# watchdog waits for a zombie as before; and a process /proc does not show
-# the shell, another user's under hidepid, or one born after the look listed
-# the group while its parent ended before the look read it, counts as ended,
-# so that it is sent SIGKILL at once and not a second after the SIGTERM. Not
-# measured under Windows with Git Bash: anything of this change; the job
-# hooks on every system measures it there first.
+# watchdog waits for a zombie as before; and a process born after the look
+# listed the group while its parent ended before the look read it counts as
+# ended, so that it is sent SIGKILL at once and not a second after the
+# SIGTERM, which it was born after and never got.
+# Where /proc is mounted with hidepid the look is kill with 0 alone, as
+# before 0.184.0, since the second change of 13 November 2026, version
+# 0.185.0, decided on that day. Read in Linux 7.0.14, the kernel of the
+# containers on the person's Mac, at the tag v7.0.14 of gregkh/linux: under
+# each of the three values but off, noaccess, invisible and ptraceable,
+# fs/proc/root.c lines 77 to 84, which a mount with 1, 2 and 4 gives, the
+# kernel keeps from the shell the entry of a process that the shell may not
+# read by the rule of ptrace, fs/proc/base.c lines 745 to 762, and that
+# rule turns away a process of the shell's own user as well: one that
+# carries another user or group number than the shell's among its three of
+# each, as a set-user-ID or set-group-ID program does, or one that is not
+# dumpable, as a process that has said so with prctl, kernel/ptrace.c lines
+# 275 to 287, 330 to 340 and 353 to 354, unless the shell holds
+# CAP_SYS_PTRACE; under noaccess and invisible not for a member of the
+# group the mount names with gid=, base.c line 759. Under noaccess the
+# entry is listed and nothing in it opens, EPERM, base.c lines 775 to 790;
+# under invisible and ptraceable it is not listed, lines 3602 to 3603, and
+# does not open, ENOENT, lines 779 to 787 and 3527 to 3529, each measured
+# there as read. kill reaches such a process, and the look off
+# /proc counted it as ended, so that the watchdog sent the group SIGKILL at
+# once where nothing else of it stood: measured on 13 November 2026 at
+# fa04716 in a privileged container of alpine:3.22 with a user that is not
+# root, a process of the command's group that is not dumpable and takes
+# four tenths of a second to end on the SIGTERM was ended by SIGKILL before
+# its first tenth and the call back after 1.008 to 1.016 seconds under each
+# of the three values, where it ended by itself and the call was back after
+# 1.426 to 1.440 without hidepid. So the look reads the table of mounts
+# first, /proc/self/mounts, once for a bound, with read and no process
+# started: the kernel prints hidepid= there for every value but off,
+# fs/proc/inode.c lines 179 to 180, and the last line that mounts a proc on
+# /proc decides, the mount that lies on top, measured with a second proc
+# mounted over the first. With hidepid= on that line, or with no such line
+# or a table that cannot be read, the answer of kill stands: such a process
+# has its second, and the watchdog waits for a zombie there as before
+# 0.184.0, also for a shell the kernel refuses nothing, as root's in that
+# container. No case of the self-test brings a mount with hidepid about,
+# which takes root; it is measured in a container, the roadmap entry of
+# that day on the look under hidepid.
+# Under Windows with Git Bash, where the look is kill with 0, the job hooks
+# on every system has measured the change of 0.184.0 as far as the self-test
+# asks, runs 43401195658 and 43405794553 of pull request #242 on 13 November
+# 2026: its eighteen cases passed there in both, the case of a command that
+# ends on the SIGTERM with all it started 1.169 and 1.188 seconds after the
+# line before it.
 #
 # What reaches the command's stderr, since 13 November 2026: what the command
 # writes, and the one line the shell writes for a command it cannot start,
@@ -214,8 +256,12 @@
 # and bsd/kern/kern_proc.c lines 2982 to 3062 of xnu-12377.121.6, the nearest
 # published source, give a process that calls for itself EPERM only where it
 # leads a session, and the kernel of that Mac, xnu-12377.161.14, is not
-# published. Not measured under Windows with Git Bash: the two starts as they
-# stand since that day; the job hooks on every system measures them first.
+# published. Under Windows with Git Bash the job hooks on every system has
+# measured the two starts as they stand since that day, as far as the
+# self-test asks, runs 43401195658 and 43405794553 of pull request #242 on
+# 13 November 2026: its eighteen cases passed in both, the four on the
+# descriptors among them, and the characters "child setpgid" stand in no job
+# of either run.
 #
 # --self-test produces every outcome above once without a network, prints
 # one line per case and exits 1 on the first that does not come out as this
@@ -250,11 +296,17 @@
 # this program with the look of before failed the case with 2056 in a
 # container of alpine:3.22 kept by tail -f /dev/null, as the job hooks on
 # every system (alpine) runs the self-test, and passed it in one started with
-# docker run --init. Why 1900: under Windows with Git Bash, where a process
+# docker run --init. Where /proc is mounted with hidepid in a container whose
+# process 1 does not reap, the case is red as well, the watchdog waiting out
+# its second there since 0.185.0 as decided, the paragraph on the look above:
+# 2080 milliseconds measured on 13 November 2026 in such a container of
+# alpine:3.22, the case green there without hidepid and in one started with
+# --init under it; the block of milestone 12 on it holds that, and nothing is
+# built for it. Why 1900: under Windows with Git Bash, where a process
 # start costs most, the cases in which the bound fires on a command that
 # takes SIGTERM stood 1.16 and 1.29 seconds after the line before them in run
 # 43017830242, the end of the case before and the case's own checks lying in
-# that, so that six tenths are left there; under CPU load the call took 1017
+# that, so that six tenths are left there; under CPU load the call took 1018
 # to 1032 milliseconds on macOS, twenty and sixty busy loops on ten cores,
 # and 1066 to 1416 in that container with 1100 zombies standing in it, where
 # the copy with the look of before took 2048 to 2161, and the self-test
@@ -334,13 +386,26 @@ end_group() { kill -TERM -- "$1" 2>/dev/null; kill -TERM -- "-$1" 2>/dev/null; }
 # and the group stands where one of them is no zombie, or is one whose first
 # thread has ended while another runs, more than one entry under task. Where
 # /proc is not there, or does not name this shell by the number bash knows it
-# by, the answer of kill stands, as on the other systems. The number found
-# running is kept in alive, a variable of the caller.
+# by, the answer of kill stands, as on the other systems; and so it does
+# where /proc is mounted with hidepid, under which the kernel keeps from the
+# shell processes that kill reaches, the head above: read off the table of
+# mounts once, with read as well, the last line that mounts a proc on /proc
+# deciding, hidepid where it carries hidepid=, and where there is no such
+# line or the table cannot be read. The number found running is kept in
+# alive and what the table said in hid, variables of the caller.
 stands() {
   kill -0 -- "-$1" 2>/dev/null || return 1
   case ${OSTYPE:-} in linux*) ;; *) return 0 ;; esac
   local f l h t
   read -r l < /proc/self/stat && [ "${l%% *}" = "${BASHPID:-}" ] || return 0
+  if [ -z "${hid:-}" ]; then
+    hid=y
+    while read -r f l h t; do
+      [ "$l $h" = "/proc proc" ] || continue
+      case ",${t%% *}," in *,hidepid=*) hid=y ;; *) hid=n ;; esac
+    done < /proc/self/mounts
+  fi
+  [ "$hid" = n ] || return 0
   for f in "/proc/${alive:-$1}" /proc/[0-9]*; do
     read -r l < "$f/stat" || continue
     # a line that does not hold the group's number as a field is of no process of the group; one that does is taken apart behind the name, which ends at the last ") ": the state, the parent, the group
@@ -359,7 +424,7 @@ stands() {
 # The duration is a sleep of its own, ended by SIGKILL, since it is started
 # where SIGTERM is ignored and inherits that, and reaped before this returns.
 kill_group_after() {
-  local t alive=
+  local t alive= hid=
   sleep "$2" & t=$!
   while stands "$1" && kill -0 "$t" 2>/dev/null; do sleep 0.1; done
   kill -KILL -- "-$1" 2>/dev/null
