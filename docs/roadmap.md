@@ -5565,10 +5565,11 @@ and for the proofs of closings.
   13 November 2026, version 0.184.0: `bin/devloop-bounded` changes; nothing
   under `skills/`, `shared/`, `hooks/`, `scripts/` or `output-styles/`
   changes, and `.github/workflows/stock-take.yml` and `README.md` do not. On
-  `task/bound-zombie-setpgid`, off `origin/main` at `f06f34c`, in three
+  `task/bound-zombie-setpgid`, off `origin/main` at `f06f34c`, in four
   commits: the code with the version, raised once; the documents,
-  `docs/defects.md`, `docs/stock-take.tsv`, `docs/plan.md` and this entry; and
-  the runs, measured at the second commit with the tree clean. The order, of
+  `docs/defects.md`, `docs/stock-take.tsv`, `docs/plan.md` and this entry;
+  the runs, measured at the second commit with the tree clean; and, after the
+  checks, words of this entry and of five notes set right. The order, of
   this day: the first of the two orders that the decision of 12 November 2026
   puts before order (2) of milestone 12, the two blocks on
   `bin/devloop-bounded` from the branch of 11 November 2026, at lines 1435 and
@@ -5739,7 +5740,7 @@ and for the proofs of closings.
   and the bound waiting past it: it changed, the watchdog starting on it
   inside the group whose stderr points to `/dev/null`, so that their runs of
   11 November 2026 count no more. All five read Built, never walked, which the
-  tool computes, until the runs at the last commit of this branch. In the
+  tool computes, until the runs at the third commit of this branch. In the
   table: four things for what is new, the bound back without the watchdog's
   second, the look where `/proc` cannot be trusted, the two starts, and the
   start with the stderr the shell has; eleven lines that entered the search
@@ -5769,7 +5770,7 @@ and for the proofs of closings.
   `skills/build-work/SKILL.md` and the comments of the workflow say of the
   bound what holds as before.
 
-  **The runs at the last commit**, the third, which changes no code: every run
+  **The runs at the third commit**, which changes no code: every run
   below ran the code of the first commit, `c38594d`, at the second, `4e830f2`,
   the tree clean, under 0.184.0, on 13 November 2026 from 08:28 to 08:59 UTC,
   on the person's Mac, macOS 26.6.2 with bash 3.2.57, in a bash started with
@@ -5873,11 +5874,11 @@ and for the proofs of closings.
   since this commit that the line stood in 1 of 20000 runs with the seven
   descriptors held. No row stands for what a job of the checks on GitHub alone
   brings about: the self-test with its nineteen cases on ubuntu-latest and
-  macos-latest and its eighteen under Windows with Git Bash, where nothing of
-  this change is measured yet, and the self-test in the container of the job
-  on alpine, whose process 1 GitHub's own `tail -f /dev/null` is; the report
-  says what each log has to show, and a short order of its own records those
-  runs after the push.
+  macos-latest and its eighteen under Windows with Git Bash, and the self-test
+  in the container of the job on alpine, whose process 1 GitHub's own
+  `tail -f /dev/null` is. Every thing and block whose run this branch needs
+  has it from here, so that no order records those runs; the checks of pull
+  request #242 on the third commit, run 43401195658, were green on all five.
 
   The tool, before, on `f06f34c`: broken records 0, uncovered lines 0 of 4597;
   Undetermined 24, Recorded, not built 262, Built, never walked 1506, Walked
