@@ -5904,6 +5904,301 @@ and for the proofs of closings.
   had 14, that of `bin/devloop-tool-state` with 63, and its title step passing
   the head of this entry, 62 characters.
 
+- **One entry held, a should reworded, a block closed, two rules decided**
+
+  13 November 2026, version 0.184.0, unchanged: nothing under `skills/`,
+  `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
+  changes, and `README.md` and `docs/stock-take.tsv` do not. On
+  `task/audit-2026-11-13`, off `origin/main` at `e2d6374`, in one commit:
+  `docs/defects.md`, `docs/plan.md` and this entry, with the entry it adds
+  under "## Decisions taken against". The order: the consistency audit
+  before the handover, in the form of the audits of 4, 6, 9 and 12 November
+  2026 — the one entry since the last audit, on the bound and the zombie,
+  held statement by statement against `bin/devloop-bounded`, the documents,
+  the table and the four commits of pull request #242; the control
+  documents searched for sentences that build made false;
+  `docs/rationale.md` held against the loaded texts where one changed; the
+  logs of the checks of that pull request read for three things the order
+  names; what has one right answer mended here and the rest put to the
+  person in the report; and four decisions of this day carried in. Written
+  by Claude Code from the person's order of this day; no session log was
+  read; nothing was installed; GitHub was read with `gh pr view` for pull
+  request #242 and with `gh run view` for runs 43401195658, 43405794553 and
+  43017830242, the branch fetched by its reference, here and into a clone
+  under a throwaway directory; three sources the entry cites were fetched
+  without a sign-in, the release bash-3.2.57 from ftp.gnu.org and one file
+  each of apple-oss-distributions/xnu at xnu-12377.121.6 and of
+  git-for-windows/msys2-runtime at 5a1665c8, and nothing beyond; the
+  identity under which git commits here was not set, its name read with
+  `git config` and its address not shown; no subagent was used. The report
+  stands on this machine as `~/devloop-audit-2026-11-13.md`, in German, and
+  is not in the repository. Every line number of a file in this entry holds
+  at `e2d6374` unless it says otherwise.
+
+  **What was read, and how.** Whole, with the text in front of the session:
+  the entry, lines 5563 to 5905, and the audit of 12 November 2026, lines
+  5324 to 5562, as the form; `bin/devloop-bounded`; the seven blocks of
+  `docs/defects.md` at lines 1292, 1300, 1387, 1435, 1443, 1459 and 1467;
+  `docs/plan.md` lines 1043 to 1143; `docs/skill-conventions.md` lines 1761
+  to 1960, 2165 to 2237 and 3940 to 4446; the head of
+  `scripts/devloop-stock-take`, lines 1 to 100, 238 to 385, 458 to 587 and
+  676 to 934; the change of the table by pull request #242; the report of
+  that build on this machine at the places a statement rests on; every
+  place a statement names, with the lines around it. The branch of #242 was
+  fetched by its reference, four commits, the tree of its head equal to the
+  squash commit on main, `git diff --stat` empty. The tool ran in the clone
+  at `f06f34c` and at the second, the third and the fourth commit,
+  `origin/main` standing at `f06f34c` there. What the entry measured on the
+  Mac, in a container or under load was not measured again: samples were
+  held against the report of the build, and three of the sources it cites
+  were read at the lines named, `jobs.c` lines 1695, 1746 to 1747 and 1817
+  of bash 3.2.57, `bsd/kern/kern_sig.c` line 1715 of xnu-12377.121.6 and
+  `winsup/cygwin/signal.cc` lines 363 to 364 of the runtime at 5a1665c8.
+  Every sample stands but one the report does not carry, "ten looks 6 and
+  20 milliseconds", line 5665, which is neither confirmed nor refuted here.
+
+  **The entry against the code, the documents, the table and its commits.**
+  Held: what the entry says of its four commits and their files, of the
+  version, of a line of a file of this repository, of the rows of the table
+  and their counts at each commit, of the Fix, the Status and the notes of
+  the blocks, of the function `stands` and the two starts as the program
+  carries them, of the cases of the self-test, and every figure of the tool
+  at `f06f34c`, after the second commit and after the third, which the tool
+  printed again in the clone, figure for figure. The entry holds in what
+  was held but for one sentence:
+  - "and the log of one job, with gh run view", lines 5591 to 5592: the
+    logs of two jobs of run 43017830242, 130513239539 on windows-latest,
+    which the entry cites at line 5634, and 130513239646 on alpine, cited
+    at line 5830, both named by the report of the build. Said right here,
+    the entry standing as written.
+  No line number of the entry is wrong, and nothing in it is corrected in
+  place. One figure of the program's head differs from the entry, the block
+  below.
+
+  **The checks on GitHub**, read off the logs of run 43401195658 at the
+  third commit, `4718bcd`, and of run 43405794553 at the fourth, `7d2b943`,
+  five jobs each and every one green. The self-test of `bin/devloop-bounded`
+  passes with 19 cases on alpine, macos-latest and ubuntu-latest and with 18
+  on windows-latest in both runs, as the entry has it at lines 5686 to 5687
+  and 5876 to 5877. Its case "does not end, all of it ended on the SIGTERM"
+  stands after the line before it, in the job on alpine, 1.007 seconds in
+  the first run, job 131804163902 at 09:25:52 UTC, and 1.011 in the second,
+  job 131819709362 at 10:01:11, where the three cases in which the bound
+  fires on a command that takes SIGTERM stood 2.016 to 2.027 seconds after
+  theirs in run 43017830242; and in the job on windows-latest 1.169
+  seconds, job 131804165381 at 09:27:22, and 1.188, job 131819709305 at
+  10:02:43, seven tenths short of the 1900 milliseconds the case allows.
+  The characters "child setpgid" stand in no job of either run. So what the
+  program's head calls not measured under Windows with Git Bash, lines 181
+  to 183 and 217 to 218, the job has measured there first, as those
+  sentences say it would, as far as the self-test asks: its eighteen cases,
+  the four on the descriptors and the new one among them. The head stands,
+  this audit changing no code.
+
+  **Decided on 13 November 2026**, on the should of the block at line 1443
+  of `docs/defects.md`, on the line of bash in a command's stderr: the
+  should names the one line the shell writes for a command it cannot start
+  as what reaches the command's stderr beside what the command writes. The
+  old should read "nothing but what the command itself writes reaches its
+  stderr through `bin/devloop-bounded`, no line of the shell that starts it,
+  at every run on every system, and the self-test of
+  `bin/devloop-tool-state` passes its case of a command that finds no node
+  at every run on every system on which the step hooks on every system runs
+  it"; the new one, in the wording the person approved and in the field
+  Should of the block since this commit, reads "nothing but what the command
+  itself writes reaches its stderr through `bin/devloop-bounded`, no line of
+  the shell that starts it but the one it writes for a command it cannot
+  start, at every run on every system, and the self-test of
+  `bin/devloop-tool-state` passes its case of a command that finds no node
+  at every run on every system on which the step hooks on every system runs
+  it". Reason: the line the shell writes for a command it cannot start is
+  the one account of why nothing ran, and the build leaves it, line 5725.
+  The order names nothing that was not chosen; what the decision leaves
+  behind is the should as it stood, which that line breaks wherever a
+  command cannot be started. No code changes with the decision and no run
+  is touched, a run on a defect counting by the last change to its `Fix`
+  line alone; the note of the block names the change. What the should asks
+  "at every run on every system" the start with the stderr the shell has
+  does not meet, measured in 1 of 20000 runs with the seven descriptors
+  held, the block closed below; decided on the report of this day, the
+  should says so, as the decision of 10 November 2026 narrowed one for a
+  block that reads Walked, lines 4525 to 4526: the field Should carries the
+  approved wording narrowed by "where its caller leaves one of the
+  descriptors 3 to 9 free, the start where it holds them all being left on
+  purpose by the block of this milestone on the two starts". The line of the
+  fixed form, the title as the tool reads it:
+
+  Should changed: on macOS bin/devloop-bounded passed a line of bash on setpgid into the stderr of a command that ended at once, the self-test of bin/devloop-tool-state red once by it in the run of the workflow's steps
+
+  **Decided on 13 November 2026**, on the two blocks of what the build of
+  this day does not reach, lines 1459 and 1467 of `docs/defects.md`: each is
+  closed as left on purpose where its reasons hold, each reason held
+  against the code and the text of the block before the closing. For the
+  block at line 1467 they hold, and
+  both halves of the block on the two starts are left on purpose: the
+  start with the stderr the shell has, and a line of bash on a fork that
+  fails reaching nobody. Reason: that start stands only where the caller
+  holds every descriptor from 3 to 9 or has closed its stderr, and no
+  caller in the repository does; and for the line of bash on a fork that
+  fails there is no way that shows it and keeps the line on setpgid out,
+  both written at the same fork to the same stderr. Not chosen: a
+  descriptor above 9, which bash may use itself by the note of the block.
+  Held: the program takes that start at its line 484 exactly where the
+  search of line 480 finds 9 down to 3 all open or `: >&2` fails at line
+  481; the callers, searched for by this audit, run the program at
+  `bin/devloop-setup-state` line 209, `bin/devloop-tool-state` line 482,
+  `bin/devloop-start-conditions` line 341 and `bin/devloop-arm` line 328,
+  in `shared/fetch-three-times.md`, `shared/branch-deletion.md` and
+  `skills/build-work/SKILL.md`, and in the hooks step of the workflow
+  through the self-tests, none with a descriptor from 3 to 9 or a closed
+  stderr on its line; over `bin`, `hooks`, `scripts`, `skills`, `shared`
+  and `.github` no program opens a descriptor above 2 that a later call of
+  the bound would inherit, the one holder being awk's own descriptor 3 at
+  line 918 of `bin/devloop-command-reader`; a Bash call of Claude Code
+  holds none of 3 to 9 and has its stderr open, looked at in the session of
+  this audit; and `jobs.c` of bash 3.2.57 writes the line on the fork in
+  the parent at line 1695 and the line on setpgid in the child at lines
+  1746 to 1747, each to the stderr the shell has at that fork. The Status
+  of the block carries the closing with the line above as its proof; its
+  Fix stays none and its Should stands.
+  The block at line 1459, on the look that rests on `/proc`, is not closed
+  here. The decision: left on purpose as well. Its reasons: where `/proc`
+  is not there or shows the shell under another number the watchdog waits
+  the second as before 0.184.0, no worse than before; and a process the
+  look does not see is sent SIGKILL at once and not a second later, where
+  one born after the look listed the group was born after the SIGTERM and
+  never got it, and one of another user under hidepid is not reached by a
+  SIGKILL of the bound's user. Not chosen: ps as a second way, a process
+  start for every look and missing on slim Linux images. Held against the
+  code, the three statements stand: `stands` answers as kill does at its
+  lines 340 to 343 where `/proc/self/stat` is not there or names another
+  number, and it is called at line 364 alone, in the watchdog and in the
+  helper after `end_group`, lines 496 and 502, so that every look comes
+  after the SIGTERM. What the reasons do not name: whether hidepid hides
+  from the shell a process of its own user as well, one that runs a
+  set-user-ID or set-group-ID program or is not dumpable, which a SIGKILL
+  of that user reaches and which would then lose the second it had before
+  0.184.0. That is read in no source and not measured by this audit, the
+  order allowing neither. Decided on the report of this day: the block is
+  not left on purpose; where `/proc` is mounted with hidepid the look counts
+  as before 0.184.0, by `kill -0` alone, built with the next change to
+  `bin/devloop-bounded`, which reads the kernel's rule at its source,
+  measures it in a container and writes the block's Should; until then the
+  block stands as it stood, Recorded, not built.
+
+  **Decided on 13 November 2026**, on the names of the things in
+  `docs/stock-take.tsv`: they keep their three parts, source, unit and
+  outcome, and speaking names are rejected. The decision stands with its
+  reason in the entry this branch adds under "## Decisions taken against",
+  on speaking names for the things of the stock-take. Counted at `e2d6374`:
+  1868 things and 2462 runs keyed to a thing by its name, 4330 rows, the
+  figure of the order; and 3226 records that name a thing after "part of:"
+  beside them, which the order does not count and the tool holds against
+  the names as well, line 2912 of `scripts/devloop-stock-take`.
+
+  **Decided on 13 November 2026**, on a thing whose name names a green and a
+  red end at once: it is split in two, one for each outcome, as the
+  self-test of `bin/devloop-bounded` stands at lines 2577 and 2578 of the
+  table. Such a thing that carries runs is renamed to its green end,
+  together with all its runs in the same commit, and its note names the old
+  name; the sentence of the head of `scripts/devloop-stock-take` at lines
+  379 to 381 says then that a thing with runs keeps its name unless it is
+  renamed with all its runs in the same commit; and the red end stands as a
+  new thing, Built, never walked, until a run brings it about on purpose.
+  Reason: every outcome is a thing, line 90 of that head, the tool must
+  never overcount, line 566, and every branch is walked once on purpose,
+  the unwanted side included, line 91 of `docs/plan.md`. Not chosen: the old
+  name kept with the note alone saying what it means; the green runs taken
+  out; and one red run alone added to the thing that names both. Not built
+  here: the sentence stands under `scripts/`, a shipped directory; the
+  second of the two orders before (2) builds it and brings about on purpose
+  the red end of the programs it changes, and `docs/plan.md` says so under
+  milestone 12 since this commit, in a dated sentence after the decision of
+  12 November 2026. Held against the table at `e2d6374`, with the ten rows
+  the audit of 12 November 2026 names at lines 5524 to 5542: ten green runs
+  stand on six such things, four of the runs count, one each on four things
+  that read Walked by them, and two of the six read Built, never walked,
+  where the order has ten runs counting for six; and 402 records name one
+  of the six after "part of:", which a renaming carries with the runs, the
+  tool rejecting a record that names no thing, so that the sentence in the
+  plan names them.
+
+  **The control documents against the build.** Searched from the subject,
+  the program and what the build changed in it, with `/usr/bin/grep -rn -E`
+  for fourteen short patterns, `devloop-bounded`, `zombie|reap`,
+  `setpgid|job control`, `watchdog`, `kill -0|signal 0`, `SIGKILL`,
+  `descriptor`, the counts of cases, `first line of`, `/proc`, `two
+  seconds|second later|a second after|one second|its second`, `process
+  group`, the output passing through unchanged, and what is not measured
+  under Windows, over the roadmap and its archive, `docs/defects.md`,
+  `docs/plan.md`, `docs/rationale.md`, `docs/skill-conventions.md`,
+  `README.md`, `scripts/devloop-stock-take`, `skills`, `shared`, `bin`,
+  `hooks`, `output-styles` and `.github`: 751 lines at `e2d6374`, every one
+  decided in the report. Of them 185 stand in the archive and 273 in dated
+  entries of this file, 79 in the entry held; 95 in 35 blocks of
+  `docs/defects.md`, the title, the Should, the Fix and the Status of each
+  read; 12 in `docs/plan.md`, 13 in `docs/skill-conventions.md`, 7 in
+  `docs/rationale.md`, none in `README.md`. Mended:
+  - `docs/plan.md` lines 1137 to 1139, the paragraph on the second piece of
+    milestone 12, "what that build does not reach stands in two blocks of
+    this milestone with Fix none, and under Windows with Git Bash it is
+    measured by the job first": a sentence after it says what the job
+    measured, the two runs above, and that the block on the two starts is
+    closed as left on purpose.
+  No other sentence read stopped holding: `docs/skill-conventions.md` lines
+  2198 to 2212 hold as the entry says, the heads of `bin/devloop-arm`,
+  `bin/devloop-setup-state`, `bin/devloop-start-conditions` and
+  `bin/devloop-tool-state` say of the bound what holds, the last reading
+  the first line of a bounded command's stderr as its message at its line
+  479, and `README.md` says nothing of the program.
+
+  **`docs/rationale.md` against the loaded texts.** `git diff --stat
+  f06f34c e2d6374 -- skills shared output-styles` prints nothing: no text
+  the set loads changed since the last audit, and nothing was held.
+
+  **A block on two places of the program's head**, written here with Fix
+  none, Recorded, not built, the last block under "## Milestone 12": "the
+  head of bin/devloop-bounded gives the self-test's call under CPU load on
+  macOS as 1017 to 1032 milliseconds where the build's report and the
+  entry of that day give 1018 to 1032, and calls the change of that day not
+  measured under Windows with Git Bash where the job has measured it". The
+  two sentences on Windows, at lines 181 to 183 and 217 to 218, say the job
+  measures there first; it has, runs 43401195658 and 43405794553, eighteen
+  cases passed. The head says at its lines 257 to
+  258 "under CPU load the call took 1017 to 1032 milliseconds on macOS";
+  the entry says 1018 to 1032 at line 5698, and the report of the build
+  1018 to 1030 under twenty busy loops and 1021 to 1032 under sixty. Its
+  Should: the head gives the figure the report and the entry give. The
+  sentence stands, this audit changing no code. Under milestone 12 with the
+  seven blocks the entries of 10, 11 and 13 November 2026 wrote on the
+  bound; the groups of the sorting, lines 1146 to 1151, name the bound
+  under milestone 13 as well; decided on the report of this day: under
+  milestone 12, repaired with the next change to the program.
+
+  The tool, before, on `e2d6374`: broken records 0, uncovered lines 0 of
+  4610; Undetermined 24, Recorded, not built 262, Built, never walked 1506,
+  Walked 722, Closed 70; milestone 12 109 blocks, Recorded, not built 45,
+  Built, never walked 46, Walked 14, Closed 4; blocks with "not stated"
+  345. After: Closed 71 and Recorded, not built 262, one block closed and
+  one written; milestone 12 110 blocks, Recorded, not built 45, Closed 5;
+  every other figure as before; blocks held against the branch point:
+  removed 0, renamed 0, Should changed 1, added 1, with one line of the
+  fixed forms; Walked on this branch without a run the branch adds: 0. The
+  order measured a trial build of the four decisions alone at Recorded, not
+  built 260 and Closed 72, milestone 12 109 blocks with 43 and 6: this
+  commit differs from it by the block at line 1459, not closed, and by the
+  block written here. The self-test of the tool: 159 cases, 148 of 148
+  messages asserted by a case, before and after. Nineteen of the twenty
+  checks before a handover print after what they printed on `e2d6374`, line
+  for line, and the sixteenth, the run of the workflow's steps, what it
+  printed there but for the tool's lines above and the time in one record,
+  green before and after, 8 steps run. Its title step reads the head of a
+  new entry off `git diff origin/main...HEAD`, the commits of the branch,
+  and so read none before the one commit of this branch; the two heads this
+  branch adds were held to the step's three rules by hand before it, 68 and
+  48 characters and no find, and the report says what the step printed
+  after it. No run is recorded.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
@@ -6160,6 +6455,22 @@ of them if the reason stops holding — the reason is the point, not the verdict
   removes the cause closes through `gh` itself, outside the Bash tool of
   the run. Reopen if a run closes an install issue by hand after the
   program ran before every read of an issue.
+- **Speaking names for the things of the stock-take.** The things of
+  `docs/stock-take.tsv` would be named by a phrase that says what each is,
+  in place of the three parts every name has, source, unit and outcome,
+  "<source> / <unit> / <outcome>". Rejected on 13 November 2026, in the
+  roadmap entry of that date on the one entry held, the decision of the
+  person: the tool holds the first two parts of a name against the site of
+  its thing, rejecting a source that matches the site of no thing and a
+  unit that does not match the site's file, lines 367 to 370 of the head of
+  `scripts/devloop-stock-take`; and on the names hang 1868 things and the
+  2462 runs keyed to one by its name, 4330 rows of the table counted at
+  `e2d6374`, with 3226 records beside them that name a thing after "part
+  of:". Speaking names would have rewritten those rows, changed the tool
+  and its self-test, and taken that check away or asked for it to be built
+  anew, for readability alone. The names stay as they are. Reopen if the
+  tool comes to hold a thing against its site by something other than its
+  name — a condition derived from the reason, the decision naming none.
 
 ## Names that were rejected
 

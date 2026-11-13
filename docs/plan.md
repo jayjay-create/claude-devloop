@@ -1105,6 +1105,28 @@ remaining time limits carry the fault of the two findings of 11 November
 2026, with measurements and readings in the blocks. Not chosen: both orders
 at the end of the milestone; the pull requests of (2) to (7) would then run
 with the self-test that goes red at random.
+Decided on 13 November 2026 by the person, the roadmap entry of that date
+on the one entry held: a thing of `docs/stock-take.tsv` whose name names a
+green and a red end at once is split in two, one for each outcome, as the
+self-test of `bin/devloop-bounded` stands in two things. Such a thing that
+carries runs is renamed to its green end, together with all its runs in the
+same commit, its note naming the old name, and the sentence of the head of
+`scripts/devloop-stock-take` on a thing whose name no longer says what the
+thing says then reads that a thing with runs keeps its name unless it is
+renamed with all its runs in the same commit; the red end stands as a new
+thing, Built, never walked, until a run brings it about on purpose. The
+records that name such a thing after "part of:" follow the name, the tool
+rejecting one that names no thing. Built by the second of the two orders
+before (2), which changes that sentence in a shipped directory and brings
+about on purpose the red end of the programs it changes; the audit of that
+day builds nothing of it. Reason: every outcome is a thing, the tool's rule
+may undercount and must never overcount, and every branch is walked once on
+purpose, the unwanted side included, the third of the five sentences above;
+ten green runs stand on six things that name both ends, four of them
+counting on that day, and no run has brought the red end of one of the six
+about. Not chosen: the old name kept with the note alone saying what it
+means; the green runs taken out; and one red run alone added to the thing
+that names both.
 A first piece stands since 14 October 2026, the fourth addendum of
 the roadmap entry on the command reader: the reader runs on the three
 systems, and a workflow job runs its self-test and every hook on
@@ -1136,7 +1158,12 @@ everything of the command has ended on the SIGTERM, under Linux also where
 nobody reaps what has ended, as in the container of a job on GitHub, and no
 line of bash's own stands in a command's stderr; what that build does not
 reach stands in two blocks of this milestone with Fix none, and under
-Windows with Git Bash it is measured by the job first. Of the rest nothing
+Windows with Git Bash it is measured by the job first. The job measured it
+on that day, runs 43401195658 and 43405794553 of pull request #242: the
+self-test green under Windows with Git Bash with eighteen cases, its new
+case 1.17 and 1.19 seconds after the line before it; and of the two blocks
+the one on the two starts is closed since that day as left on purpose, the
+roadmap entry of that date on the one entry held. Of the rest nothing
 is built yet: the second order before (2), the remaining time limits, and
 (2) to (7), `shell: bash` in every skill and the guard for PowerShell among
 them. Until 13 November 2026 this paragraph said that nothing of the orders
