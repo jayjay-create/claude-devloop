@@ -1129,9 +1129,18 @@ with Git Bash as far as the block of this milestone on the limit of the
 runtime's walk says; its self-test and that of `bin/devloop-setup-state`
 run in the job on all four systems; and `scripts/devloop-run-workflow` ends
 a step past the job's timeout with everything it started on macOS, Linux
-and Alpine. Of the rest nothing is built yet: the orders before (2) of 12
-November 2026 and (2) to (7), `shell: bash` in every skill and the guard for
-PowerShell among them.
+and Alpine. Since 13 November 2026, the first of the two orders before (2)
+of the decision of 12 November 2026, the roadmap entry of that date on the
+bound and the zombie: the bound returns without the watchdog's second where
+everything of the command has ended on the SIGTERM, under Linux also where
+nobody reaps what has ended, as in the container of a job on GitHub, and no
+line of bash's own stands in a command's stderr; what that build does not
+reach stands in two blocks of this milestone with Fix none, and under
+Windows with Git Bash it is measured by the job first. Of the rest nothing
+is built yet: the second order before (2), the remaining time limits, and
+(2) to (7), `shell: bash` in every skill and the guard for PowerShell among
+them. Until 13 November 2026 this paragraph said that nothing of the orders
+before (2) was built.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

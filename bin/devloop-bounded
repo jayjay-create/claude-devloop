@@ -151,6 +151,72 @@
 # processes SIGTERM reaches and no other, the limit above standing as it
 # stands, and ends those of them that ignored SIGTERM.
 #
+# What stands of the group, since 13 November 2026: a process of it that has
+# not ended. Until that day the watchdog's look was kill with the signal 0 to
+# the group and nothing else, and under Linux that finds an ended process
+# nobody has reaped, a zombie, as well: in a container whose process 1 does
+# not reap, as tail -f /dev/null keeps the container of a job on GitHub, a
+# process of the command that had lost its parent and ended on the SIGTERM
+# stood in the group so, and the watchdog looked out its whole second for it,
+# devloop-bounded 1 sh -c 'sleep 7331 & sleep 7333' back after 2.06 to 2.08
+# seconds in alpine:3.22 where everything had ended at the bound, measured on
+# 11 and 13 November 2026. Since that day the look under Linux reads the
+# processes of the group off /proc, the function stands below, and a zombie
+# counts for nothing: that call back after 1.01 to 1.02 seconds in the same
+# container, as in one whose process 1 reaps. The helper that ends the group
+# where this program is ended itself looks the same way and waits its half
+# second for no zombie. On macOS and under Windows with Git Bash the look is
+# kill with 0 as before, which counts no ended process there: measured on
+# macOS 26.6.2 and read in bsd/kern/kern_sig.c line 1715 of xnu-12377.121.6,
+# and read for Git Bash in winsup/cygwin/signal.cc lines 363 to 364 and
+# pinfo.cc lines 597 to 599 of the runtime named above, the self-test's cases
+# in which the bound fires on a command that takes SIGTERM 1.16 and 1.29
+# seconds after the line before them on windows-latest in run 43017830242.
+# What the look does not reach: where /proc is not there, or names the shell
+# by another number than bash knows it by, as in a namespace of process
+# numbers without a /proc of its own, the look is kill with 0 and the
+# watchdog waits for a zombie as before; and a process /proc does not show
+# the shell, another user's under hidepid, or one born after the look listed
+# the group while its parent ended before the look read it, counts as ended,
+# so that it is sent SIGKILL at once and not a second after the SIGTERM. Not
+# measured under Windows with Git Bash: anything of this change; the job
+# hooks on every system measures it there first.
+#
+# What reaches the command's stderr, since 13 November 2026: what the command
+# writes, and the one line the shell writes for a command it cannot start,
+# "command not found" or "bad interpreter" with exit 127 or 126, which says
+# alone why nothing ran and which the shell writes once the command's stderr
+# is set. Until that day a line of bash's own could stand there before the
+# command's: under job control bash puts a background job into its process
+# group from both sides of the fork, the child for itself and the parent for
+# the child, jobs.c lines 1746 and 1817 of bash 3.2.57, and on macOS the call
+# that loses that race can fail with EPERM though the group is made, measured
+# on 13 November 2026 with both calls made at once after each of 40000 forks,
+# the child's failing twice and the parent's twice, the child leading its
+# group after every one; the parent does not read its result, and the child
+# writes "child setpgid (N to N): Operation not permitted" to the shell's
+# stderr, line 1747, before the command's redirections. Measured on macOS
+# 26.6.2 with bash 3.2.57: the line in 6 of 20000 runs of a command that ends
+# at once on 11 November 2026 and in 21 of 40000 on 13 November 2026, every
+# exit code as it should be; of 14 runs with the line in which the command
+# looked, 4 named the command and 10 the watchdog, the second of the two
+# starts, and in every one the command led a group of its own. The self-test
+# of bin/devloop-tool-state, which reads the first line of a bounded
+# command's stderr as its message, was red once by it. Since that day the
+# shell's stderr points to /dev/null while it forks at those two starts, and
+# the command has its caller's stderr back before it starts, the comment at
+# the starts below. What goes with it: a line of bash on a fork that fails at
+# one of the two starts reaches nobody either. What it does not reach: with
+# the descriptors 3 to 9 all held by the caller the command starts with the
+# stderr the shell has, and the line can stand there on macOS as before; with
+# the caller's stderr closed it starts the same way, a line having nowhere to
+# go. Why the call fails is not read: bsd/kern/kern_prot.c lines 608 to 610
+# and bsd/kern/kern_proc.c lines 2982 to 3062 of xnu-12377.121.6, the nearest
+# published source, give a process that calls for itself EPERM only where it
+# leads a session, and the kernel of that Mac, xnu-12377.161.14, is not
+# published. Not measured under Windows with Git Bash: the two starts as they
+# stand since that day; the job hooks on every system measures them first.
+#
 # --self-test produces every outcome above once without a network, prints
 # one line per case and exits 1 on the first that does not come out as this
 # header says. It needs bash, sh, sleep, cat, uname and git, and no GNU tool
@@ -172,7 +238,32 @@
 # that it holds the start of this program, before its bound begins to run,
 # and the wait for everything that holds the output; a case that is green has
 # measured less than the two seconds after the bound, never more. The other
-# cases are held to whole seconds, the shell's SECONDS, as before.
+# cases are held to whole seconds, the shell's SECONDS, as before, but for
+# the one that follows.
+# The command that ends on the SIGTERM with all it started, since 13 November
+# 2026, on all four systems: sh -c 'sleep 7373 & sleep 7375', whose first
+# sleep has lost its parent once the shell has ended; the case asks for the
+# line, for 124, for the pipe released and for the whole call back within
+# 1900 milliseconds by the same time of bash, the bound of one second and
+# nine tenths. It is red where the watchdog waits out its second for a
+# process that has ended: such a call is not back before 2000, and a copy of
+# this program with the look of before failed the case with 2056 in a
+# container of alpine:3.22 kept by tail -f /dev/null, as the job hooks on
+# every system (alpine) runs the self-test, and passed it in one started with
+# docker run --init. Why 1900: under Windows with Git Bash, where a process
+# start costs most, the cases in which the bound fires on a command that
+# takes SIGTERM stood 1.16 and 1.29 seconds after the line before them in run
+# 43017830242, the end of the case before and the case's own checks lying in
+# that, so that six tenths are left there; under CPU load the call took 1017
+# to 1032 milliseconds on macOS, twenty and sixty busy loops on ten cores,
+# and 1066 to 1416 in that container with 1100 zombies standing in it, where
+# the copy with the look of before took 2048 to 2161, and the self-test
+# passed eight times under each load on both, measured on 13 November 2026.
+# Four cases on the descriptors, since the same day, on all four systems:
+# descriptor 9 standing free is closed for the command; held by the caller it
+# reaches the command; with 3 to 9 all held, and with the caller's stderr
+# closed, the two cases in which the command starts with the stderr the shell
+# has, the command runs all the same, its output and exit code through.
 #
 # The fetch over a transport that never answers checks on every system what
 # the bound promises there, since the change of 10 November 2026 after the
@@ -235,15 +326,42 @@ usage() { echo "$me: $1" >&2; exit 2; }
 # the whole group at once. The group is named by its leader's number.
 end_group() { kill -TERM -- "$1" 2>/dev/null; kill -TERM -- "-$1" 2>/dev/null; }
 
+# stands GROUP: whether a process of the group stands that has not ended.
+# kill with the signal 0 says so on macOS and under Windows with Git Bash;
+# under Linux it finds an ended process that nobody has reaped as well, so
+# that there every process of the group is read off /proc, with read and no
+# process started: the one found running last or the leader first, then all,
+# and the group stands where one of them is no zombie, or is one whose first
+# thread has ended while another runs, more than one entry under task. Where
+# /proc is not there, or does not name this shell by the number bash knows it
+# by, the answer of kill stands, as on the other systems. The number found
+# running is kept in alive, a variable of the caller.
+stands() {
+  kill -0 -- "-$1" 2>/dev/null || return 1
+  case ${OSTYPE:-} in linux*) ;; *) return 0 ;; esac
+  local f l h t
+  read -r l < /proc/self/stat && [ "${l%% *}" = "${BASHPID:-}" ] || return 0
+  for f in "/proc/${alive:-$1}" /proc/[0-9]*; do
+    read -r l < "$f/stat" || continue
+    # a line that does not hold the group's number as a field is of no process of the group; one that does is taken apart behind the name, which ends at the last ") ": the state, the parent, the group
+    case $l in *" $1 "*) ;; *) continue ;; esac
+    h=${l%) *}; l=${l:${#h}+2}; h=${l#* * }
+    [ "${h%% *}" = "$1" ] || continue
+    case $l in [ZX]\ *) t=("$f"/task/[0-9]*); [ "${#t[@]}" -gt 1 ] || continue ;; esac
+    alive=${f#/proc/}; return 0
+  done
+  return 1
+} 2>/dev/null
+
 # kill_group_after GROUP DURATION: looks every tenth of a second whether
 # anything of the group stands and sends it SIGKILL once DURATION, what sleep
 # takes, has passed or nothing stands any more, which then reaches nothing.
 # The duration is a sleep of its own, ended by SIGKILL, since it is started
 # where SIGTERM is ignored and inherits that, and reaped before this returns.
 kill_group_after() {
-  local t
+  local t alive=
   sleep "$2" & t=$!
-  while kill -0 -- "-$1" 2>/dev/null && kill -0 "$t" 2>/dev/null; do sleep 0.1; done
+  while stands "$1" && kill -0 "$t" 2>/dev/null; do sleep 0.1; done
   kill -KILL -- "-$1" 2>/dev/null
   kill -KILL "$t" 2>/dev/null; wait "$t" 2>/dev/null
 }
@@ -295,12 +413,27 @@ selftest() {
   expect "input through: cat prints what it was fed" 0 "in"
   within "input through: back at once" 2
   released "input through: nothing of the bound runs on"
+  # the descriptors of the caller reach the command as they are, whatever the start does with one of them for the command's stderr: 9 free, taken and closed again for the command; 9 held, left alone; 3 to 9 all held and stderr closed, the two cases in which the command starts with the stderr the shell has
+  k=$((k+1)); t0=$SECONDS; out=$("$self" 7339 sh -c '( : >&9 ) 2>/dev/null && echo open || echo closed; echo err >&2' 2>&1 3> >(release) 9>&-); rc=$?; t1=$((SECONDS - t0))
+  expect "descriptor 9 free: closed for the command, stderr through" 0 "closed" "err"
+  k=$((k+1)); t0=$SECONDS; out=$("$self" 7339 sh -c 'echo nine >&9; echo err >&2' 2>&1 3> >(release) 9> "$T/d9"); rc=$?; t1=$((SECONDS - t0)); out="$out $(cat "$T/d9")"
+  expect "descriptor 9 held by the caller: reaches the command, stderr through" 0 "err" "nine"
+  k=$((k+1)); t0=$SECONDS; out=$("$self" 7339 sh -c 'for d in 4 5 6 7 8 9; do echo "d$d" >&$d; done; echo err >&2' 2>&1 3> >(release) 4> "$T/d4" 5> "$T/d5" 6> "$T/d6" 7> "$T/d7" 8> "$T/d8" 9> "$T/d9"); rc=$?; t1=$((SECONDS - t0)); out="$out $(cat "$T"/d[4-9])"
+  expect "descriptors 3 to 9 all held by the caller: reach the command, stderr through" 0 "err" "d4" "d5" "d6" "d7" "d8" "d9"
+  k=$((k+1)); t0=$SECONDS; out=$("$self" 7339 sh -c 'echo out; exit 5' 2>&- 3> >(release)); rc=$?; t1=$((SECONDS - t0))
+  expect "stderr closed by the caller: output and exit code through" 5 "out"
+  released "stderr closed by the caller: nothing of the bound runs on"
   # does not end: ended with what it started, the line, 124
   run 1 sh -c 'sleep 7331 & sleep 7333'
   expect "does not end: ended with what it started, the line, exit 124" 124 "no answer within 1 seconds: sh -c sleep 7331 & sleep 7333"
   absent "Terminated" "does not end: ended with what it started, the line, exit 124"
   within "does not end: back at the bound" 3
   released "does not end: what the command started is ended too"
+  # does not end, and what it started ends on the SIGTERM with it, a sleep that has lost its parent by then: the whole call back within 1900 milliseconds, the bound of one second and nine tenths, short of the second the watchdog allows what ignores the signal; red where the watchdog waits that second out for a process that has ended and that nobody reaps, as in a container whose process 1 does not
+  timed 1 sh -c 'sleep 7373 & sleep 7375'
+  expect "does not end, all of it ended on the SIGTERM: the line, exit 124" 124 "no answer within 1 seconds: sh -c sleep 7373 & sleep 7375"
+  [ "$ms" -le 1900 ] || fail "does not end, all of it ended on the SIGTERM: back after $ms milliseconds, expected at most 1900, the bound of one second and nine tenths: the watchdog waited for a process that had ended"
+  released "does not end, all of it ended on the SIGTERM: nothing of it runs on"
   # does not end and ignores SIGTERM, a shell and the two sleeps it starts: ended by SIGKILL a second after the bound, the line, 124, the whole call back within 3000 milliseconds, the bound of one second and the two seconds the header allows after it
   timed 1 sh -c 'trap "" TERM; sleep 7353 & sleep 7355'
   expect "ignores SIGTERM: ended all the same, the line, exit 124" 124 'no answer within 1 seconds: sh -c trap "" TERM; sleep 7353 & sleep 7355'
@@ -337,8 +470,19 @@ secs=$1; shift
 
 # Job control for the two starts below and nothing else: under it bash puts
 # a background job into a process group of its own, named by its number.
+# At each of the two the shell's stderr points nowhere while it forks, so
+# that what bash itself writes there, its line on setpgid, reaches nobody;
+# the command has its caller's stderr back before it starts, off a descriptor
+# that stands free, the first of 9 down to 3, closed again for the command.
+# With none of them free, or with the caller's stderr closed, the command
+# starts with the stderr the shell has.
 set -m
-"$@" <&0 &
+e=9; while [ "$e" -ge 3 ] && { : >&"$e"; } 2>/dev/null; do e=$((e-1)); done
+if [ "$e" -ge 3 ] && : >&2; then
+  eval "{ \"\$@\" <&0 2>&$e $e>&- & } $e>&2 2>/dev/null"
+else
+  "$@" <&0 &
+fi
 pid=$!
 # The watchdog sleeps the bound out, ends the command's group by SIGTERM,
 # sends what of it stands one second later SIGKILL and exits 99, deaf to
@@ -349,7 +493,7 @@ pid=$!
 # job table so that no moment is missed, waits for it and exits 143, so
 # that nothing of it runs on; its output goes nowhere, so that it holds no
 # pipe open.
-( trap 'kill $(jobs -p) 2>/dev/null; wait; exit 143' TERM; sleep "$secs" & wait; trap '' TERM; end_group "$pid"; kill_group_after "$pid" 1; exit 99 ) >/dev/null 2>&1 &
+{ ( trap 'kill $(jobs -p) 2>/dev/null; wait; exit 143' TERM; sleep "$secs" & wait; trap '' TERM; end_group "$pid"; kill_group_after "$pid" 1; exit 99 ) >/dev/null 2>&1 & } 2>/dev/null
 wd=$!
 set +m
 # Ended itself: the command's group by SIGTERM, what of it stands half a
