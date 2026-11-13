@@ -5560,6 +5560,215 @@ and for the proofs of closings.
   rules by hand before it, 63 characters and no find, and the report says
   what the step printed after it. No run is recorded.
 
+- **The bound waits for no zombie, bash's line stays out of stderr**
+
+  13 November 2026, version 0.184.0: `bin/devloop-bounded` changes; nothing
+  under `skills/`, `shared/`, `hooks/`, `scripts/` or `output-styles/`
+  changes, and `.github/workflows/stock-take.yml` and `README.md` do not. On
+  `task/bound-zombie-setpgid`, off `origin/main` at `f06f34c`, in three
+  commits: the code with the version, raised once; the documents,
+  `docs/defects.md`, `docs/stock-take.tsv`, `docs/plan.md` and this entry; and
+  the runs, measured at the second commit with the tree clean. The order, of
+  this day: the first of the two orders that the decision of 12 November 2026
+  puts before order (2) of milestone 12, the two blocks on
+  `bin/devloop-bounded` from the branch of 11 November 2026, at lines 1435 and
+  1443 of `docs/defects.md` at `f06f34c`, each measured before it is built and
+  built with its should as it stands: "where the command and everything it
+  started have ended on the SIGTERM, the bound returns without waiting out the
+  second, also in a container whose process 1 does not reap what lost its
+  parent", and "nothing but what the command itself writes reaches its stderr
+  through `bin/devloop-bounded`, no line of the shell that starts it, at every
+  run on every system, and the self-test of `bin/devloop-tool-state` passes
+  its case of a command that finds no node at every run on every system on
+  which the step hooks on every system runs it". Written by Claude Code from
+  the person's order of this day. No session log was read. Nothing was
+  installed outside throwaway containers of `alpine:3.22`, which got bash, git
+  and python3 with apk and, one started with --privileged and removed again,
+  the unshare of util-linux. Read from outside, each fetched without a
+  sign-in: the release bash-3.2.57 from ftp.gnu.org, seven files of
+  apple-oss-distributions/xnu at xnu-12377.121.6 and three of
+  git-for-windows/msys2-runtime at 5a1665c8; and the log of one job, with gh
+  run view. What is measured under Windows is measured by the job hooks on
+  every system and by nothing here, this machine running macOS. The identity
+  under which git commits here was neither set nor read; no subagent was used.
+  The report stands on this machine as `~/devloop-bound-zombie-setpgid.md`.
+
+  **Measured before the build, at `f06f34c`.** The second in the container, on
+  the person's Mac in two throwaway containers of `alpine:3.22`, bash 5.2.37
+  and busybox 1.37.0, the repository mounted read-only, entered with docker
+  exec, the whole call timed by bash's own time, five times each: in the one
+  kept by `tail -f /dev/null`, `bin/devloop-bounded 1 sh -c 'sleep 7331 &
+  sleep 7333'` back after 2.056 to 2.075 seconds, `bin/devloop-bounded 1 sh -c
+  'sleep 7357'` after 1.008 to 1.013, and `bin/devloop-bounded 1
+  bin/devloop-bounded 60 sh -c 'sleep 7357 & sleep 7359'` after 2.052 to
+  2.063; in the one started with `docker run --init`, after 1.009 to 1.013,
+  1.010 to 1.013 and 1.115 to 1.120; every call with its line and 124, fifteen
+  zombies standing in the first container afterwards and none in the second.
+  The line of bash, on that Mac without load, macOS 26.6.2 with
+  xnu-12377.161.14 and bash 3.2.57, in a bash started with `--noprofile
+  --norc`, the stderr of every run read for a line the command does not write:
+  in 10 of 20000 runs of `bin/devloop-bounded 60 sh -c 'exit 3'` and in 11 of
+  20000 runs of the bound over a script whose interpreter is missing,
+  `#!/usr/bin/env` with a name that stands nowhere, every exit code 3 and 127,
+  each of the 21 lines of the form "bin/devloop-bounded: child setpgid (N to
+  N): Operation not permitted". Which of the two starts under job control
+  prints it, measured with 20000 runs more in which the command looks with ps
+  once its stderr holds something, a look that costs a run without the line
+  one built-in test: both, 4 of 14 lines naming the command itself, the start
+  of line 341, and 10 the process after it, the watchdog, the start of line
+  352. Whether the command stood in a process group of its own in a run with
+  the line, not measured on 11 November 2026: in every one of the 14, and the
+  process the line names as well. Where bash prints it: `jobs.c` lines 1746 to
+  1747 of bash 3.2.57, in `make_child`, in the child after the fork and before
+  the command's redirections, the parent making the same call for the child at
+  line 1817 and not reading its result; Apple's own build of that bash is not
+  read. Why the call fails, measured: both calls made at once after each of
+  40000 forks, the child's failed with EPERM twice and the parent's twice, the
+  parent's with ESRCH nine times, and the child led its group after every one,
+  so that the call that loses the race fails though the group is made. Not
+  read: `bsd/kern/kern_prot.c` lines 608 to 610 and `bsd/kern/kern_proc.c`
+  lines 2982 to 3062 of xnu-12377.121.6, the nearest published source, give a
+  process that calls for itself EPERM only where it leads a session, and the
+  kernel of that Mac is not published. Under Windows with Git Bash, off the
+  log of job 130513239539 of run 43017830242: the self-test's cases "does not
+  end", "ignores SIGTERM" and the fetch stand 1.155, 2.343 and 1.293 seconds
+  after the line before them, so that the bound does not wait the second there
+  where a command takes SIGTERM; read for it in `winsup/cygwin/signal.cc`
+  lines 363 to 364 and `pinfo.cc` lines 597 to 599 of the runtime at 5a1665c8:
+  kill to a group passes over every process that has exited. The same on
+  macOS, measured with a zombie alone in its group, kill with the signal 0 to
+  the group failing, and read in `bsd/kern/kern_sig.c` line 1715 of
+  xnu-12377.121.6; under Linux that kill succeeds, measured in the container.
+  So Linux alone counts a process that has ended.
+
+  **The zombie.** Built: the look of the watchdog and of the helper is a
+  function of its own, `stands`, where it was kill with the signal 0 to the
+  group. Where that kill fails nothing stands, as before. Where it succeeds,
+  under Linux, read off `$OSTYPE`, and only where `/proc/self/stat` names the
+  shell by the number bash knows it by, `$BASHPID`, the function reads
+  `/proc/<number>/stat` with read, no process started: of the process found
+  running at the last look or of the group's leader first, then of every
+  process, a line that does not hold the group's number as a field passed over
+  before it is taken apart; and the group stands where a process of it is in
+  no state Z or X, or is a zombie with more than one entry under `task`, a
+  process whose first thread has ended while another runs. Not through ps,
+  which the note of the block named as the way, "not tried": a process start
+  for every look, and no ps on a Linux image that carries no procps. On macOS
+  and under Windows with Git Bash the look is that kill as before. Tried in
+  the container before the build: a zombie alone, kill succeeds and the
+  function says nothing stands; a zombie beside a process that ignores
+  SIGTERM, it stands; a python3 whose first thread ended by pthread_exit while
+  a second sleeps, state Z and two entries under `task`, it stands. What a
+  look costs there: 8 milliseconds over 613 processes with none of the group
+  running and 41 over 2613, and with one found, which the next look reads
+  first, ten looks 6 and 20 milliseconds; a first form that took every line
+  apart from its end cost 193 milliseconds over 2028 processes and brought the
+  call of the self-test's new case to 1735 milliseconds under sixty busy loops
+  with 600 zombies in the container, which is why the line is passed over
+  first. The check of the number is needed: in a namespace of process numbers
+  of its own with the container's `/proc`, a copy of the program without it
+  sent a command that ignores SIGTERM SIGKILL at once, back after 1.008
+  seconds, where the program waited the second, 2.099.
+
+  **The line.** Built: at each of the two starts under job control the shell's
+  stderr points to `/dev/null` while it forks, so that what bash writes there
+  itself reaches nobody. The command starts inside a group that carries its
+  caller's stderr on a descriptor that stands free, the first of 9 down to 3,
+  found with a built-in redirection, and has it back as its stderr before it
+  starts, the descriptor closed again for it; the watchdog, whose output goes
+  nowhere, needs none. Tried before the build under bash 3.2.57 and 5.2.37:
+  the search gives 8 with 9 and 7 held and 9 with none, the command sees the
+  descriptors it saw before, and the shell's line on a command it cannot start
+  reads as before but for the number of the line. The program prints no line
+  it did not print.
+
+  **The self-test**, nineteen cases where it had fourteen, eighteen under
+  Windows with Git Bash. The command that ends on the SIGTERM with all it
+  started, `sh -c 'sleep 7373 & sleep 7375'`, the whole call back within 1900
+  milliseconds by bash's own time: a watchdog that waits out its second is not
+  back before 2000, and a copy of the program with the look of before failed
+  the case with 2056 in the container kept by `tail -f /dev/null`, as the job
+  hooks on every system (alpine) runs it, and passed in the one started with
+  --init; 1900 leaves six tenths over the 1.155 and 1.293 seconds of the cases
+  under Windows above, the end of the case before and the case's own checks
+  lying in those. Under CPU load, with the code of the first commit in the
+  tree, the self-test passed eight times each under twenty and under sixty
+  busy loops on the Mac, ten cores, and in that container, 1100 zombies
+  standing in it, the call of the new case taking 1018 to 1032 milliseconds on
+  the Mac and 1066 to 1416 in the container, 1098 to 1216 in the one started
+  with --init under sixty loops, and 2048 to 2161 for the copy with the look
+  of before. Four cases on the descriptors: 9 free and closed for the command,
+  9 held and reaching the command, 3 to 9 all held, and the caller's stderr
+  closed. No case brings the line of bash about, the race being none to force;
+  that it stays away is measured by the runs.
+
+  **What the build does not reach**, two blocks of this day with Fix none, the
+  last two under "## Milestone 12", their shoulds put to the person. The look
+  rests on `/proc`: where it is not there, or names the shell by another
+  number, the look is kill with 0 and the second is waited as before, measured
+  in a privileged container with `/proc` covered by an empty file system,
+  2.118 seconds with the line and 124; and a process `/proc` does not show the
+  shell, another user's under hidepid, or one born after the look listed the
+  group while its parent ended before the look read it, counts as ended and is
+  sent SIGKILL at once, read and not measured. And the starts: with the
+  descriptors 3 to 9 all held by the caller, or the caller's stderr closed,
+  the command starts as before this day, the line possible on macOS in the
+  first case, no caller in this set holding a descriptor from 4 to 9 where it
+  calls the bound, searched with git grep; and a line of bash on a fork that
+  fails at one of the two starts goes to `/dev/null` with the line on setpgid.
+  Under Windows with Git Bash nothing of this change is measured before the
+  job has run there: the two starts and the four cases on the descriptors run
+  there as everywhere, the look is the kill of before, and the report says
+  what the log has to show.
+
+  **Where the order and the repository part.** The should on the stderr rules
+  out, read word for word, the one line the shell writes for a command it
+  cannot start, "command not found" with 127 or "bad interpreter" with 126,
+  measured at `f06f34c` as `bin/devloop-bounded: line 341: nosuchcmd-xyz:
+  command not found`: the shell writes it once the command's stderr is set,
+  nothing in bash parts it from what the command writes, and it alone says why
+  nothing ran, so that it stays, the head and the note say so, and the report
+  puts the wording of the should to the person. And the order asked which of
+  the two starts prints the line: both.
+
+  **The blocks and the table.** The two blocks carry their Fix, the line of
+  the look, `while stands "$1" && kill -0 "$t" 2>/dev/null; do sleep 0.1;
+  done`, and the line of the command's start, and a note on what is built,
+  measured and not reached. The watchdog's line is the Fix line of three more
+  blocks, the fetch that hung on macos-latest, the watchdog's sleep on alpine
+  and the bound waiting past it: it changed, the watchdog starting on it
+  inside the group whose stderr points to `/dev/null`, so that their runs of
+  11 November 2026 count no more. All five read Built, never walked, which the
+  tool computes, until the runs at the last commit of this branch. In the
+  table: four things for what is new, the bound back without the watchdog's
+  second, the look where `/proc` cannot be trusted, the two starts, and the
+  start with the stderr the shell has; eleven lines that entered the search
+  set recorded as part of their things, nine of them lines of the self-test;
+  and the notes of four records of the program brought to this day.
+
+  **The other documents**, searched for sentences on the bound that this build
+  makes false, with git grep over `docs/plan.md`, `docs/skill-conventions.md`
+  and `README.md` for the program's name, for SIGKILL, SIGTERM, watchdog,
+  zombie, setpgid, process group, job control, kill -0, the counts of the
+  self-test's cases and the stderr of a bounded command, and over `bin`,
+  `scripts`, `hooks`, `skills`, `shared`, `output-styles` and `.github` for
+  the program's name. `docs/skill-conventions.md`, the paragraph on the time
+  limit of a call, lines 2198 to 2212: "by SIGKILL a second after the SIGTERM
+  where something of the group still stands, back at most two seconds after
+  its seconds" holds, a zombie standing for nothing now, and what the bound
+  does not end is left to the program's head there; nothing changed.
+  `README.md` carries no sentence on the program. `docs/plan.md` under
+  milestone 12: the paragraph on the second piece said "Of the rest nothing is
+  built yet: the orders before (2) of 12 November 2026 and (2) to (7)", which
+  this build makes false for the first of the two orders; it says since this
+  entry what stands and that the second order before (2) and (2) to (7) are
+  not built. The heads of `bin/devloop-setup-state`, `bin/devloop-arm`,
+  `bin/devloop-start-conditions` and `bin/devloop-tool-state`, the text of
+  `scripts/devloop-run-workflow` on the groups of the command and the
+  watchdog, `shared/fetch-three-times.md`, `shared/branch-deletion.md`,
+  `skills/build-work/SKILL.md` and the comments of the workflow say of the
+  bound what holds as before.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
