@@ -5769,6 +5769,140 @@ and for the proofs of closings.
   `skills/build-work/SKILL.md` and the comments of the workflow say of the
   bound what holds as before.
 
+  **The runs at the last commit**, the third, which changes no code: every run
+  below ran the code of the first commit, `c38594d`, at the second, `4e830f2`,
+  the tree clean, under 0.184.0, on 13 November 2026 from 08:28 to 08:59 UTC,
+  on the person's Mac, macOS 26.6.2 with bash 3.2.57, in a bash started with
+  `--noprofile --norc`, and in throwaway containers of `alpine:3.22` there,
+  bash 5.2.37, started anew for these runs, the one kept by `tail -f
+  /dev/null` as its process 1 and the other started with `docker run --init`,
+  a whole call timed by bash's own time.
+
+  The three commands of the block on the zombie, five times each, from
+  08:28:12: in the container kept by tail back after 1.012 to 1.015, after
+  1.010 to 1.014 and after 1.115 to 1.124 seconds, where they took 2.056 to
+  2.075, 1.008 to 1.013 and 2.052 to 2.063 at `f06f34c`; in the one started
+  with --init after 1.009 to 1.019, 1.010 to 1.019 and 1.124 to 1.131; every
+  call with its line and 124, no process of a command living afterwards,
+  fifteen zombies standing in the first container, which nothing reaps there,
+  and none in the second.
+
+  The line of bash, on the Mac without load from 08:30:18: in none of 20000
+  runs of `bin/devloop-bounded 60 sh -c 'exit 3'` and in none of 20000 runs of
+  the bound over the script whose interpreter is missing, every exit code 3
+  and 127, where the line stood in 10 and in 11 at `f06f34c`; under twenty
+  busy loops from 08:34:16, in none of 4000 runs of each. The self-test of
+  `bin/devloop-tool-state` a hundred times running, from 08:39:01 to 08:49:14:
+  "SELF-TEST PASSED: 63 cases" and exit 0 every time. And the start with the
+  stderr the shell has, the descriptors 3 to 9 all held by the caller, from
+  08:36:38: exit 3 in every one of 20000 runs and the line of bash in 1 of
+  them, so that what the block on the two starts read off the code is
+  measured: the line is possible there as before.
+
+  The situations of the counter-check, each brought about once, on the Mac
+  from 08:28:52 and in the two containers from 08:29:15, the three times in
+  that order. The command ends before the bound: "out" and "err" through with
+  0, the 3 through, "in" fed to cat through, back after 0.006 to 0.007 seconds
+  on the Mac, no `sleep 7339` of the bound standing afterwards on any of the
+  three. The command takes SIGTERM and a sleep of it loses its parent: the
+  line and 124 after 1.019, 1.123 and 1.016 seconds, no sleep living
+  afterwards. The command ignores SIGTERM, a shell and two sleeps: the line
+  and 124 after 2.043, 2.110 and 2.118 seconds, neither sleep living
+  afterwards. A sleep that ends and loses its parent beside one that ignores
+  SIGTERM, `sh -c 'sleep 7361 & (trap "" TERM; exec sleep 7363) & sleep
+  7365'`: half a second after the bound sleep 7363 stood with parent 1, in the
+  container kept by tail beside the zombie of sleep 7361 in its group, and the
+  call was back with the line and 124 after 2.033, 2.097 and 2.092 seconds,
+  nothing of it living afterwards, SIGKILL a second after the bound. A bound
+  inside a bound: the inner command taking SIGTERM, back after 1.128, 1.130
+  and 1.127 seconds, and the inner command ignoring it after 1.695, 1.646 and
+  1.649, no sleep and nothing of the inner bound left. The program ended by
+  SIGTERM, SIGINT and SIGHUP 0.7 seconds into a shell with two sleeps: exit
+  143, 130 and 129 on each of the three, and 0.15 seconds after the signal no
+  sleep of the command, no sleep 0.5 of the helper and no sleep of the
+  watchdog living; a copy with the look of before had the helper's sleep 0.5
+  standing at that moment in the container kept by tail. The fetch over a
+  transport that never answers, over the one process and over the shell that
+  waits for its sleep: the line and 124 after 1.023 and 1.028 seconds on the
+  Mac, after 1.017 and 1.013 in the container kept by tail and after 1.012 and
+  1.019 in the other, no transport living afterwards; in the log of the job on
+  alpine of run 43017830242, job 130513239646, those two cases of the
+  self-test stand 2.027 and 2.017 seconds after the line before them.
+
+  The self-test of `bin/devloop-bounded` on the Mac at 08:49:23, "SELF-TEST
+  PASSED: 19 cases" and exit 0, and in both containers at 08:51:49, 19 cases;
+  under CPU load from 08:49:29 on the Mac, ten cores, and from 08:52:02 in the
+  container kept by tail, eight times under twenty and eight times under sixty
+  busy loops, passed every time, the call of the new case twelve times under
+  each load back after 1015 to 1032 milliseconds on the Mac and after 1060 to
+  1356 in the container, 565 zombies standing in it at the end. Under twenty
+  busy loops, from 08:54:46 on the Mac and from 08:56:21 in that container:
+  400 runs of `bin/devloop-bounded 7339 sh -c 'exit 3'`, every exit 3, nothing
+  on stderr and no `sleep 7339` standing afterwards; and 40 fetches over the
+  one process and 40 over the shell that waits for its sleep, every one with
+  124 and the line alone, no transport standing at any return or a second
+  after the last. The command of the finding of 11 November 2026, `sh -c 'trap
+  "" TERM; sleep 6'`, at 08:58:16 on the Mac: the line and 124 after 2.142
+  seconds, and `sh -c 'trap "" TERM; sleep 7357'` five times after 2.038 to
+  2.140; in the container kept by tail after 2.114 and after 2.013 to 2.124,
+  no sleep living afterwards.
+
+  Where `/proc` cannot be trusted, in a container started with --privileged at
+  08:58:42 and removed again, as before the build: with `/proc` covered by an
+  empty file system the first command of the block back after 2.101 seconds
+  with the line and 124, the watchdog waiting for the zombie as before this
+  day, and a command that ignores SIGTERM after 2.108; in a namespace of
+  process numbers of its own with the container's `/proc`, the shell number 1
+  there and 70 in `/proc/self/stat`, the command that ignores SIGTERM back
+  after 2.088 seconds, sent SIGKILL a second after the bound and not at once,
+  no sleep left.
+
+  The rows of these runs stand in `docs/stock-take.tsv` since this commit,
+  thirteen of them, each under 0.184.0: on the four things this branch added;
+  on four things of the program, the bound firing and the self-test passing,
+  whose runs stopped counting with the lines this branch changed, and the
+  command ending before the bound and the command that ignores SIGTERM, each
+  tied with this commit to a line of this branch it runs through, the search
+  for the descriptor and the line of the look, so that no run of before counts
+  for the start and the look of this day; on the two blocks; and on the three
+  blocks whose Fix line changed. 0.184.0 came with the first commit, which
+  changed every one of those lines last, so that the tool lists all of them as
+  Walked on this branch, and after a squash merge one commit carries the
+  version and the lines alike. The Status of the five blocks reads Walked
+  since this commit, which the tool asks for. The block on the two starts says
+  since this commit that the line stood in 1 of 20000 runs with the seven
+  descriptors held. No row stands for what a job of the checks on GitHub alone
+  brings about: the self-test with its nineteen cases on ubuntu-latest and
+  macos-latest and its eighteen under Windows with Git Bash, where nothing of
+  this change is measured yet, and the self-test in the container of the job
+  on alpine, whose process 1 GitHub's own `tail -f /dev/null` is; the report
+  says what each log has to show, and a short order of its own records those
+  runs after the push.
+
+  The tool, before, on `f06f34c`: broken records 0, uncovered lines 0 of 4597;
+  Undetermined 24, Recorded, not built 262, Built, never walked 1506, Walked
+  716, Closed 70; milestone 12 107 blocks, Recorded, not built 45, Built,
+  never walked 46, Walked 12, Closed 4; blocks with "not stated" 345. After
+  the second commit: uncovered lines 0 of 4610, thirteen lines of the program
+  having entered the search set; Built, never walked 1517 and Walked 711, two
+  things and three blocks having lost their counting run, read off the two
+  reports with the command of the order, and the four new things and the two
+  blocks built standing without one; milestone 12 109 blocks, Recorded, not
+  built 45, Built, never walked 51, Walked 9. After this commit: Built, never
+  walked 1506 and Walked 722, the four new things and the two blocks more than
+  before; Recorded, not built 262, two blocks built and two written; milestone
+  12 109 blocks, Recorded, not built 45, Built, never walked 46, Walked 14,
+  Closed 4; every other figure as before; blocks held against the branch
+  point: removed 0, renamed 0, Should changed 0, added 2; Walked on this
+  branch without a run the branch adds: 0. The self-test of the tool: 159
+  cases, 148 of 148 messages asserted by a case, before and after. Before this
+  commit, with its documents in the tree, nineteen of the twenty checks before
+  a handover printed what they printed on `f06f34c`, line for line, and the
+  sixteenth, the run of the workflow's steps, was green as there, 8 steps run,
+  the self-test of `bin/devloop-bounded` passing in it with 19 cases where it
+  had 14, that of `bin/devloop-tool-state` with 63, and its title step passing
+  the head of this entry, 62 characters.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
