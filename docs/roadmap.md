@@ -6900,6 +6900,140 @@ and for the proofs of closings.
   programs, "bound a command through `subprocess.run` with sixty seconds" in
   the entry of 11 November 2026, held until this day, and the names they give
   the eight things are the names until this day.
+  **The runs at the last commit**, the third, which changes no code: every run
+  below ran the code of the first commit, `74d9d42`, the second and this one
+  changing documents alone, under 0.186.0, at the second commit, `242afad`,
+  the tree clean, and is of 14 November 2026. On the person's Mac, bash 3.2.57
+  and Python 3.14.7, in a bash started with `--noprofile --norc`. Run S1, at
+  22:11:34 UTC, `bin/devloop-auto-mode-question --self-test`: exit 0, 45 lines
+  ok and none red, "SELF-TEST PASSED: 45 cases", in 7.095 seconds, the lines
+  "gh does not answer within the limit: not decided, the command, no answer
+  within the seconds, exit 2", "ended with the process it started, neither
+  standing once the program has returned", "back no later than the limit and
+  two seconds after a call answered at once" and "no gh on PATH: not decided,
+  the command and the system's message naming gh, exit 2" among them. Run S2,
+  at 22:11:41 UTC, `bin/devloop-install-issues --self-test`: exit 0, 39 lines
+  ok and none red, "SELF-TEST PASSED: 39 cases", in 14.249 seconds, the same
+  four lines for gh among them and, for the tool state program under --build
+  and under --installed, each "not decided, the command, no answer within the
+  seconds, the group not printed, 2", "none standing once the program has
+  returned" and "back no later than the limit and two seconds after a call
+  answered at once"; no process of a stand-in stood after either.
+
+  The red ends, each on a copy under a throwaway directory, the expectation of
+  one case changed there and the repository's program passing beside it, as
+  the entry of 13 November 2026 on the look under hidepid brought about that
+  of `bin/devloop-bounded`; the two programs in a copy of the whole of `bin/`,
+  since they call `bin/devloop-auto-mode-rule` and `bin/devloop-tool-state`
+  beside them. Run R1, at 22:11:56 UTC, the copy of
+  `bin/devloop-auto-mode-question`, `expect("two directories: exit 2",
+  run("a", "b"), 2,` changed to 3: 44 lines ok, "FAIL two directories: exit 2:
+  exit 2, expected 3" with what the program printed under it, indented,
+  "SELF-TEST FAILED" and exit 1. Run R2, at 22:12:03 UTC, the copy of
+  `bin/devloop-install-issues`, `expect("two directories: 2", go("a", "b"),
+  2,` changed to 3: 38 lines ok, "FAIL two directories: 2: exit 2, expected 3"
+  with the program's output under it, "SELF-TEST FAILED: 1 of 39 cases red"
+  and exit 1. Run R3, at 22:12:18 UTC, the copy of
+  `scripts/devloop-stock-take`, in the case "anchor found twice" the lines "2,
+  5" of the expected message changed to "2, 4": 158 lines ok, "BAD  anchor
+  found twice: red MISSING, green seen", "SELF-TEST FAILED: anchor found
+  twice" and exit 2; the note of that thing said until this commit that it is
+  producible only by breaking the tool, which a copy does without the tool in
+  the repository carrying a fault. At 22:12:27 UTC the repository's two
+  programs passed beside them with 45 and 39 cases, and the tree was clean.
+
+  The measurement of before the build again, from 22:12:58 UTC, each program
+  loaded in an interpreter of its own with its limit at one second and gh the
+  stand-in that starts `sleep 7383 &` and waits in `sleep 7385`. Run M1,
+  `bin/devloop-auto-mode-question`: back after 1.061 seconds with "no answer
+  within 1 seconds" and exit 2, neither sleep found by pgrep at the return or
+  three seconds later, where both stood at `21fa71f`. Run M2,
+  `bin/devloop-install-issues`: back after 1.021 seconds with the same line
+  and exit 2, neither sleep found. Run M3, gh answering and the query under
+  `bin/devloop-tool-state --build playwright:webkit` the stand-in that starts
+  `sleep 7387 &` and waits in `sleep 7389`, the limit for that call at one
+  second: back after 1.147 seconds with "command: bin/devloop-tool-state
+  --build playwright:webkit", "no answer within 1 seconds" and exit 2, and at
+  the return, three seconds and 64 seconds later no sleep, no process of the
+  bound and none of the tool state program found, where the bound and both
+  sleeps stood for the rest of its sixty seconds at `21fa71f`. Run M4, the
+  same with every limit as the program carries it, sixty for the bound of the
+  tool state program and 72 for its call: back after 60.134 seconds with the
+  group of the issue, its tool line "playwright:webkit: not read, because the
+  project's Playwright did not say which version of webkit it needs:
+  node_modules/.bin/playwright install --dry-run webkit did not answer: no
+  answer within 60 seconds: node_modules/.bin/playwright install --dry-run
+  webkit", "closed: no" and exit 0, nothing found afterwards, where the
+  program ended with "issues: not decided" and exit 2 after 60.011 seconds at
+  `21fa71f`.
+
+  The same in a throwaway container of `alpine:3.22` on that Mac, from
+  22:15:37 UTC, bash 5.2.37, Python 3.12.16 and git 2.49.1, the repository
+  mounted read-only, started with docker run --rm, kept by `tail -f /dev/null`
+  as its process 1, as GitHub keeps the container of a job, and entered with
+  docker exec: the two self-tests passed with 45 and 39 cases and left no
+  process of a stand-in; the four measurements came out as on the Mac, back
+  after 1.044, 1.021 and 1.131 seconds with "no answer within 1 seconds" and
+  exit 2 and nothing found afterwards, and after 60.061 seconds with the line
+  not read, "closed: no" and exit 0; 23 zombies stood in the container at its
+  end, which nothing reaps there. The red ends were brought about on the Mac
+  alone.
+
+  The rows of these runs stand in `docs/stock-take.tsv` since this commit,
+  thirteen of them, each under 0.186.0. On seven of the nine things this
+  branch added: a gh that does not answer in `bin/devloop-auto-mode-question`,
+  run M1, and in `bin/devloop-install-issues`, run M2; the tool state program
+  not answering within its limit under --build, run M3, and under --installed,
+  run S2; the query that program's own bound ends before this program's limit,
+  run M4; and a PATH that holds no gh, runs S1 and S2. On the green end of the
+  self-test of `bin/devloop-auto-mode-question`, run S1, whose two runs of 22
+  and 23 October 2026 stopped counting with the lines the first commit added
+  to that self-test. On three red ends: that of the same self-test, a thing
+  this branch split off, run R1; that of the self-test of
+  `bin/devloop-install-issues`, run R2; and that of the tool's own self-test,
+  run R3, two things that stood without a run. And on the two blocks of 11
+  November 2026, runs M1 and M2, whose Status reads Walked since this commit,
+  which the tool asks for: the version came with the first commit, which is
+  the last change to the two lines their Fix names. Two of the nine new things
+  get no run and stay Built, never walked, the two on Windows, which nothing
+  here measures; and so do the seven other red ends this branch split off,
+  those of the self-tests of `bin/devloop-command-reader`,
+  `bin/devloop-missing-tool`, `bin/devloop-install-note` and
+  `scripts/devloop-run-workflow` and of the three things of the hooks steps,
+  which no run of this day brought about: this order brings about the red end
+  of the programs it changes and of no other. No row stands for the self-test
+  of `bin/devloop-install-issues` passing, a thing that stood before this
+  branch without a counting run and is none of those the order gives a row.
+
+  The tool, before, on `21fa71f`: broken records 0, uncovered lines 0 of 4612;
+  Undetermined 24, Recorded, not built 261, Built, never walked 1505, Walked
+  725, Closed 72; milestone 12 111 blocks, Recorded, not built 44, Built,
+  never walked 46, Walked 15, Closed 6; blocks with "not stated" 345. After
+  the first commit: exit 2, broken records 2, the two records on the line
+  "except subprocess.TimeoutExpired:", gone from both programs, and uncovered
+  lines 36 of 4646, the lines of the two programs that hold a search word;
+  every state as before. After the second commit: broken records 0, uncovered
+  lines 0 of 4646; Recorded, not built 261, the two blocks built and two
+  written; Built, never walked 1525 and Walked 724, seventeen things new, the
+  two blocks built and the green end of the self-test of
+  `bin/devloop-auto-mode-question` having lost its counting run; Closed 72;
+  milestone 12 113 blocks, Recorded, not built 44, Built, never walked 48,
+  Walked 15, Closed 6. After this commit: Built, never walked 1512 and Walked
+  737, the thirteen rows above; milestone 12 Built, never walked 46 and Walked
+  17; every other figure as after the second; blocks with "not stated" 345
+  throughout; blocks held against the branch point: removed 0, renamed 0,
+  Should changed 0, added 2, no line of the fixed forms; Walked on this branch
+  without a run the branch adds: 0, the renamed things that read Walked
+  carrying runs whose name changed with theirs, which the tool reads as runs
+  the branch adds, its head under "LIMITS". The self-test of the tool: 159
+  cases, 148 of 148 messages asserted by a case, before and after. Before this
+  commit, with its documents in the tree, nineteen of the twenty checks before
+  a handover printed what they printed on `21fa71f`, line for line, and the
+  sixteenth, the run of the workflow's steps, was green before and after, 8
+  steps run: the self-tests of the two programs passed in it with 45 and 39
+  cases where they had 39 and 25, and its title step read one new head, this
+  entry's, 65 characters, and passed it.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
