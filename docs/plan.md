@@ -1174,11 +1174,30 @@ again for a process that has ended and that nobody reaps; the program's
 head gives the figure of the build's report and says what the job measured
 under Windows with Git Bash, the block on it closed as corrected; and what
 that order found, the self-test red under hidepid where nobody reaps,
-stands in a block of this milestone with Fix none. Of the rest nothing
-is built yet: the second order before (2), the remaining time limits, and
-(2) to (7), `shell: bash` in every skill and the guard for PowerShell among
-them. Until 13 November 2026 this paragraph said that nothing of the orders
-before (2) was built.
+stands in a block of this milestone with Fix none. Since 14 November 2026,
+the first part of the second order before (2), the roadmap entry of that
+date on gh under the bound: `bin/devloop-auto-mode-question` and
+`bin/devloop-install-issues` run gh under `bin/devloop-bounded` with sixty
+seconds, and the second runs `bin/devloop-tool-state` so with a limit above
+what that program's own bounds take, so that a command that does not answer
+is ended with everything it started and the call is back with the bound,
+measured on macOS and in Alpine and under Windows with Git Bash measured by
+the job first, what the bound does not reach there standing in the block of
+this milestone on the limit of the runtime's walk; and every thing of
+`docs/stock-take.tsv` whose name named a green and a red end at once is
+split in two, eight of them, the head of `scripts/devloop-stock-take`
+saying the rule of the decision of 13 November 2026, and the red end of the
+self-test of each program that part changed brought about once on purpose.
+That order was parted because its reading list did not fit one session. Of
+it the three open blocks of `scripts/devloop-run-workflow` are not built
+yet, the process that leaves the step's session, Windows, and the step that
+ends in time and leaves a process behind, and the red end of that program's
+self-test is not brought about; what the first part found and did not build
+stands in two blocks of this milestone with Fix none. Of (2) to (7) nothing
+is built yet, `shell: bash` in every skill and the guard for PowerShell
+among them. Until 14 November 2026 this paragraph said that of the rest
+nothing was built, the second order before (2) among it; until 13 November
+2026, that nothing of the orders before (2) was built.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
