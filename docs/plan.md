@@ -1163,7 +1163,18 @@ on that day, runs 43401195658 and 43405794553 of pull request #242: the
 self-test green under Windows with Git Bash with eighteen cases, its new
 case 1.17 and 1.19 seconds after the line before it; and of the two blocks
 the one on the two starts is closed since that day as left on purpose, the
-roadmap entry of that date on the one entry held. Of the rest nothing
+roadmap entry of that date on the one entry held. The other, on the look
+that rests on `/proc`, is built since the same day by an order of its own,
+the next change to `bin/devloop-bounded` that the decision of that day
+names, the roadmap entry of that date on the look under hidepid: where
+`/proc` is mounted with hidepid the look is kill with the signal 0 alone,
+as before 0.184.0, so that a process the kernel keeps from the shell has
+its second after the SIGTERM, and the watchdog waits out its second there
+again for a process that has ended and that nobody reaps; the program's
+head gives the figure of the build's report and says what the job measured
+under Windows with Git Bash, the block on it closed as corrected; and what
+that order found, the self-test red under hidepid where nobody reaps,
+stands in a block of this milestone with Fix none. Of the rest nothing
 is built yet: the second order before (2), the remaining time limits, and
 (2) to (7), `shell: bash` in every skill and the guard for PowerShell among
 them. Until 13 November 2026 this paragraph said that nothing of the orders

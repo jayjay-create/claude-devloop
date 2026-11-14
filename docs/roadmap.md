@@ -6199,6 +6199,456 @@ and for the proofs of closings.
   48 characters and no find, and the report says what the step printed
   after it. No run is recorded.
 
+- **Under hidepid the bound looks by kill alone, its head set right**
+
+  13 November 2026, version 0.185.0: `bin/devloop-bounded` changes; nothing
+  under `skills/`, `shared/`, `hooks/`, `scripts/` or `output-styles/`
+  changes, and `.github/workflows/stock-take.yml` and `README.md` do not. On
+  `task/bound-hidepid`, off `origin/main` at `fa04716`, in four commits: the
+  code with the version, raised once; the documents, `docs/defects.md`,
+  `docs/stock-take.tsv`, `docs/plan.md` and this entry; the runs, measured at
+  the second commit with the tree clean; and, after the checks, the
+  corrections of the merge of 14 November 2026, which change no code. The
+  order, of this day: the next change to `bin/devloop-bounded`, to which the
+  decisions of this day in the entry on the one entry held give two blocks of
+  `docs/defects.md`, at lines 1459 and 1475 at `fa04716`: the look that rests
+  on `/proc`, by the decision "where `/proc` is mounted with hidepid the look
+  counts as before 0.184.0, by `kill -0` alone", this order reading the
+  kernel's rule at its source, measuring it in a container and writing the
+  block's Should; and the two places of the program's head, with the should of
+  their block as it stands. It comes before the second of the two orders that
+  the decision of 12 November 2026 puts before order (2) of milestone 12 and
+  is an order of its own, building nothing of that one, since the reading list
+  of the two together, 509232 bytes by `wc -c`, does not fit one session:
+  `bin/devloop-bounded`, `bin/devloop-auto-mode-question`,
+  `bin/devloop-install-issues` and `scripts/devloop-run-workflow` whole,
+  `docs/defects.md` lines 1 to 86, 1371 to 1378 and 1395 to 1482,
+  `docs/plan.md` lines 83 to 149 and 1043 to 1170, this file lines 4907 to
+  6201, the head of `scripts/devloop-stock-take` lines 1 to 139, 238 to 587
+  and 676 to 934, `docs/skill-conventions.md` lines 1730 to 1961 and 3949 to
+  4446, `.github/workflows/stock-take.yml` lines 378 to 440 and the rows of
+  thing and run of the four programs in `docs/stock-take.tsv`; this order's
+  own reading list measured 283329 bytes, the same ranges with
+  `bin/devloop-bounded` alone, `docs/defects.md` lines 1 to 86, 1435 to 1450
+  and 1459 to 1482, this file lines 5563 to 6201, and of the table the 104
+  rows of thing, run and part of `bin/devloop-bounded` and the 2 runs on the
+  blocks at lines 1435 and 1443. Written by Claude Code from the person's
+  order of this day, which reached the session cut off inside its paragraph on
+  new findings; behind it stood the rest of that paragraph, one on this entry
+  and one on assigning a line to an entry, and the order's end: the tool, its
+  self-test and the twenty checks run again against their start, the report in
+  German on this machine searched for paths, and the branch left ready to
+  push, each of which the session did of its own accord; the report says first
+  that the order came cut. No session log was read. Nothing was installed
+  outside throwaway containers of `alpine:3.22`, each started with
+  --privileged, which got bash, git and python3 with apk, every one removed
+  again. Read from outside, fetched raw without a sign-in: four files of
+  gregkh/linux at the tag v7.0.14, `fs/proc/root.c`, `fs/proc/inode.c`,
+  `fs/proc/base.c` and `kernel/ptrace.c`, the tag looked up with git
+  ls-remote; nothing beyond. What ubuntu-latest and Windows with Git Bash
+  measure, the job hooks on every system measures after the push and nothing
+  here, this machine running macOS. The identity under which git commits here
+  was neither set nor shown; no subagent was used. The report stands on this
+  machine as `~/devloop-bound-hidepid.md`, in German, and is not in the
+  repository. Every line number of a file of this repository in this entry
+  holds at `fa04716` unless it says otherwise.
+
+  **The counter-check before the build, at `fa04716`.** The function
+  `stands`, lines 339 to 354 of `bin/devloop-bounded`: where kill with the
+  signal 0 reaches the group and `/proc/self/stat` names the shell, it reads
+  the stat of the process found running last or of the leader and then of
+  every entry that `/proc/[0-9]*` lists, line 344, and passes over one it
+  cannot read, `read -r l < "$f/stat" || continue`, line 345. So a process of
+  the group whose entry is not listed is not looked at, one whose entry is
+  listed and cannot be read is passed over, and where no other process of the
+  group runs the function ends on its `return 1`, line 353: the group counts
+  as ended. The comment over the function, lines 329 to 338, names neither
+  situation. The function is called at line 364 alone, by `kill_group_after`,
+  which the watchdog calls at line 496 and the helper at line 502, each
+  behind `end_group`, as the audit of this day held. The head names, at lines
+  178 to 181, as what the look counts as ended "a process /proc does not show
+  the shell, another user's under hidepid, or one born after the look listed
+  the group while its parent ended before the look read it", a process of the
+  shell's own user under hidepid not among them. The three places the block
+  at line 1475 names read as it quotes them, lines 181 to 183, 217 to 218 and
+  257 to 258, against "1018 to 1032 milliseconds on" at line 5698 of this
+  file and the checks on GitHub at its lines 5978 to 5995. In the table two
+  things of the program stand on lines of the function, both Walked: the
+  bound back without the watchdog's second, its site line 154 of the head,
+  its evidence line 350 and two records of part on lines 341 and 347; and the
+  look where `/proc` is not there or names the shell by another number, on
+  line 343. Line 364 is part of the thing on the command that ignores
+  SIGTERM, Walked, and the Fix line of the block on the zombie. No record
+  stands on the lines 155 to 183, 217 to 218 and 257 to 258.
+
+  **The kernel's rule, read at its source.** `uname -r` in a container of
+  `alpine:3.22` on the person's Mac prints 7.0.14-linuxkit, and gregkh/linux
+  carries the tag v7.0.14. The values: `fs/proc/root.c` lines 52 to 58 take
+  four, `HIDEPID_OFF`, `HIDEPID_NO_ACCESS`, `HIDEPID_INVISIBLE` and
+  `HIDEPID_NOT_PTRACEABLE`, given as a number, lines 70 to 75, or by name,
+  "off", "noaccess", "invisible" and "ptraceable", lines 77 to 84. Their
+  numbers stand in a header the order does not name, which was not read;
+  measured in the container, a mount with 0, 1, 2 and 4 gives the four in
+  that order, and one with 3 is refused, "Invalid argument". The table of
+  mounts: `fs/proc/inode.c` lines 179 to 180, `if (fs_info->hide_pid !=
+  HIDEPID_OFF)` and `seq_printf(seq, ",hidepid=%s",
+  hidepid2str(fs_info->hide_pid));`, the names at lines 164 to 167, so that
+  the options of the mount carry `hidepid=` under every value but off and not
+  under off; measured, `hidepid=noaccess`, `hidepid=invisible`,
+  `hidepid=ptraceable` and no word. What is kept from the shell,
+  `fs/proc/base.c`: `has_pid_permissions`, lines 745 to 762, answers under
+  ptraceable what `ptrace_may_access(task, PTRACE_MODE_READ_FSCREDS)`
+  answers, lines 754 to 755; under a value below the one asked for, true,
+  lines 757 to 758; for a member of the group the mount names with gid=,
+  true, lines 759 to 760; and else what `ptrace_may_access` answers, line
+  761. `proc_pid_readdir` leaves a process out of the listing where that
+  answer is false at the level of invisible, lines 3602 to 3603. Whatever is
+  opened under an entry passes `proc_pid_permission`, lines 765 to 792, which
+  asks at the level of noaccess and returns ENOENT under invisible, lines 779
+  to 787, and EPERM else, line 789; under ptraceable the lookup of the entry
+  itself fails, lines 3527 to 3529; and `pid_getattr` returns ENOENT at the
+  level of invisible, lines 2032 to 2038. When a process of the same user is
+  turned away, `kernel/ptrace.c`, `__ptrace_may_access`, lines 290 to 357: a
+  thread of the caller's own process passes, lines 311 to 312; else the
+  caller's fsuid has to equal the target's euid, suid and uid and its fsgid
+  the target's egid, sgid and gid, lines 330 to 336, or the caller hold
+  CAP_SYS_PTRACE in the target's user namespace, lines 337 to 338, EPERM
+  else, line 340; then the target has to be dumpable or the caller hold that
+  capability, lines 353 to 354 with `task_still_dumpable` at lines 275 to
+  287; the security modules come last, line 356. So, for a process of the
+  shell's own user, value by value. Off: none is hidden or refused. Noaccess:
+  one that carries another user or group number than the shell's among its
+  three of each, as under a set-user-ID or set-group-ID program, or that is
+  not dumpable, is listed and nothing under its entry opens, unless the shell
+  is a member of the group of gid= or holds the capability. Invisible: the
+  same processes are not listed and not found, with the same two exceptions.
+  Ptraceable: the same processes are not listed and not found, the capability
+  the one exception. Measured in the container for a user that is not root
+  and a python3 of that user after `prctl(PR_SET_DUMPABLE, 0)`: listed and
+  its stat not to be opened, "Operation not permitted", under noaccess; not
+  listed, "No such file or directory", under invisible and ptraceable; listed
+  and read without hidepid; reached by kill with the signal 0 under all four;
+  a python3 left dumpable listed and read under all four; and for root the
+  one that is not dumpable listed and read under all four.
+
+  **Measured before the build, at `fa04716`**, on 13 November 2026 from
+  15:37:45 to 15:38:47 UTC, on the person's Mac in a throwaway container of
+  `alpine:3.22` started with --privileged and kept by `tail -f /dev/null`,
+  kernel 7.0.14-linuxkit, bash 5.2.37, busybox 1.37.0 and python 3.12.16, the
+  repository mounted read-only, `/proc` remounted with `mount -o
+  remount,hidepid=` and the value, the program run by a user made with
+  adduser, number 1000, the whole call timed by bash's own time, five times
+  each. The command is `bin/devloop-bounded 1` over `sh -c` with a python3 in
+  the background and `sleep 7411`: the python3, a process of the command's
+  group, makes itself not dumpable, takes SIGTERM, writes that to a file,
+  writes a line after each of four tenths of a second, then "done", and ends.
+  Without hidepid the call was back after 1.426 to 1.440 seconds with the
+  line and 124, the process having written its four tenths and "done", 410 to
+  420 milliseconds after it took the signal. Under noaccess it was back after
+  1.008 to 1.015 seconds, under invisible after 1.008 to 1.016 and under
+  ptraceable after 1.011 to 1.016, with the line and 124, and in every one of
+  the fifteen runs the process had written that it took the signal and
+  nothing after it: ended by SIGKILL before its first tenth. Two controls
+  under invisible: the same process left dumpable had its four tenths, the
+  call back after 1.426 to 1.443 seconds, and so had the one that is not
+  dumpable where root ran the program, 1.441 to 1.445. Nothing of a command
+  lived afterwards, thirty zombies standing in the container, which nothing
+  reaps there. So the fact the decision rests on holds under each of the
+  three values: the look counted a process of the shell's own user that the
+  kernel keeps from it as ended, and the watchdog sent the group SIGKILL at
+  once.
+
+  **Built.** In `stands`, behind the check of the shell's number and before
+  `/proc` is read: the table of mounts, `/proc/self/mounts`, read once for a
+  bound with read, no process started, what it said kept in `hid`, a variable
+  of `kill_group_after` beside `alive`. The last line of the table that
+  mounts a file system of type proc on `/proc` decides, the mount that lies
+  on top: measured with a second proc mounted over the first, each way round,
+  the table listing the later mount last and the shell seeing by it. Where
+  that line carries `hidepid=` among its options the function returns what
+  kill said, the group stands; so it does where the table holds no such line
+  or cannot be read, the side on which no process loses its second. Where the
+  line carries none the look reads `/proc` as since 0.184.0. On macOS and
+  under Windows with Git Bash nothing of it runs, the function returning
+  before it. Eight lines of code more, and one changed, `local t alive=
+  hid=`. What follows, and is decided so: under hidepid the watchdog waits
+  out its second again for a process that has ended and that nobody reaps, as
+  before 0.184.0, and for every shell, also one the kernel refuses nothing,
+  root with the capability: the table says that `/proc` hides, not from whom.
+
+  **The head.** The paragraph on the look says since the first commit what
+  the kernel keeps from the shell under each value, with the lines of the
+  four files, what was measured at `fa04716`, how the table is read and what
+  stands where it carries `hidepid=`. The clause "another user's under
+  hidepid" went from what counts as ended, the look reading no `/proc` under
+  hidepid any more; the process born after the look listed the group stays
+  there, with the reason of the decision, born after the SIGTERM and never
+  sent it. For the block at line 1475: the head gives "under CPU load the
+  call took 1018 to 1032 milliseconds on macOS", and its two sentences on
+  Windows say what the job measured, by lines 5978 to 5995 of this file: "the
+  job hooks on every system has measured the change of 0.184.0 as far as the
+  self-test asks, runs 43401195658 and 43405794553 of pull request #242 on 13
+  November 2026: its eighteen cases passed there in both, the case of a
+  command that ends on the SIGTERM with all it started 1.169 and 1.188
+  seconds after the line before it", and of the two starts "its eighteen
+  cases passed in both, the four on the descriptors among them, and the
+  characters "child setpgid" stand in no job of either run". The comment over
+  `stands` names the table and the variable.
+
+  **The should of the block on the look**, written by this order as the
+  decision of this day in the entry on the one entry held asks, lines 6082 to
+  6087 of this file, from that decision and from what was read and measured.
+  The old should read "the person decides whether the bound is to return
+  without the second there as well and whether such a process is to have its
+  second, or whether both are left on purpose."; the new one, in the field
+  Should of the block since the second commit, reads "where `/proc` is mounted
+  with hidepid, under each of its values noaccess, invisible and ptraceable,
+  the look counts as before 0.184.0, by kill with the signal 0 alone, so that
+  a process of the command's group that the kernel keeps from the shell and
+  that a signal of the shell's user reaches, one of that user that is not
+  dumpable or carries another user or group number, has its second after the
+  SIGTERM; and what the reasons of the decision of 13 November 2026 leave,
+  stands: as before 0.184.0 the watchdog waits out its second for a zombie
+  where `/proc` is not there or names the shell by another number, and so it
+  does under hidepid; and a process born after the look listed the group while
+  its parent ended before the look read it is sent SIGKILL at once, born after
+  the SIGTERM and never sent it". What of the block's Wrong the reasons at
+  lines 6065 to 6071 leave as it was before 0.184.0 is its first half, the
+  second waited for a zombie without a `/proc` that names the shell by its
+  number. The last clause goes beyond that: the process born after the look
+  had its second before 0.184.0, and the reasons leave it without one; a
+  should silent on it would leave the third situation of the Wrong without a
+  word, so that the clause stands; put to the person by the report, it stays
+  at the merge, the reasons at lines 6067 to 6070 of this file accepting
+  exactly this case. The line of the fixed form, the title as the tool reads
+  it:
+
+  Should changed: under Linux the look of bin/devloop-bounded rests on /proc: without one that names the shell by its number the watchdog waits out its second for a zombie as before, and a process /proc does not show the shell is sent SIGKILL at once
+
+  **What the build brings with it**, a block of this day with Fix none,
+  Recorded, not built, the last under "## Milestone 12": "under hidepid in a
+  container whose process 1 does not reap, the self-test of
+  bin/devloop-bounded is red in its case of a command that ends on the SIGTERM
+  with all it started, 2080 milliseconds where it asks for 1900". The case
+  holds the whole call to 1900 milliseconds on every system, and under hidepid
+  the watchdog waits there as decided. Measured on 13 November 2026 with the
+  code of the first commit, in the privileged container kept by `tail -f
+  /dev/null`, `/proc` remounted with hidepid=invisible, the self-test run by
+  the user that is not root: "FAIL does not end, all of it ended on the
+  SIGTERM: back after 2080 milliseconds, expected at most 1900, the bound of
+  one second and nine tenths: the watchdog waited for a process that had
+  ended", exit 1; in the same container without hidepid 19 cases passed, and
+  in a privileged one started with `docker run --init` 19 cases passed under
+  hidepid=invisible and without. The program's head says so in its paragraph
+  on that case. A container started by `docker run` without an option carries
+  no hidepid on `/proc`, measured; the job hooks on every system runs the
+  self-test in no place known to mount it. Not built here, the runs of the
+  third commit standing on the code of the first, the header of
+  `scripts/devloop-stock-take`, exit 2. The report put two ways to the person;
+  the Should of the block since the merge of 14 November 2026: the self-test
+  passes there, its head saying that it exits 1 on the first case that does
+  not come out as the head says, lines 221 to 222 of the program at `fa04716`,
+  where this case comes out as the head says, so that the red is a defect of
+  the self-test; built with the next change to the program, before milestone
+  12 is reached, which an open block of its section keeps from being reached,
+  `docs/plan.md` lines 105 to 115.
+
+  **The blocks and the table.** The block on the look carries its Fix, the
+  line that returns the answer of kill under hidepid, `[ "$hid" = n ] ||
+  return 0`, its new Should and a note on what was read, measured and built;
+  it reads Built, never walked, which the tool computes, until the runs at the
+  third commit. The block on the two places of the head is closed as corrected
+  in the document, the sentences themselves having been the defect, its proof
+  the line of the head that carries the figure, "so that six tenths are left
+  there; under CPU load the call took 1018", its Fix none as the blocks closed
+  so carry it. The block on the zombie, at line 1435: its Fix line, the line
+  of the look, did not change, so that its run counts on; its Should, "also in
+  a container whose process 1 does not reap what lost its parent", does not
+  hold where `/proc` is mounted with hidepid since this day, by the decision;
+  its note says so, and since the merge of 14 November 2026 its Should says so
+  as well, narrowed as the decision of this day in the entry on the one entry
+  held narrowed the should of the block on bash's line, lines 6022 to 6028 of
+  this file, below; no run is touched, a run on a defect counting by the last
+  change to its Fix line alone. In the table: one thing for what is new, the
+  look under hidepid, on the line that reads the options, its evidence the
+  line that returns; and the line that opens the reading of the table, `if [
+  -z "${hid:-}" ]; then`, recorded as part of the thing on the bound back
+  without the watchdog's second, which runs through it since this day, so that
+  no run of before counts for that thing: it reads Built, never walked after
+  the second commit until the run at the third, and its note says what holds
+  under hidepid. Two lines entered the search set, 4612 where it held 4610.
+
+  **The should of the block on the zombie**, narrowed at the merge of 14
+  November 2026. The old should read "where the command and everything it
+  started have ended on the SIGTERM, the bound returns without waiting out the
+  second, also in a container whose process 1 does not reap what lost its
+  parent"; the new one reads "where the command and everything it started have
+  ended on the SIGTERM, the bound returns without waiting out the second, also
+  in a container whose process 1 does not reap what lost its parent, where
+  `/proc` names the shell by its number and is not mounted with hidepid, the
+  look being kill with the signal 0 alone elsewhere by the block of this
+  milestone on the look that rests on `/proc`". The line of the fixed form,
+  the title as the tool reads it:
+
+  Should changed: in a container whose process 1 does not reap, bin/devloop-bounded waits out the watchdog's second for a zombie of the command's group, back 2.061 seconds into a bound of one where the command had ended at the bound
+
+  **The other documents**, searched from the subject with `/usr/bin/grep -rn
+  -E` in a bash started with `--noprofile --norc`, for ten short patterns,
+  `hidepid`, `/proc`, `kill -0|signal 0`, `1017`, `Not measured under
+  Windows`, `devloop-bounded`, `not measured under Windows|measures it there
+  first|measures them first`, `zombie`, `dumpable|ptrace` and `mounts`, over
+  this file and its archive, `docs/defects.md`, `docs/plan.md`,
+  `docs/rationale.md`, `docs/skill-conventions.md`, `README.md`,
+  `scripts/devloop-stock-take`, `skills`, `shared`, `bin`, `hooks` and
+  `.github`: 411 lines at the first commit, every one decided in the report.
+  Of them 96 stand in the archive and 134 in dated entries of this file,
+  which stay as written: lines 5706 to 5714 and 5851 to 5859 say what held at
+  0.184.0, and lines 6064 to 6087 what was decided. 73 stand in 26 blocks of
+  `docs/defects.md`, three of them changed as above. Mended:
+  - `docs/plan.md` under milestone 12, the paragraph on the second piece,
+    "and of the two blocks the one on the two starts is closed since that day
+    as left on purpose": a sentence after it says what this order built, what
+    it found, and that the second order before (2) and (2) to (7) are not
+    built.
+  No other sentence read stopped holding: `docs/skill-conventions.md` lines
+  2198 to 2212, "by SIGKILL a second after the SIGTERM where something of the
+  group still stands, back at most two seconds after its seconds", holds
+  under either look; the heads of `bin/devloop-arm`,
+  `bin/devloop-setup-state`, `bin/devloop-start-conditions` and
+  `bin/devloop-tool-state`, `shared/fetch-three-times.md`,
+  `shared/branch-deletion.md`, `skills/build-work/SKILL.md`, the head of
+  `scripts/devloop-stock-take` and the comments of the workflow say of the
+  bound what holds as before; `docs/rationale.md` names the program once, for
+  the wait on the checks; `README.md` says nothing of it; and the hits in
+  `bin/devloop-command-reader`, `skills/build-prototype/UI.md` and one line
+  of `skills/build-work/SKILL.md` are other words that hold the characters of
+  a pattern.
+
+  **The runs at the third commit**, which changes no code: every run below
+  ran the code of the first commit, `6a97d8c`, at the second, `c66d176`, the
+  tree clean, under 0.185.0, on 13 November 2026 from 15:58:09 to 16:03:39
+  UTC, on the person's Mac, macOS 26.6.2 with bash 3.2.57, in a bash started
+  with `--noprofile --norc`, and in two throwaway containers of `alpine:3.22`
+  there, started anew for these runs with --privileged, kernel
+  7.0.14-linuxkit and bash 5.2.37, the one kept by `tail -f /dev/null` as its
+  process 1 and the other started with `docker run --init`, the repository
+  mounted read-only, `/proc` remounted for each value, a whole call timed by
+  bash's own time, five times each unless said otherwise.
+
+  The process the kernel keeps from the shell, the command of the measurement
+  before the build, run by the user that is not root, from 15:58:09 in the
+  container kept by tail: back after 1.433 to 1.445 seconds without hidepid,
+  and under noaccess after 2.074 to 2.103, under invisible after 2.079 to
+  2.104 and under ptraceable after 2.082 to 2.106, with the line and 124; in
+  every one of the twenty runs the process wrote its four tenths and "done",
+  407 to 437 milliseconds after it took the signal, where under the three
+  values it wrote nothing behind the signal at `fa04716`: it has its second.
+  The time the call takes longer under hidepid there is the watchdog waiting
+  for what has ended, the process and the sleep beside it, zombies where
+  nothing reaps: in the container started with --init the same calls were
+  back, from 15:59:59, after 1.443 to 1.560 seconds without hidepid and after
+  1.441 to 1.558, 1.445 to 1.544 and 1.438 to 1.548 under the three values,
+  the process done after 419 to 438 milliseconds in every one. Run by root in
+  the container kept by tail, from 15:59:04: after 1.450 to 1.553 seconds
+  without hidepid and after 2.083 to 2.110, 2.084 to 2.112 and 2.080 to 2.109
+  under the three values, the process done after 411 to 433 milliseconds in
+  every one; root's bound waits for the zombie under hidepid as the user's
+  does, the kernel refusing root nothing there.
+
+  A process that has ended and that nobody reaps, `bin/devloop-bounded 1 sh
+  -c 'sleep 7331 & sleep 7333'`, the first command of the block on the
+  zombie, from 16:00:46 in the container kept by tail, run by the user and by
+  root: without hidepid back after 1.012 to 1.020 and after 1.014 to 1.023
+  seconds, the look reading `/proc` behind a table of mounts that names no
+  hidepid, where the call took 1.012 to 1.015 at 0.184.0; under the three
+  values after 2.072 to 2.121 and after 2.072 to 2.109, the watchdog waiting
+  out its second for the zombie as before 0.184.0, 2.056 to 2.075 then; and
+  in the container started with --init, run by the user, after 1.008 to 1.019
+  seconds without hidepid and under invisible alike; every call with the line
+  and 124. A command that ignores SIGTERM, `sh -c 'trap "" TERM; sleep 7353 &
+  sleep 7355'`, three times each in the container kept by tail from 16:02:10:
+  back after 2.088 to 2.115 seconds without hidepid and after 2.076 to 2.111
+  under invisible, with the line and 124, sent SIGKILL a second after the
+  bound under either look. Afterwards nothing of a command lived in either
+  container, 86 zombies standing in the one kept by tail and none in the
+  other. Not brought about by a run: the process born after the look listed
+  the group, the last clause of the block's Should, the race being none to
+  force.
+
+  The self-test of `bin/devloop-bounded`: on the Mac at 16:02:39, "SELF-TEST
+  PASSED: 19 cases" and exit 0; in the two containers without hidepid from
+  16:02:45 to 16:03:13, run by the user and by root, 19 cases each of the
+  four times; under invisible in the container kept by tail, at 16:02:58 and
+  16:03:02, red in the case of the block of this day, "back after 2098
+  milliseconds, expected at most 1900" for the user and 2082 for root, exit
+  1; and under invisible in the one started with --init 19 cases for both.
+
+  The red end of the self-test, brought about on purpose at 16:03:32 on the
+  Mac, on a copy, as lines 36492 to 36495 and 36525 of
+  `docs/roadmap-archive-1.md` have the red end of another self-test brought
+  about on copies: the program copied to a throwaway directory, the
+  expectation of one case changed there, `expect "ends in time with 3: exit 3
+  through" 3` to 4, and the self-test of the copy run: eight cases ok, then
+  "FAIL ends in time with 3: exit 3 through: exit 3, expected 4", the output
+  of the case under it, indented and empty, and exit 1, the program of the
+  repository passing its 19 cases beside it. So the outcome "a case not
+  coming out as the header says, FAIL with the case and the output, exit 1"
+  is walked once without the program in the repository carrying a fault: the
+  third of the five sentences of `docs/plan.md` holds for every program, the
+  decision of this day there has the second order before (2) bring about the
+  red end of the programs it changes, and this order changes this one.
+
+  The rows of these runs stand in `docs/stock-take.tsv` since this commit,
+  four of them, each under 0.185.0: on the thing this branch added, the look
+  under hidepid; on the bound back without the watchdog's second, whose run
+  of 0.184.0 stopped counting with the line of this branch recorded as part
+  of it; on the block on the look; and on the red end of the self-test, a
+  thing that had no run. 0.185.0 came with the first commit, which is the
+  last change to every line of the program these stand on, so that the tool
+  lists all four as Walked on this branch, and after a squash merge one
+  commit carries the version and the lines alike. The Status of the block on
+  the look reads Walked since this commit, which the tool asks for. No row
+  stands for the self-test passing, whose lines this branch did not change
+  and whose run of 0.184.0 counts on, nor for what a job of the checks on
+  GitHub alone brings about, the self-test on ubuntu-latest and under Windows
+  with Git Bash.
+
+  The tool, before, on `fa04716`: broken records 0, uncovered lines 0 of
+  4610; Undetermined 24, Recorded, not built 262, Built, never walked 1506,
+  Walked 722, Closed 71; milestone 12 110 blocks, Recorded, not built 45,
+  Built, never walked 46, Walked 14, Closed 5; blocks with "not stated" 345.
+  After the first commit: uncovered lines 2 of 4612, the two lines of the
+  function that hold if and case, exit 1, every state as before. After the
+  second commit: uncovered lines 0 of 4612; Recorded, not built 261, the
+  block on the look built, the block on the head closed and one block
+  written; Built, never walked 1509 and Walked 721, the block on the look and
+  the new thing standing without a run and the bound back without the
+  watchdog's second having lost its counting run; Closed 72; milestone 12 111
+  blocks, Recorded, not built 44, Built, never walked 47, Walked 14, Closed
+  6. After this commit: Built, never walked 1505 and Walked 725, the four of
+  the rows above; milestone 12 Built, never walked 46 and Walked 15; every
+  other figure as after the second; blocks held against the branch point:
+  removed 0, renamed 0, Should changed 1, added 1, with one line of the fixed
+  forms; Walked on this branch without a run the branch adds: 0. The
+  self-test of the tool: 159 cases, 148 of 148 messages asserted by a case,
+  before and after. Before this commit, with its documents in the tree,
+  nineteen of the twenty checks before a handover printed what they printed
+  on `fa04716`, line for line, and the sixteenth, the run of the workflow's
+  steps, what it printed there but for the tool's lines, the time in one
+  record and its title step, green before and after, 8 steps run: the
+  self-test of `bin/devloop-bounded` passed in it with 19 cases, and the
+  title step read one new head, this entry's, 63 characters, and passed it.
+
+  **The corrections of the merge**, of 14 November 2026, the fourth commit,
+  which changes no code: the should of the block on the zombie narrowed and
+  the Should of the block on the self-test under hidepid written, as above,
+  and in this entry the number of commits, what stood behind the cut in the
+  order, the two figures of the reading list, the clause of the should on the
+  look that stays, and what the block on the self-test stands in the way of.
+  After them the tool shows the blocks held against the branch point: removed
+  0, renamed 0, Should changed 2, added 1, with two lines of the fixed forms;
+  every other figure as after the third commit.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
