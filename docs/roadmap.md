@@ -7642,23 +7642,24 @@ and for the proofs of closings.
   15 November 2026, version 0.187.0, unchanged: nothing under `skills/`,
   `shared/`, `hooks/`, `bin/`, `scripts/`, `output-styles/` or `.github/`
   changes, and `README.md` and `docs/stock-take.tsv` do not. On
-  `task/audit-2026-11-15`, off `origin/main` at `8c5c4b2`, in one commit:
-  `docs/defects.md`, `docs/plan.md` and this entry. The order: the consistency
-  audit before the handover, in the form of the audits of 1, 3, 4, 6, 9, 12
-  and 13 November 2026 — the three entries since the last audit, on the look
-  under hidepid, on gh under the bound and on a limit over the whole call,
-  held statement by statement against the code, the documents, the table and
-  the commits of pull requests #244, #245 and #246; the control documents
-  searched for sentences those three builds made false; `README.md` held
-  against them; `docs/rationale.md` held against the loaded texts where one
-  changed; the blocks of `docs/defects.md` at lines 1371 to 1514 listed and
-  held against what `docs/plan.md` calls not built of the orders before (2);
-  what has one right answer and touches `docs/` alone mended here, a finding
-  in a shipped directory written as a block, and the rest put to the person in
-  the report. Its reading list: 408758 bytes by `wc -c`, the order's figure,
-  counted again here over its sixteen ranges at `8c5c4b2`: this file lines
-  5907 to 7639, `docs/plan.md` lines 83 to 149 and 1043 to 1221,
-  `docs/defects.md` lines 1 to 86 and 1371 to 1514,
+  `task/audit-2026-11-15`, off `origin/main` at `8c5c4b2`, in two commits:
+  `docs/defects.md`, `docs/plan.md` and this entry; and, after the checks, the
+  corrections of the merge of 15 November 2026, which change no figure of the
+  tool. The order: the consistency audit before the handover, in the form of
+  the audits of 1, 3, 4, 6, 9, 12 and 13 November 2026 — the three entries
+  since the last audit, on the look under hidepid, on gh under the bound and
+  on a limit over the whole call, held statement by statement against the
+  code, the documents, the table and the commits of pull requests #244, #245
+  and #246; the control documents searched for sentences those three builds
+  made false; `README.md` held against them; `docs/rationale.md` held against
+  the loaded texts where one changed; the blocks of `docs/defects.md` at lines
+  1371 to 1514 listed and held against what `docs/plan.md` calls not built of
+  the orders before (2); what has one right answer and touches `docs/` alone
+  mended here, a finding in a shipped directory written as a block, and the
+  rest put to the person in the report. Its reading list: 408758 bytes by `wc
+  -c`, the order's figure, counted again here over its sixteen ranges at
+  `8c5c4b2`: this file lines 5907 to 7639, `docs/plan.md` lines 83 to 149 and
+  1043 to 1221, `docs/defects.md` lines 1 to 86 and 1371 to 1514,
   `docs/skill-conventions.md` lines 1761 to 1960, 2165 to 2237 and 3940 to
   4446, `scripts/devloop-stock-take` lines 1 to 139, 238 to 600 and 676 to
   934, `bin/devloop-bounded` lines 1 to 370, `bin/devloop-auto-mode-question`
@@ -7815,10 +7816,10 @@ and for the proofs of closings.
   November 2026 kept the block on the head of `bin/devloop-bounded` there,
   lines 6174 to 6176; the groups of the sorting, lines 1147 to 1151, name
   commands that do not answer under milestone 13, which is not reached either.
-  Built with the next change to the program, before milestone 12 is reached;
-  no order named so far changes that program. `docs/plan.md` names the block
-  since this commit, in a sentence after the one on the block on the limit of
-  the runtime's walk, in the paragraph on the second piece of milestone 12.
+  Built by the order on `scripts/devloop-run-workflow`, decided at the merge,
+  below. `docs/plan.md` names the block since this commit, in a sentence after
+  the one on the block on the limit of the runtime's walk, in the paragraph on
+  the second piece of milestone 12.
 
   **For the handover.** The eighteen blocks of `docs/defects.md` at lines 1371
   to 1514, listed with line, title and Status in the report: eleven read
@@ -7832,24 +7833,32 @@ and for the proofs of closings.
   Bash, line 1371: every open block of that range and none that is built.
   Since this commit it names the block written here as well.
 
-  **Put to the person by the report**, each with both ways and a
-  recommendation, nothing of it decided here. Where the block written here
-  stands and which order builds it: under milestone 12 as written, built by
-  the order on the self-test of `bin/devloop-bounded` under hidepid or by one
-  of its own, or under milestone 13 by the groups of the sorting. Whether the
-  four places of `Lib/subprocess.py` at v3.12.16 are read, which this order
-  did not allow. Whether "for a minute at most" in the head of
-  `bin/devloop-install-issues`, line 226, of the stand-ins of its self-test is
-  a finding: the comment at the stand-in for gh says "thirty seconds at most",
-  line 504, and the one at the stand-ins of sh "six hundred marks at most",
-  lines 552 to 553, each mark behind a sleep of a twentieth of a second, so
-  that the sentence holds on the Mac and is measured nowhere under Windows
-  with Git Bash; written by the build of 14 November 2026 and made false by
-  none of the three. And whether the note of the block at line 1419 keeps "the
-  runs M9 and M8", the table recording one run of 15 November 2026 on macOS on
-  that block, M9, and the entry on a limit over the whole call giving M8 to
-  the thing on a query the tool state program's own bound ends first, line
-  7567; M8 runs through the line of the block's Fix all the same.
+  **Decided at the merge**, of 15 November 2026, the four points the report
+  put to the person, each with one way that holds. The block written here
+  stays under milestone 12 and is built by the order on
+  `scripts/devloop-run-workflow`, the next order of that milestone, which
+  raises the version all the same, so that a paragraph of a head rides along;
+  under milestone 13 it would leave the head wrong longer and part the blocks
+  on the two programs that start gh, against the decision of 13 November 2026.
+  The four places of `Lib/subprocess.py` at the tag v3.12.16, the tag looked
+  up with git ls-remote, were read at the merge: lines 548 to 564 end at a
+  timeout the one process started, line 2203 is `os.kill(self.pid, sig)`, line
+  1673 `_winapi.TerminateProcess(self._handle, 1)` and line 559 `exc.stdout,
+  exc.stderr = process.communicate()`; each carries what the entry on gh under
+  the bound says of it, lines 6696 to 6701. "For a minute at most" in the head
+  of `bin/devloop-install-issues`, line 226, is no finding: it holds on the
+  Mac, where the stand-ins write for some thirty seconds, and is measured
+  false nowhere. And the note of the block at line 1419 said "the runs M9 and
+  M8, back after 60.567 and 60.047 seconds and after 61.375 and 60.090 with
+  nothing of a stand-in standing" and says now "the run M9, back after 60.567
+  and 60.047 seconds with nothing of a stand-in standing": a run stands on a
+  defect whose case it met, the head of `scripts/devloop-stock-take` line 287,
+  and in M8 the bound of `bin/devloop-tool-state` ended the query before the
+  limit of `bin/devloop-install-issues`, the entry on a limit over the whole
+  call lines 7546 to 7551, so that the bound of the program of that block
+  ended nothing there; the table records M9 alone on it. The note of the block
+  written here and the sentence of `docs/plan.md` on it name the order that
+  builds it.
 
   The tool, before, on `8c5c4b2`: exit 0, broken records 0, uncovered lines 0
   of 4670; Undetermined 24, Recorded, not built 259, Built, never walked 1507,

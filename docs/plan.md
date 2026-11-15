@@ -1215,14 +1215,14 @@ Bash stands with Fix none. And one block of this milestone the consistency
 audit of 15 November 2026 wrote, the roadmap entry of that date on the three
 entries held: a paragraph of the head of `bin/devloop-auto-mode-question`
 still gives every call of gh sixty seconds, where a call has what is left of
-the ninety-five since the build of that day; Fix none, built with the next
-change to that program. Of (2) to (7) nothing is built yet, `shell: bash`
-in every skill and the guard for PowerShell among them. Until 15 November
-2026 this paragraph said that what the first part found and what its merge
-found stand in three blocks of this milestone with Fix none; until 14
-November 2026, that of the rest nothing was built, the second order before
-(2) among it; until 13 November 2026, that nothing of the orders before (2)
-was built.
+the ninety-five since the build of that day; Fix none, built by the order on
+`scripts/devloop-run-workflow`. Of (2) to (7) nothing is built yet, `shell:
+bash` in every skill and the guard for PowerShell among them. Until 15
+November 2026 this paragraph said that what the first part found and what
+its merge found stand in three blocks of this milestone with Fix none; until
+14 November 2026, that of the rest nothing was built, the second order
+before (2) among it; until 13 November 2026, that nothing of the orders
+before (2) was built.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
