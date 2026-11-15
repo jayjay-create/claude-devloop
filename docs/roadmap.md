@@ -7109,6 +7109,366 @@ and for the proofs of closings.
   renamed 0, Should changed 0, added 3, no line of the fixed forms; every
   other figure as after the third commit.
 
+- **Three programs end inside their call's limit, a missing bash named**
+
+  15 November 2026, version 0.187.0: `bin/devloop-tool-state`,
+  `bin/devloop-auto-mode-question` and `bin/devloop-install-issues` change;
+  nothing under `skills/`, `shared/`, `hooks/`, `output-styles/` or `scripts/`
+  changes, and `.github/workflows/stock-take.yml` and `README.md` do not. On
+  `task/whole-call-limit`, off `origin/main` at `6f92a5d`, in three commits:
+  the code of the three programs with the version, raised once, `64b7b3e`;
+  this entry, the blocks, the plan and the table; and the runs, at the second.
+  The order, of this day: the three blocks under "## Milestone 12" of
+  `docs/defects.md` that the first part of the second order before (2) found
+  and did not build and that its merge found, the entry of 14 November 2026 on
+  gh under the bound. Its subject: the two programs that start gh hold no
+  limit over their whole call; the head of `bin/devloop-tool-state` says that
+  the program ends inside the 120 seconds of a Bash call, where it asks
+  several queries one after another; and under Windows the two programs start
+  gh through bash where PATH holds none and name nothing. The three open
+  blocks of `scripts/devloop-run-workflow` are a later order's and no part of
+  this one. Its reading list: 310836 bytes by `wc -c`, the order's figure,
+  counted again here with `git show` over its ranges at `6f92a5d`: the three
+  programs whole, lines 1 to 60 of `bin/devloop-bounded`, 36 to 46 and 316 to
+  332 of `bin/devloop-arm`, 56 to 75 and 318 to 345 of
+  `bin/devloop-start-conditions`, 30 to 48 of
+  `shared/command-does-not-answer.md`, 1761 to 1788, 1799 to 1891, 1932 to
+  1962, 2165 to 2200 and 3949 to 4446 of `docs/skill-conventions.md`, 1 to 86
+  and 1491 to 1514 of `docs/defects.md`, 83 to 149, 1108 to 1129 and 1174 to
+  1201 of `docs/plan.md`, 6481 to 6493, 6652 to 6694, 6742 to 6835, 6930 to
+  6951 and 7044 to 7111 of this file, 1 to 139, 238 to 600 and 676 to 934 of
+  `scripts/devloop-stock-take`, 378 to 440 of the workflow file, and the
+  places where the loaded texts call the three programs, 1 to 14 of
+  `shared/install-issues-read.md`, 436 to 446, 560 to 570 and 1445 to 1456 of
+  `skills/build-work/SKILL.md`, 300 to 310 and 528 to 534 of
+  `skills/plan-work/SKILL.md`, 519 to 528 and 1090 to 1098 of
+  `skills/setup-checks/SKILL.md`, 303 to 312 of
+  `skills/setup-project/SKILL.md`, and 20 to 28 and 76 to 84 of
+  `shared/install-tool.md`. Written by Claude Code from the order of this day.
+  No session log was read. Nothing was installed outside throwaway containers
+  of `alpine:3.22`, which got bash, git and python3 with apk. The three
+  programs ran in throwaway repositories alone, against stand-ins for gh, for
+  go and for a project's Playwright, the configuration of gh and of Claude
+  Code pointing under a throwaway directory; no call reached GitHub, and the
+  settings of this machine were not touched. What holds under Windows is read,
+  in `Lib/subprocess.py` and `Modules/_winapi.c` of CPython at the tag
+  v3.14.7, the tag checked with git ls-remote, and is measured by the job
+  hooks on every system and by nothing here, this machine running macOS.
+
+  Read before the build, at `6f92a5d`. How many queries a call asks one after
+  another, each under which limit. `bin/devloop-auto-mode-question`: the list,
+  its lines 360 to 362 with `--limit 100`, and one call for every issue that
+  carries a recorded command, line 387, each under sixty seconds, line 307: a
+  hundred and one at most, and the call no limit.
+  `bin/devloop-install-issues`: the list, lines 347 to 349, and for every
+  issue the blocking relation, line 375, sixty seconds, then
+  `bin/devloop-tool-state` under --build, line 308, 72 seconds, then that
+  program under --installed where the search path does not reach the tool,
+  line 332, 134, or the closing where it does, line 407, sixty: up to 266
+  seconds an issue and the two a bound may take for each command, a hundred
+  issues at most, and the call no limit. `bin/devloop-tool-state`: one query
+  for every TOOL that is a browser of Playwright, line 520, or of Puppeteer,
+  line 533, under --build and --planning, as many as it is given; under
+  --installed one, and two of go, line 560, GOPATH where GOBIN answered with
+  nothing; each under sixty seconds, lines 435 and 482. The call that starts
+  them: the texts run each "once, with the shell" and name no limit for that
+  call, twelve places in six files, `shared/install-issues-read.md` line 4,
+  `skills/build-work/SKILL.md` lines 440, 567, 1449 and 1452,
+  `skills/plan-work/SKILL.md` lines 305 and 531,
+  `skills/setup-checks/SKILL.md` lines 523 and 1094,
+  `skills/setup-project/SKILL.md` line 307 and `shared/install-tool.md` lines
+  24 and 80; so the 120 seconds of a Bash call hold for each,
+  `docs/skill-conventions.md` under "Environment constraints, measured", and
+  the most a text can give a call is 600000 milliseconds,
+  `shared/command-does-not-answer.md`. The install guard calls the question
+  program with record, which asks gh nothing. How devloop holds a limit over a
+  whole call already: `bin/devloop-arm` and `bin/devloop-start-conditions`
+  each hold ninety-five seconds, `LIMIT=95` and `STEP=10`, start no call of gh
+  once fewer than ten of them are left, and answer for such a call "no time
+  left within the 95 seconds of this call", the first with the command after
+  it, the second behind "did not answer: "; their self-tests read a clock out
+  of a file that the stand-in for gh adds to, `DEVLOOP_ARM_CLOCK` and
+  `DEVLOOP_START_CONDITIONS_CLOCK`, and wait for nothing. Under Windows, where
+  PATH holds no bash: `under_bound` of both programs takes
+  `shutil.which("bash") or "bash"`, lines 287 and 250, the bare name goes into
+  the command line, `_winapi.CreateProcess` raises with no file name,
+  `Lib/subprocess.py` lines 1552 to 1561 and `Modules/_winapi.c` lines 1418 to
+  1421 of CPython 3.14.7, and both programs print the error as it is, lines
+  312 and 276: the Wrong of the block of 15 November 2026 holds as read.
+
+  The ways to hold the should of the first two blocks, each held against any
+  number of issues. A limit over the whole call inside the program, as the two
+  programs above hold one, holds it for every number: the program is back two
+  seconds after its limit at the latest, whatever it had left to ask. A limit
+  of its own on the call in the texts does not: 600000 milliseconds are the
+  most, which is the list and eight issues for the question program at 62
+  seconds a call, the list and one issue whose tool is missing, or two whose
+  tool stands, for `bin/devloop-install-issues`, and nine browsers for
+  `bin/devloop-tool-state`; and twelve places in six texts would each have to
+  carry it. Smaller limits for a query hold it for no fixed number of issues.
+  The order names the first way: the three programs hold their shoulds, and a
+  query that is not started answers in the words
+  `bin/devloop-start-conditions` and `bin/devloop-arm` have for it.
+
+  Measured before the build, at `6f92a5d`, the tree of that commit taken out
+  with git archive, on the person's Mac, bash 3.2.57 and Python 3.14.7, the
+  four runs side by side, and in `alpine:3.22`, each run in a container of its
+  own started with docker run --rm and given bash, git and python3 with apk,
+  `bin/` mounted read-only; every stand-in a script of sh that logs each call
+  with its second, one that does not answer starting `sleep 6661 &` and
+  waiting in `sleep 6663`; the time taken around the one call with Python's
+  monotonic clock. `bin/devloop-tool-state --build playwright:chromium
+  playwright:firefox playwright:webkit`, the project's
+  `node_modules/.bin/playwright` not answering: back after 181.139 seconds on
+  the Mac and 180.093 in Alpine, exit 1, three lines not read, each with "no
+  answer within 60 seconds", the queries started at 2, 61 and 121 seconds and
+  at 0, 60 and 120. `bin/devloop-auto-mode-question`, one refusal recorded,
+  the list naming two issues that carry the command after 50 seconds, the
+  first blocking relation answering after 55, the second not at all: back
+  after 166.297 and 165.148 seconds, "question: not decided", the command of
+  the second relation, "no answer within 60 seconds", exit 2.
+  `bin/devloop-install-issues`, the list naming two issues with both lines
+  after 50 seconds, the same two relations, the tool standing on the search
+  path and the closing answered at once: back after 167.290 and 165.176
+  seconds, the group of the first issue with closed: yes, then "issues: not
+  decided" with the same command and message, exit 2. None of the three was
+  back within the 120 seconds, on either system, and the build went on. And
+  `bin/devloop-tool-state --installed` with a stand-in for go whose `go env
+  GOBIN` prints nothing after 59 seconds and whose `go env GOPATH` does not
+  answer: back after 120.365 seconds on the Mac and 119.067 in Alpine, exit 1,
+  "go env GOPATH did not answer: no answer within 60 seconds". The Wrong of
+  the block on the head of that program reckons 59 and 62 seconds for this
+  case; the bound returned at its sixty, the stand-in ending on the SIGTERM,
+  and takes its two seconds only where something outlives that, so that this
+  one case ran past the 120 seconds by less than half a second on the Mac and
+  stayed inside them by a second in Alpine. No process of a stand-in stood
+  after the runs, and no container. And a PATH that holds no bash, on the Mac,
+  every file of `/bin` but bash linked into a directory of its own and `/bin`
+  itself off PATH, gh answering at once: `bin/devloop-auto-mode-question`
+  ended with 0 and "question: yes", gh called twice;
+  `bin/devloop-install-issues` ended with 2, "issues: not decided", "command:
+  bin/devloop-tool-state --build devloop-m-present" and "message: [Errno 2] No
+  such file or directory: 'bash'", gh called for the list and the blocking
+  relation before it.
+
+  **The should of the block on Windows and a PATH without bash**, changed by
+  the order of this day. The old should read "under Windows, as under macOS
+  and Linux, where PATH holds no gh or no bash the two programs start nothing
+  and the message names what is missing, and the head of
+  bin/devloop-auto-mode-question says what the message was under Windows until
+  14 November 2026"; the new one reads "under Windows, as under macOS and
+  Linux, where a program looks up gh or bash on PATH and PATH holds none, the
+  command that needs it is not started and the message names what is missing,
+  and the head of bin/devloop-auto-mode-question says what the message was
+  under Windows until 14 November 2026". The old one said of macOS and Linux
+  more than holds: there `under_bound` starts the bound by its first line,
+  `#!/bin/bash`, lines 285 and 286 of `bin/devloop-auto-mode-question` and
+  line 1 of `bin/devloop-bounded`, and looks up no bash on PATH;
+  `bin/devloop-install-issues` alone looks it up there, for its call of
+  `bin/devloop-tool-state`, and its calls of gh before that run, read at
+  `6f92a5d` and measured, above. The line of the fixed form, the title as the
+  tool reads it:
+
+  Should changed: under Windows bin/devloop-auto-mode-question and bin/devloop-install-issues start gh through bash where PATH holds none and name nothing, and the head of the first says a missing gh was named there until 14 November 2026
+
+  Built. Each of the three programs holds ninety-five seconds over its whole
+  call, counted from its start, `LIMIT` and `STEP` as the two programs above
+  carry them: a query has its own limit, or what is left of the ninety-five
+  where that is less, and none starts once fewer than ten are left. The
+  numbers: ninety-five as in `bin/devloop-start-conditions`, which ends with
+  it inside the 120 seconds of a Bash call, the twenty-five between them for
+  the two seconds a bound may take to return, the start of bash or Python
+  before the clock, what a program does after its last query and, under
+  Windows, the slower start of every process; ten as those two programs give
+  gh for a call. A query's own limit stays sixty seconds, for gh and for a
+  vendor or an installer; `bin/devloop-install-issues` gives
+  `bin/devloop-tool-state` 72 seconds under --build as before and 107 under
+  --installed, the ninety-five of that program's whole call, the two and ten
+  for the program itself, where it gave 134 for the two queries of go. What a
+  query answers: with sixty seconds or more left, as before; with ten to
+  fifty-nine left it starts with them, and where it does not answer the line
+  reads "no answer within N seconds", the wording it had, N the seconds the
+  query had; with fewer than ten left it is not started and answers as one
+  that did not answer, "no time left within the 95 seconds of this call", in
+  `bin/devloop-tool-state` behind "did not answer: " in the line not read, as
+  `bin/devloop-start-conditions` has it, in the two Python programs as the
+  message under not decided, the command on its own line. No line a user reads
+  is new. A caller with a limit calling a program with one:
+  `bin/devloop-install-issues` gives `bin/devloop-tool-state` its limit for
+  that call or, where that is less, what is left of its own ninety-five; where
+  as much is left as that program takes, that program's own bound ends a query
+  first and it prints its line not read, as before; where less is left, the
+  outer bound may fire first, "issues: not decided" with "no answer within N
+  seconds", and under --installed the limit is always what is left, 107 being
+  more than is ever left. What is left is not handed into the program called:
+  the call is back inside the ninety-five seconds either way, and nothing
+  starts after it. In `bin/devloop-tool-state` the clock is bash's SECONDS,
+  whole seconds, which run ahead of the time passed by up to one and never
+  behind it; in the two Python programs it is the monotonic clock since the
+  program's start, the seconds left rounded down. The rule program and git,
+  which the question program asks before gh, and the read of the install
+  record under --build stand under no bound; none of them asks anything over a
+  network. Under Windows, where PATH holds no bash: `under_bound` of both
+  Python programs gives no call where `shutil.which` finds no bash, and the
+  program starts nothing and prints the message it prints where PATH holds no
+  gh, with the missing name, "[Errno 2] No such file or directory: 'bash'".
+  Read on this Mac in a throwaway interpreter with `os.name` set to nt and
+  bash off the lookup, which is no run under Windows: `under_bound` gave None,
+  the function that starts a command gave the message naming bash, and nothing
+  was started. The heads say what holds: that of `bin/devloop-tool-state` the
+  limit, the queries a call asks, the words of a query not started and what
+  stands outside the limit, where it said that sixty seconds a query end the
+  program inside the 120 seconds; that of `bin/devloop-auto-mode-question` the
+  limit in a paragraph of its own, that the error of the start named a missing
+  gh on macOS and Linux and named nothing under Windows until 14 November
+  2026, `[WinError 2]` with the text of Windows, and where bash is looked up;
+  that of `bin/devloop-install-issues` the limits, the limit over the call,
+  and what holds on each system where PATH holds no gh or no bash, where it
+  said of every system that nothing is started.
+
+  The self-tests. The cases on the limit run on a clock of their own and wait
+  for nothing. `bin/devloop-tool-state` reads `DEVLOOP_TOOL_STATE_CLOCK`, a
+  file holding the seconds, as `bin/devloop-arm` reads its own, a stand-in
+  adding to it the seconds a case gives an answer; and these cases run a copy
+  of the program beside a stand-in for `bin/devloop-bounded` that logs the
+  seconds it was given and runs the query without a bound. It has 67 cases
+  where it had 63: three queries taking 59 and 26 seconds, the bound given 60,
+  36 and 10; taking 59 and 27, the third not started, its line not read with
+  no time left, exit 1; go with GOBIN empty after 59 seconds, GOPATH asked
+  with 36; and after 86, GOPATH not started. The two Python programs are
+  loaded in an interpreter of their own, as since 14 November 2026, and where
+  `DEVLOOP_QUESTION_CLOCK` or `DEVLOOP_ISSUES_CLOCK` names a file the loader
+  puts it in the place of the program's clock, the stand-in for gh adding to
+  it; the loader alone reads the variable, and no setting of the environment
+  moves a limit or the clock in operation. `bin/devloop-auto-mode-question`
+  has 53 cases where it had 45: nine of the ninety-five seconds left, the
+  second blocking relation not started, and the calls; ten left, the question
+  decided; a call started with three seconds left, five under Windows, the
+  fewest a call starts with set to them by the loader, ended after them and
+  not after its sixty, with the marks standing still and the call back in
+  time; and no bash on PATH, two cases, under Windows nothing started and the
+  message naming bash, on macOS and Linux bash not looked up and the question
+  decided as with one. `bin/devloop-install-issues` has 49 where it had 39:
+  the tool state program started with three seconds left, ten under Windows,
+  having those and not its 72, three cases; nine left, a call of gh not
+  started and the first issue's group standing, two; nine left, the tool state
+  program not started, two; ten left, the issue closed; and no bash on PATH,
+  two, under Windows nothing started, on macOS and Linux gh called and the
+  tool state program not started, the message naming bash. The number of cases
+  is the same on every system. All three passed on the person's Mac and in a
+  container of `alpine:3.22` before the first commit.
+
+  What the build does not reach. Under Windows with Git Bash nothing of it is
+  measured: that no call is started and the message names bash where PATH
+  holds none, that the copy of `bin/devloop-tool-state` beside the stand-in
+  for the bound runs there, and that the cases on the limit come out there as
+  here; the job hooks on every system measures all three with the three
+  self-tests, and the report of this day says which lines its log must show.
+  The block on Windows and a PATH without bash reads Built, never walked until
+  that run is recorded. A project with very many open issues for a missing
+  install is no longer read in one call: `bin/devloop-install-issues` ends
+  after ninety-five seconds with "issues: not decided" and no time left for
+  the first command it does not start, the issues closed until then staying
+  closed and the next start reading the others; the texts say of an exit 2
+  that the query did not answer and that an issue not read stays open, which
+  holds. A limit of its own on the call in the texts, with the program told
+  the seconds, would let one call read more; it needs an argument of the
+  programs and a change to six texts, is no part of this order, and the report
+  lays it before the person. What bash and Python take to start before the
+  clock, and what a program does after its last query, stand outside the
+  ninety-five seconds, inside the twenty-five that are left of the 120. And
+  what the bound does not end its head says, as before.
+
+  The table. Eight things for what is new, each Built, never walked until its
+  run: in each of the three programs a query not started with fewer than ten
+  of the ninety-five seconds left, and a query that started with less than its
+  own limit left; in each of the two Python programs a PATH that holds no bash
+  under Windows. Seventeen records for lines of the three programs that
+  entered the search set, sixteen part of the self-test of their program and
+  one, the clock of `bin/devloop-tool-state`, part of the thing on a query not
+  started. Two things stand on a line the build changed and are walked again,
+  below: in `bin/devloop-auto-mode-question` a gh that does not answer within
+  its sixty seconds, whose line names the seconds the call had, and in
+  `bin/devloop-install-issues` a query the tool state program's own bound ends
+  first, whose evidence is the limit under --installed, 107 where it was 134.
+  Two things are renamed with their runs, by the rule of the head of
+  `scripts/devloop-stock-take`, their notes naming the old names: the thing on
+  the tool state program not answering within 134 seconds under --installed
+  says "within the limit this program gives it under --installed", that limit
+  being what is left of the call since this day; and the thing "issues: not
+  decided where PATH holds no gh or no bash: nothing started" says "no gh, or
+  no bash for the call of bin/devloop-tool-state: that command not started",
+  its old name having said of bash more than holds on macOS and Linux, a
+  finding in a line of the table that this branch mends and that gets no
+  block. The green end of the self-test of `bin/devloop-auto-mode-question`
+  stands on lines of this build and is walked again. The two ends of the three
+  self-tests stand in two things each since before this day, and no name of a
+  thing of the three programs names a green and a red end at once.
+
+  The blocks. The three of this order carry the line of the build as their
+  Fix: the block on a limit over the whole call the line of
+  `bin/devloop-auto-mode-question` that reads the seconds left, which stands
+  in `bin/devloop-install-issues` as well; the block on the head of
+  `bin/devloop-tool-state` the line of its function ask that reads them; the
+  block on Windows the line of `under_bound` in
+  `bin/devloop-auto-mode-question` that gives no call. Each reads Built, never
+  walked, which the tool computes, the first two until the runs at the last
+  commit and the third until the job's run under Windows is recorded; their
+  notes say the way, the numbers and what the measurement before the build
+  added, and the third its new should. The two blocks of 11 November 2026 on a
+  command that does not answer named as their Fix the call of `subprocess.run`
+  over `under_bound`, a line the build changed in both programs; they name the
+  call of `under_bound` now, their runs until this day count no more, and they
+  read Built, never walked until the runs at the last commit walk them again,
+  their notes saying so.
+
+  The documents against the build, searched with `/usr/bin/grep -rn -E` for
+  `120 seconds|no time left|SECONDS|BUILD_SECONDS|INSTALLED_SECONDS|whole
+  call|WinError|devloop-tool-state|devloop-auto-mode-question|devloop-install-issues`
+  over this file (98 lines), `docs/roadmap-archive-1.md` (168),
+  `docs/defects.md` (59), `docs/plan.md` (8), `docs/rationale.md` (7),
+  `docs/skill-conventions.md` (7), `README.md` and
+  `scripts/devloop-stock-take` (none), and over `skills` (15), `shared` (11),
+  `hooks` (6), `.github` (3) and `bin` (204, of them 160 in the three
+  programs), 586 lines as these stood at `64b7b3e`, every line read. No
+  sentence of a loaded text, of a hook, of another program or of the workflow
+  stopped holding: the texts say that the programs are run once, with the
+  shell, and that on an exit 2 the run says the query did not answer, with the
+  command and the message, which is what a query not started is answered as.
+  `docs/skill-conventions.md`, `docs/rationale.md` and `README.md` carry no
+  sentence on the limits of the three programs. In `docs/defects.md` the hits
+  stand in 26 blocks, of which the five named above change and no other says
+  anything the build ends. In `docs/plan.md` the paragraph on the second piece
+  of milestone 12 says what this order built and what of the orders before (2)
+  is not built yet. The dated entries of this file and of the archive stand as
+  written; what they say of the three programs held until this day and holds
+  otherwise since: "query runs under `bin/devloop-bounded` with sixty seconds"
+  in the archived entry of 27 October 2026 on the tool state read by one
+  program, and in the entry of 14 November 2026 on gh under the bound that gh
+  has sixty seconds a call and the tool state program 72 and 134, that where
+  PATH holds no gh, or no bash for the second program, nothing is started, and
+  that under Windows a PATH without bash leaves the call started. Since this
+  day each has what is left of the ninety-five seconds where that is less, the
+  limit under --installed is 107, and under Windows nothing is started and
+  bash is named.
+
+  The tool. Before, at `6f92a5d`: exit 0, no broken record, 0 of 4646 lines of
+  the search set uncovered; Undetermined 24, Recorded, not built 262, Built,
+  never walked 1510, Walked 739, Closed 72; milestone 12 114 blocks, Recorded,
+  not built 45, Built, never walked 46, Walked 17, Closed 6; its self-test 159
+  cases. After the second commit: exit 0, no broken record, 0 of 4670 lines
+  uncovered, the search set 24 lines longer by the new lines of the three
+  programs; Undetermined 24; Recorded, not built 259, the three blocks built;
+  Built, never walked 1526, sixteen more: the eight new things, the three
+  blocks, and five that were Walked and stand on a line of this build until
+  the runs, the green end of the self-test of
+  `bin/devloop-auto-mode-question`, the two things named above and the two
+  blocks of 11 November 2026; Walked 734, those five fewer; Closed 72;
+  milestone 12 114 blocks, Recorded, not built 42, Built, never walked 51,
+  Walked 15, Closed 6; blocks held against the branch point: removed 0,
+  renamed 0, Should changed 1, added 0, one line of the fixed forms; nothing
+  Walked on the branch without a run the branch adds.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
