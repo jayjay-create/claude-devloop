@@ -78,7 +78,30 @@ with gh api repos/{owner}/{repo}/issues/N/dependencies/blocking, the
 relation the readiness query of build-work reads from the other side, and
 it concerns a check class otherwise, since such an issue is recorded as a
 blocker of no task. gh is called in DIR, as the skills call it, each call
-with 60 seconds.
+with 60 seconds, or with what is left of the ninety-five seconds of the
+whole call where that is less, below.
+
+The limit over the whole call, since 15 November 2026, the roadmap entry of
+that date on a limit over the whole call. The program holds ninety-five
+seconds over its call, counted from its start, as bin/devloop-arm and
+bin/devloop-start-conditions hold theirs: a call of gh has its sixty
+seconds, or what is left of the ninety-five where that is less, and none
+starts once fewer than ten of them are left. So the program ends inside the
+120 seconds of a Bash call, the limit of the call the texts start it in,
+however many issues carry a recorded command and however slowly gh answers
+for each: the last call is back at most two seconds after the ninety-five,
+the two its bound may take. A call that is not started answers as one that
+did not answer: not decided, with the command and the message "no time left
+within the 95 seconds of this call", the words of bin/devloop-arm; one that
+had less than sixty seconds and did not answer within them says "no answer
+within N seconds" with the seconds it had. What the rule program and git
+take, both asked before gh and neither over a network, counts on the same
+clock and stands under no bound. Until that day every call had sixty
+seconds and the whole call no limit, the list and one call for every issue
+found, a hundred and one at most: measured on 15 November 2026 at 6f92a5d
+on macOS and in alpine:3.22 with a stand-in for gh whose list answers after
+50 seconds, whose first blocking relation after 55 and whose second not at
+all, the program was back after 166 and 165 seconds.
 
 How a gh that does not answer is ended, since 14 November 2026, the roadmap
 entry of that date on gh under the bound. Each call of gh runs under
@@ -137,8 +160,21 @@ extensions of PATHEXT, so that gh.exe and a gh.cmd beside it are found
 alike, where a bare name handed to subprocess alone is found there as
 gh.exe and as nothing else; where PATH holds no gh, nothing is started and
 the message is the system's for a file that is not there, naming gh, since
-14 November 2026; until then the name went through as it was and the error
-of the start named it. The self-test runs every outcome against a
+14 November 2026; until then the name went through as it was, and the error
+of the start named it on macOS and Linux and named nothing under Windows:
+there the message read [WinError 2] with the text of Windows for a file
+that is not found, _winapi.CreateProcess raising the error with no file
+name, Modules/_winapi.c lines 1418 to 1421 of CPython 3.14.7, where on
+macOS and Linux the start adds the name, Lib/subprocess.py lines 1981 to
+1990; until 15 November 2026 this head said of every system that the error
+of the start named it. bash is looked up on PATH under Windows alone, where
+it runs the bound, above; on macOS and Linux the bound runs by its first
+line, /bin/bash, whatever PATH holds. Where PATH holds no bash under
+Windows, no call of gh is started and the message is the one for gh, naming
+bash, since 15 November 2026; from 14 November 2026 until then the bare
+name bash went into the command line there, the call was started all the
+same, and the message was that [WinError 2], naming nothing. The self-test
+runs every outcome against a
 stand-in for gh that answers from scripted files, as the self-test of
 bin/devloop-arm does: the stand-in comes first on the path, the
 configuration of gh points at an empty directory, no token stands in the
@@ -161,6 +197,18 @@ setting of the environment moves the limit in operation, and holds the
 answer to the message with those seconds, to both files standing still
 once the program has returned, and to the call being back no later than
 those seconds and two after a call the stand-in answers at once.
+The cases on the limit over the whole call, since 15 November 2026: where
+DEVLOOP_QUESTION_CLOCK names a file, the self-test's loader puts that file
+in the place of the program's clock, the seconds since its start, and the
+stand-in adds to it the seconds a case gives an answer, as the stand-in of
+bin/devloop-arm does, so that the cases wait for nothing; the loader alone
+reads that variable, and no setting of the environment moves the clock in
+operation. A call is not started with nine of the ninety-five seconds left
+and is started with ten; and a call that starts with a few seconds left,
+the fewest a call starts with set to those few by the loader, does not
+answer and is ended after them and not after its sixty. And no bash on
+PATH: under Windows no call started and the message naming bash; on macOS
+and Linux, where bash is not looked up, the question decided as with one.
 """
 
 import ast
@@ -181,6 +229,16 @@ BOUNDED = os.path.join(HERE, "devloop-bounded")
 FILE = "devloop-auto-mode-denials"
 LABELS = ["raised-here", "needs-human"]
 SECONDS = 60
+# the limit over the whole call and the fewest seconds of it a call of gh starts with, as bin/devloop-arm holds them, since 15 November 2026
+LIMIT = 95
+STEP = 10
+BEGAN = time.monotonic()
+
+
+def now():
+    """The seconds since the program began; the self-test's loader puts a
+    clock of its own here."""
+    return time.monotonic() - BEGAN
 
 
 def usage(msg):
@@ -281,10 +339,13 @@ def under_bound(seconds, words):
     with the seconds: on macOS and Linux the bound by its first line, a
     list; on Windows one command line, bash found on PATH running the bound,
     every word in double quotes and the command's own path with forward
-    slashes, a word bash reads as a path; the head says why."""
+    slashes, a word bash reads as a path; the head says why. None under
+    Windows where PATH holds no bash: the caller then starts nothing."""
     if os.name != "nt":
         return [BOUNDED, str(seconds)] + words
-    bash = shutil.which("bash") or "bash"
+    bash = shutil.which("bash")
+    if bash is None:  # under Windows no bash on PATH to run the bound
+        return None
     return " ".join(quoted(w) for w in [bash, BOUNDED, str(seconds), words[0].replace("\\", "/")] + words[1:])
 
 
@@ -294,25 +355,37 @@ def gh(args, d):
     the extensions of PATHEXT, so that gh.exe and a gh.cmd are found alike,
     where subprocess alone would find gh.exe and nothing else - and where
     PATH holds none, nothing is started and the message names gh. It runs
-    under bin/devloop-bounded with SECONDS, its output into two files and
-    its input empty: a gh that does not answer is ended by the bound with
-    everything it started, exit 124 and the bound's line on stderr, read
-    here as no answer within SECONDS seconds."""
+    under bin/devloop-bounded with SECONDS, or with what is left of the
+    LIMIT of the whole call where that is less, its output into two files
+    and its input empty: a gh that does not answer is ended by the bound
+    with everything it started, exit 124 and the bound's line on stderr,
+    read here as no answer within the seconds it had. Where fewer than STEP
+    seconds of LIMIT are left it is not started and answers as a call that
+    did not answer, in the words of bin/devloop-arm; and under Windows,
+    where PATH holds no bash to run the bound, it is not started and the
+    message names bash."""
     shown = "gh " + " ".join(args)
     exe = shutil.which("gh")
     if exe is None:  # no gh on PATH: nothing started, the system's message for a file that is not there
         return None, shown, str(FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), "gh"))
+    left = int(LIMIT - now())
+    if left < STEP:  # fewer than STEP seconds of the whole call left: not started, answered as a call that did not answer
+        return None, shown, "no time left within the %d seconds of this call" % LIMIT
+    seconds = min(SECONDS, left)  # a call's own limit, or what is left of the whole call's where that is less
+    call = under_bound(seconds, [exe] + args)
+    if call is None:  # under Windows no bash on PATH: nothing started, the message as for gh, naming bash
+        return None, shown, str(FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), "bash"))
     try:
         with tempfile.TemporaryFile(mode="w+") as out, tempfile.TemporaryFile(mode="w+") as err:
-            rc = subprocess.run(under_bound(SECONDS, [exe] + args), cwd=d, stdin=subprocess.DEVNULL,
+            rc = subprocess.run(call, cwd=d, stdin=subprocess.DEVNULL,
                                 stdout=out, stderr=err).returncode
             out.seek(0)
             err.seek(0)
             r = subprocess.CompletedProcess(args, rc, out.read(), err.read())
     except OSError as e:
         return None, shown, str(e)
-    if r.returncode == 124 and any(line.startswith("no answer within %d seconds: " % SECONDS) for line in r.stderr.split("\n")):
-        return None, shown, "no answer within %d seconds" % SECONDS
+    if r.returncode == 124 and any(line.startswith("no answer within %d seconds: " % seconds) for line in r.stderr.split("\n")):
+        return None, shown, "no answer within %d seconds" % seconds
     if r.returncode != 0:
         return None, shown, (r.stderr.strip() or r.stdout.strip() or
                              "exit %d with nothing printed" % r.returncode)
@@ -419,6 +492,9 @@ def question(d):
 # not answer: it starts a second process and stands with it, each writing a
 # mark into a file of its own twenty times a second, thirty seconds at most,
 # so that the self-test reads off the two files whether either still stands.
+# Where a file .t stands beside the scripted answer it adds the seconds in it
+# to the self-test's clock, the file $DEVLOOP_QUESTION_CLOCK names, before it
+# answers, as the stand-in for gh of bin/devloop-arm does.
 STAND_IN = r'''import os
 import re
 import sys
@@ -446,6 +522,10 @@ if not os.path.exists(a + ".rc"):
     sys.stderr.write("stand-in for gh: no answer scripted for: gh %s\n" % args)
     open(os.path.join(S, "unscripted"), "w").close()
     sys.exit(1)
+if os.path.exists(a + ".t"):
+    clock = os.environ["DEVLOOP_QUESTION_CLOCK"]
+    told = float(open(clock, encoding="utf-8").read()) + float(open(a + ".t", encoding="utf-8").read())
+    open(clock, "w", encoding="utf-8").write("%s\n" % told)
 sys.stdout.write(open(a + ".out", encoding="utf-8").read())
 sys.stderr.write(open(a + ".err", encoding="utf-8").read())
 sys.exit(int(open(a + ".rc", encoding="utf-8").read().strip()))
@@ -453,16 +533,24 @@ sys.exit(int(open(a + ".rc", encoding="utf-8").read().strip()))
 LAUNCHER_SH = '#!/bin/sh\nexec "%s" "%s" "$@"\n'
 LAUNCHER_CMD = '@"%s" "%%~dp0gh-stand-in.py" %%*\r\n'
 # The program loaded in an interpreter of its own, for the cases of the
-# self-test that need what no call from outside sets: SECONDS, the limit of a
-# call of gh, set to the second argument, and gh taken off the lookup where
-# the third argument names it. No setting of the environment moves the limit
-# in operation.
-LOADER = """import shutil
+# self-test that need what no call from outside sets: the limits named in
+# the second argument, SECONDS=3 or STEP=3, several joined by a comma, a
+# command taken off the lookup where the third argument names it, gh or
+# bash, and, where DEVLOOP_QUESTION_CLOCK names a file, the seconds in that
+# file in the place of the program's clock. No setting of the environment
+# moves a limit or the clock in operation: the loader alone reads that
+# variable.
+LOADER = """import os
+import shutil
 import sys
-p, limit, gone = sys.argv[1], int(sys.argv[2]), sys.argv[3]
+p, limits, gone = sys.argv[1], sys.argv[2], sys.argv[3]
 g = {"__name__": "devloop_auto_mode_question", "__file__": p}
 exec(compile(open(p, encoding="utf-8").read(), p, "exec"), g)
-g["SECONDS"] = limit
+for limit in limits.split(","):
+    g[limit.split("=")[0]] = int(limit.split("=")[1])
+clock = os.environ.get("DEVLOOP_QUESTION_CLOCK")
+if clock:  # the self-test's clock in the place of the program's
+    g["now"] = lambda: float(open(clock, encoding="utf-8").read())
 found = shutil.which
 shutil.which = lambda name, *a, **k: None if name == gone else found(name, *a, **k)
 sys.exit(g["main"]([p] + sys.argv[4:]))
@@ -542,12 +630,24 @@ def selftest():
                                input=stdin, capture_output=True, text=True, env=env)
             return r.returncode, r.stdout + r.stderr
 
-        def loaded(limit, gone, *args):
-            """the program through LOADER: (exit code, output) and the seconds the call took"""
+        def loaded(limits, gone, *args, clock=None):
+            """the program through LOADER: (exit code, output) and the
+            seconds the call took; with clock, the program on the
+            self-test's clock, a file that starts at those seconds"""
+            e = dict(env)
+            if clock is not None:  # the self-test's clock, which the stand-in adds to
+                e["DEVLOOP_QUESTION_CLOCK"] = os.path.join(S, "clock")
+                with open(e["DEVLOOP_QUESTION_CLOCK"], "w", encoding="utf-8") as f:
+                    f.write("%d\n" % clock)
             began = time.monotonic()
-            r = subprocess.run([sys.executable, "-c", LOADER, me, str(limit), gone] + list(args),
-                               cwd=os.path.join(T, "p"), capture_output=True, text=True, env=env)
+            r = subprocess.run([sys.executable, "-c", LOADER, me, limits, gone] + list(args),
+                               cwd=os.path.join(T, "p"), capture_output=True, text=True, env=e)
             return (r.returncode, r.stdout + r.stderr), time.monotonic() - began
+
+        def takes(kind, seconds):
+            """the scripted answer of that kind takes the seconds on the self-test's clock"""
+            with open(os.path.join(S, kind + ".t"), "w", encoding="utf-8") as f:
+                f.write("%d\n" % seconds)
 
         def calls():
             with open(os.path.join(S, "log"), encoding="utf-8") as f:
@@ -821,12 +921,12 @@ def selftest():
         short = 5 if os.name == "nt" else 3
         fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
         ans("issues", 1, "", "HTTP 502: Bad Gateway (https://api.github.com/graphql)")
-        got, at_once = loaded(short, "")
+        got, at_once = loaded("SECONDS=%d" % short, "")
         ok &= expect("the limit set to a few seconds and gh answering at once: as with sixty", got, 2,
                      "question: not decided",
                      "message: HTTP 502: Bad Gateway (https://api.github.com/graphql)")
         open(os.path.join(S, "issues.hang"), "w").close()
-        got, hung = loaded(short, "")
+        got, hung = loaded("SECONDS=%d" % short, "")
         ok &= expect("gh does not answer within the limit: not decided, the command, no answer within the seconds, exit 2", got, 2,
                      "question: not decided",
                      "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
@@ -841,7 +941,7 @@ def selftest():
             print("FAIL gh does not answer within the limit: back after %.3f seconds, %.3f where gh answers at once, more than the %d seconds and 2 apart" % (hung, at_once, short))
         # no gh on PATH: nothing started, the system's message for a file that is not there
         fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
-        got, _ = loaded(short, "gh")
+        got, _ = loaded("SECONDS=%d" % short, "gh")
         ok &= expect("no gh on PATH: not decided, the command and the system's message naming gh, exit 2", got, 2,
                      "question: not decided",
                      "command: gh issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body",
@@ -852,6 +952,63 @@ def selftest():
         else:
             ok = False
             print("FAIL no gh on PATH: gh called: %r" % calls())
+        # the limit over the whole call, on the self-test's clock: no call of gh starts once fewer than ten of the ninety-five seconds are left, and a call that is not started answers as one that did not answer
+        listing = "issue list --state open --label raised-here --label needs-human --limit 100 --json number,title,body"
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues((15, "The class", "brew install gitleaks"), (16, "Again", "brew install gitleaks")); blocking(15); blocking(16)
+        takes("issues", 50); takes("blocking.15", 36)
+        got, _ = loaded("SECONDS=60", "", clock=0)
+        ok &= expect("the list after 50 seconds and the first blocking relation after 36 more, nine of the 95 left: the second not started, not decided, the command and no time left, exit 2", got, 2,
+                     "question: not decided",
+                     "command: gh api repos/{owner}/{repo}/issues/16/dependencies/blocking",
+                     "message: no time left within the 95 seconds of this call")
+        n[0] += 1
+        if calls() == [listing, "api repos/{owner}/{repo}/issues/15/dependencies/blocking"]:
+            print("ok   nine of the 95 seconds left: the call of gh not started")
+        else:
+            ok = False
+            print("FAIL nine of the 95 seconds left: the calls were %r" % calls())
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues((15, "The class", "brew install gitleaks"), (16, "Again", "brew install gitleaks")); blocking(15); blocking(16)
+        takes("issues", 50); takes("blocking.15", 35)
+        got, _ = loaded("SECONDS=60", "", clock=0)
+        ok &= expect("the list after 50 seconds and the first blocking relation after 35 more, ten of the 95 left: the second asked, the question decided, exit 0", got, 0,
+                     "question: yes", "issue: 15", "issue: 16")
+        # a call that starts with less than its sixty seconds left has what is left: the fewest seconds a call starts with set to a few, the list answering with those few of the ninety-five left, the blocking relation not answering: ended after those few and not after sixty, the message with them
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues((15, "The class", "brew install gitleaks")); takes("issues", 95 - short)
+        open(os.path.join(S, "blocking.15.hang"), "w").close()
+        got, hung = loaded("SECONDS=60,STEP=%d" % short, "", clock=0)
+        ok &= expect("a call started with a few of the 95 seconds left has those and not its sixty: not decided, the command, no answer within those seconds, exit 2", got, 2,
+                     "question: not decided",
+                     "command: gh api repos/{owner}/{repo}/issues/15/dependencies/blocking",
+                     "message: no answer within %d seconds" % short)
+        ok &= standing_still("a call started with a few of the 95 seconds left: ended with the process it started, neither standing once the program has returned",
+                             "marks.gh", "marks.started")
+        n[0] += 1
+        if hung - at_once <= short + 2:
+            print("ok   a call started with a few of the 95 seconds left: back no later than those seconds and two after a call answered at once")
+        else:
+            ok = False
+            print("FAIL a call started with a few of the 95 seconds left: back after %.3f seconds, %.3f where gh answers at once, more than the %d seconds and 2 apart" % (hung, at_once, short))
+        # no bash on PATH: under Windows, where bash runs the bound, no call of gh is started and the message names bash; on macOS and Linux bash is not looked up, the bound running by its first line, and the question is decided as with one
+        fresh(); run("record", "brew install", "toolu_1", stdin=lit + "\n")
+        issues((15, "The class", "brew install gitleaks")); blocking(15)
+        got, _ = loaded("SECONDS=%d" % short, "bash")
+        under_windows = os.name == "nt"
+        if under_windows:
+            ok &= expect("no bash on PATH under Windows: not decided, the command and the system's message naming bash, exit 2", got, 2,
+                         "question: not decided", "command: gh " + listing,
+                         "message: %s" % FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), "bash"))
+        else:
+            ok &= expect("no bash on PATH on macOS and Linux: bash not looked up, the question decided as with one, exit 0", got, 0,
+                         "question: yes", "issue: 15")
+        n[0] += 1
+        if calls() == ([] if under_windows else [listing, "api repos/{owner}/{repo}/issues/15/dependencies/blocking"]):
+            print("ok   no bash on PATH: nothing started under Windows, gh called as with one on macOS and Linux")
+        else:
+            ok = False
+            print("FAIL no bash on PATH: the calls were %r" % calls())
         # a project that is no git repository
         ok &= expect("a directory that is no git repository: no question", run(os.path.join(T, "nogit")), 1,
                      "question: no")

@@ -120,11 +120,30 @@
 # on the hook on SubagentStart. For a browser the one line stays: the
 # vendor's folder is where the test tool looks.
 #
-# Every query of a vendor or an installer runs under bin/devloop-bounded
-# with sixty seconds, so that the program ends inside the 120 seconds of a
-# Bash call; a query that does not answer leaves its line not read, with
-# the query and its message, never found; one not on the path answers "is
-# not on PATH". The program fetches nothing and asks GitHub nothing; the
+# Every query of a vendor or an installer runs under bin/devloop-bounded,
+# and the program holds a limit over its whole call, ninety-five seconds, as
+# bin/devloop-arm and bin/devloop-start-conditions hold theirs, since 15
+# November 2026, the roadmap entry of that date on a limit over the whole
+# call: a query has sixty seconds, or what is left of the ninety-five where
+# that is less, and none starts once fewer than ten of them are left. So
+# the program ends inside the 120 seconds of a Bash call, the limit of the
+# call the texts start it in, however many queries it asks - one for every
+# TOOL that is a browser of Playwright or of Puppeteer under --build and
+# --planning, two of go under --installed, GOBIN and then GOPATH where
+# GOBIN is empty - and whatever each of them does: the last query is back
+# at most two seconds after the ninety-five, the two its bound may take.
+# Until that day every query had sixty seconds and the call no limit, and
+# the sentence here said that the program so ends inside the 120 seconds:
+# measured on 15 November 2026 at 6f92a5d on macOS and in alpine:3.22,
+# three browsers of a Playwright that does not answer brought --build back
+# after 181 and 180 seconds. A query that does not answer leaves its line
+# not read, with the query and its message, never found, the message
+# naming the seconds the query had; one that is not started answers as one
+# that did not answer, "no time left within the 95 seconds of this call",
+# the words of bin/devloop-start-conditions; one not on the path answers
+# "is not on PATH". The read of the install record under --build stands
+# outside the limit: bin/devloop-install-record asks git alone and nothing
+# over a network. The program fetches nothing and asks GitHub nothing; the
 # default branch it does not resolve itself.
 # Exit 0: every TOOL found, under --installed in the folder and on the
 # search path both. 1: one or more not found or not read; the record line
@@ -142,6 +161,13 @@
 # node_modules/.bin/playwright is the same stand-in where a case gives the
 # project a Playwright; a home directory of its own holds the folders;
 # DEVLOOP_TOOL_STATE_SYSTEM stands in for uname -s in the self-test alone;
+# DEVLOOP_TOOL_STATE_CLOCK stands in for the clock in the self-test alone,
+# a file holding the seconds, which a stand-in adds to where a case gives
+# its answer seconds, as in bin/devloop-arm, and the cases on the limit
+# over the whole call run a copy of this program beside a stand-in for
+# bin/devloop-bounded that logs the seconds it was given and runs the
+# query without a bound, so that they read off the log what a query had
+# and wait for nothing;
 # and a throwaway repository whose main branch as last fetched carries
 # each case's record, committed under a fixed invented identity, stands in
 # for the project. It prints one line per case, names
@@ -160,7 +186,7 @@ me=devloop-tool-state
 usage() { echo "$me: $1" >&2; exit 2; }
 
 selftest() {
-  local self T P out rc n=0 f=0 RED=0 LASTRED= DAY SYS=Darwin WITH= s
+  local self T P out rc n=0 f=0 RED=0 LASTRED= DAY SYS=Darwin WITH= PROG s
   self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
   T=$(mktemp -d "${TMPDIR:-/tmp}/devloop-tool-state-selftest.XXXXXX") || exit 1
   trap 'rm -rf "$T"' EXIT
@@ -173,7 +199,10 @@ selftest() {
   # $T/s/LABEL.N, or from $T/s/LABEL.d where N has none; it logs every call
   # in order under its label and marks a call no answer was scripted for,
   # which makes the case red; as bin/devloop-start-conditions' stand-in for
-  # gh does. On the path stand the installers, node, and - as a global
+  # gh does. Where the case gives call N seconds, $T/s/LABEL.N.t, it adds
+  # them to the self-test's clock, $T/s/clock, before it answers, as the
+  # stand-in for gh of bin/devloop-arm does. On the path stand the
+  # installers, node, and - as a global
   # package would put them there, since 28 October 2026 - npx, playwright
   # and cypress, which no case may see asked; the project's own
   # node_modules/.bin/playwright is the same stand-in under the label
@@ -188,12 +217,17 @@ echo "$n $*" >> "$S/log"
 a=$S/$n.$i
 [ -e "$a.rc" ] || a=$S/$n.d
 [ -e "$a.rc" ] || { echo "stand-in for $n: no answer scripted for call $i: $n $*" >&2; : > "$S/unscripted"; exit 1; }
+[ ! -e "$S/$n.$i.t" ] || echo $(( $(cat "$S/clock") + $(cat "$S/$n.$i.t") )) > "$S/clock"
 cat "$a.out"; cat "$a.err" >&2
 exit "$(cat "$a.rc")"
 IN
   # standin PATH LABEL: the stand-in at PATH, answering and logging under LABEL
   standin() { sed "s|__S__|$T/s|; s|__N__|$2|" "$T/standin.sh" > "$1"; chmod +x "$1"; }
   for s in brew npm pnpm yarn bun go pipx uv gem npx node playwright cypress; do standin "$T/bin/$s" "$s"; done
+  # the copy of this program for the cases on the limit over the whole call, beside a stand-in for bin/devloop-bounded that writes the seconds it was given into the log, as "bound SECONDS", and runs the query without a bound
+  mkdir "$T/copy"; cp "$self" "$T/copy/devloop-tool-state"
+  printf '%s\n' '#!/bin/bash' "echo \"bound \$1\" >> \"$T/s/log\"" 'shift' 'exec "$@"' > "$T/copy/devloop-bounded"
+  chmod +x "$T/copy/devloop-tool-state" "$T/copy/devloop-bounded"
   # the tool that stands on the search path of every case: an executable file under the self-test's home
   : > "$T/home/bin/devloop-selftest-present"; chmod +x "$T/home/bin/devloop-selftest-present"
   [ "$(PATH="$T/bin:$PATH" command -v npx)" = "$T/bin/npx" ] || { echo "FAIL the stand-in for npx is not the npx the path finds"; exit 1; }
@@ -216,8 +250,8 @@ install-answered: 2026-10-25'
   NO='## Install permission
 install-tools: no
 install-answered: 2026-10-26'
-  # fresh: a new script, every stand-in without an answer, the log empty, the folders of the home directory as they were made
-  fresh() { rm -rf "$T/s" "$T/home/Library" "$T/home/.cache" "$T/home/cyp" "$T/home/pup" "$T/home/hb" "$T/home/npm" "$T/home/go" "$T/home/cg" "$T/home/.cargo" "$T/home/x" "$P/node_modules" "$T/node_modules"; mkdir "$T/s"; : > "$T/s/log"; SYS=Darwin; WITH=; }
+  # fresh: a new script, every stand-in without an answer, the log empty, the clock at 0, the folders of the home directory as they were made, the program the one of the repository
+  fresh() { rm -rf "$T/s" "$T/home/Library" "$T/home/.cache" "$T/home/cyp" "$T/home/pup" "$T/home/hb" "$T/home/npm" "$T/home/go" "$T/home/cg" "$T/home/.cargo" "$T/home/x" "$P/node_modules" "$T/node_modules"; mkdir "$T/s"; : > "$T/s/log"; echo 0 > "$T/s/clock"; SYS=Darwin; WITH=; PROG=$self; }
   # pw: the project gets a Playwright, the stand-in standing as node_modules/.bin/playwright and answering under the label project-playwright
   pw() { mkdir -p "$P/node_modules/.bin"; standin "$P/node_modules/.bin/playwright" project-playwright; }
   # pkg NAME [VERSION]: the project gets the package NAME in its node_modules, with VERSION in its package.json
@@ -226,11 +260,13 @@ install-answered: 2026-10-26'
   outside() { mkdir -p "$T/node_modules/$1"; printf '{\n  "name": "%s",\n  "version": "1.0.0"\n}\n' "$1" > "$T/node_modules/$1/package.json"; }
   # ans NAME N RC OUT [ERR]: the answer to call N of NAME, d for every call N has none
   ans() { printf '%s\n' "$3" > "$T/s/$1.$2.rc"; : > "$T/s/$1.$2.out"; : > "$T/s/$1.$2.err"; [ -z "$4" ] || printf '%s\n' "$4" > "$T/s/$1.$2.out"; [ -z "${5:-}" ] || printf '%s\n' "$5" > "$T/s/$1.$2.err"; }
+  # takes NAME N SECONDS: the answer to call N of NAME takes SECONDS of the self-test's clock
+  takes() { printf '%s\n' "$3" > "$T/s/$1.$2.t"; }
   # folder PATH [FILE]: the folder made, with FILE in it where one is named
   folder() { mkdir -p "$1"; [ -z "${2:-}" ] || : > "$1/$2"; }
-  # run [ARGUMENT...]: the program, once, in the throwaway project, against the stand-ins, with the home directory of the self-test, SYS for uname -s and the variables of WITH
+  # run [ARGUMENT...]: the program, PROG, once, in the throwaway project, against the stand-ins, with the home directory of the self-test, SYS for uname -s, the self-test's clock and the variables of WITH
   run() { rundir "$P" "$@"; }
-  rundir() { local d=$1; shift; ( cd "$d" && unset CYPRESS_CACHE_FOLDER PUPPETEER_CACHE_DIR CARGO_HOME CARGO_INSTALL_ROOT PLAYWRIGHT_BROWSERS_PATH NODE_PATH && PATH="$T/bin:$T/home/bin:$PATH" HOME="$T/home" CLAUDE_PROJECT_DIR="$d" DEVLOOP_TOOL_STATE_SYSTEM="$SYS" GIT_CEILING_DIRECTORIES="$T" env ${WITH:+$WITH} "$self" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
+  rundir() { local d=$1; shift; ( cd "$d" && unset CYPRESS_CACHE_FOLDER PUPPETEER_CACHE_DIR CARGO_HOME CARGO_INSTALL_ROOT PLAYWRIGHT_BROWSERS_PATH NODE_PATH && PATH="$T/bin:$T/home/bin:$PATH" HOME="$T/home" CLAUDE_PROJECT_DIR="$d" DEVLOOP_TOOL_STATE_SYSTEM="$SYS" DEVLOOP_TOOL_STATE_CLOCK="$T/s/clock" GIT_CEILING_DIRECTORIES="$T" env ${WITH:+$WITH} "$PROG" "$@" ) > "$T/stdout" 2> "$T/stderr"; rc=$?; out=$(cat "$T/stdout" "$T/stderr"); }
   # fail NAME WHAT: the case NAME is red for WHAT; the program's output is printed once per red case, and every red case is named
   fail() { echo "FAIL $1: $2"; [ "$LASTRED" = "$1" ] || { printf '%s\n' "$out" | sed 's/^/    /'; LASTRED=$1; f=$((f + 1)); }; RED=1; }
   # calls NAME LINE...: the stand-ins were called with these lines, in this order, and with nothing else
@@ -424,6 +460,23 @@ FFmpeg (playwright ffmpeg v1013)
   lines "--installed with a browser: read as the browser, whatever the command, no record line, one line" 1
   expect "--installed with a browser: read as the browser, whatever the command, no record line, one line" 0 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)"
 
+  # the limit over the whole call, on the self-test's clock and with the copy beside the stand-in for the bound: a query has its sixty seconds, or what is left of the ninety-five where that is less, and none starts once fewer than ten are left
+  fresh; PROG=$T/copy/devloop-tool-state; pw; ans project-playwright d 0 "$DRY"; takes project-playwright 1 59; takes project-playwright 2 26; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit playwright:chromium playwright:firefox
+  lines "three queries, 59 and 26 seconds: the first has sixty, the second the 36 left, the third has ten left and is asked with them" 4
+  calls "three queries, 59 and 26 seconds: the first has sixty, the second the 36 left, the third has ten left and is asked with them" "bound 60" "project-playwright install --dry-run webkit" "bound 36" "project-playwright install --dry-run chromium" "bound 10" "project-playwright install --dry-run firefox"
+  expect "three queries, 59 and 26 seconds: the first has sixty, the second the 36 left, the third has ten left and is asked with them" 0 "playwright:firefox: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)" "$PLAN"
+  fresh; PROG=$T/copy/devloop-tool-state; pw; ans project-playwright d 0 "$DRY"; takes project-playwright 1 59; takes project-playwright 2 27; folder "$T/home/Library/Caches/ms-playwright/webkit-9999" INSTALLATION_COMPLETE; run --planning playwright:webkit playwright:chromium playwright:firefox
+  lines "three queries, 59 and 27 seconds: nine of the ninety-five left, the third not started, its line not read with no time left, 1" 4
+  calls "three queries, 59 and 27 seconds: nine of the ninety-five left, the third not started, its line not read with no time left, 1" "bound 60" "project-playwright install --dry-run webkit" "bound 36" "project-playwright install --dry-run chromium"
+  expect "three queries, 59 and 27 seconds: nine of the ninety-five left, the third not started, its line not read with no time left, 1" 1 "playwright:webkit: found at ~/Library/Caches/ms-playwright/webkit-9999, WebKit 27.2 (playwright webkit v9999) as the project's Playwright needs it (on $DAY)" "playwright:firefox: not read, because the project's Playwright did not say which version of firefox it needs: node_modules/.bin/playwright install --dry-run firefox did not answer: no time left within the 95 seconds of this call (on $DAY)" "$PLAN"
+  fresh; PROG=$T/copy/devloop-tool-state; ans go 1 0 ''; takes go 1 59; ans go 2 0 "$T/home/go"; folder "$T/home/go/bin" devloop-selftest-present; run --installed 'go install example.invalid/x@latest' devloop-selftest-present
+  calls "installed by go, GOBIN empty after 59 seconds: GOPATH asked with the 36 left" "bound 60" "go env GOBIN" "bound 36" "go env GOPATH"
+  expect "installed by go, GOBIN empty after 59 seconds: GOPATH asked with the 36 left" 0 "devloop-selftest-present: found at ~/go/bin/devloop-selftest-present, the folder go writes to, read off go env GOPATH, GOBIN being empty (on $DAY)" "$PRESENT"
+  fresh; PROG=$T/copy/devloop-tool-state; ans go 1 0 ''; takes go 1 86; ans go 2 0 "$T/home/go"; folder "$T/home/go/bin" devloop-selftest-present; run --installed 'go install example.invalid/x@latest' devloop-selftest-present
+  lines "installed by go, GOBIN empty after 86 seconds: GOPATH not started, not read with no time left, the search-path line all the same, 1" 2
+  calls "installed by go, GOBIN empty after 86 seconds: GOPATH not started, not read with no time left, the search-path line all the same, 1" "bound 60" "go env GOBIN"
+  expect "installed by go, GOBIN empty after 86 seconds: GOPATH not started, not read with no time left, the search-path line all the same, 1" 1 "devloop-selftest-present: not read, because go env GOPATH did not answer: no time left within the 95 seconds of this call (on $DAY)" "$PRESENT"
+
   [ "$RED" -ne 0 ] || { echo "SELF-TEST PASSED: $n cases"; exit 0; }
   echo "SELF-TEST FAILED: $f of $n cases red"
   exit 1
@@ -433,6 +486,9 @@ FFmpeg (playwright ffmpeg v1013)
 HERE=$(cd "$(dirname "$0")" && pwd)
 BOUNDED=$HERE/devloop-bounded
 BOUND=60
+# the limit over the whole call and the fewest seconds of it a query starts with, as bin/devloop-arm and bin/devloop-start-conditions hold theirs, since 15 November 2026
+LIMIT=95
+STEP=10
 DAY=$(date +%Y-%m-%d)
 SYSTEM=${DEVLOOP_TOOL_STATE_SYSTEM:-$(uname -s)}
 WIN=""
@@ -476,10 +532,18 @@ tilde() { local p=$1; case $p in "$HOME"|"$HOME"/*) p="~${p#"$HOME"}" ;; esac; p
 cap() { printf '%s%s' "$(printf '%s' "${1%"${1#?}"}" | tr '[:lower:]' '[:upper:]')" "${1#?}"; }
 # flat: the input on one line
 flat() { tr '\n' ' ' | sed 's/   */ /g; s/ *$//'; }
-# ask LABEL COMMAND...: the query under the bound; OUT its output, RC its exit code and FAIL the clause of a line that it did not answer, empty where it answered: its first line on stderr that is no stack frame, else its output, else the code it ended with
+# The clock: bash's SECONDS, the whole seconds since the program started, or, where DEVLOOP_TOOL_STATE_CLOCK names a file, the seconds in it - the self-test's clock, which its stand-ins add to
+tick() { if [ -n "${DEVLOOP_TOOL_STATE_CLOCK:-}" ]; then read -r NOW <"$DEVLOOP_TOOL_STATE_CLOCK"; else NOW=$SECONDS; fi; }
+# ask LABEL COMMAND...: the query under the bound, with BOUND seconds or with what is left of LIMIT where that is less; OUT its output, RC its exit code and FAIL the clause of a line that it did not answer, empty where it answered: its first line on stderr that is no stack frame, else its output, else the code it ended with. Where fewer than STEP seconds of LIMIT are left the query is not started and answers as one that did not answer, in the words of bin/devloop-start-conditions
 ask() {
-  local label=$1 err; shift
-  OUT=$("$BOUNDED" "$BOUND" "$@" 2>"$T/err"); RC=$?
+  local label=$1 err secs; shift
+  tick; secs=$((LIMIT - NOW))
+  if [ "$secs" -lt "$STEP" ]; then
+    OUT=; RC=124; FAIL="$label did not answer: no time left within the $LIMIT seconds of this call"
+    return
+  fi
+  [ "$secs" -le "$BOUND" ] || secs=$BOUND
+  OUT=$("$BOUNDED" "$secs" "$@" 2>"$T/err"); RC=$?
   err=$(grep -v -e '^ ' -e '^$' -e '^node:' -e '^Require stack' "$T/err" | head -n 1)
   FAIL=""
   case $RC in
