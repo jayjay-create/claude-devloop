@@ -1211,7 +1211,12 @@ not built yet: the three open blocks of `scripts/devloop-run-workflow` with
 the red end of that program's self-test, and the block on the self-test of
 `bin/devloop-bounded` under hidepid, built with the next change to that
 program; the block on the limit of the runtime's walk under Windows with Git
-Bash stands with Fix none. Of (2) to (7) nothing is built yet, `shell: bash`
+Bash stands with Fix none. And one block of this milestone the consistency
+audit of 15 November 2026 wrote, the roadmap entry of that date on the three
+entries held: a paragraph of the head of `bin/devloop-auto-mode-question`
+still gives every call of gh sixty seconds, where a call has what is left of
+the ninety-five since the build of that day; Fix none, built with the next
+change to that program. Of (2) to (7) nothing is built yet, `shell: bash`
 in every skill and the guard for PowerShell among them. Until 15 November
 2026 this paragraph said that what the first part found and what its merge
 found stand in three blocks of this milestone with Fix none; until 14
