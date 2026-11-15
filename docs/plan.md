@@ -1181,23 +1181,24 @@ date on gh under the bound: `bin/devloop-auto-mode-question` and
 seconds, and the second runs `bin/devloop-tool-state` so with a limit above
 what that program's own bounds take, so that a command that does not answer
 is ended with everything it started and the call is back with the bound,
-measured on macOS and in Alpine and under Windows with Git Bash measured by
-the job first, what the bound does not reach there standing in the block of
-this milestone on the limit of the runtime's walk; and every thing of
-`docs/stock-take.tsv` whose name named a green and a red end at once is
-split in two, eight of them, the head of `scripts/devloop-stock-take`
-saying the rule of the decision of 13 November 2026, and the red end of the
-self-test of each program that part changed brought about once on purpose.
-That order was parted because its reading list did not fit one session. Of
-it the three open blocks of `scripts/devloop-run-workflow` are not built
-yet, the process that leaves the step's session, Windows, and the step that
-ends in time and leaves a process behind, and the red end of that program's
-self-test is not brought about; what the first part found and did not build
-stands in two blocks of this milestone with Fix none. Of (2) to (7) nothing
-is built yet, `shell: bash` in every skill and the guard for PowerShell
-among them. Until 14 November 2026 this paragraph said that of the rest
-nothing was built, the second order before (2) among it; until 13 November
-2026, that nothing of the orders before (2) was built.
+measured on macOS and in Alpine and under Windows with Git Bash by the job
+hooks on every system of its pull request, what the bound does not reach
+there standing in the block of this milestone on the limit of the runtime's
+walk; and every thing of `docs/stock-take.tsv` whose name named a green and
+a red end at once is split in two, eight of them, the head of
+`scripts/devloop-stock-take` saying the rule of the decision of 13 November
+2026, and the red end of the self-test of each program that part changed
+brought about once on purpose. That order was parted because its reading
+list did not fit one session. Of it the three open blocks of
+`scripts/devloop-run-workflow` are not built yet, the process that leaves
+the step's session, Windows, and the step that ends in time and leaves a
+process behind, and the red end of that program's self-test is not brought
+about; what the first part found and did not build, and what its merge
+found, stand in three blocks of this milestone with Fix none. Of (2) to (7)
+nothing is built yet, `shell: bash` in every skill and the guard for
+PowerShell among them. Until 14 November 2026 this paragraph said that of
+the rest nothing was built, the second order before (2) among it; until 13
+November 2026, that nothing of the orders before (2) was built.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
