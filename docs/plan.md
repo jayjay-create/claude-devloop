@@ -1193,12 +1193,31 @@ list did not fit one session. Of it the three open blocks of
 `scripts/devloop-run-workflow` are not built yet, the process that leaves
 the step's session, Windows, and the step that ends in time and leaves a
 process behind, and the red end of that program's self-test is not brought
-about; what the first part found and did not build, and what its merge
-found, stand in three blocks of this milestone with Fix none. Of (2) to (7)
-nothing is built yet, `shell: bash` in every skill and the guard for
-PowerShell among them. Until 14 November 2026 this paragraph said that of
-the rest nothing was built, the second order before (2) among it; until 13
-November 2026, that nothing of the orders before (2) was built.
+about. What the first part found and did not build, and what its merge
+found, three blocks of this milestone, is built since 15 November 2026 by an
+order of its own, the roadmap entry of that date on a limit over the whole
+call: `bin/devloop-tool-state`, `bin/devloop-auto-mode-question` and
+`bin/devloop-install-issues` each hold ninety-five seconds over their whole
+call, as `bin/devloop-arm` and `bin/devloop-start-conditions` hold theirs, a
+query having its own limit, or what is left of the ninety-five where that is
+less, and none starting once fewer than ten of them are left, so that each
+ends inside the 120 seconds of the Bash call the texts start it in, however
+many queries it asks, measured on macOS and in Alpine; a query not started
+answers in the words those two programs have for it; and under Windows,
+where PATH holds no bash to run the bound, the two programs that start gh
+start nothing and name bash, measured under Windows with Git Bash by the job
+hooks on every system of its pull request. Of the orders before (2) this is
+not built yet: the three open blocks of `scripts/devloop-run-workflow` with
+the red end of that program's self-test, and the block on the self-test of
+`bin/devloop-bounded` under hidepid, built with the next change to that
+program; the block on the limit of the runtime's walk under Windows with Git
+Bash stands with Fix none. Of (2) to (7) nothing is built yet, `shell: bash`
+in every skill and the guard for PowerShell among them. Until 15 November
+2026 this paragraph said that what the first part found and what its merge
+found stand in three blocks of this milestone with Fix none; until 14
+November 2026, that of the rest nothing was built, the second order before
+(2) among it; until 13 November 2026, that nothing of the orders before (2)
+was built.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run
