@@ -1205,19 +1205,19 @@ ends inside the 120 seconds of the Bash call the texts start it in, however
 many queries it asks, measured on macOS and in Alpine; a query not started
 answers in the words those two programs have for it; and under Windows,
 where PATH holds no bash to run the bound, the two programs that start gh
-start nothing and name bash, read and not measured, the block on it Built,
-never walked until the job hooks on every system has shown it. Of the orders
-before (2) this is not built yet: the three open blocks of
-`scripts/devloop-run-workflow` with the red end of that program's
-self-test, and the block on the self-test of `bin/devloop-bounded` under
-hidepid, built with the next change to that program; the block on the limit
-of the runtime's walk under Windows with Git Bash stands with Fix none. Of
-(2) to (7) nothing is built yet, `shell: bash` in every skill and the guard
-for PowerShell among them. Until 15 November 2026 this paragraph said that
-what the first part found and what its merge found stand in three blocks of
-this milestone with Fix none; until 14 November 2026, that of the rest
-nothing was built, the second order before (2) among it; until 13 November
-2026, that nothing of the orders before (2) was built.
+start nothing and name bash, measured under Windows with Git Bash by the job
+hooks on every system of its pull request. Of the orders before (2) this is
+not built yet: the three open blocks of `scripts/devloop-run-workflow` with
+the red end of that program's self-test, and the block on the self-test of
+`bin/devloop-bounded` under hidepid, built with the next change to that
+program; the block on the limit of the runtime's walk under Windows with Git
+Bash stands with Fix none. Of (2) to (7) nothing is built yet, `shell: bash`
+in every skill and the guard for PowerShell among them. Until 15 November
+2026 this paragraph said that what the first part found and what its merge
+found stand in three blocks of this milestone with Fix none; until 14
+November 2026, that of the rest nothing was built, the second order before
+(2) among it; until 13 November 2026, that nothing of the orders before (2)
+was built.
 
 Why here: milestone 3 ends on one machine so that it has one variable, and
 what it built — the guards, the record, the mode — is what has to run

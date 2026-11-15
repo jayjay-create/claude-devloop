@@ -7115,23 +7115,24 @@ and for the proofs of closings.
   `bin/devloop-auto-mode-question` and `bin/devloop-install-issues` change;
   nothing under `skills/`, `shared/`, `hooks/`, `output-styles/` or `scripts/`
   changes, and `.github/workflows/stock-take.yml` and `README.md` do not. On
-  `task/whole-call-limit`, off `origin/main` at `6f92a5d`, in three commits:
+  `task/whole-call-limit`, off `origin/main` at `6f92a5d`, in four commits:
   the code of the three programs with the version, raised once, `64b7b3e`;
-  this entry, the blocks, the plan and the table; and the runs, at the second.
-  The order, of this day: the three blocks under "## Milestone 12" of
-  `docs/defects.md` that the first part of the second order before (2) found
-  and did not build and that its merge found, the entry of 14 November 2026 on
-  gh under the bound. Its subject: the two programs that start gh hold no
-  limit over their whole call; the head of `bin/devloop-tool-state` says that
-  the program ends inside the 120 seconds of a Bash call, where it asks
-  several queries one after another; and under Windows the two programs start
-  gh through bash where PATH holds none and name nothing. The three open
-  blocks of `scripts/devloop-run-workflow` are a later order's and no part of
-  this one. Its reading list: 310836 bytes by `wc -c`, the order's figure,
-  counted again here with `git show` over its ranges at `6f92a5d`: the three
-  programs whole, lines 1 to 60 of `bin/devloop-bounded`, 36 to 46 and 316 to
-  332 of `bin/devloop-arm`, 56 to 75 and 318 to 345 of
-  `bin/devloop-start-conditions`, 30 to 48 of
+  this entry, the blocks, the plan and the table; the runs, measured at the
+  second; and, after the checks, the corrections of the merge of 15 November
+  2026, which change no code. The order, of this day: the three blocks under
+  "## Milestone 12" of `docs/defects.md` that the first part of the second
+  order before (2) found and did not build and that its merge found, the entry
+  of 14 November 2026 on gh under the bound. Its subject: the two programs
+  that start gh hold no limit over their whole call; the head of
+  `bin/devloop-tool-state` says that the program ends inside the 120 seconds
+  of a Bash call, where it asks several queries one after another; and under
+  Windows the two programs start gh through bash where PATH holds none and
+  name nothing. The three open blocks of `scripts/devloop-run-workflow` are a
+  later order's and no part of this one. Its reading list: 310836 bytes by `wc
+  -c`, the order's figure, counted again here with `git show` over its ranges
+  at `6f92a5d`: the three programs whole, lines 1 to 60 of
+  `bin/devloop-bounded`, 36 to 46 and 316 to 332 of `bin/devloop-arm`, 56 to
+  75 and 318 to 345 of `bin/devloop-start-conditions`, 30 to 48 of
   `shared/command-does-not-answer.md`, 1761 to 1788, 1799 to 1891, 1932 to
   1962, 2165 to 2200 and 3949 to 4446 of `docs/skill-conventions.md`, 1 to 86
   and 1491 to 1514 of `docs/defects.md`, 83 to 149, 1108 to 1129 and 1174 to
@@ -7373,11 +7374,12 @@ and for the proofs of closings.
   that the query did not answer and that an issue not read stays open, which
   holds. A limit of its own on the call in the texts, with the program told
   the seconds, would let one call read more; it needs an argument of the
-  programs and a change to six texts, is no part of this order, and the report
-  lays it before the person. What bash and Python take to start before the
-  clock, and what a program does after its last query, stand outside the
-  ninety-five seconds, inside the twenty-five that are left of the 120. And
-  what the bound does not end its head says, as before.
+  programs and a change to six texts, and lets one start wait up to ten
+  minutes on a query that does not answer; decided against at the merge,
+  below. What bash and Python take to start before the clock, and what a
+  program does after its last query, stand outside the ninety-five seconds,
+  inside the twenty-five that are left of the 120. And what the bound does not
+  end its head says, as before.
 
   The table. Eight things for what is new, each Built, never walked until its
   run: in each of the three programs a query not started with fewer than ten
@@ -7580,6 +7582,60 @@ and for the proofs of closings.
   the green end of that of `bin/devloop-install-issues` and two of the three
   blocks; Built, never walked as many as before, the two things on Windows and
   the block on it more and those three ends fewer.
+
+  **The runs of the job under Windows**, of 15 November 2026: the job hooks on
+  every system on windows-latest, in run 43730011200 of the checks of pull
+  request #246, on the merge ref of `30eb30c` into `6f92a5d`, whose tree is
+  that of `30eb30c`, main not having moved since the branch point, version
+  0.187.0, green, read off the job's log at the merge. Its step that runs
+  every self-test under `bin/` printed under "== devloop-auto-mode-question
+  --self-test" 53 lines ok and "SELF-TEST PASSED: 53 cases", among them "no
+  bash on PATH under Windows: not decided, the command and the system's
+  message naming bash, exit 2", "no bash on PATH: nothing started under
+  Windows, gh called as with one on macOS and Linux", the six on the
+  ninety-five seconds and the three on a gh that does not answer within the
+  limit: run W3; under "== devloop-install-issues --self-test" 49 lines ok and
+  "SELF-TEST PASSED: 49 cases", among them "no bash on PATH under Windows: not
+  decided, the listing and the system's message naming bash, 2", "no bash on
+  PATH under Windows: nothing started", the eight on the ninety-five seconds
+  and the three on a gh that does not answer within its limit: run W4; and
+  under "== devloop-tool-state --self-test" 67 lines ok and "SELF-TEST PASSED:
+  67 cases", the four on the ninety-five seconds among them. So under Windows
+  with Git Bash and no bash on PATH the two programs started nothing and named
+  bash, the cases on the limit came out there as on macOS and in Alpine, the
+  copy of `bin/devloop-tool-state` beside the stand-in for the bound ran
+  there, and the bound ended a gh that did not answer with what it had
+  started. W3 stands on the thing on a PATH without bash under Windows in
+  `bin/devloop-auto-mode-question`, on the block of 11 November 2026 on that
+  program and on the block on Windows and a PATH without bash; W4 on the thing
+  of the same in `bin/devloop-install-issues`, on the block of 11 November
+  2026 on that program and on the block on Windows and a PATH without bash. W1
+  and W2 of the entry of 14 November 2026 count no more for the two blocks of
+  11 November 2026, their Fix having moved with this build.
+
+  **The corrections of the merge**, of 15 November 2026, the fourth commit,
+  which changes no code. Decided at the merge: the ninety-five seconds stay,
+  and no text gives the call a limit of its own with the program told the
+  seconds. An issue that is closed drops out of the list, which reads open
+  issues alone (`--state open` in the list of `bin/devloop-install-issues`),
+  so that the next start goes on where one stopped, and the limit bites only
+  where the issues of one call take more than the ninety-five seconds; the
+  other way needs an argument of three programs and twelve calls changed in
+  six texts, and lets one start wait up to ten minutes on a query that does
+  not answer. And `bin/devloop-install-issues` hands `bin/devloop-tool-state`
+  no rest of its seconds: a user sees the same either way, the call back in
+  time and not decided where an issue follows, and the other way needs an
+  argument as well. The runs W3 and W4 stand in the table; the block on
+  Windows and a PATH without bash reads Walked, and its note and the notes of
+  the two blocks of 11 November 2026 name the runs. In `docs/plan.md` the
+  paragraph on the second piece of milestone 12 says the job measured under
+  Windows. In this entry the number of commits and the sentence on a limit of
+  its own in the texts. After them the tool shows: Built, never walked 1507
+  and Walked 753, the two things on Windows and the block on it walked by W3
+  and W4; milestone 12 114 blocks, Recorded, not built 42, Built, never walked
+  46, Walked 20, Closed 6; blocks held against the branch point: removed 0,
+  renamed 0, Should changed 1, added 0, its one line of the fixed forms; every
+  other figure as after the third commit.
 
 ## Decisions taken against
 
