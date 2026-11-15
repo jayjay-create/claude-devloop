@@ -7469,6 +7469,118 @@ and for the proofs of closings.
   renamed 0, Should changed 1, added 0, one line of the fixed forms; nothing
   Walked on the branch without a run the branch adds.
 
+  **The runs at the last commit**, the third, which changes no code: every run
+  below ran the code of the first commit, `64b7b3e`, the second and this one
+  changing documents alone, under 0.187.0, at the second commit, `517d361`,
+  the tree clean, and is of 15 November 2026. On the person's Mac, bash 3.2.57
+  and Python 3.14.7, in a bash started with `--noprofile --norc`, the three
+  self-tests first and one after another. Run S1, at 14:08:56 UTC,
+  `bin/devloop-tool-state --self-test`: exit 0, 67 lines ok and none red,
+  "SELF-TEST PASSED: 67 cases", in 7.215 seconds, the four lines on the limit
+  among them, "three queries, 59 and 26 seconds: the first has sixty, the
+  second the 36 left, the third has ten left and is asked with them", "three
+  queries, 59 and 27 seconds: nine of the ninety-five left, the third not
+  started, its line not read with no time left, 1" and the two of go with
+  GOBIN empty after 59 and after 86 seconds. Run S2, at 14:09:03 UTC,
+  `bin/devloop-auto-mode-question --self-test`: exit 0, 53 lines ok and none
+  red, "SELF-TEST PASSED: 53 cases", in 11.197 seconds, among them "nine of
+  the 95 seconds left: the call of gh not started", "a call started with a few
+  of the 95 seconds left has those and not its sixty: not decided, the
+  command, no answer within those seconds, exit 2" and "no bash on PATH on
+  macOS and Linux: bash not looked up, the question decided as with one, exit
+  0". Run S3, at 14:09:14 UTC, `bin/devloop-install-issues --self-test`: exit
+  0, 49 lines ok and none red, "SELF-TEST PASSED: 49 cases", in 18.834
+  seconds, among them "nine of the 95 seconds left: the tool state program not
+  started, nothing closed", "the tool state program started with a few of the
+  95 seconds left has those and not its 72: not decided, the command, no
+  answer within those seconds, the group not printed, 2" and "no bash on PATH
+  on macOS and Linux: the listing and the blocking relation called, the tool
+  state program not started". The red end of the self-test of
+  `bin/devloop-tool-state`, which no run had brought about, on a copy of the
+  whole of `bin/` under a throwaway directory, the expectation of one case
+  changed there, as the entry of 14 November 2026 brought about those of the
+  two Python programs. Run R1, at 14:09:33 UTC, the copy, `expect "a form it
+  does not know: 2" 2` changed to 3: 66 lines ok, "FAIL a form it does not
+  know: 2: ended with 2, expected 3" with what the program printed under it,
+  indented, "SELF-TEST FAILED: 1 of 67 cases red" and exit 1; at 14:09:41 UTC
+  the repository's program passed beside it with 67 cases. The red ends of the
+  self-tests of the two Python programs stand on lines the build did not
+  change, and their runs of 14 November 2026 count as before. And the same
+  three self-tests in a container of `alpine:3.22`, bash 5.2.37 and Python
+  3.12.16, from 14:10:26 UTC: 67, 53 and 49 cases, none red, no line on
+  stderr.
+
+  The measurements after the build, with the stand-ins of the measurement
+  before it, nine runs side by side on the Mac from 14:10:03 UTC and each in a
+  container of its own of `alpine:3.22` from 14:10:23 UTC, the seconds of the
+  Mac first. Run M1, `bin/devloop-tool-state --build` with the three browsers
+  of a Playwright that does not answer: back after 94.657 and 95.039 seconds,
+  exit 1, the first line with "no answer within 60 seconds", the second with
+  "no answer within 34 seconds", within 35 in Alpine, the third with "did not
+  answer: no time left within the 95 seconds of this call", then the record
+  line; before the build 181.139 and 180.093 seconds. Run M2,
+  `bin/devloop-auto-mode-question`, the list after 50 seconds and the first
+  blocking relation after 55: back after 94.122 and 94.096 seconds, "question:
+  not decided", the command of the first relation, "no answer within 43
+  seconds", within 44 in Alpine, exit 2, the second relation never asked;
+  before the build 166.297 and 165.148. Run M3, `bin/devloop-install-issues`
+  with the same answers: back after 95.053 and 94.065 seconds, "issues: not
+  decided", the command of the first relation, "no answer within 43 seconds",
+  within 44 in Alpine, exit 2; before the build 167.290 and 165.176. Run M4,
+  `bin/devloop-tool-state --installed` with go, GOBIN empty after 59 seconds
+  and GOPATH not answering: back after 95.338 and 95.041 seconds, "go env
+  GOPATH did not answer: no answer within 35 seconds", within 36 in Alpine,
+  exit 1; before the build 120.365 and 119.067. Run M5, the question program
+  with a list that does not answer: back after 60.253 and 60.072 seconds, "no
+  answer within 60 seconds", exit 2, a call with its sixty seconds as before.
+  Run M6, the question program, the list after 50 seconds and the first
+  blocking relation after 36 more: back after 86.691 and 86.093 seconds,
+  "question: not decided", the command of the second relation, "no time left
+  within the 95 seconds of this call", exit 2, the stand-in not called for it.
+  Run M7, `bin/devloop-install-issues`, the list after 50 seconds, the first
+  issue's blocking relation after 20 and its closing after 16 more: back after
+  87.930 and 86.113 seconds, the group of the first issue with closed: yes,
+  then "issues: not decided", the command of the second issue's relation and
+  "no time left within the 95 seconds of this call", exit 2. Run M8,
+  `bin/devloop-install-issues` with one issue on playwright:webkit, the
+  project's Playwright not answering and gh answering at once: back after
+  61.375 and 60.090 seconds, exit 0, the tool line not read with "no answer
+  within 60 seconds" and closed: no, that program's own bound having ended the
+  query before this program's limit. Run M9, `bin/devloop-install-issues` with
+  a list that does not answer: back after 60.567 and 60.047 seconds, "no
+  answer within 60 seconds", exit 2. After the nine no process of a stand-in
+  stood, on the Mac by pgrep after the last of them and in every container at
+  the end of its run, and no container stood. No call was back later than
+  95.338 seconds.
+
+  What the runs stand on. S1 and R1 on the two ends of the self-test of
+  `bin/devloop-tool-state`, neither of which had a run; S2 and S3 on the green
+  ends of the self-tests of the two Python programs. M1 on a query of
+  `bin/devloop-tool-state` not started and on the block on that program's
+  head; M4 on a query of it that started with less than its sixty seconds. M2
+  and M3 on a call of gh and a command that started with less than their own
+  limit, and both on the block on a limit over the whole call; M6 and M7 on a
+  call and a command not started. M5 on a gh that does not answer within its
+  sixty seconds and on the block of 11 November 2026 on the question program;
+  M8 on a query the tool state program's own bound ends first; M9 on the block
+  of that day on `bin/devloop-install-issues`. The Status of those four blocks
+  reads Walked, their notes naming the runs. No run stands on the two things
+  on a PATH that holds no bash under Windows or on the block on it, which
+  reads Built, never walked: the job hooks on every system brings that case
+  about first. After the runs the tool shows: exit 0, no broken record, 0 of
+  4670 lines uncovered; Undetermined 24, Recorded, not built 259, Built, never
+  walked 1510, Walked 750, Closed 72, sixteen walked by these runs, twelve
+  things and four blocks; milestone 12 114 blocks, Recorded, not built 42,
+  Built, never walked 47, Walked 19, Closed 6; blocks held against the branch
+  point: removed 0, renamed 0, Should changed 1, added 0, one line of the
+  fixed forms; nothing Walked on the branch without a run the branch adds; and
+  every run of this entry counts. Against the tool before the build: Recorded,
+  not built three fewer, the three blocks; Walked eleven more, six of the
+  eight new things, the two ends of the self-test of `bin/devloop-tool-state`,
+  the green end of that of `bin/devloop-install-issues` and two of the three
+  blocks; Built, never walked as many as before, the two things on Windows and
+  the block on it more and those three ends fewer.
+
 ## Decisions taken against
 
 Each of these was examined against a real run, rejected for a reason, and is
